@@ -1,0 +1,16 @@
+.DS_Store
+.env
+.port.tmp
+.tmp
+.vscode/
+node_modules
+npm-debug.log
+public/
+sass-cache
+settings.json
+
+# ignore everything in the package directory, but not govuk-prototype-kit.config.json, package.json and README.md
+package/*
+!package/govuk-prototype-kit.config.json
+!package/package.json
+!package/README.md

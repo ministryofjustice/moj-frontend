@@ -1,18 +1,18 @@
 # Ministry of Justice Frontend
 
-MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.
+The MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.
 
-See live examples of MOJ Frontend components, and guidance on when to use them in your service, in the [MoJ Design System](https://mojdt-design-system.herokuapp.com/).
+See live examples of MOJ Frontend components, and guidance on when to use them in your service, in the [MOJ Design System](https://mojdt-design-system.herokuapp.com/).
 
 ## Contact the team
 
-MOJ Frontend is maintained by a team at MoJ. If you want to know more about MOJ Frontend, please email the [Design System team](mailto:design-system@digital.justice.gov.uk).
+MOJ Frontend is maintained by a team at the Ministry of Justice. If you want to know more about MOJ Frontend, please email the [Design System team](mailto:design-system@digital.justice.gov.uk).
 
 ## Quick start
 
 We recommend [installing MOJ Frontend using node package manager (npm)](docs/installation/installing-with-npm.md).
 
-Once installed, you will be able to use the code from the examples in the [MoJ Design System](https://mojdt-design-system.herokuapp.com/)
+Once installed, you will be able to use the code from the examples in the [MOJ Design System](https://mojdt-design-system.herokuapp.com/)
 in your service.
 
 ## Browser support

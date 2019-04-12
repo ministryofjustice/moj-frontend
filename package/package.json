@@ -1,0 +1,32 @@
+{
+  "name": "@ministryofjustice/frontend",
+  "description": "The MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.",
+  "version": "0.0.1-alpha",
+  "main": "all.js",
+  "sass": "all.scss",
+  "engines": {
+    "node": ">= 4.2.0"
+  },
+  "author": {
+    "name": "MoJ Design System Team",
+    "email": "design-system@digital.justice.gov.uk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ministryofjustice/mojdt-frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ministryofjustice/mojdt-frontend/issues"
+  },
+  "homepage": "https://github.com/ministryofjustice/mojdt-frontend#readme",
+  "keywords": [
+    "moj",
+    "frontend",
+    "design system",
+    "template"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "resticted"
+  }
+}

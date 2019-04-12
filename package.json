@@ -1,0 +1,40 @@
+{
+  "name": "@ministryofjustice/frontend",
+  "version": "0.0.1-alpha",
+  "description": "The MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "build:package": "node bin/check-nvmrc.js && gulp build:package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ministryofjustice/mojdt-frontend.git"
+  },
+  "author": "Simon Whatley, Gavin Wye, Matthew Solle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ministryofjustice/mojdt-frontend/issues"
+  },
+  "homepage": "https://github.com/ministryofjustice/mojdt-frontend#readme",
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "browser-sync": "^2.26.3",
+    "del": "^3.0.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.3",
+    "govuk-frontend": "^2.9.0",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-cache": "^0.4.6",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-nodemon": "^2.4.2",
+    "gulp-sass": "^4.0.2",
+    "moment": "^2.22.2",
+    "nunjucks": "^3.2.0",
+    "portscanner": "^2.2.0",
+    "prompt": "^1.0.0",
+    "require-dir": "^1.0.0"
+  }
+}

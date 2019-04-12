@@ -1,0 +1,21 @@
+$govuk-global-styles: true;
+
+// GOV.UK Frontend
+@import "node_modules/govuk-frontend/all";
+
+// MOJ Frontend
+@import "src/all";
+
+// Other component styles
+@import 'components/secondary-button';
+
+// App specific
+body {
+  margin: 0;
+  padding: $moj-gutter-half;
+
+  @include mq($from: tablet) {
+    padding: $moj-gutter;
+  }
+
+}
