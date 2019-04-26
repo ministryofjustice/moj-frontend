@@ -1,0 +1,27 @@
+/* ==========================================================================
+   #ADD ANOTHER
+   ========================================================================== */
+
+.moj-add-another__item {
+  margin: 0;
+  margin-top: govuk-spacing(6);
+  padding: 0;
+  position: relative;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+}
+
+.moj-add-another__title {
+  float: left;
+  padding: 4px 0;
+  width: 100%;
+}
+
+.moj-add-another__remove-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
