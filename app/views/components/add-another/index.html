@@ -15,11 +15,11 @@
 
       <div class="moj-add-another">
 
-        <h1 class="govuk-heading-xl" tabindex="-1">
+        <h1 class="govuk-heading-xl">
           <span class="govuk-caption-xl">Components</span> Add another
         </h1>
 
-        <h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Add a person</h1>
+        <h2 class="govuk-heading-l moj-add-another__heading">Add a person</h1>
 
         <form method="post" action="#">
 
@@ -91,18 +91,15 @@
 
           {% endcall %}
 
-          <div class="moj-button-action">
-            {{ govukButton({
-              text: 'Add another person',
-              classes: 'govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4'
-            }) }}
-          </div>
+          {{ govukButton({
+            text: 'Add another person',
+            classes: 'moj-button-action govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4'
+          }) }}
 
-          <div class="moj-button-action">
-            {{ govukButton({
-              text: 'Submit'
-            }) }}
-          </div>
+          {{ govukButton({
+            text: 'Submit',
+            classes: 'govuk-link moj-button-action'
+          }) }}
 
         </form>
 

@@ -2,26 +2,40 @@
    #ADD ANOTHER
    ========================================================================== */
 
-.moj-add-another__item {
-  margin: 0;
-  margin-top: govuk-spacing(6);
-  padding: 0;
-  position: relative;
+.moj-add-another{
+  &__item {
+    margin: 0;
+    margin-top: govuk-spacing(6);
+    padding: 0;
+    position: relative;
 
-  &:first-of-type {
-    margin-top: 0;
+    &:first-of-type {
+      margin-top: 0;
+    }
   }
 
-}
+  &__title {
+    float: left;
+    padding: 4px 0;
+    width: 100%;
+  }
+  
+  &__remove-button {
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: #005ea5;
+    cursor: pointer;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-decoration: underline;
+  }
 
-.moj-add-another__title {
-  float: left;
-  padding: 4px 0;
-  width: 100%;
-}
-
-.moj-add-another__remove-button {
-  position: absolute;
-  right: 0;
-  top: 0;
+  &__add-button {
+    display: block;
+  }
 }
