@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-half">
+
+      <!-- <h1 class="govuk-heading-l">MOJ Frontend</h1> -->
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl" tabindex="-1">
+        <span class="govuk-caption-xl">Components</span> Search
+      </h1>
+
+      {{ mojSearch({
+        action: '#',
+        method: 'post',
+        input: {
+          id: 'search',
+          name: 'search'
+        },
+        label: {
+          text: 'Find a person',
+          classes: 'govuk-!-font-weight-bold'
+        },
+        hint: {
+          text: 'You can search by name, date of birth or national insurance number'
+        },
+        button: {
+          text: 'Search'
+        }
+      }) }}
+
+  </div>
+
+{% endblock %}
