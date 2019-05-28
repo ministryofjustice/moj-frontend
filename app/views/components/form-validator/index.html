@@ -1,0 +1,101 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-half">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <div tabindex="-1" role="group" id="errorSummary" class="govuk-error-summary moj-hidden" aria-labelledby="error-summary-title" data-module="error-summary">
+
+      </div>
+
+      <h1 class="govuk-heading-xl" tabindex="-1">
+        <span class="govuk-caption-xl">Components</span> Form validation
+      </h1>
+
+      <form novalidate>
+
+        {{ govukInput({
+          id: "email",
+          name: "email",
+          label: {
+            text: "Email",
+            classes: 'govuk-!-font-weight-bold'
+          }
+        }) }}
+
+        {{ govukInput({
+          id: "password",
+          name: "password",
+          type: "password",
+          label: {
+            text: "Password",
+            classes: 'govuk-!-font-weight-bold'
+          }
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "location",
+          name: "location",
+          fieldset: {
+            legend: {
+              text: "Where do you live?",
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          items: [
+            {
+              id: 'location',
+              value: "england",
+              text: "England"
+            },
+            {
+              value: "scotland",
+              text: "Scotland"
+            },
+            {
+              value: "wales",
+              text: "Wales"
+            },
+            {
+              value: "northern-ireland",
+              text: "Northern Ireland"
+            }
+          ]
+        }) }}
+
+        {{ govukDateInput({
+          id: "dob",
+          namePrefix: "dob",
+          fieldset: {
+            legend: {
+              text: "What is your date of birth?",
+              classes: 'govuk-fieldset__legend--s'
+            }
+          },
+          hint: {
+            text: "For example, 31 3 1980"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+
+  {%- include "./scripts.html" %}
+
+{% endblock %}
