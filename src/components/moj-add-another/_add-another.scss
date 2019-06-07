@@ -2,7 +2,7 @@
    #ADD ANOTHER
    ========================================================================== */
 
-.moj-add-another{
+.moj-add-another {
   &__item {
     margin: 0;
     margin-top: govuk-spacing(6);
@@ -21,18 +21,9 @@
   }
   
   &__remove-button {
-    background: none;
-    border: none;
-    box-shadow: none;
-    color: #005ea5;
-    cursor: pointer;
-    margin: 0;
-    padding-left: 0;
-    padding-right: 0;
     position: absolute;
     right: 0;
     top: 0;
-    text-decoration: underline;
   }
 
   &__add-button {

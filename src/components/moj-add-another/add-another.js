@@ -42,7 +42,7 @@ MOJFrontend.AddAnother.prototype.updateAttributes = function(index, item) {
 };
 
 MOJFrontend.AddAnother.prototype.createRemoveButton = function(item) {
-	item.append('<button type="button" class="govuk-link govuk-body moj-add-another__remove-button">Remove</button>');
+	item.append('<button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>');
 };
 
 MOJFrontend.AddAnother.prototype.resetItem = function(item) {
