@@ -1,7 +1,7 @@
 {
   "name": "@ministryofjustice/frontend",
   "description": "The MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.",
-  "version": "0.0.1-alpha",
+  "version": "0.0.2-alpha",
   "main": "all.js",
   "sass": "all.scss",
   "engines": {
@@ -27,6 +27,6 @@
   ],
   "license": "MIT",
   "publishConfig": {
-    "access": "resticted"
+    "access": "public"
   }
 }
