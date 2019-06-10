@@ -1,0 +1,144 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-half">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl" tabindex="-1">
+        <span class="govuk-caption-xl">Components</span> Multi-select
+      </h1>
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header moj-table__cell--multiple-choice moj-multi-select" aria-sort="none" scope="col" style="background-color:red; padding: 15px;"></th>
+            <th class="govuk-table__header" aria-sort="ascending" scope="col">Name</th>
+            <th class="govuk-table__header" aria-sort="none" scope="col">Elevation</th>
+            <th class="govuk-table__header" aria-sort="none" scope="col">Continent</th>
+            <th class="govuk-table__header govuk-table__header--numeric" aria-sort="none" scope="col">First summit</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row govuk-table__row--selected">
+            <td class="govuk-table__cell moj-table__cell--multiple-choice">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                  <span class="govuk-visually-hidden">Select Aconcagua</span>
+                </label>
+              </div>
+            </td>
+            <td class="govuk-table__cell">Aconcagua</td>
+            <td class="govuk-table__cell" data-sort-value="6961">6,961 meters</td>
+            <td class="govuk-table__cell">South America</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1897">1897</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell moj-table__cell--multiple-choice">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-denali" value="denali">
+                <label class="govuk-label govuk-checkboxes__label" for="mountain-denali">
+                  <span class="govuk-visually-hidden">Select Denali</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">Denali</td>
+            <td class="govuk-table__cell" data-sort-value="6194">6,194 meters</td>
+            <td class="govuk-table__cell">North America</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1913">1913</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell moj-table__cell--multiple-choice">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-elbrus" value="elbrus">
+                <label class="govuk-label govuk-checkboxes__label" for="mountain-elbrus">
+                  <span class="govuk-visually-hidden">Select Elbrus</span>
+                </label>
+              </div>
+            </td>
+            <td class="govuk-table__cell">Elbrus</td>
+            <td class="govuk-table__cell" data-sort-value="5642">5,642 meters</td>
+            <td class="govuk-table__cell">Europe</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1874">1874</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell moj-table__cell--multiple-choice">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-everest" value="everest">
+                <label class="govuk-label govuk-checkboxes__label" for="mountain-everest">
+                  <span class="govuk-visually-hidden">Select Everest</span>
+                </label>
+              </div>
+            </td>
+            <td class="govuk-table__cell">Everest</td>
+            <td class="govuk-table__cell" data-sort-value="8850">8,850 meters</td>
+            <td class="govuk-table__cell">Asia</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1953">1953</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell moj-table__cell--multiple-choice">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-kilimanjaro" value="kilimanjaro">
+                <label class="govuk-label govuk-checkboxes__label" for="mountain-kilimanjaro">
+                  <span class="govuk-visually-hidden">Select Kilimanjaro</span>
+                </label>
+              </div>
+            </td>
+            <td class="govuk-table__cell">Kilimanjaro</td>
+            <td class="govuk-table__cell" data-sort-value="5895">5,895 meters</td>
+            <td class="govuk-table__cell">Africa</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1889">1889</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell moj-table__cell--multiple-choice">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-puncak-jaya" value="puncak-jaya">
+                <label class="govuk-label govuk-checkboxes__label" for="mountain-puncak-jaya">
+                  <span class="govuk-visually-hidden">Select Puncak Jaya</span>
+                </label>
+              </div>
+            </td>
+            <td class="govuk-table__cell">Puncak Jaya</td>
+            <td class="govuk-table__cell" data-sort-value="4884">4,884 meters</td>
+            <td class="govuk-table__cell">Australia</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1962">1962</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell moj-table__cell--multiple-choice">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-vinson" value="vinson">
+                <label class="govuk-label govuk-checkboxes__label" for="mountain-vinson">
+                  <span class="govuk-visually-hidden">Select Vinson</span>
+                </label>
+              </div>
+            </td>
+            <td class="govuk-table__cell">Vinson</td>
+            <td class="govuk-table__cell" data-sort-value="4897">4,897 meters</td>
+            <td class="govuk-table__cell">Antarctica</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1966">1966</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+
+  <script>
+    new MOJFrontend.MultiSelect({
+      container: $('.moj-multi-select'),
+      checkboxes: $('.govuk-checkboxes__input')
+    });
+  </script>
+
+{% endblock %}
