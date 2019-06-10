@@ -1,7 +1,7 @@
 # Header
 
-- [Guidance](https://moj-design-system.herokuapp.com/components/header)
-- [Preview](https://moj-frontend.herokuapp.com/components/header)
+- [Guidance](https://mojdt-design-system.herokuapp.com/components/header)
+- [Preview](https://mojdt-frontend.herokuapp.com/components/header)
 
 ## Examples
 
