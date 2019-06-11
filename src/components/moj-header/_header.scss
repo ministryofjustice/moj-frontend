@@ -1,0 +1,117 @@
+/* ==========================================================================
+   #HEADER
+   ========================================================================== */
+
+.moj-header {
+  background-color: govuk-colour("black");
+  padding-top: govuk-spacing(2);
+  border-bottom: 10px solid govuk-colour("blue");
+}
+
+.moj-header__container {
+  @include moj-width-container;
+  @include govuk-clearfix;
+  position: relative;
+}
+
+.moj-header__logo {
+  padding-bottom: govuk-spacing(2);
+
+  @include mq($from: tablet) {
+    float: left;
+  }
+
+}
+
+.moj-header__content {
+  padding-bottom: govuk-spacing(2);
+
+  @include mq($from: tablet) {
+    float: right;
+  }
+
+}
+
+.moj-header__link {
+  // @include govuk-font($size: 24, $weight: bold);
+  border-bottom: 1px solid transparent;
+  color: govuk-colour("white");
+  display: inline-block;
+  text-decoration: none;
+  line-height: 25px; // Override due to alignment issue in Chrome
+  margin-bottom: -1px;
+  overflow: hidden; // Fixes focus gaps in background colour
+  vertical-align: middle;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: govuk-colour("white");
+  }
+
+  &:hover {
+    border-color: govuk-colour("white");
+  }
+
+  &:focus {
+    border-color: transparent;
+    color: govuk-colour(black);
+  }
+
+  &--organisation-name {
+    @include govuk-font($size: 24, $weight: "bold");
+  }
+
+  &--service-name {
+    @include govuk-font($size: 24, $weight: "normal");
+    margin-left: govuk-spacing(3);
+  }
+
+}
+
+// Navigation
+.moj-header__navigation {
+  color: govuk-colour("white");
+  margin-top: govuk-spacing(1)-2px;
+}
+
+.moj-header__navigation-list {
+  font-size: 0; // Removes white space when using inline-block on child element.
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.moj-header__navigation-item {
+  @include govuk-font(19);
+  display: inline-block;
+  margin-right: govuk-spacing(4);
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+}
+
+.moj-header__navigation-link {
+
+  &:link,
+  &:visited,
+  &:active {
+    color: inherit;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    color: govuk-colour("black");
+  }
+
+}
+
+.moj-header__navigation-link[aria-current=page] {
+  text-decoration: none;
+}
