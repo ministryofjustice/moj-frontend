@@ -3,14 +3,14 @@
   <div class="moj-header__container {%- if params.containerClasses %} {{ params.containerClasses }}{% endif %}">
 
     <div class="moj-header__logo">
-      {%- if (params.organisation.name) %}
-      <a class="moj-header__link moj-header__link--organisation-name" href="{{ params.organisation.href | default('/') }}">
-        {{- params.organisation.name -}}
+      {%- if (params.organisationLabel.text) %}
+      <a class="moj-header__link moj-header__link--organisation-name" href="{{ params.organisationLabel.href | default('/') }}">
+        {{- params.organisationLabel.text -}}
       </a>
       {% endif -%}
-      {%- if (params.service.name) %}
-      <a class="moj-header__link moj-header__link--service-name" href="{{ params.service.href | default('/') }}">
-        {{- params.service.name -}}
+      {%- if (params.serviceLabel.text) %}
+      <a class="moj-header__link moj-header__link--service-name" href="{{ params.serviceLabel.href | default('/') }}">
+        {{- params.serviceLabel.text -}}
       </a>
       {% endif -%}
     </div>
