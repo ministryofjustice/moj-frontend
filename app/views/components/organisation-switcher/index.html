@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl" tabindex="-1">
+        <span class="govuk-caption-xl">Components</span> Organisation switcher
+      </h1>
+  
+      {{ mojOrganisationSwitcher({
+        text: 'HMP Sheppey Cluster (Swaleside)',
+        link: {
+          html: 'Change <span class="govuk-visually-hidden">prison</span>',
+          href: '#'
+        }
+      }) }}
+
+  </div>
+
+</div>
+
+{% endblock %}

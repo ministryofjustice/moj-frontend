@@ -1,0 +1,20 @@
+/* ==========================================================================
+   #ORGANISATION SWITCHER
+   ========================================================================== */
+
+.moj-organisation-nav {
+  @include govuk-clearfix;
+  margin-bottom: govuk-spacing(3);
+  padding-bottom: govuk-spacing(1);
+  border-bottom: 1px solid $govuk-border-colour;
+}
+
+.moj-organisation-nav__title {
+  @include govuk-font($size: 19, $weight: "bold");
+  float: left;
+}
+
+.moj-organisation-nav__link {
+  @include govuk-link-common;
+  float: right;
+}
