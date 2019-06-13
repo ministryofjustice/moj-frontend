@@ -1,7 +1,7 @@
 # Rich text editor
 
-- [Guidance](https://moj-design-system.herokuapp.com/components/rich-text-editor)
-- [Preview](https://moj-frontend.herokuapp.com/components/rich-text-editor)
+- [Guidance](https://mojdt-design-system.herokuapp.com/components/rich-text-editor)
+- [Preview](https://mojdt-frontend.herokuapp.com/components/rich-text-editor)
 
 ## Example
 
