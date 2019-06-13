@@ -12,7 +12,7 @@
       }) }}
 
       <h1 class="govuk-heading-xl">
-        <span class="govuk-caption-xl">Components</span> Password show/hide
+        <span class="govuk-caption-xl">Components</span> Password reveal
       </h1>
 
       {{ govukInput({
@@ -27,7 +27,7 @@
 
       {{ govukInput({
         id: "password",
-        classes: "govuk-input--width-20 moj-password-show-hide__input",
+        classes: "govuk-input--width-20 moj-password-reveal__input",
         name: "password",
         type: "password",
         label: {
@@ -50,7 +50,7 @@
 {% block pageScripts %}
 
   <script>
-    new MOJFrontend.PasswordShowHide(document.getElementById('password'));
+    new MOJFrontend.PasswordReveal(document.getElementById('password'));
   </script>
 
 {% endblock %}
