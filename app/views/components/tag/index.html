@@ -1,0 +1,144 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Tag
+      </h1>
+
+      {%- set colours = [{
+              name: 'purple',
+              hex: '#2e358b',
+              contrast: '10.51'
+          }, {
+              name: 'light-purple',
+              hex: '#6f72af',
+              contrast: '4.47'
+          }, {
+              name: 'bright-purple',
+              hex: '#912b88',
+              contrast: '7.23'
+          }, {
+              name: 'pink',
+              hex: '#d53880',
+              contrast: '4.46'
+          }, {
+              name: 'light-pink',
+              hex: '#f499be',
+              contrast: '2.07'
+          }, {
+              name: 'red',
+              hex: '#b10e1e',
+              contrast: '7.12'
+          }, {
+              name: 'bright-red',
+              hex: '#df3034',
+              contrast: '4.56'
+          }, {
+              name: 'orange',
+              hex: '#f47738',
+              contrast: '2.78'
+          }, {
+              name: 'brown',
+              hex: '#b58840',
+              contrast: '3.2'
+          }, {
+              name: 'yellow',
+              hex: '#ffbf47',
+              contrast: '1.64'
+          }, {
+              name: 'light-green',
+              hex: '#85994b',
+              contrast: '3.16'
+          }, {
+              name: 'green',
+              hex: '#006435',
+              contrast: '7.31'
+          }, {
+              name: 'turquoise',
+              hex: '#28a197',
+              contrast: '3.17'
+          }, {
+              name: 'light-blue',
+              hex: '#2b8cc4',
+              contrast: '3.72'
+          }, {
+              name: 'blue',
+              hex: '#005ea5',
+              contrast: '6.68'
+          }, {
+              name: 'black',
+              hex: '#0b0c0c',
+              contrast: '19.59'
+          }, {
+              name: 'grey-1',
+              hex: '#6f777b',
+              contrast: '4.56'
+          }, {
+              name: 'grey-2',
+              hex: '#bfc1c3',
+              contrast: '1.81'
+          }, {
+              name: 'grey-3',
+              hex: '#dee0e2',
+              contrast: '1.32'
+          }, {
+              name: 'grey-4',
+              hex: '#f8f8f8',
+              contrast: '1.06'
+          }, {
+              name: 'white',
+              hex: '#ffffff',
+              contrast: '1'
+          }] -%}
+
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Tag class name</th>
+            <th class="govuk-table__header" scope="col">Tag</th>
+            <th class="govuk-table__header" scope="col">Colour swatch</th>
+            <th class="govuk-table__header" scope="col">Colour name</th>
+            <th class="govuk-table__header" scope="col">Colour contrast</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {%- for colour in colours %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <code>moj-tag--{{ colour.name }}</code>
+            </td>
+            <td class="govuk-table__cell">
+              {% set classNameTag = "moj-tag--" + colour.name %}
+              {{ govukTag({
+                text: "Lorem ipsum " + loop.index,
+                classes: classNameTag
+              }) }}
+            </td>
+            <td class="govuk-table__cell">
+              <span class="app-swatch app-swatch--{{ colour.name }}" aria-label="Colour swatch for {{ colour | replace('-',' ') }}"></span>
+            </td>
+            <td class="govuk-table__cell">
+              <code>{{ colour.name }}</code>
+            </td>
+            <td class="govuk-table__cell">
+              {#%- if colour.contrast < 4.5 %}Fail{% else %}Pass{% endif -%#}
+            </td>
+          </tr>
+          {% endfor -%}
+        </tbody>
+      </table>
+
+  </div>
+
+{% endblock %}
