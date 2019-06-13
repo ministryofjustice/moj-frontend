@@ -18,7 +18,7 @@
       <table class="govuk-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th class="govuk-table__header moj-table__cell--multiple-choice moj-multi-select" aria-sort="none" scope="col"></th>
+            <th class="govuk-table__header moj-multi-select__select-all-container" aria-sort="none" scope="col"></th>
             <th class="govuk-table__header" aria-sort="ascending" scope="col">Name</th>
             <th class="govuk-table__header" aria-sort="none" scope="col">Elevation</th>
             <th class="govuk-table__header" aria-sort="none" scope="col">Continent</th>
@@ -27,8 +27,8 @@
         </thead>
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row govuk-table__row--selected">
-            <td class="govuk-table__cell moj-table__cell--multiple-choice">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
                 <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
                 <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
                   <span class="govuk-visually-hidden">Select Aconcagua</span>
@@ -41,8 +41,8 @@
             <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1897">1897</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell moj-table__cell--multiple-choice">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
                 <input type="checkbox" class="govuk-checkboxes__input" id="mountain-denali" value="denali">
                 <label class="govuk-label govuk-checkboxes__label" for="mountain-denali">
                   <span class="govuk-visually-hidden">Select Denali</span>
@@ -56,8 +56,8 @@
             <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1913">1913</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell moj-table__cell--multiple-choice">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
                 <input type="checkbox" class="govuk-checkboxes__input" id="mountain-elbrus" value="elbrus">
                 <label class="govuk-label govuk-checkboxes__label" for="mountain-elbrus">
                   <span class="govuk-visually-hidden">Select Elbrus</span>
@@ -70,8 +70,8 @@
             <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1874">1874</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell moj-table__cell--multiple-choice">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
                 <input type="checkbox" class="govuk-checkboxes__input" id="mountain-everest" value="everest">
                 <label class="govuk-label govuk-checkboxes__label" for="mountain-everest">
                   <span class="govuk-visually-hidden">Select Everest</span>
@@ -84,8 +84,8 @@
             <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1953">1953</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell moj-table__cell--multiple-choice">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
                 <input type="checkbox" class="govuk-checkboxes__input" id="mountain-kilimanjaro" value="kilimanjaro">
                 <label class="govuk-label govuk-checkboxes__label" for="mountain-kilimanjaro">
                   <span class="govuk-visually-hidden">Select Kilimanjaro</span>
@@ -98,8 +98,8 @@
             <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1889">1889</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell moj-table__cell--multiple-choice">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
                 <input type="checkbox" class="govuk-checkboxes__input" id="mountain-puncak-jaya" value="puncak-jaya">
                 <label class="govuk-label govuk-checkboxes__label" for="mountain-puncak-jaya">
                   <span class="govuk-visually-hidden">Select Puncak Jaya</span>
@@ -112,8 +112,8 @@
             <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1962">1962</td>
           </tr>
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell moj-table__cell--multiple-choice">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
                 <input type="checkbox" class="govuk-checkboxes__input" id="mountain-vinson" value="vinson">
                 <label class="govuk-label govuk-checkboxes__label" for="mountain-vinson">
                   <span class="govuk-visually-hidden">Select Vinson</span>
@@ -136,7 +136,7 @@
 
   <script>
     new MOJFrontend.MultiSelect({
-      container: $('.moj-multi-select'),
+      container: $('.moj-multi-select__select-all-container'),
       checkboxes: $('.govuk-checkboxes__input')
     });
   </script>

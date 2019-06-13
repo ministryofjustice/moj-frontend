@@ -2,7 +2,13 @@
    # MULTI-SELECT
    ========================================================================== */
 
-.moj-select-all__label {
+
+.moj-multi-select__checkbox {
+  display: inline-block;
+  padding-left: 0;
+}
+
+.moj-multi-select__toggle-label {
   padding: 0 !important;
   margin: 0 !important;
 }

@@ -9,9 +9,9 @@ MOJFrontend.MultiSelect = function(options) {
 
 MOJFrontend.MultiSelect.prototype.getToggleHtml = function() {
   var html = '';
-  html += '<div class="govuk-checkboxes__item govuk-checkboxes--small">';
+  html += '<div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">';
   html += '  <input type="checkbox" class="govuk-checkboxes__input" id="checkboxes-all">';
-  html += '  <label class="govuk-label govuk-checkboxes__label moj-select-all__label" for="checkboxes-all">';
+  html += '  <label class="govuk-label govuk-checkboxes__label moj-multi-select__toggle-label" for="checkboxes-all">';
   html += '    <span class="govuk-visually-hidden">Select all</span>';
   html += '  </label>';
   html += '</div>';
