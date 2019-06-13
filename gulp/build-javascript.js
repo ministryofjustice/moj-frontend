@@ -3,6 +3,7 @@ var concat = require('gulp-concat');
 
 gulp.task('build:javascript', () => {
   return gulp.src([
+      'src/helpers.js',
       'src/namespace.js',
       'src/components/**/*.js'
     ])
