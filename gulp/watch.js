@@ -10,8 +10,9 @@ gulp.task('watch-sass', (done) => {
     'src/components/**/*.scss',
     'src/components/**/*.js',
     'src/namespace.js',
+    'src/helpers.js',
     'app/assets/sass/*.scss'
-  ], gulp.series('sass', 'copy-component-javascript', 'copy-namespace'));
+  ], gulp.series('sass', 'copy-component-javascript', 'copy-namespace', 'copy-helpers'));
   done();
 });
 
