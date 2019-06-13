@@ -1,0 +1,56 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Password show/hide
+      </h1>
+
+      {{ govukInput({
+        id: "username",
+        classes: "govuk-input--width-20",
+        name: "username",
+        label: {
+          text: "Username",
+          classes: 'govuk-!-font-weight-bold'
+        }
+      }) }}
+
+      {{ govukInput({
+        id: "password",
+        classes: "govuk-input--width-20 moj-password-show-hide__input",
+        name: "password",
+        type: "password",
+        label: {
+          text: "Password",
+          classes: 'govuk-!-font-weight-bold'
+        },
+        value: "1234ABC!"
+      }) }}
+
+      {{ govukButton({
+        text: 'Sign in'
+      }) }}
+
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+  <script>
+    new MOJFrontend.PasswordShowHide(document.getElementById('password'));
+  </script>
+
+{% endblock %}
