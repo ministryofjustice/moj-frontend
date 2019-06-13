@@ -1,0 +1,61 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      <!-- <h1 class="govuk-heading-l">MOJ Frontend</h1> -->
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl" tabindex="-1">
+        <span class="govuk-caption-xl">Components</span> Rich text editor
+      </h1>
+
+      <form>
+          {{ govukInput({
+            id: 'subject',
+            name: 'subject',
+            label: {
+              text: 'Subject',
+              classes: 'govuk-!-font-weight-bold'
+            }
+          }) }}
+
+          {{ govukTextarea({
+            id: 'body',
+            name: 'body',
+            classes: 'js-editor',
+            label: {
+              text: 'Message',
+              classes: 'govuk-!-font-weight-bold'
+            }
+          }) }}
+
+          {{ govukButton({
+            text: 'Send message'
+          }) }}
+      </form>
+      
+
+    </div>
+
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+  <script>
+    new MOJFrontend.RichTextEditor({
+      textarea: $('.js-editor'),
+      toolbar: {'bold': true, 'italic': true, 'underline': true, 'bullets': true, 'numbers': true}
+    });
+  </script>
+
+{% endblock %}
