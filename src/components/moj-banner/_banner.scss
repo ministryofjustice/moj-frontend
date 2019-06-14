@@ -24,18 +24,14 @@
   overflow: hidden;
 }
 
-.moj-banner__message {
-  h2 {
-    margin-bottom: govuk-spacing(2);
-  }
+.moj-banner__message h2 {
+  margin-bottom: govuk-spacing(2);
+}
 
-  h2:last-child {
-    margin-bottom: 0;
-  }
 
-  p:last-child {
-    margin-bottom: 0;
-  }
+.moj-banner__message h2:last-child,
+.moj-banner__message p:last-child {
+  margin-bottom: 0;
 }
 
 
