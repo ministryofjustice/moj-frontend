@@ -17,22 +17,21 @@
 
       {{ govukInput({
         id: "username",
-        classes: "govuk-!-width-one-half",
         name: "username",
         label: {
           text: "Username",
-          classes: 'govuk-!-font-weight-bold'
+          classes: 'govuk-label--m'
         }
       }) }}
 
       {{ govukInput({
         id: "password",
-        classes: "govuk-!-width-one-half moj-password-reveal__input",
+        classes: "moj-password-reveal__input",
         name: "password",
         type: "password",
         label: {
           text: "Password",
-          classes: 'govuk-!-font-weight-bold'
+          classes: 'govuk-label--m'
         },
         value: "1234ABC!"
       }) }}
