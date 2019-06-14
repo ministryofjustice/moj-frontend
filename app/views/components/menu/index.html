@@ -1,0 +1,68 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+  <h1 class="govuk-heading-xl">
+    <span class="govuk-caption-xl">Components</span> Menu
+  </h1>
+
+  <h2 class="govuk-heading-m">Variant 1</h2>
+  {{mojMenu({
+    items: [{
+      text: 'Archive',
+      classes: 'moj-button--secondary',
+      href: '/components/banner'
+    }, {
+      text: 'Reassign',
+      classes: 'moj-button--secondary',
+      href: '/components/buttons'
+    }, {
+      text: 'Delete',
+      classes: 'moj-button--secondary',
+      href: '#'
+    }]
+  })}}
+  <br><br><br>
+
+  <h2 class="govuk-heading-m">Variant 2</h2>
+  <div class="variant2">
+    {{mojMenu({
+      items: [{
+        text: 'Make decision'
+      }, {
+        text: 'List for hearing',
+        classes: 'moj-button--secondary'
+      }]
+    })}}
+  </div>
+  <style>
+    .variant2 {
+      float: right;
+    }
+    @media (min-width: 35em) {
+      .variant2 {
+        float: none;
+      }
+    }
+
+  </style>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    new MOJFrontend.Menu({
+      container: $('.moj-menu:first'),
+      mq: '(min-width: 45em)',
+      buttonText: 'Actions'
+    });
+
+    new MOJFrontend.Menu({
+      container: $('.moj-menu').eq(1),
+      mq: '(min-width: 35em)',
+      buttonText: 'Next step...',
+      buttonClasses: 'govuk-button--secondary moj-menu__toggle-button--secondary',
+      menuClasses: 'moj-menu__wrapper--right'
+    });
+
+  </script>
+{% endblock %}
