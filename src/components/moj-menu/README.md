@@ -1,6 +1,6 @@
 # Menu
 
-- [Guidance](https://hmcts-design-system.herokuapp.com/components/menu)
-- [Preview](https://hmcts-frontend.herokuapp.com/components/menu)
+- [Guidance](https://mojdt-design-system.herokuapp.com/components/menu)
+- [Preview](https://mojdt-frontend.herokuapp.com/components/menu)
 
 ## Arguments
