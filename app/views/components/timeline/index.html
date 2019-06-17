@@ -1,0 +1,102 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Timeline
+      </h1>
+
+      {% set confirmationHtml %}
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non felis risus. Curabitur nec ante vitae felis ullamcorper tincidunt.</p>
+        <a class="govuk-button" href="#0">Continue</a>
+      {% endset %}
+
+      {% set detailsHtml %}
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Application details
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Ut quam nunc, vulputate ac metus pharetra, posuere maximus velit. <a href="https://www.google.com">Etiam nec interdum velit.</a> Suspendisse molestie lectus in eros ornare
+        </div>
+      </details>
+      {% endset %}
+
+      {% set listHtml %}
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a class="govuk-link" href="#">Document 1</li>
+          <li><a class="govuk-link" href="#">Document 2</li>
+        </ul>
+      {% endset %}
+
+      {{ mojTimeline({
+        items: [
+          {
+            label: {
+              text: "Application requires confirmation"
+            },
+            html: confirmationHtml,
+            timestamp: "Friday, 14 June 2019 at 2:01 PM",
+            byline: {
+              text: "Joe Bloggs"
+            }
+          },
+          {
+            label: {
+              text:  "Application review in progress"
+            },
+            text: "Your application is being reviewed by one of our case workers.",
+            timestamp: "Friday, 7 June 2019 at 12:32 PM",
+            byline: {
+              text: "Caseworker 1"
+            }
+          },
+          {
+            label: {
+              text:  "Application received"
+            },
+            text: "Your application has been received – reference MOJ-1234-5678",
+            timestamp: "Thursday, 6 June 2019 at 9:12 AM",
+            byline: {
+              text: "Caseworker 1"
+            }
+          },
+          {
+            label: {
+              text:  "Application submitted"
+            },
+            html: detailsHtml,
+            timestamp: "Tuesday, 28 May 2019 at 10:45 AM",
+            byline: {
+              text: "Joe Bloggs"
+            }
+          },
+          {
+            label: {
+              text:  "Application started"
+            },
+            html: listHtml,
+            timestamp: "Tuesday, 21 May 2019 at 2:15 PM",
+            byline: {
+              text: "Joe Bloggs"
+            }
+          }
+        ]
+      }) }}
+
+    </div>
+
+  </div>
+
+{% endblock %}
