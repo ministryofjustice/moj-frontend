@@ -1,0 +1,19 @@
+<div class="moj-banner{% if params.type == 'success' %} moj-banner--success{% elif params.type == 'warning' %} moj-banner--warning{% else %} {{- ' ' + params.classes if params.classes}}{% endif %}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+
+  {% if params.type == 'success' %}
+    <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path d="M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z"/></svg>
+  {% elif params.type == 'warning' %}
+    <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path d="M13.6,15.4h-2.3v-4.5h2.3V15.4z M13.6,19.8h-2.3v-2.2h2.3V19.8z M0,23.2h25L12.5,2L0,23.2z"/></svg>
+  {% elif params.type == 'information' %}
+    <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path d="M13.7,18.5h-2.4v-2.4h2.4V18.5z M12.5,13.7c-0.7,0-1.2-0.5-1.2-1.2V7.7c0-0.7,0.5-1.2,1.2-1.2s1.2,0.5,1.2,1.2v4.8
+	C13.7,13.2,13.2,13.7,12.5,13.7z M12.5,0.5c-6.6,0-12,5.4-12,12s5.4,12,12,12s12-5.4,12-12S19.1,0.5,12.5,0.5z"/></svg>
+  {% endif %}
+
+  <div class="moj-banner__message">
+    {% if params.iconFallbackText %}<span class="moj-banner__assistive">{{params.iconFallbackText}}</span>{% endif %}
+    {{- params.html | safe if params.html else params.text -}}
+  </div>
+
+</div>
+
+
