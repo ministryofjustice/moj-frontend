@@ -3,11 +3,10 @@
    ========================================================================== */
 
 .moj-badge {
-  @include govuk-font($size: 16);
+  @include govuk-font($size: 16, $weight: "bold");
   display: inline-block;
   border: 2px solid govuk-colour("blue");
   color: govuk-colour("blue");
-  font-weight: bold;
   text-transform: uppercase;
   vertical-align: middle;
   padding: 4px 8px;
@@ -20,72 +19,31 @@
     color: govuk-colour("purple");
   }
 
-  &--light-purple {
-    border-color: govuk-colour("light-purple");
-    color: govuk-colour("light-purple");
-  }
-
   &--bright-purple {
     border-color: govuk-colour("bright-purple");
     color: govuk-colour("bright-purple");
   }
 
-  &--pink {
-    border-color: govuk-colour("pink");
-    color: govuk-colour("pink");
-  }
-
-  &--light-pink {
-    border-color: govuk-colour("light-pink");
-    color: govuk-colour("light-pink");
-  }
-
-  &--red {
+  &--red,
+  &--error {
     border-color: govuk-colour("red");
     color: govuk-colour("red");
   }
 
-  &--bright-red {
+  &--bright-red,
+  &--warning {
     border-color: govuk-colour("bright-red");
     color: govuk-colour("bright-red");
   }
 
-  &--orange {
-    border-color: govuk-colour("orange");
-    color: govuk-colour("orange");
-  }
-
-  &--brown {
-    border-color: govuk-colour("brown");
-    color: govuk-colour("brown");
-  }
-
-  &--yellow {
-    border-color: govuk-colour("yellow");
-    color: govuk-colour("yellow");
-  }
-
-  &--light-green {
-    border-color: govuk-colour("light-green");
-    color: govuk-colour("light-green");
-  }
-
-  &--green {
+  &--green,
+  &--success {
     border-color: govuk-colour("green");
     color: govuk-colour("green");
   }
 
-  &--turquoise {
-    border-color: govuk-colour("turquoise");
-    color: govuk-colour("turquoise");
-  }
-
-  &--light-blue {
-    border-color: govuk-colour("light-blue");
-    color: govuk-colour("light-blue");
-  }
-
-  &--blue {
+  &--blue,
+  &--information {
     border-color: govuk-colour("blue");
     color: govuk-colour("blue");
   }
@@ -95,30 +53,14 @@
     color: govuk-colour("black");
   }
 
-  &--grey-1 {
+  &--grey {
     border-color: govuk-colour("grey-1");
     color: govuk-colour("grey-1");
   }
 
-  &--grey-2 {
-    border-color: govuk-colour("grey-2");
-    color: govuk-colour("grey-2");
-  }
-
-  &--grey-3 {
-    border-color: govuk-colour("grey-3");
-    color: govuk-colour("grey-3");
-  }
-
-  &--grey-4 {
-    border-color: govuk-colour("grey-4");
-    color: govuk-colour("grey-4");
-  }
-
-  &--white {
-    border: 2px solid govuk-colour("grey-1");
-    background-color: govuk-colour("white");
-    color: govuk-colour("grey-1");
+  &--small {
+    @include govuk-font($size: 14, $weight: "bold");
+    padding: 2px 4px 1px 4px;
   }
 
 }
