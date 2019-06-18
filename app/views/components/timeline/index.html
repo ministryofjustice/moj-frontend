@@ -17,11 +17,11 @@
 
       {% set confirmationHtml %}
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non felis risus. Curabitur nec ante vitae felis ullamcorper tincidunt.</p>
-        <a class="govuk-button" href="#0">Continue</a>
+        <a class="govuk-button govuk-!-margin-bottom-0" href="#">Continue</a>
       {% endset %}
 
       {% set detailsHtml %}
-      <details class="govuk-details">
+      <details class="govuk-details govuk-!-margin-bottom-0">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
             Application details
@@ -35,8 +35,19 @@
 
       {% set listHtml %}
         <ul class="govuk-list govuk-list--bullet">
-          <li><a class="govuk-link" href="#">Document 1</li>
-          <li><a class="govuk-link" href="#">Document 2</li>
+          <li><a class="govuk-link" href="#">Item 1</li>
+          <li><a class="govuk-link" href="#">Item 2</li>
+        </ul>
+      {% endset %}
+
+      {% set documentsHtml %}
+        <ul class="moj-timeline__documents">
+          <li class="moj-timeline__document-item">
+            <a class="moj-timeline__document-link" href="#">Document 1</a>
+          </li>
+          <li class="moj-timeline__document-item">
+            <a class="moj-timeline__document-link" href="#">Document 1</a>
+          </li>
         </ul>
       {% endset %}
 
@@ -78,6 +89,16 @@
             },
             html: detailsHtml,
             timestamp: "Tuesday, 28 May 2019 at 10:45 AM",
+            byline: {
+              text: "Joe Bloggs"
+            }
+          },
+          {
+            label: {
+              text:  "Documents uploaded"
+            },
+            html: documentsHtml,
+            timestamp: "Tuesday, 28 May 2019 at 10:15 AM",
             byline: {
               text: "Joe Bloggs"
             }
