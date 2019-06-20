@@ -11,6 +11,34 @@ module.exports = function (env) {
 
   filters.date = dateFilter;
 
+  function mojDateFilter(timestamp, type) {
+
+    // default datetime to timestamp
+    let datetime = timestamp;
+
+    switch(type) {
+      case "longdatetime":
+        datetime = dateFilter(timestamp, 'D MMMM gggg') + " at " + dateFilter(timestamp, 'h:mm A');
+        break;
+      case "shortdatetime":
+        datetime = dateFilter(timestamp, 'D MMM gggg') + " at " + dateFilter(timestamp, 'h:mm A');
+        break;
+      case "longdate":
+        datetime = dateFilter(timestamp, 'D MMMM gggg');
+        break;
+      case "shortdate":
+        datetime = dateFilter(timestamp, 'D MMM gggg');
+        break;
+      case "time":
+        datetime = dateFilter(timestamp, 'h:mm A');
+        break;
+    }
+
+    return datetime;
+  }
+
+  filters.mojDate = mojDateFilter;
+
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
