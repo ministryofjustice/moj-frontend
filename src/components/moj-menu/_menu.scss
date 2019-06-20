@@ -1,0 +1,123 @@
+/* ==========================================================================
+   #MENU
+   ========================================================================== */
+
+.moj-menu {
+  display: inline-block;
+  position: relative;
+}
+
+/* TOGGLE BUTTON */
+
+.moj-menu__toggle-button {
+  display: inline-block;
+  margin-right: govuk-spacing(2);
+  margin-bottom: govuk-spacing(2);
+  width: auto; // Override GDS’s 100% width
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.moj-menu__toggle-button {
+  margin-bottom: govuk-spacing(1);
+  margin-right: 0;
+  &:after {
+    background-repeat: no-repeat;
+    background-image: url(#{$moj-images-path}icon-arrow-white-down.svg);
+    content: '';
+    display: inline-block;
+    height: 5px;
+    margin-left: govuk-spacing(2);
+    width: 10px;
+    vertical-align: middle;
+  }
+}
+
+.moj-menu__toggle-button[aria-expanded="true"] {
+  &:after {
+    background-image: url(#{$moj-images-path}icon-arrow-white-up.svg);
+  }
+}
+
+.moj-menu__toggle-button--secondary {
+  margin-bottom: govuk-spacing(1);
+  margin-right: 0;
+  &:after {
+    background-image: url(#{$moj-images-path}icon-arrow-black-down.svg);
+  }
+}
+
+.moj-menu__toggle-button--secondary[aria-expanded="true"] {
+  &:after {
+    background-image: url(#{$moj-images-path}icon-arrow-black-up.svg);
+  }
+}
+
+/* MENU ITEM */
+
+.moj-menu__item {
+  display: inline-block;
+  margin-right: govuk-spacing(2);
+  margin-bottom: govuk-spacing(2);
+  width: auto; // Override GDS’s 100% width
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.moj-menu [role=menuitem] {
+  @include govuk-font(19);
+  background-color: govuk-colour("grey-3");
+  border: none;
+  box-sizing: border-box;
+  display: block;
+  margin-bottom: 0;
+  padding: govuk-spacing(2);
+  text-align: left;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -webkit-appearance: none;
+
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color:  govuk-colour("black");
+  }
+
+  &:hover {
+    background-color: govuk-colour("grey-2");
+  }
+
+  &:focus {
+    outline: 3px solid #ffbf47;
+    outline-offset: 0;
+		position: relative;
+    z-index: 10;
+	}
+}
+
+/* MENU WRAPPER */
+
+.moj-menu__wrapper {
+  font-size: 0; /* Hide whitespace between elements */
+}
+
+.moj-menu__wrapper--right {
+  right: 0;
+}
+
+.moj-menu [role=menu] {
+  position: absolute;
+  width: 200px;
+  z-index: 10;
+}
+
+.moj-menu [aria-expanded="true"] + [role=menu] {
+	display: block;
+}
+
+.moj-menu [aria-expanded="false"] + [role=menu] {
+	display: none;
+}
