@@ -103,6 +103,9 @@ const nunjucksEnvironment = nunjucks.configure(appViews, {
   watch: true
 });
 
+// Add Nunjucks filters
+utils.addNunjucksFilters(nunjucksEnvironment);
+
 // Set view engine
 app.set('view engine', 'html');
 
