@@ -1,0 +1,55 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-half">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Password reveal
+      </h1>
+
+      {{ govukInput({
+        id: "username",
+        name: "username",
+        label: {
+          text: "Username",
+          classes: 'govuk-label--m'
+        }
+      }) }}
+
+      {{ govukInput({
+        id: "password",
+        classes: "moj-password-reveal__input",
+        name: "password",
+        type: "password",
+        label: {
+          text: "Password",
+          classes: 'govuk-label--m'
+        },
+        value: "1234ABC!"
+      }) }}
+
+      {{ govukButton({
+        text: 'Sign in'
+      }) }}
+
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+  <script>
+    new MOJFrontend.PasswordReveal(document.getElementById('password'));
+  </script>
+
+{% endblock %}
