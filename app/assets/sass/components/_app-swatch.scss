@@ -1,0 +1,98 @@
+.app-swatch {
+  display: inline-block;
+  position: static;
+  margin-top: 6px;
+  margin-right: 10px;
+  margin-bottom: 7px;
+  vertical-align: middle;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+
+  &--purple {
+    background-color: govuk-colour("purple");
+  }
+
+  &--light-purple {
+    background-color: govuk-colour("light-purple");
+  }
+
+  &--bright-purple {
+    background-color: govuk-colour("bright-purple");
+  }
+
+  &--pink {
+    background-color: govuk-colour("pink");
+  }
+
+  &--light-pink {
+    background-color: govuk-colour("light-pink");
+  }
+
+  &--red {
+    background-color: govuk-colour("red");
+  }
+
+  &--bright-red {
+    background-color: govuk-colour("bright-red");
+  }
+
+  &--orange {
+    background-color: govuk-colour("orange");
+  }
+
+  &--brown {
+    background-color: govuk-colour("brown");
+  }
+
+  &--yellow {
+    background-color: govuk-colour("yellow");
+  }
+
+  &--light-green {
+    background-color: govuk-colour("light-green");
+  }
+
+  &--green {
+    background-color: govuk-colour("green");
+  }
+
+  &--turquoise {
+    background-color: govuk-colour("turquoise");
+  }
+
+  &--light-blue {
+    background-color: govuk-colour("light-blue");
+  }
+
+  &--blue {
+    background-color: govuk-colour("blue");
+  }
+
+  &--black {
+    background-color: govuk-colour("black");
+  }
+
+  &--grey-1 {
+    background-color: govuk-colour("grey-1");
+  }
+
+  &--grey-2 {
+    background-color: govuk-colour("grey-2");
+  }
+
+  &--grey-3 {
+    background-color: govuk-colour("grey-3");
+  }
+
+  &--grey-4 {
+    background-color: govuk-colour("grey-4");
+  }
+
+  &--white {
+    background-color: govuk-colour("white");
+  }
+}
