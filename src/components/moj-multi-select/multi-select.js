@@ -1,9 +1,11 @@
 MOJFrontend.MultiSelect = function(options) {
   this.container = options.container;
   this.toggle = $(this.getToggleHtml());
-  this.toggle.on('click', $.proxy(this, 'onButtonClick'));
+  this.toggleButton = this.toggle.find('input');
+  this.toggleButton.on('click', $.proxy(this, 'onButtonClick'));
   this.container.append(this.toggle);
   this.checkboxes = options.checkboxes;
+  this.checkboxes.on('click', $.proxy(this, 'onCheckboxClick'));
   this.checked = options.checked || false;
 };
 
@@ -21,10 +23,10 @@ MOJFrontend.MultiSelect.prototype.getToggleHtml = function() {
 MOJFrontend.MultiSelect.prototype.onButtonClick = function(e) {
   if(this.checked) {
     this.uncheckAll();
-    this.toggle.checked = false;
+    this.toggleButton[0].checked = false;
   } else {
     this.checkAll();
-    this.toggle.checked = true;
+    this.toggleButton[0].checked = true;
   }
 };
 
@@ -40,4 +42,16 @@ MOJFrontend.MultiSelect.prototype.uncheckAll = function() {
     el.checked = false;
   }, this));
   this.checked = false;
+};
+
+MOJFrontend.MultiSelect.prototype.onCheckboxClick = function(e) {
+  if(!e.target.checked) {
+    this.toggleButton[0].checked = false;
+    this.checked = false;
+  } else {
+    if(this.checkboxes.filter(':checked').length === this.checkboxes.length) {
+      this.toggleButton[0].checked = true;
+      this.checked = true;
+    }
+  }
 };
