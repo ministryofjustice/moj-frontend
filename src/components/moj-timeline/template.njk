@@ -13,8 +13,12 @@
     </div>
 
     <p class="moj-timeline__date">
-      <time datetime="{{ item.timestamp }}">
-        {{- item.timestamp -}}
+      <time datetime="{{ item.datetime.timestamp }}">
+        {%- if item.datetime.type %}
+          {{- item.datetime.timestamp | mojDate(item.datetime.type) -}}
+        {% else %}
+          {{- item.datetime.timestamp | date(item.datetime.format) -}}
+        {% endif -%}
       </time>
     </p>
 
