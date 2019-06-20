@@ -18,10 +18,10 @@ module.exports = function (env) {
 
     switch(type) {
       case "datetime":
-        str = dateFilter(timestamp, 'D MMMM gggg') + " at " + dateFilter(timestamp, 'h:mm A');
+        str = dateFilter(timestamp, 'D MMMM gggg') + " at " + dateFilter(timestamp, 'h:mma');
         break;
       case "shortdatetime":
-        str = dateFilter(timestamp, 'D MMM gggg') + " at " + dateFilter(timestamp, 'h:mm A');
+        str = dateFilter(timestamp, 'D MMM gggg') + " at " + dateFilter(timestamp, 'h:mma');
         break;
       case "date":
         str = dateFilter(timestamp, 'D MMMM gggg');
@@ -30,10 +30,10 @@ module.exports = function (env) {
         str = dateFilter(timestamp, 'D MMM gggg');
         break;
       case "time":
-        str = dateFilter(timestamp, 'h:mm A');
+        str = dateFilter(timestamp, 'h:mma');
         break;
       case "shorttime":
-        str = dateFilter(timestamp, 'h A');
+        str = dateFilter(timestamp, 'ha');
         break;
     }
 
