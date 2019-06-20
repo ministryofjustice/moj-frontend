@@ -58,7 +58,10 @@
               text: "Application requires confirmation"
             },
             html: confirmationHtml,
-            timestamp: "Friday, 14 June 2019 at 2:01 PM",
+            datetime: {
+              timestamp: "2019-06-14T14:01:00.000Z",
+              type: "longdatetime"
+            },
             byline: {
               text: "Joe Bloggs"
             }
@@ -68,7 +71,10 @@
               text:  "Application review in progress"
             },
             text: "Your application is being reviewed by one of our case workers.",
-            timestamp: "Friday, 7 June 2019 at 12:32 PM",
+            datetime: {
+              timestamp: "2019-06-07T12:32:00.000Z",
+              type: "longdatetime"
+            },
             byline: {
               text: "Caseworker 1"
             }
@@ -78,7 +84,10 @@
               text:  "Application received"
             },
             text: "Your application has been received – reference MOJ-1234-5678",
-            timestamp: "Thursday, 6 June 2019 at 9:12 AM",
+            datetime: {
+              timestamp: "2019-06-06T09:12:00.000Z",
+              type: "longdatetime"
+            },
             byline: {
               text: "Caseworker 1"
             }
@@ -88,7 +97,10 @@
               text:  "Application submitted"
             },
             html: detailsHtml,
-            timestamp: "Tuesday, 28 May 2019 at 10:45 AM",
+            datetime: {
+              timestamp: "2019-05-28T10:45:00.000Z",
+              type: "longdatetime"
+            },
             byline: {
               text: "Joe Bloggs"
             }
@@ -98,7 +110,10 @@
               text:  "Documents uploaded"
             },
             html: documentsHtml,
-            timestamp: "Tuesday, 28 May 2019 at 10:15 AM",
+            datetime: {
+              timestamp: "2019-05-28T10:15:00.000Z",
+              type: "longdatetime"
+            },
             byline: {
               text: "Joe Bloggs"
             }
@@ -108,13 +123,18 @@
               text:  "Application started"
             },
             html: listHtml,
-            timestamp: "Tuesday, 21 May 2019 at 2:15 PM",
+            datetime: {
+              timestamp: "2019-05-21T13:15:00.000Z",
+              format: "dddd, D MMMM gggg h:mm A"
+            },
             byline: {
               text: "Joe Bloggs"
             }
           }
         ]
       }) }}
+
+      <p><a href="./timeline/test">See all date types available</a></p>
 
     </div>
 
