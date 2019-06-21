@@ -1,4 +1,4 @@
-const dateFilter = require('nunjucks-date');
+const moment = require('moment');
 
 module.exports = function (env) {
   /**
@@ -9,38 +9,58 @@ module.exports = function (env) {
    */
   let filters = {}
 
-  filters.date = dateFilter;
+  /* ------------------------------------------------------------------
+    date filter for use in Nunjucks
+    example: {{ params.date | date("DD/MM/YYYY") }}
+    outputs: 01/01/1970
+  ------------------------------------------------------------------ */
+  filters.date = function(timestamp, format) {
+    return moment(timestamp).format(format);
+  }
 
+  /* ------------------------------------------------------------------
+    utility functions for use in mojDate function/filter
+  ------------------------------------------------------------------ */
+  function govDate(timestamp) {
+    return moment(timestamp).format('D MMMM YYYY');
+  }
+  
+  function govShortDate(timestamp) {
+    return moment(timestamp).format('D MMM YYYY');
+  }
+  
+  function govTime(timestamp) {
+    let t = moment(timestamp);
+    if(t.minutes() > 0) {
+      return t.format('h:mma');
+    } else {
+      return t.format('ha');
+    }
+  }
+
+  /* ------------------------------------------------------------------
+    standard dates for use in Nunjucks,
+    example: {{ params.date | mojDate("datetime") }}
+    outputs: 1 Jan 1970 at 1:32pm
+  ------------------------------------------------------------------ */
   filters.mojDate = function(timestamp, type) {
-
-    // default to the timestamp
-    let str = timestamp;
 
     switch(type) {
       case "datetime":
-        str = dateFilter(timestamp, 'D MMMM gggg') + " at " + dateFilter(timestamp, 'h:mma');
-        break;
+        return govDate(timestamp) + " at " + govTime(timestamp);
       case "shortdatetime":
-        str = dateFilter(timestamp, 'D MMM gggg') + " at " + dateFilter(timestamp, 'h:mma');
-        break;
+        return govShortDate(timestamp) + " at " + govTime(timestamp);
       case "date":
-        str = dateFilter(timestamp, 'D MMMM gggg');
-        break;
+        return govDate(timestamp);
       case "shortdate":
-        str = dateFilter(timestamp, 'D MMM gggg');
-        break;
+        return govShortDate(timestamp);
       case "time":
-        str = dateFilter(timestamp, 'h:mma');
-        break;
-      case "shorttime":
-        str = dateFilter(timestamp, 'ha');
-        break;
+        return govTime(timestamp);
+      default:
+        return timestamp;
     }
 
-    return str;
   }
-
-  // filters.mojDate = mojDateFilter;
 
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app

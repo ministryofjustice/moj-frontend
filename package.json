@@ -33,7 +33,6 @@
     "gulp-sass": "^4.0.2",
     "moment": "^2.22.2",
     "nunjucks": "^3.2.0",
-    "nunjucks-date": "^1.3.0",
     "portscanner": "^2.2.0",
     "prompt": "^1.0.0",
     "require-dir": "^1.0.0"
