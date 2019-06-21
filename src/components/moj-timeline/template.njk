@@ -5,7 +5,7 @@
 
     <div class="moj-timeline__header">
       <h{{ params.headingLevel | default(2) }} class="moj-timeline__title">
-        {{- item.label.text | safe if item.label.html else item.label.text -}}
+        {{- item.label.html | safe if item.label.html else item.label.text -}}
       </h{{ params.headingLevel | default(2) }}>
       {% if item.byline %}
         <p class="moj-timeline__byline">by {{ item.byline.html | safe if item.byline.html else item.byline.text }}</p>
