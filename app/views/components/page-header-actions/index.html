@@ -18,7 +18,9 @@
       <h2 class="govuk-heading-m">Example 1</h2>
 
       {{ mojPageHeaderActions({
-        title: { html: '<h1 class="govuk-heading-xl">Your cases</h1>' },
+        heading: {
+          text: 'Your cases'
+        },
         items: [
           {
             text: 'Get new case'
@@ -33,7 +35,10 @@
       <h2 class="govuk-heading-m">Example 2</h2>
 
       {{ mojPageHeaderActions({
-        title: { html: '<h1 class="govuk-heading-xl">Case file</h1>' },
+        heading: {
+          html: '<span>Case file</span>',
+          classes: 'govuk-heading-l'
+        },
         items: [
           {
             classes: 'hmcts-button--secondary',
@@ -49,7 +54,7 @@
       <h2 class="govuk-heading-m">Example 3</h2>
 
       {{ mojPageHeaderActions({
-        title: { html: '<h1 class="govuk-heading-xl">Page heading</h1>' },
+        heading: { text: 'Page heading' },
         items: [
           {
             text: 'Action 1'

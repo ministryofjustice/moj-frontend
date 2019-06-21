@@ -3,7 +3,9 @@
 <div class="moj-page-header-actions {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
 
   <div class="moj-page-header-actions__title">
-    {{ params.title.html | safe }}
+    <h{{ params.heading.level | default(1) }} class="{{params.heading.classes | default('govuk-heading-xl')}}">
+      {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+    </h{{ params.heading.level | default(1) }}>
   </div>
 
   {% if params.items %}
