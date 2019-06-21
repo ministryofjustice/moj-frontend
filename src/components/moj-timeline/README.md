@@ -77,6 +77,7 @@ filters.mojDate = function(timestamp, type) {
 ```
 
 ## Example
+Below is a typical example of the timeline component in use.
 
 ```
 {{ mojTimeline({
