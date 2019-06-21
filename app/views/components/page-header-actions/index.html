@@ -1,0 +1,71 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Page header actions
+      </h1>
+
+      <h2 class="govuk-heading-m">Example 1</h2>
+
+      {{ mojPageHeaderActions({
+        title: { html: '<h1 class="govuk-heading-xl">Your cases</h1>' },
+        items: [
+          {
+            text: 'Get new case'
+          }
+        ]
+      }) }}
+
+
+      <br><br>
+
+
+      <h2 class="govuk-heading-m">Example 2</h2>
+
+      {{ mojPageHeaderActions({
+        title: { html: '<h1 class="govuk-heading-xl">Case file</h1>' },
+        items: [
+          {
+            classes: 'hmcts-button--secondary',
+            text: 'Upload new item'
+          }
+        ]
+      }) }}
+
+
+      <br><br>
+
+
+      <h2 class="govuk-heading-m">Example 3</h2>
+
+      {{ mojPageHeaderActions({
+        title: { html: '<h1 class="govuk-heading-xl">Page heading</h1>' },
+        items: [
+          {
+            text: 'Action 1'
+          },
+          {
+            classes: 'hmcts-button--secondary',
+            text: 'Action 2'
+          }
+        ]
+      }) }}
+
+
+  </div>
+
+</div>
+
+{% endblock %}
+
+
