@@ -3,14 +3,13 @@
    ========================================================================== */
 
 .moj-badge {
-  @include govuk-font($size: 16, $weight: "bold");
+  @include govuk-font($size: 14, $weight: "bold");
+  padding: 0 govuk-spacing(1);
   display: inline-block;
   border: 2px solid govuk-colour("blue");
   color: govuk-colour("blue");
   text-transform: uppercase;
   vertical-align: middle;
-  padding: 4px 8px;
-  padding-bottom: 1px;
   outline: 2px solid transparent;
   outline-offset: -2px;
 
@@ -58,9 +57,8 @@
     color: govuk-colour("grey-1");
   }
 
-  &--small {
-    @include govuk-font($size: 14, $weight: "bold");
-    padding: 2px 4px 1px 4px;
+  &--large {
+    @include govuk-font($size: 16, $weight: "bold");
   }
 
 }

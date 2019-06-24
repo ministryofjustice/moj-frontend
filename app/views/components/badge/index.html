@@ -62,7 +62,7 @@
         <tbody class="govuk-table__body">
           {%- for colour in colours %}
           {% set classColour = "moj-badge--" + colour.name %}
-          {% set classSize = "moj-badge--small" %}
+          {% set classSize = "moj-badge--large" %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
               <code>{{ classColour }}</code>
@@ -103,7 +103,7 @@
         <tbody class="govuk-table__body">
           {%- for status in ["error","warning","success","information"] %}
           {% set classColour = "moj-badge--" + status %}
-          {% set classSize = "moj-badge--small" %}
+          {% set classSize = "moj-badge--large" %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
               <code>{{ classColour }}</code>
