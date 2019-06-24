@@ -3,14 +3,13 @@
    ========================================================================== */
 
 .moj-badge {
-  @include govuk-font($size: 16, $weight: "bold");
+  @include govuk-font($size: 14, $weight: "bold");
+  padding: 0 govuk-spacing(1);
   display: inline-block;
   border: 2px solid govuk-colour("blue");
   color: govuk-colour("blue");
   text-transform: uppercase;
   vertical-align: middle;
-  padding: 4px 8px;
-  padding-bottom: 1px;
   outline: 2px solid transparent;
   outline-offset: -2px;
 
@@ -24,26 +23,22 @@
     color: govuk-colour("bright-purple");
   }
 
-  &--red,
-  &--error {
+  &--red {
     border-color: govuk-colour("red");
     color: govuk-colour("red");
   }
 
-  &--bright-red,
-  &--warning {
+  &--bright-red {
     border-color: govuk-colour("bright-red");
     color: govuk-colour("bright-red");
   }
 
-  &--green,
-  &--success {
+  &--green {
     border-color: govuk-colour("green");
     color: govuk-colour("green");
   }
 
-  &--blue,
-  &--information {
+  &--blue {
     border-color: govuk-colour("blue");
     color: govuk-colour("blue");
   }
@@ -58,9 +53,8 @@
     color: govuk-colour("grey-1");
   }
 
-  &--small {
-    @include govuk-font($size: 14, $weight: "bold");
-    padding: 2px 4px 1px 4px;
+  &--large {
+    @include govuk-font($size: 16, $weight: "bold");
   }
 
 }
