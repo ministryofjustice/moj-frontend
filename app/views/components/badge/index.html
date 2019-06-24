@@ -87,46 +87,7 @@
         </tbody>
       </table>
 
-      <h2 class="govuk-heading-m">
-        Other badges
-      </h2>
-
-      <table class="govuk-table">
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="col">Class</th>
-            <th class="govuk-table__header" scope="col">Badge</th>
-            <th class="govuk-table__header" scope="col">Class (with size modifier)</th>
-            <th class="govuk-table__header" scope="col">Badge</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          {%- for status in ["error","warning","success","information"] %}
-          {% set classColour = "moj-badge--" + status %}
-          {% set classSize = "moj-badge--large" %}
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-              <code>{{ classColour }}</code>
-            </td>
-            <td class="govuk-table__cell">
-              {{ mojBadge({
-                text: status,
-                classes: classColour
-              }) }}
-            </td>
-            <td class="govuk-table__cell">
-              <code>{{ classColour }} {{ classSize }}</code>
-            </td>
-            <td class="govuk-table__cell">
-              {{ mojBadge({
-                text: status,
-                classes: classColour + " " + classSize
-              }) }}
-            </td>
-          </tr>
-          {% endfor -%}
-        </tbody>
-      </table>
+    </div>
 
   </div>
 

@@ -23,26 +23,22 @@
     color: govuk-colour("bright-purple");
   }
 
-  &--red,
-  &--error {
+  &--red {
     border-color: govuk-colour("red");
     color: govuk-colour("red");
   }
 
-  &--bright-red,
-  &--warning {
+  &--bright-red {
     border-color: govuk-colour("bright-red");
     color: govuk-colour("bright-red");
   }
 
-  &--green,
-  &--success {
+  &--green {
     border-color: govuk-colour("green");
     color: govuk-colour("green");
   }
 
-  &--blue,
-  &--information {
+  &--blue {
     border-color: govuk-colour("blue");
     color: govuk-colour("blue");
   }
