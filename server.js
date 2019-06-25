@@ -103,8 +103,15 @@ const nunjucksEnvironment = nunjucks.configure(appViews, {
   watch: true
 });
 
-// Add Nunjucks filters
+// Add Nunjucks filters for application
 utils.addNunjucksFilters(nunjucksEnvironment);
+
+// Add filters from MOJ Frontend
+let mojFilters = require('./src/filters/all')();
+mojFilters = Object.assign(mojFilters);
+Object.keys(mojFilters).forEach(function (filterName) {
+  nunjucksEnvironment.addFilter(filterName, mojFilters[filterName])
+});
 
 // Set view engine
 app.set('view engine', 'html');
