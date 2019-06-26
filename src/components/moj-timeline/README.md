@@ -3,10 +3,6 @@
 - [Guidance](https://mojdt-design-system.herokuapp.com/components/timeline)
 - [Preview](https://mojdt-frontend.herokuapp.com/components/timeline)
 
-## Dependencies
-
-- [Moment.js](https://momentjs.com/)
-
 ### Installation
 
 You will need to install the following code at the bottom of `server.js`, just above `module.exports = app;`
