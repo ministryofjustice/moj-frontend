@@ -28,5 +28,8 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "moment": "^2.22.2"
   }
 }
