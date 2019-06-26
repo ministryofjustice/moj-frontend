@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.0.4-alpha
+
+- Add badge component
+- Add banner component
+- Add filter component
+- Add identity bar component
+- Add menu component (split buttons and button group)
+- Add multi-select component
+- Add password reveal
+- Add rich-text editor component
+- Add tag styles
+- Add timeline component
+
+Other:
+
+- Add date filters and moment.js dependency
+
 ## v0.0.3-alpha
 
 - Add add another component
