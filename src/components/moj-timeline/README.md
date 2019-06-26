@@ -9,10 +9,10 @@ You will need to install the following code at the bottom of `server.js`, just a
 
 ```
 // Add filters from MOJ Frontend
-let mojFilters = require('./src/filters/all')();
+let mojFilters = require('./node_modules/@ministryofjustice/frontend/filters/all')();
 mojFilters = Object.assign(mojFilters);
 Object.keys(mojFilters).forEach(function (filterName) {
-  nunjucksEnvironment.addFilter(filterName, mojFilters[filterName])
+  nunjucksAppEnv.addFilter(filterName, mojFilters[filterName])
 });
 ```
 
