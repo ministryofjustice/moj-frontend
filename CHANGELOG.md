@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.5-alpha
+
+- Fixes
+
 ## v0.0.4-alpha
 
 - Add badge component
