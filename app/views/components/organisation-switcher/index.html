@@ -14,11 +14,23 @@
       <h1 class="govuk-heading-xl" tabindex="-1">
         <span class="govuk-caption-xl">Components</span> Organisation switcher
       </h1>
-  
+
+      <h2 class="govuk-heading-l">Example 1</h2>
       {{ mojOrganisationSwitcher({
         text: 'HMP Sheppey Cluster (Swaleside)',
         link: {
-          html: 'Change <span class="govuk-visually-hidden">prison</span>',
+          text: "Change prison",
+          href: '#'
+        }
+      }) }}
+  
+      <br>
+      
+      <h2 class="govuk-heading-l">Example 2</h2>
+      {{ mojOrganisationSwitcher({
+        text: 'HMP Brixton, HMP/YOI Feltham, HMP/YOI Isis, HMP Pentonville, HMP Thameside, HMP Wandsworth, HMP Wormwood Scrubs',
+        link: {
+          text: "Change prisons",
           href: '#'
         }
       }) }}
