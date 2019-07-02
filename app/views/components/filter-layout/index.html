@@ -1,0 +1,355 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "../"
+  }) }}
+
+  <h1 class="govuk-heading-xl">
+    <span class="govuk-caption-xl">Pattern</span> Filter
+  </h1>
+
+      {% set filterOptionsHtml %}
+
+        {{ govukCheckboxes({
+          idPrefix: 'type',
+          name: 'type',
+          classes: 'govuk-checkboxes--small',
+          fieldset: {
+            legend: {
+              text: 'Type',
+              classes: 'govuk-fieldset__legend--m'
+            }
+          },
+          items: [
+            {
+              value: '1',
+              text: 'Divorce (18)',
+              checked: true
+            },
+            {
+              value: '2',
+              text: 'Financial Remedy (5)',
+              checked: true
+            },
+            {
+              value: '3',
+              text: 'Probate (2)'
+            }
+          ]
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: 'status',
+          name: 'status',
+          classes: 'govuk-checkboxes--small',
+          fieldset: {
+            legend: {
+              text: 'Status',
+              classes: 'govuk-fieldset__legend--m'
+            }
+          },
+          items: [
+            {
+              value: '1',
+              text: 'Application drafted',
+              checked: true
+            },
+            {
+              value: '2',
+              text: 'Awaiting payment'
+            },
+            {
+              value: 'magistrate',
+              text: 'Petition paid',
+              checked: false
+            }
+          ]
+          }) }}
+
+        {% endset %}
+
+
+        <div class="moj-filter-layout">
+
+          <div class="moj-filter-layout__filter">
+
+            {{ mojFilter({
+              heading: {
+              text: 'Filter'
+              },
+              selectedFilters: {
+
+              heading: {
+                text: 'Selected filters'
+              },
+
+              clearLink: {
+                text: 'Clear filters'
+              },
+
+              categories: [
+                {
+                  heading: {
+                    text: 'Type'
+                  },
+                  items: [{
+                    href: '#',
+                    text: 'Divorce'
+                  }, {
+                    href: '#',
+                    text: 'Financial remedy'
+                  }]
+                },
+                {
+                  heading: {
+                    text: 'Status'
+                  },
+                  items: [{
+                    href: '#',
+                    text: 'Application drafted'
+                  }]
+                }
+              ]
+            },
+              optionsHtml: filterOptionsHtml
+            }) }}
+
+          </div>
+
+          <div class="moj-filter-layout__content">
+
+            <div class="moj-action-bar">
+
+              <div class="moj-action-bar__filter"></div>
+
+              {{ mojMenu({
+                items: [{
+                  text: 'Reassign',
+                  classes: 'govuk-button--secondary'
+                }, {
+                  text: 'Archive',
+                  classes: 'govuk-button--secondary'
+                }]
+                }) }}
+
+            </div>
+
+            <div class="moj-scrollable-pane">
+
+              <div class="moj-scrollable-pane__wrapper">
+
+                {{ govukTable({
+                  firstCellIsHeader: true,
+                  head: [
+                    {text: 'Case number'},
+                    {text: 'Parties'},
+                    {text: 'Type'},
+                    {text: 'Decision needed on'},
+                    {text: 'Case received'},
+                    {text: 'Date of last event'}
+                  ],
+                  rows: [
+                    [
+                      {html: '<a href="#">FR1231612322</a>'},
+                      {html: 'John Smith v Jane Smith'},
+                      {text: 'Financial remedy'},
+                      {html: '<a href="#">Draft consent order</a>'},
+                      {text: '20 Nov 2017'},
+                      {text: '25 Jan 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">SC1231612322</a>'},
+                      {html: 'Warren Sutton v DWP'},
+                      {text: 'PIP'},
+                      {html: '<a href="#">Appellant’s answers</a>'},
+                      {text: '20 Nov 2017'},
+                      {text: '25 Jan 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">SC1231612323</a>'},
+                      {html: 'Alan Jones v DWP'},
+                      {text: 'PIP'},
+                      {html: '<a href="#">Appellant’s answers</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">SC1231612324</a>'},
+                      {html: 'Jennifer Langley v DWP'},
+                      {text: 'PIP'},
+                      {html: '<a href="#">Appellant’s answers</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">BV18D00150</a>'},
+                      {html: 'Susan Francis v David Francis'},
+                      {text: 'Divorce'},
+                      {html: '<a href="#">Decree nisi application</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">BV18D00153</a>'},
+                      {html: 'John Smith v Jane Smith'},
+                      {text: 'Divorce'},
+                      {html: '<a href="#">Decree nisi application</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">BV18D00156</a>'},
+                      {html: 'Margaret Blake v William Blake'},
+                      {text: 'Divorce'},
+                      {html: '<a href="#">Decree nisi application</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">FR1231612322</a>'},
+                      {html: 'John Smith v Jane Smith'},
+                      {text: 'Financial remedy'},
+                      {html: '<a href="#">Draft consent order</a>'},
+                      {text: '20 Nov 2017'},
+                      {text: '25 Jan 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">SC1231612322</a>'},
+                      {html: 'Warren Sutton v DWP'},
+                      {text: 'PIP'},
+                      {html: '<a href="#">Appellant’s answers</a>'},
+                      {text: '20 Nov 2017'},
+                      {text: '25 Jan 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">SC1231612323</a>'},
+                      {html: 'Alan Jones v DWP'},
+                      {text: 'PIP'},
+                      {html: '<a href="#">Appellant’s answers</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">SC1231612324</a>'},
+                      {html: 'Jennifer Langley v DWP'},
+                      {text: 'PIP'},
+                      {html: '<a href="#">Appellant’s answers</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">BV18D00150</a>'},
+                      {html: 'Susan Francis v David Francis'},
+                      {text: 'Divorce'},
+                      {html: '<a href="#">Decree nisi application</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">BV18D00153</a>'},
+                      {html: 'John Smith v Jane Smith'},
+                      {text: 'Divorce'},
+                      {html: '<a href="#">Decree nisi application</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">BV18D00156</a>'},
+                      {html: 'Margaret Blake v William Blake'},
+                      {text: 'Divorce'},
+                      {html: '<a href="#">Decree nisi application</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">FR1231612322</a>'},
+                      {html: 'John Smith v Jane Smith'},
+                      {text: 'Financial remedy'},
+                      {html: '<a href="#">Draft consent order</a>'},
+                      {text: '20 Nov 2017'},
+                      {text: '25 Jan 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">SC1231612322</a>'},
+                      {html: 'Warren Sutton v DWP'},
+                      {text: 'PIP'},
+                      {html: '<a href="#">Appellant’s answers</a>'},
+                      {text: '20 Nov 2017'},
+                      {text: '25 Jan 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">SC1231612323</a>'},
+                      {html: 'Alan Jones v DWP'},
+                      {text: 'PIP'},
+                      {html: '<a href="#">Appellant’s answers</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">SC1231612324</a>'},
+                      {html: 'Jennifer Langley v DWP'},
+                      {text: 'PIP'},
+                      {html: '<a href="#">Appellant’s answers</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">BV18D00150</a>'},
+                      {html: 'Susan Francis v David Francis'},
+                      {text: 'Divorce'},
+                      {html: '<a href="#">Decree nisi application</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">BV18D00153</a>'},
+                      {html: 'John Smith v Jane Smith'},
+                      {text: 'Divorce'},
+                      {html: '<a href="#">Decree nisi application</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ],
+                    [
+                      {html: '<a href="#">BV18D00156</a>'},
+                      {html: 'Margaret Blake v William Blake'},
+                      {text: 'Divorce'},
+                      {html: '<a href="#">Decree nisi application</a>'},
+                      {text: '9 May 2018'},
+                      {text: '9 May 2018'}
+                    ]
+                  ]
+                }) }}
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+    new MOJFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.moj-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary'
+      },
+      closeButton: {
+        container: $('.moj-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.moj-filter')
+      }
+    });
+  </script>
+{% endblock %}
