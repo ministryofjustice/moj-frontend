@@ -134,7 +134,7 @@ MOJFrontend.Menu.prototype.focusNext = function(currentButton) {
 	if(next[0]) {
 		next.focus();
 	} else {
-		this.container.find('[role=menutiem]').first().focus();
+		this.container.find('[role=menuitem]').first().focus();
 	}
 };
 
@@ -143,6 +143,6 @@ MOJFrontend.Menu.prototype.focusPrevious = function(currentButton) {
 	if(prev[0]) {
 		prev.focus();
 	} else {
-		this.container.find('[role=menutiem]').last().focus();
+		this.container.find('[role=menuitem]').last().focus();
 	}
 };
