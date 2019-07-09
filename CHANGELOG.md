@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.0.6-alpha
+
+- Add filter toggle button component
+- Fixes
+
 ## v0.0.5-alpha
 
 - Fixes
