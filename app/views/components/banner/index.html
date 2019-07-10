@@ -2,52 +2,63 @@
 
 {% block body %}
 
-  <h1 class="govuk-heading-xl">
-    <span class="govuk-caption-xl">Components</span> Banner
-  </h1>
+  <div class="govuk-grid-row">
 
-  {% set bannerHtml %}
-    <h2 class="govuk-heading-m">The title of the message goes here</h2>
-    <p><a href="">Dismiss</a></p>
-  {% endset %}
+    <div class="govuk-grid-column-full">
 
-  <h2 class="govuk-heading-m">Custom HTML</h2>
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
 
-  {{ mojBanner({
-    html: bannerHtml
-  }) }}
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Banner
+      </h1>
 
-  <h2 class="govuk-heading-m">Custom HTML with icon</h2>
+      {% set bannerHtml %}
+        <h2 class="govuk-heading-m">The title of the message goes here</h2>
+        <p><a href="">Dismiss</a></p>
+      {% endset %}
 
-  {{ mojBanner({
-    type: 'information',
-    html: bannerHtml
-  }) }}
+      <h2 class="govuk-heading-m">Custom HTML</h2>
 
-  <h2 class="govuk-heading-m">Success</h2>
+      {{ mojBanner({
+        html: bannerHtml
+      }) }}
 
-  {{ mojBanner({
-    type: 'success',
-    text: 'You have successfully added 1 question.',
-    iconFallbackText: 'Success'
-  }) }}
+      <h2 class="govuk-heading-m">Custom HTML with icon</h2>
 
-  <h2 class="govuk-heading-m">Warning</h2>
+      {{ mojBanner({
+        type: 'information',
+        html: bannerHtml
+      }) }}
 
-  {{ mojBanner({
-    type: 'warning',
-    text: 'Questions weren’t sent - try again.',
-    iconFallbackText: 'Warning'
-  }) }}
+      <h2 class="govuk-heading-m">Success</h2>
 
-  <h2 class="govuk-heading-m">Information</h2>
+      {{ mojBanner({
+        type: 'success',
+        text: 'You have successfully added 1 question.',
+        iconFallbackText: 'Success'
+      }) }}
 
-  {{ mojBanner({
-    type: 'information',
-    text: 'Select text to add comment.',
-    iconFallbackText: 'information'
-  }) }}
+      <h2 class="govuk-heading-m">Warning</h2>
 
+      {{ mojBanner({
+        type: 'warning',
+        text: 'Questions weren’t sent - try again.',
+        iconFallbackText: 'Warning'
+      }) }}
 
+      <h2 class="govuk-heading-m">Information</h2>
+
+      {{ mojBanner({
+        type: 'information',
+        text: 'Select text to add comment.',
+        iconFallbackText: 'information'
+      }) }}
+
+    </div>
+  
+  </div>
 
 {% endblock %}

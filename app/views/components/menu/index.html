@@ -1,50 +1,64 @@
 {% extends "layouts/base.html" %}
 
 {% block body %}
-  <h1 class="govuk-heading-xl">
-    <span class="govuk-caption-xl">Components</span> Menu
-  </h1>
 
-  <h2 class="govuk-heading-m">Variant 1</h2>
-  {{mojMenu({
-    items: [{
-      text: 'Archive',
-      classes: 'govuk-button--secondary',
-      href: '/components/banner'
-    }, {
-      text: 'Reassign',
-      classes: 'govuk-button--secondary',
-      href: '/components/buttons'
-    }, {
-      text: 'Delete',
-      classes: 'govuk-button--secondary',
-      href: '#'
-    }]
-  })}}
-  <br><br><br>
+  <div class="govuk-grid-row">
 
-  <h2 class="govuk-heading-m">Variant 2</h2>
-  <div class="variant2">
-    {{mojMenu({
-      items: [{
-        text: 'Make decision'
-      }, {
-        text: 'List for hearing',
-        classes: 'govuk-button--secondary'
-      }]
-    })}}
+    <div class="govuk-grid-column-full">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Menu
+      </h1>
+
+      <h2 class="govuk-heading-m">Variant 1</h2>
+      {{ mojMenu({
+        items: [{
+          text: 'Archive',
+          classes: 'govuk-button--secondary',
+          href: '/components/banner'
+        }, {
+          text: 'Reassign',
+          classes: 'govuk-button--secondary',
+          href: '/components/buttons'
+        }, {
+          text: 'Delete',
+          classes: 'govuk-button--secondary',
+          href: '#'
+        }]
+      }) }}
+      <br><br><br>
+
+      <h2 class="govuk-heading-m">Variant 2</h2>
+      <div class="variant2">
+        {{ mojMenu({
+          items: [{
+            text: 'Make decision'
+          }, {
+            text: 'List for hearing',
+            classes: 'govuk-button--secondary'
+          }]
+        }) }}
+      </div>
+      <style>
+        .variant2 {
+          float: right;
+        }
+        @media (min-width: 35em) {
+          .variant2 {
+            float: none;
+          }
+        }
+
+      </style>
+
+    </div>
+
   </div>
-  <style>
-    .variant2 {
-      float: right;
-    }
-    @media (min-width: 35em) {
-      .variant2 {
-        float: none;
-      }
-    }
-
-  </style>
 
 {% endblock %}
 
