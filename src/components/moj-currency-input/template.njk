@@ -43,7 +43,7 @@
   <input class="govuk-input moj-input__currency {{- ' ' + params.classes if params.classes}} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default('text') }}"
   {%- if params.value %} value="{{ params.value }}"{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
-  {%- if params.autocomplete %} autocomplete="{{ params.autocomplete | default('off') }}"{% endif %}
-  {%- if params.pattern %} pattern="{{ params.pattern | default('[0-9]*') }}"{% endif %}
+  autocomplete="{{ params.autocomplete | default('off') }}"
+  pattern="{{ params.pattern | default('[0-9]*') }}"
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
 </div>
