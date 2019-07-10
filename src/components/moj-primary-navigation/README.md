@@ -1,7 +1,7 @@
 # Primary navigation
 
-- [Guidance](https://mojdt-design-system.herokuapp.com/components/primary-navigation)
-- [Preview](https://mojdt-frontend.herokuapp.com/components/primary-navigation)
+- [Guidance](https://moj-design-system.herokuapp.com/components/primary-navigation)
+- [Preview](https://moj-frontend.herokuapp.com/components/primary-navigation)
 
 ## Example
 

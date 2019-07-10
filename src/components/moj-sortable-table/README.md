@@ -1,6 +1,6 @@
 # Sortable table
 
-- [Guidance](https://mojdt-design-system.herokuapp.com/components/sortable-table)
-- [Preview](https://mojdt-frontend.herokuapp.com/components/sortable-table)
+- [Guidance](https://moj-design-system.herokuapp.com/components/sortable-table)
+- [Preview](https://moj-frontend.herokuapp.com/components/sortable-table)
 
 ## Arguments

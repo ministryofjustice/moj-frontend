@@ -1,7 +1,7 @@
 # Sub navigation
 
-- [Guidance](https://mojdt-design-system.herokuapp.com/components/sub-navigation)
-- [Preview](https://mojdt-frontend.herokuapp.com/components/sub-navigation)
+- [Guidance](https://moj-design-system.herokuapp.com/components/sub-navigation)
+- [Preview](https://moj-frontend.herokuapp.com/components/sub-navigation)
 
 ## Example
 

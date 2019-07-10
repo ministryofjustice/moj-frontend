@@ -6,7 +6,7 @@
     "frontend",
     "frontend-framework"
   ],
-  "website": "https://mojdt-frontend.herokuapp.com/",
+  "website": "https://moj-frontend.herokuapp.com/",
   "repository": "https://github.com/ministryofjustice/mojdt-frontend",
   "addons": [
 

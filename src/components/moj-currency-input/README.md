@@ -1,7 +1,7 @@
 # Currency input
 
-- [Guidance](https://mojdt-design-system.herokuapp.com/components/currency-input)
-- [Preview](https://mojdt-frontend.herokuapp.com/components/currency-input)
+- [Guidance](https://moj-design-system.herokuapp.com/components/currency-input)
+- [Preview](https://moj-frontend.herokuapp.com/components/currency-input)
 
 ## Dependencies
 
