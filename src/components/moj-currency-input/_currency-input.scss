@@ -16,7 +16,7 @@
     color: govuk-colour("white");
   }
 
-  @include mq($until: tablet) {
+  @include govuk-media-query($until: tablet) {
     padding: 8px 12px;
   }
 

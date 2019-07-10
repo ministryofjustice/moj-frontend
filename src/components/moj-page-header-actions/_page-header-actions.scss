@@ -18,12 +18,12 @@
   [class^=govuk-heading-] {
     margin-bottom: govuk-spacing(2);
     text-align: left;
-    @include mq($from: tablet) {
+    @include govuk-media-query($from: tablet) {
       margin-bottom: 0;
     }
   }
 
-  @include mq($from: tablet) {
+  @include govuk-media-query($from: tablet) {
     display: inline-block;
     vertical-align: middle;
   }
@@ -33,7 +33,7 @@
 
 .moj-page-header-actions__actions {
 
-  @include mq($from: tablet) {
+  @include govuk-media-query($from: tablet) {
     display: inline-block;
     vertical-align: middle;
   }
@@ -46,7 +46,7 @@
     margin-bottom: 0;
   }
 
-  @include mq($from: tablet) {
+  @include govuk-media-query($from: tablet) {
     margin-bottom: 0;
   }
 
