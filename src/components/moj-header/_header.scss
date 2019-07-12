@@ -17,7 +17,7 @@
 .moj-header__logo {
   padding-bottom: govuk-spacing(2);
 
-  @include mq($from: tablet) {
+  @include govuk-media-query($from: tablet) {
     float: left;
   }
 
@@ -26,7 +26,7 @@
 .moj-header__content {
   padding-bottom: govuk-spacing(2);
 
-  @include mq($from: tablet) {
+  @include govuk-media-query($from: tablet) {
     float: right;
   }
 

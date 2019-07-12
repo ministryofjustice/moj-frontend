@@ -1,7 +1,7 @@
 .moj-pagination {
   // text-align: center;
 
-  @include mq($from: desktop) {
+  @include govuk-media-query($from: desktop) {
 
     // Alignment adjustments
     margin-left: - govuk-spacing(1);
@@ -26,7 +26,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  @include mq($from: desktop) {
+  @include govuk-media-query($from: desktop) {
     display: inline-block;
     margin-bottom: 0;
     vertical-align: middle;
@@ -34,7 +34,7 @@
 }
 
 .moj-pagination__results {
-  @include mq($from: desktop) {
+  @include govuk-media-query($from: desktop) {
     display: inline-block;
     margin-bottom: 0;
     vertical-align: middle;

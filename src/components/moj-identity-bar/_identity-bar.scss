@@ -36,7 +36,7 @@
   padding-top: govuk-spacing(1);
   padding-bottom: govuk-spacing(1);
 
-  @include mq($from: tablet) {
+  @include govuk-media-query($from: tablet) {
     display: inline-block;
     vertical-align: top;
     padding-top: govuk-spacing(2) + 1px; /* Alignment tweaks */
@@ -49,7 +49,7 @@
 .moj-identity-bar__actions {
   margin-bottom: - govuk-spacing(2);
 
-  @include mq($from: tablet) {
+  @include govuk-media-query($from: tablet) {
     display: inline-block;
     vertical-align: middle;
   }
