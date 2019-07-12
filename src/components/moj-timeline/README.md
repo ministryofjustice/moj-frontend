@@ -1,7 +1,7 @@
 # Timeline
 
-- [Guidance](https://mojdt-design-system.herokuapp.com/components/timeline)
-- [Preview](https://mojdt-frontend.herokuapp.com/components/timeline)
+- [Guidance](https://moj-design-system.herokuapp.com/components/timeline)
+- [Preview](https://moj-frontend.herokuapp.com/components/timeline)
 
 ### Installation
 

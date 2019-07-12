@@ -1,7 +1,7 @@
 # Badge
 
-- [Guidance](https://mojdt-design-system.herokuapp.com/components/badge)
-- [Preview](https://mojdt-frontend.herokuapp.com/components/badge)
+- [Guidance](https://moj-design-system.herokuapp.com/components/badge)
+- [Preview](https://moj-frontend.herokuapp.com/components/badge)
 
 ## Example
 

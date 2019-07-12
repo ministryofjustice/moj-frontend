@@ -1,7 +1,7 @@
 # Badge
 
-- [Guidance](https://mojdt-design-system.herokuapp.com/components/tag)
-- [Preview](https://mojdt-frontend.herokuapp.com/components/tag)
+- [Guidance](https://moj-design-system.herokuapp.com/components/tag)
+- [Preview](https://moj-frontend.herokuapp.com/components/tag)
 
 ## Classes
 

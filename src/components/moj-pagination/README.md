@@ -1,6 +1,6 @@
 # Pagination
 
-- [Guidance](https://mojdt-design-system.herokuapp.com/components/pagination)
-- [Preview](https://mojdt-frontend.herokuapp.com/components/pagination)
+- [Guidance](https://moj-design-system.herokuapp.com/components/pagination)
+- [Preview](https://moj-frontend.herokuapp.com/components/pagination)
 
 ## Arguments
