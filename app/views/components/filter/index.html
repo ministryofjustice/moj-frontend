@@ -2,144 +2,152 @@
 
 {% block body %}
 
-  {{ govukBackLink({
-    text: "Back",
-    href: "../"
-  }) }}
+  <div class="govuk-grid-row">
 
-  <h1 class="govuk-heading-xl">
-    <span class="govuk-caption-xl">Components</span> Filter
-  </h1>
+    <div class="govuk-grid-column-full">
 
-  {% set filterOptionsHtml %}
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
 
-    {{ govukCheckboxes({
-      idPrefix: 'categories',
-      name: 'categories',
-      classes: "govuk-checkboxes--small",
-      fieldset: {
-        legend: {
-          html: 'Categories',
-          classes: 'moj-filter__legend govuk-fieldset__legend--m'
-        }
-      },
-      items: [
-        {
-          value: 'documents',
-          text: 'Documents (18)',
-          checked: true
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Filter
+      </h1>
+
+      {% set filterOptionsHtml %}
+
+        {{ govukCheckboxes({
+          idPrefix: 'categories',
+          name: 'categories',
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              html: 'Categories',
+              classes: 'moj-filter__legend govuk-fieldset__legend--m'
+            }
+          },
+          items: [
+            {
+              value: 'documents',
+              text: 'Documents (18)',
+              checked: true
+            },
+            {
+              value: 'hearings',
+              text: 'Hearings (5)',
+              checked: true
+            },
+            {
+              value: 'Decisions',
+              text: 'Decisions (2)'
+            }
+          ]
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: 'typeofperson',
+          name: 'typeofperson',
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              html: 'Type of person',
+              classes: 'moj-filter__legend govuk-fieldset__legend--m'
+            }
+          },
+          items: [
+            {
+              value: 'judge',
+              text: 'Judge'
+            },
+            {
+              value: 'court-administrator',
+              text: 'Court administrator'
+            },
+            {
+              value: 'legal-adviser',
+              text: 'Legal adviser',
+              checked: true
+            },
+            {
+              value: 'magistrate',
+              text: 'Magistrate',
+              checked: true
+            },
+            {
+              value: 'solicitor',
+              text: 'Solicitor',
+              checked: true
+            },
+            {
+              value: 'applicant',
+              text: 'Applicant',
+              checked: true
+            },
+            {
+              value: 'respondent',
+              text: 'Respondent'
+            }
+          ]
+        }) }}
+
+      {% endset %}
+
+      {{ mojFilter({
+        heading: {
+          text: 'Filter'
         },
-        {
-          value: 'hearings',
-          text: 'Hearings (5)',
-          checked: true
-        },
-        {
-          value: 'Decisions',
-          text: 'Decisions (2)'
-        }
-      ]
-    }) }}
+        selectedFilters: {
 
-    {{ govukCheckboxes({
-      idPrefix: 'typeofperson',
-      name: 'typeofperson',
-      classes: "govuk-checkboxes--small",
-      fieldset: {
-        legend: {
-          html: 'Type of person',
-          classes: 'moj-filter__legend govuk-fieldset__legend--m'
-        }
-      },
-      items: [
-        {
-          value: 'judge',
-          text: 'Judge'
-        },
-        {
-          value: 'court-administrator',
-          text: 'Court administrator'
-        },
-        {
-          value: 'legal-adviser',
-          text: 'Legal adviser',
-          checked: true
-        },
-        {
-          value: 'magistrate',
-          text: 'Magistrate',
-          checked: true
-        },
-        {
-          value: 'solicitor',
-          text: 'Solicitor',
-          checked: true
-        },
-        {
-          value: 'applicant',
-          text: 'Applicant',
-          checked: true
-        },
-        {
-          value: 'respondent',
-          text: 'Respondent'
-        }
-      ]
-    }) }}
-
-  {% endset %}
-
-  {{ mojFilter({
-    heading: {
-      text: 'Filter'
-    },
-    selectedFilters: {
-
-      heading: {
-        text: 'Selected filters'
-      },
-
-      clearLink: {
-        text: 'Clear filters'
-      },
-
-      categories: [
-        {
           heading: {
-            text: 'Categories'
+            text: 'Selected filters'
           },
-          items: [{
-            href: '/path/to/remove/this',
-            text: 'Documents'
-          }, {
-            href: '/path/to/remove/this',
-            text: 'Hearings'
-          }]
+
+          clearLink: {
+            text: 'Clear filters'
+          },
+
+          categories: [
+            {
+              heading: {
+                text: 'Categories'
+              },
+              items: [{
+                href: '/path/to/remove/this',
+                text: 'Documents'
+              }, {
+                href: '/path/to/remove/this',
+                text: 'Hearings'
+              }]
+            },
+            {
+              heading: {
+                text: 'Type of person'
+              },
+              items: [{
+                href: '/path/to/remove/this',
+                text: 'Legal advisor'
+              },
+              {
+                href: '/path/to/remove/this',
+                text: 'Magistrate'
+              },
+              {
+                href: '/path/to/remove/this',
+                text: 'Solicitor'
+              },
+              {
+                href: '/path/to/remove/this',
+                text: 'Applicant'
+              }]
+            }
+          ]
         },
-        {
-          heading: {
-            text: 'Type of person'
-          },
-          items: [{
-            href: '/path/to/remove/this',
-            text: 'Legal advisor'
-          },
-          {
-            href: '/path/to/remove/this',
-            text: 'Magistrate'
-          },
-          {
-            href: '/path/to/remove/this',
-            text: 'Solicitor'
-          },
-          {
-            href: '/path/to/remove/this',
-            text: 'Applicant'
-          }]
-        }
-      ]
-    },
-    optionsHtml: filterOptionsHtml
-  }) }}
+        optionsHtml: filterOptionsHtml
+      }) }}
+
+    </div>
+
+  </div>
 
 {% endblock %}

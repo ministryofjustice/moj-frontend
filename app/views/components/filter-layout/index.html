@@ -2,14 +2,18 @@
 
 {% block body %}
 
-  {{ govukBackLink({
-    text: "Back",
-    href: "../"
-  }) }}
+  <div class="govuk-grid-row">
 
-  <h1 class="govuk-heading-xl">
-    <span class="govuk-caption-xl">Pattern</span> Filter
-  </h1>
+    <div class="govuk-grid-column-full">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Pattern</span> Filter
+      </h1>
 
       {% set filterOptionsHtml %}
 
@@ -329,6 +333,10 @@
           </div>
 
         </div>
+
+      </div>
+
+    </div>
 
 {% endblock %}
 
