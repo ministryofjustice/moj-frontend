@@ -1,0 +1,123 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+<style type="text/css">
+  .moj-message-list {
+    max-height: 1000px;
+  }
+</style>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Messages
+      </h1>
+
+      {% set messageHtml %}
+
+        Ut quam nunc, vulputate ac metus pharetra, posuere maximus velit. <a href="https://www.google.com">Etiam nec interdum velit.</a> Suspendisse molestie lectus in eros ornare
+
+      {% endset %}
+
+      {% set tableHtml %}
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption">Dates and amounts</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="col">Date</th>
+              <th class="govuk-table__header" scope="col">Amount</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="row">First 6 weeks</th>
+              <td class="govuk-table__cell">£109.80 per week</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="row">Next 33 weeks</th>
+              <td class="govuk-table__cell">£109.80 per week</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="row">Total estimated pay</th>
+              <td class="govuk-table__cell">£4,282.20</td>
+            </tr>
+          </tbody>
+        </table>
+        
+      {% endset %}
+
+      {{ mojMessages({
+        items: [
+          {
+            id: 1,
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            type: 'sent',
+            timestamp: '2018-10-16T10:50:00.000Z',
+            sender: 'Person A'
+          },
+          {
+            id: 2,
+            text: 'Nullam vestibulum lorem vulputate velit euismod luctus.',
+            type: 'received',
+            timestamp: '2018-10-17T10:51:00.000Z',
+            sender: 'Person B'
+          },
+          {
+            id: 3,
+            text: 'Fusce et vulputate justo. Integer suscipit felis non urna lobortis, vel finibus sem tristique.',
+            type: 'sent',
+            timestamp: '2018-10-19T10:53:00.000Z',
+            sender: 'Person A'
+          },
+          {
+            id: 4,
+            text: 'Mauris tincidunt feugiat orci et convallis. Nam efficitur gravida justo non lobortis. Aliquam velit ante, lobortis eu venenatis sit amet, semper sit amet justo.',
+            type: 'sent',
+            timestamp: '2018-10-19T10:55:00.000Z',
+            sender: 'Person A'
+          },
+          {
+            id: 5,
+            text: 'Proin dapibus, nisl id ultricies ultricies, erat magna pulvinar risus, sit amet commodo nunc purus eu nulla. Aliquam erat volutpat. Vestibulum in ante interdum, elementum arcu vel, viverra nibh. Etiam ultrices urna at suscipit sollicitudin. Nulla non lectus magna. Curabitur vel vestibulum lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+            type: 'received',
+            timestamp: '2018-10-21T11:56:00.000Z',
+            sender: 'Person B'
+          },
+          {
+            id: 6,
+            html: messageHtml,
+            type: 'sent',
+            timestamp: '2018-10-21T11:57:00.000Z',
+            sender: 'Person A'
+          },
+          {
+            id: 7,
+            html: tableHtml,
+            type: 'received',
+            timestamp: '2018-10-21T11:58:00.000Z',
+            sender: 'Person B'
+          },
+          {
+            id: 8,
+            html: tableHtml,
+            type: 'sent',
+            timestamp: '2018-10-21T13:15:00.000Z',
+            sender: 'Person A'
+          }
+        ]
+      }) }}
+
+  </div>
+
+</div>
+
+{% endblock %}
