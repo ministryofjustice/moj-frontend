@@ -1,12 +1,10 @@
 {% extends "layouts/base.html" %}
 
-{% block body %}
+{% block pageStyles %}
+{% include "./styles.html" %}
+{% endblock %}
 
-<style type="text/css">
-  .moj-message-list {
-    max-height: 1000px;
-  }
-</style>
+{% block body %}
 
   <div class="govuk-grid-row">
 
@@ -21,14 +19,11 @@
         <span class="govuk-caption-xl">Components</span> Messages
       </h1>
 
-      {% set messageHtml %}
-
+      {%- set messageHtml %}
         Ut quam nunc, vulputate ac metus pharetra, posuere maximus velit. <a href="https://www.google.com">Etiam nec interdum velit.</a> Suspendisse molestie lectus in eros ornare
+      {% endset -%}
 
-      {% endset %}
-
-      {% set tableHtml %}
-
+      {%- set tableHtml %}
         <table class="govuk-table">
           <caption class="govuk-table__caption">Dates and amounts</caption>
           <thead class="govuk-table__head">
@@ -52,8 +47,7 @@
             </tr>
           </tbody>
         </table>
-        
-      {% endset %}
+      {% endset -%}
 
       {{ mojMessages({
         items: [
