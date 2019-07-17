@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.0.7-alpha
+
+- Add messages component
+- Update `mq` to `govuk-media-query` mixin in styles
+- Update packages to fix vulnerabilities
+- Other miscellaneous fixes
+
 ## v0.0.6-alpha
 
 - Add filter toggle button component
