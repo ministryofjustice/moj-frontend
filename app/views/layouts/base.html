@@ -28,6 +28,7 @@
 {%- from "moj-header/macro.njk" import mojHeader %}
 {%- from "moj-identity-bar/macro.njk" import mojIdentityBar %}
 {%- from "moj-menu/macro.njk" import mojMenu %}
+{%- from "moj-messages/macro.njk" import mojMessages %}
 {%- from "moj-notification-badge/macro.njk" import mojNotificationBadge %}
 {%- from "moj-organisation-switcher/macro.njk" import mojOrganisationSwitcher %}
 {%- from "moj-pagination/macro.njk" import mojPagination %}
@@ -62,7 +63,7 @@
     <!--[if lt IE 9]>
       <script src="/public/javascripts/vendor/html5shiv.js"></script>
     <![endif]-->
-
+    {%- block pageStyles %}{% endblock %}
   </head>
   <body>
 
