@@ -51,7 +51,8 @@
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: govuk-spacing(3);
-  text-decoration: underline;
+  text-decoration: none;
+  position: relative;
 
   @include govuk-media-query($from: tablet) {
     padding-left: 0;
@@ -60,6 +61,16 @@
   &:focus {
     color: govuk-colour("black"); // Focus colour on yellow should really be black.
     position: relative; // Ensure focus sits above everything else.
+    box-shadow: none;
+  }
+
+  &:focus:before {
+    background-color: govuk-colour("black");
+    content: "";
+    display: block;
+    width: 100%;
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 5px;
   }
 
 }

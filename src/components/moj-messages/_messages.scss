@@ -52,11 +52,6 @@
       border-left: 1em solid govuk-colour("blue");
       border-bottom-left-radius: 1.75em 1.5em;
     }
-
-    & a {
-      color: govuk-colour("white");
-    }
-
   }
 
   &--received {
@@ -78,6 +73,15 @@
 
   }
 
+}
+
+.moj-message-item a:link,
+.moj-message-item a:visited {
+  color: govuk-colour("white");
+}
+
+.moj-message-item a:focus {
+  color: $govuk-focus-text-colour;
 }
 
 .moj-message-item__text {

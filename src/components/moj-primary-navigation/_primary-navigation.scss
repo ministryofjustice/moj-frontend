@@ -36,7 +36,7 @@
 }
 
 .moj-primary-navigation__item {
-  @include govuk-font($size: 19, $weight: "bold");
+  @include govuk-font($size: 19);
   display: inline-block;
   margin-right: govuk-spacing(4);
   margin-top: 0;
@@ -68,15 +68,16 @@
     color: govuk-colour("white");
     position: relative;
     text-decoration: none;
+    font-weight: bold;
 
-    &:before {
-      background-color: govuk-colour("white");
-      content: "";
-      display: block;
-      height: 5px;
-      position: absolute; bottom: 0; left: 0;
-      width: 100%;
-    }
+    // &:before {
+    //   background-color: govuk-colour("white");
+    //   content: "";
+    //   display: block;
+    //   height: 5px;
+    //   position: absolute; bottom: 0; left: 0;
+    //   width: 100%;
+    // }
 
     &:focus {
       color: govuk-colour("black"); // Focus colour on yellow should really be black.
