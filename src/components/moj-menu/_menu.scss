@@ -69,7 +69,7 @@
 
 .moj-menu [role=menuitem] {
   @include govuk-font(19);
-  background-color: govuk-colour("grey-3");
+  background-color: govuk-colour("light-grey");
   border: none;
   box-sizing: border-box;
   display: block;
@@ -87,7 +87,7 @@
   }
 
   &:hover {
-    background-color: govuk-colour("grey-2");
+    background-color: govuk-colour("mid-grey");
   }
 
   &:focus {

@@ -3,7 +3,7 @@
 }
 
 .moj-filter-layout__filter {
-  box-shadow: inset 0 0 0 1px govuk-colour("grey-3"); // Extends the inset border left full height of the filters on mobile
+  box-shadow: inset 0 0 0 1px govuk-colour("light-grey"); // Extends the inset border left full height of the filters on mobile
 
   @include govuk-media-query(desktop) {
     float: left;

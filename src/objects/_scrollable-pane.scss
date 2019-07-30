@@ -35,12 +35,12 @@
   }
 
   .moj-scrollable-pane > div::-webkit-scrollbar-track {
-    background: govuk-colour("grey-4");
+    background: govuk-colour("light-grey");
     box-shadow: 0 0 2px rgba(0,0,0,.15) inset; // Simulate scrollbar look and feel
   }
 
   .moj-scrollable-pane > div::-webkit-scrollbar-thumb {
-    background: govuk-colour("grey-1");
+    background: govuk-colour("dark-grey");
     border-radius: govuk-spacing(1);
   }
 }

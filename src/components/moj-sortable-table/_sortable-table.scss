@@ -15,7 +15,13 @@
   text-align: inherit;
   font-size: 1em;
   margin: 0;
-  @include govuk-focusable;
+}
+
+[aria-sort] button:focus {
+  background-color: $govuk-focus-colour;
+  color: $govuk-focus-text-colour;
+  box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+  outline: none;
 }
 
 [aria-sort]:first-child button {

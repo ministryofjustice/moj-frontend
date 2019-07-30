@@ -36,10 +36,6 @@
     background-color: govuk-colour("red");
   }
 
-  &--bright-red {
-    background-color: govuk-colour("bright-red");
-  }
-
   &--orange {
     background-color: govuk-colour("orange");
   }
@@ -76,20 +72,16 @@
     background-color: govuk-colour("black");
   }
 
-  &--grey-1 {
-    background-color: govuk-colour("grey-1");
+  &--dark-grey {
+    background-color: govuk-colour("dark-grey");
   }
 
-  &--grey-2 {
-    background-color: govuk-colour("grey-2");
+  &--mid-grey {
+    background-color: govuk-colour("mid-grey");
   }
 
-  &--grey-3 {
-    background-color: govuk-colour("grey-3");
-  }
-
-  &--grey-4 {
-    background-color: govuk-colour("grey-4");
+  &--light-grey {
+    background-color: govuk-colour("light-grey");
   }
 
   &--white {

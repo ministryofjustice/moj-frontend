@@ -4,8 +4,8 @@
 
 .moj-identity-bar {
   @include govuk-clearfix;
-  background-color: govuk-colour("grey-4");
-  box-shadow: inset 0 -1px 0 0 govuk-colour("grey-2"); /* Takes up no space */
+  background-color: govuk-colour("light-grey");
+  box-shadow: inset 0 -1px 0 0 govuk-colour("mid-grey"); /* Takes up no space */
   color: govuk-colour("black");
   padding-bottom: govuk-spacing(2) - 1px; /* Negative by 1px to compensate */
   padding-top: govuk-spacing(2);

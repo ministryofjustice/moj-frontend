@@ -26,12 +26,6 @@
     color: govuk-colour("white");
   }
 
-  &--bright-red {
-    border: 2px solid govuk-colour("bright-red");
-    background-color: govuk-colour("bright-red");
-    color: govuk-colour("white");
-  }
-
   &--green,
   &--success {
     border: 2px solid govuk-colour("green");
@@ -53,8 +47,8 @@
   }
 
   &--grey {
-    border: 2px solid govuk-colour("grey-1");
-    background-color: govuk-colour("grey-1");
+    border: 2px solid govuk-colour("dark-grey");
+    background-color: govuk-colour("dark-grey");
     color: govuk-colour("white");
   }
 

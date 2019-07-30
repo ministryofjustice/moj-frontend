@@ -28,11 +28,6 @@
     color: govuk-colour("red");
   }
 
-  &--bright-red {
-    border-color: govuk-colour("bright-red");
-    color: govuk-colour("bright-red");
-  }
-
   &--green {
     border-color: govuk-colour("green");
     color: govuk-colour("green");
@@ -49,8 +44,8 @@
   }
 
   &--grey {
-    border-color: govuk-colour("grey-1");
-    color: govuk-colour("grey-1");
+    border-color: govuk-colour("dark-grey");
+    color: govuk-colour("dark-grey");
   }
 
   &--large {

@@ -4,7 +4,7 @@
 
 .moj-label__currency {
   @include govuk-font(19);
-  background-color: govuk-colour("grey-3");
+  background-color: govuk-colour("light-grey");
   position: absolute;
   margin: 2px 0 0 2px !important;
   padding: 5.5px 12px;

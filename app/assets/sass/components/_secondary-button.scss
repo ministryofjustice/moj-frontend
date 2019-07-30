@@ -4,8 +4,8 @@
    ========================================================================== */
 
 .moj-button--secondary {
-  background-color: govuk-colour("grey-3");
-  box-shadow: 0 2px 0 rgba(govuk-colour("grey-1"), .7);
+  background-color: govuk-colour("light-grey");
+  box-shadow: 0 2px 0 rgba(govuk-colour("dark-grey"), .7);
   color: govuk-colour("black");
 
   &:link,
@@ -18,12 +18,12 @@
   &:hover,
   &:focus,
   &:link:focus {
-    background-color: rgba(govuk-colour("grey-2"), .7);
+    background-color: rgba(govuk-colour("mid-grey"), .7);
     color: $govuk-text-colour;
 
     // IE8 does not support RGBA, provide fallback
     @include govuk-if-ie8 {
-      background-color: #d3d4d5; // 70% of grey-2
+      background-color: #d3d4d5; // 70% of mid-grey
     }
 
   }
