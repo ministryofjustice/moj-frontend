@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.8-alpha
+
+- Upgrade to GOV.UK Frontend v3.0.0
+
 ## v0.0.7-alpha
 
 - Add messages component
