@@ -4,7 +4,7 @@ $govuk-global-styles: true;
 @import "node_modules/govuk-frontend/govuk/all";
 
 // MOJ Frontend
-@import "src/all";
+@import "src/moj/all";
 
 // Other component styles
 

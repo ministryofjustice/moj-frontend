@@ -34,7 +34,10 @@
   }
 
   &:focus {
-    outline: 3px solid $govuk-focus-colour;
+    background-color: $govuk-focus-colour;
+    color: $govuk-focus-text-colour;
+    box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+    outline: none;
     position: relative;
     z-index: 2;
   }

@@ -35,6 +35,30 @@
   }
 }
 
+.moj-menu__toggle-button:focus {
+  &:after {
+    background-image: url(#{$moj-images-path}icon-arrow-black-down.svg);
+  }
+}
+
+.moj-menu__toggle-button[aria-expanded="true"]:focus {
+  &:after {
+    background-image: url(#{$moj-images-path}icon-arrow-black-up.svg);
+  }
+}
+
+.moj-menu__toggle-button:hover {
+  &:after {
+    background-image: url(#{$moj-images-path}icon-arrow-white-down.svg);
+  }
+}
+
+.moj-menu__toggle-button[aria-expanded="true"]:hover {
+  &:after {
+    background-image: url(#{$moj-images-path}icon-arrow-white-up.svg);
+  }
+}
+
 .moj-menu__toggle-button[aria-expanded="true"] {
   &:after {
     background-image: url(#{$moj-images-path}icon-arrow-white-up.svg);
@@ -54,6 +78,19 @@
     background-image: url(#{$moj-images-path}icon-arrow-black-up.svg);
   }
 }
+
+.moj-menu__toggle-button--secondary:hover {
+  &:after {
+    background-image: url(#{$moj-images-path}icon-arrow-black-down.svg);
+  }
+}
+
+.moj-menu__toggle-button--secondary[aria-expanded="true"]:hover {
+  &:after {
+    background-image: url(#{$moj-images-path}icon-arrow-black-up.svg);
+  }
+}
+
 
 /* MENU ITEM */
 
@@ -87,7 +124,7 @@
   }
 
   &:hover {
-    background-color: govuk-colour("mid-grey");
+    background-color: #dbdad9;
   }
 
   &:focus {

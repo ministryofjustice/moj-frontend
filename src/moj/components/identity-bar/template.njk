@@ -1,4 +1,4 @@
-{%- from "moj-menu/macro.njk" import mojMenu %}
+{%- from "moj/components/menu/macro.njk" import mojMenu %}
 
 <div class="moj-identity-bar {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
 
