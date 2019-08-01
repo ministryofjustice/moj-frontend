@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.0.9-alpha
+
+- Change namespacing. See [issue 6](https://github.com/ministryofjustice/mojdt-frontend/issues/6)
+- Fix inline and toggle search
+- Fix focus states for search and menu components
+
 ## v0.0.8-alpha
 
 - Upgrade to GOV.UK Frontend v3.0.0
