@@ -18,28 +18,25 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
     this.container = container;
     this.container.addClass('moj-dropzone--enhanced');
     this.input = this.container.find('.govuk-file-upload');
-    this.dropzone = this.setupDropzone();
+    this.setupDropzone();
     this.setupLabel();
-
-
-    // this.setupFileInput();
-    // this.setupStatusBox();
+    this.setupFileInput();
+    this.setupStatusBox();
     // $('.moj-files').on('click', '.moj-file-remove', $.proxy(this, 'onFileRemoveClick'))
   };
 
   MOJFrontend.Dropzone.prototype.setupDropzone = function() {
-    this.dropzone = $('<div class="moj-dropzone__dropzone" />');
-    this.input.wrap(this.dropzone);
+    this.input.wrap('<div class="moj-dropzone__dropzone" />');
+    this.dropzone = this.container.find('.moj-dropzone__dropzone');
     this.dropzone.on('dragover', $.proxy(this, 'onDragOver'));
     this.dropzone.on('dragleave', $.proxy(this, 'onDragLeave'));
     this.dropzone.on('drop', $.proxy(this, 'onDrop'));
-    return this.dropzone;
   };
 
   MOJFrontend.Dropzone.prototype.setupLabel = function() {
     this.label = $('<label for="'+this.input[0].id+'" class="govuk-button govuk-button--secondary">Upload file</label>');
-    $('.moj-dropzone__dropzone').append('<p>Drag and drop files here or </p>');
-    $('.moj-dropzone__dropzone').append(this.label);
+    this.dropzone.append('<p>Drag and drop files here or </p>');
+    this.dropzone.append(this.label);
   };
 
   MOJFrontend.Dropzone.prototype.onFileRemoveClick = function(e) {
@@ -59,7 +56,6 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
   };
 
   MOJFrontend.Dropzone.prototype.onDragOver = function(e) {
-    // prevent default to allow the drop to happen
   	e.preventDefault();
   	this.dropzone.addClass('moj-dropzone--dragover');
   };
@@ -69,7 +65,6 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
   };
 
   MOJFrontend.Dropzone.prototype.onDrop = function(e) {
-    // prevent default to allow the drop to happen
   	e.preventDefault();
   	this.dropzone.removeClass('moj-dropzone--dragover');
     $('.moj-files').removeClass('hidden');
