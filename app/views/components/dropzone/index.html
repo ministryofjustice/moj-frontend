@@ -39,17 +39,26 @@
 
         <div class="moj-files {% if not files.length %}moj-hidden{% endif%}">
           <h2 class="govuk-heading-m">Files added</h2>
-          <ul>
+
+          <dl class="govuk-summary-list ">
             {% if files.length > 0 %}
               {% for file in files %}
-                <li>
-                  <a href="{{file.path}}">{{file.originalname}}</a>
-                  <progress value="100" max="100">100%</progress>
-                  <button class="secondaryButton">Delete</button>
-                </li>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    File 1
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Sarah Philips
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                      Delete<span class="govuk-visually-hidden"> name</span>
+                    </a>
+                  </dd>
+                </div>
               {% endfor %}
             {% endif %}
-          </ul>
+          </dl>
         </div>
 
         {{govukButton({

@@ -22,7 +22,7 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
     this.setupLabel();
     this.setupFileInput();
     this.setupStatusBox();
-    $('.moj-files').on('click', '.moj-file-delete', $.proxy(this, 'onFileDeleteClick'))
+    $('.moj-files').on('click', '.govuk-summary-list__actions a', $.proxy(this, 'onFileDeleteClick'))
   };
 
   MOJFrontend.Dropzone.prototype.setupDropzone = function() {
@@ -40,7 +40,10 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
   };
 
   MOJFrontend.Dropzone.prototype.onFileDeleteClick = function(e) {
-    $(e.target).parent().remove();
+    $(e.target).parent().parent().remove();
+    if($('.moj-files .govuk-summary-list div').length === 0) {
+      $('.moj-files').addClass('moj-hidden');
+    }
   };
 
   MOJFrontend.Dropzone.prototype.setupFileInput = function() {
@@ -93,24 +96,37 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
   };
 
   MOJFrontend.Dropzone.prototype.getSuccessHtml = function(file) {
-    var html = '<a class="moj-file-name" href="/'+file.path+'">'+file.originalname+'</a>';
-    html += '<span class="moj-success"><svg width="1.5em" height="1.5em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#tick"></use></svg>File uploaded</span>';
-    html += '<button type="button" class="moj-file-delete">Delete</button>';
+    var html = '';
+    html += '<span class="moj-success">' + file.originalname + ' uploaded</span>';
+    // html += '<button type="button" class="moj-file-delete">Delete</button>';
     return html;
   };
 
   MOJFrontend.Dropzone.prototype.getErrorHtml = function(error) {
-    var html = '<span class="moj-file-name">'+error.file.originalname+'</span>';
-    html += '<span class="moj-error"><svg width="1.5em" height="1.5em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#warning-icon"></use></svg>'+error.text+'</span>';
-    html += '<button type="button" class="moj-file-delete">Delete</button>';
+    var html = '';
+    html += '<span class="moj-error">'+error.text+'</span>';
+    // html += '<button type="button" class="moj-file-delete">Delete</button>';
     return html;
   };
+
+  MOJFrontend.Dropzone.prototype.getFileRowHtml = function(file) {
+    var html = '';
+    html += '<div class="govuk-summary-list__row">';
+    html += '  <dd class="govuk-summary-list__value">';
+    html +=       file.name;
+    html +=       '<span class="moj-progress">0%</span>';
+    html += '  </dd>';
+    html += ' <dd class="govuk-summary-list__actions">';
+    html += '  </dd>';
+    html += '</div>';
+    return html;
+  }
 
   MOJFrontend.Dropzone.prototype.uploadFile = function(file) {
     var formData = new FormData();
     formData.append('documents', file);
-    var li = $('<li><span class="moj-file-name">'+ formData.get('documents').name +'</span><progress value="0" max="100">0%</progress></li>');
-    $('.moj-files ul').append(li);
+    var item = $(this.getFileRowHtml(formData.get('documents')));
+    $('.moj-files dl').append(item);
 
     $.ajax({
       url: '/ajax-upload',
@@ -120,12 +136,18 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
       contentType: false,
       success: $.proxy(function(response){
         if(response.error) {
-          li.html(this.getErrorHtml(response.error));
+          item.find('.govuk-summary-list__value').html(this.getErrorHtml(response.error));
           this.status.html(response.error);
         } else {
-          li.html(this.getSuccessHtml(response.file));
+          item.find('.govuk-summary-list__value').html(this.getSuccessHtml(response.file));
           this.status.html(response.file.originalname + ' has been uploaded.');
         }
+
+        var html = '    <a class="govuk-link" href="#">';
+        html += '      Delete<span class="govuk-visually-hidden"> name</span>';
+        html += '    </a>';
+
+        item.find('.govuk-summary-list__actions').append(html);
       }, this),
       xhr: function() {
         var xhr = new XMLHttpRequest();
@@ -133,9 +155,7 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
           if (e.lengthComputable) {
             var percentComplete = e.loaded / e.total;
             percentComplete = parseInt(percentComplete * 100);
-            li.find('progress')
-              .prop('value', percentComplete)
-              .text(percentComplete + '%');
+            item.find('.moj-progress').text(' '+percentComplete + '%');
           }
         }, false);
         return xhr;

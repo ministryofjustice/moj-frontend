@@ -8,6 +8,7 @@ npm-debug.log
 public/
 sass-cache
 settings.json
+tmp-uploads
 
 # ignore everything in the package directory, but not govuk-prototype-kit.config.json, package.json and README.md
 package/*
