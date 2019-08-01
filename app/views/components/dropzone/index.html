@@ -1,0 +1,59 @@
+{% extends "layouts/base.html" %}
+
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Dropzone
+      </h1>
+
+      <form>
+        <div class="moj-dropzone">
+          {{ govukFileUpload({
+            id: "fileupload",
+            name: "fileupload",
+            label: {
+              text: "Upload a file",
+              classes: 'govuk-label--m'
+            },
+            attributes: {
+              multiple: ''
+            }
+          }) }}
+
+          {{govukButton({
+            text: 'Upload file',
+            classes: 'govuk-button--secondary'
+          })}}
+        </div>
+
+        {{govukButton({
+          text: 'Continue'
+        })}}
+      </form>
+
+
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+
+  <script>
+    new MOJFrontend.Dropzone($('.moj-dropzone'));
+  </script>
+
+{% endblock %}
+
