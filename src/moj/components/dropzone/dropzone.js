@@ -22,7 +22,7 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
     this.setupLabel();
     this.setupFileInput();
     this.setupStatusBox();
-    // $('.moj-files').on('click', '.moj-file-remove', $.proxy(this, 'onFileRemoveClick'))
+    $('.moj-files').on('click', '.moj-file-delete', $.proxy(this, 'onFileDeleteClick'))
   };
 
   MOJFrontend.Dropzone.prototype.setupDropzone = function() {
@@ -34,12 +34,12 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
   };
 
   MOJFrontend.Dropzone.prototype.setupLabel = function() {
-    this.label = $('<label for="'+this.input[0].id+'" class="govuk-button govuk-button--secondary">Upload file</label>');
+    this.label = $('<label for="'+this.input[0].id+'" class="govuk-button govuk-button--secondary">Choose a file</label>');
     this.dropzone.append('<p>Drag and drop files here or </p>');
     this.dropzone.append(this.label);
   };
 
-  MOJFrontend.Dropzone.prototype.onFileRemoveClick = function(e) {
+  MOJFrontend.Dropzone.prototype.onFileDeleteClick = function(e) {
     $(e.target).parent().remove();
   };
 
@@ -67,7 +67,7 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
   MOJFrontend.Dropzone.prototype.onDrop = function(e) {
   	e.preventDefault();
   	this.dropzone.removeClass('moj-dropzone--dragover');
-    $('.moj-files').removeClass('hidden');
+    $('.moj-files').removeClass('moj-hidden');
     this.status.html('Uploading files, please wait.');
   	this.uploadFiles(e.originalEvent.dataTransfer.files);
   };
@@ -85,24 +85,24 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
   };
 
   MOJFrontend.Dropzone.prototype.onFileFocus = function(e) {
-    this.dropzone.find('label').addClass('moj-dropzone--focused');
+    this.label.addClass('moj-dropzone--focused');
   };
 
   MOJFrontend.Dropzone.prototype.onFileBlur = function(e) {
-    this.dropzone.find('label').removeClass('moj-dropzone--focused');
+    this.label.removeClass('moj-dropzone--focused');
   };
 
   MOJFrontend.Dropzone.prototype.getSuccessHtml = function(file) {
     var html = '<a class="moj-file-name" href="/'+file.path+'">'+file.originalname+'</a>';
     html += '<span class="moj-success"><svg width="1.5em" height="1.5em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#tick"></use></svg>File uploaded</span>';
-    html += '<button type="button" class="file-remove">Remove</button>';
+    html += '<button type="button" class="moj-file-delete">Delete</button>';
     return html;
   };
 
   MOJFrontend.Dropzone.prototype.getErrorHtml = function(error) {
     var html = '<span class="moj-file-name">'+error.file.originalname+'</span>';
     html += '<span class="moj-error"><svg width="1.5em" height="1.5em"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#warning-icon"></use></svg>'+error.text+'</span>';
-    html += '<button type="button" class="file-remove">Remove</button>';
+    html += '<button type="button" class="moj-file-delete">Delete</button>';
     return html;
   };
 
@@ -110,7 +110,7 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
     var formData = new FormData();
     formData.append('documents', file);
     var li = $('<li><span class="moj-file-name">'+ formData.get('documents').name +'</span><progress value="0" max="100">0%</progress></li>');
-    $('.files ul').append(li);
+    $('.moj-files ul').append(li);
 
     $.ajax({
       url: '/ajax-upload',

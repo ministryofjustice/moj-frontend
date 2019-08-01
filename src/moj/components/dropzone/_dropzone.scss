@@ -15,12 +15,14 @@
   outline: 2px dashed $govuk-border-colour;
 	display: flex;
 	text-align: center;
-	padding: 70px 40px;
+	padding: 70px 30px;
 	transition: outline-offset .1s ease-in-out, background-color .1s linear;
 }
 
 .moj-dropzone__dropzone label {
 	margin-bottom: 0;
+	display: inline-block;
+	width: auto;
 }
 
 .moj-dropzone__dropzone p {

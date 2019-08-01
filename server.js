@@ -14,6 +14,7 @@ dotenv.config();
 // Routing
 const routes = require('./app/routes');
 const autoRoutes = require('./app/routes/auto');
+const uploadRoutes = require('./app/routes/upload');
 
 // Local dependencies
 const utils = require('./lib/utils.js');
@@ -123,18 +124,8 @@ app.use('/assets', express.static(path.join(__dirname, 'src', 'moj', 'assets')))
 
 // Use routes
 app.use(routes);
+app.use(uploadRoutes);
 app.use(autoRoutes); // must be the last one
-
-// Start app
-// app.listen(port, (err) => {
-
-//   if (err) {
-//       throw err;
-//   } else {
-//       console.log('Listening on port 3000 url: http://localhost:3000');
-//   }
-
-// });
 
 const nodeModulesExists = fs.existsSync(path.join(__dirname, '/node_modules'));
 if (!nodeModulesExists) {

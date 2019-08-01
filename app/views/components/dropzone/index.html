@@ -20,8 +20,8 @@
       <form>
         <div class="moj-dropzone">
           {{ govukFileUpload({
-            id: "fileupload",
-            name: "fileupload",
+            id: "documents",
+            name: "documents",
             label: {
               text: "Upload a file",
               classes: 'govuk-label--m'
@@ -35,6 +35,21 @@
             text: 'Upload file',
             classes: 'govuk-button--secondary'
           })}}
+        </div>
+
+        <div class="moj-files {% if not files.length %}moj-hidden{% endif%}">
+          <h2 class="govuk-heading-m">Files added</h2>
+          <ul>
+            {% if files.length > 0 %}
+              {% for file in files %}
+                <li>
+                  <a href="{{file.path}}">{{file.originalname}}</a>
+                  <progress value="100" max="100">100%</progress>
+                  <button class="secondaryButton">Delete</button>
+                </li>
+              {% endfor %}
+            {% endif %}
+          </ul>
         </div>
 
         {{govukButton({
