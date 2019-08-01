@@ -40,6 +40,14 @@
   padding: govuk-spacing(3);
 }
 
+.moj-search--inline {
+  padding: govuk-spacing(2) 0 !important;
+  @include govuk-media-query($from: desktop) {
+    padding: 0 !important;
+  }
+}
+
+
 .moj-search--ondark .moj-search__label {
   color: govuk-colour("white");
 }

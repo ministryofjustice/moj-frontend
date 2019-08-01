@@ -15,6 +15,8 @@
         <span class="govuk-caption-xl">Components</span> Primary navigation
       </h1>
 
+      <h2 class="govuk-heading-m">Basic</h2>
+
       {{ mojPrimaryNavigation({
         label: 'Primary navigation',
         items: [{
@@ -30,8 +32,100 @@
         }]
       }) }}
 
+      <h2 class="govuk-heading-m govuk-!-margin-top-9">Inline search</h2>
+
+      {%- set inlineSearchHtml %}
+        {{ mojSearch({
+          classes: 'moj-search--ondark moj-search--inline',
+          input: {
+            id: 'search-1',
+            name: 'search-1'
+          },
+          label: {
+            text: 'Search',
+            classes: 'govuk-visually-hidden'
+          },
+          button: {
+            text: 'Search'
+          }
+        }) }}
+      {% endset -%}
+
+      {{ mojPrimaryNavigation({
+        label: 'Primary navigation',
+        items: [{
+          text: 'Nav item 1',
+          href: '#1',
+          active: true
+        }, {
+          text: 'Nav item 2',
+          href: '#2'
+        }, {
+          text: 'Nav item 3',
+          href: '#3'
+        }],
+        searchHtml: inlineSearchHtml
+      }) }}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-9">Toggle search</h2>
+
+      {%- set toggleSearchHtml %}
+      <div class="moj-search-toggle">
+        <div class="moj-search-toggle__toggle"></div>
+        <div class="moj-search-toggle__search">
+          {{ mojSearch({
+            classes: 'moj-search--ondark moj-search--toggle moj-hidden',
+            input: {
+              id: 'search2',
+              name: 'search2'
+            },
+            label: {
+              classes: 'govuk-visually-hidden',
+              text: 'Search'
+            },
+            hint: {
+              text: 'Enter case number, for example 123456'
+            },
+            button: {
+              text: 'Search'
+            }
+          }) }}
+        </div>
+        </div>
+      {% endset -%}
+
+      {{ mojPrimaryNavigation({
+        label: 'Primary navigation',
+        items: [{
+          text: 'Nav item 1',
+          href: '#1',
+          active: true
+        }, {
+          text: 'Nav item 2',
+          href: '#2'
+        }, {
+          text: 'Nav item 3',
+          href: '#3'
+        }],
+        searchHtml: toggleSearchHtml
+      }) }}
+
     </div>
 
   </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    new MOJFrontend.SearchToggle({
+      toggleButton: {
+        container: $('.moj-search-toggle__toggle'),
+        text: 'Find case'
+      },
+      search: {
+        container: $('.moj-search:eq(1)')
+      }
+    });
+  </script>
 {% endblock %}
