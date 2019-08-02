@@ -12,7 +12,7 @@ const upload = multer( {
       req.rejectedFiles = [];
     }
 
-    if( file.mimetype !== 'image/png') {
+    if( file.mimetype !== 'image/png' && file.mimetype !== 'image/gif' ) {
       cb(null, false);
       req.rejectedFiles.push({
         file: file,
@@ -26,15 +26,58 @@ const upload = multer( {
   }
 } ).array('documents', 10);
 
+
+function getErrorMessage(item) {
+  var message = '';
+  if(item.error.code == 'FILE_TYPE') {
+    message += item.file.originalname + ' must be a png or gif';
+  } else if(item.error.code == 'LIMIT_FILE_SIZE') {
+    message += item.file.originalname + ' must be smaller than 2mb';
+  }
+  return message;
+}
+
 // degraded
 router.post('/examples/upload', function( req, res ){
   upload(req, res, function(err) {
-    console.log(req.rejectedFiles);
-
     if(err) {
-      console.log(err)
+      // console.log(err);
     }
-    res.render( 'examples/dropzone.html', { files: req.files } );
+
+    var pageObject = {
+      uploadedFiles: [],
+      errorMessage: '',
+      errorSummary: {
+        items: []
+      }
+    };
+
+    req.files.forEach(function(file) {
+      var o = file;
+      o.messageHtml = `<span class="moj-file-list__success"> <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path d="M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z"/></svg> <a href="/${file.path}">${file.originalname}</a> has been uploaded</span>`;
+      pageObject.uploadedFiles.push(o);
+    });
+
+    if(req.rejectedFiles) {
+      var errorMessage = '';
+      req.rejectedFiles.forEach(function(item) {
+        errorMessage += getErrorMessage(item);
+        errorMessage += '<br>';
+      });
+
+      req.rejectedFiles.forEach(function(item) {
+        pageObject.errorSummary.items.push({
+          text: getErrorMessage(item),
+          href: '#documents'
+        });
+      });
+
+      pageObject.errorMessage = {
+        html: errorMessage
+      };
+    }
+
+    res.render( 'components/dropzone/index.html', pageObject );
   });
 } );
 
@@ -60,9 +103,9 @@ router.post('/ajax-upload', function( req, res ){
   uploadAjax(req, res, function(error) {
     if(error) {
       if(error.code == 'FILE_TYPE') {
-        error.message = error.file.originalname + ' must be a png or gif.';
+        error.message = error.file.originalname + ' must be a png or gif';
       } else if(error.code == 'LIMIT_FILE_SIZE') {
-        error.message = error.file.originalname + ' must be smaller than 2mb.';
+        error.message = error.file.originalname + ' must be smaller than 2mb';
       }
 
       res.json({ error: error, file: error.file });
@@ -70,7 +113,7 @@ router.post('/ajax-upload', function( req, res ){
       res.json({
         file: req.file,
         success: {
-          message: '<a href="/blah" class="govuk-link">' + req.file.originalname + '</a> has been uploaded.'
+          message: '<a href="/blah" class="govuk-link">' + req.file.originalname + '</a> has been uploaded'
         }
       });
     }
