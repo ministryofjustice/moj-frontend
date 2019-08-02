@@ -37,8 +37,15 @@ function getErrorMessage(item) {
   return message;
 }
 
+router.get('/components/dropzone', function( req, res ){
+  var pageObject = {
+    uploadedFiles: []
+  };
+  res.render( 'components/dropzone/index.html', pageObject );
+});
+
 // degraded
-router.post('/examples/upload', function( req, res ){
+router.post('/components/dropzone', function( req, res ){
   upload(req, res, function(err) {
     if(err) {
       // console.log(err);

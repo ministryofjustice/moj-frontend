@@ -43,7 +43,7 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
   MOJFrontend.Dropzone.prototype.onFileDeleteClick = function(e) {
     $(e.target).parent().parent().remove();
     if(this.options.listContainer.find('.govuk-summary-list div').length === 0) {
-      this.options.listContainer.addClass('moj-hidden');
+      this.options.listContainer.attr('hidden', '');
     }
   };
 
@@ -71,7 +71,7 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
   MOJFrontend.Dropzone.prototype.onDrop = function(e) {
   	e.preventDefault();
   	this.dropzone.removeClass('moj-dropzone--dragover');
-    this.options.listContainer.removeClass('moj-hidden');
+    this.options.listContainer.removeAttr('hidden');
     this.status.html(this.options.uploadStatusText);
   	this.uploadFiles(e.originalEvent.dataTransfer.files);
   };
@@ -83,7 +83,7 @@ if(dragAndDropSupported() && formDataSupported() && fileApiSupported()) {
   };
 
   MOJFrontend.Dropzone.prototype.onFileChange = function(e) {
-    this.options.listContainer.removeClass('moj-hidden');
+    this.options.listContainer.removeAttr('hidden');
     this.status.html(this.options.uploadStatusText);
     this.uploadFiles(e.currentTarget.files);
   };
