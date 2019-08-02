@@ -6,11 +6,6 @@
 	display: none;
 }
 
-.moj-dropzone .moj-field-file {
-	// border: none;
-	// text-align: center;
-}
-
 .moj-dropzone__dropzone {
   outline: 2px dashed $govuk-border-colour;
 	display: flex;
@@ -41,85 +36,31 @@
 	outline-color: #6f777b;
 }
 
-// .files {
-// 	max-width: 600px;
-// 	list-style: none;
-// 	margin-left: 0;
-// 	margin-bottom: 30px;
-// }
-
-// .files ul {
-// 	list-style: none;
-// 	margin: 0;
-// 	border-top: 1px solid #ccc;
-// }
-
-// .files li {
-// 	padding-top: 10px;
-// 	padding-bottom: 10px;
-// 	border-bottom: 1px solid #ccc;
-// 	overflow: hidden;
-// }
-
-// .file-name {
-// 	float: left;
-// 	width: 80px;
-// 	margin-right: 20px;
-
-// 	white-space: nowrap;
-// 	overflow: hidden;
-// 	text-overflow: ellipsis;
-// }
-
-// .files .error {
-// 	color: #b10e1e;
-// 	font-weight: bold;
-// 	float: left;
-// 	width: 150px;
-// 	margin-right: 20px;
-// 	overflow: hidden;
-// 	text-overflow: ellipsis;
-
-// }
-
-// .files .error svg {
-//   margin-top: 3px;
-//   vertical-align: bottom;
-//   width: 1.5em;
-// 	fill: #b10e1e;
-// }
-
-// .files .success {
-// 	color: green;
-// 	font-weight: bold;
-// 	float: left;
-// 	width: 150px;
-// 	margin-right: 20px;
-// 	overflow: hidden;
-// 	text-overflow: ellipsis;
-
-// }
-
-// .files .success svg {
-//   margin-top: 3px;
-//   vertical-align: bottom;
-//   width: 1.5em;
-//   fill: green;
-// }
-
-// .files progress {
-// 	width: 20%;
-// 	margin-top: 4px;
-// }
-
-// .files button {
-// 	font-size: 1em;
-// 	float: right;
-// }
-
 .moj-dropzone--focused {
 	background-color: $govuk-focus-colour;
   color: $govuk-focus-text-colour;
   box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
   outline: none;
+}
+
+.moj-file-list__error {
+	color: govuk-colour('red');
+	font-weight: bold;
+}
+
+.moj-file-list__success {
+	color: govuk-colour('green');
+	font-weight: bold;
+}
+
+.moj-file-list__error svg {
+   fill: currentColor;
+   float: left;
+   margin-right: govuk-spacing(2);
+}
+
+.moj-file-list__success svg {
+	fill: currentColor;
+	float: left;
+	margin-right: govuk-spacing(2);
 }

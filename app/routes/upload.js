@@ -60,15 +60,21 @@ router.post('/ajax-upload', function( req, res ){
   uploadAjax(req, res, function(error) {
     if(error) {
       if(error.code == 'FILE_TYPE') {
-        error.text = error.file.originalname + ' must be a PNG or GIF.';
+        error.message = error.file.originalname + ' must be a png or gif.';
       } else if(error.code == 'LIMIT_FILE_SIZE') {
-        error.text = error.file.originalname + ' must be smaller than 2MB.';
+        error.message = error.file.originalname + ' must be smaller than 2mb.';
       }
-      res.json({ error });
+
+      res.json({ error: error, file: error.file });
     } else {
-      res.json({ file: req.file });
+      res.json({
+        file: req.file,
+        success: {
+          message: '<a href="/blah" class="govuk-link">' + req.file.originalname + '</a> has been uploaded.'
+        }
+      });
     }
-  } )
+  } );
 } );
 
 module.exports = router;
