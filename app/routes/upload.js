@@ -37,15 +37,15 @@ function getErrorMessage(item) {
   return message;
 }
 
-router.get('/components/dropzone', function( req, res ){
+router.get('/components/multi-file-upload', function( req, res ){
   var pageObject = {
     uploadedFiles: []
   };
-  res.render( 'components/dropzone/index.html', pageObject );
+  res.render( 'components/multi-file-upload/index.html', pageObject );
 });
 
 // degraded
-router.post('/components/dropzone', function( req, res ){
+router.post('/components/multi-file-upload', function( req, res ){
   upload(req, res, function(err) {
     if(err) {
       // console.log(err);
@@ -53,7 +53,7 @@ router.post('/components/dropzone', function( req, res ){
 
     var pageObject = {
       uploadedFiles: [],
-      errorMessage: '',
+      errorMessage: null,
       errorSummary: {
         items: []
       }
@@ -65,7 +65,7 @@ router.post('/components/dropzone', function( req, res ){
       pageObject.uploadedFiles.push(o);
     });
 
-    if(req.rejectedFiles) {
+    if(req.rejectedFiles && req.rejectedFiles.length) {
       var errorMessage = '';
       req.rejectedFiles.forEach(function(item) {
         errorMessage += getErrorMessage(item);
@@ -84,7 +84,7 @@ router.post('/components/dropzone', function( req, res ){
       };
     }
 
-    res.render( 'components/dropzone/index.html', pageObject );
+    res.render( 'components/multi-file-upload/index.html', pageObject );
   });
 } );
 
