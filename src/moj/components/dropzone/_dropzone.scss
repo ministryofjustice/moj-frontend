@@ -1,12 +1,12 @@
-.moj-dropzone {
+.moj-multi-file-upload {
 	margin-bottom: 40px;
 }
 
-.moj-dropzone--enhanced button {
+.moj-multi-file-upload--enhanced button {
 	display: none;
 }
 
-.moj-dropzone__dropzone {
+.moj-multi-file-upload__dropzone {
   outline: 2px dashed $govuk-border-colour;
 	display: flex;
 	text-align: center;
@@ -14,52 +14,52 @@
 	transition: outline-offset .1s ease-in-out, background-color .1s linear;
 }
 
-.moj-dropzone__dropzone label {
+.moj-multi-file-upload__dropzone label {
 	margin-bottom: 0;
 	display: inline-block;
 	width: auto;
 }
 
-.moj-dropzone__dropzone p {
+.moj-multi-file-upload__dropzone p {
   margin-bottom: 0;
   margin-right: 10px;
   padding-top: 7px;
 }
 
-.moj-dropzone__dropzone [type=file] {
+.moj-multi-file-upload__dropzone [type=file] {
 	position: absolute;
 	left: -9999em;
 }
 
-.moj-dropzone--dragover {
+.moj-multi-file-upload--dragover {
 	background: #b1b4b6;
 	outline-color: #6f777b;
 }
 
-.moj-dropzone--focused {
+.moj-multi-file-upload--focused {
 	background-color: $govuk-focus-colour;
   color: $govuk-focus-text-colour;
   box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
   outline: none;
 }
 
-.moj-file-list__error {
+.moj-multi-file-feedback__error {
 	color: govuk-colour('red');
 	font-weight: bold;
 }
 
-.moj-file-list__success {
+.moj-multi-file-feedback__success {
 	color: govuk-colour('green');
 	font-weight: bold;
 }
 
-.moj-file-list__error svg {
+.moj-multi-file-feedback__error svg {
    fill: currentColor;
    float: left;
    margin-right: govuk-spacing(2);
 }
 
-.moj-file-list__success svg {
+.moj-multi-file-feedback__success svg {
 	fill: currentColor;
 	float: left;
 	margin-right: govuk-spacing(2);

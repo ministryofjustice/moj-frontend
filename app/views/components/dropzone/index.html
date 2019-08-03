@@ -27,7 +27,7 @@
 
 
       <form action="/components/dropzone" method="post" enctype="multipart/form-data">
-        <div class="moj-file-list" {% if uploadedFiles.length == 0 %}hidden{% endif%}>
+        <div class="moj-multi-file-feedback" {% if uploadedFiles.length == 0 %}hidden{% endif%}>
           <h2 class="govuk-heading-m">Files added</h2>
 
           <dl class="govuk-summary-list">
@@ -51,7 +51,7 @@
           </dl>
         </div>
 
-        <div class="moj-dropzone">
+        <div class="moj-multi-file-upload">
           {{ govukFileUpload({
             id: "documents",
             name: "documents",
@@ -87,9 +87,10 @@
 
   <script>
     new MOJFrontend.Dropzone({
-      container: $('.moj-dropzone'),
-      listContainer: $('.moj-file-list'),
-      uploadStatusText: 'Uploading files, please wait.'
+      dropzoneContainer: $('.moj-multi-file-upload'),
+      feedbackAreaContainer: $('.moj-multi-file-feedback'),
+      uploadUrl: '/ajax-upload',
+      uploadStatusText: 'Uploading files, please wait.',
     });
   </script>
 
