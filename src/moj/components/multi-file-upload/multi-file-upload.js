@@ -70,6 +70,9 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
     this.options.feedbackAreaContainer.removeAttr('hidden');
     this.status.html(this.options.uploadStatusText);
     this.uploadFiles(e.currentTarget.files);
+    this.fileInput.replaceWith($(e.currentTarget).val('').clone(true));
+    this.setupFileInput();
+    this.fileInput.focus();
   };
 
   MOJFrontend.MultiFileUpload.prototype.onFileFocus = function(e) {
@@ -81,7 +84,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
   };
 
   MOJFrontend.MultiFileUpload.prototype.getSuccessHtml = function(success) {
-    return '<span class="moj-multi-file-feedback__success"> <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path d="M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z"/></svg> ' + success.message + '</span>';
+    return '<span class="moj-multi-file-feedback__success"> <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path d="M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z"/></svg> ' + success.messageHtml + '</span>';
   };
 
   MOJFrontend.MultiFileUpload.prototype.getErrorHtml = function(error) {
@@ -118,7 +121,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
           this.status.html(response.error.message);
         } else {
           item.find('.govuk-summary-list__value').html(this.getSuccessHtml(response.success));
-          this.status.html(response.success.message);
+          this.status.html(response.success.messageText);
         }
 
         var html = '<button class="moj-multi-file-feedback__delete govuk-button govuk-button--secondary govuk-!-margin-bottom-0" type="button">';

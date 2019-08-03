@@ -61,7 +61,7 @@ router.post('/components/multi-file-upload', function( req, res ){
 
     req.files.forEach(function(file) {
       var o = file;
-      o.messageHtml = `<span class="moj-file-list__success"> <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path d="M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z"/></svg> <a href="/${file.path}">${file.originalname}</a> has been uploaded</span>`;
+      o.messageHtml = `<span class="moj-multi-file-feedback__success"> <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path d="M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z"/></svg> <a href="/${file.path}">${file.originalname}</a> has been uploaded</span>`;
       pageObject.uploadedFiles.push(o);
     });
 
@@ -120,7 +120,8 @@ router.post('/ajax-upload', function( req, res ){
       res.json({
         file: req.file,
         success: {
-          message: '<a href="/blah" class="govuk-link">' + req.file.originalname + '</a> has been uploaded'
+          messageHtml: '<a href="/blah" class="govuk-link">' + req.file.originalname + '</a> has been uploaded',
+          messageText: req.file.originalname + ' has been uploaded'
         }
       });
     }
