@@ -44,8 +44,46 @@ const upload = multer( {
 
 router.get('/components/multi-file-upload', function( req, res ){
   var pageObject = {
-    uploadedFiles: []
+    uploadedFiles: [],
+    errorMessage: null,
+    errorSummary: {
+      items: []
+    }
   };
+
+  // 1. UPLOADED FILES
+
+  if(req.session.uploadedFiles) {
+    req.session.uploadedFiles.forEach(function(file) {
+      var o = file;
+      o.messageHtml = `<span class="moj-multi-file-feedback__success"> <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path d="M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z"/></svg> <a href="/${file.path}">${file.originalname}</a> has been uploaded</span>`;
+      pageObject.uploadedFiles.push(o);
+    });
+  }
+
+  // 2. REJECTED FILES
+
+  if(req.session.rejectedFiles && req.session.rejectedFiles.length) {
+    var errorMessage = '';
+    req.session.rejectedFiles.forEach(function(item) {
+      errorMessage += getErrorMessage(item);
+      errorMessage += '<br>';
+    });
+
+    req.session.rejectedFiles.forEach(function(item) {
+      pageObject.errorSummary.items.push({
+        text: getErrorMessage(item),
+        href: '#documents'
+      });
+    });
+
+    pageObject.errorMessage = {
+      html: errorMessage
+    };
+  }
+
+  req.session.rejectedFiles = null;
+
   res.render( 'components/multi-file-upload/index.html', pageObject );
 });
 
@@ -57,40 +95,18 @@ router.post('/components/multi-file-upload', function( req, res ){
       // console.log(err);
     }
 
-    var pageObject = {
-      uploadedFiles: [],
-      errorMessage: null,
-      errorSummary: {
-        items: []
-      }
-    };
-
-    req.files.forEach(function(file) {
-      var o = file;
-      o.messageHtml = `<span class="moj-multi-file-feedback__success"> <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path d="M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z"/></svg> <a href="/${file.path}">${file.originalname}</a> has been uploaded</span>`;
-      pageObject.uploadedFiles.push(o);
-    });
-
-    if(req.rejectedFiles && req.rejectedFiles.length) {
-      var errorMessage = '';
-      req.rejectedFiles.forEach(function(item) {
-        errorMessage += getErrorMessage(item);
-        errorMessage += '<br>';
-      });
-
-      req.rejectedFiles.forEach(function(item) {
-        pageObject.errorSummary.items.push({
-          text: getErrorMessage(item),
-          href: '#documents'
-        });
-      });
-
-      pageObject.errorMessage = {
-        html: errorMessage
-      };
+    // remember uploaded files
+    if(!req.session.uploadedFiles) {
+      req.session.uploadedFiles = [];
     }
+    req.session.uploadedFiles = req.session.uploadedFiles.concat(req.files);
 
-    res.render( 'components/multi-file-upload/index.html', pageObject );
+    // temp remember rejected files and error
+    req.session.rejectedFiles = req.rejectedFiles;
+
+    res.redirect('/components/multi-file-upload');
+
+    // res.render( 'components/multi-file-upload/index.html', pageObject );
   });
 } );
 

@@ -7,6 +7,11 @@ const browserSync = require('browser-sync');
 const dotenv = require('dotenv');
 const express = require('express');
 const nunjucks = require('nunjucks');
+const sessionInMemory = require('express-session');
+
+let sessionOptions = {
+  secret: 'moj-frontend'
+};
 
 // Run before other code to make sure variables from .env are available
 dotenv.config();
@@ -122,10 +127,18 @@ app.use('/public', express.static(path.join(__dirname, '/public')));
 app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')));
 app.use('/assets', express.static(path.join(__dirname, 'src', 'moj', 'assets')));
 
+app.use(sessionInMemory(Object.assign(sessionOptions, {
+  name: 'moj-frontend',
+  resave: false,
+  saveUninitialized: false
+})));
+
 // Use routes
 app.use(routes);
 app.use(uploadRoutes);
 app.use(autoRoutes); // must be the last one
+
+
 
 const nodeModulesExists = fs.existsSync(path.join(__dirname, '/node_modules'));
 if (!nodeModulesExists) {
