@@ -2,8 +2,22 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 
+function getErrorMessage(item) {
+  var message = '';
+  if(item.error.code == 'FILE_TYPE') {
+    message += item.file.originalname + ' must be a png or gif';
+  } else if(item.error.code == 'LIMIT_FILE_SIZE') {
+    message += item.file.originalname + ' must be smaller than 2mb';
+  }
+  return message;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+// NO JAVASCRIPT
+////////////////////////////////////////////////////////////////////////////////////////
+
 const upload = multer( {
-  dest: './tmp-uploads',
+  dest: './public/uploads',
   limits: { fileSize: 2000000 },
   fileFilter: function( req, file, cb ){
     let ok = false;
@@ -27,15 +41,6 @@ const upload = multer( {
 } ).array('documents', 10);
 
 
-function getErrorMessage(item) {
-  var message = '';
-  if(item.error.code == 'FILE_TYPE') {
-    message += item.file.originalname + ' must be a png or gif';
-  } else if(item.error.code == 'LIMIT_FILE_SIZE') {
-    message += item.file.originalname + ' must be smaller than 2mb';
-  }
-  return message;
-}
 
 router.get('/components/multi-file-upload', function( req, res ){
   var pageObject = {
@@ -44,7 +49,8 @@ router.get('/components/multi-file-upload', function( req, res ){
   res.render( 'components/multi-file-upload/index.html', pageObject );
 });
 
-// degraded
+
+
 router.post('/components/multi-file-upload', function( req, res ){
   upload(req, res, function(err) {
     if(err) {
@@ -88,8 +94,17 @@ router.post('/components/multi-file-upload', function( req, res ){
   });
 } );
 
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+// AJAX
+////////////////////////////////////////////////////////////////////////////////////////
+
 const uploadAjax = multer( {
-  dest: './tmp-uploads',
+  dest: './public/uploads',
   limits: { fileSize: 2000000 },
   fileFilter: function( req, file, cb ){
     let ok = false;
@@ -105,7 +120,6 @@ const uploadAjax = multer( {
   }
 } ).single('documents');
 
-// ajax
 router.post('/ajax-upload', function( req, res ){
   uploadAjax(req, res, function(error) {
     if(error) {
@@ -114,7 +128,6 @@ router.post('/ajax-upload', function( req, res ){
       } else if(error.code == 'LIMIT_FILE_SIZE') {
         error.message = error.file.originalname + ' must be smaller than 2mb';
       }
-
       res.json({ error: error, file: error.file });
     } else {
       res.json({
