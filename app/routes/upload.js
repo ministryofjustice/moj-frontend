@@ -154,6 +154,8 @@ router.post('/ajax-upload', function( req, res ){
       res.json({ error: error, file: error.file });
     } else {
 
+      console.log(req.session.uploadedFiles);
+
       if(!req.session.uploadedFiles) {
         req.session.uploadedFiles = [];
       }
@@ -169,5 +171,14 @@ router.post('/ajax-upload', function( req, res ){
     }
   } );
 } );
+
+router.post('/ajax-delete', function( req, res ){
+
+  req.session.uploadedFiles = removeFileFromFileList(req.session.uploadedFiles, req.body.filename);
+
+  res.json({
+
+  })
+});
 
 module.exports = router;

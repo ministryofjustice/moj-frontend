@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 const express = require('express');
 const nunjucks = require('nunjucks');
 const sessionInMemory = require('express-session');
-
+const bodyParser = require('body-parser');
 let sessionOptions = {
   secret: 'moj-frontend'
 };
@@ -46,6 +46,8 @@ const appViews = [
 
 // Application
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Find a free port and start the server
 utils.findAvailablePort(app, (port) => {

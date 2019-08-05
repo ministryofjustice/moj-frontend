@@ -25,7 +25,21 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
   };
 
   MOJFrontend.MultiFileUpload.prototype.onFileDeleteClick = function(e) {
-    $(e.target).parent().parent().remove();
+    $(e.currentTarget).parent().parent().remove();
+
+    $.ajax({
+      url: this.options.deleteUrl,
+      type: 'post',
+      dataType: 'json',
+      data: { filename: $(e.currentTarget).attr('data-filename') },
+      success: $.proxy(function(response){
+        if(response.error) {
+          console.log('error');
+        } else {
+          console.log('able to delete');
+        }
+      }, this)
+    });
     if(this.options.feedbackAreaContainer.find('.govuk-summary-list div').length === 0) {
       this.options.feedbackAreaContainer.attr('hidden', '');
     }
@@ -124,7 +138,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
           this.status.html(response.success.messageText);
         }
 
-        var html = '<button class="moj-multi-file-feedback__delete govuk-button govuk-button--secondary govuk-!-margin-bottom-0" type="button">';
+        var html = '<button class="moj-multi-file-feedback__delete govuk-button govuk-button--secondary govuk-!-margin-bottom-0" type="button" data-filename="' + response.file.filename + '">';
         html += '      Delete <span class="govuk-visually-hidden">' + response.file.originalname + '</span>';
         html += '   </button>';
 
