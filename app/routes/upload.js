@@ -87,7 +87,11 @@ router.get('/components/multi-file-upload', function( req, res ){
   res.render( 'components/multi-file-upload/index.html', pageObject );
 });
 
-
+function removeFileFromFileList(filelist, filename) {
+  return filelist.filter(function(item, index, array) {
+    return item.filename !== filename;
+  });
+}
 
 router.post('/components/multi-file-upload', function( req, res ){
   upload(req, res, function(err) {
@@ -95,25 +99,28 @@ router.post('/components/multi-file-upload', function( req, res ){
       // console.log(err);
     }
 
-    // remember uploaded files
+    var fileId = null;
+    for (let [key, value] of Object.entries(req.body)) {
+      if(key.indexOf('delete-') > -1) {
+        fileId = key.substring(key.indexOf('-')+1, key.length);
+      }
+    }
+
     if(!req.session.uploadedFiles) {
       req.session.uploadedFiles = [];
     }
     req.session.uploadedFiles = req.session.uploadedFiles.concat(req.files);
 
-    // temp remember rejected files and error
+    if(fileId) {
+      req.session.uploadedFiles = removeFileFromFileList(req.session.uploadedFiles, fileId);
+    }
+
+    // no concat because errors are discarded after use anyway
     req.session.rejectedFiles = req.rejectedFiles;
 
     res.redirect('/components/multi-file-upload');
-
-    // res.render( 'components/multi-file-upload/index.html', pageObject );
   });
 } );
-
-
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // AJAX
@@ -146,11 +153,17 @@ router.post('/ajax-upload', function( req, res ){
       }
       res.json({ error: error, file: error.file });
     } else {
+
+      if(!req.session.uploadedFiles) {
+        req.session.uploadedFiles = [];
+      }
+      req.session.uploadedFiles.push(req.file);
+
       res.json({
         file: req.file,
         success: {
-          messageHtml: '<a href="/blah" class="govuk-link">' + req.file.originalname + '</a> has been uploaded',
-          messageText: req.file.originalname + ' has been uploaded'
+          messageHtml: `<a href="${req.file.path}" class="govuk-link"> ${req.file.originalname}</a> has been uploaded`,
+          messageText: `${req.file.originalname} has been uploaded`
         }
       });
     }
