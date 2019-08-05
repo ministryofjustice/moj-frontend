@@ -154,8 +154,6 @@ router.post('/ajax-upload', function( req, res ){
       res.json({ error: error, file: error.file });
     } else {
 
-      console.log(req.session.uploadedFiles);
-
       if(!req.session.uploadedFiles) {
         req.session.uploadedFiles = [];
       }
