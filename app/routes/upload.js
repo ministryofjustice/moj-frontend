@@ -99,20 +99,13 @@ router.post('/components/multi-file-upload', function( req, res ){
       // console.log(err);
     }
 
-    var fileId = null;
-    for (let [key, value] of Object.entries(req.body)) {
-      if(key.indexOf('delete-') > -1) {
-        fileId = key.substring(key.indexOf('-')+1, key.length);
-      }
-    }
-
     if(!req.session.uploadedFiles) {
       req.session.uploadedFiles = [];
     }
     req.session.uploadedFiles = req.session.uploadedFiles.concat(req.files);
 
-    if(fileId) {
-      req.session.uploadedFiles = removeFileFromFileList(req.session.uploadedFiles, fileId);
+    if(req.body.delete) {
+      req.session.uploadedFiles = removeFileFromFileList(req.session.uploadedFiles, req.body.delete);
     }
 
     // no concat because errors are discarded after use anyway
@@ -171,12 +164,8 @@ router.post('/ajax-upload', function( req, res ){
 } );
 
 router.post('/ajax-delete', function( req, res ){
-
-  req.session.uploadedFiles = removeFileFromFileList(req.session.uploadedFiles, req.body.filename);
-
-  res.json({
-
-  })
+  req.session.uploadedFiles = removeFileFromFileList(req.session.uploadedFiles, req.body.delete);
+  res.json({});
 });
 
 module.exports = router;

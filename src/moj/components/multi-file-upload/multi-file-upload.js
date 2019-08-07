@@ -9,13 +9,13 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
     $.extend(params, this.defaultParams);
 
     this.params = params;
+    this.input = this.params.dropzoneContainer.find('.moj-multi-file-upload__input');
     this.params.dropzoneContainer.addClass('moj-multi-file-upload--enhanced');
-    this.input = this.params.dropzoneContainer.find('.govuk-file-upload');
     this.setupDropzone();
     this.setupLabel();
     this.setupFileInput();
     this.setupStatusBox();
-    this.params.feedbackAreaContainer.on('click', '.moj-multi-file-feedback__delete', $.proxy(this, 'onFileDeleteClick'))
+    this.params.feedbackAreaContainer.on('click', '.moj-multi-file-feedback__delete', $.proxy(this, 'onFileDeleteClick'));
   };
 
   MOJFrontend.MultiFileUpload.prototype.setupDropzone = function() {
@@ -33,24 +33,28 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
   };
 
   MOJFrontend.MultiFileUpload.prototype.onFileDeleteClick = function(e) {
-    $(e.currentTarget).parent().parent().remove();
+    e.preventDefault(); // if user refreshes page and then deletes
+    var button = $(e.currentTarget);
+    var data = {};
+    data[button[0].name] = button[0].value;
 
     $.ajax({
       url: this.params.deleteUrl,
       type: 'post',
       dataType: 'json',
-      data: { filename: $(e.currentTarget).attr('data-filename') },
+      data: data,
       success: $.proxy(function(response){
         if(response.error) {
           console.log('error');
         } else {
-          console.log('able to delete');
+          button.parent().parent().remove();
+          if(this.params.feedbackAreaContainer.find('.govuk-summary-list div').length === 0) {
+            this.params.feedbackAreaContainer.addClass('moj-hidden');
+          }
         }
       }, this)
     });
-    if(this.params.feedbackAreaContainer.find('.govuk-summary-list div').length === 0) {
-      this.params.feedbackAreaContainer.addClass('moj-hidden');
-    }
+
   };
 
   MOJFrontend.MultiFileUpload.prototype.setupFileInput = function() {
@@ -146,9 +150,9 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
           this.status.html(response.success.messageText);
         }
 
-        var html = '<button class="moj-multi-file-feedback__delete govuk-button govuk-button--secondary govuk-!-margin-bottom-0" type="button" data-filename="' + response.file.filename + '">';
-        html += '      Delete <span class="govuk-visually-hidden">' + response.file.originalname + '</span>';
-        html += '   </button>';
+        var html = '<button class="moj-multi-file-feedback__delete govuk-button govuk-button--secondary govuk-!-margin-bottom-0" type="button" name="delete" value="' + response.file.filename + '">';
+        html += 'Delete <span class="govuk-visually-hidden">' + response.file.originalname + '</span>';
+        html += '</button>';
 
         item.find('.govuk-summary-list__actions').append(html);
       }, this),
