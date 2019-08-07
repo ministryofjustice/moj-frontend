@@ -45,7 +45,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
       data: data,
       success: $.proxy(function(response){
         if(response.error) {
-          console.log('error');
+          // handle error
         } else {
           button.parent().parent().remove();
           if(this.params.feedbackAreaContainer.find('.govuk-summary-list div').length === 0) {
