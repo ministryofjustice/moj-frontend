@@ -26,7 +26,7 @@
       {% endif %}
 
       <form action="/components/multi-file-upload" method="post" enctype="multipart/form-data">
-        <div class="moj-multi-file-feedback" {% if uploadedFiles.length == 0 %}hidden{% endif%}>
+        <div class="moj-multi-file-feedback {% if uploadedFiles.length == 0 %}moj-hidden{% endif%}">
           <h2 class="govuk-heading-m">Files added</h2>
 
           <dl class="govuk-summary-list">
@@ -88,8 +88,7 @@
       dropzoneContainer: $('.moj-multi-file-upload'),
       feedbackAreaContainer: $('.moj-multi-file-feedback'),
       uploadUrl: '/ajax-upload',
-      deleteUrl: '/ajax-delete',
-      uploadStatusText: 'Uploading files, please wait.',
+      deleteUrl: '/ajax-delete'
     });
   </script>
 

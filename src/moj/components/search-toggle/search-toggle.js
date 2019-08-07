@@ -8,10 +8,10 @@ MOJFrontend.SearchToggle = function(options) {
 MOJFrontend.SearchToggle.prototype.onToggleButtonClick = function() {
   if(this.toggleButton.attr('aria-expanded') == 'false') {
     this.toggleButton.attr('aria-expanded', 'true');
-    this.options.search.container.removeClass('moj-hidden');
+    this.options.search.container.removeClass('moj-js-hidden');
     this.options.search.container.find('input').first().focus();
 	} else {
-		this.options.search.container.addClass('moj-hidden');
+		this.options.search.container.addClass('moj-js-hidden');
 		this.toggleButton.attr('aria-expanded', 'false');
 	}
 };

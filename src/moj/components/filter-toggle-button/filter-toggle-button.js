@@ -61,13 +61,13 @@ MOJFrontend.FilterToggleButton.prototype.removeCloseButton = function() {
 
 MOJFrontend.FilterToggleButton.prototype.hideMenu = function() {
   this.menuButton.attr('aria-expanded', 'false');
-  this.options.filter.container.addClass('moj-hidden');
+  this.options.filter.container.addClass('moj-js-hidden');
   this.menuButton.text(this.options.toggleButton.showText);
 };
 
 MOJFrontend.FilterToggleButton.prototype.showMenu = function() {
   this.menuButton.attr('aria-expanded', 'true');
-  this.options.filter.container.removeClass('moj-hidden');
+  this.options.filter.container.removeClass('moj-js-hidden');
   this.menuButton.text(this.options.toggleButton.hideText);
 };
 
