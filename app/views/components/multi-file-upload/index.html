@@ -28,28 +28,8 @@
       {% endif %}
 
       <form action="/components/multi-file-upload" method="post" enctype="multipart/form-data">
-        <div class="moj-multi-file-feedback {% if uploadedFiles.length == 0 %}moj-hidden{% endif%}">
-          <h2 class="govuk-heading-m">Files added</h2>
 
-          <dl class="govuk-summary-list">
-            {% if uploadedFiles and uploadedFiles.length > 0 %}
-              {% for file in uploadedFiles %}
-                <div class="govuk-summary-list__row">
-                  <dd class="govuk-summary-list__value">
-                    {{file.messageHtml | safe}}
-                  </dd>
-                  <dd class="govuk-summary-list__actions">
-                    <button type="submit" name="delete" class="moj-multi-file-feedback__delete govuk-button govuk-button--secondary govuk-!-margin-bottom-0" value="{{file.filename}}">
-                      Delete <span class="govuk-visually-hidden">{{file.originalname}}</span>
-                    </button>
-                  </dd>
-                </div>
-              {% endfor %}
-            {% endif %}
-          </dl>
-        </div>
-
-        <div class="moj-multi-file-upload">
+        {% set uploadHtml %}
           {{ govukFileUpload({
             id: "documents",
             name: "documents",
@@ -58,17 +38,23 @@
               text: "Upload a file",
               classes: 'govuk-label--m'
             },
-            attributes: {
-              multiple: ''
-            },
+            attributes: { multiple: '' },
             errorMessage: errorMessage
           }) }}
 
           {{govukButton({
             text: 'Upload file',
-            classes: 'govuk-button--secondary'
+            classes: 'govuk-button--secondary moj-multi-file-upload__button'
           })}}
-        </div>
+        {% endset %}
+
+        {{ mojMultiFileUpload({
+          uploadedFiles: {
+            heading: { text: 'Files added' },
+            items: uploadedFiles
+          },
+          uploadHtml: uploadHtml
+        }) }}
 
         {{govukButton({
           text: 'Continue'
@@ -87,8 +73,7 @@
 
   <script>
     new MOJFrontend.MultiFileUpload({
-      dropzoneContainer: $('.moj-multi-file-upload'),
-      feedbackAreaContainer: $('.moj-multi-file-feedback'),
+      container: $('.moj-multi-file-upload'),
       uploadUrl: '/ajax-upload',
       deleteUrl: '/ajax-delete'
     });

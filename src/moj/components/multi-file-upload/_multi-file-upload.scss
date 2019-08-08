@@ -2,7 +2,7 @@
 	margin-bottom: 40px;
 }
 
-.moj-multi-file-upload--enhanced button {
+.moj-multi-file-upload--enhanced .moj-multi-file-upload__button {
 	display: none;
 }
 
@@ -43,23 +43,23 @@
   outline: none;
 }
 
-.moj-multi-file-feedback__error {
+.moj-multi-file-upload__error {
 	color: govuk-colour('red');
 	font-weight: bold;
 }
 
-.moj-multi-file-feedback__success {
+.moj-multi-file-upload__success {
 	color: govuk-colour('green');
 	font-weight: bold;
 }
 
-.moj-multi-file-feedback__error svg {
+.moj-multi-file-upload__error svg {
    fill: currentColor;
    float: left;
    margin-right: govuk-spacing(2);
 }
 
-.moj-multi-file-feedback__success svg {
+.moj-multi-file-upload__success svg {
 	fill: currentColor;
 	float: left;
 	margin-right: govuk-spacing(2);
