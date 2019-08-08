@@ -65,7 +65,7 @@ router.get('/components/multi-file-upload', function( req, res ){
       o.fileName = file.filename;
       o.deleteButton = {
         text: 'Delete'
-      }
+      };
       pageObject.uploadedFiles.push(o);
     });
   }

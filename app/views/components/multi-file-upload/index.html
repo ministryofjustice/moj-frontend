@@ -3,9 +3,7 @@
 {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 
 {% block body %}
-
   <div class="govuk-grid-row">
-
     <div class="govuk-grid-column-full">
 
       {{ govukBackLink({
@@ -16,56 +14,53 @@
       <h1 class="govuk-heading-xl">
         <span class="govuk-caption-xl">Components</span> Multi file upload
       </h1>
-      <div class="govuk-grid-row">
 
+      <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
-      {% if errorSummary.items.length %}
-        {{ govukErrorSummary({
-          titleText: 'There is a problem',
-          errorList: errorSummary.items
-        }) }}
-      {% endif %}
+          {% if errorSummary.items.length %}
+            {{ govukErrorSummary({
+              titleText: 'There is a problem',
+              errorList: errorSummary.items
+            }) }}
+          {% endif %}
 
-      <form action="/components/multi-file-upload" method="post" enctype="multipart/form-data">
+          <form action="/components/multi-file-upload" method="post" enctype="multipart/form-data">
+            {% set uploadHtml %}
+              {{ govukFileUpload({
+                id: "documents",
+                name: "documents",
+                classes: 'moj-multi-file-upload__input',
+                label: {
+                  text: "Upload a file",
+                  classes: 'govuk-label--m'
+                },
+                attributes: { multiple: '' },
+                errorMessage: errorMessage
+              }) }}
 
-        {% set uploadHtml %}
-          {{ govukFileUpload({
-            id: "documents",
-            name: "documents",
-            classes: 'moj-multi-file-upload__input',
-            label: {
-              text: "Upload a file",
-              classes: 'govuk-label--m'
-            },
-            attributes: { multiple: '' },
-            errorMessage: errorMessage
-          }) }}
+              {{govukButton({
+                text: 'Upload file',
+                classes: 'govuk-button--secondary moj-multi-file-upload__button'
+              })}}
+            {% endset %}
 
-          {{govukButton({
-            text: 'Upload file',
-            classes: 'govuk-button--secondary moj-multi-file-upload__button'
-          })}}
-        {% endset %}
+            {{ mojMultiFileUpload({
+              uploadedFiles: {
+                heading: { text: 'Files added' },
+                items: uploadedFiles
+              },
+              uploadHtml: uploadHtml
+            }) }}
 
-        {{ mojMultiFileUpload({
-          uploadedFiles: {
-            heading: { text: 'Files added' },
-            items: uploadedFiles
-          },
-          uploadHtml: uploadHtml
-        }) }}
-
-        {{govukButton({
-          text: 'Continue'
-        })}}
-      </form>
+            {{govukButton({
+              text: 'Continue'
+            })}}
+          </form>
+        </div>
       </div>
-      </div>
-
+    </div>
   </div>
-
-</div>
 
 {% endblock %}
 
