@@ -95,7 +95,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
 
   MOJFrontend.MultiFileUpload.prototype.getFileRowHtml = function(file) {
     var html = '';
-    html += '<div class="govuk-summary-list__row">';
+    html += '<div class="govuk-summary-list__row moj-multi-file-upload__row">';
     html += '  <dd class="govuk-summary-list__value moj-multi-file-upload__message">';
     html +=       '<span class="moj-multi-file-upload__filename">'+file.name+'</span>';
     html +=       '<span class="moj-multi-file-upload__progress">0%</span>';
@@ -155,6 +155,8 @@ MOJFrontend.MultiFileUpload.prototype.onFileDeleteClick = function(e) {
   var data = {};
   data[button[0].name] = button[0].value;
 
+  console.log(data);
+
   $.ajax({
     url: this.params.deleteUrl,
     type: 'post',
@@ -164,7 +166,7 @@ MOJFrontend.MultiFileUpload.prototype.onFileDeleteClick = function(e) {
       if(response.error) {
         // handle error
       } else {
-        button.parent().parent().remove();
+        button.parents('.moj-multi-file-upload__row').remove();
         if(this.feedbackContainer.find('.moj-multi-file-upload__row').length === 0) {
           this.feedbackContainer.addClass('moj-hidden');
         }
