@@ -26,7 +26,7 @@ const upload = multer( {
       req.rejectedFiles = [];
     }
 
-    if( file.mimetype !== 'image/png' && file.mimetype !== 'image/gif' ) {
+    if( file.mimetype !== 'image/png' && file.mimetype !== 'image/gif' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg') {
       cb(null, false);
       req.rejectedFiles.push({
         file: file,
@@ -133,7 +133,7 @@ const uploadAjax = multer( {
   limits: { fileSize: 2000000 },
   fileFilter: function( req, file, cb ){
     let ok = false;
-    if( file.mimetype !== 'image/png' && file.mimetype !== 'image/gif'){
+    if( file.mimetype !== 'image/png' && file.mimetype !== 'image/gif' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg'){
       return cb({
         code: 'FILE_TYPE',
         field: 'documents',
