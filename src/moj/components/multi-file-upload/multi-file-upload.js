@@ -147,29 +147,28 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
       }
     });
   };
-}
 
-MOJFrontend.MultiFileUpload.prototype.onFileDeleteClick = function(e) {
-  e.preventDefault(); // if user refreshes page and then deletes
-  var button = $(e.currentTarget);
-  var data = {};
-  data[button[0].name] = button[0].value;
+  MOJFrontend.MultiFileUpload.prototype.onFileDeleteClick = function(e) {
+    e.preventDefault(); // if user refreshes page and then deletes
+    var button = $(e.currentTarget);
+    var data = {};
+    data[button[0].name] = button[0].value;
 
-  $.ajax({
-    url: this.params.deleteUrl,
-    type: 'post',
-    dataType: 'json',
-    data: data,
-    success: $.proxy(function(response){
-      if(response.error) {
-        // handle error
-      } else {
-        button.parents('.moj-multi-file-upload__row').remove();
-        if(this.feedbackContainer.find('.moj-multi-file-upload__row').length === 0) {
-          this.feedbackContainer.addClass('moj-hidden');
+    $.ajax({
+      url: this.params.deleteUrl,
+      type: 'post',
+      dataType: 'json',
+      data: data,
+      success: $.proxy(function(response){
+        if(response.error) {
+          // handle error
+        } else {
+          button.parents('.moj-multi-file-upload__row').remove();
+          if(this.feedbackContainer.find('.moj-multi-file-upload__row').length === 0) {
+            this.feedbackContainer.addClass('moj-hidden');
+          }
         }
-      }
-    }, this)
-  });
-
-};
+      }, this)
+    });
+  };
+}
