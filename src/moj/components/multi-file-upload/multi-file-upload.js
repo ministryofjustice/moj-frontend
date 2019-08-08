@@ -155,8 +155,6 @@ MOJFrontend.MultiFileUpload.prototype.onFileDeleteClick = function(e) {
   var data = {};
   data[button[0].name] = button[0].value;
 
-  console.log(data);
-
   $.ajax({
     url: this.params.deleteUrl,
     type: 'post',
