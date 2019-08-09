@@ -151,7 +151,8 @@ router.post('/ajax-upload', function( req, res ){
       if(error.code == 'FILE_TYPE') {
         error.message = error.file.originalname + ' must be a png or gif';
       } else if(error.code == 'LIMIT_FILE_SIZE') {
-        error.message = error.file.originalname + ' must be smaller than 2mb';
+        // error.message = error.file.originalname + ' must be smaller than 2mb';
+        error.message = 'The file must be smaller than 2mb';
       }
       res.json({ error: error, file: error.file });
     } else {
