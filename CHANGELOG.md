@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.0.10-alpha
+
+- Multi file upload added
+- Fix prototype kit extension paths
+
 ## v0.0.9-alpha
 
 - Change namespacing. See [issue 6](https://github.com/ministryofjustice/mojdt-frontend/issues/6)
