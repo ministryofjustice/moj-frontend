@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+const cache = require( '../../lib/cache' );
 
 function getErrorMessage(item) {
   var message = '';
@@ -10,6 +11,23 @@ function getErrorMessage(item) {
     message += item.file.originalname + ' must be smaller than 2mb';
   }
   return message;
+}
+
+function getUploadedFiles( req, res, next ){
+
+  if( !req.session.uploadId ){
+    req.session.uploadId = req.sessionID;
+  }
+
+  let files = cache.get( req.session.uploadId );
+
+  if( !files ){
+    files = [];
+    cache.set( req.session.uploadId, files );
+  }
+
+  req.uploadedFiles = files;
+  next();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -42,7 +60,10 @@ const upload = multer( {
 
 
 
-router.get('/components/multi-file-upload', function( req, res ){
+router.get('/components/multi-file-upload', getUploadedFiles, function( req, res ){
+
+  const { uploadedFiles } = req;
+
   var pageObject = {
     uploadedFiles: [],
     errorMessage: null,
@@ -53,8 +74,8 @@ router.get('/components/multi-file-upload', function( req, res ){
 
   // 1. UPLOADED FILES
 
-  if(req.session.uploadedFiles) {
-    req.session.uploadedFiles.forEach(function(file) {
+  if(uploadedFiles.length) {
+    uploadedFiles.forEach(function(file) {
       var o = file;
       o.message = {
         html: `<span class="moj-multi-file-upload__success"> <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path d="M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z"/></svg> <a href="/${file.path}">${file.originalname}</a> has been uploaded</span>`
@@ -96,25 +117,24 @@ router.get('/components/multi-file-upload', function( req, res ){
   res.render( 'components/multi-file-upload/index.html', pageObject );
 });
 
-function removeFileFromFileList(filelist, filename) {
-  return filelist.filter(function(item, index, array) {
-    return item.filename !== filename;
-  });
+function removeFileFromFileList(fileList, filename) {
+
+  const index = fileList.findIndex( (item ) => item.filename === filename );
+  if( index >= 0 ){
+    fileList.splice( index, 1 );
+  }
 }
 
-router.post('/components/multi-file-upload', function( req, res ){
+router.post('/components/multi-file-upload', getUploadedFiles, function( req, res ){
   upload(req, res, function(err) {
     if(err) {
       // console.log(err);
     }
 
-    if(!req.session.uploadedFiles) {
-      req.session.uploadedFiles = [];
-    }
-    req.session.uploadedFiles = req.session.uploadedFiles.concat(req.files);
+    req.uploadedFiles.push(...req.files);
 
     if(req.body.delete) {
-      req.session.uploadedFiles = removeFileFromFileList(req.session.uploadedFiles, req.body.delete);
+      removeFileFromFileList(req.uploadedFiles, req.body.delete);
     }
 
     // no concat because errors are discarded after use anyway
@@ -145,8 +165,9 @@ const uploadAjax = multer( {
   }
 } ).single('documents');
 
-router.post('/ajax-upload', function( req, res ){
-  uploadAjax(req, res, function(error) {
+router.post('/ajax-upload', getUploadedFiles, function( req, res ){
+
+  uploadAjax(req, res, function(error, val1, val2) {
     if(error) {
       if(error.code == 'FILE_TYPE') {
         error.message = error.file.originalname + ' must be a png or gif';
@@ -157,10 +178,7 @@ router.post('/ajax-upload', function( req, res ){
       res.json({ error: error, file: error.file });
     } else {
 
-      if(!req.session.uploadedFiles) {
-        req.session.uploadedFiles = [];
-      }
-      req.session.uploadedFiles.push(req.file);
+      req.uploadedFiles.push(req.file);
 
       res.json({
         file: req.file,
@@ -173,8 +191,8 @@ router.post('/ajax-upload', function( req, res ){
   } );
 } );
 
-router.post('/ajax-delete', function( req, res ){
-  req.session.uploadedFiles = removeFileFromFileList(req.session.uploadedFiles, req.body.delete);
+router.post('/ajax-delete', getUploadedFiles, function( req, res ){
+  removeFileFromFileList(req.uploadedFiles, req.body.delete);
   res.json({});
 });
 
