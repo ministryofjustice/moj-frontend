@@ -150,7 +150,7 @@ router.post('/components/multi-file-upload', getUploadedFiles, function( req, re
 
 const uploadAjax = multer( {
   dest: './public/uploads',
-  limits: { fileSize: 20000 },
+  limits: { fileSize: 2000000 },
   fileFilter: function( req, file, cb ){
     let ok = false;
     if( file.mimetype !== 'image/png' && file.mimetype !== 'image/gif' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg'){
