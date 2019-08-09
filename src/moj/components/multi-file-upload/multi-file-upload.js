@@ -149,11 +149,14 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
   };
 
   MOJFrontend.MultiFileUpload.prototype.onFileDeleteClick = function(e) {
+    alert(1);
     e.preventDefault(); // if user refreshes page and then deletes
+    alert(2);
     var button = $(e.currentTarget);
+    alert(button);
     var data = {};
     data[button[0].name] = button[0].value;
-
+    alert('before ajax');
     $.ajax({
       url: this.params.deleteUrl,
       type: 'post',
