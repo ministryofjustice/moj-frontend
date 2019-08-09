@@ -1,3 +1,7 @@
-.js-enabled .moj-hidden {
+.js-enabled .moj-js-hidden {
+  @include moj-hidden();
+}
+
+.moj-hidden {
   @include moj-hidden();
 }

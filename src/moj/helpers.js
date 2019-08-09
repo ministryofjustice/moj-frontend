@@ -25,3 +25,18 @@ MOJFrontend.addAttributeValue = function(el, attr, value) {
     }
   }
 };
+
+MOJFrontend.dragAndDropSupported = function() {
+  var div = document.createElement('div');
+  return typeof div.ondrop != 'undefined';
+};
+
+MOJFrontend.formDataSupported = function() {
+  return typeof FormData == 'function';
+};
+
+MOJFrontend.fileApiSupported = function() {
+  var input = document.createElement('input');
+  input.type = 'file';
+  return typeof input.files != 'undefined';
+};

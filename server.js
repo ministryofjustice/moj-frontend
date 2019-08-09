@@ -7,6 +7,11 @@ const browserSync = require('browser-sync');
 const dotenv = require('dotenv');
 const express = require('express');
 const nunjucks = require('nunjucks');
+const sessionInMemory = require('express-session');
+const bodyParser = require('body-parser');
+let sessionOptions = {
+  secret: 'moj-frontend'
+};
 
 // Run before other code to make sure variables from .env are available
 dotenv.config();
@@ -14,6 +19,7 @@ dotenv.config();
 // Routing
 const routes = require('./app/routes');
 const autoRoutes = require('./app/routes/auto');
+const uploadRoutes = require('./app/routes/upload');
 
 // Local dependencies
 const utils = require('./lib/utils.js');
@@ -40,6 +46,8 @@ const appViews = [
 
 // Application
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Find a free port and start the server
 utils.findAvailablePort(app, (port) => {
@@ -121,20 +129,18 @@ app.use('/public', express.static(path.join(__dirname, '/public')));
 app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')));
 app.use('/assets', express.static(path.join(__dirname, 'src', 'moj', 'assets')));
 
+app.use(sessionInMemory(Object.assign(sessionOptions, {
+  name: 'moj-frontend',
+  resave: false,
+  saveUninitialized: false
+})));
+
 // Use routes
 app.use(routes);
+app.use(uploadRoutes);
 app.use(autoRoutes); // must be the last one
 
-// Start app
-// app.listen(port, (err) => {
 
-//   if (err) {
-//       throw err;
-//   } else {
-//       console.log('Listening on port 3000 url: http://localhost:3000');
-//   }
-
-// });
 
 const nodeModulesExists = fs.existsSync(path.join(__dirname, '/node_modules'));
 if (!nodeModulesExists) {
