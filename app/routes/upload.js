@@ -150,7 +150,7 @@ router.post('/components/multi-file-upload', getUploadedFiles, function( req, re
 
 const uploadAjax = multer( {
   dest: './public/uploads',
-  limits: { fileSize: 2000000 },
+  limits: { fileSize: 20000 },
   fileFilter: function( req, file, cb ){
     let ok = false;
     if( file.mimetype !== 'image/png' && file.mimetype !== 'image/gif' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg'){
@@ -175,7 +175,13 @@ router.post('/ajax-upload', getUploadedFiles, function( req, res ){
         // error.message = error.file.originalname + ' must be smaller than 2mb';
         error.message = 'The file must be smaller than 2mb';
       }
-      res.json({ error: error, file: error.file });
+
+      var response = {
+        error: error,
+        file: error.file || { filename: 'filename', originalname: 'originalname' }
+      };
+
+      res.json(response);
     } else {
 
       req.uploadedFiles.push(req.file);
