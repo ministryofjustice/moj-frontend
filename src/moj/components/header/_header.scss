@@ -4,7 +4,7 @@
 
 .moj-header {
   background-color: govuk-colour("black");
-  padding-top: govuk-spacing(2);
+  padding-top: govuk-spacing(3);
   border-bottom: 10px solid govuk-colour("blue");
 }
 
@@ -12,15 +12,23 @@
   @include moj-width-container;
   @include govuk-clearfix;
   position: relative;
+
 }
 
 .moj-header__logo {
-  padding-bottom: govuk-spacing(2);
+  padding-bottom: govuk-spacing(1);
 
   @include govuk-media-query($from: tablet) {
     float: left;
   }
 
+}
+
+.moj-header__logotype-crest {
+  position: relative;
+  top: -6px;
+  margin-right: govuk-spacing(2);
+  float: left;
 }
 
 .moj-header__content {
@@ -61,11 +69,13 @@
 
   &--organisation-name {
     @include govuk-font($size: 24, $weight: "bold");
+    float: left;
   }
 
   &--service-name {
     @include govuk-font($size: 24, $weight: "normal");
     margin-left: govuk-spacing(3);
+    float: left;
   }
 
 }
