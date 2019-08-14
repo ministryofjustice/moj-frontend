@@ -1,0 +1,146 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Header
+      </h1>
+
+      {% call mojHeader({
+        organisationLabel: {
+          text: 'LAA',
+          href: '#'
+        },
+        serviceLabel: {
+          text: 'Assess claims for Crown court defence',
+          href: '#'
+        },
+        navigation: {
+          label: 'Account navigation',
+          items: [{
+            text: 'Perry Mason',
+            href: '#'
+          }, {
+            text: 'Sign out',
+            href: '#'
+          }]
+        }
+
+      }) %}
+
+      {{ mojPrimaryNavigation({
+        label: 'Primary navigation',
+        items: [{
+          text: 'Claims',
+          href: '#',
+          active: true
+        }, {
+          text: 'Caseworkers',
+          href: '#'
+        }, {
+          text: 'Providers',
+          href: '#'
+        }, {
+          text: 'Reports',
+          href: '#'
+        }]
+      }) }}
+
+      {% endcall %}
+      
+      <br><br><br>
+
+      {% call mojHeader({
+        organisationLabel: {
+          text: 'HMPPS',
+          href: '#'
+        },
+        serviceLabel: {
+          text: 'Monitor prisoner money',
+          href: '#'
+        },
+        navigation: {
+          label: 'Account navigation',
+          items: [{
+            text: 'Perry Mason',
+            href: '#'
+          }, {
+            text: 'Sign out',
+            href: '#'
+          }]
+        }
+
+      }) %}
+
+      {{ mojPrimaryNavigation({
+        label: 'Primary navigation',
+        items: [{
+          text: 'Nav item 1',
+          href: '#',
+          active: true
+        }, {
+          text: 'Nav item 2',
+          href: '#'
+        }, {
+          text: 'Nav item 3',
+          href: '#'
+        }]
+      }) }}
+
+      {% endcall %}
+      
+      <br><br><br>
+
+      {% call mojHeader({
+        organisationLabel: {
+          text: 'MOJ',
+          href: '#'
+        },
+        serviceLabel: {
+          text: 'Manage requests for information',
+          href: '#'
+        },
+        navigation: {
+          label: 'Account navigation',
+          items: [{
+            text: 'Perry Mason',
+            href: '#'
+          }, {
+            text: 'Sign out',
+            href: '#'
+          }]
+        }
+
+      }) %}
+
+      {{ mojPrimaryNavigation({
+        label: 'Primary navigation',
+        items: [{
+          text: 'Nav item 1',
+          href: '#',
+          active: true
+        }, {
+          text: 'Nav item 2',
+          href: '#'
+        }, {
+          text: 'Nav item 3',
+          href: '#'
+        }]
+      }) }}
+
+      {% endcall %}
+
+    </div>
+
+  </div>
+
+{% endblock %}
