@@ -12,7 +12,6 @@
   @include moj-width-container;
   @include govuk-clearfix;
   position: relative;
-
 }
 
 .moj-header__logo {
@@ -28,7 +27,11 @@
   position: relative;
   top: -6px;
   margin-right: govuk-spacing(2);
-  float: left;
+  
+  @include govuk-media-query($from: tablet) {
+    float: left;
+  }
+
 }
 
 .moj-header__content {
@@ -69,13 +72,21 @@
 
   &--organisation-name {
     @include govuk-font($size: 24, $weight: "bold");
-    float: left;
+    
+    @include govuk-media-query($from: tablet) {
+      float: left;
+    }
+
   }
 
   &--service-name {
     @include govuk-font($size: 24, $weight: "normal");
     margin-left: govuk-spacing(3);
-    float: left;
+    
+    @include govuk-media-query($from: tablet) {
+      float: left;
+    }
+
   }
 
 }
