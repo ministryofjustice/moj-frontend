@@ -1,6 +1,6 @@
-MOJFrontend.Menu = function(params) {
+MOJFrontend.ButtonGroup = function(params) {
 	this.container = params.container;
-	this.menu = this.container.find('.moj-menu__wrapper');
+	this.menu = this.container.find('.moj-button-group__wrapper');
 	if(params.menuClasses) {
 		this.menu.addClass(params.menuClasses);
 	}
@@ -15,25 +15,25 @@ MOJFrontend.Menu = function(params) {
 	$(document).on('click', $.proxy(this, 'onDocumentClick'));
 };
 
-MOJFrontend.Menu.prototype.onDocumentClick = function(e) {
+MOJFrontend.ButtonGroup.prototype.onDocumentClick = function(e) {
 	if(!$.contains(this.container[0], e.target)) {
 	  this.hideMenu();
   }
 };
 
-MOJFrontend.Menu.prototype.createToggleButton = function() {
-	this.menuButton = $('<button class="govuk-button moj-menu__toggle-button ' + this.buttonClasses + '" type="button" aria-haspopup="true" aria-expanded="false">'+this.buttonText+'</button>');
+MOJFrontend.ButtonGroup.prototype.createToggleButton = function() {
+	this.menuButton = $('<button class="govuk-button moj-button-group__toggle-button ' + this.buttonClasses + '" type="button" aria-haspopup="true" aria-expanded="false">'+this.buttonText+'</button>');
 	this.menuButton.on('click', $.proxy(this, 'onMenuButtonClick'));
 	this.menuButton.on('keydown', $.proxy(this, 'onMenuKeyDown'));
 };
 
-MOJFrontend.Menu.prototype.setupResponsiveChecks = function() {
+MOJFrontend.ButtonGroup.prototype.setupResponsiveChecks = function() {
 	this.mql = window.matchMedia(this.mq);
 	this.mql.addListener($.proxy(this, 'checkMode'));
 	this.checkMode(this.mql);
 };
 
-MOJFrontend.Menu.prototype.checkMode = function(mql) {
+MOJFrontend.ButtonGroup.prototype.checkMode = function(mql) {
 	if(mql.matches) {
 		this.enableBigMode();
 	} else {
@@ -41,54 +41,61 @@ MOJFrontend.Menu.prototype.checkMode = function(mql) {
 	}
 };
 
-MOJFrontend.Menu.prototype.enableSmallMode = function() {
+MOJFrontend.ButtonGroup.prototype.enableSmallMode = function() {
 	this.container.prepend(this.menuButton);
 	this.hideMenu();
 	this.removeButtonClasses();
 	this.menu.attr('role', 'menu');
-	this.container.find('.moj-menu__item').attr('role', 'menuitem');
+	this.container.find('.moj-button-group__item').attr('role', 'menuitem');
 };
 
-MOJFrontend.Menu.prototype.enableBigMode = function() {
+MOJFrontend.ButtonGroup.prototype.enableBigMode = function() {
 	this.menuButton.detach();
 	this.showMenu();
 	this.addButtonClasses();
 	this.menu.removeAttr('role');
-	this.container.find('.moj-menu__item').removeAttr('role');
+	this.container.find('.moj-button-group__item').removeAttr('role');
 };
 
-MOJFrontend.Menu.prototype.removeButtonClasses = function() {
-	this.menu.find('.moj-menu__item').each(function(index, el) {
+MOJFrontend.ButtonGroup.prototype.removeButtonClasses = function() {
+	this.menu.find('.moj-button-group__item').each(function(index, el) {
 		if($(el).hasClass('govuk-button--secondary')) {
 			$(el).attr('data-secondary', 'true');
 			$(el).removeClass('govuk-button--secondary');
+		}
+		if($(el).hasClass('govuk-button--warning')) {
+			$(el).attr('data-warning', 'true');
+			$(el).removeClass('govuk-button--warning');
 		}
 		$(el).removeClass('govuk-button');
 	});
 };
 
-MOJFrontend.Menu.prototype.addButtonClasses = function() {
-	this.menu.find('.moj-menu__item').each(function(index, el) {
+MOJFrontend.ButtonGroup.prototype.addButtonClasses = function() {
+	this.menu.find('.moj-button-group__item').each(function(index, el) {
 		if($(el).attr('data-secondary') == 'true') {
 			$(el).addClass('govuk-button--secondary');
+		}
+		if($(el).attr('data-warning') == 'true') {
+			$(el).addClass('govuk-button--warning');
 		}
 		$(el).addClass('govuk-button');
 	});
 };
 
-MOJFrontend.Menu.prototype.hideMenu = function() {
+MOJFrontend.ButtonGroup.prototype.hideMenu = function() {
 	this.menuButton.attr('aria-expanded', 'false');
 };
 
-MOJFrontend.Menu.prototype.showMenu = function() {
+MOJFrontend.ButtonGroup.prototype.showMenu = function() {
 	this.menuButton.attr('aria-expanded', 'true');
 };
 
-MOJFrontend.Menu.prototype.onMenuButtonClick = function() {
+MOJFrontend.ButtonGroup.prototype.onMenuButtonClick = function() {
 	this.toggle();
 };
 
-MOJFrontend.Menu.prototype.toggle = function() {
+MOJFrontend.ButtonGroup.prototype.toggle = function() {
 	if(this.menuButton.attr('aria-expanded') == 'false') {
 		this.showMenu();
 		this.menu.find('[role=menuitem]').first().focus();
@@ -98,7 +105,7 @@ MOJFrontend.Menu.prototype.toggle = function() {
 	}
 };
 
-MOJFrontend.Menu.prototype.onMenuKeyDown = function(e) {
+MOJFrontend.ButtonGroup.prototype.onMenuKeyDown = function(e) {
 	switch (e.keyCode) {
 		case this.keys.down:
 			this.toggle();
@@ -106,7 +113,7 @@ MOJFrontend.Menu.prototype.onMenuKeyDown = function(e) {
 	}
 };
 
-MOJFrontend.Menu.prototype.onButtonKeydown = function(e) {
+MOJFrontend.ButtonGroup.prototype.onButtonKeydown = function(e) {
 	switch (e.keyCode) {
 		case this.keys.up:
 			e.preventDefault();
@@ -129,7 +136,7 @@ MOJFrontend.Menu.prototype.onButtonKeydown = function(e) {
 	}
 };
 
-MOJFrontend.Menu.prototype.focusNext = function(currentButton) {
+MOJFrontend.ButtonGroup.prototype.focusNext = function(currentButton) {
 	var next = $(currentButton).next();
 	if(next[0]) {
 		next.focus();
@@ -138,7 +145,7 @@ MOJFrontend.Menu.prototype.focusNext = function(currentButton) {
 	}
 };
 
-MOJFrontend.Menu.prototype.focusPrevious = function(currentButton) {
+MOJFrontend.ButtonGroup.prototype.focusPrevious = function(currentButton) {
 	var prev = $(currentButton).prev();
 	if(prev[0]) {
 		prev.focus();

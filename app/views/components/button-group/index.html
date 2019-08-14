@@ -1,0 +1,183 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Button group
+      </h1>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <h2 class="govuk-heading-m">Example 1</h2>
+          <p>Using anchors (<code>a</code>)</p>
+          
+          {{ mojButtonGroup({
+            classes: 'button-group-1',
+            items: [{
+              text: 'Archive',
+              classes: 'govuk-button--secondary',
+              href: '#'
+            }, {
+              text: 'Reassign',
+              classes: 'govuk-button--secondary',
+              href: '#'
+            }, {
+              text: 'Delete',
+              classes: 'govuk-button--secondary',
+              href: '#'
+            }]
+          }) }}
+          
+        </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <h2 class="govuk-heading-m govuk-!-margin-top-5">Example 2</h2>
+          <p>Using <code>input type=submit</code></p>
+
+          {{ mojButtonGroup({
+            classes: 'button-group-2',
+            items: [{
+              element: 'input',
+              type: 'submit',
+              text: 'Make decision'
+            }, {
+              element: 'input',
+              type: 'submit',
+              text: 'List for hearing',
+              classes: 'govuk-button--secondary'
+            }]
+          }) }}
+          
+        </div>
+      </div>
+      
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <h2 class="govuk-heading-m govuk-!-margin-top-5">Example 3</h2>
+          <p>Using <code>button</code></p>
+
+          {{ mojButtonGroup({
+            classes: 'button-group-3',
+            items: [{
+              text: 'Save and continue'
+            }, {
+              text: 'Save as draft',
+              classes: 'govuk-button--secondary'
+            }, {
+              text: 'Delete claim',
+              classes: 'govuk-button--warning'
+            }]
+          }) }}
+          
+        </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <h2 class="govuk-heading-m govuk-!-margin-top-5">Example 4</h2>
+          <p>Float right</p>
+
+          <div class="float-right">
+          {{ mojButtonGroup({
+              classes: 'button-group-4',
+              items: [{
+                text: 'Make decision'
+              }, {
+                text: 'List for hearing',
+                classes: 'govuk-button--secondary'
+              }]
+            }) }}
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <h2 class="govuk-heading-m govuk-!-margin-top-5">Example 5</h2>
+          <p>Float right with actions in drop-down</p>
+          <div class="float-right">
+          {{ mojButtonGroup({
+              classes: 'button-group-5',
+              items: [{
+                text: 'Make decision'
+              }, {
+                text: 'List for hearing',
+                classes: 'govuk-button--secondary'
+              }]
+            }) }}
+          </div>
+          
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+
+{% endblock %}
+
+{% block pageStyles %}
+<style type="text/css">
+  .float-right {
+    float: right;
+  }
+</style>
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    new MOJFrontend.ButtonGroup({
+      container: $('.button-group-1'),
+      mq: '(min-width: 45em)',
+      buttonText: 'Actions'
+    });
+
+    new MOJFrontend.ButtonGroup({
+      container: $('.button-group-2'),
+      mq: '(min-width: 35em)',
+      buttonText: 'Actions',
+      buttonClasses: 'govuk-button--secondary moj-button-group__toggle-button--secondary'
+    });
+
+    new MOJFrontend.ButtonGroup({
+      container: $('.button-group-3'),
+      mq: '(min-width: 45em)',
+      buttonText: 'Actions',
+      buttonClasses: 'govuk-button--secondary moj-button-group__toggle-button--secondary',
+    });
+
+    new MOJFrontend.ButtonGroup({
+      container: $('.button-group-4'),
+      mq: '(min-width: 35em)',
+      buttonText: 'Actions',
+      buttonClasses: 'govuk-button--secondary moj-button-group__toggle-button--secondary',
+      menuClasses: 'moj-button-group__wrapper--right'
+    });
+
+    new MOJFrontend.ButtonGroup({
+      container: $('.button-group-5'),
+      buttonText: 'Actions',
+      buttonClasses: 'govuk-button--secondary moj-button-group__toggle-button--secondary',
+      menuClasses: 'moj-button-group__wrapper--right'
+    });
+
+  </script>
+{% endblock %}
