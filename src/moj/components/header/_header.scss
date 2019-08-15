@@ -23,6 +23,16 @@
 
 }
 
+.moj-header__logotype-crown {
+  position: relative;
+  top: -4px;
+  margin-right: govuk-spacing(2);
+  
+  @include govuk-media-query($from: tablet) {
+    float: left;
+  }
+}
+
 .moj-header__logotype-crest {
   position: relative;
   top: -6px;
