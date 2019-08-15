@@ -47,7 +47,7 @@
   }
 }
 
-.moj-side-navigation__list-item {
+.moj-side-navigation__item {
 
   @include govuk-media-query($until: tablet) {
     display: flex;
@@ -91,7 +91,7 @@
 
 }
 
-.moj-side-navigation__list-item--selected {
+.moj-side-navigation__item--active {
 
   a:link,
   a:visited {
