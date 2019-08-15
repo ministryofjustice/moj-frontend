@@ -82,6 +82,32 @@
 
       {% endcall %}
 
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">With Crown</h2>
+
+      {{ mojHeader({
+        logotype: 'crown',
+        organisationLabel: {
+          text: 'Organisation name',
+          href: '#'
+        },
+        serviceLabel: {
+          text: 'Service name',
+          href: '#'
+        },
+        navigation: {
+          label: 'Account navigation',
+          items: [{
+            text: 'Account name',
+            href: '#',
+            active: true
+          }, {
+            text: 'Sign out',
+            href: '#'
+          }]
+        }
+
+      }) }}
+
     <p><br><a href="./header/test">See other examples</a></p>
 
   </div>

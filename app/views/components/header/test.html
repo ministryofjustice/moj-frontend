@@ -138,6 +138,86 @@
       }) }}
 
       {% endcall %}
+      
+      <br><br><br>
+
+      {% call mojHeader({
+        organisationLabel: {
+          text: 'HMCTS',
+          href: '#'
+        },
+        serviceLabel: {
+          text: 'Manage standard operating controls',
+          href: '#'
+        },
+        navigation: {
+          label: 'Account navigation',
+          items: [{
+            text: 'Perry Mason',
+            href: '#'
+          }, {
+            text: 'Sign out',
+            href: '#'
+          }]
+        }
+
+      }) %}
+
+      {{ mojPrimaryNavigation({
+        label: 'Primary navigation',
+        items: [{
+          text: 'Nav item 1',
+          href: '#',
+          active: true
+        }, {
+          text: 'Nav item 2',
+          href: '#'
+        }, {
+          text: 'Nav item 3',
+          href: '#'
+        }]
+      }) }}
+
+      {% endcall %}
+      
+      <br><br><br>
+
+      {{ mojHeader({
+        logotype: 'crown',
+        organisationLabel: {
+          text: 'GOV.UK',
+          href: '#'
+        },
+        serviceLabel: {
+          text: 'Check when a caution or conviction is spent',
+          href: '#'
+        }
+      }) }}
+      
+      <br><br><br>
+
+      {{ mojHeader({
+        logotype: 'crown',
+        organisationLabel: {
+          text: 'Ministry of Justice',
+          href: '#'
+        },
+        serviceLabel: {
+          text: 'People finder',
+          href: '#'
+        },
+        navigation: {
+          label: 'Account navigation',
+          items: [{
+            text: 'Signed in as Perry Mason',
+            href: '#'
+          }, {
+            text: 'Sign out',
+            href: '#'
+          }]
+        }
+
+      }) }}
 
     </div>
 
