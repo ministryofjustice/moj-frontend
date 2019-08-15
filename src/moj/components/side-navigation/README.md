@@ -44,6 +44,9 @@ This component accepts the following arguments.
 |heading|object|Yes|See [heading](#headings)|
 
 #### Headings
+
+|Name|Type|Required|Description|
+|---|---|---|---|
 |headingLevel|numeric|No|A number for the heading level. Defaults to 4 (`<h4>`)|
 |text|string|Yes|If `html` is set, this is not required. Text to use within the heading. If `html` is provided, the `text` argument will be ignored.|
 |html|string|Yes|If `text` is set, this is not required. HTML to use within the heading. If `html` is provided, the `text` argument will be ignored.|
