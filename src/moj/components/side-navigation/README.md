@@ -1,4 +1,4 @@
-# Primary navigation
+# Side navigation
 
 - [Guidance](https://moj-design-system.herokuapp.com/components/side-navigation)
 - [Preview](https://moj-frontend.herokuapp.com/components/side-navigation)
@@ -32,7 +32,7 @@ This component accepts the following arguments.
 |---|---|---|---|
 |label|string|No|The `aria-label` to add to the navigation container.|
 |items|array|Yes|An array of navigation item objects. See [items](#items).|
-|sections|array|No|An array of navigation item objects. See [sections](#sections).|
+|sections|array|No|An array of navigation section objects. See [sections](#sections).|
 |classes|string|No|Classes to add to the `nav` container.|
 |attributes|object|No|HTML attributes (for example data attributes) to add to the `nav` container.|
 
