@@ -1,6 +1,5 @@
 {
   "name": "@ministryofjustice/frontend",
-  "version": "0.0.10-alpha",
   "description": "The MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.",
   "main": "index.js",
   "scripts": {
@@ -11,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/ministryofjustice/mojdt-frontend.git"
   },
-  "author": "Simon Whatley, Gavin Wye, Matthew Solle",
+  "author": "Simon Whatley, Adam Silver, Gavin Wye, Matthew Solle",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ministryofjustice/mojdt-frontend/issues"
