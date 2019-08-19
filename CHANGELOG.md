@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.0.11-alpha
+
+- Add side navigation component
+- Change menu component to button menu
+- Other miscellaneous fixes
+
 ## v0.0.10-alpha
 
 - Multi file upload added
@@ -7,7 +13,7 @@
 
 ## v0.0.9-alpha
 
-- Change namespacing. See [issue 6](https://github.com/ministryofjustice/mojdt-frontend/issues/6)
+- Change namespacing. See [issue 6](https://github.com/ministryofjustice/moj-frontend/issues/6)
 - Fix inline and toggle search
 - Fix focus states for search and menu components
 
