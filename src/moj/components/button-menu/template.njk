@@ -1,11 +1,11 @@
 {%- from "govuk/components/button/macro.njk" import govukButton %}
 
-<div class="moj-button-group {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
-  <div class="moj-button-group__wrapper">
+<div class="moj-button-menu {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+  <div class="moj-button-menu__wrapper">
     {%- for item in params.items %}
       {{ govukButton({
           element: item.element if item.element,
-          classes: 'moj-button-group__item ' + (item.classes if item.classes) + ' ' + (params.buttonClasses if params.buttonClasses),
+          classes: 'moj-button-menu__item ' + (item.classes if item.classes) + ' ' + (params.buttonClasses if params.buttonClasses),
           text: item.text if item.text,
           html: item.html if item.html,
           name: item.name if item.name,
