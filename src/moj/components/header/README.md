@@ -29,50 +29,6 @@
 }) }}
 ```
 
-### With primary navigation
-
-```
-{% call mojHeader({
-  organisationLabel: {
-    text: 'Organisation name',
-    href: '#'
-  },
-  serviceLabel: {
-    text: 'Service name',
-    href: '#'
-  },
-  navigation: {
-    label: 'Account navigation',
-    items: [{
-      text: 'Account name',
-      href: '#',
-      active: true
-    }, {
-      text: 'Sign out',
-      href: '#'
-    }]
-  }
-}) %}
-
-
-{{ mojPrimaryNavigation({
-  label: 'Primary navigation',
-  items: [{
-    text: 'Nav item 1',
-    href: '#',
-    active: true
-  }, {
-    text: 'Nav item 2',
-    href: '#'
-  }, {
-    text: 'Nav item 3',
-    href: '#'
-  }]
-}) }}
-
-{% endcall %}
-```
-
 ## Arguments
 
 This component accepts the following arguments.
