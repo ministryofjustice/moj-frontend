@@ -17,7 +17,7 @@
 .moj-header__logo {
   padding-bottom: govuk-spacing(1);
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk-media-query($from: desktop) {
     float: left;
   }
 
@@ -26,28 +26,22 @@
 .moj-header__logotype-crown {
   position: relative;
   top: -4px;
-  margin-right: govuk-spacing(2);
+  margin-right: govuk-spacing(1);
+  vertical-align: top;
   
-  @include govuk-media-query($from: tablet) {
-    float: left;
-  }
 }
 
 .moj-header__logotype-crest {
   position: relative;
   top: -6px;
-  margin-right: govuk-spacing(2);
-  
-  @include govuk-media-query($from: tablet) {
-    float: left;
-  }
-
+  margin-right: govuk-spacing(1);
+  vertical-align: top;
 }
 
 .moj-header__content {
   padding-bottom: govuk-spacing(2);
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk-media-query($from: desktop) {
     float: right;
   }
 
@@ -82,20 +76,21 @@
 
   &--organisation-name {
     @include govuk-font($size: 24, $weight: "bold");
+    vertical-align: middle;
     
-    @include govuk-media-query($from: tablet) {
-      float: left;
-    }
-
   }
 
   &--service-name {
+    vertical-align: middle;
     @include govuk-font($size: 24, $weight: "normal");
-    margin-left: govuk-spacing(3);
     
-    @include govuk-media-query($from: tablet) {
-      float: left;
+    @include govuk-media-query($until: desktop) {
+      display: block;
     }
+    @include govuk-media-query($from: desktop) {
+      margin-left: govuk-spacing(1);
+    }
+
 
   }
 
