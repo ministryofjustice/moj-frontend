@@ -1,8 +1,8 @@
 .moj-search-toggle__button {
   @include govuk-font($size: 19, $weight: bold);
-  background-color: govuk-colour("black");
+  background-color: transparent;
   border: none;
-  color: govuk-colour("white");
+  color: govuk-colour("blue");
   cursor: pointer;
   display: inline-block;
   padding-top: 12px;
@@ -14,7 +14,7 @@
 
   &:after {
     background-repeat: no-repeat;
-    background-image: url(#{$moj-images-path}icon-search-white.svg);
+    background-image: url(#{$moj-images-path}icon-search-blue.svg);
     content: '';
     display: inline-block;
     height: 20px;
@@ -41,6 +41,8 @@
 
 .moj-search--toggle {
 
+  padding: govuk-spacing(3);
+
   @include govuk-media-query($until: desktop) {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -64,6 +66,8 @@
 
 
 .js-enabled .moj-search-toggle__search {
+
+  background-color: govuk-colour("light-grey");
 
   @include govuk-media-query($from: desktop) {
     max-width: 450px;
