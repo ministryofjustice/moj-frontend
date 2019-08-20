@@ -69,7 +69,8 @@
   &[aria-current] {
     color: govuk-colour("blue");
     position: relative;
-
+    text-decoration: none;
+    font-weight: bold;
     &:before {
       background-color: govuk-colour("blue");
       content: "";

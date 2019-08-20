@@ -40,9 +40,10 @@
 
       }) }}
 
-      <h2 class="govuk-heading-m govuk-!-margin-top-9">With primary navigation</h2>
+      <h2 class="govuk-heading-m govuk-!-margin-top-9">With Crown</h2>
 
-      {% call mojHeader({
+      {{ mojHeader({
+        logotype: 'crown',
         organisationLabel: {
           text: 'Organisation name',
           href: '#'
@@ -55,32 +56,15 @@
           label: 'Account navigation',
           items: [{
             text: 'Account name',
-            href: '#'
+            href: '#',
+            active: true
           }, {
             text: 'Sign out',
             href: '#'
           }]
         }
 
-      }) %}
-
-
-      {{ mojPrimaryNavigation({
-        label: 'Primary navigation',
-        items: [{
-          text: 'Nav item 1',
-          href: '#',
-          active: true
-        }, {
-          text: 'Nav item 2',
-          href: '#'
-        }, {
-          text: 'Nav item 3',
-          href: '#'
-        }]
       }) }}
-
-      {% endcall %}
 
   </div>
 
