@@ -34,43 +34,9 @@
   width: auto;
 }
 
-// Modifiers
-.moj-search--ondark {
-  background-color: govuk-colour("black");
-  padding: govuk-spacing(3);
-}
-
 .moj-search--inline {
   padding: govuk-spacing(2) 0 !important;
   @include govuk-media-query($from: desktop) {
     padding: 0 !important;
   }
-}
-
-
-.moj-search--ondark .moj-search__label {
-  color: govuk-colour("white");
-}
-
-.moj-search--ondark .moj-search__hint {
-  color: govuk-colour("mid-grey");
-}
-
-.moj-search--ondark .moj-search__input {
-  border-color: govuk-colour("white");
-}
-
-.moj-search--ondark .moj-search__button {
-  box-shadow: 0 2px 0 #00823b;
-  margin-left: 0;
-
-  &:hover,
-  &:focus {
-    box-shadow: 0 2px 0 darken(#00823b, 5%);
-  }
-
-  &:active {
-    top: -2px;
-  }
-
 }

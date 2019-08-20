@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .moj-primary-navigation {
-  background-color: govuk-colour("black");
+  background-color: govuk-colour("light-grey");
 }
 
 .moj-primary-navigation__container {
@@ -49,29 +49,30 @@
 
 .moj-primary-navigation__link {
   display: block;
-  padding-bottom: 13px;
-  padding-top: 12px;
-  text-decoration: underline;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  text-decoration: none;
+  font-weight: bold;
 
   &:link,
   &:visited {
-    color: govuk-colour("white");
+    color: govuk-colour("blue");
   }
 
   &:focus {
     color: govuk-colour("black"); // Focus colour on yellow should really be black.
     position: relative; // Ensure focus sits above everything else.
     z-index: 1;
+    box-shadow: none;
   }
 
   &[aria-current] {
-    color: govuk-colour("white");
+    color: govuk-colour("blue");
     position: relative;
     text-decoration: none;
     font-weight: bold;
-
     &:before {
-      background-color: govuk-colour("white");
+      background-color: govuk-colour("blue");
       content: "";
       display: block;
       height: 5px;
@@ -82,6 +83,7 @@
     &:focus {
       color: govuk-colour("black"); // Focus colour on yellow should really be black.
       position: relative; // Ensure focus sits above everything else.
+      border: none;
 
       &:before {
         background-color: govuk-colour("black");
