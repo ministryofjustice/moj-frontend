@@ -4,17 +4,17 @@
   <div class="moj-button-menu__wrapper">
     {%- for item in params.items %}
       {{ govukButton({
-          element: item.element if item.element,
+          element: item.element,
           classes: 'moj-button-menu__item ' + (item.classes if item.classes) + ' ' + (params.buttonClasses if params.buttonClasses),
-          text: item.text if item.text,
-          html: item.html if item.html,
-          name: item.name if item.name,
-          type: item.type if item.type,
-          value: item.value if item.value,
-          href: item.href if item.href,
-          disabled: item.disabled if item.disabled,
-          attributes: item.attributes if item.attributes,
-          preventDoubleClick: items.preventDoubleClick if item.preventDoubleClick
+          text: item.text,
+          html: item.html,
+          name: item.name,
+          type: item.type,
+          value: item.value,
+          href: item.href,
+          disabled: item.disabled,
+          attributes: item.attributes,
+          preventDoubleClick: items.preventDoubleClick
         }) }}
     {% endfor -%}
   </div>
