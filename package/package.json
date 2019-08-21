@@ -8,17 +8,17 @@
     "node": ">= 4.2.0"
   },
   "author": {
-    "name": "MoJ Design System Team",
+    "name": "MOJ Design System Team",
     "email": "design-system@digital.justice.gov.uk"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ministryofjustice/mojdt-frontend.git"
+    "url": "https://github.com/ministryofjustice/moj-frontend.git"
   },
   "bugs": {
-    "url": "https://github.com/ministryofjustice/mojdt-frontend/issues"
+    "url": "https://github.com/ministryofjustice/moj-frontend/issues"
   },
-  "homepage": "https://github.com/ministryofjustice/mojdt-frontend#readme",
+  "homepage": "https://github.com/ministryofjustice/moj-frontend#readme",
   "keywords": [
     "moj",
     "frontend",
