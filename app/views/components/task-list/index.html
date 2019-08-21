@@ -1,0 +1,58 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Task list
+      </h1>
+
+      {{ mojTaskList({
+        sections: [
+          {
+            heading: {
+              text: 'Section 1'
+            },
+            items: [{
+              text: 'Item 1.1',
+              href: '#',
+              status: 'completed'
+            }, {
+              text: 'Item 1.2',
+              href: '#'
+            }, {
+              text: 'Item 1.3',
+              href: '#'
+            }]
+          },
+          {
+            heading: {
+              text: 'Section 2'
+            },
+            items: [{
+              text: 'Item 2.1',
+              href: '#'
+            }, {
+              text: 'Item 2.2',
+              href: '#'
+            }, {
+              text: 'Item 2.3',
+              href: '#'
+            }]
+          }
+        ]
+      }) }}
+
+    </div>
+
+  </div>
+
+{% endblock %}
