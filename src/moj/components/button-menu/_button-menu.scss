@@ -18,11 +18,7 @@
   &:last-child {
     margin-right: 0;
   }
-// }
 
-// .moj-button-menu__toggle-button {
-//   margin-bottom: govuk-spacing(1);
-//   margin-right: 0;
   &:after {
     background-repeat: no-repeat;
     background-image: url(#{$moj-images-path}icon-arrow-white-down.svg);
