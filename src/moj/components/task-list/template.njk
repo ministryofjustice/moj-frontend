@@ -1,0 +1,26 @@
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+
+<ol class="moj-task-list {{- ' ' + params.classes if params.classes }}" {% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {%- for section in params.sections %}
+  <li>
+    <h2 class="moj-task-list__section">
+      <span class="moj-task-list__section-number">{{ loop.index }}. </span> {{ section.heading.text }}
+    </h2>
+    <ul class="moj-task-list__items">
+      {%- for item in section.items %}
+      <li class="moj-task-list__item">
+        <a class="moj-task-list__task-name" href="{{ item.href }}" {% for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+          {{- item.html | safe if item.html else item.text -}}
+        </a>
+        {% if item.status == "completed" %}
+        {{ govukTag({
+          text: "completed",
+          classes: 'moj-task-list__task-completed'
+        }) }}
+        {% endif -%}
+      </li>
+      {% endfor -%}
+    </ul>
+  </li>
+  {% endfor -%}
+</ol>
