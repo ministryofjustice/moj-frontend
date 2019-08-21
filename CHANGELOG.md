@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.0.12-alpha
+
+- Update header component
+- Update primary navigation component
+- Update button menu component
+- Other miscellaneous fixes
+
 ## v0.0.11-alpha
 
 - Add side navigation component
