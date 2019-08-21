@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ministryofjustice/mojdt-frontend.git"
+    "url": "git+https://github.com/ministryofjustice/moj-frontend.git"
   },
   "author": "Simon Whatley, Adam Silver, Gavin Wye, Matthew Solle",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ministryofjustice/mojdt-frontend/issues"
+    "url": "https://github.com/ministryofjustice/moj-frontend/issues"
   },
-  "homepage": "https://github.com/ministryofjustice/mojdt-frontend#readme",
+  "homepage": "https://github.com/ministryofjustice/moj-frontend#readme",
   "dependencies": {
     "basic-auth": "^2.0.1",
     "body-parser": "^1.19.0",

@@ -1,9 +1,9 @@
 ### Requirements for contributing a bug fix
 
 * Fill out the template below. Maintainers are free to close any pull requests that do not include enough information, at their discretion.
-* The pull request must only fix an existing bug. To contribute other changes, you must use a different template. You can see all templates at https://github.com/ministryofjustice/mojdt-frontend/tree/master/.github/PULL_REQUEST_TEMPLATE.
+* The pull request must only fix an existing bug. To contribute other changes, you must use a different template. You can see all templates at https://github.com/ministryofjustice/moj-frontend/tree/master/.github/PULL_REQUEST_TEMPLATE.
 * The pull request must update the test suite to demonstrate the changed functionality.
-* After you create the pull request, all status checks must be pass before a maintainer reviews your contribution. For more details, please see https://github.com/ministryofjustice/mojdt-frontend/tree/master/CONTRIBUTING.md#pull-requests.
+* After you create the pull request, all status checks must be pass before a maintainer reviews your contribution. For more details, please see https://github.com/ministryofjustice/moj-frontend/tree/master/CONTRIBUTING.md#pull-requests.
 
 ### Identify the bug
 

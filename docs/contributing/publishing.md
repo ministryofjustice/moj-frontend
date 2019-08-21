@@ -18,7 +18,7 @@ This should be incremented based on [Semantic versioning](https://semver.org/) f
 
 7. Save the changes. Do not commit.
 
-8. (Optional) Test in [MoJ Design System](git@github.com:ministryofjustice/mojdt-design-system.git)
+8. (Optional) Test in [MOJ Design System](git@github.com:ministryofjustice/moj-design-system.git)
 
   If you want to test your changes work correctly when used in the MOJ Design System you can use [npm link](https://docs.npmjs.com/cli/link) to test before publishing.
 
@@ -42,7 +42,7 @@ This should be incremented based on [Semantic versioning](https://semver.org/) f
 
 11. Once the pull request is approved, merge to **master**.
 
-12. Create a release in the [Github interface](https://github.com/ministryofjustice/mojdt-frontend/releases/new)
+12. Create a release in the [Github interface](https://github.com/ministryofjustice/moj-frontend/releases/new)
   - select the latest tag version
   - set "MOJ Frontend release v[version-number]" as the title
   - add release notes from changelog
