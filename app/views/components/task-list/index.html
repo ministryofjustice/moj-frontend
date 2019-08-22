@@ -1,0 +1,74 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Task list
+      </h1>
+
+      {{ mojTaskList({
+        sections: [
+          {
+            heading: {
+              text: 'Check before you start'
+            },
+            items: [{
+              text: 'Check eligibility',
+              href: '#',
+              complete: true
+            }, {
+              text: 'Read declaration',
+              href: '#',
+              complete: true
+            }]
+          },
+          {
+            heading: {
+              text: 'Prepare application'
+            },
+            items: [{
+              text: 'Company information',
+              href: '#',
+              complete: true
+            }, {
+              text: 'Your contact details',
+              href: '#',
+              complete: true
+            }, {
+              text: 'List convictions',
+              href: '#'
+            }, {
+              text: 'Provide financial evidence',
+              href: '#'
+            }, {
+              text: 'Give medical information',
+              href: '#',
+              complete: true
+            }]
+          },
+          {
+            heading: {
+              text: 'Apply'
+            },
+            items: [{
+              text: 'Submit and pay',
+              href: '#'
+            }]
+          }
+        ]
+      }) }}
+
+    </div>
+
+  </div>
+
+{% endblock %}
