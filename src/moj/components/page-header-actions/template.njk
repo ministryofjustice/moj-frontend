@@ -1,4 +1,4 @@
-{%- from "moj/components/menu/macro.njk" import mojMenu %}
+{%- from "moj/components/button-menu/macro.njk" import mojButtonMenu %}
 
 <div class="moj-page-header-actions {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
 
@@ -10,7 +10,7 @@
 
   {% if params.items %}
     <div class="moj-page-header-actions__actions">
-      {{mojMenu({
+      {{mojButtonMenu({
         buttonClasses: 'moj-page-header-actions__action',
         items: params.items
       })}}

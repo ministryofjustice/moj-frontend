@@ -1,4 +1,4 @@
-{%- from "moj/components/menu/macro.njk" import mojMenu %}
+{%- from "moj/components/button-menu/macro.njk" import mojButtonMenu %}
 
 <div class="moj-identity-bar {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
 
@@ -14,7 +14,7 @@
       <div class="moj-identity-bar__actions">
         {% for menu in params.menus %}
           <div class="moj-identity-bar__menu">
-            {{mojMenu({ items: menu.items, classes: menu.classes })}}
+            {{mojButtonMenu({ items: menu.items, classes: menu.classes })}}
           </div>
         {% endfor %}
       </div>

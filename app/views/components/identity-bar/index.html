@@ -36,7 +36,7 @@
           }, {
             text: 'Do that',
             href: "#",
-            classes: 'moj-button--secondary'
+            classes: 'govuk-button--secondary'
           }]
         }]
       }) }}
@@ -74,12 +74,12 @@
 
 {% block pageScripts %}
   <script>
-    new MOJFrontend.Menu({
-      container: $('.moj-menu').eq(2),
+    new MOJFrontend.ButtonMenu({
+      container: $('.moj-button-menu').eq(2),
       mq: '(min-width: 1000em)',
       buttonText: 'More actions',
-      buttonClasses: 'govuk-button--secondary moj-menu__toggle-button--secondary',
-      menuClasses: 'moj-menu__wrapper--right'
+      buttonClasses: 'govuk-button--secondary moj-button-menu__toggle-button--secondary',
+      menuClasses: 'moj-buton-menu--right'
     });
 
   </script>
