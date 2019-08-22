@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.0.13-alpha
+
+- Add task list component
+- Fixed bug with identity bar
+- Fixed bug with page header actions
+- Other miscellaneous fixes
+
 ## v0.0.12-alpha
 
 - Update header component
