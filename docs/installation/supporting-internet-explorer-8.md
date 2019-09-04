@@ -2,11 +2,9 @@
 
 If you are including MOJ Frontend as part of your application's stylesheets then you'll need to do some additional work to support Internet Explorer 8 (IE8).
 
-## Before you start
+The first thing you need to do is follow [GOV.UK Frontend's setup instructions](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/supporting-internet-explorer-8.md#transforming-the-generated-stylesheet-using-oldie) for supporting Internet Explorer 8.
 
-Before reading the rest of these guides, you should first follow [GOV.UK Frontend's setup instructions](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/supporting-internet-explorer-8.md#transforming-the-generated-stylesheet-using-oldie) for supporting Internet Explorer 8.
-
-All the instructions are the same except that in the Bundling an IE8-specific stylesheet step you also need to at MOJ Frontend as follows:
+In [Bundling an IE8-specific stylesheet](https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/supporting-internet-explorer-8.md#bundling-an-ie8-specific-stylesheet) you also need to add MOJ Frontend as shown below.
 
 ```scss
 
@@ -25,3 +23,5 @@ $govuk-is-ie8: true;
 
 @import "application";
 ```
+
+That's it.
