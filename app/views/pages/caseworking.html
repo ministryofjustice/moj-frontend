@@ -1,40 +1,16 @@
 {% extends "govuk/template.njk" %}
 
-{% from "govuk/components/accordion/macro.njk"        import govukAccordion %}
-{% from "govuk/components/back-link/macro.njk"        import govukBackLink %}
-{% from "govuk/components/breadcrumbs/macro.njk"      import govukBreadcrumbs %}
-{% from "govuk/components/button/macro.njk"           import govukButton %}
-{% from "govuk/components/character-count/macro.njk"  import govukCharacterCount %}
-{% from "govuk/components/checkboxes/macro.njk"       import govukCheckboxes %}
-{% from "govuk/components/date-input/macro.njk"       import govukDateInput %}
-{% from "govuk/components/details/macro.njk"          import govukDetails %}
-{% from "govuk/components/error-message/macro.njk"    import govukErrorMessage %}
-{% from "govuk/components/error-summary/macro.njk"    import govukErrorSummary %}
-{% from "govuk/components/fieldset/macro.njk"         import govukFieldset %}
-{% from "govuk/components/file-upload/macro.njk"      import govukFileUpload %}
-{% from "govuk/components/input/macro.njk"            import govukInput %}
-{% from "govuk/components/inset-text/macro.njk"       import govukInsetText %}
-{% from "govuk/components/panel/macro.njk"            import govukPanel %}
-{% from "govuk/components/phase-banner/macro.njk"     import govukPhaseBanner %}
-{% from "govuk/components/radios/macro.njk"           import govukRadios %}
-{% from "govuk/components/select/macro.njk"           import govukSelect %}
-{% from "govuk/components/skip-link/macro.njk"        import govukSkipLink %}
-{% from "govuk/components/summary-list/macro.njk"     import govukSummaryList %}
-{% from "govuk/components/table/macro.njk"            import govukTable %}
-{% from "govuk/components/tabs/macro.njk"             import govukTabs %}
-{% from "govuk/components/tag/macro.njk"              import govukTag %}
-{% from "govuk/components/textarea/macro.njk"         import govukTextarea %}
-{% from "govuk/components/warning-text/macro.njk"     import govukWarningText %}
-
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {%- from "moj/components/header/macro.njk" import mojHeader -%}
 {%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation %}
 {%- from "moj/components/search/macro.njk" import mojSearch %}
-
+{%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
+{%- from "moj/components/identity-bar/macro.njk" import mojIdentityBar -%}
+{%- from "moj/components/organisation-switcher/macro.njk" import mojOrganisationSwitcher -%}
 
 {% block head %}
   <!--[if lte IE 8]><link href="/public/stylesheets/application-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
-<!--[if gt IE 8]><!--><link href="/public/stylesheets/application.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
-
+  <!--[if gt IE 8]><!--><link href="/public/stylesheets/application.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
 {% endblock %}
 
 {% block header %}
@@ -50,10 +26,7 @@
     navigation: {
     label: 'Account navigation',
     items: [{
-      text: 'Switch organisation',
-      href: '#'
-    },{
-        text: 'Your account',
+        text: 'Jane Reid',
         href: '#'
       }, {
         text: 'Sign out',
@@ -73,104 +46,87 @@
   </div>
 
   {%- set toggleSearchHtml %}
-      <div class="moj-search-toggle">
-        <div class="moj-search-toggle__toggle"></div>
-        <div class="moj-search-toggle__search">
-          {{ mojSearch({
-            classes: 'moj-search--toggle moj-js-hidden',
-            input: {
-              id: 'search2',
-              name: 'search2'
-            },
-            label: {
-              classes: 'govuk-visually-hidden',
-              text: 'Search'
-            },
-            hint: {
-              text: 'Enter case number, for example 123456'
-            },
-            button: {
-              text: 'Search'
-            }
-          }) }}
-        </div>
-        </div>
-      {% endset -%}
-
-      {{ mojPrimaryNavigation({
-        label: 'Primary navigation',
-        items: [{
-          text: 'Your cases',
-          href: '#1'
-        }, {
-          text: 'Your appointments',
-          href: '#2'
-        }],
-        searchHtml: toggleSearchHtml
-      }) }}
-
-{% endblock %}
-
-{% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
-
-{% block main %}
-  {%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
-
-
-  <div class="moj-width-container">
-      {% block beforeContent %}{% endblock %}
-      <main class="govuk-main-wrapper {{ mainClasses }}" id="main-content" role="main">
-
-        {{ mojSubNavigation({
-        label: 'Sub navigation',
-        items: [{
-          text: 'Summary',
-          href: '#1'
-        }, {
-          text: 'Parties',
-          href: '#2',
-          active: true
-        }, {
-          text: 'Timeline',
-          href: '#3'
-        }, {
-          text: 'Disimbursements',
-          href: '#3'
-        }]
+    <div class="moj-search-toggle">
+      <div class="moj-search-toggle__toggle"></div>
+      <div class="moj-search-toggle__search">
+        {{ mojSearch({
+          classes: 'moj-search--toggle moj-js-hidden',
+          input: {
+            id: 'search2',
+            name: 'search2'
+          },
+          label: {
+            classes: 'govuk-visually-hidden',
+            text: 'Search'
+          },
+          hint: {
+            text: 'Enter case number, for example 123456'
+          },
+          button: {
+            text: 'Search'
+          }
         }) }}
-
-        <h1 class="govuk-heading-xl">Parties</h1>
-
-        <p class="govuk-body">I'm some body content</p>
-        <p class="govuk-body">I'm some body content</p>
-        <p class="govuk-body">I'm some body content</p>
-        <p class="govuk-body">I'm some body content</p>
-      </main>
+      </div>
     </div>
+  {% endset -%}
+
+  {{ mojPrimaryNavigation({
+    label: 'Primary navigation',
+    items: [{
+      text: 'Prisoners',
+      href: '#1'
+    }, {
+      text: 'Disimbursements',
+      href: '#2'
+    }, {
+      text: 'Etc',
+      href: '#2'
+    }]
+  }) }}
 {% endblock %}
 
+{% block content %}
+  {{ mojSubNavigation({
+  label: 'Sub navigation',
+  items: [{
+    text: 'Summary',
+    href: '#1'
+  }, {
+    text: 'Parties',
+    href: '#2',
+    active: true
+  }, {
+    text: 'Timeline',
+    href: '#3'
+  }, {
+    text: 'Disimbursements',
+    href: '#3'
+  }]
+  }) }}
+
+  <h1 class="govuk-heading-xl">Parties</h1>
+
+  <p class="govuk-body">I'm some body content</p>
+  <p class="govuk-body">I'm some body content</p>
+  <p class="govuk-body">I'm some body content</p>
+  <p class="govuk-body">I'm some body content</p>
+{% endblock %}
 
 {% block footer %}
   {{ govukFooter({}) }}
 {% endblock %}
 
-
 {% block bodyEnd %}
-  {% block scripts %}
-    {% include "includes/scripts.html" %}
-    {% block pageScripts %}
-      <script>
-        new MOJFrontend.SearchToggle({
-          toggleButton: {
-            container: $('.moj-search-toggle__toggle'),
-            text: 'Find case'
-          },
-          search: {
-            container: $('.moj-search')
-          }
-        });
-      </script>
-    {% endblock %}
-  {% endblock %}
-  <!-- GOV.UK Prototype Kit {{releaseVersion}} -->
+  {% include "includes/scripts.html" %}
+  <script>
+    new MOJFrontend.SearchToggle({
+      toggleButton: {
+        container: $('.moj-search-toggle__toggle'),
+        text: 'Find case'
+      },
+      search: {
+        container: $('.moj-search')
+      }
+    });
+  </script>
 {% endblock %}

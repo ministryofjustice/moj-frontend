@@ -47,7 +47,9 @@
 <!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
   <head>
     <meta charset="utf-8">
-    <title>MOJ Frontend</title>
+    <title>
+      MOJ Frontend
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#0b0c0c">
 
@@ -69,8 +71,7 @@
     {%- block pageStyles %}{% endblock %}
   </head>
   <body class="app-body">
-
-  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
     {%- block body %}{% endblock %}
 
@@ -78,7 +79,5 @@
       {%- include "includes/scripts.html" %}
       {%- block pageScripts %}{% endblock %}
     {%- endblock %}
-
   </body>
-
 </html>
