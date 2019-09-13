@@ -28,7 +28,7 @@
   top: -4px;
   margin-right: govuk-spacing(1);
   vertical-align: top;
-  
+
 }
 
 .moj-header__logotype-crest {
@@ -77,13 +77,13 @@
   &--organisation-name {
     @include govuk-font($size: 24, $weight: "bold");
     vertical-align: middle;
-    
+
   }
 
   &--service-name {
     vertical-align: middle;
     @include govuk-font($size: 24, $weight: "normal");
-    
+
     @include govuk-media-query($until: desktop) {
       display: block;
     }
@@ -94,6 +94,12 @@
 
   }
 
+}
+
+span.moj-header__link {
+  &:hover {
+    border-color: transparent;
+  }
 }
 
 // Navigation
