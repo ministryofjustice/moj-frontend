@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.0.14-alpha
+
+- Fix prototype kit extensions path to macros
+- Made header more flexible
+
 ## v0.0.13-alpha
 
 - Add task list component
