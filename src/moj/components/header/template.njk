@@ -29,7 +29,7 @@
           {% set organisationLabelElement = 'a' %}
         {% endif -%}
 
-        <{{organisationLabelElement}} class="moj-header__link moj-header__link--organisation-name" {% if params.organisationLabel.href %} href="{{ params.organisationName.href | default('/') }}" {% endif %}>
+        <{{organisationLabelElement}} class="moj-header__link moj-header__link--organisation-name" {% if params.organisationLabel.href %} href="{{ params.organisationLabel.href | default('/') }}" {% endif %}>
           {{- params.organisationLabel.html | safe if params.organisationLabel.html else params.organisationLabel.text -}}
         </{{organisationLabelElement}}>
       {% endif -%}
@@ -41,7 +41,7 @@
           {% set serviceLabelElement = 'a' %}
         {% endif -%}
 
-        <{{serviceLabelElement}} class="moj-header__link moj-header__link--service-name" {% if params.serviceLabel.href %} href="{{ params.organisationName.href | default('/') }}" {% endif %}>
+        <{{serviceLabelElement}} class="moj-header__link moj-header__link--service-name" {% if params.serviceLabel.href %} href="{{ params.serviceLabel.href | default('/') }}" {% endif %}>
           {{- params.serviceLabel.html | safe if params.serviceLabel.html else params.serviceLabel.text -}}
         </{{serviceLabelElement}}>
       {% endif -%}
