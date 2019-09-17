@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.15-alpha
+
+- Fix Header component urls
+
 ## v0.0.14-alpha
 
 - Fix prototype kit extensions path to macros
