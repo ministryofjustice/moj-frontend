@@ -6,14 +6,13 @@ See live examples of MOJ Frontend components, and guidance on when to use them i
 
 ## Contact the team
 
-MOJ Frontend is maintained by a team at the MOJ. If you want to know more about MOJ Frontend, please email the [Design System team](mailto:design-system@digital.justice.gov.uk).
+MOJ Frontend is maintained by the MOJ Design System team. If you need support email the [Design System team](mailto:design-system@digital.justice.gov.uk).
 
 ## Quick start
 
 We recommend [installing MOJ Frontend using node package manager (npm)](docs/installation/installing-with-npm.md).
 
-Once installed, you will be able to use the code from the examples in the [MOJ Design System](https://moj-design-system.herokuapp.com/)
-in your service.
+Once installed, you will be able to use the code from the examples in the [MOJ Design System](https://moj-design-system.herokuapp.com/) in your service.
 
 ## Browser support
 
@@ -48,3 +47,8 @@ https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-website
 ## Contribution guidelines
 
 If you want to help us build MOJ Frontend, view our [contribution guidelines](CONTRIBUTING.md).
+
+### Further reading
+
+- [Component principles](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_principles.md)
+- [Component conventions](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_conventions.md)
