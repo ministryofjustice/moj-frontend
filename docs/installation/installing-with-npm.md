@@ -33,13 +33,13 @@ You need to import the MOJ Frontend styles into the main Sass file in your proje
 1. To import all components, add the below to your Sass file:
 
 ```CSS
-@import "node_modules/@ministryofjustice/frontend/all";
+@import "node_modules/@ministryofjustice/frontend/moj/all";
 ```
 
 2. To import an individual component (for example a button), add the below to your Sass file:
 
 ```CSS
-@import "node_modules/@ministryofjustice/frontend/components/button/button";
+@import "node_modules/@ministryofjustice/frontend/moj/components/button/button";
 ```
 
 ### Optional: Resolving SCSS import paths
@@ -65,7 +65,7 @@ to include add `includePaths` to it.
 After resolving the import paths you can import MOJ Frontend by using:
 
 ```CSS
-@import "@ministryofjustice/frontend/components/button/button";
+@import "@ministryofjustice/frontend/moj/components/button/button";
 ```
 
 ## Importing assets
@@ -76,22 +76,22 @@ Follow either [Recommended solution](#recommended-solution) or [Alternative solu
 
 ### Recommended solution
 
-Make `/node_modules/@ministryofjustice/frontend/assets` available to your project by routing requests for your assets folder there.
+Make `/node_modules/@ministryofjustice/frontend/moj/assets` available to your project by routing requests for your assets folder there.
 
 For example, if your project uses [express.js](https://expressjs.com/), below is a code sample you could add to your configuration:
 
 ```JS
-app.use('/assets', express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/assets')))
+app.use('/assets', express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/assets')))
 ```
 ### Alternative solution
 
-Manually copy the images and fonts from `/node_modules/@ministryofjustice/frontend/assets` into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the MOJ Frontend assets stay up-to-date.
+Manually copy the images and fonts from `/node_modules/@ministryofjustice/frontend/moj/assets` into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the MOJ Frontend assets stay up-to-date.
 
 The default paths used for assets are `assets/images` and `assets/fonts`. **If your asset folders follow this structure, you will not need to complete the following steps.**
 
 To use different asset paths, also complete the below step(s).
 
-1. Set `$govuk-assets-path`, `$govuk-images-path` and `$govuk-fonts-path` in your project Sass file to point to the relevant directories in your project (this will override the defaults set in `/node_modules/@ministryofjustice/frontend/settings/_assets.scss`). Make sure you do this in Sass before importing `@ministryofjustice/frontend` into your project - see [Importing styles](#importing-styles).
+1. Set `$govuk-assets-path`, `$govuk-images-path` and `$govuk-fonts-path` in your project Sass file to point to the relevant directories in your project (this will override the defaults set in `/node_modules/@ministryofjustice/frontend/moj/settings/_assets.scss`). Make sure you do this in Sass before importing `@ministryofjustice/frontend` into your project - see [Importing styles](#importing-styles).
 
 Example 1:
 
@@ -99,17 +99,17 @@ Example 1:
 // Include images from /application/assets/images and fonts from /application/assets/fonts
 $moj-assets-path: ‘/application/assets’;
 
-@import “@ministryofjustice/frontend/all”;
+@import “@ministryofjustice/frontend/moj/all”;
 ```
 
   Example 2:
 
 ```SCSS
 // Include images from /images/@ministryofjustice/frontend and fonts from /fonts
-$moj-images-path: “/images/@ministryofjustice/frontend/”;
+$moj-images-path: “/images/@ministryofjustice/frontend/moj/”;
 $moj-fonts-path: “/fonts/”;
 
-@import “@ministryofjustice/frontend/all”;
+@import “@ministryofjustice/frontend/moj/all”;
 ```
 
 2. Optional: You can also override the helpers used to generate the asset urls, for example if you are using sass-rails' asset-pipeline functionality. You can do this by setting `$moj-image-url-function` to the name of the function(s) you wish to use. See `src/settings/_assets.scss` for more information and examples.
