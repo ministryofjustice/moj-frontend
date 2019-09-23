@@ -37,7 +37,7 @@ MOJFrontend.AddAnother.prototype.updateAttributes = function(index, item) {
 	item.find('[data-name]').each(function(i, el) {
 		el.name = $(el).attr('data-name').replace(/%index%/, index);
 		el.id = $(el).attr('data-id').replace(/%index%/, index);
-		($(el).prev('label')[0] || $(el).parents('label')[0]).htmlFor = el.id;
+		($(el).siblings('label')[0] || $(el).parents('label')[0]).htmlFor = el.id;
 	});
 };
 
