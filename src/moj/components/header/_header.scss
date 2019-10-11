@@ -71,7 +71,7 @@
 
   &:focus {
     border-color: transparent;
-    color: govuk-colour(black);
+    color: govuk-colour("black");
   }
 
   &--organisation-name {
