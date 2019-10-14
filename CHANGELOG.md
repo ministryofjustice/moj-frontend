@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.0.16-alpha
+
+- Change pagination arrows to use CSS like the back link. Thanks to @MalcolmVonMoJ.
+- Fix add another component when a field has hint text. Thanks to @garyboyle (DWP).
+- Fix #79 where colour wasn't wrapped in quotes and caused build errors. Thanks to @johnnolan.
+
 ## v0.0.15-alpha
 
 - Fix Header component urls

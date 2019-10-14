@@ -34,7 +34,7 @@ This should be incremented based on [Semantic versioning](https://semver.org/) f
   npm unlink ../@ministryofjustice/frontend/package/
   ```
 
-9. Commit changes with a message of “Release vX.X.X-alpha” message
+9. Commit changes with a message of “Release v0.0.16-alpha” message
 
 12. Create a release on [Github](https://github.com/ministryofjustice/moj-frontend/releases/new)
   - enter the tag version
