@@ -132,4 +132,73 @@ Add the CSS and JavaScript code to your HTML template:
 </html>
 ```
 
+## Using JavaScript
+
+Some of the JavaScript included in MOJ Frontend improves the usability and accessibility of the components.
+
+You should include or import MOJ Frontend JavaScript, and then initialise the appropriate script in your application to ensure that all users can use it successfully.
+
+Note that MOJ Frontend does not initialise any scripts by default; all scripts must be initialised in order for them to work.
+
+### Option 1: Include JavaScript
+
+Include the node_modules/ministryofjustice/moj-frontend/moj/all.js script on your page. You might wish to copy the file into your project or reference it from node_modules.
+
+JavaScript in MOJ Frontend requires HTML to be parsed first by the browser before it is initialised. Because of this, make sure you include the script before the closing `</body>` tag. Including the script elsewhere will stop components from functioning or displaying correctly.
+
+```html
+    <script src="path-to-assets/moj-frontend/moj/all.js"></script>
+  </body>
+</html>
+```
+
+MOJ Frontend components with JavaScript behaviour are initialised manually.
+
+To initialise the button menu on a page you can do this:
+
+```js
+  new MOJFrontend.ButtonMenu({
+    container: $('.button-menu-1'),
+    mq: '(min-width: 45em)',
+    buttonText: 'Actions'
+  });
+```
+
+### Option 2: Import JavaScript
+
+If you're using a bundler such as Webpack, use the import syntax to import all components:
+
+```js
+import MOJFrontend from 'path/to/all.js';
+```
+
+If you're using a bundler such as Webpack, use the import syntax to import a component:
+
+```js
+import { ButtonMenu } from 'path/to/all.js';
+```
+
+If you're using a bundler such as Browserify, you may need to use the CommonJS require:
+
+```js
+const MOJFrontend = require('moj-frontend');
+new MOJFRontend.RadioButtons(...);
+```
+
+## Include CSS and JavaScript
+
+Add the CSS and JavaScript code to your HTML template:
+
+```html
+<!DOCTYPE html>
+  <head>
+    <title>Example</title>
+    <link rel="stylesheet" href="assets/application.css">
+  </head>
+  <body>
+    <script src="assets/application.js"></script>
+  </body>
+</html>
+```
+
 If your service supports Internet Explorer 8, you will need to [generate and include a separate stylesheet](supporting-internet-explorer-8.md) as well.
