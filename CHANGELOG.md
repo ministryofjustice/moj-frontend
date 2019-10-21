@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.17-alpha
+
+- JS can now be imported in things like Webpacks thanks to @gregtyler
+
 ## v0.0.16-alpha
 
 - Change pagination arrows to use CSS like the back link. Thanks to @MalcolmVonMoJ.
