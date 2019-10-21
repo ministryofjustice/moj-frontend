@@ -182,7 +182,7 @@ If you're using a bundler such as Browserify, you may need to use the CommonJS r
 
 ```js
 const MOJFrontend = require('moj-frontend');
-new MOJFRontend.RadioButtons(...);
+new MOJFrontend.ButtonMenu(...);
 ```
 
 ## Include CSS and JavaScript
