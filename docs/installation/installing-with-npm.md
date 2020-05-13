@@ -89,9 +89,7 @@ Manually copy the images and fonts from `/node_modules/@ministryofjustice/fronte
 
 The default paths used for assets are `assets/images` and `assets/fonts`. **If your asset folders follow this structure, you will not need to complete the following steps.**
 
-To use different asset paths, also complete the below step(s).
-
-1. Set `$govuk-assets-path`, `$govuk-images-path` and `$govuk-fonts-path` in your project Sass file to point to the relevant directories in your project (this will override the defaults set in `/node_modules/@ministryofjustice/frontend/moj/settings/_assets.scss`). Make sure you do this in Sass before importing `@ministryofjustice/frontend` into your project - see [Importing styles](#importing-styles).
+To use different asset paths, set `$govuk-assets-path`, `$govuk-images-path` and `$govuk-fonts-path` in your project Sass file to point to the relevant directories in your project (this will override the defaults set in `/node_modules/@ministryofjustice/frontend/moj/settings/_assets.scss`). Make sure you do this in Sass before importing `@ministryofjustice/frontend` into your project - see [Importing styles](#importing-styles).
 
 Example 1:
 
@@ -111,8 +109,6 @@ $moj-fonts-path: “/fonts/”;
 
 @import “@ministryofjustice/frontend/moj/all”;
 ```
-
-2. Optional: You can also override the helpers used to generate the asset urls, for example if you are using sass-rails' asset-pipeline functionality. You can do this by setting `$moj-image-url-function` to the name of the function(s) you wish to use. See `src/settings/_assets.scss` for more information and examples.
 
 ## Include CSS and JavaScript
 
