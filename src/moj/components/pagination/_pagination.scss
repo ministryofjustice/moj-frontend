@@ -35,7 +35,7 @@
 
 .moj-pagination__results {
   @include govuk-font(19);
-  mmargin-top: 0;
+  margin-top: 0;
   @include govuk-media-query($from: desktop) {
     display: inline-block;
     margin-bottom: 0;
