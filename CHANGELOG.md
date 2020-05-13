@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.0.18-alpha
+
+- Fix #88 where pagination results do not have font size specified
+- Removed misleading reference to `$moj-image-url-function`
+
 ## v0.0.17-alpha
 
 - JS can now be imported in things like Webpacks thanks to @gregtyler
