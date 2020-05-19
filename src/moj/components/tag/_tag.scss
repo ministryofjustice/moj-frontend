@@ -3,8 +3,8 @@
    ========================================================================== */
 
 .moj-tag {
-  border: 2px solid govuk-colour("blue");
-  background-color: govuk-colour("blue");
+  border: 2px solid $govuk-brand-colour;
+  background-color: $govuk-brand-colour;
   color: govuk-colour("white");
 
   &--purple {

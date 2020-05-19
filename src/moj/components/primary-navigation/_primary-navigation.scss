@@ -56,7 +56,11 @@
 
   &:link,
   &:visited {
-    color: govuk-colour("blue");
+    color: $govuk-link-colour;
+  }
+
+  &:hover {
+    color: govuk-tint($govuk-link-colour, 25);
   }
 
   &:focus {
@@ -66,13 +70,22 @@
     box-shadow: none;
   }
 
+  &:focus:before {
+    background-color: govuk-colour("black");
+    content: "";
+    display: block;
+    height: 5px;
+    position: absolute; bottom: 0; left: 0;
+    width: 100%;
+  }
+
   &[aria-current] {
-    color: govuk-colour("blue");
+    color: $govuk-link-colour;
     position: relative;
     text-decoration: none;
     font-weight: bold;
     &:before {
-      background-color: govuk-colour("blue");
+      background-color: $govuk-link-colour;
       content: "";
       display: block;
       height: 5px;

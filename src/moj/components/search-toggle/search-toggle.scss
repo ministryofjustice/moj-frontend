@@ -2,7 +2,7 @@
   @include govuk-font($size: 19, $weight: bold);
   background-color: transparent;
   border: none;
-  color: govuk-colour("blue");
+  color: $govuk-link-colour;
   cursor: pointer;
   display: inline-block;
   padding-top: 12px;

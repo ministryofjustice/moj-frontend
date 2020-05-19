@@ -94,12 +94,12 @@
 
   &:link,
   &:visited {
-    color: govuk-colour("blue");
+    color: $govuk-link-colour;
   }
 
   &:hover {
-    color: govuk-colour("light-blue");
-   }
+    color: govuk-tint($govuk-link-colour, 25);
+  }
 
   &:focus {
     color: govuk-colour("black");

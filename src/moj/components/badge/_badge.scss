@@ -6,8 +6,8 @@
   @include govuk-font($size: 14, $weight: "bold");
   padding: 0 govuk-spacing(1);
   display: inline-block;
-  border: 2px solid govuk-colour("blue");
-  color: govuk-colour("blue");
+  border: 2px solid $govuk-brand-colour;
+  color: $govuk-brand-colour;
   text-transform: uppercase;
   vertical-align: middle;
   outline: 2px solid transparent;

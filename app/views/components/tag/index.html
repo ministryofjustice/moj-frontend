@@ -58,6 +58,33 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-tag</code>
+            {%- if colour.otherName %}
+            <ul class="govuk-list">
+              {%- for name in colour.otherName %}
+              <li><code>moj-tag</code></li>
+              {% endfor -%}
+            </ul>
+            {% endif -%}
+          </td>
+          <td class="govuk-table__cell">
+            {{ govukTag({
+            text: "Lorem ipsum",
+            classes: "moj-tag",
+            attributes: {
+            "title": "Lorem ipsum",
+            "aria-label": "Lorem ipsum " + loop.index
+            }
+            }) }}
+          </td>
+          <td class="govuk-table__cell">
+            Pass – 6.68 *
+          </td>
+        </tr>
+
           {%- for colour in colours %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
@@ -88,6 +115,8 @@
           {% endfor -%}
         </tbody>
       </table>
+
+      <p class="govuk-body">* Default colour</p>
 
     </div>
 

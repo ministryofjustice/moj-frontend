@@ -58,6 +58,15 @@
     padding-left: 0;
   }
 
+  &:link,
+  &:visited {
+    color: $govuk-link-colour;
+  }
+
+  &:hover {
+    color: govuk-tint($govuk-link-colour, 25);
+  }
+
   &:focus {
     color: govuk-colour("black"); // Focus colour on yellow should really be black.
     position: relative; // Ensure focus sits above everything else.
@@ -77,12 +86,12 @@
 
 
 .moj-sub-navigation__link[aria-current="page"] {
-  color: govuk-colour("black");
+  color: $govuk-link-active-colour;
   position: relative;
   text-decoration: none;
 
   &:before {
-    background-color: govuk-colour("blue");
+    background-color: $govuk-link-colour;
     content: "";
     display: block;
     height: 100%;
