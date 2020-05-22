@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.0.19-alpha
+
+- Fixes #84 "main" location in package.json is not correct
+- Fixes #95 MOJ Header display and relating accessibility issues when `$govuk-global-styles` is not set
+- Fixes inconsistencies with colour use between components
+- Corrects default colours used within components
+- Allows use of existing colour override variables supported by the GOV.UK Frontend
+- Corrects other display and relating accessibility issues when `$govuk-global-styles` is not set
+
 ## v0.0.18-alpha
 
 - Fix #88 where pagination results do not have font size specified
