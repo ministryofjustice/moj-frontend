@@ -47,6 +47,8 @@
 
 
 .moj-sub-navigation__link {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
   display: block;
   padding-top: 12px;
   padding-bottom: 12px;
