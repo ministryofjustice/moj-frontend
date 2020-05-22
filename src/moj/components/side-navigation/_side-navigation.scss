@@ -57,7 +57,7 @@
   a:link,
   a:visited {
     background-color: inherit;
-    color: govuk-colour("blue");
+    color: $govuk-link-colour;
     display: block;
     text-decoration: none;
 
@@ -77,7 +77,7 @@
   }
 
   a:hover {
-    border-color: govuk-colour("light-blue");
+    border-color: govuk-tint($govuk-link-colour, 25);
   }
 
   a:focus {
@@ -95,8 +95,8 @@
 
   a:link,
   a:visited {
-    border-color: govuk-colour("blue");
-    color: govuk-colour("blue");
+    border-color: $govuk-link-colour;
+    color: $govuk-link-colour;
     font-weight: bold;
   }
 
