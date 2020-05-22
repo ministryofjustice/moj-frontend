@@ -48,6 +48,8 @@
 }
 
 .moj-primary-navigation__link {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
   display: block;
   padding-bottom: 15px;
   padding-top: 15px;

@@ -86,6 +86,8 @@
 }
 
 .moj-pagination__link {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
   display: block;
   padding: govuk-spacing(1);
   text-align: center;
