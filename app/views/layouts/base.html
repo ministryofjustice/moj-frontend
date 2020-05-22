@@ -24,6 +24,7 @@
 {%- from "moj/components/badge/macro.njk" import mojBadge %}
 {%- from "moj/components/banner/macro.njk" import mojBanner %}
 {%- from "moj/components/button-menu/macro.njk" import mojButtonMenu %}
+{%- from "moj/components/cookie-banner/macro.njk" import mojCookieBanner %}
 {%- from "moj/components/currency-input/macro.njk" import mojCurrencyInput %}
 {%- from "moj/components/filter/macro.njk" import mojFilter %}
 {%- from "moj/components/header/macro.njk" import mojHeader %}
@@ -73,7 +74,9 @@
   <body class="app-body">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
-    {%- block body %}{% endblock %}
+    <main>
+      {%- block body %}{% endblock %}
+    </main>
 
     {%- block scripts %}
       {%- include "includes/scripts.html" %}
