@@ -1,10 +1,10 @@
 {%- from "govuk/components/button/macro.njk" import govukButton %}
 
-<div class="cookie-banner govuk-width-container cookie-banner--visible" role="region" aria-label="cookie banner">
+<div class="cookie-banner govuk-width-container cookie-banner--visible" role="region" aria-labelledby="moj-cookie-banner-title">
     <div class="govuk-grid-row">
         <div class=" govuk-grid-column-two-thirds">
             <div class="cookie-banner__message">
-                <h2 class="govuk-heading-m">{{ params.heading.title }}</h2>
+                <h2 id="moj-cookie-banner-title" class="govuk-heading-m">{{ params.heading.title }}</h2>
                 <p class="govuk-body">{{ params.heading.html }}</p>
             </div>
             <div class="cookie-banner__buttons">
