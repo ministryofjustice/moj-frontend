@@ -21,14 +21,18 @@
           title: 'Tell us whether you accept cookies',
           html: 'GOV.UK uses cookies which are essential for the site to work. We also use non-essential cookies to help us improve government digital services. Any data collected is anonymised.'
         },
-        acceptCookies: {
-          type: 'submit',
-          text: 'Accept all cookies'
-        },
-        setCookies: {
-          href: '/cookies',
-          text: 'Set application cookies'
-        }
+        items: [
+          {
+            type: 'submit',
+            text: 'Accept all cookies',
+            element: 'button'
+          },
+          {
+            href: '/cookies',
+            text: 'Set application cookies',
+            element: 'a',
+            class: 'govuk-button--secondary'
+          }]
       }) }}
 
   </div>

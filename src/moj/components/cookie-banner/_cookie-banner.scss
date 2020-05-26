@@ -8,7 +8,7 @@
   padding-bottom: govuk-spacing(3);
   left: govuk-spacing(3);
   padding-right: govuk-spacing(3);
-  background-color: govuk-colour("light-grey");
+  background-color: govuk-colour("white");
 
   &--show {
     display: block !important;
@@ -19,7 +19,13 @@
     @include govuk-width-container;
   }
 
-  &__button .govuk-button {
+  &__buttons {
+    .govuk-grid-column-full {
+      padding-left: 0;
+    }
+  }
+
+  .govuk-button {
     @include govuk-media-query($from: tablet) {
       width: 90%;
     }
