@@ -1,0 +1,42 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Cookie banner
+      </h1>
+
+      {{ mojCookieBanner({
+        show: true,
+        heading: {
+          title: 'Tell us whether you accept cookies',
+          html: 'GOV.UK uses cookies which are essential for the site to work. We also use non-essential cookies to help us improve government digital services. Any data collected is anonymised.'
+        },
+        items: [
+          {
+            type: 'submit',
+            text: 'Accept all cookies',
+            element: 'button'
+          },
+          {
+            href: '/cookies',
+            text: 'Set application cookies',
+            element: 'a',
+            class: 'govuk-button--secondary'
+          }]
+      }) }}
+
+  </div>
+
+</div>
+
+{% endblock %}
