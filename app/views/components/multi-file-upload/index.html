@@ -72,6 +72,7 @@
         container: $('.moj-multi-file-upload'),
         uploadUrl: '/ajax-upload',
         deleteUrl: '/ajax-delete',
+        dropzoneHintText: 'Drag an image here or',
         uploadFileEntryHook: function (e, file) {
           console.log('called uploadFileEntryHook', { e, file })
         },
@@ -89,4 +90,3 @@
   </script>
 
 {% endblock %}
-
