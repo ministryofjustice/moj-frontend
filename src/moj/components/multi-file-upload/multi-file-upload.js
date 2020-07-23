@@ -6,9 +6,8 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
       dropzoneButtonText: 'Choose files'
     };
 
-    $.extend(params, this.defaultParams);
+    this.params = $.extend({}, this.defaultParams, params);
 
-    this.params = params;
     this.params.container.addClass('moj-multi-file-upload--enhanced');
 
     this.feedbackContainer = this.params.container.find('.moj-multi-file__uploaded-files');
