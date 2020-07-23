@@ -115,7 +115,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
   MOJFrontend.MultiFileUpload.prototype.uploadFile = function(file) {
     var formData = new FormData();
     formData.append('documents', file);
-    var item = $(this.getFileRowHtml(formData.get('documents')));
+    var item = $(this.getFileRowHtml(file));
     this.feedbackContainer.find('.moj-multi-file-upload__list').append(item);
 
     $.ajax({
