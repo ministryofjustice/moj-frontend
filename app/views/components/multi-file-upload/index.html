@@ -71,7 +71,19 @@
       new MOJFrontend.MultiFileUpload({
         container: $('.moj-multi-file-upload'),
         uploadUrl: '/ajax-upload',
-        deleteUrl: '/ajax-delete'
+        deleteUrl: '/ajax-delete',
+        uploadFileEntryHook: function (e, file) {
+          console.log('called uploadFileEntryHook', { e, file })
+        },
+        uploadFileExitHook: function (e, file, response) {
+          console.log('called uploadFileExitHook', { e, file, response })
+        },
+        uploadFileErrorHook: function (e, file, jqXHR, textStatus, errorThrown) {
+          console.log('called uploadFileErrorHook', { e, file, jqXHR, textStatus, errorThrown })
+        },
+        fileDeleteHook: function (e, response) {
+          console.log('called fileDeleteHook', { e, response })
+        },
       });
     }
   </script>
