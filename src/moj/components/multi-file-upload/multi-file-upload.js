@@ -1,6 +1,10 @@
 if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJFrontend.fileApiSupported()) {
   MOJFrontend.MultiFileUpload = function(params) {
     this.defaultParams = {
+      uploadFileEntryHook: $.noop,
+      uploadFileExitHook: $.noop,
+      uploadFileErrorHook: $.noop,
+      fileDeleteHook: $.noop,
       uploadStatusText: 'Uploading files, please wait',
       dropzoneHintText: 'Drag and drop files here or',
       dropzoneButtonText: 'Choose files'
@@ -113,6 +117,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
   };
 
   MOJFrontend.MultiFileUpload.prototype.uploadFile = function(file) {
+    this.params.uploadFileEntryHook(this, file);
     var formData = new FormData();
     formData.append('documents', file);
     var item = $(this.getFileRowHtml(formData.get('documents')));
@@ -133,6 +138,10 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
           this.status.html(response.success.messageText);
         }
         item.find('.moj-multi-file-upload__actions').append(this.getDeleteButtonHtml(response.file));
+        this.params.uploadFileExitHook(this, file, response);
+      }, this),
+      error: $.proxy(function(jqXHR, textStatus, errorThrown) {
+        this.params.uploadFileErrorHook(this, file, jqXHR, textStatus, errorThrown);
       }, this),
       xhr: function() {
         var xhr = new XMLHttpRequest();
@@ -167,6 +176,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
             this.feedbackContainer.addClass('moj-hidden');
           }
         }
+        this.params.fileDeleteHook(this, response);
       }, this)
     });
   };

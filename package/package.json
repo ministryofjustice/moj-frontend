@@ -30,6 +30,6 @@
     "access": "public"
   },
   "dependencies": {
-    "moment": "^2.26.0"
+    "moment": "^2.27.0"
   }
 }
