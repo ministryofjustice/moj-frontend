@@ -119,7 +119,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
     this.params.uploadFileEntryHook(this, file);
     var formData = new FormData();
     formData.append('documents', file);
-    var item = $(this.getFileRowHtml(formData.get('documents')));
+    var item = $(this.getFileRowHtml(file));
     this.feedbackContainer.find('.moj-multi-file-upload__list').append(item);
 
     $.ajax({
