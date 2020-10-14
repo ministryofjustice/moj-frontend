@@ -2,10 +2,13 @@
   "name": "@ministryofjustice/frontend",
   "description": "The MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.",
   "main": "index.js",
+  "files": [
+    "/package"
+  ],
   "scripts": {
     "start": "gulp",
     "build:package": "node bin/check-nvmrc.js && gulp build:package",
-    "ci:release": ""
+    "ci:release": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release"
   },
   "repository": {
     "type": "git",
@@ -13,6 +16,10 @@
   },
   "author": "Simon Whatley, Adam Silver, Gavin Wye, Matthew Solle",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": false,
   "bugs": {
     "url": "https://github.com/ministryofjustice/moj-frontend/issues"
   },
@@ -49,5 +56,15 @@
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^4.3.0",
     "semantic-release": "^17.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
