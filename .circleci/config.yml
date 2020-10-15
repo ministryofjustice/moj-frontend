@@ -35,9 +35,3 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - publish:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
