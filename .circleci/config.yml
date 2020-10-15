@@ -39,10 +39,10 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-      - run: npm build:package
+      - run: npm run build:package
       - run:
           name: Tag and Publish Version
-          command: npm ci:dryrun
+          command: npm run ci:dryrun
 
 workflows:
   version: 2
