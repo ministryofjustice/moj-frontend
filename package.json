@@ -8,7 +8,8 @@
   "scripts": {
     "start": "gulp",
     "build:package": "node bin/check-nvmrc.js && gulp build:package",
-    "ci:release": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release"
+    "ci:release": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release",
+    "ci:dryrun": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --dry-run"
   },
   "repository": {
     "type": "git",
