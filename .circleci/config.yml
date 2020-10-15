@@ -25,10 +25,10 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-      - run: npm build:package
+      - run: npm run build:package
       - run:
           name: Tag and Publish Version
-          command: npm ci:release
+          command: npm run ci:release
   dryrun:
     working_directory: ~/repo
     docker:
