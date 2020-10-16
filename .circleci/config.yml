@@ -1,0 +1,57 @@
+version: 2.1
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:10.18.0
+    resource_class: small
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+  publish:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:10.18.0
+    resource_class: small
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm run build:package
+      - run:
+          name: Tag and Publish Version
+          command: npm run ci:release
+  dryrun:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:10.18.0
+    resource_class: small
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm run build:package
+      - run:
+          name: Tag and Publish Version
+          command: npm run ci:dryrun
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - dryrun:
+          requires:
+            - build

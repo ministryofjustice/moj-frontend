@@ -2,16 +2,25 @@
   "name": "@ministryofjustice/frontend",
   "description": "The MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.",
   "main": "index.js",
+  "files": [
+    "/package"
+  ],
   "scripts": {
     "start": "gulp",
-    "build:package": "node bin/check-nvmrc.js && gulp build:package"
+    "build:package": "node bin/check-nvmrc.js && gulp build:package",
+    "ci:release": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release",
+    "ci:dryrun": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --dry-run"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ministryofjustice/moj-frontend.git"
+    "url": "https://github.com/ministryofjustice/moj-frontend.git"
   },
   "author": "Simon Whatley, Adam Silver, Gavin Wye, Matthew Solle",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": false,
   "bugs": {
     "url": "https://github.com/ministryofjustice/moj-frontend/issues"
   },
@@ -39,5 +48,27 @@
     "portscanner": "^2.2.0",
     "prompt": "^1.0.0",
     "require-dir": "^1.2.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/npm": "^7.0.6",
+    "commitizen": "^4.2.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^4.3.0",
+    "semantic-release": "^17.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
