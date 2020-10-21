@@ -1,5 +1,5 @@
 {
-  "branches": [{"name": "master", "channel": "alpha"}, {"name": "ci-release", "channel": "beta"}],
+  "branches": [{"name": "master", "channel": "beta"}, {"name": "ci-release", "channel": "beta"}],
   "dryRun": true,
   "plugins": [
     "@semantic-release/commit-analyzer",
