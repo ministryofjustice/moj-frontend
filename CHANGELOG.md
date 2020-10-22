@@ -1,3 +1,10 @@
+## [0.0.20](https://github.com/ministryofjustice/moj-frontend/compare/v0.0.19-alpha...v0.0.20-alpha) (2020-10-22)
+
+
+### Bug Fixes
+
+* potential fix for missing alpha dist tag in npm package ([cd8d74a](https://github.com/ministryofjustice/moj-frontend/commit/cd8d74a9fd620e5f54f92536f7dcc43ce39ec56f))
+
 ## [0.0.19](https://github.com/ministryofjustice/moj-frontend/compare/v0.0.18-alpha...v0.0.19-alpha) (2020-10-22)
 
 
