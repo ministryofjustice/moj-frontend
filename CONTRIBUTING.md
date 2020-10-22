@@ -31,14 +31,24 @@ Raising an issue ensures they are openly discussed and before spending any time 
 
 ### Versioning
 
-Follow the guidelines on [Semantic Versioning](semver.org) for assigning version numbers.
+Versioning is now handled automatically based on your commit messages by using [Semantic Release](https://semantic-release.gitbook.io/semantic-release/) and [commitizen](https://www.npmjs.com/package/commitizen).
 
-Change versions in a commit of their own, in a pull request of their own. This commit alerts team members to the new version and allows for last-minute scrutiny before the new version is released. Also, by raising a separate pull request, we avoid version number conflicts between feature branches.
+With these 2 packages and a few helper ones, we are able to construct reliable versioning based off of descriptive commit messages.
 
-### Commit hygiene
+To aid with the formatting of messages we use commitizen to guide us through our commits.
 
-* Use the present tense ("Add feature" not "Added feature")
-* Use the imperative mood ("Move thing to..." not "Moves thing to...")
-* Limit the first line to 72 characters or less
-* Reference issues and pull requests liberally after the first line
-* Use a [pull request template](https://github.com/ministryofjustice/mojdt-frontend/blob/master/.github/PULL_REQUEST_TEMPLATE)
+Below are instructions on how the git workflow goes now
+
+* Ensure you have run `npm install`
+* When you are ready to commit, run `git add .` as usual
+* Now from the command line run `git commit`
+* You will have a range of prompts asking you what type of commit it is to descriptions on what the changes are
+* Once you have filled these out a linter will check everything is okay and allow the commit to happen
+
+From here you can push as you always have done.
+
+When you come to do a Pull request, be sure to use a [pull request template](https://github.com/ministryofjustice/mojdt-frontend/blob/master/.github/PULL_REQUEST_TEMPLATE)
+
+### Release
+
+Due to the descriptive commits, we are now able to release automatically via CircleCI when a branch is merged into `master`. This takes roughly 5 minutes and then will appear on `npm` for people to consume.
