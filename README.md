@@ -1,11 +1,17 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![moj-frontend](https://circleci.com/gh/ministryofjustice/moj-frontend.svg?style=shield)](https://circleci.com/gh/ministryofjustice/moj-frontend)
+
 
 # Ministry of Justice Frontend
 
 MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.
 
 See live examples of MOJ Frontend components, and guidance on when to use them in your service, in the [MOJ Design System](https://moj-design-system.herokuapp.com/).
+
+## Contribution Guidelines
+
+If you want to help us build MOJ Frontend, view our [contribution guidelines](CONTRIBUTING.md). This covers all areas from semvar commit messages to release process.
 
 ## Contact the team
 
@@ -46,10 +52,6 @@ https://support.microsoft.com/en-gb/help/13862/windows-use-high-contrast-mode
 
 [how-users-change-colours-on-websites]:
 https://accessibility.blog.gov.uk/2017/03/27/how-users-change-colours-on-websites/
-
-## Contribution guidelines
-
-If you want to help us build MOJ Frontend, view our [contribution guidelines](CONTRIBUTING.md).
 
 ### Further reading
 
