@@ -1,13 +1,60 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-# Use a package of configuration called an orb.
-orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
-# Orchestrate or schedule a set of jobs
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:10.18.0
+    resource_class: small
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+  publish:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:10.18.0
+    resource_class: small
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm run build:package
+      - run:
+          name: Tag and Publish Version
+          command: npm run ci:release
+  dryrun:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:10.18.0
+    resource_class: small
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm run build:package
+      - run:
+          name: Tag and Publish Version
+          command: npm run ci:dryrun
+
 workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
+  version: 2
+  build_and_test:
     jobs:
-      - welcome/run
+      - build
+      - publish:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
