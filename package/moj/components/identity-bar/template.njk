@@ -1,0 +1,25 @@
+{%- from "moj/components/button-menu/macro.njk" import mojButtonMenu %}
+
+<div class="moj-identity-bar {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+
+  <div class="moj-identity-bar__container">
+
+    <div class="moj-identity-bar__details">
+      {% if params.title %}
+        <span class="moj-identity-bar__title">{{ params.title.html | safe if params.title.html else params.title.text }}</span>
+      {% endif %}
+    </div>
+
+    {% if params.menus %}
+      <div class="moj-identity-bar__actions">
+        {% for menu in params.menus %}
+          <div class="moj-identity-bar__menu">
+            {{mojButtonMenu({ items: menu.items, classes: menu.classes })}}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+
+</div>

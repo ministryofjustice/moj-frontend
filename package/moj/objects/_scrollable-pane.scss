@@ -1,0 +1,46 @@
+.moj-scrollable-pane {
+
+  @include govuk-media-query($until: 1020px) {
+    position: relative;
+    overflow: hidden; // Hides the shadow
+    clear: both; // Fixes render bug
+    // width: 100% // Fixes render bug
+
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 50px;
+      height: 100%;
+      border-radius: 10px 0 0 10px / 50% 0 0 50%;
+      box-shadow: -5px 0 10px rgba(0, 0, 0, 0.25);
+      content:"";
+    }
+  }
+
+}
+
+@include govuk-media-query($until: 1020px) {
+  .moj-scrollable-pane__wrapper {
+    overflow-x: auto;
+  }
+
+  .moj-scrollable-pane__wrapper .govuk-table__header,
+  .moj-scrollable-pane__wrapper .govuk-table__cell {
+    white-space: nowrap;
+  }
+
+  .moj-scrollable-pane > div::-webkit-scrollbar {
+    height: 10px; // Match GOVUK spacing units
+  }
+
+  .moj-scrollable-pane > div::-webkit-scrollbar-track {
+    background: govuk-colour("light-grey");
+    box-shadow: 0 0 2px rgba(0,0,0,.15) inset; // Simulate scrollbar look and feel
+  }
+
+  .moj-scrollable-pane > div::-webkit-scrollbar-thumb {
+    background: govuk-colour("dark-grey");
+    border-radius: govuk-spacing(1);
+  }
+}

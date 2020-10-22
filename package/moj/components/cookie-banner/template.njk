@@ -1,0 +1,25 @@
+{%- from "govuk/components/button/macro.njk" import govukButton %}
+
+<div class="moj-cookie-banner govuk-width-container{% if (params.show) %} moj-cookie-banner--show{% endif %}" role="region" aria-labelledby="moj-cookie-banner-title">
+    <div class="govuk-grid-row">
+        <div class=" govuk-grid-column-two-thirds">
+            <div class="moj-cookie-banner__message">
+                <h2 id="moj-cookie-banner-title" class="govuk-heading-m">{{ params.heading.title }}</h2>
+                <p class="govuk-body">{{ params.heading.html | safe if params.heading.html else params.heading.text }}</p>
+            </div>
+            <div class="moj-cookie-banner__buttons">
+                {%- for item in params.items %}
+                    <div class="govuk-grid-column-full govuk-grid-column-one-half-from-desktop">
+                        {{ govukButton({
+                            text: item.text,
+                            classes: 'govuk-button button--inline ' + item.class,
+                            type: item.type,
+                            element: item.element,
+                            href: item.href
+                        }) }}
+                    </div>
+                {% endfor -%}
+            </div>
+        </div>
+    </div>
+</div>

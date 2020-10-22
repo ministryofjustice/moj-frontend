@@ -1,0 +1,28 @@
+/* ==========================================================================
+   #ORGANISATION SWITCHER
+   ========================================================================== */
+
+.moj-organisation-nav {
+  @include govuk-clearfix;
+  margin-top: govuk-spacing(2);
+  margin-bottom: govuk-spacing(3);
+  padding-bottom: govuk-spacing(1);
+  border-bottom: 1px solid $govuk-border-colour;
+}
+
+.moj-organisation-nav__title {
+  @include govuk-font($size: 19, $weight: "bold");
+  @include govuk-media-query($from: tablet) {
+    float: left;
+    width: 75%;
+  }
+}
+
+.moj-organisation-nav__link {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
+  @include govuk-link-print-friendly;
+  @include govuk-media-query($from: tablet) {
+    float: right;
+  }
+}

@@ -1,0 +1,55 @@
+/* ==========================================================================
+   #BADGE
+   ========================================================================== */
+
+.moj-badge {
+  @include govuk-font($size: 14, $weight: "bold");
+  padding: 0 govuk-spacing(1);
+  display: inline-block;
+  border: 2px solid $govuk-brand-colour;
+  color: $govuk-brand-colour;
+  text-transform: uppercase;
+  vertical-align: middle;
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+
+  &--purple {
+    border-color: govuk-colour("purple");
+    color: govuk-colour("purple");
+  }
+
+  &--bright-purple {
+    border-color: govuk-colour("bright-purple");
+    color: govuk-colour("bright-purple");
+  }
+
+  &--red {
+    border-color: govuk-colour("red");
+    color: govuk-colour("red");
+  }
+
+  &--green {
+    border-color: govuk-colour("green");
+    color: govuk-colour("green");
+  }
+
+  &--blue {
+    border-color: govuk-colour("blue");
+    color: govuk-colour("blue");
+  }
+
+  &--black {
+    border-color: govuk-colour("black");
+    color: govuk-colour("black");
+  }
+
+  &--grey {
+    border-color: govuk-colour("dark-grey");
+    color: govuk-colour("dark-grey");
+  }
+
+  &--large {
+    @include govuk-font($size: 16, $weight: "bold");
+  }
+
+}

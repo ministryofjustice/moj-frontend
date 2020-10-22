@@ -1,3 +1,11 @@
+## [0.0.19](https://github.com/ministryofjustice/moj-frontend/compare/v0.0.18-alpha...v0.0.19-alpha) (2020-10-22)
+
+
+### Bug Fixes
+
+* upgrade govuk-frontend from 3.6.0 to 3.7.0 ([#100](https://github.com/ministryofjustice/moj-frontend/issues/100)) ([3498af0](https://github.com/ministryofjustice/moj-frontend/commit/3498af0fab6d8959ccdcda802bc2a2817c149c7f))
+* upgrade moment from 2.26.0 to 2.27.0 ([#102](https://github.com/ministryofjustice/moj-frontend/issues/102)) ([611081a](https://github.com/ministryofjustice/moj-frontend/commit/611081a1c1627bb75b122bc26921c4c6e8cf0ce4))
+
 # Changelog
 
 ## v0.0.19-alpha

@@ -1,0 +1,30 @@
+<div id="{{ params.id | default('messages') }}" class="moj-messages-container {{- ' ' + params.classes if params.classes}}" {%- if (params.label) %} aria-label="{{ params.label }}"{% endif %} {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+
+  <div class="moj-message-list">
+
+    {%- for item in params.items %}
+
+      {%- if previous_timestamp != item.timestamp | mojDate('date') %}
+
+        <time class="moj-message-list__date" datetime="{{ item.timestamp | mojDate('date') }}">
+          {{- item.timestamp | mojDate('date') -}}
+        </time>
+
+      {% endif -%}
+
+      <div {%- if (item.id) %} id="message_{{ item.id }}"{% endif %} class="moj-message-item moj-message-item--{{ item.type }}">
+        <div class="moj-message-item__text moj-message-item__text--{{ item.type }}">
+          {{- item.html | safe if item.html else item.text -}}
+        </div>
+        <div class="moj-message-item__meta">
+          <span class="moj-message-item__meta--sender">{{ item.sender }}</span> at <time class="moj-message-item__meta--timestamp" datetime="{{ item.timestamp | mojDate('time') }}">{{ item.timestamp | mojDate('time') }}</time>
+        </div>
+      </div>
+
+      {%- set previous_timestamp = item.timestamp | mojDate('date') -%}
+
+    {% endfor -%}
+
+  </div>
+
+</div>

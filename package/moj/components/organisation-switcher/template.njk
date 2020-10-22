@@ -1,0 +1,12 @@
+<div {%- if params.id %} id="{{ params.id }}"{% endif %} class="moj-organisation-nav {{- ' ' + params.classes if params.classes }}" aria-label="{{ params.label | default('Organisation switcher') }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  <div class="moj-organisation-nav__title">
+    {{- params.html | safe if params.html else params.text -}}
+  </div>
+
+  {% if params.link %}
+    {%- set linkText = params.link.text | default('Change organisation') -%}
+    <a {%- if params.link.id %} id="{{ params.link.id }}"{% endif %} href="{{ params.link.href }}" class="moj-organisation-nav__link {{- ' ' + params.link.classes if params.link.classes }}" {%- for attribute, value in params.link.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+      {{- linkText -}}
+    </a>
+  {% endif %}
+</div>
