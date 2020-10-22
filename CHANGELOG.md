@@ -1,3 +1,10 @@
+## [0.0.21](https://github.com/ministryofjustice/moj-frontend/compare/v0.0.20-alpha...v0.0.21-alpha) (2020-10-22)
+
+
+### Bug Fixes
+
+* fix for package contents not distributing correct files ([ffc5e43](https://github.com/ministryofjustice/moj-frontend/commit/ffc5e43679dea0ef19970578a919e35269dc21fc))
+
 ## [0.0.20](https://github.com/ministryofjustice/moj-frontend/compare/v0.0.19-alpha...v0.0.20-alpha) (2020-10-22)
 
 
