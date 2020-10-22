@@ -1,5 +1,6 @@
 {
-  "branches": [{"name": "master", "channel": "alpha", "prerelease": true}],
+  "branches": ["master"],
+  "tagFormat": "v${version}-alpha",
   "dryRun": false,
   "plugins": [
     "@semantic-release/commit-analyzer",
