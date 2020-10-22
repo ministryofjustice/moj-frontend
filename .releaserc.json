@@ -1,6 +1,6 @@
 {
   "branches": [{"name": "master", "channel": "alpha", "prerelease": true}],
-  "dryRun": true,
+  "dryRun": false,
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
