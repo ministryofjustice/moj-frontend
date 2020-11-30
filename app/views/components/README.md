@@ -26,4 +26,5 @@
 - [Sortable table](/sortable-table)
 - [Sub navigation](/sub-navigation)
 - [Tag](/tag)
+- [Ticket Panel](/ticket-panel)
 - [Timeline](/timeline)
