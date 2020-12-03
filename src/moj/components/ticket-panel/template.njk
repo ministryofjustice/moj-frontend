@@ -1,3 +1,11 @@
-<div class="moj-ticket-panel {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
-  <p class="govuk-body">Ticket Panel</p>
+<div class="moj-ticket-panel{{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}{%- if (params.label) %} aria-label="{{ params.label }}"{% endif %}>
+
+  {%- for item in params.items %}
+
+    <div class="moj-ticket-panel__content{%- if (item.colour) %} moj-ticket-panel__content--{{ item.colour }}{% endif %}">
+      {{- item.html | safe if item.html else item.text -}}
+    </div>
+
+  {% endfor -%}
+
 </div>

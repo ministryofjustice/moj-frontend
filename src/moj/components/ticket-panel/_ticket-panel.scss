@@ -3,5 +3,33 @@
    ========================================================================== */
 
 .moj-ticket-panel {
+   display: block;
+   margin-right: govuk-spacing(0);
+   flex-wrap: wrap;
+   
+   @include govuk-media-query($from: tablet) {
+      display: flex;
+      margin-right: govuk-spacing(3);
+      flex-wrap: nowrap;
 
+      & > * + * {
+         margin-left: govuk-spacing(3);
+      }
+   }
+
+   &__content {
+      display: block;
+      position: relative;
+      background-color: govuk-colour("light-grey");
+      padding: govuk-spacing(3);
+      margin-bottom: govuk-spacing(3);
+      border-left: 5px solid $govuk-brand-colour;
+      
+      &--red { border-left: 5px solid govuk-colour("red"); }
+      &--yellow { border-left: 5px solid govuk-colour("yellow"); }
+      &--green { border-left: 5px solid govuk-colour("green"); }
+      &--green { border-left: 5px solid govuk-colour("green"); }
+      &--purple { border-left: 5px solid govuk-colour("purple"); }
+      &--orange { border-left: 5px solid govuk-colour("orange"); }
+   }
 }
