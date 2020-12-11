@@ -15,10 +15,10 @@
         <span class="govuk-caption-xl">Components</span> Multi-select
       </h1>
 
-      <table class="govuk-table">
+      <table class="govuk-table" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th class="govuk-table__header moj-multi-select__select-all-container" scope="col"></th>
+            <th class="govuk-table__header" scope="col" id="select-all"></th>
             <th class="govuk-table__header" scope="col">Name</th>
             <th class="govuk-table__header" scope="col">Elevation</th>
             <th class="govuk-table__header" scope="col">Continent</th>
@@ -130,15 +130,4 @@
 
     </div>
   </div>
-{% endblock %}
-
-{% block pageScripts %}
-
-  <script>
-    new MOJFrontend.MultiSelect({
-      container: $('.moj-multi-select__select-all-container'),
-      checkboxes: $('.govuk-checkboxes__input')
-    });
-  </script>
-
 {% endblock %}

@@ -11,6 +11,14 @@ MOJFrontend.initAll = function (options) {
     new MOJFrontend.AddAnother($addAnother);
   });
 
+  var $multiSelects = scope.querySelectorAll('[data-module="moj-multi-select"]');
+  MOJFrontend.nodeListForEach($multiSelects, function ($multiSelect) {
+    new MOJFrontend.MultiSelect({
+      container: $multiSelect.querySelector($multiSelect.getAttribute('data-multi-select-checkbox')),
+      checkboxes: $multiSelect.querySelectorAll('tbody .govuk-checkboxes__input')
+    });
+  });
+
   var $passwordReveals = scope.querySelectorAll('[data-module="moj-password-reveal"]');
   MOJFrontend.nodeListForEach($passwordReveals, function ($passwordReveal) {
     new MOJFrontend.PasswordReveal($passwordReveal);
