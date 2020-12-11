@@ -5,6 +5,7 @@ gulp.task('build:javascript', () => {
   return gulp.src([
       'src/moj/namespace.js',
       'src/moj/helpers.js',
+      'src/moj/all.js',
       'src/moj/components/**/*.js'
     ])
     .pipe(concat('all.js'))

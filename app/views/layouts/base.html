@@ -77,6 +77,9 @@
 
     {%- block scripts %}
       {%- include "includes/scripts.html" %}
+      <script type="text/javascript">
+        MOJFrontend.initAll();
+      </script>
       {%- block pageScripts %}{% endblock %}
     {%- endblock %}
   </body>

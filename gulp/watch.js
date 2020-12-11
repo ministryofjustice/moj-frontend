@@ -11,6 +11,7 @@ gulp.task('watch-sass', (done) => {
     'src/moj/components/**/*.js',
     'src/moj/namespace.js',
     'src/moj/helpers.js',
+    'src/moj/all.js',
     'app/assets/sass/*.scss'
   ], gulp.series('sass', 'copy-component-javascript', 'copy-namespace', 'copy-helpers'));
   done();
