@@ -6,6 +6,11 @@ MOJFrontend.initAll = function (options) {
   // Defaults to the entire document if nothing is set.
   var scope = typeof options.scope !== 'undefined' ? options.scope : document;
 
+  var $addAnothers = scope.querySelectorAll('[data-module="moj-add-another"]');
+  MOJFrontend.nodeListForEach($addAnothers, function ($addAnother) {
+    new MOJFrontend.AddAnother($addAnother);
+  });
+
   var $passwordReveals = scope.querySelectorAll('[data-module="moj-password-reveal"]');
   MOJFrontend.nodeListForEach($passwordReveals, function ($passwordReveal) {
     new MOJFrontend.PasswordReveal($passwordReveal);
