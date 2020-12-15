@@ -1,4 +1,4 @@
-# Timeline
+# Ticket Panel
 
 - [Guidance](https://moj-design-system.herokuapp.com/components/ticket-panel)
 - [Preview](https://moj-frontend.herokuapp.com/components/ticket-panel)

@@ -1,11 +1,16 @@
-<div class="moj-ticket-panel{{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}{%- if (params.label) %} aria-label="{{ params.label }}"{% endif %}>
+<article 
+  class="moj-ticket-panel{{- ' ' + params.classes if params.classes}}{%- if (params.inline) %} moj-ticket-panel--inline{% endif %}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}
+  {%- if (params.ariaLabel) %} aria-label="{{ params.ariaLabel }}"{% endif %}
+>
 
   {%- for item in params.items %}
 
-    <div class="moj-ticket-panel__content{%- if (item.colour) %} moj-ticket-panel__content--{{ item.colour }}{% endif %}">
+    <section 
+      class="moj-ticket-panel__content{%- if (item.colour) %} moj-ticket-panel__content--{{ item.colour }}{% endif %}"
+      {%- if (item.ariaLabel) %} aria-label="{{ item.ariaLabel }}"{% endif %}>
       {{- item.html | safe if item.html else item.text -}}
-    </div>
+    </section>
 
   {% endfor -%}
 
-</div>
+</article>
