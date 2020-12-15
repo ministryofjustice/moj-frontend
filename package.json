@@ -35,7 +35,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "govuk-frontend": "^3.9.1",
+    "govuk-frontend": "^3.10.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-cache": "^1.1.3",
