@@ -6,12 +6,14 @@
    display: block;
    flex-wrap: wrap;
 
-   @include govuk-media-query($from: desktop) {
-      display: flex;
-      flex-wrap: nowrap;
+   &--inline {
+      @include govuk-media-query($from: tablet) {
+         display: flex;
+         flex-wrap: nowrap;
 
-      & > * + * {
-        margin-left: govuk-spacing(3);
+         & > * + * {
+            margin-left: govuk-spacing(3);
+         }
       }
    }
 
