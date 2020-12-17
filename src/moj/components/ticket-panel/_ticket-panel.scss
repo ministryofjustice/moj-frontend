@@ -24,6 +24,7 @@
       padding: govuk-spacing(3);
       margin-bottom: govuk-spacing(3);
       border-left: 5px solid $govuk-brand-colour;
+      flex-grow: 1;
 
       &--red { border-left: 5px solid govuk-colour("red"); }
       &--yellow { border-left: 5px solid govuk-colour("yellow"); }
@@ -31,8 +32,5 @@
       &--purple { border-left: 5px solid govuk-colour("purple"); }
       &--orange { border-left: 5px solid govuk-colour("orange"); }
 
-      @include govuk-media-query($from: desktop) {
-        width: 100%;
-      }
    }
 }
