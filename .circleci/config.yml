@@ -52,6 +52,12 @@ workflows:
   build_and_test:
     jobs:
       - build
+      - dryrun:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: master
       - publish:
           requires:
             - build
