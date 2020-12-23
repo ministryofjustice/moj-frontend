@@ -23,4 +23,20 @@ MOJFrontend.initAll = function (options) {
   MOJFrontend.nodeListForEach($passwordReveals, function ($passwordReveal) {
     new MOJFrontend.PasswordReveal($passwordReveal);
   });
+
+  var $richTextEditors = scope.querySelectorAll('[data-module="moj-rich-text-editor"]');
+  MOJFrontend.nodeListForEach($richTextEditors, function ($richTextEditor) {
+    var options = {
+      textarea: $($richTextEditor)
+    };
+
+    var toolbarAttr = $richTextEditor.getAttribute('data-rich-text-editor-toolbar');
+    if (toolbarAttr) {
+      var toolbar = toolbarAttr.split(',');
+      options.toolbar = {};
+      for (var item in toolbar) options.toolbar[toolbar[item]] = true;
+    }
+
+    new MOJFrontend.RichTextEditor(options);
+  });
 }
