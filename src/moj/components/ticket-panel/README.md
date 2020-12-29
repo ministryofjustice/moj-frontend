@@ -31,6 +31,7 @@ This component accepts the following arguments.
 |classes|string|No|Classes to add to the timeline's container.|
 |attributes|object|No|HTML attributes (for example data attributes) to add to the timeline's container.|
 |ariaLabel|string|No|Adds a aria-label to the component describing its context|
+|inline|string|No|Changes the default view from column to row (stacked)|
 
 ### Items
 
