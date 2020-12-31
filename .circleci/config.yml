@@ -46,6 +46,9 @@ jobs:
       - run:
           name: Tag and Publish Version
           command: npm run ci:dryrun
+      - store_artifacts:
+          path: /tmp/gt-dist
+
 
 workflows:
   version: 2
