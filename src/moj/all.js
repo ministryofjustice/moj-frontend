@@ -39,4 +39,11 @@ MOJFrontend.initAll = function (options) {
 
     new MOJFrontend.RichTextEditor(options);
   });
+
+  var $sortableTables = scope.querySelectorAll('[data-module="moj-sortable-table"]');
+  MOJFrontend.nodeListForEach($sortableTables, function ($table) {
+    new MOJFrontend.SortableTable({
+      table: $table
+    });
+  });
 }

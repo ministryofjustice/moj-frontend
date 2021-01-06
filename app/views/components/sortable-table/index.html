@@ -16,6 +16,9 @@
       </h1>
 
       {{ govukTable({
+        attributes: {
+          'data-module': 'moj-sortable-table'
+        },
         head: [
           {
             text: "Name",
@@ -197,12 +200,4 @@
     </div>
 
   </div>
-{% endblock %}
-
-{% block pageScripts %}
-  <script>
-    new MOJFrontend.SortableTable({
-      table: $('table')[0]
-    });
-  </script>
 {% endblock %}
