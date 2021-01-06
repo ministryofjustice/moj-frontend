@@ -40,6 +40,26 @@ MOJFrontend.initAll = function (options) {
     new MOJFrontend.RichTextEditor(options);
   });
 
+  var $searchToggles = scope.querySelectorAll('[data-module="moj-search-toggle"]');
+  MOJFrontend.nodeListForEach($searchToggles, function ($searchToggle) {
+    new MOJFrontend.SearchToggle({
+      toggleButton: {
+        container: $($searchToggle.querySelector('.moj-search-toggle__toggle')),
+        text: $searchToggle.getAttribute('data-moj-search-toggle-text')
+      },
+      search: {
+        container: $($searchToggle.querySelector('.moj-search'))
+      }
+    });
+  });
+
+  var $sortableTables = scope.querySelectorAll('[data-module="moj-sortable-table"]');
+  MOJFrontend.nodeListForEach($sortableTables, function ($table) {
+    new MOJFrontend.SortableTable({
+      table: $table
+    });
+  });
+
   var $sortableTables = scope.querySelectorAll('[data-module="moj-sortable-table"]');
   MOJFrontend.nodeListForEach($sortableTables, function ($table) {
     new MOJFrontend.SortableTable({
