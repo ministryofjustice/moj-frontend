@@ -1,13 +1,12 @@
 <article 
-  class="moj-ticket-panel{{- ' ' + params.classes if params.classes}}{%- if (params.inline) %} moj-ticket-panel--inline{% endif %}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}
-  {%- if (params.ariaLabel) %} aria-label="{{ params.ariaLabel }}"{% endif %}
->
+  class="moj-ticket-panel {{- ' ' + params.classes if params.classes}}"
+      {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
 
   {%- for item in params.items %}
 
     <section 
-      class="moj-ticket-panel__content{%- if (item.colour) %} moj-ticket-panel__content--{{ item.colour }}{% endif %}"
-      {%- if (item.ariaLabel) %} aria-label="{{ item.ariaLabel }}"{% endif %}>
+      class="moj-ticket-panel__content {{- ' ' + item.classes if item.classes}}"
+      {%- for attribute, value in item.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
       {{- item.html | safe if item.html else item.text -}}
     </section>
 

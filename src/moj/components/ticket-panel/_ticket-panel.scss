@@ -27,10 +27,10 @@
       margin-bottom: govuk-spacing(3);
       border-left: 5px solid $govuk-brand-colour;
       
-      &--red { border-left: 5px solid govuk-colour("red"); }
-      &--yellow { border-left: 5px solid govuk-colour("yellow"); }
-      &--green { border-left: 5px solid govuk-colour("green"); }
-      &--purple { border-left: 5px solid govuk-colour("purple"); }
-      &--orange { border-left: 5px solid govuk-colour("orange"); }
+      &--red { border-color: govuk-colour("red"); }
+      &--yellow { border-color: govuk-colour("yellow"); }
+      &--green { border-color: govuk-colour("green"); }
+      &--purple { border-color: govuk-colour("purple"); }
+      &--orange { border-color: govuk-colour("orange"); }
    }
 }
