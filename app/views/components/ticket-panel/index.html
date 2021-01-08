@@ -1,0 +1,174 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      {{ govukBackLink({
+        text: "Back",
+        href: "../"
+      }) }}
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span> Ticket Panel
+      </h1>
+
+      {{ mojTicketPanel({
+        attributes: {
+          'aria-label': 'Sub navigation 1'
+        },
+        items: [{
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This is a heading 2</h2>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
+            Save and continue
+          </a>',
+          attributes: {
+            'aria-label': 'Section 1'
+          }
+        }]
+      }) }}
+
+      {{ mojTicketPanel({
+        attributes: {
+          'aria-label': 'Sub navigation 2'
+        },
+        items: [{
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This is a heading 2</h2>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
+            Save and continue
+          </a>',
+          classes: 'moj-ticket-panel__content--red',
+          attributes: {
+            'aria-label': 'Section 2'
+          }
+        }, {
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This is a heading 2</h2>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
+            Save and continue
+          </a>',
+          attributes: {
+            'aria-label': 'Section 3'
+          }
+        }]
+      }) }}
+
+      {{ mojTicketPanel({
+        attributes: {
+          'aria-label': 'Sub navigation 3'
+        },
+        classes: 'moj-ticket-panel--inline',
+        items: [{
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This is a heading 2</h2>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
+            Save and continue
+          </a>',
+          classes: 'moj-ticket-panel__content--red',
+          attributes: {
+            'aria-label': 'Section 4'
+          }
+        }, {
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This is a heading 2</h2>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
+            Save and continue
+          </a>',
+          attributes: {
+            'aria-label': 'Section 5'
+          }
+        }]
+      }) }}
+
+      {{ mojTicketPanel({
+        attributes: {
+          'aria-label': 'Sub navigation 4'
+        },
+        items: [{
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This is a heading 2</h2>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
+            Save and continue
+          </a>',
+          classes: 'moj-ticket-panel__content--yellow',
+          attributes: {
+            'aria-label': 'Section 6'
+          }
+        }, {
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This is a heading 2</h2>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
+            Save and continue
+          </a>',
+          classes: 'moj-ticket-panel__content--green',
+          attributes: {
+            'aria-label': 'Section 7'
+          }
+        }, {
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This is a heading 2</h2>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
+            Save and continue
+          </a>',
+          classes: 'moj-ticket-panel__content--purple',
+          attributes: {
+            'aria-label': 'Section 8'
+          }
+        }]
+      }) }}
+
+      {{ mojTicketPanel({
+        attributes: {
+          'aria-label': 'Sub navigation 5'
+        },
+        items: [{
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This is a heading 2</h2>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
+            Save and continue
+          </a>',
+          classes: 'moj-ticket-panel__content--red',
+          attributes: {
+            'aria-label': 'Section 9'
+          }
+        }, {
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This is a heading 2</h2>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
+            Save and continue
+          </a>',
+          classes: 'moj-ticket-panel__content--orange',
+          attributes: {
+            'aria-label': 'Section 10'
+          }
+        }, {
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This is a heading 2</h2>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
+            Save and continue
+          </a>',
+          attributes: {
+            'aria-label': 'Section 11'
+          }
+        }, {
+          html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This is a heading 2</h2>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
+            Save and continue
+          </a>',
+          attributes: {
+            'aria-label': 'Section 12'
+          }
+        }]
+      }) }}
+
+    </div>
+
+  </div>
+
+
+{% endblock %}
