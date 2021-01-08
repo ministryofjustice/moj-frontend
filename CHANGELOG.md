@@ -1,3 +1,10 @@
+# [0.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v0.0.23-alpha...v0.1.0-alpha) (2021-01-08)
+
+
+### Features
+
+* **component:** adds the new Ticket Panel component ([1565383](https://github.com/ministryofjustice/moj-frontend/commit/15653837333a50be6e9e5821315e6a629b21e0b1)), closes [#125](https://github.com/ministryofjustice/moj-frontend/issues/125)
+
 ## [0.0.23](https://github.com/ministryofjustice/moj-frontend/compare/v0.0.22-alpha...v0.0.23-alpha) (2020-12-29)
 
 
