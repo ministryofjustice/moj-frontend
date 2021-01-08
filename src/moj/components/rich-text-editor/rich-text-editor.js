@@ -10,6 +10,13 @@ if('contentEditable' in document.documentElement) {
     };
     this.textarea = this.options.textarea;
     this.container = $(this.textarea).parent();
+
+    if (this.container.data('moj-rich-text-editor-initialised')) {
+      return
+    }
+
+    this.container.data('moj-rich-text-editor-initialised', true);
+
     this.createToolbar();
     this.hideDefault();
     this.configureToolbar();

@@ -1,5 +1,12 @@
 MOJFrontend.SearchToggle = function(options) {
   this.options = options;
+
+  if (this.options.search.container.data('moj-search-toggle-initialised')) {
+    return
+  }
+
+  this.options.search.container.data('moj-search-toggle-initialised', true);
+
   this.toggleButton = $('<button class="moj-search-toggle__button" type="button" aria-haspopup="true" aria-expanded="false">'+this.options.toggleButton.text+'</button>');
 	this.toggleButton.on('click', $.proxy(this, 'onToggleButtonClick'));
   this.options.toggleButton.container.append(this.toggleButton);

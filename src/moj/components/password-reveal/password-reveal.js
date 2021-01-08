@@ -1,6 +1,14 @@
 MOJFrontend.PasswordReveal = function(element) {
   this.el = element;
-  $(this.el).wrap('<div class="moj-password-reveal"></div>');
+  $el = $(this.el)
+
+  if ($el.data('moj-password-reveal-initialised')) {
+    return
+  }
+
+  $el.data('moj-password-reveal-initialised', true);
+
+  $el.wrap('<div class="moj-password-reveal"></div>');
   this.container = $(this.el).parent();
   this.createButton();
 };
