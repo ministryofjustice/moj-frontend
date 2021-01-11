@@ -50,8 +50,95 @@ MOJFrontend.fileApiSupported = function() {
   input.type = 'file';
   return typeof input.files != 'undefined';
 };
+
+MOJFrontend.nodeListForEach = function(nodes, callback) {
+  if (window.NodeList.prototype.forEach) {
+    return nodes.forEach(callback)
+  }
+  for (var i = 0; i < nodes.length; i++) {
+    callback.call(window, nodes[i], i, nodes)
+  }
+};
+
+MOJFrontend.initAll = function (options) {
+  // Set the options to an empty object by default if no options are passed.
+  options = typeof options !== 'undefined' ? options : {};
+
+  // Allow the user to initialise MOJ Frontend in only certain sections of the page
+  // Defaults to the entire document if nothing is set.
+  var scope = typeof options.scope !== 'undefined' ? options.scope : document;
+
+  var $addAnothers = scope.querySelectorAll('[data-module="moj-add-another"]');
+  MOJFrontend.nodeListForEach($addAnothers, function ($addAnother) {
+    new MOJFrontend.AddAnother($addAnother);
+  });
+
+  var $multiSelects = scope.querySelectorAll('[data-module="moj-multi-select"]');
+  MOJFrontend.nodeListForEach($multiSelects, function ($multiSelect) {
+    new MOJFrontend.MultiSelect({
+      container: $multiSelect.querySelector($multiSelect.getAttribute('data-multi-select-checkbox')),
+      checkboxes: $multiSelect.querySelectorAll('tbody .govuk-checkboxes__input')
+    });
+  });
+
+  var $passwordReveals = scope.querySelectorAll('[data-module="moj-password-reveal"]');
+  MOJFrontend.nodeListForEach($passwordReveals, function ($passwordReveal) {
+    new MOJFrontend.PasswordReveal($passwordReveal);
+  });
+
+  var $richTextEditors = scope.querySelectorAll('[data-module="moj-rich-text-editor"]');
+  MOJFrontend.nodeListForEach($richTextEditors, function ($richTextEditor) {
+    var options = {
+      textarea: $($richTextEditor)
+    };
+
+    var toolbarAttr = $richTextEditor.getAttribute('data-rich-text-editor-toolbar');
+    if (toolbarAttr) {
+      var toolbar = toolbarAttr.split(',');
+      options.toolbar = {};
+      for (var item in toolbar) options.toolbar[toolbar[item]] = true;
+    }
+
+    new MOJFrontend.RichTextEditor(options);
+  });
+
+  var $searchToggles = scope.querySelectorAll('[data-module="moj-search-toggle"]');
+  MOJFrontend.nodeListForEach($searchToggles, function ($searchToggle) {
+    new MOJFrontend.SearchToggle({
+      toggleButton: {
+        container: $($searchToggle.querySelector('.moj-search-toggle__toggle')),
+        text: $searchToggle.getAttribute('data-moj-search-toggle-text')
+      },
+      search: {
+        container: $($searchToggle.querySelector('.moj-search'))
+      }
+    });
+  });
+
+  var $sortableTables = scope.querySelectorAll('[data-module="moj-sortable-table"]');
+  MOJFrontend.nodeListForEach($sortableTables, function ($table) {
+    new MOJFrontend.SortableTable({
+      table: $table
+    });
+  });
+
+  var $sortableTables = scope.querySelectorAll('[data-module="moj-sortable-table"]');
+  MOJFrontend.nodeListForEach($sortableTables, function ($table) {
+    new MOJFrontend.SortableTable({
+      table: $table
+    });
+  });
+}
+
 MOJFrontend.AddAnother = function(container) {
 	this.container = $(container);
+
+	if (this.container.data('moj-add-another-initialised')) {
+		return
+	}
+
+	this.container.data('moj-add-another-initialised', true);
+
 	this.container.on('click', '.moj-add-another__remove-button', $.proxy(this, 'onRemoveButtonClick'));
 	this.container.on('click', '.moj-add-another__add-button', $.proxy(this, 'onAddButtonClick'));
 	this.container.find('.moj-add-another__add-button, moj-add-another__remove-button').prop('type', 'button');
@@ -703,12 +790,19 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
 }
 
 MOJFrontend.MultiSelect = function(options) {
-  this.container = options.container;
+  this.container = $(options.container);
+
+  if (this.container.data('moj-multi-select-initialised')) {
+    return
+  }
+
+  this.container.data('moj-multi-select-initialised', true);
+
   this.toggle = $(this.getToggleHtml());
   this.toggleButton = this.toggle.find('input');
   this.toggleButton.on('click', $.proxy(this, 'onButtonClick'));
   this.container.append(this.toggle);
-  this.checkboxes = options.checkboxes;
+  this.checkboxes = $(options.checkboxes);
   this.checkboxes.on('click', $.proxy(this, 'onCheckboxClick'));
   this.checked = options.checked || false;
 };
@@ -759,9 +853,18 @@ MOJFrontend.MultiSelect.prototype.onCheckboxClick = function(e) {
     }
   }
 };
+
 MOJFrontend.PasswordReveal = function(element) {
   this.el = element;
-  $(this.el).wrap('<div class="moj-password-reveal"></div>');
+  $el = $(this.el)
+
+  if ($el.data('moj-password-reveal-initialised')) {
+    return
+  }
+
+  $el.data('moj-password-reveal-initialised', true);
+
+  $el.wrap('<div class="moj-password-reveal"></div>');
   this.container = $(this.el).parent();
   this.createButton();
 };
@@ -781,6 +884,7 @@ MOJFrontend.PasswordReveal.prototype.onButtonClick = function() {
     this.button.text('Show');
   }
 };
+
 if('contentEditable' in document.documentElement) {
   MOJFrontend.RichTextEditor = function(options) {
     this.options = options;
@@ -793,6 +897,13 @@ if('contentEditable' in document.documentElement) {
     };
     this.textarea = this.options.textarea;
     this.container = $(this.textarea).parent();
+
+    if (this.container.data('moj-rich-text-editor-initialised')) {
+      return
+    }
+
+    this.container.data('moj-rich-text-editor-initialised', true);
+
     this.createToolbar();
     this.hideDefault();
     this.configureToolbar();
@@ -913,8 +1024,16 @@ if('contentEditable' in document.documentElement) {
   };
 
 }
+
 MOJFrontend.SearchToggle = function(options) {
   this.options = options;
+
+  if (this.options.search.container.data('moj-search-toggle-initialised')) {
+    return
+  }
+
+  this.options.search.container.data('moj-search-toggle-initialised', true);
+
   this.toggleButton = $('<button class="moj-search-toggle__button" type="button" aria-haspopup="true" aria-expanded="false">'+this.options.toggleButton.text+'</button>');
 	this.toggleButton.on('click', $.proxy(this, 'onToggleButtonClick'));
   this.options.toggleButton.container.append(this.toggleButton);
@@ -933,6 +1052,13 @@ MOJFrontend.SearchToggle.prototype.onToggleButtonClick = function() {
 
 MOJFrontend.SortableTable = function(params) {
 	this.table = $(params.table);
+
+	if (this.table.data('moj-search-toggle-initialised')) {
+		return
+	}
+
+	this.table.data('moj-search-toggle-initialised', true);
+
 	this.setupOptions(params);
 	this.body = this.table.find('tbody');
 	this.createHeadingButtons();
@@ -1048,5 +1174,6 @@ MOJFrontend.SortableTable.prototype.getCellValue = function(cell) {
 	}
 	return val;
 };
+
 return MOJFrontend;
 }));

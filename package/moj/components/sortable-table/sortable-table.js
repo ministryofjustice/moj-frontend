@@ -1,5 +1,12 @@
 MOJFrontend.SortableTable = function(params) {
 	this.table = $(params.table);
+
+	if (this.table.data('moj-search-toggle-initialised')) {
+		return
+	}
+
+	this.table.data('moj-search-toggle-initialised', true);
+
 	this.setupOptions(params);
 	this.body = this.table.find('tbody');
 	this.createHeadingButtons();

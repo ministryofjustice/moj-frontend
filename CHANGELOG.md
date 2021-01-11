@@ -1,3 +1,15 @@
+# [0.2.0](https://github.com/ministryofjustice/moj-frontend/compare/v0.1.0-alpha...v0.2.0-alpha) (2021-01-11)
+
+
+### Features
+
+* **add-another:** add to initAll ([4e0f798](https://github.com/ministryofjustice/moj-frontend/commit/4e0f798ad32850757b2f9c0f4b1a02b970163289))
+* **multi-select:** add to initAll ([1fe780a](https://github.com/ministryofjustice/moj-frontend/commit/1fe780ac65ff0a583853e8cea6508db2fd505729))
+* **password-reveal:** add data-module attribute ([d41cd0f](https://github.com/ministryofjustice/moj-frontend/commit/d41cd0f277f8bcfc99c679f8854f262db06bdbbf))
+* **rich-text-editor:** add to initAll ([a487749](https://github.com/ministryofjustice/moj-frontend/commit/a487749651119326d5b352b3df378de919e2f1c0))
+* **search-toggle:** add to initAll ([9251a38](https://github.com/ministryofjustice/moj-frontend/commit/9251a38a8d8a927e03654366e90c489baef7b4bd))
+* **sortable-table:** add to initAll ([99751e4](https://github.com/ministryofjustice/moj-frontend/commit/99751e4a153085d58017ed4bd5a722615b573a50))
+
 # [0.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v0.0.23-alpha...v0.1.0-alpha) (2021-01-08)
 
 

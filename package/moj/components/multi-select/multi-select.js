@@ -1,10 +1,17 @@
 MOJFrontend.MultiSelect = function(options) {
-  this.container = options.container;
+  this.container = $(options.container);
+
+  if (this.container.data('moj-multi-select-initialised')) {
+    return
+  }
+
+  this.container.data('moj-multi-select-initialised', true);
+
   this.toggle = $(this.getToggleHtml());
   this.toggleButton = this.toggle.find('input');
   this.toggleButton.on('click', $.proxy(this, 'onButtonClick'));
   this.container.append(this.toggle);
-  this.checkboxes = options.checkboxes;
+  this.checkboxes = $(options.checkboxes);
   this.checkboxes.on('click', $.proxy(this, 'onCheckboxClick'));
   this.checked = options.checked || false;
 };
