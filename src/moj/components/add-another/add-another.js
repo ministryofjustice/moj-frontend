@@ -1,5 +1,12 @@
 MOJFrontend.AddAnother = function(container) {
 	this.container = $(container);
+
+	if (this.container.data('moj-add-another-initialised')) {
+		return
+	}
+
+	this.container.data('moj-add-another-initialised', true);
+
 	this.container.on('click', '.moj-add-another__remove-button', $.proxy(this, 'onRemoveButtonClick'));
 	this.container.on('click', '.moj-add-another__add-button', $.proxy(this, 'onAddButtonClick'));
 	this.container.find('.moj-add-another__add-button, moj-add-another__remove-button').prop('type', 'button');

@@ -70,7 +70,7 @@
       <h2 class="govuk-heading-m govuk-!-margin-top-9">Toggle search</h2>
 
       {%- set toggleSearchHtml %}
-      <div class="moj-search-toggle">
+      <div class="moj-search-toggle" data-module="moj-search-toggle" data-moj-search-toggle-text="Find case">
         <div class="moj-search-toggle__toggle"></div>
         <div class="moj-search-toggle__search">
           {{ mojSearch({
@@ -114,18 +114,4 @@
 
   </div>
 
-{% endblock %}
-
-{% block pageScripts %}
-  <script>
-    new MOJFrontend.SearchToggle({
-      toggleButton: {
-        container: $('.moj-search-toggle__toggle'),
-        text: 'Find case'
-      },
-      search: {
-        container: $('.moj-search:eq(1)')
-      }
-    });
-  </script>
 {% endblock %}

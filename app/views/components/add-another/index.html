@@ -11,7 +11,7 @@
         href: "../"
       }) }}
 
-      <div class="moj-add-another">
+      <div data-module="moj-add-another">
 
         <h1 class="govuk-heading-xl">
           <span class="govuk-caption-xl">Components</span> Add another
@@ -120,13 +120,5 @@
     </div>
 
   </div>
-
-{% endblock %}
-
-{% block pageScripts %}
-
-  <script>
-    new MOJFrontend.AddAnother($('.moj-add-another'));
-  </script>
 
 {% endblock %}
