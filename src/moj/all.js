@@ -30,7 +30,7 @@ MOJFrontend.initAll = function (options) {
       textarea: $($richTextEditor)
     };
 
-    var toolbarAttr = $richTextEditor.getAttribute('data-rich-text-editor-toolbar');
+    var toolbarAttr = $richTextEditor.getAttribute('data-moj-rich-text-editor-toolbar');
     if (toolbarAttr) {
       var toolbar = toolbarAttr.split(',');
       options.toolbar = {};
