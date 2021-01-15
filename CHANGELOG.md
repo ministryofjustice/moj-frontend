@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/ministryofjustice/moj-frontend/compare/v0.2.0-alpha...v0.2.1-alpha) (2021-01-15)
+
+
+### Bug Fixes
+
+* **rich-text-editor:** fix attribute prefix ([16f749d](https://github.com/ministryofjustice/moj-frontend/commit/16f749d903adea2b64e8d618999b557a27b4cdf6))
+
 # [0.2.0](https://github.com/ministryofjustice/moj-frontend/compare/v0.1.0-alpha...v0.2.0-alpha) (2021-01-11)
 
 
