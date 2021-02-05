@@ -10,7 +10,6 @@
    &--inline {
       @include govuk-media-query($from: desktop) {
          display: flex;
-         margin-right: govuk-spacing(3);
          flex-wrap: nowrap;
 
          & > * + * {
