@@ -29,7 +29,7 @@
       background-color: govuk-colour("light-grey");
       padding: govuk-spacing(4);
       margin-bottom: govuk-spacing(3);
-      // flex-grow: 1;
+      flex-grow: 1;
 
       &--grey { border-left: 4px solid $govuk-border-colour; }
       &--blue { border-left: 4px solid govuk-colour("blue"); }
