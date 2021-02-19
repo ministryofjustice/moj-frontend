@@ -7,6 +7,7 @@
   ],
   "scripts": {
     "start": "gulp",
+    "test": "jest",
     "build:package": "node bin/check-nvmrc.js && gulp build:package",
     "ci:release": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --debug",
     "ci:dryrun": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --dry-run"
@@ -60,6 +61,7 @@
     "commitizen": "^4.2.2",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^4.3.0",
+    "jest": "^26.6.3",
     "semantic-release": "^17.2.2"
   },
   "husky": {
