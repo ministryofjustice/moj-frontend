@@ -58,6 +58,8 @@
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/npm": "^7.0.6",
+    "@testing-library/dom": "^7.29.5",
+    "@testing-library/jest-dom": "^5.11.9",
     "commitizen": "^4.2.2",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^4.3.0",
@@ -69,6 +71,9 @@
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "jest": {
+    "setupFilesAfterEnv": ["./jest.setup.js"]
   },
   "config": {
     "commitizen": {
