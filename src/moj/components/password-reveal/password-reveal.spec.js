@@ -1,39 +1,37 @@
-require('../../vendor/jquery');
-globalThis.MOJFrontend = {};
+const { getByDisplayValue, getByText } = require("@testing-library/dom");
 
-require('./password-reveal');
+require("./password-reveal");
 
-describe('Password reveal', () => {
-  let input
+describe("Password reveal", () => {
+  let container;
 
   beforeEach(() => {
-    input = document.createElement('input');
-    input.type = 'password';
+    const input = document.createElement("input");
+    input.type = "password";
+    input.value = "password";
 
     new MOJFrontend.PasswordReveal(input);
-  })
 
-  test('initialises container', () => {
-    expect($(input).data('moj-password-reveal-initialised')).toBe(true);
-
-    expect(input.parentNode.tagName).toBe('DIV');
-    expect(input.parentNode.classList).toContain('moj-password-reveal');
-
-    expect(input.nextSibling.tagName).toBe('BUTTON');
-    expect(input.nextSibling.innerHTML).toBe('Show');
+    container = input.parentNode;
   });
 
-  test('toggle reveal', () => {
-    const button = input.nextSibling;
+  test("initialises container", () => {
+    expect(container).toHaveClass("moj-password-reveal");
+    expect(container).toContainElement(getByText(container, "Show"));
+  });
+
+  test("toggle reveal", () => {
+    const input = getByDisplayValue(container, "password");
+    const button = getByText(container, "Show");
 
     button.click();
 
-    expect(input.type).toBe('text');
-    expect(button.innerHTML).toBe('Hide');
+    expect(input).toHaveAttribute("type", "text");
+    expect(button).toHaveTextContent("Hide");
 
     button.click();
 
-    expect(input.type).toBe('password');
-    expect(button.innerHTML).toBe('Show');
-  })
+    expect(input).toHaveAttribute("type", "password");
+    expect(button).toHaveTextContent("Show");
+  });
 });
