@@ -111,9 +111,6 @@ const nunjucksEnvironment = nunjucks.configure(appViews, {
   watch: true
 });
 
-// Add Nunjucks filters for application
-utils.addNunjucksFilters(nunjucksEnvironment);
-
 // Add filters from MOJ Frontend
 let mojFilters = require('./src/moj/filters/all')();
 mojFilters = Object.assign(mojFilters);
