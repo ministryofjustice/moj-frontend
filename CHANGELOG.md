@@ -1,3 +1,10 @@
+## [0.2.2](https://github.com/ministryofjustice/moj-frontend/compare/v0.2.1-alpha...v0.2.2-alpha) (2021-03-31)
+
+
+### Bug Fixes
+
+* **ticket-panel:** fixes the colour options within the panel ([5717c27](https://github.com/ministryofjustice/moj-frontend/commit/5717c2799aa59d9de56a80da83cd45e07f553cc9))
+
 ## [0.2.1](https://github.com/ministryofjustice/moj-frontend/compare/v0.2.0-alpha...v0.2.1-alpha) (2021-01-15)
 
 
