@@ -15,7 +15,7 @@
     "type": "git",
     "url": "https://github.com/ministryofjustice/moj-frontend.git"
   },
-  "author": "Simon Whatley, Adam Silver, Gavin Wye, Matthew Solle",
+  "author": "MOJ Digital & Technology",
   "license": "MIT",
   "publishConfig": {
     "access": "public",

@@ -8,8 +8,8 @@ Please note we have a [code of conduct](https://github.com/ministryofjustice/moj
 
 If you’ve got an idea or suggestion you can:
 
-* Email [design-system@digital.justice.gov.uk](design-system@digital.justice.gov.uk) putting the repository name in the subject line.
-* [Create a GitHub issue](https://github.com/ministryofjustice/mojdt-frontend/issues).
+- [Contact the Design System team](https://moj-design-system.herokuapp.com/get-in-touch)
+- [Create a GitHub issue](https://github.com/ministryofjustice/mojdt-frontend/issues)
 
 ## Raising bugs
 
