@@ -7,10 +7,7 @@
   "engines": {
     "node": ">= 4.2.0"
   },
-  "author": {
-    "name": "MOJ Design System Team",
-    "email": "design-system@digital.justice.gov.uk"
-  },
+  "author": "MOJ Digital & Technology",
   "repository": {
     "type": "git",
     "url": "https://github.com/ministryofjustice/moj-frontend.git"

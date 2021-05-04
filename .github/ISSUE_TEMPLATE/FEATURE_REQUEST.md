@@ -1,7 +1,6 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-
 ---
 
 <!--
@@ -10,7 +9,7 @@ Have you read the Code of Conduct? By filing an Issue, you are expected to compl
 
 https://github.com/ministryofjustice/moj-frontend/blob/master/CODE_OF_CONDUCT.md
 
-Do you want to ask a question? Are you looking for support? You can email [design-system@digital.justice.gov.uk](design-system@digital.justice.gov.uk) putting the repository name in the subject line.
+Do you want to ask a question? Are you looking for support? You can [contact the Design System team](https://moj-design-system.herokuapp.com/get-in-touch).
 
 ---
 

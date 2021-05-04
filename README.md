@@ -2,7 +2,6 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![moj-frontend](https://circleci.com/gh/ministryofjustice/moj-frontend.svg?style=shield)](https://circleci.com/gh/ministryofjustice/moj-frontend)
 
-
 # Ministry of Justice Frontend
 
 MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.
@@ -15,7 +14,7 @@ If you want to help us build MOJ Frontend, view our [contribution guidelines](CO
 
 ## Contact the team
 
-MOJ Frontend is maintained by the MOJ Design System team. If you need support email the [Design System team](mailto:design-system@digital.justice.gov.uk).
+MOJ Frontend is maintained by the MOJ Design System team. If you need support [contact the Design System team](https://moj-design-system.herokuapp.com/get-in-touch).
 
 ## Quick start
 
