@@ -7,8 +7,9 @@
   ],
   "scripts": {
     "start": "gulp",
-    "test": "node-sass -q test.scss >/dev/null && echo 'ok'",
+    "test": "npm run ci:testsass",
     "build:package": "node bin/check-nvmrc.js && gulp build:package",
+    "ci:testsass": "node-sass -q test.scss >/dev/null && echo 'ok'",
     "ci:release": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --debug",
     "ci:dryrun": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --dry-run"
   },
