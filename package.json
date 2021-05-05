@@ -7,7 +7,9 @@
   ],
   "scripts": {
     "start": "gulp",
+    "test": "npm run ci:testsass",
     "build:package": "node bin/check-nvmrc.js && gulp build:package",
+    "ci:testsass": "node-sass -q test.scss >/dev/null && echo 'ok'",
     "ci:release": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --debug",
     "ci:dryrun": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --dry-run"
   },
@@ -46,6 +48,7 @@
     "gulp-umd": "^2.0.0",
     "moment": "^2.29.1",
     "multer": "^1.4.2",
+    "node-sass": "^5.0.0",
     "nunjucks": "^3.2.3",
     "portscanner": "^2.2.0",
     "prompt": "^1.1.0",
@@ -54,6 +57,7 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@ministryofjustice/frontend": "file:./package",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/npm": "^7.1.1",
