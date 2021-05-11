@@ -18,6 +18,10 @@
     float: left;
     padding: 4px 0;
     width: 100%;
+
+    & + .govuk-form-group {
+      clear: left;
+    }
   }
 
   &__remove-button {

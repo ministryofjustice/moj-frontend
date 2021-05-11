@@ -1,3 +1,10 @@
+## [0.2.3](https://github.com/ministryofjustice/moj-frontend/compare/v0.2.2-alpha...v0.2.3-alpha) (2021-05-11)
+
+
+### Bug Fixes
+
+* **add-another:** clear floating legend ([#154](https://github.com/ministryofjustice/moj-frontend/issues/154)) ([9f6a869](https://github.com/ministryofjustice/moj-frontend/commit/9f6a869ba8ed14612951d75a05b5d605e6ce9562)), closes [#152](https://github.com/ministryofjustice/moj-frontend/issues/152)
+
 ## [0.2.2](https://github.com/ministryofjustice/moj-frontend/compare/v0.2.1-alpha...v0.2.2-alpha) (2021-03-31)
 
 
