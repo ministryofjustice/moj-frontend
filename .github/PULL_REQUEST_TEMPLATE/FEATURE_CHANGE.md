@@ -1,9 +1,9 @@
 ### Requirements for adding, changing or removing a feature
 
-* Fill out the template below. Maintainers are free to close any pull requests that do not include enough information, at their discretion.
-* The pull request must contribute a change that has been endorsed by the maintainer team. See details in the template below.
-* The pull request must update the test suite to exercise the updated functionality.
-* After you create the pull request, all status checks must pass before a maintainer reviews your contribution.
+- Fill out the template below. Maintainers are free to close any pull requests that do not include enough information, at their discretion.
+- The pull request must contribute a change that has been endorsed by the maintainer team. See details in the template below.
+- The pull request must update the test suite to exercise the updated functionality.
+- After you create the pull request, all status checks must pass before a maintainer reviews your contribution.
 
 ### Issue or RFC endorsed by the maintainers
 
@@ -17,11 +17,11 @@ Link to the issue or RFC to which your change relates. This link must be one of 
 
 To contribute an enhancement that isn't covered by one of the items above, please follow our guide for suggesting an enhancement:
 
-https://github.com/ministryofjustice/moj-frontend/blob/master/CONTRIBUTING.md#suggesting-enhancements
+https://github.com/ministryofjustice/moj-frontend/blob/main/CONTRIBUTING.md#suggesting-enhancements
 
 To contribute other changes, you must use a different template. You can see all templates at:
 
-https://github.com/ministryofjustice/moj-frontend/tree/master/.github/PULL_REQUEST_TEMPLATE.
+https://github.com/ministryofjustice/moj-frontend/tree/main/.github/PULL_REQUEST_TEMPLATE.
 
 -->
 

@@ -7,9 +7,9 @@
 
 The currency input component is dependent on the following components from the [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend/):
 
-- [GOV.UK Label component](https://github.com/alphagov/govuk-frontend/tree/master/src/components/label)
-- [GOV.UK Hint component](https://github.com/alphagov/govuk-frontend/tree/master/src/components/hint)
-- [GOV.UK Error message component](https://github.com/alphagov/govuk-frontend/tree/master/src/components/error-message)
+- [GOV.UK Label component](https://github.com/alphagov/govuk-frontend/tree/main/src/govuk/components/label)
+- [GOV.UK Hint component](https://github.com/alphagov/govuk-frontend/tree/main/src/govuk/components/hint)
+- [GOV.UK Error message component](https://github.com/alphagov/govuk-frontend/tree/main/src/govuk/components/error-message)
 
 ## Examples
 
