@@ -2,14 +2,14 @@
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
 
-Please note we have a [code of conduct](https://github.com/ministryofjustice/mojdt-frontend/blob/master/CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
+Please note we have a [code of conduct](https://github.com/ministryofjustice/moj-frontend/blob/master/CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
 
 ## Contributing
 
 If you’ve got an idea or suggestion you can:
 
 - [Contact the Design System team](https://moj-design-system.herokuapp.com/get-in-touch)
-- [Create a GitHub issue](https://github.com/ministryofjustice/mojdt-frontend/issues)
+- [Create a GitHub issue](https://github.com/ministryofjustice/moj-frontend/issues)
 
 ## Raising bugs
 
@@ -23,7 +23,7 @@ When describing the bug, it's useful to follow the format:
 
 ## Suggesting features
 
-Please [raise feature requests as issues](https://github.com/ministryofjustice/mojdt-frontend/issues) before contributing any code.
+Please [raise feature requests as issues](https://github.com/ministryofjustice/moj-frontend/issues) before contributing any code.
 
 Raising an issue ensures they are openly discussed and before spending any time on them.
 
@@ -47,7 +47,7 @@ Below are instructions on how the git workflow goes now
 
 From here you can push as you always have done.
 
-When you come to do a Pull request, be sure to use a [pull request template](https://github.com/ministryofjustice/mojdt-frontend/blob/master/.github/PULL_REQUEST_TEMPLATE)
+When you come to do a Pull request, be sure to use a [pull request template](https://github.com/ministryofjustice/moj-frontend/blob/master/.github/PULL_REQUEST_TEMPLATE)
 
 ### Release
 
