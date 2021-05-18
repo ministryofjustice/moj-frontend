@@ -1,12 +1,4 @@
 const gulp = require('gulp');
-const nodemon = require('gulp-nodemon');
+const shell = require('gulp-shell');
 
-gulp.task('server', (done) => {
-  nodemon({
-    script: 'server.js',
-    ext: 'js, json',
-  }).on('quit', () => {
-    process.exit(0);
-  });
-  done();
-});
+gulp.task('server', shell.task('npm run build:docs -- --serve --watch'));

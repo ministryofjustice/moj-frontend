@@ -8,6 +8,7 @@ requireDir('./gulp', {
 gulp.task('generate-assets', gulp.series(
   'clean',
   gulp.parallel(
+    'build-docs-javascript',
     'copy-assets',
     'copy-component-javascript',
     'copy-vendor-javascript',

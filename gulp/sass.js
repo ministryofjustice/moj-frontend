@@ -8,5 +8,5 @@ gulp.task('sass', () => {
       outputStyle: 'expanded'
     }).on('error', sass.logError))
     .pipe(autoprefixer('Last 3 versions'))
-    .pipe(gulp.dest('public/stylesheets'));
+    .pipe(gulp.dest('public/assets/stylesheets'));
 });

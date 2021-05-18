@@ -1,0 +1,37 @@
+{%- from "node_modules/@ministryofjustice/frontend/moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation %}
+
+{% macro appPrimaryNavigation(config) %}
+  {% set config = config|addActiveAttribute(page.filePathStem) %}
+
+  {{ mojPrimaryNavigation(config) }}
+{% endmacro %}
+
+{{ appPrimaryNavigation({
+  items: [
+    {
+      text: 'Get started',
+      href: '/get-started',
+      active: sectionId == 'get-started'
+    },
+    {
+      text: 'Styles',
+      href: '/styles',
+      active: sectionId == 'styles'
+    },
+    {
+      text: 'Components',
+      href: '/components',
+      active: sectionId == 'components'
+    },
+    {
+      text: 'Patterns',
+      href: '/patterns',
+      active: sectionId == 'patterns'
+    },
+    {
+      text: 'Community',
+      href: '/community',
+      active: sectionId == 'community'
+    }
+  ]
+}) }}

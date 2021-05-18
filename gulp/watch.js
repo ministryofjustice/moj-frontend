@@ -21,6 +21,6 @@ gulp.task('watch-assets', (done) => {
   gulp.watch([
     'app/assets/images/**',
     'app/components/**',
-    'app/assets/javascripts/**'], {cwd: './'}, gulp.task('copy-assets'));
+    'app/assets/javascripts/**'], {cwd: './'}, gulp.parallel('copy-assets', 'build-docs-javascript'));
   done();
 });

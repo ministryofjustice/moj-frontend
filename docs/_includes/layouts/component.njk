@@ -1,0 +1,163 @@
+{% extends "./base.njk" %}
+
+{%- from "node_modules/@ministryofjustice/frontend/moj/components/side-navigation/macro.njk" import mojSideNavigation %}
+
+{% macro appSideNavigation(config) %}
+  {% set config = config|addActiveAttribute(page.filePathStem) %}
+
+  {{ mojSideNavigation(config) }}
+{% endmacro %}
+
+{% block subNav %}
+  {{ appSideNavigation({
+    classes: 'govuk-!-padding-top-6',
+    items: [
+      {
+        text: 'Add another',
+        href: '/components/add-another'
+      },
+      {
+        text: 'Badge',
+        href: '/components/badge'
+      },
+      {
+        text: 'Banner',
+        href: '/components/banner',
+        active: pageId == 'banner'
+      },
+      {
+        text: 'Button menu',
+        href: '/components/button-menu',
+        active: pageId == 'button-menu'
+      },
+      {
+        text: 'Currency input',
+        href: '/components/currency-input',
+        active: pageId == 'currency-input'
+      },
+      {
+        text: 'Filter',
+        href: '/components/filter',
+        active: pageId == 'filter'
+      },
+      {
+        text: 'Form validator',
+        href: '/components/form-validator',
+        active: pageId == 'form-validator'
+      },
+      {
+        text: 'Header',
+        href: '/components/header',
+        active: pageId == 'header'
+      },
+      {
+        text: 'Identity bar',
+        href: '/components/identity-bar',
+        active: pageId == 'identity-bar'
+      },
+      {
+        text: 'Messages',
+        href: '/components/messages',
+        active: pageId == 'messages'
+      },
+      {
+        text: 'Multi file upload',
+        href: '/components/multi-file-upload',
+        active: pageId == 'multi-file-upload'
+      },
+      {
+        text: 'Multi select',
+        href: '/components/multi-select',
+        active: pageId == 'multi-select'
+      },
+      {
+        text: 'Notification badge',
+        href: '/components/notification-badge',
+        active: pageId == 'notification-badge'
+      },
+      {
+        text: 'Organisation switcher',
+        href: '/components/organisation-switcher',
+        active: pageId == 'organisation-switcher'
+      },
+      {
+        text: 'Page header actions',
+        href: '/components/page-header-actions',
+        active: pageId == 'page-header-actions'
+      },
+      {
+        text: 'Pagination',
+        href: '/components/pagination',
+        active: pageId == 'pagination'
+      },
+      {
+        text: 'Password reveal',
+        href: '/components/password-reveal',
+        active: pageId == 'password-reveal'
+      },
+      {
+        text: 'Primary navigation',
+        href: '/components/primary-navigation',
+        active: pageId == 'primary-navigation'
+      },
+      {
+        text: 'Rich text editor',
+        href: '/components/rich-text-editor',
+        active: pageId == 'rich-text-editor'
+      },
+      {
+        text: 'Search',
+        href: '/components/search',
+        active: pageId == 'search'
+      },
+      {
+        text: 'Side navigation',
+        href: '/components/side-navigation',
+        active: pageId == 'side-navigation'
+      },
+      {
+        text: 'Sortable table',
+        href: '/components/sortable-table',
+        active: pageId == 'sortable-table'
+      },
+      {
+        text: 'Sub navigation',
+        href: '/components/sub-navigation',
+        active: pageId == 'sub-navigation'
+      },
+      {
+        text: 'Tag',
+        href: '/components/tag',
+        active: pageId == 'tag'
+      },
+      {
+        text: 'Task list',
+        href: '/components/task-list',
+        active: pageId == 'task-list'
+      },
+      {
+        text: 'Timeline',
+        href: '/components/timeline',
+        active: pageId == 'timeline'
+      }
+    ]
+  }) }}
+
+  {% include "./partials/back-to-top.njk" %}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">
+    <span class="govuk-caption-xl">Components</span>
+    {{ title }}
+  </h1>
+  {{ content | safe }}
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    $('[data-module="app-tabs"]').each(function(e, el) {
+      new Tabs($(el));
+    });
+  </script>
+{% endblock %}
