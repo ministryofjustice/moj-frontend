@@ -29,8 +29,7 @@
     padding: govuk-spacing(4);
     margin-bottom: govuk-spacing(3);
     flex-grow: 1;
-    border-left-width: 4px;
-    border-left-style: solid;
+    border-left: 4px solid transparent;
 
     &--grey {
       border-left-color: $govuk-border-colour;
