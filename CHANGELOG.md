@@ -1,3 +1,10 @@
+## [0.2.4](https://github.com/ministryofjustice/moj-frontend/compare/v0.2.3-alpha...v0.2.4-alpha) (2021-05-19)
+
+
+### Bug Fixes
+
+* **ticket-panel:** Make default ticket panel have no border ([#158](https://github.com/ministryofjustice/moj-frontend/issues/158)) ([e7b7e42](https://github.com/ministryofjustice/moj-frontend/commit/e7b7e42a724f1f46ac22ab2c6bc277ba47090fed))
+
 ## [0.2.3](https://github.com/ministryofjustice/moj-frontend/compare/v0.2.2-alpha...v0.2.3-alpha) (2021-05-11)
 
 
