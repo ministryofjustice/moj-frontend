@@ -19,14 +19,6 @@
     @extend %govuk-body-m;
   }
 
-  code:not(.hljs) {
-    padding: 0 5px;
-    color: #c62950;
-    background-color: #f3f2f1;
-    font-family: monospace, monospace;
-    font-size: 1em;
-  }
-
   strong,
   b {
     @include govuk-typography-weight-bold;
