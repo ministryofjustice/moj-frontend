@@ -10705,8 +10705,7 @@ span.moj-header__link:hover {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  border-left-width: 4px;
-  border-left-style: solid;
+  border-left: 4px solid transparent;
 }
 
 .moj-ticket-panel__content--grey {
