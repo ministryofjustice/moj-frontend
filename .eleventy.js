@@ -1,19 +1,23 @@
 const beautifyHTML = require("js-beautify").html;
 const fs = require("fs");
 const hljs = require("highlight.js");
+const markdownIt = require("markdown-it");
+const markdownItAnchor = require("markdown-it-anchor");
 const nunjucks = require("nunjucks");
 const path = require("path");
 
 module.exports = function (eleventyConfig) {
-  let markdownIt = require("markdown-it");
-
   eleventyConfig.setLibrary(
     "md",
     markdownIt({
       html: true,
       highlight: (str, language) =>
         language ? hljs.highlight(str, { language }).value : str,
-    }).disable("code")
+    })
+      .disable("code")
+      .use(markdownItAnchor, {
+        level: [1, 2],
+      })
   );
 
   eleventyConfig.addShortcode("example", function (exampleHref, height) {
@@ -66,13 +70,26 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksFilter(
     "addActiveAttribute",
     function (config, filePathStem) {
-      return {
-        ...config,
-        items: config.items.map((item) => ({
-          ...item,
-          active: filePathStem.indexOf(item.href) > -1,
-        })),
-      };
+      if (config.items) {
+        return {
+          ...config,
+          items: config.items.map((item) => ({
+            ...item,
+            active: filePathStem.indexOf(item.href) > -1,
+          })),
+        };
+      } else if (config.sections) {
+        return {
+          ...config,
+          sections: config.sections.map((section) => ({
+            ...section,
+            items: section.items.map((item) => ({
+              ...item,
+              active: filePathStem.indexOf(item.href) > -1,
+            })),
+          })),
+        };
+      }
     }
   );
 };
