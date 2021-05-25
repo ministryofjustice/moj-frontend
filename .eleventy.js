@@ -7,6 +7,19 @@ const nunjucks = require("nunjucks");
 const path = require("path");
 
 module.exports = function (eleventyConfig) {
+  const nunjucksEnv = nunjucks.configure([
+    ".",
+    "docs/_includes/",
+    "node_modules/govuk-frontend/",
+    "node_modules/@ministryofjustice/frontend/",
+  ]);
+
+  Object.entries(eleventyConfig.nunjucksFilters).forEach(([name, callback]) => {
+    nunjucksEnv.addFilter(name, callback);
+  });
+
+  eleventyConfig.setLibrary("njk", nunjucksEnv);
+
   eleventyConfig.setLibrary(
     "md",
     markdownIt({
@@ -28,7 +41,7 @@ module.exports = function (eleventyConfig) {
       )
       .trim();
 
-    const rawHtmlCode = nunjucks.renderString(nunjucksCode);
+    const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode);
 
     const htmlCode = beautifyHTML(rawHtmlCode.trim(), {
       indent_size: 2,
@@ -47,17 +60,7 @@ module.exports = function (eleventyConfig) {
         .trim();
     } catch (e) {}
 
-    const nunjucksEnv = new nunjucks.Environment(
-      new nunjucks.FileSystemLoader("docs")
-    );
-
-    Object.entries(eleventyConfig.nunjucksFilters).forEach(
-      ([name, callback]) => {
-        nunjucksEnv.addFilter(name, callback);
-      }
-    );
-
-    return nunjucksEnv.render("_includes/example.njk", {
+    return nunjucksEnv.render("example.njk", {
       href: exampleHref,
       id: exampleHref.replace(/\//g, "-"),
       height,
