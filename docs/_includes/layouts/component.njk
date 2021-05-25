@@ -3,7 +3,7 @@
 {%- from "node_modules/@ministryofjustice/frontend/moj/components/side-navigation/macro.njk" import mojSideNavigation %}
 
 {% macro appSideNavigation(config) %}
-  {% set config = config|addActiveAttribute(page.filePathStem) %}
+  {% set config = config|addActiveAttribute(page.filePathStem | url) %}
 
   {{ mojSideNavigation(config) }}
 {% endmacro %}

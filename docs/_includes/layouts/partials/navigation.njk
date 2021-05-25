@@ -1,7 +1,7 @@
 {%- from "node_modules/@ministryofjustice/frontend/moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation %}
 
 {% macro appPrimaryNavigation(config) %}
-  {% set config = config|addActiveAttribute(page.filePathStem) %}
+  {% set config = config|addActiveAttribute(page.filePathStem | url) %}
 
   {{ mojPrimaryNavigation(config) }}
 {% endmacro %}
