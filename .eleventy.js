@@ -43,7 +43,17 @@ module.exports = function (eleventyConfig) {
         .trim();
     } catch (e) {}
 
-    return nunjucks.render("docs/_includes/example.njk", {
+    const nunjucksEnv = new nunjucks.Environment(
+      new nunjucks.FileSystemLoader("docs")
+    );
+
+    Object.entries(eleventyConfig.nunjucksFilters).forEach(
+      ([name, callback]) => {
+        nunjucksEnv.addFilter(name, callback);
+      }
+    );
+
+    return nunjucksEnv.render("_includes/example.njk", {
       href: exampleHref,
       id: exampleHref.replace(/\//g, "-"),
       height,

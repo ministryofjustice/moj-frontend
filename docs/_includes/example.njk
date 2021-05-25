@@ -1,8 +1,8 @@
 <div class="app-example">
   <span class="app-example__new-window">
-    <a href="{{ href }}" target="_blank">Open this example in a new window</a>
+    <a href="{{ href | url }}" target="_blank">Open this example in a new window</a>
   </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="{{ height }}" src="{{ href }}"></iframe>
+  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="{{ height }}" src="{{ href | url }}"></iframe>
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
