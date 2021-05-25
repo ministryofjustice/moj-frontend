@@ -1,0 +1,41 @@
+/* ==========================================================================
+   #PANEL
+   ========================================================================== */
+
+.app-panel {
+  @include govuk-responsive-margin(6, "top");
+  @include govuk-responsive-margin(6, "bottom");
+  @include govuk-responsive-padding(3);
+  background-color: govuk-colour("blue");
+  color: govuk-colour("white");
+}
+
+.app-panel__heading,
+.app-panel__body {
+  color: govuk-colour("white");
+}
+
+.app-panel__heading {
+  @extend .govuk-heading-m;
+}
+
+.app-panel__body {
+  @include govuk-font(19);
+  margin-bottom: 0;
+}
+
+.app-panel__link {
+  &:link,
+  &:active,
+  &:visited {
+    color: govuk-colour("white");
+  }
+
+  &:hover {
+    color: lighten(govuk-colour("blue"), 45%);
+  }
+
+  &:focus {
+    color: govuk-colour("black");
+  }
+}

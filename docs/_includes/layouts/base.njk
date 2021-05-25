@@ -17,7 +17,7 @@
 
     <!--[if lte IE 8]><link href="{{ '/assets/stylesheets/application-ie8.css' | url }}" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="{{ '/assets/stylesheets/application.css' | url }}" rel="stylesheet"><!--<![endif]-->
-    <title>{{ title }}</title>
+    <title>{{ title }} - MOJ Design System</title>
   </head>
   <body class="govuk-template__body">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
@@ -28,24 +28,11 @@
 
         {% include "./partials/navigation.njk" %}
 
-        <div class="govuk-width-container govuk-grid-row">
-
-          <div class="govuk-grid-column-one-third">
-            {% block subNav %}{% endblock %}
-          </div>
-
-          <div class="govuk-grid-column-two-thirds">
-
-            <main class="govuk-main-wrapper app-prose-scope" role="main">
-              {% block content %}
-                {{ content | safe }}
-              {% endblock %}
-              {% include "./partials/contact-panel.njk" %}
-            </main>
-
-          </div>
-
-        </div>
+        {% block content %}
+          <main class="app-prose-scope" role="main">
+            {{ content | safe }}
+          </main>
+        {% endblock %}
 
         {% include "./partials/footer.njk" %}
 

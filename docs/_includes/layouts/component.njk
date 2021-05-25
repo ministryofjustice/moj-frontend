@@ -8,126 +8,134 @@
   {{ mojSideNavigation(config) }}
 {% endmacro %}
 
-{% block subNav %}
-  {{ appSideNavigation({
-    classes: 'govuk-!-padding-top-6',
-    items: [
-      {
-        text: 'Add another',
-        href: ('/components/add-another' | url)
-      },
-      {
-        text: 'Badge',
-        href: ('/components/badge' | url)
-      },
-      {
-        text: 'Banner',
-        href: ('/components/banner' | url)
-      },
-      {
-        text: 'Button menu',
-        href: ('/components/button-menu' | url)
-      },
-      {
-        text: 'Currency input',
-        href: ('/components/currency-input' | url)
-      },
-      {
-        text: 'Filter',
-        href: ('/components/filter' | url)
-      },
-      {
-        text: 'Form validator',
-        href: ('/components/form-validator' | url)
-      },
-      {
-        text: 'Header',
-        href: ('/components/header' | url)
-      },
-      {
-        text: 'Identity bar',
-        href: ('/components/identity-bar' | url)
-      },
-      {
-        text: 'Messages',
-        href: ('/components/messages' | url)
-      },
-      {
-        text: 'Multi file upload',
-        href: ('/components/multi-file-upload' | url)
-      },
-      {
-        text: 'Multi select',
-        href: ('/components/multi-select' | url)
-      },
-      {
-        text: 'Notification badge',
-        href: ('/components/notification-badge' | url)
-      },
-      {
-        text: 'Organisation switcher',
-        href: ('/components/organisation-switcher' | url)
-      },
-      {
-        text: 'Page header actions',
-        href: ('/components/page-header-actions' | url)
-      },
-      {
-        text: 'Pagination',
-        href: ('/components/pagination' | url)
-      },
-      {
-        text: 'Password reveal',
-        href: ('/components/password-reveal' | url)
-      },
-      {
-        text: 'Primary navigation',
-        href: ('/components/primary-navigation' | url)
-      },
-      {
-        text: 'Rich text editor',
-        href: ('/components/rich-text-editor' | url)
-      },
-      {
-        text: 'Search',
-        href: ('/components/search' | url)
-      },
-      {
-        text: 'Side navigation',
-        href: ('/components/side-navigation' | url)
-      },
-      {
-        text: 'Sortable table',
-        href: ('/components/sortable-table' | url)
-      },
-      {
-        text: 'Sub navigation',
-        href: ('/components/sub-navigation' | url)
-      },
-      {
-        text: 'Tag',
-        href: ('/components/tag' | url)
-      },
-      {
-        text: 'Task list',
-        href: ('/components/task-list' | url)
-      },
-      {
-        text: 'Timeline',
-        href: ('/components/timeline' | url)
-      }
-    ]
-  }) }}
-
-  {% include "./partials/back-to-top.njk" %}
-{% endblock %}
-
 {% block content %}
-  <h1 class="govuk-heading-xl">
-    <span class="govuk-caption-xl">Components</span>
-    {{ title }}
-  </h1>
-  {{ content | safe }}
+  <div class="govuk-width-container govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      {{ appSideNavigation({
+        classes: 'govuk-!-padding-top-6',
+        items: [
+          {
+            text: 'Add another',
+            href: ('/components/add-another' | url)
+          },
+          {
+            text: 'Badge',
+            href: ('/components/badge' | url)
+          },
+          {
+            text: 'Banner',
+            href: ('/components/banner' | url)
+          },
+          {
+            text: 'Button menu',
+            href: ('/components/button-menu' | url)
+          },
+          {
+            text: 'Currency input',
+            href: ('/components/currency-input' | url)
+          },
+          {
+            text: 'Filter',
+            href: ('/components/filter' | url)
+          },
+          {
+            text: 'Form validator',
+            href: ('/components/form-validator' | url)
+          },
+          {
+            text: 'Header',
+            href: ('/components/header' | url)
+          },
+          {
+            text: 'Identity bar',
+            href: ('/components/identity-bar' | url)
+          },
+          {
+            text: 'Messages',
+            href: ('/components/messages' | url)
+          },
+          {
+            text: 'Multi file upload',
+            href: ('/components/multi-file-upload' | url)
+          },
+          {
+            text: 'Multi select',
+            href: ('/components/multi-select' | url)
+          },
+          {
+            text: 'Notification badge',
+            href: ('/components/notification-badge' | url)
+          },
+          {
+            text: 'Organisation switcher',
+            href: ('/components/organisation-switcher' | url)
+          },
+          {
+            text: 'Page header actions',
+            href: ('/components/page-header-actions' | url)
+          },
+          {
+            text: 'Pagination',
+            href: ('/components/pagination' | url)
+          },
+          {
+            text: 'Password reveal',
+            href: ('/components/password-reveal' | url)
+          },
+          {
+            text: 'Primary navigation',
+            href: ('/components/primary-navigation' | url)
+          },
+          {
+            text: 'Rich text editor',
+            href: ('/components/rich-text-editor' | url)
+          },
+          {
+            text: 'Search',
+            href: ('/components/search' | url)
+          },
+          {
+            text: 'Side navigation',
+            href: ('/components/side-navigation' | url)
+          },
+          {
+            text: 'Sortable table',
+            href: ('/components/sortable-table' | url)
+          },
+          {
+            text: 'Sub navigation',
+            href: ('/components/sub-navigation' | url)
+          },
+          {
+            text: 'Tag',
+            href: ('/components/tag' | url)
+          },
+          {
+            text: 'Task list',
+            href: ('/components/task-list' | url)
+          },
+          {
+            text: 'Timeline',
+            href: ('/components/timeline' | url)
+          }
+        ]
+      }) }}
+
+      {% include "./partials/back-to-top.njk" %}
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      <main class="govuk-main-wrapper app-prose-scope" role="main">
+        <h1 class="govuk-heading-xl">
+          <span class="govuk-caption-xl">Components</span>
+          {{ title }}
+        </h1>
+        {{ content | safe }}
+      </main>
+
+      {% include "./partials/contact-panel.njk" %}
+    </div>
+  </div>
 {% endblock %}
 
 {% block pageScripts %}

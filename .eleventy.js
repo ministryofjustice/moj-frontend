@@ -13,7 +13,7 @@ module.exports = function (eleventyConfig) {
       html: true,
       highlight: (str, language) =>
         language ? hljs.highlight(str, { language }).value : str,
-    })
+    }).disable("code")
   );
 
   eleventyConfig.addShortcode("example", function (exampleHref, height) {
