@@ -8,7 +8,7 @@
   "scripts": {
     "start": "gulp",
     "test": "npm run ci:testsass",
-    "build:docs": "eleventy --input=./docs --output=public",
+    "build:docs": "gulp generate-assets && eleventy --input=./docs --output=public",
     "build:package": "node bin/check-nvmrc.js && gulp build:package",
     "ci:testsass": "node-sass -q test.scss >/dev/null && echo 'ok'",
     "ci:release": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --debug",
