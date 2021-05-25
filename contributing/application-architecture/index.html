@@ -1,0 +1,51 @@
+<h1>Application architecture</h1>
+<ul>
+<li>
+<p><code>app/</code></p>
+<p><a href="https://github.com/expressjs/express">Express</a> application to preview components; also referred to as <em>preview app</em>.</p>
+<ul>
+<li>
+<p><code>assets/</code></p>
+<p>App-specific assets.</p>
+</li>
+<li>
+<p><code>views/</code></p>
+<p>App-specific <a href="https://github.com/mozilla/nunjucks">Nunjucks</a> template files.</p>
+<ul>
+<li>
+<p><code>components/</code></p>
+<p>Examples of components usage in various contexts. You can access these examples from the home page of the preview app.</p>
+</li>
+<li>
+<p><code>layouts/</code></p>
+<p>Generic layout templates used to render preview app pages.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>bin/</code></p>
+<p>Binary/executable files (i.e. bash scripts) mainly used in the <a href="publishing.md">publishing process</a>.</p>
+</li>
+<li>
+<p><code>docs/</code></p>
+<p>Documentation files.</p>
+</li>
+<li>
+<p><code>package/</code> <strong>contains auto-generated files</strong></p>
+<p>package published on npm.
+Consume all of @ministryofjustice/frontend through a single package.</p>
+</li>
+<li>
+<p><code>src/</code></p>
+<p>Source files. See README.md in the src directory for details.</p>
+</li>
+</ul>
+<h3>Auto-generated directories</h3>
+<ul>
+<li>
+<p><code>public/</code></p>
+<p>Assets built for the preview app.</p>
+</li>
+</ul>

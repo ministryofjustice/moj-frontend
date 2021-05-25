@@ -1,0 +1,17 @@
+$moj-page-width: 1220px !default;
+$govuk-page-width: 1220px !default;
+
+// GOV.UK Frontend
+@import "node_modules/govuk-frontend/govuk/all";
+
+// MOJ Frontend
+@import "src/moj/all";
+
+// highlight.js
+@import "node_modules/highlight.js/scss/github.scss";
+
+// Custom documentation components
+@import "./components/copy-button";
+@import "./components/example";
+@import "./components/markdown";
+@import "./components/tabs";

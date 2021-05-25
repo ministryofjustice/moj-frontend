@@ -1,0 +1,133 @@
+<h1>Installing MOJ Frontend with NPM</h1>
+<h2>Requirements</h2>
+<p>To use MOJ Frontend with NPM you must:</p>
+<ol>
+<li>Install the long-term support (LTS) version of <a href="https://nodejs.org/en/">Node.js</a>, which includes NPM. The minimum version of Node required is 4.2.0.</li>
+</ol>
+<p>(We recommend using <a href="https://github.com/creationix/nvm"><code>nvm</code></a> for managing versions of Node.)</p>
+<ol start="2">
+<li>
+<p>Create a <a href="https://docs.npmjs.com/files/package.json">package.json file</a> if you don’t already have one. You can create a default <code>package.json</code> file by running <code>npm init</code> from the root of your application.</p>
+</li>
+<li>
+<p>If you want to use the MOJ Frontend Nunjucks macros, install Nunjucks - the minimum version required is 3.0.0.</p>
+</li>
+</ol>
+<pre><code>npm install nunjucks --save
+</code></pre>
+<h2>Installation</h2>
+<p>To install, run:</p>
+<pre><code>npm install --save @ministryofjustice/frontend
+</code></pre>
+<p>After you have installed MOJ Frontend the <code>@ministryofjustice/frontend</code> package will appear in your <code>node_modules</code> folder.</p>
+<h2>Importing styles</h2>
+<p>You need to import the MOJ Frontend styles into the main Sass file in your project. You should place the below code before your own Sass rules (or Sass imports) if you want to override MOJ Frontend with your own styles.</p>
+<ol>
+<li>To import all components, add the below to your Sass file:</li>
+</ol>
+<pre><code class="language-CSS"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;node_modules/@ministryofjustice/frontend/moj/all&quot;</span>;
+</code></pre>
+<ol start="2">
+<li>To import an individual component (for example a button), add the below to your Sass file:</li>
+</ol>
+<pre><code class="language-CSS"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;node_modules/@ministryofjustice/frontend/moj/components/button/button&quot;</span>;
+</code></pre>
+<h3>Optional: Resolving SCSS import paths</h3>
+<p>If you wish to resolve the above <code>@import</code> paths in your build (in order to avoid prefixing paths with <code>node_modules</code>), you should add <code>node_modules</code> to
+your <a href="https://github.com/sass/node-sass#includepaths">Sass include paths</a> (in Ruby, they should be added to <a href="http://guides.rubyonrails.org/asset_pipeline.html#search-paths">assets paths</a>).</p>
+<p>For example, if your project uses Gulp, you would add the Sass include paths to your Gulp configuration file (for example <code>gulpfile.js</code>) with <a href="https://www.npmjs.com/package/gulp-sass">gulp-sass</a>. Below is an example:</p>
+<pre><code class="language-JS">gulp.task(<span class="hljs-string">&#x27;sass&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> gulp.src(<span class="hljs-string">&#x27;./sass/**/*.scss&#x27;</span>)
+    .pipe(sass({
+      <span class="hljs-attr">includePaths</span>: <span class="hljs-string">&#x27;node_modules&#x27;</span>
+     }))
+    .pipe(gulp.dest(<span class="hljs-string">&#x27;./css&#x27;</span>));
+});
+</code></pre>
+<p>If you compile Sass to CSS in your project, your build tasks will already include something similar to the above task - in that case, you will just need
+to include add <code>includePaths</code> to it.</p>
+<p>After resolving the import paths you can import MOJ Frontend by using:</p>
+<pre><code class="language-CSS"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@ministryofjustice/frontend/moj/components/button/button&quot;</span>;
+</code></pre>
+<h2>Importing assets</h2>
+<p>In order to import MOJ Frontend images and fonts to your project, you should configure your application to reference or copy the relevant MOJ Frontend assets.</p>
+<p>Follow either <a href="#recommended-solution">Recommended solution</a> or <a href="#alternative-solution">Alternative solution</a>.</p>
+<h3>Recommended solution</h3>
+<p>Make <code>/node_modules/@ministryofjustice/frontend/moj/assets</code> available to your project by routing requests for your assets folder there.</p>
+<p>For example, if your project uses <a href="https://expressjs.com/">express.js</a>, below is a code sample you could add to your configuration:</p>
+<pre><code class="language-JS">app.use(<span class="hljs-string">&#x27;/assets&#x27;</span>, express.static(path.join(__dirname, <span class="hljs-string">&#x27;/node_modules/@ministryofjustice/frontend/moj/assets&#x27;</span>)))
+</code></pre>
+<h3>Alternative solution</h3>
+<p>Manually copy the images and fonts from <code>/node_modules/@ministryofjustice/frontend/moj/assets</code> into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the MOJ Frontend assets stay up-to-date.</p>
+<p>The default paths used for assets are <code>assets/images</code> and <code>assets/fonts</code>. <strong>If your asset folders follow this structure, you will not need to complete the following steps.</strong></p>
+<p>To use different asset paths, set <code>$govuk-assets-path</code>, <code>$govuk-images-path</code> and <code>$govuk-fonts-path</code> in your project Sass file to point to the relevant directories in your project (this will override the defaults set in <code>/node_modules/@ministryofjustice/frontend/moj/settings/_assets.scss</code>). Make sure you do this in Sass before importing <code>@ministryofjustice/frontend</code> into your project - see <a href="#importing-styles">Importing styles</a>.</p>
+<p>Example 1:</p>
+<pre><code class="language-SCSS"><span class="hljs-comment">// Include images from /application/assets/images and fonts from /application/assets/fonts</span>
+<span class="hljs-variable">$moj-assets-path</span>: ‘/application/assets’;
+
+<span class="hljs-keyword">@import</span> “<span class="hljs-keyword">@ministryofjustice</span>/frontend/moj/all”;
+</code></pre>
+<p>Example 2:</p>
+<pre><code class="language-SCSS"><span class="hljs-comment">// Include images from /images/@ministryofjustice/frontend and fonts from /fonts</span>
+<span class="hljs-variable">$moj-images-path</span>: “/images/@ministryofjustice/frontend/moj/”;
+<span class="hljs-variable">$moj-fonts-path</span>: “/fonts/”;
+
+<span class="hljs-keyword">@import</span> “<span class="hljs-keyword">@ministryofjustice</span>/frontend/moj/all”;
+</code></pre>
+<h2>Include CSS and JavaScript</h2>
+<p>Add the CSS and JavaScript code to your HTML template:</p>
+<pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Example<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;assets/application.css&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Copy and paste component HTML--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-button&quot;</span>&gt;</span>This is a button component<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/application.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<h2>Using JavaScript</h2>
+<p>Some of the JavaScript included in MOJ Frontend improves the usability and accessibility of the components.</p>
+<p>You should include or import MOJ Frontend JavaScript, and then initialise the appropriate script in your application to ensure that all users can use it successfully.</p>
+<p>Note that MOJ Frontend does not initialise any scripts by default; all scripts must be initialised in order for them to work.</p>
+<h3>Option 1: Include JavaScript</h3>
+<p>Include the node_modules/ministryofjustice/moj-frontend/moj/all.js script on your page. You might wish to copy the file into your project or reference it from node_modules.</p>
+<p>JavaScript in MOJ Frontend requires HTML to be parsed first by the browser before it is initialised. Because of this, make sure you include the script before the closing <code>&lt;/body&gt;</code> tag. Including the script elsewhere will stop components from functioning or displaying correctly.</p>
+<pre><code class="language-html">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;path-to-assets/moj-frontend/moj/all.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>MOJ Frontend components with JavaScript behaviour are initialised manually.</p>
+<p>To initialise the button menu on a page you can do this:</p>
+<pre><code class="language-js">  <span class="hljs-keyword">new</span> MOJFrontend.ButtonMenu({
+    <span class="hljs-attr">container</span>: $(<span class="hljs-string">&#x27;.button-menu-1&#x27;</span>),
+    <span class="hljs-attr">mq</span>: <span class="hljs-string">&#x27;(min-width: 45em)&#x27;</span>,
+    <span class="hljs-attr">buttonText</span>: <span class="hljs-string">&#x27;Actions&#x27;</span>
+  });
+</code></pre>
+<h3>Option 2: Import JavaScript</h3>
+<p>If you're using a bundler such as Webpack, use the import syntax to import all components:</p>
+<pre><code class="language-js"><span class="hljs-keyword">import</span> MOJFrontend <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;path/to/all.js&#x27;</span>;
+</code></pre>
+<p>If you're using a bundler such as Webpack, use the import syntax to import a component:</p>
+<pre><code class="language-js"><span class="hljs-keyword">import</span> { ButtonMenu } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;path/to/all.js&#x27;</span>;
+</code></pre>
+<p>If you're using a bundler such as Browserify, you may need to use the CommonJS require:</p>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> MOJFrontend = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;moj-frontend&#x27;</span>);
+<span class="hljs-keyword">new</span> MOJFrontend.ButtonMenu(...);
+</code></pre>
+<h2>Include CSS and JavaScript</h2>
+<p>Add the CSS and JavaScript code to your HTML template:</p>
+<pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Example<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;assets/application.css&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/application.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>If your service supports Internet Explorer 8, you will need to <a href="supporting-internet-explorer-8.md">generate and include a separate stylesheet</a> as well.</p>
