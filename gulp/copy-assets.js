@@ -7,6 +7,7 @@ gulp.task("copy-assets", () => {
     .src([
       "!app/assets/sass{,/**/*}",
       "app/assets/**",
+      "src/moj/assets/**",
       "node_modules/govuk-frontend/govuk/assets/**",
     ])
     .pipe(gulp.dest("public/assets/"));
