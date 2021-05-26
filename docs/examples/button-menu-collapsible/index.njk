@@ -2,6 +2,24 @@
 layout: layouts/example.njk
 title: Button menu (example)
 ---
+{%- from "moj/components/button-menu/macro.njk" import mojButtonMenu -%}
 
-{% include "./example.njk" %}
-{% include "./scripts.html" %}
+{{ mojButtonMenu({
+  items: [
+    {
+      text: "First action",
+      href: "#",
+      classes: "govuk-button--secondary"
+    },
+    {
+      text: "Second action",
+      href: "#",
+      classes: "govuk-button--secondary"
+    },
+    {
+      text: "Third action",
+      href: "#",
+      classes: "govuk-button--secondary"
+    }
+  ]
+}) }}

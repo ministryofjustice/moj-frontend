@@ -2,5 +2,9 @@
 layout: layouts/example.njk
 title: Add another (example)
 ---
+{%- from "moj/components/badge/macro.njk" import mojBadge -%}
 
-{% include "./example.njk" %}
+{{ mojBadge({
+  text: 'Urgent',
+  classes: 'moj-badge--red'
+}) }}

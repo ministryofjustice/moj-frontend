@@ -2,5 +2,10 @@
 layout: layouts/example.njk
 title: Warning banner (example)
 ---
+{%- from "moj/components/banner/macro.njk" import mojBanner -%}
 
-{% include "./example.njk" %}
+{{ mojBanner({
+  type: 'warning',
+  text: 'Questions weren’t sent – try again.',
+  iconFallbackText: 'Warning'
+}) }}

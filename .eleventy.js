@@ -3,6 +3,7 @@ const fs = require("fs");
 const hljs = require("highlight.js");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const matter = require("gray-matter");
 const nunjucks = require("nunjucks");
 const path = require("path");
 
@@ -34,12 +35,14 @@ module.exports = function (eleventyConfig) {
   );
 
   eleventyConfig.addShortcode("example", function (exampleHref, height) {
-    const nunjucksCode = fs
-      .readFileSync(
-        path.join(__dirname, "docs", exampleHref, "example.njk"),
-        "utf8"
-      )
-      .trim();
+    const nunjucksCode = matter(
+      fs
+        .readFileSync(
+          path.join(__dirname, "docs", exampleHref, "index.njk"),
+          "utf8"
+        )
+        .trim()
+    ).content;
 
     const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode);
 
@@ -54,7 +57,7 @@ module.exports = function (eleventyConfig) {
     try {
       jsCode = fs
         .readFileSync(
-          path.join(__dirname, "docs", exampleHref, "scripts.html"),
+          path.join(__dirname, "docs", exampleHref, "script.js"),
           "utf8"
         )
         .trim();
@@ -87,7 +90,7 @@ module.exports = function (eleventyConfig) {
     `;
   });
 
-  eleventyConfig.addNunjucksFilter(
+  eleventyConfig.addFilter(
     "addActiveAttribute",
     function (config, filePathStem) {
       if (config.items) {
@@ -112,4 +115,8 @@ module.exports = function (eleventyConfig) {
       }
     }
   );
+
+  eleventyConfig.addFilter("getScriptPath", function (inputPath) {
+    return inputPath.split("/").slice(1, -1).join("/") + "/script.js";
+  });
 };
