@@ -225,7 +225,7 @@
   background-color: #ffffff;
 }
 
-.govuk-heading-xl, .app-prose-scope h1 {
+.govuk-heading-xl, .app-prose-scope h1:not([class]) {
   color: #0b0c0c;
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -240,19 +240,19 @@
 }
 
 @media print {
-  .govuk-heading-xl, .app-prose-scope h1 {
+  .govuk-heading-xl, .app-prose-scope h1:not([class]) {
     color: #000000;
   }
 }
 
 @media print {
-  .govuk-heading-xl, .app-prose-scope h1 {
+  .govuk-heading-xl, .app-prose-scope h1:not([class]) {
     font-family: sans-serif;
   }
 }
 
 @media (min-width: 40.0625em) {
-  .govuk-heading-xl, .app-prose-scope h1 {
+  .govuk-heading-xl, .app-prose-scope h1:not([class]) {
     font-size: 48px;
     font-size: 3rem;
     line-height: 1.04167;
@@ -260,19 +260,19 @@
 }
 
 @media print {
-  .govuk-heading-xl, .app-prose-scope h1 {
+  .govuk-heading-xl, .app-prose-scope h1:not([class]) {
     font-size: 32pt;
     line-height: 1.15;
   }
 }
 
 @media (min-width: 40.0625em) {
-  .govuk-heading-xl, .app-prose-scope h1 {
+  .govuk-heading-xl, .app-prose-scope h1:not([class]) {
     margin-bottom: 50px;
   }
 }
 
-.govuk-heading-l, .app-prose-scope h2 {
+.govuk-heading-l, .app-prose-scope h2:not([class]) {
   color: #0b0c0c;
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -287,19 +287,19 @@
 }
 
 @media print {
-  .govuk-heading-l, .app-prose-scope h2 {
+  .govuk-heading-l, .app-prose-scope h2:not([class]) {
     color: #000000;
   }
 }
 
 @media print {
-  .govuk-heading-l, .app-prose-scope h2 {
+  .govuk-heading-l, .app-prose-scope h2:not([class]) {
     font-family: sans-serif;
   }
 }
 
 @media (min-width: 40.0625em) {
-  .govuk-heading-l, .app-prose-scope h2 {
+  .govuk-heading-l, .app-prose-scope h2:not([class]) {
     font-size: 36px;
     font-size: 2.25rem;
     line-height: 1.11111;
@@ -307,19 +307,19 @@
 }
 
 @media print {
-  .govuk-heading-l, .app-prose-scope h2 {
+  .govuk-heading-l, .app-prose-scope h2:not([class]) {
     font-size: 24pt;
     line-height: 1.05;
   }
 }
 
 @media (min-width: 40.0625em) {
-  .govuk-heading-l, .app-prose-scope h2 {
+  .govuk-heading-l, .app-prose-scope h2:not([class]) {
     margin-bottom: 30px;
   }
 }
 
-.govuk-heading-m, .app-prose-scope h3 {
+.govuk-heading-m, .app-panel__heading, .app-prose-scope h3:not([class]) {
   color: #0b0c0c;
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -334,19 +334,19 @@
 }
 
 @media print {
-  .govuk-heading-m, .app-prose-scope h3 {
+  .govuk-heading-m, .app-panel__heading, .app-prose-scope h3:not([class]) {
     color: #000000;
   }
 }
 
 @media print {
-  .govuk-heading-m, .app-prose-scope h3 {
+  .govuk-heading-m, .app-panel__heading, .app-prose-scope h3:not([class]) {
     font-family: sans-serif;
   }
 }
 
 @media (min-width: 40.0625em) {
-  .govuk-heading-m, .app-prose-scope h3 {
+  .govuk-heading-m, .app-panel__heading, .app-prose-scope h3:not([class]) {
     font-size: 24px;
     font-size: 1.5rem;
     line-height: 1.25;
@@ -354,19 +354,19 @@
 }
 
 @media print {
-  .govuk-heading-m, .app-prose-scope h3 {
+  .govuk-heading-m, .app-panel__heading, .app-prose-scope h3:not([class]) {
     font-size: 18pt;
     line-height: 1.15;
   }
 }
 
 @media (min-width: 40.0625em) {
-  .govuk-heading-m, .app-prose-scope h3 {
+  .govuk-heading-m, .app-panel__heading, .app-prose-scope h3:not([class]) {
     margin-bottom: 20px;
   }
 }
 
-.govuk-heading-s, .app-prose-scope h4 {
+.govuk-heading-s, .app-prose-scope h4:not([class]) {
   color: #0b0c0c;
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -381,19 +381,19 @@
 }
 
 @media print {
-  .govuk-heading-s, .app-prose-scope h4 {
+  .govuk-heading-s, .app-prose-scope h4:not([class]) {
     color: #000000;
   }
 }
 
 @media print {
-  .govuk-heading-s, .app-prose-scope h4 {
+  .govuk-heading-s, .app-prose-scope h4:not([class]) {
     font-family: sans-serif;
   }
 }
 
 @media (min-width: 40.0625em) {
-  .govuk-heading-s, .app-prose-scope h4 {
+  .govuk-heading-s, .app-prose-scope h4:not([class]) {
     font-size: 19px;
     font-size: 1.1875rem;
     line-height: 1.31579;
@@ -401,14 +401,14 @@
 }
 
 @media print {
-  .govuk-heading-s, .app-prose-scope h4 {
+  .govuk-heading-s, .app-prose-scope h4:not([class]) {
     font-size: 14pt;
     line-height: 1.15;
   }
 }
 
 @media (min-width: 40.0625em) {
-  .govuk-heading-s, .app-prose-scope h4 {
+  .govuk-heading-s, .app-prose-scope h4:not([class]) {
     margin-bottom: 20px;
   }
 }
@@ -704,92 +704,100 @@
   }
 }
 
-.govuk-body-l + .govuk-heading-l, .govuk-body-lead + .govuk-heading-l, .app-prose-scope .govuk-body-l + h2, .app-prose-scope .govuk-body-lead + h2 {
+.govuk-body-l + .govuk-heading-l, .govuk-body-lead + .govuk-heading-l, .app-prose-scope .govuk-body-l + h2:not([class]), .app-prose-scope .govuk-body-lead + h2:not([class]) {
   padding-top: 5px;
 }
 
 @media (min-width: 40.0625em) {
-  .govuk-body-l + .govuk-heading-l, .govuk-body-lead + .govuk-heading-l, .app-prose-scope .govuk-body-l + h2, .app-prose-scope .govuk-body-lead + h2 {
+  .govuk-body-l + .govuk-heading-l, .govuk-body-lead + .govuk-heading-l, .app-prose-scope .govuk-body-l + h2:not([class]), .app-prose-scope .govuk-body-lead + h2:not([class]) {
     padding-top: 10px;
   }
 }
 
-.govuk-body-m + .govuk-heading-l, .govuk-body + .govuk-heading-l, .app-prose-scope p + .govuk-heading-l, .app-prose-scope .govuk-body-m + h2, .app-prose-scope .govuk-body + h2, .app-prose-scope p + h2,
+.govuk-body-m + .govuk-heading-l, .govuk-body + .govuk-heading-l, .app-prose-scope p + .govuk-heading-l, .app-prose-scope .govuk-body-m + h2:not([class]), .app-prose-scope .govuk-body + h2:not([class]), .app-prose-scope p + h2:not([class]),
 .govuk-body-s + .govuk-heading-l,
-.app-prose-scope .govuk-body-s + h2,
+.app-prose-scope .govuk-body-s + h2:not([class]),
 .govuk-list + .govuk-heading-l,
 .app-prose-scope ul + .govuk-heading-l,
 .app-prose-scope ol + .govuk-heading-l,
-.app-prose-scope .govuk-list + h2,
-.app-prose-scope ul + h2,
-.app-prose-scope ol + h2 {
+.app-prose-scope .govuk-list + h2:not([class]),
+.app-prose-scope ul + h2:not([class]),
+.app-prose-scope ol + h2:not([class]) {
   padding-top: 15px;
 }
 
 @media (min-width: 40.0625em) {
-  .govuk-body-m + .govuk-heading-l, .govuk-body + .govuk-heading-l, .app-prose-scope p + .govuk-heading-l, .app-prose-scope .govuk-body-m + h2, .app-prose-scope .govuk-body + h2, .app-prose-scope p + h2,
+  .govuk-body-m + .govuk-heading-l, .govuk-body + .govuk-heading-l, .app-prose-scope p + .govuk-heading-l, .app-prose-scope .govuk-body-m + h2:not([class]), .app-prose-scope .govuk-body + h2:not([class]), .app-prose-scope p + h2:not([class]),
   .govuk-body-s + .govuk-heading-l,
-  .app-prose-scope .govuk-body-s + h2,
+  .app-prose-scope .govuk-body-s + h2:not([class]),
   .govuk-list + .govuk-heading-l,
   .app-prose-scope ul + .govuk-heading-l,
   .app-prose-scope ol + .govuk-heading-l,
-  .app-prose-scope .govuk-list + h2,
-  .app-prose-scope ul + h2,
-  .app-prose-scope ol + h2 {
+  .app-prose-scope .govuk-list + h2:not([class]),
+  .app-prose-scope ul + h2:not([class]),
+  .app-prose-scope ol + h2:not([class]) {
     padding-top: 20px;
   }
 }
 
-.govuk-body-m + .govuk-heading-m, .govuk-body + .govuk-heading-m, .app-prose-scope p + .govuk-heading-m, .app-prose-scope .govuk-body-m + h3, .app-prose-scope .govuk-body + h3, .app-prose-scope p + h3,
+.govuk-body-m + .govuk-heading-m, .govuk-body + .govuk-heading-m, .app-prose-scope p + .govuk-heading-m, .govuk-body-m + .app-panel__heading, .govuk-body + .app-panel__heading, .app-prose-scope p + .app-panel__heading, .app-prose-scope .govuk-body-m + h3:not([class]), .app-prose-scope .govuk-body + h3:not([class]), .app-prose-scope p + h3:not([class]),
 .govuk-body-s + .govuk-heading-m,
-.app-prose-scope .govuk-body-s + h3,
+.govuk-body-s + .app-panel__heading,
+.app-prose-scope .govuk-body-s + h3:not([class]),
 .govuk-list + .govuk-heading-m,
 .app-prose-scope ul + .govuk-heading-m,
 .app-prose-scope ol + .govuk-heading-m,
-.app-prose-scope .govuk-list + h3,
-.app-prose-scope ul + h3,
-.app-prose-scope ol + h3,
+.govuk-list + .app-panel__heading,
+.app-prose-scope ul + .app-panel__heading,
+.app-prose-scope ol + .app-panel__heading,
+.app-prose-scope .govuk-list + h3:not([class]),
+.app-prose-scope ul + h3:not([class]),
+.app-prose-scope ol + h3:not([class]),
 .govuk-body-m + .govuk-heading-s,
 .govuk-body + .govuk-heading-s,
 .app-prose-scope p + .govuk-heading-s,
-.app-prose-scope .govuk-body-m + h4,
-.app-prose-scope .govuk-body + h4,
-.app-prose-scope p + h4,
+.app-prose-scope .govuk-body-m + h4:not([class]),
+.app-prose-scope .govuk-body + h4:not([class]),
+.app-prose-scope p + h4:not([class]),
 .govuk-body-s + .govuk-heading-s,
-.app-prose-scope .govuk-body-s + h4,
+.app-prose-scope .govuk-body-s + h4:not([class]),
 .govuk-list + .govuk-heading-s,
 .app-prose-scope ul + .govuk-heading-s,
 .app-prose-scope ol + .govuk-heading-s,
-.app-prose-scope .govuk-list + h4,
-.app-prose-scope ul + h4,
-.app-prose-scope ol + h4 {
+.app-prose-scope .govuk-list + h4:not([class]),
+.app-prose-scope ul + h4:not([class]),
+.app-prose-scope ol + h4:not([class]) {
   padding-top: 5px;
 }
 
 @media (min-width: 40.0625em) {
-  .govuk-body-m + .govuk-heading-m, .govuk-body + .govuk-heading-m, .app-prose-scope p + .govuk-heading-m, .app-prose-scope .govuk-body-m + h3, .app-prose-scope .govuk-body + h3, .app-prose-scope p + h3,
+  .govuk-body-m + .govuk-heading-m, .govuk-body + .govuk-heading-m, .app-prose-scope p + .govuk-heading-m, .govuk-body-m + .app-panel__heading, .govuk-body + .app-panel__heading, .app-prose-scope p + .app-panel__heading, .app-prose-scope .govuk-body-m + h3:not([class]), .app-prose-scope .govuk-body + h3:not([class]), .app-prose-scope p + h3:not([class]),
   .govuk-body-s + .govuk-heading-m,
-  .app-prose-scope .govuk-body-s + h3,
+  .govuk-body-s + .app-panel__heading,
+  .app-prose-scope .govuk-body-s + h3:not([class]),
   .govuk-list + .govuk-heading-m,
   .app-prose-scope ul + .govuk-heading-m,
   .app-prose-scope ol + .govuk-heading-m,
-  .app-prose-scope .govuk-list + h3,
-  .app-prose-scope ul + h3,
-  .app-prose-scope ol + h3,
+  .govuk-list + .app-panel__heading,
+  .app-prose-scope ul + .app-panel__heading,
+  .app-prose-scope ol + .app-panel__heading,
+  .app-prose-scope .govuk-list + h3:not([class]),
+  .app-prose-scope ul + h3:not([class]),
+  .app-prose-scope ol + h3:not([class]),
   .govuk-body-m + .govuk-heading-s,
   .govuk-body + .govuk-heading-s,
   .app-prose-scope p + .govuk-heading-s,
-  .app-prose-scope .govuk-body-m + h4,
-  .app-prose-scope .govuk-body + h4,
-  .app-prose-scope p + h4,
+  .app-prose-scope .govuk-body-m + h4:not([class]),
+  .app-prose-scope .govuk-body + h4:not([class]),
+  .app-prose-scope p + h4:not([class]),
   .govuk-body-s + .govuk-heading-s,
-  .app-prose-scope .govuk-body-s + h4,
+  .app-prose-scope .govuk-body-s + h4:not([class]),
   .govuk-list + .govuk-heading-s,
   .app-prose-scope ul + .govuk-heading-s,
   .app-prose-scope ol + .govuk-heading-s,
-  .app-prose-scope .govuk-list + h4,
-  .app-prose-scope ul + h4,
-  .app-prose-scope ol + h4 {
+  .app-prose-scope .govuk-list + h4:not([class]),
+  .app-prose-scope ul + h4:not([class]),
+  .app-prose-scope ol + h4:not([class]) {
     padding-top: 10px;
   }
 }
@@ -1165,7 +1173,7 @@
 }
 
 .govuk-width-container {
-  max-width: 1220px;
+  max-width: 1100px;
   margin-right: 15px;
   margin-left: 15px;
 }
@@ -1190,7 +1198,7 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1160px) {
   .govuk-width-container {
     margin-right: auto;
     margin-left: auto;
@@ -4427,7 +4435,7 @@
 .govuk-notification-banner__content > * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  max-width: 778.33333px;
+  max-width: 698.33333px;
 }
 
 .govuk-notification-banner__content > :last-child {
@@ -7646,7 +7654,7 @@
 
 .moj-cookie-banner__message {
   margin: 0;
-  max-width: 1220px;
+  max-width: 1100px;
   margin-right: 15px;
   margin-left: 15px;
 }
@@ -7671,7 +7679,7 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1160px) {
   .moj-cookie-banner__message {
     margin-right: auto;
     margin-left: auto;
@@ -8060,7 +8068,7 @@
 }
 
 .moj-header__container {
-  max-width: 1220px;
+  max-width: 1100px;
   margin: 0 15px;
   position: relative;
 }
@@ -8071,7 +8079,7 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1160px) {
   .moj-header__container {
     margin: 0 auto;
   }
@@ -8410,7 +8418,7 @@ span.moj-header__link:hover {
 }
 
 .moj-identity-bar__container {
-  max-width: 1220px;
+  max-width: 1100px;
   margin: 0 15px;
   font-size: 0;
   /* Hide whitespace between elements */
@@ -8424,7 +8432,7 @@ span.moj-header__link:hover {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1160px) {
   .moj-identity-bar__container {
     margin: 0 auto;
   }
@@ -9235,7 +9243,7 @@ span.moj-header__link:hover {
 }
 
 .moj-primary-navigation__container {
-  max-width: 1220px;
+  max-width: 1100px;
   margin: 0 15px;
   font-size: 0;
   text-align: justify;
@@ -9247,7 +9255,7 @@ span.moj-header__link:hover {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1160px) {
   .moj-primary-navigation__container {
     margin: 0 auto;
   }
@@ -10745,7 +10753,7 @@ span.moj-header__link:hover {
 }
 
 .moj-width-container {
-  max-width: 1220px;
+  max-width: 1100px;
   margin: 0 15px;
 }
 
@@ -10755,7 +10763,7 @@ span.moj-header__link:hover {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1160px) {
   .moj-width-container {
     margin: 0 auto;
   }
@@ -10858,6 +10866,69 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 .hljs-strong {
   font-weight: bold;
+}
+
+.app-back-to-top {
+  display: none;
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.14286;
+}
+
+@media print {
+  .app-back-to-top {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .app-back-to-top {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
+
+@media print {
+  .app-back-to-top {
+    font-size: 14pt;
+    line-height: 1.2;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .app-back-to-top {
+    display: block;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 30px;
+    margin-bottom: 30px;
+    padding-left: 15px;
+  }
+  .app-back-to-top a,
+  .app-back-to-top a:link,
+  .app-back-to-top a:visited {
+    color: #1d70b8;
+  }
+  .app-back-to-top a:focus {
+    color: #0b0c0c;
+    background-color: #ffdd00;
+    -webkit-box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+            box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+  }
+}
+
+.app-back-to-top__icon {
+  display: inline-block;
+  width: 0.8em;
+  height: 1em;
+  margin-top: -5px;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
 .app-copy-button {
@@ -10987,6 +11058,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   background-color: #ffdd00;
 }
 
+.app-prose-scope code:not([class*="language-"]) {
+  padding: 0 5px;
+  color: #c62950;
+  background-color: #f3f2f1;
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
 .app-prose-scope strong,
 .app-prose-scope b {
   font-weight: 700;
@@ -11078,6 +11157,243 @@ pre {
   pre {
     margin-bottom: 20px;
   }
+}
+
+/* ==========================================================================
+   #MASTHEAD
+   // Ideal line length (https://pearsonified.com/typography)
+   ========================================================================== */
+.app-masthead {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #1d70b8;
+  color: #ffffff;
+  margin-top: -1px;
+}
+
+@media (min-width: 40.0625em) {
+  .app-masthead {
+    padding-top: 30px;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .app-masthead {
+    padding-bottom: 30px;
+  }
+}
+
+.app-masthead__title {
+  margin-bottom: 20px;
+  color: #ffffff !important;
+  max-width: 1057px;
+}
+
+@media (min-width: 40.0625em) {
+  .app-masthead__title {
+    margin-bottom: 30px;
+  }
+}
+
+.app-masthead__description {
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.11111;
+  color: #ffffff !important;
+  margin-bottom: 0;
+  max-width: 793px;
+}
+
+@media print {
+  .app-masthead__description {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .app-masthead__description {
+    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+}
+
+@media print {
+  .app-masthead__description {
+    font-size: 18pt;
+    line-height: 1.15;
+  }
+}
+
+/* ==========================================================================
+   #BUTTON
+   ========================================================================== */
+.app-masthead__button,
+.app-masthead__button:link,
+.app-masthead__button:visited {
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.11111;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.5);
+  color: #1d70b8;
+  display: block;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+@media print {
+  .app-masthead__button,
+  .app-masthead__button:link,
+  .app-masthead__button:visited {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .app-masthead__button,
+  .app-masthead__button:link,
+  .app-masthead__button:visited {
+    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+}
+
+@media print {
+  .app-masthead__button,
+  .app-masthead__button:link,
+  .app-masthead__button:visited {
+    font-size: 18pt;
+    line-height: 1.15;
+  }
+}
+
+@media (min-width: 48.0625em) {
+  .app-masthead__button,
+  .app-masthead__button:link,
+  .app-masthead__button:visited {
+    display: inline-block;
+  }
+}
+
+.app-masthead__button:focus {
+  background-color: #ffdd00;
+  color: #0b0c0c;
+  -webkit-box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+          box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+}
+
+.app-masthead__button:hover {
+  color: #1d70b8;
+  background-color: #e8f1f8;
+}
+
+.app-masthead__button__icon {
+  margin-left: 5px;
+  vertical-align: middle;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+@media (min-width: 48.0625em) {
+  .app-masthead__button__icon {
+    margin-left: 10px;
+  }
+}
+
+/* ==========================================================================
+   #PANEL
+   ========================================================================== */
+.app-panel {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #1d70b8;
+  color: #ffffff;
+}
+
+@media (min-width: 40.0625em) {
+  .app-panel {
+    margin-top: 30px;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .app-panel {
+    margin-bottom: 30px;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .app-panel {
+    padding: 15px;
+  }
+}
+
+.app-panel__heading,
+.app-panel__body {
+  color: #ffffff;
+}
+
+.app-panel__body {
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  margin-bottom: 0;
+}
+
+@media print {
+  .app-panel__body {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .app-panel__body {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+}
+
+@media print {
+  .app-panel__body {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+
+.app-panel__link:link, .app-panel__link:active, .app-panel__link:visited {
+  color: #ffffff;
+}
+
+.app-panel__link:hover {
+  color: #c5dff6;
+}
+
+.app-panel__link:focus {
+  color: #0b0c0c;
 }
 
 /* ==========================================================================

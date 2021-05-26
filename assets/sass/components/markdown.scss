@@ -1,22 +1,30 @@
 .app-prose-scope {
-  h1 {
+  h1:not([class]) {
     @extend %govuk-heading-xl;
   }
 
-  h2 {
+  h2:not([class]) {
     @extend %govuk-heading-l;
   }
 
-  h3 {
+  h3:not([class]) {
     @extend %govuk-heading-m;
   }
 
-  h4 {
+  h4:not([class]) {
     @extend %govuk-heading-s;
   }
 
   p {
     @extend %govuk-body-m;
+  }
+
+  code:not([class*="language-"]) {
+    padding: 0 5px;
+    color: #c62950;
+    background-color: #f3f2f1;
+    font-family: monospace, monospace;
+    font-size: 1em;
   }
 
   strong,

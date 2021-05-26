@@ -17,7 +17,7 @@
 
     <!--[if lte IE 8]><link href="/moj-frontend/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="/moj-frontend/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
-    <title>Badge - MOJ Design System</title>
+    <title>Banner - MOJ Design System</title>
 
     <script type="text/javascript" src="/moj-frontend/javascripts/vendor/jquery.js"></script>
     <script type="text/javascript" src="/moj-frontend/assets/javascript/all.js"></script>
@@ -99,12 +99,12 @@
           <a href="/moj-frontend/components/add-another">Add another</a>
         </li>
       
-        <li class="moj-side-navigation__item moj-side-navigation__item--active">
-          <a href="/moj-frontend/components/badge" aria-current="location">Badge</a>
+        <li class="moj-side-navigation__item">
+          <a href="/moj-frontend/components/badge">Badge</a>
         </li>
       
-        <li class="moj-side-navigation__item">
-          <a href="/moj-frontend/components/banner">Banner</a>
+        <li class="moj-side-navigation__item moj-side-navigation__item--active">
+          <a href="/moj-frontend/components/banner" aria-current="location">Banner</a>
         </li>
       
         <li class="moj-side-navigation__item">
@@ -216,241 +216,204 @@
       <main class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
           <span class="govuk-caption-xl">Components</span>
-          Badge
+          Banner
         </h1>
-        <p>Use the badge component to highlight small details like an urgent case.</p>
+        <p><div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+<div class="govuk-notification-banner__header">
+<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+Important
+</h2>
+</div>
+<div class="govuk-notification-banner__content">
+<h3 class="govuk-notification-banner__heading">
+The GOV.UK Design System has a similar component
+</h3></p>
+<p>The <a href="https://design-system.service.gov.uk/components/notification-banner/">Notification banner component</a> in the GOV.UK Design System has a similar function and visual design to this component.</p>
+<p>You should consider using the GOV.UK version if it fits your needs.</p>
+</div>
+      </div>
+<p>Use the banner component to display a prominent message and related actions to take.</p>
 <div class="app-example">
   <span class="app-example__new-window">
-    <a href="/moj-frontend/examples/badge" target="_blank">Open this example in a new window</a>
+    <a href="/moj-frontend/examples/banner" target="_blank">Open this example in a new window</a>
   </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="125" src="/moj-frontend/examples/badge"></iframe>
+  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="225" src="/moj-frontend/examples/banner"></iframe>
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-badge" role="tab" id="tab_html-default--examples-badge" aria-controls="html-default--examples-badge">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-badge" role="tab" id="tab_nunjucks-default--examples-badge" aria-controls="nunjucks-default--examples-badge">Nunjucks</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default--examples-badge" role="tab" id="tab_j-default--examples-badge" aria-controls="js-default--examples-badge">JavaScript</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-banner" role="tab" id="tab_html-default--examples-banner" aria-controls="html-default--examples-banner">HTML</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-banner" role="tab" id="tab_nunjucks-default--examples-banner" aria-controls="nunjucks-default--examples-banner">Nunjucks</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default--examples-banner" role="tab" id="tab_j-default--examples-banner" aria-controls="js-default--examples-banner">JavaScript</a></li>
   </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-badge" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-badge"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-badge&quot;</span>&gt;</span>Recently added<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-banner" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-banner"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner__icon&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;currentColor&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;presentation&quot;</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 25 25&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;25&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;25&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">&quot;M13.7,18.5h-2.4v-2.4h2.4V18.5z M12.5,13.7c-0.7,0-1.2-0.5-1.2-1.2V7.7c0-0.7,0.5-1.2,1.2-1.2s1.2,0.5,1.2,1.2v4.8
+	C13.7,13.2,13.2,13.7,12.5,13.7z M12.5,0.5c-6.6,0-12,5.4-12,12s5.4,12,12,12s12-5.4,12-12S19.1,0.5,12.5,0.5z&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner__message&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-heading-m&quot;</span>&gt;</span>This service will be unavailable from 1 June 2019<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 </code></pre>
   </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-badge" data-module="app-copy" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-badge"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
-<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/badge/macro.njk&quot; import mojBadge -%}</span><span class="xml">
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-banner" data-module="app-copy" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-banner"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/banner/macro.njk&quot; import mojBanner -%}</span><span class="xml">
 
-</span><span class="hljs-template-variable">{{ mojBadge({
-  text: &#x27;Recently added&#x27;
+</span><span class="hljs-template-tag">{% <span class="hljs-name">set</span> bannerHtml %}</span><span class="xml">
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-heading-m&quot;</span>&gt;</span>This service will be unavailable from 1 June 2019<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> %}</span><span class="xml">
+
+</span><span class="hljs-template-variable">{{ mojBanner({
+  type: &#x27;information&#x27;,
+  html: bannerHtml
 }) }}</span><span class="xml">
 </span></code></pre>
 <p>You can configure this component using the <a href="https://github.com/ministryofjustice/moj-frontend/tree/main/src/moj/components/add-another#arguments">Nunjucks macro arguments</a></p>
   </div>
 </div>
 <h2 id="when-to-use-this-component">When to use this component</h2>
-<p>The badge is useful for drawing users attention to particular information. It should be used sparingly because when used a lot it loses its value.</p>
+<p>Use this component when users might be performing an action repeatedly. For example, when a judge creates a batch of questions for sending to the citizen.</p>
+<h2 id="when-not-to-use-this-component">When not to use this component</h2>
+<p>For rarely performed or important actions, you should use the <a href="https://design-system.service.gov.uk/patterns/confirmation-pages/">Confirmation Page</a> pattern.</p>
 <h2 id="how-it-works">How it works</h2>
-<p>There are 2 ways to use the badge component. You can use HTML or, if you are using <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> or the <a href="https://govuk-prototype-kit.herokuapp.com/">GOV.UK Prototype Kit</a>, you can use the Nunjucks macro.</p>
-<p>The default, neutral badge is blue. <a href="/styles/badge">Alternative styles</a> are also available, for example, green and red.</p>
+<p>There are 2 ways to use the banner component. You can use HTML or, if you are using <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> or the <a href="https://govuk-prototype-kit.herokuapp.com/">GOV.UK Prototype Kit</a>, you can use the Nunjucks macro.</p>
+<p>The banner should be displayed at the top of the page above the main heading and below the back link if there is one.</p>
+<p>It can be configured with and without icons and in different colours for success, warning and information message types.</p>
+<h3>Success</h3>
+<p>This is the default style and should be used when the user performs an action successfully.</p>
 <div class="app-example">
   <span class="app-example__new-window">
-    <a href="/moj-frontend/examples/badge-complete" target="_blank">Open this example in a new window</a>
+    <a href="/moj-frontend/examples/banner-success" target="_blank">Open this example in a new window</a>
   </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="125" src="/moj-frontend/examples/badge-complete"></iframe>
+  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="175" src="/moj-frontend/examples/banner-success"></iframe>
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-badge-complete" role="tab" id="tab_html-default--examples-badge-complete" aria-controls="html-default--examples-badge-complete">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-badge-complete" role="tab" id="tab_nunjucks-default--examples-badge-complete" aria-controls="nunjucks-default--examples-badge-complete">Nunjucks</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default--examples-badge-complete" role="tab" id="tab_j-default--examples-badge-complete" aria-controls="js-default--examples-badge-complete">JavaScript</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-banner-success" role="tab" id="tab_html-default--examples-banner-success" aria-controls="html-default--examples-banner-success">HTML</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-banner-success" role="tab" id="tab_nunjucks-default--examples-banner-success" aria-controls="nunjucks-default--examples-banner-success">Nunjucks</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default--examples-banner-success" role="tab" id="tab_j-default--examples-banner-success" aria-controls="js-default--examples-banner-success">JavaScript</a></li>
   </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-badge-complete" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-badge-complete"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-badge moj-badge--green&quot;</span>&gt;</span>Complete<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-banner-success" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-banner-success"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner moj-banner--success&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner__icon&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;currentColor&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;presentation&quot;</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 25 25&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;25&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;25&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">&quot;M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner__message&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner__assistive&quot;</span>&gt;</span>Success<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>You have successfully added 1 question.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 </code></pre>
   </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-badge-complete" data-module="app-copy" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-badge-complete"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
-<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/badge/macro.njk&quot; import mojBadge -%}</span><span class="xml">
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-banner-success" data-module="app-copy" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-banner-success"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/banner/macro.njk&quot; import mojBanner -%}</span><span class="xml">
 
-</span><span class="hljs-template-variable">{{ mojBadge({
-  text: &#x27;Complete&#x27;,
-  classes: &#x27;moj-badge--green&#x27;
+</span><span class="hljs-template-variable">{{ mojBanner({
+  type: &#x27;success&#x27;,
+  text: &#x27;You have successfully added 1 question.&#x27;,
+  iconFallbackText: &#x27;Success&#x27;
 }) }}</span><span class="xml">
 </span></code></pre>
 <p>You can configure this component using the <a href="https://github.com/ministryofjustice/moj-frontend/tree/main/src/moj/components/add-another#arguments">Nunjucks macro arguments</a></p>
   </div>
 </div>
+<h3>Warning</h3>
+<p>Use this variant when you want to warn the user that something went wrong.</p>
 <div class="app-example">
   <span class="app-example__new-window">
-    <a href="/moj-frontend/examples/badge-urgent" target="_blank">Open this example in a new window</a>
+    <a href="/moj-frontend/examples/banner-warning" target="_blank">Open this example in a new window</a>
   </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="125" src="/moj-frontend/examples/badge-urgent"></iframe>
+  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="175" src="/moj-frontend/examples/banner-warning"></iframe>
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-badge-urgent" role="tab" id="tab_html-default--examples-badge-urgent" aria-controls="html-default--examples-badge-urgent">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-badge-urgent" role="tab" id="tab_nunjucks-default--examples-badge-urgent" aria-controls="nunjucks-default--examples-badge-urgent">Nunjucks</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default--examples-badge-urgent" role="tab" id="tab_j-default--examples-badge-urgent" aria-controls="js-default--examples-badge-urgent">JavaScript</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-banner-warning" role="tab" id="tab_html-default--examples-banner-warning" aria-controls="html-default--examples-banner-warning">HTML</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-banner-warning" role="tab" id="tab_nunjucks-default--examples-banner-warning" aria-controls="nunjucks-default--examples-banner-warning">Nunjucks</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default--examples-banner-warning" role="tab" id="tab_j-default--examples-banner-warning" aria-controls="js-default--examples-banner-warning">JavaScript</a></li>
   </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-badge-urgent" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-badge-urgent"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-badge moj-badge--red&quot;</span>&gt;</span>Urgent<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-banner-warning" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-banner-warning"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner moj-banner--warning&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner__icon&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;currentColor&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;presentation&quot;</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 25 25&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;25&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;25&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">&quot;M13.6,15.4h-2.3v-4.5h2.3V15.4z M13.6,19.8h-2.3v-2.2h2.3V19.8z M0,23.2h25L12.5,2L0,23.2z&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner__message&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner__assistive&quot;</span>&gt;</span>Warning<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>Questions weren’t sent – try again.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 </code></pre>
   </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-badge-urgent" data-module="app-copy" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-badge-urgent"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
-<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/badge/macro.njk&quot; import mojBadge -%}</span><span class="xml">
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-banner-warning" data-module="app-copy" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-banner-warning"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/banner/macro.njk&quot; import mojBanner -%}</span><span class="xml">
 
-</span><span class="hljs-template-variable">{{ mojBadge({
-  text: &#x27;Urgent&#x27;,
-  classes: &#x27;moj-badge--red&#x27;
+</span><span class="hljs-template-variable">{{ mojBanner({
+  type: &#x27;warning&#x27;,
+  text: &#x27;Questions weren’t sent – try again.&#x27;,
+  iconFallbackText: &#x27;Warning&#x27;
 }) }}</span><span class="xml">
 </span></code></pre>
 <p>You can configure this component using the <a href="https://github.com/ministryofjustice/moj-frontend/tree/main/src/moj/components/add-another#arguments">Nunjucks macro arguments</a></p>
   </div>
 </div>
-<h2 id="additional-styles">Additional styles</h2>
-<p>There are a number of additional colour styles that can be used:</p>
-<table class="govuk-table">
-<thead class="govuk-table__head">
-  <tr class="govuk-table__row">
-    <th class="govuk-table__header" scope="col">Class name</th>
-    <th class="govuk-table__header" scope="col">badge</th>
-  </tr>
-</thead>
-<tbody class="govuk-table__body">
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-      <code>moj-badge--purple</code>
-    </td>
-    <td class="govuk-table__cell">
-      <span class="moj-badge moj-badge--purple">Lorem ipsum 1</span>
-    </td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-      <code>moj-badge--bright-purple</code>
-    </td>
-    <td class="govuk-table__cell">
-      <span class="moj-badge moj-badge--bright-purple">Lorem ipsum 2</span>
-    </td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-      <code>moj-badge--red</code>
-    </td>
-    <td class="govuk-table__cell">
-      <span class="moj-badge moj-badge--red">Lorem ipsum 3</span>
-    </td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-      <code>moj-badge--green</code>
-    </td>
-    <td class="govuk-table__cell">
-      <span class="moj-badge moj-badge--green">Lorem ipsum 4</span>
-    </td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-      <code>moj-badge--blue</code>
-    </td>
-    <td class="govuk-table__cell">
-      <span class="moj-badge moj-badge--blue">Lorem ipsum 5</span>
-    </td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-      <code>moj-badge--black</code>
-    </td>
-    <td class="govuk-table__cell">
-      <span class="moj-badge moj-badge--black">Lorem ipsum 6</span>
-    </td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-      <code>moj-badge--grey</code>
-    </td>
-    <td class="govuk-table__cell">
-      <span class="moj-badge moj-badge--grey">Lorem ipsum 7</span>
-    </td>
-  </tr>
-</tbody>
-</table>
-<h3>With a size modifier</h3>
-<table class="govuk-table">
-<thead class="govuk-table__head">
-  <tr class="govuk-table__row">
-    <th class="govuk-table__header" scope="col">Class names</th>
-    <th class="govuk-table__header" scope="col">badge</th>
-  </tr>
-</thead>
-<tbody class="govuk-table__body">
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-      <code>moj-badge--purple moj-badge--large</code>
-    </td>
-    <td class="govuk-table__cell">
-      <span class="moj-badge moj-badge--purple moj-badge--large">Lorem ipsum 1</span>
-    </td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-      <code>moj-badge--bright-purple moj-badge--large</code>
-    </td>
-    <td class="govuk-table__cell">
-      <span class="moj-badge moj-badge--bright-purple moj-badge--large">Lorem ipsum 2</span>
-    </td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-      <code>moj-badge--red moj-badge--large</code>
-    </td>
-    <td class="govuk-table__cell">
-      <span class="moj-badge moj-badge--red moj-badge--large">Lorem ipsum 3</span>
-    </td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-      <code>moj-badge--green moj-badge--large</code>
-    </td>
-    <td class="govuk-table__cell">
-      <span class="moj-badge moj-badge--green moj-badge--large">Lorem ipsum 4</span>
-    </td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-      <code>moj-badge--blue moj-badge--large</code>
-    </td>
-    <td class="govuk-table__cell">
-      <span class="moj-badge moj-badge--blue moj-badge--large">Lorem ipsum 5</span>
-    </td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-      <code>moj-badge--black moj-badge--large</code>
-    </td>
-    <td class="govuk-table__cell">
-      <span class="moj-badge moj-badge--black moj-badge--large">Lorem ipsum 6</span>
-    </td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__cell">
-      <code>moj-badge--grey moj-badge--large</code>
-    </td>
-    <td class="govuk-table__cell">
-      <span class="moj-badge moj-badge--grey moj-badge--large">Lorem ipsum 7</span>
-    </td>
-  </tr>
-</tbody>
-</table>
+<h3>Information</h3>
+<p>Use this variant when you want to tell users some information.</p>
+<div class="app-example">
+  <span class="app-example__new-window">
+    <a href="/moj-frontend/examples/banner-information" target="_blank">Open this example in a new window</a>
+  </span>
+  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="175" src="/moj-frontend/examples/banner-information"></iframe>
+</div>
+<div class="app-tabs" data-module="app-tabs">
+  <ul class="app-tabs__list" role="tablist">
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-banner-information" role="tab" id="tab_html-default--examples-banner-information" aria-controls="html-default--examples-banner-information">HTML</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-banner-information" role="tab" id="tab_nunjucks-default--examples-banner-information" aria-controls="nunjucks-default--examples-banner-information">Nunjucks</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default--examples-banner-information" role="tab" id="tab_j-default--examples-banner-information" aria-controls="js-default--examples-banner-information">JavaScript</a></li>
+  </ul>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-banner-information" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-banner-information"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner__icon&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;currentColor&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;presentation&quot;</span> <span class="hljs-attr">focusable</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 25 25&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;25&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;25&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">&quot;M13.7,18.5h-2.4v-2.4h2.4V18.5z M12.5,13.7c-0.7,0-1.2-0.5-1.2-1.2V7.7c0-0.7,0.5-1.2,1.2-1.2s1.2,0.5,1.2,1.2v4.8
+	C13.7,13.2,13.2,13.7,12.5,13.7z M12.5,0.5c-6.6,0-12,5.4-12,12s5.4,12,12,12s12-5.4,12-12S19.1,0.5,12.5,0.5z&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner__message&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner__assistive&quot;</span>&gt;</span>information<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>Select text to add comment.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+</code></pre>
+  </div>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-banner-information" data-module="app-copy" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-banner-information"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/banner/macro.njk&quot; import mojBanner -%}</span><span class="xml">
+
+</span><span class="hljs-template-variable">{{ mojBanner({
+  type: &#x27;information&#x27;,
+  text: &#x27;Select text to add comment.&#x27;,
+  iconFallbackText: &#x27;information&#x27;
+}) }}</span><span class="xml">
+</span></code></pre>
+<p>You can configure this component using the <a href="https://github.com/ministryofjustice/moj-frontend/tree/main/src/moj/components/add-another#arguments">Nunjucks macro arguments</a></p>
+  </div>
+</div>
 <h2 id="research-on-this-component">Research on this component</h2>
-<p>This component has been used successfully in the following services:</p>
-<ul>
-<li>Claim fees for Crown court defence (Legal Aid Agency)</li>
-<li>Prisoner Escort Request (Her Majesty’s Prison and Probation Service)</li>
-<li>Professional case manager (Her Majesty’s Courts and Tribunals Service)</li>
-</ul>
+<p>This component is marked as experimental because it needs more research.</p>
+<p>If you have used the banner component, get in touch to share your research findings.</p>
 <h2 id="contribute-to-this-component">Contribute to this component</h2>
-<p>You can contribute to this component via the <a href="https://github.com/ministryofjustice/moj-design-system-backlog/issues/26">design system backlog</a></p>
+<p>You can contribute to this component via the <a href="https://github.com/ministryofjustice/moj-design-system-backlog/issues/36">design system backlog</a></p>
 
       </main>
 

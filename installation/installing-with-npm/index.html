@@ -1,5 +1,5 @@
-<h1>Installing MOJ Frontend with NPM</h1>
-<h2>Requirements</h2>
+<h1 id="installing-moj-frontend-with-npm">Installing MOJ Frontend with NPM</h1>
+<h2 id="requirements">Requirements</h2>
 <p>To use MOJ Frontend with NPM you must:</p>
 <ol>
 <li>Install the long-term support (LTS) version of <a href="https://nodejs.org/en/">Node.js</a>, which includes NPM. The minimum version of Node required is 4.2.0.</li>
@@ -15,12 +15,12 @@
 </ol>
 <pre><code>npm install nunjucks --save
 </code></pre>
-<h2>Installation</h2>
+<h2 id="installation">Installation</h2>
 <p>To install, run:</p>
 <pre><code>npm install --save @ministryofjustice/frontend
 </code></pre>
 <p>After you have installed MOJ Frontend the <code>@ministryofjustice/frontend</code> package will appear in your <code>node_modules</code> folder.</p>
-<h2>Importing styles</h2>
+<h2 id="importing-styles">Importing styles</h2>
 <p>You need to import the MOJ Frontend styles into the main Sass file in your project. You should place the below code before your own Sass rules (or Sass imports) if you want to override MOJ Frontend with your own styles.</p>
 <ol>
 <li>To import all components, add the below to your Sass file:</li>
@@ -49,7 +49,7 @@ to include add <code>includePaths</code> to it.</p>
 <p>After resolving the import paths you can import MOJ Frontend by using:</p>
 <pre><code class="language-CSS"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@ministryofjustice/frontend/moj/components/button/button&quot;</span>;
 </code></pre>
-<h2>Importing assets</h2>
+<h2 id="importing-assets">Importing assets</h2>
 <p>In order to import MOJ Frontend images and fonts to your project, you should configure your application to reference or copy the relevant MOJ Frontend assets.</p>
 <p>Follow either <a href="#recommended-solution">Recommended solution</a> or <a href="#alternative-solution">Alternative solution</a>.</p>
 <h3>Recommended solution</h3>
@@ -74,7 +74,7 @@ to include add <code>includePaths</code> to it.</p>
 
 <span class="hljs-keyword">@import</span> “<span class="hljs-keyword">@ministryofjustice</span>/frontend/moj/all”;
 </code></pre>
-<h2>Include CSS and JavaScript</h2>
+<h2 id="include-css-and-javascript">Include CSS and JavaScript</h2>
 <p>Add the CSS and JavaScript code to your HTML template:</p>
 <pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
@@ -88,7 +88,7 @@ to include add <code>includePaths</code> to it.</p>
   <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre>
-<h2>Using JavaScript</h2>
+<h2 id="using-javascript">Using JavaScript</h2>
 <p>Some of the JavaScript included in MOJ Frontend improves the usability and accessibility of the components.</p>
 <p>You should include or import MOJ Frontend JavaScript, and then initialise the appropriate script in your application to ensure that all users can use it successfully.</p>
 <p>Note that MOJ Frontend does not initialise any scripts by default; all scripts must be initialised in order for them to work.</p>
@@ -118,7 +118,7 @@ to include add <code>includePaths</code> to it.</p>
 <pre><code class="language-js"><span class="hljs-keyword">const</span> MOJFrontend = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;moj-frontend&#x27;</span>);
 <span class="hljs-keyword">new</span> MOJFrontend.ButtonMenu(...);
 </code></pre>
-<h2>Include CSS and JavaScript</h2>
+<h2 id="include-css-and-javascript-1">Include CSS and JavaScript</h2>
 <p>Add the CSS and JavaScript code to your HTML template:</p>
 <pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>

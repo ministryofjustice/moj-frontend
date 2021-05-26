@@ -134,7 +134,7 @@
   background-color: #ffffff;
 }
 
-.govuk-heading-xl, .app-prose-scope h1 {
+.govuk-heading-xl, .app-prose-scope h1:not([class]) {
   color: #0b0c0c;
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -152,7 +152,7 @@
   margin-bottom: 50px;
 }
 
-.govuk-heading-l, .app-prose-scope h2 {
+.govuk-heading-l, .app-prose-scope h2:not([class]) {
   color: #0b0c0c;
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -170,7 +170,7 @@
   margin-bottom: 30px;
 }
 
-.govuk-heading-m, .app-prose-scope h3 {
+.govuk-heading-m, .app-panel__heading, .app-prose-scope h3:not([class]) {
   color: #0b0c0c;
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -188,7 +188,7 @@
   margin-bottom: 20px;
 }
 
-.govuk-heading-s, .app-prose-scope h4 {
+.govuk-heading-s, .app-prose-scope h4:not([class]) {
   color: #0b0c0c;
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -322,47 +322,51 @@
   margin-bottom: 20px;
 }
 
-.govuk-body-l + .govuk-heading-l, .govuk-body-lead + .govuk-heading-l, .app-prose-scope .govuk-body-l + h2, .app-prose-scope .govuk-body-lead + h2 {
+.govuk-body-l + .govuk-heading-l, .govuk-body-lead + .govuk-heading-l, .app-prose-scope .govuk-body-l + h2:not([class]), .app-prose-scope .govuk-body-lead + h2:not([class]) {
   padding-top: 5px;
   padding-top: 10px;
 }
 
-.govuk-body-m + .govuk-heading-l, .govuk-body + .govuk-heading-l, .app-prose-scope p + .govuk-heading-l, .app-prose-scope .govuk-body-m + h2, .app-prose-scope .govuk-body + h2, .app-prose-scope p + h2,
+.govuk-body-m + .govuk-heading-l, .govuk-body + .govuk-heading-l, .app-prose-scope p + .govuk-heading-l, .app-prose-scope .govuk-body-m + h2:not([class]), .app-prose-scope .govuk-body + h2:not([class]), .app-prose-scope p + h2:not([class]),
 .govuk-body-s + .govuk-heading-l,
-.app-prose-scope .govuk-body-s + h2,
+.app-prose-scope .govuk-body-s + h2:not([class]),
 .govuk-list + .govuk-heading-l,
 .app-prose-scope ul + .govuk-heading-l,
 .app-prose-scope ol + .govuk-heading-l,
-.app-prose-scope .govuk-list + h2,
-.app-prose-scope ul + h2,
-.app-prose-scope ol + h2 {
+.app-prose-scope .govuk-list + h2:not([class]),
+.app-prose-scope ul + h2:not([class]),
+.app-prose-scope ol + h2:not([class]) {
   padding-top: 15px;
   padding-top: 20px;
 }
 
-.govuk-body-m + .govuk-heading-m, .govuk-body + .govuk-heading-m, .app-prose-scope p + .govuk-heading-m, .app-prose-scope .govuk-body-m + h3, .app-prose-scope .govuk-body + h3, .app-prose-scope p + h3,
+.govuk-body-m + .govuk-heading-m, .govuk-body + .govuk-heading-m, .app-prose-scope p + .govuk-heading-m, .govuk-body-m + .app-panel__heading, .govuk-body + .app-panel__heading, .app-prose-scope p + .app-panel__heading, .app-prose-scope .govuk-body-m + h3:not([class]), .app-prose-scope .govuk-body + h3:not([class]), .app-prose-scope p + h3:not([class]),
 .govuk-body-s + .govuk-heading-m,
-.app-prose-scope .govuk-body-s + h3,
+.govuk-body-s + .app-panel__heading,
+.app-prose-scope .govuk-body-s + h3:not([class]),
 .govuk-list + .govuk-heading-m,
 .app-prose-scope ul + .govuk-heading-m,
 .app-prose-scope ol + .govuk-heading-m,
-.app-prose-scope .govuk-list + h3,
-.app-prose-scope ul + h3,
-.app-prose-scope ol + h3,
+.govuk-list + .app-panel__heading,
+.app-prose-scope ul + .app-panel__heading,
+.app-prose-scope ol + .app-panel__heading,
+.app-prose-scope .govuk-list + h3:not([class]),
+.app-prose-scope ul + h3:not([class]),
+.app-prose-scope ol + h3:not([class]),
 .govuk-body-m + .govuk-heading-s,
 .govuk-body + .govuk-heading-s,
 .app-prose-scope p + .govuk-heading-s,
-.app-prose-scope .govuk-body-m + h4,
-.app-prose-scope .govuk-body + h4,
-.app-prose-scope p + h4,
+.app-prose-scope .govuk-body-m + h4:not([class]),
+.app-prose-scope .govuk-body + h4:not([class]),
+.app-prose-scope p + h4:not([class]),
 .govuk-body-s + .govuk-heading-s,
-.app-prose-scope .govuk-body-s + h4,
+.app-prose-scope .govuk-body-s + h4:not([class]),
 .govuk-list + .govuk-heading-s,
 .app-prose-scope ul + .govuk-heading-s,
 .app-prose-scope ol + .govuk-heading-s,
-.app-prose-scope .govuk-list + h4,
-.app-prose-scope ul + h4,
-.app-prose-scope ol + h4 {
+.app-prose-scope .govuk-list + h4:not([class]),
+.app-prose-scope ul + h4:not([class]),
+.app-prose-scope ol + h4:not([class]) {
   padding-top: 5px;
   padding-top: 10px;
 }
@@ -606,12 +610,12 @@
 }
 
 .govuk-width-container {
-  max-width: 1220px;
+  max-width: 1100px;
   margin-right: 15px;
   margin-left: 15px;
   margin-right: 30px;
   margin-left: 30px;
-  width: 1220px;
+  width: 1100px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -2742,7 +2746,7 @@
 .govuk-notification-banner__content > * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  max-width: 778.33333px;
+  max-width: 698.33333px;
 }
 
 .govuk-notification-banner__content > :last-child {
@@ -4766,12 +4770,12 @@
 
 .moj-cookie-banner__message {
   margin: 0;
-  max-width: 1220px;
+  max-width: 1100px;
   margin-right: 15px;
   margin-left: 15px;
   margin-right: 30px;
   margin-left: 30px;
-  width: 1220px;
+  width: 1100px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -5080,8 +5084,8 @@
 }
 
 .moj-header__container {
-  max-width: 1220px;
-  width: 1220px;
+  max-width: 1100px;
+  width: 1100px;
   margin: 0 15px;
   margin: 0 30px;
   position: relative;
@@ -5324,8 +5328,8 @@ span.moj-header__link:hover {
 }
 
 .moj-identity-bar__container {
-  max-width: 1220px;
-  width: 1220px;
+  max-width: 1100px;
+  width: 1100px;
   margin: 0 15px;
   margin: 0 30px;
   font-size: 0;
@@ -5908,8 +5912,8 @@ span.moj-header__link:hover {
 }
 
 .moj-primary-navigation__container {
-  max-width: 1220px;
-  width: 1220px;
+  max-width: 1100px;
+  width: 1100px;
   margin: 0 15px;
   margin: 0 30px;
   font-size: 0;
@@ -7007,8 +7011,8 @@ span.moj-header__link:hover {
 }
 
 .moj-width-container {
-  max-width: 1220px;
-  width: 1220px;
+  max-width: 1100px;
+  width: 1100px;
   margin: 0 15px;
   margin: 0 30px;
 }
@@ -7112,6 +7116,48 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   font-weight: bold;
 }
 
+.app-back-to-top {
+  display: none;
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.14286;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  display: block;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 30px;
+  margin-bottom: 30px;
+  padding-left: 15px;
+}
+
+.app-back-to-top a,
+.app-back-to-top a:link,
+.app-back-to-top a:visited {
+  color: #1d70b8;
+}
+
+.app-back-to-top a:focus {
+  color: #0b0c0c;
+  background-color: #ffdd00;
+  -webkit-box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+          box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+}
+
+.app-back-to-top__icon {
+  display: inline-block;
+  width: 0.8em;
+  height: 1em;
+  margin-top: -5px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
 .app-copy-button {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -7203,6 +7249,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   background-color: #ffdd00;
 }
 
+.app-prose-scope code:not([class*="language-"]) {
+  padding: 0 5px;
+  color: #c62950;
+  background-color: #f3f2f1;
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
 .app-prose-scope strong,
 .app-prose-scope b {
   font-weight: 700;
@@ -7260,6 +7314,141 @@ pre {
   padding: 15px;
   position: relative;
   overflow: auto;
+}
+
+/* ==========================================================================
+   #MASTHEAD
+   // Ideal line length (https://pearsonified.com/typography)
+   ========================================================================== */
+.app-masthead {
+  padding-top: 20px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  padding-bottom: 30px;
+  background-color: #1d70b8;
+  color: #ffffff;
+  margin-top: -1px;
+}
+
+.app-masthead__title {
+  margin-bottom: 20px;
+  margin-bottom: 30px;
+  color: #ffffff !important;
+  max-width: 1057px;
+}
+
+.app-masthead__description {
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.11111;
+  font-size: 24px;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  color: #ffffff !important;
+  margin-bottom: 0;
+  max-width: 793px;
+}
+
+/* ==========================================================================
+   #BUTTON
+   ========================================================================== */
+.app-masthead__button,
+.app-masthead__button:link,
+.app-masthead__button:visited {
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.11111;
+  font-size: 24px;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.5);
+  color: #1d70b8;
+  display: block;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.app-masthead__button:focus {
+  background-color: #ffdd00;
+  color: #0b0c0c;
+  -webkit-box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+          box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+}
+
+.app-masthead__button:hover {
+  color: #1d70b8;
+  background-color: #e8f1f8;
+}
+
+.app-masthead__button__icon {
+  margin-left: 5px;
+  margin-left: 10px;
+  vertical-align: middle;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+/* ==========================================================================
+   #PANEL
+   ========================================================================== */
+.app-panel {
+  margin-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-bottom: 30px;
+  padding: 15px;
+  padding: 15px;
+  background-color: #1d70b8;
+  color: #ffffff;
+}
+
+.app-panel__heading,
+.app-panel__body {
+  color: #ffffff;
+}
+
+.app-panel__body {
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  font-size: 19px;
+  font-size: 1.1875rem;
+  line-height: 1.31579;
+  margin-bottom: 0;
+}
+
+.app-panel__link:link, .app-panel__link:active, .app-panel__link:visited {
+  color: #ffffff;
+}
+
+.app-panel__link:hover {
+  color: #c5dff6;
+}
+
+.app-panel__link:focus {
+  color: #0b0c0c;
 }
 
 /* ==========================================================================

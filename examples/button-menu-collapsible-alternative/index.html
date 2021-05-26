@@ -17,7 +17,7 @@
 
     <!--[if lte IE 8]><link href="/moj-frontend/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="/moj-frontend/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
-    <title>Add another (example) - MOJ Design System</title>
+    <title>Button menu (example) - MOJ Design System</title>
 
     <script type="text/javascript" src="/moj-frontend/javascripts/vendor/jquery.js"></script>
     <script type="text/javascript" src="/moj-frontend/assets/javascript/all.js"></script>
@@ -27,7 +27,54 @@
 
     
   <div class="govuk-!-margin-6 govuk-!-margin-top-9">
-    <span class="moj-badge moj-badge--green">Complete</span>
+    <div style="float: right;">
+  
+
+<div class="moj-button-menu">
+  <div class="moj-button-menu__wrapper">
+      
+  
+
+
+  
+    
+  
+
+<a href="#" role="button" draggable="false" class="govuk-button moj-button-menu__item  " data-module="govuk-button">
+  First action
+</a>
+
+    
+      
+  
+
+
+  
+    
+  
+
+<a href="#" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary " data-module="govuk-button">
+  Second action
+</a>
+
+    
+      
+  
+
+
+  
+    
+  
+
+<a href="#" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary " data-module="govuk-button">
+  Third action
+</a>
+
+    </div>
+</div>
+
+
+</div>
 
   </div>
 
@@ -37,7 +84,13 @@
     </script>
     
   <script type="text/javascript">
-    
+    new MOJFrontend.ButtonMenu({
+  container: $(".moj-button-menu"),
+  mq: "(min-width: 200em)",
+  buttonText: "Actions",
+  menuClasses: "moj-button-menu__wrapper--right",
+});
+
   </script>
 
   </body>

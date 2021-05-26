@@ -1,5 +1,5 @@
-$moj-page-width: 1220px !default;
-$govuk-page-width: 1220px !default;
+$moj-page-width: 1100px !default;
+$govuk-page-width: 1100px !default;
 
 // GOV.UK Frontend
 @import "node_modules/govuk-frontend/govuk/all";
@@ -11,7 +11,10 @@ $govuk-page-width: 1220px !default;
 @import "node_modules/highlight.js/scss/github.scss";
 
 // Custom documentation components
+@import "./components/back-to-top";
 @import "./components/copy-button";
 @import "./components/example";
 @import "./components/markdown";
+@import "./components/masthead";
+@import "./components/panel";
 @import "./components/tabs";
