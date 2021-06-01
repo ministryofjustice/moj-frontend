@@ -1,0 +1,18 @@
+---
+layout: layouts/example.njk
+title: Rich text editor (example)
+---
+
+{%- from "govuk/components/textarea/macro.njk" import govukTextarea -%}
+
+{{ govukTextarea({
+  id: 'body',
+  name: 'body',
+  attributes: {
+    'data-module': 'moj-rich-text-editor'
+  },
+  label: {
+    text: 'Message',
+    classes: 'govuk-!-font-weight-bold'
+  }
+}) }}

@@ -1,0 +1,125 @@
+---
+layout: layouts/example.njk
+title: Timeline (example)
+---
+
+{%- from "moj/components/timeline/macro.njk" import mojTimeline -%}
+
+{%- set confirmationHtml %}
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non felis risus. Curabitur nec ante vitae felis ullamcorper tincidunt.</p>
+  <a class="govuk-button govuk-!-margin-bottom-0" href="#">Continue</a>
+{% endset -%}
+
+{%- set detailsHtml %}
+<details class="govuk-details govuk-!-margin-bottom-0">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Application details
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    Ut quam nunc, vulputate ac metus pharetra, posuere maximus velit. <a href="https://www.google.com">Etiam nec interdum velit.</a> Suspendisse molestie lectus in eros ornare
+  </div>
+</details>
+{% endset -%}
+
+{%- set listHtml %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li><a class="govuk-link" href="#">Item 1</li>
+    <li><a class="govuk-link" href="#">Item 2</li>
+  </ul>
+{% endset -%}
+
+{%- set documentsHtml %}
+  <ul class="moj-timeline__documents">
+    <li class="moj-timeline__document-item">
+      <a class="moj-timeline__document-link" href="#">Document 1</a>
+    </li>
+    <li class="moj-timeline__document-item">
+      <a class="moj-timeline__document-link" href="#">Document 1</a>
+    </li>
+  </ul>
+{% endset -%}
+
+{{ mojTimeline({
+  items: [
+    {
+      label: {
+        text: "Application requires confirmation"
+      },
+      html: confirmationHtml,
+      datetime: {
+        timestamp: "2019-06-14T14:01:00.000Z",
+        type: "datetime"
+      },
+      byline: {
+        text: "Joe Bloggs"
+      }
+    },
+    {
+      label: {
+        text:  "Application review in progress"
+      },
+      text: "Your application is being reviewed by one of our case workers.",
+      datetime: {
+        timestamp: "2019-06-07T12:32:00.000Z",
+        type: "datetime"
+      },
+      byline: {
+        text: "Caseworker 1"
+      }
+    },
+    {
+      label: {
+        text:  "Application received"
+      },
+      text: "Your application has been received – reference MOJ-1234-5678",
+      datetime: {
+        timestamp: "2019-06-06T09:12:00.000Z",
+        type: "datetime"
+      },
+      byline: {
+        text: "Caseworker 1"
+      }
+    },
+    {
+      label: {
+        text:  "Application submitted"
+      },
+      html: detailsHtml,
+      datetime: {
+        timestamp: "2019-05-28T10:45:00.000Z",
+        type: "datetime"
+      },
+      byline: {
+        text: "Joe Bloggs"
+      }
+    },
+    {
+      label: {
+        text:  "Documents uploaded"
+      },
+      html: documentsHtml,
+      datetime: {
+        timestamp: "2019-05-28T10:15:00.000Z",
+        type: "datetime"
+      },
+      byline: {
+        text: "Joe Bloggs"
+      }
+    },
+    {
+      label: {
+        text:  "Application started"
+      },
+      html: listHtml,
+      datetime: {
+        timestamp: "2019-05-21T13:15:00.000Z",
+        type: "datetime"
+      },
+      byline: {
+        text: "Joe Bloggs"
+      }
+    }
+  ]
+}) }}
