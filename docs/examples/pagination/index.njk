@@ -1,0 +1,33 @@
+---
+layout: layouts/example.njk
+title: Pagination (example)
+---
+
+{%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+
+{{ mojPagination({
+  results: {
+    from: 10,
+    to: 20,
+    count: 30
+  },
+  previous: {
+    text: 'Previous',
+    href: ''
+  },
+  next: {
+    text: 'Next',
+    href: ''
+  },
+  items: [{
+    text: '1',
+    href: '/page=1'
+  }, {
+    text: '2',
+    href: '/page=2',
+    selected: true
+  }, {
+    text: '3',
+    href: '/page=3'
+  }]
+}) }}

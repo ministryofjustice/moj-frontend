@@ -1,0 +1,40 @@
+---
+layout: layouts/example.njk
+title: Primary navigation with inline search (example)
+---
+
+{%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
+{%- from "moj/components/search/macro.njk" import mojSearch -%}
+
+{%- set inlineSearchHtml %}
+  {{ mojSearch({
+    classes: 'moj-search--ondark moj-search--inline',
+    input: {
+      id: 'search-1',
+      name: 'search-1'
+    },
+    label: {
+      text: 'Search',
+      classes: 'govuk-visually-hidden'
+    },
+    button: {
+      text: 'Search'
+    }
+  }) }}
+{% endset -%}
+
+{{ mojPrimaryNavigation({
+  label: 'Primary navigation',
+  items: [{
+    text: 'Nav item 1',
+    href: '#1',
+    active: true
+  }, {
+    text: 'Nav item 2',
+    href: '#2'
+  }, {
+    text: 'Nav item 3',
+    href: '#3'
+  }],
+  searchHtml: inlineSearchHtml
+}) }}

@@ -4,6 +4,7 @@ const hljs = require("highlight.js");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const matter = require("gray-matter");
+const mojFilters = require("./src/moj/filters/all");
 const nunjucks = require("nunjucks");
 const path = require("path");
 
@@ -15,7 +16,10 @@ module.exports = function (eleventyConfig) {
     "node_modules/@ministryofjustice/frontend/",
   ]);
 
-  Object.entries(eleventyConfig.nunjucksFilters).forEach(([name, callback]) => {
+  Object.entries({
+    ...eleventyConfig.nunjucksFilters,
+    ...mojFilters(),
+  }).forEach(([name, callback]) => {
     nunjucksEnv.addFilter(name, callback);
   });
 

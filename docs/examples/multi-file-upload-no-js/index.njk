@@ -1,0 +1,48 @@
+---
+layout: layouts/example.njk
+title: Multi file upload without JavaScript (example)
+---
+
+{%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
+{%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Upload files</h1>
+
+    <form action="" method="post" enctype="multipart/form-data">
+      {% set uploadHtml %}
+        {{ govukFileUpload({
+          id: "documents",
+          name: "documents",
+          classes: 'moj-multi-file-upload__input',
+          label: {
+            text: "Upload a file",
+            classes: 'govuk-label--m'
+          },
+          attributes: { multiple: '' }
+        }) }}
+
+        {{govukButton({
+          text: 'Upload file',
+          classes: 'govuk-button--secondary moj-multi-file-upload__button'
+        })}}
+      {% endset %}
+
+      {{ mojMultiFileUpload({
+        uploadedFiles: {
+          heading: { text: 'Files added' },
+          items: []
+        },
+        uploadHtml: uploadHtml
+      }) }}
+
+      {{govukButton({
+        text: 'Continue'
+      })}}
+    </form>
+  </div>
+</div>
