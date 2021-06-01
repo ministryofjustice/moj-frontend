@@ -20,6 +20,7 @@ gulp.task("build-docs-javascript", () => {
       "src/moj/helpers.js",
       "src/moj/all.js",
       "src/moj/components/**/*.js",
+      'node_modules/clipboard/dist/clipboard.min.js',
       "app/assets/javascript/**/*.js",
     ])
     .pipe(concat("all.js"))
