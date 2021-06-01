@@ -1,0 +1,12 @@
+---
+layout: layouts/example.njk
+title: Identity bar (example)
+---
+
+{%- from "moj/components/identity-bar/macro.njk" import mojIdentityBar -%}
+
+{{ mojIdentityBar({
+  title: {
+    html: "<b>Jane Wolenksy</b> and <b>Simon Wolensky</b>"
+  }
+}) }}

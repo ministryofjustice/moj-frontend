@@ -8,7 +8,7 @@
   <ul class="app-tabs__list" role="tablist">
     <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default-{{ id }}" role="tab" id="tab_html-default-{{ id }}" aria-controls="html-default-{{ id }}">HTML</a></li>
     <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default-{{ id }}" role="tab" id="tab_nunjucks-default-{{ id }}" aria-controls="nunjucks-default-{{ id }}">Nunjucks</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default-{{ id }}" role="tab" id="tab_j-default-{{ id }}" aria-controls="js-default-{{ id }}">JavaScript</a></li>
+    {% if jsCode %}<li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default-{{ id }}" role="tab" id="tab_j-default-{{ id }}" aria-controls="js-default-{{ id }}">JavaScript</a></li>{% endif %}
   </ul>
 
   <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default-{{ id }}" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default-{{ id }}"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
