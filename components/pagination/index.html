@@ -19,7 +19,7 @@
     <!--[if gt IE 8]><!--><link href="/moj-frontend/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
     <title>Pagination - MOJ Design System</title>
 
-    <script type="text/javascript" src="/moj-frontend/javascripts/vendor/jquery.js"></script>
+    <script type="text/javascript" src="/moj-frontend/assets/javascript/jquery.js"></script>
     <script type="text/javascript" src="/moj-frontend/assets/javascript/all.js"></script>
   </head>
   <body class="govuk-template__body">
@@ -424,15 +424,5 @@
       MOJFrontend.initAll();
     </script>
     
-  <script>
-    $('[data-module="app-tabs"]').each(function(e, el) {
-      new Tabs($(el));
-    });
-
-    $('[data-module="app-copy"]').each(function(e, el) {
-      (new Copy(el)).init();
-    });
-  </script>
-
   </body>
 </html>
