@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="shortcut icon" href="/moj-frontend/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon-167x167.png" sizes="167x167">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon.png">
+
+    <meta name="description" content="Design your service using MOJ styles, components and patterns">
+    <meta property="og:image" content="/moj-frontend/assets/images/moj-opengraph-image.png">
+
+    <!--[if lte IE 8]><link href="/moj-frontend/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
+    <!--[if gt IE 8]><!--><link href="/moj-frontend/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
+    <title>Multi file upload without JavaScript with errors (example) - MOJ Design System</title>
+
+    <script type="text/javascript" src="/moj-frontend/javascripts/vendor/jquery.js"></script>
+    <script type="text/javascript" src="/moj-frontend/assets/javascript/all.js"></script>
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+    
+  <div class="govuk-!-margin-6 govuk-!-margin-top-9">
+    <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+
+        <ul class="govuk-list govuk-error-summary__list">
+
+          <li>
+
+            <a href="#documents">name-of-file-1.pdf must be a png or gif</a>
+
+          </li>
+
+          <li>
+
+            <a href="#documents">name-of-file-2.pdf must be a png or gif</a>
+
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+    <h1 class="govuk-heading-xl">Upload files</h1>
+
+    <form action="" method="post" enctype="multipart/form-data">
+      
+
+      <div class="moj-multi-file-upload">
+  <div class="moj-multi-file__uploaded-files moj-hidden">
+    <h2 class="govuk-heading-m">Files added</h2>
+    <div class="govuk-summary-list moj-multi-file-upload__list">
+      
+    </div>
+  </div>
+
+  <div class="moj-multi-file-upload__upload">
+    
+        
+
+<div class="govuk-form-group govuk-form-group--error">
+  <label class="govuk-label govuk-label--m" for="documents">
+    Upload a file
+  </label>
+
+
+  
+  
+  <span id="documents-error" class="govuk-error-message">
+    <span class="govuk-visually-hidden">Error:</span> name-of-file-1.pdf must be a png or gif<br>name-of-file-2.pdf must be a png or gif
+  </span>
+
+  <input class="govuk-file-upload moj-multi-file-upload__input govuk-file-upload--error" id="documents" name="documents" type="file" aria-describedby="documents-error" multiple="">
+</div>
+
+
+        
+  
+
+
+  
+    
+  
+
+<button class="govuk-button govuk-button--secondary moj-multi-file-upload__button" data-module="govuk-button">
+  Upload file
+</button>
+
+      
+  </div>
+</div>
+
+      
+
+  
+    
+  
+
+<button class="govuk-button" data-module="govuk-button">
+  Continue
+</button>
+
+    </form>
+  </div>
+</div>
+
+  </div>
+
+
+    <script type="text/javascript">
+      MOJFrontend.initAll();
+    </script>
+    
+  <script type="text/javascript">
+    
+  </script>
+
+  </body>
+</html>

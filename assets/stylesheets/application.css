@@ -1173,7 +1173,7 @@
 }
 
 .govuk-width-container {
-  max-width: 1100px;
+  max-width: 1220px;
   margin-right: 15px;
   margin-left: 15px;
 }
@@ -1198,7 +1198,7 @@
   }
 }
 
-@media (min-width: 1160px) {
+@media (min-width: 1280px) {
   .govuk-width-container {
     margin-right: auto;
     margin-left: auto;
@@ -4435,7 +4435,7 @@
 .govuk-notification-banner__content > * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  max-width: 698.33333px;
+  max-width: 778.33333px;
 }
 
 .govuk-notification-banner__content > :last-child {
@@ -7654,7 +7654,7 @@
 
 .moj-cookie-banner__message {
   margin: 0;
-  max-width: 1100px;
+  max-width: 1220px;
   margin-right: 15px;
   margin-left: 15px;
 }
@@ -7679,7 +7679,7 @@
   }
 }
 
-@media (min-width: 1160px) {
+@media (min-width: 1280px) {
   .moj-cookie-banner__message {
     margin-right: auto;
     margin-left: auto;
@@ -8068,7 +8068,7 @@
 }
 
 .moj-header__container {
-  max-width: 1100px;
+  max-width: 1220px;
   margin: 0 15px;
   position: relative;
 }
@@ -8079,7 +8079,7 @@
   }
 }
 
-@media (min-width: 1160px) {
+@media (min-width: 1280px) {
   .moj-header__container {
     margin: 0 auto;
   }
@@ -8418,7 +8418,7 @@ span.moj-header__link:hover {
 }
 
 .moj-identity-bar__container {
-  max-width: 1100px;
+  max-width: 1220px;
   margin: 0 15px;
   font-size: 0;
   /* Hide whitespace between elements */
@@ -8432,7 +8432,7 @@ span.moj-header__link:hover {
   }
 }
 
-@media (min-width: 1160px) {
+@media (min-width: 1280px) {
   .moj-identity-bar__container {
     margin: 0 auto;
   }
@@ -9243,7 +9243,7 @@ span.moj-header__link:hover {
 }
 
 .moj-primary-navigation__container {
-  max-width: 1100px;
+  max-width: 1220px;
   margin: 0 15px;
   font-size: 0;
   text-align: justify;
@@ -9255,7 +9255,7 @@ span.moj-header__link:hover {
   }
 }
 
-@media (min-width: 1160px) {
+@media (min-width: 1280px) {
   .moj-primary-navigation__container {
     margin: 0 auto;
   }
@@ -10753,7 +10753,7 @@ span.moj-header__link:hover {
 }
 
 .moj-width-container {
-  max-width: 1100px;
+  max-width: 1220px;
   margin: 0 15px;
 }
 
@@ -10763,7 +10763,7 @@ span.moj-header__link:hover {
   }
 }
 
-@media (min-width: 1160px) {
+@media (min-width: 1280px) {
   .moj-width-container {
     margin: 0 auto;
   }
@@ -11545,7 +11545,6 @@ pre {
 }
 
 .app-tabs__panel p {
-  background-color: #ffffff;
   max-width: 100% !important;
   padding: 10px;
 }

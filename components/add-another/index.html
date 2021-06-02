@@ -231,7 +231,7 @@
     <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-add-another" role="tab" id="tab_nunjucks-default--examples-add-another" aria-controls="nunjucks-default--examples-add-another">Nunjucks</a></li>
     <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default--examples-add-another" role="tab" id="tab_j-default--examples-add-another" aria-controls="js-default--examples-add-another">JavaScript</a></li>
   </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-add-another" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-add-another"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-add-another" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-add-another">
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;moj-add-another&quot;</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-heading-l moj-add-another__heading&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;-1&quot;</span>&gt;</span>Add a person<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
@@ -337,7 +337,8 @@
 
 </code></pre>
   </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-add-another" data-module="app-copy" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-add-another"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-add-another" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-add-another">
+  <div data-module="app-copy" style="position:relative;">
 <pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/button/macro.njk&quot; import govukButton -%}</span><span class="xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/date-input/macro.njk&quot; import govukDateInput -%}</span><span class="xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/fieldset/macro.njk&quot; import govukFieldset -%}</span><span class="xml">
@@ -449,9 +450,9 @@
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </span></code></pre>
-<p>You can configure this component using the <a href="https://github.com/ministryofjustice/moj-frontend/tree/main/src/moj/components/add-another#arguments">Nunjucks macro arguments</a></p>
   </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default--examples-add-another" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default--examples-add-another"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+  </div>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default--examples-add-another" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default--examples-add-another">
 <pre><code class="language-js"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> MOJFrontend.MultiFileUpload !== <span class="hljs-string">&quot;undefined&quot;</span>) {
   <span class="hljs-keyword">new</span> MOJFrontend.MultiFileUpload({
     <span class="hljs-attr">container</span>: $(<span class="hljs-string">&quot;.moj-multi-file-upload&quot;</span>),
@@ -557,6 +558,10 @@
   <script>
     $('[data-module="app-tabs"]').each(function(e, el) {
       new Tabs($(el));
+    });
+
+    $('[data-module="app-copy"]').each(function(e, el) {
+      (new Copy(el)).init();
     });
   </script>
 

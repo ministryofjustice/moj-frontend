@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="shortcut icon" href="/moj-frontend/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon-167x167.png" sizes="167x167">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon.png">
+
+    <meta name="description" content="Design your service using MOJ styles, components and patterns">
+    <meta property="og:image" content="/moj-frontend/assets/images/moj-opengraph-image.png">
+
+    <!--[if lte IE 8]><link href="/moj-frontend/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
+    <!--[if gt IE 8]><!--><link href="/moj-frontend/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
+    <title>Identity bar with toggleable secondary menu (example) - MOJ Design System</title>
+
+    <script type="text/javascript" src="/moj-frontend/javascripts/vendor/jquery.js"></script>
+    <script type="text/javascript" src="/moj-frontend/assets/javascript/all.js"></script>
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+    
+  <div class="govuk-!-margin-6 govuk-!-margin-top-9">
+    
+
+<div class="moj-identity-bar">
+
+  <div class="moj-identity-bar__container">
+
+    <div class="moj-identity-bar__details">
+      
+        <span class="moj-identity-bar__title"><b>Jane Wolenksy</b> and <b>Simon Wolensky</b></span>
+      
+    </div>
+
+    
+      <div class="moj-identity-bar__actions">
+        
+          <div class="moj-identity-bar__menu">
+            
+
+<div class="moj-button-menu">
+  <div class="moj-button-menu__wrapper">
+      
+  
+
+
+  
+    
+  
+
+<button class="govuk-button moj-button-menu__item  " data-module="govuk-button">
+  Primary action
+</button>
+
+    </div>
+</div>
+
+
+          </div>
+        
+          <div class="moj-identity-bar__menu">
+            
+
+<div class="moj-button-menu">
+  <div class="moj-button-menu__wrapper">
+      
+  
+
+
+  
+    
+  
+
+<a href="#" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary " data-module="govuk-button">
+  Secondary action
+</a>
+
+    
+      
+  
+
+
+  
+    
+  
+
+<a href="#" role="button" draggable="false" class="govuk-button moj-button-menu__item govuk-button--secondary " data-module="govuk-button">
+  Tertiary action
+</a>
+
+    </div>
+</div>
+
+
+          </div>
+        
+      </div>
+    
+
+  </div>
+
+</div>
+
+  </div>
+
+
+    <script type="text/javascript">
+      MOJFrontend.initAll();
+    </script>
+    
+  <script type="text/javascript">
+    new MOJFrontend.ButtonMenu({
+  container: $(".moj-button-menu").eq(1),
+  mq: "(min-width: 1000em)",
+  buttonText: "More actions",
+  buttonClasses:
+    "govuk-button--secondary moj-button-menu__toggle-button--secondary",
+  menuClasses: "moj-button-menu__wrapper--right",
+});
+
+  </script>
+
+  </body>
+</html>

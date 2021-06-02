@@ -229,9 +229,8 @@
   <ul class="app-tabs__list" role="tablist">
     <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-button-menu" role="tab" id="tab_html-default--examples-button-menu" aria-controls="html-default--examples-button-menu">HTML</a></li>
     <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-button-menu" role="tab" id="tab_nunjucks-default--examples-button-menu" aria-controls="nunjucks-default--examples-button-menu">Nunjucks</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default--examples-button-menu" role="tab" id="tab_j-default--examples-button-menu" aria-controls="js-default--examples-button-menu">JavaScript</a></li>
   </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-button-menu" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-button-menu"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-button-menu" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-button-menu">
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-button-menu&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-button-menu__wrapper&quot;</span>&gt;</span>
 
@@ -252,8 +251,131 @@
 
 </code></pre>
   </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-button-menu" data-module="app-copy" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-button-menu"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
-<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/button-menu/macro.njk&quot; import mojButtonMenu -%}</span><span class="xml">
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-button-menu" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-button-menu">
+  <details class="govuk-details govuk-!-padding-3" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Nunjucks macro options
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+<h3 id="container">Container</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td>array</td>
+<td>Yes</td>
+<td>An array of button item objects. See <a href="#items">items</a>.</td>
+</tr>
+<tr>
+<td>buttonClasses</td>
+<td>String</td>
+<td>No</td>
+<td>Classes to add to the button items.</td>
+</tr>
+<tr>
+<td>attributes</td>
+<td>Object</td>
+<td>No</td>
+<td>HTML attributes (for example data attributes) to add to the button group.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="items">Items</h3>
+<p>See the <a href="https://design-system.service.gov.uk/components/button/">button component</a> in the GOV.UK Design System for more details.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>element</td>
+<td>String</td>
+<td>No</td>
+<td>Whether to use an <code>input</code>, <code>button</code> or <code>a</code> element to create the button. In most cases you will not need to set this as it will be configured automatically if you use <code>href</code> or <code>html</code>.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>String</td>
+<td>Yes</td>
+<td>If <code>html</code> is set, this is not required. Text for the button or link. If <code>html</code> is provided, the <code>text</code> argument will be ignored and <code>element</code> will be automatically set to <code>button</code> unless <code>href</code> is also set, or it has already been defined. This argument has no effect if <code>element</code> is set to <code>input</code>.</td>
+</tr>
+<tr>
+<td>html</td>
+<td>String</td>
+<td>Yes</td>
+<td>If <code>text</code> is set, this is not required. HTML for the button or link. If <code>html</code> is provided, the <code>text</code> argument will be ignored and element will be automatically set to <code>button</code> unless <code>href</code> is also set, or it has already been defined. This argument has no effect if <code>element</code> is set to <code>input</code>.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Yes</td>
+<td>Name for the <code>input</code> or <code>button</code>. This has no effect on <code>a</code> elements.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>Yes</td>
+<td>Type of <code>input</code> or <code>button</code>. The options are <code>button</code>, <code>submit</code> or <code>reset</code>. Defaults to <code>submit</code>. This has no effect on <code>a</code> elements.</td>
+</tr>
+<tr>
+<td>value</td>
+<td>String</td>
+<td>Yes</td>
+<td>Value for the <code>button</code> tag. This has no effect on <code>a</code> or <code>input</code> elements.</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>Boolean</td>
+<td>No</td>
+<td>Whether the button should be disabled. For button and input elements, <code>disabled</code> and <code>aria-disabled</code> attributes will be set automatically.</td>
+</tr>
+<tr>
+<td>href</td>
+<td>String</td>
+<td>No</td>
+<td>The URL that the button should link to. If this is set, <code>element</code> will be automatically set to <code>a</code> if it has not already been defined.</td>
+</tr>
+<tr>
+<td>classes</td>
+<td>String</td>
+<td>No</td>
+<td>Classes to add to the button component.</td>
+</tr>
+<tr>
+<td>attributes</td>
+<td>Object</td>
+<td>No</td>
+<td>HTML attributes (for example data attributes) to add to the button component.</td>
+</tr>
+<tr>
+<td>preventDoubleClick</td>
+<td>Boolean</td>
+<td>No</td>
+<td>Prevent accidental double clicks on submit buttons from submitting forms multiple times.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Warning: If you’re using Nunjucks macros in production be aware that using HTML arguments, or ones ending with <code>.html</code> can be at risk from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting</a> attacks. More information about security vulnerabilities can be found in the <a href="https://mozilla.github.io/nunjucks/api.html#user-defined-templates-warning">Nunjucks documentation</a>.</em></p>
+<p></div></p>
+  </details>
+  <div data-module="app-copy" style="position:relative;">
+<pre><code class="language-jinja"><span class="xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/button-menu/macro.njk&quot; import mojButtonMenu -%}</span><span class="xml">
 
 </span><span class="hljs-template-variable">{{ mojButtonMenu({
   items: [{
@@ -270,7 +392,7 @@
   }]
 }) }}</span><span class="xml">
 </span></code></pre>
-<p>You can configure this component using the <a href="https://github.com/ministryofjustice/moj-frontend/tree/main/src/moj/components/add-another#arguments">Nunjucks macro arguments</a></p>
+  </div>
   </div>
 </div>
 <h2 id="when-to-use-this-component">When to use this component</h2>
@@ -284,7 +406,7 @@
 <li>is aligned right or left</li>
 <li>is coloured green (primary) or grey (secondary)</li>
 </ul>
-<h3>Left aligned grey toggle menu</h3>
+<h3 id="left-aligned-grey-toggle-menu">Left aligned grey toggle menu</h3>
 <p>Use the grey clour when it's not the main action the user needs to take.</p>
 <div class="app-example">
   <span class="app-example__new-window">
@@ -298,7 +420,7 @@
     <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-button-menu-collapsible" role="tab" id="tab_nunjucks-default--examples-button-menu-collapsible" aria-controls="nunjucks-default--examples-button-menu-collapsible">Nunjucks</a></li>
     <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default--examples-button-menu-collapsible" role="tab" id="tab_j-default--examples-button-menu-collapsible" aria-controls="js-default--examples-button-menu-collapsible">JavaScript</a></li>
   </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-button-menu-collapsible" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-button-menu-collapsible"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-button-menu-collapsible" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-button-menu-collapsible">
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-button-menu&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-button-menu__wrapper&quot;</span>&gt;</span>
 
@@ -319,8 +441,131 @@
 
 </code></pre>
   </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-button-menu-collapsible" data-module="app-copy" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-button-menu-collapsible"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
-<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/button-menu/macro.njk&quot; import mojButtonMenu -%}</span><span class="xml">
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-button-menu-collapsible" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-button-menu-collapsible">
+  <details class="govuk-details govuk-!-padding-3" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Nunjucks macro options
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+<h3 id="container-1">Container</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td>array</td>
+<td>Yes</td>
+<td>An array of button item objects. See <a href="#items">items</a>.</td>
+</tr>
+<tr>
+<td>buttonClasses</td>
+<td>String</td>
+<td>No</td>
+<td>Classes to add to the button items.</td>
+</tr>
+<tr>
+<td>attributes</td>
+<td>Object</td>
+<td>No</td>
+<td>HTML attributes (for example data attributes) to add to the button group.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="items-1">Items</h3>
+<p>See the <a href="https://design-system.service.gov.uk/components/button/">button component</a> in the GOV.UK Design System for more details.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>element</td>
+<td>String</td>
+<td>No</td>
+<td>Whether to use an <code>input</code>, <code>button</code> or <code>a</code> element to create the button. In most cases you will not need to set this as it will be configured automatically if you use <code>href</code> or <code>html</code>.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>String</td>
+<td>Yes</td>
+<td>If <code>html</code> is set, this is not required. Text for the button or link. If <code>html</code> is provided, the <code>text</code> argument will be ignored and <code>element</code> will be automatically set to <code>button</code> unless <code>href</code> is also set, or it has already been defined. This argument has no effect if <code>element</code> is set to <code>input</code>.</td>
+</tr>
+<tr>
+<td>html</td>
+<td>String</td>
+<td>Yes</td>
+<td>If <code>text</code> is set, this is not required. HTML for the button or link. If <code>html</code> is provided, the <code>text</code> argument will be ignored and element will be automatically set to <code>button</code> unless <code>href</code> is also set, or it has already been defined. This argument has no effect if <code>element</code> is set to <code>input</code>.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Yes</td>
+<td>Name for the <code>input</code> or <code>button</code>. This has no effect on <code>a</code> elements.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>Yes</td>
+<td>Type of <code>input</code> or <code>button</code>. The options are <code>button</code>, <code>submit</code> or <code>reset</code>. Defaults to <code>submit</code>. This has no effect on <code>a</code> elements.</td>
+</tr>
+<tr>
+<td>value</td>
+<td>String</td>
+<td>Yes</td>
+<td>Value for the <code>button</code> tag. This has no effect on <code>a</code> or <code>input</code> elements.</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>Boolean</td>
+<td>No</td>
+<td>Whether the button should be disabled. For button and input elements, <code>disabled</code> and <code>aria-disabled</code> attributes will be set automatically.</td>
+</tr>
+<tr>
+<td>href</td>
+<td>String</td>
+<td>No</td>
+<td>The URL that the button should link to. If this is set, <code>element</code> will be automatically set to <code>a</code> if it has not already been defined.</td>
+</tr>
+<tr>
+<td>classes</td>
+<td>String</td>
+<td>No</td>
+<td>Classes to add to the button component.</td>
+</tr>
+<tr>
+<td>attributes</td>
+<td>Object</td>
+<td>No</td>
+<td>HTML attributes (for example data attributes) to add to the button component.</td>
+</tr>
+<tr>
+<td>preventDoubleClick</td>
+<td>Boolean</td>
+<td>No</td>
+<td>Prevent accidental double clicks on submit buttons from submitting forms multiple times.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Warning: If you’re using Nunjucks macros in production be aware that using HTML arguments, or ones ending with <code>.html</code> can be at risk from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting</a> attacks. More information about security vulnerabilities can be found in the <a href="https://mozilla.github.io/nunjucks/api.html#user-defined-templates-warning">Nunjucks documentation</a>.</em></p>
+<p></div></p>
+  </details>
+  <div data-module="app-copy" style="position:relative;">
+<pre><code class="language-jinja"><span class="xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/button-menu/macro.njk&quot; import mojButtonMenu -%}</span><span class="xml">
 
 </span><span class="hljs-template-variable">{{ mojButtonMenu({
   items: [
@@ -342,9 +587,9 @@
   ]
 }) }}</span><span class="xml">
 </span></code></pre>
-<p>You can configure this component using the <a href="https://github.com/ministryofjustice/moj-frontend/tree/main/src/moj/components/add-another#arguments">Nunjucks macro arguments</a></p>
   </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default--examples-button-menu-collapsible" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default--examples-button-menu-collapsible"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+  </div>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default--examples-button-menu-collapsible" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default--examples-button-menu-collapsible">
 <pre><code class="language-js"><span class="hljs-keyword">new</span> MOJFrontend.ButtonMenu({
   <span class="hljs-attr">container</span>: $(<span class="hljs-string">&quot;.moj-button-menu&quot;</span>),
   <span class="hljs-attr">mq</span>: <span class="hljs-string">&quot;(min-width: 200em)&quot;</span>,
@@ -355,7 +600,7 @@
 </code></pre>
   </div>
 </div>
-<h3>Right aligned green toggle menu</h3>
+<h3 id="right-aligned-green-toggle-menu">Right aligned green toggle menu</h3>
 <p>Use the green colour when it's the main action the user needs to take.</p>
 <div class="app-example">
   <span class="app-example__new-window">
@@ -369,7 +614,7 @@
     <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-button-menu-collapsible-alternative" role="tab" id="tab_nunjucks-default--examples-button-menu-collapsible-alternative" aria-controls="nunjucks-default--examples-button-menu-collapsible-alternative">Nunjucks</a></li>
     <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default--examples-button-menu-collapsible-alternative" role="tab" id="tab_j-default--examples-button-menu-collapsible-alternative" aria-controls="js-default--examples-button-menu-collapsible-alternative">JavaScript</a></li>
   </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-button-menu-collapsible-alternative" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-button-menu-collapsible-alternative"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-button-menu-collapsible-alternative" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-button-menu-collapsible-alternative">
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;float: right;&quot;</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-button-menu&quot;</span>&gt;</span>
@@ -394,8 +639,131 @@
 
 </code></pre>
   </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-button-menu-collapsible-alternative" data-module="app-copy" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-button-menu-collapsible-alternative"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
-<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/button-menu/macro.njk&quot; import mojButtonMenu -%}</span><span class="xml">
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-button-menu-collapsible-alternative" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-button-menu-collapsible-alternative">
+  <details class="govuk-details govuk-!-padding-3" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Nunjucks macro options
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+<h3 id="container-2">Container</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td>array</td>
+<td>Yes</td>
+<td>An array of button item objects. See <a href="#items">items</a>.</td>
+</tr>
+<tr>
+<td>buttonClasses</td>
+<td>String</td>
+<td>No</td>
+<td>Classes to add to the button items.</td>
+</tr>
+<tr>
+<td>attributes</td>
+<td>Object</td>
+<td>No</td>
+<td>HTML attributes (for example data attributes) to add to the button group.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="items-2">Items</h3>
+<p>See the <a href="https://design-system.service.gov.uk/components/button/">button component</a> in the GOV.UK Design System for more details.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>element</td>
+<td>String</td>
+<td>No</td>
+<td>Whether to use an <code>input</code>, <code>button</code> or <code>a</code> element to create the button. In most cases you will not need to set this as it will be configured automatically if you use <code>href</code> or <code>html</code>.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>String</td>
+<td>Yes</td>
+<td>If <code>html</code> is set, this is not required. Text for the button or link. If <code>html</code> is provided, the <code>text</code> argument will be ignored and <code>element</code> will be automatically set to <code>button</code> unless <code>href</code> is also set, or it has already been defined. This argument has no effect if <code>element</code> is set to <code>input</code>.</td>
+</tr>
+<tr>
+<td>html</td>
+<td>String</td>
+<td>Yes</td>
+<td>If <code>text</code> is set, this is not required. HTML for the button or link. If <code>html</code> is provided, the <code>text</code> argument will be ignored and element will be automatically set to <code>button</code> unless <code>href</code> is also set, or it has already been defined. This argument has no effect if <code>element</code> is set to <code>input</code>.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Yes</td>
+<td>Name for the <code>input</code> or <code>button</code>. This has no effect on <code>a</code> elements.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>Yes</td>
+<td>Type of <code>input</code> or <code>button</code>. The options are <code>button</code>, <code>submit</code> or <code>reset</code>. Defaults to <code>submit</code>. This has no effect on <code>a</code> elements.</td>
+</tr>
+<tr>
+<td>value</td>
+<td>String</td>
+<td>Yes</td>
+<td>Value for the <code>button</code> tag. This has no effect on <code>a</code> or <code>input</code> elements.</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>Boolean</td>
+<td>No</td>
+<td>Whether the button should be disabled. For button and input elements, <code>disabled</code> and <code>aria-disabled</code> attributes will be set automatically.</td>
+</tr>
+<tr>
+<td>href</td>
+<td>String</td>
+<td>No</td>
+<td>The URL that the button should link to. If this is set, <code>element</code> will be automatically set to <code>a</code> if it has not already been defined.</td>
+</tr>
+<tr>
+<td>classes</td>
+<td>String</td>
+<td>No</td>
+<td>Classes to add to the button component.</td>
+</tr>
+<tr>
+<td>attributes</td>
+<td>Object</td>
+<td>No</td>
+<td>HTML attributes (for example data attributes) to add to the button component.</td>
+</tr>
+<tr>
+<td>preventDoubleClick</td>
+<td>Boolean</td>
+<td>No</td>
+<td>Prevent accidental double clicks on submit buttons from submitting forms multiple times.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Warning: If you’re using Nunjucks macros in production be aware that using HTML arguments, or ones ending with <code>.html</code> can be at risk from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting</a> attacks. More information about security vulnerabilities can be found in the <a href="https://mozilla.github.io/nunjucks/api.html#user-defined-templates-warning">Nunjucks documentation</a>.</em></p>
+<p></div></p>
+  </details>
+  <div data-module="app-copy" style="position:relative;">
+<pre><code class="language-jinja"><span class="xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/button-menu/macro.njk&quot; import mojButtonMenu -%}</span><span class="xml">
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;float: right;&quot;</span>&gt;</span>
   </span><span class="hljs-template-variable">{{ mojButtonMenu({
@@ -414,9 +782,9 @@
   }) }}</span><span class="xml">
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </span></code></pre>
-<p>You can configure this component using the <a href="https://github.com/ministryofjustice/moj-frontend/tree/main/src/moj/components/add-another#arguments">Nunjucks macro arguments</a></p>
   </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default--examples-button-menu-collapsible-alternative" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default--examples-button-menu-collapsible-alternative"><button class="app-copy-button js-copy-button" aria-live="assertive">Copy code</button>
+  </div>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default--examples-button-menu-collapsible-alternative" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default--examples-button-menu-collapsible-alternative">
 <pre><code class="language-js"><span class="hljs-keyword">new</span> MOJFrontend.ButtonMenu({
   <span class="hljs-attr">container</span>: $(<span class="hljs-string">&quot;.moj-button-menu&quot;</span>),
   <span class="hljs-attr">mq</span>: <span class="hljs-string">&quot;(min-width: 200em)&quot;</span>,
@@ -510,6 +878,10 @@
   <script>
     $('[data-module="app-tabs"]').each(function(e, el) {
       new Tabs($(el));
+    });
+
+    $('[data-module="app-copy"]').each(function(e, el) {
+      (new Copy(el)).init();
     });
   </script>
 

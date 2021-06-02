@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="shortcut icon" href="/moj-frontend/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon-167x167.png" sizes="167x167">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon.png">
+
+    <meta name="description" content="Design your service using MOJ styles, components and patterns">
+    <meta property="og:image" content="/moj-frontend/assets/images/moj-opengraph-image.png">
+
+    <!--[if lte IE 8]><link href="/moj-frontend/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
+    <!--[if gt IE 8]><!--><link href="/moj-frontend/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
+    <title>Pagination (example) - MOJ Design System</title>
+
+    <script type="text/javascript" src="/moj-frontend/javascripts/vendor/jquery.js"></script>
+    <script type="text/javascript" src="/moj-frontend/assets/javascript/all.js"></script>
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+    
+  <div class="govuk-!-margin-6 govuk-!-margin-top-9">
+    <nav class="moj-pagination" id="pagination-label">
+
+  <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
+
+  <ul class="moj-pagination__list">
+      <li class="moj-pagination__item  moj-pagination__item--prev">
+        <a class="moj-pagination__link" href="">Previous<span class="govuk-visually-hidden"> set of pages</span></a>
+      </li>
+    
+          <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=1">1</a></li>
+        
+          <li class="moj-pagination__item moj-pagination__item--active">2</li>
+        
+          <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=3">3</a></li>
+        
+      <li class="moj-pagination__item  moj-pagination__item--next">
+        <a class="moj-pagination__link" href="">Next<span class="govuk-visually-hidden"> set of pages</span></a>
+      </li>
+    </ul>
+    <p class="moj-pagination__results">Showing <b>10</b> to <b>20</b> of <b>30</b> results</p>
+  </nav>
+
+  </div>
+
+
+    <script type="text/javascript">
+      MOJFrontend.initAll();
+    </script>
+    
+  <script type="text/javascript">
+    
+  </script>
+
+  </body>
+</html>

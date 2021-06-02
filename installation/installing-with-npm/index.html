@@ -32,7 +32,7 @@
 </ol>
 <pre><code class="language-CSS"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;node_modules/@ministryofjustice/frontend/moj/components/button/button&quot;</span>;
 </code></pre>
-<h3>Optional: Resolving SCSS import paths</h3>
+<h3 id="optional%3A-resolving-scss-import-paths">Optional: Resolving SCSS import paths</h3>
 <p>If you wish to resolve the above <code>@import</code> paths in your build (in order to avoid prefixing paths with <code>node_modules</code>), you should add <code>node_modules</code> to
 your <a href="https://github.com/sass/node-sass#includepaths">Sass include paths</a> (in Ruby, they should be added to <a href="http://guides.rubyonrails.org/asset_pipeline.html#search-paths">assets paths</a>).</p>
 <p>For example, if your project uses Gulp, you would add the Sass include paths to your Gulp configuration file (for example <code>gulpfile.js</code>) with <a href="https://www.npmjs.com/package/gulp-sass">gulp-sass</a>. Below is an example:</p>
@@ -52,12 +52,12 @@ to include add <code>includePaths</code> to it.</p>
 <h2 id="importing-assets">Importing assets</h2>
 <p>In order to import MOJ Frontend images and fonts to your project, you should configure your application to reference or copy the relevant MOJ Frontend assets.</p>
 <p>Follow either <a href="#recommended-solution">Recommended solution</a> or <a href="#alternative-solution">Alternative solution</a>.</p>
-<h3>Recommended solution</h3>
+<h3 id="recommended-solution">Recommended solution</h3>
 <p>Make <code>/node_modules/@ministryofjustice/frontend/moj/assets</code> available to your project by routing requests for your assets folder there.</p>
 <p>For example, if your project uses <a href="https://expressjs.com/">express.js</a>, below is a code sample you could add to your configuration:</p>
 <pre><code class="language-JS">app.use(<span class="hljs-string">&#x27;/assets&#x27;</span>, express.static(path.join(__dirname, <span class="hljs-string">&#x27;/node_modules/@ministryofjustice/frontend/moj/assets&#x27;</span>)))
 </code></pre>
-<h3>Alternative solution</h3>
+<h3 id="alternative-solution">Alternative solution</h3>
 <p>Manually copy the images and fonts from <code>/node_modules/@ministryofjustice/frontend/moj/assets</code> into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the MOJ Frontend assets stay up-to-date.</p>
 <p>The default paths used for assets are <code>assets/images</code> and <code>assets/fonts</code>. <strong>If your asset folders follow this structure, you will not need to complete the following steps.</strong></p>
 <p>To use different asset paths, set <code>$govuk-assets-path</code>, <code>$govuk-images-path</code> and <code>$govuk-fonts-path</code> in your project Sass file to point to the relevant directories in your project (this will override the defaults set in <code>/node_modules/@ministryofjustice/frontend/moj/settings/_assets.scss</code>). Make sure you do this in Sass before importing <code>@ministryofjustice/frontend</code> into your project - see <a href="#importing-styles">Importing styles</a>.</p>
@@ -92,7 +92,7 @@ to include add <code>includePaths</code> to it.</p>
 <p>Some of the JavaScript included in MOJ Frontend improves the usability and accessibility of the components.</p>
 <p>You should include or import MOJ Frontend JavaScript, and then initialise the appropriate script in your application to ensure that all users can use it successfully.</p>
 <p>Note that MOJ Frontend does not initialise any scripts by default; all scripts must be initialised in order for them to work.</p>
-<h3>Option 1: Include JavaScript</h3>
+<h3 id="option-1%3A-include-javascript">Option 1: Include JavaScript</h3>
 <p>Include the node_modules/ministryofjustice/moj-frontend/moj/all.js script on your page. You might wish to copy the file into your project or reference it from node_modules.</p>
 <p>JavaScript in MOJ Frontend requires HTML to be parsed first by the browser before it is initialised. Because of this, make sure you include the script before the closing <code>&lt;/body&gt;</code> tag. Including the script elsewhere will stop components from functioning or displaying correctly.</p>
 <pre><code class="language-html">    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;path-to-assets/moj-frontend/moj/all.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
@@ -107,7 +107,7 @@ to include add <code>includePaths</code> to it.</p>
     <span class="hljs-attr">buttonText</span>: <span class="hljs-string">&#x27;Actions&#x27;</span>
   });
 </code></pre>
-<h3>Option 2: Import JavaScript</h3>
+<h3 id="option-2%3A-import-javascript">Option 2: Import JavaScript</h3>
 <p>If you're using a bundler such as Webpack, use the import syntax to import all components:</p>
 <pre><code class="language-js"><span class="hljs-keyword">import</span> MOJFrontend <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;path/to/all.js&#x27;</span>;
 </code></pre>
