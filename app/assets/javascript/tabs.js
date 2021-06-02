@@ -144,4 +144,4 @@ Tabs.prototype.onCloseButtonClick = function (e) {
   this.tabs.first().focus();
 };
 
-window.Tabs = Tabs;
+export default Tabs;

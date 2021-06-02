@@ -1,3 +1,5 @@
+import ClipboardJS from "clipboard";
+
 function Copy($module) {
   this.$module = $module;
 }
@@ -37,4 +39,4 @@ Copy.prototype.copyAction = function () {
   }
 };
 
-window.Copy = Copy;
+export default Copy;

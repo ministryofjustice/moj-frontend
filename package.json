@@ -6,13 +6,15 @@
     "/package"
   ],
   "scripts": {
-    "start": "gulp",
-    "test": "npm run ci:testsass",
-    "build:docs": "gulp generate-assets && eleventy --input=./docs --output=public",
+    "build:docs": "webpack && eleventy --input=./docs --output=public",
     "build:package": "node bin/check-nvmrc.js && gulp build:package",
     "ci:testsass": "node-sass -q test.scss >/dev/null && echo 'ok'",
     "ci:release": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --debug",
-    "ci:dryrun": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --dry-run"
+    "ci:dryrun": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --dry-run",
+    "start": "npm-run-all --parallel watch:*",
+    "test": "npm run ci:testsass",
+    "watch:11ty": "eleventy --input=./docs --output=public --serve --watch",
+    "watch:webpack": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -59,19 +61,29 @@
     "require-dir": "^1.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@ministryofjustice/frontend": "file:./package",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/npm": "^7.1.1",
+    "babel-loader": "^8.2.2",
     "commitizen": "^4.2.3",
+    "copy-webpack-plugin": "^9.0.0",
+    "css-loader": "^5.2.6",
     "cz-conventional-changelog": "^3.3.0",
     "highlight.js": "^10.7.2",
     "husky": "^4.3.8",
     "js-beautify": "^1.13.13",
     "markdown-it-anchor": "^7.1.0",
-    "semantic-release": "^17.4.2"
+    "mini-css-extract-plugin": "^1.6.0",
+    "npm-run-all": "^4.1.5",
+    "sass-loader": "^12.0.0",
+    "semantic-release": "^17.4.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0"
   },
   "husky": {
     "hooks": {
