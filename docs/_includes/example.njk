@@ -18,13 +18,31 @@
 ```
   </div>
 
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default-{{ id }}" data-module="app-copy" role="tabpanel" aria-labelledby="tab_nunjucks-default-{{ id }}">
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default-{{ id }}" role="tabpanel" aria-labelledby="tab_nunjucks-default-{{ id }}">
+
+{% if arguments %}
+  <details class="govuk-details govuk-!-padding-3" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Nunjucks macro options
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+
+{% include "./arguments/" + arguments + ".md" %}
+
+    </div>
+  </details>
+{% endif %}
+
+  <div data-module="app-copy" style="position:relative;">
 
 ```jinja
 {{ nunjucksCode | safe }}
 ```
 
-<p>You can configure this component using the <a href="https://github.com/ministryofjustice/moj-frontend/tree/main/src/moj/components/add-another#arguments">Nunjucks macro arguments</a></p>
+  </div>
+
   </div>
 
 {% if jsCode %}

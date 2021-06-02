@@ -34,19 +34,19 @@ module.exports = function (eleventyConfig) {
     })
       .disable("code")
       .use(markdownItAnchor, {
-        level: [1, 2],
+        level: [1, 2, 3, 4],
       })
   );
 
   eleventyConfig.addShortcode("example", function (exampleHref, height) {
-    const nunjucksCode = matter(
+    const { data, content: nunjucksCode } = matter(
       fs
         .readFileSync(
           path.join(__dirname, "docs", exampleHref, "index.njk"),
           "utf8"
         )
         .trim()
-    ).content;
+    );
 
     const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode);
 
@@ -70,6 +70,7 @@ module.exports = function (eleventyConfig) {
     return nunjucksEnv.render("example.njk", {
       href: exampleHref,
       id: exampleHref.replace(/\//g, "-"),
+      arguments: data.arguments,
       height,
       nunjucksCode,
       htmlCode,
