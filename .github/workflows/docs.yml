@@ -1,6 +1,6 @@
 name: Build and Deploy
 on:
-  pull_request:
+  push:
     branches:
       - main
     paths:
