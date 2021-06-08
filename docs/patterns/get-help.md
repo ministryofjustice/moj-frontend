@@ -5,7 +5,7 @@ title: Get help
 
 Help users get help from within the digital service.
 
-{% example "/examples/get-help", 250 %}
+{% example "/examples/patterns/get-help", 250 %}
 
 ## When to use this pattern
 

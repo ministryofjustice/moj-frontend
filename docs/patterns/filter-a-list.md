@@ -5,7 +5,7 @@ title: Filter a list
 
 Use this pattern to let users filter a list of items.
 
-{% example "/examples/filter-a-list-pattern", 1050 %}
+{% example "/examples/patterns/filter-a-list", 1050 %}
 
 ## When to use this pattern
 
