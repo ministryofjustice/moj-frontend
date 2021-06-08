@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="shortcut icon" href="/moj-frontend/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon-167x167.png" sizes="167x167">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="/moj-frontend/assets/images/moj-apple-touch-icon.png">
+
+    <meta name="description" content="Design your service using MOJ styles, components and patterns">
+    <meta property="og:image" content="/moj-frontend/assets/images/moj-opengraph-image.png">
+
+    <!--[if lte IE 8]><link href="/moj-frontend/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
+    <!--[if gt IE 8]><!--><link href="/moj-frontend/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
+    <title>Filter a list pattern (example) - MOJ Design System</title>
+
+    <script type="text/javascript" src="/moj-frontend/assets/javascript/jquery.js"></script>
+    <script type="text/javascript" src="/moj-frontend/assets/javascript/all.js"></script>
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+    
+  <div class="govuk-!-margin-6 govuk-!-margin-top-9">
+    
+
+
+<div class="moj-filter-layout">
+
+  <div class="moj-filter-layout__filter">
+
+    
+
+<div class="moj-filter">
+
+  <div class="moj-filter__header">
+
+    <div class="moj-filter__header-title">
+      <h2 class="govuk-heading-m">Filter</h2>
+    </div>
+
+    <div class="moj-filter__header-action">
+      
+    </div>
+
+  </div>
+
+  <div class="moj-filter__content">
+
+    
+
+      <div class="moj-filter__selected">
+
+        <div class="moj-filter__selected-heading">
+
+          <div class="moj-filter__heading-title">
+            <h2 class="govuk-heading-m">Selected filters</h2>
+          </div>
+
+          <div class="moj-filter__heading-action">
+            <p><a class="govuk-link govuk-link--no-visited-state" href="">Clear filters</a></p>
+          </div>
+
+        </div>
+
+        
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Colour</h3>
+
+          <ul class="moj-filter-tags">
+            
+              <li><a class="moj-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span> Blue</a></li>
+            
+              <li><a class="moj-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span> Yellow</a></li>
+            
+          </ul>
+        
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Status</h3>
+
+          <ul class="moj-filter-tags">
+            
+              <li><a class="moj-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span> Complete</a></li>
+            
+          </ul>
+        
+
+      </div>
+    
+
+    <div class="moj-filter__options">
+
+      
+
+  
+    
+  
+
+<button class="govuk-button" data-module="govuk-button">
+  Apply filters
+</button>
+
+
+      
+
+  
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--m" for="keywords">
+    Keywords
+  </label>
+
+<input class="govuk-input" id="keywords" name="keywords" type="text">
+</div>
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+<div class="govuk-form-group">
+
+  <fieldset class="govuk-fieldset">
+  
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+  
+    Colour
+  
+  </legend>
+  
+
+  <div class="govuk-checkboxes govuk-checkboxes--small">
+    
+      
+          
+        
+        
+        
+        
+        
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="type" name="type" type="checkbox" value="1" checked>
+          <label class="govuk-label govuk-checkboxes__label" for="type">
+        Blue (18)
+      </label>
+          
+        </div>
+        
+      
+    
+      
+        
+        
+        
+        
+        
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2" checked>
+          <label class="govuk-label govuk-checkboxes__label" for="type-2">
+        Yellow (5)
+      </label>
+          
+        </div>
+        
+      
+    
+      
+        
+        
+        
+        
+        
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="type-3" name="type" type="checkbox" value="3">
+          <label class="govuk-label govuk-checkboxes__label" for="type-3">
+        Red (2)
+      </label>
+          
+        </div>
+        
+      
+    
+  </div>
+  
+
+</fieldset>
+
+
+</div>
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+<div class="govuk-form-group">
+
+  <fieldset class="govuk-fieldset">
+  
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+  
+    Status
+  
+  </legend>
+  
+
+  <div class="govuk-checkboxes govuk-checkboxes--small">
+    
+      
+          
+        
+        
+        
+        
+        
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="1" checked>
+          <label class="govuk-label govuk-checkboxes__label" for="status">
+        Complete (5)
+      </label>
+          
+        </div>
+        
+      
+    
+      
+        
+        
+        
+        
+        
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="status-2" name="status" type="checkbox" value="2">
+          <label class="govuk-label govuk-checkboxes__label" for="status-2">
+        Incomplete (3)
+      </label>
+          
+        </div>
+        
+      
+    
+      
+        
+        
+        
+        
+        
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="status-3" name="status" type="checkbox" value="3">
+          <label class="govuk-label govuk-checkboxes__label" for="status-3">
+        In progress (13)
+      </label>
+          
+        </div>
+        
+      
+    
+  </div>
+  
+
+</fieldset>
+
+
+</div>
+
+
+
+
+    </div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  <div class="moj-filter-layout__content">
+
+  <div class="moj-action-bar">
+
+    <div class="moj-action-bar__filter"></div>
+
+    
+
+<div class="moj-button-menu">
+  <div class="moj-button-menu__wrapper">
+      
+  
+
+
+  
+    
+  
+
+<button class="govuk-button moj-button-menu__item govuk-button--secondary " data-module="govuk-button">
+  Action 1
+</button>
+
+    
+      
+  
+
+
+  
+    
+  
+
+<button class="govuk-button moj-button-menu__item govuk-button--secondary " data-module="govuk-button">
+  Action 2
+</button>
+
+    </div>
+</div>
+
+
+
+  </div>
+
+  <div class="moj-scrollable-pane">
+
+    <div class="moj-scrollable-pane__wrapper">
+
+      <table class="govuk-table">
+  
+  
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    
+      <th scope="col" class="govuk-table__header">Reference</th>
+    
+      <th scope="col" class="govuk-table__header">Person</th>
+    
+      <th scope="col" class="govuk-table__header">Colour</th>
+    
+      <th scope="col" class="govuk-table__header">Status</th>
+    
+      <th scope="col" class="govuk-table__header">Date of last event</th>
+    
+    </tr>
+  </thead>
+  
+  <tbody class="govuk-table__body">
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">44455453</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >John Smith</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Blue</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Complete</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >25 Jan 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">12323212</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Warren Sutton</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Yellow</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >In progress</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >25 Jan 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">45678765</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Alan Jones</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Yellow</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >In progress</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >9 May 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">12345678</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Jennifer Langley</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Yellow</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >In progress</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >9 May 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">89009800</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Susan Francis</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Red</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Incomplete</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >9 May 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">44455453</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >John Smith</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Blue</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Complete</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >25 Jan 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">12323212</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Warren Sutton</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Yellow</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >In progress</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >25 Jan 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">45678765</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Alan Jones</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Yellow</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >In progress</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >9 May 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">12345678</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Jennifer Langley</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Yellow</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >In progress</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >9 May 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">89009800</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Susan Francis</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Red</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Incomplete</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >9 May 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">45456765</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >John Smith</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Red</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Incomplete</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >9 May 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">88675411</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Margaret Blake</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Red</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Incomplete</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >9 May 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">44455453</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >John Smith</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Blue</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Complete</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >25 Jan 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">12323212</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Warren Sutton</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Yellow</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >In progress</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >25 Jan 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">45678765</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Alan Jones</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Yellow</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >In progress</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >9 May 2018</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <th scope="row" class="govuk-table__header"
+          ><a href="#" class="govuk-link">12345678</a></th>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Jennifer Langley</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Yellow</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >In progress</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >9 May 2018</td>
+          
+        
+        </tr>
+      
+    
+  </tbody>
+</table>
+
+    </div>
+
+  </div>
+</div>
+
+  </div>
+
+
+    <script type="text/javascript">
+      MOJFrontend.initAll();
+    </script>
+    
+  <script type="text/javascript">
+    new MOJFrontend.FilterToggleButton({
+  bigModeMediaQuery: "(min-width: 48.063em)",
+  startHidden: true,
+  toggleButton: {
+    container: $(".moj-action-bar__filter"),
+    showText: "Show filter",
+    hideText: "Hide filter",
+    classes: "govuk-button--secondary",
+  },
+  closeButton: {
+    container: $(".moj-filter__header-action"),
+    text: "Close",
+  },
+  filter: {
+    container: $(".moj-filter"),
+  },
+});
+
+  </script>
+
+  </body>
+</html>
