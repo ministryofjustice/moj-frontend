@@ -13,13 +13,13 @@ The multi file upload component can be useful if you need to let users upload mu
 
 ## When not to use this component
 
-Do not use this component if users only need to [upload one file](/patterns/upload-files).
+Do not use this component if users only need to [upload one file](../../patterns/upload-files).
 
-Uploading multiple files at the same time is more error prone than [uploading files, one at a time](/patterns/upload-files). This is because users have to use a custom form control that may not be as easy to understand.
+Uploading multiple files at the same time is more error prone than [uploading files, one at a time](../../patterns/upload-files). This is because users have to use a custom form control that may not be as easy to understand.
 
 For this reason, do not use this component unless research shows that users need a faster way to upload files.
 
-Read more about how to [ask users to upload files](/patterns/upload-files).
+Read more about how to [ask users to upload files](../../patterns/upload-files).
 
 ## How it works
 

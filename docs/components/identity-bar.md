@@ -9,7 +9,7 @@ Use the identity bar component to give users context of where they are within a 
 
 ## When to use this component
 
-This component is helpful when an entity consists of additional [sub sections](/components/sub-navigation).
+This component is helpful when an entity consists of additional [sub sections](../sub-navigation).
 
 ## When not to use this component
 
@@ -27,13 +27,13 @@ You can optionally configure the component to display actions that the user can 
 
 ### Drop down action menu
 
-The action menu uses the [menu](/components/button-menu) component which can be configured to show as a drop down menu.
+The action menu uses the [menu](../button-menu) component which can be configured to show as a drop down menu.
 
 {% example "/examples/identity-bar-menu-toggle", 275 %}
 
 ### Primary button plus secondary action menu
 
-This [menu](/components/button-menu) is made up of multiple menus. The first consists of just one button and is exposed because it's a primary action. The second menu consists of two secondary options, which are placed within a drop down menu.
+This [menu](../button-menu) is made up of multiple menus. The first consists of just one button and is exposed because it's a primary action. The second menu consists of two secondary options, which are placed within a drop down menu.
 
 {% example "/examples/identity-bar-secondary-toggle", 225 %}
 

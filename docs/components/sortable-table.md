@@ -9,7 +9,7 @@ Use the sortable table component to let users sort columns in ascending or desce
 
 ## When to use this component
 
-Use this component when sorting is needed to help find data within a large table of data. This might be useful in combination with the [filter](/patterns/filter-a-list) pattern.
+Use this component when sorting is needed to help find data within a large table of data. This might be useful in combination with the [filter](../../patterns/filter-a-list) pattern.
 
 ## How it works
 

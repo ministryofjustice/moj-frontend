@@ -9,7 +9,7 @@ Use the side navigation component to let users navigate sub sections in a system
 
 ## When to use this component
 
-Use this component when you have a second level of navigation. See also the [sub navigation](/components/sub-navigation) component
+Use this component when you have a second level of navigation. See also the [sub navigation](../sub-navigation) component
 
 ## When not to use this component
 

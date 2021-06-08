@@ -7,7 +7,7 @@ Use the primary navigation component to let users navigate and search your servi
 
 {% example "/examples/primary-navigation", 150 %}
 
-You must use this component with the [header](/components/header) component.
+You must use this component with the [header](../header) component.
 
 ### Links
 

@@ -43,7 +43,7 @@ initAll()
 
 ## Initialize individual components
 
-Rather than using `initAll`, you can initialise individual components by identifying them with their `data-module` attribute. For example, to initialise just the [Password reveal](/components/password-reveal) component:
+Rather than using `initAll`, you can initialise individual components by identifying them with their `data-module` attribute. For example, to initialise just the [Password reveal](../../components/password-reveal) component:
 
 ```html
 <script>
@@ -57,7 +57,7 @@ if ($passwordReveal) {
 
 This approach is necessary for the following components because they require manual configuration. There is more detail on each of their documentation pages:
 
-- [Button menu](/components/button-menu)
-- [Filter toggle button](/components/filter)
-- [Form validator](/components/form-validator)
-- [Multi-file upload](/components/multi-file-upload)
+- [Button menu](../../components/button-menu)
+- [Filter toggle button](../../components/filter)
+- [Form validator](../../components/form-validator)
+- [Multi-file upload](../../components/multi-file-upload)

@@ -15,7 +15,7 @@ The badge is useful for drawing users attention to particular information. It sh
 
 There are 2 ways to use the badge component. You can use HTML or, if you are using [Nunjucks](https://mozilla.github.io/nunjucks/) or the [GOV.UK Prototype Kit](https://govuk-prototype-kit.herokuapp.com/), you can use the Nunjucks macro.
 
-The default, neutral badge is blue. [Alternative styles](/styles/badge) are also available, for example, green and red.
+The default, neutral badge is blue. Alternative styles are also available, for example, green and red.
 
 {% example "/examples/badge-complete", 125 %}
 

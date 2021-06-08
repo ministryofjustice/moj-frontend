@@ -9,7 +9,7 @@ Use the filter component to let users filter a large list of items.
 
 ## How it works
 
-You should use this component with the [filter layout](/styles/filter-layout) as shown in the [filter a list](/patterns/filter-a-list) pattern.
+You should use this component with the filter layout as shown in the [filter a list](../patterns/filter-a-list) pattern.
 
 The filter component can consist of any form control like radio buttons, checkboxes, date inputs and text boxes.
 

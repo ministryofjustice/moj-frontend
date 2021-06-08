@@ -21,4 +21,4 @@ We recommend [installing MOJ Frontend using npm](https://github.com/ministryofju
 - customise the build (for example, overriding colours or enabling global styles)
 - use the component Nunjucks templates
 
-You will also need to [set up JavaScript](/get-started/setting-up-javascript) if you want to use any interactive components.
+You will also need to [set up JavaScript](../setting-up-javascript) if you want to use any interactive components.
