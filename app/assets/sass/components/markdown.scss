@@ -19,6 +19,11 @@
     @extend %govuk-body-m;
   }
 
+  img {
+    border: 1px solid #b1b4b6;
+    max-width: 100%;
+  }
+
   code:not([class*="language-"]) {
     padding: 0 5px;
     color: #c62950;
