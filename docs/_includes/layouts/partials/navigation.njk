@@ -1,0 +1,24 @@
+{%- from "node_modules/@ministryofjustice/frontend/moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation %}
+
+{% macro appPrimaryNavigation(config) %}
+  {% set config = config|addActiveAttribute(page.filePathStem | url) %}
+
+  {{ mojPrimaryNavigation(config) }}
+{% endmacro %}
+
+{{ appPrimaryNavigation({
+  items: [
+    {
+      text: 'Get started',
+      href: ('/get-started' | url)
+    },
+    {
+      text: 'Components',
+      href: ('/components' | url)
+    },
+    {
+      text: 'Patterns',
+      href: ('/patterns' | url)
+    }
+  ]
+}) }}

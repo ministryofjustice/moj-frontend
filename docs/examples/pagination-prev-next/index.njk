@@ -1,0 +1,17 @@
+---
+layout: layouts/example.njk
+title: Pagination with just previous and next buttons (example)
+---
+
+{%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+
+{{ mojPagination({
+  previous: {
+    text: 'Previous',
+    href: '#'
+  },
+  next: {
+    text: 'Next',
+    href: '#'
+  }
+}) }}

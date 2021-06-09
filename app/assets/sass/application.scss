@@ -1,6 +1,7 @@
-// $govuk-global-styles: true;
 $moj-page-width: 1220px !default;
 $govuk-page-width: 1220px !default;
+$moj-assets-path: "../" !default;
+$govuk-assets-path: "../" !default;
 
 // GOV.UK Frontend
 @import "node_modules/govuk-frontend/govuk/all";
@@ -8,31 +9,14 @@ $govuk-page-width: 1220px !default;
 // MOJ Frontend
 @import "src/moj/all";
 
-// Other component styles
+// highlight.js
+@import "node_modules/highlight.js/scss/github.scss";
 
-@import 'components/app-swatch';
-
-// App specific
-body {
-  margin: 0;
-}
-
-.app-body {
-  padding: $moj-gutter-half;
-
-  @include mq($from: tablet) {
-    padding: $moj-gutter;
-  }
-}
-
-code {
-  padding: 0 5px;
-  color: #c62950;
-  background-color: #f3f2f1;
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-.moj-phase-banner--border {
-  border: none;
-}
+// Custom documentation components
+@import "./components/back-to-top";
+@import "./components/copy-button";
+@import "./components/example";
+@import "./components/markdown";
+@import "./components/masthead";
+@import "./components/panel";
+@import "./components/tabs";

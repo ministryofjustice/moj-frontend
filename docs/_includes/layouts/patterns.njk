@@ -1,0 +1,62 @@
+{% extends "./base.njk" %}
+
+{%- from "node_modules/@ministryofjustice/frontend/moj/components/side-navigation/macro.njk" import mojSideNavigation %}
+
+{% macro appSideNavigation(config) %}
+  {% set config = config|addActiveAttribute(page.filePathStem | url) %}
+
+  {{ mojSideNavigation(config) }}
+{% endmacro %}
+
+{% block content %}
+  <div class="govuk-width-container govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      {{ appSideNavigation({
+        classes: 'govuk-!-padding-top-6',
+        sections: [
+          {
+            heading: {
+              text: "Help users to..."
+            },
+            items: [
+              {
+                text: 'Get help',
+                href: ('/patterns/get-help' | url)
+              },
+              {
+                text: 'Filter a list',
+                href: ('/patterns/filter-a-list' | url)
+              },
+              {
+                text: 'Upload files',
+                href: ('/patterns/upload-files' | url)
+              }
+            ]
+          }
+        ]
+      }) }}
+
+      {% include "./partials/back-to-top.njk" %}
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      <main class="govuk-main-wrapper app-prose-scope" role="main">
+        <h1 class="govuk-heading-xl">
+          {% if subsection %}<span class="govuk-caption-xl">{{ subsection }}</span>{% endif %}
+          {{ title }}
+        </h1>
+        {{ content | safe }}
+      </main>
+
+      {% include "./partials/contact-panel.njk" %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    $('[data-module="app-tabs"]').each(function(e, el) {
+      new Tabs($(el));
+    });
+  </script>
+{% endblock %}

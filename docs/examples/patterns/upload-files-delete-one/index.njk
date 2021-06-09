@@ -1,0 +1,29 @@
+---
+layout: layouts/example.njk
+title: Upload files - delete one (example)
+---
+
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "moj/components/banner/macro.njk" import mojBanner %}
+
+{{ mojBanner({
+  type: 'success',
+  text: 'File named abc.jpg has been deleted',
+  iconFallbackText: 'Success'
+}) }}
+
+{{ govukFileUpload({
+  id: "file-upload-1",
+  name: "file-upload-1",
+  isPageHeading: true,
+  label: {
+    text: "Upload receipts",
+    classes: 'govuk-label--xl'
+  },
+  hint: {
+    text: 'You can upload your receipt as a scanned copy or photo of the original'
+  }
+}) }}
+
+{{ govukButton({ text: 'Continue' }) }}

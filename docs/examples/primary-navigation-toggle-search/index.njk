@@ -1,0 +1,52 @@
+---
+layout: layouts/example.njk
+title: Primary navigation with toggleable search (example)
+---
+
+{%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
+{%- from "moj/components/search/macro.njk" import mojSearch -%}
+
+{%- set toggleSearchHtml %}
+  <div class="moj-search-toggle" data-module="moj-search-toggle" data-moj-search-toggle-text="Find case">
+    <div class="moj-search-toggle__toggle"></div>
+    <div class="moj-search-toggle__search">
+      {{ mojSearch({
+        classes: 'moj-search--ondark moj-search--toggle moj-js-hidden',
+        input: {
+          id: 'search2',
+          name: 'search2'
+        },
+        label: {
+          classes: 'govuk-visually-hidden',
+          text: 'Search'
+        },
+        hint: {
+          text: 'Enter case number, for example 123456'
+        },
+        button: {
+          text: 'Search'
+        }
+      }) }}
+    </div>
+  </div>
+{% endset -%}
+
+{{ mojPrimaryNavigation({
+  label: 'Primary navigation',
+  items: [
+    {
+      text: 'Nav item 1',
+      href: '#1',
+      active: true
+    },
+    {
+      text: 'Nav item 2',
+      href: '#2'
+    },
+    {
+      text: 'Nav item 3',
+      href: '#3'
+    }
+  ],
+  searchHtml: toggleSearchHtml
+}) }}

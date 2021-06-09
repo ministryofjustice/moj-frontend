@@ -1,0 +1,37 @@
+---
+layout: layouts/example.njk
+title: Get help
+---
+
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% set contactHTML %}
+<p>
+  Telephone<br>
+  <a href="tel:08081570385" class="govuk-link">0808 157 0385</a>
+</p>
+
+<p>
+  Outside UK<br>
+  <a href="tel:+441632960847" class="govuk-link">+44 1632 960847</a>
+</p>
+
+<p>
+  Email<br>
+  <a href="mailto:myservicesupport@justice.gov.uk" class="govuk-link">myservicesupport@justice.gov.uk</a>
+</p>
+
+<p>
+  Opening times<br>
+  Monday to Friday: 8am to 6pm
+</p>
+
+<p>
+  Closed on bank holidays.
+</p>
+{% endset %}
+
+{{ govukDetails({
+  summaryText: "Contact the claims team for help",
+  html: contactHTML
+}) }}

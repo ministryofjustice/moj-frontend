@@ -1,0 +1,20 @@
+---
+layout: layouts/example.njk
+title: Currency input (example)
+arguments: currency-input
+---
+
+{%- from "moj/components/currency-input/macro.njk" import mojCurrencyInput -%}
+
+{{ mojCurrencyInput({
+  id: "amount-1",
+  classes: "govuk-input--width-10",
+  name: "amount",
+  label: {
+    text: "Amount",
+    classes: "govuk-!-font-weight-bold"
+  },
+  hint: {
+    text: "Enter the amount you want to exchange"
+  }
+}) }}

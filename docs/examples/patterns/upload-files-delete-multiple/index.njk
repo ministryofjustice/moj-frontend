@@ -1,0 +1,85 @@
+---
+layout: layouts/example.njk
+title: Upload files - delete multiple (example)
+---
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "moj/components/banner/macro.njk" import mojBanner %}
+
+{{ mojBanner({
+  type: 'success',
+  text: 'File named abc.jpg has been deleted',
+  iconFallbackText: 'Success'
+}) }}
+
+<h1 class="govuk-heading-xl">Upload receipts</h1>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Files added</h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "File 1"
+          },
+          value: {
+            html: '<a download href="/">receipta.jpg</a>, 2MB'
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Delete",
+                visuallyHiddenText: "file 1"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "File 2"
+          },
+          value: {
+            html: '<a download href="/">receipt2.jpg</a>, 5MB'
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Delete",
+                visuallyHiddenText: "file 2"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+</div>
+</div>
+
+{{ govukRadios({
+  idPrefix: "another",
+  name: "another",
+  fieldset: {
+    legend: {
+      text: "Do you want to upload another receipt?",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+{{ govukButton({ text: 'Continue' }) }}

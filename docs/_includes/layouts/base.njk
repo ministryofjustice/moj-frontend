@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="shortcut icon" href="{{ '/assets/images/favicon.ico' | url }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ '/assets/images/moj-apple-touch-icon-180x180.png' | url }}" sizes="180x180">
+    <link rel="apple-touch-icon" href="{{ '/assets/images/moj-apple-touch-icon-167x167.png' | url }}" sizes="167x167">
+    <link rel="apple-touch-icon" href="{{ '/assets/images/moj-apple-touch-icon-152x152.png' | url }}" sizes="152x152">
+    <link rel="apple-touch-icon" href="{{ '/assets/images/moj-apple-touch-icon.png' | url }}">
+
+    <meta name="description" content="Design your service using MOJ styles, components and patterns">
+    <meta property="og:image" content="{{ '/assets/images/moj-opengraph-image.png' | url }}">
+
+    <!--[if lte IE 8]><link href="{{ '/assets/stylesheets/application-ie8.css' | url }}" rel="stylesheet"><![endif]-->
+    <!--[if gt IE 8]><!--><link href="{{ '/assets/stylesheets/application.css' | url }}" rel="stylesheet"><!--<![endif]-->
+    <title>{{ title }} - MOJ Design System</title>
+
+    <script type="text/javascript" src="{{ '/assets/javascript/jquery.js' | url }}"></script>
+    <script type="text/javascript" src="{{ '/assets/javascript/all.js' | url }}"></script>
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+    {% block body %}
+      <div>
+        {% include "./partials/header.njk" %}
+
+        {% include "./partials/navigation.njk" %}
+
+        {% block content %}
+          <main class="app-prose-scope" role="main">
+            {{ content | safe }}
+          </main>
+        {% endblock %}
+
+        {% include "./partials/footer.njk" %}
+
+      </div>
+    {% endblock %}
+
+    <script type="text/javascript">
+      MOJFrontend.initAll();
+    </script>
+    {% block pageScripts %}{% endblock %}
+  </body>
+</html>

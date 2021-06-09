@@ -1,0 +1,106 @@
+/* ==========================================================================
+   #TABS
+   ========================================================================== */
+
+.app-tabs {
+  background: govuk-colour("white");
+  margin-bottom: govuk-spacing(6);
+}
+
+.app-tabs__list {
+  border: 1px solid $govuk-border-colour;
+  border-top: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  // A specific selector to override .app-prose-scope
+  .app-prose-scope & {
+    font-size: 0; // Remove white space when using display: inline-block
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.app-tabs__list-item {
+  border-right: 1px solid $govuk-border-colour;
+  display: inline-block;
+  margin: 0;
+
+  // A specific selector to override .app-prose-scope
+  .app-prose-scope & {
+    margin-bottom: 0;
+  }
+}
+
+.app-tabs__tab {
+  @include govuk-font($size: 19, $weight: bold);
+  background-color: govuk-colour("white");
+  color: govuk-colour("blue");
+  display: block;
+  padding: 20px;
+  position: relative;
+  text-decoration: none;
+
+  &:link,
+  &:active,
+  &:visited {
+    background-color: govuk-colour("white");
+    color: govuk-colour("blue");
+
+    // A specific selector to override .app-prose-scope
+    .app-prose-scope & {
+      color: govuk-colour("blue");
+    }
+  }
+
+  &:hover {
+    .app-prose-scope & {
+      color: govuk-colour("light-blue");
+    }
+  }
+
+  &:focus {
+    z-index: 2; // Focus state must sit above
+
+    .app-prose-scope & {
+      color: $govuk-focus-text-colour;
+      background-color: $govuk-focus-colour;
+      box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+      border-color: $govuk-focus-text-colour;
+    }
+  }
+
+  &[aria-selected="true"] {
+    background-color: govuk-colour("light-grey");
+    color: govuk-colour("black");
+    margin-bottom: -1px;
+    padding-bottom: 21px;
+
+    // A specific selector to override .app-prose-scope
+    .app-prose-scope & {
+      color: govuk-colour("black");
+    }
+  }
+}
+
+.app-tabs__panel {
+  @include govuk-font($size: 16);
+  background-color: govuk-colour("light-grey");
+  border: 1px solid $govuk-border-colour;
+  border-top: 0;
+  position: relative;
+
+  &--hidden {
+    display: none;
+  }
+
+  *:last-of-type {
+    margin-bottom: 0; // Remove margin bottom from any last element
+  }
+
+  p {
+    max-width: 100% !important;
+    padding: govuk-spacing(2);
+  }
+}

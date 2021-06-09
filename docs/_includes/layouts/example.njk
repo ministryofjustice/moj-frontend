@@ -1,0 +1,13 @@
+{% extends "./base.njk" %}
+
+{% block body %}
+  <div class="govuk-!-margin-6 govuk-!-margin-top-9">
+    {{ content | safe }}
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script type="text/javascript">
+    {% include (page.inputPath | getScriptPath) ignore missing %}
+  </script>
+{% endblock %}

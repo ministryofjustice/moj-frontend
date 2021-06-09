@@ -1,0 +1,41 @@
+---
+layout: layouts/example.njk
+title: Messages (example)
+arguments: messages
+---
+{%- from "moj/components/messages/macro.njk" import mojMessages -%}
+
+{{ mojMessages({
+  items: [
+    {
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      type: 'sent',
+      timestamp: '2019-03-16T10:50:00.000Z',
+      sender: 'Person A'
+    },
+    {
+      text: 'Nullam vestibulum lorem vulputate velit euismod luctus.',
+      type: 'received',
+      timestamp: '2019-03-17T10:51:00.000Z',
+      sender: 'Person B'
+    },
+    {
+      text: 'Fusce et vulputate justo. Integer suscipit felis non urna lobortis, vel finibus sem tristique.',
+      type: 'sent',
+      timestamp: '2019-03-19T10:53:00.000Z',
+      sender: 'Person A'
+    },
+    {
+      text: 'Mauris tincidunt feugiat orci et convallis. Nam efficitur gravida justo non lobortis. Aliquam velit ante, lobortis eu venenatis sit amet, semper sit amet justo.',
+      type: 'sent',
+      timestamp: '2019-03-19T10:55:00.000Z',
+      sender: 'Person A'
+    },
+    {
+      text: 'Proin dapibus, nisl id ultricies ultricies, erat magna pulvinar risus, sit amet commodo nunc purus eu nulla. Aliquam erat volutpat. Vestibulum in ante interdum, elementum arcu vel, viverra nibh. Etiam ultrices urna at suscipit sollicitudin. Nulla non lectus magna. Curabitur vel vestibulum lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+      type: 'received',
+      timestamp: '2019-03-21T11:56:00.000Z',
+      sender: 'Person B'
+    }
+  ]
+}) }}
