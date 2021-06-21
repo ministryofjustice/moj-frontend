@@ -1,25 +1,11 @@
 ---
-layout: layouts/base.njk
-title: Home
+layout: layouts/get-started.njk
+title: Get started
 ---
 
-<div class="app-masthead">
+Ministry of Justice builds on the principles and guidelines published by GDS. The guidance here is intended to supplement that published by GDS and not replace it.
 
-  <div class="govuk-width-container">
-
-    <h1 class="govuk-heading-xl app-masthead__title">Design your service using Ministry of Justice styles, components and patterns</h1>
-
-    <p class="app-masthead__description">Use this design system to make your service consistent with Ministry of Justice. Learn from the research and experience of other service teams and avoid repeating work that’s already been done.</p>
-
-    <a class="app-masthead__button govuk-!-margin-top-6 govuk-!-margin-bottom-0" href="./get-started">Get started <svg class="app-masthead__button__icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" role="presentation" focusable="false">
-      <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
-    </svg></a>
-
-  </div>
-
-</div>
-
-<div class="govuk-width-container">
+The guidelines published here show how these have been adapted and refined to fit the goals and context of MOJ Digital & Technology.
 
   <div class="app-main-wrapper govuk-main-wrapper govuk-main-wrapper--l">
 
@@ -41,4 +27,3 @@ title: Home
 
   </div>
 
-</div>
