@@ -17,7 +17,7 @@
 
     <!--[if lte IE 8]><link href="/moj-frontend/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="/moj-frontend/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
-    <title>Pagination - MOJ Design System</title>
+    <title>Filter - MOJ Design System</title>
 
     <script type="text/javascript" src="/moj-frontend/assets/javascript/jquery.js"></script>
     <script type="text/javascript" src="/moj-frontend/assets/javascript/all.js"></script>
@@ -115,8 +115,8 @@
           <a href="/moj-frontend/components/currency-input">Currency input</a>
         </li>
       
-        <li class="moj-side-navigation__item">
-          <a href="/moj-frontend/components/filter">Filter</a>
+        <li class="moj-side-navigation__item moj-side-navigation__item--active">
+          <a href="/moj-frontend/components/filter" aria-current="location">Filter</a>
         </li>
       
         <li class="moj-side-navigation__item">
@@ -155,8 +155,8 @@
           <a href="/moj-frontend/components/page-header-actions">Page header actions</a>
         </li>
       
-        <li class="moj-side-navigation__item moj-side-navigation__item--active">
-          <a href="/moj-frontend/components/pagination" aria-current="location">Pagination</a>
+        <li class="moj-side-navigation__item">
+          <a href="/moj-frontend/components/pagination">Pagination</a>
         </li>
       
         <li class="moj-side-navigation__item">
@@ -216,137 +216,359 @@
       <main class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
           <span class="govuk-caption-xl">Components</span>
-          Pagination
+          Filter
         </h1>
-        <p>Use the pagination component to let users browse through a long list.</p>
+        <p>Use the filter component to let users filter a large list of items.</p>
+<h2 id="contributors">Contributors</h2>
+<ul>
+<li>Jen Thompson - OPG</li>
+<li>Karen Simpson - HMPPS Prison</li>
+</ul>
+<p>Last updated on (14 June 2021)</p>
 <div class="app-example">
   <span class="app-example__new-window">
-    <a href="/moj-frontend/examples/pagination" target="_blank">Open this example in a new window</a>
+    <a href="/moj-frontend/examples/filter" target="_blank">Open this example in a new window</a>
   </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="125" src="/moj-frontend/examples/pagination"></iframe>
+  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="1000" src="/moj-frontend/examples/filter"></iframe>
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-pagination" role="tab" id="tab_html-default--examples-pagination" aria-controls="html-default--examples-pagination">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-pagination" role="tab" id="tab_nunjucks-default--examples-pagination" aria-controls="nunjucks-default--examples-pagination">Nunjucks</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-filter" role="tab" id="tab_html-default--examples-filter" aria-controls="html-default--examples-filter">HTML</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-filter" role="tab" id="tab_nunjucks-default--examples-filter" aria-controls="nunjucks-default--examples-filter">Nunjucks</a></li>
   </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-pagination" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-pagination">
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;pagination-label&quot;</span>&gt;</span>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-filter" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-filter">
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter&quot;</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">&quot;pagination-label&quot;</span>&gt;</span>Pagination navigation<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter__header&quot;</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__list&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__item  moj-pagination__item--prev&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Previous<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span>&gt;</span> set of pages<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter__header-title&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-heading-m&quot;</span>&gt;</span>Filter<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__item&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/page=1&quot;</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter__header-action&quot;</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__item moj-pagination__item--active&quot;</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__item&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/page=3&quot;</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__item  moj-pagination__item--next&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Next<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span>&gt;</span> set of pages<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__results&quot;</span>&gt;</span>Showing <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>10<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> to <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>20<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> of <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>30<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> results<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter__content&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter__selected&quot;</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter__selected-heading&quot;</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter__heading-title&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-heading-m&quot;</span>&gt;</span>Selected filters<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter__heading-action&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-link govuk-link--no-visited-state&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Clear filters<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-heading-s govuk-!-margin-bottom-0&quot;</span>&gt;</span>Type<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter-tags&quot;</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter__tag&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/path/to/remove/this&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span>&gt;</span>Remove this filter<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> Blue<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter__tag&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/path/to/remove/this&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span>&gt;</span>Remove this filter<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> Yellow<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-heading-s govuk-!-margin-bottom-0&quot;</span>&gt;</span>Status<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter-tags&quot;</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter__tag&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/path/to/remove/this&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span>&gt;</span>Remove this filter<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> Completed<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter__options&quot;</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-button&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;govuk-button&quot;</span>&gt;</span>
+        Apply filters
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-form-group&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-label govuk-label--m&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;keywords&quot;</span>&gt;</span>
+          Keywords
+        <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-input&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;keywords&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;keywords&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-form-group&quot;</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-fieldset&quot;</span>&gt;</span>
+
+          <span class="hljs-tag">&lt;<span class="hljs-name">legend</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-fieldset__legend govuk-fieldset__legend--m&quot;</span>&gt;</span>
+
+            Type
+
+          <span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
+
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-checkboxes govuk-checkboxes--small&quot;</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-checkboxes__item&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-checkboxes__input&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;type&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;type&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-label govuk-checkboxes__label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;type&quot;</span>&gt;</span>
+                Blue (18)
+              <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-checkboxes__item&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-checkboxes__input&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;type-2&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;type&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-label govuk-checkboxes__label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;type-2&quot;</span>&gt;</span>
+                Yellow (5)
+              <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-checkboxes__item&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-checkboxes__input&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;type-3&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;type&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-label govuk-checkboxes__label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;type-3&quot;</span>&gt;</span>
+                Red (2)
+              <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-form-group&quot;</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-fieldset&quot;</span>&gt;</span>
+
+          <span class="hljs-tag">&lt;<span class="hljs-name">legend</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-fieldset__legend govuk-fieldset__legend--m&quot;</span>&gt;</span>
+
+            Status
+
+          <span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
+
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-checkboxes govuk-checkboxes--small&quot;</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-checkboxes__item&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-checkboxes__input&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;status&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;status&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;complete&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-label govuk-checkboxes__label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;status&quot;</span>&gt;</span>
+                Completed (2)
+              <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-checkboxes__item&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-checkboxes__input&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;status-2&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;status&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;incomplete&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-label govuk-checkboxes__label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;status-2&quot;</span>&gt;</span>
+                Incomplete (5)
+              <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-checkboxes__item&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-checkboxes__input&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;status-3&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;status&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;inprogress&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-label govuk-checkboxes__label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;status-3&quot;</span>&gt;</span>
+                In progress (3)
+              <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 </code></pre>
   </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-pagination" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-pagination">
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-filter" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-filter">
   <div data-module="app-copy" style="position:relative;">
 <pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/pagination/macro.njk&quot; import mojPagination -%}</span><span class="xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/filter/macro.njk&quot; import mojFilter -%}</span><span class="xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/checkboxes/macro.njk&quot; import govukCheckboxes -%}</span><span class="xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/input/macro.njk&quot; import govukInput -%}</span><span class="xml">
 
-</span><span class="hljs-template-variable">{{ mojPagination({
-  results: {
-    from: 10,
-    to: 20,
-    count: 30
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> filterOptionsHtml %}</span><span class="xml">
+
+  </span><span class="hljs-template-variable">{{ govukInput({
+    id: &#x27;keywords&#x27;,
+    name: &#x27;keywords&#x27;,
+    label: {
+      text: &#x27;Keywords&#x27;,
+      classes: &#x27;govuk-label--m&#x27;
+    }
+  }) }}</span><span class="xml">
+
+  </span><span class="hljs-template-variable">{{ govukCheckboxes({
+    idPrefix: &#x27;type&#x27;,
+    name: &#x27;type&#x27;,
+    classes: &quot;govuk-checkboxes--small&quot;,
+    fieldset: {
+      legend: {
+        text: &#x27;Type&#x27;,
+        classes: &#x27;govuk-fieldset__legend--m&#x27;
+      }
+    },
+    items: [
+      {
+        value: &#x27;1&#x27;,
+        text: &#x27;Blue (18)&#x27;,
+        checked: true
+      },
+      {
+        value: &#x27;2&#x27;,
+        text: &#x27;Yellow (5)&#x27;,
+        checked: true
+      },
+      {
+        value: &#x27;3&#x27;,
+        text: &#x27;Red (2)&#x27;
+      }
+    ]
+  }) }}</span><span class="xml">
+
+  </span><span class="hljs-template-variable">{{ govukCheckboxes({
+    idPrefix: &#x27;status&#x27;,
+    name: &#x27;status&#x27;,
+    classes: &quot;govuk-checkboxes--small&quot;,
+    fieldset: {
+      legend: {
+        text: &#x27;Status&#x27;,
+        classes: &#x27;govuk-fieldset__legend--m&#x27;
+      }
+    },
+    items: [
+      {
+        value: &#x27;complete&#x27;,
+        text: &#x27;Completed (2)&#x27;,
+        checked: true
+      },
+      {
+        value: &#x27;incomplete&#x27;,
+        text: &#x27;Incomplete (5)&#x27;
+      },
+      {
+        value: &#x27;inprogress&#x27;,
+        text: &#x27;In progress (3)&#x27;,
+        checked: false
+      }
+    ]
+  }) }}</span><span class="xml">
+</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="xml">
+
+</span><span class="hljs-template-variable">{{ mojFilter({
+  heading: {
+    text: &#x27;Filter&#x27;
   },
-  previous: {
-    text: &#x27;Previous&#x27;,
-    href: &#x27;&#x27;
+  selectedFilters: {
+
+    heading: {
+      text: &#x27;Selected filters&#x27;
+    },
+
+    clearLink: {
+      text: &#x27;Clear filters&#x27;
+    },
+
+    categories: [
+      {
+        heading: {
+          text: &#x27;Type&#x27;
+        },
+        items: [{
+          href: &#x27;/path/to/remove/this&#x27;,
+          text: &#x27;Blue&#x27;
+        }, {
+          href: &#x27;/path/to/remove/this&#x27;,
+          text: &#x27;Yellow&#x27;
+        }]
+      },
+      {
+        heading: {
+          text: &#x27;Status&#x27;
+        },
+        items: [{
+          href: &#x27;/path/to/remove/this&#x27;,
+          text: &#x27;Completed&#x27;
+        }]
+      }
+    ]
   },
-  next: {
-    text: &#x27;Next&#x27;,
-    href: &#x27;&#x27;
-  },
-  items: [{
-    text: &#x27;1&#x27;,
-    href: &#x27;/page=1&#x27;
-  }, {
-    text: &#x27;2&#x27;,
-    href: &#x27;/page=2&#x27;,
-    selected: true
-  }, {
-    text: &#x27;3&#x27;,
-    href: &#x27;/page=3&#x27;
-  }]
+  optionsHtml: filterOptionsHtml
 }) }}</span><span class="xml">
 </span></code></pre>
   </div>
   </div>
 </div>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#how-it-works">How it works</a></li>
+<li><a href="#research-on-this-component">Research on this component</a></li>
+<li><a href="#accessibility">Accessibilty</a></li>
+<li><a href="#contribute-to-this-component">Contribute to this component</a></li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar pellentesque eros, ac malesuada erat lacinia vitae. Vivamus euismodmvmghjgh justo dui, vel gravida ipsum pretium a. Mauris vitae iaculis dui, quis ullamcorper dui. Mauris urna libero, ultricies a augue et, tincidunt congue metus. Phasellus suscipit luctus placerat. Pellentesque sollicitudin ac eros sit amet auctor. Donec odio nunc, aliquam nec mi eu, aliquet molestie diam.</p>
 <h2 id="how-it-works">How it works</h2>
-<p>There are 2 ways to use the pagination component. You can use HTML or, if you are using <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> or the <a href="https://govuk-prototype-kit.herokuapp.com/">GOV.UK Prototype Kit</a>, you can use the Nunjucks macro.</p>
-<p>The component can be configured to hide or show the result count, previous and next buttons, ellipses or numbers.</p>
-<p>Don't show pagination if there's only one page.</p>
-<h3 id="just-previous-and-next-buttons">Just previous and next buttons</h3>
-<div class="app-example">
-  <span class="app-example__new-window">
-    <a href="/moj-frontend/examples/pagination-prev-next" target="_blank">Open this example in a new window</a>
-  </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="125" src="/moj-frontend/examples/pagination-prev-next"></iframe>
-</div>
-<div class="app-tabs" data-module="app-tabs">
-  <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-pagination-prev-next" role="tab" id="tab_html-default--examples-pagination-prev-next" aria-controls="html-default--examples-pagination-prev-next">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-pagination-prev-next" role="tab" id="tab_nunjucks-default--examples-pagination-prev-next" aria-controls="nunjucks-default--examples-pagination-prev-next">Nunjucks</a></li>
-  </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-pagination-prev-next" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-pagination-prev-next">
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;pagination-label&quot;</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">&quot;pagination-label&quot;</span>&gt;</span>Pagination navigation<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__list&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__item  moj-pagination__item--prev&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Previous<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span>&gt;</span> set of pages<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__item  moj-pagination__item--next&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Next<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span>&gt;</span> set of pages<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-
-</code></pre>
-  </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-pagination-prev-next" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-pagination-prev-next">
-  <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/pagination/macro.njk&quot; import mojPagination -%}</span><span class="xml">
-
-</span><span class="hljs-template-variable">{{ mojPagination({
-  previous: {
-    text: &#x27;Previous&#x27;,
-    href: &#x27;#&#x27;
-  },
-  next: {
-    text: &#x27;Next&#x27;,
-    href: &#x27;#&#x27;
-  }
-}) }}</span><span class="xml">
-</span></code></pre>
-  </div>
-  </div>
-</div>
+<ul>
+<li>
+<p>Type ahead - introduced when there is many options, allowing users to reduce the list: <br/><a href="https://finder-frontend.herokuapp.com/component-guide/option-select">Finder Frontend Component Guide</a></p>
+</li>
+<li>
+<p>Users in the Workflow tool are unlikely to select more than one filter at a time</p>
+</li>
+</ul>
+<h4 id="indicators-and-removing-filters">Indicators and removing filters</h4>
+<ul>
+<li>Indicators display the number of filters selected without a section.</li>
+</ul>
+<h4 id="date-picker">Date picker</h4>
+<p>Used date picker instead of memorable date component</p>
+<ul>
+<li>The Memorable date component made it difficult for users to input dates from other systems</li>
+<li>Memorable date cropped off</li>
+<li>Date pickers tested well with users</li>
+<li>If going back further (years) it can become difficult</li>
+<li>Browser date picker is accessible with all browsers and assistive technologies (except Dragon)</li>
+<li>Need to pick a date that is [two weeks] from today</li>
+</ul>
 <h2 id="research-on-this-component">Research on this component</h2>
-<p>We need more research. If you have used the pagination component, get in touch to share your research findings.</p>
+<ul>
+<li>Have tested with users (Link to findings?)</li>
+</ul>
+<h2 id="accessibility">Accessibility</h2>
+<ul>
+<li>Once we have a production version ready, we will test with keyboard only navigation</li>
+</ul>
 <h2 id="contribute-to-this-component">Contribute to this component</h2>
-<p>You can contribute to this component via the <a href="https://github.com/ministryofjustice/moj-design-system-backlog/issues/13">design system backlog</a></p>
+<p>Things we don’t know enough about:</p>
+<ul>
+<li>
+<p>Users don’t always see that there is a filter component, we wonder if we should either show the component by default with the option to then hide, or make the button to show it more prominent.</p>
+</li>
+<li>
+<p>Setting in the component to auto show or hide the component?</p>
+</li>
+<li>
+<p>Do existing filters with the ability to clear live at the top of the filter column or at the top of the content area?</p>
+</li>
+<li>
+<p>The possible con of having at the top of the filter column is when hidden there is no visual of what is filtered or way to clear without reopening the filter menu.</p>
+</li>
+</ul>
 
       </main>
 
