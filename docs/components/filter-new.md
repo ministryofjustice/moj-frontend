@@ -5,7 +5,7 @@ title: Filter
 
 Use the filter component to let users filter a large list of items.
 
-#### Contributors
+## Contributors
 
 - Jen Thompson - OPG
 - Karen Simpson - HMPPS Prison  
@@ -14,7 +14,7 @@ Last updated on (14 June 2021)
 
 {% example "/examples/filter", 1000 %}
 
-# Contents
+## Contents
 
 - <a href="#overview">Overview</a>
 - <a href="#how-it-works">How it works</a>
@@ -33,10 +33,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar pelle
 
 - Users in the Workflow tool are unlikely to select more than one filter at a time
 
-### Indicators and removing filters
+#### Indicators and removing filters
 - Indicators display the number of filters selected without a section.
 
-### Date picker
+#### Date picker
 Used date picker instead of memorable date component
 - The Memorable date component made it difficult for users to input dates from other systems
 - Memorable date cropped off
