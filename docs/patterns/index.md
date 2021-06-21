@@ -9,4 +9,4 @@ All of the patterns in this section are supported by written guidance and contai
 
 Patterns often use one or more [components](../components) and explain how to adapt them to the context.
 
-See all the [patterns in the backlog](https://github.com/ministryofjustice/moj-design-system-backlog/issues).
+<!-- See all the [patterns in the backlog](https://github.com/ministryofjustice/moj-design-system-backlog/issues). -->
