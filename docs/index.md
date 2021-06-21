@@ -14,13 +14,13 @@ The guidelines published here show how these have been adapted and refined to fi
       <div class="govuk-grid-column-one-third govuk-!-margin-bottom-8">
         <h2 class="govuk-heading-l">Components</h2>
         <p>Save time with reusable, accessible components for forms, navigation, panels, tables and more.</p>
-        <p><a class="app-link govuk-!-font-weight-bold" href="/components">Browse components</a></p>
+        <p><a class="app-link govuk-!-font-weight-bold" href="./components">Browse components</a></p>
       </div>
 
       <div class="govuk-grid-column-one-third govuk-!-margin-bottom-8">
         <h2 class="govuk-heading-l">Patterns</h2>
         <p>Help users complete common tasks like entering names and addresses, filling in forms and creating accounts.</p>
-        <p><a class="app-link govuk-!-font-weight-bold" href="/patterns">Browse patterns</a></p>
+        <p><a class="app-link govuk-!-font-weight-bold" href="./patterns">Browse patterns</a></p>
       </div>
 
     </div>
