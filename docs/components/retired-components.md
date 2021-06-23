@@ -7,14 +7,8 @@ These components are now published in the GOV.UK Design System. You should use t
 
 ### Contents
 
-<ul class="govuk-list">
-  <li>
-    <a class="govuk-link" href="#currency-input">Currency input</a>
-  </li>
-  <li>
-    <a class="govuk-link" href="#tag">Tag</a>
-  </li>
-</ul> 
+- [Currency input](#currency-input)
+- [Tag](#tag)
   
 ## Currency input
 
