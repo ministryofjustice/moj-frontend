@@ -4,12 +4,8 @@ isIndex: true
 title: Components
 ---
 
-Read about components in the [GOV.UK Design System](https://design-system.service.gov.uk/components/).
+Components in this section have been created by designers and developers at MOJ.
 
-If a similar component is published in the GOV.UK Design System, you should use that component instead. The MOJ component become a [retired component](retired-components).
+To contribute your research findings, designs or code, share it on the <a href="https://mojdt.slack.com/archives/CH5RUSB27" class="govuk-link">#moj-design-system-support</a> channel on Slack.</p>
 
-If you are using [Ministry of Justice Frontend](https://github.com/ministryofjustice/moj-frontend) in your prototype kit or in your build, the coded examples provided will render exactly as they do inside the Design System.
-
-
-
-<!-- See all the [components in the backlog](https://github.com/ministryofjustice/moj-design-system-backlog/issues). -->
+If a similar component is in the [GOV.UK Design System](https://design-system.service.gov.uk/components/), you should use that component instead. The MOJ version will become a [retired component](retired-components).

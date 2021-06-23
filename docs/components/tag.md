@@ -112,4 +112,4 @@ Additional colours are below, which are not in the GOV.UK Design System.
 
 ## Contribute to this component
 
-You can contribute to this component on the [GOV.UK Design System](https://design-system.service.gov.uk/components/tag/#help-improve-this-page)
+You can contribute to this component in the [GOV.UK Design System](https://design-system.service.gov.uk/components/tag/#help-improve-this-page)

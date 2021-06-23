@@ -12,4 +12,4 @@ A coded example of a task list is below, which is not yet in the GOV.UK Design S
 {% example "/examples/task-list", 600 %}
 ## Contribute to this pattern
 
-You can contribute to this pattern on the [GOV.UK Design System](https://design-system.service.gov.uk/patterns/task-list-pages/#help-improve-this-page)
+You can contribute to this pattern in the [GOV.UK Design System](https://design-system.service.gov.uk/patterns/task-list-pages/#help-improve-this-page)
