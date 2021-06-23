@@ -3,10 +3,8 @@ layout: layouts/patterns.njk
 title: Patterns
 ---
 
-Patterns are best practice design solutions for specific user-focused tasks and page types.
+Patterns in this section have been created by designers and developers at MOJ.
 
-All of the patterns in this section are supported by written guidance and contain coded examples where possible.
+To contribute your research findings, designs or code, share it on the <a href="https://mojdt.slack.com/archives/CH5RUSB27" class="govuk-link">#moj-design-system-support</a> channel on Slack.</p>
 
-Patterns often use one or more [components](../components) and explain how to adapt them to the context.
-
-<!-- See all the [patterns in the backlog](https://github.com/ministryofjustice/moj-design-system-backlog/issues). -->
+If a similar pattern is in the [GOV.UK Design System](https://design-system.service.gov.uk/patterns/), you should use that pattern instead.
