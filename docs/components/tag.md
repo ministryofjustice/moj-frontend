@@ -3,9 +3,11 @@ layout: layouts/component.njk
 title: Tag
 ---
 
-Use the [GOV.UK tag component](https://design-system.service.gov.uk/components/tag/) to indicate the status of something, such as an item on a [task list page](https://design-system.service.gov.uk/patterns/task-list-pages).
+{% banner "This component is on the GOV.UK Design System" %}
+[Tag](https://design-system.service.gov.uk/components/tag/) is published in the GOV.UK Design System.
+{% endbanner %}
 
-There are a number of additional colour styles that can be used:
+Additional colours are below, which are not in the GOV.UK Design System.
 
 <table class="govuk-table">
     <thead class="govuk-table__head">
@@ -106,14 +108,6 @@ There are a number of additional colour styles that can be used:
     </tbody>
 </table>
 
-## When to use these styles
+## Contribute to this component
 
-Use tag styles when the user needs to be alerted to the status of something like the status of a prisoner.
-
-## Research on these styles
-
-We need more research. If you have used alternative tag styles, get in touch to share your research findings.
-
-## Contribute to these styles
-
-You can contribute to these styles via the [design system backlog](https://github.com/ministryofjustice/moj-design-system-backlog/issues/26)
+You can contribute to this component on the [GOV.UK Design System](https://design-system.service.gov.uk/components/tag/#help-improve-this-page)
