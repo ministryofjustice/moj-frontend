@@ -31,10 +31,6 @@
             href: ('/components/button-menu' | url)
           },
           {
-            text: 'Currency input',
-            href: ('/components/currency-input' | url)
-          },
-          {
             text: 'Filter',
             href: ('/components/filter' | url)
           },
@@ -107,12 +103,19 @@
             href: ('/components/sub-navigation' | url)
           },
           {
-            text: 'Tag',
-            href: ('/components/tag' | url)
-          },
-          {
             text: 'Timeline',
             href: ('/components/timeline' | url)
+          }
+        ]
+      }) }}
+
+      <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+      {{ appSideNavigation({
+        items: [
+          {
+            text: 'Retired components',
+            href: ('/components/retired-components' | url)
           }
         ]
       }) }}
