@@ -3,6 +3,12 @@ layout: layouts/component.njk
 title: Badge
 ---
 
+{% banner "The GOV.UK Design System has a similar component" %}
+The [Tag component](https://design-system.service.gov.uk/components/tag/) in the GOV.UK Design System has a similar function and visual design to this component.
+
+You should consider using the GOV.UK version if it fits your needs.
+{% endbanner %}
+
 Use the badge component to highlight small details like an urgent case.
 
 {% example "/examples/badge", 125 %}
