@@ -13,101 +13,130 @@
     <div class="govuk-grid-column-one-third">
       {{ appSideNavigation({
         classes: 'govuk-!-padding-top-6',
-        items: [
+        sections: [
           {
-            text: 'Add another',
-            href: ('/components/add-another' | url)
+            heading: {
+              text: "Structure"
+            },
+            items: [
+            {
+              text: 'Header',
+              href: ('/components/header' | url)
+            },
+            {
+              text: 'Search',
+              href: ('/components/search' | url)
+            },
+            {
+              text: 'Identity bar',
+              href: ('/components/identity-bar' | url)
+            },
+            {
+              text: 'Organisation switcher',
+              href: ('/components/organisation-switcher' | url)
+            }
+            ]
           },
           {
-            text: 'Badge',
-            href: ('/components/badge' | url)
+            heading: {
+              text: "Navigation"
+            },
+            items: [
+            {
+              text: 'Primary navigation',
+              href: ('/components/primary-navigation' | url)
+            },
+            {
+              text: 'Sub navigation',
+              href: ('/components/sub-navigation' | url)
+            },
+            {
+              text: 'Side navigation',
+              href: ('/components/side-navigation' | url)
+            },
+            {
+              text: 'Notification badge',
+              href: ('/components/notification-badge' | url)
+            },
+            {
+              text: 'Page header actions',
+              href: ('/components/page-header-actions' | url)
+            },
+            {
+              text: 'Button menu',
+              href: ('/components/button-menu' | url)
+            },
+            {
+              text: 'Filter',
+              href: ('/components/filter' | url)
+            },
+            {
+              text: 'Pagination',
+              href: ('/components/pagination' | url)
+            }
+            ]
           },
           {
-            text: 'Banner',
-            href: ('/components/banner' | url)
+            heading: {
+              text: "Forms"
+            },
+            items: [
+            {
+              text: 'Add another',
+              href: ('/components/add-another' | url)
+            },
+            {
+              text: 'Form validator',
+              href: ('/components/form-validator' | url)
+            },
+            {
+              text: 'Multi file upload',
+              href: ('/components/multi-file-upload' | url)
+            },
+            {
+              text: 'Password reveal',
+              href: ('/components/password-reveal' | url)
+            },
+            {
+              text: 'Rich text editor',
+              href: ('/components/rich-text-editor' | url)
+            }
+            ]
           },
           {
-            text: 'Button menu',
-            href: ('/components/button-menu' | url)
-          },
-          {
-            text: 'Filter',
-            href: ('/components/filter' | url)
-          },
-          {
-            text: 'Form validator',
-            href: ('/components/form-validator' | url)
-          },
-          {
-            text: 'Header',
-            href: ('/components/header' | url)
-          },
-          {
-            text: 'Identity bar',
-            href: ('/components/identity-bar' | url)
-          },
-          {
-            text: 'Messages',
-            href: ('/components/messages' | url)
-          },
-          {
-            text: 'Multi file upload',
-            href: ('/components/multi-file-upload' | url)
-          },
-          {
-            text: 'Multi select',
-            href: ('/components/multi-select' | url)
-          },
-          {
-            text: 'Notification badge',
-            href: ('/components/notification-badge' | url)
-          },
-          {
-            text: 'Organisation switcher',
-            href: ('/components/organisation-switcher' | url)
-          },
-          {
-            text: 'Page header actions',
-            href: ('/components/page-header-actions' | url)
-          },
-          {
-            text: 'Pagination',
-            href: ('/components/pagination' | url)
-          },
-          {
-            text: 'Password reveal',
-            href: ('/components/password-reveal' | url)
-          },
-          {
-            text: 'Primary navigation',
-            href: ('/components/primary-navigation' | url)
-          },
-          {
-            text: 'Rich text editor',
-            href: ('/components/rich-text-editor' | url)
-          },
-          {
-            text: 'Search',
-            href: ('/components/search' | url)
-          },
-          {
-            text: 'Side navigation',
-            href: ('/components/side-navigation' | url)
-          },
-          {
-            text: 'Sortable table',
-            href: ('/components/sortable-table' | url)
-          },
-          {
-            text: 'Sub navigation',
-            href: ('/components/sub-navigation' | url)
-          },
-          {
-            text: 'Timeline',
-            href: ('/components/timeline' | url)
+            heading: {
+              text: "Content"
+            },
+            items: [
+            {
+              text: 'Banner',
+              href: ('/components/banner' | url)
+            },
+            {
+              text: 'Badge',
+              href: ('/components/badge' | url)
+            },
+            {
+              text: 'Messages',
+              href: ('/components/messages' | url)
+            },
+            {
+              text: 'Timeline',
+              href: ('/components/timeline' | url)
+            },
+            {
+              text: 'Multi select',
+              href: ('/components/multi-select' | url)
+            },
+            {
+              text: 'Sortable table',
+              href: ('/components/sortable-table' | url)
+            }
+            ]
           }
         ]
-      }) }}
+
+        }) }}
 
       <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
 
