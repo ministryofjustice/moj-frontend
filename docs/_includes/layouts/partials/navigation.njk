@@ -1,24 +1,21 @@
 {%- from "node_modules/@ministryofjustice/frontend/moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation %}
 
-{% macro appPrimaryNavigation(config) %}
-  {% set config = config|addActiveAttribute(page.filePathStem | url) %}
-
-  {{ mojPrimaryNavigation(config) }}
-{% endmacro %}
-
-{{ appPrimaryNavigation({
+{{ mojPrimaryNavigation({
   items: [
     {
       text: 'Get started',
-      href: ('/' | url)
+      href: ('/' | url),
+      active: (page.filePathStem === '/index' or page.filePathStem.indexOf('/get-started') === 0)
     },
     {
       text: 'Components',
-      href: ('/components' | url)
+      href: ('/components' | url),
+      active: page.filePathStem.indexOf('/components') === 0
     },
     {
       text: 'Patterns',
-      href: ('/patterns' | url)
+      href: ('/patterns' | url),
+      active: page.filePathStem.indexOf('/patterns') === 0
     }
   ]
 }) }}
