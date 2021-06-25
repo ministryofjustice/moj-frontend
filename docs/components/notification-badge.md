@@ -11,5 +11,4 @@ The notification badge lets the user know that there is new information to view,
 
 ### 11 June 2019
 
-
 {% example "/examples/notification-badge", 125 %}
