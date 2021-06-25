@@ -15,7 +15,7 @@ jobs:
       - name: Install and Build
         run: |
           npm install
-          npm run build:docs -- --pathprefix=moj-frontend
+          npm run build:docs
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.3
