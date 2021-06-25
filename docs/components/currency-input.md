@@ -3,7 +3,7 @@ layout: layouts/component.njk
 title: Currency input
 ---
 
-{% banner "This component is retired" %}
+{% banner "This component is archived" %}
 
 You should use [prefixes and suffixes](https://design-system.service.gov.uk/components/text-input/#prefixes-and-suffixes) in the GOV.UK Design System to help users enter things like currencies.
 {% endbanner %}
