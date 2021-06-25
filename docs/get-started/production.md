@@ -14,7 +14,7 @@ First you must have followed the [GOV.UK Design System production setup guide](h
 
 To start using MOJ styles, components and patterns contained here, you’ll need to include MOJ Frontend in your project.
 
-We recommend [installing MOJ Frontend using npm](https://github.com/ministryofjustice/moj-frontend/blob/main/docs/installation/installing-with-npm.md). Using this option, you will be able to:
+We recommend [installing MOJ Frontend using npm](../installing-with-npm). Using this option, you will be able to:
 
 - selectively include the CSS or JavaScript for individual components
 - build your own styles or components based on the palette or typography and spacing mixins

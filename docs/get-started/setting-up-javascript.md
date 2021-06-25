@@ -18,11 +18,14 @@ To include the code directly in a template, first either:
 - set up your routing so that requests for the JavaScript file are served from `node_modules/@ministryofjustice/frontend/moj/all.js`
 - copy the `node_modules/@ministryofjustice/frontend/moj/all.js` file into your application
 
+You will also need to install and serve [jQuery](https://jquery.com/).
+
 Then import the JavaScript file before the closing `</body>` tag of your HTML page or page template, and run the `initAll` function to initialise the components.
 
 ```html
 <body>
 ...
+  <script src="<YOUR-APP>/jquery.js"></script>
   <script src="<YOUR-APP>/<YOUR-JS-FILE>.js"></script>
   <script>
     window.MOJFrontend.initAll()
@@ -34,10 +37,13 @@ Then import the JavaScript file before the closing `</body>` tag of your HTML pa
 
 ## Import using a bundler
 
-If you decide to import using a bundler, use `import` to import all of design systems’s components, then run the `initAll` function to initialise them:
+If you decide to import using a bundler, use `import` to import jQuery and all of the design systems’s components, then run the `initAll` function to initialise them:
 
 ```javascript
+import $ from 'jquery'
 import { initAll } from '@ministryofjustice/frontend'
+
+window.$ = $
 initAll()
 ```
 
