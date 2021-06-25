@@ -42,9 +42,13 @@ MOJFrontend.AddAnother.prototype.getNewItem = function() {
 
 MOJFrontend.AddAnother.prototype.updateAttributes = function(index, item) {
 	item.find('[data-name]').each(function(i, el) {
+    var originalId = el.id
+
 		el.name = $(el).attr('data-name').replace(/%index%/, index);
 		el.id = $(el).attr('data-id').replace(/%index%/, index);
-		($(el).siblings('label')[0] || $(el).parents('label')[0]).htmlFor = el.id;
+
+    var label = $(el).siblings('label')[0] || $(el).parents('label')[0] || item.find('[for="' + originalId + '"]')[0];
+		label.htmlFor = el.id;
 	});
 };
 
