@@ -3,7 +3,7 @@ layout: layouts/component.njk
 title: Tag
 ---
 
-{% banner "This component is retired" %}
+{% banner "This component is archived" %}
 The GOV.UK Design System working group [made a decision to use tints for additional colours](https://github.com/alphagov/govuk-design-system-backlog/issues/62#issuecomment-590800378).
 
 You should use [additional colours](https://design-system.service.gov.uk/components/tag/#additional-colours) in the GOV.UK Design System.
