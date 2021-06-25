@@ -16,6 +16,8 @@ You should use [prefixes and suffixes](https://design-system.service.gov.uk/comp
 
 Use the currency input component to help users enter an amount of money in a specified currency.
 
+{% lastUpdated "currency-input" %}
+
 {% example "/examples/currency-input", 200 %}
 
 ## When to use this component

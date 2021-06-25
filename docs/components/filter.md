@@ -5,6 +5,8 @@ title: Filter
 
 Use the filter component to let users filter a large list of items.
 
+{% lastUpdated "filter" %}
+
 {% example "/examples/filter", 1000 %}
 
 ## How it works

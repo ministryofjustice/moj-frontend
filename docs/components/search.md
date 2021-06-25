@@ -5,6 +5,8 @@ title: Search
 
 Use the search component to let users search by word or phrase. This can be used within the [Primary Navigation](../primary-navigation/) component.
 
+{% lastUpdated "search" %}
+
 {% example "/examples/search", 200 %}
 
 ## How it works

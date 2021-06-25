@@ -7,6 +7,8 @@ Use the header component for any service or system not on GOV.UK like internal s
 
 Do not use this for citizen-facing services.
 
+{% lastUpdated "header" %}
+
 {% example "/examples/header", 150 %}
 
 ## How it works

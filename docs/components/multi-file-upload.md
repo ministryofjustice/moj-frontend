@@ -5,6 +5,8 @@ title: Multi file upload
 
 Use the multi file upload component to help users upload multiple files at the same time.
 
+{% lastUpdated "multi-file-upload" %}
+
 {% example "/examples/multi-file-upload", 550 %}
 
 ## When to use this component

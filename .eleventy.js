@@ -7,6 +7,7 @@ const matter = require("gray-matter");
 const mojFilters = require("./src/moj/filters/all");
 const nunjucks = require("nunjucks");
 const path = require("path");
+const { execSync } = require("child_process");
 
 module.exports = function (eleventyConfig) {
   const nunjucksEnv = nunjucks.configure([
@@ -76,6 +77,17 @@ module.exports = function (eleventyConfig) {
       htmlCode,
       jsCode,
     });
+  });
+
+  eleventyConfig.addShortcode("lastUpdated", function (component) {
+    const dirPath = path.join(__dirname, "src/moj/components", component);
+    const [commit, lastUpdated] = execSync(
+      `LANG=en_GB git log -n1 --pretty=format:%H,%ad --date=format:'%e %B %Y' ${dirPath}`
+    )
+      .toString()
+      .split(",");
+
+    return `<p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/${commit}">${lastUpdated}</a></p>`;
   });
 
   eleventyConfig.addPairedShortcode("banner", function (content, title) {

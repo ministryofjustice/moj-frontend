@@ -5,6 +5,8 @@ title: Primary navigation
 
 Use the primary navigation component to let users navigate and search your service.
 
+{% lastUpdated "primary-navigation" %}
+
 {% example "/examples/primary-navigation", 150 %}
 
 You must use this component with the [header](../header) component.
