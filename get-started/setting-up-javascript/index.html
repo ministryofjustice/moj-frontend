@@ -144,9 +144,11 @@
 <li>set up your routing so that requests for the JavaScript file are served from <code>node_modules/@ministryofjustice/frontend/moj/all.js</code></li>
 <li>copy the <code>node_modules/@ministryofjustice/frontend/moj/all.js</code> file into your application</li>
 </ul>
+<p>You will also need to install and serve <a href="https://jquery.com/">jQuery</a>.</p>
 <p>Then import the JavaScript file before the closing <code>&lt;/body&gt;</code> tag of your HTML page or page template, and run the <code>initAll</code> function to initialise the components.</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
 ...
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&lt;YOUR-APP&gt;/jquery.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&lt;YOUR-APP&gt;/&lt;YOUR-JS-FILE&gt;.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
     <span class="hljs-built_in">window</span>.MOJFrontend.initAll()
@@ -155,8 +157,11 @@
 </code></pre>
 <p><strong>Some components cannot be initialised by this method</strong> and this is noted on their individual documentation pages. For more details, <a href="#initialize-individual-components">see below</a>.</p>
 <h2 id="import-using-a-bundler">Import using a bundler</h2>
-<p>If you decide to import using a bundler, use <code>import</code> to import all of design systems’s components, then run the <code>initAll</code> function to initialise them:</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { initAll } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@ministryofjustice/frontend&#x27;</span>
+<p>If you decide to import using a bundler, use <code>import</code> to import jQuery and all of the design systems’s components, then run the <code>initAll</code> function to initialise them:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">import</span> $ <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;jquery&#x27;</span>
+<span class="hljs-keyword">import</span> { initAll } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@ministryofjustice/frontend&#x27;</span>
+
+<span class="hljs-built_in">window</span>.$ = $
 initAll()
 </code></pre>
 <h2 id="initialize-individual-components">Initialize individual components</h2>

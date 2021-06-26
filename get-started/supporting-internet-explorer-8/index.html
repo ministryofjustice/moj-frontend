@@ -17,7 +17,7 @@
 
     <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
-    <title>Production - MOJ Design System</title>
+    <title>Supporting Internet Explorer 8 - MOJ Design System</title>
 
     <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
     <script type="text/javascript" src="/assets/javascript/all.js"></script>
@@ -98,8 +98,8 @@
             <a href="/get-started/prototyping">Prototyping</a>
           </li>
         
-          <li class="moj-side-navigation__item moj-side-navigation__item--active">
-            <a href="/get-started/production" aria-current="location">Production</a>
+          <li class="moj-side-navigation__item">
+            <a href="/get-started/production">Production</a>
           </li>
         </ul>
     
@@ -129,22 +129,27 @@
     <div class="govuk-grid-column-two-thirds">
       <main class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
-          <span class="govuk-caption-xl">How we work</span>
-          Production
+          
+          Supporting Internet Explorer 8
         </h1>
-        <p>This guide explains how to set up your project so you can start using the styles and coded examples in the MOJ Design System in production.</p>
-<h2 id="before-you-start">Before you start</h2>
-<p>First you must have followed the <a href="https://design-system.service.gov.uk/get-started/production/">GOV.UK Design System production setup guide</a>.</p>
-<h2 id="include-the-moj-frontend-in-your-project">Include the MOJ Frontend in your project</h2>
-<p>To start using MOJ styles, components and patterns contained here, you’ll need to include MOJ Frontend in your project.</p>
-<p>We recommend <a href="../installing-with-npm">installing MOJ Frontend using npm</a>. Using this option, you will be able to:</p>
-<ul>
-<li>selectively include the CSS or JavaScript for individual components</li>
-<li>build your own styles or components based on the palette or typography and spacing mixins</li>
-<li>customise the build (for example, overriding colours or enabling global styles)</li>
-<li>use the component Nunjucks templates</li>
-</ul>
-<p>You will also need to <a href="../setting-up-javascript">set up JavaScript</a> if you want to use any interactive components.</p>
+        <p>If you are including MOJ Frontend as part of your application's stylesheets then you'll need to do some additional work to support Internet Explorer 8 (IE8).</p>
+<p>The first thing you need to do is follow <a href="https://frontend.design-system.service.gov.uk/supporting-ie8/">GOV.UK Frontend's setup instructions</a> for supporting Internet Explorer 8.</p>
+<p>When <a href="https://frontend.design-system.service.gov.uk/supporting-ie8/#2-generate-an-ie8-specific-stylesheet">generating your IE8-specific stylesheet</a>, your <code>application.scss</code> will also include the MOJ Frontend import:</p>
+<pre><code class="language-scss"><span class="hljs-comment">// application.scss</span>
+
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;govuk-frontend/frontend/all&quot;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@ministryofjustice/frontend/all&quot;</span>;
+
+<span class="hljs-selector-class">.example</span> {
+  <span class="hljs-comment">// example application style</span>
+}
+
+<span class="hljs-comment">// application-ie8.scss</span>
+
+<span class="hljs-variable">$govuk-is-ie8</span>: true;
+
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;application&quot;</span>;
+</code></pre>
 
       </main>
 
