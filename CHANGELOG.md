@@ -1,3 +1,10 @@
+## [0.2.5](https://github.com/ministryofjustice/moj-frontend/compare/v0.2.4-alpha...v0.2.5-alpha) (2021-06-28)
+
+
+### Bug Fixes
+
+* **add-another:** find labels of affixed text inputs ([#186](https://github.com/ministryofjustice/moj-frontend/issues/186)) ([f211937](https://github.com/ministryofjustice/moj-frontend/commit/f2119377536cf1597a7aa723bdb356d8abdc916f)), closes [#185](https://github.com/ministryofjustice/moj-frontend/issues/185)
+
 ## [0.2.4](https://github.com/ministryofjustice/moj-frontend/compare/v0.2.3-alpha...v0.2.4-alpha) (2021-05-19)
 
 
