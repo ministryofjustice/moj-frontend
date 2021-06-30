@@ -224,8 +224,7 @@
           <span class="govuk-caption-xl">Components</span>
           Rich text editor
         </h1>
-        <p>Use the rich text editor component to let users format their input in a textarea.</p>
-<p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/5a3fbc48da822d85a0bbd25c22bc02468dfd3d2d">30 June 2021</a></p>
+        <p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/e3346d2b98151da23f4b0512c1d2a119dc216b83">30 June 2021</a></p>
 <div class="app-example">
   <span class="app-example__new-window">
     <a href="/examples/rich-text-editor" target="_blank">Open this example in a new window</a>
@@ -268,7 +267,18 @@
   </div>
   </div>
 </div>
+<h2 id="when-to-use">When to use</h2>
+<p>Use the rich text editor component to let users format their input in a textarea.</p>
+<h2 id="when-not-to-use">When not to use</h2>
+<p>Don't use this if the user only needs to send a short, simple message.</p>
+<h2 id="how-to-use">How to use</h2>
 <h3 id="customise-formatting-options">Customise formatting options</h3>
+<p>By default, the toolbar has bullet and numbered list buttons. You can turn these off if you don't need them.</p>
+<p>You can also add bold, underline and italic buttons but these styles should be used with caution because:</p>
+<ul>
+<li>underlined text can be confused with links</li>
+<li>bold and italic should be used sparingly</li>
+</ul>
 <p>You can customise the formatting options shown in the toolbar with the <code>data-moj-rich-text-editor-toolbar</code> attribute.</p>
 <div class="app-example">
   <span class="app-example__new-window">
@@ -313,21 +323,6 @@
   </div>
   </div>
 </div>
-<h2 id="when-not-to-use-this-component">When not to use this component</h2>
-<p>Don't use this if the user only needs to send a short, simple message.</p>
-<h2 id="how-it-works">How it works</h2>
-<p>There are 2 ways to use the rich text editor component. You can use HTML or, if you are using <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> or the <a href="https://govuk-prototype-kit.herokuapp.com/">GOV.UK Prototype Kit</a>, you can use the Nunjucks macro.</p>
-<h2 id="configuration">Configuration</h2>
-<p>By default, the toolbar has bullet and numbered list buttons. You can turn these off if you don't need them.</p>
-<p>You can also add bold, underline and italic buttons but these styles should be used with caution because:</p>
-<ul>
-<li>underlined text can be confused with links</li>
-<li>bold and italic should be used sparingly</li>
-</ul>
-<h2 id="research-on-this-component">Research on this component</h2>
-<p>We need more research. If you have used the rich text editor component, get in touch to share your research findings.</p>
-<h2 id="contribute-to-this-component">Contribute to this component</h2>
-<p>You can contribute to this component via the <a href="https://github.com/ministryofjustice/moj-design-system-backlog/issues/44">design system backlog</a></p>
 
       </main>
 
