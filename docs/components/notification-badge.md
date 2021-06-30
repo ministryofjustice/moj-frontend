@@ -10,12 +10,12 @@ This component is in the GOV.UK Design System [community backlog](https://design
 {% endbanner %}
 
 {% example "/examples/notification-badge", 125 %}
-### When to use
+## When to use
 
 The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are. 
 
 Only use it if the number changes when the user performs an action.
-### When not to use
+## When not to use
 
 Do not use the notification badge when:
 
@@ -24,12 +24,12 @@ Do not use the notification badge when:
 
 Unless there is a strong user need, only use it as a part of the navigation.
 
-### How to use
+## How to use
 
 Display the notification badge to the right-hand side of the information it refers to.
 
 If the number is more than 99, display ‘99+’.
-### Research
+## Research
 
 Research shows that notification badges are common across online services, smartphones and apps. Usability testing showed:
 
