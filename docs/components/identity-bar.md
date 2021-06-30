@@ -5,6 +5,8 @@ title: Identity bar
 
 Use the identity bar component to give users context of where they are within a service such as viewing a case.
 
+{% lastUpdated "identity-bar" %}
+
 {% example "/examples/identity-bar", 150 %}
 
 ## When to use this component

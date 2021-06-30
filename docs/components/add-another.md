@@ -5,6 +5,8 @@ title: Add another
 
 Use the add another component to let users add multiple items of the same thing.
 
+{% lastUpdated "add-another" %}
+
 {% example "/examples/add-another", 664 %}
 
 ## When to use this component

@@ -5,6 +5,8 @@ title: Pagination
 
 Use the pagination component to let users browse through a long list.
 
+{% lastUpdated "pagination" %}
+
 {% example "/examples/pagination", 125 %}
 
 ## How it works

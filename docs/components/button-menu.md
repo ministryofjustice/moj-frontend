@@ -5,6 +5,8 @@ title: Button menu
 
 Use the button menu component to group buttons together in a row or collapsible menu.
 
+{% lastUpdated "button-menu" %}
+
 {% example "/examples/button-menu", 175 %}
 
 ## When to use this component

@@ -110,6 +110,8 @@ Additional colours are below, which are not in the GOV.UK Design System.
     </tbody>
 </table>
 
+{% lastUpdated "tag" %}
+
 ## Contribute to this component
 
 You can contribute to this component in the [GOV.UK Design System](https://design-system.service.gov.uk/components/tag/#help-improve-this-page)

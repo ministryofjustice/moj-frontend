@@ -6,13 +6,16 @@ title: Notification badge
 {% banner "HMRC Design Patterns has a similar component" %}
 [Notification badge](https://design.tax.service.gov.uk/hmrc-design-patterns/notification-badge/) in HMRC Design Patterns has a similar function and visual design to this component, and includes some guidance on when to use it.
 
-This component is in the GOV.UK Design System [community backlog](https://design-system.service.gov.uk/community/backlog/) for review. 
+This component is in the GOV.UK Design System [community backlog](https://design-system.service.gov.uk/community/backlog/) for review.
 {% endbanner %}
 
+{% lastUpdated "notification-badge" %}
+
 {% example "/examples/notification-badge", 125 %}
+
 ## When to use
 
-The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are. 
+The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are.
 
 Only use it if the number changes when the user performs an action.
 ## When not to use

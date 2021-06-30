@@ -5,6 +5,8 @@ title: Form validator
 
 Use the form validator component to validate forms without a server-side round-trip while also conforming to the established standards set out in the [GOV.UK Design System](https://design-system.service.gov.uk/).
 
+{% lastUpdated "form-validator" %}
+
 {% example "/examples/form-validator", 1000 %}
 
 ## How it works

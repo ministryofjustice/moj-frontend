@@ -11,6 +11,8 @@ You should consider using the GOV.UK version if it fits your needs.
 
 Use the banner component to display a prominent message and related actions to take.
 
+{% lastUpdated "banner" %}
+
 {% example "/examples/banner", 225 %}
 
 ## When to use this component

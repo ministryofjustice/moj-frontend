@@ -5,6 +5,8 @@ title: Multi select
 
 Use the multi select component to let users select multiple items in a list.
 
+{% lastUpdated "multi-select" %}
+
 {% example "/examples/multi-select", 650 %}
 
 ## How it works

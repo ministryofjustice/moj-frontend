@@ -5,6 +5,8 @@ title: Side navigation
 
 Use the side navigation component to let users navigate sub sections in a system or service.
 
+{% lastUpdated "side-navigation" %}
+
 {% example "/examples/side-navigation", 250 %}
 
 ## When to use this component

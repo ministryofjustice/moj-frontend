@@ -5,6 +5,8 @@ title: Messages
 
 Use the messages component to display a list of messages in chronological order.
 
+{% lastUpdated "messages" %}
+
 {% example "/examples/messages", 500 %}
 
 ## When to use this component

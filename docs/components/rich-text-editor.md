@@ -5,6 +5,8 @@ title: Rich text editor
 
 Use the rich text editor component to let users format their input in a textarea.
 
+{% lastUpdated "rich-text-editor" %}
+
 {% example "/examples/rich-text-editor", 300 %}
 
 ### Customise formatting options

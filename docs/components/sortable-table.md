@@ -5,6 +5,8 @@ title: Sortable table
 
 Use the sortable table component to let users sort columns in ascending or descending order.
 
+{% lastUpdated "sortable-table" %}
+
 {% example "/examples/sortable-table", 450 %}
 
 ## When to use this component

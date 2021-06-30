@@ -5,6 +5,8 @@ title: Sub navigation
 
 Use the sub navigation component to let users navigate sub sections in a system or service.
 
+{% lastUpdated "sub-navigation" %}
+
 {% example "/examples/sub-navigation", 150 %}
 
 ## When to use this component

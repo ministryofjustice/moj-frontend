@@ -5,6 +5,8 @@ title: Organisation switcher
 
 Use the organisation switcher component to let users navigate between different organisations or accounts like switching between prisons.
 
+{% lastUpdated "organisation-switcher" %}
+
 {% example "/examples/organisation-switcher", 125 %}
 
 ## When to use this component

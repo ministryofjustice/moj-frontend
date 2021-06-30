@@ -5,6 +5,8 @@ title: Password reveal
 
 Use the password reveal component to let users check their password safely.
 
+{% lastUpdated "password-reveal" %}
+
 {% example "/examples/password-reveal", 175 %}
 
 ## When to use this component
