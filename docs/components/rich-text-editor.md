@@ -3,27 +3,21 @@ layout: layouts/component.njk
 title: Rich text editor
 ---
 
-Use the rich text editor component to let users format their input in a textarea.
-
 {% lastUpdated "rich-text-editor" %}
 
 {% example "/examples/rich-text-editor", 300 %}
 
-### Customise formatting options
+## When to use
 
-You can customise the formatting options shown in the toolbar with the `data-moj-rich-text-editor-toolbar` attribute.
+Use the rich text editor component to let users format their input in a textarea.
 
-{% example "/examples/rich-text-editor-formatting", 300 %}
-
-## When not to use this component
+## When not to use
 
 Don't use this if the user only needs to send a short, simple message.
 
-## How it works
+## How to use
 
-There are 2 ways to use the rich text editor component. You can use HTML or, if you are using [Nunjucks](https://mozilla.github.io/nunjucks/) or the [GOV.UK Prototype Kit](https://govuk-prototype-kit.herokuapp.com/), you can use the Nunjucks macro.
-
-## Configuration
+### Customise formatting options
 
 By default, the toolbar has bullet and numbered list buttons. You can turn these off if you don't need them.
 
@@ -32,10 +26,9 @@ You can also add bold, underline and italic buttons but these styles should be u
 - underlined text can be confused with links
 - bold and italic should be used sparingly
 
-## Research on this component
+You can customise the formatting options shown in the toolbar with the `data-moj-rich-text-editor-toolbar` attribute.
 
-We need more research. If you have used the rich text editor component, get in touch to share your research findings.
+{% example "/examples/rich-text-editor-formatting", 300 %}
 
-## Contribute to this component
 
-You can contribute to this component via the [design system backlog](https://github.com/ministryofjustice/moj-design-system-backlog/issues/44)
+

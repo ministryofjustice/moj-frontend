@@ -9,19 +9,16 @@ The [Tag component](https://design-system.service.gov.uk/components/tag/) in the
 You should consider using the GOV.UK version if it fits your needs.
 {% endbanner %}
 
-Use the badge component to highlight small details like an urgent case.
-
 {% lastUpdated "badge" %}
 
 {% example "/examples/badge", 125 %}
+## When to use
 
-## When to use this component
+Use the badge component to highlight small details like an urgent case.
 
 The badge is useful for drawing users attention to particular information. It should be used sparingly because when used a lot it loses its value.
 
-## How it works
-
-There are 2 ways to use the badge component. You can use HTML or, if you are using [Nunjucks](https://mozilla.github.io/nunjucks/) or the [GOV.UK Prototype Kit](https://govuk-prototype-kit.herokuapp.com/), you can use the Nunjucks macro.
+## How to use
 
 The default, neutral badge is blue. Alternative styles are also available, for example, green and red.
 
@@ -169,14 +166,10 @@ There are a number of additional colour styles that can be used:
 </tbody>
 </table>
 
-## Research on this component
+## Research
 
 This component has been used successfully in the following services:
 
 - Claim fees for Crown court defence (Legal Aid Agency)
 - Prisoner Escort Request (Her Majesty’s Prison and Probation Service)
 - Professional case manager (Her Majesty’s Courts and Tribunals Service)
-
-## Contribute to this component
-
-You can contribute to this component via the [design system backlog](https://github.com/ministryofjustice/moj-design-system-backlog/issues/26)

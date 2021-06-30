@@ -3,27 +3,23 @@ layout: layouts/component.njk
 title: Multi file upload
 ---
 
-Use the multi file upload component to help users upload multiple files at the same time.
-
 {% lastUpdated "multi-file-upload" %}
 
 {% example "/examples/multi-file-upload", 550 %}
 
-## When to use this component
+## When to use
 
-The multi file upload component can be useful if you need to let users upload multiple files at once, on a regular basis. For example, in a caseworking system.
+Use the multi file upload component to help users upload multiple files at the same time, on a regular basis. For example, in a caseworking system.
 
-## When not to use this component
+## When not to use
 
 Do not use this component if users only need to [upload one file](../../patterns/upload-files).
 
-Uploading multiple files at the same time is more error prone than [uploading files, one at a time](../../patterns/upload-files). This is because users have to use a custom form control that may not be as easy to understand.
+Uploading multiple files at the same time is more error prone than uploading files, one at a time. This is because users have to use a custom form control that may not be as easy to understand.
 
 For this reason, do not use this component unless research shows that users need a faster way to upload files.
 
-Read more about how to [ask users to upload files](../../patterns/upload-files).
-
-## How it works
+## How to use
 
 The multi file upload consists of a dropzone and feedback area which starts off hidden.
 
@@ -83,13 +79,3 @@ You can include a check screen at this point if you need to.
 ### Error messages
 
 Use the file upload error messages [from the GOV.UK Design System](https://design-system.service.gov.uk/components/file-upload/#error-messages).
-
-## Research on this component
-
-This component is marked as experimental because it needs more research.
-
-If you have used the multi file upload component, get in touch to share your research findings.
-
-## Contribute to this component
-
-You can contribute to this component via the [design system backlog](https://github.com/ministryofjustice/moj-design-system-backlog/issues/1)

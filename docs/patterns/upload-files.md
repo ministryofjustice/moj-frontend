@@ -5,11 +5,11 @@ title: Upload files
 
 ![A three step process: Ask the user to upload a file, use the native file browser, and then show them the upload and ask them to confirm it](../../assets/images/upload-file-single.png)
 
-## When to use this pattern
+## When to use
 
 Use this pattern whenever you need users to upload one or more files.
 
-## When not to use this pattern
+## When not to use
 
 Do not ask users to upload files unless you really need to in order to deliver your service.
 
@@ -20,7 +20,7 @@ Uploading files can involve a number of interactions that users might find chall
 - selecting a file from a folder
 - waiting for a file to be uploaded
 
-## How it works
+## How to use
 
 How you help users upload files depends on whether they need to upload:
 
@@ -95,13 +95,3 @@ If you do this, you can store the original file and give users the option to vie
 ### Error messages
 
 Use the [file upload error messages from the GOV.UK Design System](https://design-system.service.gov.uk/components/file-upload/#error-messages).
-
-## Research on this pattern
-
-This pattern is marked as experimental because it needs more research.
-
-If you have used the file upload pattern, get in touch to share your research findings.
-
-## Contribute to this pattern
-
-You can contribute to this pattern via the [design system backlog](https://github.com/ministryofjustice/moj-design-system-backlog/issues/1)
