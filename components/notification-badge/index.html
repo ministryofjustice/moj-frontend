@@ -224,7 +224,20 @@
           <span class="govuk-caption-xl">Components</span>
           Notification badge
         </h1>
-        <p>Use the notification badge component to notify users of something like an unread message.</p>
+        <p><div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+<div class="govuk-notification-banner__header">
+<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+Important
+</h2>
+</div>
+<div class="govuk-notification-banner__content">
+<h3 class="govuk-notification-banner__heading">
+HMRC Design Patterns has a similar component
+</h3></p>
+<p><a href="https://design.tax.service.gov.uk/hmrc-design-patterns/notification-badge/">Notification badge</a> in HMRC Design Patterns has a similar function and visual design to this component, and includes some guidance on when to use it.</p>
+<p>This component is in the GOV.UK Design System <a href="https://design-system.service.gov.uk/community/backlog/">community backlog</a> for review.</p>
+</div>
+      </div>
 <div class="app-example">
   <span class="app-example__new-window">
     <a href="/examples/notification-badge" target="_blank">Open this example in a new window</a>
@@ -253,17 +266,25 @@
   </div>
   </div>
 </div>
-<h2 id="when-to-use-this-component">When to use this component</h2>
-<p>Use this component when the user needs to be alerted that they have, for example, unread messages and how many of them there are. Only use it if the number changes when the user performs an action.</p>
-<h2 id="when-not-to-use-this-component">When not to use this component</h2>
-<p>Do not use this component when the number of things is zero, or there is no action to take.</p>
-<p>Unless there is a strong user need, only use this component as a part of the navigation.</p>
-<h2 id="how-it-works">How it works</h2>
-<p>There are 2 ways to use the notification badge component. You can use HTML or, if you are using <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> or the <a href="https://govuk-prototype-kit.herokuapp.com/">GOV.UK Prototype Kit</a>, you can use the Nunjucks macro.</p>
-<h2 id="research-on-this-component">Research on this component</h2>
-<p>We need more research. If you have used the notification badge component, get in touch to share your research findings.</p>
-<h2 id="contribute-to-this-component">Contribute to this component</h2>
-<p>You can contribute to this component via the <a href="https://github.com/ministryofjustice/moj-design-system-backlog/issues/41">design system backlog</a></p>
+<h2 id="when-to-use">When to use</h2>
+<p>The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are.</p>
+<p>Only use it if the number changes when the user performs an action.</p>
+<h2 id="when-not-to-use">When not to use</h2>
+<p>Do not use the notification badge when:</p>
+<ul>
+<li>the number of things is 0</li>
+<li>there is no action</li>
+</ul>
+<p>Unless there is a strong user need, only use it as a part of the navigation.</p>
+<h2 id="how-to-use">How to use</h2>
+<p>Display the notification badge to the right-hand side of the information it refers to.</p>
+<p>If the number is more than 99, display ‘99+’.</p>
+<h2 id="research">Research</h2>
+<p>Research shows that notification badges are common across online services, smartphones and apps. Usability testing showed:</p>
+<ul>
+<li>users understand what it is for</li>
+<li>it does not distract users from their task</li>
+</ul>
 
       </main>
 
