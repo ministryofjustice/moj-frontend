@@ -13,9 +13,9 @@ To make your service consistent with GOV.UK, you should:
 
 The MOJ Pattern Library brings together [components](./components) and [patterns](./patterns) created by designers and developers at MOJ.
 
-To contribute your research findings, designs or code to contribute, share it on the <a href="https://mojdt.slack.com/archives/CH5RUSB27" class="govuk-link">#moj-design-system-support</a> channel on Slack.</p>
+To use these components and patterns you can either:
 
+- copy the HTML code
+- copy the Nunjucks code (if you are using [Nunjucks](https://mozilla.github.io/nunjucks/) or the [GOV.UK Prototype Kit](https://govuk-prototype-kit.herokuapp.com/docs)) 
 
-
-
-
+To contribute your research findings, designs or code, share it on the <a href="https://mojdt.slack.com/archives/CH5RUSB27" class="govuk-link">#moj-design-system-support</a> channel on Slack.</p>
