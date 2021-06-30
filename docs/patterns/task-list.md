@@ -3,7 +3,7 @@ layout: layouts/patterns.njk
 title: Task list pages
 ---
 
-{% banner "This pattern is on the GOV.UK Design System" %}
+{% banner "This pattern is in the GOV.UK Design System" %}
 [Task list pages](https://design-system.service.gov.uk/patterns/task-list-pages/) is published in the GOV.UK Design System.
 {% endbanner %}
 

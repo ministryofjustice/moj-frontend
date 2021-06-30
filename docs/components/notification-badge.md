@@ -3,28 +3,35 @@ layout: layouts/component.njk
 title: Notification badge
 ---
 
-Use the notification badge component to notify users of something like an unread message.
+{% banner "HMRC Design Patterns has a similar component" %}
+[Notification badge](https://design.tax.service.gov.uk/hmrc-design-patterns/notification-badge/) in HMRC Design Patterns has a similar function and visual design to this component, and includes some guidance on when to use it.
+
+This component is in the GOV.UK Design System [community backlog](https://design-system.service.gov.uk/community/backlog/) for review. 
+{% endbanner %}
 
 {% example "/examples/notification-badge", 125 %}
+## When to use
 
-## When to use this component
+The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are. 
 
-Use this component when the user needs to be alerted that they have, for example, unread messages and how many of them there are. Only use it if the number changes when the user performs an action.
+Only use it if the number changes when the user performs an action.
+## When not to use
 
-## When not to use this component
+Do not use the notification badge when:
 
-Do not use this component when the number of things is zero, or there is no action to take.
+- the number of things is 0
+- there is no action
 
-Unless there is a strong user need, only use this component as a part of the navigation.
+Unless there is a strong user need, only use it as a part of the navigation.
 
-## How it works
+## How to use
 
-There are 2 ways to use the notification badge component. You can use HTML or, if you are using [Nunjucks](https://mozilla.github.io/nunjucks/) or the [GOV.UK Prototype Kit](https://govuk-prototype-kit.herokuapp.com/), you can use the Nunjucks macro.
+Display the notification badge to the right-hand side of the information it refers to.
 
-## Research on this component
+If the number is more than 99, display ‘99+’.
+## Research
 
-We need more research. If you have used the notification badge component, get in touch to share your research findings.
+Research shows that notification badges are common across online services, smartphones and apps. Usability testing showed:
 
-## Contribute to this component
-
-You can contribute to this component via the [design system backlog](https://github.com/ministryofjustice/moj-design-system-backlog/issues/41)
+- users understand what it is for
+- it does not distract users from their task
