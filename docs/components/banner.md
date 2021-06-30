@@ -9,23 +9,21 @@ The [Notification banner component](https://design-system.service.gov.uk/compone
 You should consider using the GOV.UK version if it fits your needs.
 {% endbanner %}
 
-Use the banner component to display a prominent message and related actions to take.
-
 {% lastUpdated "banner" %}
 
 {% example "/examples/banner", 225 %}
 
-## When to use this component
+## When to use
+
+Use the banner component to display a prominent message and related actions to take.
 
 Use this component when users might be performing an action repeatedly. For example, when a judge creates a batch of questions for sending to the citizen.
 
-## When not to use this component
+## When not to use
 
-For rarely performed or important actions, you should use the [Confirmation Page](https://design-system.service.gov.uk/patterns/confirmation-pages/) pattern.
+For rarely performed or important actions, you should use the [Confirmation Page](https://design-system.service.gov.uk/patterns/confirmation-pages/) pattern in the GOV.UK Design System.
 
-## How it works
-
-There are 2 ways to use the banner component. You can use HTML or, if you are using [Nunjucks](https://mozilla.github.io/nunjucks/) or the [GOV.UK Prototype Kit](https://govuk-prototype-kit.herokuapp.com/), you can use the Nunjucks macro.
+## How to use
 
 The banner should be displayed at the top of the page above the main heading and below the back link if there is one.
 
@@ -48,13 +46,3 @@ Use this variant when you want to warn the user that something went wrong.
 Use this variant when you want to tell users some information.
 
 {% example "/examples/banner-information", 175 %}
-
-## Research on this component
-
-This component is marked as experimental because it needs more research.
-
-If you have used the banner component, get in touch to share your research findings.
-
-## Contribute to this component
-
-You can contribute to this component via the [design system backlog](https://github.com/ministryofjustice/moj-design-system-backlog/issues/36)

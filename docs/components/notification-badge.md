@@ -15,7 +15,7 @@ This component is in the GOV.UK Design System [community backlog](https://design
 
 ## When to use
 
-The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are.
+The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are. 
 
 Only use it if the number changes when the user performs an action.
 ## When not to use

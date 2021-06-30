@@ -3,17 +3,13 @@ layout: layouts/patterns.njk
 title: Get help
 ---
 
-Help users get help from within the digital service.
-
 {% example "/examples/patterns/get-help", 250 %}
 
-## When to use this pattern
+## When to use
 
-Use this component at the bottom of every page of your service.
+Help users get help from within the digital service.
 
-Each service will need to determine the best combination of help channels they offer to users. They will also need to determine the response time.
-
-## How it works
+## How to use
 
 Put the component at the bottom of every page of your service.
 
@@ -26,6 +22,7 @@ Determine which combination of channels are best for your service:
 
 You'll need to get agreement of where issues will be sent, who will read it and who will respond to it.
 
+Each service will need to determine the best combination of help channels they offer to users. They will also need to determine the response time.
 ### Contact form
 
 Contact form fields can include:
@@ -43,11 +40,3 @@ The form should also send additional data automatically like:
 - date and time of submission
 
 This will let customer support staff triage the issue and respond quickly.
-
-## Research on this pattern
-
-We need more research. If you have used the support, get in touch to share your research findings.
-
-## Contribute to this pattern
-
-You can contribute to this pattern via the [design system backlog](https://github.com/ministryofjustice/moj-design-system-backlog/issues/47)
