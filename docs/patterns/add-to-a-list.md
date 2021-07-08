@@ -70,7 +70,7 @@ This pattern:
 
 ## Contribute 
 
-[Join the discussion](https://github.com/ministryofjustice/moj-frontend/discussions/203) on GitHub.
+[Discuss add to a list on GitHub](https://github.com/ministryofjustice/moj-frontend/discussions/203)
 
 ### Things we don't know enough about 
 
