@@ -8,11 +8,14 @@ title: Add another
 {% example "/examples/add-another", 664 %}
 ## When to use
 
-Use the add another component when you need to let users enter variations of information multiple times, such as several names for a single application.
+Use this component when users need to add similar information a couple of times, such as several names for a single application.
+
 
 ## When not to use
 
-Don’t use the add another component if you need to let users enter information which varies differently or is not similar. Or if one field is dependent on the answer to the previous.
+Do not use this pattern when users need to add different kinds of information that do not relate to each other.
+
+If users need to add information many times, it may cause performance and validation issues as the page will get very long. In this case, you should use [add to a list](../../patterns/add-to-a-list).
 
 ## How to use
 
