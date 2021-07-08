@@ -23,8 +23,12 @@ User research will tell you if it makes sense to group a number of related quest
 
 If user research tells you to group pages together, you should: 
 
-- follow the guidance on [asking multiple questions on a page](asking-multiple-questions-on-a-page) in the GOV.UK Design System.
+- follow the guidance on [asking multiple questions on a page](https://design-system.service.gov.uk/patterns/question-pages/#asking-multiple-questions-on-a-page) in the GOV.UK Design System.
 
 ### Further reading 
 
 - [Design principles for admin interfaces](https://designnotes.blog.gov.uk/2015/09/25/design-principles-for-admin-interfaces/) including more than one thing per page
+
+## Contribute 
+
+[Discuss question pages on GitHub](https://github.com/ministryofjustice/moj-frontend/discussions/215)

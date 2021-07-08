@@ -20,3 +20,7 @@ The filter component can consist of any form control like radio buttons, checkbo
 Users can select 1 or more filters and submit the form. The page refreshes to show the items that match the filters. The selected filters are also marked at the top of the filter to let users see what they've selected and remove them easily.
 
 Clicking on a selected filter, refreshes the page and removes the filter.
+
+## Contribute
+
+[Discuss filters on GitHub](https://github.com/ministryofjustice/moj-frontend/discussions/197)
