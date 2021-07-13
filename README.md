@@ -15,7 +15,7 @@ If you want to help us build MOJ Frontend, view our [contribution guidelines](CO
 ## Contact the team
 
 MOJ Frontend is maintained by staff in the Ministry of Justice. If you need support, you can use [GitHub discussions](https://github.com/ministryofjustice/moj-frontend/discussions) or one of our Slack channels:
-- [#moj-design-system-support](https://mojdt.slack.com/archives/CH5RUSB27) on MOJ Digital & Technologyfix-
+- [#moj-design-system-support](https://mojdt.slack.com/archives/CH5RUSB27) on MOJ Digital & Technology
 - [#moj-design-system channel](https://ukgovernmentdigital.slack.com/archives/CJ6QDRDGC) on UK Government Digital
 
 ## Quick start
