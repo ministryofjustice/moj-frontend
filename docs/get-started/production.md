@@ -4,7 +4,7 @@ subsection: How we work
 title: Production
 ---
 
-This guide explains how to set up your project so you can start using the styles and coded examples in the MOJ Design System in production.
+This guide explains how to set up your project so you can start using the styles and coded examples in the MOJ Pattern Library in production.
 
 ## Before you start
 

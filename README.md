@@ -6,7 +6,7 @@
 
 MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.
 
-See live examples of MOJ Frontend components, and guidance on when to use them in your service, in the [MOJ Design System](https://design-patterns.service.justice.gov.uk/).
+See live examples of MOJ Frontend components, and guidance on when to use them in your service, in the [MOJ Pattern Library documentation](https://design-patterns.service.justice.gov.uk/).
 
 ## Contribution Guidelines
 
@@ -22,7 +22,7 @@ MOJ Frontend is maintained by staff in the Ministry of Justice. If you need supp
 
 We recommend [installing MOJ Frontend using node package manager (npm)](https://design-patterns.service.justice.gov.uk/get-started/installing-with-npm/).
 
-Once installed, you will be able to use the code from the examples in the [MOJ Design System](https://design-patterns.service.justice.gov.uk/) in your service.
+Once installed, you will be able to use the code from the examples in the [MOJ Pattern Library](https://design-patterns.service.justice.gov.uk/) in your service.
 
 ## Browser support
 
