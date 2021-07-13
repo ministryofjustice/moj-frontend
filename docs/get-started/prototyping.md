@@ -4,21 +4,21 @@ subsection: How we work
 title: Prototyping
 ---
 
-This guide explains how to create prototypes using the MOJ Design System and GOV.UK Prototype Kit.
+This guide explains how to create prototypes using the MOJ Pattern Library and GOV.UK Prototype Kit.
 
 ## Use a template from Cloud Platform
 
 You can follow the [MOJ Cloud Platform guide](https://user-guide.cloud-platform.service.justice.gov.uk/documentation/getting-started/prototype-kit.html) to automatically set up a GitHub repository containing the GOV.UK Prototype Kit and a hosting environment.
 
-This template comes with the MOJ Design System pre-installed so you don't need to set it up manually. However you may need to update it using [the instructions below](#updating-moj-frontend).
+This template comes with the MOJ Pattern Library pre-installed so you don't need to set it up manually. However you may need to update it using [the instructions below](#updating-moj-frontend).
 
 ## Manual installation
 
-Alternatively, you can install the GOV.UK Prototype Kit and MOJ Design System manually. You must follow the [GOV.UK Design System prototype setup guide](https://design-system.service.gov.uk/get-started/prototyping/) first. Once you've done that, continue below.
+Alternatively, you can install the GOV.UK Prototype Kit and MOJ Pattern Library manually. You must follow the [GOV.UK Design System prototype setup guide](https://design-system.service.gov.uk/get-started/prototyping/) first. Once you've done that, continue below.
 
 ### Installing MOJ Frontend
 
-The MOJ Design System uses MOJ Frontend. To install it, run these steps:
+The MOJ Pattern Library uses MOJ Frontend. To install it, run these steps:
 
 1. open Terminal
 2. change the directory to your prototype. For example, `cd path/to/prototype`
