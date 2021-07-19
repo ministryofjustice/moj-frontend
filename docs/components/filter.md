@@ -26,14 +26,9 @@ Users can select 1 or more filters. When the user clicks 'Apply filters' the pag
 The selected filters are displayed at the top to let users see what they've selected and remove them easily. Clicking on a selected filter refreshes the page and removes the filter.
 ### Types of filters
 
-You can use form elements such as [radios](https://design-system.service.gov.uk/components/radios/) and [checkboxes](https://design-system.service.gov.uk/components/checkboxes/) to let users filter the list.
+You can use form elements such as [radios](https://design-system.service.gov.uk/components/radios/) and [checkboxes](https://design-system.service.gov.uk/components/checkboxes/) to let users filter the list. Follow guidance on how to [ask users for dates](https://design-system.service.gov.uk/patterns/dates/). 
 
 User research will tell you the best order of filters.
-#### Asking users for dates
-
-Follow guidance on how to [ask users for dates](https://design-system.service.gov.uk/patterns/dates/) in the GOV.UK Design System. 
-
-You may want to use a [date picker](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date) to make it easier for users to copy the date across accurately from documents or other systems.
 ### Navigating filters
 #### Show and hide individual filters
 
@@ -67,7 +62,7 @@ If you struggle to come up with clear labels, it might be because the way you’
 
 #### Reducing the list of filter options
 
-If you have an individual filter with a long list of options, use an accessible autocomplete (type ahead) to let users narrow down the options before making a selection.
+If a filter has a long list of options, use an [accessible autocomplete](https://github.com/alphagov/accessible-autocomplete) (type ahead) to let users narrow down the options before making a selection.
 
 You should only show options if they match what the user has typed, of if they are already selected.
 
@@ -76,11 +71,6 @@ You should make it easier for users to narrow the options by:
 - making it case insensitive
 - stripping out punctuation characters and duplicate whitespace
 - seeing ‘&’ and ‘and’ as the same
-
-<div class="govuk-inset-text">
-  Accessible autocomplete is not yet in the MOJ Pattern Library.<br>
-  You can <a href="https://github.com/ministryofjustice/moj-frontend/discussions/225">discuss accessible autocomplete on GitHub</a>
-</div>
 
 <div class="govuk-form-group">
 <table>
@@ -97,14 +87,32 @@ You should make it easier for users to narrow the options by:
 
 ## Research
 
+Users don't always see they can filter. Some users try to filter from the columns headings Sirius for OPG and Manage Offenders in Custody for HMPPS)
+
 This component:
 
 - has been usability tested
-- is working in a live service (Workflow tool for Office of the Public Guardian)
+- is working in a live service (Sirius for Office of the Public Guardian)
 
-Users don't always see they can filter.
+Using the native date picker as a filter:
 
-The date picker tested well with users, and is accessible in all browsers and assistive technologies except Dragon.
+- tested well with users
+- is accessible in all browsers except Firefox
+- is accessible with all assistive technologies except Dragon
+
+<div class="govuk-form-group">
+<table>
+    <tr>
+        <td>
+            <img src="../../assets/images/filters-06.png" alt="" width="100%">
+        </td>
+        <td>
+            <img src="../../assets/images/filters-07.png" alt="" width="100%">
+        </td>
+    </tr>
+</table>
+</div>
+
 ## Contribute
 
 [Discuss filters on GitHub](https://github.com/ministryofjustice/moj-frontend/discussions/197)
@@ -113,7 +121,7 @@ The date picker tested well with users, and is accessible in all browsers and as
 
 - Guidance on when to use an alternative to search, such as 'search' or 'sort by'
 
-- How to alleviate confusion between filter and sort. Some users have tried to filter from the top of the columns (Workflow tool for OPG and Manage Offenders in Custody for HMPPS)
+- How to alleviate confusion between filter and sorting columns.
 
 - When to use a horizontal layout for filters
 
