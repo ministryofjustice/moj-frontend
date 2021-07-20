@@ -93,20 +93,6 @@ This component:
 - is working in a live service (Sirius for Office of the Public Guardian)
 
 Users don't always see they can filter. Some users try to filter from the columns headings.
-
-<div class="govuk-form-group">
-<table>
-    <tr>
-        <td>
-            <img src="../../assets/images/filters-06.png" alt="" width="100%">
-        </td>
-        <td>
-            <img src="../../assets/images/filters-07.png" alt="" width="100%">
-        </td>
-    </tr>
-</table>
-</div>
-
 ## Contribute
 
 [Discuss filters on GitHub](https://github.com/ministryofjustice/moj-frontend/discussions/197)
