@@ -221,7 +221,21 @@
           <span class="govuk-caption-xl">Components</span>
           Filter
         </h1>
-        <p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/d409b2143dc444f4b3d5f270acdc427a76eb3f00">31 July 2019</a></p>
+        <p><div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+<div class="govuk-notification-banner__header">
+<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+Important
+</h2>
+</div>
+<div class="govuk-notification-banner__content">
+<h3 class="govuk-notification-banner__heading">
+A similar component exists
+</h3></p>
+<p><a href="https://finder-frontend.herokuapp.com/component-guide/option-select">Option select</a> in the GOV.UK Finder Frontend Component Guide has a similar function and visual design to this component.</p>
+<p>The filter component is being discussed in the <a href="https://github.com/alphagov/govuk-design-system-backlog/issues/21">GOV.UK Design System community backlog</a>, and in the <a href="https://github.com/UKHomeOffice/design-system/issues/264">Home Office Design System backlog</a>.</p>
+</div>
+      </div>
+<p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/d409b2143dc444f4b3d5f270acdc427a76eb3f00">31 July 2019</a></p>
 <div class="app-example">
   <span class="app-example__new-window">
     <a href="/examples/filter" target="_blank">Open this example in a new window</a>
@@ -510,14 +524,110 @@
   </div>
 </div>
 <h2 id="when-to-use">When to use</h2>
-<p>Use the filter component to let users filter a large list of items.</p>
+<p>Use the filter component to help users filter a list of items, such as a list of cases or search results.</p>
+<p>You should only provide users with filters they really need.</p>
 <h2 id="how-to-use">How to use</h2>
-<p>You should use this component with the filter layout as shown in the <a href="../../patterns/filter-a-list">filter a list</a> pattern.</p>
-<p>The filter component can consist of any form control like radio buttons, checkboxes, date inputs and text boxes.</p>
-<p>Users can select 1 or more filters and submit the form. The page refreshes to show the items that match the filters. The selected filters are also marked at the top of the filter to let users see what they've selected and remove them easily.</p>
-<p>Clicking on a selected filter, refreshes the page and removes the filter.</p>
+<p>You should use this component with the <a href="../../patterns/filter-a-list">filter a list</a> pattern to allow the component to be shown with a list.</p>
+<p>Users can select 1 or more filters. When the user clicks 'Apply filters' the page refreshes to show the items that match the filters.</p>
+<p>The selected filters are displayed at the top to let users see what they've selected and remove them easily. Clicking on a selected filter refreshes the page and removes the filter.</p>
+<h3 id="types-of-filters">Types of filters</h3>
+<p>You can use form elements such as <a href="https://design-system.service.gov.uk/components/radios/">radios</a> and <a href="https://design-system.service.gov.uk/components/checkboxes/">checkboxes</a> to let users filter the list. Follow guidance on how to <a href="https://design-system.service.gov.uk/patterns/dates/">ask users for dates</a>.</p>
+<p>User research will tell you the best order of filters.</p>
+<h3 id="navigating-filters">Navigating filters</h3>
+<h4 id="show-and-hide-individual-filters">Show and hide individual filters</h4>
+<p>If you're providing multiple ways of filtering, you may want to let users show and hide filters as needed.</p>
+<div class="govuk-form-group">
+<table>
+    <tr>
+        <td>
+            <img src="../../assets/images/filters-01.png" alt="" width="100%">
+        </td>
+        <td>
+            <img src="../../assets/images/filters-02.png" alt="" width="100%">
+        </td>
+        <td>
+            <img src="../../assets/images/filters-03.png" alt="" width="100%">
+        </td>
+    </tr>
+</table>
+</div>
+<p>User research will tell you if users need filters they have opened to stay open when they return to the page.</p>
+<p>If you're letting users show and hide individual filters you must:</p>
+<ul>
+<li>use clear labels to help users understand what options are in the filter</li>
+<li>allow the user to navigate with a keyboard</li>
+<li>inform the user where they are and when content changes</li>
+</ul>
+<p>If you struggle to come up with clear labels, it might be because the way you’ve separated the content is not clear.</p>
+<h4 id="reducing-the-list-of-filter-options">Reducing the list of filter options</h4>
+<p>If a filter has a long list of options, use an <a href="https://github.com/alphagov/accessible-autocomplete">accessible autocomplete</a> (type ahead) to let users narrow down the options before making a selection.</p>
+<p>You should only show options if they match what the user has typed, of if they are already selected.</p>
+<p>You should make it easier for users to narrow the options by:</p>
+<ul>
+<li>making it case insensitive</li>
+<li>stripping out punctuation characters and duplicate whitespace</li>
+<li>seeing ‘&amp;’ and ‘and’ as the same</li>
+</ul>
+<div class="govuk-form-group">
+<table>
+    <tr>
+        <td>
+            <img src="../../assets/images/filters-04.png" alt="" width="100%">
+        </td>
+        <td>
+            <img src="../../assets/images/filters-05.png" alt="" width="100%">
+        </td>
+    </tr>
+</table>
+</div>
+<h2 id="research">Research</h2>
+<p>This component:</p>
+<ul>
+<li>has been usability tested</li>
+<li>is working in a live service (Sirius for Office of the Public Guardian)</li>
+</ul>
+<p>Users don't always see they can filter. Some users try to filter from the columns headings.</p>
+<div class="govuk-form-group">
+<table>
+    <tr>
+        <td>
+            <img src="../../assets/images/filters-06.png" alt="" width="100%">
+        </td>
+        <td>
+            <img src="../../assets/images/filters-07.png" alt="" width="100%">
+        </td>
+    </tr>
+</table>
+</div>
 <h2 id="contribute">Contribute</h2>
 <p><a href="https://github.com/ministryofjustice/moj-frontend/discussions/197">Discuss filters on GitHub</a></p>
+<h3 id="things-we-don't-know-enough-about">Things we don't know enough about</h3>
+<ul>
+<li>
+<p>Guidance on when to use an alternative to search, such as 'search' or 'sort by'</p>
+</li>
+<li>
+<p>How to alleviate confusion between filter and sorting columns.</p>
+</li>
+<li>
+<p>When to use a horizontal layout for filters</p>
+</li>
+<li>
+<p>More detailed guidance on accessibility</p>
+</li>
+<li>
+<p>How to deal with inter-dependent filters</p>
+</li>
+<li>
+<p>Technical implementation to ensure all pages are filtered not just the current page</p>
+</li>
+<li>
+<p>Whether the ability to filter should be emphasised, for example changing the colour of the 'open filter' button, or having the filter open when the page is first loaded</p>
+</li>
+<li>
+<p>Whether selected filters should be visible at all times above the list of items, like the <a href="https://www.gov.uk/search/all?keywords=test&amp;content_purpose_supergroup%5B%5D=services&amp;content_purpose_supergroup%5B%5D=news_and_communications&amp;order=relevance">GOV.UK search results</a></p>
+</li>
+</ul>
 
       </main>
 
