@@ -92,7 +92,7 @@ This component:
 - has been usability tested
 - is working in a live service (Sirius for Office of the Public Guardian)
 
-Users don't always see they can filter. Some users try to filter from the columns headings Sirius for OPG and Manage Offenders in Custody for HMPPS)
+Users don't always see they can filter. Some users try to filter from the columns headings.
 
 <div class="govuk-form-group">
 <table>
