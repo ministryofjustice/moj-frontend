@@ -6,7 +6,7 @@ title: Filter
 {% banner "A similar component exists" %}
 [Option select](https://finder-frontend.herokuapp.com/component-guide/option-select) in the GOV.UK Finder Frontend Component Guide has a similar function and visual design to this component.
 
-The filter component is being discussed in the [GOV.UK Design System community backlog](https://github.com/alphagov/govuk-design-system-backlog/issues/21), and in the [Home Office Design System backlog](https://github.com/UKHomeOffice/design-system/issues/264).
+The filter component is being discussed in the [GOV.UK Design System community backlog](https://github.com/alphagov/govuk-design-system-backlog/issues/133), and in the [Home Office Design System backlog](https://github.com/UKHomeOffice/design-system/issues/264).
 {% endbanner %}
 
 {% lastUpdated "filter" %}
