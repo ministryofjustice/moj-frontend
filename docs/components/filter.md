@@ -87,18 +87,12 @@ You should make it easier for users to narrow the options by:
 
 ## Research
 
-Users don't always see they can filter. Some users try to filter from the columns headings Sirius for OPG and Manage Offenders in Custody for HMPPS)
-
 This component:
 
 - has been usability tested
 - is working in a live service (Sirius for Office of the Public Guardian)
 
-Using the native date picker as a filter:
-
-- tested well with users
-- is accessible in all browsers except Firefox
-- is accessible with all assistive technologies except Dragon
+Users don't always see they can filter. Some users try to filter from the columns headings Sirius for OPG and Manage Offenders in Custody for HMPPS)
 
 <div class="govuk-form-group">
 <table>
