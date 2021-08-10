@@ -47,10 +47,12 @@ module.exports = {
         {
           from: "src/moj/assets",
           to: path.resolve(__dirname, "public/assets"),
+          force: true,
         },
         {
           from: "app/assets/images",
           to: path.resolve(__dirname, "public/assets/images"),
+          force: true,
         },
         {
           from: "src/moj/vendor",
