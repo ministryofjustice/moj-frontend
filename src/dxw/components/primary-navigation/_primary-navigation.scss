@@ -1,0 +1,120 @@
+/* ==========================================================================
+   #PRIMARY NAVIGATION
+   ========================================================================== */
+
+.moj-primary-navigation {
+  background-color: govuk-colour("light-grey");
+}
+
+.moj-primary-navigation__container {
+  @include moj-width-container;
+  font-size: 0; // Hide whitespace between elements
+  text-align: justify; // Trick to remove the need for floats
+
+  &:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+  }
+
+}
+
+.moj-primary-navigation__nav {
+  text-align: left;
+  @include govuk-media-query($from: desktop) {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+}
+
+.moj-primary-navigation__list {
+  font-size: 0; // Removes white space when using inline-block on child element.
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.moj-primary-navigation__item {
+  @include govuk-font($size: 19);
+  display: inline-block;
+  margin-right: govuk-spacing(4);
+  margin-top: 0;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+}
+
+.moj-primary-navigation__link {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
+  display: block;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:link,
+  &:visited {
+    color: $govuk-link-colour;
+  }
+
+  &:hover {
+    color: govuk-tint($govuk-link-colour, 25);
+  }
+
+  &:focus {
+    color: govuk-colour("black"); // Focus colour on yellow should really be black.
+    position: relative; // Ensure focus sits above everything else.
+    z-index: 1;
+    box-shadow: none;
+  }
+
+  &:focus:before {
+    background-color: govuk-colour("black");
+    content: "";
+    display: block;
+    height: 5px;
+    position: absolute; bottom: 0; left: 0;
+    width: 100%;
+  }
+
+  &[aria-current] {
+    color: $govuk-link-colour;
+    position: relative;
+    text-decoration: none;
+    font-weight: bold;
+    &:before {
+      background-color: $govuk-link-colour;
+      content: "";
+      display: block;
+      height: 5px;
+      position: absolute; bottom: 0; left: 0;
+      width: 100%;
+    }
+
+    &:focus {
+      color: govuk-colour("black"); // Focus colour on yellow should really be black.
+      position: relative; // Ensure focus sits above everything else.
+      border: none;
+
+      &:before {
+        background-color: govuk-colour("black");
+      }
+
+    }
+
+  }
+
+}
+
+.moj-primary-navigation__search {
+
+  @include govuk-media-query($from: desktop) {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+}
