@@ -3,8 +3,6 @@ layout: layouts/component.njk
 title: Header
 ---
 
-{% lastUpdated "header" %}
-
 {% example "/examples/header", 150 %}
 
 ## When to use
