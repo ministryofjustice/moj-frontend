@@ -45,7 +45,7 @@ module.exports = {
           to: path.resolve(__dirname, "public/assets"),
         },
         {
-          from: "src/moj/assets",
+          from: "src/dxw/assets",
           to: path.resolve(__dirname, "public/assets"),
           force: true,
         },
@@ -55,7 +55,7 @@ module.exports = {
           force: true,
         },
         {
-          from: "src/moj/vendor",
+          from: "src/dxw/vendor",
           to: path.resolve(__dirname, "public/assets/javascript"),
         },
       ],
