@@ -112,7 +112,7 @@ const nunjucksEnvironment = nunjucks.configure(appViews, {
 });
 
 // Add filters from MOJ Frontend
-let mojFilters = require('./src/moj/filters/all')();
+let mojFilters = require('./src/dxw/filters/all')();
 mojFilters = Object.assign(mojFilters);
 Object.keys(mojFilters).forEach(function (filterName) {
   nunjucksEnvironment.addFilter(filterName, mojFilters[filterName])
