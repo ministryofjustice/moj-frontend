@@ -7,7 +7,7 @@ $govuk-assets-path: "../" !default;
 @import "node_modules/govuk-frontend/govuk/all";
 
 // MOJ Frontend
-@import "src/moj/all";
+@import "src/dxw/all";
 
 // highlight.js
 @import "node_modules/highlight.js/scss/github.scss";
