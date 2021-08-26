@@ -67,8 +67,8 @@
 {% block pageScripts %}
 
   <script>
-    if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
-      new MOJFrontend.MultiFileUpload({
+    if(typeof dxwFrontend.MultiFileUpload !== 'undefined') {
+      new dxwFrontend.MultiFileUpload({
         container: $('.moj-multi-file-upload'),
         uploadUrl: '/ajax-upload',
         deleteUrl: '/ajax-delete',

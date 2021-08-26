@@ -3,11 +3,19 @@ $govuk-page-width: 1220px !default;
 $moj-assets-path: "../" !default;
 $govuk-assets-path: "../" !default;
 
+$govuk-focus-colour: rgb(111, 205, 226) !default;
+$govuk-text-colour: rgb(36, 55, 70) !default;
+$govuk-link-colour: rgb(45, 57, 114) !default;
+
+// Override GDS Transport font family - remove if on gov.uk subdomain
+$govuk-font-family: "Open Sans", sans-serif !default;
+$govuk-font-family-gds-transport: $govuk-font-family !default;
+
 // GOV.UK Frontend
 @import "node_modules/govuk-frontend/govuk/all";
 
-// MOJ Frontend
-@import "src/moj/all";
+// dxw Frontend
+@import "src/dxw/all";
 
 // highlight.js
 @import "node_modules/highlight.js/scss/github.scss";

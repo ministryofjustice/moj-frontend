@@ -1,7 +1,7 @@
 ### Requirements for contributing to documentation
 
 - Fill out the template below. Maintainers are free to close any pull requests that do not include enough information, at their discretion.
-- The pull request must only contribute documentation (for example, markdown files or API docs). To contribute other changes, you must use a different template. You can see all templates at https://github.com/ministryofjustice/moj-frontend/tree/main/.github/PULL_REQUEST_TEMPLATE.
+- The pull request must only contribute documentation (for example, markdown files or API docs). To contribute other changes, you must use a different template. You can see all templates at https://github.com/dxw/dxw-frontend/tree/main/.github/PULL_REQUEST_TEMPLATE.
 
 ### Description of the change
 

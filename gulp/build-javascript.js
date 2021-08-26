@@ -4,19 +4,19 @@ var umd = require('gulp-umd');
 
 gulp.task('build:javascript', () => {
   return gulp.src([
-      'src/moj/namespace.js',
-      'src/moj/helpers.js',
-      'src/moj/all.js',
-      'src/moj/components/**/*.js'
+      'src/dxw/namespace.js',
+      'src/dxw/helpers.js',
+      'src/dxw/all.js',
+      'src/dxw/components/**/*.js'
     ])
     .pipe(concat('all.js'))
     .pipe(umd({
       exports: function() {
-        return 'MOJFrontend';
+        return 'dxwFrontend';
       },
       namespace: function() {
-        return 'MOJFrontend';
+        return 'dxwFrontend';
       }
     }))
-    .pipe(gulp.dest('package/moj/'));
+    .pipe(gulp.dest('package/dxw/'));
 });

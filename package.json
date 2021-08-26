@@ -1,6 +1,6 @@
 {
-  "name": "@ministryofjustice/frontend",
-  "description": "The MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.",
+  "name": "@dxw/frontend",
+  "description": "The dxw Frontend contains the code you need to start building user interfaces for internal and client projects.",
   "main": "index.js",
   "files": [
     "/package"
@@ -19,9 +19,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ministryofjustice/moj-frontend.git"
+    "url": "https://github.com/dxw/dxw-frontend.git"
   },
-  "author": "MOJ Digital & Technology",
+  "author": "dxw",
   "license": "MIT",
   "publishConfig": {
     "access": "public",
@@ -30,9 +30,9 @@
   },
   "private": false,
   "bugs": {
-    "url": "https://github.com/ministryofjustice/moj-frontend/issues"
+    "url": "https://github.com/dxw/dxw-frontend/issues"
   },
-  "homepage": "https://github.com/ministryofjustice/moj-frontend#readme",
+  "homepage": "https://github.com/dxw/dxw-frontend#readme",
   "dependencies": {
     "@11ty/eleventy": "^0.12.1",
     "basic-auth": "^2.0.1",

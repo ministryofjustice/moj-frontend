@@ -111,11 +111,11 @@ const nunjucksEnvironment = nunjucks.configure(appViews, {
   watch: true
 });
 
-// Add filters from MOJ Frontend
-let mojFilters = require('./src/moj/filters/all')();
-mojFilters = Object.assign(mojFilters);
-Object.keys(mojFilters).forEach(function (filterName) {
-  nunjucksEnvironment.addFilter(filterName, mojFilters[filterName])
+// Add filters from dxw Frontend
+let dxwFilters = require('./src/dxw/filters/all')();
+dxwFilters = Object.assign(dxwFilters);
+Object.keys(dxwFilters).forEach(function (filterName) {
+  nunjucksEnvironment.addFilter(filterName, dxwFilters[filterName])
 });
 
 // Set view engine
@@ -124,7 +124,7 @@ app.set('view engine', 'html');
 // Middleware to serve static assets
 app.use('/public', express.static(path.join(__dirname, '/public')));
 app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')));
-app.use('/assets', express.static(path.join(__dirname, 'src', 'moj', 'assets')));
+app.use('/assets', express.static(path.join(__dirname, 'src', 'dxw', 'assets')));
 
 app.use(sessionInMemory(Object.assign(sessionOptions, {
   name: 'moj-frontend',

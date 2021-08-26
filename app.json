@@ -1,13 +1,13 @@
 {
-  "name": "moj-frontend",
-  "description": "The MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.",
+  "name": "dxw-frontend",
+  "description": "The dxw Frontend contains the code you need to start building user interfaces for internal and client projects.",
   "keywords": [
     "ministry-of-justice",
     "frontend",
     "frontend-framework"
   ],
-  "website": "https://moj-frontend.herokuapp.com/",
-  "repository": "https://github.com/ministryofjustice/moj-frontend",
+  "website": "",
+  "repository": "https://github.com/dxw/dxw-frontend",
   "addons": [
 
   ],

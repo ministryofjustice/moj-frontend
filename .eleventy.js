@@ -4,7 +4,7 @@ const hljs = require("highlight.js");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const matter = require("gray-matter");
-const mojFilters = require("./src/moj/filters/all");
+const dxwFilters = require("./src/dxw/filters/all");
 const nunjucks = require("nunjucks");
 const path = require("path");
 const { execSync } = require("child_process");
@@ -19,7 +19,7 @@ module.exports = function (eleventyConfig) {
 
   Object.entries({
     ...eleventyConfig.nunjucksFilters,
-    ...mojFilters(),
+    ...dxwFilters(),
   }).forEach(([name, callback]) => {
     nunjucksEnv.addFilter(name, callback);
   });
@@ -80,14 +80,14 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addShortcode("lastUpdated", function (component) {
-    const dirPath = path.join(__dirname, "src/moj/components", component);
+    const dirPath = path.join(__dirname, "src/dxw/components", component);
     const [commit, lastUpdated] = execSync(
       `LANG=en_GB git log -n1 --pretty=format:%H,%ad --date=format:'%e %B %Y' ${dirPath}`
     )
       .toString()
       .split(",");
 
-    return `<p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/${commit}">${lastUpdated}</a></p>`;
+    return `<p>Last updated: <a href="https://github.com/dxw/dxw-frontend/commit/${commit}">${lastUpdated}</a></p>`;
   });
 
   eleventyConfig.addPairedShortcode("banner", function (content, title) {

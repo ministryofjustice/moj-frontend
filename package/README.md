@@ -1,41 +1,24 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![moj-frontend](https://circleci.com/gh/ministryofjustice/moj-frontend.svg?style=shield)](https://circleci.com/gh/ministryofjustice/moj-frontend)
+[![dxw-frontend](https://circleci.com/gh/dxw/dxw-frontend.svg?style=shield)](https://circleci.com/gh/dxw/dxw-frontend)
 
-# Ministry of Justice Frontend
+# dxw Frontend
 
-MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.
-
-See live examples of MOJ Frontend components, and guidance on when to use them in your service, in the [MOJ Pattern Library documentation](https://design-patterns.service.justice.gov.uk/).
+dxw Frontend contains the code you need to start building user interfaces for internal and client-based projects.
 
 ## Contribution Guidelines
 
-If you want to help us build MOJ Frontend, view our [contribution guidelines](CONTRIBUTING.md). This covers all areas from semvar commit messages to release process.
-
-## Contact the team
-
-MOJ Frontend is maintained by staff in the Ministry of Justice. If you need support, you can use [GitHub discussions](https://github.com/ministryofjustice/moj-frontend/discussions) or one of our Slack channels:
-- [#moj-design-system-support](https://mojdt.slack.com/archives/CH5RUSB27) on MOJ Digital & Technology
-- [#moj-design-system channel](https://ukgovernmentdigital.slack.com/archives/CJ6QDRDGC) on UK Government Digital
-
-## Quick start
-
-We recommend [installing MOJ Frontend using node package manager (npm)](https://design-patterns.service.justice.gov.uk/get-started/installing-with-npm/).
-
-Once installed, you will be able to use the code from the examples in the [MOJ Pattern Library](https://design-patterns.service.justice.gov.uk/) in your service.
+If you want to help us build dxw Frontend, view our [contribution guidelines](CONTRIBUTING.md). This covers all areas from semvar commit messages to release process.
 
 ## Browser support
 
-MOJ Frontend will allow you to build services that comply with the [guidance in the Service Manual][service-manual-browsers].
-
-If you are including MOJ Frontend as part of a stylesheet that you are generating in your application's build pipeline, you will need to [generate and
-include a separate stylesheet in order to support Internet Explorer 8](docs/installation/supporting-internet-explorer-8.md).
+dxw Frontend will allow you to build services that comply with the [guidance in the Service Manual][service-manual-browsers].
 
 [service-manual-browsers]: https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices#browsers-to-test-in
 
 ## Assistive technology support
 
-MOJ Frontend will allow you to build services that comply with the [guidance in the Service Manual][service-manual-assistive-technologies].
+dxw Frontend will allow you to build services that comply with the [guidance in the Service Manual][service-manual-assistive-technologies].
 
 In addition, we test that all content is accessible with keyboard only.
 
