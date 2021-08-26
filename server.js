@@ -124,7 +124,7 @@ app.set('view engine', 'html');
 // Middleware to serve static assets
 app.use('/public', express.static(path.join(__dirname, '/public')));
 app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')));
-app.use('/assets', express.static(path.join(__dirname, 'src', 'moj', 'assets')));
+app.use('/assets', express.static(path.join(__dirname, 'src', 'dxw', 'assets')));
 
 app.use(sessionInMemory(Object.assign(sessionOptions, {
   name: 'moj-frontend',
