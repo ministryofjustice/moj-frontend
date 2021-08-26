@@ -1,6 +1,6 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![moj-frontend](https://circleci.com/gh/ministryofjustice/moj-frontend.svg?style=shield)](https://circleci.com/gh/ministryofjustice/moj-frontend)
+[![dxw-frontend](https://circleci.com/gh/dxw/dxw-frontend.svg?style=shield)](https://circleci.com/gh/dxw/dxw-frontend)
 
 # Ministry of Justice Frontend
 
@@ -14,7 +14,7 @@ If you want to help us build MOJ Frontend, view our [contribution guidelines](CO
 
 ## Contact the team
 
-MOJ Frontend is maintained by staff in the Ministry of Justice. If you need support, you can use [GitHub discussions](https://github.com/ministryofjustice/moj-frontend/discussions) or one of our Slack channels:
+MOJ Frontend is maintained by staff in the Ministry of Justice. If you need support, you can use [GitHub discussions](https://github.com/dxw/dxw-frontend/discussions) or one of our Slack channels:
 - [#moj-design-system-support](https://mojdt.slack.com/archives/CH5RUSB27) on MOJ Digital & Technology
 - [#moj-design-system channel](https://ukgovernmentdigital.slack.com/archives/CJ6QDRDGC) on UK Government Digital
 

@@ -87,7 +87,7 @@ module.exports = function (eleventyConfig) {
       .toString()
       .split(",");
 
-    return `<p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/${commit}">${lastUpdated}</a></p>`;
+    return `<p>Last updated: <a href="https://github.com/dxw/dxw-frontend/commit/${commit}">${lastUpdated}</a></p>`;
   });
 
   eleventyConfig.addPairedShortcode("banner", function (content, title) {

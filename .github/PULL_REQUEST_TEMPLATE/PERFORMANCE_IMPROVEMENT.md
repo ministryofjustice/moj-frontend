@@ -1,8 +1,8 @@
 ### Requirements for contributing a performance improvement
 
 - Fill out the template below. Maintainers are free to close any pull requests that do not include enough information, at their discretion.
-- The pull request must only fix an existing bug. To contribute other changes, you must use a different template. You can see all templates at https://github.com/ministryofjustice/moj-frontend/tree/main/.github/PULL_REQUEST_TEMPLATE.
-- After you create the pull request, all status checks must be pass before a maintainer reviews your contribution. For more details, please see https://github.com/ministryofjustice/moj-frontend/tree/main/CONTRIBUTING.md#pull-requests.
+- The pull request must only fix an existing bug. To contribute other changes, you must use a different template. You can see all templates at https://github.com/dxw/dxw-frontend/tree/main/.github/PULL_REQUEST_TEMPLATE.
+- After you create the pull request, all status checks must be pass before a maintainer reviews your contribution. For more details, please see https://github.com/dxw/dxw-frontend/tree/main/CONTRIBUTING.md#pull-requests.
 
 ### Description of the change
 

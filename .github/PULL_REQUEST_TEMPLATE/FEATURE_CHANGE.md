@@ -17,11 +17,11 @@ Link to the issue or RFC to which your change relates. This link must be one of 
 
 To contribute an enhancement that isn't covered by one of the items above, please follow our guide for suggesting an enhancement:
 
-https://github.com/ministryofjustice/moj-frontend/blob/main/CONTRIBUTING.md#suggesting-enhancements
+https://github.com/dxw/dxw-frontend/blob/main/CONTRIBUTING.md#suggesting-enhancements
 
 To contribute other changes, you must use a different template. You can see all templates at:
 
-https://github.com/ministryofjustice/moj-frontend/tree/main/.github/PULL_REQUEST_TEMPLATE.
+https://github.com/dxw/dxw-frontend/tree/main/.github/PULL_REQUEST_TEMPLATE.
 
 -->
 
