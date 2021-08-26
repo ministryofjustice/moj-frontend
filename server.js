@@ -111,11 +111,11 @@ const nunjucksEnvironment = nunjucks.configure(appViews, {
   watch: true
 });
 
-// Add filters from MOJ Frontend
-let mojFilters = require('./src/dxw/filters/all')();
-mojFilters = Object.assign(mojFilters);
-Object.keys(mojFilters).forEach(function (filterName) {
-  nunjucksEnvironment.addFilter(filterName, mojFilters[filterName])
+// Add filters from dxw Frontend
+let dxwFilters = require('./src/dxw/filters/all')();
+dxwFilters = Object.assign(dxwFilters);
+Object.keys(dxwFilters).forEach(function (filterName) {
+  nunjucksEnvironment.addFilter(filterName, dxwFilters[filterName])
 });
 
 // Set view engine
