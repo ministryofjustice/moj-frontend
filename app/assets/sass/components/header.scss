@@ -1,5 +1,14 @@
 .moj-header--docs {
-    background-color: #220051;
-    padding-top: govuk-spacing(3);
-    border-bottom: 10px solid govuk-colour("pink");
+  background-color: govuk-colour("white");
+  color: #243746;
+  padding-top: govuk-spacing(3);
+  border-bottom: 10px solid #243746;
+
+  .moj-header__link:link,
+  .moj-header__link:visited,
+  .moj-header__link:focus,
+  .moj-header__link:active {
+    color: #243746;
   }
+}
+
