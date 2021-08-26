@@ -1,5 +1,5 @@
 import GOVUKFrontend from "govuk-frontend/govuk/all.js";
-import dxwFrontend from "../../package/moj/all.js";
+import dxwFrontend from "../../package/dxw/all.js";
 
 import Copy from "./javascript/copy";
 import Tabs from "./javascript/tabs";
