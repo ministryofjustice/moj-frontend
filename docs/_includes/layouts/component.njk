@@ -16,51 +16,12 @@
         sections: [
           {
             heading: {
-              text: "Form elements"
-            },
-            items: [
-            {
-              text: 'Add another',
-              href: ('/components/add-another' | url)
-            },
-            {
-              text: 'Form validator',
-              href: ('/components/form-validator' | url)
-            },
-            {
-              text: 'Multi file upload',
-              href: ('/components/multi-file-upload' | url)
-            },
-            {
-              text: 'Password reveal',
-              href: ('/components/password-reveal' | url)
-            },
-            {
-              text: 'Rich text editor',
-              href: ('/components/rich-text-editor' | url)
-            }
-            ]
-          },
-          {
-            heading: {
               text: "Navigation"
             },
             items: [
             {
               text: 'Header',
               href: ('/components/header' | url)
-            },
-            {
-              text: 'Search',
-              href: ('/components/search' | url)
-            },
-            {
-              text: 'Identity bar',
-              href: ('/components/identity-bar' | url)
-            },
-            {
-              text: 'Organisation switcher',
-              href: ('/components/organisation-switcher' | url)
             },
             {
               text: 'Primary navigation',
@@ -73,74 +34,12 @@
             {
               text: 'Side navigation',
               href: ('/components/side-navigation' | url)
-            },
-            {
-              text: 'Notification badge',
-              href: ('/components/notification-badge' | url)
-            },
-            {
-              text: 'Page header actions',
-              href: ('/components/page-header-actions' | url)
-            },
-            {
-              text: 'Button menu',
-              href: ('/components/button-menu' | url)
-            },
-            {
-              text: 'Filter',
-              href: ('/components/filter' | url)
-            },
-            {
-              text: 'Pagination',
-              href: ('/components/pagination' | url)
-            }
-            ]
-          },
-          {
-            heading: {
-              text: "Content presentation"
-            },
-            items: [
-            {
-              text: 'Banner',
-              href: ('/components/banner' | url)
-            },
-            {
-              text: 'Badge',
-              href: ('/components/badge' | url)
-            },
-            {
-              text: 'Messages',
-              href: ('/components/messages' | url)
-            },
-            {
-              text: 'Timeline',
-              href: ('/components/timeline' | url)
-            },
-            {
-              text: 'Multi select',
-              href: ('/components/multi-select' | url)
-            },
-            {
-              text: 'Sortable table',
-              href: ('/components/sortable-table' | url)
             }
             ]
           }
         ]
 
         }) }}
-
-      <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
-
-      {{ appSideNavigation({
-        items: [
-          {
-            text: 'Archived components',
-            href: ('/components/archived-components' | url)
-          }
-        ]
-      }) }}
 
       {% include "./partials/back-to-top.njk" %}
     </div>
