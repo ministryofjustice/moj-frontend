@@ -1,4 +1,4 @@
-MOJFrontend.removeAttributeValue = function(el, attr, value) {
+dxwFrontend.removeAttributeValue = function(el, attr, value) {
   var re, m;
   if (el.getAttribute(attr)) {
     if (el.getAttribute(attr) == value) {
@@ -13,7 +13,7 @@ MOJFrontend.removeAttributeValue = function(el, attr, value) {
   }
 }
 
-MOJFrontend.addAttributeValue = function(el, attr, value) {
+dxwFrontend.addAttributeValue = function(el, attr, value) {
   var re;
   if (!el.getAttribute(attr)) {
     el.setAttribute(attr, value);
@@ -26,22 +26,22 @@ MOJFrontend.addAttributeValue = function(el, attr, value) {
   }
 };
 
-MOJFrontend.dragAndDropSupported = function() {
+dxwFrontend.dragAndDropSupported = function() {
   var div = document.createElement('div');
   return typeof div.ondrop != 'undefined';
 };
 
-MOJFrontend.formDataSupported = function() {
+dxwFrontend.formDataSupported = function() {
   return typeof FormData == 'function';
 };
 
-MOJFrontend.fileApiSupported = function() {
+dxwFrontend.fileApiSupported = function() {
   var input = document.createElement('input');
   input.type = 'file';
   return typeof input.files != 'undefined';
 };
 
-MOJFrontend.nodeListForEach = function(nodes, callback) {
+dxwFrontend.nodeListForEach = function(nodes, callback) {
   if (window.NodeList.prototype.forEach) {
     return nodes.forEach(callback)
   }

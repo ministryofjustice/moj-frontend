@@ -23,7 +23,7 @@ The MOJ Pattern Library uses MOJ Frontend. To install it, run these steps:
 1. open Terminal
 2. change the directory to your prototype. For example, `cd path/to/prototype`
 3. run `npm install @ministryofjustice/frontend --save`
-4. add `window.MOJFrontend.initAll()` to `app/assets/javascripts/application.js` below the line doing the same for `GOVUKFrontend`
+4. add `window.dxwFrontend.initAll()` to `app/assets/javascripts/application.js` below the line doing the same for `GOVUKFrontend`
 
 ## Updating MOJ Frontend
 

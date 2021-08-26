@@ -1,4 +1,4 @@
-MOJFrontend.initAll = function (options) {
+dxwFrontend.initAll = function (options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== 'undefined' ? options : {};
 
@@ -7,25 +7,25 @@ MOJFrontend.initAll = function (options) {
   var scope = typeof options.scope !== 'undefined' ? options.scope : document;
 
   var $addAnothers = scope.querySelectorAll('[data-module="moj-add-another"]');
-  MOJFrontend.nodeListForEach($addAnothers, function ($addAnother) {
-    new MOJFrontend.AddAnother($addAnother);
+  dxwFrontend.nodeListForEach($addAnothers, function ($addAnother) {
+    new dxwFrontend.AddAnother($addAnother);
   });
 
   var $multiSelects = scope.querySelectorAll('[data-module="moj-multi-select"]');
-  MOJFrontend.nodeListForEach($multiSelects, function ($multiSelect) {
-    new MOJFrontend.MultiSelect({
+  dxwFrontend.nodeListForEach($multiSelects, function ($multiSelect) {
+    new dxwFrontend.MultiSelect({
       container: $multiSelect.querySelector($multiSelect.getAttribute('data-multi-select-checkbox')),
       checkboxes: $multiSelect.querySelectorAll('tbody .govuk-checkboxes__input')
     });
   });
 
   var $passwordReveals = scope.querySelectorAll('[data-module="moj-password-reveal"]');
-  MOJFrontend.nodeListForEach($passwordReveals, function ($passwordReveal) {
-    new MOJFrontend.PasswordReveal($passwordReveal);
+  dxwFrontend.nodeListForEach($passwordReveals, function ($passwordReveal) {
+    new dxwFrontend.PasswordReveal($passwordReveal);
   });
 
   var $richTextEditors = scope.querySelectorAll('[data-module="moj-rich-text-editor"]');
-  MOJFrontend.nodeListForEach($richTextEditors, function ($richTextEditor) {
+  dxwFrontend.nodeListForEach($richTextEditors, function ($richTextEditor) {
     var options = {
       textarea: $($richTextEditor)
     };
@@ -37,12 +37,12 @@ MOJFrontend.initAll = function (options) {
       for (var item in toolbar) options.toolbar[toolbar[item]] = true;
     }
 
-    new MOJFrontend.RichTextEditor(options);
+    new dxwFrontend.RichTextEditor(options);
   });
 
   var $searchToggles = scope.querySelectorAll('[data-module="moj-search-toggle"]');
-  MOJFrontend.nodeListForEach($searchToggles, function ($searchToggle) {
-    new MOJFrontend.SearchToggle({
+  dxwFrontend.nodeListForEach($searchToggles, function ($searchToggle) {
+    new dxwFrontend.SearchToggle({
       toggleButton: {
         container: $($searchToggle.querySelector('.moj-search-toggle__toggle')),
         text: $searchToggle.getAttribute('data-moj-search-toggle-text')
@@ -54,15 +54,15 @@ MOJFrontend.initAll = function (options) {
   });
 
   var $sortableTables = scope.querySelectorAll('[data-module="moj-sortable-table"]');
-  MOJFrontend.nodeListForEach($sortableTables, function ($table) {
-    new MOJFrontend.SortableTable({
+  dxwFrontend.nodeListForEach($sortableTables, function ($table) {
+    new dxwFrontend.SortableTable({
       table: $table
     });
   });
 
   var $sortableTables = scope.querySelectorAll('[data-module="moj-sortable-table"]');
-  MOJFrontend.nodeListForEach($sortableTables, function ($table) {
-    new MOJFrontend.SortableTable({
+  dxwFrontend.nodeListForEach($sortableTables, function ($table) {
+    new dxwFrontend.SortableTable({
       table: $table
     });
   });

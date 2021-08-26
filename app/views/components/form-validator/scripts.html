@@ -1,5 +1,5 @@
 <script>
-  const validator = new MOJFrontend.FormValidator(document.forms[0]);
+  const validator = new dxwFrontend.FormValidator(document.forms[0]);
   validator.addValidator('email', [{
     method: function(field) {
         return field.value.trim().length > 0;

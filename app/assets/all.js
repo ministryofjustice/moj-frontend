@@ -1,11 +1,11 @@
 import GOVUKFrontend from "govuk-frontend/govuk/all.js";
-import MOJFrontend from "../../package/moj/all.js";
+import dxwFrontend from "../../package/moj/all.js";
 
 import Copy from "./javascript/copy";
 import Tabs from "./javascript/tabs";
 
 GOVUKFrontend.initAll();
-MOJFrontend.initAll();
+dxwFrontend.initAll();
 
 $(function () {
   $('[data-module="app-tabs"]').each(function (e, el) {
@@ -17,4 +17,4 @@ $(function () {
   });
 });
 
-window.MOJFrontend = MOJFrontend;
+window.dxwFrontend = dxwFrontend;

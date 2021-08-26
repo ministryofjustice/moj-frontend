@@ -28,7 +28,7 @@ Then import the JavaScript file before the closing `</body>` tag of your HTML pa
   <script src="<YOUR-APP>/jquery.js"></script>
   <script src="<YOUR-APP>/<YOUR-JS-FILE>.js"></script>
   <script>
-    window.MOJFrontend.initAll()
+    window.dxwFrontend.initAll()
   </script>
 </body>
 ```
@@ -53,7 +53,7 @@ Rather than using `initAll`, you can initialise individual components by identif
 
 ```html
 <script>
-var PasswordReveal = window.MOJFrontend.PasswordReveal
+var PasswordReveal = window.dxwFrontend.PasswordReveal
 var $passwordReveal = document.querySelector('[data-module="moj-password-reveal"]')
 if ($passwordReveal) {
     new PasswordReveal($passwordReveal)
