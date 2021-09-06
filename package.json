@@ -62,7 +62,7 @@
     "@babel/preset-env": "^7.14.4",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@ministryofjustice/frontend": "file:./package",
+    "@ministryofjustice/frontend": "^0.2.5-alpha",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/npm": "^7.1.1",
