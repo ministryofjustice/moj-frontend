@@ -19,7 +19,7 @@ If users need to add information many times, it may cause performance and valida
 
 ## How to use
 
-The add another component uses JavaScript. When JavaScript is not available, the page will reload with the additional form elements added to the page.
+The add another component relies on JavaScript. When JavaScript is not available, your page should reload with the additional form elements if the "Add another" button is pressed.
 
 ## Research
 
