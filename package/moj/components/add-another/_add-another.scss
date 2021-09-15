@@ -16,7 +16,7 @@
 
   &__title {
     float: left;
-    padding: 4px 0;
+    padding: 4px 100px 4px 0;
     width: 100%;
 
     & + .govuk-form-group {
@@ -28,6 +28,7 @@
     position: absolute;
     right: 0;
     top: 0;
+    width: auto;
   }
 
   &__add-button {

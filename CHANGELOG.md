@@ -1,3 +1,11 @@
+## [0.2.6](https://github.com/ministryofjustice/moj-frontend/compare/v0.2.5-alpha...v0.2.6-alpha) (2021-09-15)
+
+
+### Bug Fixes
+
+* **add-another:** shrink remove button ([#256](https://github.com/ministryofjustice/moj-frontend/issues/256)) ([9998b24](https://github.com/ministryofjustice/moj-frontend/commit/9998b24153fdf4040c4a4f28223f64e918e5dcc0))
+* **assets:** adds missing apple touch icon images ([26ede43](https://github.com/ministryofjustice/moj-frontend/commit/26ede43933f92bb73e1a2aa1094e3573c0e11ef5))
+
 ## [0.2.5](https://github.com/ministryofjustice/moj-frontend/compare/v0.2.4-alpha...v0.2.5-alpha) (2021-06-28)
 
 
