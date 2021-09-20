@@ -24,7 +24,7 @@ You can also use Heroku to host your prototypes. This is recommended for staff o
 
 You'll need to be a member of the [moj-design](https://dashboard.heroku.com/teams/moj-design/apps) Heroku team and have your prototype in [MOJ's GitHub account](https://github.com/ministryofjustice).
 
-If you don't have access to these, ask in the Slack channel [#moj-design-system-support](https://mojdt.slack.com/messages/moj-design-system-support) and whoever is managing support that day should be able to add you.
+If you don't have access to these, ask in the Slack channel [#moj-pattern-library-support](https://mojdt.slack.com/messages/moj-pattern-library-support) and whoever is managing support that day should be able to add you.
 
 <!-- If you don't know how to setup GitHub read the [version your prototype](#) guide. -->
 
