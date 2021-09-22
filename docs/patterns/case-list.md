@@ -1,6 +1,6 @@
 ---
 layout: layouts/patterns.njk
-title: Case list
+title: Case list pages
 ---
 
 <div class="govuk-form-group">
