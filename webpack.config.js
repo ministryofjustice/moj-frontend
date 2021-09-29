@@ -4,9 +4,9 @@ var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
-    all: "./app/assets/all.js",
-    application: "./app/assets/sass/application.scss",
-    "application-ie8": "./app/assets/sass/application-ie8.scss",
+    all: "./assets/all.js",
+    application: "./assets/sass/application.scss",
+    "application-ie8": "./assets/sass/application-ie8.scss",
   },
   mode: "production",
   devtool: "source-map",
@@ -50,7 +50,7 @@ module.exports = {
           force: true,
         },
         {
-          from: "app/assets/images",
+          from: "assets/images",
           to: path.resolve(__dirname, "public/assets/images"),
           force: true,
         },
