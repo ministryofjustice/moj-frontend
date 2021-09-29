@@ -1,5 +1,5 @@
 {
-  "name": "@ministryofjustice/frontend",
+  "name": "@gregtyler/moj-frontend-clone",
   "description": "The MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.",
   "main": "index.js",
   "files": [
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ministryofjustice/moj-frontend.git"
+    "url": "https://github.com/gregtyler/moj-frontend.git"
   },
   "author": "MOJ Digital & Technology",
   "license": "MIT",
