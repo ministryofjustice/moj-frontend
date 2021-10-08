@@ -30,6 +30,10 @@ Use the format first-name, last-name unless user research tells you to use a dif
 
 ### If you want add a link to let users view details of a case
 
+<div class="govuk-form-group">
+    <img alt="Example of a row of a case list, showing the name of the detainee as a link in the first column." src="../../assets/images/case-list-02.png" width="100%">
+</div>
+
 You should display the [link](https://design-system.service.gov.uk/styles/typography/#links) in the first column, and use meaningful content such as the case number or name. Avoid using words like ‘View’. 
 
 You should limit actions from the case list and allow users to perform more actions once they’re viewing details of a case.
@@ -43,9 +47,18 @@ You can display date and time in separate columns to let users sort and filter t
 
 ### If you want to let users select multiple cases to perform an action on them
 
+<div class="govuk-form-group">
+    <img alt="Example of a case list, showing checkboxes in the first column of each row allowing the user to select multiple cases to perform an action on them." src="../../assets/images/case-list-03.png" width="100%">
+</div>
+
 Use [multi select.](https://design-patterns.service.justice.gov.uk/components/multi-select/)
 
 ### If you want to display a status
+
+<div class="govuk-form-group">
+    <img alt="Example of a row of a case list, showing an example of a status of assigned in the last column." src="../../assets/images/case-list-04.png" width="100%">
+</div>
+
 Use a [tag.](https://design-system.service.gov.uk/components/tag/)
 Put this at the end of a row.
 
