@@ -1,3 +1,15 @@
+# [1.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v0.2.6-alpha...v1.0.0-alpha) (2021-10-26)
+
+
+### Bug Fixes
+
+* **filter:** ensure the clear link is shown ([4c23cbd](https://github.com/ministryofjustice/moj-frontend/commit/4c23cbd42cc45937b1ac5752aef2b1ded0e58ec2)), closes [#274](https://github.com/ministryofjustice/moj-frontend/issues/274)
+
+
+### BREAKING CHANGES
+
+* **filter:** Clear links will now be shown on Filter components.
+
 ## [0.2.6](https://github.com/ministryofjustice/moj-frontend/compare/v0.2.5-alpha...v0.2.6-alpha) (2021-09-15)
 
 
