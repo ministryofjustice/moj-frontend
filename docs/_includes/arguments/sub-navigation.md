@@ -1,11 +1,11 @@
 ### Container
 
-| Name       | Type   | Required | Description                                                                  |
-| ---------- | ------ | -------- | ---------------------------------------------------------------------------- |
-| label      | string | No       | The `aria-label` to add to the `nav` container.                              |
-| items      | array  | Yes      | An array of navigation item objects. See [items](#items).                    |
-| classes    | string | No       | Classes to add to the `nav` container.                                       |
-| attributes | object | No       | HTML attributes (for example data attributes) to add to the `nav` container. |
+| Name       | Type   | Required | Description                                                                                |
+| ---------- | ------ | -------- | ------------------------------------------------------------------------------------------ |
+| label      | string | No       | The `aria-label` to add to the `nav` container. Defaults to 'Secondary navigation region'. |
+| items      | array  | Yes      | An array of navigation item objects. See [items](#items).                                  |
+| classes    | string | No       | Classes to add to the `nav` container.                                                     |
+| attributes | object | No       | HTML attributes (for example data attributes) to add to the `nav` container.               |
 
 ### Items
 
