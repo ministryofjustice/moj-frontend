@@ -1,4 +1,4 @@
-<nav class="moj-sub-navigation {{- ' ' + params.classes if params.classes}}" {%- if (params.label) %} aria-label="{{ params.label }}"{% endif %} {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+<nav class="moj-sub-navigation {{- ' ' + params.classes if params.classes}}" aria-label="{{ params.label or 'Secondary navigation region' }}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
 
   <ul class="moj-sub-navigation__list">
 

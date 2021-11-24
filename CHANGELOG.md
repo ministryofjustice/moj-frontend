@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v1.0.0-alpha...v1.0.1-alpha) (2021-11-24)
+
+
+### Bug Fixes
+
+* **sub-navigation:** add a default aria-label for sub navigation component ([4432bee](https://github.com/ministryofjustice/moj-frontend/commit/4432bee47a93387550e5e2bee1da05c3887d6632))
+
 # [1.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v0.2.6-alpha...v1.0.0-alpha) (2021-10-26)
 
 
