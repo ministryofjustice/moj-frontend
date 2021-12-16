@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/gregtyler/moj-frontend/compare/v1.0.0...v1.0.1) (2021-12-16)
+
+
+### Bug Fixes
+
+* fix package references ([d7d421a](https://github.com/gregtyler/moj-frontend/commit/d7d421aebce3c0958d4258ee87886f8f83cbd44e))
+
 # 1.0.0 (2021-12-16)
 
 
