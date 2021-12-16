@@ -1,3 +1,41 @@
+# 1.0.0 (2021-12-16)
+
+
+### Bug Fixes
+
+* fix for package contents not distributing correct files ([ffc5e43](https://github.com/gregtyler/moj-frontend/commit/ffc5e43679dea0ef19970578a919e35269dc21fc))
+* **rich-text-editor:** fix attribute prefix ([16f749d](https://github.com/gregtyler/moj-frontend/commit/16f749d903adea2b64e8d618999b557a27b4cdf6))
+* Fixes issue [#79](https://github.com/gregtyler/moj-frontend/issues/79) with colour value not wrapped in quotes ([84811c5](https://github.com/gregtyler/moj-frontend/commit/84811c59c9625642141f538b870d92ecf9d70d6f))
+* **add-another:** clear floating legend ([#154](https://github.com/gregtyler/moj-frontend/issues/154)) ([9f6a869](https://github.com/gregtyler/moj-frontend/commit/9f6a869ba8ed14612951d75a05b5d605e6ce9562)), closes [#152](https://github.com/gregtyler/moj-frontend/issues/152)
+* **add-another:** find labels of affixed text inputs ([#186](https://github.com/gregtyler/moj-frontend/issues/186)) ([f211937](https://github.com/gregtyler/moj-frontend/commit/f2119377536cf1597a7aa723bdb356d8abdc916f)), closes [#185](https://github.com/gregtyler/moj-frontend/issues/185)
+* **add-another:** shrink remove button ([#256](https://github.com/gregtyler/moj-frontend/issues/256)) ([9998b24](https://github.com/gregtyler/moj-frontend/commit/9998b24153fdf4040c4a4f28223f64e918e5dcc0))
+* upgrade govuk-frontend from 3.10.0 to 3.10.1 ([a5335d7](https://github.com/gregtyler/moj-frontend/commit/a5335d7109c0b51caacfa11b9c8d92239ec18b48))
+* **assets:** adds missing apple touch icon images ([26ede43](https://github.com/gregtyler/moj-frontend/commit/26ede43933f92bb73e1a2aa1094e3573c0e11ef5))
+* potential fix for missing alpha dist tag in npm package ([cd8d74a](https://github.com/gregtyler/moj-frontend/commit/cd8d74a9fd620e5f54f92536f7dcc43ce39ec56f))
+* upgrade govuk-frontend from 3.6.0 to 3.7.0 ([#100](https://github.com/gregtyler/moj-frontend/issues/100)) ([3498af0](https://github.com/gregtyler/moj-frontend/commit/3498af0fab6d8959ccdcda802bc2a2817c149c7f))
+* upgrade govuk-frontend from 3.9.1 to 3.10.0 ([c8f58f8](https://github.com/gregtyler/moj-frontend/commit/c8f58f807e01c5c0b53e6a194bd26ea6c5d15594))
+* upgrade moment from 2.26.0 to 2.27.0 ([#102](https://github.com/gregtyler/moj-frontend/issues/102)) ([611081a](https://github.com/gregtyler/moj-frontend/commit/611081a1c1627bb75b122bc26921c4c6e8cf0ce4))
+* **filter:** ensure the clear link is shown ([4c23cbd](https://github.com/gregtyler/moj-frontend/commit/4c23cbd42cc45937b1ac5752aef2b1ded0e58ec2)), closes [#274](https://github.com/gregtyler/moj-frontend/issues/274)
+* **sub-navigation:** add a default aria-label for sub navigation component ([4432bee](https://github.com/gregtyler/moj-frontend/commit/4432bee47a93387550e5e2bee1da05c3887d6632))
+* **ticket-panel:** fixes the colour options within the panel ([5717c27](https://github.com/gregtyler/moj-frontend/commit/5717c2799aa59d9de56a80da83cd45e07f553cc9))
+* **ticket-panel:** Make default ticket panel have no border ([#158](https://github.com/gregtyler/moj-frontend/issues/158)) ([e7b7e42](https://github.com/gregtyler/moj-frontend/commit/e7b7e42a724f1f46ac22ab2c6bc277ba47090fed))
+
+
+### Features
+
+* **add-another:** add to initAll ([4e0f798](https://github.com/gregtyler/moj-frontend/commit/4e0f798ad32850757b2f9c0f4b1a02b970163289))
+* **component:** adds the new Ticket Panel component ([1565383](https://github.com/gregtyler/moj-frontend/commit/15653837333a50be6e9e5821315e6a629b21e0b1)), closes [#125](https://github.com/gregtyler/moj-frontend/issues/125)
+* **multi-select:** add to initAll ([1fe780a](https://github.com/gregtyler/moj-frontend/commit/1fe780ac65ff0a583853e8cea6508db2fd505729))
+* **password-reveal:** add data-module attribute ([d41cd0f](https://github.com/gregtyler/moj-frontend/commit/d41cd0f277f8bcfc99c679f8854f262db06bdbbf))
+* **rich-text-editor:** add to initAll ([a487749](https://github.com/gregtyler/moj-frontend/commit/a487749651119326d5b352b3df378de919e2f1c0))
+* **search-toggle:** add to initAll ([9251a38](https://github.com/gregtyler/moj-frontend/commit/9251a38a8d8a927e03654366e90c489baef7b4bd))
+* **sortable-table:** add to initAll ([99751e4](https://github.com/gregtyler/moj-frontend/commit/99751e4a153085d58017ed4bd5a722615b573a50))
+
+
+### BREAKING CHANGES
+
+* **filter:** Clear links will now be shown on Filter components.
+
 ## [1.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v1.0.0-alpha...v1.0.1-alpha) (2021-11-24)
 
 
