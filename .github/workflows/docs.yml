@@ -12,6 +12,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Use Node.js 10.18
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.18
+
       - name: Install and Build
         run: |
           npm install
