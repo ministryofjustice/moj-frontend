@@ -27,6 +27,10 @@
     "access": "public"
   },
   "dependencies": {
+    "govuk-frontend": "^3.0.0 || ^4.0.0",
     "moment": "^2.27.0"
+  },
+  "peerDependencies": {
+    "jquery": "^3.6.0"
   }
 }

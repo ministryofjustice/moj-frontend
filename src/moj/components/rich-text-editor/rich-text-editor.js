@@ -88,7 +88,7 @@ if('contentEditable' in document.documentElement) {
   };
 
   MOJFrontend.RichTextEditor.prototype.getEnhancedHtml = function(val) {
-    return this.getToolbarHtml() + '<div class="moj-rich-text-editor__content" contenteditable="true" spellcheck="false"></div>';
+    return this.getToolbarHtml() + '<div class="govuk-textarea moj-rich-text-editor__content" contenteditable="true" spellcheck="false"></div>';
   };
 
   MOJFrontend.RichTextEditor.prototype.hideDefault = function() {
