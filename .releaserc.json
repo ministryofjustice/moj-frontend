@@ -1,19 +1,22 @@
 {
   "branches": ["main"],
-  "tagFormat": "v${version}-alpha",
-  "dryRun": false,
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     ["@semantic-release/changelog", {
       "changelogFile": "CHANGELOG.md"
     }],
+    ["@semantic-release/npm", {
+      "pkgRoot": "package"
+    }],
     ["@semantic-release/git", {
       "assets": ["CHANGELOG.md", "package", "package.json"],
       "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
     }],
-    ["@semantic-release/npm", {
-      "pkgRoot": "package"
+    ["@semantic-release/github", {
+      "assets": [
+        {"path": "dist/release.zip", "name": "release-${nextRelease.gitTag}.zip"}
+      ]
     }]
   ]
 }
