@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.0.1-alpha...v1.1.0-alpha) (2021-12-20)
+
+
+### Features
+
+* **deps:** make dependencies explicit ([829da49](https://github.com/ministryofjustice/moj-frontend/commit/829da490085ffbe3751040932e4b91b149bd772c)), closes [#147](https://github.com/ministryofjustice/moj-frontend/issues/147)
+
 ## [1.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v1.0.0-alpha...v1.0.1-alpha) (2021-11-24)
 
 
