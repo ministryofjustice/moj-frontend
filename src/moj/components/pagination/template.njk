@@ -29,7 +29,7 @@
   </ul>
 
   {%- if params.results %}
-    <p class="moj-pagination__results">Showing <b>{{ params.results.from }}</b> to <b>{{ params.results.to }}</b> of <b>{{params.results.count}}</b> results</p>
+    <p class="moj-pagination__results">Showing <b>{{ params.results.from }}</b> to <b>{{ params.results.to }}</b> of <b>{{params.results.count}}</b> {{ params.results.text | default("results") }}</p>
   {% endif -%}
 
 </nav>
