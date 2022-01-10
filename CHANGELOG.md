@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.1.0...v1.2.0) (2022-01-10)
+
+
+### Features
+
+* **pagination:** allow customisation of pagination results text ([5771ca7](https://github.com/ministryofjustice/moj-frontend/commit/5771ca7f53a0f2aab546ae951d5af58a81e93e42)), closes [#293](https://github.com/ministryofjustice/moj-frontend/issues/293)
+
 # [1.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.0.1-alpha...v1.1.0-alpha) (2021-12-20)
 
 
