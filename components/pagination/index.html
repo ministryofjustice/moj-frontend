@@ -221,7 +221,7 @@
           <span class="govuk-caption-xl">Components</span>
           Pagination
         </h1>
-        <p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/3b2fbbf4ef14e00e3a34c87c2ed3eed75f9e15ed">22 May 2020</a></p>
+        <p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/5771ca7f53a0f2aab546ae951d5af58a81e93e42"> 7 January 2022</a></p>
 <div class="app-example">
   <span class="app-example__new-window">
     <a href="/examples/pagination" target="_blank">Open this example in a new window</a>
@@ -249,34 +249,175 @@
 
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__item&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/page=3&quot;</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__item moj-pagination__item--dots&quot;</span>&gt;</span>...<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__item&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/page=5&quot;</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__item  moj-pagination__item--next&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>Next<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span>&gt;</span> set of pages<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__results&quot;</span>&gt;</span>Showing <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>10<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> to <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>20<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> of <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>30<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> results<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-pagination__results&quot;</span>&gt;</span>Showing <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>10<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> to <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>20<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> of <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>30<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> pages<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
 
 </code></pre>
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-pagination" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-pagination">
+  <details class="govuk-details govuk-!-padding-3" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Nunjucks macro options
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td>array</td>
+<td>Yes</td>
+<td>An array of pages to display. See <a href="#items">items</a>.</td>
+</tr>
+<tr>
+<td>results</td>
+<td>object</td>
+<td>No</td>
+<td>Optional object describing the total number of results and which ones are on the current page. See <a href="#results">results</a>.</td>
+</tr>
+<tr>
+<td>previous</td>
+<td>object</td>
+<td>No</td>
+<td>A link to the previous page. See <a href="#link">link</a>.</td>
+</tr>
+<tr>
+<td>next</td>
+<td>object</td>
+<td>No</td>
+<td>A link to the previous page. See <a href="#link">link</a>.</td>
+</tr>
+<tr>
+<td>classes</td>
+<td>string</td>
+<td>No</td>
+<td>Any additional classes that you want to add to the pagination.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="items">items</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>No</td>
+<td>Set to <code>dots</code> to show ellipses instead of a page number.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>No</td>
+<td>The link text - usually a page number.</td>
+</tr>
+<tr>
+<td>href</td>
+<td>string</td>
+<td>No</td>
+<td>The link URL.</td>
+</tr>
+<tr>
+<td>selected</td>
+<td>boolean</td>
+<td>No</td>
+<td>Set to <code>true</code> to indicate the currently selected page.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="results">results</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count</td>
+<td>number</td>
+<td>Yes</td>
+<td>The total number of items.</td>
+</tr>
+<tr>
+<td>from</td>
+<td>number</td>
+<td>Yes</td>
+<td>The number of the first item on the page.</td>
+</tr>
+<tr>
+<td>to</td>
+<td>number</td>
+<td>Yes</td>
+<td>The number of the last item on the page.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>No</td>
+<td>A label describing the items. Defaults to &quot;results&quot;.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="link">link</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>No</td>
+<td>The link text - usually a page number.</td>
+</tr>
+<tr>
+<td>href</td>
+<td>string</td>
+<td>No</td>
+<td>The link URL.</td>
+</tr>
+</tbody>
+</table>
+<p></div></p>
+  </details>
   <div data-module="app-copy" style="position:relative;">
 <pre><code class="language-jinja"><span class="xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/pagination/macro.njk&quot; import mojPagination -%}</span><span class="xml">
 
 </span><span class="hljs-template-variable">{{ mojPagination({
-  results: {
-    from: 10,
-    to: 20,
-    count: 30
-  },
-  previous: {
-    text: &#x27;Previous&#x27;,
-    href: &#x27;&#x27;
-  },
-  next: {
-    text: &#x27;Next&#x27;,
-    href: &#x27;&#x27;
-  },
   items: [{
     text: &#x27;1&#x27;,
     href: &#x27;/page=1&#x27;
@@ -287,7 +428,26 @@
   }, {
     text: &#x27;3&#x27;,
     href: &#x27;/page=3&#x27;
-  }]
+  }, {
+    type: &#x27;dots&#x27;
+  }, {
+    text: &#x27;5&#x27;,
+    href: &#x27;/page=5&#x27;
+  }],
+  results: {
+    count: 30,
+    from: 10,
+    to: 20,
+    text: &#x27;pages&#x27;
+  },
+  previous: {
+    text: &#x27;Previous&#x27;,
+    href: &#x27;&#x27;
+  },
+  next: {
+    text: &#x27;Next&#x27;,
+    href: &#x27;&#x27;
+  }
 }) }}</span><span class="xml">
 </span></code></pre>
   </div>
