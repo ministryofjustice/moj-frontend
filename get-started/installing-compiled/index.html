@@ -17,7 +17,7 @@
 
     <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
-    <title>Production - MOJ Pattern Library</title>
+    <title>Installing MOJ Frontend using compiled files - MOJ Pattern Library</title>
 
     <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
     <script type="text/javascript" src="/assets/javascript/all.js"></script>
@@ -98,8 +98,8 @@
             <a href="/get-started/prototyping">Prototyping</a>
           </li>
         
-          <li class="moj-side-navigation__item moj-side-navigation__item--active">
-            <a href="/get-started/production" aria-current="location">Production</a>
+          <li class="moj-side-navigation__item">
+            <a href="/get-started/production">Production</a>
           </li>
         </ul>
     
@@ -129,33 +129,94 @@
     <div class="govuk-grid-column-two-thirds">
       <main class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
-          <span class="govuk-caption-xl">How we work</span>
-          Production
+          
+          Installing MOJ Frontend using compiled files
         </h1>
-        <p>This guide explains how to set up your project so you can start using the styles and coded examples in the MOJ Pattern Library in production.</p>
-<h2 id="before-you-start">Before you start</h2>
-<p>First you must have followed the <a href="https://design-system.service.gov.uk/get-started/production/">GOV.UK Design System production setup guide</a>.</p>
-<h2 id="include-the-moj-frontend-in-your-project">Include the MOJ Frontend in your project</h2>
-<p>To start using MOJ styles, components and patterns contained here, you’ll need to include MOJ Frontend in your project.</p>
-<h3 id="option-1%3A-install-using-npm">Option 1: install using npm</h3>
-<p>We recommend <a href="../installing-with-npm">installing MOJ Frontend using npm</a>. Using this option, you will be able to:</p>
-<ul>
-<li>selectively include the CSS or JavaScript for individual components</li>
-<li>build your own styles or components based on the palette or typography and spacing mixins</li>
-<li>customise the build (for example, overriding colours or enabling global styles)</li>
-<li>use the component Nunjucks templates</li>
-</ul>
-<p>You will also need to <a href="../setting-up-javascript">set up JavaScript</a> if you want to use any interactive components.</p>
-<h3 id="option-2%3A-include-compiled-files">Option 2: include compiled files</h3>
-<p>If your project does not use npm, or if you want to try out MOJ Frontend in your project without installing it through npm, you can <a href="../installing-compiled">download and include compiled stylesheets, JavaScript and the asset files</a>.</p>
-<p>Using this option, you will be able to include all the CSS and JavaScript of GOV.UK Frontend in your project.</p>
-<p>You will not be able to:</p>
+        <p>You can install MOJ Frontend using the compiled files released with each version. However, by doing so, you will <strong>not</strong> be able to:</p>
 <ul>
 <li>selectively include the CSS or JavaScript for individual components</li>
 <li>build your own styles or components based on the palette or typography and spacing mixins</li>
 <li>customise the build, for example, overriding colours or enabling global styles</li>
 <li>use the component Nunjucks templates</li>
 </ul>
+<p>In a live application, we recommend that you <a href="../installing-with-npm">install with npm</a> instead. This will allow you to better integrate the library and more easily upgrade.</p>
+<h2 id="copy-the-files">Copy the files</h2>
+<ol>
+<li>Download the <code>release-&lt;VERSION-NUMBER&gt;.zip</code> file at the bottom of the <a href="https://github.com/ministryofjustice/moj-frontend/releases/latest">latest MOJ Frontend release note</a>.</li>
+<li>Unzip the zip file.</li>
+<li>Copy the <code>assets</code> folder to the root of your project’s public folder, so that for example <code>&lt;YOUR-SITE-URL&gt;/assets/images/moj-logotype-crest.png</code> shows the <code>images/moj-logotype-crown.png</code> image in your users’ browsers.</li>
+<li>Copy the 2 <code>.css</code> files to a stylesheets folder in the root of your project’s public folder, so that for example <code>&lt;YOUR-SITE-URL&gt;/stylesheets/moj-frontend.min.css</code> shows the CSS file in your users’ browsers.</li>
+<li>Copy the <code>.js</code> file to a JavaScript folder in the root of your project’s public folder, so that for example <code>&lt;YOUR-SITE-URL&gt;/javascript/moj-frontend.min.js</code> shows the JavaScript file in your users’ browsers.</li>
+</ol>
+<h2 id="check-an-example-page">Check an example page</h2>
+<h3 id="with-the-gov.uk-design-system">With the GOV.UK Design System</h3>
+<ol>
+<li>Follow <a href="https://frontend.design-system.service.gov.uk/install-using-precompiled-files/">the instructions for installing the GOV.UK Design System</a></li>
+<li>Add <code>link</code> tags for the MOJ Frontend CSS, alongside the GOV.UK ones in the <code>head</code>:<pre><code class="language-html"><span class="hljs-comment">&lt;!--[if !IE 8]&gt;&lt;!--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/stylesheets/moj-frontend.min.css&quot;</span> /&gt;</span>
+<span class="hljs-comment">&lt;!--&lt;![endif]--&gt;</span>
+<span class="hljs-comment">&lt;!--[if IE 8]&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;/stylesheets/moj-frontend-ie8.min.css&quot; /&gt;
+&lt;![endif]--&gt;</span>
+</code></pre>
+</li>
+<li>Add <code>script</code> tags for the MOJ Frontend JavaScript, alongside the GOV.UK at the bottom of the <code>body</code>. This includes jQuery, which is a dependency of MOJ Frontend.<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>
+  <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://code.jquery.com/jquery-3.6.0.min.js&quot;</span>
+  <span class="hljs-attr">integrity</span>=<span class="hljs-string">&quot;sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=&quot;</span>
+  <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">&quot;anonymous&quot;</span>
+&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/javascript/moj-frontend.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+  <span class="hljs-built_in">window</span>.MOJFrontend.initAll();
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+</li>
+</ol>
+<h3 id="without-the-gov.uk-design-system">Without the GOV.UK Design System</h3>
+<p>It is unlikely that you would ever want to install the MOJ Pattern Library alone, but if so you can follow the guide below to check that it is working.</p>
+<ol>
+<li>
+<p>Create a page in your project using the following HTML (in your live application, you should use the <a href="https://design-system.service.gov.uk/styles/page-template/">Design System page template</a> instead):</p>
+<pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-template &quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Example - MOJ Frontend<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span>
+      <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span>
+      <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;</span>
+    /&gt;</span>
+    <span class="hljs-comment">&lt;!--[if !IE 8]&gt;&lt;!--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/stylesheets/moj-frontend.min.css&quot;</span> /&gt;</span>
+    <span class="hljs-comment">&lt;!--&lt;![endif]--&gt;</span>
+    <span class="hljs-comment">&lt;!--[if IE 8]&gt;
+      &lt;link rel=&quot;stylesheet&quot; href=&quot;/stylesheets/moj-frontend-ie8.min.css&quot; /&gt;
+    &lt;![endif]--&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- component HTML --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>
+      <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://code.jquery.com/jquery-3.6.0.min.js&quot;</span>
+      <span class="hljs-attr">integrity</span>=<span class="hljs-string">&quot;sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=&quot;</span>
+      <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">&quot;anonymous&quot;</span>
+    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/javascript/moj-frontend.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+      <span class="hljs-built_in">window</span>.MOJFrontend.initAll();
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+</li>
+<li>
+<p>Go to the <a href="../components/add-another/">Add another component</a> on the Design System website and copy the HTML from the first example.</p>
+</li>
+<li>
+<p>Replace <code>&lt;!-- component HTML --&gt;</code> with the accordion HTML you copied.</p>
+</li>
+<li>
+<p>Run your application - you can check it works the same way as the <a href="../examples/add-another/">Add another component example</a> by clicking the &quot;Add another person&quot; button.</p>
+</li>
+</ol>
 
       </main>
 
