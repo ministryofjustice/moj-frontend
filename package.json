@@ -45,7 +45,7 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-umd": "^2.0.0",
     "moment": "^2.29.1",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.0",
     "nunjucks": "^3.2.3",
     "require-dir": "^1.2.0"
   },
