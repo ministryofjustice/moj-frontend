@@ -12,11 +12,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js 10.18
+    - name: Use Node.js 14
       uses: actions/setup-node@v1
       with:
-        node-version: 10.18
-    - run: npm install
+        node-version: 14
+    - run: npm ci
     - run: npm run build:package
     - uses: actions/upload-artifact@v2
       with:
@@ -46,7 +46,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
+    - run: npm ci
     - run: npm test
 
   publish:
@@ -71,7 +71,7 @@ jobs:
       with:
         name: mojds-dist
         path: dist
-    - run: npm install
+    - run: npm ci
     - name: Publish to NPM
       run: npm run ci:release
       env:
