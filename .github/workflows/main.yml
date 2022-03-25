@@ -12,17 +12,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js 10.18
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v3
       with:
-        node-version: 10.18
-    - run: npm install
+        node-version: 'lts/*'
+    - run: npm ci
     - run: npm run build:package
     - uses: actions/upload-artifact@v2
       with:
         name: mojds-package
         path: package
     - run: npm run build:dist
+    - run: npm run build:docs
     - uses: actions/upload-artifact@v2
       with:
         name: mojds-dist
@@ -34,7 +34,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x, 15.x]
+        node-version: [10.x, 12.x, 14.x, 16.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -46,8 +46,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm test
+    - name: Test Sass can be compiled
+      run: npm run test:sass
 
   publish:
     runs-on: ubuntu-latest
@@ -59,10 +59,9 @@ jobs:
       with:
         fetch-depth: 0
         persist-credentials: false
-    - name: Use Node.js 10.18
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v1
       with:
-        node-version: 10.18
+        node-version: lts/*
     - uses: actions/download-artifact@v2
       with:
         name: mojds-package
@@ -71,7 +70,7 @@ jobs:
       with:
         name: mojds-dist
         path: dist
-    - run: npm install
+    - run: npm ci
     - name: Publish to NPM
       run: npm run ci:release
       env:

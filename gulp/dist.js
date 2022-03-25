@@ -4,7 +4,7 @@ const del = require("del");
 const gulp = require("gulp");
 const postcss = require("gulp-postcss");
 const rename = require("gulp-rename");
-const sass = require("gulp-sass")(require("node-sass"));
+const sass = require("gulp-sass")(require("sass"));
 const uglify = require("gulp-uglify");
 const zip = require("gulp-zip");
 
