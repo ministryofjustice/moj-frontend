@@ -7,13 +7,13 @@
   ],
   "scripts": {
     "build:docs": "webpack && eleventy --input=./docs --output=public",
-    "build:dist": "node bin/check-nvmrc.js && gulp build:dist",
-    "build:package": "node bin/check-nvmrc.js && gulp build:package",
+    "build:dist": "gulp build:dist",
+    "build:package": "gulp build:package",
     "ci:release": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --debug",
     "ci:dryrun": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --dry-run",
     "start": "npm-run-all --parallel watch:*",
     "test": "npm-run-all --parallel test:*",
-    "test:sass": "node-sass -q test.scss >/dev/null && echo 'ok'",
+    "test:sass": "npm install node-sass && node-sass -q test.scss >/dev/null && echo 'ok'",
     "test:docs": "npm run build:docs",
     "watch:11ty": "eleventy --input=./docs --output=public --serve --watch",
     "watch:webpack": "webpack --watch"
@@ -45,9 +45,9 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-umd": "^2.0.0",
     "moment": "^2.29.1",
-    "node-sass": "^5.0.0",
     "nunjucks": "^3.2.3",
-    "require-dir": "^1.2.0"
+    "require-dir": "^1.2.0",
+    "sass": "^1.49.9"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
