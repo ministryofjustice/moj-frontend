@@ -1,6 +1,6 @@
-const gulp     = require('gulp');
-const imagemin = require('gulp-imagemin');
-const cache    = require('gulp-cache');
+import gulp from 'gulp';
+import imagemin from 'gulp-imagemin';
+import cache from 'gulp-cache';
 
 // Compresses png, jpeg, gif, png and svg images
 gulp.task('build:compress-images', () => {
