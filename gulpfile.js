@@ -5,15 +5,18 @@ requireDir("./gulp", {
   recurse: true,
 });
 
-gulp.task(
-  "build:package",
+gulp.task("build:package", async (done) => {
+  await import("./gulp/build-compress-images.mjs");
+
   gulp.series(
     "build:clean",
     "build:copy-files",
     "build:javascript",
     "build:compress-images"
-  )
-);
+  );
+
+  done();
+});
 
 gulp.task(
   "build:dist",
