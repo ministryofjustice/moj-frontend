@@ -3,7 +3,7 @@
   <ul class="moj-sub-navigation__list">
 
     {%- for item in params.items %}
-      <li class="moj-sub-navigation__item">
+      <li class="moj-sub-navigation__item {{- ' ' + item.classes if item.classes}}">
         <a class="moj-sub-navigation__link" {{ 'aria-current="page"' | safe if item.active }} href="{{ item.href }}" {%- for attribute, value in item.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
           {{- item.html | safe if item.html else item.text -}}
         </a>
