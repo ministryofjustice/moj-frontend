@@ -1,6 +1,6 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
-<div class="moj-filter" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+<div class="moj-filter" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 
   <div class="moj-filter__header">
 

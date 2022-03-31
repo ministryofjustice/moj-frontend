@@ -1,4 +1,4 @@
-<div class="moj-multi-file-upload {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+<div class="moj-multi-file-upload {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
   <div class="moj-multi-file__uploaded-files {% if params.uploadedFiles.items.length == 0 %}moj-hidden{% endif%}">
     <h2 class="govuk-heading-m">{{ params.uploadedFiles.heading.html | safe if params.uploadedFiles.heading.html else params.uploadedFiles.heading.text }}</h2>
     <div class="govuk-summary-list moj-multi-file-upload__list">
