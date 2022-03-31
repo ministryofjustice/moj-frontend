@@ -1,3 +1,16 @@
+# [1.3.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.2.0...v1.3.0) (2022-03-31)
+
+
+### Bug Fixes
+
+* **components:** ensure that custom attributes get a space inserted before each one (INC-435) ([2b16360](https://github.com/ministryofjustice/moj-frontend/commit/2b163603854623d34a6c059e61676790ce9a2c3f))
+* package.json & package-lock.json to reduce vulnerabilities ([f759d34](https://github.com/ministryofjustice/moj-frontend/commit/f759d3471a2e673e1ebe3c47376e33ce2530aea7))
+
+
+### Features
+
+* **sub-navigation:** allow adding HTML classes to sub-navigation items ([81b60cb](https://github.com/ministryofjustice/moj-frontend/commit/81b60cb7c122508cd6bc60dd11e0acbb657ed192))
+
 # [1.2.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.1.0...v1.2.0) (2022-01-10)
 
 

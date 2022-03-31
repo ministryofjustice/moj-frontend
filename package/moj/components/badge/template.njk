@@ -1,3 +1,3 @@
-<span class="moj-badge {{- ' ' + params.classes if params.classes }}" {%- if (params.label) %} aria-label=""{% endif -%} {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+<span class="moj-badge {{- ' ' + params.classes if params.classes }}" {%- if (params.label) %} aria-label=""{% endif -%} {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
   {{- params.html | safe if params.html else params.text -}}
 </span>

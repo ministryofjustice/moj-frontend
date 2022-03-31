@@ -1,4 +1,4 @@
-<header class="moj-header {{- ' ' + params.classes if params.classes}}" role="banner" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+<header class="moj-header {{- ' ' + params.classes if params.classes}}" role="banner" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 
   <div class="moj-header__container {%- if params.containerClasses %} {{ params.containerClasses }}{% endif %}">
 
@@ -51,13 +51,13 @@
     {%- if params.navigation %}
       <div class="moj-header__content">
 
-        <nav class="moj-header__navigation{% if params.navigation.classes %} {{ params.navigation.classes }}{% endif %}"{% if (params.navigation.label) %} aria-label="{{ params.navigation.label }}" {% endif %} {%- for attribute, value in params.navigation.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+        <nav class="moj-header__navigation{% if params.navigation.classes %} {{ params.navigation.classes }}{% endif %}"{% if (params.navigation.label) %} aria-label="{{ params.navigation.label }}" {% endif %} {%- for attribute, value in params.navigation.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 
           <ul class="moj-header__navigation-list">
 
             {%- for item in params.navigation.items %}
               <li class="moj-header__navigation-item">
-                <a class="moj-header__navigation-link" href="{{ item.href }}" {{ 'aria-current="page"' | safe if item.active }} {%- for attribute, value in item.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+                <a class="moj-header__navigation-link" href="{{ item.href }}" {{ 'aria-current="page"' | safe if item.active }} {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
                   {{- item.html | safe if item.html else item.text -}}
                 </a>
               </li>

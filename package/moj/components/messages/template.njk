@@ -1,4 +1,4 @@
-<div id="{{ params.id | default('messages') }}" class="moj-messages-container {{- ' ' + params.classes if params.classes}}" {%- if (params.label) %} aria-label="{{ params.label }}"{% endif %} {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+<div id="{{ params.id | default('messages') }}" class="moj-messages-container {{- ' ' + params.classes if params.classes}}" {%- if (params.label) %} aria-label="{{ params.label }}"{% endif %} {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 
   <div class="moj-message-list">
 
