@@ -19,7 +19,7 @@ The list should first appear unfiltered. After selecting one or more filters, th
 
 By default filters shouldn't persist across sessions or navigation. Where there is a clear user need, you can specify which filters should persist and for how long.
 
-The filters acan be any form control, including date inputs, checkboxes, free text and radio buttons. Use the appropriate form control for the type of attribute being filtered on.
+The filters can be any form control, including date inputs, checkboxes, free text and radio buttons. Use the appropriate form control for the type of attribute being filtered on.
 
 Filters can be used in combination with [search](../../components/search/). In this case, the flow should be:
 
