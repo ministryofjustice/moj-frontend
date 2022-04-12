@@ -72,6 +72,7 @@ module.exports = function (eleventyConfig) {
       href: exampleHref,
       id: exampleHref.replace(/\//g, "-"),
       arguments: data.arguments,
+      title: data.title,
       height,
       nunjucksCode,
       htmlCode,

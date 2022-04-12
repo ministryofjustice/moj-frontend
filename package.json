@@ -6,7 +6,7 @@
     "/package"
   ],
   "scripts": {
-    "build:docs": "webpack && eleventy --input=./docs --output=public",
+    "build:docs": "npm run build:package && webpack && eleventy --input=./docs --output=public",
     "build:dist": "gulp build:dist",
     "build:package": "gulp build:package",
     "ci:release": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --debug",
