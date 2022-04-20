@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/ministryofjustice/moj-frontend/compare/v1.3.1...v1.3.2) (2022-04-20)
+
+
+### Bug Fixes
+
+* upgrade govuk-frontend from 3.11.0 to 3.14.0 ([dae25d1](https://github.com/ministryofjustice/moj-frontend/commit/dae25d147596380acba57905d63bedc24d9c0297))
+
 ## [1.3.1](https://github.com/ministryofjustice/moj-frontend/compare/v1.3.0...v1.3.1) (2022-04-06)
 
 

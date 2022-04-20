@@ -1,0 +1,32 @@
+<div class="moj-timeline {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+
+  {%- for item in params.items %}
+  <div class="moj-timeline__item {{- ' ' + item.classes if item.classes}}" {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+
+    <div class="moj-timeline__header">
+      <h{{ params.headingLevel | default(2) }} class="moj-timeline__title">
+        {{- item.label.html | safe if item.label.html else item.label.text -}}
+      </h{{ params.headingLevel | default(2) }}>
+      {% if item.byline %}
+        <p class="moj-timeline__byline">by {{ item.byline.html | safe if item.byline.html else item.byline.text }}</p>
+      {% endif %}
+    </div>
+
+    <p class="moj-timeline__date">
+      <time datetime="{{ item.datetime.timestamp }}">
+        {%- if item.datetime.type %}
+          {{- item.datetime.timestamp | mojDate(item.datetime.type) -}}
+        {% else %}
+          {{- item.datetime.timestamp | date(item.datetime.format) -}}
+        {% endif -%}
+      </time>
+    </p>
+
+    <div class="moj-timeline__description">
+      {{- item.html | safe if item.html else item.text -}}
+    </div>
+
+  </div>
+  {% endfor -%}
+
+</div>

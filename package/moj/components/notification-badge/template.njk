@@ -1,0 +1,5 @@
+{%- if params.text.length %}
+<span id="{{ params.id | default('notifications') }}" class="moj-notification-badge {{- ' ' + params.classes if params.classes}}" {%- if (params.label) %} aria-label="{{ params.label }}"{% endif %} {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {{- params.text | safe -}}
+</span>
+{% endif -%}

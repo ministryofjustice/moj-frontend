@@ -1,0 +1,73 @@
+/* ==========================================================================
+   #RICH TEXT EDITOR
+   ========================================================================== */
+
+.moj-rich-text-editor__toolbar {
+  @include govuk-clearfix;
+  margin-bottom: govuk-spacing(2);
+}
+
+.moj-rich-text-editor__toolbar-button {
+  background-color: govuk-colour("white");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  border: 2px solid govuk-colour("black");
+  color: govuk-colour("black");
+  cursor: pointer;
+  float: left;
+  text-decoration: none;
+  height: 40px;
+  margin-left: -2px;
+  outline: 0;
+  vertical-align: top;
+  width: 40px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  // Fix unwanted button padding in Firefox
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+
+  &:focus {
+    background-color: $govuk-focus-colour;
+    color: $govuk-focus-text-colour;
+    box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+    outline: none;
+    position: relative;
+    z-index: 2;
+  }
+
+}
+
+.moj-rich-text-editor__toolbar-button--bold {
+  background-image: url(#{$moj-images-path}icon-wysiwyg-bold.svg);
+}
+
+.moj-rich-text-editor__toolbar-button--italic {
+  background-image: url(#{$moj-images-path}icon-wysiwyg-italic.svg);
+}
+
+.moj-rich-text-editor__toolbar-button--underline {
+  background-image: url(#{$moj-images-path}icon-wysiwyg-underline.svg);
+}
+
+.moj-rich-text-editor__toolbar-button--unordered-list {
+  background-image: url(#{$moj-images-path}icon-wysiwyg-unordered-list.svg);
+  margin-left: govuk-spacing(2);
+}
+
+.moj-rich-text-editor__toolbar-button--ordered-list {
+  background-image: url(#{$moj-images-path}icon-wysiwyg-ordered-list.svg);
+}
+
+.moj-rich-text-editor__content {
+  min-height: 130px;
+  outline: none;
+  overflow: auto;
+  resize: vertical;
+}

@@ -1,0 +1,33 @@
+<div class="moj-primary-navigation {{- ' ' + params.containerClasses if params.containerClasses}}">
+
+  <div class="moj-primary-navigation__container">
+
+    <div class="moj-primary-navigation__nav">
+
+      <nav class="moj-primary-navigation {{- ' ' + params.classes if params.classes}}" {%- if (params.label) %} aria-label="{{ params.label }}"{% endif %} {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+
+        <ul class="moj-primary-navigation__list">
+
+          {%- for item in params.items %}
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link" {{ 'aria-current="page"' | safe if item.active }} href="{{ item.href }}" {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+                {{- item.html | safe if item.html else item.text -}}
+              </a>
+            </li>
+          {% endfor -%}
+
+        </ul>
+
+      </nav>
+
+    </div>
+
+  {%- if params.searchHtml %}
+    <div class="moj-primary-navigation__search">
+      {{- params.searchHtml | safe -}}
+    </div>
+  {% endif -%}
+
+  </div>
+
+</div>
