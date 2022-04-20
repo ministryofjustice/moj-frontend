@@ -3,6 +3,14 @@ layout: layouts/component.njk
 title: Form validator
 ---
 
+{% banner "This component is archived" %}
+
+This component is not sufficiently accessible to be used in live services.
+
+You must validate forms on the server-side. If you require client-side validation, start with [native browser form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#using_built-in_form_validation).
+For more complex validation, use an accessible validation library.
+{% endbanner %}
+
 {% lastUpdated "form-validator" %}
 
 {% example "/examples/form-validator", 1000 %}

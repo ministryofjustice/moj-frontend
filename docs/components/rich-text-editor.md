@@ -3,6 +3,13 @@ layout: layouts/component.njk
 title: Rich text editor
 ---
 
+{% banner "This component is archived" %}
+
+This component is not sufficiently accessible to be used in live services.
+
+You should use an accessible rich text editor like [TinyMCE](https://www.tiny.cloud/tinymce/).
+{% endbanner %}
+
 {% lastUpdated "rich-text-editor" %}
 
 {% example "/examples/rich-text-editor", 300 %}
@@ -29,6 +36,3 @@ You can also add bold, underline and italic buttons but these styles should be u
 You can customise the formatting options shown in the toolbar with the `data-moj-rich-text-editor-toolbar` attribute.
 
 {% example "/examples/rich-text-editor-formatting", 300 %}
-
-
-
