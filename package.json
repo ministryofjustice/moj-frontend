@@ -47,7 +47,7 @@
     "moment": "^2.29.2",
     "nunjucks": "^3.2.3",
     "require-dir": "^1.2.0",
-    "sass": "^1.49.9"
+    "sass": "^1.49.10"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
