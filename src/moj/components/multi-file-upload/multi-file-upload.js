@@ -99,11 +99,11 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
   MOJFrontend.MultiFileUpload.prototype.getFileRowHtml = function(file) {
     var html = '';
     html += '<div class="govuk-summary-list__row moj-multi-file-upload__row">';
-    html += '  <dd class="govuk-summary-list__value moj-multi-file-upload__message">';
+    html += '  <div class="govuk-summary-list__value moj-multi-file-upload__message">';
     html +=       '<span class="moj-multi-file-upload__filename">'+file.name+'</span>';
     html +=       '<span class="moj-multi-file-upload__progress">0%</span>';
-    html += '  </dd>';
-    html += '  <dd class="govuk-summary-list__actions moj-multi-file-upload__actions"></dd>';
+    html += '  </div>';
+    html += '  <div class="govuk-summary-list__actions moj-multi-file-upload__actions"></div>';
     html += '</div>';
     return html;
   };
