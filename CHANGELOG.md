@@ -1,3 +1,17 @@
+# [1.4.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.3.2...v1.4.0) (2022-04-25)
+
+
+### Bug Fixes
+
+* **multi-file-upload:** remove unsemantic HTML ([ed0f09c](https://github.com/ministryofjustice/moj-frontend/commit/ed0f09c50ca0064eead9f7503f1ab2da257a8f1e))
+* **pagination:** improve accessibility of pagination component ([b820340](https://github.com/ministryofjustice/moj-frontend/commit/b8203400157dd3e1a502f57fd17b2a10c8f1f662)), closes [#161](https://github.com/ministryofjustice/moj-frontend/issues/161)
+* **password-reveal:** improve screenreader labels ([f382f22](https://github.com/ministryofjustice/moj-frontend/commit/f382f22b5c6724c2cb37b41e2d787986f50974d8)), closes [#55](https://github.com/ministryofjustice/moj-frontend/issues/55)
+
+
+### Features
+
+* archive deprecated components ([3a8dedd](https://github.com/ministryofjustice/moj-frontend/commit/3a8dedd48fd99fad91abd2c753fe65b5a945296e))
+
 ## [1.3.2](https://github.com/ministryofjustice/moj-frontend/compare/v1.3.1...v1.3.2) (2022-04-20)
 
 
