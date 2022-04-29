@@ -1,3 +1,34 @@
+{% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+
+{% set html %}
+  <p class="govuk-body">We’d like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+{% endset %}
+
+{{ govukCookieBanner({
+  ariaLabel: "Cookies on MoJ Pattern Library",
+  attributes: {
+    "data-module": "app-cookies"
+  },
+  messages: [
+    {
+      headingText: "Cookies on MoJ Pattern Library",
+      html: html,
+      actions: [
+        {
+          text: "Accept analytics cookies",
+          type: "button",
+          name: "accept"
+        },
+        {
+          text: "Reject analytics cookies",
+          type: "button",
+          name: "reject"
+        }
+      ]
+    }
+  ]
+}) }}
+
 <header class="moj-header moj-header--docs" role="banner">
 
   <div class="moj-header__container">
