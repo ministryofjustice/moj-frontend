@@ -1,6 +1,7 @@
 import GOVUKFrontend from "govuk-frontend/govuk/all.js";
 import MOJFrontend from "../package/moj/all.js";
 
+import Cookies from "./javascript/cookies";
 import Copy from "./javascript/copy";
 import Tabs from "./javascript/tabs";
 
@@ -14,6 +15,10 @@ $(function () {
 
   $('[data-module="app-copy"]').each(function (e, el) {
     new Copy(el).init();
+  });
+
+  $('[data-module="app-cookies"]').each(function (e, el) {
+    new Cookies(el).init();
   });
 });
 
