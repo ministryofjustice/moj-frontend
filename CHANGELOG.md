@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/ministryofjustice/moj-frontend/compare/v1.4.0...v1.4.1) (2022-05-13)
+
+
+### Bug Fixes
+
+* upgrade moment from 2.29.2 to 2.29.3 ([#354](https://github.com/ministryofjustice/moj-frontend/issues/354)) ([e270876](https://github.com/ministryofjustice/moj-frontend/commit/e270876d6445938d8d758acd2e7234950943085e))
+
 # [1.4.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.3.2...v1.4.0) (2022-04-25)
 
 
