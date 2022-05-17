@@ -85,6 +85,17 @@
 
 }
 
+.moj-timeline__document-icon {
+  float: left;
+  margin-top: 4px;
+  margin-right: 4px;
+  fill: currentColor;
+
+  @media screen and (forced-colors: active) {
+    fill: linkText;
+  }
+}
+
 .moj-timeline__document-link {
   background-image: url(#{$moj-images-path}icon-document.svg);
   background-repeat: no-repeat;

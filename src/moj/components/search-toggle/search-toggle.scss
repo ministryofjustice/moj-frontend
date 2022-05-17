@@ -12,15 +12,17 @@
   -webkit-font-smoothing: antialiased;
   -webkit-appearance: none;
 
-  &:after {
-    background-repeat: no-repeat;
-    background-image: url(#{$moj-images-path}icon-search-blue.svg);
-    content: '';
+  &__icon {
     display: inline-block;
     height: 20px;
     margin-left: govuk-spacing(2);
     vertical-align: middle;
     width: 20px;
+    fill: currentColor;
+
+    @media screen and (forced-colors: active) {
+      fill: windowText;
+    }
   }
 
   &:focus {
@@ -30,43 +32,30 @@
     outline: none;
     position: relative;
     z-index: 1;
-
-    &:after {
-      background-image: url(#{$moj-images-path}icon-search-black.svg);
-    }
   }
-
 }
 
-
 .moj-search--toggle {
-
   padding: govuk-spacing(3);
 
   @include govuk-media-query($until: desktop) {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
-
 }
-
 
 // JS enabled
 .js-enabled .moj-search--toggle {
-
   @include govuk-media-query($until: desktop) {
     padding-top: 0 !important;
   }
-
 }
 
 .js-enabled .moj-search-toggle {
   position: relative;
 }
 
-
 .js-enabled .moj-search-toggle__search {
-
   background-color: govuk-colour("light-grey");
 
   @include govuk-media-query($from: desktop) {
@@ -77,5 +66,4 @@
     width: 450px;
     z-index: 10;
   }
-
 }
