@@ -1,3 +1,11 @@
+## [1.4.2](https://github.com/ministryofjustice/moj-frontend/compare/v1.4.1...v1.4.2) (2022-05-18)
+
+
+### Bug Fixes
+
+* markup Banner components as regions ([#359](https://github.com/ministryofjustice/moj-frontend/issues/359)) ([d38fa96](https://github.com/ministryofjustice/moj-frontend/commit/d38fa96f20bffec36ce0a6ea737209be40e11a64))
+* use inline SVGs ([#360](https://github.com/ministryofjustice/moj-frontend/issues/360)) ([1f89878](https://github.com/ministryofjustice/moj-frontend/commit/1f8987831d89b553cd5f08e3e086444835e24141)), closes [#162](https://github.com/ministryofjustice/moj-frontend/issues/162)
+
 ## [1.4.1](https://github.com/ministryofjustice/moj-frontend/compare/v1.4.0...v1.4.1) (2022-05-13)
 
 
