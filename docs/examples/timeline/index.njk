@@ -19,25 +19,35 @@ arguments: timeline
     </span>
   </summary>
   <div class="govuk-details__text">
-    Ut quam nunc, vulputate ac metus pharetra, posuere maximus velit. <a href="https://www.google.com">Etiam nec interdum velit.</a> Suspendisse molestie lectus in eros ornare
+    Ut quam nunc, vulputate ac metus pharetra, posuere maximus velit. <a class="govuk-link" href="#">Etiam nec interdum velit.</a> Suspendisse molestie lectus in eros ornare
   </div>
 </details>
 {% endset -%}
 
 {%- set listHtml %}
   <ul class="govuk-list govuk-list--bullet">
-    <li><a class="govuk-link" href="#">Item 1</li>
-    <li><a class="govuk-link" href="#">Item 2</li>
+    <li><a class="govuk-link" href="#">Item 1</a></li>
+    <li><a class="govuk-link" href="#">Item 2</a></li>
   </ul>
 {% endset -%}
 
 {%- set documentsHtml %}
   <ul class="moj-timeline__documents">
     <li class="moj-timeline__document-item">
-      <a class="moj-timeline__document-link" href="#">Document 1</a>
+      <a class="govuk-link" href="#">
+        <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
+          <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z"/>
+        </svg>
+        Document 1
+      </a>
     </li>
     <li class="moj-timeline__document-item">
-      <a class="moj-timeline__document-link" href="#">Document 1</a>
+      <a class="govuk-link" href="#">
+        <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
+          <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z"/>
+        </svg>
+        Document 2
+      </a>
     </li>
   </ul>
 {% endset -%}
