@@ -33,7 +33,7 @@ For more complex validation, use an accessible validation library.
 
 This component was deemed not sufficiently accessible to be used in live services and too complex to maintain.
 
-You should use an accessible rich text editor like [TinyMCE](https://www.tiny.cloud/tinymce/).
+You should use an accessible rich text editor.
 
 ## Tag
 

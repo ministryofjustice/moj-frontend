@@ -7,7 +7,7 @@ title: Rich text editor
 
 This component is not sufficiently accessible to be used in live services.
 
-You should use an accessible rich text editor like [TinyMCE](https://www.tiny.cloud/tinymce/).
+You should use an accessible rich text editor.
 {% endbanner %}
 
 {% lastUpdated "rich-text-editor" %}
