@@ -17,7 +17,7 @@
 
     <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
-    <title>Primary navigation - MOJ Pattern Library</title>
+    <title>Ticket Panel - MOJ Pattern Library</title>
 
     <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
     <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
@@ -167,8 +167,8 @@
             <a href="/components/organisation-switcher">Organisation switcher</a>
           </li>
         
-          <li class="moj-side-navigation__item moj-side-navigation__item--active">
-            <a href="/components/primary-navigation" aria-current="location">Primary navigation</a>
+          <li class="moj-side-navigation__item">
+            <a href="/components/primary-navigation">Primary navigation</a>
           </li>
         
           <li class="moj-side-navigation__item">
@@ -214,8 +214,8 @@
             <a href="/components/messages">Messages</a>
           </li>
         
-          <li class="moj-side-navigation__item">
-            <a href="/components/ticket-panel">Ticket panel</a>
+          <li class="moj-side-navigation__item moj-side-navigation__item--active">
+            <a href="/components/ticket-panel" aria-current="location">Ticket panel</a>
           </li>
         
           <li class="moj-side-navigation__item">
@@ -261,53 +261,36 @@
       <main class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
           <span class="govuk-caption-xl">Components</span>
-          Primary navigation
+          Ticket Panel
         </h1>
-        <p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/2b163603854623d34a6c059e61676790ce9a2c3f">29 March 2022</a></p>
+        <p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/2fedfe98c2cfc0d4057aae7efb04629ab5c11805"> 1 July 2022</a></p>
 <div class="app-example">
   <span class="app-example__new-window">
-    <a href="/examples/primary-navigation" target="_blank">Open this example <span class="govuk-visually-hidden">(Primary navigation (example))</span> in a new window</a>
+    <a href="/examples/ticket-panel" target="_blank">Open this example <span class="govuk-visually-hidden">(Ticket panel (example))</span> in a new window</a>
   </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="150" src="/examples/primary-navigation" aria-label="Primary navigation (example)"></iframe>
+  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="300" src="/examples/ticket-panel" aria-label="Ticket panel (example)"></iframe>
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-primary-navigation" role="tab" id="tab_html-default--examples-primary-navigation" aria-controls="html-default--examples-primary-navigation">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-primary-navigation" role="tab" id="tab_nunjucks-default--examples-primary-navigation" aria-controls="nunjucks-default--examples-primary-navigation">Nunjucks</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-ticket-panel" role="tab" id="tab_html-default--examples-ticket-panel" aria-controls="html-default--examples-ticket-panel">HTML</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-ticket-panel" role="tab" id="tab_nunjucks-default--examples-ticket-panel" aria-controls="nunjucks-default--examples-ticket-panel">Nunjucks</a></li>
   </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-primary-navigation" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-primary-navigation">
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation&quot;</span>&gt;</span>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-ticket-panel" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-ticket-panel">
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-ticket-panel&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Sub navigation 1&quot;</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__container&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-ticket-panel__content moj-ticket-panel__content--blue&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Section 1&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-heading-m govuk-!-margin-bottom-2&quot;</span>&gt;</span>This is a heading 2<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-body&quot;</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-button govuk-!-margin-bottom-1&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;govuk-button&quot;</span>&gt;</span>
+      Save and continue
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__nav&quot;</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Primary navigation&quot;</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__list&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__link&quot;</span> <span class="hljs-attr">aria-current</span>=<span class="hljs-string">&quot;page&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#1&quot;</span>&gt;</span>Nav item 1<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#2&quot;</span>&gt;</span>Nav item 2<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#3&quot;</span>&gt;</span>Nav item 3<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
 
 </code></pre>
   </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-primary-navigation" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-primary-navigation">
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-ticket-panel" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-ticket-panel">
   <details class="govuk-details govuk-!-padding-3" data-module="govuk-details">
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">
@@ -327,40 +310,16 @@
 </thead>
 <tbody>
 <tr>
-<td>label</td>
-<td>string</td>
-<td>No</td>
-<td>The <code>aria-label</code> to add to the navigation container.</td>
-</tr>
-<tr>
-<td>items</td>
-<td>array</td>
-<td>Yes</td>
-<td>An array of navigation item objects. See <a href="#items">items</a>.</td>
-</tr>
-<tr>
-<td>searchHtml</td>
-<td>sting</td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td>containerClasses</td>
-<td>string</td>
-<td>No</td>
-<td>Classes to add to the parent <code>div</code> container.</td>
-</tr>
-<tr>
 <td>classes</td>
 <td>string</td>
 <td>No</td>
-<td>Classes to add to the <code>nav</code> container.</td>
+<td>Classes to add to the timeline's container.</td>
 </tr>
 <tr>
 <td>attributes</td>
 <td>object</td>
 <td>No</td>
-<td>HTML attributes (for example data attributes) to add to the <code>nav</code> container.</td>
+<td>HTML attributes (for example data attributes) to add to the timeline's container.</td>
 </tr>
 </tbody>
 </table>
@@ -376,34 +335,28 @@
 </thead>
 <tbody>
 <tr>
-<td>href</td>
-<td>string</td>
-<td>Yes</td>
-<td>URL of the navigation item anchor. Both href and text attributes for navigation items need to be provided to create an item.</td>
-</tr>
-<tr>
 <td>text</td>
 <td>string</td>
 <td>Yes</td>
-<td>If <code>html</code> is set, this is not required. Text to use within the anchor. If <code>html</code> is provided, the <code>text</code> argument will be ignored.</td>
+<td>If <code>html</code> is set, this is not required. Text to use within the item. If <code>html</code> is provided, the <code>text</code> argument will be ignored.</td>
 </tr>
 <tr>
 <td>html</td>
 <td>string</td>
 <td>Yes</td>
-<td>If <code>text</code> is set, this is not required. HTML to use within the anchor. If <code>html</code> is provided, the <code>text</code> argument will be ignored.</td>
+<td>If <code>text</code> is set, this is not required. HTML to use within the item. If <code>html</code> is provided, the <code>text</code> argument will be ignored.</td>
 </tr>
 <tr>
-<td>active</td>
-<td>boolean</td>
+<td>classes</td>
+<td>string</td>
 <td>No</td>
-<td>Flag to mark the navigation item as active or not. Defaults to <code>false</code>.</td>
+<td>Classes to add to the timeline's container.</td>
 </tr>
 <tr>
 <td>attributes</td>
 <td>object</td>
 <td>No</td>
-<td>HTML attributes (for example data attributes) to add to the navigation item anchor.</td>
+<td>HTML attributes (for example data attributes) to add to the timeline's container.</td>
 </tr>
 </tbody>
 </table>
@@ -412,276 +365,131 @@
   </details>
   <div data-module="app-copy" style="position:relative;">
 <pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/primary-navigation/macro.njk&quot; import mojPrimaryNavigation -%}</span><span class="xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/ticket-panel/macro.njk&quot; import mojTicketPanel -%}</span><span class="xml">
 
-</span><span class="hljs-template-variable">{{ mojPrimaryNavigation({
-  label: &#x27;Primary navigation&#x27;,
-  items: [
-    {
-      text: &#x27;Nav item 1&#x27;,
-      href: &#x27;#1&#x27;,
-      active: true
-    },
-    {
-      text: &#x27;Nav item 2&#x27;,
-      href: &#x27;#2&#x27;
-    },
-    {
-      text: &#x27;Nav item 3&#x27;,
-      href: &#x27;#3&#x27;
-    }
-  ]
-}) }}</span><span class="xml">
-</span></code></pre>
-  </div>
-  </div>
-</div>
-<h2 id="when-to-use">When to use</h2>
-<p>Use the primary navigation component to let users navigate and search your service.</p>
-<h2 id="how-to-use">How to use</h2>
-<p>You must use this component with the <a href="../header">header</a> component.</p>
-<h3 id="links">Links</h3>
-<p>You must only include links to top level sections within your service.</p>
-<p>Do not put calls to action in the primary navigation. For example, ‘Create case’ should be an action from within the ‘cases’ section and not a link inside the primary navigation.</p>
-<h3 id="inline-search">Inline search</h3>
-<p>If your service can search anything, use an inline search form.</p>
-<div class="app-example">
-  <span class="app-example__new-window">
-    <a href="/examples/primary-navigation-inline-search" target="_blank">Open this example <span class="govuk-visually-hidden">(Primary navigation with inline search (example))</span> in a new window</a>
-  </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="180" src="/examples/primary-navigation-inline-search" aria-label="Primary navigation with inline search (example)"></iframe>
-</div>
-<div class="app-tabs" data-module="app-tabs">
-  <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-primary-navigation-inline-search" role="tab" id="tab_html-default--examples-primary-navigation-inline-search" aria-controls="html-default--examples-primary-navigation-inline-search">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-primary-navigation-inline-search" role="tab" id="tab_nunjucks-default--examples-primary-navigation-inline-search" aria-controls="nunjucks-default--examples-primary-navigation-inline-search">Nunjucks</a></li>
-  </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-primary-navigation-inline-search" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-primary-navigation-inline-search">
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation&quot;</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__container&quot;</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__nav&quot;</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Primary navigation&quot;</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__list&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__link&quot;</span> <span class="hljs-attr">aria-current</span>=<span class="hljs-string">&quot;page&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#1&quot;</span>&gt;</span>Nav item 1<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#2&quot;</span>&gt;</span>Nav item 2<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#3&quot;</span>&gt;</span>Nav item 3<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__search&quot;</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-search moj-search--ondark moj-search--inline&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;get&quot;</span>&gt;</span>
-
-          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-form-group&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-label moj-search__label govuk-visually-hidden&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;search-1&quot;</span>&gt;</span>
-              Search
-            <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-
-            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-input moj-search__input &quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;search-1&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;search-1&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;search&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-          <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-button moj-search__button &quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;govuk-button&quot;</span>&gt;</span>
-            Search
-          <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-</code></pre>
-  </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-primary-navigation-inline-search" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-primary-navigation-inline-search">
-  <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/primary-navigation/macro.njk&quot; import mojPrimaryNavigation -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/search/macro.njk&quot; import mojSearch -%}</span><span class="xml">
-
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> inlineSearchHtml %}</span><span class="xml">
-  </span><span class="hljs-template-variable">{{ mojSearch({
-    classes: &#x27;moj-search--ondark moj-search--inline&#x27;,
-    input: {
-      id: &#x27;search-1&#x27;,
-      name: &#x27;search-1&#x27;
-    },
-    label: {
-      text: &#x27;Search&#x27;,
-      classes: &#x27;govuk-visually-hidden&#x27;
-    },
-    button: {
-      text: &#x27;Search&#x27;
-    }
-  }) }}</span><span class="xml">
-</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="xml">
-
-</span><span class="hljs-template-variable">{{ mojPrimaryNavigation({
-  label: &#x27;Primary navigation&#x27;,
+</span><span class="hljs-template-variable">{{ mojTicketPanel({
+  attributes: {
+    &#x27;aria-label&#x27;: &#x27;Sub navigation 1&#x27;
+  },
   items: [{
-    text: &#x27;Nav item 1&#x27;,
-    href: &#x27;#1&#x27;,
-    active: true
-  }, {
-    text: &#x27;Nav item 2&#x27;,
-    href: &#x27;#2&#x27;
-  }, {
-    text: &#x27;Nav item 3&#x27;,
-    href: &#x27;#3&#x27;
-  }],
-  searchHtml: inlineSearchHtml
+    html: &#x27; &lt;h2 class=&quot;govuk-heading-m govuk-!-margin-bottom-2&quot;&gt;This is a heading 2&lt;/h2&gt;
+    &lt;p class=&quot;govuk-body&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;
+    &lt;a class=&quot;govuk-button govuk-!-margin-bottom-1&quot; data-module=&quot;govuk-button&quot;&gt;
+      Save and continue
+    &lt;/a&gt;&#x27;,
+    attributes: {
+      &#x27;aria-label&#x27;: &#x27;Section 1&#x27;
+    },
+    classes: &#x27;moj-ticket-panel__content--blue&#x27;
+  }]
 }) }}</span><span class="xml">
 </span></code></pre>
   </div>
   </div>
 </div>
-<h3 id="toggle-search">Toggle search</h3>
-<p>If your service can only search for certain things, use a toggle search form.</p>
-<p>You must tell users what they are searching for in the form hint text, and how they can search using the <code>data-moj-search-toggle-text</code> attribute.</p>
-<div class="app-example">
-  <span class="app-example__new-window">
-    <a href="/examples/primary-navigation-toggle-search" target="_blank">Open this example <span class="govuk-visually-hidden">(Primary navigation with toggleable search (example))</span> in a new window</a>
-  </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="250" src="/examples/primary-navigation-toggle-search" aria-label="Primary navigation with toggleable search (example)"></iframe>
-</div>
-<div class="app-tabs" data-module="app-tabs">
-  <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-primary-navigation-toggle-search" role="tab" id="tab_html-default--examples-primary-navigation-toggle-search" aria-controls="html-default--examples-primary-navigation-toggle-search">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-primary-navigation-toggle-search" role="tab" id="tab_nunjucks-default--examples-primary-navigation-toggle-search" aria-controls="nunjucks-default--examples-primary-navigation-toggle-search">Nunjucks</a></li>
-  </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-primary-navigation-toggle-search" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-primary-navigation-toggle-search">
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation&quot;</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__container&quot;</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__nav&quot;</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Primary navigation&quot;</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__list&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__link&quot;</span> <span class="hljs-attr">aria-current</span>=<span class="hljs-string">&quot;page&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#1&quot;</span>&gt;</span>Nav item 1<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#2&quot;</span>&gt;</span>Nav item 2<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__item&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#3&quot;</span>&gt;</span>Nav item 3<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-primary-navigation__search&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-search-toggle&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;moj-search-toggle&quot;</span> <span class="hljs-attr">data-moj-search-toggle-text</span>=<span class="hljs-string">&quot;Find case&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-search-toggle__toggle&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-search-toggle__search&quot;</span>&gt;</span>
-
-          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-search moj-search--ondark moj-search--toggle moj-js-hidden&quot;</span>&gt;</span>
-
-            <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;get&quot;</span>&gt;</span>
-
-              <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-form-group&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-label moj-search__label govuk-visually-hidden&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;search2&quot;</span>&gt;</span>
-                  Search
-                <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;search2-hint&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-hint moj-search__hint &quot;</span>&gt;</span>
-                  Enter case number, for example 123456
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-input moj-search__input &quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;search2&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;search2&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">aria-describedby</span>=<span class="hljs-string">&quot;search2-hint&quot;</span>&gt;</span>
-              <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-button moj-search__button &quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;govuk-button&quot;</span>&gt;</span>
-                Search
-              <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-
-            <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-</code></pre>
-  </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-primary-navigation-toggle-search" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-primary-navigation-toggle-search">
-  <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/primary-navigation/macro.njk&quot; import mojPrimaryNavigation -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/search/macro.njk&quot; import mojSearch -%}</span><span class="xml">
-
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> toggleSearchHtml %}</span><span class="xml">
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-search-toggle&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;moj-search-toggle&quot;</span> <span class="hljs-attr">data-moj-search-toggle-text</span>=<span class="hljs-string">&quot;Find case&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-search-toggle__toggle&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-search-toggle__search&quot;</span>&gt;</span>
-      </span><span class="hljs-template-variable">{{ mojSearch({
-        classes: &#x27;moj-search--ondark moj-search--toggle moj-js-hidden&#x27;,
-        input: {
-          id: &#x27;search2&#x27;,
-          name: &#x27;search2&#x27;
-        },
-        label: {
-          classes: &#x27;govuk-visually-hidden&#x27;,
-          text: &#x27;Search&#x27;
-        },
-        hint: {
-          text: &#x27;Enter case number, for example 123456&#x27;
-        },
-        button: {
-          text: &#x27;Search&#x27;
-        }
-      }) }}</span><span class="xml">
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="xml">
-
-</span><span class="hljs-template-variable">{{ mojPrimaryNavigation({
-  label: &#x27;Primary navigation&#x27;,
-  items: [
-    {
-      text: &#x27;Nav item 1&#x27;,
-      href: &#x27;#1&#x27;,
-      active: true
-    },
-    {
-      text: &#x27;Nav item 2&#x27;,
-      href: &#x27;#2&#x27;
-    },
-    {
-      text: &#x27;Nav item 3&#x27;,
-      href: &#x27;#3&#x27;
-    }
-  ],
-  searchHtml: toggleSearchHtml
-}) }}</span><span class="xml">
-</span></code></pre>
-  </div>
-  </div>
-</div>
+<p>Break up content or actions into visually distinct groups of information.</p>
+<h2 id="when-to-use">When to use</h2>
+<p>Use this component for dashboard level information as a way of breaking up content or actions into visually distinct chunks, specifically for instances where information does not fit comfortably into the table or summary list components.</p>
+<h2 id="when-not-to-use">When not to use</h2>
+<p>Don’t use this component if the information you wish to present can fit comfortably in a table or summary list component. Don’t use this component to present important information at the top of a page. Instead, consider using the banner component or the panel component.</p>
+<h2 id="how-to-use">How to use</h2>
+<p>This component is essentially a container that can hold html, in most cases, a title and some paragraph text. It is intended to be flexible, so can contain columns, buttons, links, and a status badge if required.</p>
+<p>The border on the left can be used to reinforce the status when used with a <a href="https://design-system.service.gov.uk/components/tag/">status tag</a> or <a href="/components/badge/">badge</a>. For example, if the ticket panel contains a red status badge with the text ‘cancelled’, the left border can be made red to draw attention to this information.</p>
+<p>It can be used to display information in full width panels or columns of upto four panels per row.</p>
+<h2 id="research-on-this-component">Research on this component</h2>
+<p>This component is marked as experimental because it needs more research.</p>
+<p>If you have used the ticket panel component, get in touch to share your research findings.</p>
+<h2 id="arguments">Arguments</h2>
+<h3 id="container-1">Container</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>classes</td>
+<td>string</td>
+<td>No</td>
+<td>Classes to add to the ticket panel's container.</td>
+</tr>
+<tr>
+<td>attributes</td>
+<td>object</td>
+<td>No</td>
+<td>HTML attributes (for example data attributes) to add to the ticket panel's container.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="items-1">Items</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>Yes</td>
+<td>If <code>html</code> is set, this is not required. Text to use within the item. If <code>html</code> is provided, the <code>text</code> argument will be ignored.</td>
+</tr>
+<tr>
+<td>html</td>
+<td>string</td>
+<td>Yes</td>
+<td>If <code>text</code> is set, this is not required. HTML to use within the item. If <code>html</code> is provided, the <code>text</code> argument will be ignored.</td>
+</tr>
+<tr>
+<td>classes</td>
+<td>string</td>
+<td>No</td>
+<td>Classes to add to the ticket panel's container.</td>
+</tr>
+<tr>
+<td>attributes</td>
+<td>object</td>
+<td>No</td>
+<td>HTML attributes (for example data attributes) to add to the ticket panel's container.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classes">Classes</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>moj-ticket-panel__content--blue</td>
+</tr>
+<tr>
+<td>moj-ticket-panel__content--red</td>
+</tr>
+<tr>
+<td>moj-ticket-panel__content--yellow</td>
+</tr>
+<tr>
+<td>moj-ticket-panel__content--green</td>
+</tr>
+<tr>
+<td>moj-ticket-panel__content--purple</td>
+</tr>
+<tr>
+<td>moj-ticket-panel__content--orange</td>
+</tr>
+</tbody>
+</table>
 
       </main>
 
