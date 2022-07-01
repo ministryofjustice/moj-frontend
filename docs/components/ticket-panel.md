@@ -7,17 +7,31 @@ title: Ticket Panel
 
 {% example "/examples/ticket-panel", 300 %}
 
+Break up content or actions into visually distinct groups of information.
+
 ## When to use
 
-TBC
+Use this component for dashboard level information as a way of breaking up content or actions into visually distinct chunks, specifically for instances where information does not fit comfortably into the table or summary list components.
 
 ## When not to use
 
-TBC
+Don’t use this component if the information you wish to present can fit comfortably in a table or summary list component. Don’t use this component to present important information at the top of a page. Instead, consider using the banner component or the panel component.
 
 ## How to use
 
-This component accepts the following arguments.
+This component is essentially a container that can hold html, in most cases, a title and some paragraph text. It is intended to be flexible, so can contain columns, buttons, links, and a status badge if required.
+
+The border on the left can be used to reinforce the status when used with a [status tag](https://design-system.service.gov.uk/components/tag/) or [badge](/components/badge/). For example, if the ticket panel contains a red status badge with the text ‘cancelled’, the left border can be made red to draw attention to this information.
+
+It can be used to display information in full width panels or columns of upto four panels per row.
+
+## Research on this component
+
+This component is marked as experimental because it needs more research.
+
+If you have used the ticket panel component, get in touch to share your research findings.
+
+## Arguments
 
 ### Container
 
