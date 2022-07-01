@@ -1,30 +1,21 @@
-# Ticket Panel
+---
+layout: layouts/component.njk
+title: Ticket Panel
+---
 
-- [Guidance](https://moj-design-system.herokuapp.com/components/ticket-panel)
-- [Preview](https://moj-frontend.herokuapp.com/components/ticket-panel)
+{% lastUpdated "ticket-panel" %}
 
-## Example
-Below is a typical example of the timeline component in use.
+{% example "/examples/ticket-panel", 300 %}
 
-```
-{{ mojTicketPanel({
-  attributes: {
-    'aria-label': 'Sub navigation 1'
-  },
-  items: [{
-    html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This is a heading 2</h2>
-    <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
-      Save and continue
-    </a>',
-    attributes: {
-      'aria-label': 'Section 1'
-    }
-  }]
-}) }}
-```
+## When to use
 
-## Arguments
+TBC
+
+## When not to use
+
+TBC
+
+## How to use
 
 This component accepts the following arguments.
 
