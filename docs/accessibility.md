@@ -1,6 +1,6 @@
 ---
 layout: layouts/plain.njk
-title: Accessibility statement
+title: Accessibility
 ---
 
 Coming soon
