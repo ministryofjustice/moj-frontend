@@ -73,6 +73,8 @@
 </div>
 
 
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
 <header class="moj-header moj-header--docs" role="banner">
 
   <div class="moj-header__container">
@@ -85,10 +87,11 @@
         <image src="/assets/images/moj-logotype-crest.png" xlink:href="" class="moj-header__logotype-crest-fallback-image" width="40" height="40"></image>
 
       </svg>
+      <a class="moj-header__link" href="/">
+        <span class="moj-header__link--organisation-name">Ministry of Justice</span>
 
-      <a class="moj-header__link moj-header__link--organisation-name" href="/">Ministry of Justice</a>
-
-      <a class="moj-header__link moj-header__link--service-name" href="/">Pattern Library</a>
+        <span class="moj-header__link--service-name">Pattern Library</span>
+      </a>
     </div>
   </div>
 
@@ -128,7 +131,7 @@
 
 
         
-  <div class="govuk-width-container govuk-grid-row">
+  <div class="govuk-width-container govuk-grid-row app-flex-container">
     <div class="govuk-grid-column-one-third">
       
   
@@ -258,7 +261,7 @@
     </div>
 
     <div class="govuk-grid-column-two-thirds">
-      <main class="govuk-main-wrapper app-prose-scope" role="main">
+      <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
           <span class="govuk-caption-xl">Components</span>
           Primary navigation
@@ -268,7 +271,7 @@
   <span class="app-example__new-window">
     <a href="/examples/primary-navigation" target="_blank">Open this example <span class="govuk-visually-hidden">(Primary navigation (example))</span> in a new window</a>
   </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="150" src="/examples/primary-navigation" aria-label="Primary navigation (example)"></iframe>
+  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="150" src="/examples/primary-navigation" title="Primary navigation (example)"></iframe>
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
@@ -449,7 +452,7 @@
   <span class="app-example__new-window">
     <a href="/examples/primary-navigation-inline-search" target="_blank">Open this example <span class="govuk-visually-hidden">(Primary navigation with inline search (example))</span> in a new window</a>
   </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="180" src="/examples/primary-navigation-inline-search" aria-label="Primary navigation with inline search (example)"></iframe>
+  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="180" src="/examples/primary-navigation-inline-search" title="Primary navigation with inline search (example)"></iframe>
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
@@ -558,7 +561,7 @@
   <span class="app-example__new-window">
     <a href="/examples/primary-navigation-toggle-search" target="_blank">Open this example <span class="govuk-visually-hidden">(Primary navigation with toggleable search (example))</span> in a new window</a>
   </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="250" src="/examples/primary-navigation-toggle-search" aria-label="Primary navigation with toggleable search (example)"></iframe>
+  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="250" src="/examples/primary-navigation-toggle-search" title="Primary navigation with toggleable search (example)"></iframe>
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
@@ -687,68 +690,116 @@
 
       
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-<h2 class="govuk-heading-m">Need help?</h2>
+<h2 class="govuk-heading-l">Need help?</h2>
 <p class="govuk-body">You can edit the page via <a href="https://github.com/ministryofjustice/moj-frontend/tree/main/docs" class="govuk-link">GitHub</a>
  or if you’ve got a question, idea or suggestion share it on the <a href="https://mojdt.slack.com/archives/CH5RUSB27" class="govuk-link">#moj-pattern-library-support</a> channel on Slack.</p>
 
- <div class="govuk-!-padding-bottom-7"></div>
+<div class="govuk-!-padding-bottom-7"></div>
 
     </div>
   </div>
 
 
-        <footer class="govuk-footer" role="contentinfo">
+        
 
-  <div class="govuk-width-container">
-
-    <div class="govuk-footer__navigation">
-
-      <div class="govuk-footer__section">
-
-        <h2 class="govuk-footer__heading govuk-heading-m">Related resources</h2>
-
-        <ul class="govuk-footer__list govuk-footer__list--columns-1">
-          <li class="govuk-footer__list-item"><a class="govuk-footer__link" href="https://www.gov.uk/guidance/government-design-principles">Government Design Principles</a></li>
-          <li class="govuk-footer__list-item"><a class="govuk-footer__link" href="https://design-system.service.gov.uk/">GOV.UK Design System</a></li>
-          <li class="govuk-footer__list-item"><a class="govuk-footer__link" href="https://www.gov.uk/service-manual">GOV.UK Service Manual</a></li>
-        </ul>
-
+<footer class="govuk-footer " role="contentinfo">
+  <div class="govuk-width-container ">
+    
+      <div class="govuk-footer__navigation">
+        
+          <div class="govuk-footer__section">
+            <h2 class="govuk-footer__heading govuk-heading-m">Related resources</h2>
+            
+              
+              <ul class="govuk-footer__list ">
+                
+                  
+                    <li class="govuk-footer__list-item">
+                      <a class="govuk-footer__link" href="https://www.gov.uk/guidance/government-design-principles">
+                        Government Design Principles
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li class="govuk-footer__list-item">
+                      <a class="govuk-footer__link" href="https://design-system.service.gov.uk/">
+                        GOV.UK Design System
+                      </a>
+                    </li>
+                  
+                
+                  
+                    <li class="govuk-footer__list-item">
+                      <a class="govuk-footer__link" href="https://www.gov.uk/service-manual">
+                        GOV.UK Service Manual
+                      </a>
+                    </li>
+                  
+                
+              </ul>
+            
+          </div>
+        
       </div>
-
-    </div>
-
-    <hr class="govuk-section-break">
-
+      <hr class="govuk-footer__section-break">
+    
     <div class="govuk-footer__meta">
-
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
-
-        <h2 class="govuk-visually-hidden">Support links</h2>
-
-        <ul class="govuk-footer__inline-list">
-          <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="/cookies">Cookies</a></li>
-          <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="/privacy-policy">Privacy policy</a></li>
-        </ul>
-
-        <svg aria-hidden="true" focusable="false" class="govuk-footer__licence-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 483.2 195.7" height="17" width="41">
-          <path fill="currentColor" d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"></path>
+        
+          <h2 class="govuk-visually-hidden">Support links</h2>
+          
+            <ul class="govuk-footer__inline-list">
+              
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="/cookies">
+                    Cookies
+                  </a>
+                </li>
+              
+                <li class="govuk-footer__inline-list-item">
+                  <a class="govuk-footer__link" href="/accessibility">
+                    Accessibility
+                  </a>
+                </li>
+              
+            </ul>
+          
+          
+        
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          class="govuk-footer__licence-logo"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 483.2 195.7"
+          height="17"
+          width="41"
+        >
+          <path
+            fill="currentColor"
+            d="M421.5 142.8V.1l-50.7 32.3v161.1h112.4v-50.7zm-122.3-9.6A47.12 47.12 0 0 1 221 97.8c0-26 21.1-47.1 47.1-47.1 16.7 0 31.4 8.7 39.7 21.8l42.7-27.2A97.63 97.63 0 0 0 268.1 0c-36.5 0-68.3 20.1-85.1 49.7A98 98 0 0 0 97.8 0C43.9 0 0 43.9 0 97.8s43.9 97.8 97.8 97.8c36.5 0 68.3-20.1 85.1-49.7a97.76 97.76 0 0 0 149.6 25.4l19.4 22.2h3v-87.8h-80l24.3 27.5zM97.8 145c-26 0-47.1-21.1-47.1-47.1s21.1-47.1 47.1-47.1 47.2 21 47.2 47S123.8 145 97.8 145"
+          />
         </svg>
-
-        <span class="govuk-footer__licence-description">All content is available under the
-          <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+        <span class="govuk-footer__licence-description">
+          All content is available under the
+          <a
+            class="govuk-footer__link"
+            href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+            rel="license"
+          >Open Government Licence v3.0</a>, except where otherwise stated
         </span>
-
       </div>
-
       <div class="govuk-footer__meta-item">
-        <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">&copy; Crown copyright</a>
+        <a
+          class="govuk-footer__link govuk-footer__copyright-logo"
+          href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
+        >© Crown copyright</a>
       </div>
-
     </div>
-
   </div>
-
 </footer>
+
 
 
       </div>
