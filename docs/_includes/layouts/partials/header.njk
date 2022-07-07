@@ -29,6 +29,8 @@
   ]
 }) }}
 
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
 <header class="moj-header moj-header--docs" role="banner">
 
   <div class="moj-header__container">
@@ -41,10 +43,11 @@
         <image src="{{ '/assets/images/moj-logotype-crest.png' | url }}" xlink:href="" class="moj-header__logotype-crest-fallback-image" width="40" height="40"></image>
 
       </svg>
+      <a class="moj-header__link" href="{{ '/' | url }}">
+        <span class="moj-header__link--organisation-name">Ministry of Justice</span>
 
-      <a class="moj-header__link moj-header__link--organisation-name" href="{{ '/' | url }}">Ministry of Justice</a>
-
-      <a class="moj-header__link moj-header__link--service-name" href="{{ '/' | url }}">Pattern Library</a>
+        <span class="moj-header__link--service-name">Pattern Library</span>
+      </a>
     </div>
   </div>
 

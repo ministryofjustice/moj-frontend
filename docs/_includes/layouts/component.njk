@@ -9,7 +9,7 @@
 {% endmacro %}
 
 {% block content %}
-  <div class="govuk-width-container govuk-grid-row">
+  <div class="govuk-width-container govuk-grid-row app-flex-container">
     <div class="govuk-grid-column-one-third">
       {{ appSideNavigation({
         classes: 'govuk-!-padding-top-6',
@@ -142,7 +142,7 @@
     </div>
 
     <div class="govuk-grid-column-two-thirds">
-      <main class="govuk-main-wrapper app-prose-scope" role="main">
+      <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
           {% if not isIndex %}<span class="govuk-caption-xl">Components</span>{% endif %}
           {{ title }}
