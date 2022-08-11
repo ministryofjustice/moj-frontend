@@ -8,6 +8,7 @@ const mojFilters = require("./src/moj/filters/all");
 const nunjucks = require("nunjucks");
 const path = require("path");
 const { execSync } = require("child_process");
+const releasePackage = require('./package/package.json');
 
 module.exports = function (eleventyConfig) {
   const nunjucksEnv = nunjucks.configure([
@@ -89,6 +90,10 @@ module.exports = function (eleventyConfig) {
       .split(",");
 
     return `<p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/${commit}">${lastUpdated}</a></p>`;
+  });
+
+  eleventyConfig.addShortcode("version", function () {
+    return releasePackage.version;
   });
 
   eleventyConfig.addPairedShortcode("banner", function (content, title) {
