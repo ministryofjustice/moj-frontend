@@ -60,7 +60,7 @@
     "@semantic-release/npm": "^8.0.3",
     "autoprefixer": "^10.4.0",
     "babel-loader": "^8.2.2",
-    "commitizen": "^4.2.4",
+    "commitizen": "^4.2.5",
     "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.2.6",
     "cssnano": "^5.0.13",
