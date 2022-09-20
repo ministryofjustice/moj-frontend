@@ -7,6 +7,7 @@ MOJFrontend.PasswordReveal = function(element) {
   }
 
   $el.data('moj-password-reveal-initialised', true);
+  $el.attr('spellcheck', 'false');
 
   $el.wrap('<div class="moj-password-reveal"></div>');
   this.container = $(this.el).parent();
