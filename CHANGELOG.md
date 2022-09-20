@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.4.2...v1.5.0) (2022-09-20)
+
+
+### Features
+
+* **password-reveal:** set spellcheck attribute to false ([#377](https://github.com/ministryofjustice/moj-frontend/issues/377)) ([04a8ee1](https://github.com/ministryofjustice/moj-frontend/commit/04a8ee18e4cd29bedb6077d4a482ca218a45897b))
+
 ## [1.4.2](https://github.com/ministryofjustice/moj-frontend/compare/v1.4.1...v1.4.2) (2022-05-18)
 
 
