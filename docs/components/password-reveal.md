@@ -10,3 +10,5 @@ title: Password reveal
 ## When to use
 
 Use the password reveal component to let users check their password safely.
+
+This component automatically sets the `spellcheck` attribute to `false` to prevent users' passwords being stored in their browsers.
