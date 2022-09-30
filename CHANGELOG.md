@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.5.0...v1.6.0) (2022-09-30)
+
+
+### Features
+
+* **prototype kit integration:** users of prototype-kit-v13 should have macros and filters available ([#378](https://github.com/ministryofjustice/moj-frontend/issues/378)) ([89cbf0a](https://github.com/ministryofjustice/moj-frontend/commit/89cbf0a442d3f8f1e53a40d94ab3518c365959b1))
+
 # [1.5.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.4.2...v1.5.0) (2022-09-20)
 
 
