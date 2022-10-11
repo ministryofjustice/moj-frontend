@@ -3,17 +3,17 @@ layout: layouts/component.njk
 title: Progress Bar
 ---
 
+{% banner "Unknown accessibility and Responsive Design standards" %}
+This component has not been accessibility tested and has no Responsive Design styling. Therefore it should not be used on live sites until it has. If you have had an accessibility check on this component or added responsive design styling, please update this component with any details or changes and remove this message.
+{% endbanner %}
+
 {% lastUpdated "progress-bar" %}
 
 {% example "/examples/progress-bar", 300 %}
 
-## When to use
+## When to use and not to use
 
-TBC
-
-## When not to use
-
-TBC
+Please follow the official guidance from [GDS on advice when using progress indicators](https://design-system.service.gov.uk/patterns/question-pages/#using-progress-indicators).
 
 ## How to use
 
