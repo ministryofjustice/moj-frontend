@@ -1,6 +1,5 @@
 # Search
 
-- [Guidance](https://moj-design-system.herokuapp.com/components/search)
-- [Preview](https://moj-frontend.herokuapp.com/components/search)
+- [Guidance](https://design-patterns.service.justice.gov.uk/components/search)
 
 ## Arguments

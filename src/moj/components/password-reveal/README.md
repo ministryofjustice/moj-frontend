@@ -1,4 +1,3 @@
 # Password reveal
 
-- [Guidance](https://moj-design-system.herokuapp.com/components/password-reveal)
-- [Preview](https://moj-frontend.herokuapp.com/components/password-reveal)
+- [Guidance](https://design-patterns.service.justice.gov.uk/components/password-reveal)

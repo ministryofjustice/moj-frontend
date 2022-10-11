@@ -34,7 +34,7 @@ This Code of Conduct applies both within project spaces and in public spaces whe
 
 ## Enforcement
 
-Instances of abusive, harassing or otherwise unacceptable behaviour may be reported by [contacting the Design System team](https://moj-design-system.herokuapp.com/get-in-touch). All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality concerning the reporter of an incident.
+Instances of abusive, harassing or otherwise unacceptable behaviour may be reported by [contacting the Design System team](https://design-patterns.service.justice.gov.uk/get-in-touch). All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality concerning the reporter of an incident.
 
 Further details of specific enforcement policies may be posted separately.
 

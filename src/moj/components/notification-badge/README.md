@@ -1,9 +1,8 @@
 # Notification badge
 
-- [Guidance](https://moj-design-system.herokuapp.com/components/notification-badge)
-- [Preview](https://moj-frontend.herokuapp.com/components/notification-badge)
+- [Guidance](https://design-patterns.service.justice.gov.uk/components/notification-badge)
 
 ## Arguments
 
-|Name|Type|Required|Description|
-|---|---|---|---|
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |

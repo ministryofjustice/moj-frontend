@@ -1,9 +1,8 @@
 # Progress bar
 
-- [Guidance](https://moj-design-system.herokuapp.com/components/progress-bar)
-- [Preview](https://moj-frontend.herokuapp.com/components/progress-bar)
+- [Guidance](https://design-patterns.service.justice.gov.uk/components/progress-bar)
 
 ## Arguments
 
-|Name|Type|Required|Description|
-|---|---|---|---|
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
