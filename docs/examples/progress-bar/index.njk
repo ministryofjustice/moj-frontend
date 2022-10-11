@@ -1,0 +1,58 @@
+---
+layout: layouts/example.njk
+title: Progress bar (example)
+arguments: progress-bar
+---
+
+{%- from "moj/components/progress-bar/macro.njk" import mojProgressBar -%}
+
+{{ mojProgressBar({
+  attributes: {
+    'aria-label': 'Progress of your application'
+  },
+  items: [{
+    id: 'progress-item-1',
+    active: false,
+    complete: true,
+    label: {
+      html: '<p>Your Details</p>'
+    },
+    classes: ''
+  },
+  {
+    id: 'progress-item-2',
+    active: false,
+    complete: true,
+    label: {
+      text: 'Address'
+    },
+    classes: ''
+  },
+  {
+    id: 'progress-item-3',
+    active: true,
+    complete: false,
+    label: {
+      text: 'Passport details'
+    },
+    classes: ''
+  },
+  {
+    id: 'progress-item-4',
+    active: false,
+    complete: false,
+    label: {
+      text: 'Review'
+    },
+    classes: ''
+  },
+  {
+    id: 'progress-item-5',
+    active: false,
+    complete: false,
+    label: {
+      text: 'Application Complete'
+    },
+    classes: ''
+  }]
+}) }}
