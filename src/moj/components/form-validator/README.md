@@ -1,6 +1,5 @@
 # Form validator
 
-- [Guidance](https://moj-design-system.herokuapp.com/components/form-validator)
-- [Preview](https://moj-frontend.herokuapp.com/components/form-validator)
+- [Guidance](https://design-patterns.service.justice.gov.uk/components/form-validator)
 
 ## Arguments

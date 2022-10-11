@@ -1,6 +1,5 @@
 # Cookie banner
 
-- [Guidance](https://moj-design-system.herokuapp.com/components/cookie-banner)
-- [Preview](https://moj-frontend.herokuapp.com/components/cookie-banner)
+- [Guidance](https://design-patterns.service.justice.gov.uk/components/cookie-banner)
 
 ## Arguments

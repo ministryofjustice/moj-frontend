@@ -1,6 +1,5 @@
 # Add another
 
-- [Guidance](https://moj-design-system.herokuapp.com/components/add-another)
-- [Preview](https://moj-frontend.herokuapp.com/components/add-another)
+- [Guidance](https://design-patterns.service.justice.gov.uk/components/add-another)
 
 ## Arguments

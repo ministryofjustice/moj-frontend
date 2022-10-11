@@ -1,6 +1,5 @@
 # Action bar
 
-- [Guidance](https://moj-design-system.herokuapp.com/components/action-bar)
-- [Preview](https://moj-frontend.herokuapp.com/components/action-bar)
+- [Guidance](https://design-patterns.service.justice.gov.uk/patterns/filter-a-list)
 
 ## Arguments
