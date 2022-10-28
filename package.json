@@ -52,8 +52,8 @@
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/cli": "^17.0.0",
+    "@commitlint/config-conventional": "^17.0.0",
     "@ministryofjustice/frontend": "file:./package",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
