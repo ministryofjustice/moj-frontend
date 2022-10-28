@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/ministryofjustice/moj-frontend/compare/v1.6.0...v1.6.1) (2022-10-28)
+
+
+### Bug Fixes
+
+* **scrollable:** fix CSS shadow effect ([#381](https://github.com/ministryofjustice/moj-frontend/issues/381)) ([dce18d4](https://github.com/ministryofjustice/moj-frontend/commit/dce18d414719d17044a9328bc5fd8ff272b041a5))
+
 # [1.6.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.5.0...v1.6.0) (2022-09-30)
 
 
