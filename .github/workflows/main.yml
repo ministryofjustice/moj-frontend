@@ -17,13 +17,13 @@ jobs:
         node-version: 'lts/*'
     - run: npm ci
     - run: npm run build:package
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
         name: mojds-package
         path: package
     - run: npm run build:dist
     - run: npm run build:docs
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
         name: mojds-dist
         path: dist
