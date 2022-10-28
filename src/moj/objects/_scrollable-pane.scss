@@ -1,46 +1,43 @@
 .moj-scrollable-pane {
+  $scrollableBgColor: white;
+  $scrollableTransparentColor: rgba(255, 255, 255, 0);
+  $scrollableShadowColor: rgba(0, 0, 0, 0.2);
+  $scrollableShadowSize: 0.75em;
 
-  @include govuk-media-query($until: 1020px) {
-    position: relative;
-    overflow: hidden; // Hides the shadow
-    clear: both; // Fixes render bug
-    // width: 100% // Fixes render bug
-
-    &:after {
-      position: absolute;
-      top: 0;
-      left: 100%;
-      width: 50px;
-      height: 100%;
-      border-radius: 10px 0 0 10px / 50% 0 0 50%;
-      box-shadow: -5px 0 10px rgba(0, 0, 0, 0.25);
-      content:"";
-    }
-  }
-
+  overflow-x: scroll;
+  background: linear-gradient(
+      to right,
+      $scrollableBgColor,
+      $scrollableBgColor,
+      $scrollableTransparentColor calc($scrollableShadowSize * 2)
+    ),
+    radial-gradient(
+      farthest-side at 0 50%,
+      $scrollableShadowColor,
+      $scrollableTransparentColor
+    ),
+    linear-gradient(
+      to left,
+      $scrollableBgColor,
+      $scrollableBgColor,
+      $scrollableTransparentColor calc($scrollableShadowSize * 2)
+    ),
+    radial-gradient(
+        farthest-side at 100% 50%,
+        $scrollableShadowColor,
+        $scrollableTransparentColor
+      )
+      100%;
+  background-color: $scrollableBgColor;
+  background-repeat: no-repeat;
+  background-attachment: local, scroll, local, scroll;
+  background-size: 100% 100%, $scrollableShadowSize 100%, 100% 100%,
+    $scrollableShadowSize 100%;
 }
 
 @include govuk-media-query($until: 1020px) {
-  .moj-scrollable-pane__wrapper {
-    overflow-x: auto;
-  }
-
-  .moj-scrollable-pane__wrapper .govuk-table__header,
-  .moj-scrollable-pane__wrapper .govuk-table__cell {
+  .moj-scrollable-pane .govuk-table__header,
+  .moj-scrollable-pane .govuk-table__cell {
     white-space: nowrap;
-  }
-
-  .moj-scrollable-pane > div::-webkit-scrollbar {
-    height: 10px; // Match GOVUK spacing units
-  }
-
-  .moj-scrollable-pane > div::-webkit-scrollbar-track {
-    background: govuk-colour("light-grey");
-    box-shadow: 0 0 2px rgba(0,0,0,.15) inset; // Simulate scrollbar look and feel
-  }
-
-  .moj-scrollable-pane > div::-webkit-scrollbar-thumb {
-    background: govuk-colour("dark-grey");
-    border-radius: govuk-spacing(1);
   }
 }
