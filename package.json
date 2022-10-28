@@ -70,7 +70,7 @@
     "gulp-sass": "^5.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-zip": "^5.1.0",
-    "highlight.js": "^10.7.2",
+    "highlight.js": "^11.0.0",
     "husky": "^4.3.8",
     "js-beautify": "^1.13.13",
     "markdown-it-anchor": "^7.1.0",
