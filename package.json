@@ -6,11 +6,12 @@
     "/package"
   ],
   "scripts": {
+    "prepare": "husky install",
     "build:docs": "npm run build:package && webpack && eleventy --input=./docs --output=public",
     "build:dist": "gulp build:dist",
     "build:package": "gulp build:package",
-    "ci:release": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --debug",
-    "ci:dryrun": "HUSKY_SKIP_HOOKS=1 CI=true semantic-release --dry-run",
+    "ci:release": "HUSKY=0 CI=true semantic-release --debug",
+    "ci:dryrun": "HUSKY=0 CI=true semantic-release --dry-run",
     "start": "npm-run-all --parallel watch:*",
     "test": "npm-run-all --parallel test:*",
     "test:sass": "npm install node-sass && node-sass -q test.scss >/dev/null && echo 'ok'",
@@ -71,7 +72,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-zip": "^5.1.0",
     "highlight.js": "^11.0.0",
-    "husky": "^4.3.8",
+    "husky": "^8.0.0",
     "js-beautify": "^1.13.13",
     "markdown-it-anchor": "^7.1.0",
     "mini-css-extract-plugin": "^1.6.0",
@@ -81,12 +82,6 @@
     "semantic-release": "^19.0.3",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0"
-  },
-  "husky": {
-    "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   },
   "config": {
     "commitizen": {
