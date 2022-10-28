@@ -71,7 +71,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-zip": "^5.1.0",
     "highlight.js": "^11.0.0",
-    "husky": "^4.3.8",
+    "husky": "^8.0.0",
     "js-beautify": "^1.13.13",
     "markdown-it-anchor": "^7.1.0",
     "mini-css-extract-plugin": "^1.6.0",
