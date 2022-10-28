@@ -430,11 +430,11 @@ For more complex validation, use an accessible validation library.</p>
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-form-validator" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-form-validator">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/input/macro.njk&quot; import govukInput -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/radios/macro.njk&quot; import govukRadios -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/date-input/macro.njk&quot; import govukDateInput -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/button/macro.njk&quot; import govukButton -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/input/macro.njk&quot; import govukInput -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/radios/macro.njk&quot; import govukRadios -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/date-input/macro.njk&quot; import govukDateInput -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/button/macro.njk&quot; import govukButton -%}</span><span class="language-xml">
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;-1&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;group&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;errorSummary&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-error-summary moj-hidden&quot;</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">&quot;error-summary-title&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;error-summary&quot;</span>&gt;</span>
 
@@ -450,7 +450,7 @@ For more complex validation, use an accessible validation library.</p>
       text: &quot;Email&quot;,
       classes: &#x27;govuk-!-font-weight-bold&#x27;
     }
-  }) }}</span><span class="xml">
+  }) }}</span><span class="language-xml">
 
   </span><span class="hljs-template-variable">{{ govukInput({
     id: &quot;password&quot;,
@@ -460,7 +460,7 @@ For more complex validation, use an accessible validation library.</p>
       text: &quot;Password&quot;,
       classes: &#x27;govuk-!-font-weight-bold&#x27;
     }
-  }) }}</span><span class="xml">
+  }) }}</span><span class="language-xml">
 
   </span><span class="hljs-template-variable">{{ govukRadios({
     idPrefix: &quot;location&quot;,
@@ -490,7 +490,7 @@ For more complex validation, use an accessible validation library.</p>
         text: &quot;Northern Ireland&quot;
       }
     ]
-  }) }}</span><span class="xml">
+  }) }}</span><span class="language-xml">
 
   </span><span class="hljs-template-variable">{{ govukDateInput({
     id: &quot;dob&quot;,
@@ -504,70 +504,70 @@ For more complex validation, use an accessible validation library.</p>
     hint: {
       text: &quot;For example, 31 3 1980&quot;
     }
-  }) }}</span><span class="xml">
+  }) }}</span><span class="language-xml">
 
   </span><span class="hljs-template-variable">{{ govukButton({
     text: &quot;Save and continue&quot;
-  }) }}</span><span class="xml">
+  }) }}</span><span class="language-xml">
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 </span></code></pre>
   </div>
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default--examples-form-validator" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default--examples-form-validator">
-<pre><code class="language-js"><span class="hljs-keyword">const</span> validator = <span class="hljs-keyword">new</span> MOJFrontend.FormValidator(<span class="hljs-built_in">document</span>.forms[<span class="hljs-number">0</span>]);
-validator.addValidator(<span class="hljs-string">&#x27;email&#x27;</span>, [{
-  <span class="hljs-attr">method</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">field</span>) </span>{
-    <span class="hljs-keyword">return</span> field.value.trim().length &gt; <span class="hljs-number">0</span>;
+<pre><code class="language-js"><span class="hljs-keyword">const</span> validator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MOJFrontend</span>.<span class="hljs-title class_">FormValidator</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">forms</span>[<span class="hljs-number">0</span>]);
+validator.<span class="hljs-title function_">addValidator</span>(<span class="hljs-string">&#x27;email&#x27;</span>, [{
+  <span class="hljs-attr">method</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">field</span>) {
+    <span class="hljs-keyword">return</span> field.<span class="hljs-property">value</span>.<span class="hljs-title function_">trim</span>().<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>;
   },
   <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Enter your email address&#x27;</span>
 }, {
-  <span class="hljs-attr">method</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">field</span>) </span>{
-    <span class="hljs-keyword">return</span> (field.value.indexOf(<span class="hljs-string">&#x27;@&#x27;</span>) &gt; -<span class="hljs-number">1</span>);
+  <span class="hljs-attr">method</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">field</span>) {
+    <span class="hljs-keyword">return</span> (field.<span class="hljs-property">value</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;@&#x27;</span>) &gt; -<span class="hljs-number">1</span>);
   },
   <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;You need to enter the ‘at’ symbol in your email address&#x27;</span>
 }]);
-validator.addValidator(<span class="hljs-string">&#x27;password&#x27;</span>, [{
-  <span class="hljs-attr">method</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">field</span>) </span>{
-    <span class="hljs-keyword">return</span> field.value.trim().length &gt; <span class="hljs-number">0</span>;
+validator.<span class="hljs-title function_">addValidator</span>(<span class="hljs-string">&#x27;password&#x27;</span>, [{
+  <span class="hljs-attr">method</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">field</span>) {
+    <span class="hljs-keyword">return</span> field.<span class="hljs-property">value</span>.<span class="hljs-title function_">trim</span>().<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>;
   },
   <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Enter your password&#x27;</span>
 }, {
-  <span class="hljs-attr">method</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">field</span>) </span>{
-    <span class="hljs-keyword">return</span> field.value.length &gt; <span class="hljs-number">8</span>;
+  <span class="hljs-attr">method</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">field</span>) {
+    <span class="hljs-keyword">return</span> field.<span class="hljs-property">value</span>.<span class="hljs-property">length</span> &gt; <span class="hljs-number">8</span>;
   },
   <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Your password must contain at least 8 characters&#x27;</span>
 }, {
-  <span class="hljs-attr">method</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">field</span>) </span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-regexp">/\d/</span>.test(field.value);
+  <span class="hljs-attr">method</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">field</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-regexp">/\d/</span>.<span class="hljs-title function_">test</span>(field.<span class="hljs-property">value</span>);
   },
   <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Your password must contain at least one number&#x27;</span>
 }]);
-validator.addValidator(<span class="hljs-string">&#x27;location&#x27;</span>, [{
-  <span class="hljs-attr">method</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">field</span>) </span>{
-    <span class="hljs-keyword">return</span> field.value.trim().length &gt; <span class="hljs-number">0</span>;
+validator.<span class="hljs-title function_">addValidator</span>(<span class="hljs-string">&#x27;location&#x27;</span>, [{
+  <span class="hljs-attr">method</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">field</span>) {
+    <span class="hljs-keyword">return</span> field.<span class="hljs-property">value</span>.<span class="hljs-title function_">trim</span>().<span class="hljs-property">length</span> &gt; <span class="hljs-number">0</span>;
   },
   <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Select your location&#x27;</span>
 }]);
-validator.addValidator(<span class="hljs-string">&#x27;dob-day&#x27;</span>, [{
-  <span class="hljs-attr">method</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">field, params</span>) </span>{
-    <span class="hljs-keyword">return</span> (params.day.value.length !== <span class="hljs-number">0</span> &amp;&amp; params.month.value.length !== <span class="hljs-number">0</span> &amp;&amp; params.year.value !== <span class="hljs-number">0</span>);
+validator.<span class="hljs-title function_">addValidator</span>(<span class="hljs-string">&#x27;dob-day&#x27;</span>, [{
+  <span class="hljs-attr">method</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">field, params</span>) {
+    <span class="hljs-keyword">return</span> (params.<span class="hljs-property">day</span>.<span class="hljs-property">value</span>.<span class="hljs-property">length</span> !== <span class="hljs-number">0</span> &amp;&amp; params.<span class="hljs-property">month</span>.<span class="hljs-property">value</span>.<span class="hljs-property">length</span> !== <span class="hljs-number">0</span> &amp;&amp; params.<span class="hljs-property">year</span>.<span class="hljs-property">value</span> !== <span class="hljs-number">0</span>);
   },
   <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Enter your date of birth&#x27;</span>,
   <span class="hljs-attr">params</span>: {
-    <span class="hljs-attr">day</span>: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;dob-day&#x27;</span>),
-    <span class="hljs-attr">month</span>: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;dob-month&#x27;</span>),
-    <span class="hljs-attr">year</span>: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;dob-year&#x27;</span>)
+    <span class="hljs-attr">day</span>: <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;dob-day&#x27;</span>),
+    <span class="hljs-attr">month</span>: <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;dob-month&#x27;</span>),
+    <span class="hljs-attr">year</span>: <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;dob-year&#x27;</span>)
   }
 }, {
-  <span class="hljs-attr">method</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">field, params</span>) </span>{
-    <span class="hljs-keyword">var</span> d = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-built_in">parseInt</span>(params.year.value, <span class="hljs-number">10</span>), <span class="hljs-built_in">parseInt</span>(params.month.value, <span class="hljs-number">10</span>) - <span class="hljs-number">1</span>, <span class="hljs-built_in">parseInt</span>(params.day.value, <span class="hljs-number">10</span>) - <span class="hljs-number">1</span>);
-    <span class="hljs-keyword">return</span> d <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Date</span> &amp;&amp; !<span class="hljs-built_in">isNaN</span>(d);
+  <span class="hljs-attr">method</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">field, params</span>) {
+    <span class="hljs-keyword">var</span> d = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-built_in">parseInt</span>(params.<span class="hljs-property">year</span>.<span class="hljs-property">value</span>, <span class="hljs-number">10</span>), <span class="hljs-built_in">parseInt</span>(params.<span class="hljs-property">month</span>.<span class="hljs-property">value</span>, <span class="hljs-number">10</span>) - <span class="hljs-number">1</span>, <span class="hljs-built_in">parseInt</span>(params.<span class="hljs-property">day</span>.<span class="hljs-property">value</span>, <span class="hljs-number">10</span>) - <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> d <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Date</span> &amp;&amp; !<span class="hljs-built_in">isNaN</span>(d);
   },
   <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Enter a valid date of birth&#x27;</span>,
   <span class="hljs-attr">params</span>: {
-    <span class="hljs-attr">day</span>: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;dob-day&#x27;</span>),
-    <span class="hljs-attr">month</span>: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;dob-month&#x27;</span>),
-    <span class="hljs-attr">year</span>: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;dob-year&#x27;</span>)
+    <span class="hljs-attr">day</span>: <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;dob-day&#x27;</span>),
+    <span class="hljs-attr">month</span>: <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;dob-month&#x27;</span>),
+    <span class="hljs-attr">year</span>: <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;dob-year&#x27;</span>)
   }
 }]);
 </code></pre>

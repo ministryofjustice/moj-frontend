@@ -324,26 +324,26 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-multi-file-upload" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-multi-file-upload">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/file-upload/macro.njk&quot; import govukFileUpload -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/button/macro.njk&quot; import govukButton -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/error-summary/macro.njk&quot; import govukErrorSummary -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/multi-file-upload/macro.njk&quot; import mojMultiFileUpload -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/file-upload/macro.njk&quot; import govukFileUpload -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/button/macro.njk&quot; import govukButton -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/error-summary/macro.njk&quot; import govukErrorSummary -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/multi-file-upload/macro.njk&quot; import mojMultiFileUpload -%}</span><span class="language-xml">
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-grid-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-grid-column-two-thirds&quot;</span>&gt;</span>
 
-    </span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-name">if</span></span> errorSummary.items.length %}</span><span class="xml">
+    </span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-name">if</span></span> errorSummary.items.length %}</span><span class="language-xml">
       </span><span class="hljs-template-variable">{{ govukErrorSummary({
         titleText: &#x27;There is a problem&#x27;,
         errorList: errorSummary.items
-      }) }}</span><span class="xml">
-    </span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-name">endif</span></span> %}</span><span class="xml">
+      }) }}</span><span class="language-xml">
+    </span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-name">endif</span></span> %}</span><span class="language-xml">
 
     <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-heading-xl&quot;</span>&gt;</span>Upload files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;/components/multi-file-upload/examples/default&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">&quot;multipart/form-data&quot;</span>&gt;</span>
-      </span><span class="hljs-template-tag">{% <span class="hljs-name">set</span> uploadHtml %}</span><span class="xml">
+      </span><span class="hljs-template-tag">{% <span class="hljs-name">set</span> uploadHtml %}</span><span class="language-xml">
         </span><span class="hljs-template-variable">{{ govukFileUpload({
           id: &quot;documents&quot;,
           name: &quot;documents&quot;,
@@ -354,13 +354,13 @@
           },
           attributes: { multiple: &#x27;&#x27; },
           errorMessage: errorMessage
-        }) }}</span><span class="xml">
+        }) }}</span><span class="language-xml">
 
         </span><span class="hljs-template-variable">{{govukButton({
           text: &#x27;Upload file&#x27;,
           classes: &#x27;govuk-button--secondary moj-multi-file-upload__button&#x27;
-        })}}</span><span class="xml">
-      </span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> %}</span><span class="xml">
+        })}}</span><span class="language-xml">
+      </span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> %}</span><span class="language-xml">
 
       </span><span class="hljs-template-variable">{{ mojMultiFileUpload({
         uploadedFiles: {
@@ -368,11 +368,11 @@
           items: uploadedFiles
         },
         uploadHtml: uploadHtml
-      }) }}</span><span class="xml">
+      }) }}</span><span class="language-xml">
 
       </span><span class="hljs-template-variable">{{govukButton({
         text: &#x27;Continue&#x27;
-      })}}</span><span class="xml">
+      })}}</span><span class="language-xml">
     <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -380,8 +380,8 @@
   </div>
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default--examples-multi-file-upload" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default--examples-multi-file-upload">
-<pre><code class="language-js"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> MOJFrontend.MultiFileUpload !== <span class="hljs-string">&quot;undefined&quot;</span>) {
-  <span class="hljs-keyword">new</span> MOJFrontend.MultiFileUpload({
+<pre><code class="language-js"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-title class_">MOJFrontend</span>.<span class="hljs-property">MultiFileUpload</span> !== <span class="hljs-string">&quot;undefined&quot;</span>) {
+  <span class="hljs-keyword">new</span> <span class="hljs-title class_">MOJFrontend</span>.<span class="hljs-title class_">MultiFileUpload</span>({
     <span class="hljs-attr">container</span>: $(<span class="hljs-string">&quot;.moj-multi-file-upload&quot;</span>),
     <span class="hljs-attr">uploadUrl</span>: <span class="hljs-string">&quot;/ajax-upload&quot;</span>,
     <span class="hljs-attr">deleteUrl</span>: <span class="hljs-string">&quot;/ajax-delete&quot;</span>,
@@ -477,11 +477,11 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-multi-file-upload-no-js" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-multi-file-upload-no-js">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/file-upload/macro.njk&quot; import govukFileUpload -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/button/macro.njk&quot; import govukButton -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/error-summary/macro.njk&quot; import govukErrorSummary -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/multi-file-upload/macro.njk&quot; import mojMultiFileUpload -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/file-upload/macro.njk&quot; import govukFileUpload -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/button/macro.njk&quot; import govukButton -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/error-summary/macro.njk&quot; import govukErrorSummary -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/multi-file-upload/macro.njk&quot; import mojMultiFileUpload -%}</span><span class="language-xml">
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-grid-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-grid-column-two-thirds&quot;</span>&gt;</span>
@@ -489,7 +489,7 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-heading-xl&quot;</span>&gt;</span>Upload files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">&quot;multipart/form-data&quot;</span>&gt;</span>
-      </span><span class="hljs-template-tag">{% <span class="hljs-name">set</span> uploadHtml %}</span><span class="xml">
+      </span><span class="hljs-template-tag">{% <span class="hljs-name">set</span> uploadHtml %}</span><span class="language-xml">
         </span><span class="hljs-template-variable">{{ govukFileUpload({
           id: &quot;documents&quot;,
           name: &quot;documents&quot;,
@@ -499,13 +499,13 @@
             classes: &#x27;govuk-label--m&#x27;
           },
           attributes: { multiple: &#x27;&#x27; }
-        }) }}</span><span class="xml">
+        }) }}</span><span class="language-xml">
 
         </span><span class="hljs-template-variable">{{govukButton({
           text: &#x27;Upload file&#x27;,
           classes: &#x27;govuk-button--secondary moj-multi-file-upload__button&#x27;
-        })}}</span><span class="xml">
-      </span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> %}</span><span class="xml">
+        })}}</span><span class="language-xml">
+      </span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> %}</span><span class="language-xml">
 
       </span><span class="hljs-template-variable">{{ mojMultiFileUpload({
         uploadedFiles: {
@@ -513,11 +513,11 @@
           items: []
         },
         uploadHtml: uploadHtml
-      }) }}</span><span class="xml">
+      }) }}</span><span class="language-xml">
 
       </span><span class="hljs-template-variable">{{govukButton({
         text: &#x27;Continue&#x27;
-      })}}</span><span class="xml">
+      })}}</span><span class="language-xml">
     <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -614,11 +614,11 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-multi-file-upload-no-js-errors" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-multi-file-upload-no-js-errors">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/file-upload/macro.njk&quot; import govukFileUpload -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/button/macro.njk&quot; import govukButton -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/error-summary/macro.njk&quot; import govukErrorSummary -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/multi-file-upload/macro.njk&quot; import mojMultiFileUpload -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/file-upload/macro.njk&quot; import govukFileUpload -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/button/macro.njk&quot; import govukButton -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/error-summary/macro.njk&quot; import govukErrorSummary -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/multi-file-upload/macro.njk&quot; import mojMultiFileUpload -%}</span><span class="language-xml">
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-grid-row&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-grid-column-two-thirds&quot;</span>&gt;</span>
@@ -650,7 +650,7 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-heading-xl&quot;</span>&gt;</span>Upload files<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">&quot;multipart/form-data&quot;</span>&gt;</span>
-      </span><span class="hljs-template-tag">{% <span class="hljs-name">set</span> uploadHtml %}</span><span class="xml">
+      </span><span class="hljs-template-tag">{% <span class="hljs-name">set</span> uploadHtml %}</span><span class="language-xml">
         </span><span class="hljs-template-variable">{{ govukFileUpload({
           id: &quot;documents&quot;,
           name: &quot;documents&quot;,
@@ -663,13 +663,13 @@
           errorMessage: {
             html: &#x27;name-of-file-1.pdf must be a png or gif&lt;br&gt;name-of-file-2.pdf must be a png or gif&#x27;
           }
-        }) }}</span><span class="xml">
+        }) }}</span><span class="language-xml">
 
         </span><span class="hljs-template-variable">{{govukButton({
           text: &#x27;Upload file&#x27;,
           classes: &#x27;govuk-button--secondary moj-multi-file-upload__button&#x27;
-        })}}</span><span class="xml">
-      </span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> %}</span><span class="xml">
+        })}}</span><span class="language-xml">
+      </span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> %}</span><span class="language-xml">
 
       </span><span class="hljs-template-variable">{{ mojMultiFileUpload({
         uploadedFiles: {
@@ -677,11 +677,11 @@
           items: []
         },
         uploadHtml: uploadHtml
-      }) }}</span><span class="xml">
+      }) }}</span><span class="language-xml">
 
       </span><span class="hljs-template-variable">{{govukButton({
         text: &#x27;Continue&#x27;
-      })}}</span><span class="xml">
+      })}}</span><span class="language-xml">
     <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

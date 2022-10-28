@@ -414,8 +414,8 @@
 <p></div></p>
   </details>
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/primary-navigation/macro.njk&quot; import mojPrimaryNavigation -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/primary-navigation/macro.njk&quot; import mojPrimaryNavigation -%}</span><span class="language-xml">
 
 </span><span class="hljs-template-variable">{{ mojPrimaryNavigation({
   label: &#x27;Primary navigation&#x27;,
@@ -434,7 +434,7 @@
       href: &#x27;#3&#x27;
     }
   ]
-}) }}</span><span class="xml">
+}) }}</span><span class="language-xml">
 </span></code></pre>
   </div>
   </div>
@@ -514,11 +514,11 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-primary-navigation-inline-search" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-primary-navigation-inline-search">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/primary-navigation/macro.njk&quot; import mojPrimaryNavigation -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/search/macro.njk&quot; import mojSearch -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/primary-navigation/macro.njk&quot; import mojPrimaryNavigation -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/search/macro.njk&quot; import mojSearch -%}</span><span class="language-xml">
 
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> inlineSearchHtml %}</span><span class="xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> inlineSearchHtml %}</span><span class="language-xml">
   </span><span class="hljs-template-variable">{{ mojSearch({
     classes: &#x27;moj-search--ondark moj-search--inline&#x27;,
     input: {
@@ -532,8 +532,8 @@
     button: {
       text: &#x27;Search&#x27;
     }
-  }) }}</span><span class="xml">
-</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="xml">
+  }) }}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="language-xml">
 
 </span><span class="hljs-template-variable">{{ mojPrimaryNavigation({
   label: &#x27;Primary navigation&#x27;,
@@ -549,7 +549,7 @@
     href: &#x27;#3&#x27;
   }],
   searchHtml: inlineSearchHtml
-}) }}</span><span class="xml">
+}) }}</span><span class="language-xml">
 </span></code></pre>
   </div>
   </div>
@@ -633,11 +633,11 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-primary-navigation-toggle-search" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-primary-navigation-toggle-search">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/primary-navigation/macro.njk&quot; import mojPrimaryNavigation -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/search/macro.njk&quot; import mojSearch -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/primary-navigation/macro.njk&quot; import mojPrimaryNavigation -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/search/macro.njk&quot; import mojSearch -%}</span><span class="language-xml">
 
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> toggleSearchHtml %}</span><span class="xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> toggleSearchHtml %}</span><span class="language-xml">
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-search-toggle&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;moj-search-toggle&quot;</span> <span class="hljs-attr">data-moj-search-toggle-text</span>=<span class="hljs-string">&quot;Find case&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-search-toggle__toggle&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-search-toggle__search&quot;</span>&gt;</span>
@@ -657,10 +657,10 @@
         button: {
           text: &#x27;Search&#x27;
         }
-      }) }}</span><span class="xml">
+      }) }}</span><span class="language-xml">
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="xml">
+</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="language-xml">
 
 </span><span class="hljs-template-variable">{{ mojPrimaryNavigation({
   label: &#x27;Primary navigation&#x27;,
@@ -680,7 +680,7 @@
     }
   ],
   searchHtml: toggleSearchHtml
-}) }}</span><span class="xml">
+}) }}</span><span class="language-xml">
 </span></code></pre>
   </div>
   </div>

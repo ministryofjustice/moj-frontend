@@ -639,14 +639,14 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-patterns-filter-a-list" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-patterns-filter-a-list">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/checkboxes/macro.njk&quot; import govukCheckboxes -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/input/macro.njk&quot; import govukInput -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/table/macro.njk&quot; import govukTable -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/filter/macro.njk&quot; import mojFilter -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/button-menu/macro.njk&quot; import mojButtonMenu -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/checkboxes/macro.njk&quot; import govukCheckboxes -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/input/macro.njk&quot; import govukInput -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/table/macro.njk&quot; import govukTable -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/filter/macro.njk&quot; import mojFilter -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/button-menu/macro.njk&quot; import mojButtonMenu -%}</span><span class="language-xml">
 
-</span><span class="hljs-template-tag">{% <span class="hljs-name">set</span> filterOptionsHtml %}</span><span class="xml">
+</span><span class="hljs-template-tag">{% <span class="hljs-name">set</span> filterOptionsHtml %}</span><span class="language-xml">
 
   </span><span class="hljs-template-variable">{{ govukInput({
     id: &#x27;keywords&#x27;,
@@ -655,7 +655,7 @@
       text: &#x27;Keywords&#x27;,
       classes: &#x27;govuk-label--m&#x27;
     }
-  }) }}</span><span class="xml">
+  }) }}</span><span class="language-xml">
 
   </span><span class="hljs-template-variable">{{ govukCheckboxes({
     idPrefix: &#x27;type&#x27;,
@@ -683,7 +683,7 @@
         text: &#x27;Red (2)&#x27;
       }
     ]
-  }) }}</span><span class="xml">
+  }) }}</span><span class="language-xml">
 
   </span><span class="hljs-template-variable">{{ govukCheckboxes({
     idPrefix: &#x27;status&#x27;,
@@ -710,9 +710,9 @@
         text: &#x27;In progress (13)&#x27;
       }
     ]
-  }) }}</span><span class="xml">
+  }) }}</span><span class="language-xml">
 
-</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> %}</span><span class="xml">
+</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> %}</span><span class="language-xml">
 
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-filter-layout&quot;</span>&gt;</span>
@@ -758,7 +758,7 @@
       ]
     },
       optionsHtml: filterOptionsHtml
-    }) }}</span><span class="xml">
+    }) }}</span><span class="language-xml">
 
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
@@ -776,7 +776,7 @@
         text: &#x27;Action 2&#x27;,
         classes: &#x27;govuk-button--secondary&#x27;
       }]
-    }) }}</span><span class="xml">
+    }) }}</span><span class="language-xml">
 
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
@@ -904,14 +904,14 @@
           {text: &#x27;9 May 2018&#x27;}
         ]
       ]
-    }) }}</span><span class="xml">
+    }) }}</span><span class="language-xml">
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </span></code></pre>
   </div>
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default--examples-patterns-filter-a-list" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default--examples-patterns-filter-a-list">
-<pre><code class="language-js"><span class="hljs-keyword">new</span> MOJFrontend.FilterToggleButton({
+<pre><code class="language-js"><span class="hljs-keyword">new</span> <span class="hljs-title class_">MOJFrontend</span>.<span class="hljs-title class_">FilterToggleButton</span>({
   <span class="hljs-attr">bigModeMediaQuery</span>: <span class="hljs-string">&quot;(min-width: 48.063em)&quot;</span>,
   <span class="hljs-attr">startHidden</span>: <span class="hljs-literal">true</span>,
   <span class="hljs-attr">toggleButton</span>: {

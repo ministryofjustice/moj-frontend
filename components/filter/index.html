@@ -451,12 +451,12 @@ A similar component exists
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-filter" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-filter">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/filter/macro.njk&quot; import mojFilter -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/checkboxes/macro.njk&quot; import govukCheckboxes -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/input/macro.njk&quot; import govukInput -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/filter/macro.njk&quot; import mojFilter -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/checkboxes/macro.njk&quot; import govukCheckboxes -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/input/macro.njk&quot; import govukInput -%}</span><span class="language-xml">
 
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> filterOptionsHtml %}</span><span class="xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> filterOptionsHtml %}</span><span class="language-xml">
 
   </span><span class="hljs-template-variable">{{ govukInput({
     id: &#x27;keywords&#x27;,
@@ -465,7 +465,7 @@ A similar component exists
       text: &#x27;Keywords&#x27;,
       classes: &#x27;govuk-label--m&#x27;
     }
-  }) }}</span><span class="xml">
+  }) }}</span><span class="language-xml">
 
   </span><span class="hljs-template-variable">{{ govukCheckboxes({
     idPrefix: &#x27;type&#x27;,
@@ -493,7 +493,7 @@ A similar component exists
         text: &#x27;Red (2)&#x27;
       }
     ]
-  }) }}</span><span class="xml">
+  }) }}</span><span class="language-xml">
 
   </span><span class="hljs-template-variable">{{ govukCheckboxes({
     idPrefix: &#x27;status&#x27;,
@@ -521,8 +521,8 @@ A similar component exists
         checked: false
       }
     ]
-  }) }}</span><span class="xml">
-</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="xml">
+  }) }}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="language-xml">
 
 </span><span class="hljs-template-variable">{{ mojFilter({
   heading: {
@@ -563,7 +563,7 @@ A similar component exists
     ]
   },
   optionsHtml: filterOptionsHtml
-}) }}</span><span class="xml">
+}) }}</span><span class="language-xml">
 </span></code></pre>
   </div>
   </div>

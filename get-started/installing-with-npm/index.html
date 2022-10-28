@@ -223,12 +223,12 @@
 <p>If you wish to resolve the above <code>@import</code> paths in your build (in order to avoid prefixing paths with <code>node_modules</code>), you should add <code>node_modules</code> to
 your <a href="https://github.com/sass/node-sass#includepaths">Sass include paths</a> (in Ruby, they should be added to <a href="http://guides.rubyonrails.org/asset_pipeline.html#search-paths">assets paths</a>).</p>
 <p>For example, if your project uses Gulp, you would add the Sass include paths to your Gulp configuration file (for example <code>gulpfile.js</code>) with <a href="https://www.npmjs.com/package/gulp-sass">gulp-sass</a>. Below is an example:</p>
-<pre><code class="language-JS">gulp.task(<span class="hljs-string">&#x27;sass&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">return</span> gulp.src(<span class="hljs-string">&#x27;./sass/**/*.scss&#x27;</span>)
-    .pipe(sass({
+<pre><code class="language-JS">gulp.<span class="hljs-title function_">task</span>(<span class="hljs-string">&#x27;sass&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> gulp.<span class="hljs-title function_">src</span>(<span class="hljs-string">&#x27;./sass/**/*.scss&#x27;</span>)
+    .<span class="hljs-title function_">pipe</span>(<span class="hljs-title function_">sass</span>({
       <span class="hljs-attr">includePaths</span>: <span class="hljs-string">&#x27;node_modules&#x27;</span>
      }))
-    .pipe(gulp.dest(<span class="hljs-string">&#x27;./css&#x27;</span>));
+    .<span class="hljs-title function_">pipe</span>(gulp.<span class="hljs-title function_">dest</span>(<span class="hljs-string">&#x27;./css&#x27;</span>));
 });
 </code></pre>
 <p>If you compile Sass to CSS in your project, your build tasks will already include something similar to the above task - in that case, you will just need
@@ -242,7 +242,7 @@ to include add <code>includePaths</code> to it.</p>
 <h3 id="recommended-solution">Recommended solution</h3>
 <p>Make <code>/node_modules/@ministryofjustice/frontend/moj/assets</code> available to your project by routing requests for your assets folder there.</p>
 <p>For example, if your project uses <a href="https://expressjs.com/">express.js</a>, below is a code sample you could add to your configuration:</p>
-<pre><code class="language-JS">app.use(<span class="hljs-string">&#x27;/assets&#x27;</span>, express.static(path.join(__dirname, <span class="hljs-string">&#x27;/node_modules/@ministryofjustice/frontend/moj/assets&#x27;</span>)))
+<pre><code class="language-JS">app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;/assets&#x27;</span>, express.<span class="hljs-title function_">static</span>(path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">&#x27;/node_modules/@ministryofjustice/frontend/moj/assets&#x27;</span>)))
 </code></pre>
 <h3 id="alternative-solution">Alternative solution</h3>
 <p>Manually copy the images and fonts from <code>/node_modules/@ministryofjustice/frontend/moj/assets</code> into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the MOJ Frontend assets stay up-to-date.</p>
@@ -265,7 +265,7 @@ to include add <code>includePaths</code> to it.</p>
 <p><em>See <a href="../../get-started/setting-up-javascript">Setting up JavaScript</a> for information on how to install, configure and use JavaScript</em></p>
 <h2 id="include-css-and-javascript">Include CSS and JavaScript</h2>
 <p>Add the CSS and JavaScript code to your HTML template:</p>
-<pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Example<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;assets/application.css&quot;</span>&gt;</span>

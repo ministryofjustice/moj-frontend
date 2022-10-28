@@ -386,11 +386,11 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-add-another" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-add-another">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/button/macro.njk&quot; import govukButton -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/date-input/macro.njk&quot; import govukDateInput -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/fieldset/macro.njk&quot; import govukFieldset -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/input/macro.njk&quot; import govukInput -%}</span><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/textarea/macro.njk&quot; import govukTextarea -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/button/macro.njk&quot; import govukButton -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/date-input/macro.njk&quot; import govukDateInput -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/fieldset/macro.njk&quot; import govukFieldset -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/input/macro.njk&quot; import govukInput -%}</span><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/textarea/macro.njk&quot; import govukTextarea -%}</span><span class="language-xml">
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;moj-add-another&quot;</span>&gt;</span>
 
@@ -405,7 +405,7 @@
         classes: &#x27;moj-add-another__title govuk-fieldset__legend--m&#x27;,
         isPageHeading: false
       }
-    }) %}</span><span class="xml">
+    }) %}</span><span class="language-xml">
 
     </span><span class="hljs-template-variable">{{ govukInput({
       id: &#x27;person[0][first_name]&#x27;,
@@ -418,7 +418,7 @@
         &#x27;data-name&#x27;: &#x27;person[%index%][first_name]&#x27;,
         &#x27;data-id&#x27;: &#x27;person[%index%][first_name]&#x27;
       }
-    }) }}</span><span class="xml">
+    }) }}</span><span class="language-xml">
 
     </span><span class="hljs-template-variable">{{ govukInput({
       id: &#x27;person[0][last_name]&#x27;,
@@ -431,7 +431,7 @@
         &#x27;data-name&#x27;: &#x27;person[%index%][last_name]&#x27;,
         &#x27;data-id&#x27;: &#x27;person[%index%][last_name]&#x27;
       }
-    }) }}</span><span class="xml">
+    }) }}</span><span class="language-xml">
 
     </span><span class="hljs-template-variable">{{ govukDateInput({
       id: &quot;date-of-birth&quot;,
@@ -476,21 +476,21 @@
           }
         }
       ]
-    }) }}</span><span class="xml">
+    }) }}</span><span class="language-xml">
 
-    </span><span class="hljs-template-tag">{% <span class="hljs-name">endcall</span> %}</span><span class="xml">
+    </span><span class="hljs-template-tag">{% <span class="hljs-name">endcall</span> %}</span><span class="language-xml">
 
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-button-action&quot;</span>&gt;</span>
       </span><span class="hljs-template-variable">{{ govukButton({
         text: &#x27;Add another person&#x27;,
         classes: &#x27;govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4&#x27;
-      }) }}</span><span class="xml">
+      }) }}</span><span class="language-xml">
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-button-action&quot;</span>&gt;</span>
       </span><span class="hljs-template-variable">{{ govukButton({
         text: &#x27;Submit&#x27;
-      }) }}</span><span class="xml">
+      }) }}</span><span class="language-xml">
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>

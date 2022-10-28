@@ -297,14 +297,14 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-identity-bar" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-identity-bar">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/identity-bar/macro.njk&quot; import mojIdentityBar -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/identity-bar/macro.njk&quot; import mojIdentityBar -%}</span><span class="language-xml">
 
 </span><span class="hljs-template-variable">{{ mojIdentityBar({
   title: {
     html: &quot;&lt;b&gt;Jane Wolenksy&lt;/b&gt; and &lt;b&gt;Simon Wolensky&lt;/b&gt;&quot;
   }
-}) }}</span><span class="xml">
+}) }}</span><span class="language-xml">
 </span></code></pre>
   </div>
   </div>
@@ -369,8 +369,8 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-identity-bar-menu" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-identity-bar-menu">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/identity-bar/macro.njk&quot; import mojIdentityBar -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/identity-bar/macro.njk&quot; import mojIdentityBar -%}</span><span class="language-xml">
 
 </span><span class="hljs-template-variable">{{ mojIdentityBar({
   title: {
@@ -389,7 +389,7 @@
       }
     ]
   }]
-}) }}</span><span class="xml">
+}) }}</span><span class="language-xml">
 </span></code></pre>
   </div>
   </div>
@@ -453,8 +453,8 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-identity-bar-menu-toggle" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-identity-bar-menu-toggle">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/identity-bar/macro.njk&quot; import mojIdentityBar -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/identity-bar/macro.njk&quot; import mojIdentityBar -%}</span><span class="language-xml">
 
 </span><span class="hljs-template-variable">{{ mojIdentityBar({
   title: {
@@ -475,12 +475,12 @@
       href: &quot;#&quot;
     }]
   }]
-}) }}</span><span class="xml">
+}) }}</span><span class="language-xml">
 </span></code></pre>
   </div>
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default--examples-identity-bar-menu-toggle" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default--examples-identity-bar-menu-toggle">
-<pre><code class="language-js"><span class="hljs-keyword">new</span> MOJFrontend.ButtonMenu({
+<pre><code class="language-js"><span class="hljs-keyword">new</span> <span class="hljs-title class_">MOJFrontend</span>.<span class="hljs-title class_">ButtonMenu</span>({
   <span class="hljs-attr">container</span>: $(<span class="hljs-string">&quot;.moj-button-menu&quot;</span>),
   <span class="hljs-attr">buttonText</span>: <span class="hljs-string">&quot;Actions&quot;</span>,
   <span class="hljs-attr">buttonClasses</span>:
@@ -559,8 +559,8 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-identity-bar-secondary-toggle" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-identity-bar-secondary-toggle">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/identity-bar/macro.njk&quot; import mojIdentityBar -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/identity-bar/macro.njk&quot; import mojIdentityBar -%}</span><span class="language-xml">
 
 </span><span class="hljs-template-variable">{{ mojIdentityBar({
   title: {
@@ -581,13 +581,13 @@
       href: &quot;#&quot;
     }]
   }]
-}) }}</span><span class="xml">
+}) }}</span><span class="language-xml">
 </span></code></pre>
   </div>
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default--examples-identity-bar-secondary-toggle" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default--examples-identity-bar-secondary-toggle">
-<pre><code class="language-js"><span class="hljs-keyword">new</span> MOJFrontend.ButtonMenu({
-  <span class="hljs-attr">container</span>: $(<span class="hljs-string">&quot;.moj-button-menu&quot;</span>).eq(<span class="hljs-number">1</span>),
+<pre><code class="language-js"><span class="hljs-keyword">new</span> <span class="hljs-title class_">MOJFrontend</span>.<span class="hljs-title class_">ButtonMenu</span>({
+  <span class="hljs-attr">container</span>: $(<span class="hljs-string">&quot;.moj-button-menu&quot;</span>).<span class="hljs-title function_">eq</span>(<span class="hljs-number">1</span>),
   <span class="hljs-attr">mq</span>: <span class="hljs-string">&quot;(min-width: 1000em)&quot;</span>,
   <span class="hljs-attr">buttonText</span>: <span class="hljs-string">&quot;More actions&quot;</span>,
   <span class="hljs-attr">buttonClasses</span>:

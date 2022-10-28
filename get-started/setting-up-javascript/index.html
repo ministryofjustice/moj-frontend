@@ -199,8 +199,8 @@
 ...
   <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&lt;YOUR-APP&gt;/jquery.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&lt;YOUR-APP&gt;/&lt;YOUR-JS-FILE&gt;.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-    <span class="hljs-built_in">window</span>.MOJFrontend.initAll()
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+    <span class="hljs-variable language_">window</span>.<span class="hljs-property">MOJFrontend</span>.<span class="hljs-title function_">initAll</span>()
   </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 </code></pre>
@@ -210,16 +210,16 @@
 <pre><code class="language-javascript"><span class="hljs-keyword">import</span> $ <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;jquery&#x27;</span>
 <span class="hljs-keyword">import</span> { initAll } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@ministryofjustice/frontend&#x27;</span>
 
-<span class="hljs-built_in">window</span>.$ = $
-initAll()
+<span class="hljs-variable language_">window</span>.<span class="hljs-property">$</span> = $
+<span class="hljs-title function_">initAll</span>()
 </code></pre>
 <h2 id="initialize-individual-components">Initialize individual components</h2>
 <p>Rather than using <code>initAll</code>, you can initialise individual components by identifying them with their <code>data-module</code> attribute. For example, to initialise just the <a href="../../components/password-reveal">Password reveal</a> component:</p>
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-<span class="hljs-keyword">var</span> PasswordReveal = <span class="hljs-built_in">window</span>.MOJFrontend.PasswordReveal
-<span class="hljs-keyword">var</span> $passwordReveal = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;[data-module=&quot;moj-password-reveal&quot;]&#x27;</span>)
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+<span class="hljs-keyword">var</span> <span class="hljs-title class_">PasswordReveal</span> = <span class="hljs-variable language_">window</span>.<span class="hljs-property">MOJFrontend</span>.<span class="hljs-property">PasswordReveal</span>
+<span class="hljs-keyword">var</span> $passwordReveal = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;[data-module=&quot;moj-password-reveal&quot;]&#x27;</span>)
 <span class="hljs-keyword">if</span> ($passwordReveal) {
-    <span class="hljs-keyword">new</span> PasswordReveal($passwordReveal)
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">PasswordReveal</span>($passwordReveal)
 }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>

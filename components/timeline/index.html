@@ -596,15 +596,15 @@
 <p></div></p>
   </details>
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/timeline/macro.njk&quot; import mojTimeline -%}</span><span class="xml">
+<pre><code class="language-jinja"><span class="language-xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/timeline/macro.njk&quot; import mojTimeline -%}</span><span class="language-xml">
 
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> confirmationHtml %}</span><span class="xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> confirmationHtml %}</span><span class="language-xml">
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non felis risus. Curabitur nec ante vitae felis ullamcorper tincidunt.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-button govuk-!-margin-bottom-0&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Continue<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="xml">
+</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="language-xml">
 
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> detailsHtml %}</span><span class="xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> detailsHtml %}</span><span class="language-xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">details</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-details govuk-!-margin-bottom-0&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">summary</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-details__summary&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-details__summary-text&quot;</span>&gt;</span>
@@ -615,16 +615,16 @@
     Ut quam nunc, vulputate ac metus pharetra, posuere maximus velit. <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Etiam nec interdum velit.<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> Suspendisse molestie lectus in eros ornare
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span>
-</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="xml">
+</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="language-xml">
 
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> listHtml %}</span><span class="xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> listHtml %}</span><span class="language-xml">
   <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-list govuk-list--bullet&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Item 1<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Item 2<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="xml">
+</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="language-xml">
 
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> documentsHtml %}</span><span class="xml">
+</span><span class="hljs-template-tag">{%- <span class="hljs-name">set</span> documentsHtml %}</span><span class="language-xml">
   <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-timeline__documents&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-timeline__document-item&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
@@ -643,7 +643,7 @@
       <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="xml">
+</span><span class="hljs-template-tag">{% <span class="hljs-name">endset</span> -%}</span><span class="language-xml">
 
 </span><span class="hljs-template-variable">{{ mojTimeline({
   items: [
@@ -726,7 +726,7 @@
       }
     }
   ]
-}) }}</span><span class="xml">
+}) }}</span><span class="language-xml">
 </span></code></pre>
   </div>
   </div>
