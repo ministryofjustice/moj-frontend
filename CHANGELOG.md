@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/ministryofjustice/moj-frontend/compare/v1.6.1...v1.6.2) (2022-10-31)
+
+
+### Bug Fixes
+
+* **deps:** update dependency govuk-frontend to v4 ([#403](https://github.com/ministryofjustice/moj-frontend/issues/403)) ([1684def](https://github.com/ministryofjustice/moj-frontend/commit/1684def0a1ab475783cf6b32f2ab651c843c59e8))
+
 ## [1.6.1](https://github.com/ministryofjustice/moj-frontend/compare/v1.6.0...v1.6.1) (2022-10-28)
 
 
