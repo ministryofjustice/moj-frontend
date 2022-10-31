@@ -181,7 +181,7 @@
           
           Installing MOJ Frontend with NPM
         </h1>
-        <h2 id="requirements">Requirements</h2>
+        <h2 id="requirements" tabindex="-1">Requirements</h2>
 <p>To use MOJ Frontend with NPM you must:</p>
 <ol>
 <li>Install the long-term support (LTS) version of <a href="https://nodejs.org/en/">Node.js</a>, which includes NPM. The minimum version of Node required is 4.2.0.</li>
@@ -202,12 +202,12 @@
 </ol>
 <pre><code>npm install nunjucks --save
 </code></pre>
-<h2 id="installation">Installation</h2>
+<h2 id="installation" tabindex="-1">Installation</h2>
 <p>To install, run:</p>
 <pre><code>npm install --save @ministryofjustice/frontend
 </code></pre>
 <p>After you have installed MOJ Frontend the <code>@ministryofjustice/frontend</code> package will appear in your <code>node_modules</code> folder.</p>
-<h2 id="importing-styles">Importing styles</h2>
+<h2 id="importing-styles" tabindex="-1">Importing styles</h2>
 <p>You need to import the MOJ Frontend styles into the main Sass file in your project. You should place the below code before your own Sass rules (or Sass imports) if you want to override MOJ Frontend with your own styles.</p>
 <ol>
 <li>To import all components, add the below to your Sass file:</li>
@@ -219,7 +219,7 @@
 </ol>
 <pre><code class="language-CSS"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;node_modules/@ministryofjustice/frontend/moj/components/button/button&quot;</span>;
 </code></pre>
-<h3 id="optional%3A-resolving-scss-import-paths">Optional: Resolving SCSS import paths</h3>
+<h3 id="optional%3A-resolving-scss-import-paths" tabindex="-1">Optional: Resolving SCSS import paths</h3>
 <p>If you wish to resolve the above <code>@import</code> paths in your build (in order to avoid prefixing paths with <code>node_modules</code>), you should add <code>node_modules</code> to
 your <a href="https://github.com/sass/node-sass#includepaths">Sass include paths</a> (in Ruby, they should be added to <a href="http://guides.rubyonrails.org/asset_pipeline.html#search-paths">assets paths</a>).</p>
 <p>For example, if your project uses Gulp, you would add the Sass include paths to your Gulp configuration file (for example <code>gulpfile.js</code>) with <a href="https://www.npmjs.com/package/gulp-sass">gulp-sass</a>. Below is an example:</p>
@@ -236,15 +236,15 @@ to include add <code>includePaths</code> to it.</p>
 <p>After resolving the import paths you can import MOJ Frontend by using:</p>
 <pre><code class="language-CSS"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@ministryofjustice/frontend/moj/components/button/button&quot;</span>;
 </code></pre>
-<h2 id="importing-assets">Importing assets</h2>
+<h2 id="importing-assets" tabindex="-1">Importing assets</h2>
 <p>In order to import MOJ Frontend images and fonts to your project, you should configure your application to reference or copy the relevant MOJ Frontend assets.</p>
 <p>Follow either <a href="#recommended-solution">Recommended solution</a> or <a href="#alternative-solution">Alternative solution</a>.</p>
-<h3 id="recommended-solution">Recommended solution</h3>
+<h3 id="recommended-solution" tabindex="-1">Recommended solution</h3>
 <p>Make <code>/node_modules/@ministryofjustice/frontend/moj/assets</code> available to your project by routing requests for your assets folder there.</p>
 <p>For example, if your project uses <a href="https://expressjs.com/">express.js</a>, below is a code sample you could add to your configuration:</p>
 <pre><code class="language-JS">app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;/assets&#x27;</span>, express.<span class="hljs-title function_">static</span>(path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">&#x27;/node_modules/@ministryofjustice/frontend/moj/assets&#x27;</span>)))
 </code></pre>
-<h3 id="alternative-solution">Alternative solution</h3>
+<h3 id="alternative-solution" tabindex="-1">Alternative solution</h3>
 <p>Manually copy the images and fonts from <code>/node_modules/@ministryofjustice/frontend/moj/assets</code> into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the MOJ Frontend assets stay up-to-date.</p>
 <p>The default paths used for assets are <code>assets/images</code> and <code>assets/fonts</code>. <strong>If your asset folders follow this structure, you will not need to complete the following steps.</strong></p>
 <p>To use different asset paths, set <code>$govuk-assets-path</code>, <code>$govuk-images-path</code> and <code>$govuk-fonts-path</code> in your project Sass file to point to the relevant directories in your project (this will override the defaults set in <code>/node_modules/@ministryofjustice/frontend/moj/settings/_assets.scss</code>). Make sure you do this in Sass before importing <code>@ministryofjustice/frontend</code> into your project - see <a href="#importing-styles">Importing styles</a>.</p>
@@ -261,9 +261,9 @@ to include add <code>includePaths</code> to it.</p>
 
 <span class="hljs-keyword">@import</span> “<span class="hljs-keyword">@ministryofjustice</span>/frontend/moj/all”;
 </code></pre>
-<h2 id="importing-javascript">Importing JavaScript</h2>
+<h2 id="importing-javascript" tabindex="-1">Importing JavaScript</h2>
 <p><em>See <a href="../../get-started/setting-up-javascript">Setting up JavaScript</a> for information on how to install, configure and use JavaScript</em></p>
-<h2 id="include-css-and-javascript">Include CSS and JavaScript</h2>
+<h2 id="include-css-and-javascript" tabindex="-1">Include CSS and JavaScript</h2>
 <p>Add the CSS and JavaScript code to your HTML template:</p>
 <pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>

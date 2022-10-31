@@ -183,17 +183,17 @@
         </h1>
         <p>This guide explains how to deploy prototypes to MOJ Cloud Platform or Heroku.</p>
 <p>After following this guide your prototype will automatically deploy any changes that you push to GitHub.</p>
-<h2 id="deploying-to-moj-cloud-platform">Deploying to MOJ Cloud Platform</h2>
+<h2 id="deploying-to-moj-cloud-platform" tabindex="-1">Deploying to MOJ Cloud Platform</h2>
 <p>If you work for the Ministry of Justice, we recommend using MOJ Cloud Platform to deploy your prototype.</p>
 <p>The <a href="https://user-guide.cloud-platform.service.justice.gov.uk/documentation/getting-started/prototype-kit.html">Cloud Platform guide</a> shows you how to set up a GitHub repository with the prototype kit installed, along with a Cloud Platform hosting environment. Changes to your repository will automatically be deployed to Cloud Platform.</p>
 <p>If you have any further questions, ask in the <a href="https://mojdt.slack.com/messages/ask-cloud-platform">#ask-cloud-platform</a> Slack channel.</p>
-<h2 id="deploying-to-heroku">Deploying to Heroku</h2>
+<h2 id="deploying-to-heroku" tabindex="-1">Deploying to Heroku</h2>
 <p>You can also use Heroku to host your prototypes. This is recommended for staff outside the Ministry of Justice or those supporting older prototypes which are already hosted on Heroku.</p>
-<h3 id="before-you-start">Before you start</h3>
+<h3 id="before-you-start" tabindex="-1">Before you start</h3>
 <p>You'll need to be a member of the <a href="https://dashboard.heroku.com/teams/moj-design/apps">moj-design</a> Heroku team and have your prototype in <a href="https://github.com/ministryofjustice">MOJ's GitHub account</a>.</p>
 <p>If you don't have access to these, ask in the Slack channel <a href="https://mojdt.slack.com/messages/moj-pattern-library-support">#moj-pattern-library-support</a> and whoever is managing support that day should be able to add you.</p>
 <!-- If you don't know how to setup GitHub read the [version your prototype](#) guide. -->
-<h3 id="setting-up-heroku">Setting up Heroku</h3>
+<h3 id="setting-up-heroku" tabindex="-1">Setting up Heroku</h3>
 <p>We use pipelines in Heroku. Pipelines let you have multiple apps and keep things together in one place.</p>
 <ol>
 <li>go to the homepage for <a href="https://dashboard.heroku.com/teams/moj-design/apps">moj-design</a> in Heroku</li>
@@ -205,7 +205,7 @@
 <li>click 'Create pipeline'</li>
 </ol>
 <p>If everything has worked you should be taken to the pipeline view. You then need to create an app to deploy your prototype to.</p>
-<h3 id="creating-an-app">Creating an app</h3>
+<h3 id="creating-an-app" tabindex="-1">Creating an app</h3>
 <p>From the pipeline view.</p>
 <ol>
 <li>click 'Add app' in the production column</li>
@@ -217,7 +217,7 @@
 <p>If everything has worked you should see the name of the app in the production column.</p>
 <p>You can check that the app has been deployed by selecting 'Open app'.</p>
 <p>You should see a screen saying 'Error: Username or password not set. See guidance for setting these.' instead of your prototype. Now follow the guidance on setting a username and password for your app.</p>
-<h3 id="setting-a-username-and-password">Setting a username and password</h3>
+<h3 id="setting-a-username-and-password" tabindex="-1">Setting a username and password</h3>
 <p>Prototypes require a username and password when published online. This stops members of the public coming across your prototype by accident.</p>
 <p>There are a few different ways you can do this. Here are the instructions for setting this via the Heroku web interface.</p>
 <ol>
@@ -229,14 +229,14 @@
 </ol>
 <p>You can now navigate back to the pipeline and open the app in a browser to test the username and password.</p>
 <p>If this has worked you should see a modal dialogue asking for a username and password.</p>
-<h3 id="deploying-your-prototype">Deploying your prototype</h3>
+<h3 id="deploying-your-prototype" tabindex="-1">Deploying your prototype</h3>
 <ol>
 <li>from the pipeline view app in production click the small dropdown icon within the tile</li>
 <li>select 'Deploy a branch' the default branch is <code>master</code> you'll normally want to retain this default</li>
 <li>click the 'Deploy' button</li>
 </ol>
 <p>If everything is working you should see a 'building app' message.</p>
-<h3 id="configure-automatic-deploys">Configure automatic deploys</h3>
+<h3 id="configure-automatic-deploys" tabindex="-1">Configure automatic deploys</h3>
 <p>Automatic deploys mean that every push to the <code>master</code> branch will deploy a new version of this app.</p>
 <ol>
 <li>from the pipeline view app in production click the small dropdown icon within the tile</li>
@@ -244,7 +244,7 @@
 <li>you'll see a dialogue asking you to choose a branch to deploy the default branch is <code>master</code> you'll normally want to retain this default</li>
 <li>click the 'Enable Automatic Deploys' button</li>
 </ol>
-<h3 id="enable-review-apps">Enable review apps</h3>
+<h3 id="enable-review-apps" tabindex="-1">Enable review apps</h3>
 <p>Review apps make it easy for your team to collaborate on design work by easily deploying pull requests. Meaning that the entire team can comment and review design work before you add it to your main prototype.</p>
 <ol>
 <li>in the review apps column click the 'Enable review apps...' button</li>

@@ -390,13 +390,13 @@
 </code></pre>
   </div>
 </div>
-<h2 id="when-to-use">When to use</h2>
+<h2 id="when-to-use" tabindex="-1">When to use</h2>
 <p>Use the multi file upload component to help users upload multiple files at the same time, on a regular basis. For example, in a caseworking system.</p>
-<h2 id="when-not-to-use">When not to use</h2>
+<h2 id="when-not-to-use" tabindex="-1">When not to use</h2>
 <p>Do not use this component if users only need to <a href="../../patterns/upload-files">upload one file</a>.</p>
 <p>Uploading multiple files at the same time is more error prone than uploading files, one at a time. This is because users have to use a custom form control that may not be as easy to understand.</p>
 <p>For this reason, do not use this component unless research shows that users need a faster way to upload files.</p>
-<h2 id="how-to-use">How to use</h2>
+<h2 id="how-to-use" tabindex="-1">How to use</h2>
 <p>The multi file upload consists of a dropzone and feedback area which starts off hidden.</p>
 <!-- [Image] -->
 <p>Users can drag and drop files onto the dropzone or click the button and select files using the file picker.</p>
@@ -408,7 +408,7 @@
 <li>red, next to a warning icon, if there’s been an error</li>
 </ul>
 <!-- [Image] -->
-<h3 id="initialising-the-javascript">Initialising the JavaScript</h3>
+<h3 id="initialising-the-javascript" tabindex="-1">Initialising the JavaScript</h3>
 <p>The multi file upload component uses JavaScript. To run it you must include the following script in your page:</p>
 <pre><code>if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
   new MOJFrontend.MultiFileUpload({
@@ -418,7 +418,7 @@
   });
 }
 </code></pre>
-<h3 id="when-javascript-is-not-available">When JavaScript is not available</h3>
+<h3 id="when-javascript-is-not-available" tabindex="-1">When JavaScript is not available</h3>
 <p>When JavaScript is not available, users will be presented with a <a href="https://design-system.service.gov.uk/components/file-upload/">file upload component</a> and upload button.</p>
 <p>When the user selects the upload button, the page will refresh with the valid files being shown in the feedback area.</p>
 <div class="app-example">
@@ -696,7 +696,7 @@
 </ul>
 <p>When the user selects the continue button, the entire form including selected files, will be saved and the user will be taken to the next page.</p>
 <p>You can include a check screen at this point if you need to.</p>
-<h3 id="error-messages">Error messages</h3>
+<h3 id="error-messages" tabindex="-1">Error messages</h3>
 <p>Use the file upload error messages <a href="https://design-system.service.gov.uk/components/file-upload/#error-messages">from the GOV.UK Design System</a>.</p>
 
       </main>

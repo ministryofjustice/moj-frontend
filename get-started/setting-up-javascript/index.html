@@ -187,7 +187,7 @@
 <li>include the MOJ Pattern Library's JavaScript code directly in your HTML templates</li>
 <li>import the JavaScript using a bundler like Webpack</li>
 </ul>
-<h2 id="add-the-javascript-file-to-your-html">Add the JavaScript file to your HTML</h2>
+<h2 id="add-the-javascript-file-to-your-html" tabindex="-1">Add the JavaScript file to your HTML</h2>
 <p>To include the code directly in a template, first either:</p>
 <ul>
 <li>set up your routing so that requests for the JavaScript file are served from <code>node_modules/@ministryofjustice/frontend/moj/all.js</code></li>
@@ -205,7 +205,7 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 </code></pre>
 <p><strong>Some components cannot be initialised by this method</strong> and this is noted on their individual documentation pages. For more details, <a href="#initialize-individual-components">see below</a>.</p>
-<h2 id="import-using-a-bundler">Import using a bundler</h2>
+<h2 id="import-using-a-bundler" tabindex="-1">Import using a bundler</h2>
 <p>If you decide to import using a bundler, use <code>import</code> to import jQuery and all of the design systems’s components, then run the <code>initAll</code> function to initialise them:</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">import</span> $ <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;jquery&#x27;</span>
 <span class="hljs-keyword">import</span> { initAll } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@ministryofjustice/frontend&#x27;</span>
@@ -213,7 +213,7 @@
 <span class="hljs-variable language_">window</span>.<span class="hljs-property">$</span> = $
 <span class="hljs-title function_">initAll</span>()
 </code></pre>
-<h2 id="initialize-individual-components">Initialize individual components</h2>
+<h2 id="initialize-individual-components" tabindex="-1">Initialize individual components</h2>
 <p>Rather than using <code>initAll</code>, you can initialise individual components by identifying them with their <code>data-module</code> attribute. For example, to initialise just the <a href="../../components/password-reveal">Password reveal</a> component:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
 <span class="hljs-keyword">var</span> <span class="hljs-title class_">PasswordReveal</span> = <span class="hljs-variable language_">window</span>.<span class="hljs-property">MOJFrontend</span>.<span class="hljs-property">PasswordReveal</span>
