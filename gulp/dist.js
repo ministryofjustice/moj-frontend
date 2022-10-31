@@ -1,6 +1,5 @@
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
-const del = require("del");
 const gulp = require("gulp");
 const postcss = require("gulp-postcss");
 const rename = require("gulp-rename");
@@ -8,8 +7,10 @@ const sass = require("gulp-sass")(require("sass"));
 const uglify = require("gulp-uglify");
 const zip = require("gulp-zip");
 
-gulp.task("dist:clean", () => {
-  return del(["dist/**/*"]);
+gulp.task("dist:clean", async () => {
+  const { deleteSync } = await import("del");
+
+  return deleteSync(["dist/**/*"]);
 });
 
 gulp.task("dist:assets", () => {
