@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/ministryofjustice/moj-frontend/compare/v1.6.2...v1.6.3) (2022-11-14)
+
+
+### Bug Fixes
+
+* **component:** sort the columns of the sortable table on page load ([#406](https://github.com/ministryofjustice/moj-frontend/issues/406)) ([ed2056a](https://github.com/ministryofjustice/moj-frontend/commit/ed2056a0260b8448743445ca55404aa1beeb0780))
+
 ## [1.6.2](https://github.com/ministryofjustice/moj-frontend/compare/v1.6.1...v1.6.2) (2022-10-31)
 
 
