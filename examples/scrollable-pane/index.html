@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#0b0c0c">
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/assets/images/moj-apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="apple-touch-icon" href="/assets/images/moj-apple-touch-icon-167x167.png" sizes="167x167">
+    <link rel="apple-touch-icon" href="/assets/images/moj-apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="/assets/images/moj-apple-touch-icon.png">
+
+    <meta name="description" content="Design your service using MOJ styles, components and patterns">
+    <meta property="og:image" content="/assets/images/moj-opengraph-image.png">
+
+    <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
+    <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
+    <title>Sortable table (example) - MOJ Pattern Library</title>
+
+    <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
+    <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
+    <script type="text/javascript" src="/assets/javascript/all.js"></script>
+  </head>
+  <body class="govuk-template__body">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+    
+  <div class="govuk-!-margin-6 govuk-!-margin-top-9">
+    <div class="moj-scrollable-pane">
+  <table class="govuk-table">
+  
+  <caption class="govuk-table__caption">Historic rainfall in June</caption>
+  
+  
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    
+      <th scope="col" class="govuk-table__header">Station</th>
+    
+      <th scope="col" class="govuk-table__header">2022</th>
+    
+      <th scope="col" class="govuk-table__header">2021</th>
+    
+      <th scope="col" class="govuk-table__header">2020</th>
+    
+      <th scope="col" class="govuk-table__header">2019</th>
+    
+      <th scope="col" class="govuk-table__header">2018</th>
+    
+      <th scope="col" class="govuk-table__header">2017</th>
+    
+      <th scope="col" class="govuk-table__header">2016</th>
+    
+      <th scope="col" class="govuk-table__header">2015</th>
+    
+      <th scope="col" class="govuk-table__header">2014</th>
+    
+      <th scope="col" class="govuk-table__header">2013</th>
+    
+    </tr>
+  </thead>
+  
+  <tbody class="govuk-table__body">
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Lerwick</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >13.7mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >13.8mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >13.9mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >12.7mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >13.3mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >13.3mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >12.9mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >11.2mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >13.3mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >12.7mm</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Eskdalemuir</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.0mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.9mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.2mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >16.2mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >19.7mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >16.4mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.6mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >15.7mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.8mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >16.9mm</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Valley</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.5mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.4mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.9mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.1mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >20.2mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.6mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >18.0mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >16.6mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >18.0mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.5mm</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Heathrow</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >23.2mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >22.5mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >22.5mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >21.8mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >24.2mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >24.0mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >20.7mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >22.2mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >22.1mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >20.3mm</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Hurn</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >21.0mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >20.7mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >20.7mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >19.9mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >22.9mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >21.9mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >19.6mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >20.5mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >21.1mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >19.6mm</td>
+          
+        
+        </tr>
+      
+    
+      
+        <tr class="govuk-table__row">
+        
+          
+          
+          <td class="govuk-table__cell"
+          >Camborne</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.9mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.4mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.1mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >16.5mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >19.7mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >18.0mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.0mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >16.8mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >17.8mm</td>
+          
+        
+          
+          
+          <td class="govuk-table__cell"
+          >15.9mm</td>
+          
+        
+        </tr>
+      
+    
+  </tbody>
+</table>
+
+</div>
+
+  </div>
+
+
+    <script type="text/javascript">
+      MOJFrontend.initAll();
+    </script>
+    
+  <script type="text/javascript">
+    
+  </script>
+
+  </body>
+</html>

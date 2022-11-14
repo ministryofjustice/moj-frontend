@@ -17,7 +17,7 @@
 
     <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
-    <title>Sortable table - MOJ Pattern Library</title>
+    <title>Scrollable pane - MOJ Pattern Library</title>
 
     <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
     <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
@@ -223,12 +223,12 @@
             <a href="/components/multi-select">Multi select</a>
           </li>
         
-          <li class="moj-side-navigation__item">
-            <a href="/components/scrollable-pane">Scrollable pane</a>
+          <li class="moj-side-navigation__item moj-side-navigation__item--active">
+            <a href="/components/scrollable-pane" aria-current="location">Scrollable pane</a>
           </li>
         
-          <li class="moj-side-navigation__item moj-side-navigation__item--active">
-            <a href="/components/sortable-table" aria-current="location">Sortable table</a>
+          <li class="moj-side-navigation__item">
+            <a href="/components/sortable-table">Sortable table</a>
           </li>
         
           <li class="moj-side-navigation__item">
@@ -270,323 +270,485 @@
       <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
           <span class="govuk-caption-xl">Components</span>
-          Sortable table
+          Scrollable pane
         </h1>
-        <p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/bc848ffdd0813814b806f4e223430badea7186ea">11 October 2022</a></p>
-<div class="app-example">
+        <div class="app-example">
   <span class="app-example__new-window">
-    <a href="/examples/sortable-table" target="_blank">Open this example <span class="govuk-visually-hidden">(Sortable table (example))</span> in a new window</a>
+    <a href="/examples/scrollable-pane" target="_blank">Open this example <span class="govuk-visually-hidden">(Sortable table (example))</span> in a new window</a>
   </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="450" src="/examples/sortable-table" title="Sortable table (example)"></iframe>
+  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="470" src="/examples/scrollable-pane" title="Sortable table (example)"></iframe>
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-sortable-table" role="tab" id="tab_html-default--examples-sortable-table" aria-controls="html-default--examples-sortable-table">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-sortable-table" role="tab" id="tab_nunjucks-default--examples-sortable-table" aria-controls="nunjucks-default--examples-sortable-table">Nunjucks</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-scrollable-pane" role="tab" id="tab_html-default--examples-scrollable-pane" aria-controls="html-default--examples-scrollable-pane">HTML</a></li>
+    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-scrollable-pane" role="tab" id="tab_nunjucks-default--examples-scrollable-pane" aria-controls="nunjucks-default--examples-scrollable-pane">Nunjucks</a></li>
   </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-sortable-table" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-sortable-table">
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;moj-sortable-table&quot;</span>&gt;</span>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-scrollable-pane" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-scrollable-pane">
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-scrollable-pane&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table&quot;</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__head&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">caption</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__caption&quot;</span>&gt;</span>Historic rainfall in June<span class="hljs-tag">&lt;/<span class="hljs-name">caption</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header&quot;</span> <span class="hljs-attr">aria-sort</span>=<span class="hljs-string">&quot;ascending&quot;</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">thead</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__head&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header&quot;</span> <span class="hljs-attr">aria-sort</span>=<span class="hljs-string">&quot;none&quot;</span>&gt;</span>Elevation<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header&quot;</span>&gt;</span>Station<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header&quot;</span> <span class="hljs-attr">aria-sort</span>=<span class="hljs-string">&quot;none&quot;</span>&gt;</span>Continent<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header&quot;</span>&gt;</span>2022<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header govuk-table__header--numeric&quot;</span> <span class="hljs-attr">aria-sort</span>=<span class="hljs-string">&quot;none&quot;</span>&gt;</span>First summit<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header&quot;</span>&gt;</span>2021<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header&quot;</span>&gt;</span>2020<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__body&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header&quot;</span>&gt;</span>2019<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header&quot;</span>&gt;</span>2018<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Aconcagua<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header&quot;</span>&gt;</span>2017<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span> <span class="hljs-attr">data-sort-value</span>=<span class="hljs-string">&quot;6961&quot;</span>&gt;</span>6,961 meters<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header&quot;</span>&gt;</span>2016<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>South America<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header&quot;</span>&gt;</span>2015<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell govuk-table__cell--numeric&quot;</span> <span class="hljs-attr">data-sort-value</span>=<span class="hljs-string">&quot;1897&quot;</span>&gt;</span>1897<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header&quot;</span>&gt;</span>2014<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">&quot;col&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__header&quot;</span>&gt;</span>2013<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Denali<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__body&quot;</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span> <span class="hljs-attr">data-sort-value</span>=<span class="hljs-string">&quot;6194&quot;</span>&gt;</span>6,194 meters<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>North America<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Lerwick<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell govuk-table__cell--numeric&quot;</span> <span class="hljs-attr">data-sort-value</span>=<span class="hljs-string">&quot;1913&quot;</span>&gt;</span>1913<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>13.7mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>13.8mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>13.9mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Elbrus<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>12.7mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span> <span class="hljs-attr">data-sort-value</span>=<span class="hljs-string">&quot;5642&quot;</span>&gt;</span>5,642 meters<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>13.3mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Europe<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>13.3mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell govuk-table__cell--numeric&quot;</span> <span class="hljs-attr">data-sort-value</span>=<span class="hljs-string">&quot;1874&quot;</span>&gt;</span>1874<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>12.9mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>11.2mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>13.3mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Everest<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>12.7mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span> <span class="hljs-attr">data-sort-value</span>=<span class="hljs-string">&quot;8850&quot;</span>&gt;</span>8,850 meters<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Asia<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell govuk-table__cell--numeric&quot;</span> <span class="hljs-attr">data-sort-value</span>=<span class="hljs-string">&quot;1953&quot;</span>&gt;</span>1953<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Eskdalemuir<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.0mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.9mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Kilimanjaro<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.2mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span> <span class="hljs-attr">data-sort-value</span>=<span class="hljs-string">&quot;5895&quot;</span>&gt;</span>5,895 meters<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>16.2mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Africa<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>19.7mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell govuk-table__cell--numeric&quot;</span> <span class="hljs-attr">data-sort-value</span>=<span class="hljs-string">&quot;1889&quot;</span>&gt;</span>1889<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>16.4mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.6mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>15.7mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Puncak Jaya<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.8mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span> <span class="hljs-attr">data-sort-value</span>=<span class="hljs-string">&quot;4884&quot;</span>&gt;</span>4,884 meters<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>16.9mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Australia<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell govuk-table__cell--numeric&quot;</span> <span class="hljs-attr">data-sort-value</span>=<span class="hljs-string">&quot;1962&quot;</span>&gt;</span>1962<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Valley<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.5mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Vinson<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.4mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span> <span class="hljs-attr">data-sort-value</span>=<span class="hljs-string">&quot;4897&quot;</span>&gt;</span>4,897 meters<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.9mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Antarctica<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.1mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell govuk-table__cell--numeric&quot;</span> <span class="hljs-attr">data-sort-value</span>=<span class="hljs-string">&quot;1966&quot;</span>&gt;</span>1966<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>20.2mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.6mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>18.0mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>16.6mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>18.0mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.5mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Heathrow<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>23.2mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>22.5mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>22.5mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>21.8mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>24.2mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>24.0mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>20.7mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>22.2mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>22.1mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>20.3mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Hurn<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>21.0mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>20.7mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>20.7mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>19.9mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>22.9mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>21.9mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>19.6mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>20.5mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>21.1mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>19.6mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__row&quot;</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>Camborne<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.9mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.4mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.1mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>16.5mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>19.7mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>18.0mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.0mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>16.8mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>17.8mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-table__cell&quot;</span>&gt;</span>15.9mm<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 </code></pre>
   </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-sortable-table" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-sortable-table">
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-scrollable-pane" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-scrollable-pane">
   <div data-module="app-copy" style="position:relative;">
 <pre><code class="language-jinja"><span class="language-xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/table/macro.njk&quot; import govukTable -%}</span><span class="language-xml">
 
-</span><span class="hljs-template-variable">{{ govukTable({
-  attributes: {
-    &#x27;data-module&#x27;: &#x27;moj-sortable-table&#x27;
-  },
-  head: [
-    {
-      text: &quot;Name&quot;,
-      attributes: {
-        &quot;aria-sort&quot;: &quot;ascending&quot;
-      }
-    },
-    {
-      text: &quot;Elevation&quot;,
-      attributes: {
-        &quot;aria-sort&quot;: &quot;none&quot;
-      }
-    },
-    {
-      text: &quot;Continent&quot;,
-      attributes: {
-        &quot;aria-sort&quot;: &quot;none&quot;
-      }
-    },
-    {
-      text: &quot;First summit&quot;,
-      attributes: {
-        &quot;aria-sort&quot;: &quot;none&quot;
-      },
-      format: &quot;numeric&quot;
-    }
-  ],
-  rows: [
-    [
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-scrollable-pane&quot;</span>&gt;</span>
+  </span><span class="hljs-template-variable">{{ govukTable({
+    caption: &quot;Historic rainfall in June&quot;,
+    head: [
       {
-        text: &quot;Aconcagua&quot;
+        text: &quot;Station&quot;
       },
       {
-        text: &quot;6,961 meters&quot;,
-        attributes: {
-          &quot;data-sort-value&quot;: &quot;6961&quot;
-        }
+        text: &quot;2022&quot;
       },
       {
-        text: &quot;South America&quot;
+        text: &quot;2021&quot;
       },
       {
-        text: &quot;1897&quot;,
-        format: &quot;numeric&quot;,
-        attributes: {
-          &quot;data-sort-value&quot;: &quot;1897&quot;
-        }
+        text: &quot;2020&quot;
+      },
+      {
+        text: &quot;2019&quot;
+      },
+      {
+        text: &quot;2018&quot;
+      },
+      {
+        text: &quot;2017&quot;
+      },
+      {
+        text: &quot;2016&quot;
+      },
+      {
+        text: &quot;2015&quot;
+      },
+      {
+        text: &quot;2014&quot;
+      },
+      {
+        text: &quot;2013&quot;
       }
     ],
-    [
-      {
-        text: &quot;Denali&quot;
-      },
-      {
-        text: &quot;6,194 meters&quot;,
-        attributes: {
-          &quot;data-sort-value&quot;: &quot;6194&quot;
+    rows: [
+      [
+        {
+          text: &quot;Lerwick&quot;
+        },
+        {
+          text: &quot;13.7mm&quot;
+        },
+        {
+          text: &quot;13.8mm&quot;
+        },
+        {
+          text: &quot;13.9mm&quot;
+        },
+        {
+          text: &quot;12.7mm&quot;
+        },
+        {
+          text: &quot;13.3mm&quot;
+        },
+        {
+          text: &quot;13.3mm&quot;
+        },
+        {
+          text: &quot;12.9mm&quot;
+        },
+        {
+          text: &quot;11.2mm&quot;
+        },
+        {
+          text: &quot;13.3mm&quot;
+        },
+        {
+          text: &quot;12.7mm&quot;
         }
-      },
-      {
-        text: &quot;North America&quot;
-      },
-      {
-        text: &quot;1913&quot;,
-        format: &quot;numeric&quot;,
-        attributes: {
-          &quot;data-sort-value&quot;: &quot;1913&quot;
+      ],
+      [
+        {
+          text: &quot;Eskdalemuir&quot;
+        },
+        {
+          text: &quot;17.0mm&quot;
+        },
+        {
+          text: &quot;17.9mm&quot;
+        },
+        {
+          text: &quot;17.2mm&quot;
+        },
+        {
+          text: &quot;16.2mm&quot;
+        },
+        {
+          text: &quot;19.7mm&quot;
+        },
+        {
+          text: &quot;16.4mm&quot;
+        },
+        {
+          text: &quot;17.6mm&quot;
+        },
+        {
+          text: &quot;15.7mm&quot;
+        },
+        {
+          text: &quot;17.8mm&quot;
+        },
+        {
+          text: &quot;16.9mm&quot;
         }
-      }
-    ],
-    [
-      {
-        text: &quot;Elbrus&quot;
-      },
-      {
-        text: &quot;5,642 meters&quot;,
-        attributes: {
-          &quot;data-sort-value&quot;: &quot;5642&quot;
+      ],
+      [
+        {
+          text: &quot;Valley&quot;
+        },
+        {
+          text: &quot;17.5mm&quot;
+        },
+        {
+          text: &quot;17.4mm&quot;
+        },
+        {
+          text: &quot;17.9mm&quot;
+        },
+        {
+          text: &quot;17.1mm&quot;
+        },
+        {
+          text: &quot;20.2mm&quot;
+        },
+        {
+          text: &quot;17.6mm&quot;
+        },
+        {
+          text: &quot;18.0mm&quot;
+        },
+        {
+          text: &quot;16.6mm&quot;
+        },
+        {
+          text: &quot;18.0mm&quot;
+        },
+        {
+          text: &quot;17.5mm&quot;
         }
-      },
-      {
-        text: &quot;Europe&quot;
-      },
-      {
-        text: &quot;1874&quot;,
-        format: &quot;numeric&quot;,
-        attributes: {
-          &quot;data-sort-value&quot;: &quot;1874&quot;
+      ],
+      [
+        {
+          text: &quot;Heathrow&quot;
+        },
+        {
+          text: &quot;23.2mm&quot;
+        },
+        {
+          text: &quot;22.5mm&quot;
+        },
+        {
+          text: &quot;22.5mm&quot;
+        },
+        {
+          text: &quot;21.8mm&quot;
+        },
+        {
+          text: &quot;24.2mm&quot;
+        },
+        {
+          text: &quot;24.0mm&quot;
+        },
+        {
+          text: &quot;20.7mm&quot;
+        },
+        {
+          text: &quot;22.2mm&quot;
+        },
+        {
+          text: &quot;22.1mm&quot;
+        },
+        {
+          text: &quot;20.3mm&quot;
         }
-      }
-    ],
-    [
-      {
-        text: &quot;Everest&quot;
-      },
-      {
-        text: &quot;8,850 meters&quot;,
-        attributes: {
-          &quot;data-sort-value&quot;: &quot;8850&quot;
+      ],
+      [
+        {
+          text: &quot;Hurn&quot;
+        },
+        {
+          text: &quot;21.0mm&quot;
+        },
+        {
+          text: &quot;20.7mm&quot;
+        },
+        {
+          text: &quot;20.7mm&quot;
+        },
+        {
+          text: &quot;19.9mm&quot;
+        },
+        {
+          text: &quot;22.9mm&quot;
+        },
+        {
+          text: &quot;21.9mm&quot;
+        },
+        {
+          text: &quot;19.6mm&quot;
+        },
+        {
+          text: &quot;20.5mm&quot;
+        },
+        {
+          text: &quot;21.1mm&quot;
+        },
+        {
+          text: &quot;19.6mm&quot;
         }
-      },
-      {
-        text: &quot;Asia&quot;
-      },
-      {
-        text: &quot;1953&quot;,
-        format: &quot;numeric&quot;,
-        attributes: {
-          &quot;data-sort-value&quot;: &quot;1953&quot;
+      ],
+      [
+        {
+          text: &quot;Camborne&quot;
+        },
+        {
+          text: &quot;17.9mm&quot;
+        },
+        {
+          text: &quot;17.4mm&quot;
+        },
+        {
+          text: &quot;17.1mm&quot;
+        },
+        {
+          text: &quot;16.5mm&quot;
+        },
+        {
+          text: &quot;19.7mm&quot;
+        },
+        {
+          text: &quot;18.0mm&quot;
+        },
+        {
+          text: &quot;17.0mm&quot;
+        },
+        {
+          text: &quot;16.8mm&quot;
+        },
+        {
+          text: &quot;17.8mm&quot;
+        },
+        {
+          text: &quot;15.9mm&quot;
         }
-      }
-    ],
-    [
-      {
-        text: &quot;Kilimanjaro&quot;
-      },
-      {
-        text: &quot;5,895 meters&quot;,
-        attributes: {
-          &quot;data-sort-value&quot;: &quot;5895&quot;
-        }
-      },
-      {
-        text: &quot;Africa&quot;
-      },
-      {
-        text: &quot;1889&quot;,
-        format: &quot;numeric&quot;,
-        attributes: {
-          &quot;data-sort-value&quot;: &quot;1889&quot;
-        }
-      }
-    ],
-    [
-      {
-        text: &quot;Puncak Jaya&quot;
-      },
-      {
-        text: &quot;4,884 meters&quot;,
-        attributes: {
-          &quot;data-sort-value&quot;: &quot;4884&quot;
-        }
-      },
-      {
-        text: &quot;Australia&quot;
-      },
-      {
-        text: &quot;1962&quot;,
-        format: &quot;numeric&quot;,
-        attributes: {
-          &quot;data-sort-value&quot;: &quot;1962&quot;
-        }
-      }
-    ],
-    [
-      {
-        text: &quot;Vinson&quot;
-      },
-      {
-        text: &quot;4,897 meters&quot;,
-        attributes: {
-          &quot;data-sort-value&quot;: &quot;4897&quot;
-        }
-      },
-      {
-        text: &quot;Antarctica&quot;
-      },
-      {
-        text: &quot;1966&quot;,
-        format: &quot;numeric&quot;,
-        attributes: {
-          &quot;data-sort-value&quot;: &quot;1966&quot;
-        }
-      }
+      ]
     ]
-  ]
-}) }}</span><span class="language-xml">
+  }) }}</span><span class="language-xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </span></code></pre>
   </div>
   </div>
 </div>
 <h2 id="when-to-use" tabindex="-1">When to use</h2>
-<p>Use the sortable table component to let users sort columns in ascending or descending order.</p>
-<p>Use this component when sorting is needed to help find data within a large table of data. This might be useful in combination with the <a href="../../patterns/filter-a-list">filter</a> pattern.</p>
-<h2 id="how-to-use" tabindex="-1">How to use</h2>
-<p>If you are using <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> or the <a href="https://govuk-prototype-kit.herokuapp.com/">GOV.UK Prototype Kit</a>, you can use the Nunjucks <a href="https://design-system.service.gov.uk/components/table/">table macro</a>.</p>
+<p>Use the scrollable pane component when you have content (typically tables) which unavoidably overflowing the page. It adds scroll shadows to indicate that content overflows the page.</p>
+<p>This is often used in the <a href="../../patterns/filter-a-list/">filter a list</a> pattern as the filter takes up additional horizontal space, causing the pane holding the table to shrink.</p>
+<h2 id="when-not-to-use" tabindex="-1">When not to use</h2>
+<p>Before using this, try to avoid having content that overflows the page at all. Users should be able to see all of the page's content without needing to scroll, so this component should only be used when absolutely necessary.</p>
+<p>Do not use this component to contain tables which have multi-line text. It will not allow the content to overflow vertically.</p>
 
       </main>
 
