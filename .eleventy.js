@@ -82,6 +82,8 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addShortcode("lastUpdated", function (component) {
+    if (process.env.STAGING) return '';
+
     const dirPath = path.join(__dirname, "src/moj/components", component);
     const [commit, lastUpdated] = execSync(
       `LANG=en_GB git log -n1 --pretty=format:%H,%ad --date=format:'%e %B %Y' ${dirPath}`

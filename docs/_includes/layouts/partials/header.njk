@@ -1,5 +1,23 @@
 {% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
 
+{% if env.isStaging %}
+  <style>
+    body { border: 10px solid orangered; }
+    .app-staging {
+      padding: 20px;
+      text-align: center;
+      background-color: orangered;
+      color: white;
+      font-family: "GDS Transport",arial,sans-serif;
+    }
+  </style>
+  <aside class="app-staging">
+    <h1>This is a staging environment!</h1>
+    <p>This site is designed to show upcoming previews of changes to the documentation and may not reflect what's actually possible or best practices.</p>
+    <p>See <a href="https://design-patterns.service.justice.gov.uk/">the real documentation</a> for up-to-date information.</p>
+  </aside>
+{% endif %}
+
 {% set html %}
   <p class="govuk-body">We’d like to use analytics cookies so we can understand how you use the service and make improvements.</p>
 {% endset %}
