@@ -11,6 +11,7 @@ MOJFrontend.SortableTable = function(params) {
 	this.body = this.table.find('tbody');
 	this.createHeadingButtons();
 	this.createStatusBox();
+  this.initialiseSortedColumn();
 	this.table.on('click', 'th button', $.proxy(this, 'onSortButtonClick'));
 };
 
@@ -42,6 +43,20 @@ MOJFrontend.SortableTable.prototype.createHeadingButton = function(heading, i) {
 MOJFrontend.SortableTable.prototype.createStatusBox = function() {
 	this.status = $('<div aria-live="polite" role="status" aria-atomic="true" class="govuk-visually-hidden" />');
 	this.table.parent().append(this.status);
+};
+
+MOJFrontend.SortableTable.prototype.initialiseSortedColumn = function () {
+  var rows = this.getTableRowsArray();
+
+  this.table.find("th")
+    .filter('[aria-sort="ascending"], [aria-sort="descending"]')
+    .first()
+    .each((index, el) => {
+      var sortDirection = $(el).attr('aria-sort');
+      var columnNumber = $(el).find('button').attr('data-index');
+      var sortedRows = this.sort(rows, columnNumber, sortDirection);
+      this.addRows(sortedRows);
+    })
 };
 
 MOJFrontend.SortableTable.prototype.onSortButtonClick = function(e) {
