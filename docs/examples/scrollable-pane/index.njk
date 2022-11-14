@@ -1,0 +1,259 @@
+---
+layout: layouts/example.njk
+title: Sortable table (example)
+---
+
+{%- from "govuk/components/table/macro.njk" import govukTable -%}
+
+<div class="moj-scrollable-pane">
+  {{ govukTable({
+    caption: "Historic rainfall in June",
+    head: [
+      {
+        text: "Station"
+      },
+      {
+        text: "2022"
+      },
+      {
+        text: "2021"
+      },
+      {
+        text: "2020"
+      },
+      {
+        text: "2019"
+      },
+      {
+        text: "2018"
+      },
+      {
+        text: "2017"
+      },
+      {
+        text: "2016"
+      },
+      {
+        text: "2015"
+      },
+      {
+        text: "2014"
+      },
+      {
+        text: "2013"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "Lerwick"
+        },
+        {
+          text: "13.7mm"
+        },
+        {
+          text: "13.8mm"
+        },
+        {
+          text: "13.9mm"
+        },
+        {
+          text: "12.7mm"
+        },
+        {
+          text: "13.3mm"
+        },
+        {
+          text: "13.3mm"
+        },
+        {
+          text: "12.9mm"
+        },
+        {
+          text: "11.2mm"
+        },
+        {
+          text: "13.3mm"
+        },
+        {
+          text: "12.7mm"
+        }
+      ],
+      [
+        {
+          text: "Eskdalemuir"
+        },
+        {
+          text: "17.0mm"
+        },
+        {
+          text: "17.9mm"
+        },
+        {
+          text: "17.2mm"
+        },
+        {
+          text: "16.2mm"
+        },
+        {
+          text: "19.7mm"
+        },
+        {
+          text: "16.4mm"
+        },
+        {
+          text: "17.6mm"
+        },
+        {
+          text: "15.7mm"
+        },
+        {
+          text: "17.8mm"
+        },
+        {
+          text: "16.9mm"
+        }
+      ],
+      [
+        {
+          text: "Valley"
+        },
+        {
+          text: "17.5mm"
+        },
+        {
+          text: "17.4mm"
+        },
+        {
+          text: "17.9mm"
+        },
+        {
+          text: "17.1mm"
+        },
+        {
+          text: "20.2mm"
+        },
+        {
+          text: "17.6mm"
+        },
+        {
+          text: "18.0mm"
+        },
+        {
+          text: "16.6mm"
+        },
+        {
+          text: "18.0mm"
+        },
+        {
+          text: "17.5mm"
+        }
+      ],
+      [
+        {
+          text: "Heathrow"
+        },
+        {
+          text: "23.2mm"
+        },
+        {
+          text: "22.5mm"
+        },
+        {
+          text: "22.5mm"
+        },
+        {
+          text: "21.8mm"
+        },
+        {
+          text: "24.2mm"
+        },
+        {
+          text: "24.0mm"
+        },
+        {
+          text: "20.7mm"
+        },
+        {
+          text: "22.2mm"
+        },
+        {
+          text: "22.1mm"
+        },
+        {
+          text: "20.3mm"
+        }
+      ],
+      [
+        {
+          text: "Hurn"
+        },
+        {
+          text: "21.0mm"
+        },
+        {
+          text: "20.7mm"
+        },
+        {
+          text: "20.7mm"
+        },
+        {
+          text: "19.9mm"
+        },
+        {
+          text: "22.9mm"
+        },
+        {
+          text: "21.9mm"
+        },
+        {
+          text: "19.6mm"
+        },
+        {
+          text: "20.5mm"
+        },
+        {
+          text: "21.1mm"
+        },
+        {
+          text: "19.6mm"
+        }
+      ],
+      [
+        {
+          text: "Camborne"
+        },
+        {
+          text: "17.9mm"
+        },
+        {
+          text: "17.4mm"
+        },
+        {
+          text: "17.1mm"
+        },
+        {
+          text: "16.5mm"
+        },
+        {
+          text: "19.7mm"
+        },
+        {
+          text: "18.0mm"
+        },
+        {
+          text: "17.0mm"
+        },
+        {
+          text: "16.8mm"
+        },
+        {
+          text: "17.8mm"
+        },
+        {
+          text: "15.9mm"
+        }
+      ]
+    ]
+  }) }}
+</div>
