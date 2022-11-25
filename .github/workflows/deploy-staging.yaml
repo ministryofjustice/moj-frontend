@@ -1,4 +1,4 @@
-name: Continuous Deployment
+name: Staging environment
 
 # For a description of how this works, see this Cloud Platform User Guide page:
 # https://user-guide.cloud-platform.service.justice.gov.uk/documentation/deploying-an-app/github-actions-continuous-deployment.html

@@ -1,0 +1,32 @@
+name: Push a tagged PR to staging env
+on:
+  pull_request:
+    types: [labeled]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+jobs:
+  push-to-staging:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.label.name == 'staging:request' }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Remove active labels from other PRs
+        run: |
+          for number in $(gh pr list --label "staging:active" --json number | jq -r '.[].number'); do
+          gh pr edit ${number} --remove-label "staging:active"
+          done
+      - name: Push to staging branch
+        run: |
+          git checkout -b staging-pr-$PRNUM
+          git push -f origin staging-pr-$PRNUM:staging
+        env:
+          PRNUM: ${{ github.event.number }}
+      - name: Update PR with success
+        run: |
+          gh pr comment $PRNUM --body "🚀 Deploying to [staging environment](https://moj-frontend-staging.apps.live.cloud-platform.service.justice.gov.uk/)"
+          gh pr edit $PRNUM --remove-label "staging:request"
+          gh pr edit $PRNUM --add-label "staging:active"
+        env:
+          PRNUM: ${{ github.event.number }}
