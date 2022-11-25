@@ -4,7 +4,10 @@ on:
     types: [labeled]
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  ECR_NAME: ${{ secrets.ECR_NAME }}
+  KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
+  KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
 
 jobs:
   push-to-staging:
@@ -17,12 +20,32 @@ jobs:
           for number in $(gh pr list --label "staging:active" --json number | jq -r '.[].number'); do
           gh pr edit ${number} --remove-label "staging:active"
           done
-      - name: Push to staging branch
-        run: |
-          git checkout -b staging-pr-$PRNUM
-          git push -f origin staging-pr-$PRNUM:staging
+      - name: Build
+        run: docker build -t foo .
+      - name: Push to ECR
+        id: ecr
+        uses: jwalton/gh-ecr-push@v1
+        with:
+          access-key-id: ${{ secrets.ECR_AWS_ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.ECR_AWS_SECRET_ACCESS_KEY }}
+          region: eu-west-2
+          local-image: foo
+          image: ${ECR_NAME}:${{ github.sha }}
+      - name: Update image tag and branch name
+        run: export IMAGE_TAG=${{ github.sha }} && export BRANCH=${GITHUB_REF##*/} && cat kubernetes-deploy-${GITHUB_REF##*/}.tpl | envsubst > kubernetes-deploy.yaml
+      - name: Authenticate to the cluster
         env:
-          PRNUM: ${{ github.event.number }}
+          KUBE_CERT: ${{ secrets.KUBE_CERT }}
+          KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
+        run: |
+          echo "${KUBE_CERT}" > ca.crt
+          kubectl config set-cluster ${KUBE_CLUSTER} --certificate-authority=./ca.crt --server=https://${KUBE_CLUSTER}
+          kubectl config set-credentials deploy-user --token=${KUBE_TOKEN}
+          kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${KUBE_NAMESPACE}
+          kubectl config use-context ${KUBE_CLUSTER}
+      - name: Apply the updated manifest
+        run: |
+          kubectl -n ${KUBE_NAMESPACE} apply -f kubernetes-deploy.yaml
       - name: Update PR with success
         run: |
           gh pr comment $PRNUM --body "🚀 Deploying to [staging environment](https://moj-frontend-staging.apps.live.cloud-platform.service.justice.gov.uk/)"
