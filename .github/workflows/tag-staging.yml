@@ -32,7 +32,7 @@ jobs:
           local-image: foo
           image: ${ECR_NAME}:${{ github.sha }}
       - name: Update image tag and branch name
-        run: export IMAGE_TAG=${{ github.sha }} && export BRANCH=${GITHUB_REF##*/} && cat kubernetes-deploy-${GITHUB_REF##*/}.tpl | envsubst > kubernetes-deploy.yaml
+        run: export IMAGE_TAG=${{ github.sha }} && export BRANCH=staging && cat kubernetes-deploy-staging.tpl | envsubst > kubernetes-deploy-staging.yaml
       - name: Authenticate to the cluster
         env:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
@@ -45,7 +45,7 @@ jobs:
           kubectl config use-context ${KUBE_CLUSTER}
       - name: Apply the updated manifest
         run: |
-          kubectl -n ${KUBE_NAMESPACE} apply -f kubernetes-deploy.yaml
+          kubectl -n ${KUBE_NAMESPACE} apply -f kubernetes-deploy-staging.yaml
       - name: Update PR with success
         run: |
           gh pr comment $PRNUM --body "🚀 Deploying to [staging environment](https://moj-frontend-staging.apps.live.cloud-platform.service.justice.gov.uk/)"
