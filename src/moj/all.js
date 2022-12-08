@@ -59,11 +59,4 @@ MOJFrontend.initAll = function (options) {
       table: $table
     });
   });
-
-  var $sortableTables = scope.querySelectorAll('[data-module="moj-sortable-table"]');
-  MOJFrontend.nodeListForEach($sortableTables, function ($table) {
-    new MOJFrontend.SortableTable({
-      table: $table
-    });
-  });
 }
