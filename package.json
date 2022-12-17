@@ -62,7 +62,7 @@
     "autoprefixer": "^10.4.0",
     "babel-loader": "^9.0.0",
     "commitizen": "^4.2.5",
-    "copy-webpack-plugin": "^9.0.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.0.0",
     "cssnano": "^5.0.13",
     "cz-conventional-changelog": "^3.3.0",
