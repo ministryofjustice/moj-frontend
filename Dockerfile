@@ -22,6 +22,6 @@ FROM nginxinc/nginx-unprivileged:alpine AS nginx
 
 EXPOSE 3000
 
-RUN sed -i -e 's/8080;/3000;/g' /etc/nginx/conf.d/default.conf
+COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=build /app/public /usr/share/nginx/html
