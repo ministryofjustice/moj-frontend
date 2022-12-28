@@ -1,6 +1,10 @@
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![moj-frontend](https://circleci.com/gh/ministryofjustice/moj-frontend.svg?style=shield)](https://circleci.com/gh/ministryofjustice/moj-frontend)
+![NPM License](https://img.shields.io/npm/l/@ministryofjustice/frontend)
+
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ministryofjustice/moj-frontend/Build%20and%20deploy%20docs)
+![NPM Downloads](https://img.shields.io/npm/v/@ministryofjustice/frontend)
+![NPM Downloads](https://img.shields.io/npm/dw/@ministryofjustice/frontend)
 
 # Ministry of Justice Frontend
 
