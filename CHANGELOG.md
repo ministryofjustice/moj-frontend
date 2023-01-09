@@ -1,3 +1,10 @@
+## [1.6.4](https://github.com/ministryofjustice/moj-frontend/compare/v1.6.3...v1.6.4) (2023-01-09)
+
+
+### Bug Fixes
+
+* use syntax compatible with postcss-calc ([#435](https://github.com/ministryofjustice/moj-frontend/issues/435)) ([3f21884](https://github.com/ministryofjustice/moj-frontend/commit/3f2188420f5e8d330e918ca14270e1eb4215f704)), closes [#433](https://github.com/ministryofjustice/moj-frontend/issues/433)
+
 ## [1.6.3](https://github.com/ministryofjustice/moj-frontend/compare/v1.6.2...v1.6.3) (2022-11-14)
 
 
