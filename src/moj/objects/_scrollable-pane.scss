@@ -9,7 +9,7 @@
       to right,
       $scrollableBgColor,
       $scrollableBgColor,
-      $scrollableTransparentColor calc($scrollableShadowSize * 2)
+      $scrollableTransparentColor calc(var($scrollableShadowSize) * 2)
     ),
     radial-gradient(
       farthest-side at 0 50%,
@@ -20,7 +20,7 @@
       to left,
       $scrollableBgColor,
       $scrollableBgColor,
-      $scrollableTransparentColor calc($scrollableShadowSize * 2)
+      $scrollableTransparentColor calc(var($scrollableShadowSize) * 2)
     ),
     radial-gradient(
         farthest-side at 100% 50%,
