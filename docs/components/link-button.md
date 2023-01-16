@@ -23,3 +23,9 @@ Use the _link button_ component to ....
 - text: The button text
 - action: the URL of the POST
 - csrfToken: Cross Site Request Forgery Token
+
+## Research
+
+This component has been used successfully in the following services:
+
+- HMPPS Manage Users
