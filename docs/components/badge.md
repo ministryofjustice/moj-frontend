@@ -18,6 +18,8 @@ Use the badge component to highlight small details like an urgent case.
 
 The badge is useful for drawing users attention to particular information. It should be used sparingly because when used a lot it loses its value.
 
+In HMPPS digital services, you should only use the badge to show risk information.
+
 ## How to use
 
 The default, neutral badge is blue. Alternative styles are also available, for example, green and red.
@@ -171,5 +173,5 @@ There are a number of additional colour styles that can be used:
 This component has been used successfully in the following services:
 
 - Claim fees for Crown court defence (Legal Aid Agency)
-- Prisoner Escort Request (Her Majesty’s Prison and Probation Service)
-- Professional case manager (Her Majesty’s Courts and Tribunals Service)
+- Prisoner Escort Request (His Majesty’s Prison and Probation Service)
+- Professional case manager (His Majesty’s Courts and Tribunals Service)
