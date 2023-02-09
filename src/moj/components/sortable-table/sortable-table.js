@@ -104,8 +104,8 @@ MOJFrontend.SortableTable.prototype.getTableRowsArray = function() {
 
 MOJFrontend.SortableTable.prototype.sort = function(rows, columnNumber, sortDirection) {
 	var newRows = rows.sort($.proxy(function(rowA, rowB) {
-		var tdA = $(rowA).find('td').eq(columnNumber);
-		var tdB = $(rowB).find('td').eq(columnNumber);
+		var tdA = $(rowA).find('td,th').eq(columnNumber);
+		var tdB = $(rowB).find('td,th').eq(columnNumber);
 		var valueA = this.getCellValue(tdA);
 		var valueB = this.getCellValue(tdB);
 		if(sortDirection === 'ascending') {
