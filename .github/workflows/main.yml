@@ -17,6 +17,7 @@ jobs:
         node-version: 'lts/*'
     - run: npm ci
     - run: npm run build:package
+    - run: npm ci
     - uses: actions/upload-artifact@v3
       with:
         name: mojds-package
