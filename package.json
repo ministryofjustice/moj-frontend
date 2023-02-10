@@ -16,7 +16,7 @@
     "test": "npm-run-all --parallel test:*",
     "test:sass": "npm install node-sass && node-sass -q test.scss >/dev/null && echo 'ok'",
     "test:docs": "npm run build:docs",
-    "watch:11ty": "eleventy --input=./docs --output=public --serve --watch",
+    "watch:11ty": "eleventy --input=./docs --output=public --serve --incremental",
     "watch:webpack": "webpack --watch"
   },
   "repository": {
@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/ministryofjustice/moj-frontend#readme",
   "dependencies": {
-    "@11ty/eleventy": "^1.0.1",
+    "@11ty/eleventy": "^2.0.0",
     "clipboard": "^2.0.8",
     "del": "^7.0.0",
     "govuk-frontend": "^4.0.0",
