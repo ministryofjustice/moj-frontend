@@ -16,12 +16,6 @@ jobs:
       with:
         node-version: 'lts/*'
     - run: npm ci
-    - run: npm run build:package
-    - run: npm ci
-    - uses: actions/upload-artifact@v3
-      with:
-        name: mojds-package
-        path: package
     - run: npm run build:dist
     - run: npm run build:docs
     - uses: actions/upload-artifact@v3
@@ -39,10 +33,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/download-artifact@v3
-      with:
-        name: mojds-package
-        path: package
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -63,10 +53,6 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: lts/*
-    - uses: actions/download-artifact@v3
-      with:
-        name: mojds-package
-        path: package
     - uses: actions/download-artifact@v3
       with:
         name: mojds-dist

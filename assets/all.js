@@ -1,5 +1,5 @@
 import GOVUKFrontend from "govuk-frontend/govuk/all.js";
-import MOJFrontend from "../package/moj/all.js";
+import MOJFrontend from "../src/moj/all.js";
 
 import Cookies from "./javascript/cookies";
 import Copy from "./javascript/copy";

@@ -8,7 +8,7 @@ const mojFilters = require("./src/moj/filters/all");
 const nunjucks = require("nunjucks");
 const path = require("path");
 const { execSync } = require("child_process");
-const releasePackage = require('./package/package.json');
+const releasePackage = require('./src/package.json');
 
 module.exports = function (eleventyConfig) {
   const nunjucksEnv = nunjucks.configure([

@@ -3,7 +3,7 @@
   "description": "The MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.",
   "main": "index.js",
   "files": [
-    "/package"
+    "/src"
   ],
   "scripts": {
     "prepare": "husky install",
@@ -55,7 +55,7 @@
     "@babel/preset-env": "^7.14.4",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
-    "@ministryofjustice/frontend": "file:./package",
+    "@ministryofjustice/frontend": "file:./src",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^9.0.0",

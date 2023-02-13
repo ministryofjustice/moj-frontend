@@ -11,6 +11,8 @@ settings.json
 tmp-uploads
 dist
 
+src/moj/all.js
+
 # ignore everything in the package directory, but not govuk-prototype-kit.config.json, package.json and README.md
 package/*
 !package/govuk-prototype-kit.config.json

@@ -3,14 +3,13 @@ FROM node:lts-slim AS build
 RUN apt-get update && apt-get -y install autoconf gcc make
 
 WORKDIR /app
-COPY package package
 COPY package.json package.json
 COPY package-lock.json package-lock.json
+COPY src src
 RUN npm ci
 
 COPY assets assets
 COPY docs docs
-COPY src src
 COPY .eleventy.js .eleventy.js
 COPY gulp gulp
 COPY gulpfile.js gulpfile.js

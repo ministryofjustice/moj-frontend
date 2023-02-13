@@ -6,7 +6,7 @@ gulp.task('build:javascript', () => {
   return gulp.src([
       'src/moj/namespace.js',
       'src/moj/helpers.js',
-      'src/moj/all.js',
+      'src/moj/main.js',
       'src/moj/components/**/*.js'
     ])
     .pipe(concat('all.js'))
@@ -18,5 +18,5 @@ gulp.task('build:javascript', () => {
         return 'MOJFrontend';
       }
     }))
-    .pipe(gulp.dest('package/moj/'));
+    .pipe(gulp.dest('src/moj/'));
 });

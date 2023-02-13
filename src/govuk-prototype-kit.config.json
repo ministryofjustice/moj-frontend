@@ -1,0 +1,87 @@
+{
+  "nunjucksFilters": [
+    "/moj/filters/prototype-kit-13-filters.js"
+  ],
+  "scripts": [
+    "/moj/all.js"
+  ],
+  "assets": [
+    "/moj/assets"
+  ],
+  "sass": [
+    "/moj/all.scss"
+  ],
+  "nunjucksPaths": [
+    "/"
+  ],
+  "nunjucksMacros": [
+    {
+      "importFrom": "moj/components/side-navigation/macro.njk",
+      "macroName": "mojSideNavigation"
+    },
+    {
+      "importFrom": "moj/components/organisation-switcher/macro.njk",
+      "macroName": "mojOrganisationSwitcher"
+    },
+    {
+      "importFrom": "moj/components/primary-navigation/macro.njk",
+      "macroName": "mojPrimaryNavigation"
+    },
+    {
+      "importFrom": "moj/components/identity-bar/macro.njk",
+      "macroName": "mojIdentityBar"
+    },
+    {
+      "importFrom": "moj/components/sub-navigation/macro.njk",
+      "macroName": "mojSubNavigation"
+    },
+    {
+      "importFrom": "moj/components/notification-badge/macro.njk",
+      "macroName": "mojNotificationBadge"
+    },
+    {
+      "importFrom": "moj/components/ticket-panel/macro.njk",
+      "macroName": "mojTicketPanel"
+    },
+    {
+      "importFrom": "moj/components/timeline/macro.njk",
+      "macroName": "mojTimeline"
+    },
+    {
+      "importFrom": "moj/components/badge/macro.njk",
+      "macroName": "mojBadge"
+    },
+    {
+      "importFrom": "moj/components/messages/macro.njk",
+      "macroName": "mojMessages"
+    },
+    {
+      "importFrom": "moj/components/banner/macro.njk",
+      "macroName": "mojBanner"
+    },
+    {
+      "importFrom": "moj/components/pagination/macro.njk",
+      "macroName": "mojPagination"
+    },
+    {
+      "importFrom": "moj/components/filter/macro.njk",
+      "macroName": "mojFilter"
+    },
+    {
+      "importFrom": "moj/components/button-menu/macro.njk",
+      "macroName": "mojButtonMenu"
+    },
+    {
+      "importFrom": "moj/components/page-header-actions/macro.njk",
+      "macroName": "mojPageHeaderActions"
+    },
+    {
+      "importFrom": "moj/components/search/macro.njk",
+      "macroName": "mojSearch"
+    },
+    {
+      "importFrom": "moj/components/header/macro.njk",
+      "macroName": "mojHeader"
+    }
+  ]
+}

@@ -14,12 +14,12 @@ gulp.task("dist:clean", async () => {
 });
 
 gulp.task("dist:assets", () => {
-  return gulp.src("package/moj/assets/**/*").pipe(gulp.dest("dist/assets/"));
+  return gulp.src("src/moj/assets/**/*").pipe(gulp.dest("dist/assets/"));
 });
 
 gulp.task("dist:javascript", () => {
   return gulp
-    .src("package/moj/all.js")
+    .src("src/moj/all.js")
     .pipe(
       uglify({
         ie8: true,
@@ -31,7 +31,7 @@ gulp.task("dist:javascript", () => {
 
 gulp.task("dist:css", () => {
   return gulp
-    .src("package/moj/*.scss")
+    .src("src/moj/*.scss")
     .pipe(sass())
     .pipe(postcss([autoprefixer, cssnano]))
     .pipe(
