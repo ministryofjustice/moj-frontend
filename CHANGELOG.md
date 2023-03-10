@@ -1,3 +1,10 @@
+## [1.6.5](https://github.com/ministryofjustice/moj-frontend/compare/v1.6.4...v1.6.5) (2023-03-10)
+
+
+### Bug Fixes
+
+* **sortable-table:** fix sorting for tables with row headers ([42bc5e1](https://github.com/ministryofjustice/moj-frontend/commit/42bc5e1db4e53353b6dc1920187f7ca7164791c7))
+
 ## [1.6.4](https://github.com/ministryofjustice/moj-frontend/compare/v1.6.3...v1.6.4) (2023-01-09)
 
 
