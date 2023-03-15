@@ -80,7 +80,7 @@
     "postcss": "^8.4.5",
     "sass-loader": "^13.0.0",
     "semantic-release": "^20.0.0",
-    "webpack": "^5.38.1",
+    "webpack": "^5.76.0",
     "webpack-cli": "^5.0.0"
   },
   "config": {
