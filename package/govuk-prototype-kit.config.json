@@ -3,7 +3,8 @@
     "/moj/filters/prototype-kit-13-filters.js"
   ],
   "scripts": [
-    "/moj/all.js"
+    "/moj/all.jquery.min.js",
+    "/moj/init.js"
   ],
   "assets": [
     "/moj/assets"
