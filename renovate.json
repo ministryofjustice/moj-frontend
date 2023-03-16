@@ -2,5 +2,23 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base"
+  ],
+  "packageRules": [
+    {
+      "groupName": "Patch & Minor Updates",
+      "groupSlug": "all-minor-patch-updates",
+      "labels": [
+        "dependencies"
+      ],
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "prCreation": "immediate",
+      "stabilityDays": 3
+    }
   ]
 }
