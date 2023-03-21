@@ -1,9 +1,7 @@
 const gulp = require("gulp");
 const requireDir = require("require-dir");
 
-requireDir("./gulp", {
-  recurse: true,
-});
+requireDir("./gulp");
 
 gulp.task(
   "build:package",
@@ -11,6 +9,7 @@ gulp.task(
     "build:clean",
     "build:copy-files",
     "build:javascript",
+    "build:javascript-with-jquery",
     "build:compress-images",
   )
 );
