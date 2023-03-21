@@ -1,3 +1,10 @@
+## [1.6.6](https://github.com/ministryofjustice/moj-frontend/compare/v1.6.5...v1.6.6) (2023-03-21)
+
+
+### Bug Fixes
+
+* **prototype:** better support for GOV.UK Prototype Kit ([#466](https://github.com/ministryofjustice/moj-frontend/issues/466)) ([f2e6faa](https://github.com/ministryofjustice/moj-frontend/commit/f2e6faa581a8ae4bd0c5a305f37f9b3a998b4c7b)), closes [#465](https://github.com/ministryofjustice/moj-frontend/issues/465)
+
 ## [1.6.5](https://github.com/ministryofjustice/moj-frontend/compare/v1.6.4...v1.6.5) (2023-03-10)
 
 
