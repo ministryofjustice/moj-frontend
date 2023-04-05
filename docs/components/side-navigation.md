@@ -24,3 +24,9 @@ The component can be configured to group navigation items into sections
 ### Sections
 
 {% example "/examples/side-navigation-sections", 480 %}
+
+## Accessibility issues
+
+By default, the section headings use the H4 heading size. This can create an illogical structure if higher heading levels are missing from the page. For some assistive technology users that navigate using heading structures this may cause difficulties.
+
+When viewed on smaller screens and when there are more than three links, users will have to scroll horizontally as well as vertically to see all the content.  This has been raised in an external audit under Web Content Accessibility Guidelines (WCAG) 1.4.10 Reflow (Level AA). If you use this component without addressing this issue, you must list it in the accessibility statement.

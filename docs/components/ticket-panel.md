@@ -35,27 +35,31 @@ If you have used the ticket panel component, get in touch to share your research
 
 ### Container
 
-|Name|Type|Required|Description|
-|---|---|---|---|
-|classes|string|No|Classes to add to the ticket panel's container.|
-|attributes|object|No|HTML attributes (for example data attributes) to add to the ticket panel's container.|
+| Name       | Type   | Required | Description                                                                           |
+| ---------- | ------ | -------- | ------------------------------------------------------------------------------------- |
+| classes    | string | No       | Classes to add to the ticket panel's container.                                       |
+| attributes | object | No       | HTML attributes (for example data attributes) to add to the ticket panel's container. |
 
 ### Items
 
-|Name|Type|Required|Description|
-|---|---|---|---|
-|text|string|Yes|If `html` is set, this is not required. Text to use within the item. If `html` is provided, the `text` argument will be ignored.|
-|html|string|Yes|If `text` is set, this is not required. HTML to use within the item. If `html` is provided, the `text` argument will be ignored.|
-|classes|string|No|Classes to add to the ticket panel's container.|
-|attributes|object|No|HTML attributes (for example data attributes) to add to the ticket panel's container.|
+| Name       | Type   | Required | Description                                                                                                                      |
+| ---------- | ------ | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| text       | string | Yes      | If `html` is set, this is not required. Text to use within the item. If `html` is provided, the `text` argument will be ignored. |
+| html       | string | Yes      | If `text` is set, this is not required. HTML to use within the item. If `html` is provided, the `text` argument will be ignored. |
+| classes    | string | No       | Classes to add to the ticket panel's container.                                                                                  |
+| attributes | object | No       | HTML attributes (for example data attributes) to add to the ticket panel's container.                                            |
 
 ### Classes
 
-|Name|
-|---|
-|moj-ticket-panel__content--blue|
-|moj-ticket-panel__content--red|
-|moj-ticket-panel__content--yellow|
-|moj-ticket-panel__content--green|
-|moj-ticket-panel__content--purple|
-|moj-ticket-panel__content--orange|
+| Name                                |
+| ----------------------------------- |
+| moj-ticket-panel\_\_content--blue   |
+| moj-ticket-panel\_\_content--red    |
+| moj-ticket-panel\_\_content--yellow |
+| moj-ticket-panel\_\_content--green  |
+| moj-ticket-panel\_\_content--purple |
+| moj-ticket-panel\_\_content--orange |
+
+## Accessibility issues
+
+When several ticket panels are used together, the page structure can become hard to navigate for people who use screen readers. For example, multiple section and article HTML elements are introduced and a list element that could provide some organisation is missing. We are looking into how this could be fixed. This has been raised in an external audit under Web Content Accessibility Guidelines (WCAG) 2.4.4 Link Purpose (In Context) (Level A). If you use this component without addressing this issue, you must list it in the accessibility statement.
