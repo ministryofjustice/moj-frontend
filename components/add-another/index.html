@@ -517,12 +517,16 @@
 <p>If users need to add information many times, it may cause performance and validation issues as the page will get very long. In this case, you should use <a href="../../patterns/add-to-a-list">add to a list</a>.</p>
 <h2 id="how-to-use" tabindex="-1">How to use</h2>
 <p>The add another component relies on JavaScript. When JavaScript is not available, your page should reload with the additional form elements if the &quot;Add another&quot; button is pressed.</p>
+<p>By default the component adds a H2 to the page. Make sure a H1 is also present to provide a clear heading structure.</p>
 <h2 id="research" tabindex="-1">Research</h2>
 <p>This component has been tested in prototypes of several citizen and internal products, including:</p>
 <ul>
 <li>Claim fees for Crown court defence (Legal Aid Agency)</li>
 <li>Moving People Safely (Her Majesty’s Prison and Probation Service)</li>
 </ul>
+<h2 id="accessibility-issues" tabindex="-1">Accessibility issues</h2>
+<p>Some people who use assistive technology will find it hard to identify form items that are added. This is because the form labels this component creates are given the same ID when added to the page. <a href="https://github.com/ministryofjustice/moj-frontend/issues/160">A fix for this has been proposed on GitHub.</a> This has been raised in an external audit under Web Content Accessibility Guidelines (WCAG) 2.4.6 Headings and Labels (Level AA). If you use this component without addressing this issue, you must list it in the accessibility statement.</p>
+<p>People with low vision have also reported difficulty interacting with the remove button. This is because by default it is aligned to the right of the page away from their main focus.</p>
 
       </main>
 
