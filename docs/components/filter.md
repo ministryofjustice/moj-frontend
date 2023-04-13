@@ -12,24 +12,29 @@ The filter component is being discussed in the [GOV.UK Design System community b
 {% lastUpdated "filter" %}
 
 {% example "/examples/filter", 1000 %}
+
 ## When to use
 
 Use the filter component to help users filter a list of items, such as a list of cases or search results.
 
 You should only provide users with filters they really need.
+
 ## How to use
 
 You should use this component with the [filter a list](../../patterns/filter-a-list) pattern to allow the component to be shown with a list.
 
-Users can select 1 or more filters. When the user clicks 'Apply filters' the page refreshes to show the items that match the filters. 
+Users can select 1 or more filters. When the user clicks 'Apply filters' the page refreshes to show the items that match the filters.
 
 The selected filters are displayed at the top to let users see what they've selected and remove them easily. Clicking on a selected filter refreshes the page and removes the filter.
+
 ### Types of filters
 
-You can use form elements such as [radios](https://design-system.service.gov.uk/components/radios/) and [checkboxes](https://design-system.service.gov.uk/components/checkboxes/) to let users filter the list. Follow guidance on how to [ask users for dates](https://design-system.service.gov.uk/patterns/dates/). 
+You can use form elements such as [radios](https://design-system.service.gov.uk/components/radios/) and [checkboxes](https://design-system.service.gov.uk/components/checkboxes/) to let users filter the list. Follow guidance on how to [ask users for dates](https://design-system.service.gov.uk/patterns/dates/).
 
 User research will tell you the best order of filters.
+
 ### Navigating filters
+
 #### Show and hide individual filters
 
 If you're providing multiple ways of filtering, you may want to let users show and hide filters as needed.
@@ -93,6 +98,7 @@ This component:
 - is working in a live service (Sirius for Office of the Public Guardian)
 
 Users don't always see they can filter. Some users try to filter from the columns headings.
+
 ## Contribute
 
 [Discuss filters on GitHub](https://github.com/ministryofjustice/moj-frontend/discussions/197)
@@ -105,7 +111,7 @@ Users don't always see they can filter. Some users try to filter from the column
 
 - When to use a horizontal layout for filters
 
-- More detailed guidance on accessibility 
+- More detailed guidance on accessibility
 
 - How to deal with inter-dependent filters
 
@@ -114,3 +120,7 @@ Users don't always see they can filter. Some users try to filter from the column
 - Whether the ability to filter should be emphasised, for example changing the colour of the 'open filter' button, or having the filter open when the page is first loaded
 
 - Whether selected filters should be visible at all times above the list of items, like the [GOV.UK search results](https://www.gov.uk/search/all?keywords=test&content_purpose_supergroup%5B%5D=services&content_purpose_supergroup%5B%5D=news_and_communications&order=relevance)
+
+## Accessibility issues
+
+Users have to navigate to the top of the component to apply filters after selecting their options. This can make the component hard to use for a keyboard user. This is not a Web Content Accessibility Guidelines (WCAG) failure. It may be helpful to mention this in the accessibility statement.
