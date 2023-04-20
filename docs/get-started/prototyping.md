@@ -48,9 +48,10 @@ You can check which version your prototype is running by opening `package.json` 
 
 To update your prototype to the latest version of MOJ Frontend:
 
-1. Open `package.json` in the root folder of your prototype in a text editor
-2. Under `dependencies`, update the reference to MOJ Frontend to `"@ministryofjustice/frontend": "{% version %}",`
-3. Save `package.json`
-4. Open a command prompt application (e.g. Terminal on MacOS)
-5. Change the directory to your prototype's directory. For example, `cd path/to/prototype`
-6. Run `npm install`
+1. Check that you're using the latest long-term support version of npm (for example by using [Node Version Manager](https://github.com/nvm-sh/nvm))
+2. Open `package.json` in the root folder of your prototype in a text editor
+3. Under `dependencies`, update the reference to MOJ Frontend to `"@ministryofjustice/frontend": "{% version %}",`
+4. Save `package.json`
+5. Open a command prompt application (e.g. Terminal on MacOS)
+6. Change the directory to your prototype's directory. For example, `cd path/to/prototype`
+7. Run `npm install`
