@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.6.6...v1.7.0) (2023-06-07)
+
+
+### Features
+
+* **filter component:** add filter submit attribute params to allow customisation of button ([#492](https://github.com/ministryofjustice/moj-frontend/issues/492)) ([a42dca8](https://github.com/ministryofjustice/moj-frontend/commit/a42dca85464ebf1d64e2f6609c9e863cd04bb56c))
+
 ## [1.6.6](https://github.com/ministryofjustice/moj-frontend/compare/v1.6.5...v1.6.6) (2023-03-21)
 
 
