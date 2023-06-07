@@ -48,7 +48,8 @@
     <div class="moj-filter__options">
 
       {{ govukButton({
-        text: 'Apply filters'
+        text: 'Apply filters',
+        attributes: params.submit.attributes
       }) }}
 
       {{params.optionsHtml | safe}}
