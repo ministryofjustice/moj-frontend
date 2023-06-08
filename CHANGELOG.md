@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.7.0...v1.8.0) (2023-06-08)
+
+
+### Features
+
+* **filter component:** add parameter for apply filters button text ([#493](https://github.com/ministryofjustice/moj-frontend/issues/493)) ([5362f1e](https://github.com/ministryofjustice/moj-frontend/commit/5362f1e5a574ea1cc6356425a3fbeec4664f1917))
+
 # [1.7.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.6.6...v1.7.0) (2023-06-07)
 
 
