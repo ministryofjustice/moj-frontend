@@ -1,4 +1,12 @@
 {
+  "meta": {
+    "description": "The MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.",
+    "urls": {
+      "documentation": "https://design-patterns.service.justice.gov.uk/",
+      "releaseNotes": "https://github.com/ministryofjustice/moj-frontend/releases/tag/v{{version}}",
+      "versionHistory": "https://github.com/ministryofjustice/moj-frontend/releases"
+    }
+  },
   "nunjucksFilters": [
     "/moj/filters/prototype-kit-13-filters.js"
   ],
