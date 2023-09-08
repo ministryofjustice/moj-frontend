@@ -10,9 +10,11 @@ MOJFrontend.FilterToggleButton = function(options) {
 };
 
 MOJFrontend.FilterToggleButton.prototype.setupResponsiveChecks = function() {
-  this.mq = window.matchMedia(this.options.bigModeMediaQuery);
-  this.mq.addListener($.proxy(this, 'checkMode'));
-  this.checkMode(this.mq);
+  if (this.options.bigModeMediaQuery) {
+    this.mq = window.matchMedia(this.options.bigModeMediaQuery);
+    this.mq.addListener($.proxy(this, 'checkMode'));
+    this.checkMode(this.mq);
+  }
 };
 
 MOJFrontend.FilterToggleButton.prototype.createToggleButton = function() {
