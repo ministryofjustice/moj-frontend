@@ -41,7 +41,7 @@ module.exports = function (eleventyConfig) {
   );
 
   eleventyConfig.addShortcode("example", function (exampleHref, height) {
-    const { data, content: nunjucksCode } = matter(
+    let { data, content: nunjucksCode } = matter(
       fs
         .readFileSync(
           path.join(__dirname, "docs", exampleHref, "index.njk"),
@@ -49,6 +49,8 @@ module.exports = function (eleventyConfig) {
         )
         .trim()
     );
+
+    nunjucksCode = nunjucksCode.split('<!--no include-->')[0].trim();
 
     const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode);
 
