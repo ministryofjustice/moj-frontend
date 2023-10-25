@@ -4,8 +4,8 @@
   items: [
     {
       text: 'Get started',
-      href: ('/' | url),
-      active: (page.filePathStem === '/index' or page.filePathStem.indexOf('/get-started') === 0)
+      href: ('/get-started' | url),
+      active: page.filePathStem.indexOf('/get-started') === 0
     },
     {
       text: 'Components',
