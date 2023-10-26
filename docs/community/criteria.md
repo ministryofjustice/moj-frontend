@@ -9,26 +9,10 @@ The MOJ Design System supports the design, build, and delivery of accessible and
 
 For a contribution to be considered for the design system, the style, component or pattern needs to be useful and unique.
 
-<table class="govuk-table">
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Criteria</th>
-      <th scope="col" class="govuk-table__header">Description</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Useful</th>
-      <td class="govuk-table__cell">The contribution would be useful for many teams or services. <br><br>To support your contribution, it's helpful if you have evidence to suggest that other teams or services have user needs that can be met by your contribution.</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Unique</th>
-      <td class="govuk-table__cell">The contribution does not replicate something already in the MOJ Design System or <a href="https://design-system.service.gov.uk/">GOV.UK Design System</a>.</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
+| Criteria  | Description |
+| --------- | ----------- |
+| **Useful** | The contribution would be useful for many teams or services.<br><br>To support your contribution, it's helpful if you have evidence to suggest that other teams or services have user needs that can be met by your contribution. |
+| **Unique** | The contribution does not replicate something already in the MOJ Design System or [GOV.UK Design System](https://design-system.service.gov.uk/). |
 
 ## Developing a contribution
 
