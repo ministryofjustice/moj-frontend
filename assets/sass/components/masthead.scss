@@ -1,76 +1,35 @@
 /* ==========================================================================
    #MASTHEAD
-   // Ideal line length (https://pearsonified.com/typography)
    ========================================================================== */
+
+$brand-colour: #220051;
 
 .app-masthead {
-  @include govuk-responsive-padding(6, "top");
-  @include govuk-responsive-padding(6, "bottom");
-  background-color: govuk-colour("blue");
+  padding-top: govuk-spacing(7);
+  padding-bottom: govuk-spacing(7);
+  background-color: $brand-colour;
   color: govuk-colour("white");
-  margin-top: -1px; // Covers the navigation border bottom
 }
 
-.app-masthead__title {
-  @include govuk-responsive-margin(6, "bottom");
-  color: govuk-colour("white") !important;
-  max-width: 1057px; // Desired CPL 50 (headings) chars at a font size of 48px
+.app-masthead p,
+.app-masthead h1 {
+  color: inherit;
 }
 
-.app-masthead__description {
-  @include govuk-font(24);
-  color: govuk-colour("white") !important;
-  margin-bottom: 0;
-  max-width: 793px; // Desired CPL 75 (paragraphs) chars at a font size of 24px
-}
-
-/* ==========================================================================
-   #BUTTON
-   ========================================================================== */
-
-.app-masthead__button,
-.app-masthead__button:link,
-.app-masthead__button:visited {
-  @include govuk-font($size: 24, $weight: bold);
+.app-masthead .govuk-button--start {
+  color: $brand-colour !important;
   background-color: govuk-colour("white");
-  // background: govuk-colour("white") url("/public/images/app-icon-pointer.svg") no-repeat 100% 50%;
-  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.5);
-  color: govuk-colour("blue");
-  display: block;
-  padding-bottom: govuk-spacing(2);
-  padding-left: govuk-spacing(3);
-  padding-right: govuk-spacing(3);
-  padding-top: govuk-spacing(2);
-  text-align: center;
-  text-decoration: none;
+}
 
-  @include govuk-media-query($from: desktop) {
-    display: inline-block;
+.app-masthead .govuk-button--start:hover {
+  background-color: govuk-colour("mid-grey");
+}
+
+@media (min-width: map-get($govuk-breakpoints, tablet)) {
+  .app-masthead__container {
+    background-image: url("/assets/images/moj-people.svg");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 33% auto;
   }
-}
-
-.app-masthead__button:focus {
-  background-color: $govuk-focus-colour;
-  color: $govuk-focus-text-colour;
-  box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
-}
-
-.app-masthead__button:hover {
-  color: govuk-colour("blue");
-  background-color: #e8f1f8;
-}
-
-.app-masthead__button__icon {
-  margin-left: govuk-spacing(1);
-
-  @include govuk-media-query($from: desktop) {
-    margin-left: govuk-spacing(2);
-  }
-  vertical-align: middle;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }

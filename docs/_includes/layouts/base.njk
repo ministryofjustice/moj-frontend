@@ -17,7 +17,7 @@
 
     <!--[if lte IE 8]><link href="{{ '/assets/stylesheets/application-ie8.css' | url }}" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="{{ '/assets/stylesheets/application.css' | url }}" rel="stylesheet"><!--<![endif]-->
-    <title>{{ title }} - MOJ Pattern Library</title>
+    <title>{% block title %}{{ title }} - MOJ Pattern Library{% endblock %}</title>
 
     <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
     <script type="text/javascript" src="{{ '/assets/javascript/jquery.js' | url }}"></script>
