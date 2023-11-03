@@ -1,0 +1,5 @@
+@mixin govuk-if-ie8 {
+  @if $govuk-is-ie8 {
+    @content;
+  }
+}

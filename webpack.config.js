@@ -44,7 +44,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: "node_modules/govuk-frontend/govuk/assets",
+          from: "node_modules/govuk-frontend/dist/govuk/assets",
           to: path.resolve(__dirname, "public/assets"),
         },
         {

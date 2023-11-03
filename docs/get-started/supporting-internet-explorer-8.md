@@ -12,7 +12,7 @@ When [generating your IE8-specific stylesheet](https://frontend.design-system.se
 ```scss
 // application.scss
 
-@import "govuk-frontend/frontend/all";
+@import "govuk-frontend/dist/frontend/all";
 @import "@ministryofjustice/frontend/all";
 
 .example {
