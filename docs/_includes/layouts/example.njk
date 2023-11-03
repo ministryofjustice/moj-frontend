@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block pageScripts %}
-  <script type="text/javascript">
+  <script type="module">
     {% include (page.inputPath | getScriptPath) ignore missing %}
   </script>
 {% endblock %}
