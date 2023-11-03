@@ -30,13 +30,13 @@ gulp.task("dist:javascript", () => {
 
 gulp.task("dist:css", () => {
   return gulp
-    .src("package/moj/*.scss")
+    .src("gulp/dist-scss/*.scss")
     .pipe(sass())
     .pipe(postcss([autoprefixer, cssnano]))
     .pipe(
       rename((path) => ({
         dirname: path.dirname,
-        basename: path.basename.replace("all", "moj-frontend"),
+        basename: path.basename.replace("dist", "moj-frontend"),
         extname: ".min.css",
       }))
     )
