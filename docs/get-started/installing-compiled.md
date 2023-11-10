@@ -49,7 +49,7 @@ In a live application, we recommend that you [install with npm](../installing-wi
 
 ### Without the GOV.UK Design System
 
-It is unlikely that you would ever want to install the MOJ Pattern Library alone, but if so you can follow the guide below to check that it is working.
+It is unlikely that you would ever want to install the MOJ Design System alone, but if so you can follow the guide below to check that it is working.
 
 1. Create a page in your project using the following HTML (in your live application, you should use the [Design System page template](https://design-system.service.gov.uk/styles/page-template/) instead):
 

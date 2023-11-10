@@ -1,9 +1,9 @@
 ---
 layout: layouts/plain.njk
-title: Accessibility statement for Ministry of Justice Pattern Library
+title: Accessibility statement for Ministry of Justice Design System
 ---
 
-This accessibility statement applies to the Ministry of Justice Pattern Library documentation website.
+This accessibility statement applies to the Ministry of Justice Design System documentation website.
 
 This website is run by Justice Digital, a Ministry of Justice service area. We want as many people as possible to be able to use this website. For example, that means you should be able to:
 
@@ -78,4 +78,4 @@ This statement was prepared on 16th August 2022. It was last reviewed on 16th Au
 
 This platform was last tested on 23rd June 2022. The test was carried out in-house by the Accessibility team.
 
-In addition, The Digital Accessibility Centre (DAC) carried out a full WCAG 2.1 AA level audit on all featured components and patterns contained by the Pattern Library. It included extensive testing by users with a wide range of disabilities. This audit was performed on 30th April 2021. It highlighted a number of non-compliance issues, some of which have been addressed since.
+In addition, The Digital Accessibility Centre (DAC) carried out a full WCAG 2.1 AA level audit on all featured components and patterns contained by the Design System. It included extensive testing by users with a wide range of disabilities. This audit was performed on 30th April 2021. It highlighted a number of non-compliance issues, some of which have been addressed since.
