@@ -5,7 +5,6 @@ const postcss = require("gulp-postcss");
 const rename = require("gulp-rename");
 const sass = require("gulp-sass")(require("sass"));
 const uglify = require("gulp-uglify");
-const zip = require("gulp-zip");
 
 gulp.task("dist:clean", async () => {
   const { deleteSync } = await import("del");
@@ -44,6 +43,8 @@ gulp.task("dist:css", () => {
     .pipe(gulp.dest("dist"));
 });
 
-gulp.task("dist:zip", () => {
+gulp.task("dist:zip", async () => {
+  const { default: zip } = await import("gulp-zip");
+
   return gulp.src("dist/**").pipe(zip("release.zip")).pipe(gulp.dest("dist"));
 });
