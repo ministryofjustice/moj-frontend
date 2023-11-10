@@ -28,7 +28,7 @@ jobs:
         with:
           role-to-assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.ECR_REGION }}
-      - uses: aws-actions/amazon-ecr-login@v1
+      - uses: aws-actions/amazon-ecr-login@v2
         id: login-ecr
       - run: |
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
