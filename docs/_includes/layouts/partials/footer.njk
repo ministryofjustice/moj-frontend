@@ -1,27 +1,12 @@
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 
 {{ govukFooter({
-  navigation: [
-    {
-      title: "Related resources",
-      items: [
-        {
-          href: "https://www.gov.uk/guidance/government-design-principles",
-          text: "Government Design Principles"
-        },
-        {
-          href: "https://design-system.service.gov.uk/",
-          text: "GOV.UK Design System"
-        },
-        {
-          href: "https://www.gov.uk/service-manual",
-          text: "GOV.UK Service Manual"
-        }
-      ]
-    }
-  ],
   meta: {
     items: [
+      {
+        href: '/community/help-and-feedback' | url,
+        text: "Help and feedback"
+      },
       {
         href: '/cookies' | url,
         text: "Cookies"
