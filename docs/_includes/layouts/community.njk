@@ -35,12 +35,16 @@
             },
             items: [
             {
-              text: 'Propose a contribution',
+              text: 'Propose a component or pattern',
               href: ('/community/contribute' | url)
             },
             {
               text: 'Contribution criteria',
               href: ('/community/criteria' | url)
+            },
+            {
+              text: 'Suggest a change',
+              href: ('/community/suggest-a-change' | url)
             }
             ]
           }
@@ -59,7 +63,8 @@
         {{ content | safe }}
       </main>
 
-      {% include "./partials/contact-panel.njk" %}
+      {% include "./partials/get-help.njk" %}
+
     </div>
   </div>
 {% endblock %}

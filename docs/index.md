@@ -7,7 +7,7 @@ title: Design, build, and deliver accessible and consistent services
 
 ## Contribute to the MOJ Design System
 
-Anyone can contribute to the MOJ Design System by proposing a new style, component, or pattern - or by suggesting a change.
+Anyone can contribute to the MOJ Design System by proposing a new style, component, or pattern.
 
 [Propose a contribution](./community/contribute)
 
