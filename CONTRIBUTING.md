@@ -8,7 +8,7 @@ Please note we have a [code of conduct](https://github.com/ministryofjustice/moj
 
 If you’ve got an idea or suggestion you can:
 
-- [Contact the Design System team](https://design-patterns.service.justice.gov.uk/get-in-touch)
+- [Contact the Design System team](https://design-patterns.service.justice.gov.uk/community/help-and-feedback)
 - [Create a GitHub issue](https://github.com/ministryofjustice/moj-frontend/issues)
 
 ## Raising bugs

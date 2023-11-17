@@ -22,6 +22,7 @@ FROM nginxinc/nginx-unprivileged:alpine AS nginx
 
 EXPOSE 3000
 
+COPY docker/htpasswd /etc/nginx/.htpasswd
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=build /app/public /usr/share/nginx/html
