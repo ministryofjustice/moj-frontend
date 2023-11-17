@@ -3,7 +3,7 @@ layout: layouts/community.njk
 title: Propose a component or pattern
 ---
 
-Our contribution process supports teams to add omponents and patterns based on their users needs and service requirements, whilst guaranteeing the quality and usefulness of the MOJ Design System.
+Our contribution process supports teams to add components and patterns based on their users needs and service requirements, whilst guaranteeing the quality and usefulness of the MOJ Design System.
 
 Anyone can propose a new component or pattern.
 
