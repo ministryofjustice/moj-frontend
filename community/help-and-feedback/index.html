@@ -123,7 +123,7 @@
             </li>
           
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link"  href="/community">Community</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="/community">Community</a>
             </li>
           </ul>
 
@@ -136,13 +136,64 @@
 
 
         
-<div class="govuk-width-container">
-  <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
-    <h1 class="govuk-heading-xl">
-      Help and feedback
-    </h1>
+  <div class="govuk-width-container govuk-grid-row app-flex-container">
+    <div class="govuk-grid-column-one-third">
+      
+  
 
-    <p><span class="govuk-caption-xl">The MOJ Design System Group provides support for users of the MOJ Design System. Contact us to ask for help or to provide feedback.</span></p>
+  <nav class="moj-side-navigation govuk-!-padding-top-6" >
+      <h4 class="moj-side-navigation__title">What&#39;s new</h4>
+      <ul class="moj-side-navigation__list">
+          <li class="moj-side-navigation__item">
+            <a href="/community/updates">Latest updates</a>
+          </li>
+        
+          <li class="moj-side-navigation__item">
+            <a href="/community/roadmap">Our roadmap</a>
+          </li>
+        </ul>
+    
+      <h4 class="moj-side-navigation__title">Contributing</h4>
+      <ul class="moj-side-navigation__list">
+          <li class="moj-side-navigation__item">
+            <a href="/community/contribute">Propose a component or pattern</a>
+          </li>
+        
+          <li class="moj-side-navigation__item">
+            <a href="/community/criteria">Contribution criteria</a>
+          </li>
+        
+          <li class="moj-side-navigation__item">
+            <a href="/community/suggest-a-change">Suggest a change</a>
+          </li>
+        </ul>
+    
+      <h4 class="moj-side-navigation__title">Support</h4>
+      <ul class="moj-side-navigation__list">
+          <li class="moj-side-navigation__item moj-side-navigation__item--active">
+            <a href="/community/help-and-feedback" aria-current="location">Help and feedback</a>
+          </li>
+        </ul>
+    </nav>
+
+
+      <div class="app-back-to-top" data-module="app-back-to-top">
+  <a href="#top">
+    <svg class="app-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+      <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+    </svg>Back to top
+  </a>
+</div>
+
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
+        <h1 class="govuk-heading-xl">
+          
+          Help and feedback
+        </h1>
+        <p><span class="govuk-caption-xl">The MOJ Design System Group provides support for users of the MOJ Design System. Contact us to ask for help or to provide feedback.</span></p>
 <h3 id="contact-us-on-slack" tabindex="-1">Contact us on Slack</h3>
 <p>The group monitors the following channels and provides support as time permits. If you have any questions or feedback, get in touch via Slack.</p>
 <ul>
@@ -152,8 +203,31 @@
 <h3 id="contact-us-on-email" tabindex="-1">Contact us on email</h3>
 <p>Messages sent to <a href="mailto:design-system@digital.justice.gov.uk">design-system@digital.justice.gov.uk</a> will be answered as quickly as possible.</p>
 
-  </main>
+      </main>
+
+      
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+<div class="govuk-!-padding-bottom-3"></div>
+
+<div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__content">
+  
+    <p class="govuk-notification-banner__heading">
+      Need help?
+    </p>
+      <p class="govuk-notification-banner__body">
+        The MOJ Design System Group provides support for users of the MOJ Design System. <a href="/community/help-and-feedback" class="govuk-link">Contact us</a> to ask for help.
+      </p>
+
+  </div>
 </div>
+
+<div class="govuk-!-padding-bottom-7"></div>
+
+
+    </div>
+  </div>
 
 
         
@@ -234,5 +308,11 @@
       MOJFrontend.initAll();
     </script>
     
+  <script>
+    $('[data-module="app-tabs"]').each(function(e, el) {
+      new Tabs($(el));
+    });
+  </script>
+
   </body>
 </html>
