@@ -1,5 +1,5 @@
 ---
-layout: layouts/plain.njk
+layout: layouts/community.njk
 title: Help and feedback
 ---
 
