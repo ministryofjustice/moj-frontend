@@ -52,7 +52,8 @@ jobs:
           KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
       - name: Update PR with success
         run: |
-          gh pr comment $PRNUM --body "🚀 Deploying to [staging environment](https://moj-frontend-staging.apps.live.cloud-platform.service.justice.gov.uk/)"
+          echo -e "🚀 Deploying to [staging environment](https://moj-frontend-staging.apps.live.cloud-platform.service.justice.gov.uk/)\n\n**Username:** \`staging\`, **Password:** \`moj\`" > comment.txt
+          gh pr comment $PRNUM --body-file comment.txt
           gh pr edit $PRNUM --remove-label "staging:request"
           gh pr edit $PRNUM --add-label "staging:active"
         env:
