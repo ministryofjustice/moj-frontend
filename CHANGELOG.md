@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/ministryofjustice/moj-frontend/compare/v1.8.0...v1.8.1) (2023-11-17)
+
+
+### Bug Fixes
+
+* **help and feedback missing destination:** page destination incorrect and causing a broken link ([#536](https://github.com/ministryofjustice/moj-frontend/issues/536)) ([3b4b9f7](https://github.com/ministryofjustice/moj-frontend/commit/3b4b9f794430335f6abeed7f8a585831125a2aa2))
+
 # [1.8.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.7.0...v1.8.0) (2023-06-08)
 
 
