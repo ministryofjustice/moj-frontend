@@ -4,6 +4,14 @@ subsection: What's new
 title: Latest updates
 ---
 
+### December 2023
+
+- 'Interruption Card' component proposed, reviewed, and declined.
+- 'Electronic Signature' pattern proposed, reviewed, and accepted.
+- 'Date Picker' component proposed, reviewed, and accepted.
+- 'Risk' component proposed.
+- 'Communicating bugs on a live service' pattern proposed.
+
 ### November 2023
 
 - [Contribution criteria](/community/criteria) published.
