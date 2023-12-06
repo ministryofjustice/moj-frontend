@@ -6,11 +6,11 @@ title: Latest updates
 
 ### December 2023
 
-- 'Interruption Card' component proposed, reviewed, and declined.
-- 'Electronic Signature' pattern proposed, reviewed, and accepted.
-- 'Date Picker' component proposed, reviewed, and accepted.
-- 'Risk' component proposed.
-- 'Communicating bugs on a live service' pattern proposed.
+- Interruption Card component proposed, reviewed, and declined.
+- Electronic Signature pattern proposed, reviewed, and accepted.
+- Date Picker component proposed, reviewed, and accepted.
+- Risk component proposed.
+- Communicating Bugs on a Live Service pattern proposed.
 
 ### November 2023
 
