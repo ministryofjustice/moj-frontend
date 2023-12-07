@@ -9,7 +9,7 @@ If something is not in the GOV.UK Design System, you should check what exists in
 
 - MOJ Design System
 - [other departments pattern libraries](https://github.com/ctdesign/gov-design-systems-list)
-- [GOV.UK community backlog](https://design-system.service.gov.uk/community/backlog/)
+- [GOV.UK community backlog](https://github.com/orgs/alphagov/projects/43/views/1)
 
 Reuse as much as possible and iterate based on user needs.
 ## Using the Design System
