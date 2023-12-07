@@ -3,7 +3,7 @@ layout: layouts/plain.njk
 title: Cookies
 ---
 
-We use cookies to understand how you navigate and use the MOJ Design System documentation the service, so that we can understand interest in components and make improvements to the documentation's structure and content.
+We use cookies to understand how you navigate and use the MoJ Design System documentation the service, so that we can understand interest in components and make improvements to the documentation's structure and content.
 
 <div data-module="app-cookies" data-persistent>
   <div class="govuk-button-group">

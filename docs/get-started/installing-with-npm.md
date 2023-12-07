@@ -1,11 +1,11 @@
 ---
 layout: layouts/get-started.njk
-title: Installing MOJ Frontend with NPM
+title: Installing MoJ Frontend with NPM
 ---
 
 ## Requirements
 
-To use MOJ Frontend with NPM you must:
+To use MoJ Frontend with NPM you must:
 
 1. Install the long-term support (LTS) version of [Node.js](https://nodejs.org/en/), which includes NPM. The minimum version of Node required is 4.2.0.
 
@@ -13,13 +13,13 @@ To use MOJ Frontend with NPM you must:
 
 2. Create a [package.json file](https://docs.npmjs.com/files/package.json) if you don’t already have one. You can create a default `package.json` file by running `npm init` from the root of your application.
 
-3. Install [jQuery](https://jquery.com/), which is required by the MOJ Frontend JavaScript
+3. Install [jQuery](https://jquery.com/), which is required by the MoJ Frontend JavaScript
 
 ```
 npm install jquery --save
 ```
 
-1. If you want to use the MOJ Frontend Nunjucks macros, install Nunjucks - the minimum version required is 3.0.0.
+1. If you want to use the MoJ Frontend Nunjucks macros, install Nunjucks - the minimum version required is 3.0.0.
 
 ```
 npm install nunjucks --save
@@ -33,11 +33,11 @@ To install, run:
 npm install --save @ministryofjustice/frontend
 ```
 
-After you have installed MOJ Frontend the `@ministryofjustice/frontend` package will appear in your `node_modules` folder.
+After you have installed MoJ Frontend the `@ministryofjustice/frontend` package will appear in your `node_modules` folder.
 
 ## Importing styles
 
-You need to import the MOJ Frontend styles into the main Sass file in your project. You should place the below code before your own Sass rules (or Sass imports) if you want to override MOJ Frontend with your own styles.
+You need to import the MoJ Frontend styles into the main Sass file in your project. You should place the below code before your own Sass rules (or Sass imports) if you want to override MoJ Frontend with your own styles.
 
 1. To import all components, add the below to your Sass file:
 
@@ -71,7 +71,7 @@ gulp.task('sass', function () {
 If you compile Sass to CSS in your project, your build tasks will already include something similar to the above task - in that case, you will just need
 to include add `includePaths` to it.
 
-After resolving the import paths you can import MOJ Frontend by using:
+After resolving the import paths you can import MoJ Frontend by using:
 
 ```CSS
 @import "@ministryofjustice/frontend/moj/components/button/button";
@@ -79,7 +79,7 @@ After resolving the import paths you can import MOJ Frontend by using:
 
 ## Importing assets
 
-In order to import MOJ Frontend images and fonts to your project, you should configure your application to reference or copy the relevant MOJ Frontend assets.
+In order to import MoJ Frontend images and fonts to your project, you should configure your application to reference or copy the relevant MoJ Frontend assets.
 
 Follow either [Recommended solution](#recommended-solution) or [Alternative solution](#alternative-solution).
 
@@ -95,7 +95,7 @@ app.use('/assets', express.static(path.join(__dirname, '/node_modules/@ministryo
 
 ### Alternative solution
 
-Manually copy the images and fonts from `/node_modules/@ministryofjustice/frontend/moj/assets` into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the MOJ Frontend assets stay up-to-date.
+Manually copy the images and fonts from `/node_modules/@ministryofjustice/frontend/moj/assets` into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the MoJ Frontend assets stay up-to-date.
 
 The default paths used for assets are `assets/images` and `assets/fonts`. **If your asset folders follow this structure, you will not need to complete the following steps.**
 

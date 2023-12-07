@@ -1,9 +1,9 @@
 ---
 layout: layouts/get-started.njk
-title: Installing MOJ Frontend using compiled files
+title: Installing MoJ Frontend using compiled files
 ---
 
-You can install MOJ Frontend using the compiled files released with each version. However, by doing so, you will **not** be able to:
+You can install MoJ Frontend using the compiled files released with each version. However, by doing so, you will **not** be able to:
 
 - selectively include the CSS or JavaScript for individual components
 - build your own styles or components based on the palette or typography and spacing mixins
@@ -14,7 +14,7 @@ In a live application, we recommend that you [install with npm](../installing-wi
 
 ## Copy the files
 
-1. Download the `release-<VERSION-NUMBER>.zip` file at the bottom of the [latest MOJ Frontend release note](https://github.com/ministryofjustice/moj-frontend/releases/latest).
+1. Download the `release-<VERSION-NUMBER>.zip` file at the bottom of the [latest MoJ Frontend release note](https://github.com/ministryofjustice/moj-frontend/releases/latest).
 2. Unzip the zip file.
 3. Copy the `assets` folder to the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/assets/images/moj-logotype-crest.png` shows the `images/moj-logotype-crown.png` image in your users’ browsers.
 4. Copy the 2 `.css` files to a stylesheets folder in the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/stylesheets/moj-frontend.min.css` shows the CSS file in your users’ browsers.
@@ -25,7 +25,7 @@ In a live application, we recommend that you [install with npm](../installing-wi
 ### With the GOV.UK Design System
 
 1. Follow [the instructions for installing the GOV.UK Design System](https://frontend.design-system.service.gov.uk/install-using-precompiled-files/)
-2. Add `link` tags for the MOJ Frontend CSS, alongside the GOV.UK ones in the `head`:
+2. Add `link` tags for the MoJ Frontend CSS, alongside the GOV.UK ones in the `head`:
    ```html
    <!--[if !IE 8]><!-->
    <link rel="stylesheet" href="/stylesheets/moj-frontend.min.css" />
@@ -34,7 +34,7 @@ In a live application, we recommend that you [install with npm](../installing-wi
      <link rel="stylesheet" href="/stylesheets/moj-frontend-ie8.min.css" />
    <![endif]-->
    ```
-3. Add `script` tags for the MOJ Frontend JavaScript, alongside the GOV.UK at the bottom of the `body`. This includes jQuery, which is a dependency of MOJ Frontend.
+3. Add `script` tags for the MoJ Frontend JavaScript, alongside the GOV.UK at the bottom of the `body`. This includes jQuery, which is a dependency of MoJ Frontend.
    ```html
    <script
      src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -49,7 +49,7 @@ In a live application, we recommend that you [install with npm](../installing-wi
 
 ### Without the GOV.UK Design System
 
-It is unlikely that you would ever want to install the MOJ Design System alone, but if so you can follow the guide below to check that it is working.
+It is unlikely that you would ever want to install the MoJ Design System alone, but if so you can follow the guide below to check that it is working.
 
 1. Create a page in your project using the following HTML (in your live application, you should use the [Design System page template](https://design-system.service.gov.uk/styles/page-template/) instead):
 
@@ -57,7 +57,7 @@ It is unlikely that you would ever want to install the MOJ Design System alone, 
    <!DOCTYPE html>
    <html lang="en" class="govuk-template ">
      <head>
-       <title>Example - MOJ Frontend</title>
+       <title>Example - MoJ Frontend</title>
        <meta
          name="viewport"
          content="width=device-width, initial-scale=1, viewport-fit=cover"
