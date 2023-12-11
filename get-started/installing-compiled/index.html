@@ -12,12 +12,12 @@
     <link rel="apple-touch-icon" href="/assets/images/moj-apple-touch-icon-152x152.png" sizes="152x152">
     <link rel="apple-touch-icon" href="/assets/images/moj-apple-touch-icon.png">
 
-    <meta name="description" content="Design your service using MOJ styles, components and patterns">
+    <meta name="description" content="Design your service using MoJ styles, components and patterns">
     <meta property="og:image" content="/assets/images/moj-opengraph-image.png">
 
     <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
-    <title>Installing MOJ Frontend using compiled files - MOJ Design System</title>
+    <title>Installing MoJ Frontend using compiled files - MoJ Design System</title>
 
     <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
     <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
@@ -34,7 +34,7 @@
 
 
 
-<div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on MOJ Design System" data-module="app-cookies">
+<div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on MoJ Design System" data-module="app-cookies">
     
     
 
@@ -43,7 +43,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         
-        <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on MOJ Design System</h2>
+        <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on MoJ Design System</h2>
         
 
         <div class="govuk-cookie-banner__content">
@@ -184,9 +184,9 @@
       <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
           
-          Installing MOJ Frontend using compiled files
+          Installing MoJ Frontend using compiled files
         </h1>
-        <p>You can install MOJ Frontend using the compiled files released with each version. However, by doing so, you will <strong>not</strong> be able to:</p>
+        <p>You can install MoJ Frontend using the compiled files released with each version. However, by doing so, you will <strong>not</strong> be able to:</p>
 <ul>
 <li>selectively include the CSS or JavaScript for individual components</li>
 <li>build your own styles or components based on the palette or typography and spacing mixins</li>
@@ -196,7 +196,7 @@
 <p>In a live application, we recommend that you <a href="../installing-with-npm">install with npm</a> instead. This will allow you to better integrate the library and more easily upgrade.</p>
 <h2 id="copy-the-files" tabindex="-1">Copy the files</h2>
 <ol>
-<li>Download the <code>release-&lt;VERSION-NUMBER&gt;.zip</code> file at the bottom of the <a href="https://github.com/ministryofjustice/moj-frontend/releases/latest">latest MOJ Frontend release note</a>.</li>
+<li>Download the <code>release-&lt;VERSION-NUMBER&gt;.zip</code> file at the bottom of the <a href="https://github.com/ministryofjustice/moj-frontend/releases/latest">latest MoJ Frontend release note</a>.</li>
 <li>Unzip the zip file.</li>
 <li>Copy the <code>assets</code> folder to the root of your project’s public folder, so that for example <code>&lt;YOUR-SITE-URL&gt;/assets/images/moj-logotype-crest.png</code> shows the <code>images/moj-logotype-crown.png</code> image in your users’ browsers.</li>
 <li>Copy the 2 <code>.css</code> files to a stylesheets folder in the root of your project’s public folder, so that for example <code>&lt;YOUR-SITE-URL&gt;/stylesheets/moj-frontend.min.css</code> shows the CSS file in your users’ browsers.</li>
@@ -206,7 +206,7 @@
 <h3 id="with-the-gov.uk-design-system" tabindex="-1">With the GOV.UK Design System</h3>
 <ol>
 <li>Follow <a href="https://frontend.design-system.service.gov.uk/install-using-precompiled-files/">the instructions for installing the GOV.UK Design System</a></li>
-<li>Add <code>link</code> tags for the MOJ Frontend CSS, alongside the GOV.UK ones in the <code>head</code>:<pre><code class="language-html"><span class="hljs-comment">&lt;!--[if !IE 8]&gt;&lt;!--&gt;</span>
+<li>Add <code>link</code> tags for the MoJ Frontend CSS, alongside the GOV.UK ones in the <code>head</code>:<pre><code class="language-html"><span class="hljs-comment">&lt;!--[if !IE 8]&gt;&lt;!--&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/stylesheets/moj-frontend.min.css&quot;</span> /&gt;</span>
 <span class="hljs-comment">&lt;!--&lt;![endif]--&gt;</span>
 <span class="hljs-comment">&lt;!--[if IE 8]&gt;
@@ -214,7 +214,7 @@
 &lt;![endif]--&gt;</span>
 </code></pre>
 </li>
-<li>Add <code>script</code> tags for the MOJ Frontend JavaScript, alongside the GOV.UK at the bottom of the <code>body</code>. This includes jQuery, which is a dependency of MOJ Frontend.<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>
+<li>Add <code>script</code> tags for the MoJ Frontend JavaScript, alongside the GOV.UK at the bottom of the <code>body</code>. This includes jQuery, which is a dependency of MoJ Frontend.<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>
   <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://code.jquery.com/jquery-3.6.0.min.js&quot;</span>
   <span class="hljs-attr">integrity</span>=<span class="hljs-string">&quot;sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=&quot;</span>
   <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">&quot;anonymous&quot;</span>
@@ -227,14 +227,14 @@
 </li>
 </ol>
 <h3 id="without-the-gov.uk-design-system" tabindex="-1">Without the GOV.UK Design System</h3>
-<p>It is unlikely that you would ever want to install the MOJ Design System alone, but if so you can follow the guide below to check that it is working.</p>
+<p>It is unlikely that you would ever want to install the MoJ Design System alone, but if so you can follow the guide below to check that it is working.</p>
 <ol>
 <li>
 <p>Create a page in your project using the following HTML (in your live application, you should use the <a href="https://design-system.service.gov.uk/styles/page-template/">Design System page template</a> instead):</p>
 <pre><code class="language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-template &quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Example - MOJ Frontend<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Example - MoJ Frontend<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span>
       <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span>
       <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;</span>
@@ -281,12 +281,12 @@
 
 <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
   <div class="govuk-notification-banner__content">
-  
+
     <p class="govuk-notification-banner__heading">
       Need help?
     </p>
       <p class="govuk-notification-banner__body">
-        The MOJ Design System Group provides support for users of the MOJ Design System. <a href="/community/help-and-feedback" class="govuk-link">Contact us</a> to ask for help.
+        The MoJ Design System Group provides support for users of the MoJ Design System. <a href="/community/help-and-feedback" class="govuk-link">Contact us</a> to ask for help.
       </p>
 
   </div>

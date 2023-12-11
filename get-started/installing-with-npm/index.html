@@ -12,12 +12,12 @@
     <link rel="apple-touch-icon" href="/assets/images/moj-apple-touch-icon-152x152.png" sizes="152x152">
     <link rel="apple-touch-icon" href="/assets/images/moj-apple-touch-icon.png">
 
-    <meta name="description" content="Design your service using MOJ styles, components and patterns">
+    <meta name="description" content="Design your service using MoJ styles, components and patterns">
     <meta property="og:image" content="/assets/images/moj-opengraph-image.png">
 
     <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
-    <title>Installing MOJ Frontend with NPM - MOJ Design System</title>
+    <title>Installing MoJ Frontend with NPM - MoJ Design System</title>
 
     <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
     <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
@@ -34,7 +34,7 @@
 
 
 
-<div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on MOJ Design System" data-module="app-cookies">
+<div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on MoJ Design System" data-module="app-cookies">
     
     
 
@@ -43,7 +43,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         
-        <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on MOJ Design System</h2>
+        <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on MoJ Design System</h2>
         
 
         <div class="govuk-cookie-banner__content">
@@ -184,10 +184,10 @@
       <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
           
-          Installing MOJ Frontend with NPM
+          Installing MoJ Frontend with NPM
         </h1>
         <h2 id="requirements" tabindex="-1">Requirements</h2>
-<p>To use MOJ Frontend with NPM you must:</p>
+<p>To use MoJ Frontend with NPM you must:</p>
 <ol>
 <li>Install the long-term support (LTS) version of <a href="https://nodejs.org/en/">Node.js</a>, which includes NPM. The minimum version of Node required is 4.2.0.</li>
 </ol>
@@ -197,13 +197,13 @@
 <p>Create a <a href="https://docs.npmjs.com/files/package.json">package.json file</a> if you don’t already have one. You can create a default <code>package.json</code> file by running <code>npm init</code> from the root of your application.</p>
 </li>
 <li>
-<p>Install <a href="https://jquery.com/">jQuery</a>, which is required by the MOJ Frontend JavaScript</p>
+<p>Install <a href="https://jquery.com/">jQuery</a>, which is required by the MoJ Frontend JavaScript</p>
 </li>
 </ol>
 <pre><code>npm install jquery --save
 </code></pre>
 <ol>
-<li>If you want to use the MOJ Frontend Nunjucks macros, install Nunjucks - the minimum version required is 3.0.0.</li>
+<li>If you want to use the MoJ Frontend Nunjucks macros, install Nunjucks - the minimum version required is 3.0.0.</li>
 </ol>
 <pre><code>npm install nunjucks --save
 </code></pre>
@@ -211,9 +211,9 @@
 <p>To install, run:</p>
 <pre><code>npm install --save @ministryofjustice/frontend
 </code></pre>
-<p>After you have installed MOJ Frontend the <code>@ministryofjustice/frontend</code> package will appear in your <code>node_modules</code> folder.</p>
+<p>After you have installed MoJ Frontend the <code>@ministryofjustice/frontend</code> package will appear in your <code>node_modules</code> folder.</p>
 <h2 id="importing-styles" tabindex="-1">Importing styles</h2>
-<p>You need to import the MOJ Frontend styles into the main Sass file in your project. You should place the below code before your own Sass rules (or Sass imports) if you want to override MOJ Frontend with your own styles.</p>
+<p>You need to import the MoJ Frontend styles into the main Sass file in your project. You should place the below code before your own Sass rules (or Sass imports) if you want to override MoJ Frontend with your own styles.</p>
 <ol>
 <li>To import all components, add the below to your Sass file:</li>
 </ol>
@@ -238,11 +238,11 @@ your <a href="https://github.com/sass/node-sass#includepaths">Sass include paths
 </code></pre>
 <p>If you compile Sass to CSS in your project, your build tasks will already include something similar to the above task - in that case, you will just need
 to include add <code>includePaths</code> to it.</p>
-<p>After resolving the import paths you can import MOJ Frontend by using:</p>
+<p>After resolving the import paths you can import MoJ Frontend by using:</p>
 <pre><code class="language-CSS"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@ministryofjustice/frontend/moj/components/button/button&quot;</span>;
 </code></pre>
 <h2 id="importing-assets" tabindex="-1">Importing assets</h2>
-<p>In order to import MOJ Frontend images and fonts to your project, you should configure your application to reference or copy the relevant MOJ Frontend assets.</p>
+<p>In order to import MoJ Frontend images and fonts to your project, you should configure your application to reference or copy the relevant MoJ Frontend assets.</p>
 <p>Follow either <a href="#recommended-solution">Recommended solution</a> or <a href="#alternative-solution">Alternative solution</a>.</p>
 <h3 id="recommended-solution" tabindex="-1">Recommended solution</h3>
 <p>Make <code>/node_modules/@ministryofjustice/frontend/moj/assets</code> available to your project by routing requests for your assets folder there.</p>
@@ -250,7 +250,7 @@ to include add <code>includePaths</code> to it.</p>
 <pre><code class="language-JS">app.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;/assets&#x27;</span>, express.<span class="hljs-title function_">static</span>(path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">&#x27;/node_modules/@ministryofjustice/frontend/moj/assets&#x27;</span>)))
 </code></pre>
 <h3 id="alternative-solution" tabindex="-1">Alternative solution</h3>
-<p>Manually copy the images and fonts from <code>/node_modules/@ministryofjustice/frontend/moj/assets</code> into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the MOJ Frontend assets stay up-to-date.</p>
+<p>Manually copy the images and fonts from <code>/node_modules/@ministryofjustice/frontend/moj/assets</code> into a public facing directory in your project. Ideally copying the files to your project should be an automated task or part of your build pipeline to ensure that the MoJ Frontend assets stay up-to-date.</p>
 <p>The default paths used for assets are <code>assets/images</code> and <code>assets/fonts</code>. <strong>If your asset folders follow this structure, you will not need to complete the following steps.</strong></p>
 <p>To use different asset paths, set <code>$govuk-assets-path</code>, <code>$govuk-images-path</code> and <code>$govuk-fonts-path</code> in your project Sass file to point to the relevant directories in your project (this will override the defaults set in <code>/node_modules/@ministryofjustice/frontend/moj/settings/_assets.scss</code>). Make sure you do this in Sass before importing <code>@ministryofjustice/frontend</code> into your project - see <a href="#importing-styles">Importing styles</a>.</p>
 <p>Example 1:</p>
@@ -294,12 +294,12 @@ to include add <code>includePaths</code> to it.</p>
 
 <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
   <div class="govuk-notification-banner__content">
-  
+
     <p class="govuk-notification-banner__heading">
       Need help?
     </p>
       <p class="govuk-notification-banner__body">
-        The MOJ Design System Group provides support for users of the MOJ Design System. <a href="/community/help-and-feedback" class="govuk-link">Contact us</a> to ask for help.
+        The MoJ Design System Group provides support for users of the MoJ Design System. <a href="/community/help-and-feedback" class="govuk-link">Contact us</a> to ask for help.
       </p>
 
   </div>

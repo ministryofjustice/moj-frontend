@@ -12,12 +12,12 @@
     <link rel="apple-touch-icon" href="/assets/images/moj-apple-touch-icon-152x152.png" sizes="152x152">
     <link rel="apple-touch-icon" href="/assets/images/moj-apple-touch-icon.png">
 
-    <meta name="description" content="Design your service using MOJ styles, components and patterns">
+    <meta name="description" content="Design your service using MoJ styles, components and patterns">
     <meta property="og:image" content="/assets/images/moj-opengraph-image.png">
 
     <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
-    <title>Prototyping - MOJ Design System</title>
+    <title>Prototyping - MoJ Design System</title>
 
     <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
     <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
@@ -34,7 +34,7 @@
 
 
 
-<div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on MOJ Design System" data-module="app-cookies">
+<div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on MoJ Design System" data-module="app-cookies">
     
     
 
@@ -43,7 +43,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         
-        <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on MOJ Design System</h2>
+        <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on MoJ Design System</h2>
         
 
         <div class="govuk-cookie-banner__content">
@@ -186,19 +186,19 @@
           <span class="govuk-caption-xl">How we work</span>
           Prototyping
         </h1>
-        <p>This guide explains how to create prototypes using the MOJ Design System and GOV.UK Prototype Kit.</p>
+        <p>This guide explains how to create prototypes using the MoJ Design System and GOV.UK Prototype Kit.</p>
 <h2 id="use-a-template-from-cloud-platform" tabindex="-1">Use a template from Cloud Platform</h2>
-<p>You can follow the <a href="https://user-guide.cloud-platform.service.justice.gov.uk/documentation/getting-started/prototype-kit.html">MOJ Cloud Platform guide</a> to automatically set up a GitHub repository containing the GOV.UK Prototype Kit and a hosting environment.</p>
-<p>This template comes with the MOJ Design System pre-installed so you don't need to set it up manually. However you may need to update it using <a href="#updating-moj-frontend">the instructions below</a>.</p>
+<p>You can follow the <a href="https://user-guide.cloud-platform.service.justice.gov.uk/documentation/getting-started/prototype-kit.html">MoJ Cloud Platform guide</a> to automatically set up a GitHub repository containing the GOV.UK Prototype Kit and a hosting environment.</p>
+<p>This template comes with the MoJ Design System pre-installed so you don't need to set it up manually. However you may need to update it using <a href="#updating-moj-frontend">the instructions below</a>.</p>
 <h2 id="manual-installation" tabindex="-1">Manual installation</h2>
-<p>You can also install the GOV.UK Prototype Kit and MOJ Design System manually. You must follow the <a href="https://design-system.service.gov.uk/get-started/prototyping/">GOV.UK Design System prototype setup guide</a> first.</p>
-<p>You then need to install the NPM package for the MOJ Design System:</p>
+<p>You can also install the GOV.UK Prototype Kit and MoJ Design System manually. You must follow the <a href="https://design-system.service.gov.uk/get-started/prototyping/">GOV.UK Design System prototype setup guide</a> first.</p>
+<p>You then need to install the NPM package for the MoJ Design System:</p>
 <ol>
 <li>Open a command prompt application (e.g. Terminal on MacOS)</li>
 <li>Change the directory to your prototype's directory. For example, <code>cd path/to/prototype</code></li>
 <li>Run <code>npm install @ministryofjustice/frontend --save</code></li>
 </ol>
-<p>If you're using version 13 or later of the GOV.UK Prototype Kit, the components of the MOJ Design System will now be available to you.</p>
+<p>If you're using version 13 or later of the GOV.UK Prototype Kit, the components of the MoJ Design System will now be available to you.</p>
 <details class="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
@@ -206,21 +206,21 @@
     </span>
   </summary>
   <div class="govuk-details__text">
-<p>If you're using a version of the GOV.UK Prototype Kit before 13, you need to take additional steps to use the MOJ Design System in your prototype:</p>
+<p>If you're using a version of the GOV.UK Prototype Kit before 13, you need to take additional steps to use the MoJ Design System in your prototype:</p>
 <ol>
 <li>Open <code>app/assets/javascripts/application.js</code></li>
 <li>Add <code>window.MOJFrontend.initAll()</code> below the line that does the same for <code>GOVUKFrontend</code></li>
 </ol>
   </div>
 </details>
-<h2 id="updating-moj-frontend" tabindex="-1">Updating MOJ Frontend</h2>
-<p>The current version of MOJ Frontend is <strong>1.8.1</strong>.</p>
+<h2 id="updating-moj-frontend" tabindex="-1">Updating MoJ Frontend</h2>
+<p>The current version of MoJ Frontend is <strong>1.8.1</strong>.</p>
 <p>You can check which version your prototype is running by opening <code>package.json</code> in the root folder of your prototype. Look for <code>&quot;@ministryofjustice/frontend&quot;</code> under <code>&quot;dependencies&quot;</code>.</p>
-<p>To update your prototype to the latest version of MOJ Frontend:</p>
+<p>To update your prototype to the latest version of MoJ Frontend:</p>
 <ol>
 <li>Check that you're using the latest long-term support version of npm (for example by using <a href="https://github.com/nvm-sh/nvm">Node Version Manager</a>)</li>
 <li>Open <code>package.json</code> in the root folder of your prototype in a text editor</li>
-<li>Under <code>dependencies</code>, update the reference to MOJ Frontend to <code>&quot;@ministryofjustice/frontend&quot;: &quot;1.8.1&quot;,</code></li>
+<li>Under <code>dependencies</code>, update the reference to MoJ Frontend to <code>&quot;@ministryofjustice/frontend&quot;: &quot;1.8.1&quot;,</code></li>
 <li>Save <code>package.json</code></li>
 <li>Open a command prompt application (e.g. Terminal on MacOS)</li>
 <li>Change the directory to your prototype's directory. For example, <code>cd path/to/prototype</code></li>
@@ -236,12 +236,12 @@
 
 <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
   <div class="govuk-notification-banner__content">
-  
+
     <p class="govuk-notification-banner__heading">
       Need help?
     </p>
       <p class="govuk-notification-banner__body">
-        The MOJ Design System Group provides support for users of the MOJ Design System. <a href="/community/help-and-feedback" class="govuk-link">Contact us</a> to ask for help.
+        The MoJ Design System Group provides support for users of the MoJ Design System. <a href="/community/help-and-feedback" class="govuk-link">Contact us</a> to ask for help.
       </p>
 
   </div>
