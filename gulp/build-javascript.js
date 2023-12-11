@@ -40,10 +40,6 @@ gulp.task('build:javascript-with-jquery', () => {
         return 'MOJFrontend';
       }
     }))
-    .pipe(
-      uglify({
-        ie8: true,
-      })
-    )
+    .pipe(uglify())
     .pipe(gulp.dest('package/moj/'));
 });

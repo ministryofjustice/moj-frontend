@@ -19,11 +19,7 @@ gulp.task("dist:assets", () => {
 gulp.task("dist:javascript", () => {
   return gulp
     .src("package/moj/all.js")
-    .pipe(
-      uglify({
-        ie8: true,
-      })
-    )
+    .pipe(uglify())
     .pipe(rename("moj-frontend.min.js"))
     .pipe(gulp.dest("dist"));
 });

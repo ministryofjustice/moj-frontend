@@ -6,7 +6,6 @@ module.exports = {
   entry: {
     all: "./assets/all.js",
     application: "./assets/sass/application.scss",
-    "application-ie8": "./assets/sass/application-ie8.scss",
   },
   mode: "production",
   devtool: "source-map",

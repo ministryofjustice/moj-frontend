@@ -32,8 +32,7 @@ Once installed, you will be able to use the code from the examples in the [MOJ P
 
 MOJ Frontend will allow you to build services that comply with the [guidance in the Service Manual][service-manual-browsers].
 
-If you are including MOJ Frontend as part of a stylesheet that you are generating in your application's build pipeline, you will need to [generate and
-include a separate stylesheet in order to support Internet Explorer 8](docs/installation/supporting-internet-explorer-8.md).
+MOJ Frontend no longer supports Internet Explorer 8. If you need IE8 support, then [you must use an old version or provide your own support](docs/installation/supporting-internet-explorer-8.md).
 
 [service-manual-browsers]: https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices#browsers-to-test-in
 

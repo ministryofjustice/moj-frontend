@@ -2,10 +2,6 @@
   // Limit the width of the container to the page width
   max-width: $width;
 
-  @include govuk-if-ie8 {
-    width: $width;
-  }
-
   // On mobile, add half width gutters
   margin: 0 $moj-gutter-half;
 
