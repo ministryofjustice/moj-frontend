@@ -3,7 +3,7 @@ layout: layouts/community.njk
 title: Suggest a change
 ---
 
-To help improve the MOJ Design System, you can suggest changes to components and patterns.
+To help improve the MoJ Design System, you can suggest changes to components and patterns.
 
 Useful suggestions may look like:
 
@@ -12,7 +12,7 @@ Useful suggestions may look like:
 
 ## Tell us your suggestion
 
-Tell us about the change you're proposing by using the [suggest a change form](https://forms.gle/FpDpbgttwmfmcz8o7). The MOJ Design System Group will be notified of your suggestion and will review it.
+Tell us about the change you're proposing by using the [suggest a change form](https://forms.gle/FpDpbgttwmfmcz8o7). The MoJ Design System Group will be notified of your suggestion and will review it.
 
 Once reviewed, the group will either:
 

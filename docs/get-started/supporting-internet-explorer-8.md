@@ -3,11 +3,11 @@ layout: layouts/get-started.njk
 title: Supporting Internet Explorer 8
 ---
 
-If you are including MOJ Frontend as part of your application's stylesheets then you'll need to do some additional work to support Internet Explorer 8 (IE8).
+If you are including MoJ Frontend as part of your application's stylesheets then you'll need to do some additional work to support Internet Explorer 8 (IE8).
 
 The first thing you need to do is follow [GOV.UK Frontend's setup instructions](https://frontend.design-system.service.gov.uk/supporting-ie8/) for supporting Internet Explorer 8.
 
-When [generating your IE8-specific stylesheet](https://frontend.design-system.service.gov.uk/supporting-ie8/#2-generate-an-ie8-specific-stylesheet), your `application.scss` will also include the MOJ Frontend import:
+When [generating your IE8-specific stylesheet](https://frontend.design-system.service.gov.uk/supporting-ie8/#2-generate-an-ie8-specific-stylesheet), your `application.scss` will also include the MoJ Frontend import:
 
 ```scss
 // application.scss

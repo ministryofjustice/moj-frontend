@@ -3,7 +3,7 @@ layout: layouts/component.njk
 title: Archived components
 ---
 
-MOJ components are archived when similar components are published in the GOV.UK Design System, or when it is no longer practical to support them.
+MoJ components are archived when similar components are published in the GOV.UK Design System, or when it is no longer practical to support them.
 
 ### Contents
 

@@ -3,7 +3,7 @@ layout: layouts/patterns.njk
 title: Patterns
 ---
 
-Patterns in this section have been created by designers and developers at MOJ.
+Patterns in this section have been created by designers and developers at MoJ.
 
 
 

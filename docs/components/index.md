@@ -4,7 +4,7 @@ isIndex: true
 title: Components
 ---
 
-Components in this section have been created by designers and developers at MOJ.
+Components in this section have been created by designers and developers at MoJ.
 
 To use these components you can either:
 
@@ -13,4 +13,4 @@ To use these components you can either:
 
 To contribute your research findings, designs or code, share it on the <a href="https://mojdt.slack.com/archives/CH5RUSB27" class="govuk-link">#moj-pattern-library-support</a> channel on Slack.</p>
 
-If a similar component is in the [GOV.UK Design System](https://design-system.service.gov.uk/components/), you should use that component instead. The MOJ component will be [archived](archived-components).
+If a similar component is in the [GOV.UK Design System](https://design-system.service.gov.uk/components/), you should use that component instead. The MoJ component will be [archived](archived-components).
