@@ -16,24 +16,12 @@
         sections: [
           {
             heading: {
-              text: "Patterns"
+              text: "Pages"
             },
             items: [
               {
-                text: 'Add to a list',
-                href: ('/patterns/add-to-a-list' | url)
-              },
-              {
-                text: 'Filter a list',
-                href: ('/patterns/filter-a-list' | url)
-              },
-              {
-                text: 'Get help',
-                href: ('/patterns/get-help' | url)
-              },
-              {
-                text: 'Upload files',
-                href: ('/patterns/upload-files' | url)
+                text: 'Case list page',
+                href: ('/pages/case-list' | url)
               }
             ]
           }
@@ -46,8 +34,8 @@
       {{ appSideNavigation({
         items: [
           {
-            text: 'Archived patterns',
-            href: ('/patterns/archived-patterns' | url)
+            text: 'Archived pages',
+            href: ('/pages/archived-pages' | url)
           }
         ]
       }) }}
@@ -59,7 +47,7 @@
     <div class="govuk-grid-column-two-thirds">
       <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
-          {% if not isIndex %}<span class="govuk-caption-xl">Patterns</span>{% endif %}
+          {% if not isIndex %}<span class="govuk-caption-xl">Pages</span>{% endif %}
           {{ title }}
         </h1>
         {{ content | safe }}

@@ -1,11 +1,11 @@
 ---
-layout: layouts/patterns.njk
+layout: layouts/pages.njk
 title: Question pages
 ---
 
-{% banner "This pattern is archived" %}
+{% banner "This page is archived" %}
 
-This pattern has been archived as documentation on [question pages](https://design-system.service.gov.uk/patterns/question-pages/) is published in the GOV.UK Design System. Further information about [structuring forms](https://www.gov.uk/service-manual/design/form-structure) is also published in the GOV.UK Service Manual.
+This page has been archived as documentation on [question pages](https://design-system.service.gov.uk/patterns/question-pages/) is published in the GOV.UK Design System. Further information about [structuring forms](https://www.gov.uk/service-manual/design/form-structure) is also published in the GOV.UK Service Manual.
 {% endbanner %}
 
 ## Asking multiple questions per page

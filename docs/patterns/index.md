@@ -1,12 +1,20 @@
 ---
 layout: layouts/patterns.njk
+isIndex: true
 title: Patterns
 ---
 
-Patterns in this section have been created by designers and developers at MoJ.
+<span class="govuk-caption-xl">Help users complete common tasks like uploading files, filtering lists, and getting help.</span>
 
+Patterns are best practice design solutions for specific user-focused tasks and needs. They include examples of successful approaches but are flexible and don't prescribe exact design solutions.
 
+To use these patterns you can either:
 
-To contribute your research findings, designs or code, share it on the <a href="https://mojdt.slack.com/archives/CH5RUSB27" class="govuk-link">#moj-pattern-library-support</a> channel on Slack.</p>
+- copy the HTML code
+- copy the Nunjucks code (if you are using [Nunjucks](https://mozilla.github.io/nunjucks/) or the [GOV.UK Prototype Kit](https://govuk-prototype-kit.herokuapp.com/docs))
 
-If a similar pattern is in the [GOV.UK Design System](https://design-system.service.gov.uk/patterns/), you should use that pattern instead.
+<!-- include this bullet point when Figma UI Kit is completed
+
+- use the MoJ Figma UI Kit
+
+-->
