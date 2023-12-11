@@ -43,10 +43,6 @@
             },
             items: [
               {
-                text: 'Question pages',
-                href: ('/patterns/question-pages' | url)
-              },
-              {
                 text: 'Task list pages',
                 href: ('/patterns/task-list' | url)
               },
@@ -59,13 +55,26 @@
         ]
       }) }}
 
+
+      <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+      {{ appSideNavigation({
+        items: [
+          {
+            text: 'Archived patterns',
+            href: ('/patterns/archived-patterns' | url)
+          }
+        ]
+      }) }}
+
+
       {% include "./partials/back-to-top.njk" %}
     </div>
 
     <div class="govuk-grid-column-two-thirds">
       <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
-          {% if subsection %}<span class="govuk-caption-xl">{{ subsection }}</span>{% endif %}
+          {% if not isIndex %}<span class="govuk-caption-xl">Patterns</span>{% endif %}
           {{ title }}
         </h1>
         {{ content | safe }}
