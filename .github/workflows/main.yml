@@ -38,7 +38,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: mojds-package
         path: package
@@ -62,11 +62,11 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: mojds-package
         path: package
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: mojds-dist
         path: dist
