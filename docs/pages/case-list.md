@@ -1,5 +1,5 @@
 ---
-layout: layouts/patterns.njk
+layout: layouts/pages.njk
 title: Case list pages
 ---
 
@@ -9,7 +9,7 @@ title: Case list pages
 
 ## When to use
 
-Use the case list pattern to make pieces of information about a case easier to scan, prioritise and action for users.
+Use the case list page to make pieces of information about a case easier to scan, prioritise and action for users.
 
 ## How to use
 
@@ -34,7 +34,7 @@ Use the format first-name, last-name unless user research tells you to use a dif
     <img alt="Example of a row of a case list, showing the name of the detainee as a link in the first column." src="../../assets/images/case-list-02.png" width="100%">
 </div>
 
-You should display the [link](https://design-system.service.gov.uk/styles/typography/#links) in the first column, and use meaningful content such as the case number or name. Avoid using words like ‘View’. 
+You should display the [link](https://design-system.service.gov.uk/styles/typography/#links) in the first column, and use meaningful content such as the case number or name. Avoid using words like ‘View’.
 
 You should limit actions from the case list and allow users to perform more actions once they’re viewing details of a case.
 
@@ -73,15 +73,15 @@ Use the [search](https://design-patterns.service.justice.gov.uk/components/searc
 
 ## Research
 
-This pattern:
+This page:
 
 - has been usability tested
 
-## Contribute 
+## Contribute
 
 [Discuss case list pages on GitHub](https://github.com/ministryofjustice/moj-frontend/discussions/242)
 
-### Things we don't know enough about 
+### Things we don't know enough about
 
 * **Pagination** - there’s only one page but the user will still need to know the number of cases on that page, for example, ‘Showing 1 to 25 of 25 cases’.
 * **Link on the first column** -  the need for the bold font weight instead of regular.
