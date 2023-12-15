@@ -17,7 +17,7 @@
 
     <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
-    <title>Case list pages - MoJ Design System</title>
+    <title>Archived pages - MoJ Design System</title>
 
     <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
     <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
@@ -119,7 +119,11 @@
             </li>
           
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="/patterns">Patterns</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="/pages">Pages</a>
+            </li>
+          
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link"  href="/patterns">Patterns</a>
             </li>
           
             <li class="moj-primary-navigation__item">
@@ -142,33 +146,10 @@
   
 
   <nav class="moj-side-navigation govuk-!-padding-top-6" >
-      <h4 class="moj-side-navigation__title">Help users to...</h4>
-      <ul class="moj-side-navigation__list">
-          <li class="moj-side-navigation__item">
-            <a href="/patterns/upload-files">Upload files</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/patterns/add-to-a-list">Add to a list</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/patterns/filter-a-list">Filter a list</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/patterns/get-help">Get help</a>
-          </li>
-        </ul>
-    
       <h4 class="moj-side-navigation__title">Pages</h4>
       <ul class="moj-side-navigation__list">
           <li class="moj-side-navigation__item">
-            <a href="/patterns/task-list">Task list pages</a>
-          </li>
-        
-          <li class="moj-side-navigation__item moj-side-navigation__item--active">
-            <a href="/patterns/case-list" aria-current="location">Case list pages</a>
+            <a href="/pages/case-list">Case list page</a>
           </li>
         </ul>
     </nav>
@@ -182,8 +163,8 @@
 
   <nav class="moj-side-navigation" >
     <ul class="moj-side-navigation__list">
-        <li class="moj-side-navigation__item">
-          <a href="/patterns/archived-patterns">Archived patterns</a>
+        <li class="moj-side-navigation__item moj-side-navigation__item--active">
+          <a href="/pages/archived-pages" aria-current="location">Archived pages</a>
         </li>
       </ul>
   </nav>
@@ -203,61 +184,21 @@
     <div class="govuk-grid-column-two-thirds">
       <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
-          <span class="govuk-caption-xl">Patterns</span>
-          Case list pages
+          <span class="govuk-caption-xl">Pages</span>
+          Archived pages
         </h1>
-        <div class="govuk-form-group">
-    <img alt="Example of a case list, showing a table with rows of cases including the name of the detainee and a status of whether they have been assigned." src="../../assets/images/case-list-01.png" width="100%">
-</div>
-<h2 id="when-to-use" tabindex="-1">When to use</h2>
-<p>Use the case list pattern to make pieces of information about a case easier to scan, prioritise and action for users.</p>
-<h2 id="how-to-use" tabindex="-1">How to use</h2>
-<p>First understand what pieces of information are needed to prioritise and action cases. You should avoid using too many columns, and only provide users with information they really need. Use clear labels for column headings that describe the content.</p>
-<h3 id="order-of-information" tabindex="-1">Order of information</h3>
-<p>Think about the order of your columns so that you display the information in a way that makes sense to the user.</p>
-<p>User research will tell you the best default order for cases, such as by most recently updated, case number, or full name. If you want to let users reorder cases, use the  <a href="https://design-patterns.service.justice.gov.uk/components/sortable-table/">Sortable table</a> component.</p>
-<p>You may want to use <a href="https://design-system.service.gov.uk/components/tabs/">Tabs</a> to let users navigate between different groups of cases, such as ‘Recently allocated’ and ‘Caseload’.</p>
-<h3 id="if-you%E2%80%99re-displaying-names" tabindex="-1">If you’re displaying names</h3>
-<p>Use the format first-name, last-name unless user research tells you to use a different format. Further guidance is available on how to <a href="https://design-system.service.gov.uk/patterns/names/">ask users for names.</a></p>
-<h3 id="if-you-want-add-a-link-to-let-users-view-details-of-a-case" tabindex="-1">If you want add a link to let users view details of a case</h3>
-<div class="govuk-form-group">
-    <img alt="Example of a row of a case list, showing the name of the detainee as a link in the first column." src="../../assets/images/case-list-02.png" width="100%">
-</div>
-<p>You should display the <a href="https://design-system.service.gov.uk/styles/typography/#links">link</a> in the first column, and use meaningful content such as the case number or name. Avoid using words like ‘View’.</p>
-<p>You should limit actions from the case list and allow users to perform more actions once they’re viewing details of a case.</p>
-<h3 id="if-you%E2%80%99re-displaying-date-and-times" tabindex="-1">If you’re displaying date and times</h3>
-<p>Write out dates in full to help users read it easily, such as 16 June at 8:06am. When space is an issue you can use truncated months, such as Jan, Feb.</p>
-<p>You can display date and time in separate columns to let users sort and filter them separately. Further guidance is available on <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#dates">dates.</a></p>
-<h3 id="if-you-want-to-let-users-select-multiple-cases-to-perform-an-action-on-them" tabindex="-1">If you want to let users select multiple cases to perform an action on them</h3>
-<div class="govuk-form-group">
-    <img alt="Example of a case list, showing checkboxes in the first column of each row allowing the user to select multiple cases to perform an action on them." src="../../assets/images/case-list-03.png" width="100%">
-</div>
-<p>Use <a href="https://design-patterns.service.justice.gov.uk/components/multi-select/">multi select.</a></p>
-<h3 id="if-you-want-to-display-a-status" tabindex="-1">If you want to display a status</h3>
-<div class="govuk-form-group">
-    <img alt="Example of a row of a case list, showing an example of a status of assigned in the last column." src="../../assets/images/case-list-04.png" width="100%">
-</div>
-<p>Use a <a href="https://design-system.service.gov.uk/components/tag/">tag.</a>
-Put this at the end of a row.</p>
-<h3 id="if-you-want-to-let-users-filter-the-list" tabindex="-1">If you want to let users filter the list</h3>
-<p>Use the <a href="http://localhost:8080/components/filter/">filter</a> component with the <a href="http://localhost:8080/patterns/filter-a-list/">filter a list</a> pattern.</p>
-<h3 id="if-you-want-to-let-users-search-for-a-case" tabindex="-1">If you want to let users search for a case</h3>
-<p>Use the <a href="https://design-patterns.service.justice.gov.uk/components/search/">search</a> component. Place this before the <a href="https://design-patterns.service.justice.gov.uk/components/sortable-table/">sortable table</a> component.</p>
-<h2 id="research" tabindex="-1">Research</h2>
-<p>This pattern:</p>
+        <p>MoJ pages are archived when similar pages are published in the GOV.UK Design System, or when it is no longer practical to support them.</p>
+<h3 id="contents" tabindex="-1">Contents</h3>
 <ul>
-<li>has been usability tested</li>
+<li><a href="#question-pages">Question pages</a></li>
+<li><a href="#task-list-page">Task list page</a></li>
 </ul>
-<h2 id="contribute" tabindex="-1">Contribute</h2>
-<p><a href="https://github.com/ministryofjustice/moj-frontend/discussions/242">Discuss case list pages on GitHub</a></p>
-<h3 id="things-we-don't-know-enough-about" tabindex="-1">Things we don't know enough about</h3>
-<ul>
-<li><strong>Pagination</strong> - there’s only one page but the user will still need to know the number of cases on that page, for example, ‘Showing 1 to 25 of 25 cases’.</li>
-<li><strong>Link on the first column</strong> -  the need for the bold font weight instead of regular.</li>
-<li><a href="https://design-patterns.service.justice.gov.uk/components/badge/"><strong>Badge</strong></a> - to indicate an update notification or a change made on a specific row on the table.</li>
-<li><a href="https://design-patterns.service.justice.gov.uk/components/notification-badge/"><strong>Notification badge</strong></a> - this hasn’t been tested but has been mentioned to use this when highlighting updates of a specific case.</li>
-<li><strong>Customise length of the list</strong> - View x number of cases on a page.</li>
-</ul>
+<h2 id="question-pages" tabindex="-1">Question pages</h2>
+<p><a href="../question-pages">Question pages</a> was archived on 11 December 2023.</p>
+<p>This page has been archived as documentation on <a href="https://design-system.service.gov.uk/patterns/question-pages/">question pages</a> is published in the GOV.UK Design System. Further information about <a href="https://www.gov.uk/service-manual/design/form-structure">structuring forms</a> is also published in the GOV.UK Service Manual.</p>
+<h2 id="task-list-page" tabindex="-1">Task list page</h2>
+<p>The <a href="../task-list">task list page</a> was archived on 11 December 2023.</p>
+<p>This page has been archived as a <a href="https://design-system.service.gov.uk/components/task-list/">task list</a> component has been included in the release of GOV.UK Frontend v5.0.0.</p>
 
       </main>
 

@@ -17,7 +17,7 @@
 
     <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
-    <title>Page header actions - MoJ Design System</title>
+    <title>Case list pages - MoJ Design System</title>
 
     <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
     <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
@@ -115,11 +115,11 @@
             </li>
           
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="/components">Components</a>
+              <a class="moj-primary-navigation__link"  href="/components">Components</a>
             </li>
           
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link"  href="/pages">Pages</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="/pages">Pages</a>
             </li>
           
             <li class="moj-primary-navigation__item">
@@ -146,101 +146,14 @@
   
 
   <nav class="moj-side-navigation govuk-!-padding-top-6" >
-      <h4 class="moj-side-navigation__title">Components</h4>
+      <h4 class="moj-side-navigation__title">Pages</h4>
       <ul class="moj-side-navigation__list">
-          <li class="moj-side-navigation__item">
-            <a href="/components/add-another">Add another</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/badge">Badge</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/banner">Banner</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/button-menu">Button menu</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/filter">Filter</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/header">Header</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/identity-bar">Identity bar</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/messages">Messages</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/multi-file-upload">Multi file upload</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/multi-select">Multi select</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/notification-badge">Notification badge</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/organisation-switcher">Organisation switcher</a>
-          </li>
-        
           <li class="moj-side-navigation__item moj-side-navigation__item--active">
-            <a href="/components/page-header-actions" aria-current="location">Page header actions</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/pagination">Pagination</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/password-reveal">Password reveal</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/primary-navigation">Primary navigation</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/scrollable-pane">Scrollable pane</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/search">Search</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/side-navigation">Side navigation</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/sortable-table">Sortable table</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/sub-navigation">Sub navigation</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/ticket-panel">Ticket panel</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/components/timeline">Timeline</a>
+            <a href="/pages/case-list" aria-current="location">Case list page</a>
           </li>
         </ul>
     </nav>
+
 
 
       <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
@@ -251,10 +164,11 @@
   <nav class="moj-side-navigation" >
     <ul class="moj-side-navigation__list">
         <li class="moj-side-navigation__item">
-          <a href="/components/archived-components">Archived components</a>
+          <a href="/pages/archived-pages">Archived pages</a>
         </li>
       </ul>
   </nav>
+
 
 
       <div class="app-back-to-top" data-module="app-back-to-top">
@@ -270,86 +184,65 @@
     <div class="govuk-grid-column-two-thirds">
       <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
-          <span class="govuk-caption-xl">Components</span>
-          Page header actions
+          <span class="govuk-caption-xl">Pages</span>
+          Case list pages
         </h1>
-        <p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/bc848ffdd0813814b806f4e223430badea7186ea">11 October 2022</a></p>
-<div class="app-example">
-  <span class="app-example__new-window">
-    <a href="/examples/page-header-actions" target="_blank">Open this example <span class="govuk-visually-hidden">(Page header actions (example))</span> in a new window</a>
-  </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="150" src="/examples/page-header-actions" title="Page header actions (example)"></iframe>
-</div>
-<div class="app-tabs" data-module="app-tabs">
-  <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-page-header-actions" role="tab" id="tab_html-default--examples-page-header-actions" aria-controls="html-default--examples-page-header-actions">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-page-header-actions" role="tab" id="tab_nunjucks-default--examples-page-header-actions" aria-controls="nunjucks-default--examples-page-header-actions">Nunjucks</a></li>
-  </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-page-header-actions" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-page-header-actions">
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-page-header-actions&quot;</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-page-header-actions__title&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-heading-xl&quot;</span>&gt;</span>Documents<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-page-header-actions__actions&quot;</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-button-menu&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-button-menu__wrapper&quot;</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-button moj-button-menu__item govuk-button--secondary moj-page-header-actions__action&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;govuk-button&quot;</span>&gt;</span>
-          Upload new
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-button moj-button-menu__item govuk-button--secondary moj-page-header-actions__action&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;govuk-button&quot;</span>&gt;</span>
-          Share collection
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-</code></pre>
-  </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-page-header-actions" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-page-header-actions">
-  <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="language-xml">
-</span><span class="hljs-template-tag">{% <span class="hljs-name">from</span> &quot;moj/components/page-header-actions/macro.njk&quot; import mojPageHeaderActions %}</span><span class="language-xml">
-
-</span><span class="hljs-template-variable">{{ mojPageHeaderActions({
-  heading: {
-    text: &#x27;Documents&#x27;
-  },
-  items: [{
-    text: &#x27;Upload new&#x27;,
-    classes: &#x27;govuk-button--secondary&#x27;
-  }, {
-    text: &#x27;Share collection&#x27;,
-    classes: &#x27;govuk-button--secondary&#x27;
-  }]
-}) }}</span><span class="language-xml">
-</span></code></pre>
-  </div>
-  </div>
+        <div class="govuk-form-group">
+    <img alt="Example of a case list, showing a table with rows of cases including the name of the detainee and a status of whether they have been assigned." src="../../assets/images/case-list-01.png" width="100%">
 </div>
 <h2 id="when-to-use" tabindex="-1">When to use</h2>
-<p>Use the page header actions component for certain actions.</p>
-<p>Use this when:</p>
-<ul>
-<li>the content of the page is so long that users have to scroll past it to see actions. For example, having a “Create case” button underneath a long list of cases.</li>
-<li>the action is applied to the page item and not one specific part of the content. For example, in a user profile page, it could make sense to put the “Suspend user” action in the header.</li>
-</ul>
-<h2 id="when-not-to-use" tabindex="-1">When not to use</h2>
-<p>Don’t place buttons next to the header when they are specific to a component within the page.</p>
+<p>Use the case list page to make pieces of information about a case easier to scan, prioritise and action for users.</p>
 <h2 id="how-to-use" tabindex="-1">How to use</h2>
-<p>The component ensures the buttons are aligned right in line with the heading. On small screens the buttons tuck underneath the heading.</p>
+<p>First understand what pieces of information are needed to prioritise and action cases. You should avoid using too many columns, and only provide users with information they really need. Use clear labels for column headings that describe the content.</p>
+<h3 id="order-of-information" tabindex="-1">Order of information</h3>
+<p>Think about the order of your columns so that you display the information in a way that makes sense to the user.</p>
+<p>User research will tell you the best default order for cases, such as by most recently updated, case number, or full name. If you want to let users reorder cases, use the  <a href="https://design-patterns.service.justice.gov.uk/components/sortable-table/">Sortable table</a> component.</p>
+<p>You may want to use <a href="https://design-system.service.gov.uk/components/tabs/">Tabs</a> to let users navigate between different groups of cases, such as ‘Recently allocated’ and ‘Caseload’.</p>
+<h3 id="if-you%E2%80%99re-displaying-names" tabindex="-1">If you’re displaying names</h3>
+<p>Use the format first-name, last-name unless user research tells you to use a different format. Further guidance is available on how to <a href="https://design-system.service.gov.uk/patterns/names/">ask users for names.</a></p>
+<h3 id="if-you-want-add-a-link-to-let-users-view-details-of-a-case" tabindex="-1">If you want add a link to let users view details of a case</h3>
+<div class="govuk-form-group">
+    <img alt="Example of a row of a case list, showing the name of the detainee as a link in the first column." src="../../assets/images/case-list-02.png" width="100%">
+</div>
+<p>You should display the <a href="https://design-system.service.gov.uk/styles/typography/#links">link</a> in the first column, and use meaningful content such as the case number or name. Avoid using words like ‘View’.</p>
+<p>You should limit actions from the case list and allow users to perform more actions once they’re viewing details of a case.</p>
+<h3 id="if-you%E2%80%99re-displaying-date-and-times" tabindex="-1">If you’re displaying date and times</h3>
+<p>Write out dates in full to help users read it easily, such as 16 June at 8:06am. When space is an issue you can use truncated months, such as Jan, Feb.</p>
+<p>You can display date and time in separate columns to let users sort and filter them separately. Further guidance is available on <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#dates">dates.</a></p>
+<h3 id="if-you-want-to-let-users-select-multiple-cases-to-perform-an-action-on-them" tabindex="-1">If you want to let users select multiple cases to perform an action on them</h3>
+<div class="govuk-form-group">
+    <img alt="Example of a case list, showing checkboxes in the first column of each row allowing the user to select multiple cases to perform an action on them." src="../../assets/images/case-list-03.png" width="100%">
+</div>
+<p>Use <a href="https://design-patterns.service.justice.gov.uk/components/multi-select/">multi select.</a></p>
+<h3 id="if-you-want-to-display-a-status" tabindex="-1">If you want to display a status</h3>
+<div class="govuk-form-group">
+    <img alt="Example of a row of a case list, showing an example of a status of assigned in the last column." src="../../assets/images/case-list-04.png" width="100%">
+</div>
+<p>Use a <a href="https://design-system.service.gov.uk/components/tag/">tag.</a>
+Put this at the end of a row.</p>
+<h3 id="if-you-want-to-let-users-filter-the-list" tabindex="-1">If you want to let users filter the list</h3>
+<p>Use the <a href="http://localhost:8080/components/filter/">filter</a> component with the <a href="http://localhost:8080/patterns/filter-a-list/">filter a list</a> pattern.</p>
+<h3 id="if-you-want-to-let-users-search-for-a-case" tabindex="-1">If you want to let users search for a case</h3>
+<p>Use the <a href="https://design-patterns.service.justice.gov.uk/components/search/">search</a> component. Place this before the <a href="https://design-patterns.service.justice.gov.uk/components/sortable-table/">sortable table</a> component.</p>
+<h2 id="research" tabindex="-1">Research</h2>
+<p>This page:</p>
+<ul>
+<li>has been usability tested</li>
+</ul>
+<h2 id="contribute" tabindex="-1">Contribute</h2>
+<p><a href="https://github.com/ministryofjustice/moj-frontend/discussions/242">Discuss case list pages on GitHub</a></p>
+<h3 id="things-we-don't-know-enough-about" tabindex="-1">Things we don't know enough about</h3>
+<ul>
+<li><strong>Pagination</strong> - there’s only one page but the user will still need to know the number of cases on that page, for example, ‘Showing 1 to 25 of 25 cases’.</li>
+<li><strong>Link on the first column</strong> -  the need for the bold font weight instead of regular.</li>
+<li><a href="https://design-patterns.service.justice.gov.uk/components/badge/"><strong>Badge</strong></a> - to indicate an update notification or a change made on a specific row on the table.</li>
+<li><a href="https://design-patterns.service.justice.gov.uk/components/notification-badge/"><strong>Notification badge</strong></a> - this hasn’t been tested but has been mentioned to use this when highlighting updates of a specific case.</li>
+<li><strong>Customise length of the list</strong> - View x number of cases on a page.</li>
+</ul>
 
       </main>
 
-      
+        
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
 <div class="govuk-!-padding-bottom-3"></div>
@@ -379,6 +272,7 @@
 </div>
 
 <div class="govuk-!-padding-bottom-7"></div>
+
 
     </div>
   </div>
@@ -462,5 +356,11 @@
       MOJFrontend.initAll();
     </script>
     
+  <script>
+    $('[data-module="app-tabs"]').each(function(e, el) {
+      new Tabs($(el));
+    });
+  </script>
+
   </body>
 </html>

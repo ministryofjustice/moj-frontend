@@ -17,7 +17,7 @@
 
     <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
     <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
-    <title>Task list pages - MoJ Design System</title>
+    <title>Pages - MoJ Design System</title>
 
     <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
     <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
@@ -119,7 +119,11 @@
             </li>
           
             <li class="moj-primary-navigation__item">
-              <a class="moj-primary-navigation__link" aria-current="page" href="/patterns">Patterns</a>
+              <a class="moj-primary-navigation__link" aria-current="page" href="/pages">Pages</a>
+            </li>
+          
+            <li class="moj-primary-navigation__item">
+              <a class="moj-primary-navigation__link"  href="/patterns">Patterns</a>
             </li>
           
             <li class="moj-primary-navigation__item">
@@ -142,33 +146,10 @@
   
 
   <nav class="moj-side-navigation govuk-!-padding-top-6" >
-      <h4 class="moj-side-navigation__title">Help users to...</h4>
-      <ul class="moj-side-navigation__list">
-          <li class="moj-side-navigation__item">
-            <a href="/patterns/upload-files">Upload files</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/patterns/add-to-a-list">Add to a list</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/patterns/filter-a-list">Filter a list</a>
-          </li>
-        
-          <li class="moj-side-navigation__item">
-            <a href="/patterns/get-help">Get help</a>
-          </li>
-        </ul>
-    
       <h4 class="moj-side-navigation__title">Pages</h4>
       <ul class="moj-side-navigation__list">
-          <li class="moj-side-navigation__item moj-side-navigation__item--active">
-            <a href="/patterns/task-list" aria-current="location">Task list pages</a>
-          </li>
-        
           <li class="moj-side-navigation__item">
-            <a href="/patterns/case-list">Case list pages</a>
+            <a href="/pages/case-list">Case list page</a>
           </li>
         </ul>
     </nav>
@@ -183,7 +164,7 @@
   <nav class="moj-side-navigation" >
     <ul class="moj-side-navigation__list">
         <li class="moj-side-navigation__item">
-          <a href="/patterns/archived-patterns">Archived patterns</a>
+          <a href="/pages/archived-pages">Archived pages</a>
         </li>
       </ul>
   </nav>
@@ -203,380 +184,21 @@
     <div class="govuk-grid-column-two-thirds">
       <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
-          <span class="govuk-caption-xl">Patterns</span>
-          Task list pages
+          
+          Pages
         </h1>
-        <p><div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-<div class="govuk-notification-banner__header">
-<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-Important
-</h2>
-</div>
-<div class="govuk-notification-banner__content">
-<h3 class="govuk-notification-banner__heading">
-This pattern is in the GOV.UK Design System
-</h3></p>
-<p><a href="https://design-system.service.gov.uk/patterns/task-list-pages/">Task list pages</a> is published in the GOV.UK Design System.</p>
-</div>
-      </div>
-<p>A coded example of a task list is below, which is not yet in the GOV.UK Design System. There is also a <a href="https://govuk-prototype-kit.herokuapp.com/docs/templates/task-list">coded example of a task list page</a> in the GOV.UK Prototype Kit.</p>
-<div class="app-example">
-  <span class="app-example__new-window">
-    <a href="/examples/task-list" target="_blank">Open this example <span class="govuk-visually-hidden">(Task list (example))</span> in a new window</a>
-  </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="600" src="/examples/task-list" title="Task list (example)"></iframe>
-</div>
-<div class="app-tabs" data-module="app-tabs">
-  <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-task-list" role="tab" id="tab_html-default--examples-task-list" aria-controls="html-default--examples-task-list">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-task-list" role="tab" id="tab_nunjucks-default--examples-task-list" aria-controls="nunjucks-default--examples-task-list">Nunjucks</a></li>
-  </ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-task-list" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-task-list">
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__section&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__section-number&quot;</span>&gt;</span>1. <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>Client details
-    <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__items&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__task-name&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Personal details<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">strong</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-tag moj-task-list__task-completed&quot;</span>&gt;</span>
-  completed
-<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+        <p><span class="govuk-caption-xl">Use pages to create consistent user experiences across MoJ products and services.</span></p>
+<p>Pages are a combination of styles and components that are repeatable across user interfaces and services.</p>
+<p>To use these pages you can either:</p>
+<ul>
+<li>copy the HTML code</li>
+<li>copy the Nunjucks code (if you are using <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> or the <a href="https://govuk-prototype-kit.herokuapp.com/docs">GOV.UK Prototype Kit</a>)</li>
+</ul>
+<!-- include this bullet point when Figma UI Kit is completed
 
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+- use the MoJ Figma UI Kit
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__task-name&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>What you are covered for<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">strong</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-tag moj-task-list__task-completed&quot;</span>&gt;</span>
-  completed
-<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__section&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__section-number&quot;</span>&gt;</span>2. <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>Means assessment
-    <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__items&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__task-name&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Bank account details<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__task-name&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Income<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__task-name&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Regular payments<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__task-name&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Property<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__task-name&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Savings and investments<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__task-name&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Items of value<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__task-name&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Restrictions<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__section&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__section-number&quot;</span>&gt;</span>3. <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>Merrits assessment
-    <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__items&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__task-name&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Incident details<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">strong</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-tag moj-task-list__task-completed&quot;</span>&gt;</span>
-  completed
-<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__task-name&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Respondent details<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">strong</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-tag moj-task-list__task-completed&quot;</span>&gt;</span>
-  completed
-<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__task-name&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Case details<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">strong</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-tag moj-task-list__task-completed&quot;</span>&gt;</span>
-  completed
-<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__section&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__section-number&quot;</span>&gt;</span>4. <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>Apply
-    <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__items&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__item&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-task-list__task-name&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Submit application<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
-
-</code></pre>
-  </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-task-list" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-task-list">
-  <details class="govuk-details govuk-!-padding-3" data-module="govuk-details">
-    <summary class="govuk-details__summary">
-      <span class="govuk-details__summary-text">
-        Nunjucks macro options
-      </span>
-    </summary>
-    <div class="govuk-details__text">
-<h3 id="container" tabindex="-1">Container</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sections</td>
-<td>array</td>
-<td>No</td>
-<td>An array of section objects containing task list items. See <a href="#sections">sections</a>.</td>
-</tr>
-<tr>
-<td>classes</td>
-<td>string</td>
-<td>No</td>
-<td>Classes to add to the <code>nav</code> container.</td>
-</tr>
-<tr>
-<td>attributes</td>
-<td>object</td>
-<td>No</td>
-<td>HTML attributes (for example data attributes) to add to the <code>ol</code> container.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="sections" tabindex="-1">Sections</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>items</td>
-<td>array</td>
-<td>Yes</td>
-<td>An array of task list item objects. See <a href="#items">items</a>.</td>
-</tr>
-<tr>
-<td>heading</td>
-<td>object</td>
-<td>Yes</td>
-<td>See <a href="#headings">heading</a></td>
-</tr>
-<tr>
-<td>attributes</td>
-<td>object</td>
-<td>No</td>
-<td>HTML attributes (for example data attributes) to add to the section <code>li</code>.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="headings" tabindex="-1">Headings</h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>headingLevel</td>
-<td>numeric</td>
-<td>No</td>
-<td>A number for the heading level. Defaults to 2 (<code>&lt;h2&gt;</code>)</td>
-</tr>
-<tr>
-<td>text</td>
-<td>string</td>
-<td>Yes</td>
-<td>If <code>html</code> is set, this is not required. Text to use within the heading. If <code>html</code> is provided, the <code>text</code> argument will be ignored.</td>
-</tr>
-<tr>
-<td>html</td>
-<td>string</td>
-<td>Yes</td>
-<td>If <code>text</code> is set, this is not required. HTML to use within the heading. If <code>html</code> is provided, the <code>text</code> argument will be ignored.</td>
-</tr>
-<tr>
-<td>classes</td>
-<td>string</td>
-<td>No</td>
-<td>Classes to add to the heading.</td>
-</tr>
-<tr>
-<td>attributes</td>
-<td>object</td>
-<td>No</td>
-<td>HTML attributes (for example data attributes) to add to the item anchor.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="items" tabindex="-1">Items</h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>href</td>
-<td>string</td>
-<td>Yes</td>
-<td>URL of the item anchor. Both href and text attributes for items need to be provided to create an item.</td>
-</tr>
-<tr>
-<td>text</td>
-<td>string</td>
-<td>Yes</td>
-<td>If <code>html</code> is set, this is not required. Text to use within the anchor. If <code>html</code> is provided, the <code>text</code> argument will be ignored.</td>
-</tr>
-<tr>
-<td>html</td>
-<td>string</td>
-<td>Yes</td>
-<td>If <code>text</code> is set, this is not required. HTML to use within the anchor. If <code>html</code> is provided, the <code>text</code> argument will be ignored.</td>
-</tr>
-<tr>
-<td>complete</td>
-<td>boolean</td>
-<td>No</td>
-<td>Flag to mark the item as complete or not. Defaults to <code>false</code>.</td>
-</tr>
-<tr>
-<td>attributes</td>
-<td>object</td>
-<td>No</td>
-<td>HTML attributes (for example data attributes) to add to the item anchor.</td>
-</tr>
-</tbody>
-</table>
-<p><em>Warning: If you’re using Nunjucks macros in production be aware that using HTML arguments, or ones ending with <code>.html</code> can be at risk from <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting</a> attacks. More information about security vulnerabilities can be found in the <a href="https://mozilla.github.io/nunjucks/api.html#user-defined-templates-warning">Nunjucks documentation</a>.</em></p>
-<p></div></p>
-  </details>
-  <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="language-xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/task-list/macro.njk&quot; import mojTaskList -%}</span><span class="language-xml">
-
-</span><span class="hljs-template-variable">{{ mojTaskList({
-  sections: [
-    {
-      heading: {
-        text: &#x27;Client details&#x27;
-      },
-      items: [{
-        text: &#x27;Personal details&#x27;,
-        href: &#x27;#&#x27;,
-        complete: true
-      }, {
-        text: &#x27;What you are covered for&#x27;,
-        href: &#x27;#&#x27;,
-        complete: true
-      }]
-    },
-    {
-      heading: {
-        text: &#x27;Means assessment&#x27;
-      },
-      items: [{
-        text: &#x27;Bank account details&#x27;,
-        href: &#x27;#&#x27;
-      }, {
-        text: &#x27;Income&#x27;,
-        href: &#x27;#&#x27;
-      }, {
-        text: &#x27;Regular payments&#x27;,
-        href: &#x27;#&#x27;
-      }, {
-        text: &#x27;Property&#x27;,
-        href: &#x27;#&#x27;
-      }, {
-        text: &#x27;Savings and investments&#x27;,
-        href: &#x27;#&#x27;
-      }, {
-        text: &#x27;Items of value&#x27;,
-        href: &#x27;#&#x27;
-      }, {
-        text: &#x27;Restrictions&#x27;,
-        href: &#x27;#&#x27;
-      }]
-    },
-    {
-      heading: {
-        text: &#x27;Merrits assessment&#x27;
-      },
-      items: [{
-        text: &#x27;Incident details&#x27;,
-        href: &#x27;#&#x27;,
-        complete: true
-      }, {
-        text: &#x27;Respondent details&#x27;,
-        href: &#x27;#&#x27;,
-        complete: true
-      }, {
-        text: &#x27;Case details&#x27;,
-        href: &#x27;#&#x27;,
-        complete: true
-      }]
-    },
-    {
-      heading: {
-        text: &#x27;Apply&#x27;
-      },
-      items: [{
-        text: &#x27;Submit application&#x27;,
-        href: &#x27;#&#x27;
-      }]
-    }
-  ]
-}) }}</span><span class="language-xml">
-</span></code></pre>
-  </div>
-  </div>
-</div>
-<h2 id="contribute" tabindex="-1">Contribute</h2>
-<p>You can contribute to this pattern in the <a href="https://design-system.service.gov.uk/patterns/task-list-pages/#help-improve-this-page">GOV.UK Design System</a></p>
+-->
 
       </main>
 
