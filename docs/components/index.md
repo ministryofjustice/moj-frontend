@@ -8,7 +8,7 @@ title: Components
 
 Components are reusable parts of a user interface that have been made to support a variety of applications. Individual components can be used in multiple different pages, patterns and context.
 
-To use these components you can either:
+To use a component you can either:
 
 - copy the HTML code
 - copy the Nunjucks code (if you are using [Nunjucks](https://mozilla.github.io/nunjucks/) or the [GOV.UK Prototype Kit](https://govuk-prototype-kit.herokuapp.com/docs))

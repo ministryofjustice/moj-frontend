@@ -1,6 +1,7 @@
 ---
 layout: layouts/pages.njk
 title: Case list pages
+redirect_from: docs/patterns/case-list.md
 ---
 
 <div class="govuk-form-group">

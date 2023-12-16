@@ -1,6 +1,7 @@
 ---
 layout: layouts/pages.njk
 title: Task list pages
+redirect_from: docs/patterns/task-list.md
 ---
 
 {% banner "This page is archived" %}
