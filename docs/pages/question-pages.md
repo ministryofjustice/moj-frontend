@@ -1,6 +1,7 @@
 ---
 layout: layouts/pages.njk
 title: Question pages
+redirect_from: docs/patterns/question-pages.md
 ---
 
 {% banner "This page is archived" %}

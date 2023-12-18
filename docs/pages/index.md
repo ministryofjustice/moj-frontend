@@ -8,7 +8,7 @@ title: Pages
 
 Pages are a combination of styles and components that are repeatable across user interfaces and services.
 
-To use these pages you can either:
+To use a page you can either:
 
 - copy the HTML code
 - copy the Nunjucks code (if you are using [Nunjucks](https://mozilla.github.io/nunjucks/) or the [GOV.UK Prototype Kit](https://govuk-prototype-kit.herokuapp.com/docs))
