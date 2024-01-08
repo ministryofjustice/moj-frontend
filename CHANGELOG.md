@@ -1,3 +1,16 @@
+# [2.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.8.1...v2.0.0) (2024-01-08)
+
+
+### Features
+
+* add support for v5 of the Design System ([#528](https://github.com/ministryofjustice/moj-frontend/issues/528)) ([6bfd2a3](https://github.com/ministryofjustice/moj-frontend/commit/6bfd2a337a89490b0bf39854d41bb338fcf86065))
+
+
+### BREAKING CHANGES
+
+* This package no longer supports v3 or v4 of govuk-frontend
+* This package no longer supports Internet Explorer 8
+
 ## [1.8.1](https://github.com/ministryofjustice/moj-frontend/compare/v1.8.0...v1.8.1) (2023-11-17)
 
 
