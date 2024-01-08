@@ -6,7 +6,6 @@ module.exports = {
   entry: {
     all: "./assets/all.js",
     application: "./assets/sass/application.scss",
-    "application-ie8": "./assets/sass/application-ie8.scss",
   },
   mode: "production",
   devtool: "source-map",
@@ -44,7 +43,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: "node_modules/govuk-frontend/govuk/assets",
+          from: "node_modules/govuk-frontend/dist/govuk/assets",
           to: path.resolve(__dirname, "public/assets"),
         },
         {

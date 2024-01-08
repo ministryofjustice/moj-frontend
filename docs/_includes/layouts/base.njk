@@ -15,16 +15,15 @@
     <meta name="description" content="Design your service using MoJ styles, components and patterns">
     <meta property="og:image" content="{{ '/assets/images/moj-opengraph-image.png' | url }}">
 
-    <!--[if lte IE 8]><link href="{{ '/assets/stylesheets/application-ie8.css' | url }}" rel="stylesheet"><![endif]-->
-    <!--[if gt IE 8]><!--><link href="{{ '/assets/stylesheets/application.css' | url }}" rel="stylesheet"><!--<![endif]-->
+    <link href="{{ '/assets/stylesheets/application.css' | url }}" rel="stylesheet">
     <title>{% block title %}{{ title }} - MoJ Design System{% endblock %}</title>
 
-    <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
-    <script type="text/javascript" src="{{ '/assets/javascript/jquery.js' | url }}"></script>
-    <script type="text/javascript" src="{{ '/assets/javascript/all.js' | url }}"></script>
+    <script type="module" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
+    <script type="module" src="{{ '/assets/javascript/jquery.js' | url }}"></script>
+    <script type="module" src="{{ '/assets/javascript/all.js' | url }}"></script>
   </head>
   <body class="govuk-template__body">
-    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
 
     {% block body %}
       <div>
@@ -44,10 +43,6 @@
 
       </div>
     {% endblock %}
-
-    <script type="text/javascript">
-      MOJFrontend.initAll();
-    </script>
     {% block pageScripts %}{% endblock %}
   </body>
 </html>

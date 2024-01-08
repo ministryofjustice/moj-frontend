@@ -14,7 +14,7 @@
     "ci:dryrun": "HUSKY=0 CI=true semantic-release --dry-run",
     "start": "npm-run-all --parallel watch:*",
     "test": "npm-run-all --parallel test:*",
-    "test:sass": "npm install node-sass && node-sass -q test.scss >/dev/null && echo 'ok'",
+    "test:sass": "npm install node-sass && node-sass -q gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
     "test:docs": "npm run build:docs",
     "watch:11ty": "eleventy --input=./docs --output=public --serve --watch",
     "watch:webpack": "webpack --watch"
@@ -39,7 +39,7 @@
     "@11ty/eleventy": "^2.0.0",
     "clipboard": "^2.0.8",
     "del": "^7.0.0",
-    "govuk-frontend": "^4.0.0",
+    "govuk-frontend": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-cache": "^1.1.3",
     "gulp-concat": "^2.6.1",

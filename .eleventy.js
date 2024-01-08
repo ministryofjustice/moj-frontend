@@ -14,7 +14,7 @@ module.exports = function (eleventyConfig) {
   const nunjucksEnv = nunjucks.configure([
     ".",
     "docs/_includes/",
-    "node_modules/govuk-frontend/",
+    "node_modules/govuk-frontend/dist/",
     "node_modules/@ministryofjustice/frontend/",
   ]);
 

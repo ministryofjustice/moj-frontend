@@ -1,11 +1,11 @@
-import GOVUKFrontend from "govuk-frontend/govuk/all.js";
+import { initAll as initGOVUKFrontend } from "govuk-frontend/dist/govuk/all.mjs";
 import MOJFrontend from "../package/moj/all.js";
 
 import Cookies from "./javascript/cookies";
 import Copy from "./javascript/copy";
 import Tabs from "./javascript/tabs";
 
-GOVUKFrontend.initAll();
+initGOVUKFrontend();
 MOJFrontend.initAll();
 
 $(function () {

@@ -19,24 +19,20 @@ gulp.task("dist:assets", () => {
 gulp.task("dist:javascript", () => {
   return gulp
     .src("package/moj/all.js")
-    .pipe(
-      uglify({
-        ie8: true,
-      })
-    )
+    .pipe(uglify())
     .pipe(rename("moj-frontend.min.js"))
     .pipe(gulp.dest("dist"));
 });
 
 gulp.task("dist:css", () => {
   return gulp
-    .src("package/moj/*.scss")
+    .src("gulp/dist-scss/*.scss")
     .pipe(sass())
     .pipe(postcss([autoprefixer, cssnano]))
     .pipe(
       rename((path) => ({
         dirname: path.dirname,
-        basename: path.basename.replace("all", "moj-frontend"),
+        basename: path.basename.replace("dist", "moj-frontend"),
         extname: ".min.css",
       }))
     )

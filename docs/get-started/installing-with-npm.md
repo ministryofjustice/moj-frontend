@@ -142,5 +142,3 @@ Add the CSS and JavaScript code to your HTML template:
   </body>
 </html>
 ```
-
-If your service supports Internet Explorer 8, you will need to [generate and include a separate stylesheet](../supporting-internet-explorer-8) as well.

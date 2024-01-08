@@ -27,12 +27,7 @@ In a live application, we recommend that you [install with npm](../installing-wi
 1. Follow [the instructions for installing the GOV.UK Design System](https://frontend.design-system.service.gov.uk/install-using-precompiled-files/)
 2. Add `link` tags for the MoJ Frontend CSS, alongside the GOV.UK ones in the `head`:
    ```html
-   <!--[if !IE 8]><!-->
    <link rel="stylesheet" href="/stylesheets/moj-frontend.min.css" />
-   <!--<![endif]-->
-   <!--[if IE 8]>
-     <link rel="stylesheet" href="/stylesheets/moj-frontend-ie8.min.css" />
-   <![endif]-->
    ```
 3. Add `script` tags for the MoJ Frontend JavaScript, alongside the GOV.UK at the bottom of the `body`. This includes jQuery, which is a dependency of MoJ Frontend.
    ```html
@@ -62,12 +57,7 @@ It is unlikely that you would ever want to install the MoJ Design System alone, 
          name="viewport"
          content="width=device-width, initial-scale=1, viewport-fit=cover"
        />
-       <!--[if !IE 8]><!-->
        <link rel="stylesheet" href="/stylesheets/moj-frontend.min.css" />
-       <!--<![endif]-->
-       <!--[if IE 8]>
-         <link rel="stylesheet" href="/stylesheets/moj-frontend-ie8.min.css" />
-       <![endif]-->
      </head>
      <body>
        <!-- component HTML -->

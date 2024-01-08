@@ -17,12 +17,6 @@
     box-shadow: inset 0 -1px 0 $govuk-border-colour;
     width: 100%;
   }
-
-  // IE8 does not support box shadow, so use a standard border.
-  @include govuk-if-ie8 {
-    border-bottom: 1px solid $govuk-border-colour;
-  }
-
 }
 
 
