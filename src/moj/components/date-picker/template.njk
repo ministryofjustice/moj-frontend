@@ -1,0 +1,64 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/label/macro.njk" import govukLabel %}
+{% from "govuk/components/hint/macro.njk" import govukHint %}
+{% from "govuk/components/error-message/macro.njk" import govukErrorMessage %}
+
+<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} moj-datepicker {{ params.classes }}" data-module="moj-date-picker">
+  {{ govukLabel({
+    html: params.label.html,
+    text: params.label.text,
+    classes: params.label.classes,
+    isPageHeading: params.label.isPageHeading,
+    attributes: params.label.attributes,
+    for: params.id
+  }) | indent(2) | trim }}
+  {% if params.hint %}
+    {% set hintId = params.id + "-hint" %}
+    {% set describedBy = describedBy + " " + hintId if describedBy else hintId %}
+    {{ govukHint({
+      id: hintId,
+      classes: params.hint.classes,
+      attributes: params.hint.attributes,
+      html: params.hint.html,
+      text: params.hint.text
+    }) | indent(2) | trim }}
+  {% endif %}
+  {% if params.errorMessage %}
+    {% set errorId = params.id + "-error" %}
+    {% set describedBy = describedBy + " " + errorId if describedBy else errorId %}
+    {{ govukErrorMessage({
+      id: errorId,
+      classes: params.errorMessage.classes,
+      attributes: params.errorMessage.attributes,
+      html: params.errorMessage.html,
+      text: params.errorMessage.text,
+      visuallyHiddenText: params.errorMessage.visuallyHiddenText
+    }) | indent(2) | trim }}
+  {% endif %}
+  <div class="moj-datepicker-input__wrapper">
+    {{ govukInput({
+      classes: "govuk-input moj-js-datepicker-input",
+      id: params.id,
+      name: params.name,
+      value: params.value,
+      autocomplete: "off",
+      attributes: {
+        "maxlength": "10",
+        "data-mindate": params.minDate,
+        "data-maxdate": params.maxDate
+      }
+    }) }}
+    <button class="moj-datepicker-button moj-js-datepicker-button" data-button="datepicker-{{ params.name }}-toggle">
+      <span class="govuk-visually-hidden">Choose date.</span>
+      <svg focusable="false" class="moj-datepicker-icon" aria-hidden="true" role="img" viewBox="0 0 22 22">
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M16.1333 2.93333H5.86668V4.4C5.86668 5.21002 5.21003 5.86667 4.40002 5.86667C3.59 5.86667 2.93335 5.21002 2.93335 4.4V2.93333H2C0.895431 2.93333 0 3.82877 0 4.93334V19.2667C0 20.3712 0.89543 21.2667 2 21.2667H20C21.1046 21.2667 22 20.3712 22 19.2667V4.93333C22 3.82876 21.1046 2.93333 20 2.93333H19.0667V4.4C19.0667 5.21002 18.41 5.86667 17.6 5.86667C16.79 5.86667 16.1333 5.21002 16.1333 4.4V2.93333ZM20.5333 8.06667H1.46665V18.8C1.46665 19.3523 1.91436 19.8 2.46665 19.8H19.5333C20.0856 19.8 20.5333 19.3523 20.5333 18.8V8.06667Z"
+        ></path>
+        <rect x="3.66669" width="1.46667" height="5.13333" rx="0.733333"></rect>
+        <rect x="16.8667" width="1.46667" height="5.13333" rx="0.733333"></rect>
+      </svg>
+    </button>
+  </div>
+</div>
