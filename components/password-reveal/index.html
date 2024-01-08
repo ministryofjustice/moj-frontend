@@ -15,16 +15,15 @@
     <meta name="description" content="Design your service using MoJ styles, components and patterns">
     <meta property="og:image" content="/assets/images/moj-opengraph-image.png">
 
-    <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
-    <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
+    <link href="/assets/stylesheets/application.css" rel="stylesheet">
     <title>Password reveal - MoJ Design System</title>
 
-    <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
-    <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
-    <script type="text/javascript" src="/assets/javascript/all.js"></script>
+    <script type="module" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
+    <script type="module" src="/assets/javascript/jquery.js"></script>
+    <script type="module" src="/assets/javascript/all.js"></script>
   </head>
   <body class="govuk-template__body">
-    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
 
     
       <div>
@@ -34,10 +33,7 @@
 
 
 
-<div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on MoJ Design System" data-module="app-cookies">
-    
-    
-
+<div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on MoJ Design System" data-module="app-cookies">
     <div class="govuk-cookie-banner__message govuk-width-container">
 
     <div class="govuk-grid-row">
@@ -291,7 +287,7 @@
           <span class="govuk-caption-xl">Components</span>
           Password reveal
         </h1>
-        <p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/bc848ffdd0813814b806f4e223430badea7186ea">11 October 2022</a></p>
+        <p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/6bfd2a337a89490b0bf39854d41bb338fcf86065"> 8 January 2024</a></p>
 <div class="app-example">
   <span class="app-example__new-window">
     <a href="/examples/password-reveal" target="_blank">Open this example <span class="govuk-visually-hidden">(Password reveal (example))</span> in a new window</a>
@@ -379,8 +375,8 @@
 
         
 
-<footer class="govuk-footer " role="contentinfo">
-  <div class="govuk-width-container ">
+<footer class="govuk-footer" role="contentinfo">
+  <div class="govuk-width-container">
     
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
@@ -450,10 +446,6 @@
 
       </div>
     
-
-    <script type="text/javascript">
-      MOJFrontend.initAll();
-    </script>
     
   </body>
 </html>

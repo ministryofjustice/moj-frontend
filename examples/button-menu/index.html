@@ -15,16 +15,15 @@
     <meta name="description" content="Design your service using MoJ styles, components and patterns">
     <meta property="og:image" content="/assets/images/moj-opengraph-image.png">
 
-    <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
-    <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
+    <link href="/assets/stylesheets/application.css" rel="stylesheet">
     <title>Button menu (example) - MoJ Design System</title>
 
-    <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
-    <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
-    <script type="text/javascript" src="/assets/javascript/all.js"></script>
+    <script type="module" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
+    <script type="module" src="/assets/javascript/jquery.js"></script>
+    <script type="module" src="/assets/javascript/all.js"></script>
   </head>
   <body class="govuk-template__body">
-    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
 
     
   <div class="govuk-!-margin-6 govuk-!-margin-top-9">
@@ -34,7 +33,6 @@
   <div class="moj-button-menu__wrapper">
       
   
-
 
   
     
@@ -48,7 +46,6 @@
       
   
 
-
   
     
   
@@ -60,7 +57,6 @@
     
       
   
-
 
   
     
@@ -77,12 +73,8 @@
 
   </div>
 
-
-    <script type="text/javascript">
-      MOJFrontend.initAll();
-    </script>
     
-  <script type="text/javascript">
+  <script type="module">
     
   </script>
 

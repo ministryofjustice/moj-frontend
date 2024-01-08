@@ -15,16 +15,15 @@
     <meta name="description" content="Design your service using MoJ styles, components and patterns">
     <meta property="og:image" content="/assets/images/moj-opengraph-image.png">
 
-    <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
-    <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
+    <link href="/assets/stylesheets/application.css" rel="stylesheet">
     <title>Form validator - MoJ Design System</title>
 
-    <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
-    <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
-    <script type="text/javascript" src="/assets/javascript/all.js"></script>
+    <script type="module" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
+    <script type="module" src="/assets/javascript/jquery.js"></script>
+    <script type="module" src="/assets/javascript/all.js"></script>
   </head>
   <body class="govuk-template__body">
-    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
 
     
       <div>
@@ -34,10 +33,7 @@
 
 
 
-<div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on MoJ Design System" data-module="app-cookies">
-    
-    
-
+<div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on MoJ Design System" data-module="app-cookies">
     <div class="govuk-cookie-banner__message govuk-width-container">
 
     <div class="govuk-grid-row">
@@ -450,7 +446,7 @@ For more complex validation, use an accessible validation library.</p>
 
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-button&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;govuk-button&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-button&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;govuk-button&quot;</span>&gt;</span>
     Save and continue
   <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
@@ -652,8 +648,8 @@ validator.<span class="hljs-title function_">addValidator</span>(<span class="hl
 
         
 
-<footer class="govuk-footer " role="contentinfo">
-  <div class="govuk-width-container ">
+<footer class="govuk-footer" role="contentinfo">
+  <div class="govuk-width-container">
     
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
@@ -723,10 +719,6 @@ validator.<span class="hljs-title function_">addValidator</span>(<span class="hl
 
       </div>
     
-
-    <script type="text/javascript">
-      MOJFrontend.initAll();
-    </script>
     
   </body>
 </html>

@@ -15,16 +15,15 @@
     <meta name="description" content="Design your service using MoJ styles, components and patterns">
     <meta property="og:image" content="/assets/images/moj-opengraph-image.png">
 
-    <!--[if lte IE 8]><link href="/assets/stylesheets/application-ie8.css" rel="stylesheet"><![endif]-->
-    <!--[if gt IE 8]><!--><link href="/assets/stylesheets/application.css" rel="stylesheet"><!--<![endif]-->
+    <link href="/assets/stylesheets/application.css" rel="stylesheet">
     <title>Supporting Internet Explorer 8 - MoJ Design System</title>
 
-    <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
-    <script type="text/javascript" src="/assets/javascript/jquery.js"></script>
-    <script type="text/javascript" src="/assets/javascript/all.js"></script>
+    <script type="module" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
+    <script type="module" src="/assets/javascript/jquery.js"></script>
+    <script type="module" src="/assets/javascript/all.js"></script>
   </head>
   <body class="govuk-template__body">
-    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
 
     
       <div>
@@ -34,10 +33,7 @@
 
 
 
-<div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on MoJ Design System" data-module="app-cookies">
-    
-    
-
+<div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on MoJ Design System" data-module="app-cookies">
     <div class="govuk-cookie-banner__message govuk-width-container">
 
     <div class="govuk-grid-row">
@@ -208,24 +204,10 @@
           
           Supporting Internet Explorer 8
         </h1>
-        <p>If you are including MoJ Frontend as part of your application's stylesheets then you'll need to do some additional work to support Internet Explorer 8 (IE8).</p>
-<p>The first thing you need to do is follow <a href="https://frontend.design-system.service.gov.uk/supporting-ie8/">GOV.UK Frontend's setup instructions</a> for supporting Internet Explorer 8.</p>
-<p>When <a href="https://frontend.design-system.service.gov.uk/supporting-ie8/#2-generate-an-ie8-specific-stylesheet">generating your IE8-specific stylesheet</a>, your <code>application.scss</code> will also include the MoJ Frontend import:</p>
-<pre><code class="language-scss"><span class="hljs-comment">// application.scss</span>
-
-<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;govuk-frontend/frontend/all&quot;</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@ministryofjustice/frontend/all&quot;</span>;
-
-<span class="hljs-selector-class">.example</span> {
-  <span class="hljs-comment">// example application style</span>
-}
-
-<span class="hljs-comment">// application-ie8.scss</span>
-
-<span class="hljs-variable">$govuk-is-ie8</span>: true;
-
-<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;application&quot;</span>;
-</code></pre>
+        <p>As of version 2.0.0, MoJ Frontend no longer provides support for Internet Explorer 8, in line with changes to the GOV.UK Design System and after Microsoft <a href="https://support.microsoft.com/en-us/windows/internet-explorer-help-23360e49-9cd3-4dda-ba52-705336cc0de2">stopped supporting all versions of Internet Explorer in 2022</a>. You should no longer use Internet Explorer.</p>
+<p>If your service still requires support for Internet Explorer 8, you have two options:</p>
+<p>You can <strong>provide your own support for Internet Explorer 8</strong>. You are welcome to use an additional CSS file that will patch features that are not supported in older browsers. However, you must do this at your own risk.</p>
+<p>You can <strong>continue to use an unmaintained v1 version of MoJ Frontend</strong>. This is not recommended as you will miss important updates, but may be necessary to support legacy tech as it approaches its end of life.</p>
 
       </main>
 
@@ -256,8 +238,8 @@
 
         
 
-<footer class="govuk-footer " role="contentinfo">
-  <div class="govuk-width-container ">
+<footer class="govuk-footer" role="contentinfo">
+  <div class="govuk-width-container">
     
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
@@ -327,16 +309,6 @@
 
       </div>
     
-
-    <script type="text/javascript">
-      MOJFrontend.initAll();
-    </script>
     
-  <script>
-    $('[data-module="app-tabs"]').each(function(e, el) {
-      new Tabs($(el));
-    });
-  </script>
-
   </body>
 </html>
