@@ -1,5 +1,5 @@
 new MOJFrontend.ButtonMenu({
-  container: $(".moj-button-menu"),
+  container: document.querySelector(".moj-button-menu"),
   buttonText: "Actions",
   buttonClasses:
     "govuk-button--secondary moj-button-menu__toggle-button--secondary",
