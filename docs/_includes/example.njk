@@ -8,7 +8,8 @@
   <ul class="app-tabs__list" role="tablist">
     <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default-{{ id }}" role="tab" id="tab_html-default-{{ id }}" aria-controls="html-default-{{ id }}">HTML</a></li>
     <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default-{{ id }}" role="tab" id="tab_nunjucks-default-{{ id }}" aria-controls="nunjucks-default-{{ id }}">Nunjucks</a></li>
-    {% if jsCode %}<li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default-{{ id }}" role="tab" id="tab_j-default-{{ id }}" aria-controls="js-default-{{ id }}">JavaScript</a></li>{% endif %}
+    {%- if jsCode %}<li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default-{{ id }}" role="tab" id="tab_js-default-{{ id }}" aria-controls="js-default-{{ id }}">JavaScript</a></li>{% endif -%}
+    {%- if figmaLink %}<li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#figma-default-{{ id }}" role="tab" id="tab_figma-default-{{ id }}" aria-controls="figma-default-{{ id }}">Figma</a></li>{% endif -%}
   </ul>
 
   <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default-{{ id }}" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default-{{ id }}">
@@ -51,6 +52,16 @@
 ```js
 {{ jsCode | safe }}
 ```
+  </div>
+{% endif %}
+
+{% if figmaLink %}
+  <div class="app-tabs__panel govuk-!-padding-2 app-tabs__panel--hidden" id="figma-default-{{ id }}" role="tabpanel" aria-labelledby="tab_figma-default-{{ id }}">
+
+To use the component in your design, add the MoJ Figma Kit to your Figma libraries and find the component using the Assets tab.
+
+[View component in MoJ Figma Kit]({{ figmaLink }})
+
   </div>
 {% endif %}
 </div>

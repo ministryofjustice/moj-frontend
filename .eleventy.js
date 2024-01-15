@@ -73,6 +73,7 @@ module.exports = function (eleventyConfig) {
       href: exampleHref,
       id: exampleHref.replace(/\//g, "-"),
       arguments: data.arguments,
+      figmaLink : data.figma_link,
       title: data.title,
       height,
       nunjucksCode,
