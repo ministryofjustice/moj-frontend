@@ -16,7 +16,7 @@
     <meta property="og:image" content="/assets/images/moj-opengraph-image.png">
 
     <link href="/assets/stylesheets/application.css" rel="stylesheet">
-    <title>Notification badge - MoJ Design System</title>
+    <title>Date picker - MoJ Design System</title>
 
     <script type="module" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
     <script type="module" src="/assets/javascript/jquery.js"></script>
@@ -178,8 +178,8 @@
             <a href="/components/button-menu">Button menu</a>
           </li>
         
-          <li class="moj-side-navigation__item">
-            <a href="/components/date-picker">Date picker</a>
+          <li class="moj-side-navigation__item moj-side-navigation__item--active">
+            <a href="/components/date-picker" aria-current="location">Date picker</a>
           </li>
         
           <li class="moj-side-navigation__item">
@@ -206,8 +206,8 @@
             <a href="/components/multi-select">Multi select</a>
           </li>
         
-          <li class="moj-side-navigation__item moj-side-navigation__item--active">
-            <a href="/components/notification-badge" aria-current="location">Notification badge</a>
+          <li class="moj-side-navigation__item">
+            <a href="/components/notification-badge">Notification badge</a>
           </li>
         
           <li class="moj-side-navigation__item">
@@ -289,73 +289,52 @@
       <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
           <span class="govuk-caption-xl">Components</span>
-          Notification badge
+          Date picker
         </h1>
-        <p><div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-<div class="govuk-notification-banner__header">
-<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-Important
-</h2>
-</div>
-<div class="govuk-notification-banner__content">
-<h3 class="govuk-notification-banner__heading">
-HMRC Design Patterns has a similar component
-</h3></p>
-<p><a href="https://design.tax.service.gov.uk/hmrc-design-patterns/notification-badge/">Notification badge</a> in HMRC Design Patterns has a similar function and visual design to this component, and includes some guidance on when to use it.</p>
-<p>This component is in the GOV.UK Design System <a href="https://design-system.service.gov.uk/community/backlog/">community backlog</a> for review.</p>
-</div>
-      </div>
-<p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/bc848ffdd0813814b806f4e223430badea7186ea">11 October 2022</a></p>
-<div class="app-example">
-  <span class="app-example__new-window">
-    <a href="/examples/notification-badge" target="_blank">Open this example <span class="govuk-visually-hidden">(Notification badge (example))</span> in a new window</a>
-  </span>
-  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="125" src="/examples/notification-badge" title="Notification badge (example)"></iframe>
-</div>
-<div class="app-tabs" data-module="app-tabs">
-  <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-notification-badge" role="tab" id="tab_html-default--examples-notification-badge" aria-controls="html-default--examples-notification-badge">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-notification-badge" role="tab" id="tab_nunjucks-default--examples-notification-badge" aria-controls="nunjucks-default--examples-notification-badge">Nunjucks</a></li><li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#figma-default--examples-notification-badge" role="tab" id="tab_figma-default--examples-notification-badge" aria-controls="figma-default--examples-notification-badge">Figma</a></li></ul>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-notification-badge" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-notification-badge">
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;notifications&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-notification-badge&quot;</span>&gt;</span>10<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-
-</code></pre>
-  </div>
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-notification-badge" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-notification-badge">
-  <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="language-xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/notification-badge/macro.njk&quot; import mojNotificationBadge -%}</span><span class="language-xml">
-
-</span><span class="hljs-template-variable">{{ mojNotificationBadge({
-  text: &quot;10&quot;
-}) }}</span><span class="language-xml">
-</span></code></pre>
-  </div>
-  </div>
-  <div class="app-tabs__panel govuk-!-padding-2 app-tabs__panel--hidden" id="figma-default--examples-notification-badge" role="tabpanel" aria-labelledby="tab_figma-default--examples-notification-badge">
-<p>To use the component in your design, add the MoJ Figma Kit to your Figma libraries and find the component using the Assets tab.</p>
-<p><a href="https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type=design&amp;node-id=61-3019&amp;mode=design">View component in MoJ Figma Kit</a></p>
-  </div>
-</div>
-<h2 id="when-to-use" tabindex="-1">When to use</h2>
-<p>The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are.</p>
-<p>Only use it if the number changes when the user performs an action.</p>
-<h2 id="when-not-to-use" tabindex="-1">When not to use</h2>
-<p>Do not use the notification badge when:</p>
-<ul>
-<li>the number of things is 0</li>
-<li>there is no action</li>
-</ul>
-<p>Unless there is a strong user need, only use it as a part of the navigation.</p>
-<h2 id="how-to-use" tabindex="-1">How to use</h2>
-<p>Display the notification badge to the right-hand side of the information it refers to.</p>
-<p>If the number is more than 99, display ‘99+’.</p>
-<h2 id="research" tabindex="-1">Research</h2>
-<p>Research shows that notification badges are common across online services, smartphones and apps. Usability testing showed:</p>
-<ul>
-<li>users understand what it is for</li>
-<li>it does not distract users from their task</li>
-</ul>
+        <p><span class="govuk-caption-xl">This component has recently been contributed to the MoJ Design System and is being developed.</span></p>
+<h2 id="status-of-development" tabindex="-1">Status of development</h2>
+<p>The below criteria all need to be met for a component to be considered as fully developed for use within the MoJ Design System.</p>
+<p>This page will be updated as the component is developed.</p>
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Development criteria</th>
+      <th scope="col" class="govuk-table__header">Status</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">WCAG 2.2 compliant</th>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">
+          Being reviewed
+        </strong></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">HTML / Nunjucks version</th>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--orange">
+          In progress
+        </strong></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Figma version</th>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--orange">
+          In progress
+        </strong></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Documentation</th>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">
+          Being reviewed
+        </strong></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Researched and tested</th>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">
+          Not started
+        </strong></td>
+    </tr>
+  </tbody>
+</table>
 
       </main>
 
