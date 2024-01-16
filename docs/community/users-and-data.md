@@ -52,7 +52,7 @@ We aim to continuously improve our design system around the people that use it, 
     <p class="govuk-body">We aim to have a design system that is led by its users. Talking to users of the MoJ Design System helps us to meet their needs.</p>
     <p class+"govuk-body">Since December 2023:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>5 research sessions have been carried out</li>
+      <li>10 research sessions have been carried out</li>
     </ul>
   </div>
 </div>
