@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v2.0.0...v2.0.1) (2024-01-24)
+
+
+### Bug Fixes
+
+* **button-menu:** ensure button menu closes when tabbed away ([#549](https://github.com/ministryofjustice/moj-frontend/issues/549)) ([b223d40](https://github.com/ministryofjustice/moj-frontend/commit/b223d40adeb47d8d1c2e5708306e27edd33c81ff))
+
 # [2.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v1.8.1...v2.0.0) (2024-01-08)
 
 
