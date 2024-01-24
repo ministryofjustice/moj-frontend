@@ -124,13 +124,13 @@ MOJFrontend.ButtonMenu.prototype.onButtonKeydown = function(e) {
 			this.focusNext(e.currentTarget);
 			break;
 		case this.keys.esc:
-			if(!this.mq.matches) {
+			if(!this.mql.matches) {
 				this.menuButton.focus();
 				this.hideMenu();
 			}
 			break;
 		case this.keys.tab:
-			if(!this.mq.matches) {
+			if(!this.mql.matches) {
 				this.hideMenu();
 			}
 	}
