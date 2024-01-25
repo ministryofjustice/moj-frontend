@@ -45,7 +45,7 @@ The multi file upload component uses JavaScript. To run it you must include the 
 ```
 if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
   new MOJFrontend.MultiFileUpload({
-    container: $('.moj-multi-file-upload'),
+    container: document.querySelector('.moj-multi-file-upload'),
     uploadUrl: '/ajax-upload-url',
     deleteUrl: '/ajax-delete-url'
   });

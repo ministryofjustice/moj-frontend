@@ -1,5 +1,5 @@
 new MOJFrontend.ButtonMenu({
-  container: $(".moj-button-menu").eq(1),
+  container: document.querySelectorAll(".moj-button-menu")[1],
   mq: "(min-width: 1000em)",
   buttonText: "More actions",
   buttonClasses:

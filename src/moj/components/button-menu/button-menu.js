@@ -1,5 +1,5 @@
 MOJFrontend.ButtonMenu = function(params) {
-	this.container = params.container;
+	this.container = $(params.container);
 	this.menu = this.container.find('.moj-button-menu__wrapper');
 	if(params.menuClasses) {
 		this.menu.addClass(params.menuClasses);
