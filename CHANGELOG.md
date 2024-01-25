@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v2.0.1...v2.1.0) (2024-01-25)
+
+
+### Features
+
+* allow Elements to be used components' config ([372d70b](https://github.com/ministryofjustice/moj-frontend/commit/372d70b07d9efcbdd1da09a2a00a014305326d8a))
+* **navigation:** enhance hover styles of navigation links ([cd0f9df](https://github.com/ministryofjustice/moj-frontend/commit/cd0f9df157baa4a4e91257d1b505a71833a38204)), closes [#447](https://github.com/ministryofjustice/moj-frontend/issues/447)
+* **primary-navigation:** auto-hide search toggle when it loses focus ([bedd163](https://github.com/ministryofjustice/moj-frontend/commit/bedd163f6df9cd0da1ec86877094fdeddcfbeb31)), closes [#519](https://github.com/ministryofjustice/moj-frontend/issues/519)
+
 ## [2.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v2.0.0...v2.0.1) (2024-01-24)
 
 
