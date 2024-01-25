@@ -1,9 +1,11 @@
 MOJFrontend.FilterToggleButton = function(options) {
   this.options = options;
-  this.container = this.options.toggleButton.container;
+  this.container = $(this.options.toggleButton.container);
+  this.filterContainer = $(this.options.filter.container);
+
   this.createToggleButton();
   this.setupResponsiveChecks();
-  this.options.filter.container.attr('tabindex', '-1');
+  this.filterContainer.attr('tabindex', '-1');
   if(this.options.startHidden) {
     this.hideMenu();
   }
@@ -43,7 +45,7 @@ MOJFrontend.FilterToggleButton.prototype.addCloseButton = function() {
   if(this.options.closeButton) {
     this.closeButton = $('<button class="moj-filter__close" type="button">'+this.options.closeButton.text+'</button>');
     this.closeButton.on('click', $.proxy(this, 'onCloseClick'));
-    this.options.closeButton.container.append(this.closeButton);
+    $(this.options.closeButton.container).append(this.closeButton);
   }
 };
 
@@ -61,13 +63,13 @@ MOJFrontend.FilterToggleButton.prototype.removeCloseButton = function() {
 
 MOJFrontend.FilterToggleButton.prototype.hideMenu = function() {
   this.menuButton.attr('aria-expanded', 'false');
-  this.options.filter.container.addClass('moj-js-hidden');
+  this.filterContainer.addClass('moj-js-hidden');
   this.menuButton.text(this.options.toggleButton.showText);
 };
 
 MOJFrontend.FilterToggleButton.prototype.showMenu = function() {
   this.menuButton.attr('aria-expanded', 'true');
-  this.options.filter.container.removeClass('moj-js-hidden');
+  this.filterContainer.removeClass('moj-js-hidden');
   this.menuButton.text(this.options.toggleButton.hideText);
 };
 
@@ -78,7 +80,7 @@ MOJFrontend.FilterToggleButton.prototype.onMenuButtonClick = function() {
 MOJFrontend.FilterToggleButton.prototype.toggle = function() {
   if(this.menuButton.attr('aria-expanded') == 'false') {
     this.showMenu();
-    this.options.filter.container.focus();
+    this.filterContainer.focus();
   } else {
     this.hideMenu();
   }

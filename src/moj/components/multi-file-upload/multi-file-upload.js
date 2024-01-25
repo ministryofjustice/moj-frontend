@@ -11,20 +11,21 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
     };
 
     this.params = $.extend({}, this.defaultParams, params);
+    this.container = $(this.params.container);
 
-    this.params.container.addClass('moj-multi-file-upload--enhanced');
+    this.container.addClass('moj-multi-file-upload--enhanced');
 
-    this.feedbackContainer = this.params.container.find('.moj-multi-file__uploaded-files');
+    this.feedbackContainer = this.container.find('.moj-multi-file__uploaded-files');
     this.setupFileInput();
     this.setupDropzone();
     this.setupLabel();
     this.setupStatusBox();
-    this.params.container.on('click', '.moj-multi-file-upload__delete', $.proxy(this, 'onFileDeleteClick'));
+    this.container.on('click', '.moj-multi-file-upload__delete', $.proxy(this, 'onFileDeleteClick'));
   };
 
   MOJFrontend.MultiFileUpload.prototype.setupDropzone = function() {
     this.fileInput.wrap('<div class="moj-multi-file-upload__dropzone" />');
-    this.dropzone = this.params.container.find('.moj-multi-file-upload__dropzone');
+    this.dropzone = this.container.find('.moj-multi-file-upload__dropzone');
     this.dropzone.on('dragover', $.proxy(this, 'onDragOver'));
     this.dropzone.on('dragleave', $.proxy(this, 'onDragLeave'));
     this.dropzone.on('drop', $.proxy(this, 'onDrop'));
@@ -37,7 +38,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
   };
 
   MOJFrontend.MultiFileUpload.prototype.setupFileInput = function() {
-    this.fileInput = this.params.container.find('.moj-multi-file-upload__input');
+    this.fileInput = this.container.find('.moj-multi-file-upload__input');
     this.fileInput.on('change', $.proxy(this, 'onFileChange'));
     this.fileInput.on('focus', $.proxy(this, 'onFileFocus'));
     this.fileInput.on('blur', $.proxy(this, 'onFileBlur'));
