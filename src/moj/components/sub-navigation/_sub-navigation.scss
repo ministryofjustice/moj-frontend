@@ -60,7 +60,7 @@
   }
 
   &:hover {
-    color: govuk-tint($govuk-link-colour, 25);
+    color: $govuk-link-hover-colour;
   }
 
   &:focus {
@@ -73,9 +73,14 @@
     background-color: govuk-colour("black");
     content: "";
     display: block;
-    width: 100%;
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 5px;
+    height: 100%;
+    position: absolute; bottom: 0; left: 0;
+    width: 5px;
+
+    @include govuk-media-query($from: tablet) {
+      height: 5px;
+      width: 100%;
+    }
   }
 
 }
@@ -99,6 +104,10 @@
       width: 100%;
     }
 
+  }
+
+  &:hover {
+    color: $govuk-link-hover-colour;
   }
 
   &:focus:before {
