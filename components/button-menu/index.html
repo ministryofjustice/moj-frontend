@@ -291,7 +291,7 @@
           <span class="govuk-caption-xl">Components</span>
           Button menu
         </h1>
-        <p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/b223d40adeb47d8d1c2e5708306e27edd33c81ff">24 January 2024</a></p>
+        <p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/372d70b07d9efcbdd1da09a2a00a014305326d8a">25 January 2024</a></p>
 <div class="app-example">
   <span class="app-example__new-window">
     <a href="/examples/button-menu" target="_blank">Open this example <span class="govuk-visually-hidden">(Button menu (example))</span> in a new window</a>
@@ -446,8 +446,7 @@
 <p></div></p>
   </details>
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="language-xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/button-menu/macro.njk&quot; import mojButtonMenu -%}</span><span class="language-xml">
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/button-menu/macro.njk&quot; import mojButtonMenu -%}</span><span class="language-xml">
 
 </span><span class="hljs-template-variable">{{ mojButtonMenu({
   items: [{
@@ -638,8 +637,7 @@
 <p></div></p>
   </details>
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="language-xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/button-menu/macro.njk&quot; import mojButtonMenu -%}</span><span class="language-xml">
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/button-menu/macro.njk&quot; import mojButtonMenu -%}</span><span class="language-xml">
 
 </span><span class="hljs-template-variable">{{ mojButtonMenu({
   items: [
@@ -665,7 +663,7 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default--examples-button-menu-collapsible" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default--examples-button-menu-collapsible">
 <pre><code class="language-js"><span class="hljs-keyword">new</span> <span class="hljs-title class_">MOJFrontend</span>.<span class="hljs-title class_">ButtonMenu</span>({
-  <span class="hljs-attr">container</span>: $(<span class="hljs-string">&quot;.moj-button-menu&quot;</span>),
+  <span class="hljs-attr">container</span>: <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.moj-button-menu&quot;</span>),
   <span class="hljs-attr">mq</span>: <span class="hljs-string">&quot;(min-width: 200em)&quot;</span>,
   <span class="hljs-attr">buttonText</span>: <span class="hljs-string">&quot;Menu&quot;</span>,
   <span class="hljs-attr">buttonClasses</span>:
@@ -838,8 +836,7 @@
 <p></div></p>
   </details>
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="language-xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/button-menu/macro.njk&quot; import mojButtonMenu -%}</span><span class="language-xml">
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/button-menu/macro.njk&quot; import mojButtonMenu -%}</span><span class="language-xml">
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;float: right;&quot;</span>&gt;</span>
   </span><span class="hljs-template-variable">{{ mojButtonMenu({
@@ -862,7 +859,7 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default--examples-button-menu-collapsible-alternative" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default--examples-button-menu-collapsible-alternative">
 <pre><code class="language-js"><span class="hljs-keyword">new</span> <span class="hljs-title class_">MOJFrontend</span>.<span class="hljs-title class_">ButtonMenu</span>({
-  <span class="hljs-attr">container</span>: $(<span class="hljs-string">&quot;.moj-button-menu&quot;</span>),
+  <span class="hljs-attr">container</span>: <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.moj-button-menu&quot;</span>),
   <span class="hljs-attr">mq</span>: <span class="hljs-string">&quot;(min-width: 200em)&quot;</span>,
   <span class="hljs-attr">buttonText</span>: <span class="hljs-string">&quot;Actions&quot;</span>,
   <span class="hljs-attr">menuClasses</span>: <span class="hljs-string">&quot;moj-button-menu__wrapper--right&quot;</span>,

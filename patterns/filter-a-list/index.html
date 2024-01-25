@@ -658,8 +658,7 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-patterns-filter-a-list" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-patterns-filter-a-list">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="language-xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/checkboxes/macro.njk&quot; import govukCheckboxes -%}</span><span class="language-xml">
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/checkboxes/macro.njk&quot; import govukCheckboxes -%}</span><span class="language-xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/input/macro.njk&quot; import govukInput -%}</span><span class="language-xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/table/macro.njk&quot; import govukTable -%}</span><span class="language-xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/filter/macro.njk&quot; import mojFilter -%}</span><span class="language-xml">
@@ -934,17 +933,17 @@
   <span class="hljs-attr">bigModeMediaQuery</span>: <span class="hljs-string">&quot;(min-width: 48.063em)&quot;</span>,
   <span class="hljs-attr">startHidden</span>: <span class="hljs-literal">true</span>,
   <span class="hljs-attr">toggleButton</span>: {
-    <span class="hljs-attr">container</span>: $(<span class="hljs-string">&quot;.moj-action-bar__filter&quot;</span>),
+    <span class="hljs-attr">container</span>: <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.moj-action-bar__filter&quot;</span>),
     <span class="hljs-attr">showText</span>: <span class="hljs-string">&quot;Show filter&quot;</span>,
     <span class="hljs-attr">hideText</span>: <span class="hljs-string">&quot;Hide filter&quot;</span>,
     <span class="hljs-attr">classes</span>: <span class="hljs-string">&quot;govuk-button--secondary&quot;</span>,
   },
   <span class="hljs-attr">closeButton</span>: {
-    <span class="hljs-attr">container</span>: $(<span class="hljs-string">&quot;.moj-filter__header-action&quot;</span>),
+    <span class="hljs-attr">container</span>: <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.moj-filter__header-action&quot;</span>),
     <span class="hljs-attr">text</span>: <span class="hljs-string">&quot;Close&quot;</span>,
   },
   <span class="hljs-attr">filter</span>: {
-    <span class="hljs-attr">container</span>: $(<span class="hljs-string">&quot;.moj-filter&quot;</span>),
+    <span class="hljs-attr">container</span>: <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.moj-filter&quot;</span>),
   },
 });
 </code></pre>

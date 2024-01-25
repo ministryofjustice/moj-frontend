@@ -291,7 +291,7 @@
           <span class="govuk-caption-xl">Components</span>
           Multi file upload
         </h1>
-        <p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/ed0f09c50ca0064eead9f7503f1ab2da257a8f1e">21 April 2022</a></p>
+        <p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/372d70b07d9efcbdd1da09a2a00a014305326d8a">25 January 2024</a></p>
 <div class="app-example">
   <span class="app-example__new-window">
     <a href="/examples/multi-file-upload" target="_blank">Open this example <span class="govuk-visually-hidden">(Multi file upload (example))</span> in a new window</a>
@@ -347,8 +347,7 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-multi-file-upload" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-multi-file-upload">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="language-xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/file-upload/macro.njk&quot; import govukFileUpload -%}</span><span class="language-xml">
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/file-upload/macro.njk&quot; import govukFileUpload -%}</span><span class="language-xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/button/macro.njk&quot; import govukButton -%}</span><span class="language-xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/error-summary/macro.njk&quot; import govukErrorSummary -%}</span><span class="language-xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/multi-file-upload/macro.njk&quot; import mojMultiFileUpload -%}</span><span class="language-xml">
@@ -403,13 +402,11 @@
   </div>
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default--examples-multi-file-upload" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default--examples-multi-file-upload">
-<pre><code class="language-js"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-title class_">MOJFrontend</span>.<span class="hljs-property">MultiFileUpload</span> !== <span class="hljs-string">&quot;undefined&quot;</span>) {
-  <span class="hljs-keyword">new</span> <span class="hljs-title class_">MOJFrontend</span>.<span class="hljs-title class_">MultiFileUpload</span>({
-    <span class="hljs-attr">container</span>: $(<span class="hljs-string">&quot;.moj-multi-file-upload&quot;</span>),
-    <span class="hljs-attr">uploadUrl</span>: <span class="hljs-string">&quot;/ajax-upload&quot;</span>,
-    <span class="hljs-attr">deleteUrl</span>: <span class="hljs-string">&quot;/ajax-delete&quot;</span>,
-  });
-}
+<pre><code class="language-js"><span class="hljs-keyword">new</span> <span class="hljs-title class_">MOJFrontend</span>.<span class="hljs-title class_">MultiFileUpload</span>({
+  <span class="hljs-attr">container</span>: <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;.moj-multi-file-upload&quot;</span>),
+  <span class="hljs-attr">uploadUrl</span>: <span class="hljs-string">&quot;/ajax-upload&quot;</span>,
+  <span class="hljs-attr">deleteUrl</span>: <span class="hljs-string">&quot;/ajax-delete&quot;</span>,
+});
 </code></pre>
   </div>
   <div class="app-tabs__panel govuk-!-padding-2 app-tabs__panel--hidden" id="figma-default--examples-multi-file-upload" role="tabpanel" aria-labelledby="tab_figma-default--examples-multi-file-upload">
@@ -439,7 +436,7 @@
 <p>The multi file upload component uses JavaScript. To run it you must include the following script in your page:</p>
 <pre><code>if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
   new MOJFrontend.MultiFileUpload({
-    container: $('.moj-multi-file-upload'),
+    container: document.querySelector('.moj-multi-file-upload'),
     uploadUrl: '/ajax-upload-url',
     deleteUrl: '/ajax-delete-url'
   });
@@ -503,8 +500,7 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-multi-file-upload-no-js" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-multi-file-upload-no-js">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="language-xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/file-upload/macro.njk&quot; import govukFileUpload -%}</span><span class="language-xml">
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/file-upload/macro.njk&quot; import govukFileUpload -%}</span><span class="language-xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/button/macro.njk&quot; import govukButton -%}</span><span class="language-xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/error-summary/macro.njk&quot; import govukErrorSummary -%}</span><span class="language-xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/multi-file-upload/macro.njk&quot; import mojMultiFileUpload -%}</span><span class="language-xml">
@@ -639,8 +635,7 @@
   </div>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-multi-file-upload-no-js-errors" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-multi-file-upload-no-js-errors">
   <div data-module="app-copy" style="position:relative;">
-<pre><code class="language-jinja"><span class="language-xml">
-</span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/file-upload/macro.njk&quot; import govukFileUpload -%}</span><span class="language-xml">
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/file-upload/macro.njk&quot; import govukFileUpload -%}</span><span class="language-xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/button/macro.njk&quot; import govukButton -%}</span><span class="language-xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;govuk/components/error-summary/macro.njk&quot; import govukErrorSummary -%}</span><span class="language-xml">
 </span><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/multi-file-upload/macro.njk&quot; import mojMultiFileUpload -%}</span><span class="language-xml">
