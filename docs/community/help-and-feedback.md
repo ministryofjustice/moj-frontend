@@ -12,6 +12,6 @@ The group monitors the following channels and provides support as time permits. 
 - For MoJ staff: [#moj-design-system-support](https://moj.enterprise.slack.com/archives/CH5RUSB27)
 - For UK Government staff:[#moj-design-system](https://ukgovernmentdigital.slack.com/archives/CJ6QDRDGC)
 
-### Contact us on email
+### Contact us by email
 
 Messages sent to [design-system@digital.justice.gov.uk](mailto:design-system@digital.justice.gov.uk) will be answered as quickly as possible.
