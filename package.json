@@ -78,7 +78,7 @@
     "mini-css-extract-plugin": "^2.0.0",
     "npm-run-all2": "^6.0.0",
     "postcss": "^8.4.31",
-    "sass-loader": "^13.0.0",
+    "sass-loader": "^14.0.0",
     "semantic-release": "^23.0.0",
     "webpack": "^5.76.0",
     "webpack-cli": "^5.0.0"
