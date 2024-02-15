@@ -6,7 +6,7 @@
     "/package"
   ],
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "build:docs": "npm run build:package && webpack && eleventy --input=./docs --output=public",
     "build:dist": "gulp build:dist",
     "build:package": "gulp build:package",
@@ -72,7 +72,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-zip": "^6.0.0",
     "highlight.js": "^11.0.0",
-    "husky": "^8.0.0",
+    "husky": "^9.0.0",
     "js-beautify": "^1.13.13",
     "markdown-it-anchor": "^8.0.0",
     "mini-css-extract-plugin": "^2.0.0",
