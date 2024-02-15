@@ -6,7 +6,7 @@
     "/package"
   ],
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "build:docs": "npm run build:package && webpack && eleventy --input=./docs --output=public",
     "build:dist": "gulp build:dist",
     "build:package": "gulp build:package",
