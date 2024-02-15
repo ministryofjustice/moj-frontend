@@ -76,7 +76,7 @@
     "js-beautify": "^1.13.13",
     "markdown-it-anchor": "^8.0.0",
     "mini-css-extract-plugin": "^2.0.0",
-    "npm-run-all2": "^5.0.0",
+    "npm-run-all2": "^6.0.0",
     "postcss": "^8.4.31",
     "sass-loader": "^13.0.0",
     "semantic-release": "^22.0.0",
