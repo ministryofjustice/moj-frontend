@@ -19,7 +19,7 @@
         "patch"
       ],
       "prCreation": "immediate",
-      "stabilityDays": 3
+      "stabilityDays": 7
     }
   ]
 }
