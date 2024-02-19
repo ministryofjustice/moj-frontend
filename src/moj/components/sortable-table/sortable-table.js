@@ -103,37 +103,22 @@ MOJFrontend.SortableTable.prototype.getTableRowsArray = function() {
 };
 
 MOJFrontend.SortableTable.prototype.sort = function(rows, columnNumber, sortDirection) {
-	var newRows = rows.sort($.proxy(function(rowA, rowB) {
+	var newRows = rows.sort((function(rowA, rowB) {
 		var tdA = $(rowA).find('td,th').eq(columnNumber);
 		var tdB = $(rowB).find('td,th').eq(columnNumber);
-		var valueA = this.getCellValue(tdA);
-		var valueB = this.getCellValue(tdB);
-		if(sortDirection === 'ascending') {
-			if(valueA < valueB) {
-				return -1;
-			}
-			if(valueA > valueB) {
-				return 1;
-			}
-			return 0;
-		} else {
-			if(valueB < valueA) {
-				return -1;
-			}
-			if(valueB > valueA) {
-				return 1;
-			}
-			return 0;
-		}
-	}, this));
+		
+		var valueA = sortDirection === 'ascending' ? this.getCellValue(tdA) : this.getCellValue(tdB);
+		var valueB = sortDirection === 'ascending' ? this.getCellValue(tdB) : this.getCellValue(tdA);
+
+		if (typeof valueA === 'string' || typeof valueB === 'string') return valueA.toString().localeCompare(valueB.toString());
+		return valueA-valueB;
+	}.bind(this)));
 	return newRows;
 };
 
 MOJFrontend.SortableTable.prototype.getCellValue = function(cell) {
-	var val = cell.attr('data-sort-value');
-	val = val || cell.html();
-	if($.isNumeric(val)) {
-		val = parseInt(val, 10);
-	}
-	return val;
+	var val = cell.attr('data-sort-value') || cell.html();
+
+	var floatVal = parseFloat(val)
+	return isNaN(floatVal) ? val : floatVal
 };
