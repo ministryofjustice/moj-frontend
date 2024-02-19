@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/ministryofjustice/moj-frontend/compare/v2.1.0...v2.1.1) (2024-02-19)
+
+
+### Bug Fixes
+
+* **sortable-table:** support mixed content and floating values ([e4f9e69](https://github.com/ministryofjustice/moj-frontend/commit/e4f9e69dacd41c9490429469f970c7df9bb5e2f8)), closes [#559](https://github.com/ministryofjustice/moj-frontend/issues/559)
+
 # [2.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v2.0.1...v2.1.0) (2024-01-25)
 
 
