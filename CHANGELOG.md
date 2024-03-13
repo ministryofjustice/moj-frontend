@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/ministryofjustice/moj-frontend/compare/v2.1.1...v2.1.2) (2024-03-13)
+
+
+### Bug Fixes
+
+* **filter toggle button:** ensure button appears ([#581](https://github.com/ministryofjustice/moj-frontend/issues/581)) ([fbe6407](https://github.com/ministryofjustice/moj-frontend/commit/fbe6407e77e30ee4127d365148653abf85670f53))
+
 ## [2.1.1](https://github.com/ministryofjustice/moj-frontend/compare/v2.1.0...v2.1.1) (2024-02-19)
 
 
