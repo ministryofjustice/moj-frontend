@@ -20,7 +20,7 @@ MOJFrontend.FilterToggleButton.prototype.setupResponsiveChecks = function() {
 MOJFrontend.FilterToggleButton.prototype.createToggleButton = function() {
   this.menuButton = $('<button class="govuk-button '+this.options.toggleButton.classes+'" type="button" aria-haspopup="true" aria-expanded="false">'+this.options.toggleButton.showText+'</button>');
   this.menuButton.on('click', $.proxy(this, 'onMenuButtonClick'));
-  this.options.toggleButton.container.append(this.menuButton);
+  this.container.append(this.menuButton);
 };
 
 MOJFrontend.FilterToggleButton.prototype.checkMode = function(mq) {
