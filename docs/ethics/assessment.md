@@ -19,6 +19,6 @@ Make a copy of the ethics assessment template on [Google Docs](https://docs.goog
 
 You can do the assessment remotely or in person.
 
-There's no time limit, but for reference, It took 1 team about 2 hours to do the ethics assessment in person using sticky notes.  
+There's no time limit, but for reference, it took one team about 2 hours to do the ethics assessment in person using sticky notes.  
 
 The outputs you get are likely to vary significantly depending on what your service does, who uses it, which phase of delivery you are at and how information is stored and used.
