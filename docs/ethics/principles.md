@@ -98,7 +98,7 @@ Although it may not be possible to apply all of our principles, use them as insp
               </h2>
             </div>
             <div id="accordion-default-content-4" class="govuk-accordion__section-content">
-              <p class="govuk-body">### Take responsibility
+              <p class="govuk-body">Take responsibility
               Know who is responsible for making your product or service ethical (it’s likely to be everyone). Make sure everyone agrees on what they need to do. Be clear about what your responsibility is and own your part.</p>
             </div>
   </div>
