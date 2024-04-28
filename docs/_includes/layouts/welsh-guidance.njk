@@ -1,0 +1,63 @@
+{% extends "./base.njk" %}
+
+{%- from "node_modules/@ministryofjustice/frontend/moj/components/side-navigation/macro.njk" import mojSideNavigation %}
+
+{% macro appSideNavigation(config) %}
+  {% set config = config|addActiveAttribute(page.filePathStem | url) %}
+
+  {{ mojSideNavigation(config) }}
+{% endmacro %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Beta
+      </strong>
+
+      <span class="govuk-phase-banner__text">
+      This is new – your <a class="govuk-link" href="mailto:design-system@digital.justice.gov.uk">feedback</a> will help us to improve it.
+      </span>
+
+    </p>
+  </div>
+
+  <div class="govuk-width-container govuk-grid-row app-flex-container">
+    <div class="govuk-grid-column-one-third">
+      {{ appSideNavigation({
+        classes: 'govuk-!-padding-top-6',
+        sections: [
+          {
+            items: [
+              {
+                text: 'Welsh products and services',
+                href: ('/welsh-guidance/index' | url)
+              },
+              {
+                text: 'Getting content translated',
+                href: ('/welsh-guidance/translation' | url)
+              }
+            ]
+          }
+        ]
+      }) }}
+
+
+      {% include "./partials/back-to-top.njk" %}
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
+        <h1 class="govuk-heading-xl">
+          <span class="govuk-caption-xl">{{ subsection }}</span>
+          {{ title }}
+        </h1>
+        {{ content | safe }}
+      </main>
+
+    </div>
+  </div>
+{% endblock %}
