@@ -1,3 +1,10 @@
+## [2.1.3](https://github.com/ministryofjustice/moj-frontend/compare/v2.1.2...v2.1.3) (2024-05-07)
+
+
+### Bug Fixes
+
+* package.json & package-lock.json to reduce vulnerabilities ([#592](https://github.com/ministryofjustice/moj-frontend/issues/592)) ([d815589](https://github.com/ministryofjustice/moj-frontend/commit/d815589db25e8cb958484e24ce21885d3893f5ee))
+
 ## [2.1.2](https://github.com/ministryofjustice/moj-frontend/compare/v2.1.1...v2.1.2) (2024-03-13)
 
 
