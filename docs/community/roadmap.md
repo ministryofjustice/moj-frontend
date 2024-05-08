@@ -4,6 +4,17 @@ subsection: What's new
 title: Roadmap
 ---
 
+<div class="moj-banner moj-banner--warning" role="region" aria-label="Warning">
+
+  <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25">
+    <path d="M13.6,15.4h-2.3v-4.5h2.3V15.4z M13.6,19.8h-2.3v-2.2h2.3V19.8z M0,23.2h25L12.5,2L0,23.2z" />
+  </svg>
+
+  <div class="moj-banner__message"><strong>Due to inactivity, this page will shortly be removed.</strong></div>
+
+</div>
+
+
 This is the roadmap for the MoJ Design System. It shows what we’re working on now, and whilst some things on the roadmap might change, it gives a guide for what we’re planning to do in the future.
 
 This roadmap was last updated in **December 2023**.
