@@ -25,6 +25,19 @@ The border on the left can be used to reinforce the status when used with a [sta
 
 It can be used to display information in full width panels or columns of upto four panels per row.
 
+## Accessibility information
+There are 2 known usability issues with this component that might get flagged in an accessibility review or audit.
+
+### 1. Overuse of sectioning elements
+*Problem:* the current markup uses labelled article and section elements. This creates two landmarks for each ticket panel. This can create too many landmarks on a page, particularly one that uses many ticket panels. Landmarks work best when used sparingly to guide screen reader users to the main sections on a page. When too many are used the benefit of providing quick navigation to larger areas of content is lost.
+
+*Fix* a development fix to streamline the markup is being investigated.
+
+### 2. List markup isn’t used for multiple ticket panels
+*Problem:* Lack of list structure when many ticket panels are used. List structures are helpful for providing extra semantics to screen readers such as how many items are in the list.
+
+*Fix:* a development fix to add this markup is being investigated.
+
 ## Research on this component
 
 This component is marked as experimental because it needs more research.
