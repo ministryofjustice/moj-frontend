@@ -11,12 +11,27 @@ const { execSync } = require("child_process");
 const releasePackage = require('./package/package.json');
 
 module.exports = function (eleventyConfig) {
-  const nunjucksEnv = nunjucks.configure([
+  /*
+   * If the node env is 'dev' then we include the src dir allowing components
+   * under development to be watched and loaded
+   */
+  const templatePaths = process.env.ENV === 'dev' ? [
+    ".",
+    "src",
+    "docs/_includes/",
+    "node_modules/govuk-frontend/dist/",
+    "node_modules/@ministryofjustice/frontend/",
+  ] : [
     ".",
     "docs/_includes/",
     "node_modules/govuk-frontend/dist/",
     "node_modules/@ministryofjustice/frontend/",
-  ]);
+
+  ];
+
+  console.log(templatePaths);
+
+  const nunjucksEnv = nunjucks.configure(templatePaths);
 
   Object.entries({
     ...eleventyConfig.nunjucksFilters,
@@ -147,4 +162,22 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("getScriptPath", function (inputPath) {
     return inputPath.split("/").slice(1, -1).join("/") + "/script.js";
   });
+
+  eleventyConfig.addWatchTarget("src/moj/components/**/*.njk");
+
+  	eleventyConfig.setServerOptions({
+		  liveReload: true,
+		  domDiff: true,
+  		port: 8080,
+		// Additional files to watch that will trigger server updates
+		// Accepts an Array of file paths or globs (passed to `chokidar.watch`).
+		// Works great with a separate bundler writing files to your output folder.
+		// e.g. `watch: ["_site/**/*.css"]`
+		watch: [],
+		// Show local network IP addresses for device testing
+		showAllHosts: true,
+		// Show the dev server version number on the command line
+		showVersion: true,
+
+	});
 };
