@@ -95,7 +95,7 @@ Datepicker.prototype.initControls = function () {
   this.dialogElement = dialog
   this.$input.insertAdjacentElement('afterend', this.dialogElement)
 
-  this.dialogTitleNode = this.dialogElement.querySelector('.js-datepicker-month-year')
+  this.dialogTitleNode = this.dialogElement.querySelector('.moj-js-datepicker-month-year')
 
   this.setMinAndMaxDatesOnCalendar()
 
@@ -123,17 +123,17 @@ Datepicker.prototype.initControls = function () {
   }
 
   // add event listeners
-  this.prevMonthButton = this.dialogElement.querySelector('.js-datepicker-prev-month')
-  this.prevYearButton = this.dialogElement.querySelector('.js-datepicker-prev-year')
-  this.nextMonthButton = this.dialogElement.querySelector('.js-datepicker-next-month')
-  this.nextYearButton = this.dialogElement.querySelector('.js-datepicker-next-year')
+  this.prevMonthButton = this.dialogElement.querySelector('.moj-js-datepicker-prev-month')
+  this.prevYearButton = this.dialogElement.querySelector('.moj-js-datepicker-prev-year')
+  this.nextMonthButton = this.dialogElement.querySelector('.moj-js-datepicker-next-month')
+  this.nextYearButton = this.dialogElement.querySelector('.moj-js-datepicker-next-year')
   this.prevMonthButton.addEventListener('click', event => this.focusPreviousMonth(event, false))
   this.prevYearButton.addEventListener('click', event => this.focusPreviousYear(event, false))
   this.nextMonthButton.addEventListener('click', event => this.focusNextMonth(event, false))
   this.nextYearButton.addEventListener('click', event => this.focusNextYear(event, false))
 
-  this.cancelButton = this.dialogElement.querySelector('.js-datepicker-cancel')
-  this.okButton = this.dialogElement.querySelector('.js-datepicker-ok')
+  this.cancelButton = this.dialogElement.querySelector('.moj-js-datepicker-cancel')
+  this.okButton = this.dialogElement.querySelector('.moj-js-datepicker-ok')
   this.cancelButton.addEventListener('click', event => {
     event.preventDefault()
     this.closeDialog(event)
@@ -144,8 +144,8 @@ Datepicker.prototype.initControls = function () {
   // eslint-disable-next-line prefer-destructuring
   this.firstButtonInDialog = dialogButtons[0]
   this.lastButtonInDialog = dialogButtons[dialogButtons.length - 1]
-  this.firstButtonInDialog.addEventListener('keydown', event => this.firstButtonKeyup(event))
-  this.lastButtonInDialog.addEventListener('keydown', event => this.lastButtonKeyup(event))
+  this.firstButtonInDialog.addEventListener('keydown', event => this.firstButtonKeydown(event))
+  this.lastButtonInDialog.addEventListener('keydown', event => this.lastButtonKeydown(event))
 
   this.$calendarButton.addEventListener('click', event => this.toggleDialog(event))
 
@@ -158,52 +158,51 @@ Datepicker.prototype.initControls = function () {
 Datepicker.prototype.createDialogMarkup = function (titleId) {
   return `<div class="moj-datepicker__dialog__header ">
         <div class="moj-datepicker__dialog__navbuttons">
-            <button class="js-datepicker-prev-year" aria-label="previous year" data-button="button-datepicker-prevyear">
+            <button class="moj-js-datepicker-prev-year" data-button="button-datepicker-prevyear">
                 <span class="govuk-visually-hidden">Previous year</span>
                 <svg focusable="false" class="moj-datepicker-icon" aria-hidden="true" role="img"><use href="/assets/images/icons.stack.svg#double_chevron_left"></use></svg>
             </button>
 
-            <button class="js-datepicker-prev-month" aria-label="previous month" data-button="button-datepicker-prevmonth">
+            <button class="moj-js-datepicker-prev-month" data-button="button-datepicker-prevmonth">
                 <span class="govuk-visually-hidden">Previous month</span>
                 <svg focusable="false" class="moj-datepicker-icon" aria-hidden="true" role="img"><use href="/assets/images/icons.stack.svg#chevron_left"></use></svg>
             </button>
         </div>
 
-        <h2 id="${titleId}" class="moj-datepicker__dialog__title  js-datepicker-month-year" aria-live="polite">June 2020</h2>
+        <h2 id="${titleId}" class="moj-datepicker__dialog__title moj-js-datepicker-month-year" aria-live="polite">June 2020</h2>
 
         <div class="moj-datepicker__dialog__navbuttons">
-            <button class="js-datepicker-next-month" aria-label="next month" data-button="button-datepicker-nextmonth">
+            <button class="moj-js-datepicker-next-month" data-button="button-datepicker-nextmonth">
                 <span class="govuk-visually-hidden">Next month</span>
                 <svg focusable="false" class="moj-datepicker-icon" aria-hidden="true" role="img"><use href="/assets/images/icons.stack.svg#chevron_right"></use></svg>
             </button>
 
-            <button class="js-datepicker-next-year" aria-label="next year" data-button="button-datepicker-nextyear">
+            <button class="moj-js-datepicker-next-year" data-button="button-datepicker-nextyear">
                 <span class="govuk-visually-hidden">Next year</span>
                 <svg focusable="false" class="moj-datepicker-icon" aria-hidden="true" role="img"><use href="/assets/images/icons.stack.svg#double_chevron_right"></use></svg>
             </button>
         </div>
       </div>
 
-      <table class="moj-datepicker__dialog__table  js-datepicker-grid" role="grid" aria-labelledby="${titleId}">
-      <caption class="moj-datepicker__dialog__table-caption">You can use the arrow keys to select a date</caption>
+      <table class="moj-datepicker__dialog__table moj-js-datepicker-grid" role="grid" aria-labelledby="${titleId}">
       <thead>
           <tr>
-          <th scope="col" abbr="Monday">Mo</th>
-          <th scope="col" abbr="Tuesday">Tu</th>
-          <th scope="col" abbr="Wednesday">We</th>
-          <th scope="col" abbr="Thursday">Th</th>
-          <th scope="col" abbr="Friday">Fr</th>
-          <th scope="col" abbr="Saturday">Sa</th>
-          <th scope="col" abbr="Sunday">Su</th>
+          <th scope="col" abbr="Monday">Mon</th>
+          <th scope="col" abbr="Tuesday">Tue</th>
+          <th scope="col" abbr="Wednesday">Wed</th>
+          <th scope="col" abbr="Thursday">Thu</th>
+          <th scope="col" abbr="Friday">Fri</th>
+          <th scope="col" abbr="Saturday">Sat</th>
+          <th scope="col" abbr="Sunday">Sun</th>
           </tr>
       </thead>
 
       <tbody></tbody>
       </table>
 
-      <div class="moj-datepicker__dialog__buttongroup">
-      <button type="button" class="govuk-button js-datepicker-ok" value="ok" data-button="button-datepicker-ok">Select</button>
-      <button type="button" class="govuk-button govuk-button--secondary js-datepicker-cancel" value="cancel" data-button="button-datepicker-cancel">Cancel</button>
+      <div class="govuk-button-group">
+        <button type="button" class="govuk-button moj-js-datepicker-ok" value="ok" data-button="button-datepicker-ok">Select</button>
+        <button type="button" class="govuk-button govuk-button--secondary moj-js-datepicker-cancel" value="cancel" data-button="button-datepicker-cancel">Cancel</button>
       </div>`
 }
 
@@ -272,14 +271,14 @@ Datepicker.prototype.formattedDateHuman = function (date) {
   return `${this.dayLabels[date.getDay()]} ${date.getDate()} ${this.monthLabels[date.getMonth()]} ${date.getFullYear()}`
 }
 
-Datepicker.prototype.firstButtonKeyup = function (event) {
+Datepicker.prototype.firstButtonKeydown = function (event) {
   if (event.keyCode === this.keycodes.tab && event.shiftKey) {
     this.lastButtonInDialog.focus()
     event.preventDefault()
   }
 }
 
-Datepicker.prototype.lastButtonKeyup = function (event) {
+Datepicker.prototype.lastButtonKeydown = function (event) {
   if (event.keyCode === this.keycodes.tab && !event.shiftKey) {
     this.firstButtonInDialog.focus()
     event.preventDefault()
@@ -397,7 +396,11 @@ Datepicker.prototype.openDialog = function () {
   this.dialogElement.classList.add('moj-datepicker__dialog--open')
 
   // position the dialog
-  this.dialogElement.style.left = `${this.$input.offsetWidth + 16}px`
+  // if input is wider than dialog pin it to the right
+  if(this.$input.offsetWidth > this.dialogElement.offsetWidth) {
+    this.dialogElement.style.right = `0px`
+  }
+  this.dialogElement.style.top = `${this.$input.offsetHeight + 16}px`
 
   // get the date from the input element
   if (this.$input.value.match(/^(\d{1,2})([-/,. ])(\d{1,2})[-/,. ](\d{4})$/)) {
