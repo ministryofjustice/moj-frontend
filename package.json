@@ -17,6 +17,7 @@
     "test:sass": "npm install node-sass && node-sass -q gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
     "test:docs": "npm run build:docs",
     "watch:11ty": "ENV='dev' eleventy --input=./docs --output=public --serve",
+    "watch:package": "gulp watch:package",
     "watch:webpack": "webpack --watch"
   },
   "repository": {
