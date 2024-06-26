@@ -1,19 +1,15 @@
 .moj-datepicker {
   position: relative;
+  @include govuk-font(16);
 
-  &--fixed-width {
-    .moj-datepicker-input__wrapper {
-      width: 215px;
-    }
-  }
+
 
   &__dialog {
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
-
     background-color: govuk-colour('white');
     clear: both;
     display: none;
-    padding: 8px;
+    padding: govuk-spacing(4);
     outline: 1px solid $govuk-border-colour;
     outline-offset: -1px;
     position: static;
@@ -187,18 +183,8 @@
       margin-top: 8px;
     }
 
-    &__buttongroup {
-      display: grid;
-      grid-gap: 0 8px;
-      margin-right: 0;
-      overflow: visible;
-      grid-template-columns: 1fr 1fr;
-
-      > * {
-        margin-left: 0;
-        margin-right: 0;
-        width: auto !important;
-      }
+    > .govuk-button-group {
+        margin-bottom: 0;
 
       .govuk-button {
         margin-bottom: 0;
@@ -221,6 +207,16 @@
   margin-bottom: 24px;
   overflow: visible;
 
+  .govuk-form-group {
+    width: 100%;
+  }
+
+  &--fixed {
+    .govuk-form-group {
+      width: auto;
+    }
+  }
+
   .govukInput {
     float: left;
     margin-bottom: 0;
@@ -233,10 +229,9 @@
     width: 32px;
   }
 
-  .govuk-form-group {
-    width: 100%;
-  }
+
 }
+
 
 @media (min-width: 768px) {
   .moj-datepicker {
@@ -250,9 +245,6 @@
 .moj-datepicker-button {
   background-color: govuk-colour('black');
   fill: govuk-colour('white');
-  position: absolute;
-  right: 0;
-  bottom: 0;
   height: 40px;
   padding-top: 6px;
   border: none;

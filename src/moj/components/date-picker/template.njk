@@ -3,7 +3,7 @@
 {% from "govuk/components/hint/macro.njk" import govukHint %}
 {% from "govuk/components/error-message/macro.njk" import govukErrorMessage %}
 
-<div class="govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} moj-datepicker {{ params.classes }}" data-module="moj-date-picker">
+<div class=" asdkmjbahkdfbk govuk-form-group {%- if params.errorMessage %} govuk-form-group--error{% endif %} moj-datepicker {{ params.classes }}" data-module="moj-date-picker">
   {{ govukLabel({
     html: params.label.html,
     text: params.label.text,
@@ -35,15 +35,26 @@
       visuallyHiddenText: params.errorMessage.visuallyHiddenText
     }) | indent(2) | trim }}
   {% endif %}
-  <div class="moj-datepicker-input__wrapper">
+ 
+  {% set fixedWidth = true %}
+  {% set widthClass = 'govuk-input--width-10' %}
+
+  {% if params.inputWidthClass == '' %}
+    {% set fixedWidth = false %}
+    {% set widthClass = '' %}
+  {% elif params.inputWidthClass %}
+    {% set fixedWidth = true %}
+    {% set widthClass = params.inputWidthClass %}
+  {% endif %}
+  <div class="moj-datepicker-input__wrapper {% if fixedWidth %}
+               moj-datepicker-input__wrapper--fixed {% endif %}">
     {{ govukInput({
-      classes: "govuk-input moj-js-datepicker-input",
+      classes: "govuk-input moj-js-datepicker-input " + widthClass,
       id: params.id,
       name: params.name,
       value: params.value,
       autocomplete: "off",
       attributes: {
-        "maxlength": "10",
         "data-mindate": params.minDate,
         "data-maxdate": params.maxDate
       }
