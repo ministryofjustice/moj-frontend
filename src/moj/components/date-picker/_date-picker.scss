@@ -1,270 +1,214 @@
 .moj-datepicker {
   position: relative;
   @include govuk-font(16);
-
-
-
-  &__dialog {
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
-    background-color: govuk-colour('white');
-    clear: both;
-    display: none;
-    padding: govuk-spacing(4);
-    outline: 1px solid $govuk-border-colour;
-    outline-offset: -1px;
-    position: static;
-    top: 0;
-    transition: background-color 0.2s, outline-color 0.2s;
-    width: 280px;
-    z-index: 2;
-
-    &__header {
-      position: relative;
-      text-align: center;
-      margin-bottom: 5px;
-
-      > :nth-child(1) {
-        position: absolute;
-        left: 5px;
-        top: -2px;
-
-        > :nth-child(2) {
-          margin-left: 4px;
-        }
-      }
-
-      > :nth-child(3) {
-        position: absolute;
-        right: 5px;
-        top: -2px;
-
-        > :nth-child(1) {
-          margin-right: 4px;
-        }
-      }
-    }
-
-    &__title {
-      font-size: 16px;
-      padding: 8px 0;
-      margin: 0 !important;
-    }
-
-    &__navbuttons {
-      button {
-        background-color: transparent;
-        color: $govuk-text-colour !important;
-        min-height: 40px;
-        margin: 0;
-        padding: 4px 4px 0 4px;
-        min-width:  32px;
-        border: none;
-        display: inline-block;
-        cursor: pointer;
-        outline: none;
-
-        .moj-datepicker-icon {
-          height: 32px;
-          padding: 0;
-          position: static;
-          width: 24px;
-        }
-
-        &:hover {
-          background-color: rgba(govuk-colour('yellow'), .5);
-        }
-
-        &:focus {
-          background-color: $govuk-focus-colour;
-          border-bottom: 4px solid govuk-colour('black');
-        }
-      }
-    }
-
-    &__table {
-      border-collapse: collapse;
-
-      tbody:focus-within {
-        outline: 2px solid $govuk-focus-colour;
-      }
-
-      td {
-        border: 0;
-        margin: 0;
-        outline: 0;
-        padding: 0;
-      }
-
-      th {
-        font-size: 16px;
-        color: $govuk-text-colour;
-      }
-
-      button {
-        background-color: transparent;
-        border-width: 0;
-        color: $govuk-text-colour;
-        min-height: 40px;
-        margin: 0;
-        padding: 0;
-        min-width: 40px;
-
-        font-size: 16px;
-
-        &:hover {
-          outline: 3px solid rgba(0,0,0,0);
-          color: $govuk-text-colour;
-          background-color: rgba(govuk-colour('yellow'), .5);
-          box-shadow: none;
-          text-decoration: none;
-          -webkit-box-decoration-break: clone;
-          box-decoration-break: clone;
-          cursor: pointer;
-        }
-
-        &:focus {
-          outline: 3px solid rgba(0,0,0,0);
-          color: $govuk-focus-text-colour;
-          background-color: $govuk-focus-colour;
-          border-bottom: 4px solid govuk-colour('black');
-          padding-top: 4px;
-          text-decoration: none;
-          -webkit-box-decoration-break: clone;
-          box-decoration-break: clone;
-        }
-
-        &[disabled="true"] {
-          background-color: govuk-colour('light-grey');
-          color: $govuk-text-colour;
-        }
-
-        &.moj-datepicker__current {
-          $moj-current-outline-width: 2px;
-          outline: $moj-current-outline-width solid govuk-colour('black') !important;
-          outline-offset: #{$moj-current-outline-width * -1};
-        }
-
-        &.moj-datepicker__current[tabindex="-1"] {
-          background: transparent;
-          color: currentColor;
-
-          &:hover {
-            background-color: rgba(govuk-colour('yellow'), .5);
-            cursor: pointer;
-          }
-        }
-
-        &.moj-datepicker__today {
-          font-weight: 700;
-
-          &::after {
-            background-color: currentColor;
-            border-radius: 4px;
-            content: '';
-            height: 4px;
-            margin-top: -1px;
-            margin-left: 1px;
-            position: absolute;
-            width: 4px;
-          }
-        }
-
-        &.moj-datepicker-selected:not(:focus) {
-          background-color: govuk-colour('black');
-          color: govuk-colour('white');
-        }
-      }
-    }
-
-    &__table-caption {
-      font-size: 14px;
-      caption-side: bottom;
-      line-height: 2;
-      margin-top: 8px;
-    }
-
-    > .govuk-button-group {
-        margin-bottom: 0;
-
-      .govuk-button {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  .govuk-label--m {
-    margin-bottom: 5px;
-  }
-
-  .govuk-hint {
-    margin-bottom: 10px;
-  }
 }
 
-.moj-datepicker-input__wrapper {
-  display: flex;
+.moj-datepicker-dialog {
+  display: none;
+  position: absolute;
+  top: 0;
+  min-width: 280px;
+  padding: govuk-spacing(4);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+  outline: 1px solid $govuk-border-colour;
+  outline-offset: -1px;
+  background-color: govuk-colour('white');
+  transition: background-color 0.2s, outline-color 0.2s;
+  z-index: 2;
+}
+
+.moj-datepicker-dialog__header {
   position: relative;
-  margin-bottom: 24px;
-  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: govuk-spacing(2);
+}
 
-  .govuk-form-group {
-    width: 100%;
+.moj-datepicker-dialog__title {
+  @include govuk-font(16);
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.moj-datepicker-dialog__navbuttons {
+  display: flex;
+  align-items: center;
+}
+
+.moj-datepicker-calendar {
+  border-collapse: collapse;
+  margin-bottom: govuk-spacing(4);
+
+  tbody:focus-within {
+    outline: 2px solid $govuk-focus-colour;
   }
 
-  &--fixed {
-    .govuk-form-group {
-      width: auto;
-    }
+  td {
+    border: 0;
+    margin: 0;
+    outline: 0;
+    padding: 0;
   }
 
-  .govukInput {
-    float: left;
-    margin-bottom: 0;
-    margin-right: -48px;
-    padding-right: 56px;
+  th {
+    @include govuk-font(16);
+    font-weight: bold;
+    color: $govuk-text-colour;
   }
-
-  .moj-datepicker-icon {
-    height: 24px;
-    width: 32px;
-  }
-
 
 }
 
+.moj-datepicker-dialog > .govuk-button-group {
+    margin-bottom: 0;
 
-@media (min-width: 768px) {
-  .moj-datepicker {
-    &__dialog {
-      position: absolute;
-      width: auto;
-    }
+  > * {
+    margin-bottom: 0;
   }
 }
 
 .moj-datepicker-button {
+  @include govuk-font(16);
+    background-color: transparent;
+    outline: 3px solid rgba(0, 0, 0, 0);
+    outline-offset: -3px;
+    border-width: 0;
+    color: $govuk-text-colour;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    width: 44px;
+    position: relative;
+
+    @media (forced-colors: active) {
+      // Don't show the bottom bar in forced-color modes as it blocks the outline
+      &:after {
+        display: none
+      }
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0px;
+      height: 4px;
+      left: 0;
+      right: 0;
+      background-color: transparent;
+    }
+
+    &:hover {
+      color: $govuk-text-colour;
+      background-color: $govuk-border-colour;
+      text-decoration: none;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      cursor: pointer;
+    }
+
+    &:focus {
+      color: govuk-colour('black');
+      background-color: govuk-colour('yellow');
+      outline-color: govuk-colour('yellow');
+      text-decoration: none;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      &:after {
+        background-color: govuk-colour('black');
+      }
+    }
+
+    &:focus:hover {
+      background-color: govuk-colour('mid-grey');
+    }
+
+    &[disabled],
+    &[disabled]:hover {
+      background-color: govuk-colour('light-grey');
+      color: govuk-colour('black');
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &.current {
+      background: govuk-colour('blue');
+      color: govuk-colour('white');
+      outline-color: govuk-colour('blue');
+      &:after {
+        background-color: govuk-colour('blue');
+      }
+    }
+
+    &.current[tabindex="-1"] {
+      background: transparent;
+      color: currentColor;
+      outline-color: transparent;
+      &:after {
+        background-color: transparent;
+      }
+    }
+
+    &.today {
+      border: 1px solid govuk-colour('black');
+    }
+
+    &.selected:not(:focus) {
+      background-color: govuk-colour('blue');
+      color: govuk-colour('white');
+      &:after {
+        background-color: govuk-colour('blue');
+      }
+    }
+}
+
+.moj-datepicker-input-wrapper {
+  position: relative;
+  display: flex;
+  margin-bottom: 24px;
+  overflow: visible;
+
+  > .govuk-form-group {
+    width: 100%;
+  }
+
+  &--fixed > .govuk-form-group {
+      width: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .moj-datepicker-dialog {
+    width: auto;
+  }
+}
+
+.moj-datepicker-toggle {
   background-color: govuk-colour('black');
-  fill: govuk-colour('white');
+  color: govuk-colour('white');
+  outline: 3px solid rgba(0, 0, 0, 0);
+  outline-offset: -3px;
   height: 40px;
   padding-top: 6px;
   border: none;
-  border-bottom: 4px solid govuk-colour('black');
-  outline: none;
+  border-bottom: 4px solid rgba(0, 0, 0, 0);
   cursor: pointer;
 
-  &:hover {
-    background-color: govuk-colour('mid-grey');
-    fill: govuk-colour('black');
-    border-bottom: 4px solid govuk-colour('mid-grey');
-  }
-
   &:focus {
-    background-color: $govuk-focus-colour;
-    fill: $govuk-focus-text-colour;
+    background-color: govuk-colour('yellow');
+    color: govuk-colour('black');
     border-bottom: 4px solid govuk-colour('black');
   }
 
-  @media (max-width: 768px) {
-    bottom: unset;
+  &:hover {
+    background-color: govuk-colour('mid-grey');
+    color: govuk-colour('black');
+    border-bottom: 4px solid govuk-colour('mid-grey');
+  }
+
+  &:focus:hover {
+    background-color: govuk-colour('mid-grey');
+    color: govuk-colour('black');
+    border-bottom: 4px solid govuk-colour('black');
   }
 }
