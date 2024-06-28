@@ -150,7 +150,7 @@
     }
 
     &.today {
-      border: 1px solid govuk-colour('black');
+      border: 2px solid govuk-colour('black');
     }
 
     &.selected:not(:focus) {

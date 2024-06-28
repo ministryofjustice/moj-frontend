@@ -63,7 +63,6 @@ function Datepicker($module, config) {
 
   this.$module = $module
   this.$input = $module.querySelector('.moj-js-datepicker-input')
-  this.$calendarButton = $module.querySelector('.moj-js-datepicker-toggle')
 }
 
 /**
@@ -94,7 +93,9 @@ Datepicker.prototype.initControls = function () {
 
   this.dialogElement = dialog
   this.$input.insertAdjacentElement('afterend', this.dialogElement)
+  this.$input.parentElement.insertAdjacentHTML('afterend', this.createToggleMarkup() )
 
+  this.$calendarButton = this.$module.querySelector('.moj-js-datepicker-toggle')
   this.dialogTitleNode = this.dialogElement.querySelector('.moj-js-datepicker-month-year')
 
   this.setMinAndMaxDatesOnCalendar()
@@ -154,6 +155,22 @@ Datepicker.prototype.initControls = function () {
   this.updateCalendar()
 }
 
+Datepicker.prototype.createToggleMarkup = function() {
+  return `<button class="moj-datepicker-toggle moj-js-datepicker-toggle" type="button" aria-haspopup="dialog">
+            <span class="govuk-visually-hidden">Choose date</span>
+            <svg width="32" height="24" focusable="false" class="moj-datepicker-icon" aria-hidden="true" role="img" viewBox="0 0 22 22">
+              <path
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M16.1333 2.93333H5.86668V4.4C5.86668 5.21002 5.21003 5.86667 4.40002 5.86667C3.59 5.86667 2.93335 5.21002 2.93335 4.4V2.93333H2C0.895431 2.93333 0 3.82877 0 4.93334V19.2667C0 20.3712 0.89543 21.2667 2 21.2667H20C21.1046 21.2667 22 20.3712 22 19.2667V4.93333C22 3.82876 21.1046 2.93333 20 2.93333H19.0667V4.4C19.0667 5.21002 18.41 5.86667 17.6 5.86667C16.79 5.86667 16.1333 5.21002 16.1333 4.4V2.93333ZM20.5333 8.06667H1.46665V18.8C1.46665 19.3523 1.91436 19.8 2.46665 19.8H19.5333C20.0856 19.8 20.5333 19.3523 20.5333 18.8V8.06667Z"
+              ></path>
+              <rect x="3.66669" width="1.46667" height="5.13333" rx="0.733333" fill="currentColor"></rect>
+              <rect x="16.8667" width="1.46667" height="5.13333" rx="0.733333" fill="currentColor"></rect>
+            </svg>
+          </button>`
+}
+
 Datepicker.prototype.createDialogMarkup = function (titleId) {
   return `<div class="moj-datepicker-dialog__header">
         <div class="moj-datepicker-dialog__navbuttons">
@@ -196,13 +213,13 @@ Datepicker.prototype.createDialogMarkup = function (titleId) {
       <table class="moj-datepicker-calendar moj-js-datepicker-grid" role="grid" aria-labelledby="${titleId}">
       <thead>
           <tr>
-          <th scope="col" abbr="Monday">Mon</th>
-          <th scope="col" abbr="Tuesday">Tue</th>
-          <th scope="col" abbr="Wednesday">Wed</th>
-          <th scope="col" abbr="Thursday">Thu</th>
-          <th scope="col" abbr="Friday">Fri</th>
-          <th scope="col" abbr="Saturday">Sat</th>
-          <th scope="col" abbr="Sunday">Sun</th>
+            <th scope="col"><span aria-hidden="true">Mon</span><span class="govuk-visually-hidden">Monday</span></th>
+            <th scope="col"><span aria-hidden="true">Tue</span><span class="govuk-visually-hidden">Tuesday</span></th>
+            <th scope="col"><span aria-hidden="true">Wed</span><span class="govuk-visually-hidden">Wednesday</span></th>
+            <th scope="col"><span aria-hidden="true">Thu</span><span class="govuk-visually-hidden">Thursday</span></th>
+            <th scope="col"><span aria-hidden="true">Fri</span><span class="govuk-visually-hidden">Friday</span></th>
+            <th scope="col"><span aria-hidden="true">Sat</span><span class="govuk-visually-hidden">Saturday</span></th>
+            <th scope="col"><span aria-hidden="true">Sun</span><span class="govuk-visually-hidden">Sunday</span></th>
           </tr>
       </thead>
 
@@ -539,7 +556,13 @@ DSCalendarDay.prototype.init = function () {
 }
 
 DSCalendarDay.prototype.update = function (day, hidden, disabled) {
-  this.button.innerHTML = day.getDate()
+  const dateOptions = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+  }
+  this.button.innerHTML = `<span class="govuk-visually-hidden">${day.toLocaleDateString('en-GB', dateOptions )}</span><span aria-hidden="true">${day.getDate()}</span>`
   this.date = new Date(day)
 
   if (disabled) {
