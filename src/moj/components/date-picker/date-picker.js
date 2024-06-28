@@ -174,7 +174,7 @@ Datepicker.prototype.createToggleMarkup = function() {
 Datepicker.prototype.createDialogMarkup = function (titleId) {
   return `<div class="moj-datepicker-dialog__header">
         <div class="moj-datepicker-dialog__navbuttons">
-            <button class="moj-datepicker-button moj-js-datepicker-prev-year" data-button="button-datepicker-prevyear">
+            <button class="moj-datepicker-button moj-js-datepicker-prev-year">
                 <span class="govuk-visually-hidden">Previous year</span>
                 <svg width="44" height="40" viewBox="0 0 44 40" fill="none" fill="none" focusable="false" aria-hidden="true" role="img">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M23.1643 20L28.9572 14.2071L27.5429 12.7929L20.3358 20L27.5429 27.2071L28.9572 25.7929L23.1643 20Z" fill="currentColor"/>
@@ -182,7 +182,7 @@ Datepicker.prototype.createDialogMarkup = function (titleId) {
                 </svg>
             </button>
 
-            <button class="moj-datepicker-button moj-js-datepicker-prev-month" data-button="button-datepicker-prevmonth">
+            <button class="moj-datepicker-button moj-js-datepicker-prev-month">
                 <span class="govuk-visually-hidden">Previous month</span>
 <svg width="44" height="40" viewBox="0 0 44 40" fill="none" focusable="false" aria-hidden="true" role="img">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M20.5729 20L25.7865 14.2071L24.5137 12.7929L18.0273 20L24.5137 27.2071L25.7865 25.7929L20.5729 20Z" fill="currentColor"/>
@@ -193,14 +193,14 @@ Datepicker.prototype.createDialogMarkup = function (titleId) {
         <h2 id="${titleId}" class="moj-datepicker-dialog__title moj-js-datepicker-month-year" aria-live="polite">June 2020</h2>
 
         <div class="moj-datepicker-dialog__navbuttons">
-            <button class="moj-datepicker-button moj-js-datepicker-next-month" data-button="button-datepicker-nextmonth">
+            <button class="moj-datepicker-button moj-js-datepicker-next-month">
                 <span class="govuk-visually-hidden">Next month</span>
                 <svg width="44" height="40" viewBox="0 0 44 40" fill="none"  focusable="false" aria-hidden="true" role="img">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M23.4271 20L18.2135 14.2071L19.4863 12.7929L25.9727 20L19.4863 27.2071L18.2135 25.7929L23.4271 20Z" fill="currentColor"/>
                 </svg>
             </button>
 
-            <button class="moj-datepicker-button moj-js-datepicker-next-year" data-button="button-datepicker-nextyear">
+            <button class="moj-datepicker-button moj-js-datepicker-next-year">
                 <span class="govuk-visually-hidden">Next year</span>
                 <svg width="44" height="40" viewBox="0 0 44 40" fill="none" fill="none" focusable="false" aria-hidden="true" role="img">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M20.8357 20L15.0428 14.2071L16.4571 12.7929L23.6642 20L16.4571 27.2071L15.0428 25.7929L20.8357 20Z" fill="currentColor"/>
@@ -227,8 +227,8 @@ Datepicker.prototype.createDialogMarkup = function (titleId) {
       </table>
 
       <div class="govuk-button-group">
-        <button type="button" class="govuk-button moj-js-datepicker-ok" value="ok" data-button="button-datepicker-ok">Select</button>
-        <button type="button" class="govuk-button govuk-button--secondary moj-js-datepicker-cancel" value="cancel" data-button="button-datepicker-cancel">Cancel</button>
+        <button type="button" class="govuk-button moj-js-datepicker-ok" value="ok">Select</button>
+        <button type="button" class="govuk-button govuk-button--secondary moj-js-datepicker-cancel" value="cancel">Cancel</button>
       </div>`
 }
 
