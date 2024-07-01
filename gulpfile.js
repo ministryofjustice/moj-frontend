@@ -3,15 +3,16 @@ const requireDir = require("require-dir");
 
 requireDir("./gulp");
 
-gulp.task(
-  "build:package",
-  gulp.series(
+const buildPackage = gulp.series(
     "build:clean",
     "build:copy-files",
     "build:javascript",
     "build:javascript-with-jquery",
     "build:compress-images",
-  )
+  );
+
+gulp.task(
+  "build:package", buildPackage
 );
 
 gulp.task(
@@ -24,3 +25,11 @@ gulp.task(
     "dist:zip"
   )
 );
+
+gulp.task('watch:package', function() {
+  gulp.watch([
+    'src/moj/components/**/*.scss',
+    'src/moj/components/**/*.js'
+  ],
+  buildPackage);
+})
