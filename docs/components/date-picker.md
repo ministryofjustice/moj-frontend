@@ -5,7 +5,7 @@ title: Date picker
 
 <span class="govuk-caption-xl">The date picker component allows users to pick a date by entering a date or choosing from a calendar.</span>
 
-{% example "/examples/date-picker", 220 %}
+{% example "/examples/date-picker", 590 %}
 
 ## When to use
 
@@ -36,7 +36,7 @@ You can set allowed date ranges if you need a user to pick a date within a date 
 
 Users may type unavailable or disabled dates in the input field, so error messages will be necessary.
 
-{% example "/examples/date-picker", 220 %}
+{% example "/examples/date-picker", 590 %}
 
 INCLUDE SOMETHING HERE === You can disable specific dates (e.g. 17/10/2024, 18/10/2024, 19/10/2024).
 
@@ -52,19 +52,19 @@ When stacking 2 date pickers horizontally or vertically, apply padding that is c
 
 Multiple date picker components can be vertically stacked. This is useful when used in vertical filters or forms.
 
-{% example "/examples/date-picker", 220 %}
+{% example "/examples/date-picker", 590 %}
 
 ### Horizontally stacked
 
 Multiple date picker components can be horizontally displayed. This is useful when used in horizontal filters.
 
-{% example "/examples/date-picker", 220 %}
+{% example "/examples/date-picker", 590 %}
 
 ## Errors
 
 Follow the guidance in the [GOV.UK Design System](https://design-system.service.gov.uk/components/error-message/) for error messages.
 
-{% example "/examples/date-picker", 220 %}
+{% example "/examples/date-picker", 590 %}
 
 ### Error messages in English and Welsh
 
