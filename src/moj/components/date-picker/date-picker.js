@@ -142,7 +142,9 @@ Datepicker.prototype.initControls = function () {
     event.preventDefault()
     this.closeDialog(event)
   })
-  this.okButton.addEventListener('click', () => this.selectDate(this.currentDate))
+  this.okButton.addEventListener('click', () => {
+      this.selectDate(this.currentDate)
+  })
 
   const dialogButtons = this.dialogElement.querySelectorAll('button:not([disabled="true"])')
   // eslint-disable-next-line prefer-destructuring
@@ -371,7 +373,8 @@ Datepicker.prototype.updateCalendar = function () {
   const day = this.currentDate
 
   const firstOfMonth = new Date(day.getFullYear(), day.getMonth(), 1)
-  const dayOfWeek = firstOfMonth.getDay() === 0 ? 6 : firstOfMonth.getDay() - 1 // Change logic to make Monday first day of week, i.e. 0
+  // const dayOfWeek = firstOfMonth.getDay() === 0 ? 6 : firstOfMonth.getDay() - 1 // Change logic to make Monday first day of week, i.e. 0
+  const dayOfWeek = firstOfMonth.getDay()
 
   firstOfMonth.setDate(firstOfMonth.getDate() - dayOfWeek)
 
@@ -389,6 +392,7 @@ Datepicker.prototype.updateCalendar = function () {
 }
 
 Datepicker.prototype.setCurrentDate = function (focus = true) {
+  console.log('setCurrentDate')
   const { currentDate } = this
 
   this.calendarDays.forEach(calendarDay => {
@@ -402,7 +406,7 @@ Datepicker.prototype.setCurrentDate = function (focus = true) {
     const today = new Date()
     today.setHours(0, 0, 0, 0)
 
-    if (calendarDayDate.getTime() === currentDate.getTime() && !calendarDay.disabled) {
+    if (calendarDayDate.getTime() === currentDate.getTime() /* && !calendarDay.button.disabled */) {
       if (focus) {
         calendarDay.button.setAttribute('tabindex', 0)
         calendarDay.button.focus()
@@ -438,6 +442,10 @@ Datepicker.prototype.setCurrentDate = function (focus = true) {
 }
 
 Datepicker.prototype.selectDate = function (date) {
+  if (this.isDisabledDate(date)) {
+    return
+  }
+
   this.$calendarButton.querySelector('span').innerText = `Choose date. Selected date is ${this.formattedDateHuman(
     date,
   )}`
@@ -473,7 +481,7 @@ Datepicker.prototype.openDialog = function () {
   if(this.$input.offsetWidth > this.dialogElement.offsetWidth) {
     this.dialogElement.style.right = `0px`
   }
-  this.dialogElement.style.top = `${this.$input.offsetHeight + 16}px`
+  this.dialogElement.style.top = `${this.$input.offsetHeight + 3}px`
 
   // get the date from the input element
   if (this.$input.value.match(/^(\d{1,2})([-/,. ])(\d{1,2})[-/,. ](\d{4})$/)) {
@@ -611,9 +619,9 @@ DSCalendarDay.prototype.update = function (day, hidden, disabled) {
   this.date = new Date(day)
 
   if (disabled) {
-    this.button.setAttribute('disabled', true)
+    this.button.setAttribute('aria-disabled', true)
   } else {
-    this.button.removeAttribute('disabled')
+    this.button.removeAttribute('aria-disabled')
   }
 
   if (hidden) {

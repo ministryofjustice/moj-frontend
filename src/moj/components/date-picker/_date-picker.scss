@@ -9,9 +9,10 @@
   top: 0;
   min-width: 280px;
   padding: govuk-spacing(4);
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
-  outline: 1px solid $govuk-border-colour;
-  outline-offset: -1px;
+  /* box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15); */
+  outline: 2px solid $govuk-border-colour;
+  outline: 2px solid govuk-colour('black');
+  outline-offset: -2px;
   background-color: govuk-colour('white');
   transition: background-color 0.2s, outline-color 0.2s;
   z-index: 2;
@@ -98,6 +99,14 @@
       background-color: transparent;
     }
 
+    &[aria-disabled="true"],
+    &[aria-disabled="true"]:hover {
+      background-color: govuk-colour('light-grey');
+      color: govuk-colour('black');
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
     &:hover {
       color: $govuk-text-colour;
       background-color: $govuk-border-colour;
@@ -123,15 +132,7 @@
       background-color: govuk-colour('mid-grey');
     }
 
-    &[disabled],
-    &[disabled]:hover {
-      background-color: govuk-colour('light-grey');
-      color: govuk-colour('black');
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    &.current {
+    &.current:not(:focus) {
       background: govuk-colour('blue');
       color: govuk-colour('white');
       outline-color: govuk-colour('blue');
