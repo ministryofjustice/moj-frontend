@@ -26,9 +26,9 @@ Do not use if users need to enter a memorable date (e.g. their date of birth) or
 The GOV.UK Design System has a [date input component](https://design-system.service.gov.uk/components/date-input/) and a [pattern for asking users for dates](https://design-system.service.gov.uk/patterns/dates/).
 
 ## Hint text
-INCLUDE SOMETHING HERE === The date picker default hint text is 17/05/2024. Always include a full-stop at the end.
+ADD SOMETHING HERE === The date picker default hint text is 17/05/2024. Always include a full-stop at the end.
 
-INLUDE SOMETHING HERE === If using hint text that is different from the default date, use a date that is within the context of your service. And, consider using numbers that are visually different to avoid confusion for some users. For example, 08/03/2023 can be confusing for some users.
+ADD SOMETHING HERE === If using hint text that is different from the default date, use a date that is within the context of your service. And, consider using numbers that are visually different to avoid confusion for some users. For example, 08/03/2023 can be confusing for some users.
 
 ## Disabled dates
 
@@ -38,9 +38,11 @@ Users may type unavailable or disabled dates in the input field, so error messag
 
 {% example "/examples/date-picker", 590 %}
 
-INCLUDE SOMETHING HERE === You can disable specific dates (e.g. 17/10/2024, 18/10/2024, 19/10/2024).
+ADD SOMETHING HERE === You can disable specific dates (e.g. 17/10/2024, 18/10/2024, 19/10/2024).
 
-INCLUDE SOMETHING HERE === You can disable days of the week (e.g. every Saturday and Sunday).
+ADD SOMETHING HERE === You can disable days of the week (e.g. every Saturday and Sunday).
+
+ADD SOMETHING HERE === Date pickers with lots of disabled dates isn't a good experience for a user. For example, if using a date picker to book an appointment, it may be easier for users to show them a list of available appointments as radio buttons.
 
 ## From and to dates
 
@@ -95,6 +97,11 @@ Follow the guidance in the [GOV.UK Design System](https://design-system.service.
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header">If the date entered is incomplete</th>
       <td class="govuk-table__cell">Enter a complete date, for example, 17/5/2024</td>
+      <td class="govuk-table__cell">Nodwch ddyddiad cyflawn, er enghraifft, 17/5/2024</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">If the date entered is a disabled date</th>
+      <td class="govuk-table__cell">ADD SOMETHING HERE</td>
       <td class="govuk-table__cell">Nodwch ddyddiad cyflawn, er enghraifft, 17/5/2024</td>
     </tr>
   </tbody>
