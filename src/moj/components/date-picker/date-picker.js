@@ -47,6 +47,8 @@ function Datepicker($module, config) {
   this.currentDate = new Date()
   this.currentDate.setHours(0, 0, 0, 0)
   this.calendarDays = []
+  this.disabledDates = []
+  this.disabledDays = []
 
   this.keycodes = {
     tab: 9,
@@ -99,6 +101,8 @@ Datepicker.prototype.initControls = function () {
   this.dialogTitleNode = this.dialogElement.querySelector('.moj-js-datepicker-month-year')
 
   this.setMinAndMaxDatesOnCalendar()
+  this.setDisabledDates()
+  this.setDisabledDays()
 
   // create calendar
   const tbody = this.dialogElement.querySelector('tbody')
@@ -258,6 +262,55 @@ Datepicker.prototype.setMinAndMaxDatesOnCalendar = function () {
   }
 }
 
+Datepicker.prototype.setDisabledDates = function() {
+  if(this.$input.dataset.disableddates) {
+    this.disabledDates = this.$input.dataset.disableddates
+                .replace(/\s+/, ' ')
+                .split(' ')
+                .map(item => this.formattedDateFromString(item, null))
+                .filter(item => item)
+  }
+}
+
+Datepicker.prototype.setDisabledDays = function () {
+  if (this.$input.dataset.disableddays) {
+    // lowercase and arrange dayLabels to put indexOf sunday == 0 for comparison
+    // with getDay() function
+    let weekDays = this.dayLabels.map(item => item.toLowerCase())
+    weekDays.unshift(weekDays.pop())
+
+    this.disabledDays = this.$input.dataset.disableddays
+      .replace(/\s+/, ' ')
+      .toLowerCase()
+      .split(' ')
+      .map(item => weekDays.indexOf(item))
+      .filter(item => item !== -1)
+  }
+}
+
+Datepicker.prototype.isDisabledDate = function (date) {
+
+    if (this.minDate && this.minDate > date) {
+        return true
+    }
+
+    if (this.maxDate && this.maxDate < date) {
+        return true
+    }
+
+    for (const disabledDate of this.disabledDates) {
+        if (date.toDateString() === disabledDate.toDateString()) {
+            return true
+        }
+    }
+
+    if (this.disabledDays.includes(date.getDay())) {
+      return true
+    }
+
+    return false;
+}
+
 Datepicker.prototype.formattedDateFromString = function (dateString, fallback = new Date()) {
   let formattedDate = null
   const dateFormatPattern = /(\d{1,2})([-/,. ])(\d{1,2})[-/,. ](\d{4})/
@@ -327,15 +380,7 @@ Datepicker.prototype.updateCalendar = function () {
   // loop through our days
   for (let i = 0; i < this.calendarDays.length; i++) {
     const hidden = thisDay.getMonth() !== day.getMonth()
-
-    let disabled
-
-    if (thisDay < this.minDate) {
-      disabled = true
-    }
-    if (thisDay > this.maxDate) {
-      disabled = true
-    }
+    const disabled = this.isDisabledDate(thisDay)
 
     this.calendarDays[i].update(thisDay, hidden, disabled)
 
