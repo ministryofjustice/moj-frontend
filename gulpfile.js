@@ -16,14 +16,13 @@ gulp.task(
 );
 
 gulp.task(
-  "build:dist",
-  gulp.series(
-    "dist:clean",
-    "dist:javascript",
-    "dist:css",
-    "dist:assets",
-    "dist:zip"
-  )
+  "build:dist", gulp.series(
+                  "dist:clean",
+                  "dist:javascript",
+                  "dist:css",
+                  "dist:assets",
+                  "dist:zip"
+                )
 );
 
 gulp.task(
@@ -46,12 +45,11 @@ gulp.task(
 )
 
 gulp.task(
-  "build:docs",
-  gulp.series(
-    "docs:copy-dependencies",
-    "docs:copy-vendor",
-    buildPackage
-  )
+  "build:docs", gulp.series(
+                  "docs:copy-dependencies",
+                  "docs:copy-vendor",
+                  buildPackage
+                )
 )
 
 gulp.task('watch:package', function() {
