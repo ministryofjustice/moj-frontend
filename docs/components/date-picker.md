@@ -113,7 +113,27 @@ Make sure you use error summaries and error messages for each text field. Even i
 
 ## Examples
 
-Text
+### Filtering information with a date picker
+
+<p><img src="/assets/images/date-picker-filter-example.svg" alt="#"></p>
+
+Date pickers can be used as a way to filter information on a page.
+
+Use one date picker to show information related to a single date, or use two date pickers to show information within a date range.
+
+[View example](#)
+
+### Asking a question with a date picker
+
+<p><img src="/assets/images/date-picker-question-example.svg" alt="#"></p>
+
+Date pickers can be used within the conventional one-question-per-page approach for GOV.UK services.
+
+There are a number of ways that dates can be asked for and provided, inc. using a date input field, a date picker, or even as a list of radio buttons.
+
+Test your product or service with users to see which work best for their needs.
+
+[View example](#)
 
 ## Considerations
 
