@@ -1,9 +1,9 @@
 import { initAll as initGOVUKFrontend } from "govuk-frontend/dist/govuk/all.mjs";
-import MOJFrontend from "../package/moj/all.js";
+import MOJFrontend from "../../../package/moj/all.js";
 
-import Cookies from "./javascript/cookies";
-import Copy from "./javascript/copy";
-import Tabs from "./javascript/tabs";
+import Cookies from "./cookies";
+import Copy from "./copy";
+import Tabs from "./tabs";
 
 initGOVUKFrontend();
 MOJFrontend.initAll();

@@ -9,6 +9,8 @@ const nunjucks = require("nunjucks");
 const path = require("path");
 const { execSync } = require("child_process");
 const releasePackage = require('./package/package.json');
+const sass = require("sass");
+const esbuild = require('esbuild');
 
 module.exports = function (eleventyConfig) {
   /*
@@ -26,10 +28,7 @@ module.exports = function (eleventyConfig) {
     "docs/_includes/",
     "node_modules/govuk-frontend/dist/",
     "node_modules/@ministryofjustice/frontend/",
-
   ];
-
-  console.log(templatePaths);
 
   const nunjucksEnv = nunjucks.configure(templatePaths);
 
@@ -163,21 +162,76 @@ module.exports = function (eleventyConfig) {
     return inputPath.split("/").slice(1, -1).join("/") + "/script.js";
   });
 
+  // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget("src/moj/components/**/*.njk");
+  // Rebuild when gulp has processed component js to the package dir
+  eleventyConfig.addWatchTarget("package/moj/all.js");
 
-  	eleventyConfig.setServerOptions({
-		  liveReload: true,
-		  domDiff: true,
-  		port: 8080,
-		// Additional files to watch that will trigger server updates
-		// Accepts an Array of file paths or globs (passed to `chokidar.watch`).
-		// Works great with a separate bundler writing files to your output folder.
-		// e.g. `watch: ["_site/**/*.css"]`
-		watch: ["public/assets/**/*"],
-		// Show local network IP addresses for device testing
-		showAllHosts: true,
-		// Show the dev server version number on the command line
-		showVersion: true,
+   // Allow 11ty to watch and compile the docs site SCSS
+  eleventyConfig.addTemplateFormats("scss");
+  eleventyConfig.addExtension("scss", {
+    outputFileExtension: "css",
+    compile: async function (inputContent, inputPath) {
+      // Skip files like _fileName.scss
+      let parsed = path.parse(inputPath);
+      if (parsed.name.startsWith("_")) {
+        return;
+      }
 
+      // Run file content through Sass
+      let result = sass.compileString(inputContent, {
+        loadPaths: [parsed.dir, ".", "../", "../../", "../../../", "node_modules"],
+        sourceMap: false, // or true, your choice!
+      });
+
+      // Allow included files from @use or @import to
+      // trigger rebuilds when using --incremental
+      this.addDependencies(inputPath, result.loadedUrls);
+
+      return async () => {
+        return result.css;
+      };
+    },
+  });
+
+  // Allow 11ty to watch and parse the docs site JS
+  eleventyConfig.addTemplateFormats('js');
+  eleventyConfig.addExtension('js', {
+    outputFileExtension: 'js',
+    compile: async (content, path) => {
+      // Only process the all.js file, the others are imported
+      if (!path.includes('all')) {
+        return;
+      }
+
+      return async () => {
+        let output = await esbuild.build({
+          target: 'es6',
+          entryPoints: [path],
+          minify: true,
+          bundle: true,
+          write: false,
+        });
+
+        return output.outputFiles[0].text;
+      }
+    }
+  });
+
+  // Copy the docs images to the public assets dir
+  eleventyConfig.addPassthroughCopy( { "docs/assets/images/": "assets/images/"});
+  eleventyConfig.setServerPassthroughCopyBehavior('copy')
+
+  // Give gulp a little time..
+  eleventyConfig.setWatchThrottleWaitTime(100);
+
+  eleventyConfig.setServerOptions({
+    liveReload: true,
+    domDiff: false,
+    port: 8080,
+    // Show local network IP addresses for device testing
+    showAllHosts: true,
+    // Show the dev server version number on the command line
+    showVersion: true,
 	});
 };

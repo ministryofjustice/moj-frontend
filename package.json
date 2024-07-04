@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "prepare": "husky",
-    "build:docs": "npm run build:package && webpack && eleventy --input=./docs --output=public",
+    "build:docs": "gulp build:docs && eleventy --input=./docs --output=public",
     "build:dist": "gulp build:dist",
     "build:package": "gulp build:package",
     "ci:release": "HUSKY=0 CI=true semantic-release --debug",
@@ -16,8 +16,7 @@
     "test": "npm-run-all --parallel test:*",
     "test:sass": "npm install node-sass && node-sass -q gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
     "test:docs": "npm run build:docs",
-    "watch:11ty": "ENV='dev' eleventy --input=./docs --output=public --serve",
-    "watch:package": "gulp watch:package",
+    "watch:11ty": "eleventy --input=./docs --output=public --serve --watch",
     "watch:webpack": "webpack --watch"
   },
   "repository": {
@@ -25,6 +24,7 @@
     "url": "https://github.com/ministryofjustice/moj-frontend.git"
   },
   "author": "MOJ Digital & Technology",
+  "license": "MIT",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/",
