@@ -17,7 +17,7 @@
     "test:sass": "npm install node-sass && node-sass -q gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
     "test:docs": "npm run build:docs",
     "watch:11ty": "ENV='dev' eleventy --input=./docs --output=public --serve",
-    "watch:package": "gulp watch:package"
+    "watch:package": "gulp watch:dev"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,7 @@
     "gulp": "^4.0.2",
     "gulp-cache": "^1.1.3",
     "gulp-concat": "^2.6.1",
+    "gulp-esbuild": "^0.12.1",
     "gulp-imagemin": "^9.1.0",
     "gulp-umd": "^2.0.0",
     "moment": "^2.29.4",
