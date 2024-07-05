@@ -9,14 +9,28 @@ const nunjucks = require("nunjucks");
 const path = require("path");
 const { execSync } = require("child_process");
 const releasePackage = require('./package/package.json');
+const sass = require("sass");
+const esbuild = require('esbuild');
 
 module.exports = function (eleventyConfig) {
-  const nunjucksEnv = nunjucks.configure([
+  /*
+   * If the node env is 'dev' then we include the src dir allowing components
+   * under development to be watched and loaded
+   */
+  const templatePaths = process.env.ENV === 'dev' ? [
+    ".",
+    "src",
+    "docs/_includes/",
+    "node_modules/govuk-frontend/dist/",
+    "node_modules/@ministryofjustice/frontend/",
+  ] : [
     ".",
     "docs/_includes/",
     "node_modules/govuk-frontend/dist/",
     "node_modules/@ministryofjustice/frontend/",
-  ]);
+  ];
+
+  const nunjucksEnv = nunjucks.configure(templatePaths);
 
   Object.entries({
     ...eleventyConfig.nunjucksFilters,
@@ -146,5 +160,30 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("getScriptPath", function (inputPath) {
     return inputPath.split("/").slice(1, -1).join("/") + "/script.js";
+  });
+
+  // Rebuild when a change is made to a component template file
+  eleventyConfig.addWatchTarget("src/moj/components/**/*.njk");
+
+  // Copy the docs images to the public assets dir
+  eleventyConfig.addPassthroughCopy( { "docs/assets/images/": "assets/images/"});
+  eleventyConfig.setServerPassthroughCopyBehavior('copy')
+
+  // Give gulp a little time..
+  eleventyConfig.setWatchThrottleWaitTime(100);
+
+  eleventyConfig.setServerOptions({
+    liveReload: true,
+    domDiff: false,
+    port: 8080,
+    // Reload once assets have been rebuilt by gulp
+    watch: [
+      'public/assets/stylesheets/application.css',
+      'public/assets/javascript/all.js'
+    ],
+    // Show local network IP addresses for device testing
+    showAllHosts: true,
+    // Show the dev server version number on the command line
+    showVersion: true,
   });
 };

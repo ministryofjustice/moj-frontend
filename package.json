@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "prepare": "husky",
-    "build:docs": "npm run build:package && webpack && eleventy --input=./docs --output=public",
+    "build:docs": "gulp build:docs && eleventy --input=./docs --output=public",
     "build:dist": "gulp build:dist",
     "build:package": "gulp build:package",
     "ci:release": "HUSKY=0 CI=true semantic-release --debug",
@@ -16,8 +16,8 @@
     "test": "npm-run-all --parallel test:*",
     "test:sass": "npm install node-sass && node-sass -q gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
     "test:docs": "npm run build:docs",
-    "watch:11ty": "eleventy --input=./docs --output=public --serve --watch",
-    "watch:webpack": "webpack --watch"
+    "watch:11ty": "ENV='dev' eleventy --input=./docs --output=public --serve",
+    "watch:package": "gulp watch:dev"
   },
   "repository": {
     "type": "git",
@@ -39,10 +39,12 @@
     "@11ty/eleventy": "^2.0.0",
     "clipboard": "^2.0.8",
     "del": "^7.0.0",
+    "esbuild": "^0.23.0",
     "govuk-frontend": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-cache": "^1.1.3",
     "gulp-concat": "^2.6.1",
+    "gulp-esbuild": "^0.12.1",
     "gulp-imagemin": "^9.1.0",
     "gulp-umd": "^2.0.0",
     "moment": "^2.29.4",
@@ -60,10 +62,8 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^11.0.0",
     "autoprefixer": "^10.4.0",
-    "babel-loader": "^9.0.0",
     "commitizen": "^4.2.5",
     "copy-webpack-plugin": "^12.0.0",
-    "css-loader": "^6.0.0",
     "cssnano": "^6.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "gulp-postcss": "^10.0.0",
@@ -78,10 +78,7 @@
     "mini-css-extract-plugin": "^2.0.0",
     "npm-run-all2": "^6.0.0",
     "postcss": "^8.4.31",
-    "sass-loader": "^14.0.0",
-    "semantic-release": "^23.0.0",
-    "webpack": "^5.76.0",
-    "webpack-cli": "^5.0.0"
+    "semantic-release": "^23.0.0"
   },
   "config": {
     "commitizen": {
