@@ -36,11 +36,15 @@ You can set allowed date ranges if you need a user to pick a date within a date 
 
 Users may type unavailable or disabled dates in the input field, so error messages will be necessary.
 
-{% example "/examples/date-picker", 590 %}
+{% example "/examples/date-picker-min-max", 590 %}
 
 ADD SOMETHING HERE === You can disable specific dates (e.g. 17/10/2024, 18/10/2024, 19/10/2024).
 
+{% example "/examples/date-picker-disabled-dates", 590 %}
+
 ADD SOMETHING HERE === You can disable days of the week (e.g. every Saturday and Sunday).
+
+{% example "/examples/date-picker-disabled-days", 590 %}
 
 ADD SOMETHING HERE === Date pickers with lots of disabled dates isn't a good experience for a user. For example, if using a date picker to book an appointment, it may be easier for users to show them a list of available appointments as radio buttons.
 

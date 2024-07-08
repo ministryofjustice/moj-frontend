@@ -1,7 +1,6 @@
 ---
 layout: layouts/example.njk
-title: Date Picker (example)
-arguments: date-picker
+title: Date Picker Disabled Days (example)
 ---
 
 {%- from "moj/components/date-picker/macro.njk" import mojDatePicker -%}
@@ -14,5 +13,6 @@ arguments: date-picker
   },
   hint: {
     text: "For example, 17/5/2024."
-  }
+  },
+  disabledDays: "saturday sunday"
 }) }}
