@@ -27,10 +27,12 @@ function Datepicker($module, config) {
   const defaultConfig = {
     imagePath: '/assets/images/',
     leadingZeros: false,
+    weekStartDay: 'monday'
   }
   this.config = { ...defaultConfig, ...config }
 
   this.dayLabels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
   this.monthLabels = [
     'January',
     'February',
@@ -78,6 +80,7 @@ Datepicker.prototype.init = function () {
     return
   }
 
+  this.setOptions()
   this.initControls()
 }
 
@@ -95,14 +98,15 @@ Datepicker.prototype.initControls = function () {
   dialog.setAttribute('aria-labelledby', titleId)
   dialog.innerHTML = this.createDialogMarkup(titleId)
 
+
   this.dialogElement = dialog
+  this.createCalendarHeaders()
   this.$input.insertAdjacentElement('afterend', this.dialogElement)
   this.$input.parentElement.insertAdjacentHTML('afterend', this.createToggleMarkup() )
 
   this.$calendarButton = this.$module.querySelector('.moj-js-datepicker-toggle')
   this.dialogTitleNode = this.dialogElement.querySelector('.moj-js-datepicker-month-year')
 
-  this.setOptions()
 
   // create calendar
   const tbody = this.dialogElement.querySelector('tbody')
@@ -218,15 +222,7 @@ Datepicker.prototype.createDialogMarkup = function (titleId) {
 
       <table class="moj-datepicker-calendar moj-js-datepicker-grid" role="grid" aria-labelledby="${titleId}">
       <thead>
-          <tr>
-            <th scope="col"><span aria-hidden="true">Mon</span><span class="govuk-visually-hidden">Monday</span></th>
-            <th scope="col"><span aria-hidden="true">Tue</span><span class="govuk-visually-hidden">Tuesday</span></th>
-            <th scope="col"><span aria-hidden="true">Wed</span><span class="govuk-visually-hidden">Wednesday</span></th>
-            <th scope="col"><span aria-hidden="true">Thu</span><span class="govuk-visually-hidden">Thursday</span></th>
-            <th scope="col"><span aria-hidden="true">Fri</span><span class="govuk-visually-hidden">Friday</span></th>
-            <th scope="col"><span aria-hidden="true">Sat</span><span class="govuk-visually-hidden">Saturday</span></th>
-            <th scope="col"><span aria-hidden="true">Sun</span><span class="govuk-visually-hidden">Sunday</span></th>
-          </tr>
+          <tr></tr>
       </thead>
 
       <tbody></tbody>
@@ -236,6 +232,15 @@ Datepicker.prototype.createDialogMarkup = function (titleId) {
         <button type="button" class="govuk-button moj-js-datepicker-ok" value="ok">Select</button>
         <button type="button" class="govuk-button govuk-button--secondary moj-js-datepicker-cancel" value="cancel">Cancel</button>
       </div>`
+}
+
+Datepicker.prototype.createCalendarHeaders = function() {
+  console.log(this.dayLabels)
+  this.dayLabels.forEach( (day) => {
+      const html = `<th scope="col"><span aria-hidden="true">${day.substring(0,3)}</span><span class="govuk-visually-hidden">${day}</span></th>`
+      const headerRow = this.dialogElement.querySelector('thead > tr')
+      headerRow.insertAdjacentHTML('beforeend', html)
+  })
 }
 
 Datepicker.prototype.leadingZeros = function (value, length = 2) {
@@ -253,6 +258,7 @@ Datepicker.prototype.setOptions = function() {
   this.setDisabledDates()
   this.setDisabledDays()
   this.setLeadingZeros()
+  this.setWeekStartDay()
 }
 
 Datepicker.prototype.setMinAndMaxDatesOnCalendar = function () {
@@ -286,7 +292,9 @@ Datepicker.prototype.setDisabledDays = function () {
     // lowercase and arrange dayLabels to put indexOf sunday == 0 for comparison
     // with getDay() function
     let weekDays = this.dayLabels.map(item => item.toLowerCase())
-    weekDays.unshift(weekDays.pop())
+    if(this.config.weekStartDay === 'monday') {
+      weekDays.unshift(weekDays.pop())
+    }
 
     this.disabledDays = this.$input.dataset.disableddays
       .replace(/\s+/, ' ')
@@ -305,6 +313,17 @@ Datepicker.prototype.setLeadingZeros = function() {
     if(this.$input.dataset.leadingzeros.toLowerCase() === 'false') {
       this.config.leadingZeros = false;
     }
+  }
+}
+
+Datepicker.prototype.setWeekStartDay = function() {
+  const weekStartDayParam = this.$input.dataset.weekstartday;
+  if(weekStartDayParam.toLowerCase() === 'sunday' ) {
+    this.config.weekStartDay = 'sunday'
+    this.dayLabels.unshift(this.dayLabels.pop())
+  }
+  if(weekStartDayParam.toLowerCase() === 'monday' ) {
+    this.config.weekStartDay = 'monday'
   }
 }
 
@@ -395,8 +414,13 @@ Datepicker.prototype.updateCalendar = function () {
   const day = this.currentDate
 
   const firstOfMonth = new Date(day.getFullYear(), day.getMonth(), 1)
-  const dayOfWeek = firstOfMonth.getDay() === 0 ? 6 : firstOfMonth.getDay() - 1 // Change logic to make Monday first day of week, i.e. 0
-  // const dayOfWeek = firstOfMonth.getDay()
+  let dayOfWeek;
+
+  if ( this.config.weekStartDay === 'monday') {
+    dayOfWeek = firstOfMonth.getDay() === 0 ? 6 : firstOfMonth.getDay() - 1 // Change logic to make Monday first day of week, i.e. 0
+  } else {
+    dayOfWeek = firstOfMonth.getDay()
+  }
 
   firstOfMonth.setDate(firstOfMonth.getDate() - dayOfWeek)
 
