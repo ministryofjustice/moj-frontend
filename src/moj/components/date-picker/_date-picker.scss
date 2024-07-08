@@ -117,7 +117,7 @@
     &:focus {
       color: govuk-colour('black');
       background-color: govuk-colour('yellow');
-      outline-color: govuk-colour('yellow');
+      outline-color: transparent;
       text-decoration: none;
       -webkit-box-decoration-break: clone;
       box-decoration-break: clone;

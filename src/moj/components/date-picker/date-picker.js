@@ -235,7 +235,6 @@ Datepicker.prototype.createDialogMarkup = function (titleId) {
 }
 
 Datepicker.prototype.createCalendarHeaders = function() {
-  console.log(this.dayLabels)
   this.dayLabels.forEach( (day) => {
       const html = `<th scope="col"><span aria-hidden="true">${day.substring(0,3)}</span><span class="govuk-visually-hidden">${day}</span></th>`
       const headerRow = this.dialogElement.querySelector('thead > tr')
@@ -282,9 +281,26 @@ Datepicker.prototype.setDisabledDates = function() {
     this.disabledDates = this.$input.dataset.disableddates
                 .replace(/\s+/, ' ')
                 .split(' ')
-                .map(item => this.formattedDateFromString(item, null))
+                .map((item) => {
+                  if (item.includes('-')) {
+                    const [startDate, endDate] = item.split('-').map(d => this.formattedDateFromString(d, null))
+                    if (startDate && endDate) {
+                      const date = new Date(startDate.getTime());
+                      const dates = [];
+                      while (date <= endDate) {
+                        dates.push(new Date(date));
+                        date.setDate(date.getDate() + 1);
+                      }
+                      return dates
+                    }
+                  } else {
+                    return this.formattedDateFromString(item, null)
+                  }
+                })
+                .flat()
                 .filter(item => item)
   }
+
 }
 
 Datepicker.prototype.setDisabledDays = function () {
@@ -533,8 +549,6 @@ Datepicker.prototype.openDialog = function () {
     this.inputDate = this.formattedDateFromString(this.$input.value)
     this.currentDate = this.inputDate
   }
-
-  console.log(this.currentDate)
 
   this.updateCalendar()
   this.setCurrentDate()
