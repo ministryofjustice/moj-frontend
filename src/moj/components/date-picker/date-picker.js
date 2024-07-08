@@ -503,11 +503,11 @@ Datepicker.prototype.goToDate = function (date, focus) {
   const current = this.currentDate
   this.currentDate = date
 
-  if (this.minDate && this.minDate > date) {
-    this.currentDate = this.minDate
-  } else if (this.maxDate && this.maxDate < date) {
-    this.currentDate = this.maxDate
-  }
+  // if (this.minDate && this.minDate > date) {
+  //   this.currentDate = this.minDate
+  // } else if (this.maxDate && this.maxDate < date) {
+  //   this.currentDate = this.maxDate
+  // }
 
   if (current.getMonth() !== this.currentDate.getMonth() || current.getFullYear() !== this.currentDate.getFullYear()) {
     this.updateCalendar()
