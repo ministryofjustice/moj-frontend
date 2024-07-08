@@ -10,6 +10,7 @@
  * @property {string} [hint] - .
  * @property {string} [minDate] - .
  * @property {string} [maxDate] - .
+ * @property {Boolean} [leadingZeroes] - Whether to add leading zeroes when populating the field
  */
 
 /**
@@ -25,6 +26,7 @@ function Datepicker($module, config) {
   }
   const defaultConfig = {
     imagePath: '/assets/images/',
+    leadingZeros: false,
   }
   this.config = { ...defaultConfig, ...config }
 
@@ -100,9 +102,7 @@ Datepicker.prototype.initControls = function () {
   this.$calendarButton = this.$module.querySelector('.moj-js-datepicker-toggle')
   this.dialogTitleNode = this.dialogElement.querySelector('.moj-js-datepicker-month-year')
 
-  this.setMinAndMaxDatesOnCalendar()
-  this.setDisabledDates()
-  this.setDisabledDays()
+  this.setOptions()
 
   // create calendar
   const tbody = this.dialogElement.querySelector('tbody')
@@ -238,14 +238,21 @@ Datepicker.prototype.createDialogMarkup = function (titleId) {
       </div>`
 }
 
-Datepicker.prototype.leadingZeroes = function (value, length = 2) {
+Datepicker.prototype.leadingZeros = function (value, length = 2) {
   let ret = value.toString()
 
   while (ret.length < length) {
-    ret = `0${ret.toString()}`
+    ret = `0${ret}`
   }
 
   return ret
+}
+
+Datepicker.prototype.setOptions = function() {
+  this.setMinAndMaxDatesOnCalendar()
+  this.setDisabledDates()
+  this.setDisabledDays()
+  this.setLeadingZeros()
 }
 
 Datepicker.prototype.setMinAndMaxDatesOnCalendar = function () {
@@ -287,6 +294,17 @@ Datepicker.prototype.setDisabledDays = function () {
       .split(' ')
       .map(item => weekDays.indexOf(item))
       .filter(item => item !== -1)
+  }
+}
+
+Datepicker.prototype.setLeadingZeros = function() {
+  if (this.$input.dataset.leadingzeros) {
+    if(this.$input.dataset.leadingzeros.toLowerCase() === 'true') {
+      this.config.leadingZeros = true;
+    }
+    if(this.$input.dataset.leadingzeros.toLowerCase() === 'false') {
+      this.config.leadingZeros = false;
+    }
   }
 }
 
@@ -333,7 +351,11 @@ Datepicker.prototype.formattedDateFromString = function (dateString, fallback = 
 }
 
 Datepicker.prototype.formattedDateFromDate = function (date) {
-  return `${this.leadingZeroes(date.getDate())}/${this.leadingZeroes(date.getMonth() + 1)}/${date.getFullYear()}`
+  if(this.config.leadingZeros) {
+    return `${this.leadingZeros(date.getDate())}/${this.leadingZeros(date.getMonth() + 1)}/${date.getFullYear()}`
+  } else {
+    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+  }
 }
 
 Datepicker.prototype.backgroundClick = function (event) {
@@ -373,8 +395,8 @@ Datepicker.prototype.updateCalendar = function () {
   const day = this.currentDate
 
   const firstOfMonth = new Date(day.getFullYear(), day.getMonth(), 1)
-  // const dayOfWeek = firstOfMonth.getDay() === 0 ? 6 : firstOfMonth.getDay() - 1 // Change logic to make Monday first day of week, i.e. 0
-  const dayOfWeek = firstOfMonth.getDay()
+  const dayOfWeek = firstOfMonth.getDay() === 0 ? 6 : firstOfMonth.getDay() - 1 // Change logic to make Monday first day of week, i.e. 0
+  // const dayOfWeek = firstOfMonth.getDay()
 
   firstOfMonth.setDate(firstOfMonth.getDate() - dayOfWeek)
 
@@ -392,7 +414,6 @@ Datepicker.prototype.updateCalendar = function () {
 }
 
 Datepicker.prototype.setCurrentDate = function (focus = true) {
-  console.log('setCurrentDate')
   const { currentDate } = this
 
   this.calendarDays.forEach(calendarDay => {
@@ -488,6 +509,8 @@ Datepicker.prototype.openDialog = function () {
     this.inputDate = this.formattedDateFromString(this.$input.value)
     this.currentDate = this.inputDate
   }
+
+  console.log(this.currentDate)
 
   this.updateCalendar()
   this.setCurrentDate()
