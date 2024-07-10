@@ -7,7 +7,6 @@ COPY package.json package.json
 COPY package-lock.json package-lock.json
 RUN npm ci
 
-COPY assets assets
 COPY docs docs
 COPY src src
 COPY package package
