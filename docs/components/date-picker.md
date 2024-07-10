@@ -58,13 +58,13 @@ When stacking 2 date pickers horizontally or vertically, apply padding that is c
 
 Multiple date picker components can be vertically stacked. This is useful when used in vertical filters or forms.
 
-{% example "/examples/date-picker", 590 %}
+{% example "/examples/date-picker-vertical-pair", 650 %}
 
 ### Horizontally stacked
 
 Multiple date picker components can be horizontally displayed. This is useful when used in horizontal filters.
 
-{% example "/examples/date-picker", 590 %}
+{% example "/examples/date-picker-horizontal-pair", 590 %}
 
 ## Errors
 
