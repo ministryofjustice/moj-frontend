@@ -89,17 +89,7 @@ Datepicker.prototype.init = function () {
  */
 Datepicker.prototype.initControls = function () {
   // Create datepicker popup dialog
-  const titleId = `datepicker-title-${this.$input.id}`
-  const dialog = document.createElement('div')
-  dialog.id = `datepicker-${this.$input.id}`
-  dialog.setAttribute('class', 'moj-datepicker-dialog  datepickerDialog')
-  dialog.setAttribute('role', 'dialog')
-  dialog.setAttribute('aria-modal', 'true')
-  dialog.setAttribute('aria-labelledby', titleId)
-  dialog.innerHTML = this.createDialogMarkup(titleId)
-
-
-  this.dialogElement = dialog
+  this.dialogElement = this.createDialog()
   this.createCalendarHeaders()
 
   const pickerWrapper = document.createElement('div')
@@ -111,47 +101,26 @@ Datepicker.prototype.initControls = function () {
   pickerWrapper.appendChild(inputWrapper)
   inputWrapper.appendChild(this.$input)
 
-  inputWrapper.insertAdjacentHTML('beforeend', this.createToggleMarkup() )
+  inputWrapper.insertAdjacentHTML('beforeend', this.toggleTemplate() )
   pickerWrapper.insertAdjacentElement('beforeend', this.dialogElement)
 
   this.$calendarButton = this.$module.querySelector('.moj-js-datepicker-toggle')
   this.dialogTitleNode = this.dialogElement.querySelector('.moj-js-datepicker-month-year')
 
+  this.createCalendar()
 
-  // create calendar
-  const tbody = this.dialogElement.querySelector('tbody')
-  let dayCount = 0
-  for (let i = 0; i < 6; i++) {
-    // create row
-    const row = tbody.insertRow(i)
-
-    for (let j = 0; j < 7; j++) {
-      // create cell (day)
-      const cell = document.createElement('td')
-      const dateButton = document.createElement('button')
-
-      cell.appendChild(dateButton)
-      row.appendChild(cell)
-
-      const calendarDay = new DSCalendarDay(dateButton, dayCount, i, j, this)
-      calendarDay.init()
-      this.calendarDays.push(calendarDay)
-      dayCount++
-    }
-  }
-
-  // add event listeners
   this.prevMonthButton = this.dialogElement.querySelector('.moj-js-datepicker-prev-month')
   this.prevYearButton = this.dialogElement.querySelector('.moj-js-datepicker-prev-year')
   this.nextMonthButton = this.dialogElement.querySelector('.moj-js-datepicker-next-month')
   this.nextYearButton = this.dialogElement.querySelector('.moj-js-datepicker-next-year')
+  this.cancelButton = this.dialogElement.querySelector('.moj-js-datepicker-cancel')
+  this.okButton = this.dialogElement.querySelector('.moj-js-datepicker-ok')
+
+  // add event listeners
   this.prevMonthButton.addEventListener('click', event => this.focusPreviousMonth(event, false))
   this.prevYearButton.addEventListener('click', event => this.focusPreviousYear(event, false))
   this.nextMonthButton.addEventListener('click', event => this.focusNextMonth(event, false))
   this.nextYearButton.addEventListener('click', event => this.focusNextYear(event, false))
-
-  this.cancelButton = this.dialogElement.querySelector('.moj-js-datepicker-cancel')
-  this.okButton = this.dialogElement.querySelector('.moj-js-datepicker-ok')
   this.cancelButton.addEventListener('click', (event) => {
     event.preventDefault()
     this.closeDialog(event)
@@ -175,7 +144,44 @@ Datepicker.prototype.initControls = function () {
   this.updateCalendar()
 }
 
-Datepicker.prototype.createToggleMarkup = function() {
+Datepicker.prototype.createDialog = function() {
+  const titleId = `datepicker-title-${this.$input.id}`
+  const dialog = document.createElement('div')
+
+  dialog.id = `datepicker-${this.$input.id}`
+  dialog.setAttribute('class', 'moj-datepicker-dialog  datepickerDialog')
+  dialog.setAttribute('role', 'dialog')
+  dialog.setAttribute('aria-modal', 'true')
+  dialog.setAttribute('aria-labelledby', titleId)
+  dialog.innerHTML = this.dialogTemplate(titleId)
+
+  return dialog
+}
+
+Datepicker.prototype.createCalendar = function() {
+  const tbody = this.dialogElement.querySelector('tbody')
+  let dayCount = 0
+  for (let i = 0; i < 6; i++) {
+    // create row
+    const row = tbody.insertRow(i)
+
+    for (let j = 0; j < 7; j++) {
+      // create cell (day)
+      const cell = document.createElement('td')
+      const dateButton = document.createElement('button')
+
+      cell.appendChild(dateButton)
+      row.appendChild(cell)
+
+      const calendarDay = new DSCalendarDay(dateButton, dayCount, i, j, this)
+      calendarDay.init()
+      this.calendarDays.push(calendarDay)
+      dayCount++
+    }
+  }
+}
+
+Datepicker.prototype.toggleTemplate = function() {
   return `<button class="moj-datepicker-toggle moj-js-datepicker-toggle" type="button" aria-haspopup="dialog">
             <span class="govuk-visually-hidden">Choose date</span>
             <svg width="32" height="24" focusable="false" class="moj-datepicker-icon" aria-hidden="true" role="img" viewBox="0 0 22 22">
@@ -191,7 +197,7 @@ Datepicker.prototype.createToggleMarkup = function() {
           </button>`
 }
 
-Datepicker.prototype.createDialogMarkup = function (titleId) {
+Datepicker.prototype.dialogTemplate = function (titleId) {
   return `<div class="moj-datepicker-dialog__header">
         <div class="moj-datepicker-dialog__navbuttons">
             <button class="moj-datepicker-button moj-js-datepicker-prev-year">
@@ -573,12 +579,6 @@ Datepicker.prototype.closeDialog = function () {
 Datepicker.prototype.goToDate = function (date, focus) {
   const current = this.currentDate
   this.currentDate = date
-
-  // if (this.minDate && this.minDate > date) {
-  //   this.currentDate = this.minDate
-  // } else if (this.maxDate && this.maxDate < date) {
-  //   this.currentDate = this.maxDate
-  // }
 
   if (current.getMonth() !== this.currentDate.getMonth() || current.getFullYear() !== this.currentDate.getFullYear()) {
     this.updateCalendar()
