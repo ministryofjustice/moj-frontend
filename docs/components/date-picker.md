@@ -48,24 +48,6 @@ ADD SOMETHING HERE === You can disable days of the week (e.g. every Saturday and
 
 ADD SOMETHING HERE === Date pickers with lots of disabled dates isn't a good experience for a user. For example, if using a date picker to book an appointment, it may be easier for users to show them a list of available appointments as radio buttons.
 
-## From and to dates
-
-Allow users to pick to and from dates by stacking 2 date pickers together.
-
-When stacking 2 date pickers horizontally or vertically, apply padding that is consistent with the rest of your product.
-
-### Vertically stacked
-
-Multiple date picker components can be vertically stacked. This is useful when used in vertical filters or forms.
-
-{% example "/examples/date-picker-vertical-pair", 650 %}
-
-### Horizontally stacked
-
-Multiple date picker components can be horizontally displayed. This is useful when used in horizontal filters.
-
-{% example "/examples/date-picker-horizontal-pair", 590 %}
-
 ## Errors
 
 Follow the guidance in the [GOV.UK Design System](https://design-system.service.gov.uk/components/error-message/) for error messages.
