@@ -101,8 +101,18 @@ Datepicker.prototype.initControls = function () {
 
   this.dialogElement = dialog
   this.createCalendarHeaders()
-  this.$input.insertAdjacentElement('afterend', this.dialogElement)
-  this.$input.parentElement.insertAdjacentHTML('afterend', this.createToggleMarkup() )
+
+  const pickerWrapper = document.createElement('div')
+  const inputWrapper = document.createElement('div')
+  pickerWrapper.classList.add('moj-datepicker__wrapper')
+  inputWrapper.classList.add('govuk-input__wrapper')
+
+  this.$input.parentNode.insertBefore(pickerWrapper, this.$input)
+  pickerWrapper.appendChild(inputWrapper)
+  inputWrapper.appendChild(this.$input)
+
+  inputWrapper.insertAdjacentHTML('beforeend', this.createToggleMarkup() )
+  pickerWrapper.insertAdjacentElement('beforeend', this.dialogElement)
 
   this.$calendarButton = this.$module.querySelector('.moj-js-datepicker-toggle')
   this.dialogTitleNode = this.dialogElement.querySelector('.moj-js-datepicker-month-year')
@@ -261,15 +271,15 @@ Datepicker.prototype.setOptions = function() {
 }
 
 Datepicker.prototype.setMinAndMaxDatesOnCalendar = function () {
-  if (this.$input.dataset.mindate) {
-    this.minDate = this.formattedDateFromString(this.$input.dataset.mindate, null)
+  if (this.$module.dataset.mindate) {
+    this.minDate = this.formattedDateFromString(this.$module.dataset.mindate, null)
     if (this.minDate && this.currentDate < this.minDate) {
       this.currentDate = this.minDate
     }
   }
 
-  if (this.$input.dataset.maxdate) {
-    this.maxDate = this.formattedDateFromString(this.$input.dataset.maxdate, null)
+  if (this.$module.dataset.maxdate) {
+    this.maxDate = this.formattedDateFromString(this.$module.dataset.maxdate, null)
     if (this.maxDate && this.currentDate > this.maxDate) {
       this.currentDate = this.maxDate
     }
@@ -277,8 +287,8 @@ Datepicker.prototype.setMinAndMaxDatesOnCalendar = function () {
 }
 
 Datepicker.prototype.setDisabledDates = function() {
-  if(this.$input.dataset.disableddates) {
-    this.disabledDates = this.$input.dataset.disableddates
+  if(this.$module.dataset.disableddates) {
+    this.disabledDates = this.$module.dataset.disableddates
                 .replace(/\s+/, ' ')
                 .split(' ')
                 .map((item) => {
@@ -304,7 +314,7 @@ Datepicker.prototype.setDisabledDates = function() {
 }
 
 Datepicker.prototype.setDisabledDays = function () {
-  if (this.$input.dataset.disableddays) {
+  if (this.$module.dataset.disableddays) {
     // lowercase and arrange dayLabels to put indexOf sunday == 0 for comparison
     // with getDay() function
     let weekDays = this.dayLabels.map(item => item.toLowerCase())
@@ -312,7 +322,7 @@ Datepicker.prototype.setDisabledDays = function () {
       weekDays.unshift(weekDays.pop())
     }
 
-    this.disabledDays = this.$input.dataset.disableddays
+    this.disabledDays = this.$module.dataset.disableddays
       .replace(/\s+/, ' ')
       .toLowerCase()
       .split(' ')
@@ -322,23 +332,23 @@ Datepicker.prototype.setDisabledDays = function () {
 }
 
 Datepicker.prototype.setLeadingZeros = function() {
-  if (this.$input.dataset.leadingzeros) {
-    if(this.$input.dataset.leadingzeros.toLowerCase() === 'true') {
+  if (this.$module.dataset.leadingzeros) {
+    if(this.$module.dataset.leadingzeros.toLowerCase() === 'true') {
       this.config.leadingZeros = true;
     }
-    if(this.$input.dataset.leadingzeros.toLowerCase() === 'false') {
+    if(this.$module.dataset.leadingzeros.toLowerCase() === 'false') {
       this.config.leadingZeros = false;
     }
   }
 }
 
 Datepicker.prototype.setWeekStartDay = function() {
-  const weekStartDayParam = this.$input.dataset.weekstartday;
-  if(weekStartDayParam.toLowerCase() === 'sunday' ) {
+  const weekStartDayParam = this.$module.dataset.weekstartday;
+  if(weekStartDayParam?.toLowerCase() === 'sunday' ) {
     this.config.weekStartDay = 'sunday'
     this.dayLabels.unshift(this.dayLabels.pop())
   }
-  if(weekStartDayParam.toLowerCase() === 'monday' ) {
+  if(weekStartDayParam?.toLowerCase() === 'monday' ) {
     this.config.weekStartDay = 'monday'
   }
 }

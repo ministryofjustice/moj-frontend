@@ -1,0 +1,21 @@
+---
+layout: layouts/example.njk
+title: Date Picker (example)
+arguments: date-picker
+---
+
+{%- from "moj/components/date-picker/macro.njk" import mojDatePicker -%}
+
+{{ mojDatePicker({
+  id: "date",
+  name: "date",
+  label: {
+      text: "Date"
+  },
+  hint: {
+    text: "For example, 17/5/2024."
+  },
+  errorMessage: {
+    text: 'Enter or pick a date'
+  }
+}) }}

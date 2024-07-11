@@ -70,7 +70,7 @@ Multiple date picker components can be horizontally displayed. This is useful wh
 
 Follow the guidance in the [GOV.UK Design System](https://design-system.service.gov.uk/components/error-message/) for error messages.
 
-{% example "/examples/date-picker", 590 %}
+{% example "/examples/date-picker-error", 590 %}
 
 ### Error messages in English and Welsh
 

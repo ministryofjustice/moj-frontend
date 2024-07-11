@@ -177,20 +177,77 @@
 
 }
 
-.moj-datepicker-input-wrapper {
-  position: relative;
-  display: flex;
-  margin-bottom: 24px;
-  overflow: visible;
+/*
+ Default input with to .govuk-input--width-10 (10 chars)
+ Allow that to be overriden by the input width modifiers or global width overrides.
+ Width classes less than 10ch not included as that is narrower than a date.
+*/
+.moj-datepicker input {
+  max-width: 11.5em; // govuk-input--width-10
 
-  > .govuk-form-group {
-    width: 100%;
+  &.govuk-input--width-30 {
+    max-width: 29.5em;
   }
 
-  &--fixed > .govuk-form-group {
-      width: auto;
+  &.govuk-input--width-20 {
+    max-width: 20.5em;
+  }
+
+  &.govuk-\!-width-full {
+    width: 100% !important;
+    max-width: none;
+  }
+
+  &.govuk-\!-width-three-quarters {
+    width: 100% !important;
+    max-width: none;
+
+    @include govuk-media-query($from: tablet) {
+      width: 75% !important;
+    }
+  }
+
+  &.govuk-\!-width-two-thirds {
+    width: 100% !important;
+    max-width: none;
+
+    @include govuk-media-query($from: tablet) {
+      width: 66.66% !important;
+    }
+  }
+
+  &.govuk-\!-width-one-half {
+    width: 100% !important;
+    max-width: none;
+
+    @include govuk-media-query($from: tablet) {
+      width: 50% !important;
+    }
+  }
+
+  &.govuk-\!-width-one-third {
+    width: 100% !important;
+    max-width: none;
+
+    @include govuk-media-query($from: tablet) {
+      width: 33.33% !important;
+    }
+  }
+
+  &.govuk-\!-width-one-quarter {
+    width: 100% !important;
+    max-width: none;
+
+    @include govuk-media-query($from: tablet) {
+      width: 25% !important;
+    }
   }
 }
+
+.moj-datepicker__wrapper {
+  position: relative;
+}
+
 
 @media (min-width: 768px) {
   .moj-datepicker-dialog {
