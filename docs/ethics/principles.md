@@ -8,26 +8,30 @@ Our ethical design principles are a set of ideals to guide how MoJ services are 
 
 Although it may not be possible to apply all of our principles, use them as inspiration to improve how you work.
 
-## 1. Minimise harm
-Maximise well-being and minimise harm (this includes physical and mental well-being and harm).
+## Minimise harm
+How might we minimise harm and maximise wellbeing (both physically and mentally)?
 
-## 2. Prioritise people
-Treat people as people, not as numbers or targets for the organisation.
+## Prioritise people
+How might we treat people as people, not as numbers or targets for the organisation?
 
-## 3. Include everyone
-Provide equal opportunities and resources for all individuals and groups.
+## Include everyone
+How might we provide equal opportunities and resources for all individuals and groups?
 
-## 4. Balance power
-Balance power between individual people and between people and your organisation.
+## Balance power
+How might we try to balance power appropriately:
 
-## 5. Be honest
-Do not mislead or deceive people.
+- between different user groups?
+- between users and government?
 
-## 6. Respect people’s property
-Keep people’s property safe and handle it with care. Personal data is personal property.
+## Be honest
+How might we avoid misleading or deceiving people?
 
-## 7. Protect the environment
-Make sustainable products and services without depleting resources or harming the environment.
+## Respect people’s property
+How might we keep people’s property safe and handle it with care? This includes their personal data.
 
-## 8. Take responsibility
-Know who is responsible for making your product or service ethical (it’s likely to be everyone). Make sure everyone agrees on what they need to do. Be clear about what your responsibility is and own your part.
+## Take responsibility
+How might we make sure the whole team is responsible for making the product or service ethical? This includes making sure everyone:
+
+- agrees on what they need to do
+- is clear on what their responsibility is
+- understands which parts they own

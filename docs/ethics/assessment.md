@@ -1,24 +1,33 @@
 ---
 layout: layouts/ethics.njk
 subsection: Ethics
-title: Do an ethics assessment
+title: Preparing for a service assessment
 ---
 
-We must ensure that our services are inclusive, environmentally friendly, respectful of people's property, and do not harm people.
+As part of your service assessment,  you’ll be expected to show how you’ve considered the ethics of your service.
 
-Doing an ethics assessment will help you to:
+## Before your assessment
 
-- design, develop and maintain responsible services
-- identify any unintended consequences of your service
+Your team should:
 
-Your team can do ethics assessments at any stage of the life cycle.
+1. Read and consider our [ethical principles](/ethics/principles/).
+2. [Do an ethics review](/ethics/review/).
+3. Define any actions based on your ethics review.
+4. Complete actions, or make a plan to tackle them in the next phase.
 
-### What you need to do an ethics assessment
+### If an ethics review is not appropriate
 
-Make a copy of the ethics assessment template on [Google Docs](https://docs.google.com/document/d/1GRHSKxj3_zXubfDkGHQp9Y2_6wpf9_dcB9qCuHQS4xM/edit) or [Miro](https://miro.com/app/board/uXjVPlD7OmE=/?userEmail=laura.parker6@digital.justice.gov.uk&track=true&utm_source=notification&utm_medium=email&utm_campaign=add-to-board&utm_content=go-to-board) (both come with instructions).
+If your team has read the ethics guidance and decided an ethics review would not be appropriate, you must show what else you’ve done to consider ethics in your service.
 
-You can do the assessment remotely or in person.
+## During your assessment
 
-There's no time limit, but for reference, it took one team about 2 hours to do the ethics assessment in person using sticky notes.  
+As part of the service assessment, you’ll be asked one or both of the following questions:
 
-The outputs you get are likely to vary significantly depending on what your service does, who uses it, which phase of delivery you are at and how information is stored and used.
+1. How have you made sure that people will not be harmed by your service?
+2. What have you done to ensure that your service is ethical?
+
+Depending on the output of your ethics review, your team can say one of the following:
+
+- there were no actions flagged by the review
+- you’ve already addressed actions that were flagged
+- you’ve not yet addressed the actions, but plan to
