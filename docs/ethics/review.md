@@ -11,7 +11,7 @@ Doing an ethics review will help you:
 
 ## How to do an ethics review
 
-Make a copy of the ethics review template using [Google Docs](https://docs.google.com/document/d/1GRHSKxj3_zXubfDkGHQp9Y2_6wpf9_dcB9qCuHQS4xM/edit) or [Miro](https://miro.com/app/board/uXjVPlD7OmE=/?userEmail=laura.parker6@digital.justice.gov.uk&track=true&utm_source=notification&utm_medium=email&utm_campaign=add-to-board&utm_content=go-to-board) (both come with instructions).
+Make a copy of the ethics review template using [Google Docs](https://docs.google.com/document/d/1GRHSKxj3_zXubfDkGHQp9Y2_6wpf9_dcB9qCuHQS4xM/edit) or [Miro](https://miro.com/app/board/uXjVPlD7OmE=/?share_link_id=60340973454) (both come with instructions).
 
 You can do the review remotely or in person. There's no time-limit, but for reference, it took one team about 2 hours to do their review in person.
 
