@@ -7,47 +7,43 @@ title: Date picker
 
 {% example "/examples/date-picker", 590 %}
 
-## About the date picker
+## Overview
 
-When users first open the calendar view it'll show today's date. This is the calendar view.
+When users first open the calendar it'll show today's date in the calendar view. Users do not have to use this - they can also enter a date directly into the text field.
 
-Users do not have to use the calendar view. They can also enter a date directly into the text field.
+### When to use
 
-## When to use
+Users might want to use the calendar view:
 
-The date picker enables users to select a date from a calendar. This may help them to select:
+- for a relative date or one they need to look up, for example last Thursday or next Wednesday
+- to enter today's date more quickly
+- for available dates only
 
-- a relative date or one they need to look up, for example last Thursday or next Wednesday
-- today's date, more quickly
-- available dates only
-
-## When not to use
+### When not to use
 
 Do not use the date picker:
 
 - for a memorable date, for example a user's date of birth
 - for a date that users know or can easily look up, for example an appointment on a letter
-- when only an approximate date is needed, for example month and year
+- when only a rough date is needed, for example the month and year
 
-Instead use the [date input component](https://design-system.service.gov.uk/components/date-input/) from the GOV.UK Design System.
+Use the [GOV.UK Design System's date input component](https://design-system.service.gov.uk/components/date-input/) instead.
 
-## Considerations
+### Things to consider
 
-Users with poor vision or colour blindness may find it harder to see disabled dates. This does not affect the performance of the component.
+Date pickers are fully navigable using a keyboard, but can be slow and difficult to use for keyboard-only users.
 
-Whilst the date picker is fully navigable using a keyboard, date pickers can be slow and difficult to use for keyboard only users.
+### Similar or linked components
 
-Another great challenge for users, especially those with poor vision or colour blindness, is seeing the unavailable or disabled dates.
+There's also the [GOV.UK Design System's date input component](https://design-system.service.gov.uk/components/date-input/) and [pattern for asking users for dates](https://design-system.service.gov.uk/patterns/dates/).
 
-## Similar or linked components
+## How to use
 
-The GOV.UK Design System has a [date input component](https://design-system.service.gov.uk/components/date-input/) and a [pattern for asking users for dates](https://design-system.service.gov.uk/patterns/dates/).
+### Hint text
 
-## Hint text
+The date picker hint text is set to 17/5/2024. This can be changed to a more helpful date, for example the start of a scheme. Add a full-stop at the end.
 
-The date picker hint text is set to 17/5/2024. It can be changed if another date would help users, for example the date of the start of a scheme. Add a full-stop at the end.
-
-## Disabled dates
+### Excluding dates
 
 <!-- You can set allowed date ranges if you need a user to pick a date within a date range. Individual dates and date ranges can also be disabled in the calendar view.
 
@@ -55,25 +51,26 @@ Users may type unavailable or disabled dates in the input field, so error messag
 
 {% example "/examples/date-picker-min-max", 590 %} -->
 
-You can disable specific dates and days of the week, for example bank holidays or every weekend.
+You can exclude (or disable) specific dates and days of the week from the date picker, for example bank holidays or every weekend.
 
 {% example "/examples/date-picker-disabled-dates", 590 %}
 
 {% example "/examples/date-picker-disabled-days", 590 %}
 
-Disabled states:
+Excluded dates:
 
 - are not focusable
 - are not read by screen readers
 - do not need the right visual contrast
+- may be harder to view for users with poor vision or colour blindness
 
-This means they are not accessible should they be needed for anything.
+They are not accessible should they be needed for something. This does not affect the performance of the component.
 
-If there are a lot of unavailable dates, the date picker may not provide a good user experience. This is because users will have to navigate through a lot of months to find a date, for example for an appointment. If there are only a few available dates, consider showing them in a list with radio buttons.
+If there are a lot of unavailable dates, users will have to navigate through a a lot of months to find a date. If there are only a few available dates (for example for an appointment) consider showing them in a list with radio buttons.
 
-## Error messages
+### Error messages
 
-Follow the guidance in the [GOV.UK Design System](https://design-system.service.gov.uk/components/error-message/) for error messages.
+Follow the [GOV.UK Design System guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
 
 {% example "/examples/date-picker-error", 590 %}
 
@@ -112,7 +109,7 @@ Follow the guidance in the [GOV.UK Design System](https://design-system.service.
 
 ###  Using multiple date pickers
 
-Each text field needs its own error summary and message. This applies even if the error is the same.
+Each text field needs its own error summary and message, even if the error is the same.
 
 ## Examples
 
@@ -132,7 +129,7 @@ Each text field needs its own error summary and message. This applies even if th
 
 In future versions of this documentation, there will be:
 
-- Guidance examples on using this component for date ranges
+- guidance on using date ranges with this component
 - Welsh content for the designs, including error messages
 
 ## Contributors
