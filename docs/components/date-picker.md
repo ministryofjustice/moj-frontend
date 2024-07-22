@@ -37,7 +37,7 @@ Users with poor vision or colour blindness may find it harder to see disabled da
 
 Whilst the date picker is fully navigable using a keyboard, date pickers can be slow and difficult to use for keyboard only users.
 
-Another challenge for users, especially those with poor vision or colour blindness, is seeing the unavailable or disabled dates.
+Another great challenge for users, especially those with poor vision or colour blindness, is seeing the unavailable or disabled dates.
 
 ## Similar or linked components
 
