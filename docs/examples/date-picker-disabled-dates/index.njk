@@ -5,8 +5,6 @@ title: Date Picker Disabled Dates (example)
 
 {%- from "moj/components/date-picker/macro.njk" import mojDatePicker -%}
 
-{% set disabledDates %}{% dateInCurrentMonth 05 %} {% dateInCurrentMonth 12 %} {% dateInCurrentMonth 18 %}-{% dateInCurrentMonth 25 %} {% endset %}
-
 {{ mojDatePicker({
   id: "date",
   name: "date",
@@ -16,5 +14,7 @@ title: Date Picker Disabled Dates (example)
   hint: {
     text: "For example, 17/5/2024."
   },
-  disabledDates: disabledDates
+  value: "10/04/2025",
+  excludedDates: "02/04/2025 18/04/2025 21/04/2025",
+  excludedDays: "saturday sunday"
 }) }}

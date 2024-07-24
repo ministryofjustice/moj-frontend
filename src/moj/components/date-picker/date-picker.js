@@ -51,8 +51,8 @@ function Datepicker($module, config) {
   this.currentDate = new Date()
   this.currentDate.setHours(0, 0, 0, 0)
   this.calendarDays = []
-  this.disabledDates = []
-  this.disabledDays = []
+  this.excludedDates = []
+  this.excludedDays = []
 
   this.keycodes = {
     tab: 9,
@@ -88,53 +88,55 @@ Datepicker.prototype.init = function () {
  * Initialise controls and set attributes
  */
 Datepicker.prototype.initControls = function () {
+  this.id = `datepicker-${this.$input.id}`
+
   // Create datepicker popup dialog
-  this.dialogElement = this.createDialog()
+  this.$dialog = this.createDialog()
   this.createCalendarHeaders()
 
-  const pickerWrapper = document.createElement('div')
-  const inputWrapper = document.createElement('div')
-  pickerWrapper.classList.add('moj-datepicker__wrapper')
-  inputWrapper.classList.add('govuk-input__wrapper')
+  const $componentWrapper = document.createElement('div')
+  const $inputWrapper = document.createElement('div')
+  $componentWrapper.classList.add('moj-datepicker__wrapper')
+  $inputWrapper.classList.add('govuk-input__wrapper')
 
-  this.$input.parentNode.insertBefore(pickerWrapper, this.$input)
-  pickerWrapper.appendChild(inputWrapper)
-  inputWrapper.appendChild(this.$input)
+  this.$input.parentNode.insertBefore($componentWrapper, this.$input)
+  $componentWrapper.appendChild($inputWrapper)
+  $inputWrapper.appendChild(this.$input)
 
-  inputWrapper.insertAdjacentHTML('beforeend', this.toggleTemplate() )
-  pickerWrapper.insertAdjacentElement('beforeend', this.dialogElement)
+  $inputWrapper.insertAdjacentHTML('beforeend', this.toggleTemplate() )
+  $componentWrapper.insertAdjacentElement('beforeend', this.$dialog)
 
   this.$calendarButton = this.$module.querySelector('.moj-js-datepicker-toggle')
-  this.dialogTitleNode = this.dialogElement.querySelector('.moj-js-datepicker-month-year')
+  this.$dialogTitle = this.$dialog.querySelector('.moj-js-datepicker-month-year')
 
   this.createCalendar()
 
-  this.prevMonthButton = this.dialogElement.querySelector('.moj-js-datepicker-prev-month')
-  this.prevYearButton = this.dialogElement.querySelector('.moj-js-datepicker-prev-year')
-  this.nextMonthButton = this.dialogElement.querySelector('.moj-js-datepicker-next-month')
-  this.nextYearButton = this.dialogElement.querySelector('.moj-js-datepicker-next-year')
-  this.cancelButton = this.dialogElement.querySelector('.moj-js-datepicker-cancel')
-  this.okButton = this.dialogElement.querySelector('.moj-js-datepicker-ok')
+  this.$prevMonthButton = this.$dialog.querySelector('.moj-js-datepicker-prev-month')
+  this.$prevYearButton = this.$dialog.querySelector('.moj-js-datepicker-prev-year')
+  this.$nextMonthButton = this.$dialog.querySelector('.moj-js-datepicker-next-month')
+  this.$nextYearButton = this.$dialog.querySelector('.moj-js-datepicker-next-year')
+  this.$cancelButton = this.$dialog.querySelector('.moj-js-datepicker-cancel')
+  this.$okButton = this.$dialog.querySelector('.moj-js-datepicker-ok')
 
   // add event listeners
-  this.prevMonthButton.addEventListener('click', event => this.focusPreviousMonth(event, false))
-  this.prevYearButton.addEventListener('click', event => this.focusPreviousYear(event, false))
-  this.nextMonthButton.addEventListener('click', event => this.focusNextMonth(event, false))
-  this.nextYearButton.addEventListener('click', event => this.focusNextYear(event, false))
-  this.cancelButton.addEventListener('click', (event) => {
+  this.$prevMonthButton.addEventListener('click', event => this.focusPreviousMonth(event, false))
+  this.$prevYearButton.addEventListener('click', event => this.focusPreviousYear(event, false))
+  this.$nextMonthButton.addEventListener('click', event => this.focusNextMonth(event, false))
+  this.$nextYearButton.addEventListener('click', event => this.focusNextYear(event, false))
+  this.$cancelButton.addEventListener('click', (event) => {
     event.preventDefault()
     this.closeDialog(event)
   })
-  this.okButton.addEventListener('click', () => {
+  this.$okButton.addEventListener('click', () => {
       this.selectDate(this.currentDate)
   })
 
-  const dialogButtons = this.dialogElement.querySelectorAll('button:not([disabled="true"])')
+  const dialogButtons = this.$dialog.querySelectorAll('button:not([disabled="true"])')
   // eslint-disable-next-line prefer-destructuring
-  this.firstButtonInDialog = dialogButtons[0]
-  this.lastButtonInDialog = dialogButtons[dialogButtons.length - 1]
-  this.firstButtonInDialog.addEventListener('keydown', event => this.firstButtonKeydown(event))
-  this.lastButtonInDialog.addEventListener('keydown', event => this.lastButtonKeydown(event))
+  this.$firstButtonInDialog = dialogButtons[0]
+  this.$lastButtonInDialog = dialogButtons[dialogButtons.length - 1]
+  this.$firstButtonInDialog.addEventListener('keydown', event => this.firstButtonKeydown(event))
+  this.$lastButtonInDialog.addEventListener('keydown', event => this.lastButtonKeydown(event))
 
   this.$calendarButton.addEventListener('click', event => this.toggleDialog(event))
 
@@ -144,36 +146,36 @@ Datepicker.prototype.initControls = function () {
   this.updateCalendar()
 }
 
-Datepicker.prototype.createDialog = function() {
+Datepicker.prototype.createDialog = function () {
   const titleId = `datepicker-title-${this.$input.id}`
-  const dialog = document.createElement('div')
+  const $dialog = document.createElement('div')
 
-  dialog.id = `datepicker-${this.$input.id}`
-  dialog.setAttribute('class', 'moj-datepicker-dialog  datepickerDialog')
-  dialog.setAttribute('role', 'dialog')
-  dialog.setAttribute('aria-modal', 'true')
-  dialog.setAttribute('aria-labelledby', titleId)
-  dialog.innerHTML = this.dialogTemplate(titleId)
+  $dialog.id = this.id
+  $dialog.setAttribute('class', 'moj-datepicker-dialog  datepickerDialog')
+  $dialog.setAttribute('role', 'dialog')
+  $dialog.setAttribute('aria-modal', 'true')
+  $dialog.setAttribute('aria-labelledby', titleId)
+  $dialog.innerHTML = this.dialogTemplate(titleId)
 
-  return dialog
+  return $dialog
 }
 
-Datepicker.prototype.createCalendar = function() {
-  const tbody = this.dialogElement.querySelector('tbody')
+Datepicker.prototype.createCalendar = function () {
+  const $tbody = this.$dialog.querySelector('tbody')
   let dayCount = 0
   for (let i = 0; i < 6; i++) {
     // create row
-    const row = tbody.insertRow(i)
+    const $row = $tbody.insertRow(i)
 
     for (let j = 0; j < 7; j++) {
       // create cell (day)
-      const cell = document.createElement('td')
-      const dateButton = document.createElement('button')
+      const $cell = document.createElement('td')
+      const $dateButton = document.createElement('button')
 
-      cell.appendChild(dateButton)
-      row.appendChild(cell)
+      $cell.appendChild($dateButton)
+      $row.appendChild($cell)
 
-      const calendarDay = new DSCalendarDay(dateButton, dayCount, i, j, this)
+      const calendarDay = new DSCalendarDay($dateButton, dayCount, i, j, this)
       calendarDay.init()
       this.calendarDays.push(calendarDay)
       dayCount++
@@ -181,8 +183,8 @@ Datepicker.prototype.createCalendar = function() {
   }
 }
 
-Datepicker.prototype.toggleTemplate = function() {
-  return `<button class="moj-datepicker-toggle moj-js-datepicker-toggle" type="button" aria-haspopup="dialog">
+Datepicker.prototype.toggleTemplate = function () {
+  return `<button class="moj-datepicker-toggle moj-js-datepicker-toggle" type="button" aria-haspopup="dialog" aria-controls="${this.id}" aria-expanded="false">
             <span class="govuk-visually-hidden">Choose date</span>
             <svg width="32" height="24" focusable="false" class="moj-datepicker-icon" aria-hidden="true" role="img" viewBox="0 0 22 22">
               <path
@@ -253,7 +255,7 @@ Datepicker.prototype.dialogTemplate = function (titleId) {
 Datepicker.prototype.createCalendarHeaders = function() {
   this.dayLabels.forEach( (day) => {
       const html = `<th scope="col"><span aria-hidden="true">${day.substring(0,3)}</span><span class="govuk-visually-hidden">${day}</span></th>`
-      const headerRow = this.dialogElement.querySelector('thead > tr')
+      const headerRow = this.$dialog.querySelector('thead > tr')
       headerRow.insertAdjacentHTML('beforeend', html)
   })
 }
@@ -270,8 +272,8 @@ Datepicker.prototype.leadingZeros = function (value, length = 2) {
 
 Datepicker.prototype.setOptions = function() {
   this.setMinAndMaxDatesOnCalendar()
-  this.setDisabledDates()
-  this.setDisabledDays()
+  this.setExcludedDates()
+  this.setExcludedDays()
   this.setLeadingZeros()
   this.setWeekStartDay()
 }
@@ -292,13 +294,14 @@ Datepicker.prototype.setMinAndMaxDatesOnCalendar = function () {
   }
 }
 
-Datepicker.prototype.setDisabledDates = function() {
-  if(this.$module.dataset.disableddates) {
-    this.disabledDates = this.$module.dataset.disableddates
+Datepicker.prototype.setExcludedDates = function() {
+  if(this.$module.dataset.excludeddates) {
+    this.excludedDates = this.$module.dataset.excludeddates
                 .replace(/\s+/, ' ')
                 .split(' ')
                 .map((item) => {
                   if (item.includes('-')) {
+                    // parse the date range from the format "dd/mm/yyyy-dd/mm/yyyy"
                     const [startDate, endDate] = item.split('-').map(d => this.formattedDateFromString(d, null))
                     if (startDate && endDate) {
                       const date = new Date(startDate.getTime());
@@ -319,8 +322,8 @@ Datepicker.prototype.setDisabledDates = function() {
 
 }
 
-Datepicker.prototype.setDisabledDays = function () {
-  if (this.$module.dataset.disableddays) {
+Datepicker.prototype.setExcludedDays = function () {
+  if (this.$module.dataset.excludeddays) {
     // lowercase and arrange dayLabels to put indexOf sunday == 0 for comparison
     // with getDay() function
     let weekDays = this.dayLabels.map(item => item.toLowerCase())
@@ -328,7 +331,7 @@ Datepicker.prototype.setDisabledDays = function () {
       weekDays.unshift(weekDays.pop())
     }
 
-    this.disabledDays = this.$module.dataset.disableddays
+    this.excludedDays = this.$module.dataset.excludeddays
       .replace(/\s+/, ' ')
       .toLowerCase()
       .split(' ')
@@ -359,8 +362,7 @@ Datepicker.prototype.setWeekStartDay = function() {
   }
 }
 
-Datepicker.prototype.isDisabledDate = function (date) {
-
+Datepicker.prototype.isExcludedDate = function (date) {
     if (this.minDate && this.minDate > date) {
         return true
     }
@@ -369,13 +371,13 @@ Datepicker.prototype.isDisabledDate = function (date) {
         return true
     }
 
-    for (const disabledDate of this.disabledDates) {
-        if (date.toDateString() === disabledDate.toDateString()) {
+    for (const excludedDate of this.excludedDates) {
+        if (date.toDateString() === excludedDate.toDateString()) {
             return true
         }
     }
 
-    if (this.disabledDays.includes(date.getDay())) {
+    if (this.excludedDays.includes(date.getDay())) {
       return true
     }
 
@@ -412,7 +414,7 @@ Datepicker.prototype.formattedDateFromDate = function (date) {
 Datepicker.prototype.backgroundClick = function (event) {
   if (
     this.isOpen() &&
-    !this.dialogElement.contains(event.target) &&
+    !this.$dialog.contains(event.target) &&
     !this.$input.contains(event.target) &&
     !this.$calendarButton.contains(event.target)
   ) {
@@ -427,21 +429,21 @@ Datepicker.prototype.formattedDateHuman = function (date) {
 
 Datepicker.prototype.firstButtonKeydown = function (event) {
   if (event.keyCode === this.keycodes.tab && event.shiftKey) {
-    this.lastButtonInDialog.focus()
+    this.$lastButtonInDialog.focus()
     event.preventDefault()
   }
 }
 
 Datepicker.prototype.lastButtonKeydown = function (event) {
   if (event.keyCode === this.keycodes.tab && !event.shiftKey) {
-    this.firstButtonInDialog.focus()
+    this.$firstButtonInDialog.focus()
     event.preventDefault()
   }
 }
 
 // render calendar
 Datepicker.prototype.updateCalendar = function () {
-  this.dialogTitleNode.innerHTML = `${this.monthLabels[this.currentDate.getMonth()]} ${this.currentDate.getFullYear()}`
+  this.$dialogTitle.innerHTML = `${this.monthLabels[this.currentDate.getMonth()]} ${this.currentDate.getFullYear()}`
 
   const day = this.currentDate
 
@@ -461,7 +463,7 @@ Datepicker.prototype.updateCalendar = function () {
   // loop through our days
   for (let i = 0; i < this.calendarDays.length; i++) {
     const hidden = thisDay.getMonth() !== day.getMonth()
-    const disabled = this.isDisabledDate(thisDay)
+    const disabled = this.isExcludedDate(thisDay)
 
     this.calendarDays[i].update(thisDay, hidden, disabled)
 
@@ -519,7 +521,7 @@ Datepicker.prototype.setCurrentDate = function (focus = true) {
 }
 
 Datepicker.prototype.selectDate = function (date) {
-  if (this.isDisabledDate(date)) {
+  if (this.isExcludedDate(date)) {
     return
   }
 
@@ -535,7 +537,7 @@ Datepicker.prototype.selectDate = function (date) {
 }
 
 Datepicker.prototype.isOpen = function () {
-  return this.dialogElement.classList.contains('moj-datepicker-dialog--open')
+  return this.$dialog.classList.contains('moj-datepicker-dialog--open')
 }
 
 Datepicker.prototype.toggleDialog = function (event) {
@@ -550,15 +552,16 @@ Datepicker.prototype.toggleDialog = function (event) {
 
 Datepicker.prototype.openDialog = function () {
   // display the dialog
-  this.dialogElement.style.display = 'block'
-  this.dialogElement.classList.add('moj-datepicker-dialog--open')
+  this.$dialog.style.display = 'block'
+  this.$dialog.classList.add('moj-datepicker-dialog--open')
+  this.$calendarButton.setAttribute('aria-expanded', 'true')
 
   // position the dialog
   // if input is wider than dialog pin it to the right
-  if(this.$input.offsetWidth > this.dialogElement.offsetWidth) {
-    this.dialogElement.style.right = `0px`
+  if(this.$input.offsetWidth > this.$dialog.offsetWidth) {
+    this.$dialog.style.right = `0px`
   }
-  this.dialogElement.style.top = `${this.$input.offsetHeight + 3}px`
+  this.$dialog.style.top = `${this.$input.offsetHeight + 3}px`
 
   // get the date from the input element
   if (this.$input.value.match(/^(\d{1,2})([-/,. ])(\d{1,2})[-/,. ](\d{4})$/)) {
@@ -571,8 +574,9 @@ Datepicker.prototype.openDialog = function () {
 }
 
 Datepicker.prototype.closeDialog = function () {
-  this.dialogElement.style.display = 'none'
-  this.dialogElement.classList.remove('moj-datepicker-dialog--open')
+  this.$dialog.style.display = 'none'
+  this.$dialog.classList.remove('moj-datepicker-dialog--open')
+  this.$calendarButton.setAttribute('aria-expanded', 'false')
   this.$calendarButton.focus()
 }
 
@@ -680,17 +684,17 @@ DSCalendarDay.prototype.init = function () {
 }
 
 DSCalendarDay.prototype.update = function (day, hidden, disabled) {
-  const dateOptions = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-  }
-  this.button.innerHTML = `<span class="govuk-visually-hidden">${day.toLocaleDateString('en-GB', dateOptions )}</span><span aria-hidden="true">${day.getDate()}</span>`
-  this.date = new Date(day)
+  let label = day.getDate()
+  let accessibleLabel = day.toLocaleDateString('en-GB', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  } )
 
   if (disabled) {
     this.button.setAttribute('aria-disabled', true)
+    accessibleLabel = 'Excluded date, ' + accessibleLabel
   } else {
     this.button.removeAttribute('aria-disabled')
   }
@@ -700,6 +704,9 @@ DSCalendarDay.prototype.update = function (day, hidden, disabled) {
   } else {
     this.button.style.display = 'block'
   }
+
+  this.button.innerHTML = `<span class="govuk-visually-hidden">${accessibleLabel}</span><span aria-hidden="true">${label}</span>`
+  this.date = new Date(day)
 }
 
 DSCalendarDay.prototype.click = function (event) {
