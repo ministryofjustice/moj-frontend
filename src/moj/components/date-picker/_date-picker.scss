@@ -102,7 +102,7 @@
       background-color: govuk-colour('light-grey');
       color: govuk-colour('black');
       cursor: not-allowed;
-      /* pointer-events: none; */
+      text-decoration: line-through;
     }
 
     &:hover {
@@ -118,7 +118,6 @@
       color: govuk-colour('black');
       background-color: govuk-colour('yellow');
       outline-color: transparent;
-      text-decoration: none;
       -webkit-box-decoration-break: clone;
       box-decoration-break: clone;
       &:after {
@@ -166,7 +165,7 @@
 
       &:hover {
         outline-color: govuk-colour('blue');
-        background-color: govuk-colour('mid-grey');
+        background-color: #949494;
         color: govuk-colour('black');
 
         &:after {
@@ -273,13 +272,13 @@
   }
 
   &:hover {
-    background-color: govuk-colour('mid-grey');
+    background-color: #949494;
     color: govuk-colour('black');
-    border-bottom: 4px solid govuk-colour('mid-grey');
+    border-bottom: 4px solid #949494;
   }
 
   &:focus:hover {
-    background-color: govuk-colour('mid-grey');
+    background-color: #949494;
     color: govuk-colour('black');
     border-bottom: 4px solid govuk-colour('black');
   }
