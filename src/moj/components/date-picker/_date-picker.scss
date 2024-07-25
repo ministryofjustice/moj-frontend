@@ -107,7 +107,7 @@
 
     &:hover {
       color: $govuk-text-colour;
-      background-color: $govuk-border-colour;
+      background-color: #949494;
       text-decoration: none;
       -webkit-box-decoration-break: clone;
       box-decoration-break: clone;
@@ -127,7 +127,7 @@
     }
 
     &:focus:hover {
-      background-color: govuk-colour('mid-grey');
+      background-color: #949494;
       outline-color: govuk-colour('yellow');
       &:after {
         background-color: transparent;

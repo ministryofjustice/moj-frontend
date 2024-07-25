@@ -53,9 +53,7 @@ Users may type unavailable or disabled dates in the input field, so error messag
 
 You can exclude (or disable) specific dates and days of the week from the date picker, for example bank holidays or every weekend.
 
-{% example "/examples/date-picker-disabled-dates", 590 %}
-
-{% example "/examples/date-picker-disabled-days", 590 %}
+{% example "/examples/date-picker-excluded-dates", 590 %}
 
 Excluded dates have the right visual contrast but may be harder to view for users with low vision or colour blindness.
 
