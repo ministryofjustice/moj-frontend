@@ -7,6 +7,7 @@ title: Date picker
 
 {% example "/examples/date-picker", 590 %}
 
+
 ## Overview
 
 When users first open the date picker's calendar it'll show today's date. Users do not have to use the calendar view to select a date - they can also enter one directly into the text field.
@@ -37,6 +38,7 @@ Date pickers are fully navigable using a keyboard, but can be slow for keyboard-
 
 There's also the ['Ask users for dates' pattern in the GOV.UK Design System](https://design-system.service.gov.uk/patterns/dates/).
 
+
 ## How to use
 
 ### Hint text
@@ -64,8 +66,6 @@ If there are a lot of unavailable dates, users will have to navigate through a l
 Follow the [GOV.UK Design System guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
 
 {% example "/examples/date-picker-error", 590 %}
-
-### Error messages
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
@@ -102,6 +102,7 @@ Follow the [GOV.UK Design System guidance on error messages](https://design-syst
 
 If you're using more than one date picker, give each text field its own error summary and message (even if the error is the same).
 
+
 ## Examples
 
 ### Filtering information with a date picker
@@ -110,14 +111,8 @@ If you're using more than one date picker, give each text field its own error su
 
 ### Asking a question with a date picker
 
-<p><img src="/assets/images/date-picker-question-example.svg" alt="#"></p>
+<p><img src="/assets/images/date-picker-question-example.svg" alt="A screenshot with the title 'What date do you want to view appointments for?' Underneath is the title 'Date' and then a text input field with the calendar icon. Underneath that is a green 'Continue' button."></p>
 
-## Future changes
-
-In future versions of this documentation, there will be:
-
-- guidance on using date ranges with this component
-- Welsh language content for the designs, including error messages
 
 ## Contributors
 
