@@ -6,10 +6,22 @@
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default-{{ id }}" role="tab" id="tab_html-default-{{ id }}" aria-controls="html-default-{{ id }}">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default-{{ id }}" role="tab" id="tab_nunjucks-default-{{ id }}" aria-controls="nunjucks-default-{{ id }}">Nunjucks</a></li>
-    {%- if jsCode %}<li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#js-default-{{ id }}" role="tab" id="tab_js-default-{{ id }}" aria-controls="js-default-{{ id }}">JavaScript</a></li>{% endif -%}
-    {%- if figmaLink %}<li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#figma-default-{{ id }}" role="tab" id="tab_figma-default-{{ id }}" aria-controls="figma-default-{{ id }}">Figma</a></li>{% endif -%}
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#html-default-{{ id }}" role="tab" id="tab_html-default-{{ id }}" aria-controls="html-default-{{ id }}">HTML <span class="govuk-visually-hidden">({{ title }})</span></a>
+    </li>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#nunjucks-default-{{ id }}" role="tab" id="tab_nunjucks-default-{{ id }}" aria-controls="nunjucks-default-{{ id }}">Nunjucks <span class="govuk-visually-hidden">({{ title }})</span></a>
+    </li>
+    {%- if jsCode %}
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#js-default-{{ id }}" role="tab" id="tab_js-default-{{ id }}" aria-controls="js-default-{{ id }}">JavaScript <span class="govuk-visually-hidden">({{ title }})</span></a>
+    </li>
+    {% endif -%}
+    {%- if figmaLink %}
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#figma-default-{{ id }}" role="tab" id="tab_figma-default-{{ id }}" aria-controls="figma-default-{{ id }}">Figma</a>
+    </li>
+    {% endif -%}
   </ul>
 
   <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default-{{ id }}" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default-{{ id }}">
