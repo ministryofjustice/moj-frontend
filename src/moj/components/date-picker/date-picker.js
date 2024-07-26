@@ -105,6 +105,7 @@ Datepicker.prototype.init = function () {
 Datepicker.prototype.initControls = function () {
   this.id = `datepicker-${this.$input.id}`;
 
+  // Create datepicker popup dialog
   this.$dialog = this.createDialog();
   this.createCalendarHeaders();
 
@@ -242,7 +243,6 @@ Datepicker.prototype.toggleTemplate = function () {
             </svg>
           </button>`;
 };
-
 /**
  * HTML template for calendar dialog
  *
@@ -501,7 +501,7 @@ Datepicker.prototype.formattedDateFromDate = function (date) {
 };
 
 /**
- * Get a human readable date in the format Monday 2 March 2024
+ * Get a huma readabel date in the format Monday 2 March 2024
  *
  * @param {Date} - date to format
  * @return {string}
