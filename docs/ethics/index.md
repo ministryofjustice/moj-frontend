@@ -1,5 +1,6 @@
 ---
 layout: layouts/ethics.njk
+isIndex: true
 title: Designing ethical services
 ---
 
