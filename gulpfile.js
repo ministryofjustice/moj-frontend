@@ -38,7 +38,7 @@ gulp.task(
 gulp.task(
   "watch:styles",  () => {
     gulp.watch(
-      ["docs/assets/**.*.scss", "src/moj/components/**/*.scss"],
+      ["docs/assets/**/*.scss", "src/moj/components/**/*.scss"],
       gulp.series(["docs:styles"]),
     )
   }
