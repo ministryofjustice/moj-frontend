@@ -57,9 +57,9 @@ You can exclude (or disable) specific dates and days of the week from the date p
 
 {% example "/examples/date-picker-excluded-dates", 590 %}
 
-Excluded dates have the right visual contrast but may be harder to view for users with low vision or colour blindness.
+Excluded dates have the correct colour contrast ratio with the date text and calendar background. This is WCAG 2.2 compliant. However, these dates may be harder to view for users with low vision or colour blindness. This is why there’s also a strikethrough. Numbers with a strikethrough can be harder for people with dyscalculia to read.  
 
-If there are a lot of unavailable dates, users will have to navigate through a lot of months to find a date. If there are only a few available dates (for example for an appointment) consider showing them in a list with radio buttons.
+If there are not many available dates, users will have to navigate a lot to find one. Instead, consider showing options (such as, for an appointment) in a list with radio buttons.
 
 ### Error messages
 
