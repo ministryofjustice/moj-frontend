@@ -1,6 +1,6 @@
 # Date picker
 
-- [Guidance](https://design-patterns.service.justice.gov.uk/components/date
+- [Guidance](https://design-patterns.service.justice.gov.uk/components/date-picker
 picker)
 
 ## Example
