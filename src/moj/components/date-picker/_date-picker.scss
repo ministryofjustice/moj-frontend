@@ -16,6 +16,10 @@
   z-index: 2;
 }
 
+.moj-datepicker-dialog--open {
+  display: block;
+}
+
 .moj-datepicker-dialog__header {
   position: relative;
   display: flex;
@@ -67,7 +71,7 @@
   }
 }
 
-.moj-datepicker-button {
+.moj-datepicker__button {
   @include govuk-font(16);
     background-color: transparent;
     outline: 2px solid rgba(0, 0, 0, 0);
@@ -133,7 +137,7 @@
       }
     }
 
-    &.current:not(:focus) {
+    &--current:not(:focus) {
       background-color: govuk-colour('blue');
       color: govuk-colour('white');
       outline-color: govuk-colour('blue');
@@ -142,7 +146,7 @@
       }
     }
 
-    &.current[tabindex="-1"] {
+    &--current[tabindex="-1"] {
       background: transparent;
       color: currentColor;
       outline-color: transparent;
@@ -151,11 +155,11 @@
       }
     }
 
-    &.today {
+    &--today {
       border: 2px solid govuk-colour('black');
     }
 
-    &.selected:not(:focus) {
+    &--selected:not(:focus) {
       background-color: govuk-colour('blue');
       color: govuk-colour('white');
 

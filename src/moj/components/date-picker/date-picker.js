@@ -87,10 +87,14 @@ function Datepicker($module, config) {
     down: 40,
   };
 
+  this.buttonClass = 'moj-datepicker__button'
+  this.selectedDayButtonClass = 'moj-datepicker__button--selected'
+  this.currentDayButtonClass = 'moj-datepicker__button--current'
+  this.todayButtonClass = 'moj-datepicker__button--today'
+
   this.$module = $module;
   this.$input = $module.querySelector(".moj-js-datepicker-input");
 }
-
 
 Datepicker.prototype.init = function () {
   // Check that required elements are present
@@ -252,7 +256,7 @@ Datepicker.prototype.toggleTemplate = function () {
 Datepicker.prototype.dialogTemplate = function (titleId) {
   return `<div class="moj-datepicker-dialog__header">
         <div class="moj-datepicker-dialog__navbuttons">
-            <button class="moj-datepicker-button moj-js-datepicker-prev-year">
+            <button class="moj-datepicker__button moj-js-datepicker-prev-year">
                 <span class="govuk-visually-hidden">Previous year</span>
                 <svg width="44" height="40" viewBox="0 0 44 40" fill="none" fill="none" focusable="false" aria-hidden="true" role="img">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M23.1643 20L28.9572 14.2071L27.5429 12.7929L20.3358 20L27.5429 27.2071L28.9572 25.7929L23.1643 20Z" fill="currentColor"/>
@@ -260,7 +264,7 @@ Datepicker.prototype.dialogTemplate = function (titleId) {
                 </svg>
             </button>
 
-            <button class="moj-datepicker-button moj-js-datepicker-prev-month">
+            <button class="moj-datepicker__button moj-js-datepicker-prev-month">
                 <span class="govuk-visually-hidden">Previous month</span>
 <svg width="44" height="40" viewBox="0 0 44 40" fill="none" focusable="false" aria-hidden="true" role="img">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M20.5729 20L25.7865 14.2071L24.5137 12.7929L18.0273 20L24.5137 27.2071L25.7865 25.7929L20.5729 20Z" fill="currentColor"/>
@@ -271,14 +275,14 @@ Datepicker.prototype.dialogTemplate = function (titleId) {
         <h2 id="${titleId}" class="moj-datepicker-dialog__title moj-js-datepicker-month-year" aria-live="polite">June 2020</h2>
 
         <div class="moj-datepicker-dialog__navbuttons">
-            <button class="moj-datepicker-button moj-js-datepicker-next-month">
+            <button class="moj-datepicker__button moj-js-datepicker-next-month">
                 <span class="govuk-visually-hidden">Next month</span>
                 <svg width="44" height="40" viewBox="0 0 44 40" fill="none"  focusable="false" aria-hidden="true" role="img">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M23.4271 20L18.2135 14.2071L19.4863 12.7929L25.9727 20L19.4863 27.2071L18.2135 25.7929L23.4271 20Z" fill="currentColor"/>
                 </svg>
             </button>
 
-            <button class="moj-datepicker-button moj-js-datepicker-next-year">
+            <button class="moj-datepicker__button moj-js-datepicker-next-year">
                 <span class="govuk-visually-hidden">Next year</span>
                 <svg width="44" height="40" viewBox="0 0 44 40" fill="none" fill="none" focusable="false" aria-hidden="true" role="img">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M20.8357 20L15.0428 14.2071L16.4571 12.7929L23.6642 20L16.4571 27.2071L15.0428 25.7929L20.8357 20Z" fill="currentColor"/>
@@ -507,7 +511,7 @@ Datepicker.prototype.formattedDateFromDate = function (date) {
  * @return {string}
  */
 Datepicker.prototype.formattedDateHuman = function (date) {
-  return `${this.dayLabels[date.getDay()]} ${date.getDate()} ${this.monthLabels[date.getMonth()]} ${date.getFullYear()}`;
+  return `${this.dayLabels[(date.getDay() + 6) % 7]} ${date.getDate()} ${this.monthLabels[date.getMonth()]} ${date.getFullYear()}`;
 };
 
 Datepicker.prototype.backgroundClick = function (event) {
@@ -569,10 +573,10 @@ Datepicker.prototype.setCurrentDate = function (focus = true) {
   const { currentDate } = this;
 
   this.calendarDays.forEach((calendarDay) => {
-    calendarDay.button.classList.add("moj-datepicker-button");
+    calendarDay.button.classList.add("moj-datepicker__button");
     calendarDay.button.classList.add("moj-datepicker-calendar__day");
     calendarDay.button.setAttribute("tabindex", -1);
-    calendarDay.button.classList.remove("selected");
+    calendarDay.button.classList.remove(this.selectedDayButtonClass);
     const calendarDayDate = calendarDay.date;
     calendarDayDate.setHours(0, 0, 0, 0);
 
@@ -586,7 +590,7 @@ Datepicker.prototype.setCurrentDate = function (focus = true) {
       if (focus) {
         calendarDay.button.setAttribute("tabindex", 0);
         calendarDay.button.focus();
-        calendarDay.button.classList.add("selected");
+        calendarDay.button.classList.add(this.selectedDayButtonClass);
       }
     }
 
@@ -594,17 +598,17 @@ Datepicker.prototype.setCurrentDate = function (focus = true) {
       this.inputDate &&
       calendarDayDate.getTime() === this.inputDate.getTime()
     ) {
-      calendarDay.button.classList.add("current");
+      calendarDay.button.classList.add(this.currentDayButtonClass);
       calendarDay.button.setAttribute("aria-selected", true);
     } else {
-      calendarDay.button.classList.remove("current");
+      calendarDay.button.classList.remove(this.currentDayButtonClass);
       calendarDay.button.removeAttribute("aria-selected");
     }
 
     if (calendarDayDate.getTime() === today.getTime()) {
-      calendarDay.button.classList.add("today");
+      calendarDay.button.classList.add(this.todayButtonClass);
     } else {
-      calendarDay.button.classList.remove("today");
+      calendarDay.button.classList.remove(this.todayButtonClass);
     }
   });
 
@@ -653,8 +657,6 @@ Datepicker.prototype.toggleDialog = function (event) {
 };
 
 Datepicker.prototype.openDialog = function () {
-  // display the dialog
-  this.$dialog.style.display = "block";
   this.$dialog.classList.add("moj-datepicker-dialog--open");
   this.$calendarButton.setAttribute("aria-expanded", "true");
 
@@ -676,7 +678,6 @@ Datepicker.prototype.openDialog = function () {
 };
 
 Datepicker.prototype.closeDialog = function () {
-  this.$dialog.style.display = "none";
   this.$dialog.classList.remove("moj-datepicker-dialog--open");
   this.$calendarButton.setAttribute("aria-expanded", "false");
   this.$calendarButton.focus();
@@ -819,7 +820,6 @@ Datepicker.prototype.mergeConfigs = function (...configObjects) {
   return formattedConfigObject;
 };
 
-
 /**
  *
  * @param {HTMLElement} button
@@ -851,12 +851,7 @@ DSCalendarDay.prototype.init = function () {
  */
 DSCalendarDay.prototype.update = function (day, hidden, disabled) {
   let label = day.getDate();
-  let accessibleLabel = day.toLocaleDateString("en-GB", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  let accessibleLabel = this.picker.formattedDateHuman(day);
 
   if (disabled) {
     this.button.setAttribute("aria-disabled", true);
