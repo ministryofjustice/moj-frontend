@@ -59,7 +59,7 @@ You can exclude (or disable) specific dates and days of the week from the date p
 
 Excluded dates have the correct colour contrast ratio with the date text and calendar background. This is WCAG 2.2 compliant. However, these dates may be harder to view for users with low vision or colour blindness, so there’s also a strikethrough. Numbers with a strikethrough can be harder for people with dyscalculia to read.  
 
-If there are not many available dates, users will have to navigate a lot to find one. Consider listing these dates with radio buttons instead.  options, such as appointments.
+If there are not many available dates, users will have to navigate a lot to find one. Consider listing these dates with radio buttons instead.  
 
 ### Error messages
 
