@@ -10,7 +10,7 @@ title: Date picker
 
 ## Overview
 
-When users first open the date picker's calendar it'll show today's date. Users do not have to use the calendar view to select a date - they can also enter one directly into the text field.
+When users first open the date picker's calendar it'll show today's date. Users do not have to use this calendar view to select a date - they can also enter one directly into the text field.
 
 ### When to use
 
@@ -18,15 +18,15 @@ Users might want to use the calendar view:
 
 - for a relative date or one they need to look up, for example last Thursday or next Wednesday
 - to enter today's date more quickly
-- for available dates only, for example for prison visits
+- for available dates only, such as for prison visits
 
 ### When not to use
 
 Do not use the date picker:
 
-- for a memorable date, for example a user's date of birth
-- for a date that users know or can easily look up, for example an appointment on a letter
-- when only a rough date is needed, for example a month and year
+- for a memorable date, such as a user's date of birth
+- for a date that users know or can easily look up, like an appointment date on a letter
+- when only a rough date is needed, for example just a month and year
 
 Use the [GOV.UK Design System's date input component](https://design-system.service.gov.uk/components/date-input/) instead.
 
@@ -57,9 +57,9 @@ You can exclude (or disable) specific dates and days of the week from the date p
 
 {% example "/examples/date-picker-excluded-dates", 590 %}
 
-Excluded dates have the correct colour contrast ratio with the date text and calendar background. This is WCAG 2.2 compliant. However, these dates may be harder to view for users with low vision or colour blindness. This is why there’s also a strikethrough. Numbers with a strikethrough can be harder for people with dyscalculia to read.  
+Excluded dates have the correct colour contrast ratio with the date text and calendar background. This is WCAG 2.2 compliant. However, these dates may be harder to view for users with low vision or colour blindness, so there’s also a strikethrough. Numbers with a strikethrough can be harder for people with dyscalculia to read.  
 
-If there are not many available dates, users will have to navigate a lot to find one. Instead, consider showing options (such as, for an appointment) in a list with radio buttons.
+If there are not many available dates, users will have to navigate a lot to find one. Consider listing these dates with radio buttons instead.  options, such as appointments.
 
 ### Error messages
 
@@ -92,7 +92,7 @@ Follow the [GOV.UK Design System guidance on error messages](https://design-syst
       <td class="govuk-table__cell">Enter a full date, for example 17/5/2024</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">The date is disabled</th>
+      <th scope="row" class="govuk-table__header">The date is excluded</th>
       <td class="govuk-table__cell">Select an available date from the calendar</td>
     </tr>
   </tbody>
