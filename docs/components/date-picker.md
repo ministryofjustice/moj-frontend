@@ -47,12 +47,6 @@ The date picker hint text is set to 17/5/2024. This can be changed to a more hel
 
 ### Excluding dates
 
-<!-- You can set allowed date ranges if you need a user to pick a date within a date range. Individual dates and date ranges can also be disabled in the calendar view.
-
-Users may type unavailable or disabled dates in the input field, so error messages will be necessary.
-
-{% example "/examples/date-picker-min-max", 590 %} -->
-
 You can exclude (or disable) specific dates and days of the week from the date picker, for example bank holidays or every weekend.
 
 {% example "/examples/date-picker-excluded-dates", 590 %}
