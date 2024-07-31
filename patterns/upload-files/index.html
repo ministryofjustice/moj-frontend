@@ -33,39 +33,48 @@
 
 
 
-<div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on MoJ Design System" data-module="app-cookies">
-    <div class="govuk-cookie-banner__message govuk-width-container">
+
+<div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on MoJ Design System"
+    
+        
+      
+    
+   data-module="app-cookies">
+  
+  <div class="govuk-cookie-banner__message govuk-width-container">
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         
-        <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on MoJ Design System</h2>
+        <h2 class="govuk-cookie-banner__heading govuk-heading-m">
+          Cookies on MoJ Design System
+        </h2>
         
-
         <div class="govuk-cookie-banner__content">
-  <p class="govuk-body">We’d like to use analytics cookies so we can understand how you use the service and make improvements.</p>
-</div>
+          
+          <p class="govuk-body">We’d like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+          
+        </div>
       </div>
     </div>
 
+    
+    <div class="govuk-button-group">
+    
       
-      <div class="govuk-button-group">
-        
-          
-            <button type="button" name="accept" class="govuk-button" data-module="govuk-button">
-              Accept analytics cookies
-            </button>
-          
-        
-          
-            <button type="button" name="reject" class="govuk-button" data-module="govuk-button">
-              Reject analytics cookies
-            </button>
-          
-        
-      </div>
+      <button type="button" name="accept" class="govuk-button" data-module="govuk-button">
+        Accept analytics cookies
+      </button>
+    
       
+      <button type="button" name="reject" class="govuk-button" data-module="govuk-button">
+        Reject analytics cookies
+      </button>
+    
     </div>
+    
+
+  </div>
   
 </div>
 
@@ -224,8 +233,12 @@
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-patterns-upload-files" role="tab" id="tab_html-default--examples-patterns-upload-files" aria-controls="html-default--examples-patterns-upload-files">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-patterns-upload-files" role="tab" id="tab_nunjucks-default--examples-patterns-upload-files" aria-controls="nunjucks-default--examples-patterns-upload-files">Nunjucks</a></li></ul>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#html-default--examples-patterns-upload-files" role="tab" id="tab_html-default--examples-patterns-upload-files" aria-controls="html-default--examples-patterns-upload-files">HTML <span class="govuk-visually-hidden">(Upload files (example))</span></a>
+    </li>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#nunjucks-default--examples-patterns-upload-files" role="tab" id="tab_nunjucks-default--examples-patterns-upload-files" aria-controls="nunjucks-default--examples-patterns-upload-files">Nunjucks <span class="govuk-visually-hidden">(Upload files (example))</span></a>
+    </li></ul>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-patterns-upload-files" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-patterns-upload-files">
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-form-group&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-label govuk-label--xl&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;file-upload-1&quot;</span>&gt;</span>
@@ -237,6 +250,7 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-file-upload&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;file-upload-1&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;file-upload-1&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">aria-describedby</span>=<span class="hljs-string">&quot;file-upload-1-hint&quot;</span>&gt;</span>
+
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-button&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;govuk-button&quot;</span>&gt;</span>
@@ -279,8 +293,12 @@
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-patterns-upload-files-check" role="tab" id="tab_html-default--examples-patterns-upload-files-check" aria-controls="html-default--examples-patterns-upload-files-check">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-patterns-upload-files-check" role="tab" id="tab_nunjucks-default--examples-patterns-upload-files-check" aria-controls="nunjucks-default--examples-patterns-upload-files-check">Nunjucks</a></li></ul>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#html-default--examples-patterns-upload-files-check" role="tab" id="tab_html-default--examples-patterns-upload-files-check" aria-controls="html-default--examples-patterns-upload-files-check">HTML <span class="govuk-visually-hidden">(Upload files confirmation (example))</span></a>
+    </li>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#nunjucks-default--examples-patterns-upload-files-check" role="tab" id="tab_nunjucks-default--examples-patterns-upload-files-check" aria-controls="nunjucks-default--examples-patterns-upload-files-check">Nunjucks <span class="govuk-visually-hidden">(Upload files confirmation (example))</span></a>
+    </li></ul>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-patterns-upload-files-check" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-patterns-upload-files-check">
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-heading-xl&quot;</span>&gt;</span>Check receipt<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 
@@ -383,8 +401,12 @@
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-patterns-upload-files-another" role="tab" id="tab_html-default--examples-patterns-upload-files-another" aria-controls="html-default--examples-patterns-upload-files-another">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-patterns-upload-files-another" role="tab" id="tab_nunjucks-default--examples-patterns-upload-files-another" aria-controls="nunjucks-default--examples-patterns-upload-files-another">Nunjucks</a></li></ul>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#html-default--examples-patterns-upload-files-another" role="tab" id="tab_html-default--examples-patterns-upload-files-another" aria-controls="html-default--examples-patterns-upload-files-another">HTML <span class="govuk-visually-hidden">(Upload files - add another (example))</span></a>
+    </li>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#nunjucks-default--examples-patterns-upload-files-another" role="tab" id="tab_nunjucks-default--examples-patterns-upload-files-another" aria-controls="nunjucks-default--examples-patterns-upload-files-another">Nunjucks <span class="govuk-visually-hidden">(Upload files - add another (example))</span></a>
+    </li></ul>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-patterns-upload-files-another" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-patterns-upload-files-another">
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-heading-xl&quot;</span>&gt;</span>Upload receipts<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 
@@ -403,7 +425,6 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-summary-list__actions&quot;</span>&gt;</span>
-
           <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Delete<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span>&gt;</span> file 1<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 
         <span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
@@ -419,7 +440,6 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-summary-list__actions&quot;</span>&gt;</span>
-
           <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Delete<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span>&gt;</span> file 2<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 
         <span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
@@ -561,8 +581,12 @@
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-patterns-upload-files-delete-multiple" role="tab" id="tab_html-default--examples-patterns-upload-files-delete-multiple" aria-controls="html-default--examples-patterns-upload-files-delete-multiple">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-patterns-upload-files-delete-multiple" role="tab" id="tab_nunjucks-default--examples-patterns-upload-files-delete-multiple" aria-controls="nunjucks-default--examples-patterns-upload-files-delete-multiple">Nunjucks</a></li></ul>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#html-default--examples-patterns-upload-files-delete-multiple" role="tab" id="tab_html-default--examples-patterns-upload-files-delete-multiple" aria-controls="html-default--examples-patterns-upload-files-delete-multiple">HTML <span class="govuk-visually-hidden">(Upload files - delete multiple (example))</span></a>
+    </li>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#nunjucks-default--examples-patterns-upload-files-delete-multiple" role="tab" id="tab_nunjucks-default--examples-patterns-upload-files-delete-multiple" aria-controls="nunjucks-default--examples-patterns-upload-files-delete-multiple">Nunjucks <span class="govuk-visually-hidden">(Upload files - delete multiple (example))</span></a>
+    </li></ul>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-patterns-upload-files-delete-multiple" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-patterns-upload-files-delete-multiple">
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner moj-banner--success&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;region&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Success&quot;</span>&gt;</span>
 
@@ -591,7 +615,6 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-summary-list__actions&quot;</span>&gt;</span>
-
           <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Delete<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span>&gt;</span> file 1<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 
         <span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
@@ -607,7 +630,6 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">dd</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-summary-list__actions&quot;</span>&gt;</span>
-
           <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>Delete<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span>&gt;</span> file 2<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 
         <span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
@@ -754,8 +776,12 @@
 </div>
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#html-default--examples-patterns-upload-files-delete-one" role="tab" id="tab_html-default--examples-patterns-upload-files-delete-one" aria-controls="html-default--examples-patterns-upload-files-delete-one">HTML</a></li>
-    <li class="app-tabs__list-item" role="presentation"><a class="app-tabs__tab" href="#nunjucks-default--examples-patterns-upload-files-delete-one" role="tab" id="tab_nunjucks-default--examples-patterns-upload-files-delete-one" aria-controls="nunjucks-default--examples-patterns-upload-files-delete-one">Nunjucks</a></li></ul>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#html-default--examples-patterns-upload-files-delete-one" role="tab" id="tab_html-default--examples-patterns-upload-files-delete-one" aria-controls="html-default--examples-patterns-upload-files-delete-one">HTML <span class="govuk-visually-hidden">(Upload files - delete one (example))</span></a>
+    </li>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#nunjucks-default--examples-patterns-upload-files-delete-one" role="tab" id="tab_nunjucks-default--examples-patterns-upload-files-delete-one" aria-controls="nunjucks-default--examples-patterns-upload-files-delete-one">Nunjucks <span class="govuk-visually-hidden">(Upload files - delete one (example))</span></a>
+    </li></ul>
   <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-patterns-upload-files-delete-one" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-patterns-upload-files-delete-one">
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-banner moj-banner--success&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;region&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Success&quot;</span>&gt;</span>
 
@@ -777,6 +803,7 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-file-upload&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;file-upload-1&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;file-upload-1&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">aria-describedby</span>=<span class="hljs-string">&quot;file-upload-1-hint&quot;</span>&gt;</span>
+
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-button&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;govuk-button&quot;</span>&gt;</span>
@@ -841,25 +868,25 @@
 
 <div class="govuk-!-padding-bottom-3"></div>
 
-<div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+<div class="govuk-notification-banner" role="region" data-module="govuk-notification-banner">
   <div class="govuk-notification-banner__content">
-  <p class="govuk-notification-banner__heading">
-    Suggest a change
+  <h2 id="govuk-notification-banner-title" class="govuk-notification-banner__heading">
+  Suggest a change
+</h2>
+    <p class="govuk-notification-banner__body">
+     You can <a href="https://forms.gle/FpDpbgttwmfmcz8o7" class="govuk-link">suggest a change to improve the MoJ Design System</a>.
   </p>
-    <p class="govuk-notification-banner__body">
-      To help improve the MoJ Design System, you can suggest changes.
-    </p>
-    <p class="govuk-notification-banner__body">
-      Tell us about the change you're proposing by using the <a href="https://forms.gle/FpDpbgttwmfmcz8o7" class="govuk-link">suggest a change form</a>. The MoJ Design System Group will be notified of your suggestion and will review it.
+  <p>
+     The MoJ Design System team will review it.
     </p>
 
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    <p class="govuk-notification-banner__heading">
-      Need help?
-    </p>
+    <h2 class="govuk-notification-banner__heading">
+      Get help  
+    </h2>
       <p class="govuk-notification-banner__body">
-        The MoJ Design System Group provides support for users of the MoJ Design System. <a href="/community/help-and-feedback" class="govuk-link">Contact us</a> to ask for help.
+      <a href="/community/help-and-feedback" class="govuk-link">Contact the MoJ Design System team</a> for support.
       </p>
 
   </div>
@@ -874,37 +901,37 @@
 
         
 
-<footer class="govuk-footer" role="contentinfo">
+<footer class="govuk-footer">
   <div class="govuk-width-container">
     
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
         
-          <h2 class="govuk-visually-hidden">Support links</h2>
-          
-            <ul class="govuk-footer__inline-list">
-              
-                <li class="govuk-footer__inline-list-item">
-                  <a class="govuk-footer__link" href="/community/help-and-feedback">
-                    Help and feedback
-                  </a>
-                </li>
-              
-                <li class="govuk-footer__inline-list-item">
-                  <a class="govuk-footer__link" href="/cookies">
-                    Cookies
-                  </a>
-                </li>
-              
-                <li class="govuk-footer__inline-list-item">
-                  <a class="govuk-footer__link" href="/accessibility">
-                    Accessibility
-                  </a>
-                </li>
-              
-            </ul>
-          
-          
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        
+        <ul class="govuk-footer__inline-list">
+        
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="/community/help-and-feedback">
+              Help and feedback
+            </a>
+          </li>
+        
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="/cookies">
+              Cookies
+            </a>
+          </li>
+        
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="/accessibility">
+              Accessibility
+            </a>
+          </li>
+        
+        </ul>
+        
+        
         
         <svg
           aria-hidden="true"
@@ -921,21 +948,25 @@
           />
         </svg>
         <span class="govuk-footer__licence-description">
-          
-            All content is available under the
-            <a
-              class="govuk-footer__link"
-              href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-              rel="license"
-            >Open Government Licence v3.0</a>, except where otherwise stated
-          
+        
+          All content is available under the
+          <a
+            class="govuk-footer__link"
+            href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+            rel="license"
+          >Open Government Licence v3.0</a>, except where otherwise stated
+        
         </span>
       </div>
       <div class="govuk-footer__meta-item">
         <a
           class="govuk-footer__link govuk-footer__copyright-logo"
           href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
-        >© Crown copyright</a>
+        >
+        
+          © Crown copyright
+        
+        </a>
       </div>
     </div>
   </div>

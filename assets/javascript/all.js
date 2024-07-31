@@ -138,6 +138,10 @@
               table: $table
             });
           });
+          const $datepickers = document.querySelectorAll('[data-module="moj-date-picker"]');
+          MOJFrontend2.nodeListForEach($datepickers, function($datepicker) {
+            new MOJFrontend2.DatePicker($datepicker, {}).init();
+          });
         };
         MOJFrontend2.AddAnother = function(container) {
           this.container = $(container);
@@ -347,6 +351,658 @@
             this.container.find("[role=menuitem]").last().focus();
           }
         };
+        function Datepicker($module, config) {
+          if (!$module) {
+            return this;
+          }
+          const schema = Object.freeze({
+            properties: {
+              excludedDates: { type: "string" },
+              excludedDays: { type: "string" },
+              leadingZeros: { type: "string" },
+              maxDate: { type: "string" },
+              minDate: { type: "string" },
+              weekStartDay: { type: "string" }
+            }
+          });
+          const defaults = {
+            leadingZeros: false,
+            weekStartDay: "monday"
+          };
+          this.config = this.mergeConfigs(
+            defaults,
+            config,
+            this.parseDataset(schema, $module.dataset)
+          );
+          this.dayLabels = [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ];
+          this.monthLabels = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+          ];
+          this.currentDate = /* @__PURE__ */ new Date();
+          this.currentDate.setHours(0, 0, 0, 0);
+          this.calendarDays = [];
+          this.excludedDates = [];
+          this.excludedDays = [];
+          this.buttonClass = "moj-datepicker__button";
+          this.selectedDayButtonClass = "moj-datepicker__button--selected";
+          this.currentDayButtonClass = "moj-datepicker__button--current";
+          this.todayButtonClass = "moj-datepicker__button--today";
+          this.$module = $module;
+          this.$input = $module.querySelector(".moj-js-datepicker-input");
+        }
+        Datepicker.prototype.init = function() {
+          if (!this.$input) {
+            return;
+          }
+          this.setOptions();
+          this.initControls();
+        };
+        Datepicker.prototype.initControls = function() {
+          this.id = `datepicker-${this.$input.id}`;
+          this.$dialog = this.createDialog();
+          this.createCalendarHeaders();
+          const $componentWrapper = document.createElement("div");
+          const $inputWrapper = document.createElement("div");
+          $componentWrapper.classList.add("moj-datepicker__wrapper");
+          $inputWrapper.classList.add("govuk-input__wrapper");
+          this.$input.parentNode.insertBefore($componentWrapper, this.$input);
+          $componentWrapper.appendChild($inputWrapper);
+          $inputWrapper.appendChild(this.$input);
+          $inputWrapper.insertAdjacentHTML("beforeend", this.toggleTemplate());
+          $componentWrapper.insertAdjacentElement("beforeend", this.$dialog);
+          this.$calendarButton = this.$module.querySelector(
+            ".moj-js-datepicker-toggle"
+          );
+          this.$dialogTitle = this.$dialog.querySelector(
+            ".moj-js-datepicker-month-year"
+          );
+          this.createCalendar();
+          this.$prevMonthButton = this.$dialog.querySelector(
+            ".moj-js-datepicker-prev-month"
+          );
+          this.$prevYearButton = this.$dialog.querySelector(
+            ".moj-js-datepicker-prev-year"
+          );
+          this.$nextMonthButton = this.$dialog.querySelector(
+            ".moj-js-datepicker-next-month"
+          );
+          this.$nextYearButton = this.$dialog.querySelector(
+            ".moj-js-datepicker-next-year"
+          );
+          this.$cancelButton = this.$dialog.querySelector(".moj-js-datepicker-cancel");
+          this.$okButton = this.$dialog.querySelector(".moj-js-datepicker-ok");
+          this.$prevMonthButton.addEventListener(
+            "click",
+            (event) => this.focusPreviousMonth(event, false)
+          );
+          this.$prevYearButton.addEventListener(
+            "click",
+            (event) => this.focusPreviousYear(event, false)
+          );
+          this.$nextMonthButton.addEventListener(
+            "click",
+            (event) => this.focusNextMonth(event, false)
+          );
+          this.$nextYearButton.addEventListener(
+            "click",
+            (event) => this.focusNextYear(event, false)
+          );
+          this.$cancelButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            this.closeDialog(event);
+          });
+          this.$okButton.addEventListener("click", () => {
+            this.selectDate(this.currentDate);
+          });
+          const dialogButtons = this.$dialog.querySelectorAll(
+            'button:not([disabled="true"])'
+          );
+          this.$firstButtonInDialog = dialogButtons[0];
+          this.$lastButtonInDialog = dialogButtons[dialogButtons.length - 1];
+          this.$firstButtonInDialog.addEventListener(
+            "keydown",
+            (event) => this.firstButtonKeydown(event)
+          );
+          this.$lastButtonInDialog.addEventListener(
+            "keydown",
+            (event) => this.lastButtonKeydown(event)
+          );
+          this.$calendarButton.addEventListener(
+            "click",
+            (event) => this.toggleDialog(event)
+          );
+          this.$dialog.addEventListener("keydown", (event) => {
+            if (event.key == "Escape") {
+              this.closeDialog();
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          });
+          document.body.addEventListener(
+            "mouseup",
+            (event) => this.backgroundClick(event)
+          );
+          this.updateCalendar();
+        };
+        Datepicker.prototype.createDialog = function() {
+          const titleId = `datepicker-title-${this.$input.id}`;
+          const $dialog = document.createElement("div");
+          $dialog.id = this.id;
+          $dialog.setAttribute("class", "moj-datepicker__dialog");
+          $dialog.setAttribute("role", "dialog");
+          $dialog.setAttribute("aria-modal", "true");
+          $dialog.setAttribute("aria-labelledby", titleId);
+          $dialog.innerHTML = this.dialogTemplate(titleId);
+          return $dialog;
+        };
+        Datepicker.prototype.createCalendar = function() {
+          const $tbody = this.$dialog.querySelector("tbody");
+          let dayCount = 0;
+          for (let i = 0; i < 6; i++) {
+            const $row = $tbody.insertRow(i);
+            for (let j = 0; j < 7; j++) {
+              const $cell = document.createElement("td");
+              const $dateButton = document.createElement("button");
+              $cell.appendChild($dateButton);
+              $row.appendChild($cell);
+              const calendarDay = new DSCalendarDay($dateButton, dayCount, i, j, this);
+              calendarDay.init();
+              this.calendarDays.push(calendarDay);
+              dayCount++;
+            }
+          }
+        };
+        Datepicker.prototype.toggleTemplate = function() {
+          return `<button class="moj-datepicker__toggle moj-js-datepicker-toggle" type="button" aria-haspopup="dialog" aria-controls="${this.id}" aria-expanded="false">
+            <span class="govuk-visually-hidden">Choose date</span>
+            <svg width="32" height="24" focusable="false" class="moj-datepicker-icon" aria-hidden="true" role="img" viewBox="0 0 22 22">
+              <path
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M16.1333 2.93333H5.86668V4.4C5.86668 5.21002 5.21003 5.86667 4.40002 5.86667C3.59 5.86667 2.93335 5.21002 2.93335 4.4V2.93333H2C0.895431 2.93333 0 3.82877 0 4.93334V19.2667C0 20.3712 0.89543 21.2667 2 21.2667H20C21.1046 21.2667 22 20.3712 22 19.2667V4.93333C22 3.82876 21.1046 2.93333 20 2.93333H19.0667V4.4C19.0667 5.21002 18.41 5.86667 17.6 5.86667C16.79 5.86667 16.1333 5.21002 16.1333 4.4V2.93333ZM20.5333 8.06667H1.46665V18.8C1.46665 19.3523 1.91436 19.8 2.46665 19.8H19.5333C20.0856 19.8 20.5333 19.3523 20.5333 18.8V8.06667Z"
+              ></path>
+              <rect x="3.66669" width="1.46667" height="5.13333" rx="0.733333" fill="currentColor"></rect>
+              <rect x="16.8667" width="1.46667" height="5.13333" rx="0.733333" fill="currentColor"></rect>
+            </svg>
+          </button>`;
+        };
+        Datepicker.prototype.dialogTemplate = function(titleId) {
+          return `<div class="moj-datepicker__dialog-header">
+            <div class="moj-datepicker__dialog-navbuttons">
+              <button class="moj-datepicker__button moj-js-datepicker-prev-year">
+                <span class="govuk-visually-hidden">Previous year</span>
+                <svg width="44" height="40" viewBox="0 0 44 40" fill="none" fill="none" focusable="false" aria-hidden="true" role="img">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M23.1643 20L28.9572 14.2071L27.5429 12.7929L20.3358 20L27.5429 27.2071L28.9572 25.7929L23.1643 20Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M17.1643 20L22.9572 14.2071L21.5429 12.7929L14.3358 20L21.5429 27.2071L22.9572 25.7929L17.1643 20Z" fill="currentColor"/>
+                </svg>
+              </button>
+
+              <button class="moj-datepicker__button moj-js-datepicker-prev-month">
+                <span class="govuk-visually-hidden">Previous month</span>
+                <svg width="44" height="40" viewBox="0 0 44 40" fill="none" focusable="false" aria-hidden="true" role="img">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.5729 20L25.7865 14.2071L24.5137 12.7929L18.0273 20L24.5137 27.2071L25.7865 25.7929L20.5729 20Z" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
+
+            <h2 id="${titleId}" class="moj-datepicker__dialog-title moj-js-datepicker-month-year" aria-live="polite">June 2020</h2>
+
+            <div class="moj-datepicker__dialog-navbuttons">
+              <button class="moj-datepicker__button moj-js-datepicker-next-month">
+                <span class="govuk-visually-hidden">Next month</span>
+                <svg width="44" height="40" viewBox="0 0 44 40" fill="none"  focusable="false" aria-hidden="true" role="img">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M23.4271 20L18.2135 14.2071L19.4863 12.7929L25.9727 20L19.4863 27.2071L18.2135 25.7929L23.4271 20Z" fill="currentColor"/>
+                </svg>
+              </button>
+
+              <button class="moj-datepicker__button moj-js-datepicker-next-year">
+                <span class="govuk-visually-hidden">Next year</span>
+                <svg width="44" height="40" viewBox="0 0 44 40" fill="none" fill="none" focusable="false" aria-hidden="true" role="img">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.8357 20L15.0428 14.2071L16.4571 12.7929L23.6642 20L16.4571 27.2071L15.0428 25.7929L20.8357 20Z" fill="currentColor"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M26.8357 20L21.0428 14.2071L22.4571 12.7929L29.6642 20L22.4571 27.2071L21.0428 25.7929L26.8357 20Z" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <table class="moj-datepicker__calendar moj-js-datepicker-grid" role="grid" aria-labelledby="${titleId}">
+            <thead>
+              <tr></tr>
+            </thead>
+
+            <tbody></tbody>
+          </table>
+
+          <div class="govuk-button-group">
+            <button type="button" class="govuk-button moj-js-datepicker-ok">Select</button>
+            <button type="button" class="govuk-button govuk-button--secondary moj-js-datepicker-cancel">Close</button>
+          </div>`;
+        };
+        Datepicker.prototype.createCalendarHeaders = function() {
+          this.dayLabels.forEach((day) => {
+            const html = `<th scope="col"><span aria-hidden="true">${day.substring(0, 3)}</span><span class="govuk-visually-hidden">${day}</span></th>`;
+            const $headerRow = this.$dialog.querySelector("thead > tr");
+            $headerRow.insertAdjacentHTML("beforeend", html);
+          });
+        };
+        Datepicker.prototype.leadingZeros = function(value, length = 2) {
+          let ret = value.toString();
+          while (ret.length < length) {
+            ret = `0${ret}`;
+          }
+          return ret;
+        };
+        Datepicker.prototype.setOptions = function() {
+          this.setMinAndMaxDatesOnCalendar();
+          this.setExcludedDates();
+          this.setExcludedDays();
+          this.setLeadingZeros();
+          this.setWeekStartDay();
+        };
+        Datepicker.prototype.setMinAndMaxDatesOnCalendar = function() {
+          if (this.config.minDate) {
+            this.minDate = this.formattedDateFromString(
+              this.config.minDate,
+              null
+            );
+            if (this.minDate && this.currentDate < this.minDate) {
+              this.currentDate = this.minDate;
+            }
+          }
+          if (this.config.maxDate) {
+            this.maxDate = this.formattedDateFromString(
+              this.config.maxDate,
+              null
+            );
+            if (this.maxDate && this.currentDate > this.maxDate) {
+              this.currentDate = this.maxDate;
+            }
+          }
+        };
+        Datepicker.prototype.setExcludedDates = function() {
+          if (this.config.excludedDates) {
+            this.excludedDates = this.config.excludedDates.replace(/\s+/, " ").split(" ").map((item) => {
+              if (item.includes("-")) {
+                const [startDate, endDate] = item.split("-").map((d) => this.formattedDateFromString(d, null));
+                if (startDate && endDate) {
+                  const date = new Date(startDate.getTime());
+                  const dates = [];
+                  while (date <= endDate) {
+                    dates.push(new Date(date));
+                    date.setDate(date.getDate() + 1);
+                  }
+                  return dates;
+                }
+              } else {
+                return this.formattedDateFromString(item, null);
+              }
+            }).flat().filter((item) => item);
+          }
+        };
+        Datepicker.prototype.setExcludedDays = function() {
+          if (this.config.excludedDays) {
+            let weekDays = this.dayLabels.map((item) => item.toLowerCase());
+            if (this.config.weekStartDay === "monday") {
+              weekDays.unshift(weekDays.pop());
+            }
+            this.excludedDays = this.config.excludedDays.replace(/\s+/, " ").toLowerCase().split(" ").map((item) => weekDays.indexOf(item)).filter((item) => item !== -1);
+          }
+        };
+        Datepicker.prototype.setLeadingZeros = function() {
+          if (typeof this.config.leadingZeros !== "boolean") {
+            if (this.config.leadingZeros.toLowerCase() === "true") {
+              this.config.leadingZeros = true;
+            }
+            if (this.config.leadingZeros.toLowerCase() === "false") {
+              this.config.leadingZeros = false;
+            }
+          }
+        };
+        Datepicker.prototype.setWeekStartDay = function() {
+          const weekStartDayParam = this.config.weekStartDay;
+          if ((weekStartDayParam == null ? void 0 : weekStartDayParam.toLowerCase()) === "sunday") {
+            this.config.weekStartDay = "sunday";
+            this.dayLabels.unshift(this.dayLabels.pop());
+          }
+          if ((weekStartDayParam == null ? void 0 : weekStartDayParam.toLowerCase()) === "monday") {
+            this.config.weekStartDay = "monday";
+          }
+        };
+        Datepicker.prototype.isExcludedDate = function(date) {
+          if (this.minDate && this.minDate > date) {
+            return true;
+          }
+          if (this.maxDate && this.maxDate < date) {
+            return true;
+          }
+          for (const excludedDate of this.excludedDates) {
+            if (date.toDateString() === excludedDate.toDateString()) {
+              return true;
+            }
+          }
+          if (this.excludedDays.includes(date.getDay())) {
+            return true;
+          }
+          return false;
+        };
+        Datepicker.prototype.formattedDateFromString = function(dateString, fallback = /* @__PURE__ */ new Date()) {
+          let formattedDate = null;
+          const dateFormatPattern = /(\d{1,2})([-/,. ])(\d{1,2})\2(\d{4})/;
+          if (!dateFormatPattern.test(dateString)) return fallback;
+          const match = dateString.match(dateFormatPattern);
+          const day = match[1];
+          const month = match[3];
+          const year = match[4];
+          formattedDate = /* @__PURE__ */ new Date(`${month}-${day}-${year}`);
+          if (formattedDate instanceof Date && !isNaN(formattedDate)) {
+            return formattedDate;
+          }
+          return fallback;
+        };
+        Datepicker.prototype.formattedDateFromDate = function(date) {
+          if (this.config.leadingZeros) {
+            return `${this.leadingZeros(date.getDate())}/${this.leadingZeros(date.getMonth() + 1)}/${date.getFullYear()}`;
+          } else {
+            return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+          }
+        };
+        Datepicker.prototype.formattedDateHuman = function(date) {
+          return `${this.dayLabels[(date.getDay() + 6) % 7]} ${date.getDate()} ${this.monthLabels[date.getMonth()]} ${date.getFullYear()}`;
+        };
+        Datepicker.prototype.backgroundClick = function(event) {
+          if (this.isOpen() && !this.$dialog.contains(event.target) && !this.$input.contains(event.target) && !this.$calendarButton.contains(event.target)) {
+            event.preventDefault();
+            this.closeDialog();
+          }
+        };
+        Datepicker.prototype.firstButtonKeydown = function(event) {
+          if (event.key === "Tab" && event.shiftKey) {
+            this.$lastButtonInDialog.focus();
+            event.preventDefault();
+          }
+        };
+        Datepicker.prototype.lastButtonKeydown = function(event) {
+          if (event.key === "Tab" && !event.shiftKey) {
+            this.$firstButtonInDialog.focus();
+            event.preventDefault();
+          }
+        };
+        Datepicker.prototype.updateCalendar = function() {
+          this.$dialogTitle.innerHTML = `${this.monthLabels[this.currentDate.getMonth()]} ${this.currentDate.getFullYear()}`;
+          const day = this.currentDate;
+          const firstOfMonth = new Date(day.getFullYear(), day.getMonth(), 1);
+          let dayOfWeek;
+          if (this.config.weekStartDay === "monday") {
+            dayOfWeek = firstOfMonth.getDay() === 0 ? 6 : firstOfMonth.getDay() - 1;
+          } else {
+            dayOfWeek = firstOfMonth.getDay();
+          }
+          firstOfMonth.setDate(firstOfMonth.getDate() - dayOfWeek);
+          const thisDay = new Date(firstOfMonth);
+          for (let i = 0; i < this.calendarDays.length; i++) {
+            const hidden = thisDay.getMonth() !== day.getMonth();
+            const disabled = this.isExcludedDate(thisDay);
+            this.calendarDays[i].update(thisDay, hidden, disabled);
+            thisDay.setDate(thisDay.getDate() + 1);
+          }
+        };
+        Datepicker.prototype.setCurrentDate = function(focus = true) {
+          const { currentDate } = this;
+          this.calendarDays.forEach((calendarDay) => {
+            calendarDay.button.classList.add("moj-datepicker__button");
+            calendarDay.button.classList.add("moj-datepicker__calendar-day");
+            calendarDay.button.setAttribute("tabindex", -1);
+            calendarDay.button.classList.remove(this.selectedDayButtonClass);
+            const calendarDayDate = calendarDay.date;
+            calendarDayDate.setHours(0, 0, 0, 0);
+            const today = /* @__PURE__ */ new Date();
+            today.setHours(0, 0, 0, 0);
+            if (calendarDayDate.getTime() === currentDate.getTime()) {
+              if (focus) {
+                calendarDay.button.setAttribute("tabindex", 0);
+                calendarDay.button.focus();
+                calendarDay.button.classList.add(this.selectedDayButtonClass);
+              }
+            }
+            if (this.inputDate && calendarDayDate.getTime() === this.inputDate.getTime()) {
+              calendarDay.button.classList.add(this.currentDayButtonClass);
+              calendarDay.button.setAttribute("aria-selected", true);
+            } else {
+              calendarDay.button.classList.remove(this.currentDayButtonClass);
+              calendarDay.button.removeAttribute("aria-selected");
+            }
+            if (calendarDayDate.getTime() === today.getTime()) {
+              calendarDay.button.classList.add(this.todayButtonClass);
+            } else {
+              calendarDay.button.classList.remove(this.todayButtonClass);
+            }
+          });
+          if (!focus) {
+            const enabledDays = this.calendarDays.filter((calendarDay) => {
+              return window.getComputedStyle(calendarDay.button).display === "block" && !calendarDay.button.disabled;
+            });
+            enabledDays[0].button.setAttribute("tabindex", 0);
+            this.currentDate = enabledDays[0].date;
+          }
+        };
+        Datepicker.prototype.selectDate = function(date) {
+          if (this.isExcludedDate(date)) {
+            return;
+          }
+          this.$calendarButton.querySelector("span").innerText = `Choose date. Selected date is ${this.formattedDateHuman(date)}`;
+          this.$input.value = this.formattedDateFromDate(date);
+          const changeEvent = new Event("change", { bubbles: true, cancelable: true });
+          this.$input.dispatchEvent(changeEvent);
+          this.closeDialog();
+        };
+        Datepicker.prototype.isOpen = function() {
+          return this.$dialog.classList.contains("moj-datepicker__dialog--open");
+        };
+        Datepicker.prototype.toggleDialog = function(event) {
+          event.preventDefault();
+          if (this.isOpen()) {
+            this.closeDialog();
+          } else {
+            this.setMinAndMaxDatesOnCalendar();
+            this.openDialog();
+          }
+        };
+        Datepicker.prototype.openDialog = function() {
+          this.$dialog.classList.add("moj-datepicker__dialog--open");
+          this.$calendarButton.setAttribute("aria-expanded", "true");
+          if (this.$input.offsetWidth > this.$dialog.offsetWidth) {
+            this.$dialog.style.right = `0px`;
+          }
+          this.$dialog.style.top = `${this.$input.offsetHeight + 3}px`;
+          this.inputDate = this.formattedDateFromString(this.$input.value);
+          this.currentDate = this.inputDate;
+          this.currentDate.setHours(0, 0, 0, 0);
+          this.updateCalendar();
+          this.setCurrentDate();
+        };
+        Datepicker.prototype.closeDialog = function() {
+          this.$dialog.classList.remove("moj-datepicker__dialog--open");
+          this.$calendarButton.setAttribute("aria-expanded", "false");
+          this.$calendarButton.focus();
+        };
+        Datepicker.prototype.goToDate = function(date, focus) {
+          const current = this.currentDate;
+          this.currentDate = date;
+          if (current.getMonth() !== this.currentDate.getMonth() || current.getFullYear() !== this.currentDate.getFullYear()) {
+            this.updateCalendar();
+          }
+          this.setCurrentDate(focus);
+        };
+        Datepicker.prototype.focusNextDay = function() {
+          const date = new Date(this.currentDate);
+          date.setDate(date.getDate() + 1);
+          this.goToDate(date);
+        };
+        Datepicker.prototype.focusPreviousDay = function() {
+          const date = new Date(this.currentDate);
+          date.setDate(date.getDate() - 1);
+          this.goToDate(date);
+        };
+        Datepicker.prototype.focusNextWeek = function() {
+          const date = new Date(this.currentDate);
+          date.setDate(date.getDate() + 7);
+          this.goToDate(date);
+        };
+        Datepicker.prototype.focusPreviousWeek = function() {
+          const date = new Date(this.currentDate);
+          date.setDate(date.getDate() - 7);
+          this.goToDate(date);
+        };
+        Datepicker.prototype.focusFirstDayOfWeek = function() {
+          const date = new Date(this.currentDate);
+          date.setDate(date.getDate() - date.getDay());
+          this.goToDate(date);
+        };
+        Datepicker.prototype.focusLastDayOfWeek = function() {
+          const date = new Date(this.currentDate);
+          date.setDate(date.getDate() - date.getDay() + 6);
+          this.goToDate(date);
+        };
+        Datepicker.prototype.focusNextMonth = function(event, focus = true) {
+          event.preventDefault();
+          const date = new Date(this.currentDate);
+          date.setMonth(date.getMonth() + 1, 1);
+          this.goToDate(date, focus);
+        };
+        Datepicker.prototype.focusPreviousMonth = function(event, focus = true) {
+          event.preventDefault();
+          const date = new Date(this.currentDate);
+          date.setMonth(date.getMonth() - 1, 1);
+          this.goToDate(date, focus);
+        };
+        Datepicker.prototype.focusNextYear = function(event, focus = true) {
+          event.preventDefault();
+          const date = new Date(this.currentDate);
+          date.setFullYear(date.getFullYear() + 1, date.getMonth(), 1);
+          this.goToDate(date, focus);
+        };
+        Datepicker.prototype.focusPreviousYear = function(event, focus = true) {
+          event.preventDefault();
+          const date = new Date(this.currentDate);
+          date.setFullYear(date.getFullYear() - 1, date.getMonth(), 1);
+          this.goToDate(date, focus);
+        };
+        Datepicker.prototype.parseDataset = function(schema, dataset) {
+          const parsed = {};
+          for (const [field, attributes] of Object.entries(schema.properties)) {
+            if (field in dataset) {
+              parsed[field] = dataset[field];
+            }
+          }
+          return parsed;
+        };
+        Datepicker.prototype.mergeConfigs = function(...configObjects) {
+          const formattedConfigObject = {};
+          for (const configObject of configObjects) {
+            for (const key of Object.keys(configObject)) {
+              const option = formattedConfigObject[key];
+              const override = configObject[key];
+              if (typeof option === "object" && typeof override === "object") {
+                formattedConfigObject[key] = this.mergeConfigs(option, override);
+              } else {
+                formattedConfigObject[key] = override;
+              }
+            }
+          }
+          return formattedConfigObject;
+        };
+        function DSCalendarDay(button, index, row, column, picker) {
+          this.index = index;
+          this.row = row;
+          this.column = column;
+          this.button = button;
+          this.picker = picker;
+          this.date = /* @__PURE__ */ new Date();
+        }
+        DSCalendarDay.prototype.init = function() {
+          this.button.addEventListener("keydown", this.keyPress.bind(this));
+          this.button.addEventListener("click", this.click.bind(this));
+        };
+        DSCalendarDay.prototype.update = function(day, hidden, disabled) {
+          let label = day.getDate();
+          let accessibleLabel = this.picker.formattedDateHuman(day);
+          if (disabled) {
+            this.button.setAttribute("aria-disabled", true);
+            accessibleLabel = "Excluded date, " + accessibleLabel;
+          } else {
+            this.button.removeAttribute("aria-disabled");
+          }
+          if (hidden) {
+            this.button.style.display = "none";
+          } else {
+            this.button.style.display = "block";
+          }
+          this.button.innerHTML = `<span class="govuk-visually-hidden">${accessibleLabel}</span><span aria-hidden="true">${label}</span>`;
+          this.date = new Date(day);
+        };
+        DSCalendarDay.prototype.click = function(event) {
+          this.picker.goToDate(this.date);
+          this.picker.selectDate(this.date);
+          event.stopPropagation();
+          event.preventDefault();
+        };
+        DSCalendarDay.prototype.keyPress = function(event) {
+          let calendarNavKey = true;
+          switch (event.key) {
+            case "ArrowLeft":
+              this.picker.focusPreviousDay();
+              break;
+            case "ArrowRight":
+              this.picker.focusNextDay();
+              break;
+            case "ArrowUp":
+              this.picker.focusPreviousWeek();
+              break;
+            case "ArrowDown":
+              this.picker.focusNextWeek();
+              break;
+            case "Home":
+              this.picker.focusFirstDayOfWeek();
+              break;
+            case "End":
+              this.picker.focusLastDayOfWeek();
+              break;
+            case "PageUp":
+              event.shiftKey ? this.picker.focusPreviousYear(event) : this.picker.focusPreviousMonth(event);
+              break;
+            case "PageDown":
+              event.shiftKey ? this.picker.focusNextYear(event) : this.picker.focusNextMonth(event);
+              break;
+            default:
+              calendarNavKey = false;
+              break;
+          }
+          if (calendarNavKey) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+        };
+        MOJFrontend2.DatePicker = Datepicker;
         MOJFrontend2.FilterToggleButton = function(options) {
           this.options = options;
           this.container = $(this.options.toggleButton.container);
@@ -1719,45 +2375,73 @@
     }
   });
 
+  // node_modules/govuk-frontend/dist/govuk/common/normalise-string.mjs
+  function normaliseString(value, property) {
+    const trimmedValue = value ? value.trim() : "";
+    let output;
+    let outputType = property == null ? void 0 : property.type;
+    if (!outputType) {
+      if (["true", "false"].includes(trimmedValue)) {
+        outputType = "boolean";
+      }
+      if (trimmedValue.length > 0 && isFinite(Number(trimmedValue))) {
+        outputType = "number";
+      }
+    }
+    switch (outputType) {
+      case "boolean":
+        output = trimmedValue === "true";
+        break;
+      case "number":
+        output = Number(trimmedValue);
+        break;
+      default:
+        output = value;
+    }
+    return output;
+  }
+
   // node_modules/govuk-frontend/dist/govuk/common/index.mjs
   function mergeConfigs(...configObjects) {
-    function flattenObject(configObject) {
-      const flattenedObject = {};
-      function flattenLoop(obj, prefix) {
-        for (const [key, value] of Object.entries(obj)) {
-          const prefixedKey = prefix ? `${prefix}.${key}` : key;
-          if (value && typeof value === "object") {
-            flattenLoop(value, prefixedKey);
-          } else {
-            flattenedObject[prefixedKey] = value;
-          }
-        }
-      }
-      flattenLoop(configObject);
-      return flattenedObject;
-    }
     const formattedConfigObject = {};
     for (const configObject of configObjects) {
-      const obj = flattenObject(configObject);
-      for (const [key, value] of Object.entries(obj)) {
-        formattedConfigObject[key] = value;
+      for (const key of Object.keys(configObject)) {
+        const option = formattedConfigObject[key];
+        const override = configObject[key];
+        if (isObject(option) && isObject(override)) {
+          formattedConfigObject[key] = mergeConfigs(option, override);
+        } else {
+          formattedConfigObject[key] = override;
+        }
       }
     }
     return formattedConfigObject;
   }
-  function extractConfigByNamespace(configObject, namespace) {
-    const newObject = {};
-    for (const [key, value] of Object.entries(configObject)) {
+  function extractConfigByNamespace(Component, dataset, namespace) {
+    const property = Component.schema.properties[namespace];
+    if ((property == null ? void 0 : property.type) !== "object") {
+      return;
+    }
+    const newObject = {
+      [namespace]: {}
+    };
+    for (const [key, value] of Object.entries(dataset)) {
+      let current = newObject;
       const keyParts = key.split(".");
-      if (keyParts[0] === namespace) {
-        if (keyParts.length > 1) {
-          keyParts.shift();
+      for (const [index, name] of keyParts.entries()) {
+        if (typeof current === "object") {
+          if (index < keyParts.length - 1) {
+            if (!isObject(current[name])) {
+              current[name] = {};
+            }
+            current = current[name];
+          } else if (key !== namespace) {
+            current[name] = normaliseString(value);
+          }
         }
-        const newKey = keyParts.join(".");
-        newObject[newKey] = value;
       }
     }
-    return newObject;
+    return newObject[namespace];
   }
   function getFragmentFromUrl(url) {
     if (!url.includes("#")) {
@@ -1807,42 +2491,39 @@
     const validationErrors = [];
     for (const [name, conditions] of Object.entries(schema)) {
       const errors = [];
-      for (const {
-        required,
-        errorMessage
-      } of conditions) {
-        if (!required.every((key) => !!config[key])) {
-          errors.push(errorMessage);
+      if (Array.isArray(conditions)) {
+        for (const {
+          required,
+          errorMessage
+        } of conditions) {
+          if (!required.every((key) => !!config[key])) {
+            errors.push(errorMessage);
+          }
         }
-      }
-      if (name === "anyOf" && !(conditions.length - errors.length >= 1)) {
-        validationErrors.push(...errors);
+        if (name === "anyOf" && !(conditions.length - errors.length >= 1)) {
+          validationErrors.push(...errors);
+        }
       }
     }
     return validationErrors;
   }
+  function isArray(option) {
+    return Array.isArray(option);
+  }
+  function isObject(option) {
+    return !!option && typeof option === "object" && !isArray(option);
+  }
 
   // node_modules/govuk-frontend/dist/govuk/common/normalise-dataset.mjs
-  function normaliseString(value) {
-    if (typeof value !== "string") {
-      return value;
-    }
-    const trimmedValue = value.trim();
-    if (trimmedValue === "true") {
-      return true;
-    }
-    if (trimmedValue === "false") {
-      return false;
-    }
-    if (trimmedValue.length > 0 && isFinite(Number(trimmedValue))) {
-      return Number(trimmedValue);
-    }
-    return value;
-  }
-  function normaliseDataset(dataset) {
+  function normaliseDataset(Component, dataset) {
     const out = {};
-    for (const [key, value] of Object.entries(dataset)) {
-      out[key] = normaliseString(value);
+    for (const [field, property] of Object.entries(Component.schema.properties)) {
+      if (field in dataset) {
+        out[field] = normaliseString(dataset[field], property);
+      }
+      if ((property == null ? void 0 : property.type) === "object") {
+        out[field] = extractConfigByNamespace(Component, dataset, field);
+      }
     }
     return out;
   }
@@ -1915,18 +2596,21 @@
       if (!lookupKey) {
         throw new Error("i18n: lookup key missing");
       }
-      if (typeof (options == null ? void 0 : options.count) === "number") {
-        lookupKey = `${lookupKey}.${this.getPluralSuffix(lookupKey, options.count)}`;
+      let translation = this.translations[lookupKey];
+      if (typeof (options == null ? void 0 : options.count) === "number" && typeof translation === "object") {
+        const translationPluralForm = translation[this.getPluralSuffix(lookupKey, options.count)];
+        if (translationPluralForm) {
+          translation = translationPluralForm;
+        }
       }
-      const translationString = this.translations[lookupKey];
-      if (typeof translationString === "string") {
-        if (translationString.match(/%{(.\S+)}/)) {
+      if (typeof translation === "string") {
+        if (translation.match(/%{(.\S+)}/)) {
           if (!options) {
             throw new Error("i18n: cannot replace placeholders in string if no option data provided");
           }
-          return this.replacePlaceholders(translationString, options);
+          return this.replacePlaceholders(translation, options);
         }
-        return translationString;
+        return translation;
       }
       return lookupKey;
     }
@@ -1954,12 +2638,15 @@
       if (!isFinite(count)) {
         return "other";
       }
+      const translation = this.translations[lookupKey];
       const preferredForm = this.hasIntlPluralRulesSupport() ? new Intl.PluralRules(this.locale).select(count) : this.selectPluralFormUsingFallbackRules(count);
-      if (`${lookupKey}.${preferredForm}` in this.translations) {
-        return preferredForm;
-      } else if (`${lookupKey}.other` in this.translations) {
-        console.warn(`i18n: Missing plural form ".${preferredForm}" for "${this.locale}" locale. Falling back to ".other".`);
-        return "other";
+      if (typeof translation === "object") {
+        if (preferredForm in translation) {
+          return preferredForm;
+        } else if ("other" in translation) {
+          console.warn(`i18n: Missing plural form ".${preferredForm}" for "${this.locale}" locale. Falling back to ".other".`);
+          return "other";
+        }
       }
       throw new Error(`i18n: Plural form ".other" is required for "${this.locale}" locale`);
     }
@@ -2121,7 +2808,6 @@
       this.sectionSummaryFocusClass = "govuk-accordion__section-summary-focus";
       this.sectionContentClass = "govuk-accordion__section-content";
       this.$sections = void 0;
-      this.browserSupportsSessionStorage = false;
       this.$showAllButton = null;
       this.$showAllIcon = null;
       this.$showAllText = null;
@@ -2133,8 +2819,8 @@
         });
       }
       this.$module = $module;
-      this.config = mergeConfigs(_Accordion.defaults, config, normaliseDataset($module.dataset));
-      this.i18n = new I18n(extractConfigByNamespace(this.config, "i18n"));
+      this.config = mergeConfigs(_Accordion.defaults, config, normaliseDataset(_Accordion, $module.dataset));
+      this.i18n = new I18n(this.config.i18n);
       const $sections = this.$module.querySelectorAll(`.${this.sectionClass}`);
       if (!$sections.length) {
         throw new ElementError({
@@ -2143,11 +2829,9 @@
         });
       }
       this.$sections = $sections;
-      this.browserSupportsSessionStorage = helper.checkForSessionStorage();
       this.initControls();
       this.initSectionHeaders();
-      const areAllSectionsOpen = this.checkIfAllSectionsOpen();
-      this.updateShowAllButton(areAllSectionsOpen);
+      this.updateShowAllButton(this.areAllSectionsOpen());
     }
     initControls() {
       this.$showAllButton = document.createElement("button");
@@ -2204,8 +2888,8 @@
       $button.setAttribute("type", "button");
       $button.setAttribute("aria-controls", `${this.$module.id}-content-${index + 1}`);
       for (const attr of Array.from($span.attributes)) {
-        if (attr.nodeName !== "id") {
-          $button.setAttribute(attr.nodeName, `${attr.nodeValue}`);
+        if (attr.name !== "id") {
+          $button.setAttribute(attr.name, attr.value);
         }
       }
       const $headingText = document.createElement("span");
@@ -2214,7 +2898,7 @@
       const $headingTextFocus = document.createElement("span");
       $headingTextFocus.classList.add(this.sectionHeadingTextFocusClass);
       $headingText.appendChild($headingTextFocus);
-      $headingTextFocus.innerHTML = $span.innerHTML;
+      Array.from($span.childNodes).forEach(($child) => $headingTextFocus.appendChild($child));
       const $showHideToggle = document.createElement("span");
       $showHideToggle.classList.add(this.sectionShowHideToggleClass);
       $showHideToggle.setAttribute("data-nosnippet", "");
@@ -2229,16 +2913,16 @@
       $showHideToggleFocus.appendChild($showHideText);
       $button.appendChild($headingText);
       $button.appendChild(this.getButtonPunctuationEl());
-      if ($summary != null && $summary.parentNode) {
+      if ($summary) {
         const $summarySpan = document.createElement("span");
         const $summarySpanFocus = document.createElement("span");
         $summarySpanFocus.classList.add(this.sectionSummaryFocusClass);
         $summarySpan.appendChild($summarySpanFocus);
         for (const attr of Array.from($summary.attributes)) {
-          $summarySpan.setAttribute(attr.nodeName, `${attr.nodeValue}`);
+          $summarySpan.setAttribute(attr.name, attr.value);
         }
-        $summarySpanFocus.innerHTML = $summary.innerHTML;
-        $summary.parentNode.replaceChild($summarySpan, $summary);
+        Array.from($summary.childNodes).forEach(($child) => $summarySpanFocus.appendChild($child));
+        $summary.remove();
         $button.appendChild($summarySpan);
         $button.appendChild(this.getButtonPunctuationEl());
       }
@@ -2257,15 +2941,15 @@
       }
     }
     onSectionToggle($section) {
-      const expanded = this.isExpanded($section);
-      this.setExpanded(!expanded, $section);
-      this.storeState($section);
+      const nowExpanded = !this.isExpanded($section);
+      this.setExpanded(nowExpanded, $section);
+      this.storeState($section, nowExpanded);
     }
     onShowOrHideAllToggle() {
-      const nowExpanded = !this.checkIfAllSectionsOpen();
+      const nowExpanded = !this.areAllSectionsOpen();
       this.$sections.forEach(($section) => {
         this.setExpanded(nowExpanded, $section);
-        this.storeState($section);
+        this.storeState($section, nowExpanded);
       });
       this.updateShowAllButton(nowExpanded);
     }
@@ -2307,17 +2991,13 @@
         $section.classList.remove(this.sectionExpandedClass);
         $showHideIcon.classList.add(this.downChevronIconClass);
       }
-      const areAllSectionsOpen = this.checkIfAllSectionsOpen();
-      this.updateShowAllButton(areAllSectionsOpen);
+      this.updateShowAllButton(this.areAllSectionsOpen());
     }
     isExpanded($section) {
       return $section.classList.contains(this.sectionExpandedClass);
     }
-    checkIfAllSectionsOpen() {
-      const sectionsCount = this.$sections.length;
-      const expandedSectionCount = this.$module.querySelectorAll(`.${this.sectionExpandedClass}`).length;
-      const areAllSectionsOpen = sectionsCount === expandedSectionCount;
-      return areAllSectionsOpen;
+    areAllSectionsOpen() {
+      return Array.from(this.$sections).every(($section) => this.isExpanded($section));
     }
     updateShowAllButton(expanded) {
       if (!this.$showAllButton || !this.$showAllText || !this.$showAllIcon) {
@@ -2327,34 +3007,51 @@
       this.$showAllText.textContent = expanded ? this.i18n.t("hideAllSections") : this.i18n.t("showAllSections");
       this.$showAllIcon.classList.toggle(this.downChevronIconClass, !expanded);
     }
-    storeState($section) {
-      if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
-        const $button = $section.querySelector(`.${this.sectionButtonClass}`);
-        if ($button) {
-          const contentId = $button.getAttribute("aria-controls");
-          const contentState = $button.getAttribute("aria-expanded");
-          if (contentId && contentState) {
-            window.sessionStorage.setItem(contentId, contentState);
-          }
+    /**
+     * Get the identifier for a section
+     *
+     * We need a unique way of identifying each content in the Accordion.
+     * Since an `#id` should be unique and an `id` is required for `aria-`
+     * attributes `id` can be safely used.
+     *
+     * @param {Element} $section - Section element
+     * @returns {string | undefined | null} Identifier for section
+     */
+    getIdentifier($section) {
+      const $button = $section.querySelector(`.${this.sectionButtonClass}`);
+      return $button == null ? void 0 : $button.getAttribute("aria-controls");
+    }
+    storeState($section, isExpanded) {
+      if (!this.config.rememberExpanded) {
+        return;
+      }
+      const id = this.getIdentifier($section);
+      if (id) {
+        try {
+          window.sessionStorage.setItem(id, isExpanded.toString());
+        } catch (exception) {
         }
       }
     }
     setInitialState($section) {
-      if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
-        const $button = $section.querySelector(`.${this.sectionButtonClass}`);
-        if ($button) {
-          const contentId = $button.getAttribute("aria-controls");
-          const contentState = contentId ? window.sessionStorage.getItem(contentId) : null;
-          if (contentState !== null) {
-            this.setExpanded(contentState === "true", $section);
+      if (!this.config.rememberExpanded) {
+        return;
+      }
+      const id = this.getIdentifier($section);
+      if (id) {
+        try {
+          const state = window.sessionStorage.getItem(id);
+          if (state !== null) {
+            this.setExpanded(state === "true", $section);
           }
+        } catch (exception) {
         }
       }
     }
     getButtonPunctuationEl() {
       const $punctuationEl = document.createElement("span");
       $punctuationEl.classList.add("govuk-visually-hidden", this.sectionHeadingDividerClass);
-      $punctuationEl.innerHTML = ", ";
+      $punctuationEl.textContent = ", ";
       return $punctuationEl;
     }
   };
@@ -2370,28 +3067,18 @@
     },
     rememberExpanded: true
   });
-  var helper = {
-    /**
-     * Check for `window.sessionStorage`, and that it actually works.
-     *
-     * @returns {boolean} True if session storage is available
-     */
-    checkForSessionStorage: function() {
-      const testString = "this is the test string";
-      let result;
-      try {
-        window.sessionStorage.setItem(testString, testString);
-        result = window.sessionStorage.getItem(testString) === testString.toString();
-        window.sessionStorage.removeItem(testString);
-        return result;
-      } catch (exception) {
-        return false;
+  Accordion.schema = Object.freeze({
+    properties: {
+      i18n: {
+        type: "object"
+      },
+      rememberExpanded: {
+        type: "boolean"
       }
     }
-  };
+  });
 
   // node_modules/govuk-frontend/dist/govuk/components/button/button.mjs
-  var KEY_SPACE = 32;
   var DEBOUNCE_TIMEOUT_IN_SECONDS = 1;
   var Button = class _Button extends GOVUKFrontendComponent {
     /**
@@ -2411,13 +3098,13 @@
         });
       }
       this.$module = $module;
-      this.config = mergeConfigs(_Button.defaults, config, normaliseDataset($module.dataset));
+      this.config = mergeConfigs(_Button.defaults, config, normaliseDataset(_Button, $module.dataset));
       this.$module.addEventListener("keydown", (event) => this.handleKeyDown(event));
       this.$module.addEventListener("click", (event) => this.debounce(event));
     }
     handleKeyDown(event) {
       const $target = event.target;
-      if (event.keyCode !== KEY_SPACE) {
+      if (event.key !== " ") {
         return;
       }
       if ($target instanceof HTMLElement && $target.getAttribute("role") === "button") {
@@ -2441,6 +3128,13 @@
   Button.moduleName = "govuk-button";
   Button.defaults = Object.freeze({
     preventDoubleClick: false
+  });
+  Button.schema = Object.freeze({
+    properties: {
+      preventDoubleClick: {
+        type: "boolean"
+      }
+    }
   });
 
   // node_modules/govuk-frontend/dist/govuk/common/closest-attribute-value.mjs
@@ -2484,7 +3178,7 @@
           identifier: "Form field (`.govuk-js-character-count`)"
         });
       }
-      const datasetConfig = normaliseDataset($module.dataset);
+      const datasetConfig = normaliseDataset(_CharacterCount, $module.dataset);
       let configOverrides = {};
       if ("maxwords" in datasetConfig || "maxlength" in datasetConfig) {
         configOverrides = {
@@ -2497,7 +3191,7 @@
       if (errors[0]) {
         throw new ConfigError(`Character count: ${errors[0]}`);
       }
-      this.i18n = new I18n(extractConfigByNamespace(this.config, "i18n"), {
+      this.i18n = new I18n(this.config.i18n, {
         locale: closestAttributeValue($module, "lang")
       });
       this.maxLength = (_ref = (_this$config$maxwords = this.config.maxwords) != null ? _this$config$maxwords : this.config.maxlength) != null ? _ref : Infinity;
@@ -2643,6 +3337,20 @@
     }
   });
   CharacterCount.schema = Object.freeze({
+    properties: {
+      i18n: {
+        type: "object"
+      },
+      maxwords: {
+        type: "number"
+      },
+      maxlength: {
+        type: "number"
+      },
+      threshold: {
+        type: "number"
+      }
+    },
     anyOf: [{
       required: ["maxwords"],
       errorMessage: 'Either "maxlength" or "maxwords" must be provided'
@@ -2715,7 +3423,7 @@
         return;
       }
       const $target = document.getElementById(targetId);
-      if ($target && $target.classList.contains("govuk-checkboxes__conditional")) {
+      if ($target != null && $target.classList.contains("govuk-checkboxes__conditional")) {
         const inputIsChecked = $input.checked;
         $input.setAttribute("aria-expanded", inputIsChecked.toString());
         $target.classList.toggle("govuk-checkboxes__conditional--hidden", !inputIsChecked);
@@ -2781,7 +3489,7 @@
         });
       }
       this.$module = $module;
-      this.config = mergeConfigs(_ErrorSummary.defaults, config, normaliseDataset($module.dataset));
+      this.config = mergeConfigs(_ErrorSummary.defaults, config, normaliseDataset(_ErrorSummary, $module.dataset));
       if (!this.config.disableAutoFocus) {
         setFocus(this.$module);
       }
@@ -2842,6 +3550,13 @@
   ErrorSummary.defaults = Object.freeze({
     disableAutoFocus: false
   });
+  ErrorSummary.schema = Object.freeze({
+    properties: {
+      disableAutoFocus: {
+        type: "boolean"
+      }
+    }
+  });
 
   // node_modules/govuk-frontend/dist/govuk/components/exit-this-page/exit-this-page.mjs
   var ExitThisPage = class _ExitThisPage extends GOVUKFrontendComponent {
@@ -2880,8 +3595,8 @@
           identifier: "Button (`.govuk-exit-this-page__button`)"
         });
       }
-      this.config = mergeConfigs(_ExitThisPage.defaults, config, normaliseDataset($module.dataset));
-      this.i18n = new I18n(extractConfigByNamespace(this.config, "i18n"));
+      this.config = mergeConfigs(_ExitThisPage.defaults, config, normaliseDataset(_ExitThisPage, $module.dataset));
+      this.i18n = new I18n(this.config.i18n);
       this.$module = $module;
       this.$button = $button;
       const $skiplinkButton = document.querySelector(".govuk-js-exit-this-page-skiplink");
@@ -2951,7 +3666,7 @@
       if (!this.$updateSpan) {
         return;
       }
-      if ((event.key === "Shift" || event.keyCode === 16 || event.which === 16) && !this.lastKeyWasModified) {
+      if (event.key === "Shift" && !this.lastKeyWasModified) {
         this.keypressCounter += 1;
         this.updateIndicator();
         if (this.timeoutMessageId) {
@@ -3026,6 +3741,13 @@
       timedOut: "Exit this page expired.",
       pressTwoMoreTimes: "Shift, press 2 more times to exit.",
       pressOneMoreTime: "Shift, press 1 more time to exit."
+    }
+  });
+  ExitThisPage.schema = Object.freeze({
+    properties: {
+      i18n: {
+        type: "object"
+      }
     }
   });
 
@@ -3134,7 +3856,7 @@
         });
       }
       this.$module = $module;
-      this.config = mergeConfigs(_NotificationBanner.defaults, config, normaliseDataset($module.dataset));
+      this.config = mergeConfigs(_NotificationBanner.defaults, config, normaliseDataset(_NotificationBanner, $module.dataset));
       if (this.$module.getAttribute("role") === "alert" && !this.config.disableAutoFocus) {
         setFocus(this.$module);
       }
@@ -3143,6 +3865,128 @@
   NotificationBanner.moduleName = "govuk-notification-banner";
   NotificationBanner.defaults = Object.freeze({
     disableAutoFocus: false
+  });
+  NotificationBanner.schema = Object.freeze({
+    properties: {
+      disableAutoFocus: {
+        type: "boolean"
+      }
+    }
+  });
+
+  // node_modules/govuk-frontend/dist/govuk/components/password-input/password-input.mjs
+  var PasswordInput = class _PasswordInput extends GOVUKFrontendComponent {
+    /**
+     * @param {Element | null} $module - HTML element to use for password input
+     * @param {PasswordInputConfig} [config] - Password input config
+     */
+    constructor($module, config = {}) {
+      super();
+      this.$module = void 0;
+      this.config = void 0;
+      this.i18n = void 0;
+      this.$input = void 0;
+      this.$showHideButton = void 0;
+      this.$screenReaderStatusMessage = void 0;
+      if (!($module instanceof HTMLElement)) {
+        throw new ElementError({
+          componentName: "Password input",
+          element: $module,
+          identifier: "Root element (`$module`)"
+        });
+      }
+      const $input = $module.querySelector(".govuk-js-password-input-input");
+      if (!($input instanceof HTMLInputElement)) {
+        throw new ElementError({
+          componentName: "Password input",
+          element: $input,
+          expectedType: "HTMLInputElement",
+          identifier: "Form field (`.govuk-js-password-input-input`)"
+        });
+      }
+      if ($input.type !== "password") {
+        throw new ElementError("Password input: Form field (`.govuk-js-password-input-input`) must be of type `password`.");
+      }
+      const $showHideButton = $module.querySelector(".govuk-js-password-input-toggle");
+      if (!($showHideButton instanceof HTMLButtonElement)) {
+        throw new ElementError({
+          componentName: "Password input",
+          element: $showHideButton,
+          expectedType: "HTMLButtonElement",
+          identifier: "Button (`.govuk-js-password-input-toggle`)"
+        });
+      }
+      if ($showHideButton.type !== "button") {
+        throw new ElementError("Password input: Button (`.govuk-js-password-input-toggle`) must be of type `button`.");
+      }
+      this.$module = $module;
+      this.$input = $input;
+      this.$showHideButton = $showHideButton;
+      this.config = mergeConfigs(_PasswordInput.defaults, config, normaliseDataset(_PasswordInput, $module.dataset));
+      this.i18n = new I18n(this.config.i18n, {
+        locale: closestAttributeValue($module, "lang")
+      });
+      this.$showHideButton.removeAttribute("hidden");
+      const $screenReaderStatusMessage = document.createElement("div");
+      $screenReaderStatusMessage.className = "govuk-password-input__sr-status govuk-visually-hidden";
+      $screenReaderStatusMessage.setAttribute("aria-live", "polite");
+      this.$screenReaderStatusMessage = $screenReaderStatusMessage;
+      this.$input.insertAdjacentElement("afterend", $screenReaderStatusMessage);
+      this.$showHideButton.addEventListener("click", this.toggle.bind(this));
+      if (this.$input.form) {
+        this.$input.form.addEventListener("submit", () => this.hide());
+      }
+      window.addEventListener("pageshow", (event) => {
+        if (event.persisted && this.$input.type !== "password") {
+          this.hide();
+        }
+      });
+      this.hide();
+    }
+    toggle(event) {
+      event.preventDefault();
+      if (this.$input.type === "password") {
+        this.show();
+        return;
+      }
+      this.hide();
+    }
+    show() {
+      this.setType("text");
+    }
+    hide() {
+      this.setType("password");
+    }
+    setType(type) {
+      if (type === this.$input.type) {
+        return;
+      }
+      this.$input.setAttribute("type", type);
+      const isHidden = type === "password";
+      const prefixButton = isHidden ? "show" : "hide";
+      const prefixStatus = isHidden ? "passwordHidden" : "passwordShown";
+      this.$showHideButton.innerText = this.i18n.t(`${prefixButton}Password`);
+      this.$showHideButton.setAttribute("aria-label", this.i18n.t(`${prefixButton}PasswordAriaLabel`));
+      this.$screenReaderStatusMessage.innerText = this.i18n.t(`${prefixStatus}Announcement`);
+    }
+  };
+  PasswordInput.moduleName = "govuk-password-input";
+  PasswordInput.defaults = Object.freeze({
+    i18n: {
+      showPassword: "Show",
+      hidePassword: "Hide",
+      showPasswordAriaLabel: "Show password",
+      hidePasswordAriaLabel: "Hide password",
+      passwordShownAnnouncement: "Your password is visible",
+      passwordHiddenAnnouncement: "Your password is hidden"
+    }
+  });
+  PasswordInput.schema = Object.freeze({
+    properties: {
+      i18n: {
+        type: "object"
+      }
+    }
   });
 
   // node_modules/govuk-frontend/dist/govuk/components/radios/radios.mjs
@@ -3300,12 +4144,6 @@
       this.$tabs = void 0;
       this.$tabList = void 0;
       this.$tabListItems = void 0;
-      this.keys = {
-        left: 37,
-        right: 39,
-        up: 38,
-        down: 40
-      };
       this.jsHiddenClass = "govuk-tabs__panel--hidden";
       this.changingHash = false;
       this.boundTabClick = void 0;
@@ -3485,14 +4323,18 @@
       $panel.id = panelId;
     }
     onTabKeydown(event) {
-      switch (event.keyCode) {
-        case this.keys.left:
-        case this.keys.up:
+      switch (event.key) {
+        case "ArrowLeft":
+        case "ArrowUp":
+        case "Left":
+        case "Up":
           this.activatePreviousTab();
           event.preventDefault();
           break;
-        case this.keys.right:
-        case this.keys.down:
+        case "ArrowRight":
+        case "ArrowDown":
+        case "Right":
+        case "Down":
           this.activateNextTab();
           event.preventDefault();
           break;
@@ -3577,7 +4419,7 @@
   };
   Tabs.moduleName = "govuk-tabs";
 
-  // node_modules/govuk-frontend/dist/govuk/all.mjs
+  // node_modules/govuk-frontend/dist/govuk/init.mjs
   function initAll(config) {
     var _config$scope;
     config = typeof config !== "undefined" ? config : {};
@@ -3585,18 +4427,22 @@
       console.log(new SupportError());
       return;
     }
-    const components = [[Accordion, config.accordion], [Button, config.button], [CharacterCount, config.characterCount], [Checkboxes], [ErrorSummary, config.errorSummary], [ExitThisPage, config.exitThisPage], [Header], [NotificationBanner, config.notificationBanner], [Radios], [SkipLink], [Tabs]];
+    const components = [[Accordion, config.accordion], [Button, config.button], [CharacterCount, config.characterCount], [Checkboxes], [ErrorSummary, config.errorSummary], [ExitThisPage, config.exitThisPage], [Header], [NotificationBanner, config.notificationBanner], [PasswordInput, config.passwordInput], [Radios], [SkipLink], [Tabs]];
     const $scope = (_config$scope = config.scope) != null ? _config$scope : document;
     components.forEach(([Component, config2]) => {
-      const $elements = $scope.querySelectorAll(`[data-module="${Component.moduleName}"]`);
-      $elements.forEach(($element) => {
-        try {
-          "defaults" in Component ? new Component($element, config2) : new Component($element);
-        } catch (error) {
-          console.log(error);
-        }
-      });
+      createAll(Component, config2, $scope);
     });
+  }
+  function createAll(Component, config, $scope = document) {
+    const $elements = $scope.querySelectorAll(`[data-module="${Component.moduleName}"]`);
+    return Array.from($elements).map(($element) => {
+      try {
+        return "defaults" in Component && typeof config !== "undefined" ? new Component($element, config) : new Component($element);
+      } catch (error) {
+        console.log(error);
+        return null;
+      }
+    }).filter(Boolean);
   }
 
   // docs/assets/javascript/all.js
@@ -3909,6 +4755,13 @@ govuk-frontend/dist/govuk/components/header/header.mjs:
 govuk-frontend/dist/govuk/components/notification-banner/notification-banner.mjs:
   (**
    * Notification Banner component
+   *
+   * @preserve
+   *)
+
+govuk-frontend/dist/govuk/components/password-input/password-input.mjs:
+  (**
+   * Password input component
    *
    * @preserve
    *)

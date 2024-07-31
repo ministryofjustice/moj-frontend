@@ -43,7 +43,7 @@
 
 
 :root {
-  --govuk-frontend-version: "5.1.0";
+  --govuk-frontend-version: "5.4.1";
   --govuk-frontend-breakpoint-mobile: 20rem;
   --govuk-frontend-breakpoint-tablet: 40.0625rem;
   --govuk-frontend-breakpoint-desktop: 48.0625rem;
@@ -1664,7 +1664,7 @@
 }
 .govuk-frontend-supported .govuk-accordion__section-button {
   width: 100%;
-  padding: 10px 0 0 0;
+  padding: 10px 0 0;
   border: 0;
   border-top: 1px solid #b1b4b6;
   border-bottom: 10px solid transparent;
@@ -2675,6 +2675,7 @@
 }
 
 .govuk-checkboxes__input {
+  z-index: 1;
   width: 44px;
   height: 44px;
   margin: 0;
@@ -2794,8 +2795,8 @@
 
 .govuk-checkboxes__conditional {
   margin-bottom: 15px;
-  margin-left: 18px;
-  padding-left: 33px;
+  margin-left: 20px;
+  padding-left: 35px;
   border-left: 4px solid #b1b4b6;
 }
 @media (min-width: 40.0625em) {
@@ -2838,6 +2839,10 @@
 .govuk-checkboxes--small .govuk-checkboxes__conditional {
   margin-left: 10px;
   padding-left: 20px;
+}
+.govuk-checkboxes--small .govuk-checkboxes__divider {
+  width: 24px;
+  margin-bottom: 5px;
 }
 .govuk-checkboxes--small .govuk-checkboxes__item:hover .govuk-checkboxes__input:not(:disabled) + .govuk-checkboxes__label::before {
   outline: 3px dashed transparent;
@@ -3332,17 +3337,25 @@
 }
 
 .govuk-error-summary__body p {
-  margin-top: 0;
-  margin-bottom: 15px;
+  margin-bottom: 0;
+}
+.govuk-error-summary__body > * + * {
+  margin-top: 15px;
 }
 @media (min-width: 40.0625em) {
-  .govuk-error-summary__body p {
-    margin-bottom: 20px;
+  .govuk-error-summary__body > * + * {
+    margin-top: 20px;
   }
+}
+.govuk-error-summary__body > :last-child {
+  margin-bottom: 5px;
 }
 
 .govuk-error-summary__list {
-  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.govuk-error-summary__list li:last-child {
   margin-bottom: 0;
 }
 
@@ -4038,7 +4051,7 @@
   border-color: transparent;
   -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  border-width: 0 5px 8.66px 5px;
+  border-width: 0 5px 8.66px;
   border-bottom-color: inherit;
 }
 @media (min-width: 40.0625em) {
@@ -4294,7 +4307,7 @@
   font-size: 1.125rem;
   line-height: 1.1111111111;
   font-weight: 700;
-  margin: 0 0 15px 0;
+  margin: 0 0 15px;
   padding: 0;
 }
 @media (min-width: 40.0625em) {
@@ -4691,6 +4704,40 @@
 }
 
 
+
+
+
+
+
+@media (min-width: 20em) {
+  .govuk-password-input__wrapper {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.govuk-password-input__input::-ms-reveal {
+  display: none;
+}
+
+.govuk-password-input__toggle {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+.govuk-password-input__toggle[hidden] {
+  display: none;
+}
+@media (min-width: 20em) {
+  .govuk-password-input__toggle {
+    width: auto;
+    flex-shrink: 0;
+    flex-basis: 5em;
+    margin-top: 0;
+    margin-left: 5px;
+  }
+}
+
+
 .govuk-tag {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -4842,11 +4889,6 @@
     line-height: 1.2;
   }
 }
-@media screen and (forced-colors: active) {
-  .govuk-phase-banner__content__tag {
-    font-weight: bold;
-  }
-}
 
 .govuk-phase-banner__text {
   display: table-cell;
@@ -4871,6 +4913,7 @@
 }
 
 .govuk-radios__input {
+  z-index: 1;
   width: 44px;
   height: 44px;
   margin: 0;
@@ -4999,8 +5042,8 @@
 
 .govuk-radios__conditional {
   margin-bottom: 15px;
-  margin-left: 18px;
-  padding-left: 33px;
+  margin-left: 20px;
+  padding-left: 35px;
   border-left: 4px solid #b1b4b6;
 }
 @media (min-width: 40.0625em) {
@@ -5132,18 +5175,6 @@
 
 
 .govuk-skip-link {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  margin: 0 !important;
-  overflow: hidden !important;
-  clip: rect(0 0 0 0) !important;
-  -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important;
-  white-space: nowrap !important;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -5155,19 +5186,21 @@
   display: block;
   padding: 10px 15px;
 }
-.govuk-skip-link:active, .govuk-skip-link:focus {
-  position: static !important;
-  width: auto !important;
-  height: auto !important;
-  margin: inherit !important;
-  overflow: visible !important;
-  clip: auto !important;
-  -webkit-clip-path: none !important;
-  clip-path: none !important;
-  white-space: inherit !important;
-  -webkit-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
+.govuk-skip-link:not(:active):not(:focus) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 @media print {
   .govuk-skip-link {
@@ -6131,33 +6164,21 @@
   content: " ";
 }
 
-.govuk-visually-hidden-focusable {
+.govuk-visually-hidden-focusable:not(:active):not(:focus) {
   position: absolute !important;
   width: 1px !important;
   height: 1px !important;
   margin: 0 !important;
+  padding: 0 !important;
   overflow: hidden !important;
   clip: rect(0 0 0 0) !important;
   -webkit-clip-path: inset(50%) !important;
   clip-path: inset(50%) !important;
+  border: 0 !important;
   white-space: nowrap !important;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-.govuk-visually-hidden-focusable:active, .govuk-visually-hidden-focusable:focus {
-  position: static !important;
-  width: auto !important;
-  height: auto !important;
-  margin: inherit !important;
-  overflow: visible !important;
-  clip: auto !important;
-  -webkit-clip-path: none !important;
-  clip-path: none !important;
-  white-space: inherit !important;
-  -webkit-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
 }
 
 
@@ -7442,6 +7463,10 @@
   font-weight: 700 !important;
 }
 
+.govuk-\!-font-tabular-numbers {
+  font-variant-numeric: tabular-nums !important;
+}
+
 
 .govuk-\!-width-full {
   width: 100% !important;
@@ -7491,6 +7516,7 @@
     width: 25% !important;
   }
 }
+
 
 
 
@@ -8171,6 +8197,355 @@
 .moj-input__currency {
   margin: 0;
   padding-left: 40px;
+}
+
+.moj-datepicker {
+  position: relative;
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.1428571429;
+}
+@media print {
+  .moj-datepicker {
+    font-family: sans-serif;
+  }
+}
+@media (min-width: 40.0625em) {
+  .moj-datepicker {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
+@media print {
+  .moj-datepicker {
+    font-size: 14pt;
+    line-height: 1.2;
+  }
+}
+
+.moj-datepicker__dialog {
+  display: none;
+  position: absolute;
+  top: 0;
+  min-width: 280px;
+  padding: 20px;
+  outline: 2px solid #0b0c0c;
+  outline-offset: -2px;
+  background-color: #ffffff;
+  transition: background-color 0.2s, outline-color 0.2s;
+  z-index: 2;
+}
+
+.moj-datepicker__dialog--open {
+  display: block;
+}
+
+.moj-datepicker__dialog-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.moj-datepicker__dialog-title {
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.1428571429;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+@media print {
+  .moj-datepicker__dialog-title {
+    font-family: sans-serif;
+  }
+}
+@media (min-width: 40.0625em) {
+  .moj-datepicker__dialog-title {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
+@media print {
+  .moj-datepicker__dialog-title {
+    font-size: 14pt;
+    line-height: 1.2;
+  }
+}
+
+.moj-datepicker__dialog-navbuttons {
+  display: flex;
+  align-items: center;
+}
+
+.moj-datepicker__calendar {
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.moj-datepicker__calendar tbody:focus-within {
+  outline: 2px solid #ffdd00;
+}
+.moj-datepicker__calendar td {
+  border: 0;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+.moj-datepicker__calendar th {
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.1428571429;
+  font-weight: bold;
+  color: #0b0c0c;
+}
+@media print {
+  .moj-datepicker__calendar th {
+    font-family: sans-serif;
+  }
+}
+@media (min-width: 40.0625em) {
+  .moj-datepicker__calendar th {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
+@media print {
+  .moj-datepicker__calendar th {
+    font-size: 14pt;
+    line-height: 1.2;
+  }
+}
+
+.moj-datepicker__dialog > .govuk-button-group {
+  margin-bottom: 0;
+}
+.moj-datepicker__dialog > .govuk-button-group > * {
+  margin-bottom: 0;
+}
+
+.moj-datepicker__button {
+  font-family: "GDS Transport", arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.1428571429;
+  background-color: transparent;
+  outline: 2px solid rgba(0, 0, 0, 0);
+  outline-offset: -2px;
+  border-width: 0;
+  color: #0b0c0c;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  width: 44px;
+  position: relative;
+}
+@media print {
+  .moj-datepicker__button {
+    font-family: sans-serif;
+  }
+}
+@media (min-width: 40.0625em) {
+  .moj-datepicker__button {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
+@media print {
+  .moj-datepicker__button {
+    font-size: 14pt;
+    line-height: 1.2;
+  }
+}
+@media (forced-colors: active) {
+  .moj-datepicker__button:after {
+    display: none;
+  }
+}
+.moj-datepicker__button:after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  height: 4px;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+}
+.moj-datepicker__button[aria-disabled=true], .moj-datepicker__button[aria-disabled=true]:hover {
+  background-color: #f3f2f1;
+  color: #0b0c0c;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+.moj-datepicker__button:hover {
+  color: #0b0c0c;
+  background-color: #949494;
+  text-decoration: none;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  cursor: pointer;
+}
+.moj-datepicker__button:focus {
+  color: #0b0c0c;
+  background-color: #ffdd00;
+  outline-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.moj-datepicker__button:focus:after {
+  background-color: #0b0c0c;
+}
+.moj-datepicker__button:focus:hover {
+  background-color: #949494;
+  outline-color: #ffdd00;
+}
+.moj-datepicker__button:focus:hover:after {
+  background-color: transparent;
+}
+.moj-datepicker__button--current:not(:focus) {
+  background-color: #1d70b8;
+  color: #ffffff;
+  outline-color: #1d70b8;
+}
+.moj-datepicker__button--current:not(:focus):after {
+  background-color: #1d70b8;
+}
+.moj-datepicker__button--current[tabindex="-1"] {
+  background: transparent;
+  color: currentColor;
+  outline-color: transparent;
+}
+.moj-datepicker__button--current[tabindex="-1"]:after {
+  background-color: transparent;
+}
+.moj-datepicker__button--today {
+  border: 2px solid #0b0c0c;
+}
+.moj-datepicker__button--selected:not(:focus) {
+  background-color: #1d70b8;
+  color: #ffffff;
+}
+.moj-datepicker__button--selected:not(:focus):after {
+  background-color: #1d70b8;
+}
+.moj-datepicker__button--selected:not(:focus):hover {
+  outline-color: #1d70b8;
+  background-color: #949494;
+  color: #0b0c0c;
+}
+.moj-datepicker__button--selected:not(:focus):hover:after {
+  background-color: transparent;
+}
+
+/*
+ Default input with to .govuk-input--width-10 (10 chars)
+ Allow that to be overriden by the input width modifiers or global width overrides.
+ Width classes less than 10ch not included as that is narrower than a date.
+*/
+.moj-datepicker input {
+  max-width: 11.5em;
+}
+.moj-datepicker input.govuk-input--width-30 {
+  max-width: 29.5em;
+}
+.moj-datepicker input.govuk-input--width-20 {
+  max-width: 20.5em;
+}
+.moj-datepicker input.govuk-\!-width-full {
+  width: 100% !important;
+  max-width: none;
+}
+.moj-datepicker input.govuk-\!-width-three-quarters {
+  width: 100% !important;
+  max-width: none;
+}
+@media (min-width: 40.0625em) {
+  .moj-datepicker input.govuk-\!-width-three-quarters {
+    width: 75% !important;
+  }
+}
+.moj-datepicker input.govuk-\!-width-two-thirds {
+  width: 100% !important;
+  max-width: none;
+}
+@media (min-width: 40.0625em) {
+  .moj-datepicker input.govuk-\!-width-two-thirds {
+    width: 66.66% !important;
+  }
+}
+.moj-datepicker input.govuk-\!-width-one-half {
+  width: 100% !important;
+  max-width: none;
+}
+@media (min-width: 40.0625em) {
+  .moj-datepicker input.govuk-\!-width-one-half {
+    width: 50% !important;
+  }
+}
+.moj-datepicker input.govuk-\!-width-one-third {
+  width: 100% !important;
+  max-width: none;
+}
+@media (min-width: 40.0625em) {
+  .moj-datepicker input.govuk-\!-width-one-third {
+    width: 33.33% !important;
+  }
+}
+.moj-datepicker input.govuk-\!-width-one-quarter {
+  width: 100% !important;
+  max-width: none;
+}
+@media (min-width: 40.0625em) {
+  .moj-datepicker input.govuk-\!-width-one-quarter {
+    width: 25% !important;
+  }
+}
+
+.moj-datepicker__wrapper {
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .moj-datepicker__dialog {
+    width: auto;
+  }
+}
+.moj-datepicker__toggle {
+  background-color: #0b0c0c;
+  color: #ffffff;
+  outline: 3px solid rgba(0, 0, 0, 0);
+  outline-offset: -3px;
+  height: 40px;
+  padding-top: 6px;
+  border: none;
+  border-bottom: 4px solid rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+.moj-datepicker__toggle:focus {
+  background-color: #ffdd00;
+  color: #0b0c0c;
+  border-bottom: 4px solid #0b0c0c;
+}
+.moj-datepicker__toggle:hover {
+  background-color: #949494;
+  color: #0b0c0c;
+  border-bottom: 4px solid #949494;
+}
+.moj-datepicker__toggle:focus:hover {
+  background-color: #949494;
+  color: #0b0c0c;
+  border-bottom: 4px solid #0b0c0c;
 }
 
 /* ==========================================================================
@@ -11165,8 +11540,8 @@ code.hljs {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
-  font-size: 0.75rem;
-  line-height: 1.25;
+  font-size: 0.875rem;
+  line-height: 1.1428571429;
   border: 1px solid #b1b4b6;
   position: absolute;
   top: -1px;
@@ -11179,13 +11554,13 @@ code.hljs {
 }
 @media (min-width: 40.0625em) {
   .app-example__new-window {
-    font-size: 0.875rem;
-    line-height: 1.4285714286;
+    font-size: 1rem;
+    line-height: 1.25;
   }
 }
 @media print {
   .app-example__new-window {
-    font-size: 12pt;
+    font-size: 14pt;
     line-height: 1.2;
   }
 }
@@ -11195,14 +11570,16 @@ code.hljs {
   background-color: white;
   color: #1d70b8;
   display: block;
-  padding: 5px 10px;
+  margin: 8px;
   text-decoration: none;
 }
 .app-example__new-window a:hover {
-  color: #5694ca;
+  color: #003078;
 }
 .app-example__new-window a:focus {
+  color: #0b0c0c;
   background-color: #ffdd00;
+  box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
 }
 
 /** Causes child elements to fill vertical space, allowing `position:sticky` to work as intended */

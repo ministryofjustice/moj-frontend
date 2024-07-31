@@ -33,39 +33,48 @@
 
 
 
-<div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on MoJ Design System" data-module="app-cookies">
-    <div class="govuk-cookie-banner__message govuk-width-container">
+
+<div class="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on MoJ Design System"
+    
+        
+      
+    
+   data-module="app-cookies">
+  
+  <div class="govuk-cookie-banner__message govuk-width-container">
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         
-        <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on MoJ Design System</h2>
+        <h2 class="govuk-cookie-banner__heading govuk-heading-m">
+          Cookies on MoJ Design System
+        </h2>
         
-
         <div class="govuk-cookie-banner__content">
-  <p class="govuk-body">We’d like to use analytics cookies so we can understand how you use the service and make improvements.</p>
-</div>
+          
+          <p class="govuk-body">We’d like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+          
+        </div>
       </div>
     </div>
 
+    
+    <div class="govuk-button-group">
+    
       
-      <div class="govuk-button-group">
-        
-          
-            <button type="button" name="accept" class="govuk-button" data-module="govuk-button">
-              Accept analytics cookies
-            </button>
-          
-        
-          
-            <button type="button" name="reject" class="govuk-button" data-module="govuk-button">
-              Reject analytics cookies
-            </button>
-          
-        
-      </div>
+      <button type="button" name="accept" class="govuk-button" data-module="govuk-button">
+        Accept analytics cookies
+      </button>
+    
       
+      <button type="button" name="reject" class="govuk-button" data-module="govuk-button">
+        Reject analytics cookies
+      </button>
+    
     </div>
+    
+
+  </div>
   
 </div>
 
@@ -273,50 +282,458 @@
           <span class="govuk-caption-xl">Components</span>
           Date picker
         </h1>
-        <p><span class="govuk-caption-xl">This component has recently been contributed to the MoJ Design System and is being developed.</span></p>
-<h2 id="status-of-development" tabindex="-1">Status of development</h2>
-<p>The below criteria all need to be met for a component to be considered as fully developed for use within the MoJ Design System.</p>
-<p>This page will be updated as the component is developed.</p>
+        <p><span class="govuk-caption-xl">The date picker component enables users to select a date from a calendar.  </span></p>
+<div class="app-example">
+  <span class="app-example__new-window">
+    <a href="/examples/date-picker" target="_blank">Open this example <span class="govuk-visually-hidden">(Date Picker (example))</span> in a new window</a>
+  </span>
+  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="590" src="/examples/date-picker" title="Date Picker (example)"></iframe>
+</div>
+<div class="app-tabs" data-module="app-tabs">
+  <ul class="app-tabs__list" role="tablist">
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#html-default--examples-date-picker" role="tab" id="tab_html-default--examples-date-picker" aria-controls="html-default--examples-date-picker">HTML <span class="govuk-visually-hidden">(Date Picker (example))</span></a>
+    </li>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#nunjucks-default--examples-date-picker" role="tab" id="tab_nunjucks-default--examples-date-picker" aria-controls="nunjucks-default--examples-date-picker">Nunjucks <span class="govuk-visually-hidden">(Date Picker (example))</span></a>
+    </li>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#figma-default--examples-date-picker" role="tab" id="tab_figma-default--examples-date-picker" aria-controls="figma-default--examples-date-picker">Figma</a>
+    </li>
+    </ul>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-date-picker" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-date-picker">
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-datepicker&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;moj-date-picker&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-form-group&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;date&quot;</span>&gt;</span>
+      Date
+    <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;date-hint&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-hint&quot;</span>&gt;</span>
+      For example, 17/5/2024.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-input moj-js-datepicker-input &quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">aria-describedby</span>=<span class="hljs-string">&quot;date-hint&quot;</span> <span class="hljs-attr">autocomplete</span>=<span class="hljs-string">&quot;off&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+</code></pre>
+  </div>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-date-picker" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-date-picker">
+  <details class="govuk-details govuk-!-padding-3" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Nunjucks macro options
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Yes</td>
+<td>The ID of the input.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td>The name of the input, which is submitted with the form data.</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>No</td>
+<td>Optional initial value of the input.</td>
+</tr>
+<tr>
+<td>formGroup</td>
+<td>object</td>
+<td>No</td>
+<td>Additional options for the form group containing the text input component. See <a href="#options-date-picker-form-group">formGroup</a>.</td>
+</tr>
+<tr>
+<td>label</td>
+<td>object</td>
+<td>Yes</td>
+<td>The label used by the text input component. See <a href="https://design-system.service.gov.uk/components/text-input/">GOV.UK text input documentation</a> for label options.</td>
+</tr>
+<tr>
+<td>hint</td>
+<td>object</td>
+<td>No</td>
+<td>Can be used to add a hint to a text input component. See <a href="https://design-system.service.gov.uk/components/text-input/">GOV.UK text input documentation</a> for hint options.</td>
+</tr>
+<tr>
+<td>errorMessage</td>
+<td>object</td>
+<td>No</td>
+<td>Can be used to add an error message to the text input component. The error message component will not display if you use a falsy value for <code>errorMessage</code>, for example <code>false</code> or <code>null</code>. See <a href="https://design-system.service.gov.uk/components/text-input/">GOV.UK text input documentation</a> for errorMessage options.</td>
+</tr>
+<tr>
+<td>minDate</td>
+<td>string</td>
+<td>No</td>
+<td>Earliest date that can be selected (format dd/mm/yyyy)</td>
+</tr>
+<tr>
+<td>maxDate</td>
+<td>string</td>
+<td>No</td>
+<td>Latest date that can be selected (format dd/mm/yyyy)</td>
+</tr>
+<tr>
+<td>exludedDates</td>
+<td>string</td>
+<td>No</td>
+<td>String of space separated dates that cannot be selected</td>
+</tr>
+<tr>
+<td>excludedDays</td>
+<td>string</td>
+<td>No</td>
+<td>String of space separated days of the week that cannot be selected</td>
+</tr>
+<tr>
+<td>weekStartDay</td>
+<td>string</td>
+<td>No</td>
+<td>Day of the week the calendar starts on. Either 'monday' or 'sunday'. Defaults to 'monday'</td>
+</tr>
+</tbody>
+</table>
+<p></div></p>
+  </details>
+  <div data-module="app-copy" style="position:relative;">
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/date-picker/macro.njk&quot; import mojDatePicker -%}</span><span class="language-xml">
+
+</span><span class="hljs-template-variable">{{ mojDatePicker({
+  id: &quot;date&quot;,
+  name: &quot;date&quot;,
+  label: {
+      text: &quot;Date&quot;
+  },
+  hint: {
+    text: &quot;For example, 17/5/2024.&quot;
+  }
+}) }}</span><span class="language-xml">
+</span></code></pre>
+  </div>
+  </div>
+  <div class="app-tabs__panel govuk-!-padding-2 app-tabs__panel--hidden" id="figma-default--examples-date-picker" role="tabpanel" aria-labelledby="tab_figma-default--examples-date-picker">
+<p>To use the component in your design, add the MoJ Figma Kit to your Figma libraries and find the component using the Assets tab.</p>
+<p><a href="https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=792-861&amp;t=6DfPOX7RAnjrVE0j-0">View component in MoJ Figma Kit</a></p>
+  </div>
+</div>
+<h2 id="overview" tabindex="-1">Overview</h2>
+<p>When users first open the date picker's calendar it'll show today's date. Users do not have to use this calendar view to select a date - they can also enter one directly into the text field.</p>
+<h3 id="when-to-use" tabindex="-1">When to use</h3>
+<p>Users might want to use the calendar view:</p>
+<ul>
+<li>for a relative date or one they need to look up, for example last Thursday or next Wednesday</li>
+<li>to enter today's date more quickly</li>
+<li>for available dates only, such as for prison visits</li>
+</ul>
+<h3 id="when-not-to-use" tabindex="-1">When not to use</h3>
+<p>Do not use the date picker:</p>
+<ul>
+<li>for a memorable date, such as a user's date of birth</li>
+<li>for a date that users know or can easily look up, like an appointment date on a letter</li>
+<li>when only a rough date is needed, for example just a month and year</li>
+</ul>
+<p>Use the <a href="https://design-system.service.gov.uk/components/date-input/">GOV.UK Design System's date input component</a> instead.</p>
+<h3 id="things-to-consider" tabindex="-1">Things to consider</h3>
+<p>Date pickers are fully navigable using a keyboard, but can be slow for keyboard-only and screen reader users.</p>
+<h3 id="similar-or-linked-components" tabindex="-1">Similar or linked components</h3>
+<p>There's also the <a href="https://design-system.service.gov.uk/patterns/dates/">'Ask users for dates' pattern in the GOV.UK Design System</a>.</p>
+<h2 id="how-to-use" tabindex="-1">How to use</h2>
+<h3 id="hint-text" tabindex="-1">Hint text</h3>
+<p>The date picker hint text is set to 17/5/2024. This can be changed to a more helpful date, for example the start of a scheme. Add a full stop at the end.</p>
+<h3 id="excluding-dates" tabindex="-1">Excluding dates</h3>
+<p>You can exclude (or disable) specific dates and days of the week from the date picker, for example bank holidays or every weekend.</p>
+<div class="app-example">
+  <span class="app-example__new-window">
+    <a href="/examples/date-picker-excluded-dates" target="_blank">Open this example <span class="govuk-visually-hidden">(Date Picker Excluded Dates (example))</span> in a new window</a>
+  </span>
+  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="590" src="/examples/date-picker-excluded-dates" title="Date Picker Excluded Dates (example)"></iframe>
+</div>
+<div class="app-tabs" data-module="app-tabs">
+  <ul class="app-tabs__list" role="tablist">
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#html-default--examples-date-picker-excluded-dates" role="tab" id="tab_html-default--examples-date-picker-excluded-dates" aria-controls="html-default--examples-date-picker-excluded-dates">HTML <span class="govuk-visually-hidden">(Date Picker Excluded Dates (example))</span></a>
+    </li>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#nunjucks-default--examples-date-picker-excluded-dates" role="tab" id="tab_nunjucks-default--examples-date-picker-excluded-dates" aria-controls="nunjucks-default--examples-date-picker-excluded-dates">Nunjucks <span class="govuk-visually-hidden">(Date Picker Excluded Dates (example))</span></a>
+    </li>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#figma-default--examples-date-picker-excluded-dates" role="tab" id="tab_figma-default--examples-date-picker-excluded-dates" aria-controls="figma-default--examples-date-picker-excluded-dates">Figma</a>
+    </li>
+    </ul>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-date-picker-excluded-dates" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-date-picker-excluded-dates">
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-datepicker&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;moj-date-picker&quot;</span> <span class="hljs-attr">data-min-date</span>=<span class="hljs-string">&quot;01/04/2025&quot;</span> <span class="hljs-attr">data-max-date</span>=<span class="hljs-string">&quot;30/04/2025&quot;</span> <span class="hljs-attr">data-excluded-dates</span>=<span class="hljs-string">&quot;02/04/2025 18/04/2025 21/04/2025&quot;</span> <span class="hljs-attr">data-excluded-days</span>=<span class="hljs-string">&quot;saturday sunday&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-form-group&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;date&quot;</span>&gt;</span>
+      Date
+    <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;date-hint&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-hint&quot;</span>&gt;</span>
+      For example, 17/5/2024.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-input moj-js-datepicker-input &quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;10/04/2025&quot;</span> <span class="hljs-attr">aria-describedby</span>=<span class="hljs-string">&quot;date-hint&quot;</span> <span class="hljs-attr">autocomplete</span>=<span class="hljs-string">&quot;off&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+</code></pre>
+  </div>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-date-picker-excluded-dates" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-date-picker-excluded-dates">
+  <div data-module="app-copy" style="position:relative;">
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/date-picker/macro.njk&quot; import mojDatePicker -%}</span><span class="language-xml">
+
+</span><span class="hljs-template-variable">{{ mojDatePicker({
+  id: &quot;date&quot;,
+  name: &quot;date&quot;,
+  label: {
+      text: &quot;Date&quot;
+  },
+  hint: {
+    text: &quot;For example, 17/5/2024.&quot;
+  },
+  value: &quot;10/04/2025&quot;,
+  minDate: &quot;01/04/2025&quot;,
+  maxDate: &quot;30/04/2025&quot;,
+  excludedDates: &quot;02/04/2025 18/04/2025 21/04/2025&quot;,
+  excludedDays: &quot;saturday sunday&quot;
+}) }}</span><span class="language-xml">
+</span></code></pre>
+  </div>
+  </div>
+  <div class="app-tabs__panel govuk-!-padding-2 app-tabs__panel--hidden" id="figma-default--examples-date-picker-excluded-dates" role="tabpanel" aria-labelledby="tab_figma-default--examples-date-picker-excluded-dates">
+<p>To use the component in your design, add the MoJ Figma Kit to your Figma libraries and find the component using the Assets tab.</p>
+<p><a href="https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=792-861&amp;t=6DfPOX7RAnjrVE0j-0">View component in MoJ Figma Kit</a></p>
+  </div>
+</div>
+<p>You need to add server-side validation for when users enter an unavailable date directly into the text field (rather than in the calendar). This will show them an error message.</p>
+<p>Excluded dates have the correct colour contrast ratio with the date text and calendar background. This is WCAG 2.2 compliant. However, these dates may be harder to view for users with low vision or colour blindness, so there’s also a strikethrough. Numbers with a strikethrough can be harder for people with dyscalculia to read.</p>
+<p>If there are not many available dates, users will have to navigate a lot to find one. Consider listing these dates with radio buttons instead.</p>
+<h3 id="error-messages" tabindex="-1">Error messages</h3>
+<p>Follow the <a href="https://design-system.service.gov.uk/components/error-message/">GOV.UK Design System guidance on error messages</a>.</p>
+<div class="app-example">
+  <span class="app-example__new-window">
+    <a href="/examples/date-picker-error" target="_blank">Open this example <span class="govuk-visually-hidden">(Date Picker (example))</span> in a new window</a>
+  </span>
+  <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="590" src="/examples/date-picker-error" title="Date Picker (example)"></iframe>
+</div>
+<div class="app-tabs" data-module="app-tabs">
+  <ul class="app-tabs__list" role="tablist">
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#html-default--examples-date-picker-error" role="tab" id="tab_html-default--examples-date-picker-error" aria-controls="html-default--examples-date-picker-error">HTML <span class="govuk-visually-hidden">(Date Picker (example))</span></a>
+    </li>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#nunjucks-default--examples-date-picker-error" role="tab" id="tab_nunjucks-default--examples-date-picker-error" aria-controls="nunjucks-default--examples-date-picker-error">Nunjucks <span class="govuk-visually-hidden">(Date Picker (example))</span></a>
+    </li>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#figma-default--examples-date-picker-error" role="tab" id="tab_figma-default--examples-date-picker-error" aria-controls="figma-default--examples-date-picker-error">Figma</a>
+    </li>
+    </ul>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default--examples-date-picker-error" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default--examples-date-picker-error">
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;moj-datepicker&quot;</span> <span class="hljs-attr">data-module</span>=<span class="hljs-string">&quot;moj-date-picker&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-form-group govuk-form-group--error&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;date&quot;</span>&gt;</span>
+      Date
+    <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;date-hint&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-hint&quot;</span>&gt;</span>
+      For example, 17/5/2024.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;date-error&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-error-message&quot;</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-visually-hidden&quot;</span>&gt;</span>Error:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> Enter or select a date
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;govuk-input moj-js-datepicker-input  govuk-input--error&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;date&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">aria-describedby</span>=<span class="hljs-string">&quot;date-hint date-error&quot;</span> <span class="hljs-attr">autocomplete</span>=<span class="hljs-string">&quot;off&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+</code></pre>
+  </div>
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default--examples-date-picker-error" role="tabpanel" aria-labelledby="tab_nunjucks-default--examples-date-picker-error">
+  <details class="govuk-details govuk-!-padding-3" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Nunjucks macro options
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Yes</td>
+<td>The ID of the input.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Yes</td>
+<td>The name of the input, which is submitted with the form data.</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>No</td>
+<td>Optional initial value of the input.</td>
+</tr>
+<tr>
+<td>formGroup</td>
+<td>object</td>
+<td>No</td>
+<td>Additional options for the form group containing the text input component. See <a href="#options-date-picker-form-group">formGroup</a>.</td>
+</tr>
+<tr>
+<td>label</td>
+<td>object</td>
+<td>Yes</td>
+<td>The label used by the text input component. See <a href="https://design-system.service.gov.uk/components/text-input/">GOV.UK text input documentation</a> for label options.</td>
+</tr>
+<tr>
+<td>hint</td>
+<td>object</td>
+<td>No</td>
+<td>Can be used to add a hint to a text input component. See <a href="https://design-system.service.gov.uk/components/text-input/">GOV.UK text input documentation</a> for hint options.</td>
+</tr>
+<tr>
+<td>errorMessage</td>
+<td>object</td>
+<td>No</td>
+<td>Can be used to add an error message to the text input component. The error message component will not display if you use a falsy value for <code>errorMessage</code>, for example <code>false</code> or <code>null</code>. See <a href="https://design-system.service.gov.uk/components/text-input/">GOV.UK text input documentation</a> for errorMessage options.</td>
+</tr>
+<tr>
+<td>minDate</td>
+<td>string</td>
+<td>No</td>
+<td>Earliest date that can be selected (format dd/mm/yyyy)</td>
+</tr>
+<tr>
+<td>maxDate</td>
+<td>string</td>
+<td>No</td>
+<td>Latest date that can be selected (format dd/mm/yyyy)</td>
+</tr>
+<tr>
+<td>exludedDates</td>
+<td>string</td>
+<td>No</td>
+<td>String of space separated dates that cannot be selected</td>
+</tr>
+<tr>
+<td>excludedDays</td>
+<td>string</td>
+<td>No</td>
+<td>String of space separated days of the week that cannot be selected</td>
+</tr>
+<tr>
+<td>weekStartDay</td>
+<td>string</td>
+<td>No</td>
+<td>Day of the week the calendar starts on. Either 'monday' or 'sunday'. Defaults to 'monday'</td>
+</tr>
+</tbody>
+</table>
+<p></div></p>
+  </details>
+  <div data-module="app-copy" style="position:relative;">
+<pre><code class="language-jinja"><span class="hljs-template-tag">{%- <span class="hljs-name">from</span> &quot;moj/components/date-picker/macro.njk&quot; import mojDatePicker -%}</span><span class="language-xml">
+
+</span><span class="hljs-template-variable">{{ mojDatePicker({
+  id: &quot;date&quot;,
+  name: &quot;date&quot;,
+  label: {
+      text: &quot;Date&quot;
+  },
+  hint: {
+    text: &quot;For example, 17/5/2024.&quot;
+  },
+  errorMessage: {
+    text: &#x27;Enter or select a date&#x27;
+  }
+}) }}</span><span class="language-xml">
+</span></code></pre>
+  </div>
+  </div>
+  <div class="app-tabs__panel govuk-!-padding-2 app-tabs__panel--hidden" id="figma-default--examples-date-picker-error" role="tabpanel" aria-labelledby="tab_figma-default--examples-date-picker-error">
+<p>To use the component in your design, add the MoJ Figma Kit to your Figma libraries and find the component using the Assets tab.</p>
+<p><a href="https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=792-861&amp;t=6DfPOX7RAnjrVE0j-0">View component in MoJ Figma Kit</a></p>
+  </div>
+</div>
 <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Development criteria</th>
-      <th scope="col" class="govuk-table__header">Status</th>
+      <th scope="col" class="govuk-table__header">Error state</th>
+      <th scope="col" class="govuk-table__header">Error message</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">WCAG 2.2 compliant</th>
-      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">
-          Being reviewed
-        </strong></td>
+      <th scope="row" class="govuk-table__header">No date is entered or selected from the calendar</th>
+      <td class="govuk-table__cell">Enter or select a date</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">HTML / Nunjucks version</th>
-      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--orange">
-          In progress
-        </strong></td>
+      <th scope="row" class="govuk-table__header">The date is in the wrong format</th>
+      <td class="govuk-table__cell">Enter the date in the correct format, for example, 17/5/2024</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Figma version</th>
-      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--orange">
-          In progress
-        </strong></td>
+      <th scope="row" class="govuk-table__header">The date does not exist</th>
+      <td class="govuk-table__cell">Enter a real date</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Documentation</th>
-      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">
-          Being reviewed
-        </strong></td>
+      <th scope="row" class="govuk-table__header">The date is incomplete</th>
+      <td class="govuk-table__cell">Enter a full date, for example 17/5/2024</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Researched and tested</th>
-      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">
-          Not started
-        </strong></td>
+      <th scope="row" class="govuk-table__header">The date is excluded</th>
+      <td class="govuk-table__cell">Select an available date from the calendar</td>
     </tr>
   </tbody>
 </table>
+<h3 id="using-multiple-date-pickers" tabindex="-1">Using multiple date pickers</h3>
+<p>If you're using more than one date picker, give each text field its own error summary and message (even if the error is the same).</p>
+<h2 id="examples" tabindex="-1">Examples</h2>
+<h3 id="filtering-information-with-a-date-picker" tabindex="-1">Filtering information with a date picker</h3>
+<p><img src="/assets/images/date-picker-filter-example.svg" alt="A screenshot with the title 'Attended appointments'. In a grey box is the title Filter, underneath is the title Date and then a text input field. The calendar icon and a green 'Apply filter' button is on the right. Below this element is the text '7 appointments'. Details of these appointments are shown."></p>
+<h3 id="asking-a-question-with-a-date-picker" tabindex="-1">Asking a question with a date picker</h3>
+<p><img src="/assets/images/date-picker-question-example.svg" alt="A screenshot with the title 'What date do you want to view appointments for?' Underneath is the title 'Date' and then a text input field with the calendar icon. Underneath that is a green 'Continue' button."></p>
+<h2 id="contributors" tabindex="-1">Contributors</h2>
+<p>Thanks to Dom Billington, Eddie Shannon, David Middleton, and the DPS Connect team for contributing this component.</p>
+<p>This component was based on the <a href="https://designsystem.gov.scot/components/date-picker">Scottish Government Design System date picker</a>.</p>
 
       </main>
 
@@ -325,25 +742,25 @@
 
 <div class="govuk-!-padding-bottom-3"></div>
 
-<div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+<div class="govuk-notification-banner" role="region" data-module="govuk-notification-banner">
   <div class="govuk-notification-banner__content">
-  <p class="govuk-notification-banner__heading">
-    Suggest a change
+  <h2 id="govuk-notification-banner-title" class="govuk-notification-banner__heading">
+  Suggest a change
+</h2>
+    <p class="govuk-notification-banner__body">
+     You can <a href="https://forms.gle/FpDpbgttwmfmcz8o7" class="govuk-link">suggest a change to improve the MoJ Design System</a>.
   </p>
-    <p class="govuk-notification-banner__body">
-      To help improve the MoJ Design System, you can suggest changes.
-    </p>
-    <p class="govuk-notification-banner__body">
-      Tell us about the change you're proposing by using the <a href="https://forms.gle/FpDpbgttwmfmcz8o7" class="govuk-link">suggest a change form</a>. The MoJ Design System Group will be notified of your suggestion and will review it.
+  <p>
+     The MoJ Design System team will review it.
     </p>
 
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    <p class="govuk-notification-banner__heading">
-      Need help?
-    </p>
+    <h2 class="govuk-notification-banner__heading">
+      Get help  
+    </h2>
       <p class="govuk-notification-banner__body">
-        The MoJ Design System Group provides support for users of the MoJ Design System. <a href="/community/help-and-feedback" class="govuk-link">Contact us</a> to ask for help.
+      <a href="/community/help-and-feedback" class="govuk-link">Contact the MoJ Design System team</a> for support.
       </p>
 
   </div>
@@ -357,37 +774,37 @@
 
         
 
-<footer class="govuk-footer" role="contentinfo">
+<footer class="govuk-footer">
   <div class="govuk-width-container">
     
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
         
-          <h2 class="govuk-visually-hidden">Support links</h2>
-          
-            <ul class="govuk-footer__inline-list">
-              
-                <li class="govuk-footer__inline-list-item">
-                  <a class="govuk-footer__link" href="/community/help-and-feedback">
-                    Help and feedback
-                  </a>
-                </li>
-              
-                <li class="govuk-footer__inline-list-item">
-                  <a class="govuk-footer__link" href="/cookies">
-                    Cookies
-                  </a>
-                </li>
-              
-                <li class="govuk-footer__inline-list-item">
-                  <a class="govuk-footer__link" href="/accessibility">
-                    Accessibility
-                  </a>
-                </li>
-              
-            </ul>
-          
-          
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        
+        <ul class="govuk-footer__inline-list">
+        
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="/community/help-and-feedback">
+              Help and feedback
+            </a>
+          </li>
+        
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="/cookies">
+              Cookies
+            </a>
+          </li>
+        
+          <li class="govuk-footer__inline-list-item">
+            <a class="govuk-footer__link" href="/accessibility">
+              Accessibility
+            </a>
+          </li>
+        
+        </ul>
+        
+        
         
         <svg
           aria-hidden="true"
@@ -404,21 +821,25 @@
           />
         </svg>
         <span class="govuk-footer__licence-description">
-          
-            All content is available under the
-            <a
-              class="govuk-footer__link"
-              href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-              rel="license"
-            >Open Government Licence v3.0</a>, except where otherwise stated
-          
+        
+          All content is available under the
+          <a
+            class="govuk-footer__link"
+            href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+            rel="license"
+          >Open Government Licence v3.0</a>, except where otherwise stated
+        
         </span>
       </div>
       <div class="govuk-footer__meta-item">
         <a
           class="govuk-footer__link govuk-footer__copyright-logo"
           href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
-        >© Crown copyright</a>
+        >
+        
+          © Crown copyright
+        
+        </a>
       </div>
     </div>
   </div>
