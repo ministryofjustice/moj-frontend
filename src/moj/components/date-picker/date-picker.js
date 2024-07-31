@@ -337,7 +337,7 @@ Datepicker.prototype.setOptions = function () {
 Datepicker.prototype.setMinAndMaxDatesOnCalendar = function () {
   if (this.config.minDate) {
     this.minDate = this.formattedDateFromString(
-      this.$module.dataset.mindate,
+      this.config.minDate,
       null,
     );
     if (this.minDate && this.currentDate < this.minDate) {
@@ -347,7 +347,7 @@ Datepicker.prototype.setMinAndMaxDatesOnCalendar = function () {
 
   if (this.config.maxDate) {
     this.maxDate = this.formattedDateFromString(
-      this.$module.dataset.maxdate,
+      this.config.maxDate,
       null,
     );
     if (this.maxDate && this.currentDate > this.maxDate) {
