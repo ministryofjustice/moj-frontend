@@ -194,7 +194,7 @@ Datepicker.prototype.createDialog = function () {
   const $dialog = document.createElement("div");
 
   $dialog.id = this.id;
-  $dialog.setAttribute("class", "moj-datepicker__dialog  datepickerDialog");
+  $dialog.setAttribute("class", "moj-datepicker__dialog");
   $dialog.setAttribute("role", "dialog");
   $dialog.setAttribute("aria-modal", "true");
   $dialog.setAttribute("aria-labelledby", titleId);
