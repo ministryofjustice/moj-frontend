@@ -74,19 +74,6 @@ function Datepicker($module, config) {
   this.excludedDates = [];
   this.excludedDays = [];
 
-  this.keycodes = {
-    tab: 9,
-    esc: 27,
-    pageup: 33,
-    pagedown: 34,
-    end: 35,
-    home: 36,
-    left: 37,
-    up: 38,
-    right: 39,
-    down: 40,
-  };
-
   this.buttonClass = 'moj-datepicker__button'
   this.selectedDayButtonClass = 'moj-datepicker__button--selected'
   this.currentDayButtonClass = 'moj-datepicker__button--current'
@@ -187,7 +174,7 @@ Datepicker.prototype.initControls = function () {
   );
 
   this.$dialog.addEventListener("keydown", (event) => {
-    if (event.keyCode == this.keycodes.esc) {
+    if (event.key == 'Escape') {
       this.closeDialog();
       event.preventDefault();
       event.stopPropagation();
@@ -535,14 +522,14 @@ Datepicker.prototype.backgroundClick = function (event) {
 };
 
 Datepicker.prototype.firstButtonKeydown = function (event) {
-  if (event.keyCode === this.keycodes.tab && event.shiftKey) {
+  if (event.key === 'Tab' && event.shiftKey) {
     this.$lastButtonInDialog.focus();
     event.preventDefault();
   }
 };
 
 Datepicker.prototype.lastButtonKeydown = function (event) {
-  if (event.keyCode === this.keycodes.tab && !event.shiftKey) {
+  if (event.key === 'Tab' && !event.shiftKey) {
     this.$firstButtonInDialog.focus();
     event.preventDefault();
   }
@@ -889,32 +876,32 @@ DSCalendarDay.prototype.click = function (event) {
 DSCalendarDay.prototype.keyPress = function (event) {
   let calendarNavKey = true;
 
-  switch (event.keyCode) {
-    case this.picker.keycodes.left:
+  switch (event.key) {
+    case 'ArrowLeft':
       this.picker.focusPreviousDay();
       break;
-    case this.picker.keycodes.right:
+    case 'ArrowRight':
       this.picker.focusNextDay();
       break;
-    case this.picker.keycodes.up:
+    case 'ArrowUp':
       this.picker.focusPreviousWeek();
       break;
-    case this.picker.keycodes.down:
+    case 'ArrowDown':
       this.picker.focusNextWeek();
       break;
-    case this.picker.keycodes.home:
+    case 'Home':
       this.picker.focusFirstDayOfWeek();
       break;
-    case this.picker.keycodes.end:
+    case 'End':
       this.picker.focusLastDayOfWeek();
       break;
-    case this.picker.keycodes.pageup:
+    case 'PageUp':
       // eslint-disable-next-line no-unused-expressions
       event.shiftKey
         ? this.picker.focusPreviousYear(event)
         : this.picker.focusPreviousMonth(event);
       break;
-    case this.picker.keycodes.pagedown:
+    case 'PageDown':
       // eslint-disable-next-line no-unused-expressions
       event.shiftKey
         ? this.picker.focusNextYear(event)
