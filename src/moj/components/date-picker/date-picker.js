@@ -74,10 +74,10 @@ function Datepicker($module, config) {
   this.excludedDates = [];
   this.excludedDays = [];
 
-  this.buttonClass = 'moj-datepicker__button'
-  this.selectedDayButtonClass = 'moj-datepicker__button--selected'
-  this.currentDayButtonClass = 'moj-datepicker__button--current'
-  this.todayButtonClass = 'moj-datepicker__button--today'
+  this.buttonClass = "moj-datepicker__button";
+  this.selectedDayButtonClass = "moj-datepicker__button--selected";
+  this.currentDayButtonClass = "moj-datepicker__button--current";
+  this.todayButtonClass = "moj-datepicker__button--today";
 
   this.$module = $module;
   this.$input = $module.querySelector(".moj-js-datepicker-input");
@@ -174,12 +174,12 @@ Datepicker.prototype.initControls = function () {
   );
 
   this.$dialog.addEventListener("keydown", (event) => {
-    if (event.key == 'Escape') {
+    if (event.key == "Escape") {
       this.closeDialog();
       event.preventDefault();
       event.stopPropagation();
     }
-  })
+  });
 
   document.body.addEventListener("mouseup", (event) =>
     this.backgroundClick(event),
@@ -250,55 +250,55 @@ Datepicker.prototype.toggleTemplate = function () {
  */
 Datepicker.prototype.dialogTemplate = function (titleId) {
   return `<div class="moj-datepicker__dialog-header">
-        <div class="moj-datepicker__dialog-navbuttons">
-            <button class="moj-datepicker__button moj-js-datepicker-prev-year">
+            <div class="moj-datepicker__dialog-navbuttons">
+              <button class="moj-datepicker__button moj-js-datepicker-prev-year">
                 <span class="govuk-visually-hidden">Previous year</span>
                 <svg width="44" height="40" viewBox="0 0 44 40" fill="none" fill="none" focusable="false" aria-hidden="true" role="img">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M23.1643 20L28.9572 14.2071L27.5429 12.7929L20.3358 20L27.5429 27.2071L28.9572 25.7929L23.1643 20Z" fill="currentColor"/>
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M17.1643 20L22.9572 14.2071L21.5429 12.7929L14.3358 20L21.5429 27.2071L22.9572 25.7929L17.1643 20Z" fill="currentColor"/>
                 </svg>
-            </button>
+              </button>
 
-            <button class="moj-datepicker__button moj-js-datepicker-prev-month">
+              <button class="moj-datepicker__button moj-js-datepicker-prev-month">
                 <span class="govuk-visually-hidden">Previous month</span>
-<svg width="44" height="40" viewBox="0 0 44 40" fill="none" focusable="false" aria-hidden="true" role="img">
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.5729 20L25.7865 14.2071L24.5137 12.7929L18.0273 20L24.5137 27.2071L25.7865 25.7929L20.5729 20Z" fill="currentColor"/>
-</svg>
-            </button>
-        </div>
+                <svg width="44" height="40" viewBox="0 0 44 40" fill="none" focusable="false" aria-hidden="true" role="img">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.5729 20L25.7865 14.2071L24.5137 12.7929L18.0273 20L24.5137 27.2071L25.7865 25.7929L20.5729 20Z" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
 
-        <h2 id="${titleId}" class="moj-datepicker__dialog-title moj-js-datepicker-month-year" aria-live="polite">June 2020</h2>
+            <h2 id="${titleId}" class="moj-datepicker__dialog-title moj-js-datepicker-month-year" aria-live="polite">June 2020</h2>
 
-        <div class="moj-datepicker__dialog-navbuttons">
-            <button class="moj-datepicker__button moj-js-datepicker-next-month">
+            <div class="moj-datepicker__dialog-navbuttons">
+              <button class="moj-datepicker__button moj-js-datepicker-next-month">
                 <span class="govuk-visually-hidden">Next month</span>
                 <svg width="44" height="40" viewBox="0 0 44 40" fill="none"  focusable="false" aria-hidden="true" role="img">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M23.4271 20L18.2135 14.2071L19.4863 12.7929L25.9727 20L19.4863 27.2071L18.2135 25.7929L23.4271 20Z" fill="currentColor"/>
                 </svg>
-            </button>
+              </button>
 
-            <button class="moj-datepicker__button moj-js-datepicker-next-year">
+              <button class="moj-datepicker__button moj-js-datepicker-next-year">
                 <span class="govuk-visually-hidden">Next year</span>
                 <svg width="44" height="40" viewBox="0 0 44 40" fill="none" fill="none" focusable="false" aria-hidden="true" role="img">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M20.8357 20L15.0428 14.2071L16.4571 12.7929L23.6642 20L16.4571 27.2071L15.0428 25.7929L20.8357 20Z" fill="currentColor"/>
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M26.8357 20L21.0428 14.2071L22.4571 12.7929L29.6642 20L22.4571 27.2071L21.0428 25.7929L26.8357 20Z" fill="currentColor"/>
                 </svg>
-            </button>
-        </div>
-      </div>
+              </button>
+            </div>
+          </div>
 
-      <table class="moj-datepicker__calendar moj-js-datepicker-grid" role="grid" aria-labelledby="${titleId}">
-      <thead>
-          <tr></tr>
-      </thead>
+          <table class="moj-datepicker__calendar moj-js-datepicker-grid" role="grid" aria-labelledby="${titleId}">
+            <thead>
+              <tr></tr>
+            </thead>
 
-      <tbody></tbody>
-      </table>
+            <tbody></tbody>
+          </table>
 
-      <div class="govuk-button-group">
-        <button type="button" class="govuk-button moj-js-datepicker-ok" value="ok">Select</button>
-        <button type="button" class="govuk-button govuk-button--secondary moj-js-datepicker-cancel" value="cancel">Close</button>
-      </div>`;
+          <div class="govuk-button-group">
+            <button type="button" class="govuk-button moj-js-datepicker-ok">Select</button>
+            <button type="button" class="govuk-button govuk-button--secondary moj-js-datepicker-cancel">Close</button>
+          </div>`;
 };
 
 Datepicker.prototype.createCalendarHeaders = function () {
@@ -408,7 +408,7 @@ Datepicker.prototype.setLeadingZeros = function () {
     if (this.config.leadingZeros.toLowerCase() === "true") {
       this.config.leadingZeros = true;
     }
-    if (this.config.leadingzeros.toLowerCase() === "false") {
+    if (this.config.leadingZeros.toLowerCase() === "false") {
       this.config.leadingZeros = false;
     }
   }
@@ -468,17 +468,16 @@ Datepicker.prototype.formattedDateFromString = function (
 ) {
   let formattedDate = null;
   // Accepts d/m/yyyy and dd/mm/yyyy
-  const dateFormatPattern = /(\d{1,2})([-/,. ])(\d{1,2})[-/,. ](\d{4})/;
+  const dateFormatPattern = /(\d{1,2})([-/,. ])(\d{1,2})\2(\d{4})/;
 
   if (!dateFormatPattern.test(dateString)) return fallback;
 
   const match = dateString.match(dateFormatPattern);
-  const separator = match[2];
   const day = match[1];
   const month = match[3];
   const year = match[4];
 
-  formattedDate = new Date(`${month}${separator}${day}${separator}${year}`);
+  formattedDate = new Date(`${month}-${day}-${year}`);
   if (formattedDate instanceof Date && !isNaN(formattedDate)) {
     return formattedDate;
   }
@@ -522,14 +521,14 @@ Datepicker.prototype.backgroundClick = function (event) {
 };
 
 Datepicker.prototype.firstButtonKeydown = function (event) {
-  if (event.key === 'Tab' && event.shiftKey) {
+  if (event.key === "Tab" && event.shiftKey) {
     this.$lastButtonInDialog.focus();
     event.preventDefault();
   }
 };
 
 Datepicker.prototype.lastButtonKeydown = function (event) {
-  if (event.key === 'Tab' && !event.shiftKey) {
+  if (event.key === "Tab" && !event.shiftKey) {
     this.$firstButtonInDialog.focus();
     event.preventDefault();
   }
@@ -577,7 +576,6 @@ Datepicker.prototype.setCurrentDate = function (focus = true) {
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-
 
     if (
       calendarDayDate.getTime() ===
@@ -877,31 +875,31 @@ DSCalendarDay.prototype.keyPress = function (event) {
   let calendarNavKey = true;
 
   switch (event.key) {
-    case 'ArrowLeft':
+    case "ArrowLeft":
       this.picker.focusPreviousDay();
       break;
-    case 'ArrowRight':
+    case "ArrowRight":
       this.picker.focusNextDay();
       break;
-    case 'ArrowUp':
+    case "ArrowUp":
       this.picker.focusPreviousWeek();
       break;
-    case 'ArrowDown':
+    case "ArrowDown":
       this.picker.focusNextWeek();
       break;
-    case 'Home':
+    case "Home":
       this.picker.focusFirstDayOfWeek();
       break;
-    case 'End':
+    case "End":
       this.picker.focusLastDayOfWeek();
       break;
-    case 'PageUp':
+    case "PageUp":
       // eslint-disable-next-line no-unused-expressions
       event.shiftKey
         ? this.picker.focusPreviousYear(event)
         : this.picker.focusPreviousMonth(event);
       break;
-    case 'PageDown':
+    case "PageDown":
       // eslint-disable-next-line no-unused-expressions
       event.shiftKey
         ? this.picker.focusNextYear(event)
