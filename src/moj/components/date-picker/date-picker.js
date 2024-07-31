@@ -583,6 +583,7 @@ Datepicker.prototype.setCurrentDate = function (focus = true) {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
+
     if (
       calendarDayDate.getTime() ===
       currentDate.getTime() /* && !calendarDay.button.disabled */
@@ -668,10 +669,9 @@ Datepicker.prototype.openDialog = function () {
   this.$dialog.style.top = `${this.$input.offsetHeight + 3}px`;
 
   // get the date from the input element
-  if (this.$input.value.match(/^(\d{1,2})([-/,. ])(\d{1,2})[-/,. ](\d{4})$/)) {
-    this.inputDate = this.formattedDateFromString(this.$input.value);
-    this.currentDate = this.inputDate;
-  }
+  this.inputDate = this.formattedDateFromString(this.$input.value);
+  this.currentDate = this.inputDate;
+  this.currentDate.setHours(0, 0, 0, 0);
 
   this.updateCalendar();
   this.setCurrentDate();
