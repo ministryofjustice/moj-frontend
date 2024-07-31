@@ -199,7 +199,7 @@ Datepicker.prototype.createDialog = function () {
   const $dialog = document.createElement("div");
 
   $dialog.id = this.id;
-  $dialog.setAttribute("class", "moj-datepicker-dialog  datepickerDialog");
+  $dialog.setAttribute("class", "moj-datepicker__dialog  datepickerDialog");
   $dialog.setAttribute("role", "dialog");
   $dialog.setAttribute("aria-modal", "true");
   $dialog.setAttribute("aria-labelledby", titleId);
@@ -232,7 +232,7 @@ Datepicker.prototype.createCalendar = function () {
 };
 
 Datepicker.prototype.toggleTemplate = function () {
-  return `<button class="moj-datepicker-toggle moj-js-datepicker-toggle" type="button" aria-haspopup="dialog" aria-controls="${this.id}" aria-expanded="false">
+  return `<button class="moj-datepicker__toggle moj-js-datepicker-toggle" type="button" aria-haspopup="dialog" aria-controls="${this.id}" aria-expanded="false">
             <span class="govuk-visually-hidden">Choose date</span>
             <svg width="32" height="24" focusable="false" class="moj-datepicker-icon" aria-hidden="true" role="img" viewBox="0 0 22 22">
               <path
@@ -254,8 +254,8 @@ Datepicker.prototype.toggleTemplate = function () {
  * @return {string}
  */
 Datepicker.prototype.dialogTemplate = function (titleId) {
-  return `<div class="moj-datepicker-dialog__header">
-        <div class="moj-datepicker-dialog__navbuttons">
+  return `<div class="moj-datepicker__dialog-header">
+        <div class="moj-datepicker__dialog-navbuttons">
             <button class="moj-datepicker__button moj-js-datepicker-prev-year">
                 <span class="govuk-visually-hidden">Previous year</span>
                 <svg width="44" height="40" viewBox="0 0 44 40" fill="none" fill="none" focusable="false" aria-hidden="true" role="img">
@@ -272,9 +272,9 @@ Datepicker.prototype.dialogTemplate = function (titleId) {
             </button>
         </div>
 
-        <h2 id="${titleId}" class="moj-datepicker-dialog__title moj-js-datepicker-month-year" aria-live="polite">June 2020</h2>
+        <h2 id="${titleId}" class="moj-datepicker__dialog-title moj-js-datepicker-month-year" aria-live="polite">June 2020</h2>
 
-        <div class="moj-datepicker-dialog__navbuttons">
+        <div class="moj-datepicker__dialog-navbuttons">
             <button class="moj-datepicker__button moj-js-datepicker-next-month">
                 <span class="govuk-visually-hidden">Next month</span>
                 <svg width="44" height="40" viewBox="0 0 44 40" fill="none"  focusable="false" aria-hidden="true" role="img">
@@ -292,7 +292,7 @@ Datepicker.prototype.dialogTemplate = function (titleId) {
         </div>
       </div>
 
-      <table class="moj-datepicker-calendar moj-js-datepicker-grid" role="grid" aria-labelledby="${titleId}">
+      <table class="moj-datepicker__calendar moj-js-datepicker-grid" role="grid" aria-labelledby="${titleId}">
       <thead>
           <tr></tr>
       </thead>
@@ -574,7 +574,7 @@ Datepicker.prototype.setCurrentDate = function (focus = true) {
 
   this.calendarDays.forEach((calendarDay) => {
     calendarDay.button.classList.add("moj-datepicker__button");
-    calendarDay.button.classList.add("moj-datepicker-calendar__day");
+    calendarDay.button.classList.add("moj-datepicker__calendar-day");
     calendarDay.button.setAttribute("tabindex", -1);
     calendarDay.button.classList.remove(this.selectedDayButtonClass);
     const calendarDayDate = calendarDay.date;
@@ -643,7 +643,7 @@ Datepicker.prototype.selectDate = function (date) {
 };
 
 Datepicker.prototype.isOpen = function () {
-  return this.$dialog.classList.contains("moj-datepicker-dialog--open");
+  return this.$dialog.classList.contains("moj-datepicker__dialog--open");
 };
 
 Datepicker.prototype.toggleDialog = function (event) {
@@ -657,7 +657,7 @@ Datepicker.prototype.toggleDialog = function (event) {
 };
 
 Datepicker.prototype.openDialog = function () {
-  this.$dialog.classList.add("moj-datepicker-dialog--open");
+  this.$dialog.classList.add("moj-datepicker__dialog--open");
   this.$calendarButton.setAttribute("aria-expanded", "true");
 
   // position the dialog
@@ -678,7 +678,7 @@ Datepicker.prototype.openDialog = function () {
 };
 
 Datepicker.prototype.closeDialog = function () {
-  this.$dialog.classList.remove("moj-datepicker-dialog--open");
+  this.$dialog.classList.remove("moj-datepicker__dialog--open");
   this.$calendarButton.setAttribute("aria-expanded", "false");
   this.$calendarButton.focus();
 };
