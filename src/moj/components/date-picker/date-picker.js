@@ -186,6 +186,14 @@ Datepicker.prototype.initControls = function () {
     this.toggleDialog(event),
   );
 
+  this.$dialog.addEventListener("keydown", (event) => {
+    if (event.keyCode == this.keycodes.esc) {
+      this.closeDialog();
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  })
+
   document.body.addEventListener("mouseup", (event) =>
     this.backgroundClick(event),
   );
@@ -911,9 +919,6 @@ DSCalendarDay.prototype.keyPress = function (event) {
       event.shiftKey
         ? this.picker.focusNextYear(event)
         : this.picker.focusNextMonth(event);
-      break;
-    case this.picker.keycodes.esc:
-      this.picker.closeDialog();
       break;
     default:
       calendarNavKey = false;
