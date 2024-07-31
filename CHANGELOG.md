@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/ministryofjustice/moj-frontend/compare/v2.1.3...v2.2.0) (2024-07-31)
+
+
+### Features
+
+* **date picker:** add date picker component ([#601](https://github.com/ministryofjustice/moj-frontend/issues/601)) ([0f52877](https://github.com/ministryofjustice/moj-frontend/commit/0f52877e71849fabd3790464a51fffbb63151a74))
+
 ## [2.1.3](https://github.com/ministryofjustice/moj-frontend/compare/v2.1.2...v2.1.3) (2024-05-07)
 
 
