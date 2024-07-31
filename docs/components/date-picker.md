@@ -43,19 +43,22 @@ There's also the ['Ask users for dates' pattern in the GOV.UK Design System](htt
 
 ### Hint text
 
-The date picker hint text is set to 17/5/2024. This can be changed to a more helpful date, for example the start of a scheme. Add a full stop at the end.
+The date picker hint text is set to 17/5/2024. This can be changed to a more helpful date, for example the start of a scheme or a future date. Add a full stop at the end.
 
 ### Excluding dates
 
-You can exclude (or disable) specific dates and days of the week from the date picker, for example bank holidays or every weekend.
+You can exclude (or disable) options from the date picker, such as:
+- days of the week or every weekend
+- specific dates, such as bank holidays  
+- past or future dates
 
 {% example "/examples/date-picker-excluded-dates", 590 %}
 
-You need to add server-side validation for when users enter an unavailable date directly into the text field (rather than in the calendar). This will show them an error message.
+You need to add server-side validation for when users enter an unavailable date directly into the text field (rather than use the calendar). This will show them an error message.
 
-Excluded dates have the correct colour contrast ratio with the date text and calendar background. This is WCAG 2.2 compliant. However, these dates may be harder to view for users with low vision or colour blindness, so there’s also a strikethrough. Numbers with a strikethrough can be harder for people with dyscalculia to read.  
+Excluded dates have the correct colour contrast ratio with the date text and calendar background. This is WCAG 2.2 compliant. However, these dates may be harder to view for users with low vision or colour blindness, so there’s also a strikethrough. Numbers with a strikethrough can be harder for people with dyscalculia to read, which may be an issue if there are lots of excluded dates.
 
-If there are not many available dates, users will have to navigate a lot to find one. Consider listing these dates with radio buttons instead.  
+If there are not many available dates, users will have to navigate a lot to find one. Consider showing these dates in a list with radio buttons instead.
 
 ### Error messages
 
