@@ -459,9 +459,14 @@
 <p>There's also the <a href="https://design-system.service.gov.uk/patterns/dates/">'Ask users for dates' pattern in the GOV.UK Design System</a>.</p>
 <h2 id="how-to-use" tabindex="-1">How to use</h2>
 <h3 id="hint-text" tabindex="-1">Hint text</h3>
-<p>The date picker hint text is set to 17/5/2024. This can be changed to a more helpful date, for example the start of a scheme. Add a full stop at the end.</p>
+<p>The date picker hint text is set to 17/5/2024. This can be changed to a more helpful date, for example the start of a scheme or a future date. Add a full stop at the end.</p>
 <h3 id="excluding-dates" tabindex="-1">Excluding dates</h3>
-<p>You can exclude (or disable) specific dates and days of the week from the date picker, for example bank holidays or every weekend.</p>
+<p>You can exclude (or disable) options from the date picker, such as:</p>
+<ul>
+<li>days of the week or every weekend</li>
+<li>specific dates, such as bank holidays</li>
+<li>past or future dates</li>
+</ul>
 <div class="app-example">
   <span class="app-example__new-window">
     <a href="/examples/date-picker-excluded-dates" target="_blank">Open this example <span class="govuk-visually-hidden">(Date Picker Excluded Dates (example))</span> in a new window</a>
@@ -527,9 +532,9 @@
 <p><a href="https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=792-861&amp;t=6DfPOX7RAnjrVE0j-0">View component in MoJ Figma Kit</a></p>
   </div>
 </div>
-<p>You need to add server-side validation for when users enter an unavailable date directly into the text field (rather than in the calendar). This will show them an error message.</p>
-<p>Excluded dates have the correct colour contrast ratio with the date text and calendar background. This is WCAG 2.2 compliant. However, these dates may be harder to view for users with low vision or colour blindness, so there’s also a strikethrough. Numbers with a strikethrough can be harder for people with dyscalculia to read.</p>
-<p>If there are not many available dates, users will have to navigate a lot to find one. Consider listing these dates with radio buttons instead.</p>
+<p>You need to add server-side validation for when users enter an unavailable date directly into the text field (rather than use the calendar). This will show them an error message.</p>
+<p>Excluded dates have the correct colour contrast ratio with the date text and calendar background. This is WCAG 2.2 compliant. However, these dates may be harder to view for users with low vision or colour blindness, so there’s also a strikethrough. Numbers with a strikethrough can be harder for people with dyscalculia to read, which may be an issue if there are lots of excluded dates.</p>
+<p>If there are not many available dates, users will have to navigate a lot to find one. Consider showing these dates in a list with radio buttons instead.</p>
 <h3 id="error-messages" tabindex="-1">Error messages</h3>
 <p>Follow the <a href="https://design-system.service.gov.uk/components/error-message/">GOV.UK Design System guidance on error messages</a>.</p>
 <div class="app-example">
