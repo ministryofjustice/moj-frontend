@@ -24,7 +24,7 @@
   }
 
   .app-example__new-window {
-    @include govuk-font($size: 14);
+    @include govuk-font($size: 16);
     border: 1px solid $govuk-border-colour;
     position: absolute; top: -1px; left: -1px;
 
@@ -34,18 +34,18 @@
       background-color: white;
       color: govuk-colour("blue");
       display: block;
-      padding: 5px 10px;
+      margin: 8px;
       text-decoration: none;
     }
 
     a:hover {
-      color: govuk-colour("light-blue");
+      color: $govuk-link-hover-colour;
     }
 
     a:focus {
-      // color: $govuk-focus-text-colour;
+      color: $govuk-focus-text-colour;
       background-color: $govuk-focus-colour;
-      // box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+      box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
       // border-color: $govuk-focus-text-colour;
     }
 

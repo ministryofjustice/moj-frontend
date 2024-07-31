@@ -1,0 +1,293 @@
+// Custom colour required for passing WCAG 2.2 AA contrast text/background and
+// background/surrounding
+$moj-datepicker-mid-grey: #949494;
+
+.moj-datepicker {
+  position: relative;
+  @include govuk-font(16);
+}
+
+.moj-datepicker__dialog {
+  display: none;
+  position: absolute;
+  top: 0;
+  min-width: 280px;
+  padding: govuk-spacing(4);
+  outline: 2px solid $govuk-text-colour;
+  outline-offset: -2px;
+  background-color: govuk-colour('white');
+  transition: background-color 0.2s, outline-color 0.2s;
+  z-index: 2;
+}
+
+.moj-datepicker__dialog--open {
+  display: block;
+}
+
+.moj-datepicker__dialog-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: govuk-spacing(2);
+}
+
+.moj-datepicker__dialog-title {
+  @include govuk-font(16);
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.moj-datepicker__dialog-navbuttons {
+  display: flex;
+  align-items: center;
+}
+
+.moj-datepicker__calendar {
+  border-collapse: collapse;
+  margin-bottom: govuk-spacing(4);
+
+  tbody:focus-within {
+    outline: 2px solid $govuk-focus-colour;
+  }
+
+  td {
+    border: 0;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+  }
+
+  th {
+    @include govuk-font(16);
+    font-weight: bold;
+    color: $govuk-text-colour;
+  }
+
+}
+
+.moj-datepicker__dialog > .govuk-button-group {
+    margin-bottom: 0;
+
+  > * {
+    margin-bottom: 0;
+  }
+}
+
+.moj-datepicker__button {
+  @include govuk-font(16);
+    background-color: transparent;
+    outline: 2px solid rgba(0, 0, 0, 0);
+    outline-offset: -2px;
+    border-width: 0;
+    color: $govuk-text-colour;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    width: 44px;
+    position: relative;
+
+    @media (forced-colors: active) {
+      // Don't show the bottom bar in forced-color modes as it blocks the outline
+      &:after {
+        display: none
+      }
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0px;
+      height: 4px;
+      left: 0;
+      right: 0;
+      background-color: transparent;
+    }
+
+    &[aria-disabled="true"],
+    &[aria-disabled="true"]:hover {
+      background-color: govuk-colour('light-grey');
+      color: $govuk-text-colour;
+      cursor: not-allowed;
+      text-decoration: line-through;
+    }
+
+    &:hover {
+      color: $govuk-text-colour;
+      background-color: $moj-datepicker-mid-grey;
+      text-decoration: none;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      cursor: pointer;
+    }
+
+    &:focus {
+      color: $govuk-text-colour;
+      background-color: $govuk-focus-colour;
+      outline-color: transparent;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      &:after {
+        background-color: $govuk-text-colour;
+      }
+    }
+
+    &:focus:hover {
+      background-color: $moj-datepicker-mid-grey;
+      outline-color: $govuk-focus-colour;
+      &:after {
+        background-color: transparent;
+      }
+    }
+
+    &--current:not(:focus) {
+      background-color: $govuk-link-colour;
+      color: govuk-colour('white');
+      outline-color: $govuk-link-colour;
+      &:after {
+        background-color: $govuk-link-colour;
+      }
+    }
+
+    &--current[tabindex="-1"] {
+      background: transparent;
+      color: currentColor;
+      outline-color: transparent;
+      &:after {
+        background-color: transparent;
+      }
+    }
+
+    &--today {
+      border: 2px solid $govuk-text-colour;
+    }
+
+    &--selected:not(:focus) {
+      background-color: $govuk-link-colour;
+      color: govuk-colour('white');
+
+      &:after {
+        background-color: $govuk-link-colour;
+      }
+
+      &:hover {
+        outline-color: $govuk-link-colour;
+        background-color: $moj-datepicker-mid-grey;
+        color: $govuk-text-colour;
+
+        &:after {
+          background-color: transparent;
+        }
+      }
+    }
+
+}
+
+/*
+ Default input with to .govuk-input--width-10 (10 chars)
+ Allow that to be overriden by the input width modifiers or global width overrides.
+ Width classes less than 10ch not included as that is narrower than a date.
+*/
+.moj-datepicker input {
+  max-width: 11.5em; // govuk-input--width-10
+
+  &.govuk-input--width-30 {
+    max-width: 29.5em;
+  }
+
+  &.govuk-input--width-20 {
+    max-width: 20.5em;
+  }
+
+  &.govuk-\!-width-full {
+    width: 100% !important;
+    max-width: none;
+  }
+
+  &.govuk-\!-width-three-quarters {
+    width: 100% !important;
+    max-width: none;
+
+    @include govuk-media-query($from: tablet) {
+      width: 75% !important;
+    }
+  }
+
+  &.govuk-\!-width-two-thirds {
+    width: 100% !important;
+    max-width: none;
+
+    @include govuk-media-query($from: tablet) {
+      width: 66.66% !important;
+    }
+  }
+
+  &.govuk-\!-width-one-half {
+    width: 100% !important;
+    max-width: none;
+
+    @include govuk-media-query($from: tablet) {
+      width: 50% !important;
+    }
+  }
+
+  &.govuk-\!-width-one-third {
+    width: 100% !important;
+    max-width: none;
+
+    @include govuk-media-query($from: tablet) {
+      width: 33.33% !important;
+    }
+  }
+
+  &.govuk-\!-width-one-quarter {
+    width: 100% !important;
+    max-width: none;
+
+    @include govuk-media-query($from: tablet) {
+      width: 25% !important;
+    }
+  }
+}
+
+.moj-datepicker__wrapper {
+  position: relative;
+}
+
+
+@media (min-width: 768px) {
+  .moj-datepicker__dialog {
+    width: auto;
+  }
+}
+
+.moj-datepicker__toggle {
+  background-color: $govuk-text-colour;
+  color: govuk-colour('white');
+  outline: 3px solid rgba(0, 0, 0, 0);
+  outline-offset: -3px;
+  height: 40px;
+  padding-top: 6px;
+  border: none;
+  border-bottom: 4px solid rgba(0, 0, 0, 0);
+  cursor: pointer;
+
+  &:focus {
+    background-color: $govuk-focus-colour;
+    color: $govuk-text-colour;
+    border-bottom: 4px solid $govuk-text-colour;
+  }
+
+  &:hover {
+    background-color: $moj-datepicker-mid-grey;
+    color: $govuk-text-colour;
+    border-bottom: 4px solid $moj-datepicker-mid-grey;
+  }
+
+  &:focus:hover {
+    background-color: $moj-datepicker-mid-grey;
+    color: $govuk-text-colour;
+    border-bottom: 4px solid $govuk-text-colour;
+  }
+}

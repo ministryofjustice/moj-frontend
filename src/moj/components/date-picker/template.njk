@@ -1,0 +1,50 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/macros/attributes.njk" import govukAttributes %}
+
+{% set classNames = "moj-js-datepicker-input " %}
+
+{%- if params.classes %}
+  {% set classNames = classNames + " " + params.classes %}
+{% endif %}
+
+{% set attributes = {
+  "data-module": 'moj-date-picker',
+  "data-min-date": {
+    value: params.minDate,
+    optional: true
+  },
+  "data-max-date": {
+    value: params.maxDate,
+    optional: true
+  },
+  "data-excluded-dates": {
+    value: params.excludedDates,
+    optional: true
+  },
+  "data-excluded-days": {
+    value: params.excludedDays,
+    optional: true
+  },
+  "data-leading-zeros": {
+    value: params.leadingZeros,
+    optional: true
+  },
+  "data-week-start-day": {
+    value: params.weekStartDay,
+    optional: true
+  }
+} %}
+
+<div class="moj-datepicker" {{ govukAttributes(attributes) }}>
+    {{ govukInput({
+      classes: classNames,
+      id: params.id,
+      name: params.name,
+      value: params.value,
+      autocomplete: "off",
+      formGroup: params.formGroup,
+      label: params.label,
+      hint: params.hint,        
+      errorMessage: params.errorMessage
+    }) }}
+</div>

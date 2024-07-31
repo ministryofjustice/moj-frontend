@@ -1,6 +1,6 @@
 ---
+title: Suggest a Change
 layout: layouts/community.njk
-title: Suggest a change
 ---
 
 To help improve the MoJ Design System, you can suggest changes to components and patterns.
