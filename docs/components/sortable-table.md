@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Sortable table
+eleventyNavigation:
+  key: Sortable table
+  parent: Components
 ---
 
 {% lastUpdated "sortable-table" %}

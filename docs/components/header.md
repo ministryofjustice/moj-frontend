@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Header
+eleventyNavigation:
+  key: Header
+  parent: Components
 ---
 
 {% lastUpdated "header" %}

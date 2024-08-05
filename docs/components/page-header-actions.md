@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Page header actions
+eleventyNavigation:
+  key: Page header actions
+  parent: Components
 ---
 
 {% lastUpdated "page-header-actions" %}

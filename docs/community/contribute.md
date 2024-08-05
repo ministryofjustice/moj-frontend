@@ -1,6 +1,9 @@
 ---
 layout: layouts/community.njk
 title: Propose a component or pattern
+eleventyNavigation:
+  key: Propose a component or pattern
+  parent: Contribute
 ---
 
 Our contribution process supports teams to add components and patterns based on their users needs and service requirements, whilst guaranteeing the quality and usefulness of the MoJ Design System.

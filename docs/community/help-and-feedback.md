@@ -1,6 +1,10 @@
 ---
 layout: layouts/community.njk
 title: Help and feedback
+eleventyNavigation:
+  key: Help and feedback
+  parent: Using the design system
+  order: 20
 ---
 
 <span class="govuk-caption-xl">The MoJ Design System Group provides support for users of the MoJ Design System. Contact us to ask for help or to provide feedback.</span>

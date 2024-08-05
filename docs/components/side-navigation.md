@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Side navigation
+eleventyNavigation:
+  key: Side navigation
+  parent: Components
 ---
 
 {% lastUpdated "side-navigation" %}

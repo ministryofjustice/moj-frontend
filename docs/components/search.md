@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Search
+eleventyNavigation:
+  key: Search
+  parent: Components
 ---
 
 {% lastUpdated "search" %}

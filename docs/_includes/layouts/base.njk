@@ -29,8 +29,6 @@
       <div>
         {% include "./partials/header.njk" %}
 
-        {% include "./partials/navigation.njk" %}
-
         {% block content %}
           <main class="app-prose-scope" role="main">
             {{ content | safe }}
