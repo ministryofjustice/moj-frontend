@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Sortable table
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/269
+eleventyNavigation:
+  key: Sortable table
+  parent: Components
 ---
 
 {% lastUpdated "sortable-table" %}

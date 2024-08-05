@@ -3,6 +3,9 @@ layout: layouts/patterns.njk
 title: Filter a list
 type: pattern
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/717
+eleventyNavigation:
+  key: Filter a list
+  parent: Patterns
 ---
 
 {% example "/examples/patterns/filter-a-list", 1050 %}

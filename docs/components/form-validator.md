@@ -2,6 +2,9 @@
 layout: layouts/component.njk
 isArchive: true
 title: Form validator
+eleventyNavigation:
+  key: Form validator
+  parent: Archive
 ---
 
 {% banner "This component is archived" %}

@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Multi file upload
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/264
+eleventyNavigation:
+  key: Multi file upload
+  parent: Components
 ---
 
 {% lastUpdated "multi-file-upload" %}

@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Filter
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/197
+eleventyNavigation:
+  key: Filter
+  parent: Components
 ---
 
 {% banner "A similar component exists" %}

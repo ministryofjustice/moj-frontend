@@ -4,6 +4,9 @@ title: Button menu
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/685
 contributors: Stephen Robertson, Rich Cooley, Al Laing, Jo Dimbleby, Dave Evans, Jim Bailey, Thomas Geraghty and Andy Keen
+eleventyNavigation:
+  key: Button menu
+  parent: Components
 ---
 
 <span class="govuk-caption-xl">The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu.</span>

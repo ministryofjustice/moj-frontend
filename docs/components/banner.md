@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Banner
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/835
+eleventyNavigation:
+  key: Banner
+  parent: Components
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}

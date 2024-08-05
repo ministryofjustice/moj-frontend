@@ -3,6 +3,9 @@ layout: layouts/pages.njk
 isArchive: true
 title: Question pages
 redirect_from: docs/patterns/question-pages.md
+eleventyNavigation:
+  key: Question page
+  parent: Archive
 ---
 
 {% banner "This page is archived" %}

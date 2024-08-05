@@ -2,6 +2,10 @@
 layout: layouts/component.njk
 isIndex: true
 title: Components
+eleventyNavigation:
+  key: Components
+  parent: Building blocks
+  order: 0
 ---
 
 <span class="govuk-caption-xl">Save time with reusable, accessible components for forms, navigation, panels, tables and more.</span>

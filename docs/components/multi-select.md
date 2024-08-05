@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Multi select
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/206
+eleventyNavigation:
+  key: Multi select
+  parent: Components
 ---
 
 {% lastUpdated "multi-select" %}

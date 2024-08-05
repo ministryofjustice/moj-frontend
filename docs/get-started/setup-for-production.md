@@ -1,7 +1,6 @@
 ---
-title: Prototyping
+title: Setup for production
 eleventyNavigation:
-  key: Prototyping
+  key: Setup for production
   parent: Using the design system
 ---
-

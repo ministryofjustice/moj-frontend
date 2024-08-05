@@ -2,6 +2,9 @@
 layout: layouts/component.njk
 isArchive: true
 title: Rich text editor
+eleventyNavigation:
+  key: Rich text editor
+  parent: Archive
 ---
 
 {% banner "This component is archived" %}

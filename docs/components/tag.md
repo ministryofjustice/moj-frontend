@@ -2,6 +2,9 @@
 layout: layouts/component.njk
 isArchive: true
 title: Tag
+eleventyNavigation:
+  key: Tag
+  parent: Archive
 ---
 
 {% banner "This component is archived" %}

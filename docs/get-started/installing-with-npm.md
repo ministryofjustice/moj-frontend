@@ -1,6 +1,10 @@
 ---
 layout: layouts/get-started.njk
 title: Installing MoJ Frontend with NPM
+eleventyNavigation:
+  key: Install with NPM
+  parent: Setup for production
+  order: 0
 ---
 
 ## Requirements

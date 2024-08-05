@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Pagination
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/708
+eleventyNavigation:
+  key: Pagination
+  parent: Components
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}

@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Side navigation
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/713
+eleventyNavigation:
+  key: Side navigation
+  parent: Components
 ---
 
 {% lastUpdated "side-navigation" %}

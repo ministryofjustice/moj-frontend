@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Identity bar
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/704
+eleventyNavigation:
+  key: Identity bar
+  parent: Components
 ---
 
 {% lastUpdated "identity-bar" %}

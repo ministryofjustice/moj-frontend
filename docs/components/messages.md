@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Messages
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/705
+eleventyNavigation:
+  key: Messages
+  parent: Components
 ---
 
 {% lastUpdated "messages" %}

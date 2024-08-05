@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Scrollable pane
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/711
+eleventyNavigation:
+  key: Scrollable pane
+  parent: Components
 ---
 
 {% example "/examples/scrollable-pane", 470 %}

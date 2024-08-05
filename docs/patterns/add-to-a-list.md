@@ -3,6 +3,9 @@ layout: layouts/patterns.njk
 title: Add to a list
 type: pattern
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/203
+eleventyNavigation:
+  key: Add to a list
+  parent: Patterns
 ---
 
 {% banner "Other departments have a similar patterns" %}

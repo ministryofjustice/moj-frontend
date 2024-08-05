@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Header
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/246
+eleventyNavigation:
+  key: Header
+  parent: Components
 ---
 
 {% lastUpdated "header" %}

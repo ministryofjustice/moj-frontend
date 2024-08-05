@@ -1,6 +1,10 @@
 ---
 layout: layouts/get-started.njk
 title: Installing MoJ Frontend using compiled files
+eleventyNavigation:
+  key: Install with compiled files
+  parent: Setup for production
+  order: 5
 ---
 
 You can install MoJ Frontend using the compiled files released with each version. However, by doing so, you will **not** be able to:

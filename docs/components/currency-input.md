@@ -3,6 +3,9 @@ layout: layouts/component.njk
 isArchive: true
 title: Currency input
 type: component
+eleventyNavigation:
+  key: Currency input
+  parent: Archive
 ---
 
 {% banner "This component is archived" %}

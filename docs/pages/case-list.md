@@ -4,6 +4,9 @@ title: Case list pages
 type: page
 redirect_from: docs/patterns/case-list.md
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/242
+eleventyNavigation:
+  key: Case list page
+  parent: Pages
 ---
 
 <div class="govuk-form-group">

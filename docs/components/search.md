@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Search
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/712
+eleventyNavigation:
+  key: Search
+  parent: Components
 ---
 
 {% lastUpdated "search" %}

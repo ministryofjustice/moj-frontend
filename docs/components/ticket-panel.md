@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Ticket Panel
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/715
+eleventyNavigation:
+  key: Ticket panel
+  parent: Components
 ---
 
 {% lastUpdated "ticket-panel" %}

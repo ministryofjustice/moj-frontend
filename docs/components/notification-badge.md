@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Notification badge
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/706
+eleventyNavigation:
+  key: Notifictation badge
+  parent: Components
 ---
 
 {% banner "HMRC Design Patterns has a similar component" %}

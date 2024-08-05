@@ -2,6 +2,10 @@
 layout: layouts/pages.njk
 isIndex: true
 title: Pages
+eleventyNavigation:
+  key: Pages
+  parent: Building blocks
+  order: 10
 ---
 
 <span class="govuk-caption-xl">Use pages to create consistent user experiences across MoJ products and services.</span>

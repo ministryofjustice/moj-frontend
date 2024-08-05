@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Timeline
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/716
+eleventyNavigation:
+  key: Timeline
+  parent: Components
 ---
 
 {% lastUpdated "timeline" %}
