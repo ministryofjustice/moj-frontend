@@ -2,6 +2,9 @@
 layout: layouts/pages.njk
 title: Case list pages
 redirect_from: docs/patterns/case-list.md
+eleventyNavigation:
+  key: Case list page
+  parent: Pages
 ---
 
 <div class="govuk-form-group">

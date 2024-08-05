@@ -2,6 +2,9 @@
 layout: layouts/get-started.njk
 subsection: How to guides
 title:  Deploying your prototype
+eleventyNavigation:
+  key: Host a prototype
+  parent: Prototyping
 ---
 
 If you work for the Ministry of Justice, we recommend using MoJ Cloud Platform to deploy your prototype.

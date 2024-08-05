@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Messages
+eleventyNavigation:
+  key: Messages
+  parent: Components
 ---
 
 {% lastUpdated "messages" %}

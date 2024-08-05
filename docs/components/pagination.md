@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Pagination
+eleventyNavigation:
+  key: Pagination
+  parent: Components
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}

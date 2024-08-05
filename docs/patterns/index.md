@@ -2,6 +2,10 @@
 layout: layouts/patterns.njk
 isIndex: true
 title: Patterns
+eleventyNavigation:
+  key: Patterns
+  parent: Building blocks
+  order: 5
 ---
 
 <span class="govuk-caption-xl">Help users complete common tasks like uploading files, filtering lists, and getting help.</span>

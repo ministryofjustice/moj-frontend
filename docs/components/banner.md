@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Banner
+eleventyNavigation:
+  key: Banner
+  parent: Components
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}

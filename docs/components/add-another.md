@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Add another
+eleventyNavigation:
+  key: Add another
+  parent: Components
 ---
 
 {% lastUpdated "add-another" %}
