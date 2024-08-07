@@ -1,0 +1,31 @@
+{% set buildingPages = collections.all | eleventyNavigation("Building blocks") %}
+{% set usingPages = collections.all | eleventyNavigation("Using the design system") %}
+
+{% macro verticalNavListItem(entry, sortChildrenBy="order") -%}
+<li{% if entry.url==page.url %} class="my-active-class" {% endif %}>
+    <a href="{{ entry.url }}">{{ entry.title }}</a>
+    {%- if entry.children.length -%}
+    <ul class="">
+        {%- for child in entry.children | sort(false, false, sortChildrenBy) %}
+        {{ verticalNavListItem(child) }}
+        {% endfor -%}
+    </ul>
+    {%- endif -%}
+</li>
+{%- endmacro %}
+
+<nav class="moj-vertical-nav" aria-labelledby="building-nav-title">
+    <h2 id="building-nav-title">Building Blocks</h2>
+    <ul class="">
+        {%- for entry in buildingPages %}{{ verticalNavListItem(entry, "key") }}{%- endfor -%}
+    </ul>
+</nav>
+
+<hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+<nav  class="moj-vertical-nav aria-labelledby="using-nav-title">
+    <h2 id="using-nav-title">Using the design system</h2>
+    <ul>
+        {%- for entry in usingPages %}{{ verticalNavListItem(entry) }}{%- endfor -%}
+    </ul>
+</nav>

@@ -1,69 +1,13 @@
 {% extends "./base.njk" %}
 
-{%- from "node_modules/@ministryofjustice/frontend/moj/components/side-navigation/macro.njk" import mojSideNavigation %}
-
-{% macro appSideNavigation(config) %}
-  {% set config = config|addActiveAttribute(page.filePathStem | url) %}
-
-  {{ mojSideNavigation(config) }}
-{% endmacro %}
-
 {% block content %}
-  <div class="govuk-width-container govuk-grid-row app-flex-container">
-    <div class="govuk-grid-column-one-third">
-      {{ appSideNavigation({
-        classes: 'govuk-!-padding-top-6',
-        sections: [
-          {
-            heading: {
-              text: "Patterns"
-            },
-            items: [
-              {
-                text: 'Add to a list',
-                href: ('/patterns/add-to-a-list' | url)
-              },
-              {
-                text: 'Filter a list',
-                href: ('/patterns/filter-a-list' | url)
-              },
-              {
-                text: 'Get help',
-                href: ('/patterns/get-help' | url)
-              },
-              {
-                text: 'Upload files',
-                href: ('/patterns/upload-files' | url)
-              }
-            ]
-          }
-        ]
-      }) }}
-
-
-      <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
-
-      {{ appSideNavigation({
-        items: [
-          {
-            text: 'Archived patterns',
-            href: ('/patterns/archived-patterns' | url)
-          }
-        ]
-      }) }}
-
-
-      {% include "./partials/back-to-top.njk" %}
-    </div>
-
-    <div class="govuk-grid-column-two-thirds">
-      <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
+    <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
-          {% if not isIndex %}<span class="govuk-caption-xl">Patterns</span>{% endif %}
-          {{ title }}
+            {% if not isIndex %}<span class="govuk-caption-xl">Patterns</span>{% endif %}
+            {{ title }}
         </h1>
         {{ content | safe }}
-      </main>
+    </main>
 
       {% if isIndex or isArchive %}
       {% else %}

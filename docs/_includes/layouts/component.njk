@@ -1,52 +1,13 @@
 {% extends "./base.njk" %}
 
-{% macro renderNavListItem(entry, sortChildrenBy="order") -%}
-<li{% if entry.url == page.url %} class="my-active-class"{% endif %}>
-  <a href="{{ entry.url }}">{{ entry.title }}</a>
-{%- if entry.children.length -%}
-  <ul>
-    {%- for child in entry.children | sort(false, false, sortChildrenBy) %}
-      {{ renderNavListItem(child) }}
-    {% endfor -%}
-  </ul>
-{%- endif -%}
-</li>
-{%- endmacro %}
-
 {% block content %}
-  <div class="govuk-width-container govuk-grid-row app-flex-container">
-    <div class="govuk-grid-column-one-third">
-
-      {% set buildingPages = collections.all | eleventyNavigation("Building blocks") %}
-      
-      <nav aria-labelledby="building-nav-title">
-        <h2 id="building-nav-title">Building Blocks</h2>
-        <ul>
-          {%- for entry in buildingPages  %}{{ renderNavListItem(entry, "key") }}{%- endfor -%}
-        </ul>
-      </nav>
-
-      <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
-
-      {% set usingPages = collections.all | eleventyNavigation("Using the design system") %}
-      <nav aria-labelledby="using-nav-title">
-        <h2 id="using-nav-title">Building Blocks</h2>
-        <ul>
-          {%- for entry in usingPages  %}{{ renderNavListItem(entry) }}{%- endfor -%}
-        </ul>
-      </nav>
-
-      {% include "./partials/back-to-top.njk" %}
-    </div>
-
-    <div class="govuk-grid-column-two-thirds">
-      <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
+    <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
         <h1 class="govuk-heading-xl">
           {% if not isIndex %}<span class="govuk-caption-xl">Components</span>{% endif %}
           {{ title }}
         </h1>
         {{ content | safe }}
-      </main>
+    </main>
 
       {% if isIndex or isArchive %}
       {% else %}
