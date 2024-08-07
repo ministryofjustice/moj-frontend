@@ -1,0 +1,88 @@
+$moj-app-mid-grey: #949494;
+
+.app-vertical-nav {
+
+}
+
+.app-vertical-nav__header {
+  @include govuk-font($size: 24);
+  color: $govuk-secondary-text-colour;
+}
+
+.app-vertical-nav__list {
+  @include govuk-font($size: 19);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.app-vertical-nav__link {
+  color: $govuk-link-colour;
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px 7px 15px;
+  border-left: 4px solid transparent;
+
+  &:visited {
+    color: $govuk-link-colour;
+  }
+
+  &:hover {
+    background-color: $moj-app-mid-grey;
+    color: $govuk-text-colour;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: $govuk-focus-colour;
+    color: $govuk-text-colour;
+    outline: none;
+    border-color: $govuk-text-colour;
+  }
+
+  &:focus:hover,
+  &:focus-visible:hover {
+    background-color: $moj-app-mid-grey;
+  }
+}
+
+.app-vertical-nav__list .app-vertical-nav__list {
+  @include govuk-font($size: 16);
+  padding-left: govuk-spacing(2);
+}
+
+.app-vertical-nav__list-item--active > .app-vertical-nav__link {
+    background-color: $govuk-link-colour;
+    color: govuk-colour('white');
+
+    &:hover {
+    background-color: $moj-app-mid-grey;
+    color: $govuk-text-colour;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: $govuk-focus-colour;
+    color: $govuk-text-colour;
+    outline: none;
+    border-color: $govuk-text-colour;
+  }
+
+  &:focus:hover,
+  &:focus-visible:hover {
+    background-color: $moj-app-mid-grey;
+  }
+}
+
+
+
+
+.app-vertical-nav__list-item--active .app-vertical-nav__link {
+
+}
+
+.app-vertical-nav__list > .app-vertical-nav__list-item {
+
+}
+.app-vertical-nav__list .app-vertical-nav__list > .app-vertical-nav__list-item {
+}
