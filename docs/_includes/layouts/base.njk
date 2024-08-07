@@ -28,15 +28,25 @@
     {% block body %}
       <div>
         {% include "./partials/header.njk" %}
+        
+        <div class="govuk-width-container govuk-grid-row app-flex-container">
+            <div class="govuk-grid-column-one-quarter">
+                {% include "./partials/side-navigation.njk" %}
 
-        {% block content %}
-          <main class="app-prose-scope" role="main">
-            {{ content | safe }}
-          </main>
-        {% endblock %}
+                {% include "./partials/back-to-top.njk" %}
+            </div>
+
+
+            <div class="govuk-grid-column-three-quarters">
+                {% block content %}
+                  <main class="app-prose-scope" role="main">
+                    {{ content | safe }}
+                  </main>
+                {% endblock %}
+            </div>
+        </div>
 
         {% include "./partials/footer.njk" %}
-
       </div>
     {% endblock %}
     {% block pageScripts %}{% endblock %}
