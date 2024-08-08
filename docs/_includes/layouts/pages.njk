@@ -1,13 +1,12 @@
 {% extends "./base.njk" %}
 
 {% block content %}
-    <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
+    <div class="app-content-container">
         <h1 class="govuk-heading-xl">
             {% if not isIndex %}<span class="govuk-caption-xl">Pages</span>{% endif %}
             {{ title }}
         </h1>
         {{ content | safe }}
-    </main>
 
       {% if isIndex or isArchive %}
       {% else %}

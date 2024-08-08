@@ -1,0 +1,26 @@
+/** Causes child elements to fill vertical space, allowing `position:sticky` to work as intended */
+.app-layout {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include govuk-media-query($from: tablet) {
+      max-width: 1220px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+}
+
+.app-layout__sidebar {
+  /* ↓ The width when the sidebar _is_ a sidebar */
+  flex-basis: 15rem;
+  flex-grow: 1;
+}
+
+.app-layout__page {
+  /* ↓ Grow from nothing */
+  flex-basis: 0;
+  flex-grow: 999;
+  /* ↓ Wrap when the elements are of equal width */
+  min-inline-size: 70%;
+}
+

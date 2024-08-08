@@ -1,11 +1,11 @@
 {% extends "./base.njk" %}
 
 {% block content %}
-    <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
+    <div class="app-content-container">
         <h1 class="govuk-heading-xl">
             {{ title }}
         </h1>
 
         {{ content | safe }}
-    </main>
+    </div>
 {% endblock %}
