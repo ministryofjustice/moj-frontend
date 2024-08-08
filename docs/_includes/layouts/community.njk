@@ -1,13 +1,13 @@
 {% extends "./base.njk" %}
 
 {% block content %}
-    <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
+    <div class="app-content-container">
         <h1 class="govuk-heading-xl">
           {% if subsection %}<span class="govuk-caption-xl">{{ subsection }}</span>{% endif %}
           {{ title }}
         </h1>
         {{ content | safe }}
-    </main>
 
     {% include "./partials/get-help.njk" %}
+    </div>
 {% endblock %}

@@ -29,20 +29,18 @@
       <div>
         {% include "./partials/header.njk" %}
         
-        <div class="govuk-width-container govuk-grid-row app-flex-container">
-            <div class="govuk-grid-column-one-quarter">
+        <div class="app-layout">
+            <div class="app-layout__sidebar">
                 {% include "./partials/side-navigation.njk" %}
-
-                {% include "./partials/back-to-top.njk" %}
             </div>
 
 
-            <div class="govuk-grid-column-three-quarters">
-                {% block content %}
-                  <main class="app-prose-scope" role="main">
-                    {{ content | safe }}
-                  </main>
-                {% endblock %}
+            <div class="app-layout__page app-page">
+                <main class="app-prose-scope" role="main">
+                    {% block content %}
+                        {{ content | safe }}
+                    {% endblock %}
+                </main>
             </div>
         </div>
 

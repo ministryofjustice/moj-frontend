@@ -1,0 +1,22 @@
+{% extends "./base.njk" %}
+
+{% set components = collections.all | eleventyNavigation(eleventyNavigation.key) %}
+
+{% block content %}
+    <div class="app-masthead app-content-container">
+            <h1 class="govuk-heading-xl">
+              {{ title }}
+            </h1>
+            {{ content | safe }}
+    </div>
+
+    <div class="app-content-container">
+    {% for component in components %}
+        <article>
+            <h2>{{ component.title }}</h2>
+            <p>{{ component.excerpt }}</p>
+            <p><a href="{{ component.url }}">View the '{{ component.title }}' component</a></p>
+        </article>
+    {% endfor %}
+    </div>
+{% endblock %}
