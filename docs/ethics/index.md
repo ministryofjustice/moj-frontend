@@ -3,7 +3,7 @@ layout: layouts/ethics.njk
 title: Designing ethical services
 ---
 
-All teams designing and building MoJ digital services should be mindful of how their design may impact people and society.
+All teams designing and building MoJ digital services should be mindful of how their work may impact people and society.
 
 Use this guidance to make sure your team designs and develops responsibly. This will help reduce, mitigate or remove harm.
 
@@ -13,7 +13,7 @@ As part of your service assessment, you’ll be expected to show how you’ve co
 
 If your team is not preparing for a service assessment, you should still make sure your service is ethical by:
 
-- [considering our recommended ethics principles](/ethics/principles/)
+- [considering the recommended ethical principles](/ethics/principles/)
 - [doing an ethics review](/ethics/review/)
 
 ## Why you should consider ethics
@@ -28,6 +28,6 @@ There are many reasons to consider ethics. Some positive impacts include:
 
 ## What delivery teams should do
 
-1. [Consider our ethical principles](/ethics/principles/) and make ethics a practical part of your design process.
+1. [Consider ethical principles](/ethics/principles/) and make ethics a practical part of your design process.
 2. [Do an ethics review](/ethics/review/) if appropriate for your service - this will help you understand the impact your service has on people.
 3. Find out more about [preparing for a service assessment](/ethics/assessment/).

@@ -13,9 +13,9 @@ Doing an ethics review will help you:
 
 Make a copy of the ethics review template using [Google Docs](https://docs.google.com/document/d/1GRHSKxj3_zXubfDkGHQp9Y2_6wpf9_dcB9qCuHQS4xM/edit) or [Miro](https://miro.com/app/board/uXjVPlD7OmE=/?share_link_id=60340973454) (both come with instructions).
 
-You can do the review remotely or in person. There's no time-limit, but for reference, it took one team about 2 hours to do their review in person.
+You can do the review remotely or in person. There's no time-limit, but for reference it took one team about 2 hours to do their review in person.
 
-The outputs you get are likely to vary significantly depending on what your service does, who uses it, which phase of delivery you’re at and how information is stored and used.
+The outputs are likely to vary significantly depending on what your service does, who uses it, which phase of delivery you’re at and how information is stored and used.
 
 ## When to do an ethics review
 
