@@ -5,6 +5,8 @@ import Cookies from "./cookies";
 import Copy from "./copy";
 import Tabs from "./tabs";
 
+import MojMenuToggle from "./menu-toggle.js";
+
 initGOVUKFrontend();
 MOJFrontend.initAll();
 
@@ -23,3 +25,4 @@ $(function () {
 });
 
 window.MOJFrontend = MOJFrontend;
+customElements.define('moj-menu-toggle', MojMenuToggle)

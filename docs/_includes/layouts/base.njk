@@ -30,13 +30,13 @@
         {% include "./partials/header.njk" %}
         
         <div class="app-layout">
-            <div class="app-layout__sidebar">
+            <div id="sidebar" class="app-layout__sidebar">
                 {% include "./partials/side-navigation.njk" %}
             </div>
 
 
             <div class="app-layout__page app-page">
-                <main class="app-prose-scope" role="main">
+                <main id="main-content" class="app-prose-scope">
                     {% block content %}
                         {{ content | safe }}
                     {% endblock %}
