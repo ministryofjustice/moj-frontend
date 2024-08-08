@@ -1,4 +1,5 @@
 ---
+layout: "layouts/index.njk"
 title: Prototyping
 eleventyNavigation:
   key: Prototyping

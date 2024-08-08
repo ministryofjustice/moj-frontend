@@ -1,4 +1,5 @@
 ---
+layout: "layouts/index.njk"
 title: Setup for production
 eleventyNavigation:
   key: Setup for production
