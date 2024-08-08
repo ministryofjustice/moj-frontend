@@ -1,12 +1,14 @@
 $moj-app-mid-grey: #949494;
 
 .app-vertical-nav {
-
+  /* padding-left: govuk-spacing(3); */
+  /* padding-right: govuk-spacing(3); */
 }
 
 .app-vertical-nav__header {
   @include govuk-font($size: 24);
   color: $govuk-secondary-text-colour;
+  padding-left: 19px;
 }
 
 .app-vertical-nav__list {
@@ -14,6 +16,10 @@ $moj-app-mid-grey: #949494;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.app-vertical-nav__list-item {
+  position: relative;
 }
 
 .app-vertical-nav__link {
@@ -74,15 +80,3 @@ $moj-app-mid-grey: #949494;
   }
 }
 
-
-
-
-.app-vertical-nav__list-item--active .app-vertical-nav__link {
-
-}
-
-.app-vertical-nav__list > .app-vertical-nav__list-item {
-
-}
-.app-vertical-nav__list .app-vertical-nav__list > .app-vertical-nav__list-item {
-}
