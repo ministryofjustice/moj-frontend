@@ -14,6 +14,7 @@
   /* ↓ The width when the sidebar _is_ a sidebar */
   flex-basis: 15rem;
   flex-grow: 1;
+  @include govuk-responsive-padding(6, "bottom");
 }
 
 .app-layout__page {
