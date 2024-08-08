@@ -2,4 +2,23 @@
     background-color: #220051;
     padding-top: govuk-spacing(3);
     border-bottom: 10px solid govuk-colour("pink");
+}
+
+.moj-header--docs .moj-header__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.moj-header--docs .moj-header__logo {
+  margin-right: auto;
+}
+
+.moj-header moj-toggle {
+  @include govuk-media-query(920px) {
+    display: none;
   }
+}
+
+moj-menu-toggle:not(:defined) {
+  display: none;
+}
