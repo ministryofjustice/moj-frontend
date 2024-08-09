@@ -1,32 +1,22 @@
 /** Causes child elements to fill vertical space, allowing `position:sticky` to work as intended */
 .app-layout {
-
     @include govuk-media-query(920px) {
-      display: flex;
       width: 100%;
       max-width: 1220px;
       margin-left: auto;
       margin-right: auto;
+      display: grid;
+      grid-template-columns: 25% 75%;
     }
 }
 
 .app-layout__sidebar {
-
   @include govuk-responsive-padding(6, "bottom");
-
-  @include govuk-media-query(920px) {
-    flex-basis: 25%;
-    flex-grow: 1;
-  }
-
 }
 
 .app-layout__page {
   @include govuk-media-query(920px) {
-    flex-basis: 75%;
-    flex-shrink: 1;
     border-left: 1px solid $govuk-border-colour;
   }
-  /* ↓ Wrap when the elements are of equal width */
 }
 
