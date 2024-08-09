@@ -1,6 +1,9 @@
 ---
 layout: layouts/patterns.njk
 title: Filter a list
+eleventyNavigation:
+  key: Filter a list
+  parent: Patterns
 ---
 
 {% example "/examples/patterns/filter-a-list", 1050 %}

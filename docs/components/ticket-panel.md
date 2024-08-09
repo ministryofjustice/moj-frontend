@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Ticket Panel
+eleventyNavigation:
+  key: Ticket panel
+  parent: Components
 ---
 
 {% lastUpdated "ticket-panel" %}

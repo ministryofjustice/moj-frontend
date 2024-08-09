@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Button menu
+eleventyNavigation:
+  key: Button menu
+  parent: Components
 ---
 
 {% lastUpdated "button-menu" %}

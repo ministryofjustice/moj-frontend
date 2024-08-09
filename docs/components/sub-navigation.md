@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Sub navigation
+eleventyNavigation:
+  key: Sub navigation
+  parent: Components
 ---
 
 

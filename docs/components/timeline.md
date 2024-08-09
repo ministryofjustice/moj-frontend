@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Timeline
+eleventyNavigation:
+  key: Timeline
+  parent: Components
 ---
 
 {% lastUpdated "timeline" %}

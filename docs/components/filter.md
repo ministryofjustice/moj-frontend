@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Filter
+eleventyNavigation:
+  key: Filter
+  parent: Components
 ---
 
 {% banner "A similar component exists" %}

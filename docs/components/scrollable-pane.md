@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Scrollable pane
+eleventyNavigation:
+  key: Scrollable pane
+  parent: Components
 ---
 
 {% example "/examples/scrollable-pane", 470 %}

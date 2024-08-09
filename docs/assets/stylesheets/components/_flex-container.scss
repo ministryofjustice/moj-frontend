@@ -1,6 +1,0 @@
-/** Causes child elements to fill vertical space, allowing `position:sticky` to work as intended */
-.app-flex-container {
-  @include govuk-media-query($from: tablet) {
-    display: flex;
-  }
-}

@@ -1,0 +1,22 @@
+/** Causes child elements to fill vertical space, allowing `position:sticky` to work as intended */
+.app-layout {
+    @include govuk-media-query(920px) {
+      width: 100%;
+      max-width: 1220px;
+      margin-left: auto;
+      margin-right: auto;
+      display: grid;
+      grid-template-columns: 25% 75%;
+    }
+}
+
+.app-layout__sidebar {
+  @include govuk-responsive-padding(6, "bottom");
+}
+
+.app-layout__page {
+  @include govuk-media-query(920px) {
+    border-left: 1px solid $govuk-border-colour;
+  }
+}
+

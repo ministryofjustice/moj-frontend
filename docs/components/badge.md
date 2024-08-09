@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Badge
+eleventyNavigation:
+  key: Badge 
+  parent: Components
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}

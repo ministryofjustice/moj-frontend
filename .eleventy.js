@@ -11,8 +11,11 @@ const { execSync } = require("child_process");
 const releasePackage = require('./package/package.json');
 const sass = require("sass");
 const esbuild = require('esbuild');
+const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
 module.exports = function (eleventyConfig) {
+
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
   /*
    * If the node env is 'dev' then we include the src dir allowing components
    * under development to be watched and loaded
@@ -38,6 +41,8 @@ module.exports = function (eleventyConfig) {
   }).forEach(([name, callback]) => {
     nunjucksEnv.addFilter(name, callback);
   });
+
+  nunjucksEnv.addFilter("eleventyNavigation", eleventyNavigationPlugin.navigation.find);
 
   eleventyConfig.setLibrary("njk", nunjucksEnv);
 
@@ -159,6 +164,7 @@ module.exports = function (eleventyConfig) {
       }
     }
   );
+
 
   eleventyConfig.addFilter("getScriptPath", function (inputPath) {
     return inputPath.split("/").slice(1, -1).join("/") + "/script.js";

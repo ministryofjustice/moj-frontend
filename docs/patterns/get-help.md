@@ -1,6 +1,9 @@
 ---
 layout: layouts/patterns.njk
 title: Get help
+eleventyNavigation:
+  key: Get help
+  parent: Patterns
 ---
 
 {% example "/examples/patterns/get-help", 250 %}
