@@ -5,7 +5,8 @@ import Cookies from "./cookies";
 import Copy from "./copy";
 import Tabs from "./tabs";
 
-import MojMenuToggle from "./menu-toggle.js";
+import MenuToggle from "./menu-toggle.js";
+import AccordionNav from "./accordion-nav.js";
 
 initGOVUKFrontend();
 MOJFrontend.initAll();
@@ -25,4 +26,5 @@ $(function () {
 });
 
 window.MOJFrontend = MOJFrontend;
-customElements.define('moj-menu-toggle', MojMenuToggle)
+customElements.define('moj-menu-toggle', MenuToggle)
+customElements.define('moj-accordion-nav', AccordionNav)
