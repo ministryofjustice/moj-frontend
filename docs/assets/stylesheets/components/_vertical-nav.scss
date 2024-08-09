@@ -18,8 +18,20 @@ $moj-app-mid-grey: #949494;
   padding: 0;
 }
 
-.app-vertical-nav__list-item {
+.app-vertical-nav__item {
   position: relative;
+
+}
+
+.app-vertical-nav__indicator {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 10px;
+  right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .app-vertical-nav__link {
@@ -57,7 +69,7 @@ $moj-app-mid-grey: #949494;
   padding-left: govuk-spacing(2);
 }
 
-.app-vertical-nav__list-item--active > .app-vertical-nav__link {
+.app-vertical-nav__item--active > .app-vertical-nav__link {
     background-color: $govuk-link-colour;
     color: govuk-colour('white');
 
@@ -79,4 +91,7 @@ $moj-app-mid-grey: #949494;
     background-color: $moj-app-mid-grey;
   }
 }
-
+.app-vertical-nav__item--active .app-vertical-nav__indicator {
+  color: govuk-colour('white');
+  transform: rotate(180deg);
+}
