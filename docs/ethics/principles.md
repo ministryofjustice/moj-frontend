@@ -4,9 +4,9 @@ subsection: Ethics
 title: Ethical principles
 ---
 
-Our ethical design principles are a set of ideals to guide how MoJ services are designed and built over time. 
+These ethical design principles are a set of ideals to guide how MoJ services are designed and built over time. 
 
-Although it may not be possible to apply all of our principles, use them as inspiration to improve how you work.
+Although it may not be possible to apply all of these principles, you can use them as inspiration to improve how you work.
 
 ## Minimise harm
 How might we minimise harm and maximise wellbeing (both physically and mentally)?
