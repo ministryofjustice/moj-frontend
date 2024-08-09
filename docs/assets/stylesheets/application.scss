@@ -25,3 +25,7 @@ $govuk-assets-path: "../" !default;
 @import "./components/header";
 @import "./components/vertical-nav";
 @import "./components/page";
+
+@view-transition {
+  navigation: auto;
+}
