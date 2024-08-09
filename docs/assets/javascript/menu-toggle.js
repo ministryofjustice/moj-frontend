@@ -1,4 +1,4 @@
-export default class MojMenuToggle extends HTMLElement {
+export default class MenuToggle extends HTMLElement {
   constructor() {
     super();
 
@@ -6,8 +6,20 @@ export default class MojMenuToggle extends HTMLElement {
     this.$menu = document.querySelector(this.menuSelector)
     this.$button = this.querySelector('button')
 
-    if(!this.$menu) return
-    if(!this.$button) return
+    if(!this.$menu) {
+      console.error('Menu element must exist ')
+      return
+    }
+    if(!this.$button) {
+      console.error('Menu toggle element must contain a button element')
+      return
+    }
+    if(!this.$menu.id) {
+      console.error('Menu element must have an id attribute')
+      return
+    }
+
+    this.$button.setAttribute('aria-controls', this.$menu.id)
 
     this.addEventListener('click', this)
 
@@ -38,7 +50,7 @@ export default class MojMenuToggle extends HTMLElement {
   }
 
   toggle() {
-    if(this.menuHidden) {
+    if(this.$menu.hidden) {
       this.showMenu()
     } else {
       this.hideMenu()
@@ -46,23 +58,21 @@ export default class MojMenuToggle extends HTMLElement {
   }
 
   hideToggle() {
-    this.setAttribute('hidden', true)
+    this.hidden = true
   }
 
   showToggle() {
-    this.removeAttribute('hidden')
+    this.hidden = false
   }
 
   hideMenu() {
-    this.$menu.setAttribute('hidden', true)
+    this.$menu.hidden = true
+    this.$button.setAttribute('aria-expanded', false)
   }
 
   showMenu() {
-    this.$menu.removeAttribute('hidden')
-  }
-
-  get menuHidden() {
-    return this.$menu.hasAttribute('hidden')
+    this.$menu.hidden = false
+    this.$button.setAttribute('aria-expanded', true)
   }
 
   get breakpoint() {
