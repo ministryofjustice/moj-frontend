@@ -362,6 +362,14 @@ Lower case.
 
 <h2 class="govuk-heading-l" id="p">P</h2>
 
+### Person Escort Record (PER)
+
+Write out Person Escort Record (PER) at the first usage and use PER thereafter.
+
+PERs are a document which must be completed for all people in custody prior to any escorted movement outside prison (for example to or from court or a transfer to another prison).
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
 ### person on probation, people on probation
 
 Do not use offender. Use person on probation and not the acronym PoP. Try to use people's names where possible.
@@ -381,6 +389,16 @@ You can either write the title content or work with a developer to see if it can
 ### Personal Emergency Evacuation Plan (PEEP)
 
 Use PEEP. This is more well known than the full version.
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+### Personal Identification Number (PIN)
+
+Use PIN. This is more well known than the full version.
+
+Prisoners use their secure PIN to call people on their approved contacts list from their in-cell PIN phones.
+
+It is often written as pin or Pin, but PIN is the correct format.
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
@@ -442,6 +460,14 @@ Someone is on remand if they are placed in custody whilst awaiting trial.
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
+### ROTL (Release on Temporary Licence)
+
+Use upper case.
+
+Users may well understand the acronym on its own. If you have evidence of this, use the acronym first and then spell out in brackets.
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
 <h2 class="govuk-heading-l" id="t">T</h2>
 
 ### times (in prison)
@@ -490,6 +516,6 @@ Capital 'X' and lower case 'r'. Do not shorten to 'body scan' as this may be con
 
 ### youth offender
 
-This term is used to describe prisoners aged between 15 and 21. Although it goes against our principle of not referring to people in prison as 'offenders', this term is widely used across HMPPS. We have not agreed an alternative term to use.
+This term is used to describe prisoners aged between 15 and 21. Although it goes against the principle of not referring to people in prison as 'offenders', this term is widely used across HMPPS. We have not agreed an alternative term to use.
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
