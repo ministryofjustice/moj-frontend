@@ -1,18 +1,25 @@
 {% set buildingPages = collections.all | eleventyNavigation("Building blocks") %}
 {% set usingPages = collections.all | eleventyNavigation("Using the design system") %}
 
-{% macro verticalNavListItem(entry, sortChildrenBy="order") -%}
-<li class="app-vertical-nav__list-item {% if entry.url==page.url or entry.key==eleventyNavigation.parent %} app-vertical-nav__list-item--active {% endif %}">
+{%- macro verticalNavListItem(entry, sortChildrenBy="order") -%}
+<li class="app-vertical-nav__item {{ 'app-vertical-nav__item--active' if (entry.url==page.url or entry.key==eleventyNavigation.parent)}} {{ 'app-vertical-nav__item--with-children' if entry.children }}">
     <a class="app-vertical-nav__link" href="{{ entry.url }}">{{ entry.title }}</a>
     {%- if entry.children.length -%}
+
+    <div class="app-vertical-nav__indicator">
+        <svg width="15" height="9" viewBox="0 0 15 9" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.79289 5.98223L13.5858 0.189339L15 1.60355L7.79289 8.81066L0.585787 1.60355L2 0.189338L7.79289 5.98223Z" fill="currentColor"/>
+        </svg>
+    </div>
+
     <ul class="app-vertical-nav__list" {% if not (entry.url==page.url or entry.key==eleventyNavigation.parent) %} hidden {% endif %}>
-        {%- for child in entry.children | sort(false, false, sortChildrenBy) %}
+        {%- for child in entry.children | sort(false, false, sortChildrenBy) -%}
             {{ verticalNavListItem(child) }}
-        {% endfor -%}
+        {%- endfor -%}
     </ul>
     {%- endif -%}
 </li>
-{%- endmacro %}
+{%- endmacro -%}
 
 <nav class="app-vertical-nav" aria-labelledby="building-nav-title">
     <h2 class="app-vertical-nav__header" id="building-nav-title">Building Blocks</h2>
