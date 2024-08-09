@@ -2,10 +2,10 @@
 {% set usingPages = collections.all | eleventyNavigation("Using the design system") %}
 
 {% macro verticalNavListItem(entry, sortChildrenBy="order") -%}
-<li class="app-vertical-nav__list-item {% if entry.url==page.url %} app-vertical-nav__list-item--active {% endif %} {% if entry.key==eleventyNavigation.parent %} app-vertical-nav__list-item--active {% endif %}">
+<li class="app-vertical-nav__list-item {% if entry.url==page.url or entry.key==eleventyNavigation.parent %} app-vertical-nav__list-item--active {% endif %}">
     <a class="app-vertical-nav__link" href="{{ entry.url }}">{{ entry.title }}</a>
     {%- if entry.children.length -%}
-    <ul class="app-vertical-nav__list">
+    <ul class="app-vertical-nav__list" {% if not (entry.url==page.url or entry.key==eleventyNavigation.parent) %} hidden {% endif %}>
         {%- for child in entry.children | sort(false, false, sortChildrenBy) %}
             {{ verticalNavListItem(child) }}
         {% endfor -%}
