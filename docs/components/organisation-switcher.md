@@ -4,7 +4,7 @@ title: Organisation switcher
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/239
 eleventyNavigation:
-  key: Orgasnisation switcher
+  key: Organisation switcher
   parent: Components
 ---
 

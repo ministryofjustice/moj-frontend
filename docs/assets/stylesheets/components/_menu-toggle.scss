@@ -15,9 +15,17 @@ moj-menu-toggle > button {
   align-items: center;
   gap: 8px;
 
-  &:hover {
+  &:hover,
+  &:active {
     background-color: transparent;
+    border-color: transparent;
   }
+
+  &:focus {
+    border-color: transparent;
+    box-shadow: none;
+  }
+
 }
 
 moj-menu-toggle > button[aria-expanded="true"] svg {
