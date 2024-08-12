@@ -10,7 +10,14 @@
 }
 
 .moj-header--docs .moj-header__logo {
+  display: flex;
   margin-right: auto;
+}
+
+.moj-header--docs .moj-header__link {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .moj-header moj-toggle {

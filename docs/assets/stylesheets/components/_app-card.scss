@@ -1,0 +1,8 @@
+.app-card {
+  @include govuk-responsive-padding(6, "bottom")
+}
+
+.app-card + .app-card {
+  border-top: 1px solid $govuk-border-colour;
+  @include govuk-responsive-padding(6, "top");
+}

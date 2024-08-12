@@ -2,8 +2,9 @@
 layout: layouts/component.njk
 title: Badge
 eleventyNavigation:
-  key: Badge 
   parent: Components
+  key: Badge 
+  excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}
