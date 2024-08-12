@@ -7,17 +7,27 @@
 .moj-header--docs .moj-header__container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+  padding-bottom: 12px;
 }
 
 .moj-header--docs .moj-header__logo {
   display: flex;
   margin-right: auto;
+  align-items: center;
 }
 
 .moj-header--docs .moj-header__link {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  align-items: center;
+}
+
+.moj-header--docs .moj-header__logotype-crest {
+  top: -3px;
+  flex-shrink: 0;
 }
 
 .moj-header moj-toggle {

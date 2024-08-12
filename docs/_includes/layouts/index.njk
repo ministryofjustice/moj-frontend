@@ -3,14 +3,16 @@
 {% set components = collections.all | eleventyNavigation(eleventyNavigation.key) | sort(false, false, "key") %}
 
 {% block content %}
-    <div class="app-masthead app-content-container">
+    <div class="app-masthead">
+        <div class="app-layout__content">
             <h1 class="govuk-heading-xl">
               {{ title }}
             </h1>
             {{ content | safe }}
+        </div>
     </div>
 
-    <div class="app-content-container app-cards">
+    <div class="app-layout__content app-cards">
     {% for component in components %}
         <article class="app-card">
             <h2>{{ component.title }}</h2>
