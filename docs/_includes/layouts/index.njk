@@ -1,6 +1,6 @@
 {% extends "./base.njk" %}
 
-{% set components = collections.all | eleventyNavigation(eleventyNavigation.key) | sort(false, false, "key") %}
+{% set items = collections.all | eleventyNavigation(eleventyNavigation.key) | sort(false, false, "key") %}
 
 {% block content %}
     <div class="app-masthead">
@@ -13,11 +13,11 @@
     </div>
 
     <div class="app-layout__content app-cards">
-    {% for component in components %}
+    {% for item in items %}
         <article class="app-card">
-            <h2>{{ component.title }}</h2>
-            <p>{{ component.excerpt }}</p>
-            <p><a href="{{ component.url }}">View the '{{ component.title }}' component</a></p>
+            <h2>{{ item.title }}</h2>
+            <p>{{ item.excerpt }}</p>
+            <p><a href="{{ item.url }}">View the '{{ item.title }}' guidance</a></p>
         </article>
     {% endfor %}
     </div>

@@ -2,7 +2,7 @@
 layout: layouts/component.njk
 title: Organisation switcher
 eleventyNavigation:
-  key: Orgasnisation switcher
+  key: Organisation switcher
   parent: Components
 ---
 
