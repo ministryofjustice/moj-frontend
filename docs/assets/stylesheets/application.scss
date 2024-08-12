@@ -26,6 +26,7 @@ $govuk-assets-path: "../" !default;
 @import "./components/vertical-nav";
 @import "./components/page";
 @import "./components/menu-toggle";
+@import "./components/app-card";
 
 
 @view-transition {

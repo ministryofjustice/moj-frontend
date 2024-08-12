@@ -4,8 +4,9 @@ title: Add another
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/686
 eleventyNavigation:
-  key: Add another
   parent: Components
+  key: Add another
+  excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
 ---
 
 {% lastUpdated "add-another" %}

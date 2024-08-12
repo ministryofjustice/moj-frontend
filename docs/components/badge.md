@@ -4,8 +4,9 @@ title: Badge
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/687
 eleventyNavigation:
-  key: Badge 
   parent: Components
+  key: Badge 
+  excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}
