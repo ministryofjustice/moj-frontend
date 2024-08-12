@@ -1,12 +1,10 @@
-/** Causes child elements to fill vertical space, allowing `position:sticky` to work as intended */
+$app-breakpoint: 800px;
+
 .app-layout {
-    @include govuk-media-query(920px) {
+    @include govuk-media-query($app-breakpoint) {
       width: 100%;
-      max-width: 1220px;
-      margin-left: auto;
-      margin-right: auto;
       display: grid;
-      grid-template-columns: 25% 75%;
+      grid-template-columns: min(25%, 300px) auto;
     }
 }
 
@@ -15,8 +13,17 @@
 }
 
 .app-layout__page {
-  @include govuk-media-query(920px) {
+  @include govuk-media-query($app-breakpoint) {
     border-left: 1px solid $govuk-border-colour;
+  }
+}
+
+.app-layout__content {
+  max-width: 800px;
+  @include govuk-responsive-padding(6);
+  @include govuk-media-query($app-breakpoint) {
+    @include govuk-responsive-padding(9);
+
   }
 }
 
