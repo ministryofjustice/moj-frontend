@@ -1,8 +1,18 @@
 $moj-app-mid-grey: #949494;
 
 .app-vertical-nav {
-  /* padding-left: govuk-spacing(3); */
-  /* padding-right: govuk-spacing(3); */
+  position: relative;
+  padding-bottom: govuk-spacing(2);
+
+  &:after {
+    content: "";
+    position:absolute;
+    bottom: 0;
+    left: govuk-spacing(4);
+    right: govuk-spacing(4);
+    height: 1px;
+    background-color: $govuk-border-colour;
+  }
 }
 
 .app-vertical-nav__header {
@@ -28,7 +38,7 @@ $moj-app-mid-grey: #949494;
   width: 24px;
   height: 24px;
   top: 10px;
-  right: 8px;
+  right: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +48,7 @@ $moj-app-mid-grey: #949494;
   color: $govuk-link-colour;
   text-decoration: none;
   display: block;
-  padding: 10px 15px 7px 15px;
+  padding: 10px 16px 8px govuk-spacing(4);
   border-left: 4px solid transparent;
 
   &:visited {

@@ -1,0 +1,26 @@
+{%- macro verticalNavListItem(params) -%}
+    {% set active = (params.item.url==params.page.url or params.item.key==params.parent) %}
+    {% set sortOrder = params.sortChildrenBy if params.sortChildrenBy else "order" %}
+
+    <li class="app-vertical-nav__item {{ 'app-vertical-nav__item--active' if active }} {{ 'app-vertical-nav__item--with-children' if params.item.children }}">
+        <a class="app-vertical-nav__link" href="{{ params.item.url }}">{{ params.item.title }}</a>
+        {%- if params.item.children.length -%}
+            <div class="app-vertical-nav__indicator">
+                <svg width="15" height="9" viewBox="0 0 15 9" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.79289 5.98223L13.5858 0.189339L15 1.60355L7.79289 8.81066L0.585787 1.60355L2 0.189338L7.79289 5.98223Z" fill="currentColor"/>
+                </svg>
+            </div>
+
+            <ul class="app-vertical-nav__list" {% if not active %} hidden {% endif %}>
+                {%- for child in params.item.children | sort(false, false, sortOrder) -%}
+                    {{ verticalNavListItem({ 
+                        item: child, 
+                        page: params.page, 
+                        parent: params.parent 
+                    }) }}
+                {%- endfor -%}
+            </ul>
+        {%- endif -%}
+    </li>
+{%- endmacro -%}
+
