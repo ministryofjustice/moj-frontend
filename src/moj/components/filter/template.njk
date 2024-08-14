@@ -49,6 +49,7 @@
 
       {{ govukButton({
         text: params.submit.text if params.submit.text else 'Apply filters',
+        classes: params.submit.classes,
         attributes: params.submit.attributes
       }) }}
 
