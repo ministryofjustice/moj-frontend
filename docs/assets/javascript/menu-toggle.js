@@ -27,8 +27,9 @@ export default class MenuToggle extends HTMLElement {
       window.addEventListener('resize', (event) => { this.onresize(event) })
     }
 
-    /* ↓ Set initial state */
-    this.onresize();
+    this.windowWidth = window.innerWidth;
+
+    this.setState();
   }
 
   handleEvent(event) {
@@ -36,20 +37,29 @@ export default class MenuToggle extends HTMLElement {
   }
 
   onclick(event) {
-    this.toggle()
+    this.toggleMenu()
   }
 
   onresize(event) {
-    if( document.documentElement.clientWidth > this.breakpoint ) {
-      this.hideToggle()
-      this.showMenu()
-    } else {
-      this.showToggle()
-      this.hideMenu()
+    // Check if the window width has changed - prevents resize events triggered
+    // by scrolling on mobile browsers
+    if (window.innerWidth != this.windowWidth) {
+      this.windowWidth = window.innerWidth
+      this.setState()
     }
   }
 
-  toggle() {
+  setState() {
+    if( document.documentElement.clientWidth >= this.breakpoint ) {
+        this.hideToggle()
+        this.showMenu()
+      } else {
+        this.showToggle()
+        this.hideMenu()
+      }
+  }
+
+  toggleMenu() {
     if(this.$menu.hidden) {
       this.showMenu()
     } else {

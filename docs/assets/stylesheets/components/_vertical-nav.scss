@@ -2,7 +2,8 @@ $moj-app-mid-grey: #949494;
 
 .app-vertical-nav {
   position: relative;
-  padding-bottom: govuk-spacing(2);
+  @include govuk-responsive-padding(6, 'bottom');
+  @include govuk-responsive-margin(6, 'bottom');
 
   &:after {
     content: "";
@@ -19,6 +20,8 @@ $moj-app-mid-grey: #949494;
   @include govuk-font($size: 24);
   color: $govuk-secondary-text-colour;
   padding-left: 19px;
+  padding-right: 19px;
+  margin-bottom: govuk-spacing(2);
 }
 
 .app-vertical-nav__list {
@@ -37,18 +40,22 @@ $moj-app-mid-grey: #949494;
   position: absolute;
   width: 24px;
   height: 24px;
-  top: 10px;
+  top: 7px;
   right: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include govuk-media-query($from: tablet) {
+    top: 10px;
+  }
 }
 
 .app-vertical-nav__link {
   color: $govuk-link-colour;
   text-decoration: none;
   display: block;
-  padding: 10px 16px 8px govuk-spacing(4);
+  padding: 10px 38px 8px govuk-spacing(4);
   border-left: 4px solid transparent;
 
   &:visited {
@@ -72,6 +79,8 @@ $moj-app-mid-grey: #949494;
   &:focus-visible:hover {
     background-color: $moj-app-mid-grey;
   }
+
+
 }
 
 .app-vertical-nav__list .app-vertical-nav__list {

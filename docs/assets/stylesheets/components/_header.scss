@@ -23,6 +23,20 @@
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
+
+  &--organisation-name {
+    display: none;
+    @include govuk-media-query($from: tablet) {
+      display: initial;
+    }
+  }
+
+  &--organisation-initials {
+    font-weight: bold;
+    @include govuk-media-query($from: tablet) {
+      display: none;
+    }
+  }
 }
 
 .moj-header--docs .moj-header__logotype-crest {
