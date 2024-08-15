@@ -10,10 +10,11 @@ moj-menu-toggle > button {
   box-shadow: none;
   margin-bottom: 0;
   color: govuk-colour('white');
+  font-weight: bold;
 
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 
   &:hover,
   &:active {
