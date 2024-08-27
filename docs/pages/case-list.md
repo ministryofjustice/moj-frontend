@@ -35,7 +35,7 @@ Use the format first-name, last-name unless user research tells you to use a dif
     <img alt="Example of a row of a case list, showing the name of the detainee as a link in the first column." src="../../assets/images/case-list-02.png" width="100%">
 </div>
 
-You should display the [link](https://design-system.service.gov.uk/styles/typography/#links) in the first column, and use meaningful content such as the case number or name. Avoid using words like ‘View’.
+You should display the [link](https://design-system.service.gov.uk/styles/links/) in the first column, and use meaningful content such as the case number or name. Avoid using words like ‘View’.
 
 You should limit actions from the case list and allow users to perform more actions once they’re viewing details of a case.
 
@@ -65,7 +65,7 @@ Put this at the end of a row.
 
 ### If you want to let users filter the list
 
-Use the [filter](http://localhost:8080/components/filter/) component with the [filter a list](http://localhost:8080/patterns/filter-a-list/) pattern.
+Use the [filter](https://design-patterns.service.justice.gov.uk/components/filter/) component with the [filter a list](https://design-patterns.service.justice.gov.uk/patterns/filter-a-list/) pattern.
 
 ### If you want to let users search for a case
 
