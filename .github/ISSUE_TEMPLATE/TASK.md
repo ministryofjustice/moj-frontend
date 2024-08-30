@@ -1,3 +1,8 @@
+---
+name: Task
+about: Add a task for the MoJ Design System team
+---
+
 ## What
 Add info about what the task is.
 
