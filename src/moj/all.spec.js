@@ -1,7 +1,11 @@
+/**
+ * @jest-environment jsdom
+ */
 const { getByText, getByTestId } = require("@testing-library/dom");
 
+require('../../jest.setup.js')
 require("./helpers");
-require("./all");
+require("./all.js");
 
 describe("initAll", () => {
   test("initialises container", () => {

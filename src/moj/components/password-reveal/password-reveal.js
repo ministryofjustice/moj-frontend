@@ -1,4 +1,4 @@
-MOJFrontend.PasswordReveal = function(element) {
+PasswordReveal = function(element) {
   this.el = element;
   var $el = $(this.el)
 
@@ -14,13 +14,13 @@ MOJFrontend.PasswordReveal = function(element) {
   this.createButton();
 };
 
-MOJFrontend.PasswordReveal.prototype.createButton = function() {
+PasswordReveal.prototype.createButton = function() {
   this.button = $('<button type="button" class="govuk-button govuk-button--secondary moj-password-reveal__button">Show <span class="govuk-visually-hidden">password</span></button>');
   this.container.append(this.button);
   this.button.on('click', $.proxy(this, 'onButtonClick'));
 };
 
-MOJFrontend.PasswordReveal.prototype.onButtonClick = function() {
+PasswordReveal.prototype.onButtonClick = function() {
   if (this.el.type === 'password') {
     this.el.type = 'text';
     this.button.html('Hide <span class="govuk-visually-hidden">password</span>');
@@ -29,3 +29,5 @@ MOJFrontend.PasswordReveal.prototype.onButtonClick = function() {
     this.button.html('Show <span class="govuk-visually-hidden">password</span>');
   }
 };
+
+MOJFrontend.PasswordReveal = PasswordReveal
