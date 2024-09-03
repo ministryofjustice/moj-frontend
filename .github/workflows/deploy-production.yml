@@ -1,5 +1,5 @@
 name: Deploy main to production
-on: workflow_dispatch
+on:
   pull_request:
     branches: [ main ]
   push:
@@ -20,7 +20,6 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
-      - name: Checkout
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
