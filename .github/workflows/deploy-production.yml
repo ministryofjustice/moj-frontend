@@ -1,9 +1,9 @@
 name: Deploy main to production
-on:
-  pull_request:
-    branches: [ main ]
-  push:
-    branches: [ main ]
+on: workflow_dispatch
+  # pull_request:
+  #   branches: [ main ]
+  # push:
+  #   branches: [ main ]
 
 env:
   GITHUB_DEPLOY_KEY: ${{ secrets.GH_DEPLOY_KEY }}
@@ -19,6 +19,8 @@ jobs:
       contents: read
       pull-requests: write
     steps:
+      - uses: actions/checkout@v4
+      - name: Checkout
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
@@ -40,7 +42,7 @@ jobs:
           kubectl config set-credentials deploy-user --token=${KUBE_TOKEN}
           kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${KUBE_NAMESPACE}
           kubectl config use-context ${KUBE_CLUSTER}
-          kubectl -n ${KUBE_NAMESPACE} apply -f kubernetes-deploy-staging.yaml
+          kubectl -n ${KUBE_NAMESPACE} apply -f kubernetes-deploy-production.yaml
         env:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
