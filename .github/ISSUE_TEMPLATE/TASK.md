@@ -10,7 +10,12 @@ Add info about what the task is.
 Add info about why this is a task to do.
 
 ## Who needs to be involved
-<!-- Remove as necessary -->
 - Interaction Designer
 - Content Designer
 - Developer
+- Delivery Manager
+- Design System Lead
+
+## Tasks
+
+- [ ] Add a task here
