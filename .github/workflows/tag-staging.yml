@@ -31,7 +31,7 @@ jobs:
       - uses: aws-actions/amazon-ecr-login@v2
         id: login-ecr
       - run: |
-          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker build --target=staging -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
           cat kubernetes-deploy-staging.tpl | envsubst > kubernetes-deploy-staging.yaml
         env:
