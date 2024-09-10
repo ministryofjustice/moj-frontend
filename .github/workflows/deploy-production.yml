@@ -12,6 +12,76 @@ env:
   KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 'lts/*'
+    - run: npm ci
+    - run: npm run build:package
+    - uses: actions/upload-artifact@v4
+      with:
+        name: mojds-package
+        path: package
+    - run: npm run build:dist
+    - run: npm run build:docs
+    - uses: actions/upload-artifact@v4
+      with:
+        name: mojds-dist
+        path: dist
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x, 18.x, 20.x]
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/download-artifact@v4
+      with:
+        name: mojds-package
+        path: package
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Test Sass can be compiled
+      run: npm run test:sass
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: [build, test]
+    if: github.event_name == 'push'
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        persist-credentials: false
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - uses: actions/download-artifact@v4
+      with:
+        name: mojds-package
+        path: package
+    - uses: actions/download-artifact@v4
+      with:
+        name: mojds-dist
+        path: dist
+    - run: npm ci
+    - name: Publish to NPM
+      run: npm run ci:release
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
   push-to-production:
     runs-on: ubuntu-latest
     permissions:
