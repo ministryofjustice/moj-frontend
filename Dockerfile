@@ -44,6 +44,5 @@ COPY --from=staging-build /app/public /usr/share/nginx/html
 
 FROM nginxinc/nginx-unprivileged:alpine AS production
 EXPOSE 3000
-COPY docker/htpasswd /etc/nginx/.htpasswd
 COPY docker/nginx-production.conf /etc/nginx/conf.d/default.conf
 COPY --from=production-build /app/public /usr/share/nginx/html
