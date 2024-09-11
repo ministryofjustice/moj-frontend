@@ -14,7 +14,7 @@
     "ci:dryrun": "HUSKY=0 CI=true semantic-release --dry-run",
     "start": "npm-run-all --parallel watch:*",
     "test": "npm-run-all --parallel test:*",
-    "test:sass": "npm install node-sass && node-sass -q gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
+    "test:sass": "npm install sass && sass -q -I . gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
     "test:docs": "npm run build:docs",
     "watch:11ty": "ENV='dev' eleventy --input=./docs --output=public --serve",
     "watch:package": "gulp watch:dev"
@@ -50,7 +50,7 @@
     "moment": "^2.29.4",
     "nunjucks": "^3.2.3",
     "require-dir": "^1.2.0",
-    "sass": "^1.50.1"
+    "sass": "^1.77.8"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
