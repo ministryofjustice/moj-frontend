@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/ministryofjustice/moj-frontend/compare/v2.2.0...v2.2.1) (2024-09-17)
+
+
+### Reverts
+
+* Revert "build(deployment): remove default cloudplatform site (#741)" (#743) ([814b20c](https://github.com/ministryofjustice/moj-frontend/commit/814b20cc1a909956848a350aa526e8d32806f027)), closes [#741](https://github.com/ministryofjustice/moj-frontend/issues/741) [#743](https://github.com/ministryofjustice/moj-frontend/issues/743)
+
 # [2.2.0](https://github.com/ministryofjustice/moj-frontend/compare/v2.1.3...v2.2.0) (2024-07-31)
 
 
