@@ -85,6 +85,8 @@ jobs:
 
   push-to-production:
     runs-on: ubuntu-latest
+    needs: [build, test]
+    if: github.event_name == 'push'
     permissions:
       id-token: write
       contents: read
