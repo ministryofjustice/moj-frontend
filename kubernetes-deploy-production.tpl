@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: moj-frontend-${BRANCH}
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: moj-frontend-${BRANCH}
@@ -68,3 +68,14 @@ spec:
             name: moj-frontend-service-${BRANCH}
             port:
               number: 3000
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: moj-frontend-disruption-policy
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: moj-frontend-${BRANCH}
+
