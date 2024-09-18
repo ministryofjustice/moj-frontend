@@ -43,21 +43,9 @@ spec:
   ingressClassName: default
   tls:
   - hosts:
-    - ${KUBE_NAMESPACE}-${BRANCH}.apps.live.cloud-platform.service.justice.gov.uk
-  - hosts:
     - design-patterns.service.justice.gov.uk
     secretName: moj-frontend-prod-secret
   rules:
-  - host: ${KUBE_NAMESPACE}-${BRANCH}.apps.live.cloud-platform.service.justice.gov.uk
-    http:
-      paths:
-      - path: /
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: moj-frontend-service-${BRANCH}
-            port:
-              number: 3000
   - host: design-patterns.service.justice.gov.uk
     http:
       paths:
