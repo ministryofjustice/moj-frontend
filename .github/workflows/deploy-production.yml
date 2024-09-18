@@ -1,4 +1,4 @@
-name: Deploy guidance site
+name: Deploy guidance site to production
 on:
   workflow_dispatch:
   pull_request:
