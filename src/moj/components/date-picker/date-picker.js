@@ -88,9 +88,13 @@ Datepicker.prototype.init = function () {
   if (!this.$input) {
     return;
   }
+  if (this.$module.dataset.initialized) {
+    return;
+  }
 
   this.setOptions();
   this.initControls();
+  this.$module.setAttribute('data-initialized', 'true')
 };
 
 Datepicker.prototype.initControls = function () {
