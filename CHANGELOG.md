@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/ministryofjustice/moj-frontend/compare/v2.2.1...v2.2.2) (2024-09-19)
+
+
+### Bug Fixes
+
+* **datepicker:** prevent double initialization on datepicker components ([#752](https://github.com/ministryofjustice/moj-frontend/issues/752)) ([7f84baf](https://github.com/ministryofjustice/moj-frontend/commit/7f84baf1644727f6740f94a05a54ec45c87d4452)), closes [#751](https://github.com/ministryofjustice/moj-frontend/issues/751)
+
 ## [2.2.1](https://github.com/ministryofjustice/moj-frontend/compare/v2.2.0...v2.2.1) (2024-09-17)
 
 
