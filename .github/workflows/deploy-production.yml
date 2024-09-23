@@ -50,6 +50,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Run JS tests
       run: npm run test:js
+    - name: Test that sass can be compiled
+      run: npm run test:sass
 
   deploy:
     runs-on: ubuntu-latest
