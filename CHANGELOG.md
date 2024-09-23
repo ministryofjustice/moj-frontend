@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/ministryofjustice/moj-frontend/compare/v2.2.2...v2.2.3) (2024-09-23)
+
+
+### Bug Fixes
+
+* **datepicker:** fix issues with leadingZeros config option ([#754](https://github.com/ministryofjustice/moj-frontend/issues/754)) ([5224918](https://github.com/ministryofjustice/moj-frontend/commit/5224918b6c95b103dac3b2e7d5dc8d57cb6fcc9f)), closes [#753](https://github.com/ministryofjustice/moj-frontend/issues/753)
+
 ## [2.2.2](https://github.com/ministryofjustice/moj-frontend/compare/v2.2.1...v2.2.2) (2024-09-19)
 
 
