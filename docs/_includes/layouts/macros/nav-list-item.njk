@@ -3,7 +3,7 @@
     {% set open = (active or params.item.key==params.parent) %}
     {% set sortOrder = params.sortChildrenBy if params.sortChildrenBy else "order" %}
 
-    <li class="app-vertical-nav__item {{ 'app-vertical-nav__item--active' if active }} {{ 'app-vertical-nav__item--with-children' if params.item.children }}">
+    <li class="app-vertical-nav__item {{ 'app-vertical-nav__item--active' if active }} {{ 'app-vertical-nav__item--open' if open }} {{ 'app-vertical-nav__item--with-children' if params.item.children }}">
         <a class="app-vertical-nav__link" href="{{ params.item.url }}">{{ params.item.title }}
         {%- if params.item.children.length -%}
             <div class="app-vertical-nav__indicator">
