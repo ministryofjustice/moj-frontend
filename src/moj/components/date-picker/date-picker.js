@@ -411,9 +411,11 @@ Datepicker.prototype.setLeadingZeros = function () {
   if (typeof this.config.leadingZeros !== "boolean") {
     if (this.config.leadingZeros.toLowerCase() === "true") {
       this.config.leadingZeros = true;
+      return;
     }
     if (this.config.leadingZeros.toLowerCase() === "false") {
       this.config.leadingZeros = false;
+      return;
     }
   }
 };
