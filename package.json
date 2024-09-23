@@ -6,7 +6,7 @@
     "/package"
   ],
   "scripts": {
-    "prepare": "husky",
+    "prepare": "husky || true",
     "build:docs": "gulp build:docs && eleventy --input=./docs --output=public",
     "build:dist": "gulp build:dist",
     "build:package": "gulp build:package",
@@ -15,8 +15,8 @@
     "start": "npm-run-all --parallel watch:*",
     "test": "npm-run-all --parallel test:*",
     "test:docs": "npm run build:docs",
-    "test:js": "npm install && jest src/",
-    "test:sass": "npm install && sass -q -I . gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
+    "test:js": "jest src/",
+    "test:sass": "sass -q -I . gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
     "watch:11ty": "ENV='dev' eleventy --input=./docs --output=public --serve",
     "watch:package": "gulp watch:dev"
   },
