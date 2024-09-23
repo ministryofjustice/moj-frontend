@@ -14,9 +14,9 @@
     "ci:dryrun": "HUSKY=0 CI=true semantic-release --dry-run",
     "start": "npm-run-all --parallel watch:*",
     "test": "npm-run-all --parallel test:*",
-    "test:sass": "npm install sass && sass -q -I . gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
-    "test:js": "jest",
     "test:docs": "npm run build:docs",
+    "test:js": "jest src/**/*.spec.js",
+    "test:sass": "npm install sass && sass -q -I . gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
     "watch:11ty": "ENV='dev' eleventy --input=./docs --output=public --serve",
     "watch:package": "gulp watch:dev"
   },
