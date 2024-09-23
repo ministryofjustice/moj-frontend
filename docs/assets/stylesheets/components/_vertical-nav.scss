@@ -79,8 +79,39 @@ $moj-app-mid-grey: #949494;
   &:focus-visible:hover {
     background-color: $moj-app-mid-grey;
   }
+}
 
+.app-vertical-nav__toggle {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  padding: 10px 38px 8px govuk-spacing(4);
+  border-left: 4px solid transparent;
+  @include govuk-font($size: 19);
+  color: $govuk-link-colour;
+  text-decoration: none;
+  text-align: left;
 
+  &:visited {
+    color: $govuk-link-colour;
+  }
+
+  &:hover {
+    background-color: $moj-app-mid-grey;
+    color: $govuk-text-colour;
+  }
+
+  &:focus-visible {
+    background-color: $govuk-focus-colour;
+    color: $govuk-text-colour;
+    outline: none;
+    border-color: $govuk-text-colour;
+  }
+
+  &:focus-visible:hover {
+    background-color: $moj-app-mid-grey;
+  }
 }
 
 .app-vertical-nav__list .app-vertical-nav__list {
