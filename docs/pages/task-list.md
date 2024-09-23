@@ -2,6 +2,9 @@
 layout: layouts/pages.njk
 title: Task list pages
 redirect_from: docs/patterns/task-list.md
+eleventyNavigation:
+  key: Task list page
+  parent: Archive
 ---
 
 {% banner "This page is archived" %}

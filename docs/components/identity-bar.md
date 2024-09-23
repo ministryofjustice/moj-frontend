@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Identity bar
+eleventyNavigation:
+  key: Identity bar
+  parent: Components
 ---
 
 {% lastUpdated "identity-bar" %}

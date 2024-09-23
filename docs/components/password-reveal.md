@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Password reveal
+eleventyNavigation:
+  key: Password reveal
+  parent: Components
 ---
 
 {% lastUpdated "password-reveal" %}

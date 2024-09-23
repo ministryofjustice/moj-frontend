@@ -1,0 +1,8 @@
+{% macro card(params) %}
+<article class="app-card">
+    <h2 class="govuk-heading-l">{{ params.title }}</h2>
+    <div class="govuk-body">
+        {{ caller() }}
+    </div>
+</article>
+{% endmacro %}

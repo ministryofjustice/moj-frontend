@@ -16,9 +16,19 @@ $govuk-assets-path: "../" !default;
 @import "./components/back-to-top";
 @import "./components/copy-button";
 @import "./components/example";
-@import "./components/flex-container";
-@import "./components/markdown";
+@import "./components/layout";
+@import "./components/prose";
 @import "./components/masthead";
 @import "./components/panel";
 @import "./components/tabs";
 @import "./components/header";
+@import "./components/footer";
+@import "./components/vertical-nav";
+@import "./components/page";
+@import "./components/menu-toggle";
+@import "./components/app-card";
+
+
+@view-transition {
+  navigation: auto;
+}

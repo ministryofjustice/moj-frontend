@@ -1,6 +1,9 @@
 ---
 layout: layouts/patterns.njk
 title: Add to a list
+eleventyNavigation:
+  key: Add to a list
+  parent: Patterns
 ---
 
 {% banner "Other departments have a similar patterns" %}

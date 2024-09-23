@@ -5,8 +5,6 @@
 $brand-colour: #220051;
 
 .app-masthead {
-  padding-top: govuk-spacing(7);
-  padding-bottom: govuk-spacing(7);
   background-color: $brand-colour;
   color: govuk-colour("white");
 }
@@ -25,11 +23,8 @@ $brand-colour: #220051;
   background-color: govuk-colour("mid-grey");
 }
 
-@media (min-width: map-get($govuk-breakpoints, tablet)) {
-  .app-masthead__container {
-    background-image: url("/assets/images/moj-people.svg");
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    background-size: 33% auto;
-  }
+.app-masthead .govuk-caption-xl {
+  color: govuk-colour('white');
 }
+
+

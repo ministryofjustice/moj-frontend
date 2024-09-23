@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Organisation switcher
+eleventyNavigation:
+  key: Organisation switcher
+  parent: Components
 ---
 
 {% lastUpdated "organisation-switcher" %}

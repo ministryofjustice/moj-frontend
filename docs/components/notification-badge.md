@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Notification badge
+eleventyNavigation:
+  key: Notifictation badge
+  parent: Components
 ---
 
 {% banner "HMRC Design Patterns has a similar component" %}

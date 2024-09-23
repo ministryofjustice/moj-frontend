@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Multi select
+eleventyNavigation:
+  key: Multi select
+  parent: Components
 ---
 
 {% lastUpdated "multi-select" %}

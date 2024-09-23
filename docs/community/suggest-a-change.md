@@ -1,6 +1,9 @@
 ---
 title: Suggest a Change
 layout: layouts/community.njk
+eleventyNavigation:
+  key: Suggest a change
+  parent: Contribute
 ---
 
 To help improve the MoJ Design System, you can suggest changes to components and patterns.

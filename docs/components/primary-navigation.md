@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Primary navigation
+eleventyNavigation:
+  key: Primary navigation
+  parent: Components
 ---
 
 {% lastUpdated "primary-navigation" %}

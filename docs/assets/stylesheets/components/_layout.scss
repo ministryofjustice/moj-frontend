@@ -1,0 +1,29 @@
+$app-breakpoint: 800px;
+
+.app-layout {
+    @include govuk-media-query($app-breakpoint) {
+      width: 100%;
+      display: grid;
+      grid-template-columns: min(25%, 300px) auto;
+    }
+}
+
+.app-layout__sidebar {
+  @include govuk-responsive-padding(6, "bottom");
+}
+
+.app-layout__page {
+  @include govuk-media-query($app-breakpoint) {
+    border-left: 1px solid $govuk-border-colour;
+  }
+}
+
+.app-layout__content {
+  max-width: 840px;
+  @include govuk-responsive-padding(6);
+  @include govuk-media-query($app-breakpoint) {
+    @include govuk-responsive-padding(9);
+
+  }
+}
+

@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Multi file upload
+eleventyNavigation:
+  key: Multi file upload
+  parent: Components
 ---
 
 {% lastUpdated "multi-file-upload" %}
