@@ -44,16 +44,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/download-artifact@v4
-      with:
-        name: mojds-package
-        path: package
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Test Sass can be compiled
-      run: npm run test:sass
+    - name: Run JS tests
+      run: npm run test:js
 
   deploy:
     runs-on: ubuntu-latest
