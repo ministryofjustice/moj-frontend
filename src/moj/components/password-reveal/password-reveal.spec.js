@@ -1,12 +1,6 @@
-/**
- * @jest-environment jsdom
- */
 const { getByDisplayValue, getByText } = require("@testing-library/dom");
-const { axe, toHaveNoViolations } = require('jest-axe')
-expect.extend(toHaveNoViolations)
+const { axe } = require("jest-axe");
 
-
-require('../../../../jest.setup.js')
 require("./password-reveal.js");
 
 describe("Password reveal", () => {
@@ -42,11 +36,11 @@ describe("Password reveal", () => {
     expect(button).toHaveTextContent("Show");
   });
 
-  test('accessibility', async () => {
+  test("accessibility", async () => {
     const button = getByText(container, "Show");
 
-    expect(await axe(document.body)).toHaveNoViolations()
+    expect(await axe(document.body)).toHaveNoViolations();
     button.click();
-    expect(await axe(document.body)).toHaveNoViolations()
-  })
+    expect(await axe(document.body)).toHaveNoViolations();
+  });
 });

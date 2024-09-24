@@ -1,9 +1,5 @@
-/**
- * @jest-environment jsdom
- */
 const { getByText, getByTestId } = require("@testing-library/dom");
 
-require('../../jest.setup.js')
 require("./helpers");
 require("./all.js");
 
@@ -20,7 +16,7 @@ describe("initAll", () => {
     new MOJFrontend.initAll({ scope: container });
 
     expect(MOJFrontend.PasswordReveal).toHaveBeenCalledWith(
-      getByTestId(container, "password-reveal")
+      getByTestId(container, "password-reveal"),
     );
   });
 });
