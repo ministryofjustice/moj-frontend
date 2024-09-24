@@ -7,6 +7,7 @@ on:
     branches: [ main ]
 
 env:
+  HUSKY: 0
   GITHUB_DEPLOY_KEY: ${{ secrets.GH_DEPLOY_KEY }}
   ECR_NAME: ${{ secrets.ECR_NAME }}
   KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
@@ -44,15 +45,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/download-artifact@v4
-      with:
-        name: mojds-package
-        path: package
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Test Sass can be compiled
+    - name: npm install
+      run: npm install
+    - name: Run JS tests
+      run: npm run test:js
+    - uses: actions/download-artifact@v4
+      with:
+        name: mojds-package
+        path: package
+    - name: Test that sass can be compiled
       run: npm run test:sass
 
   deploy:

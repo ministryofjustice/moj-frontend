@@ -6,7 +6,7 @@
     "/package"
   ],
   "scripts": {
-    "prepare": "husky",
+    "prepare": "node .husky/install.mjs",
     "build:docs": "gulp build:docs && eleventy --input=./docs --output=public",
     "build:dist": "gulp build:dist",
     "build:package": "gulp build:package",
@@ -14,8 +14,9 @@
     "ci:dryrun": "HUSKY=0 CI=true semantic-release --dry-run",
     "start": "npm-run-all --parallel watch:*",
     "test": "npm-run-all --parallel test:*",
-    "test:sass": "npm install sass && sass -q -I . gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
     "test:docs": "npm run build:docs",
+    "test:js": "jest src/",
+    "test:sass": "sass -q -I . gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
     "watch:11ty": "ENV='dev' eleventy --input=./docs --output=public --serve",
     "watch:package": "gulp watch:dev"
   },
@@ -50,7 +51,7 @@
     "moment": "^2.29.4",
     "nunjucks": "^3.2.3",
     "require-dir": "^1.2.0",
-    "sass": "^1.77.8"
+    "sass": "^1.79.3"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
@@ -61,6 +62,8 @@
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^11.0.0",
+    "@testing-library/dom": "^8.19.0",
+    "@testing-library/jest-dom": "^5.16.5",
     "autoprefixer": "^10.4.0",
     "commitizen": "^4.2.5",
     "copy-webpack-plugin": "^12.0.0",
@@ -77,6 +80,9 @@
     "imagemin-mozjpeg": "^10.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^11.0.1",
+    "jest": "^29.2.2",
+    "jest-axe": "^9.0.0",
+    "jest-environment-jsdom": "^29.7.0",
     "js-beautify": "^1.13.13",
     "markdown-it-anchor": "^8.0.0",
     "mini-css-extract-plugin": "^2.0.0",

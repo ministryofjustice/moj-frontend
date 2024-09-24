@@ -8,7 +8,7 @@ gulp.task('build:javascript', () => {
       'src/moj/namespace.js',
       'src/moj/helpers.js',
       'src/moj/all.js',
-      'src/moj/components/**/*.js'
+      'src/moj/components/**/!(*.spec).js'
     ])
     .pipe(concat('all.js'))
     .pipe(umd({
@@ -29,7 +29,7 @@ gulp.task('build:javascript-with-jquery', () => {
       'src/moj/namespace.js',
       'src/moj/helpers.js',
       'src/moj/all.js',
-      'src/moj/components/**/*.js',
+      'src/moj/components/**/!(*.spec).js',
     ])
     .pipe(concat('all.jquery.min.js'))
     .pipe(umd({
