@@ -203,6 +203,7 @@ Datepicker.prototype.createDialog = function () {
   $dialog.setAttribute("aria-modal", "true");
   $dialog.setAttribute("aria-labelledby", titleId);
   $dialog.innerHTML = this.dialogTemplate(titleId);
+  $dialog.hidden = true;
 
   return $dialog;
 };
@@ -657,6 +658,7 @@ Datepicker.prototype.toggleDialog = function (event) {
 };
 
 Datepicker.prototype.openDialog = function () {
+  this.$dialog.hidden = false;
   this.$dialog.classList.add("moj-datepicker__dialog--open");
   this.$calendarButton.setAttribute("aria-expanded", "true");
 
@@ -677,6 +679,7 @@ Datepicker.prototype.openDialog = function () {
 };
 
 Datepicker.prototype.closeDialog = function () {
+  this.$dialog.hidden = true;
   this.$dialog.classList.remove("moj-datepicker__dialog--open");
   this.$calendarButton.setAttribute("aria-expanded", "false");
   this.$calendarButton.focus();
