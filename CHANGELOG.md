@@ -1,3 +1,10 @@
+## [2.2.4](https://github.com/ministryofjustice/moj-frontend/compare/v2.2.3...v2.2.4) (2024-09-25)
+
+
+### Bug Fixes
+
+* **all:** fix compiling of all.js ([#758](https://github.com/ministryofjustice/moj-frontend/issues/758)) ([5ee079b](https://github.com/ministryofjustice/moj-frontend/commit/5ee079bc4a721fcf596ed2c25a28ed89e0a182fe))
+
 ## [2.2.3](https://github.com/ministryofjustice/moj-frontend/compare/v2.2.2...v2.2.3) (2024-09-23)
 
 
