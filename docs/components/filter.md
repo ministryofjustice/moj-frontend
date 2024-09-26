@@ -5,7 +5,7 @@ title: Filter
 
 {% banner "A similar component exists" %}
 
-The Filter component is being discussed in the [GOV.UK Design System backlog](https://github.com/alphagov/govuk-design-system-backlog/issues/133).
+There's a [Filter component discussion in the GOV.UK Design System backlog](https://github.com/alphagov/govuk-design-system-backlog/issues/133).
 {% endbanner %}
 
 {% lastUpdated "filter" %}
