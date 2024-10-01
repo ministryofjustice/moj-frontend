@@ -94,7 +94,7 @@ Datepicker.prototype.init = function () {
 
   this.setOptions();
   this.initControls();
-  this.$module.setAttribute('data-initialized', 'true')
+  this.$module.setAttribute("data-initialized", "true");
 };
 
 Datepicker.prototype.initControls = function () {
@@ -203,6 +203,7 @@ Datepicker.prototype.createDialog = function () {
   $dialog.setAttribute("aria-modal", "true");
   $dialog.setAttribute("aria-labelledby", titleId);
   $dialog.innerHTML = this.dialogTemplate(titleId);
+  $dialog.hidden = true;
 
   return $dialog;
 };
@@ -340,20 +341,14 @@ Datepicker.prototype.setOptions = function () {
 
 Datepicker.prototype.setMinAndMaxDatesOnCalendar = function () {
   if (this.config.minDate) {
-    this.minDate = this.formattedDateFromString(
-      this.config.minDate,
-      null,
-    );
+    this.minDate = this.formattedDateFromString(this.config.minDate, null);
     if (this.minDate && this.currentDate < this.minDate) {
       this.currentDate = this.minDate;
     }
   }
 
   if (this.config.maxDate) {
-    this.maxDate = this.formattedDateFromString(
-      this.config.maxDate,
-      null,
-    );
+    this.maxDate = this.formattedDateFromString(this.config.maxDate, null);
     if (this.maxDate && this.currentDate > this.maxDate) {
       this.currentDate = this.maxDate;
     }
@@ -483,7 +478,7 @@ Datepicker.prototype.formattedDateFromString = function (
   const month = match[3];
   const year = match[4];
 
-  formattedDate = new Date(`${month}-${day}-${year}`);
+  formattedDate = new Date(`${year}-${month}-${day}`);
   if (formattedDate instanceof Date && !isNaN(formattedDate)) {
     return formattedDate;
   }
@@ -571,7 +566,6 @@ Datepicker.prototype.updateCalendar = function () {
 
 Datepicker.prototype.setCurrentDate = function (focus = true) {
   const { currentDate } = this;
-
   this.calendarDays.forEach((calendarDay) => {
     calendarDay.button.classList.add("moj-datepicker__button");
     calendarDay.button.classList.add("moj-datepicker__calendar-day");
@@ -599,10 +593,10 @@ Datepicker.prototype.setCurrentDate = function (focus = true) {
       calendarDayDate.getTime() === this.inputDate.getTime()
     ) {
       calendarDay.button.classList.add(this.currentDayButtonClass);
-      calendarDay.button.setAttribute("aria-selected", true);
+      calendarDay.button.setAttribute("aria-current", "date");
     } else {
       calendarDay.button.classList.remove(this.currentDayButtonClass);
-      calendarDay.button.removeAttribute("aria-selected");
+      calendarDay.button.removeAttribute("aria-current");
     }
 
     if (calendarDayDate.getTime() === today.getTime()) {
@@ -657,6 +651,7 @@ Datepicker.prototype.toggleDialog = function (event) {
 };
 
 Datepicker.prototype.openDialog = function () {
+  this.$dialog.hidden = false;
   this.$dialog.classList.add("moj-datepicker__dialog--open");
   this.$calendarButton.setAttribute("aria-expanded", "true");
 
@@ -677,6 +672,7 @@ Datepicker.prototype.openDialog = function () {
 };
 
 Datepicker.prototype.closeDialog = function () {
+  this.$dialog.hidden = true;
   this.$dialog.classList.remove("moj-datepicker__dialog--open");
   this.$calendarButton.setAttribute("aria-expanded", "false");
   this.$calendarButton.focus();
@@ -724,13 +720,31 @@ Datepicker.prototype.focusPreviousWeek = function () {
 
 Datepicker.prototype.focusFirstDayOfWeek = function () {
   const date = new Date(this.currentDate);
-  date.setDate(date.getDate() - date.getDay());
+  const firstDayOfWeekIndex = this.config.weekStartDay == "sunday" ? 0 : 1;
+  const dayOfWeek = date.getDay();
+  const diff =
+    dayOfWeek >= firstDayOfWeekIndex
+      ? dayOfWeek - firstDayOfWeekIndex
+      : 6 - dayOfWeek;
+
+  date.setDate(date.getDate() - diff);
+  date.setHours(0, 0, 0, 0);
+
   this.goToDate(date);
 };
 
 Datepicker.prototype.focusLastDayOfWeek = function () {
   const date = new Date(this.currentDate);
-  date.setDate(date.getDate() - date.getDay() + 6);
+  const lastDayOfWeekIndex = this.config.weekStartDay == "sunday" ? 6 : 0;
+  const dayOfWeek = date.getDay();
+  const diff =
+    dayOfWeek <= lastDayOfWeekIndex
+      ? lastDayOfWeekIndex - dayOfWeek
+      : 7 - dayOfWeek;
+
+  date.setDate(date.getDate() + diff);
+  date.setHours(0, 0, 0, 0);
+
   this.goToDate(date);
 };
 
