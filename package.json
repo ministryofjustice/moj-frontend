@@ -39,7 +39,7 @@
   "dependencies": {
     "@11ty/eleventy": "^2.0.0",
     "clipboard": "^2.0.8",
-    "del": "^7.0.0",
+    "del": "^8.0.0",
     "esbuild": "^0.23.0",
     "govuk-frontend": "^5.4.1",
     "gulp": "^4.0.2",
