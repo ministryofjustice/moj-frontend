@@ -1,155 +1,233 @@
-MOJFrontend.ButtonMenu = function(params) {
-	this.container = $(params.container);
-	this.menu = this.container.find('.moj-button-menu__wrapper');
-	if(params.menuClasses) {
-		this.menu.addClass(params.menuClasses);
-	}
-	this.menu.attr('role', 'menu');
-	this.mq = params.mq;
-	this.buttonText = params.buttonText;
-	this.buttonClasses = params.buttonClasses || '';
-	this.keys = { esc: 27, up: 38, down: 40, tab: 9 };
-	this.menu.on('keydown', '[role=menuitem]', $.proxy(this, 'onButtonKeydown'));
-	this.createToggleButton();
-	this.setupResponsiveChecks();
-	$(document).on('click', $.proxy(this, 'onDocumentClick'));
-};
-
-MOJFrontend.ButtonMenu.prototype.onDocumentClick = function(e) {
-	if(!$.contains(this.container[0], e.target)) {
-	  this.hideMenu();
+MOJFrontend.ButtonMenu = function($module, config) {
+  if(!$module) {
+    return this
   }
+
+  const schema = Object.freeze({
+    properties: {
+      buttonText: { type: "string" },
+      buttonClasses: { type: "string" },
+      alignMenu: { type: "string" },
+    },
+  });
+
+  const defaults = {
+    buttonText: "Actions",
+    alignMenu: "left"
+  }
+
+  // data attributes override JS config, which overrides defaults
+  this.config = this.mergeConfigs(
+    defaults,
+    config,
+    this.parseDataset(schema, $module.dataset),
+  );
+
+  this.$module = $module;
+}
+
+MOJFrontend.ButtonMenu.prototype.init = function() {
+  if (this.$module.childNodes.length == 1) {
+
+  }
+  if (this.$module.childNodes.length > 1) {
+    this.initMenu()
+  }
+}
+
+MOJFrontend.ButtonMenu.prototype.initMenu = function () {
+  this.$menu = document.createElement("div")
+  this.$menu.classList.add("moj-button-menu__wrapper")
+  if(this.config.alignMenu == "right") {
+    this.$menu.classList.add("moj-button-menu__wrapper--right")
+  }
+  this.$menu.setAttribute("role", "menu")
+  this.$menu.hidden = true
+
+  this.$module.appendChild(this.$menu)
+  while(this.$module.firstChild !== this.$menu) {
+    this.$menu.appendChild(this.$module.firstChild)
+  }
+
+  const toggleTemplate = `
+    <button type="button" class="govuk-button moj-button-menu__toggle-button ${this.config.buttonClasses || ''}" aria-haspopup="true" aria-expanded="false">
+       ${this.config.buttonText}
+       <svg width="11" height="5" viewBox="0 0 11 5"  xmlns="http://www.w3.org/2000/svg">
+         <path d="M5.5 0L11 5L0 5L5.5 0Z" fill="currentColor"/>
+       </svg>
+    </button>`
+
+  this.$module.insertAdjacentHTML('afterbegin', toggleTemplate)
+  this.$menuToggle = this.$module.querySelector(":scope > button")
+
+  this.$menuToggle.addEventListener('click', (event) => {
+    this.toggleMenu(event)
+  })
+
+  this.$module.addEventListener('keyup', (event) => {
+    this.handleKeyUp(event)
+  })
+
+  this.$module.addEventListener('keydown', (event) => {
+    this.handleKeyDown(event)
+  })
+
+  this.items = this.$menu.children
+
+  Array.from(this.items).forEach((item) => {
+    item.setAttribute("role", "menuitem")
+    item.setAttribute("tabindex",-1)
+    if (item.tagName == "BUTTON") {
+      item.setAttribute("type", "button")
+    }
+    item.classList.forEach((className) => {
+      if(className.match(/govuk-button/)) {
+        item.classList.remove(className)
+      }
+    })
+  })
+}
+
+MOJFrontend.ButtonMenu.prototype.isOpen = function () {
+  return this.$menuToggle.getAttribute("aria-expanded") === "true"
+}
+
+MOJFrontend.ButtonMenu.prototype.toggleMenu = function (event) {
+  event.preventDefault()
+  if(this.isOpen()) {
+    this.closeMenu()
+  } else {
+    this.openMenu()
+  }
+}
+
+MOJFrontend.ButtonMenu.prototype.openMenu = function(focusIndex = 0) {
+    this.$menu.hidden = false;
+    this.$menuToggle.setAttribute("aria-expanded", "true")
+    this.focusItem(focusIndex)
+}
+
+MOJFrontend.ButtonMenu.prototype.closeMenu = function (focusElement=this.$menuToggle) {
+    this.$menu.hidden = true;
+    this.$menuToggle.setAttribute("aria-expanded", "false")
+    if(focusElement) {
+      focusElement.focus()
+    }
+}
+
+MOJFrontend.ButtonMenu.prototype.focusItem = function (index) {
+  if(index >= this.items.length ) index = 0;
+  if(index < 0) index = this.items.length - 1;
+
+  this.items.item(index)?.focus()
+}
+
+MOJFrontend.ButtonMenu.prototype.currentFocusIndex = function () {
+  const activeElement = document.activeElement
+  const menuItems = Array.from(this.items)
+
+  return  menuItems.indexOf(activeElement)
+}
+
+
+MOJFrontend.ButtonMenu.prototype.handleKeyUp = function (event) {
+  if(event.target == this.$menuToggle) {
+      switch(event.key) {
+        case "ArrowDown":
+          this.openMenu()
+          break;
+      case "ArrowUp":
+        this.openMenu(this.items.length - 1)
+      break;
+      }
+  }
+
+  if(this.$menu.contains(event.target) && this.isOpen()) {
+    switch(event.key) {
+      case "ArrowDown":
+          if(this.currentFocusIndex() !== -1) {
+            this.focusItem(this.currentFocusIndex() + 1)
+          }
+      break;
+      case "ArrowUp":
+          if(this.currentFocusIndex() !== -1) {
+            this.focusItem(this.currentFocusIndex() - 1)
+          }
+      break;
+      case "Home":
+        this.focusItem(0)
+      break;
+      case "End":
+        this.focusItem(this.items.length - 1)
+      break;
+    }
+  }
+
+  if(event.key == "Escape" && this.isOpen()) {
+    this.closeMenu()
+  }
+}
+MOJFrontend.ButtonMenu.prototype.handleKeyDown = function (event) {
+  if(event.key == "Tab" && this.isOpen()) {
+    console.log('you presses tab')
+    this.closeMenu(false)
+  }
+}
+
+/**
+ * Parse dataset
+ *
+ * Loop over an object and normalise each value using {@link normaliseString},
+ * optionally expanding nested `i18n.field`
+ *
+ * @param {{ schema: Schema }} Component - Component class
+ * @param {DOMStringMap} dataset - HTML element dataset
+ * @returns {Object} Normalised dataset
+ */
+MOJFrontend.ButtonMenu.prototype.parseDataset = function (schema, dataset) {
+  const parsed = {};
+
+  for (const [field, attributes] of Object.entries(schema.properties)) {
+    if (field in dataset) {
+      if(dataset[field]){
+        parsed[field] = dataset[field];
+      }
+    }
+  }
+
+  return parsed;
 };
 
-MOJFrontend.ButtonMenu.prototype.createToggleButton = function() {
-	this.menuButton = $('<button class="govuk-button moj-button-menu__toggle-button ' + this.buttonClasses + '" type="button" aria-haspopup="true" aria-expanded="false">'+this.buttonText+'</button>');
-	this.menuButton.on('click', $.proxy(this, 'onMenuButtonClick'));
-	this.menuButton.on('keydown', $.proxy(this, 'onMenuKeyDown'));
+/**
+ * Config merging function
+ *
+ * Takes any number of objects and combines them together, with
+ * greatest priority on the LAST item passed in.
+ *
+ * @param {...{ [key: string]: unknown }} configObjects - Config objects to merge
+ * @returns {{ [key: string]: unknown }} A merged config object
+ */
+MOJFrontend.ButtonMenu.prototype.mergeConfigs = function (...configObjects) {
+  const formattedConfigObject = {};
+
+  // Loop through each of the passed objects
+  for (const configObject of configObjects) {
+    for (const key of Object.keys(configObject)) {
+      const option = formattedConfigObject[key];
+      const override = configObject[key];
+
+      // Push their keys one-by-one into formattedConfigObject. Any duplicate
+      // keys with object values will be merged, otherwise the new value will
+      // override the existing value.
+      if (typeof option === "object" && typeof override === "object") {
+        // @ts-expect-error Index signature for type 'string' is missing
+        formattedConfigObject[key] = this.mergeConfigs(option, override);
+      } else {
+        formattedConfigObject[key] = override;
+      }
+    }
+  }
+
+  return formattedConfigObject;
 };
 
-MOJFrontend.ButtonMenu.prototype.setupResponsiveChecks = function() {
-	this.mql = window.matchMedia(this.mq);
-	this.mql.addListener($.proxy(this, 'checkMode'));
-	this.checkMode(this.mql);
-};
-
-MOJFrontend.ButtonMenu.prototype.checkMode = function(mql) {
-	if(mql.matches) {
-		this.enableBigMode();
-	} else {
-		this.enableSmallMode();
-	}
-};
-
-MOJFrontend.ButtonMenu.prototype.enableSmallMode = function() {
-	this.container.prepend(this.menuButton);
-	this.hideMenu();
-	this.removeButtonClasses();
-	this.menu.attr('role', 'menu');
-	this.container.find('.moj-button-menu__item').attr('role', 'menuitem');
-};
-
-MOJFrontend.ButtonMenu.prototype.enableBigMode = function() {
-	this.menuButton.detach();
-	this.showMenu();
-	this.addButtonClasses();
-	this.menu.removeAttr('role');
-	this.container.find('.moj-button-menu__item').removeAttr('role');
-};
-
-MOJFrontend.ButtonMenu.prototype.removeButtonClasses = function() {
-	this.menu.find('.moj-button-menu__item').each(function(index, el) {
-		if($(el).hasClass('govuk-button--secondary')) {
-			$(el).attr('data-secondary', 'true');
-			$(el).removeClass('govuk-button--secondary');
-		}
-		if($(el).hasClass('govuk-button--warning')) {
-			$(el).attr('data-warning', 'true');
-			$(el).removeClass('govuk-button--warning');
-		}
-		$(el).removeClass('govuk-button');
-	});
-};
-
-MOJFrontend.ButtonMenu.prototype.addButtonClasses = function() {
-	this.menu.find('.moj-button-menu__item').each(function(index, el) {
-		if($(el).attr('data-secondary') == 'true') {
-			$(el).addClass('govuk-button--secondary');
-		}
-		if($(el).attr('data-warning') == 'true') {
-			$(el).addClass('govuk-button--warning');
-		}
-		$(el).addClass('govuk-button');
-	});
-};
-
-MOJFrontend.ButtonMenu.prototype.hideMenu = function() {
-	this.menuButton.attr('aria-expanded', 'false');
-};
-
-MOJFrontend.ButtonMenu.prototype.showMenu = function() {
-	this.menuButton.attr('aria-expanded', 'true');
-};
-
-MOJFrontend.ButtonMenu.prototype.onMenuButtonClick = function() {
-	this.toggle();
-};
-
-MOJFrontend.ButtonMenu.prototype.toggle = function() {
-	if(this.menuButton.attr('aria-expanded') == 'false') {
-		this.showMenu();
-		this.menu.find('[role=menuitem]').first().focus();
-	} else {
-		this.hideMenu();
-		this.menuButton.focus();
-	}
-};
-
-MOJFrontend.ButtonMenu.prototype.onMenuKeyDown = function(e) {
-	switch (e.keyCode) {
-		case this.keys.down:
-			this.toggle();
-			break;
-	}
-};
-
-MOJFrontend.ButtonMenu.prototype.onButtonKeydown = function(e) {
-	switch (e.keyCode) {
-		case this.keys.up:
-			e.preventDefault();
-			this.focusPrevious(e.currentTarget);
-			break;
-		case this.keys.down:
-			e.preventDefault();
-			this.focusNext(e.currentTarget);
-			break;
-		case this.keys.esc:
-			if(!this.mql.matches) {
-				this.menuButton.focus();
-				this.hideMenu();
-			}
-			break;
-		case this.keys.tab:
-			if(!this.mql.matches) {
-				this.hideMenu();
-			}
-	}
-};
-
-MOJFrontend.ButtonMenu.prototype.focusNext = function(currentButton) {
-	var next = $(currentButton).next();
-	if(next[0]) {
-		next.focus();
-	} else {
-		this.container.find('[role=menuitem]').first().focus();
-	}
-};
-
-MOJFrontend.ButtonMenu.prototype.focusPrevious = function(currentButton) {
-	var prev = $(currentButton).prev();
-	if(prev[0]) {
-		prev.focus();
-	} else {
-		this.container.find('[role=menuitem]').last().focus();
-	}
-};
