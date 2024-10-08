@@ -13,7 +13,8 @@ MOJFrontend.ButtonMenu = function($module, config) {
 
   const defaults = {
     buttonText: "Actions",
-    alignMenu: "left"
+    alignMenu: "left",
+    buttonClasses: ""
   }
 
   // data attributes override JS config, which overrides defaults
@@ -27,10 +28,12 @@ MOJFrontend.ButtonMenu = function($module, config) {
 }
 
 MOJFrontend.ButtonMenu.prototype.init = function() {
-  if (this.$module.childNodes.length == 1) {
-
+  if (this.$module.children.length == 1) {
+    if(this.config.buttonClasses) {
+      this.$module.children[0].classList.add(...this.config.buttonClasses.split(" "))
+    }
   }
-  if (this.$module.childNodes.length > 1) {
+  if (this.$module.children.length > 1) {
     this.initMenu()
   }
 }

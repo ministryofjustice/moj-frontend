@@ -84,6 +84,27 @@
 	}
 }
 
+.govuk-button-group {
+  $horizontal-gap: govuk-spacing(3);
+  $vertical-gap: govuk-spacing(3);
+  $button-shadow-size: $govuk-border-width-form-element;
+
+  .moj-button-menu {
+    margin-bottom: $vertical-gap + $button-shadow-size;
+  }
+
+  .moj-button-menu .moj-button-menu__toggle-button {
+    margin-bottom: 0;
+    margin-right: 0;
+    vertical-align: baseline
+  }
+
+  @include govuk-media-query($from: tablet) {
+    .moj-button-menu {
+      margin-right: $horizontal-gap;
+    }
+  }
+}
 
 
 

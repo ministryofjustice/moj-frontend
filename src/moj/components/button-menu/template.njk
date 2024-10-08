@@ -3,6 +3,7 @@
 
 {#- Set classes for this component #}
 {%- set classNames = "moj-button-menu" -%}
+{%- set itemClassNames = "moj-button-menu__item govuk-button--secondary" %}
 
 {%- if params.classes %}
   {% set classNames = classNames + " " + params.classes %}
@@ -24,9 +25,12 @@
 
 <div class="{{- classNames -}}" data-module="moj-button-menu" {{- govukAttributes(params.attributes) -}}  {{- govukAttributes(buttonAttributes) -}}>
     {%- for item in params.items %}
-      {{ govukButton({
+      {%- if item.classes %}
+      {% set itemClassNames = fitemClassNames + " " + item.classes %}
+  {% endif %}
+  {{ govukButton({
           element: item.element,
-          classes: 'moj-button-menu__item ' + (item.classes if item.classes),
+          classes: itemClassNames,
           text: item.text,
           html: item.html,
           name: item.name,
