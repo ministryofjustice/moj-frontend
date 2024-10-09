@@ -2,18 +2,13 @@
   display: inline-block;
   position: relative;
 }
-
 .moj-button-menu__toggle-button {
+  display: inline;
+}
+.moj-button-menu__toggle-button span {
   display: inline-flex;
   align-items: center;
-  margin-right: govuk-spacing(2);
-  margin-bottom: govuk-spacing(2);
-  width: auto; // Override GDS’s 100% width
   gap: 8px;
-
-  &:last-child {
-    margin-right: 0;
-  }
 }
 
 .moj-button-menu__toggle-button svg {
@@ -21,18 +16,14 @@
   margin-top: 5%;
 }
 
-.moj-button-menu__toggle-button[aria-expanded="true"] {
-  margin-bottom: govuk-spacing(1);
-}
-
 .moj-button-menu__toggle-button[aria-expanded="true"] svg {
-    transform: rotate(0deg)
+  transform: rotate(0deg);
 }
 
-
-.moj-button-menu [role=menu] {
+.moj-button-menu [role="menu"] {
   position: absolute;
-  width: max-content;
+  width: 200px;
+  top: 43px; //38px button height, 2px shadow, 3px gap
   z-index: 10;
 }
 
@@ -52,7 +43,7 @@
 }
 
 /* Menu items with JS */
-.moj-button-menu [role=menuitem] {
+.moj-button-menu [role="menuitem"] {
   @include govuk-font(19);
   background-color: govuk-colour("light-grey");
   border: none;
@@ -79,34 +70,29 @@
     outline: 3px solid govuk-colour("yellow");
     background-color: govuk-colour("mid-grey");
     outline-offset: 0;
-		position: relative;
+    position: relative;
     z-index: 10;
-	}
-}
-
-.govuk-button-group {
-  $horizontal-gap: govuk-spacing(3);
-  $vertical-gap: govuk-spacing(3);
-  $button-shadow-size: $govuk-border-width-form-element;
-
-  .moj-button-menu {
-    margin-bottom: $vertical-gap + $button-shadow-size;
-  }
-
-  .moj-button-menu .moj-button-menu__toggle-button {
-    margin-bottom: 0;
-    margin-right: 0;
-    vertical-align: baseline
-  }
-
-  @include govuk-media-query($from: tablet) {
-    .moj-button-menu {
-      margin-right: $horizontal-gap;
-    }
   }
 }
 
-
-
-
-
+/* .govuk-button-group { */
+/*   $horizontal-gap: govuk-spacing(3); */
+/*   $vertical-gap: govuk-spacing(3); */
+/*   $button-shadow-size: $govuk-border-width-form-element; */
+/**/
+/*   .moj-button-menu { */
+/*     margin-bottom: $vertical-gap + $button-shadow-size; */
+/*   } */
+/**/
+/*   .moj-button-menu .moj-button-menu__toggle-button { */
+/*     margin-bottom: 0; */
+/*     margin-right: 0; */
+/*     vertical-align: baseline */
+/*   } */
+/**/
+/*   @include govuk-media-query($from: tablet) { */
+/*     .moj-button-menu { */
+/*       margin-right: $horizontal-gap; */
+/*     } */
+/*   } */
+/* } */

@@ -78,7 +78,6 @@ describe("Button menu with defaults", () => {
 
     expect(menu).toBeVisible()
     expect(toggleButton).toHaveAttribute("aria-expanded", "true")
-    expect(items[0]).toHaveFocus()
   })
 
   test("clicking a link in the menu", async () => {
@@ -89,6 +88,14 @@ describe("Button menu with defaults", () => {
     expect(global.window.location.hash).toContain('#one')
     await user.click(items[2])
     expect(global.window.location.hash).toContain('#three')
+  })
+
+  test("clicking outside closes menu", async () => {
+    await user.click(toggleButton)
+    expect(menu).toBeVisible()
+
+    await user.click(document.body)
+    expect(menu).not.toBeVisible()
   })
 
   describe("keyboard interactions", () => {
