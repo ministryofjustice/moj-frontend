@@ -50,6 +50,7 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 }) }}
 
 <h3>Right aligned</h3>
+<div style="display: flex; flex-direction: row-reverse;">
 {{ mojButtonMenu({
   button: {
     text: "Print options",
@@ -67,10 +68,61 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
     href: "#"
   }]
 }) }}
+</div>
+
+<h3>Inverse</h3>
+<div style="background-color: #1d70b8; padding: 30px 30px 20px 30px;">
+    {{ mojButtonMenu({
+  button: {
+    text: "Print options",
+    classes: "govuk-button--inverse"
+  },
+  items: [{
+    text: "Primary action",
+    href: "#"
+  }, {
+    text: "Second action",
+    href: "#"
+  }, {
+    text: "Third action",
+    href: "#"
+  }]
+}) }}
+</div>
 
 
-<h3>Button group</h3>
+<h3>Govuk button group</h3>
 <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Primary action"
+    })}}
+    {{ govukButton({
+      text: "Another action",
+      classes: "govuk-button--secondary"
+    })}}
+    {{ govukButton({
+      text: "Click  me!",
+      classes: "govuk-button--secondary"
+    })}}
+</div>
+
+<h3>MoJ button group</h3>
+<div class="moj-button-group">
+    {{ govukButton({
+      text: "Primary action"
+    })}}
+    {{ govukButton({
+      text: "Another action",
+      classes: "govuk-button--secondary"
+    })}}
+    {{ govukButton({
+      text: "Click  me!",
+      classes: "govuk-button--secondary"
+    })}}
+</div>
+
+<h3>MoJ button group inline (with button menu)</h3>
+<div class="moj-button-group moj-button-group--inline">
     {{ govukButton({
       text: "Primary action"
     })}}
