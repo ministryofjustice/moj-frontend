@@ -75,7 +75,7 @@ MOJFrontend.ButtonMenu.prototype.initMenu = function () {
     this.handleKeyDown(event);
   });
 
-  document.body.addEventListener("click", (event) => {
+  document.addEventListener("click", (event) => {
     if (!this.$module.contains(event.target)) {
       this.closeMenu(false);
     }
