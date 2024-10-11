@@ -5,7 +5,8 @@ title: Button menu
 
 <span class="govuk-caption-xl">The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu.</span>
 
-{% example "/examples/button-menu", 175 %}
+{% example "/examples/button-menu", 250 %}
+
 
 ## Overview
 
@@ -71,15 +72,18 @@ Placing the menu on the right may stop it from obscuring other items on the scre
 
 ### Left-aligned menu items
 
-{% example "/examples/button-menu", 175 %}
+{% example "/examples/button-menu-left-aligned", 275 %}
 
 ### Right-aligned menu items
 
-{% example "/examples/button-menu", 175 %}
+{% example "/examples/button-menu-right-aligned", 275 %}
 
 ### Grouping buttons
 
 You can add a button menu alongside a link or GOV.UK button. This code has correct spacing and creates a better user experience for people on mobile devices.
+
+{% example "/examples/button-menu-right-aligned", 275 %}
+
 
 ### Button colour
 

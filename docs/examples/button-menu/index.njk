@@ -7,87 +7,22 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 
 {%- from "moj/components/button-menu/macro.njk" import mojButtonMenu -%}
 {%- from "govuk/components/button/macro.njk" import govukButton %}
-
-
-<h3>Single button</h3>
 {{ mojButtonMenu({
-  items: [{
-    text: "Primary action",
-    href: "#"
-  }]
+    "button": {
+        "text": "Menu title"
+    },
+    "items": [
+        {
+            "text": "Menu item 1",
+            "href": "#"
+        },
+        {
+            "text": "Menu item 2",
+            "href": "#"
+        },
+        {
+            "text": "Menu item 3",
+            "href": "#"
+        }
+    ]
 }) }}
-
-<h3>Default</h3>
-{{ mojButtonMenu({
-  items: [{
-    text: "Primary action",
-    href: "#"
-  }, {
-    text: "Second action",
-    href: "#"
-  }, {
-    text: "Third action",
-    href: "#"
-  }]
-}) }}
-
-<h3>Secondary button</h3>
-{{ mojButtonMenu({
-  button: {
-    text: "Print options",
-    classes: "govuk-button--secondary"
-  },
-  items: [{
-    text: "Primary action",
-    href: "#"
-  }, {
-    text: "Second action",
-    href: "#"
-  }, {
-    text: "Third action",
-    href: "#"
-  }]
-}) }}
-
-<h3>Right aligned</h3>
-{{ mojButtonMenu({
-  button: {
-    text: "Print options",
-    classes: "govuk-button--secondary"
-  },
-  alignMenu: "right",
-  items: [{
-    text: "Primary action",
-    href: "#"
-  }, {
-    text: "Second action",
-    href: "#"
-  }, {
-    text: "Third action",
-    href: "#"
-  }]
-}) }}
-
-
-<h3>Button group</h3>
-<div class="govuk-button-group">
-    {{ govukButton({
-      text: "Primary action"
-    })}}
-    {{ mojButtonMenu({
-  button: {
-    text: "Print options",
-    classes: "govuk-button--secondary"
-  },
-  items: [{
-    text: "Action",
-    href: "#"
-  }, {
-    text: "Second action",
-    href: "#"
-  }, {
-    text: "Third action",
-    href: "#"
-  }]
-}) }}
-</div>

@@ -15,10 +15,12 @@
     optional: false
     },
   "data-button-classes": {
-    value: params.button.classes
+    value: params.button.classes,
+    optional: true 
   },
   "data-align-menu": {
-    value: params.alignMenu | default("left")
+    value: params.alignMenu,
+    optional: true
   }
 }
 %}

@@ -14,7 +14,7 @@ MOJFrontend.ButtonMenu = function ($module, config) {
   const defaults = {
     buttonText: "Actions",
     alignMenu: "left",
-    buttonClasses: "",
+    buttonClasses: "govuk-button--secondary",
   };
 
   // data attributes override JS config, which overrides defaults
