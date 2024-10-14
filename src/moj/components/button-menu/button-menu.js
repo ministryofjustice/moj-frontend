@@ -41,12 +41,12 @@ MOJFrontend.ButtonMenu.prototype.init = function () {
 };
 
 MOJFrontend.ButtonMenu.prototype.initMenu = function () {
-  this.$menu = document.createElement("div");
+  this.$menu = document.createElement("ul");
   this.$menu.classList.add("moj-button-menu__wrapper");
   if (this.config.alignMenu == "right") {
     this.$menu.classList.add("moj-button-menu__wrapper--right");
   }
-  this.$menu.setAttribute("role", "menu");
+  this.$menu.setAttribute("role", "list");
   this.$menu.hidden = true;
 
   this.$module.appendChild(this.$menu);
@@ -81,10 +81,7 @@ MOJFrontend.ButtonMenu.prototype.initMenu = function () {
     }
   });
 
-  this.items = this.$menu.children;
-
-  Array.from(this.items).forEach((item) => {
-    item.setAttribute("role", "menuitem");
+  Array.from(this.$menu.children).forEach((item) => {
     item.setAttribute("tabindex", -1);
     if (item.tagName == "BUTTON") {
       item.setAttribute("type", "button");
@@ -94,12 +91,18 @@ MOJFrontend.ButtonMenu.prototype.initMenu = function () {
         item.classList.remove(className);
       }
     });
+
+    const listItem = document.createElement("li")
+    this.$menu.insertBefore(listItem, item)
+    listItem.appendChild(item)
+
     item.addEventListener("click", (event) => {
       setTimeout(() => {
         this.closeMenu(false);
       }, 50);
     });
   });
+  this.items = this.$menu.querySelectorAll("a, button")
 };
 
 MOJFrontend.ButtonMenu.prototype.isOpen = function () {

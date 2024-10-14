@@ -37,9 +37,9 @@ describe("Button menu with defaults", () => {
     component = createComponent();
     new MOJFrontend.ButtonMenu(component, {}).init();
 
-    toggleButton = queryByRole(component, "button", { name: "Actions" });
-    menu = screen.queryByRole("menu", { hidden: true });
-    items = screen.queryAllByRole("menuitem", { hidden: true });
+    toggleButton = queryByRole(component, "button", { hidden: false });
+    menu = screen.queryByRole("list", { hidden: true });
+    items = menu?.querySelectorAll("a, button");
   });
 
   afterEach(() => {

@@ -22,15 +22,18 @@
   transform: rotate(0deg);
 }
 
-.moj-button-menu [role="menu"] {
+.moj-button-menu__wrapper {
+  list-style: none;
   position: absolute;
+  margin: 0;
+  padding: 0;
   width: 200px;
   top: 43px; //38px button height, 2px shadow, 3px gap
   z-index: 10;
-}
 
-.moj-button-menu__wrapper--right {
-  right: 0;
+  &--right {
+    right: 0;
+  }
 }
 
 /* Menu items with no JS */
@@ -45,7 +48,7 @@
 }
 
 /* Menu items with JS */
-.moj-button-menu [role="menuitem"] {
+.moj-button-menu li > .moj-button-menu__item {
   @include govuk-font(19);
   background-color: govuk-colour("light-grey");
   border: none;
