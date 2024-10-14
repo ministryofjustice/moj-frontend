@@ -1,4 +1,4 @@
-MOJFrontend.ButtonMenu = function ($module, config) {
+MOJFrontend.ButtonMenu = function ($module, config={}) {
   if (!$module) {
     return this;
   }

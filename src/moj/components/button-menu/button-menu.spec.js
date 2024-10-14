@@ -14,13 +14,27 @@ const axe = configureAxe({
   },
 });
 
-const createComponent = () => {
+const kebabize = (str) => {
+   return str.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofset) => (ofset ? "-" : "") + $.toLowerCase())
+}
+
+const configToDataAttributes = (config) => {
+ let attributes = ""
+ for (let [key, value] of Object.entries(config)) {
+   attributes += `data-${kebabize(key)}="${value}" `
+ }
+ return attributes
+}
+
+const createComponent = (config={}) => {
+  const dataAttributes = configToDataAttributes(config)
   const html = `
-      <div class="moj-button-menu" data-module="moj-button-menu">
+      <div class="moj-button-menu" data-module="moj-button-menu" ${dataAttributes}>
           <a href="#one">First action</a>
           <a href="#two">Second action</a>
           <a href="#three">Third action</a>
       </div>`;
+  console.log(html)
   document.body.insertAdjacentHTML("afterbegin", html);
 
   component = document.querySelector('[data-module="moj-button-menu"]');
@@ -35,7 +49,7 @@ describe("Button menu with defaults", () => {
 
   beforeEach(() => {
     component = createComponent();
-    new MOJFrontend.ButtonMenu(component, {}).init();
+    new MOJFrontend.ButtonMenu(component).init();
 
     toggleButton = queryByRole(component, "button", { hidden: false });
     menu = screen.queryByRole("list", { hidden: true });
@@ -198,4 +212,93 @@ describe("Button menu with defaults", () => {
       expect(menu).not.toBeVisible();
     });
   });
+
+  describe("accessibility", () => {
+    test("component has no wcag violations", async () => {
+      expect(await axe(document.body)).toHaveNoViolations();
+      await user.click(toggleButton);
+      expect(await axe(document.body)).toHaveNoViolations();
+    });
+
+  })
 });
+
+
+describe("Button menu javascript API", () => {
+  let component;
+
+  beforeEach(() => {
+    component = createComponent();
+  });
+
+  afterEach(() => {
+    document.body.innerHTML = "";
+  });
+
+  test("setting toggle button text", () => {
+    const label = "click me"
+    new MOJFrontend.ButtonMenu(component, { buttonText: label }).init();
+    const toggleButton = queryByRole(component, "button", { name: label });
+
+    expect(toggleButton).not.toBeNull
+  })
+
+  test("setting menu alignment", () => {
+    new MOJFrontend.ButtonMenu(component, { alignMenu: "right" }).init();
+    const menu = screen.queryByRole("list", { hidden: true });
+
+    expect(menu).toHaveClass("moj-button-menu__wrapper--right")
+  })
+
+  test("setting button classes", () => {
+    const defaultClassNames = "govuk-button moj-button-menu__toggle-button"
+    const classNames = "classOne classTwo"
+
+    new MOJFrontend.ButtonMenu(component, { buttonClasses: classNames }).init();
+    const toggleButton = queryByRole(component, "button", { hidden: false });
+
+    expect(toggleButton).toHaveClass(defaultClassNames)
+    expect(toggleButton).toHaveClass(classNames)
+  })
+})
+
+describe("Button menu data-attributes API", () => {
+  let component;
+
+  beforeEach(() => {
+  });
+
+  afterEach(() => {
+    document.body.innerHTML = "";
+  });
+
+  test("setting toggle button text", () => {
+    const label = "click me"
+
+    component = createComponent({ buttonText: label });
+    new MOJFrontend.ButtonMenu(component).init();
+    const toggleButton = queryByRole(component, "button", { name: label });
+
+    expect(toggleButton).not.toBeNull()
+  })
+
+  test("setting menu alignment", () => {
+    component = createComponent({ alignMenu: "right" });
+    new MOJFrontend.ButtonMenu(component).init();
+    const menu = screen.queryByRole("list", { hidden: true });
+
+    expect(menu).toHaveClass("moj-button-menu__wrapper--right")
+  })
+
+  test("setting button classes", () => {
+    const defaultClassNames = "govuk-button moj-button-menu__toggle-button"
+    const classNames = "classOne classTwo"
+
+    component = createComponent({ buttonClasses: classNames });
+    new MOJFrontend.ButtonMenu(component).init();
+    const toggleButton = queryByRole(component, "button", { hidden: false });
+
+    expect(toggleButton).toHaveClass(defaultClassNames)
+    expect(toggleButton).toHaveClass(classNames)
+  })
+})
