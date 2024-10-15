@@ -1,3 +1,6 @@
+$moj-button-hover-colour: #767676;
+$moj-datepicker-mid-grey: #949494;
+
 .moj-button-menu {
   display: inline-block;
   position: relative;
@@ -49,33 +52,62 @@
 
 /* Menu items with JS */
 .moj-button-menu li > .moj-button-menu__item {
-  @include govuk-font(19);
-  background-color: govuk-colour("light-grey");
-  border: none;
+  $button-shadow-size: 0;
+  @include govuk-font($size: 19, $line-height: 19px);
+
   box-sizing: border-box;
-  display: block;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin-top: 0;
+  margin-right: 0;
+  margin-left: 0;
   margin-bottom: 0;
   padding: govuk-spacing(2);
+  border: $govuk-border-width-form-element solid transparent;
+  border-radius: 0;
+  border-bottom: 1px solid $moj-datepicker-mid-grey;
+  color: $govuk-text-colour;
+  background-color: govuk-colour("light-grey");
   text-align: left;
-  width: 100%;
-  -webkit-box-sizing: border-box;
+  vertical-align: top;
+  cursor: pointer;
   -webkit-appearance: none;
 
   &:link,
-  &:visited {
+  &:visited,
+  &:active,
+  &:hover {
+    color: $govuk-text-colour;
     text-decoration: none;
-    color: govuk-colour("black");
+  }
+
+  &:active,
+  &:hover {
+    color: govuk-colour("white");
+  }
+
+  // Fix unwanted button padding in Firefox
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
   }
 
   &:hover {
-    background-color: govuk-colour("mid-grey");
+    background-color: $moj-button-hover-colour;
   }
 
   &:focus {
-    outline: 3px solid govuk-colour("yellow");
-    background-color: govuk-colour("mid-grey");
-    outline-offset: 0;
-    position: relative;
+    border-color: $govuk-focus-colour;
+    outline: $govuk-focus-width solid transparent;
+    box-shadow: inset 0 0 0 1px $govuk-focus-colour;
     z-index: 10;
+  }
+
+  &:focus:not(:active):not(:hover) {
+    border-color: $govuk-focus-colour;
+    color: $govuk-focus-text-colour;
+    background-color: $govuk-focus-colour;
+    box-shadow: 0 2px 0 $govuk-focus-text-colour;
   }
 }
