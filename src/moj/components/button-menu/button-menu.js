@@ -1,4 +1,16 @@
-MOJFrontend.ButtonMenu = function ($module, config={}) {
+/**
+ * @typedef {object} ButtonMenuConfig
+ * @property {string} [buttonText=Actions] - Label for the toggle button
+ * @property {"left" | "right"} [alignMenu=left] - the alignment of the menu
+ * @property {string} [buttonClasses=govuk-button--secondary] - css classes applied to the toggle button
+ */
+
+/**
+ * @param {HTMLElement} $module
+ * @param {ButtonMenuConfig} config
+ * @constructor
+ */
+MOJFrontend.ButtonMenu = function ($module, config = {}) {
   if (!$module) {
     return this;
   }
@@ -28,6 +40,8 @@ MOJFrontend.ButtonMenu = function ($module, config={}) {
 };
 
 MOJFrontend.ButtonMenu.prototype.init = function () {
+  // If only one button is provided, don't initiate a menu and toggle button
+  // if classes have been provided for the toggleButton, apply them to the single item
   if (this.$module.children.length == 1) {
     if (this.config.buttonClasses) {
       this.$module.children[0].classList.add(
@@ -35,37 +49,19 @@ MOJFrontend.ButtonMenu.prototype.init = function () {
       );
     }
   }
+  // Otherwise intialise a button menu
   if (this.$module.children.length > 1) {
     this.initMenu();
   }
 };
 
 MOJFrontend.ButtonMenu.prototype.initMenu = function () {
-  this.$menu = document.createElement("ul");
-  this.$menu.classList.add("moj-button-menu__wrapper");
-  if (this.config.alignMenu == "right") {
-    this.$menu.classList.add("moj-button-menu__wrapper--right");
-  }
-  this.$menu.setAttribute("role", "list");
-  this.$menu.hidden = true;
+  this.$menu = this.createMenu();
+  this.$module.insertAdjacentHTML("afterbegin", this.toggleTemplate());
+  this.setupMenuItems();
 
-  this.$module.appendChild(this.$menu);
-  while (this.$module.firstChild !== this.$menu) {
-    this.$menu.appendChild(this.$module.firstChild);
-  }
-
-  const toggleTemplate = `
-    <button type="button" class="govuk-button moj-button-menu__toggle-button ${this.config.buttonClasses || ""}" aria-haspopup="true" aria-expanded="false">
-      <span>
-       ${this.config.buttonText}
-       <svg width="11" height="5" viewBox="0 0 11 5"  xmlns="http://www.w3.org/2000/svg">
-         <path d="M5.5 0L11 5L0 5L5.5 0Z" fill="currentColor"/>
-       </svg>
-      </span>
-    </button>`;
-
-  this.$module.insertAdjacentHTML("afterbegin", toggleTemplate);
   this.$menuToggle = this.$module.querySelector(":scope > button");
+  this.items = this.$menu.querySelectorAll("a, button");
 
   this.$menuToggle.addEventListener("click", (event) => {
     this.toggleMenu(event);
@@ -80,31 +76,68 @@ MOJFrontend.ButtonMenu.prototype.initMenu = function () {
       this.closeMenu(false);
     }
   });
+};
 
+MOJFrontend.ButtonMenu.prototype.createMenu = function () {
+  const $menu = document.createElement("ul");
+  $menu.setAttribute("role", "list");
+  $menu.hidden = true;
+  $menu.classList.add("moj-button-menu__wrapper");
+  if (this.config.alignMenu == "right") {
+    $menu.classList.add("moj-button-menu__wrapper--right");
+  }
+
+  this.$module.appendChild($menu);
+  while (this.$module.firstChild !== $menu) {
+    $menu.appendChild(this.$module.firstChild);
+  }
+
+  return $menu;
+};
+
+MOJFrontend.ButtonMenu.prototype.setupMenuItems = function () {
   Array.from(this.$menu.children).forEach((item) => {
+    // wrap item in li tag
+    const listItem = document.createElement("li");
+    this.$menu.insertBefore(listItem, item);
+    listItem.appendChild(item);
+
     item.setAttribute("tabindex", -1);
+
     if (item.tagName == "BUTTON") {
       item.setAttribute("type", "button");
     }
+
     item.classList.forEach((className) => {
       if (className.match(/govuk-button/)) {
         item.classList.remove(className);
       }
     });
 
-    const listItem = document.createElement("li")
-    this.$menu.insertBefore(listItem, item)
-    listItem.appendChild(item)
-
+    // add a slight delay after click before closing the menu, makes it *feel* better
     item.addEventListener("click", (event) => {
       setTimeout(() => {
         this.closeMenu(false);
       }, 50);
     });
   });
-  this.items = this.$menu.querySelectorAll("a, button")
 };
 
+MOJFrontend.ButtonMenu.prototype.toggleTemplate = function () {
+  return `
+    <button type="button" class="govuk-button moj-button-menu__toggle-button ${this.config.buttonClasses || ""}" aria-haspopup="true" aria-expanded="false">
+      <span>
+       ${this.config.buttonText}
+       <svg width="11" height="5" viewBox="0 0 11 5"  xmlns="http://www.w3.org/2000/svg">
+         <path d="M5.5 0L11 5L0 5L5.5 0Z" fill="currentColor"/>
+       </svg>
+      </span>
+    </button>`;
+};
+
+/**
+ * @returns {boolean}
+ */
 MOJFrontend.ButtonMenu.prototype.isOpen = function () {
   return this.$menuToggle.getAttribute("aria-expanded") === "true";
 };
@@ -123,6 +156,11 @@ MOJFrontend.ButtonMenu.prototype.toggleMenu = function (event) {
   }
 };
 
+/**
+ * Opens the menu and optionally sets the focus to the item with given index
+ *
+ * @param {number} focusIndex - The index of the item to focus
+ */
 MOJFrontend.ButtonMenu.prototype.openMenu = function (focusIndex = 0) {
   this.$menu.hidden = false;
   this.$menuToggle.setAttribute("aria-expanded", "true");
@@ -131,6 +169,11 @@ MOJFrontend.ButtonMenu.prototype.openMenu = function (focusIndex = 0) {
   }
 };
 
+/**
+ * Closes the menu and optionally returns focus back to menuToggle
+ *
+ * @param {boolean} moveFocus - whether to return focus to the toggle button
+ */
 MOJFrontend.ButtonMenu.prototype.closeMenu = function (moveFocus = true) {
   this.$menu.hidden = true;
   this.$menuToggle.setAttribute("aria-expanded", "false");
@@ -139,6 +182,11 @@ MOJFrontend.ButtonMenu.prototype.closeMenu = function (moveFocus = true) {
   }
 };
 
+/**
+ * Focuses the menu item at the specified index
+ *
+ * @param {number} index - the index of the item to focus
+ */
 MOJFrontend.ButtonMenu.prototype.focusItem = function (index) {
   if (index >= this.items.length) index = 0;
   if (index < 0) index = this.items.length - 1;
@@ -256,3 +304,17 @@ MOJFrontend.ButtonMenu.prototype.mergeConfigs = function (...configObjects) {
 
   return formattedConfigObject;
 };
+
+/**
+ * Schema for component config
+ *
+ * @typedef {object} Schema
+ * @property {{ [field: string]: SchemaProperty | undefined }} properties - Schema properties
+ */
+
+/**
+ * Schema property for component config
+ *
+ * @typedef {object} SchemaProperty
+ * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
+ */
