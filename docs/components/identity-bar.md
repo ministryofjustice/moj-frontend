@@ -29,10 +29,10 @@ You can optionally configure the component to display actions that the user can 
 
 The action menu uses the [menu](../button-menu) component which can be configured to show as a drop down menu.
 
-{% example "/examples/identity-bar-menu-toggle", 275 %}
+{% example "/examples/identity-bar-menu-toggle", 300 %}
 
 ### Primary button plus secondary action menu
 
 This [menu](../button-menu) is made up of multiple menus. The first consists of just one button and is exposed because it's a primary action. The second menu consists of two secondary options, which are placed within a drop down menu.
 
-{% example "/examples/identity-bar-secondary-toggle", 225 %}
+{% example "/examples/identity-bar-secondary-toggle", 300 %}

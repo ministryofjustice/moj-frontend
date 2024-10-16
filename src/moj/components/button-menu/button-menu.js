@@ -26,9 +26,8 @@ MOJFrontend.ButtonMenu = function ($module, config = {}) {
   const defaults = {
     buttonText: "Actions",
     alignMenu: "left",
-    buttonClasses: "govuk-button--secondary",
+    buttonClasses: "",
   };
-
   // data attributes override JS config, which overrides defaults
   this.config = this.mergeConfigs(
     defaults,
@@ -43,8 +42,14 @@ MOJFrontend.ButtonMenu.prototype.init = function () {
   // If only one button is provided, don't initiate a menu and toggle button
   // if classes have been provided for the toggleButton, apply them to the single item
   if (this.$module.children.length == 1) {
+    const button = this.$module.children[0]
+      button.classList.forEach((className) => {
+        if (className.match(/govuk-button-/)) {
+          button.classList.remove(className);
+        }
+      });
     if (this.config.buttonClasses) {
-      this.$module.children[0].classList.add(
+      button.classList.add(
         ...this.config.buttonClasses.split(" "),
       );
     }

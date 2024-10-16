@@ -83,7 +83,7 @@ Placing the menu on the right may stop it from obscuring other items on the scre
 
 You can add a button menu alongside a link or GOV.UK button. This code has correct spacing and creates a better user experience for people on mobile devices.
 
-{% example "/examples/button-menu-right-aligned", 275 %}
+{% example "/examples/button-menu-grouped", 275 %}
 
 
 ### Button colour
