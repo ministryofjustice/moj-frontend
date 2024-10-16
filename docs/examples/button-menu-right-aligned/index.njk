@@ -6,26 +6,23 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 ---
 
 {%- from "moj/components/button-menu/macro.njk" import mojButtonMenu -%}
-
 {{ mojButtonMenu({
-  button: {
-    text: "Review",
-    classes: "govuk-button--secondary"
-  },
-  alignMenu: "right",
-  items: [
-    {
-      text: "Approve",
-      href: "#"
+    "button": {
+        "text": "Review"
     },
-    {
-      text: "Request more information",
-      href: "#"
-    },
-    {
-      text: "Reject with reason",
-      href: "#"
-    }
-  ]
+    "alignMenu": "right",
+    "items": [
+        {
+            "text": "Approve",
+            "href": "#"
+        },
+        {
+            "text": "Request more information",
+            "href": "#"
+        },
+        {
+            "text": "Reject with reason",
+            "href": "#"
+        }
+    ]
 }) }}
-
