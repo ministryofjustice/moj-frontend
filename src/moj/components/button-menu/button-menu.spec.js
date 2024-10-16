@@ -15,26 +15,30 @@ const axe = configureAxe({
 });
 
 const kebabize = (str) => {
-   return str.replace(/[A-Z]+(?![a-z])|[A-Z]/g, ($, ofset) => (ofset ? "-" : "") + $.toLowerCase())
-}
+  return str.replace(
+    /[A-Z]+(?![a-z])|[A-Z]/g,
+    ($, ofset) => (ofset ? "-" : "") + $.toLowerCase(),
+  );
+};
 
 const configToDataAttributes = (config) => {
- let attributes = ""
- for (let [key, value] of Object.entries(config)) {
-   attributes += `data-${kebabize(key)}="${value}" `
- }
- return attributes
-}
+  let attributes = "";
+  for (let [key, value] of Object.entries(config)) {
+    attributes += `data-${kebabize(key)}="${value}" `;
+  }
+  return attributes;
+};
 
-const createComponent = (config={}) => {
-  const dataAttributes = configToDataAttributes(config)
-  const html = `
+const createComponent = (config = {}, html) => {
+  const dataAttributes = configToDataAttributes(config);
+  if(typeof html === "undefined") {
+  html = `
       <div class="moj-button-menu" data-module="moj-button-menu" ${dataAttributes}>
-          <a href="#one">First action</a>
-          <a href="#two">Second action</a>
-          <a href="#three">Third action</a>
+          <a href="#one" role="button">First action</a>
+          <a href="#two" role="button" class="govuk-button--warning">Second action</a>
+          <a href="#three" role="button" class="custom-class">Third action</a>
       </div>`;
-  console.log(html)
+  }
   document.body.insertAdjacentHTML("afterbegin", html);
 
   component = document.querySelector('[data-module="moj-button-menu"]');
@@ -77,8 +81,16 @@ describe("Button menu with defaults", () => {
     expect(menu).not.toBeVisible();
   });
 
-  test("adds menuitem roles", () => {
+  test("creates menuitems", () => {
     expect(items.length).toBe(3);
+  });
+
+  test("removes other govuk-button classes from menuitems", () => {
+    expect(items[1]).not.toHaveClass("govuk-button--warning");
+  });
+
+  test("keeps custom classes on items", () => {
+    expect(items[2]).toHaveClass("custom-class");
   });
 
   test("clicking toggle button shows menu", async () => {
@@ -219,10 +231,8 @@ describe("Button menu with defaults", () => {
       await user.click(toggleButton);
       expect(await axe(document.body)).toHaveNoViolations();
     });
-
-  })
+  });
 });
-
 
 describe("Button menu javascript API", () => {
   let component;
@@ -236,69 +246,118 @@ describe("Button menu javascript API", () => {
   });
 
   test("setting toggle button text", () => {
-    const label = "click me"
+    const label = "click me";
     new MOJFrontend.ButtonMenu(component, { buttonText: label }).init();
     const toggleButton = queryByRole(component, "button", { name: label });
 
-    expect(toggleButton).not.toBeNull
-  })
+    expect(toggleButton).not.toBeNull;
+  });
 
   test("setting menu alignment", () => {
     new MOJFrontend.ButtonMenu(component, { alignMenu: "right" }).init();
     const menu = screen.queryByRole("list", { hidden: true });
 
-    expect(menu).toHaveClass("moj-button-menu__wrapper--right")
-  })
+    expect(menu).toHaveClass("moj-button-menu__wrapper--right");
+  });
 
   test("setting button classes", () => {
-    const defaultClassNames = "govuk-button moj-button-menu__toggle-button"
-    const classNames = "classOne classTwo"
+    const defaultClassNames = "govuk-button moj-button-menu__toggle-button";
+    const classNames = "classOne classTwo";
 
     new MOJFrontend.ButtonMenu(component, { buttonClasses: classNames }).init();
     const toggleButton = queryByRole(component, "button", { hidden: false });
 
-    expect(toggleButton).toHaveClass(defaultClassNames)
-    expect(toggleButton).toHaveClass(classNames)
-  })
-})
+    expect(toggleButton).toHaveClass(defaultClassNames);
+    expect(toggleButton).toHaveClass(classNames);
+  });
+});
 
 describe("Button menu data-attributes API", () => {
   let component;
 
-  beforeEach(() => {
-  });
+  beforeEach(() => {});
 
   afterEach(() => {
     document.body.innerHTML = "";
   });
 
   test("setting toggle button text", () => {
-    const label = "click me"
+    const label = "click me";
 
     component = createComponent({ buttonText: label });
     new MOJFrontend.ButtonMenu(component).init();
     const toggleButton = queryByRole(component, "button", { name: label });
 
-    expect(toggleButton).not.toBeNull()
-  })
+    expect(toggleButton).not.toBeNull();
+  });
 
   test("setting menu alignment", () => {
     component = createComponent({ alignMenu: "right" });
     new MOJFrontend.ButtonMenu(component).init();
     const menu = screen.queryByRole("list", { hidden: true });
 
-    expect(menu).toHaveClass("moj-button-menu__wrapper--right")
-  })
+    expect(menu).toHaveClass("moj-button-menu__wrapper--right");
+  });
 
   test("setting button classes", () => {
-    const defaultClassNames = "govuk-button moj-button-menu__toggle-button"
-    const classNames = "classOne classTwo"
+    const defaultClassNames = "govuk-button moj-button-menu__toggle-button";
+    const classNames = "classOne classTwo";
 
     component = createComponent({ buttonClasses: classNames });
     new MOJFrontend.ButtonMenu(component).init();
     const toggleButton = queryByRole(component, "button", { hidden: false });
 
-    expect(toggleButton).toHaveClass(defaultClassNames)
-    expect(toggleButton).toHaveClass(classNames)
-  })
-})
+    expect(toggleButton).toHaveClass(defaultClassNames);
+    expect(toggleButton).toHaveClass(classNames);
+  });
+});
+
+describe("menu button with a single item", () => {
+  let component;
+  let toggleButton;
+  let menu;
+  let items;
+
+  beforeEach(() => {
+    const html = `
+      <div class="moj-button-menu" data-module="moj-button-menu" data-button-classes="govuk-button--warning custom-class">
+          <a href="#one" role="button" class="govuk-button--inverse">First action</a>
+      </div>`;
+
+    component = createComponent({}, html);
+    new MOJFrontend.ButtonMenu(component).init();
+
+    toggleButton = queryByRole(component, "button", { name: "Actions" });
+    menu = screen.queryByRole("list", { hidden: true });
+    items = menu?.queryByRole("button", { hidden: true });
+  });
+
+  afterEach(() => {
+    document.body.innerHTML = "";
+  });
+
+  test("menu is not created", () => {
+    expect(menu).toBeNull();
+  });
+
+  test("there are no items", () => {
+    expect(items).toBeUndefined();
+  });
+
+  test("there is no toggle button", () => {
+    expect(toggleButton).toBeNull();
+  });
+
+  test("first item has become button", () => {
+    const button = screen.queryByRole("button", { name: "First action" });
+
+    expect(button).not.toBeNull();
+  });
+
+  test("first item has buttonClasses config applied", () => {
+    const button = screen.queryByRole("button", { name: "First action" });
+
+    expect(button).toHaveClass("govuk-button--warning", "custom-class");
+    expect(button).not.toHaveClass("govuk-button--inverse");
+  });
+});

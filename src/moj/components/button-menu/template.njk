@@ -28,7 +28,7 @@
 <div class="{{- classNames -}}" data-module="moj-button-menu" {{- govukAttributes(params.attributes) -}}  {{- govukAttributes(buttonAttributes) -}}>
     {%- for item in params.items %}
       {%- if item.classes %}
-      {% set itemClassNames = fitemClassNames + " " + item.classes %}
+      {% set itemClassNames = itemClassNames + " " + item.classes %}
   {% endif %}
   {{ govukButton({
           element: item.element,

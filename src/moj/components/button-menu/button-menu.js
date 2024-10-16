@@ -42,16 +42,14 @@ MOJFrontend.ButtonMenu.prototype.init = function () {
   // If only one button is provided, don't initiate a menu and toggle button
   // if classes have been provided for the toggleButton, apply them to the single item
   if (this.$module.children.length == 1) {
-    const button = this.$module.children[0]
-      button.classList.forEach((className) => {
-        if (className.match(/govuk-button-/)) {
-          button.classList.remove(className);
-        }
-      });
+    const button = this.$module.children[0];
+    button.classList.forEach((className) => {
+      if (className.startsWith("govuk-button-")) {
+        button.classList.remove(className);
+      }
+    });
     if (this.config.buttonClasses) {
-      button.classList.add(
-        ...this.config.buttonClasses.split(" "),
-      );
+      button.classList.add(...this.config.buttonClasses.split(" "));
     }
   }
   // Otherwise intialise a button menu
@@ -114,7 +112,7 @@ MOJFrontend.ButtonMenu.prototype.setupMenuItems = function () {
     }
 
     item.classList.forEach((className) => {
-      if (className.match(/govuk-button/)) {
+      if (className.startsWith("govuk-button")) {
         item.classList.remove(className);
       }
     });
