@@ -1,5 +1,5 @@
 ---
-layout: layouts/component.njk
+layout: layouts/component-no-feedback.njk
 title: Button menu
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/685
 ---
@@ -129,12 +129,20 @@ Adding a button menu to the multi select component helps users complete common t
 
 <p><img src="/assets/images/button-menu-multi-select-example.svg" alt="An example of a button menu and GOV.UK default button on a Ministry of Justice webpage. The grey button menu is to the right of the green button. This is next to the H2 title 'Case management'. Both are below the H1 title 'Case management'. The title of the green button is 'Record review' and the button menu is 'Print options', which contains: Print case, Print review, Print investigation and Print referral."></p>
 
-## Contributors
-
-Thanks to Stephen Robertson, Rich Cooley, Al Laing, Jo Dimbleby, Dave Evans, Jim Bailey, Thomas Geraghty and Andy Keen for giving feedback on this component.
-
-## Help and feedback
+## Get help and contribute
 
 ### Get help
 
 You can [contact the MoJ Design System team for help or support using this component](https://design-patterns.service.justice.gov.uk/community/help-and-feedback/).
+
+### Help improve this component
+
+The MoJ Design System team would like to hear:
+* how you have used this component in your service
+* any feedback you have about its usage, for example accessibility or ideas for improvement
+
+Add these comments to the <a href='{{ githuburl }}'>{{ title }} Github discussion</a>.
+
+### Contributors
+
+Thanks to Stephen Robertson, Rich Cooley, Al Laing, Jo Dimbleby, Dave Evans, Jim Bailey, Thomas Geraghty and Andy Keen for giving feedback on this component.
