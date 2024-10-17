@@ -7,13 +7,15 @@ title: Identity bar
 
 {% example "/examples/identity-bar", 150 %}
 
-## When to use
+## Overview
+
+### When to use
 
 Use the identity bar component to give users context of where they are within a service such as viewing a case.
 
 This component is helpful when an entity consists of additional [sub sections](../sub-navigation).
 
-## When not to use
+### When not to use
 
 Don't use this component if there's only one details page. For example, clicking a case in a case list and seeing a single page of information about the case.
 
