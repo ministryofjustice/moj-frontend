@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Scrollable pane
+type: component
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/711
 ---
 
 {% example "/examples/scrollable-pane", 470 %}

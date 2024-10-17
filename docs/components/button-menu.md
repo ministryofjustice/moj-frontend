@@ -1,6 +1,9 @@
 ---
 layout: layouts/component.njk
 title: Button menu
+type: component
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/685
+contributors: Stephen Robertson, Rich Cooley, Al Laing, Jo Dimbleby, Dave Evans, Jim Bailey, Thomas Geraghty and Andy Keen
 ---
 
 {% lastUpdated "button-menu" %}

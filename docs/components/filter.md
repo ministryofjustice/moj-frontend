@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Filter
+type: component
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/197
 ---
 
 {% banner "A similar component exists" %}

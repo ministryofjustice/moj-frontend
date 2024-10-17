@@ -1,6 +1,8 @@
 ---
 layout: layouts/patterns.njk
 title: Add to a list
+type: pattern
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/203
 ---
 
 {% banner "Other departments have a similar patterns" %}
@@ -21,7 +23,7 @@ Use this pattern when users need to add similar information many times, and chec
 
 Do not use this pattern when users need to add different kinds of information that do not relate to each other.
 
-If users only need to add information a couple of times, consider using [add another](../../components/add-another). 
+If users only need to add information a couple of times, consider using [add another](../../components/add-another).
 
 ## How to use
 
@@ -45,13 +47,13 @@ Use components that best suit the information you're asking for, such as [text i
     <img alt="Example of a summary of information the was added to the list which includes the name of a dependent and the ability to change or remove them from the list. Has a question if they wanto to add more dependents, and a button to save and continue to the next page." src="../../assets/images/add-to-a-list-02.png" width="40%">
 </div>
 
-Use [summary list](https://design-system.service.gov.uk/components/summary-list/) to let users view a summary of what they have added to the list. 
+Use [summary list](https://design-system.service.gov.uk/components/summary-list/) to let users view a summary of what they have added to the list.
 
 Use [radios](https://design-system.service.gov.uk/components/radios/) to ask users if they want to add more things to the list. Use their answer to take users to the original question page to add similar information, or move to the next question.
 
 You may want to add these links to the summary list:
 
-- 'Change' link to change things on the list 
+- 'Change' link to change things on the list
 - 'Remove' link to remove things from the list
 
 If you use a 'Remove' link, you should ask the user to confirm they want to remove something from the list.
@@ -68,10 +70,10 @@ This pattern:
 - has had an external accessibility audit with Digital Accessibility Centre (DAC)
 - is working in a live service (Apply for legal aid)
 
-## Contribute 
+## Contribute
 
 [Discuss add to a list on GitHub](https://github.com/ministryofjustice/moj-frontend/discussions/203)
 
-### Things we don't know enough about 
+### Things we don't know enough about
 
-- On the list page, should we have the page title large and the question small or the page title small and the question large. 
+- On the list page, should we have the page title large and the question small or the page title small and the question large.

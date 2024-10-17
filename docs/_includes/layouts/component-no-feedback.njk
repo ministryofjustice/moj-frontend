@@ -144,12 +144,6 @@
         {{ content | safe }}
       </main>
 
-      {% if isIndex or isArchive %}
-      {% else %}
-        {% include "./partials/get-help-and-contribute.njk" %}
-      {% endif %}
-
-
     </div>
   </div>
 {% endblock %}

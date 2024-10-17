@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Multi select
+type: component
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/206
 ---
 
 {% lastUpdated "multi-select" %}

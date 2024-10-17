@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Add another
+type: component
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/686
 ---
 
 {% lastUpdated "add-another" %}

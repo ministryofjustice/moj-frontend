@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Organisation switcher
+type: component
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/239
 ---
 
 {% lastUpdated "organisation-switcher" %}

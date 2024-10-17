@@ -53,7 +53,10 @@
         {{ content | safe }}
       </main>
 
-        {% include "./partials/suggest-a-change-and-help.njk" %}
+      {% if isIndex or isArchive %}
+      {% else %}
+        {% include "./partials/get-help-and-contribute.njk" %}
+      {% endif %}
 
     </div>
   </div>

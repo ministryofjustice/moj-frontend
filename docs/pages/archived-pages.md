@@ -1,5 +1,6 @@
 ---
 layout: layouts/pages.njk
+isArchive: true
 title: Archived pages
 ---
 
