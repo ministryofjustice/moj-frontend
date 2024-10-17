@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Date picker
+type: component
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703
 ---
 
 <span class="govuk-caption-xl">The date picker component enables users to select a date from a calendar.  </span>

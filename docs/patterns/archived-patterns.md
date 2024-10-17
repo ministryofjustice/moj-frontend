@@ -1,5 +1,6 @@
 ---
 layout: layouts/patterns.njk
+isArchive: true
 title: Archived patterns
 ---
 

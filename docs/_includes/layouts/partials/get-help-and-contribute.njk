@@ -1,0 +1,28 @@
+
+<h2 class="govuk-heading-l">Get help and contribute</h2>
+
+<p class="govuk-body">
+  You can <a class="govuk-link" href="https://design-patterns.service.justice.gov.uk/community/help-and-feedback">contact the MoJ Design System team for help or support using this {{ type }}</a>.
+</p>
+
+<h3 class="govuk-heading-m">Help improve this {{ type }}</h3>
+<p class="govuk-body">
+  The MoJ Design System team would like to hear:
+  <ul class="govuk-list govuk-list--bullet">
+    <li>how you have used this {{ type }} in your service</li>
+    <li>any feedback you have about its usage, for example accessibility or ideas for improvement</li>
+  </ul>
+</p>
+
+<p class="govuk-body">
+  Add these comments to the <a class="govuk-link" href= {{githuburl}} >{{ title|lower }} discussion on Github</a>.</p>
+</p>
+
+{% if contributors %}
+  <h3 class="govuk-heading-m">Contributors</h3>
+  <p class="govuk-body">
+    Thanks to {{ contributors }} for giving feedback on this {{ type }}.</p>
+  </p>
+{% endif %}
+
+<div class="govuk-!-padding-bottom-7"></div>

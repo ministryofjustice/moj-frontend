@@ -1,7 +1,9 @@
 ---
 layout: layouts/pages.njk
 title: Case list pages
+type: page
 redirect_from: docs/patterns/case-list.md
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/242
 ---
 
 <div class="govuk-form-group">

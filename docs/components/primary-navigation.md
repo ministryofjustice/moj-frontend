@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Primary navigation
+type: component
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/710
 ---
 
 {% lastUpdated "primary-navigation" %}

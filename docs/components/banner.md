@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Banner
+type: component
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/835
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}
