@@ -15,7 +15,7 @@ Use the button menu to display multiple actions to a user. They open it with the
 
 ### When to use
 
-To show multiple tasks to users, start with the GOV.UK Design System button group. This helps users to find what they need.
+To show multiple tasks to users, start with the [GOV.UK Design System button group](https://design-system.service.gov.uk/components/button/#grouping-buttons). This helps users to find what they need.
 
 Consider the MoJ Design System button menu instead if the buttons:
 
@@ -85,10 +85,9 @@ You can add a button menu alongside a link or GOV.UK button. This code has corre
 
 {% example "/examples/button-menu-grouped", 275 %}
 
-
 ### Button colour
 
-All the menu items are grey. The colour of the menu title button follows the [GOV.UK Design System guidance on button colours](https://design-system.service.gov.uk/components/button/#default-buttons). It defaults to green (default) but you can change it.
+All the menu items are grey. The colour of the menu title button follows the [GOV.UK Design System guidance on button colours](https://design-system.service.gov.uk/components/button/#default-buttons). It's set to green (the default button colour) but you can change it.
 
 Keep it green:
 
@@ -141,7 +140,7 @@ The MoJ Design System team would like to hear:
 * how you have used this component in your service
 * any feedback you have about its usage, for example accessibility or ideas for improvement
 
-Add these comments to the <a href='{{ githuburl }}'>{{ title }} Github discussion</a>.
+Add these comments to the <a href='{{ githuburl }}'>{{ title }} discussion on Github</a>.
 
 ### Contributors
 
