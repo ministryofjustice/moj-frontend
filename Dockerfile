@@ -7,6 +7,7 @@ WORKDIR /app
 FROM base AS staging-build
 COPY package.json package.json
 COPY package-lock.json package-lock.json
+COPY .husky/install.mjs .husky/install.mjs
 RUN npm ci
 
 COPY docs docs
