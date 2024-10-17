@@ -17,22 +17,28 @@ This component is helpful when an entity consists of additional [sub sections](.
 
 Don't use this component if there's only one details page. For example, clicking a case in a case list and seeing a single page of information about the case.
 
+### Similar or linked components
+
+There's also the:
+- [button menu component](../button-menu/)
+- [page header actions component](../page-header-actions/)
+
 ## How to use
 
-### Action menu
+### Displaying tasks
 
-You can optionally configure the component to display actions that the user can take from within any sub section.
+You can use buttons to display tasks which relate to the identity bar.
 
 {% example "/examples/identity-bar-menu", 150 %}
 
-### Drop down action menu
+### Displaying a menu of tasks
 
-The action menu uses the [menu](../button-menu) component which can be configured to show as a drop down menu.
+You can use the [button menu](../button-menu/) to display tasks which relate to the identity bar.  
 
 {% example "/examples/identity-bar-menu-toggle", 300 %}
 
-### Primary button plus secondary action menu
+### Displaying primary and secondary tasks
 
-This [menu](../button-menu) is made up of multiple menus. The first consists of just one button and is exposed because it's a primary action. The second menu consists of two secondary options, which are placed within a drop down menu.
+You can use the [button menu](../button-menu/) alongside a [GOV.UK button](https://design-system.service.gov.uk/components/button/) (or link) to show tasks of differing importance which relate to the identity bar. This code has correct spacing and creates a better user experience for people on mobile devices.
 
 {% example "/examples/identity-bar-secondary-toggle", 300 %}
