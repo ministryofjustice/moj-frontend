@@ -29,7 +29,7 @@ Consider the MoJ Design System button menu instead if the buttons:
 
 Do not use the button menu:
 
-- as navigation or to link to a page for the sole purpose of viewing it, for example a booking
+- as navigation or to link to a page for the sole purpose of viewing it, for example a booking (this is an accessibility issue and counts as a WCAG failure)
 - for items in a [GOV.UK Design System summary list](https://design-system.service.gov.uk/components/summary-list/) - add link text to each row
 - to display options like on a [GOV.UK Design System question page](https://design-system.service.gov.uk/patterns/question-pages/)  - list them as bullets
 - for warning or inactive (disabled) buttons
