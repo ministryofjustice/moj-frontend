@@ -71,4 +71,10 @@ MOJFrontend.initAll = function (options) {
   MOJFrontend.nodeListForEach($datepickers, function ($datepicker) {
     new MOJFrontend.DatePicker($datepicker, {}).init();
   })
+
+  const $buttonMenus = scope.querySelectorAll('[data-module="moj-button-menu"]')
+  MOJFrontend.nodeListForEach($buttonMenus, function ($buttonmenu) {
+    new MOJFrontend.ButtonMenu($buttonmenu, {}).init();
+  })
+
 }

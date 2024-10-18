@@ -8,27 +8,30 @@ const mojFilters = require("./src/moj/filters/all");
 const nunjucks = require("nunjucks");
 const path = require("path");
 const { execSync } = require("child_process");
-const releasePackage = require('./package/package.json');
+const releasePackage = require("./package/package.json");
 const sass = require("sass");
-const esbuild = require('esbuild');
+const esbuild = require("esbuild");
 
 module.exports = function (eleventyConfig) {
   /*
    * If the node env is 'dev' then we include the src dir allowing components
    * under development to be watched and loaded
    */
-  const templatePaths = process.env.ENV === 'dev' ? [
-    ".",
-    "src",
-    "docs/_includes/",
-    "node_modules/govuk-frontend/dist/",
-    "node_modules/@ministryofjustice/frontend/",
-  ] : [
-    ".",
-    "docs/_includes/",
-    "node_modules/govuk-frontend/dist/",
-    "node_modules/@ministryofjustice/frontend/",
-  ];
+  const templatePaths =
+    process.env.ENV === "dev"
+      ? [
+          ".",
+          "src",
+          "docs/_includes/",
+          "node_modules/govuk-frontend/dist/",
+          "node_modules/@ministryofjustice/frontend/",
+        ]
+      : [
+          ".",
+          "docs/_includes/",
+          "node_modules/govuk-frontend/dist/",
+          "node_modules/@ministryofjustice/frontend/",
+        ];
 
   const nunjucksEnv = nunjucks.configure(templatePaths);
 
@@ -51,7 +54,7 @@ module.exports = function (eleventyConfig) {
       .disable("code")
       .use(markdownItAnchor, {
         level: [1, 2, 3, 4],
-      })
+      }),
   );
 
   eleventyConfig.addShortcode("example", function (exampleHref, height) {
@@ -59,12 +62,12 @@ module.exports = function (eleventyConfig) {
       fs
         .readFileSync(
           path.join(__dirname, "docs", exampleHref, "index.njk"),
-          "utf8"
+          "utf8",
         )
-        .trim()
+        .trim(),
     );
 
-    nunjucksCode = nunjucksCode.split('<!--no include-->')[0].trim();
+    nunjucksCode = nunjucksCode.split("<!--no include-->")[0].trim();
 
     const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode);
 
@@ -80,7 +83,7 @@ module.exports = function (eleventyConfig) {
       jsCode = fs
         .readFileSync(
           path.join(__dirname, "docs", exampleHref, "script.js"),
-          "utf8"
+          "utf8",
         )
         .trim();
     } catch (e) {}
@@ -89,7 +92,7 @@ module.exports = function (eleventyConfig) {
       href: exampleHref,
       id: exampleHref.replace(/\//g, "-"),
       arguments: data.arguments,
-      figmaLink : data.figma_link,
+      figmaLink: data.figma_link,
       title: data.title,
       height,
       nunjucksCode,
@@ -98,14 +101,17 @@ module.exports = function (eleventyConfig) {
     });
   });
 
-  eleventyConfig.addShortcode("dateInCurrentMonth", (day) => `${day}/${new Date().getMonth()+1}/${new Date().getFullYear()}`);
+  eleventyConfig.addShortcode(
+    "dateInCurrentMonth",
+    (day) => `${day}/${new Date().getMonth() + 1}/${new Date().getFullYear()}`,
+  );
 
   eleventyConfig.addShortcode("lastUpdated", function (component) {
-    if (process.env.STAGING) return '';
+    if (process.env.STAGING) return "";
 
     const dirPath = path.join(__dirname, "src/moj/components", component);
     const [commit, lastUpdated] = execSync(
-      `LANG=en_GB git log -n1 --pretty=format:%H,%ad --date=format:'%e %B %Y' ${dirPath}`
+      `LANG=en_GB git log -n1 --pretty=format:%H,%ad --date=format:'%e %B %Y' ${dirPath}`,
     )
       .toString()
       .split(",");
@@ -157,19 +163,25 @@ module.exports = function (eleventyConfig) {
           })),
         };
       }
-    }
+    },
   );
 
   eleventyConfig.addFilter("getScriptPath", function (inputPath) {
     return inputPath.split("/").slice(1, -1).join("/") + "/script.js";
   });
 
+  eleventyConfig.addFilter("getStylesPath", function (inputPath) {
+    return inputPath.split("/").slice(1, -1).join("/") + "/style.css";
+  });
+
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget("src/moj/components/**/*.njk");
 
   // Copy the docs images to the public assets dir
-  eleventyConfig.addPassthroughCopy( { "docs/assets/images/": "assets/images/"});
-  eleventyConfig.setServerPassthroughCopyBehavior('copy')
+  eleventyConfig.addPassthroughCopy({
+    "docs/assets/images/": "assets/images/",
+  });
+  eleventyConfig.setServerPassthroughCopyBehavior("copy");
 
   // Give gulp a little time..
   eleventyConfig.setWatchThrottleWaitTime(100);
@@ -180,8 +192,8 @@ module.exports = function (eleventyConfig) {
     port: 8080,
     // Reload once assets have been rebuilt by gulp
     watch: [
-      'public/assets/stylesheets/application.css',
-      'public/assets/javascript/all.js'
+      "public/assets/stylesheets/application.css",
+      "public/assets/javascript/all.js",
     ],
     // Show local network IP addresses for device testing
     showAllHosts: true,
