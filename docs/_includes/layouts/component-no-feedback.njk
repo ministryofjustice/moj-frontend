@@ -1,0 +1,149 @@
+{% extends "./base.njk" %}
+
+{%- from "node_modules/@ministryofjustice/frontend/moj/components/side-navigation/macro.njk" import mojSideNavigation %}
+
+{% macro appSideNavigation(config) %}
+  {% set config = config|addActiveAttribute(page.filePathStem | url) %}
+
+  {{ mojSideNavigation(config) }}
+{% endmacro %}
+
+{% block content %}
+  <div class="govuk-width-container govuk-grid-row app-flex-container">
+    <div class="govuk-grid-column-one-third">
+      {{ appSideNavigation({
+        classes: 'govuk-!-padding-top-6',
+        sections: [
+          {
+            heading: {
+              text: "Components"
+            },
+            items: [
+            {
+              text: 'Add another',
+              href: ('/components/add-another' | url)
+            },
+            {
+              text: 'Badge',
+              href: ('/components/badge' | url)
+            },
+            {
+              text: 'Banner',
+              href: ('/components/banner' | url)
+            },
+            {
+              text: 'Button menu',
+              href: ('/components/button-menu' | url)
+            },
+            {
+              text: 'Date picker',
+              href: ('/components/date-picker' | url)
+            },
+            {
+              text: 'Filter',
+              href: ('/components/filter' | url)
+            },
+            {
+              text: 'Header',
+              href: ('/components/header' | url)
+            },
+            {
+              text: 'Identity bar',
+              href: ('/components/identity-bar' | url)
+            },
+            {
+              text: 'Messages',
+              href: ('/components/messages' | url)
+            },
+            {
+              text: 'Multi file upload',
+              href: ('/components/multi-file-upload' | url)
+            },
+            {
+              text: 'Multi select',
+              href: ('/components/multi-select' | url)
+            },
+            {
+              text: 'Notification badge',
+              href: ('/components/notification-badge' | url)
+            },
+            {
+              text: 'Organisation switcher',
+              href: ('/components/organisation-switcher' | url)
+            },
+            {
+              text: 'Page header actions',
+              href: ('/components/page-header-actions' | url)
+            },
+            {
+              text: 'Pagination',
+              href: ('/components/pagination' | url)
+            },
+            {
+              text: 'Password reveal',
+              href: ('/components/password-reveal' | url)
+            },
+            {
+              text: 'Primary navigation',
+              href: ('/components/primary-navigation' | url)
+            },
+            {
+              text: 'Scrollable pane',
+              href: ('/components/scrollable-pane' | url)
+            },
+            {
+              text: 'Search',
+              href: ('/components/search' | url)
+            },
+            {
+              text: 'Side navigation',
+              href: ('/components/side-navigation' | url)
+            },
+            {
+              text: 'Sortable table',
+              href: ('/components/sortable-table' | url)
+            },
+            {
+              text: 'Sub navigation',
+              href: ('/components/sub-navigation' | url)
+            },
+            {
+              text: 'Ticket panel',
+              href: ('/components/ticket-panel' | url)
+            },
+            {
+              text: 'Timeline',
+              href: ('/components/timeline' | url)
+            }
+            ]
+          }
+      ]
+
+        }) }}
+
+      <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+      {{ appSideNavigation({
+        items: [
+          {
+            text: 'Archived components',
+            href: ('/components/archived-components' | url)
+          }
+        ]
+      }) }}
+
+      {% include "./partials/back-to-top.njk" %}
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+      <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
+        <h1 class="govuk-heading-xl">
+          {% if not isIndex %}<span class="govuk-caption-xl">Components</span>{% endif %}
+          {{ title }}
+        </h1>
+        {{ content | safe }}
+      </main>
+
+    </div>
+  </div>
+{% endblock %}

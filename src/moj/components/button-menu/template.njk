@@ -1,11 +1,38 @@
 {%- from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/macros/attributes.njk" import govukAttributes %}
 
-<div class="moj-button-menu {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-  <div class="moj-button-menu__wrapper">
+{#- Set classes for this component #}
+{%- set classNames = "moj-button-menu" -%}
+{%- set itemClassNames = "moj-button-menu__item govuk-button--secondary" %}
+
+{%- if params.classes %}
+  {% set classNames = classNames + " " + params.classes %}
+{% endif %}
+
+{%- set buttonAttributes = {
+  "data-button-text": {
+    value: params.button.text, 
+    optional: true
+    },
+  "data-button-classes": {
+    value: params.button.classes,
+    optional: true 
+  },
+  "data-align-menu": {
+    value: params.alignMenu,
+    optional: true
+  }
+}
+%}
+
+<div class="{{- classNames -}}" data-module="moj-button-menu" {{- govukAttributes(params.attributes) -}}  {{- govukAttributes(buttonAttributes) -}}>
     {%- for item in params.items %}
-      {{ govukButton({
+      {%- if item.classes %}
+      {% set itemClassNames = itemClassNames + " " + item.classes %}
+  {% endif %}
+  {{ govukButton({
           element: item.element,
-          classes: 'moj-button-menu__item ' + (item.classes if item.classes) + ' ' + (params.buttonClasses if params.buttonClasses),
+          classes: itemClassNames,
           text: item.text,
           html: item.html,
           name: item.name,
@@ -15,8 +42,7 @@
           disabled: item.disabled,
           attributes: item.attributes,
           preventDoubleClick: items.preventDoubleClick
-        }) }}
+          }) }}
     {% endfor -%}
-  </div>
 </div>
 
