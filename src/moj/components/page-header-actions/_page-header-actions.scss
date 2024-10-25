@@ -15,7 +15,10 @@
 }
 
 .moj-page-header-actions__actions {
-  .moj-page-header-actions__action {
+  .moj-button-group {
+    margin-bottom: 0
+  }
+  .govuk-button {
     margin-bottom: 0;
   }
 }
