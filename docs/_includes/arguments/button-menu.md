@@ -3,7 +3,7 @@
 | Name          | Type   | Required | Description                                                               |
 | ------------- | ------ | -------- | ------------------------------------------------------------------------- |
 | items         | Array  | Yes      | An array of button item objects. See [items](#items).                     |
-| button        | Object | No       | Properties of the menu title button. See [button] (#button).                                   |
+| button        | Object | No       | Properties of the menu title button. See [button](#button).                                   |
 | attributes    | Object | No       | HTML attributes (for example data attributes) to add to the button menu container. |
 
 ### Button
