@@ -22,8 +22,8 @@ Don't use this component if there's only one details page. For example, clicking
 ### Similar or linked components
 
 There's also the:
-- [button menu component](../button-menu/)
-- [page header actions component](../page-header-actions/)
+- [button menu component](/components/button-menu/)
+- [page header actions component](/components/page-header-actions/)
 
 ## How to use
 
@@ -35,12 +35,12 @@ You can use buttons to display tasks which relate to the identity bar.
 
 ### Displaying a menu of tasks
 
-You can use the [button menu](../button-menu/) to display tasks which relate to the identity bar.  
+You can use the [button menu](/components/button-menu/) to display tasks which relate to the identity bar.  
 
 {% example "/examples/identity-bar-menu-toggle", 300 %}
 
 ### Displaying primary and secondary tasks
 
-You can use the [button menu](../button-menu/) alongside a [GOV.UK button](https://design-system.service.gov.uk/components/button/) (or link) to show tasks of differing importance which relate to the identity bar. This code has correct spacing and creates a better user experience for people on mobile devices.
+You can use the [button menu](/components/button-menu/) alongside a [GOV.UK button](https://design-system.service.gov.uk/components/button/) (or link) to show tasks of differing importance which relate to the identity bar. This code has correct spacing and creates a better user experience for people on mobile devices.
 
 {% example "/examples/identity-bar-secondary-toggle", 300 %}
