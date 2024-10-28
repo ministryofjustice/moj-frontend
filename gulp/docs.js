@@ -1,6 +1,7 @@
 const gulp = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
-const {createGulpEsbuild} = require("gulp-esbuild")
+const rename = require("gulp-rename");
+const {createGulpEsbuild} = require("gulp-esbuild");
 const esbuild = createGulpEsbuild({
 	incremental: false, // enables the esbuild"s incremental build
 	piping: true,      // enables piping
@@ -42,7 +43,10 @@ gulp.task(
     return gulp
       .src("docs/assets/stylesheets/application.scss")
       .pipe(sass())
-      .pipe(gulp.dest("public/assets/stylesheets"));
+      .pipe(rename({
+        suffix: `-${VERSION}`
+      }))
+      .pipe(gulp.dest("public/assets/stylesheets/"));
   }
 );
 
