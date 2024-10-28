@@ -1,3 +1,102 @@
+# [3.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v2.2.4...v3.0.0) (2024-10-28)
+
+
+### Features
+
+* **button menu:** Button menu updates ([#825](https://github.com/ministryofjustice/moj-frontend/issues/825)) ([d989f2d](https://github.com/ministryofjustice/moj-frontend/commit/d989f2db452bfa4ac53c2e1d56346f50503c15fc))
+
+
+### BREAKING CHANGES
+
+* **button menu:** The component no longer handles being a button group, and it no longer responsively
+switches between a button group and a button menu
+
+* feat(button menu): wip - continued work on updated button menu
+
+* feat(button menu): wip - work on styles and interaction details
+
+* ci(husky): prevent husky failing on staging deploy
+
+* docs(updating documentation content): updating button menu documentation content
+
+* feat(button menu): final updates to button menu and adjust page header actions
+
+* feat(button menu): create examples for button menu
+
+* feat(button menu): remove menu and menuitem roles and switch to list
+
+This is not a real "menu" in accessibility terms, so the role is incorrect, and using menuitem on the
+items removes link/button semantics
+
+* feat(button menu): update tests for new structure and test js and data api
+
+* Changes to button menu guidance
+
+- Added example images
+- Updated 'help and feedback' partial
+- Reviewed heading levels
+
+* Updating example image
+
+Updating example image
+
+* feat(button menu): styling changes to improve accessibility
+
+* feat(button menu): refactor initMenu method
+
+* refactor(button menu): tidy up for code review
+
+* feat(button menu): updates to identity bar and page header actions
+
+* feat(button menu): changes from code review and add tests for single button instance
+
+* feat(button menu): update examples to use secondary button style, fix chevron alignment
+
+* Button menu updates
+
+- Updated "what's new" on homepage
+- Updated Get help and contribute section on button menu page
+- Updated example images
+- Reverted 'Suggest a change' box
+
+* docs(identity bar component updates): updates to the identity bar component based on the button menu
+
+* docs(updating documentation content): updating identity bar documentation
+
+* docs(updating documentation content): updating button menu documentation
+
+Adding link to GOV.UK Design System button group
+Changing multiple mention of default
+Changing Github content
+
+* feat(button menu): set default example to use button tags
+
+* docs(updating documentation content): updating button menu documentation
+
+Including content about WCAG failure for using component as menu
+
+* feat(button menu and date picker): update example images to png
+
+* feat(page header actions): update to use moj-button-group instead of button-menu
+
+* feat(button menu): update the nunjucks arguments documentation
+
+* fix(button menu): add in anchor link to button attributes within nunjucks arguments
+
+* fix(button menu): remove space to fix anchor link
+
+* docs(button menu): fix references to input in items text and html docs
+
+* docs(button menu): remove unnecessary govuk button include in default example
+
+* docs(button menu): final few tweaks
+
+* docs(button menu): minor content changes
+
+* docs(identity bar): update relative links in page
+
+* fix(button menu): fix button spacings on very small screens
+
 ## [2.2.4](https://github.com/ministryofjustice/moj-frontend/compare/v2.2.3...v2.2.4) (2024-09-25)
 
 
