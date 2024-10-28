@@ -46,15 +46,15 @@ When deciding on the menu length consider that:
 There’s also the:
 
 - [button component on the GOV.UK Design System](https://design-system.service.gov.uk/components/button/)
-- [page header actions component](https://design-patterns.service.justice.gov.uk/components/page-header-actions/)
+- [page header actions component](/components/page-header-actions/)
 - [summary list component on the GOV.UK Design System](https://design-system.service.gov.uk/components/summary-list/)
-- [identity bar component](https://design-patterns.service.justice.gov.uk/components/identity-bar/)
+- [identity bar component](/components/identity-bar/)
 
 ## How to use
 
 ### Position on the page
 
-Place the button menu near the heading that the tasks relate to. To add it next to a heading, put it in the same container. To add it to an H1 use the [page header actions component](https://design-patterns.service.justice.gov.uk/components/page-header-actions/).
+Place the button menu near the heading that the tasks relate to. If you want to add it next to a heading, put it in the same container. To add it to an H1 use the [page header actions component](https://design-patterns.service.justice.gov.uk/components/page-header-actions/).
 
 For tabbed content, adding it within the tabs may help users to understand:
 
