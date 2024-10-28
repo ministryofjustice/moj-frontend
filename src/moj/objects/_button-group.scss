@@ -11,7 +11,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: baseline;
-      margin-right: ($horizontal-gap * -1);
+    gap: $horizontal-gap;
+    margin-right: 0;
 
   .moj-button-menu {
       margin-bottom: $vertical-gap + $button-shadow-size;
@@ -20,11 +21,17 @@
   .moj-button-menu .moj-button-menu__toggle-button {
       vertical-align: baseline;
     }
+
   .moj-button-menu,
   .govuk-button,
   .govuk-link {
     width: auto;
-    margin-right: $horizontal-gap;
-  }
+    margin-right: 0;
+      margin-bottom: 0;
+    }
+
+  /* :is(.govuk, .moj-button-menu, .govuk-link) + :is(.govuk, .moj-button-menu, .govuk-link) { */
+  /*     margin-top: $horizontal-gap; */
+  /*   } */
   }
 }

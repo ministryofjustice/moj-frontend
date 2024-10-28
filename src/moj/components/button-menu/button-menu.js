@@ -47,6 +47,7 @@ MOJFrontend.ButtonMenu.prototype.init = function () {
       if (className.startsWith("govuk-button-")) {
         button.classList.remove(className);
       }
+      button.classList.remove("moj-button-menu__item")
     });
     if (this.config.buttonClasses) {
       button.classList.add(...this.config.buttonClasses.split(" "));
