@@ -11,18 +11,16 @@
   padding-top: govuk-spacing(2);
 }
 
-
 .moj-identity-bar__container {
   @include moj-width-container;
   font-size: 0; /* Hide whitespace between elements */
   text-align: justify; /* Trick to remove the need for floats */
 
   &:after {
-    content: '';
+    content: "";
     display: inline-block;
     width: 100%;
   }
-
 }
 
 .moj-identity-bar__title {
@@ -42,18 +40,13 @@
     padding-top: govuk-spacing(2) + 1px; /* Alignment tweaks */
     padding-bottom: govuk-spacing(2) - 1px; /* Alignment tweaks */
   }
-
 }
 
-
 .moj-identity-bar__actions {
-  margin-bottom: - govuk-spacing(2);
-
   @include govuk-media-query($from: tablet) {
     display: inline-block;
     vertical-align: middle;
   }
-
 }
 
 .moj-identity-bar__menu {
@@ -64,4 +57,7 @@
     margin-right: 0;
   }
 
+  .moj-button-menu__toggle-button {
+    margin-bottom: 0;
+  }
 }

@@ -1,95 +1,49 @@
-/* ==========================================================================
-   #BUTTON GROUP
-   ========================================================================== */
+$moj-button-hover-colour: #767676;
+$moj-datepicker-mid-grey: #949494;
 
 .moj-button-menu {
   display: inline-block;
   position: relative;
-}
 
-/* TOGGLE BUTTON */
+  > .govuk-button {
+    margin-bottom: 0;
+  }
+}
 
 .moj-button-menu__toggle-button {
-  display: inline-block;
-  margin-right: govuk-spacing(2);
-  margin-bottom: govuk-spacing(2);
-  width: auto; // Override GDS’s 100% width
+  display: inline;
+}
 
-  &:last-child {
-    margin-right: 0;
-  }
+.moj-button-menu__toggle-button span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
 
-  &:after {
-    background-repeat: no-repeat;
-    background-image: url(#{$moj-images-path}icon-arrow-white-down.svg);
-    content: '';
-    display: inline-block;
-    height: 5px;
-    margin-left: govuk-spacing(2);
-    width: 10px;
-    vertical-align: middle;
+.moj-button-menu__toggle-button svg {
+  transform: rotate(180deg);
+  margin-top: 2px;
+}
+
+.moj-button-menu__toggle-button[aria-expanded="true"] svg {
+  transform: rotate(0deg);
+}
+
+.moj-button-menu__wrapper {
+  list-style: none;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  top: 43px; //38px button height, 2px shadow, 3px gap
+  z-index: 10;
+
+  &--right {
+    right: 0;
   }
 }
 
-.moj-button-menu__toggle-button:focus {
-  &:after {
-    background-image: url(#{$moj-images-path}icon-arrow-black-down.svg);
-  }
-}
-
-.moj-button-menu__toggle-button[aria-expanded="true"]:focus {
-  &:after {
-    background-image: url(#{$moj-images-path}icon-arrow-black-up.svg);
-  }
-}
-
-.moj-button-menu__toggle-button:hover {
-  &:after {
-    background-image: url(#{$moj-images-path}icon-arrow-white-down.svg);
-  }
-}
-
-.moj-button-menu__toggle-button[aria-expanded="true"]:hover {
-  &:after {
-    background-image: url(#{$moj-images-path}icon-arrow-white-up.svg);
-  }
-}
-
-.moj-button-menu__toggle-button[aria-expanded="true"] {
-  &:after {
-    background-image: url(#{$moj-images-path}icon-arrow-white-up.svg);
-  }
-}
-
-.moj-button-menu__toggle-button--secondary {
-  margin-bottom: govuk-spacing(1);
-  margin-right: 0;
-  &:after {
-    background-image: url(#{$moj-images-path}icon-arrow-black-down.svg);
-  }
-}
-
-.moj-button-menu__toggle-button--secondary[aria-expanded="true"] {
-  &:after {
-    background-image: url(#{$moj-images-path}icon-arrow-black-up.svg);
-  }
-}
-
-.moj-button-menu__toggle-button--secondary:hover {
-  &:after {
-    background-image: url(#{$moj-images-path}icon-arrow-black-down.svg);
-  }
-}
-
-.moj-button-menu__toggle-button--secondary[aria-expanded="true"]:hover {
-  &:after {
-    background-image: url(#{$moj-images-path}icon-arrow-black-up.svg);
-  }
-}
-
-
-/* MENU ITEM */
-
+/* Menu items with no JS */
 .moj-button-menu__item {
   display: inline-block;
   margin-right: govuk-spacing(2);
@@ -100,57 +54,65 @@
   }
 }
 
-.moj-button-menu [role=menuitem] {
-  @include govuk-font(19);
-  background-color: govuk-colour("light-grey");
-  border: none;
+/* Menu items with JS */
+.moj-button-menu li > .moj-button-menu__item {
+  $button-shadow-size: 0;
+  @include govuk-font($size: 19, $line-height: 19px);
+
   box-sizing: border-box;
-  display: block;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin-top: 0;
+  margin-right: 0;
+  margin-left: 0;
   margin-bottom: 0;
   padding: govuk-spacing(2);
+  border: $govuk-border-width-form-element solid transparent;
+  border-radius: 0;
+  border-bottom: 1px solid $moj-datepicker-mid-grey;
+  color: $govuk-text-colour;
+  background-color: govuk-colour("light-grey");
   text-align: left;
-  width: 100%;
-  -webkit-box-sizing: border-box;
+  vertical-align: top;
+  cursor: pointer;
   -webkit-appearance: none;
+  appearance: none;
 
   &:link,
-  &:visited {
+  &:visited,
+  &:active,
+  &:hover {
+    color: $govuk-text-colour;
     text-decoration: none;
-    color: govuk-colour("black");
+  }
+
+  &:active,
+  &:hover {
+    color: govuk-colour("white");
+  }
+
+  // Fix unwanted button padding in Firefox
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
   }
 
   &:hover {
-    background-color: govuk-colour("mid-grey");
+    background-color: $moj-button-hover-colour;
   }
 
   &:focus {
-    outline: 3px solid govuk-colour("yellow");
-    outline-offset: 0;
-		position: relative;
+    border-color: $govuk-focus-colour;
+    outline: $govuk-focus-width solid transparent;
+    box-shadow: inset 0 0 0 1px $govuk-focus-colour;
     z-index: 10;
-	}
-}
+  }
 
-/* MENU WRAPPER */
-
-.moj-button-menu__wrapper {
-  font-size: 0; /* Hide whitespace between elements */
-}
-
-.moj-button-menu__wrapper--right {
-  right: 0;
-}
-
-.moj-button-menu [role=menu] {
-  position: absolute;
-  width: 200px;
-  z-index: 10;
-}
-
-.moj-button-menu [aria-expanded="true"] + [role=menu] {
-	display: block;
-}
-
-.moj-button-menu [aria-expanded="false"] + [role=menu] {
-	display: none;
+  &:focus:not(:active):not(:hover) {
+    border-color: $govuk-focus-colour;
+    color: $govuk-focus-text-colour;
+    background-color: $govuk-focus-colour;
+    box-shadow: 0 2px 0 $govuk-focus-text-colour;
+  }
 }
