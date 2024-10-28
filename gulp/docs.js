@@ -5,6 +5,7 @@ const esbuild = createGulpEsbuild({
 	incremental: false, // enables the esbuild"s incremental build
 	piping: true,      // enables piping
 })
+const VERSION = "20241028"
 
 // Copy all the govuk-frontend assets across
 gulp.task(
@@ -51,7 +52,7 @@ gulp.task(
     return gulp
       .src("docs/assets/javascript/all.js")
       .pipe(esbuild({
-          outfile: "all.js",
+          outfile: `all-${VERSION}.js`,
           target: "es6",
           bundle: true,
       }))
