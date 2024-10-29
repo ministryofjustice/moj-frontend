@@ -3,6 +3,9 @@ layout: layouts/component.njk
 title: Date picker
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703
+contributors: Dom Billington, Eddie Shannon, David Middleton, and the DPS Connect team
+basedon: Scottish Government Design System date picker
+basedonurl: https://designsystem.gov.scot/components/date-picker
 ---
 
 <span class="govuk-caption-xl">The date picker component enables users to select a date from a calendar.  </span>
@@ -113,10 +116,3 @@ If you're using more than one date picker, give each text field its own error su
 ### Asking a question with a date picker
 
 <p><img src="/assets/images/date-picker-question-example-2024.png" alt="A screenshot with the title 'What date do you want to view appointments for?' Underneath is the title 'Date' and then a text input field with the calendar icon. Underneath that is a green 'Continue' button."></p>
-
-
-## Contributors
-
-Thanks to Dom Billington, Eddie Shannon, David Middleton, and the DPS Connect team for contributing this component.
-
-This component was based on the [Scottish Government Design System date picker](https://designsystem.gov.scot/components/date-picker).

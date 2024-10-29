@@ -2,7 +2,7 @@
 <h2 class="govuk-heading-l">Get help and contribute</h2>
 
 <p class="govuk-body">
-  You can <a class="govuk-link" href="https://design-patterns.service.justice.gov.uk/community/help-and-feedback">contact the MoJ Design System team for help or support using this {{ type }}</a>.
+  You can <a class="govuk-link" href="/community/help-and-feedback">contact the MoJ Design System team for help or support using this {{ type }}</a>.
 </p>
 
 <h3 class="govuk-heading-m">Help improve this {{ type }}</h3>
@@ -15,7 +15,7 @@
 </p>
 
 <p class="govuk-body">
-  Add these comments to the <a class="govuk-link" href= {{githuburl}} >{{ title|lower }} discussion on Github</a>.</p>
+  Add these comments to the <a class="govuk-link" href= {{githuburl}} >{{ title|lower }} discussion on Github</a>.
 </p>
 
 {% if contributors %}
@@ -24,5 +24,13 @@
     Thanks to {{ contributors }} for giving feedback on this {{ type }}.</p>
   </p>
 {% endif %}
+
+{% if basedon %}
+  <p class="govuk-body">
+    This {{ type }} was based on the <a class="govuk-link" href= {{ basedonurl }}>{{basedon}}</a>.
+  </p>
+  </p>
+{% endif %}
+
 
 <div class="govuk-!-padding-bottom-7"></div>
