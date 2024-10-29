@@ -4,7 +4,9 @@ on:
   pull_request:
     branches: [ main ]
   push:
-    branches: [ main ]
+    branches:
+      - "main"
+      - "*.*.x"
 
 jobs:
   build:
