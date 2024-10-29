@@ -1,3 +1,10 @@
+## [2.2.5](https://github.com/ministryofjustice/moj-frontend/compare/v2.2.4...v2.2.5) (2024-10-29)
+
+
+### Bug Fixes
+
+* **header:** add crest to site header and header component ([8827315](https://github.com/ministryofjustice/moj-frontend/commit/88273150f4d4c1af2e1af3d0f82ade58b861ae8e))
+
 ## [2.2.4](https://github.com/ministryofjustice/moj-frontend/compare/v2.2.3...v2.2.4) (2024-09-25)
 
 
