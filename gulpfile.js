@@ -31,6 +31,7 @@ gulp.task(
     "docs:copy-files",
     "build:package",
     gulp.parallel("docs:styles", "docs:scripts"),
+    "docs:revision"
   )
 );
 

@@ -107,12 +107,24 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addShortcode(
+    "assetPath",
+    (filepath) => {
+      if (process.env.ENV == "production" || process.env.ENV == "production") {
+        const manifest = JSON.parse(fs.readFileSync('path/to/rev-manifest', 'utf8'));
+        const filename = filepath.split('/').at(-1)
+      } else {
+        return `/assets/${filepath}`
+      }
+    }
+  )
+
+  eleventyConfig.addShortcode(
     "dateInCurrentMonth",
     (day) => `${day}/${new Date().getMonth() + 1}/${new Date().getFullYear()}`,
   );
 
   eleventyConfig.addShortcode("lastUpdated", function (component) {
-    if (process.env.STAGING) return "";
+    if (process.env.ENV == "staging") return "";
 
     const dirPath = path.join(__dirname, "src/moj/components", component);
     const [commit, lastUpdated] = execSync(
