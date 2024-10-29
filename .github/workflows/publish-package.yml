@@ -5,8 +5,8 @@ on:
     branches: [ main ]
   push:
     branches:
-      - main
-      - *.*.x
+      - "main"
+      - "*.*.x"
 
 jobs:
   build:
