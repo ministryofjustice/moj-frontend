@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v3.0.0...v3.0.1) (2024-10-30)
+
+
+### Bug Fixes
+
+* **header:** coat of arms updates ([#888](https://github.com/ministryofjustice/moj-frontend/issues/888)) ([24ddc23](https://github.com/ministryofjustice/moj-frontend/commit/24ddc23fea560e9584222ef4d3f76ac5b77b7711))
+
 # [3.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v2.2.4...v3.0.0) (2024-10-28)
 
 
