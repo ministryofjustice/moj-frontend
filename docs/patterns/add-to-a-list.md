@@ -10,7 +10,7 @@ This pattern is in the GOV.UK Design System [community backlog](https://github.c
 {% endbanner %}
 
 <div class="govuk-form-group">
-    <img alt="A three step process: Ask the user for information, view a summary of that information and ask if they want to add more of the same type of information, if they do it will take them back to the first step to ask the user for information again." src="../../assets/images/add-to-a-list-05.png" width="100%">
+    <img alt="A three step process: Ask the user for information, view a summary of that information and ask if they want to add more of the same type of information, if they do it will take them back to the first step to ask the user for information again." src="../../assets/images/add-to-a-list-05-2024.png" width="100%">
 </div>
 
 ## When to use
