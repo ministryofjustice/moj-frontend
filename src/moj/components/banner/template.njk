@@ -11,7 +11,7 @@
 
 {%- set classNames = classNames.concat(params.classes) if params.classes %}
 
-{%- set classNames = classNames.join(' ') -%}
+{%- set classNames = classNames | join(' ') -%}
 
 <div 
   class="{{ classNames }}" 
