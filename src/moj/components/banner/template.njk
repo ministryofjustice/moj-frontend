@@ -9,7 +9,9 @@
   {%- set classNames = classNames.concat("moj-banner--information") %}
 {%- endif %}
 
-{%- set classNames = classNames.concat(params.classes) if params.classes %}
+{%- if params.classes %}
+  {%- set classNames = classNames.concat(params.classes) %}
+{%- endif %}
 
 {%- set classNames = classNames | join(' ') -%}
 
