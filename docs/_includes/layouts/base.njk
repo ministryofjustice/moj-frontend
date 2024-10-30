@@ -37,28 +37,26 @@
     <body class="govuk-template__body">
         <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
         {% block body %}
-            <div>
-                  {% include "./partials/header.njk" %}
-                  
-                  <div class="govuk-width-container govuk-grid-row app-flex-container">
-                        <div class="govuk-grid-column-one-quarter">
-                        {% include "./partials/side-navigation.njk" %}
-
-                        {% include "./partials/back-to-top.njk" %}
-                        </div>
-
-
-                        <div class="govuk-grid-column-three-quarters">
-                        {% block content %}
-                              <main class="app-prose-scope" role="main">
-                              {{ content | safe }}
-                              </main>
-                        {% endblock %}
-                        </div>
-                  </div>
-
-                  {% include "./partials/footer.njk" %}
+           <div>
+        {% include "./partials/header.njk" %}
+        
+        <div class="app-layout">
+            <div id="sidebar" class="app-layout__sidebar">
+                {% include "./partials/side-navigation.njk" %}
             </div>
+
+
+            <div class="app-layout__page app-page">
+                <main id="main-content" class="app-prose-scope">
+                    {% block content %}
+                        {{ content | safe }}
+                    {% endblock %}
+                </main>
+            </div>
+        </div>
+
+        {% include "./partials/footer.njk" %}
+      </div> 
         {% endblock %}
         {% block pageScripts %}{% endblock %}
     </body>
