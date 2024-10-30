@@ -14,7 +14,7 @@
 {%- set classNames = classNames.join(' ') -%}
 
 <div 
-  class="{{classNames}}" 
+  class="{{ classNames }}" 
     {%- for attribute, value in params.attributes %} 
       {{ attribute }}="{{ value }}"
     {% endfor %}
