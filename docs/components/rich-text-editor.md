@@ -1,5 +1,6 @@
 ---
 layout: layouts/component.njk
+isArchive: true
 title: Rich text editor
 ---
 

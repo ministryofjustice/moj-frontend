@@ -1,5 +1,6 @@
 ---
 layout: layouts/pages.njk
+isArchive: true
 title: Task list pages
 redirect_from: docs/patterns/task-list.md
 ---

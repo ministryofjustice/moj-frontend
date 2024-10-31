@@ -1,5 +1,6 @@
 ---
 layout: layouts/pages.njk
+isArchive: true
 title: Question pages
 redirect_from: docs/patterns/question-pages.md
 ---
