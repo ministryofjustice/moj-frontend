@@ -1,9 +1,11 @@
 ---
 layout: layouts/community.njk
-title: Propose a component or pattern
+subsection: Get involved
+title: Propose a new component or pattern
 eleventyNavigation:
-  key: Propose a component or pattern
-  parent: Contribute
+  key: Propose a new component or pattern
+  parent: Get involved
+  order: 10
 ---
 
 Our contribution process supports teams to add components and patterns based on their users needs and service requirements, whilst guaranteeing the quality and usefulness of the MoJ Design System.

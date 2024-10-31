@@ -1,10 +1,11 @@
 ---
 layout: layouts/get-started.njk
-subsection: How we work
+subsection: Prototyping
 title: Create a prototype
 eleventyNavigation:
   key: Create a prototype
   parent: Prototyping
+  order: 10
 ---
 
 This guide explains how to create prototypes using the MoJ Design System and GOV.UK Prototype Kit.

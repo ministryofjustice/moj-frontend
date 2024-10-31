@@ -1,10 +1,10 @@
 ---
 layout: layouts/ethics.njk
-subsection: Ethics
+subsection: Designing ethical services
 title: Preparing for a service assessment
 eleventyNavigation:
   key: Preparing for a service assessment
-  parent: Ethics
+  parent: Designing ethical services
   order: 40
 ---
 

@@ -1,9 +1,11 @@
 ---
 layout: layouts/community.njk
+subsection: Get involved
 title: Contribution criteria
 eleventyNavigation:
   key: Contribution criteria
-  parent: Contribute
+  parent: Get involved
+  order: 20
 ---
 
 The MoJ Design System supports the design, build, and delivery of accessible and consistent services. To guarantee the quality of the design system, all styles, components and patterns need to meet certain criteria.

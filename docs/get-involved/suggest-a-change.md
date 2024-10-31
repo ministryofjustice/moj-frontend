@@ -1,9 +1,11 @@
 ---
-title: Suggest a Change
+title: Suggest a change or give feedback
+subsection: Get involved
 layout: layouts/community.njk
 eleventyNavigation:
-  key: Suggest a change
-  parent: Contribute
+  key: Suggest a change or give feedback
+  parent: Get involved
+  order: 30
 ---
 
 To help improve the MoJ Design System, you can suggest changes to components and patterns.

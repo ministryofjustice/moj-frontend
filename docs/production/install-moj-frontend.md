@@ -1,7 +1,11 @@
 ---
 layout: layouts/get-started.njk
-subsection: How we work
-title: Production
+subsection: Setup for production
+title: Install MoJ Frontend
+eleventyNavigation:
+  key: Install MoJ Frontend
+  parent: Setup for production
+  order: 10
 ---
 
 This guide explains how to set up your project so you can start using the styles and coded examples in the MoJ Design System in production.

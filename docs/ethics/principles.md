@@ -1,10 +1,10 @@
 ---
 layout: layouts/ethics.njk
-subsection: Ethics
+subsection: Designing ethical services
 title: Ethical principles
 eleventyNavigation:
   key: Ethical principles
-  parent: Ethics
+  parent: Designing ethical services
   order: 20
 ---
 

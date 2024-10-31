@@ -1,10 +1,10 @@
 ---
 layout: layouts/ethics.njk
-subsection: Ethics
-title: Designing ethical services
+subsection: Designing ethical services
+title: Overview (TBC)
 eleventyNavigation:
-  key: Designing ethical services
-  parent: Ethics
+  key: Overview (TBC)
+  parent: Designing ethical services
   order: 10
 ---
 
