@@ -4,7 +4,7 @@ title: Notification badge
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/706
 eleventyNavigation:
-  key: Notifictation badge
+  key: Notificatation badge
   parent: Components
 ---
 
