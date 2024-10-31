@@ -1,4 +1,5 @@
 {% set buildingPages = collections.all | eleventyNavigation("Building blocks") %}
+{% set standardsPages = collections.all | eleventyNavigation("Standards and principles") %}
 {% set usingPages = collections.all | eleventyNavigation("Using the design system") %}
 {% from "./../macros/nav-list-item.njk" import verticalNavListItem %}
 
@@ -8,25 +9,9 @@
     <ul class="app-vertical-nav__list">
         {%- for entry in buildingPages %}
             {{ verticalNavListItem({
-                item: entry, 
-                sortChildrenBy: "key", 
-                page: page, parent: 
-                eleventyNavigation.parent
-            }) }}
-        {%- endfor -%}
-    </ul>
-</nav>
-</moj-collapsible-nav>
-
-
-<moj-collapsible-nav open-class="app-vertical-nav__item--open">
-<nav class="app-vertical-nav" aria-labelledby="using-nav-title">
-    <h2 class="app-vertical-nav__header" id="using-nav-title">Using the design system</h2>
-    <ul class="app-vertical-nav__list">
-        {%- for entry in usingPages %}
-            {{ verticalNavListItem({
-                item: entry, 
-                page: page, 
+                item: entry,
+                sortChildrenBy: "key",
+                page: page,
                 parent: eleventyNavigation.parent
             }) }}
         {%- endfor -%}
@@ -34,3 +19,32 @@
 </nav>
 </moj-collapsible-nav>
 
+<moj-collapsible-nav open-class="app-vertical-nav__item--open">
+<nav class="app-vertical-nav" aria-labelledby="using-nav-title">
+    <h2 class="app-vertical-nav__header" id="using-nav-title">Standards and principles</h2>
+    <ul class="app-vertical-nav__list">
+        {%- for entry in standardsPages %}
+            {{ verticalNavListItem({
+                item: entry,
+                page: page,
+                parent: eleventyNavigation.parent
+            }) }}
+        {%- endfor -%}
+    </ul>
+</nav>
+</moj-collapsible-nav>
+
+<moj-collapsible-nav open-class="app-vertical-nav__item--open">
+<nav class="app-vertical-nav" aria-labelledby="using-nav-title">
+    <h2 class="app-vertical-nav__header" id="using-nav-title">Using the design system</h2>
+    <ul class="app-vertical-nav__list">
+        {%- for entry in usingPages %}
+            {{ verticalNavListItem({
+                item: entry,
+                page: page,
+                parent: eleventyNavigation.parent
+            }) }}
+        {%- endfor -%}
+    </ul>
+</nav>
+</moj-collapsible-nav>

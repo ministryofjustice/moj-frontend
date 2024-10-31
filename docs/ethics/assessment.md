@@ -2,6 +2,10 @@
 layout: layouts/ethics.njk
 subsection: Ethics
 title: Preparing for a service assessment
+eleventyNavigation:
+  key: Preparing for a service assessment
+  parent: Ethics
+  order: 40
 ---
 
 As part of your service assessment, you’ll be expected to show how you’ve considered the ethics of your service.

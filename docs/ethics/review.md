@@ -2,6 +2,10 @@
 layout: layouts/ethics.njk
 subsection: Ethics
 title: Doing an ethics review
+eleventyNavigation:
+  key: Doing an ethics review
+  parent: Ethics
+  order: 30
 ---
 
 Doing an ethics review will help you:

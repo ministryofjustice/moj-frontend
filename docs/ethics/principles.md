@@ -2,6 +2,10 @@
 layout: layouts/ethics.njk
 subsection: Ethics
 title: Ethical principles
+eleventyNavigation:
+  key: Ethical principles
+  parent: Ethics
+  order: 20
 ---
 
 These ethical design principles are a set of ideals to guide how MoJ services are designed and built over time. 
