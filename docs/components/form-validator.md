@@ -1,5 +1,6 @@
 ---
 layout: layouts/component.njk
+isArchive: true
 title: Form validator
 ---
 

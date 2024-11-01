@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
+isArchive: true
 title: Currency input
+type: component
 ---
 
 {% banner "This component is archived" %}

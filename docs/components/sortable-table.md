@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Sortable table
+type: component
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/269
 ---
 
 {% lastUpdated "sortable-table" %}

@@ -1,6 +1,8 @@
 ---
 layout: layouts/patterns.njk
 title: Get help
+type: pattern
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/718
 ---
 
 {% example "/examples/patterns/get-help", 250 %}
