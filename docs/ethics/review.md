@@ -1,10 +1,10 @@
 ---
 layout: layouts/ethics.njk
-subsection: Designing ethical services
+subsection: Ethics
 title: Doing an ethics review
 eleventyNavigation:
   key: Doing an ethics review
-  parent: Designing ethical services
+  parent: Ethics
   order: 30
 ---
 

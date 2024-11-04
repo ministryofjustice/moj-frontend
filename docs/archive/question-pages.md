@@ -1,6 +1,5 @@
 ---
-layout: layouts/pages.njk
-isArchive: true
+layout: layouts/archive.njk
 title: Question pages
 redirect_from: docs/patterns/question-pages.md
 eleventyNavigation:

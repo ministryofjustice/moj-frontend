@@ -1,9 +1,9 @@
 ---
 layout: layouts/get-started.njk
 subsection: Prototyping
-title:  Host a prototype
+title:  Depoloying your prototype
 eleventyNavigation:
-  key: Host a prototype
+  key: Deploy a prototype
   parent: Prototyping
   order: 20
 ---

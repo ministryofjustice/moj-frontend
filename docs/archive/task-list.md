@@ -1,6 +1,5 @@
 ---
-layout: layouts/pages.njk
-isArchive: true
+layout: layouts/archive.njk
 title: Task list pages
 redirect_from: docs/patterns/task-list.md
 eleventyNavigation:

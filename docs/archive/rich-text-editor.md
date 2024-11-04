@@ -1,6 +1,5 @@
 ---
-layout: layouts/component.njk
-isArchive: true
+layout: layouts/archive.njk
 title: Rich text editor
 eleventyNavigation:
   key: Rich text editor

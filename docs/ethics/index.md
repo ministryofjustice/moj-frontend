@@ -1,8 +1,8 @@
 ---
 layout: layouts/index.njk
-title: Designing ethical services
+title: Ethics
 eleventyNavigation:
-  key: Designing ethical services
+  key: Ethics
   parent: Standards and principles
   order: 10
 ---
