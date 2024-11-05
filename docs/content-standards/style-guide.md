@@ -1,4 +1,5 @@
 ---
+layout: layouts/content.njk
 subsection: Content standards
 title: Content style guide
 eleventyNavigation:
