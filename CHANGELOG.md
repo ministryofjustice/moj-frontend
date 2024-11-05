@@ -1,3 +1,11 @@
+## [3.0.2](https://github.com/ministryofjustice/moj-frontend/compare/v3.0.1...v3.0.2) (2024-11-05)
+
+
+### Bug Fixes
+
+* **banner:** apply custom classes when type is provided ([#887](https://github.com/ministryofjustice/moj-frontend/issues/887)) ([fa418d4](https://github.com/ministryofjustice/moj-frontend/commit/fa418d4f05c31955338b6affeeee9e5f2c01910a))
+* **button menu:** fix alignment within moj-button-group without js ([#904](https://github.com/ministryofjustice/moj-frontend/issues/904)) ([9e6d87d](https://github.com/ministryofjustice/moj-frontend/commit/9e6d87dde20ef297a3ad00dfa8bd13b658701699))
+
 ## [3.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v3.0.0...v3.0.1) (2024-10-30)
 
 
