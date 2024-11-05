@@ -6,16 +6,13 @@
           {% if not isIndex %}<span class="govuk-caption-xl">Components</span>{% endif %}
           {{ title }}
         </h1>
+        
         {{ content | safe }}
-        {% include "./partials/suggest-a-change-and-help.njk" %}
-    </div>
 
-      {% if isIndex or isArchive %}
-      {% else %}
-        {% include "./partials/get-help-and-contribute.njk" %}
-      {% endif %}
-
+        {% if isIndex or isArchive %}
+        {% else %}
+          {% include "./partials/get-help-and-contribute.njk" %}
+        {% endif %}
 
     </div>
-  </div>
 {% endblock %}
