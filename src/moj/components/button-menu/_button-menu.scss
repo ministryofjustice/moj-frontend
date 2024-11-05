@@ -6,7 +6,9 @@ $moj-datepicker-mid-grey: #949494;
   position: relative;
 
   > .govuk-button {
+    // required for no-js alignment within moj-button-group
     margin-bottom: 0;
+    vertical-align: baseline;
   }
 }
 
