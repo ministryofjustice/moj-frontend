@@ -6,6 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/203
 eleventyNavigation:
   key: Add to a list
   parent: Patterns
+  excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
 {% banner "Other departments have a similar patterns" %}

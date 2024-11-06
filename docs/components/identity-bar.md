@@ -6,6 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/704
 eleventyNavigation:
   key: Identity bar
   parent: Components
+  excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
 ---
 
 {% lastUpdated "identity-bar" %}

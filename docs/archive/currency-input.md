@@ -5,6 +5,7 @@ type: component
 eleventyNavigation:
   key: Currency input
   parent: Archive
+  excerpt: "This component is archived."
 ---
 
 {% banner "This component is archived" %}

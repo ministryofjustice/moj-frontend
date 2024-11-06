@@ -6,6 +6,7 @@ eleventyNavigation:
   key: Propose a new component or pattern
   parent: Get involved
   order: 10
+  excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
 Our contribution process supports teams to add components and patterns based on their users needs and service requirements, whilst guaranteeing the quality and usefulness of the MoJ Design System.
@@ -14,7 +15,7 @@ Anyone can propose a new component or pattern.
 
 ### Step 1: Check the contribution criteria
 
-The MoJ Design System Group review contributions against a [contribution criteria](/community/criteria). To support the review of contributions, first check that your proposal meets the [criteria](/community/criteria).
+The MoJ Design System Group review contributions against a [contribution criteria](/get-involved/criteria). To support the review of contributions, first check that your proposal meets the [criteria](/get-involved/criteria).
 
 ### Step 2: Check for similar contributions
 

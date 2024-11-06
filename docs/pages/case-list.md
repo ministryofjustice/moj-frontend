@@ -7,6 +7,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/242
 eleventyNavigation:
   key: Case list page
   parent: Pages
+  excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
 <div class="govuk-form-group">

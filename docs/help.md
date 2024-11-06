@@ -1,8 +1,8 @@
 ---
-layout: layouts/community.njk
+layout: layouts/plain.njk
 title: Get help with the MoJ Design System
 eleventyNavigation:
-  key: Help and feedback
+  key: Get help
   parent: Using the design system
   order: 40
 ---

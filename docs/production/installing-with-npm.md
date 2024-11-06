@@ -6,6 +6,7 @@ eleventyNavigation:
   key: Install with NPM
   parent: Setup for production
   order: 20
+  excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
 ## Requirements
@@ -127,7 +128,7 @@ $moj-fonts-path: “/fonts/”;
 
 ## Importing JavaScript
 
-_See [Setting up JavaScript](../../get-started/setting-up-javascript) for information on how to install, configure and use JavaScript_
+_See [Setting up JavaScript](/production/setting-up-javascript) for information on how to install, configure and use JavaScript_
 
 ## Include CSS and JavaScript
 

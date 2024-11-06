@@ -6,6 +6,7 @@ eleventyNavigation:
   key: Create a prototype
   parent: Prototyping
   order: 10
+  excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
 This guide explains how to create prototypes using the MoJ Design System and GOV.UK Prototype Kit.

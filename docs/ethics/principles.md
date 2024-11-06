@@ -6,6 +6,7 @@ eleventyNavigation:
   key: Ethical principles
   parent: Ethics
   order: 20
+  excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
 These ethical design principles are a set of ideals to guide how MoJ services are designed and built over time. 

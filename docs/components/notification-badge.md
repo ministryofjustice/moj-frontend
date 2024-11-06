@@ -6,6 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/706
 eleventyNavigation:
   key: Notification badge
   parent: Components
+  excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
 ---
 
 {% banner "HMRC Design Patterns has a similar component" %}

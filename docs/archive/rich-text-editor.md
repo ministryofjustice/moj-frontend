@@ -4,6 +4,7 @@ title: Rich text editor
 eleventyNavigation:
   key: Rich text editor
   parent: Archive
+  excerpt: "This component is archived."
 ---
 
 {% banner "This component is archived" %}

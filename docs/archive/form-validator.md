@@ -4,6 +4,7 @@ title: Form validator
 eleventyNavigation:
   key: Form validator
   parent: Archive
+  excerpt: "This component is archived."
 ---
 
 {% banner "This component is archived" %}

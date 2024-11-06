@@ -6,6 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/718
 eleventyNavigation:
   key: Get help
   parent: Patterns
+  excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
 {% example "/examples/patterns/get-help", 250 %}

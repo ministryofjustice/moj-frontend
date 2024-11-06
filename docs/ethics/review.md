@@ -6,6 +6,7 @@ eleventyNavigation:
   key: Doing an ethics review
   parent: Ethics
   order: 30
+  excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
 Doing an ethics review will help you:

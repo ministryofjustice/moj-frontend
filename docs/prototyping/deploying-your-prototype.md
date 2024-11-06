@@ -6,6 +6,7 @@ eleventyNavigation:
   key: Deploy a prototype
   parent: Prototyping
   order: 20
+  excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
 If you work for the Ministry of Justice, we recommend using MoJ Cloud Platform to host your prototype.

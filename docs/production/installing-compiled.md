@@ -6,6 +6,7 @@ eleventyNavigation:
   key: Install with compiled files
   parent: Setup for production
   order: 30
+  excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
 You can install MoJ Frontend using the compiled files released with each version. However, by doing so, you will **not** be able to:
@@ -15,7 +16,7 @@ You can install MoJ Frontend using the compiled files released with each version
 - customise the build, for example, overriding colours or enabling global styles
 - use the component Nunjucks templates
 
-In a live application, we recommend that you [install with npm](../installing-with-npm) instead. This will allow you to better integrate the library and more easily upgrade.
+In a live application, we recommend that you [install with npm](/production/installing-with-npm) instead. This will allow you to better integrate the library and more easily upgrade.
 
 ## Copy the files
 
@@ -79,8 +80,8 @@ It is unlikely that you would ever want to install the MoJ Design System alone, 
    </html>
    ```
 
-2. Go to the [Add another component](../components/add-another/) on the Design System website and copy the HTML from the first example.
+2. Go to the [Add another component](/components/add-another/) on the Design System website and copy the HTML from the first example.
 
 3. Replace `<!-- component HTML -->` with the accordion HTML you copied.
 
-4. Run your application - you can check it works the same way as the [Add another component example](../examples/add-another/) by clicking the "Add another person" button.
+4. Run your application - you can check it works the same way as the [Add another component example](/examples/add-another/) by clicking the "Add another person" button.
