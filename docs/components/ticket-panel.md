@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/715
 eleventyNavigation:
   key: Ticket panel
   parent: Components
-  excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
+  excerpt: "Break up content or actions into visually distinct groups of information."
 ---
 
 {% lastUpdated "ticket-panel" %}

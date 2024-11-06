@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/269
 eleventyNavigation:
   key: Sortable table
   parent: Components
-  excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
+  excerpt: "Use the sortable table component to let users sort columns in ascending or descending order."
 ---
 
 {% lastUpdated "sortable-table" %}

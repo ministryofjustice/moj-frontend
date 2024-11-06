@@ -7,7 +7,7 @@ contributors: Stephen Robertson, Rich Cooley, Al Laing, Jo Dimbleby, Dave Evans,
 eleventyNavigation:
   key: Button menu
   parent: Components
-  excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
+  excerpt: "The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu."
 ---
 
 <span class="govuk-caption-xl">The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu.</span>

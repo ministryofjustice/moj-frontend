@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/709
 eleventyNavigation:
   key: Password reveal
   parent: Components
-  excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
+  excerpt: "Use the password reveal component to let users check their password safely."
 ---
 
 {% lastUpdated "password-reveal" %}

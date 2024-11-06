@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/197
 eleventyNavigation:
   key: Filter
   parent: Components
-  excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
+  excerpt: "Use the filter component to help users filter a list of items, such as a list of cases or search results."
 ---
 
 {% banner "A similar component exists" %}

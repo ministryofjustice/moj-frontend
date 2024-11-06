@@ -9,7 +9,7 @@ basedonurl: https://designsystem.gov.scot/components/date-picker
 eleventyNavigation:
   key: Date picker
   parent: Components
-  excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
+  excerpt: "The date picker component enables users to select a date from a calendar."
 ---
 
 <span class="govuk-caption-xl">The date picker component enables users to select a date from a calendar.  </span>

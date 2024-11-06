@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/708
 eleventyNavigation:
   key: Pagination
   parent: Components
-  excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
+  excerpt: "Use the pagination component to let users browse through a long list."
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}

@@ -5,7 +5,7 @@ type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/687
 eleventyNavigation:
   parent: Components
-  key: Badge 
+  key: Badge
   excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 

@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/707
 eleventyNavigation:
   key: Page header actions
   parent: Components
-  excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
+  excerpt: "Use the page header actions component for certain actions."
 ---
 
 {% lastUpdated "page-header-actions" %}

@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/246
 eleventyNavigation:
   key: Header
   parent: Components
-  excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
+  excerpt: "Use the header component for any service or system not on GOV.UK like internal staff."
 ---
 
 {% lastUpdated "header" %}

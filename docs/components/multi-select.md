@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/206
 eleventyNavigation:
   key: Multi select
   parent: Components
-  excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
+  excerpt: "Use the multi select component to let users select multiple items in a list."
 ---
 
 {% lastUpdated "multi-select" %}
