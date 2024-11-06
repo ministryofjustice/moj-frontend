@@ -192,6 +192,12 @@ This is 2 separate words. Not casenote.
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
+### cell
+
+Cell or cells should be used to refer to the rooms that people in prison live in. There are some instances in the open, female and youth estate where alternatives such as 'dormitory' or 'room' may be more appropriate. But for services rolled out across the entire prison estate, cell is likely to be the most widely understood term. There is also research to suggest prisoners do not see 'cell' as a stigmatising term, but an accurate description of accommodation in prisons across England and Wales.
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
 ### Cell Sharing Risk Assessment (CSRA)
 
 Use CSRA. This is more well known than the full version.
@@ -206,13 +212,21 @@ Use CSIP. This is more well known than the full version.
 
 ### clock
 
-See <a href="https://design-patterns.service.justice.gov.uk/components/content-standards/style-guide/#t">'times'</a> for guidance on using the 12 or 24-hour clock.
+See <a href="#times">times</a> for guidance on using the 12 or 24-hour clock.
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### closed prison, closed conditions
 
 Lower case.
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+### community probation practitioner
+
+This is a probation practitioner who works in the community and not in prisons.  
+
+It's better than 'community offender manager (COM)', although someone may have this job title. Refers to a probation officer, probation support officer or senior probation officer.
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
@@ -244,6 +258,33 @@ If users can choose a date range, use 'earliest' and 'latest' in your labels. Fo
 'Date to (latest)'
 
 This is being used on the DPS prisoner profile alerts and case notes pages in response to user feedback.
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+### DPS, Digital Prison Services
+
+Not 'the Digital Prison Service'.
+
+DPS may be referred to as 'New NOMIS' in prisons, but we should always use 'DPS' or 'Digital Prison Services'.
+
+The acronym 'DPS' is well understood and can be used without the full name.
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<h2 class="govuk-heading-l" id="e">E</h2>
+
+### empty states
+
+Research with prison staff has shown that empty states help reassure users that nothing has been entered and the product is not broken.
+
+In the DPS prisoner profile, we conditionally hid the 'aliases' field if no aliases had been entered. Users told us that they thought the page might be broken or just not showing the information from NOMIS.
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+### establishment roll, roll
+
+This refers to the record of prisoners' movements and locations in an establishment.
+You can use 'roll' when referring to the establishment roll. This is commonly used in prisons and is well understood.
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
@@ -364,9 +405,9 @@ Staff in some prisons may also refer to non-associations as:
 
 <h2 class="govuk-heading-l" id="o">O</h2>
 
-### offender
+### offender or ex-offender
 
-Do not use. Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.
+Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.
 
 ### open prison, open conditions
 
@@ -375,6 +416,10 @@ Lower case.
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 <h2 class="govuk-heading-l" id="p">P</h2>
+
+### page titles
+
+In DPS, you must follow the <a href="https://docs.google.com/document/d/17mHQYHOA5S6dOWjjPvkJvXrb-6f37o8hjjWUe9gBqKo/edit?tab=t.0#heading=h.1rt3kbplnmql">DPS guidelines for formatting page titles (MoJ staff only)</a>.
 
 ### Person Escort Record (PER)
 
@@ -432,6 +477,12 @@ Staff in prisons may still use ‘NOMIS number’ or ‘alpha number’ when ref
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
+### prisoner, person in prison  
+
+Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
 ### prisoner record
 
 Always use ‘prisoner record’ when referring to the data stored about a person in prison. A prisoner record is linked to a prison number and can contain information from multiple bookings.
@@ -468,6 +519,25 @@ Roles are usually victim or perpetrator.
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
+### release dates
+
+The phrase ‘release dates’ is used to describe a number of key dates in a prisoner's sentence. It includes the dates when their sentence and licence periods expire, and the estimated dates that they will be released from prison.
+
+There are many different types of release date. For example, prisoners who are eligible for home detention curfew, will get a Home detention curfew eligibility date (HDCED). These dates can also change, depending on the circumstances and eligibility of the person in prison. You should consider whether you need to refer to a specific release date if referencing it in your service.
+
+The most common types of release date are:
+
+- Conditional release date (CRD)
+This is the date a person in prison is released from custody, subject to licence conditions.
+
+- Sentence expiry date (SED)
+This is the date a person’s prison sentence expires.
+
+- Licence expiry date (LED)
+This is the date the licence expires where release from custody is subject to licence conditions.
+
+Read the <a href="https://login.microsoftonline.com/c6874728-71e6-41fe-a9e1-2e8c36776ad8/oauth2/authorize?client%5Fid=00000003%2D0000%2D0ff1%2Dce00%2D000000000000&response%5Fmode=form%5Fpost&response%5Ftype=code%20id%5Ftoken&resource=00000003%2D0000%2D0ff1%2Dce00%2D000000000000&scope=openid&nonce=BC0CEEE028DB350631B8C9EE74BB17131B4D0D2F5F36E2D2%2D039A61F7362E2D6DCE573AE4BB56FB9F3F9BAA7F4AA0BBBA41D0841116299095&redirect%5Furi=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%5Fforms%2Fdefault%2Easpx&state=OD0w&claims=%7B%22id%5Ftoken%22%3A%7B%22xms%5Fcc%22%3A%7B%22values%22%3A%5B%22CP1%22%5D%7D%7D%7D&wsucxt=1&cobrandid=11bd8083%2D87e0%2D41b5%2Dbb78%2D0bc43c8a8e8a&client%2Drequest%2Did=714161a1%2D80c1%2Da000%2D35db%2Dfd3e02f7d205">full list of release dates</a>.
+
 ### remand prisoner, on remand, remanded in custody
 
 Someone is on remand if they are placed in custody whilst awaiting trial. Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.
@@ -483,6 +553,12 @@ Users may well understand the acronym on its own. If you have evidence of this, 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 <h2 class="govuk-heading-l" id="t">T</h2>
+
+### temporary absence
+
+A temporary absence is when a person is allowed to leave prison for a short period. This could be to help them prepare for release by attending a work placement or for an exceptional circumstance such as receiving hospital treatment.
+
+Temporary absence may be referred to as TAP (temporarily absent prisoner), but we should use temporary absence.
 
 ### times (in prison)
 
@@ -514,7 +590,7 @@ Use ViSOR. This is more well known than the full version. Read <a href="https://
 
 ### working name
 
-See 'preferred name'.
+See <a href="#preferredname">'preferred name'</a> .
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
