@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Install MoJ Frontend
   parent: Setup for production
   order: 10
-  excerpt: "Use the badge component to highlight small details like an urgent case."
+  excerpt: "SOME TEXT NEEDS TO GO HERE"
 ---
 
 This guide explains how to set up your project so you can start using the styles and coded examples in the MoJ Design System in production.

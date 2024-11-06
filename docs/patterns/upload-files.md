@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/719
 eleventyNavigation:
   key: Upload files
   parent: Patterns
-  excerpt: "Use the badge component to highlight small details like an urgent case."
+  excerpt: "SOME TEXT NEEDS TO GO HERE"
 ---
 
 ![A three step process: Ask the user to upload a file, use the native file browser, and then show them the upload and ask them to confirm it](../../assets/images/upload-file-single.png)

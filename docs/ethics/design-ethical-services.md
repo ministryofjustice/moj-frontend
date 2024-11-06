@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Designing ethical services
   parent: Ethics
   order: 10
-  excerpt: "Use the badge component to highlight small details like an urgent case."
+  excerpt: "SOME TEXT NEEDS TO GO HERE"
 ---
 
 All teams designing and building MoJ digital services should be mindful of how their work may impact people and society.

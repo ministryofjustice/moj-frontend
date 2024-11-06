@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Install with compiled files
   parent: Setup for production
   order: 30
-  excerpt: "Use the badge component to highlight small details like an urgent case."
+  excerpt: "SOME TEXT NEEDS TO GO HERE"
 ---
 
 You can install MoJ Frontend using the compiled files released with each version. However, by doing so, you will **not** be able to:

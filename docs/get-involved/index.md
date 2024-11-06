@@ -1,5 +1,5 @@
 ---
-layout: layouts/community.njk
+layout: layouts/index.njk
 title: Get involved
 eleventyNavigation:
   key: Get involved

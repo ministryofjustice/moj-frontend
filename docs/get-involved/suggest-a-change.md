@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Suggest a change or give feedback
   parent: Get involved
   order: 30
-  excerpt: "Use the badge component to highlight small details like an urgent case."
+  excerpt: "SOME TEXT NEEDS TO GO HERE"
 ---
 
 To help improve the MoJ Design System, you can suggest changes to components and patterns.

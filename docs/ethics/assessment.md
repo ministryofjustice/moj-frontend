@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Preparing for a service assessment
   parent: Ethics
   order: 40
-  excerpt: "Use the badge component to highlight small details like an urgent case."
+  excerpt: "SOME TEXT NEEDS TO GO HERE"
 ---
 
 As part of your service assessment, you’ll be expected to show how you’ve considered the ethics of your service.

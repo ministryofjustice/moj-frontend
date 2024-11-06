@@ -5,7 +5,7 @@ redirect_from: docs/patterns/task-list.md
 eleventyNavigation:
   key: Task list page
   parent: Archive
-  excerpt: "This page is archived."
+  excerpt: "SOME TEXT NEEDS TO GO HERE"
 ---
 
 {% banner "This page is archived" %}

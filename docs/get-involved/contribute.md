@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Propose a new component or pattern
   parent: Get involved
   order: 10
-  excerpt: "Use the badge component to highlight small details like an urgent case."
+  excerpt: "SOME TEXT NEEDS TO GO HERE"
 ---
 
 Our contribution process supports teams to add components and patterns based on their users needs and service requirements, whilst guaranteeing the quality and usefulness of the MoJ Design System.

@@ -5,7 +5,7 @@ redirect_from: docs/patterns/question-pages.md
 eleventyNavigation:
   key: Question page
   parent: Archive
-  excerpt: "This page is archived."
+  excerpt: "SOME TEXT NEEDS TO GO HERE"
 ---
 
 {% banner "This page is archived" %}

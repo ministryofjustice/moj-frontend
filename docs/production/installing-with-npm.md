@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Install with NPM
   parent: Setup for production
   order: 20
-  excerpt: "Use the badge component to highlight small details like an urgent case."
+  excerpt: "SOME TEXT NEEDS TO GO HERE"
 ---
 
 ## Requirements
