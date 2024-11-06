@@ -167,8 +167,6 @@ You may decide to capitalise abbreviations when:
 
 Please share your decisions on capitalising abbreviations. We’ll add these as entries to the style guide to ensure consistency across DPS tools.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### Category (such as Category A prison)
 Always capitalise and write out in full. For example, 'Category A'.
 
@@ -178,57 +176,39 @@ Use 'Category A – high' for high-profile prisoners.
 
 Use 'Category A – provisional' for provisional Category A prisoners.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### caseload (changing caseload)
 
 If your service lets users change their 'caseload', always use 'change location' instead. 'Caseload' is a legacy term from NOMIS that would need explaining to users.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### case note
 
 This is 2 separate words. Not casenote.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### cell
 
 Cell or cells should be used to refer to the rooms that people in prison live in. There are some instances in the open, female and youth estate where alternatives such as 'dormitory' or 'room' may be more appropriate. But for services rolled out across the entire prison estate, cell is likely to be the most widely understood term. There is also research to suggest prisoners do not see 'cell' as a stigmatising term, but an accurate description of accommodation in prisons across England and Wales.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### Cell Sharing Risk Assessment (CSRA)
 
 Use CSRA. This is more well known than the full version.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### Challenge, Support and Intervention Plan (CSIP)
 
 Use CSIP. This is more well known than the full version.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### clock
 
 See <a href="#times">times</a> for guidance on using the 12 or 24-hour clock.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### closed prison, closed conditions
 
 Lower case.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### community probation practitioner
 
 This is a probation practitioner who works in the community and not in prisons.  
 
 It's better than 'community offender manager (COM)', although someone may have this job title. Refers to a probation officer, probation support officer or senior probation officer.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### contractions
 
@@ -239,8 +219,6 @@ Avoid contractions with a noun and verb such as ‘the computer’s fast’. Thi
 You can use positive contractions like we’ll and you’ll.
 
 We’d like to test positive contractions with users to find out if they’re more difficult to understand.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### CRN (case reference number)
 
@@ -259,8 +237,6 @@ If users can choose a date range, use 'earliest' and 'latest' in your labels. Fo
 
 This is being used on the DPS prisoner profile alerts and case notes pages in response to user feedback.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### DPS, Digital Prison Services
 
 Not 'the Digital Prison Service'.
@@ -269,8 +245,6 @@ DPS may be referred to as 'New NOMIS' in prisons, but we should always use 'DPS'
 
 The acronym 'DPS' is well understood and can be used without the full name.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 <h2 class="govuk-heading-l" id="e">E</h2>
 
 ### empty states
@@ -278,8 +252,6 @@ The acronym 'DPS' is well understood and can be used without the full name.
 Research with prison staff has shown that empty states help reassure users that nothing has been entered and the product is not broken.
 
 In the DPS prisoner profile, we conditionally hid the 'aliases' field if no aliases had been entered. Users told us that they thought the page might be broken or just not showing the information from NOMIS.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### establishment roll, roll
 
@@ -320,8 +292,6 @@ Call 0800 917 5148 or #6598 from inside an establishment.
 
 This content does not provide any alternative contact methods such as email or chat. This may be raised as a recommendation if your service receives an accessibility audit.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### hint text
 
 Always use full stops at the end of hint text, even when using examples.
@@ -331,8 +301,6 @@ We made this decision based on <a href="https://trello.com/c/cjE65vrR">research 
 We’d like to test this approach to see if it causes users to include full stops in input fields.
 
 This guidance only applies to hint text styled with the class “govuk-hint”.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### Home Office reference number
 
@@ -352,8 +320,6 @@ Use 'identity numbers' when referring to:
 - Home Office reference number
 
 Do not use 'identifiers' when referring to these items.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### incentive level, IEP
 
@@ -377,17 +343,11 @@ This is 2 separate words. Not keyworker.
 ### naming
 If you're naming a service in DPS, you should follow the <a href="https://docs.google.com/document/d/1Va7AIp6cmlyNgs_x42A4KHw3wo5NFQebYO6EhO3lJxg/edit?usp=sharing">DPS naming guidelines</a>.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### NDelius
 Not nDelius, Ndelius or Delius. It's the case management system in probation.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### NOMIS
 Not Nomis or nomis. It's an initialism and stands for the National Offender Management Information System.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 <h3 class="govuk-heading-m" id="non-associations">non-associations</h2>
 
@@ -427,13 +387,9 @@ Write out Person Escort Record (PER) at the first usage and use PER thereafter.
 
 PERs are a document which must be completed for all people in custody prior to any escorted movement outside prison (for example to or from court or a transfer to another prison).
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### person on probation, people on probation
 
 Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### personal data in title tags
 
@@ -443,13 +399,9 @@ The title can be the same as the H1 unless the H1 includes personal information 
 
 You can either write the title content or work with a developer to see if it can be taken from the H1 but without any personal information.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### Personal Emergency Evacuation Plan (PEEP)
 
 Use PEEP. This is more well known than the full version.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### Personal Identification Number (PIN)
 
@@ -459,13 +411,9 @@ Prisoners use their secure PIN to call people on their approved contacts list fr
 
 It is often written as pin or Pin, but PIN is the correct format.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### preferred name
 
 Always use 'preferred name', not 'working name' as it's called in NOMIS.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### prison number
 
@@ -475,13 +423,9 @@ Do not use ‘prison no’, ‘prisoner number’, ‘NOMIS number’, ‘NOMS n
 
 Staff in prisons may still use ‘NOMIS number’ or ‘alpha number’ when referring to someone’s prison number.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### prisoner, person in prison  
 
 Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### prisoner record
 
@@ -491,13 +435,9 @@ Do not use ‘prison record’, ‘NOMIS record’, ‘NOMS record’ or ‘offe
 
 We’d like to research this term further to make sure it’s the best way of describing the information we have about someone in prison.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### Probation Delivery Unit (PDU)
 
 Use upper case and the initialism on first mention. Research is needed to establish if users will understand PDU without it being spelt out.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### probation practitioner
 
@@ -516,8 +456,6 @@ This was a term used in NOMIS to name a field that was not brought over to DPS.
 Instead, in DPS, each <a href="#non-associations">non-association</a> has a 'reason' and both prisoners have a 'role' in it.
 
 Roles are usually victim or perpetrator.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### release dates
 
@@ -542,8 +480,6 @@ Read the <a href="https://login.microsoftonline.com/c6874728-71e6-41fe-a9e1-2e8c
 
 Someone is on remand if they are placed in custody whilst awaiting trial. Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 ### ROTL (Release on Temporary Licence)
 
 Use upper case.
@@ -560,7 +496,7 @@ A temporary absence is when a person is allowed to leave prison for a short peri
 
 Temporary absence may be referred to as TAP (temporarily absent prisoner), but we should use temporary absence.
 
-### times (in prison)
+<h3 class="govuk-heading-m" id="times">times (in prison)</h3>
 
 Use the 24-hour clock for DPS (Digital Prison Services) and any service used by prison staff. For example, 14:00 not 2.00pm.
 
@@ -569,8 +505,6 @@ The 24-hour clock should also be used for time input fields.
 The 24-hour clock is widely used in prisons. Research has shown that <a href="https://trello.com/c/D57IWwVT">using the 12-hour clock in prison may cause confusion</a>.
 
 If your service is on DPS but is used by both prison and probation staff, it should still use the 24-hour clock.
-
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 ### times (in probation)
 
