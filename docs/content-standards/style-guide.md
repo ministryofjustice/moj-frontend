@@ -206,7 +206,7 @@ Use CSIP. This is more well known than the full version.
 
 ### clock
 
-See 'times' for guidance on using the 12 or 24-hour clock.
+See <a href="https://design-patterns.service.justice.gov.uk/components/content-standards/style-guide/#t">'times'</a> for guidance on using the 12 or 24-hour clock.
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
@@ -230,7 +230,7 @@ We’d like to test positive contractions with users to find out if they’re mo
 
 ### CRN (case reference number)
 
-The reference assigned to a person on probation in nDelius. Not nDelius number, case number or CRN number. The initialism may be sufficient without being spelt out. The format is 2 characters, 4 numbers and then 2 characters for example ‘RG5108AC’.
+The reference assigned to a person on probation in NDelius. Not NDelius number, case number or CRN number. The initialism may be sufficient without being spelt out. The format is 2 characters, 4 numbers and then 2 characters for example ‘RG5108AC’.
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
@@ -285,7 +285,7 @@ This content does not provide any alternative contact methods such as email or c
 
 Always use full stops at the end of hint text, even when using examples.
 
-We made this decision based on <a href="https://trello.com/c/cjE65vrR">research from other government departments and internal discussions</a>.
+We made this decision based on <a href="https://trello.com/c/cjE65vrR">research from other government departments and internal discussions (MoJ staff only)</a>.
 
 We’d like to test this approach to see if it causes users to include full stops in input fields.
 
@@ -338,6 +338,11 @@ If you're naming a service in DPS, you should follow the <a href="https://docs.g
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
+### NDelius
+Not nDelius, Ndelius or Delius. It's the case management system in probation.
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
 ### NOMIS
 Not Nomis or nomis. It's an initialism and stands for the National Offender Management Information System.
 
@@ -359,6 +364,10 @@ Staff in some prisons may also refer to non-associations as:
 
 <h2 class="govuk-heading-l" id="o">O</h2>
 
+### offender
+
+Do not use. Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.
+
 ### open prison, open conditions
 
 Lower case.
@@ -377,7 +386,7 @@ PERs are a document which must be completed for all people in custody prior to a
 
 ### person on probation, people on probation
 
-Do not use offender. Use person on probation and not the acronym PoP. Try to use people's names where possible.
+Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
@@ -461,7 +470,7 @@ Roles are usually victim or perpetrator.
 
 ### remand prisoner, on remand, remanded in custody
 
-Someone is on remand if they are placed in custody whilst awaiting trial.
+Someone is on remand if they are placed in custody whilst awaiting trial. Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
@@ -497,7 +506,7 @@ Use the 12-hour clock for services in the probation space. For example, 11am.
 
 ### Violent and Sex Offender Register (ViSOR)
 
-Use ViSOR. This is more well known than the full version.
+Use ViSOR. This is more well known than the full version. Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
@@ -521,6 +530,6 @@ Capital 'X' and lower case 'r'. Do not shorten to 'body scan' as this may be con
 
 ### youth offender
 
-This term is used to describe prisoners aged between 15 and 21. Although it goes against the principle of not referring to people in prison as 'offenders', this term is widely used across HMPPS. We have not agreed an alternative term to use.
+Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
