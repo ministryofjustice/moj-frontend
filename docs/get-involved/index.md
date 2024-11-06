@@ -7,4 +7,4 @@ eleventyNavigation:
   order: 30
 ---
 
-SOME TEXT NEEDS TO GO HERE
+Help develop the MoJ Design System by contributing a building block, or giving feedback.

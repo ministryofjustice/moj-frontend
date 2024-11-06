@@ -4,7 +4,7 @@ title: Rich text editor
 eleventyNavigation:
   key: Rich text editor
   parent: Archive
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "The rich text editor component allowed users to format their input in a text area."
 ---
 
 {% banner "This component is archived" %}

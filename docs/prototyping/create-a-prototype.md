@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Create a prototype
   parent: Prototyping
   order: 10
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "This guide explains how to create prototypes using the MoJ Design System and GOV.UK Prototype Kit."
 ---
 
 This guide explains how to create prototypes using the MoJ Design System and GOV.UK Prototype Kit.

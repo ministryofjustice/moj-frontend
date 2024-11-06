@@ -5,7 +5,7 @@ redirect_from: docs/patterns/task-list.md
 eleventyNavigation:
   key: Task list page
   parent: Archive
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "The task list page was in use before the GOV.UK Design System developed one."
 ---
 
 {% banner "This page is archived" %}

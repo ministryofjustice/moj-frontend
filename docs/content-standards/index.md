@@ -7,4 +7,4 @@ eleventyNavigation:
   order: 20
 ---
 
-SOME TEXT NEEDS TO GO HERE
+Content design standards to help teams build consistent and usable services.

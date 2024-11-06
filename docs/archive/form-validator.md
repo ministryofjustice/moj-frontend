@@ -4,7 +4,7 @@ title: Form validator
 eleventyNavigation:
   key: Form validator
   parent: Archive
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "The form validator component validated forms without a server-side round-trip while also conforming to established standards."
 ---
 
 {% banner "This component is archived" %}

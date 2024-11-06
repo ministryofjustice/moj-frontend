@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Install MoJ Frontend
   parent: Setup for production
   order: 10
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "To start using MoJ styles, components and patterns contained here, you’ll need to include MoJ Frontend in your project."
 ---
 
 This guide explains how to set up your project so you can start using the styles and coded examples in the MoJ Design System in production.

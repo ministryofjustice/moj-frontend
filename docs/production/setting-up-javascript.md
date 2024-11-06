@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Setting up javascript
   parent: Setup for production
   order: 40
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "Several MoJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript."
 ---
 
 Several MoJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript.

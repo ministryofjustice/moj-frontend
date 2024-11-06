@@ -1,12 +1,12 @@
 ---
 layout: layouts/get-started.njk
 subsection: Prototyping
-title:  Depoloying your prototype
+title:  Deploy a prototype
 eleventyNavigation:
   key: Deploy a prototype
   parent: Prototyping
   order: 20
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "Deploy your prototype using MoJ Cloud Platform."
 ---
 
 If you work for the Ministry of Justice, we recommend using MoJ Cloud Platform to host your prototype.

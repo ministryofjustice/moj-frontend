@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Designing ethical services
   parent: Ethics
   order: 10
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "How and why you should consider ethics - and what delivery teams should do."
 ---
 
 All teams designing and building MoJ digital services should be mindful of how their work may impact people and society.

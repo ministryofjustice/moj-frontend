@@ -5,7 +5,7 @@ type: component
 eleventyNavigation:
   key: Currency input
   parent: Archive
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "The currency input component helped users enter an amount of money in a specified currency."
 ---
 
 {% banner "This component is archived" %}

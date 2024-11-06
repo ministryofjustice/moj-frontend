@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Install with NPM
   parent: Setup for production
   order: 20
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "We recommend installing MoJ Frontend using NPM."
 ---
 
 ## Requirements

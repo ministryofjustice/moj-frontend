@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Ethical principles
   parent: Ethics
   order: 20
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "These 7 ethical principles are a set of ideals to guide how MoJ services are designed and built over time."
 ---
 
 These ethical design principles are a set of ideals to guide how MoJ services are designed and built over time. 

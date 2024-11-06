@@ -4,7 +4,7 @@ title: Tag
 eleventyNavigation:
   key: Tag
   parent: Archive
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "The tag outlined some additional colours for tags. Not to be confused with the GOV.UK Design System tag."
 ---
 
 {% banner "This component is archived" %}

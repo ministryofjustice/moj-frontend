@@ -5,7 +5,7 @@ redirect_from: docs/patterns/question-pages.md
 eleventyNavigation:
   key: Question page
   parent: Archive
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "Question pages grouped related questions into the same page."
 ---
 
 {% banner "This page is archived" %}

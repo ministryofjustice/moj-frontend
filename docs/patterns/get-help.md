@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/718
 eleventyNavigation:
   key: Get help
   parent: Patterns
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "Help users get help from within the digital service."
 ---
 
 {% example "/examples/patterns/get-help", 250 %}

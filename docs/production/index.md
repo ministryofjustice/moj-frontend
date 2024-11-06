@@ -7,4 +7,4 @@ eleventyNavigation:
   order: 20
 ---
 
-SOME TEXT NEEDS TO GO HERE
+How to set up your project so you can start using the styles and coded examples in the MoJ Design System in production.

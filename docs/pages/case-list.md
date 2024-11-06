@@ -7,7 +7,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/242
 eleventyNavigation:
   key: Case list page
   parent: Pages
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "Use the case list page to make pieces of information about a case easier to scan, prioritise and action for users."
 ---
 
 <div class="govuk-form-group">

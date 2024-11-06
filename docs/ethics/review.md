@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Doing an ethics review
   parent: Ethics
   order: 30
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "How and when to do an ethics review."
 ---
 
 Doing an ethics review will help you:

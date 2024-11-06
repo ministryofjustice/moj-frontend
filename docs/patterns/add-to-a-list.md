@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/203
 eleventyNavigation:
   key: Add to a list
   parent: Patterns
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "Use this pattern when users need to add similar information many times, and check and add more if needed."
 ---
 
 {% banner "Other departments have a similar patterns" %}

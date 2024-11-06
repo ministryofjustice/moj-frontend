@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Style guide
   parent: Content standards
   order: 10
-  excerpt: "SOME TEXT NEEDS TO GO HERE"
+  excerpt: "The MoJ A to Z content style guide covering style, spelling and grammar conventions."
 ---
 
 This content style guide applies to services and guidance at MoJ. It should be used alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">GOV.UK content style guide</a>.
@@ -31,7 +31,7 @@ This content style guide applies to services and guidance at MoJ. It should be u
   </li>
 
   <li class="moj-sub-navigation__item">
-    <p class="moj-sub-navigation__link" style="color:#b1b4b6;">E</p>
+    <a class="moj-sub-navigation__link" href="#e">E</a>
   </li>
 
   <li class="moj-sub-navigation__item">
@@ -244,6 +244,8 @@ Not 'the Digital Prison Service'.
 DPS may be referred to as 'New NOMIS' in prisons, but we should always use 'DPS' or 'Digital Prison Services'.
 
 The acronym 'DPS' is well understood and can be used without the full name.
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 <h2 class="govuk-heading-l" id="e">E</h2>
 
