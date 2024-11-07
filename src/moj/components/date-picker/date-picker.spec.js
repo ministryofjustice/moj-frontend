@@ -9,6 +9,7 @@ const {
   screen,
 } = require("@testing-library/dom");
 const { userEvent } = require("@testing-library/user-event");
+const dayjs = require("dayjs");
 const { configureAxe, toHaveNoViolations } = require("jest-axe");
 expect.extend(toHaveNoViolations);
 
@@ -23,19 +24,37 @@ const axe = configureAxe({
   },
 });
 
-const createComponent = () => {
-  const html = `
-      <div class="moj-datepicker" data-module="moj-date-picker">
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="date">
-            Date
-          </label>
-          <div id="date-hint" class="govuk-hint">
-            For example, 17/5/2024.
+const kebabize = (str) => {
+  return str.replace(
+    /[A-Z]+(?![a-z])|[A-Z]/g,
+    ($, ofset) => (ofset ? "-" : "") + $.toLowerCase(),
+  );
+};
+
+const configToDataAttributes = (config) => {
+  let attributes = "";
+  for (let [key, value] of Object.entries(config)) {
+    attributes += `data-${kebabize(key)}="${value}" `;
+  }
+  return attributes;
+};
+
+const createComponent = (config = {}, html) => {
+  const dataAttributes = configToDataAttributes(config);
+  if (typeof html === "undefined") {
+    html = `
+        <div class="moj-datepicker" data-module="moj-date-picker" ${dataAttributes}>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="date">
+              Date
+            </label>
+            <div id="date-hint" class="govuk-hint">
+              For example, 17/5/2024.
+            </div>
+            <input class="govuk-input moj-js-datepicker-input " id="date" name="date" type="text" aria-describedby="date-hint" autocomplete="off">
           </div>
-          <input class="govuk-input moj-js-datepicker-input " id="date" name="date" type="text" aria-describedby="date-hint" autocomplete="off">
-        </div>
-    </div>`;
+      </div>`;
+  }
   document.body.insertAdjacentHTML("afterbegin", html);
 
   component = document.querySelector('[data-module="moj-date-picker"]');
@@ -76,6 +95,32 @@ const getLastDayOfWeek = (dateObject, lastDayOfWeekIndex) => {
   lastDayOfWeek.setHours(0, 0, 0, 0);
 
   return lastDayOfWeek;
+};
+
+const getDateInCurrentMonth = (excluding = []) => {
+  const today = dayjs().date();
+  excluding.push(today);
+  const lastDayOfMonth = dayjs().endOf("month").date();
+  const days = range(1, lastDayOfMonth).filter((x) => !excluding.includes(x));
+
+  return days[Math.floor(Math.random() * days.length)];
+};
+
+const getDateRangeInCurrentMonth = (startDay, endDay) => {
+  let date = dayjs().date(startDay); // Convert the start date to a Day.js object
+  const endDate = dayjs().date(endDay+1)
+  const dates = [];
+
+  while (date.isBefore(endDate)) {
+    dates.push(date);
+    date = date.add(1, "day");
+  }
+
+  return dates;
+};
+
+const range = (start, end) => {
+  return [...Array(end - start + 1).keys()].map((x) => x + start);
 };
 
 describe("Date picker with defaults", () => {
@@ -559,13 +604,221 @@ describe("Date picker with defaults", () => {
       expect(await axe(document.body)).toHaveNoViolations();
     });
   });
-
-  //test component API - JS and data-attribute
-  //open with date in input
-  //min date
-  //max date
-  //excluded dates
-  //excluded days
-  //leadingZeros - test home and end keys
-  //weekStartDay
 });
+
+describe("button menu JS API", () => {
+  let component;
+
+  beforeEach(() => {
+    component = createComponent();
+  });
+
+  afterEach(() => {
+    document.body.innerHTML = "";
+  });
+
+  describe("config", () => {
+    test("default config values", () => {
+      const datePicker = new MOJFrontend.DatePicker(component, {});
+      datePicker.init();
+
+      expect(datePicker.config).toStrictEqual({
+        leadingZeros: false,
+        weekStartDay: "monday",
+      });
+    });
+
+    test("leadingZeros", () => {
+      const config = { leadingZeros: true };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.config.leadingZeros).toBe(true);
+    });
+
+    test("weekStartDay can be set to sunday", () => {
+      const config = { weekStartDay: "Sunday" };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.config.weekStartDay).toBe("sunday");
+      expect(datePicker.dayLabels[0]).toBe("Sunday");
+    });
+
+    test("weekStartDay can't be set to other days", () => {
+      const config = { weekStartDay: "friday" };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.config.weekStartDay).toBe("monday");
+    });
+
+    test("minDate", () => {
+      const minDate = dayjs().subtract("1", "week").startOf("day");
+      const config = { minDate: minDate.format("D/M/YYYY") };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.minDate).toStrictEqual(minDate.toDate());
+    });
+
+    test("future minDate sets currentDate to minDate", () => {
+      const minDate = dayjs().add("1", "week").startOf("day");
+      const config = { minDate: minDate.format("D/M/YYYY") };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.minDate).toStrictEqual(minDate.toDate());
+      expect(datePicker.currentDate).toStrictEqual(minDate.toDate());
+    });
+
+    test("maxDate", () => {
+      const maxDate = dayjs().add("1", "week").startOf("day");
+      const config = { maxDate: maxDate.format("D/M/YYYY") };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.maxDate).toStrictEqual(maxDate.toDate());
+    });
+
+    test("past maxDate sets currentDate to maxDate", () => {
+      const maxDate = dayjs().subtract("1", "week").startOf("day");
+      const config = { maxDate: maxDate.format("D/M/YYYY") };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.maxDate).toStrictEqual(maxDate.toDate());
+      expect(datePicker.currentDate).toStrictEqual(maxDate.toDate());
+    });
+
+    test("excludedDays", () => {
+      const config = { excludedDays: "sunday thursday" };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.excludedDays).toEqual([0, 4]);
+    });
+
+    describe("excludedDates", () => {
+      test("excluding a day", () => {
+        const dateToExclude = dayjs()
+          .date(getDateInCurrentMonth())
+          .startOf("day");
+        config = { excludedDates: dateToExclude.format("D/M/YYYY") };
+        const datePicker = new MOJFrontend.DatePicker(component, config);
+        datePicker.init();
+
+        expect(datePicker.excludedDates).toStrictEqual([
+          dateToExclude.toDate(),
+        ]);
+      });
+
+      test("excluding multiple dates", () => {
+        const firstDateToExclude = dayjs()
+          .date(getDateInCurrentMonth())
+          .startOf("day");
+        const secondDateToExclude = dayjs()
+          .date(getDateInCurrentMonth([firstDateToExclude.date()]))
+          .startOf("day");
+        config = {
+          excludedDates: `${firstDateToExclude.format("D/M/YYYY")} ${secondDateToExclude.format("D/M/YYYY")}`,
+        };
+        const datePicker = new MOJFrontend.DatePicker(component, config);
+        datePicker.init();
+
+        expect(datePicker.excludedDates.length).toEqual(2);
+        expect(datePicker.excludedDates).toStrictEqual([
+          firstDateToExclude.toDate(),
+          secondDateToExclude.toDate(),
+        ]);
+      });
+
+      test("excluding a range of days", () => {
+        let datesToExclude;
+        if (dayjs().date() < 15) {
+          datesToExclude = getDateRangeInCurrentMonth(18, 20);
+        } else {
+          datesToExclude = getDateRangeInCurrentMonth(3,5)
+        }
+        datesToExclude = datesToExclude.map((date) => date.startOf("day"));
+        config = {
+          excludedDates: `${datesToExclude.at(0).format("D/M/YYYY")}-${datesToExclude.at(-1).format("D/M/YYYY")}`
+        };
+        const datePicker = new MOJFrontend.DatePicker(component, config);
+        datePicker.init();
+
+        expect(datePicker.excludedDates.length).toEqual(3);
+        expect(datePicker.excludedDates).toStrictEqual(
+          datesToExclude.map((date => date.toDate())),
+        );
+      });
+
+      test("excluding individual dates and a range of days", () => {
+        let datesToExclude;
+        if (dayjs().date() < 15) {
+          datesToExclude = getDateRangeInCurrentMonth(18, 20);
+          datesToExclude.push(dayjs().date(22))
+          datesToExclude.push(dayjs().date(25))
+        } else {
+          datesToExclude = getDateRangeInCurrentMonth(3,5)
+          datesToExclude.push(dayjs().date(7))
+          datesToExclude.push(dayjs().date(11))
+        }
+        datesToExclude = datesToExclude.map((date) => date.startOf("day"));
+        config = {
+          excludedDates: `${datesToExclude.at(0).format("D/M/YYYY")}-${datesToExclude.at(2).format("D/M/YYYY")} ${datesToExclude.at(3).format("D/M/YYYY")} ${datesToExclude.at(4).format("D/M/YYYY")} `
+        };
+        const datePicker = new MOJFrontend.DatePicker(component, config);
+        datePicker.init();
+
+        expect(datePicker.excludedDates.length).toEqual(5);
+        expect(datePicker.excludedDates).toStrictEqual(
+          datesToExclude.map((date => date.toDate())),
+        );
+      });
+    });
+  });
+
+  describe("UI", () => {
+    let calendarButton
+    let input
+
+    test("with leadingZeros false", async () => {
+      calendarButton = queryByText(component, "Choose date")?.closest("button");
+      input = screen.getByLabelText("Date");
+
+      const config = { leadingZeros: false };
+      new MOJFrontend.DatePicker(component, config).init();
+      const dateToSelect = screen.queryByText( "9")?.closest("button");
+      const selectedDate = dayjs().date(9)
+
+      await user.click(calendarButton);
+      await user.click(dateToSelect)
+
+      expect(input).toHaveValue(selectedDate.format("D/M/YYYY"));
+    });
+
+    test("with leadingZeros true", async () => {
+      calendarButton = queryByText(component, "Choose date")?.closest("button");
+      input = screen.getByLabelText("Date");
+
+      const config = { leadingZeros: true };
+      new MOJFrontend.DatePicker(component, config).init();
+      const dateToSelect = screen.queryByText( "9")?.closest("button");
+      const selectedDate = dayjs().date(9)
+
+      await user.click(calendarButton);
+      await user.click(dateToSelect)
+
+      expect(input).toHaveValue(selectedDate.format("DD/MM/YYYY"));
+    });
+  });
+});
+//test component API - JS and data-attribute
+//open with date in input
+//min date
+//max date
+//excluded dates
+//excluded days
+//leadingZeros - test home and end keys
+//weekStartDay
