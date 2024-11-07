@@ -178,7 +178,7 @@ Datepicker.prototype.initControls = function () {
   );
 
   this.$dialog.addEventListener("keydown", (event) => {
-    if (event.key == "Escape") {
+    if (event.key === "Escape") {
       this.closeDialog();
       event.preventDefault();
       event.stopPropagation();
@@ -422,7 +422,7 @@ Datepicker.prototype.setWeekStartDay = function () {
     // Rotate dayLabels array to put Sunday as the first item
     this.dayLabels.unshift(this.dayLabels.pop());
   }
-  if (weekStartDayParam?.toLowerCase() === "monday") {
+  else {
     this.config.weekStartDay = "monday";
   }
 };
