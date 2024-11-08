@@ -812,6 +812,23 @@ describe("button menu JS API", () => {
 
       expect(input).toHaveValue(selectedDate.format("DD/MM/YYYY"));
     });
+
+    test("minDate", async () => {
+      calendarButton = queryByText(component, "Choose date")?.closest("button")
+
+
+      const minDate = dayjs().date(2).startOf("day");
+      const config = { minDate: minDate.format("D/M/YYYY") };
+      new MOJFrontend.DatePicker(component, config).init();
+
+      await user.click(calendarButton);
+
+      expect(component.querySelectorAll("button[aria-disabled]").length).toBe(2)
+
+
+
+
+})
   });
 });
 //test component API - JS and data-attribute
