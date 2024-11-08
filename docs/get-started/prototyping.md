@@ -2,7 +2,6 @@
 layout: layouts/get-started.njk
 subsection: How we work
 title: Prototyping
-redirect_from: /test/redirect
 ---
 
 This guide explains how to create prototypes using the MoJ Design System and GOV.UK Prototype Kit.
