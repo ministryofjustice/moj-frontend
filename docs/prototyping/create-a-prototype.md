@@ -2,6 +2,7 @@
 layout: layouts/get-started.njk
 subsection: Prototyping
 title: Create a prototype
+redirect_from: /get-started/prototyping
 eleventyNavigation:
   key: Create a prototype
   parent: Prototyping
