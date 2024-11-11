@@ -14,8 +14,6 @@ eleventyNavigation:
 There's a [Filter component discussion in the GOV.UK Design System backlog](https://github.com/alphagov/govuk-design-system-backlog/issues/133).
 {% endbanner %}
 
-{% lastUpdated "filter" %}
-
 {% example "/examples/filter", 1000 %}
 
 ## When to use
@@ -26,7 +24,7 @@ You should only provide users with filters they really need.
 
 ## How to use
 
-You should use this component with the [filter a list](../../patterns/filter-a-list) pattern to allow the component to be shown with a list.
+You should use this component with the [filter a list](/patterns/filter-a-list/) pattern to allow the component to be shown with a list.
 
 Users can select 1 or more filters. When the user clicks 'Apply filters' the page refreshes to show the items that match the filters.
 
@@ -104,11 +102,7 @@ This component:
 
 Users don't always see they can filter. Some users try to filter from the columns headings.
 
-## Contribute
-
-[Discuss filters on GitHub](https://github.com/ministryofjustice/moj-frontend/discussions/197)
-
-### Things we don't know enough about
+## Things we don't know enough about
 
 - Guidance on when to use an alternative to search, such as 'search' or 'sort by'
 

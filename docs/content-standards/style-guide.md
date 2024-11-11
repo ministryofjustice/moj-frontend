@@ -3,7 +3,7 @@ layout: layouts/content.njk
 subsection: Content standards
 title: Content style guide
 eleventyNavigation:
-  key: Style guide
+  key: Content style guide
   parent: Content standards
   order: 10
   excerpt: "The MoJ A to Z content style guide covering style, spelling and grammar conventions."

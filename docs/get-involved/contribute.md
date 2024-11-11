@@ -15,7 +15,7 @@ Anyone can propose a new component or pattern.
 
 ### Step 1: Check the contribution criteria
 
-The MoJ Design System Group review contributions against a [contribution criteria](/get-involved/criteria). To support the review of contributions, first check that your proposal meets the [criteria](/get-involved/criteria).
+The MoJ Design System Group review contributions against a [contribution criteria](/get-involved/criteria/). To support the review of contributions, first check that your proposal meets the [criteria](/get-involved/criteria/).
 
 ### Step 2: Check for similar contributions
 

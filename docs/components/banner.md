@@ -15,8 +15,6 @@ The [Notification banner component](https://design-system.service.gov.uk/compone
 You should consider using the GOV.UK version if it fits your needs.
 {% endbanner %}
 
-{% lastUpdated "banner" %}
-
 {% example "/examples/banner", 225 %}
 
 ## When to use

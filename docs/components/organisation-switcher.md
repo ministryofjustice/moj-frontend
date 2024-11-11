@@ -9,8 +9,6 @@ eleventyNavigation:
   excerpt: "Use the organisation switcher component to let users navigate between different organisations or accounts, for example, switching between prisons."
 ---
 
-{% lastUpdated "organisation-switcher" %}
-
 {% example "/examples/organisation-switcher", 125 %}
 
 ## When to use

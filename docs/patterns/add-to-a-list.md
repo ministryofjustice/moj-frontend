@@ -27,7 +27,7 @@ Use this pattern when users need to add similar information many times, and chec
 
 Do not use this pattern when users need to add different kinds of information that do not relate to each other.
 
-If users only need to add information a couple of times, consider using [add another](../../components/add-another).
+If users only need to add information a couple of times, consider using [add another](/components/add-another/).
 
 ## How to use
 
@@ -35,13 +35,13 @@ If users only need to add information a couple of times, consider using [add ano
     <img alt="Example of adding things to a list which includes adding the name and date of birth of a dependant and their relationship to the client making the application, with a button to save and continue to the next page." src="../../assets/images/add-to-a-list-04.png" width="100%">
 </div>
 
-### Add things to the list
+## Add things to the list
 
 <div class="govuk-form-group">
     <img alt="Example of adding things to a list which includes adding the name and date of birth of a dependant and their relationship to the client making the application, with a button to save and continue to the next page." src="../../assets/images/add-to-a-list-01.png" width="40%">
 </div>
 
-Use a [question page](https://design-patterns.service.justice.gov.uk/patterns/question-pages/) to ask users for information you need within your service. This is the information that users may need to add many times.
+Use a [question page](https://design-system.service.gov.uk/patterns/question-pages/) to ask users for information you need within your service. This is the information that users may need to add many times.
 
 Use components that best suit the information you're asking for, such as [text inputs](https://design-system.service.gov.uk/components/text-input/) or [radios](https://design-system.service.gov.uk/components/radios/).
 
@@ -74,10 +74,6 @@ This pattern:
 - has had an external accessibility audit with Digital Accessibility Centre (DAC)
 - is working in a live service (Apply for legal aid)
 
-## Contribute
-
-[Discuss add to a list on GitHub](https://github.com/ministryofjustice/moj-frontend/discussions/203)
-
-### Things we don't know enough about
+## Things we don't know enough about
 
 - On the list page, should we have the page title large and the question small or the page title small and the question large.

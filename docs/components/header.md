@@ -9,8 +9,6 @@ eleventyNavigation:
   excerpt: "Use the header component for any service or system not on GOV.UK like internal staff."
 ---
 
-{% lastUpdated "header" %}
-
 {% example "/examples/header", 150 %}
 
 ## When to use

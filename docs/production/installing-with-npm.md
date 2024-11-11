@@ -1,19 +1,19 @@
 ---
 layout: layouts/get-started.njk
 subsection: Setup for production
-title: Installing MoJ Frontend with NPM
+title: Install MoJ Frontend with npm
 eleventyNavigation:
-  key: Install with NPM
+  key: Install with npm
   parent: Setup for production
   order: 20
-  excerpt: "We recommend installing MoJ Frontend using NPM."
+  excerpt: "We recommend installing MoJ Frontend using npm."
 ---
 
 ## Requirements
 
-To use MoJ Frontend with NPM you must:
+To use MoJ Frontend with npm you must:
 
-1. Install the long-term support (LTS) version of [Node.js](https://nodejs.org/en/), which includes NPM. The minimum version of Node required is 4.2.0.
+1. Install the long-term support (LTS) version of [Node.js](https://nodejs.org/en/), which includes npm. The minimum version of Node required is 4.2.0.
 
 (We recommend using [`nvm`](https://github.com/creationix/nvm) for managing versions of Node.)
 
@@ -128,7 +128,7 @@ $moj-fonts-path: “/fonts/”;
 
 ## Importing JavaScript
 
-_See [Setting up JavaScript](/production/setting-up-javascript) for information on how to install, configure and use JavaScript_
+See [Setting up JavaScript](/production/setting-up-javascript) for information on how to install, configure and use JavaScript.
 
 ## Include CSS and JavaScript
 

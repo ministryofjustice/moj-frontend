@@ -27,7 +27,7 @@ First understand what pieces of information are needed to prioritise and action 
 
 Think about the order of your columns so that you display the information in a way that makes sense to the user.
 
-User research will tell you the best default order for cases, such as by most recently updated, case number, or full name. If you want to let users reorder cases, use the  [Sortable table](https://design-patterns.service.justice.gov.uk/components/sortable-table/) component.
+User research will tell you the best default order for cases, such as by most recently updated, case number, or full name. If you want to let users reorder cases, use the  [Sortable table](/components/sortable-table/) component.
 
 You may want to use [Tabs](https://design-system.service.gov.uk/components/tabs/) to let users navigate between different groups of cases, such as ‘Recently allocated’ and ‘Caseload’.
 
@@ -58,7 +58,7 @@ You can display date and time in separate columns to let users sort and filter t
     <img alt="Example of a case list, showing checkboxes in the first column of each row allowing the user to select multiple cases to perform an action on them." src="../../assets/images/case-list-03.png" width="100%">
 </div>
 
-Use [multi select.](https://design-patterns.service.justice.gov.uk/components/multi-select/)
+Use [multi select.](/components/multi-select/)
 
 ### If you want to display a status
 
@@ -71,27 +71,16 @@ Put this at the end of a row.
 
 ### If you want to let users filter the list
 
-Use the [filter](https://design-patterns.service.justice.gov.uk/components/filter/) component with the [filter a list](https://design-patterns.service.justice.gov.uk/patterns/filter-a-list/) pattern.
+Use the [filter](/components/filter/) component with the [filter a list](/patterns/filter-a-list/) pattern.
 
 ### If you want to let users search for a case
 
-Use the [search](https://design-patterns.service.justice.gov.uk/components/search/) component. Place this before the [sortable table](https://design-patterns.service.justice.gov.uk/components/sortable-table/) component.
-
-
-## Research
-
-This page:
-
-- has been usability tested
-
-## Contribute
-
-[Discuss case list pages on GitHub](https://github.com/ministryofjustice/moj-frontend/discussions/242)
+Use the [search](/components/search/) component. Place this before the [sortable table](/components/sortable-table/) component.
 
 ### Things we don't know enough about
 
 * **Pagination** - there’s only one page but the user will still need to know the number of cases on that page, for example, ‘Showing 1 to 25 of 25 cases’.
 * **Link on the first column** -  the need for the bold font weight instead of regular.
-*  [**Badge**](https://design-patterns.service.justice.gov.uk/components/badge/) - to indicate an update notification or a change made on a specific row on the table.
-*  [**Notification badge**](https://design-patterns.service.justice.gov.uk/components/notification-badge/) - this hasn’t been tested but has been mentioned to use this when highlighting updates of a specific case.
+*  [**Badge**](/components/badge/) - to indicate an update notification or a change made on a specific row on the table.
+*  [**Notification badge**](/components/notification-badge/) - this hasn’t been tested but has been mentioned to use this when highlighting updates of a specific case.
 * **Customise length of the list** - View x number of cases on a page.

@@ -9,8 +9,6 @@ eleventyNavigation:
   excerpt: "Use the primary navigation component to let users navigate and search your service."
 ---
 
-{% lastUpdated "primary-navigation" %}
-
 {% example "/examples/primary-navigation", 150 %}
 
 ## When to use
@@ -19,7 +17,7 @@ Use the primary navigation component to let users navigate and search your servi
 
 ## How to use
 
-You must use this component with the [header](../header) component.
+You must use this component with the [header](/components/header/) component.
 
 ### Links
 

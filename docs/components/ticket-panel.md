@@ -9,8 +9,6 @@ eleventyNavigation:
   excerpt: "Break up content or actions into visually distinct groups of information."
 ---
 
-{% lastUpdated "ticket-panel" %}
-
 {% example "/examples/ticket-panel", 300 %}
 
 Break up content or actions into visually distinct groups of information.
@@ -30,12 +28,6 @@ This component is essentially a container that can hold html, in most cases, a t
 The border on the left can be used to reinforce the status when used with a [status tag](https://design-system.service.gov.uk/components/tag/) or [badge](/components/badge/). For example, if the ticket panel contains a red status badge with the text ‘cancelled’, the left border can be made red to draw attention to this information.
 
 It can be used to display information in full width panels or columns of upto four panels per row.
-
-## Research on this component
-
-This component is marked as experimental because it needs more research.
-
-If you have used the ticket panel component, get in touch to share your research findings.
 
 ## Arguments
 

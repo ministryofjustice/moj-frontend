@@ -9,8 +9,6 @@ eleventyNavigation:
   excerpt: "Use the timeline component to show a linear record of what’s happened."
 ---
 
-{% lastUpdated "timeline" %}
-
 {% example "/examples/timeline", 454 %}
 
 ## When to use

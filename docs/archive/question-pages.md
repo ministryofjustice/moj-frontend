@@ -30,7 +30,3 @@ If user research tells you to group pages together, you should:
 ### Further reading
 
 - [Design principles for admin interfaces](https://designnotes.blog.gov.uk/2015/09/25/design-principles-for-admin-interfaces/) including more than one thing per page
-
-## Contribute
-
-[Discuss question pages on GitHub](https://github.com/ministryofjustice/moj-frontend/discussions/215)

@@ -15,8 +15,6 @@ The [Pagination component](https://design-system.service.gov.uk/components/pagin
 You should use the GOV.UK version if it fits your needs.
 {% endbanner %}
 
-{% lastUpdated "pagination" %}
-
 {% example "/examples/pagination", 125 %}
 
 ## When to use

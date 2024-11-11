@@ -11,11 +11,7 @@ eleventyNavigation:
 
 {% banner "HMRC Design Patterns has a similar component" %}
 [Notification badge](https://design.tax.service.gov.uk/hmrc-design-patterns/notification-badge/) in HMRC Design Patterns has a similar function and visual design to this component, and includes some guidance on when to use it.
-
-This component is in the GOV.UK Design System [community backlog](https://design-system.service.gov.uk/community/backlog/) for review.
 {% endbanner %}
-
-{% lastUpdated "notification-badge" %}
 
 {% example "/examples/notification-badge", 125 %}
 

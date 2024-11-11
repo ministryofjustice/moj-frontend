@@ -113,5 +113,3 @@ Additional colours are below, which are not in the GOV.UK Design System.
         </tr>
     </tbody>
 </table>
-
-{% lastUpdated "tag" %}

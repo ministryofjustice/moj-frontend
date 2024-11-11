@@ -14,8 +14,6 @@ This component is not sufficiently accessible to be used in live services.
 You should use an accessible rich text editor.
 {% endbanner %}
 
-{% lastUpdated "rich-text-editor" %}
-
 {% example "/examples/rich-text-editor", 300 %}
 
 ## When to use

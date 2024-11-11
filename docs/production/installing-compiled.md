@@ -1,12 +1,12 @@
 ---
 layout: layouts/get-started.njk
 subsection: Setup for production
-title: Installing MoJ Frontend using compiled files
+title: Install MoJ Frontend with compiled files
 eleventyNavigation:
   key: Install with compiled files
   parent: Setup for production
   order: 30
-  excerpt: "If your project does not use npm (or you want to try out MoJ Frontend without installing it through NPM) download and include compiled stylesheets."
+  excerpt: "If your project does not use npm (or you want to try out MoJ Frontend without installing it through npm) download and include compiled stylesheets."
 ---
 
 You can install MoJ Frontend using the compiled files released with each version. However, by doing so, you will **not** be able to:
@@ -16,7 +16,7 @@ You can install MoJ Frontend using the compiled files released with each version
 - customise the build, for example, overriding colours or enabling global styles
 - use the component Nunjucks templates
 
-In a live application, we recommend that you [install with npm](/production/installing-with-npm) instead. This will allow you to better integrate the library and more easily upgrade.
+In a live application, we recommend that you [install with npm](/production/installing-with-npm/) instead. This will allow you to better integrate the library and more easily upgrade.
 
 ## Copy the files
 

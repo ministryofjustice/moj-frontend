@@ -9,8 +9,6 @@ eleventyNavigation:
   excerpt: "Use the page header actions component for certain actions."
 ---
 
-{% lastUpdated "page-header-actions" %}
-
 {% example "/examples/page-header-actions", 150 %}
 
 ## When to use

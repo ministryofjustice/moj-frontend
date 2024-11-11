@@ -9,8 +9,6 @@ eleventyNavigation:
   excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
 ---
 
-{% lastUpdated "add-another" %}
-
 {% example "/examples/add-another", 664 %}
 ## When to use
 
@@ -20,7 +18,7 @@ Use this component when users need to add similar information a couple of times,
 
 Do not use this pattern when users need to add different kinds of information that do not relate to each other.
 
-If users need to add information many times, it may cause performance and validation issues as the page will get very long. In this case, you should use [add to a list](../../patterns/add-to-a-list).
+If users need to add information many times, it may cause performance and validation issues as the page will get very long. In this case, you should use [add to a list](/patterns/add-to-a-list/).
 
 ## How to use
 

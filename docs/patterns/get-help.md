@@ -29,6 +29,7 @@ Determine which combination of channels are best for your service:
 You'll need to get agreement of where issues will be sent, who will read it and who will respond to it.
 
 Each service will need to determine the best combination of help channels they offer to users. They will also need to determine the response time.
+
 ### Contact form
 
 Contact form fields can include:

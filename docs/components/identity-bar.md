@@ -9,8 +9,6 @@ eleventyNavigation:
   excerpt: "Use the identity bar component to give users context of where they are within a service such as viewing a case."
 ---
 
-{% lastUpdated "identity-bar" %}
-
 {% example "/examples/identity-bar", 150 %}
 
 ## Overview
@@ -19,7 +17,7 @@ eleventyNavigation:
 
 Use the identity bar component to give users context of where they are within a service such as viewing a case.
 
-This component is helpful when an entity consists of additional [sub sections](../sub-navigation).
+This component is helpful when an entity consists of additional [sub sections](/components/sub-navigation/).
 
 ### When not to use
 

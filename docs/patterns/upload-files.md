@@ -76,7 +76,7 @@ However, in services designed for regular and repeated use, like caseworking sys
 
 Only take this approach if user research shows uploading files one at a time is problematic.
 
-To let users upload multiple files at once, use the [multi file upload component](/components/multi-file-upload).
+To let users upload multiple files at once, use the [multi file upload component](/components/multi-file-upload/).
 
 ### Let users enter additional information about their files
 

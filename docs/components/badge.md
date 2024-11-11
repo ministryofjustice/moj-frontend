@@ -15,8 +15,6 @@ The [Tag component](https://design-system.service.gov.uk/components/tag/) in the
 You should consider using the GOV.UK version if it fits your needs.
 {% endbanner %}
 
-{% lastUpdated "badge" %}
-
 {% example "/examples/badge", 125 %}
 ## When to use
 

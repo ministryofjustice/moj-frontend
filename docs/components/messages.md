@@ -9,8 +9,6 @@ eleventyNavigation:
   excerpt: "Use this component in your service to display a list of messages in chronological order between different people or systems. "
 ---
 
-{% lastUpdated "messages" %}
-
 {% example "/examples/messages", 500 %}
 
 ## When to use
