@@ -1,0 +1,22 @@
+---
+layout: layouts/example.njk
+title: Interruption card (example)
+---
+
+{%- from "moj/components/interruption-card/macro.njk" import interruptionCard -%}
+{% call interruptionCard({
+    heading: "Are you sure you want to change this?",
+    primaryAction: {
+        text: "Continue",
+        href: "#"
+    },
+    secondaryAction: {
+        text: "Go back to application",
+        href: "#"
+    }
+    }) -%}
+    <p>You’ve changed the address of the person you’re referring. This means that the referral needs to be cancelled.</p>
+    <p>Previous address: 32 Willow Lane, Haverford, BA4 6TY</p>
+    <p>New address: 9 Elm Street, Westbrook, BA4 6TZ</p>
+    <p>You can go back and undo this change.</p>
+{%- endcall %}

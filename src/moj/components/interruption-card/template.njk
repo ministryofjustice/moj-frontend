@@ -1,0 +1,32 @@
+{% from "govuk/components/button/macro.njk" import govukButton %}
+<div class="moj-interruption-card" data-test="{{ params.id }}">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l moj-interruption-card__heading">{{- params.heading -}}</h1>
+            <div class="govuk-body-l moj-interruption-card__body">{{ caller() }}</div>
+            <div class="govuk-button-group moj-interruption-card__actions">
+                {{ govukButton({
+                                text: params.primaryAction.text,
+                                classes: "govuk-button--inverse",
+                                href: params.primaryAction.href,
+                                preventDoubleClick: true,
+                                attributes: params.primaryAction.attributes
+                                }) }}
+                {% if params.secondaryAction %}
+                    {% if params.secondaryAction.type == "button" %}
+                        {{ govukButton({
+                                        text: params.secondaryAction.text,
+                                        classes: "govuk-button--secondary",
+                                        href: params.secondaryAction.href,
+                                        preventDoubleClick: true,
+                                        attributes: params.secondaryAction.attributes
+                                        }) }}
+                    {% else %}
+                        <a class="govuk-link govuk-link--inverse"
+                           href="{{ params.secondaryAction.href }}">{{- params.secondaryAction.text -}}</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
