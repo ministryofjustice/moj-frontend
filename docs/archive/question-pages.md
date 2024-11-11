@@ -1,7 +1,7 @@
 ---
 layout: layouts/archive.njk
 title: Question pages
-redirect_from: docs/patterns/question-pages.md
+redirect_from: [docs/patterns/question-pages.md, /pages/question-pages]
 eleventyNavigation:
   key: Question page
   parent: Archive

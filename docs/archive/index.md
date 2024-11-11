@@ -1,6 +1,7 @@
 ---
 layout: "layouts/index.njk"
 title: Archive
+redirect_from: [/components/archived-components, /pages/archived-pages, /patterns/archived-patterns]
 eleventyNavigation:
   key: Archive
   parent: Building blocks

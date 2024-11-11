@@ -2,6 +2,7 @@
 layout: layouts/get-started.njk
 subsection: Setup for production
 title:  Setting up JavaScript
+redirect_from: /get-started/setting-up-javascript
 eleventyNavigation:
   key: Setting up JavaScript
   parent: Setup for production

@@ -1,7 +1,7 @@
 ---
 layout: layouts/archive.njk
 title: Task list pages
-redirect_from: docs/patterns/task-list.md
+redirect_from: [docs/patterns/task-list.md, /pages/task-list]
 eleventyNavigation:
   key: Task list page
   parent: Archive

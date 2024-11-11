@@ -2,6 +2,7 @@
 layout: layouts/archive.njk
 title: Currency input
 type: component
+redirect_from: /components/currency-input
 eleventyNavigation:
   key: Currency input
   parent: Archive

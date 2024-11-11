@@ -1,6 +1,7 @@
 ---
 layout: layouts/archive.njk
 title: Rich text editor
+redirect_from: /components/rich-text-editor
 eleventyNavigation:
   key: Rich text editor
   parent: Archive

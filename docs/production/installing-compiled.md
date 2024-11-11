@@ -2,6 +2,7 @@
 layout: layouts/get-started.njk
 subsection: Setup for production
 title: Install MoJ Frontend with compiled files
+redirect_from: /get-started/installing-compiled
 eleventyNavigation:
   key: Install with compiled files
   parent: Setup for production

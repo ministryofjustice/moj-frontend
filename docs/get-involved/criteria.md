@@ -2,6 +2,7 @@
 layout: layouts/community.njk
 subsection: Get involved
 title: Contribution criteria
+redirect_from: /community/criteria
 eleventyNavigation:
   key: Contribution criteria
   parent: Get involved

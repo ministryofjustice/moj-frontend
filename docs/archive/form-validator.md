@@ -1,6 +1,7 @@
 ---
 layout: layouts/archive.njk
 title: Form validator
+redirect_from: /components/form-validator
 eleventyNavigation:
   key: Form validator
   parent: Archive

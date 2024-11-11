@@ -2,6 +2,7 @@
 layout: layouts/get-started.njk
 subsection: Setup for production
 title: Install MoJ Frontend with npm
+redirect_from: /get-started/installing-with-npm
 eleventyNavigation:
   key: Install with npm
   parent: Setup for production

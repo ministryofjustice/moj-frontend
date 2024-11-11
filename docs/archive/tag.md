@@ -1,6 +1,7 @@
 ---
 layout: layouts/archive.njk
 title: Tag
+redirect_from: /components/tag
 eleventyNavigation:
   key: Tag
   parent: Archive

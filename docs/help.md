@@ -1,6 +1,7 @@
 ---
 layout: layouts/plain.njk
 title: Get help with the MoJ Design System
+redirect_from: /community/help-and-feedback
 eleventyNavigation:
   key: Get help
   parent: Using the design system

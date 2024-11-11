@@ -2,6 +2,7 @@
 layout: layouts/get-started.njk
 subsection: Prototyping
 title:  Deploy a prototype
+redirect_from: /get-started/deploying-your-prototype
 eleventyNavigation:
   key: Deploy a prototype
   parent: Prototyping
