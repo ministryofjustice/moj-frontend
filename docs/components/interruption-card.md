@@ -49,8 +49,12 @@ x
 
 ### Example 1
 
-<p><img src="x" alt="x"></p>
+x
+
+<p><img src="/assets/images/interruption-card-example-application-outcome.png" alt="x"></p>
 
 ### Example 2
 
-<p><img src="x" alt="x"></p>
+x
+
+<p><img src="/assets/images/interruption-card-example-book-visit.png" alt="x"></p>
