@@ -1,17 +1,18 @@
 {%- macro verticalNavListItem(params) -%}
+    {% set level = params.level if params.level else 0 %}
     {% set active = (params.item.url==params.page.url) %}
-    {% set open = (active or params.item.key==params.parent) %}
+    {% set open = (level == 0 and (active or params.item.key==params.parent)) %}
     {% set sortOrder = params.sortChildrenBy if params.sortChildrenBy else "order" %}
     <li class="app-vertical-nav__item {{ 'app-vertical-nav__item--active' if active }} {{ 'app-vertical-nav__item--open' if open }} {{ 'app-vertical-nav__item--with-children' if params.item.children }}">
         <a class="app-vertical-nav__link" href="{{ params.item.url }}">{{ params.item.title }}
             {%- if params.item.children.length -%}
                 <div class="app-vertical-nav__indicator">
                     <svg width="14"
-                         height="9"
-                         viewBox="0 0 14 9"
-                         fill="currentColor"
+                         height="8"
+                         viewBox="0 0 14 8"
+                         fill="none"
                          xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.41431 5.93963L13.0407 0.313202L14.4143 1.68678L7.41431 8.68678L0.414306 1.68678L1.78788 0.313201L7.41431 5.93963Z" fill="currentColor" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7 2.62459L12.6264 8L14 6.68771L7 2.02664e-07L-4.61722e-07 6.68771L1.37357 8L7 2.62459Z" fill="currentColor" />
                     </svg>
                 </div>
             {%- endif -%}
@@ -22,7 +23,8 @@
                     {{ verticalNavListItem({
                                         item: child,
                                         page: params.page,
-                                        parent: params.parent
+                                        parent: params.parent,
+                                        level: level + 1
                                         }) }}
                 {%- endfor -%}
             </ul>

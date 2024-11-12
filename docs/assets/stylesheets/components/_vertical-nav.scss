@@ -104,6 +104,10 @@ $moj-button-hover-colour: #767676;
     background-color: $moj-button-hover-colour;
   }
 
+  &:active {
+    color:)govuk-colour('white')
+  }
+
   &:focus-visible {
     background-color: $govuk-focus-colour;
     color: $govuk-text-colour;
@@ -144,6 +148,10 @@ $moj-button-hover-colour: #767676;
     background-color: $moj-app-mid-grey;
   }
 }
-.app-vertical-nav__toggle[aria-expanded="true"] .app-vertical-nav__indicator {
+
+.app-vertical-nav__item .app-vertical-nav__indicator {
   transform: rotate(180deg);
+}
+.app-vertical-nav__item--open .app-vertical-nav__indicator {
+  transform: rotate(0deg);
 }
