@@ -128,7 +128,7 @@ $moj-button-hover-colour: #767676;
 
     &:hover {
     background-color: $moj-app-mid-grey;
-    color: $govuk-text-colour;
+    color: govuk-colour('white') ;
   }
 
   &:focus,
@@ -144,6 +144,6 @@ $moj-button-hover-colour: #767676;
     background-color: $moj-app-mid-grey;
   }
 }
-.app-vertical-nav__item--open .app-vertical-nav__indicator {
+.app-vertical-nav__toggle[aria-expanded="true"] .app-vertical-nav__indicator {
   transform: rotate(180deg);
 }

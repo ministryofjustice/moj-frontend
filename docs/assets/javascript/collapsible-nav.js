@@ -15,13 +15,14 @@ export default class CollapsibleNav extends HTMLElement {
       }
 
       $button.setAttribute('aria-controls', $list.id)
-      $button.setAttribute('aria-expanded', false)
+      $button.setAttribute('aria-expanded', true)
       $button.classList.add('app-vertical-nav__toggle')
 
       $button.insertAdjacentHTML('afterbegin', $link.innerHTML)
       item.replaceChild($button, $link)
       if(!open) {
         $list.hidden = true
+        $button.setAttribute('aria-expanded', false)
       }
     })
 
