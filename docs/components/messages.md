@@ -3,9 +3,11 @@ layout: layouts/component.njk
 title: Messages
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/705
+eleventyNavigation:
+  key: Messages
+  parent: Components
+  excerpt: "Use this component in your service to display a list of messages in chronological order between different people or systems. "
 ---
-
-{% lastUpdated "messages" %}
 
 {% example "/examples/messages", 500 %}
 

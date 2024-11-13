@@ -3,6 +3,10 @@ layout: layouts/component.njk
 title: Badge
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/687
+eleventyNavigation:
+  parent: Components
+  key: Badge
+  excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}
@@ -10,8 +14,6 @@ The [Tag component](https://design-system.service.gov.uk/components/tag/) in the
 
 You should consider using the GOV.UK version if it fits your needs.
 {% endbanner %}
-
-{% lastUpdated "badge" %}
 
 {% example "/examples/badge", 125 %}
 ## When to use

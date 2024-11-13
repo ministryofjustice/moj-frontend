@@ -3,6 +3,10 @@ layout: layouts/component.njk
 title: Banner
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/835
+eleventyNavigation:
+  key: Banner
+  parent: Components
+  excerpt: "Use the banner component to display a prominent message and related actions to take."
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}
@@ -10,8 +14,6 @@ The [Notification banner component](https://design-system.service.gov.uk/compone
 
 You should consider using the GOV.UK version if it fits your needs.
 {% endbanner %}
-
-{% lastUpdated "banner" %}
 
 {% example "/examples/banner", 225 %}
 

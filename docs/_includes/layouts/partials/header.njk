@@ -53,11 +53,8 @@
 <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
 
 <header class="moj-header moj-header--docs" role="banner">
-
   <div class="moj-header__container">
-
     <div class="moj-header__logo">
-
       <svg aria-hidden="true" focusable="false" class="moj-header__logotype-crest" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" height="40" width="40">
 
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,10 +90,19 @@
       </svg>
       <a class="moj-header__link" href="{{ '/' | url }}">
         <span class="moj-header__link--organisation-name">Ministry of Justice</span>
+        <span class="moj-header__link--organisation-initials">MoJ</span>
 
         <span class="moj-header__link--service-name">Design System</span>
       </a>
     </div>
-  </div>
 
+    <moj-menu-toggle menu="#sidebar" breakpoint="800">
+        <button>
+            <svg width="15" height="9" viewBox="0 0 15 9" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.79289 5.98223L13.5858 0.189339L15 1.60355L7.79289 8.81066L0.585787 1.60355L2 0.189338L7.79289 5.98223Z" fill="currentColor"/>
+            </svg>
+            <span>Menu</span>
+        </button>
+    </moj-menu-toggle>
+  </div>
 </header>

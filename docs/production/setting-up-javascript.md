@@ -1,0 +1,74 @@
+---
+layout: layouts/get-started.njk
+subsection: Setup for production
+title:  Setting up JavaScript
+redirect_from: /get-started/setting-up-javascript
+eleventyNavigation:
+  key: Setting up JavaScript
+  parent: Setup for production
+  order: 40
+  excerpt: "Several MoJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript."
+---
+
+Several MoJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript.
+
+You can either
+
+- include the MoJ Design System's JavaScript code directly in your HTML templates
+- import the JavaScript using a bundler like Webpack
+
+## Add the JavaScript file to your HTML
+
+To include the code directly in a template, first either:
+
+- set up your routing so that requests for the JavaScript file are served from `node_modules/@ministryofjustice/frontend/moj/all.js`
+- copy the `node_modules/@ministryofjustice/frontend/moj/all.js` file into your application
+
+You will also need to install and serve [jQuery](https://jquery.com/).
+
+Then import the JavaScript file before the closing `</body>` tag of your HTML page or page template, and run the `initAll` function to initialise the components.
+
+```html
+<body>
+...
+  <script src="<YOUR-APP>/jquery.js"></script>
+  <script src="<YOUR-APP>/<YOUR-JS-FILE>.js"></script>
+  <script>
+    window.MOJFrontend.initAll()
+  </script>
+</body>
+```
+
+**Some components cannot be initialised by this method** and this is noted on their individual documentation pages. For more details, [see below](#initialize-individual-components).
+
+## Import using a bundler
+
+If you decide to import using a bundler, use `import` to import jQuery and all of the design systems’s components, then run the `initAll` function to initialise them:
+
+```javascript
+import $ from 'jquery'
+import { initAll } from '@ministryofjustice/frontend'
+
+window.$ = $
+initAll()
+```
+
+## Initialize individual components
+
+Rather than using `initAll`, you can initialise individual components by identifying them with their `data-module` attribute. For example, to initialise just the [Password reveal](/components/password-reveal/) component:
+
+```html
+<script>
+var PasswordReveal = window.MOJFrontend.PasswordReveal
+var $passwordReveal = document.querySelector('[data-module="moj-password-reveal"]')
+if ($passwordReveal) {
+    new PasswordReveal($passwordReveal)
+}
+</script>
+```
+
+This approach is necessary for the following components because they require manual configuration. There is more detail on each of their documentation pages:
+
+- [Button menu](/components/button-menu/)
+- [Filter toggle button](/components/filter/)
+- [Multi-file upload](/components/multi-file-upload/)

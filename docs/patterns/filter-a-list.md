@@ -3,6 +3,10 @@ layout: layouts/patterns.njk
 title: Filter a list
 type: pattern
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/717
+eleventyNavigation:
+  key: Filter a list
+  parent: Patterns
+  excerpt: "Use this pattern to help users refine a set of items either in a list or a set of search results."
 ---
 
 {% example "/examples/patterns/filter-a-list", 1050 %}
@@ -23,7 +27,7 @@ By default filters shouldn't persist across sessions or navigation. Where there 
 
 The filters can be any form control, including date inputs, checkboxes, free text and radio buttons. Use the appropriate form control for the type of attribute being filtered on.
 
-Filters can be used in combination with [search](../../components/search/). In this case, the flow should be:
+Filters can be used in combination with [search](/components/search/). In this case, the flow should be:
 
 1. Type a search term and submit the search form
 2. See a search results page with filters

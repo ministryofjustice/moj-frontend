@@ -3,9 +3,11 @@ layout: layouts/component.njk
 title: Primary navigation
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/710
+eleventyNavigation:
+  key: Primary navigation
+  parent: Components
+  excerpt: "Use the primary navigation component to let users navigate and search your service."
 ---
-
-{% lastUpdated "primary-navigation" %}
 
 {% example "/examples/primary-navigation", 150 %}
 
@@ -15,7 +17,7 @@ Use the primary navigation component to let users navigate and search your servi
 
 ## How to use
 
-You must use this component with the [header](../header) component.
+You must use this component with the [header](/components/header/) component.
 
 ### Links
 

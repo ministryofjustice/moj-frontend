@@ -3,9 +3,11 @@ layout: layouts/component.njk
 title: Multi file upload
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/264
+eleventyNavigation:
+  key: Multi file upload
+  parent: Components
+  excerpt: "Use the multi file upload component to help users upload multiple files at the same time, on a regular basis."
 ---
-
-{% lastUpdated "multi-file-upload" %}
 
 {% example "/examples/multi-file-upload", 550 %}
 
@@ -15,7 +17,7 @@ Use the multi file upload component to help users upload multiple files at the s
 
 ## When not to use
 
-Do not use this component if users only need to [upload one file](../../patterns/upload-files).
+Do not use this component if users only need to [upload one file](/patterns/upload-files/).
 
 Uploading multiple files at the same time is more error prone than uploading files, one at a time. This is because users have to use a custom form control that may not be as easy to understand.
 
