@@ -20,7 +20,7 @@ export default class CollapsibleNav extends HTMLElement {
       $button.insertAdjacentHTML("afterbegin", $link.innerHTML);
       $item.replaceChild($button, $link);
       if (!this.isOpen($item)) {
-        this.close($item)
+        this.close($item);
       }
     });
 
@@ -36,10 +36,8 @@ export default class CollapsibleNav extends HTMLElement {
     if (!$button) return;
     const $item = $button.parentNode;
     if (!$item) return;
-console.log($item)
-console.log(this.isOpen($item))
+
     if (this.isOpen($item)) {
-console.log($item)
       this.close($item);
     } else {
       this.closeOpenItems();
@@ -54,6 +52,8 @@ console.log($item)
   open($item) {
     const $button = $item.querySelector("button");
     const $list = $item.querySelector("ul");
+    if (!$button) return;
+    if (!$list) return;
 
     $list.hidden = false;
     $item.classList.add(this.openClass);
@@ -61,12 +61,10 @@ console.log($item)
   }
 
   close($item) {
-console.log($item)
     const $button = $item.querySelector("button");
     const $list = $item.querySelector("ul");
-console.log($item)
-console.log($button)
-console.log($list)
+    if (!$button) return;
+    if (!$list) return;
 
     $list.hidden = true;
     $item.classList.remove(this.openClass);
@@ -74,7 +72,6 @@ console.log($list)
   }
 
   closeOpenItems() {
-console.log(this.openItems)
     this.openItems.forEach((item) => this.close(item));
   }
 
@@ -83,6 +80,6 @@ console.log(this.openItems)
   }
 
   get openItems() {
-    return this.querySelectorAll(`.${this.openClass}`);
+    return this.querySelectorAll(`li:has(ul).${this.openClass}`);
   }
 }
