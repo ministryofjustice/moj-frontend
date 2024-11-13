@@ -2,11 +2,12 @@
 layout: layouts/content.njk
 subsection: Content standards
 title: Content style guide
-eleventyNavigation:
-  key: Content style guide
-  parent: Content standards
-  order: 10
-  excerpt: "The MoJ A to Z content style guide covering style, spelling and grammar conventions."
+permalink: false
+#eleventyNavigation:
+#  key: Content style guide
+#  parent: Content standards
+#  order: 10
+#  excerpt: "The MoJ A to Z content style guide covering style, spelling and grammar conventions."
 ---
 
 This content style guide applies to services and guidance at MoJ. It should be used alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">GOV.UK content style guide</a>.
