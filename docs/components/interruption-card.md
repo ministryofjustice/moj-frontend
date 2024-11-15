@@ -32,7 +32,7 @@ This component should be used specifically and sparingly. It has 5 use cases:
 2. Non-contextual errors
 3. ‘Are you sure?’ content  
 4. More varied application outcomes  
-5. Important content ahead of a task
+5. Showing important content ahead of a task
 
 #### 1. Complex errors
 
@@ -67,7 +67,7 @@ This might be needed when the user:
 - needs to do something after completing the service, for example contact a solicitor
 - needs to go to another service to apply
 
-#### 5. Important content ahead of a task
+#### 5. Showing important content ahead of a task
 
 As well as responding to an input, an interruption card can tell a user about a task they’re about to start.
 
@@ -96,6 +96,41 @@ There’s also the:
 
 ## How to use
 
+### What to add to it
+
+The interruption card should only contain:
+
+- a heading
+- paragraph content (with bullets but no other styling)
+- a button (or link) to continue
+- a button (or link) to go back
+
+Do not add form elements (such as radio buttons) to it, as this is not accessible.
+
+There’s not enough research on including images in interruption cards. There's [GOV.UK Design System guidance on images](https://design-system.service.gov.uk/styles/images/).
+
+### Colours
+
+The component follows the [GOV.UK Design System colour palette](https://design-system.service.gov.uk/styles/colour/):
+
+- the background is gov.uk-colour (‘blue’)
+- the text is gov.uk-colour (‘white’)
+- buttons and links use the [GOV.UK Design System inverse modifier class](https://design-system.service.gov.uk/styles/links/#links-on-dark-backgrounds)
+
+No other button colours should be used, for example those for [GOV.UK Design System secondary or warning buttons](https://design-system.service.gov.uk/components/button/#secondary-buttons).
+
+### Height and width
+
+The interruption card has no minimum or maximum height - it resizes to its contents. It works well with fairly short, concise content. Adding a lot of content will detract from its impact.
+
+It should always be presented as full width, with the content spanning two-thirds width for content.
+
+### Other parts of the page
+
+The interruption card should be the only body content on a page. Other elements on the page must be persistent, such as the header, footer, phase banner, person profile, breadcrumb or back link.
+
+Do not add form elements such as radio buttons underneath the component. They are not accessible. This would also turn it into a banner, risking the content being missed.
+
 ### How often to use it
 
 This interruption card works well when used sparingly. This maintains its significance and keeps it distinct from standard service pattern pages.
@@ -110,59 +145,21 @@ If a lot of interruption cards are emerging in a service, it might be a sign tha
 
 #### Repetitive journeys
 
-Users completing a task multiple times in a service can become overexposed to a particular interruption card. This is especially the case when the card is used to highlight something important tasks .
+Users completing a task multiple times in a service can become overexposed to a particular interruption card. This could be a poor user experience if the card is used to highlight something important and the user has seen it several times.
 
 A limit can be set on how many times a user sees the same interruption card.
-
-### Content
-
-This component should only contain:
-
-- a heading
-- paragraph content (with bullets but no other styling)
-- 1 button (or link) to continue
-- 1 button (or link) to go back
-
-Do not add any form elements such as radio buttons to it, as they are not accessible.
-
-There’s not enough research on including images in interruption cards. The [GOV.UK Design System guidance on images](http://gov.uk) may be helpful.
-
-### Colours
-
-The component follows the [GOV.UK Design System colour palette](https://design-system.service.gov.uk/styles/colour/):
-
-- the background is gov.uk-colour (‘blue’)
-- text is gov.uk-colour (‘white’)
-- buttons and links use the [GOV.UK Design System inverse modifier class](https://design-system.service.gov.uk/styles/links/#links-on-dark-backgrounds)
-
-No other button colours should be used, for example those for [secondary or warning buttons](https://design-system.service.gov.uk/components/button/#secondary-buttons).
-
-### Height and width
-
-The interruption card has no minimum or maximum height - it resizes to its contents.
-
-Adding a lot of content will detract from the impact of the component.
-
-It should always be presented as full width, with the content spanning two thirds width for content.
-
-### Other parts of the page
-
-The interruption card should be the only body content on a page. Other elements on the page must be persistent, such as the header, footer, phase banner, person profile, breadcrumb or back link.
-
-Do not add form elements such as radio buttons underneath the component. They are not accessible. This would also turn it into a banner, risking the content being missed.
-
 
 
 ## Examples
 
-### Example 1
+### A more varied application outcome
 
-x
+The user learns that they've entered enough for an application outcome to be worked out.
 
 <p><img src="/assets/images/interruption-card-example-application-outcome.png" alt="x"></p>
 
-### Example 2
+### Showing important content ahead of a task
 
-x
+People visiting prisoners are informed that their visit will be closed. This helps manage expectations.
 
 <p><img src="/assets/images/interruption-card-example-book-visit.png" alt="x"></p>
