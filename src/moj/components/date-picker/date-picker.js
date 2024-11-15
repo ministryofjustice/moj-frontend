@@ -435,7 +435,7 @@ Datepicker.prototype.setWeekStartDay = function () {
  *
  */
 Datepicker.prototype.isExcludedDate = function (date) {
-  if (this.minDate && this.minDate > date) {
+  if (this.minDate && this.minDate >= date) {
     return true;
   }
 
