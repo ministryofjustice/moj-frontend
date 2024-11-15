@@ -6,7 +6,8 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/421
 eleventyNavigation:
   key: Interruption card
   parent: Components
-  excerpt: ""
+  excerpt: "The interruption card component stops users in a flow with important information.
+"
 contributors: xxx
 basedon: xxx
 basedonurl: xxx
@@ -19,35 +20,126 @@ basedonurl: xxx
 
 ## Overview
 
-x
+The interruption card uses visual prominence to draw attention to something important. The user has to acknowledge it to continue.
 
 ### When to use
 
-x
+The interruption card aims to help users understand possible - and complex - errors, as well as preventing mistakes (especially serious ones).
+
+This component should be used specifically and sparingly. It has 5 use cases:
+
+1. Complex errors
+2. Non-contextual errors
+3. ‘Are you sure?’ content  
+4. More varied application outcomes  
+5. Important content ahead of a task
+
+#### 1. Complex errors
+
+A complex error is not a simple yes or no. It needs a different response because the user:
+
+- might need contextual or detailed information about why their answer is unexpected
+- should be able to continue with the answer they’ve given (but need to check it’s not a conscious or unconscious error)
+
+You might ask the user if they’re sure about what they’ve entered. This is slightly different to an ‘are you sure?’ page, which is shown to all users (irrelevant of user inputs).
+
+#### 2. Non-contextual errors
+
+A non-contextual error happens when there’s a conflict between 2 or more parts of a service. The error is with the application as a whole, not a specific field. This means a message cannot be shown next to an error source, as with a GOV.UK DS error message.
+
+Service design should prevent these errors. However, they can happen if a user edits an early part of a form (via a Check answers page) in a way that affects later parts. For example, if a person’s income has changed since the application was started, other sections might need to be deleted or re-done.
+
+The user may want to copy answers before they’re removed, and also needs to know that they’ll need to re-enter other sections.
+
+#### 3. ‘Are you sure?’ content
+
+‘Are you sure?’ content is shown to all users, asking them to confirm something in their journey.
+
+It’s commonly used for tasks like deleting or cancelling, rather than in response to something irregular the user has entered. If the content is just ‘good to know’, consider the standard colour palette.
+
+#### 4. More varied application outcomes
+
+The interruption card can be used for application outcomes which are different to a straightforward success, rejection or completion.
+
+This might be needed when the user:
+
+- has met all the success criteria, and they can finish the rest of the application later
+- needs to do something after completing the service, for example contact a solicitor
+- needs to go to another service to apply
+
+#### 5. Important content ahead of a task
+
+As well as responding to an input, an interruption card can tell a user about a task they’re about to start.
+
+Start with the inset or warning text components. If they do not work (or something is very important), use the interruption card. This prevents overuse.
+
+Asking users to confirm they understand something via an interruption card is different to a service ‘declaration’, which is part of the flow and therefore not an interruption.
 
 ### When not to use
 
-x
+Do not use the interruption card for anything outside of the 5 use cases.  
 
 ### Things to consider
 
-x
+An alert is not read out to screenreader users when they interact with the page (unlike with the warning text and inset text components). Therefore, the heading needs to clearly convey the purpose of the page and that the user is being interrupted, for example with ‘Before you continue’.   
+
+The IC uses a non-standard colour palette for impact in a user journey. When considering the impact, consider other blue parts of the page, for example the header, person identifiers and phase banners.
 
 ### Similar or linked components
 
-x
+There’s also the:
+
+- [GOV.UK Design System warning text component](https://design-system.service.gov.uk/components/error-message/)
+- [GOV.UK Design System error message](https://design-system.service.gov.uk/components/error-message/)
+- [GOV.UK Design System panel](https://design-system.service.gov.uk/components/panel/)
+- [GOV.UK Design System notification banner](https://design-system.service.gov.uk/components/notification-banner/)
 
 ## How to use
 
-x
+The interruption card needs to be used very specifically. This maintains its significance and keeps it distinct from standard service pattern pages.
 
-### Hint text
+### Content
 
-x
+This component should only contain:
 
-### Error messages
+- a heading
+- paragraph content (with bullets but no other styling)
+- 1 button (or link) to continue
+- 1 button (or link) to go back
 
-x
+Do not add any form elements such as radio buttons to it, as they are not accessible.
+
+There’s not enough research on including images in interruption cards. The [GOV.UK Design System guidance on images](http://gov.uk) may be helpful.
+
+### Colours
+
+The component follows the [GOV.UK Design System colour palette](https://design-system.service.gov.uk/styles/colour/):
+
+- the background is gov.uk-colour (‘blue’)
+- text is gov.uk-colour (‘white’)
+- buttons and links use the [GOV.UK Design System inverse modifier class](https://design-system.service.gov.uk/styles/links/#links-on-dark-backgrounds)
+
+No other button colours should be used, for example those for [secondary or warning buttons](https://design-system.service.gov.uk/components/button/#secondary-buttons).
+
+### Height and width
+
+The IC has no minimum or maximum height - it resizes to its contents.
+
+Adding a lot of content will detract from the impact of the component.
+
+It should always be presented as full width, with the content spanning two thirds width for content.
+
+### Other parts of the page
+
+The interruption card should be the only body content on a page. Other elements on the page must be persistent, such as the header, footer, phase banner, person profile, breadcrumb or back link.
+
+Do not add form elements such as radio buttons underneath the component. They are not accessible. This would also turn it into a banner, risking the content being missed.
+
+### Repetitive journeys
+
+Users completing a task multiple times in a service can become overexposed to a particular instance of the IC. This is more true for interrupting users about important things than helping them recover from errors.
+
+A limit can be set on how many times a user sees the same interruption card.
 
 ## Examples
 
