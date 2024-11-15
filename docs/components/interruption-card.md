@@ -13,7 +13,7 @@ basedon: xxx
 basedonurl: xxx
 ---
 
-<span class="govuk-caption-xl">x</span>
+<span class="govuk-caption-xl">The interruption card component stops users in a flow with important information.</span>
 
 {% example "/examples/interruption-card", 740 %}
 
@@ -24,7 +24,7 @@ The interruption card uses visual prominence to draw attention to something impo
 
 ### When to use
 
-The interruption card aims to help users understand possible - and complex - errors, as well as preventing mistakes (especially serious ones).
+The interruption card aims to help users understand possible - and complex - errors, and to help prevent mistakes (especially serious ones).
 
 This component should be used specifically and sparingly. It has 5 use cases:
 
@@ -45,7 +45,7 @@ You might ask the user if they’re sure about what they’ve entered. This is s
 
 #### 2. Non-contextual errors
 
-A non-contextual error happens when there’s a conflict between 2 or more parts of a service. The error is with the application as a whole, not a specific field. This means a message cannot be shown next to an error source, as with a GOV.UK DS error message.
+A non-contextual error happens when there’s a conflict between 2 or more parts of a service. The error is with the application as a whole, not a specific field. This means a message cannot be shown next to an error source, as with a GOV.UK Design System error message.
 
 Service design should prevent these errors. However, they can happen if a user edits an early part of a form (via a Check answers page) in a way that affects later parts. For example, if a person’s income has changed since the application was started, other sections might need to be deleted or re-done.
 
@@ -83,7 +83,7 @@ Do not use the interruption card for anything outside of the 5 use cases.
 
 An alert is not read out to screenreader users when they interact with the page (unlike with the warning text and inset text components). Therefore, the heading needs to clearly convey the purpose of the page and that the user is being interrupted, for example with ‘Before you continue’.   
 
-The IC uses a non-standard colour palette for impact in a user journey. When considering the impact, consider other blue parts of the page, for example the header, person identifiers and phase banners.
+The interruption card uses a non-standard colour palette for impact in a user journey. When considering the impact, consider other blue parts of the page, for example the header, person identifiers and phase banners.
 
 ### Similar or linked components
 
@@ -96,7 +96,23 @@ There’s also the:
 
 ## How to use
 
-The interruption card needs to be used very specifically. This maintains its significance and keeps it distinct from standard service pattern pages.
+### How often to use it
+
+This interruption card works well when used sparingly. This maintains its significance and keeps it distinct from standard service pattern pages.
+
+When considering it in a specific case, think about:
+
+- how many other interruption cards there are in the service
+- the maximum number a user might view in a single journey    
+- whether a user would ever view 2 or more in a row (and whether that's OK)
+
+If a lot of interruption cards are emerging in a service, it might be a sign that the journey needs redesigning.
+
+#### Repetitive journeys
+
+Users completing a task multiple times in a service can become overexposed to a particular interruption card. This is especially the case when the card is used to highlight something important tasks .
+
+A limit can be set on how many times a user sees the same interruption card.
 
 ### Content
 
@@ -123,7 +139,7 @@ No other button colours should be used, for example those for [secondary or warn
 
 ### Height and width
 
-The IC has no minimum or maximum height - it resizes to its contents.
+The interruption card has no minimum or maximum height - it resizes to its contents.
 
 Adding a lot of content will detract from the impact of the component.
 
@@ -135,11 +151,7 @@ The interruption card should be the only body content on a page. Other elements 
 
 Do not add form elements such as radio buttons underneath the component. They are not accessible. This would also turn it into a banner, risking the content being missed.
 
-### Repetitive journeys
 
-Users completing a task multiple times in a service can become overexposed to a particular instance of the IC. This is more true for interrupting users about important things than helping them recover from errors.
-
-A limit can be set on how many times a user sees the same interruption card.
 
 ## Examples
 
