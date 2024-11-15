@@ -138,8 +138,8 @@ This interruption card works well when used sparingly. This maintains its signif
 When considering it in a specific case, think about:
 
 - how many other interruption cards there are in the service
-- the maximum number a user might view in a single journey    
-- whether a user would ever view 2 or more in a row (and whether that's OK)
+- the maximum number of cards a user might view in a single journey    
+- whether a user would ever view 2 or more cards in a row (and whether that's OK)
 
 If a lot of interruption cards are emerging in a service, it might be a sign that the journey needs redesigning.
 
@@ -148,7 +148,6 @@ If a lot of interruption cards are emerging in a service, it might be a sign tha
 Users completing a task multiple times in a service can become overexposed to a particular interruption card. This could be a poor user experience if the card is used to highlight something important and the user has seen it several times.
 
 A limit can be set on how many times a user sees the same interruption card.
-
 
 ## Examples
 
