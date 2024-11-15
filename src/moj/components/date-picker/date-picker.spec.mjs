@@ -780,11 +780,11 @@ describe('button menu JS API', () => {
 
       await user.click(calendarButton)
 
-      const dayButtonsDisabled = range(1, minDay - 1)
+      const dayButtonsDisabled = range(1, minDay)
         .map(getDateFormatted)
         .map(screen.getByTestId)
 
-      const dayButtonsEnabled = range(minDay, lastDayinMonth)
+      const dayButtonsEnabled = range(minDay + 1, lastDayinMonth)
         .map(getDateFormatted)
         .map(screen.getByTestId)
 
@@ -1005,11 +1005,11 @@ describe('Datepicker data-attributes API', () => {
 
     await user.click(calendarButton)
 
-    const dayButtonsDisabled = range(1, minDay - 1)
+    const dayButtonsDisabled = range(1, minDay)
       .map(getDateFormatted)
       .map(screen.getByTestId)
 
-    const dayButtonsEnabled = range(minDay, lastDayinMonth)
+    const dayButtonsEnabled = range(minDay + 1, lastDayinMonth)
       .map(getDateFormatted)
       .map(screen.getByTestId)
 
