@@ -1,0 +1,157 @@
+$moj-app-mid-grey: #949494;
+$moj-button-hover-colour: #767676;
+
+.app-vertical-nav {
+  position: relative;
+  @include govuk-responsive-padding(6, 'bottom');
+  @include govuk-responsive-margin(6, 'bottom');
+
+  &:after {
+    content: "";
+    position:absolute;
+    bottom: 0;
+    left: govuk-spacing(4);
+    right: govuk-spacing(4);
+    height: 1px;
+    background-color: $govuk-border-colour;
+  }
+}
+
+.app-vertical-nav__header {
+  @include govuk-font($size: 24);
+  color: $govuk-secondary-text-colour;
+  padding-left: 19px;
+  padding-right: 19px;
+  margin-bottom: govuk-spacing(2);
+}
+
+.app-vertical-nav__list {
+  @include govuk-font($size: 19);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.app-vertical-nav__item {
+  position: relative;
+
+}
+
+.app-vertical-nav__indicator {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 7px;
+  right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include govuk-media-query($from: tablet) {
+    top: 10px;
+  }
+}
+
+.app-vertical-nav__link {
+  color: $govuk-link-colour;
+  text-decoration: none;
+  display: block;
+  padding: 10px 38px 8px govuk-spacing(4);
+  border-left: 4px solid transparent;
+
+  &:visited {
+    color: $govuk-link-colour;
+  }
+
+  &:hover {
+    background-color: $moj-button-hover-colour;
+    color: govuk-colour("white");
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: $govuk-focus-colour;
+    color: $govuk-text-colour;
+    outline: none;
+    border-color: $govuk-text-colour;
+  }
+
+  &:focus:hover,
+  &:focus-visible:hover {
+    color: govuk-colour("white");
+    background-color: $moj-button-hover-colour;
+  }
+}
+
+.app-vertical-nav__toggle {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  padding: 10px 38px 8px govuk-spacing(4);
+  border-left: 4px solid transparent;
+  @include govuk-font($size: 19);
+  color: $govuk-link-colour;
+  text-decoration: none;
+  text-align: left;
+
+  &:visited {
+    color: $govuk-link-colour;
+  }
+
+  &:hover {
+    color: govuk-colour("white");
+    background-color: $moj-button-hover-colour;
+  }
+
+  &:active {
+    color: govuk-colour('white')
+  }
+
+  &:focus-visible {
+    background-color: $govuk-focus-colour;
+    color: $govuk-text-colour;
+    outline: none;
+    border-color: $govuk-text-colour;
+  }
+
+  &:focus-visible:hover {
+    color: govuk-colour("white");
+    background-color: $moj-button-hover-colour;
+  }
+}
+
+.app-vertical-nav__list .app-vertical-nav__list {
+  @include govuk-font($size: 16);
+  padding-left: govuk-spacing(2);
+}
+
+.app-vertical-nav__item--active > .app-vertical-nav__link {
+    background-color: $govuk-link-colour;
+    color: govuk-colour('white');
+
+    &:hover {
+    background-color: $moj-app-mid-grey;
+    color: govuk-colour('white') ;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: $govuk-focus-colour;
+    color: $govuk-text-colour;
+    outline: none;
+    border-color: $govuk-text-colour;
+  }
+
+  &:focus:hover,
+  &:focus-visible:hover {
+    background-color: $moj-app-mid-grey;
+  }
+}
+
+.app-vertical-nav__item .app-vertical-nav__indicator {
+  transform: rotate(180deg);
+}
+.app-vertical-nav__item--open .app-vertical-nav__indicator {
+  transform: rotate(0deg);
+}

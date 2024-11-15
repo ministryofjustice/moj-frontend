@@ -6,6 +6,10 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703
 contributors: Dom Billington, Eddie Shannon, David Middleton, and the DPS Connect team
 basedon: Scottish Government Design System date picker
 basedonurl: https://designsystem.gov.scot/components/date-picker
+eleventyNavigation:
+  key: Date picker
+  parent: Components
+  excerpt: "The date picker component enables users to select a date from a calendar."
 ---
 
 <span class="govuk-caption-xl">The date picker component enables users to select a date from a calendar.  </span>

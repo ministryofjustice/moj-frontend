@@ -3,9 +3,11 @@ layout: layouts/component.njk
 title: Password reveal
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/709
+eleventyNavigation:
+  key: Password reveal
+  parent: Components
+  excerpt: "Use the password reveal component to let users check their password safely."
 ---
-
-{% lastUpdated "password-reveal" %}
 
 {% example "/examples/password-reveal", 175 %}
 

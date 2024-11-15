@@ -22,7 +22,7 @@
               content="Design your service using MoJ styles, components and patterns">
         <meta property="og:image"
               content="{{ '/assets/images/moj-opengraph-image-2024.png' | url }}">
-        <link href="{{ '/assets/stylesheets/application-20241028.css' | url }}"
+        <link href="{{ '/assets/stylesheets/application-20241113.css' | url }}"
               rel="stylesheet">
         {% block pageStyles %}{% endblock %}
         <title>
@@ -32,22 +32,33 @@
                 src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL"
                 async></script>
         <script type="module" src="{{ '/assets/javascript/jquery.js' | url }}"></script>
-        <script type="module" src="{{ '/assets/javascript/all-20241028.js' | url }}"></script>
+        <script type="module" src="{{ '/assets/javascript/all-20241113.js' | url }}"></script>
     </head>
     <body class="govuk-template__body">
         <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
         {% block body %}
-            <div>
-                {% include "./partials/header.njk" %}
-                {% include "./partials/navigation.njk" %}
-                {% block content %}
-                    <main class="app-prose-scope" role="main">
-                        {{ content | safe }}
-                    </main>
-                {% endblock %}
-                {% include "./partials/footer.njk" %}
+           <div>
+        {% include "./partials/header.njk" %}
+        
+        <div class="app-layout">
+            <div id="sidebar" class="app-layout__sidebar">
+                {% include "./partials/side-navigation.njk" %}
             </div>
+
+
+            <div class="app-layout__page app-page">
+                <main id="main-content" class="app-prose-scope">
+                    {% block content %}
+                        {{ content | safe }}
+                    {% endblock %}
+                </main>
+            </div>
+        </div>
+
+        {% include "./partials/footer.njk" %}
+      </div> 
         {% endblock %}
         {% block pageScripts %}{% endblock %}
     </body>
 </html>
+

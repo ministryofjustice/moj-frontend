@@ -3,6 +3,10 @@ layout: layouts/component.njk
 title: Interruption card
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/421
+eleventyNavigation:
+  key: Interruption card
+  parent: Components
+  excerpt: ""
 contributors: xxx
 basedon: xxx
 basedonurl: xxx

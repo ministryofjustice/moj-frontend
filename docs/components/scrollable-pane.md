@@ -3,6 +3,10 @@ layout: layouts/component.njk
 title: Scrollable pane
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/711
+eleventyNavigation:
+  key: Scrollable pane
+  parent: Components
+  excerpt: "Use the scrollable pane component when you have content (typically tables) which unavoidably overflowing the page."
 ---
 
 {% example "/examples/scrollable-pane", 470 %}
@@ -11,7 +15,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/711
 
 Use the scrollable pane component when you have content (typically tables) which unavoidably overflowing the page. It adds scroll shadows to indicate that content overflows the page.
 
-This is often used in the [filter a list](../../patterns/filter-a-list/) pattern as the filter takes up additional horizontal space, causing the pane holding the table to shrink.
+This is often used in the [filter a list](/patterns/filter-a-list/) pattern as the filter takes up additional horizontal space, causing the pane holding the table to shrink.
 
 ## When not to use
 

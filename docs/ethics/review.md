@@ -2,6 +2,11 @@
 layout: layouts/ethics.njk
 subsection: Ethics
 title: Doing an ethics review
+eleventyNavigation:
+  key: Doing an ethics review
+  parent: Ethics
+  order: 30
+  excerpt: "How and when to do an ethics review."
 ---
 
 Doing an ethics review will help you:

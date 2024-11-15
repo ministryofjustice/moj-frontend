@@ -1,66 +1,13 @@
 {% extends "./base.njk" %}
 
-{%- from "node_modules/@ministryofjustice/frontend/moj/components/side-navigation/macro.njk" import mojSideNavigation %}
-
-{% macro appSideNavigation(config) %}
-  {% set config = config|addActiveAttribute(page.filePathStem | url) %}
-
-  {{ mojSideNavigation(config) }}
-{% endmacro %}
-
 {% block content %}
-  <div class="govuk-width-container govuk-grid-row app-flex-container">
-    <div class="govuk-grid-column-one-third">
-      {{ appSideNavigation({
-        classes: 'govuk-!-padding-top-6',
-        sections: [
-          {
-            heading: {
-              text: "Contributing"
-            },
-            items: [
-            {
-              text: 'Propose a component or pattern',
-              href: ('/community/contribute' | url)
-            },
-            {
-              text: 'Contribution criteria',
-              href: ('/community/criteria' | url)
-            },
-            {
-              text: 'Suggest a change',
-              href: ('/community/suggest-a-change' | url)
-            }
-            ]
-          },
-          {
-            heading: {
-              text: "Support"
-            },
-            items: [
-            {
-              text: 'Help and feedback',
-              href: ('/community/help-and-feedback' | url)
-            }
-            ]
-          }
-        ]
-      }) }}
-
-      {% include "./partials/back-to-top.njk" %}
-    </div>
-
-    <div class="govuk-grid-column-two-thirds">
-      <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
+    <div class="app-layout__content">
         <h1 class="govuk-heading-xl">
           {% if subsection %}<span class="govuk-caption-xl">{{ subsection }}</span>{% endif %}
           {{ title }}
         </h1>
         {{ content | safe }}
-      </main>
 
-      {% include "./partials/get-help.njk" %}
-
+    {% include "./partials/get-help.njk" %}
     </div>
-  </div>
 {% endblock %}

@@ -3,9 +3,11 @@ layout: layouts/component.njk
 title: Page header actions
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/707
+eleventyNavigation:
+  key: Page header actions
+  parent: Components
+  excerpt: "Use the page header actions component for certain actions."
 ---
-
-{% lastUpdated "page-header-actions" %}
 
 {% example "/examples/page-header-actions", 150 %}
 

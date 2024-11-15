@@ -3,9 +3,11 @@ layout: layouts/component.njk
 title: Organisation switcher
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/239
+eleventyNavigation:
+  key: Organisation switcher
+  parent: Components
+  excerpt: "Use the organisation switcher component to let users navigate between different organisations or accounts, for example, switching between prisons."
 ---
-
-{% lastUpdated "organisation-switcher" %}
 
 {% example "/examples/organisation-switcher", 125 %}
 

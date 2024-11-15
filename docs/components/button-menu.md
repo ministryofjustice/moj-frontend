@@ -4,6 +4,10 @@ title: Button menu
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/685
 contributors: Stephen Robertson, Rich Cooley, Al Laing, Jo Dimbleby, Dave Evans, Jim Bailey, Thomas Geraghty and Andy Keen
+eleventyNavigation:
+  key: Button menu
+  parent: Components
+  excerpt: "The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu."
 ---
 
 <span class="govuk-caption-xl">The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu.</span>
@@ -56,7 +60,7 @@ There’s also the:
 
 ### Position on the page
 
-Place the button menu near the heading that the tasks relate to. If you want to add it next to a heading, put it in the same container. To add it to an H1 use the [page header actions component](https://design-patterns.service.justice.gov.uk/components/page-header-actions/).
+Place the button menu near the heading that the tasks relate to. If you want to add it next to a heading, put it in the same container. To add it to an H1 use the [page header actions component](/components/page-header-actions/).
 
 For tabbed content, adding it within the tabs may help users to understand:
 

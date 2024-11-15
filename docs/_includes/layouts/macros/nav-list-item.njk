@@ -1,0 +1,33 @@
+{%- macro verticalNavListItem(params) -%}
+    {% set level = params.level if params.level else 0 %}
+    {% set active = (params.item.url==params.page.url) %}
+    {% set open = (level == 0 and (active or params.item.key==params.parent)) %}
+    {% set sortOrder = params.sortChildrenBy if params.sortChildrenBy else "order" %}
+    <li class="app-vertical-nav__item {{ 'app-vertical-nav__item--active' if active }} {{ 'app-vertical-nav__item--open' if open }} {{ 'app-vertical-nav__item--with-children' if params.item.children }}">
+        <a class="app-vertical-nav__link" href="{{ params.item.url }}">{{ params.item.title }}
+            {%- if params.item.children.length -%}
+                <div class="app-vertical-nav__indicator">
+                    <svg width="24"
+                         height="24"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9999 10.5177L17.7928 16.3105L19.207 14.8963L11.9999 7.68923L4.79282 14.8963L6.20703 16.3105L11.9999 10.5177Z" fill="currentColor" />
+                    </svg>
+                </div>
+            {%- endif -%}
+        </a>
+        {%- if params.item.children.length -%}
+            <ul class="app-vertical-nav__list" {% if not open %}hidden{% endif %}>
+                {%- for child in params.item.children | sort(false, false, sortOrder) -%}
+                    {{ verticalNavListItem({
+                                        item: child,
+                                        page: params.page,
+                                        parent: params.parent,
+                                        level: level + 1
+                                        }) }}
+                {%- endfor -%}
+            </ul>
+        {%- endif -%}
+    </li>
+{%- endmacro -%}

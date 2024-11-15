@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/ministryofjustice/moj-frontend/compare/v3.0.2...v3.0.3) (2024-11-13)
+
+
+### Bug Fixes
+
+* **action bar:** adjust alignment of filter toggle button when next to menu button ([#921](https://github.com/ministryofjustice/moj-frontend/issues/921)) ([00fe2b9](https://github.com/ministryofjustice/moj-frontend/commit/00fe2b9370ae63f818fca8116f0c2a0504ecf75e))
+
 ## [3.0.2](https://github.com/ministryofjustice/moj-frontend/compare/v3.0.1...v3.0.2) (2024-11-05)
 
 

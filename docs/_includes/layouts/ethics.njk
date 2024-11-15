@@ -1,70 +1,13 @@
 {% extends "./base.njk" %}
 
-{%- from "node_modules/@ministryofjustice/frontend/moj/components/side-navigation/macro.njk" import mojSideNavigation %}
-
-{% macro appSideNavigation(config) %}
-  {% set config = config|addActiveAttribute(page.filePathStem | url) %}
-
-  {{ mojSideNavigation(config) }}
-{% endmacro %}
-
 {% block content %}
-
-<div class="govuk-width-container">
-
-  <div class="govuk-phase-banner">
-    <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-phase-banner__content__tag">
-        This is new
-      </strong>
-
-      <span class="govuk-phase-banner__text">
-      Help us improve it and <a class="govuk-link" href="mailto:design-system@digital.justice.gov.uk">give your feedback by email</a>.
-      </span>
-
-    </p>
-  </div>
-
-  <div class="govuk-width-container govuk-grid-row app-flex-container">
-    <div class="govuk-grid-column-one-third">
-      {{ appSideNavigation({
-        classes: 'govuk-!-padding-top-6',
-        sections: [
-          {
-            heading: {
-              text: "Ethics"
-            },
-            items: [
-              {
-                text: 'Ethical principles',
-                href: ('/ethics/principles' | url)
-              },
-              {
-                text: 'Doing an ethics review',
-                href: ('/ethics/review' | url)
-              },
-              {
-                text: 'Preparing for a service assessment',
-                href: ('/ethics/assessment' | url)
-              }
-            ]
-          }
-        ]
-      }) }}
-
-      {% include "./partials/back-to-top.njk" %}
-    </div>
-
-    <div class="govuk-grid-column-two-thirds">
-      <main id="main-content" class="govuk-main-wrapper app-prose-scope" role="main">
+    <div class="app-layout__content">
         <h1 class="govuk-heading-xl">
           {% if subsection %}<span class="govuk-caption-xl">{{ subsection }}</span>{% endif %}
           {{ title }}
         </h1>
         {{ content | safe }}
-      </main>
 
+    {% include "./partials/get-help.njk" %}
     </div>
-  </div>
-</div>
 {% endblock %}

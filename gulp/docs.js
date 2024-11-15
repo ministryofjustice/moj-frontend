@@ -6,7 +6,7 @@ const esbuild = createGulpEsbuild({
 	incremental: false, // enables the esbuild"s incremental build
 	piping: true,      // enables piping
 })
-const VERSION = "20241028"
+const VERSION = "20241113"
 
 // Copy all the govuk-frontend assets across
 gulp.task(
