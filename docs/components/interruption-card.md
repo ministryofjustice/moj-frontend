@@ -29,33 +29,32 @@ The interruption card aims to help users understand possible - and complex - err
 This component should be used specifically and sparingly. It has 5 use cases:
 
 1. Complex errors
-2. Non-contextual errors
-3. ‘Are you sure?’ content  
+2. ‘Are you sure?’ content  
+3. Non-contextual errors
 4. More varied application outcomes  
 5. Showing important content ahead of a task
 
 #### 1. Complex errors
 
-A complex error is not a simple yes or no. It needs a different response because the user:
+The interruption card can be used to convey complex errors.
 
-- might need contextual or detailed information about why their answer is unexpected
-- should be able to continue with the answer they’ve given (but need to check it’s not a conscious or unconscious error)
+Show it to a user after they've entered something which might be a mistake. They can still continue with their answer (unlike with a validation error). It gives the user contextual or detailed information about why their answer is unexpected.
 
-You might ask the user if they’re sure about what they’ve entered. This is slightly different to an ‘are you sure?’ page, which is shown to all users (irrelevant of user inputs).
+#### 2. ‘Are you sure?’ content
 
-#### 2. Non-contextual errors
+Sometimes users need to be asked if they're sure they want to do something.  
+
+This type of interruption card is a part of everyone's journey, because it's about the task itself not something which the user has entered.
+
+The aim is to prevent people from doing serious things by accident, such as deleting or cancelling something. If the action does not have serious consequences - and the content is just ‘good to know’ - consider the standard colour palette.
+
+#### 3. Non-contextual errors
 
 A non-contextual error happens when there’s a conflict between 2 or more parts of a service. The error is with the application as a whole, not a specific field. This means a message cannot be shown next to an error source, as with a GOV.UK Design System error message.
 
-Service design should prevent these errors. However, they can happen if a user edits an early part of a form (via a Check answers page) in a way that affects later parts. For example, if a person’s income has changed since the application was started, other sections might need to be deleted or re-done.
+Service design should prevent these errors. However, they can happen if a user edits an early part of a form (via a [Check answers pattern page](https://design-system.service.gov.uk/patterns/check-answers/)) in a way that affects later parts. For example, if a person’s income has changed since the application was started, other sections might need to be deleted or re-done.
 
 The user may want to copy answers before they’re removed, and also needs to know that they’ll need to re-enter other sections.
-
-#### 3. ‘Are you sure?’ content
-
-‘Are you sure?’ content is shown to all users, asking them to confirm something in their journey.
-
-It’s commonly used for tasks like deleting or cancelling, rather than in response to something irregular the user has entered. If the content is just ‘good to know’, consider the standard colour palette.
 
 #### 4. More varied application outcomes
 
@@ -77,7 +76,10 @@ Asking users to confirm they understand something via an interruption card is di
 
 ### When not to use
 
-Do not use the interruption card for anything outside of the 5 use cases.  
+Do not use the interruption card for anything outside of the 5 use cases. It should also not be used:
+
+- to emphasise large amounts of content on a page, as it will lose its impact
+- to offer options other than continue and go back, because adding form elements (such as radio buttons) to is not accessible  
 
 ### Things to consider
 
@@ -107,7 +109,7 @@ The interruption card should only contain:
 
 Do not add form elements (such as radio buttons) to it, as this is not accessible.
 
-There’s not enough research on including images in interruption cards. There's [GOV.UK Design System guidance on images](https://design-system.service.gov.uk/styles/images/).
+There’s not enough research to determine whether images should be included in interruption cards. There's [GOV.UK Design System guidance on images](https://design-system.service.gov.uk/styles/images/).
 
 ### Colours
 
@@ -121,15 +123,15 @@ No other button colours should be used, for example those for [GOV.UK Design Sys
 
 ### Height and width
 
-The interruption card has no minimum or maximum height - it resizes to its contents. It works well with fairly short, concise content. Adding a lot of content will detract from its impact.
+The interruption card has no minimum or maximum height - it resizes to its contents. It works well with fairly short, concise content. Adding a lot of content will reduce its impact.
 
-It should always be presented as full width, with the content spanning two-thirds width for content.
+On a desktop view, present it at full width with the content spanning two-thirds width. For mobile devices, the content is also full width.
 
 ### Other parts of the page
 
-The interruption card should be the only body content on a page. Other elements on the page must be persistent, such as the header, footer, phase banner, person profile, breadcrumb or back link.
+The interruption card should be the only body content on a page. The only other elements can be the header, footer, phase banner, person profile, breadcrumb or back link (which are all persistent).
 
-Do not add form elements such as radio buttons underneath the component. They are not accessible. This would also turn it into a banner, risking the content being missed.
+Do not add form elements such as radio buttons underneath the component. This is not accessible, and also turns it into a banner (risking the content being missed).
 
 ### How often to use it
 
@@ -139,15 +141,15 @@ When considering it in a specific case, think about:
 
 - how many other interruption cards there are in the service
 - the maximum number of cards a user might view in a single journey    
-- whether a user would ever view 2 or more cards in a row (and whether that's OK)
+- whether a user would ever view 2 cards in a row (and how that could be prevented)
 
 If a lot of interruption cards are emerging in a service, it might be a sign that the journey needs redesigning.
 
 #### Repetitive journeys
 
-Users completing a task multiple times in a service can become overexposed to a particular interruption card. This could be a poor user experience if the card is used to highlight something important and the user has seen it several times.
+Users completing the same journey multiple times in a service will become overexposed to a particular interruption card. This could be a poor user experience if the card is used to highlight something important and the user has seen it several times.
 
-A limit can be set on how many times a user sees the same interruption card.
+A limit can be set on how many times a user views a particular interruption card at the same stage of the journey.
 
 ## Examples
 
