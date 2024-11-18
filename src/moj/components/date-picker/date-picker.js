@@ -15,7 +15,7 @@
  * @param {DatepickerConfig} config - config object
  * @constructor
  */
-function Datepicker($module, config) {
+function Datepicker($module, config = {}) {
   if (!$module) {
     return this;
   }
@@ -421,8 +421,7 @@ Datepicker.prototype.setWeekStartDay = function () {
     this.config.weekStartDay = "sunday";
     // Rotate dayLabels array to put Sunday as the first item
     this.dayLabels.unshift(this.dayLabels.pop());
-  }
-  else {
+  } else {
     this.config.weekStartDay = "monday";
   }
 };
@@ -881,7 +880,10 @@ DSCalendarDay.prototype.update = function (day, hidden, disabled) {
   } else {
     this.button.style.display = "block";
   }
-  this.button.setAttribute("data-testid", this.picker.formattedDateFromDate(day))
+  this.button.setAttribute(
+    "data-testid",
+    this.picker.formattedDateFromDate(day),
+  );
 
   this.button.innerHTML = `<span class="govuk-visually-hidden">${accessibleLabel}</span><span aria-hidden="true">${label}</span>`;
   this.date = new Date(day);
@@ -894,7 +896,6 @@ DSCalendarDay.prototype.click = function (event) {
   event.stopPropagation();
   event.preventDefault();
 };
-
 
 DSCalendarDay.prototype.keyPress = function (event) {
   let calendarNavKey = true;
