@@ -31,7 +31,7 @@ By default the component adds a H2 to the page. Make sure a H1 is also present t
 This component has been tested in prototypes of several citizen and internal products, including:
 
 - Claim fees for Crown court defence (Legal Aid Agency)
-- Moving People Safely (Her Majesty’s Prison and Probation Service)
+- Moving People Safely (His Majesty’s Prison and Probation Service)
 
 ## Accessibility issues
 
