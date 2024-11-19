@@ -40,6 +40,8 @@ The interruption card can be shown to a user after they've entered something whi
 
 It gives the user contextual or detailed information about why their answer is unexpected. They can still continue with their answer, unlike with a validation error.
 
+<p><img src="/assets/images/interruption-card-example-possible-error.png" alt="x"></p>
+
 #### 2. ‘Are you sure?’ content
 
 Sometimes users need to be asked if they're sure they want to do something.  
@@ -48,6 +50,8 @@ This aims to prevent people from doing serious things by accident, such as delet
 
 This type of interruption card is a part of everyone's journey, because it's about the task itself not something which has been entered.
 
+<p><img src="/assets/images/interruption-card-example-are-you-sure.png" alt="x"></p>
+
 #### 3. Non-contextual errors
 
 A non-contextual error happens when there’s a conflict between 2 or more parts of a service. The error is with the application as a whole, not a specific field. This means a message cannot be shown next to the source of the error, unlike with a [GOV.UK Design System error message](https://design-system.service.gov.uk/components/error-message/).
@@ -55,6 +59,8 @@ A non-contextual error happens when there’s a conflict between 2 or more parts
 Service design should prevent these errors. However, they can happen if a user edits an early part of a form (via a [Check answers pattern page](https://design-system.service.gov.uk/patterns/check-answers/)) in a way that affects later parts. For example, if a person’s income has changed since the application was started, other sections might need to be deleted or redone.
 
 The user may want to copy answers before they’re removed, and also needs to know that they’ll need to re-enter other sections.
+
+<p><img src="/assets/images/interruption-card-example-non-contextual-error.png" alt="x"></p>
 
 #### 4. More varied application outcomes
 
@@ -66,6 +72,8 @@ This might be needed when the user:
 - needs to do something after completing the service, for example contact a solicitor
 - needs to complete a task in another service
 
+<p><img src="/assets/images/interruption-card-example-varied-outcome.png" alt="x"></p>
+
 #### 5. Showing important content ahead of a task
 
 As well as responding to an input, an interruption card can tell a user about a task they’re about to start.
@@ -73,6 +81,8 @@ As well as responding to an input, an interruption card can tell a user about a 
 Users need to confirm that they understand something, and then they're allowed to continue. By confirming or continuing, the user is not declaring anything. Declarations , which is usually used to confirm that the information they've submitted is correct. They are part of the flow and therefore not an interruption.
 
 Start with the inset or warning text components. If they do not work (or something is very important), use the interruption card. This prevents overuse.
+
+<p><img src="/assets/images/interruption-card-example-important-content.png" alt="x"></p>
 
 ### When not to use
 
@@ -115,8 +125,8 @@ There’s not enough research to determine whether images should be included in 
 
 The component follows the [GOV.UK Design System colour palette](https://design-system.service.gov.uk/styles/colour/):
 
-- the background is gov.uk-colour (‘blue’)
-- the text is gov.uk-colour (‘white’)
+- the background is `govuk-colour("blue")`
+- the text is `govuk-colour("white")`
 - buttons and links use the [GOV.UK Design System inverse modifier class](https://design-system.service.gov.uk/styles/links/#links-on-dark-backgrounds)
 
 No other button colours should be used, for example those for [GOV.UK Design System secondary or warning buttons](https://design-system.service.gov.uk/components/button/#secondary-buttons).
@@ -150,17 +160,3 @@ If a lot of interruption cards are emerging in a service, it might be a sign tha
 Users completing the same journey multiple times in a service will become overexposed to a particular interruption card. This could be a poor user experience if the card is used to highlight something important and the user has seen it several times.
 
 Consider limiting the amount of times a particular interruption card is shown to users at the same stage of the journey.
-
-## Examples
-
-### A more varied application outcome
-
-The user learns that they've entered enough for an application outcome to be worked out.
-
-<p><img src="/assets/images/interruption-card-example-application-outcome.png" alt="x"></p>
-
-### Showing important content ahead of a task
-
-People visiting prisoners are informed that their visit will be closed. This helps manage expectations.
-
-<p><img src="/assets/images/interruption-card-example-book-visit.png" alt="x"></p>
