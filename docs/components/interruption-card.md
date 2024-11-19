@@ -36,22 +36,21 @@ This component should be used specifically and sparingly. It has 5 use cases:
 
 #### 1. Possible errors
 
-The interruption card can be shown to a user after they've entered something which might be a mistake. 
+The interruption card can be shown to a user after they've entered something which might be a mistake.
 
 It gives the user contextual or detailed information about why their answer is unexpected. They can still continue with their answer, unlike with a validation error.
 
 #### 2. ‘Are you sure?’ content
 
-Sometimes users need to be asked if they're sure they want to do something they've started.  
+Sometimes users need to be asked if they're sure they want to do something.  
 
 This aims to prevent people from doing serious things by accident, such as deleting or cancelling something. If the action does not have serious consequences - and the content is just ‘good to know’ - consider the standard colour palette.
 
-This type of interruption card is a part of everyone's journey, because it's about the task itself not something which the user has entered.
-
+This type of interruption card is a part of everyone's journey, because it's about the task itself not something which has been entered.
 
 #### 3. Non-contextual errors
 
-A non-contextual error happens when there’s a conflict between 2 or more parts of a service. The error is with the application as a whole, not a specific field. This means a message cannot be shown next to an error source, as with a GOV.UK Design System error message.
+A non-contextual error happens when there’s a conflict between 2 or more parts of a service. The error is with the application as a whole, not a specific field. This means a message cannot be shown next to the source of the error, unlike with a [GOV.UK Design System error message](https://design-system.service.gov.uk/components/error-message/).
 
 Service design should prevent these errors. However, they can happen if a user edits an early part of a form (via a [Check answers pattern page](https://design-system.service.gov.uk/patterns/check-answers/)) in a way that affects later parts. For example, if a person’s income has changed since the application was started, other sections might need to be deleted or redone.
 
