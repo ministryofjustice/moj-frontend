@@ -28,9 +28,11 @@ gulp.task(
 // Initial build of the docs site to ./public
 gulp.task(
   "build:docs", gulp.series(
+    "docs:clean",
     "docs:copy-files",
     "build:package",
     gulp.parallel("docs:styles", "docs:scripts"),
+    "docs:revision"
   )
 );
 

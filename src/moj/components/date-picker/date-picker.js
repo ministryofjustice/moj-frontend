@@ -15,7 +15,7 @@
  * @param {DatepickerConfig} config - config object
  * @constructor
  */
-function Datepicker($module, config) {
+function Datepicker($module, config = {}) {
   if (!$module) {
     return this;
   }
@@ -178,7 +178,7 @@ Datepicker.prototype.initControls = function () {
   );
 
   this.$dialog.addEventListener("keydown", (event) => {
-    if (event.key == "Escape") {
+    if (event.key === "Escape") {
       this.closeDialog();
       event.preventDefault();
       event.stopPropagation();
@@ -421,8 +421,7 @@ Datepicker.prototype.setWeekStartDay = function () {
     this.config.weekStartDay = "sunday";
     // Rotate dayLabels array to put Sunday as the first item
     this.dayLabels.unshift(this.dayLabels.pop());
-  }
-  if (weekStartDayParam?.toLowerCase() === "monday") {
+  } else {
     this.config.weekStartDay = "monday";
   }
 };
@@ -435,10 +434,13 @@ Datepicker.prototype.setWeekStartDay = function () {
  *
  */
 Datepicker.prototype.isExcludedDate = function (date) {
+  // This comparison does not work correctly - it will exclude the mindate itself
+  // see: https://github.com/ministryofjustice/moj-frontend/issues/923
   if (this.minDate && this.minDate > date) {
     return true;
   }
 
+  // This comparison works as expected - the maxdate will not be excluded
   if (this.maxDate && this.maxDate < date) {
     return true;
   }
@@ -878,6 +880,10 @@ DSCalendarDay.prototype.update = function (day, hidden, disabled) {
   } else {
     this.button.style.display = "block";
   }
+  this.button.setAttribute(
+    "data-testid",
+    this.picker.formattedDateFromDate(day),
+  );
 
   this.button.innerHTML = `<span class="govuk-visually-hidden">${accessibleLabel}</span><span aria-hidden="true">${label}</span>`;
   this.date = new Date(day);
