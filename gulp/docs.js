@@ -1,19 +1,24 @@
 const gulp = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
-const rename = require("gulp-rename");
+const rev = require("gulp-rev");
 const {createGulpEsbuild} = require("gulp-esbuild");
 const esbuild = createGulpEsbuild({
 	incremental: false, // enables the esbuild"s incremental build
 	piping: true,      // enables piping
 })
-const VERSION = "20241115"
+
+gulp.task("docs:clean", async (done) => {
+  const { deleteSync } = await import("del");
+
+  return deleteSync(['public/**/*'])
+})
 
 // Copy all the govuk-frontend assets across
 gulp.task(
   "docs:copy-dependencies", () => {
     return gulp.src([
       "node_modules/govuk-frontend/dist/govuk/assets/**/*",
-      "src/moj/assets/**/*"
+      "src/moj/assets/**/*",
     ])
     .pipe(gulp.dest("public/assets"))
   }
@@ -29,11 +34,21 @@ gulp.task(
   }
 );
 
+gulp.task(
+  "docs:copy-images", () => {
+    return gulp.src([
+      "docs/assets/images/**/*"
+    ])
+    .pipe(gulp.dest("public/assets/images"))
+  }
+);
+
 // Ordering is important here! - Docs > Package > GovUK frontend
 gulp.task(
   "docs:copy-files", gulp.series(
     "docs:copy-dependencies",
     "docs:copy-vendor",
+    "docs:copy-images",
   )
 );
 
@@ -42,11 +57,10 @@ gulp.task(
   "docs:styles", () => {
     return gulp
       .src("docs/assets/stylesheets/application.scss")
-      .pipe(sass())
-      .pipe(rename({
-        suffix: `-${VERSION}`
+      .pipe(sass({
+        outputStyle: (process.env.ENV == 'dev' ? "expanded" : "compressed"),
       }))
-      .pipe(gulp.dest("public/assets/stylesheets/"));
+      .pipe(gulp.dest("public/assets/stylesheets/"))
   }
 );
 
@@ -56,13 +70,26 @@ gulp.task(
     return gulp
       .src("docs/assets/javascript/all.js")
       .pipe(esbuild({
-          outfile: `all-${VERSION}.js`,
+          outfile: `all.js`,
           target: "es6",
+          minify: process.env.ENV != 'dev',
           bundle: true,
       }))
       .pipe(gulp.dest("public/assets/javascript"))
   }
 );
+
+gulp.task(
+  "docs:revision", () => {
+    return gulp
+    .src(["public/assets/**/*.css", "public/assets/**/*.js", "public/assets/**/*.+(png|jpg|jpeg)"], {base: "public"})
+    .pipe(rev())
+    .pipe(gulp.dest("public/"))  // Write rev'd assets to build dir
+		.pipe(rev.manifest())
+    .pipe(gulp.dest("public/assets/"))
+  }
+)
+
 
 
 

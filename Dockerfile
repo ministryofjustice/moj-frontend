@@ -19,7 +19,7 @@ COPY gulpfile.js gulpfile.js
 COPY README.md README.md
 COPY webpack.config.js webpack.config.js
 
-RUN STAGING=1 npm run build:docs
+RUN ENV="staging" npm run build:docs
 
 FROM base AS production-build
 RUN apt-get -y install git
@@ -33,7 +33,7 @@ RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 RUN git clone git@github.com:ministryofjustice/moj-frontend.git .
 
 run npm install
-RUN npm run build:docs 
+RUN ENV="production" npm run build:docs 
 
 RUN rm /root/.ssh/id_rsa
 
