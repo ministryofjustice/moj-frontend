@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 const {
+  getAllByRole,
   getByText,
   getByRole,
   queryByRole,
@@ -9,6 +10,7 @@ const {
   screen,
 } = require("@testing-library/dom");
 const { userEvent } = require("@testing-library/user-event");
+const dayjs = require("dayjs");
 const { configureAxe, toHaveNoViolations } = require("jest-axe");
 expect.extend(toHaveNoViolations);
 
@@ -23,19 +25,37 @@ const axe = configureAxe({
   },
 });
 
-const createComponent = () => {
-  const html = `
-      <div class="moj-datepicker" data-module="moj-date-picker">
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="date">
-            Date
-          </label>
-          <div id="date-hint" class="govuk-hint">
-            For example, 17/5/2024.
+const kebabize = (str) => {
+  return str.replace(
+    /[A-Z]+(?![a-z])|[A-Z]/g,
+    ($, ofset) => (ofset ? "-" : "") + $.toLowerCase(),
+  );
+};
+
+const configToDataAttributes = (config) => {
+  let attributes = "";
+  for (let [key, value] of Object.entries(config)) {
+    attributes += `data-${kebabize(key)}="${value}" `;
+  }
+  return attributes;
+};
+
+const createComponent = (config = {}, html) => {
+  const dataAttributes = configToDataAttributes(config);
+  if (typeof html === "undefined") {
+    html = `
+        <div class="moj-datepicker" data-module="moj-date-picker" ${dataAttributes}>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="date">
+              Date
+            </label>
+            <div id="date-hint" class="govuk-hint">
+              For example, 17/5/2024.
+            </div>
+            <input class="govuk-input moj-js-datepicker-input " id="date" name="date" type="text" aria-describedby="date-hint" autocomplete="off">
           </div>
-          <input class="govuk-input moj-js-datepicker-input " id="date" name="date" type="text" aria-describedby="date-hint" autocomplete="off">
-        </div>
-    </div>`;
+      </div>`;
+  }
   document.body.insertAdjacentHTML("afterbegin", html);
 
   component = document.querySelector('[data-module="moj-date-picker"]');
@@ -76,6 +96,32 @@ const getLastDayOfWeek = (dateObject, lastDayOfWeekIndex) => {
   lastDayOfWeek.setHours(0, 0, 0, 0);
 
   return lastDayOfWeek;
+};
+
+const getDateInCurrentMonth = (excluding = []) => {
+  const today = dayjs().date();
+  excluding.push(today);
+  const lastDayOfMonth = dayjs().endOf("month").date();
+  const days = range(1, lastDayOfMonth).filter((x) => !excluding.includes(x));
+
+  return days[Math.floor(Math.random() * days.length)];
+};
+
+const getDateRangeInCurrentMonth = (startDay, endDay) => {
+  let date = dayjs().date(startDay); // Convert the start date to a Day.js object
+  const endDate = dayjs().date(endDay + 1);
+  const dates = [];
+
+  while (date.isBefore(endDate)) {
+    dates.push(date);
+    date = date.add(1, "day");
+  }
+
+  return dates;
+};
+
+const range = (start, end) => {
+  return [...Array(end - start + 1).keys()].map((x) => x + start);
 };
 
 describe("Date picker with defaults", () => {
@@ -153,18 +199,13 @@ describe("Date picker with defaults", () => {
   });
 
   test("can navigate back in time", async () => {
-    const today = new Date();
-    const currentMonthName = today.toLocaleString("default", { month: "long" });
-    const currentYear = today.getFullYear();
-    const currentMonth = today.getMonth();
-    const previousMonthName = new Date(
-      today.setMonth(currentMonth - 1),
-    ).toLocaleString("default", { month: "long" });
-    const previousYear = currentYear - 1;
+    const today = dayjs();
+    const previousMonth = dayjs().subtract(1, 'month')
+    const previousYear = previousMonth.subtract(1, 'year')
 
-    const currentTitle = `${currentMonthName} ${currentYear}`;
-    const previousMonthTitle = `${previousMonthName} ${currentYear}`;
-    const previousYearTitle = `${previousMonthName} ${previousYear}`;
+    const currentTitle = `${today.format('MMMM YYYY')}`;
+    const previousMonthTitle = `${previousMonth.format('MMMM YYYY')}`;
+    const previousYearTitle = `${previousYear.format('MMMM YYYY')}`;
 
     await user.click(calendarButton);
     let prevMonthButton = getByText(dialog, "Previous month");
@@ -178,18 +219,13 @@ describe("Date picker with defaults", () => {
   });
 
   test("can navigate forward in time", async () => {
-    const today = new Date();
-    const currentMonthName = today.toLocaleString("default", { month: "long" });
-    const currentYear = today.getFullYear();
-    const currentMonth = today.getMonth();
-    const nextMonthName = new Date(
-      today.setMonth(currentMonth + 1),
-    ).toLocaleString("default", { month: "long" });
-    const nextYear = currentYear + 1;
+    const today = dayjs();
+    const nextMonth = dayjs().add(1, 'month')
+    const nextYear = nextMonth.add(1, 'year')
 
-    const currentTitle = `${currentMonthName} ${currentYear}`;
-    const nextMonthTitle = `${nextMonthName} ${currentYear}`;
-    const nextYearTitle = `${nextMonthName} ${nextYear}`;
+    const currentTitle = `${today.format('MMMM YYYY')}`;
+    const nextMonthTitle = `${nextMonth.format('MMMM YYYY')}`;
+    const nextYearTitle = `${nextYear.format('MMMM YYYY')}`;
 
     await user.click(calendarButton);
     let nextMonthButton = getByText(dialog, "Next month");
@@ -559,13 +595,541 @@ describe("Date picker with defaults", () => {
       expect(await axe(document.body)).toHaveNoViolations();
     });
   });
+});
 
-  //test component API - JS and data-attribute
-  //open with date in input
-  //min date
-  //max date
-  //excluded dates
-  //excluded days
-  //leadingZeros - test home and end keys
-  //weekStartDay
+describe("button menu JS API", () => {
+  let component;
+
+  beforeEach(() => {
+    component = createComponent();
+  });
+
+  afterEach(() => {
+    document.body.innerHTML = "";
+  });
+
+  describe("config", () => {
+    test("default config values", () => {
+      const datePicker = new MOJFrontend.DatePicker(component, {});
+      datePicker.init();
+
+      expect(datePicker.config).toStrictEqual({
+        leadingZeros: false,
+        weekStartDay: "monday",
+      });
+    });
+
+    test("leadingZeros", () => {
+      const config = { leadingZeros: true };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.config.leadingZeros).toBe(true);
+    });
+
+    test("weekStartDay can be set to sunday", () => {
+      const config = { weekStartDay: "Sunday" };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.config.weekStartDay).toBe("sunday");
+      expect(datePicker.dayLabels[0]).toBe("Sunday");
+    });
+
+    test("weekStartDay can't be set to other days", () => {
+      const config = { weekStartDay: "friday" };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.config.weekStartDay).toBe("monday");
+    });
+
+    test("minDate", () => {
+      const minDate = dayjs().subtract("1", "week").startOf("day");
+      const config = { minDate: minDate.format("D/M/YYYY") };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.minDate).toStrictEqual(minDate.toDate());
+    });
+
+    test("future minDate sets currentDate to minDate", () => {
+      const minDate = dayjs().add("1", "week").startOf("day");
+      const config = { minDate: minDate.format("D/M/YYYY") };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.minDate).toStrictEqual(minDate.toDate());
+      expect(datePicker.currentDate).toStrictEqual(minDate.toDate());
+    });
+
+    test("maxDate", () => {
+      const maxDate = dayjs().add("1", "week").startOf("day");
+      const config = { maxDate: maxDate.format("D/M/YYYY") };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.maxDate).toStrictEqual(maxDate.toDate());
+    });
+
+    test("past maxDate sets currentDate to maxDate", () => {
+      const maxDate = dayjs().subtract("1", "week").startOf("day");
+      const config = { maxDate: maxDate.format("D/M/YYYY") };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.maxDate).toStrictEqual(maxDate.toDate());
+      expect(datePicker.currentDate).toStrictEqual(maxDate.toDate());
+    });
+
+    test("excludedDays", () => {
+      const config = { excludedDays: "sunday thursday" };
+      const datePicker = new MOJFrontend.DatePicker(component, config);
+      datePicker.init();
+
+      expect(datePicker.excludedDays).toEqual([0, 4]);
+    });
+
+    describe("excludedDates", () => {
+      test("excluding a day", () => {
+        const dateToExclude = dayjs()
+          .date(getDateInCurrentMonth())
+          .startOf("day");
+        config = { excludedDates: dateToExclude.format("D/M/YYYY") };
+        const datePicker = new MOJFrontend.DatePicker(component, config);
+        datePicker.init();
+
+        expect(datePicker.excludedDates).toStrictEqual([
+          dateToExclude.toDate(),
+        ]);
+      });
+
+      test("excluding multiple dates", () => {
+        const firstDateToExclude = dayjs()
+          .date(getDateInCurrentMonth())
+          .startOf("day");
+        const secondDateToExclude = dayjs()
+          .date(getDateInCurrentMonth([firstDateToExclude.date()]))
+          .startOf("day");
+        config = {
+          excludedDates: `${firstDateToExclude.format("D/M/YYYY")} ${secondDateToExclude.format("D/M/YYYY")}`,
+        };
+        const datePicker = new MOJFrontend.DatePicker(component, config);
+        datePicker.init();
+
+        expect(datePicker.excludedDates.length).toEqual(2);
+        expect(datePicker.excludedDates).toStrictEqual([
+          firstDateToExclude.toDate(),
+          secondDateToExclude.toDate(),
+        ]);
+      });
+
+      test("excluding a range of days", () => {
+        let datesToExclude;
+        if (dayjs().date() < 15) {
+          datesToExclude = getDateRangeInCurrentMonth(18, 20);
+        } else {
+          datesToExclude = getDateRangeInCurrentMonth(3, 5);
+        }
+        datesToExclude = datesToExclude.map((date) => date.startOf("day"));
+        config = {
+          excludedDates: `${datesToExclude[0].format("D/M/YYYY")}-${datesToExclude[datesToExclude.length-1].format("D/M/YYYY")}`,
+        };
+        const datePicker = new MOJFrontend.DatePicker(component, config);
+        datePicker.init();
+
+        expect(datePicker.excludedDates.length).toEqual(3);
+        expect(datePicker.excludedDates).toStrictEqual(
+          datesToExclude.map((date) => date.toDate()),
+        );
+      });
+
+      test("excluding individual dates and a range of days", () => {
+        let datesToExclude;
+        if (dayjs().date() < 15) {
+          datesToExclude = getDateRangeInCurrentMonth(18, 20);
+          datesToExclude.push(dayjs().date(22));
+          datesToExclude.push(dayjs().date(25));
+        } else {
+          datesToExclude = getDateRangeInCurrentMonth(3, 5);
+          datesToExclude.push(dayjs().date(7));
+          datesToExclude.push(dayjs().date(11));
+        }
+        datesToExclude = datesToExclude.map((date) => date.startOf("day"));
+        config = {
+          excludedDates: `${datesToExclude[0].format("D/M/YYYY")}-${datesToExclude[2].format("D/M/YYYY")} ${datesToExclude[3].format("D/M/YYYY")} ${datesToExclude[4].format("D/M/YYYY")} `,
+        };
+        const datePicker = new MOJFrontend.DatePicker(component, config);
+        datePicker.init();
+
+        expect(datePicker.excludedDates.length).toEqual(5);
+        expect(datePicker.excludedDates).toStrictEqual(
+          datesToExclude.map((date) => date.toDate()),
+        );
+      });
+    });
+  });
+
+  describe("UI", () => {
+    let calendarButton;
+    let input;
+
+    test("with leadingZeros false", async () => {
+      input = screen.getByLabelText("Date");
+
+      const config = { leadingZeros: false };
+      new MOJFrontend.DatePicker(component, config).init();
+      calendarButton = screen.getByRole("button", { name: "Choose date" });
+      const dateToSelect = screen.queryByText("9")?.closest("button");
+      const selectedDate = dayjs().date(9);
+
+      await user.click(calendarButton);
+      await user.click(dateToSelect);
+
+      expect(input).toHaveValue(selectedDate.format("D/M/YYYY"));
+    });
+
+    test("with leadingZeros true", async () => {
+      input = screen.getByLabelText("Date");
+
+      const config = { leadingZeros: true };
+      new MOJFrontend.DatePicker(component, config).init();
+      calendarButton = screen.getByRole("button", { name: "Choose date" });
+      const dateToSelect = screen.queryByText("9")?.closest("button");
+      const selectedDate = dayjs().date(9);
+
+      await user.click(calendarButton);
+      await user.click(dateToSelect);
+
+      expect(input).toHaveValue(selectedDate.format("DD/MM/YYYY"));
+    });
+
+    test.skip.failing("minDate", async () => {
+      const minDay = 3;
+      const lastDayinMonth = dayjs().endOf("month").date();
+      const minDate = dayjs().date(minDay);
+      const config = { minDate: minDate.format("DD/MM/YYYY") };
+
+      new MOJFrontend.DatePicker(component, config).init();
+      calendarButton = screen.getByRole("button", { name: "Choose date" });
+      await user.click(calendarButton);
+
+      for (let i = 1; i <= lastDayinMonth; i++) {
+        const testId = dayjs().date(i).startOf("day").format("D/M/YYYY");
+        const dayButton = screen.getByTestId(testId);
+
+        if (i <= minDay) {
+          expect(dayButton).toHaveAttribute("aria-disabled", "true");
+        } else {
+          expect(dayButton).not.toHaveAttribute("aria-disabled");
+        }
+      }
+    });
+
+    test("maxDate", async () => {
+      const maxDay = 21;
+      const lastDayinMonth = dayjs().endOf("month").date();
+      const maxDate = dayjs().date(maxDay);
+      const config = { maxDate: maxDate.format("DD/MM/YYYY") };
+
+      new MOJFrontend.DatePicker(component, config).init();
+      calendarButton = screen.getByRole("button", { name: "Choose date" });
+      await user.click(calendarButton);
+
+      for (let i = 1; i <= lastDayinMonth; i++) {
+        const testId = dayjs().date(i).startOf("day").format("D/M/YYYY");
+        const dayButton = screen.getByTestId(testId);
+
+        if (i > maxDay) {
+          expect(dayButton).toHaveAttribute("aria-disabled", "true");
+        } else {
+          expect(dayButton).not.toHaveAttribute("aria-disabled");
+        }
+      }
+    });
+
+    describe("excludedDates", () => {
+      test("excluding a day", async () => {
+        const dateToExclude = dayjs()
+          .date(getDateInCurrentMonth())
+          .startOf("day");
+        const excludedDay = dateToExclude.date();
+        const config = { excludedDates: dateToExclude.format("D/M/YYYY") };
+
+        const lastDayinMonth = dayjs().endOf("month").date();
+
+        new MOJFrontend.DatePicker(component, config).init();
+        calendarButton = screen.getByRole("button", { name: "Choose date" });
+        await user.click(calendarButton);
+
+        for (let i = 1; i <= lastDayinMonth; i++) {
+          const testId = dayjs().date(i).startOf("day").format("D/M/YYYY");
+          const dayButton = screen.getByTestId(testId);
+
+          if (i == excludedDay) {
+            expect(dayButton).toHaveAttribute("aria-disabled", "true");
+          } else {
+            expect(dayButton).not.toHaveAttribute("aria-disabled");
+          }
+        }
+      });
+
+      test("excluding a range of days", async () => {
+        let datesToExclude;
+        if (dayjs().date() < 15) {
+          datesToExclude = getDateRangeInCurrentMonth(18, 20);
+        } else {
+          datesToExclude = getDateRangeInCurrentMonth(3, 5);
+        }
+        datesToExclude = datesToExclude.map((date) => date.startOf("day"));
+        let daysToExclude = datesToExclude.map((date) => date.date());
+        const lastDayinMonth = dayjs().endOf("month").date();
+        config = {
+          excludedDates: `${datesToExclude[0].format("D/M/YYYY")}-${datesToExclude[datesToExclude.length-1].format("D/M/YYYY")}`,
+        };
+
+        datePicker = new MOJFrontend.DatePicker(component, config).init();
+        calendarButton = screen.getByRole("button", { name: "Choose date" });
+        await user.click(calendarButton);
+
+        for (let i = 1; i <= lastDayinMonth; i++) {
+          const testId = dayjs().date(i).startOf("day").format("D/M/YYYY");
+          const dayButton = screen.getByTestId(testId);
+
+          if (daysToExclude.includes(i)) {
+            expect(dayButton).toHaveAttribute("aria-disabled", "true");
+          } else {
+            expect(dayButton).not.toHaveAttribute("aria-disabled");
+          }
+        }
+      });
+    });
+
+    test("excludedDays", async () => {
+      const config = { excludedDays: "sunday" };
+      const lastDayinMonth = dayjs().endOf("month").date();
+      let excludedDays = [];
+      for (let i = 1; i <= lastDayinMonth; i++) {
+        if (dayjs().date(i).day() === 0) {
+          excludedDays.push(i);
+        }
+      }
+      new MOJFrontend.DatePicker(component, config).init();
+      calendarButton = screen.getByRole("button", { name: "Choose date" });
+      await user.click(calendarButton);
+
+      for (let i = 1; i <= lastDayinMonth; i++) {
+        const testId = dayjs().date(i).startOf("day").format("D/M/YYYY");
+        const dayButton = screen.getByTestId(testId);
+
+        if (excludedDays.includes(i)) {
+          expect(dayButton).toHaveAttribute("aria-disabled", "true");
+        } else {
+          expect(dayButton).not.toHaveAttribute("aria-disabled");
+        }
+      }
+    });
+
+    test("default weekStartDay", async () => {
+      new MOJFrontend.DatePicker(component, {}).init();
+      calendarButton = screen.getByRole("button", { name: "Choose date" });
+      await user.click(calendarButton);
+      const headers = getAllByRole(component, "columnheader");
+
+      expect(headers[0]).toHaveAccessibleName("Monday");
+    });
+
+    test("weekStartDay Sunday", async () => {
+      new MOJFrontend.DatePicker(component, { weekStartDay: "sunday" }).init();
+      calendarButton = screen.getByRole("button", { name: "Choose date" });
+      await user.click(calendarButton);
+      const headers = getAllByRole(component, "columnheader");
+
+      expect(headers[0]).toHaveAccessibleName("Sunday");
+    });
+  });
+});
+
+describe("Datepicker data-attributes API", () => {
+  let component;
+  let calendarButton;
+  let input;
+
+  beforeEach(() => {});
+
+  afterEach(() => {
+    document.body.innerHTML = "";
+  });
+
+  test("with leadingZeros false", async () => {
+    component = createComponent({ leadingZeros: "false" });
+    new MOJFrontend.DatePicker(component).init();
+
+    input = screen.getByLabelText("Date");
+    calendarButton = screen.getByRole("button", { name: "Choose date" });
+    const dateToSelect = screen.queryByText("9")?.closest("button");
+    const selectedDate = dayjs().date(9);
+
+    await user.click(calendarButton);
+    await user.click(dateToSelect);
+
+    expect(input).toHaveValue(selectedDate.format("D/M/YYYY"));
+  });
+
+  test("with leadingZeros true", async () => {
+    const component = createComponent({ leadingZeros: "true" });
+    new MOJFrontend.DatePicker(component).init();
+
+    input = screen.getByLabelText("Date");
+    calendarButton = screen.getByRole("button", { name: "Choose date" });
+    const dateToSelect = screen.queryByText("9")?.closest("button");
+    const selectedDate = dayjs().date(9);
+
+    await user.click(calendarButton);
+    await user.click(dateToSelect);
+
+    expect(input).toHaveValue(selectedDate.format("DD/MM/YYYY"));
+  });
+
+  test.skip.failing("minDate", async () => {
+    const minDay = 3;
+    const lastDayinMonth = dayjs().endOf("month").date();
+    const minDate = dayjs().date(minDay);
+    const component = createComponent({
+      minDate: minDate.format("DD/MM/YYYY"),
+    });
+    new MOJFrontend.DatePicker(component).init();
+    calendarButton = screen.getByRole("button", { name: "Choose date" });
+
+    await user.click(calendarButton);
+
+    for (let i = 1; i <= lastDayinMonth; i++) {
+      const testId = dayjs().date(i).startOf("day").format("D/M/YYYY");
+      const dayButton = screen.getByTestId(testId);
+
+      if (i <= minDay) {
+        expect(dayButton).toHaveAttribute("aria-disabled", "true");
+      } else {
+        expect(dayButton).not.toHaveAttribute("aria-disabled");
+      }
+    }
+  });
+
+  test("maxDate", async () => {
+    const maxDay = 21;
+    const lastDayinMonth = dayjs().endOf("month").date();
+    const maxDate = dayjs().date(maxDay);
+    const component = createComponent({
+      maxDate: maxDate.format("DD/MM/YYYY"),
+    });
+    new MOJFrontend.DatePicker(component).init();
+    calendarButton = screen.getByRole("button", { name: "Choose date" });
+
+    await user.click(calendarButton);
+
+    for (let i = 1; i <= lastDayinMonth; i++) {
+      const testId = dayjs().date(i).startOf("day").format("D/M/YYYY");
+      const dayButton = screen.getByTestId(testId);
+
+      if (i > maxDay) {
+        expect(dayButton).toHaveAttribute("aria-disabled", "true");
+      } else {
+        expect(dayButton).not.toHaveAttribute("aria-disabled");
+      }
+    }
+  });
+
+  describe("excludedDates", () => {
+    test("excluding a day", async () => {
+      const dateToExclude = dayjs()
+        .date(getDateInCurrentMonth())
+        .startOf("day");
+      const excludedDay = dateToExclude.date();
+      const lastDayinMonth = dayjs().endOf("month").date();
+      const component = createComponent({
+        excludedDates: dateToExclude.format("D/M/YYYY"),
+      });
+      new MOJFrontend.DatePicker(component).init();
+      calendarButton = screen.getByRole("button", { name: "Choose date" });
+
+      await user.click(calendarButton);
+
+      for (let i = 1; i <= lastDayinMonth; i++) {
+        const testId = dayjs().date(i).startOf("day").format("D/M/YYYY");
+        const dayButton = screen.getByTestId(testId);
+
+        if (i == excludedDay) {
+          expect(dayButton).toHaveAttribute("aria-disabled", "true");
+        } else {
+          expect(dayButton).not.toHaveAttribute("aria-disabled");
+        }
+      }
+    });
+
+    test("excluding a range of days", async () => {
+      let datesToExclude;
+      if (dayjs().date() < 15) {
+        datesToExclude = getDateRangeInCurrentMonth(18, 20);
+      } else {
+        datesToExclude = getDateRangeInCurrentMonth(3, 5);
+      }
+      datesToExclude = datesToExclude.map((date) => date.startOf("day"));
+      let daysToExclude = datesToExclude.map((date) => date.date());
+      const lastDayinMonth = dayjs().endOf("month").date();
+      component = createComponent({
+        excludedDates: `${datesToExclude[0].format("D/M/YYYY")}-${datesToExclude[datesToExclude.length-1].format("D/M/YYYY")}`,
+      });
+      datePicker = new MOJFrontend.DatePicker(component).init();
+      calendarButton = screen.getByRole("button", { name: "Choose date" });
+
+      await user.click(calendarButton);
+
+      for (let i = 1; i <= lastDayinMonth; i++) {
+        const testId = dayjs().date(i).startOf("day").format("D/M/YYYY");
+        const dayButton = screen.getByTestId(testId);
+
+        if (daysToExclude.includes(i)) {
+          expect(dayButton).toHaveAttribute("aria-disabled", "true");
+        } else {
+          expect(dayButton).not.toHaveAttribute("aria-disabled");
+        }
+      }
+    });
+  });
+
+  test("excludedDays", async () => {
+    const component = createComponent({ excludedDays: "sunday" });
+    const lastDayinMonth = dayjs().endOf("month").date();
+    let excludedDays = [];
+    for (let i = 1; i <= lastDayinMonth; i++) {
+      if (dayjs().date(i).day() === 0) {
+        excludedDays.push(i);
+      }
+    }
+    new MOJFrontend.DatePicker(component).init();
+    calendarButton = screen.getByRole("button", { name: "Choose date" });
+
+    await user.click(calendarButton);
+
+    for (let i = 1; i <= lastDayinMonth; i++) {
+      const testId = dayjs().date(i).startOf("day").format("D/M/YYYY");
+      const dayButton = screen.getByTestId(testId);
+
+      if (excludedDays.includes(i)) {
+        expect(dayButton).toHaveAttribute("aria-disabled", "true");
+      } else {
+        expect(dayButton).not.toHaveAttribute("aria-disabled");
+      }
+    }
+  });
+
+  test("weekStartDay", async () => {
+    component = createComponent({ weekStartDay: "sunday" });
+    new MOJFrontend.DatePicker(component).init();
+    calendarButton = screen.getByRole("button", { name: "Choose date" });
+    await user.click(calendarButton);
+    const headers = getAllByRole(component, "columnheader");
+
+    expect(headers[0]).toHaveAccessibleName("Sunday");
+  });
 });

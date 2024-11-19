@@ -24,7 +24,7 @@ jobs:
         name: mojds-package
         path: package
     - run: npm run build:dist
-    - run: npm run build:docs
+    - run: ENV="production" npm run build:docs
     - uses: actions/upload-artifact@v4
       with:
         name: mojds-dist
