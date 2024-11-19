@@ -131,11 +131,11 @@ On a desktop view, present it at full width with the content spanning two-thirds
 
 The interruption card should be the only body content on a page. The only other elements can be the header, footer, phase banner, person profile, breadcrumb or back link (which are all persistent).
 
-Do not add form elements such as radio buttons underneath the component. This is not accessible, and also turns it into a banner (risking the content being missed).
+Do not add form elements (such as radio buttons) underneath the component, as this is not accessible.
 
 ### How often to use it
 
-This interruption card works well when used sparingly. This maintains its significance and keeps it distinct from standard service pattern pages.
+This interruption card works well when used sparingly. This keep it significant, and distinct from standard service pattern pages.
 
 When considering it in a specific case, think about:
 
