@@ -71,6 +71,7 @@
     "copy-webpack-plugin": "^12.0.0",
     "cssnano": "^6.0.0",
     "cz-conventional-changelog": "^3.3.0",
+    "dayjs": "^1.11.13",
     "gulp-postcss": "^10.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.0.0",
