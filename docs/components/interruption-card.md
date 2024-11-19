@@ -24,35 +24,36 @@ The interruption card uses visual prominence to draw attention to something impo
 
 ### When to use
 
-The interruption card aims to help users understand possible - and complex - errors, and to help prevent mistakes (especially serious ones).
+The interruption card helps users understand possible errors and prevent mistakes (especially serious ones).
 
 This component should be used specifically and sparingly. It has 5 use cases:
 
-1. Complex errors
+1. Possible errors
 2. ‘Are you sure?’ content  
 3. Non-contextual errors
 4. More varied application outcomes  
 5. Showing important content ahead of a task
 
-#### 1. Complex errors
+#### 1. Possible errors
 
-The interruption card can be used to convey complex errors.
+The interruption card can be shown to a user after they've entered something which might be a mistake. 
 
-Show it to a user after they've entered something which might be a mistake. They can still continue with their answer (unlike with a validation error). It gives the user contextual or detailed information about why their answer is unexpected.
+It gives the user contextual or detailed information about why their answer is unexpected. They can still continue with their answer, unlike with a validation error.
 
 #### 2. ‘Are you sure?’ content
 
-Sometimes users need to be asked if they're sure they want to do something.  
+Sometimes users need to be asked if they're sure they want to do something they've started.  
+
+This aims to prevent people from doing serious things by accident, such as deleting or cancelling something. If the action does not have serious consequences - and the content is just ‘good to know’ - consider the standard colour palette.
 
 This type of interruption card is a part of everyone's journey, because it's about the task itself not something which the user has entered.
 
-The aim is to prevent people from doing serious things by accident, such as deleting or cancelling something. If the action does not have serious consequences - and the content is just ‘good to know’ - consider the standard colour palette.
 
 #### 3. Non-contextual errors
 
 A non-contextual error happens when there’s a conflict between 2 or more parts of a service. The error is with the application as a whole, not a specific field. This means a message cannot be shown next to an error source, as with a GOV.UK Design System error message.
 
-Service design should prevent these errors. However, they can happen if a user edits an early part of a form (via a [Check answers pattern page](https://design-system.service.gov.uk/patterns/check-answers/)) in a way that affects later parts. For example, if a person’s income has changed since the application was started, other sections might need to be deleted or re-done.
+Service design should prevent these errors. However, they can happen if a user edits an early part of a form (via a [Check answers pattern page](https://design-system.service.gov.uk/patterns/check-answers/)) in a way that affects later parts. For example, if a person’s income has changed since the application was started, other sections might need to be deleted or redone.
 
 The user may want to copy answers before they’re removed, and also needs to know that they’ll need to re-enter other sections.
 
@@ -64,15 +65,15 @@ This might be needed when the user:
 
 - has met all the success criteria, and they can finish the rest of the application later
 - needs to do something after completing the service, for example contact a solicitor
-- needs to go to another service to apply
+- needs to complete a task in another service
 
 #### 5. Showing important content ahead of a task
 
 As well as responding to an input, an interruption card can tell a user about a task they’re about to start.
 
-Start with the inset or warning text components. If they do not work (or something is very important), use the interruption card. This prevents overuse.
+Users need to confirm that they understand something, and then they're allowed to continue. By confirming or continuing, the user is not declaring anything. Declarations , which is usually used to confirm that the information they've submitted is correct. They are part of the flow and therefore not an interruption.
 
-Asking users to confirm they understand something via an interruption card is different to a service ‘declaration’, which is part of the flow and therefore not an interruption.
+Start with the inset or warning text components. If they do not work (or something is very important), use the interruption card. This prevents overuse.
 
 ### When not to use
 
@@ -149,7 +150,7 @@ If a lot of interruption cards are emerging in a service, it might be a sign tha
 
 Users completing the same journey multiple times in a service will become overexposed to a particular interruption card. This could be a poor user experience if the card is used to highlight something important and the user has seen it several times.
 
-A limit can be set on how many times a user views a particular interruption card at the same stage of the journey.
+Consider limiting the amount of times a particular interruption card is shown to users at the same stage of the journey.
 
 ## Examples
 
