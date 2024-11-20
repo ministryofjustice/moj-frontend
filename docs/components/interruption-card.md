@@ -86,10 +86,12 @@ Start with the inset or warning text components. If they do not work (or somethi
 
 ### When not to use
 
-Do not use the interruption card for anything outside of the 5 use cases. It should also not be used:
+Do not use the interruption card for anything outside of the 5 use cases. It should also not be used to:
 
-- to emphasise large amounts of content on a page, as it will lose its impact
-- to offer options other than continue and go back, because adding form elements (such as radio buttons) to is not accessible  
+- emphasise large amounts of content on a page, as it will lose its impact
+- show form elements (such as radio buttons) as this is not accessible
+- make a heading more visually prominent
+- display an empty state for the user to resolve (if it's within a list) - use the [GOV.UK Design System tasklist component](https://design-system.service.gov.uk/components/task-list/) instead
 
 ### Things to consider
 
