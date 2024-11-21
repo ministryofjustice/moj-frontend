@@ -5,6 +5,10 @@
   border: $govuk-border-width solid transparent;
 }
 
+.moj-interruption-card__content {
+  max-width: 960px;
+}
+
 .moj-interruption-card__heading,
 .moj-interruption-card__body {
   color: govuk-colour("white");
