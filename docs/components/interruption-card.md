@@ -34,7 +34,8 @@ This component should be used specifically and sparingly. It has 5 use cases:
 4. More varied application outcomes  
 5. Showing important content ahead of a task
 
-<h4 id=”Possible-errors”>1. Possible errors</h4>
+<a id=”Possible-errors”></a>
+#### 1. Possible errors
 
 The interruption card can be shown to a user after they've entered something which might be a mistake.
 
