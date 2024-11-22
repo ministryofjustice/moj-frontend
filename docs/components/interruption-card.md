@@ -28,13 +28,13 @@ The interruption card helps users understand possible errors and prevent mistake
 
 This component should be used specifically and sparingly. It has 5 use cases:
 
-1. Possible errors
+1. <a href=”#Possible-errors”>Possible errors</a>
 2. ‘Are you sure?’ content  
 3. Non-contextual errors
 4. More varied application outcomes  
 5. Showing important content ahead of a task
 
-#### 1. Possible errors
+<a id=”Possible-errors”>#### 1. Possible errors</a>
 
 The interruption card can be shown to a user after they've entered something which might be a mistake.
 
