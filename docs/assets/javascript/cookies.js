@@ -17,8 +17,10 @@ Cookies.prototype.init = function () {
   const configEncoded = localStorage.getItem("mojpl-cookies");
   if (configEncoded) {
     const config = JSON.parse(configEncoded);
-
     this.load(config);
+  } else {
+    // If there is no config, show the cookie banner
+    this.$module.hidden = false;
   }
 };
 
