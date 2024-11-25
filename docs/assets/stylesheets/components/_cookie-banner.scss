@@ -1,0 +1,7 @@
+// Override cookie banner to be left aligned
+.govuk-cookie-banner--align-left {
+  .govuk-cookie-banner__message {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
