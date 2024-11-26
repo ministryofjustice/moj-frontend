@@ -12,7 +12,7 @@ eleventyNavigation:
 
 {% banner "This component is archived" %}
 
-This component was archived because the [GOV.UK Design System Password input](https://design-system.service.gov.uk/components/password-input/) enables users to check their password safely. There’s also the [GOV.UK Design System ‘Ask users for passwords’ pattern](https://design-system.service.gov.uk/patterns/passwords/).
+This component was archived because the [GOV.UK Design System password input](https://design-system.service.gov.uk/components/password-input/) enables users to check their password safely. There’s also the [GOV.UK Design System ‘Ask users for passwords’ pattern](https://design-system.service.gov.uk/patterns/passwords/).
 {% endbanner %}
 
 
