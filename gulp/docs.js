@@ -1,16 +1,18 @@
+const fs = require("fs");
+const clean = require("gulp-clean")
 const gulp = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
-const rename = require("gulp-rename");
 const rev = require("gulp-rev");
-// import rev from 'gulp-rev';
-// const rewrite = require("gulp-rev-rewrite");
-// import revRewrite from 'gulp-rev-rewrite';
 const {createGulpEsbuild} = require("gulp-esbuild");
 const esbuild = createGulpEsbuild({
 	incremental: false, // enables the esbuild"s incremental build
 	piping: true,      // enables piping
 })
-const VERSION = "20241126"
+
+gulp.task("docs:clean", () => {
+  return gulp.src('public', {read: false})
+  .pipe(clean())
+})
 
 // Copy all the govuk-frontend assets across
 gulp.task(
@@ -48,13 +50,6 @@ gulp.task(
       .src("docs/assets/stylesheets/application.scss")
       .pipe(sass())
       .pipe(gulp.dest("public/assets/stylesheets/"))
-    //   .pipe(rev())
-    //   .pipe(gulp.dest("public/assets/stylesheets/"))  // Write rev'd assets to build dir
-		  // .pipe(rev.manifest({
-    //     base: 'public/assets',
-			 //  merge: true
-    //   }))
-		  // .pipe(gulp.dest("public/assets/"))  // Write manifest to build dir
   }
 );
 
@@ -69,37 +64,20 @@ gulp.task(
           bundle: true,
       }))
       .pipe(gulp.dest("public/assets/javascript"))
-    //   .pipe(rev())
-    //   .pipe(gulp.dest("public/assets/javascript/"))  // Write rev'd assets to build dir
-		  // .pipe(rev.manifest({
-    //     base: 'build/assets',
-			 //  merge: true
-    //   }))
-		  // .pipe(gulp.dest("public/assets/"))
   }
 );
 
 gulp.task(
   "docs:revision", () => {
     return gulp
-    .src(["public/assets/**/*.css", "public/assets/**/*js"])
+    .src(["public/assets/**/*.css", "public/assets/**/*js"], {base: "public"})
     .pipe(rev())
-    .pipe(gulp.dest("public/assets/"))  // Write rev'd assets to build dir
+    .pipe(gulp.dest("public/"))  // Write rev'd assets to build dir
 		.pipe(rev.manifest())
     .pipe(gulp.dest("public/assets/"))
   }
 )
 
-// gulp.task(
-//   "docs:rewrite", () => {
-//       const manifest = readFileSync('dist/assets/rev-manifest.json');
-//
-//       return gulp
-//       .src('public/**/*.html')
-//       .pipe(revRewrite({ manifest }))
-//       .pipe(gulp.dest('public'));
-//   }
-// );
 
 
 
