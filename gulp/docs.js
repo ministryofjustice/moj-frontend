@@ -1,5 +1,3 @@
-const fs = require("fs");
-const clean = require("gulp-clean")
 const gulp = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
 const rev = require("gulp-rev");
@@ -9,9 +7,10 @@ const esbuild = createGulpEsbuild({
 	piping: true,      // enables piping
 })
 
-gulp.task("docs:clean", () => {
-  return gulp.src('public', {read: false})
-  .pipe(clean())
+gulp.task("docs:clean", async (done) => {
+  const { deleteSync } = await import("del");
+
+  return deleteSync(['public/**/*'])
 })
 
 // Copy all the govuk-frontend assets across
