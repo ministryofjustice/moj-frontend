@@ -106,13 +106,15 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+
+
   eleventyConfig.addShortcode(
     "dateInCurrentMonth",
     (day) => `${day}/${new Date().getMonth() + 1}/${new Date().getFullYear()}`,
   );
 
   eleventyConfig.addShortcode("lastUpdated", function (component) {
-    if (process.env.STAGING) return "";
+    if (process.env.ENV == "staging") return "";
 
     const dirPath = path.join(__dirname, "src/moj/components", component);
     const [commit, lastUpdated] = execSync(
@@ -171,7 +173,6 @@ module.exports = function (eleventyConfig) {
     },
   );
 
-
   eleventyConfig.addFilter("getScriptPath", function (inputPath) {
     return inputPath.split("/").slice(1, -1).join("/") + "/script.js";
   });
@@ -179,6 +180,19 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("getStylesPath", function (inputPath) {
     return inputPath.split("/").slice(1, -1).join("/") + "/style.css";
   });
+
+  eleventyConfig.addFilter(
+    "rev",
+    (filepath) => {
+      if (process.env.ENV == "production" || process.env.ENV == "staging") {
+        const manifest = JSON.parse(fs.readFileSync('public/assets/rev-manifest.json', 'utf8'));
+        const revision = manifest[filepath]
+        return `/${revision || filepath}`
+      } else {
+        return `${filepath}`
+      }
+    }
+  )
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget("src/moj/components/**/*.njk");
