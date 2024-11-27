@@ -42,7 +42,9 @@ gulp.task(
   "docs:styles", () => {
     return gulp
       .src("docs/assets/stylesheets/application.scss")
-      .pipe(sass())
+      .pipe(sass({
+        includePaths: ["node_modules"]
+      }))
       .pipe(rename({
         suffix: `-${VERSION}`
       }))
