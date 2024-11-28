@@ -47,7 +47,9 @@ gulp.task(
   "docs:styles", () => {
     return gulp
       .src("docs/assets/stylesheets/application.scss")
-      .pipe(sass())
+      .pipe(sass({
+        outputStyle: (process.env.ENV == 'dev' ? "expanded" : "compressed"),
+      }))
       .pipe(gulp.dest("public/assets/stylesheets/"))
   }
 );
@@ -60,6 +62,7 @@ gulp.task(
       .pipe(esbuild({
           outfile: `all.js`,
           target: "es6",
+          minify: process.env.ENV != 'dev',
           bundle: true,
       }))
       .pipe(gulp.dest("public/assets/javascript"))
