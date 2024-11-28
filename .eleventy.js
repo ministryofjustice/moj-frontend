@@ -198,10 +198,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("src/moj/components/**/*.njk");
 
   // Copy the docs images to the public assets dir
-  eleventyConfig.addPassthroughCopy({
-    "docs/assets/images/": "assets/images/",
-  });
-  eleventyConfig.setServerPassthroughCopyBehavior("copy");
+  // eleventyConfig.addPassthroughCopy({
+  //   "docs/assets/images/": "assets/images/",
+  // });
+  // eleventyConfig.setServerPassthroughCopyBehavior("copy");
 
   // Give gulp a little time..
   eleventyConfig.setWatchThrottleWaitTime(100);

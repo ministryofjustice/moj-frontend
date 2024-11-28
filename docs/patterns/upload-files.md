@@ -9,7 +9,7 @@ eleventyNavigation:
   excerpt: "Use this pattern whenever you need users to upload one or more files."
 ---
 
-![A three step process: Ask the user to upload a file, use the native file browser, and then show them the upload and ask them to confirm it](../../assets/images/upload-file-single.png)
+![A three step process: Ask the user to upload a file, use the native file browser, and then show them the upload and ask them to confirm it]({{ 'assets/images/upload-file-single.png' | rev | url }})
 
 ## When to use
 
