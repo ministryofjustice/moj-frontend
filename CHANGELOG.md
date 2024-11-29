@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.0.3...v3.1.0) (2024-11-26)
+
+
+### Features
+
+* **password reveal:** archiving password reveal component ([#962](https://github.com/ministryofjustice/moj-frontend/issues/962)) ([13c330f](https://github.com/ministryofjustice/moj-frontend/commit/13c330f6e1666215929b93db5ff463a44c54155e))
+
 ## [3.0.3](https://github.com/ministryofjustice/moj-frontend/compare/v3.0.2...v3.0.3) (2024-11-13)
 
 
