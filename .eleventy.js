@@ -189,7 +189,7 @@ module.exports = function (eleventyConfig) {
         const revision = manifest[filepath]
         return `/${revision || filepath}`
       } else {
-        return `${filepath}`
+        return `/${filepath}`
       }
     }
   )
