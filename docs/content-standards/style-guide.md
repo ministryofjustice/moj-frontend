@@ -10,113 +10,113 @@ eleventyNavigation:
  excerpt: "The MoJ A to Z content style guide covering style, spelling and grammar conventions."
 ---
 
-This content style guide applies to services and guidance at MoJ. It should be used alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">GOV.UK content style guide</a>.
+<p class="govuk-!-margin-bottom-6">This content style guide applies to services and guidance at MoJ. It should be used alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">GOV.UK content style guide</a>.</p>
 
 <nav class="moj-sub-navigation" aria-label="Sub navigation">
 
-<ul class="moj-sub-navigation__list">
-  <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#a">A</a>
+<ul class="moj-sub-navigation__list single-char-list">
+  <li class="moj-sub-navigation__item disabled">
+    <a class="moj-sub-navigation__link single-char-link" href="#a">A</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#b">B</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#b">B</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#c">C</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#c">C</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#d">D</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#d">D</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#e">E</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#e">E</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#f">F</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#f">F</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#g">G</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#g">G</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#h">H</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#h">H</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#i">I</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#i">I</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <p class="moj-sub-navigation__link" style="color:#b1b4b6;">J</p>
+    <p class="moj-sub-navigation__link single-char-link">J</p>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#k">K</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#k">K</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <p class="moj-sub-navigation__link" style="color:#b1b4b6;">L</p>
+    <p class="moj-sub-navigation__link single-char-link">L</p>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <p class="moj-sub-navigation__link" style="color:#b1b4b6;">M</p>
+    <p class="moj-sub-navigation__link single-char-link">M</p>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#n">N</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#n">N</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#o">O</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#o">O</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#p">P</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#p">P</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <p class="moj-sub-navigation__link" style="color:#b1b4b6;">Q</p>
+    <p class="moj-sub-navigation__link single-char-link">Q</p>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#r">R</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#r">R</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <p class="moj-sub-navigation__link" style="color:#b1b4b6;">S</p>
+    <p class="moj-sub-navigation__link single-char-link">S</p>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#t">T</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#t">T</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <p class="moj-sub-navigation__link" style="color:#b1b4b6;">U</p>
+    <p class="moj-sub-navigation__link single-char-link">U</p>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#v">V</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#v">V</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#w">W</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#w">W</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#x">X</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#x">X</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <a class="moj-sub-navigation__link" href="#y">Y</a>
+    <a class="moj-sub-navigation__link single-char-link" href="#y">Y</a>
   </li>
 
   <li class="moj-sub-navigation__item">
-    <p class="moj-sub-navigation__link" style="color:#b1b4b6;">Z</p>
+    <p class="moj-sub-navigation__link single-char-link">Z</p>
   </li>
 </ul>
 
