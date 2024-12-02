@@ -18,13 +18,9 @@ The [MoJ Design System Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9Dx
   - GOV Figma Kit
   - GOV & MoJ Styles
 
-<div class="govuk-warning-text">
-  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-  <strong class="govuk-warning-text__text">
-    <span class="govuk-visually-hidden">Warning</span>
-    Do not use the <a href="https://www.figma.com/community/file/946837271092540314">GOV.UK Design System Figma community file</a>.<br/>It's not updated or maintained by anyone.
-  </strong>
-</div>
+The MoJ Design System team maintain Figma Kits for the GOV.UK and MoJ Design Systems so that Figma prototypes can benefit from centrally maintained updates. The libraries are kept separate to make it easier to understand which design system each building block comes from.
+
+Do not use the <a href="https://www.figma.com/community/file/946837271092540314">GOV.UK Design System Figma community file</a>. It's not updated or maintained by anyone.
 
 ### Check if the Figma Kits are active in your file
 
