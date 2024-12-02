@@ -197,12 +197,6 @@ module.exports = function (eleventyConfig) {
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget("src/moj/components/**/*.njk");
 
-  // Copy the docs images to the public assets dir
-  // eleventyConfig.addPassthroughCopy({
-  //   "docs/assets/images/": "assets/images/",
-  // });
-  // eleventyConfig.setServerPassthroughCopyBehavior("copy");
-
   // Give gulp a little time..
   eleventyConfig.setWatchThrottleWaitTime(100);
 
