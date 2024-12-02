@@ -3,6 +3,7 @@ layout: layouts/component.njk
 title: Date picker
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703
+contribution: true # ensures contributors section says 'for contributing' not 'giving feedback on'
 contributors: Dom Billington, Eddie Shannon, David Middleton, and the DPS Connect team
 basedon: Scottish Government Design System date picker
 basedonurl: https://designsystem.gov.scot/components/date-picker

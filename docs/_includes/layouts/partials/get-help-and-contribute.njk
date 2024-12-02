@@ -23,7 +23,13 @@
 {% if contributors %}
   <h3 class="govuk-heading-m">Contributors</h3>
   <p class="govuk-body">
-    Thanks to {{ contributors }} for giving feedback on this {{ type }}.</p>
+    Thanks to {{ contributors }} for
+    {% if contribution %}
+      contributing
+    {% else %}
+      giving feedback on
+    {% endif %}
+    this {{ type }}.
   </p>
 {% endif %}
 
