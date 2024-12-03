@@ -1,6 +1,9 @@
 export default class CollapsibleNav extends HTMLElement {
   constructor() {
     super();
+    if(!this.id) {
+     this.id = `nav-${Date.now()}`
+    }
 
     this.collapsibleItems = this.querySelectorAll("li:has(ul)");
 
@@ -9,8 +12,9 @@ export default class CollapsibleNav extends HTMLElement {
       const $list = $item.querySelector("ul");
       const $button = document.createElement("button");
 
+
       if (!$list.id) {
-        $list.id = `moj-collapsible-nav-${index}`;
+        $list.id = `${this.id}-collapsible-nav-${index}`;
       }
 
       $button.setAttribute("aria-controls", $list.id);
