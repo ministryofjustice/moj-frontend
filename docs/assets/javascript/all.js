@@ -28,5 +28,3 @@ $(function () {
 window.MOJFrontend = MOJFrontend;
 customElements.define('moj-menu-toggle', MenuToggle)
 customElements.define('moj-collapsible-nav', CollapsibleNav)
-
-alert('hello')
