@@ -199,18 +199,13 @@ describe("Date picker with defaults", () => {
   });
 
   test("can navigate back in time", async () => {
-    const today = new Date();
-    const currentMonthName = today.toLocaleString("default", { month: "long" });
-    const currentYear = today.getFullYear();
-    const currentMonth = today.getMonth();
-    const previousMonthName = new Date(
-      today.setMonth(currentMonth - 1),
-    ).toLocaleString("default", { month: "long" });
-    const previousYear = currentYear - 1;
+    const today = dayjs();
+    const previousMonth = dayjs().subtract(1, 'month')
+    const previousYear = previousMonth.subtract(1, 'year')
 
-    const currentTitle = `${currentMonthName} ${currentYear}`;
-    const previousMonthTitle = `${previousMonthName} ${currentYear}`;
-    const previousYearTitle = `${previousMonthName} ${previousYear}`;
+    const currentTitle = `${today.format('MMMM YYYY')}`;
+    const previousMonthTitle = `${previousMonth.format('MMMM YYYY')}`;
+    const previousYearTitle = `${previousYear.format('MMMM YYYY')}`;
 
     await user.click(calendarButton);
     let prevMonthButton = getByText(dialog, "Previous month");
@@ -224,18 +219,13 @@ describe("Date picker with defaults", () => {
   });
 
   test("can navigate forward in time", async () => {
-    const today = new Date();
-    const currentMonthName = today.toLocaleString("default", { month: "long" });
-    const currentYear = today.getFullYear();
-    const currentMonth = today.getMonth();
-    const nextMonthName = new Date(
-      today.setMonth(currentMonth + 1),
-    ).toLocaleString("default", { month: "long" });
-    const nextYear = currentYear + 1;
+    const today = dayjs();
+    const nextMonth = dayjs().add(1, 'month')
+    const nextYear = nextMonth.add(1, 'year')
 
-    const currentTitle = `${currentMonthName} ${currentYear}`;
-    const nextMonthTitle = `${nextMonthName} ${currentYear}`;
-    const nextYearTitle = `${nextMonthName} ${nextYear}`;
+    const currentTitle = `${today.format('MMMM YYYY')}`;
+    const nextMonthTitle = `${nextMonth.format('MMMM YYYY')}`;
+    const nextYearTitle = `${nextYear.format('MMMM YYYY')}`;
 
     await user.click(calendarButton);
     let nextMonthButton = getByText(dialog, "Next month");
