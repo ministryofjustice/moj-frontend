@@ -9,10 +9,7 @@
         
         {{ content | safe }}
 
-        {% if isIndex or isArchive %}
-        {% else %}
-          {% include "./partials/get-help-and-contribute.njk" %}
-        {% endif %}
+        {% include "./partials/get-help-and-contribute.njk" %}
 
     </div>
 {% endblock %}
