@@ -3,6 +3,7 @@ layout: layouts/component.njk
 title: Date picker
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703
+contribution: true # ensures contributors section says 'for contributing' not 'giving feedback on'
 contributors: Dom Billington, Eddie Shannon, David Middleton, and the DPS Connect team
 basedon: Scottish Government Design System date picker
 basedonurl: https://designsystem.gov.scot/components/date-picker
@@ -115,8 +116,8 @@ If you're using more than one date picker, give each text field its own error su
 
 ### Filtering information with a date picker
 
-<p><img src="/assets/images/date-picker-filter-example-2024.png" alt="A screenshot with the title 'Attended appointments'. In a grey box is the title Filter, underneath is the title Date and then a text input field. The calendar icon and a green 'Apply filter' button is on the right. Below this element is the text '7 appointments'. Details of these appointments are shown."></p>
+<p><img src="{{ 'assets/images/date-picker-filter-example-2024.png' | rev | url }}" alt="A screenshot with the title 'Attended appointments'. In a grey box is the title Filter, underneath is the title Date and then a text input field. The calendar icon and a green 'Apply filter' button is on the right. Below this element is the text '7 appointments'. Details of these appointments are shown."></p>
 
 ### Asking a question with a date picker
 
-<p><img src="/assets/images/date-picker-question-example-2024.png" alt="A screenshot with the title 'What date do you want to view appointments for?' Underneath is the title 'Date' and then a text input field with the calendar icon. Underneath that is a green 'Continue' button."></p>
+<p><img src="{{ 'assets/images/date-picker-question-example-2024.png' | rev | url }}" alt="A screenshot with the title 'What date do you want to view appointments for?' Underneath is the title 'Date' and then a text input field with the calendar icon. Underneath that is a green 'Continue' button."></p>

@@ -5,24 +5,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#0b0c0c">
         <link rel="shortcut icon"
-              href="{{ '/assets/images/favicon.ico' | url }}"
+              href="{{ 'assets/images/favicon.ico' | rev | url }}"
               type="image/x-icon">
         <link rel="apple-touch-icon"
-              href="{{ '/assets/images/moj-apple-touch-icon-180x180-2024.png' | url }}"
+              href="{{ 'assets/images/moj-apple-touch-icon-180x180-2024.png' | rev | url }}"
               sizes="180x180">
         <link rel="apple-touch-icon"
-              href="{{ '/assets/images/moj-apple-touch-icon-167x167-2024.png' | url }}"
+              href="{{ 'assets/images/moj-apple-touch-icon-167x167-2024.png' | rev | url }}"
               sizes="167x167">
         <link rel="apple-touch-icon"
-              href="{{ '/assets/images/moj-apple-touch-icon-152x152-2024.png' | url }}"
+              href="{{ 'assets/images/moj-apple-touch-icon-152x152-2024.png' | rev | url }}"
               sizes="152x152">
         <link rel="apple-touch-icon"
-              href="{{ '/assets/images/moj-apple-touch-icon-2024.png' | url }}">
+              href="{{ 'assets/images/moj-apple-touch-icon-2024.png' | rev | url }}">
         <meta name="description"
               content="Design your service using MoJ styles, components and patterns">
         <meta property="og:image"
-              content="{{ '/assets/images/moj-opengraph-image-2024.png' | url }}">
-        <link href="{{ '/assets/stylesheets/application-20241115.css' | url }}"
+              content="{{ 'assets/images/moj-opengraph-image-2024.png' | rev | url }}">
+        <link href="{{ 'assets/stylesheets/application.css' | rev | url }}"
               rel="stylesheet">
         {% block pageStyles %}{% endblock %}
         <title>
@@ -31,8 +31,9 @@
         <script type="module"
                 src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL"
                 async></script>
-        <script type="module" src="{{ '/assets/javascript/jquery.js' | url }}"></script>
-        <script type="module" src="{{ '/assets/javascript/all-20241115.js' | url }}"></script>
+
+        <script type="module" src="{{ 'assets/javascript/jquery.js' | rev | url }}"></script>
+        <script type="module" src="{{ 'assets/javascript/all.js' | rev | url }}"></script>
     </head>
     <body class="govuk-template__body">
         <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
