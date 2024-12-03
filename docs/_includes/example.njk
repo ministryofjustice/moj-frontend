@@ -1,7 +1,7 @@
-<div class="app-example">
-  <span class="app-example__new-window">
+<div class="app-example__new-window">
     <a href="{{ href | url }}" target="_blank">Open this example <span class="govuk-visually-hidden">({{ title }})</span> in a new window</a>
-  </span>
+</div>
+<div class="app-example">
   <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="{{ height }}" src="{{ href | url }}" title="{{ title }}"></iframe>
 </div>
 <div class="app-tabs" data-module="app-tabs">
@@ -34,7 +34,7 @@
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default-{{ id }}" role="tabpanel" aria-labelledby="tab_nunjucks-default-{{ id }}">
 
 {% if arguments %}
-  <details class="govuk-details govuk-!-padding-3" data-module="govuk-details">
+  <details class="govuk-details govuk-!-padding-left-3 govuk-!-padding-top-3 govuk-!-padding-right-3 govuk-!-margin-bottom-0" data-module="govuk-details">
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">
         Nunjucks macro options
@@ -74,7 +74,7 @@ This component is in the ‘Assets’ tab in the MoJ Figma Kit.
 
 If you’re external to MoJ, download the Kit and add it as a library to your Figma files. You’ll need to re-add the kit to update the version.
 
-[View component in MoJ Figma Kit]({{ figmaLink }})
+<p class="govuk-body govuk-!-margin-0"><a href="{{ figmaLink }}">View component in MoJ Figma Kit</a></p>
 
   </div>
 {% endif %}

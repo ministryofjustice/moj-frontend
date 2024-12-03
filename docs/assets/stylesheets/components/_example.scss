@@ -4,10 +4,10 @@
 
   .app-example {
     background-color: govuk-colour("white");
-    border: 1px solid $govuk-border-colour;
+    border-left: 1px solid $govuk-border-colour;
+    border-right: 1px solid $govuk-border-colour;
     position: relative;
   }
-
 
   .app-example__frame {
     background-color: govuk-colour("white");
@@ -26,16 +26,14 @@
   .app-example__new-window {
     @include govuk-font($size: 16);
     border: 1px solid $govuk-border-colour;
-    position: absolute; top: -1px; left: -1px;
-    background-color: white;
-
+    background-color: govuk-colour("white");
+    padding: 8px;
 
     a,
     a:link,
     a:visited {
       color: govuk-colour("blue");
-      display: block;
-      margin: 8px;
+      // display: block;
       text-decoration: none;
     }
 
