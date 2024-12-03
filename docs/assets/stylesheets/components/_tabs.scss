@@ -4,12 +4,12 @@
 
 .app-tabs {
   background: govuk-colour("white");
-  margin-bottom: govuk-spacing(6);
+  border-top: 0;
+  margin-bottom: govuk-spacing(9);
 }
 
 .app-tabs__list {
   border: 1px solid $govuk-border-colour;
-  border-top: 0;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -72,7 +72,7 @@
   }
 
   &[aria-selected="true"] {
-    background-color: govuk-colour("light-grey");
+    background-color: govuk-colour("white");
     color: govuk-colour("black");
     margin-bottom: -1px;
     padding-bottom: 21px;
@@ -86,17 +86,13 @@
 
 .app-tabs__panel {
   @include govuk-font($size: 16);
-  background-color: govuk-colour("light-grey");
+  background-color: govuk-colour("white");
   border: 1px solid $govuk-border-colour;
   border-top: 0;
   position: relative;
 
   &--hidden {
     display: none;
-  }
-
-  *:last-of-type {
-    margin-bottom: 0; // Remove margin bottom from any last element
   }
 
   p {
