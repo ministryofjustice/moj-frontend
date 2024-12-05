@@ -41,7 +41,7 @@ An interruption card gives the user more detailed or contextual information abou
 
 Example of a possible error:
 
-<p><img src="/assets/images/interruption-card-example-possible-error.png" alt="A screen showing an MoJ header and footer. There's a back link above the card. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'Is this the correct annual salary?' The paragraph text is: 'You entered £349,630.00 as your client’s annual salary before tax. This is higher than expected.' Under the text is a white button with blue text: 'Yes, this is correct'. To the right of it is the link text 'Go back to income details'."></p>
+<p><img src="{{ 'assets/images/interruption-card-example-possible-error.png' | rev | url }}" alt="A screen showing an MoJ header and footer. There's a back link above the card. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'Is this the correct annual salary?' The paragraph text is: 'You entered £349,630.00 as your client’s annual salary before tax. This is higher than expected.' Under the text is a white button with blue text: 'Yes, this is correct'. To the right of it is the link text 'Go back to income details'."></p>
 
 #### 2. ‘Are you sure?’ content
 
@@ -53,7 +53,7 @@ If the mistakes are less significant, consider removing the content from the int
 
 Example of ‘Are you sure?’ content:
 
-<p><img src="/assets/images/interruption-card-example-are-you-sure.png" alt="A screen showing an MoJ header and footer. There's a back link above the card. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'Are you sure you want to cancel this referral?' The paragraph text is: 'Cancelling this referral will remove Simon Ball from the programme waiting list. You’ll also not be able to view the referral. This cannot be undone. If you want to continue with the application, you can go back.' Under the text is a white button with blue text: 'Yes, I want to cancel'. To the right of it is the link text 'Go back to application'."></p>
+<p><img src="{{ 'assets/images/interruption-card-example-are-you-sure.png' | rev | url }}" alt="A screen showing an MoJ header and footer. There's a back link above the card. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'Are you sure you want to cancel this referral?' The paragraph text is: 'Cancelling this referral will remove Simon Ball from the programme waiting list. You’ll also not be able to view the referral. This cannot be undone. If you want to continue with the application, you can go back.' Under the text is a white button with blue text: 'Yes, I want to cancel'. To the right of it is the link text 'Go back to application'."></p>
 
 #### 3. Non-contextual errors
 
@@ -65,7 +65,7 @@ The interruption card tells users how to resolve the error, for example by answe
 
 Example of a non-contextual error:
 
-<p><img src="/assets/images/interruption-card-example-non-contextual-error.png" alt="A screen showing an MoJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'Your new answer affects other sections of this application'. The paragraph text is: 'Question: Where is Andy Cooke located? Previous answer: Probation. New answer: Custody You need to:
+<p><img src="{{ 'assets/images/interruption-card-example-non-contextual-error.png' | rev | url }}" alt="A screen showing an MoJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'Your new answer affects other sections of this application'. The paragraph text is: 'Question: Where is Andy Cooke located? Previous answer: Probation. New answer: Custody You need to:
 - enter their custody information
 - update the licence conditions section.' Under the text is a white button with blue text: 'Continue to other sections'. To the right of it is the link text 'Go back to application'."></p>
 
@@ -81,7 +81,7 @@ This might be needed when the user:
 
 Example of a more varied application outcome:
 
-<p><img src="/assets/images/interruption-card-example-varied-outcome.png" alt="A screen showing an MoJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'You’re eligible for a payment and can submit your application'. The paragraph text is: 'You’ve entered enough evidence to qualify for a payment. You might also need to provide financial information if we ask for it at a later date, or you can enter it now.' Under the text is a white button with blue text: 'Submit application'. To the right of it is the link text 'Enter financial information'."></p>
+<p><img src="{{ 'assets/images/interruption-card-example-varied-outcome.png' | rev | url }}" alt="A screen showing an MoJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'You’re eligible for a payment and can submit your application'. The paragraph text is: 'You’ve entered enough evidence to qualify for a payment. You might also need to provide financial information if we ask for it at a later date, or you can enter it now.' Under the text is a white button with blue text: 'Submit application'. To the right of it is the link text 'Enter financial information'."></p>
 
 #### 5. Showing important content ahead of a task
 
@@ -93,7 +93,7 @@ The user can continue once they have acknowledged the content in the interruptio
 
 Example of showing important content ahead of a task:
 
-<p><img src="/assets/images/interruption-card-example-important-content.png" alt="A screen showing an MoJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'This will be a closed visit'. The paragraph text is: 'On a closed visit, the prisoner and visitors cannot have any physical contact or pass any items.' Under the text is a white button with blue text: 'Book this visit'. To the right of it is the link text 'Go back'."></p>
+<p><img src="{{ 'assets/images/interruption-card-example-important-content.png' | rev | url }}" alt="A screen showing an MoJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'This will be a closed visit'. The paragraph text is: 'On a closed visit, the prisoner and visitors cannot have any physical contact or pass any items.' Under the text is a white button with blue text: 'Book this visit'. To the right of it is the link text 'Go back'."></p>
 
 ### When not to use
 
