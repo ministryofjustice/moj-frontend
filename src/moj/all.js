@@ -15,7 +15,8 @@ MOJFrontend.initAll = function (options) {
   MOJFrontend.nodeListForEach($multiSelects, function ($multiSelect) {
     new MOJFrontend.MultiSelect({
       container: $multiSelect.querySelector($multiSelect.getAttribute('data-multi-select-checkbox')),
-      checkboxes: $multiSelect.querySelectorAll('tbody .govuk-checkboxes__input')
+      checkboxes: $multiSelect.querySelectorAll('tbody .govuk-checkboxes__input'),
+      id_prefix: $multiSelect.getAttribute('data-multi-select-idprefix'),
     });
   });
 

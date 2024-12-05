@@ -7,7 +7,13 @@ MOJFrontend.MultiSelect = function(options) {
 
   this.container.data('moj-multi-select-initialised', true);
 
-  this.toggle = $(this.getToggleHtml());
+  const idPrefix = options.id_prefix;
+  let allId = 'checkboxes-all';
+  if (typeof idPrefix !== 'undefined') {
+    allId = idPrefix + 'checkboxes-all';
+  }
+
+  this.toggle = $(this.getToggleHtml(allId));
   this.toggleButton = this.toggle.find('input');
   this.toggleButton.on('click', $.proxy(this, 'onButtonClick'));
   this.container.append(this.toggle);
@@ -16,11 +22,11 @@ MOJFrontend.MultiSelect = function(options) {
   this.checked = options.checked || false;
 };
 
-MOJFrontend.MultiSelect.prototype.getToggleHtml = function() {
-  var html = '';
+MOJFrontend.MultiSelect.prototype.getToggleHtml = function (allId) {
+  let html = '';
   html += '<div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">';
-  html += '  <input type="checkbox" class="govuk-checkboxes__input" id="checkboxes-all">';
-  html += '  <label class="govuk-label govuk-checkboxes__label moj-multi-select__toggle-label" for="checkboxes-all">';
+  html += `  <input type="checkbox" class="govuk-checkboxes__input" id="${allId}">`;
+  html += `  <label class="govuk-label govuk-checkboxes__label moj-multi-select__toggle-label" for="${allId}">`;
   html += '    <span class="govuk-visually-hidden">Select all</span>';
   html += '  </label>';
   html += '</div>';
