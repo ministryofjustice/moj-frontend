@@ -19,7 +19,7 @@ basedonurl: https://github.com/alphagov/govuk-design-system-backlog/issues/27
 
 ## Overview
 
-The interruption card uses visual prominence to draw attention to something important. The user has to acknowledge it to continue.
+The interruption card uses visual prominence to draw a user's attention to something important. The user has to acknowledge it to continue.
 
 ### When to use
 
@@ -35,35 +35,39 @@ This component should be used specifically and sparingly. It has 5 use cases:
 
 #### 1. Possible errors
 
-A possible error is something which might be - but is not definitely - a mistake.
+A possible error is something which might be – but is not definitely – a mistake.
 
 An interruption card gives the user more detailed or contextual information about why their answer is unexpected. They can still continue with their answer, unlike with a validation error.
 
-#### Example
+Example of a possible error:
 
-<p><img src="/assets/images/interruption-card-example-possible-error.png" alt="x"></p>
+<p><img src="/assets/images/interruption-card-example-possible-error.png" alt="A screen showing an MoJ header and footer. There's a back link above the card. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'Is this the correct annual salary?' The paragraph text is: 'You entered £349,630.00 as your client’s annual salary before tax. This is higher than expected.' Under the text is a white button with blue text: 'Yes, this is correct'. To the right of it is the link text 'Go back to income details'."></p>
 
 #### 2. ‘Are you sure?’ content
 
-Sometimes a user needs to know something important about a task they've started, and confirm that they understand. This can help prevent them from doing something serious by accident, such as a deletion or cancellation.
+Sometimes a user needs to know something important about a task they've started, and confirm that they want to continue. This can stop them from doing something serious by accident, such as a deletion or cancellation.
 
-This type of interruption card is shown to everyone taking a particular journey. This is because it's about the task and not something which has been entered. If users are making non-serious errors in a service, consider removing the content from the interruption card and using standard colour styling.
+This type of interruption card is shown to everyone on a particular user journey, because it's about the task itself.
 
-#### Example
+If the mistakes are less significant, consider removing the content from the interruption card and using standard colour styling.
 
-<p><img src="/assets/images/interruption-card-example-are-you-sure.png" alt="x"></p>
+Example of ‘Are you sure?’ content:
+
+<p><img src="/assets/images/interruption-card-example-are-you-sure.png" alt="A screen showing an MoJ header and footer. There's a back link above the card. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'Are you sure you want to cancel this referral?' The paragraph text is: 'Cancelling this referral will remove Simon Ball from the programme waiting list. You’ll also not be able to view the referral. This cannot be undone. If you want to continue with the application, you can go back.' Under the text is a white button with blue text: 'Yes, I want to cancel'. To the right of it is the link text 'Go back to application'."></p>
 
 #### 3. Non-contextual errors
 
-A non-contextual error happens when there’s a conflict between 2 or more parts of a service. The error is with the application as a whole, not a specific field. A message cannot be shown next to the source of the error, like with a [GOV.UK Design System error message](https://design-system.service.gov.uk/components/error-message/).
+A non-contextual error happens when there’s a conflict between 2 or more parts of a service. The error is with the application as a whole, not a specific field. This means that a message cannot be shown next to the source of the error, such as with a [GOV.UK Design System error message](https://design-system.service.gov.uk/components/error-message/).
 
-Service design should prevent these errors. However, they can happen if a user edits an early part of a form (via a [GOV.UK Design System Check answers pattern page](https://design-system.service.gov.uk/patterns/check-answers/)) in a way that affects later parts. For example, if a person’s income has changed since the application was started, other sections might need to be deleted or redone.
+Service design should prevent these errors. However, they can happen if a user edits an early part of a form (via a [GOV.UK Design System Check answers pattern page](https://design-system.service.gov.uk/patterns/check-answers/)) in a way that affects later parts. For example, if a person’s income has changed since an application was started, they might need to answer different sections.
 
-The user may want to copy answers before they’re removed, and also needs to know that they’ll need to re-enter other sections. The guidance aims to help them resolve the error.
+The interruption card tells users how to resolve the error, for example by answering some sections again or agreeing to delete sections. The user may also want to copy the answers they've given before they’re deleted.
 
-#### Example
+Example of a non-contextual error:
 
-<p><img src="/assets/images/interruption-card-example-non-contextual-error.png" alt="x"></p>
+<p><img src="/assets/images/interruption-card-example-non-contextual-error.png" alt="A screen showing an MoJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'Your new answer affects other sections of this application'. The paragraph text is: 'Question: Where is Andy Cooke located? Previous answer: Probation. New answer: Custody You need to:
+- enter their custody information
+- update the licence conditions section.' Under the text is a white button with blue text: 'Continue to other sections'. To the right of it is the link text 'Go back to application'."></p>
 
 #### 4. More varied application outcomes
 
@@ -75,21 +79,21 @@ This might be needed when the user:
 - needs to do something else after completing the service, for example contact a solicitor
 - needs to complete a task in another service
 
-#### Example
+Example of a more varied application outcome:
 
-<p><img src="/assets/images/interruption-card-example-varied-outcome.png" alt="x"></p>
+<p><img src="/assets/images/interruption-card-example-varied-outcome.png" alt="A screen showing an MoJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'You’re eligible for a payment and can submit your application'. The paragraph text is: 'You’ve entered enough evidence to qualify for a payment. You might also need to provide financial information if we ask for it at a later date, or you can enter it now.' Under the text is a white button with blue text: 'Submit application'. To the right of it is the link text 'Enter financial information'."></p>
 
 #### 5. Showing important content ahead of a task
 
-An interruption card can be used to tell a user about a task they’re about to start.
+It can be helpful to show a user important information before they start a task, particularly if the content has been missed elsewhere (for example, on a start page).
 
-After the user has acknowledged the content, they can continue. They are not declaring anything, though. Declarations are for users to confirm that the information they've submitted is correct. They are part of the flow and therefore not an interruption.
+To prevent the interruption card being overused, start with the [GOV.UK Design System inset text component](https://design-system.service.gov.uk/components/inset-text/) or the [GOV.UK Design System warning text component](https://design-system.service.gov.uk/components/warning-text/). If neither work - or something is very important - try the interruption card.
 
-Start with the [GOV.UK Design System inset text component](https://design-system.service.gov.uk/components/inset-text/) or the [GOV.UK Design System warning text component](https://design-system.service.gov.uk/components/warning-text/). If they do not work - or something is very important - use the interruption card. This prevents overuse.
+The user can continue once they have acknowledged the content in the interruption card. This is not a declaration, though. Declarations are for users to confirm that they have understood information they've been given or yagree to something. This is part of the flow and therefore not an interruption.
 
-#### Example
+Example of showing important content ahead of a task:
 
-<p><img src="/assets/images/interruption-card-example-important-content.png" alt="x"></p>
+<p><img src="/assets/images/interruption-card-example-important-content.png" alt="A screen showing an MoJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The heading is: 'This will be a closed visit'. The paragraph text is: 'On a closed visit, the prisoner and visitors cannot have any physical contact or pass any items.' Under the text is a white button with blue text: 'Book this visit'. To the right of it is the link text 'Go back'."></p>
 
 ### When not to use
 
