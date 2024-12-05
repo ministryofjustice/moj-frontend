@@ -17,8 +17,8 @@
     "test:docs": "npm run build:docs",
     "test:js": "jest src/",
     "test:sass": "sass -q -I . gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
-    "watch:11ty": "ENV='dev' eleventy --input=./docs --output=public --serve",
-    "watch:package": "gulp watch:dev"
+    "watch:11ty": "ENV=dev eleventy --input=./docs --output=public --serve",
+    "watch:package": "ENV=dev gulp watch:dev"
   },
   "repository": {
     "type": "git",
