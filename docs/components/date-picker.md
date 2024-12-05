@@ -1,5 +1,5 @@
 ---
-layout: layouts/component.njk
+layout: layouts/tabbed-component.njk
 title: Date picker
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703
@@ -17,6 +17,11 @@ eleventyNavigation:
 
 {% example "/examples/date-picker", 590 %}
 
+{% tabs "Sub navigation" %}
+    {% tab %}Overview{% endtab %}
+    {% tab %}How to use{% endtab %}
+    {% tab %}Examples{% endtab %}
+{% endtabs %}
 
 ## Overview
 

@@ -130,6 +130,37 @@ module.exports = function (eleventyConfig) {
     return releasePackage.version;
   });
 
+  // Temp storage for tabs
+  let tabsStorage = [];
+
+  eleventyConfig.addPairedShortcode("tabs", function (content, label = "Sub navigation") {
+    const tabs = tabsStorage.map((tab, index) => {
+      const isActive = index === 0 ? 'aria-current="page"' : "";
+      return `
+      <li class="moj-sub-navigation__item">
+        <a class="moj-sub-navigation__link" ${isActive} href="#${tab.label.toLowerCase().replace(/ /g, "-")}">
+          ${tab.label}
+        </a>
+      </li>
+    `.trim();
+    }).join("\n").trim();
+
+    tabsStorage = [];
+
+    return `
+    <nav class="moj-sub-navigation" aria-label="${label}">
+      <ul class="moj-sub-navigation__list">
+        ${tabs.trim()}
+      </ul>
+    </nav>
+  `.trim();
+  });
+
+  eleventyConfig.addPairedShortcode("tab", function (label, content) {
+    tabsStorage.push({ label, content });
+    return "";
+  });
+
   eleventyConfig.addPairedShortcode("banner", function (content, title) {
     return `
       <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
