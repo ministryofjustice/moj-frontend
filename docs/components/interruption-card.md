@@ -15,7 +15,7 @@ basedonurl: https://github.com/alphagov/govuk-design-system-backlog/issues/27
 
 <span class="govuk-caption-xl">The interruption card component pauses a user’s journey with important information.</span>
 
-{% example "/examples/interruption-card", 560 %}
+{% example "/examples/interruption-card", 590 %}
 
 ## Overview
 
