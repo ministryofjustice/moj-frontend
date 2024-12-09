@@ -12,7 +12,7 @@ eleventyNavigation:
 
 Help improve the MoJ Design System by suggesting a change to a building block.
 
-We want to hear suggestions that may include:
+The Design System is looking to learn about:
 
 - how you have used building blocks in your service
 - research or testing that can help improve an existing building block
