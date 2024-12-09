@@ -133,30 +133,41 @@ module.exports = function (eleventyConfig) {
   // Temp storage for tabs
   let tabsStorage = [];
 
-  eleventyConfig.addPairedShortcode("tabs", function (content, label = "Sub navigation") {
-    const tabs = tabsStorage.map((tab, index) => {
-      const isActive = index === 0 ? 'aria-current="page"' : "";
+  eleventyConfig.addPairedShortcode("tabs", function (content, label = "Contents") {
+    const tabsList = tabsStorage.map((tab, index) => {
+      const isSelected = index === 0 ? '--selected' : '';
       return `
-      <li class="moj-sub-navigation__item">
-        <a class="moj-sub-navigation__link" ${isActive} href="#${tab.label.toLowerCase().replace(/ /g, "-")}">
+      <li class="govuk-tabs__list-item${isSelected} moj-tab-sub-navigation__item">
+        <a class="govuk-tabs__tab moj-tab-sub-navigation__link moj-tab-sub-navigation__link" href="#${tab.label.toLowerCase().replace(/ /g, "-")}">
           ${tab.label}
         </a>
       </li>
     `.trim();
     }).join("\n").trim();
 
+    const tabPanels = tabsStorage.map((tab, index) => {
+      const isHidden = index === 0 ? '' : ' govuk-tabs__panel--hidden';
+      return `
+      <div class="govuk-tabs__panel${isHidden}" id="${tab.label.toLowerCase().replace(/ /g, "-")}">
+        ${tab.content}
+      </div>
+    `.trim();
+    }).join("\n").trim();
+
     tabsStorage = [];
 
     return `
-    <nav class="moj-sub-navigation" aria-label="${label}">
-      <ul class="moj-sub-navigation__list">
-        ${tabs.trim()}
+    <div class="govuk-tabs moj-tab-sub-navigation no-govuk-tabs-styles" data-module="govuk-tabs">
+      <h2 class="govuk-tabs__title">${label}</h2>
+      <ul class="govuk-tabs__list moj-tab-sub-navigation__list">
+        ${tabsList}
       </ul>
-    </nav>
+      ${tabPanels}
+    </div>
   `.trim();
   });
 
-  eleventyConfig.addPairedShortcode("tab", function (label, content) {
+  eleventyConfig.addPairedShortcode("tab", function (content, label) {
     tabsStorage.push({ label, content });
     return "";
   });

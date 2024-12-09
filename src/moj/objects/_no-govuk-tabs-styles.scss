@@ -1,0 +1,23 @@
+.no-govuk-tabs-styles.govuk-tabs {
+  .govuk-tabs__list-item--selected,
+  .govuk-tabs__panel {
+    border: unset;
+    padding: unset;
+  }
+  .govuk-tabs__list-item {
+    background-color: unset;
+    float: unset;
+    margin-right: 20px;
+    padding: unset;
+  }
+  .govuk-tabs__list-item--selected {
+    float: unset;
+    margin-top: unset;
+    position: unset;
+    background-color: unset;
+  }
+}
+
+.govuk-tabs__list-item {
+  background-color: unset;
+}

@@ -1,0 +1,34 @@
+@include sub-navigation("moj-tab-sub-navigation");
+
+@include govuk-media-query($from: tablet) {
+  .moj-tab-sub-navigation {
+    .govuk-tabs__list {
+      margin-bottom: 20px;
+      padding-left: unset;
+      border-bottom: unset;
+      .govuk-tabs__tab {
+        &:link,
+        &:visited
+        {
+          color: $govuk-link-colour;
+        }
+        &[aria-selected="true"] {
+          color: govuk-colour("black");
+        }
+        &:hover {
+          color: $govuk-link-hover-colour;
+        }
+        text-decoration: unset;
+      }
+      .moj-tab-sub-navigation__item {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.moj-tab-sub-navigation {
+  .govuk-tabs__list-item--selected a{
+    @include selected-link-styles;
+  }
+}
