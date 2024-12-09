@@ -35,7 +35,7 @@ This component should be used specifically and sparingly. It has 5 use cases:
 
 #### 1. Possible errors
 
-A possible error is something which might be – but is not definitely – a mistake.
+A possible error is something which is quite likely to be a mistake.
 
 An interruption card gives the user more detailed or contextual information about why their answer is unexpected. They can still continue with their answer, unlike with a validation error.
 
@@ -57,7 +57,7 @@ Example of ‘Are you sure?’ content:
 
 #### 3. Non-contextual errors
 
-A non-contextual error happens when there’s a conflict between 2 or more parts of a service. The error is with the application as a whole, not a specific field. This means that a message cannot be shown next to the source of the error, such as with a [GOV.UK Design System error message](https://design-system.service.gov.uk/components/error-message/).
+A non-contextual error happens when there’s a conflict between 2 or more parts of a service. The error is with the application as a whole, not a specific part. This means that a message cannot be shown next to the source of the error, such as with a [GOV.UK Design System error message](https://design-system.service.gov.uk/components/error-message/).
 
 Service design should prevent these errors. However, they can happen if a user edits an early part of a form (via a [GOV.UK Design System Check answers pattern page](https://design-system.service.gov.uk/patterns/check-answers/)) in a way that affects later parts. For example, if a person’s income has changed since an application was started, they might need to answer different sections.
 
@@ -89,7 +89,7 @@ It can be helpful to show a user important information before they start a task,
 
 To prevent the interruption card being overused, start with the [GOV.UK Design System inset text component](https://design-system.service.gov.uk/components/inset-text/) or the [GOV.UK Design System warning text component](https://design-system.service.gov.uk/components/warning-text/). If neither work - or something is very important - try the interruption card.
 
-The user can continue once they have acknowledged the content in the interruption card. This is not a declaration, though. Declarations are for users to confirm that they have understood information they've been given or yagree to something. This is part of the flow and therefore not an interruption.
+The user can continue once they have acknowledged the content in the interruption card. This is not a declaration, though. Declarations are for users to confirm that they have understood information they've been given or agree to something. This is part of the flow and therefore not an interruption.
 
 Example of showing important content ahead of a task:
 
@@ -114,7 +114,7 @@ The interruption card uses a non-standard colour palette for emphasis in a user 
 
 There’s also the:
 
-- [GOV.UK Design System warning text component](https://design-system.service.gov.uk/components/error-message/)
+- [GOV.UK Design System warning text component](https://design-system.service.gov.uk/components/warning-text/)
 - [GOV.UK Design System error message](https://design-system.service.gov.uk/components/error-message/)
 - [GOV.UK Design System panel](https://design-system.service.gov.uk/components/panel/)
 - [GOV.UK Design System notification banner](https://design-system.service.gov.uk/components/notification-banner/)
@@ -132,9 +132,9 @@ The interruption card should only contain:
 
 The only button that can be used is the [GOV.UK Design System button on a dark background](https://design-system.service.gov.uk/components/button/#buttons-on-dark-backgrounds).
 
-Do not add form elements (such as radio buttons). This is not accessible because the  will mean that a red error message will appear on thr blue is not accessible because the .
+Do not add form elements (such as radio buttons). A red error message would appear on the blue background, which is not accessible.
 
-There’s not enough research to determine whether images should be included in interruption cards. There's [GOV.UK Design System guidance on images](https://design-system.service.gov.uk/styles/images/).
+There’s not enough research to determine whether images should be included in interruption cards. The [GOV.UK Design System guidance on images](https://design-system.service.gov.uk/styles/images/) may help with this.
 
 ### Colours
 
@@ -157,11 +157,11 @@ On a desktop view, present it at full width with the content spanning two-thirds
 
 The interruption card should be the only body content on a page. The only other elements can be the header, footer, phase banner, person profile, breadcrumb or back link (which are all persistent).
 
-Do not add form elements (such as radio buttons) underneath the component, as this is not accessible.
+Do not add form elements (such as radio buttons) underneath the component.
 
 ### How often to use it
 
-This interruption card works well when used sparingly. This keep it significant, and distinct from standard service pattern pages.
+This interruption card works well when used sparingly. This is to keep it significant, and distinct from standard service pattern pages.
 
 When considering it in a specific case, think about:
 
