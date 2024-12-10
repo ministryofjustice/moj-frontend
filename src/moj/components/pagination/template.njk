@@ -12,9 +12,9 @@
         <li class="moj-pagination__item moj-pagination__item--dots">…</li>
       {% else %}
         {%- if item.selected %}
-          <li class="moj-pagination__item moj-pagination__item--active" aria-label="Page {{ item.text }} of {{ params.results.count }}" aria-current="page">{{ item.text }}</li>
+          <li class="moj-pagination__item moj-pagination__item--active" aria-label="Page {{ item.text }} of {{ params.items | length }}" aria-current="page">{{ item.text }}</li>
         {% else %}
-          <li class="moj-pagination__item"><a class="moj-pagination__link" href="{{ item.href }}" aria-label="Page {{ item.text }} of {{ params.results.count }}">{{ item.text }}</a></li>
+          <li class="moj-pagination__item"><a class="moj-pagination__link" href="{{ item.href }}" aria-label="Page {{ item.text }} of {{ params.items | length }}">{{ item.text }}</a></li>
         {% endif -%}
       {% endif -%}
     {% endfor -%}

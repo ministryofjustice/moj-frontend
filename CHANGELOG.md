@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.1.0...v3.2.0) (2024-12-10)
+
+
+### Features
+
+* Add interruption card ([#988](https://github.com/ministryofjustice/moj-frontend/issues/988)) ([506bf09](https://github.com/ministryofjustice/moj-frontend/commit/506bf093af938218bc9c63bd9b6d807c1dc06cd0)), closes [#930](https://github.com/ministryofjustice/moj-frontend/issues/930) [#956](https://github.com/ministryofjustice/moj-frontend/issues/956)
+
 # [3.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.0.3...v3.1.0) (2024-11-26)
 
 
