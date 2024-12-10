@@ -1,5 +1,5 @@
 ---
-layout: layouts/get-started.njk
+layout: layouts/content.njk
 subsection: Prototyping
 title:  Using the Figma Kit
 eleventyNavigation:
