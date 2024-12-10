@@ -9,7 +9,6 @@ const merge = require("lodash.merge");
 const { configureAxe, toHaveNoViolations } = require("jest-axe");
 expect.extend(toHaveNoViolations);
 const { setMedia } = require("mock-match-media");
-// require("mock-match-media/polyfill");
 require("../../../../jest.setup.js");
 require("./filter-toggle-button.js");
 
@@ -121,7 +120,6 @@ describe("Filter toggle in big mode", () => {
     expect(toggleButton).toHaveAttribute("aria-expanded", "true");
     expect(toggleButton.innerHTML).toBe("Hide filter");
     expect(filterContainer).not.toHaveClass("moj-js-hidden");
-    console.log(document.activeElement);
     expect(filterContainer).toHaveFocus();
 
     await user.click(toggleButton);
@@ -215,7 +213,6 @@ describe("Filter toggle in small mode", () => {
     expect(toggleButton).toHaveAttribute("aria-expanded", "true");
     expect(toggleButton.innerHTML).toBe("Hide filter");
     expect(filterContainer).not.toHaveClass("moj-js-hidden");
-    console.log(document.activeElement);
     expect(filterContainer).toHaveFocus();
 
     await user.click(toggleButton);
