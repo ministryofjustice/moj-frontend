@@ -3,6 +3,10 @@
 @include govuk-media-query($until: tablet) {
   .moj-tab-sub-navigation {
 
+    .govuk-tabs__title {
+      display: none;
+    }
+
     .moj-tab-sub-navigation__item {
       margin-left: 0;
       margin-right: 20px;
@@ -10,6 +14,13 @@
         content: unset;
         margin-left: unset;
         padding-left: unset;
+      }
+      a.moj-tab-sub-navigation__link {
+        text-decoration: none;
+        &:focus {
+          background: none;
+          border: none;
+        }
       }
     }
     .govuk-tabs__list-item--selected {
@@ -61,4 +72,8 @@
     @include selected-link-styles;
     text-decoration: unset;
   }
+}
+
+.moj-tab-sub-navigation__list {
+  margin-bottom: 40px;
 }
