@@ -1,7 +1,16 @@
 const { getByDisplayValue, getByText } = require("@testing-library/dom");
-const { axe } = require("jest-axe");
+const { userEvent } = require("@testing-library/user-event");
+const { configureAxe } = require("jest-axe");
 
 require("./password-reveal.js");
+
+const user = userEvent.setup();
+const axe = configureAxe({
+  rules: {
+    // disable landmark rules when testing isolated components.
+    region: { enabled: false },
+  },
+});
 
 describe("Password reveal", () => {
   let container;
@@ -21,16 +30,16 @@ describe("Password reveal", () => {
     expect(container).toContainElement(getByText(container, "Show"));
   });
 
-  test("toggle reveal", () => {
+  test("toggle reveal", async () => {
     const input = getByDisplayValue(container, "password");
     const button = getByText(container, "Show");
 
-    button.click();
+    await user.click(button);
 
     expect(input).toHaveAttribute("type", "text");
     expect(button).toHaveTextContent("Hide");
 
-    button.click();
+    await user.click(button);
 
     expect(input).toHaveAttribute("type", "password");
     expect(button).toHaveTextContent("Show");
@@ -40,7 +49,7 @@ describe("Password reveal", () => {
     const button = getByText(container, "Show");
 
     expect(await axe(document.body)).toHaveNoViolations();
-    button.click();
+    await user.click(button);
     expect(await axe(document.body)).toHaveNoViolations();
   });
 });

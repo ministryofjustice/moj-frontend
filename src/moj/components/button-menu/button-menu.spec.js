@@ -1,9 +1,7 @@
 const { queryByRole, screen } = require("@testing-library/dom");
 const { userEvent } = require("@testing-library/user-event");
-const { configureAxe, toHaveNoViolations } = require("jest-axe");
-expect.extend(toHaveNoViolations);
+const { configureAxe } = require("jest-axe");
 
-require("../../../../jest.setup.js");
 require("./button-menu.js");
 
 const user = userEvent.setup();
