@@ -80,7 +80,7 @@ MOJFrontend.FilterToggleButton.prototype.onMenuButtonClick = function() {
 MOJFrontend.FilterToggleButton.prototype.toggle = function() {
   if(this.menuButton.attr('aria-expanded') == 'false') {
     this.showMenu();
-    this.filterContainer.focus();
+    this.filterContainer.get(0).focus();
   } else {
     this.hideMenu();
   }
