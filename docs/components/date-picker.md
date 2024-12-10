@@ -17,7 +17,7 @@ eleventyNavigation:
 
 {% example "/examples/date-picker", 590 %}
 
-{% tabs "Sub navigation" %}
+{% tabs "Contents" %}
 
 {% tab "Overview" %}
 ## Overview
