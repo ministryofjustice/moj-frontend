@@ -1,15 +1,11 @@
 const {
   queryByRole,
-  screen,
-  getByRole,
-  waitFor,
 } = require("@testing-library/dom");
 const { userEvent } = require("@testing-library/user-event");
+const { configureAxe } = require("jest-axe");
 const merge = require("lodash.merge");
-const { configureAxe, toHaveNoViolations } = require("jest-axe");
-expect.extend(toHaveNoViolations);
 const { setMedia } = require("mock-match-media");
-require("../../../../jest.setup.js");
+
 require("./filter-toggle-button.js");
 
 const user = userEvent.setup();
@@ -161,6 +157,16 @@ describe("Filter toggle in big mode", () => {
 
     expect(toggleButton).toHaveClass("classname-1 classname-2");
   });
+
+  describe("accessibility", () => {
+    test("component has no wcag violations", async () => {
+      new MOJFrontend.FilterToggleButton(defaultConfig);
+      const toggleButton = queryByRole(buttonContainer, "button");
+      expect(await axe(document.body)).toHaveNoViolations();
+      await user.click(toggleButton);
+      expect(await axe(document.body)).toHaveNoViolations();
+    });
+  });
 });
 
 describe("Filter toggle in small mode", () => {
@@ -284,5 +290,15 @@ describe("Filter toggle in small mode", () => {
 
     expect(toggleButton.innerHTML).toBe("Hide filter");
     expect(filterContainer).not.toHaveClass("moj-js-hidden");
+  });
+
+  describe("accessibility", () => {
+    test("component has no wcag violations", async () => {
+      new MOJFrontend.FilterToggleButton(defaultConfig);
+      const toggleButton = queryByRole(buttonContainer, "button");
+      expect(await axe(document.body)).toHaveNoViolations();
+      await user.click(toggleButton);
+      expect(await axe(document.body)).toHaveNoViolations();
+    });
   });
 });
