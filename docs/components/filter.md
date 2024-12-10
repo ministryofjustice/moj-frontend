@@ -46,13 +46,13 @@ If you're providing multiple ways of filtering, you may want to let users show a
 <table>
     <tr>
         <td>
-            <img src="../../assets/images/filters-01.png" alt="" width="100%">
+            <img src="{{ 'assets/images/filters-01.png' | rev | url }}" alt="" width="100%">
         </td>
         <td>
-            <img src="../../assets/images/filters-02.png" alt="" width="100%">
+            <img src="{{ 'assets/images/filters-02.png' | rev | url }}" alt="" width="100%">
         </td>
         <td>
-            <img src="../../assets/images/filters-03.png" alt="" width="100%">
+            <img src="{{ 'assets/images/filters-03.png' | rev | url }}" alt="" width="100%">
         </td>
     </tr>
 </table>
@@ -84,10 +84,10 @@ You should make it easier for users to narrow the options by:
 <table>
     <tr>
         <td>
-            <img src="../../assets/images/filters-04.png" alt="" width="100%">
+            <img src="{{ 'assets/images/filters-04.png' | rev | url }}" alt="" width="100%">
         </td>
         <td>
-            <img src="../../assets/images/filters-05.png" alt="" width="100%">
+            <img src="{{ 'assets/images/filters-05.png' | rev | url }}" alt="" width="100%">
         </td>
     </tr>
 </table>
