@@ -115,3 +115,109 @@
     @include selected-link-styles;
   }
 }
+
+
+@include sub-navigation("app-navigation");
+
+@include govuk-media-query($until: tablet) {
+  .app-navigation {
+
+    .govuk-tabs__title {
+      display: none;
+    }
+
+    .app-navigation__item {
+      margin-left: 0;
+      margin-right: 20px;
+      &:before {
+        content: unset;
+        margin-left: unset;
+        padding-left: unset;
+      }
+      a.app-navigation__link {
+        text-decoration: none;
+        &:focus {
+          background: none;
+          border: none;
+        }
+      }
+    }
+    .govuk-tabs__list-item--selected {
+      margin-right: 20px;
+      a {
+        @include link-styles;
+        text-decoration: underline;
+      }
+      padding-left: unset;
+      a:before {
+        background-color: unset !important;
+     }
+    }
+    .app-navigation__list {
+      padding-left: 0;
+    }
+  }
+}
+
+@include govuk-media-query($from: tablet) {
+  .app-navigation {
+    .govuk-tabs__list {
+      margin-bottom: 20px;
+      padding-left: unset;
+      border-bottom: unset;
+      .govuk-tabs__tab {
+        &:link,
+        &:visited
+        {
+          color: $govuk-link-colour;
+        }
+        &[aria-selected="true"] {
+          color: govuk-colour("black");
+        }
+        &:hover {
+          color: $govuk-link-hover-colour;
+        }
+        text-decoration: unset;
+      }
+      .app-navigation__item {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.app-navigation {
+  .govuk-tabs__list-item--selected a{
+    @include selected-link-styles;
+    text-decoration: unset;
+  }
+}
+
+.app-navigation__list {
+  margin-bottom: 40px;
+}
+
+.no-govuk-tabs-styles.govuk-tabs {
+  .govuk-tabs__list-item--selected,
+  .govuk-tabs__panel {
+    border: unset;
+    padding: unset;
+  }
+  .govuk-tabs__list-item {
+    background-color: unset;
+    float: unset;
+    margin-right: 20px;
+    padding: unset;
+  }
+  .govuk-tabs__list-item--selected {
+    float: unset;
+    margin-top: unset;
+    position: unset;
+    background-color: unset;
+  }
+}
+
+.govuk-tabs__list-item {
+  background-color: unset;
+}
+

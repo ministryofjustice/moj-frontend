@@ -137,8 +137,8 @@ module.exports = function (eleventyConfig) {
     const tabsList = tabsStorage.map((tab, index) => {
       const isSelected = index === 0 ? '--selected' : '';
       return `
-      <li class="govuk-tabs__list-item${isSelected} moj-tab-sub-navigation__item">
-        <a class="govuk-tabs__tab moj-tab-sub-navigation__link moj-tab-sub-navigation__link" href="#${tab.label.toLowerCase().replace(/ /g, "-")}">
+      <li class="govuk-tabs__list-item${isSelected} app-navigation__item">
+        <a class="govuk-tabs__tab app-navigation__link app-navigation__link" href="#${tab.label.toLowerCase().replace(/ /g, "-")}">
           ${tab.label}
         </a>
       </li>
@@ -157,9 +157,9 @@ module.exports = function (eleventyConfig) {
     tabsStorage = [];
 
     return `
-    <div class="govuk-tabs moj-tab-sub-navigation no-govuk-tabs-styles" data-module="govuk-tabs">
+    <div class="govuk-tabs app-navigation no-govuk-tabs-styles" data-module="govuk-tabs">
       <h2 class="govuk-tabs__title">${label}</h2>
-      <ul class="govuk-tabs__list moj-tab-sub-navigation__list">
+      <ul class="govuk-tabs__list app-navigation__list">
         ${tabsList}
       </ul>
       ${tabPanels}
