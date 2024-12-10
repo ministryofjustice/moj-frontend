@@ -10,19 +10,13 @@ eleventyNavigation:
   excerpt: "Help improve the MoJ Design System by suggesting changes to building blocks."
 ---
 
-To help improve the MoJ Design System, you can suggest changes to components and patterns.
+Help improve the MoJ Design System by suggesting a change to a building block.
 
-Useful suggestions may look like:
+The Design System is looking to learn about:
 
-- new research or testing that can help improve an existing component or pattern
-- reporting bugs where you've used a component or pattern in a live service and noticed an issue
+- how you have used building blocks in your service
+- research or testing that can help improve an existing building block
+- reporting bugs where you've used building blocks in a live service and noticed an issue
+- any feedback you have about usage, for example accessibility or ideas for improvements
 
-## Tell us your suggestion
-
-Tell us about the change you're proposing by using the [suggest a change form](https://forms.gle/FpDpbgttwmfmcz8o7). The MoJ Design System Group will be notified of your suggestion and will review it.
-
-Once reviewed, the group will either:
-
-- accept your suggestion and work to apply your change
-- accept your suggestion but work with you to tweak the changes before going ahead
-- not accept your suggestion and explain why
+Add these comments and take part in the [discussions on GitHub](https://github.com/ministryofjustice/moj-frontend/discussions/categories/released-components-pages-and-patterns).

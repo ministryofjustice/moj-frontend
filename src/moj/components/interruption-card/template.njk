@@ -5,31 +5,29 @@
         <div class="govuk-body-l moj-interruption-card__body">{{ caller() }}</div>
         <div class="govuk-button-group moj-interruption-card__actions">
             {% if params.primaryAction.style == "link" %}
-
-                    <a class="govuk-link govuk-link--inverse"
-                        href="{{ params.primaryAction.href }}">{{- params.primaryAction.text -}}</a>
-                            {% else %}
-
-            {{ govukButton({
-                            text: params.primaryAction.text,
-                            classes: "govuk-button--inverse",
-                            href: params.primaryAction.href,
-                            preventDoubleClick: true,
-                            attributes: params.primaryAction.attributes
-                            }) }}
-                    {% endif %}
+                <a class="govuk-link govuk-link--inverse"
+                   href="{{ params.primaryAction.href }}">{{- params.primaryAction.text -}}</a>
+            {% else %}
+                {{ govukButton({
+                                text: params.primaryAction.text,
+                                classes: "govuk-button--inverse",
+                                href: params.primaryAction.href,
+                                preventDoubleClick: true,
+                                attributes: params.primaryAction.attributes
+                                }) }}
+            {% endif %}
             {% if params.secondaryAction %}
                 {% if params.secondaryAction.style == "button" %}
                     {{ govukButton({
-                                    text: params.secondaryAction.text,
-                                    classes: "govuk-button--inverse",
-                                    href: params.secondaryAction.href,
-                                    preventDoubleClick: true,
-                                    attributes: params.secondaryAction.attributes
-                                    }) }}
+                                        text: params.secondaryAction.text,
+                                        classes: "govuk-button--inverse",
+                                        href: params.secondaryAction.href,
+                                        preventDoubleClick: true,
+                                        attributes: params.secondaryAction.attributes
+                                        }) }}
                 {% else %}
                     <a class="govuk-link govuk-link--inverse"
-                        href="{{ params.secondaryAction.href }}">{{- params.secondaryAction.text -}}</a>
+                       href="{{ params.secondaryAction.href }}">{{- params.secondaryAction.text -}}</a>
                 {% endif %}
             {% endif %}
         </div>
