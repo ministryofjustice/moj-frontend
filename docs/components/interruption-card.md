@@ -100,7 +100,7 @@ Do not use the interruption card for anything outside of the 5 use cases. It sho
 - emphasise large amounts of content on a page (as the impact will be lost)
 - show form elements such as radio buttons (a red error message on the blue background is not accessible)
 - make a heading more visually prominent
-- display an empty state for the user to resolve (if it's within a list) – use the [GOV.UK Design System tasklist component](https://design-system.service.gov.uk/components/task-list/) instead
+- display an empty state for the user to resolve (if it's within a list) &ndash; use the [GOV.UK Design System tasklist component](https://design-system.service.gov.uk/components/task-list/) instead
 
 ### Things to consider
 
@@ -149,7 +149,7 @@ No other button colours should be used. Do not use the [GOV.UK Design System sec
 
 The interruption card has no minimum or maximum height – it resizes to the contents. It works well with fairly short, concise content. Adding a lot of content will reduce its impact.
 
-On a desktop view, present it at full width with the content spanning two-thirds width. For mobile devices, the content is also full width.
+The component is set to full width on desktop and mobile and should not be changed. The content width will automatically adjust for readability.
 
 ### Other parts of the page
 
