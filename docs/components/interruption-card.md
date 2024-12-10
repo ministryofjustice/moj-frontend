@@ -6,9 +6,8 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/421
 eleventyNavigation:
   key: Interruption card
   parent: Components
-  excerpt: "The interruption card component stops users in a flow with important information.
-"
-contributors: Anne Walker, James McKechnie, Lizzie Goddard, Jonathan Porton, Rachel Ricks, Mary Bowden, Louise Jones, Ed Marshall, Quay Pho, Sara Yassine and Deb Gilkes
+  excerpt: "The interruption card component stops users in a flow with important information."
+contributors: Anne Walker, James McKechnie, Sophie Dodds, Lizzie Goddard, Jonathan Porton, Rachel Ricks, Mary Bowden, Louise Jones, Ed Marshall, Quay Pho, Sara Yassine and Deb Gilkes
 basedon: interruption card discussion on the GOV.UK Design System backlog
 basedonurl: https://github.com/alphagov/govuk-design-system-backlog/issues/27
 ---
