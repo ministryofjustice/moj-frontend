@@ -85,7 +85,7 @@ Example of a more varied application outcome:
 
 It can be helpful to show a user important information before they start a task, particularly if the content has been missed elsewhere (for example, on a start page).
 
-To prevent the interruption card being overused, start with the [GOV.UK Design System inset text component](https://design-system.service.gov.uk/components/inset-text/) or the [GOV.UK Design System warning text component](https://design-system.service.gov.uk/components/warning-text/). If neither work - or something is very important - try the interruption card.
+To prevent the interruption card being overused, start with the [GOV.UK Design System inset text component](https://design-system.service.gov.uk/components/inset-text/) or the [GOV.UK Design System warning text component](https://design-system.service.gov.uk/components/warning-text/). If neither work (or something is very important) try the interruption card.
 
 The user can continue once they have acknowledged the content in the interruption card. They are not declaring anything, though. Declarations are for users to confirm that they've understood information they've been given or agree to something. This is not an interruption because it's part of the flow.
 
@@ -100,7 +100,7 @@ Do not use the interruption card for anything outside of the 5 use cases. It sho
 - emphasise large amounts of content on a page (as the impact will be lost)
 - show form elements such as radio buttons (a red error message on the blue background is not accessible)
 - make a heading more visually prominent
-- display an empty state for the user to resolve (if it's within a list) - use the [GOV.UK Design System tasklist component](https://design-system.service.gov.uk/components/task-list/) instead
+- display an empty state for the user to resolve (if it's within a list) – use the [GOV.UK Design System tasklist component](https://design-system.service.gov.uk/components/task-list/) instead
 
 ### Things to consider
 
@@ -171,6 +171,6 @@ If a lot of interruption cards are emerging in a service, it might be a sign tha
 
 #### Repetitive journeys
 
-Users completing the same journey multiple times in a service will become overexposed to a particular interruption card. This could be a poor user experience if the card is used to highlight something important and the user has seen it several times.
+Users completing the same journey multiple times in a service will become overexposed to a particular interruption card. This could be a poor user experience if the card is used to highlight something important and the user has already seen it several times.
 
 Consider limiting the amount of times a particular interruption card is shown to users at the same stage of the journey.
