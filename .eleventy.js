@@ -134,11 +134,15 @@ module.exports = function (eleventyConfig) {
   let tabsStorage = [];
 
   eleventyConfig.addPairedShortcode("tabs", function (content, label = "Contents") {
+    const tabId = (tab) => {
+      return `${tab.label.toLowerCase().replace(/ /g, "-")}-tab`
+    }
+
     const tabsList = tabsStorage.map((tab, index) => {
       const isSelected = index === 0 ? '--selected' : '';
       return `
       <li class="govuk-tabs__list-item${isSelected} app-navigation__item">
-        <a class="govuk-tabs__tab app-navigation__link app-navigation__link" href="#${tab.label.toLowerCase().replace(/ /g, "-")}">
+        <a class="govuk-tabs__tab app-navigation__link app-navigation__link" href="#${tabId(tab)}">
           ${tab.label}
         </a>
       </li>
@@ -148,7 +152,7 @@ module.exports = function (eleventyConfig) {
     const tabPanels = tabsStorage.map((tab, index) => {
       const isHidden = index === 0 ? '' : ' govuk-tabs__panel--hidden';
       return `
-      <div class="govuk-tabs__panel${isHidden}" id="${tab.label.toLowerCase().replace(/ /g, "-")}">
+      <div class="govuk-tabs__panel${isHidden}" id="${tabId(tab)}">
         ${tab.content}
       </div>
     `.trim();
