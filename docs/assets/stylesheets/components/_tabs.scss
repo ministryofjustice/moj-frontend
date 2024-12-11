@@ -90,6 +90,7 @@
   border: 1px solid $govuk-border-colour;
   border-top: 0;
   position: relative;
+  padding: govuk-spacing(3);
 
   &--hidden {
     display: none;
@@ -100,6 +101,7 @@
   }
 
   pre {
+    margin: 0;
     padding-top: govuk-spacing(9);
   }
 }

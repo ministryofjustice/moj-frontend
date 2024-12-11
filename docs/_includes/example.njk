@@ -24,17 +24,20 @@
     {%- endif -%}
   </ul>
 
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default-{{ id }}" data-module="app-copy" role="tabpanel" aria-labelledby="tab_html-default-{{ id }}">
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default-{{ id }}" role="tabpanel" aria-labelledby="tab_html-default-{{ id }}">
+
+  <div data-module="app-copy" style="position:relative;">
 
 ```html
 {{ htmlCode | safe }}
 ```
   </div>
+  </div>
 
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default-{{ id }}" role="tabpanel" aria-labelledby="tab_nunjucks-default-{{ id }}">
 
 {% if arguments %}
-  <details class="govuk-details govuk-!-padding-left-3 govuk-!-padding-top-3 govuk-!-padding-right-3 govuk-!-margin-bottom-0" data-module="govuk-details">
+  <details class="govuk-details " data-module="govuk-details">
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">
         Nunjucks macro options
@@ -68,7 +71,7 @@
 {% endif %}
 
 {% if figmaLink %}
-  <div class="app-tabs__panel govuk-!-padding-3 app-tabs__panel--hidden" id="figma-default-{{ id }}" role="tabpanel" aria-labelledby="tab_figma-default-{{ id }}">
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="figma-default-{{ id }}" role="tabpanel" aria-labelledby="tab_figma-default-{{ id }}">
 
 This component is in the ‘Assets’ tab in the MoJ Figma Kit.
 
