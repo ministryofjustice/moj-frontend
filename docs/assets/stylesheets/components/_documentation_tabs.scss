@@ -139,6 +139,7 @@
         &:focus {
           background: none;
           border: none;
+          box-shadow: none;
         }
       }
     }
@@ -181,6 +182,11 @@
       }
       .app-navigation__item {
         margin-bottom: 0;
+        .app-navigation__link {
+          &:focus {
+            box-shadow: none;
+          }
+        }
       }
     }
   }
