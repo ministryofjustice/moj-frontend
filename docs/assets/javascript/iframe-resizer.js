@@ -40,7 +40,8 @@ export default class IFrameResizer {
       // Observe for attribute changes that might affect visibility
       this.mutationObserver.observe(targetNode, {
         attributes: true,
-        attributeFilter: ["style", "class"],
+        attributeFilter: ["style", "class", "hidden", "aria-expanded"],
+        attributeOldValue: true,
         childList: true,
         subtree: true,
       });
@@ -57,29 +58,11 @@ export default class IFrameResizer {
   }
 
   onMutation(mutation) {
-    // Check if the mutation is related to visibility
-    if (mutation.type === "attributes") {
-      const target = mutation.target;
-      const computedStyle = window.getComputedStyle(target);
-
-      if (
-        mutation.attributeName === "style" ||
-        mutation.attributeName === "class"
-      ) {
-        // Check if visibility-related properties changed
-        if (
-          computedStyle.display !== "none" ||
-          computedStyle.visibility !== "hidden" ||
-          computedStyle.opacity !== "0"
-        ) {
-          this.adjustSize();
-        }
-      }
-    }
-    // Check for added/removed nodes
-    else if (mutation.type === "childList") {
-      this.adjustSize();
-    }
+    // Ideally we might want to restrict this slightly to check if we
+    // need to adjust size, but this is tricky. Most of our components are
+    // relatively static, so if something changes its likely to be
+    // visibility-related
+    this.adjustSize();
   }
 
   onResize(entry) {
@@ -95,7 +78,7 @@ export default class IFrameResizer {
       const elements = body.getElementsByTagName("*");
 
       let maxHeight = html.offsetHeight;
-      let padding = 30
+      let padding = 30;
 
       // Check each element's bottom edge position
       for (const element of elements) {
@@ -103,7 +86,7 @@ export default class IFrameResizer {
         const bottomPos = rect.top + rect.height;
         // If maxHeight is bigger, that includes the body padding, if bottomPos
         // is higher, that is the exact bottom of the element, so we add some padding
-        maxHeight = ( maxHeight > bottomPos ? maxHeight : bottomPos + padding )
+        maxHeight = maxHeight > bottomPos ? maxHeight : bottomPos + padding;
       }
 
       // Update iframe height
