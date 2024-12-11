@@ -133,11 +133,11 @@ module.exports = function (eleventyConfig) {
   // Temp storage for tabs
   let tabsStorage = [];
 
+  // Generate govuk tabs
   eleventyConfig.addPairedShortcode("tabs", function (content, label = "Contents") {
     const tabId = (tab) => {
       return `${tab.label.toLowerCase().replace(/ /g, "-")}-tab`
     }
-
     const tabsList = tabsStorage.map((tab, index) => {
       const isSelected = index === 0 ? '--selected' : '';
       return `
@@ -171,6 +171,7 @@ module.exports = function (eleventyConfig) {
   `.trim();
   });
 
+  // Find and store govuk tab for above tabs
   eleventyConfig.addPairedShortcode("tab", function (content, label) {
     tabsStorage.push({ label, content });
     return "";
