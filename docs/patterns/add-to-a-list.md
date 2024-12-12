@@ -16,7 +16,7 @@ This pattern is in the GOV.UK Design System [community backlog](https://github.c
 {% endbanner %}
 
 <div class="govuk-form-group">
-    <img alt="A three step process: Ask the user for information, view a summary of that information and ask if they want to add more of the same type of information, if they do it will take them back to the first step to ask the user for information again." src="../../assets/images/add-to-a-list-05-2024.png" width="100%">
+    <img alt="A three step process: Ask the user for information, view a summary of that information and ask if they want to add more of the same type of information, if they do it will take them back to the first step to ask the user for information again." src="{{ 'assets/images/add-to-a-list-05-2024.png' | rev | url }}" width="100%">
 </div>
 
 ## When to use
@@ -32,13 +32,13 @@ If users only need to add information a couple of times, consider using [add ano
 ## How to use
 
 <div class="govuk-form-group">
-    <img alt="Example of adding things to a list which includes adding the name and date of birth of a dependant and their relationship to the client making the application, with a button to save and continue to the next page." src="../../assets/images/add-to-a-list-04.png" width="100%">
+    <img alt="Example of adding things to a list which includes adding the name and date of birth of a dependant and their relationship to the client making the application, with a button to save and continue to the next page." src="{{ 'assets/images/add-to-a-list-04.png' | rev | url }}" width="100%">
 </div>
 
 ## Add things to the list
 
 <div class="govuk-form-group">
-    <img alt="Example of adding things to a list which includes adding the name and date of birth of a dependant and their relationship to the client making the application, with a button to save and continue to the next page." src="../../assets/images/add-to-a-list-01.png" width="40%">
+    <img alt="Example of adding things to a list which includes adding the name and date of birth of a dependant and their relationship to the client making the application, with a button to save and continue to the next page." src="{{ 'assets/images/add-to-a-list-01.png' | rev | url }}" width="40%">
 </div>
 
 Use a [question page](https://design-system.service.gov.uk/patterns/question-pages/) to ask users for information you need within your service. This is the information that users may need to add many times.
@@ -48,7 +48,7 @@ Use components that best suit the information you're asking for, such as [text i
 ### View a summary of what they have added to the list
 
 <div class="govuk-form-group">
-    <img alt="Example of a summary of information the was added to the list which includes the name of a dependent and the ability to change or remove them from the list. Has a question if they wanto to add more dependents, and a button to save and continue to the next page." src="../../assets/images/add-to-a-list-02.png" width="40%">
+    <img alt="Example of a summary of information the was added to the list which includes the name of a dependent and the ability to change or remove them from the list. Has a question if they wanto to add more dependents, and a button to save and continue to the next page." src="{{ 'assets/images/add-to-a-list-02.png' | rev | url }}" width="40%">
 </div>
 
 Use [summary list](https://design-system.service.gov.uk/components/summary-list/) to let users view a summary of what they have added to the list.
@@ -63,7 +63,7 @@ You may want to add these links to the summary list:
 If you use a 'Remove' link, you should ask the user to confirm they want to remove something from the list.
 
 <div class="govuk-form-group">
-    <img alt="Example of a warning screen asking if the user is sure they want to remove a dependent from the list with yes or no options, and a button to save and continue." src="../../assets/images/add-to-a-list-03.png" width="40%">
+    <img alt="Example of a warning screen asking if the user is sure they want to remove a dependent from the list with yes or no options, and a button to save and continue." src="{{ 'assets/images/add-to-a-list-03.png' | rev | url }}" width="40%">
 </div>
 
 ## Research

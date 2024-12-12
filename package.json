@@ -17,8 +17,8 @@
     "test:docs": "npm run build:docs",
     "test:js": "jest src/",
     "test:sass": "sass -q -I . gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
-    "watch:11ty": "ENV='dev' eleventy --input=./docs --output=public --serve",
-    "watch:package": "gulp watch:dev"
+    "watch:11ty": "ENV=dev eleventy --input=./docs --output=public --serve",
+    "watch:package": "ENV=dev gulp watch:dev"
   },
   "repository": {
     "type": "git",
@@ -90,8 +90,10 @@
     "jest-axe": "^9.0.0",
     "jest-environment-jsdom": "^29.7.0",
     "js-beautify": "^1.13.13",
+    "lodash": "^4.17.21",
     "markdown-it-anchor": "^8.0.0",
     "mini-css-extract-plugin": "^2.0.0",
+    "mock-match-media": "^0.4.3",
     "npm-run-all2": "^6.0.0",
     "postcss": "^8.4.31",
     "semantic-release": "^23.0.0"

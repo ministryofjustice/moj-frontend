@@ -1,6 +1,3 @@
-/*
- * @jest-environment jsdom
- */
 const {
   getAllByRole,
   getByText,
@@ -10,11 +7,9 @@ const {
   screen,
 } = require("@testing-library/dom");
 const { userEvent } = require("@testing-library/user-event");
+const { configureAxe } = require("jest-axe");
 const dayjs = require("dayjs");
-const { configureAxe, toHaveNoViolations } = require("jest-axe");
-expect.extend(toHaveNoViolations);
 
-require("../../../../jest.setup.js");
 require("./date-picker.js");
 
 const user = userEvent.setup();
