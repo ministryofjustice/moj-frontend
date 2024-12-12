@@ -256,11 +256,14 @@
 }
 
 .no-govuk-tabs-styles.govuk-tabs {
+  .app-navigation__list {
+    margin-bottom: 40px;
+    scroll-margin-top: 40px;
+  }
   .govuk-tabs__list-item--selected,
   .govuk-tabs__panel {
     border: unset;
     padding: unset;
-    scroll-margin-top: 40px;
   }
   .govuk-tabs__list-item {
     background-color: unset;
