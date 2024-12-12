@@ -15,11 +15,12 @@ eleventyNavigation:
 
 <span class="govuk-caption-xl">The date picker component enables users to select a date from a calendar.  </span>
 
-{% example "/examples/date-picker", 590 %}
-
 {% tabs "Contents" %}
 
 {% tab "Overview" %}
+
+{% example "/examples/date-picker", 590 %}
+
 ## Overview
 
 When users first open the date picker's calendar it'll show today's date. Users do not have to use this calendar view to select a date - they can also enter one directly into the text field.
