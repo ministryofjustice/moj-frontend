@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/ministryofjustice/moj-frontend/compare/v3.2.0...v3.2.1) (2024-12-12)
+
+
+### Bug Fixes
+
+* **header:** remove incorrectly applied filters to the header fallback crown image ([#997](https://github.com/ministryofjustice/moj-frontend/issues/997)) ([616280e](https://github.com/ministryofjustice/moj-frontend/commit/616280efb1fa547017b8ac5b00bb2d360f2036a8))
+
 # [3.2.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.1.0...v3.2.0) (2024-12-10)
 
 
