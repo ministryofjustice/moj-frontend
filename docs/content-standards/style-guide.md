@@ -26,15 +26,15 @@ eleventyNavigation:
     <div id="a-content" class="govuk-accordion__section-content">
         <h3 class="govuk-heading-m">acronyms and initialisms</h3>
         <p class="govuk-body">Acronyms and initialisms in services do not need to be spelt out if they are well understood by your audience. This also helps if it's difficult to spell them out, such as in a table.</p>
-        <p class="govuk-body">If users are familiar with the acronym but you would still like to help them, you can spell it out afterwards, for example 'PDU (probation delivery unit)'.</p>
-        <p class="govuk-body">For guidance or long-form content, spell them out on first mention (following the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#a">GOV.UK guidance on abbreviations and acronyms</a>).</p>
+        <p class="govuk-body">If users are familiar with the acronym or initialism but you would still like to help them, you can spell it out afterwards, for example 'PDU (probation delivery unit)'.</p>
+        <p class="govuk-body">For guidance or long-form content, spell them out on first mention (following the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#abbreviations-and-acronyms">GOV.UK guidance on abbreviations and acronyms</a>).</p>
         <h3 class="govuk-heading-m">alerts (DPS only)</h3>
-        <p class="govuk-body">Only use 'alerts' when talking about alerts created in NOMIS or DPS.</p>
-        <p class="govuk-body">Alerts can be 'active' or 'inactive'. You may find language in DPS that refers to 'adding', 'opening' and 'closing' alerts. We hope to make this language more consistent as we stop using NOMIS.</p>
+        <p class="govuk-body">Only use 'alerts' when talking about alerts created in NOMIS or DPS (Digital Prison Services).</p>
+        <p class="govuk-body">Alerts can be 'active' or 'inactive'. You may find language in DPS that refers to 'adding', 'opening' and 'closing' alerts. This should become more consistent as users move away from using NOMIS.</p>
         <h3 class="govuk-heading-m">aliases</h3>
-        <p class="govuk-body">Always 'aliases' when talking about other names a person has on their record. This term is commonly used and understood in prisons. Using a different term may confuse users.</p>
+        <p class="govuk-body">Always use 'aliases' when talking about other names a person has on their prison record. This term is commonly used and understood in prisons. Using a different term may confuse users.</p>
         <h3 class="govuk-heading-m">Assessment, Care in Custody and Teamwork (ACCT)</h3>
-        <p class="govuk-body">Use ACCT. This is more well known than the full version.</p>
+        <p class="govuk-body">Use ACCT. This is more well known than the full version. When an ACCT is closed, it is referred to as 'ACCT post-closure' for 7 days.</p>
     </div>
 
   <div class="govuk-accordion__section">
@@ -62,25 +62,28 @@ eleventyNavigation:
     <div id="c-content" class="govuk-accordion__section-content">
         <h3 class="govuk-heading-m">capitalisation</h3>
         <p class="govuk-body">For general terms, follow the guidance in the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">GOV.UK style guide</a>.</p>
-        <p class="govuk-body">We do not have a standard approach to capitalising acronyms or initialisms when they are written out in full.</p>
+        <p class="govuk-body">There's not a standard approach to capitalising acronyms or initialisms when they are written out in full.</p>
         <p class="govuk-body">You may decide to capitalise abbreviations when:</p>
         <ul>
             <li>you’re referring to the proper name for something</li>
-            <li>it would help users understand what you’re referring to</li>
+            <li>it would help users to understand what you’re referring to</li>
             <li>the full version of the abbreviation is long</li>
         </ul>
-        <p class="govuk-body">Please share your decisions on capitalising abbreviations. We’ll add these as entries to the style guide to ensure consistency across DPS tools.</p>
+        <p class="govuk-body">Please share your decisions on capitalising abbreviations in the <a href="https://moj.enterprise.slack.com/archives/C58FBN6V6">#content Slack channel (MoJ staff only)</a>. These entries will be added to the content style guide to ensure consistency.</p>
+        <h3 class="govuk-heading-m">case list</h3>
+        <p class="govuk-body">Use 2 separate words. Not caselist. For example, 'return to case list'.</p>
+        <h3 class="govuk-heading-m">case note</h3>
+        <p class="govuk-body">Use 2 separate words. Not casenote.</p>
+        <h3 class="govuk-heading-m">caseload (changing caseload)</h3>
+        <p class="govuk-body">If your service lets users change their 'caseload', always use 'change location' instead. 'Caseload' is a legacy term from NOMIS that would need explaining to users.</p>
         <h3 class="govuk-heading-m">Category (such as Category A prison)</h3>
         <p class="govuk-body">Always capitalise and write out in full. For example, 'Category A'.</p>
         <p class="govuk-body">Do not use 'Cat'.</p>
         <p class="govuk-body">Use 'Category A – high' for high-profile prisoners.</p>
         <p class="govuk-body">Use 'Category A – provisional' for provisional Category A prisoners.</p>
-        <h3 class="govuk-heading-m">caseload (changing caseload)</h3>
-        <p class="govuk-body">If your service lets users change their 'caseload', always use 'change location' instead. 'Caseload' is a legacy term from NOMIS that would need explaining to users.</p>
-        <h3 class="govuk-heading-m">case note</h3>
-        <p class="govuk-body">This is 2 separate words. Not casenote.</p>
         <h3 class="govuk-heading-m">cell</h3>
-        <p class="govuk-body">Cell or cells should be used to refer to the rooms that people in prison live in. There are some instances in the open, female and youth estate where alternatives such as 'dormitory' or 'room' may be more appropriate. But for services rolled out across the entire prison estate, cell is likely to be the most widely understood term. There is also research to suggest prisoners do not see 'cell' as a stigmatising term, but an accurate description of accommodation in prisons across England and Wales.</p>
+        <p class="govuk-body">Cell or cells should be used to refer to the rooms that people in prison live in. There are some instances in the open, female and youth estate where alternatives such as 'dormitory' or 'room' may be more appropriate. But for services rolled out across the entire prison estate, cell is likely to be the most widely understood term.</p>
+        <p class="govuk-body">There is also research to suggest prisoners do not see 'cell' as a stigmatising term, but an accurate description of accommodation in prisons across England and Wales.</p>
         <h3 class="govuk-heading-m">Cell Sharing Risk Assessment (CSRA)</h3>
         <p class="govuk-body">Use CSRA. This is more well known than the full version.</p>
         <h3 class="govuk-heading-m">Challenge, Support and Intervention Plan (CSIP)</h3>
@@ -90,15 +93,18 @@ eleventyNavigation:
         <h3 class="govuk-heading-m">closed prison, closed conditions</h3>
         <p class="govuk-body">Lower case.</p>
         <h3 class="govuk-heading-m">community probation practitioner</h3>
-        <p class="govuk-body">This is a probation practitioner who works in the community and not in prisons.</p>
+        <p class="govuk-body">This is a <a href="#probation-practitioner">probation practitioner</a> who works in the community and not in prisons.</p>
         <p class="govuk-body">It's better than 'community offender manager (COM)', although someone may have this job title. Refers to a probation officer, probation support officer or senior probation officer.</p>
         <h3 class="govuk-heading-m">contractions</h3>
-        <p class="govuk-body">Follow the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">GOV.UK style guide</a> and avoid using negative contractions like can’t and don’t.</p>
+        <p class="govuk-body">Follow the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#contractions">GOV.UK style guide on contractions</a> and avoid using negative contractions like can’t and don’t.</p>
         <p class="govuk-body">Avoid contractions with a noun and verb such as ‘the computer’s fast’. This may be misunderstood as showing possession. Use ‘the computer is fast’ instead.</p>
         <p class="govuk-body">You can use positive contractions like we’ll and you’ll.</p>
         <p class="govuk-body">We’d like to test positive contractions with users to find out if they’re more difficult to understand.</p>
         <h3 class="govuk-heading-m">CRN (case reference number)</h3>
-        <p class="govuk-body">The reference assigned to a person on probation in NDelius. Not NDelius number, case number or CRN number. The initialism may be sufficient without being spelt out. The format is 2 characters, 4 numbers and then 2 characters for example ‘RG5108AC’.</p>
+        <p class="govuk-body">The reference assigned to a person on probation in NDelius. Not NDelius number, case number or CRN number. </p>
+        <p>The initialism is likely to be familiar to NDelius users without needing to be spelt out. The format is 2 characters, 4 numbers and then 2 characters for example ‘RG5108AC’.
+
+</p>
     </div>
 
   <div class="govuk-accordion__section">
@@ -111,10 +117,17 @@ eleventyNavigation:
     </div>
     <div id="d-content" class="govuk-accordion__section-content">
         <h3 class="govuk-heading-m">dates</h3>
-        <p class="govuk-body">If users can choose a date range, use 'earliest' and 'latest' in your labels. For example:</p>
-        <p class="govuk-body">'Date from (earliest)'</p>
-        <p class="govuk-body">'Date to (latest)'</p>
-        <p class="govuk-body">This is being used on the DPS prisoner profile alerts and case notes pages in response to user feedback.</p>
+        <p class="govuk-body">Follow the <a href="https://www.gov.uk/guidance/style-guide/a-to-z#dates">GOV.UK style guide for writing dates in full</a> where possible. For example, 14 January 2025. This makes the date clear and accessible.</p>
+        <p class="govuk-body"><p>There's evidence that truncating dates can cause accessibility issues. If you need to do so, for example when short of space, abbreviate months as follows: Jan, Feb, Mar, Apr, May, June, July, Aug, Sept, Oct, Nov, Dec. This approach follows <a href="https://service-manual.ons.gov.uk/content/content-types/datasets#dates-months-and-quarters">Office for National Statistics (ONS) style on dates</a>.</p>
+        <p class="govuk-body"><p>You can also abbreviate dates using DD/MM/YYYY, for example 30/9/2024, when they're repeated regularly in a long list or table. Do not use a leading zero - use 1/1/2025 instead of 01/01/2025.</p>
+        <p class="govuk-body">Do not abbreviate the year.</p>
+        <p class="govuk-body">It can be helpful to include the day of the week in an appointment or deadline.</p>
+        <p class="govuk-body">When including the day of the week, do so before the rest of the date - for example, Thursday 14 January 2025.</p>
+        <p>If users can choose a date range, use 'earliest' and 'latest' in your labels. For example:</p>
+  <p class="govuk-body">'Date from (earliest)'</p>
+  <p class="govuk-body">'Date to (latest)'</p>
+  <p class="govuk-body">This is being used on the DPS prisoner profile alerts and case notes pages in response to user feedback.</p>
+<p class="govuk-body">In an example of how to enter or select a date in the <a href="https://design-system.service.gov.uk/components/date-input/">GOV.UK Design System date input</a> or <a href="https://design-patterns.service.justice.gov.uk/components/date-picker/"> date picker</a>, follow the style in the respective guidance. For example, 14 5 2024 for date input, 14/5/2024 for a date picker. It's helpful if your example date uses the 13th day of the month or later (14/5/2024 makes it clear that 14 could not be the month).</p>
         <h3 class="govuk-heading-m">DPS, Digital Prison Services</h3>
         <p class="govuk-body">Not 'the Digital Prison Service'.</p>
         <p class="govuk-body">DPS may be referred to as 'New NOMIS' in prisons, but we should always use 'DPS' or 'Digital Prison Services'.</p>
@@ -132,28 +145,12 @@ eleventyNavigation:
     <div id="e-content" class="govuk-accordion__section-content">
         <h3 class="govuk-heading-m">empty states</h3>
         <p class="govuk-body">Research with prison staff has shown that empty states help reassure users that nothing has been entered and the product is not broken.</p>
-        <p class="govuk-body">In the DPS prisoner profile, we conditionally hid the 'aliases' field if no aliases had been entered. Users told us that they thought the page might be broken or just not showing the information from NOMIS.</p>
+        <p class="govuk-body">In the DPS prisoner profile, the 'aliases' field was conditionally hidden if no aliases had been entered. Users said that they thought the page might be broken or just not showing the information from NOMIS.</p>
         <h3 class="govuk-heading-m">establishment roll, roll</h3>
         <p class="govuk-body">This refers to the record of prisoners' movements and locations in an establishment.</p>
         <p class="govuk-body">You can use 'roll' when referring to the establishment roll. This is commonly used in prisons and is well understood.</p>
     </div>
 
-  <div class="govuk-accordion__section">
-    <div class="govuk-accordion__section-header">
-      <h2 class="govuk-accordion__section-heading">
-        <span class="govuk-accordion__section-button" id="f">
-          F
-        </span>
-      </h2>
-    </div>
-    <div id="f-content" class="govuk-accordion__section-content">
-        <h3 class="govuk-heading-m">empty states</h3>
-        <p class="govuk-body">Research with prison staff has shown that empty states help reassure users that nothing has been entered and the product is not broken.</p>
-        <p class="govuk-body">In the DPS prisoner profile, we conditionally hid the 'aliases' field if no aliases had been entered. Users told us that they thought the page might be broken or just not showing the information from NOMIS.</p>
-        <h3 class="govuk-heading-m">establishment roll, roll</h3>
-        <p class="govuk-body">This refers to the record of prisoners' movements and locations in an establishment.</p>
-        <p class="govuk-body">You can use 'roll' when referring to the establishment roll. This is commonly used in prisons and is well understood.</p>
-    </div>
 
   <div class="govuk-accordion__section">
     <div class="govuk-accordion__section-header">
@@ -181,7 +178,7 @@ eleventyNavigation:
         <p class="govuk-body">Global search is a NOMIS screen used to search for people in any establishment or who have been released. This term has also been used in DPS and is commonly used by staff in prisons.</p>
         <p class="govuk-body">Only a limited number of staff have access to search for people across all establishments. This is controlled by a 'global search' role.</p>
         <p class="govuk-body">If you're referring to this type of search in your service, use the label 'In any establishment (global)'. This is being used on the DPS homepage and the non-associations service.</p>
-        <p class="govuk-body">As we move away from NOMIS, we should be able to remove any reference to 'global'.</p>
+        <p class="govuk-body">As users are moved away from NOMIS, references to 'global' should be able to be removed.</p>
     </div>
 
   <div class="govuk-accordion__section">
@@ -199,8 +196,8 @@ eleventyNavigation:
         <p class="govuk-body">This content does not provide any alternative contact methods such as email or chat. This may be raised as a recommendation if your service receives an accessibility audit.</p>
         <h3 class="govuk-heading-m">hint text</h3>
         <p class="govuk-body">Always use full stops at the end of hint text, even when using examples.</p>
-        <p class="govuk-body">We made this decision based on <a href="https://trello.com/c/cjE65vrR">research from other government departments and internal discussions (MoJ staff only)</a>.</p>
-        <p class="govuk-body">We’d like to test this approach to see if it causes users to include full stops in input fields.</p>
+        <p class="govuk-body">This decision was made based on <a href="https://trello.com/c/cjE65vrR">research from other government departments and internal discussions (MoJ staff only)</a>.</p>
+        <p class="govuk-body">The content community would like to test this approach to see if it causes users to include full stops in input fields.</p>
         <p class="govuk-body">This guidance only applies to hint text styled with the class “govuk-hint”.</p>
         <h3 class="govuk-heading-m">Home Office reference number</h3>
         <p class="govuk-body">Initial caps for 'Home Office'.</p>
@@ -215,7 +212,7 @@ eleventyNavigation:
       </h2>
     </div>
     <div id="i-content" class="govuk-accordion__section-content">
-        <h3 class="govuk-heading-m">identity numbers</h3>
+        <h3 class="govuk-heading-m">identity numbers (DPS only)</h3>
         <p class="govuk-body">Use 'identity numbers' when referring to:</p>
         <ul>
             <li>PNC number</li>
@@ -259,7 +256,7 @@ eleventyNavigation:
         <h3 class="govuk-heading-m">NDelius</h3>
         <p class="govuk-body">Not nDelius, Ndelius or Delius. It's the case management system in probation.</p>
         <h3 class="govuk-heading-m">NOMIS</h3>
-        <p class="govuk-body">Not Nomis or nomis. It's an initialism and stands for the National Offender Management Information System.</p>
+        <p class="govuk-body">Not Nomis or nomis. It's an initialism and stands for the National Offender Management Information System. This is a legacy digital system that's being replacing with DPS.</p>
         <h3 class="govuk-heading-m" id="non-associations">non-associations</h3>
         <p class="govuk-body">A non-association is a record that says 2 prisoners must be kept apart.</p>
         <p class="govuk-body">Staff in some prisons may also refer to non-associations as:</p>
@@ -312,7 +309,7 @@ eleventyNavigation:
         <h3 class="govuk-heading-m">Personal Identification Number (PIN)</h3>
         <p class="govuk-body">Use PIN. This is more well known than the full version.</p>
         <p class="govuk-body">Prisoners use their secure PIN to call people on their approved contacts list from their in-cell PIN phones.</p>
-        <p class="govuk-body">It is often written as pin or Pin, but PIN is the correct format.</p>
+        <p class="govuk-body">It is often written as pin or Pin in prisons, but PIN is the correct format.</p>
         <h3 class="govuk-heading-m" id="preferredname">preferred name</h3>
         <p class="govuk-body">Always use 'preferred name', not 'working name' as it's called in NOMIS.</p>
         <h3 class="govuk-heading-m">prison number</h3>
@@ -324,11 +321,11 @@ eleventyNavigation:
         <h3 class="govuk-heading-m">prisoner record</h3>
         <p class="govuk-body">Always use ‘prisoner record’ when referring to the data stored about a person in prison. A prisoner record is linked to a prison number and can contain information from multiple bookings.</p>
         <p class="govuk-body">Do not use ‘prison record’, ‘NOMIS record’, ‘NOMS record’ or ‘offender record’.</p>
-        <p class="govuk-body">We’d like to research this term further to make sure it’s the best way of describing the information we have about someone in prison.</p>
+        <p class="govuk-body">More research is needed to ensure that this is the best way to describe information the organisation has about someone in prison.</p>
         <h3 class="govuk-heading-m">Probation Delivery Unit (PDU)</h3>
         <p class="govuk-body">Use upper case and the initialism on first mention. Research is needed to establish if users will understand PDU without it being spelt out.</p>
-        <h3 class="govuk-heading-m">probation practitioner</h3>
-        <p class="govuk-body">This is better than 'community offender manager (COM)', although someone may have this job title. Refers to a probation officer, probation support officer or senior probation officer.</p>
+        <h3 class="govuk-heading-m" id="probation-practitioner">probation practitioner</h3>
+        <p class="govuk-body">This is better than 'community offender manager (COM)' and 'prison offender manager (POM)', although someone may have this job title. Refers to a probation officer, probation support officer or senior probation officer.</p>
     </div>
 
   <div class="govuk-accordion__section">
@@ -354,7 +351,7 @@ eleventyNavigation:
         <li>Sentence expiry date (SED) - This is the date a person’s prison sentence expires.</li>
         <li>Licence expiry date (LED) - This is the date the licence expires where release from custody is subject to licence conditions.</li>
         </ul>
-        <p class="govuk-body">Read the <a href="https://login.microsoftonline.com/c6874728-71e6-41fe-a9e1-2e8c36776ad8/oauth2/authorize?client%5Fid=00000003%2D0000%2D0ff1%2Dce00%2D000000000000&response%5Fmode=form%5Fpost&response%5Ftype=code%20id%5Ftoken&resource=00000003%2D0000%2D0ff1%2Dce00%2D000000000000&scope=openid&nonce=BC0CEEE028DB350631B8C9EE74BB17131B4D0D2F5F36E2D2%2D039A61F7362E2D6DCE573AE4BB56FB9F3F9BAA7F4AA0BBBA41D0841116299095&redirect%5Furi=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%5Fforms%2Fdefault%2Easpx&state=OD0w&claims=%7B%22id%5Ftoken%22%3A%7B%22xms%5Fcc%22%3A%7B%22values%22%3A%5B%22CP1%22%5D%7D%7D%7D&wsucxt=1&cobrandid=11bd8083%2D87e0%2D41b5%2Dbb78%2D0bc43c8a8e8a&client%2Drequest%2Did=714161a1%2D80c1%2Da000%2D35db%2Dfd3e02f7d205">full list of release dates</a>.</p>
+        <p class="govuk-body">Read the <a href="https://justiceuk.sharepoint.com/sites/Courtcaseandreleasedates/SitePages/Release-date-types-and-definitions.aspx">full list of release dates (MoJ staff only)</a>.</p>
         <h3 class="govuk-heading-m">remand prisoner, on remand, remanded in custody</h3>
         <p class="govuk-body">Someone is on remand if they are placed in custody whilst awaiting trial. Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.</p>
         <h3 class="govuk-heading-m">ROTL (Release on Temporary Licence)</h3>
@@ -375,9 +372,9 @@ eleventyNavigation:
         <p class="govuk-body">A temporary absence is when a person is allowed to leave prison for a short period. This could be to help them prepare for release by attending a work placement or for an exceptional circumstance such as receiving hospital treatment.</p>
         <p class="govuk-body">Temporary absence may be referred to as TAP (temporarily absent prisoner), but we should use temporary absence.</p>
         <h3 class="govuk-heading-m" id="times">times (in prison)</h3>
-        <p class="govuk-body">Use the 24-hour clock for DPS (Digital Prison Services) and any service used by prison staff. For example, 14:00 not 2.00pm.</p>
+        <p class="govuk-body">Use the 24-hour clock for DPS and any service used by prison staff. For example, 14:00 not 2.00pm.</p>
         <p class="govuk-body">The 24-hour clock should also be used for time input fields.</p>
-        <p class="govuk-body">The 24-hour clock is widely used in prisons. Research has shown that <a href="https://trello.com/c/D57IWwVT">using the 12-hour clock in prison may cause confusion</a>.</p>
+        <p class="govuk-body">The 24-hour clock is widely used in prisons. Research has shown that <a href="https://trello.com/c/D57IWwVT">using the 12-hour clock in prison may cause confusion (MoJ staff only)</a>.</p>
         <p class="govuk-body">If your service is on DPS but is used by both prison and probation staff, it should still use the 24-hour clock.</p>
         <h3 class="govuk-heading-m">times (in probation)</h3>
         <p class="govuk-body">Use the 12-hour clock for services in the probation space. For example, 11am.</p>
@@ -432,7 +429,9 @@ eleventyNavigation:
     </div>
     <div id="y-content" class="govuk-accordion__section-content">
         <h3 class="govuk-heading-m">youth offender</h3>
-        <p class="govuk-body">Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.</p>
+        <p class="govuk-body">This describes a prisoner aged between 15 and 21.</p>
+
+<p class="govuk-body">Read <a href="https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md">guidance on how to talk about people in the justice system (MoJ staff only)</a>.</p>
     </div>
 
 </div>
