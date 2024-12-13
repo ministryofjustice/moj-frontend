@@ -15,7 +15,13 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
 module.exports = function (eleventyConfig) {
 
-  eleventyConfig.addPlugin(eleventyNavigationPlugin);
+  // Load plugins
+  const pluginDir = path.join(__dirname, "src/eleventy/plugins");
+  fs.readdirSync(pluginDir).forEach((file) => {
+    const plugin = require(path.join(pluginDir, file));
+    plugin(eleventyConfig);
+  });
+
   /*
    * If the node env is 'dev' then we include the src dir allowing components
    * under development to be watched and loaded
