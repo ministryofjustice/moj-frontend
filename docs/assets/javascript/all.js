@@ -4,6 +4,7 @@ import MOJFrontend from "../../../package/moj/all.js";
 import Cookies from "./cookies";
 import Copy from "./copy";
 import Tabs from "./tabs";
+import IFrameResizer from './iframe-resizer.js'
 
 import MenuToggle from "./menu-toggle.js";
 import CollapsibleNav from "./collapsible-nav.js";
@@ -23,6 +24,9 @@ $(function () {
   $('[data-module="app-cookies"]').each(function (e, el) {
     new Cookies(el).init();
   });
+
+  const iFrames = document.querySelectorAll('iframe')
+  iFrames.forEach((frame) => new IFrameResizer(frame))
 });
 
 window.MOJFrontend = MOJFrontend;
