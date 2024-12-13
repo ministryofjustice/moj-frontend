@@ -1,0 +1,17 @@
+/* ==========================================================================
+   #ACCORDIONS
+   ========================================================================== */
+
+   .govuk-accordion__section-button:hover {
+    background: #ebebeb !important;
+  }
+
+  .govuk-accordion__show-all:hover {
+   background: #ebebeb !important;
+   box-shadow: 0 -2px #ebebeb, 0 4px #ebebeb !important;
+ }
+
+  .govuk-accordion__show-all:focus {
+    background: $govuk-focus-colour !important;
+    box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-text-color !important;
+  }

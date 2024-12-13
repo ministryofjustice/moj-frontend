@@ -12,6 +12,12 @@ eleventyNavigation:
 
 <p class="govuk-!-margin-bottom-6">This content style guide applies to services and guidance at MoJ. It should be used alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">GOV.UK content style guide</a>.</p>
 
+<!-- content style guide updates -->
+
+<!-- <p class="govuk-!-margin-bottom-0">First published XX December 2024</p>
+<p class="govuk-!-margin-bottom-0">Updated XX December 2024</p>
+<p class="govuk-!-margin-bottom-6"><a href="/content-standards/style-guide-updates">View updates</a></p> -->
+
 
 {% accordion "style-guide" %}
 {% accordionSection "A" %}

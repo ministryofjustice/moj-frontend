@@ -176,7 +176,7 @@ module.exports = function (eleventyConfig) {
           </div>
       </div>
     `.trim();
-    }).join("\n").trim();
+    }).join("").trim();
 
     accordionSections = [];
 
