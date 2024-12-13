@@ -147,52 +147,12 @@ module.exports = function (eleventyConfig) {
     `;
   });
 
-  eleventyConfig.addFilter(
-    "addActiveAttribute",
-    function (config, filePathStem) {
-      if (config.items) {
-        return {
-          ...config,
-          items: config.items.map((item) => ({
-            ...item,
-            active: filePathStem.indexOf(item.href) > -1,
-          })),
-        };
-      } else if (config.sections) {
-        return {
-          ...config,
-          sections: config.sections.map((section) => ({
-            ...section,
-            items: section.items.map((item) => ({
-              ...item,
-              active: filePathStem.indexOf(item.href) > -1,
-            })),
-          })),
-        };
-      }
-    },
-  );
-
-  eleventyConfig.addFilter("getScriptPath", function (inputPath) {
-    return inputPath.split("/").slice(1, -1).join("/") + "/script.js";
+  // Load filters
+  const filterDir = path.join(__dirname, "src/eleventy/filters");
+  fs.readdirSync(filterDir).forEach((file) => {
+    const filter = require(path.join(filterDir, file));
+    filter(eleventyConfig);
   });
-
-  eleventyConfig.addFilter("getStylesPath", function (inputPath) {
-    return inputPath.split("/").slice(1, -1).join("/") + "/style.css";
-  });
-
-  eleventyConfig.addFilter(
-    "rev",
-    (filepath) => {
-      if (process.env.ENV == "production" || process.env.ENV == "staging") {
-        const manifest = JSON.parse(fs.readFileSync('public/assets/rev-manifest.json', 'utf8'));
-        const revision = manifest[filepath]
-        return `/${revision || filepath}`
-      } else {
-        return `/${filepath}`
-      }
-    }
-  )
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget("src/moj/components/**/*.njk");
