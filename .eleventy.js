@@ -68,89 +68,12 @@ module.exports = function (eleventyConfig) {
       }),
   );
 
-  eleventyConfig.addShortcode("example", function (exampleHref, height) {
-    let { data, content: nunjucksCode } = matter(
-      fs
-        .readFileSync(
-          path.join(__dirname, "docs", exampleHref, "index.njk"),
-          "utf8",
-        )
-        .trim(),
-    );
-
-    nunjucksCode = nunjucksCode.split("<!--no include-->")[0].trim();
-
-    const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode);
-
-    const htmlCode = beautifyHTML(rawHtmlCode.trim(), {
-      indent_size: 2,
-      end_with_newline: true,
-      max_preserve_newlines: 1,
-      unformatted: ["code", "pre", "em", "strong"],
-    });
-
-    let jsCode = "";
-    try {
-      jsCode = fs
-        .readFileSync(
-          path.join(__dirname, "docs", exampleHref, "script.js"),
-          "utf8",
-        )
-        .trim();
-    } catch (e) {}
-
-    return nunjucksEnv.render("example.njk", {
-      href: exampleHref,
-      id: exampleHref.replace(/\//g, "-"),
-      arguments: data.arguments,
-      figmaLink: data.figma_link,
-      title: data.title,
-      height,
-      nunjucksCode,
-      htmlCode,
-      jsCode,
-    });
-  });
-
-
-
-  eleventyConfig.addShortcode(
-    "dateInCurrentMonth",
-    (day) => `${day}/${new Date().getMonth() + 1}/${new Date().getFullYear()}`,
-  );
-
-  eleventyConfig.addShortcode("lastUpdated", function (component) {
-    if (process.env.ENV == "staging") return "";
-
-    const dirPath = path.join(__dirname, "src/moj/components", component);
-    const [commit, lastUpdated] = execSync(
-      `LANG=en_GB git log -n1 --pretty=format:%H,%ad --date=format:'%e %B %Y' ${dirPath}`,
-    )
-      .toString()
-      .split(",");
-
-    return `<p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/${commit}">${lastUpdated}</a></p>`;
-  });
-
-  eleventyConfig.addShortcode("version", function () {
-    return releasePackage.version;
-  });
-
-  eleventyConfig.addPairedShortcode("banner", function (content, title) {
-    return `
-      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Important
-          </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <h3 class="govuk-notification-banner__heading">
-            ${title}
-          </h3>
-          ${content}</div>
-      </div>
-    `;
+  // Load short codes
+  const shortcodeDir = path.join(__dirname, "src/eleventy/shortcodes");
+  const rootDir = path.resolve(__dirname)
+  fs.readdirSync(shortcodeDir).forEach((file) => {
+    const shortcode = require(path.join(shortcodeDir, file));
+    shortcode(eleventyConfig, rootDir, nunjucksEnv);
   });
 
   // Load filters
