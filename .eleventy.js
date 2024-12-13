@@ -141,8 +141,8 @@ module.exports = function (eleventyConfig) {
     const tabsList = tabsStorage.map((tab, index) => {
       const isSelected = index === 0 ? '--selected' : '';
       return `
-      <li class="govuk-tabs__list-item${isSelected} app-navigation__item">
-        <a class="govuk-tabs__tab app-navigation__link app-navigation__link" href="#${tabId(tab)}">
+      <li class="govuk-tabs__list-item${isSelected} app-navigation__item" role="presentation">
+        <a class="govuk-tabs__tab app-navigation__link app-navigation__link" href="#${tabId(tab)}" role="tab" >
           ${tab.label}
         </a>
       </li>
@@ -152,7 +152,7 @@ module.exports = function (eleventyConfig) {
     const tabPanels = tabsStorage.map((tab, index) => {
       const isHidden = index === 0 ? '' : ' govuk-tabs__panel--hidden';
       return `
-      <div class="govuk-tabs__panel${isHidden}" id="${tabId(tab)}">
+      <div class="govuk-tabs__panel${isHidden}" id="${tabId(tab)}" role="tabpanel">
         ${tab.content}
       </div>
     `.trim();
@@ -163,7 +163,7 @@ module.exports = function (eleventyConfig) {
     return `
     <div class="govuk-tabs app-navigation no-govuk-tabs-styles" data-module="govuk-tabs">
       <h2 class="govuk-tabs__title">${label}</h2>
-      <ul class="govuk-tabs__list app-navigation__list">
+      <ul class="govuk-tabs__list app-navigation__list" role="tabpanel">
         ${tabsList}
       </ul>
       ${tabPanels}
