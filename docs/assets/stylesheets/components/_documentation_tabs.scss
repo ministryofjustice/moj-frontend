@@ -176,7 +176,7 @@
         text-decoration: underline;
       }
       padding-left: unset;
-      a:before {
+      a:not(:focus):before {
         background-color: unset !important;
       }
     }
