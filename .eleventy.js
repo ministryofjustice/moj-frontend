@@ -15,7 +15,13 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
 module.exports = function (eleventyConfig) {
 
-  eleventyConfig.addPlugin(eleventyNavigationPlugin);
+  // Load plugins
+  const pluginDir = path.join(__dirname, "src/eleventy/plugins");
+  fs.readdirSync(pluginDir).forEach((file) => {
+    const plugin = require(path.join(pluginDir, file));
+    plugin(eleventyConfig);
+  });
+
   /*
    * If the node env is 'dev' then we include the src dir allowing components
    * under development to be watched and loaded
@@ -62,137 +68,20 @@ module.exports = function (eleventyConfig) {
       }),
   );
 
-  eleventyConfig.addShortcode("example", function (exampleHref, height) {
-    let { data, content: nunjucksCode } = matter(
-      fs
-        .readFileSync(
-          path.join(__dirname, "docs", exampleHref, "index.njk"),
-          "utf8",
-        )
-        .trim(),
-    );
-
-    nunjucksCode = nunjucksCode.split("<!--no include-->")[0].trim();
-
-    const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode);
-
-    const htmlCode = beautifyHTML(rawHtmlCode.trim(), {
-      indent_size: 2,
-      end_with_newline: true,
-      max_preserve_newlines: 1,
-      unformatted: ["code", "pre", "em", "strong"],
-    });
-
-    let jsCode = "";
-    try {
-      jsCode = fs
-        .readFileSync(
-          path.join(__dirname, "docs", exampleHref, "script.js"),
-          "utf8",
-        )
-        .trim();
-    } catch (e) {}
-
-    return nunjucksEnv.render("example.njk", {
-      href: exampleHref,
-      id: exampleHref.replace(/\//g, "-"),
-      arguments: data.arguments,
-      figmaLink: data.figma_link,
-      title: data.title,
-      height,
-      nunjucksCode,
-      htmlCode,
-      jsCode,
-    });
+  // Load short codes
+  const shortcodeDir = path.join(__dirname, "src/eleventy/shortcodes");
+  const rootDir = path.resolve(__dirname)
+  fs.readdirSync(shortcodeDir).forEach((file) => {
+    const shortcode = require(path.join(shortcodeDir, file));
+    shortcode(eleventyConfig, rootDir, nunjucksEnv);
   });
 
-
-
-  eleventyConfig.addShortcode(
-    "dateInCurrentMonth",
-    (day) => `${day}/${new Date().getMonth() + 1}/${new Date().getFullYear()}`,
-  );
-
-  eleventyConfig.addShortcode("lastUpdated", function (component) {
-    if (process.env.ENV == "staging") return "";
-
-    const dirPath = path.join(__dirname, "src/moj/components", component);
-    const [commit, lastUpdated] = execSync(
-      `LANG=en_GB git log -n1 --pretty=format:%H,%ad --date=format:'%e %B %Y' ${dirPath}`,
-    )
-      .toString()
-      .split(",");
-
-    return `<p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/${commit}">${lastUpdated}</a></p>`;
+  // Load filters
+  const filterDir = path.join(__dirname, "src/eleventy/filters");
+  fs.readdirSync(filterDir).forEach((file) => {
+    const filter = require(path.join(filterDir, file));
+    filter(eleventyConfig);
   });
-
-  eleventyConfig.addShortcode("version", function () {
-    return releasePackage.version;
-  });
-
-  eleventyConfig.addPairedShortcode("banner", function (content, title) {
-    return `
-      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Important
-          </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <h3 class="govuk-notification-banner__heading">
-            ${title}
-          </h3>
-          ${content}</div>
-      </div>
-    `;
-  });
-
-  eleventyConfig.addFilter(
-    "addActiveAttribute",
-    function (config, filePathStem) {
-      if (config.items) {
-        return {
-          ...config,
-          items: config.items.map((item) => ({
-            ...item,
-            active: filePathStem.indexOf(item.href) > -1,
-          })),
-        };
-      } else if (config.sections) {
-        return {
-          ...config,
-          sections: config.sections.map((section) => ({
-            ...section,
-            items: section.items.map((item) => ({
-              ...item,
-              active: filePathStem.indexOf(item.href) > -1,
-            })),
-          })),
-        };
-      }
-    },
-  );
-
-  eleventyConfig.addFilter("getScriptPath", function (inputPath) {
-    return inputPath.split("/").slice(1, -1).join("/") + "/script.js";
-  });
-
-  eleventyConfig.addFilter("getStylesPath", function (inputPath) {
-    return inputPath.split("/").slice(1, -1).join("/") + "/style.css";
-  });
-
-  eleventyConfig.addFilter(
-    "rev",
-    (filepath) => {
-      if (process.env.ENV == "production" || process.env.ENV == "staging") {
-        const manifest = JSON.parse(fs.readFileSync('public/assets/rev-manifest.json', 'utf8'));
-        const revision = manifest[filepath]
-        return `/${revision || filepath}`
-      } else {
-        return `/${filepath}`
-      }
-    }
-  )
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget("src/moj/components/**/*.njk");
