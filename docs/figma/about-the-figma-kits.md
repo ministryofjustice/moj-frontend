@@ -10,7 +10,7 @@ eleventyNavigation:
 ---
 
 
-The MoJ Design System team maintains 3 Figma Kits for the MoJ and GOV.UK Design Systems.
+The MoJ Design System team maintains 3 Figma Kits containing components, colours and styles from the MoJ and GOV.UK Design Systems.
 
 The Figma Kits help people use Figma to create designs that are consistent with one another and enable Figma prototypes to benefit from centrally maintained updates.
 
