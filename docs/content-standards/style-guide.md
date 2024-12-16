@@ -104,7 +104,7 @@ Use CSIP. This is more well known than the full version.
 
 ### clock
 
-See [times](#times) for guidance on using the 12 or 24-hour clock.
+See [guidance on using the 12 or 24-hour clock](#times). 
 
 ### closed prison, closed conditions
 
