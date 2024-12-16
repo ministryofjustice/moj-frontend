@@ -10,7 +10,9 @@ eleventyNavigation:
  excerpt: "The MoJ A to Z content style guide covering style, spelling and grammar conventions."
 ---
 
-<p class="govuk-!-margin-bottom-6">This content style guide applies to services and guidance at MoJ. It should be used alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">style guide on GOV.UK</a>.</p>
+<p class="govuk-!-margin-bottom-6">
+    This content style guide applies to services and guidance at MoJ. It should be used alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">style guide on GOV.UK</a>.
+</p>
 
 
 {% accordion "style-guide" %}
@@ -266,7 +268,7 @@ Not nDelius, Ndelius or Delius. It's the case management system in probation.
 ### NOMIS
 Not Nomis or nomis. It's an initialism and stands for the National Offender Management Information System. This is a legacy digital system that's being replacing with DPS.
 
-<h3 class="govuk-heading-m" id="non-associations">non-associations</h3>
+### non-associations
 
 A non-association is a record that says 2 prisoners must be kept apart.
 

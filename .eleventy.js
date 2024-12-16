@@ -157,11 +157,11 @@ module.exports = function (eleventyConfig) {
     const sectionId = (section) => {
       return `${section.label.toLowerCase().replace(/ /g, "-")}-section`
     }
-    const contentId = (section) => {
-      return `${section.label.toLowerCase().replace(/ /g, "-")}-section-content`
+    const contentId = (section,index) => {
+      return `${accordionId}-content-${index}`
     }
 
-    const accordionContent = accordionSections.map((section) => {
+    const accordionContent = accordionSections.map((section,index) => {
       return `
         <div class="govuk-accordion__section">
           <div class="govuk-accordion__section-header">
@@ -171,7 +171,7 @@ module.exports = function (eleventyConfig) {
               </span>
             </h2>
           </div>
-          <div id="${contentId(section)}" class="govuk-accordion__section-content">
+          <div id="${contentId(section,index+1)}" class="govuk-accordion__section-content">
             ${section.content}
           </div>
       </div>
