@@ -47,7 +47,7 @@ jobs:
           KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
       - name: Update PR with success
         run: |
-          echo -e "🚀 Deployed to preview environment!\n\n**URL:** https://moj-frontend-${{ github.head_ref }}.apps.live.cloud-platform.service.justice.gov.uk\n\n**Username:** \`preview\`, **Password:** \`moj\`" > comment.txt
+          echo -e "🚀 Deployed to preview environment! If this is the first deploy, you may have to wait a few minutes for your preview site to be ready on the following URL:\n\n https://moj-frontend-${{ github.head_ref }}.apps.live.cloud-platform.service.justice.gov.uk\n\n**Username:** \`preview\`, **Password:** \`moj\`" > comment.txt
           gh pr comment $PRNUM --body-file comment.txt
           gh pr edit $PRNUM --remove-label "preview:request"
           gh pr edit $PRNUM --add-label "preview:active"
