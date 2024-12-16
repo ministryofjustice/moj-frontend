@@ -20,25 +20,4 @@
   Add these comments to the <a class="govuk-link" href= {{githuburl}} >{{ title|lower }} discussion on GitHub</a>.
 </p>
 
-{% if contributors %}
-  <h3 class="govuk-heading-m">Contributors</h3>
-  <p class="govuk-body">
-    Thanks to {{ contributors }} for
-    {% if contribution %}
-      contributing
-    {% else %}
-      giving feedback on
-    {% endif %}
-    this {{ type }}.
-  </p>
-{% endif %}
-
-{% if basedon %}
-  <p class="govuk-body">
-    This {{ type }} was based on the <a class="govuk-link" href= {{ basedonurl }}>{{basedon}}</a>.
-  </p>
-  </p>
-{% endif %}
-
-
 <div class="govuk-!-padding-bottom-7"></div>
