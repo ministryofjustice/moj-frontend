@@ -10,13 +10,7 @@ eleventyNavigation:
  excerpt: "The MoJ A to Z content style guide covering style, spelling and grammar conventions."
 ---
 
-<p class="govuk-!-margin-bottom-6">This content style guide applies to services and guidance at MoJ. It should be used alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">GOV.UK content style guide</a>.</p>
-
-<!-- content style guide updates -->
-
-<!-- <p class="govuk-!-margin-bottom-0">First published XX December 2024</p>
-<p class="govuk-!-margin-bottom-0">Updated XX December 2024</p>
-<p class="govuk-!-margin-bottom-6"><a href="/content-standards/style-guide-updates">View updates</a></p> -->
+<p class="govuk-!-margin-bottom-6">This content style guide applies to services and guidance at MoJ. It should be used alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">style guide on GOV.UK</a>.</p>
 
 
 {% accordion "style-guide" %}
@@ -27,7 +21,7 @@ Acronyms and initialisms in services do not need to be spelt out if they are wel
 
 If users are familiar with the acronym or initialism but you would still like to help them, you can spell it out afterwards, for example 'PDU (probation delivery unit)'.
 
-For guidance or long-form content, spell them out on first mention (following the [GOV.UK guidance on abbreviations and acronyms](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#abbreviations-and-acronyms)).
+For guidance or long-form content, spell them out on first mention (following the [abbreviations and acronyms guidance on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#abbreviations-and-acronyms)).
 
 ### alerts (DPS only)
 Only use 'alerts' when talking about alerts created in NOMIS or DPS (Digital Prison Services).
@@ -52,7 +46,7 @@ In DPS, the first breadcrumb should always be 'Digital Prison Services'.
 {% accordionSection "C" %}
 
 ### capitalisation
-For general terms, follow the guidance in the [GOV.UK style guide](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style).
+For general terms, follow the guidance in the [style guide on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style).
 
 There's not a standard approach to capitalising acronyms or initialisms when they are written out in full.
 
@@ -62,7 +56,7 @@ You may decide to capitalise abbreviations when:
 - it would help users to understand what you’re referring to
 - the full version of the abbreviation is long
 
-Please share your decisions on capitalising abbreviations in the [#content Slack channel (MoJ staff only)](https://moj.enterprise.slack.com/archives/C58FBN6V6). These entries will be added to the content style guide to ensure consistency.
+Please share your decisions on capitalising abbreviations in the [content community Slack channel (MoJ staff only)](https://moj.enterprise.slack.com/archives/C58FBN6V6). These entries will be added to the content style guide to ensure consistency.
 
 ### case list
 
@@ -124,7 +118,7 @@ It's better than 'community offender manager (COM)', although someone may have t
 
 ### contractions
 
-Follow the [GOV.UK style guide](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#contractions) and avoid using negative contractions like can’t and don’t.
+Follow the [style guide on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#contractions) and avoid using negative contractions like can’t and don’t.
 
 Avoid contractions with a noun and verb such as ‘the computer’s fast’. This may be misunderstood as showing possession. Use ‘the computer is fast’ instead.
 
@@ -143,7 +137,7 @@ The initialism is likely to be familiar to NDelius users without needing to be s
 
 ### dates
 
-Follow the [GOV.UK style guide for writing dates in full](https://www.gov.uk/guidance/style-guide/a-to-z#dates) where possible. For example, 14 January 2025. This makes the date clear and accessible.
+Follow the [style for writing dates in full on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z#dates) where possible. For example, 14 January 2025. This makes the date clear and accessible.
 
 There's evidence that truncating dates can cause accessibility issues. If you need to do so, for example when short of space, abbreviate months as follows: Jan, Feb, Mar, Apr, May, June, July, Aug, Sept, Oct, Nov, Dec. This approach follows [Office for National Statistics (ONS) style on dates](https://service-manual.ons.gov.uk/content/content-types/datasets#dates-months-and-quarters).
 
@@ -163,7 +157,7 @@ If users can choose a date range, use 'earliest' and 'latest' in your labels. Fo
 
 This is being used on the DPS prisoner profile alerts and case notes pages in response to user feedback.
 
-In an example of how to enter or select a date in the [GOV.UK Design System date input](https://design-system.service.gov.uk/components/date-input/) or [date picker](https://design-patterns.service.justice.gov.uk/components/date-picker/), follow the style in the respective guidance. For example, 14 5 2024 for date input, 14/5/2024 for a date picker. It's helpful if your example date uses the 13th day of the month or later (14/5/2024 makes it clear that 14 could not be the month).
+In an example of how to enter or select a date in the [date input component in the GOV.UK Design System](https://design-system.service.gov.uk/components/date-input/) or the [date picker](https://design-patterns.service.justice.gov.uk/components/date-picker/), follow the style in the respective guidance. For example, 14 5 2024 for date input, 14/5/2024 for a date picker. It's helpful if your example date uses the 13th day of the month or later (14/5/2024 makes it clear that 14 could not be the month).
 
 ### DPS, Digital Prison Services
 
