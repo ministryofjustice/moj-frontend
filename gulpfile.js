@@ -9,7 +9,9 @@ gulp.task(
     "build:clean",
     "build:copy-files",
     "build:javascript",
-    "build:javascript-with-jquery",
+    "build:javascript-minified",
+    "build:javascript-minified-with-jquery",
+    "build:css",
     "build:compress-images",
   )
 );
