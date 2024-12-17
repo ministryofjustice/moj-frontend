@@ -37,7 +37,7 @@ gulp.task('build:javascript-minified-with-jquery', () => {
       'gulp/jquery/scope.js',
       'package/moj/all.js',
     ])
-    .pipe(concat('all.jquery.min.js'))
+    .pipe(concat('moj-frontend.jquery.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('package/moj/'));
 });
