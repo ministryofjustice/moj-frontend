@@ -82,14 +82,6 @@ Use 'Category A – high' for high-profile prisoners.
 
 Use 'Category A – provisional' for provisional Category A prisoners.
 
-### caseload (changing caseload)
-
-If your service lets users change their 'caseload', always use 'change location' instead. 'Caseload' is a legacy term from NOMIS that would need explaining to users.
-
-### case note
-
-This is 2 separate words. Not casenote.
-
 ### cell
 
 Cell or cells should be used to refer to the rooms that people in prison live in. There are some instances in the open, female and youth estate where alternatives such as 'dormitory' or 'room' may be more appropriate. But for services rolled out across the entire prison estate, cell is likely to be the most widely understood term.
@@ -106,7 +98,7 @@ Use CSIP. This is more well known than the full version.
 
 ### clock
 
-See [guidance on using the 12 or 24-hour clock](#times). 
+See [guidance on using the 12 or 24-hour clock](#times).
 
 ### closed prison, closed conditions
 
