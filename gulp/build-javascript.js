@@ -9,6 +9,7 @@ gulp.task('build:javascript', () => {
       'src/moj/namespace.js',
       'src/moj/helpers.js',
       'src/moj/all.js',
+      'src/moj/version.js',
       'src/moj/components/**/!(*.spec).js'
     ])
     .pipe(concat('all.js'))
