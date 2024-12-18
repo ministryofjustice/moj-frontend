@@ -135,7 +135,7 @@ Follow the [style for writing dates in full on GOV.UK](https://www.gov.uk/guidan
 
 There's evidence that truncating dates can cause accessibility issues. If you need to do so, for example when short of space, abbreviate months as follows: Jan, Feb, Mar, Apr, May, June, July, Aug, Sept, Oct, Nov, Dec. This approach follows [Office for National Statistics (ONS) style on dates](https://service-manual.ons.gov.uk/content/content-types/datasets#dates-months-and-quarters).
 
-You can also abbreviate dates using DD/MM/YYYY, for example 30/9/2024, when they're repeated regularly in a long list or table. Do not use a leading zero - use 1/1/2025 instead of 01/01/2025.
+You can also abbreviate dates using D/MM/YYYY, for example 30/9/2024, when they're repeated regularly in a long list or table. Do not use a leading zero - use 1/1/2025 instead of 01/01/2025.
 
 Do not abbreviate the year.
 
@@ -201,7 +201,7 @@ As users are moved away from NOMIS, references to 'global' should be able to be 
 ### help content (DPS only)
 When directing users to help and support, always use this content:
 
-**Get help with DPS**
+**Get help with DPS**   
 Call 0800 917 5148 or #6598 from inside an establishment.
 
 This content does not provide any alternative contact methods such as email or chat. This may be raised as a recommendation if your service receives an accessibility audit.
@@ -252,7 +252,7 @@ This is 2 separate words. Not keyworker.
 {% accordionSection "N" %}
 
 ### naming
-If you're naming a service in DPS, you should follow the [DPS naming guidelines](https://docs.google.com/document/d/1Va7AIp6cmlyNgs_x42A4KHw3wo5NFQebYO6EhO3lJxg/edit?usp=sharing).
+If you're naming a service in DPS, you should follow the [DPS naming guidelines (MoJ staff only)](https://docs.google.com/document/d/1Va7AIp6cmlyNgs_x42A4KHw3wo5NFQebYO6EhO3lJxg/edit?usp=sharing).
 
 ### NDelius
 Not nDelius, Ndelius or Delius. It's the case management system in probation.
@@ -320,7 +320,7 @@ Prisoners use their secure PIN to call people on their approved contacts list fr
 
 It is often written as pin or Pin in prisons, but PIN is the correct format.
 
-### preferred name
+<h3 class="govuk-heading-m" id="preferred-name">preferred name</h3>
 
 Always use 'preferred name', not 'working name' as it's called in NOMIS.
 
@@ -429,7 +429,7 @@ Use ViSOR. This is more well known than the full version. Read [guidance on how 
 
 ### working name
 
-See [preferred name](#preferredname).
+See [preferred name](#preferred-name).
 
 {% endaccordionSection %}
 {% accordionSection "X" %}
