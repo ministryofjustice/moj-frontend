@@ -171,9 +171,7 @@ module.exports = function (eleventyConfig) {
               </span>
             </h2>
           </div>
-          <div id="${contentId(section,index+1)}" class="govuk-accordion__section-content">
-            ${section.content}
-          </div>
+          <div id="${contentId(section,index+1)}" class="govuk-accordion__section-content">${section.content}</div>
       </div>
     `.trim();
     }).join("").trim();
