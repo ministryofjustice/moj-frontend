@@ -158,7 +158,7 @@ module.exports = function (eleventyConfig) {
         ${tab.content}
       </div>
     `.trim();
-    }).join("\n").trim();
+    }).join("").trim();
 
     tabsStorage = [];
 
@@ -232,7 +232,7 @@ module.exports = function (eleventyConfig) {
   `.trim();
   });
 
-// Find and store govuk tab for above tabs
+  // Find and store govuk tab for above tabs
   eleventyConfig.addPairedShortcode("accordionSection", function (content, label) {
     accordionSections.push({ label, content });
     return "";
