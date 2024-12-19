@@ -1,3 +1,10 @@
+## [3.2.2](https://github.com/ministryofjustice/moj-frontend/compare/v3.2.1...v3.2.2) (2024-12-18)
+
+
+### Bug Fixes
+
+* include compiled css and js in the package ([#1028](https://github.com/ministryofjustice/moj-frontend/issues/1028)) ([c4f2d6f](https://github.com/ministryofjustice/moj-frontend/commit/c4f2d6f0103baa93338e8a044f4b655587f05990)), closes [#1024](https://github.com/ministryofjustice/moj-frontend/issues/1024)
+
 ## [3.2.1](https://github.com/ministryofjustice/moj-frontend/compare/v3.2.0...v3.2.1) (2024-12-12)
 
 

@@ -102,10 +102,10 @@
 }
 
 pre {
-  @include govuk-responsive-margin(4, "bottom");
-  background: #f8f8f8; // Matches _higlight.scss
+  @include govuk-responsive-margin(6, "bottom");
+  background: #f7f7f7;
   font-size: 16px;
-  margin: 0;
+  margin: govuk-spacing(6);
   padding: govuk-spacing(3);
   position: relative;
   overflow: auto;

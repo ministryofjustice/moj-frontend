@@ -21,6 +21,23 @@ COPY webpack.config.js webpack.config.js
 
 RUN ENV="staging" npm run build:docs
 
+FROM base AS preview-build
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+COPY .husky/install.mjs .husky/install.mjs
+RUN npm ci
+
+COPY docs docs
+COPY src src
+COPY package package
+COPY .eleventy.js .eleventy.js
+COPY gulp gulp
+COPY gulpfile.js gulpfile.js
+COPY README.md README.md
+COPY webpack.config.js webpack.config.js
+
+RUN ENV="staging" npm run build:docs
+
 FROM base AS production-build
 RUN apt-get -y install git
 ARG GITHUB_DEPLOY_KEY
@@ -42,6 +59,12 @@ EXPOSE 3000
 COPY docker/htpasswd /etc/nginx/.htpasswd
 COPY docker/nginx-staging.conf /etc/nginx/conf.d/default.conf
 COPY --from=staging-build /app/public /usr/share/nginx/html
+
+FROM nginxinc/nginx-unprivileged:alpine AS preview
+EXPOSE 3000
+COPY docker/htpasswd-preview /etc/nginx/.htpasswd
+COPY docker/nginx-preview.conf /etc/nginx/conf.d/default.conf
+COPY --from=preview-build /app/public /usr/share/nginx/html
 
 FROM nginxinc/nginx-unprivileged:alpine AS production
 EXPOSE 3000

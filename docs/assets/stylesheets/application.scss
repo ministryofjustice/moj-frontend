@@ -13,6 +13,7 @@ $govuk-assets-path: "../" !default;
 @import "node_modules/highlight.js/scss/github.scss";
 
 // Custom documentation components
+@import "./components/accordions";
 @import "./components/back-to-top";
 @import "./components/cookie-banner";
 @import "./components/copy-button";
