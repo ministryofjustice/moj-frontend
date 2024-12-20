@@ -1,0 +1,55 @@
+name: Deploy a tagged PR for preview
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, labeled]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  ECR_NAME: ${{ secrets.ECR_NAME }}
+  KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
+  KUBE_NAMESPACE: ${{ secrets.KUBE_NAMESPACE }}
+
+jobs:
+  push-to-preview:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
+    if: contains(github.event.pull_request.labels.*.name, 'preview:request') || contains(github.event.pull_request.labels.*.name, 'preview:active')
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
+          aws-region: ${{ vars.ECR_REGION }}
+      - uses: aws-actions/amazon-ecr-login@v2
+        id: login-ecr
+      - run: |
+          docker build --target=preview -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+          cat kubernetes-deploy-preview.tpl | envsubst > kubernetes-deploy-preview.yaml
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: ${{ vars.ECR_REPOSITORY }}
+          IMAGE_TAG: ${{ github.sha }}
+          BRANCH: ${{ github.head_ref }}
+      - run: |
+          echo "${KUBE_CERT}" > ca.crt
+          kubectl config set-cluster ${KUBE_CLUSTER} --certificate-authority=./ca.crt --server=https://${KUBE_CLUSTER}
+          kubectl config set-credentials deploy-user --token=${KUBE_TOKEN}
+          kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${KUBE_NAMESPACE}
+          kubectl config use-context ${KUBE_CLUSTER}
+          kubectl -n ${KUBE_NAMESPACE} apply -f kubernetes-deploy-preview.yaml
+        env:
+          KUBE_CERT: ${{ secrets.KUBE_CERT }}
+          KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
+          KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
+      - name: Update PR with success
+        run: |
+          echo -e "🚀 Deployed to preview environment! If this is the first deploy, you may have to wait a few minutes for your preview site to be ready on the following URL:\n\n https://moj-frontend-${{ github.head_ref }}.apps.live.cloud-platform.service.justice.gov.uk\n\n**Username:** \`preview\`, **Password:** \`moj\`" > comment.txt
+          gh pr comment $PRNUM --body-file comment.txt
+          gh pr edit $PRNUM --remove-label "preview:request"
+          gh pr edit $PRNUM --add-label "preview:active"
+        env:
+          PRNUM: ${{ github.event.number }}

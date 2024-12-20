@@ -1,0 +1,14 @@
+{% extends "./base.njk" %}
+
+{% block content %}
+    <div class="app-layout__content">
+        <h1 class="govuk-heading-xl">
+          {% if not isIndex %}<span class="govuk-caption-xl">Components</span>{% endif %}
+          {{ title }}
+        </h1>
+        
+        {{ content | safe }}
+
+        {% include "./partials/get-help-and-contribute.njk" %}
+    </div>
+{% endblock %}

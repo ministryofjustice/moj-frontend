@@ -1,3 +1,17 @@
+# [3.3.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.2.2...v3.3.0) (2024-12-20)
+
+
+### Features
+
+* **tabbed-view-documents:** tabbed view documentation ([#989](https://github.com/ministryofjustice/moj-frontend/issues/989)) ([5cc6185](https://github.com/ministryofjustice/moj-frontend/commit/5cc6185290b927cb353795663e8c4e99fc0ca306))
+
+## [3.2.2](https://github.com/ministryofjustice/moj-frontend/compare/v3.2.1...v3.2.2) (2024-12-18)
+
+
+### Bug Fixes
+
+* include compiled css and js in the package ([#1028](https://github.com/ministryofjustice/moj-frontend/issues/1028)) ([c4f2d6f](https://github.com/ministryofjustice/moj-frontend/commit/c4f2d6f0103baa93338e8a044f4b655587f05990)), closes [#1024](https://github.com/ministryofjustice/moj-frontend/issues/1024)
+
 ## [3.2.1](https://github.com/ministryofjustice/moj-frontend/compare/v3.2.0...v3.2.1) (2024-12-12)
 
 

@@ -13,7 +13,6 @@ eleventyNavigation:
 
 {% example "/examples/date-picker", 590 %}
 
-
 ## Overview
 
 When users first open the date picker's calendar it'll show today's date. Users do not have to use this calendar view to select a date - they can also enter one directly into the text field.
@@ -43,7 +42,6 @@ Date pickers are fully navigable using a keyboard, but can be slow for keyboard-
 ### Similar or linked components
 
 There's also the ['Ask users for dates' pattern in the GOV.UK Design System](https://design-system.service.gov.uk/patterns/dates/).
-
 
 ## How to use
 
@@ -106,7 +104,6 @@ Follow the [GOV.UK Design System guidance on error messages](https://design-syst
 ###  Using multiple date pickers
 
 If you're using more than one date picker, give each text field its own error summary and message (even if the error is the same).
-
 
 ## Examples
 

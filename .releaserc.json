@@ -17,6 +17,12 @@
       "assets": [
         {"path": "dist/release.zip", "name": "release-${nextRelease.gitTag}.zip"}
       ]
-    }]
+    }],
+    ["semantic-release-plugin-update-version-in-files", {
+    "files": [
+      "package/moj/all.js"
+    ],
+    "placeholder": "0.0.0-development"
+  }]
   ]
 }
