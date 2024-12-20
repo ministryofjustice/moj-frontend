@@ -126,3 +126,5 @@ If you're using more than one date picker, give each text field its own error su
 {% endtab %}
 
 {% endtabs %}
+
+<hr />
