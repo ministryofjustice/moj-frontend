@@ -11,6 +11,10 @@ eleventyNavigation:
 
 <span class="govuk-caption-xl">The interruption card component pauses a user’s journey with important information.</span>
 
+{% tabs "Contents" %}
+
+{% tab "Overview" %}
+
 {% example "/examples/interruption-card", 590 %}
 
 ## Overview
@@ -113,6 +117,10 @@ There’s also the:
 - [GOV.UK Design System panel](https://design-system.service.gov.uk/components/panel/)
 - [GOV.UK Design System notification banner](https://design-system.service.gov.uk/components/notification-banner/)
 
+{% endtab %}
+
+{% tab "How to use" %}
+
 ## How to use
 
 ### What to add to it
@@ -170,3 +178,9 @@ If a lot of interruption cards are emerging in a service, it might be a sign tha
 Users completing the same journey multiple times in a service will become overexposed to a particular interruption card. This could be a poor user experience if the card is used to highlight something important and the user has already seen it several times.
 
 Consider limiting the amount of times a particular interruption card is shown to users at the same stage of the journey.
+
+{% endtab %}
+
+{% endtabs %}
+
+<hr />
