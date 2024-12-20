@@ -68,6 +68,17 @@ function Datepicker($module, config = {}) {
     "December",
   ];
 
+  this.monthLabelsShort = [
+    "Jan","Feb","Mar","Apr",
+    "May","Jun","Jul","Aug",
+    "Sep","Oct","Nov","Dec",
+  ];
+  this.monthLabelsWelsh = [
+    "Ionawr","Chwefror","Mawrth","Ebrill",
+    "Mai","Mehefin","Gorffennaf","Awst",
+    "Medi","Hydref","Tachwedd","Rhagfyr",
+  ];
+
   this.currentDate = new Date();
   this.currentDate.setHours(0, 0, 0, 0);
   this.calendarDays = [];
@@ -469,16 +480,59 @@ Datepicker.prototype.formattedDateFromString = function (
   dateString,
   fallback = new Date(),
 ) {
+  let year;
+  let month;
+  let day;
   let formattedDate = null;
-  // Accepts d/m/yyyy and dd/mm/yyyy
-  const dateFormatPattern = /(\d{1,2})([-/,. ])(\d{1,2})\2(\d{4})/;
 
-  if (!dateFormatPattern.test(dateString)) return fallback;
+  // Accepts d/m/yyyy and dd/mm/yyyy and dd/mm/yy
+  const dateFormatPattern = /(\d{1,2})(?:[-/,. ]{1,})(\d{1,2})(?:[-/,. ]{1,})(\d{2,4})/;
+  // Accepts yyyy-mm-dd only
+  const dateFormatPatternInternational = /(\d{4})(-)(\d{2})\2(\d{2})/;
+  // Accepts 29th February 1980 & 29 Feb 80 & 29 Chwefror 1980 (Welsh)
+  const dateFormatPatternMonthNames = /(\d{1,2})(?:|st|nd|rd|th|af|il|ydd|ed|fed|eg|ain)(?:[-/,. ]{1,})(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|(?:Nov|Dec)(?:ember)?|Ionawr|Chwefror|Mawrth|Ebrill|Mai|Mehefin|Gorffennaf|Awst|Medi|Hydref|Tachwedd|Rhagfyr)(?:[-/,.' ]{1,})(\d{2,4})/i;
+  // Accepts February 29th, 1980 & Feb 29, 80 & Chwefror 29ain, 1980 (Welsh)
+  const dateFormatPatternMonthNamesMDY = /(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|(?:Nov|Dec)(?:ember)?|Ionawr|Chwefror|Mawrth|Ebrill|Mai|Mehefin|Gorffennaf|Awst|Medi|Hydref|Tachwedd|Rhagfyr)(?:[-/,. ]{1,})(\d{1,2})(?:|st|nd|rd|th|af|il|ydd|ed|fed|eg|ain)(?:[-/,.' ]{1,})(\d{2,4})/i;
 
-  const match = dateString.match(dateFormatPattern);
-  const day = match[1];
-  const month = match[3];
-  const year = match[4];
+  if (dateFormatPatternInternational.test(dateString)) {
+    let dateArray = dateString.match(dateFormatPatternInternational);
+    year = dateArray[1];
+    month = dateArray[3];
+    day = dateArray[4];
+  } else if (dateFormatPatternMonthNames.test(dateString)) {
+    let dateArray = dateString.match(dateFormatPatternMonthNames);
+    day = dateArray[1];
+    month = dateArray[2];
+    year = dateArray[3];
+  } else if (dateFormatPatternMonthNamesMDY.test(dateString)) {
+    let dateArray = dateString.match(dateFormatPatternMonthNamesMDY);
+    month = dateArray[1];
+    day = dateArray[2];
+    year = dateArray[3];
+  } else if (dateFormatPattern.test(dateString)) {
+    let dateArray = dateString.match(dateFormatPattern);
+    day = dateArray[1];
+    month = dateArray[2];
+    year = dateArray[3];
+  } else {
+    return fallback;
+  }
+
+  if (!day || !month || !year) {
+    return fallback;
+  }
+
+  // Deal with 2-digit years, range from 1970 to 2069
+  if (year.length == 2 && Number(year)>=70) {
+    year = "19"+year;
+  } else if (year.length == 2) {
+    year = "20"+year;
+  }
+  
+  // Convert word months into number months
+  if (this.monthLabels.includes(month)) month = this.monthLabels.indexOf(month)+1;
+  if (this.monthLabelsShort.includes(month)) month = this.monthLabelsShort.indexOf(month)+1;
+  if (this.monthLabelsWelsh.includes(month)) month = this.monthLabelsWelsh.indexOf(month)+1;
 
   formattedDate = new Date(`${year}-${month}-${day}`);
   if (formattedDate instanceof Date && !isNaN(formattedDate)) {
