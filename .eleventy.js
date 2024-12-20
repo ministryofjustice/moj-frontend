@@ -154,9 +154,7 @@ module.exports = function (eleventyConfig) {
     const tabPanels = tabsStorage.map((tab, index) => {
       const isHidden = index === 0 ? '' : ' govuk-tabs__panel--hidden';
       return `
-      <div class="govuk-tabs__panel${isHidden}" id="${tabId(tab)}" role="tabpanel">
-        ${tab.content}
-      </div>
+      <div class="govuk-tabs__panel${isHidden}" id="${tabId(tab)}" role="tabpanel">${tab.content}</div>
     `.trim();
     }).join("").trim();
 
