@@ -27,7 +27,7 @@ MOJFrontend.SearchToggle = function (options) {
 MOJFrontend.SearchToggle.prototype.showMenu = function () {
   this.toggleButton.attr("aria-expanded", "true");
   this.container.removeClass("moj-js-hidden");
-  this.container.find("input").first().focus();
+  this.container.find("input").first().get(0).focus();
 };
 
 MOJFrontend.SearchToggle.prototype.hideMenu = function () {
