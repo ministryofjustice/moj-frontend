@@ -1,7 +1,9 @@
 ---
-layout: layouts/apply-service-pattern.njk
+layout: layouts/tabbed-content.njk
 title: ‘Apply’ service pattern prototype
 ---
+{% tabs "Contents" %}
+{% tab "Overview" %}
 
 ## Overview
 
@@ -39,6 +41,9 @@ Send your answers to [servicepatterns@justice.gov.uk](mailto:servicepatterns@jus
 ### Other resources for the ‘apply’ pattern
 
 You can also find [apply patterns in the GOV.UK Design System](https://design-system.service.gov.uk/patterns/).
+
+{% endtab %}
+{% tab "User needs" %}
 
 ## User needs
 
@@ -97,9 +102,12 @@ The cross-government work to identify an ‘apply’ service pattern followed a 
 - I need to be confident the data I'm accessing is accurate and up-to-date.
 - I need to have confidence that users have access to relevant guidance to make a decision because I cannot advise them on their specific circumstances.
 
+{% endtab %}
+{% tab "Stages and steps" %}
+
 ## Stages and steps  
 
-## User scenarios
+### User scenarios
 
 These are some scenarios you may have to design for as part of your service.
 
@@ -136,6 +144,9 @@ Unhappy Paths:
 - Application window closes
 - User is logged out of the service part way through their application due to time out
 
+{% endtab %}
+{% tab "Contribute" %}
+
 ## Contributing to MoJ service patterns
 
 You'll likely design multiple instances of potential service patterns when you develop new products or services.
@@ -143,3 +154,6 @@ You'll likely design multiple instances of potential service patterns when you d
 Contact <a href="mailto:martin.ford-downes@digital.justice.gov.uk">Martin Ford-Downes</a> if you have a potential service pattern idea or want to help us work on others.
 
 We welcome feedback from everyone, including from people outside of the Ministry of Justice.
+
+{% endtab %}
+{% endtabs %}
