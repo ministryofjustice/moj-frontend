@@ -1,37 +1,30 @@
 ---
-layout: layouts/content.njk
+layout: layouts/tabbed-content.njk
 subsection: Prototyping
-title:  Using the Figma Kit
+title:  Using the Figma Kits
 eleventyNavigation:
-  key: Using the Figma Kit
+  key: Using the Figma Kits
   parent: Prototyping
   order: 30
-  excerpt: "Using the MoJ Figma Kit."
+  excerpt: "Using the MoJ Figma Kits."
 ---
 
-The [MoJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=20-17040) helps people use Figma to create designs that are consistent with one another. This guide explains how to access the Figma Kit and keep it up-to-date.
+The MoJ Design System team maintains Figma Kits that help people use Figma to create designs that are consistent with one another.
 
 
-[Where to find the Figma Kits](#where-to-find-the-figma-kits)
+{% tabs "Contents" %}
 
-[If you work for the Ministry of Justice](#if-you-work-for-the-ministry-of-justice)
-
-[If you work outside of the Ministry of Justice](#if-you-work-outside-of-the-ministry-of-justice)
-
-[Help improve the Figma Kits](#help-improve-the-figma-kits)
-
-## Where to find the Figma Kits
-
-The MoJ Design System team maintains 3 Figma Kits for the GOV.UK and MoJ Design Systems:
-
-  - [MoJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=20-17040)
-  - [GOV Figma Kit](https://www.figma.com/design/cdmqMa73kZBDEC42spSVba/GOV-Figma-Kit?m=auto&node-id=20-17040&t=ZG7js0TWe3yzv5CD-1)
-  - [GOV & MoJ Styles](https://www.figma.com/design/rbzFtXbYqItzqtfE3fdCQ4/GOV-%26-MoJ-Styles?m=auto&node-id=20-17040&t=u1P8phs3qyRxZ4FQ-1)
-
+{% tab "MoJ Staff" %}
 
 ## If you work for the Ministry of Justice
 
-All 3 Figma Kits are activated by default in all new Figma files. This enables Figma prototypes to benefit from centrally maintained updates.
+3 Figma Kits are automatically added to all Figma files in the Ministry of Justice:
+
+- [MoJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=20-17040)
+- [GOV Figma Kit](https://www.figma.com/design/cdmqMa73kZBDEC42spSVba/GOV-Figma-Kit?m=auto&node-id=20-17040&t=ZG7js0TWe3yzv5CD-1)
+- [GOV & MoJ Styles](https://www.figma.com/design/rbzFtXbYqItzqtfE3fdCQ4/GOV-%26-MoJ-Styles?m=auto&node-id=20-17040&t=u1P8phs3qyRxZ4FQ-1)
+
+This enables Figma prototypes to benefit from centrally maintained updates.
 
 <div class="govuk-inset-text">
   Do not use the <a href="https://www.figma.com/community/file/946837271092540314">GOV.UK Design System Figma community file</a>.<br/>It's not updated or maintained by anyone.
@@ -67,12 +60,18 @@ When the Figma Kits are updated, you’ll be notified in Figma. To check for upd
 
 4. Either select the 'Update all' button, or select 'Update' for each component you want to update.
 
+{% endtab %}
+
+{% tab "Non-MoJ Staff" %}
 
 ## If you work outside of the Ministry of Justice
 
 ### Download and use the Figma Kits
 
-1. Open the Figma Kit you want to download and use.
+1. Open the Figma Kit you want to download and use:
+    - [MoJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=20-17040)
+    - [GOV Figma Kit](https://www.figma.com/design/cdmqMa73kZBDEC42spSVba/GOV-Figma-Kit?m=auto&node-id=20-17040&t=ZG7js0TWe3yzv5CD-1)
+    - [GOV & MoJ Styles](https://www.figma.com/design/rbzFtXbYqItzqtfE3fdCQ4/GOV-%26-MoJ-Styles?m=auto&node-id=20-17040&t=u1P8phs3qyRxZ4FQ-1)
 2. Select the Figma logo at the top of the left-hand sidebar and go to File > Save local copy.
 <p><img src="/assets/images/figma-guidance-download-kit.png" style="border:none" alt="A cropped view of the sidebar in the Figma app. The Figma logo has been selected and a menu has opened. The 'file' submenu has been opened and 'Save local copy...' is being hovered over."></p>
 
@@ -86,6 +85,9 @@ When the Figma Kits are updated, you’ll be notified in Figma. To check for upd
 3. Reload it into your Figma workspace as a library.
 4. Open your design files, and use the [swap libraries](https://help.figma.com/hc/en-us/articles/4404856784663-Swap-style-and-component-libraries) feature in Figma to replace all references to the outdated version of the MoJ Figma Kit. You can only use 'swap libraries' with a paid Figma licence. If you do not have one, [swap components](https://help.figma.com/hc/en-us/articles/360039150413-Swap-components-and-instances) individually instead.
 
+{% endtab %}
+
+{% tab "Help improve the Figma Kits" %}
 
 ## Help improve the Figma Kits
 
@@ -96,3 +98,7 @@ The MoJ Design System team would like to hear:
 - if you find a mistake on a Figma component (for example, the wrong font weight or spacing)
 
 You can [contact the MoJ Design System team](/help) to give us your feedback.
+
+{% endtab %}
+
+{% endtabs %}
