@@ -1,5 +1,5 @@
 ---
-layout: layouts/tabbed-content.njk
+layout: layouts/service-patterns.njk
 title: ‘Apply’ service pattern prototype
 ---
 {% tabs "Contents" %}
@@ -111,7 +111,7 @@ The cross-government work to identify an ‘apply’ service pattern followed a 
 
 These are some scenarios you may have to design for as part of your service.
 
-Happy paths:
+#### Happy paths:
 
 - Individual applying for themselves
 - Individual applying on behalf of someone else
@@ -120,7 +120,7 @@ Happy paths:
 - Staff user applying for something on behalf of an individual, business or organisation
 - Multiple user types contributing to the same application
 
-Variations:
+#### Variations:
 
 - Additional application information is needed before it can be processed
 - Evidence in support of application needs to be resent because it's deemed unsuitable
@@ -132,7 +132,7 @@ Variations:
 - On checking their answers, user changes something which significantly affects subsequent answers
 - User requires point of contact for support
 
-Unhappy Paths:
+#### Unhappy Paths:
 
 - User does not understand what they need to complete application
 - User does not meet the eligibility threshold or criteria
