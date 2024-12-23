@@ -1,11 +1,11 @@
 ---
 layout: layouts/tabbed-content.njk
 subsection: Prototyping
-title:  Using the Figma Kits
+title:  Setting up Figma prototypes
 eleventyNavigation:
-  key: Using the Figma Kits
+  key: Setting up Figma prototypes
   parent: Prototyping
-  order: 30
+  order: 10
   excerpt: "Using the MoJ Figma Kits."
 ---
 
