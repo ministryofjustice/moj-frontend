@@ -33,9 +33,9 @@ Each pattern must be unique and useful so that multiple products can use it.
 
 ## Suggested MoJ service patterns
 
-We are developing our first service pattern right now.
+A cross-government team is [developing a prototype to help teams design an ‘apply’ journey](/service-patterns/apply/) in a service.
 
-MoJ designers have already identified around 25 potential service patterns, such as:
+Also, MoJ designers have identified around 25 potential service patterns, such as:
 
 - book, view, and manage appointments
 - apply for something and track progress
