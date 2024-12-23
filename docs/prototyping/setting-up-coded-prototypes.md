@@ -1,12 +1,12 @@
 ---
 layout: layouts/get-started.njk
 subsection: Prototyping
-title: Create a prototype
+title: Setting up coded prototypes
 redirect_from: /get-started/prototyping
 eleventyNavigation:
-  key: Create a prototype
+  key: Setting up coded prototypes
   parent: Prototyping
-  order: 10
+  order: 20
   excerpt: "This guide explains how to create prototypes using the MoJ Design System and GOV.UK Prototype Kit."
 ---
 

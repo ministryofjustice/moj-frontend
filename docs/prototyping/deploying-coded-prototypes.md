@@ -1,12 +1,12 @@
 ---
 layout: layouts/get-started.njk
 subsection: Prototyping
-title:  Deploy a prototype
+title:  Deploying coded prototypes
 redirect_from: /get-started/deploying-your-prototype
 eleventyNavigation:
-  key: Deploy a prototype
+  key: Deploying coded prototypes
   parent: Prototyping
-  order: 20
+  order: 30
   excerpt: "Deploy your prototype using MoJ Cloud Platform."
 ---
 
