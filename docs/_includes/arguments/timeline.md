@@ -4,6 +4,7 @@
 | ---------- | ------ | -------- | --------------------------------------------------------------------------------- |
 | classes    | string | No       | Classes to add to the timeline's container.                                       |
 | attributes | object | No       | HTML attributes (for example data attributes) to add to the timeline's container. |
+| headingLevel | object | No       | Defaults to 2 (`<h2>`). |
 
 ### Items
 
