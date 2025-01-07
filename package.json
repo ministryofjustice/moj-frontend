@@ -18,7 +18,8 @@
     "test:js": "jest src/",
     "test:sass": "sass -q -I . gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
     "watch:11ty": "ENV=dev eleventy --input=./docs --output=public --serve",
-    "watch:package": "ENV=dev gulp watch:dev"
+    "watch:package": "ENV=dev gulp watch:dev",
+    "watch:app": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "@11ty/eleventy-navigation": "^0.3.5",
     "clipboard": "^2.0.8",
     "esbuild": "^0.23.0",
+    "express": "^4.21.2",
     "govuk-frontend": "^5.4.1",
     "gulp-cache": "^1.1.3",
     "gulp-concat": "^2.6.1",
@@ -96,6 +98,7 @@
     "markdown-it-anchor": "^8.0.0",
     "mini-css-extract-plugin": "^2.0.0",
     "mock-match-media": "^0.4.3",
+    "nodemon": "^3.1.9",
     "npm-run-all2": "^6.0.0",
     "postcss": "^8.4.31",
     "semantic-release": "^23.0.0"

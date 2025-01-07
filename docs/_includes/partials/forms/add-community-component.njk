@@ -1,0 +1,58 @@
+{%- from "govuk/components/input/macro.njk" import govukInput -%}
+{%- from "govuk/components/character-count/macro.njk" import govukCharacterCount -%}
+{%- from "govuk/components/textarea/macro.njk" import govukTextarea -%}
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
+
+<form method="post" action="http://localhost:3000/submit-community-component">
+    {{ govukInput({
+        label: {
+            text: "What is the name of the component?",
+            classes: "govuk-label--m",
+            isPageHeading: true
+        },
+        id: "component-name",
+        name: "componentName"
+    }) }}
+
+    {{ govukCharacterCount({
+        name: "overviewDescription",
+        id: "with-hint",
+        maxlength: 200,
+        label: {
+            text: "Overview description of the component",
+            classes: "govuk-label--m",
+            isPageHeading: true
+        }
+    }) }}
+
+    {{ govukTextarea({
+        name: "codeExample",
+        id: "code-example",
+        label: {
+            text: "Can you provide a code snippet?",
+            classes: "govuk-label--m",
+            isPageHeading: true
+        },
+        hint: {
+            text: "Provide a code example"
+        }
+    }) }}
+
+    <h2>Upload a file</h2>
+
+    {{ govukFileUpload({
+        id: "screenshot",
+        name: "screenshot",
+        label: {
+            text: "Upload a screenshot of your component"
+        }
+    }) }}
+
+    <div class="moj-button-action">
+        {{ govukButton({
+            text: 'Submit component'
+        }) }}
+    </div>
+</form>
