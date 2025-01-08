@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const createGist = require('./middleware/github-gist');
+const sendEmail = require('./middleware/notify-email');
 
 app.use(express.json());
 
@@ -11,6 +12,7 @@ app.get('/submit-community-component', (req, res) => {
 });
 app.post('/submit-community-component', createGist, (req, res) => {
   console.log('Submit community component', req.body);
+  sendEmail()
   res.redirect(`/submit-community-component`);
 })
 

@@ -51,6 +51,7 @@
     "gulp-umd": "^2.0.0",
     "moment": "^2.29.4",
     "node-fetch": "2.7.0",
+    "notifications-node-client": "^8.2.1",
     "nunjucks": "^3.2.3",
     "require-dir": "^1.2.0",
     "sass": "^1.79.3",
