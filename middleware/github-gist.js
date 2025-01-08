@@ -1,7 +1,6 @@
 const fetch = require('node-fetch');
 const { v4: uuidv4 } = require('uuid');
-
-const GITHUB_TOKEN = '';
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 async function createGist(req, res, next) {
   const { componentName, codeExample } = req.body;
