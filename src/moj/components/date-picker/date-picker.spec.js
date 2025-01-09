@@ -195,12 +195,12 @@ describe("Date picker with defaults", () => {
 
   test("can navigate back in time", async () => {
     const today = dayjs();
-    const previousMonth = dayjs().subtract(1, 'month')
-    const previousYear = previousMonth.subtract(1, 'year')
+    const previousMonth = dayjs().subtract(1, "month");
+    const previousYear = previousMonth.subtract(1, "year");
 
-    const currentTitle = `${today.format('MMMM YYYY')}`;
-    const previousMonthTitle = `${previousMonth.format('MMMM YYYY')}`;
-    const previousYearTitle = `${previousYear.format('MMMM YYYY')}`;
+    const currentTitle = `${today.format("MMMM YYYY")}`;
+    const previousMonthTitle = `${previousMonth.format("MMMM YYYY")}`;
+    const previousYearTitle = `${previousYear.format("MMMM YYYY")}`;
 
     await user.click(calendarButton);
     let prevMonthButton = getByText(dialog, "Previous month");
@@ -215,12 +215,12 @@ describe("Date picker with defaults", () => {
 
   test("can navigate forward in time", async () => {
     const today = dayjs();
-    const nextMonth = dayjs().add(1, 'month')
-    const nextYear = nextMonth.add(1, 'year')
+    const nextMonth = dayjs().add(1, "month");
+    const nextYear = nextMonth.add(1, "year");
 
-    const currentTitle = `${today.format('MMMM YYYY')}`;
-    const nextMonthTitle = `${nextMonth.format('MMMM YYYY')}`;
-    const nextYearTitle = `${nextYear.format('MMMM YYYY')}`;
+    const currentTitle = `${today.format("MMMM YYYY")}`;
+    const nextMonthTitle = `${nextMonth.format("MMMM YYYY")}`;
+    const nextYearTitle = `${nextYear.format("MMMM YYYY")}`;
 
     await user.click(calendarButton);
     let nextMonthButton = getByText(dialog, "Next month");
@@ -728,7 +728,7 @@ describe("button menu JS API", () => {
         }
         datesToExclude = datesToExclude.map((date) => date.startOf("day"));
         config = {
-          excludedDates: `${datesToExclude[0].format("D/M/YYYY")}-${datesToExclude[datesToExclude.length-1].format("D/M/YYYY")}`,
+          excludedDates: `${datesToExclude[0].format("D/M/YYYY")}-${datesToExclude[datesToExclude.length - 1].format("D/M/YYYY")}`,
         };
         const datePicker = new MOJFrontend.DatePicker(component, config);
         datePicker.init();
@@ -775,13 +775,13 @@ describe("button menu JS API", () => {
       const config = { leadingZeros: false };
       new MOJFrontend.DatePicker(component, config).init();
       calendarButton = screen.getByRole("button", { name: "Choose date" });
-      const dateToSelect = screen.queryByText("9")?.closest("button");
-      const selectedDate = dayjs().date(9);
+      const dateToSelect = dayjs().date(9);
+      const dateButton = screen.getByTestId(dateToSelect.format("D/M/YYYY"));
 
       await user.click(calendarButton);
-      await user.click(dateToSelect);
+      await user.click(dateButton);
 
-      expect(input).toHaveValue(selectedDate.format("D/M/YYYY"));
+      expect(input).toHaveValue(dateToSelect.format("D/M/YYYY"));
     });
 
     test("with leadingZeros true", async () => {
@@ -790,13 +790,13 @@ describe("button menu JS API", () => {
       const config = { leadingZeros: true };
       new MOJFrontend.DatePicker(component, config).init();
       calendarButton = screen.getByRole("button", { name: "Choose date" });
-      const dateToSelect = screen.queryByText("9")?.closest("button");
-      const selectedDate = dayjs().date(9);
+      const dateToSelect = dayjs().date(9);
+      const dateButton = screen.getByTestId(dateToSelect.format("DD/MM/YYYY"));
 
       await user.click(calendarButton);
-      await user.click(dateToSelect);
+      await user.click(dateButton);
 
-      expect(input).toHaveValue(selectedDate.format("DD/MM/YYYY"));
+      expect(input).toHaveValue(dateToSelect.format("DD/MM/YYYY"));
     });
 
     test.skip.failing("minDate", async () => {
@@ -880,7 +880,7 @@ describe("button menu JS API", () => {
         let daysToExclude = datesToExclude.map((date) => date.date());
         const lastDayinMonth = dayjs().endOf("month").date();
         config = {
-          excludedDates: `${datesToExclude[0].format("D/M/YYYY")}-${datesToExclude[datesToExclude.length-1].format("D/M/YYYY")}`,
+          excludedDates: `${datesToExclude[0].format("D/M/YYYY")}-${datesToExclude[datesToExclude.length - 1].format("D/M/YYYY")}`,
         };
 
         datePicker = new MOJFrontend.DatePicker(component, config).init();
@@ -962,13 +962,13 @@ describe("Datepicker data-attributes API", () => {
 
     input = screen.getByLabelText("Date");
     calendarButton = screen.getByRole("button", { name: "Choose date" });
-    const dateToSelect = screen.queryByText("9")?.closest("button");
-    const selectedDate = dayjs().date(9);
+    const dateToSelect = dayjs().date(9);
+    const dateButton = screen.getByTestId(dateToSelect.format("D/M/YYYY"));
 
     await user.click(calendarButton);
-    await user.click(dateToSelect);
+    await user.click(dateButton);
 
-    expect(input).toHaveValue(selectedDate.format("D/M/YYYY"));
+    expect(input).toHaveValue(dateToSelect.format("D/M/YYYY"));
   });
 
   test("with leadingZeros true", async () => {
@@ -977,13 +977,13 @@ describe("Datepicker data-attributes API", () => {
 
     input = screen.getByLabelText("Date");
     calendarButton = screen.getByRole("button", { name: "Choose date" });
-    const dateToSelect = screen.queryByText("9")?.closest("button");
-    const selectedDate = dayjs().date(9);
+    const dateToSelect = dayjs().date(9);
+    const dateButton = screen.getByTestId(dateToSelect.format("DD/MM/YYYY"));
 
     await user.click(calendarButton);
-    await user.click(dateToSelect);
+    await user.click(dateButton);
 
-    expect(input).toHaveValue(selectedDate.format("DD/MM/YYYY"));
+    expect(input).toHaveValue(dateToSelect.format("DD/MM/YYYY"));
   });
 
   test.skip.failing("minDate", async () => {
@@ -1072,7 +1072,7 @@ describe("Datepicker data-attributes API", () => {
       let daysToExclude = datesToExclude.map((date) => date.date());
       const lastDayinMonth = dayjs().endOf("month").date();
       component = createComponent({
-        excludedDates: `${datesToExclude[0].format("D/M/YYYY")}-${datesToExclude[datesToExclude.length-1].format("D/M/YYYY")}`,
+        excludedDates: `${datesToExclude[0].format("D/M/YYYY")}-${datesToExclude[datesToExclude.length - 1].format("D/M/YYYY")}`,
       });
       datePicker = new MOJFrontend.DatePicker(component).init();
       calendarButton = screen.getByRole("button", { name: "Choose date" });
