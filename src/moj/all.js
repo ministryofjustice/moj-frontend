@@ -61,7 +61,7 @@ MOJFrontend.initAll = function (options) {
     });
   });
 
-  const $datepickers = document.querySelectorAll('[data-module="moj-date-picker"]')
+  const $datepickers = scope.querySelectorAll('[data-module="moj-date-picker"]')
   MOJFrontend.nodeListForEach($datepickers, function ($datepicker) {
     new MOJFrontend.DatePicker($datepicker, {}).init();
   })
