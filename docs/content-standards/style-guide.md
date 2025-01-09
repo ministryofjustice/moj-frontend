@@ -324,6 +324,10 @@ It is often written as pin or Pin in prisons, but PIN is the correct format.
 
 Always use 'preferred name', not 'working name' as it's called in NOMIS.
 
+### PNC number  
+
+An identity number assigned to a person in the Police National Computer (PNC). Use ‘PNC number’. This is more well known than the full version.  
+
 ### prison number
 
 Always use ‘prison number’ when referring to the unique number given to someone when they arrive at prison. This term is widely used and understood by staff in prisons. It may need explaining in content or services for the public.
