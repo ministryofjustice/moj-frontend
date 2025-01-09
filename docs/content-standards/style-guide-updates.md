@@ -17,13 +17,13 @@ title: Content style guide updates
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header" aria-sort="none">Update</th>
-      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter" aria-sort="ascending">Date</th>
+      <th scope="col" class="govuk-table__header govuk-!-width-one-quarter" aria-sort="descending">Date</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
       <td class="govuk-table__cell"><a href="/content-standards/style-guide#pnc-number"><b>PNC number</b></a><br/>New entry</td>
-      <td class="govuk-table__cell" data-sort-value="20241213">9 January 2025</td>
+      <td class="govuk-table__cell" data-sort-value="20251209">9 January 2025</td>
     </tr>
   </tbody>
 </table>
