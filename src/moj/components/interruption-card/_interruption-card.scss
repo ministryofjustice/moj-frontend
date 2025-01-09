@@ -14,6 +14,13 @@
   color: govuk-colour("white");
 }
 
+// If $govuk-global-styles is true, we need to override the color and size on elements
+// within the body class directly
+.moj-interruption-card__body > * {
+  @include govuk-font-size($size: 24);
+  color: govuk-colour("white");
+}
+
 .moj-interruption-card__body:last-child {
   margin-bottom: 0;
 }
