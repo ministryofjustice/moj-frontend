@@ -44,6 +44,12 @@ jobs:
         node-version: [14.x, 16.x, 18.x, 20.x, 21.x, 22.x]
 
     steps:
+    - name: Set commit status as pending
+      uses: myrotvorets/set-commit-status-action@master
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        status: pending
+        context: deploy tests
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
@@ -59,6 +65,13 @@ jobs:
         path: package
     - name: Test that sass can be compiled
       run: npm run test:sass
+    - name: Set final commit status
+      uses: myrotvorets/set-commit-status-action@master
+      if: always()
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        status: ${{ job.status }}
+        context: deploy tests
 
   deploy:
     runs-on: ubuntu-latest
