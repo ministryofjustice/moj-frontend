@@ -19,7 +19,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Updated: 9 January 2025
+Last updated: 9 January 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
