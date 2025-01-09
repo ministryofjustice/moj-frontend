@@ -61,13 +61,6 @@ MOJFrontend.initAll = function (options) {
     });
   });
 
-  var $sortableTables = scope.querySelectorAll('[data-module="moj-sortable-table"]');
-  MOJFrontend.nodeListForEach($sortableTables, function ($table) {
-    new MOJFrontend.SortableTable({
-      table: $table
-    });
-  });
-
   const $datepickers = document.querySelectorAll('[data-module="moj-date-picker"]')
   MOJFrontend.nodeListForEach($datepickers, function ($datepicker) {
     new MOJFrontend.DatePicker($datepicker, {}).init();
