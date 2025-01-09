@@ -44,7 +44,7 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         status: pending
-        context: publish tests
+        context: Tests
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
@@ -60,17 +60,23 @@ jobs:
         path: package
     - name: Test that sass can be compiled
       run: npm run test:sass
+
+  result:
+    runs-on: ubuntu-latest
+    needs: [test]
+    if: always()
+    steps:
     - name: Set final commit status
       uses: myrotvorets/set-commit-status-action@master
-      if: always()
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        status: ${{ job.status }}
-        context: publish tests
+        status: ${{ needs.test.result }}
+        context: Tests
+
 
   publish:
     runs-on: ubuntu-latest
-    needs: [build, test]
+    needs: [result]
     if: github.event_name == 'push'
 
     steps:
