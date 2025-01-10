@@ -1,0 +1,8 @@
+$govuk-page-width: 1220px !default;
+$govuk-assets-path: "../" !default;
+$govuk-global-styles: false;
+
+// GOV.UK Frontend
+@import "node_modules/govuk-frontend/dist/govuk/all";
+
+

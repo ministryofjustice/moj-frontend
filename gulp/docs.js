@@ -56,7 +56,7 @@ gulp.task(
 gulp.task(
   "docs:styles", () => {
     return gulp
-      .src("docs/assets/stylesheets/application.scss")
+      .src("docs/assets/stylesheets/*.scss")
       .pipe(sass({
         outputStyle: (process.env.ENV == 'dev' ? "expanded" : "compressed"),
       }))
