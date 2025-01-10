@@ -720,11 +720,15 @@ describe("button menu JS API", () => {
       });
 
       test("excluding a range of days", () => {
-        let datesToExclude;
+        let datesToExclude = [];
         if (dayjs().date() < 15) {
-          datesToExclude = getDateRangeInCurrentMonth(18, 20);
+          datesToExclude.push(dayjs().date(18));
+          datesToExclude.push(dayjs().date(19));
+          datesToExclude.push(dayjs().date(20));
         } else {
-          datesToExclude = getDateRangeInCurrentMonth(3, 5);
+          datesToExclude.push(dayjs().date(3));
+          datesToExclude.push(dayjs().date(4));
+          datesToExclude.push(dayjs().date(5));
         }
         datesToExclude = datesToExclude.map((date) => date.startOf("day"));
 
@@ -742,13 +746,17 @@ describe("button menu JS API", () => {
       });
 
       test("excluding individual dates and a range of days", () => {
-        let datesToExclude;
+        let datesToExclude = [];
         if (dayjs().date() < 15) {
-          datesToExclude = getDateRangeInCurrentMonth(18, 20);
+          datesToExclude.push(dayjs().date(18));
+          datesToExclude.push(dayjs().date(19));
+          datesToExclude.push(dayjs().date(20));
           datesToExclude.push(dayjs().date(22));
           datesToExclude.push(dayjs().date(25));
         } else {
-          datesToExclude = getDateRangeInCurrentMonth(3, 5);
+          datesToExclude.push(dayjs().date(3));
+          datesToExclude.push(dayjs().date(4));
+          datesToExclude.push(dayjs().date(5));
           datesToExclude.push(dayjs().date(7));
           datesToExclude.push(dayjs().date(11));
         }
