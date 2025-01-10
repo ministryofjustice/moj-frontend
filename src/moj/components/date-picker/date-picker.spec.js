@@ -754,7 +754,7 @@ describe("button menu JS API", () => {
         }
         datesToExclude = datesToExclude.map((date) => date.startOf("day"));
         config = {
-          excludedDates: `${datesToExclude[0].format("D/M/YYYY")}-${datesToExclude[2].format("D/M/YYYY")} ${datesToExclude[3].format("D/M/YYYY")} ${datesToExclude[4].format("D/M/YYYY")} `,
+          excludedDates: `${datesToExclude[0].format("D/M/YYYY")}-${datesToExclude[2].format("D/M/YYYY")} ${datesToExclude[3].format("D/M/YYYY")} ${datesToExclude[4].format("D/M/YYYY")}`,
         };
         const datePicker = new MOJFrontend.DatePicker(component, config);
         datePicker.init();
