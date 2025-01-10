@@ -102,19 +102,6 @@ const getDateInCurrentMonth = (excluding = []) => {
   return days[Math.floor(Math.random() * days.length)];
 };
 
-const getDateRangeInCurrentMonth = (startDay, endDay) => {
-  let date = dayjs().date(startDay); // Convert the start date to a Day.js object
-  const endDate = dayjs().date(endDay + 1);
-  const dates = [];
-
-  while (date.isBefore(endDate)) {
-    dates.push(date);
-    date = date.add(1, "day");
-  }
-
-  return dates;
-};
-
 const range = (start, end) => {
   return [...Array(end - start + 1).keys()].map((x) => x + start);
 };
@@ -767,7 +754,6 @@ describe("button menu JS API", () => {
         const datePicker = new MOJFrontend.DatePicker(component, config);
         datePicker.init();
 
-        // expect(datePicker.excludedDates.length).toEqual(5);
         expect(datePicker.excludedDates).toStrictEqual(
           datesToExclude.map((date) => date.toDate()),
         );
@@ -880,11 +866,15 @@ describe("button menu JS API", () => {
       });
 
       test("excluding a range of days", async () => {
-        let datesToExclude;
+        let datesToExclude = [];
         if (dayjs().date() < 15) {
-          datesToExclude = getDateRangeInCurrentMonth(18, 20);
+          datesToExclude.push(dayjs().date(18));
+          datesToExclude.push(dayjs().date(19));
+          datesToExclude.push(dayjs().date(20));
         } else {
-          datesToExclude = getDateRangeInCurrentMonth(3, 5);
+          datesToExclude.push(dayjs().date(3));
+          datesToExclude.push(dayjs().date(4));
+          datesToExclude.push(dayjs().date(5));
         }
         datesToExclude = datesToExclude.map((date) => date.startOf("day"));
         let daysToExclude = datesToExclude.map((date) => date.date());
@@ -1072,11 +1062,15 @@ describe("Datepicker data-attributes API", () => {
     });
 
     test("excluding a range of days", async () => {
-      let datesToExclude;
+      let datesToExclude = [];
       if (dayjs().date() < 15) {
-        datesToExclude = getDateRangeInCurrentMonth(18, 20);
-      } else {
-        datesToExclude = getDateRangeInCurrentMonth(3, 5);
+          datesToExclude.push(dayjs().date(18));
+          datesToExclude.push(dayjs().date(19));
+          datesToExclude.push(dayjs().date(20));
+        } else {
+          datesToExclude.push(dayjs().date(3));
+          datesToExclude.push(dayjs().date(4));
+          datesToExclude.push(dayjs().date(5));
       }
       datesToExclude = datesToExclude.map((date) => date.startOf("day"));
       let daysToExclude = datesToExclude.map((date) => date.date());
