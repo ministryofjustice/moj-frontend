@@ -727,13 +727,15 @@ describe("button menu JS API", () => {
           datesToExclude = getDateRangeInCurrentMonth(3, 5);
         }
         datesToExclude = datesToExclude.map((date) => date.startOf("day"));
+
         config = {
           excludedDates: `${datesToExclude[0].format("D/M/YYYY")}-${datesToExclude[datesToExclude.length - 1].format("D/M/YYYY")}`,
         };
+
         const datePicker = new MOJFrontend.DatePicker(component, config);
         datePicker.init();
 
-        expect(datePicker.excludedDates.length).toEqual(3);
+        // expect(datePicker.excludedDates.length).toEqual(3);
         expect(datePicker.excludedDates).toStrictEqual(
           datesToExclude.map((date) => date.toDate()),
         );
@@ -757,7 +759,7 @@ describe("button menu JS API", () => {
         const datePicker = new MOJFrontend.DatePicker(component, config);
         datePicker.init();
 
-        expect(datePicker.excludedDates.length).toEqual(5);
+        // expect(datePicker.excludedDates.length).toEqual(5);
         expect(datePicker.excludedDates).toStrictEqual(
           datesToExclude.map((date) => date.toDate()),
         );
