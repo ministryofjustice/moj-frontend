@@ -11,9 +11,10 @@ A cross-government team has developed a prototype to help teams design an ‘app
 
 This prototype was created from multiple ‘apply’ journey examples in DWP, MoJ, DfE, Defra and HMRC. These services were designed for different users and contexts, but the prototype shows the common and reusable parts of them.
 
-The prototype has 2 parts:
+The prototype has 3 parts:
 
 - user needs for internal and public users (for teams to validate)
+- the stages and steps (for people applying and for organisations managing applications) 
 - user scenarios
 
 This is part of [work to develop service patterns across government](/service-patterns/).  
@@ -107,11 +108,75 @@ The cross-government work to identify an ‘apply’ service pattern followed a 
 
 ## Stages and steps  
 
-### User scenarios
+Services can be broken down into stages, for example prepare to apply. Each stage has several steps, for example check eligibility. There are stages and steps in this prototype for people applying and for the organisations managing these applications.
 
-These are some scenarios you may have to design for as part of your service.
+Some of the steps are marked as low confidence. We're looking for feedback to validate whether these should be accepted.  
 
-#### Happy paths:
+### People applying: stages and steps
+
+#### Prepare to apply
+- Find the right application form
+- Get reassurance about application process
+- Check eligibility (lower confidence)
+
+#### Apply
+- Enter application information  
+- Enter third party information
+- Get help  
+- Pause application
+- Return to application
+- Finish and submit application
+- Accept declaration and privacy policy (lower confidence)
+- Check existing information (lower confidence)
+- Get application fee request (lower confidence)
+- Pay fee (lower confidence)
+
+#### Give supporting evidence
+- Get notification that supporting evidence is needed
+- Gather supporting evidence
+- Give supporting evidence
+- Get confirmation that evidence has been submitted
+
+#### Await outcome
+- View application
+- Get progress updates
+
+### Organisations managing applications: stages and steps  
+
+#### Prepare for application
+- Access reference materials
+
+#### Meet the person applying
+- Confirm user's identity
+- Confirm user's eligibility
+
+#### Assess applications
+- Establish third party information
+- View application information  
+- Ask questions
+- Capture application information
+- Capture citizen information change
+- Play back application
+- Resume application
+
+#### Collect supporting evidence
+- Understand the purpose of supporting evidence  
+- Communicate the purpose of supporting evidence  
+- Capture supporting evidence   
+
+#### Finish application
+- Receive application
+- Communicate next steps
+- Share citizen information change
+
+{% endtab %}
+{% tab "User scenarios" %}
+
+## User scenarios
+
+These are some scenarios you may have to design for your service.
+
+### Happy paths:
 
 - Individual applying for themselves
 - Individual applying on behalf of someone else
@@ -132,7 +197,7 @@ These are some scenarios you may have to design for as part of your service.
 - On checking their answers, user changes something which significantly affects subsequent answers
 - User requires point of contact for support
 
-#### Unhappy Paths:
+### Unhappy Paths:
 
 - User does not understand what they need to complete application
 - User does not meet the eligibility threshold or criteria
@@ -151,7 +216,7 @@ These are some scenarios you may have to design for as part of your service.
 
 You'll likely design multiple instances of potential service patterns when you develop new products or services.
 
-Contact <a href="mailto:martin.ford-downes@digital.justice.gov.uk">Martin Ford-Downes</a> if you have a potential service pattern idea or want to help us work on others.
+Contact <a href="mailto:martin.ford-downes@digital.justice.gov.uk">Martin Ford-Downes</a> if you have a service pattern idea or want to help us work on others.
 
 We welcome feedback from everyone, including from people outside of the Ministry of Justice.
 
