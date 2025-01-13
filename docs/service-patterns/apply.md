@@ -216,7 +216,7 @@ These are some scenarios you may have to design for your service.
 
 You'll likely design multiple instances of potential service patterns when you develop new products or services.
 
-Contact <a href="mailto:martin.ford-downes@digital.justice.gov.uk">Martin Ford-Downes</a> if you have a potential service pattern idea or want to help with work on others.
+Contact <a href="mailto:martin.ford-downes@digital.justice.gov.uk">Martin Ford-Downes</a> if you have a service pattern idea or want to help us work on others.
 
 We welcome feedback from everyone, including from people outside of the Ministry of Justice.
 
