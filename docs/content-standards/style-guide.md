@@ -14,6 +14,17 @@ eleventyNavigation:
     This content style guide applies to services and guidance at MoJ. It should be used alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">style guide on GOV.UK</a>.
 </p>
 
+<p class="govuk-!-margin-bottom-0">
+First published: 18 December 2024
+</p>
+
+<p class="govuk-!-margin-bottom-0">
+Last updated: 9 January 2025
+</p>
+
+<p class="govuk-!-margin-bottom-6">
+<a href="/content-standards/style-guide-updates">View all updates</a>
+</p>
 
 {% accordion "style-guide" %}
 {% accordionSection "A" %}
@@ -323,6 +334,10 @@ It is often written as pin or Pin in prisons, but PIN is the correct format.
 <h3 class="govuk-heading-m" id="preferred-name">preferred name</h3>
 
 Always use 'preferred name', not 'working name' as it's called in NOMIS.
+
+### PNC number  
+
+An identity number assigned to a person in the Police National Computer (PNC). Use ‘PNC number’. This is more well known than the full version.  
 
 ### prison number
 

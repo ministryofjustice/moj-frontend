@@ -22,8 +22,15 @@
               content="Design your service using MoJ styles, components and patterns">
         <meta property="og:image"
               content="{{ 'assets/images/moj-opengraph-image-2024.png' | rev | url }}">
-        <link href="{{ 'assets/stylesheets/application.css' | rev | url }}"
+        {% if layout == "layouts/example.njk" %}
+            <link href="{{ 'assets/stylesheets/govuk-frontend.css' | rev | url }}"
+                  rel="stylesheet">
+            <link href="{{ 'assets/stylesheets/moj-frontend.css' | rev | url }}"
               rel="stylesheet">
+        {% else %}
+            <link href="{{ 'assets/stylesheets/application.css' | rev | url }}"
+              rel="stylesheet">
+        {% endif %}
         {% block pageStyles %}{% endblock %}
         <title>
             {% block title %}{{ title }} - MoJ Design System{% endblock %}
@@ -36,6 +43,7 @@
         <script type="module" src="{{ 'assets/javascript/all.js' | rev | url }}"></script>
     </head>
     <body class="govuk-template__body">
+
         <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
         {% block body %}
            <div>

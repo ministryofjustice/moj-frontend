@@ -1,3 +1,10 @@
+## [3.3.1](https://github.com/ministryofjustice/moj-frontend/compare/v3.3.0...v3.3.1) (2025-01-09)
+
+
+### Bug Fixes
+
+* text color in interruption card and initAll function updates ([#1062](https://github.com/ministryofjustice/moj-frontend/issues/1062)) ([c8a3800](https://github.com/ministryofjustice/moj-frontend/commit/c8a3800e958682e2eced781f4e5ccf6ea13c3528)), closes [#1059](https://github.com/ministryofjustice/moj-frontend/issues/1059) [#1060](https://github.com/ministryofjustice/moj-frontend/issues/1060) [#1061](https://github.com/ministryofjustice/moj-frontend/issues/1061)
+
 # [3.3.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.2.2...v3.3.0) (2024-12-20)
 
 
