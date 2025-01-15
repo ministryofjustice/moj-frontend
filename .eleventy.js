@@ -108,7 +108,7 @@ module.exports = function (eleventyConfig) {
     });
   });
 
-  eleventyConfig.addShortcode("form", function (file) {
+  eleventyConfig.addShortcode("form", function (file, variables = '') {
     try {
       // Read the file directly
       const filePath = path.join(__dirname, "docs", file);
@@ -117,8 +117,21 @@ module.exports = function (eleventyConfig) {
       // Parse front matter and extract Nunjucks code
       const { data, content: nunjucksCode } = matter(fileContent);
 
+      let parsedVariables = {}
+
+      if(variables !== '') {
+        // Turn variables into an object
+        const fixedVariables = variables
+          .replace(/'/g, '"')
+          .replace(/(\w+):/g, '"$1":');
+
+        parsedVariables = JSON.parse(fixedVariables);
+      }
+
+      const context = { ...data, ...parsedVariables };
+
       // Render the Nunjucks code as HTML (renderString directly processes content)
-      const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode.trim(), data);
+      const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode.trim(), context);
 
       const htmlCode = beautifyHTML(rawHtmlCode.trim(), {
         indent_size: 2,

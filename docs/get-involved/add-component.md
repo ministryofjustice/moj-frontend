@@ -1,15 +1,15 @@
 ---
 layout: layouts/community.njk
-subsection: Get involved
-title: Add new component
+subsection: Add new component
+title: Before you start
 redirect_from: /community/add-new-component
 eleventyNavigation:
 key: Add a new component
 parent: Get involved
 order: 40
-excerpt: "Follow these 3 steps to propose a new building block. Anyone can do this."
+excerpt: "All new components submitted..."
 ---
 
-## Add a new component to the design system
+All new components submitted...
 
-{% form "_includes/partials/forms/add-community-component.njk", 664 %}
+{% form "_includes/partials/forms/button-href.njk", "{ href: '/get-involved/component-details' }", 644 %}
