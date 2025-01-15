@@ -79,5 +79,5 @@ MOJFrontend.AddAnother.prototype.onRemoveButtonClick = function(e) {
 };
 
 MOJFrontend.AddAnother.prototype.focusHeading = function() {
-	this.container.find('.moj-add-another__heading').focus();
+	this.container.find('.moj-add-another__heading').get(0).focus();
 };
