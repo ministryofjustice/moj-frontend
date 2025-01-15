@@ -1,55 +1,57 @@
 const express = require('express');
 const path = require('path');
-const app = express();
-const createGist = require('./middleware/github-gist');
-const sendEmail = require('./middleware/notify-email');
 const expressNunjucks = require('express-nunjucks').default;
-const {createSession, getFormData, validateFormData, setNextPage} = require('./middleware/component-session');
+const { createSession, getFormData, validateFormData, setNextPage } = require('./middleware/component-session');
 const PORT = 3000;
 
+const app = express();
 const isDev = app.get('env') === 'development';
 
-// app.set('views', __dirname + '/templates');
-// app.set('views', __dirname + '/views');
-app.set('views', __dirname + '/docs');
+// Define your custom filters here
+const filters = {
+  rev: function(filepath) {
+    // Example: Add '.rev' before the file extension
+    return filepath.replace(/(\.\w+)$/, ".rev$1");
+  },
+  url: function(filepath) {
+    // Example: Prepend '/static' to the file path
+    return `/static${filepath}`;
+  }
+};
+
+// Set up view engine
+app.set('views', path.join(__dirname, 'docs'));  // Point to your templates folder
 app.set('view engine', 'njk');
 
+// Initialize express-nunjucks with custom filters
 expressNunjucks(app, {
   watch: isDev,
   noCache: isDev,
+  templates: [
+    path.join(__dirname, 'docs/_includes'),
+    path.join(__dirname, 'docs/community/pages'),
+    path.join(__dirname, 'node_modules/govuk-frontend/dist'),
+    path.join(__dirname, 'node_modules/@ministryofjustice/frontend')
+  ],
+  filters: filters // Pass the custom filters here
 });
 
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-app.post('/get-involved/component-details', createSession, (req, res) => {
-  res.redirect(`/submit-community-component`);
-})
-
+// Example route to render a page
 app.get('/get-involved/add-new-component/:form', getFormData, (req, res) => {
-  //todo serve up next page
-  // res.render('form', { form: req.form });
   res.render('community/pages/form.njk', {
     title: 'About Page',
     content: 'Learn more about us here.',
   });
-})
+});
 
 app.post('/get-involved/add-new-component/:form', validateFormData, setNextPage, (req, res) => {
-  //todo handle errors...
-  //handle redirection
-})
-
-// app.get('/submit-community-component', (req, res) => {
-//   res.send('Submit community component');
-// });
-// app.post('/submit-community-component', createGist, (req, res) => {
-//   console.log('Submit community component', req.body);
-//   sendEmail()
-//   res.redirect(`/submit-community-component`);
-// })
+  // Handle form submission, redirection, or error handling
+  res.redirect(`/submit-community-component`);
+});
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
