@@ -1,46 +1,53 @@
 const express = require('express');
 const path = require('path');
 const expressNunjucks = require('express-nunjucks').default;
-const { createSession, getFormData, validateFormData, setNextPage } = require('./middleware/component-session');
-const PORT = 3000;
+const { getFormData, validateFormData, setNextPage } = require('./middleware/component-session');
+const fs = require('fs');
+
+const PORT = 3000;//todo move to config
 
 const app = express();
 const isDev = app.get('env') === 'development';
 
-// Define your custom filters here
 const filters = {
   rev: function(filepath) {
-    // Example: Add '.rev' before the file extension
-    return filepath.replace(/(\.\w+)$/, ".rev$1");
+    if (process.env.ENV == "production" || process.env.ENV == "staging") {
+      const manifest = JSON.parse(fs.readFileSync('public/assets/rev-manifest.json', 'utf8'));
+      const revision = manifest[filepath]
+      return `${revision || filepath}`
+    } else {
+      return `${filepath}`
+    }
   },
   url: function(filepath) {
-    // Example: Prepend '/static' to the file path
-    return `/static${filepath}`;
+    return `/${filepath}`;
+  },
+  eleventyNavigation: function() {
+    return null //todo this needs to be handled; no navigation for now
   }
 };
 
-// Set up view engine
-app.set('views', path.join(__dirname, 'docs'));  // Point to your templates folder
+app.set('views', [
+  path.join(__dirname, 'docs'),
+  path.join(__dirname, 'node_modules/govuk-frontend/dist'),
+  path.join(__dirname, 'node_modules/@ministryofjustice/frontend')
+]);
+
 app.set('view engine', 'njk');
 
-// Initialize express-nunjucks with custom filters
 expressNunjucks(app, {
   watch: isDev,
   noCache: isDev,
-  templates: [
-    path.join(__dirname, 'docs/_includes'),
-    path.join(__dirname, 'docs/community/pages'),
-    path.join(__dirname, 'node_modules/govuk-frontend/dist'),
-    path.join(__dirname, 'node_modules/@ministryofjustice/frontend')
-  ],
-  filters: filters // Pass the custom filters here
+  filters: filters
 });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-// Example route to render a page
+app.use('/assets', express.static(path.join(__dirname, 'public')));
+
+
 app.get('/get-involved/add-new-component/:form', getFormData, (req, res) => {
   res.render('community/pages/form.njk', {
     title: 'About Page',
@@ -49,7 +56,6 @@ app.get('/get-involved/add-new-component/:form', getFormData, (req, res) => {
 });
 
 app.post('/get-involved/add-new-component/:form', validateFormData, setNextPage, (req, res) => {
-  // Handle form submission, redirection, or error handling
   res.redirect(`/submit-community-component`);
 });
 
