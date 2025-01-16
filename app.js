@@ -3,6 +3,7 @@ const path = require('path');
 const expressNunjucks = require('express-nunjucks').default;
 const { getFormData, validateFormData, setNextPage } = require('./middleware/component-session');
 const fs = require('fs');
+const nunjucks = require('nunjucks');  // Import Nunjucks directly to use FileSystemLoader
 
 const PORT = 3000;//todo move to config
 
@@ -28,6 +29,7 @@ const filters = {
 };
 
 app.set('views', [
+  path.join(__dirname, 'docs/community/pages'),
   path.join(__dirname, 'docs'),
   path.join(__dirname, 'node_modules/govuk-frontend/dist'),
   path.join(__dirname, 'node_modules/@ministryofjustice/frontend')
@@ -38,7 +40,8 @@ app.set('view engine', 'njk');
 expressNunjucks(app, {
   watch: isDev,
   noCache: isDev,
-  filters: filters
+  filters: filters,
+  loader: nunjucks.FileSystemLoader,
 });
 
 app.use(express.urlencoded({ extended: true }));
@@ -47,13 +50,19 @@ app.use(express.json());
 
 app.use('/assets', express.static(path.join(__dirname, 'public')));
 
-
-app.get('/get-involved/add-new-component/:form', getFormData, (req, res) => {
-  res.render('community/pages/form.njk', {
-    title: 'About Page',
-    content: 'Learn more about us here.',
+app.get('/get-involved/add-new-component/component-details', getFormData, (req, res) => {
+  res.render('component-details.njk', {
+    test: 'hello test'
   });
 });
+
+
+// app.get('/get-involved/add-new-component/:form', getFormData, (req, res) => {
+//   res.render('community/pages/form.njk', {
+//     title: 'About Page',
+//     content: 'Learn more about us here.',
+//   });
+// });
 
 app.post('/get-involved/add-new-component/:form', validateFormData, setNextPage, (req, res) => {
   res.redirect(`/submit-community-component`);
