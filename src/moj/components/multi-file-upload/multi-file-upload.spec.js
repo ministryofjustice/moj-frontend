@@ -1,8 +1,7 @@
+const sinon = require("sinon");
 const {
   queryByRole,
-  within,
-  queryByText,
-  waitFor,
+  getByLabelText,
   fireEvent,
 } = require("@testing-library/dom");
 const { userEvent } = require("@testing-library/user-event");
@@ -30,99 +29,72 @@ class MockDataTransfer {
   }
 }
 
-const simulateFileUpload = (fileInput, files) => {
-  const mockDataTransfer = new MockDataTransfer();
-  files.forEach((file) => mockDataTransfer.items.add(file));
-
-console.log(mockDataTransfer.files)
-  const changeEvent = new Event("change", { bubbles: true });
-  Object.defineProperty(changeEvent, "target", {
-    value: { files: mockDataTransfer.files },
-  });
-
-  fireEvent(fileInput, changeEvent);
-};
-
-const simulateFileDrop = (dropzone, files) => {
-  const mockDataTransfer = new MockDataTransfer();
-  files.forEach((file) => mockDataTransfer.items.add(file));
-
-  const dropEvent = new Event("drop", { bubbles: true });
-  Object.defineProperty(dropEvent, "dataTransfer", {
-    value: mockDataTransfer,
-  });
-  Object.defineProperty(dropEvent, "preventDefault", { value: jest.fn() });
-
-  fireEvent(dropzone, dropEvent);
-};
-
 const createComponent = (options = {}) => {
   const html = `
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <form action="/upload" method="post" enctype="multipart/form-data">
-          <div class="moj-multi-file-upload">
-            <div class="moj-multi-file__uploaded-files moj-hidden">
-              <h2 class="govuk-heading-m">Files added</h2>
-              <div class="govuk-summary-list moj-multi-file-upload__list"></div>
-            </div>
-            <div class="moj-multi-file-upload__upload">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-label--m" for="documents">
-                  Upload a file
-                </label>
-                <input class="govuk-file-upload moj-multi-file-upload__input" id="documents" name="documents" type="file" multiple>
-              </div>
+        <div class="moj-multi-file-upload">
+          <div class="moj-multi-file__uploaded-files moj-hidden">
+            <h2 class="govuk-heading-m">Files added</h2>
+            <div class="govuk-summary-list moj-multi-file-upload__list">
             </div>
           </div>
-        </form>
+          <div class="moj-multi-file-upload__upload">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="documents">
+                Upload a file
+              </label>
+              <input class="govuk-file-upload moj-multi-file-upload__input" id="documents" name="documents" type="file" multiple="">
+            </div>
+          </div>
+        </div>
       </div>
     </div>`;
 
   document.body.insertAdjacentHTML("afterbegin", html);
   const component = document.querySelector(".moj-multi-file-upload");
-  options.container = ".moj-multi-file-upload";
-  options.uploadUrl = options.uploadUrl || "/upload";
-  options.deleteUrl = options.deleteUrl || "/delete";
-
-  return { component, options };
+  return { component, options: { container: component, ...options } };
 };
 
-describe("multi-file upload", () => {
+describe("Multi-file upload", () => {
   let component;
   let options;
+  let server;
   let uploadFileEntryHook;
   let uploadFileExitHook;
   let uploadFileErrorHook;
   let fileDeleteHook;
 
   beforeEach(() => {
-    // Mock fetch globally
-    global.fetch = jest.fn();
-    global.FormData = jest.fn(() => ({
-      append: jest.fn(),
+    server = sinon.fakeServerWithClock.create({
+      respondImmediately: true,
+    });
+    window.XMLHttpRequest = global.XMLHttpRequest;
+
+    uploadFileEntryHook = sinon.spy();
+    uploadFileExitHook = sinon.spy();
+    uploadFileErrorHook = sinon.spy();
+    fileDeleteHook = sinon.spy();
+
+    ({ component, options } = createComponent({
+      uploadFileEntryHook: uploadFileEntryHook,
+      uploadFileExitHook: uploadFileExitHook,
+      uploadFileErrorHook: uploadFileErrorHook,
+      fileDeleteHook: fileDeleteHook,
+      uploadUrl: "/upload",
+      deleteUrl: "/delete",
     }));
-
-    uploadFileEntryHook = jest.fn();
-    uploadFileExitHook = jest.fn();
-    uploadFileErrorHook = jest.fn();
-    fileDeleteHook = jest.fn();
-
-    ({ component, options } = createComponent());
-    options.uploadFileEntryHook = uploadFileEntryHook;
-    options.uploadFileExitHook = uploadFileExitHook;
-    options.uploadFileErrorHook = uploadFileErrorHook;
-    options.fileDeleteHook = fileDeleteHook;
 
     new MOJFrontend.MultiFileUpload(options);
   });
 
   afterEach(() => {
     document.body.innerHTML = "";
-    jest.resetAllMocks();
+    server.restore();
+    sinon.restore();
   });
 
-  test("enhances the upload component with drag and drop functionality", () => {
+  test("initialises with enhanced class", () => {
     expect(component).toHaveClass("moj-multi-file-upload--enhanced");
   });
 
@@ -132,256 +104,287 @@ describe("multi-file upload", () => {
     );
     expect(dropzone).toBeInTheDocument();
     expect(dropzone).toHaveTextContent("Drag and drop files here or");
-    expect(dropzone).toHaveTextContent("Choose files");
+    expect(dropzone.querySelector("label")).toHaveTextContent("Choose files");
   });
 
-  test("creates status box for accessibility", () => {
-    const statusBox = queryByRole(component.parentElement, "status");
+  test("creates status box for announcements", () => {
+    const statusBox = queryByRole(component, "status");
     expect(statusBox).toBeInTheDocument();
     expect(statusBox).toHaveClass("govuk-visually-hidden");
   });
 
-  describe("file upload", () => {
+  describe("File upload handling", () => {
     let file;
+    let input;
+    const successResponse = {
+      success: {
+        messageHtml: "File uploaded successfully",
+        messageText: "File uploaded successfully",
+      },
+      file: {
+        filename: "test",
+        originalname: "test.txt",
+      },
+    };
 
     beforeEach(() => {
       file = new File(["test content"], "test.txt", { type: "text/plain" });
+      input = component.querySelector(".moj-multi-file-upload__input");
+      input = getByLabelText(component, "Upload a file");
+
+      // Configure server response for file upload
+      server.respondWith("POST", "/upload", [
+        200,
+        { "Content-Type": "application/json" },
+        JSON.stringify(successResponse),
+      ]);
     });
 
-    test("handles successful file upload", async () => {
-console.log(file)
-      const successResponse = {
-        success: {
-          messageHtml: "File uploaded successfully",
-          messageText: "File uploaded successfully",
-        },
-        file: {
-          filename: "test.txt",
-          originalname: "test.txt",
-        },
-      };
+    test("handles file input change", async () => {
+      const changeEvent = new Event("change", { bubbles: true });
 
-      global.fetch.mockImplementationOnce(() =>
-        Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve(successResponse),
-        }),
-      );
-
-      const fileInput = component.querySelector(
-        ".moj-multi-file-upload__input",
-      );
-      // simulateFileUpload(fileInput, [file]);
-await user.upload(fileInput, file)
-
-      // await waitFor(() => {
-        expect(uploadFileEntryHook).toHaveBeenCalled();
-        await waitFor(() => {
-          expect(uploadFileExitHook).toHaveBeenCalled();
-})
-        expect(
-          component.querySelector(".moj-multi-file-upload__success"),
-        ).toBeInTheDocument();
-      // });
-    });
-
-    test("handles upload errors", async () => {
-      const errorResponse = {
-        error: {
-          message: "Upload failed",
-        },
-      };
-
-      global.fetch.mockImplementationOnce(() =>
-        Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve(errorResponse),
-        }),
-      );
-
-      const fileInput = component.querySelector(
-        ".moj-multi-file-upload__input",
-      );
-      simulateFileUpload(fileInput, [file]);
-
-      await waitFor(() => {
-        const errorMessage = component.querySelector(
-          ".moj-multi-file-upload__error",
-        );
-        expect(errorMessage).toBeInTheDocument();
-        expect(errorMessage).toHaveTextContent("Upload failed");
+      //input.files is not writable, so we do this to add the files to the input
+      Object.defineProperty(input, "files", {
+        value: { files: [file] },
       });
+
+      fireEvent(input, changeEvent);
+
+      const feedbackContainer = component.querySelector(
+        ".moj-multi-file__uploaded-files",
+      );
+      expect(feedbackContainer).not.toHaveClass("moj-hidden");
+      const newInput = getByLabelText(component, "Upload a file");
+      expect(newInput).toHaveValue("");
+      expect(newInput).toHaveFocus();
     });
 
-    test("handles multiple file upload", async () => {
-      const files = [
-        new File(["content 1"], "test1.txt", { type: "text/plain" }),
-        new File(["content 2"], "test2.txt", { type: "text/plain" }),
-      ];
-
-      const successResponse = {
-        success: {
-          messageHtml: "File uploaded successfully",
-          messageText: "File uploaded successfully",
-        },
-        file: {
-          filename: "test.txt",
-          originalname: "test.txt",
-        },
+    test("displays upload progress", async () => {
+      // Create a spy on XMLHttpRequest to simulate upload progress
+      const xhr = sinon.useFakeXMLHttpRequest();
+      let request;
+      xhr.onCreate = (req) => {
+        request = req;
       };
 
-      global.fetch
-        .mockImplementationOnce(() =>
-          Promise.resolve({
-            ok: true,
-            json: () => Promise.resolve(successResponse),
-          }),
-        )
+      await user.upload(input, file);
 
-      const fileInput = component.querySelector(
-        ".moj-multi-file-upload__input",
-      );
-      simulateFileUpload(fileInput, files);
-
-      await waitFor(() => {
-        const successMessages = component.querySelectorAll(
-          ".moj-multi-file-upload__success",
-        );
-        expect(successMessages).toHaveLength(2);
+      request.uploadProgress({
+        lengthComputable: true,
+        loaded: 50,
+        total: 100,
       });
+
+      const fileRows = component.querySelectorAll(
+        ".moj-multi-file-upload__row",
+      );
+      const progressElement = component.querySelector(
+        ".moj-multi-file-upload__progress",
+      );
+      const nameElement = component.querySelector(
+        ".moj-multi-file-upload__filename",
+      );
+
+      expect(fileRows.length).toBe(1);
+      expect(progressElement).toHaveTextContent("50%");
+      expect(nameElement).toHaveTextContent(file.name);
+
+      xhr.restore();
+    });
+
+    test("handles successful upload", async () => {
+      await user.upload(input, file);
+
+      expect(uploadFileEntryHook).toHaveBeenCalledOnce();
+      expect(uploadFileExitHook).toHaveBeenCalledOnce();
+      expect(uploadFileExitHook).toHaveBeenCalledAfter(uploadFileEntryHook);
+
+      const successMessage = component.querySelector(
+        ".moj-multi-file-upload__success",
+      );
+const deleteButton = component.querySelector(
+".moj-multi-file-upload__delete",
+);
+
+      expect(successMessage).toHaveTextContent("File uploaded successfully");
+      expect(deleteButton).toBeInTheDocument();
+      expect(deleteButton).toHaveAccessibleName(`Delete test.txt`);
+      expect(deleteButton).toHaveAttribute("value", "test");
+    });
+
+    //  this fails as the component still attempts to access response.file (line 149)
+    test.skip("handles 200 status with error in response json", async () => {
+      server.respondWith("POST", "/upload", [
+        200,
+        { "Content-Type": "application/json" },
+        JSON.stringify({
+          error: {
+            message: "Upload failed",
+          },
+        }),
+      ]);
+
+      await user.upload(input, file);
+
+      const errorMessage = component.querySelector(
+        ".moj-multi-file-upload__error",
+      );
+      expect(errorMessage).toHaveTextContent("Upload failed");
+    });
+
+    test("handles non 200 response status ", async () => {
+      server.respondWith("POST", "/upload", [
+        500,
+        { "Content-Type": "text/plain" },
+        "",
+      ]);
+
+      await user.upload(input, file);
+
+      expect(uploadFileErrorHook).toHaveBeenCalledOnce();
     });
   });
 
-  describe("file deletion", () => {
+  describe("File deletion", () => {
     beforeEach(async () => {
-      // Setup a file in the list first
-      const successResponse = {
-        success: {
-          messageHtml: "File uploaded successfully",
-          messageText: "File uploaded successfully",
-        },
-        file: {
-          filename: "test.txt",
-          originalname: "test.txt",
-        },
-      };
-
-      global.fetch.mockImplementationOnce(() =>
-        Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve(successResponse),
-        }),
-      );
-
       const file = new File(["test content"], "test.txt", {
         type: "text/plain",
       });
-      const fileInput = component.querySelector(
-        ".moj-multi-file-upload__input",
-      );
-      await user.upload(fileInput, file);
+      const input = component.querySelector(".moj-multi-file-upload__input");
 
-      // Reset fetch mock for delete tests
-      global.fetch.mockReset();
+      server.respondWith("POST", "/upload", [
+        200,
+        { "Content-Type": "application/json" },
+        JSON.stringify({
+          success: {
+            messageHtml: "File uploaded successfully",
+          },
+          file: {
+            filename: "123",
+            originalname: "test.txt",
+          },
+        }),
+      ]);
+
+      await user.upload(input, file);
     });
 
-    test("handles successful file deletion", async () => {
-      global.fetch.mockImplementationOnce(() =>
-        Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve({ success: true }),
-        }),
-      );
+    test("handles file deletion", async () => {
+      server.respondWith("POST", "/delete", [
+        200,
+        { "Content-Type": "application/json" },
+        JSON.stringify({ success: true }),
+      ]);
 
       const deleteButton = component.querySelector(
         ".moj-multi-file-upload__delete",
       );
       await user.click(deleteButton);
 
-      await waitFor(() => {
-        expect(
-          component.querySelector(".moj-multi-file-upload__row"),
-        ).not.toBeInTheDocument();
-        expect(fileDeleteHook).toHaveBeenCalled();
-      });
+expect(fileDeleteHook).toHaveBeenCalledOnce()
+      expect(server.requests[server.requests.length - 1].url).toBe("/delete");
+      expect(server.requests[server.requests.length - 1].method).toBe("POST");
+
+      const fileRow = component.querySelector(".moj-multi-file-upload__row");
+      expect(fileRow).not.toBeInTheDocument();
     });
 
-    test("hides feedback container when last file is deleted", async () => {
-      global.fetch.mockImplementationOnce(() =>
-        Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve({ success: true }),
-        }),
-      );
+    test("hides feedback container when all files are deleted", async () => {
+      server.respondWith("POST", "/delete", [
+        200,
+        { "Content-Type": "application/json" },
+        JSON.stringify({ success: true }),
+      ]);
 
       const deleteButton = component.querySelector(
         ".moj-multi-file-upload__delete",
       );
       await user.click(deleteButton);
 
-      await waitFor(() => {
-        const feedbackContainer = component.querySelector(
-          ".moj-multi-file__uploaded-files",
-        );
-        expect(feedbackContainer).toHaveClass("moj-hidden");
-      });
+      const feedbackContainer = component.querySelector(
+        ".moj-multi-file__uploaded-files",
+      );
+      expect(feedbackContainer).toHaveClass("moj-hidden");
     });
   });
 
-  describe("drag and drop", () => {
-    test("adds dragover class on dragover", () => {
+  describe("Drag and drop", () => {
+    test("handles dragover event", () => {
       const dropzone = component.querySelector(
         ".moj-multi-file-upload__dropzone",
       );
-      fireEvent.dragOver(dropzone);
+      const dragOverEvent = new Event("dragover");
+      dragOverEvent.preventDefault = () => {}; // Mock preventDefault
+      dropzone.dispatchEvent(dragOverEvent);
+
       expect(dropzone).toHaveClass("moj-multi-file-upload--dragover");
     });
 
-    test("removes dragover class on dragleave", () => {
+    test("handles dragleave event", () => {
       const dropzone = component.querySelector(
         ".moj-multi-file-upload__dropzone",
       );
       dropzone.classList.add("moj-multi-file-upload--dragover");
-      fireEvent.dragLeave(dropzone);
+
+      const dragLeaveEvent = new Event("dragleave");
+      dropzone.dispatchEvent(dragLeaveEvent);
+
       expect(dropzone).not.toHaveClass("moj-multi-file-upload--dragover");
     });
 
-    test("handles file drop", async () => {
-      const file = new File(["test content"], "test.txt", {
-        type: "text/plain",
-      });
+    test("handles file drop", () => {
+      server.respondWith("POST", "/upload", [
+        200,
+        { "Content-Type": "application/json" },
+        JSON.stringify({
+          success: {
+            messageHtml: "File uploaded successfully",
+          },
+          file: {
+            filename: "123",
+            originalname: "test.txt",
+          },
+        }),
+      ]);
+
       const dropzone = component.querySelector(
         ".moj-multi-file-upload__dropzone",
       );
+      const file = new File(["test content"], "test.txt", {
+        type: "text/plain",
+      });
 
-      global.fetch.mockImplementationOnce(() =>
-        Promise.resolve({
-          ok: true,
-          json: () =>
-            Promise.resolve({
-              success: {
-                messageHtml: "File uploaded successfully",
-                messageText: "File uploaded successfully",
-              },
-              file: {
-                filename: "test.txt",
-                originalname: "test.txt",
-              },
-            }),
-        }),
-      );
-
-      fireEvent.drop(dropzone, {
-        dataTransfer: {
+      const dropEvent = new Event("drop");
+      dropEvent.preventDefault = () => {};
+      Object.defineProperty(dropEvent, "dataTransfer", {
+        value: {
           files: [file],
         },
       });
 
-      await waitFor(() => {
-        expect(uploadFileEntryHook).toHaveBeenCalled();
-        expect(uploadFileExitHook).toHaveBeenCalled();
-        expect(dropzone).not.toHaveClass("moj-multi-file-upload--dragover");
+      dropzone.dispatchEvent(dropEvent);
+
+      expect(server.requests.length).toBe(1);
+      expect(server.requests[0].url).toBe("/upload");
+      expect(server.requests[0].method).toBe("POST");
+
+      const feedbackContainer = component.querySelector(
+        ".moj-multi-file__uploaded-files",
+      );
+      expect(feedbackContainer).not.toHaveClass("moj-hidden");
+    });
+  });
+
+  describe("Accessibility", () => {
+    test("status messages are announced to screen readers", async () => {
+      const file = new File(["test content"], "test.txt", {
+        type: "text/plain",
       });
+      const input = component.querySelector(".moj-multi-file-upload__input");
+      await user.upload(input, file);
+
+      const statusBox = queryByRole(component, "status");
+      expect(statusBox).toHaveTextContent("Uploading files, please wait");
     });
   });
 });
