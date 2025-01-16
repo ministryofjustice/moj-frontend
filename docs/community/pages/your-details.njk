@@ -1,0 +1,75 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% extends "_includes/layouts/base.njk" %}
+{% block content %}
+    <form method="post" action="{{ submitUrl }}">
+        {{ govukInput({
+            label: {
+                text: "Full name",
+                classes: "govuk-label--m",
+                isPageHeading: true
+            },
+            id: "full-name",
+            name: "fullName"
+        }) }}
+
+        {{ govukInput({
+            label: {
+                text: "Email address",
+                classes: "govuk-label--m",
+                isPageHeading: true
+            },
+            id: "email-address",
+            name: "emailAddress"
+        }) }}
+
+        {{ govukInput({
+            label: {
+                text: "Job role (optional)",
+                classes: "govuk-label--m",
+                isPageHeading: true
+            },
+            id: "job-role",
+            name: "jobRole"
+        }) }}
+
+        {{ govukInput({
+            label: {
+                text: "Team you're working in (optional)",
+                classes: "govuk-label--m",
+                isPageHeading: true
+            },
+            id: "team",
+            name: "team"
+        }) }}
+
+        {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "showEmailAddress",
+            fieldset: {
+                legend: {
+                    text: "Show your email address on the component page?",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--m"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+
+        <div class="moj-button-action">
+            {{ govukButton({
+                text: 'Continue'
+            }) }}
+        </div>
+    </form>
+{% endblock %}

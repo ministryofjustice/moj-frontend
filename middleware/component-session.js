@@ -47,9 +47,10 @@ const validateSession = (req, res) => {
   res.status(200).json({ message: "Session is valid" });
 };
 
-const setNextPage = (req, res) => {
+const setNextPage = (req, res, next) => {
   // req.nextPage set based on logic found in the communityComponent session object
   // this object will have data set as we go through the various pages
+    next()
 }
 
 const getFormData = (req, res, next) => {
@@ -67,10 +68,13 @@ const getFormData = (req, res, next) => {
 
 const validateFormData = (req, res) => {
   // run against joi isolated only to the section of the session the form is from
+    // set errors to be displayed
+    next()
 }
 
 const saveSession = (req, res) => {
   // save to postgres
+    next()
 }
 
 const submitSession = (req, res) => {
@@ -83,5 +87,6 @@ module.exports = {
   createSession,
   setNextPage,
   getFormData,
-  validateFormData
+  validateFormData,
+  saveSession
 }

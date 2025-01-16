@@ -3,7 +3,7 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% extends "_includes/layouts/base.njk" %}
 {% block content %}
-    <form method="post" action="/get-involved/component-details">
+    <form method="post" action="{{ submitUrl }}">
         {{ govukInput({
             label: {
                 text: "What is the name of the component?",

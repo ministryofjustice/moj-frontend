@@ -1,0 +1,21 @@
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% extends "_includes/layouts/base.njk" %}
+{% block content %}
+    <form method="post" action="{{ submitUrl }}">
+
+        {{ govukFileUpload({
+            id: "component-image",
+            name: "componentImage",
+            label: {
+                text: "Upload a file"
+            }
+        }) }}
+
+        <div class="moj-button-action">
+            {{ govukButton({
+                text: 'Continue'
+            }) }}
+        </div>
+    </form>
+{% endblock %}

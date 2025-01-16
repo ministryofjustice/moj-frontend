@@ -1,7 +1,12 @@
 const express = require('express');
 const path = require('path');
 const expressNunjucks = require('express-nunjucks').default;
-const { getFormData, validateFormData, setNextPage } = require('./middleware/component-session');
+const {
+  getFormData,
+  validateFormData,
+  setNextPage,
+  saveSession,
+} = require('./middleware/component-session');
 const fs = require('fs');
 const nunjucks = require('nunjucks');  // Import Nunjucks directly to use FileSystemLoader
 
@@ -50,10 +55,30 @@ app.use(express.json());
 
 app.use('/assets', express.static(path.join(__dirname, 'public')));
 
-app.get('/get-involved/add-new-component/component-details', getFormData, (req, res) => {
-  res.render('component-details.njk', {
-    test: 'hello test'
+const componentFormPages = [
+  'component-details',
+  'component-image',
+  'your-details',
+  'check-your-answers'
+]
+
+const isValidComponentFormPage = (req, res, next) => {
+  if(!componentFormPages.includes(req.params.page)) {
+    next('Unknown') // todo handle 404
+  } else {
+    next()
+  }
+}
+
+app.get('/get-involved/add-new-component/:page', isValidComponentFormPage, getFormData, (req, res) => {
+  res.render(`${req.params.page}.njk`, {
+    submitUrl: req.url,
+    formData: req.formData,
   });
+});
+
+app.post('/get-involved/add-new-component/:page', isValidComponentFormPage, validateFormData, saveSession, setNextPage, (req, res) => {
+  // todo handle errors...
 });
 
 
