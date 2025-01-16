@@ -14,7 +14,7 @@ This prototype was created from multiple ‘apply’ journey examples in DWP, Mo
 The prototype has 3 parts:
 
 - user needs for internal and public users (for teams to validate)
-- the stages and steps (for people applying and for organisations managing applications) 
+- the stages and steps (for people applying and for organisations managing applications)
 - user scenarios
 
 This is part of [work to develop service patterns across government](/service-patterns/).  
@@ -48,9 +48,9 @@ You can also find [apply patterns in the GOV.UK Design System](https://design-sy
 
 ## User needs
 
-The cross-government work to identify an ‘apply’ service pattern followed a user needs approach.
+The cross-government work to identify an ‘apply’ service pattern followed a user needs approach. Some of the user needs are low confidence. We’re looking for feedback to validate whether these should be accepted.
 
-### User needs for public-facing services
+### User needs for applying
 
 #### Higher confidence:
 
@@ -77,7 +77,7 @@ The cross-government work to identify an ‘apply’ service pattern followed a 
 - I need to know a third party will be able to act on my behalf if needed.
 - I need to be kept safe throughout the ‘apply’ process (for example, if I'm a victim of domestic violence).
 
-### User needs for internal services
+### User needs for managing applications
 
 #### Higher confidence:
 
@@ -106,20 +106,20 @@ The cross-government work to identify an ‘apply’ service pattern followed a 
 {% endtab %}
 {% tab "Stages and steps" %}
 
-## Stages and steps  
+## The parts of a service pattern
 
-Services can be broken down into stages, for example prepare to apply. Each stage has several steps, for example check eligibility. There are stages and steps in this prototype for people applying and for the organisations managing these applications.
+Service patterns can be broken down into service sub-patterns, for example prepare to apply. Each sub-pattern has steps, for example check eligibility. These have been identified for people applying and for the organisations managing these applications. Some of these are marked as low confidence.
 
-Some of the steps are marked as low confidence. We're looking for feedback to validate whether these should be accepted.  
+We're looking for feedback to validate whether these should be accepted, as well as on the naming of these layers below the service patterns.
 
-### People applying: stages and steps
+### People applying: sub-patterns and steps
 
-#### Prepare to apply
+#### 1. Prepare to apply
 - Find the right application form
 - Get reassurance about application process
 - Check eligibility (lower confidence)
 
-#### Apply
+#### 2. Submit application
 - Enter application information  
 - Enter third party information
 - Get help  
@@ -131,26 +131,26 @@ Some of the steps are marked as low confidence. We're looking for feedback to va
 - Get application fee request (lower confidence)
 - Pay fee (lower confidence)
 
-#### Give supporting evidence
+#### 3. Give supporting evidence
 - Get notification that supporting evidence is needed
 - Gather supporting evidence
 - Give supporting evidence
 - Get confirmation that evidence has been submitted
 
-#### Await outcome
+#### 4. Await outcome
 - View application
 - Get progress updates
 
-### Organisations managing applications: stages and steps  
+### Organisations managing applications: sub-patterns and steps
 
-#### Prepare for application
+#### 1. Prepare for application
 - Access reference materials
 
-#### Meet the person applying
+#### 2. Meet the person applying
 - Confirm user's identity
 - Confirm user's eligibility
 
-#### Assess applications
+#### 3. Assess applications
 - Establish third party information
 - View application information  
 - Ask questions
@@ -159,12 +159,12 @@ Some of the steps are marked as low confidence. We're looking for feedback to va
 - Play back application
 - Resume application
 
-#### Collect supporting evidence
+#### 4. Collect supporting evidence
 - Understand the purpose of supporting evidence  
 - Communicate the purpose of supporting evidence  
 - Capture supporting evidence   
 
-#### Finish application
+#### 5. Finish application
 - Receive application
 - Communicate next steps
 - Share citizen information change
