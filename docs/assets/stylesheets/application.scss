@@ -4,7 +4,7 @@ $moj-assets-path: "../" !default;
 $govuk-assets-path: "../" !default;
 
 // GOV.UK Frontend
-@import "node_modules/govuk-frontend/dist/govuk/all";
+@import "node_modules/govuk-frontend/dist/govuk/index";
 
 // MOJ Frontend
 @import "src/moj/all";
