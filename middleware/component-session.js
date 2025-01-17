@@ -1,4 +1,22 @@
 const joi = require('joi');
+const req = require("express/lib/request");
+
+const componentFormPages = [
+    'component-details',
+    'component-image',
+    'your-details',
+    'check-your-answers'
+] // todo move to config
+
+const nextPage = (url) => {
+    const index = componentFormPages.findIndex(page => url.endsWith(page));
+
+    if (index !== -1 && index < componentFormPages.length - 1) {
+        return componentFormPages[index + 1];
+    }
+
+    return null;
+}
 
 const createSession = (req, res) => {
   // creates a new object in the session with the property communityComponent based on an imported JSON file named defaultCommunityComponentSession
@@ -50,6 +68,9 @@ const validateSession = (req, res) => {
 const setNextPage = (req, res, next) => {
   // req.nextPage set based on logic found in the communityComponent session object
   // this object will have data set as we go through the various pages
+    //todo ensure no errors etc
+    req.nextPage = nextPage(req.url)
+
     next()
 }
 
@@ -66,14 +87,25 @@ const getFormData = (req, res, next) => {
   next()
 }
 
-const validateFormData = (req, res) => {
+const validateFormData = (req, res, next) => {
   // run against joi isolated only to the section of the session the form is from
     // set errors to be displayed
     next()
 }
 
-const saveSession = (req, res) => {
+const saveSession = (req, res, next) => {
   // save to postgres
+    //todo potentially could be saving each part to github...
+
+    // todo need a persistent session...
+    if(!req.session) {
+        req.session = {}
+    }
+
+    req.session[req.url] = req.body;
+
+    console.log('saved session', req.session)
+
     next()
 }
 

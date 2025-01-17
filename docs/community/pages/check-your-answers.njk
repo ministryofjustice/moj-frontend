@@ -1,0 +1,15 @@
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% extends "_includes/layouts/base.njk" %}
+{% block content %}
+    <form method="post" action="{{ submitUrl }}">
+
+        check your answers here
+
+        <div class="moj-button-action">
+            {{ govukButton({
+                text: 'Submit'
+            }) }}
+        </div>
+    </form>
+{% endblock %}

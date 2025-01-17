@@ -8,36 +8,49 @@ const {
   saveSession,
 } = require('./middleware/component-session');
 const fs = require('fs');
-const nunjucks = require('nunjucks');  // Import Nunjucks directly to use FileSystemLoader
+const nunjucks = require('nunjucks'); // Import Nunjucks directly to use FileSystemLoader
+const session = require('express-session'); // Import express-session
 
-const PORT = 3000;//todo move to config
+const PORT = 3000; // todo move to config
 
 const app = express();
 const isDev = app.get('env') === 'development';
 
+// Set up session middleware
+app.use(
+    session({
+      secret: 'your-secret-key', // Replace with a secure, random key
+      resave: false, // Don't save the session if it wasn't modified
+      saveUninitialized: true, // Save uninitialized sessions
+      cookie: { secure: false, maxAge: 60000 }, // Adjust secure for production, maxAge sets cookie expiration
+    })
+);
+
 const filters = {
-  rev: function(filepath) {
-    if (process.env.ENV == "production" || process.env.ENV == "staging") {
-      const manifest = JSON.parse(fs.readFileSync('public/assets/rev-manifest.json', 'utf8'));
-      const revision = manifest[filepath]
-      return `${revision || filepath}`
+  rev: function (filepath) {
+    if (process.env.ENV == 'production' || process.env.ENV == 'staging') {
+      const manifest = JSON.parse(
+          fs.readFileSync('public/assets/rev-manifest.json', 'utf8')
+      );
+      const revision = manifest[filepath];
+      return `${revision || filepath}`;
     } else {
-      return `${filepath}`
+      return `${filepath}`;
     }
   },
-  url: function(filepath) {
+  url: function (filepath) {
     return `/${filepath}`;
   },
-  eleventyNavigation: function() {
-    return null //todo this needs to be handled; no navigation for now
-  }
+  eleventyNavigation: function () {
+    return null; // todo this needs to be handled; no navigation for now
+  },
 };
 
 app.set('views', [
   path.join(__dirname, 'docs/community/pages'),
   path.join(__dirname, 'docs'),
   path.join(__dirname, 'node_modules/govuk-frontend/dist'),
-  path.join(__dirname, 'node_modules/@ministryofjustice/frontend')
+  path.join(__dirname, 'node_modules/@ministryofjustice/frontend'),
 ]);
 
 app.set('view engine', 'njk');
@@ -59,42 +72,52 @@ const componentFormPages = [
   'component-details',
   'component-image',
   'your-details',
-  'check-your-answers'
-]
+  'check-your-answers',
+]; // todo move to config
 
 const isValidComponentFormPage = (req, res, next) => {
-  if(!componentFormPages.includes(req.params.page)) {
-    next('Unknown') // todo handle 404
+  if (!componentFormPages.includes(req.params.page)) {
+    next('Unknown'); // todo handle 404
   } else {
-    next()
+    next();
   }
-}
+};
 
 app.get('/get-involved/add-new-component/:page', isValidComponentFormPage, getFormData, (req, res) => {
-  res.render(`${req.params.page}.njk`, {
+  res.render(`${req.params.page}`, {
     submitUrl: req.url,
     formData: req.formData,
   });
 });
 
-app.post('/get-involved/add-new-component/:page', isValidComponentFormPage, validateFormData, saveSession, setNextPage, (req, res) => {
-  // todo handle errors...
+app.post('/get-involved/add-new-component/check-your-answers', (req, res, next) => {
+  console.log(req.session); // Session data can be accessed here
+  // todo git hub
+  res.redirect(req.url);
 });
 
-
-// app.get('/get-involved/add-new-component/:form', getFormData, (req, res) => {
-//   res.render('community/pages/form.njk', {
-//     title: 'About Page',
-//     content: 'Learn more about us here.',
-//   });
-// });
+app.post(
+    '/get-involved/add-new-component/:page',
+    isValidComponentFormPage,
+    validateFormData,
+    saveSession,
+    setNextPage,
+    (req, res, next) => {
+      // todo handle errors...
+      if (req.nextPage) {
+        res.redirect(`/get-involved/add-new-component/${req.nextPage}`);
+      } else {
+        next('unknown'); // todo error middleware needed
+      }
+    }
+);
 
 app.post('/get-involved/add-new-component/:form', validateFormData, setNextPage, (req, res) => {
   res.redirect(`/submit-community-component`);
 });
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, () => {
