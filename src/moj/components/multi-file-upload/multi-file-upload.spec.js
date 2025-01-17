@@ -5,29 +5,18 @@ const {
   fireEvent,
 } = require("@testing-library/dom");
 const { userEvent } = require("@testing-library/user-event");
+const { configureAxe } = require("jest-axe");
 
 require("../../helpers.js");
 require("./multi-file-upload.js");
 
 const user = userEvent.setup();
-
-// Mock DataTransfer
-class MockDataTransfer {
-  constructor() {
-    this.files = [];
-    this.items = {
-      add: (file) => {
-        this.files.push(file);
-      },
-      remove: (index) => {
-        this.files.splice(index, 1);
-      },
-      clear: () => {
-        this.files = [];
-      },
-    };
-  }
-}
+const axe = configureAxe({
+  rules: {
+    // disable landmark rules when testing isolated components.
+    region: { enabled: false },
+  },
+});
 
 const createComponent = (options = {}) => {
   const html = `
@@ -53,7 +42,10 @@ const createComponent = (options = {}) => {
 
   document.body.insertAdjacentHTML("afterbegin", html);
   const component = document.querySelector(".moj-multi-file-upload");
-  return { component, options: { container: component, ...options } };
+  return {
+    component,
+    options: { container: component, ...options },
+  };
 };
 
 describe("Multi-file upload", () => {
@@ -69,7 +61,6 @@ describe("Multi-file upload", () => {
     server = sinon.fakeServerWithClock.create({
       respondImmediately: true,
     });
-    window.XMLHttpRequest = global.XMLHttpRequest;
 
     uploadFileEntryHook = sinon.spy();
     uploadFileExitHook = sinon.spy();
@@ -202,9 +193,9 @@ describe("Multi-file upload", () => {
       const successMessage = component.querySelector(
         ".moj-multi-file-upload__success",
       );
-const deleteButton = component.querySelector(
-".moj-multi-file-upload__delete",
-);
+      const deleteButton = component.querySelector(
+        ".moj-multi-file-upload__delete",
+      );
 
       expect(successMessage).toHaveTextContent("File uploaded successfully");
       expect(deleteButton).toBeInTheDocument();
@@ -281,7 +272,7 @@ const deleteButton = component.querySelector(
       );
       await user.click(deleteButton);
 
-expect(fileDeleteHook).toHaveBeenCalledOnce()
+      expect(fileDeleteHook).toHaveBeenCalledOnce();
       expect(server.requests[server.requests.length - 1].url).toBe("/delete");
       expect(server.requests[server.requests.length - 1].method).toBe("POST");
 
@@ -314,7 +305,6 @@ expect(fileDeleteHook).toHaveBeenCalledOnce()
         ".moj-multi-file-upload__dropzone",
       );
       const dragOverEvent = new Event("dragover");
-      dragOverEvent.preventDefault = () => {}; // Mock preventDefault
       dropzone.dispatchEvent(dragOverEvent);
 
       expect(dropzone).toHaveClass("moj-multi-file-upload--dragover");
@@ -341,7 +331,7 @@ expect(fileDeleteHook).toHaveBeenCalledOnce()
             messageHtml: "File uploaded successfully",
           },
           file: {
-            filename: "123",
+            filename: "test",
             originalname: "test.txt",
           },
         }),
@@ -371,20 +361,165 @@ expect(fileDeleteHook).toHaveBeenCalledOnce()
       const feedbackContainer = component.querySelector(
         ".moj-multi-file__uploaded-files",
       );
+      const successMessage = component.querySelector(
+        ".moj-multi-file-upload__success",
+      );
+      const deleteButton = component.querySelector(
+        ".moj-multi-file-upload__delete",
+      );
+
+      // test callbacks
+      expect(uploadFileEntryHook).toHaveBeenCalledOnce();
+      expect(uploadFileExitHook).toHaveBeenCalledOnce();
+      expect(uploadFileExitHook).toHaveBeenCalledAfter(uploadFileEntryHook);
+
+      // test file present in UI
       expect(feedbackContainer).not.toHaveClass("moj-hidden");
+      expect(successMessage).toHaveTextContent("File uploaded successfully");
+      expect(deleteButton).toBeInTheDocument();
+      expect(deleteButton).toHaveAccessibleName(`Delete test.txt`);
+      expect(deleteButton).toHaveAttribute("value", "test");
+    });
+  });
+
+  describe("Uploading multiple files", () => {
+    let files;
+    let input;
+    const successResponse = {
+      success: {
+        messageHtml: "File uploaded successfully",
+        messageText: "File uploaded successfully",
+      },
+      file: {
+        filename: "test",
+        originalname: "test.txt",
+      },
+    };
+
+    beforeEach(() => {
+      files = [
+        new File(["test content"], "test-1.txt", { type: "text/plain" }),
+        new File(["test content"], "test-2.txt", { type: "text/plain" }),
+      ];
+      input = component.querySelector(".moj-multi-file-upload__input");
+      input = getByLabelText(component, "Upload a file");
+
+      // Configure server response for file upload
+      server.respondWith("POST", "/upload", [
+        200,
+        { "Content-Type": "application/json" },
+        JSON.stringify(successResponse),
+      ]);
+    });
+
+    test("handles multiple files", async () => {
+      await user.upload(input, files);
+
+      const feedbackContainer = component.querySelector(
+        ".moj-multi-file__uploaded-files",
+      );
+      const fileRows = component.querySelectorAll(
+        ".moj-multi-file-upload__row",
+      );
+      const successMessages = component.querySelectorAll(
+        ".moj-multi-file-upload__success",
+      );
+      const deleteButtons = component.querySelectorAll(
+        ".moj-multi-file-upload__delete",
+      );
+
+      expect(uploadFileEntryHook).toHaveBeenCalledTwice();
+      expect(uploadFileExitHook).toHaveBeenCalledTwice();
+
+      expect(feedbackContainer).not.toHaveClass("moj-hidden");
+      expect(fileRows.length).toBe(2);
+
+      expect(successMessages[0]).toHaveTextContent(
+        "File uploaded successfully",
+      );
+      expect(deleteButtons[0]).toHaveAccessibleName(`Delete test.txt`);
+      expect(deleteButtons[0]).toHaveAttribute("value", "test");
+      expect(successMessages[1]).toHaveTextContent(
+        "File uploaded successfully",
+      );
+      expect(deleteButtons[1]).toHaveAccessibleName(`Delete test.txt`);
+      expect(deleteButtons[1]).toHaveAttribute("value", "test");
+    });
+
+    test("handles multiple file drop", () => {
+      const dropzone = component.querySelector(
+        ".moj-multi-file-upload__dropzone",
+      );
+
+      const dropEvent = new Event("drop");
+      dropEvent.preventDefault = () => {};
+      Object.defineProperty(dropEvent, "dataTransfer", {
+        value: {
+          files: files,
+        },
+      });
+
+      dropzone.dispatchEvent(dropEvent);
+
+      expect(server.requests.length).toBe(2);
+      expect(server.requests[0].url).toBe("/upload");
+      expect(server.requests[0].method).toBe("POST");
+
+      const feedbackContainer = component.querySelector(
+        ".moj-multi-file__uploaded-files",
+      );
+
+      const fileRows = component.querySelectorAll(
+        ".moj-multi-file-upload__row",
+      );
+      const successMessages = component.querySelectorAll(
+        ".moj-multi-file-upload__success",
+      );
+      const deleteButtons = component.querySelectorAll(
+        ".moj-multi-file-upload__delete",
+      );
+
+      expect(uploadFileEntryHook).toHaveBeenCalledTwice();
+      expect(uploadFileExitHook).toHaveBeenCalledTwice();
+
+      expect(feedbackContainer).not.toHaveClass("moj-hidden");
+      expect(fileRows.length).toBe(2);
+
+      expect(successMessages[0]).toHaveTextContent(
+        "File uploaded successfully",
+      );
+      expect(deleteButtons[0]).toHaveAccessibleName(`Delete test.txt`);
+      expect(deleteButtons[0]).toHaveAttribute("value", "test");
+      expect(successMessages[1]).toHaveTextContent(
+        "File uploaded successfully",
+      );
+      expect(deleteButtons[1]).toHaveAccessibleName(`Delete test.txt`);
+      expect(deleteButtons[1]).toHaveAttribute("value", "test");
     });
   });
 
   describe("Accessibility", () => {
-    test("status messages are announced to screen readers", async () => {
-      const file = new File(["test content"], "test.txt", {
+    let file;
+    let input;
+
+    beforeEach(() => {
+      file = new File(["test content"], "test.txt", {
         type: "text/plain",
       });
-      const input = component.querySelector(".moj-multi-file-upload__input");
+      input = component.querySelector(".moj-multi-file-upload__input");
+    });
+
+    test("status messages are announced to screen readers", async () => {
       await user.upload(input, file);
 
       const statusBox = queryByRole(component, "status");
       expect(statusBox).toHaveTextContent("Uploading files, please wait");
+    });
+
+    test("component has no wcag violations", async () => {
+      expect(await axe(document.body)).toHaveNoViolations();
+      await user.upload(input, file);
+      expect(await axe(document.body)).toHaveNoViolations();
     });
   });
 });
