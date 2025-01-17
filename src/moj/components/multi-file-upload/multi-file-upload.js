@@ -78,7 +78,7 @@ if(MOJFrontend.dragAndDropSupported() && MOJFrontend.formDataSupported() && MOJF
     this.uploadFiles(e.currentTarget.files);
     this.fileInput.replaceWith($(e.currentTarget).val('').clone(true));
     this.setupFileInput();
-    this.fileInput.focus();
+    this.fileInput.get(0).focus();
   };
 
   MOJFrontend.MultiFileUpload.prototype.onFileFocus = function(e) {
