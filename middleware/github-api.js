@@ -41,7 +41,7 @@ const pushToGitHub = async (sessionData) => {
         } else {
           // If it's not a file, use the key as filename and stringify the data
           const filename = extractFilename(key);
-          submissionData[filename] = sessionData[key];
+          submissionData[`submission/${filename}`] = sessionData[key];
         }
       }
     });
@@ -91,7 +91,11 @@ const pushToGitHub = async (sessionData) => {
 
     // Step 3: Add files to the branch
     for (const [filePath, content] of Object.entries(submissionData)) {
-      if (content.buffer) {
+      // if (content.buffer) {
+
+        const fileContent = content?.buffer || Buffer.from(JSON.stringify(content, null, 2)).toString('base64');
+
+
         const addFileResponse = await fetch(
           `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/contents/${filePath}`,
           {
@@ -102,7 +106,7 @@ const pushToGitHub = async (sessionData) => {
             },
             body: JSON.stringify({
               message: `Add ${filePath} in submission folder`,
-              content: content?.buffer || content,
+              content: fileContent,
               branch: branchName,
             }),
           }
@@ -111,7 +115,7 @@ const pushToGitHub = async (sessionData) => {
         if (!addFileResponse.ok) {
           throw new Error(`Failed to add file ${filePath}: ${addFileResponse.statusText}`);
         }
-      }
+      // }
     }
 
     console.log(`Branch ${branchName} created and files added successfully.`);
