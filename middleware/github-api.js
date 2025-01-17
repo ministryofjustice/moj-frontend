@@ -92,36 +92,50 @@ const pushToGitHub = async (sessionData) => {
     }
 
     console.log(`Branch ${branchName} created and files added successfully.`);
+    return branchName
   } catch (error) {
     console.error('Error interacting with GitHub API:', error.message);
   }
 };
 
-// Example usage with session data
-const exampleSessionData = {
-  cookie: {
-    path: '/',
-    _expires: new Date(),
-    originalMaxAge: 60000,
-    httpOnly: true,
-    secure: false,
-  },
-  '/get-involved/add-new-component/component-details': {
-    componentName: 'test',
-    briefDescription: 'test',
-    whyNeeded: 'test',
-  },
-  '/get-involved/add-new-component/component-image': { componentImage: 'upload.txt' },
-  '/get-involved/add-new-component/your-details': {
-    fullName: 'test',
-    emailAddress: 'test@test.com',
-    jobRole: '',
-    team: '',
-    showEmailAddress: 'no',
-  },
+const createPullRequest = async (branchName, title, description = '') => {
+  try {
+    // Define the API endpoint for creating a pull request
+    const prEndpoint = `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/pulls`;
+
+    // Prepare the PR data
+    const prData = {
+      title, // Title of the PR
+      head: branchName, // The branch you want to merge
+      base: 'main', // The branch into which you want to merge
+      body: description, // Description of the PR (optional)
+    };
+
+    // Make the API request
+    const response = await fetch(prEndpoint, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(prData),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`Failed to create pull request: ${response.status} - ${response.statusText}`);
+      console.error(`Error details: ${errorText}`);
+      throw new Error('Failed to create pull request.');
+    }
+
+    // Parse and log the response
+    const pr = await response.json();
+    console.log(`Pull request created: ${pr.html_url}`);
+    return pr;
+  } catch (error) {
+    console.error('Error creating pull request:', error.message);
+    throw error;
+  }
 };
 
-// Call the function
-// pushToGitHub(exampleSessionData);
-
-module.exports = {pushToGitHub};
+module.exports = {pushToGitHub, createPullRequest};

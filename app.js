@@ -10,7 +10,7 @@ const {
 const fs = require('fs');
 const nunjucks = require('nunjucks'); // Import Nunjucks directly to use FileSystemLoader
 const session = require('express-session'); // Import express-session
-const { pushToGitHub } = require('./middleware/github-api');
+const { pushToGitHub, createPullRequest } = require('./middleware/github-api');
 const PORT = 3000; // todo move to config
 
 const app = express();
@@ -93,9 +93,10 @@ app.get('/get-involved/add-new-component/:page', isValidComponentFormPage, getFo
 app.post('/get-involved/add-new-component/check-your-answers', async (req, res, next) => {
   console.log(req.session); // Session data can be accessed here
   // todo git hub
-  await pushToGitHub(req.session);
-
-
+  const branchName = await pushToGitHub(req.session);
+  const title = 'test title'
+  const description = 'test description'
+  await createPullRequest(branchName, title, description);
   res.redirect(req.url);
 });
 
