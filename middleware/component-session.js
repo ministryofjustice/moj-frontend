@@ -1,18 +1,11 @@
 const joi = require('joi');
-const req = require("express/lib/request");
-
-const componentFormPages = [
-    'component-details',
-    'component-image',
-    'your-details',
-    'check-your-answers'
-] // todo move to config
+const { COMPONENT_FORM_PAGES } = require('../config')
 
 const nextPage = (url) => {
-    const index = componentFormPages.findIndex(page => url.endsWith(page));
+    const index = COMPONENT_FORM_PAGES.findIndex(page => url.endsWith(page));
 
-    if (index !== -1 && index < componentFormPages.length - 1) {
-        return componentFormPages[index + 1];
+    if (index !== -1 && index < COMPONENT_FORM_PAGES.length - 1) {
+        return COMPONENT_FORM_PAGES[index + 1];
     }
 
     return null;

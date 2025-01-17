@@ -22,7 +22,8 @@
     "watch:app": "nodemon app.js",
     "start:eleventy": "ENV=dev eleventy --input=./docs --output=public --watch",
     "start:server": "nodemon app.js",
-    "dev": "concurrently \"npm run start:eleventy\" \"npm run start:server\""
+    "dev": "concurrently \"npm run start:eleventy\" \"npm run start:server\"",
+    "test:middleware": "jest middleware/"
   },
   "repository": {
     "type": "git",
