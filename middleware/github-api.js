@@ -12,6 +12,15 @@ const extractFilename = (key) => {
   return `${segments[segments.length - 1]}.txt`; // Get last segment and append `.txt`
 };
 
+// Function to handle file objects and store them in the correct structure
+const handleFile = (fileData) => {
+  if (fileData && fileData.buffer) {
+    // Convert the file buffer to base64 encoded string
+    return Buffer.from(fileData.buffer).toString('base64');
+  }
+  return null;
+};
+
 // Function to interact with GitHub API
 const pushToGitHub = async (sessionData) => {
   try {
@@ -19,12 +28,27 @@ const pushToGitHub = async (sessionData) => {
     const submissionData = {};
     Object.keys(sessionData).forEach((key) => {
       if (key !== 'cookie') {
-        const filename = extractFilename(key);
-        submissionData[filename] = sessionData[key];
+        const fileData = sessionData[key];
+        // console.log('fileData',fileData);
+        if (fileData?.componentImage?.buffer) {
+          // If it's a file-like object, create a directory and file within it
+          const directory = fileData.componentImage.fieldname; // Use fieldname as directory name
+          const filename = fileData.componentImage.originalname; // Use the original filename
+          const fileContent = handleFile(fileData.componentImage);
+          const filePath = `submission/${directory}/${filename}`;
+          submissionData[filePath] = { buffer: fileContent };
+          // submissionData[filePath] = { fileContent };
+        } else {
+          // If it's not a file, use the key as filename and stringify the data
+          const filename = extractFilename(key);
+          submissionData[filename] = sessionData[key];
+        }
       }
     });
 
-    console.log('URL', `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/git/ref/heads/main`)
+    console.log('submit: ', JSON.stringify(submissionData));
+
+    console.log('URL', `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/git/ref/heads/main`);
 
     // Step 1: Get the default branch SHA (main)
     const mainBranchResponse = await fetch(
@@ -66,33 +90,32 @@ const pushToGitHub = async (sessionData) => {
     }
 
     // Step 3: Add files to the branch
-    for (const [filename, content] of Object.entries(submissionData)) {
-      const filePath = `submission/${filename}`;
-      const fileContent = Buffer.from(JSON.stringify(content, null, 2)).toString('base64');
+    for (const [filePath, content] of Object.entries(submissionData)) {
+      if (content.buffer) {
+        const addFileResponse = await fetch(
+          `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/contents/${filePath}`,
+          {
+            method: 'PUT',
+            headers: {
+              Authorization: `Bearer ${GITHUB_TOKEN}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              message: `Add ${filePath} in submission folder`,
+              content: content?.buffer || content,
+              branch: branchName,
+            }),
+          }
+        );
 
-      const addFileResponse = await fetch(
-        `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/contents/${filePath}`,
-        {
-          method: 'PUT',
-          headers: {
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            message: `Add ${filename} in submission folder`,
-            content: fileContent,
-            branch: branchName,
-          }),
+        if (!addFileResponse.ok) {
+          throw new Error(`Failed to add file ${filePath}: ${addFileResponse.statusText}`);
         }
-      );
-
-      if (!addFileResponse.ok) {
-        throw new Error(`Failed to add file ${filename}: ${addFileResponse.statusText}`);
       }
     }
 
     console.log(`Branch ${branchName} created and files added successfully.`);
-    return branchName
+    return branchName;
   } catch (error) {
     console.error('Error interacting with GitHub API:', error.message);
   }
@@ -138,4 +161,4 @@ const createPullRequest = async (branchName, title, description = '') => {
   }
 };
 
-module.exports = {pushToGitHub, createPullRequest};
+module.exports = { pushToGitHub, createPullRequest };

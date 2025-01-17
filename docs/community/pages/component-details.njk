@@ -3,43 +3,46 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% extends "_includes/layouts/base.njk" %}
 {% block content %}
-    <form method="post" action="{{ submitUrl }}">
-        {{ govukInput({
-            label: {
-                text: "What is the name of the component?",
-                classes: "govuk-label--m",
-                isPageHeading: true
-            },
-            id: "component-name",
-            name: "componentName"
-        }) }}
-
-        {{ govukCharacterCount({
-            name: "briefDescription",
-            id: "with-hint",
-            maxlength: 500,
-            label: {
-                text: "Add a brief description about the component",
-                classes: "govuk-label--m",
-                isPageHeading: true
-            }
-        }) }}
-
-        {{ govukCharacterCount({
-            name: "whyNeeded",
-            id: "with-hint",
-            maxlength: 500,
-            label: {
-                text: "Why do you think the component is needed?",
-                classes: "govuk-label--m",
-                isPageHeading: true
-            }
-        }) }}
-
-        <div class="moj-button-action">
-            {{ govukButton({
-                text: 'Continue'
+    <div class="app-layout__content">
+        <form method="post" action="{{ submitUrl }}">
+            {{ govukInput({
+                label: {
+                    text: "What is the name of the component?",
+                    classes: "govuk-label--m",
+                    isPageHeading: true
+                },
+                id: "component-name",
+                name: "componentName"
             }) }}
-        </div>
-    </form>
+
+            {{ govukCharacterCount({
+                name: "briefDescription",
+                id: "with-hint",
+                maxlength: 500,
+                label: {
+                    text: "Add a brief description about the component",
+                    classes: "govuk-label--m",
+                    isPageHeading: true
+                }
+            }) }}
+
+            {{ govukCharacterCount({
+                name: "whyNeeded",
+                id: "with-hint",
+                maxlength: 500,
+                label: {
+                    text: "Why do you think the component is needed?",
+                    classes: "govuk-label--m",
+                    isPageHeading: true
+                }
+            }) }}
+
+            <div class="moj-button-action">
+                {{ govukButton({
+                    text: 'Continue'
+                }) }}
+            </div>
+        </form>
+    </div>
+
 {% endblock %}

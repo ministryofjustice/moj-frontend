@@ -11,6 +11,9 @@ const fs = require('fs');
 const nunjucks = require('nunjucks'); // Import Nunjucks directly to use FileSystemLoader
 const session = require('express-session'); // Import express-session
 const { pushToGitHub, createPullRequest } = require('./middleware/github-api');
+const multer = require('multer');
+const upload = multer({ storage: multer.memoryStorage() });
+
 const PORT = 3000; // todo move to config
 
 const app = express();
@@ -77,7 +80,7 @@ const componentFormPages = [
 
 const isValidComponentFormPage = (req, res, next) => {
   if (!componentFormPages.includes(req.params.page)) {
-    next('Unknown'); // todo handle 404
+    next('Unknown page'); // todo handle 404
   } else {
     next();
   }
@@ -99,6 +102,22 @@ app.post('/get-involved/add-new-component/check-your-answers', async (req, res, 
   await createPullRequest(branchName, title, description);
   res.redirect(req.url);
 });
+
+app.post(
+    '/get-involved/add-new-component/component-image',
+    validateFormData,
+    upload.single('componentImage'),
+    saveSession,
+    setNextPage,
+    (req, res, next) => {
+      // todo handle errors...
+      if (req.nextPage) {
+        res.redirect(`/get-involved/add-new-component/${req.nextPage}`);
+      } else {
+        next('unknown'); // todo error middleware needed
+      }
+    }
+);
 
 app.post(
     '/get-involved/add-new-component/:page',

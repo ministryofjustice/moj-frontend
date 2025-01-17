@@ -90,10 +90,12 @@ const getFormData = (req, res, next) => {
 const validateFormData = (req, res, next) => {
   // run against joi isolated only to the section of the session the form is from
     // set errors to be displayed
+    console.log('validateFormData')
     next()
 }
 
 const saveSession = (req, res, next) => {
+    console.log('saveSession')
   // save to postgres
     //todo potentially could be saving each part to github...
 
@@ -102,7 +104,21 @@ const saveSession = (req, res, next) => {
         req.session = {}
     }
 
-    req.session[req.url] = req.body;
+    let body = req.body;
+console.log('files?',req.file)
+    if(req.file) {
+        // console.log('FILE', req.file)
+        // console.log('BODY', body)
+        // const fileContent = req.file.buffer.toString('utf-8');
+        // console.log('Uploaded File Content:', fileContent);
+        // body.uploadedFileContent = fileContent;
+        const { fieldname } = req.file
+        const file = {}
+        file[fieldname] = req.file;
+        body = { ...body, ...file}
+    }
+
+    req.session[req.url] = body;
 
     console.log('saved session', req.session)
 

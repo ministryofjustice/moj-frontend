@@ -2,8 +2,8 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% extends "_includes/layouts/base.njk" %}
 {% block content %}
-    <form method="post" action="{{ submitUrl }}">
-
+<div class="app-layout__content">
+    <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
         {{ govukFileUpload({
             id: "component-image",
             name: "componentImage",
@@ -18,4 +18,5 @@
             }) }}
         </div>
     </form>
+</div>
 {% endblock %}

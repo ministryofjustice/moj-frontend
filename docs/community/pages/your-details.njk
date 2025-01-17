@@ -3,6 +3,7 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% extends "_includes/layouts/base.njk" %}
 {% block content %}
+<div class="app-layout__content">
     <form method="post" action="{{ submitUrl }}">
         {{ govukInput({
             label: {
@@ -72,4 +73,5 @@
             }) }}
         </div>
     </form>
+</div>
 {% endblock %}
