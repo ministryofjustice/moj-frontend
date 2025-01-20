@@ -3,7 +3,8 @@ const { GITHUB_API_URL, GITHUB_TOKEN, GITHUB_REPO_OWNER, GITHUB_REPO_NAME } = re
 
 const extractFilename = (key) => {
   const segments = key.split('/');
-  return `${segments[segments.length - 1]}.txt`;
+  const lastSegment = segments[segments.length - 1];
+  return lastSegment.includes('.') ? lastSegment : `${lastSegment}.txt`;
 };
 
 const handleFile = (fileData) => {
@@ -73,7 +74,10 @@ const pushToGitHub = async (sessionData) => {
     }
 
     for (const [filePath, content] of Object.entries(submissionData)) {
-      const fileContent = content?.buffer || Buffer.from(JSON.stringify(content, null, 2)).toString('base64');
+
+      const fileContent = filePath.endsWith('.md') ? Buffer.from(content).toString('base64')
+        : content?.buffer || Buffer.from(JSON.stringify(content, null, 2)).toString('base64');
+      console.log('fileContent',fileContent);
       const addFileResponse = await fetch(
         `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/contents/${filePath}`,
         {
@@ -91,6 +95,7 @@ const pushToGitHub = async (sessionData) => {
       );
 
       if (!addFileResponse.ok) {
+        console.error(`Failed to add file ${filePath}: ${addFileResponse.statusText}`)
         throw new Error(`Failed to add file ${filePath}: ${addFileResponse.statusText}`);
       }
     }

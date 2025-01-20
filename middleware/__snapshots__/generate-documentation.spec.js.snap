@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateMarkdown should generate markdown with all fields populated 1`] = `
+{
+  "content": "---
+layout: layouts/component.njk
+title: Test Component
+type: component
+eleventyNavigation:
+  key: Test Component
+  parent: Components
+  excerpt: "This is a brief description."
+---
+# Test Component
+
+## Brief Description
+
+This is a brief description.
+
+## Why this is needed
+
+This is why it is needed.
+
+<img src="{{ 'assets/images/test-image.png | rev | url' }}" alt="" width="100%">
+
+",
+  "filename": "test-component.md",
+}
+`;
+
+exports[`generateMarkdown should handle missing details gracefully 1`] = `
+{
+  "content": "---
+layout: layouts/component.njk
+title: unknown-component
+type: component
+eleventyNavigation:
+  key: unknown-component
+  parent: Components
+  excerpt: ""
+---
+<img src="{{ 'assets/images/test-image.png | rev | url' }}" alt="" width="100%">
+
+",
+  "filename": "unknown-component.md",
+}
+`;
+
+exports[`generateMarkdown should handle missing image data gracefully 1`] = `
+{
+  "content": "---
+layout: layouts/component.njk
+title: Another Component
+type: component
+eleventyNavigation:
+  key: Another Component
+  parent: Components
+  excerpt: "Another brief description."
+---
+# Another Component
+
+## Brief Description
+
+Another brief description.
+
+## Why this is needed
+
+Another reason why it is needed.
+
+",
+  "filename": "another-component.md",
+}
+`;
+
+exports[`generateMarkdown should return minimal markdown if no valid data is provided 1`] = `
+{
+  "content": "---
+layout: layouts/component.njk
+title: unknown-component
+type: component
+eleventyNavigation:
+  key: unknown-component
+  parent: Components
+  excerpt: ""
+---
+",
+  "filename": "unknown-component.md",
+}
+`;
+
+exports[`generateMarkdown should sanitize the filename correctly 1`] = `
+{
+  "content": "---
+layout: layouts/component.njk
+title: Component! With@ Special#Chars
+type: component
+eleventyNavigation:
+  key: Component! With@ Special#Chars
+  parent: Components
+  excerpt: "Brief description here."
+---
+# Component! With@ Special#Chars
+
+## Brief Description
+
+Brief description here.
+
+## Why this is needed
+
+Reason why needed.
+
+",
+  "filename": "component--with--special-chars.md",
+}
+`;

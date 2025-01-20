@@ -14,6 +14,7 @@ const { pushToGitHub, createPullRequest } = require('./middleware/github-api');
 const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
 const { ENV, PORT, COMPONENT_FORM_PAGES } = require('./config');
+const { generateMarkdown } = require("./middleware/generate-documentation");
 
 const app = express();
 const isDev = app.get('env') === 'development';
@@ -82,7 +83,11 @@ app.get('/get-involved/add-new-component/:page', isValidComponentFormPage, getFo
 });
 
 app.post('/get-involved/add-new-component/check-your-answers', async (req, res) => {
-  const branchName = await pushToGitHub(req.session);
+  const { filename: markdownFilename, content: markdownContent} = generateMarkdown(req.session)
+  const markdown = {};
+  markdown[markdownFilename] = markdownContent;
+  const session = { ...req.session, ...markdown };
+  const branchName = await pushToGitHub(session);
   const title = 'test title';
   const description = 'test description';
   await createPullRequest(branchName, title, description);
