@@ -7,4 +7,5 @@
 {% endblock %}
 {% block pageScripts %}
     <script type="module">{% include (page.inputPath | getScriptPath) ignore missing %}</script>
+    <script type="module">{% include (page.inputPath | getScriptPath('support.js')) ignore missing %}</script>
 {% endblock %}

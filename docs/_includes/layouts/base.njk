@@ -38,7 +38,9 @@
         <script type="module"
                 src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL"
                 async></script>
-
+        {% if layout == "layouts/example.njk" %}
+<script src="//unpkg.com/xhook@latest/dist/xhook.min.js"></script>
+{% endif %}
         <script type="module" src="{{ 'assets/javascript/jquery.js' | rev | url }}"></script>
         <script type="module" src="{{ 'assets/javascript/all.js' | rev | url }}"></script>
     </head>
