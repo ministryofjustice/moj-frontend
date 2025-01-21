@@ -3,7 +3,9 @@ services:
   preview:
     build:
       context: .
+      dockerfile: Dockerfile
       target: preview
+    platform: linux/amd64
     image: preview-environment
     container_name: preview-container
     ports:
