@@ -13,8 +13,8 @@ This prototype was created from multiple ‘apply’ journey examples in DWP, Mo
 
 The prototype has 3 parts:
 
-- user needs for internal and public users (for teams to validate)
-- the stages and steps (for people applying and for organisations managing applications)
+- user needs for people applying and for teams managing applications (to be validated)
+- the stages and steps (for the 2 sets of users)
 - user scenarios
 
 This is part of [work to develop service patterns across government](/service-patterns/).  
@@ -108,9 +108,12 @@ The cross-government work to identify an ‘apply’ service pattern followed a 
 
 ## The parts of a service pattern
 
-Service patterns can be broken down into service sub-patterns, for example prepare to apply. Each sub-pattern has steps, for example check eligibility. These have been identified for people applying and for the organisations managing these applications. Some of these are marked as low confidence.
+Service patterns can be broken down into service sub-patterns, for example prepare to apply. Each sub-pattern has steps, for example check eligibility.
+You do not need to use all of the sub-patterns and steps. Consider which are appropriate for your service.
 
-We're looking for feedback to validate whether these should be accepted, as well as on the naming of these layers below the service patterns.
+These have been identified for people applying and for the organisations managing these applications. Some of these are marked as low confidence.
+
+We're particularly interested in feedback on the structure and the naming of the layers beneath service patterns.
 
 ### People applying: sub-patterns and steps
 
