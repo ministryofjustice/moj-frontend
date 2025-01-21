@@ -28,7 +28,8 @@ gulp.task(
 gulp.task(
   "docs:copy-vendor", () => {
     return gulp.src([
-      "src/moj/vendor/**/*.js"
+      "src/moj/vendor/**/*.js",
+      "docs/assets/javascript/vendor/**/*.js"
     ])
     .pipe(gulp.dest("public/assets/javascript"))
   }

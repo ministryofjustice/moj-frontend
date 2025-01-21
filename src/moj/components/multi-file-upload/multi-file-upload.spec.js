@@ -87,6 +87,10 @@ describe("Multi-file upload", () => {
 
   test("initialises with enhanced class", () => {
     expect(component).toHaveClass("moj-multi-file-upload--enhanced");
+const feedbackContainer = component.querySelector(
+        ".moj-multi-file__uploaded-files",
+      );
+      expect(feedbackContainer).toHaveClass("moj-hidden");
   });
 
   test("creates dropzone with correct text", () => {
@@ -204,14 +208,18 @@ describe("Multi-file upload", () => {
     });
 
     //  this fails as the component still attempts to access response.file (line 149)
-    test.skip("handles 200 status with error in response json", async () => {
+    test("handles 200 status with error in response json", async () => {
       server.respondWith("POST", "/upload", [
         200,
         { "Content-Type": "application/json" },
         JSON.stringify({
           error: {
             message: "Upload failed",
-          },
+},
+      file: {
+        filename: "test",
+        originalname: "test.txt",
+      },
         }),
       ]);
 

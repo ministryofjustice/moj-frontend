@@ -263,8 +263,8 @@ module.exports = function (eleventyConfig) {
     },
   );
 
-  eleventyConfig.addFilter("getScriptPath", function (inputPath) {
-    return inputPath.split("/").slice(1, -1).join("/") + "/script.js";
+  eleventyConfig.addFilter("getScriptPath", function (inputPath, filename="script.js") {
+    return inputPath.split("/").slice(1, -1).join("/") + "/" + filename;
   });
 
   eleventyConfig.addFilter("getStylesPath", function (inputPath) {
