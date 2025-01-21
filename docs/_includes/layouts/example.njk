@@ -6,6 +6,16 @@
     <div class="app-example__wrapper govuk-!-margin-6">{{ content | safe }}</div>
 {% endblock %}
 {% block pageScripts %}
-    <script type="module">{% include (page.inputPath | getScriptPath) ignore missing %}</script>
-    <script type="module">{% include (page.inputPath | getScriptPath('support.js')) ignore missing %}</script>
+    {% set componentScript %}
+        {% include (page.inputPath | getScriptPath) ignore missing %}
+    {% endset %}
+    {% set supportScript %}
+        {% include (page.inputPath | getScriptPath('support.js')) ignore missing %}
+    {% endset %}
+    {% if componentScript | trim | length > 0 %}
+        <script type="module">{{ componentScript | safe }}</script>
+    {% endif %}
+    {% if supportScript | trim | length > 0 %}
+        <script type="module">{{ supportScript | safe }}</script>
+    {% endif %}
 {% endblock %}
