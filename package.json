@@ -26,7 +26,9 @@
     "test:middleware": "jest middleware/",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
-    "start:dev-and-test": "concurrently --kill-others \"npm run dev\" \"npm run cypress:headless\""
+    "start:dev-and-test": "concurrently --kill-others \"npm run dev\" \"npm run cypress:headless\"",
+    "dev:docker:preview:up": "docker-compose -f docker-compose.preview.yml up --build",
+    "dev:docker:preview:down": "docker-compose -f docker-compose.preview.yml down"
   },
   "repository": {
     "type": "git",
