@@ -1,7 +1,7 @@
 let requestCount = 0;
 let fileCount = 0;
-let droppedFiles;
-let pickedFiles;
+let droppedFiles = [];
+let pickedFiles = [];
 let input;
 
 const successResponse = (filename) => {
@@ -45,11 +45,22 @@ const deleteResponse = {
 
 document.addEventListener("DOMContentLoaded", () => {
   const dropzone = document.querySelector(".moj-multi-file-upload__dropzone");
+  // we listen for the change event on the container as the input gets replaced
+  // each time when files are picked
+  dropzone.addEventListener(
+    "change",
+    () => {
+      input = document.querySelector("#documents");
+      pickedFiles = Array.from(input.files);
+    },
+    true,
+  );
+
   // Use capture to ensure this fires *before* the event registered in the component triggers the uploads
   dropzone.addEventListener(
     "drop",
     (e) => {
-      droppedFiles = e.dataTransfer.files;
+      droppedFiles = Array.from(e.dataTransfer.files);
     },
     true,
   );
@@ -57,8 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 if (typeof xhook !== "undefined") {
   xhook.before(function (request, callback) {
-    input = document.querySelector("#documents");
-    pickedFiles = input.files;
     const files = pickedFiles.length > 0 ? pickedFiles : droppedFiles;
     const file = files[fileCount];
 
@@ -103,8 +112,10 @@ if (typeof xhook !== "undefined") {
         tick(requestCount);
 
         // reset file count if we're on the last one
-        if (fileCount == files.length - 1) {
+        if (fileCount == files.length) {
           fileCount = 0;
+          pickedFiles = [];
+          droppedFiles = [];
         }
 
         break;
