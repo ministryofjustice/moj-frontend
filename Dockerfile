@@ -14,6 +14,7 @@ COPY docs docs
 COPY src src
 COPY package package
 COPY .eleventy.js .eleventy.js
+COPY .eleventyignore .eleventyignore
 COPY gulp gulp
 COPY gulpfile.js gulpfile.js
 COPY README.md README.md
