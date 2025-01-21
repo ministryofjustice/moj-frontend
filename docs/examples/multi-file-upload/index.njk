@@ -10,8 +10,7 @@ require_js: assets/javascript/xhook.min.js
 {%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
 {%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+
 
     {% if errorSummary.items.length %}
       {{ govukErrorSummary({
@@ -54,5 +53,9 @@ require_js: assets/javascript/xhook.min.js
         text: 'Continue'
       })}}
     </form>
-  </div>
-</div>
+
+
+<!--no include-->
+<p class="govuk-body-s">This example component simulates file uploads in order to demonstrate
+functionality. <br>No files are uploaded. Every third file uploaded will
+simulate a failure in order to show the error state.</p>
