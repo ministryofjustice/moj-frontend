@@ -27,6 +27,7 @@
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
     "start:dev-and-test": "concurrently --kill-others \"npm run dev\" \"npm run cypress:headless\"",
+    "dev:docker:preview:build": "docker-compose -f docker-compose.preview.yml build --no-cache",
     "dev:docker:preview:up": "docker-compose -f docker-compose.preview.yml up --build",
     "dev:docker:preview:down": "docker-compose -f docker-compose.preview.yml down"
   },
