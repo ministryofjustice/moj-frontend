@@ -26,7 +26,7 @@ const errorResponse = (filename) => {
     status: 200,
     text: {
       error: {
-        message: "Upload failed",
+        message: `${filename} upload failed`,
       },
       file: {
         filename: filename,
@@ -93,9 +93,9 @@ if (typeof xhook !== "undefined") {
           } else {
             // Fail every third upload
             if (requestNum % 3 === 0 && loaded > 50) {
-              callback(errorResponse(file.name));
+              callback(errorResponse(file?.name || "test.txt"));
             } else {
-              callback(successResponse(file.name));
+              callback(successResponse(file?.name || "text.txt"));
             }
           }
         };
