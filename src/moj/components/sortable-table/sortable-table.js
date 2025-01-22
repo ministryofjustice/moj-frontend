@@ -118,7 +118,7 @@ MOJFrontend.SortableTable.prototype.sort = function(rows, columnNumber, sortDire
 
 MOJFrontend.SortableTable.prototype.getCellValue = function(cell) {
 	var val = cell.attr('data-sort-value') || cell.html();
-
+	
 	var valAsNumber = Number(val)
 	return isNaN(valAsNumber) ? val : parseFloat(val)
 };

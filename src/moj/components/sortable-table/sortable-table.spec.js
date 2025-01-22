@@ -31,7 +31,7 @@ const createComponent = (options = {}) => {
             <td class="govuk-table__cell" data-sort-value="8850">8,850 meters</td>
             <td class="govuk-table__cell">Asia</td>
             <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1953">1953</td>
-            <td class="govuk-table__cell">1</td>
+            <td class="govuk-table__cell">1Tallest</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">Kilimanjaro</td>
@@ -45,7 +45,7 @@ const createComponent = (options = {}) => {
             <td class="govuk-table__cell" data-sort-value="8611">8,611 meters</td>
             <td class="govuk-table__cell">Asia</td>
             <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1889">1954</td>
-            <td class="govuk-table__cell">2K</td>
+            <td class="govuk-table__cell">1NearlyTallest</td>
           </tr>
         </tbody>
       </table>
@@ -155,7 +155,7 @@ describe("sortable table", () => {
     const ascValues = Array.from(ascCells).map(cell => cell.textContent.trim()); 
     // Values converted to numbers in getCellValue function for comparison
 
-    expect(ascValues).toEqual(['', '1', '2K', 'KiliJ89']);
+    expect(ascValues).toEqual(['1NearlyTallest', '1Tallest', 'KiliJ89', '']);
     expect(nicknameHeaderButton.parentElement).toHaveAttribute('aria-sort', 'ascending');
   });
 
