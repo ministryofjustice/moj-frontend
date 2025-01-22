@@ -28,23 +28,7 @@ app.use(
     })
 );
 
-const filters = {
-  rev: function (filepath) {
-    if (ENV === 'production' || ENV === 'staging') {
-      const manifest = JSON.parse(fs.readFileSync('public/assets/rev-manifest.json', 'utf8'));
-      const revision = manifest[filepath];
-      return `${revision || filepath}`;
-    } else {
-      return `${filepath}`;
-    }
-  },
-  url: function (filepath) {
-    return `/${filepath}`;
-  },
-  eleventyNavigation: function () {
-    return null; // todo this needs to be handled; no navigation for now
-  },
-};
+const filters = {};
 
 app.set('views', [
   path.join(__dirname, 'docs/community/pages'),

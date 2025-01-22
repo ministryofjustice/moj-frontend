@@ -109,45 +109,6 @@ module.exports = function (eleventyConfig) {
     });
   });
 
-  eleventyConfig.addShortcode("form", function (file, variables = '') {
-    try {
-      // Read the file directly
-      const filePath = path.join(__dirname, "docs", file);
-      const fileContent = fs.readFileSync(filePath, "utf8").trim();
-
-      // Parse front matter and extract Nunjucks code
-      const { data, content: nunjucksCode } = matter(fileContent);
-
-      let parsedVariables = {}
-
-      if(variables !== '') {
-        // Turn variables into an object
-        const fixedVariables = variables
-          .replace(/'/g, '"')
-          .replace(/(\w+):/g, '"$1":');
-
-        parsedVariables = JSON.parse(fixedVariables);
-      }
-
-      const context = { ...data, ...parsedVariables };
-
-      // Render the Nunjucks code as HTML (renderString directly processes content)
-      const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode.trim(), context);
-
-      const htmlCode = beautifyHTML(rawHtmlCode.trim(), {
-        indent_size: 2,
-        end_with_newline: true,
-        max_preserve_newlines: 1,
-        unformatted: ["code", "pre", "em", "strong"],
-      });
-
-      return htmlCode;
-    } catch (error) {
-      console.error("Error in form shortcode:", error);
-      return `<div>Error loading file: ${file}</div>`;
-    }
-  });
-
   eleventyConfig.addShortcode(
     "dateInCurrentMonth",
     (day) => `${day}/${new Date().getMonth() + 1}/${new Date().getFullYear()}`,
