@@ -15,6 +15,7 @@ const createComponent = (options = {}) => {
             <th scope="col" class="govuk-table__header" aria-sort="none">Elevation</th>
             <th scope="col" class="govuk-table__header" aria-sort="none">Continent</th>
             <th scope="col" class="govuk-table__header govuk-table__header--numeric" aria-sort="none">First summit</th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">Test nickname</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
@@ -23,18 +24,28 @@ const createComponent = (options = {}) => {
             <td class="govuk-table__cell" data-sort-value="6961">6,961 meters</td>
             <td class="govuk-table__cell">South America</td>
             <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1897">1897</td>
+            <td class="govuk-table__cell"></td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">Everest</td>
             <td class="govuk-table__cell" data-sort-value="8850">8,850 meters</td>
             <td class="govuk-table__cell">Asia</td>
             <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1953">1953</td>
+            <td class="govuk-table__cell">1</td>
           </tr>
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">Kilimanjaro</td>
             <td class="govuk-table__cell" data-sort-value="5895">5,895 meters</td>
             <td class="govuk-table__cell">Africa</td>
             <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1889">1889</td>
+            <td class="govuk-table__cell">KiliJ89</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">K2</td>
+            <td class="govuk-table__cell" data-sort-value="8611">8,611 meters</td>
+            <td class="govuk-table__cell">Asia</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="1889">1954</td>
+            <td class="govuk-table__cell">2K</td>
           </tr>
         </tbody>
       </table>
@@ -85,7 +96,7 @@ describe("sortable table", () => {
     const values = Array.from(cells).map(cell => cell.textContent.trim());
 
     expect(component.querySelector('th')).toHaveAttribute('aria-sort', 'ascending');
-    expect(values).toEqual(['Aconcagua', 'Everest', 'Kilimanjaro']);
+    expect(values).toEqual(['Aconcagua', 'Everest', 'K2', 'Kilimanjaro']);
   });
 
   test("sorts string column in descending order when clicked", async () => {
@@ -97,7 +108,7 @@ describe("sortable table", () => {
     const descCells = tbody.querySelectorAll("tr td:first-child");
     const descValues = Array.from(descCells).map(cell => cell.textContent.trim());
 
-    expect(descValues).toEqual(['Kilimanjaro', 'Everest', 'Aconcagua']);
+    expect(descValues).toEqual(['Kilimanjaro', 'K2', 'Everest', 'Aconcagua']);
     expect(nameHeaderButton.parentElement).toHaveAttribute('aria-sort', 'descending');
 
     await user.click(nameHeaderButton);
@@ -105,7 +116,7 @@ describe("sortable table", () => {
     const ascCells = tbody.querySelectorAll("tr td:first-child");
     const ascValues = Array.from(ascCells).map(cell => cell.textContent.trim());
 
-    expect(ascValues).toEqual(['Aconcagua', 'Everest', 'Kilimanjaro']);
+    expect(ascValues).toEqual(['Aconcagua', 'Everest', 'K2', 'Kilimanjaro']);
     expect(nameHeaderButton.parentElement).toHaveAttribute('aria-sort', 'ascending');
   });
 
@@ -120,7 +131,7 @@ describe("sortable table", () => {
       parseInt(cell.getAttribute("data-sort-value"))
     );
 
-    expect(ascValues).toEqual([5895, 6961, 8850]);
+    expect(ascValues).toEqual([5895, 6961, 8611, 8850]);
     expect(elevationHeaderButton.parentElement).toHaveAttribute('aria-sort', 'ascending');
 
     await user.click(elevationHeaderButton);
@@ -130,8 +141,22 @@ describe("sortable table", () => {
       parseInt(cell.getAttribute("data-sort-value"))
     );
 
-    expect(descValues).toEqual([8850, 6961,5895]);
+    expect(descValues).toEqual([8850, 8611, 6961, 5895]);
     expect(elevationHeaderButton.parentElement).toHaveAttribute('aria-sort', 'descending');
+  });
+
+  test('sorts mixed data column without specified data-sort-value', async () => {
+    const nicknameHeaderButton = queryByRole(component,"button", { name: "Test nickname"});
+    const tbody = component.querySelector("tbody");
+
+    await user.click(nicknameHeaderButton);
+
+    const ascCells = tbody.querySelectorAll("tr td:nth-child(5)");
+    const ascValues = Array.from(ascCells).map(cell => cell.textContent.trim()); 
+    // Values converted to numbers in getCellValue function for comparison
+
+    expect(ascValues).toEqual(['', '1', '2K', 'KiliJ89']);
+    expect(nicknameHeaderButton.parentElement).toHaveAttribute('aria-sort', 'ascending');
   });
 
   test("updates status message when sorting", async () => {
@@ -277,7 +302,7 @@ describe("sortable table options", () => {
       parseInt(cell.getAttribute("data-sort-value"))
     );
 
-    expect(values).toEqual([5895, 6961, 8850]);
+    expect(values).toEqual([5895, 6961, 8611, 8850]);
     expect(elevationHeaderButton.parentElement).toHaveAttribute('aria-sort', 'ascending');
   });
 });
