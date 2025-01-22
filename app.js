@@ -13,7 +13,7 @@ const session = require('express-session');
 const { pushToGitHub, createPullRequest } = require('./middleware/github-api');
 const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
-const { ENV, PORT, COMPONENT_FORM_PAGES } = require('./config');
+const { ENV, APP_PORT, COMPONENT_FORM_PAGES } = require('./config');
 const { generateMarkdown } = require("./middleware/generate-documentation");
 
 const app = express();
@@ -117,6 +117,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(APP_PORT, () => {
+  console.log(`Server is running on http://localhost:${APP_PORT}`);
 });
