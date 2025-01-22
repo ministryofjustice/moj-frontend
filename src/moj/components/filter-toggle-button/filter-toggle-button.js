@@ -18,7 +18,7 @@ MOJFrontend.FilterToggleButton.prototype.setupResponsiveChecks = function() {
 };
 
 MOJFrontend.FilterToggleButton.prototype.createToggleButton = function() {
-  this.menuButton = $('<button class="govuk-button '+this.options.toggleButton.classes+'" type="button" aria-haspopup="true" aria-expanded="false">'+this.options.toggleButton.showText+'</button>');
+  this.menuButton = $(`<button class="govuk-button ${this.options.toggleButton.classes}" type="button" aria-haspopup="true" aria-expanded="false">${this.options.toggleButton.showText}</button>`);
   this.menuButton.on('click', $.proxy(this, 'onMenuButtonClick'));
   this.container.append(this.menuButton);
 };
@@ -43,7 +43,7 @@ MOJFrontend.FilterToggleButton.prototype.enableSmallMode = function() {
 
 MOJFrontend.FilterToggleButton.prototype.addCloseButton = function() {
   if(this.options.closeButton) {
-    this.closeButton = $('<button class="moj-filter__close" type="button">'+this.options.closeButton.text+'</button>');
+    this.closeButton = $(`<button class="moj-filter__close" type="button">${this.options.closeButton.text}</button>`);
     this.closeButton.on('click', $.proxy(this, 'onCloseClick'));
     $(this.options.closeButton.container).append(this.closeButton);
   }
@@ -78,7 +78,7 @@ MOJFrontend.FilterToggleButton.prototype.onMenuButtonClick = function() {
 };
 
 MOJFrontend.FilterToggleButton.prototype.toggle = function() {
-  if(this.menuButton.attr('aria-expanded') == 'false') {
+  if(this.menuButton.attr('aria-expanded') === 'false') {
     this.showMenu();
     this.filterContainer.get(0).focus();
   } else {
