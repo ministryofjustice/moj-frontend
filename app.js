@@ -31,8 +31,7 @@ app.use(
 const filters = {};
 
 app.set('views', [
-  path.join(__dirname, 'docs/community/pages'),
-  path.join(__dirname, 'docs'),
+  path.join(__dirname, 'views/community/pages'),
   path.join(__dirname, 'node_modules/govuk-frontend/dist'),
   path.join(__dirname, 'node_modules/@ministryofjustice/frontend'),
 ]);
