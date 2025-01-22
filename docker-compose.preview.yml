@@ -16,4 +16,25 @@ services:
       - ./public:/usr/share/nginx/html:ro
     environment:
       - ENV=staging
+    networks:
+      - app-network
+    depends_on:
+      - express-app
     restart: unless-stopped
+
+  express-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: express-app
+    platform: linux/amd64
+    image: express-app-environment
+    container_name: express-app-container
+    ports:
+      - "3001:3001"
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:

@@ -3,7 +3,7 @@ const config = {
   GITHUB_TOKEN: process.env.GITHUB_TOKEN || 'your-default-github-token',
   GITHUB_REPO_OWNER: process.env.GITHUB_REPO_OWNER || 'your-default-repo-owner',
   GITHUB_REPO_NAME: process.env.GITHUB_REPO_NAME || 'your-default-repo-name',
-  PORT: process.env.PORT || 3000,
+  PORT: process.env.PORT || 3001, //todo rename?
   ENV: process.env.ENV || 'development',
   COMPONENT_FORM_PAGES: [
     'component-details',

@@ -72,3 +72,8 @@ FROM nginxinc/nginx-unprivileged:alpine AS production
 EXPOSE 3000
 COPY docker/nginx-production.conf /etc/nginx/conf.d/default.conf
 COPY --from=production-build /app/public /usr/share/nginx/html
+
+FROM base AS express-app
+COPY . .
+EXPOSE 3001
+CMD ["node", "app.js"]
