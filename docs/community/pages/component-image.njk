@@ -1,6 +1,6 @@
 {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
-{% extends "_includes/layouts/base.njk" %}
+{% extends "base.njk" %}
 {% block content %}
 <div class="app-layout__content">
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">

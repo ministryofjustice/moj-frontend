@@ -12,6 +12,7 @@ const releasePackage = require("./package/package.json");
 const sass = require("sass");
 const esbuild = require('esbuild');
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const cheerio = require("cheerio");
 
 module.exports = function (eleventyConfig) {
 
@@ -320,6 +321,36 @@ module.exports = function (eleventyConfig) {
       }
     }
   )
+
+  // Create base.njk for community form based on the add-new-component page (to use the correct navigation)
+  eleventyConfig.on("afterBuild", () => {
+    try {
+      const sourceFile = path.join(__dirname, "public/get-involved/add-new-component/index.html");
+      const destinationFile = path.join(__dirname, "docs/community/pages/base.njk");
+
+      const htmlContent = fs.readFileSync(sourceFile, "utf8");
+
+      const $ = cheerio.load(htmlContent);
+      const nunjucksBlock = `
+      {% block content %}
+          {{ content | safe }}
+      {% endblock %}
+            `.trim();
+      $("#main-content").html(nunjucksBlock);
+
+      const modifiedContent = beautifyHTML($.html(), {
+        indent_size: 2,
+        end_with_newline: true,
+        max_preserve_newlines: 1,
+        unformatted: ["code", "pre", "em", "strong"],
+      });
+
+      fs.writeFileSync(destinationFile, modifiedContent);
+      console.log(`Generated base.njk at ${destinationFile}`);
+    } catch (error) {
+      console.error("Error during base.njk generation:", error);
+    }
+  });
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget("src/moj/components/**/*.njk");
