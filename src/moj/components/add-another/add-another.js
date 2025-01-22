@@ -13,10 +13,10 @@ MOJFrontend.AddAnother = function(container) {
 };
 
 MOJFrontend.AddAnother.prototype.onAddButtonClick = function(e) {
-	var item = this.getNewItem();
+	const item = this.getNewItem();
 	this.updateAttributes(this.getItems().length, item);
 	this.resetItem(item);
-	var firstItem = this.getItems().first();
+	const firstItem = this.getItems().first();
 	if(!this.hasRemoveButton(firstItem)) {
 		this.createRemoveButton(firstItem);
 	}
@@ -33,7 +33,7 @@ MOJFrontend.AddAnother.prototype.getItems = function() {
 };
 
 MOJFrontend.AddAnother.prototype.getNewItem = function() {
-	var item = this.getItems().first().clone();
+	const item = this.getItems().first().clone();
 	if(!this.hasRemoveButton(item)) {
 		this.createRemoveButton(item);
 	}
@@ -42,12 +42,12 @@ MOJFrontend.AddAnother.prototype.getNewItem = function() {
 
 MOJFrontend.AddAnother.prototype.updateAttributes = function(index, item) {
 	item.find('[data-name]').each(function(i, el) {
-    var originalId = el.id
+    const originalId = el.id
 
 		el.name = $(el).attr('data-name').replace(/%index%/, index);
 		el.id = $(el).attr('data-id').replace(/%index%/, index);
 
-    var label = $(el).siblings('label')[0] || $(el).parents('label')[0] || item.find('[for="' + originalId + '"]')[0];
+const label = $(el).siblings('label')[0] || $(el).parents('label')[0] || item.find(`[for="${originalId}"]`)[0];
 		label.htmlFor = el.id;
 	});
 };
@@ -58,7 +58,7 @@ MOJFrontend.AddAnother.prototype.createRemoveButton = function(item) {
 
 MOJFrontend.AddAnother.prototype.resetItem = function(item) {
 	item.find('[data-name], [data-id]').each(function(index, el) {
-		if(el.type == 'checkbox' || el.type == 'radio') {
+		if(el.type === 'checkbox' || el.type === 'radio') {
 			el.checked = false;
 		} else {
 			el.value = '';
@@ -68,7 +68,7 @@ MOJFrontend.AddAnother.prototype.resetItem = function(item) {
 
 MOJFrontend.AddAnother.prototype.onRemoveButtonClick = function(e) {
 	$(e.currentTarget).parents('.moj-add-another__item').remove();
-	var items = this.getItems();
+	const items = this.getItems();
 	if(items.length === 1) {
 		items.find('.moj-add-another__remove-button').remove();
 	}
