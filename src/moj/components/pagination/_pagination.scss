@@ -36,6 +36,7 @@
 .moj-pagination__results {
   @include govuk-font(19);
   margin-top: 0;
+  padding: govuk-spacing(1);
   @include govuk-media-query($from: desktop) {
     display: inline-block;
     margin-bottom: 0;
@@ -109,6 +110,3 @@
 
 }
 
-.moj-pagination__results {
-  padding: govuk-spacing(1);
-}

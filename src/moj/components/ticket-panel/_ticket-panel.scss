@@ -11,10 +11,12 @@
     @include govuk-media-query($from: desktop) {
       display: flex;
       flex-wrap: nowrap;
+    }
+  }
 
-      & > * + * {
-        margin-left: govuk-spacing(3);
-      }
+  &--inline > * + * {
+    @include govuk-media-query($from: desktop) {
+      margin-left: govuk-spacing(3);
     }
   }
 

@@ -193,6 +193,7 @@ $moj-datepicker-mid-grey: #949494;
  Allow that to be overriden by the input width modifiers or global width overrides.
  Width classes less than 10ch not included as that is narrower than a date.
 */
+// stylelint-disable selector-no-qualifying-type
 .moj-datepicker input {
   max-width: 11.5em; // govuk-input--width-10
 
@@ -265,6 +266,7 @@ $moj-datepicker-mid-grey: #949494;
     }
   }
 }
+// stylelint-enable selector-no-qualifying-type
 
 .moj-datepicker__wrapper {
   position: relative;

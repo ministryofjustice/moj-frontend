@@ -38,6 +38,7 @@
 
   button {
     @include govuk-font($size: 24, $weight: bold);
+    appearance: none;
     box-sizing: border-box;
     display: block;
     position: relative;
@@ -68,14 +69,8 @@
       background-position: 0 0;
     }
 
-    &[aria-expanded="true"] {
-      &::after {
+    &[aria-expanded="true"]::after {
         background-position: 16px 16px;
-      }
-    }
-
-    &:focus {
-      // @include govuk-focusable;
     }
 
   }
@@ -92,6 +87,7 @@
 
 
 .moj-filter__close {
+  @include govuk-font(19);
   margin: 0;
   padding: 0;
   border: none;
@@ -101,6 +97,7 @@
   background-color: transparent;
   cursor: pointer; // I know Adam won’t like this
   -webkit-appearance: none;
+    appearance: none;
 
 
   &:focus {
@@ -129,12 +126,6 @@
   }
 
 }
-
-
-.moj-filter__close {
-  @include govuk-font(19);
-}
-
 
 .moj-filter__selected {
   padding: govuk-spacing(4);

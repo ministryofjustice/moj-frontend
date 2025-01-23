@@ -1,3 +1,4 @@
+// stylelint-disable
 .js-enabled {
   .app-navigation {
     &__list {
@@ -209,7 +210,6 @@
       padding-left: unset;
 
       a:not(:focus)::before {
-        // stylelint-disable-next-line declaration-no-important
         background-color: unset !important;
       }
     }
@@ -338,3 +338,4 @@ body:not(.js-enabled) {
 .govuk-tabs__list-item {
   background-color: unset;
 }
+// stylelint-enable

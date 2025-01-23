@@ -112,7 +112,7 @@
     vertical-align: middle;
   }
 }
-
+// stylelint-disable-next-line selector-no-qualifying-type
 span.moj-header__link {
   &:hover {
     border-color: transparent;
@@ -121,7 +121,7 @@ span.moj-header__link {
 
 // Navigation
 .moj-header__navigation {
-  margin-top: govuk-spacing(1)-2px;
+  margin-top: govuk-spacing(1) - 2px;
   color: govuk-colour("white");
 }
 

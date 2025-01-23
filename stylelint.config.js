@@ -20,6 +20,7 @@ module.exports = {
   plugins: ['stylelint-order'],
   rules: {
     'scss/comment-no-loud': null,
+    'scss/at-extend-no-missing-placeholder': null,
 
     /**
      * Use the same rule ordering as GOVUK Frontend
