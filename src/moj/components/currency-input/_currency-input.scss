@@ -6,6 +6,7 @@
   @include govuk-font(19);
   background-color: govuk-colour("light-grey");
   position: absolute;
+  // stylelint-disable-next-line declaration-no-important
   margin: 2px 0 0 2px !important;
   padding: 5.5px 12px;
   border-right: 2px solid govuk-colour("black");
@@ -19,10 +20,10 @@
   @include govuk-media-query($until: tablet) {
     padding: 8px 12px;
   }
-
 }
 
 .moj-input__currency {
   margin: 0;
   padding-left: 40px;
 }
+

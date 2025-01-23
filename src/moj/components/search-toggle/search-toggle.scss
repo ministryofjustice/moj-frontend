@@ -28,7 +28,9 @@
   &:focus {
     background-color: $govuk-focus-colour;
     color: $govuk-focus-text-colour;
-    box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+    box-shadow:
+      0 -2px $govuk-focus-colour,
+      0 4px $govuk-focus-text-colour;
     outline: none;
     position: relative;
     z-index: 1;
@@ -39,7 +41,9 @@
   padding: govuk-spacing(3);
 
   @include govuk-media-query($until: desktop) {
+    // stylelint-disable-next-line declaration-no-important
     padding-left: 0 !important;
+    // stylelint-disable-next-line declaration-no-important
     padding-right: 0 !important;
   }
 }
@@ -47,6 +51,7 @@
 // JS enabled
 .js-enabled .moj-search--toggle {
   @include govuk-media-query($until: desktop) {
+    // stylelint-disable-next-line declaration-no-important
     padding-top: 0 !important;
   }
 }

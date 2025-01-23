@@ -15,6 +15,7 @@ $brand-colour: #220051;
 }
 
 .app-masthead .govuk-button--start {
+  // stylelint-disable-next-line declaration-no-important
   color: $brand-colour !important;
   background-color: govuk-colour("white");
 }

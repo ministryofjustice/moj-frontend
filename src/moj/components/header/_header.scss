@@ -20,7 +20,6 @@
   @include govuk-media-query($from: desktop) {
     float: left;
   }
-
 }
 
 .moj-header__logotype-crown {
@@ -28,7 +27,6 @@
   top: -4px;
   margin-right: govuk-spacing(1);
   vertical-align: top;
-
 }
 
 .moj-header__logotype-crest {
@@ -44,10 +42,10 @@
   @include govuk-media-query($from: desktop) {
     float: right;
   }
-
 }
 
-.moj-header__link, .moj-header__link > a {
+.moj-header__link,
+.moj-header__link > a {
   @include govuk-link-common;
   @include govuk-link-style-default;
   border-bottom: 1px solid transparent;
@@ -113,7 +111,6 @@
   }
 }
 
-
 span.moj-header__link {
   &:hover {
     border-color: transparent;
@@ -141,7 +138,6 @@ span.moj-header__link {
   &:last-child {
     margin-right: 0;
   }
-
 }
 
 .moj-header__navigation-link {
@@ -156,15 +152,15 @@ span.moj-header__link {
   }
 
   &:hover {
+    // stylelint-disable-next-line declaration-no-important
     text-decoration: underline !important;
   }
 
   &:focus {
     color: govuk-colour("black");
   }
-
 }
 
-.moj-header__navigation-link[aria-current=page] {
+.moj-header__navigation-link[aria-current="page"] {
   text-decoration: none;
 }

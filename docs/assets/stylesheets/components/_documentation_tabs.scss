@@ -200,6 +200,7 @@
       }
       padding-left: unset;
       a:not(:focus):before {
+        // stylelint-disable-next-line declaration-no-important
         background-color: unset !important;
       }
     }

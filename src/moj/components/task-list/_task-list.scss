@@ -14,7 +14,7 @@
 
 .moj-task-list__section {
   display: table;
-  @include govuk-font($size:24, $weight: bold);
+  @include govuk-font($size: 24, $weight: bold);
 }
 
 .moj-task-list__section-number {
@@ -38,6 +38,7 @@
 
 .moj-task-list__item {
   border-bottom: 1px solid $govuk-border-colour;
+  // stylelint-disable-next-line declaration-no-important
   margin-bottom: 0 !important;
   padding-top: govuk-spacing(2);
   padding-bottom: govuk-spacing(2);

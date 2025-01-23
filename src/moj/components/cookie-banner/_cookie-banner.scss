@@ -13,6 +13,7 @@
   background-color: govuk-colour("white");
 
   &--show {
+    // stylelint-disable-next-line declaration-no-important
     display: block !important;
   }
 
@@ -36,6 +37,7 @@
 
 @include govuk-media-query($media-type: print) {
   .moj-cookie-banner {
+    // stylelint-disable-next-line declaration-no-important
     display: none !important;
   }
 }

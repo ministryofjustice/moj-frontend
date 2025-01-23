@@ -35,8 +35,11 @@
 }
 
 .moj-search--inline {
+  // stylelint-disable-next-line declaration-no-important
   padding: govuk-spacing(2) 0 !important;
   @include govuk-media-query($from: desktop) {
+    // stylelint-disable-next-line declaration-no-important
     padding: 0 !important;
   }
 }
+
