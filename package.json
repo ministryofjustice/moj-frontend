@@ -107,7 +107,10 @@
     "npm-run-all2": "^6.0.0",
     "postcss": "^8.4.31",
     "semantic-release": "^23.0.0",
-    "sinon": "^19.0.2"
+    "sinon": "^19.0.2",
+    "stylelint": "^16.13.2",
+    "stylelint-config-gds": "^2.0.0",
+    "stylelint-order": "^6.0.4"
   },
   "config": {
     "commitizen": {
