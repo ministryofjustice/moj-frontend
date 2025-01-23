@@ -2,17 +2,17 @@
   .app-navigation {
     &__list {
       @include govuk-media-query($from: tablet) {
-        box-shadow: inset 0 -1px 0 $govuk-border-colour;
         width: 100%;
+        box-shadow: inset 0 -1px 0 $govuk-border-colour;
       }
     }
 
     &__item {
       @include govuk-media-query($from: tablet) {
-        box-shadow: none;
         display: inline-block;
-        margin-right: govuk-spacing(4);
         margin-top: 0;
+        margin-right: govuk-spacing(4);
+        box-shadow: none;
       }
     }
 
@@ -22,30 +22,33 @@
       }
 
 
-      &:focus:before {
+      &:focus::before {
         @include govuk-media-query($from: tablet) {
-          height: 5px;
           width: 100%;
+          height: 5px;
         }
       }
     }
+
     &__link[aria-current="page"] {
-      &:before {
+      &::before {
         @include govuk-media-query($from: tablet) {
-          height: 5px;
           width: 100%;
+          height: 5px;
         }
       }
     }
+
     .govuk-tabs__list-item--selected {
       a {
         @include govuk-media-query($from: tablet) {
           padding-left: 0;
         }
-        &:focus:before {
+
+        &:focus::before {
           @include govuk-media-query($from: tablet) {
-            height: 5px;
             width: 100%;
+            height: 5px;
           }
         }
 
@@ -58,17 +61,17 @@
   margin-bottom: govuk-spacing(7);
 
   &__list {
-    font-size: 0; // Removes white space when using inline-block on child element.
-    list-style: none;
     margin: 0;
     padding: 0;
+    font-size: 0; // Removes white space when using inline-block on child element.
+    list-style: none;
   }
 
   &__item {
     @include govuk-font(19);
-    box-shadow: inset 0 -1px 0 $govuk-border-colour;
     display: block;
     margin-top: -1px;
+    box-shadow: inset 0 -1px 0 $govuk-border-colour;
 
     &:last-child {
       box-shadow: none;
@@ -77,11 +80,11 @@
 
   &__link {
     display: block;
+    position: relative;
     padding-top: 12px;
     padding-bottom: 12px;
     padding-left: govuk-spacing(3);
     text-decoration: none;
-    position: relative;
 
     &:link,
     &:visited {
@@ -93,44 +96,44 @@
     }
 
     &:focus {
-      color: govuk-colour("black");
       position: relative;
+      color: govuk-colour("black");
       box-shadow: none;
     }
 
-    &:focus:before {
-      background-color: govuk-colour("black");
+    &:focus::before {
       content: "";
       display: block;
-      height: 100%;
       position: absolute;
       bottom: 0;
       left: 0;
       width: 5px;
+      height: 100%;
+      background-color: govuk-colour("black");
     }
   }
 
   &__link[aria-current="page"] {
-    color: $govuk-link-active-colour;
     position: relative;
+    color: $govuk-link-active-colour;
     text-decoration: none;
 
-    &:before {
-      background-color: $govuk-link-colour;
+    &::before {
       content: "";
       display: block;
-      height: 100%;
       position: absolute;
       bottom: 0;
       left: 0;
       width: 5px;
+      height: 100%;
+      background-color: $govuk-link-colour;
     }
 
     &:hover {
       color: $govuk-link-hover-colour;
     }
 
-    &:focus:before {
+    &:focus::before {
       background-color: govuk-colour("black");
     }
   }
@@ -143,31 +146,37 @@
     }
 
     .app-navigation__item {
-      margin-left: 0;
       margin-right: 20px;
-      &:before {
+      margin-left: 0;
+
+      &::before {
         content: unset;
         margin-left: unset;
         padding-left: unset;
       }
+
       a.app-navigation__link {
         margin-bottom: 0;
         text-decoration: none;
+
         &:focus {
           border: none;
           box-shadow: none;
         }
       }
     }
+
     .govuk-tabs__list-item--selected {
       margin-right: 20px;
+
       a {
         display: block;
+        position: relative;
         padding-top: 12px;
         padding-bottom: 12px;
         padding-left: govuk-spacing(3);
         text-decoration: none;
-        position: relative;
+        text-decoration: underline;
 
         &:link,
         &:visited {
@@ -179,31 +188,32 @@
         }
 
         &:focus {
-          color: govuk-colour("black");
           position: relative;
+          color: govuk-colour("black");
           box-shadow: none;
         }
 
-        &:focus:before {
-          background-color: govuk-colour("black");
+        &:focus::before {
           content: "";
           display: block;
-          height: 100%;
           position: absolute;
           bottom: 0;
           left: 0;
           width: 5px;
+          height: 100%;
+          background-color: govuk-colour("black");
 
 
         }
-        text-decoration: underline;
       }
       padding-left: unset;
-      a:not(:focus):before {
+
+      a:not(:focus)::before {
         // stylelint-disable-next-line declaration-no-important
         background-color: unset !important;
       }
     }
+
     .app-navigation__list {
       padding-left: 0;
     }
@@ -216,6 +226,7 @@
 
 body:not(.js-enabled) {
   @include no-js-doc-tabs-styles;
+
   .govuk-tabs__list-item {
     text-align: left;
   }
@@ -227,21 +238,26 @@ body:not(.js-enabled) {
       margin-bottom: 20px;
       padding-left: unset;
       border-bottom: unset;
+
       .govuk-tabs__tab {
         &:link,
         &:visited {
           color: $govuk-link-colour;
         }
+
         &[aria-selected="true"] {
           color: govuk-colour("black");
         }
+
         &:hover {
           color: $govuk-link-hover-colour;
         }
         text-decoration: unset;
       }
+
       .app-navigation__item {
         margin-bottom: 0;
+
         .app-navigation__link {
           &:focus {
             box-shadow: none;
@@ -255,23 +271,25 @@ body:not(.js-enabled) {
 .js-enabled {
   .app-navigation {
     .govuk-tabs__list-item--selected a {
-      color: $govuk-link-active-colour;
       position: relative;
+      color: $govuk-link-active-colour;
       text-decoration: none;
 
-      &:before {
-        background-color: $govuk-link-colour;
+      text-decoration: unset;
+
+      &::before {
         content: "";
         display: block;
-        height: 100%;
         position: absolute;
         bottom: 0;
         left: 0;
         width: 5px;
+        height: 100%;
+        background-color: $govuk-link-colour;
 
         @include govuk-media-query($from: tablet) {
-          height: 5px;
           width: 100%;
+          height: 5px;
         }
       }
 
@@ -279,11 +297,9 @@ body:not(.js-enabled) {
         color: $govuk-link-hover-colour;
       }
 
-      &:focus:before {
+      &:focus::before {
         background-color: govuk-colour("black");
       }
-
-      text-decoration: unset;
     }
   }
 
@@ -297,21 +313,24 @@ body:not(.js-enabled) {
     margin-bottom: 40px;
     scroll-margin-top: 40px;
   }
+
   .govuk-tabs__list-item--selected,
   .govuk-tabs__panel {
-    border: unset;
     padding: unset;
+    border: unset;
   }
+
   .govuk-tabs__list-item {
-    background-color: unset;
-    float: unset;
     margin-right: 20px;
     padding: unset;
-  }
-  .govuk-tabs__list-item--selected {
     float: unset;
-    margin-top: unset;
+    background-color: unset;
+  }
+
+  .govuk-tabs__list-item--selected {
     position: unset;
+    margin-top: unset;
+    float: unset;
     background-color: unset;
   }
 }

@@ -14,14 +14,14 @@
     margin-right: govuk-spacing(2);
     padding-right: govuk-spacing(2) + 2px; // Takes into account divider width
 
-    &:after {
+    &::after {
       content: "";
-      background-color: govuk-colour("light-grey");
-      height: 40px;
       position: absolute;
-      right: 0;
       top: 0;
+      right: 0;
       width: 2px;
+      height: 40px;
+      background-color: govuk-colour("light-grey");
     }
   }
 

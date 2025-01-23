@@ -13,8 +13,8 @@
 .moj-organisation-nav__title {
   @include govuk-font($size: 19, $weight: "bold");
   @include govuk-media-query($from: tablet) {
-    float: left;
     width: 75%;
+    float: left;
   }
 }
 

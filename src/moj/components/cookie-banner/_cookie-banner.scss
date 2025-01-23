@@ -1,16 +1,16 @@
 @import "node_modules/govuk-frontend/dist/govuk/objects/width-container";
 
 .moj-cookie-banner {
-  display: none;
-  @include govuk-font(16);
 
   box-sizing: border-box;
+  display: none;
+  left: govuk-spacing(3);
 
   padding-top: govuk-spacing(3);
-  padding-bottom: govuk-spacing(3);
-  left: govuk-spacing(3);
   padding-right: govuk-spacing(3);
+  padding-bottom: govuk-spacing(3);
   background-color: govuk-colour("white");
+  @include govuk-font(16);
 
   &--show {
     // stylelint-disable-next-line declaration-no-important

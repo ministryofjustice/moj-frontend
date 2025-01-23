@@ -2,10 +2,10 @@
   // text-align: center;
 
   @include govuk-media-query($from: desktop) {
+    margin-right: - govuk-spacing(1);
 
     // Alignment adjustments
     margin-left: - govuk-spacing(1);
-    margin-right: - govuk-spacing(1);
 
     // Hide whitespace between elements
     font-size: 0;
@@ -13,7 +13,7 @@
     // Trick to remove the need for floats
     text-align: justify;
 
-    &:after {
+    &::after {
       content: '';
       display: inline-block;
       width: 100%;
@@ -23,9 +23,9 @@
 }
 
 .moj-pagination__list {
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
   @include govuk-media-query($from: desktop) {
     display: inline-block;
     margin-bottom: 0;
@@ -50,49 +50,49 @@
 
 .moj-pagination__item--active,
 .moj-pagination__item--dots {
-  font-weight: bold;
   height: 25px;
   padding: govuk-spacing(1) govuk-spacing(2);
+  font-weight: bold;
   text-align: center;
 }
 
 .moj-pagination__item--dots {
-  padding-left: 0;
   padding-right: 0;
+  padding-left: 0;
 }
 
-.moj-pagination__item--prev .moj-pagination__link:before,
-.moj-pagination__item--next .moj-pagination__link:after {
+.moj-pagination__item--prev .moj-pagination__link::before,
+.moj-pagination__item--next .moj-pagination__link::after {
+    content: "";
     display: inline-block;
-    height: 10px;
     width: 10px;
-    border-style: solid;
-    color: govuk-colour("black");
-    background: transparent;
+    height: 10px;
     -webkit-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
     transform: rotate(-45deg);
-    content: "";
+    border-style: solid;
+    color: govuk-colour("black");
+    background: transparent;
 }
 
-.moj-pagination__item--prev .moj-pagination__link:before {
-    border-width: 3px 0 0 3px;
+.moj-pagination__item--prev .moj-pagination__link::before {
     margin-right: govuk-spacing(1);
+    border-width: 3px 0 0 3px;
 }
 
-.moj-pagination__item--next .moj-pagination__link:after {
-    border-width: 0 3px 3px 0;
+.moj-pagination__item--next .moj-pagination__link::after {
     margin-left: govuk-spacing(1);
+    border-width: 0 3px 3px 0;
 }
 
 .moj-pagination__link {
   @include govuk-link-common;
   @include govuk-link-style-default;
   display: block;
+  min-width: 25px;
   padding: govuk-spacing(1);
   text-align: center;
   text-decoration: none;
-  min-width: 25px;
 
   &:link,
   &:visited {

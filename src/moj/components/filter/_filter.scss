@@ -13,18 +13,18 @@
 
 
 .moj-filter__header {
+  padding: govuk-spacing(2) govuk-spacing(4);
   background-color: govuk-colour("mid-grey");
   font-size: 0; // Hide whitespace between elements
-  padding: govuk-spacing(2) govuk-spacing(4);
   text-align: justify; // Trick to remove the need for floats
 
-  &:after {
+  &::after {
     content: '';
     display: inline-block;
     width: 100%;
   }
 
-  [class^=govuk-heading-] {
+  [class^="govuk-heading-"] {
     margin-bottom: 0;
   }
 
@@ -33,22 +33,22 @@
 
 // JavaScript
 .moj-filter__legend {
-  overflow: visible; // Override govuk to allow for focus style to be seen
   width: 100%;
+  overflow: visible; // Override govuk to allow for focus style to be seen
 
   button {
     @include govuk-font($size: 24, $weight: bold);
-    background-color: transparent;
     box-sizing: border-box;
-    border-radius: 0;
-    border: 0 none;
-    cursor: pointer; // Adam would not approve
     display: block;
+    position: relative;
+    width: 100%;
     margin: 0;
     padding: 0;
-    position: relative;
+    border: 0 none;
+    border-radius: 0;
+    background-color: transparent;
     text-align: left;
-    width: 100%;
+    cursor: pointer; // Adam would not approve
     -webkit-appearance: none;
 
     // Fix unwanted button padding in Firefox
@@ -58,14 +58,14 @@
     }
 
     &::after {
-      background-image: url(#{$moj-images-path}icon-toggle-plus-minus.svg);
-      background-position: 0 0;
       content: "";
       display: block;
-      height: 16px;
-      margin-top: -8px; // Half the height of the icon
       position: absolute; top: 50%; right: 0;
       width: 16px;
+      height: 16px;
+      margin-top: -8px; // Half the height of the icon
+      background-image: url(#{$moj-images-path}icon-toggle-plus-minus.svg);
+      background-position: 0 0;
     }
 
     &[aria-expanded="true"] {
@@ -92,22 +92,22 @@
 
 
 .moj-filter__close {
-  // @include govuk-focusable;
-  color: govuk-colour("black");
-  cursor: pointer; // I know Adam won’t like this
-  background-color: transparent;
-  border: none;
-  border-radius: 0;
   margin: 0;
   padding: 0;
+  border: none;
+  border-radius: 0;
+  // @include govuk-focusable;
+  color: govuk-colour("black");
+  background-color: transparent;
+  cursor: pointer; // I know Adam won’t like this
   -webkit-appearance: none;
 
 
   &:focus {
-    background-color: $govuk-focus-colour;
-    color: $govuk-focus-text-colour;
-    box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
     outline: none;
+    color: $govuk-focus-text-colour;
+    background-color: $govuk-focus-colour;
+    box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
   }
 
   // Fix unwanted button padding in Firefox
@@ -117,15 +117,15 @@
   }
 
   &::before {
-    background-image: url(#{$moj-images-path}icon-close-cross-black.svg);
     content: "";
     display: inline-block;
-    height: 14px;
-    margin-right: govuk-spacing(1);
     position: relative;
     top: -1px; // Alignment tweak
-    vertical-align: middle;
     width: 14px;
+    height: 14px;
+    margin-right: govuk-spacing(1);
+    background-image: url(#{$moj-images-path}icon-close-cross-black.svg);
+    vertical-align: middle;
   }
 
 }
@@ -137,9 +137,9 @@
 
 
 .moj-filter__selected {
+  padding: govuk-spacing(4);
   background-color: govuk-colour("light-grey");
   box-shadow: inset 0 0 0 1px govuk-colour("mid-grey");
-  padding: govuk-spacing(4);
 
   ul:last-of-type {
     margin-bottom: 0; // IE9 +
@@ -152,7 +152,7 @@
   font-size: 0; // Hide whitespace between elements
   text-align: justify; // Trick to remove the need for floats
 
-  &:after {
+  &::after {
     content: '';
     display: inline-block;
     width: 100%;
@@ -171,9 +171,9 @@
 
 
 .moj-filter-tags {
-  font-size: 0;
   margin-bottom: govuk-spacing(4); // Needs to adjust to 15px on mobile
   padding-left: 0;
+  font-size: 0;
 
   li {
     display: inline-block;
@@ -185,12 +185,12 @@
 
 .moj-filter__tag {
   @include govuk-font(16);
-  background-color: govuk-colour("white");
-  border: 1px solid govuk-colour("black");
-  color: govuk-colour("black");
   display: inline-block;
   margin-top: govuk-spacing(1);
   padding: govuk-spacing(1);
+  border: 1px solid govuk-colour("black");
+  color: govuk-colour("black");
+  background-color: govuk-colour("white");
   text-decoration: none;
 
   &:link,
@@ -204,22 +204,22 @@
   }
 
   &:hover {
-    background-color: govuk-colour("black");
     color: govuk-colour("white");
+    background-color: govuk-colour("black");
   }
 
-  &:after {
-    background-image: url(#{$moj-images-path}icon-tag-remove-cross.svg);
+  &::after {
     content: "";
     display: inline-block;
-    font-weight: bold;
+    width: 10px;
     height: 10px;
     margin-left: govuk-spacing(1);
+    background-image: url(#{$moj-images-path}icon-tag-remove-cross.svg);
+    font-weight: bold;
     vertical-align: middle;
-    width: 10px;
   }
 
-  &:hover:after {
+  &:hover::after {
     background-image: url(#{$moj-images-path}icon-tag-remove-cross-white.svg);
   }
 
@@ -227,9 +227,9 @@
 
 
 .moj-filter__options {
-  box-shadow: inset 0 0 0 1px govuk-colour("mid-grey");
   margin-top: -1px;
   padding: govuk-spacing(4);
+  box-shadow: inset 0 0 0 1px govuk-colour("mid-grey");
 
   div:last-of-type {
     margin-bottom: 0; // IE9 +

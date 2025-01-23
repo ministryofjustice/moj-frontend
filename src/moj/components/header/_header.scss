@@ -3,9 +3,9 @@
    ========================================================================== */
 
 .moj-header {
-  background-color: govuk-colour("black");
   padding-top: govuk-spacing(3);
   border-bottom: 10px solid $govuk-brand-colour;
+  background-color: govuk-colour("black");
 }
 
 .moj-header__container {
@@ -48,13 +48,13 @@
 .moj-header__link > a {
   @include govuk-link-common;
   @include govuk-link-style-default;
-  border-bottom: 1px solid transparent;
-  color: govuk-colour("white");
   display: inline-block;
-  text-decoration: none;
-  line-height: 25px; // Override due to alignment issue in Chrome
   margin-bottom: -1px;
   overflow: hidden; // Fixes focus gaps in background colour
+  border-bottom: 1px solid transparent;
+  color: govuk-colour("white");
+  line-height: 25px; // Override due to alignment issue in Chrome
+  text-decoration: none;
   vertical-align: middle;
 
   &:link,
@@ -76,6 +76,7 @@
   &--organisation-name {
     @include govuk-font($size: 24, $weight: "bold");
     vertical-align: middle;
+
     &:hover {
       border-color: transparent;
     }
@@ -91,6 +92,7 @@
     @include govuk-media-query($from: desktop) {
       margin-left: govuk-spacing(1);
     }
+
     &:hover {
       border-color: transparent;
     }
@@ -98,16 +100,16 @@
 }
 
 .moj-header__link a {
-  vertical-align: text-bottom;
   margin-bottom: 1px;
+  vertical-align: text-bottom;
 
   &:hover {
     border-color: govuk-colour("white");
   }
 
   @include govuk-media-query($until: desktop) {
-    vertical-align: middle;
     margin-bottom: -1px;
+    vertical-align: middle;
   }
 }
 
@@ -119,15 +121,15 @@ span.moj-header__link {
 
 // Navigation
 .moj-header__navigation {
-  color: govuk-colour("white");
   margin-top: govuk-spacing(1)-2px;
+  color: govuk-colour("white");
 }
 
 .moj-header__navigation-list {
-  font-size: 0; // Removes white space when using inline-block on child element.
-  list-style: none;
   margin: 0;
   padding: 0;
+  font-size: 0; // Removes white space when using inline-block on child element.
+  list-style: none;
 }
 
 .moj-header__navigation-item {
