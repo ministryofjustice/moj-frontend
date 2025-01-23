@@ -2,18 +2,18 @@
  * Datepicker config
  *
  * @typedef {object} DatepickerConfig
- * @property {string}  [excludedDates] - Dates that cannot be selected
- * @property {string}  [excludedDays]  - Days that cannot be selected
+ * @property {string} [excludedDates] - Dates that cannot be selected
+ * @property {string} [excludedDays] - Days that cannot be selected
  * @property {boolean} [leadingZeroes] - Whether to add leading zeroes when populating the field
- * @property {string}  [minDate]       - The earliest available date
- * @property {string}  [maxDate]       - The latest available date
- * @property {string}  [weekStartDay]  - First day of the week in calendar view
+ * @property {string} [minDate] - The earliest available date
+ * @property {string} [maxDate] - The latest available date
+ * @property {string} [weekStartDay] - First day of the week in calendar view
  */
 
 /**
  * @param {HTMLElement} $module - HTML element
  * @param {DatepickerConfig} config - config object
- * @constructor
+ * @class
  */
 function Datepicker($module, config = {}) {
   if (!$module) {
@@ -251,7 +251,7 @@ Datepicker.prototype.toggleTemplate = function () {
  * HTML template for calendar dialog
  *
  * @param {string} [titleId] - Id attribute for dialog title
- * @return {string}
+ * @returns {string}
  */
 Datepicker.prototype.dialogTemplate = function (titleId) {
   return `<div class="moj-datepicker__dialog-header">
@@ -319,7 +319,7 @@ Datepicker.prototype.createCalendarHeaders = function () {
  *
  * @param {number} value - The value to be padded
  * @param {number} length - The length in characters of the output
- * @return {string}
+ * @returns {string}
  */
 Datepicker.prototype.leadingZeros = function (value, length = 2) {
   let ret = value.toString();
@@ -388,7 +388,7 @@ Datepicker.prototype.setExcludedDays = function () {
   if (this.config.excludedDays) {
     // lowercase and arrange dayLabels to put indexOf sunday == 0 for comparison
     // with getDay() function
-    let weekDays = this.dayLabels.map((item) => item.toLowerCase());
+    const weekDays = this.dayLabels.map((item) => item.toLowerCase());
     if (this.config.weekStartDay === "monday") {
       weekDays.unshift(weekDays.pop());
     }
@@ -410,7 +410,6 @@ Datepicker.prototype.setLeadingZeros = function () {
     }
     if (this.config.leadingZeros.toLowerCase() === "false") {
       this.config.leadingZeros = false;
-      return;
     }
   }
 };
@@ -430,8 +429,7 @@ Datepicker.prototype.setWeekStartDay = function () {
  * Determine if a date is selecteable
  *
  * @param {Date} date - the date to check
- * @return {boolean}
- *
+ * @returns {boolean}
  */
 Datepicker.prototype.isExcludedDate = function (date) {
   // This comparison does not work correctly - it will exclude the mindate itself
@@ -463,7 +461,7 @@ Datepicker.prototype.isExcludedDate = function (date) {
  *
  * @param {string} dateString - string in the format d/m/yyyy dd/mm/yyyy
  * @param {Date} fallback - date object to return if formatting fails
- * @return {Date}
+ * @returns {Date}
  */
 Datepicker.prototype.formattedDateFromString = function (
   dateString,
@@ -491,21 +489,21 @@ Datepicker.prototype.formattedDateFromString = function (
  * Get a formatted date string from a Date object
  *
  * @param {Date} date - date to format to a string
- * @return {string}
+ * @returns {string}
  */
 Datepicker.prototype.formattedDateFromDate = function (date) {
   if (this.config.leadingZeros) {
     return `${this.leadingZeros(date.getDate())}/${this.leadingZeros(date.getMonth() + 1)}/${date.getFullYear()}`;
-  } else {
-    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   }
+
+  return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 };
 
 /**
  * Get a human readable date in the format Monday 2 March 2024
  *
- * @param {Date} - date to format
- * @return {string}
+ * @param {Date} date - date to format
+ * @returns {string}
  */
 Datepicker.prototype.formattedDateHuman = function (date) {
   return `${this.dayLabels[(date.getDay() + 6) % 7]} ${date.getDate()} ${this.monthLabels[date.getMonth()]} ${date.getFullYear()}`;
@@ -722,7 +720,7 @@ Datepicker.prototype.focusPreviousWeek = function () {
 
 Datepicker.prototype.focusFirstDayOfWeek = function () {
   const date = new Date(this.currentDate);
-  const firstDayOfWeekIndex = this.config.weekStartDay == "sunday" ? 0 : 1;
+  const firstDayOfWeekIndex = this.config.weekStartDay === "sunday" ? 0 : 1;
   const dayOfWeek = date.getDay();
   const diff =
     dayOfWeek >= firstDayOfWeekIndex
@@ -737,7 +735,7 @@ Datepicker.prototype.focusFirstDayOfWeek = function () {
 
 Datepicker.prototype.focusLastDayOfWeek = function () {
   const date = new Date(this.currentDate);
-  const lastDayOfWeekIndex = this.config.weekStartDay == "sunday" ? 6 : 0;
+  const lastDayOfWeekIndex = this.config.weekStartDay === "sunday" ? 6 : 0;
   const dayOfWeek = date.getDay();
   const diff =
     dayOfWeek <= lastDayOfWeekIndex
@@ -783,10 +781,7 @@ Datepicker.prototype.focusPreviousYear = function (event, focus = true) {
 /**
  * Parse dataset
  *
- * Loop over an object and normalise each value using {@link normaliseString},
- * optionally expanding nested `i18n.field`
- *
- * @param {{ schema: Schema }} Component - Component class
+ * @param {Schema} schema - Component class
  * @param {DOMStringMap} dataset - HTML element dataset
  * @returns {Object} Normalised dataset
  */
@@ -842,7 +837,7 @@ Datepicker.prototype.mergeConfigs = function (...configObjects) {
  * @param {number} row
  * @param {number} column
  * @param {Datepicker} picker
- * @constructor
+ * @class
  */
 function DSCalendarDay(button, index, row, column, picker) {
   this.index = index;
