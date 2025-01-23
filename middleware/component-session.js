@@ -62,7 +62,7 @@ const setNextPage = (req, res, next) => {
   // req.nextPage set based on logic found in the communityComponent session object
   // this object will have data set as we go through the various pages
     //todo ensure no errors etc
-    req.nextPage = nextPage(req.url)
+    req.nextPage = nextPage(req.originalUrl)
 
     next()
 }

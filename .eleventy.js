@@ -322,12 +322,8 @@ module.exports = function (eleventyConfig) {
     }
   )
 
-  // Create base.njk for community form based on the add-new-component page (to use the correct navigation)
-  eleventyConfig.on("afterBuild", () => {
+  const createLayoutFromHTML = (sourceFile, destinationFile) => {
     try {
-      const sourceFile = path.join(__dirname, "public/get-involved/add-new-component/index.html");
-      const destinationFile = path.join(__dirname, "views/community/pages/base.njk");
-
       const htmlContent = fs.readFileSync(sourceFile, "utf8");
 
       const $ = cheerio.load(htmlContent);
@@ -350,6 +346,19 @@ module.exports = function (eleventyConfig) {
     } catch (error) {
       console.error("Error during base.njk generation:", error);
     }
+  }
+
+  // Create base.njk for community form based on the add-new-component page (to use the correct navigation)
+  eleventyConfig.on("afterBuild", () => {
+    // Add new component layout
+    const componentSourceFile = path.join(__dirname, "public/get-involved/add-new-component/index.html");
+    const componentDestinationFile = path.join(__dirname, "views/community/pages/base.njk");
+    createLayoutFromHTML(componentSourceFile, componentDestinationFile);
+
+    // Common layout
+    const sourceFile = path.join(__dirname, "public/index.html");
+    const destinationFile = path.join(__dirname, "views/common/base.njk");
+    createLayoutFromHTML(sourceFile, destinationFile);
   });
 
   // Rebuild when a change is made to a component template file
