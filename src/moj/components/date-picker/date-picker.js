@@ -361,27 +361,36 @@ Datepicker.prototype.setExcludedDates = function () {
       .replace(/\s+/, " ")
       .split(" ")
       .map((item) => {
-        if (item.includes("-")) {
-          // parse the date range from the format "dd/mm/yyyy-dd/mm/yyyy"
-          const [startDate, endDate] = item
-            .split("-")
-            .map((d) => this.formattedDateFromString(d, null));
-          if (startDate && endDate) {
-            const date = new Date(startDate.getTime());
-            const dates = [];
-            while (date <= endDate) {
-              dates.push(new Date(date));
-              date.setDate(date.getDate() + 1);
-            }
-            return dates;
-          }
-        } else {
-          return this.formattedDateFromString(item, null);
-        }
+        return item.includes("-")
+          ? this.parseDateRangeString(item)
+          : this.formattedDateFromString(item);
       })
       .flat()
       .filter((item) => item);
   }
+};
+
+/*
+ * Parses a daterange string into an array of dates
+ * @param {String} datestring - A daterange string in the format "dd/mm/yyyy-dd/mm/yyyy"
+ * @returns {Date[]}
+ */
+Datepicker.prototype.parseDateRangeString = function (datestring) {
+  const dates = [];
+  const [startDate, endDate] = datestring
+    .split("-")
+    .map((d) => this.formattedDateFromString(d, null));
+
+  if (startDate && endDate) {
+    const date = new Date(startDate.getTime());
+    /* eslint-disable no-unmodified-loop-condition */
+    while (date <= endDate) {
+      dates.push(new Date(date));
+      date.setDate(date.getDate() + 1);
+    }
+    /* eslint-enable no-unmodified-loop-condition */
+  }
+  return dates;
 };
 
 Datepicker.prototype.setExcludedDays = function () {
@@ -788,7 +797,7 @@ Datepicker.prototype.focusPreviousYear = function (event, focus = true) {
 Datepicker.prototype.parseDataset = function (schema, dataset) {
   const parsed = {};
 
-  for (const [field, attributes] of Object.entries(schema.properties)) {
+  for (const [field, ,] of Object.entries(schema.properties)) {
     if (field in dataset) {
       parsed[field] = dataset[field];
     }
@@ -860,12 +869,12 @@ DSCalendarDay.prototype.init = function () {
  * @param {boolean} disabled - is the day selectable or excluded
  */
 DSCalendarDay.prototype.update = function (day, hidden, disabled) {
-  let label = day.getDate();
+  const label = day.getDate();
   let accessibleLabel = this.picker.formattedDateHuman(day);
 
   if (disabled) {
     this.button.setAttribute("aria-disabled", true);
-    accessibleLabel = "Excluded date, " + accessibleLabel;
+    accessibleLabel = `Excluded date, ${accessibleLabel}`;
   } else {
     this.button.removeAttribute("aria-disabled");
   }
