@@ -8,7 +8,7 @@
 /**
  * @param {HTMLElement} $module
  * @param {ButtonMenuConfig} config
- * @constructor
+ * @class
  */
 MOJFrontend.ButtonMenu = function ($module, config = {}) {
   if (!$module) {
@@ -41,7 +41,7 @@ MOJFrontend.ButtonMenu = function ($module, config = {}) {
 MOJFrontend.ButtonMenu.prototype.init = function () {
   // If only one button is provided, don't initiate a menu and toggle button
   // if classes have been provided for the toggleButton, apply them to the single item
-  if (this.$module.children.length == 1) {
+  if (this.$module.children.length === 1) {
     const button = this.$module.children[0];
     button.classList.forEach((className) => {
       if (className.startsWith("govuk-button-")) {
@@ -87,7 +87,7 @@ MOJFrontend.ButtonMenu.prototype.createMenu = function () {
   $menu.setAttribute("role", "list");
   $menu.hidden = true;
   $menu.classList.add("moj-button-menu__wrapper");
-  if (this.config.alignMenu == "right") {
+  if (this.config.alignMenu === "right") {
     $menu.classList.add("moj-button-menu__wrapper--right");
   }
 
@@ -108,7 +108,7 @@ MOJFrontend.ButtonMenu.prototype.setupMenuItems = function () {
 
     item.setAttribute("tabindex", -1);
 
-    if (item.tagName == "BUTTON") {
+    if (item.tagName === "BUTTON") {
       item.setAttribute("type", "button");
     }
 
@@ -150,7 +150,7 @@ MOJFrontend.ButtonMenu.prototype.toggleMenu = function (event) {
   event.preventDefault();
 
   // If menu is triggered with mouse don't move focus to first item
-  const keyboardEvent = event.detail == 0;
+  const keyboardEvent = event.detail === 0;
   const focusIndex = keyboardEvent ? 0 : -1;
 
   if (this.isOpen()) {
@@ -206,7 +206,7 @@ MOJFrontend.ButtonMenu.prototype.currentFocusIndex = function () {
 };
 
 MOJFrontend.ButtonMenu.prototype.handleKeyDown = function (event) {
-  if (event.target == this.$menuToggle) {
+  if (event.target === this.$menuToggle) {
     switch (event.key) {
       case "ArrowDown":
         event.preventDefault();
@@ -244,10 +244,10 @@ MOJFrontend.ButtonMenu.prototype.handleKeyDown = function (event) {
     }
   }
 
-  if (event.key == "Escape" && this.isOpen()) {
+  if (event.key === "Escape" && this.isOpen()) {
     this.closeMenu();
   }
-  if (event.key == "Tab" && this.isOpen()) {
+  if (event.key === "Tab" && this.isOpen()) {
     this.closeMenu(false);
   }
 };
@@ -258,14 +258,14 @@ MOJFrontend.ButtonMenu.prototype.handleKeyDown = function (event) {
  * Loop over an object and normalise each value using {@link normaliseString},
  * optionally expanding nested `i18n.field`
  *
- * @param {{ schema: Schema }} Component - Component class
+ * @param {Schema} schema - component schema
  * @param {DOMStringMap} dataset - HTML element dataset
  * @returns {Object} Normalised dataset
  */
 MOJFrontend.ButtonMenu.prototype.parseDataset = function (schema, dataset) {
   const parsed = {};
 
-  for (const [field, attributes] of Object.entries(schema.properties)) {
+  for (const [field, ,] of Object.entries(schema.properties)) {
     if (field in dataset) {
       if (dataset[field]) {
         parsed[field] = dataset[field];
