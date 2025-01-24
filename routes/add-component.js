@@ -1,7 +1,6 @@
 const express = require('express');
 const multer = require('multer');
 const {
-  getFormData,
   validateFormData,
   setNextPage,
   saveSession
@@ -25,7 +24,7 @@ const isValidComponentFormPage = (req, res, next) => {
 };
 
 // Component form page
-router.get('/:page', isValidComponentFormPage, getFormData, (req, res) => {
+router.get('/:page', isValidComponentFormPage, (req, res) => {
   res.render(`${req.params.page}`, {
     submitUrl: req.originalUrl,
     formData: req.formData,
