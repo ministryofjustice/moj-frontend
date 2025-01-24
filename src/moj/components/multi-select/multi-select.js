@@ -10,7 +10,7 @@ MOJFrontend.MultiSelect = function(options) {
   const idPrefix = options.id_prefix;
   let allId = 'checkboxes-all';
   if (typeof idPrefix !== 'undefined') {
-    allId = idPrefix + 'checkboxes-all';
+    allId = `${idPrefix}checkboxes-all`;
   }
 
   this.toggle = $(this.getToggleHtml(allId));
