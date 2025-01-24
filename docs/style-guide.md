@@ -1,12 +1,12 @@
 ---
 layout: layouts/content.njk
-subsection: Content standards
+# subsection: Content standards
 title: Content style guide
-# permalink: false
+permalink: /content-standards/style-guide/
 eleventyNavigation:
  key: Content style guide
- parent: Content standards
- order: 10
+ parent: Standards and principles
+ order: 20
  excerpt: "The MoJ A to Z content style guide covering style, spelling and grammar conventions."
 ---
 
