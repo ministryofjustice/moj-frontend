@@ -1,9 +1,16 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% extends "base.njk" %}
 {% block content %}
     <div class="app-layout__content">
+        {% if errorList %}
+        {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: errorList
+        }) }}
+        {% endif %}
         <form method="post" action="{{ submitUrl }}">
             {{ govukInput({
                 label: {
@@ -12,29 +19,35 @@
                     isPageHeading: true
                 },
                 id: "component-name",
-                name: "componentName"
+                name: "componentName",
+                errorMessage: formErrors.componentName,
+                value: formData.componentName
             }) }}
 
             {{ govukCharacterCount({
                 name: "briefDescription",
-                id: "with-hint",
+                id: "brief-description",
                 maxlength: 500,
                 label: {
                     text: "Add a brief description about the component",
                     classes: "govuk-label--m",
                     isPageHeading: true
-                }
+                },
+                errorMessage: formErrors.briefDescription,
+                value: formData.briefDescription
             }) }}
 
             {{ govukCharacterCount({
                 name: "whyNeeded",
-                id: "with-hint",
+                id: "why-needed",
                 maxlength: 500,
                 label: {
                     text: "Why do you think the component is needed?",
                     classes: "govuk-label--m",
                     isPageHeading: true
-                }
+                },
+                errorMessage: formErrors.whyNeeded,
+                value: formData.whyNeeded
             }) }}
 
             <div class="moj-button-action">

@@ -1,6 +1,15 @@
 const joi = require('joi');
 const { COMPONENT_FORM_PAGES } = require('../config')
 
+const camelToKebab = (str) => str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+
+const transformErrorsToErrorList = (errors) => {
+  return errors.map((error) => ({
+    text: error.message,
+    href: `#${camelToKebab(error.path[0])}`,
+  }));
+};
+
 const nextPage = (url) => {
     const index = COMPONENT_FORM_PAGES.findIndex(page => url.endsWith(page));
 
@@ -81,10 +90,34 @@ const getFormData = (req, res, next) => {
 }
 
 const validateFormData = (req, res, next) => {
-  // run against joi isolated only to the section of the session the form is from
-    // set errors to be displayed
-    console.log('validateFormData')
+  const schemaName = req.url.replace('/','')
+  const schema = require(`../schema/${schemaName}.schema`)
+  const { error, value } = schema.validate(req.body, { abortEarly: false });
+
+  if (error) {
+    console.error('Validation error:', error.details);
+    const formErrors = Object.keys(req.body).reduce((acc, key) => {
+      acc[key] = null;
+      return acc;
+    }, {});
+
+    error.details.forEach((error) => {
+      const field = error.path[0];
+      formErrors[field] = { text: error.message };
+    });
+
+    const errorList = transformErrorsToErrorList(error.details);
+
+    res.render(`${req.params.page}`, {
+      submitUrl: req.originalUrl,
+      formData: req.body,
+      formErrors,
+      errorList
+    });
+  } else {
+    console.log('Validation success:', value);
     next()
+  }
 }
 
 const saveSession = (req, res, next) => {
