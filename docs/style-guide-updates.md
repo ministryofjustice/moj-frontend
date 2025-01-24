@@ -2,7 +2,7 @@
 layout: layouts/content.njk
 subsection: Content standards
 title: Content style guide updates
-# permalink: false
+permalink: content-standards/style-guide-updates/
 # eleventyNavigation:
  # key: Content style guide
  # parent: Content standards
