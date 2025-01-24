@@ -43,7 +43,7 @@ const validateFormData = (req, res, next) => {
 
     const errorList = transformErrorsToErrorList(error.details);
 
-    res.render(`${req.params.page}`, {
+    res.status(400).render(`${req.params.page}`, {
       submitUrl: req.originalUrl,
       formData: req.body,
       formErrors,

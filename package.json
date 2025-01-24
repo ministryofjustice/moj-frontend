@@ -124,7 +124,8 @@
     "npm-run-all2": "^6.0.0",
     "postcss": "^8.4.31",
     "semantic-release": "^23.0.0",
-    "sinon": "^19.0.2"
+    "sinon": "^19.0.2",
+    "supertest": "^7.0.0"
   },
   "config": {
     "commitizen": {

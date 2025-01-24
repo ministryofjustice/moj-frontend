@@ -3,7 +3,7 @@ const path = require('path');
 const expressNunjucks = require('express-nunjucks').default;
 const session = require('express-session');
 const nunjucks = require('nunjucks');
-const { ENV, APP_PORT } = require('./config');
+const { APP_PORT } = require('./config');
 
 const addComponentRoutes = require('./routes/add-component');
 
