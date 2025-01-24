@@ -8,12 +8,16 @@ const emailAddress = process.env.NOTIFY_EMAIL;
 
 const personalisation = {
   name: 'John Doe',
+  linkText: 'View PR',
   link: 'https://example.com',
 };
 
-async function sendEmail() {
+async function sendEmail(link = null) {
   try {
     console.log(templateId,emailAddress);
+    if(link){
+      personalisation.link = link;
+    }
     const response = await notifyClient.sendEmail(templateId, emailAddress, { personalisation });
     console.log('Email sent successfully:', response);
   } catch (error) {

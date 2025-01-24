@@ -9,15 +9,18 @@ const {
   pushToGitHub,
   createPullRequest
 } = require('../middleware/github-api');
+const sendEmail = require('../middleware/notify-email');
 const { generateMarkdown } = require('../middleware/generate-documentation');
 const { COMPONENT_FORM_PAGES } = require('../config');
-
+const ApplicationError = require('../helpers/application-error');
 const upload = multer({ storage: multer.memoryStorage() });
 const router = express.Router();
 
 const isValidComponentFormPage = (req, res, next) => {
   if (!COMPONENT_FORM_PAGES.includes(req.params.page)) {
-    next('Unknown page'); // TODO: handle error properly
+    const error = new ApplicationError('Unknown page', 404);
+    console.log(error.toErrorObject());
+    next(error);
   } else {
     next();
   }
@@ -39,22 +42,25 @@ router.post('/check-your-answers', async (req, res) => {
   const branchName = await pushToGitHub(session);
   const title = 'test title';
   const description = 'test description';
-  await createPullRequest(branchName, title, description);
+  const pr = await createPullRequest(branchName, title, description);
+  await sendEmail(pr);
   res.redirect(req.url);
 });
 
 // Component image upload
 router.post(
   '/component-image',
-  validateFormData,
   upload.single('componentImage'),
+  validateFormData,
   saveSession,
   setNextPage,
   (req, res, next) => {
     if (req.nextPage) {
       res.redirect(`/get-involved/add-new-component/${req.nextPage}`);
     } else {
-      next('unknown'); // TODO: error middleware needed
+      const error = new ApplicationError('Unknown page', 404);
+      console.log(error.toErrorObject());
+      next(error);
     }
   }
 );
@@ -64,7 +70,9 @@ router.post('/:page', isValidComponentFormPage, validateFormData, saveSession, s
   if (req.nextPage) {
     res.redirect(`/get-involved/add-new-component/${req.nextPage}`);
   } else {
-    next('unknown'); // TODO: handle error
+    const error = new ApplicationError('Unknown page', 404);
+    console.log(error.toErrorObject());
+    next(error);
   }
 });
 
