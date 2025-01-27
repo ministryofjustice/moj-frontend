@@ -1,11 +1,11 @@
 .moj-page-header-actions {
   display: flex;
+  min-height: govuk-spacing(7); // Match button height
+  margin-bottom: govuk-spacing(7);
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: govuk-spacing(2);
-  margin-bottom: govuk-spacing(7);
-  min-height: govuk-spacing(7); // Match button height
 }
 
 .moj-page-header-actions__title {
@@ -18,6 +18,7 @@
   .moj-button-group {
     margin-bottom: 0;
   }
+
   .govuk-button {
     margin-bottom: 0;
   }

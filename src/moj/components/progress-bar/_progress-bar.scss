@@ -7,11 +7,11 @@
 }
 
 .moj-progress-bar__list {
-  font-size: 0; // Hide white space between elements
-  list-style: none;
+  position: relative;
   margin: 0;
   padding: 0;
-  position: relative;
+  font-size: 0; // Hide white space between elements
+  list-style: none;
   text-align: justify;
   vertical-align: top;
 
@@ -22,12 +22,12 @@
   }
 
   &::before {
-    border-top: 6px solid govuk-colour("green");
     content: "";
-    left: 0;
     position: absolute;
     top: 13px;
+    left: 0;
     width: 100%;
+    border-top: 6px solid govuk-colour("green");
   }
 
 }
@@ -35,25 +35,24 @@
 .moj-progress-bar__item {
   @include govuk-font(19);
   display: inline-block;
-  max-width: 20%;
   position: relative;
+  max-width: 20%;
   text-align: center;
   vertical-align: top;
 
   &:first-child,
   &:last-child {
     &::before {
-      border-top: 6px solid govuk-colour("white");
       content: "";
       position: absolute;
       top: 13px; left: 0;
       width: 50%;
+      border-top: 6px solid govuk-colour("white");
     }
 
   }
 
   &:first-child {
-
     &::before {
       left: 0;
     }
@@ -61,45 +60,44 @@
   }
 
   &:last-child {
-
     &::before {
-      left: auto;
       right: 0;
+      left: auto;
     }
 
   }
 
-  &[aria-current=step] { // https://tink.uk/using-the-aria-current-attribute
+  &[aria-current="step"] { // https://tink.uk/using-the-aria-current-attribute
     @include govuk-font($size: 19, $weight: "bold");
   }
 
 }
 
 .moj-progress-bar__icon {
-  position: relative;
-  background-color: govuk-colour("white");
-  border: 6px solid govuk-colour("green");
-  border-radius: 50%;
   box-sizing: border-box;
   display: block;
-  height: 32px;
-  margin-left: auto;
-  margin-right: auto;
+  position: relative;
   width: 32px;
+  height: 32px;
+  margin-right: auto;
+  margin-left: auto;
+  border: 6px solid govuk-colour("green");
+  border-radius: 50%;
+  background-color: govuk-colour("white");
 }
 
 .moj-progress-bar__icon--complete {
   background-color: govuk-colour("green");
   background-image: url(#{$moj-images-path}icon-progress-tick.svg);
-  background-position: 50% 50%;
   background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 .moj-progress-bar__label {
   @include govuk-font(16);
   display: block;
-  font-weight: inherit;
-  margin-top: govuk-spacing(3);
   position: relative;
+  margin-top: govuk-spacing(3);
+  font-weight: inherit;
   word-wrap: break-word; // Just in case
 }

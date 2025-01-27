@@ -17,6 +17,13 @@
     "test:docs": "npm run build:docs",
     "test:js": "jest src/",
     "test:sass": "sass -q -I . gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
+    "lint": "npm run lint:js && npm run lint:scss",
+    "lint:js": "npm run lint:js:cli -- \"**/*.{cjs,js,mjs}\"",
+    "lint:js:cli": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
+    "lint:prettier": "npm run lint:prettier:cli -- \"**/*.{cjs,js,json,md,mjs,scss,yaml,yml}\"",
+    "lint:prettier:cli": "prettier --cache --cache-location .cache/prettier --cache-strategy content --check",
+    "lint:scss": "npm run lint:scss:cli -- \"**/*.scss\"",
+    "lint:scss:cli": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
     "watch:11ty": "ENV=dev eleventy --input=./docs --output=public --serve",
     "watch:package": "ENV=dev gulp watch:dev"
   },
@@ -107,7 +114,10 @@
     "npm-run-all2": "^6.0.0",
     "postcss": "^8.4.31",
     "semantic-release": "^23.0.0",
-    "sinon": "^19.0.2"
+    "sinon": "^19.0.2",
+    "stylelint": "^16.13.2",
+    "stylelint-config-gds": "^2.0.0",
+    "stylelint-order": "^6.0.4"
   },
   "config": {
     "commitizen": {

@@ -1,18 +1,27 @@
-.DS_Store
-.env
-.port.tmp
-.tmp
-.vscode/
-node_modules
-npm-debug.log
-public/
-sass-cache
-settings.json
-tmp-uploads
-dist
+# Temporary only
+.cache/
+.tmp/
 
+# Node.js modules
+node_modules/
+
+# Build output
+dist/
+public/
 # ignore everything in the package directory, but not govuk-prototype-kit.config.json, package.json and README.md
 package/*
 !package/govuk-prototype-kit.config.json
 !package/package.json
 !package/README.md
+
+# Other
+.DS_Store
+.env
+.port.tmp
+.vscode/
+npm-debug.log
+sass-cache
+settings.json
+tmp-uploads
+
+

@@ -1,8 +1,8 @@
 .moj-interruption-card {
-  background-color: govuk-colour("blue");
   margin-bottom: govuk-spacing(3);
-  @include govuk-responsive-padding(7, $adjustment: $govuk-border-width*-1);
   border: $govuk-border-width solid transparent;
+  background-color: govuk-colour("blue");
+  @include govuk-responsive-padding(7, $adjustment: $govuk-border-width * -1);
 }
 
 .moj-interruption-card__content {

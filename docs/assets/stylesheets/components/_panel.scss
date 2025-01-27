@@ -6,8 +6,8 @@
   @include govuk-responsive-margin(6, "top");
   @include govuk-responsive-margin(6, "bottom");
   @include govuk-responsive-padding(3);
-  background-color: govuk-colour("blue");
   color: govuk-colour("white");
+  background-color: govuk-colour("blue");
 }
 
 .app-panel__heading,
