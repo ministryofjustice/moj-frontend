@@ -1,24 +1,25 @@
 .moj-search-toggle__button {
   @include govuk-font($size: 19, $weight: bold);
-  background-color: transparent;
-  border: none;
-  color: $govuk-link-colour;
-  cursor: pointer;
   display: inline-block;
   padding-top: 12px;
+  padding-right: 0;
   padding-bottom: 13px;
   padding-left: 0;
-  padding-right: 0;
+  border: none;
+  color: $govuk-link-colour;
+  background-color: transparent;
+  cursor: pointer;
   -webkit-font-smoothing: antialiased;
   -webkit-appearance: none;
+  appearance: none;
 
   &__icon {
     display: inline-block;
+    width: 20px;
     height: 20px;
     margin-left: govuk-spacing(2);
+    fill: currentcolor;
     vertical-align: middle;
-    width: 20px;
-    fill: currentColor;
 
     @media screen and (forced-colors: active) {
       fill: windowText;
@@ -26,12 +27,14 @@
   }
 
   &:focus {
-    background-color: $govuk-focus-colour;
-    color: $govuk-focus-text-colour;
-    box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
-    outline: none;
     position: relative;
     z-index: 1;
+    outline: none;
+    color: $govuk-focus-text-colour;
+    background-color: $govuk-focus-colour;
+    box-shadow:
+      0 -2px $govuk-focus-colour,
+      0 4px $govuk-focus-text-colour;
   }
 }
 
@@ -39,14 +42,17 @@
   padding: govuk-spacing(3);
 
   @include govuk-media-query($until: desktop) {
-    padding-left: 0 !important;
+    // stylelint-disable-next-line declaration-no-important
     padding-right: 0 !important;
+    // stylelint-disable-next-line declaration-no-important
+    padding-left: 0 !important;
   }
 }
 
 // JS enabled
 .js-enabled .moj-search--toggle {
   @include govuk-media-query($until: desktop) {
+    // stylelint-disable-next-line declaration-no-important
     padding-top: 0 !important;
   }
 }
@@ -59,11 +65,11 @@
   background-color: govuk-colour("light-grey");
 
   @include govuk-media-query($from: desktop) {
-    max-width: 450px;
     position: absolute;
-    right: -15px;
-    top: 50px; // Height of nav bar
-    width: 450px;
     z-index: 10;
+    top: 50px; // Height of nav bar
+    right: -15px;
+    width: 450px;
+    max-width: 450px;
   }
 }

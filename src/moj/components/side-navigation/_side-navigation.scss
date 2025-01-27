@@ -19,11 +19,11 @@
 
 .moj-side-navigation__title {
   @include govuk-font($size: 19);
-  color: govuk-colour("dark-grey");
-  font-weight: normal;
   margin: 0;
   padding: govuk-spacing(2);
   padding-left: govuk-spacing(2) + 4px;
+  color: govuk-colour("dark-grey");
+  font-weight: normal;
 
   @include govuk-media-query($until: tablet) {
     display: none;
@@ -32,9 +32,9 @@
 }
 
 .moj-side-navigation__list {
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
 
   @include govuk-media-query($until: tablet) {
     display: flex;
@@ -56,21 +56,21 @@
   a,
   a:link,
   a:visited {
-    background-color: inherit;
-    color: $govuk-link-colour;
     display: block;
+    color: $govuk-link-colour;
+    background-color: inherit;
     text-decoration: none;
 
     @include govuk-media-query($until: tablet) {
-      border-bottom: 4px solid transparent;
       padding: govuk-spacing(3);
       padding-bottom: govuk-spacing(3) - 4px; // Compensate for 4px border
+      border-bottom: 4px solid transparent;
     }
 
     @include govuk-media-query($from: tablet) {
-      background-color: inherit;
-      border-left: 4px solid transparent;
       padding: govuk-spacing(2);
+      border-left: 4px solid transparent;
+      background-color: inherit;
     }
 
 
@@ -81,16 +81,15 @@
   }
 
   a:focus {
+    position: relative;
+    border-color: $govuk-focus-text-colour;
     color: $govuk-focus-text-colour;
     background-color: $govuk-focus-colour;
-    border-color: $govuk-focus-text-colour;
-    position: relative;
   }
 
 }
 
 .moj-side-navigation__item--active {
-
   a:link,
   a:visited {
     border-color: $govuk-link-colour;
@@ -99,14 +98,14 @@
   }
 
   a:hover {
-    color: $govuk-link-hover-colour;
     border-color: $govuk-link-hover-colour;
+    color: $govuk-link-hover-colour;
   }
 
   a:focus {
+    border-color: $govuk-focus-text-colour;
     color: $govuk-focus-text-colour;
     background-color: $govuk-focus-colour;
-    border-color: $govuk-focus-text-colour;
   }
 
   @include govuk-media-query($from: tablet) {

@@ -11,10 +11,12 @@
     @include govuk-media-query($from: desktop) {
       display: flex;
       flex-wrap: nowrap;
+    }
+  }
 
-      & > * + * {
-        margin-left: govuk-spacing(3);
-      }
+  &--inline > * + * {
+    @include govuk-media-query($from: desktop) {
+      margin-left: govuk-spacing(3);
     }
   }
 
@@ -25,30 +27,36 @@
   &__content {
     display: block;
     position: relative;
-    background-color: govuk-colour("light-grey");
-    padding: govuk-spacing(4);
     margin-bottom: govuk-spacing(3);
-    flex-grow: 1;
+    padding: govuk-spacing(4);
     border-left: 4px solid transparent;
+    background-color: govuk-colour("light-grey");
+    flex-grow: 1;
 
     &--grey {
       border-left-color: $govuk-border-colour;
     }
+
     &--blue {
       border-left-color: govuk-colour("blue");
     }
+
     &--red {
       border-left-color: govuk-colour("red");
     }
+
     &--yellow {
       border-left-color: govuk-colour("yellow");
     }
+
     &--green {
       border-left-color: govuk-colour("green");
     }
+
     &--purple {
       border-left-color: govuk-colour("purple");
     }
+
     &--orange {
       border-left-color: govuk-colour("orange");
     }

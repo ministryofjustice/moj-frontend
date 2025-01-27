@@ -4,10 +4,10 @@
 
 .moj-add-another {
   &__item {
+    position: relative;
     margin: 0;
     margin-top: govuk-spacing(6);
     padding: 0;
-    position: relative;
 
     &:first-of-type {
       margin-top: 0;
@@ -15,9 +15,9 @@
   }
 
   &__title {
-    float: left;
-    padding: 4px 100px 4px 0;
     width: 100%;
+    padding: 4px 100px 4px 0;
+    float: left;
 
     & + .govuk-form-group {
       clear: left;
@@ -26,8 +26,8 @@
 
   &__remove-button {
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
     width: auto;
   }
 
@@ -37,8 +37,8 @@
 }
 
 .moj-add-another__heading:focus {
-  background-color: $govuk-focus-colour;
-  color: $govuk-focus-text-colour;
-  box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
   outline: none;
+  color: $govuk-focus-text-colour;
+  background-color: $govuk-focus-colour;
+  box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
 }

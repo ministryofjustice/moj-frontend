@@ -20,15 +20,15 @@
   }
 
   img {
-    border: 1px solid #b1b4b6;
     max-width: 100%;
+    border: 1px solid #b1b4b6;
   }
 
   code:not([class*="language-"]) {
     padding: 0 1px;
     color: #c62950;
     background-color: #e9e9e9;
-    font-family: monospace, monospace;
+    font-family: monospace;
     font-size: 0.85em;
   }
 
@@ -69,23 +69,23 @@
     @include govuk-font($size: 19);
     @include govuk-text-colour;
     @include govuk-responsive-margin(6, "bottom");
+    width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
-    width: 100%;
   }
 
   th {
     @include govuk-typography-weight-bold;
-    border-bottom: 1px solid $govuk-border-colour;
     padding: govuk-em(govuk-spacing(2), 19px) govuk-em(govuk-spacing(4), 19px)
       govuk-em(govuk-spacing(2), 19px) 0;
+    border-bottom: 1px solid $govuk-border-colour;
     text-align: left;
   }
 
   td {
-    border-bottom: 1px solid $govuk-border-colour;
     padding: govuk-em(govuk-spacing(2), 19px) govuk-em(govuk-spacing(4), 19px)
       govuk-em(govuk-spacing(2), 19px) 0;
+    border-bottom: 1px solid $govuk-border-colour;
     text-align: left;
   }
 
@@ -103,10 +103,10 @@
 
 pre {
   @include govuk-responsive-margin(6, "bottom");
-  background: #f7f7f7;
-  font-size: 16px;
+  position: relative;
   margin: govuk-spacing(6);
   padding: govuk-spacing(3);
-  position: relative;
   overflow: auto;
+  background: #f7f7f7;
+  font-size: 16px;
 }

@@ -3,42 +3,43 @@
    ========================================================================== */
 
 .moj-timeline {
+  position: relative;
   margin-bottom: govuk-spacing(4);
   overflow: hidden;
-  position: relative;
 
-  &:before {
-    background-color: $govuk-brand-colour;
+  &::before {
     content: "";
-    height: 100%;
-    left: 0;
     position: absolute;
     top: govuk-spacing(2);
+    left: 0;
     width: 5px;
+    height: 100%;
+    background-color: $govuk-brand-colour;
   }
 
 }
 
 .moj-timeline--full {
   margin-bottom: 0;
-  &:before {
+
+  &::before {
     height: calc(100% - 75px);
   }
 }
 
 .moj-timeline__item {
+  position: relative;
   padding-bottom: govuk-spacing(6);
   padding-left: govuk-spacing(4);
-  position: relative;
 
-  &:before {
-    background-color: $govuk-brand-colour;
+  &::before {
     content: "";
-    height: 5px;
-    left: 0;
     position: absolute;
     top: govuk-spacing(2);
+    left: 0;
     width: 15px;
+    height: 5px;
+    background-color: $govuk-brand-colour;
   }
 
 }
@@ -50,9 +51,9 @@
 
 .moj-timeline__byline {
   @include govuk-font($size: 19);
-  color: $govuk-secondary-text-colour;
   display: inline;
   margin: 0;
+  color: $govuk-secondary-text-colour;
 }
 
 .moj-timeline__date {
@@ -71,9 +72,9 @@
    ========================================================================== */
 
 .moj-timeline__documents {
-  list-style: none;
   margin-bottom: 0;
   padding-left: 0;
+  list-style: none;
 }
 
 .moj-timeline__document-item {
@@ -86,10 +87,10 @@
 }
 
 .moj-timeline__document-icon {
-  float: left;
   margin-top: 4px;
   margin-right: 4px;
-  fill: currentColor;
+  float: left;
+  fill: currentcolor;
 
   @media screen and (forced-colors: active) {
     fill: linkText;
@@ -97,11 +98,11 @@
 }
 
 .moj-timeline__document-link {
+  padding-left: govuk-spacing(5);
   background-image: url(#{$moj-images-path}icon-document.svg);
   background-repeat: no-repeat;
-  background-size: 20px 16px;
   background-position: 0 50%;
-  padding-left: govuk-spacing(5);
+  background-size: 20px 16px;
 
   &:focus {
     color: govuk-colour("black"); // Focus colour on yellow should really be black.

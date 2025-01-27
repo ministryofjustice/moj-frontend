@@ -2,8 +2,8 @@ $app-breakpoint: 800px;
 
 .app-layout {
     @include govuk-media-query($app-breakpoint) {
-      width: 100%;
       display: grid;
+      width: 100%;
       grid-template-columns: min(25%, 300px) auto;
     }
 }
