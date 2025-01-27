@@ -136,7 +136,7 @@ const createPullRequest = async (branchName, title, description = '') => {
 
     const pr = await response.json();
     console.log(`Pull request created: ${pr.html_url}`);
-    return pr;
+    return pr.html_url;
   } catch (error) {
     console.error('Error creating pull request:', error.message);
     throw error;

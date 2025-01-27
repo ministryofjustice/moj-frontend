@@ -1,16 +1,16 @@
 const { NotifyClient } = require('notifications-node-client');
+const {
+  NOTIFY_TOKEN,
+  NOTIFY_TEMPLATE,
+  NOTIFY_EMAIL,
+} = require('../config');
+const notifyClient = new NotifyClient(NOTIFY_TOKEN);
 
-const notifyClient = new NotifyClient(process.env.NOTIFY_TOKEN);
+const templateId = NOTIFY_TEMPLATE;
 
-const templateId = process.env.NOTIFY_TEMPLATE;
+const emailAddress = NOTIFY_EMAIL;
 
-const emailAddress = process.env.NOTIFY_EMAIL;
-
-const personalisation = {
-  name: 'John Doe',
-  linkText: 'View PR',
-  link: 'https://example.com',
-};
+const personalisation = {};
 
 async function sendEmail(link = null) {
   try {
