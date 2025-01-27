@@ -23,9 +23,9 @@ MOJFrontend.SortableTable.prototype.setupOptions = function(params) {
 };
 
 MOJFrontend.SortableTable.prototype.createHeadingButtons = function() {
-	var headings = this.table.find('thead th');
-	var heading;
-	for(var i = 0; i < headings.length; i++) {
+	const headings = this.table.find('thead th');
+	let heading;
+	for(let i = 0; i < headings.length; i++) {
 		heading = $(headings[i]);
 		if(heading.attr('aria-sort')) {
 			this.createHeadingButton(heading, i);
@@ -34,8 +34,8 @@ MOJFrontend.SortableTable.prototype.createHeadingButtons = function() {
 };
 
 MOJFrontend.SortableTable.prototype.createHeadingButton = function(heading, i) {
-	var text = heading.text();
-	var button = $('<button type="button" data-index="'+i+'">'+text+'</button>');
+	const text = heading.text();
+	const button = $(`<button type="button" data-index="${i}">${text}</button>`);
 	heading.text('');
 	heading.append(button);
 };
@@ -46,30 +46,30 @@ MOJFrontend.SortableTable.prototype.createStatusBox = function() {
 };
 
 MOJFrontend.SortableTable.prototype.initialiseSortedColumn = function () {
-  var rows = this.getTableRowsArray();
+  const rows = this.getTableRowsArray();
 
   this.table.find("th")
     .filter('[aria-sort="ascending"], [aria-sort="descending"]')
     .first()
     .each((index, el) => {
-      var sortDirection = $(el).attr('aria-sort');
-      var columnNumber = $(el).find('button').attr('data-index');
-      var sortedRows = this.sort(rows, columnNumber, sortDirection);
+      const sortDirection = $(el).attr('aria-sort');
+      const columnNumber = $(el).find('button').attr('data-index');
+      const sortedRows = this.sort(rows, columnNumber, sortDirection);
       this.addRows(sortedRows);
     })
 };
 
 MOJFrontend.SortableTable.prototype.onSortButtonClick = function(e) {
-	var columnNumber = e.currentTarget.getAttribute('data-index');
-	var sortDirection = $(e.currentTarget).parent().attr('aria-sort');
-	var newSortDirection;
+	const columnNumber = e.currentTarget.getAttribute('data-index');
+	const sortDirection = $(e.currentTarget).parent().attr('aria-sort');
+	let newSortDirection;
 	if(sortDirection === 'none' || sortDirection === 'descending') {
 		newSortDirection = 'ascending';
 	} else {
 		newSortDirection = 'descending';
 	}
-	var rows = this.getTableRowsArray();
-	var sortedRows = this.sort(rows, columnNumber, newSortDirection);
+	const rows = this.getTableRowsArray();
+	const sortedRows = this.sort(rows, columnNumber, newSortDirection);
 	this.addRows(sortedRows);
 	this.removeButtonStates();
 	this.updateButtonState($(e.currentTarget), newSortDirection);
@@ -77,9 +77,9 @@ MOJFrontend.SortableTable.prototype.onSortButtonClick = function(e) {
 
 MOJFrontend.SortableTable.prototype.updateButtonState = function(button, direction) {
 	button.parent().attr('aria-sort', direction);
-	var message = this.statusMessage;
+	let message = this.statusMessage;
 	message = message.replace(/%heading%/, button.text());
-	message = message.replace(/%direction%/, this[direction+'Text']);
+	message = message.replace(/%direction%/, this[`${direction}Text`]);
 	this.status.text(message);
 };
 
@@ -88,27 +88,27 @@ MOJFrontend.SortableTable.prototype.removeButtonStates = function() {
 };
 
 MOJFrontend.SortableTable.prototype.addRows = function(rows) {
-	for(var i = 0; i < rows.length; i++) {
+	for(let i = 0; i < rows.length; i++) {
 		this.body.append(rows[i]);
 	}
 };
 
 MOJFrontend.SortableTable.prototype.getTableRowsArray = function() {
-	var rows = [];
-	var trs = this.body.find('tr');
-	for (var i = 0; i < trs.length; i++) {
+	const rows = [];
+	const trs = this.body.find('tr');
+	for (let i = 0; i < trs.length; i++) {
 		rows.push(trs[i]);
 	}
     return rows;
 };
 
 MOJFrontend.SortableTable.prototype.sort = function(rows, columnNumber, sortDirection) {
-	var newRows = rows.sort((function(rowA, rowB) {
-		var tdA = $(rowA).find('td,th').eq(columnNumber);
-		var tdB = $(rowB).find('td,th').eq(columnNumber);
-		
-		var valueA = sortDirection === 'ascending' ? this.getCellValue(tdA) : this.getCellValue(tdB);
-		var valueB = sortDirection === 'ascending' ? this.getCellValue(tdB) : this.getCellValue(tdA);
+	const newRows = rows.sort((function(rowA, rowB) {
+		const tdA = $(rowA).find('td,th').eq(columnNumber);
+		const tdB = $(rowB).find('td,th').eq(columnNumber);
+
+		const valueA = sortDirection === 'ascending' ? this.getCellValue(tdA) : this.getCellValue(tdB);
+		const valueB = sortDirection === 'ascending' ? this.getCellValue(tdB) : this.getCellValue(tdA);
 
 		if (typeof valueA === 'string' || typeof valueB === 'string') return valueA.toString().localeCompare(valueB.toString());
 		return valueA-valueB;
@@ -117,8 +117,8 @@ MOJFrontend.SortableTable.prototype.sort = function(rows, columnNumber, sortDire
 };
 
 MOJFrontend.SortableTable.prototype.getCellValue = function(cell) {
-	var val = cell.attr('data-sort-value') || cell.html();
+	const val = cell.attr('data-sort-value') || cell.html();
 	
-	var valAsNumber = Number(val)
+	const valAsNumber = Number(val)
 	return isNaN(valAsNumber) ? val : parseFloat(val)
 };

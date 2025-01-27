@@ -14,7 +14,7 @@ This prototype was created from multiple ‘apply’ journey examples in DWP, Mo
 The prototype has 3 parts:
 
 - user needs for people applying and for teams managing applications (to be validated)
-- the stages and steps (for the 2 sets of users)
+- sub-patterns (for the 2 sets of users)
 - user scenarios
 
 This is part of [work to develop service patterns across government](/service-patterns/).  
@@ -104,7 +104,7 @@ The cross-government work to identify an ‘apply’ service pattern followed a 
 - I need to have confidence that users have access to relevant guidance to make a decision because I cannot advise them on their specific circumstances.
 
 {% endtab %}
-{% tab "Stages and steps" %}
+{% tab "Sub-patterns" %}
 
 ## The parts of a service pattern
 
@@ -188,7 +188,7 @@ These are some scenarios you may have to design for your service.
 - Staff user applying for something on behalf of an individual, business or organisation
 - Multiple user types contributing to the same application
 
-#### Variations:
+#### Alternatives:
 
 - Additional application information is needed before it can be processed
 - Evidence in support of application needs to be resent because it's deemed unsuitable
@@ -215,11 +215,25 @@ These are some scenarios you may have to design for your service.
 {% endtab %}
 {% tab "Contribute" %}
 
-## Contributing to MoJ service patterns
+### How to give feedback on the apply prototype
+
+We’d like some feedback on the usefulness of the prototype.
+
+Please complete the [apply pattern prototype survey](https://forms.office.com/Pages/ResponsePage.aspx?id=KEeHxuZx_kGp4S6MNndq2ML_UAYVtf1Jv53R4CVxx1hURFpPVDhUQVJVNkQxMzQyODRON0kzVVpKUi4u) by the end of April 2025.
+
+Or you can email your responses to the 3 questions:
+
+1. Would you find this concept useful for designing services?
+2. Would this prototype help you design an apply journey in your current role?
+3. What else would you value in a service pattern like this?
+
+Send your answers to [servicepatterns@justice.gov.uk](mailto:servicepatterns@justice.gov.uk).
+
+### Contributing to other MoJ service patterns
 
 You'll likely design multiple instances of potential service patterns when you develop new products or services.
 
-Contact <a href="mailto:martin.ford-downes@digital.justice.gov.uk">Martin Ford-Downes</a> if you have a service pattern idea or want to help us work on others.
+Contact [servicepatterns@justice.gov.uk](mailto:servicepatterns@justice.gov.uk) if you have a service pattern idea or want to help us work on others.
 
 We welcome feedback from everyone, including from people outside of the Ministry of Justice.
 
