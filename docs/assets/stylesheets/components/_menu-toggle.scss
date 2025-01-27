@@ -5,21 +5,21 @@ moj-menu-toggle:not(:defined) {
 moj-menu-toggle > button {
   @extend .govuk-button;
 
-  background: none;
-  border: none;
-  box-shadow: none;
-  margin-bottom: 0;
-  color: govuk-colour('white');
-  font-weight: bold;
-
   display: flex;
+  margin-bottom: 0;
+  border: none;
+  color: govuk-colour('white');
+
+  background: none;
+  box-shadow: none;
+  font-weight: bold;
   align-items: center;
   gap: 6px;
 
   &:hover,
   &:active {
-    background-color: transparent;
     border-color: transparent;
+    background-color: transparent;
   }
 
   &:focus {

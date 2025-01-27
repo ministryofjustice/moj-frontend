@@ -3,29 +3,29 @@
    ========================================================================== */
 
 .app-tabs {
-  background: govuk-colour("white");
-  border-top: 0;
   margin-bottom: govuk-spacing(9);
+  border-top: 0;
+  background: govuk-colour("white");
 }
 
 .app-tabs__list {
-  border: 1px solid $govuk-border-colour;
-  list-style: none;
   margin: 0;
   padding: 0;
+  border: 1px solid $govuk-border-colour;
+  list-style: none;
 
   // A specific selector to override .app-prose-scope
   .app-prose-scope & {
-    font-size: 0; // Remove white space when using display: inline-block
     margin: 0;
     padding: 0;
+    font-size: 0; // Remove white space when using display: inline-block
   }
 }
 
 .app-tabs__list-item {
-  border-right: 1px solid $govuk-border-colour;
   display: inline-block;
   margin: 0;
+  border-right: 1px solid $govuk-border-colour;
 
   // A specific selector to override .app-prose-scope
   .app-prose-scope & {
@@ -35,18 +35,18 @@
 
 .app-tabs__tab {
   @include govuk-font($size: 19, $weight: bold);
-  background-color: govuk-colour("white");
-  color: govuk-colour("blue");
   display: block;
-  padding: 20px;
   position: relative;
+  padding: 20px;
+  color: govuk-colour("blue");
+  background-color: govuk-colour("white");
   text-decoration: none;
 
   &:link,
   &:active,
   &:visited {
-    background-color: govuk-colour("white");
     color: govuk-colour("blue");
+    background-color: govuk-colour("white");
 
     // A specific selector to override .app-prose-scope
     .app-prose-scope & {
@@ -64,18 +64,18 @@
     z-index: 2; // Focus state must sit above
 
     .app-prose-scope & {
+      border-color: $govuk-focus-text-colour;
       color: $govuk-focus-text-colour;
       background-color: $govuk-focus-colour;
       box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
-      border-color: $govuk-focus-text-colour;
     }
   }
 
   &[aria-selected="true"] {
-    background-color: govuk-colour("white");
-    color: govuk-colour("black");
     margin-bottom: -1px;
     padding-bottom: 21px;
+    color: govuk-colour("black");
+    background-color: govuk-colour("white");
 
     // A specific selector to override .app-prose-scope
     .app-prose-scope & {
@@ -86,17 +86,18 @@
 
 .app-tabs__panel {
   @include govuk-font($size: 16);
-  background-color: govuk-colour("white");
-  border: 1px solid $govuk-border-colour;
-  border-top: 0;
   position: relative;
   padding: govuk-spacing(3);
+  border: 1px solid $govuk-border-colour;
+  border-top: 0;
+  background-color: govuk-colour("white");
 
   &--hidden {
     display: none;
   }
 
   p {
+    // stylelint-disable-next-line declaration-no-important
     max-width: 100% !important;
   }
 

@@ -4,52 +4,52 @@
 
 .moj-tag {
   border: 2px solid $govuk-brand-colour;
-  background-color: $govuk-brand-colour;
   color: govuk-colour("white");
+  background-color: $govuk-brand-colour;
 
   &--purple {
     border: 2px solid govuk-colour("purple");
-    background-color: govuk-colour("purple");
     color: govuk-colour("white");
+    background-color: govuk-colour("purple");
   }
 
   &--bright-purple {
     border: 2px solid govuk-colour("bright-purple");
-    background-color: govuk-colour("bright-purple");
     color: govuk-colour("white");
+    background-color: govuk-colour("bright-purple");
   }
 
   &--red,
   &--error {
     border: 2px solid govuk-colour("red");
-    background-color: govuk-colour("red");
     color: govuk-colour("white");
+    background-color: govuk-colour("red");
   }
 
   &--green,
   &--success {
     border: 2px solid govuk-colour("green");
-    background-color: govuk-colour("green");
     color: govuk-colour("white");
+    background-color: govuk-colour("green");
   }
 
   &--blue,
   &--information {
     border: 2px solid govuk-colour("blue");
-    background-color: govuk-colour("blue");
     color: govuk-colour("white");
+    background-color: govuk-colour("blue");
   }
 
   &--black {
     border: 2px solid govuk-colour("black");
-    background-color: govuk-colour("black");
     color: govuk-colour("white");
+    background-color: govuk-colour("black");
   }
 
   &--grey {
     border: 2px solid govuk-colour("dark-grey");
-    background-color: govuk-colour("dark-grey");
     color: govuk-colour("white");
+    background-color: govuk-colour("dark-grey");
   }
 
 }
