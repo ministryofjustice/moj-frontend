@@ -14,12 +14,11 @@
     text-align: justify;
 
     &::after {
-      content: '';
+      content: "";
       display: inline-block;
       width: 100%;
     }
   }
-
 }
 
 .moj-pagination__list {
@@ -64,26 +63,26 @@
 
 .moj-pagination__item--prev .moj-pagination__link::before,
 .moj-pagination__item--next .moj-pagination__link::after {
-    content: "";
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    -webkit-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    border-style: solid;
-    color: govuk-colour("black");
-    background: transparent;
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  border-style: solid;
+  color: govuk-colour("black");
+  background: transparent;
 }
 
 .moj-pagination__item--prev .moj-pagination__link::before {
-    margin-right: govuk-spacing(1);
-    border-width: 3px 0 0 3px;
+  margin-right: govuk-spacing(1);
+  border-width: 3px 0 0 3px;
 }
 
 .moj-pagination__item--next .moj-pagination__link::after {
-    margin-left: govuk-spacing(1);
-    border-width: 0 3px 3px 0;
+  margin-left: govuk-spacing(1);
+  border-width: 0 3px 3px 0;
 }
 
 .moj-pagination__link {
@@ -107,6 +106,4 @@
   &:focus {
     color: govuk-colour("black");
   }
-
 }
-

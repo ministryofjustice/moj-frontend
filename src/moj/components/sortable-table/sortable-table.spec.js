@@ -1,9 +1,9 @@
-const { queryByRole, within } = require("@testing-library/dom");
-const { userEvent } = require("@testing-library/user-event");
+const { queryByRole, within } = require('@testing-library/dom')
+const { userEvent } = require('@testing-library/user-event')
 
-require("./sortable-table.js");
+require('./sortable-table.js')
 
-const user = userEvent.setup();
+const user = userEvent.setup()
 
 const createComponent = (options = {}) => {
   const html = `
@@ -49,97 +49,102 @@ const createComponent = (options = {}) => {
           </tr>
         </tbody>
       </table>
-    </div>`;
+    </div>`
 
-  document.body.insertAdjacentHTML("afterbegin", html);
-  const component = document.querySelector('[data-module="moj-sortable-table"]');
-  options.table = component;
-  return { component, options };
+  document.body.insertAdjacentHTML('afterbegin', html)
+  const component = document.querySelector('[data-module="moj-sortable-table"]')
+  options.table = component
+  return { component, options }
+}
 
-};
-
-describe("sortable table", () => {
-  let component;
+describe('sortable table', () => {
+  let component
 
   beforeEach(() => {
-    ({component, options} = createComponent());
+    ;({ component, options } = createComponent())
     new MOJFrontend.SortableTable({
       table: component
-    });
-  });
+    })
+  })
 
   afterEach(() => {
-    document.body.innerHTML = "";
-    component = undefined;
-  });
+    document.body.innerHTML = ''
+    component = undefined
+  })
 
-  test("initialises with buttons in headers", () => {
-    const headers = component.querySelectorAll("th");
-    headers.forEach(header => {
+  test('initialises with buttons in headers', () => {
+    const headers = component.querySelectorAll('th')
+    headers.forEach((header) => {
       if (header.getAttribute('aria-sort')) {
-        const button = header.querySelector('button');
-        expect(button).toBeInTheDocument();
-        expect(button).toHaveTextContent(header.textContent);
+        const button = header.querySelector('button')
+        expect(button).toBeInTheDocument()
+        expect(button).toHaveTextContent(header.textContent)
       }
-    });
-  });
+    })
+  })
 
-  test("creates status box for announcements", () => {
-    const statusBox = queryByRole(component.parentElement, "status");
-    expect(statusBox).toBeInTheDocument();
-    expect(statusBox).toHaveClass('govuk-visually-hidden');
-  });
+  test('creates status box for announcements', () => {
+    const statusBox = queryByRole(component.parentElement, 'status')
+    expect(statusBox).toBeInTheDocument()
+    expect(statusBox).toHaveClass('govuk-visually-hidden')
+  })
 
-  test("sorts ascending by Name on initial load", () => {
-    const tbody = component.querySelector("tbody");
-    const cells = tbody.querySelectorAll("tr td:first-child");
-    const values = Array.from(cells).map(cell => cell.textContent.trim());
+  test('sorts ascending by Name on initial load', () => {
+    const tbody = component.querySelector('tbody')
+    const cells = tbody.querySelectorAll('tr td:first-child')
+    const values = Array.from(cells).map((cell) => cell.textContent.trim())
 
     expect(component.querySelector('th')).toHaveAttribute('aria-sort', 'ascending');
     expect(values).toEqual(['Aconcagua', 'Everest', 'K2', 'Kilimanjaro']);
   });
 
-  test("sorts string column in descending order when clicked", async () => {
-    const nameHeaderButton = queryByRole(component,"button", { name: "Name"});
-    const tbody = component.querySelector("tbody");
+  test('sorts string column in descending order when clicked', async () => {
+    const nameHeaderButton = queryByRole(component, 'button', { name: 'Name' })
+    const tbody = component.querySelector('tbody')
 
-    await user.click(nameHeaderButton);
+    await user.click(nameHeaderButton)
 
-    const descCells = tbody.querySelectorAll("tr td:first-child");
-    const descValues = Array.from(descCells).map(cell => cell.textContent.trim());
+    const descCells = tbody.querySelectorAll('tr td:first-child')
+    const descValues = Array.from(descCells).map((cell) =>
+      cell.textContent.trim()
+    )
 
     expect(descValues).toEqual(['Kilimanjaro', 'K2', 'Everest', 'Aconcagua']);
     expect(nameHeaderButton.parentElement).toHaveAttribute('aria-sort', 'descending');
 
-    await user.click(nameHeaderButton);
+    await user.click(nameHeaderButton)
 
-    const ascCells = tbody.querySelectorAll("tr td:first-child");
-    const ascValues = Array.from(ascCells).map(cell => cell.textContent.trim());
+    const ascCells = tbody.querySelectorAll('tr td:first-child')
+    const ascValues = Array.from(ascCells).map((cell) =>
+      cell.textContent.trim()
+    )
 
     expect(ascValues).toEqual(['Aconcagua', 'Everest', 'K2', 'Kilimanjaro']);
     expect(nameHeaderButton.parentElement).toHaveAttribute('aria-sort', 'ascending');
   });
 
-  test("sorts numeric column using data-sort-value", async () => {
-    const elevationHeaderButton = queryByRole(component,"button", { name: "Elevation"});
-    const tbody = component.querySelector("tbody");
+  test('sorts numeric column using data-sort-value', async () => {
+    const elevationHeaderButton = queryByRole(component, 'button', {
+      name: 'Elevation'
+    })
+    const tbody = component.querySelector('tbody')
 
-    await user.click(elevationHeaderButton);
+    await user.click(elevationHeaderButton)
 
-    const ascCells = tbody.querySelectorAll("tr td:nth-child(2)");
-    const ascValues = Array.from(ascCells).map(cell =>
-      parseInt(cell.getAttribute("data-sort-value"))
-    );
+    const ascCells = tbody.querySelectorAll('tr td:nth-child(2)')
+    const ascValues = Array.from(ascCells).map((cell) =>
+      parseInt(cell.getAttribute('data-sort-value'))
+    )
 
     expect(ascValues).toEqual([5895, 6961, 8611, 8850]);
     expect(elevationHeaderButton.parentElement).toHaveAttribute('aria-sort', 'ascending');
 
-    await user.click(elevationHeaderButton);
+    await user.click(elevationHeaderButton)
 
-    const descCells = tbody.querySelectorAll("tr td:nth-child(2)");
-    const descValues = Array.from(descCells).map(cell =>
-      parseInt(cell.getAttribute("data-sort-value"))
-    );
+    const descCells = tbody.querySelectorAll('tr td:nth-child(2)')
+    const descValues = Array.from(descCells).map((cell) =>
+      parseInt(cell.getAttribute('data-sort-value'))
+    )
 
     expect(descValues).toEqual([8850, 8611, 6961, 5895]);
     expect(elevationHeaderButton.parentElement).toHaveAttribute('aria-sort', 'descending');
@@ -152,7 +157,7 @@ describe("sortable table", () => {
     await user.click(nicknameHeaderButton);
 
     const ascCells = tbody.querySelectorAll("tr td:nth-child(5)");
-    const ascValues = Array.from(ascCells).map(cell => cell.textContent.trim()); 
+    const ascValues = Array.from(ascCells).map(cell => cell.textContent.trim());
     // Values converted to numbers in getCellValue function for comparison
 
     expect(ascValues).toEqual(['', '1NearlyTallest', '1Tallest', 'KiliJ89']);
@@ -163,144 +168,163 @@ describe("sortable table", () => {
     const elevationHeaderButton = queryByRole(component,"button", { name: "Elevation"});
     const statusBox = queryByRole(component.parentElement, "status");
 
-    await user.click(elevationHeaderButton);
+    await user.click(elevationHeaderButton)
 
-    expect(statusBox).toHaveTextContent('Sort by Elevation (ascending)');
+    expect(statusBox).toHaveTextContent('Sort by Elevation (ascending)')
 
-    await user.click(elevationHeaderButton);
+    await user.click(elevationHeaderButton)
 
-    expect(statusBox).toHaveTextContent('Sort by Elevation (descending)');
-  });
+    expect(statusBox).toHaveTextContent('Sort by Elevation (descending)')
+  })
 
-  test("removes sort state from other columns when sorting a new column", async () => {
-    const nameHeaderButton = queryByRole(component,"button", { name: "Name"});
-    const elevationHeaderButton = queryByRole(component,"button", { name: "Elevation"});
+  test('removes sort state from other columns when sorting a new column', async () => {
+    const nameHeaderButton = queryByRole(component, 'button', { name: 'Name' })
+    const elevationHeaderButton = queryByRole(component, 'button', {
+      name: 'Elevation'
+    })
 
-    await user.click(elevationHeaderButton);
+    await user.click(elevationHeaderButton)
 
-    expect(nameHeaderButton.parentElement).toHaveAttribute('aria-sort', 'none');
-    expect(elevationHeaderButton.parentElement).toHaveAttribute('aria-sort', 'ascending');
-  });
+    expect(nameHeaderButton.parentElement).toHaveAttribute('aria-sort', 'none')
+    expect(elevationHeaderButton.parentElement).toHaveAttribute(
+      'aria-sort',
+      'ascending'
+    )
+  })
 
-  test("cycles through sort states: none -> ascending -> descending", async () => {
-    const headerButton = queryByRole(component,"button", { name: "Continent"});
-    const header = headerButton.parentElement;
+  test('cycles through sort states: none -> ascending -> descending', async () => {
+    const headerButton = queryByRole(component, 'button', { name: 'Continent' })
+    const header = headerButton.parentElement
 
-    expect(header).toHaveAttribute('aria-sort', 'none');
+    expect(header).toHaveAttribute('aria-sort', 'none')
 
-    await user.click(headerButton);
-    expect(header).toHaveAttribute('aria-sort', 'ascending');
+    await user.click(headerButton)
+    expect(header).toHaveAttribute('aria-sort', 'ascending')
 
-    await user.click(headerButton);
-    expect(header).toHaveAttribute('aria-sort', 'descending');
+    await user.click(headerButton)
+    expect(header).toHaveAttribute('aria-sort', 'descending')
 
-    await user.click(headerButton);
-    expect(header).toHaveAttribute('aria-sort', 'ascending');
-  });
-});
+    await user.click(headerButton)
+    expect(header).toHaveAttribute('aria-sort', 'ascending')
+  })
+})
 
-describe("sortable table options", () => {
-  let component;
+describe('sortable table options', () => {
+  let component
 
   beforeEach(() => {
-    ({component, options} = createComponent());
-  });
+    ;({ component, options } = createComponent())
+  })
 
   afterEach(() => {
-    document.body.innerHTML = "";
-  });
+    document.body.innerHTML = ''
+  })
 
-  test("uses default status message when no options provided", async () => {
-    new MOJFrontend.SortableTable(options);
+  test('uses default status message when no options provided', async () => {
+    new MOJFrontend.SortableTable(options)
 
-    const elevationHeaderButton = queryByRole(component,"button", { name: "Elevation"});
-    const statusBox = queryByRole(component.parentElement, "status");
+    const elevationHeaderButton = queryByRole(component, 'button', {
+      name: 'Elevation'
+    })
+    const statusBox = queryByRole(component.parentElement, 'status')
 
-    await user.click(elevationHeaderButton);
-    expect(statusBox).toHaveTextContent('Sort by Elevation (ascending)');
-  });
+    await user.click(elevationHeaderButton)
+    expect(statusBox).toHaveTextContent('Sort by Elevation (ascending)')
+  })
 
-  test("uses custom status message when provided", async () => {
-   options.statusMessage = 'Sorted column: %heading% (order: %direction%)';
-    new MOJFrontend.SortableTable(options);
+  test('uses custom status message when provided', async () => {
+    options.statusMessage = 'Sorted column: %heading% (order: %direction%)'
+    new MOJFrontend.SortableTable(options)
 
-    const elevationHeaderButton = queryByRole(component,"button", { name: "Elevation"});
-    const statusBox = queryByRole(component.parentElement, "status");
+    const elevationHeaderButton = queryByRole(component, 'button', {
+      name: 'Elevation'
+    })
+    const statusBox = queryByRole(component.parentElement, 'status')
 
-    await user.click(elevationHeaderButton);
-    expect(statusBox).toHaveTextContent('Sorted column: Elevation (order: ascending)');
-  });
+    await user.click(elevationHeaderButton)
+    expect(statusBox).toHaveTextContent(
+      'Sorted column: Elevation (order: ascending)'
+    )
+  })
 
-  test("uses custom ascending text when provided", async () => {
-      options.ascendingText = 'A to Z'
-    new MOJFrontend.SortableTable(options);
+  test('uses custom ascending text when provided', async () => {
+    options.ascendingText = 'A to Z'
+    new MOJFrontend.SortableTable(options)
 
-    const nameHeaderButton = queryByRole(component,"button", { name: "Name"});
-    const statusBox = queryByRole(component.parentElement, "status");
+    const nameHeaderButton = queryByRole(component, 'button', { name: 'Name' })
+    const statusBox = queryByRole(component.parentElement, 'status')
 
-    await user.click(nameHeaderButton);
-    await user.click(nameHeaderButton);
+    await user.click(nameHeaderButton)
+    await user.click(nameHeaderButton)
 
-    expect(statusBox).toHaveTextContent('Sort by Name (A to Z)');
-  });
+    expect(statusBox).toHaveTextContent('Sort by Name (A to Z)')
+  })
 
-  test("uses custom descending text when provided", async () => {
-      options.descendingText = 'Z to A'
-    new MOJFrontend.SortableTable(options);
+  test('uses custom descending text when provided', async () => {
+    options.descendingText = 'Z to A'
+    new MOJFrontend.SortableTable(options)
 
-    const nameHeaderButton = queryByRole(component,"button", { name: "Name"});
-    const statusBox = queryByRole(component.parentElement, "status");
+    const nameHeaderButton = queryByRole(component, 'button', { name: 'Name' })
+    const statusBox = queryByRole(component.parentElement, 'status')
 
-    await user.click(nameHeaderButton);
+    await user.click(nameHeaderButton)
 
-    expect(statusBox).toHaveTextContent('Sort by Name (Z to A)');
-  });
+    expect(statusBox).toHaveTextContent('Sort by Name (Z to A)')
+  })
 
-  test("uses all custom options together", async () => {
+  test('uses all custom options together', async () => {
     options = {
       table: component,
       statusMessage: 'component sorted by %heading% in %direction% order',
       ascendingText: 'lowest to highest',
       descendingText: 'highest to lowest'
-    };
-    new MOJFrontend.SortableTable(options);
+    }
+    new MOJFrontend.SortableTable(options)
 
-    const elevationHeaderButton = queryByRole(component,"button", { name: "Elevation"});
-    const statusBox = queryByRole(component.parentElement, "status");
+    const elevationHeaderButton = queryByRole(component, 'button', {
+      name: 'Elevation'
+    })
+    const statusBox = queryByRole(component.parentElement, 'status')
 
-    await user.click(elevationHeaderButton);
-    expect(statusBox).toHaveTextContent('component sorted by Elevation in lowest to highest order');
+    await user.click(elevationHeaderButton)
+    expect(statusBox).toHaveTextContent(
+      'component sorted by Elevation in lowest to highest order'
+    )
 
-    await user.click(elevationHeaderButton);
-    expect(statusBox).toHaveTextContent('component sorted by Elevation in highest to lowest order');
-  });
+    await user.click(elevationHeaderButton)
+    expect(statusBox).toHaveTextContent(
+      'component sorted by Elevation in highest to lowest order'
+    )
+  })
 
-  test("allows reinitialization of component without duplicating functionality", () => {
-    const { component, options } = createComponent();
-    new MOJFrontend.SortableTable(options);
-    new MOJFrontend.SortableTable(options); // Initialize again
+  test('allows reinitialization of component without duplicating functionality', () => {
+    const { component, options } = createComponent()
+    new MOJFrontend.SortableTable(options)
+    new MOJFrontend.SortableTable(options) // Initialize again
 
     // Check that we don't have duplicate buttons in headers
-    const headers = component.querySelectorAll("th[aria-sort]");
-    headers.forEach(header => {
-      const buttons = header.querySelectorAll('button');
-      expect(buttons.length).toBe(1);
-    });
-  });
+    const headers = component.querySelectorAll('th[aria-sort]')
+    headers.forEach((header) => {
+      const buttons = header.querySelectorAll('button')
+      expect(buttons.length).toBe(1)
+    })
+  })
 
-  test("maintains original sort when reinitialized", async () => {
-    const { component, options } = createComponent();
-    new MOJFrontend.SortableTable(options);
+  test('maintains original sort when reinitialized', async () => {
+    const { component, options } = createComponent()
+    new MOJFrontend.SortableTable(options)
 
-    const elevationHeaderButton = queryByRole(component,"button", { name: "Elevation"});
-    await user.click(elevationHeaderButton);
+    const elevationHeaderButton = queryByRole(component, 'button', {
+      name: 'Elevation'
+    })
+    await user.click(elevationHeaderButton)
 
-    new MOJFrontend.SortableTable(options); // Reinitialize
+    new MOJFrontend.SortableTable(options) // Reinitialize
 
-    const cells = component.querySelectorAll("tbody tr td:nth-child(2)");
-    const values = Array.from(cells).map(cell =>
-      parseInt(cell.getAttribute("data-sort-value"))
-    );
+    const cells = component.querySelectorAll('tbody tr td:nth-child(2)')
+    const values = Array.from(cells).map((cell) =>
+      parseInt(cell.getAttribute('data-sort-value'))
+    )
 
     expect(values).toEqual([5895, 6961, 8611, 8850]);
     expect(elevationHeaderButton.parentElement).toHaveAttribute('aria-sort', 'ascending');

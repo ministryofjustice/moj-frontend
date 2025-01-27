@@ -22,7 +22,6 @@
         padding-left: 0;
       }
 
-
       &:focus::before {
         @include govuk-media-query($from: tablet) {
           width: 100%;
@@ -52,7 +51,6 @@
             height: 5px;
           }
         }
-
       }
     }
   }
@@ -203,8 +201,6 @@
           width: 5px;
           height: 100%;
           background-color: govuk-colour("black");
-
-
         }
       }
       padding-left: unset;

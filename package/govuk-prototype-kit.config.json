@@ -7,22 +7,11 @@
       "versionHistory": "https://github.com/ministryofjustice/moj-frontend/releases"
     }
   },
-  "nunjucksFilters": [
-    "/moj/filters/prototype-kit-13-filters.js"
-  ],
-  "scripts": [
-    "/moj/all.jquery.min.js",
-    "/moj/init.js"
-  ],
-  "assets": [
-    "/moj/assets"
-  ],
-  "sass": [
-    "/moj/all.scss"
-  ],
-  "nunjucksPaths": [
-    "/"
-  ],
+  "nunjucksFilters": ["/moj/filters/prototype-kit-13-filters.js"],
+  "scripts": ["/moj/all.jquery.min.js", "/moj/init.js"],
+  "assets": ["/moj/assets"],
+  "sass": ["/moj/all.scss"],
+  "nunjucksPaths": ["/"],
   "nunjucksMacros": [
     {
       "importFrom": "moj/components/side-navigation/macro.njk",

@@ -7,33 +7,28 @@
   // stylelint-enable scss/dollar-variable-pattern
 
   overflow-x: scroll;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       to right,
       $scrollableBgColor,
       $scrollableBgColor,
       $scrollableTransparentColor calc(var($scrollableShadowSize) * 2)
     ),
-    radial-gradient(
-      farthest-side at 0 50%,
-      $scrollableShadowColor,
-      $scrollableTransparentColor
-    ),
+    radial-gradient(farthest-side at 0 50%, $scrollableShadowColor, $scrollableTransparentColor),
     linear-gradient(
       to left,
       $scrollableBgColor,
       $scrollableBgColor,
       $scrollableTransparentColor calc(var($scrollableShadowSize) * 2)
     ),
-    radial-gradient(
-        farthest-side at 100% 50%,
-        $scrollableShadowColor,
-        $scrollableTransparentColor
-      )
-      100%;
+    radial-gradient(farthest-side at 100% 50%, $scrollableShadowColor, $scrollableTransparentColor) 100%;
   background-color: $scrollableBgColor;
   background-repeat: no-repeat;
   background-attachment: local, scroll, local, scroll;
-  background-size: 100% 100%, $scrollableShadowSize 100%, 100% 100%,
+  background-size:
+    100% 100%,
+    $scrollableShadowSize 100%,
+    100% 100%,
     $scrollableShadowSize 100%;
 }
 

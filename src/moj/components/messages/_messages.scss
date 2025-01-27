@@ -21,7 +21,6 @@
     color: govuk-colour("dark-grey");
     text-align: center;
   }
-
 }
 
 .moj-message-item {
@@ -70,9 +69,7 @@
       border-right: 1em solid govuk-colour("light-grey");
       border-bottom-right-radius: 1.75em 1.5em;
     }
-
   }
-
 }
 
 .moj-message-item a:link,
@@ -92,9 +89,7 @@
     & td {
       border-bottom: 1px solid govuk-colour("white");
     }
-
   }
-
 }
 
 .moj-message-item__meta {
@@ -107,5 +102,4 @@
   &--timestamp {
     @include govuk-font($size: 16, $weight: "bold");
   }
-
 }

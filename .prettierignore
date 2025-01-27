@@ -12,7 +12,7 @@ dist/
 public/
 
 # 3rd party vendor code
-vendor/ 
+**vendor**
 
 # Files to ignore
 package-lock.json

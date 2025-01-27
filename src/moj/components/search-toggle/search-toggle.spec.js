@@ -1,17 +1,17 @@
-const { queryByRole } = require("@testing-library/dom");
-const { userEvent } = require("@testing-library/user-event");
-const { configureAxe } = require("jest-axe");
-const $ = require("jquery");
+const { queryByRole } = require('@testing-library/dom')
+const { userEvent } = require('@testing-library/user-event')
+const { configureAxe } = require('jest-axe')
+const $ = require('jquery')
 
-require("./search-toggle.js");
+require('./search-toggle.js')
 
-const user = userEvent.setup();
+const user = userEvent.setup()
 const axe = configureAxe({
   rules: {
     // disable landmark rules when testing isolated components.
-    region: { enabled: false },
-  },
-});
+    region: { enabled: false }
+  }
+})
 
 const createComponent = () => {
   html = `
@@ -45,90 +45,90 @@ const createComponent = () => {
 
         </div>
       </div>
-<a href="#">link</a>`;
-  document.body.insertAdjacentHTML("afterbegin", html);
-  const component = document.querySelector(".moj-search-toggle");
-  return component;
-};
+<a href="#">link</a>`
+  document.body.insertAdjacentHTML('afterbegin', html)
+  const component = document.querySelector('.moj-search-toggle')
+  return component
+}
 
-describe("search toggle", () => {
-  let component, buttonContainer, searchContainer;
+describe('search toggle', () => {
+  let component, buttonContainer, searchContainer
 
   beforeEach(() => {
-    component = createComponent();
-    searchContainer = component.querySelector(".moj-search");
-    buttonContainer = component.querySelector(".moj-search-toggle__toggle");
+    component = createComponent()
+    searchContainer = component.querySelector('.moj-search')
+    buttonContainer = component.querySelector('.moj-search-toggle__toggle')
 
     new MOJFrontend.SearchToggle({
       toggleButton: {
         container: $(buttonContainer),
-        text: component.getAttribute("data-moj-search-toggle-text"),
+        text: component.getAttribute('data-moj-search-toggle-text')
       },
       search: {
-        container: $(searchContainer),
-      },
-    });
-  });
+        container: $(searchContainer)
+      }
+    })
+  })
 
   afterEach(() => {
-    document.body.innerHTML = "";
-  });
+    document.body.innerHTML = ''
+  })
 
-  test("initialises component", () => {
-    const toggleButton = queryByRole(buttonContainer, "button");
+  test('initialises component', () => {
+    const toggleButton = queryByRole(buttonContainer, 'button')
 
-    expect(toggleButton).not.toBeNull();
-    expect(toggleButton).toHaveTextContent("Find case");
-    expect(toggleButton).toHaveAttribute("aria-haspopup", "true");
-    expect(toggleButton).toHaveAttribute("aria-expanded", "false");
+    expect(toggleButton).not.toBeNull()
+    expect(toggleButton).toHaveTextContent('Find case')
+    expect(toggleButton).toHaveAttribute('aria-haspopup', 'true')
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
 
-    expect(searchContainer).toHaveClass("moj-js-hidden");
-  });
+    expect(searchContainer).toHaveClass('moj-js-hidden')
+  })
 
-  test("clicking button toggles search container", async () => {
-    const toggleButton = queryByRole(buttonContainer, "button");
+  test('clicking button toggles search container', async () => {
+    const toggleButton = queryByRole(buttonContainer, 'button')
 
-    await user.click(toggleButton);
+    await user.click(toggleButton)
 
-    expect(toggleButton).toHaveAttribute("aria-expanded", "true");
-    expect(searchContainer).not.toHaveClass("moj-js-hidden");
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'true')
+    expect(searchContainer).not.toHaveClass('moj-js-hidden')
 
-    const input = queryByRole(searchContainer, "searchbox");
-    expect(input).toHaveFocus();
+    const input = queryByRole(searchContainer, 'searchbox')
+    expect(input).toHaveFocus()
 
-    await user.click(toggleButton);
+    await user.click(toggleButton)
 
-    expect(toggleButton).toHaveAttribute("aria-expanded", "false");
-    expect(searchContainer).toHaveClass("moj-js-hidden");
-    expect(toggleButton).toHaveFocus();
-  });
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
+    expect(searchContainer).toHaveClass('moj-js-hidden')
+    expect(toggleButton).toHaveFocus()
+  })
 
-  test("clicking outside closes the search container", async () => {
-    const toggleButton = queryByRole(buttonContainer, "button");
+  test('clicking outside closes the search container', async () => {
+    const toggleButton = queryByRole(buttonContainer, 'button')
 
-    await user.click(toggleButton);
+    await user.click(toggleButton)
 
-    expect(toggleButton).toHaveAttribute("aria-expanded", "true");
-    expect(searchContainer).not.toHaveClass("moj-js-hidden");
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'true')
+    expect(searchContainer).not.toHaveClass('moj-js-hidden')
 
-    await user.click(document.body);
+    await user.click(document.body)
 
-    expect(toggleButton).toHaveAttribute("aria-expanded", "false");
-    expect(searchContainer).toHaveClass("moj-js-hidden");
-  });
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
+    expect(searchContainer).toHaveClass('moj-js-hidden')
+  })
 
-  test("tabbing closes the search container", async () => {
-    const toggleButton = queryByRole(buttonContainer, "button");
+  test('tabbing closes the search container', async () => {
+    const toggleButton = queryByRole(buttonContainer, 'button')
 
-    await user.click(toggleButton);
+    await user.click(toggleButton)
 
-    expect(toggleButton).toHaveAttribute("aria-expanded", "true");
-    expect(searchContainer).not.toHaveClass("moj-js-hidden");
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'true')
+    expect(searchContainer).not.toHaveClass('moj-js-hidden')
 
-    await user.tab();
-    await user.tab();
+    await user.tab()
+    await user.tab()
 
-    expect(toggleButton).toHaveAttribute("aria-expanded", "false");
-    expect(searchContainer).toHaveClass("moj-js-hidden");
-  });
-});
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
+    expect(searchContainer).toHaveClass('moj-js-hidden')
+  })
+})
