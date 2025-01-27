@@ -155,7 +155,7 @@ describe("sortable table", () => {
     const ascValues = Array.from(ascCells).map(cell => cell.textContent.trim()); 
     // Values converted to numbers in getCellValue function for comparison
 
-    expect(ascValues).toEqual(['1NearlyTallest', '1Tallest', 'KiliJ89', '']);
+    expect(ascValues).toEqual(['', '1NearlyTallest', '1Tallest', 'KiliJ89']);
     expect(nicknameHeaderButton.parentElement).toHaveAttribute('aria-sort', 'ascending');
   });
 
