@@ -3,10 +3,10 @@ const generateMarkdown = (data) => {
     '/get-involved/add-new-component/component-details': details,
     '/get-involved/add-new-component/component-image': imageData,
   } = data;
-
+  const documentationDirectory = 'component/documentation';
   const componentName = details?.componentName || 'unknown-component';
   const sanitizedComponentName = componentName.toLowerCase().replace(/[^a-z0-9-]/g, '-');
-  const filename = `${sanitizedComponentName}.md`;
+  const filename = `${documentationDirectory}/${sanitizedComponentName}.md`;
 
   let content = `---
 layout: layouts/component.njk
