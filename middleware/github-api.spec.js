@@ -97,9 +97,7 @@ describe('GitHub API Module', () => {
 
       const pr = await createPullRequest(branchName, title, description);
 
-      expect(pr).toEqual(expect.objectContaining({
-        html_url: 'https://github.com/example/pr/1',
-      }));
+      expect(pr).toEqual('https://github.com/example/pr/1');
       expect(fetch).toHaveBeenCalledWith(
         `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/pulls`,
         expect.objectContaining({
