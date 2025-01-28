@@ -1,7 +1,7 @@
-const gulp = require('gulp');
+const gulp = require('gulp')
 
 gulp.task('build:clean', async (done) => {
-  const { deleteSync } = await import("del");
+  const { deleteSync } = await import('del')
 
   return deleteSync([
     'package/*',
@@ -10,4 +10,4 @@ gulp.task('build:clean', async (done) => {
     '!package/govuk-prototype-kit.config.json',
     '!package/README.md'
   ])
-});
+})

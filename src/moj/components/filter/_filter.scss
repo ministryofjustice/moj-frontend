@@ -7,10 +7,11 @@
   box-shadow: inset 0 0 0 1px govuk-colour("mid-grey");
 
   &:focus {
-    box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+    box-shadow:
+      0 -2px $govuk-focus-colour,
+      0 4px $govuk-focus-text-colour;
   }
 }
-
 
 .moj-filter__header {
   padding: govuk-spacing(2) govuk-spacing(4);
@@ -19,7 +20,7 @@
   text-align: justify; // Trick to remove the need for floats
 
   &::after {
-    content: '';
+    content: "";
     display: inline-block;
     width: 100%;
   }
@@ -27,9 +28,7 @@
   [class^="govuk-heading-"] {
     margin-bottom: 0;
   }
-
 }
-
 
 // JavaScript
 .moj-filter__legend {
@@ -61,7 +60,9 @@
     &::after {
       content: "";
       display: block;
-      position: absolute; top: 50%; right: 0;
+      position: absolute;
+      top: 50%;
+      right: 0;
       width: 16px;
       height: 16px;
       margin-top: -8px; // Half the height of the icon
@@ -70,13 +71,10 @@
     }
 
     &[aria-expanded="true"]::after {
-        background-position: 16px 16px;
+      background-position: 16px 16px;
     }
-
   }
-
 }
-
 
 .moj-filter__header-title,
 .moj-filter__header-action {
@@ -84,7 +82,6 @@
   text-align: left;
   vertical-align: middle;
 }
-
 
 .moj-filter__close {
   @include govuk-font(19);
@@ -97,14 +94,15 @@
   background-color: transparent;
   cursor: pointer; // I know Adam won’t like this
   -webkit-appearance: none;
-    appearance: none;
-
+  appearance: none;
 
   &:focus {
     outline: none;
     color: $govuk-focus-text-colour;
     background-color: $govuk-focus-colour;
-    box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+    box-shadow:
+      0 -2px $govuk-focus-colour,
+      0 4px $govuk-focus-text-colour;
   }
 
   // Fix unwanted button padding in Firefox
@@ -124,7 +122,6 @@
     background-image: url(#{$moj-images-path}icon-close-cross-black.svg);
     vertical-align: middle;
   }
-
 }
 
 .moj-filter__selected {
@@ -135,22 +132,18 @@
   ul:last-of-type {
     margin-bottom: 0; // IE9 +
   }
-
 }
-
 
 .moj-filter__selected-heading {
   font-size: 0; // Hide whitespace between elements
   text-align: justify; // Trick to remove the need for floats
 
   &::after {
-    content: '';
+    content: "";
     display: inline-block;
     width: 100%;
   }
-
 }
-
 
 .moj-filter__heading-title,
 .moj-filter__heading-action {
@@ -159,7 +152,6 @@
   text-align: left;
   vertical-align: middle;
 }
-
 
 .moj-filter-tags {
   margin-bottom: govuk-spacing(4); // Needs to adjust to 15px on mobile
@@ -170,9 +162,7 @@
     display: inline-block;
     margin-right: govuk-spacing(2);
   }
-
 }
-
 
 .moj-filter__tag {
   @include govuk-font(16);
@@ -213,9 +203,7 @@
   &:hover::after {
     background-image: url(#{$moj-images-path}icon-tag-remove-cross-white.svg);
   }
-
 }
-
 
 .moj-filter__options {
   margin-top: -1px;
@@ -225,5 +213,4 @@
   div:last-of-type {
     margin-bottom: 0; // IE9 +
   }
-
 }

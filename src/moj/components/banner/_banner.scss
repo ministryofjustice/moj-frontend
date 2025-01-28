@@ -10,7 +10,6 @@
   font-size: 0; // Removes white space when using inline-block on child element.
 }
 
-
 .moj-banner__icon {
   margin-right: govuk-spacing(2);
   float: left;
@@ -28,17 +27,14 @@
   margin-bottom: govuk-spacing(2);
 }
 
-
 .moj-banner__message h2:last-child,
 .moj-banner__message p:last-child {
   margin-bottom: 0;
 }
 
-
 .moj-banner__assistive {
   @include govuk-visually-hidden;
 }
-
 
 /* Style variants
    ========================================================================== */
@@ -47,7 +43,6 @@
   border-color: govuk-colour("green");
   color: govuk-colour("green");
 }
-
 
 .moj-banner--warning {
   border-color: govuk-colour("red");

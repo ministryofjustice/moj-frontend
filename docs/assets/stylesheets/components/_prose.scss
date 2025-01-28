@@ -76,15 +76,13 @@
 
   th {
     @include govuk-typography-weight-bold;
-    padding: govuk-em(govuk-spacing(2), 19px) govuk-em(govuk-spacing(4), 19px)
-      govuk-em(govuk-spacing(2), 19px) 0;
+    padding: govuk-em(govuk-spacing(2), 19px) govuk-em(govuk-spacing(4), 19px) govuk-em(govuk-spacing(2), 19px) 0;
     border-bottom: 1px solid $govuk-border-colour;
     text-align: left;
   }
 
   td {
-    padding: govuk-em(govuk-spacing(2), 19px) govuk-em(govuk-spacing(4), 19px)
-      govuk-em(govuk-spacing(2), 19px) 0;
+    padding: govuk-em(govuk-spacing(2), 19px) govuk-em(govuk-spacing(4), 19px) govuk-em(govuk-spacing(2), 19px) 0;
     border-bottom: 1px solid $govuk-border-colour;
     text-align: left;
   }

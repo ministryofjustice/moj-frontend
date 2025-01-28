@@ -1,23 +1,20 @@
-const {
-  queryByRole,
-  queryAllByRole,
-} = require("@testing-library/dom");
-const { userEvent } = require("@testing-library/user-event");
-const { configureAxe } = require("jest-axe");
+const { queryByRole, queryAllByRole } = require('@testing-library/dom')
+const { userEvent } = require('@testing-library/user-event')
+const { configureAxe } = require('jest-axe')
 
-require("./multi-select.js");
+require('./multi-select.js')
 
-const user = userEvent.setup();
+const user = userEvent.setup()
 const axe = configureAxe({
   rules: {
     // disable landmark rules when testing isolated components.
-    region: { enabled: false },
-  },
-});
+    region: { enabled: false }
+  }
+})
 
-const createComponent = (id = "multi-select", idprefix = false) => {
+const createComponent = (id = 'multi-select', idprefix = false) => {
   html = `
-<table id="${id}" class="govuk-table" data-module="moj-multi-select" data-multi-select-checkbox="#${id}-select-all" ${idprefix ? 'data-multi-select-idprefix="' + idprefix + '-"' : ""}>
+<table id="${id}" class="govuk-table" data-module="moj-multi-select" data-multi-select-checkbox="#${id}-select-all" ${idprefix ? 'data-multi-select-idprefix="' + idprefix + '-"' : ''}>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th class="govuk-table__header" scope="col" id="${id}-select-all"></th>
@@ -50,86 +47,86 @@ const createComponent = (id = "multi-select", idprefix = false) => {
     </tr>
   </tbody>
 </table>
-`;
-  document.body.insertAdjacentHTML("afterbegin", html);
-  const component = document.querySelector(`#${id}`);
-  return component;
-};
+`
+  document.body.insertAdjacentHTML('afterbegin', html)
+  const component = document.querySelector(`#${id}`)
+  return component
+}
 
-describe("multi select", () => {
-  let component, container;
+describe('multi select', () => {
+  let component, container
 
   beforeEach(() => {
-    component = createComponent();
-    container = component.querySelector("#multi-select-select-all");
-    checkboxes = component.querySelectorAll("tbody input[type=checkbox]");
+    component = createComponent()
+    container = component.querySelector('#multi-select-select-all')
+    checkboxes = component.querySelectorAll('tbody input[type=checkbox]')
 
     new MOJFrontend.MultiSelect({
       container: container,
-      checkboxes: checkboxes,
-    });
-  });
+      checkboxes: checkboxes
+    })
+  })
 
   afterEach(() => {
-    document.body.innerHTML = "";
-    component, container, (checkboxes = undefined);
-  });
+    document.body.innerHTML = ''
+    component, container, (checkboxes = undefined)
+  })
 
-  test("initialises component", () => {
-    const selectToggle = queryByRole(container, "checkbox");
+  test('initialises component', () => {
+    const selectToggle = queryByRole(container, 'checkbox')
 
-    expect(selectToggle).not.toBeNull();
-    expect(selectToggle).toHaveAccessibleName("Select all");
-  });
+    expect(selectToggle).not.toBeNull()
+    expect(selectToggle).toHaveAccessibleName('Select all')
+  })
 
-  test("toggles all checkboxes", async () => {
-    const selectToggle = queryByRole(container, "checkbox");
-    const tbody = component.querySelector("tbody");
-    let checkboxes = queryAllByRole(tbody, "checkbox");
+  test('toggles all checkboxes', async () => {
+    const selectToggle = queryByRole(container, 'checkbox')
+    const tbody = component.querySelector('tbody')
+    let checkboxes = queryAllByRole(tbody, 'checkbox')
 
-    expect(checkboxes.length).toBe(2);
+    expect(checkboxes.length).toBe(2)
     checkboxes.forEach((checkbox) => {
-      expect(checkbox).not.toBeChecked();
-    });
+      expect(checkbox).not.toBeChecked()
+    })
 
-    await user.click(selectToggle);
-    expect(selectToggle).toBeChecked();
-
-    checkboxes.forEach((checkbox) => {
-      expect(checkbox).toBeChecked();
-    });
-
-    await user.click(selectToggle);
-    expect(selectToggle).not.toBeChecked();
+    await user.click(selectToggle)
+    expect(selectToggle).toBeChecked()
 
     checkboxes.forEach((checkbox) => {
-      expect(checkbox).not.toBeChecked();
-    });
-  });
+      expect(checkbox).toBeChecked()
+    })
 
-  test("deselcting single checkbox unchecks all checkbox", async () => {
-    const selectToggle = queryByRole(container, "checkbox");
-    const tbody = component.querySelector("tbody");
-    const checkboxes = queryAllByRole(tbody, "checkbox");
-
-    expect(checkboxes.length).toBe(2);
-    checkboxes.forEach((checkbox) => {
-      expect(checkbox).not.toBeChecked();
-    });
-
-    await user.click(selectToggle);
-    expect(selectToggle).toBeChecked();
+    await user.click(selectToggle)
+    expect(selectToggle).not.toBeChecked()
 
     checkboxes.forEach((checkbox) => {
-      expect(checkbox).toBeChecked();
-    });
+      expect(checkbox).not.toBeChecked()
+    })
+  })
 
-    await user.click(checkboxes[0]);
-    expect(checkboxes[0]).not.toBeChecked();
-    expect(selectToggle).not.toBeChecked();
+  test('deselcting single checkbox unchecks all checkbox', async () => {
+    const selectToggle = queryByRole(container, 'checkbox')
+    const tbody = component.querySelector('tbody')
+    const checkboxes = queryAllByRole(tbody, 'checkbox')
 
-    await user.click(checkboxes[0]);
-    expect(checkboxes[0]).toBeChecked();
-    expect(selectToggle).toBeChecked();
-  });
-});
+    expect(checkboxes.length).toBe(2)
+    checkboxes.forEach((checkbox) => {
+      expect(checkbox).not.toBeChecked()
+    })
+
+    await user.click(selectToggle)
+    expect(selectToggle).toBeChecked()
+
+    checkboxes.forEach((checkbox) => {
+      expect(checkbox).toBeChecked()
+    })
+
+    await user.click(checkboxes[0])
+    expect(checkboxes[0]).not.toBeChecked()
+    expect(selectToggle).not.toBeChecked()
+
+    await user.click(checkboxes[0])
+    expect(checkboxes[0]).toBeChecked()
+    expect(selectToggle).toBeChecked()
+  })
+})

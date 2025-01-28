@@ -1,0 +1,18 @@
+# Temporary only
+.cache/
+.tmp/
+
+**/*.md
+
+# Node.js modules
+node_modules/
+
+# Build output
+dist/
+public/
+
+# 3rd party vendor code
+**vendor**
+
+# Files to ignore
+package-lock.json

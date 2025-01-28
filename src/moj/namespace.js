@@ -1,1 +1,1 @@
-var MOJFrontend = {};
+var MOJFrontend = {}

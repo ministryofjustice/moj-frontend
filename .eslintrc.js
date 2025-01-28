@@ -4,14 +4,10 @@ module.exports = {
   },
   extends: ['standard', 'prettier'],
   globals: {
-    "MOJFrontend": "readonly",
-    "$": "readonly"
+    MOJFrontend: 'readonly',
+    $: 'readonly'
   },
-  ignorePatterns: [
-    'package/**/*',
-    'node_modules',
-    'node_modules/.*'
-  ],
+  ignorePatterns: ['package/**/*', 'node_modules', 'node_modules/.*'],
   overrides: [
     {
       extends: [
@@ -24,9 +20,7 @@ module.exports = {
         'plugin:promise/recommended',
         'prettier'
       ],
-      files: [
-        '**/*.{cjs,js,mjs}',
-      ],
+      files: ['**/*.{cjs,js,mjs}'],
       parserOptions: {
         ecmaVersion: 'latest'
       },
@@ -127,7 +121,7 @@ module.exports = {
         jest: true
       }
     }
-    ],
+  ],
   parserOptions: {
     // project: './tsconfig.json'
   },

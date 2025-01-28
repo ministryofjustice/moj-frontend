@@ -18,11 +18,13 @@
 @include govuk-media-query($until: desktop) {
   .js-enabled .moj-filter-layout__filter {
     position: fixed;
-    z-index: 100; top: 0; right: 0; bottom: 0;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    bottom: 0;
     overflow-y: scroll;
     background-color: govuk-colour("white");
   }
-
 }
 
 .moj-filter-layout__content {

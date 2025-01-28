@@ -2,49 +2,50 @@
    #EXAMPLE
    ========================================================================== */
 
-  .app-example {
-    position: relative;
-    border-right: 1px solid $govuk-border-colour;
-    border-left: 1px solid $govuk-border-colour;
-    background-color: govuk-colour("white");
+.app-example {
+  position: relative;
+  border-right: 1px solid $govuk-border-colour;
+  border-left: 1px solid $govuk-border-colour;
+  background-color: govuk-colour("white");
+}
+
+.app-example__frame {
+  display: block;
+  width: 100%;
+  border: 0;
+  background-color: govuk-colour("white");
+}
+
+.app-example-page {
+  position: relative;
+  margin-bottom: -1px;
+  padding: 30px;
+  padding-top: 60px;
+}
+
+.app-example__new-window {
+  @include govuk-font($size: 16);
+  padding: 8px;
+  border: 1px solid $govuk-border-colour;
+  background-color: govuk-colour("white");
+
+  a,
+  a:link,
+  a:visited {
+    color: govuk-colour("blue");
+    text-decoration: none;
   }
 
-  .app-example__frame {
-    display: block;
-    width: 100%;
-    border: 0;
-    background-color: govuk-colour("white");
+  a:hover {
+    color: $govuk-link-hover-colour;
   }
 
-  .app-example-page {
-    position: relative;
-    margin-bottom: -1px;
-    padding: 30px;
-    padding-top: 60px;
+  a:focus {
+    color: $govuk-focus-text-colour;
+    background-color: $govuk-focus-colour;
+    box-shadow:
+      0 -2px $govuk-focus-colour,
+      0 4px $govuk-focus-text-colour;
+    // border-color: $govuk-focus-text-colour;
   }
-
-  .app-example__new-window {
-    @include govuk-font($size: 16);
-    padding: 8px;
-    border: 1px solid $govuk-border-colour;
-    background-color: govuk-colour("white");
-
-    a,
-    a:link,
-    a:visited {
-      color: govuk-colour("blue");
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: $govuk-link-hover-colour;
-    }
-
-    a:focus {
-      color: $govuk-focus-text-colour;
-      background-color: $govuk-focus-colour;
-      box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
-      // border-color: $govuk-focus-text-colour;
-    }
-
-  }
+}

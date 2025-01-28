@@ -1,23 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base",
-    ":semanticCommitTypeAll(build)"
-  ],
+  "extends": ["config:base", ":semanticCommitTypeAll(build)"],
   "packageRules": [
     {
       "groupName": "Patch & Minor Updates",
       "groupSlug": "all-minor-patch-updates",
-      "labels": [
-        "dependencies"
-      ],
-      "matchPackagePatterns": [
-        "*"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
+      "labels": ["dependencies"],
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch"],
       "prCreation": "immediate",
       "stabilityDays": 7
     }
