@@ -94,9 +94,12 @@ describe('sortable table', () => {
     const cells = tbody.querySelectorAll('tr td:first-child')
     const values = Array.from(cells).map((cell) => cell.textContent.trim())
 
-    expect(component.querySelector('th')).toHaveAttribute('aria-sort', 'ascending');
-    expect(values).toEqual(['Aconcagua', 'Everest', 'K2', 'Kilimanjaro']);
-  });
+    expect(component.querySelector('th')).toHaveAttribute(
+      'aria-sort',
+      'ascending'
+    )
+    expect(values).toEqual(['Aconcagua', 'Everest', 'K2', 'Kilimanjaro'])
+  })
 
   test('sorts string column in descending order when clicked', async () => {
     const nameHeaderButton = queryByRole(component, 'button', { name: 'Name' })
@@ -109,8 +112,11 @@ describe('sortable table', () => {
       cell.textContent.trim()
     )
 
-    expect(descValues).toEqual(['Kilimanjaro', 'K2', 'Everest', 'Aconcagua']);
-    expect(nameHeaderButton.parentElement).toHaveAttribute('aria-sort', 'descending');
+    expect(descValues).toEqual(['Kilimanjaro', 'K2', 'Everest', 'Aconcagua'])
+    expect(nameHeaderButton.parentElement).toHaveAttribute(
+      'aria-sort',
+      'descending'
+    )
 
     await user.click(nameHeaderButton)
 
@@ -119,9 +125,12 @@ describe('sortable table', () => {
       cell.textContent.trim()
     )
 
-    expect(ascValues).toEqual(['Aconcagua', 'Everest', 'K2', 'Kilimanjaro']);
-    expect(nameHeaderButton.parentElement).toHaveAttribute('aria-sort', 'ascending');
-  });
+    expect(ascValues).toEqual(['Aconcagua', 'Everest', 'K2', 'Kilimanjaro'])
+    expect(nameHeaderButton.parentElement).toHaveAttribute(
+      'aria-sort',
+      'ascending'
+    )
+  })
 
   test('sorts numeric column using data-sort-value', async () => {
     const elevationHeaderButton = queryByRole(component, 'button', {
@@ -136,8 +145,11 @@ describe('sortable table', () => {
       parseInt(cell.getAttribute('data-sort-value'))
     )
 
-    expect(ascValues).toEqual([5895, 6961, 8611, 8850]);
-    expect(elevationHeaderButton.parentElement).toHaveAttribute('aria-sort', 'ascending');
+    expect(ascValues).toEqual([5895, 6961, 8611, 8850])
+    expect(elevationHeaderButton.parentElement).toHaveAttribute(
+      'aria-sort',
+      'ascending'
+    )
 
     await user.click(elevationHeaderButton)
 
@@ -146,27 +158,39 @@ describe('sortable table', () => {
       parseInt(cell.getAttribute('data-sort-value'))
     )
 
-    expect(descValues).toEqual([8850, 8611, 6961, 5895]);
-    expect(elevationHeaderButton.parentElement).toHaveAttribute('aria-sort', 'descending');
-  });
+    expect(descValues).toEqual([8850, 8611, 6961, 5895])
+    expect(elevationHeaderButton.parentElement).toHaveAttribute(
+      'aria-sort',
+      'descending'
+    )
+  })
 
   test('sorts mixed data column without specified data-sort-value', async () => {
-    const nicknameHeaderButton = queryByRole(component,"button", { name: "Test nickname"});
-    const tbody = component.querySelector("tbody");
+    const nicknameHeaderButton = queryByRole(component, 'button', {
+      name: 'Test nickname'
+    })
+    const tbody = component.querySelector('tbody')
 
-    await user.click(nicknameHeaderButton);
+    await user.click(nicknameHeaderButton)
 
-    const ascCells = tbody.querySelectorAll("tr td:nth-child(5)");
-    const ascValues = Array.from(ascCells).map(cell => cell.textContent.trim());
+    const ascCells = tbody.querySelectorAll('tr td:nth-child(5)')
+    const ascValues = Array.from(ascCells).map((cell) =>
+      cell.textContent.trim()
+    )
     // Values converted to numbers in getCellValue function for comparison
 
-    expect(ascValues).toEqual(['', '1NearlyTallest', '1Tallest', 'KiliJ89']);
-    expect(nicknameHeaderButton.parentElement).toHaveAttribute('aria-sort', 'ascending');
-  });
+    expect(ascValues).toEqual(['', '1NearlyTallest', '1Tallest', 'KiliJ89'])
+    expect(nicknameHeaderButton.parentElement).toHaveAttribute(
+      'aria-sort',
+      'ascending'
+    )
+  })
 
-  test("updates status message when sorting", async () => {
-    const elevationHeaderButton = queryByRole(component,"button", { name: "Elevation"});
-    const statusBox = queryByRole(component.parentElement, "status");
+  test('updates status message when sorting', async () => {
+    const elevationHeaderButton = queryByRole(component, 'button', {
+      name: 'Elevation'
+    })
+    const statusBox = queryByRole(component.parentElement, 'status')
 
     await user.click(elevationHeaderButton)
 
@@ -326,7 +350,10 @@ describe('sortable table options', () => {
       parseInt(cell.getAttribute('data-sort-value'))
     )
 
-    expect(values).toEqual([5895, 6961, 8611, 8850]);
-    expect(elevationHeaderButton.parentElement).toHaveAttribute('aria-sort', 'ascending');
-  });
-});
+    expect(values).toEqual([5895, 6961, 8611, 8850])
+    expect(elevationHeaderButton.parentElement).toHaveAttribute(
+      'aria-sort',
+      'ascending'
+    )
+  })
+})
