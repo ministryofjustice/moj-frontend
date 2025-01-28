@@ -3,4 +3,4 @@ const validateSession = (req, res, next) => {
   next()
 }
 
-module.exports = {validateSession}
+module.exports = { validateSession }

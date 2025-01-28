@@ -1,4 +1,4 @@
-version: "3.9"
+version: '3.9'
 services:
   preview:
     build:
@@ -9,7 +9,7 @@ services:
     image: preview-environment
     container_name: preview-container
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
       - ./docker/nginx-preview.conf:/etc/nginx/conf.d/default.conf:ro
       - ./docker/htpasswd-preview:/etc/nginx/.htpasswd:ro
@@ -31,7 +31,7 @@ services:
     image: express-app-environment
     container_name: express-app-container
     ports:
-      - "3001:3001"
+      - '3001:3001'
     networks:
       - app-network
     restart: unless-stopped

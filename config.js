@@ -15,6 +15,6 @@ const config = {
     'your-details',
     'check-your-answers'
   ]
-};
+}
 
-module.exports = config;
+module.exports = config
