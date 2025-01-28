@@ -6,10 +6,10 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703
 eleventyNavigation:
   key: Date picker
   parent: Components
-  excerpt: "The date picker component enables users to select a date from a calendar."
+  excerpt: 'The date picker component enables users to select a date from a calendar.'
 ---
 
-<span class="govuk-caption-xl">The date picker component enables users to select a date from a calendar.  </span>
+<span class="govuk-caption-xl">The date picker component enables users to select a date from a calendar. </span>
 
 {% tabs "Contents" %}
 
@@ -60,8 +60,9 @@ The date picker hint text is set to 17/5/2024. This can be changed to a more hel
 ### Excluding dates
 
 You can exclude (or disable) options from the date picker, such as:
+
 - days of the week or every weekend
-- specific dates, such as bank holidays  
+- specific dates, such as bank holidays
 - past or future dates
 
 {% example "/examples/date-picker-excluded-dates", 590 %}
@@ -109,7 +110,7 @@ Follow the [GOV.UK Design System guidance on error messages](https://design-syst
   </tbody>
 </table>
 
-###  Using multiple date pickers
+### Using multiple date pickers
 
 If you're using more than one date picker, give each text field its own error summary and message (even if the error is the same).
 

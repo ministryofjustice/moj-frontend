@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Preparing for a service assessment
   parent: Ethics
   order: 40
-  excerpt: "As part of your service assessment, you’ll be expected to show how you’ve considered ethics. Learn what to do before and during the assessment."
+  excerpt: 'As part of your service assessment, you’ll be expected to show how you’ve considered ethics. Learn what to do before and during the assessment.'
 ---
 
 As part of your service assessment, you’ll be expected to show how you’ve considered the ethics of your service.
@@ -34,5 +34,5 @@ As part of the service assessment, you’ll be asked one or both of the followin
 Depending on the output of your ethics review, your team can say one of the following:
 
 - there were no actions from the review
-- you’ve already addressed any actions  
+- you’ve already addressed any actions
 - you’ve not yet addressed the actions, but plan to

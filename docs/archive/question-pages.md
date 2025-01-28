@@ -5,7 +5,7 @@ redirect_from: [docs/patterns/question-pages.md, /pages/question-pages]
 eleventyNavigation:
   key: Question page
   parent: Archive
-  excerpt: "Question pages grouped related questions into the same page."
+  excerpt: 'Question pages grouped related questions into the same page.'
 ---
 
 {% banner "This page is archived" %}
@@ -19,7 +19,6 @@ Before asking multiple questions per page, you should first:
 
 - follow the guidance to [start by asking one question per page](https://design-system.service.gov.uk/patterns/question-pages/#start-by-asking-one-question-per-page) in The GOV.UK Design System.
 - follow the guidance to [start with one thing per page](https://www.gov.uk/service-manual/design/form-structure#start-with-one-thing-per-page) the GOV.UK Service Manual.
-
 
 User research will tell you if it makes sense to group a number of related questions on the same page. For example, if you’re designing an internal service for government users who need to repeat and switch between tasks quickly.
 

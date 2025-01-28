@@ -6,7 +6,7 @@ redirect_from: /components/currency-input
 eleventyNavigation:
   key: Currency input
   parent: Archive
-  excerpt: "The currency input component helped users enter an amount of money in a specified currency."
+  excerpt: 'The currency input component helped users enter an amount of money in a specified currency.'
 ---
 
 {% banner "This component is archived" %}

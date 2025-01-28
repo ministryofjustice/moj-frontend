@@ -1,13 +1,13 @@
 ---
 layout: layouts/get-started.njk
 subsection: Setup for production
-title:  Setting up JavaScript
+title: Setting up JavaScript
 redirect_from: /get-started/setting-up-javascript
 eleventyNavigation:
   key: Setting up JavaScript
   parent: Setup for production
   order: 40
-  excerpt: "Several MoJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript."
+  excerpt: 'Several MoJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript.'
 ---
 
 Several MoJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript.
@@ -30,7 +30,7 @@ Then import the JavaScript file before the closing `</body>` tag of your HTML pa
 
 ```html
 <body>
-...
+  ...
   <script src="<YOUR-APP>/jquery.js"></script>
   <script src="<YOUR-APP>/<YOUR-JS-FILE>.js"></script>
   <script>
@@ -59,11 +59,13 @@ Rather than using `initAll`, you can initialise individual components by identif
 
 ```html
 <script>
-var PasswordReveal = window.MOJFrontend.PasswordReveal
-var $passwordReveal = document.querySelector('[data-module="moj-password-reveal"]')
-if ($passwordReveal) {
+  var PasswordReveal = window.MOJFrontend.PasswordReveal
+  var $passwordReveal = document.querySelector(
+    '[data-module="moj-password-reveal"]'
+  )
+  if ($passwordReveal) {
     new PasswordReveal($passwordReveal)
-}
+  }
 </script>
 ```
 

@@ -7,7 +7,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/242
 eleventyNavigation:
   key: Case list page
   parent: Pages
-  excerpt: "Use the case list page to make pieces of information about a case easier to scan, prioritise and action for users."
+  excerpt: 'Use the case list page to make pieces of information about a case easier to scan, prioritise and action for users.'
 ---
 
 <div class="govuk-form-group">
@@ -22,12 +22,11 @@ Use the case list page to make pieces of information about a case easier to scan
 
 First understand what pieces of information are needed to prioritise and action cases. You should avoid using too many columns, and only provide users with information they really need. Use clear labels for column headings that describe the content.
 
-
 ### Order of information
 
 Think about the order of your columns so that you display the information in a way that makes sense to the user.
 
-User research will tell you the best default order for cases, such as by most recently updated, case number, or full name. If you want to let users reorder cases, use the  [Sortable table](/components/sortable-table/) component.
+User research will tell you the best default order for cases, such as by most recently updated, case number, or full name. If you want to let users reorder cases, use the [Sortable table](/components/sortable-table/) component.
 
 You may want to use [Tabs](https://design-system.service.gov.uk/components/tabs/) to let users navigate between different groups of cases, such as ‘Recently allocated’ and ‘Caseload’.
 
@@ -50,7 +49,6 @@ You should limit actions from the case list and allow users to perform more acti
 Write out dates in full to help users read it easily, such as 16 June at 8:06am. When space is an issue you can use truncated months, such as Jan, Feb.
 
 You can display date and time in separate columns to let users sort and filter them separately. Further guidance is available on [dates.](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#dates)
-
 
 ### If you want to let users select multiple cases to perform an action on them
 
@@ -79,8 +77,8 @@ Use the [search](/components/search/) component. Place this before the [sortable
 
 ### Things we don't know enough about
 
-* **Pagination** - there’s only one page but the user will still need to know the number of cases on that page, for example, ‘Showing 1 to 25 of 25 cases’.
-* **Link on the first column** -  the need for the bold font weight instead of regular.
-*  [**Badge**](/components/badge/) - to indicate an update notification or a change made on a specific row on the table.
-*  [**Notification badge**](/components/notification-badge/) - this hasn’t been tested but has been mentioned to use this when highlighting updates of a specific case.
-* **Customise length of the list** - View x number of cases on a page.
+- **Pagination** - there’s only one page but the user will still need to know the number of cases on that page, for example, ‘Showing 1 to 25 of 25 cases’.
+- **Link on the first column** - the need for the bold font weight instead of regular.
+- [**Badge**](/components/badge/) - to indicate an update notification or a change made on a specific row on the table.
+- [**Notification badge**](/components/notification-badge/) - this hasn’t been tested but has been mentioned to use this when highlighting updates of a specific case.
+- **Customise length of the list** - View x number of cases on a page.

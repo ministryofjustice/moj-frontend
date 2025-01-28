@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/687
 eleventyNavigation:
   parent: Components
   key: Badge
-  excerpt: "Use the badge component to highlight small details like an urgent case."
+  excerpt: 'Use the badge component to highlight small details like an urgent case.'
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}
@@ -16,6 +16,7 @@ You should consider using the GOV.UK version if it fits your needs.
 {% endbanner %}
 
 {% example "/examples/badge", 125 %}
+
 ## When to use
 
 Use the badge component to highlight small details like an urgent case.

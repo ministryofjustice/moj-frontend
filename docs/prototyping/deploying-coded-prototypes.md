@@ -1,13 +1,13 @@
 ---
 layout: layouts/get-started.njk
 subsection: Prototyping
-title:  Deploying coded prototypes
+title: Deploying coded prototypes
 redirect_from: /get-started/deploying-your-prototype
 eleventyNavigation:
   key: Deploying coded prototypes
   parent: Prototyping
   order: 30
-  excerpt: "Deploy your prototype using MoJ Cloud Platform."
+  excerpt: 'Deploy your prototype using MoJ Cloud Platform.'
 ---
 
 If you work for the Ministry of Justice, we recommend using MoJ Cloud Platform to host your prototype.

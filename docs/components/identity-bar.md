@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/704
 eleventyNavigation:
   key: Identity bar
   parent: Components
-  excerpt: "Use the identity bar component to give users context of where they are within a service such as viewing a case."
+  excerpt: 'Use the identity bar component to give users context of where they are within a service such as viewing a case.'
 ---
 
 {% example "/examples/identity-bar", 150 %}
@@ -26,6 +26,7 @@ Don't use this component if there's only one details page. For example, clicking
 ### Similar or linked components
 
 There's also the:
+
 - [button menu component](/components/button-menu/)
 - [page header actions component](/components/page-header-actions/)
 
@@ -39,7 +40,7 @@ You can use buttons to display tasks which relate to the identity bar.
 
 ### Displaying a menu of tasks
 
-You can use the [button menu](/components/button-menu/) to display tasks which relate to the identity bar.  
+You can use the [button menu](/components/button-menu/) to display tasks which relate to the identity bar.
 
 {% example "/examples/identity-bar-menu-toggle", 300 %}
 

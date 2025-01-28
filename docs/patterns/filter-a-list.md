@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/717
 eleventyNavigation:
   key: Filter a list
   parent: Patterns
-  excerpt: "Use this pattern to help users refine a set of items either in a list or a set of search results."
+  excerpt: 'Use this pattern to help users refine a set of items either in a list or a set of search results.'
 ---
 
 {% example "/examples/patterns/filter-a-list", 1050 %}

@@ -5,7 +5,7 @@ redirect_from: /components/tag
 eleventyNavigation:
   key: Tag
   parent: Archive
-  excerpt: "The tag outlined some additional colours for tags. Not to be confused with the GOV.UK Design System tag."
+  excerpt: 'The tag outlined some additional colours for tags. Not to be confused with the GOV.UK Design System tag.'
 ---
 
 {% banner "This component is archived" %}

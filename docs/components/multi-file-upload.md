@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/264
 eleventyNavigation:
   key: Multi file upload
   parent: Components
-  excerpt: "Use the multi file upload component to help users upload multiple files at the same time, on a regular basis."
+  excerpt: 'Use the multi file upload component to help users upload multiple files at the same time, on a regular basis.'
 ---
 
 {% example "/examples/multi-file-upload", 550 %}

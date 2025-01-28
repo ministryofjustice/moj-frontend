@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/706
 eleventyNavigation:
   key: Notification badge
   parent: Components
-  excerpt: "The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are."
+  excerpt: 'The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are.'
 ---
 
 {% banner "HMRC Design Patterns has a similar component" %}
@@ -20,6 +20,7 @@ eleventyNavigation:
 The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are.
 
 Only use it if the number changes when the user performs an action.
+
 ## When not to use
 
 Do not use the notification badge when:
@@ -34,6 +35,7 @@ Unless there is a strong user need, only use it as a part of the navigation.
 Display the notification badge to the right-hand side of the information it refers to.
 
 If the number is more than 99, display ‘99+’.
+
 ## Research
 
 Research shows that notification badges are common across online services, smartphones and apps. Usability testing showed:

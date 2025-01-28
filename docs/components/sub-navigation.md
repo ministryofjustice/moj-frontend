@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/714
 eleventyNavigation:
   key: Sub navigation
   parent: Components
-  excerpt: "Use the sub navigation component to let users navigate sub sections in a system or service."
+  excerpt: 'Use the sub navigation component to let users navigate sub sections in a system or service.'
 ---
 
 {% example "/examples/sub-navigation", 150 %}

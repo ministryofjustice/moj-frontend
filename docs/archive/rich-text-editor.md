@@ -5,7 +5,7 @@ redirect_from: /components/rich-text-editor
 eleventyNavigation:
   key: Rich text editor
   parent: Archive
-  excerpt: "The rich text editor component allowed users to format their input in a text area."
+  excerpt: 'The rich text editor component allowed users to format their input in a text area.'
 ---
 
 {% banner "This component is archived" %}

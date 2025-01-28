@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/711
 eleventyNavigation:
   key: Scrollable pane
   parent: Components
-  excerpt: "Use the scrollable pane component when you have content (typically tables) which unavoidably overflowing the page."
+  excerpt: 'Use the scrollable pane component when you have content (typically tables) which unavoidably overflowing the page.'
 ---
 
 {% example "/examples/scrollable-pane", 470 %}

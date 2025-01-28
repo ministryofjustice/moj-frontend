@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/710
 eleventyNavigation:
   key: Primary navigation
   parent: Components
-  excerpt: "Use the primary navigation component to let users navigate and search your service."
+  excerpt: 'Use the primary navigation component to let users navigate and search your service.'
 ---
 
 {% example "/examples/primary-navigation", 150 %}

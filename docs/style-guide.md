@@ -4,10 +4,10 @@ layout: layouts/content.njk
 title: Content style guide
 permalink: /content-standards/style-guide/
 eleventyNavigation:
- key: Content style guide
- parent: Standards and principles
- order: 20
- excerpt: "The MoJ A to Z content style guide covering style, spelling and grammar conventions."
+  key: Content style guide
+  parent: Standards and principles
+  order: 20
+  excerpt: 'The MoJ A to Z content style guide covering style, spelling and grammar conventions.'
 ---
 
 <p class="govuk-!-margin-bottom-6">
@@ -30,6 +30,7 @@ Last updated: 9 January 2025
 {% accordionSection "A" %}
 
 ### acronyms and initialisms
+
 Acronyms and initialisms in services do not need to be spelt out if they are well understood by your audience. This also helps if it's difficult to spell them out, such as in a table.
 
 If users are familiar with the acronym or initialism but you would still like to help them, you can spell it out afterwards, for example 'PDU (probation delivery unit)'.
@@ -37,20 +38,24 @@ If users are familiar with the acronym or initialism but you would still like to
 For guidance or long-form content, spell them out on first mention (following the [abbreviations and acronyms guidance on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#abbreviations-and-acronyms)).
 
 ### alerts (DPS only)
+
 Only use 'alerts' when talking about alerts created in NOMIS or DPS (Digital Prison Services).
 
 Alerts can be 'active' or 'inactive'. You may find language in DPS that refers to 'adding', 'opening' and 'closing' alerts. This should become more consistent as users move away from using NOMIS.
 
 ### aliases
+
 Always use 'aliases' when talking about other names a person has on their prison record. This term is commonly used and understood in prisons. Using a different term may confuse users.
 
 ### Assessment, Care in Custody and Teamwork (ACCT)
+
 Use ACCT. This is more well known than the full version. When an ACCT is closed, it is referred to as 'ACCT post-closure' for 7 days.
 
 {% endaccordionSection %}
 {% accordionSection "B" %}
 
 ### breadcrumbs
+
 Do not show the current page in the list of breadcrumbs.
 
 In DPS, the first breadcrumb should always be 'Digital Prison Services'.
@@ -59,6 +64,7 @@ In DPS, the first breadcrumb should always be 'Digital Prison Services'.
 {% accordionSection "C" %}
 
 ### capitalisation
+
 For general terms, follow the guidance in the [style guide on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style).
 
 There's not a standard approach to capitalising acronyms or initialisms when they are written out in full.
@@ -117,7 +123,7 @@ Lower case.
 
 ### community probation practitioner
 
-This is a [probation practitioner](#probation-practitioner) who works in the community and not in prisons.  
+This is a [probation practitioner](#probation-practitioner) who works in the community and not in prisons.
 
 It's better than 'community offender manager (COM)', although someone may have this job title. Refers to a probation officer, probation support officer or senior probation officer.
 
@@ -210,9 +216,10 @@ As users are moved away from NOMIS, references to 'global' should be able to be 
 {% accordionSection "H" %}
 
 ### help content (DPS only)
+
 When directing users to help and support, always use this content:
 
-**Get help with DPS**   
+**Get help with DPS**  
 Call 0800 917 5148 or #6598 from inside an establishment.
 
 This content does not provide any alternative contact methods such as email or chat. This may be raised as a recommendation if your service receives an accessibility audit.
@@ -235,6 +242,7 @@ Initial caps for 'Home Office'.
 {% accordionSection "I" %}
 
 ### identity numbers (DPS only)
+
 Use 'identity numbers' when referring to:
 
 - PNC number
@@ -257,18 +265,22 @@ Staff in prisons may still use ‘IEP’ when referring to someone’s incentive
 {% accordionSection "K" %}
 
 ### key worker
+
 This is 2 separate words. Not keyworker.
 
 {% endaccordionSection %}
 {% accordionSection "N" %}
 
 ### naming
+
 If you're naming a service in DPS, you should follow the [DPS naming guidelines (MoJ staff only)](https://docs.google.com/document/d/1Va7AIp6cmlyNgs_x42A4KHw3wo5NFQebYO6EhO3lJxg/edit?usp=sharing).
 
 ### NDelius
+
 Not nDelius, Ndelius or Delius. It's the case management system in probation.
 
 ### NOMIS
+
 Not Nomis or nomis. It's an initialism and stands for the National Offender Management Information System. This is a legacy digital system that's being replacing with DPS.
 
 ### non-associations
@@ -335,9 +347,9 @@ It is often written as pin or Pin in prisons, but PIN is the correct format.
 
 Always use 'preferred name', not 'working name' as it's called in NOMIS.
 
-### PNC number  
+### PNC number
 
-An identity number assigned to a person in the Police National Computer (PNC). Use ‘PNC number’. This is more well known than the full version.  
+An identity number assigned to a person in the Police National Computer (PNC). Use ‘PNC number’. This is more well known than the full version.
 
 ### prison number
 
@@ -347,7 +359,7 @@ Do not use ‘prison no’, ‘prisoner number’, ‘NOMIS number’, ‘NOMS n
 
 Staff in prisons may still use ‘NOMIS number’ or ‘alpha number’ when referring to someone’s prison number.
 
-### prisoner, person in prison  
+### prisoner, person in prison
 
 Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md).
 
@@ -389,13 +401,13 @@ There are many different types of release date. For example, prisoners who are e
 The most common types of release date are:
 
 - Conditional release date (CRD)
-This is the date a person in prison is released from custody, subject to licence conditions.
+  This is the date a person in prison is released from custody, subject to licence conditions.
 
 - Sentence expiry date (SED)
-This is the date a person’s prison sentence expires.
+  This is the date a person’s prison sentence expires.
 
 - Licence expiry date (LED)
-This is the date the licence expires where release from custody is subject to licence conditions.
+  This is the date the licence expires where release from custody is subject to licence conditions.
 
 Read the [full list of release dates (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Courtcaseandreleasedates/SitePages/Release-date-types-and-definitions.aspx).
 
