@@ -1,11 +1,11 @@
 $app-breakpoint: 800px;
 
 .app-layout {
-    @include govuk-media-query($app-breakpoint) {
-      display: grid;
-      width: 100%;
-      grid-template-columns: min(25%, 300px) auto;
-    }
+  @include govuk-media-query($app-breakpoint) {
+    display: grid;
+    width: 100%;
+    grid-template-columns: min(25%, 300px) auto;
+  }
 }
 
 .app-layout__sidebar {
@@ -23,7 +23,5 @@ $app-breakpoint: 800px;
   @include govuk-responsive-padding(6);
   @include govuk-media-query($app-breakpoint) {
     @include govuk-responsive-padding(9);
-
   }
 }
-

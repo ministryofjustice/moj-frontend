@@ -8,7 +8,7 @@ moj-menu-toggle > button {
   display: flex;
   margin-bottom: 0;
   border: none;
-  color: govuk-colour('white');
+  color: govuk-colour("white");
 
   background: none;
   box-shadow: none;
@@ -26,7 +26,6 @@ moj-menu-toggle > button {
     border-color: transparent;
     box-shadow: none;
   }
-
 }
 
 moj-menu-toggle > button[aria-expanded="true"] svg {

@@ -3,6 +3,6 @@ const getAllFilters = require('./all')
 
 const allFilters = getAllFilters()
 
-Object.keys(allFilters).forEach(name => {
+Object.keys(allFilters).forEach((name) => {
   addFilter(name, allFilters[name])
 })

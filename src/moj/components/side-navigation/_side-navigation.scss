@@ -14,7 +14,6 @@
     display: block;
     padding: govuk-spacing(4) 0 0;
   }
-
 }
 
 .moj-side-navigation__title {
@@ -28,7 +27,6 @@
   @include govuk-media-query($until: tablet) {
     display: none;
   }
-
 }
 
 .moj-side-navigation__list {
@@ -48,7 +46,6 @@
 }
 
 .moj-side-navigation__item {
-
   @include govuk-media-query($until: tablet) {
     display: flex;
   }
@@ -72,8 +69,6 @@
       border-left: 4px solid transparent;
       background-color: inherit;
     }
-
-
   }
 
   a:hover {
@@ -86,7 +81,6 @@
     color: $govuk-focus-text-colour;
     background-color: $govuk-focus-colour;
   }
-
 }
 
 .moj-side-navigation__item--active {
@@ -119,6 +113,4 @@
       background-color: $govuk-focus-colour;
     }
   }
-
-
 }

@@ -12,11 +12,10 @@
   text-align: justify; // Trick to remove the need for floats
 
   &::after {
-    content: '';
+    content: "";
     display: inline-block;
     width: 100%;
   }
-
 }
 
 .moj-primary-navigation__nav {
@@ -25,7 +24,6 @@
     display: inline-block;
     vertical-align: middle;
   }
-
 }
 
 .moj-primary-navigation__list {
@@ -44,7 +42,6 @@
   &:last-child {
     margin-right: 0;
   }
-
 }
 
 .moj-primary-navigation__link {
@@ -75,7 +72,9 @@
   &:focus::before {
     content: "";
     display: block;
-    position: absolute; bottom: 0; left: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 5px;
     background-color: govuk-colour("black");
@@ -90,7 +89,9 @@
     &::before {
       content: "";
       display: block;
-      position: absolute; bottom: 0; left: 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
       width: 100%;
       height: 5px;
       background-color: $govuk-link-colour;
@@ -112,18 +113,13 @@
       &::before {
         background-color: govuk-colour("black");
       }
-
     }
-
   }
-
 }
 
 .moj-primary-navigation__search {
-
   @include govuk-media-query($from: desktop) {
     display: inline-block;
     vertical-align: middle;
   }
-
 }

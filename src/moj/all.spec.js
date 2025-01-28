@@ -1,22 +1,22 @@
-const { getByText, getByTestId } = require("@testing-library/dom");
+const { getByText, getByTestId } = require('@testing-library/dom')
 
-require("./helpers");
-require("./all.js");
+require('./helpers')
+require('./all.js')
 
-describe("initAll", () => {
-  test("initialises container", () => {
-    MOJFrontend.PasswordReveal = jest.fn();
+describe('initAll', () => {
+  test('initialises container', () => {
+    MOJFrontend.PasswordReveal = jest.fn()
 
-    const container = document.createElement("div");
+    const container = document.createElement('div')
 
     container.innerHTML = `
       <input data-module="moj-password-reveal" data-testid="password-reveal" type="password" />
-    `;
+    `
 
-    new MOJFrontend.initAll({ scope: container });
+    new MOJFrontend.initAll({ scope: container })
 
     expect(MOJFrontend.PasswordReveal).toHaveBeenCalledWith(
-      getByTestId(container, "password-reveal"),
-    );
-  });
-});
+      getByTestId(container, 'password-reveal')
+    )
+  })
+})

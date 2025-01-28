@@ -1,13 +1,13 @@
 const {
   getByLabelText,
   getByRole,
-  queryByRole,
-} = require("@testing-library/dom");
-const { userEvent } = require("@testing-library/user-event");
+  queryByRole
+} = require('@testing-library/dom')
+const { userEvent } = require('@testing-library/user-event')
 
-require("./add-another.js");
+require('./add-another.js')
 
-const user = userEvent.setup();
+const user = userEvent.setup()
 
 const createComponent = () => {
   const html = `
@@ -27,138 +27,138 @@ const createComponent = () => {
         </fieldset>
         <button type="button" class="govuk-button moj-add-another__add-button">Add another person</button>
       </form>
-    </div>`;
-  document.body.innerHTML = html;
-  const component = document.querySelector('[data-module="moj-add-another"]');
-  return component;
-};
+    </div>`
+  document.body.innerHTML = html
+  const component = document.querySelector('[data-module="moj-add-another"]')
+  return component
+}
 
-describe("Add Another component", () => {
-  let component;
-  let addButton;
+describe('Add Another component', () => {
+  let component
+  let addButton
 
   beforeEach(() => {
-    component = createComponent();
-    new MOJFrontend.AddAnother(component);
-    addButton = getByRole(component, "button", { name: "Add another person" });
-  });
+    component = createComponent()
+    new MOJFrontend.AddAnother(component)
+    addButton = getByRole(component, 'button', { name: 'Add another person' })
+  })
 
   afterEach(() => {
-    document.body.innerHTML = "";
-    component = undefined;
-  });
+    document.body.innerHTML = ''
+    component = undefined
+  })
 
   test('adds a new item when "Add another person" is clicked', async () => {
-    const initialItems = component.querySelectorAll(".moj-add-another__item");
-    expect(initialItems.length).toBe(1);
+    const initialItems = component.querySelectorAll('.moj-add-another__item')
+    expect(initialItems.length).toBe(1)
 
-    await user.click(addButton);
+    await user.click(addButton)
 
-    const updatedItems = component.querySelectorAll(".moj-add-another__item");
-    expect(updatedItems.length).toBe(2);
+    const updatedItems = component.querySelectorAll('.moj-add-another__item')
+    expect(updatedItems.length).toBe(2)
 
     const secondItemFirstName = updatedItems[1].querySelector(
-      '[name="person[1][first_name]"]',
-    );
-    expect(secondItemFirstName).toBeInTheDocument();
-    expect(secondItemFirstName.value).toBe("");
-  });
+      '[name="person[1][first_name]"]'
+    )
+    expect(secondItemFirstName).toBeInTheDocument()
+    expect(secondItemFirstName.value).toBe('')
+  })
 
-  test("adds a remove button to new items", async () => {
-    await user.click(addButton);
+  test('adds a remove button to new items', async () => {
+    await user.click(addButton)
 
-    const firstItem = component.querySelectorAll(".moj-add-another__item")[0];
-    const secondItem = component.querySelectorAll(".moj-add-another__item")[1];
-    const firstItemRemoveButton = getByRole(firstItem, "button", {
-      name: "Remove",
-    });
-    const secondItemRemoveButton = getByRole(secondItem, "button", {
-      name: "Remove",
-    });
+    const firstItem = component.querySelectorAll('.moj-add-another__item')[0]
+    const secondItem = component.querySelectorAll('.moj-add-another__item')[1]
+    const firstItemRemoveButton = getByRole(firstItem, 'button', {
+      name: 'Remove'
+    })
+    const secondItemRemoveButton = getByRole(secondItem, 'button', {
+      name: 'Remove'
+    })
 
-    expect(firstItemRemoveButton).toBeInTheDocument();
-    expect(secondItemRemoveButton).toBeInTheDocument();
-  });
+    expect(firstItemRemoveButton).toBeInTheDocument()
+    expect(secondItemRemoveButton).toBeInTheDocument()
+  })
 
   test('removes an item when the "Remove" button is clicked', async () => {
-    await user.click(addButton);
+    await user.click(addButton)
 
-    const secondItem = component.querySelectorAll(".moj-add-another__item")[1];
-    const removeButton = getByRole(secondItem, "button", { name: "Remove" });
+    const secondItem = component.querySelectorAll('.moj-add-another__item')[1]
+    const removeButton = getByRole(secondItem, 'button', { name: 'Remove' })
 
-    await user.click(removeButton);
+    await user.click(removeButton)
 
-    const remainingItems = component.querySelectorAll(".moj-add-another__item");
+    const remainingItems = component.querySelectorAll('.moj-add-another__item')
 
-    expect(remainingItems.length).toBe(1);
+    expect(remainingItems.length).toBe(1)
     expect(
-      queryByRole(component, "button", { name: "Remove" }),
-    ).not.toBeInTheDocument();
-  });
+      queryByRole(component, 'button', { name: 'Remove' })
+    ).not.toBeInTheDocument()
+  })
 
-  test("new item inputs have no value", async () => {
-    await user.click(addButton);
+  test('new item inputs have no value', async () => {
+    await user.click(addButton)
 
-    const secondItem = component.querySelectorAll(".moj-add-another__item")[1];
-    const firstNameInput = getByLabelText(secondItem, "First name");
-    const lastNameInput = getByLabelText(secondItem, "Last name");
+    const secondItem = component.querySelectorAll('.moj-add-another__item')[1]
+    const firstNameInput = getByLabelText(secondItem, 'First name')
+    const lastNameInput = getByLabelText(secondItem, 'Last name')
 
-    expect(firstNameInput.value).toBe("");
-    expect(lastNameInput.value).toBe("");
-  });
+    expect(firstNameInput.value).toBe('')
+    expect(lastNameInput.value).toBe('')
+  })
 
-  test("resets form values in a new item", async () => {
-    await user.click(addButton);
+  test('resets form values in a new item', async () => {
+    await user.click(addButton)
 
-    const firstItem = component.querySelectorAll(".moj-add-another__item")[0];
-    const firstItemFirstNameInput = getByLabelText(firstItem, "First name");
-    const firstItemLastNameInput = getByLabelText(firstItem, "Last name");
+    const firstItem = component.querySelectorAll('.moj-add-another__item')[0]
+    const firstItemFirstNameInput = getByLabelText(firstItem, 'First name')
+    const firstItemLastNameInput = getByLabelText(firstItem, 'Last name')
 
-    await user.type(firstItemFirstNameInput, "Steve");
-    await user.type(firstItemLastNameInput, "Jobs");
+    await user.type(firstItemFirstNameInput, 'Steve')
+    await user.type(firstItemLastNameInput, 'Jobs')
 
-    expect(firstItemFirstNameInput.value).toBe("Steve");
-    expect(firstItemLastNameInput.value).toBe("Jobs");
+    expect(firstItemFirstNameInput.value).toBe('Steve')
+    expect(firstItemLastNameInput.value).toBe('Jobs')
 
-    const secondItem = component.querySelectorAll(".moj-add-another__item")[1];
-    const secondItemFirstNameInput = getByLabelText(secondItem, "First name");
-    const secondItemLastNameInput = getByLabelText(secondItem, "Last name");
+    const secondItem = component.querySelectorAll('.moj-add-another__item')[1]
+    const secondItemFirstNameInput = getByLabelText(secondItem, 'First name')
+    const secondItemLastNameInput = getByLabelText(secondItem, 'Last name')
 
-    expect(secondItemFirstNameInput.value).toBe("");
-    expect(secondItemLastNameInput.value).toBe("");
-  });
+    expect(secondItemFirstNameInput.value).toBe('')
+    expect(secondItemLastNameInput.value).toBe('')
+  })
 
-  test("focuses the heading after removing an item", async () => {
-    await user.click(addButton);
+  test('focuses the heading after removing an item', async () => {
+    await user.click(addButton)
 
-    const heading = queryByRole(component, "heading", { level: 2 });
-    const secondItem = component.querySelectorAll(".moj-add-another__item")[1];
-    const removeButton = getByRole(secondItem, "button", { name: "Remove" });
+    const heading = queryByRole(component, 'heading', { level: 2 })
+    const secondItem = component.querySelectorAll('.moj-add-another__item')[1]
+    const removeButton = getByRole(secondItem, 'button', { name: 'Remove' })
 
-    await user.click(removeButton);
+    await user.click(removeButton)
 
-    expect(heading).toHaveFocus();
-  });
+    expect(heading).toHaveFocus()
+  })
 
-  test("updates attributes correctly after removing an item", async () => {
-    await user.click(addButton);
-    await user.click(addButton);
+  test('updates attributes correctly after removing an item', async () => {
+    await user.click(addButton)
+    await user.click(addButton)
 
-    const secondItem = component.querySelectorAll(".moj-add-another__item")[1];
-    const removeButton = getByRole(secondItem, "button", { name: "Remove" });
+    const secondItem = component.querySelectorAll('.moj-add-another__item')[1]
+    const removeButton = getByRole(secondItem, 'button', { name: 'Remove' })
 
-    await user.click(removeButton);
+    await user.click(removeButton)
 
-    const remainingItems = component.querySelectorAll(".moj-add-another__item");
+    const remainingItems = component.querySelectorAll('.moj-add-another__item')
     remainingItems.forEach((item, index) => {
       const firstNameInput = item.querySelector(
-        '[name="person[' + index + '][first_name]"]',
-      );
+        '[name="person[' + index + '][first_name]"]'
+      )
       const lastNameInput = item.querySelector(
-        '[name="person[' + index + '][last_name]"]',
-      );
-      expect(firstNameInput).toBeInTheDocument();
-      expect(lastNameInput).toBeInTheDocument();
-    });
-  });
-});
+        '[name="person[' + index + '][last_name]"]'
+      )
+      expect(firstNameInput).toBeInTheDocument()
+      expect(lastNameInput).toBeInTheDocument()
+    })
+  })
+})

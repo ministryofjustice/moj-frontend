@@ -3,12 +3,12 @@ $moj-button-hover-colour: #767676;
 
 .app-vertical-nav {
   position: relative;
-  @include govuk-responsive-padding(6, 'bottom');
-  @include govuk-responsive-margin(6, 'bottom');
+  @include govuk-responsive-padding(6, "bottom");
+  @include govuk-responsive-margin(6, "bottom");
 
   &::after {
     content: "";
-    position:absolute;
+    position: absolute;
     right: govuk-spacing(4);
     bottom: 0;
     left: govuk-spacing(4);
@@ -34,7 +34,6 @@ $moj-button-hover-colour: #767676;
 
 .app-vertical-nav__item {
   position: relative;
-
 }
 
 .app-vertical-nav__indicator {
@@ -105,7 +104,7 @@ $moj-button-hover-colour: #767676;
   }
 
   &:active {
-    color: govuk-colour('white')
+    color: govuk-colour("white");
   }
 
   &:focus-visible {
@@ -127,11 +126,11 @@ $moj-button-hover-colour: #767676;
 }
 
 .app-vertical-nav__item--active > .app-vertical-nav__link {
-    color: govuk-colour('white');
-    background-color: $govuk-link-colour;
+  color: govuk-colour("white");
+  background-color: $govuk-link-colour;
 
-    &:hover {
-    color: govuk-colour('white') ;
+  &:hover {
+    color: govuk-colour("white");
     background-color: $moj-app-mid-grey;
   }
 

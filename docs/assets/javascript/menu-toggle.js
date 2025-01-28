@@ -1,20 +1,20 @@
 export default class MenuToggle extends HTMLElement {
   constructor() {
-    super();
+    super()
 
     this.menuSelector = this.getAttribute('menu')
     this.$menu = document.querySelector(this.menuSelector)
     this.$button = this.querySelector('button')
 
-    if(!this.$menu) {
+    if (!this.$menu) {
       console.error('Menu element must exist ')
       return
     }
-    if(!this.$button) {
+    if (!this.$button) {
       console.error('Menu toggle element must contain a button element')
       return
     }
-    if(!this.$menu.id) {
+    if (!this.$menu.id) {
       console.error('Menu element must have an id attribute')
       return
     }
@@ -23,17 +23,19 @@ export default class MenuToggle extends HTMLElement {
 
     this.addEventListener('click', this)
 
-    if( this.breakpoint && Number.isInteger(this.breakpoint)) {
-      window.addEventListener('resize', (event) => { this.onresize(event) })
+    if (this.breakpoint && Number.isInteger(this.breakpoint)) {
+      window.addEventListener('resize', (event) => {
+        this.onresize(event)
+      })
     }
 
-    this.windowWidth = window.innerWidth;
+    this.windowWidth = window.innerWidth
 
-    this.setState();
+    this.setState()
   }
 
   handleEvent(event) {
-    	this[`on${event.type}`](event);
+    this[`on${event.type}`](event)
   }
 
   onclick(event) {
@@ -50,17 +52,17 @@ export default class MenuToggle extends HTMLElement {
   }
 
   setState() {
-    if( document.documentElement.clientWidth >= this.breakpoint ) {
-        this.hideToggle()
-        this.showMenu()
-      } else {
-        this.showToggle()
-        this.hideMenu()
-      }
+    if (document.documentElement.clientWidth >= this.breakpoint) {
+      this.hideToggle()
+      this.showMenu()
+    } else {
+      this.showToggle()
+      this.hideMenu()
+    }
   }
 
   toggleMenu() {
-    if(this.$menu.hidden) {
+    if (this.$menu.hidden) {
       this.showMenu()
     } else {
       this.hideMenu()
@@ -86,7 +88,6 @@ export default class MenuToggle extends HTMLElement {
   }
 
   get breakpoint() {
-    return parseInt( this.getAttribute('breakpoint') )
+    return parseInt(this.getAttribute('breakpoint'))
   }
 }
-

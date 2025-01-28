@@ -1,5 +1,5 @@
 .app-card {
-  @include govuk-responsive-padding(6, "bottom")
+  @include govuk-responsive-padding(6, "bottom");
 }
 
 .app-card + .app-card {
