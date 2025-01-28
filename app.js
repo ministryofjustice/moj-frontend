@@ -2,8 +2,10 @@ const express = require('express');
 const path = require('path');
 const expressNunjucks = require('express-nunjucks').default;
 const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
 const nunjucks = require('nunjucks');
-const { APP_PORT } = require('./config');
+const { createClient } = require('redis');
+const { APP_PORT, REDIS_URL } = require('./config');
 
 const addComponentRoutes = require('./routes/add-component');
 
@@ -11,13 +13,27 @@ const app = express();
 const isDev = app.get('env') === 'development';
 
 // Session management
+const sessionOptions = {
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false, maxAge: 60000 },
+}
+
+if(!isDev) {
+  // Set up Redis (for sessions)
+  const redisClient = createClient({
+    url: REDIS_URL,
+    legacyMode: true,
+  });
+
+  redisClient.connect().catch(console.error);
+
+  sessionOptions.store = new RedisStore({ client: redisClient });
+}
+
 app.use(
-  session({
-    secret: 'your-secret-key',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false, maxAge: 60000 },
-  })
+  session(sessionOptions)
 );
 
 // Nunjucks config
