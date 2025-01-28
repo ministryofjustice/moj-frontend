@@ -79,7 +79,7 @@
     "cssnano": "^6.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "dayjs": "^1.11.13",
-    "del": "^7.0.0",
+    "del": "^8.0.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
