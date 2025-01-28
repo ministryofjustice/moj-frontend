@@ -11,6 +11,20 @@ eleventyNavigation:
 
 {% example "/examples/search", 200 %}
 
+## Accessibility issues
+
+There’s an accessibility issue with the search component. If you’re using it in your service, you need to add these issue details to your accessibility statement.
+
+### Screen reader and keyboard users cannot clear the text entry field
+
+Screen reader and keyboard users cannot access the ‘x’ button to remove text from the search text entry field. This fails the following requirements:
+- [WCAG 2.2 success criterion 2.1.1 (Keyboard)](https://www.w3.org/TR/WCAG22/#keyboard)
+- [WCAG 2.2 success criterion 2.4.3 (Focus order)](https://www.w3.org/TR/WCAG22/#focus-order)
+- [WCAG 2.2 success criterion 2.4.7. (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible)
+
+We’re aware of this issue and plan to implement a fix by April 2025. 
+
+
 ## When to use
 
 Use the search component to let users search by word or phrase. This can be used within the [Primary Navigation](/components/primary-navigation/) component.
