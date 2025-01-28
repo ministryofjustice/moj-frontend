@@ -11,6 +11,14 @@ eleventyNavigation:
 
 {% example "/examples/search", 200 %}
 
+## When to use
+
+Use the search component to let users search by word or phrase. This can be used within the [Primary Navigation](/components/primary-navigation/) component.
+
+## How to use
+
+You can configure the search form to be inversed on black and to hide and show labels and hints depending on your use case. You'll see examples of this on the [Primary Navigation](/components/primary-navigation) component page.
+
 ## Accessibility issues
 
 There’s an accessibility issue with the search component. If you’re using it in your service, you need to add these issue details to your accessibility statement.
@@ -23,12 +31,3 @@ Screen reader and keyboard users cannot access the ‘x’ button to remove text
 - [WCAG 2.2 success criterion 2.4.7. (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible)
 
 We’re aware of this issue and plan to implement a fix by April 2025. 
-
-
-## When to use
-
-Use the search component to let users search by word or phrase. This can be used within the [Primary Navigation](/components/primary-navigation/) component.
-
-## How to use
-
-You can configure the search form to be inversed on black and to hide and show labels and hints depending on your use case. You'll see examples of this on the [Primary Navigation](/components/primary-navigation) component page.
