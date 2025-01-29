@@ -2,9 +2,6 @@
 .cache/
 .tmp/
 
-
-**/*.md
-
 # Node.js modules
 node_modules/
 
@@ -18,4 +15,3 @@ public/
 # Files to ignore
 package-lock.json
 CHANGELOG.md
-

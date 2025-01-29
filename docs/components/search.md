@@ -26,8 +26,9 @@ There’s an accessibility issue with the search component. If you’re using it
 ### Screen reader and keyboard users cannot clear the text entry field
 
 Screen reader and keyboard users cannot access the ‘x’ button to remove text from the search text entry field. This fails the following requirements:
+
 - [WCAG 2.2 success criterion 2.1.1 (Keyboard)](https://www.w3.org/TR/WCAG22/#keyboard)
 - [WCAG 2.2 success criterion 2.4.3 (Focus order)](https://www.w3.org/TR/WCAG22/#focus-order)
 - [WCAG 2.2 success criterion 2.4.7. (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible)
 
-We’re aware of this issue and plan to implement a fix by April 2025. 
+We’re aware of this issue and plan to implement a fix by April 2025.
