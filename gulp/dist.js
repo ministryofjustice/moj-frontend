@@ -27,7 +27,12 @@ gulp.task('dist:javascript', () => {
 gulp.task('dist:css', () => {
   return gulp
     .src('gulp/dist-scss/*.scss')
-    .pipe(sass())
+    .pipe(
+      sass({
+        loadPaths: ['node_modules', './'],
+        quietDeps: true
+      })
+    )
     .pipe(postcss([autoprefixer, cssnano]))
     .pipe(
       rename((path) => ({
