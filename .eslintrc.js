@@ -120,6 +120,36 @@ module.exports = {
       env: {
         jest: true
       }
+    },
+    {
+      // Add plugin for markdown `*.md` code blocks. Its config is in the new
+      // "flat" format, so we need to use the legacy config
+      extends: ['plugin:markdown/recommended-legacy'],
+      files: ['**/*.md'],
+      plugins: ['markdown'],
+      processor: 'markdown/markdown'
+    },
+    {
+      // Check markdown `*.md` contains valid code blocks
+      // https://www.npmjs.com/package/eslint-plugin-markdown#user-content-advanced-configuration
+      files: ['**/*.md/*.js'],
+      rules: {
+        quotes: ['error', 'double'],
+        // Ignore unused example code
+        'no-new': 'off',
+        'no-undef': 'off',
+        'no-unused-expressions': 'off',
+        'no-unused-vars': 'off',
+        'no-useless-constructor': 'off',
+
+        // Ignore paths to example modules
+        'import/no-unresolved': 'off',
+        'n/no-missing-import': 'off'
+      },
+      parserOptions: {
+        sourceType: 'module',
+        ecmaVersion: 'latest'
+      }
     }
   ],
   parserOptions: {
