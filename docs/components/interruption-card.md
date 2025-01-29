@@ -28,9 +28,9 @@ The interruption card helps users to understand possible errors and avoid mistak
 This component should be used specifically and sparingly. It has 5 use cases:
 
 1. [Possible errors](#1.-possible-errors)
-2. [‘Are you sure?’ content](#2.-%E2%80%98are-you-sure%3F%E2%80%99-content)  
+2. [‘Are you sure?’ content](#2.-%E2%80%98are-you-sure%3F%E2%80%99-content)
 3. [Non-contextual errors](#3.-non-contextual-errors)
-4. [More varied application outcomes](#4.-more-varied-application-outcomes)  
+4. [More varied application outcomes](#4.-more-varied-application-outcomes)
 5. [Showing important content ahead of a task](#5.-showing-important-content-ahead-of-a-task)
 
 #### 1. Possible errors
@@ -104,7 +104,7 @@ Do not use the interruption card for anything outside of the 5 use cases. It sho
 
 ### Things to consider
 
-The card is not announced to screen reader users when they interact with the page, so the heading needs to clearly convey that the user is being interrupted. This can be done with content such as ‘Before you continue’.   
+The card is not announced to screen reader users when they interact with the page, so the heading needs to clearly convey that the user is being interrupted. This can be done with content such as ‘Before you continue’.
 
 The interruption card uses a non-standard colour palette for emphasis in a user journey. Other blue parts of a page, such as a header, person identifier or phase banner, will affect how much impact it has.
 
@@ -168,7 +168,7 @@ This interruption card works well when used sparingly. This is to keep it signif
 When considering it in a specific case, think about:
 
 - how many other interruption cards there are in the service
-- the maximum number of cards a user might view in a single journey    
+- the maximum number of cards a user might view in a single journey
 - whether a user would ever view 2 cards in a row (and how that could be prevented)
 
 If a lot of interruption cards are emerging in a service, it might be a sign that the journey needs redesigning.

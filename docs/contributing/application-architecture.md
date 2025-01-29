@@ -37,7 +37,6 @@
 
   Source files. See README.md in the src directory for details.
 
-
 ### Auto-generated directories
 
 - `public/`

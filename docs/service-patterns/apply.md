@@ -2,6 +2,7 @@
 layout: layouts/service-patterns.njk
 title: ‘Apply’ service pattern prototype
 ---
+
 {% tabs "Contents" %}
 {% tab "Overview" %}
 
@@ -17,7 +18,7 @@ The prototype has 3 parts:
 - sub-patterns (for the 2 sets of users)
 - user scenarios
 
-This is part of [work to develop service patterns across government](/service-patterns/).  
+This is part of [work to develop service patterns across government](/service-patterns/).
 
 ### How to use service patterns
 
@@ -118,14 +119,16 @@ We're particularly interested in feedback on the structure and the naming of the
 ### People applying: sub-patterns and steps
 
 #### 1. Prepare to apply
+
 - Find the right application form
 - Get reassurance about application process
 - Check eligibility (lower confidence)
 
 #### 2. Submit application
-- Enter application information  
+
+- Enter application information
 - Enter third party information
-- Get help  
+- Get help
 - Pause application
 - Return to application
 - Finish and submit application
@@ -135,27 +138,32 @@ We're particularly interested in feedback on the structure and the naming of the
 - Pay fee (lower confidence)
 
 #### 3. Give supporting evidence
+
 - Get notification that supporting evidence is needed
 - Gather supporting evidence
 - Give supporting evidence
 - Get confirmation that evidence has been submitted
 
 #### 4. Await outcome
+
 - View application
 - Get progress updates
 
 ### Organisations managing applications: sub-patterns and steps
 
 #### 1. Prepare for application
+
 - Access reference materials
 
 #### 2. Meet the person applying
+
 - Confirm user's identity
 - Confirm user's eligibility
 
 #### 3. Assess applications
+
 - Establish third party information
-- View application information  
+- View application information
 - Ask questions
 - Capture application information
 - Capture citizen information change
@@ -163,11 +171,13 @@ We're particularly interested in feedback on the structure and the naming of the
 - Resume application
 
 #### 4. Collect supporting evidence
-- Understand the purpose of supporting evidence  
-- Communicate the purpose of supporting evidence  
-- Capture supporting evidence   
+
+- Understand the purpose of supporting evidence
+- Communicate the purpose of supporting evidence
+- Capture supporting evidence
 
 #### 5. Finish application
+
 - Receive application
 - Communicate next steps
 - Share citizen information change

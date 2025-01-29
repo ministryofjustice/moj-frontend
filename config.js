@@ -18,28 +18,27 @@ const config = {
     'component-code',
     'component-code-details',
     'component-image',
-      'additional-information',
+    'additional-information',
     'your-details',
-    'check-your-answers',
-
+    'check-your-answers'
   ],
   COMPONENT_FORM_PAGES_OPTIONS: {
     'accessibility-findings': {
-      'hasComponentBeenTestedForAccessibility': {
-        'yes': 'accessibility-findings-more',
-        'no': 'prototype'
+      hasComponentBeenTestedForAccessibility: {
+        yes: 'accessibility-findings-more',
+        no: 'prototype'
       }
     },
-    'prototype': {
-      'componentPrototypeUrl': {
-        'yes': 'prototype-url',
-        'no': 'component-screenshot'
+    prototype: {
+      componentPrototypeUrl: {
+        yes: 'prototype-url',
+        no: 'component-screenshot'
       }
     },
     'component-code': {
-      'componentCodeAvailable': {
-          'yes': 'component-code-details',
-          'no': 'component-image'
+      componentCodeAvailable: {
+        yes: 'component-code-details',
+        no: 'component-image'
       }
     }
   }

@@ -11,7 +11,6 @@ eleventyNavigation:
 
 <span class="govuk-caption-xl">The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu.</span>
 
-
 {% tabs "Contents" %}
 
 {% tab "Overview" %}
@@ -40,7 +39,7 @@ Do not use the button menu:
 
 - as navigation or to link to a page for the sole purpose of viewing it, for example a booking (this is an accessibility issue and counts as a WCAG failure)
 - for items in a [GOV.UK Design System summary list](https://design-system.service.gov.uk/components/summary-list/) - add link text to each row
-- to display options like on a [GOV.UK Design System question page](https://design-system.service.gov.uk/patterns/question-pages/)  - list them as bullets
+- to display options like on a [GOV.UK Design System question page](https://design-system.service.gov.uk/patterns/question-pages/) - list them as bullets
 - for warning or inactive (disabled) buttons
 
 ### Things to consider
@@ -123,7 +122,7 @@ Labelling the button menu accurately helps users to identify its contents. Group
 - ‘Print options’ or ‘Save options’ for variations on a theme  
 - ‘Actions’ to cover a diverse range of tasks
 
-Users may believe that menu buttons with the same title (particularly generic titles like ‘Actions’) contain the same items.  
+Users may believe that menu buttons with the same title (particularly generic titles like ‘Actions’) contain the same items.
 
 Content can run into a second line.
 

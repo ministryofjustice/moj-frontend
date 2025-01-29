@@ -45,7 +45,7 @@ In a live application, we recommend that you [install with npm](/production/inst
    ></script>
    <script src="/javascript/moj-frontend.min.js"></script>
    <script>
-     window.MOJFrontend.initAll();
+     window.MOJFrontend.initAll()
    </script>
    ```
 
@@ -75,7 +75,7 @@ It is unlikely that you would ever want to install the MoJ Design System alone, 
        ></script>
        <script src="/javascript/moj-frontend.min.js"></script>
        <script>
-         window.MOJFrontend.initAll();
+         window.MOJFrontend.initAll()
        </script>
      </body>
    </html>

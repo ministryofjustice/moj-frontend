@@ -1,7 +1,7 @@
 ---
 layout: layouts/get-started.njk
 subsection: Setup for production
-title:  Setting up JavaScript
+title: Setting up JavaScript
 redirect_from: /get-started/setting-up-javascript
 eleventyNavigation:
   key: Setting up JavaScript
@@ -30,7 +30,7 @@ Then import the JavaScript file before the closing `</body>` tag of your HTML pa
 
 ```html
 <body>
-...
+  <!-- // ... -->
   <script src="<YOUR-APP>/jquery.js"></script>
   <script src="<YOUR-APP>/<YOUR-JS-FILE>.js"></script>
   <script>
@@ -45,9 +45,9 @@ Then import the JavaScript file before the closing `</body>` tag of your HTML pa
 
 If you decide to import using a bundler, use `import` to import jQuery and all of the design systems’s components, then run the `initAll` function to initialise them:
 
-```javascript
-import $ from 'jquery'
+```mjs
 import { initAll } from '@ministryofjustice/frontend'
+import $ from 'jquery'
 
 window.$ = $
 initAll()
@@ -59,11 +59,13 @@ Rather than using `initAll`, you can initialise individual components by identif
 
 ```html
 <script>
-var PasswordReveal = window.MOJFrontend.PasswordReveal
-var $passwordReveal = document.querySelector('[data-module="moj-password-reveal"]')
-if ($passwordReveal) {
+  var PasswordReveal = window.MOJFrontend.PasswordReveal
+  var $passwordReveal = document.querySelector(
+    '[data-module="moj-password-reveal"]'
+  )
+  if ($passwordReveal) {
     new PasswordReveal($passwordReveal)
-}
+  }
 </script>
 ```
 
