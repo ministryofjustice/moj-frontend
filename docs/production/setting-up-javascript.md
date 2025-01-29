@@ -45,9 +45,9 @@ Then import the JavaScript file before the closing `</body>` tag of your HTML pa
 
 If you decide to import using a bundler, use `import` to import jQuery and all of the design systems’s components, then run the `initAll` function to initialise them:
 
-```javascript
-import $ from 'jquery'
+```mjs
 import { initAll } from '@ministryofjustice/frontend'
+import $ from 'jquery'
 
 window.$ = $
 initAll()
