@@ -49,6 +49,18 @@ There's also the ['Ask users for dates' pattern in the GOV.UK Design System](htt
 
 {% endtab %}
 
+{% tab "Accessibility issues" %}
+
+## Accessibility issues
+
+There’s an accessibility issue with the date picker component. If you’re using it in your service you need to add these issue details to your accessibility statement.
+
+### No focus indicator shown when navigating between dates (NVDA only)
+
+When people use the screen reader software NVDA, no focus indicator is displayed when they navigate between dates. This only happens with NVDA software. This fails [WCAG 2.2 success criterion 2.4.7 (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible). We’re aware of this issue and plan to implement a fix by April 2025. 
+
+{% endtab %}
+
 {% tab "How to use" %}
 
 ## How to use
