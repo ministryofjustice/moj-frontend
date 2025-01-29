@@ -29,7 +29,7 @@ gulp.task('dist:css', () => {
     .src('gulp/dist-scss/*.scss')
     .pipe(
       sass({
-        loadPaths: ['node_modules', './'],
+        loadPaths: ['./'],
         quietDeps: true
       })
     )

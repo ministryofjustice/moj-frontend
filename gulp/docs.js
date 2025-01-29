@@ -48,7 +48,7 @@ gulp.task('docs:styles', () => {
     .src('docs/assets/stylesheets/*.scss')
     .pipe(
       sass({
-        loadPaths: ['node_modules', './'],
+        loadPaths: ['./'],
         style: process.env.ENV === 'dev' ? 'expanded' : 'compressed',
         quietDeps: true
       })
