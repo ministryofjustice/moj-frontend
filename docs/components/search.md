@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/712
 eleventyNavigation:
   key: Search
   parent: Components
-  excerpt: 'Use the search component to let users search by word or phrase.'
+  excerpt: "Use the search component to let users search by word or phrase."
 ---
 
 {% example "/examples/search", 200 %}

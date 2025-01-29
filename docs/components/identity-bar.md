@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/704
 eleventyNavigation:
   key: Identity bar
   parent: Components
-  excerpt: 'Use the identity bar component to give users context of where they are within a service such as viewing a case.'
+  excerpt: "Use the identity bar component to give users context of where they are within a service such as viewing a case."
 ---
 
 {% example "/examples/identity-bar", 150 %}

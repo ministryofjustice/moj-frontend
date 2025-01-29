@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Setting up Figma prototypes
   parent: Prototyping
   order: 10
-  excerpt: 'Setting up Figma prototypes.'
+  excerpt: "Setting up Figma prototypes."
 ---
 
 Figma Kits help people to create designs that are consistent with one another. They are maintained by the MoJ Design System team.

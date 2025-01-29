@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/713
 eleventyNavigation:
   key: Side navigation
   parent: Components
-  excerpt: 'Use the side navigation component to let users navigate sub sections in a system or service.'
+  excerpt: "Use the side navigation component to let users navigate sub sections in a system or service."
 ---
 
 {% example "/examples/side-navigation", 250 %}

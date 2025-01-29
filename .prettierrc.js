@@ -4,6 +4,12 @@ module.exports = {
   trailingComma: 'none',
   overrides: [
     {
+      files: '*.md',
+      options: {
+        singleQuote: false
+      }
+    },
+    {
       files: '*.scss',
       options: {
         printWidth: 120,

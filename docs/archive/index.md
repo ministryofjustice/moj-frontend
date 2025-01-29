@@ -1,5 +1,5 @@
 ---
-layout: 'layouts/index.njk'
+layout: "layouts/index.njk"
 title: Archive
 redirect_from:
   [

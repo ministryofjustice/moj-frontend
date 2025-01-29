@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/685
 eleventyNavigation:
   key: Button menu
   parent: Components
-  excerpt: 'The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu.'
+  excerpt: "The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu."
 ---
 
 <span class="govuk-caption-xl">The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu.</span>

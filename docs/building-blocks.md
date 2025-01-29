@@ -1,6 +1,6 @@
 ---
 eleventyNavigation:
   key: Building blocks
-  url: '#'
+  url: "#"
   permalink: false
 ---

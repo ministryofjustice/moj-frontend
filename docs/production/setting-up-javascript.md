@@ -7,7 +7,7 @@ eleventyNavigation:
   key: Setting up JavaScript
   parent: Setup for production
   order: 40
-  excerpt: 'Several MoJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript.'
+  excerpt: "Several MoJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript."
 ---
 
 Several MoJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript.
@@ -30,7 +30,7 @@ Then import the JavaScript file before the closing `</body>` tag of your HTML pa
 
 ```html
 <body>
-  ...
+  <!-- // ... -->
   <script src="<YOUR-APP>/jquery.js"></script>
   <script src="<YOUR-APP>/<YOUR-JS-FILE>.js"></script>
   <script>
@@ -46,8 +46,8 @@ Then import the JavaScript file before the closing `</body>` tag of your HTML pa
 If you decide to import using a bundler, use `import` to import jQuery and all of the design systems’s components, then run the `initAll` function to initialise them:
 
 ```javascript
-import $ from 'jquery'
-import { initAll } from '@ministryofjustice/frontend'
+import $ from "jquery"
+import { initAll } from "@ministryofjustice/frontend"
 
 window.$ = $
 initAll()

@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/835
 eleventyNavigation:
   key: Banner
   parent: Components
-  excerpt: 'Use the banner component to display a prominent message and related actions to take.'
+  excerpt: "Use the banner component to display a prominent message and related actions to take."
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}

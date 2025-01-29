@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/246
 eleventyNavigation:
   key: Header
   parent: Components
-  excerpt: 'Use the header component for any service or system not on GOV.UK like internal staff.'
+  excerpt: "Use the header component for any service or system not on GOV.UK like internal staff."
 ---
 
 {% example "/examples/header", 150 %}

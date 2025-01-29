@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/421
 eleventyNavigation:
   key: Interruption card
   parent: Components
-  excerpt: 'The interruption card component stops users in a flow with important information.'
+  excerpt: "The interruption card component stops users in a flow with important information."
 ---
 
 <span class="govuk-caption-xl">The interruption card component pauses a user’s journey with important information.</span>

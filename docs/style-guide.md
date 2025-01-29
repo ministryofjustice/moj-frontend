@@ -7,7 +7,7 @@ eleventyNavigation:
   key: Content style guide
   parent: Standards and principles
   order: 20
-  excerpt: 'The MoJ A to Z content style guide covering style, spelling and grammar conventions.'
+  excerpt: "The MoJ A to Z content style guide covering style, spelling and grammar conventions."
 ---
 
 <p class="govuk-!-margin-bottom-6">

@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703
 eleventyNavigation:
   key: Date picker
   parent: Components
-  excerpt: 'The date picker component enables users to select a date from a calendar.'
+  excerpt: "The date picker component enables users to select a date from a calendar."
 ---
 
 <span class="govuk-caption-xl">The date picker component enables users to select a date from a calendar. </span>

@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/197
 eleventyNavigation:
   key: Filter
   parent: Components
-  excerpt: 'Use the filter component to help users filter a list of items, such as a list of cases or search results.'
+  excerpt: "Use the filter component to help users filter a list of items, such as a list of cases or search results."
 ---
 
 {% banner "A similar component exists" %}
