@@ -16,6 +16,7 @@ You should consider using the GOV.UK version if it fits your needs.
 {% endbanner %}
 
 {% example "/examples/badge", 125 %}
+
 ## When to use
 
 Use the badge component to highlight small details like an urgent case.

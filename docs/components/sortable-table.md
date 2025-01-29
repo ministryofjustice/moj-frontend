@@ -27,4 +27,4 @@ There’s an accessibility issue with the sortable table component. If you’re 
 
 ### The sorting icons are read out in a confusing way
 
-The sorting icons are read out to screen reader users, but without meaningful information. This fails [WCAG 2.2 success criterion 1.1.1 (Non-text content)](https://www.w3.org/TR/WCAG22/#non-text-content) and [WCAG 2.2 success criterion 1.3.1 (Info and relationships)](https://www.w3.org/TR/WCAG22/#info-and-relationships). We’re aware of this issue and plan to implement a fix by April 2025. 
+The sorting icons are read out to screen reader users, but without meaningful information. This fails [WCAG 2.2 success criterion 1.1.1 (Non-text content)](https://www.w3.org/TR/WCAG22/#non-text-content) and [WCAG 2.2 success criterion 1.3.1 (Info and relationships)](https://www.w3.org/TR/WCAG22/#info-and-relationships). We’re aware of this issue and plan to implement a fix by April 2025.

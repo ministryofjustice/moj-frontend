@@ -9,7 +9,7 @@ eleventyNavigation:
   excerpt: "The date picker component enables users to select a date from a calendar."
 ---
 
-<span class="govuk-caption-xl">The date picker component enables users to select a date from a calendar.  </span>
+<span class="govuk-caption-xl">The date picker component enables users to select a date from a calendar. </span>
 
 {% tabs "Contents" %}
 
@@ -57,7 +57,7 @@ There’s an accessibility issue with the date picker component. If you’re usi
 
 ### No focus indicator shown when navigating between dates (NVDA only)
 
-When people use the screen reader software NVDA, no focus indicator is displayed when they navigate between dates. This only happens with NVDA software. This fails [WCAG 2.2 success criterion 2.4.7 (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible). We’re aware of this issue and plan to implement a fix by April 2025. 
+When people use the screen reader software NVDA, no focus indicator is displayed when they navigate between dates. This only happens with NVDA software. This fails [WCAG 2.2 success criterion 2.4.7 (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible). We’re aware of this issue and plan to implement a fix by April 2025.
 
 {% endtab %}
 
@@ -72,8 +72,9 @@ The date picker hint text is set to 17/5/2024. This can be changed to a more hel
 ### Excluding dates
 
 You can exclude (or disable) options from the date picker, such as:
+
 - days of the week or every weekend
-- specific dates, such as bank holidays  
+- specific dates, such as bank holidays
 - past or future dates
 
 {% example "/examples/date-picker-excluded-dates", 590 %}
@@ -121,7 +122,7 @@ Follow the [GOV.UK Design System guidance on error messages](https://design-syst
   </tbody>
 </table>
 
-###  Using multiple date pickers
+### Using multiple date pickers
 
 If you're using more than one date picker, give each text field its own error summary and message (even if the error is the same).
 

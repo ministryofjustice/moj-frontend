@@ -3,12 +3,12 @@ layout: layouts/content.njk
 title: Content style guide updates
 permalink: content-standards/style-guide-updates/
 # eleventyNavigation:
- # key: Content style guide
- # order: 20
- # excerpt: "Log of updates to the MoJ style guide."
+# key: Content style guide
+# order: 20
+# excerpt: "Log of updates to the MoJ style guide."
 ---
 
-<p>New and updated entries in the MoJ content style guide.</p>  
+<p>New and updated entries in the MoJ content style guide.</p>
 
 <table class="govuk-table" data-module="moj-sortable-table">
   <thead class="govuk-table__head">

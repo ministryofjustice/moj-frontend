@@ -4,6 +4,13 @@ module.exports = {
   trailingComma: 'none',
   overrides: [
     {
+      files: '*.md',
+      options: {
+        embeddedLanguageFormatting: 'off',
+        singleQuote: false
+      }
+    },
+    {
       files: '*.scss',
       options: {
         printWidth: 120,
