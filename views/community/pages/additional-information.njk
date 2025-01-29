@@ -1,0 +1,37 @@
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% extends "base.njk" %}
+{% block content %}
+  <div class="app-layout__content">
+    {% if errorList %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form method="post" action="{{ submitUrl }}">
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1>Additional information</h1>
+      {{ govukCharacterCount({
+        name: "additionalInformation",
+        id: "additional-information",
+        maxwords: 500,
+        label: {
+          text: "Add any further supporting information you have about the component",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        errorMessage: formErrors.additionalInformation,
+        value: formData.additionalInformation
+      }) }}
+
+      <div class="moj-button-action">
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      </div>
+    </form>
+  </div>
+
+{% endblock %}

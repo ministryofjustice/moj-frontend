@@ -1,11 +1,16 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% extends "base.njk" %}
 {% block content %}
 <div class="app-layout__content">
     <form method="post" action="{{ submitUrl }}">
-        {{ govukInput({
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1>Your details</h1>
+      <p>Providing your personal information means the team can contact you to discuss the component further, if required. The team will also let you when the component goes live in the design system.</p>
+      <p>With your permission, your name and email address will be added to the component page to show you added it to the design system.</p>
+      {{ govukInput({
             label: {
                 text: "Full name",
                 classes: "govuk-label--m",
@@ -25,47 +30,41 @@
             name: "emailAddress"
         }) }}
 
-        {{ govukInput({
-            label: {
-                text: "Job role (optional)",
-                classes: "govuk-label--m",
-                isPageHeading: true
-            },
-            id: "job-role",
-            name: "jobRole"
-        }) }}
+      {{ govukCheckboxes({
+        name: "shareYourDetails",
+        id: 'share-your-details',
+        fieldset: {
+          legend: {
+            text: "Select how you allow us to share your personal details",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "Select all that apply"
+        },
+        items: [
+          {
+            value: "addNameAndEmailToComponentPage",
+            text: "Add my name and email address to the component page"
+          },
+          {
+            value: "onlyShareNameAndEmailWhenRequested",
+            text: "Only share my name and email address when requested by other users"
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "doNotSharePersonalDetails",
+            text: "Do not share my personal details with anyone"
+          }
+        ]
+      }) }}
 
-        {{ govukInput({
-            label: {
-                text: "Team you're working in (optional)",
-                classes: "govuk-label--m",
-                isPageHeading: true
-            },
-            id: "team",
-            name: "team"
-        }) }}
-
-        {{ govukRadios({
-            classes: "govuk-radios--inline",
-            name: "showEmailAddress",
-            fieldset: {
-                legend: {
-                    text: "Show your email address on the component page?",
-                    isPageHeading: true,
-                    classes: "govuk-fieldset__legend--m"
-                }
-            },
-            items: [
-                {
-                    value: "yes",
-                    text: "Yes"
-                },
-                {
-                    value: "no",
-                    text: "No"
-                }
-            ]
-        }) }}
+      <div class="govuk-inset-text">
+        If you do not allow us to share your personal information, this may not represent a 'community component'. This prevents us, and others, getting in touch with you. Meaning it may stop the continuing collaboration of the component.
+      </div>
 
         <div class="moj-button-action">
             {{ govukButton({

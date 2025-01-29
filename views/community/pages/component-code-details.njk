@@ -1,0 +1,72 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% extends "base.njk" %}
+{% block content %}
+  <div class="app-layout__content">
+    {% if errorList %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form method="post" action="{{ submitUrl }}">
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1>Component code</h1>
+      <p>We recommend sending HTML, CSS, SASS, Javascript or Nunjucks.</p>
+      <p>You should only send the component code. It should not contain any personal or sensitive information. You can add more than one code example.</p>
+      {{ govukInput({
+        label: {
+          text: "What language is the code written in?",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        id: "component-code-language",
+        name: "componentCodeLanguage",
+        errorMessage: formErrors.componentCodeLanguage,
+        value: formData.componentCodeLanguage,
+        hint: {
+          text: "HTML, CSS, SASS, Javascript etc. If possible, the code should be in one language to make it easier for others to reuse."
+        }
+      }) }}
+
+      {{ govukCharacterCount({
+        name: "componentCodeUsage",
+        id: "component-code-usage",
+        maxwords: 250,
+        label: {
+          text: "How do you use the code? (optional)",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        hint: {
+          text: "Include any information that helps users add the code to their service to use"
+        },
+        errorMessage: formErrors.componentCodeUsage,
+        value: formData.componentCodeUsage
+      }) }}
+
+      {{ govukCharacterCount({
+        name: "componentCode",
+        id: "component-code",
+        maxlength: 10000,
+        rows: 30,
+        label: {
+          text: "Add the code",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        errorMessage: formErrors.componentCode,
+        value: formData.componentCode
+      }) }}
+
+      <div class="moj-button-action">
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      </div>
+    </form>
+  </div>
+
+{% endblock %}

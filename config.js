@@ -11,10 +11,38 @@ const config = {
   ENV: process.env.ENV || 'development',
   COMPONENT_FORM_PAGES: [
     'component-details',
+    'accessibility-findings',
+    'accessibility-findings-more',
+    'prototype',
+    'prototype-url',
+    'component-code',
+    'component-code-details',
     'component-image',
+      'additional-information',
     'your-details',
-    'check-your-answers'
-  ]
+    'check-your-answers',
+
+  ],
+  COMPONENT_FORM_PAGES_OPTIONS: {
+    'accessibility-findings': {
+      'hasComponentBeenTestedForAccessibility': {
+        'yes': 'accessibility-findings-more',
+        'no': 'prototype'
+      }
+    },
+    'prototype': {
+      'componentPrototypeUrl': {
+        'yes': 'prototype-url',
+        'no': 'component-screenshot'
+      }
+    },
+    'component-code': {
+      'componentCodeAvailable': {
+          'yes': 'component-code-details',
+          'no': 'component-image'
+      }
+    }
+  }
 }
 
 module.exports = config

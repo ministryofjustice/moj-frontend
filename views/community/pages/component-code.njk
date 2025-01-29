@@ -1,0 +1,50 @@
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% extends "base.njk" %}
+{% block content %}
+  <div class="app-layout__content">
+    {% if errorList %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form method="post" action="{{ submitUrl }}">
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1>Component code</h1>
+      <p>If sending code, we recommend sending HTML, CSS, SASS, Javascript or Nunjucks as these are common in government.</p>
+      <p>You should only send the component code and not the full page of code. This ensures it's easy for others to understand and use. The code should not contain any personal or sensitive information.</p>
+      {{ govukRadios({
+        name: "componentCodeAvailable",
+        id: "component-code-available",
+        fieldset: {
+          legend: {
+            text: "Do you have code for the component available?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ],
+        errorMessage: formErrors.componentCodeAvailable,
+        value: formData.componentCodeAvailable
+      }) }}
+
+      <div class="moj-button-action">
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      </div>
+    </form>
+  </div>
+
+{% endblock %}

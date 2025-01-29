@@ -1,0 +1,45 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% extends "base.njk" %}
+{% block content %}
+  <div class="app-layout__content">
+    <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1>Prototype URL</h1>
+      {{ govukInput({
+        label: {
+          text: "What is the name of the component?",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        id: "prototype-url",
+        name: "prototypeUrl",
+        errorMessage: formErrors.prototypeUrl,
+        value: formData.prototypeUrl
+      }) }}
+
+      {{ govukCharacterCount({
+        name: "prototypeUrlAdditionalInformation",
+        id: "prototypeUrl-additional-information",
+        maxwords: 250,
+        hint: {
+          text: "This may be the username and password for the file if it's protected or contextual information"
+        },
+        label: {
+          text: "Add a brief description about the component",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        errorMessage: formErrors.prototypeUrlAdditionalInformation,
+        value: formData.prototypeUrlAdditionalInformation
+      }) }}
+
+      <div class="moj-button-action">
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      </div>
+    </form>
+  </div>
+{% endblock %}

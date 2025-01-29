@@ -4,12 +4,24 @@
 {% block content %}
 <div class="app-layout__content">
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1>Upload an image of the component</h1>
+      <p>You also need to upload an image showing what the component looks like. It should not contain any personal or sensitive information.</p>
+      <p>You'll also have an opportunity to add more images of this after submitting the component.</p>
         {{ govukFileUpload({
             id: "component-image",
             name: "componentImage",
             label: {
-                text: "Upload a file"
-            }
+              text: "Upload a file",
+              isPageHeading: true,
+              classes: "govuk-label--m"
+            },
+          hint: {
+            text: "The selected file must be a JPG, BMP, PNG, TIF or PDF and smaller than 10MB."
+          },
+          attributes: {
+            accept: ".jpg, .jpeg, .bmp, .png, .tif, .tiff, .pdf"
+          }
         }) }}
 
         <div class="moj-button-action">
