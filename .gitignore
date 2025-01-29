@@ -19,9 +19,8 @@ package/*
 .env
 .port.tmp
 .vscode/
+*.tsbuildinfo
 npm-debug.log
 sass-cache
 settings.json
 tmp-uploads
-
-
