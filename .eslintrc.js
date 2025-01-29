@@ -132,9 +132,9 @@ module.exports = {
     {
       // Check markdown `*.md` contains valid code blocks
       // https://www.npmjs.com/package/eslint-plugin-markdown#user-content-advanced-configuration
-      files: ['**/*.md/*.js'],
+      files: ['**/*.md/*.{cjs,js,mjs}'],
       rules: {
-        quotes: ['error', 'double'],
+        quotes: ['error', 'single'],
         // Ignore unused example code
         'no-new': 'off',
         'no-undef': 'off',
@@ -147,7 +147,6 @@ module.exports = {
         'n/no-missing-import': 'off'
       },
       parserOptions: {
-        sourceType: 'module',
         ecmaVersion: 'latest'
       }
     }
