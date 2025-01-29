@@ -6,6 +6,7 @@ module.exports = {
     {
       files: '*.md',
       options: {
+        embeddedLanguageFormatting: 'off',
         singleQuote: false
       }
     },
