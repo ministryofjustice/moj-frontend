@@ -2,10 +2,33 @@
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% extends "base.njk" %}
+
+{% set shareYourDetails = [] %}
+
+{% if formData and formData.shareYourDetails %}
+  {% if formData.shareYourDetails is iterable %}
+    {% set shareYourDetails = formData.shareYourDetails %}
+  {% else %}
+    {% set shareYourDetails = [formData.shareYourDetails] %}
+  {% endif %}
+{% endif %}
+
+{% set addNameAndEmailToComponentPageChecked = "addNameAndEmailToComponentPage" in shareYourDetails %}
+{% set onlyShareNameAndEmailWhenRequestedChecked = "onlyShareNameAndEmailWhenRequested" in shareYourDetails %}
+{% set doNotSharePersonalDetailsChecked = "doNotSharePersonalDetails" in shareYourDetails %}
+
 {% block content %}
-<div class="app-layout__content">
-    <form method="post" action="{{ submitUrl }}">
+
+  <div class="app-layout__content">
+  {% if errorList %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: errorList
+    }) }}
+  {% endif %}
+  <form method="post" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit new component</span>
       <h1>Your details</h1>
       <p>Providing your personal information means the team can contact you to discuss the component further, if required. The team will also let you when the component goes live in the design system.</p>
@@ -17,7 +40,9 @@
                 isPageHeading: true
             },
             id: "full-name",
-            name: "fullName"
+            name: "fullName",
+        errorMessage: formErrors.fullName,
+        value: formData.fullName
         }) }}
 
         {{ govukInput({
@@ -27,7 +52,9 @@
                 isPageHeading: true
             },
             id: "email-address",
-            name: "emailAddress"
+            name: "emailAddress",
+          errorMessage: formErrors.emailAddress,
+          value: formData.emailAddress
         }) }}
 
       {{ govukCheckboxes({
@@ -46,20 +73,25 @@
         items: [
           {
             value: "addNameAndEmailToComponentPage",
-            text: "Add my name and email address to the component page"
+            text: "Add my name and email address to the component page",
+            checked: addNameAndEmailToComponentPageChecked
           },
           {
             value: "onlyShareNameAndEmailWhenRequested",
-            text: "Only share my name and email address when requested by other users"
+            text: "Only share my name and email address when requested by other users",
+            checked: onlyShareNameAndEmailWhenRequestedChecked
           },
           {
             divider: "or"
           },
           {
             value: "doNotSharePersonalDetails",
-            text: "Do not share my personal details with anyone"
+            text: "Do not share my personal details with anyone",
+            checked: doNotSharePersonalDetailsChecked
           }
-        ]
+        ],
+        errorMessage: formErrors.shareYourDetails,
+        value: formData.shareYourDetails
       }) }}
 
       <div class="govuk-inset-text">
