@@ -1,11 +1,15 @@
 const gulp = require('gulp')
-const sass = require('gulp-sass')(require('sass'))
-const rev = require('gulp-rev')
 const { createGulpEsbuild } = require('gulp-esbuild')
+const rev = require('gulp-rev')
+const gulpSass = require('gulp-sass')
+const dartSass = require('sass')
+
 const esbuild = createGulpEsbuild({
   incremental: false, // enables the esbuild"s incremental build
   piping: true // enables piping
 })
+
+const sass = gulpSass(dartSass)
 
 gulp.task('docs:clean', async (done) => {
   const { deleteSync } = await import('del')

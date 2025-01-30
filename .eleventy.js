@@ -1,22 +1,17 @@
-const beautifyHTML = require('js-beautify').html
-
+const { execSync } = require('child_process')
 const fs = require('fs')
+const path = require('path')
 
+const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
+const matter = require('gray-matter')
 const hljs = require('highlight.js')
+const beautifyHTML = require('js-beautify').html
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
-const matter = require('gray-matter')
 const nunjucks = require('nunjucks')
-const sass = require('sass')
 
 const releasePackage = require('./package/package.json')
 const mojFilters = require('./src/moj/filters/all')
-
-const path = require('path')
-const { execSync } = require('child_process')
-
-const esbuild = require('esbuild')
-const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
