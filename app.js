@@ -15,9 +15,9 @@ const isDev = app.get('env') === 'development'
 // Session management
 const sessionOptions = {
   secret: 'your-secret-key',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
-  cookie: { secure: false, maxAge: 60000 }
+  cookie: { secure: false, maxAge: 360000 }
 }
 
 if (!isDev) {

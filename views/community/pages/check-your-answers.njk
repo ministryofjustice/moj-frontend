@@ -1,15 +1,45 @@
-{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% extends "base.njk" %}
 {% block content %}
     <div class="app-layout__content">
         <form method="post" action="{{ submitUrl }}">
+          <span class="govuk-caption-l">Submit new component</span>
+          <h1>Check your answers before submitting the component</h1>
 
-            TODO check your answers here
+          <h2 class="govuk-heading-m">Component details</h2>
+          {{ govukSummaryList({
+            rows: componentDetailsRows
+          }) }}
 
-            <div class="moj-button-action">
+          <h2 class="govuk-heading-m">Accessibility findings</h2>
+          {{ govukSummaryList({
+            rows: accessibilityRows
+          }) }}
+
+          <h2 class="govuk-heading-m">Prototype URL</h2>
+          {{ govukSummaryList({
+            rows: prototypeRows
+          }) }}
+
+          <h2 class="govuk-heading-m">Component code</h2>
+          {{ govukSummaryList({
+            rows: componentCodeRows
+          }) }}
+
+          <h2 class="govuk-heading-m">Additional information</h2>
+          {{ govukSummaryList({
+            rows: additionalInformationRows
+          }) }}
+
+          <h2 class="govuk-heading-m">Your details</h2>
+          {{ govukSummaryList({
+            rows: yourDetailsRows
+          }) }}
+
+          <div class="moj-button-action">
                 {{ govukButton({
-                    text: 'Submit'
+                    text: 'Accept and send'
                 }) }}
             </div>
         </form>

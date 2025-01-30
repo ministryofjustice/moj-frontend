@@ -12,6 +12,7 @@ const { COMPONENT_FORM_PAGES } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const upload = multer({ storage: multer.memoryStorage() })
 const router = express.Router()
+const checkYourAnswers = require('../helpers/check-your-answers')
 
 const isValidComponentFormPage = (req, res, next) => {
   if (!COMPONENT_FORM_PAGES.includes(req.params.page)) {
@@ -22,6 +23,28 @@ const isValidComponentFormPage = (req, res, next) => {
     next()
   }
 }
+
+// Check your answers page
+router.get('/check-your-answers', (req, res) => {
+  const {
+    componentDetailsRows,
+    accessibilityRows,
+    prototypeRows,
+    componentCodeRows,
+    additionalInformationRows,
+    yourDetailsRows
+  } = checkYourAnswers(req.session)
+
+  res.render('check-your-answers', {
+    submitUrl: req.originalUrl,
+    componentDetailsRows,
+    accessibilityRows,
+    prototypeRows,
+    componentCodeRows,
+    additionalInformationRows,
+    yourDetailsRows
+  })
+})
 
 // Component form page
 router.get('/:page', isValidComponentFormPage, (req, res) => {

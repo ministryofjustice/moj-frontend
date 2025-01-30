@@ -1,0 +1,298 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checkYourAnswers function should handle empty session gracefully 1`] = `
+{
+  "accessibilityFindingsRows": [],
+  "additionalInformationRows": [],
+  "componentCodeRows": [],
+  "componentImageRows": [],
+  "prototypeRows": [],
+  "yourDetailsRows": [],
+}
+`;
+
+exports[`checkYourAnswers function should handle missing session fields gracefully 1`] = `
+{
+  "accessibilityFindingsRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/accessibility-findings",
+            "text": "Change",
+            "visuallyHiddenText": "Accessibility Findings - Field1",
+          },
+        ],
+      },
+      "key": {
+        "text": "Field1",
+      },
+      "value": {
+        "text": "Field Value",
+      },
+    },
+  ],
+  "additionalInformationRows": [],
+  "componentCodeRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/component-code",
+            "text": "Change",
+            "visuallyHiddenText": "Component Code - Code",
+          },
+        ],
+      },
+      "key": {
+        "text": "Code",
+      },
+      "value": {
+        "text": "1234",
+      },
+    },
+  ],
+  "componentImageRows": [],
+  "prototypeRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/prototype",
+            "text": "Change",
+            "visuallyHiddenText": "Prototype - Data",
+          },
+        ],
+      },
+      "key": {
+        "text": "Data",
+      },
+      "value": {
+        "text": "Prototype data",
+      },
+    },
+  ],
+  "yourDetailsRows": [],
+}
+`;
+
+exports[`checkYourAnswers function should transform session data into the expected structure 1`] = `
+{
+  "accessibilityFindingsRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/accessibility-findings",
+            "text": "Change",
+            "visuallyHiddenText": "Accessibility Findings - Field1",
+          },
+        ],
+      },
+      "key": {
+        "text": "Field1",
+      },
+      "value": {
+        "text": "Field Value",
+      },
+    },
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/accessibility-findings",
+            "text": "Change",
+            "visuallyHiddenText": "Accessibility Findings - Field2",
+          },
+        ],
+      },
+      "key": {
+        "text": "Field2",
+      },
+      "value": {
+        "text": "Another Value",
+      },
+    },
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/accessibility-findings-more",
+            "text": "Change",
+            "visuallyHiddenText": "Accessibility Findings More - Detail",
+          },
+        ],
+      },
+      "key": {
+        "text": "Detail",
+      },
+      "value": {
+        "text": "Some additional information",
+      },
+    },
+  ],
+  "additionalInformationRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/additional-information",
+            "text": "Change",
+            "visuallyHiddenText": "Additional Information - Info",
+          },
+        ],
+      },
+      "key": {
+        "text": "Info",
+      },
+      "value": {
+        "text": "Some additional info",
+      },
+    },
+  ],
+  "componentCodeRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/component-code",
+            "text": "Change",
+            "visuallyHiddenText": "Component Code - Code",
+          },
+        ],
+      },
+      "key": {
+        "text": "Code",
+      },
+      "value": {
+        "text": "1234",
+      },
+    },
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/component-code",
+            "text": "Change",
+            "visuallyHiddenText": "Component Code - Language",
+          },
+        ],
+      },
+      "key": {
+        "text": "Language",
+      },
+      "value": {
+        "text": "JavaScript",
+      },
+    },
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/component-code-details",
+            "text": "Change",
+            "visuallyHiddenText": "Component Code Details - Detail",
+          },
+        ],
+      },
+      "key": {
+        "text": "Detail",
+      },
+      "value": {
+        "text": "Extra details",
+      },
+    },
+  ],
+  "componentImageRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/component-image",
+            "text": "Change",
+            "visuallyHiddenText": "Component Image - Image",
+          },
+        ],
+      },
+      "key": {
+        "text": "Image",
+      },
+      "value": {
+        "text": "image.png",
+      },
+    },
+  ],
+  "prototypeRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/prototype",
+            "text": "Change",
+            "visuallyHiddenText": "Prototype - Data",
+          },
+        ],
+      },
+      "key": {
+        "text": "Data",
+      },
+      "value": {
+        "text": "Prototype data",
+      },
+    },
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/prototype-url",
+            "text": "Change",
+            "visuallyHiddenText": "Prototype Url - Url",
+          },
+        ],
+      },
+      "key": {
+        "text": "Url",
+      },
+      "value": {
+        "text": "http://example.com",
+      },
+    },
+  ],
+  "yourDetailsRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/your-details",
+            "text": "Change",
+            "visuallyHiddenText": "Your Details - Name",
+          },
+        ],
+      },
+      "key": {
+        "text": "Name",
+      },
+      "value": {
+        "text": "Sarah Philips",
+      },
+    },
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/get-involved/add-new-component/your-details",
+            "text": "Change",
+            "visuallyHiddenText": "Your Details - Email",
+          },
+        ],
+      },
+      "key": {
+        "text": "Email",
+      },
+      "value": {
+        "text": "sarah@example.com",
+      },
+    },
+  ],
+}
+`;
