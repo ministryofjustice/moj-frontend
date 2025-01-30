@@ -27,10 +27,6 @@ Cookies.prototype.init = function () {
 Cookies.prototype.load = function (config) {
   if (config.analytics) {
     window.dataLayer = window.dataLayer || []
-    function gtag() {
-      dataLayer.push(arguments)
-    }
-
     gtag('js', new Date())
     gtag('config', 'G-VTGX4YLSVL')
   } else {
@@ -58,6 +54,10 @@ Cookies.prototype.reject = function () {
   localStorage.setItem('mojpl-cookies', JSON.stringify(config))
 
   window.location.reload()
+}
+
+function gtag() {
+  dataLayer.push(arguments)
 }
 
 export default Cookies

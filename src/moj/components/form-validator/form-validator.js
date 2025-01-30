@@ -20,7 +20,7 @@ MOJFrontend.FormValidator.entityMap = {
 }
 
 MOJFrontend.FormValidator.prototype.escapeHtml = function (string) {
-  return String(string).replace(/[&<>"'`=\/]/g, function fromEntityMap(s) {
+  return String(string).replace(/[&<>"'`=/]/g, function fromEntityMap(s) {
     return MOJFrontend.FormValidator.entityMap[s]
   })
 }
