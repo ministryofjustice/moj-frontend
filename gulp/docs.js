@@ -59,10 +59,10 @@ gulp.task('docs:styles', () => {
 // Bundle the docs site javascript
 gulp.task('docs:scripts', () => {
   return gulp
-    .src('docs/assets/javascript/all.js')
+    .src('docs/assets/javascript/application.mjs')
     .pipe(
       esbuild({
-        outfile: `all.js`,
+        outfile: 'application.js',
         target: 'es6',
         minify: process.env.ENV !== 'dev',
         bundle: true

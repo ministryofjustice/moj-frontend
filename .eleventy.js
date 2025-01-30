@@ -313,7 +313,7 @@ module.exports = function (eleventyConfig) {
     // Reload once assets have been rebuilt by gulp
     watch: [
       'public/assets/stylesheets/application.css',
-      'public/assets/javascript/all.js'
+      'public/assets/javascript/application.js'
     ],
     // Show local network IP addresses for device testing
     showAllHosts: true,
