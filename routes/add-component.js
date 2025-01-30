@@ -3,7 +3,8 @@ const multer = require('multer')
 const {
   validateFormData,
   setNextPage,
-  saveSession
+  saveSession,
+  getFormDataFromSession
 } = require('../middleware/component-session')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
 const sendEmail = require('../middleware/notify-email')
@@ -47,9 +48,10 @@ router.get('/check-your-answers', (req, res) => {
 })
 
 // Component form page
-router.get('/:page', isValidComponentFormPage, (req, res) => {
+router.get('/:page', isValidComponentFormPage, getFormDataFromSession, (req, res) => {
   res.render(`${req.params.page}`, {
-    submitUrl: req.originalUrl
+    submitUrl: req.originalUrl,
+    formData: req?.formData
   })
 })
 

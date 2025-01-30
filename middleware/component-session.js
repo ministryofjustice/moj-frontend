@@ -97,14 +97,18 @@ const saveSession = (req, res, next) => {
   next()
 }
 
-const submitSession = (req, res) => {
-  // generate a markup
-  // create a zip of resources
-  // send an email
+const getFormDataFromSession = (req, res, next) => {
+  console.log('getFormDataFromSession')
+  req.formData = null
+  const formData = req.session[req.url] || {}
+  console.log('formData', formData)
+  req.formData = formData
+  next()
 }
 
 module.exports = {
   setNextPage,
   validateFormData,
-  saveSession
+  saveSession,
+  getFormDataFromSession
 }
