@@ -17,7 +17,7 @@ const axe = configureAxe({
 })
 
 const createTemplate = () => {
-  html = `
+  const html = `
       <div class="moj-filter">
         <div class="moj-filter__header">
           <div class="moj-filter__header-title">

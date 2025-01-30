@@ -16,7 +16,7 @@ const axe = configureAxe({
 })
 
 const createComponent = () => {
-  html = `
+  const html = `
 <div class="moj-search-toggle" data-module="moj-search-toggle" data-moj-search-toggle-text="Find case">
         <div class="moj-search-toggle__toggle"></div>
         <div class="moj-search-toggle__search">

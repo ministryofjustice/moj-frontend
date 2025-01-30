@@ -52,8 +52,7 @@ const createComponent = (config = {}, html) => {
       </div>`
   }
   document.body.insertAdjacentHTML('afterbegin', html)
-
-  component = document.querySelector('[data-module="moj-date-picker"]')
+  const component = document.querySelector('[data-module="moj-date-picker"]')
   return component
 }
 
@@ -365,14 +364,14 @@ describe('Date picker with defaults', () => {
       const initialDateButton = getByRole(dialog, 'button', {
         current: 'date'
       })
-      let selectedDateButton
-      let labelRegex
 
       expect(initialDateButton).toHaveFocus()
 
       await user.keyboard('[ArrowRight]')
-      labelRegex = new RegExp(` ${initialDate.getDate() + 1} `)
-      selectedDateButton = getByRole(dialog, 'button', { name: labelRegex })
+      const labelRegex = new RegExp(` ${initialDate.getDate() + 1} `)
+      const selectedDateButton = getByRole(dialog, 'button', {
+        name: labelRegex
+      })
       expect(selectedDateButton).toHaveClass('moj-datepicker__button--selected')
       expect(selectedDateButton).toHaveFocus()
     })
@@ -382,14 +381,14 @@ describe('Date picker with defaults', () => {
       const initialDateButton = getByRole(dialog, 'button', {
         current: 'date'
       })
-      let selectedDateButton
-      let labelRegex
 
       expect(initialDateButton).toHaveFocus()
 
       await user.keyboard('[ArrowLeft]')
-      labelRegex = new RegExp(` ${initialDate.getDate() - 1} `)
-      selectedDateButton = getByRole(dialog, 'button', { name: labelRegex })
+      const labelRegex = new RegExp(` ${initialDate.getDate() - 1} `)
+      const selectedDateButton = getByRole(dialog, 'button', {
+        name: labelRegex
+      })
       expect(selectedDateButton).toHaveClass('moj-datepicker__button--selected')
       expect(selectedDateButton).toHaveFocus()
     })
@@ -399,14 +398,14 @@ describe('Date picker with defaults', () => {
       const initialDateButton = getByRole(dialog, 'button', {
         current: 'date'
       })
-      let selectedDateButton
-      let labelRegex
 
       expect(initialDateButton).toHaveFocus()
 
       await user.keyboard('[ArrowUp]')
-      labelRegex = new RegExp(` ${initialDate.getDate() - 7} `)
-      selectedDateButton = getByRole(dialog, 'button', { name: labelRegex })
+      const labelRegex = new RegExp(` ${initialDate.getDate() - 7} `)
+      const selectedDateButton = getByRole(dialog, 'button', {
+        name: labelRegex
+      })
       expect(selectedDateButton).toHaveClass('moj-datepicker__button--selected')
       expect(selectedDateButton).toHaveFocus()
     })
@@ -416,14 +415,14 @@ describe('Date picker with defaults', () => {
       const initialDateButton = getByRole(dialog, 'button', {
         current: 'date'
       })
-      let selectedDateButton
-      let labelRegex
 
       expect(initialDateButton).toHaveFocus()
 
       await user.keyboard('[ArrowDown]')
-      labelRegex = new RegExp(` ${initialDate.getDate() + 7} `)
-      selectedDateButton = getByRole(dialog, 'button', { name: labelRegex })
+      const labelRegex = new RegExp(` ${initialDate.getDate() + 7} `)
+      const selectedDateButton = getByRole(dialog, 'button', {
+        name: labelRegex
+      })
       expect(selectedDateButton).toHaveClass('moj-datepicker__button--selected')
       expect(selectedDateButton).toHaveFocus()
     })
@@ -665,7 +664,7 @@ describe('button menu JS API', () => {
         const dateToExclude = dayjs()
           .date(getDateInCurrentMonth())
           .startOf('day')
-        config = { excludedDates: dateToExclude.format('D/M/YYYY') }
+        const config = { excludedDates: dateToExclude.format('D/M/YYYY') }
         const datePicker = new MOJFrontend.DatePicker(component, config)
         datePicker.init()
 
@@ -679,7 +678,7 @@ describe('button menu JS API', () => {
         const secondDateToExclude = dayjs()
           .date(getDateInCurrentMonth([firstDateToExclude.date()]))
           .startOf('day')
-        config = {
+        const config = {
           excludedDates: `${firstDateToExclude.format('D/M/YYYY')} ${secondDateToExclude.format('D/M/YYYY')}`
         }
         const datePicker = new MOJFrontend.DatePicker(component, config)
@@ -705,7 +704,7 @@ describe('button menu JS API', () => {
         }
         datesToExclude = datesToExclude.map((date) => date.startOf('day'))
 
-        config = {
+        const config = {
           excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
         }
 
@@ -734,7 +733,7 @@ describe('button menu JS API', () => {
           datesToExclude.push(dayjs().date(11))
         }
         datesToExclude = datesToExclude.map((date) => date.startOf('day'))
-        config = {
+        const config = {
           excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[2].format('D/M/YYYY')} ${datesToExclude[3].format('D/M/YYYY')} ${datesToExclude[4].format('D/M/YYYY')}`
         }
         const datePicker = new MOJFrontend.DatePicker(component, config)
@@ -865,11 +864,11 @@ describe('button menu JS API', () => {
         datesToExclude = datesToExclude.map((date) => date.startOf('day'))
         const daysToExclude = datesToExclude.map((date) => date.date())
         const lastDayinMonth = dayjs().endOf('month').date()
-        config = {
+        const config = {
           excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
         }
 
-        datePicker = new MOJFrontend.DatePicker(component, config).init()
+        new MOJFrontend.DatePicker(component, config).init()
         calendarButton = screen.getByRole('button', { name: 'Choose date' })
         await user.click(calendarButton)
 
@@ -1062,7 +1061,7 @@ describe('Datepicker data-attributes API', () => {
       component = createComponent({
         excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
       })
-      datePicker = new MOJFrontend.DatePicker(component).init()
+      new MOJFrontend.DatePicker(component).init()
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)

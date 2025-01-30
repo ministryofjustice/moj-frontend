@@ -15,7 +15,7 @@ const axe = configureAxe({
 })
 
 const createComponent = (id = 'multi-select', idprefix = false) => {
-  html = `
+  const html = `
 <table id="${id}" class="govuk-table" data-module="moj-multi-select" data-multi-select-checkbox="#${id}-select-all" ${idprefix ? `data-multi-select-idprefix="${idprefix}-"` : ''}>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
@@ -56,7 +56,9 @@ const createComponent = (id = 'multi-select', idprefix = false) => {
 }
 
 describe('multi select', () => {
-  let component, container
+  let component
+  let container
+  let checkboxes
 
   beforeEach(() => {
     component = createComponent()

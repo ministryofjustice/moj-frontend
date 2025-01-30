@@ -63,7 +63,7 @@ describe('sortable table', () => {
   let component
 
   beforeEach(() => {
-    ;({ component, options } = createComponent())
+    ;({ component } = createComponent())
     new MOJFrontend.SortableTable({
       table: component
     })
@@ -236,6 +236,7 @@ describe('sortable table', () => {
 
 describe('sortable table options', () => {
   let component
+  let options
 
   beforeEach(() => {
     ;({ component, options } = createComponent())

@@ -38,8 +38,7 @@ const createComponent = (config = {}, html) => {
       </div>`
   }
   document.body.insertAdjacentHTML('afterbegin', html)
-
-  component = document.querySelector('[data-module="moj-button-menu"]')
+  const component = document.querySelector('[data-module="moj-button-menu"]')
   return component
 }
 
