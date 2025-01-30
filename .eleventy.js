@@ -116,7 +116,7 @@ module.exports = function (eleventyConfig) {
   )
 
   eleventyConfig.addShortcode('lastUpdated', function (component) {
-    if (process.env.ENV == 'staging') return ''
+    if (process.env.ENV === 'staging') return ''
 
     const dirPath = path.join(__dirname, 'src/moj/components', component)
     const [commit, lastUpdated] = execSync(
@@ -289,7 +289,7 @@ module.exports = function (eleventyConfig) {
   })
 
   eleventyConfig.addFilter('rev', (filepath) => {
-    if (process.env.ENV == 'production' || process.env.ENV == 'staging') {
+    if (process.env.ENV === 'production' || process.env.ENV === 'staging') {
       const manifest = JSON.parse(
         fs.readFileSync('public/assets/rev-manifest.json', 'utf8')
       )

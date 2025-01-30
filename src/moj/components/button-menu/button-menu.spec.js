@@ -248,7 +248,7 @@ describe('Button menu javascript API', () => {
     new MOJFrontend.ButtonMenu(component, { buttonText: label }).init()
     const toggleButton = queryByRole(component, 'button', { name: label })
 
-    expect(toggleButton).not.toBeNull
+    expect(toggleButton).toBeInTheDocument()
   })
 
   test('setting menu alignment', () => {

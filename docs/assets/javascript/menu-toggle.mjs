@@ -45,7 +45,7 @@ export default class MenuToggle extends HTMLElement {
   onresize(event) {
     // Check if the window width has changed - prevents resize events triggered
     // by scrolling on mobile browsers
-    if (window.innerWidth != this.windowWidth) {
+    if (window.innerWidth !== this.windowWidth) {
       this.windowWidth = window.innerWidth
       this.setState()
     }

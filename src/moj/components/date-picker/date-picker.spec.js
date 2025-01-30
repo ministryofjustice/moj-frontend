@@ -252,7 +252,7 @@ describe('Date picker with defaults', () => {
       input = screen.getByLabelText('Date')
       selectedDate = new Date(dateString)
 
-      while (newDate != selectedDate.getDate()) {
+      while (newDate !== selectedDate.getDate()) {
         newDate = randomIntBetween(7, 21) // outside this we could have duplicate hidden buttons from prev/next month
       }
 
@@ -843,7 +843,7 @@ describe('button menu JS API', () => {
           const testId = dayjs().date(i).startOf('day').format('D/M/YYYY')
           const dayButton = screen.getByTestId(testId)
 
-          if (i == excludedDay) {
+          if (i === excludedDay) {
             expect(dayButton).toHaveAttribute('aria-disabled', 'true')
           } else {
             expect(dayButton).not.toHaveAttribute('aria-disabled')
@@ -1037,7 +1037,7 @@ describe('Datepicker data-attributes API', () => {
         const testId = dayjs().date(i).startOf('day').format('D/M/YYYY')
         const dayButton = screen.getByTestId(testId)
 
-        if (i == excludedDay) {
+        if (i === excludedDay) {
           expect(dayButton).toHaveAttribute('aria-disabled', 'true')
         } else {
           expect(dayButton).not.toHaveAttribute('aria-disabled')

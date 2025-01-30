@@ -67,14 +67,13 @@ beforeEach(() => {
 })
 
 describe('Filter toggle in big mode', () => {
-  let defaultConfig, buttonContainer, closeButtonContainer, filterContainer
+  let defaultConfig, buttonContainer, filterContainer
 
   beforeEach(() => {
     setMedia({
       width: '800px'
     })
-    ;({ buttonContainer, closeButtonContainer, filterContainer } =
-      createTemplate())
+    ;({ buttonContainer, filterContainer } = createTemplate())
 
     defaultConfig = merge(baseConfig, {
       toggleButton: {
@@ -177,16 +176,16 @@ describe('Filter toggle in small mode', () => {
       width: '500px'
     })
     ;({ buttonContainer, closeButtonContainer, filterContainer } =
-      createTemplate()),
-      (defaultConfig = merge(baseConfig, {
-        toggleButton: {
-          container: document.querySelector('.moj-action-bar__filter')
-        },
-        closeButton: {
-          container: document.querySelector('.moj-filter__header-action')
-        },
-        filter: { container: document.querySelector('.moj-filter') }
-      }))
+      createTemplate())
+    defaultConfig = merge(baseConfig, {
+      toggleButton: {
+        container: document.querySelector('.moj-action-bar__filter')
+      },
+      closeButton: {
+        container: document.querySelector('.moj-filter__header-action')
+      },
+      filter: { container: document.querySelector('.moj-filter') }
+    })
   })
 
   afterEach(() => {

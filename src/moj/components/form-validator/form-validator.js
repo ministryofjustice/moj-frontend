@@ -104,9 +104,7 @@ MOJFrontend.FormValidator.prototype.showInlineError = function (error) {
 }
 
 MOJFrontend.FormValidator.prototype.removeInlineErrors = function () {
-  let error
-  var i
-  for (var i = 0; i < this.errors.length; i++) {
+  for (let i = 0; i < this.errors.length; i++) {
     this.removeInlineError(this.errors[i])
   }
 }

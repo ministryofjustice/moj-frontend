@@ -47,7 +47,6 @@ describe('Add Another component', () => {
 
   afterEach(() => {
     document.body.innerHTML = ''
-    component = undefined
   })
 
   test('adds a new item when "Add another person" is clicked', async () => {

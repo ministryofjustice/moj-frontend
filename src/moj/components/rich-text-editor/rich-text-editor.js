@@ -42,25 +42,27 @@ if ('contentEditable' in document.documentElement) {
     let focusableButton
     switch (e.keyCode) {
       case this.keys.right:
-      case this.keys.down:
+      case this.keys.down: {
         focusableButton = this.toolbar.find('button[tabindex=0]')
-        var nextButton = focusableButton.next('button')
+        const nextButton = focusableButton.next('button')
         if (nextButton[0]) {
           nextButton.focus()
           focusableButton.attr('tabindex', '-1')
           nextButton.attr('tabindex', '0')
         }
         break
+      }
       case this.keys.left:
-      case this.keys.up:
+      case this.keys.up: {
         focusableButton = this.toolbar.find('button[tabindex=0]')
-        var previousButton = focusableButton.prev('button')
+        const previousButton = focusableButton.prev('button')
         if (previousButton[0]) {
           previousButton.focus()
           focusableButton.attr('tabindex', '-1')
           previousButton.attr('tabindex', '0')
         }
         break
+      }
     }
   }
 

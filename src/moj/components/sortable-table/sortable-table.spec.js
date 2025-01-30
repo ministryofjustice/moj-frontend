@@ -71,7 +71,6 @@ describe('sortable table', () => {
 
   afterEach(() => {
     document.body.innerHTML = ''
-    component = undefined
   })
 
   test('initialises with buttons in headers', () => {

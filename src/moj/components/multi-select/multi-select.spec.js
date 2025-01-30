@@ -71,7 +71,6 @@ describe('multi select', () => {
 
   afterEach(() => {
     document.body.innerHTML = ''
-    component, container, (checkboxes = undefined)
   })
 
   test('initialises component', () => {
