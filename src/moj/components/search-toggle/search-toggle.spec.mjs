@@ -2,7 +2,6 @@
 
 import { queryByRole } from '@testing-library/dom'
 import { userEvent } from '@testing-library/user-event'
-import $ from 'jquery'
 
 import { SearchToggle } from './search-toggle.mjs'
 
@@ -56,11 +55,11 @@ describe('search toggle', () => {
 
     new SearchToggle({
       toggleButton: {
-        container: $(buttonContainer),
+        container: buttonContainer,
         text: component.getAttribute('data-moj-search-toggle-text')
       },
       search: {
-        container: $(searchContainer)
+        container: searchContainer
       }
     })
   })
