@@ -1,6 +1,6 @@
 /* eslint-disable no-new */
 
-const { getByText, getByTestId } = require('@testing-library/dom')
+const { getByTestId } = require('@testing-library/dom')
 
 require('./helpers')
 require('./all.js')

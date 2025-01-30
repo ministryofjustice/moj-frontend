@@ -1,6 +1,6 @@
 /* eslint-disable no-new */
 
-const { queryByRole, within } = require('@testing-library/dom')
+const { queryByRole } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
 
 require('./sortable-table.js')

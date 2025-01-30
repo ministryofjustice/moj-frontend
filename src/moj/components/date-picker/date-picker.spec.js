@@ -60,10 +60,6 @@ const randomIntBetween = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-const padToTwoDigits = (number) => {
-  return number.toString().padStart(2, '0')
-}
-
 const getFirstDayOfWeek = (dateObject, firstDayOfWeekIndex) => {
   const dayOfWeek = dateObject.getDay()
   const firstDayOfWeek = new Date(dateObject)

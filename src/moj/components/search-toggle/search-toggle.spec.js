@@ -2,18 +2,11 @@
 
 const { queryByRole } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
-const { configureAxe } = require('jest-axe')
 const $ = require('jquery')
 
 require('./search-toggle.js')
 
 const user = userEvent.setup()
-const axe = configureAxe({
-  rules: {
-    // disable landmark rules when testing isolated components.
-    region: { enabled: false }
-  }
-})
 
 const createComponent = () => {
   const html = `
