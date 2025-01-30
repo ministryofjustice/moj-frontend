@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 import * as GOVUKFrontend from 'govuk-frontend'
 
 import MOJFrontend from '../../../package/moj/all.js'

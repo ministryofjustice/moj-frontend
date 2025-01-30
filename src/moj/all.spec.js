@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const { getByText, getByTestId } = require('@testing-library/dom')
 
 require('./helpers')

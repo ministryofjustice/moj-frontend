@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const { queryByRole, within } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
 

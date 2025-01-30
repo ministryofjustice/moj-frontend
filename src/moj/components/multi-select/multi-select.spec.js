@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const { queryByRole, queryAllByRole } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
 const { configureAxe } = require('jest-axe')
