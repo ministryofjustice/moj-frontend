@@ -8,7 +8,12 @@ const sass = require('gulp-sass')(require('sass'))
 gulp.task('build:css', () => {
   return gulp
     .src('gulp/dist-scss/*.scss')
-    .pipe(sass())
+    .pipe(
+      sass({
+        loadPaths: ['./'],
+        quietDeps: true
+      })
+    )
     .pipe(postcss([autoprefixer, cssnano]))
     .pipe(
       rename((path) => ({
