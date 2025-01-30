@@ -15,7 +15,7 @@ describe('initAll', () => {
       <input data-module="moj-password-reveal" data-testid="password-reveal" type="password" />
     `
 
-    new MOJFrontend.initAll({ scope: container })
+    MOJFrontend.initAll({ scope: container })
 
     expect(MOJFrontend.PasswordReveal).toHaveBeenCalledWith(
       getByTestId(container, 'password-reveal')

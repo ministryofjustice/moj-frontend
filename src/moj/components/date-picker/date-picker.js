@@ -423,7 +423,7 @@ Datepicker.prototype.setLeadingZeros = function () {
 
 Datepicker.prototype.setWeekStartDay = function () {
   const weekStartDayParam = this.config.weekStartDay
-  if (weekStartDayParam?.toLowerCase() === 'sunday') {
+  if (weekStartDayParam && weekStartDayParam.toLowerCase() === 'sunday') {
     this.config.weekStartDay = 'sunday'
     // Rotate dayLabels array to put Sunday as the first item
     this.dayLabels.unshift(this.dayLabels.pop())
