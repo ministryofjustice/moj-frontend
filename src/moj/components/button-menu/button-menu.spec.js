@@ -21,7 +21,7 @@ const kebabize = (str) => {
 
 const configToDataAttributes = (config) => {
   let attributes = ''
-  for (let [key, value] of Object.entries(config)) {
+  for (const [key, value] of Object.entries(config)) {
     attributes += `data-${kebabize(key)}="${value}" `
   }
   return attributes
@@ -80,7 +80,7 @@ describe('Button menu with defaults', () => {
   })
 
   test('creates menuitems', () => {
-    expect(items.length).toBe(3)
+    expect(items).toHaveLength(3)
   })
 
   test('removes other govuk-button classes from menuitems', () => {
@@ -286,7 +286,7 @@ describe('Button menu data-attributes API', () => {
     new MOJFrontend.ButtonMenu(component).init()
     const toggleButton = queryByRole(component, 'button', { name: label })
 
-    expect(toggleButton).not.toBeNull()
+    expect(toggleButton).toBeInTheDocument()
   })
 
   test('setting menu alignment', () => {
@@ -349,7 +349,7 @@ describe('menu button with a single item', () => {
   test('first item has become button', () => {
     const button = screen.queryByRole('button', { name: 'First action' })
 
-    expect(button).not.toBeNull()
+    expect(button).toBeInTheDocument()
   })
 
   test('first item has buttonClasses config applied', () => {

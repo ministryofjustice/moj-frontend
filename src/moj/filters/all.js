@@ -5,9 +5,10 @@ module.exports = function () {
    * Instantiate object used to store the methods registered as a
    * 'filter' (of the same name) within nunjucks. You can override
    * gov.uk core filters by creating filter methods of the same name.
-   * @type {Object}
+   *
+   * @type {object}
    */
-  let filters = {}
+  const filters = {}
 
   /* ------------------------------------------------------------------
     date filter for use in Nunjucks
@@ -30,12 +31,11 @@ module.exports = function () {
   }
 
   function govTime(timestamp) {
-    let t = moment(timestamp)
+    const t = moment(timestamp)
     if (t.minutes() > 0) {
       return t.format('h:mma')
-    } else {
-      return t.format('ha')
     }
+    return t.format('ha')
   }
 
   /* ------------------------------------------------------------------
@@ -46,9 +46,9 @@ module.exports = function () {
   filters.mojDate = function (timestamp, type) {
     switch (type) {
       case 'datetime':
-        return govDate(timestamp) + ' at ' + govTime(timestamp)
+        return `${govDate(timestamp)} at ${govTime(timestamp)}`
       case 'shortdatetime':
-        return govShortDate(timestamp) + ' at ' + govTime(timestamp)
+        return `${govShortDate(timestamp)} at ${govTime(timestamp)}`
       case 'date':
         return govDate(timestamp)
       case 'shortdate':

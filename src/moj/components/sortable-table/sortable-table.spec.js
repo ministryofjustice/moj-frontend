@@ -330,7 +330,7 @@ describe('sortable table options', () => {
     const headers = component.querySelectorAll('th[aria-sort]')
     headers.forEach((header) => {
       const buttons = header.querySelectorAll('button')
-      expect(buttons.length).toBe(1)
+      expect(buttons).toHaveLength(1)
     })
   })
 

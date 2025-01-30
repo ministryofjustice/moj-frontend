@@ -3,7 +3,7 @@ function Cookies($module) {
 }
 
 Cookies.prototype.init = function () {
-  let $module = this.$module
+  const $module = this.$module
   if (!$module) {
     return
   }

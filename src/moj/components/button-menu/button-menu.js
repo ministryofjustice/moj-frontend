@@ -260,7 +260,7 @@ MOJFrontend.ButtonMenu.prototype.handleKeyDown = function (event) {
  *
  * @param {Schema} schema - component schema
  * @param {DOMStringMap} dataset - HTML element dataset
- * @returns {Object} Normalised dataset
+ * @returns {object} Normalised dataset
  */
 MOJFrontend.ButtonMenu.prototype.parseDataset = function (schema, dataset) {
   const parsed = {}

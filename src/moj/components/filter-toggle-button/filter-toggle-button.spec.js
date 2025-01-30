@@ -36,9 +36,9 @@ const createTemplate = () => {
   const filterContainer = document.querySelector('.moj-filter')
 
   return {
-    buttonContainer: buttonContainer,
-    closeButtonContainer: closeButtonContainer,
-    filterContainer: filterContainer
+    buttonContainer,
+    closeButtonContainer,
+    filterContainer
   }
 }
 
@@ -93,7 +93,7 @@ describe('Filter toggle in big mode', () => {
     new MOJFrontend.FilterToggleButton(defaultConfig)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
-    expect(toggleButton).not.toBeNull()
+    expect(toggleButton).toBeInTheDocument()
     expect(toggleButton.innerHTML).toBe('Show filter')
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
     expect(toggleButton).toHaveClass('govuk-button--secondary')
@@ -195,7 +195,7 @@ describe('Filter toggle in small mode', () => {
     new MOJFrontend.FilterToggleButton(defaultConfig)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
-    expect(toggleButton).not.toBeNull()
+    expect(toggleButton).toBeInTheDocument()
     expect(toggleButton.innerHTML).toBe('Show filter')
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
     expect(toggleButton).toHaveClass('govuk-button--secondary')
@@ -245,7 +245,7 @@ describe('Filter toggle in small mode', () => {
 
     const closeButton = queryByRole(closeButtonContainer, 'button')
 
-    expect(closeButton).not.toBeNull()
+    expect(closeButton).toBeInTheDocument()
     expect(closeButton.innerHTML).toBe('Close')
   })
 

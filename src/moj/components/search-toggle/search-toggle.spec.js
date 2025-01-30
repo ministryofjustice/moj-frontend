@@ -77,7 +77,7 @@ describe('search toggle', () => {
   test('initialises component', () => {
     const toggleButton = queryByRole(buttonContainer, 'button')
 
-    expect(toggleButton).not.toBeNull()
+    expect(toggleButton).toBeInTheDocument()
     expect(toggleButton).toHaveTextContent('Find case')
     expect(toggleButton).toHaveAttribute('aria-haspopup', 'true')
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false')

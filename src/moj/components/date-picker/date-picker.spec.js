@@ -7,8 +7,8 @@ const {
   screen
 } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
-const { configureAxe } = require('jest-axe')
 const dayjs = require('dayjs')
+const { configureAxe } = require('jest-axe')
 
 require('./date-picker.js')
 
@@ -29,7 +29,7 @@ const kebabize = (str) => {
 
 const configToDataAttributes = (config) => {
   let attributes = ''
-  for (let [key, value] of Object.entries(config)) {
+  for (const [key, value] of Object.entries(config)) {
     attributes += `data-${kebabize(key)}="${value}" `
   }
   return attributes
@@ -141,19 +141,19 @@ describe('Date picker with defaults', () => {
 
   test('dialog has required buttons', async () => {
     await user.click(calendarButton)
-    let selectButton = queryByText(dialog, 'Select')
-    let closeButton = queryByText(dialog, 'Close')
-    let prevMonthButton = queryByText(dialog, 'Previous month')
-    let prevYearButton = queryByText(dialog, 'Previous year')
-    let nextMonthButton = queryByText(dialog, 'Next month')
-    let nextYearButton = queryByText(dialog, 'Next year')
+    const selectButton = queryByText(dialog, 'Select')
+    const closeButton = queryByText(dialog, 'Close')
+    const prevMonthButton = queryByText(dialog, 'Previous month')
+    const prevYearButton = queryByText(dialog, 'Previous year')
+    const nextMonthButton = queryByText(dialog, 'Next month')
+    const nextYearButton = queryByText(dialog, 'Next year')
 
-    expect(selectButton).not.toBeNull()
-    expect(closeButton).not.toBeNull()
-    expect(prevMonthButton).not.toBeNull()
-    expect(prevYearButton).not.toBeNull()
-    expect(nextMonthButton).not.toBeNull()
-    expect(nextYearButton).not.toBeNull()
+    expect(selectButton).toBeInTheDocument()
+    expect(closeButton).toBeInTheDocument()
+    expect(prevMonthButton).toBeInTheDocument()
+    expect(prevYearButton).toBeInTheDocument()
+    expect(nextMonthButton).toBeInTheDocument()
+    expect(nextYearButton).toBeInTheDocument()
   })
 
   test('calendar opens with current month and year', async () => {
@@ -177,7 +177,7 @@ describe('Date picker with defaults', () => {
       'moj-datepicker__button--current',
       'moj-datepicker__button--today'
     )
-    expect(todayButton.textContent).toContain(`${today.getDate()}`)
+    expect(todayButton).toHaveTextContent(new RegExp(`${today.getDate()}`))
   })
 
   test('can navigate back in time', async () => {
@@ -190,8 +190,8 @@ describe('Date picker with defaults', () => {
     const previousYearTitle = `${previousYear.format('MMMM YYYY')}`
 
     await user.click(calendarButton)
-    let prevMonthButton = getByText(dialog, 'Previous month')
-    let prevYearButton = getByText(dialog, 'Previous year')
+    const prevMonthButton = getByText(dialog, 'Previous month')
+    const prevYearButton = getByText(dialog, 'Previous year')
 
     expect(dialog).toContainElement(screen.getByText(currentTitle))
     await user.click(prevMonthButton)
@@ -210,8 +210,8 @@ describe('Date picker with defaults', () => {
     const nextYearTitle = `${nextYear.format('MMMM YYYY')}`
 
     await user.click(calendarButton)
-    let nextMonthButton = getByText(dialog, 'Next month')
-    let nextYearButton = getByText(dialog, 'Next year')
+    const nextMonthButton = getByText(dialog, 'Next month')
+    const nextYearButton = getByText(dialog, 'Next year')
 
     expect(dialog).toContainElement(screen.getByText(currentTitle))
     await user.click(nextMonthButton)
@@ -222,7 +222,7 @@ describe('Date picker with defaults', () => {
 
   test('close button closes the calendar popup', async () => {
     await user.click(calendarButton)
-    let closeButton = queryByText(dialog, 'Close')
+    const closeButton = queryByText(dialog, 'Close')
 
     expect(dialog).toBeVisible()
     await user.click(closeButton)
@@ -231,7 +231,7 @@ describe('Date picker with defaults', () => {
   })
 
   test('clicking outside closes the calendar popup', async () => {
-    let hint = screen.getByText('For example, 17/5/2024.')
+    const hint = screen.getByText('For example, 17/5/2024.')
 
     await user.click(calendarButton)
     expect(dialog).toBeVisible()
@@ -253,7 +253,7 @@ describe('Date picker with defaults', () => {
       selectedDate = new Date(dateString)
 
       while (newDate != selectedDate.getDate()) {
-        newDate = randomIntBetween(7, 21) //outside this we could have duplicate hidden buttons from prev/next month
+        newDate = randomIntBetween(7, 21) // outside this we could have duplicate hidden buttons from prev/next month
       }
 
       await user.type(input, inputString)
@@ -273,8 +273,8 @@ describe('Date picker with defaults', () => {
       expect(selectedDateButton).not.toHaveClass(
         'moj-datepicker__button--today'
       )
-      expect(selectedDateButton.textContent).toContain(
-        `${selectedDate.getDate()}`
+      expect(selectedDateButton).toHaveTextContent(
+        new RegExp(`${selectedDate.getDate()}`)
       )
     })
 
@@ -479,13 +479,13 @@ describe('Date picker with defaults', () => {
       const previousYearTitle = `${previousMonthName} ${previousYear}`
       const dialogTitle = getByRole(dialog, 'heading', { level: 2 })
 
-      expect(dialogTitle.textContent).toEqual(currentTitle)
+      expect(dialogTitle).toHaveTextContent(currentTitle)
 
       await user.keyboard('{PageUp}')
-      expect(dialogTitle.textContent).toEqual(previousMonthTitle)
+      expect(dialogTitle).toHaveTextContent(previousMonthTitle)
 
       await user.keyboard('{Shift>}{PageUp}')
-      expect(dialogTitle.textContent).toEqual(previousYearTitle)
+      expect(dialogTitle).toHaveTextContent(previousYearTitle)
     })
 
     test('pagedown focuses next month and year', async () => {
@@ -505,13 +505,13 @@ describe('Date picker with defaults', () => {
       const nextYearTitle = `${nextMonthName} ${nextYear}`
       const dialogTitle = getByRole(dialog, 'heading', { level: 2 })
 
-      expect(dialogTitle.textContent).toEqual(currentTitle)
+      expect(dialogTitle).toHaveTextContent(currentTitle)
 
       await user.keyboard('{PageDown}')
-      expect(dialogTitle.textContent).toEqual(nextMonthTitle)
+      expect(dialogTitle).toHaveTextContent(nextMonthTitle)
 
       await user.keyboard('{Shift>}{PageDown}')
-      expect(dialogTitle.textContent).toEqual(nextYearTitle)
+      expect(dialogTitle).toHaveTextContent(nextYearTitle)
     })
 
     test('enter selects date and closes dialog', async () => {
@@ -685,7 +685,7 @@ describe('button menu JS API', () => {
         const datePicker = new MOJFrontend.DatePicker(component, config)
         datePicker.init()
 
-        expect(datePicker.excludedDates.length).toEqual(2)
+        expect(datePicker.excludedDates).toHaveLength(2)
         expect(datePicker.excludedDates).toStrictEqual([
           firstDateToExclude.toDate(),
           secondDateToExclude.toDate()
@@ -863,7 +863,7 @@ describe('button menu JS API', () => {
           datesToExclude.push(dayjs().date(5))
         }
         datesToExclude = datesToExclude.map((date) => date.startOf('day'))
-        let daysToExclude = datesToExclude.map((date) => date.date())
+        const daysToExclude = datesToExclude.map((date) => date.date())
         const lastDayinMonth = dayjs().endOf('month').date()
         config = {
           excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
@@ -889,7 +889,7 @@ describe('button menu JS API', () => {
     test('excludedDays', async () => {
       const config = { excludedDays: 'sunday' }
       const lastDayinMonth = dayjs().endOf('month').date()
-      let excludedDays = []
+      const excludedDays = []
       for (let i = 1; i <= lastDayinMonth; i++) {
         if (dayjs().date(i).day() === 0) {
           excludedDays.push(i)
@@ -1057,7 +1057,7 @@ describe('Datepicker data-attributes API', () => {
         datesToExclude.push(dayjs().date(5))
       }
       datesToExclude = datesToExclude.map((date) => date.startOf('day'))
-      let daysToExclude = datesToExclude.map((date) => date.date())
+      const daysToExclude = datesToExclude.map((date) => date.date())
       const lastDayinMonth = dayjs().endOf('month').date()
       component = createComponent({
         excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
@@ -1083,7 +1083,7 @@ describe('Datepicker data-attributes API', () => {
   test('excludedDays', async () => {
     const component = createComponent({ excludedDays: 'sunday' })
     const lastDayinMonth = dayjs().endOf('month').date()
-    let excludedDays = []
+    const excludedDays = []
     for (let i = 1; i <= lastDayinMonth; i++) {
       if (dayjs().date(i).day() === 0) {
         excludedDays.push(i)

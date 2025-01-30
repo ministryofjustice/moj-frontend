@@ -790,7 +790,7 @@ Datepicker.prototype.focusPreviousYear = function (event, focus = true) {
  *
  * @param {Schema} schema - Component class
  * @param {DOMStringMap} dataset - HTML element dataset
- * @returns {Object} Normalised dataset
+ * @returns {object} Normalised dataset
  */
 Datepicker.prototype.parseDataset = function (schema, dataset) {
   const parsed = {}

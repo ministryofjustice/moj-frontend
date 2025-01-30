@@ -1,15 +1,20 @@
 const beautifyHTML = require('js-beautify').html
+
 const fs = require('fs')
+
 const hljs = require('highlight.js')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const matter = require('gray-matter')
-const mojFilters = require('./src/moj/filters/all')
 const nunjucks = require('nunjucks')
+const sass = require('sass')
+
+const releasePackage = require('./package/package.json')
+const mojFilters = require('./src/moj/filters/all')
+
 const path = require('path')
 const { execSync } = require('child_process')
-const releasePackage = require('./package/package.json')
-const sass = require('sass')
+
 const esbuild = require('esbuild')
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
 
@@ -281,11 +286,11 @@ module.exports = function (eleventyConfig) {
   )
 
   eleventyConfig.addFilter('getScriptPath', function (inputPath) {
-    return inputPath.split('/').slice(1, -1).join('/') + '/script.js'
+    return `${inputPath.split('/').slice(1, -1).join('/')}/script.js`
   })
 
   eleventyConfig.addFilter('getStylesPath', function (inputPath) {
-    return inputPath.split('/').slice(1, -1).join('/') + '/style.css'
+    return `${inputPath.split('/').slice(1, -1).join('/')}/style.css`
   })
 
   eleventyConfig.addFilter('rev', (filepath) => {
@@ -295,9 +300,8 @@ module.exports = function (eleventyConfig) {
       )
       const revision = manifest[filepath]
       return `/${revision || filepath}`
-    } else {
-      return `/${filepath}`
     }
+    return `/${filepath}`
   })
 
   // Rebuild when a change is made to a component template file

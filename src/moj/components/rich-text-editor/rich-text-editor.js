@@ -39,7 +39,7 @@ if ('contentEditable' in document.documentElement) {
   }
 
   MOJFrontend.RichTextEditor.prototype.onToolbarKeydown = function (e) {
-    var focusableButton
+    let focusableButton
     switch (e.keyCode) {
       case this.keys.right:
       case this.keys.down:
@@ -65,7 +65,7 @@ if ('contentEditable' in document.documentElement) {
   }
 
   MOJFrontend.RichTextEditor.prototype.getToolbarHtml = function () {
-    var html = ''
+    let html = ''
 
     html += '<div class="moj-rich-text-editor__toolbar" role="toolbar">'
 
@@ -99,10 +99,7 @@ if ('contentEditable' in document.documentElement) {
   }
 
   MOJFrontend.RichTextEditor.prototype.getEnhancedHtml = function (val) {
-    return (
-      this.getToolbarHtml() +
-      '<div class="govuk-textarea moj-rich-text-editor__content" contenteditable="true" spellcheck="false"></div>'
-    )
+    return `${this.getToolbarHtml()}<div class="govuk-textarea moj-rich-text-editor__content" contenteditable="true" spellcheck="false"></div>`
   }
 
   MOJFrontend.RichTextEditor.prototype.hideDefault = function () {
@@ -126,7 +123,7 @@ if ('contentEditable' in document.documentElement) {
   MOJFrontend.RichTextEditor.prototype.configureToolbar = function () {
     this.buttons = this.container.find('.moj-rich-text-editor__toolbar-button')
     this.buttons.prop('tabindex', '-1')
-    var firstTab = this.buttons.first()
+    const firstTab = this.buttons.first()
     firstTab.prop('tabindex', '0')
   }
 
