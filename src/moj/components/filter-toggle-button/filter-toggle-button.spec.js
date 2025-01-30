@@ -3,7 +3,7 @@
 const { queryByRole } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
 const { configureAxe } = require('jest-axe')
-const merge = require('lodash.merge')
+const merge = require('lodash/merge')
 const { setMedia } = require('mock-match-media')
 
 require('./filter-toggle-button.js')
