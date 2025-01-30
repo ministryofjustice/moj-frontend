@@ -17,7 +17,6 @@ COPY .eleventy.js .eleventy.js
 COPY gulp gulp
 COPY gulpfile.js gulpfile.js
 COPY README.md README.md
-COPY webpack.config.js webpack.config.js
 
 RUN ENV="staging" npm run build:docs
 
@@ -34,7 +33,6 @@ COPY .eleventy.js .eleventy.js
 COPY gulp gulp
 COPY gulpfile.js gulpfile.js
 COPY README.md README.md
-COPY webpack.config.js webpack.config.js
 
 RUN ENV="staging" npm run build:docs
 
@@ -50,7 +48,7 @@ RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 RUN git clone git@github.com:ministryofjustice/moj-frontend.git .
 
 run npm install
-RUN ENV="production" npm run build:docs 
+RUN ENV="production" npm run build:docs
 
 RUN rm /root/.ssh/id_rsa
 
