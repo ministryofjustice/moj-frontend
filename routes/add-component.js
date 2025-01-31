@@ -66,6 +66,15 @@ if(process.env.DEV_DUMMY_DATA) {
     });
 }
 
+// Start
+router.get('/start', (req, res) => {
+    res.render('start')
+})
+
+router.post('/start', (req, res) => {
+    res.redirect('/get-involved/add-new-component/component-details')
+})
+
 // Component form page
 router.get('/:page', isValidComponentFormPage, getFormDataFromSession, (req, res) => {
   res.render(`${req.params.page}`, {

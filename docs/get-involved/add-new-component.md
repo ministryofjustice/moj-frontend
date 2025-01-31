@@ -37,4 +37,4 @@ If there are no issues and the team does not need to contact you, the component 
 
 The team will contact you by email when the component goes live.
 
-{% form "_includes/partials/forms/button-href.njk", "{ text: 'Submit new component', href: '/get-involved/add-new-component/component-details' }", 644 %}
+{% form "_includes/partials/forms/button-href.njk", "{ text: 'Submit new component', href: '/get-involved/add-new-component/start' }", 644 %}
