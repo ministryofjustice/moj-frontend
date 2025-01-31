@@ -30,6 +30,7 @@ $govuk-assets-path: "../" !default;
 @import "./components/menu-toggle";
 @import "./components/app-card";
 @import "./components/documentation_tabs";
+@import "./components/contents_list";
 
 @view-transition {
   navigation: auto;
