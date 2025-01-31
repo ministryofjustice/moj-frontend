@@ -14,6 +14,7 @@ const ApplicationError = require('../helpers/application-error')
 const upload = multer({ storage: multer.memoryStorage() })
 const router = express.Router()
 const checkYourAnswers = require('../helpers/check-your-answers')
+const sessionData = require("../helpers/mockSessionData/sessionData.js");
 
 const isValidComponentFormPage = (req, res, next) => {
   if (!COMPONENT_FORM_PAGES.includes(req.params.page)) {
@@ -46,6 +47,24 @@ router.get('/check-your-answers', (req, res) => {
     yourDetailsRows
   })
 })
+
+if(process.env.DEV_DUMMY_DATA) {
+    // Set dummy data for add component via session
+    router.get("/component-details", (req, res, next) => {
+        if (!req.session) {
+          return next(new Error("Session not available"));
+        }
+
+        Object.assign(req.session, sessionData);
+
+        req.session.save((err) => {
+        if (err) {
+            return next(err);
+        }
+        next();
+        });
+    });
+}
 
 // Component form page
 router.get('/:page', isValidComponentFormPage, getFormDataFromSession, (req, res) => {
