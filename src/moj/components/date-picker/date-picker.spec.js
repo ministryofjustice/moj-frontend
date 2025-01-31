@@ -780,7 +780,7 @@ describe('button menu JS API', () => {
       expect(input).toHaveValue(dateToSelect.format('DD/MM/YYYY'))
     })
 
-    test.skip.failing('minDate', async () => {
+    test('minDate', async () => {
       const minDay = 3
       const lastDayinMonth = dayjs().endOf('month').date()
       const minDate = dayjs().date(minDay)
@@ -1004,7 +1004,7 @@ describe('Datepicker data-attributes API', () => {
     expect(input).toHaveValue(dateToSelect.format('DD/MM/YYYY'))
   })
 
-  test.skip.failing('minDate', async () => {
+  test('minDate', async () => {
     const minDay = 3
     const lastDayinMonth = dayjs().endOf('month').date()
     const minDate = dayjs().date(minDay)
