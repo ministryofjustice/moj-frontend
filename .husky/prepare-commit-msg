@@ -1,7 +1,0 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-# Only run commitizen if no commit message was already provided.
-if [ -z "${2-}" ]; then
-    exec < /dev/tty && npx cz --hook || true
-fi
