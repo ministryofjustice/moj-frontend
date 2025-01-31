@@ -39,7 +39,7 @@ const nextPage = (url, body) => {
 }
 
 const setNextPage = (req, res, next) => {
-  if(req?.session?.checkYourAnswers) {
+  if (req?.session?.checkYourAnswers) {
     req.nextPage = '/check-your-answers'
   } else {
     req.nextPage = nextPage(req.originalUrl, req?.body)

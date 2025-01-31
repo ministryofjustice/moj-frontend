@@ -11,6 +11,7 @@ eleventyNavigation:
 ---
 
 {% contentsList '[{"text":"Overview of community collaboration","href":"/get-involved/community-collaboration"},{"text":"Submitting new components to the design system"},{"text":"Adding information to an existing component","href":"/get-involved/add-new-component/add-information"}]' %}
+
 ## Submitting new components
 
 You can submit a new component directly in the design system.

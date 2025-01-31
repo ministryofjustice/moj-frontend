@@ -8,8 +8,8 @@ const {
 } = require('../middleware/component-session')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
 const {
-    sendSubmissionEmail,
-    sendPrEmail
+  sendSubmissionEmail,
+  sendPrEmail
 } = require('../middleware/notify-email')
 const { generateMarkdown } = require('../middleware/generate-documentation')
 const { COMPONENT_FORM_PAGES } = require('../config')
@@ -17,7 +17,7 @@ const ApplicationError = require('../helpers/application-error')
 const upload = multer({ storage: multer.memoryStorage() })
 const router = express.Router()
 const checkYourAnswers = require('../helpers/check-your-answers')
-const sessionData = require("../helpers/mockSessionData/sessionData.js");
+const sessionData = require('../helpers/mockSessionData/sessionData.js')
 
 const isValidComponentFormPage = (req, res, next) => {
   if (!COMPONENT_FORM_PAGES.includes(req.params.page)) {
@@ -32,10 +32,10 @@ const isValidComponentFormPage = (req, res, next) => {
 const checkYourAnswersPath = 'check-your-answers'
 
 router.get('*', (req, res, next) => {
-    if(req.session && req.url.endsWith(checkYourAnswersPath)) {
-        req.session.checkYourAnswers = true
-    }
-    next();
+  if (req.session && req.url.endsWith(checkYourAnswersPath)) {
+    req.session.checkYourAnswers = true
+  }
+  next()
 })
 
 // Check your answers page
@@ -48,7 +48,7 @@ router.get('/check-your-answers', (req, res) => {
     additionalInformationRows,
     yourDetailsRows
   } = checkYourAnswers(req.session)
-    res.render('check-your-answers', {
+  res.render('check-your-answers', {
     submitUrl: req.originalUrl,
     componentDetailsRows,
     accessibilityRows,
@@ -59,45 +59,50 @@ router.get('/check-your-answers', (req, res) => {
   })
 })
 
-if(process.env.DEV_DUMMY_DATA) {
-    // Set dummy data for add component via session
-    router.get("/component-details", (req, res, next) => {
-        if (!req.session) {
-          return next(new Error("Session not available"));
-        }
+if (process.env.DEV_DUMMY_DATA) {
+  // Set dummy data for add component via session
+  router.get('/component-details', (req, res, next) => {
+    if (!req.session) {
+      return next(new Error('Session not available'))
+    }
 
-        Object.assign(req.session, sessionData);
+    Object.assign(req.session, sessionData)
 
-        req.session.save((err) => {
-        if (err) {
-            return next(err);
-        }
-        next();
-        });
-    });
+    req.session.save((err) => {
+      if (err) {
+        return next(err)
+      }
+      next()
+    })
+  })
 }
 
 // Start
 router.get('/start', (req, res) => {
-    res.render('start')
+  res.render('start')
 })
 
 router.post('/start', (req, res) => {
-    res.redirect('/get-involved/add-new-component/component-details')
+  res.redirect('/get-involved/add-new-component/component-details')
 })
 
 // Confirmation page
 router.get('/confirmation', (req, res) => {
-    res.render('confirmation')
+  res.render('confirmation')
 })
 
 // Component form page
-router.get('/:page', isValidComponentFormPage, getFormDataFromSession, (req, res) => {
-  res.render(`${req.params.page}`, {
-    submitUrl: req.originalUrl,
-    formData: req?.formData
-  })
-})
+router.get(
+  '/:page',
+  isValidComponentFormPage,
+  getFormDataFromSession,
+  (req, res) => {
+    res.render(`${req.params.page}`, {
+      submitUrl: req.originalUrl,
+      formData: req?.formData
+    })
+  }
+)
 
 // "Check Your Answers" form submission
 router.post('/check-your-answers', async (req, res) => {
@@ -105,7 +110,7 @@ router.post('/check-your-answers', async (req, res) => {
     generateMarkdown(req.session)
   const markdown = {}
   markdown[markdownFilename] = markdownContent
-  const sessionText = JSON.stringify(req.session, null, 2);
+  const sessionText = JSON.stringify(req.session, null, 2)
   await sendSubmissionEmail(null, markdownContent, sessionText)
   const session = { ...req.session, ...markdown }
   const branchName = await pushToGitHub(session)
@@ -113,7 +118,7 @@ router.post('/check-your-answers', async (req, res) => {
   const description = 'test description'
   const pr = await createPullRequest(branchName, title, description)
   await sendPrEmail(pr)
-    res.redirect('/get-involved/add-new-component/confirmation')
+  res.redirect('/get-involved/add-new-component/confirmation')
 })
 
 // Component image upload

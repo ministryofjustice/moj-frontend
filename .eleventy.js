@@ -152,7 +152,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addShortcode('contentsList', function (itemsJson = '') {
     try {
-      const items = JSON.parse(itemsJson);
+      const items = JSON.parse(itemsJson)
 
       return `
       <aside class="part-navigation-container" role="complementary">
@@ -160,28 +160,28 @@ module.exports = function (eleventyConfig) {
           <h2 class="gem-c-contents-list__title">Contents</h2>
           <ol class="gem-c-contents-list__list">
             ${items
-          .map(item => {
-            if (item.href) {
-              return `
+              .map((item) => {
+                if (item.href) {
+                  return `
                     <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
                       <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
                       <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="${item.href}">${item.text}</a>
                     </li>
-                  `;
-            } else {
-              return `
+                  `
+                } else {
+                  return `
                     <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
                       <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
                       ${item.text}
                     </li>
-                  `;
-            }
-          })
-          .join("")}
+                  `
+                }
+              })
+              .join('')}
           </ol>
         </nav>
       </aside>
-    `;
+    `
     } catch (error) {
       console.error('Error in form shortcode:', error)
       return `<div>Error loading list: ${list}</div>`

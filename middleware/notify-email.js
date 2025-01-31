@@ -1,17 +1,27 @@
 const { NotifyClient } = require('notifications-node-client')
-const { NOTIFY_TOKEN, NOTIFY_PR_TEMPLATE, NOTIFY_SUBMISSION_TEMPLATE, NOTIFY_EMAIL } = require('../config')
+const {
+  NOTIFY_TOKEN,
+  NOTIFY_PR_TEMPLATE,
+  NOTIFY_SUBMISSION_TEMPLATE,
+  NOTIFY_EMAIL
+} = require('../config')
 const notifyClient = new NotifyClient(NOTIFY_TOKEN)
 
 const emailAddress = NOTIFY_EMAIL
 
-const sendEmail = async (templateId, link = null, fileBuffer = null, submissionText = null) => {
+const sendEmail = async (
+  templateId,
+  link = null,
+  fileBuffer = null,
+  submissionText = null
+) => {
   let personalisation = link ? { link } : {}
 
-  if(fileBuffer) {
+  if (fileBuffer) {
     personalisation.link_to_file = notifyClient.prepareUpload(fileBuffer)
   }
 
-  if(submissionText) {
+  if (submissionText) {
     personalisation.submission_text = submissionText
   }
 
@@ -27,11 +37,15 @@ const sendEmail = async (templateId, link = null, fileBuffer = null, submissionT
   }
 }
 
-const sendSubmissionEmail = async(link = null, fileBuffer = null, submissionText = null) => {
+const sendSubmissionEmail = async (
+  link = null,
+  fileBuffer = null,
+  submissionText = null
+) => {
   return sendEmail(NOTIFY_SUBMISSION_TEMPLATE, link, fileBuffer, submissionText)
 }
 
-const sendPrEmail = async(link = null) => {
+const sendPrEmail = async (link = null) => {
   return sendEmail(NOTIFY_PR_TEMPLATE, link)
 }
 
