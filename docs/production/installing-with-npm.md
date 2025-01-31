@@ -110,21 +110,21 @@ To use different asset paths, set `$govuk-assets-path`, `$govuk-images-path` and
 
 Example 1:
 
-```SCSS
+```scss
 // Include images from /application/assets/images and fonts from /application/assets/fonts
-$moj-assets-path: ‘/application/assets’;
+$moj-assets-path: "/application/assets/";
 
-@import “@ministryofjustice/frontend/moj/all”;
+@import "@ministryofjustice/frontend/moj/all";
 ```
 
 Example 2:
 
-```SCSS
+```scss
 // Include images from /images/@ministryofjustice/frontend and fonts from /fonts
-$moj-images-path: “/images/@ministryofjustice/frontend/moj/”;
-$moj-fonts-path: “/fonts/”;
+$moj-images-path: "/images/@ministryofjustice/frontend/moj/";
+$moj-fonts-path: "/fonts/";
 
-@import “@ministryofjustice/frontend/moj/all”;
+@import "@ministryofjustice/frontend/moj/all";
 ```
 
 ## Importing JavaScript
