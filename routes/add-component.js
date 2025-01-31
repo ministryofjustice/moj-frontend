@@ -29,6 +29,15 @@ const isValidComponentFormPage = (req, res, next) => {
   }
 }
 
+const checkYourAnswersPath = 'check-your-answers'
+
+router.get('*', (req, res, next) => {
+    if(req.session && req.url.endsWith(checkYourAnswersPath)) {
+        req.session.checkYourAnswers = true
+    }
+    next();
+})
+
 // Check your answers page
 router.get('/check-your-answers', (req, res) => {
   const {
@@ -39,8 +48,7 @@ router.get('/check-your-answers', (req, res) => {
     additionalInformationRows,
     yourDetailsRows
   } = checkYourAnswers(req.session)
-
-  res.render('check-your-answers', {
+    res.render('check-your-answers', {
     submitUrl: req.originalUrl,
     componentDetailsRows,
     accessibilityRows,

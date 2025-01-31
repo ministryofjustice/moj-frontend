@@ -81,6 +81,7 @@ const checkYourAnswers = (session) => {
     ['accessibility-findings', 'accessibility-findings-more'],
     'additional-information',
     ['component-code', 'component-code-details'],
+    'component-details',
     'component-image',
     ['prototype', 'prototype-url'],
     'your-details'
