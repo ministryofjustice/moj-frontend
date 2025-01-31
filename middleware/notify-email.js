@@ -1,12 +1,19 @@
 const { NotifyClient } = require('notifications-node-client')
-const { NOTIFY_TOKEN, NOTIFY_TEMPLATE, NOTIFY_EMAIL } = require('../config')
+const { NOTIFY_TOKEN, NOTIFY_PR_TEMPLATE, NOTIFY_SUBMISSION_TEMPLATE, NOTIFY_EMAIL } = require('../config')
 const notifyClient = new NotifyClient(NOTIFY_TOKEN)
 
-const templateId = NOTIFY_TEMPLATE
 const emailAddress = NOTIFY_EMAIL
 
-const sendEmail = async (link = null) => {
-  const personalisation = link ? { link } : {}
+const sendEmail = async (templateId, link = null, fileBuffer = null, submissionText = null) => {
+  let personalisation = link ? { link } : {}
+
+  if(fileBuffer) {
+    personalisation.link_to_file = notifyClient.prepareUpload(fileBuffer)
+  }
+
+  if(submissionText) {
+    personalisation.submission_text = submissionText
+  }
 
   try {
     console.log(`Sending email to ${emailAddress} using template ${templateId}`)
@@ -18,6 +25,14 @@ const sendEmail = async (link = null) => {
     handleEmailError(error)
     throw error
   }
+}
+
+const sendSubmissionEmail = async(link = null, fileBuffer = null, submissionText = null) => {
+  return sendEmail(NOTIFY_SUBMISSION_TEMPLATE, link, fileBuffer, submissionText)
+}
+
+const sendPrEmail = async(link = null) => {
+  return sendEmail(NOTIFY_PR_TEMPLATE, link)
 }
 
 const handleEmailError = (error) => {
@@ -33,4 +48,7 @@ const handleEmailError = (error) => {
   console.error('Error configuration:', error.config)
 }
 
-module.exports = sendEmail
+module.exports = {
+  sendSubmissionEmail,
+  sendPrEmail
+}

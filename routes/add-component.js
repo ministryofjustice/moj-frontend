@@ -7,7 +7,10 @@ const {
   getFormDataFromSession
 } = require('../middleware/component-session')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
-const sendEmail = require('../middleware/notify-email')
+const {
+    sendSubmissionEmail,
+    sendPrEmail
+} = require('../middleware/notify-email')
 const { generateMarkdown } = require('../middleware/generate-documentation')
 const { COMPONENT_FORM_PAGES } = require('../config')
 const ApplicationError = require('../helpers/application-error')
@@ -89,12 +92,14 @@ router.post('/check-your-answers', async (req, res) => {
     generateMarkdown(req.session)
   const markdown = {}
   markdown[markdownFilename] = markdownContent
+  const sessionText = JSON.stringify(req.session, null, 2);
+  await sendSubmissionEmail(null, markdownContent, sessionText)
   const session = { ...req.session, ...markdown }
   const branchName = await pushToGitHub(session)
   const title = 'test title'
   const description = 'test description'
   const pr = await createPullRequest(branchName, title, description)
-  await sendEmail(pr)
+  await sendPrEmail(pr)
   res.redirect(req.url)
 })
 
