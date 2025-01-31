@@ -78,6 +78,11 @@ router.post('/start', (req, res) => {
     res.redirect('/get-involved/add-new-component/component-details')
 })
 
+// Confirmation page
+router.get('/confirmation', (req, res) => {
+    res.render('confirmation')
+})
+
 // Component form page
 router.get('/:page', isValidComponentFormPage, getFormDataFromSession, (req, res) => {
   res.render(`${req.params.page}`, {
@@ -100,7 +105,7 @@ router.post('/check-your-answers', async (req, res) => {
   const description = 'test description'
   const pr = await createPullRequest(branchName, title, description)
   await sendPrEmail(pr)
-  res.redirect(req.url)
+    res.redirect('/get-involved/add-new-component/confirmation')
 })
 
 // Component image upload
