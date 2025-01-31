@@ -88,6 +88,10 @@ const getLastDayOfWeek = (dateObject, lastDayOfWeekIndex) => {
   return lastDayOfWeek
 }
 
+const getDateFormatted = (value) => {
+  return dayjs().date(value).startOf('day').format('D/M/YYYY')
+}
+
 const getDateInCurrentMonth = (excluding = []) => {
   const today = dayjs().date()
   excluding.push(today)
@@ -784,17 +788,23 @@ describe('button menu JS API', () => {
 
       new MOJFrontend.DatePicker(component, config).init()
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
+
       await user.click(calendarButton)
 
-      for (let i = 1; i <= lastDayinMonth; i++) {
-        const testId = dayjs().date(i).startOf('day').format('D/M/YYYY')
-        const dayButton = screen.getByTestId(testId)
+      const dayButtonsDisabled = range(1, minDay - 1)
+        .map(getDateFormatted)
+        .map(screen.getByTestId)
 
-        if (i <= minDay) {
-          expect(dayButton).toHaveAttribute('aria-disabled', 'true')
-        } else {
-          expect(dayButton).not.toHaveAttribute('aria-disabled')
-        }
+      const dayButtonsEnabled = range(minDay, lastDayinMonth)
+        .map(getDateFormatted)
+        .map(screen.getByTestId)
+
+      for (const dayButton of dayButtonsDisabled) {
+        expect(dayButton).toHaveAttribute('aria-disabled', 'true')
+      }
+
+      for (const dayButton of dayButtonsEnabled) {
+        expect(dayButton).not.toHaveAttribute('aria-disabled')
       }
     })
 
@@ -806,17 +816,23 @@ describe('button menu JS API', () => {
 
       new MOJFrontend.DatePicker(component, config).init()
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
+
       await user.click(calendarButton)
 
-      for (let i = 1; i <= lastDayinMonth; i++) {
-        const testId = dayjs().date(i).startOf('day').format('D/M/YYYY')
-        const dayButton = screen.getByTestId(testId)
+      const dayButtonsDisabled = range(maxDay + 1, lastDayinMonth)
+        .map(getDateFormatted)
+        .map(screen.getByTestId)
 
-        if (i > maxDay) {
-          expect(dayButton).toHaveAttribute('aria-disabled', 'true')
-        } else {
-          expect(dayButton).not.toHaveAttribute('aria-disabled')
-        }
+      const dayButtonsEnabled = range(1, maxDay)
+        .map(getDateFormatted)
+        .map(screen.getByTestId)
+
+      for (const dayButton of dayButtonsDisabled) {
+        expect(dayButton).toHaveAttribute('aria-disabled', 'true')
+      }
+
+      for (const dayButton of dayButtonsEnabled) {
+        expect(dayButton).not.toHaveAttribute('aria-disabled')
       }
     })
 
@@ -832,17 +848,24 @@ describe('button menu JS API', () => {
 
         new MOJFrontend.DatePicker(component, config).init()
         calendarButton = screen.getByRole('button', { name: 'Choose date' })
+
         await user.click(calendarButton)
 
-        for (let i = 1; i <= lastDayinMonth; i++) {
-          const testId = dayjs().date(i).startOf('day').format('D/M/YYYY')
-          const dayButton = screen.getByTestId(testId)
+        const dayButtonsDisabled = [excludedDay]
+          .map(getDateFormatted)
+          .map(screen.getByTestId)
 
-          if (i === excludedDay) {
-            expect(dayButton).toHaveAttribute('aria-disabled', 'true')
-          } else {
-            expect(dayButton).not.toHaveAttribute('aria-disabled')
-          }
+        const dayButtonsEnabled = range(1, lastDayinMonth)
+          .filter((day) => day !== excludedDay)
+          .map(getDateFormatted)
+          .map(screen.getByTestId)
+
+        for (const dayButton of dayButtonsDisabled) {
+          expect(dayButton).toHaveAttribute('aria-disabled', 'true')
+        }
+
+        for (const dayButton of dayButtonsEnabled) {
+          expect(dayButton).not.toHaveAttribute('aria-disabled')
         }
       })
 
@@ -866,17 +889,24 @@ describe('button menu JS API', () => {
 
         new MOJFrontend.DatePicker(component, config).init()
         calendarButton = screen.getByRole('button', { name: 'Choose date' })
+
         await user.click(calendarButton)
 
-        for (let i = 1; i <= lastDayinMonth; i++) {
-          const testId = dayjs().date(i).startOf('day').format('D/M/YYYY')
-          const dayButton = screen.getByTestId(testId)
+        const dayButtonsDisabled = daysToExclude
+          .map(getDateFormatted)
+          .map(screen.getByTestId)
 
-          if (daysToExclude.includes(i)) {
-            expect(dayButton).toHaveAttribute('aria-disabled', 'true')
-          } else {
-            expect(dayButton).not.toHaveAttribute('aria-disabled')
-          }
+        const dayButtonsEnabled = range(1, lastDayinMonth)
+          .filter((day) => !daysToExclude.includes(day))
+          .map(getDateFormatted)
+          .map(screen.getByTestId)
+
+        for (const dayButton of dayButtonsDisabled) {
+          expect(dayButton).toHaveAttribute('aria-disabled', 'true')
+        }
+
+        for (const dayButton of dayButtonsEnabled) {
+          expect(dayButton).not.toHaveAttribute('aria-disabled')
         }
       })
     })
@@ -892,17 +922,24 @@ describe('button menu JS API', () => {
       }
       new MOJFrontend.DatePicker(component, config).init()
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
+
       await user.click(calendarButton)
 
-      for (let i = 1; i <= lastDayinMonth; i++) {
-        const testId = dayjs().date(i).startOf('day').format('D/M/YYYY')
-        const dayButton = screen.getByTestId(testId)
+      const dayButtonsDisabled = excludedDays
+        .map(getDateFormatted)
+        .map(screen.getByTestId)
 
-        if (excludedDays.includes(i)) {
-          expect(dayButton).toHaveAttribute('aria-disabled', 'true')
-        } else {
-          expect(dayButton).not.toHaveAttribute('aria-disabled')
-        }
+      const dayButtonsEnabled = range(1, lastDayinMonth)
+        .filter((day) => !excludedDays.includes(day))
+        .map(getDateFormatted)
+        .map(screen.getByTestId)
+
+      for (const dayButton of dayButtonsDisabled) {
+        expect(dayButton).toHaveAttribute('aria-disabled', 'true')
+      }
+
+      for (const dayButton of dayButtonsEnabled) {
+        expect(dayButton).not.toHaveAttribute('aria-disabled')
       }
     })
 
@@ -979,15 +1016,20 @@ describe('Datepicker data-attributes API', () => {
 
     await user.click(calendarButton)
 
-    for (let i = 1; i <= lastDayinMonth; i++) {
-      const testId = dayjs().date(i).startOf('day').format('D/M/YYYY')
-      const dayButton = screen.getByTestId(testId)
+    const dayButtonsDisabled = range(1, minDay - 1)
+      .map(getDateFormatted)
+      .map(screen.getByTestId)
 
-      if (i <= minDay) {
-        expect(dayButton).toHaveAttribute('aria-disabled', 'true')
-      } else {
-        expect(dayButton).not.toHaveAttribute('aria-disabled')
-      }
+    const dayButtonsEnabled = range(minDay, lastDayinMonth)
+      .map(getDateFormatted)
+      .map(screen.getByTestId)
+
+    for (const dayButton of dayButtonsDisabled) {
+      expect(dayButton).toHaveAttribute('aria-disabled', 'true')
+    }
+
+    for (const dayButton of dayButtonsEnabled) {
+      expect(dayButton).not.toHaveAttribute('aria-disabled')
     }
   })
 
@@ -1003,15 +1045,20 @@ describe('Datepicker data-attributes API', () => {
 
     await user.click(calendarButton)
 
-    for (let i = 1; i <= lastDayinMonth; i++) {
-      const testId = dayjs().date(i).startOf('day').format('D/M/YYYY')
-      const dayButton = screen.getByTestId(testId)
+    const dayButtonsDisabled = range(maxDay + 1, lastDayinMonth)
+      .map(getDateFormatted)
+      .map(screen.getByTestId)
 
-      if (i > maxDay) {
-        expect(dayButton).toHaveAttribute('aria-disabled', 'true')
-      } else {
-        expect(dayButton).not.toHaveAttribute('aria-disabled')
-      }
+    const dayButtonsEnabled = range(1, maxDay)
+      .map(getDateFormatted)
+      .map(screen.getByTestId)
+
+    for (const dayButton of dayButtonsDisabled) {
+      expect(dayButton).toHaveAttribute('aria-disabled', 'true')
+    }
+
+    for (const dayButton of dayButtonsEnabled) {
+      expect(dayButton).not.toHaveAttribute('aria-disabled')
     }
   })
 
@@ -1028,15 +1075,21 @@ describe('Datepicker data-attributes API', () => {
 
       await user.click(calendarButton)
 
-      for (let i = 1; i <= lastDayinMonth; i++) {
-        const testId = dayjs().date(i).startOf('day').format('D/M/YYYY')
-        const dayButton = screen.getByTestId(testId)
+      const dayButtonsDisabled = [excludedDay]
+        .map(getDateFormatted)
+        .map(screen.getByTestId)
 
-        if (i === excludedDay) {
-          expect(dayButton).toHaveAttribute('aria-disabled', 'true')
-        } else {
-          expect(dayButton).not.toHaveAttribute('aria-disabled')
-        }
+      const dayButtonsEnabled = range(1, lastDayinMonth)
+        .filter((day) => day !== excludedDay)
+        .map(getDateFormatted)
+        .map(screen.getByTestId)
+
+      for (const dayButton of dayButtonsDisabled) {
+        expect(dayButton).toHaveAttribute('aria-disabled', 'true')
+      }
+
+      for (const dayButton of dayButtonsEnabled) {
+        expect(dayButton).not.toHaveAttribute('aria-disabled')
       }
     })
 
@@ -1062,15 +1115,21 @@ describe('Datepicker data-attributes API', () => {
 
       await user.click(calendarButton)
 
-      for (let i = 1; i <= lastDayinMonth; i++) {
-        const testId = dayjs().date(i).startOf('day').format('D/M/YYYY')
-        const dayButton = screen.getByTestId(testId)
+      const dayButtonsDisabled = daysToExclude
+        .map(getDateFormatted)
+        .map(screen.getByTestId)
 
-        if (daysToExclude.includes(i)) {
-          expect(dayButton).toHaveAttribute('aria-disabled', 'true')
-        } else {
-          expect(dayButton).not.toHaveAttribute('aria-disabled')
-        }
+      const dayButtonsEnabled = range(1, lastDayinMonth)
+        .filter((day) => !daysToExclude.includes(day))
+        .map(getDateFormatted)
+        .map(screen.getByTestId)
+
+      for (const dayButton of dayButtonsDisabled) {
+        expect(dayButton).toHaveAttribute('aria-disabled', 'true')
+      }
+
+      for (const dayButton of dayButtonsEnabled) {
+        expect(dayButton).not.toHaveAttribute('aria-disabled')
       }
     })
   })
@@ -1089,15 +1148,21 @@ describe('Datepicker data-attributes API', () => {
 
     await user.click(calendarButton)
 
-    for (let i = 1; i <= lastDayinMonth; i++) {
-      const testId = dayjs().date(i).startOf('day').format('D/M/YYYY')
-      const dayButton = screen.getByTestId(testId)
+    const dayButtonsDisabled = excludedDays
+      .map(getDateFormatted)
+      .map(screen.getByTestId)
 
-      if (excludedDays.includes(i)) {
-        expect(dayButton).toHaveAttribute('aria-disabled', 'true')
-      } else {
-        expect(dayButton).not.toHaveAttribute('aria-disabled')
-      }
+    const dayButtonsEnabled = range(1, lastDayinMonth)
+      .filter((day) => !excludedDays.includes(day))
+      .map(getDateFormatted)
+      .map(screen.getByTestId)
+
+    for (const dayButton of dayButtonsDisabled) {
+      expect(dayButton).toHaveAttribute('aria-disabled', 'true')
+    }
+
+    for (const dayButton of dayButtonsEnabled) {
+      expect(dayButton).not.toHaveAttribute('aria-disabled')
     }
   })
 

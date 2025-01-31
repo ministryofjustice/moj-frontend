@@ -74,14 +74,15 @@ describe('sortable table', () => {
   })
 
   test('initialises with buttons in headers', () => {
-    const headers = component.querySelectorAll('th')
-    headers.forEach((header) => {
-      if (header.getAttribute('aria-sort')) {
-        const button = header.querySelector('button')
-        expect(button).toBeInTheDocument()
-        expect(button).toHaveTextContent(header.textContent)
-      }
-    })
+    const headers = Array.from(component.querySelectorAll('th')).filter(
+      (header) => header.getAttribute('aria-sort')
+    )
+
+    for (const header of headers) {
+      const button = header.querySelector('button')
+      expect(button).toBeInTheDocument()
+      expect(button).toHaveTextContent(header.textContent)
+    }
   })
 
   test('creates status box for announcements', () => {
