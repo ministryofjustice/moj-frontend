@@ -4,7 +4,8 @@ const {
   validateFormData,
   setNextPage,
   saveSession,
-  getFormDataFromSession
+  getFormDataFromSession,
+    getRawSessionText
 } = require('../middleware/component-session')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
 const {
@@ -105,12 +106,12 @@ router.get(
 )
 
 // "Check Your Answers" form submission
-router.post('/check-your-answers', async (req, res) => {
+router.post('/check-your-answers', getRawSessionText, async (req, res) => {
   const { filename: markdownFilename, content: markdownContent } =
     generateMarkdown(req.session)
   const markdown = {}
   markdown[markdownFilename] = markdownContent
-  const sessionText = JSON.stringify(req.session, null, 2)
+  const { sessionText } = req
   await sendSubmissionEmail(null, markdownContent, sessionText)
   const session = { ...req.session, ...markdown }
   const branchName = await pushToGitHub(session)

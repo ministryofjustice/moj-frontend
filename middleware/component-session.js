@@ -110,9 +110,35 @@ const getFormDataFromSession = (req, res, next) => {
   next()
 }
 
+// Get the raw session text without images
+const getRawSessionText = (req, res, next) => {
+  const deepCloneAndRemoveBuffer = (obj) => {
+    if (Array.isArray(obj)) {
+      return obj.map(deepCloneAndRemoveBuffer);
+    } else if (obj !== null && typeof obj === 'object') {
+      return Object.keys(obj).reduce((acc, key) => {
+        if (key === 'buffer') {
+          console.log(`Removing buffer for field: ${obj.fieldname}`);
+        } else {
+          acc[key] = deepCloneAndRemoveBuffer(obj[key]);
+        }
+        return acc;
+      }, {});
+    }
+    return obj;
+  };
+
+  const clonedSession = deepCloneAndRemoveBuffer(req.session);
+  const sessionText = JSON.stringify(clonedSession, null, 2);
+  console.log('sessionText', sessionText);
+  req.sessionText = sessionText;
+  next();
+};
+
 module.exports = {
   setNextPage,
   validateFormData,
   saveSession,
-  getFormDataFromSession
+  getFormDataFromSession,
+  getRawSessionText
 }
