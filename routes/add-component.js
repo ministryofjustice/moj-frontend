@@ -5,7 +5,7 @@ const {
   setNextPage,
   saveSession,
   getFormDataFromSession,
-    getRawSessionText
+  getRawSessionText
 } = require('../middleware/component-session')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
 const {

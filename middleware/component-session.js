@@ -114,26 +114,26 @@ const getFormDataFromSession = (req, res, next) => {
 const getRawSessionText = (req, res, next) => {
   const deepCloneAndRemoveBuffer = (obj) => {
     if (Array.isArray(obj)) {
-      return obj.map(deepCloneAndRemoveBuffer);
+      return obj.map(deepCloneAndRemoveBuffer)
     } else if (obj !== null && typeof obj === 'object') {
       return Object.keys(obj).reduce((acc, key) => {
         if (key === 'buffer') {
-          console.log(`Removing buffer for field: ${obj.fieldname}`);
+          console.log(`Removing buffer for field: ${obj.fieldname}`)
         } else {
-          acc[key] = deepCloneAndRemoveBuffer(obj[key]);
+          acc[key] = deepCloneAndRemoveBuffer(obj[key])
         }
-        return acc;
-      }, {});
+        return acc
+      }, {})
     }
-    return obj;
-  };
+    return obj
+  }
 
-  const clonedSession = deepCloneAndRemoveBuffer(req.session);
-  const sessionText = JSON.stringify(clonedSession, null, 2);
-  console.log('sessionText', sessionText);
-  req.sessionText = sessionText;
-  next();
-};
+  const clonedSession = deepCloneAndRemoveBuffer(req.session)
+  const sessionText = JSON.stringify(clonedSession, null, 2)
+  console.log('sessionText', sessionText)
+  req.sessionText = sessionText
+  next()
+}
 
 module.exports = {
   setNextPage,
