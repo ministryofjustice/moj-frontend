@@ -1,4 +1,5 @@
 const hrefRoot = '/get-involved/add-new-component'
+const maxWords = 10
 
 const toCamelCaseWithRows = (str) => {
   return (
@@ -6,6 +7,14 @@ const toCamelCaseWithRows = (str) => {
       .replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
       .replace(/^\w/, (c) => c.toLowerCase()) + 'Rows'
   )
+}
+
+const truncateText = (text, maxWords) => {
+  const words = String(text).split(' ')
+  if (words.length > maxWords) {
+    return words.slice(0, maxWords).join(' ') + '...'
+  }
+  return text
 }
 
 const answersFromSession = (forms, session) => {
@@ -35,7 +44,7 @@ const extractFieldData = (field, session) => {
     // multiple entries
     return Object.entries(fieldData).map(([subKey, value]) => ({
       key: { text: formatLabel(subKey) },
-      value: { text: value },
+      value: { text: truncateText(value, maxWords) },
       actions: {
         items: [
           {
@@ -53,7 +62,7 @@ const extractFieldData = (field, session) => {
   return [
     {
       key: { text: formatLabel(fieldName) },
-      value: { text: fieldData },
+      value: { text: truncateText(fieldData, maxWords) },
       actions: {
         items: [
           {
