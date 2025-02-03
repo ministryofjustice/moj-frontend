@@ -129,6 +129,7 @@ const getRawSessionText = (req, res, next) => {
   }
 
   const clonedSession = deepCloneAndRemoveBuffer(req.session)
+  delete clonedSession.cookie
   const sessionText = JSON.stringify(clonedSession, null, 2)
   console.log('sessionText', sessionText)
   req.sessionText = sessionText
