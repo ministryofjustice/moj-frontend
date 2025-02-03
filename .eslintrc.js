@@ -1,31 +1,42 @@
 module.exports = {
-  env: {
-    browser: 1
-  },
   extends: ['standard', 'prettier'],
   globals: {
-    MOJFrontend: 'readonly',
-    $: 'readonly'
+    $: 'readonly',
+    jQuery: 'readonly',
+    MOJFrontend: 'readonly'
   },
-  ignorePatterns: ['package/**/*', 'node_modules', 'node_modules/.*'],
+  ignorePatterns: [
+    '**/vendor/**',
+    'package/**',
+
+    // Enable dotfile linting
+    '!.*',
+    'node_modules',
+    'node_modules/.*'
+  ],
   overrides: [
     {
       extends: [
         'eslint:recommended',
         'plugin:import/recommended',
-        // 'plugin:jest/style',
-        // 'plugin:jest-dom/recommended',
-        // 'plugin:jsdoc/recommended-typescript-flavor',
+        'plugin:jest/style',
+        'plugin:jest-dom/recommended',
+        'plugin:jsdoc/recommended-typescript-flavor',
         'plugin:n/recommended',
         'plugin:promise/recommended',
         'prettier'
       ],
-      files: ['**/*.{cjs,js,mjs}'],
+      files: [
+        '**/*.{cjs,js,mjs}',
+
+        // Check markdown `*.md` contains valid code blocks
+        // https://www.npmjs.com/package/eslint-plugin-markdown#user-content-advanced-configuration
+        '**/*.md/*.{cjs,js,mjs}'
+      ],
       parserOptions: {
         ecmaVersion: 'latest'
       },
-      // plugins: ['import', 'jsdoc', 'n', 'promise', 'jest', 'jest-dom'],
-      plugins: ['import', 'jsdoc', 'n', 'promise'],
+      plugins: ['import', 'jsdoc', 'n', 'promise', 'jest', 'jest-dom'],
       rules: {
         // Check import or require statements are A-Z ordered
         'import/order': [
@@ -56,14 +67,20 @@ module.exports = {
         // JSDoc blocks are optional by default
         'jsdoc/require-jsdoc': 'off',
 
-        // JSDoc @param required in (optional) blocks but
-        // @param description is not necessary by default
-        'jsdoc/require-param-description': 'off',
-        'jsdoc/require-param': 'error',
-
         // Require hyphens before param description
         // Aligns with TSDoc style: https://tsdoc.org/pages/tags/param/
         'jsdoc/require-hyphen-before-param-description': 'warn',
+
+        // JSDoc @param required in (optional) blocks but
+        // @param description is not necessary by default
+        'jsdoc/require-param-description': 'off',
+        'jsdoc/require-param-type': 'error',
+        'jsdoc/require-param': 'off',
+
+        // JSDoc @returns is optional
+        'jsdoc/require-returns-description': 'off',
+        'jsdoc/require-returns-type': 'off',
+        'jsdoc/require-returns': 'off',
 
         // Maintain new line after description
         'jsdoc/tag-lines': [
@@ -87,14 +104,10 @@ module.exports = {
         'no-multi-assign': 'error'
       },
       settings: {
-        // jsdoc: {
-        //   // Allows us to use type declarations that exist in our dependencies
-        //   mode: 'typescript',
-        //   tagNamePreference: {
-        //     // TypeDoc doesn't understand '@abstract' but '@virtual'
-        //     abstract: 'virtual'
-        //   }
-        // }
+        jsdoc: {
+          // Allows us to use type declarations that exist in our dependencies
+          mode: 'typescript'
+        }
       }
     },
     {
@@ -116,10 +129,12 @@ module.exports = {
       }
     },
     {
-      files: ['**/*.spec.{cjs,js,mjs}'],
+      files: ['**/*.spec.{cjs,js,mjs}', 'jest.config.*', 'jest.setup.*'],
+      extends: ['plugin:jest/recommended', 'plugin:jest/style'],
       env: {
-        jest: true
-      }
+        'jest/globals': true
+      },
+      plugins: ['jest']
     },
     {
       // Add plugin for markdown `*.md` code blocks. Its config is in the new
@@ -130,11 +145,15 @@ module.exports = {
       processor: 'markdown/markdown'
     },
     {
-      // Check markdown `*.md` contains valid code blocks
-      // https://www.npmjs.com/package/eslint-plugin-markdown#user-content-advanced-configuration
-      files: ['**/*.md/*.{cjs,js,mjs}'],
+      files: [
+        '**/assets/javascript/**/*.{cjs,js,mjs}',
+        '**/docs/examples/**/*.{cjs,js,mjs}',
+        '**/*.md/*.{cjs,js,mjs}'
+      ],
+      env: {
+        browser: true
+      },
       rules: {
-        quotes: ['error', 'single'],
         // Ignore unused example code
         'no-new': 'off',
         'no-undef': 'off',
@@ -145,14 +164,8 @@ module.exports = {
         // Ignore paths to example modules
         'import/no-unresolved': 'off',
         'n/no-missing-import': 'off'
-      },
-      parserOptions: {
-        ecmaVersion: 'latest'
       }
     }
   ],
-  parserOptions: {
-    // project: './tsconfig.json'
-  },
   root: true
 }

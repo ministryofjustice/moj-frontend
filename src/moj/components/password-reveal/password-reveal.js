@@ -1,6 +1,6 @@
 MOJFrontend.PasswordReveal = function (element) {
   this.el = element
-  var $el = $(this.el)
+  const $el = $(this.el)
 
   if ($el.data('moj-password-reveal-initialised')) {
     return

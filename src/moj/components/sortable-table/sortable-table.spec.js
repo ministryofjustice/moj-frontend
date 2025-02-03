@@ -1,4 +1,6 @@
-const { queryByRole, within } = require('@testing-library/dom')
+/* eslint-disable no-new */
+
+const { queryByRole } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
 
 require('./sortable-table.js')
@@ -61,7 +63,7 @@ describe('sortable table', () => {
   let component
 
   beforeEach(() => {
-    ;({ component, options } = createComponent())
+    ;({ component } = createComponent())
     new MOJFrontend.SortableTable({
       table: component
     })
@@ -69,18 +71,18 @@ describe('sortable table', () => {
 
   afterEach(() => {
     document.body.innerHTML = ''
-    component = undefined
   })
 
   test('initialises with buttons in headers', () => {
-    const headers = component.querySelectorAll('th')
-    headers.forEach((header) => {
-      if (header.getAttribute('aria-sort')) {
-        const button = header.querySelector('button')
-        expect(button).toBeInTheDocument()
-        expect(button).toHaveTextContent(header.textContent)
-      }
-    })
+    const headers = Array.from(component.querySelectorAll('th')).filter(
+      (header) => header.getAttribute('aria-sort')
+    )
+
+    for (const header of headers) {
+      const button = header.querySelector('button')
+      expect(button).toBeInTheDocument()
+      expect(button).toHaveTextContent(header.textContent)
+    }
   })
 
   test('creates status box for announcements', () => {
@@ -235,6 +237,7 @@ describe('sortable table', () => {
 
 describe('sortable table options', () => {
   let component
+  let options
 
   beforeEach(() => {
     ;({ component, options } = createComponent())
@@ -330,7 +333,7 @@ describe('sortable table options', () => {
     const headers = component.querySelectorAll('th[aria-sort]')
     headers.forEach((header) => {
       const buttons = header.querySelectorAll('button')
-      expect(buttons.length).toBe(1)
+      expect(buttons).toHaveLength(1)
     })
   })
 

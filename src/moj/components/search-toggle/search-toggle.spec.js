@@ -1,20 +1,15 @@
+/* eslint-disable no-new */
+
 const { queryByRole } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
-const { configureAxe } = require('jest-axe')
 const $ = require('jquery')
 
 require('./search-toggle.js')
 
 const user = userEvent.setup()
-const axe = configureAxe({
-  rules: {
-    // disable landmark rules when testing isolated components.
-    region: { enabled: false }
-  }
-})
 
 const createComponent = () => {
-  html = `
+  const html = `
 <div class="moj-search-toggle" data-module="moj-search-toggle" data-moj-search-toggle-text="Find case">
         <div class="moj-search-toggle__toggle"></div>
         <div class="moj-search-toggle__search">
@@ -77,7 +72,7 @@ describe('search toggle', () => {
   test('initialises component', () => {
     const toggleButton = queryByRole(buttonContainer, 'button')
 
-    expect(toggleButton).not.toBeNull()
+    expect(toggleButton).toBeInTheDocument()
     expect(toggleButton).toHaveTextContent('Find case')
     expect(toggleButton).toHaveAttribute('aria-haspopup', 'true')
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false')

@@ -59,7 +59,7 @@ validator.addValidator('dob-day', [
   },
   {
     method: function (field, params) {
-      var d = new Date(
+      const d = new Date(
         parseInt(params.year.value, 10),
         parseInt(params.month.value, 10) - 1,
         parseInt(params.day.value, 10) - 1

@@ -78,7 +78,7 @@ export default class IFrameResizer {
       const elements = body.getElementsByTagName('*')
 
       let maxHeight = html.offsetHeight
-      let padding = 30
+      const padding = 30
 
       // Check each element's bottom edge position
       for (const element of elements) {

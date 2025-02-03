@@ -29,7 +29,7 @@ Tabs.prototype.showTab = function (tab) {
 }
 
 Tabs.prototype.getTab = function (hash) {
-  return this.tabs.filter('a[href="' + hash + '"]')
+  return this.tabs.filter(`a[href="${hash}"]`)
 }
 
 Tabs.prototype.setupHtml = function () {
@@ -39,8 +39,8 @@ Tabs.prototype.setupHtml = function () {
   this.panels.attr('role', 'tabpanel')
   this.tabs.each(
     $.proxy(function (i, tab) {
-      let panelId = this.getHref($(tab)).slice(1)
-      tab.id = 'tab_' + panelId
+      const panelId = this.getHref($(tab)).slice(1)
+      tab.id = `tab_${panelId}`
       $(tab).attr('aria-controls', panelId)
     }, this)
   )
@@ -57,8 +57,8 @@ Tabs.prototype.setupHtml = function () {
 
 Tabs.prototype.onTabClick = function (e) {
   e.preventDefault()
-  let newTab = $(e.target)
-  let currentTab = this.getCurrentTab()
+  const newTab = $(e.target)
+  const currentTab = this.getCurrentTab()
   if (currentTab[0]) {
     this.hideTab(currentTab)
   }
@@ -83,8 +83,8 @@ Tabs.prototype.onTabKeydown = function (e) {
 }
 
 Tabs.prototype.activateNextTab = function () {
-  let currentTab = this.getCurrentTab()
-  let nextTab = currentTab.parent().next().find('[role=tab]')
+  const currentTab = this.getCurrentTab()
+  const nextTab = currentTab.parent().next().find('[role=tab]')
   if (nextTab[0]) {
     this.hideTab(currentTab)
     this.showTab(nextTab)
@@ -94,8 +94,8 @@ Tabs.prototype.activateNextTab = function () {
 }
 
 Tabs.prototype.activatePreviousTab = function () {
-  let currentTab = this.getCurrentTab()
-  let previousTab = currentTab.parent().prev().find('[role=tab]')
+  const currentTab = this.getCurrentTab()
+  const previousTab = currentTab.parent().prev().find('[role=tab]')
   if (previousTab[0]) {
     this.hideTab(currentTab)
     this.showTab(previousTab)
@@ -134,12 +134,12 @@ Tabs.prototype.getCurrentTab = function () {
 // should be a utility function most prob
 // http://labs.thesedays.com/blog/2010/01/08/getting-the-href-value-with-jquery-in-ie/
 Tabs.prototype.getHref = function (tab) {
-  let href = tab.attr('href')
+  const href = tab.attr('href')
   return href.slice(href.indexOf('#'), href.length)
 }
 
 Tabs.prototype.onCloseButtonClick = function (e) {
-  let currentTab = this.getCurrentTab()
+  const currentTab = this.getCurrentTab()
   this.hideTab(currentTab)
   this.tabs.first().focus()
 }

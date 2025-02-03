@@ -6,7 +6,7 @@ gulp.task('build:compress-images', async () => {
   const { default: imagemin } = await import('gulp-imagemin')
 
   return gulp
-    .src('package/moj/assets/images/' + '**/*.+(png|jpg|jpeg|gif|svg)')
+    .src('package/moj/assets/images/**/*.+(png|jpg|jpeg|gif|svg)')
     .pipe(
       cache(
         imagemin({

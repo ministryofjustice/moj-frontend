@@ -1,4 +1,5 @@
-const sinon = require('sinon')
+/* eslint-disable no-new */
+
 const {
   queryByRole,
   getByLabelText,
@@ -6,6 +7,7 @@ const {
 } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
 const { configureAxe } = require('jest-axe')
+const sinon = require('sinon')
 
 require('../../helpers.js')
 require('./multi-file-upload.js')
@@ -67,10 +69,10 @@ describe('Multi-file upload', () => {
     uploadFileErrorHook = sinon.spy()
     fileDeleteHook = sinon.spy()
     ;({ component, options } = createComponent({
-      uploadFileEntryHook: uploadFileEntryHook,
-      uploadFileExitHook: uploadFileExitHook,
-      uploadFileErrorHook: uploadFileErrorHook,
-      fileDeleteHook: fileDeleteHook,
+      uploadFileEntryHook,
+      uploadFileExitHook,
+      uploadFileErrorHook,
+      fileDeleteHook,
       uploadUrl: '/upload',
       deleteUrl: '/delete'
     }))
@@ -131,7 +133,7 @@ describe('Multi-file upload', () => {
     test('handles file input change', async () => {
       const changeEvent = new Event('change', { bubbles: true })
 
-      //input.files is not writable, so we do this to add the files to the input
+      // input.files is not writable, so we do this to add the files to the input
       Object.defineProperty(input, 'files', {
         value: { files: [file] }
       })
@@ -171,7 +173,7 @@ describe('Multi-file upload', () => {
         '.moj-multi-file-upload__filename'
       )
 
-      expect(fileRows.length).toBe(1)
+      expect(fileRows).toHaveLength(1)
       expect(progressElement).toHaveTextContent('50%')
       expect(nameElement).toHaveTextContent(file.name)
 
@@ -195,10 +197,10 @@ describe('Multi-file upload', () => {
       expect(successMessage).toHaveTextContent('File uploaded successfully')
       expect(deleteButton).toBeInTheDocument()
       expect(deleteButton).toHaveAccessibleName(`Delete test.txt`)
-      expect(deleteButton).toHaveAttribute('value', 'test')
+      expect(deleteButton).toHaveValue('test')
     })
 
-    //  this fails as the component still attempts to access response.file (line 149)
+    // eslint-disable-next-line jest/no-disabled-tests -- this fails as the component still attempts to access response.file (line 149)
     test.skip('handles 200 status with error in response json', async () => {
       server.respondWith('POST', '/upload', [
         200,
@@ -218,7 +220,7 @@ describe('Multi-file upload', () => {
       expect(errorMessage).toHaveTextContent('Upload failed')
     })
 
-    test('handles non 200 response status ', async () => {
+    test('handles non 200 response status', async () => {
       server.respondWith('POST', '/upload', [
         500,
         { 'Content-Type': 'text/plain' },
@@ -349,7 +351,7 @@ describe('Multi-file upload', () => {
 
       dropzone.dispatchEvent(dropEvent)
 
-      expect(server.requests.length).toBe(1)
+      expect(server.requests).toHaveLength(1)
       expect(server.requests[0].url).toBe('/upload')
       expect(server.requests[0].method).toBe('POST')
 
@@ -373,7 +375,7 @@ describe('Multi-file upload', () => {
       expect(successMessage).toHaveTextContent('File uploaded successfully')
       expect(deleteButton).toBeInTheDocument()
       expect(deleteButton).toHaveAccessibleName(`Delete test.txt`)
-      expect(deleteButton).toHaveAttribute('value', 'test')
+      expect(deleteButton).toHaveValue('test')
     })
   })
 
@@ -425,14 +427,14 @@ describe('Multi-file upload', () => {
       expect(uploadFileExitHook).toHaveBeenCalledTwice()
 
       expect(feedbackContainer).not.toHaveClass('moj-hidden')
-      expect(fileRows.length).toBe(2)
+      expect(fileRows).toHaveLength(2)
 
       expect(successMessages[0]).toHaveTextContent('File uploaded successfully')
       expect(deleteButtons[0]).toHaveAccessibleName(`Delete test.txt`)
-      expect(deleteButtons[0]).toHaveAttribute('value', 'test')
+      expect(deleteButtons[0]).toHaveValue('test')
       expect(successMessages[1]).toHaveTextContent('File uploaded successfully')
       expect(deleteButtons[1]).toHaveAccessibleName(`Delete test.txt`)
-      expect(deleteButtons[1]).toHaveAttribute('value', 'test')
+      expect(deleteButtons[1]).toHaveValue('test')
     })
 
     test('handles multiple file drop', () => {
@@ -444,13 +446,13 @@ describe('Multi-file upload', () => {
       dropEvent.preventDefault = () => {}
       Object.defineProperty(dropEvent, 'dataTransfer', {
         value: {
-          files: files
+          files
         }
       })
 
       dropzone.dispatchEvent(dropEvent)
 
-      expect(server.requests.length).toBe(2)
+      expect(server.requests).toHaveLength(2)
       expect(server.requests[0].url).toBe('/upload')
       expect(server.requests[0].method).toBe('POST')
 
@@ -470,14 +472,14 @@ describe('Multi-file upload', () => {
       expect(uploadFileExitHook).toHaveBeenCalledTwice()
 
       expect(feedbackContainer).not.toHaveClass('moj-hidden')
-      expect(fileRows.length).toBe(2)
+      expect(fileRows).toHaveLength(2)
 
       expect(successMessages[0]).toHaveTextContent('File uploaded successfully')
       expect(deleteButtons[0]).toHaveAccessibleName(`Delete test.txt`)
-      expect(deleteButtons[0]).toHaveAttribute('value', 'test')
+      expect(deleteButtons[0]).toHaveValue('test')
       expect(successMessages[1]).toHaveTextContent('File uploaded successfully')
       expect(deleteButtons[1]).toHaveAccessibleName(`Delete test.txt`)
-      expect(deleteButtons[1]).toHaveAttribute('value', 'test')
+      expect(deleteButtons[1]).toHaveValue('test')
     })
   })
 

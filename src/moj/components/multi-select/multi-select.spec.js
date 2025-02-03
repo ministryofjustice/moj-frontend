@@ -1,20 +1,15 @@
+/* eslint-disable no-new */
+
 const { queryByRole, queryAllByRole } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
-const { configureAxe } = require('jest-axe')
 
 require('./multi-select.js')
 
 const user = userEvent.setup()
-const axe = configureAxe({
-  rules: {
-    // disable landmark rules when testing isolated components.
-    region: { enabled: false }
-  }
-})
 
 const createComponent = (id = 'multi-select', idprefix = false) => {
-  html = `
-<table id="${id}" class="govuk-table" data-module="moj-multi-select" data-multi-select-checkbox="#${id}-select-all" ${idprefix ? 'data-multi-select-idprefix="' + idprefix + '-"' : ''}>
+  const html = `
+<table id="${id}" class="govuk-table" data-module="moj-multi-select" data-multi-select-checkbox="#${id}-select-all" ${idprefix ? `data-multi-select-idprefix="${idprefix}-"` : ''}>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th class="govuk-table__header" scope="col" id="${id}-select-all"></th>
@@ -54,7 +49,9 @@ const createComponent = (id = 'multi-select', idprefix = false) => {
 }
 
 describe('multi select', () => {
-  let component, container
+  let component
+  let container
+  let checkboxes
 
   beforeEach(() => {
     component = createComponent()
@@ -62,29 +59,28 @@ describe('multi select', () => {
     checkboxes = component.querySelectorAll('tbody input[type=checkbox]')
 
     new MOJFrontend.MultiSelect({
-      container: container,
-      checkboxes: checkboxes
+      container,
+      checkboxes
     })
   })
 
   afterEach(() => {
     document.body.innerHTML = ''
-    component, container, (checkboxes = undefined)
   })
 
   test('initialises component', () => {
     const selectToggle = queryByRole(container, 'checkbox')
 
-    expect(selectToggle).not.toBeNull()
+    expect(selectToggle).toBeInTheDocument()
     expect(selectToggle).toHaveAccessibleName('Select all')
   })
 
   test('toggles all checkboxes', async () => {
     const selectToggle = queryByRole(container, 'checkbox')
     const tbody = component.querySelector('tbody')
-    let checkboxes = queryAllByRole(tbody, 'checkbox')
+    const checkboxes = queryAllByRole(tbody, 'checkbox')
 
-    expect(checkboxes.length).toBe(2)
+    expect(checkboxes).toHaveLength(2)
     checkboxes.forEach((checkbox) => {
       expect(checkbox).not.toBeChecked()
     })
@@ -109,7 +105,7 @@ describe('multi select', () => {
     const tbody = component.querySelector('tbody')
     const checkboxes = queryAllByRole(tbody, 'checkbox')
 
-    expect(checkboxes.length).toBe(2)
+    expect(checkboxes).toHaveLength(2)
     checkboxes.forEach((checkbox) => {
       expect(checkbox).not.toBeChecked()
     })

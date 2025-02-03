@@ -1,7 +1,9 @@
+/* eslint-disable no-new */
+
 const { queryByRole } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
 const { configureAxe } = require('jest-axe')
-const merge = require('lodash.merge')
+const merge = require('lodash/merge')
 const { setMedia } = require('mock-match-media')
 
 require('./filter-toggle-button.js')
@@ -15,7 +17,7 @@ const axe = configureAxe({
 })
 
 const createTemplate = () => {
-  html = `
+  const html = `
       <div class="moj-filter">
         <div class="moj-filter__header">
           <div class="moj-filter__header-title">
@@ -36,9 +38,9 @@ const createTemplate = () => {
   const filterContainer = document.querySelector('.moj-filter')
 
   return {
-    buttonContainer: buttonContainer,
-    closeButtonContainer: closeButtonContainer,
-    filterContainer: filterContainer
+    buttonContainer,
+    closeButtonContainer,
+    filterContainer
   }
 }
 
@@ -65,14 +67,13 @@ beforeEach(() => {
 })
 
 describe('Filter toggle in big mode', () => {
-  let defaultConfig, buttonContainer, closeButtonContainer, filterContainer
+  let defaultConfig, buttonContainer, filterContainer
 
   beforeEach(() => {
     setMedia({
       width: '800px'
     })
-    ;({ buttonContainer, closeButtonContainer, filterContainer } =
-      createTemplate())
+    ;({ buttonContainer, filterContainer } = createTemplate())
 
     defaultConfig = merge(baseConfig, {
       toggleButton: {
@@ -93,7 +94,7 @@ describe('Filter toggle in big mode', () => {
     new MOJFrontend.FilterToggleButton(defaultConfig)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
-    expect(toggleButton).not.toBeNull()
+    expect(toggleButton).toBeInTheDocument()
     expect(toggleButton.innerHTML).toBe('Show filter')
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
     expect(toggleButton).toHaveClass('govuk-button--secondary')
@@ -175,16 +176,16 @@ describe('Filter toggle in small mode', () => {
       width: '500px'
     })
     ;({ buttonContainer, closeButtonContainer, filterContainer } =
-      createTemplate()),
-      (defaultConfig = merge(baseConfig, {
-        toggleButton: {
-          container: document.querySelector('.moj-action-bar__filter')
-        },
-        closeButton: {
-          container: document.querySelector('.moj-filter__header-action')
-        },
-        filter: { container: document.querySelector('.moj-filter') }
-      }))
+      createTemplate())
+    defaultConfig = merge(baseConfig, {
+      toggleButton: {
+        container: document.querySelector('.moj-action-bar__filter')
+      },
+      closeButton: {
+        container: document.querySelector('.moj-filter__header-action')
+      },
+      filter: { container: document.querySelector('.moj-filter') }
+    })
   })
 
   afterEach(() => {
@@ -195,7 +196,7 @@ describe('Filter toggle in small mode', () => {
     new MOJFrontend.FilterToggleButton(defaultConfig)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
-    expect(toggleButton).not.toBeNull()
+    expect(toggleButton).toBeInTheDocument()
     expect(toggleButton.innerHTML).toBe('Show filter')
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
     expect(toggleButton).toHaveClass('govuk-button--secondary')
@@ -245,7 +246,7 @@ describe('Filter toggle in small mode', () => {
 
     const closeButton = queryByRole(closeButtonContainer, 'button')
 
-    expect(closeButton).not.toBeNull()
+    expect(closeButton).toBeInTheDocument()
     expect(closeButton.innerHTML).toBe('Close')
   })
 
