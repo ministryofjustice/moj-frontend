@@ -2,24 +2,21 @@
    #ACCORDIONS
    ========================================================================== */
 
+// stylelint-disable declaration-no-important
+
 .govuk-accordion__section-button:hover {
-  // stylelint-disable-next-line declaration-no-important
   background: #ebebeb !important;
 }
 
 .govuk-accordion__show-all:hover {
-  // stylelint-disable-next-line declaration-no-important
   background: #ebebeb !important;
-  // stylelint-disable-next-line declaration-no-important
   box-shadow:
     0 -2px #ebebeb,
     0 4px #ebebeb !important;
 }
 
 .govuk-accordion__show-all:focus {
-  // stylelint-disable-next-line declaration-no-important
   background: $govuk-focus-colour !important;
-  // stylelint-disable-next-line declaration-no-important
   box-shadow:
     0 -2px $govuk-focus-colour,
     0 4px $govuk-text-colour !important;

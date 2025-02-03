@@ -111,6 +111,8 @@
     "mock-match-media": "^0.4.3",
     "npm-run-all2": "^6.0.0",
     "postcss": "^8.4.31",
+    "postcss-markdown": "^1.3.0",
+    "postcss-scss": "^4.0.9",
     "semantic-release": "^23.0.0",
     "sinon": "^19.0.2",
     "stylelint": "^16.13.2",
