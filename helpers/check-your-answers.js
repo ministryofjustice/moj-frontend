@@ -1,3 +1,5 @@
+const sanitizeHtml = require('sanitize-html')
+
 const hrefRoot = '/get-involved/add-new-component'
 const maxWords = 10
 
@@ -10,11 +12,22 @@ const toCamelCaseWithRows = (str) => {
 }
 
 const truncateText = (text, maxWords) => {
-  const words = String(text).split(' ')
-  if (words.length > maxWords) {
-    return words.slice(0, maxWords).join(' ') + '...'
+  try {
+    const words = String(text).split(' ')
+    if (words.length > maxWords) {
+      return words.slice(0, maxWords).join(' ') + '...'
+    }
+    return text
+  } catch (e) {
+    console.error('oh no', e)
   }
-  return text
+}
+
+const sanitizeText = (text) => {
+  return sanitizeHtml(String(text), {
+    allowedTags: [],
+    allowedAttributes: {}
+  })
 }
 
 const answersFromSession = (forms, session) => {
@@ -44,7 +57,7 @@ const extractFieldData = (field, session) => {
     // multiple entries
     return Object.entries(fieldData).map(([subKey, value]) => ({
       key: { text: formatLabel(subKey) },
-      value: { text: truncateText(value, maxWords) },
+      value: { text: sanitizeText(truncateText(value, maxWords)) },
       actions: {
         items: [
           {
@@ -62,7 +75,7 @@ const extractFieldData = (field, session) => {
   return [
     {
       key: { text: formatLabel(fieldName) },
-      value: { text: truncateText(fieldData, maxWords) },
+      value: { text: sanitizeText(truncateText(fieldData, maxWords)) },
       actions: {
         items: [
           {

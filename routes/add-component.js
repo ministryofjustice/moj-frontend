@@ -113,13 +113,13 @@ router.post('/check-your-answers', getRawSessionText, async (req, res) => {
   markdown[markdownFilename] = markdownContent
   const { sessionText } = req
   await sendSubmissionEmail(null, markdownContent, sessionText)
+  res.redirect('/get-involved/add-new-component/confirmation')
   const session = { ...req.session, ...markdown }
   const branchName = await pushToGitHub(session)
   const title = 'test title'
   const description = 'test description'
   const pr = await createPullRequest(branchName, title, description)
   await sendPrEmail(pr)
-  res.redirect('/get-involved/add-new-component/confirmation')
 })
 
 // Component image upload
