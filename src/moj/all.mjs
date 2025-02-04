@@ -1,7 +1,5 @@
 /* eslint-disable no-new */
 
-import $ from 'jquery'
-
 import { AddAnother } from './components/add-another/add-another.mjs'
 import { Alert } from './components/alert/alert.mjs'
 import { ButtonMenu } from './components/button-menu/button-menu.mjs'
@@ -59,7 +57,7 @@ function initAll(options) {
 
   $richTextEditors.forEach(($richTextEditor) => {
     const options = {
-      textarea: $($richTextEditor)
+      textarea: $richTextEditor
     }
 
     const toolbarAttr = $richTextEditor.getAttribute(
@@ -86,11 +84,11 @@ function initAll(options) {
   $searchToggles.forEach(($searchToggle) => {
     new SearchToggle({
       toggleButton: {
-        container: $($searchToggle.querySelector('.moj-search-toggle__toggle')),
+        container: $searchToggle.querySelector('.moj-search-toggle__toggle'),
         text: $searchToggle.getAttribute('data-moj-search-toggle-text')
       },
       search: {
-        container: $($searchToggle.querySelector('.moj-search'))
+        container: $searchToggle.querySelector('.moj-search')
       }
     })
   })
