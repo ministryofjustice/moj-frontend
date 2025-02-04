@@ -2,6 +2,9 @@ import $ from 'jquery'
 
 import { addAttributeValue, removeAttributeValue } from '../../helpers.mjs'
 
+/**
+ * @class
+ */
 export function FormValidator(form, options) {
   this.form = form
   this.errors = []
