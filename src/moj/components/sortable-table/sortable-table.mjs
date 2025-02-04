@@ -14,7 +14,7 @@ export function SortableTable(params) {
   this.createHeadingButtons()
   this.createStatusBox()
   this.initialiseSortedColumn()
-  this.table.on('click', 'th button', $.proxy(this, 'onSortButtonClick'))
+  this.table.on('click', 'th button', this.onSortButtonClick.bind(this))
 }
 
 SortableTable.prototype.setupOptions = function (params) {
@@ -108,8 +108,7 @@ SortableTable.prototype.getTableRowsArray = function () {
 }
 
 SortableTable.prototype.sort = function (rows, columnNumber, sortDirection) {
-  const newRows = rows.sort(
-    function (rowA, rowB) {
+  return rows.sort((rowA, rowB) => {
       const tdA = $(rowA).find('td,th').eq(columnNumber)
       const tdB = $(rowB).find('td,th').eq(columnNumber)
 
@@ -117,6 +116,7 @@ SortableTable.prototype.sort = function (rows, columnNumber, sortDirection) {
         sortDirection === 'ascending'
           ? this.getCellValue(tdA)
           : this.getCellValue(tdB)
+
       const valueB =
         sortDirection === 'ascending'
           ? this.getCellValue(tdB)
@@ -125,9 +125,7 @@ SortableTable.prototype.sort = function (rows, columnNumber, sortDirection) {
       if (typeof valueA === 'string' || typeof valueB === 'string')
         return valueA.toString().localeCompare(valueB.toString())
       return valueA - valueB
-    }.bind(this)
-  )
-  return newRows
+  })
 }
 
 SortableTable.prototype.getCellValue = function (cell) {
