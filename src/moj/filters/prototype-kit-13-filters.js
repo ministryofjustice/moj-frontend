@@ -1,3 +1,4 @@
+// @ts-nocheck
 const { addFilter } = require('govuk-prototype-kit').views
 
 const getAllFilters = require('./all')
