@@ -1,17 +1,21 @@
+/* eslint-disable no-new */
+
 MOJFrontend.initAll = function (options) {
   // Set the options to an empty object by default if no options are passed.
   options = typeof options !== 'undefined' ? options : {}
 
   // Allow the user to initialise MOJ Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
-  var scope = typeof options.scope !== 'undefined' ? options.scope : document
+  const scope = typeof options.scope !== 'undefined' ? options.scope : document
 
-  var $addAnothers = scope.querySelectorAll('[data-module="moj-add-another"]')
+  const $addAnothers = scope.querySelectorAll('[data-module="moj-add-another"]')
   MOJFrontend.nodeListForEach($addAnothers, function ($addAnother) {
     new MOJFrontend.AddAnother($addAnother)
   })
 
-  var $multiSelects = scope.querySelectorAll('[data-module="moj-multi-select"]')
+  const $multiSelects = scope.querySelectorAll(
+    '[data-module="moj-multi-select"]'
+  )
   MOJFrontend.nodeListForEach($multiSelects, function ($multiSelect) {
     new MOJFrontend.MultiSelect({
       container: $multiSelect.querySelector(
@@ -24,34 +28,34 @@ MOJFrontend.initAll = function (options) {
     })
   })
 
-  var $passwordReveals = scope.querySelectorAll(
+  const $passwordReveals = scope.querySelectorAll(
     '[data-module="moj-password-reveal"]'
   )
   MOJFrontend.nodeListForEach($passwordReveals, function ($passwordReveal) {
     new MOJFrontend.PasswordReveal($passwordReveal)
   })
 
-  var $richTextEditors = scope.querySelectorAll(
+  const $richTextEditors = scope.querySelectorAll(
     '[data-module="moj-rich-text-editor"]'
   )
   MOJFrontend.nodeListForEach($richTextEditors, function ($richTextEditor) {
-    var options = {
+    const options = {
       textarea: $($richTextEditor)
     }
 
-    var toolbarAttr = $richTextEditor.getAttribute(
+    const toolbarAttr = $richTextEditor.getAttribute(
       'data-moj-rich-text-editor-toolbar'
     )
     if (toolbarAttr) {
-      var toolbar = toolbarAttr.split(',')
+      const toolbar = toolbarAttr.split(',')
       options.toolbar = {}
-      for (var item in toolbar) options.toolbar[toolbar[item]] = true
+      for (const item in toolbar) options.toolbar[toolbar[item]] = true
     }
 
     new MOJFrontend.RichTextEditor(options)
   })
 
-  var $searchToggles = scope.querySelectorAll(
+  const $searchToggles = scope.querySelectorAll(
     '[data-module="moj-search-toggle"]'
   )
   MOJFrontend.nodeListForEach($searchToggles, function ($searchToggle) {
@@ -66,7 +70,7 @@ MOJFrontend.initAll = function (options) {
     })
   })
 
-  var $sortableTables = scope.querySelectorAll(
+  const $sortableTables = scope.querySelectorAll(
     '[data-module="moj-sortable-table"]'
   )
   MOJFrontend.nodeListForEach($sortableTables, function ($table) {

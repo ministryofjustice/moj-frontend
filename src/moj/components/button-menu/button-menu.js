@@ -195,7 +195,10 @@ MOJFrontend.ButtonMenu.prototype.focusItem = function (index) {
   if (index >= this.items.length) index = 0
   if (index < 0) index = this.items.length - 1
 
-  this.items.item(index)?.focus()
+  const menuItem = this.items.item(index)
+  if (menuItem) {
+    menuItem.focus()
+  }
 }
 
 MOJFrontend.ButtonMenu.prototype.currentFocusIndex = function () {
@@ -260,7 +263,7 @@ MOJFrontend.ButtonMenu.prototype.handleKeyDown = function (event) {
  *
  * @param {Schema} schema - component schema
  * @param {DOMStringMap} dataset - HTML element dataset
- * @returns {Object} Normalised dataset
+ * @returns {object} Normalised dataset
  */
 MOJFrontend.ButtonMenu.prototype.parseDataset = function (schema, dataset) {
   const parsed = {}

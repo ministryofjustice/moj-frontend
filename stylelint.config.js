@@ -12,10 +12,14 @@ module.exports = {
     'CHANGELOG.md'
   ],
   overrides: [
-    // {
-    //   customSyntax: 'postcss-scss',
-    //   files: ['**/*.scss']
-    // }
+    {
+      customSyntax: 'postcss-markdown',
+      files: ['**/*.md']
+    },
+    {
+      customSyntax: 'postcss-scss',
+      files: ['**/*.scss']
+    }
   ],
   plugins: ['stylelint-order'],
   rules: {

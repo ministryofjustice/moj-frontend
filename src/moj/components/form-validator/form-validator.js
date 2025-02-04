@@ -20,7 +20,7 @@ MOJFrontend.FormValidator.entityMap = {
 }
 
 MOJFrontend.FormValidator.prototype.escapeHtml = function (string) {
-  return String(string).replace(/[&<>"'`=\/]/g, function fromEntityMap(s) {
+  return String(string).replace(/[&<>"'`=/]/g, function fromEntityMap(s) {
     return MOJFrontend.FormValidator.entityMap[s]
   })
 }
@@ -30,7 +30,7 @@ MOJFrontend.FormValidator.prototype.resetTitle = function () {
 }
 
 MOJFrontend.FormValidator.prototype.updateTitle = function () {
-  document.title = '' + this.errors.length + ' errors - ' + document.title
+  document.title = `${this.errors.length} errors - ${document.title}`
 }
 
 MOJFrontend.FormValidator.prototype.showSummary = function () {
@@ -41,14 +41,14 @@ MOJFrontend.FormValidator.prototype.showSummary = function () {
 }
 
 MOJFrontend.FormValidator.prototype.getSummaryHtml = function () {
-  var html =
+  let html =
     '<h2 id="error-summary-title" class="govuk-error-summary__title">There is a problem</h2>'
   html += '<div class="govuk-error-summary__body">'
   html += '<ul class="govuk-list govuk-error-summary__list">'
-  for (var i = 0, j = this.errors.length; i < j; i++) {
-    var error = this.errors[i]
+  for (let i = 0, j = this.errors.length; i < j; i++) {
+    const error = this.errors[i]
     html += '<li>'
-    html += '<a href="#' + this.escapeHtml(error.fieldName) + '">'
+    html += `<a href="#${this.escapeHtml(error.fieldName)}">`
     html += this.escapeHtml(error.message)
     html += '</a>'
     html += '</li>'
@@ -76,24 +76,21 @@ MOJFrontend.FormValidator.prototype.onSubmit = function (e) {
 }
 
 MOJFrontend.FormValidator.prototype.showInlineErrors = function () {
-  for (var i = 0, j = this.errors.length; i < j; i++) {
+  for (let i = 0, j = this.errors.length; i < j; i++) {
     this.showInlineError(this.errors[i])
   }
 }
 
 MOJFrontend.FormValidator.prototype.showInlineError = function (error) {
-  var errorSpanId = error.fieldName + '-error'
-  var errorSpan =
-    '<span class="govuk-error-message" id="' +
-    errorSpanId +
-    '">' +
-    this.escapeHtml(error.message) +
-    '</span>'
-  var control = $('#' + error.fieldName)
-  var fieldContainer = control.parents('.govuk-form-group')
-  var label = fieldContainer.find('label')
-  var legend = fieldContainer.find('legend')
-  var fieldset = fieldContainer.find('fieldset')
+  const errorSpanId = `${error.fieldName}-error`
+  const errorSpan = `<span class="govuk-error-message" id="${
+    errorSpanId
+  }">${this.escapeHtml(error.message)}</span>`
+  const control = $(`#${error.fieldName}`)
+  const fieldContainer = control.parents('.govuk-form-group')
+  const label = fieldContainer.find('label')
+  const legend = fieldContainer.find('legend')
+  const fieldset = fieldContainer.find('fieldset')
   fieldContainer.addClass('govuk-form-group--error')
   if (legend.length) {
     legend.after(errorSpan)
@@ -107,20 +104,18 @@ MOJFrontend.FormValidator.prototype.showInlineError = function (error) {
 }
 
 MOJFrontend.FormValidator.prototype.removeInlineErrors = function () {
-  var error
-  var i
-  for (var i = 0; i < this.errors.length; i++) {
+  for (let i = 0; i < this.errors.length; i++) {
     this.removeInlineError(this.errors[i])
   }
 }
 
 MOJFrontend.FormValidator.prototype.removeInlineError = function (error) {
-  var control = $('#' + error.fieldName)
-  var fieldContainer = control.parents('.govuk-form-group')
+  const control = $(`#${error.fieldName}`)
+  const fieldContainer = control.parents('.govuk-form-group')
   fieldContainer.find('.govuk-error-message').remove()
   fieldContainer.removeClass('govuk-form-group--error')
   fieldContainer.find('[aria-invalid]').attr('aria-invalid', 'false')
-  var errorSpanId = error.fieldName + '-error'
+  const errorSpanId = `${error.fieldName}-error`
   MOJFrontend.removeAttributeValue(
     fieldContainer.find('[aria-describedby]')[0],
     'aria-describedby',
@@ -130,18 +125,18 @@ MOJFrontend.FormValidator.prototype.removeInlineError = function (error) {
 
 MOJFrontend.FormValidator.prototype.addValidator = function (fieldName, rules) {
   this.validators.push({
-    fieldName: fieldName,
-    rules: rules,
+    fieldName,
+    rules,
     field: this.form.elements[fieldName]
   })
 }
 
 MOJFrontend.FormValidator.prototype.validate = function () {
   this.errors = []
-  var validator = null,
-    validatorReturnValue = true,
-    i,
-    j
+  let validator = null
+  let validatorReturnValue = true
+  let i
+  let j
   for (i = 0; i < this.validators.length; i++) {
     validator = this.validators[i]
     for (j = 0; j < validator.rules.length; j++) {

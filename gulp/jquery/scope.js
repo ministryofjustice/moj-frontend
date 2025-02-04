@@ -1,2 +1,3 @@
 // Local-scope jQuery so it doens't overwrite or squat on window properties
-var $ = jQuery.noConflict(true)
+// eslint-disable-next-line no-unused-vars
+const $ = jQuery.noConflict(true)

@@ -39,33 +39,35 @@ if ('contentEditable' in document.documentElement) {
   }
 
   MOJFrontend.RichTextEditor.prototype.onToolbarKeydown = function (e) {
-    var focusableButton
+    let focusableButton
     switch (e.keyCode) {
       case this.keys.right:
-      case this.keys.down:
+      case this.keys.down: {
         focusableButton = this.toolbar.find('button[tabindex=0]')
-        var nextButton = focusableButton.next('button')
+        const nextButton = focusableButton.next('button')
         if (nextButton[0]) {
           nextButton.focus()
           focusableButton.attr('tabindex', '-1')
           nextButton.attr('tabindex', '0')
         }
         break
+      }
       case this.keys.left:
-      case this.keys.up:
+      case this.keys.up: {
         focusableButton = this.toolbar.find('button[tabindex=0]')
-        var previousButton = focusableButton.prev('button')
+        const previousButton = focusableButton.prev('button')
         if (previousButton[0]) {
           previousButton.focus()
           focusableButton.attr('tabindex', '-1')
           previousButton.attr('tabindex', '0')
         }
         break
+      }
     }
   }
 
   MOJFrontend.RichTextEditor.prototype.getToolbarHtml = function () {
-    var html = ''
+    let html = ''
 
     html += '<div class="moj-rich-text-editor__toolbar" role="toolbar">'
 
@@ -99,10 +101,7 @@ if ('contentEditable' in document.documentElement) {
   }
 
   MOJFrontend.RichTextEditor.prototype.getEnhancedHtml = function (val) {
-    return (
-      this.getToolbarHtml() +
-      '<div class="govuk-textarea moj-rich-text-editor__content" contenteditable="true" spellcheck="false"></div>'
-    )
+    return `${this.getToolbarHtml()}<div class="govuk-textarea moj-rich-text-editor__content" contenteditable="true" spellcheck="false"></div>`
   }
 
   MOJFrontend.RichTextEditor.prototype.hideDefault = function () {
@@ -126,7 +125,7 @@ if ('contentEditable' in document.documentElement) {
   MOJFrontend.RichTextEditor.prototype.configureToolbar = function () {
     this.buttons = this.container.find('.moj-rich-text-editor__toolbar-button')
     this.buttons.prop('tabindex', '-1')
-    var firstTab = this.buttons.first()
+    const firstTab = this.buttons.first()
     firstTab.prop('tabindex', '0')
   }
 

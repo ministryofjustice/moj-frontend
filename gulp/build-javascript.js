@@ -1,8 +1,8 @@
-var concat = require('gulp-concat')
 const gulp = require('gulp')
+const concat = require('gulp-concat')
 const rename = require('gulp-rename')
 const uglify = require('gulp-uglify')
-var umd = require('gulp-umd')
+const umd = require('gulp-umd')
 
 gulp.task('build:javascript', () => {
   return gulp

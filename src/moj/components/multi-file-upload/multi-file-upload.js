@@ -199,7 +199,7 @@ if (
       url: this.params.deleteUrl,
       type: 'post',
       dataType: 'json',
-      data: data,
+      data,
       success: $.proxy(function (response) {
         if (response.error) {
           // handle error

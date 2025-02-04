@@ -47,7 +47,7 @@
         async></script>
 
         <script type="module" src="{{ 'assets/javascript/jquery.js' | rev | url }}"></script>
-        <script type="module" src="{{ 'assets/javascript/all.js' | rev | url }}"></script>
+        <script type="module" src="{{ 'assets/javascript/application.js' | rev | url }}"></script>
     </head>
     <body class="govuk-template__body">
         <!-- Google Tag Manager (noscript) -->
@@ -58,7 +58,7 @@
         {% block body %}
            <div>
         {% include "./partials/header.njk" %}
-        
+
         <div class="app-layout">
             <div id="sidebar" class="app-layout__sidebar">
                 {% include "./partials/side-navigation.njk" %}
@@ -75,9 +75,8 @@
         </div>
 
         {% include "./partials/footer.njk" %}
-      </div> 
+      </div>
         {% endblock %}
         {% block pageScripts %}{% endblock %}
     </body>
 </html>
-

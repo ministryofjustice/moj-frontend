@@ -1,4 +1,6 @@
-const { getByText, getByTestId } = require('@testing-library/dom')
+/* eslint-disable no-new */
+
+const { getByTestId } = require('@testing-library/dom')
 
 require('./helpers')
 require('./all.js')
@@ -13,7 +15,7 @@ describe('initAll', () => {
       <input data-module="moj-password-reveal" data-testid="password-reveal" type="password" />
     `
 
-    new MOJFrontend.initAll({ scope: container })
+    MOJFrontend.initAll({ scope: container })
 
     expect(MOJFrontend.PasswordReveal).toHaveBeenCalledWith(
       getByTestId(container, 'password-reveal')

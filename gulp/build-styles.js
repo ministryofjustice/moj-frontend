@@ -3,7 +3,10 @@ const cssnano = require('cssnano')
 const gulp = require('gulp')
 const postcss = require('gulp-postcss')
 const rename = require('gulp-rename')
-const sass = require('gulp-sass')(require('sass'))
+const gulpSass = require('gulp-sass')
+const dartSass = require('sass')
+
+const sass = gulpSass(dartSass)
 
 gulp.task('build:css', () => {
   return gulp

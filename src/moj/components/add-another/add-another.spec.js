@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 const {
   getByLabelText,
   getByRole,
@@ -45,17 +47,16 @@ describe('Add Another component', () => {
 
   afterEach(() => {
     document.body.innerHTML = ''
-    component = undefined
   })
 
   test('adds a new item when "Add another person" is clicked', async () => {
     const initialItems = component.querySelectorAll('.moj-add-another__item')
-    expect(initialItems.length).toBe(1)
+    expect(initialItems).toHaveLength(1)
 
     await user.click(addButton)
 
     const updatedItems = component.querySelectorAll('.moj-add-another__item')
-    expect(updatedItems.length).toBe(2)
+    expect(updatedItems).toHaveLength(2)
 
     const secondItemFirstName = updatedItems[1].querySelector(
       '[name="person[1][first_name]"]'
@@ -90,7 +91,7 @@ describe('Add Another component', () => {
 
     const remainingItems = component.querySelectorAll('.moj-add-another__item')
 
-    expect(remainingItems.length).toBe(1)
+    expect(remainingItems).toHaveLength(1)
     expect(
       queryByRole(component, 'button', { name: 'Remove' })
     ).not.toBeInTheDocument()
@@ -152,10 +153,10 @@ describe('Add Another component', () => {
     const remainingItems = component.querySelectorAll('.moj-add-another__item')
     remainingItems.forEach((item, index) => {
       const firstNameInput = item.querySelector(
-        '[name="person[' + index + '][first_name]"]'
+        `[name="person[${index}][first_name]"]`
       )
       const lastNameInput = item.querySelector(
-        '[name="person[' + index + '][last_name]"]'
+        `[name="person[${index}][last_name]"]`
       )
       expect(firstNameInput).toBeInTheDocument()
       expect(lastNameInput).toBeInTheDocument()

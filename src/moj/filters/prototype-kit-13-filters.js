@@ -1,4 +1,5 @@
 const { addFilter } = require('govuk-prototype-kit').views
+
 const getAllFilters = require('./all')
 
 const allFilters = getAllFilters()
