@@ -67,13 +67,8 @@ ButtonMenu.prototype.initMenu = function () {
   this.$menuToggle = this.$module.querySelector(':scope > button')
   this.items = this.$menu.querySelectorAll('a, button')
 
-  this.$menuToggle.addEventListener('click', (event) => {
-    this.toggleMenu(event)
-  })
-
-  this.$module.addEventListener('keydown', (event) => {
-    this.handleKeyDown(event)
-  })
+  this.$menuToggle.addEventListener('click', this.toggleMenu.bind(this))
+  this.$module.addEventListener('keydown', this.handleKeyDown.bind(this))
 
   document.addEventListener('click', (event) => {
     if (!this.$module.contains(event.target)) {
