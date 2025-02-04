@@ -28,6 +28,51 @@ spec:
                 key: password
         ports:
         - containerPort: 3000
+      - name: express-app
+        image: ${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}
+        env:
+          - name: GITHUB_API_URL
+            valueFrom:
+              secretKeyRef:
+                name: github-secrets
+                key: github-api-url
+          - name: GITHUB_API_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: github-secrets
+                key: github-api-token
+          - name: GITHUB_REPO_OWNER
+            valueFrom:
+              secretKeyRef:
+                name: github-secrets
+                key: github-repo-owner
+          - name: GITHUB_REPO_NAME
+            valueFrom:
+              secretKeyRef:
+                name: github-secrets
+                key: github-repo-name
+          - name: NOTIFY_PR_TEMPLATE
+            valueFrom:
+              secretKeyRef:
+                name: notify-secrets
+                key: notify-pr-template
+          - name: NOTIFY_SUBMISSION_TEMPLATE
+            valueFrom:
+              secretKeyRef:
+                name: notify-secrets
+                key: notify-submission-template
+          - name: NOTIFY_EMAIL
+            valueFrom:
+              secretKeyRef:
+                name: notify-secrets
+                key: notify-email
+          - name: NOTIFY_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: notify-secrets
+                key: notify-token
+        ports:
+        - containerPort: 3001
 ---
 apiVersion: v1
 kind: Service
@@ -40,6 +85,9 @@ spec:
   - port: 3000
     name: http
     targetPort: 3000
+  - port: 3001
+    name: express
+    targetPort: 3001
   selector:
     app: moj-frontend-${BRANCH}
 ---
