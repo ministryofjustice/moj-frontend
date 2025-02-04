@@ -86,11 +86,11 @@ function initAll(options) {
   nodeListForEach($searchToggles, function ($searchToggle) {
     new SearchToggle({
       toggleButton: {
-        container: $($searchToggle.querySelector('.moj-search-toggle__toggle')),
+        container: $searchToggle.querySelector('.moj-search-toggle__toggle'),
         text: $searchToggle.getAttribute('data-moj-search-toggle-text')
       },
       search: {
-        container: $($searchToggle.querySelector('.moj-search'))
+        container: $searchToggle.querySelector('.moj-search')
       }
     })
   })
