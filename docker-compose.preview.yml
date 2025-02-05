@@ -19,17 +19,17 @@ services:
     networks:
       - app-network
     depends_on:
-      - express-app
+      - preview-express-app
     restart: unless-stopped
 
-  express-app:
+  preview-express-app:
     build:
       context: .
       dockerfile: Dockerfile
-      target: express-app
+      target: preview-express-app
     platform: linux/amd64
-    image: express-app-environment
-    container_name: express-app-container
+    image: preview-express-app-environment
+    container_name: preview-express-app-container
     ports:
       - '3001:3001'
     networks:
