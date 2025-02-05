@@ -1,0 +1,30 @@
+{% macro tierLabel(tier, tierMessage, tierUrl) %}
+  {% if tier %}
+    
+    {% set tierClass = "" %}
+    
+    {% if tier == "Reviewed" %}
+      {% set tierClass = "app-tier__content--reviewed" %}
+    {% elif tier == "Due for review" %}
+      {% set tierClass = "app-tier__content--due-for-review" %}
+    {% elif tier == "Community" %}
+      {% set tierClass = "app-tier__content--community" %}
+    {% elif tier == "Archived" %}
+      {% set tierClass = "app-tier__content--archived" %}
+    {% endif %}
+
+    <div class="app-tier">
+      <p class="govuk-phase-banner__content govuk-!-margin-bottom-0">
+        <strong class="govuk-tag govuk-phase-banner__content__tag {{ tierClass }}">
+          {{ tier }}
+        </strong>
+        <span class="govuk-phase-banner__text">
+          {{ tierMessage }}
+          {% if tierUrl %}
+            <a class="govuk-link" href="{{ tierUrl }}">{{ tierUrl }}</a>
+          {% endif %}
+        </span>
+      </p>
+    </div>
+  {% endif %}
+{% endmacro %}

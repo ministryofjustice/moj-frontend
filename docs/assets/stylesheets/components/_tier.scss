@@ -1,0 +1,27 @@
+.app-tier {
+  background-color: #fff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #b1b4b6;
+  &__content {
+    &--reviewed {
+      background-color: rgba(204, 226, 216, 1);
+      color: rgba(0, 90, 48, 1);
+    }
+    &--due-for-review {
+      background-color: rgba(252, 214, 195, 1);
+      color: rgba(110, 54, 25, 1);
+    }
+    &--due-for-review {
+      background-color: rgba(252, 214, 195, 1);
+      color: rgba(110, 54, 25, 1);
+    }
+    &--community {
+      background-color: rgba(187, 212, 234, 1);
+      color: rgba(12, 45, 74, 1);
+    }
+    &--archived {
+      background-color: rgba(229, 230, 231, 1);
+      color: rgba(40, 45, 48, 1);
+    }
+  }
+}

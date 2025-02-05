@@ -1,12 +1,15 @@
 {% extends "./base.njk" %}
 
+{% import "./macros/tier.njk" as macros %}
+
+
 {% block content %}
+     {{ macros.tierLabel(tier, tierMessage, tierLink, tierUrl) }}
     <div class="app-layout__content">
         <h1 class="govuk-heading-xl">
           {% if not isIndex %}<span class="govuk-caption-xl">Components</span>{% endif %}
           {{ title }}
         </h1>
-
         {{ content | safe }}
 
         {% include "./partials/get-help-and-contribute.njk" %}
