@@ -73,7 +73,7 @@ FROM base AS express-app
 COPY . .
 
 # run express app as a non root user
-RUN useradd -u 1001 -m nonrootuser
+RUN adduser -D nonroot -u 1001
 USER 1001
 
 EXPOSE 3001
