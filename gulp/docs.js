@@ -20,10 +20,13 @@ gulp.task('docs:clean', async (done) => {
 // Copy all the govuk-frontend assets across
 gulp.task('docs:copy-dependencies', () => {
   return gulp
-    .src([
-      'node_modules/govuk-frontend/dist/govuk/assets/**/*',
-      'src/moj/assets/**/*'
-    ])
+    .src(
+      [
+        'node_modules/govuk-frontend/dist/govuk/assets/**/*',
+        'src/moj/assets/**/*'
+      ],
+      { encoding: false }
+    )
     .pipe(gulp.dest('public/assets'))
 })
 
@@ -36,7 +39,7 @@ gulp.task('docs:copy-vendor', () => {
 
 gulp.task('docs:copy-images', () => {
   return gulp
-    .src(['docs/assets/images/**/*'])
+    .src(['docs/assets/images/**/*'], { encoding: false })
     .pipe(gulp.dest('public/assets/images'))
 })
 
@@ -83,7 +86,10 @@ gulp.task('docs:revision', () => {
         'public/assets/**/*.js',
         'public/assets/**/*.+(png|jpg|jpeg)'
       ],
-      { base: 'public' }
+      {
+        base: 'public',
+        encoding: false
+      }
     )
     .pipe(rev())
     .pipe(gulp.dest('public/')) // Write rev'd assets to build dir
