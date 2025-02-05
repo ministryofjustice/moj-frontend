@@ -29,7 +29,7 @@ spec:
         ports:
         - containerPort: 3000
       - name: express-app
-        image: ${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}
+        image: ${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}
         env:
           - name: GITHUB_API_URL
             valueFrom:
