@@ -70,11 +70,7 @@ COPY docker/nginx-production.conf /etc/nginx/conf.d/default.conf
 COPY --from=production-build /app/public /usr/share/nginx/html
 
 FROM base AS preview-express-app
-COPY package.json package.json
-COPY package-lock.json package-lock.json
-RUN npm ci
-RUN ENV="staging" npm run build:docs
-
+COPY --from=preview-build /app /app
 COPY . .
 
 # run express app as a non root user
