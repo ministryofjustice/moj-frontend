@@ -1,12 +1,12 @@
 ---
 layout: layouts/component.njk
-title: Banner (updated)
+title: Alert
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/835
 eleventyNavigation:
-  key: Banner (updated)
+  key: Alert
   parent: Components
-  excerpt: "Use the banner component to display a prominent message and related actions to take."
+  excerpt: "Use the alert component to display a prominent message and related actions to take."
 ---
 
 <span class="govuk-caption-xl">[content]</span>
@@ -15,7 +15,7 @@ eleventyNavigation:
 
 {% tab "Overview" %}
 
-{% example "/examples/banner-new" %}
+{% example "/examples/alert" %}
 
 ## Overview
 
