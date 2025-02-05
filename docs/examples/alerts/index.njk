@@ -1,0 +1,117 @@
+---
+layout: layouts/example.njk
+title: Alert (example)
+figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type=design&node-id=66-5802&mode=design
+---
+{%- from "moj/components/alert/macro.njk" import mojAlert -%}
+
+{{ mojAlert({
+  type: "information",
+  text: "Content that informs you of a thing."
+  }) }}
+
+{{ mojAlert({
+  type: "success",
+  text: "That thing just successfully occurred."
+}) }}
+
+{{ mojAlert({
+  type: "warning",
+  text: "You should be aware of this thing."
+}) }}
+
+{{ mojAlert({
+  type: "error",
+  text: "Bad things happened."
+}) }}
+
+{{ mojAlert({
+  type: "information",
+  text: "Content that informs you of a thing. It really is so very informative, that's why it needs so much content and is really, exceedingly verbose."
+  })
+}}
+
+<h2>with headings</h2>
+
+{{ mojAlert({
+ type: "information",
+  heading: "You might like to know",
+  text: "Content that informs you of a thing."
+}) }}
+
+{{ mojAlert({
+ type: "succcess",
+  heading: "Woohoo!",
+  text: "That thing just successfully occurred."
+}) }}
+
+
+{{ mojAlert({
+  type: "warning",
+  heading: "Something's not quite right",
+  text: "You should be aware of this thing."
+}) }}
+
+{{ mojAlert({
+type: "error",
+heading: "Woah, hold up!",
+text: "Bad things happened."
+}) }}
+
+<h2>with headings level</h2>
+
+{{ mojAlert({
+ type: "information",
+ heading: "You might like to know",
+ headingLevel: 3,
+  text: "Content that informs you of a thing."
+}) }}
+
+<h2>Dismissible</h2>
+
+{{ mojAlert({
+  type: "information",
+  dismissible: true,
+  text: "Content that informs you of a thing."
+  }) }}
+
+{{ mojAlert({
+type: "success",
+dismissible: "yes",
+  text: "That thing just successfully occurred."
+}) }}
+
+{{ mojAlert({
+  type: "warning",
+  dismissible: "false",
+  text: "You should be aware of this thing."
+}) }}
+
+{{ mojAlert({
+  type: "error",
+  dismissible: false,
+  text: "Bad things happened."
+}) }}
+
+{{ mojAlert({
+  type: "information",
+  dismissible: true,
+  text: "Content that informs you of a thing. It really is so very informative, that's why it needs so much content and is really, exceedingly verbose."
+  })
+}}
+
+{{ mojAlert({
+  type: "information",
+  heading: "This contains information",
+  dismissible: true,
+  text: "Content that informs you of a thing. It really is so very informative, that's why it needs so much content and is really, exceedingly verbose."
+  })
+}}
+
+{{ mojAlert({
+  type: "information",
+  heading: "This contains information",
+  dismissible: true
+  })
+}}
+
