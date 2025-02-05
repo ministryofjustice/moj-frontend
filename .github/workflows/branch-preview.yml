@@ -26,7 +26,7 @@ jobs:
       - uses: aws-actions/amazon-ecr-login@v2
         id: login-ecr
       - run: |
-          envsubst < docker/nginx-preview.conf > docker/nginx-preview.conf
+          envsubst < docker/nginx-preview.conf > docker/nginx-preview.conf.tmp && mv docker/nginx-preview.conf.tmp docker/nginx-preview.conf
           docker build --target=preview -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker build --target=preview-express-app -t $REGISTRY/$REPOSITORY:express-$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
