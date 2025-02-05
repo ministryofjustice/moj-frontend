@@ -27,7 +27,7 @@ jobs:
         id: login-ecr
       - run: |
           docker build --target=preview -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-          docker build --target=express-app -t $REGISTRY/$REPOSITORY:express-$IMAGE_TAG .
+          docker build --target=preview-express-app -t $REGISTRY/$REPOSITORY:express-$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
           docker push $REGISTRY/$REPOSITORY:express-$IMAGE_TAG
           cat kubernetes-deploy-preview.tpl | envsubst > kubernetes-deploy-preview.yaml
