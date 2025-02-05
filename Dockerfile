@@ -64,6 +64,10 @@ COPY docker/htpasswd-preview /etc/nginx/.htpasswd
 COPY docker/nginx-preview.conf /etc/nginx/conf.d/default.conf
 COPY --from=preview-build /app/public /usr/share/nginx/html
 
+RUN apk add --no-cache gettext \
+    && envsubst '${BRANCH}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf \
+    && rm /etc/nginx/conf.d/default.conf.template
+
 FROM nginxinc/nginx-unprivileged:alpine AS production
 EXPOSE 3000
 COPY docker/nginx-production.conf /etc/nginx/conf.d/default.conf
