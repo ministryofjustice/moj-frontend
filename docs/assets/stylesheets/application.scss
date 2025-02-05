@@ -2,6 +2,7 @@ $moj-page-width: 1220px !default;
 $govuk-page-width: 1220px !default;
 $moj-assets-path: "../" !default;
 $govuk-assets-path: "../" !default;
+$govuk-suppressed-warnings: ("govuk-typography-scale-14");
 
 // GOV.UK Frontend
 @import "node_modules/govuk-frontend/dist/govuk/index";
