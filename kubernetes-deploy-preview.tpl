@@ -73,8 +73,6 @@ spec:
                 key: notify-token
         ports:
         - containerPort: 3001
-        securityContext:
-          runAsNonRoot: false
 ---
 apiVersion: v1
 kind: Service

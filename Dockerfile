@@ -48,7 +48,7 @@ RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 RUN git clone git@github.com:ministryofjustice/moj-frontend.git .
 
 RUN npm install
-RUN ENV="production" npm run build:docs 
+RUN ENV="production" npm run build:docs
 
 RUN rm /root/.ssh/id_rsa
 
@@ -71,5 +71,10 @@ COPY --from=production-build /app/public /usr/share/nginx/html
 
 FROM base AS express-app
 COPY . .
+
+# run express app as a non root user
+RUN useradd -m nonrootuser
+USER nonrootuser
+
 EXPOSE 3001
 CMD ["node", "app.js"]
