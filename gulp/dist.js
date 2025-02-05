@@ -35,7 +35,8 @@ gulp.task('dist:css', () => {
     .pipe(
       sass({
         loadPaths: ['./'],
-        quietDeps: true
+        quietDeps: true,
+        silenceDeprecations: ['import']
       })
     )
     .pipe(postcss([autoprefixer, cssnano]))

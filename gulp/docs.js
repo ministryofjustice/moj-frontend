@@ -50,8 +50,9 @@ gulp.task('docs:styles', () => {
     .pipe(
       sass({
         loadPaths: ['./'],
-        style: process.env.ENV === 'dev' ? 'expanded' : 'compressed',
-        quietDeps: true
+        quietDeps: true,
+        silenceDeprecations: ['import'],
+        style: process.env.ENV === 'dev' ? 'expanded' : 'compressed'
       })
     )
     .pipe(gulp.dest('public/assets/stylesheets/'))

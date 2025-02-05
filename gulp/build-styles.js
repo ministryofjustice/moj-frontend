@@ -14,7 +14,8 @@ gulp.task('build:css', () => {
     .pipe(
       sass({
         loadPaths: ['./'],
-        quietDeps: true
+        quietDeps: true,
+        silenceDeprecations: ['import']
       })
     )
     .pipe(postcss([autoprefixer, cssnano]))
