@@ -1,13 +1,7 @@
 const gulp = require('gulp')
-const { createGulpEsbuild } = require('gulp-esbuild')
-const rev = require('gulp-rev')
+const gulpEsbuild = require('gulp-esbuild')
 const gulpSass = require('gulp-sass')
 const dartSass = require('sass')
-
-const esbuild = createGulpEsbuild({
-  incremental: false, // enables the esbuild"s incremental build
-  piping: true // enables piping
-})
 
 const sass = gulpSass(dartSass)
 
@@ -68,17 +62,20 @@ gulp.task('docs:scripts', () => {
   return gulp
     .src('docs/assets/javascript/application.mjs')
     .pipe(
-      esbuild({
-        outfile: 'application.js',
-        target: 'es6',
+      gulpEsbuild({
+        bundle: true,
+        loader: { '.mjs': 'js' },
         minify: process.env.ENV !== 'dev',
-        bundle: true
+        outfile: 'application.js',
+        target: 'es6'
       })
     )
     .pipe(gulp.dest('public/assets/javascript'))
 })
 
-gulp.task('docs:revision', () => {
+gulp.task('docs:revision', async () => {
+  const { default: rev } = await import('gulp-rev')
+
   return gulp
     .src(
       [
