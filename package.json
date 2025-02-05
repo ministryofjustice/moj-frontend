@@ -31,9 +31,6 @@
     "start:server": "nodemon app.js",
     "dev": "concurrently \"npm run start:eleventy\" \"npm run start:server\"",
     "test:middleware": "jest middleware/",
-    "cypress": "cypress open",
-    "cypress:headless": "cypress run",
-    "start:dev-and-test": "concurrently --kill-others \"npm run dev\" \"npm run cypress:headless\"",
     "dev:docker:preview:build": "docker-compose -f docker-compose.preview.yml build --no-cache",
     "dev:docker:preview:up": "docker-compose -f docker-compose.preview.yml up --build",
     "dev:docker:preview:down": "docker-compose -f docker-compose.preview.yml down"
@@ -103,8 +100,6 @@
     "commitizen": "^4.2.5",
     "concurrently": "^9.1.2",
     "cssnano": "^6.0.0",
-    "cypress": "^14.0.0",
-    "cypress-file-upload": "^5.0.8",
     "cz-conventional-changelog": "^3.3.0",
     "dayjs": "^1.11.13",
     "del": "^7.0.0",
