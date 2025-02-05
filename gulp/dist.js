@@ -3,8 +3,11 @@ const cssnano = require('cssnano')
 const gulp = require('gulp')
 const postcss = require('gulp-postcss')
 const rename = require('gulp-rename')
-const sass = require('gulp-sass')(require('sass'))
+const gulpSass = require('gulp-sass')
 const uglify = require('gulp-uglify')
+const dartSass = require('sass-embedded')
+
+const sass = gulpSass(dartSass)
 
 gulp.task('dist:clean', async () => {
   const { deleteSync } = await import('del')

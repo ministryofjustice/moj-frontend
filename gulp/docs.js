@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const gulpEsbuild = require('gulp-esbuild')
 const gulpSass = require('gulp-sass')
-const dartSass = require('sass')
+const dartSass = require('sass-embedded')
 
 const sass = gulpSass(dartSass)
 
