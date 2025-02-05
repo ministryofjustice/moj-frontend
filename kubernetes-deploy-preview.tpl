@@ -77,6 +77,20 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: express-app-${BRANCH}
+  labels:
+    app: express-app-${BRANCH}
+spec:
+  ports:
+  - port: 3001
+    name: express
+    targetPort: 3001
+  selector:
+    app: moj-frontend-${BRANCH}
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: moj-frontend-service-${BRANCH}
   labels:
     app: moj-frontend-service-${BRANCH}
@@ -85,9 +99,6 @@ spec:
   - port: 3000
     name: http
     targetPort: 3000
-  - port: 3001
-    name: express
-    targetPort: 3001
   selector:
     app: moj-frontend-${BRANCH}
 ---
