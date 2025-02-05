@@ -5,7 +5,7 @@ redirect_from: /community/help-and-feedback
 eleventyNavigation:
   key: Get help
   parent: Using the design system
-  order: 40
+  order: 50
 ---
 
 <span class="govuk-caption-xl">The MoJ Design System team supports users of the MoJ Design System. Contact us to ask for help.</span>
