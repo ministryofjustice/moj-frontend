@@ -34,42 +34,42 @@ spec:
           - name: GITHUB_API_URL
             valueFrom:
               secretKeyRef:
-                name: github-secrets
+                name: github-api-url
                 key: github-api-url
           - name: GITHUB_API_TOKEN
             valueFrom:
               secretKeyRef:
-                name: github-secrets
+                name: github-api-token
                 key: github-api-token
           - name: GITHUB_REPO_OWNER
             valueFrom:
               secretKeyRef:
-                name: github-secrets
+                name: github-repo-owner
                 key: github-repo-owner
           - name: GITHUB_REPO_NAME
             valueFrom:
               secretKeyRef:
-                name: github-secrets
+                name: github-repo-name
                 key: github-repo-name
           - name: NOTIFY_PR_TEMPLATE
             valueFrom:
               secretKeyRef:
-                name: notify-secrets
+                name: notify-pr-template
                 key: notify-pr-template
           - name: NOTIFY_SUBMISSION_TEMPLATE
             valueFrom:
               secretKeyRef:
-                name: notify-secrets
+                name: notify-submission-template
                 key: notify-submission-template
           - name: NOTIFY_EMAIL
             valueFrom:
               secretKeyRef:
-                name: notify-secrets
+                name: notify-email
                 key: notify-email
           - name: NOTIFY_TOKEN
             valueFrom:
               secretKeyRef:
-                name: notify-secrets
+                name: notify-token
                 key: notify-token
         ports:
         - containerPort: 3001
