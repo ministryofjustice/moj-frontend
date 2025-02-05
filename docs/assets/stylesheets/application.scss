@@ -5,7 +5,7 @@ $govuk-assets-path: "../" !default;
 $govuk-suppressed-warnings: ("govuk-typography-scale-14");
 
 // GOV.UK Frontend
-@import "node_modules/govuk-frontend/dist/govuk/index";
+@import "node_modules/govuk-frontend/dist/govuk";
 
 // MOJ Frontend
 @import "src/moj/all";

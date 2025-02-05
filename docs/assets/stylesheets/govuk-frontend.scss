@@ -4,4 +4,4 @@ $govuk-global-styles: false;
 $govuk-suppressed-warnings: ("govuk-typography-scale-14");
 
 // GOV.UK Frontend
-@import "node_modules/govuk-frontend/dist/govuk/index";
+@import "node_modules/govuk-frontend/dist/govuk";
