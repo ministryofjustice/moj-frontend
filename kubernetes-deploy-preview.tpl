@@ -26,6 +26,8 @@ spec:
               secretKeyRef:
                 name: basic-auth
                 key: password
+          - name: BRANCH
+            value: ${BRANCH}
         ports:
         - containerPort: 3000
       - name: express-app
@@ -71,6 +73,8 @@ spec:
               secretKeyRef:
                 name: notify-token
                 key: notify-token
+          - name: BRANCH
+            value: ${BRANCH}
         ports:
         - containerPort: 3001
 ---
