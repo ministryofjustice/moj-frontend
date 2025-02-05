@@ -4,13 +4,13 @@
     {% set tierClass = "" %}
     
     {% if tier == "Reviewed" %}
-      {% set tierClass = "app-tier__content--reviewed" %}
+      {% set tierClass = "govuk-tag--green" %}
     {% elif tier == "Due for review" %}
-      {% set tierClass = "app-tier__content--due-for-review" %}
+      {% set tierClass = "govuk-tag--orange" %}
     {% elif tier == "Community" %}
-      {% set tierClass = "app-tier__content--community" %}
+      {% set tierClass = "govuk-tag--light-blue" %}
     {% elif tier == "Archived" %}
-      {% set tierClass = "app-tier__content--archived" %}
+      {% set tierClass = "govuk-tag--grey" %}
     {% endif %}
 
     <div class="app-tier">
