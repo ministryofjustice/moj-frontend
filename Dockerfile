@@ -73,8 +73,8 @@ FROM base AS express-app
 COPY . .
 
 # run express app as a non root user
-RUN useradd -m nonrootuser
-USER nonrootuser
+RUN useradd -u 1001 -m nonrootuser
+USER 1001
 
 EXPOSE 3001
 CMD ["node", "app.js"]
