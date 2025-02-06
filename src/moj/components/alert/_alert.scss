@@ -76,11 +76,21 @@ $moj-colour-orange: #eb611c;
 .moj-alert--information {
   border-color: $govuk-brand-colour;
   color: $govuk-brand-colour;
+
+  .moj-alert__action,
+  .moj-alert__content a {
+    @include govuk-link-style-default;
+  }
 }
 
 .moj-alert--success {
   border-color: govuk-colour("green");
   color: govuk-colour("green");
+
+  .moj-alert__action,
+  .moj-alert__content a {
+    @include govuk-link-style-success;
+  }
 }
 
 .moj-alert--warning {
@@ -91,4 +101,9 @@ $moj-colour-orange: #eb611c;
 .moj-alert--error {
   border-color: govuk-colour("red");
   color: govuk-colour("red");
+
+  .moj-alert__action,
+  .moj-alert__content a {
+    @include govuk-link-style-error;
+  }
 }
