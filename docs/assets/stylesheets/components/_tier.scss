@@ -1,6 +1,8 @@
-
 .app-tier {
-  background-color: #fff;
-  padding: 10px 20px;
+  background-color: govuk-colour("white");
+  padding: govuk-spacing(2) govuk-spacing(4);
   border-bottom: 1px solid $govuk-border-colour;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
