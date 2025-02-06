@@ -4,8 +4,7 @@ title: Badge
 type: component
 tier: "Reviewed"
 tierMessage: "Created: Aug 2024"
-tierLink: "Learn more about 'reviewed' components."
-tierUrl: "#"
+tierLink: true
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/687
 eleventyNavigation:
   parent: Components
