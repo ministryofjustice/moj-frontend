@@ -5,7 +5,7 @@ const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 const nunjucks = require('nunjucks')
 const { createClient } = require('redis')
-const { APP_PORT, REDIS_URL } = require('./config')
+const { APP_PORT, REDIS_URL, REDIS_AUTH_TOKEN } = require('./config')
 
 const addComponentRoutes = require('./routes/add-component')
 
@@ -23,12 +23,12 @@ const sessionOptions = {
 console.log('ENV:', app.get('env'))
 console.log('REDIS:', REDIS_URL)
 
-if (!isDev) {
-  console.log('Connecting to Redis: ', REDIS_URL)
+if (!!isDev) {
+  console.log('Connecting to Redis: ', 'master.cp-35a69c78e47785b1.iwfvzo.euw2.cache.amazonaws.com')
 
   // Set up Redis (for sessions)
   const redisClient = createClient({
-    url: REDIS_URL,
+    url: `${REDIS_AUTH_TOKEN}@${REDIS_URL}`,
     legacyMode: true
   })
 

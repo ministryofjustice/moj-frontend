@@ -9,6 +9,7 @@ const config = {
   NOTIFY_TOKEN: process.env.NOTIFY_TOKEN || 'your-default-repo-token',
   APP_PORT: process.env.APP_PORT || 3001,
   REDIS_URL: process.env.REDIS_URL || 'redis://localhost:6379',
+  REDIS_AUTH_TOKEN: process.env.REDIS_AUTH_TOKEN || 'your-redis-token',
   ENV: process.env.ENV || 'development',
   COMPONENT_FORM_PAGES: [
     'component-details',
