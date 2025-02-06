@@ -32,8 +32,13 @@ $moj-colour-orange: #eb611c;
 .moj-alert__content {
   @include govuk-font($size: 19);
   display: block;
+  padding-top: 5px;
   overflow: hidden;
   color: govuk-colour("black");
+
+  @include govuk-media-query($from: tablet) {
+    padding-top: 2px;
+  }
 }
 
 .moj-alert__action {
@@ -54,15 +59,13 @@ $moj-colour-orange: #eb611c;
   line-height: 30px;
 }
 
-.moj-alert__content:not(:has(:is(h2, h3, h4))) {
-  padding-top: 5px;
+.moj-alert--with-heading .moj-alert__content {
+  padding-top: 0;
 
   @include govuk-media-query($from: tablet) {
-    padding-top: 2px;
+    padding-top: 0;
   }
 }
-
-/* .moj-alert__content h2:last-child, */
 
 .moj-alert__content *:last-child {
   margin-bottom: 0;
