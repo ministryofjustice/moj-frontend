@@ -29,7 +29,7 @@ gulp.task('dist:javascript', () => {
     .pipe(gulp.dest('dist'))
 })
 
-gulp.task('dist:css', () => {
+gulp.task('dist:css', (done) => {
   return gulp
     .src('gulp/dist-scss/*.scss')
     .pipe(
@@ -37,7 +37,7 @@ gulp.task('dist:css', () => {
         loadPaths: ['./'],
         quietDeps: true,
         silenceDeprecations: ['import']
-      })
+      }).on('error', done)
     )
     .pipe(postcss([autoprefixer, cssnano]))
     .pipe(
