@@ -75,6 +75,18 @@ spec:
                 key: notify-token
           - name: BRANCH
             value: ${BRANCH}
+          - name: REDIS_URL
+            valueFrom:
+              secretKeyRef:
+                name: moj-frontend-ec-cluster-output
+                key: primary_endpoint_address
+          - name: REDIS_AUTH_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: moj-frontend-ec-cluster-output
+                key: auth_token
+          - name: REDIS_TLS_ENABLED
+            value: "true"
         ports:
         - containerPort: 3001
 ---

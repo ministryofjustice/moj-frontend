@@ -21,6 +21,7 @@ const sessionOptions = {
 }
 
 console.log('ENV:', app.get('env'))
+console.log('REDIS:', REDIS_URL)
 
 if (!isDev) {
   console.log('Connecting to Redis: ', REDIS_URL)
