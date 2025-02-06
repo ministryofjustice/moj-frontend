@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 const {
   GITHUB_API_URL,
-  GITHUB_TOKEN,
+  GITHUB_API_TOKEN,
   GITHUB_REPO_OWNER,
   GITHUB_REPO_NAME
 } = require('../config')
@@ -29,7 +29,7 @@ const getMainBranchSha = async () => {
   const response = await fetch(
     `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/git/ref/heads/main`,
     {
-      headers: { Authorization: `Bearer ${GITHUB_TOKEN}` }
+      headers: { Authorization: `Bearer ${GITHUB_API_TOKEN}` }
     }
   )
   if (!response.ok) {
@@ -50,7 +50,7 @@ const createBranch = async (baseSha, branchName) => {
     {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        Authorization: `Bearer ${GITHUB_API_TOKEN}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ ref: `refs/heads/${branchName}`, sha: baseSha })
@@ -67,7 +67,7 @@ const addFileToBranch = async (filePath, fileContent, branchName) => {
     {
       method: 'PUT',
       headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        Authorization: `Bearer ${GITHUB_API_TOKEN}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -136,7 +136,7 @@ const createPullRequest = async (branchName, title, description = '') => {
     const response = await fetch(prEndpoint, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
+        Authorization: `Bearer ${GITHUB_API_TOKEN}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(prData)

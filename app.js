@@ -20,6 +20,8 @@ const sessionOptions = {
   cookie: { secure: false, maxAge: 360000 }
 }
 
+console.log('ENV:', app.get('env'))
+
 if (!isDev) {
   console.log('Connecting to Redis: ', REDIS_URL)
 
