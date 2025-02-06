@@ -40,7 +40,7 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 }) }}
 
 {{ mojAlert({
- type: "succcess",
+ type: "success",
   heading: "Woohoo!",
   text: "That thing just successfully occurred."
 }) }}
@@ -58,7 +58,7 @@ heading: "Woah, hold up!",
 text: "Bad things happened."
 }) }}
 
-<h2>with headings level</h2>
+<h2>with headings level 3</h2>
 
 {{ mojAlert({
  type: "information",
@@ -66,6 +66,26 @@ text: "Bad things happened."
  headingLevel: 3,
   text: "Content that informs you of a thing."
 }) }}
+
+<h2>attempt to pass just a heading</h2>
+
+{{ mojAlert({
+  type: "information",
+  heading: "This contains information",
+  dismissible: true
+  })
+}}
+
+<h2>attempt to use h1</h2>
+
+{{ mojAlert({
+  type: "information",
+  heading: "This contains information",
+  headingLevel: 1,
+  dismissible: true,
+  text: "Content that informs you of a thing. It really is so very informative, that's why it needs so much content and is really, exceedingly verbose."
+  })
+}}
 
 <h2>Dismissible</h2>
 
@@ -108,10 +128,42 @@ dismissible: "yes",
   })
 }}
 
+
+<h2>with headings and links</h2>
+
+{{ mojAlert({
+ type: "information",
+  heading: "You might like to know",
+  dismissible: true,
+  html: 'Content that informs you of a thing. <a href="#">More information</a>'
+}) }}
+
+{{ mojAlert({
+ type: "success",
+  heading: "Woohoo!",
+  dismissible: true,
+  html: 'That thing just successfully occurred. <a href="#">Celebrate here</a>'
+}) }}
+
+
+{{ mojAlert({
+  type: "warning",
+  heading: "Something's not quite right",
+  dismissible: true,
+  html: 'You should be aware of this thing. <a href="#">More information</a>'
+}) }}
+
+{{ mojAlert({
+  type: "error",
+  heading: "Woah, hold up!",
+  dismissible: true,
+  html: 'Bad things happened. <a href="#">Contact us</a>'
+}) }}
+
+<h2>Kitchen sink</h2>
 {{ mojAlert({
   type: "information",
   heading: "This contains information",
-  dismissible: true
-  })
-}}
-
+  dismissible: true,
+  html: '<p>Content that informs you of a thing. It really is so very informative, that is why it needs so much content and is really, exceedingly verbose.</p><ul><li>this one</li><li>has a list</li><li>of things</li></ul><p>And a final paragraph for good measure <a href="#">with a link too</a>.'
+}) }}
