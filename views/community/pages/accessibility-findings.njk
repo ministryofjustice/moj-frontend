@@ -1,0 +1,51 @@
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% extends "base.njk" %}
+{% block content %}
+  <div class="app-layout__content">
+    {% if errorList %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form method="post" action="{{ submitUrl }}">
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1>Accessibility findings</h1>
+      {{ govukRadios({
+        name: "hasComponentBeenTestedForAccessibility",
+        id: "has-component-been-tested-for-accessibility",
+        hint: {
+          text: "This can be testing carried out as part of an accessibility audit or the component being reviewed by an accessibility specialist."
+        },
+        fieldset: {
+          legend: {
+            text: "Has component been tested for accessibility purposes?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ],
+        errorMessage: formErrors.hasComponentBeenTestedForAccessibility,
+        value: formData.hasComponentBeenTestedForAccessibility
+      }) }}
+
+      <div class="moj-button-action">
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      </div>
+    </form>
+  </div>
+
+{% endblock %}

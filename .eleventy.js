@@ -2,6 +2,7 @@ const { execSync } = require('child_process')
 const fs = require('fs')
 const path = require('path')
 
+const cheerio = require('cheerio')
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
 const matter = require('gray-matter')
 const hljs = require('highlight.js')
@@ -108,6 +109,83 @@ module.exports = function (eleventyConfig) {
       htmlCode,
       jsCode
     })
+  })
+
+  eleventyConfig.addShortcode('form', function (file, variables = '') {
+    try {
+      // Read the file directly
+      const filePath = path.join(__dirname, 'docs', file)
+      const fileContent = fs.readFileSync(filePath, 'utf8').trim()
+
+      // Parse front matter and extract Nunjucks code
+      const { data, content: nunjucksCode } = matter(fileContent)
+
+      let parsedVariables = {}
+
+      if (variables !== '') {
+        // Turn variables into an object
+        const fixedVariables = variables
+          .replace(/'/g, '"')
+          .replace(/(\w+):/g, '"$1":')
+
+        parsedVariables = JSON.parse(fixedVariables)
+      }
+
+      const context = { ...data, ...parsedVariables }
+
+      // Render the Nunjucks code as HTML (renderString directly processes content)
+      const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode.trim(), context)
+
+      const htmlCode = beautifyHTML(rawHtmlCode.trim(), {
+        indent_size: 2,
+        end_with_newline: true,
+        max_preserve_newlines: 1,
+        unformatted: ['code', 'pre', 'em', 'strong']
+      })
+
+      return htmlCode
+    } catch (error) {
+      console.error('Error in form shortcode:', error)
+      return `<div>Error loading file: ${file}</div>`
+    }
+  })
+
+  eleventyConfig.addShortcode('contentsList', function (itemsJson = '') {
+    try {
+      const items = JSON.parse(itemsJson)
+
+      return `
+      <aside class="part-navigation-container" role="complementary">
+        <nav class="gem-c-contents-list govuk-!-margin-bottom-4">
+          <h2 class="gem-c-contents-list__title">Contents</h2>
+          <ol class="gem-c-contents-list__list">
+            ${items
+              .map((item) => {
+                if (item.href) {
+                  return `
+                    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+                      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+                      <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="${item.href}">${item.text}</a>
+                    </li>
+                  `
+                } else {
+                  return `
+                    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
+                      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+                      ${item.text}
+                    </li>
+                  `
+                }
+              })
+              .join('')}
+          </ol>
+        </nav>
+      </aside>
+    `
+    } catch (error) {
+      console.error('Error in form shortcode:', error)
+      return `<div>Error loading list: ${list}</div>`
+    }
   })
 
   eleventyConfig.addShortcode(
@@ -297,6 +375,51 @@ module.exports = function (eleventyConfig) {
       return `/${revision || filepath}`
     }
     return `/${filepath}`
+  })
+
+  const createLayoutFromHTML = (sourceFile, destinationFile) => {
+    try {
+      const htmlContent = fs.readFileSync(sourceFile, 'utf8')
+
+      const $ = cheerio.load(htmlContent)
+      const nunjucksBlock = `
+      {% block content %}
+          {{ content | safe }}
+      {% endblock %}
+            `.trim()
+      $('#main-content').html(nunjucksBlock)
+
+      const modifiedContent = beautifyHTML($.html(), {
+        indent_size: 2,
+        end_with_newline: true,
+        max_preserve_newlines: 1,
+        unformatted: ['code', 'pre', 'em', 'strong']
+      })
+
+      fs.writeFileSync(destinationFile, modifiedContent)
+      console.log(`Generated base.njk at ${destinationFile}`)
+    } catch (error) {
+      console.error('Error during base.njk generation:', error)
+    }
+  }
+
+  // Create base.njk for community form based on the add-new-component page (to use the correct navigation)
+  eleventyConfig.on('afterBuild', () => {
+    // Add new component layout
+    const componentSourceFile = path.join(
+      __dirname,
+      'public/get-involved/add-new-component/index.html'
+    )
+    const componentDestinationFile = path.join(
+      __dirname,
+      'views/community/pages/base.njk'
+    )
+    createLayoutFromHTML(componentSourceFile, componentDestinationFile)
+
+    // Common layout
+    const sourceFile = path.join(__dirname, 'public/index.html')
+    const destinationFile = path.join(__dirname, 'views/common/base.njk')
+    createLayoutFromHTML(sourceFile, destinationFile)
   })
 
   // Rebuild when a change is made to a component template file

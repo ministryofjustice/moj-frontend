@@ -13,6 +13,7 @@ COPY docs docs
 COPY src src
 COPY package package
 COPY .eleventy.js .eleventy.js
+COPY .eleventyignore .eleventyignore
 COPY gulp gulp
 COPY gulpfile.js gulpfile.js
 COPY README.md README.md
@@ -28,6 +29,7 @@ COPY docs docs
 COPY src src
 COPY package package
 COPY .eleventy.js .eleventy.js
+COPY .eleventyignore .eleventyignore
 COPY gulp gulp
 COPY gulpfile.js gulpfile.js
 COPY README.md README.md
@@ -45,7 +47,7 @@ RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 
 RUN git clone git@github.com:ministryofjustice/moj-frontend.git .
 
-run npm install
+RUN npm install
 RUN ENV="production" npm run build:docs
 
 RUN rm /root/.ssh/id_rsa
@@ -66,3 +68,14 @@ FROM nginxinc/nginx-unprivileged:alpine AS production
 EXPOSE 3000
 COPY docker/nginx-production.conf /etc/nginx/conf.d/default.conf
 COPY --from=production-build /app/public /usr/share/nginx/html
+
+FROM base AS preview-express-app
+COPY --from=preview-build /app /app
+COPY . .
+
+# run express app as a non root user
+RUN useradd -u 1001 -m nonrootuser
+USER 1001
+
+EXPOSE 3001
+CMD ["node", "app.js"]
