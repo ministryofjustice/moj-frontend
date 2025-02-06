@@ -28,8 +28,11 @@ if (!!isDev) {
 
   // Set up Redis (for sessions)
   const redisClient = createClient({
-    url: `${REDIS_AUTH_TOKEN}@${REDIS_URL}`,
-    legacyMode: true
+    socket: {
+      host: REDIS_URL,
+      tls: true,
+    },
+    password: REDIS_AUTH_TOKEN
   })
 
   redisClient.connect().catch(console.error)
