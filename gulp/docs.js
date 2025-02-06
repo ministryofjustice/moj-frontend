@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const gulpEsbuild = require('gulp-esbuild')
 const gulpSass = require('gulp-sass')
-const dartSass = require('sass')
+const dartSass = require('sass-embedded')
 
 const sass = gulpSass(dartSass)
 
@@ -50,8 +50,9 @@ gulp.task('docs:styles', () => {
     .pipe(
       sass({
         loadPaths: ['./'],
-        style: process.env.ENV === 'dev' ? 'expanded' : 'compressed',
-        quietDeps: true
+        quietDeps: true,
+        silenceDeprecations: ['import'],
+        style: process.env.ENV === 'dev' ? 'expanded' : 'compressed'
       })
     )
     .pipe(gulp.dest('public/assets/stylesheets/'))
