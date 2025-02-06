@@ -4,7 +4,7 @@ const gulp = require('gulp')
 const postcss = require('gulp-postcss')
 const rename = require('gulp-rename')
 const gulpSass = require('gulp-sass')
-const dartSass = require('sass')
+const dartSass = require('sass-embedded')
 
 const sass = gulpSass(dartSass)
 
@@ -14,7 +14,8 @@ gulp.task('build:css', () => {
     .pipe(
       sass({
         loadPaths: ['./'],
-        quietDeps: true
+        quietDeps: true,
+        silenceDeprecations: ['import']
       })
     )
     .pipe(postcss([autoprefixer, cssnano]))
