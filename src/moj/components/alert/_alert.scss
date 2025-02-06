@@ -1,4 +1,25 @@
-$moj-colour-orange: #eb611c;
+$moj-warning-colour: #eb611c;
+
+@mixin moj-link-style-warning {
+  &:link,
+  &:visited {
+    color: $moj-warning-colour;
+  }
+
+  &:hover {
+    color: scale-color($moj-warning-colour, $lightness: -30%);
+  }
+
+  &:active {
+    color: $moj-warning-colour;
+  }
+
+  // When focussed, the text colour needs to be darker to ensure that colour
+  // contrast is still acceptable
+  &:focus {
+    color: $govuk-focus-text-colour;
+  }
+}
 
 .moj-alert {
   display: grid;
@@ -42,14 +63,16 @@ $moj-colour-orange: #eb611c;
 }
 
 .moj-alert__action {
-  @include govuk-font($size: 19);
   grid-area: action;
-  margin-bottom: 0;
 
   @include govuk-media-query($from: tablet) {
     justify-self: right;
-    padding-left: govuk-spacing(7);
   }
+}
+
+.moj-alert__action a {
+  @include govuk-font($size: 19);
+  margin-bottom: 0;
 }
 
 .moj-alert__content h2,
@@ -79,6 +102,7 @@ $moj-colour-orange: #eb611c;
 
   .moj-alert__action,
   .moj-alert__content a {
+    @include govuk-link-common;
     @include govuk-link-style-default;
   }
 }
@@ -87,23 +111,31 @@ $moj-colour-orange: #eb611c;
   border-color: govuk-colour("green");
   color: govuk-colour("green");
 
-  .moj-alert__action,
+  .moj-alert__action a,
   .moj-alert__content a {
+    @include govuk-link-common;
     @include govuk-link-style-success;
   }
 }
 
 .moj-alert--warning {
-  border-color: $moj-colour-orange;
-  color: $moj-colour-orange;
+  border-color: $moj-warning-colour;
+  color: $moj-warning-colour;
+
+  .moj-alert__action a,
+  .moj-alert__content a {
+    @include govuk-link-common;
+    @include moj-link-style-warning;
+  }
 }
 
 .moj-alert--error {
   border-color: govuk-colour("red");
   color: govuk-colour("red");
 
-  .moj-alert__action,
+  .moj-alert__action a,
   .moj-alert__content a {
+    @include govuk-link-common;
     @include govuk-link-style-error;
   }
 }
