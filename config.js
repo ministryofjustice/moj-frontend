@@ -1,6 +1,6 @@
 const config = {
   GITHUB_API_URL: process.env.GITHUB_API_URL || 'https://api.github.com',
-  GITHUB_TOKEN: process.env.GITHUB_TOKEN || 'your-default-github-token',
+  GITHUB_API_TOKEN: process.env.GITHUB_API_TOKEN || 'your-default-github-token',
   GITHUB_REPO_OWNER: process.env.GITHUB_REPO_OWNER || 'your-default-repo-owner',
   GITHUB_REPO_NAME: process.env.GITHUB_REPO_NAME || 'your-default-repo-name',
   NOTIFY_PR_TEMPLATE: process.env.NOTIFY_PR_TEMPLATE || '',
