@@ -5,6 +5,7 @@ const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 const nunjucks = require('nunjucks')
 const { createClient } = require('redis')
+const IORedis = require('ioredis')
 const { APP_PORT, REDIS_URL, REDIS_AUTH_TOKEN } = require('./config')
 
 const addComponentRoutes = require('./routes/add-component')
@@ -27,18 +28,26 @@ if (!!isDev) {
   console.log('Connecting to Redis: ', 'master.cp-35a69c78e47785b1.iwfvzo.euw2.cache.amazonaws.com')
 
   // Set up Redis (for sessions)
-  const redisClient = createClient({
-    url: `rediss://${REDIS_URL}:6379`,
-    password: REDIS_AUTH_TOKEN,
-    // legacyMode: true,
-    socket: {
-      reconnectStrategy: (attempts) => {
-        const nextDelay = Math.min(2 ** attempts * 20, 30000)
-        console.log(`Retry Redis connection attempt: ${attempts}, next attempt in: ${nextDelay}ms`)
-        return nextDelay
-      },
-    },
+  const redisClient = new IORedis({
+    host: process.env.REDIS_URL || 'redis',
+    // Settings for AWS Elasticache.
+    ...(process.env.REDIS_AUTH_TOKEN && {
+      password: process.env.REDIS_AUTH_TOKEN,
+      tls: {},
+    }),
   })
+  // const redisClient = createClient({
+  //   url: `rediss://${REDIS_URL}:6379`,
+  //   password: REDIS_AUTH_TOKEN,
+  //   // legacyMode: true,
+  //   socket: {
+  //     reconnectStrategy: (attempts) => {
+  //       const nextDelay = Math.min(2 ** attempts * 20, 30000)
+  //       console.log(`Retry Redis connection attempt: ${attempts}, next attempt in: ${nextDelay}ms`)
+  //       return nextDelay
+  //     },
+  //   },
+  // })
 
   redisClient.on('error', (err) => console.error('Redis Client Error', err));
 
