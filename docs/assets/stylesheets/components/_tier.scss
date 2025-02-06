@@ -5,4 +5,13 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+  @include govuk-media-query($until: desktop) {
+    position: relative;
+  }
+  p {
+    @include govuk-font($size: 16, $line-height: 20px);
+    @include govuk-media-query($until: desktop) {
+      @include govuk-font($size: 14, $line-height: 16px);
+    }
+  }
 }
