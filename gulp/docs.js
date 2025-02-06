@@ -59,7 +59,7 @@ gulp.task('docs:styles', (done) => {
 })
 
 // Bundle the docs site javascript
-gulp.task('docs:scripts', () => {
+gulp.task('docs:scripts', (done) => {
   return gulp
     .src('docs/assets/javascript/application.mjs')
     .pipe(
@@ -69,7 +69,7 @@ gulp.task('docs:scripts', () => {
         minify: process.env.ENV !== 'dev',
         outfile: 'application.js',
         target: 'es6'
-      })
+      }).on('error', done)
     )
     .pipe(gulp.dest('public/assets/javascript'))
 })
