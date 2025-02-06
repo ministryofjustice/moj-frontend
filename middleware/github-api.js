@@ -35,9 +35,9 @@ const getMainBranchSha = async () => {
   if (!response.ok) {
     const errorText = await response.text()
     console.error(
-      `Failed to fetch main branch: ${response.status} - ${response.statusText}`
+      `[GITHUB] Failed to fetch main branch: ${response.status} - ${response.statusText}`
     )
-    console.error(`Error details: ${errorText}`)
+    console.error(`[GITHUB] Error details: ${errorText}`)
     throw new Error(`Failed to fetch main branch: ${response.statusText}`)
   }
   const mainBranch = await response.json()
@@ -78,12 +78,13 @@ const addFileToBranch = async (filePath, fileContent, branchName) => {
     }
   )
   if (!response.ok) {
-    console.error(`Failed to add file ${filePath}: ${response.statusText}`)
+    console.error(`[GITHUB] Failed to add file ${filePath}: ${response.statusText}`)
     throw new Error(`Failed to add file ${filePath}: ${response.statusText}`)
   }
 }
 
 const pushToGitHub = async (sessionData) => {
+  console.log('[GITHUB] Start pushing to Github')
   try {
     const submissionData = {}
     Object.keys(sessionData).forEach((key) => {
@@ -110,14 +111,14 @@ const pushToGitHub = async (sessionData) => {
       const fileContent = filePath.endsWith('.md')
         ? Buffer.from(content).toString('base64')
         : content?.buffer ||
-          Buffer.from(JSON.stringify(content, null, 2)).toString('base64')
+        Buffer.from(JSON.stringify(content, null, 2)).toString('base64')
       await addFileToBranch(filePath, fileContent, branchName)
     }
 
-    console.log(`Branch ${branchName} created and files added successfully.`)
+    console.log(`[GITHUB] Branch ${branchName} created and files added successfully.`)
     return branchName
   } catch (error) {
-    console.error('Error interacting with GitHub API:', error?.message)
+    console.error('[GITHUB] Error interacting with GitHub API:', error?.message)
     throw error
   }
 }
@@ -144,17 +145,17 @@ const createPullRequest = async (branchName, title, description = '') => {
     if (!response.ok) {
       const errorText = await response.text()
       console.error(
-        `Failed to create pull request: ${response.status} - ${response.statusText}`
+        `[GITHUB] Failed to create pull request: ${response.status} - ${response.statusText}`
       )
-      console.error(`Error details: ${errorText}`)
+      console.error(`[GITHUB] Error details: ${errorText}`)
       throw new Error('Failed to create pull request.')
     }
 
     const pr = await response.json()
-    console.log(`Pull request created: ${pr.html_url}`)
+    console.log(`[GITHUB] Pull request created: ${pr.html_url}`)
     return pr.html_url
   } catch (error) {
-    console.error('Error creating pull request:', error.message)
+    console.error('[GITHUB] Error creating pull request:', error.message)
     throw error
   }
 }

@@ -21,6 +21,8 @@ const sessionOptions = {
 }
 
 if (!isDev) {
+  console.log('Connecting to Redis: ', REDIS_URL)
+
   // Set up Redis (for sessions)
   const redisClient = createClient({
     url: REDIS_URL,

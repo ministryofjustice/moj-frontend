@@ -52,8 +52,6 @@ const validateFormData = (req, res, next) => {
   const schema = require(`../schema/${schemaName}.schema`)
   const { error, value } = schema.validate(req.body, { abortEarly: false })
 
-  console.log('body', req.body)
-
   if (error) {
     console.error('Validation error:', error.details)
     const formErrors = Object.keys(req.body).reduce((acc, key) => {
@@ -81,7 +79,6 @@ const validateFormData = (req, res, next) => {
 }
 
 const saveSession = (req, res, next) => {
-  console.log('saveSession')
   if (!req.session) {
     req.session = {}
   }
@@ -97,7 +94,7 @@ const saveSession = (req, res, next) => {
 
   req.session[req.url] = body
 
-  console.log('saved session', req.session)
+  console.log('saved session')
   next()
 }
 
@@ -105,7 +102,6 @@ const getFormDataFromSession = (req, res, next) => {
   console.log('getFormDataFromSession')
   req.formData = null
   const formData = req.session[req.url] || {}
-  console.log('formData', formData)
   req.formData = formData
   next()
 }
@@ -131,7 +127,7 @@ const getRawSessionText = (req, res, next) => {
   const clonedSession = deepCloneAndRemoveBuffer(req.session)
   delete clonedSession.cookie
   const sessionText = JSON.stringify(clonedSession, null, 2)
-  console.log('sessionText', sessionText)
+  console.log('Set raw session text')
   req.sessionText = sessionText
   next()
 }
