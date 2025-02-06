@@ -1,13 +1,7 @@
 const gulp = require('gulp')
-const { createGulpEsbuild } = require('gulp-esbuild')
-const rev = require('gulp-rev')
+const gulpEsbuild = require('gulp-esbuild')
 const gulpSass = require('gulp-sass')
 const dartSass = require('sass')
-
-const esbuild = createGulpEsbuild({
-  incremental: false, // enables the esbuild"s incremental build
-  piping: true // enables piping
-})
 
 const sass = gulpSass(dartSass)
 
@@ -20,10 +14,13 @@ gulp.task('docs:clean', async (done) => {
 // Copy all the govuk-frontend assets across
 gulp.task('docs:copy-dependencies', () => {
   return gulp
-    .src([
-      'node_modules/govuk-frontend/dist/govuk/assets/**/*',
-      'src/moj/assets/**/*'
-    ])
+    .src(
+      [
+        'node_modules/govuk-frontend/dist/govuk/assets/**/*',
+        'src/moj/assets/**/*'
+      ],
+      { encoding: false }
+    )
     .pipe(gulp.dest('public/assets'))
 })
 
@@ -36,7 +33,7 @@ gulp.task('docs:copy-vendor', () => {
 
 gulp.task('docs:copy-images', () => {
   return gulp
-    .src(['docs/assets/images/**/*'])
+    .src(['docs/assets/images/**/*'], { encoding: false })
     .pipe(gulp.dest('public/assets/images'))
 })
 
@@ -65,17 +62,20 @@ gulp.task('docs:scripts', () => {
   return gulp
     .src('docs/assets/javascript/application.mjs')
     .pipe(
-      esbuild({
-        outfile: 'application.js',
-        target: 'es6',
+      gulpEsbuild({
+        bundle: true,
+        loader: { '.mjs': 'js' },
         minify: process.env.ENV !== 'dev',
-        bundle: true
+        outfile: 'application.js',
+        target: 'es6'
       })
     )
     .pipe(gulp.dest('public/assets/javascript'))
 })
 
-gulp.task('docs:revision', () => {
+gulp.task('docs:revision', async () => {
+  const { default: rev } = await import('gulp-rev')
+
   return gulp
     .src(
       [
@@ -83,7 +83,10 @@ gulp.task('docs:revision', () => {
         'public/assets/**/*.js',
         'public/assets/**/*.+(png|jpg|jpeg)'
       ],
-      { base: 'public' }
+      {
+        base: 'public',
+        encoding: false
+      }
     )
     .pipe(rev())
     .pipe(gulp.dest('public/')) // Write rev'd assets to build dir

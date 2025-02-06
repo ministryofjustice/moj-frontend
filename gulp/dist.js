@@ -13,7 +13,9 @@ gulp.task('dist:clean', async () => {
 })
 
 gulp.task('dist:assets', () => {
-  return gulp.src('package/moj/assets/**/*').pipe(gulp.dest('dist/assets/'))
+  return gulp
+    .src('package/moj/assets/**/*', { encoding: false })
+    .pipe(gulp.dest('dist/assets/'))
 })
 
 gulp.task('dist:javascript', () => {
@@ -47,5 +49,8 @@ gulp.task('dist:css', () => {
 gulp.task('dist:zip', async () => {
   const { default: zip } = await import('gulp-zip')
 
-  return gulp.src('dist/**').pipe(zip('release.zip')).pipe(gulp.dest('dist'))
+  return gulp
+    .src('dist/**', { encoding: false })
+    .pipe(zip('release.zip'))
+    .pipe(gulp.dest('dist'))
 })
