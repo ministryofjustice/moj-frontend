@@ -28,8 +28,16 @@ if (!!isDev) {
 
   // Set up Redis (for sessions)
   const redisClient = createClient({
-    url: `rediss://:${REDIS_AUTH_TOKEN}@${REDIS_URL}:6379`,
-    legacyMode: true
+    url: `rediss://${REDIS_URL}:6379`,
+    password: REDIS_AUTH_TOKEN,
+    // legacyMode: true,
+    socket: {
+      reconnectStrategy: (attempts) => {
+        const nextDelay = Math.min(2 ** attempts * 20, 30000)
+        console.log(`Retry Redis connection attempt: ${attempts}, next attempt in: ${nextDelay}ms`)
+        return nextDelay
+      },
+    },
   })
 
   redisClient.on('error', (err) => console.error('Redis Client Error', err));
