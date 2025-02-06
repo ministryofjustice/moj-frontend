@@ -44,7 +44,7 @@ gulp.task(
 )
 
 // Compile the docs site stylesheet
-gulp.task('docs:styles', () => {
+gulp.task('docs:styles', (done) => {
   return gulp
     .src('docs/assets/stylesheets/*.scss')
     .pipe(
@@ -53,13 +53,13 @@ gulp.task('docs:styles', () => {
         quietDeps: true,
         silenceDeprecations: ['import'],
         style: process.env.ENV === 'dev' ? 'expanded' : 'compressed'
-      })
+      }).on('error', done)
     )
     .pipe(gulp.dest('public/assets/stylesheets/'))
 })
 
 // Bundle the docs site javascript
-gulp.task('docs:scripts', () => {
+gulp.task('docs:scripts', (done) => {
   return gulp
     .src('docs/assets/javascript/application.mjs')
     .pipe(
@@ -69,7 +69,7 @@ gulp.task('docs:scripts', () => {
         minify: process.env.ENV !== 'dev',
         outfile: 'application.js',
         target: 'es6'
-      })
+      }).on('error', done)
     )
     .pipe(gulp.dest('public/assets/javascript'))
 })

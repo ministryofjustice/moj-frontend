@@ -8,7 +8,7 @@ const dartSass = require('sass-embedded')
 
 const sass = gulpSass(dartSass)
 
-gulp.task('build:css', () => {
+gulp.task('build:css', (done) => {
   return gulp
     .src('gulp/dist-scss/*.scss')
     .pipe(
@@ -16,7 +16,7 @@ gulp.task('build:css', () => {
         loadPaths: ['./'],
         quietDeps: true,
         silenceDeprecations: ['import']
-      })
+      }).on('error', done)
     )
     .pipe(postcss([autoprefixer, cssnano]))
     .pipe(
