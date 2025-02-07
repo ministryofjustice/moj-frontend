@@ -1,4 +1,4 @@
-MOJFrontend.MultiSelect = function (options) {
+function MultiSelect(options) {
   this.container = $(options.container)
 
   if (this.container.data('moj-multi-select-initialised')) {
@@ -22,7 +22,7 @@ MOJFrontend.MultiSelect = function (options) {
   this.checked = options.checked || false
 }
 
-MOJFrontend.MultiSelect.prototype.getToggleHtml = function (allId) {
+MultiSelect.prototype.getToggleHtml = function (allId) {
   let html = ''
   html +=
     '<div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">'
@@ -34,7 +34,7 @@ MOJFrontend.MultiSelect.prototype.getToggleHtml = function (allId) {
   return html
 }
 
-MOJFrontend.MultiSelect.prototype.onButtonClick = function (e) {
+MultiSelect.prototype.onButtonClick = function (e) {
   if (this.checked) {
     this.uncheckAll()
     this.toggleButton[0].checked = false
@@ -44,7 +44,7 @@ MOJFrontend.MultiSelect.prototype.onButtonClick = function (e) {
   }
 }
 
-MOJFrontend.MultiSelect.prototype.checkAll = function () {
+MultiSelect.prototype.checkAll = function () {
   this.checkboxes.each(
     $.proxy(function (index, el) {
       el.checked = true
@@ -53,7 +53,7 @@ MOJFrontend.MultiSelect.prototype.checkAll = function () {
   this.checked = true
 }
 
-MOJFrontend.MultiSelect.prototype.uncheckAll = function () {
+MultiSelect.prototype.uncheckAll = function () {
   this.checkboxes.each(
     $.proxy(function (index, el) {
       el.checked = false
@@ -62,7 +62,7 @@ MOJFrontend.MultiSelect.prototype.uncheckAll = function () {
   this.checked = false
 }
 
-MOJFrontend.MultiSelect.prototype.onCheckboxClick = function (e) {
+MultiSelect.prototype.onCheckboxClick = function (e) {
   if (!e.target.checked) {
     this.toggleButton[0].checked = false
     this.checked = false
@@ -73,3 +73,5 @@ MOJFrontend.MultiSelect.prototype.onCheckboxClick = function (e) {
     }
   }
 }
+
+module.exports = { MultiSelect }

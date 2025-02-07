@@ -1,4 +1,4 @@
-MOJFrontend.SearchToggle = function (options) {
+function SearchToggle(options) {
   this.options = options
   this.container = $(this.options.search.container)
   this.toggleButtonContainer = $(this.options.toggleButton.container)
@@ -23,18 +23,18 @@ MOJFrontend.SearchToggle = function (options) {
   $(document).on('focusin', this.onDocumentClick.bind(this))
 }
 
-MOJFrontend.SearchToggle.prototype.showMenu = function () {
+SearchToggle.prototype.showMenu = function () {
   this.toggleButton.attr('aria-expanded', 'true')
   this.container.removeClass('moj-js-hidden')
   this.container.find('input').first().get(0).focus()
 }
 
-MOJFrontend.SearchToggle.prototype.hideMenu = function () {
+SearchToggle.prototype.hideMenu = function () {
   this.container.addClass('moj-js-hidden')
   this.toggleButton.attr('aria-expanded', 'false')
 }
 
-MOJFrontend.SearchToggle.prototype.onToggleButtonClick = function () {
+SearchToggle.prototype.onToggleButtonClick = function () {
   if (this.toggleButton.attr('aria-expanded') === 'false') {
     this.showMenu()
   } else {
@@ -42,7 +42,7 @@ MOJFrontend.SearchToggle.prototype.onToggleButtonClick = function () {
   }
 }
 
-MOJFrontend.SearchToggle.prototype.onDocumentClick = function (e) {
+SearchToggle.prototype.onDocumentClick = function (e) {
   if (
     !$.contains(this.toggleButtonContainer[0], e.target) &&
     !$.contains(this.container[0], e.target)
@@ -50,3 +50,5 @@ MOJFrontend.SearchToggle.prototype.onDocumentClick = function (e) {
     this.hideMenu()
   }
 }
+
+module.exports = { SearchToggle }

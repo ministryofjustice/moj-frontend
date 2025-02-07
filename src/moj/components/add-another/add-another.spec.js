@@ -7,7 +7,7 @@ const {
 } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
 
-require('./add-another.js')
+const { AddAnother } = require('./add-another.js')
 
 const user = userEvent.setup()
 
@@ -41,7 +41,7 @@ describe('Add Another component', () => {
 
   beforeEach(() => {
     component = createComponent()
-    new MOJFrontend.AddAnother(component)
+    new AddAnother(component)
     addButton = getByRole(component, 'button', { name: 'Add another person' })
   })
 

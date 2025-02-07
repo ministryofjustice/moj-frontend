@@ -6,7 +6,7 @@ const { configureAxe } = require('jest-axe')
 const merge = require('lodash/merge')
 const { setMedia } = require('mock-match-media')
 
-require('./filter-toggle-button.js')
+const { FilterToggleButton } = require('./filter-toggle-button.js')
 
 const user = userEvent.setup()
 const axe = configureAxe({
@@ -91,7 +91,7 @@ describe('Filter toggle in big mode', () => {
   })
 
   test('creates toggle button', () => {
-    new MOJFrontend.FilterToggleButton(defaultConfig)
+    new FilterToggleButton(defaultConfig)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(toggleButton).toBeInTheDocument()
@@ -104,7 +104,7 @@ describe('Filter toggle in big mode', () => {
   })
 
   test('toggle button reveals filters', async () => {
-    new MOJFrontend.FilterToggleButton(defaultConfig)
+    new FilterToggleButton(defaultConfig)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(filterContainer).toHaveAttribute('tabindex', '-1')
@@ -128,7 +128,7 @@ describe('Filter toggle in big mode', () => {
 
   test('start visible', () => {
     const config = merge(defaultConfig, { startHidden: false })
-    new MOJFrontend.FilterToggleButton(config)
+    new FilterToggleButton(config)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(toggleButton.innerHTML).toBe('Hide filter')
@@ -139,7 +139,7 @@ describe('Filter toggle in big mode', () => {
     const config = merge(defaultConfig, {
       toggleButton: { showText: 'Custom label', hideText: 'Hide me' }
     })
-    new MOJFrontend.FilterToggleButton(config)
+    new FilterToggleButton(config)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(toggleButton.innerHTML).toBe('Custom label')
@@ -151,7 +151,7 @@ describe('Filter toggle in big mode', () => {
     const config = merge(defaultConfig, {
       toggleButton: { classes: 'classname-1 classname-2' }
     })
-    new MOJFrontend.FilterToggleButton(config)
+    new FilterToggleButton(config)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(toggleButton).toHaveClass('classname-1 classname-2')
@@ -159,7 +159,7 @@ describe('Filter toggle in big mode', () => {
 
   describe('accessibility', () => {
     test('component has no wcag violations', async () => {
-      new MOJFrontend.FilterToggleButton(defaultConfig)
+      new FilterToggleButton(defaultConfig)
       const toggleButton = queryByRole(buttonContainer, 'button')
       expect(await axe(document.body)).toHaveNoViolations()
       await user.click(toggleButton)
@@ -193,7 +193,7 @@ describe('Filter toggle in small mode', () => {
   })
 
   test('creates toggle button', () => {
-    new MOJFrontend.FilterToggleButton(defaultConfig)
+    new FilterToggleButton(defaultConfig)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(toggleButton).toBeInTheDocument()
@@ -206,7 +206,7 @@ describe('Filter toggle in small mode', () => {
   })
 
   test('toggle button reveals filters', async () => {
-    new MOJFrontend.FilterToggleButton(defaultConfig)
+    new FilterToggleButton(defaultConfig)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(filterContainer).toHaveAttribute('tabindex', '-1')
@@ -230,7 +230,7 @@ describe('Filter toggle in small mode', () => {
 
   test('start visible is ignored', () => {
     const config = merge(defaultConfig, { startHidden: false })
-    new MOJFrontend.FilterToggleButton(config)
+    new FilterToggleButton(config)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(toggleButton.innerHTML).toBe('Show filter')
@@ -239,7 +239,7 @@ describe('Filter toggle in small mode', () => {
 
   test('adds a close button', async () => {
     const config = merge(defaultConfig, { startHidden: false })
-    new MOJFrontend.FilterToggleButton(config)
+    new FilterToggleButton(config)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     await user.click(toggleButton)
@@ -256,7 +256,7 @@ describe('Filter toggle in small mode', () => {
     })
 
     const config = merge(defaultConfig, { startHidden: false })
-    new MOJFrontend.FilterToggleButton(config)
+    new FilterToggleButton(config)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(toggleButton.innerHTML).toBe('Hide filter')
@@ -276,7 +276,7 @@ describe('Filter toggle in small mode', () => {
     })
 
     const config = merge(defaultConfig)
-    new MOJFrontend.FilterToggleButton(config)
+    new FilterToggleButton(config)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(toggleButton.innerHTML).toBe('Show filter')
@@ -292,7 +292,7 @@ describe('Filter toggle in small mode', () => {
 
   describe('accessibility', () => {
     test('component has no wcag violations', async () => {
-      new MOJFrontend.FilterToggleButton(defaultConfig)
+      new FilterToggleButton(defaultConfig)
       const toggleButton = queryByRole(buttonContainer, 'button')
       expect(await axe(document.body)).toHaveNoViolations()
       await user.click(toggleButton)
