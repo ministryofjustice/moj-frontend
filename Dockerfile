@@ -70,8 +70,18 @@ COPY docker/nginx-production.conf /etc/nginx/conf.d/default.conf
 COPY --from=production-build /app/public /usr/share/nginx/html
 
 FROM base AS preview-express-app
-COPY --from=preview-build /app /app
-COPY . .
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
+
+COPY src src
+COPY app.js app.js
+COPY config.js config.js
+COPY helpers helpers
+COPY schema schema
+COPY middleware middleware
+COPY routes routes
+COPY views views
+COPY public public
 
 # run express app as a non root user
 RUN useradd -u 1001 -m nonrootuser
