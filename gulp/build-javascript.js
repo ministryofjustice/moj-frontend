@@ -31,8 +31,15 @@ gulp.task('build:javascript', async () => {
       input: join('src', modulePath),
       output: [
         {
+          dir: 'package',
+          entryFileNames: '[name].mjs',
+          format: 'esm',
+          preserveModules: true,
+          preserveModulesRoot: 'src'
+        },
+        {
           extend: true,
-          file: join('package', modulePath),
+          file: join('package', modulePath.replace('.mjs', '.js')),
           format: 'umd',
           name: 'MOJFrontend'
         }
