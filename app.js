@@ -5,7 +5,7 @@ const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 const nunjucks = require('nunjucks')
 const IORedis = require('ioredis')
-const { APP_PORT, REDIS_URL, REDIS_AUTH_TOKEN } = require('./config')
+const { APP_PORT, REDIS_URL, REDIS_AUTH_TOKEN, SESSION_SECRET } = require('./config')
 
 const addComponentRoutes = require('./routes/add-component')
 
@@ -14,14 +14,11 @@ const isDev = app.get('env') === 'development'
 
 // Session management
 const sessionOptions = {
-  secret: 'your-secret-key',
+  secret: SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: false, maxAge: 360000 }
+  cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 }
 }
-
-console.log('ENV:', app.get('env'))
-console.log('REDIS:', REDIS_URL)
 
 if (REDIS_URL) {
   console.log('Connecting to Redis: ', REDIS_URL)
