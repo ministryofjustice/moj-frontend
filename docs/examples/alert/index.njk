@@ -5,13 +5,26 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 ---
 {%- from "moj/components/alert/macro.njk" import mojAlert -%}
 
-{% set bannerHtml %}
-  <h2 class="govuk-heading-m">This is a placeholder banner</h2>
-  <p>Waiting for the new banner build</p>
-{% endset %}
-
 {{ mojAlert({
   type: "information",
-  heading: "This is some information",
-  text: "Content that informs you of a thing"
+  heading: "The finance section has moved",
+  html: 'You can now find it in the <a href="#">dashboard</a>.'
+}) }}
+
+{{ mojAlert({
+  type: "success",
+  heading: "File uploaded successfully",
+  html: '<a href="">scan1.jpg</a> has been added to this application.'
+}) }}
+
+{{ mojAlert({
+  type: "warning",
+  heading: "Some information could not be imported",
+  html: 'You can enter information manually in <a href="#">client details</a>.'
+}) }}
+
+{{ mojAlert({
+  type: "error",
+  heading: "This case has been assigned to someone else",
+  text: "You can no longer make changes."
 }) }}
