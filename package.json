@@ -75,7 +75,7 @@
     "eslint-plugin-jsdoc": "^50.6.3",
     "eslint-plugin-markdown": "^5.1.0",
     "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-promise": "^6.6.0",
+    "eslint-plugin-promise": "^7.0.0",
     "govuk-frontend": "^5.4.1",
     "govuk-prototype-kit": "^13.16.2",
     "gray-matter": "^4.0.3",
