@@ -1,15 +1,11 @@
 /* eslint-disable no-new */
 
-const {
-  queryByRole,
-  getByLabelText,
-  fireEvent
-} = require('@testing-library/dom')
-const { userEvent } = require('@testing-library/user-event')
-const { configureAxe } = require('jest-axe')
-const sinon = require('sinon')
+import { queryByRole, getByLabelText, fireEvent } from '@testing-library/dom'
+import { userEvent } from '@testing-library/user-event'
+import { configureAxe } from 'jest-axe'
+import { fakeServerWithClock, spy, restore, useFakeXMLHttpRequest } from 'sinon'
 
-const { MultiFileUpload } = require('./multi-file-upload.js')
+import { MultiFileUpload } from './multi-file-upload.mjs'
 
 const user = userEvent.setup()
 const axe = configureAxe({
@@ -59,14 +55,14 @@ describe('Multi-file upload', () => {
   let fileDeleteHook
 
   beforeEach(() => {
-    server = sinon.fakeServerWithClock.create({
+    server = fakeServerWithClock.create({
       respondImmediately: true
     })
 
-    uploadFileEntryHook = sinon.spy()
-    uploadFileExitHook = sinon.spy()
-    uploadFileErrorHook = sinon.spy()
-    fileDeleteHook = sinon.spy()
+    uploadFileEntryHook = spy()
+    uploadFileExitHook = spy()
+    uploadFileErrorHook = spy()
+    fileDeleteHook = spy()
     ;({ component, options } = createComponent({
       uploadFileEntryHook,
       uploadFileExitHook,
@@ -82,7 +78,7 @@ describe('Multi-file upload', () => {
   afterEach(() => {
     document.body.innerHTML = ''
     server.restore()
-    sinon.restore()
+    restore()
   })
 
   test('initialises with enhanced class', () => {
@@ -150,7 +146,7 @@ describe('Multi-file upload', () => {
 
     test('displays upload progress', async () => {
       // Create a spy on XMLHttpRequest to simulate upload progress
-      const xhr = sinon.useFakeXMLHttpRequest()
+      const xhr = useFakeXMLHttpRequest()
       let request
       xhr.onCreate = (req) => {
         request = req

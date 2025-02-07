@@ -15,7 +15,7 @@
  * @param {DatePickerConfig} config - config object
  * @class
  */
-function DatePicker($module, config = {}) {
+export function DatePicker($module, config = {}) {
   if (!$module) {
     return this
   }
@@ -943,8 +943,6 @@ DSCalendarDay.prototype.keyPress = function (event) {
     event.stopPropagation()
   }
 }
-
-module.exports = { DatePicker }
 
 /**
  * Schema for component config

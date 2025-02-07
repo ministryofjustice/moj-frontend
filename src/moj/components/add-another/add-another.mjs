@@ -1,6 +1,6 @@
-const $ = require('jquery')
+import $ from 'jquery'
 
-function AddAnother(container) {
+export function AddAnother(container) {
   this.container = $(container)
 
   if (this.container.data('moj-add-another-initialised')) {
@@ -104,5 +104,3 @@ AddAnother.prototype.onRemoveButtonClick = function (e) {
 AddAnother.prototype.focusHeading = function () {
   this.container.find('.moj-add-another__heading').get(0).focus()
 }
-
-module.exports = { AddAnother }

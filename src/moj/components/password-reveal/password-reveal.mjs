@@ -1,6 +1,6 @@
-const $ = require('jquery')
+import $ from 'jquery'
 
-function PasswordReveal(element) {
+export function PasswordReveal(element) {
   this.el = element
   const $el = $(this.el)
 
@@ -33,5 +33,3 @@ PasswordReveal.prototype.onButtonClick = function () {
     this.button.html('Show <span class="govuk-visually-hidden">password</span>')
   }
 }
-
-module.exports = { PasswordReveal }

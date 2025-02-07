@@ -1,8 +1,8 @@
-const { queryByRole, screen } = require('@testing-library/dom')
-const { userEvent } = require('@testing-library/user-event')
-const { configureAxe } = require('jest-axe')
+import { queryByRole, screen } from '@testing-library/dom'
+import { userEvent } from '@testing-library/user-event'
+import { configureAxe } from 'jest-axe'
 
-const { ButtonMenu } = require('./button-menu.js')
+import { ButtonMenu } from './button-menu.mjs'
 
 const user = userEvent.setup()
 const axe = configureAxe({
