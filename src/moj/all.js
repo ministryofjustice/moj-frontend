@@ -1,5 +1,7 @@
 /* eslint-disable no-new */
 
+const $ = require('jquery')
+
 const { AddAnother } = require('./components/add-another/add-another.js')
 const { ButtonMenu } = require('./components/button-menu/button-menu.js')
 const { DatePicker } = require('./components/date-picker/date-picker.js')
