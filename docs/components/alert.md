@@ -220,9 +220,11 @@ All variants will be accessible on backgrounds that are `govuk-colour("white")` 
 
 ## Examples
 
-### Error message about incomplete information
+### Error alert underneath a subheading
 
-[content]
+Alerts positioned inline with other content help people to understand what the message relates to. In this example the heading level of the alert component should be changed to H3 as it appears within an H2 heading.
+
+<p><img src="{{ 'assets/images/alert-example-contextual.png' | rev | url }}" alt="A Ministry of Justice website with the title 'Work items'. The subheading 'Cost type totals' has a table of costs within it and a total. A second subheading reads 'All work items' and has an alert component underneath it with the heading: 'Some work items didn't import correctly'. The body content of the alert says 'You need to manually update work item 1 before submitting this claim.'"></p>
 
 {% endtab %}
 
