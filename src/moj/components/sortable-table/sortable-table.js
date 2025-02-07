@@ -1,4 +1,4 @@
-MOJFrontend.SortableTable = function (params) {
+function SortableTable(params) {
   this.table = $(params.table)
 
   if (this.table.data('moj-search-toggle-initialised')) {
@@ -15,14 +15,14 @@ MOJFrontend.SortableTable = function (params) {
   this.table.on('click', 'th button', $.proxy(this, 'onSortButtonClick'))
 }
 
-MOJFrontend.SortableTable.prototype.setupOptions = function (params) {
+SortableTable.prototype.setupOptions = function (params) {
   params = params || {}
   this.statusMessage = params.statusMessage || 'Sort by %heading% (%direction%)'
   this.ascendingText = params.ascendingText || 'ascending'
   this.descendingText = params.descendingText || 'descending'
 }
 
-MOJFrontend.SortableTable.prototype.createHeadingButtons = function () {
+SortableTable.prototype.createHeadingButtons = function () {
   const headings = this.table.find('thead th')
   let heading
   for (let i = 0; i < headings.length; i++) {
@@ -33,24 +33,21 @@ MOJFrontend.SortableTable.prototype.createHeadingButtons = function () {
   }
 }
 
-MOJFrontend.SortableTable.prototype.createHeadingButton = function (
-  heading,
-  i
-) {
+SortableTable.prototype.createHeadingButton = function (heading, i) {
   const text = heading.text()
   const button = $(`<button type="button" data-index="${i}">${text}</button>`)
   heading.text('')
   heading.append(button)
 }
 
-MOJFrontend.SortableTable.prototype.createStatusBox = function () {
+SortableTable.prototype.createStatusBox = function () {
   this.status = $(
     '<div aria-live="polite" role="status" aria-atomic="true" class="govuk-visually-hidden" />'
   )
   this.table.parent().append(this.status)
 }
 
-MOJFrontend.SortableTable.prototype.initialiseSortedColumn = function () {
+SortableTable.prototype.initialiseSortedColumn = function () {
   const rows = this.getTableRowsArray()
 
   this.table
@@ -65,7 +62,7 @@ MOJFrontend.SortableTable.prototype.initialiseSortedColumn = function () {
     })
 }
 
-MOJFrontend.SortableTable.prototype.onSortButtonClick = function (e) {
+SortableTable.prototype.onSortButtonClick = function (e) {
   const columnNumber = e.currentTarget.getAttribute('data-index')
   const sortDirection = $(e.currentTarget).parent().attr('aria-sort')
   let newSortDirection
@@ -81,10 +78,7 @@ MOJFrontend.SortableTable.prototype.onSortButtonClick = function (e) {
   this.updateButtonState($(e.currentTarget), newSortDirection)
 }
 
-MOJFrontend.SortableTable.prototype.updateButtonState = function (
-  button,
-  direction
-) {
+SortableTable.prototype.updateButtonState = function (button, direction) {
   button.parent().attr('aria-sort', direction)
   let message = this.statusMessage
   message = message.replace(/%heading%/, button.text())
@@ -92,17 +86,17 @@ MOJFrontend.SortableTable.prototype.updateButtonState = function (
   this.status.text(message)
 }
 
-MOJFrontend.SortableTable.prototype.removeButtonStates = function () {
+SortableTable.prototype.removeButtonStates = function () {
   this.table.find('thead th').attr('aria-sort', 'none')
 }
 
-MOJFrontend.SortableTable.prototype.addRows = function (rows) {
+SortableTable.prototype.addRows = function (rows) {
   for (let i = 0; i < rows.length; i++) {
     this.body.append(rows[i])
   }
 }
 
-MOJFrontend.SortableTable.prototype.getTableRowsArray = function () {
+SortableTable.prototype.getTableRowsArray = function () {
   const rows = []
   const trs = this.body.find('tr')
   for (let i = 0; i < trs.length; i++) {
@@ -111,11 +105,7 @@ MOJFrontend.SortableTable.prototype.getTableRowsArray = function () {
   return rows
 }
 
-MOJFrontend.SortableTable.prototype.sort = function (
-  rows,
-  columnNumber,
-  sortDirection
-) {
+SortableTable.prototype.sort = function (rows, columnNumber, sortDirection) {
   const newRows = rows.sort(
     function (rowA, rowB) {
       const tdA = $(rowA).find('td,th').eq(columnNumber)
@@ -138,9 +128,11 @@ MOJFrontend.SortableTable.prototype.sort = function (
   return newRows
 }
 
-MOJFrontend.SortableTable.prototype.getCellValue = function (cell) {
+SortableTable.prototype.getCellValue = function (cell) {
   const val = cell.attr('data-sort-value') || cell.html()
 
   const valAsNumber = Number(val)
   return isNaN(valAsNumber) ? val : valAsNumber
 }
+
+module.exports = { SortableTable }

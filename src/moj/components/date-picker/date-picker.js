@@ -1,7 +1,7 @@
 /**
- * Datepicker config
+ * Date picker config
  *
- * @typedef {object} DatepickerConfig
+ * @typedef {object} DatePickerConfig
  * @property {string} [excludedDates] - Dates that cannot be selected
  * @property {string} [excludedDays] - Days that cannot be selected
  * @property {boolean} [leadingZeroes] - Whether to add leading zeroes when populating the field
@@ -12,10 +12,10 @@
 
 /**
  * @param {HTMLElement} $module - HTML element
- * @param {DatepickerConfig} config - config object
+ * @param {DatePickerConfig} config - config object
  * @class
  */
-function Datepicker($module, config = {}) {
+function DatePicker($module, config = {}) {
   if (!$module) {
     return this
   }
@@ -83,7 +83,7 @@ function Datepicker($module, config = {}) {
   this.$input = $module.querySelector('.moj-js-datepicker-input')
 }
 
-Datepicker.prototype.init = function () {
+DatePicker.prototype.init = function () {
   // Check that required elements are present
   if (!this.$input) {
     return
@@ -97,7 +97,7 @@ Datepicker.prototype.init = function () {
   this.$module.setAttribute('data-initialized', 'true')
 }
 
-Datepicker.prototype.initControls = function () {
+DatePicker.prototype.initControls = function () {
   this.id = `datepicker-${this.$input.id}`
 
   this.$dialog = this.createDialog()
@@ -191,7 +191,7 @@ Datepicker.prototype.initControls = function () {
   this.updateCalendar()
 }
 
-Datepicker.prototype.createDialog = function () {
+DatePicker.prototype.createDialog = function () {
   const titleId = `datepicker-title-${this.$input.id}`
   const $dialog = document.createElement('div')
 
@@ -206,7 +206,7 @@ Datepicker.prototype.createDialog = function () {
   return $dialog
 }
 
-Datepicker.prototype.createCalendar = function () {
+DatePicker.prototype.createCalendar = function () {
   const $tbody = this.$dialog.querySelector('tbody')
   let dayCount = 0
   for (let i = 0; i < 6; i++) {
@@ -229,7 +229,7 @@ Datepicker.prototype.createCalendar = function () {
   }
 }
 
-Datepicker.prototype.toggleTemplate = function () {
+DatePicker.prototype.toggleTemplate = function () {
   return `<button class="moj-datepicker__toggle moj-js-datepicker-toggle" type="button" aria-haspopup="dialog" aria-controls="${this.id}" aria-expanded="false">
             <span class="govuk-visually-hidden">Choose date</span>
             <svg width="32" height="24" focusable="false" class="moj-datepicker-icon" aria-hidden="true" role="img" viewBox="0 0 22 22">
@@ -251,7 +251,7 @@ Datepicker.prototype.toggleTemplate = function () {
  * @param {string} [titleId] - Id attribute for dialog title
  * @returns {string}
  */
-Datepicker.prototype.dialogTemplate = function (titleId) {
+DatePicker.prototype.dialogTemplate = function (titleId) {
   return `<div class="moj-datepicker__dialog-header">
             <div class="moj-datepicker__dialog-navbuttons">
               <button class="moj-datepicker__button moj-js-datepicker-prev-year">
@@ -304,7 +304,7 @@ Datepicker.prototype.dialogTemplate = function (titleId) {
           </div>`
 }
 
-Datepicker.prototype.createCalendarHeaders = function () {
+DatePicker.prototype.createCalendarHeaders = function () {
   this.dayLabels.forEach((day) => {
     const html = `<th scope="col"><span aria-hidden="true">${day.substring(0, 3)}</span><span class="govuk-visually-hidden">${day}</span></th>`
     const $headerRow = this.$dialog.querySelector('thead > tr')
@@ -319,7 +319,7 @@ Datepicker.prototype.createCalendarHeaders = function () {
  * @param {number} length - The length in characters of the output
  * @returns {string}
  */
-Datepicker.prototype.leadingZeros = function (value, length = 2) {
+DatePicker.prototype.leadingZeros = function (value, length = 2) {
   let ret = value.toString()
 
   while (ret.length < length) {
@@ -329,7 +329,7 @@ Datepicker.prototype.leadingZeros = function (value, length = 2) {
   return ret
 }
 
-Datepicker.prototype.setOptions = function () {
+DatePicker.prototype.setOptions = function () {
   this.setMinAndMaxDatesOnCalendar()
   this.setExcludedDates()
   this.setExcludedDays()
@@ -337,7 +337,7 @@ Datepicker.prototype.setOptions = function () {
   this.setWeekStartDay()
 }
 
-Datepicker.prototype.setMinAndMaxDatesOnCalendar = function () {
+DatePicker.prototype.setMinAndMaxDatesOnCalendar = function () {
   if (this.config.minDate) {
     this.minDate = this.formattedDateFromString(this.config.minDate, null)
     if (this.minDate && this.currentDate < this.minDate) {
@@ -353,7 +353,7 @@ Datepicker.prototype.setMinAndMaxDatesOnCalendar = function () {
   }
 }
 
-Datepicker.prototype.setExcludedDates = function () {
+DatePicker.prototype.setExcludedDates = function () {
   if (this.config.excludedDates) {
     this.excludedDates = this.config.excludedDates
       .replace(/\s+/, ' ')
@@ -373,7 +373,7 @@ Datepicker.prototype.setExcludedDates = function () {
  * @param {String} datestring - A daterange string in the format "dd/mm/yyyy-dd/mm/yyyy"
  * @returns {Date[]}
  */
-Datepicker.prototype.parseDateRangeString = function (datestring) {
+DatePicker.prototype.parseDateRangeString = function (datestring) {
   const dates = []
   const [startDate, endDate] = datestring
     .split('-')
@@ -391,7 +391,7 @@ Datepicker.prototype.parseDateRangeString = function (datestring) {
   return dates
 }
 
-Datepicker.prototype.setExcludedDays = function () {
+DatePicker.prototype.setExcludedDays = function () {
   if (this.config.excludedDays) {
     // lowercase and arrange dayLabels to put indexOf sunday == 0 for comparison
     // with getDay() function
@@ -409,7 +409,7 @@ Datepicker.prototype.setExcludedDays = function () {
   }
 }
 
-Datepicker.prototype.setLeadingZeros = function () {
+DatePicker.prototype.setLeadingZeros = function () {
   if (typeof this.config.leadingZeros !== 'boolean') {
     if (this.config.leadingZeros.toLowerCase() === 'true') {
       this.config.leadingZeros = true
@@ -421,7 +421,7 @@ Datepicker.prototype.setLeadingZeros = function () {
   }
 }
 
-Datepicker.prototype.setWeekStartDay = function () {
+DatePicker.prototype.setWeekStartDay = function () {
   const weekStartDayParam = this.config.weekStartDay
   if (weekStartDayParam && weekStartDayParam.toLowerCase() === 'sunday') {
     this.config.weekStartDay = 'sunday'
@@ -438,7 +438,7 @@ Datepicker.prototype.setWeekStartDay = function () {
  * @param {Date} date - the date to check
  * @returns {boolean}
  */
-Datepicker.prototype.isExcludedDate = function (date) {
+DatePicker.prototype.isExcludedDate = function (date) {
   // This comparison does not work correctly - it will exclude the mindate itself
   // see: https://github.com/ministryofjustice/moj-frontend/issues/923
   if (this.minDate && this.minDate > date) {
@@ -470,7 +470,7 @@ Datepicker.prototype.isExcludedDate = function (date) {
  * @param {Date} fallback - date object to return if formatting fails
  * @returns {Date}
  */
-Datepicker.prototype.formattedDateFromString = function (
+DatePicker.prototype.formattedDateFromString = function (
   dateString,
   fallback = new Date()
 ) {
@@ -498,7 +498,7 @@ Datepicker.prototype.formattedDateFromString = function (
  * @param {Date} date - date to format to a string
  * @returns {string}
  */
-Datepicker.prototype.formattedDateFromDate = function (date) {
+DatePicker.prototype.formattedDateFromDate = function (date) {
   if (this.config.leadingZeros) {
     return `${this.leadingZeros(date.getDate())}/${this.leadingZeros(date.getMonth() + 1)}/${date.getFullYear()}`
   }
@@ -512,11 +512,11 @@ Datepicker.prototype.formattedDateFromDate = function (date) {
  * @param {Date} date - date to format
  * @returns {string}
  */
-Datepicker.prototype.formattedDateHuman = function (date) {
+DatePicker.prototype.formattedDateHuman = function (date) {
   return `${this.dayLabels[(date.getDay() + 6) % 7]} ${date.getDate()} ${this.monthLabels[date.getMonth()]} ${date.getFullYear()}`
 }
 
-Datepicker.prototype.backgroundClick = function (event) {
+DatePicker.prototype.backgroundClick = function (event) {
   if (
     this.isOpen() &&
     !this.$dialog.contains(event.target) &&
@@ -528,14 +528,14 @@ Datepicker.prototype.backgroundClick = function (event) {
   }
 }
 
-Datepicker.prototype.firstButtonKeydown = function (event) {
+DatePicker.prototype.firstButtonKeydown = function (event) {
   if (event.key === 'Tab' && event.shiftKey) {
     this.$lastButtonInDialog.focus()
     event.preventDefault()
   }
 }
 
-Datepicker.prototype.lastButtonKeydown = function (event) {
+DatePicker.prototype.lastButtonKeydown = function (event) {
   if (event.key === 'Tab' && !event.shiftKey) {
     this.$firstButtonInDialog.focus()
     event.preventDefault()
@@ -543,7 +543,7 @@ Datepicker.prototype.lastButtonKeydown = function (event) {
 }
 
 // render calendar
-Datepicker.prototype.updateCalendar = function () {
+DatePicker.prototype.updateCalendar = function () {
   this.$dialogTitle.innerHTML = `${this.monthLabels[this.currentDate.getMonth()]} ${this.currentDate.getFullYear()}`
 
   const day = this.currentDate
@@ -571,7 +571,7 @@ Datepicker.prototype.updateCalendar = function () {
   }
 }
 
-Datepicker.prototype.setCurrentDate = function (focus = true) {
+DatePicker.prototype.setCurrentDate = function (focus = true) {
   const { currentDate } = this
   this.calendarDays.forEach((calendarDay) => {
     calendarDay.button.classList.add('moj-datepicker__button')
@@ -628,7 +628,7 @@ Datepicker.prototype.setCurrentDate = function (focus = true) {
   }
 }
 
-Datepicker.prototype.selectDate = function (date) {
+DatePicker.prototype.selectDate = function (date) {
   if (this.isExcludedDate(date)) {
     return
   }
@@ -643,11 +643,11 @@ Datepicker.prototype.selectDate = function (date) {
   this.closeDialog()
 }
 
-Datepicker.prototype.isOpen = function () {
+DatePicker.prototype.isOpen = function () {
   return this.$dialog.classList.contains('moj-datepicker__dialog--open')
 }
 
-Datepicker.prototype.toggleDialog = function (event) {
+DatePicker.prototype.toggleDialog = function (event) {
   event.preventDefault()
   if (this.isOpen()) {
     this.closeDialog()
@@ -657,7 +657,7 @@ Datepicker.prototype.toggleDialog = function (event) {
   }
 }
 
-Datepicker.prototype.openDialog = function () {
+DatePicker.prototype.openDialog = function () {
   this.$dialog.hidden = false
   this.$dialog.classList.add('moj-datepicker__dialog--open')
   this.$calendarButton.setAttribute('aria-expanded', 'true')
@@ -678,14 +678,14 @@ Datepicker.prototype.openDialog = function () {
   this.setCurrentDate()
 }
 
-Datepicker.prototype.closeDialog = function () {
+DatePicker.prototype.closeDialog = function () {
   this.$dialog.hidden = true
   this.$dialog.classList.remove('moj-datepicker__dialog--open')
   this.$calendarButton.setAttribute('aria-expanded', 'false')
   this.$calendarButton.focus()
 }
 
-Datepicker.prototype.goToDate = function (date, focus) {
+DatePicker.prototype.goToDate = function (date, focus) {
   const current = this.currentDate
   this.currentDate = date
 
@@ -700,32 +700,32 @@ Datepicker.prototype.goToDate = function (date, focus) {
 }
 
 // day navigation
-Datepicker.prototype.focusNextDay = function () {
+DatePicker.prototype.focusNextDay = function () {
   const date = new Date(this.currentDate)
   date.setDate(date.getDate() + 1)
   this.goToDate(date)
 }
 
-Datepicker.prototype.focusPreviousDay = function () {
+DatePicker.prototype.focusPreviousDay = function () {
   const date = new Date(this.currentDate)
   date.setDate(date.getDate() - 1)
   this.goToDate(date)
 }
 
 // week navigation
-Datepicker.prototype.focusNextWeek = function () {
+DatePicker.prototype.focusNextWeek = function () {
   const date = new Date(this.currentDate)
   date.setDate(date.getDate() + 7)
   this.goToDate(date)
 }
 
-Datepicker.prototype.focusPreviousWeek = function () {
+DatePicker.prototype.focusPreviousWeek = function () {
   const date = new Date(this.currentDate)
   date.setDate(date.getDate() - 7)
   this.goToDate(date)
 }
 
-Datepicker.prototype.focusFirstDayOfWeek = function () {
+DatePicker.prototype.focusFirstDayOfWeek = function () {
   const date = new Date(this.currentDate)
   const firstDayOfWeekIndex = this.config.weekStartDay === 'sunday' ? 0 : 1
   const dayOfWeek = date.getDay()
@@ -740,7 +740,7 @@ Datepicker.prototype.focusFirstDayOfWeek = function () {
   this.goToDate(date)
 }
 
-Datepicker.prototype.focusLastDayOfWeek = function () {
+DatePicker.prototype.focusLastDayOfWeek = function () {
   const date = new Date(this.currentDate)
   const lastDayOfWeekIndex = this.config.weekStartDay === 'sunday' ? 6 : 0
   const dayOfWeek = date.getDay()
@@ -756,14 +756,14 @@ Datepicker.prototype.focusLastDayOfWeek = function () {
 }
 
 // month navigation
-Datepicker.prototype.focusNextMonth = function (event, focus = true) {
+DatePicker.prototype.focusNextMonth = function (event, focus = true) {
   event.preventDefault()
   const date = new Date(this.currentDate)
   date.setMonth(date.getMonth() + 1, 1)
   this.goToDate(date, focus)
 }
 
-Datepicker.prototype.focusPreviousMonth = function (event, focus = true) {
+DatePicker.prototype.focusPreviousMonth = function (event, focus = true) {
   event.preventDefault()
   const date = new Date(this.currentDate)
   date.setMonth(date.getMonth() - 1, 1)
@@ -771,14 +771,14 @@ Datepicker.prototype.focusPreviousMonth = function (event, focus = true) {
 }
 
 // year navigation
-Datepicker.prototype.focusNextYear = function (event, focus = true) {
+DatePicker.prototype.focusNextYear = function (event, focus = true) {
   event.preventDefault()
   const date = new Date(this.currentDate)
   date.setFullYear(date.getFullYear() + 1, date.getMonth(), 1)
   this.goToDate(date, focus)
 }
 
-Datepicker.prototype.focusPreviousYear = function (event, focus = true) {
+DatePicker.prototype.focusPreviousYear = function (event, focus = true) {
   event.preventDefault()
   const date = new Date(this.currentDate)
   date.setFullYear(date.getFullYear() - 1, date.getMonth(), 1)
@@ -792,7 +792,7 @@ Datepicker.prototype.focusPreviousYear = function (event, focus = true) {
  * @param {DOMStringMap} dataset - HTML element dataset
  * @returns {object} Normalised dataset
  */
-Datepicker.prototype.parseDataset = function (schema, dataset) {
+DatePicker.prototype.parseDataset = function (schema, dataset) {
   const parsed = {}
 
   for (const [field, ,] of Object.entries(schema.properties)) {
@@ -813,7 +813,7 @@ Datepicker.prototype.parseDataset = function (schema, dataset) {
  * @param {...{ [key: string]: unknown }} configObjects - Config objects to merge
  * @returns {{ [key: string]: unknown }} A merged config object
  */
-Datepicker.prototype.mergeConfigs = function (...configObjects) {
+DatePicker.prototype.mergeConfigs = function (...configObjects) {
   const formattedConfigObject = {}
 
   // Loop through each of the passed objects
@@ -843,7 +843,7 @@ Datepicker.prototype.mergeConfigs = function (...configObjects) {
  * @param {number} index
  * @param {number} row
  * @param {number} column
- * @param {Datepicker} picker
+ * @param {DatePicker} picker
  * @class
  */
 function DSCalendarDay(button, index, row, column, picker) {
@@ -944,7 +944,7 @@ DSCalendarDay.prototype.keyPress = function (event) {
   }
 }
 
-MOJFrontend.DatePicker = Datepicker
+module.exports = { DatePicker }
 
 /**
  * Schema for component config

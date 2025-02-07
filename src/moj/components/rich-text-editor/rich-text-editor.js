@@ -1,4 +1,4 @@
-MOJFrontend.RichTextEditor = function (options) {
+function RichTextEditor(options) {
   if (!('contentEditable' in document.documentElement)) {
     return
   }
@@ -41,7 +41,7 @@ MOJFrontend.RichTextEditor = function (options) {
   this.toolbar.on('keydown', $.proxy(this, 'onToolbarKeydown'))
 }
 
-MOJFrontend.RichTextEditor.prototype.onToolbarKeydown = function (e) {
+RichTextEditor.prototype.onToolbarKeydown = function (e) {
   let focusableButton
   switch (e.keyCode) {
     case this.keys.right:
@@ -69,7 +69,7 @@ MOJFrontend.RichTextEditor.prototype.onToolbarKeydown = function (e) {
   }
 }
 
-MOJFrontend.RichTextEditor.prototype.getToolbarHtml = function () {
+RichTextEditor.prototype.getToolbarHtml = function () {
   let html = ''
 
   html += '<div class="moj-rich-text-editor__toolbar" role="toolbar">'
@@ -103,18 +103,18 @@ MOJFrontend.RichTextEditor.prototype.getToolbarHtml = function () {
   return html
 }
 
-MOJFrontend.RichTextEditor.prototype.getEnhancedHtml = function (val) {
+RichTextEditor.prototype.getEnhancedHtml = function (val) {
   return `${this.getToolbarHtml()}<div class="govuk-textarea moj-rich-text-editor__content" contenteditable="true" spellcheck="false"></div>`
 }
 
-MOJFrontend.RichTextEditor.prototype.hideDefault = function () {
+RichTextEditor.prototype.hideDefault = function () {
   this.textarea = this.container.find('textarea')
   this.textarea.addClass('govuk-visually-hidden')
   this.textarea.attr('aria-hidden', true)
   this.textarea.attr('tabindex', '-1')
 }
 
-MOJFrontend.RichTextEditor.prototype.createToolbar = function () {
+RichTextEditor.prototype.createToolbar = function () {
   this.toolbar = document.createElement('div')
   this.toolbar.className = 'moj-rich-text-editor'
   this.toolbar.innerHTML = this.getEnhancedHtml()
@@ -125,31 +125,33 @@ MOJFrontend.RichTextEditor.prototype.createToolbar = function () {
     .html(this.textarea.val())
 }
 
-MOJFrontend.RichTextEditor.prototype.configureToolbar = function () {
+RichTextEditor.prototype.configureToolbar = function () {
   this.buttons = this.container.find('.moj-rich-text-editor__toolbar-button')
   this.buttons.prop('tabindex', '-1')
   const firstTab = this.buttons.first()
   firstTab.prop('tabindex', '0')
 }
 
-MOJFrontend.RichTextEditor.prototype.onButtonClick = function (e) {
+RichTextEditor.prototype.onButtonClick = function (e) {
   document.execCommand($(e.currentTarget).data('command'), false, null)
 }
 
-MOJFrontend.RichTextEditor.prototype.getContent = function () {
+RichTextEditor.prototype.getContent = function () {
   return this.container.find('.moj-rich-text-editor__content').html()
 }
 
-MOJFrontend.RichTextEditor.prototype.onEditorInput = function (e) {
+RichTextEditor.prototype.onEditorInput = function (e) {
   this.updateTextarea()
 }
 
-MOJFrontend.RichTextEditor.prototype.updateTextarea = function () {
+RichTextEditor.prototype.updateTextarea = function () {
   document.execCommand('defaultParagraphSeparator', false, 'p')
   this.textarea.val(this.getContent())
 }
 
-MOJFrontend.RichTextEditor.prototype.onLabelClick = function (e) {
+RichTextEditor.prototype.onLabelClick = function (e) {
   e.preventDefault()
   this.container.find('.moj-rich-text-editor__content').focus()
 }
+
+module.exports = { RichTextEditor }

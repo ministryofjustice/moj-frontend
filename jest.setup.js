@@ -4,4 +4,3 @@ require('mock-match-media/jest-setup')
 const { toHaveNoViolations } = require('jest-axe')
 
 expect.extend(toHaveNoViolations)
-window.MOJFrontend = {}

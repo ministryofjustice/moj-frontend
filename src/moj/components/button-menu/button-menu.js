@@ -10,7 +10,7 @@
  * @param {ButtonMenuConfig} config
  * @class
  */
-MOJFrontend.ButtonMenu = function ($module, config = {}) {
+function ButtonMenu($module, config = {}) {
   if (!$module) {
     return this
   }
@@ -38,7 +38,7 @@ MOJFrontend.ButtonMenu = function ($module, config = {}) {
   this.$module = $module
 }
 
-MOJFrontend.ButtonMenu.prototype.init = function () {
+ButtonMenu.prototype.init = function () {
   // If only one button is provided, don't initiate a menu and toggle button
   // if classes have been provided for the toggleButton, apply them to the single item
   if (this.$module.children.length === 1) {
@@ -59,7 +59,7 @@ MOJFrontend.ButtonMenu.prototype.init = function () {
   }
 }
 
-MOJFrontend.ButtonMenu.prototype.initMenu = function () {
+ButtonMenu.prototype.initMenu = function () {
   this.$menu = this.createMenu()
   this.$module.insertAdjacentHTML('afterbegin', this.toggleTemplate())
   this.setupMenuItems()
@@ -82,7 +82,7 @@ MOJFrontend.ButtonMenu.prototype.initMenu = function () {
   })
 }
 
-MOJFrontend.ButtonMenu.prototype.createMenu = function () {
+ButtonMenu.prototype.createMenu = function () {
   const $menu = document.createElement('ul')
   $menu.setAttribute('role', 'list')
   $menu.hidden = true
@@ -99,7 +99,7 @@ MOJFrontend.ButtonMenu.prototype.createMenu = function () {
   return $menu
 }
 
-MOJFrontend.ButtonMenu.prototype.setupMenuItems = function () {
+ButtonMenu.prototype.setupMenuItems = function () {
   Array.from(this.$menu.children).forEach((item) => {
     // wrap item in li tag
     const listItem = document.createElement('li')
@@ -127,7 +127,7 @@ MOJFrontend.ButtonMenu.prototype.setupMenuItems = function () {
   })
 }
 
-MOJFrontend.ButtonMenu.prototype.toggleTemplate = function () {
+ButtonMenu.prototype.toggleTemplate = function () {
   return `
     <button type="button" class="govuk-button moj-button-menu__toggle-button ${this.config.buttonClasses || ''}" aria-haspopup="true" aria-expanded="false">
       <span>
@@ -142,11 +142,11 @@ MOJFrontend.ButtonMenu.prototype.toggleTemplate = function () {
 /**
  * @returns {boolean}
  */
-MOJFrontend.ButtonMenu.prototype.isOpen = function () {
+ButtonMenu.prototype.isOpen = function () {
   return this.$menuToggle.getAttribute('aria-expanded') === 'true'
 }
 
-MOJFrontend.ButtonMenu.prototype.toggleMenu = function (event) {
+ButtonMenu.prototype.toggleMenu = function (event) {
   event.preventDefault()
 
   // If menu is triggered with mouse don't move focus to first item
@@ -165,7 +165,7 @@ MOJFrontend.ButtonMenu.prototype.toggleMenu = function (event) {
  *
  * @param {number} focusIndex - The index of the item to focus
  */
-MOJFrontend.ButtonMenu.prototype.openMenu = function (focusIndex = 0) {
+ButtonMenu.prototype.openMenu = function (focusIndex = 0) {
   this.$menu.hidden = false
   this.$menuToggle.setAttribute('aria-expanded', 'true')
   if (focusIndex !== -1) {
@@ -178,7 +178,7 @@ MOJFrontend.ButtonMenu.prototype.openMenu = function (focusIndex = 0) {
  *
  * @param {boolean} moveFocus - whether to return focus to the toggle button
  */
-MOJFrontend.ButtonMenu.prototype.closeMenu = function (moveFocus = true) {
+ButtonMenu.prototype.closeMenu = function (moveFocus = true) {
   this.$menu.hidden = true
   this.$menuToggle.setAttribute('aria-expanded', 'false')
   if (moveFocus) {
@@ -191,7 +191,7 @@ MOJFrontend.ButtonMenu.prototype.closeMenu = function (moveFocus = true) {
  *
  * @param {number} index - the index of the item to focus
  */
-MOJFrontend.ButtonMenu.prototype.focusItem = function (index) {
+ButtonMenu.prototype.focusItem = function (index) {
   if (index >= this.items.length) index = 0
   if (index < 0) index = this.items.length - 1
 
@@ -201,14 +201,14 @@ MOJFrontend.ButtonMenu.prototype.focusItem = function (index) {
   }
 }
 
-MOJFrontend.ButtonMenu.prototype.currentFocusIndex = function () {
+ButtonMenu.prototype.currentFocusIndex = function () {
   const activeElement = document.activeElement
   const menuItems = Array.from(this.items)
 
   return menuItems.indexOf(activeElement)
 }
 
-MOJFrontend.ButtonMenu.prototype.handleKeyDown = function (event) {
+ButtonMenu.prototype.handleKeyDown = function (event) {
   if (event.target === this.$menuToggle) {
     switch (event.key) {
       case 'ArrowDown':
@@ -265,7 +265,7 @@ MOJFrontend.ButtonMenu.prototype.handleKeyDown = function (event) {
  * @param {DOMStringMap} dataset - HTML element dataset
  * @returns {object} Normalised dataset
  */
-MOJFrontend.ButtonMenu.prototype.parseDataset = function (schema, dataset) {
+ButtonMenu.prototype.parseDataset = function (schema, dataset) {
   const parsed = {}
 
   for (const [field, ,] of Object.entries(schema.properties)) {
@@ -288,7 +288,7 @@ MOJFrontend.ButtonMenu.prototype.parseDataset = function (schema, dataset) {
  * @param {...{ [key: string]: unknown }} configObjects - Config objects to merge
  * @returns {{ [key: string]: unknown }} A merged config object
  */
-MOJFrontend.ButtonMenu.prototype.mergeConfigs = function (...configObjects) {
+ButtonMenu.prototype.mergeConfigs = function (...configObjects) {
   const formattedConfigObject = {}
 
   // Loop through each of the passed objects
@@ -311,6 +311,8 @@ MOJFrontend.ButtonMenu.prototype.mergeConfigs = function (...configObjects) {
 
   return formattedConfigObject
 }
+
+module.exports = { ButtonMenu }
 
 /**
  * Schema for component config

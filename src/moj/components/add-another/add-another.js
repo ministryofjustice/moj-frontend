@@ -1,4 +1,4 @@
-MOJFrontend.AddAnother = function (container) {
+function AddAnother(container) {
   this.container = $(container)
 
   if (this.container.data('moj-add-another-initialised')) {
@@ -22,7 +22,7 @@ MOJFrontend.AddAnother = function (container) {
     .prop('type', 'button')
 }
 
-MOJFrontend.AddAnother.prototype.onAddButtonClick = function (e) {
+AddAnother.prototype.onAddButtonClick = function (e) {
   const item = this.getNewItem()
   this.updateAttributes(this.getItems().length, item)
   this.resetItem(item)
@@ -34,15 +34,15 @@ MOJFrontend.AddAnother.prototype.onAddButtonClick = function (e) {
   item.find('input, textarea, select').first().focus()
 }
 
-MOJFrontend.AddAnother.prototype.hasRemoveButton = function (item) {
+AddAnother.prototype.hasRemoveButton = function (item) {
   return item.find('.moj-add-another__remove-button').length
 }
 
-MOJFrontend.AddAnother.prototype.getItems = function () {
+AddAnother.prototype.getItems = function () {
   return this.container.find('.moj-add-another__item')
 }
 
-MOJFrontend.AddAnother.prototype.getNewItem = function () {
+AddAnother.prototype.getNewItem = function () {
   const item = this.getItems().first().clone()
   if (!this.hasRemoveButton(item)) {
     this.createRemoveButton(item)
@@ -50,7 +50,7 @@ MOJFrontend.AddAnother.prototype.getNewItem = function () {
   return item
 }
 
-MOJFrontend.AddAnother.prototype.updateAttributes = function (index, item) {
+AddAnother.prototype.updateAttributes = function (index, item) {
   item.find('[data-name]').each(function (i, el) {
     const originalId = el.id
 
@@ -69,13 +69,13 @@ MOJFrontend.AddAnother.prototype.updateAttributes = function (index, item) {
   })
 }
 
-MOJFrontend.AddAnother.prototype.createRemoveButton = function (item) {
+AddAnother.prototype.createRemoveButton = function (item) {
   item.append(
     '<button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>'
   )
 }
 
-MOJFrontend.AddAnother.prototype.resetItem = function (item) {
+AddAnother.prototype.resetItem = function (item) {
   item.find('[data-name], [data-id]').each(function (index, el) {
     if (el.type === 'checkbox' || el.type === 'radio') {
       el.checked = false
@@ -85,7 +85,7 @@ MOJFrontend.AddAnother.prototype.resetItem = function (item) {
   })
 }
 
-MOJFrontend.AddAnother.prototype.onRemoveButtonClick = function (e) {
+AddAnother.prototype.onRemoveButtonClick = function (e) {
   $(e.currentTarget).parents('.moj-add-another__item').remove()
   const items = this.getItems()
   if (items.length === 1) {
@@ -99,6 +99,8 @@ MOJFrontend.AddAnother.prototype.onRemoveButtonClick = function (e) {
   this.focusHeading()
 }
 
-MOJFrontend.AddAnother.prototype.focusHeading = function () {
+AddAnother.prototype.focusHeading = function () {
   this.container.find('.moj-add-another__heading').get(0).focus()
 }
+
+module.exports = { AddAnother }
