@@ -3,6 +3,7 @@ const nodeResolve = require('@rollup/plugin-node-resolve')
 const gulp = require('gulp')
 const gulpSass = require('gulp-sass')
 const { rollup } = require('rollup')
+const externalGlobals = require('rollup-plugin-external-globals')
 const dartSass = require('sass-embedded')
 
 const sass = gulpSass(dartSass)
@@ -68,7 +69,14 @@ gulp.task('docs:scripts', async () => {
       file: 'public/assets/javascript/application.min.js',
       format: 'esm'
     },
-    plugins: [nodeResolve(), commonjs()]
+    external: ['jquery'],
+    plugins: [
+      externalGlobals({
+        jquery: 'window.jQuery'
+      }),
+      nodeResolve(),
+      commonjs()
+    ]
   })
 
   const bundle = await rollup(options)

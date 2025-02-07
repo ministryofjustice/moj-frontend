@@ -1,3 +1,5 @@
+const $ = require('jquery')
+
 function AddAnother(container) {
   this.container = $(container)
 
