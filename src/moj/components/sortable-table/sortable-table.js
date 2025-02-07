@@ -1,3 +1,5 @@
+const $ = require('jquery')
+
 function SortableTable(params) {
   this.table = $(params.table)
 

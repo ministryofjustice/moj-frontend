@@ -1,3 +1,5 @@
+const $ = require('jquery')
+
 function MultiSelect(options) {
   this.container = $(options.container)
 

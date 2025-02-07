@@ -7,6 +7,7 @@ const rename = require('gulp-rename')
 const gulpSass = require('gulp-sass')
 const uglify = require('gulp-uglify')
 const { rollup } = require('rollup')
+const externalGlobals = require('rollup-plugin-external-globals')
 const dartSass = require('sass-embedded')
 
 const sass = gulpSass(dartSass)
@@ -71,7 +72,14 @@ gulp.task('docs:scripts', async () => {
 
   const bundle = await rollup({
     input,
-    plugins: [nodeResolve(), commonjs()]
+    external: ['jquery'],
+    plugins: [
+      externalGlobals({
+        jquery: 'window.jQuery'
+      }),
+      nodeResolve(),
+      commonjs()
+    ]
   })
 
   await bundle.write({

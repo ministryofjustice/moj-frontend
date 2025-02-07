@@ -8,6 +8,7 @@ const concat = require('gulp-concat')
 const rename = require('gulp-rename')
 const uglify = require('gulp-uglify')
 const { rollup } = require('rollup')
+const externalGlobals = require('rollup-plugin-external-globals')
 
 gulp.task('build:javascript', async () => {
   const modulePaths = await glob('moj/components/**/*.{cjs,js,mjs}', {
@@ -36,7 +37,14 @@ gulp.task('build:javascript', async () => {
           name: 'MOJFrontend'
         }
       ],
-      plugins: [nodeResolve(), commonjs()]
+      external: ['jquery'],
+      plugins: [
+        externalGlobals({
+          jquery: 'window.jQuery'
+        }),
+        nodeResolve(),
+        commonjs()
+      ]
     })
 
     // Create bundle
@@ -59,11 +67,7 @@ gulp.task('build:javascript-minified', () => {
 
 gulp.task('build:javascript-minified-with-jquery', () => {
   return gulp
-    .src([
-      'node_modules/jquery/dist/jquery.js',
-      'gulp/jquery/scope.js',
-      'package/moj/all.js'
-    ])
+    .src(['node_modules/jquery/dist/jquery.js', 'package/moj/all.js'])
     .pipe(concat('all.jquery.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('package/moj/'))

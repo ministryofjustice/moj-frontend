@@ -1,3 +1,5 @@
+const $ = require('jquery')
+
 const { addAttributeValue, removeAttributeValue } = require('../../helpers.js')
 
 function FormValidator(form, options) {

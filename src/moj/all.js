@@ -1,5 +1,7 @@
 /* eslint-disable no-new */
 
+const $ = require('jquery')
+
 const { AddAnother } = require('./components/add-another/add-another.js')
 const { Alert } = require('./components/alert/alert.js')
 const { ButtonMenu } = require('./components/button-menu/button-menu.js')

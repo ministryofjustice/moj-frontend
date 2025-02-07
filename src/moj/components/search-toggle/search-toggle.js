@@ -1,3 +1,5 @@
+const $ = require('jquery')
+
 function SearchToggle(options) {
   this.options = options
   this.container = $(this.options.search.container)

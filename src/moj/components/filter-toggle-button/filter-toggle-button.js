@@ -1,3 +1,5 @@
+const $ = require('jquery')
+
 function FilterToggleButton(options) {
   this.options = options
   this.container = $(this.options.toggleButton.container)

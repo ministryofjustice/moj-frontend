@@ -1,3 +1,5 @@
+const $ = require('jquery')
+
 function RichTextEditor(options) {
   if (!('contentEditable' in document.documentElement)) {
     return

@@ -1,3 +1,5 @@
+const $ = require('jquery')
+
 function PasswordReveal(element) {
   this.el = element
   const $el = $(this.el)
