@@ -1,5 +1,8 @@
 import $ from 'jquery'
 
+/**
+ * @class
+ */
 export function FilterToggleButton(options) {
   this.options = options
   this.container = $(this.options.toggleButton.container)
@@ -15,7 +18,7 @@ export function FilterToggleButton(options) {
 
 FilterToggleButton.prototype.setupResponsiveChecks = function () {
   this.mq = window.matchMedia(this.options.bigModeMediaQuery)
-  this.mq.addListener($.proxy(this, 'checkMode'))
+  this.mq.addListener(this.checkMode.bind(this))
   this.checkMode(this.mq)
 }
 
@@ -23,7 +26,7 @@ FilterToggleButton.prototype.createToggleButton = function () {
   this.menuButton = $(
     `<button class="govuk-button ${this.options.toggleButton.classes}" type="button" aria-haspopup="true" aria-expanded="false">${this.options.toggleButton.showText}</button>`
   )
-  this.menuButton.on('click', $.proxy(this, 'onMenuButtonClick'))
+  this.menuButton.on('click', this.onMenuButtonClick.bind(this))
   this.container.append(this.menuButton)
 }
 
@@ -50,7 +53,7 @@ FilterToggleButton.prototype.addCloseButton = function () {
     this.closeButton = $(
       `<button class="moj-filter__close" type="button">${this.options.closeButton.text}</button>`
     )
-    this.closeButton.on('click', $.proxy(this, 'onCloseClick'))
+    this.closeButton.on('click', this.onCloseClick.bind(this))
     $(this.options.closeButton.container).append(this.closeButton)
   }
 }

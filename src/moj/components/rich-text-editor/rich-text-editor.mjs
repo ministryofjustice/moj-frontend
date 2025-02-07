@@ -1,20 +1,29 @@
 import $ from 'jquery'
 
+/**
+ * @class
+ * @param {RichTextEditorConfig} options
+ */
 export function RichTextEditor(options) {
-  if (!('contentEditable' in document.documentElement)) {
+  if (
+    !options.textarea ||
+    !(options.textarea instanceof HTMLTextAreaElement) ||
+    !('contentEditable' in document.documentElement)
+  ) {
     return
   }
 
-  this.options = options
-  this.options.toolbar = this.options.toolbar || {
+  options.toolbar = options.toolbar || {
     bold: false,
     italic: false,
     underline: false,
     bullets: true,
     numbers: true
   }
-  this.textarea = this.options.textarea
-  this.container = $(this.textarea).parent()
+
+  this.options = options
+  this.textarea = $(options.textarea)
+  this.container = this.textarea.parent()
 
   if (this.container.data('moj-rich-text-editor-initialised')) {
     return
@@ -34,15 +43,18 @@ export function RichTextEditor(options) {
   this.container.on(
     'click',
     '.moj-rich-text-editor__toolbar-button',
-    $.proxy(this, 'onButtonClick')
+    this.onButtonClick.bind(this)
   )
   this.container
     .find('.moj-rich-text-editor__content')
-    .on('input', $.proxy(this, 'onEditorInput'))
-  this.container.find('label').on('click', $.proxy(this, 'onLabelClick'))
-  this.toolbar.on('keydown', $.proxy(this, 'onToolbarKeydown'))
+    .on('input', this.onEditorInput.bind(this))
+  this.container.find('label').on('click', this.onLabelClick.bind(this))
+  this.toolbar.on('keydown', this.onToolbarKeydown.bind(this))
 }
 
+/**
+ * @param {JQuery.KeyDownEvent<HTMLElement>} e - Click event
+ */
 RichTextEditor.prototype.onToolbarKeydown = function (e) {
   let focusableButton
   switch (e.keyCode) {
@@ -142,6 +154,9 @@ RichTextEditor.prototype.getContent = function () {
   return this.container.find('.moj-rich-text-editor__content').html()
 }
 
+/**
+ * @param {JQuery.TriggeredEvent<HTMLElement>} e - Input event
+ */
 RichTextEditor.prototype.onEditorInput = function (e) {
   this.updateTextarea()
 }
@@ -151,7 +166,29 @@ RichTextEditor.prototype.updateTextarea = function () {
   this.textarea.val(this.getContent())
 }
 
+/**
+ * @param {JQuery.ClickEvent<HTMLElement>} e - Click event
+ */
 RichTextEditor.prototype.onLabelClick = function (e) {
   e.preventDefault()
   this.container.find('.moj-rich-text-editor__content').focus()
 }
+
+/**
+ * Rich text editor config
+ *
+ * @typedef {object} RichTextEditorConfig
+ * @property {Element | null} textarea - Textarea selector
+ * @property {RichTextEditorToolbar} [toolbar] - Toolbar options
+ */
+
+/**
+ * Rich text editor toolbar options
+ *
+ * @typedef {object} RichTextEditorToolbar
+ * @property {boolean} [bold] - Show the bold button
+ * @property {boolean} [italic] - Show the italic button
+ * @property {boolean} [underline] - Show the underline button
+ * @property {boolean} [bullets] - Show the bullets button
+ * @property {boolean} [numbers] - Show the numbers button
+ */

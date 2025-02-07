@@ -1,29 +1,40 @@
-export function removeAttributeValue(el, attr, value) {
-  let re, m
-  if (el.getAttribute(attr)) {
-    if (el.getAttribute(attr) === value) {
+/**
+ * @param {HTMLElement} el
+ * @param {string} attr
+ * @param {string} expected
+ */
+export function removeAttributeValue(el, attr, expected) {
+  const value = el.getAttribute(attr)
+
+  if (value) {
+    if (value === expected) {
       el.removeAttribute(attr)
     } else {
-      re = new RegExp(`(^|\\s)${value}(\\s|$)`)
-      m = el.getAttribute(attr).match(re)
+      const re = new RegExp(`(^|\\s)${expected}(\\s|$)`)
+      const m = value.match(re)
+
       if (m && m.length === 3) {
-        el.setAttribute(
-          attr,
-          el.getAttribute(attr).replace(re, m[1] && m[2] ? ' ' : '')
-        )
+        el.setAttribute(attr, value.replace(re, m[1] && m[2] ? ' ' : ''))
       }
     }
   }
 }
 
-export function addAttributeValue(el, attr, value) {
-  let re
-  if (!el.getAttribute(attr)) {
-    el.setAttribute(attr, value)
+/**
+ * @param {HTMLElement} el
+ * @param {string} attr
+ * @param {string} expected
+ */
+export function addAttributeValue(el, attr, expected) {
+  const value = el.getAttribute(attr)
+
+  if (!value) {
+    el.setAttribute(attr, expected)
   } else {
-    re = new RegExp(`(^|\\s)${value}(\\s|$)`)
-    if (!re.test(el.getAttribute(attr))) {
-      el.setAttribute(attr, `${el.getAttribute(attr)} ${value}`)
+    const re = new RegExp(`(^|\\s)${expected}(\\s|$)`)
+
+    if (!re.test(value)) {
+      el.setAttribute(attr, `${value} ${expected}`)
     }
   }
 }
@@ -43,11 +54,26 @@ export function fileApiSupported() {
   return typeof input.files !== 'undefined'
 }
 
+/**
+ * @template {Node} ElementType
+ * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
+ * @param {nodeListIterator<ElementType>} callback - Callback function to run for each node
+ */
 export function nodeListForEach(nodes, callback) {
-  if (window.NodeList.prototype.forEach) {
+  if ('forEach' in window.NodeList.prototype) {
     return nodes.forEach(callback)
   }
+
   for (let i = 0; i < nodes.length; i++) {
     callback.call(window, nodes[i], i, nodes)
   }
 }
+
+/**
+ * @template {Node} ElementType
+ * @callback nodeListIterator
+ * @param {ElementType} value - The current node being iterated on
+ * @param {number} index - The current index in the iteration
+ * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
+ * @returns {void}
+ */

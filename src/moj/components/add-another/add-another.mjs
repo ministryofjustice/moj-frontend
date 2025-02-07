@@ -1,6 +1,14 @@
 import $ from 'jquery'
 
+/**
+ * @class
+ * @param {Element | null} container - HTML element container
+ */
 export function AddAnother(container) {
+  if (!container || !(container instanceof HTMLElement)) {
+    return
+  }
+
   this.container = $(container)
 
   if (this.container.data('moj-add-another-initialised')) {
@@ -12,18 +20,21 @@ export function AddAnother(container) {
   this.container.on(
     'click',
     '.moj-add-another__remove-button',
-    $.proxy(this, 'onRemoveButtonClick')
+    this.onRemoveButtonClick.bind(this)
   )
   this.container.on(
     'click',
     '.moj-add-another__add-button',
-    $.proxy(this, 'onAddButtonClick')
+    this.onAddButtonClick.bind(this)
   )
   this.container
     .find('.moj-add-another__add-button, moj-add-another__remove-button')
     .prop('type', 'button')
 }
 
+/**
+ * @param {JQuery.ClickEvent<HTMLElement>} e - Click event
+ */
 AddAnother.prototype.onAddButtonClick = function (e) {
   const item = this.getNewItem()
   this.updateAttributes(this.getItems().length, item)
@@ -36,11 +47,18 @@ AddAnother.prototype.onAddButtonClick = function (e) {
   item.find('input, textarea, select').first().focus()
 }
 
+/**
+ * @param {JQuery<HTMLElement>} item - Add another item
+ */
 AddAnother.prototype.hasRemoveButton = function (item) {
   return item.find('.moj-add-another__remove-button').length
 }
 
 AddAnother.prototype.getItems = function () {
+  if (!this.container) {
+    return $()
+  }
+
   return this.container.find('.moj-add-another__item')
 }
 
@@ -52,33 +70,50 @@ AddAnother.prototype.getNewItem = function () {
   return item
 }
 
+/**
+ * @param {number} index - Add another item index
+ * @param {JQuery<HTMLElement>} item - Add another item
+ */
 AddAnother.prototype.updateAttributes = function (index, item) {
   item.find('[data-name]').each(function (i, el) {
+    if (!(el instanceof HTMLInputElement)) {
+      return
+    }
+
+    const name = $(el).attr('data-name') || ''
+    const id = $(el).attr('data-id') || ''
     const originalId = el.id
 
-    el.name = $(el)
-      .attr('data-name')
-      .replace(/%index%/, index)
-    el.id = $(el)
-      .attr('data-id')
-      .replace(/%index%/, index)
+    el.name = name.replace(/%index%/, `${index}`)
+    el.id = id.replace(/%index%/, `${index}`)
 
     const label =
       $(el).siblings('label')[0] ||
       $(el).parents('label')[0] ||
       item.find(`[for="${originalId}"]`)[0]
+
     label.htmlFor = el.id
   })
 }
 
+/**
+ * @param {JQuery<HTMLElement>} item - Add another item
+ */
 AddAnother.prototype.createRemoveButton = function (item) {
   item.append(
     '<button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>'
   )
 }
 
+/**
+ * @param {JQuery<HTMLElement>} item - Add another item
+ */
 AddAnother.prototype.resetItem = function (item) {
   item.find('[data-name], [data-id]').each(function (index, el) {
+    if (!(el instanceof HTMLInputElement)) {
+      return
+    }
+
     if (el.type === 'checkbox' || el.type === 'radio') {
       el.checked = false
     } else {
@@ -87,20 +122,25 @@ AddAnother.prototype.resetItem = function (item) {
   })
 }
 
+/**
+ * @param {JQuery.ClickEvent<HTMLElement, undefined, HTMLButtonElement>} e - Click event
+ */
 AddAnother.prototype.onRemoveButtonClick = function (e) {
   $(e.currentTarget).parents('.moj-add-another__item').remove()
   const items = this.getItems()
   if (items.length === 1) {
     items.find('.moj-add-another__remove-button').remove()
   }
-  items.each(
-    $.proxy(function (index, el) {
-      this.updateAttributes(index, $(el))
-    }, this)
-  )
+  items.each((index, el) => {
+    this.updateAttributes(index, $(el))
+  })
   this.focusHeading()
 }
 
 AddAnother.prototype.focusHeading = function () {
-  this.container.find('.moj-add-another__heading').get(0).focus()
+  const heading = this.container.find('.moj-add-another__heading').get(0)
+
+  if (heading) {
+    heading.focus()
+  }
 }

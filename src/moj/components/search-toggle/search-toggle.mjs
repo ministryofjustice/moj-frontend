@@ -19,7 +19,7 @@ export function SearchToggle(options) {
       ${this.options.toggleButton.text} ${svg}
     </button>`
   )
-  this.toggleButton.on('click', $.proxy(this, 'onToggleButtonClick'))
+  this.toggleButton.on('click', this.onToggleButtonClick.bind(this))
   this.toggleButtonContainer.append(this.toggleButton)
   $(document).on('click', this.onDocumentClick.bind(this))
   $(document).on('focusin', this.onDocumentClick.bind(this))
@@ -44,6 +44,9 @@ SearchToggle.prototype.onToggleButtonClick = function () {
   }
 }
 
+/**
+ * @param {JQuery.ClickEvent<Document> | JQuery.FocusInEvent<Document>} e
+ */
 SearchToggle.prototype.onDocumentClick = function (e) {
   if (
     !$.contains(this.toggleButtonContainer[0], e.target) &&

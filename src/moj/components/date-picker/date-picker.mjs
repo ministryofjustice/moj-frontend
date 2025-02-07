@@ -1,19 +1,7 @@
 /**
- * Date picker config
- *
- * @typedef {object} DatePickerConfig
- * @property {string} [excludedDates] - Dates that cannot be selected
- * @property {string} [excludedDays] - Days that cannot be selected
- * @property {boolean} [leadingZeroes] - Whether to add leading zeroes when populating the field
- * @property {string} [minDate] - The earliest available date
- * @property {string} [maxDate] - The latest available date
- * @property {string} [weekStartDay] - First day of the week in calendar view
- */
-
-/**
+ * @class
  * @param {HTMLElement} $module - HTML element
  * @param {DatePickerConfig} config - config object
- * @class
  */
 export function DatePicker($module, config = {}) {
   if (!$module) {
@@ -576,7 +564,7 @@ DatePicker.prototype.setCurrentDate = function (focus = true) {
   this.calendarDays.forEach((calendarDay) => {
     calendarDay.button.classList.add('moj-datepicker__button')
     calendarDay.button.classList.add('moj-datepicker__calendar-day')
-    calendarDay.button.setAttribute('tabindex', -1)
+    calendarDay.button.setAttribute('tabindex', '-1')
     calendarDay.button.classList.remove(this.selectedDayButtonClass)
     const calendarDayDate = calendarDay.date
     calendarDayDate.setHours(0, 0, 0, 0)
@@ -589,7 +577,7 @@ DatePicker.prototype.setCurrentDate = function (focus = true) {
       currentDate.getTime() /* && !calendarDay.button.disabled */
     ) {
       if (focus) {
-        calendarDay.button.setAttribute('tabindex', 0)
+        calendarDay.button.setAttribute('tabindex', '0')
         calendarDay.button.focus()
         calendarDay.button.classList.add(this.selectedDayButtonClass)
       }
@@ -622,7 +610,7 @@ DatePicker.prototype.setCurrentDate = function (focus = true) {
       )
     })
 
-    enabledDays[0].button.setAttribute('tabindex', 0)
+    enabledDays[0].button.setAttribute('tabindex', '0')
 
     this.currentDate = enabledDays[0].date
   }
@@ -790,9 +778,10 @@ DatePicker.prototype.focusPreviousYear = function (event, focus = true) {
  *
  * @param {Schema} schema - Component class
  * @param {DOMStringMap} dataset - HTML element dataset
- * @returns {object} Normalised dataset
+ * @returns {{ [key: string]: unknown }} Normalised dataset
  */
 DatePicker.prototype.parseDataset = function (schema, dataset) {
+  /** @type {{ [key: string]: unknown }} */
   const parsed = {}
 
   for (const [field, ,] of Object.entries(schema.properties)) {
@@ -871,7 +860,7 @@ DSCalendarDay.prototype.update = function (day, hidden, disabled) {
   let accessibleLabel = this.picker.formattedDateHuman(day)
 
   if (disabled) {
-    this.button.setAttribute('aria-disabled', true)
+    this.button.setAttribute('aria-disabled', 'true')
     accessibleLabel = `Excluded date, ${accessibleLabel}`
   } else {
     this.button.removeAttribute('aria-disabled')
@@ -891,6 +880,9 @@ DSCalendarDay.prototype.update = function (day, hidden, disabled) {
   this.date = new Date(day)
 }
 
+/**
+ * @param {MouseEvent} event - Click event
+ */
 DSCalendarDay.prototype.click = function (event) {
   this.picker.goToDate(this.date)
   this.picker.selectDate(this.date)
@@ -899,6 +891,9 @@ DSCalendarDay.prototype.click = function (event) {
   event.preventDefault()
 }
 
+/**
+ * @param {KeyboardEvent} event - Key press event
+ */
 DSCalendarDay.prototype.keyPress = function (event) {
   let calendarNavKey = true
 
@@ -945,15 +940,13 @@ DSCalendarDay.prototype.keyPress = function (event) {
 }
 
 /**
- * Schema for component config
+ * Date picker config
  *
- * @typedef {object} Schema
- * @property {{ [field: string]: SchemaProperty | undefined }} properties - Schema properties
- */
-
-/**
- * Schema property for component config
- *
- * @typedef {object} SchemaProperty
- * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
+ * @typedef {object} DatePickerConfig
+ * @property {string} [excludedDates] - Dates that cannot be selected
+ * @property {string} [excludedDays] - Days that cannot be selected
+ * @property {boolean} [leadingZeroes] - Whether to add leading zeroes when populating the field
+ * @property {string} [minDate] - The earliest available date
+ * @property {string} [maxDate] - The latest available date
+ * @property {string} [weekStartDay] - First day of the week in calendar view
  */

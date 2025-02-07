@@ -86,6 +86,12 @@ module.exports = {
           }
         ],
 
+        // Skip rules handled by TypeScript compiler
+        'n/no-extraneous-require': 'off',
+        'n/no-extraneous-import': 'off',
+        'n/no-missing-require': 'off',
+        'n/no-missing-import': 'off',
+
         // Automatically use template strings
         'no-useless-concat': 'error',
         'prefer-template': 'error',
