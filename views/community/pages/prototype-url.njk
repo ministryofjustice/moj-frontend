@@ -4,7 +4,7 @@
 {% extends "base.njk" %}
 {% block content %}
   <div class="app-layout__content">
-    <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ submitUrl }}" data-add-another-container>
       <span class="govuk-caption-l">Submit new component</span>
       <h1>Prototype URL</h1>
       {{ govukInput({
@@ -35,11 +35,29 @@
         value: formData.prototypeUrlAdditionalInformation
       }) }}
 
-      <div class="moj-button-action">
+      <div class="govuk-button-group moj-button-action">
         {{ govukButton({
-          text: 'Continue'
+          text: 'Continue',
+          preventDoubleClick: true
+        }) }}
+
+        {{ govukButton({
+          text: "Add another link",
+          classes: "govuk-button--secondary",
+          attributes: {'data-add-another': addAnother}
         }) }}
       </div>
     </form>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const containers = document.querySelectorAll('[data-add-another-container]')
+      containers.forEach(function (container) {
+        new MOJFrontend.AddAnotherForm(container)
+      })
+    })
+  </script>
 {% endblock %}
+
+

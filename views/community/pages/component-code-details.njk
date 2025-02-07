@@ -11,7 +11,7 @@
         errorList: errorList
       }) }}
     {% endif %}
-    <form method="post" action="{{ submitUrl }}">
+    <form method="post" action="{{ submitUrl }}" data-add-another-container>
       <span class="govuk-caption-l">Submit new component</span>
       <h1>Component code</h1>
       <p>We recommend sending HTML, CSS, SASS, Javascript or Nunjucks.</p>
@@ -61,12 +61,27 @@
         value: formData.componentCode
       }) }}
 
-      <div class="moj-button-action">
+      <div class="govuk-button-group moj-button-action">
         {{ govukButton({
-          text: 'Continue'
+          text: 'Continue',
+          preventDoubleClick: true
+        }) }}
+
+        {{ govukButton({
+          text: "Add another code example",
+          classes: "govuk-button--secondary",
+          attributes: {'data-add-another': addAnother}
         }) }}
       </div>
     </form>
   </div>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const containers = document.querySelectorAll('[data-add-another-container]')
+      containers.forEach(function (container) {
+        new MOJFrontend.AddAnotherForm(container)
+      })
+    })
+  </script>
 {% endblock %}

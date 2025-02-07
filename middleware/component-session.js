@@ -13,9 +13,15 @@ const transformErrorsToErrorList = (errors) => {
   }))
 }
 
-const nextPage = (url, body) => {
-  const index = COMPONENT_FORM_PAGES.findIndex((page) => url.endsWith(page))
+const nextPage = (url, body, subpage) => {
+  const path = url.split('/')[1]
+  const index = COMPONENT_FORM_PAGES.findIndex((page) => path.endsWith(page))
   const currentPage = COMPONENT_FORM_PAGES[index]
+
+  if(subpage) {
+    // Return same page but with the next subpage
+    return `${currentPage}/${subpage}`
+  }
 
   // Check if there's an entry for this page in COMPONENT_FORM_PAGES_OPTIONS
   if (COMPONENT_FORM_PAGES_OPTIONS[currentPage]) {
@@ -42,13 +48,14 @@ const setNextPage = (req, res, next) => {
   if (req?.session?.checkYourAnswers) {
     req.nextPage = '/check-your-answers'
   } else {
-    req.nextPage = nextPage(req.originalUrl, req?.body)
+    const subpage = req?.query?.addAnother && req?.params?.subpage
+    req.nextPage = nextPage(req.url, req?.body, subpage)
   }
   next()
 }
 
 const validateFormData = (req, res, next) => {
-  const schemaName = req.url.replace('/', '')
+  const schemaName = req.url.split('/')[1]
   const schema = require(`../schema/${schemaName}.schema`)
   const { error, value } = schema.validate(req.body, { abortEarly: false })
 
@@ -94,7 +101,7 @@ const saveSession = (req, res, next) => {
 
   req.session[req.url] = body
 
-  console.log('saved session')
+  console.log('saved session', req.url)
   next()
 }
 

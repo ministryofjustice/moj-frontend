@@ -51,3 +51,41 @@ MOJFrontend.nodeListForEach = function (nodes, callback) {
     callback.call(window, nodes[i], i, nodes)
   }
 }
+
+MOJFrontend.AddAnotherForm = function (container) {
+  this.container = $(container)
+
+  if (this.container.data('moj-add-another-initialised')) {
+    console.log('AddAnotherForm already initialised for this container.')
+    return
+  }
+
+  console.log('Initialising AddAnotherForm for container:', container)
+  this.container.data('moj-add-another-initialised', true)
+
+  this.container.on('click', '.moj-add-another__remove-button', (e) => this.onRemoveButtonClick(e))
+  this.container.on('click', '.moj-add-another__add-button', (e) => this.onAddButtonClick(e))
+  this.container
+    .find('.moj-add-another__add-button, .moj-add-another__remove-button')
+    .prop('type', 'button')
+
+  this.container.on('click', '[data-add-another]', (e) => this.onAddAnotherButtonClick(e))
+}
+
+MOJFrontend.AddAnotherForm.prototype.onAddAnotherButtonClick = function (e) {
+  const button = $(e.currentTarget)
+  console.log('AddAnother button clicked:', button)
+  const form = button.closest('form')
+  let currentUrl = form.attr('action')
+  const page = button.data('add-another') || 1
+
+  console.log('Current form action URL:', currentUrl)
+  const urlPattern = /\/\d+$/
+  if (urlPattern.test(currentUrl)) {
+    currentUrl = currentUrl.replace(urlPattern, `/${page}`)
+  } else {
+    currentUrl = `${currentUrl}/${page}`
+  }
+  form.attr('action', `${currentUrl}?addAnother=true`)
+  console.log('Updated form action URL:', form.attr('action'))
+}

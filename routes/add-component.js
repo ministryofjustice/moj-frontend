@@ -94,13 +94,15 @@ router.get('/confirmation', (req, res) => {
 
 // Component form page
 router.get(
-  '/:page',
+  ['/:page', '/:page/:subpage'],
   isValidComponentFormPage,
   getFormDataFromSession,
   (req, res) => {
+    const page = req?.params?.subpage ? `${req.params.page}/${req.params.subpage}` : req.params.page
     res.render(`${req.params.page}`, {
       submitUrl: req.originalUrl,
-      formData: req?.formData
+      formData: req?.formData,
+      addAnother: req?.params?.subpage ? 1 + parseInt(req.params.subpage) : 1,
     })
   }
 )
@@ -142,7 +144,7 @@ router.post(
 
 // Form submissions for pages
 router.post(
-  '/:page',
+  ['/:page', '/:page/:subpage'],
   isValidComponentFormPage,
   validateFormData,
   saveSession,
