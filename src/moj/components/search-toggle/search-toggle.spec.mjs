@@ -1,10 +1,10 @@
 /* eslint-disable no-new */
 
-const { queryByRole } = require('@testing-library/dom')
-const { userEvent } = require('@testing-library/user-event')
-const $ = require('jquery')
+import { queryByRole } from '@testing-library/dom'
+import { userEvent } from '@testing-library/user-event'
+import $ from 'jquery'
 
-const { SearchToggle } = require('./search-toggle.js')
+import { SearchToggle } from './search-toggle.mjs'
 
 const user = userEvent.setup()
 

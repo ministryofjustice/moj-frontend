@@ -2,7 +2,7 @@
 
 import * as GOVUKFrontend from 'govuk-frontend'
 
-import MOJFrontend from '../../../src/moj/all.js'
+import * as MOJFrontend from '../../../src/moj/all.mjs'
 
 import CollapsibleNav from './collapsible-nav.mjs'
 import Cookies from './cookies.mjs'

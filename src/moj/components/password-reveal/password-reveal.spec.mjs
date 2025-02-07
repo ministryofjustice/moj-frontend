@@ -1,10 +1,10 @@
 /* eslint-disable no-new */
 
-const { getByDisplayValue, getByText } = require('@testing-library/dom')
-const { userEvent } = require('@testing-library/user-event')
-const { configureAxe } = require('jest-axe')
+import { getByDisplayValue, getByText } from '@testing-library/dom'
+import { userEvent } from '@testing-library/user-event'
+import { configureAxe } from 'jest-axe'
 
-const { PasswordReveal } = require('./password-reveal.js')
+import { PasswordReveal } from './password-reveal.mjs'
 
 const user = userEvent.setup()
 const axe = configureAxe({

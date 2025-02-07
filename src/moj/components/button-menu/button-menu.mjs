@@ -10,7 +10,7 @@
  * @param {ButtonMenuConfig} config
  * @class
  */
-function ButtonMenu($module, config = {}) {
+export function ButtonMenu($module, config = {}) {
   if (!$module) {
     return this
   }
@@ -311,8 +311,6 @@ ButtonMenu.prototype.mergeConfigs = function (...configObjects) {
 
   return formattedConfigObject
 }
-
-module.exports = { ButtonMenu }
 
 /**
  * Schema for component config

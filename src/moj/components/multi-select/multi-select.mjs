@@ -1,6 +1,6 @@
-const $ = require('jquery')
+import $ from 'jquery'
 
-function MultiSelect(options) {
+export function MultiSelect(options) {
   this.container = $(options.container)
 
   if (this.container.data('moj-multi-select-initialised')) {
@@ -75,5 +75,3 @@ MultiSelect.prototype.onCheckboxClick = function (e) {
     }
   }
 }
-
-module.exports = { MultiSelect }

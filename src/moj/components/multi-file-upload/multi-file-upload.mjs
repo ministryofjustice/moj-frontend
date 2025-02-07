@@ -1,12 +1,12 @@
-const $ = require('jquery')
+import $ from 'jquery'
 
-const {
+import {
   dragAndDropSupported,
   fileApiSupported,
   formDataSupported
-} = require('../../helpers.js')
+} from '../../helpers.mjs'
 
-function MultiFileUpload(params) {
+export function MultiFileUpload(params) {
   if (!(dragAndDropSupported() && formDataSupported() && fileApiSupported())) {
     return
   }
@@ -223,5 +223,3 @@ MultiFileUpload.prototype.onFileDeleteClick = function (e) {
     }, this)
   })
 }
-
-module.exports = { MultiFileUpload }
