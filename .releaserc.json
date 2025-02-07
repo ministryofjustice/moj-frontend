@@ -36,7 +36,7 @@
     [
       "semantic-release-plugin-update-version-in-files",
       {
-        "files": ["package/moj/all.js"],
+        "files": ["package/moj/all.js", "package/moj/all.mjs"],
         "placeholder": "0.0.0-development"
       }
     ]
