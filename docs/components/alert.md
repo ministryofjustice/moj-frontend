@@ -9,7 +9,7 @@ eleventyNavigation:
   excerpt: "Use the alert component to display a prominent message and related actions to take."
 ---
 
-<span class="govuk-caption-xl">The alert is a flexible set of components. It uses a visual design to display a notification to users.</span>
+<span class="govuk-caption-xl">The alert is a flexible component. It uses a visual design to display a notification to users.</span>
 
 {% tabs "Contents" %}
 
@@ -19,7 +19,7 @@ eleventyNavigation:
 
 ## Overview
 
-The alert component presents one of 4 types of alerts to a user. It persists on the page but can be altered so that users can close (dismiss) it.
+The alert component presents 1 of 4 types of alerts to a user. It can be persist on the page or be dismissed by the user.  
 
 As a leaner component, it’s ideal for dashboards, internal services and other complex user interfaces.  
 
@@ -42,44 +42,37 @@ Use the information alert sparingly. People often miss banners and alerts, and u
 The information alert can tell a user about:
 
 - unfinished tasks, directing people to where to do them
-- significant changes to a service, until the change become familiar
+- a significant change to a service, until it become familiar
 - service downtime  
+
+The information alert can be combined with other alert variants. For linear services or display the 'Important' heading, use the <a href="https://design-system.service.gov.uk/components/notification-banner">GOV.UK notification banner component</a>.
 
 #### When not to use
 
-^ The information alert can be combined with other alerts on a page or in a service. Use the [GOV.UK Design System notification banner component](https://design-system.service.gov.uk/components/notification-banner/) for linear services or if you do not intend to use the warning and alert banners.^  
-
-The information alert can tell a user about:
-- unfinished tasks, directing people to where to do them
-- significant changes to a service (until people familiarise themselves with the change becomes)
-- service downtime (shown globally)
-
-Use this alert sparingly. People often miss banners and alerts, and using them too often is likely to make this worse. If a lot of information alerts are emerging in a service, it might be a sign that a journey needs redesigning.
-
-An information alert is low to medium priority. If the issue is more severe, or you want to prevent something going wrong, use the warning alert.
+You may want to avoid this alert for a high priority notification or to prevent something going wrong. Use the warning alert for this.
 
 ### Warning alert
 
 {% example "/examples/alert-warning" %}
 
-The warning alert tells users about something to prevent them from making a mistake. It tells the user that they need to be careful about something. Use it sparingly to help avoid alert fatigue.
-
-It has an orange border and an icon.  
+The warning alert tells users about something to prevent them from making a mistake. Use it sparingly to avoid alert fatigue. It has an orange border and an icon.  
 
 #### When to use
 
-A warning alert can be used when, for example:
+A warning alert can be used when something:
 
-- information is missing, for example because data integration has not worked properly (but the user can access the information another way)
-- a record has not been updated recently, but may still be of use
-- something has become more urgent or important, for example because a deadline is approaching
-- a user should not be prevented from doing their task but need to know that it affects something else, for example they’re booking the last wheelchair accessible room and they might want to use it for someone else
+- is missing but the user can access the information another way, for example in a legacy system
+- has not been updated recently but may still be of use, for example a risk assessment
+- has become more urgent or important, for example because a deadline is approaching
 
 #### When not to use
 
-If the warning alert feels too severe for the context, use the information alert.  
+Do not use the warning alert for:
 
-If you want to add your message to the body copy or do not want a coloured border and icon, use the [GOV.UK Design System inset text component](https://design-system.service.gov.uk/components/inset-text/) or the [GOV.UK Design System warning text component](https://design-system.service.gov.uk/components/warning-text/).
+- content which is just 'good to know' (use the [information alert](#information-alert) instead)
+- body copy (unless it's immediately under a heading)   
+
+If you want to add your message to the body copy or do not want a coloured border and icon, use the [GOV.UK inset text component](https://design-system.service.gov.uk/components/inset-text/) or the [GOV.UK warning text component](https://design-system.service.gov.uk/components/warning-text/).
 
 ### Error alert
 
@@ -87,21 +80,26 @@ If you want to add your message to the body copy or do not want a coloured borde
 
 The error alert shows the user that something has gone wrong. It pauses the user without interrupting them. It can appear before or after a user input. It has a red border and an icon.  
 
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-visually-hidden">Warning</span>
+Do not use the error alert for validation errors. Continue to use the [GOV.UK error message](https://design-system.service.gov.uk/components/error-message/) for this.</strong>
+</div>
+
 #### When to use
 
-The error alert can be displayed when, for example:
+The error alert can be displayed when something:
 
-- something significant has changed since the user’s last session - for example, a person has been released from prison or an appointment is now double booked
-- a user cannot complete their task because something has changed since they opened the page, for example a case was deleted or assigned to someone else
+- has changed significantly since the user’s last session, for example, a person has been released from prison or an appointment is now double booked
+- changed between the user opening the page and interacting with it, for example a case was deleted or assigned to someone else
 - the user needs to do something before this task, for example remove bookings from a property they’re archiving
 
-The alert should help the user understand what they need to do to resolve the error.
+If the user needs to resolve the error, the alert needs to help them understand how.
 
 #### When not to use
 
-%Do not use the error alert for validation errors. Continue to use the [GOV.UK Design System error message](https://design-system.service.gov.uk/components/error-message/) for this.%
-
-This alert draws the user’s attention to the message without interrupting them. Use the [MoJ Design System interruption card component](https://design-patterns.service.justice.gov.uk/components/interruption-card/) to pause a user’s journey.
+This alert draws the user’s attention to the message without interrupting them. Use the [interruption card component](https://design-patterns.service.justice.gov.uk/components/interruption-card/) to pause a user’s journey.
 
 ### Success alert
 
@@ -109,28 +107,28 @@ This alert draws the user’s attention to the message without interrupting them
 
 The success alert displays a single message after a user has completed something. It has a green border and an icon.
 
-This alert can be displayed at the top of the page they were on or on the next page (if their task moves them through the service). Adding the alert to existing pages shortens user journeys. This is useful in non-linear services and services where users complete repetitive tasks.
+This alert can be displayed at the top of the page or on the next page (if their task moves them through the service). Adding the alert to existing pages shortens user journeys. This is useful in non-linear services and services where users complete repetitive tasks.
 
 #### When to use
 
-The success banner can be used to show information that has:
+The success banner can be used to show that something has:
 
 - been uploaded or added, such as a file or record
-- changed status, for example it has been allocated to a person or moved to another stage or status in an application process
+- changed status, for example it's been allocated to a person or moved to another stage in an application process
 - been cancelled, deleted or another type of destructive action
-- been changed or deleted from a table using the [MoJ Design System multi-select component](https://design-patterns.service.justice.gov.uk/components/multi-select/)
+- been changed or deleted from a table using the [multi-select component](https://design-patterns.service.justice.gov.uk/components/multi-select/)
+
+If you need to display more information or want a more prominent component, consider the [success variation of the GOV.UK notification banner](https://design-system.service.gov.uk/components/notification-banner/#reacting-to-something-the-user-has-done).
 
 #### When not to use
 
-You may not need to display the alert if something else confirms success, for example the [GOV.UK Design System task list component](https://design-system.service.gov.uk/components/task-list/) or the user progressing to another page.
+You may not need to display the alert if something else confirms success, for example the [GOV.UK task list component](https://design-system.service.gov.uk/components/task-list/) or the user progressing to another page.
 
-^If you need to display more information or want a more prominent component, consider the [GOV.UK Design System success banner component](https://design-system.service.gov.uk/components/notification-banner/).^
-
-If the user has completed something more significant (such as a whole application) or reached the end of a service, use the [GOV.UK Design System confirmation page](https://design-system.service.gov.uk/patterns/confirmation-pages/).
+If the user has completed something more significant (such as a whole application) or reached the end of a service, use the [GOV.UK confirmation page](https://design-system.service.gov.uk/patterns/confirmation-pages/).
 
 ### Things to consider
 
-This alert interrupts the user and is placed in a prominent position on a page. This prioritisation should match the message of the alert and its relevance to the user.
+This alert pauses the user with a prominent message. This prioritisation should match the alert's message and its relevance to the user.
 
 {% endtab %}
 
@@ -138,37 +136,27 @@ This alert interrupts the user and is placed in a prominent position on a page. 
 
 ## How to use
 
-The alert works best when it contains a single, succinct message. Do not use any variation of the alert to display large amounts of content. This reduces the prominence of the component and pushes other content down the page too much.
+The alert works best when it contains a single, succinct message. Do not use any variation of the alert to display large amounts of content. This reduces the prominence of the component and pushes other content down the page too much. If you cannot communicate your message in under 3 sentences, select a different component.
 
 ### What to add to it
 
-The alert contains an icon and is surrounded by a border. It may contain:
+The alert contains an icon and is surrounded by a border. All alerts need to contain body copy, with a full stop at the end of each sentence.
 
-- 1 heading (but no more)
-- bullet points (if absolutely necessary)
-- links (in addition to the dismiss link)
+You can add 1 heading (but no more) to this. If needed, you can also add bullet points and links (in addition to a dismiss link, if there is one). The heading level should follow its position on the page. For example, an alert heading would be an H2 if placed under an H1.
 
-Add a full stop to the end of each sentence. The heading hierarchy can be an H2 of H3 depending on the rest of the page.  
-
-### Alert content
-
-The alert content needs to make sense in isolation, to make sure that the colour and icon are not relied upon too much. They are not accessible to everyone.
-
-If you cannot communicate your message in under 3 sentences, select a different component.
+The alert content needs to make sense on its own. This ensure that the message does not rely on the colour and icon too much, as they're not accessible to everyone.
 
 ### Dismissing the alert
 
 {% example "/examples/alert-dismissible" %}
 
-The alert persists on the page by default.
-
-It can be configured to enable the user to hide it by using a 'dismiss' link. This is particularly helpful for the success alert, where there's nothing more for the user to do. This can help users to manage tasks and keep their interfaces clear
+The alert can be made to persist, or be dismissable (by the user closing it using a 'dismiss' link). This is particularly helpful for the success alert, where there's nothing more for the user to do. This can help users to manage tasks and keep their interfaces clear.
 
 <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-visually-hidden">Warning</span>
-    Do not implement the alert to auto-dismiss, for example, to disappear after a few seconds or when the user interacts with the page. This is not accessible.
+    Do not make the alert auto-dismiss, for example, to disappear after a few seconds or when the user interacts with the page. This is not accessible.
   </strong>
 </div>
 
@@ -176,31 +164,28 @@ It can be configured to enable the user to hide it by using a 'dismiss' link. Th
 
 The alert has no minimum or maximum height - it resizes to the contents. It should not be used to display a lot of content, though.
 
-The alert width is not set, but full page width is recommended. It will automatically adjust for readability.
+The alert will take the width of the container. It will automatically adjust for readability.
 
 ### How often to use it
 
-When considering an alert in a specific case, think about the maximum number of alerts or banners a user might view in a journey and on a page.  
+When considering an alert in a specific case, think about the maximum number of alerts or banners a user might view in a journey or on a page.  
 
-If a lot of information and warning alerts are emerging in a service (for example, on every page) it might be a sign of another problem. This could be fixed through service design.
+If a lot of information and warning alerts are emerging in a service (for example, on every page) it might be a sign of a wider problem. This could be fixed through service design.
 
 #### Stacking alerts
 
-It's OK to present more than 1 alert on a single page. The alerts will stack. Here are some useful things to consider for showing multiple alerts:
+It's OK to present more than 1 alert on a single page. The alerts will stack. When developing your alert strategy, consider:
 
 - separating alerts which have no further tasks for a user, so that they can be easily dismissed
-- combining warning states to reduce the number of banners
-- using the [MoJ Design System interruption card component](https://design-patterns.service.justice.gov.uk/components/interruption-card/) for a journey
+- combining instances of the warning, error and information states to reduce the number of alerts
 
 ### Where to add it
 
 An alert can be displayed globally or in context, depending on the type of message.
 
-A global alert is shown on all pages (or any page) and is about the service as a whole, for example a downtime message. It can also be displayed on a home page to draw the user’s attention to new issues.  
+A global alert is shown on all pages (or any page) and is about the service as a whole, for example service downtime. It can also be displayed on a home page to draw the user’s attention to new issues. A contextual alert is shown in a particular section, and is about a task or part of that section.
 
-A contextual alert is shown in a particular section, and is about a task or part of that section.
-
-Display the alert at the top of the page above the main heading and below the back link (if there is one). Place it under the relevant heading.
+Place alerts about a whole service or page at the top of the page above the main heading and below the back link (if there is one). An alert can also be positioned under a relevant heading, but should not be added to body copy.
 
 ### Alert colours and icons
 
