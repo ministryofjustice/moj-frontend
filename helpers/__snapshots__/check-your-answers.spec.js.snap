@@ -203,6 +203,7 @@ exports[`checkYourAnswers function should transform session data into the expect
       },
     },
   ],
+  "componentDetailsRows": [],
   "componentImageRows": [
     {
       "actions": {
