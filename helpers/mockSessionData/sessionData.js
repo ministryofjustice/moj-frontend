@@ -19,7 +19,7 @@ module.exports = {
     componentPrototypeUrl: 'yes'
   },
   '/prototype-url': {
-    prototypeUrl: 'www.test.com',
+    prototypeUrl: 'http://www.test.com',
     prototypeUrlAdditionalInformation:
       'Pellentesque efficitur id odio non venenatis. Donec mauris dolor, imperdiet eu pulvinar eget, efficitur in mi. Praesent dapibus eros eu efficitur mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi tincidunt dictum enim, vitae imperdiet magna ullamcorper eget. Aliquam eget posuere leo, at sollicitudin lacus. Proin vitae orci non est tempor vulputate. Donec bibendum eros eget dui lacinia bibendum. Donec sed leo et augue euismod congue. Mauris id eros ut magna tristique faucibus at eu lacus. Vestibulum rhoncus felis id nisi imperdiet, eget posuere sapien viverra. Vestibulum facilisis erat id dui auctor vulputate.\r\n\r\n'
   },
