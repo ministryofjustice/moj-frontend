@@ -14,8 +14,6 @@ $moj-warning-colour: #eb611c;
     color: $moj-warning-colour;
   }
 
-  // When focussed, the text colour needs to be darker to ensure that colour
-  // contrast is still acceptable
   &:focus {
     color: $govuk-focus-text-colour;
   }
@@ -24,7 +22,7 @@ $moj-warning-colour: #eb611c;
 .moj-alert {
   display: grid;
   margin-bottom: govuk-spacing(6);
-  padding: govuk-spacing(3);
+  padding: govuk-spacing(2);
   border: 5px solid transparent;
   background: govuk-colour("white");
   grid-template-columns: min-content fit-content(960px);
@@ -32,7 +30,11 @@ $moj-warning-colour: #eb611c;
   gap: govuk-spacing(2);
 }
 
-.moj-alert--dismissible {
+.moj-alert:target {
+  display: none;
+}
+
+.moj-alert[data-dismissible] {
   grid-template-areas:
     "icon content"
     ". action";
@@ -70,9 +72,16 @@ $moj-warning-colour: #eb611c;
   }
 }
 
-.moj-alert__action a {
-  @include govuk-font($size: 19);
+.moj-alert__action button {
   margin-bottom: 0;
+  border: none;
+  color: unset;
+  background-color: transparent;
+  appearance: none;
+  @include govuk-font($size: 19);
+  @include govuk-link-common;
+  @include govuk-link-style-default;
+  @include govuk-link-print-friendly;
 }
 
 .moj-alert__content h2,
@@ -100,7 +109,7 @@ $moj-warning-colour: #eb611c;
   border-color: $govuk-brand-colour;
   color: $govuk-brand-colour;
 
-  .moj-alert__action,
+  .moj-alert__action button,
   .moj-alert__content a {
     @include govuk-link-common;
     @include govuk-link-style-default;
@@ -111,7 +120,7 @@ $moj-warning-colour: #eb611c;
   border-color: govuk-colour("green");
   color: govuk-colour("green");
 
-  .moj-alert__action a,
+  .moj-alert__action button,
   .moj-alert__content a {
     @include govuk-link-common;
     @include govuk-link-style-success;
@@ -122,7 +131,7 @@ $moj-warning-colour: #eb611c;
   border-color: $moj-warning-colour;
   color: $moj-warning-colour;
 
-  .moj-alert__action a,
+  .moj-alert__action button,
   .moj-alert__content a {
     @include govuk-link-common;
     @include moj-link-style-warning;
@@ -133,7 +142,7 @@ $moj-warning-colour: #eb611c;
   border-color: govuk-colour("red");
   color: govuk-colour("red");
 
-  .moj-alert__action a,
+  .moj-alert__action button,
   .moj-alert__content a {
     @include govuk-link-common;
     @include govuk-link-style-error;

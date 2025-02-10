@@ -12,6 +12,11 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 
 {{ mojAlert({
   type: "success",
+  attributes: {
+  role: "alert",
+  'data-something': 'dfkgkfdjh'
+},
+  role: "alert",
   text: "That thing just successfully occurred."
 }) }}
 
@@ -90,18 +95,21 @@ text: "Bad things happened."
 <h2>Dismissible</h2>
 
 {{ mojAlert({
+  id: "info-alert-1234",
   type: "information",
   dismissible: true,
   text: "Content that informs you of a thing."
-  }) }}
+}) }}
 
 {{ mojAlert({
+  id: "success-alet-16568",
 type: "success",
 dismissible: "yes",
   text: "That thing just successfully occurred."
 }) }}
 
 {{ mojAlert({
+  id: "warning-alert-7894",
   type: "warning",
   dismissible: "false",
   text: "You should be aware of this thing."
