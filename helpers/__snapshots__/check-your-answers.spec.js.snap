@@ -5,6 +5,7 @@ exports[`checkYourAnswers function should handle empty session gracefully 1`] = 
   "accessibilityFindingsRows": [],
   "additionalInformationRows": [],
   "componentCodeRows": [],
+  "componentDetailsRows": [],
   "componentImageRows": [],
   "prototypeRows": [],
   "yourDetailsRows": [],
@@ -52,6 +53,7 @@ exports[`checkYourAnswers function should handle missing session fields graceful
       },
     },
   ],
+  "componentDetailsRows": [],
   "componentImageRows": [],
   "prototypeRows": [
     {
@@ -72,6 +74,18 @@ exports[`checkYourAnswers function should handle missing session fields graceful
       },
     },
   ],
+  "yourDetailsRows": [],
+}
+`;
+
+exports[`checkYourAnswers function should handle multiple entries for a field 1`] = `
+{
+  "accessibilityFindingsRows": [],
+  "additionalInformationRows": [],
+  "componentCodeRows": [],
+  "componentDetailsRows": [],
+  "componentImageRows": [],
+  "prototypeRows": [],
   "yourDetailsRows": [],
 }
 `;

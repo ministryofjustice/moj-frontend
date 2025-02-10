@@ -10,7 +10,10 @@ const session = {
   '/component-image': { image: 'image.png' },
   '/prototype': { data: 'Prototype data' },
   '/prototype-url': { url: 'http://example.com' },
-  '/your-details': { name: 'Sarah Philips', email: 'sarah@example.com' }
+  '/your-details': { name: 'Sarah Philips', email: 'sarah@example.com' },
+  '/foo': { field1: 'Value 1' },
+  '/foo/1': { field1: 'Value 2' },
+  '/foo/2': { field1: 'Value 3' }
 }
 
 describe('checkYourAnswers function', () => {
@@ -40,6 +43,19 @@ describe('checkYourAnswers function', () => {
     const result = checkYourAnswers(emptySession)
 
     // Snapshot of the result with an empty session
+    expect(result).toMatchSnapshot()
+  })
+
+  it('should handle multiple entries for a field', () => {
+    const multipleEntriesSession = {
+      '/foo': { field1: 'Value 1' },
+      '/foo/1': { field1: 'Value 2' },
+      '/foo/2': { field1: 'Value 3' }
+    }
+
+    const result = checkYourAnswers(multipleEntriesSession)
+
+    // Snapshot of the result with multiple entries
     expect(result).toMatchSnapshot()
   })
 })
