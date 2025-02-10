@@ -1,9 +1,9 @@
 /* eslint-disable no-new */
 
-const { queryByRole } = require('@testing-library/dom')
-const { userEvent } = require('@testing-library/user-event')
+import { queryByRole } from '@testing-library/dom'
+import { userEvent } from '@testing-library/user-event'
 
-const { SortableTable } = require('./sortable-table.js')
+import { SortableTable } from './sortable-table.mjs'
 
 const user = userEvent.setup()
 

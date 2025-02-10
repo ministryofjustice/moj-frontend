@@ -1,16 +1,16 @@
-const {
+import {
   getAllByRole,
   getByText,
   getByRole,
   queryByRole,
   queryByText,
   screen
-} = require('@testing-library/dom')
-const { userEvent } = require('@testing-library/user-event')
-const dayjs = require('dayjs')
-const { configureAxe } = require('jest-axe')
+} from '@testing-library/dom'
+import { userEvent } from '@testing-library/user-event'
+import dayjs from 'dayjs'
+import { configureAxe } from 'jest-axe'
 
-const { DatePicker } = require('./date-picker.js')
+import { DatePicker } from './date-picker.mjs'
 
 const user = userEvent.setup()
 const axe = configureAxe({

@@ -1,13 +1,9 @@
 /* eslint-disable no-new */
 
-const {
-  getByLabelText,
-  getByRole,
-  queryByRole
-} = require('@testing-library/dom')
-const { userEvent } = require('@testing-library/user-event')
+import { getByLabelText, getByRole, queryByRole } from '@testing-library/dom'
+import { userEvent } from '@testing-library/user-event'
 
-const { AddAnother } = require('./add-another.js')
+import { AddAnother } from './add-another.mjs'
 
 const user = userEvent.setup()
 
