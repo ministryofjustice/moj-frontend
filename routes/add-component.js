@@ -98,11 +98,13 @@ router.get(
   isValidComponentFormPage,
   getFormDataFromSession,
   (req, res) => {
-    const page = req?.params?.subpage ? `${req.params.page}/${req.params.subpage}` : req.params.page
+    const page = req?.params?.subpage
+      ? `${req.params.page}/${req.params.subpage}`
+      : req.params.page
     res.render(`${req.params.page}`, {
       submitUrl: req.originalUrl,
       formData: req?.formData,
-      addAnother: req?.params?.subpage ? 1 + parseInt(req.params.subpage) : 1,
+      addAnother: req?.params?.subpage ? 1 + parseInt(req.params.subpage) : 1
     })
   }
 )

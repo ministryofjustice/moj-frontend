@@ -63,13 +63,19 @@ MOJFrontend.AddAnotherForm = function (container) {
   console.log('Initialising AddAnotherForm for container:', container)
   this.container.data('moj-add-another-initialised', true)
 
-  this.container.on('click', '.moj-add-another__remove-button', (e) => this.onRemoveButtonClick(e))
-  this.container.on('click', '.moj-add-another__add-button', (e) => this.onAddButtonClick(e))
+  this.container.on('click', '.moj-add-another__remove-button', (e) =>
+    this.onRemoveButtonClick(e)
+  )
+  this.container.on('click', '.moj-add-another__add-button', (e) =>
+    this.onAddButtonClick(e)
+  )
   this.container
     .find('.moj-add-another__add-button, .moj-add-another__remove-button')
     .prop('type', 'button')
 
-  this.container.on('click', '[data-add-another]', (e) => this.onAddAnotherButtonClick(e))
+  this.container.on('click', '[data-add-another]', (e) =>
+    this.onAddAnotherButtonClick(e)
+  )
 }
 
 MOJFrontend.AddAnotherForm.prototype.onAddAnotherButtonClick = function (e) {

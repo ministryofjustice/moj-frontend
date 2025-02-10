@@ -53,7 +53,9 @@ const extractFieldData = (field, session) => {
 
   // Collect all entries that match the field pattern (e.g., /foo, /foo/1, /foo/2)
   const fieldPattern = new RegExp(`^${fieldPath}(?:/\\d+)?$`)
-  const matchingEntries = Object.entries(session).filter(([key]) => fieldPattern.test(key))
+  const matchingEntries = Object.entries(session).filter(([key]) =>
+    fieldPattern.test(key)
+  )
 
   if (matchingEntries.length === 0) return []
 
@@ -68,7 +70,8 @@ const extractFieldData = (field, session) => {
             {
               href: `${hrefRoot}${key}`,
               text: 'Change',
-              visuallyHiddenText: formatLabel(fieldName) + ' - ' + formatLabel(subKey)
+              visuallyHiddenText:
+                formatLabel(fieldName) + ' - ' + formatLabel(subKey)
             }
           ]
         }

@@ -78,7 +78,9 @@ const addFileToBranch = async (filePath, fileContent, branchName) => {
     }
   )
   if (!response.ok) {
-    console.error(`[GITHUB] Failed to add file ${filePath}: ${response.statusText}`)
+    console.error(
+      `[GITHUB] Failed to add file ${filePath}: ${response.statusText}`
+    )
     throw new Error(`Failed to add file ${filePath}: ${response.statusText}`)
   }
 }
@@ -111,11 +113,13 @@ const pushToGitHub = async (sessionData) => {
       const fileContent = filePath.endsWith('.md')
         ? Buffer.from(content).toString('base64')
         : content?.buffer ||
-        Buffer.from(JSON.stringify(content, null, 2)).toString('base64')
+          Buffer.from(JSON.stringify(content, null, 2)).toString('base64')
       await addFileToBranch(filePath, fileContent, branchName)
     }
 
-    console.log(`[GITHUB] Branch ${branchName} created and files added successfully.`)
+    console.log(
+      `[GITHUB] Branch ${branchName} created and files added successfully.`
+    )
     return branchName
   } catch (error) {
     console.error('[GITHUB] Error interacting with GitHub API:', error?.message)

@@ -18,7 +18,7 @@ const nextPage = (url, body, subpage) => {
   const index = COMPONENT_FORM_PAGES.findIndex((page) => path.endsWith(page))
   const currentPage = COMPONENT_FORM_PAGES[index]
 
-  if(subpage) {
+  if (subpage) {
     // Return same page but with the next subpage
     return `${currentPage}/${subpage}`
   }

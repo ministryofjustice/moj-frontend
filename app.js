@@ -5,7 +5,12 @@ const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 const nunjucks = require('nunjucks')
 const IORedis = require('ioredis')
-const { APP_PORT, REDIS_URL, REDIS_AUTH_TOKEN, SESSION_SECRET } = require('./config')
+const {
+  APP_PORT,
+  REDIS_URL,
+  REDIS_AUTH_TOKEN,
+  SESSION_SECRET
+} = require('./config')
 
 const addComponentRoutes = require('./routes/add-component')
 
@@ -29,8 +34,8 @@ if (REDIS_URL) {
     // Settings for AWS Elasticache.
     ...(REDIS_AUTH_TOKEN && {
       password: REDIS_AUTH_TOKEN,
-      tls: {},
-    }),
+      tls: {}
+    })
   })
 
   sessionOptions.store = new RedisStore({ client: redisClient })
