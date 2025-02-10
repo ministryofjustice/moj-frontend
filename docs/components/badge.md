@@ -2,9 +2,8 @@
 layout: layouts/component.njk
 title: Badge
 type: component
-tier: "Reviewed"
-tierMessage: "Created: Aug 2024"
-tierLink: true
+tier: Reviewed
+tierMessage: Created Aug 2024
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/687
 eleventyNavigation:
   parent: Components

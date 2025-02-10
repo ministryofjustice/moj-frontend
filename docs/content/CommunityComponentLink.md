@@ -1,1 +1,0 @@
-How to use a community component

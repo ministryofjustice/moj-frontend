@@ -1,5 +1,7 @@
-{% macro tierLabel(tier, tierMessage, tierLink) %}
+{% macro tierLabel(tier, tierMessage, tierInfo) %}
   {% if tier %}
+    {% set tierData = tierInfo[tier] or {} %}
+
     {% set tierClass = {
       "Reviewed": "govuk-tag--green",
       "Due for review": "govuk-tag--orange",
@@ -7,31 +9,22 @@
       "Archived": "govuk-tag--grey"
     }[tier] or "" %}
 
-       {% set tierLinkSet = {
-      "Reviewed": "Reviewed",
-      "Due for review": "DueForReview",
-      "Community component": "CommunityComponent",
-      "Archived": "Archived"
-    }[tier] or "default" %}
-
-    {% set tierDefaultLink = "docs/content/" + tierLinkSet + "Link.md" %}
-    {% set tierDefaultUrl = "docs/content/" + tierLinkSet +"Url.md" %}
-    
+    {% set tierDefaultMessage = tierData.content or "" %}
+    {% set tierDefaultLink = tierData.link or "" %}
 
     <div class="app-tier">
       <p class="govuk-phase-banner__content govuk-!-margin-bottom-0">
         <span class="govuk-tag govuk-phase-banner__content__tag {{ tierClass }}">
           {{ tier }}
         </span>
-
-        {% if tierMessage %}
+        
+        {% if tierInfo %}
           <span class="govuk-phase-banner__text">
-            {{ tierMessage }} 
-            {% if tierLink %}
-              <a class="govuk-link" href="{% include tierDefaultUrl %}">
-               {% include tierDefaultLink %}
-              </a>
-              .
+            {{ tierMessage }}
+            {% if tierDefaultLink %}
+              <a class="govuk-link" href="{{ tierDefaultLink }}">
+                {{tierDefaultMessage}}
+              </a>.
             {% endif %}
           </span>
         {% endif %}

@@ -1,9 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Add another
-tier: "Due for review"
-tierMessage: "Created: Aug 2024"
-tierLink: true
+tier: Due for review
+tierMessage: October 2025
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/686
 eleventyNavigation:
