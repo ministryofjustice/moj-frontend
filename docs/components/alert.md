@@ -47,8 +47,7 @@ The information alert can tell a user about:
 
 #### When not to use
 
-<div class="govuk-inset-text">
-The information alert can be combined with other alerts on a page or in a service. Use the [GOV.UK Design System notification banner component](https://design-system.service.gov.uk/components/notification-banner/) for linear services or if you do not intend to use the warning and alert banners.</div>
+^ The information alert can be combined with other alerts on a page or in a service. Use the [GOV.UK Design System notification banner component](https://design-system.service.gov.uk/components/notification-banner/) for linear services or if you do not intend to use the warning and alert banners.^  
 
 The information alert can tell a user about:
 - unfinished tasks, directing people to where to do them
@@ -100,7 +99,7 @@ The alert should help the user understand what they need to do to resolve the er
 
 #### When not to use
 
-%  Do not use the error alert for validation errors. Continue to use the [GOV.UK Design System error message](https://design-system.service.gov.uk/components/error-message/) for this. %
+%Do not use the error alert for validation errors. Continue to use the [GOV.UK Design System error message](https://design-system.service.gov.uk/components/error-message/) for this.%
 
 This alert draws the user’s attention to the message without interrupting them. Use the [MoJ Design System interruption card component](https://design-patterns.service.justice.gov.uk/components/interruption-card/) to pause a user’s journey.
 
@@ -125,7 +124,7 @@ The success banner can be used to show information that has:
 
 You may not need to display the alert if something else confirms success, for example the [GOV.UK Design System task list component](https://design-system.service.gov.uk/components/task-list/) or the user progressing to another page.
 
-[inset] If you need to display more information or want a more prominent component, consider the [GOV.UK Design System success banner component](https://design-system.service.gov.uk/components/notification-banner/).
+^If you need to display more information or want a more prominent component, consider the [GOV.UK Design System success banner component](https://design-system.service.gov.uk/components/notification-banner/).^
 
 If the user has completed something more significant (such as a whole application) or reached the end of a service, use the [GOV.UK Design System confirmation page](https://design-system.service.gov.uk/patterns/confirmation-pages/).
 
