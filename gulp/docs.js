@@ -1,5 +1,6 @@
 const commonjs = require('@rollup/plugin-commonjs')
 const nodeResolve = require('@rollup/plugin-node-resolve')
+const terser = require('@rollup/plugin-terser')
 const gulp = require('gulp')
 const gulpSass = require('gulp-sass')
 const { rollup } = require('rollup')
@@ -67,7 +68,13 @@ gulp.task('docs:scripts', async () => {
     input: 'docs/assets/javascript/application.mjs',
     output: {
       file: 'public/assets/javascript/application.min.js',
-      format: 'esm'
+      format: 'esm',
+      plugins: [
+        terser({
+          format: { comments: false },
+          safari10: true
+        })
+      ]
     },
     external: ['jquery'],
     plugins: [
