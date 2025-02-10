@@ -48,45 +48,50 @@ const answersFromSession = (forms, session) => {
 const extractFieldData = (field, session) => {
   const fieldName = field
   const fieldPath = `/${field}`
-  const fieldData = session[fieldPath]
   const changeHref = `${fieldPath}`
+  const fieldData = session[fieldPath]
 
-  if (!fieldData) return []
+  // Collect all entries that match the field pattern (e.g., /foo, /foo/1, /foo/2)
+  const fieldPattern = new RegExp(`^${fieldPath}(?:/\\d+)?$`)
+  const matchingEntries = Object.entries(session).filter(([key]) => fieldPattern.test(key))
 
-  if (typeof fieldData === 'object' && !Array.isArray(fieldData)) {
-    // multiple entries
-    return Object.entries(fieldData).map(([subKey, value]) => ({
-      key: { text: formatLabel(subKey) },
-      value: { text: sanitizeText(truncateText(value, maxWords)) },
-      actions: {
-        items: [
-          {
-            href: `${hrefRoot}${changeHref}`,
-            text: 'Change',
-            visuallyHiddenText:
-              formatLabel(fieldName) + ' - ' + formatLabel(subKey)
-          }
-        ]
-      }
-    }))
-  }
+  if (matchingEntries.length === 0) return []
 
-  // single entry
-  return [
-    {
-      key: { text: formatLabel(fieldName) },
-      value: { text: sanitizeText(truncateText(fieldData, maxWords)) },
-      actions: {
-        items: [
-          {
-            href: `${hrefRoot}${changeHref}`,
-            text: 'Change',
-            visuallyHiddenText: formatLabel(fieldName)
-          }
-        ]
-      }
+  return matchingEntries.flatMap(([key, value]) => {
+    if (typeof value === 'object' && !Array.isArray(value)) {
+      // multiple entries
+      return Object.entries(value).map(([subKey, subValue]) => ({
+        key: { text: formatLabel(subKey) },
+        value: { text: sanitizeText(truncateText(subValue, maxWords)) },
+        actions: {
+          items: [
+            {
+              href: `${hrefRoot}${key}`,
+              text: 'Change',
+              visuallyHiddenText: formatLabel(fieldName) + ' - ' + formatLabel(subKey)
+            }
+          ]
+        }
+      }))
     }
-  ]
+
+    // single entry
+    return [
+      {
+        key: { text: formatLabel(fieldName) },
+        value: { text: sanitizeText(truncateText(value, maxWords)) },
+        actions: {
+          items: [
+            {
+              href: `${hrefRoot}${key}`,
+              text: 'Change',
+              visuallyHiddenText: formatLabel(fieldName)
+            }
+          ]
+        }
+      }
+    ]
+  })
 }
 
 // Format field names into readable labels
