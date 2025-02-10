@@ -11,20 +11,71 @@ eleventyNavigation:
   parent: Components
   excerpt: "This is a brief description."
 ---
+
 # Test Component
 
-## Brief Description
+{% tabs "Contents" %}
 
-This is a brief description.
+{% tab "Overview" %}
+## Overview
+This is an overview.
 
-## Why this is needed
+## Why is the component needed?
+This is the problem solved.
 
-This is why it is needed.
+## Current uses for the component
+This is how it is used.
 
-<img src="{{ 'assets/images/test-image.png | rev | url' }}" alt="" width="100%">
+{% endtab %}
 
+{% tab "Code Stuff" %}
+## Code Stuff
+
+## Somehow
+
+<p>hello!</p>
+
+{% endtab %}
+
+{% tab "Additional Info" %}
+## Additional Info
+Additional information here.
+
+## Links
+
+<a href="www.test.com" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+
+## Thing to consider
+
+{% endtab %}
+
+{% tab "Accessibility" %}
+## Accessibility
+Accessibility details here.
+
+## Links
+
+<a href="www.test.com" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+
+## Thing to consider
+
+{% endtab %}
+
+{% tab "Contribution" %}
+## Contribution
+Test User
+test@test.com
+
+## History
+
+**Test User** 10 February 2025
+Component added
+
+{% endtab %}
+
+{% endtabs %}
 ",
-  "filename": "test-component.md",
+  "filename": "component/documentation/test-component.md",
 }
 `;
 
@@ -39,10 +90,71 @@ eleventyNavigation:
   parent: Components
   excerpt: ""
 ---
-<img src="{{ 'assets/images/test-image.png | rev | url' }}" alt="" width="100%">
 
+# unknown-component
+
+{% tabs "Contents" %}
+
+{% tab "Overview" %}
+## Overview
+
+
+## Why is the component needed?
+
+
+## Current uses for the component
+
+
+{% endtab %}
+
+{% tab "Code Stuff" %}
+## Code Stuff
+
+## 
+
+
+
+{% endtab %}
+
+{% tab "Additional Info" %}
+## Additional Info
+
+
+## Links
+
+<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+
+## Thing to consider
+
+{% endtab %}
+
+{% tab "Accessibility" %}
+## Accessibility
+
+
+## Links
+
+<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+
+## Thing to consider
+
+{% endtab %}
+
+{% tab "Contribution" %}
+## Contribution
+
+
+
+## History
+
+**** 10 February 2025
+Component added
+
+{% endtab %}
+
+{% endtabs %}
 ",
-  "filename": "unknown-component.md",
+  "filename": "component/documentation/unknown-component.md",
 }
 `;
 
@@ -57,18 +169,71 @@ eleventyNavigation:
   parent: Components
   excerpt: "Another brief description."
 ---
+
 # Another Component
 
-## Brief Description
+{% tabs "Contents" %}
 
-Another brief description.
+{% tab "Overview" %}
+## Overview
+Another overview.
 
-## Why this is needed
+## Why is the component needed?
+Another problem solved.
 
-Another reason why it is needed.
+## Current uses for the component
+Another usage.
 
+{% endtab %}
+
+{% tab "Code Stuff" %}
+## Code Stuff
+
+## Somehow
+
+<p>hello!</p>
+
+{% endtab %}
+
+{% tab "Additional Info" %}
+## Additional Info
+Additional information here.
+
+## Links
+
+<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+
+## Thing to consider
+
+{% endtab %}
+
+{% tab "Accessibility" %}
+## Accessibility
+
+
+## Links
+
+<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+
+## Thing to consider
+
+{% endtab %}
+
+{% tab "Contribution" %}
+## Contribution
+Another User
+another@test.com
+
+## History
+
+**Another User** 10 February 2025
+Component added
+
+{% endtab %}
+
+{% endtabs %}
 ",
-  "filename": "another-component.md",
+  "filename": "component/documentation/another-component.md",
 }
 `;
 
@@ -83,8 +248,71 @@ eleventyNavigation:
   parent: Components
   excerpt: ""
 ---
+
+# unknown-component
+
+{% tabs "Contents" %}
+
+{% tab "Overview" %}
+## Overview
+
+
+## Why is the component needed?
+
+
+## Current uses for the component
+
+
+{% endtab %}
+
+{% tab "Code Stuff" %}
+## Code Stuff
+
+## 
+
+
+
+{% endtab %}
+
+{% tab "Additional Info" %}
+## Additional Info
+
+
+## Links
+
+<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+
+## Thing to consider
+
+{% endtab %}
+
+{% tab "Accessibility" %}
+## Accessibility
+
+
+## Links
+
+<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+
+## Thing to consider
+
+{% endtab %}
+
+{% tab "Contribution" %}
+## Contribution
+
+
+
+## History
+
+**** 10 February 2025
+Component added
+
+{% endtab %}
+
+{% endtabs %}
 ",
-  "filename": "unknown-component.md",
+  "filename": "component/documentation/unknown-component.md",
 }
 `;
 
@@ -99,17 +327,70 @@ eleventyNavigation:
   parent: Components
   excerpt: "Brief description here."
 ---
+
 # Component! With@ Special#Chars
 
-## Brief Description
+{% tabs "Contents" %}
 
-Brief description here.
+{% tab "Overview" %}
+## Overview
+Overview here.
 
-## Why this is needed
+## Why is the component needed?
+Problem solved here.
 
-Reason why needed.
+## Current uses for the component
+Usage here.
 
+{% endtab %}
+
+{% tab "Code Stuff" %}
+## Code Stuff
+
+## Somehow
+
+<p>hello!</p>
+
+{% endtab %}
+
+{% tab "Additional Info" %}
+## Additional Info
+Additional information here.
+
+## Links
+
+<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+
+## Thing to consider
+
+{% endtab %}
+
+{% tab "Accessibility" %}
+## Accessibility
+
+
+## Links
+
+<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+
+## Thing to consider
+
+{% endtab %}
+
+{% tab "Contribution" %}
+## Contribution
+Special User
+special@test.com
+
+## History
+
+**Special User** 10 February 2025
+Component added
+
+{% endtab %}
+
+{% endtabs %}
 ",
-  "filename": "component--with--special-chars.md",
+  "filename": "component/documentation/component--with--special-chars.md",
 }
 `;
