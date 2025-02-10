@@ -1,4 +1,4 @@
-MOJFrontend.removeAttributeValue = function (el, attr, value) {
+function removeAttributeValue(el, attr, value) {
   let re, m
   if (el.getAttribute(attr)) {
     if (el.getAttribute(attr) === value) {
@@ -16,7 +16,7 @@ MOJFrontend.removeAttributeValue = function (el, attr, value) {
   }
 }
 
-MOJFrontend.addAttributeValue = function (el, attr, value) {
+function addAttributeValue(el, attr, value) {
   let re
   if (!el.getAttribute(attr)) {
     el.setAttribute(attr, value)
@@ -28,26 +28,35 @@ MOJFrontend.addAttributeValue = function (el, attr, value) {
   }
 }
 
-MOJFrontend.dragAndDropSupported = function () {
+function dragAndDropSupported() {
   const div = document.createElement('div')
   return typeof div.ondrop !== 'undefined'
 }
 
-MOJFrontend.formDataSupported = function () {
+function formDataSupported() {
   return typeof FormData === 'function'
 }
 
-MOJFrontend.fileApiSupported = function () {
+function fileApiSupported() {
   const input = document.createElement('input')
   input.type = 'file'
   return typeof input.files !== 'undefined'
 }
 
-MOJFrontend.nodeListForEach = function (nodes, callback) {
+function nodeListForEach(nodes, callback) {
   if (window.NodeList.prototype.forEach) {
     return nodes.forEach(callback)
   }
   for (let i = 0; i < nodes.length; i++) {
     callback.call(window, nodes[i], i, nodes)
   }
+}
+
+module.exports = {
+  removeAttributeValue,
+  addAttributeValue,
+  dragAndDropSupported,
+  formDataSupported,
+  fileApiSupported,
+  nodeListForEach
 }

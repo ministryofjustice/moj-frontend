@@ -4,7 +4,7 @@ const { queryByRole } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
 const $ = require('jquery')
 
-require('./search-toggle.js')
+const { SearchToggle } = require('./search-toggle.js')
 
 const user = userEvent.setup()
 
@@ -54,7 +54,7 @@ describe('search toggle', () => {
     searchContainer = component.querySelector('.moj-search')
     buttonContainer = component.querySelector('.moj-search-toggle__toggle')
 
-    new MOJFrontend.SearchToggle({
+    new SearchToggle({
       toggleButton: {
         container: $(buttonContainer),
         text: component.getAttribute('data-moj-search-toggle-text')

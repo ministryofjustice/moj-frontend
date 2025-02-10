@@ -3,7 +3,7 @@
 const { queryByRole } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
 
-require('./sortable-table.js')
+const { SortableTable } = require('./sortable-table.js')
 
 const user = userEvent.setup()
 
@@ -64,7 +64,7 @@ describe('sortable table', () => {
 
   beforeEach(() => {
     ;({ component } = createComponent())
-    new MOJFrontend.SortableTable({
+    new SortableTable({
       table: component
     })
   })
@@ -248,7 +248,7 @@ describe('sortable table options', () => {
   })
 
   test('uses default status message when no options provided', async () => {
-    new MOJFrontend.SortableTable(options)
+    new SortableTable(options)
 
     const elevationHeaderButton = queryByRole(component, 'button', {
       name: 'Elevation'
@@ -261,7 +261,7 @@ describe('sortable table options', () => {
 
   test('uses custom status message when provided', async () => {
     options.statusMessage = 'Sorted column: %heading% (order: %direction%)'
-    new MOJFrontend.SortableTable(options)
+    new SortableTable(options)
 
     const elevationHeaderButton = queryByRole(component, 'button', {
       name: 'Elevation'
@@ -276,7 +276,7 @@ describe('sortable table options', () => {
 
   test('uses custom ascending text when provided', async () => {
     options.ascendingText = 'A to Z'
-    new MOJFrontend.SortableTable(options)
+    new SortableTable(options)
 
     const nameHeaderButton = queryByRole(component, 'button', { name: 'Name' })
     const statusBox = queryByRole(component.parentElement, 'status')
@@ -289,7 +289,7 @@ describe('sortable table options', () => {
 
   test('uses custom descending text when provided', async () => {
     options.descendingText = 'Z to A'
-    new MOJFrontend.SortableTable(options)
+    new SortableTable(options)
 
     const nameHeaderButton = queryByRole(component, 'button', { name: 'Name' })
     const statusBox = queryByRole(component.parentElement, 'status')
@@ -306,7 +306,7 @@ describe('sortable table options', () => {
       ascendingText: 'lowest to highest',
       descendingText: 'highest to lowest'
     }
-    new MOJFrontend.SortableTable(options)
+    new SortableTable(options)
 
     const elevationHeaderButton = queryByRole(component, 'button', {
       name: 'Elevation'
@@ -326,8 +326,8 @@ describe('sortable table options', () => {
 
   test('allows reinitialization of component without duplicating functionality', () => {
     const { component, options } = createComponent()
-    new MOJFrontend.SortableTable(options)
-    new MOJFrontend.SortableTable(options) // Initialize again
+    new SortableTable(options)
+    new SortableTable(options) // Initialize again
 
     // Check that we don't have duplicate buttons in headers
     const headers = component.querySelectorAll('th[aria-sort]')
@@ -339,14 +339,14 @@ describe('sortable table options', () => {
 
   test('maintains original sort when reinitialized', async () => {
     const { component, options } = createComponent()
-    new MOJFrontend.SortableTable(options)
+    new SortableTable(options)
 
     const elevationHeaderButton = queryByRole(component, 'button', {
       name: 'Elevation'
     })
     await user.click(elevationHeaderButton)
 
-    new MOJFrontend.SortableTable(options) // Reinitialize
+    new SortableTable(options) // Reinitialize
 
     const cells = component.querySelectorAll('tbody tr td:nth-child(2)')
     const values = Array.from(cells).map((cell) =>

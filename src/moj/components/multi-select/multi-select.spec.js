@@ -3,7 +3,7 @@
 const { queryByRole, queryAllByRole } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
 
-require('./multi-select.js')
+const { MultiSelect } = require('./multi-select.js')
 
 const user = userEvent.setup()
 
@@ -58,7 +58,7 @@ describe('multi select', () => {
     container = component.querySelector('#multi-select-select-all')
     checkboxes = component.querySelectorAll('tbody input[type=checkbox]')
 
-    new MOJFrontend.MultiSelect({
+    new MultiSelect({
       container,
       checkboxes
     })

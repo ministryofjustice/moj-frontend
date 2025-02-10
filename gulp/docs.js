@@ -1,6 +1,9 @@
+const commonjs = require('@rollup/plugin-commonjs')
+const nodeResolve = require('@rollup/plugin-node-resolve')
 const gulp = require('gulp')
-const gulpEsbuild = require('gulp-esbuild')
 const gulpSass = require('gulp-sass')
+const { rollup } = require('rollup')
+const externalGlobals = require('rollup-plugin-external-globals')
 const dartSass = require('sass-embedded')
 
 const sass = gulpSass(dartSass)
@@ -59,19 +62,25 @@ gulp.task('docs:styles', (done) => {
 })
 
 // Bundle the docs site javascript
-gulp.task('docs:scripts', (done) => {
-  return gulp
-    .src('docs/assets/javascript/application.mjs')
-    .pipe(
-      gulpEsbuild({
-        bundle: true,
-        loader: { '.mjs': 'js' },
-        minify: process.env.ENV !== 'dev',
-        outfile: 'application.js',
-        target: 'es6'
-      }).on('error', done)
-    )
-    .pipe(gulp.dest('public/assets/javascript'))
+gulp.task('docs:scripts', async () => {
+  const options = /** @satisfies {RollupOptions} */ ({
+    input: 'docs/assets/javascript/application.mjs',
+    output: {
+      file: 'public/assets/javascript/application.min.js',
+      format: 'esm'
+    },
+    external: ['jquery'],
+    plugins: [
+      externalGlobals({
+        jquery: 'window.jQuery'
+      }),
+      nodeResolve(),
+      commonjs()
+    ]
+  })
+
+  const bundle = await rollup(options)
+  await bundle.write(options.output)
 })
 
 gulp.task('docs:revision', async () => {
@@ -94,3 +103,7 @@ gulp.task('docs:revision', async () => {
     .pipe(rev.manifest())
     .pipe(gulp.dest('public/assets/'))
 })
+
+/**
+ * @import { RollupOptions } from 'rollup'
+ */

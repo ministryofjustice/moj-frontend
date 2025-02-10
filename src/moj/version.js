@@ -1,1 +1,3 @@
-MOJFrontend.version = '0.0.0-development'
+const version = '0.0.0-development'
+
+module.exports = { version }

@@ -1,10 +1,5 @@
 module.exports = {
   extends: ['standard', 'prettier'],
-  globals: {
-    $: 'readonly',
-    jQuery: 'readonly',
-    MOJFrontend: 'readonly'
-  },
   ignorePatterns: [
     '**/vendor/**',
     'package/**',

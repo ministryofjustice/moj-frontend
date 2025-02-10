@@ -10,7 +10,7 @@ const { userEvent } = require('@testing-library/user-event')
 const dayjs = require('dayjs')
 const { configureAxe } = require('jest-axe')
 
-require('./date-picker.js')
+const { DatePicker } = require('./date-picker.js')
 
 const user = userEvent.setup()
 const axe = configureAxe({
@@ -112,7 +112,7 @@ describe('Date picker with defaults', () => {
 
   beforeEach(() => {
     component = createComponent()
-    new MOJFrontend.DatePicker(component, {}).init()
+    new DatePicker(component, {}).init()
 
     calendarButton = queryByText(component, 'Choose date')?.closest('button')
     dialog = queryByRole(component, 'dialog', { hidden: true })
@@ -579,7 +579,7 @@ describe('button menu JS API', () => {
 
   describe('config', () => {
     test('default config values', () => {
-      const datePicker = new MOJFrontend.DatePicker(component, {})
+      const datePicker = new DatePicker(component, {})
       datePicker.init()
 
       expect(datePicker.config).toStrictEqual({
@@ -590,7 +590,7 @@ describe('button menu JS API', () => {
 
     test('leadingZeros', () => {
       const config = { leadingZeros: true }
-      const datePicker = new MOJFrontend.DatePicker(component, config)
+      const datePicker = new DatePicker(component, config)
       datePicker.init()
 
       expect(datePicker.config.leadingZeros).toBe(true)
@@ -598,7 +598,7 @@ describe('button menu JS API', () => {
 
     test('weekStartDay can be set to sunday', () => {
       const config = { weekStartDay: 'Sunday' }
-      const datePicker = new MOJFrontend.DatePicker(component, config)
+      const datePicker = new DatePicker(component, config)
       datePicker.init()
 
       expect(datePicker.config.weekStartDay).toBe('sunday')
@@ -607,7 +607,7 @@ describe('button menu JS API', () => {
 
     test("weekStartDay can't be set to other days", () => {
       const config = { weekStartDay: 'friday' }
-      const datePicker = new MOJFrontend.DatePicker(component, config)
+      const datePicker = new DatePicker(component, config)
       datePicker.init()
 
       expect(datePicker.config.weekStartDay).toBe('monday')
@@ -616,7 +616,7 @@ describe('button menu JS API', () => {
     test('minDate', () => {
       const minDate = dayjs().subtract('1', 'week').startOf('day')
       const config = { minDate: minDate.format('D/M/YYYY') }
-      const datePicker = new MOJFrontend.DatePicker(component, config)
+      const datePicker = new DatePicker(component, config)
       datePicker.init()
 
       expect(datePicker.minDate).toStrictEqual(minDate.toDate())
@@ -625,7 +625,7 @@ describe('button menu JS API', () => {
     test('future minDate sets currentDate to minDate', () => {
       const minDate = dayjs().add('1', 'week').startOf('day')
       const config = { minDate: minDate.format('D/M/YYYY') }
-      const datePicker = new MOJFrontend.DatePicker(component, config)
+      const datePicker = new DatePicker(component, config)
       datePicker.init()
 
       expect(datePicker.minDate).toStrictEqual(minDate.toDate())
@@ -635,7 +635,7 @@ describe('button menu JS API', () => {
     test('maxDate', () => {
       const maxDate = dayjs().add('1', 'week').startOf('day')
       const config = { maxDate: maxDate.format('D/M/YYYY') }
-      const datePicker = new MOJFrontend.DatePicker(component, config)
+      const datePicker = new DatePicker(component, config)
       datePicker.init()
 
       expect(datePicker.maxDate).toStrictEqual(maxDate.toDate())
@@ -644,7 +644,7 @@ describe('button menu JS API', () => {
     test('past maxDate sets currentDate to maxDate', () => {
       const maxDate = dayjs().subtract('1', 'week').startOf('day')
       const config = { maxDate: maxDate.format('D/M/YYYY') }
-      const datePicker = new MOJFrontend.DatePicker(component, config)
+      const datePicker = new DatePicker(component, config)
       datePicker.init()
 
       expect(datePicker.maxDate).toStrictEqual(maxDate.toDate())
@@ -653,7 +653,7 @@ describe('button menu JS API', () => {
 
     test('excludedDays', () => {
       const config = { excludedDays: 'sunday thursday' }
-      const datePicker = new MOJFrontend.DatePicker(component, config)
+      const datePicker = new DatePicker(component, config)
       datePicker.init()
 
       expect(datePicker.excludedDays).toEqual([0, 4])
@@ -665,7 +665,7 @@ describe('button menu JS API', () => {
           .date(getDateInCurrentMonth())
           .startOf('day')
         const config = { excludedDates: dateToExclude.format('D/M/YYYY') }
-        const datePicker = new MOJFrontend.DatePicker(component, config)
+        const datePicker = new DatePicker(component, config)
         datePicker.init()
 
         expect(datePicker.excludedDates).toStrictEqual([dateToExclude.toDate()])
@@ -681,7 +681,7 @@ describe('button menu JS API', () => {
         const config = {
           excludedDates: `${firstDateToExclude.format('D/M/YYYY')} ${secondDateToExclude.format('D/M/YYYY')}`
         }
-        const datePicker = new MOJFrontend.DatePicker(component, config)
+        const datePicker = new DatePicker(component, config)
         datePicker.init()
 
         expect(datePicker.excludedDates).toHaveLength(2)
@@ -708,7 +708,7 @@ describe('button menu JS API', () => {
           excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
         }
 
-        const datePicker = new MOJFrontend.DatePicker(component, config)
+        const datePicker = new DatePicker(component, config)
         datePicker.init()
 
         // expect(datePicker.excludedDates.length).toEqual(3);
@@ -736,7 +736,7 @@ describe('button menu JS API', () => {
         const config = {
           excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[2].format('D/M/YYYY')} ${datesToExclude[3].format('D/M/YYYY')} ${datesToExclude[4].format('D/M/YYYY')}`
         }
-        const datePicker = new MOJFrontend.DatePicker(component, config)
+        const datePicker = new DatePicker(component, config)
         datePicker.init()
 
         expect(datePicker.excludedDates).toStrictEqual(
@@ -754,7 +754,7 @@ describe('button menu JS API', () => {
       input = screen.getByLabelText('Date')
 
       const config = { leadingZeros: false }
-      new MOJFrontend.DatePicker(component, config).init()
+      new DatePicker(component, config).init()
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
       const dateToSelect = dayjs().date(9)
       const dateButton = screen.getByTestId(dateToSelect.format('D/M/YYYY'))
@@ -769,7 +769,7 @@ describe('button menu JS API', () => {
       input = screen.getByLabelText('Date')
 
       const config = { leadingZeros: true }
-      new MOJFrontend.DatePicker(component, config).init()
+      new DatePicker(component, config).init()
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
       const dateToSelect = dayjs().date(9)
       const dateButton = screen.getByTestId(dateToSelect.format('DD/MM/YYYY'))
@@ -786,7 +786,7 @@ describe('button menu JS API', () => {
       const minDate = dayjs().date(minDay)
       const config = { minDate: minDate.format('DD/MM/YYYY') }
 
-      new MOJFrontend.DatePicker(component, config).init()
+      new DatePicker(component, config).init()
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
@@ -814,7 +814,7 @@ describe('button menu JS API', () => {
       const maxDate = dayjs().date(maxDay)
       const config = { maxDate: maxDate.format('DD/MM/YYYY') }
 
-      new MOJFrontend.DatePicker(component, config).init()
+      new DatePicker(component, config).init()
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
@@ -846,7 +846,7 @@ describe('button menu JS API', () => {
 
         const lastDayinMonth = dayjs().endOf('month').date()
 
-        new MOJFrontend.DatePicker(component, config).init()
+        new DatePicker(component, config).init()
         calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
         await user.click(calendarButton)
@@ -887,7 +887,7 @@ describe('button menu JS API', () => {
           excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
         }
 
-        new MOJFrontend.DatePicker(component, config).init()
+        new DatePicker(component, config).init()
         calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
         await user.click(calendarButton)
@@ -920,7 +920,7 @@ describe('button menu JS API', () => {
           excludedDays.push(i)
         }
       }
-      new MOJFrontend.DatePicker(component, config).init()
+      new DatePicker(component, config).init()
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
@@ -944,7 +944,7 @@ describe('button menu JS API', () => {
     })
 
     test('default weekStartDay', async () => {
-      new MOJFrontend.DatePicker(component, {}).init()
+      new DatePicker(component, {}).init()
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
       await user.click(calendarButton)
       const headers = getAllByRole(component, 'columnheader')
@@ -953,7 +953,7 @@ describe('button menu JS API', () => {
     })
 
     test('weekStartDay Sunday', async () => {
-      new MOJFrontend.DatePicker(component, { weekStartDay: 'sunday' }).init()
+      new DatePicker(component, { weekStartDay: 'sunday' }).init()
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
       await user.click(calendarButton)
       const headers = getAllByRole(component, 'columnheader')
@@ -976,7 +976,7 @@ describe('Datepicker data-attributes API', () => {
 
   test('with leadingZeros false', async () => {
     component = createComponent({ leadingZeros: 'false' })
-    new MOJFrontend.DatePicker(component).init()
+    new DatePicker(component).init()
 
     input = screen.getByLabelText('Date')
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
@@ -991,7 +991,7 @@ describe('Datepicker data-attributes API', () => {
 
   test('with leadingZeros true', async () => {
     const component = createComponent({ leadingZeros: 'true' })
-    new MOJFrontend.DatePicker(component).init()
+    new DatePicker(component).init()
 
     input = screen.getByLabelText('Date')
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
@@ -1011,7 +1011,7 @@ describe('Datepicker data-attributes API', () => {
     const component = createComponent({
       minDate: minDate.format('DD/MM/YYYY')
     })
-    new MOJFrontend.DatePicker(component).init()
+    new DatePicker(component).init()
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
     await user.click(calendarButton)
@@ -1040,7 +1040,7 @@ describe('Datepicker data-attributes API', () => {
     const component = createComponent({
       maxDate: maxDate.format('DD/MM/YYYY')
     })
-    new MOJFrontend.DatePicker(component).init()
+    new DatePicker(component).init()
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
     await user.click(calendarButton)
@@ -1070,7 +1070,7 @@ describe('Datepicker data-attributes API', () => {
       const component = createComponent({
         excludedDates: dateToExclude.format('D/M/YYYY')
       })
-      new MOJFrontend.DatePicker(component).init()
+      new DatePicker(component).init()
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
@@ -1110,7 +1110,7 @@ describe('Datepicker data-attributes API', () => {
       component = createComponent({
         excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
       })
-      new MOJFrontend.DatePicker(component).init()
+      new DatePicker(component).init()
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
@@ -1143,7 +1143,7 @@ describe('Datepicker data-attributes API', () => {
         excludedDays.push(i)
       }
     }
-    new MOJFrontend.DatePicker(component).init()
+    new DatePicker(component).init()
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
     await user.click(calendarButton)
@@ -1168,7 +1168,7 @@ describe('Datepicker data-attributes API', () => {
 
   test('weekStartDay', async () => {
     component = createComponent({ weekStartDay: 'sunday' })
-    new MOJFrontend.DatePicker(component).init()
+    new DatePicker(component).init()
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
     await user.click(calendarButton)
     const headers = getAllByRole(component, 'columnheader')
