@@ -1,1 +1,1 @@
-Learn more about 'reviewed' components.
+Learn more about 'reviewed' components

@@ -1,1 +1,1 @@
-Learn about archived components.
+Learn about archived components

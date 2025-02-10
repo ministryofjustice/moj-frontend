@@ -1,1 +1,1 @@
-How to use a community component.
+How to use a community component
