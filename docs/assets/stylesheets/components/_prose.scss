@@ -57,6 +57,9 @@
 
   a {
     @extend %govuk-link;
+    &.govuk-link--no-visited-state.govuk-button {
+      color: govuk-colour("white");
+    }
   }
 
   hr {
