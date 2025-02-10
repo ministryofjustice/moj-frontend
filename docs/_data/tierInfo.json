@@ -1,0 +1,18 @@
+{
+  "Reviewed": {
+    "link": "#",
+    "content": "Learn about reviewed components"
+  },
+  "Due for review": {
+    "link": "#",
+    "content": "This component is due for review"
+  },
+  "Community component": {
+    "link": "#",
+    "content": "This is a community component"
+  },
+  "Archived": {
+    "link": "#",
+    "content": "Learn about archived components"
+  }
+}
