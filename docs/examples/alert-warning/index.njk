@@ -1,0 +1,12 @@
+---
+layout: layouts/example.njk
+title: Alert (example)
+figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type=design&node-id=66-5802&mode=design
+---
+{%- from "moj/components/alert/macro.njk" import mojAlert -%}
+
+{{ mojAlert({
+  type: "warning",
+  heading: '',
+  html: 'Some information could not be imported. Enter <a href="#">client details</a> manually instead.'
+}) }}

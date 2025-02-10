@@ -88,4 +88,9 @@ MOJFrontend.initAll = function (options) {
   MOJFrontend.nodeListForEach($buttonMenus, function ($buttonmenu) {
     new MOJFrontend.ButtonMenu($buttonmenu, {}).init()
   })
+
+  const $alerts = scope.querySelectorAll('[data-module="moj-alert"]')
+  MOJFrontend.nodeListForEach($alerts, function ($alert) {
+    new MOJFrontend.Alert($alert, {}).init()
+  })
 }
