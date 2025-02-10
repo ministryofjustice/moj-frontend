@@ -55,10 +55,12 @@
     @extend %govuk-link;
   }
 
-  a {
+  a.gov-link {
     @extend %govuk-link;
   }
 
+  
+  
   hr {
     @extend %govuk-section-break;
     @extend %govuk-section-break--visible;

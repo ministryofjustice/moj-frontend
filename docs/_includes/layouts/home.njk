@@ -5,24 +5,53 @@
 
 {% block content %}
 
-  <div class="app-masthead ">
+  <div class="app-masthead">
       <div class="app-layout__content">
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
       {{ title }}
     </h1>
-    <p>
-      Use the MoJ Design System to learn from the work and experiences of others, contribute back into the design system to share your knowledge, and reuse as much as possible to avoid repeating what has already been done.
+    <p class="govuk-body">
+     Use the MoJ Design System alongside the <a target="_blank" class="govuk-link govuk-link--inverse" rel="noopener noreferrer" href="https://design-system.service.gov.uk/">GOV.UK Design System</a>.</p>
+    <p class="govuk-!-margin-bottom-0">
+      The MoJ Design System enables teams to avoid repetition by learning from the work and experiences of others. By contributing to the Design System you can help others, too.
     </p>
       </div>
   </div>
+  <section class="app-layout__content">
+    <h2 class="govuk-heading-l govuk-!-margin-bottom-4">
+      About the Design System
+    </h2>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+       <img src="actual-image.jpg" loading="lazy" alt="Image">
+       {% call card({title: "About the Design System" })%}
+       
+      <p>Learn about how reusing MoJ Design System building blocks helps product teams as well as users.</p>
+      <a class="gov-link" href="#">Read about the benefits of the MoJ Design System</a>
+      {% endcall %}
+      </div>
+      <div class="govuk-grid-column-one-half">
+       <img src="actual-image.jpg" loading="lazy" alt="Image">
+        {% call card({title: "How to use the building blocks" })%}
+       
+      <p>Read about the different categories of reusable elements, and how they’re reviewed. </p>
+      <a class="gov-link" href="#">Read about the building block categories</a>
+      {% endcall %}
+      </div>
+    </div>
+
+
+     
+    
+  </section>
 
   <div class="app-layout__content">
       <div class="app-cards">
         {% call card({title: "What's new" })%}
-        <p class="govuk-body">18 December 2024: The <a href="/content-standards/style-guide/">MoJ content style guide</a> is now live.</p>
-          <p class="govuk-body">10 December 2024: The <a href="/components/interruption-card/">interruption card component</a> is now live. Use it to help users understand possible errors and avoid serious mistakes.</p>
-          <p class="govuk-body">26 November 2024: We’ve archived the <a href="/archive/password-reveal/">password reveal component</a>. We recommend that teams use the <a href="https://design-system.service.gov.uk/components/password-input/">GOV.UK Design System password input</a> instead.</p>
-          <p class="govuk-body"><a href="https://docs.google.com/forms/d/1i7rinQINSjdQ6w_SChXqxQFTttPMgfcSfPamq8YRnP8/viewform">Sign up to get emails</a> about the MoJ Design System.</p>
+        <p class="govuk-body">18 December 2024: The <a class="gov-link" href="/content-standards/style-guide/">MoJ content style guide</a> is now live.</p>
+          <p class="govuk-body">10 December 2024: The <a class="gov-link" href="/components/interruption-card/">interruption card component</a> is now live. Use it to help users understand possible errors and avoid serious mistakes.</p>
+          <p class="govuk-body">26 November 2024: We’ve archived the <a class="gov-link" href="/archive/password-reveal/">password reveal component</a>. We recommend that teams use the <a class="gov-link" href="https://design-system.service.gov.uk/components/password-input/">GOV.UK Design System password input</a> instead.</p>
+          <p class="govuk-body"><a class="gov-link" href="https://docs.google.com/forms/d/1i7rinQINSjdQ6w_SChXqxQFTttPMgfcSfPamq8YRnP8/viewform">Sign up to get emails</a> about the MoJ Design System.</p>
         {% endcall %}
 
         {% call card({title: "Contribute to the MoJ Design System" })%}
