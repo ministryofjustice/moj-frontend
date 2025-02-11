@@ -9,7 +9,14 @@
       "Archived": "govuk-tag--grey"
     }[tier] or "" %}
 
-    {% set tierLinkContent = linkContent or tierData.linkContent or "" %}
+    {% if linkContent is not defined %}
+      {% set tierLinkContent = tierData.linkContent or "" %}
+    {% elseif linkContent is not none %}
+      {% set tierLinkContent = linkContent %}
+    {% else %}
+      {% set tierLinkContent = "" %}
+    {% endif %}
+
     {% set tierLink = link or tierData.link or "" %}
 
     <div class="app-tier">
@@ -21,7 +28,7 @@
         <span class="govuk-phase-banner__text">
           {{ tierMessage }}
           
-          {% if tierLink %}
+          {% if tierLinkContent %}
             <a class="govuk-link" href="{{ tierLink }}">
               {{ tierLinkContent }}
             </a>.
