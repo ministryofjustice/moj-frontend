@@ -37,12 +37,12 @@ There are 4 variants of the alert:
 The information alert draws a user's attention to something important about a page or service. It has a blue border and an information icon.
 
 #### When to use
-Use the information alert sparingly. People often miss banners and alerts, and using them too often is likely to make this worse. If a lot of information alerts are emerging in a service, it might be a sign that a journey need redesigning.
+Use the information alert sparingly. This makes users more likely to notice and engage with them. If a lot of information alerts are emerging in a service, it might be a sign that a journey need redesigning.
 
 The information alert can tell a user about:
 
 - unfinished tasks, linking to where to complete them
-- a major change to a service, until it become familiar
+- a major change to a service, until it becomes familiar
 - service downtime  
 
 The information alert can be combined with other alert variants. For linear services or to display the 'Important' heading, use the <a href="https://design-system.service.gov.uk/components/notification-banner">GOV.UK notification banner component</a>.
@@ -61,7 +61,7 @@ The warning alert tells users about something to prevent them from making a mist
 
 A warning alert can be used when something:
 
-- is missing but the user can access the information another way, for example in a legacy system
+- is missing but the user can access it another way, for example in a legacy system or on paper
 - has not been updated recently but may still be of use, for example a risk assessment
 - has become more urgent or important, for example because a deadline is approaching
 
@@ -69,7 +69,7 @@ If you want to add your message to the body copy or do not want a coloured borde
 
 #### When not to use
 
-Do not use this component if the user does not need a warning. Select the [information alert](#information-alert) instead.
+Do not use this component if the information is about something other than a warning. Select the [information alert](#information-alert) instead.
 
 ### Error alert
 
@@ -127,19 +127,25 @@ You may not need to display the alert if something else confirms success, for ex
 
 This alert pauses the user with a prominent message. This prioritisation should match the alert's message and its relevance to the user.
 
+An alert needs a title, which does not need to be displayed as a heading. The title gives each alert a unique label and helps screenreaders to identify the alert. It does not have to be read out.
+
 {% endtab %}
 
 {% tab "How to use" %}
 
 ## How to use
 
-The alert works best when it contains a single, succinct message. Do not use any alert variant to display large amounts of content. This reduces the prominence of the component and pushes other content down the page too much. If you cannot communicate your message in under 3 sentences, select a different component.
+The alert works best when it contains a single, succinct message. Do not use it to display large amounts of content. This reduces the prominence of the component and pushes other content down the page too much. If you cannot communicate your message in under 3 sentences, select a different component.
 
 ### What to add to it
 
-The alert contains an icon and is surrounded by a border. All alerts need to contain body copy, with a full stop at the end of each sentence.
+The alert contains an icon and is surrounded by a border. It needs to contain body copy, with a full stop at the end of each sentence.
 
-You can add 1 heading (but no more) to the body copy. If needed, you can also add bullet points and links (in addition to a dismiss link, if there is one). The heading level should follow its position on the page. For example, an alert heading would be an H2 if placed under a page's main heading (H1).
+The alert needs a title, which does not need to be shown on the page. It gives each alert a unique and accessible label and can be read out to screenreader users.
+
+You can add 1 heading (but no more) to the body copy. The heading level should follow its position on the page. For example, an alert heading would be an H2 if placed under a main page heading (H1).
+
+You can also add bullet points and links, if needed.
 
 The alert content needs to make sense on its own. This ensure that the message does not rely on the colour and icon too much, as they're not accessible to everyone.
 
@@ -147,7 +153,7 @@ The alert content needs to make sense on its own. This ensure that the message d
 
 {% example "/examples/alert-dismissible" %}
 
-The alert can be made to be persistent or dismissable (with the 'dismiss' link). Dismissing it is particularly helpful for the success alert, where there's nothing more for the user to do. It can help users to manage tasks and keep their interfaces clear.
+The alert can be made to be persistent or dismissable (by the user selecting 'dismiss'). Dismissing it is particularly helpful for the success alert, where there's nothing more for the user to do. It can help users to manage tasks and keep their interfaces clear.
 
 <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -175,6 +181,7 @@ It's OK to present more than 1 alert on a page – they'll stack. When developin
 
 - separating alerts that do not involve anything further for a user do – these can be easily dismissed
 - combining instances of the warning, error and information states to reduce the number of alerts
+- that the 'alert role' that's read out to screenreader users should only be applied to one of the alerts  
 
 ### Where to add it
 
@@ -186,16 +193,16 @@ Place alerts about a whole service or page at the top of the page above the main
 
 ### Alert colours and icons
 
-The link text colour matches each variant. Each alert has an icon. Do not remove the icon, as it makes each alert too reliant on colour, which cannot be accessed by everyone. Do not change the colours.
+The link text colour matches the variant. Each alert has an icon, which must not be removed. Removing the icon makes each alert too reliant on colour, which cannot be accessed by everyone. Do not change the colours.
 
-#### Alert usage on coloured background
+#### Alert usage on coloured backgrounds
 
-All alert variants are accessible on a <code>govuk-colour("white")</code> or <code>govuk-colour("light-grey")</code> background.
+The alert is accessible on a <code>govuk-colour("white")</code> or <code>govuk-colour("light-grey")</code> background.
 
 An alert should not be placed on a coloured background because:
 
 - the colour contrast between the border and page may not be accessible
-- sighted users may not be able to identify the border colour, for example a success alert on a blue background might look like an information alert
+- it may distract from the border colour and change the emphasis of the message  
 
 {% endtab %}
 
