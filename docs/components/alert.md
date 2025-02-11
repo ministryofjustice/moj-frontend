@@ -81,7 +81,7 @@ The error alert shows the user that something has gone wrong. It pauses the user
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-visually-hidden">Warning</span>
-Do not use the error alert for validation errors. Continue to use the <a href="https://design-system.service.gov.uk/components/error-message/">GOV.UK error message</a> for this.</strong>
+      Do not use the error alert for validation errors. Continue to use the <a href="https://design-system.service.gov.uk/components/error-message/">GOV.UK error message</a> for this.</strong>
 </div>
 
 #### When to use
@@ -113,7 +113,7 @@ The success banner can be used to show that something has:
 - been uploaded or added, such as a file or record
 - changed status, for example allocated to someone or moved to another stage in an application process
 - been cancelled, deleted or another type of destructive action
-- been changed or deleted from a table using the [multi-select component](https://design-patterns.service.justice.gov.uk/components/multi-select/)
+- been changed or deleted from a table using the [multi-select component](/components/multi-select/)
 
 If you need to display more information or want a more prominent component, consider the [success variation of the GOV.UK notification banner](https://design-system.service.gov.uk/components/notification-banner/#reacting-to-something-the-user-has-done).
 
@@ -197,7 +197,7 @@ The link text colour matches the variant. Each alert has an icon, which must not
 
 #### Alert usage on coloured backgrounds
 
-The alert is accessible on a <code>govuk-colour("white")</code> or <code>govuk-colour("light-grey")</code> background.
+The alert is accessible on a `govuk-colour("white")` or `govuk-colour("light-grey")` background.
 
 An alert should not be placed on a coloured background because:
 
@@ -210,11 +210,11 @@ An alert should not be placed on a coloured background because:
 
 ## Examples
 
-### Within a case management system
+### Alerts in a case management system
 
-A success alert positioned under a H1 on a dashboard shows a user that the task they just completed was successful. This prevents the need for a separate page to be shown to the user.
+An error and success alert under an H1 shows a user that one of their tasks failed, and another was successful. It can be shown on the dashboard rather than another page.
 
-<p><img src="{{ 'assets/images/alert-example-case-management.png' | rev | url }}" alt="A Ministry of Justice website with the heading 'Hearing outcomes'. A success alert which reads 'Case assigned to Jane Doe' is below the heading. Below the alert are tabs with the titles 'Cases to review (3)', 'In progress (137)' and 'Reviewed cases'. The 'cases to review' tab is active and contains a table where each row gives details of a case. Rows can be selected with a checkbox and there is a button menu with the label 'Actions' in the upper right corner of the table."></p>
+<p><img src="{{ 'assets/images/alert-example-case-management.png' | rev | url }}" alt="A Ministry of Justice website with the heading 'Hearing outcomes'. An error alert with a heading which reads 'A case could not be assigned to you' and body content which reads 'Zayn Bennett’s case could not be assigned to you because it has already been assigned to someone else.' is below the heading. A success alert which reads 'Case assigned to Jane Doe' is below the error alert. Below the alert are tabs with the titles 'Cases to review (3)', 'In progress (137)' and 'Reviewed cases'. The 'cases to review' tab is active and contains a table where each row gives details of a case. Rows can be selected with a checkbox and there is a button menu with the label 'Actions' in the upper right corner of the table."></p>
 
 ### Error alert under a subheading
 
