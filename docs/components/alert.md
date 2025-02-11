@@ -197,6 +197,8 @@ An alert should not be placed on a coloured background because:
 - the colour contrast between the border and page may not be accessible
 - sighted users may not be able to identify the border colour, for example a success alert on a blue background might look like an information alert
 
+{% endtab %}
+
 {% tab "Examples" %}
 
 ## Examples
