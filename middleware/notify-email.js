@@ -13,7 +13,7 @@ const sendEmail = async (
   templateId,
   link = null,
   fileBuffer = null,
-  submissionText = null
+  markdown = null
 ) => {
   let personalisation = link ? { link } : {}
 
@@ -21,8 +21,8 @@ const sendEmail = async (
     personalisation.link_to_file = notifyClient.prepareUpload(fileBuffer)
   }
 
-  if (submissionText) {
-    personalisation.submission_text = submissionText
+  if (markdown) {
+    personalisation.markdown = markdown
   }
 
   try {
@@ -40,9 +40,9 @@ const sendEmail = async (
 const sendSubmissionEmail = async (
   link = null,
   fileBuffer = null,
-  submissionText = null
+  markdown = null
 ) => {
-  return sendEmail(NOTIFY_SUBMISSION_TEMPLATE, link, fileBuffer, submissionText)
+  return sendEmail(NOTIFY_SUBMISSION_TEMPLATE, link, fileBuffer, markdown)
 }
 
 const sendPrEmail = async (link = null) => {

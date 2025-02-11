@@ -116,7 +116,7 @@ router.post('/check-your-answers', getRawSessionText, async (req, res) => {
   const markdown = {}
   markdown[markdownFilename] = markdownContent
   const { sessionText } = req
-  await sendSubmissionEmail(null, markdownContent, sessionText)
+  await sendSubmissionEmail(null, sessionText, markdownContent)
   res.redirect('/get-involved/add-new-component/confirmation')
   const session = { ...req.session, ...markdown }
   const branchName = await pushToGitHub(session)
