@@ -11,6 +11,11 @@ eleventyNavigation:
   excerpt: "Use the banner component to display a prominent message and related actions to take."
 ---
 
+{% banner "This component is archived" %}
+
+Use the [alert](https://design-patterns.service.justice.gov.uk/components/alert) to display a notification to users.
+{% endbanner %}
+
 {% example "/examples/banner", 225 %}
 
 ## When to use
