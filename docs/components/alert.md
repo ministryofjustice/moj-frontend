@@ -96,7 +96,7 @@ If the user needs to resolve the error, the alert should help them understand ho
 
 #### When not to use
 
-This alert draws the user’s attention to the message without interrupting them. Use the [interruption card component](https://design-patterns.service.justice.gov.uk/components/interruption-card/) if the user must do something before moving on in their journey.
+This alert draws the user’s attention to the message without interrupting them. Use the [interruption card component](/components/interruption-card/) if the user must do something before moving on in their journey.
 
 ### Success alert
 
