@@ -1,17 +1,12 @@
-const BASE_PATH = '/get-involved/add-new-component';
-
 const generateMarkdown = (data) => {
+  console.log('DATA FOR MD', data);
+
   const {
-    [`${BASE_PATH}/component-details`]: details,
-    [`${BASE_PATH}/accessibility-findings`]: accessibilityFindings,
-    [`${BASE_PATH}/accessibility-findings-more`]: accessibilityFindingsMore,
-    [`${BASE_PATH}/prototype`]: prototype,
-    [`${BASE_PATH}/prototype-url`]: prototypeUrl,
-    [`${BASE_PATH}/component-code`]: componentCode,
-    [`${BASE_PATH}/component-code-details`]: componentCodeDetails,
-    [`${BASE_PATH}/component-image`]: imageData,
-    [`${BASE_PATH}/additional-information`]: additionalInformation,
-    [`${BASE_PATH}/your-details`]: yourDetails
+    '/component-details': details,
+    '/accessibility-findings': accessibilityFindings,
+    '/accessibility-findings-more': accessibilityFindingsMore,
+    '/additional-information': additionalInformation,
+    '/your-details': yourDetails
   } = data;
 
   const documentationDirectory = 'component/documentation';
@@ -26,6 +21,39 @@ const generateMarkdown = (data) => {
     month: 'long',
     year: 'numeric'
   });
+
+  const generatePrototypeSection = (data) => {
+    let content = '### Prototype';
+    let n = 1;
+    while (data[`/prototype${n > 1 ? `-${n}` : ''}`]) {
+      const prototype = data[`/prototype-url${n > 1 ? `-${n}` : ''}`];
+      content += `
+${prototype.prototypeUrlAdditionalInformation || ''}
+
+<a href="${prototype.prototypeUrl || ''}" target="_blank" rel="noopener noreferrer">Prototype example (opens in a new tab)</a>
+`;
+      n++;
+    }
+    return content;
+  };
+
+  const generateComponentCodeSection = (data) => {
+    let content = '### Component Code';
+    let n = 1;
+    while (data[`/component-code${n > 1 ? `-${n}` : ''}`]) {
+      const componentCodeDetails = data[`/component-code-details${n > 1 ? `-${n}` : ''}`];
+      content += `
+###${componentCodeDetails?.componentCodeLanguage || ''}
+
+${componentCodeDetails.componentCodeUsage || ''}
+
+${componentCodeDetails.componentCode || ''}
+`;
+      n++;
+    }
+    return content;
+  };
+
   let content = `---
 layout: layouts/component.njk
 title: ${componentName}
@@ -54,11 +82,7 @@ ${details?.howIsTheComponentUsed || ''}
 
 {% tab "Code Stuff" %}
 ## Code Stuff
-
-## ${componentCodeDetails?.howIsTheComponentUsed || ''}
-
-${componentCodeDetails?.componentCode || ''}
-
+${generateComponentCodeSection(data)}
 {% endtab %}
 
 {% tab "Additional Info" %}
@@ -67,7 +91,7 @@ ${additionalInformation?.additionalInformation || ''}
 
 ## Links
 
-<a href="${prototypeUrl?.prototypeUrl || ''}" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+${generatePrototypeSection(data)}
 
 ## Thing to consider
 
@@ -79,7 +103,7 @@ ${accessibilityFindingsMore?.accessibilityTellUsMore || ''}
 
 ## Links
 
-<a href="${prototypeUrl?.prototypeUrl || ''}" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+<a href="${accessibilityFindingsMore?.prototypeUrl || ''}" target="_blank" rel="noopener noreferrer">Prototype example (opens in a new tab)</a>
 
 ## Thing to consider
 

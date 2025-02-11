@@ -30,7 +30,7 @@ const sendEmail = async (
     const response = await notifyClient.sendEmail(templateId, emailAddress, {
       personalisation
     })
-    console.log('Email sent successfully:', response)
+    console.log('Email sent successfully.')
   } catch (error) {
     handleEmailError(error)
     throw error
