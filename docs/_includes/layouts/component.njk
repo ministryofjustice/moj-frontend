@@ -4,7 +4,7 @@
 
 
 {% block content %}
-   {{ macros.tierLabel(tier, tierMessage, tierInfo) }}
+   {{ macros.tierLabel(tier, tierMessage, tierInfo, link, linkContent) }}
     <div class="app-layout__content">
         <h1 class="govuk-heading-xl">
           {% if not isIndex %}<span class="govuk-caption-xl">Components</span>{% endif %}
