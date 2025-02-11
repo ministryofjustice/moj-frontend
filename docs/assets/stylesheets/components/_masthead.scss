@@ -7,6 +7,9 @@ $brand-colour: #220051;
 .app-masthead {
   color: govuk-colour("white");
   background-color: $brand-colour;
+  > div {
+    padding-right: 130px;
+  }
 }
 
 .app-masthead p,

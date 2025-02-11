@@ -17,21 +17,25 @@
     </p>
       </div>
   </div>
-  <section class="app-layout__content">
-    <h2 class="govuk-heading-l govuk-!-margin-bottom-4">
+  <div class="app-layout__content">
+    <h2 class="govuk-heading-l govuk-!-margin-bottom-6">
       About the Design System
     </h2>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-one-half">
-       <img src="actual-image.jpg" loading="lazy" alt="Image">
+      <figure class="image-placeholder">
+  <img loading="lazy" class="image-fill" alt="Placeholder image" src="">
+</figure>
        {% call card({title: "About the Design System" })%}
-       
       <p>Learn about how reusing MoJ Design System building blocks helps product teams as well as users.</p>
       <a class="gov-link" href="#">Read about the benefits of the MoJ Design System</a>
       {% endcall %}
       </div>
+     
       <div class="govuk-grid-column-one-half">
-       <img src="actual-image.jpg" loading="lazy" alt="Image">
+     <figure class="image-placeholder">
+  <img loading="lazy" class="image-fill altern-colour" alt="Placeholder image" src="">
+</figure>
         {% call card({title: "How to use the building blocks" })%}
        
       <p>Read about the different categories of reusable elements, and how they’re reviewed. </p>
@@ -39,27 +43,70 @@
       {% endcall %}
       </div>
     </div>
+     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> 
 
-
-     
-    
-  </section>
-
-  <div class="app-layout__content">
-      <div class="app-cards">
-        {% call card({title: "What's new" })%}
-        <p class="govuk-body">18 December 2024: The <a class="gov-link" href="/content-standards/style-guide/">MoJ content style guide</a> is now live.</p>
-          <p class="govuk-body">10 December 2024: The <a class="gov-link" href="/components/interruption-card/">interruption card component</a> is now live. Use it to help users understand possible errors and avoid serious mistakes.</p>
-          <p class="govuk-body">26 November 2024: We’ve archived the <a class="gov-link" href="/archive/password-reveal/">password reveal component</a>. We recommend that teams use the <a class="gov-link" href="https://design-system.service.gov.uk/components/password-input/">GOV.UK Design System password input</a> instead.</p>
-          <p class="govuk-body"><a class="gov-link" href="https://docs.google.com/forms/d/1i7rinQINSjdQ6w_SChXqxQFTttPMgfcSfPamq8YRnP8/viewform">Sign up to get emails</a> about the MoJ Design System.</p>
-        {% endcall %}
-
-        {% call card({title: "Contribute to the MoJ Design System" })%}
-            <p>Anyone can contribute to the MoJ Design System by proposing a new style, component, or pattern.</p>
-            <p><a href="/get-involved/contribute" class="govuk-link">Propose a contribution</a> to the MoJ Design System.</p>
-        {% endcall %}
+     <h2 class="govuk-heading-l govuk-!-margin-bottom-6">
+      Get involved in helping the Design System grow
+    </h2>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <figure class="image-placeholder">
+  <img loading="lazy" class="image-fill" alt="Placeholder image" src="">
+</figure>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        {% call card({title: "Collaborate with the community" })%}
+      <p>The MoJ Design System is a collaboration between communities of users and the Design System team. </p>
+      <p>Anyone can help improve the Design System. </p>
+      <p>You can get involved with community components by adding a new one, or providing information and feedback about an existing one.</p>
+      <a class="gov-link" href="#">Discover more about collaborating with the community</a>
+      {% endcall %}
+      </div>
     </div>
-
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-l govuk-!-margin-bottom-6">
+      Setting up prototypes
+    </h2>
+      {% call card({title: "How to choose the right prototyping tool" })%}
+      <p>Understand how to choose the right tool to get the best insights from user testing.</p>
+      <a class="gov-link" href="#">How to choose a prototyping tool</a>
+      {% endcall %}
+      </div>
+      </div>
+       <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        {% call card({title: "How to set up Figma prototypes" })%}
+      <p>Figma Kits help people to create consistent designs. Learn how to use them in your design files.</p>
+      <a class="gov-link" href="#">How to set up Figma prototypes</a>
+      {% endcall %}
+      </div>
+      <div class="govuk-grid-column-one-half">
+        {% call card({title: "How to set up coded prototypes" })%}
+      <p>Learn how to create coded prototypes using the MoJ Design System and GOV.UK Prototype Kit.</p>
+      <a class="gov-link" href="#">How to set up coded prototypes</a>
+      {% endcall %}
+      </div>
+    </div>
+     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> 
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-6">
+      Getting set up for production
+    </h2>
+      <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        {% call card({title: "Install MoJ Frontend" })%}
+      <p>Learn how to set up your project so you can start using MoJ styles and coded examples in production.</p>
+      <a class="gov-link" href="#">ow to install MoJ Frontend</a>
+      {% endcall %}
+      </div>
+      <div class="govuk-grid-column-one-half">
+        {% call card({title: "Set up JavaScript" })%}
+      <p>Adding code to your service will set up JavaScript and enable full use of all MoJ components.</p>
+      <a class="gov-link" href="#">How to set up JavaScript </a>
+      {% endcall %}
+      </div>
+    </div>
     {{ content | safe }}
   </div>
 

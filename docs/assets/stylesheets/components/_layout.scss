@@ -19,9 +19,39 @@ $app-breakpoint: 800px;
 }
 
 .app-layout__content {
-  max-width: 840px;
+  max-width: 1100px;
   @include govuk-responsive-padding(6);
+  box-sizing: border-box;
   @include govuk-media-query($app-breakpoint) {
     @include govuk-responsive-padding(9);
   }
+
+  figure {
+    margin: 0;
+    padding: 0;
+    display: block; 
+  }
+  
+
+  .image-placeholder {
+    width: 100%;  
+    height: 310px;
+    background-color: rgba(0, 139, 118, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .altern-colour {
+    background-color: rgba(211, 2, 107, 1);
+  }
+
+  .image-fill {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+  }
+
+
 }
