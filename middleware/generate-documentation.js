@@ -71,8 +71,6 @@ eleventyNavigation:
   excerpt: "${details?.briefDescription || ''}"
 ---
 
-# ${componentName}
-
 {% tabs "Contents" %}
 
 {% tab "Overview" %}
