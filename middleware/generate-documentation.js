@@ -23,7 +23,7 @@ const generateMarkdown = (data) => {
   });
 
   const generatePrototypeSection = (data) => {
-    let content = '### Prototype';
+    let content = '### Prototype\n';
     let n = 1;
     while (data[`/prototype${n > 1 ? `-${n}` : ''}`]) {
       const prototype = data[`/prototype-url${n > 1 ? `-${n}` : ''}`];
@@ -38,16 +38,23 @@ ${prototype.prototypeUrlAdditionalInformation || ''}
   };
 
   const generateComponentCodeSection = (data) => {
-    let content = '### Component Code';
+    let content = '### Component Code\n';
     let n = 1;
     while (data[`/component-code${n > 1 ? `-${n}` : ''}`]) {
       const componentCodeDetails = data[`/component-code-details${n > 1 ? `-${n}` : ''}`];
       content += `
-###${componentCodeDetails?.componentCodeLanguage || ''}
+
+### ${componentCodeDetails?.componentCodeLanguage || ''}
 
 ${componentCodeDetails.componentCodeUsage || ''}
 
+<div class="app-example app-example-borders">
+
+\`\`\`html
 ${componentCodeDetails.componentCode || ''}
+\`\`\`
+
+</div>
 `;
       n++;
     }
@@ -69,24 +76,33 @@ eleventyNavigation:
 {% tabs "Contents" %}
 
 {% tab "Overview" %}
+
 ## Overview
+
 ${details?.componentOverview || ''}
 
 ## Why is the component needed?
+
 ${details?.componentProblemSolved || ''}
 
 ## Current uses for the component
+
 ${details?.howIsTheComponentUsed || ''}
 
 {% endtab %}
 
 {% tab "Code Stuff" %}
+
 ## Code Stuff
+
 ${generateComponentCodeSection(data)}
+
 {% endtab %}
 
 {% tab "Additional Info" %}
+
 ## Additional Info
+
 ${additionalInformation?.additionalInformation || ''}
 
 ## Links
@@ -98,7 +114,9 @@ ${generatePrototypeSection(data)}
 {% endtab %}
 
 {% tab "Accessibility" %}
+
 ## Accessibility
+
 ${accessibilityFindingsMore?.accessibilityTellUsMore || ''}
 
 ## Links
@@ -110,13 +128,17 @@ ${accessibilityFindingsMore?.accessibilityTellUsMore || ''}
 {% endtab %}
 
 {% tab "Contribution" %}
+
 ## Contribution
+
 ${yourDetails?.fullName || ''}
+
 ${yourDetails?.emailAddress || ''}
 
 ## History
 
 **${yourDetails?.fullName || ''}** ${formattedDate}
+
 Component added
 
 {% endtab %}
