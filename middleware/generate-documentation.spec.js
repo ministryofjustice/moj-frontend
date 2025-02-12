@@ -1,14 +1,14 @@
-const { generateMarkdown } = require('./generate-documentation');
+const { generateMarkdown } = require('./generate-documentation')
 
 describe('generateMarkdown', () => {
   beforeAll(() => {
-    jest.useFakeTimers('modern');
-    jest.setSystemTime(new Date('2023-01-01T00:00:00Z'));
-  });
+    jest.useFakeTimers('modern')
+    jest.setSystemTime(new Date('2023-01-01T00:00:00Z'))
+  })
 
   afterAll(() => {
-    jest.useRealTimers();
-  });
+    jest.useRealTimers()
+  })
 
   it('should generate markdown with all fields populated', () => {
     const mockData = {
@@ -36,11 +36,11 @@ describe('generateMarkdown', () => {
         fullName: 'Test User',
         emailAddress: 'test@test.com'
       }
-    };
+    }
 
-    const result = generateMarkdown(mockData);
-    expect(result).toMatchSnapshot();
-  });
+    const result = generateMarkdown(mockData)
+    expect(result).toMatchSnapshot()
+  })
 
   it('should handle missing details gracefully', () => {
     const mockData = {
@@ -48,11 +48,11 @@ describe('generateMarkdown', () => {
       '/component-code-details': {},
       '/additional-information': {},
       '/your-details': {}
-    };
+    }
 
-    const result = generateMarkdown(mockData);
-    expect(result).toMatchSnapshot();
-  });
+    const result = generateMarkdown(mockData)
+    expect(result).toMatchSnapshot()
+  })
 
   it('should handle missing image data gracefully', () => {
     const mockData = {
@@ -74,11 +74,11 @@ describe('generateMarkdown', () => {
         fullName: 'Another User',
         emailAddress: 'another@test.com'
       }
-    };
+    }
 
-    const result = generateMarkdown(mockData);
-    expect(result).toMatchSnapshot();
-  });
+    const result = generateMarkdown(mockData)
+    expect(result).toMatchSnapshot()
+  })
 
   it('should sanitize the filename correctly', () => {
     const mockData = {
@@ -100,11 +100,11 @@ describe('generateMarkdown', () => {
         fullName: 'Special User',
         emailAddress: 'special@test.com'
       }
-    };
+    }
 
-    const result = generateMarkdown(mockData);
-    expect(result).toMatchSnapshot();
-  });
+    const result = generateMarkdown(mockData)
+    expect(result).toMatchSnapshot()
+  })
 
   it('should return minimal markdown if no valid data is provided', () => {
     const mockData = {
@@ -112,9 +112,9 @@ describe('generateMarkdown', () => {
       '/component-code-details': {},
       '/additional-information': {},
       '/your-details': {}
-    };
+    }
 
-    const result = generateMarkdown(mockData);
-    expect(result).toMatchSnapshot();
-  });
-});
+    const result = generateMarkdown(mockData)
+    expect(result).toMatchSnapshot()
+  })
+})

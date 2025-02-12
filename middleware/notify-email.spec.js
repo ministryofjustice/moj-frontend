@@ -14,7 +14,6 @@ jest.mock('notifications-node-client', () => {
 })
 
 describe('sendSubmissionEmail', () => {
-
   afterEach(() => {
     jest.clearAllMocks()
   })

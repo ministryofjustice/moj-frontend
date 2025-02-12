@@ -5,41 +5,42 @@ const generateMarkdown = (data) => {
     '/accessibility-findings-more': accessibilityFindingsMore,
     '/additional-information': additionalInformation,
     '/your-details': yourDetails
-  } = data;
+  } = data
 
-  const documentationDirectory = 'component/documentation';
-  const componentName = details?.componentName || 'unknown-component';
+  const documentationDirectory = 'component/documentation'
+  const componentName = details?.componentName || 'unknown-component'
   const sanitizedComponentName = componentName
     .toLowerCase()
-    .replace(/[^a-z0-9-]/g, '-');
-  const filename = `${documentationDirectory}/${sanitizedComponentName}.md`;
-  const today = new Date();
+    .replace(/[^a-z0-9-]/g, '-')
+  const filename = `${documentationDirectory}/${sanitizedComponentName}.md`
+  const today = new Date()
   const formattedDate = today.toLocaleDateString('en-GB', {
     day: '2-digit',
     month: 'long',
     year: 'numeric'
-  });
+  })
 
   const generatePrototypeSection = (data) => {
-    let content = '### Prototype\n';
-    let n = 1;
+    let content = '### Prototype\n'
+    let n = 1
     while (data[`/prototype${n > 1 ? `-${n}` : ''}`]) {
-      const prototype = data[`/prototype-url${n > 1 ? `-${n}` : ''}`];
+      const prototype = data[`/prototype-url${n > 1 ? `-${n}` : ''}`]
       content += `
 ${prototype.prototypeUrlAdditionalInformation || ''}
 
 <a href="${prototype.prototypeUrl || ''}" target="_blank" rel="noopener noreferrer">Prototype example (opens in a new tab)</a>
-`;
-      n++;
+`
+      n++
     }
-    return content;
-  };
+    return content
+  }
 
   const generateComponentCodeSection = (data) => {
-    let content = '### Component Code\n';
-    let n = 1;
+    let content = '### Component Code\n'
+    let n = 1
     while (data[`/component-code${n > 1 ? `-${n}` : ''}`]) {
-      const componentCodeDetails = data[`/component-code-details${n > 1 ? `-${n}` : ''}`];
+      const componentCodeDetails =
+        data[`/component-code-details${n > 1 ? `-${n}` : ''}`]
       content += `
 
 ### ${componentCodeDetails?.componentCodeLanguage || ''}
@@ -53,11 +54,11 @@ ${componentCodeDetails.componentCode || ''}
 \`\`\`
 
 </div>
-`;
-      n++;
+`
+      n++
     }
-    return content;
-  };
+    return content
+  }
 
   let content = `---
 layout: layouts/component.njk
@@ -140,9 +141,9 @@ Component added
 {% endtab %}
 
 {% endtabs %}
-`;
+`
 
-  return { filename, content };
-};
+  return { filename, content }
+}
 
-module.exports = { generateMarkdown };
+module.exports = { generateMarkdown }

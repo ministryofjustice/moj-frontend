@@ -4,8 +4,10 @@ const hrefRoot = '/get-involved/add-new-component'
 const maxWords = 10
 
 const shareYourDetails = {
-  addNameAndEmailToComponentPage: 'Add name and email address to component page',
-  onlyShareNameAndEmailWhenRequested: 'Only share name and email when requested',
+  addNameAndEmailToComponentPage:
+    'Add name and email address to component page',
+  onlyShareNameAndEmailWhenRequested:
+    'Only share name and email when requested',
   doNotSharePersonalDetails: 'Do not share personal details'
 }
 
@@ -54,21 +56,23 @@ const answersFromSession = (forms, session) => {
 }
 
 const listHTML = (values) => {
-  if (!Array.isArray(values)) return '';
+  if (!Array.isArray(values)) return ''
 
-  const listItems = values.map(value => `<li>${value}</li>`).join('');
-  return `<ul>${listItems}</ul>`;
-};
+  const listItems = values.map((value) => `<li>${value}</li>`).join('')
+  return `<ul>${listItems}</ul>`
+}
 
 const shareYourDetailsValueReplacement = (value) => {
   const values = Array.isArray(value) ? value : [value]
-  return listHTML(values.map(value=>{
-    if(shareYourDetailsKeys.includes(value)) {
-      return shareYourDetails[value]
-    } else {
-      return value
-    }
-  }))
+  return listHTML(
+    values.map((value) => {
+      if (shareYourDetailsKeys.includes(value)) {
+        return shareYourDetails[value]
+      } else {
+        return value
+      }
+    })
+  )
 }
 
 const extractFieldData = (field, session) => {
@@ -91,14 +95,14 @@ const extractFieldData = (field, session) => {
       return Object.entries(value).map(([subKey, subValue]) => {
         const isShareYourDetails = subKey === 'shareYourDetails'
         const displayValue = {
-          value: {
-
-          }
+          value: {}
         }
-        if(isShareYourDetails) {
+        if (isShareYourDetails) {
           displayValue.value.html = shareYourDetailsValueReplacement(subValue)
         } else {
-          displayValue.value.text = sanitizeText(truncateText(subValue, maxWords))
+          displayValue.value.text = sanitizeText(
+            truncateText(subValue, maxWords)
+          )
         }
 
         return {
@@ -115,10 +119,8 @@ const extractFieldData = (field, session) => {
             ]
           }
         }
-        }
-      )
+      })
     }
-
 
     // single entry
     return [

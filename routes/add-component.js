@@ -100,10 +100,12 @@ router.get(
   isValidComponentFormPage,
   getFormDataFromSession,
   (req, res) => {
-
-    const addAnotherCount = req?.params?.subpage ? 1 + parseInt(req.params.subpage) : 1;
-    const addAnother = addAnotherCount > maxAddAnother ? maxAddAnother : addAnotherCount;
-    const showAddAnother = addAnotherCount <= maxAddAnother;
+    const addAnotherCount = req?.params?.subpage
+      ? 1 + parseInt(req.params.subpage)
+      : 1
+    const addAnother =
+      addAnotherCount > maxAddAnother ? maxAddAnother : addAnotherCount
+    const showAddAnother = addAnotherCount <= maxAddAnother
 
     res.render(`${req.params.page}`, {
       submitUrl: req.originalUrl,
@@ -123,7 +125,7 @@ router.post('/check-your-answers', getRawSessionText, async (req, res) => {
   const { sessionText } = req
   await sendSubmissionEmail(null, sessionText, markdownContent)
   const session = { ...req.session, ...markdown }
-  req.session.regenerate((err)=>{
+  req.session.regenerate((err) => {
     if (err) {
       console.error('Error regenerating session:', err)
     }
@@ -134,7 +136,6 @@ router.post('/check-your-answers', getRawSessionText, async (req, res) => {
   const description = 'test description'
   const pr = await createPullRequest(branchName, title, description)
   await sendPrEmail(pr)
-
 })
 
 // Component image upload

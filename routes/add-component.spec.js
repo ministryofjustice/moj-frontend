@@ -89,11 +89,15 @@ describe('Component Details Form Tests', () => {
       expect(response.status).toBe(400)
       expect(response.text).toContain('govuk-error-summary')
       expect(response.text).toContain('There is a problem')
-      expect(response.text).toContain('&quot;What is the name of the component?&quot; is required')
+      expect(response.text).toContain(
+        '&quot;What is the name of the component?&quot; is required'
+      )
       expect(response.text).toContain(
         '&quot;Add an overview description about the component&quot; is required'
       )
-      expect(response.text).toContain('&quot;How is the component used in your service?&quot; is required')
+      expect(response.text).toContain(
+        '&quot;How is the component used in your service?&quot; is required'
+      )
     })
 
     it('should redirect to the next page if all fields are valid', async () => {
