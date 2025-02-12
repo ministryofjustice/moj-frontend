@@ -35,7 +35,7 @@ const config = {
     prototype: {
       componentPrototypeUrl: {
         yes: 'prototype-url',
-        no: 'component-screenshot'
+        no: 'component-code'
       }
     },
     'component-code': {
