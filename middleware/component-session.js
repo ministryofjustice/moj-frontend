@@ -47,6 +47,7 @@ const nextPage = (url, body, subpage) => {
 const setNextPage = (req, res, next) => {
   if (req?.session?.checkYourAnswers) {
     req.nextPage = 'check-your-answers'
+    delete req.session.checkYourAnswers
   } else {
     const subpage = req?.query?.addAnother && req?.params?.subpage
     req.nextPage = nextPage(req.url, req?.body, subpage)

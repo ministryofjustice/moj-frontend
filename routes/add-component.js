@@ -40,7 +40,7 @@ router.get('*', (req, res, next) => {
 })
 
 // Check your answers page
-router.get('/check-your-answers', (req, res) => {
+router.get(`/${checkYourAnswersPath}`, (req, res) => {
   const {
     componentDetailsRows,
     accessibilityRows,
@@ -49,7 +49,7 @@ router.get('/check-your-answers', (req, res) => {
     additionalInformationRows,
     yourDetailsRows
   } = checkYourAnswers(req.session)
-  res.render('check-your-answers', {
+  res.render(checkYourAnswersPath, {
     submitUrl: req.originalUrl,
     componentDetailsRows,
     accessibilityRows,
@@ -80,6 +80,7 @@ if (process.env.DEV_DUMMY_DATA) {
 
 // Start
 router.get('/start', (req, res) => {
+  delete req.session.checkYourAnswers
   res.render('start')
 })
 
@@ -117,13 +118,19 @@ router.post('/check-your-answers', getRawSessionText, async (req, res) => {
   markdown[markdownFilename] = markdownContent
   const { sessionText } = req
   await sendSubmissionEmail(null, sessionText, markdownContent)
-  res.redirect('/get-involved/add-new-component/confirmation')
   const session = { ...req.session, ...markdown }
+  req.session.regenerate((err)=>{
+    if (err) {
+      console.error('Error regenerating session:', err)
+    }
+    res.redirect('/get-involved/add-new-component/confirmation')
+  })
   const branchName = await pushToGitHub(session)
   const title = 'test title'
   const description = 'test description'
   const pr = await createPullRequest(branchName, title, description)
   await sendPrEmail(pr)
+
 })
 
 // Component image upload
