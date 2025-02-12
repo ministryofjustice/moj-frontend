@@ -40,12 +40,14 @@
           text: 'Continue',
           preventDoubleClick: true
         }) }}
+        {% if showAddAnother %}
 
         {{ govukButton({
           text: "Add another link",
           classes: "govuk-button--secondary",
           attributes: {'data-add-another': addAnother}
         }) }}
+        {% endif %}
       </div>
     </form>
   </div>

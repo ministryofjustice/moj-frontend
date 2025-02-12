@@ -31,6 +31,7 @@ const isValidComponentFormPage = (req, res, next) => {
 }
 
 const checkYourAnswersPath = 'check-your-answers'
+const maxAddAnother = 10
 
 router.get('*', (req, res, next) => {
   if (req.session && req.url.endsWith(checkYourAnswersPath)) {
@@ -99,13 +100,16 @@ router.get(
   isValidComponentFormPage,
   getFormDataFromSession,
   (req, res) => {
-    const page = req?.params?.subpage
-      ? `${req.params.page}/${req.params.subpage}`
-      : req.params.page
+
+    const addAnotherCount = req?.params?.subpage ? 1 + parseInt(req.params.subpage) : 1;
+    const addAnother = addAnotherCount > maxAddAnother ? maxAddAnother : addAnotherCount;
+    const showAddAnother = addAnotherCount <= maxAddAnother;
+
     res.render(`${req.params.page}`, {
       submitUrl: req.originalUrl,
       formData: req?.formData,
-      addAnother: req?.params?.subpage ? 1 + parseInt(req.params.subpage) : 1
+      addAnother,
+      showAddAnother
     })
   }
 )
