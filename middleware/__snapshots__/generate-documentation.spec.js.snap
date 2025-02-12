@@ -12,63 +12,74 @@ eleventyNavigation:
   excerpt: "This is a brief description."
 ---
 
-# Test Component
-
 {% tabs "Contents" %}
 
 {% tab "Overview" %}
+
 ## Overview
+
 This is an overview.
 
 ## Why is the component needed?
+
 This is the problem solved.
 
 ## Current uses for the component
+
 This is how it is used.
 
 {% endtab %}
 
 {% tab "Code Stuff" %}
+
 ## Code Stuff
 
-## Somehow
+### Component Code
 
-<p>hello!</p>
 
 {% endtab %}
 
 {% tab "Additional Info" %}
+
 ## Additional Info
+
 Additional information here.
 
 ## Links
 
-<a href="www.test.com" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+### Prototype
+
 
 ## Thing to consider
 
 {% endtab %}
 
 {% tab "Accessibility" %}
+
 ## Accessibility
+
 Accessibility details here.
 
 ## Links
 
-<a href="www.test.com" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+<a href="" target="_blank" rel="noopener noreferrer">Prototype example (opens in a new tab)</a>
 
 ## Thing to consider
 
 {% endtab %}
 
 {% tab "Contribution" %}
+
 ## Contribution
+
 Test User
+
 test@test.com
 
 ## History
 
-**Test User** 10 February 2025
+**Test User** 01 January 2023
+
 Component added
 
 {% endtab %}
@@ -91,63 +102,74 @@ eleventyNavigation:
   excerpt: ""
 ---
 
-# unknown-component
-
 {% tabs "Contents" %}
 
 {% tab "Overview" %}
+
 ## Overview
+
 
 
 ## Why is the component needed?
 
 
+
 ## Current uses for the component
+
 
 
 {% endtab %}
 
 {% tab "Code Stuff" %}
+
 ## Code Stuff
 
-## 
-
+### Component Code
 
 
 {% endtab %}
 
 {% tab "Additional Info" %}
+
 ## Additional Info
+
 
 
 ## Links
 
-<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+### Prototype
+
 
 ## Thing to consider
 
 {% endtab %}
 
 {% tab "Accessibility" %}
+
 ## Accessibility
+
 
 
 ## Links
 
-<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+<a href="" target="_blank" rel="noopener noreferrer">Prototype example (opens in a new tab)</a>
 
 ## Thing to consider
 
 {% endtab %}
 
 {% tab "Contribution" %}
+
 ## Contribution
+
+
 
 
 
 ## History
 
-**** 10 February 2025
+**** 01 January 2023
+
 Component added
 
 {% endtab %}
@@ -170,63 +192,74 @@ eleventyNavigation:
   excerpt: "Another brief description."
 ---
 
-# Another Component
-
 {% tabs "Contents" %}
 
 {% tab "Overview" %}
+
 ## Overview
+
 Another overview.
 
 ## Why is the component needed?
+
 Another problem solved.
 
 ## Current uses for the component
+
 Another usage.
 
 {% endtab %}
 
 {% tab "Code Stuff" %}
+
 ## Code Stuff
 
-## Somehow
+### Component Code
 
-<p>hello!</p>
 
 {% endtab %}
 
 {% tab "Additional Info" %}
+
 ## Additional Info
+
 Additional information here.
 
 ## Links
 
-<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+### Prototype
+
 
 ## Thing to consider
 
 {% endtab %}
 
 {% tab "Accessibility" %}
+
 ## Accessibility
+
 
 
 ## Links
 
-<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+<a href="" target="_blank" rel="noopener noreferrer">Prototype example (opens in a new tab)</a>
 
 ## Thing to consider
 
 {% endtab %}
 
 {% tab "Contribution" %}
+
 ## Contribution
+
 Another User
+
 another@test.com
 
 ## History
 
-**Another User** 10 February 2025
+**Another User** 01 January 2023
+
 Component added
 
 {% endtab %}
@@ -249,63 +282,74 @@ eleventyNavigation:
   excerpt: ""
 ---
 
-# unknown-component
-
 {% tabs "Contents" %}
 
 {% tab "Overview" %}
+
 ## Overview
+
 
 
 ## Why is the component needed?
 
 
+
 ## Current uses for the component
+
 
 
 {% endtab %}
 
 {% tab "Code Stuff" %}
+
 ## Code Stuff
 
-## 
-
+### Component Code
 
 
 {% endtab %}
 
 {% tab "Additional Info" %}
+
 ## Additional Info
+
 
 
 ## Links
 
-<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+### Prototype
+
 
 ## Thing to consider
 
 {% endtab %}
 
 {% tab "Accessibility" %}
+
 ## Accessibility
+
 
 
 ## Links
 
-<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+<a href="" target="_blank" rel="noopener noreferrer">Prototype example (opens in a new tab)</a>
 
 ## Thing to consider
 
 {% endtab %}
 
 {% tab "Contribution" %}
+
 ## Contribution
+
+
 
 
 
 ## History
 
-**** 10 February 2025
+**** 01 January 2023
+
 Component added
 
 {% endtab %}
@@ -328,63 +372,74 @@ eleventyNavigation:
   excerpt: "Brief description here."
 ---
 
-# Component! With@ Special#Chars
-
 {% tabs "Contents" %}
 
 {% tab "Overview" %}
+
 ## Overview
+
 Overview here.
 
 ## Why is the component needed?
+
 Problem solved here.
 
 ## Current uses for the component
+
 Usage here.
 
 {% endtab %}
 
 {% tab "Code Stuff" %}
+
 ## Code Stuff
 
-## Somehow
+### Component Code
 
-<p>hello!</p>
 
 {% endtab %}
 
 {% tab "Additional Info" %}
+
 ## Additional Info
+
 Additional information here.
 
 ## Links
 
-<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+### Prototype
+
 
 ## Thing to consider
 
 {% endtab %}
 
 {% tab "Accessibility" %}
+
 ## Accessibility
+
 
 
 ## Links
 
-<a href="" target="_blank" rel="noopener noreferrer">Protoype example (opens in a new tab)</a>
+<a href="" target="_blank" rel="noopener noreferrer">Prototype example (opens in a new tab)</a>
 
 ## Thing to consider
 
 {% endtab %}
 
 {% tab "Contribution" %}
+
 ## Contribution
+
 Special User
+
 special@test.com
 
 ## History
 
-**Special User** 10 February 2025
+**Special User** 01 January 2023
+
 Component added
 
 {% endtab %}

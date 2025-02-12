@@ -1,29 +1,38 @@
 const { generateMarkdown } = require('./generate-documentation');
 
 describe('generateMarkdown', () => {
+  beforeAll(() => {
+    jest.useFakeTimers('modern');
+    jest.setSystemTime(new Date('2023-01-01T00:00:00Z'));
+  });
+
+  afterAll(() => {
+    jest.useRealTimers();
+  });
+
   it('should generate markdown with all fields populated', () => {
     const mockData = {
-      '/get-involved/add-new-component/component-details': {
+      '/component-details': {
         componentName: 'Test Component',
         briefDescription: 'This is a brief description.',
         componentOverview: 'This is an overview.',
         componentProblemSolved: 'This is the problem solved.',
         howIsTheComponentUsed: 'This is how it is used.'
       },
-      '/get-involved/add-new-component/accessibility-findings-more': {
+      '/accessibility-findings-more': {
         accessibilityTellUsMore: 'Accessibility details here.'
       },
-      '/get-involved/add-new-component/prototype-url': {
+      '/prototype-url': {
         prototypeUrl: 'www.test.com'
       },
-      '/get-involved/add-new-component/component-code-details': {
+      '/component-code-details': {
         componentCode: '<p>hello!</p>',
         howIsTheComponentUsed: 'Somehow'
       },
-      '/get-involved/add-new-component/additional-information': {
+      '/additional-information': {
         additionalInformation: 'Additional information here.'
       },
-      '/get-involved/add-new-component/your-details': {
+      '/your-details': {
         fullName: 'Test User',
         emailAddress: 'test@test.com'
       }
@@ -35,10 +44,10 @@ describe('generateMarkdown', () => {
 
   it('should handle missing details gracefully', () => {
     const mockData = {
-      '/get-involved/add-new-component/component-details': {},
-      '/get-involved/add-new-component/component-code-details': {},
-      '/get-involved/add-new-component/additional-information': {},
-      '/get-involved/add-new-component/your-details': {}
+      '/component-details': {},
+      '/component-code-details': {},
+      '/additional-information': {},
+      '/your-details': {}
     };
 
     const result = generateMarkdown(mockData);
@@ -47,21 +56,21 @@ describe('generateMarkdown', () => {
 
   it('should handle missing image data gracefully', () => {
     const mockData = {
-      '/get-involved/add-new-component/component-details': {
+      '/component-details': {
         componentName: 'Another Component',
         briefDescription: 'Another brief description.',
         componentOverview: 'Another overview.',
         componentProblemSolved: 'Another problem solved.',
         howIsTheComponentUsed: 'Another usage.'
       },
-      '/get-involved/add-new-component/component-code-details': {
+      '/component-code-details': {
         componentCode: '<p>hello!</p>',
         howIsTheComponentUsed: 'Somehow'
       },
-      '/get-involved/add-new-component/additional-information': {
+      '/additional-information': {
         additionalInformation: 'Additional information here.'
       },
-      '/get-involved/add-new-component/your-details': {
+      '/your-details': {
         fullName: 'Another User',
         emailAddress: 'another@test.com'
       }
@@ -73,21 +82,21 @@ describe('generateMarkdown', () => {
 
   it('should sanitize the filename correctly', () => {
     const mockData = {
-      '/get-involved/add-new-component/component-details': {
+      '/component-details': {
         componentName: 'Component! With@ Special#Chars',
         briefDescription: 'Brief description here.',
         componentOverview: 'Overview here.',
         componentProblemSolved: 'Problem solved here.',
         howIsTheComponentUsed: 'Usage here.'
       },
-      '/get-involved/add-new-component/component-code-details': {
+      '/component-code-details': {
         componentCode: '<p>hello!</p>',
         howIsTheComponentUsed: 'Somehow'
       },
-      '/get-involved/add-new-component/additional-information': {
+      '/additional-information': {
         additionalInformation: 'Additional information here.'
       },
-      '/get-involved/add-new-component/your-details': {
+      '/your-details': {
         fullName: 'Special User',
         emailAddress: 'special@test.com'
       }
@@ -99,10 +108,10 @@ describe('generateMarkdown', () => {
 
   it('should return minimal markdown if no valid data is provided', () => {
     const mockData = {
-      '/get-involved/add-new-component/component-details': {},
-      '/get-involved/add-new-component/component-code-details': {},
-      '/get-involved/add-new-component/additional-information': {},
-      '/get-involved/add-new-component/your-details': {}
+      '/component-details': {},
+      '/component-code-details': {},
+      '/additional-information': {},
+      '/your-details': {}
     };
 
     const result = generateMarkdown(mockData);
