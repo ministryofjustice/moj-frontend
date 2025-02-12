@@ -2,7 +2,7 @@ const fetch = require('node-fetch')
 const { pushToGitHub, createPullRequest } = require('./github-api')
 const {
   GITHUB_API_URL,
-  GITHUB_TOKEN,
+  GITHUB_API_TOKEN,
   GITHUB_REPO_OWNER,
   GITHUB_REPO_NAME
 } = require('../config')
@@ -67,7 +67,7 @@ describe('GitHub API Module', () => {
         `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/git/ref/heads/main`,
         expect.objectContaining({
           headers: expect.objectContaining({
-            Authorization: `Bearer ${GITHUB_TOKEN}`
+            Authorization: `Bearer ${GITHUB_API_TOKEN}`
           })
         })
       )
@@ -110,7 +110,7 @@ describe('GitHub API Module', () => {
         expect.objectContaining({
           method: 'POST',
           headers: expect.objectContaining({
-            Authorization: `Bearer ${GITHUB_TOKEN}`
+            Authorization: `Bearer ${GITHUB_API_TOKEN}`
           }),
           body: JSON.stringify({
             title,

@@ -30,7 +30,9 @@
     "start:eleventy": "ENV=dev eleventy --input=./docs --output=public --watch",
     "start:server": "nodemon app.js",
     "dev": "concurrently \"npm run start:eleventy\" \"npm run start:server\"",
+    "test:helpers": "jest helpers/",
     "test:middleware": "jest middleware/",
+    "test:routes": "jest routes/",
     "dev:docker:preview:build": "docker-compose -f docker-compose.preview.yml build --no-cache",
     "dev:docker:preview:up": "docker-compose -f docker-compose.preview.yml up --build",
     "dev:docker:preview:down": "docker-compose -f docker-compose.preview.yml down"
