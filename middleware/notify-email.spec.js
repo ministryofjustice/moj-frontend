@@ -14,8 +14,19 @@ jest.mock('notifications-node-client', () => {
 })
 
 describe('sendSubmissionEmail', () => {
+  let originalLog, originalError
+
+  beforeEach(() => {
+    originalLog = console.log
+    originalError = console.error
+    console.log = jest.fn()
+    console.error = jest.fn()
+  })
+
   afterEach(() => {
     jest.clearAllMocks()
+    console.log = originalLog
+    console.error = originalError
   })
 
   it('should send a submission email successfully', async () => {
