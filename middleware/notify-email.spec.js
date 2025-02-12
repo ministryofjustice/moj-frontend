@@ -1,26 +1,28 @@
 const mockSendEmail = jest.fn()
+const { sendSubmissionEmail, sendPrEmail } = require('./notify-email')
+const { NotifyClient } = require('notifications-node-client')
 
 jest.mock('notifications-node-client', () => {
   return {
     NotifyClient: jest.fn().mockImplementation(() => {
-      return { sendEmail: mockSendEmail }
+      return {
+        sendEmail: mockSendEmail,
+        prepareUpload: jest.fn().mockReturnValue('mockFileUrl')
+      }
     })
   }
 })
 
-const sendEmail = require('./notify-email')
+describe('sendSubmissionEmail', () => {
 
-describe('sendEmail', () => {
   afterEach(() => {
     jest.clearAllMocks()
   })
 
-  it('should send an email successfully', async () => {
+  it('should send a submission email successfully', async () => {
     mockSendEmail.mockResolvedValue({ status: 'success' })
 
-    await sendEmail('http://example.com')
-
-    console.log('sendEmail called with:', mockSendEmail.mock.calls)
+    await sendSubmissionEmail('http://example.com')
 
     expect(mockSendEmail).toHaveBeenCalledWith(
       expect.any(String),
@@ -32,15 +34,41 @@ describe('sendEmail', () => {
     expect(mockSendEmail).toHaveBeenCalledTimes(1)
   })
 
-  it('should handle errors when sending an email', async () => {
+  it('should handle errors when sending a submission email', async () => {
     const error = new Error('Failed to send email')
     mockSendEmail.mockRejectedValue(error)
 
-    await expect(sendEmail('http://example.com')).rejects.toThrow(
+    await expect(sendSubmissionEmail('http://example.com')).rejects.toThrow(
       'Failed to send email'
     )
 
-    console.log('sendEmail called with:', mockSendEmail.mock.calls)
+    expect(mockSendEmail).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.any(String),
+      {
+        personalisation: { link: 'http://example.com' }
+      }
+    )
+    expect(mockSendEmail).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe('sendPrEmail', () => {
+  let mockSendEmail
+
+  beforeEach(() => {
+    const notifyClientInstance = new NotifyClient()
+    mockSendEmail = notifyClientInstance.sendEmail
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
+  it('should send a PR email successfully', async () => {
+    mockSendEmail.mockResolvedValue({ status: 'success' })
+
+    await sendPrEmail('http://example.com')
 
     expect(mockSendEmail).toHaveBeenCalledWith(
       expect.any(String),
@@ -52,18 +80,19 @@ describe('sendEmail', () => {
     expect(mockSendEmail).toHaveBeenCalledTimes(1)
   })
 
-  it('should send an email without a link', async () => {
-    mockSendEmail.mockResolvedValue({ status: 'success' })
+  it('should handle errors when sending a PR email', async () => {
+    const error = new Error('Failed to send email')
+    mockSendEmail.mockRejectedValue(error)
 
-    await sendEmail()
-
-    console.log('sendEmail called with:', mockSendEmail.mock.calls)
+    await expect(sendPrEmail('http://example.com')).rejects.toThrow(
+      'Failed to send email'
+    )
 
     expect(mockSendEmail).toHaveBeenCalledWith(
       expect.any(String),
       expect.any(String),
       {
-        personalisation: {}
+        personalisation: { link: 'http://example.com' }
       }
     )
     expect(mockSendEmail).toHaveBeenCalledTimes(1)

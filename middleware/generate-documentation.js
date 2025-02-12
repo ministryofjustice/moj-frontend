@@ -1,6 +1,4 @@
 const generateMarkdown = (data) => {
-  console.log('DATA FOR MD', data);
-
   const {
     '/component-details': details,
     '/accessibility-findings': accessibilityFindings,
