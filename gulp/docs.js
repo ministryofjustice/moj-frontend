@@ -1,6 +1,12 @@
+const { dirname } = require('path')
+
+const commonjs = require('@rollup/plugin-commonjs')
+const nodeResolve = require('@rollup/plugin-node-resolve')
 const gulp = require('gulp')
-const gulpEsbuild = require('gulp-esbuild')
+const rename = require('gulp-rename')
 const gulpSass = require('gulp-sass')
+const uglify = require('gulp-uglify')
+const { rollup } = require('rollup')
 const dartSass = require('sass-embedded')
 
 const sass = gulpSass(dartSass)
@@ -59,19 +65,27 @@ gulp.task('docs:styles', (done) => {
 })
 
 // Bundle the docs site javascript
-gulp.task('docs:scripts', (done) => {
-  return gulp
-    .src('docs/assets/javascript/application.mjs')
-    .pipe(
-      gulpEsbuild({
-        bundle: true,
-        loader: { '.mjs': 'js' },
-        minify: process.env.ENV !== 'dev',
-        outfile: 'application.js',
-        target: 'es6'
-      }).on('error', done)
-    )
-    .pipe(gulp.dest('public/assets/javascript'))
+gulp.task('docs:scripts', async () => {
+  const input = 'docs/assets/javascript/application.mjs'
+  const output = 'public/assets/javascript/application.js'
+
+  const bundle = await rollup({
+    input,
+    plugins: [nodeResolve(), commonjs()]
+  })
+
+  await bundle.write({
+    file: output,
+    format: 'esm'
+  })
+
+  if (process.env.ENV !== 'dev') {
+    return gulp
+      .src(output)
+      .pipe(uglify())
+      .pipe(rename({ extname: '.js' }))
+      .pipe(gulp.dest(dirname(output)))
+  }
 })
 
 gulp.task('docs:revision', async () => {
@@ -94,3 +108,7 @@ gulp.task('docs:revision', async () => {
     .pipe(rev.manifest())
     .pipe(gulp.dest('public/assets/'))
 })
+
+/**
+ * @import { RollupOptions } from 'rollup'
+ */

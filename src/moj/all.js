@@ -1,6 +1,7 @@
 /* eslint-disable no-new */
 
 const { AddAnother } = require('./components/add-another/add-another.js')
+const { Alert } = require('./components/alert/alert.js')
 const { ButtonMenu } = require('./components/button-menu/button-menu.js')
 const { DatePicker } = require('./components/date-picker/date-picker.js')
 const {
@@ -126,8 +127,8 @@ function initAll(options) {
   })
 
   const $alerts = scope.querySelectorAll('[data-module="moj-alert"]')
-  MOJFrontend.nodeListForEach($alerts, function ($alert) {
-    new MOJFrontend.Alert($alert, {}).init()
+  nodeListForEach($alerts, function ($alert) {
+    new Alert($alert, {}).init()
   })
 }
 
@@ -137,6 +138,7 @@ module.exports = {
 
   // Components
   AddAnother,
+  Alert,
   ButtonMenu,
   DatePicker,
   FilterToggleButton,

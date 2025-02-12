@@ -2,9 +2,8 @@
 const { getByRole, queryByRole, screen } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
 
+const { Alert } = require('./alert.js')
 const { pageTemplate } = require('./alert.spec.helper.js')
-require('../../helpers.js')
-require('./alert.js')
 
 const user = userEvent.setup()
 
@@ -56,7 +55,7 @@ describe('alert', () => {
 
   test('non-dismissible', () => {
     component = createComponent()
-    new MOJFrontend.Alert(component).init()
+    new Alert(component).init()
     dismissButton = queryByRole(component, 'button', { hidden: true })
 
     expect(dismissButton).toHaveAttribute('hidden')
@@ -64,7 +63,7 @@ describe('alert', () => {
 
   test('dismissible', () => {
     component = createComponent({ dismissible: 'true' })
-    new MOJFrontend.Alert(component).init()
+    new Alert(component).init()
     dismissButton = queryByRole(component, 'button', { hidden: true })
 
     expect(dismissButton).not.toHaveAttribute('hidden')
@@ -72,7 +71,7 @@ describe('alert', () => {
 
   test('non-dismissible "false" string', () => {
     component = createComponent({ dismissible: 'false' })
-    new MOJFrontend.Alert(component).init()
+    new Alert(component).init()
     dismissButton = queryByRole(component, 'button', { hidden: true })
 
     expect(dismissButton).toHaveAttribute('hidden')
@@ -83,7 +82,7 @@ describe('alert', () => {
       dismissible: true,
       dismissText: 'Close'
     })
-    new MOJFrontend.Alert(component).init()
+    new Alert(component).init()
     dismissButton = queryByRole(component, 'button', { name: 'Close' })
 
     expect(dismissButton).toBeInTheDocument()
@@ -91,14 +90,14 @@ describe('alert', () => {
 
   test('region role does not receive focus', () => {
     component = createComponent({}, 'region')
-    new MOJFrontend.Alert(component).init()
+    new Alert(component).init()
 
     expect(component).not.toHaveFocus()
   })
 
   test('alert role autofocuses', () => {
     component = createComponent({}, 'alert')
-    new MOJFrontend.Alert(component).init()
+    new Alert(component).init()
 
     expect(component).toHaveFocus()
   })
@@ -110,7 +109,7 @@ describe('alert', () => {
       },
       'alert'
     )
-    new MOJFrontend.Alert(component).init()
+    new Alert(component).init()
 
     expect(component).not.toHaveFocus()
   })
@@ -119,7 +118,7 @@ describe('alert', () => {
     component = createComponent({
       dismissible: true
     })
-    new MOJFrontend.Alert(component).init()
+    new Alert(component).init()
     dismissButton = queryByRole(component, 'button')
 
     await user.click(dismissButton)
@@ -140,7 +139,7 @@ describe('alert', () => {
       document.body.insertAdjacentHTML('afterbegin', pageTemplate)
       const alerts = document.querySelectorAll('[data-module="moj-alert"]')
       alerts.forEach((alert) => {
-        new MOJFrontend.Alert(alert).init()
+        new Alert(alert).init()
       })
 
       firstAlert = document.querySelector('#alert-1')
