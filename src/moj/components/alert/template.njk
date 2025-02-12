@@ -41,31 +41,36 @@
   class="{{ classNames }}"
   aria-label="{{ variant }}: {{ params.title }}"
   data-module="moj-alert"
-  {{- ' data-dismissible="true"' if dismissible }}
-  {{- ' data-disable-auto-focus="true"' if disableAutoFocus }}
+  {{- govukAttributes({
+    "data-dismissible": {
+      value: dismissible
+    }
+  }) if dismissible }}
+  {{- govukAttributes({
+    "data-disable-auto-focus": {
+      value: disableAutoFocus
+    }
+  }) if disableAutoFocus }}
   {{- govukAttributes(params.attributes) -}}
 >
-
   <div class="moj-alert__icon">
     <svg role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" height="30" width="30">
       {{- iconPath | safe }}
     </svg>
   </div>
-
   <div class="moj-alert__content">
-      {%- if params.showTitleAsHeading and content %}
-        <{{-headingTag }} class="govuk-heading-m">
-          {{- params.title }}
-        </{{-headingTag}}>
-      {%- endif %}
-
-      {%- if params.title and not (content) %}
+    {%- if params.showTitleAsHeading and content %}
+      <{{-headingTag }} class="govuk-heading-m">
         {{- params.title }}
-      {%- endif %}
+      </{{-headingTag}}>
+    {%- endif %}
 
-      {{- content -}}
+    {%- if params.title and not (content) %}
+      {{- params.title }}
+    {%- endif %}
+
+    {{- content -}}
   </div>
-
   {%- if params.dismissible %}
     <div class="moj-alert__action">
       <button class="" hidden>{{ params.dismissText | default("Dismiss", true)  }}</button>
