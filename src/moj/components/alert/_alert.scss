@@ -1,24 +1,3 @@
-$moj-warning-colour: #eb611c;
-
-@mixin moj-link-style-warning {
-  &:link,
-  &:visited {
-    color: $moj-warning-colour;
-  }
-
-  &:hover {
-    color: scale-color($moj-warning-colour, $lightness: -30%);
-  }
-
-  &:active {
-    color: $moj-warning-colour;
-  }
-
-  &:focus {
-    color: $govuk-focus-text-colour;
-  }
-}
-
 .moj-alert {
   display: grid;
   margin-bottom: govuk-spacing(6);
