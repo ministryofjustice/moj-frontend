@@ -1,8 +1,35 @@
 {% macro card(params) %}
-<article class="app-card">
-    <h3 class="govuk-heading-m">{{ params.title }}</h3>
-    <div class="govuk-body">
-        {{ caller() }}
-    </div>
-</article>
+{% if params.layout == "side-by-side" or params.layout == "full" %}
+    <article class="{{ 'govuk-grid-column-full' if params.layout == 'full' else 'govuk-grid-column-one-half' }}">
+        <div>
+            {% if params.imageLink %}
+                <img loading="lazy" class="app-card__image {{ params.imageClass | default('') }}" 
+                     alt="{{ params.imageAlt | default('') }}" 
+                     src="{{ params.imageLink }}" />
+            {% endif %}
+            <h3 class="govuk-heading-m">{{ params.title }}</h3>
+            <div class="govuk-body">
+                {{ caller() }}
+            </div>
+        </div>
+    </article>
+{% elif params.layout == "image-content" %}
+    <article class="govuk-grid-row app-card {% if params.reverse %}app-card--reverse{% endif %}">
+        {% if params.imageLink %}
+        <div class="govuk-grid-column-one-half">
+                <img loading="lazy" class="app-card__image {{ params.imageClass | default('') }}" 
+                     alt="{{ params.imageAlt | default('') }}" 
+                     src="{{ params.imageLink }}" />
+        </div>
+        <div class="govuk-grid-column-one-half">
+            <div>
+                <h3 class="govuk-heading-m">{{ params.title }}</h3>
+                <div class="govuk-body">
+                    {{ caller() }}
+                </div>
+            </div>
+        </div>
+         {% endif %}
+    </article>
+{% endif %}
 {% endmacro %}

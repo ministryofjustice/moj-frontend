@@ -1,8 +1,23 @@
 .app-card {
-  //@include govuk-responsive-padding(6, "bottom");
+  display: flex;
+  @include govuk-media-query($until: desktop) {
+    flex-direction: column;
+   }
+ // Image temp until we have content
+  &__image {
+    width: 100%;  
+    height: 310px;
+    background-color: rgba(0, 139, 118, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  &--reverse {
+   flex-direction:row-reverse;
+   @include govuk-media-query($until: desktop) {
+    flex-direction: column;
+   }
+  }
 }
 
-.app-card + .app-card {
-  border-top: 1px solid $govuk-border-colour;
-  @include govuk-responsive-padding(6, "top");
-}
