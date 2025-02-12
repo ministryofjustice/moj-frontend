@@ -63,11 +63,20 @@ describe('Component Details Form Tests', () => {
       )
       expect(response.text).toContain('What is the name of the component?')
       expect(response.text).toContain(
-        'Add a brief description about the component'
+        'Add an overview description about the component'
       )
       expect(response.text).toContain(
-        'Why do you think the component is needed?'
+        'How is the component being used in your service?'
       )
+    })
+
+    it('should include add another button in the response', async () => {
+      const response = await request(app).get(
+        '/get-involved/add-new-component/component-code-details'
+      )
+
+      expect(response.status).toBe(200)
+      expect(response.text).toContain('Add another code example')
     })
   })
 
@@ -80,11 +89,11 @@ describe('Component Details Form Tests', () => {
       expect(response.status).toBe(400)
       expect(response.text).toContain('govuk-error-summary')
       expect(response.text).toContain('There is a problem')
-      expect(response.text).toContain('&quot;Component Name&quot; is required')
+      expect(response.text).toContain('&quot;What is the name of the component?&quot; is required')
       expect(response.text).toContain(
-        '&quot;Brief Description&quot; is required'
+        '&quot;Add an overview description about the component&quot; is required'
       )
-      expect(response.text).toContain('&quot;Why Needed&quot; is required')
+      expect(response.text).toContain('&quot;How is the component used in your service?&quot; is required')
     })
 
     it('should redirect to the next page if all fields are valid', async () => {
@@ -92,13 +101,14 @@ describe('Component Details Form Tests', () => {
         .post('/get-involved/add-new-component/component-details')
         .send({
           componentName: 'Test Component',
-          briefDescription: 'A brief description',
-          whyNeeded: 'It is needed for testing'
+          componentOverview: 'A brief description',
+          howIsTheComponentUsed: 'It is needed for testing',
+          componentProblemSolved: 'This is how it is solved'
         })
 
       expect(response.status).toBe(302)
       expect(response.header.location).toBe(
-        '/get-involved/add-new-component/component-image'
+        '/get-involved/add-new-component/accessibility-findings'
       )
     })
   })
