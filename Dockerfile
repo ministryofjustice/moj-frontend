@@ -81,7 +81,7 @@ COPY schema schema
 COPY middleware middleware
 COPY routes routes
 COPY views views
-COPY public public
+COPY --from=preview-build /app/public public
 
 # run express app as a non root user
 RUN useradd -u 1001 -m nonrootuser
