@@ -26,9 +26,9 @@ const generateMarkdown = (data) => {
     while (data[`/prototype${n > 1 ? `-${n}` : ''}`]) {
       const prototype = data[`/prototype-url${n > 1 ? `-${n}` : ''}`]
       content += `
-${prototype.prototypeUrlAdditionalInformation || ''}
+${prototype?.prototypeUrlAdditionalInformation || ''}
 
-<a href="${prototype.prototypeUrl || ''}" target="_blank" rel="noopener noreferrer">Prototype example (opens in a new tab)</a>
+<a href="${prototype?.prototypeUrl || ''}" target="_blank" rel="noopener noreferrer">Prototype example (opens in a new tab)</a>
 `
       n++
     }
@@ -45,12 +45,12 @@ ${prototype.prototypeUrlAdditionalInformation || ''}
 
 ### ${componentCodeDetails?.componentCodeLanguage || ''}
 
-${componentCodeDetails.componentCodeUsage || ''}
+${componentCodeDetails?.componentCodeUsage || ''}
 
 <div class="app-example app-example-borders">
 
 \`\`\`html
-${componentCodeDetails.componentCode || ''}
+${componentCodeDetails?.componentCode || ''}
 \`\`\`
 
 </div>
