@@ -3,6 +3,14 @@ const sanitizeHtml = require('sanitize-html')
 const hrefRoot = '/get-involved/add-new-component'
 const maxWords = 10
 
+const shareYourDetails = {
+  addNameAndEmailToComponentPage: 'Add name and email address to component page',
+  onlyShareNameAndEmailWhenRequested: 'Only share name and email when requested',
+  doNotSharePersonalDetails: 'Do not share personal details'
+}
+
+const shareYourDetailsKeys = Object.keys(shareYourDetails)
+
 const toCamelCaseWithRows = (str) => {
   return (
     str
@@ -45,6 +53,24 @@ const answersFromSession = (forms, session) => {
   }, {})
 }
 
+const listHTML = (values) => {
+  if (!Array.isArray(values)) return '';
+
+  const listItems = values.map(value => `<li>${value}</li>`).join('');
+  return `<ul>${listItems}</ul>`;
+};
+
+const shareYourDetailsValueReplacement = (value) => {
+  const values = Array.isArray(value) ? value : [value]
+  return listHTML(values.map(value=>{
+    if(shareYourDetailsKeys.includes(value)) {
+      return shareYourDetails[value]
+    } else {
+      return value
+    }
+  }))
+}
+
 const extractFieldData = (field, session) => {
   const fieldName = field
   const fieldPath = `/${field}`
@@ -62,21 +88,37 @@ const extractFieldData = (field, session) => {
   return matchingEntries.flatMap(([key, value]) => {
     if (typeof value === 'object' && !Array.isArray(value)) {
       // multiple entries
-      return Object.entries(value).map(([subKey, subValue]) => ({
-        key: { text: formatLabel(subKey) },
-        value: { text: sanitizeText(truncateText(subValue, maxWords)) },
-        actions: {
-          items: [
-            {
-              href: `${hrefRoot}${key}`,
-              text: 'Change',
-              visuallyHiddenText:
-                formatLabel(fieldName) + ' - ' + formatLabel(subKey)
-            }
-          ]
+      return Object.entries(value).map(([subKey, subValue]) => {
+        const isShareYourDetails = subKey === 'shareYourDetails'
+        const displayValue = {
+          value: {
+
+          }
         }
-      }))
+        if(isShareYourDetails) {
+          displayValue.value.html = shareYourDetailsValueReplacement(subValue)
+        } else {
+          displayValue.value.text = sanitizeText(truncateText(subValue, maxWords))
+        }
+
+        return {
+          key: { text: formatLabel(subKey) },
+          ...displayValue,
+          actions: {
+            items: [
+              {
+                href: `${hrefRoot}${key}`,
+                text: 'Change',
+                visuallyHiddenText:
+                  formatLabel(fieldName) + ' - ' + formatLabel(subKey)
+              }
+            ]
+          }
+        }
+        }
+      )
     }
+
 
     // single entry
     return [
