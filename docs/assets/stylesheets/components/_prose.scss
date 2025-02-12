@@ -55,9 +55,13 @@
     @extend %govuk-link;
   }
 
-  a.gov-link {
+  a {
     @extend %govuk-link;
   }
+  a.govuk-link--inverse {
+    @extend .govuk-link--inverse;
+  }
+
 
   hr {
     @extend %govuk-section-break;
