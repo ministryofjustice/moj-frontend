@@ -69,11 +69,20 @@
               value: formData.componentProblemSolved
             }) }}
 
-            <div class="moj-button-action">
-                {{ govukButton({
-                    text: 'Continue'
-                }) }}
-            </div>
+          <div class="govuk-button-group moj-button-action">
+            {{ govukButton({
+              text: 'Continue',
+              preventDoubleClick: true
+            }) }}
+            {% if skipQuestion %}
+
+              {{ govukButton({
+                text: "Skip Question",
+                classes: "govuk-button--secondary",
+                attributes: {'data-skip-question': skipQuestion},
+                href: skipQuestion
+              }) }}
+            {% endif %}
         </form>
     </div>
 

@@ -3,6 +3,8 @@ const {
   COMPONENT_FORM_PAGES_OPTIONS
 } = require('../config')
 
+const maxAddAnother = 10
+
 const camelToKebab = (str) =>
   str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
 
@@ -78,7 +80,8 @@ const validateFormData = (req, res, next) => {
       submitUrl: req.originalUrl,
       formData: req.body,
       formErrors,
-      errorList
+      errorList,
+      skipQuestion: req?.skipQuestion || false
     })
   } else {
     console.log('Validation success:', value)
@@ -140,10 +143,33 @@ const getRawSessionText = (req, res, next) => {
   next()
 }
 
+// Check if can skip question and set value to page to skip to
+const canSkipQuestion = (req, res, next) => {
+  console.error('canSkipQuestion',req.url)
+  const skipPage = nextPage(req.url)
+  req.skipQuestion = skipPage || false
+  next()
+}
+
+// Determine if can add another copy of the form
+const canAddAnother = (req, res, next) => {
+  const addAnotherCount = req?.params?.subpage
+    ? 1 + parseInt(req.params.subpage)
+    : 1
+  const addAnother =
+    addAnotherCount > maxAddAnother ? maxAddAnother : addAnotherCount
+  const showAddAnother = addAnotherCount <= maxAddAnother
+  req.addAnother = addAnother
+  req.showAddAnother = showAddAnother
+  next()
+}
+
 module.exports = {
   setNextPage,
   validateFormData,
   saveSession,
   getFormDataFromSession,
-  getRawSessionText
+  getRawSessionText,
+  canSkipQuestion,
+  canAddAnother
 }

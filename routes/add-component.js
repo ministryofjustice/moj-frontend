@@ -5,7 +5,9 @@ const {
   setNextPage,
   saveSession,
   getFormDataFromSession,
-  getRawSessionText
+  getRawSessionText,
+  canSkipQuestion,
+  canAddAnother
 } = require('../middleware/component-session')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
 const {
@@ -31,7 +33,6 @@ const isValidComponentFormPage = (req, res, next) => {
 }
 
 const checkYourAnswersPath = 'check-your-answers'
-const maxAddAnother = 10
 
 router.get('*', (req, res, next) => {
   if (req.session && req.url.endsWith(checkYourAnswersPath)) {
@@ -99,19 +100,15 @@ router.get(
   ['/:page', '/:page/:subpage'],
   isValidComponentFormPage,
   getFormDataFromSession,
+  canAddAnother,
+  canSkipQuestion,
   (req, res) => {
-    const addAnotherCount = req?.params?.subpage
-      ? 1 + parseInt(req.params.subpage)
-      : 1
-    const addAnother =
-      addAnotherCount > maxAddAnother ? maxAddAnother : addAnotherCount
-    const showAddAnother = addAnotherCount <= maxAddAnother
-
     res.render(`${req.params.page}`, {
       submitUrl: req.originalUrl,
       formData: req?.formData,
-      addAnother,
-      showAddAnother
+      addAnother: req?.addAnother,
+      showAddAnother: req?.showAddAnother,
+      skipQuestion: req?.skipQuestion || false
     })
   }
 )
@@ -160,6 +157,7 @@ router.post(
 router.post(
   ['/:page', '/:page/:subpage'],
   isValidComponentFormPage,
+  canSkipQuestion,
   validateFormData,
   saveSession,
   setNextPage,
