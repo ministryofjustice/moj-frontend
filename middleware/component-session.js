@@ -51,7 +51,11 @@ const setNextPage = (req, res, next) => {
     req.nextPage = 'check-your-answers'
     delete req.session.checkYourAnswers
   } else {
-    const subpage = req?.query?.addAnother && req?.params?.subpage
+    const addAnother = req?.body?.addAnother
+    let subpage = null
+    if(addAnother) {
+      subpage = req?.params?.subpage ? parseInt(req?.params?.subpage) + 1 : 1
+    }
     req.nextPage = nextPage(req.url, req?.body, subpage)
   }
   next()
@@ -81,6 +85,8 @@ const validateFormData = (req, res, next) => {
       formData: req.body,
       formErrors,
       errorList,
+      addAnother: req?.params?.subpage || 1,
+      showAddAnother: !!req?.body?.addAnother,//!!req?.params?.subpage,
       skipQuestion: req?.skipQuestion || false
     })
   } else {
@@ -103,7 +109,8 @@ const saveSession = (req, res, next) => {
     body = { ...body, ...file }
   }
 
-  req.session[req.url] = body
+  req.session[req.url] = {...body}
+  delete req.session[req.url].addAnother
 
   console.log('saved session', req.url)
   next()

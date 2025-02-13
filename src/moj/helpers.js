@@ -82,16 +82,12 @@ MOJFrontend.AddAnotherForm.prototype.onAddAnotherButtonClick = function (e) {
   const button = $(e.currentTarget)
   console.log('AddAnother button clicked:', button)
   const form = button.closest('form')
-  let currentUrl = form.attr('action')
-  const page = button.data('add-another') || 1
 
-  console.log('Current form action URL:', currentUrl)
-  const urlPattern = /\/\d+$/
-  if (urlPattern.test(currentUrl)) {
-    currentUrl = currentUrl.replace(urlPattern, `/${page}`)
+  // Add hidden input to indicate we want another page
+  if (form.find('input[name="addAnother"]').length === 0) {
+    form.append('<input type="hidden" name="addAnother" value="true">')
+    console.log('Hidden input added to form.')
   } else {
-    currentUrl = `${currentUrl}/${page}`
+    console.log('Hidden input already exists in form.')
   }
-  form.attr('action', `${currentUrl}?addAnother=true`)
-  console.log('Updated form action URL:', form.attr('action'))
 }

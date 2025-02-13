@@ -1,6 +1,7 @@
+const addAnotherSchema = require('./add-another.schema')
 const Joi = require('joi')
 
-const schema = Joi.object({
+const schema = addAnotherSchema.append({
   prototypeUrl: Joi.string()
     .uri()
     .optional()
