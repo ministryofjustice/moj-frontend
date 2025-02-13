@@ -3,7 +3,7 @@
     <article class="{{ 'govuk-grid-column-full' if params.layout == 'full' else 'govuk-grid-column-one-half-from-desktop' }}">
         <div>
             {% if params.imageLink %}
-                <img loading="lazy" class="app-card__image {{ params.imageClass | default('') }}" 
+                <img loading="lazy" class="app-card__image govuk-!-margin-bottom-4{{ params.imageClass | default('') }}" 
                      alt="{{ params.imageAlt | default('') }}" 
                      src="{{ params.imageLink }}" 
                      {% if not params.imageAlt %}aria-hidden="true"{% endif %}
@@ -19,7 +19,7 @@
     <article class="govuk-grid-row app-card {% if params.reverse %}app-card--reverse{% endif %}">
         {% if params.imageLink %}
         <div class="govuk-grid-column-one-half-from-desktop">
-                <img loading="lazy" class="app-card__image {{ params.imageClass | default('') }}" 
+                <img loading="lazy" class="app-card__image govuk-!-margin-bottom-4{{ params.imageClass | default('') }}" 
                      alt="{{ params.imageAlt | default('') }}" 
                      src="{{ params.imageLink }}" 
                      {% if not params.imageAlt %}aria-hidden="true"{% endif %}
