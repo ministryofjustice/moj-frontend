@@ -11,4 +11,4 @@
 | dismissible         | boolean | No       | Set to `true` to allow the alert to be dismissed. The default is `false`. |
 | dismissText         | string  | No       | The text label for the dismiss button. The default is "Dismiss". |
 | classes             | string  | No       | The classes that you want to add to the alert. |
-| attributes          | object  | No       | The HTML attributes that you want to add to the alert, for example, data attributes. |
+| attributes          | object  | No       | The HTML attributes that you want to add to the alert, for example data attributes. |

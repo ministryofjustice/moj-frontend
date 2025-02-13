@@ -9,7 +9,7 @@ eleventyNavigation:
   excerpt: "Use the alert component to display a prominent message and related actions to take."
 ---
 
-<span class="govuk-caption-xl">The alert is a flexible component. It uses a visual design to display a notification to users.</span>
+<span class="govuk-caption-xl">The alert is a flexible component. It uses visual design to display a notification to users.</span>
 
 {% tabs "Contents" %}
 
@@ -19,7 +19,7 @@ eleventyNavigation:
 
 ## Overview
 
-The alert component presents 1 of 4 types of alerts to a user. It can persist on the page or be dismissed by the user.  
+The alert component presents 1 of 4 types of alerts to a user. It can stay on the page or be dismissed by the user.  
 
 As a leaner component, it’s ideal for dashboards, internal services and other complex user interfaces.  
 
@@ -37,7 +37,7 @@ There are 4 variants of the alert:
 The information alert draws a user's attention to something important about a page or service. It has a blue border and an information icon.
 
 #### When to use
-Use the information alert sparingly. This makes users more likely to notice and engage with them. If a lot of information alerts are emerging in a service, it might be a sign that a journey need redesigning.
+Use the information alert sparingly. This makes users more likely to notice and engage with it. If a lot of information alerts are emerging in a service, it might be a sign that a journey needs redesigning.
 
 The information alert can tell a user about:
 
@@ -45,11 +45,11 @@ The information alert can tell a user about:
 - a major change to a service, until it becomes familiar
 - service downtime  
 
-The information alert can be combined with other alert variants. For linear services or to display the 'Important' heading, use the <a href="https://design-system.service.gov.uk/components/notification-banner">GOV.UK notification banner component</a>.
+The information alert can be combined with other alert variants. For linear services, or to display the 'Important' heading, use the <a href="https://design-system.service.gov.uk/components/notification-banner">GOV.UK notification banner component</a>.
 
 #### When not to use
 
-You may not want to use this component for a serious issue or to prevent something going wrong. Use the warning alert for this.
+Do not want use this component for a serious issue or to prevent something going wrong. Use the warning alert for this.
 
 ### Warning alert
 
@@ -88,7 +88,7 @@ The error alert shows the user that something has gone wrong. It pauses the user
 
 The error alert can be displayed when something:
 
-- has changed significantly since the user’s last session, for example, a person has been released from prison or an appointment is now double booked
+- has changed significantly since the user’s last session, for example, a person has been released from prison or an appointment is now double-booked
 - changed between the user opening the page and interacting with it, for example a case was deleted or assigned to someone else
 - has to be done before this task, for example removing bookings from a property they're archiving
 
@@ -102,9 +102,9 @@ This alert draws the user’s attention to the message without interrupting them
 
 {% example "/examples/alert-success" %}
 
-The success alert displays a single message after a user has completed something. It has a green border and an icon.
+The success alert displays a single message after a user has completed their task. It has a green border and an icon.
 
-This alert can be displayed at the top of the page or on the next page (if their task moves them through the service). Adding the alert to existing pages shortens user journeys. This is useful in non-linear services and services where users complete repetitive tasks.
+This alert can be displayed at the top of the page or on the next page (if their task moves them through the service). Adding the alert to existing pages shortens the user journey. This is useful in non-linear services and services where users complete repetitive tasks.
 
 #### When to use
 
@@ -112,8 +112,8 @@ The success banner can be used to show that something has:
 
 - been uploaded or added, such as a file or record
 - changed status, for example allocated to someone or moved to another stage in an application process
-- been cancelled, deleted or another type of destructive action
-- been changed or deleted from a table using the [multi-select component](/components/multi-select/)
+- been cancelled, deleted or another type of destructive (negative) action
+- been changed or deleted from a table using the [multi select component](/components/multi-select/)
 
 If you need to display more information or want a more prominent component, consider the [success variation of the GOV.UK notification banner](https://design-system.service.gov.uk/components/notification-banner/#reacting-to-something-the-user-has-done).
 
@@ -125,7 +125,7 @@ You may not need to display the alert if something else confirms success, for ex
 
 ### Things to consider
 
-This alert pauses the user with a prominent message. This prioritisation should match the alert's message and its relevance to the user.
+This alert pauses the user with a prominent message. This prioritisation should match the alert message and its relevance to the user.
 
 An alert needs a title, which does not need to be displayed as a heading. The title gives each alert a unique label and helps screenreaders to identify the alert. It does not have to be read out.
 
