@@ -5,7 +5,9 @@
             {% if params.imageLink %}
                 <img loading="lazy" class="app-card__image {{ params.imageClass | default('') }}" 
                      alt="{{ params.imageAlt | default('') }}" 
-                     src="{{ params.imageLink }}" />
+                     src="{{ params.imageLink }}" 
+                     {% if not params.imageAlt %}aria-hidden="true"{% endif %}
+                     />
             {% endif %}
             <h3 class="govuk-heading-m">{{ params.title }}</h3>
             <div class="govuk-body">
