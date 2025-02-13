@@ -19,7 +19,9 @@
         <div class="govuk-grid-column-one-half-from-desktop">
                 <img loading="lazy" class="app-card__image {{ params.imageClass | default('') }}" 
                      alt="{{ params.imageAlt | default('') }}" 
-                     src="{{ params.imageLink }}" />
+                     src="{{ params.imageLink }}" 
+                     {% if not params.imageAlt %}aria-hidden="true"{% endif %}
+                     />
         </div>
         <div class="govuk-grid-column-one-half-from-desktop">
             <div>
