@@ -2,7 +2,7 @@
 layout: layouts/component.njk
 title: Alert
 type: component
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/835
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1163
 eleventyNavigation:
   key: Alert
   parent: Components
