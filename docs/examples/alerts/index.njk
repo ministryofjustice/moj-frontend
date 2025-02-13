@@ -4,18 +4,23 @@ title: Alert (example)
 figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type=design&node-id=66-5802&mode=design
 ---
 {%- from "moj/components/alert/macro.njk" import mojAlert -%}
-
+<main>
 {{ mojAlert({
   variant: "information",
   title: "Information for you",
-  text: "Content that informs you of a thing."
+  role: "alert",
+  text: "Content that informs you of a thing.",
+  dismissible: true
   }) }}
+
+<h1>this is the main heading</h1>
 
 {{ mojAlert({
   variant: "success",
   title: "it happened",
   role: "alert",
-  text: "That thing just successfully occurred."
+  text: "That thing just successfully occurred.",
+  dismissible: true
 }) }}
 
 {{ mojAlert({
@@ -152,11 +157,14 @@ dismissible: "yes",
   html: 'Content that informs you of a thing. <a href="#">More information</a>'
 }) }}
 
+<div id="focusOnMe">I will receive focus</div>
+
 {{ mojAlert({
  variant: "success",
   title: "Woohoo!",
   dismissible: true,
-  html: 'That thing just successfully occurred. <a href="#">Celebrate here</a>'
+  html: 'That thing just successfully occurred. <a href="#">Celebrate here</a>',
+  focusOnDismissSelector: "#focusOnMe"
 }) }}
 
 
@@ -217,3 +225,9 @@ dismissible: "yes",
   dismissible: true,
   html: '<p>Content that informs you of a thing. It really is so very informative, that is why it needs so much content and is really, exceedingly verbose.</p><ul><li>this one</li><li>has a list</li><li>of things</li></ul><p>And a final paragraph for good measure <a href="#">with a link too</a>.'
 }) }}
+</main>
+<script>
+document.addEventListener('focus', function() {
+  console.log('focused: ', document.activeElement)
+}, true);
+</script>

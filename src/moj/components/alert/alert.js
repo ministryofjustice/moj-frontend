@@ -19,7 +19,8 @@ MOJFrontend.Alert = function ($module, config = {}) {
     properties: {
       dismissible: { type: 'boolean' },
       dismissText: { type: 'string' },
-      disableAutoFocus: { type: 'boolean' }
+      disableAutoFocus: { type: 'boolean' },
+      focusOnDismissSelector: { type: 'string' }
     }
   })
 
@@ -35,7 +36,6 @@ MOJFrontend.Alert = function ($module, config = {}) {
     this.parseDataset(schema, $module.dataset)
   )
   this.$module = $module
-  console.log(this.config)
 }
 
 MOJFrontend.Alert.prototype.init = function () {
@@ -54,7 +54,7 @@ MOJFrontend.Alert.prototype.init = function () {
     this.$module.getAttribute('role') === 'alert' &&
     !this.config.disableAutoFocus
   ) {
-    this.setFocus(this.$module)
+    MOJFrontend.setFocus(this.$module)
   }
 
   this.$dismissButton = this.$module.querySelector('.moj-alert__action button')
@@ -64,7 +64,7 @@ MOJFrontend.Alert.prototype.init = function () {
 
     this.$module.addEventListener('click', (event) => {
       if (this.$dismissButton.contains(event.target)) {
-        this.$module.remove()
+        this.dimiss()
       }
     })
   }
@@ -77,54 +77,34 @@ MOJFrontend.Alert.prototype.createDismissButton = function () {
     </div>`
   this.$module.insertAdjacentHTML('beforeend', template)
 }
-/**
- * Move focus to element
- *
- * Sets tabindex to -1 to make the element programmatically focusable,
- * but removes it on blur as the element doesn't need to be focused again.
- *
- * @private
- * @template {HTMLElement} FocusElement
- * @param {FocusElement} $element - HTML element
- * @param {object} [options] - Handler options
- * @param {function(this: FocusElement): void} [options.onBeforeFocus] - Callback before focus
- * @param {function(this: FocusElement): void} [options.onBlur] - Callback on blur
- */
-MOJFrontend.Alert.prototype.setFocus = function ($element, options = {}) {
-  const isFocusable = $element.getAttribute('tabindex')
 
-  if (!isFocusable) {
-    $element.setAttribute('tabindex', '-1')
+MOJFrontend.Alert.prototype.dimiss = function () {
+  let $elementToRecieveFocus
+
+  if (this.config.focusOnDismissSelector) {
+    $elementToRecieveFocus = document.querySelector(
+      this.config.focusOnDismissSelector
+    )
   }
 
-  /**
-   * Handle element focus
-   */
-  function onFocus() {
-    $element.addEventListener('blur', onBlur, { once: true })
+  if (!$elementToRecieveFocus) {
+    $elementToRecieveFocus = MOJFrontend.getPreviousSibling(
+      this.$module,
+      '.moj-alert, h1, h2, h3, h4, h5, h6'
+    )
   }
 
-  /**
-   * Handle element blur
-   */
-  function onBlur() {
-    if (options.onBlur) {
-      options.onBlur.call($element)
-    }
-
-    if (!isFocusable) {
-      $element.removeAttribute('tabindex')
-    }
+  if (!$elementToRecieveFocus) {
+    $elementToRecieveFocus = this.$module.closest(
+      'h1, h2, h3, h4, h5, h6, main'
+    )
   }
 
-  // Add listener to reset element on blur, after focus
-  $element.addEventListener('focus', onFocus, { once: true })
-
-  // Focus element
-  if (options.onBeforeFocus) {
-    options.onBeforeFocus.call($element)
+  if ($elementToRecieveFocus) {
+    MOJFrontend.setFocus($elementToRecieveFocus)
   }
-  $element.focus()
+
+  this.$module.remove()
 }
 
 /**

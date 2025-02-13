@@ -7,6 +7,10 @@
   grid-template-columns: min-content fit-content(960px);
   grid-template-areas: "icon content";
   gap: govuk-spacing(2);
+
+  &:focus {
+    outline: $govuk-focus-width solid $govuk-focus-colour;
+  }
 }
 
 .moj-alert:target {

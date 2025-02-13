@@ -51,6 +51,11 @@
       value: disableAutoFocus
     }
   }) if disableAutoFocus }}
+    {{- govukAttributes({
+    "data-focus-on-dismiss-selector": {
+        value: params.focusOnDismissSelector
+    }
+  }) if params.focusOnDismissSelector }}
   {{- govukAttributes(params.attributes) -}}
 >
   <div class="moj-alert__icon">
