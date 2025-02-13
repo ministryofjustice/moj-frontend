@@ -35,6 +35,7 @@ MOJFrontend.Alert = function ($module, config = {}) {
     this.parseDataset(schema, $module.dataset)
   )
   this.$module = $module
+  console.log(this.config)
 }
 
 MOJFrontend.Alert.prototype.init = function () {
@@ -125,6 +126,7 @@ MOJFrontend.Alert.prototype.setFocus = function ($element, options = {}) {
   }
   $element.focus()
 }
+
 /**
  * Parse dataset
  *
