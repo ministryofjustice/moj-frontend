@@ -1,13 +1,14 @@
 ---
 layout: layouts/example.njk
 title: Alert (example)
+arguments: alert
 figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type=design&node-id=66-5802&mode=design
 ---
 {%- from "moj/components/alert/macro.njk" import mojAlert -%}
 
 {{ mojAlert({
-  type: "success",
+  variant: "success",
   dismissible: true,
-  heading: "File uploaded successfully",
+  title: "File uploaded successfully",
   html: '<a href="">Scan1.jpg</a> has been added to this application.'
 }) }}

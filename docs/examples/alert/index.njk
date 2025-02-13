@@ -1,34 +1,35 @@
 ---
 layout: layouts/example.njk
 title: Alert (example)
+arguments: alert
 figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type=design&node-id=66-5802&mode=design
 ---
 {%- from "moj/components/alert/macro.njk" import mojAlert -%}
 
 {{ mojAlert({
-  type: "information",
-  heading: "The finance section has moved",
+  variant: "information",
+  title: "The finance section has moved",
   dismissible: false,
   html: 'You can now find it in the <a href="#">dashboard</a>.'
 }) }}
 
 {{ mojAlert({
-  type: "success",
-  heading: "File uploaded successfully",
+  variant: "success",
+  title: "File uploaded successfully",
   dismissible: false,
   html: '<a href="">scan1.jpg</a> has been added to this application.'
 }) }}
 
 {{ mojAlert({
-  type: "warning",
-  heading: "Some information could not be imported",
+  variant: "warning",
+  title: "Some information could not be imported",
   dismissible: false,
   html: 'Enter the information manually in <a href="#">case details</a>.'
 }) }}
 
 {{ mojAlert({
-  type: "error",
-  heading: "This case has been assigned to someone else",
+  variant: "error",
+  title: "This case has been assigned to someone else",
   dismissible: false,
   text: "You can no longer make changes."
 }) }}
