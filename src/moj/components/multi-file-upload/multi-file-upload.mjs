@@ -184,7 +184,7 @@ MultiFileUpload.prototype.uploadFile = function (file) {
         function (e) {
           if (e.lengthComputable) {
             let percentComplete = e.loaded / e.total
-            percentComplete = parseInt(percentComplete * 100, 10)
+            percentComplete = Math.round(percentComplete * 100)
             item
               .find('.moj-multi-file-upload__progress')
               .text(` ${percentComplete}%`)
