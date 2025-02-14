@@ -39,7 +39,7 @@ SortableTable.prototype.createHeadingButton = function (heading) {
   const button = document.createElement('button')
 
   button.setAttribute('type', 'button')
-  button.setAttribute('data-index', index)
+  button.setAttribute('data-index', `${index}`)
   button.textContent = heading.textContent
 
   heading.textContent = ''
