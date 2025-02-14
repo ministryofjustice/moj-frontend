@@ -1,7 +1,6 @@
 {% macro card(params) %}
 {% if params.layout == "side-by-side" or params.layout == "full" %}
     <article class="{{ 'govuk-grid-column-full' if params.layout == 'full' else 'govuk-grid-column-one-half-from-desktop' }}">
-        <div>
             {% if params.imageLink %}
                 <img loading="lazy" class="app-card__image govuk-!-margin-bottom-4{{ params.imageClass | default('') }}" 
                      alt="{{ params.imageAlt | default('') }}" 
@@ -14,7 +13,6 @@
             <div class="govuk-body">
                 {{ caller() }}
             </div>
-        </div>
     </article>
 {% elif params.layout == "image-content" %}
     <article class="govuk-grid-row app-card {% if params.reverse %}app-card--reverse{% endif %}">
@@ -28,12 +26,10 @@
                      />
         </div>
         <div class="govuk-grid-column-one-half-from-desktop">
-            <div>
                 <h3 class="govuk-heading-m">{{ params.title }}</h3>
                 <div class="govuk-body">
                     {{ caller() }}
                 </div>
-            </div>
         </div>
          {% endif %}
     </article>
