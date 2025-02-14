@@ -131,7 +131,7 @@ FormValidator.prototype.removeInlineError = function (error) {
     fieldContainer.removeAttribute('aria-invalid')
     removeAttributeValue(fieldset, 'aria-describedby', errorSpan.id)
   } else if (label && control) {
-    control.removeAttribute('aria-invalid', 'true')
+    control.removeAttribute('aria-invalid')
     removeAttributeValue(control, 'aria-describedby', errorSpan.id)
   }
 }

@@ -576,7 +576,7 @@ DatePicker.prototype.setCurrentDate = function (focus = true) {
   this.calendarDays.forEach((calendarDay) => {
     calendarDay.button.classList.add('moj-datepicker__button')
     calendarDay.button.classList.add('moj-datepicker__calendar-day')
-    calendarDay.button.setAttribute('tabindex', -1)
+    calendarDay.button.setAttribute('tabindex', '-1')
     calendarDay.button.classList.remove(this.selectedDayButtonClass)
     const calendarDayDate = calendarDay.date
     calendarDayDate.setHours(0, 0, 0, 0)
@@ -589,7 +589,7 @@ DatePicker.prototype.setCurrentDate = function (focus = true) {
       currentDate.getTime() /* && !calendarDay.button.disabled */
     ) {
       if (focus) {
-        calendarDay.button.setAttribute('tabindex', 0)
+        calendarDay.button.setAttribute('tabindex', '0')
         calendarDay.button.focus()
         calendarDay.button.classList.add(this.selectedDayButtonClass)
       }
@@ -622,7 +622,7 @@ DatePicker.prototype.setCurrentDate = function (focus = true) {
       )
     })
 
-    enabledDays[0].button.setAttribute('tabindex', 0)
+    enabledDays[0].button.setAttribute('tabindex', '0')
 
     this.currentDate = enabledDays[0].date
   }
@@ -871,7 +871,7 @@ DSCalendarDay.prototype.update = function (day, hidden, disabled) {
   let accessibleLabel = this.picker.formattedDateHuman(day)
 
   if (disabled) {
-    this.button.setAttribute('aria-disabled', true)
+    this.button.setAttribute('aria-disabled', 'true')
     accessibleLabel = `Excluded date, ${accessibleLabel}`
   } else {
     this.button.removeAttribute('aria-disabled')

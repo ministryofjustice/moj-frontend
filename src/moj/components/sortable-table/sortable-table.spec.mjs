@@ -81,7 +81,7 @@ describe('sortable table', () => {
     for (const header of headers) {
       const button = header.querySelector('button')
       expect(button).toBeInTheDocument()
-      expect(button).toHaveTextContent(header.textContent)
+      expect(button).toHaveTextContent(`${header.textContent}`)
     }
   })
 

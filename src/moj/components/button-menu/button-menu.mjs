@@ -107,7 +107,7 @@ ButtonMenu.prototype.setupMenuItems = function () {
     this.$menu.insertBefore(listItem, item)
     listItem.appendChild(item)
 
-    item.setAttribute('tabindex', -1)
+    item.setAttribute('tabindex', '-1')
 
     if (item.tagName === 'BUTTON') {
       item.setAttribute('type', 'button')
