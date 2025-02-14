@@ -112,7 +112,7 @@ RichTextEditor.prototype.getEnhancedHtml = function (val) {
 RichTextEditor.prototype.hideDefault = function () {
   this.textarea = this.container.find('textarea')
   this.textarea.addClass('govuk-visually-hidden')
-  this.textarea.attr('aria-hidden', true)
+  this.textarea.attr('aria-hidden', 'true')
   this.textarea.attr('tabindex', '-1')
 }
 
@@ -135,7 +135,7 @@ RichTextEditor.prototype.configureToolbar = function () {
 }
 
 RichTextEditor.prototype.onButtonClick = function (e) {
-  document.execCommand($(e.currentTarget).data('command'), false, null)
+  document.execCommand($(e.currentTarget).data('command'), false, undefined)
 }
 
 RichTextEditor.prototype.getContent = function () {
