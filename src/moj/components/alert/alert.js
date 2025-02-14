@@ -60,7 +60,7 @@ MOJFrontend.Alert.prototype.init = function () {
     MOJFrontend.setFocus(this.$module)
   }
 
-  this.$dismissButton = this.$module.querySelector('.moj-alert__action button')
+  this.$dismissButton = this.$module.querySelector('.moj-alert__dismiss')
 
   if (this.config.dismissible && this.$dismissButton) {
     this.$dismissButton.removeAttribute('hidden')

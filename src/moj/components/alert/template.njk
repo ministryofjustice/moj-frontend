@@ -58,8 +58,8 @@
   }) if params.focusOnDismissSelector }}
   {{- govukAttributes(params.attributes) -}}
 >
-  <div class="moj-alert__icon">
-    <svg role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" height="30" width="30">
+  <div>
+    <svg class="moj-alert__icon" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" height="30" width="30">
       {{- iconPath | safe }}
     </svg>
   </div>
@@ -78,7 +78,7 @@
   </div>
   {%- if params.dismissible %}
     <div class="moj-alert__action">
-      <button class="" hidden>{{ params.dismissText | default("Dismiss", true)  }}</button>
+      <button class="moj-alert__dismiss" hidden>{{ params.dismissText | default("Dismiss", true)  }}</button>
     </div>
   {%- endif %}
 </div>
