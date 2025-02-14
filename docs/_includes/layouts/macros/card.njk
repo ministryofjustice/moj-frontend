@@ -2,7 +2,7 @@
 {% if params.layout == "side-by-side" or params.layout == "full" %}
     <article class="{{ 'govuk-grid-column-full' if params.layout == 'full' else 'govuk-grid-column-one-half-from-desktop' }}">
             {% if params.imageLink %}
-                <img loading="lazy" class="app-card__image govuk-!-margin-bottom-4{{ params.imageClass | default('') }}" 
+                <img loading="lazy" class="app-card__image govuk-!-margin-bottom-4{% if params.imageClass %} {{ params.imageClass }}{% endif %}" 
                      alt="{{ params.imageAlt | default('') }}" 
                      src="{{ params.imageLink }}"
                      srcset="{{ params.imageLinkLarge }} 2x"  
@@ -18,7 +18,7 @@
     <article class="govuk-grid-row app-card {% if params.reverse %}app-card--reverse{% endif %}">
         {% if params.imageLink %}
         <div class="govuk-grid-column-one-half-from-desktop">
-                <img loading="lazy" class="app-card__image govuk-!-margin-bottom-4{{ params.imageClass | default('') }}" 
+                <img loading="lazy" class="app-card__image govuk-!-margin-bottom-4{% if params.imageClass %} {{ params.imageClass }}{% endif %}" 
                      alt="{{ params.imageAlt | default('') }}" 
                      src="{{ params.imageLink }}" 
                      srcset="{{ params.imageLinkLarge }} 2x"
