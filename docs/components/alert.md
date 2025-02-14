@@ -137,7 +137,7 @@ An alert needs a title, which does not need to be displayed as a heading. The ti
 
 The alert works best when it contains a single, succinct message.
 
-Do not use it to display large amounts of content. This reduces the prominence of the component and pushes other content down the page too much. If you cannot communicate your message in under 3 sentences, select a different component.
+Do not use it to display large amounts of content. This reduces the prominence of the component and pushes other content down the page. If you cannot communicate your message in under 3 sentences, use a different component.
 
 ### What to add to it
 
@@ -145,17 +145,17 @@ The alert contains an icon and is surrounded by a border. It needs to contain bo
 
 The alert needs a title, which does not need to be shown on the page. The title gives each alert a unique and accessible label, which can be read out to screenreader users.
 
-You can add one heading (but no more) to the body copy. The heading level should follow its position on the page. For example, an alert heading would be an H2 if placed under a main page heading (H1).
+You can add one heading (but no more) to the body copy. The heading level should follow its position on the page. For example, an alert heading would be an H2 if placed under a main page heading.
 
 You can also add bullet points and links, if needed.
 
-The alert content needs to make sense on its own. This ensures that the message does not rely on the colour and icon too much, as they're not accessible to everyone.
+The alert content needs to make sense on its own. This ensures that the message does not rely on the colour and icon, as they're not accessible to everyone.
 
 ### Dismissing the alert
 
 {% example "/examples/alert-dismissible" %}
 
-The alert can be made to stay on the page (be persistent) or dismissed (by the user selecting 'dismiss'). Dismissing it helps users to manage tasks and keep their interfaces clear. It's particularly helpful for the success alert, where there's nothing more for the user to do.
+The alert can stay on the page (be persistent) or be dismissed by the user. Dismissing it helps users to manage tasks and keep their interfaces clear. It's particularly helpful for the success alert, where there's nothing more for the user to do.
 
 <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -183,13 +183,13 @@ It's OK to present more than 1 alert on a page – they'll stack. When developin
 
 - separating alerts that do not involve anything further for a user do – these can be easily dismissed
 - combining instances of the warning, error and information states to reduce the number of alerts
-- that the 'alert role' (read out to screenreader users) should only be applied to one of the alerts  
+- that the 'alert' read out to screenreader users should only be applied to one alert  
 
 ### Where to add it
 
 An alert can be displayed globally or in context, depending on the type of message.
 
-A global alert is shown on all pages (or any page) and is about the service as a whole, for example service downtime. It can also be displayed on a home page to draw the user’s attention to new and unknown issues. A contextual alert is shown in (and is about) a particular section.
+A global alert is shown on all pages (or any page) and is about the service as a whole, for example service downtime. It can also be displayed on a homepage to draw the user’s attention to new and unknown issues. A contextual alert is shown in (and is about) a particular section.
 
 Place alerts about a whole service or page at the top of the page above the main heading and below the back link (if there is one). An alert can also be positioned under a relevant heading, but should not be added to body copy.
 
