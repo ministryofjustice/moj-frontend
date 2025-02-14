@@ -13,10 +13,6 @@
   }
 }
 
-.moj-alert:target {
-  display: none;
-}
-
 .moj-alert[data-dismissible] {
   grid-template-areas:
     "icon content"
@@ -38,7 +34,8 @@
 .moj-alert__content {
   @include govuk-font($size: 19);
   display: block;
-  padding-top: 5px;
+  // Padding to align text with icon
+  padding-top: govuk-spacing(1);
   overflow: hidden;
   color: govuk-colour("black");
 
@@ -56,6 +53,7 @@
 }
 
 .moj-alert__action button {
+  // Give the button link styling
   margin-bottom: 0;
   border: none;
   color: unset;
@@ -75,6 +73,7 @@
 }
 
 .moj-alert--with-heading .moj-alert__content {
+  // No padding needed when there is a heading
   padding-top: 0;
 
   @include govuk-media-query($from: tablet) {

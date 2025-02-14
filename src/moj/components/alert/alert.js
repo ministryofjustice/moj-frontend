@@ -3,11 +3,12 @@
  * @property {boolean} [dismissible=false] - Can the alert be dismissed by the user
  * @property {string} [dismissText=Dismiss] - the label text for the dismiss button
  * @property {boolean} [disableAutoFocus=false] - whether the alert will be autofocused
+ * @property {string} [focusOnDismissSelector] - CSS Selector for element to be focused on dismiss
  */
 
 /**
- * @param {HTMLElement} $module
- * @param {AlertConfig} config
+ * @param {HTMLElement} $module - the Alert element
+ * @param {AlertConfig} config - configuration options
  * @class
  */
 MOJFrontend.Alert = function ($module, config = {}) {
@@ -29,12 +30,14 @@ MOJFrontend.Alert = function ($module, config = {}) {
     dismissText: 'Dismiss',
     disableAutoFocus: false
   }
+
   // data attributes override JS config, which overrides defaults
   this.config = this.mergeConfigs(
     defaults,
     config,
     this.parseDataset(schema, $module.dataset)
   )
+
   this.$module = $module
 }
 
@@ -60,7 +63,7 @@ MOJFrontend.Alert.prototype.init = function () {
   this.$dismissButton = this.$module.querySelector('.moj-alert__action button')
 
   if (this.config.dismissible && this.$dismissButton) {
-    this.$dismissButton.hidden = false
+    this.$dismissButton.removeAttribute('hidden')
 
     this.$module.addEventListener('click', (event) => {
       if (this.$dismissButton.contains(event.target)) {
@@ -70,23 +73,28 @@ MOJFrontend.Alert.prototype.init = function () {
   }
 }
 
-MOJFrontend.Alert.prototype.createDismissButton = function () {
-  const template = `
-    <div class="moj-alert__action">
-      <button class="govuk-body govuk-link">${this.config.dismissText}</a>
-    </div>`
-  this.$module.insertAdjacentHTML('beforeend', template)
-}
-
+/**
+ * Handle dismissing the alert
+ */
 MOJFrontend.Alert.prototype.dimiss = function () {
   let $elementToRecieveFocus
 
+  // If a selector has been provided, attempt to find that element
   if (this.config.focusOnDismissSelector) {
     $elementToRecieveFocus = document.querySelector(
       this.config.focusOnDismissSelector
     )
   }
 
+  // Is the next sibling another alert
+  if (!$elementToRecieveFocus) {
+    const $nextSibling = this.$module.nextElementSibling
+    if ($nextSibling.matches('.moj-alert')) {
+      $elementToRecieveFocus = $nextSibling
+    }
+  }
+
+  // Else try to find any preceding sibling alert or heading
   if (!$elementToRecieveFocus) {
     $elementToRecieveFocus = MOJFrontend.getPreviousSibling(
       this.$module,
@@ -94,16 +102,20 @@ MOJFrontend.Alert.prototype.dimiss = function () {
     )
   }
 
+  // Else find the closest ancestor heading, or fallback to main, or last resort
+  // use the body element
   if (!$elementToRecieveFocus) {
     $elementToRecieveFocus = this.$module.closest(
-      'h1, h2, h3, h4, h5, h6, main'
+      'h1, h2, h3, h4, h5, h6, main, body'
     )
   }
 
+  // If we have an element, place focus on it
   if ($elementToRecieveFocus) {
     MOJFrontend.setFocus($elementToRecieveFocus)
   }
 
+  // Remove the alert
   this.$module.remove()
 }
 
