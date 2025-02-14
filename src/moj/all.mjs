@@ -73,8 +73,16 @@ function initAll(config) {
 
       options.toolbar = {}
 
-      for (const item in toolbar) {
-        options.toolbar[toolbar[item]] = true
+      for (const option of toolbar) {
+        if (
+          option === 'bold' ||
+          option === 'italic' ||
+          option === 'underline' ||
+          option === 'bullets' ||
+          option === 'numbers'
+        ) {
+          options.toolbar[option] = true
+        }
       }
     }
 
