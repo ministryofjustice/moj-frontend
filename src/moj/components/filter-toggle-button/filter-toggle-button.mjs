@@ -1,5 +1,8 @@
 import $ from 'jquery'
 
+/**
+ * @class
+ */
 export function FilterToggleButton(options) {
   this.options = options
   this.container = $(this.options.toggleButton.container)

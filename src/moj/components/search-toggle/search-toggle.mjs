@@ -44,6 +44,9 @@ SearchToggle.prototype.onToggleButtonClick = function () {
   }
 }
 
+/**
+ * @param {JQuery.ClickEvent<Document> | JQuery.FocusInEvent<Document>} e
+ */
 SearchToggle.prototype.onDocumentClick = function (e) {
   if (
     !$.contains(this.toggleButtonContainer[0], e.target) &&

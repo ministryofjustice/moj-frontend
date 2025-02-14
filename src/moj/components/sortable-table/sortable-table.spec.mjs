@@ -7,7 +7,10 @@ import { SortableTable } from './sortable-table.mjs'
 
 const user = userEvent.setup()
 
-const createComponent = (options = {}) => {
+/**
+ * @param {SortableTableConfig} [options]
+ */
+function createComponent(options = {}) {
   const html = `
     <div>
       <table class="govuk-table" data-module="moj-sortable-table">
@@ -54,19 +57,26 @@ const createComponent = (options = {}) => {
     </div>`
 
   document.body.insertAdjacentHTML('afterbegin', html)
+
+  /** @type {HTMLElement} */
   const component = document.querySelector('[data-module="moj-sortable-table"]')
+  if (!component) throw new Error('Root element not found')
+
   options.table = component
+
   return { component, options }
 }
 
 describe('sortable table', () => {
+  /** @type {HTMLElement} */
   let component
 
+  /** @type {SortableTableConfig} */
+  let options
+
   beforeEach(() => {
-    ;({ component } = createComponent())
-    new SortableTable({
-      table: component
-    })
+    ;({ component, options } = createComponent())
+    new SortableTable(options)
   })
 
   afterEach(() => {
@@ -81,7 +91,7 @@ describe('sortable table', () => {
     for (const header of headers) {
       const button = header.querySelector('button')
       expect(button).toBeInTheDocument()
-      expect(button).toHaveTextContent(header.textContent)
+      expect(button).toHaveTextContent(`${header.textContent}`)
     }
   })
 
@@ -360,3 +370,7 @@ describe('sortable table options', () => {
     )
   })
 })
+
+/**
+ * @import { SortableTableConfig } from './sortable-table.mjs'
+ */

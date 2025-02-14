@@ -1,7 +1,7 @@
 /**
+ * @class
  * @param {HTMLElement} $module - HTML element
  * @param {DatePickerConfig} config - config object
- * @class
  */
 export function DatePicker($module, config = {}) {
   if (!$module) {
@@ -778,9 +778,10 @@ DatePicker.prototype.focusPreviousYear = function (event, focus = true) {
  *
  * @param {Schema} schema - Component class
  * @param {DOMStringMap} dataset - HTML element dataset
- * @returns {object} Normalised dataset
+ * @returns {{ [key: string]: unknown }} Normalised dataset
  */
 DatePicker.prototype.parseDataset = function (schema, dataset) {
+  /** @type {{ [key: string]: unknown }} */
   const parsed = {}
 
   for (const [field, ,] of Object.entries(schema.properties)) {
@@ -879,6 +880,9 @@ DSCalendarDay.prototype.update = function (day, hidden, disabled) {
   this.date = new Date(day)
 }
 
+/**
+ * @param {MouseEvent} event - Click event
+ */
 DSCalendarDay.prototype.click = function (event) {
   this.picker.goToDate(this.date)
   this.picker.selectDate(this.date)
@@ -887,6 +891,9 @@ DSCalendarDay.prototype.click = function (event) {
   event.preventDefault()
 }
 
+/**
+ * @param {KeyboardEvent} event - Key press event
+ */
 DSCalendarDay.prototype.keyPress = function (event) {
   let calendarNavKey = true
 

@@ -36,10 +36,16 @@ function initAll(config) {
   )
 
   nodeListForEach($multiSelects, function ($multiSelect) {
+    const containerSelector = $multiSelect.getAttribute(
+      'data-multi-select-checkbox'
+    )
+
+    if (!($multiSelect instanceof HTMLElement) || !containerSelector) {
+      return
+    }
+
     new MultiSelect({
-      container: $multiSelect.querySelector(
-        $multiSelect.getAttribute('data-multi-select-checkbox')
-      ),
+      container: $multiSelect.querySelector(containerSelector),
       checkboxes: $multiSelect.querySelectorAll(
         'tbody .govuk-checkboxes__input'
       ),
@@ -60,6 +66,7 @@ function initAll(config) {
   )
 
   nodeListForEach($richTextEditors, function ($richTextEditor) {
+    /** @type {RichTextEditorConfig} */
     const options = {
       textarea: $richTextEditor
     }
@@ -118,12 +125,20 @@ function initAll(config) {
   const $datepickers = scope.querySelectorAll('[data-module="moj-date-picker"]')
 
   nodeListForEach($datepickers, function ($datepicker) {
+    if (!($datepicker instanceof HTMLElement)) {
+      return
+    }
+
     new DatePicker($datepicker, {}).init()
   })
 
   const $buttonMenus = scope.querySelectorAll('[data-module="moj-button-menu"]')
 
   nodeListForEach($buttonMenus, function ($buttonmenu) {
+    if (!($buttonmenu instanceof HTMLElement)) {
+      return
+    }
+
     new ButtonMenu($buttonmenu, {}).init()
   })
 
@@ -170,3 +185,6 @@ export {
  * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
  */
 
+/**
+ * @import { RichTextEditorConfig } from './components/rich-text-editor/rich-text-editor.mjs'
+ */
