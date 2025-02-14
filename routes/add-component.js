@@ -7,7 +7,8 @@ const {
   getFormDataFromSession,
   getRawSessionText,
   canSkipQuestion,
-  canAddAnother
+  canAddAnother,
+  getBackLink
 } = require('../middleware/component-session')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
 const {
@@ -102,13 +103,15 @@ router.get(
   getFormDataFromSession,
   canAddAnother,
   canSkipQuestion,
+  getBackLink,
   (req, res) => {
     res.render(`${req.params.page}`, {
       submitUrl: req.originalUrl,
       formData: req?.formData,
       addAnother: req?.addAnother,
       showAddAnother: req?.showAddAnother,
-      skipQuestion: req?.skipQuestion || false
+      skipQuestion: req?.skipQuestion || false,
+      backLink: req?.backLink || false
     })
   }
 )

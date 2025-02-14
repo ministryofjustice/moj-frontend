@@ -171,6 +171,24 @@ const canAddAnother = (req, res, next) => {
   next()
 }
 
+const getBackLink = (req, res, next) => {
+  if(req.session.checkYourAnswers) {
+    req.backLink = 'check-your-answers'
+    return next()
+  }
+  const path = req.url.split('/')[1]
+  const index = COMPONENT_FORM_PAGES.findIndex((page) => path.endsWith(page))
+
+  if (index > 0) {
+    req.backLink = COMPONENT_FORM_PAGES[index - 1]
+    //todo multipage logic
+  } else {
+    req.backLink = false
+  }
+
+  next()
+}
+
 module.exports = {
   setNextPage,
   validateFormData,
@@ -178,5 +196,6 @@ module.exports = {
   getFormDataFromSession,
   getRawSessionText,
   canSkipQuestion,
-  canAddAnother
+  canAddAnother,
+  getBackLink
 }
