@@ -5,7 +5,8 @@
             {% if params.imageLink %}
                 <img loading="lazy" class="app-card__image govuk-!-margin-bottom-4{{ params.imageClass | default('') }}" 
                      alt="{{ params.imageAlt | default('') }}" 
-                     src="{{ params.imageLink }}" 
+                     src="{{ params.imageLink }}"
+                     srcset="{{ params.imageLinkLarge }} 2x"  
                      {% if not params.imageAlt %}aria-hidden="true"{% endif %}
                      />
             {% endif %}
@@ -22,6 +23,7 @@
                 <img loading="lazy" class="app-card__image govuk-!-margin-bottom-4{{ params.imageClass | default('') }}" 
                      alt="{{ params.imageAlt | default('') }}" 
                      src="{{ params.imageLink }}" 
+                     srcset="{{ params.imageLinkLarge }} 2x"
                      {% if not params.imageAlt %}aria-hidden="true"{% endif %}
                      />
         </div>
