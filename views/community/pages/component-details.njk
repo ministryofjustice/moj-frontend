@@ -67,33 +67,11 @@
                 value: formData.howIsTheComponentUsed
             }) }}
 
-            {{ govukCharacterCount({
-              name: "componentProblemSolved",
-              id: "component-problem-solved",
-              maxwords: 250,
-              label: {
-                text: "What problem did the component solve?",
-                classes: "govuk-label--m",
-                isPageHeading: true
-              },
-              errorMessage: formErrors.componentProblemSolved,
-              value: formData.componentProblemSolved
-            }) }}
-
           <div class="govuk-button-group moj-button-action">
             {{ govukButton({
               text: 'Continue',
               preventDoubleClick: true
             }) }}
-            {% if skipQuestion %}
-
-              {{ govukButton({
-                text: "Skip Question",
-                classes: "govuk-button--secondary",
-                attributes: {'data-skip-question': skipQuestion},
-                href: skipQuestion
-              }) }}
-            {% endif %}
         </form>
     </div>
 
