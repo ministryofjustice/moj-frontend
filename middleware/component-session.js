@@ -47,11 +47,11 @@ const nextPage = (url, body, subpage) => {
 }
 
 const setNextPage = (req, res, next) => {
-  if (req?.session?.checkYourAnswers) {
+  const addAnother = req?.body?.addAnother
+  if (req?.session?.checkYourAnswers && !addAnother) {
     req.nextPage = 'check-your-answers'
     delete req.session.checkYourAnswers
   } else {
-    const addAnother = req?.body?.addAnother
     let subpage = null
     if(addAnother) {
       subpage = req?.params?.subpage ? parseInt(req?.params?.subpage) + 1 : 1
