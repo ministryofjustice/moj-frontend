@@ -14,14 +14,13 @@ const config = {
   ENV: process.env.ENV || 'development',
   COMPONENT_FORM_PAGES: [
     'component-details',
+    'component-image',
     'accessibility-findings',
     'accessibility-findings-more',
     'prototype',
     'prototype-url',
     'component-code',
     'component-code-details',
-    'component-image',
-    'additional-information',
     'your-details',
     'check-your-answers'
   ],

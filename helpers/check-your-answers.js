@@ -152,12 +152,11 @@ const formatLabel = (field) => {
 
 const checkYourAnswers = (session) => {
   const forms = [
-    ['accessibility-findings', 'accessibility-findings-more'],
-    'additional-information',
-    ['component-code', 'component-code-details'],
     'component-details',
     'component-image',
+    ['accessibility-findings', 'accessibility-findings-more'],
     ['prototype', 'prototype-url'],
+    ['component-code', 'component-code-details'],
     'your-details'
   ]
   return answersFromSession(forms, session)
