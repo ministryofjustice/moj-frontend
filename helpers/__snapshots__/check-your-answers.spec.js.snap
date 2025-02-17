@@ -3,7 +3,6 @@
 exports[`checkYourAnswers function should handle empty session gracefully 1`] = `
 {
   "accessibilityFindingsRows": [],
-  "additionalInformationRows": [],
   "componentCodeRows": [],
   "componentDetailsRows": [],
   "componentImageRows": [],
@@ -33,7 +32,6 @@ exports[`checkYourAnswers function should handle missing session fields graceful
       },
     },
   ],
-  "additionalInformationRows": [],
   "componentCodeRows": [
     {
       "actions": {
@@ -81,7 +79,6 @@ exports[`checkYourAnswers function should handle missing session fields graceful
 exports[`checkYourAnswers function should handle multiple entries for a field 1`] = `
 {
   "accessibilityFindingsRows": [],
-  "additionalInformationRows": [],
   "componentCodeRows": [],
   "componentDetailsRows": [],
   "componentImageRows": [],
@@ -142,25 +139,6 @@ exports[`checkYourAnswers function should transform session data into the expect
       },
       "value": {
         "text": "Some additional information",
-      },
-    },
-  ],
-  "additionalInformationRows": [
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/get-involved/add-new-component/additional-information",
-            "text": "Change",
-            "visuallyHiddenText": "Additional Information - Info",
-          },
-        ],
-      },
-      "key": {
-        "text": "Info",
-      },
-      "value": {
-        "text": "Some additional info",
       },
     },
   ],

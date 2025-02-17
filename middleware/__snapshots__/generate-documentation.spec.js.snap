@@ -41,10 +41,6 @@ This is how it is used.
 
 {% tab "Additional Info" %}
 
-## Additional Info
-
-Additional information here.
-
 ## Links
 
 ### Prototype
@@ -130,10 +126,6 @@ eleventyNavigation:
 {% endtab %}
 
 {% tab "Additional Info" %}
-
-## Additional Info
-
-
 
 ## Links
 
@@ -221,10 +213,6 @@ Another usage.
 
 {% tab "Additional Info" %}
 
-## Additional Info
-
-Additional information here.
-
 ## Links
 
 ### Prototype
@@ -311,10 +299,6 @@ eleventyNavigation:
 
 {% tab "Additional Info" %}
 
-## Additional Info
-
-
-
 ## Links
 
 ### Prototype
@@ -400,10 +384,6 @@ Usage here.
 {% endtab %}
 
 {% tab "Additional Info" %}
-
-## Additional Info
-
-Additional information here.
 
 ## Links
 

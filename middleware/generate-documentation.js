@@ -97,10 +97,6 @@ ${generateComponentCodeSection(data)}
 
 {% tab "Additional Info" %}
 
-## Additional Info
-
-${additionalInformation?.additionalInformation || ''}
-
 ## Links
 
 ${generatePrototypeSection(data)}
