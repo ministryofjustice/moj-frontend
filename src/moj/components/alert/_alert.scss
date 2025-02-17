@@ -1,11 +1,14 @@
 .moj-alert {
+  @include govuk-font($size: false);
+  display: -ms-grid;
   display: grid;
   margin-bottom: govuk-spacing(6);
   padding: govuk-spacing(2);
   border: 5px solid transparent;
   background: govuk-colour("white");
+  -ms-grid-columns: min-content fit-content(960px);
   grid-template-columns: min-content fit-content(960px);
-  grid-template-areas: "icon content";
+
   gap: govuk-spacing(2);
 
   &:focus {
@@ -14,13 +17,8 @@
 }
 
 .moj-alert[data-dismissible] {
-  grid-template-areas:
-    "icon content"
-    ". action";
-
   @include govuk-media-query($from: tablet) {
     grid-template-columns: min-content fit-content(920px) auto;
-    grid-template-areas: "icon content action";
   }
 }
 
@@ -32,7 +30,7 @@
 }
 
 .moj-alert__content {
-  @include govuk-font($size: 19);
+  @include govuk-font-size($size: 19);
   display: block;
   // Padding to align text with icon
   padding-top: govuk-px-to-rem(5px);
@@ -45,9 +43,11 @@
 }
 
 .moj-alert__action {
-  grid-area: action;
+  grid-column-start: 2;
+  grid-column-end: -1;
 
   @include govuk-media-query($from: tablet) {
+    grid-column-start: 3;
     justify-self: right;
   }
 }
@@ -55,6 +55,7 @@
 .moj-alert__dismiss {
   // Give the button link styling
   margin-bottom: 0;
+  padding: 0;
   border: none;
   color: unset;
   background-color: transparent;
