@@ -4,7 +4,7 @@ title: Design System Statuses
 eleventyNavigation:
   key: Design System Statuses
   parent: Using the design system
-  order: 0
+  order: 5
   excerpt: "Design System Statuses."
 ---
 
