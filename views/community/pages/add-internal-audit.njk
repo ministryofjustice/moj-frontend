@@ -40,10 +40,26 @@
 
       {{ govukDateInput({
         id: "auditDate",
-        namePrefix: "audit-date",
+        namePrefix: "auditDate",
         name: "audit-date",
         errorMessage: formErrors.auditDate,
         value: formData.auditDate,
+        items: [
+          {
+            classes: "govuk-input--width-2",
+            name: "day",
+            value: formData['auditDate-day']
+          },
+          {
+            classes: "govuk-input--width-2",
+            name: "month",
+            value: formData['auditDate-month']
+          },
+          {
+            name: "year",
+            value: formData['auditDate-year']
+          }
+        ],
         fieldset: {
           legend: {
             text: "When did the audit take place?",
@@ -75,8 +91,8 @@
       }) }}
 
       {{ govukCharacterCount({
-        name: "issues-discovered",
-        id: "issuesDiscovered",
+        id: "issues-discovered",
+        name: "issuesDiscovered",
         maxwords: 250,
         label: {
           text: "Were any issues discovered with the component during the audit? (Optional)",

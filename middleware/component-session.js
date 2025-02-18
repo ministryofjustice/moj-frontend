@@ -1,8 +1,7 @@
 const nextPage = require('../helpers/next-page')
 
 const {
-  COMPONENT_FORM_PAGES,
-  COMPONENT_FORM_PAGES_OPTIONS
+  COMPONENT_FORM_PAGES
 } = require('../config')
 
 const maxAddAnother = 10
@@ -33,6 +32,7 @@ const setNextPage = (req, res, next) => {
 }
 
 const validateFormData = (req, res, next) => {
+  console.log('body',req.body)
   const schemaName = req.url.split('/')[1]
   const schema = require(`../schema/${schemaName}.schema`)
   const { error, value } = schema.validate(req.body, { abortEarly: false })
