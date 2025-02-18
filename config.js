@@ -26,9 +26,19 @@ const config = {
   ],
   COMPONENT_FORM_PAGES_OPTIONS: {
     'accessibility-findings': {
-      hasComponentBeenTestedForAccessibility: {
-        yes: 'accessibility-findings-more',
-        no: 'prototype'
+      hasComponentBeenTestedExternalAccessibility: {
+        yes: 'accessibility-external-audit',
+        no: {
+          hasComponentBeenTestedInternalAudit: {
+            yes: 'accessibility-internal-audit',
+            no: {
+              hasComponentBeenTestedUsingAssistiveTechnology: {
+                yes: 'accessibility-assitive-technology',
+                no: 'prototype'
+              }
+            }
+          }
+        }
       }
     },
     prototype: {

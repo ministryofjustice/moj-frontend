@@ -9,16 +9,26 @@ const nextPage = (url, body, subpage) => {
     return `${currentPage}/${subpage}`
   }
 
+  const getNextPage = (pageOptions, body) => {
+    const fieldKey = Object.keys(pageOptions)[0]
+    const fieldValue = body?.[fieldKey]
+
+    if (fieldValue && pageOptions[fieldKey]) {
+      const nextPageOption = pageOptions[fieldKey][fieldValue]
+      if (typeof nextPageOption === 'string') {
+        return nextPageOption
+      } else if (typeof nextPageOption === 'object') {
+        return getNextPage(nextPageOption, body)
+      }
+    }
+    return null
+  }
+
   // Check if there's an entry for this page in COMPONENT_FORM_PAGES_OPTIONS
   if (COMPONENT_FORM_PAGES_OPTIONS[currentPage]) {
-    const fieldKey = Object.keys(COMPONENT_FORM_PAGES_OPTIONS[currentPage])[0] // Get the expected field from the body
-    const fieldValue = body?.[fieldKey] // Extract the value from the body
-
-    if (
-      fieldValue &&
-      COMPONENT_FORM_PAGES_OPTIONS[currentPage][fieldKey][fieldValue]
-    ) {
-      return COMPONENT_FORM_PAGES_OPTIONS[currentPage][fieldKey][fieldValue] // Return mapped page
+    const nextPage = getNextPage(COMPONENT_FORM_PAGES_OPTIONS[currentPage], body)
+    if (nextPage) {
+      return nextPage
     }
   }
 
