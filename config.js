@@ -17,6 +17,9 @@ const config = {
     'component-image',
     'accessibility-findings',
     'accessibility-findings-more',
+    'add-external-audit',
+    'add-internal-audit',
+    'add-assistive-tech',
     'prototype',
     'prototype-url',
     'component-code',
@@ -27,13 +30,13 @@ const config = {
   COMPONENT_FORM_PAGES_OPTIONS: {
     'accessibility-findings': {
       hasComponentBeenTestedExternalAccessibility: {
-        yes: 'accessibility-external-audit',
+        yes: 'add-external-audit',
         no: {
           hasComponentBeenTestedInternalAudit: {
-            yes: 'accessibility-internal-audit',
+            yes: 'add-internal-audit',
             no: {
               hasComponentBeenTestedUsingAssistiveTechnology: {
-                yes: 'accessibility-assitive-technology',
+                yes: 'add-assistive-tech',
                 no: 'prototype'
               }
             }

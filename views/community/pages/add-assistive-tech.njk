@@ -1,0 +1,87 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% extends "base.njk" %}
+{% block content %}
+  {% if backLink %}
+    <div class="app-layout__backlink">
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    </div>
+  {% endif %}
+  <div class="app-layout__content">
+    {% if errorList %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form method="post" action="{{ submitUrl }}">
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1>Testing with assistive technology</h1>
+
+      {{ govukDateInput({
+        id: "testingDate",
+        namePrefix: "testing-date",
+        name: "testing-date",
+        errorMessage: formErrors.testingDate,
+        value: formData.testingDate,
+        fieldset: {
+          legend: {
+            text: "When did the testing with assistive technology take place?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "For example, 27 3 2007"
+        }
+      }) }}
+
+      {{ govukCharacterCount({
+        name: "issues-discovered",
+        id: "issuesDiscovered",
+        maxwords: 250,
+        label: {
+          text: "Were any issues discovered with the component during testing? (Optional)",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        errorMessage: formErrors.issuesDiscovered,
+        value: formData.issuesDiscovered
+      }) }}
+
+      {{ govukFileUpload({
+        id: "accessibility-report",
+        name: "accessibilityReport",
+        label: {
+          text: "Upload the report (optional)",
+          isPageHeading: true,
+          classes: "govuk-label--m"
+        },
+        hint: {
+          text: "The selected file must be PDF and smaller than 10MB."
+        },
+        errorMessage: formErrors.accessibilityReport,
+        value: formData.accessibilityReport,
+        attributes: {
+          accept: ".pdf"
+        }
+      }) }}
+
+      <div class="govuk-button-group moj-button-action">
+        {{ govukButton({
+          text: 'Continue',
+          preventDoubleClick: true
+        }) }}
+      </div>
+    </form>
+  </div>
+
+{% endblock %}
