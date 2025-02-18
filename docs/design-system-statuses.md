@@ -1,48 +1,52 @@
 ---
 layout: layouts/content.njk
-title: Design System Statuses
+title: Design system statuses
 eleventyNavigation:
-  key: Design System Statuses
+  key: Design system statuses
   parent: Using the design system
   order: 5
-  excerpt: "Design System Statuses."
+  excerpt: "Design system statuses."
 ---
 
-Every building block on the MoJ Design System has been given 1 of 4 statuses. This is to help you know how to use them. Each status’ building blocks have been developed in a different way. 
+Every building block on the MoJ Design System has 1 of 4 statuses. This is to help you know how to use them. The statuses are:
 
-The Design System team is working to bring them all to the ‘established’ status. Building blocks will move between other statuses when they’re developed. They can also be archived.
+- Experimental 
+- To be reviewed
+- Official
+- Archived
+
+The Design System team is working to bring everything to the ‘official’ status. Building blocks will move between other statuses when the team develops them. They can also be archived.
 
 Learn how you can [help develop design system building blocks](/get-involved/suggest-a-change/).
 
-## 1. ‘Experimental’ status (for all community components)
+## ‘Experimental’ status (for all community components) <span class="govuk-tag govuk-tag--blue" style="vertical-align:middle;">Experimental</span>
 
-Anyone can add a building block to the Design System. These are called community components and all start as ‘experimental’. They have no involvement from the MoJ DS team (apart from a brief sense check before being published). 
+<div class="govuk-inset-text">
+  The experimental status will be launched later in 2025.
+</div>
 
-A community component can be anything from a screenshot to something more developed (with a Figma design and code). They’re a starting point, concept or idea. 
+When the experimental status launches, anyone will be able to add a building block to the Design System. All of these community components will start as ‘experimental’. They’ll have had a brief sense check from the MoJ Design System team, and then no more involvement.
 
-They’re early in development and may not have been considered (or accessibility tested) for use beyond a particular service. They’re not robust components and are only to be used in alpha and beta. 
+An experimental building block can be anything from a screenshot with very brief documentation, to something more developed (with code and a Figma design). They can be used as a starting point, concept or idea.
 
-The community section was created to enable people to share their design work and collaborate.   
+They’ll be early in development and may not have been considered (or accessibility tested) for use beyond a particular service. They’re only to be used in alpha and beta phases.
 
-## 2. ‘To be reviewed’ status  
+This user-led involvement in developing building blocks enables people to share their designs, collaborate and work in the open.
 
-These building blocks were added by the community for use by everyone at MoJ. They’re available in Figma and MoJ Frontend. 
+## ‘To be reviewed’ status <span class="govuk-tag govuk-tag--red"  style="vertical-align:middle;">To be reviewed</span>
 
-The history for these components are not known, and they have not been reviewed recently. The work to review them is not known. They’ll be reviewed and then updated.  
+Building blocks with a ‘to be reviewed’ status were added for use by everyone at MoJ, possibly a long time ago.
 
-## 3. ‘Official’ status (system building block)
+They have not been reviewed recently and the work to develop them is not known.
 
-Follows a review process 
-Has had a full multi-disciplinary team review 
-Fully accessible with any mentions of considerations
-Reusable In Figma and code
-Will be long-term supported and maintained 
+## ‘Official’ status <span class="govuk-tag govuk-tag--green"  style="vertical-align:middle;">Official</span>
 
-You can [view the building blocks which have been developed in this way, and which are planned in the roadmap]. 
+When an ‘experimental’ or ‘to be reviewed’ building block gets a full review by the Design System team it becomes ‘official’.
 
-## 4. ‘Archived’ status
+This review includes an organisation-wide discovery and multi-disciplinary team input (including accessibility testing). Usage is thoroughly documented.
 
-Is in archived section of documentation site.
-Still exists in front end and Figma
+‘Official’ status building blocks can be used in every product phase. They’ll be supported and maintained in the long-term.
 
-How we release and version
+## ‘Archived’ status <span class="govuk-tag govuk-tag--grey"  style="vertical-align:middle;">Archived</span>
+
+Sometimes a building block is no longer needed. This is usually because the need has been met by the [GOV.UK Design System](https://design-system.service.gov.uk/) (which we do not want to duplicate).
