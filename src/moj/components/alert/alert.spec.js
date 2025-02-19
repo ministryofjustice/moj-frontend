@@ -226,21 +226,4 @@ describe('alert', () => {
       expect(main).toHaveFocus()
     })
   })
-  //
-  //
-  //
-  //
-  // focus on dismiss
-  //
-  //  passed selector
-  //
-  //  next alert
-  //
-  //  previous alert
-  //
-  //  previous heading
-  //
-  //  main
-  //
-  //
 })
