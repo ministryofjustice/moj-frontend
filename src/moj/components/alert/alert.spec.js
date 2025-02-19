@@ -213,12 +213,11 @@ describe('alert', () => {
     })
 
     test('it moves focus to main if no other element matches', async () => {
-      heading1.remove()
       heading2.remove()
       thirdAlert.remove()
       fourthAlert.remove()
       fifthAlert.remove()
-      const alert = secondAlert
+      const alert = firstAlert
       const main = screen.getByRole('main')
       const dismissButton = getByRole(alert, 'button')
 
