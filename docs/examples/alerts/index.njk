@@ -11,7 +11,7 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
   role: "alert",
   text: "Content that informs you of a thing.",
   dismissible: true
-  }) }}
+}) }}
 
 <h1>this is the main heading</h1>
 
@@ -36,20 +36,19 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 {{ mojAlert({
   variant: "information",
   text: "Content that informs you of a thing. It really is so very informative, that's why it needs so much content and is really, exceedingly verbose."
-  })
-}}
+}) }}
 
 <h2>With headings</h2>
 
 {{ mojAlert({
- variant: "information",
+  variant: "information",
   title: "You might like to know",
   showTitleAsHeading: true,
   text: "Content that informs you of a thing."
 }) }}
 
 {{ mojAlert({
- variant: "success",
+  variant: "success",
   title: "Woohoo!",
   showTitleAsHeading: true,
   text: "That thing just successfully occurred."
@@ -64,19 +63,19 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 }) }}
 
 {{ mojAlert({
-variant: "error",
-title: "Woah, hold up!",
+  variant: "error",
+  title: "Woah, hold up!",
   showTitleAsHeading: true,
-text: "Bad things happened."
+  text: "Bad things happened."
 }) }}
 
 <h3>With headings level 3</h3>
 
 {{ mojAlert({
- variant: "information",
- title: "You might like to know",
- showTitleAsHeading: true,
- headingTag: "h3",
+  variant: "information",
+  title: "You might like to know",
+  showTitleAsHeading: true,
+  headingTag: "h3",
   text: "Content that informs you of a thing."
 }) }}
 
@@ -86,8 +85,7 @@ text: "Bad things happened."
   variant: "information",
   title: "This contains information",
   dismissible: true
-  })
-}}
+}) }}
 
 <h3>Attempt to use h1</h3>
 
@@ -98,8 +96,7 @@ text: "Bad things happened."
   showTitleAsHeading: true,
   dismissible: true,
   text: "Content that informs you of a thing. It really is so very informative, that's why it needs so much content and is really, exceedingly verbose."
-  })
-}}
+}) }}
 
 <h2>Dismissible</h2>
 
@@ -112,8 +109,8 @@ text: "Bad things happened."
 
 <h3>Dismissible to string "yes"</h3>
 {{ mojAlert({
-variant: "success",
-dismissible: "yes",
+  variant: "success",
+  dismissible: "yes",
   text: "That thing just successfully occurred."
 }) }}
 
@@ -135,8 +132,7 @@ dismissible: "yes",
   variant: "information",
   dismissible: true,
   text: "Content that informs you of a thing. It really is so very informative, that's why it needs so much content and is really, exceedingly verbose."
-  })
-}}
+}) }}
 
 {{ mojAlert({
   variant: "information",
@@ -144,14 +140,13 @@ dismissible: "yes",
   showTitleAsHeading: true,
   dismissible: true,
   text: "Content that informs you of a thing. It really is so very informative, that's why it needs so much content and is really, exceedingly verbose."
-  })
-}}
+}) }}
 
 
 <h2>With links</h2>
 
 {{ mojAlert({
- variant: "information",
+  variant: "information",
   title: "You might like to know",
   dismissible: true,
   html: 'Content that informs you of a thing. <a href="#">More information</a>'
@@ -160,7 +155,7 @@ dismissible: "yes",
 <div id="focusOnMe">I will receive focus</div>
 
 {{ mojAlert({
- variant: "success",
+  variant: "success",
   title: "Woohoo!",
   dismissible: true,
   html: 'That thing just successfully occurred. <a href="#">Celebrate here</a>',
@@ -185,7 +180,7 @@ dismissible: "yes",
 <h2>With headings and links</h2>
 
 {{ mojAlert({
- variant: "information",
+  variant: "information",
   title: "You might like to know",
   showTitleAsHeading: true,
   dismissible: true,
@@ -193,7 +188,7 @@ dismissible: "yes",
 }) }}
 
 {{ mojAlert({
- variant: "success",
+  variant: "success",
   title: "Woohoo!",
   showTitleAsHeading: true,
   dismissible: true,
@@ -227,7 +222,7 @@ dismissible: "yes",
 }) }}
 </main>
 <script>
-document.addEventListener('focus', function() {
-  console.log('focused: ', document.activeElement)
-}, true);
+  document.addEventListener('focus', function() {
+    console.log('focused: ', document.activeElement)
+  }, true);
 </script>
