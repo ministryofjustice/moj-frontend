@@ -4,8 +4,8 @@
 
 {% block content %}
     <div class="app-layout__content">
+        {% if not isIndex %}<span class="govuk-caption-xl">Patterns</span>{% endif %}
         <h1 class="govuk-heading-xl{% if status %} govuk-!-display-inline-block govuk-!-margin-bottom-2{% endif %}">
-            {% if not isIndex %}<span class="govuk-caption-xl">Patterns</span>{% endif %}
             {{ title }}
         </h1>
         {{ macros.statusLabel(status, statusMessage, statusInfo) }}
