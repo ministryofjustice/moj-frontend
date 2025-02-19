@@ -31,22 +31,58 @@ const setNextPage = (req, res, next) => {
   next()
 }
 
+const extractBody = (body) => {
+  const result = { ...body };
+  const dateFields = {};
+
+  Object.keys(body).forEach((key) => {
+    const match = key.match(/(.*)-(day|month|year)$/);
+    if (match) {
+      const prefix = match[1];
+      if (!dateFields[prefix]) {
+        dateFields[prefix] = {};
+      }
+      dateFields[prefix][match[2]] = body[key];
+    }
+  });
+
+  Object.keys(dateFields).forEach((prefix) => {
+    const { day, month, year } = dateFields[prefix];
+    const paddedDay = day.padStart(2, '0');
+    const paddedMonth = month.padStart(2, '0');
+    result[prefix] = `${year}-${paddedMonth}-${paddedDay}`;
+  });
+
+  return result;
+};
+
 const validateFormData = (req, res, next) => {
-  console.log('body',req.body)
   const schemaName = req.url.split('/')[1]
   const schema = require(`../schema/${schemaName}.schema`)
-  const { error, value } = schema.validate(req.body, { abortEarly: false })
+  const body = extractBody({...req.body})
+  const { error, value } = schema.validate(body, { abortEarly: false })
+  const dateFields = ['auditDate']
 
   if (error) {
     console.error('Validation error:', error.details)
-    const formErrors = Object.keys(req.body).reduce((acc, key) => {
+
+    const formErrorStyles = {}
+
+    const formErrors = Object.keys(body).reduce((acc, key) => {
       acc[key] = null
       return acc
     }, {})
 
     error.details.forEach((error) => {
-      const field = error.path[0]
-      formErrors[field] = { text: error.message }
+      let field = error.path[0]
+      if(dateFields.includes(field.split('-')[0])) {
+        formErrorStyles[field] = 'govuk-input--error'
+        field = field.split('-')[0]
+      }
+      if(!formErrors[field]) {
+        // Just add the first error for a field
+        formErrors[field] = { text: error.message }
+      }
     })
 
     const errorList = transformErrorsToErrorList(error.details)
@@ -54,6 +90,7 @@ const validateFormData = (req, res, next) => {
     res.status(400).render(`${req.params.page}`, {
       submitUrl: req.originalUrl,
       formData: req.body,
+      formErrorStyles,
       formErrors,
       errorList,
       addAnother: req?.params?.subpage || 1,

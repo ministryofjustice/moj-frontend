@@ -46,16 +46,17 @@
         value: formData.auditDate,
         items: [
           {
-            classes: "govuk-input--width-2",
+            classes: (formErrorStyles['auditDate-day'] | default('')) + " govuk-input--width-2",
             name: "day",
             value: formData['auditDate-day']
           },
           {
-            classes: "govuk-input--width-2",
+            classes: (formErrorStyles['auditDate-month'] | default('')) + " govuk-input--width-2",
             name: "month",
             value: formData['auditDate-month']
           },
           {
+            classes: (formErrorStyles['auditDate-year'] | default('')) + " govuk-input--width-4",
             name: "year",
             value: formData['auditDate-year']
           }
