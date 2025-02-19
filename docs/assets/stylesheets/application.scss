@@ -35,8 +35,3 @@ $govuk-assets-path: "../" !default;
 @view-transition {
   navigation: auto;
 }
-
-// Apply scroll padding to ensure focus is visible when tier sticky banner is active
-html:has(.app-tier) {
-  scroll-padding-top: govuk-spacing(8);
-}
