@@ -100,6 +100,38 @@ MOJFrontend.getPreviousSibling = function (element, selector) {
   }
 }
 
+MOJFrontend.findNearestMatchingElement = function ($element, selector) {
+  // If no element or selector is provided, return null
+  if (!$element) return null
+  if (!selector) return null
+
+  // Start with the current element
+  let $currentElement = $element
+
+  while ($currentElement) {
+    // First check the current element
+    if ($currentElement.matches(selector)) {
+      return $currentElement
+    }
+
+    // Check all previous siblings
+    let $sibling = $currentElement.previousElementSibling
+    while ($sibling) {
+      // Check if the sibling itself is a heading
+      if ($sibling.matches(selector)) {
+        return $sibling
+      }
+      $sibling = $sibling.previousElementSibling
+    }
+
+    // If no match found in siblings, move up to parent
+    $currentElement = $currentElement.parentElement
+  }
+
+  // Return null if no match is found
+  return null
+}
+
 /**
  * Move focus to element
  *
