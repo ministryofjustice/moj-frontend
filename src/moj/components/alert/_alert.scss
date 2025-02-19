@@ -60,6 +60,7 @@
   color: unset;
   background-color: transparent;
   -webkit-appearance: none;
+  cursor: pointer;
   appearance: none;
   @include govuk-font-size($size: 19);
   @include govuk-link-common;
