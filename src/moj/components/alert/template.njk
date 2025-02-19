@@ -76,9 +76,8 @@
 
     {{- content -}}
   </div>
-  {%- if params.dismissible %}
-    <div class="moj-alert__action">
-      <button class="moj-alert__dismiss" hidden>{{ params.dismissText | default("Dismiss", true)  }}</button>
-    </div>
-  {%- endif %}
+
+  <div class="moj-alert__action">
+    <button class="moj-alert__dismiss" hidden>{{ params.dismissText | default("Dismiss", true)  }}</button>
+  </div>
 </div>

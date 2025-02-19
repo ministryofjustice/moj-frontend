@@ -63,6 +63,7 @@ MOJFrontend.Alert.prototype.init = function () {
   this.$dismissButton = this.$module.querySelector('.moj-alert__dismiss')
 
   if (this.config.dismissible && this.$dismissButton) {
+    this.$dismissButton.innerHTML = this.config.dismissText
     this.$dismissButton.removeAttribute('hidden')
 
     this.$module.addEventListener('click', (event) => {
@@ -89,7 +90,7 @@ MOJFrontend.Alert.prototype.dimiss = function () {
   // Is the next sibling another alert
   if (!$elementToRecieveFocus) {
     const $nextSibling = this.$module.nextElementSibling
-    if ($nextSibling.matches('.moj-alert')) {
+    if ($nextSibling && $nextSibling.matches('.moj-alert')) {
       $elementToRecieveFocus = $nextSibling
     }
   }
@@ -105,7 +106,8 @@ MOJFrontend.Alert.prototype.dimiss = function () {
   // Else find the closest ancestor heading, or fallback to main, or last resort
   // use the body element
   if (!$elementToRecieveFocus) {
-    $elementToRecieveFocus = this.$module.closest(
+    $elementToRecieveFocus = MOJFrontend.findNearestMatchingElement(
+      this.$module,
       'h1, h2, h3, h4, h5, h6, main, body'
     )
   }
@@ -117,6 +119,60 @@ MOJFrontend.Alert.prototype.dimiss = function () {
 
   // Remove the alert
   this.$module.remove()
+}
+
+/**
+ * Normalise string
+ *
+ * 'If it looks like a duck, and it quacks like a duck…' 🦆
+ *
+ * If the passed value looks like a boolean or a number, convert it to a boolean
+ * or number.
+ *
+ * Designed to be used to convert config passed via data attributes (which are
+ * always strings) into something sensible.
+ *
+ * @internal
+ * @param {DOMStringMap[string]} value - The value to normalise
+ * @param {SchemaProperty} [property] - Component schema property
+ * @returns {string | boolean | number | undefined} Normalised data
+ */
+MOJFrontend.Alert.prototype.normaliseString = function (value, property) {
+  const trimmedValue = value ? value.trim() : ''
+
+  let output
+  let outputType
+  if (property && property.type) {
+    outputType = property.type
+  }
+
+  // No schema type set? Determine automatically
+  if (!outputType) {
+    if (['true', 'false'].includes(trimmedValue)) {
+      outputType = 'boolean'
+    }
+
+    // Empty / whitespace-only strings are considered finite so we need to check
+    // the length of the trimmed string as well
+    if (trimmedValue.length > 0 && isFinite(Number(trimmedValue))) {
+      outputType = 'number'
+    }
+  }
+
+  switch (outputType) {
+    case 'boolean':
+      output = trimmedValue === 'true'
+      break
+
+    case 'number':
+      output = Number(trimmedValue)
+      break
+
+    default:
+      output = value
+  }
+
+  return output
 }
 
 /**
@@ -132,10 +188,10 @@ MOJFrontend.Alert.prototype.dimiss = function () {
 MOJFrontend.Alert.prototype.parseDataset = function (schema, dataset) {
   const parsed = {}
 
-  for (const [field, ,] of Object.entries(schema.properties)) {
+  for (const [field, property] of Object.entries(schema.properties)) {
     if (field in dataset) {
       if (dataset[field]) {
-        parsed[field] = dataset[field]
+        parsed[field] = this.normaliseString(dataset[field], property)
       }
     }
   }
