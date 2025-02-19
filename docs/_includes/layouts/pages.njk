@@ -1,11 +1,14 @@
 {% extends "./base.njk" %}
 
+{% import "./macros/status.njk" as macros %}
+
 {% block content %}
     <div class="app-layout__content">
-        <h1 class="govuk-heading-xl">
+        <h1 class="govuk-heading-xl{% if status %} govuk-!-display-inline-block govuk-!-margin-bottom-2{% endif %}">
             {% if not isIndex %}<span class="govuk-caption-xl">Pages</span>{% endif %}
             {{ title }}
         </h1>
+        {{ macros.statusLabel(status, statusMessage, statusInfo) }}
         {{ content | safe }}
 
       {% if isIndex or isArchive %}

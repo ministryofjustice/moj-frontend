@@ -1,19 +1,17 @@
 {% extends "./base.njk" %}
 
-{% import "./macros/tier.njk" as macros %}
+{% import "./macros/status.njk" as macros %}
 
 
 {% block content %}
-   {{ macros.tierLabel(tier, tierMessage, tierInfo, link, linkContent) }}
     <div class="app-layout__content">
-        <h1 class="govuk-heading-xl">
+      <h1 class="govuk-heading-xl{% if status %} govuk-!-display-inline-block govuk-!-margin-bottom-2{% endif %}">
           {% if not isIndex %}<span class="govuk-caption-xl">Components</span>{% endif %}
           {{ title }}
         </h1>
-
+        {{ macros.statusLabel(status, statusMessage, statusInfo) }}
         {{ content | safe }}
 
         {% include "./partials/get-help-and-contribute.njk" %}
-
     </div>
 {% endblock %}

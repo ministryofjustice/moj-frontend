@@ -1,0 +1,12 @@
+.status-tag {
+  display: inline-block;
+  @include govuk-font(16);
+  box-sizing: border-box;
+  padding: 7px 10px;
+  vertical-align: super;
+  margin-left: 5px;
+}
+
+p.status-message {
+  color: $govuk-secondary-text-colour;
+}
