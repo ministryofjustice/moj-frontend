@@ -34,16 +34,17 @@
         value: formData.testingDate,
         items: [
           {
-            classes: "govuk-input--width-2",
+            classes: (formErrorStyles['testingDate-day'] | default('')) + " govuk-input--width-2",
             name: "day",
             value: formData['testingDate-day']
           },
           {
-            classes: "govuk-input--width-2",
+            classes: (formErrorStyles['testingDate-month'] | default('')) + " govuk-input--width-2",
             name: "month",
             value: formData['testingDate-month']
           },
           {
+            classes: (formErrorStyles['testingDate-year'] | default('')) + " govuk-input--width-4",
             name: "year",
             value: formData['testingDate-year']
           }
