@@ -19,9 +19,6 @@ describe('generateMarkdown', () => {
         componentProblemSolved: 'This is the problem solved.',
         howIsTheComponentUsed: 'This is how it is used.'
       },
-      '/accessibility-findings-more': {
-        accessibilityTellUsMore: 'Accessibility details here.'
-      },
       '/prototype-url': {
         prototypeUrl: 'www.test.com'
       },

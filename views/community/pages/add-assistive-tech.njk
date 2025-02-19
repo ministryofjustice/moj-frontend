@@ -26,6 +26,10 @@
       <span class="govuk-caption-l">Submit new component</span>
       <h1>Testing with assistive technology</h1>
 
+      {% for name, value in hiddenFields %}
+        <input type="hidden" name="{{ name }}" value="{{ value }}">
+      {% endfor %}
+
       {{ govukDateInput({
         id: "testingDate",
         namePrefix: "testingDate",

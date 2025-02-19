@@ -3,7 +3,6 @@ const checkYourAnswers = require('./check-your-answers')
 // Sample session data where all values are objects
 const session = {
   '/accessibility-findings': { field1: 'Field Value', field2: 'Another Value' },
-  '/accessibility-findings-more': { detail: 'Some additional information' },
   '/additional-information': { info: 'Some additional info' },
   '/component-code': { code: '1234', language: 'JavaScript' },
   '/component-code-details': { detail: 'Extra details' },

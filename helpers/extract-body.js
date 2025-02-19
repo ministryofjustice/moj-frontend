@@ -1,0 +1,42 @@
+const { COMPONENT_FORM_HIDDEN_FIELDS } = require("../config");
+
+const extractBody = (url, body) => {
+  const path = url.split('/')[1];
+  const hiddenFields = COMPONENT_FORM_HIDDEN_FIELDS[path];
+
+  const result = { ...body };
+  const dateFields = {};
+
+  // Remove hidden fields
+  if (hiddenFields) {
+    Object.keys(hiddenFields).forEach((key) => {
+      hiddenFields[key].forEach((field) => {
+        if (body[field] !== undefined) {
+          delete result[field];
+        }
+      });
+    });
+  }
+
+  Object.keys(body).forEach((key) => {
+    const match = key.match(/(.*)-(day|month|year)$/);
+    if (match) {
+      const prefix = match[1];
+      if (!dateFields[prefix]) {
+        dateFields[prefix] = {};
+      }
+      dateFields[prefix][match[2]] = body[key];
+    }
+  });
+
+  Object.keys(dateFields).forEach((prefix) => {
+    const { day, month, year } = dateFields[prefix];
+    const paddedDay = day.padStart(2, '0');
+    const paddedMonth = month.padStart(2, '0');
+    result[prefix] = `${year}-${paddedMonth}-${paddedDay}`;
+  });
+
+  return result;
+};
+
+module.exports = extractBody

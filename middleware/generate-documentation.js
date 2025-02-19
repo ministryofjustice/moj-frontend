@@ -2,7 +2,6 @@ const generateMarkdown = (data) => {
   const {
     '/component-details': details,
     '/accessibility-findings': accessibilityFindings,
-    '/accessibility-findings-more': accessibilityFindingsMore,
     '/your-details': yourDetails
   } = data
 

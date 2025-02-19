@@ -16,7 +16,6 @@ const config = {
     'component-details',
     'component-image',
     'accessibility-findings',
-    'accessibility-findings-more',
     'add-external-audit',
     'add-internal-audit',
     'add-assistive-tech',
@@ -27,6 +26,19 @@ const config = {
     'your-details',
     'check-your-answers'
   ],
+  COMPONENT_FORM_HIDDEN_FIELDS: {
+    'add-internal-audit': {
+      '/accessibility-findings': [
+        'hasComponentBeenTestedInternalAudit',
+        'hasComponentBeenTestedUsingAssistiveTechnology'
+      ]
+    },
+    'add-assistive-tech': {
+      '/accessibility-findings': [
+        'hasComponentBeenTestedUsingAssistiveTechnology'
+      ]
+    }
+  },
   COMPONENT_FORM_PAGES_OPTIONS: {
     'accessibility-findings': {
       hasComponentBeenTestedExternalAccessibility: {
@@ -42,6 +54,23 @@ const config = {
             }
           }
         }
+      }
+    },
+    'add-external-audit': {
+      hasComponentBeenTestedInternalAudit: {
+        yes: 'add-internal-audit',
+        no: {
+          hasComponentBeenTestedUsingAssistiveTechnology: {
+            yes: 'add-assistive-tech',
+            no: 'prototype'
+          }
+        }
+      }
+    },
+    'add-internal-audit': {
+      hasComponentBeenTestedUsingAssistiveTechnology: {
+        yes: 'add-assistive-tech',
+        no: 'prototype'
       }
     },
     prototype: {

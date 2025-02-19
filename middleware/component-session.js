@@ -1,4 +1,6 @@
 const nextPage = require('../helpers/next-page')
+const getHiddenFields = require('../helpers/hidden-fields')
+const extractBody = require('../helpers/extract-body')
 
 const {
   COMPONENT_FORM_PAGES
@@ -31,35 +33,10 @@ const setNextPage = (req, res, next) => {
   next()
 }
 
-const extractBody = (body) => {
-  const result = { ...body };
-  const dateFields = {};
-
-  Object.keys(body).forEach((key) => {
-    const match = key.match(/(.*)-(day|month|year)$/);
-    if (match) {
-      const prefix = match[1];
-      if (!dateFields[prefix]) {
-        dateFields[prefix] = {};
-      }
-      dateFields[prefix][match[2]] = body[key];
-    }
-  });
-
-  Object.keys(dateFields).forEach((prefix) => {
-    const { day, month, year } = dateFields[prefix];
-    const paddedDay = day.padStart(2, '0');
-    const paddedMonth = month.padStart(2, '0');
-    result[prefix] = `${year}-${paddedMonth}-${paddedDay}`;
-  });
-
-  return result;
-};
-
 const validateFormData = (req, res, next) => {
   const schemaName = req.url.split('/')[1]
   const schema = require(`../schema/${schemaName}.schema`)
-  const body = extractBody({...req.body})
+  const body = extractBody(req?.url,{...req.body})
   const { error, value } = schema.validate(body, { abortEarly: false })
   const dateFields = ['auditDate']
 
@@ -94,8 +71,9 @@ const validateFormData = (req, res, next) => {
       formErrors,
       errorList,
       addAnother: req?.params?.subpage || 1,
-      showAddAnother: !!req?.body?.addAnother,//!!req?.params?.subpage,
-      skipQuestion: req?.skipQuestion || false
+      showAddAnother: !!req?.body?.addAnother,// todo !!req?.params?.subpage,
+      skipQuestion: req?.skipQuestion || false,
+      hiddenFields: getHiddenFields(req)
     })
   } else {
     console.log('Validation success:', value)
@@ -128,6 +106,7 @@ const getFormDataFromSession = (req, res, next) => {
   console.log('getFormDataFromSession')
   req.formData = null
   const formData = req.session[req.url] || {}
+  //todo add in the additional fields for accessibility
   req.formData = formData
   next()
 }
@@ -197,6 +176,12 @@ const getBackLink = (req, res, next) => {
   next()
 }
 
+const hiddenFields = (req, res, next) => {
+  delete req.hiddenFields
+  req.hiddenFields = getHiddenFields(req)
+  next()
+}
+
 module.exports = {
   setNextPage,
   validateFormData,
@@ -205,5 +190,6 @@ module.exports = {
   getRawSessionText,
   canSkipQuestion,
   canAddAnother,
-  getBackLink
+  getBackLink,
+  hiddenFields
 }

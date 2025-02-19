@@ -8,7 +8,8 @@ const {
   getRawSessionText,
   canSkipQuestion,
   canAddAnother,
-  getBackLink
+  getBackLink,
+  hiddenFields
 } = require('../middleware/component-session')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
 const {
@@ -101,6 +102,7 @@ router.get(
   ['/:page', '/:page/:subpage'],
   isValidComponentFormPage,
   getFormDataFromSession,
+  hiddenFields,
   canAddAnother,
   canSkipQuestion,
   getBackLink,
@@ -111,7 +113,8 @@ router.get(
       addAnother: req?.addAnother,
       showAddAnother: req?.showAddAnother,
       skipQuestion: req?.skipQuestion || false,
-      backLink: req?.backLink || false
+      backLink: req?.backLink || false,
+      hiddenFields: req?.hiddenFields || false
     })
   }
 )
@@ -142,6 +145,7 @@ router.post('/check-your-answers', getRawSessionText, async (req, res) => {
 router.post(
   '/component-image',
   upload.single('componentImage'),
+  hiddenFields,
   validateFormData,
   saveSession,
   setNextPage,

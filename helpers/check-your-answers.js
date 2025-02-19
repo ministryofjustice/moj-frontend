@@ -154,7 +154,7 @@ const checkYourAnswers = (session) => {
   const forms = [
     'component-details',
     'component-image',
-    ['accessibility-findings', 'accessibility-findings-more'],
+    ['accessibility-findings'],
     ['prototype', 'prototype-url'],
     ['component-code', 'component-code-details'],
     'your-details'
