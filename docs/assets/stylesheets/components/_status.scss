@@ -1,8 +1,5 @@
 .status-tag {
   display: inline-block;
-  @include govuk-font(19);
-  box-sizing: border-box;
-  padding: 7px 10px;
   vertical-align: super;
   margin-left: govuk-spacing(2);
 }

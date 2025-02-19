@@ -13,7 +13,7 @@
       "Archived": "govuk-tag--grey"
     }[status] or "" %}
       
-  <span class="status-tag {{ statusClass }}">
+  <span class="govuk-tag status-tag {{ statusClass }}">
    <span class="govuk-visually-hidden">Status:</span> {{ status }}
   </span>
 
@@ -30,7 +30,7 @@
     </span>
   </summary>
   <div class="govuk-details__text">
-    {{ statusData.linkContent }} <a href="#">Read about all the Design System statuses</a>.
+    {{ statusData.linkContent }} <a href="/design-system-statuses">Read about all the Design System statuses</a>.
   </div>
 </details>
 
