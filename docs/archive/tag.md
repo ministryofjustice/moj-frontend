@@ -2,6 +2,7 @@
 layout: layouts/archive.njk
 title: Tag
 status: Archived
+type: component
 statusDate: June 2021
 redirect_from: /components/tag
 eleventyNavigation:

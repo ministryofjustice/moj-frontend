@@ -2,6 +2,7 @@
 layout: layouts/archive.njk
 title: Form validator
 status: Archived
+type: component
 statusDate: April 2022
 redirect_from: /components/form-validator
 eleventyNavigation:

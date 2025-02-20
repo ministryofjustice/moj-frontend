@@ -2,6 +2,7 @@
 layout: layouts/archive.njk
 title: Question pages
 status: Archived
+type: page
 statusDate: December 2023
 redirect_from: [docs/patterns/question-pages.md, /pages/question-pages]
 eleventyNavigation:

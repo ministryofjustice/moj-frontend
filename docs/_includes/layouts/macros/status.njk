@@ -1,9 +1,11 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 
 
-{% macro statusLabel(status, statusMessage, statusInfo, creatorName, creatorTeam, statusDate) %}
+{% macro statusLabel(type, status, statusMessage, statusInfo, creatorName, creatorTeam, statusDate) %}
   {% if status %}
     
+
+
     {% set statusData = (statusInfo[status] if statusInfo and status in statusInfo else {}) %}
 
     {% set statusClass = {
@@ -12,7 +14,8 @@
       "Experimental": "govuk-tag",
       "Archived": "govuk-tag--grey"
     }[status] or "" %}
-      
+    
+
   <span class="govuk-tag status-tag {{ statusClass }}">
    <span class="govuk-visually-hidden">Status:</span> {{ status }}
   </span>
@@ -36,11 +39,22 @@
   <details class="govuk-details govuk-!-margin-bottom-8">
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">
-        {{ statusData.link }}
+     {{ statusInfo[status].link 
+      | replace('Types', type | capitalize + 's') 
+      | replace('types', type | lower + 's') 
+      | replace('Type', type | capitalize) 
+      | replace('type', type | lower) 
+      }}
       </span>
     </summary>
     <div class="govuk-details__text">
-      {{ statusData.linkContent }} <a href="/design-system-statuses">Read about all the Design System statuses</a>.
+      {{ statusInfo[status].linkContent
+      | replace('Types', type | capitalize + 's') 
+      | replace('types', type | lower + 's') 
+      | replace('Type', type | capitalize) 
+      | replace('type', type | lower) 
+      }}
+      <a href="/design-system-statuses">Read about all the Design System statuses</a>.
     </div>
   </details>
 
