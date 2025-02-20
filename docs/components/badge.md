@@ -3,7 +3,7 @@ layout: layouts/component.njk
 title: Badge
 type: component
 status: Experimental
-statusMessage: Created Aug 2024.
+statusDate: August 2024
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/687
 eleventyNavigation:
   parent: Components

@@ -1,8 +1,10 @@
 ---
 layout: layouts/component.njk
 title: Add another
-status: To be reviewed
-statusMessage: Created by Alic Winters in May 2025.
+status: Experimental
+creatorName: Alice Winters
+creatorTeam: Probation Digital
+statusDate: August 2024
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/686
 eleventyNavigation:

@@ -1,7 +1,7 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 
 
-{% macro statusLabel(status, statusMessage, statusInfo) %}
+{% macro statusLabel(status, statusMessage, statusInfo, creatorName, creatorTeam, statusDate) %}
   {% if status %}
     
     {% set statusData = (statusInfo[status] if statusInfo and status in statusInfo else {}) %}
@@ -17,22 +17,32 @@
    <span class="govuk-visually-hidden">Status:</span> {{ status }}
   </span>
 
-{% if statusMessage %}
   <p class="status-message govuk-!-margin-bottom-2">
-    {{ statusMessage }}
+    {% if status == 'Experimental' %}
+      {% if creatorName and creatorTeam %}
+        {{ statusData.statusMessage }} by {{ creatorName }} in {{ creatorTeam }} in {{ statusDate }}.
+      {% elif creatorTeam %}
+        {{ statusData.statusMessage }} by someone in {{ creatorTeam }} in {{ statusDate }}.
+      {% elif creatorName %}
+        {{ statusData.statusMessage }} by {{ creatorName }} in {{ statusDate }}.
+      {% else %}
+        {{ statusData.statusMessage }} by someone in the community in {{ statusDate }}.
+      {% endif %}
+    {% else %}
+      {{ statusData.statusMessage }} {{ statusDate }}.
+    {% endif %}
   </p>
-{% endif %}
-     
-<details class="govuk-details govuk-!-margin-bottom-8">
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">
-      {{ statusData.link }}
-    </span>
-  </summary>
-  <div class="govuk-details__text">
-    {{ statusData.linkContent }} <a href="/design-system-statuses">Read about all the Design System statuses</a>.
-  </div>
-</details>
+
+  <details class="govuk-details govuk-!-margin-bottom-8">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        {{ statusData.link }}
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      {{ statusData.linkContent }} <a href="/design-system-statuses">Read about all the Design System statuses</a>.
+    </div>
+  </details>
 
   {% endif %}
 {% endmacro %}
