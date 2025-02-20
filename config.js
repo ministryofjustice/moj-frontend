@@ -12,20 +12,20 @@ const config = {
   REDIS_AUTH_TOKEN: process.env.REDIS_AUTH_TOKEN || 'your-redis-token',
   SESSION_SECRET: process.env.session_secret || 'your-secret-key',
   ENV: process.env.ENV || 'development',
-  COMPONENT_FORM_PAGES: [
-    'component-details',
-    'component-image',
-    'accessibility-findings',
-    'add-external-audit',
-    'add-internal-audit',
-    'add-assistive-tech',
-    'prototype',
-    'prototype-url',
-    'component-code',
-    'component-code-details',
-    'your-details',
-    'check-your-answers'
-  ],
+  COMPONENT_FORM_PAGES: {
+    'component-details': {},
+    'component-image': {},
+    'accessibility-findings': {},
+    'add-external-audit': { '/accessibility-findings': {hasComponentBeenTestedExternalAccessibility: 'yes' } },
+    'add-internal-audit': { '/accessibility-findings': {hasComponentBeenTestedInternalAudit: 'yes'} },
+    'add-assistive-tech': { '/accessibility-findings': {hasComponentBeenTestedUsingAssistiveTechnology: 'yes'}},
+    'prototype': {},
+    'prototype-url': { '/prototype': {componentPrototypeUrl: 'yes'} },
+    'component-code': {},
+    'component-code-details': { '/component-code': {componentCodeAvailable: 'yes' } },
+    'your-details': {},
+    'check-your-answers': {}
+  },
   COMPONENT_FORM_HIDDEN_FIELDS: {
     'add-external-audit': {
       '/accessibility-findings': [

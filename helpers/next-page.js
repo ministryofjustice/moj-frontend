@@ -1,43 +1,29 @@
-const {COMPONENT_FORM_PAGES, COMPONENT_FORM_PAGES_OPTIONS} = require("../config");
-const nextPage = (url, body, subpage) => {
-  const path = url.split('/')[1]
-  const index = COMPONENT_FORM_PAGES.findIndex((page) => path.endsWith(page))
-  const currentPage = COMPONENT_FORM_PAGES[index]
+const { COMPONENT_FORM_PAGES } = require("../config");
 
-  if (subpage) {
-    // Return same page but with the next subpage
-    return `${currentPage}/${subpage}`
-  }
-
-  const getNextPage = (pageOptions, body) => {
-    const fieldKey = Object.keys(pageOptions)[0]
-    const fieldValue = body?.[fieldKey]
-
-    if (fieldValue && pageOptions[fieldKey]) {
-      const nextPageOption = pageOptions[fieldKey][fieldValue]
-      if (typeof nextPageOption === 'string') {
-        return nextPageOption
-      } else if (typeof nextPageOption === 'object') {
-        return getNextPage(nextPageOption, body)
-      }
+const checkConditions = (conditions, session) => {
+  return Object.entries(conditions).every(([key, value]) => {
+    if (typeof value === 'object') {
+      return session[key] && checkConditions(value, session[key]);
     }
-    return null
-  }
+    return session[key] === value;
+  });
+};
 
-  // Check if there's an entry for this page in COMPONENT_FORM_PAGES_OPTIONS
-  if (COMPONENT_FORM_PAGES_OPTIONS[currentPage]) {
-    const nextPage = getNextPage(COMPONENT_FORM_PAGES_OPTIONS[currentPage], body)
-    if (nextPage) {
-      return nextPage
+const nextPage = (url, session) => {
+  const pages = Object.keys(COMPONENT_FORM_PAGES);
+  const currentPageIndex = pages.findIndex(page => url.endsWith(page));
+
+  for (let i = currentPageIndex + 1; i < pages.length; i++) {
+    const page = pages[i];
+    const conditions = COMPONENT_FORM_PAGES[page];
+    const shouldShowPage = checkConditions(conditions, session);
+
+    if (shouldShowPage) {
+      return page;
     }
   }
 
-  // Default behavior: return the next page in COMPONENT_FORM_PAGES
-  if (index !== -1 && index < COMPONENT_FORM_PAGES.length - 1) {
-    return COMPONENT_FORM_PAGES[index + 1]
-  }
+  return null;
+};
 
-  return null
-}
-
-module.exports = nextPage
+module.exports = nextPage;

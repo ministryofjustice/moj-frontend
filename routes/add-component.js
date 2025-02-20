@@ -25,7 +25,7 @@ const checkYourAnswers = require('../helpers/check-your-answers')
 const sessionData = require('../helpers/mockSessionData/sessionData.js')
 
 const isValidComponentFormPage = (req, res, next) => {
-  if (!COMPONENT_FORM_PAGES.includes(req.params.page)) {
+  if (!Object.keys(COMPONENT_FORM_PAGES).includes(req.params.page)) {
     const error = new ApplicationError('Unknown page', 404)
     console.log(error.toErrorObject())
     next(error)

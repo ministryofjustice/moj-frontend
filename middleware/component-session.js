@@ -140,8 +140,8 @@ const getRawSessionText = (req, res, next) => {
 
 // Check if can skip question and set value to page to skip to
 const canSkipQuestion = (req, res, next) => {
-  console.error('canSkipQuestion',req.url)
-  const skipPage = nextPage(req.url)
+  const { url, session } = req
+  const skipPage = nextPage(url, session)
   req.skipQuestion = skipPage || false
   next()
 }
@@ -160,8 +160,8 @@ const canAddAnother = (req, res, next) => {
 }
 
 const getBackLink = (req, res, next) => {
-  const { url, session, body } = req
-  req.backLink = previousPage(url, session, body)
+  const { url, session, formData, hiddenFields } = req
+  req.backLink = previousPage(url, session, {...formData, ...hiddenFields})
   next()
 }
 
