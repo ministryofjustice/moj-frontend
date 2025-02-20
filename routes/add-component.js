@@ -160,6 +160,12 @@ router.post(
   }
 )
 
+// Accessibility file upload
+router.post(
+  ['/add-internal-audit', '/add-external-audit', '/add-assistive-tech'],
+  upload.single('accessibilityReport')
+)
+
 // Form submissions for pages
 router.post(
   ['/:page', '/:page/:subpage'],
