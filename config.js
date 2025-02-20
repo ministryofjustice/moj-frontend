@@ -27,6 +27,12 @@ const config = {
     'check-your-answers'
   ],
   COMPONENT_FORM_HIDDEN_FIELDS: {
+    'add-external-audit': {
+      '/accessibility-findings': [
+        'hasComponentBeenTestedInternalAudit',
+        'hasComponentBeenTestedUsingAssistiveTechnology'
+      ]
+    },
     'add-internal-audit': {
       '/accessibility-findings': [
         'hasComponentBeenTestedInternalAudit',

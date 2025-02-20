@@ -1,6 +1,7 @@
 const nextPage = require('../helpers/next-page')
 const getHiddenFields = require('../helpers/hidden-fields')
 const extractBody = require('../helpers/extract-body')
+const previousPage = require('../helpers/previous-page')
 
 const {
   COMPONENT_FORM_PAGES
@@ -159,20 +160,8 @@ const canAddAnother = (req, res, next) => {
 }
 
 const getBackLink = (req, res, next) => {
-  if(req.session.checkYourAnswers) {
-    req.backLink = 'check-your-answers'
-    return next()
-  }
-  const path = req.url.split('/')[1]
-  const index = COMPONENT_FORM_PAGES.findIndex((page) => path.endsWith(page))
-
-  if (index > 0) {
-    req.backLink = COMPONENT_FORM_PAGES[index - 1]
-    //todo multipage logic
-  } else {
-    req.backLink = false
-  }
-
+  const { url, session } = req
+  req.backLink = previousPage(url, session)
   next()
 }
 
