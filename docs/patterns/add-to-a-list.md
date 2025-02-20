@@ -1,6 +1,8 @@
 ---
 layout: layouts/patterns.njk
 title: Add to a list
+status: To be reviewed
+statusDate: July 2021
 type: pattern
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/203
 eleventyNavigation:

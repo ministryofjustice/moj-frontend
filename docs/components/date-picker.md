@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Date picker
+status: Official
+statusDate: July 2024
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703
 eleventyNavigation:

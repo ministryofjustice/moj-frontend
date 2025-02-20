@@ -1,6 +1,8 @@
 ---
 layout: layouts/archive.njk
 title: Tag
+status: Archived
+statusDate: June 2021
 redirect_from: /components/tag
 eleventyNavigation:
   key: Tag

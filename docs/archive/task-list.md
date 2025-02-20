@@ -1,6 +1,8 @@
 ---
 layout: layouts/archive.njk
 title: Task list pages
+status: Archived
+statusDate: December 2023
 redirect_from: [docs/patterns/task-list.md, /pages/task-list]
 eleventyNavigation:
   key: Task list page
