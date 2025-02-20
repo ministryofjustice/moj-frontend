@@ -160,8 +160,8 @@ const canAddAnother = (req, res, next) => {
 }
 
 const getBackLink = (req, res, next) => {
-  const { url, session } = req
-  req.backLink = previousPage(url, session)
+  const { url, session, body } = req
+  req.backLink = previousPage(url, session, body)
   next()
 }
 
