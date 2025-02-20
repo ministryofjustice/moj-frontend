@@ -8,7 +8,7 @@
         <h1 class="govuk-heading-xl{% if status %} govuk-!-display-inline-block govuk-!-margin-bottom-2{% endif %}">
             {{ title }}
         </h1>
-        {{ macros.statusLabel(status, statusMessage, statusInfo) }}
+        {{ macros.statusLabel(status, statusMessage, statusInfo, creatorName, creatorTeam, statusDate) }}
         {{ content | safe }}
 
       {% if isIndex or isArchive %}
