@@ -1,14 +1,10 @@
-const { join, parse } = require('path')
+const { mkdir, writeFile } = require('fs/promises')
+const { dirname, join, parse } = require('path')
 
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
-const gulp = require('gulp')
-const postcss = require('gulp-postcss')
-const rename = require('gulp-rename')
-const gulpSass = require('gulp-sass')
-const dartSass = require('sass-embedded')
-
-const sass = gulpSass(dartSass)
+const postcss = require('postcss')
+const { compileAsync } = require('sass-embedded')
 
 /**
  * Compile Sass task
@@ -19,22 +15,23 @@ const sass = gulpSass(dartSass)
 function compileStyles(assetPath, { srcPath, destPath, output = {} }) {
   const { name } = parse(assetPath)
 
-  /**
-   * @type {TaskFunction}
-   */
-  const taskFn = (done) =>
-    gulp
-      .src(join(srcPath, assetPath))
-      .pipe(
-        sass({
-          loadPaths: ['./'],
-          quietDeps: true,
-          silenceDeprecations: ['import']
-        }).on('error', done)
-      )
-      .pipe(postcss([autoprefixer(), cssnano()]))
-      .pipe(rename({ basename: name, ...output }))
-      .pipe(gulp.dest(destPath))
+  // PostCSS options
+  const from = join(srcPath, assetPath)
+  const to = join(destPath, output.file ?? `${name}.css`)
+
+  const taskFn = async () => {
+    const { css } = await compileAsync(from, {
+      loadPaths: ['./'],
+      quietDeps: true,
+      silenceDeprecations: ['import']
+    })
+
+    const processor = postcss([autoprefixer(), cssnano()])
+    const result = await processor.process(css, { from, to })
+
+    await mkdir(dirname(to), { recursive: true })
+    await writeFile(to, result.css)
+  }
 
   taskFn.displayName = 'compile:styles'
   return taskFn
@@ -50,10 +47,5 @@ module.exports = {
  * @typedef {object} CompileStylesOptions
  * @property {string} srcPath - Source directory
  * @property {string} destPath - Destination directory
- * @property {RenameOptions} [output] - Rename output options
- */
-
-/**
- * @import { TaskFunction } from 'gulp'
- * @import { Options as RenameOptions } from 'gulp-rename'
+ * @property {{ file: string }} [output] - Output options
  */

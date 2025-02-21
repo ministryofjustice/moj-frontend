@@ -38,10 +38,7 @@ gulp.task(
     destPath: 'dist',
 
     // Customise output
-    output: {
-      basename: 'moj-frontend',
-      extname: '.min.css'
-    }
+    output: { file: 'moj-frontend.min.css' }
   })
 )
 
