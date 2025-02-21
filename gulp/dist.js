@@ -1,16 +1,10 @@
 const { mkdir, readFile, writeFile } = require('fs/promises')
 const { dirname } = require('path')
 
-const autoprefixer = require('autoprefixer')
-const cssnano = require('cssnano')
 const gulp = require('gulp')
-const postcss = require('gulp-postcss')
-const rename = require('gulp-rename')
-const gulpSass = require('gulp-sass')
-const dartSass = require('sass-embedded')
 const { minify } = require('terser')
 
-const sass = gulpSass(dartSass)
+const { compileStyles } = require('./tasks/styles')
 
 gulp.task('dist:clean', async () => {
   const { deleteSync } = await import('del')
@@ -44,26 +38,19 @@ gulp.task('dist:javascript', async () => {
   }
 })
 
-gulp.task('dist:css', (done) => {
-  return gulp
-    .src('gulp/dist-scss/*.scss')
-    .pipe(
-      sass({
-        loadPaths: ['./'],
-        quietDeps: true,
-        silenceDeprecations: ['import']
-      }).on('error', done)
-    )
-    .pipe(postcss([autoprefixer, cssnano]))
-    .pipe(
-      rename((path) => ({
-        dirname: path.dirname,
-        basename: path.basename.replace('dist', 'moj-frontend'),
-        extname: '.min.css'
-      }))
-    )
-    .pipe(gulp.dest('dist'))
-})
+gulp.task(
+  'dist:css',
+  compileStyles('all.scss', {
+    srcPath: 'gulp/dist-scss',
+    destPath: 'dist',
+
+    // Customise output
+    output: {
+      basename: 'moj-frontend',
+      extname: '.min.css'
+    }
+  })
+)
 
 gulp.task('dist:zip', async () => {
   const { default: zip } = await import('gulp-zip')
