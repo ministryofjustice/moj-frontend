@@ -38,11 +38,17 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "govuk-frontend": "^5.0.0",
-    "moment": "^2.27.0"
-  },
   "peerDependencies": {
-    "jquery": "^3.6.0"
+    "govuk-frontend": "5.x",
+    "jquery": "3.x",
+    "moment": "2.x"
+  },
+  "peerDependenciesMeta": {
+    "jquery": {
+      "optional": true
+    },
+    "moment": {
+      "optional": true
+    }
   }
 }

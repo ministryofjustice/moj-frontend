@@ -5,8 +5,9 @@ RUN apt-get update && apt-get -y install autoconf gcc make
 WORKDIR /app
 
 FROM base AS staging-build
-COPY package.json package.json
 COPY package-lock.json package-lock.json
+COPY package/package.json package/package.json
+COPY package.json package.json
 RUN npm ci
 
 COPY docs docs
@@ -20,8 +21,9 @@ COPY README.md README.md
 RUN ENV="staging" npm run build:docs
 
 FROM base AS preview-build
-COPY package.json package.json
 COPY package-lock.json package-lock.json
+COPY package/package.json package/package.json
+COPY package.json package.json
 RUN npm ci
 
 COPY docs docs
