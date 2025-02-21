@@ -23,7 +23,13 @@ function compileStyles(assetPath, { srcPath, destPath, output = {} }) {
     const { css } = await compileAsync(from, {
       loadPaths: ['./'],
       quietDeps: true,
-      silenceDeprecations: ['import']
+      silenceDeprecations: [
+        'color-functions',
+        'global-builtin',
+        'import',
+        'mixed-decls',
+        'slash-div'
+      ]
     })
 
     const processor = postcss([autoprefixer(), cssnano()])
