@@ -2,7 +2,7 @@
   "Official": {
     "link": "How ‘official’ components work",
     "linkContent": "Components with an ‘official’ status have had a full, multi-disciplinary team review.",
-    "statusMessage": "Updated by the MoJ Design System team"
+    "statusMessage": "Updated "
   },
   "To be reviewed": {
     "link": "How ‘to be reviewed’ components work",
@@ -16,7 +16,7 @@
   },
   "Archived": {
     "link": "How ‘archived’ components work",
-    "linkContent": "‘Archived’ components are no longer being supported and should not be used.",
+    "linkContent": "This component is no longer being supported and should not be used.",
     "statusMessage": "Archived "
   }
 }
