@@ -11,7 +11,8 @@ const checkConditions = (conditions, session) => {
 
 const previousPage = (url, session) => {
   const pages = Object.keys(COMPONENT_FORM_PAGES);
-  const currentPageIndex = pages.findIndex(page => url.endsWith(page));
+  const currentPage = url.split('/')[1] // ensure we get the page not the forward slash or any subpage detail
+  const currentPageIndex = pages.findIndex(page => currentPage.endsWith(page));
 
   for (let i = currentPageIndex - 1; i >= 0; i--) {
     const page = pages[i];
