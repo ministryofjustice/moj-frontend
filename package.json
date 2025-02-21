@@ -18,7 +18,7 @@
     "test": "npm-run-all --parallel test:*",
     "test:docs": "npm run build:docs",
     "test:js": "jest src/",
-    "test:sass": "sass -q -I . gulp/dist-scss/all.scss >/dev/null && echo 'ok'",
+    "test:sass": "sass --color --load-path node_modules --quiet-deps gulp/dist-scss/all.scss > /dev/null && echo \"ok\"",
     "lint": "npm run lint:prettier && npm run lint:js && npm run lint:scss",
     "lint:js": "npm run lint:js:cli -- \"**/*.{cjs,js,md,mjs}\"",
     "lint:js:cli": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
