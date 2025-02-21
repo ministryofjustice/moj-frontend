@@ -170,10 +170,10 @@ router.post(
 router.post(
   ['/:page', '/:page/:subpage'],
   isValidComponentFormPage,
+  setNextPage,
   canSkipQuestion,
   validateFormData,
   saveSession,
-  setNextPage,
   (req, res, next) => {
     if (req.nextPage) {
       res.redirect(`/get-involved/add-new-component/${req.nextPage}`)

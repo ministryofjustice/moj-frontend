@@ -29,7 +29,8 @@ const setNextPage = (req, res, next) => {
     if(addAnother) {
       subpage = req?.params?.subpage ? parseInt(req?.params?.subpage) + 1 : 1
     }
-    req.nextPage = nextPage(req.url, req?.body, subpage)
+    const { url, session, body } = req
+    req.nextPage = nextPage(url, session, body, subpage)
   }
   next()
 }
@@ -140,8 +141,7 @@ const getRawSessionText = (req, res, next) => {
 
 // Check if can skip question and set value to page to skip to
 const canSkipQuestion = (req, res, next) => {
-  const { url, session } = req
-  const skipPage = nextPage(url, session)
+  const skipPage = req?.nextPage
   req.skipQuestion = skipPage || false
   next()
 }

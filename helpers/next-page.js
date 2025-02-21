@@ -9,15 +9,27 @@ const checkConditions = (conditions, session) => {
   });
 };
 
-const nextPage = (url, session) => {
+const nextPage = (url, session, body, subpage ) => {
   const pages = Object.keys(COMPONENT_FORM_PAGES);
-  const currentPageIndex = pages.findIndex(page => url.endsWith(page));
+  const currentPage = url.split('/')[1] // ensure we get the page not the forward slash or any subpage detail
+  const currentPageIndex = pages.findIndex(page => currentPage.endsWith(page));
+
+  if (subpage) {
+    // Return same page but with the next subpage
+    return `${currentPage}/${subpage}`
+  }
+
+  // Combine session and posted data
+  const pageData = {}
+  if(body){
+    pageData[url] = body
+  }
+  const data = {...session,...pageData}
 
   for (let i = currentPageIndex + 1; i < pages.length; i++) {
     const page = pages[i];
     const conditions = COMPONENT_FORM_PAGES[page];
-    const shouldShowPage = checkConditions(conditions, session);
-
+    const shouldShowPage = checkConditions(conditions, data);
     if (shouldShowPage) {
       return page;
     }
