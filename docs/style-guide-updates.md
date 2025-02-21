@@ -29,9 +29,10 @@ permalink: content-standards/style-guide-updates/
       <td class="govuk-table__cell">An identity number assigned to a person in the Police National Computer (PNC). Use ‘PNC number’. This is more well known than the full version.</td>
       <td class="govuk-table__cell" data-sort-value="20250109">9 January 2025</td>
     </tr>
+
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
-        <a href="/content-standards/style-guide#category-(such-as-category-a-prison)><b>Category (such as Category A prison)</b></a>
+        <a href="/content-standards/style-guide#category-(such-as-category-a-prison)"><b>Category (such as Category A prison)</b></a>
       </td>
       <td class="govuk-table__cell">
         <span class="govuk-tag govuk-tag--blue">Updated</span>
