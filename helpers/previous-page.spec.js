@@ -2,20 +2,20 @@ const previousPage = require('./previous-page');
 const { COMPONENT_FORM_PAGES } = require('../config');
 
 describe('previousPage function', () => {
-  const session = { pages: {} };
+  const session = {};
 
   it('should return the previous page if conditions are met', () => {
-    session.pages['/accessibility-findings'] = { hasComponentBeenTestedExternalAccessibility: 'yes' };
+    session['/accessibility-findings'] = { hasComponentBeenTestedExternalAccessibility: 'yes' };
     const result = previousPage('/add-external-audit', session);
-    expect(result).toBe('accessibility-findings');
+    expect(result).toBe('/get-involved/add-new-component/accessibility-findings');
   });
 
   it('should skip pages if conditions are not met', () => {
-    session.pages['/accessibility-findings'] = { hasComponentBeenTestedExternalAccessibility: 'no' };
-    session.pages['/add-internal-audit'] = { hasComponentBeenTestedInternalAudit: 'no' };
-    session.pages['/add-assistive-tech'] = { hasComponentBeenTestedUsingAssistiveTechnology: 'yes' };
+    session['/accessibility-findings'] = { hasComponentBeenTestedExternalAccessibility: 'no' };
+    session['/add-internal-audit'] = { hasComponentBeenTestedInternalAudit: 'no' };
+    session['/add-assistive-tech'] = { hasComponentBeenTestedUsingAssistiveTechnology: 'yes' };
     const result = previousPage('/add-assistive-tech', session);
-    expect(result).toBe('accessibility-findings');
+    expect(result).toBe('/get-involved/add-new-component/accessibility-findings');
   });
 
   it('should return null if there are no previous pages', () => {
@@ -26,5 +26,18 @@ describe('previousPage function', () => {
   it('should return null if the current page is not found', () => {
     const result = previousPage('/non-existent-page', session);
     expect(result).toBeNull();
+  });
+
+  it('should return the previous subpage if it exists', () => {
+    session['/component-details/2'] = {};
+    const result = previousPage('/component-details/3', session);
+    expect(result).toBe('/get-involved/add-new-component/component-details/2');
+  });
+
+  it('should return the highest subpage if multiple subpages exist', () => {
+    session['/prototype/1'] = {};
+    session['/prototype/2'] = {};
+    const result = previousPage('/component-code', session);
+    expect(result).toBe('/get-involved/add-new-component/prototype/2');
   });
 });
