@@ -1,6 +1,6 @@
 {% extends "./base.njk" %}
 
-{% import "./macros/status.njk" as macros %}
+{% from "./macros/status.njk" import statusLabel %}
 
 {% block content %}
     <div class="app-layout__content">
@@ -8,7 +8,7 @@
         <h1 class="govuk-heading-xl{% if status %} govuk-!-display-inline-block govuk-!-margin-bottom-2{% endif %}">
             {{ title }}
         </h1>
-       {{ macros.statusLabel(type, status, statusMessage, statusInfo, creatorName, creatorTeam, statusDate) }}
+       {{ statusLabel(type, status, statusInfo, creatorName, creatorTeam, statusDate) }}
         {{ content | safe }}
 
       {% if isIndex or isArchive %}

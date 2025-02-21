@@ -1,13 +1,19 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 
+<!-- 
+Arguments to be passed:
+- type: {string} Variable from layout. Example values: "component", "page", "pattern", "archive".
+- status: {string} Status of the item. Accepted values: "Official", "To be reviewed", "Experimental", "Archived".
+- statusInfo: {string} Path to status information file (e.g., _data/statusInfo.json).
+- creatorName: {string} Name of the creator (e.g., "John Doe").
+- creatorTeam: {string} Team responsible for the item (e.g., "MoJ").
+- creationDate: {string} Date of creation (e.g., "Oct 2025").
+-->
 
-{% macro statusLabel(type, status, statusMessage, statusInfo, creatorName, creatorTeam, statusDate) %}
+{% macro statusLabel(type, status, statusInfo, creatorName, creatorTeam, statusDate) %}
   {% if status %}
-    
-
-
     {% set statusData = (statusInfo[status] if statusInfo and status in statusInfo else {}) %}
-
+    
     {% set statusClass = {
       "Official": "govuk-tag--green",
       "To be reviewed": "govuk-tag--orange",
@@ -15,7 +21,6 @@
       "Archived": "govuk-tag--grey"
     }[status] or "" %}
     
-
   <span class="govuk-tag status-tag {{ statusClass }}">
    <span class="govuk-visually-hidden">Status:</span> {{ status }}
   </span>
