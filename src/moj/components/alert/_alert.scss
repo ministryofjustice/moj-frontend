@@ -117,6 +117,10 @@
   border-color: $moj-warning-colour;
   color: $moj-warning-colour;
 
+  .moj-alert__dismiss {
+    color: $moj-warning-link-colour;
+  }
+
   .moj-alert__dismiss,
   .moj-alert__content a,
   .moj-alert__content .govuk-link {
