@@ -1,11 +1,8 @@
-const { dirname } = require('path')
-
 const commonjs = require('@rollup/plugin-commonjs')
 const nodeResolve = require('@rollup/plugin-node-resolve')
+const terser = require('@rollup/plugin-terser')
 const gulp = require('gulp')
-const rename = require('gulp-rename')
 const gulpSass = require('gulp-sass')
-const uglify = require('gulp-uglify')
 const { rollup } = require('rollup')
 const externalGlobals = require('rollup-plugin-external-globals')
 const dartSass = require('sass-embedded')
@@ -67,11 +64,12 @@ gulp.task('docs:styles', (done) => {
 
 // Bundle the docs site javascript
 gulp.task('docs:scripts', async () => {
-  const input = 'docs/assets/javascript/application.mjs'
-  const output = 'public/assets/javascript/application.js'
-
-  const bundle = await rollup({
-    input,
+  const options = /** @satisfies {RollupOptions} */ ({
+    input: 'docs/assets/javascript/application.mjs',
+    output: {
+      file: 'public/assets/javascript/application.js',
+      format: 'esm'
+    },
     external: ['jquery'],
     plugins: [
       externalGlobals({
@@ -82,18 +80,21 @@ gulp.task('docs:scripts', async () => {
     ]
   })
 
-  await bundle.write({
-    file: output,
-    format: 'esm'
-  })
+  // Create bundle
+  const bundle = await rollup(options)
 
+  // Add minifier plugin (optional)
   if (process.env.ENV !== 'dev') {
-    return gulp
-      .src(output)
-      .pipe(uglify())
-      .pipe(rename({ extname: '.js' }))
-      .pipe(gulp.dest(dirname(output)))
+    options.output.plugins = [
+      terser({
+        format: { comments: false },
+        safari10: true
+      })
+    ]
   }
+
+  // Write to output format
+  await bundle.write(options.output)
 })
 
 gulp.task('docs:revision', async () => {
