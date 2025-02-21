@@ -1,4 +1,4 @@
-function removeAttributeValue(el, attr, value) {
+export function removeAttributeValue(el, attr, value) {
   let re, m
   if (el.getAttribute(attr)) {
     if (el.getAttribute(attr) === value) {
@@ -16,7 +16,7 @@ function removeAttributeValue(el, attr, value) {
   }
 }
 
-function addAttributeValue(el, attr, value) {
+export function addAttributeValue(el, attr, value) {
   let re
   if (!el.getAttribute(attr)) {
     el.setAttribute(attr, value)
@@ -28,22 +28,22 @@ function addAttributeValue(el, attr, value) {
   }
 }
 
-function dragAndDropSupported() {
+export function dragAndDropSupported() {
   const div = document.createElement('div')
   return typeof div.ondrop !== 'undefined'
 }
 
-function formDataSupported() {
+export function formDataSupported() {
   return typeof FormData === 'function'
 }
 
-function fileApiSupported() {
+export function fileApiSupported() {
   const input = document.createElement('input')
   input.type = 'file'
   return typeof input.files !== 'undefined'
 }
 
-function nodeListForEach(nodes, callback) {
+export function nodeListForEach(nodes, callback) {
   if (window.NodeList.prototype.forEach) {
     return nodes.forEach(callback)
   }
@@ -61,7 +61,7 @@ function nodeListForEach(nodes, callback) {
  * @param {HTMLElement} $element - Element to find siblings for
  * @param {string} selector - selector for required sibling
  */
-function getNextSibling($element, selector) {
+export function getNextSibling($element, selector) {
   if (!$element) return
   // Get the next sibling element
   let $sibling = $element.nextElementSibling
@@ -86,7 +86,7 @@ function getNextSibling($element, selector) {
  * @param {HTMLElement} $element - Element to find siblings for
  * @param {string} selector - selector for required sibling
  */
-function getPreviousSibling($element, selector) {
+export function getPreviousSibling($element, selector) {
   if (!$element) return
   // Get the previous sibling element
   let $sibling = $element.previousElementSibling
@@ -102,7 +102,7 @@ function getPreviousSibling($element, selector) {
   }
 }
 
-function findNearestMatchingElement($element, selector) {
+export function findNearestMatchingElement($element, selector) {
   // If no element or selector is provided, return null
   if (!$element) return
   if (!selector) return
@@ -142,7 +142,7 @@ function findNearestMatchingElement($element, selector) {
  * @param {function(this: HTMLElement): void} [options.onBeforeFocus] - Callback before focus
  * @param {function(this: HTMLElement): void} [options.onBlur] - Callback on blur
  */
-function setFocus($element, options = {}) {
+export function setFocus($element, options = {}) {
   const isFocusable = $element.getAttribute('tabindex')
 
   if (!isFocusable) {
@@ -177,17 +177,4 @@ function setFocus($element, options = {}) {
     options.onBeforeFocus.call($element)
   }
   $element.focus()
-}
-
-module.exports = {
-  removeAttributeValue,
-  addAttributeValue,
-  dragAndDropSupported,
-  formDataSupported,
-  fileApiSupported,
-  nodeListForEach,
-  getNextSibling,
-  getPreviousSibling,
-  findNearestMatchingElement,
-  setFocus
 }

@@ -1,9 +1,9 @@
 /* eslint-disable no-new */
 
-const { queryByRole, queryAllByRole } = require('@testing-library/dom')
-const { userEvent } = require('@testing-library/user-event')
+import { queryByRole, queryAllByRole } from '@testing-library/dom'
+import { userEvent } from '@testing-library/user-event'
 
-const { MultiSelect } = require('./multi-select.js')
+import { MultiSelect } from './multi-select.mjs'
 
 const user = userEvent.setup()
 

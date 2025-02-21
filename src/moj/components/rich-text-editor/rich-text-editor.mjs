@@ -1,6 +1,6 @@
-const $ = require('jquery')
+import $ from 'jquery'
 
-function RichTextEditor(options) {
+export function RichTextEditor(options) {
   if (!('contentEditable' in document.documentElement)) {
     return
   }
@@ -155,5 +155,3 @@ RichTextEditor.prototype.onLabelClick = function (e) {
   e.preventDefault()
   this.container.find('.moj-rich-text-editor__content').focus()
 }
-
-module.exports = { RichTextEditor }

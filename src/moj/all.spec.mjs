@@ -1,13 +1,11 @@
 /* eslint-disable no-new */
 
-const { getByTestId } = require('@testing-library/dom')
+import { getByTestId } from '@testing-library/dom'
 
-const { initAll } = require('./all.js')
-const {
-  PasswordReveal
-} = require('./components/password-reveal/password-reveal.js')
+import { initAll } from './all.mjs'
+import { PasswordReveal } from './components/password-reveal/password-reveal.mjs'
 
-jest.mock('./components/password-reveal/password-reveal.js')
+jest.mock('./components/password-reveal/password-reveal.mjs')
 
 describe('initAll', () => {
   test('initialises container', () => {

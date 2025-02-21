@@ -1,4 +1,4 @@
-const pageTemplate = `
+export const pageTemplate = `
   <main>
   <div id="alert-1" role="region"  class="moj-alert moj-alert--information moj-alert--with-heading" aria-label="information: This contains information" data-module="moj-alert" data-dismissible="true">
     <div>
@@ -62,6 +62,3 @@ const pageTemplate = `
   </section>
 </main>
 `
-module.exports = {
-  pageTemplate
-}

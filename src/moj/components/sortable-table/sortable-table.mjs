@@ -1,6 +1,6 @@
-const $ = require('jquery')
+import $ from 'jquery'
 
-function SortableTable(params) {
+export function SortableTable(params) {
   this.table = $(params.table)
 
   if (this.table.data('moj-search-toggle-initialised')) {
@@ -136,5 +136,3 @@ SortableTable.prototype.getCellValue = function (cell) {
   const valAsNumber = Number(val)
   return isNaN(valAsNumber) ? val : valAsNumber
 }
-
-module.exports = { SortableTable }

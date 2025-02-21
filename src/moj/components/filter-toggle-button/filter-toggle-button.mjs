@@ -1,6 +1,6 @@
-const $ = require('jquery')
+import $ from 'jquery'
 
-function FilterToggleButton(options) {
+export function FilterToggleButton(options) {
   this.options = options
   this.container = $(this.options.toggleButton.container)
   this.filterContainer = $(this.options.filter.container)
@@ -91,5 +91,3 @@ FilterToggleButton.prototype.toggle = function () {
     this.hideMenu()
   }
 }
-
-module.exports = { FilterToggleButton }
