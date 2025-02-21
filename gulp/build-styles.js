@@ -9,9 +9,6 @@ gulp.task(
     destPath: 'package/moj',
 
     // Customise output
-    output: {
-      basename: 'moj-frontend',
-      extname: '.min.css'
-    }
+    output: { file: 'moj-frontend.min.css' }
   })
 )
