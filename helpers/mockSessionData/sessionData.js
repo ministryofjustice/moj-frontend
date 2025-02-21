@@ -1,44 +1,67 @@
 module.exports = {
-  '/component-details': {
-    componentName: 'A Test Component',
-    componentOverview:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac accumsan magna, ut dapibus ante. Nulla mauris nisl, placerat ut diam vitae, dignissim luctus sapien. Morbi scelerisque lectus at magna aliquam accumsan. Etiam sagittis quis elit ac dapibus. Nulla tincidunt consectetur lectus, et feugiat nulla vulputate vel. Sed nec pretium massa, et condimentum arcu. Donec egestas sapien risus, ut interdum dui aliquet quis. Maecenas sit amet augue non risus congue mollis.\r\n\r\n',
-    howIsTheComponentUsed:
-      'Duis ac neque hendrerit, bibendum leo eget, egestas leo. Proin a ex sed nibh accumsan fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit leo sed risus consequat sagittis. Ut varius hendrerit purus a maximus. Vestibulum id luctus elit, nec accumsan arcu. Vestibulum volutpat enim id est ultricies vehicula. Integer viverra rutrum ornare. Ut venenatis in purus vitae vehicula. Nullam vel dolor nec diam maximus congue.\r\n\r\n',
-    componentProblemSolved:
-      'Pellentesque efficitur id odio non venenatis. Donec mauris dolor, imperdiet eu pulvinar eget, efficitur in mi. Praesent dapibus eros eu efficitur mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi tincidunt dictum enim, vitae imperdiet magna ullamcorper eget. Aliquam eget posuere leo, at sollicitudin lacus. Proin vitae orci non est tempor vulputate. Donec bibendum eros eget dui lacinia bibendum. Donec sed leo et augue euismod congue. Mauris id eros ut magna tristique faucibus at eu lacus. Vestibulum rhoncus felis id nisi imperdiet, eget posuere sapien viverra. Vestibulum facilisis erat id dui auctor vulputate.\r\n\r\n'
+  "/component-details": {
+    "componentName": "Duis",
+    "componentOverview": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porttitor, turpis eu congue semper, felis purus blandit purus, eu finibus dui orci et augue. Vestibulum nec dignissim ante. Sed vehicula sagittis nunc, sed iaculis lorem. Quisque quis lorem non lorem ornare venenatis. Morbi luctus, enim et tincidunt pellentesque, ante justo venenatis nisl, rhoncus lobortis quam nunc in lectus. Nam consectetur sapien sem, quis laoreet mi dapibus sit amet. Nullam consectetur erat ut diam luctus posuere. Duis vulputate turpis vitae magna commodo pharetra. Sed varius pulvinar sapien, nec tempus ante pulvinar sit amet. Sed mauris tortor, dictum tristique aliquam vestibulum, porta et justo.\r\n\r\n",
+    "howIsTheComponentUsed": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porttitor, turpis eu congue semper, felis purus blandit purus, eu finibus dui orci et augue. Vestibulum nec dignissim ante. Sed vehicula sagittis nunc, sed iaculis lorem. Quisque quis lorem non lorem ornare venenatis. Morbi luctus, enim et tincidunt pellentesque, ante justo venenatis nisl, rhoncus lobortis quam nunc in lectus. Nam consectetur sapien sem, quis laoreet mi dapibus sit amet. Nullam consectetur erat ut diam luctus posuere. Duis vulputate turpis vitae magna commodo pharetra. Sed varius pulvinar sapien, nec tempus ante pulvinar sit amet. Sed mauris tortor, dictum tristique aliquam vestibulum, porta et justo.\r\n\r\n"
   },
-  '/accessibility-findings': {
-    hasComponentBeenTestedForAccessibility: 'yes'
+  "/component-image": {},
+  "/accessibility-findings": {
+    "hasComponentBeenTestedExternalAccessibility": "yes",
+    "hasComponentBeenTestedInternalAudit": "yes",
+    "hasComponentBeenTestedUsingAssistiveTechnology": "yes"
   },
-  '/prototype': {
-    componentPrototypeUrl: 'yes'
+  "/add-external-audit": {
+    "hasComponentBeenTestedInternalAudit": "yes",
+    "hasComponentBeenTestedUsingAssistiveTechnology": "yes",
+    "organisation": "Duis",
+    "auditDate-day": "1",
+    "auditDate-month": "1",
+    "auditDate-year": "1999",
+    "issuesDiscovered": "In lacus ipsum, molestie nec sapien vitae, tincidunt tristique nisi. Integer a lacus quis nisl mollis fringilla. Nullam blandit imperdiet mauris, ac feugiat ante. Vestibulum nec semper nulla, ut ultricies massa. Curabitur lacinia tortor augue, sed varius leo viverra non. Fusce vitae libero ac orci elementum vestibulum eu et libero. In rhoncus laoreet nisi, sit amet rutrum tellus. Ut ut dui in metus sodales molestie eu ut purus.\r\n\r\n"
   },
-  '/prototype-url': {
-    prototypeUrl: 'http://www.test.com',
-    prototypeUrlAdditionalInformation:
-      'Pellentesque efficitur id odio non venenatis. Donec mauris dolor, imperdiet eu pulvinar eget, efficitur in mi. Praesent dapibus eros eu efficitur mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi tincidunt dictum enim, vitae imperdiet magna ullamcorper eget. Aliquam eget posuere leo, at sollicitudin lacus. Proin vitae orci non est tempor vulputate. Donec bibendum eros eget dui lacinia bibendum. Donec sed leo et augue euismod congue. Mauris id eros ut magna tristique faucibus at eu lacus. Vestibulum rhoncus felis id nisi imperdiet, eget posuere sapien viverra. Vestibulum facilisis erat id dui auctor vulputate.\r\n\r\n'
+  "/add-internal-audit": {
+    "hasComponentBeenTestedInternalAudit": "yes",
+    "hasComponentBeenTestedUsingAssistiveTechnology": "yes",
+    "organisation": "Curabitur",
+    "auditDate-day": "1",
+    "auditDate-month": "1",
+    "auditDate-year": "2000",
+    "issuesDiscovered": "In lacus ipsum, molestie nec sapien vitae, tincidunt tristique nisi. Integer a lacus quis nisl mollis fringilla. Nullam blandit imperdiet mauris, ac feugiat ante. Vestibulum nec semper nulla, ut ultricies massa. Curabitur lacinia tortor augue, sed varius leo viverra non. Fusce vitae libero ac orci elementum vestibulum eu et libero. In rhoncus laoreet nisi, sit amet rutrum tellus. Ut ut dui in metus sodales molestie eu ut purus.\r\n\r\n"
   },
-  '/component-code': {
-    componentCodeAvailable: 'yes'
+  "/add-assistive-tech": {
+    "hasComponentBeenTestedUsingAssistiveTechnology": "yes",
+    "testingDate-day": "1",
+    "testingDate-month": "1",
+    "testingDate-year": "2000",
+    "issuesDiscovered": "Curabitur"
   },
-  '/component-code-details': {
-    componentCodeLanguage: 'HTML',
-    componentCodeUsage: 'Somehow',
-    componentCode: '<p>hello!</p>'
+  "/prototype": {
+    "componentPrototypeUrl": "yes"
   },
-  '/component-image': {},
-  '/additional-information': {
-    additionalInformation:
-      'Pellentesque efficitur id odio non venenatis. Donec mauris dolor, imperdiet eu pulvinar eget, efficitur in mi. Praesent dapibus eros eu efficitur mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi tincidunt dictum enim, vitae imperdiet magna ullamcorper eget. Aliquam eget posuere leo, at sollicitudin lacus. Proin vitae orci non est tempor vulputate. Donec bibendum eros eget dui lacinia bibendum. Donec sed leo et augue euismod congue. Mauris id eros ut magna tristique faucibus at eu lacus. Vestibulum rhoncus felis id nisi imperdiet, eget posuere sapien viverra. Vestibulum facilisis erat id dui auctor vulputate.\r\n\r\n'
+  "/prototype-url": {
+    "prototypeUrl": "https://www.lipsum.com/feed/html",
+    "prototypeUrlAdditionalInformation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porttitor, turpis eu congue semper, felis purus blandit purus, eu finibus dui orci et augue. Vestibulum nec dignissim ante. Sed vehicula sagittis nunc, sed iaculis lorem. Quisque quis lorem non lorem ornare venenatis. Morbi luctus, enim et tincidunt pellentesque, ante justo venenatis nisl, rhoncus lobortis quam nunc in lectus. Nam consectetur sapien sem, quis laoreet mi dapibus sit amet. Nullam consectetur erat ut diam luctus posuere. Duis vulputate turpis vitae magna commodo pharetra. Sed varius pulvinar sapien, nec tempus ante pulvinar sit amet. Sed mauris tortor, dictum tristique aliquam vestibulum, porta et justo.\r\n\r\n"
   },
-  '/your-details': {
-    fullName: 'Test User',
-    emailAddress: 'test@test.com',
-    shareYourDetails: [
-      'addNameAndEmailToComponentPage',
-      'onlyShareNameAndEmailWhenRequested',
-      'doNotSharePersonalDetails'
+  "/prototype-url/1": {
+    "prototypeUrl": "https://www.lipsum.com/feed/html",
+    "prototypeUrlAdditionalInformation": ""
+  },
+  "/component-code": {
+    "componentCodeAvailable": "yes"
+  },
+  "/component-code-details": {
+    "componentCodeLanguage": "HTML",
+    "componentCodeUsage": "In lacus ipsum, molestie nec sapien vitae, tincidunt tristique nisi. Integer a lacus quis nisl mollis fringilla. Nullam blandit imperdiet mauris, ac feugiat ante. Vestibulum nec semper nulla, ut ultricies massa. Curabitur lacinia tortor augue, sed varius leo viverra non. Fusce vitae libero ac orci elementum vestibulum eu et libero. In rhoncus laoreet nisi, sit amet rutrum tellus. Ut ut dui in metus sodales molestie eu ut purus.\r\n\r\n",
+    "componentCode": "<p>test</p>"
+  },
+  "/your-details": {
+    "fullName": "test",
+    "emailAddress": "test@test.com",
+    "shareYourDetails": [
+      "addNameAndEmailToComponentPage",
+      "onlyShareNameAndEmailWhenRequested",
+      "doNotSharePersonalDetails"
     ]
-  }
+  },
+  "checkYourAnswers": false
 }
