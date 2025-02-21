@@ -7,7 +7,7 @@
   "To be reviewed": {
     "link": "How ‘to be reviewed’ components work",
     "linkContent": "Components with a ‘to be reviewed’ status have been added for use by everyone, but have not been checked or improved recently.",
-    "statusMessage": "Created in "
+    "statusMessage": "Created "
   },
   "Experimental": {
     "link": "How ‘experimental’ components work",
@@ -17,6 +17,6 @@
   "Archived": {
     "link": "How ‘archived’ components work",
     "linkContent": "‘Archived’ components are no longer being supported and should not be used.",
-    "statusMessage": "Archived in "
+    "statusMessage": "Archived "
   }
 }
