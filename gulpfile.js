@@ -11,7 +11,6 @@ gulp.task(
     'build:copy-files',
     'build:javascript',
     'build:javascript-minified',
-    'build:javascript-minified-with-jquery',
     'build:css',
     'build:compress-images'
   )

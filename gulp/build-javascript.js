@@ -1,14 +1,13 @@
-const { join } = require('path')
+const { mkdir, readFile, writeFile } = require('fs/promises')
+const { dirname, join } = require('path')
 
 const commonjs = require('@rollup/plugin-commonjs')
 const nodeResolve = require('@rollup/plugin-node-resolve')
 const { glob } = require('glob')
 const gulp = require('gulp')
-const concat = require('gulp-concat')
-const rename = require('gulp-rename')
-const uglify = require('gulp-uglify')
 const { rollup } = require('rollup')
 const externalGlobals = require('rollup-plugin-external-globals')
+const { minify } = require('terser')
 
 gulp.task('build:javascript', async () => {
   const modulePaths = await glob('moj/components/**/*.{cjs,js,mjs}', {
@@ -61,25 +60,44 @@ gulp.task('build:javascript', async () => {
     for (const output of options.output) {
       await bundle.write(output)
     }
+
+    // Write to output format with jQuery bundled
+    if (options.input.endsWith('all.mjs')) {
+      await bundle.write({
+        banner: await readFile('node_modules/jquery/dist/jquery.js', 'utf8'),
+        extend: true,
+        file: 'package/moj/all.jquery.js',
+        format: 'umd',
+        name: 'MOJFrontend'
+      })
+    }
   }
 })
 
-gulp.task('build:javascript-minified', () => {
-  return gulp
-    .src('package/moj/all.js')
-    .pipe(uglify())
-    .pipe(rename('moj-frontend.min.js'))
-    .pipe(gulp.dest('package/moj'))
-})
+gulp.task('build:javascript-minified', async () => {
+  for (const { srcPath, destPath } of [
+    {
+      srcPath: 'package/moj/all.js',
+      destPath: 'package/moj/moj-frontend.min.js'
+    },
+    {
+      srcPath: 'package/moj/all.jquery.js',
+      destPath: 'package/moj/all.jquery.min.js'
+    }
+  ]) {
+    const output = await minify(
+      { [srcPath]: await readFile(srcPath, 'utf8') },
+      {
+        format: { comments: false },
+        safari10: true
+      }
+    )
 
-gulp.task('build:javascript-minified-with-jquery', () => {
-  return gulp
-    .src(['node_modules/jquery/dist/jquery.js', 'package/moj/all.js'])
-    .pipe(concat('all.jquery.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('package/moj/'))
+    await mkdir(dirname(destPath), { recursive: true })
+    await writeFile(destPath, output.code)
+  }
 })
 
 /**
- * @import { RollupOptions } from 'rollup'
+ * @import { ModuleFormat, OutputOptions, RollupOptions } from 'rollup'
  */
