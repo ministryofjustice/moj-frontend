@@ -105,11 +105,8 @@ const saveSession = (req, res, next) => {
 }
 
 const getFormDataFromSession = (req, res, next) => {
-  console.log('getFormDataFromSession')
   req.formData = null
-  const formData = req.session[req.url] || {}
-  //todo add in the additional fields for accessibility
-  req.formData = formData
+  req.formData = req.session[req.url] || {}
   next()
 }
 
