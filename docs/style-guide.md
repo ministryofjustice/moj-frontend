@@ -91,9 +91,9 @@ If your service lets users change their 'caseload', always use 'change location'
 
 ### Category (such as Category A prison)
 
-Always capitalise and write out in full. For example, 'Category A'.
+Capitalise and write out in full. For example, 'Category A'.
 
-Do not use 'Cat'.
+You can shorten to 'Cat' if you have limited space, for example in alert flags on the prisoner profile.
 
 Use 'Category A – high' for high-profile prisoners.
 
