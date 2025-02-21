@@ -1,7 +1,9 @@
 {
-  "name": "@ministryofjustice/frontend",
+  "name": "moj-frontend",
   "description": "The MOJ Frontend contains the code you need to start building user interfaces for UK Ministry of Justice government services.",
-  "main": "index.js",
+  "workspaces": [
+    "/package"
+  ],
   "files": [
     "/package"
   ],
@@ -50,7 +52,6 @@
     "@babel/preset-env": "^7.26.7",
     "@commitlint/cli": "^18.0.0",
     "@commitlint/config-conventional": "^18.0.0",
-    "@ministryofjustice/frontend": "file:./package",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-terser": "^0.4.4",
