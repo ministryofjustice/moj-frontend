@@ -21,7 +21,7 @@ function compileStyles(assetPath, { srcPath, destPath, output = {} }) {
 
   const taskFn = async () => {
     const { css } = await compileAsync(from, {
-      loadPaths: ['./'],
+      loadPaths: ['node_modules'],
       quietDeps: true,
       silenceDeprecations: [
         'color-functions',
