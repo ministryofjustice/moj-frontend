@@ -1,9 +1,6 @@
-const { mkdir, readFile, writeFile } = require('fs/promises')
-const { dirname } = require('path')
-
 const gulp = require('gulp')
-const { minify } = require('terser')
 
+const { compileScripts } = require('./tasks/scripts')
 const { compileStyles } = require('./tasks/styles')
 
 gulp.task('dist:clean', async () => {
@@ -18,25 +15,21 @@ gulp.task('dist:assets', () => {
     .pipe(gulp.dest('dist/assets/'))
 })
 
-gulp.task('dist:javascript', async () => {
-  for (const { srcPath, destPath } of [
-    {
-      srcPath: 'package/moj/all.js',
-      destPath: 'dist/moj-frontend.min.js'
-    }
-  ]) {
-    const output = await minify(
-      { [srcPath]: await readFile(srcPath, 'utf8') },
-      {
-        format: { comments: false },
-        safari10: true
-      }
-    )
+gulp.task(
+  'dist:javascript',
+  compileScripts('all.mjs', {
+    srcPath: 'package/moj',
+    destPath: 'dist',
 
-    await mkdir(dirname(destPath), { recursive: true })
-    await writeFile(destPath, output.code)
-  }
-})
+    // Customise output
+    output: {
+      compact: true,
+      file: 'moj-frontend.min.js',
+      format: 'umd',
+      name: 'MOJFrontend'
+    }
+  })
+)
 
 gulp.task(
   'dist:css',
