@@ -1,10 +1,6 @@
-const commonjs = require('@rollup/plugin-commonjs')
-const nodeResolve = require('@rollup/plugin-node-resolve')
-const terser = require('@rollup/plugin-terser')
 const gulp = require('gulp')
-const { rollup } = require('rollup')
-const externalGlobals = require('rollup-plugin-external-globals')
 
+const { compileScripts } = require('./tasks/scripts')
 const { compileStyles } = require('./tasks/styles')
 
 gulp.task('docs:clean', async (done) => {
@@ -65,39 +61,14 @@ gulp.task(
 )
 
 // Bundle the docs site javascript
-gulp.task('docs:scripts', async () => {
-  const options = /** @satisfies {RollupOptions} */ ({
-    input: 'docs/assets/javascript/application.mjs',
-    output: {
-      file: 'public/assets/javascript/application.js',
-      format: 'esm'
-    },
-    external: ['jquery'],
-    plugins: [
-      externalGlobals({
-        jquery: 'window.jQuery'
-      }),
-      nodeResolve(),
-      commonjs()
-    ]
+gulp.task(
+  'docs:scripts',
+  compileScripts('application.mjs', {
+    srcPath: 'docs/assets/javascript',
+    destPath: 'public/assets/javascript',
+    output: { compact: true }
   })
-
-  // Create bundle
-  const bundle = await rollup(options)
-
-  // Add minifier plugin (optional)
-  if (process.env.ENV !== 'dev') {
-    options.output.plugins = [
-      terser({
-        format: { comments: false },
-        safari10: true
-      })
-    ]
-  }
-
-  // Write to output format
-  await bundle.write(options.output)
-})
+)
 
 gulp.task('docs:revision', async () => {
   const { default: rev } = await import('gulp-rev')
@@ -119,7 +90,3 @@ gulp.task('docs:revision', async () => {
     .pipe(rev.manifest())
     .pipe(gulp.dest('public/assets/'))
 })
-
-/**
- * @import { RollupOptions } from 'rollup'
- */
