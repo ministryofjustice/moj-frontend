@@ -20,21 +20,16 @@
    <span class="govuk-visually-hidden">Status:</span> {{ status }}
   </span>
 
-<p class="status-message govuk-!-margin-bottom-2">
-    {{ statusData.statusMessage }} 
-    {% if status == 'Experimental' %}
-        by 
-        {% if creatorName and creatorTeam %}
-            {{ creatorName }} in {{ creatorTeam }}
-        {% elif creatorName %}
-            {{ creatorName }}
-        {% elif creatorTeam %}
-            someone in {{ creatorTeam }}
-        {% else %}
-            someone in the community
-        {% endif %}
-    {% endif %}
-    {% if statusDate %} in {{ statusDate }}{% endif %}.
+    <p class="status-message govuk-!-margin-bottom-2">
+    {{ statusData.statusMessage }}{% if status == 'Experimental' %} by{%- if creatorName and creatorTeam %} 
+        {{ creatorName }} in {{ creatorTeam }}
+    {%- elif creatorName %} 
+        {{ creatorName }}
+    {%- elif creatorTeam %} 
+        someone in {{ creatorTeam }}
+    {%- else %} 
+        someone in the community
+    {%- endif %}{% endif %}{% if statusDate %} in {{ statusDate }}{% endif %}.
 </p>
 
   <details class="govuk-details govuk-!-margin-bottom-8">
