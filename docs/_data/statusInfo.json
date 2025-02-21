@@ -1,22 +1,22 @@
 {
   "Official": {
-    "link": "How ‘official’ types work",
-    "linkContent": "Types with an ‘official’ status have had a full, multi-disciplinary team review.",
+    "link": "How ‘official’ components work",
+    "linkContent": "Components with an ‘official’ status have had a full, multi-disciplinary team review.",
     "statusMessage": "Updated by the MoJ Design System team in "
   },
   "To be reviewed": {
-    "link": "How ‘to be reviewed’ types work",
-    "linkContent": "Types with a ‘to be reviewed’ status have been added for use by everyone, but have not been checked or improved recently.",
+    "link": "How ‘to be reviewed’ components work",
+    "linkContent": "Components with a ‘to be reviewed’ status have been added for use by everyone, but have not been checked or improved recently.",
     "statusMessage": "Created in "
   },
   "Experimental": {
-    "link": "How ‘experimental’ types work",
-    "linkContent": "Anyone can add an ‘experimental’ status type to the MoJ Design System. They’re early in development and can be used as a starting point.",
+    "link": "How ‘experimental’ components work",
+    "linkContent": "Anyone can add an ‘experimental’ status component to the MoJ Design System. They’re early in development and can be used as a starting point.",
     "statusMessage": "Created "
   },
   "Archived": {
-    "link": "How ‘archived’ types work",
-    "linkContent": "‘Archived’ types are no longer being supported and should not be used.",
+    "link": "How ‘archived’ components work",
+    "linkContent": "‘Archived’ components are no longer being supported and should not be used.",
     "statusMessage": "Archived in "
   }
 }

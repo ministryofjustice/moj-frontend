@@ -20,39 +20,40 @@
    <span class="govuk-visually-hidden">Status:</span> {{ status }}
   </span>
 
-  <p class="status-message govuk-!-margin-bottom-2">
+<p class="status-message govuk-!-margin-bottom-2">
+    {{ statusData.statusMessage }} 
     {% if status == 'Experimental' %}
-      {% if creatorName and creatorTeam %}
-        {{ statusData.statusMessage }} by {{ creatorName }} in {{ creatorTeam }} in {{ statusDate }}.
-      {% elif creatorTeam %}
-        {{ statusData.statusMessage }} by someone in {{ creatorTeam }} in {{ statusDate }}.
-      {% elif creatorName %}
-        {{ statusData.statusMessage }} by {{ creatorName }} in {{ statusDate }}.
-      {% else %}
-        {{ statusData.statusMessage }} by someone in the community in {{ statusDate }}.
-      {% endif %}
-    {% else %}
-      {{ statusData.statusMessage }} {{ statusDate }}.
+        by 
+        {% if creatorName and creatorTeam %}
+            {{ creatorName }} in {{ creatorTeam }}
+        {% elif creatorName %}
+            {{ creatorName }}
+        {% elif creatorTeam %}
+            someone in {{ creatorTeam }}
+        {% else %}
+            someone in the community
+        {% endif %}
     {% endif %}
-  </p>
+    {% if statusDate %} in {{ statusDate }}{% endif %}.
+</p>
 
   <details class="govuk-details govuk-!-margin-bottom-8">
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">
      {{ statusInfo[status].link 
-      | replace('Types', type | capitalize + 's') 
-      | replace('types', type | lower + 's') 
-      | replace('Type', type | capitalize) 
-      | replace('type', type | lower) 
+      | replace('Components', type | capitalize + 's') 
+      | replace('components', type | lower + 's') 
+      | replace('Component', type | capitalize) 
+      | replace('component', type | lower) 
       }}
       </span>
     </summary>
     <div class="govuk-details__text">
       {{ statusInfo[status].linkContent
-      | replace('Types', type | capitalize + 's') 
-      | replace('types', type | lower + 's') 
-      | replace('Type', type | capitalize) 
-      | replace('type', type | lower) 
+      | replace('Components', type | capitalize + 's') 
+      | replace('components', type | lower + 's') 
+      | replace('Component', type | capitalize) 
+      | replace('component', type | lower) 
       }}
       <a href="/design-system-statuses">Read about all the Design System statuses</a>.
     </div>
