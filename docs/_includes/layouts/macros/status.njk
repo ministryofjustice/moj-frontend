@@ -20,7 +20,8 @@
    <span class="govuk-visually-hidden">Status:</span> {{ status }}
   </span>
 
-    <p class="status-message govuk-!-margin-bottom-2">
+   {% if status == 'Experimental' or statusDate %}
+<p class="status-message govuk-!-margin-bottom-2">
     {{ statusData.statusMessage }}{% if status == 'Experimental' %} by{%- if creatorName and creatorTeam %} 
         {{ creatorName }} in {{ creatorTeam }}
     {%- elif creatorName %} 
@@ -29,8 +30,9 @@
         someone in {{ creatorTeam }}
     {%- else %} 
         someone in the community
-    {%- endif %}{% endif %}{% if statusDate %} in {{ statusDate }}{% endif %}.
+    {%- endif %}{% if statusDate %} in {{ statusDate }}{% endif %}.{% else %} in {{ statusDate }}.{% endif %}
 </p>
+{% endif %}
 
   <details class="govuk-details govuk-!-margin-bottom-8">
     <summary class="govuk-details__summary">
