@@ -51,13 +51,18 @@ gulp.task('watch:styles', () => {
 
 // Watch all the component js files and build the package
 gulp.task('watch:package-js', () => {
-  gulp.watch(['src/moj/components/**/*.js'], gulp.series('build:javascript'))
+  gulp.watch(
+    ['src/moj/components/**/*.mjs'],
+    { ignored: ['**/*.spec.*'] },
+    gulp.series('build:javascript')
+  )
 })
 
 // Watch the docs js files and the bundled package js and rebuild
 gulp.task('watch:docs-js', () => {
   gulp.watch(
     ['docs/assets/**/*.mjs', 'package/moj/all.js'],
+    { ignored: ['**/*.spec.*'] },
     gulp.series(['docs:scripts'])
   )
 })
