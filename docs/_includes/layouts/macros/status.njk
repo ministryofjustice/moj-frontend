@@ -21,12 +21,12 @@ Arguments to be passed:
       "Archived": "govuk-tag--grey"
     }[status] or "" %}
     
-  <span class="govuk-tag status-tag {{ statusClass }}">
+  <span class="govuk-tag app-status-tag{%- if statusClass %} {{ statusClass }}{% endif %}">
    <span class="govuk-visually-hidden">Status:</span> {{ status }}
   </span>
 
    {% if status == 'Experimental' or statusDate %}
-<p class="status-message govuk-!-margin-bottom-2">
+<p class="app-status-message govuk-!-margin-bottom-2">
     {{ statusData.statusMessage }}{% if status == 'Experimental' %} by{%- if creatorName and creatorTeam %} 
         {{ creatorName }} in {{ creatorTeam }}
     {%- elif creatorName %} 
