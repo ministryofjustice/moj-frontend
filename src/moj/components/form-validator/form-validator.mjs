@@ -1,8 +1,8 @@
-const $ = require('jquery')
+import $ from 'jquery'
 
-const { addAttributeValue, removeAttributeValue } = require('../../helpers.js')
+import { addAttributeValue, removeAttributeValue } from '../../helpers.mjs'
 
-function FormValidator(form, options) {
+export function FormValidator(form, options) {
   this.form = form
   this.errors = []
   this.validators = []
@@ -166,5 +166,3 @@ FormValidator.prototype.validate = function () {
   }
   return this.errors.length === 0
 }
-
-module.exports = { FormValidator }

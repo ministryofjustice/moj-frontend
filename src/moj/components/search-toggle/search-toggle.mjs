@@ -1,6 +1,6 @@
-const $ = require('jquery')
+import $ from 'jquery'
 
-function SearchToggle(options) {
+export function SearchToggle(options) {
   this.options = options
   this.container = $(this.options.search.container)
   this.toggleButtonContainer = $(this.options.toggleButton.container)
@@ -52,5 +52,3 @@ SearchToggle.prototype.onDocumentClick = function (e) {
     this.hideMenu()
   }
 }
-
-module.exports = { SearchToggle }

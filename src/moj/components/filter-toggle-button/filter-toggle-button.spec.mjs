@@ -1,12 +1,12 @@
 /* eslint-disable no-new */
 
-const { queryByRole } = require('@testing-library/dom')
-const { userEvent } = require('@testing-library/user-event')
-const { configureAxe } = require('jest-axe')
-const merge = require('lodash/merge')
-const { setMedia } = require('mock-match-media')
+import { queryByRole } from '@testing-library/dom'
+import { userEvent } from '@testing-library/user-event'
+import { configureAxe } from 'jest-axe'
+import merge from 'lodash/merge.js'
+import { setMedia } from 'mock-match-media'
 
-const { FilterToggleButton } = require('./filter-toggle-button.js')
+import { FilterToggleButton } from './filter-toggle-button.mjs'
 
 const user = userEvent.setup()
 const axe = configureAxe({

@@ -23,9 +23,9 @@ gulp.task('build:javascript', async () => {
 
     // Build entry scripts last to restore modules
     // removed from components due to tree-shaking
-    'moj/version.js',
-    'moj/helpers.js',
-    'moj/all.js'
+    'moj/version.mjs',
+    'moj/helpers.mjs',
+    'moj/all.mjs'
   ]) {
     const options = /** @satisfies {RollupOptions} */ ({
       input: join('src', modulePath),

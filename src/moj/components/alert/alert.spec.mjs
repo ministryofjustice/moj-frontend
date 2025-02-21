@@ -1,9 +1,10 @@
 /* eslint-disable no-new */
-const { getByRole, queryByRole, screen } = require('@testing-library/dom')
-const { userEvent } = require('@testing-library/user-event')
 
-const { Alert } = require('./alert.js')
-const { pageTemplate } = require('./alert.spec.helper.js')
+import { getByRole, queryByRole, screen } from '@testing-library/dom'
+import { userEvent } from '@testing-library/user-event'
+
+import { Alert } from './alert.mjs'
+import { pageTemplate } from './alert.spec.helper.mjs'
 
 const user = userEvent.setup()
 

@@ -1,8 +1,8 @@
-const {
+import {
   findNearestMatchingElement,
   getPreviousSibling,
   getNextSibling
-} = require('./helpers.js')
+} from './helpers.mjs'
 
 describe('helpers', () => {
   describe('getNextSibling', () => {

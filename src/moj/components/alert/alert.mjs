@@ -1,8 +1,8 @@
-const {
+import {
   findNearestMatchingElement,
   getPreviousSibling,
   setFocus
-} = require('../../helpers.js')
+} from '../../helpers.mjs'
 
 /**
  * @typedef {object} AlertConfig
@@ -17,7 +17,7 @@ const {
  * @param {AlertConfig} config - configuration options
  * @class
  */
-function Alert($module, config = {}) {
+export function Alert($module, config = {}) {
   if (!$module) {
     return this
   }
@@ -237,8 +237,6 @@ Alert.prototype.mergeConfigs = function (...configObjects) {
 
   return formattedConfigObject
 }
-
-module.exports = { Alert }
 
 /**
  * Schema for component config

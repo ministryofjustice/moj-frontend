@@ -1,30 +1,20 @@
 /* eslint-disable no-new */
 
-const $ = require('jquery')
+import $ from 'jquery'
 
-const { AddAnother } = require('./components/add-another/add-another.js')
-const { Alert } = require('./components/alert/alert.js')
-const { ButtonMenu } = require('./components/button-menu/button-menu.js')
-const { DatePicker } = require('./components/date-picker/date-picker.js')
-const {
-  FilterToggleButton
-} = require('./components/filter-toggle-button/filter-toggle-button.js')
-const {
-  MultiFileUpload
-} = require('./components/multi-file-upload/multi-file-upload.js')
-const { MultiSelect } = require('./components/multi-select/multi-select.js')
-const {
-  PasswordReveal
-} = require('./components/password-reveal/password-reveal.js')
-const {
-  RichTextEditor
-} = require('./components/rich-text-editor/rich-text-editor.js')
-const { SearchToggle } = require('./components/search-toggle/search-toggle.js')
-const {
-  SortableTable
-} = require('./components/sortable-table/sortable-table.js')
-const { nodeListForEach } = require('./helpers.js')
-const { version } = require('./version.js')
+import { AddAnother } from './components/add-another/add-another.mjs'
+import { Alert } from './components/alert/alert.mjs'
+import { ButtonMenu } from './components/button-menu/button-menu.mjs'
+import { DatePicker } from './components/date-picker/date-picker.mjs'
+import { FilterToggleButton } from './components/filter-toggle-button/filter-toggle-button.mjs'
+import { MultiFileUpload } from './components/multi-file-upload/multi-file-upload.mjs'
+import { MultiSelect } from './components/multi-select/multi-select.mjs'
+import { PasswordReveal } from './components/password-reveal/password-reveal.mjs'
+import { RichTextEditor } from './components/rich-text-editor/rich-text-editor.mjs'
+import { SearchToggle } from './components/search-toggle/search-toggle.mjs'
+import { SortableTable } from './components/sortable-table/sortable-table.mjs'
+import { nodeListForEach } from './helpers.mjs'
+import { version } from './version.mjs'
 
 function initAll(options) {
   // Set the options to an empty object by default if no options are passed.
@@ -134,7 +124,7 @@ function initAll(options) {
   })
 }
 
-module.exports = {
+export {
   initAll,
   version,
 
