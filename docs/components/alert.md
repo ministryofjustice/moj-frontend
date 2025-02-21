@@ -166,13 +166,18 @@ The alert can stay on the page (be persistent) or be dismissed by the user. Dism
   </strong>
 </div>
 
-When it's dismissed, the focus will go to one of 3 places:
+When an alert is dismissed, the focus will go to:
 
-- the heading above (if there was only one alert on the page)
-- the previous or next alert (if there were 2 or more alerts on the page)
-- the `main` element (if there’s no heading above the alert)
+- the heading above, if there are no more alerts on the page
+- the previous or next alert, if there are any more on the page
+- the `main` element, if there's no heading above the alert
 
-If you want the focus to go somewhere else, use the `focusOnDismissSelector` Nunjucks macro option. If this does not work, the focus will go to one of the 3 options. 
+When an alert is dismissed, the focus will go to the heading above. This is unless:
+
+- there's no heading above the alert – it'll go the `main` element
+- there are more alerts on the page – it'll go to the previous or next one
+
+If you want the focus to go somewhere else, use the `focusOnDismissSelector` Nunjucks macro option. If this does not work, the focus will go to 1 of the 3 options.
 
 ### Height and width
 
