@@ -6,9 +6,9 @@ Arguments to be passed:
 - type: {string} Variable from layout. Example values: "component", "page", "pattern", "archive".
 - status: {string} Status of the item. Accepted values: "Official", "To be reviewed", "Experimental", "Archived".
 - statusInfo: {string} Path to status information file (e.g., _data/statusInfo.json).
+- statusDate: {string} Date of creation (e.g., "Oct 2025").
 - creatorName: {string} Name of the creator (e.g., "John Doe").
 - creatorTeam: {string} Team responsible for the item (e.g., "MoJ").
-- creationDate: {string} Date of creation (e.g., "Oct 2025").
 -->
 
 {% macro statusLabel(type, status, statusInfo, creatorName, creatorTeam, statusDate) %}
