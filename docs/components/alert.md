@@ -21,9 +21,9 @@ eleventyNavigation:
 
 ## Overview
 
-The alert component presents 1 of 4 types of alerts to a user. It can stay on the page or be dismissed by the user.  
+The alert component presents 1 of 4 types of alerts to a user. It can stay on the page or be dismissed by the user.
 
-As a leaner component, it’s ideal for internal services and complex user interfaces (such as dashboards and case management systems).  
+As a leaner component, it’s ideal for internal services and complex user interfaces (such as dashboards and case management systems).
 
 There are 4 variants of the alert:
 
@@ -39,13 +39,14 @@ There are 4 variants of the alert:
 The information alert draws a user's attention to something important about a page or service. It has a blue border, and an information icon made up of a blue circle with a white letter 'i'.
 
 #### When to use
+
 Use the information alert sparingly. This makes users more likely to notice and engage with it. If a lot of information alerts are emerging in a service, it might be a sign that a journey needs redesigning.
 
 The information alert can tell a user about:
 
 - unfinished tasks, linking to where to complete them
 - a major change to a service, until it becomes familiar
-- service downtime  
+- service downtime
 
 The information alert can be combined with other alert variants. For linear services, or to display the 'Important' heading, use the <a href="https://design-system.service.gov.uk/components/notification-banner">GOV.UK notification banner component</a>.
 
@@ -57,7 +58,7 @@ Do not want use this component for a serious issue or to prevent something going
 
 {% example "/examples/alert-warning" %}
 
-The warning alert tells users about something to prevent them from making a mistake. Use it sparingly to avoid alert fatigue. It has an orange border, and a warning icon made up of an orange triangle with a white exclamation mark.  
+The warning alert tells users about something to prevent them from making a mistake. Use it sparingly to avoid alert fatigue. It has an orange border, and a warning icon made up of an orange triangle with a white exclamation mark.
 
 #### When to use
 
@@ -194,7 +195,7 @@ It's OK to present more than 1 alert on a page – they'll stack. When developin
 
 - separating alerts that do not involve anything further for a user do – these can be easily dismissed
 - combining instances of the warning, error and information states to reduce the number of alerts
-- that the 'alert' read out to screenreader users should only be applied to one alert  
+- that the 'alert' read out to screenreader users should only be applied to one alert
 
 ### Where to add it
 
@@ -215,7 +216,7 @@ The alert is accessible on a `govuk-colour("white")` or `govuk-colour("light-gre
 An alert should not be placed on a coloured background because:
 
 - the colour contrast between the border and page may not be accessible
-- the background may distract from the border colour and change the emphasis of the message  
+- the background may distract from the border colour and change the emphasis of the message
 
 {% endtab %}
 

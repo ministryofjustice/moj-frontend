@@ -58,7 +58,7 @@ MOJFrontend.nodeListForEach = function (nodes, callback) {
  * Utility function to find an elements next sibling matching the provided
  * selector.
  *
- * @param {HTMLElement} element - Element to find siblings for
+ * @param {HTMLElement} $element - Element to find siblings for
  * @param {string} selector - selector for required sibling
  */
 MOJFrontend.getNextSibling = function ($element, selector) {
@@ -83,7 +83,7 @@ MOJFrontend.getNextSibling = function ($element, selector) {
  * Utility function to find an elements previous sibling matching the provided
  * selector.
  *
- * @param {HTMLElement} element - Element to find siblings for
+ * @param {HTMLElement} $element - Element to find siblings for
  * @param {string} selector - selector for required sibling
  */
 MOJFrontend.getPreviousSibling = function ($element, selector) {
