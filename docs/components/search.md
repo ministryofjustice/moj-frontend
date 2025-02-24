@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Search
+status: To be reviewed
+statusDate: June 2021
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/712
 eleventyNavigation:

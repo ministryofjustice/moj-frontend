@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Organisation switcher
+status: To be reviewed
+statusDate: June 2021
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/239
 eleventyNavigation:

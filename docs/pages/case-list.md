@@ -1,6 +1,8 @@
 ---
 layout: layouts/pages.njk
 title: Case list pages
+status: To be reviewed
+statusDate: September 2021
 type: page
 redirect_from: docs/patterns/case-list.md
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/242

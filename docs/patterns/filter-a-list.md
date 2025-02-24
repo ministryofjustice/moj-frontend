@@ -1,6 +1,8 @@
 ---
 layout: layouts/patterns.njk
 title: Filter a list
+status: To be reviewed
+statusDate: June 2021
 type: pattern
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/717
 eleventyNavigation:

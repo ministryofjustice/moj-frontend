@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Interruption card
+status: Official
+statusDate: December 2024
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/421
 eleventyNavigation:

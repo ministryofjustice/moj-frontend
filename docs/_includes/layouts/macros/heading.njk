@@ -1,0 +1,5 @@
+{% macro heading(level, title, status) %}
+  <h{{ level }} class="govuk-heading-xl{% if status %} govuk-!-display-inline-block govuk-!-margin-bottom-2{% endif %}">
+    {{ title }}
+  </h{{ level }}>
+{% endmacro %}

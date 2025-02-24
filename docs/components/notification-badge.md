@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Notification badge
+status: To be reviewed
+statusDate: June 2021
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/706
 eleventyNavigation:
