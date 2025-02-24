@@ -1,0 +1,9 @@
+{% from "macros/heading/macro.njk" import heading %}
+
+<article class="app-card">
+  {{ heading(params.heading) }}
+
+  <div class="govuk-body">
+    {{ caller() }}
+  </div>
+</article>

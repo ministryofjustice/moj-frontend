@@ -1,5 +1,6 @@
 {% extends "./base.njk" %}
-{% from "macros/card.njk" import card %}
+
+{% from "macros/card/macro.njk" import card %}
 
 {% set items = collections.all | eleventyNavigation(eleventyNavigation.key) | sort(false, false, "key") %}
 
@@ -15,7 +16,12 @@
 
     <div class="app-layout__content app-cards">
     {% for item in items %}
-    {% call card({title: item.title}) %}
+        {% call card({
+          heading: {
+            text: item.title,
+            size: "large"
+          }
+        }) %}
             <p>{{ item.excerpt }}</p>
             <p><a href="{{ item.url }}">View the '{{ item.title }}' guidance</a></p>
         {% endcall %}
