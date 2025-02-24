@@ -10,7 +10,6 @@ Arguments to be passed:
 - creatorTeam: {string} Team responsible for the item (e.g., "MoJ").
 -->
 
-{% macro statusLabel(type, status, statusData, statusDate, creatorName, creatorTeam) %}
   {% if status %}
     {% set statusAttribution -%}
       {%- if status == "Experimental" %}
@@ -48,4 +47,3 @@ Arguments to be passed:
       classes: "govuk-!-margin-bottom-8"
     }) }}
   {% endif %}
-{% endmacro %}
