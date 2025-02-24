@@ -1,8 +1,8 @@
 ---
 layout: layouts/archive.njk
 title: Banner
-status: To be reviewed
-statusDate: June 2021
+status: Archived
+statusDate: February 2025
 type: component
 redirect_from: components/banner
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/835
