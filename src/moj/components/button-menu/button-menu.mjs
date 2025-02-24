@@ -1,11 +1,4 @@
 /**
- * @typedef {object} ButtonMenuConfig
- * @property {string} [buttonText=Actions] - Label for the toggle button
- * @property {"left" | "right"} [alignMenu=left] - the alignment of the menu
- * @property {string} [buttonClasses=govuk-button--secondary] - css classes applied to the toggle button
- */
-
-/**
  * @param {HTMLElement} $module
  * @param {ButtonMenuConfig} config
  * @class
@@ -312,3 +305,10 @@ ButtonMenu.prototype.mergeConfigs = function (...configObjects) {
 
   return formattedConfigObject
 }
+
+/**
+ * @typedef {object} ButtonMenuConfig
+ * @property {string} [buttonText='Actions'] - Label for the toggle button
+ * @property {"left" | "right"} [alignMenu='left'] - the alignment of the menu
+ * @property {string} [buttonClasses='govuk-button--secondary'] - css classes applied to the toggle button
+ */
