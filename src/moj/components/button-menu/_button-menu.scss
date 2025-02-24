@@ -1,5 +1,3 @@
-$moj-button-hover-colour: #767676;
-$moj-datepicker-mid-grey: #949494;
 
 .moj-button-menu {
   display: inline-block;
@@ -72,7 +70,7 @@ $moj-datepicker-mid-grey: #949494;
   margin-left: 0;
   padding: govuk-spacing(2);
   border: $govuk-border-width-form-element solid transparent;
-  border-bottom: 1px solid $moj-datepicker-mid-grey;
+  border-bottom: 1px solid $moj-button-menu-color;
   border-radius: 0;
   color: $govuk-text-colour;
   background-color: govuk-colour("light-grey");
@@ -102,7 +100,7 @@ $moj-datepicker-mid-grey: #949494;
   }
 
   &:hover {
-    background-color: $moj-button-hover-colour;
+    background-color: $moj-button-menu-hover-color;
   }
 
   &:focus {

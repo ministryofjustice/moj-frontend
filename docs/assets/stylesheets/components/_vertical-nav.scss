@@ -1,5 +1,3 @@
-$moj-app-mid-grey: #949494;
-$moj-button-hover-colour: #767676;
 
 .app-vertical-nav {
   position: relative;
@@ -64,7 +62,7 @@ $moj-button-hover-colour: #767676;
 
   &:hover {
     color: govuk-colour("white");
-    background-color: $moj-button-hover-colour;
+    background-color: $moj-button-menu-hover-color;
   }
 
   &:focus,
@@ -78,7 +76,7 @@ $moj-button-hover-colour: #767676;
   &:focus:hover,
   &:focus-visible:hover {
     color: govuk-colour("white");
-    background-color: $moj-button-hover-colour;
+    background-color: $moj-button-menu-hover-color;
   }
 }
 
@@ -100,7 +98,7 @@ $moj-button-hover-colour: #767676;
 
   &:hover {
     color: govuk-colour("white");
-    background-color: $moj-button-hover-colour;
+    background-color: $moj-button-menu-hover-color;
   }
 
   &:active {
@@ -116,7 +114,7 @@ $moj-button-hover-colour: #767676;
 
   &:focus-visible:hover {
     color: govuk-colour("white");
-    background-color: $moj-button-hover-colour;
+    background-color: $moj-button-menu-hover-color;
   }
 }
 
@@ -131,7 +129,7 @@ $moj-button-hover-colour: #767676;
 
   &:hover {
     color: govuk-colour("white");
-    background-color: $moj-app-mid-grey;
+    background-color: $moj-button-menu-color;
   }
 
   &:focus,
@@ -144,7 +142,7 @@ $moj-button-hover-colour: #767676;
 
   &:focus:hover,
   &:focus-visible:hover {
-    background-color: $moj-app-mid-grey;
+    background-color: $moj-button-menu-color;
   }
 }
 
