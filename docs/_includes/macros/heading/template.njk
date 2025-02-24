@@ -1,4 +1,5 @@
 {% from "govuk/macros/attributes.njk" import govukAttributes -%}
+{% from "macros/status-tag/macro.njk" import statusTag %}
 
 {% set classes = params.classes if params.classes else "" -%}
 
@@ -21,7 +22,7 @@
     {% set headingLevel = params.level if params.level else 1 %}
 {%- endswitch -%}
 
-{%- if params.status -%}
+{%- if params.statusTag -%}
   {% set classes = classes ~ " govuk-!-display-inline-block govuk-!-margin-bottom-2" %}
 {%- endif -%}
 
@@ -33,3 +34,7 @@
   {{- govukAttributes(params.attributes) }}>
   {{ caller() if caller else (params.html | safe | trim | indent(2) if params.html else params.text) }}
 </h{{ headingLevel }}>
+
+{% if params.statusTag -%}
+  {{ statusTag(params.statusTag) }}
+{% endif -%}

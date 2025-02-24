@@ -1,5 +1,4 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
-{% from "govuk/components/tag/macro.njk" import govukTag %}
 
 <!--
 Arguments to be passed:
@@ -14,22 +13,6 @@ Arguments to be passed:
 {% macro statusLabel(type, status, statusInfo, creatorName, creatorTeam, statusDate) %}
   {% if status %}
     {% set statusData = (statusInfo[status] if statusInfo and status in statusInfo else {}) %}
-
-    {% set statusClass = {
-      "Official": "govuk-tag--green",
-      "To be reviewed": "govuk-tag--orange",
-      "Experimental": "govuk-tag",
-      "Archived": "govuk-tag--grey"
-    }[status] or "" %}
-
-    {% set statusHtml -%}
-      <span class="govuk-visually-hidden">Status:</span> {{ status }}
-    {%- endset %}
-
-    {{ govukTag({
-      html: statusHtml,
-      classes: "app-status-tag " ~ statusClass
-    }) }}
 
     {% set statusAttribution -%}
       {%- if status == "Experimental" %}
