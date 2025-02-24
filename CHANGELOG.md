@@ -1,3 +1,15 @@
+# [3.4.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.3.1...v3.4.0) (2025-02-24)
+
+
+### Bug Fixes
+
+* **sortable table:** improve sorting of strings with a number prefix ([#1108](https://github.com/ministryofjustice/moj-frontend/issues/1108)) ([b424743](https://github.com/ministryofjustice/moj-frontend/commit/b4247438a3dc6787d63e681816585c2dc16c0210))
+
+
+### Features
+
+* **alert:** Add alert component, archive banner component ([0f8c6a7](https://github.com/ministryofjustice/moj-frontend/commit/0f8c6a7a89b24288ccb1bf25f673b703b5ef2cde))
+
 ## [3.3.1](https://github.com/ministryofjustice/moj-frontend/compare/v3.3.0...v3.3.1) (2025-01-09)
 
 
