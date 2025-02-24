@@ -24,7 +24,7 @@
       <span class="govuk-caption-l">Submit new component</span>
       <h1>Component code</h1>
       <p>We recommend sending HTML, CSS, SASS, Javascript or Nunjucks.</p>
-      <p>You should only send the component code. It should not contain any personal or sensitive information. You can add more than one code example.</p>
+      <p>You should only send the component code. It should not contain any personally identifiable or sensitive information. You can add more than one code example.</p>
       {{ govukInput({
         label: {
           text: "What language is the code written in?",
@@ -50,7 +50,7 @@
           isPageHeading: true
         },
         hint: {
-          text: "Include any information that helps users add the code to their service to use"
+          text: "Include any information that helps users add the code to their service."
         },
         errorMessage: formErrors.componentCodeUsage,
         value: formData.componentCodeUsage

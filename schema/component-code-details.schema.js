@@ -3,8 +3,12 @@ const Joi = require('joi')
 
 const schema = addAnotherSchema.append({
   componentCodeLanguage: Joi.string()
-    .allow(null, '')
-    .label('What language is the code written in?'),
+    .required()
+    .label('What language is the code written in?')
+    .messages({
+      'any.required': 'Enter the name of the language the code is written in',
+      'string.empty': 'Enter the name of the language the code is written in'
+    }),
   componentCodeUsage: Joi.string()
     .allow(null, '')
     .label('How do you use the code? (optional)'),
