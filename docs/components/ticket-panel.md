@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Ticket Panel
+status: To be reviewed
+statusDate: July 2022
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/715
 eleventyNavigation:
