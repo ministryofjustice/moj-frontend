@@ -2,7 +2,7 @@
 {% from "./macros/status.njk" import statusLabel %}
 {% from "./macros/heading.njk" import heading %}
 
-{% block content %}   
+{% block content %}
     <div class="app-layout__content">
        {% if not isIndex %}<span class="govuk-caption-xl">Components</span>{% endif %}
         {{ heading(1, title, status) }}
