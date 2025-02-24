@@ -2,8 +2,18 @@
   display: inline-block;
   margin-left: govuk-spacing(2);
   vertical-align: super;
+
+  // A specific selector to override .app-prose-scope
+  .app-prose-scope & {
+    font-weight: $govuk-font-weight-regular;
+  }
 }
 
 .app-status-message {
-  color: $govuk-secondary-text-colour;
+  &,
+
+  // A specific selector to override .app-prose-scope
+  .app-prose-scope & {
+    color: $govuk-secondary-text-colour;
+  }
 }
