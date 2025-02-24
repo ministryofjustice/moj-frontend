@@ -1,6 +1,3 @@
-// Custom colour required for passing WCAG 2.2 AA contrast text/background and
-// background/surrounding
-$moj-datepicker-mid-grey: #949494;
 
 .moj-datepicker {
   position: relative;
@@ -116,7 +113,7 @@ $moj-datepicker-mid-grey: #949494;
 
   &:hover {
     color: $govuk-text-colour;
-    background-color: $moj-datepicker-mid-grey;
+    background-color: $moj-button-menu-color;
     text-decoration: none;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
@@ -137,7 +134,7 @@ $moj-datepicker-mid-grey: #949494;
 
   &:focus:hover {
     outline-color: $govuk-focus-colour;
-    background-color: $moj-datepicker-mid-grey;
+    background-color: $moj-button-menu-color;
 
     &::after {
       background-color: transparent;
@@ -179,7 +176,7 @@ $moj-datepicker-mid-grey: #949494;
     &:hover {
       outline-color: $govuk-link-colour;
       color: $govuk-text-colour;
-      background-color: $moj-datepicker-mid-grey;
+      background-color: $moj-button-menu-color;
 
       &::after {
         background-color: transparent;
@@ -296,14 +293,14 @@ $moj-datepicker-mid-grey: #949494;
   }
 
   &:hover {
-    border-bottom: 4px solid $moj-datepicker-mid-grey;
+    border-bottom: 4px solid $moj-button-menu-color;
     color: $govuk-text-colour;
-    background-color: $moj-datepicker-mid-grey;
+    background-color: $moj-button-menu-color;
   }
 
   &:focus:hover {
     border-bottom: 4px solid $govuk-text-colour;
     color: $govuk-text-colour;
-    background-color: $moj-datepicker-mid-grey;
+    background-color: $moj-button-menu-color;
   }
 }
