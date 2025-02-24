@@ -1,15 +1,17 @@
 {% extends "./base.njk" %}
 
 {% from "macros/card/macro.njk" import card %}
+{% from "macros/heading/macro.njk" import heading %}
 
 {% set items = collections.all | eleventyNavigation(eleventyNavigation.key) | sort(false, false, "key") %}
 
 {% block content %}
     <div class="app-masthead">
         <div class="app-layout__content">
-            <h1 class="govuk-heading-xl">
-              {{ title }}
-            </h1>
+            {{ heading({
+              text: title
+            }) }}
+
             {{ content | safe }}
         </div>
     </div>

@@ -1,6 +1,7 @@
 {% extends "./base.njk" %}
 
 {% from "macros/card/macro.njk" import card %}
+{% from "macros/heading/macro.njk" import heading %}
 
 {% block title %}MoJ Design System{% endblock %}
 
@@ -8,9 +9,10 @@
 
   <div class="app-masthead ">
       <div class="app-layout__content">
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
-      {{ title }}
-    </h1>
+    {{ heading({
+      text: title,
+      classes: "govuk-!-margin-bottom-4"
+    }) }}
     <p>
       Use the MoJ Design System to learn from the work and experiences of others, contribute back into the design system to share your knowledge, and reuse as much as possible to avoid repeating what has already been done.
     </p>
