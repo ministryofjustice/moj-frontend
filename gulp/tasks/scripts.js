@@ -38,6 +38,9 @@ function compileScripts(assetPath, { srcPath, destPath, output = {} }) {
         options.plugins.push(
           terser({
             format: { comments: false },
+            sourceMap: { includeSources: true },
+
+            // Compatibility workarounds
             safari10: true
           })
         )
@@ -51,7 +54,8 @@ function compileScripts(assetPath, { srcPath, destPath, output = {} }) {
 
         // Output directory or file
         dir: options.preserveModules ? destPath : undefined,
-        file: !options.preserveModules ? file : undefined
+        file: !options.preserveModules ? file : undefined,
+        sourcemap: true
       })
     }
   }

@@ -9,7 +9,7 @@
   },
   "nunjucksFilters": ["/moj/filters/prototype-kit-13-filters.js"],
   "scripts": ["/moj/all.jquery.min.js", "/moj/init.js"],
-  "assets": ["/moj/assets"],
+  "assets": ["/moj/assets", "/moj/all.jquery.min.js.map"],
   "sass": ["/moj/all.scss"],
   "nunjucksPaths": ["/"],
   "nunjucksMacros": [
