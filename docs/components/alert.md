@@ -81,7 +81,7 @@ The error alert shows the user that something has gone wrong. It pauses the user
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-visually-hidden">Warning</span>
-    Do not use the error alert for validation errors. Continue to use the <a href="https://design-system.service.gov.uk/components/error-message">GOV.UK error message for this<a/>.
+    Do not use the error alert for validation errors. Continue to use the <a href="https://design-system.service.gov.uk/components/error-message">GOV.UK error message<a/> for this.
   </strong>
 </div>
 
