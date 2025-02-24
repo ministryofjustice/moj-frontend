@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Scrollable pane
+status: To be reviewed
+statusDate: November 2022
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/711
 eleventyNavigation:

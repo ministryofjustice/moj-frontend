@@ -2,6 +2,8 @@
 layout: layouts/component.njk
 title: Badge
 type: component
+status: To be reviewed
+statusDate: June 2021
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/687
 eleventyNavigation:
   parent: Components

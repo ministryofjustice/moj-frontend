@@ -1,0 +1,70 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+
+<!-- 
+Arguments to be passed:
+- type: {string} Variable from layout. Example values: "component", "page", "pattern", "archive".
+- status: {string} Status of the item. Accepted values: "Official", "To be reviewed", "Experimental", "Archived".
+- statusInfo: {string} Path to status information file (e.g., _data/statusInfo.json).
+- creatorName: {string} Name of the creator (e.g., "John Doe").
+- creatorTeam: {string} Team responsible for the item (e.g., "MoJ").
+- creationDate: {string} Date of creation (e.g., "Oct 2025").
+-->
+
+{% macro statusLabel(type, status, statusInfo, creatorName, creatorTeam, statusDate) %}
+  {% if status %}
+    {% set statusData = (statusInfo[status] if statusInfo and status in statusInfo else {}) %}
+    
+    {% set statusClass = {
+      "Official": "govuk-tag--green",
+      "To be reviewed": "govuk-tag--orange",
+      "Experimental": "govuk-tag",
+      "Archived": "govuk-tag--grey"
+    }[status] or "" %}
+    
+   {% set statusHtml -%}
+      <span class="govuk-visually-hidden">Status:</span> {{ status }}
+    {%- endset %}
+
+  {{ govukTag({
+      html: statusHtml,
+      classes: "govuk-!-font-weight-regular app-status-tag " ~ statusClass
+    }) }}
+
+  {% set statusAttribution -%}
+      {%- if status == "Experimental" %}
+        by {{ creatorName | default("someone") }} in {{ creatorTeam | default("the community") }}
+      {%- endif %}
+      {%- if statusDate %}
+        in {{ statusDate }}
+      {%- endif %}.
+    {%- endset %}
+
+<p class="app-status-message govuk-!-margin-bottom-2">
+  {{ statusData.statusMessage }} {{ statusAttribution }}
+</p>
+
+  <details class="govuk-details govuk-!-margin-bottom-8">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+     {{ statusInfo[status].link 
+      | replace('Components', type | capitalize + 's') 
+      | replace('components', type | lower + 's') 
+      | replace('Component', type | capitalize) 
+      | replace('component', type | lower) 
+      }}
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      {{ statusInfo[status].linkContent
+      | replace('Components', type | capitalize + 's') 
+      | replace('components', type | lower + 's') 
+      | replace('Component', type | capitalize) 
+      | replace('component', type | lower) 
+      }}
+      <a href="/design-system-statuses">Read about all the Design System statuses</a>.
+    </div>
+  </details>
+  {% endif %}
+{% endmacro %}

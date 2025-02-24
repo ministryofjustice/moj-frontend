@@ -1,0 +1,22 @@
+{
+  "Official": {
+    "link": "How ‘official’ components work",
+    "linkContent": "Components with an ‘official’ status have had a full, multi-disciplinary team review.",
+    "statusMessage": "Updated "
+  },
+  "To be reviewed": {
+    "link": "How ‘to be reviewed’ components work",
+    "linkContent": "Components with a ‘to be reviewed’ status have been added for use by everyone, but have not been checked or improved recently.",
+    "statusMessage": "Created "
+  },
+  "Experimental": {
+    "link": "How ‘experimental’ components work",
+    "linkContent": "Anyone can add an ‘experimental’ status component to the MoJ Design System. They’re early in development and can be used as a starting point.",
+    "statusMessage": "Created "
+  },
+  "Archived": {
+    "link": "How ‘archived’ components work",
+    "linkContent": "This component is no longer being supported and should not be used.",
+    "statusMessage": "Archived "
+  }
+}

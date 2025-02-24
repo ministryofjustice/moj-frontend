@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Button menu
+status: Official
+statusDate: October 2024
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/685
 eleventyNavigation:

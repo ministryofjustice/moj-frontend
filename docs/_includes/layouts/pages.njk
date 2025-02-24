@@ -1,11 +1,13 @@
 {% extends "./base.njk" %}
 
+{% from "./macros/status.njk" import statusLabel %}
+{% from "./macros/heading.njk" import heading %}
+
 {% block content %}
     <div class="app-layout__content">
-        <h1 class="govuk-heading-xl">
-            {% if not isIndex %}<span class="govuk-caption-xl">Pages</span>{% endif %}
-            {{ title }}
-        </h1>
+       {% if not isIndex %}<span class="govuk-caption-xl">Pages</span>{% endif %}
+        {{ heading(1, title, status) }}
+        {{ statusLabel(type, status, statusInfo, creatorName, creatorTeam, statusDate) }}
         {{ content | safe }}
 
       {% if isIndex or isArchive %}
