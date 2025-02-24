@@ -1,5 +1,5 @@
 {% extends "./base.njk" %}
-{% from "./macros/card.njk" import card %}
+{% from "macros/card.njk" import card %}
 
 {% set items = collections.all | eleventyNavigation(eleventyNavigation.key) | sort(false, false, "key") %}
 

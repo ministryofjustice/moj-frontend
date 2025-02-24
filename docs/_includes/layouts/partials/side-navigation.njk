@@ -1,7 +1,8 @@
+{% from "macros/nav-list-item.njk" import verticalNavListItem %}
+
 {% set buildingPages = collections.all | eleventyNavigation("Building blocks") %}
 {% set standardsPages = collections.all | eleventyNavigation("Standards and principles") %}
 {% set usingPages = collections.all | eleventyNavigation("Using the design system") %}
-{% from "./../macros/nav-list-item.njk" import verticalNavListItem %}
 
 <moj-collapsible-nav open-class="app-vertical-nav__item--open" id="building-nav">
 <nav class="app-vertical-nav" aria-labelledby="building-nav-title">
