@@ -21,6 +21,8 @@ const config = {
     'add-assistive-tech': { '/accessibility-findings': {hasComponentBeenTestedUsingAssistiveTechnology: 'yes'}},
     'prototype': {},
     'prototype-url': { '/prototype': {componentPrototypeUrl: 'yes'} },
+    'figma': {},
+    'figma-link': { '/figma': {figmaUrl: 'yes'} },
     'component-code': {},
     'component-code-details': { '/component-code': {componentCodeAvailable: 'yes' } },
     'your-details': {},
@@ -89,6 +91,12 @@ const config = {
       componentCodeAvailable: {
         yes: 'component-code-details',
         no: 'component-image'
+      }
+    },
+    figma: {
+      figmaUrl: {
+        yes: 'figma-link',
+        no: 'your-details'
       }
     }
   }
