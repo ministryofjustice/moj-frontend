@@ -1,9 +1,8 @@
 .app-card {
-  display: flex;
+  margin-bottom: 0;
   @include govuk-media-query($until: desktop) {
-    flex-direction: column;
+    margin-bottom: 40px;
   }
-
   &__image {
     width: 100%;
     height: auto;
@@ -12,9 +11,16 @@
     max-width: 100%;
   }
   &--reverse {
+    display: flex;
     flex-direction: row-reverse;
     @include govuk-media-query($until: desktop) {
       flex-direction: column;
+    }
+  }
+  &__full {
+    margin-bottom: 60px;
+    @include govuk-media-query($until: desktop) {
+      margin-bottom: 40px;
     }
   }
 }
