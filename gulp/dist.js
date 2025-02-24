@@ -34,7 +34,7 @@ gulp.task(
 gulp.task(
   'dist:css',
   compileStyles('all.scss', {
-    srcPath: 'gulp/dist-scss',
+    srcPath: 'src/moj',
     destPath: 'dist',
 
     // Customise output
