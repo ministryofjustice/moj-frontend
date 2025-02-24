@@ -23,30 +23,31 @@ Arguments to be passed:
       {%- endif %}.
     {%- endset %}
 
+    {% set linkText -%}
+      {{ statusInfo[status].link
+        | replace('Components', type | capitalize + 's')
+        | replace('components', type | lower + 's')
+        | replace('Component', type | capitalize)
+        | replace('component', type | lower) }}
+    {%- endset %}
+
+    {% set linkHtml -%}
+      {{ statusInfo[status].linkContent
+        | replace('Components', type | capitalize + 's')
+        | replace('components', type | lower + 's')
+        | replace('Component', type | capitalize)
+        | replace('component', type | lower) }}
+      <a href="/design-system-statuses">Read about all the Design System statuses</a>.
+    {%- endset %}
+
     <p class="app-status-message govuk-!-margin-bottom-2">
       {{ statusData.statusMessage }} {{ statusAttribution }}
     </p>
 
-    <details class="govuk-details govuk-!-margin-bottom-8">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">
-          {{ statusInfo[status].link
-            | replace('Components', type | capitalize + 's')
-            | replace('components', type | lower + 's')
-            | replace('Component', type | capitalize)
-            | replace('component', type | lower)
-          }}
-        </span>
-      </summary>
-      <div class="govuk-details__text">
-        {{ statusInfo[status].linkContent
-          | replace('Components', type | capitalize + 's')
-          | replace('components', type | lower + 's')
-          | replace('Component', type | capitalize)
-          | replace('component', type | lower)
-        }}
-        <a href="/design-system-statuses">Read about all the Design System statuses</a>.
-      </div>
-    </details>
+    {{ govukDetails({
+      summaryText: linkText,
+      html: linkHtml,
+      classes: "govuk-!-margin-bottom-8"
+    }) }}
   {% endif %}
 {% endmacro %}
