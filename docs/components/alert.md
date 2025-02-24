@@ -1,6 +1,8 @@
 ---
 layout: layouts/component.njk
 title: Alert
+status: Official
+statusDate: February 2025
 type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1163
 eleventyNavigation:
