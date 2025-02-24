@@ -1,0 +1,17 @@
+{% from "govuk/components/tag/macro.njk" import govukTag -%}
+
+{% set statusClass = {
+  "Official": "govuk-tag--green",
+  "To be reviewed": "govuk-tag--orange",
+  "Experimental": "govuk-tag",
+  "Archived": "govuk-tag--grey"
+}[params.text] or "" -%}
+
+{% set statusHtml -%}
+  <span class="govuk-visually-hidden">Status:</span> {{ params.text }}
+{%- endset %}
+
+{{ govukTag({
+  html: statusHtml,
+  classes: ("app-status-tag " ~ statusClass) | trim
+}) }}

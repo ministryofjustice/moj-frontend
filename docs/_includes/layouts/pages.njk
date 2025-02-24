@@ -8,7 +8,7 @@
         {{ heading({
           text: title,
           caption: "Pages" if not isIndex,
-          status: status
+          statusTag: { text: status }
         }) }}
 
         {{ statusLabel(type, status, statusInfo, creatorName, creatorTeam, statusDate) }}
