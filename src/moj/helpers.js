@@ -51,3 +51,130 @@ MOJFrontend.nodeListForEach = function (nodes, callback) {
     callback.call(window, nodes[i], i, nodes)
   }
 }
+
+/**
+ * Find an elements next sibling
+ *
+ * Utility function to find an elements next sibling matching the provided
+ * selector.
+ *
+ * @param {HTMLElement} element - Element to find siblings for
+ * @param {string} selector - selector for required sibling
+ */
+MOJFrontend.getNextSibling = function ($element, selector) {
+  if (!$element) return
+  // Get the next sibling element
+  let $sibling = $element.nextElementSibling
+
+  // If there's no selector, return the first sibling
+  if (!selector) return $sibling
+
+  // If the sibling matches our selector, use it
+  // If not, jump to the next sibling and continue the loop
+  while ($sibling) {
+    if ($sibling.matches(selector)) return $sibling
+    $sibling = $sibling.nextElementSibling
+  }
+}
+
+/**
+ * Find an elements preceding sibling
+ *
+ * Utility function to find an elements previous sibling matching the provided
+ * selector.
+ *
+ * @param {HTMLElement} element - Element to find siblings for
+ * @param {string} selector - selector for required sibling
+ */
+MOJFrontend.getPreviousSibling = function ($element, selector) {
+  if (!$element) return
+  // Get the previous sibling element
+  let $sibling = $element.previousElementSibling
+
+  // If there's no selector, return the first sibling
+  if (!selector) return $sibling
+
+  // If the sibling matches our selector, use it
+  // If not, jump to the next sibling and continue the loop
+  while ($sibling) {
+    if ($sibling.matches(selector)) return $sibling
+    $sibling = $sibling.previousElementSibling
+  }
+}
+
+MOJFrontend.findNearestMatchingElement = function ($element, selector) {
+  // If no element or selector is provided, return null
+  if (!$element) return
+  if (!selector) return
+
+  // Start with the current element
+  let $currentElement = $element
+
+  while ($currentElement) {
+    // First check the current element
+    if ($currentElement.matches(selector)) {
+      return $currentElement
+    }
+
+    // Check all previous siblings
+    let $sibling = $currentElement.previousElementSibling
+    while ($sibling) {
+      // Check if the sibling itself is a heading
+      if ($sibling.matches(selector)) {
+        return $sibling
+      }
+      $sibling = $sibling.previousElementSibling
+    }
+
+    // If no match found in siblings, move up to parent
+    $currentElement = $currentElement.parentElement
+  }
+}
+
+/**
+ * Move focus to element
+ *
+ * Sets tabindex to -1 to make the element programmatically focusable,
+ * but removes it on blur as the element doesn't need to be focused again.
+ *
+ * @param {HTMLElement} $element - HTML element
+ * @param {object} [options] - Handler options
+ * @param {function(this: HTMLElement): void} [options.onBeforeFocus] - Callback before focus
+ * @param {function(this: HTMLElement): void} [options.onBlur] - Callback on blur
+ */
+MOJFrontend.setFocus = function ($element, options = {}) {
+  const isFocusable = $element.getAttribute('tabindex')
+
+  if (!isFocusable) {
+    $element.setAttribute('tabindex', '-1')
+  }
+
+  /**
+   * Handle element focus
+   */
+  function onFocus() {
+    $element.addEventListener('blur', onBlur, { once: true })
+  }
+
+  /**
+   * Handle element blur
+   */
+  function onBlur() {
+    if (options.onBlur) {
+      options.onBlur.call($element)
+    }
+
+    if (!isFocusable) {
+      $element.removeAttribute('tabindex')
+    }
+  }
+
+  // Add listener to reset element on blur, after focus
+  $element.addEventListener('focus', onFocus, { once: true })
+
+  // Focus element
+  if (options.onBeforeFocus) {
+    options.onBeforeFocus.call($element)
+  }
+  $element.focus()
+}
