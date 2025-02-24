@@ -33,11 +33,13 @@
       <p>Any accessibility findings you can share will be helpful during the review process.</p>
       {{ govukRadios({
         name: "hasComponentBeenTestedExternalAccessibility",
-        id: "has-component-been-tested-for-accessibility",
         hint: {
           text: "This can be an external audit by the Digital Accessibility Centre (DAC) or other organisation."
         },
         fieldset: {
+          attributes: {
+            id: "has-component-been-tested-for-accessibility"
+          },
           legend: {
             text: "Has the component been tested as part of an external accessibility audit?",
             isPageHeading: true,
@@ -60,11 +62,13 @@
 
       {{ govukRadios({
         name: "hasComponentBeenTestedInternalAudit",
-        id: "has-component-been-tested-for-accessibility",
         hint: {
           text: "This can be an audit by an internal UK Government team."
         },
         fieldset: {
+          attributes: {
+            id: "has-component-been-tested-for-accessibility"
+          },
           legend: {
             text: "Has the component been tested as part of an internal audit?",
             isPageHeading: true,
@@ -87,11 +91,13 @@
 
       {{ govukRadios({
         name: "hasComponentBeenTestedUsingAssistiveTechnology",
-        id: "has-component-been-tested-for-accessibility",
         hint: {
           text: "This can be, but not limited to, assistive technology such as JAWS, TalkBack or Dragon."
         },
         fieldset: {
+          attributes: {
+            id: "has-component-been-tested-for-accessibility"
+          },
           legend: {
             text: "Has the component been tested using assistive technology?",
             isPageHeading: true,

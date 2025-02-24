@@ -26,8 +26,10 @@
       <p>You should only send the component code and not the full page of code. This ensures it's easy for others to understand and use. The code should not contain any personal or sensitive information.</p>
       {{ govukRadios({
         name: "componentCodeAvailable",
-        id: "component-code-available",
         fieldset: {
+          attributes: {
+            id: "component-code-available"
+          },
           legend: {
             text: "Do you have code for the component available?",
             isPageHeading: true,

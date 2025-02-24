@@ -68,6 +68,7 @@ const validateFormData = (req, res, next) => {
       formErrorStyles,
       formErrors,
       errorList,
+      backLink: req?.backLink || false,
       addAnother: req?.params?.subpage || 1,
       showAddAnother: !!req?.body?.addAnother,
       skipQuestion: req?.skipQuestion || false,

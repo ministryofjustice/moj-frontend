@@ -103,6 +103,7 @@ router.get(
   isValidComponentFormPage,
   getFormDataFromSession,
   hiddenFields,
+  setNextPage,
   canAddAnother,
   canSkipQuestion,
   getBackLink,
@@ -148,7 +149,8 @@ router.post(
   hiddenFields,
   validateFormData,
   saveSession,
-  setNextPage,
+  // setNextPage,
+  getBackLink,
   (req, res, next) => {
     if (req.nextPage) {
       res.redirect(`/get-involved/add-new-component/${req.nextPage}`)
@@ -172,6 +174,7 @@ router.post(
   isValidComponentFormPage,
   setNextPage,
   canSkipQuestion,
+  getBackLink,
   validateFormData,
   saveSession,
   (req, res, next) => {

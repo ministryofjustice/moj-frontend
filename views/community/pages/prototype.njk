@@ -21,15 +21,22 @@
     {% endif %}
     <form method="POST" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit new component</span>
-      <h1>Prototype URL and link</h1>
+      <h1>Prototype designs</h1>
+
+      <p>Most teams have a prototype of the product or service they're currently working on. A prototype showing the component is helpful when reviewing new submissions to the design system.</p>
+      <p>Any prototype you share should not contain any personally Identifiable or sensitive information. You should only shared it if you can guarantee it will always be live and available to other users.</p>
+      <p>The prototype link can be from the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro.</p>
+
       {{ govukRadios({
         name: "componentPrototypeUrl",
-        id: "component-prototype-url",
         fieldset: {
+          attributes: {
+            id: "component-prototype-url"
+          },
           legend: {
             text: "Do you have a prototype URL for the component?",
             isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
+            classes: "govuk-fieldset__legend--m"
           }
         },
         items: [
