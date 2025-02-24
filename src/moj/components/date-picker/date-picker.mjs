@@ -1,16 +1,4 @@
 /**
- * Date picker config
- *
- * @typedef {object} DatePickerConfig
- * @property {string} [excludedDates] - Dates that cannot be selected
- * @property {string} [excludedDays] - Days that cannot be selected
- * @property {boolean} [leadingZeroes] - Whether to add leading zeroes when populating the field
- * @property {string} [minDate] - The earliest available date
- * @property {string} [maxDate] - The latest available date
- * @property {string} [weekStartDay] - First day of the week in calendar view
- */
-
-/**
  * @param {HTMLElement} $module - HTML element
  * @param {DatePickerConfig} config - config object
  * @class
@@ -947,3 +935,15 @@ DSCalendarDay.prototype.keyPress = function (event) {
     event.stopPropagation()
   }
 }
+
+/**
+ * Date picker config
+ *
+ * @typedef {object} DatePickerConfig
+ * @property {string} [excludedDates] - Dates that cannot be selected
+ * @property {string} [excludedDays] - Days that cannot be selected
+ * @property {boolean} [leadingZeroes] - Whether to add leading zeroes when populating the field
+ * @property {string} [minDate] - The earliest available date
+ * @property {string} [maxDate] - The latest available date
+ * @property {string} [weekStartDay] - First day of the week in calendar view
+ */
