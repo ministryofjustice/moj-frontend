@@ -81,7 +81,7 @@ The error alert shows the user that something has gone wrong. It pauses the user
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-visually-hidden">Warning</span>
-    Do not use the error alert for validation errors. Continue to use the [GOV.UK error message](https://design-system.service.gov.uk/components/error-message/) for this.
+    Do not use the error alert for validation errors. Continue to use the <a href="https://design-system.service.gov.uk/components/error-message/">GOV.UK error message for this<a/>.
   </strong>
 </div>
 
@@ -162,7 +162,7 @@ The alert can stay on the page (be persistent) or be dismissed by the user. Dism
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-visually-hidden">Warning</span>
-    Do not make the alert auto-dismiss, for example disappear after a few seconds or when the user interacts with the page. This is not accessible.
+    Do not set up the alert to auto-dismiss, for example to disappear after a few seconds or when the user interacts with the page. This is not accessible.
   </strong>
 </div>
 
