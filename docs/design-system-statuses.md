@@ -10,7 +10,7 @@ eleventyNavigation:
 
 Every building block on the MoJ Design System has 1 of 4 statuses. This is to help you know how to use them. The statuses are:
 
-- Experimental 
+- Experimental
 - To be reviewed
 - Official
 - Archived

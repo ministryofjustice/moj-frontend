@@ -7,6 +7,7 @@ permalink: content-standards/style-guide-updates/
 # order: 20
 # excerpt: "Log of updates to the MoJ style guide."
 ---
+
 <p>New and updated entries in the MoJ content style guide.</p>
 
 <table class="govuk-table" data-module="moj-sortable-table">
@@ -40,5 +41,6 @@ permalink: content-standards/style-guide-updates/
       <td class="govuk-table__cell">Category can be shortened to 'Cat' if space is limited, for example in alert flags on the prisoner profile.</td>
       <td class="govuk-table__cell" data-sort-value="20250221">21 February 2025</td>
     </tr>
+
   </tbody>
 </table>
