@@ -1,4 +1,4 @@
-{% from "macros/nav-list-item.njk" import verticalNavListItem %}
+{% from "macros/nav-list-item/macro.njk" import navListItem -%}
 
 {% set buildingPages = collections.all | eleventyNavigation("Building blocks") %}
 {% set standardsPages = collections.all | eleventyNavigation("Standards and principles") %}
@@ -9,7 +9,7 @@
     <h2 class="app-vertical-nav__header" id="building-nav-title">Building blocks</h2>
     <ul class="app-vertical-nav__list">
         {%- for entry in buildingPages %}
-            {{ verticalNavListItem({
+            {{ navListItem({
                 item: entry,
                 sortChildrenBy: "key",
                 page: page,
@@ -25,7 +25,7 @@
     <h2 class="app-vertical-nav__header" id="standards-nav-title">Standards and principles</h2>
     <ul class="app-vertical-nav__list">
         {%- for entry in standardsPages %}
-            {{ verticalNavListItem({
+            {{ navListItem({
                 item: entry,
                 page: page,
                 parent: eleventyNavigation.parent
@@ -40,7 +40,7 @@
     <h2 class="app-vertical-nav__header" id="using-nav-title">Using the design system</h2>
     <ul class="app-vertical-nav__list">
         {%- for entry in usingPages %}
-            {{ verticalNavListItem({
+            {{ navListItem({
                 item: entry,
                 page: page,
                 parent: eleventyNavigation.parent
