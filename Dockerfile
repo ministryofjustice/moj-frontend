@@ -69,10 +69,27 @@ EXPOSE 3000
 COPY docker/nginx-production.conf /etc/nginx/conf.d/default.conf
 COPY --from=production-build /app/public /usr/share/nginx/html
 
+FROM base AS staging-express-app
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
+COPY src src
+COPY app.js app.js
+COPY config.js config.js
+COPY helpers helpers
+COPY schema schema
+COPY middleware middleware
+COPY routes routes
+COPY views views
+COPY --from=staging-build /app/public public
+# run express app as a non root user
+RUN useradd -u 1001 -m nonrootuser
+USER 1001
+EXPOSE 3001
+CMD ["node", "app.js"]
+
 FROM base AS preview-express-app
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
-
 COPY src src
 COPY app.js app.js
 COPY config.js config.js
@@ -82,10 +99,26 @@ COPY middleware middleware
 COPY routes routes
 COPY views views
 COPY --from=preview-build /app/public public
-
 # run express app as a non root user
 RUN useradd -u 1001 -m nonrootuser
 USER 1001
+EXPOSE 3001
+CMD ["node", "app.js"]
 
+FROM base AS production-express-app
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
+COPY src src
+COPY app.js app.js
+COPY config.js config.js
+COPY helpers helpers
+COPY schema schema
+COPY middleware middleware
+COPY routes routes
+COPY views views
+COPY --from=production-build /app/public public
+# run express app as a non root user
+RUN useradd -u 1001 -m nonrootuser
+USER 1001
 EXPOSE 3001
 CMD ["node", "app.js"]
