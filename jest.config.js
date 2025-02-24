@@ -1,4 +1,10 @@
 module.exports = {
+  modulePathIgnorePatterns: [
+    '<rootDir>/dist/',
+    '<rootDir>/package/',
+    '<rootDir>/public/'
+  ],
+
   setupFilesAfterEnv: ['./jest.setup.js', 'jest-sinon'],
   testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/**/*.spec.{js,mjs}'],
