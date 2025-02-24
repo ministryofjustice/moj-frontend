@@ -148,3 +148,18 @@ export {
   SearchToggle,
   SortableTable
 }
+
+/**
+ * Schema for component config
+ *
+ * @typedef {object} Schema
+ * @property {{ [field: string]: SchemaProperty | undefined }} properties - Schema properties
+ */
+
+/**
+ * Schema property for component config
+ *
+ * @typedef {object} SchemaProperty
+ * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
+ */
+
