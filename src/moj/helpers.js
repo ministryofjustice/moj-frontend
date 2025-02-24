@@ -61,9 +61,10 @@ MOJFrontend.nodeListForEach = function (nodes, callback) {
  * @param {HTMLElement} element - Element to find siblings for
  * @param {string} selector - selector for required sibling
  */
-MOJFrontend.getNextSibling = function (element, selector) {
+MOJFrontend.getNextSibling = function ($element, selector) {
+  if (!$element) return
   // Get the next sibling element
-  let $sibling = element.nextElementSibling
+  let $sibling = $element.nextElementSibling
 
   // If there's no selector, return the first sibling
   if (!selector) return $sibling
@@ -85,9 +86,10 @@ MOJFrontend.getNextSibling = function (element, selector) {
  * @param {HTMLElement} element - Element to find siblings for
  * @param {string} selector - selector for required sibling
  */
-MOJFrontend.getPreviousSibling = function (element, selector) {
+MOJFrontend.getPreviousSibling = function ($element, selector) {
+  if (!$element) return
   // Get the previous sibling element
-  let $sibling = element.previousElementSibling
+  let $sibling = $element.previousElementSibling
 
   // If there's no selector, return the first sibling
   if (!selector) return $sibling
@@ -102,8 +104,8 @@ MOJFrontend.getPreviousSibling = function (element, selector) {
 
 MOJFrontend.findNearestMatchingElement = function ($element, selector) {
   // If no element or selector is provided, return null
-  if (!$element) return null
-  if (!selector) return null
+  if (!$element) return
+  if (!selector) return
 
   // Start with the current element
   let $currentElement = $element
@@ -127,9 +129,6 @@ MOJFrontend.findNearestMatchingElement = function ($element, selector) {
     // If no match found in siblings, move up to parent
     $currentElement = $currentElement.parentElement
   }
-
-  // Return null if no match is found
-  return null
 }
 
 /**
