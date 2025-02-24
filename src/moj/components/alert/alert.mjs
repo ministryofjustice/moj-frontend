@@ -5,14 +5,6 @@ import {
 } from '../../helpers.mjs'
 
 /**
- * @typedef {object} AlertConfig
- * @property {boolean} [dismissible=false] - Can the alert be dismissed by the user
- * @property {string} [dismissText=Dismiss] - the label text for the dismiss button
- * @property {boolean} [disableAutoFocus=false] - whether the alert will be autofocused
- * @property {string} [focusOnDismissSelector] - CSS Selector for element to be focused on dismiss
- */
-
-/**
  * @param {HTMLElement} $module - the Alert element
  * @param {AlertConfig} config - configuration options
  * @class
@@ -237,3 +229,11 @@ Alert.prototype.mergeConfigs = function (...configObjects) {
 
   return formattedConfigObject
 }
+
+/**
+ * @typedef {object} AlertConfig
+ * @property {boolean} [dismissible=false] - Can the alert be dismissed by the user
+ * @property {string} [dismissText=Dismiss] - the label text for the dismiss button
+ * @property {boolean} [disableAutoFocus=false] - whether the alert will be autofocused
+ * @property {string} [focusOnDismissSelector] - CSS Selector for element to be focused on dismiss
+ */
