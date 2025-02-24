@@ -1,5 +1,6 @@
 const { mkdir, writeFile } = require('fs/promises')
-const { dirname, join, parse } = require('path')
+const { dirname, join, parse, relative } = require('path')
+const { fileURLToPath } = require('url')
 
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
@@ -33,6 +34,13 @@ function compileStyles(assetPath, { srcPath, destPath, output = {} }) {
       sourceMap: true,
       sourceMapIncludeSources: true
     })
+
+    // Make source file:// paths relative
+    if (sourceMap?.sources) {
+      sourceMap.sources = sourceMap.sources.map((path) =>
+        path.startsWith('file:') ? relative(from, fileURLToPath(path)) : path
+      )
+    }
 
     // Apply PostCSS transforms (e.g. vendor prefixes)
     const processor = postcss([autoprefixer(), cssnano()])
