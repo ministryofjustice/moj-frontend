@@ -1,9 +1,9 @@
 .app-status-tag {
   display: inline-block;
-  vertical-align: super;
   margin-left: govuk-spacing(2);
+  vertical-align: super;
 }
 
-p.app-status-message {
+.app-status-message {
   color: $govuk-secondary-text-colour;
 }
