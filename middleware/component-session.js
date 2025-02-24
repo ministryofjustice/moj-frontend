@@ -3,10 +3,6 @@ const getHiddenFields = require('../helpers/hidden-fields')
 const extractBody = require('../helpers/extract-body')
 const previousPage = require('../helpers/previous-page')
 
-const {
-  COMPONENT_FORM_PAGES
-} = require('../config')
-
 const maxAddAnother = 10
 
 const camelToKebab = (str) =>
@@ -73,7 +69,7 @@ const validateFormData = (req, res, next) => {
       formErrors,
       errorList,
       addAnother: req?.params?.subpage || 1,
-      showAddAnother: !!req?.body?.addAnother,// todo !!req?.params?.subpage,
+      showAddAnother: !!req?.body?.addAnother,
       skipQuestion: req?.skipQuestion || false,
       hiddenFields: getHiddenFields(req)
     })
