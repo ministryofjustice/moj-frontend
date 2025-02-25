@@ -20,20 +20,21 @@ Arguments to be passed:
       {%- endif %}.
     {%- endset %}
 
+    {% set typeSingular = type -%}
+    {% set typePlural = type + "s" -%}
+
     {% set linkText -%}
-      {{ statusData.link
-        | replace('Components', type | capitalize + 's')
-        | replace('components', type | lower + 's')
-        | replace('Component', type | capitalize)
-        | replace('component', type | lower) }}
+      {{ statusData.link | renderString({
+        types: typePlural,
+        type: typeSingular
+      }) | upperFirst }}
     {%- endset %}
 
     {% set linkHtml -%}
-      {{ statusData.linkContent
-        | replace('Components', type | capitalize + 's')
-        | replace('components', type | lower + 's')
-        | replace('Component', type | capitalize)
-        | replace('component', type | lower) }}
+      {{ statusData.linkContent | renderString({
+        types: typePlural,
+        type: typeSingular
+      }) | upperFirst }}
       <a href="/design-system-statuses">Read about all the Design System statuses</a>.
     {%- endset %}
 
