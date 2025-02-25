@@ -25,7 +25,7 @@ const upload = multer({ storage: multer.memoryStorage() })
 const router = express.Router()
 const checkYourAnswers = require('../helpers/check-your-answers')
 const sessionData = require('../helpers/mockSessionData/sessionData.js')
-const { toTitleCase } = require('../helpers/text-helper')
+const { urlToTitleCase } = require('../helpers/text-helper')
 
 const isValidComponentFormPage = (req, res, next) => {
   if (!Object.keys(COMPONENT_FORM_PAGES).includes(req.params.page)) {
@@ -107,7 +107,7 @@ router.get(
   getFormSummaryListForRemove,
   (req, res) => {
     const summary = req?.removeSummaryRows
-    const type = toTitleCase(req?.params?.page || '')
+    const type = urlToTitleCase(req?.params?.page || '')
 
     if(!req?.params?.page || !summary) {
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`)

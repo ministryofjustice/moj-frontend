@@ -15,10 +15,10 @@ const formatLabel = (field) => {
     .trim()
 }
 
-const toTitleCase = (str) => {
+const urlToTitleCase = (str) => {
   return str
     .toLowerCase()
-    .split(' ')
+    .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
 }
@@ -26,5 +26,5 @@ const toTitleCase = (str) => {
 module.exports = {
   toCamelCaseWithRows,
   formatLabel,
-  toTitleCase
+  urlToTitleCase
 }
