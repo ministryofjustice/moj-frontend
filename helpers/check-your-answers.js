@@ -1,5 +1,7 @@
 const { toCamelCaseWithRows, formatLabel } = require('./text-helper')
 const sanitizeHtml = require('sanitize-html')
+const { MAX_ADD_ANOTHER: maxAddAnother } = require('../config')
+
 
 const hrefRoot = '/get-involved/add-new-component'
 const maxWords = 10
@@ -37,14 +39,12 @@ const answersFromSession = (forms, canRemove, session) => {
   return forms.reduce((acc, form) => {
     if (Array.isArray(form)) {
       const topLevelKey = toCamelCaseWithRows(form[0])
-      const canRemoveTopLevel = canRemove.includes(form[0])
       acc[topLevelKey] = form.flatMap((field) =>
-        extractFieldData(field, session, canRemoveTopLevel)
+        extractFieldData(field, session, canRemove)
       )
     } else {
       const key = toCamelCaseWithRows(form)
-      const canRemoveKey = canRemove.includes(form)
-      acc[key] = extractFieldData(form, session, canRemoveKey)
+      acc[key] = extractFieldData(form, session, canRemove)
     }
     return acc
   }, {})
@@ -70,7 +70,7 @@ const shareYourDetailsValueReplacement = (value) => {
   )
 }
 
-const extractFieldData = (field, session, canRemove = false) => {
+const extractFieldData = (field, session, canRemove = []) => {
   const fieldName = field
   const fieldPath = `/${field}`
 
@@ -106,7 +106,7 @@ const extractFieldData = (field, session, canRemove = false) => {
               formatLabel(fieldName) + ' - ' + formatLabel(subKey)
         })
 
-        if(canRemove) {
+        if(canRemove.includes(key)) {
           actionItems.push({
             href: `${hrefRoot}/remove${key}`,
             text: 'Remove',
@@ -133,7 +133,7 @@ const extractFieldData = (field, session, canRemove = false) => {
         visuallyHiddenText: formatLabel(fieldName)
       })
 
-      if(canRemove) {
+      if(canRemove.includes(key)) {
         actionItems.push({
           href: `${hrefRoot}/remove${key}`,
           text: 'Remove',
@@ -164,11 +164,21 @@ const checkYourAnswers = (session) => {
     ['component-code', 'component-code-details'],
     'your-details'
   ]
+  const canRemoveStatic = [
+    '/component-image',
+    '/accessibility-findings',
+    '/prototype-url',
+    '/component-code-details'
+  ]
+  const canRemoveMultiples = [
+    '/prototype-url',
+    '/component-code-details'
+  ]
   const canRemove = [
-    'component-image',
-    'accessibility-findings',
-    'prototype',
-    'component-code'
+    ...canRemoveStatic,
+    ...canRemoveMultiples.flatMap(item =>
+        Array.from({ length: maxAddAnother }, (_, i) => `${item}/${i + 1}`)
+    )
   ]
   return answersFromSession(forms, canRemove, session)
 }

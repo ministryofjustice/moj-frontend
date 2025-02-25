@@ -3,8 +3,7 @@ const getHiddenFields = require('../helpers/hidden-fields')
 const extractBody = require('../helpers/extract-body')
 const previousPage = require('../helpers/previous-page')
 const { formatLabel } = require('../helpers/text-helper')
-
-const maxAddAnother = 10
+const { MAX_ADD_ANOTHER: maxAddAnother } = require('../config')
 
 const camelToKebab = (str) =>
   str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()

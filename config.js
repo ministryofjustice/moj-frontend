@@ -100,7 +100,8 @@ const config = {
       }
     }
   },
-  ADD_NEW_COMPONENT_ROUTE: '/get-involved/add-new-component'
+  ADD_NEW_COMPONENT_ROUTE: '/get-involved/add-new-component',
+  MAX_ADD_ANOTHER: 10
 }
 
 module.exports = config
