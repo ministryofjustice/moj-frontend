@@ -43,7 +43,8 @@
           {{ govukButton({
             text: "Skip question",
             classes: "govuk-button--secondary",
-            attributes: {'data-skip-question': skipQuestion}
+            attributes: {'data-skip-question': skipQuestion},
+            href: skipQuestion
           }) }}
         {% endif %}
     </form>
