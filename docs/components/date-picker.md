@@ -13,10 +13,6 @@ eleventyNavigation:
 
 <span class="govuk-caption-xl">The date picker component enables users to select a date from a calendar. </span>
 
-{% tabs "Contents" %}
-
-{% tab "Overview" %}
-
 {% example "/examples/date-picker", 590 %}
 
 ## Overview
@@ -49,10 +45,6 @@ Date pickers are fully navigable using a keyboard, but can be slow for keyboard-
 
 There's also the ['Ask users for dates' pattern in the GOV.UK Design System](https://design-system.service.gov.uk/patterns/dates/).
 
-{% endtab %}
-
-{% tab "Accessibility issues" %}
-
 ## Accessibility issues
 
 There’s an accessibility issue with the date picker component. If you’re using it in your service you need to add these issue details to your accessibility statement.
@@ -60,10 +52,6 @@ There’s an accessibility issue with the date picker component. If you’re usi
 ### No focus indicator shown when navigating between dates (NVDA only)
 
 When people use the screen reader software NVDA, no focus indicator is displayed when they navigate between dates. This only happens with NVDA software. This fails [WCAG 2.2 success criterion 2.4.7 (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible). We’re aware of this issue and plan to implement a fix by April 2025.
-
-{% endtab %}
-
-{% tab "How to use" %}
 
 ## How to use
 
@@ -128,10 +116,6 @@ Follow the [GOV.UK Design System guidance on error messages](https://design-syst
 
 If you're using more than one date picker, give each text field its own error summary and message (even if the error is the same).
 
-{% endtab %}
-
-{% tab "Examples" %}
-
 ## Examples
 
 ### Filtering information with a date picker
@@ -141,9 +125,5 @@ If you're using more than one date picker, give each text field its own error su
 ### Asking a question with a date picker
 
 <p><img src="{{ 'assets/images/date-picker-question-example-2024.png' | rev | url }}" alt="A screenshot with the title 'What date do you want to view appointments for?' Underneath is the title 'Date' and then a text input field with the calendar icon. Underneath that is a green 'Continue' button."></p>
-
-{% endtab %}
-
-{% endtabs %}
 
 <hr />

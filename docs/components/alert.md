@@ -13,10 +13,6 @@ eleventyNavigation:
 
 <span class="govuk-caption-xl">The alert component uses visual design to display a notification to users. It has a range of use cases.</span>
 
-{% tabs "Contents" %}
-
-{% tab "Overview" %}
-
 {% example "/examples/alert" %}
 
 ## Overview
@@ -133,10 +129,6 @@ This alert pauses the user with a prominent message. This prioritisation should 
 
 An alert needs a title, which does not need to be displayed as a heading. The title gives each alert a unique label and helps screenreaders to identify the alert. It does not have to be read out.
 
-{% endtab %}
-
-{% tab "How to use" %}
-
 ## How to use
 
 The alert works best when it contains a single, succinct message.
@@ -218,10 +210,6 @@ An alert should not be placed on a coloured background because:
 - the colour contrast between the border and page may not be accessible
 - the background may distract from the border colour and change the emphasis of the message
 
-{% endtab %}
-
-{% tab "Examples" %}
-
 ## Examples
 
 ### Alerts in a case management system
@@ -235,9 +223,5 @@ An error and success alert under an H1 shows a user that one of their tasks fail
 Alerts positioned inline with other content help people to understand what the message relates to. In this example the heading level of the alert component should be changed to H3 as it appears within an H2 heading.
 
 <p><img src="{{ 'assets/images/alert-example-contextual.png' | rev | url }}" alt="A warning alert with heading level 3 is shown beneath a heading level 2 on an MoJ webpage to highlight the importance of maintaining heading structure.'"></p>
-
-{% endtab %}
-
-{% endtabs %}
 
 <hr />
