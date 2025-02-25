@@ -362,7 +362,7 @@ An identity number assigned to a person in the Police National Computer (PNC). U
 
 Individual prison names can be used for clarity, for example ‘HMP Wayland’.
 
-‘Establishment’ is used to collectively describe a mixture of prisons, young offender institutions (YOIs), dual-prison-YOIs, and Secure Training Centres (STCs). ‘Prison’ is inappropriate when describing settings accommodating children and young adults.
+‘Establishment’ is used to collectively describe a mixture of prisons, young offender institutions (YOIs), dual-designated prisons and YOIs, and Secure Training Centres (STCs). ‘Prison’ is inappropriate when describing settings accommodating children and young adults.
 
 ‘Establishment’ is widely used in NOMIS and DPS, with no reported issues.
 
