@@ -188,7 +188,8 @@ Research with prison staff has shown that empty states help reassure users that 
 In the DPS prisoner profile, the 'aliases' field was conditionally hidden if no aliases had been entered. Users said that they thought the page might be broken or just not showing the information from NOMIS.
 
 ### establishment
-See [prison, establishment](#prison,-establishment).
+
+See [prison, establishment](#prison%2C-establishment).
 
 ### establishment roll, roll
 
