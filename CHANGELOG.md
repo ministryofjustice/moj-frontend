@@ -1,3 +1,10 @@
+# [3.5.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.4.0...v3.5.0) (2025-02-25)
+
+
+### Features
+
+* migrate to bundled modules using Rollup ([#1149](https://github.com/ministryofjustice/moj-frontend/issues/1149)) ([411e8a3](https://github.com/ministryofjustice/moj-frontend/commit/411e8a3e6f3a32b8ecdb51c995ad1f3ec6b111a8))
+
 # [3.4.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.3.1...v3.4.0) (2025-02-24)
 
 
