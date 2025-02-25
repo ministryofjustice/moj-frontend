@@ -48,7 +48,11 @@ permalink: content-standards/style-guide-updates/
       <td class="govuk-table__cell">
         <span class="govuk-tag govuk-tag--green">New</span>
       </td>
-      <td class="govuk-table__cell">A new entry on how to use the terms ‘prison‘ and ‘establishment‘. It includes guidance on how to refer to adult prisons, young offender institutions (YOIs) and other establishments. It also outlines which terms are more likely be understood by the public and users with English as a second language.</td>
+      <td class="govuk-table__cell">A new entry on how to use the terms ‘prison‘ and ‘establishment‘.
+
+      It includes guidance on how to refer to adult prisons, young offender institutions (YOIs) and other establishments.
+
+      It also outlines which terms are more likely be understood by the public and users with English as a second language.</td>
       <td class="govuk-table__cell" data-sort-value="20250225">25 February 2025</td>
     </tr>
   </tbody>
