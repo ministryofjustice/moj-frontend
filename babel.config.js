@@ -1,3 +1,9 @@
 module.exports = {
-  presets: ['@babel/preset-env']
+  browserslistEnv: 'javascripts',
+  presets: ['@babel/preset-env'],
+  env: {
+    test: {
+      browserslistEnv: 'node'
+    }
+  }
 }
