@@ -1,9 +1,19 @@
 .app-status-tag {
   display: inline-block;
-  vertical-align: super;
   margin-left: govuk-spacing(2);
+  vertical-align: super;
+
+  // A specific selector to override .app-prose-scope
+  .app-prose-scope & {
+    font-weight: $govuk-font-weight-regular;
+  }
 }
 
-p.app-status-message {
-  color: $govuk-secondary-text-colour;
+.app-status-message {
+  &,
+
+  // A specific selector to override .app-prose-scope
+  .app-prose-scope & {
+    color: $govuk-secondary-text-colour;
+  }
 }

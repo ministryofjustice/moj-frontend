@@ -1,12 +1,14 @@
 {% extends "./base.njk" %}
 
+{% from "macros/heading/macro.njk" import heading %}
+
 {% block content %}
     <div class="app-layout__content">
-        <h1 class="govuk-heading-xl">
-          {% if not isIndex %}<span class="govuk-caption-xl">Components</span>{% endif %}
-          {{ title }}
-        </h1>
-        
+        {{ heading({
+          text: title,
+          caption: "Components" if not isIndex
+        }) }}
+
         {{ content | safe }}
 
         {% include "./partials/get-help-and-contribute.njk" %}

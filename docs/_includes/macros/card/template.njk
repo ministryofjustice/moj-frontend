@@ -1,0 +1,56 @@
+{% from "macros/heading/macro.njk" import heading %}
+
+<!--
+Arguments to be passed:
+- layout: {string} "side-by-side", "full", "image-content".
+- reverse: {boolean} Reverse the layout of image-content variant, so image shows either left or right of content.
+- imageLink: {string} absolute path of image location. For example assets/images/... 
+- imageClass: {string} additional css class to be applied if needed
+- imageAlt: {string} alt text for image, if empty the images will be treated as decorative for screen readers 
+- imageLinkLarge: {string} absolute path for larger image location for x2 display. For example assets/images/... 
+-->
+
+{% if params.layout == "side-by-side" or params.layout == "full" %}
+    <article class="app-card {{ 'govuk-grid-column-full app-card__full' if params.layout == 'full' else 'govuk-grid-column-one-half-from-desktop' }}">
+            {% if params.imageLink %}
+                <img loading="lazy" class="app-card__image govuk-!-margin-bottom-4{% if params.imageClass %} {{ params.imageClass }}{% endif %}" 
+                     alt="{{ params.imageAlt | default('') }}" 
+                     src="{{ params.imageLink }}"
+                     srcset="{{ params.imageLinkLarge }} 2x"  
+                     {% if not params.imageAlt %}aria-hidden="true"{% endif %}
+                     />
+            {% endif %}
+            {{ heading({
+            text:  params.title,
+            level: "3",
+            classes: "govuk-heading-m"
+            }) }}
+            <div class="govuk-body govuk-!-margin-bottom-0">
+                {{ caller() }}
+            </div>
+    </article>
+{% elif params.layout == "image-content" %}
+    <article class="app-card{% if params.reverse %}app-card--reverse{% endif %}">
+        {% if params.imageLink %}
+        <div class="govuk-grid-column-one-half-from-desktop">
+                <img loading="lazy" class="app-card__image govuk-!-margin-bottom-4{% if params.imageClass %} {{ params.imageClass }}{% endif %}" 
+                     alt="{{ params.imageAlt | default('') }}" 
+                     src="{{ params.imageLink }}" 
+                     srcset="{{ params.imageLinkLarge }} 2x"
+                     {% if not params.imageAlt %}aria-hidden="true"{% endif %}
+                     />
+        </div>
+        <div class="govuk-grid-column-one-half-from-desktop">
+                 {{ heading({
+            text:  params.title,
+            level: "3",
+            classes: "govuk-heading-m"
+            }) }}
+                <div class="govuk-body govuk-!-margin-bottom-0">
+                    {{ caller() }}
+                </div>
+        </div>
+         {% endif %}
+    </article>
+{% endif %}
+

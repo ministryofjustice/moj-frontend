@@ -1,4 +1,5 @@
 name: Deploy a tagged PR for preview
+
 on:
   pull_request:
     types: [opened, reopened, synchronize, labeled]

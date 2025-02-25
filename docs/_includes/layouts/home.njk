@@ -1,12 +1,19 @@
 {% extends "./base.njk" %}
-{% from "./macros/card.njk" import card %}
+
+{% from "macros/card/macro.njk" import card %}
+{% from "macros/heading/macro.njk" import heading %}
 
 {% block title %}MoJ Design System{% endblock %}
 
 {% block content %}
+
   <div class="app-masthead">
     <div class="app-layout__content">
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">{{ title }}</h1>
+     {{ heading({
+      text: title,
+      level: "1",
+      classes: "govuk-!-margin-bottom-4"
+    }) }}
       <p class="govuk-body">
         Use the MoJ Design System alongside the
         <a class="govuk-link govuk-link--inverse" href="https://design-system.service.gov.uk/">
@@ -21,7 +28,11 @@
 
   <div class="app-layout__content">
     <section>
-      <h2 class="govuk-heading-l govuk-!-margin-bottom-7">About the Design System</h2>
+       {{ heading({
+            text:  "About the Design System",
+            level: "2",
+            classes: "govuk-heading-l govuk-!-margin-bottom-7"
+            }) }}
       <div class="govuk-grid-row">
         {% call card({
           "layout": "side-by-side",
@@ -47,10 +58,13 @@
       </div>
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
     </section>
-
-    {% if community %}
+     {% if community %}
     <section>
-      <h2 class="govuk-heading-l govuk-!-margin-bottom-7">Get involved in helping the Design System grow</h2>
+       {{ heading({
+            text:  "Get involved in helping the Design System grow",
+            level: "2",
+            classes: "govuk-heading-l govuk-!-margin-bottom-7"
+            }) }}
       <div class="govuk-grid-row">
         {% call card({
           "layout": "image-content",
@@ -73,7 +87,11 @@
     {% endif %}
 
     <section>
-      <h2 class="govuk-heading-l govuk-!-margin-bottom-7">Prototyping at MoJ</h2>
+      {{ heading({
+            text:  "Prototyping at MoJ",
+            level: "2",
+            classes: "govuk-heading-l govuk-!-margin-bottom-7"
+            }) }}
       <div class="govuk-grid-row">
         {% call card({ "layout": "full", "title": "How to choose the right prototyping tool" }) %}
           <p>
@@ -101,7 +119,11 @@
     </section>
 
     <section>
-      <h2 class="govuk-heading-l govuk-!-margin-bottom-7">Getting set up for production</h2>
+      {{ heading({
+            text:  "Getting set up for production",
+            level: "2",
+            classes: "govuk-heading-l govuk-!-margin-bottom-7"
+            }) }}
       <div class="govuk-grid-row">
         {% call card({ "layout": "side-by-side", "title": "Install MoJ Frontend" }) %}
           <p>

@@ -1,0 +1,48 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+<!--
+Arguments to be passed:
+- type: {string} Variable from layout. Example values: "component", "page", "pattern", "archive".
+- status: {string} Status of the item. Accepted values: "Official", "To be reviewed", "Experimental", "Archived".
+- statusData: {object} Status data object (by status) from `_data/statusInfo.json` file.
+- statusDate: {string} Date of creation (e.g., "Oct 2025").
+- creatorName: {string} Name of the creator (e.g., "John Doe").
+- creatorTeam: {string} Team responsible for the item (e.g., "MoJ").
+-->
+
+{% set statusAttribution -%}
+  {%- if status == "Experimental" %}
+    by {{ creatorName | default("someone") }} in {{ creatorTeam | default("the community") }}
+  {%- endif %}
+  {%- if statusDate %}
+    in {{ statusDate }}
+  {%- endif %}.
+{%- endset %}
+
+{% set typeSingular = type -%}
+{% set typePlural = type + "s" -%}
+
+{% set linkText -%}
+  {{ statusData.link | renderString({
+    types: typePlural,
+    type: typeSingular
+  }) | upperFirst }}
+{%- endset %}
+
+{% set linkHtml -%}
+  {{ statusData.linkContent | renderString({
+    types: typePlural,
+    type: typeSingular
+  }) | upperFirst }}
+  <a href="/design-system-statuses">Read about all the Design System statuses</a>.
+{%- endset %}
+
+<p class="app-status-message govuk-!-margin-bottom-2">
+  {{ statusData.statusMessage }} {{ statusAttribution }}
+</p>
+
+{{ govukDetails({
+  summaryText: linkText,
+  html: linkHtml,
+  classes: "govuk-!-margin-bottom-8"
+}) }}

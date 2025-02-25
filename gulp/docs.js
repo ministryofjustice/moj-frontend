@@ -1,9 +1,7 @@
 const gulp = require('gulp')
-const gulpEsbuild = require('gulp-esbuild')
-const gulpSass = require('gulp-sass')
-const dartSass = require('sass-embedded')
 
-const sass = gulpSass(dartSass)
+const { compileScripts } = require('./tasks/scripts')
+const { compileStyles } = require('./tasks/styles')
 
 gulp.task('docs:clean', async (done) => {
   const { deleteSync } = await import('del')
@@ -44,35 +42,33 @@ gulp.task(
 )
 
 // Compile the docs site stylesheet
-gulp.task('docs:styles', (done) => {
-  return gulp
-    .src('docs/assets/stylesheets/*.scss')
-    .pipe(
-      sass({
-        loadPaths: ['./'],
-        quietDeps: true,
-        silenceDeprecations: ['import'],
-        style: process.env.ENV === 'dev' ? 'expanded' : 'compressed'
-      }).on('error', done)
-    )
-    .pipe(gulp.dest('public/assets/stylesheets/'))
-})
+gulp.task(
+  'docs:styles',
+  gulp.parallel(
+    compileStyles('application.scss', {
+      srcPath: 'docs/assets/stylesheets',
+      destPath: 'public/assets/stylesheets'
+    }),
+    compileStyles('govuk-frontend.scss', {
+      srcPath: 'docs/assets/stylesheets',
+      destPath: 'public/assets/stylesheets'
+    }),
+    compileStyles('moj-frontend.scss', {
+      srcPath: 'docs/assets/stylesheets',
+      destPath: 'public/assets/stylesheets'
+    })
+  )
+)
 
 // Bundle the docs site javascript
-gulp.task('docs:scripts', (done) => {
-  return gulp
-    .src('docs/assets/javascript/application.mjs')
-    .pipe(
-      gulpEsbuild({
-        bundle: true,
-        loader: { '.mjs': 'js' },
-        minify: process.env.ENV !== 'dev',
-        outfile: 'application.js',
-        target: 'es6'
-      }).on('error', done)
-    )
-    .pipe(gulp.dest('public/assets/javascript'))
-})
+gulp.task(
+  'docs:scripts',
+  compileScripts('application.mjs', {
+    srcPath: 'docs/assets/javascript',
+    destPath: 'public/assets/javascript',
+    output: { compact: true }
+  })
+)
 
 gulp.task('docs:revision', async () => {
   const { default: rev } = await import('gulp-rev')

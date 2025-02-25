@@ -11,19 +11,15 @@ eleventyNavigation:
   excerpt: "Use the alert component to display a prominent message and related actions to take."
 ---
 
-<span class="govuk-caption-xl">The alert component uses visual design to display a notification to users. It has a range of use cases.</span>
-
-{% tabs "Contents" %}
-
-{% tab "Overview" %}
+<span class="govuk-caption-xl govuk-!-margin-bottom-9">The alert component uses visual design to display a notification to users. It has a range of use cases.</span>
 
 {% example "/examples/alert" %}
 
 ## Overview
 
-The alert component presents 1 of 4 types of alerts to a user. It can stay on the page or be dismissed by the user.  
+The alert component presents 1 of 4 types of alerts to a user. It can stay on the page or be dismissed by the user.
 
-As a leaner component, it’s ideal for internal services and complex user interfaces (such as dashboards and case management systems).  
+As a leaner component, it’s ideal for internal services and complex user interfaces (such as dashboards and case management systems).
 
 There are 4 variants of the alert:
 
@@ -39,13 +35,14 @@ There are 4 variants of the alert:
 The information alert draws a user's attention to something important about a page or service. It has a blue border, and an information icon made up of a blue circle with a white letter 'i'.
 
 #### When to use
+
 Use the information alert sparingly. This makes users more likely to notice and engage with it. If a lot of information alerts are emerging in a service, it might be a sign that a journey needs redesigning.
 
 The information alert can tell a user about:
 
 - unfinished tasks, linking to where to complete them
 - a major change to a service, until it becomes familiar
-- service downtime  
+- service downtime
 
 The information alert can be combined with other alert variants. For linear services, or to display the 'Important' heading, use the <a href="https://design-system.service.gov.uk/components/notification-banner">GOV.UK notification banner component</a>.
 
@@ -57,7 +54,7 @@ Do not want use this component for a serious issue or to prevent something going
 
 {% example "/examples/alert-warning" %}
 
-The warning alert tells users about something to prevent them from making a mistake. Use it sparingly to avoid alert fatigue. It has an orange border, and a warning icon made up of an orange triangle with a white exclamation mark.  
+The warning alert tells users about something to prevent them from making a mistake. Use it sparingly to avoid alert fatigue. It has an orange border, and a warning icon made up of an orange triangle with a white exclamation mark.
 
 #### When to use
 
@@ -132,10 +129,6 @@ This alert pauses the user with a prominent message. This prioritisation should 
 
 An alert needs a title, which does not need to be displayed as a heading. The title gives each alert a unique label and helps screenreaders to identify the alert. It does not have to be read out.
 
-{% endtab %}
-
-{% tab "How to use" %}
-
 ## How to use
 
 The alert works best when it contains a single, succinct message.
@@ -194,7 +187,7 @@ It's OK to present more than 1 alert on a page – they'll stack. When developin
 
 - separating alerts that do not involve anything further for a user do – these can be easily dismissed
 - combining instances of the warning, error and information states to reduce the number of alerts
-- that the 'alert' read out to screenreader users should only be applied to one alert  
+- that the 'alert' read out to screenreader users should only be applied to one alert
 
 ### Where to add it
 
@@ -215,11 +208,7 @@ The alert is accessible on a `govuk-colour("white")` or `govuk-colour("light-gre
 An alert should not be placed on a coloured background because:
 
 - the colour contrast between the border and page may not be accessible
-- the background may distract from the border colour and change the emphasis of the message  
-
-{% endtab %}
-
-{% tab "Examples" %}
+- the background may distract from the border colour and change the emphasis of the message
 
 ## Examples
 
@@ -234,9 +223,5 @@ An error and success alert under an H1 shows a user that one of their tasks fail
 Alerts positioned inline with other content help people to understand what the message relates to. In this example the heading level of the alert component should be changed to H3 as it appears within an H2 heading.
 
 <p><img src="{{ 'assets/images/alert-example-contextual.png' | rev | url }}" alt="A warning alert with heading level 3 is shown beneath a heading level 2 on an MoJ webpage to highlight the importance of maintaining heading structure.'"></p>
-
-{% endtab %}
-
-{% endtabs %}
 
 <hr />
