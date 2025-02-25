@@ -37,30 +37,18 @@ permalink: content-standards/style-guide-updates/
       <td class="govuk-table__cell">
         <span class="govuk-tag govuk-tag--blue">Updated</span>
       </td>
-      <td class="govuk-table__cell">Category can be shortened to 'Cat' if space is limited, for example in alert flags on the prisoner profile.</td>
+      <td class="govuk-table__cell">Category can be shortened to ‘Cat‘ if space is limited, for example in alert flags on the prisoner profile.</td>
       <td class="govuk-table__cell" data-sort-value="20250221">21 February 2025</td>
     </tr>
 
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
-        <a href="/content-standards/style-guide##prison%2C-establishment"><b>Prison, establishment</b></a>
+        <a href="/content-standards/style-guide#prison%2C-establishment"><b>Prison, establishment</b></a>
       </td>
       <td class="govuk-table__cell">
         <span class="govuk-tag govuk-tag--green">New</span>
       </td>
-      <td class="govuk-table__cell">‘Prison’ and ‘establishment’ are both acceptable terms. Which one you should use depends on the context and audience.
-
-      ‘Prison’ refers only to adult prisons. It’s more likely to be understood by the public than ‘establishment’. Users with English as a second language may also find it easier to understand.
-
-      Individual prison names can be used for clarity, for example ‘HMP Wayland’.
-
-      ‘Establishment’ is used to collectively describe a mixture of prisons, young offender institutions (YOIs), dual-prison-YOIs, and Secure Training Centres (STCs). ‘Prison’ is inappropriate when describing settings accommodating children and young adults.
-
-      ‘Establishment’ is widely used in NOMIS and DPS, with no reported issues.
-
-      ‘Location’ may refer to places within the prison, for example, the gym.
-
-      'Site' is sometimes used instead of prison or establishment, or to refer to where someone on probation is located. It might be used to describe places with several prisons or buildings..</td>
+      <td class="govuk-table__cell">A new entry on how to use the terms ‘prison‘ and ‘establishment‘. It includes guidance on how to refer to adult prisons, young offender institutions (YOIs) and other establishments. It also outlines which terms are more likely be understood by the public and users with English as a second language.</td>
       <td class="govuk-table__cell" data-sort-value="20250225">25 February 2025</td>
     </tr>
   </tbody>
