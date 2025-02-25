@@ -3,14 +3,14 @@
 {% from "macros/heading/macro.njk" import heading %}
 
 {% block content %}
-    <div class="app-layout__content">
-        {{ heading({
-          text: title,
-          caption: subsection
-        }) }}
+  <div class="app-layout__content">
+    {{ heading({
+      text: title,
+      caption: subsection
+    }) }}
 
-        {{ content | safe }}
+    {{ content | safe }}
 
     {% include "./partials/get-help.njk" %}
-    </div>
+  </div>
 {% endblock %}

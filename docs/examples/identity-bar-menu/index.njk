@@ -5,29 +5,30 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 ---
 
 {%- from "moj/components/identity-bar/macro.njk" import mojIdentityBar -%}
+
 {{ mojIdentityBar({
-    "title": {
-        "html": "<b>Jane Wolenksy</b> and <b>Simon Wolensky</b>"
-    },
-    "menus": [
+  title: {
+    html: "<b>Jane Wolenksy</b> and <b>Simon Wolensky</b>"
+  },
+  menus: [
+    {
+      items: [
         {
-            "items": [
-                {
-                    "text": "Primary action",
-                    "href": "#"
-                }
-            ]
-        },
-        {
-            "button": {
-                "classes": "govuk-button--secondary"
-            },
-            "items": [
-                {
-                    "text": "Secondary action",
-                    "href": "#"
-                }
-            ]
+          text: "Primary action",
+          href: "#"
         }
-    ]
+      ]
+    },
+    {
+      button: {
+        classes: "govuk-button--secondary"
+      },
+      items: [
+        {
+          text: "Secondary action",
+          href: "#"
+        }
+      ]
+    }
+  ]
 }) }}

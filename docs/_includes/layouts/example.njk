@@ -1,10 +1,13 @@
 {% extends "./base.njk" %}
+
 {% block pageStyles %}
-    <style>{% include (page.inputPath | getStylesPath) ignore missing %}</style>
+  <style>{% include (page.inputPath | getStylesPath) ignore missing %}</style>
 {% endblock %}
+
 {% block body %}
-    <div class="app-example__wrapper govuk-!-margin-6">{{ content | safe }}</div>
+  <div class="app-example__wrapper govuk-!-margin-6">{{ content | safe }}</div>
 {% endblock %}
+
 {% block pageScripts %}
-    <script type="module">{% include (page.inputPath | getScriptPath) ignore missing %}</script>
+  <script type="module">{% include (page.inputPath | getScriptPath) ignore missing %}</script>
 {% endblock %}
