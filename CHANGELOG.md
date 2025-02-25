@@ -1,3 +1,18 @@
+# [3.6.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.5.0...v3.6.0) (2025-02-25)
+
+
+### Bug Fixes
+
+* ignore build output from jest ([7f85d64](https://github.com/ministryofjustice/moj-frontend/commit/7f85d64154c9f174cca1ff44a9c26929a47a6181))
+* ignore test files from gulp watch ([12494a3](https://github.com/ministryofjustice/moj-frontend/commit/12494a3b9e531e9297e538712237fa2400552ffb))
+
+
+### Features
+
+* default to ES module sources ([adab275](https://github.com/ministryofjustice/moj-frontend/commit/adab27543b0afdc3ae33c25d332a139d05789c95))
+* export to ES modules ([8e8787a](https://github.com/ministryofjustice/moj-frontend/commit/8e8787a99aa6e9013a8e24de63e9df8f5cd3dbfd))
+* swap JavaScript minifier from UglifyJS to terser ([a0e165a](https://github.com/ministryofjustice/moj-frontend/commit/a0e165aa5c3e05163f30d7cbec61812c1d61566d))
+
 # [3.5.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.4.0...v3.5.0) (2025-02-25)
 
 
