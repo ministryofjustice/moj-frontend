@@ -14,7 +14,7 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 
     {% if errorSummary.items.length %}
       {{ govukErrorSummary({
-        titleText: 'There is a problem',
+        titleText: "There is a problem",
         errorList: errorSummary.items
       }) }}
     {% endif %}
@@ -26,31 +26,31 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
         {{ govukFileUpload({
           id: "documents",
           name: "documents",
-          classes: 'moj-multi-file-upload__input',
+          classes: "moj-multi-file-upload__input",
           label: {
             text: "Upload a file",
-            classes: 'govuk-label--m'
+            classes: "govuk-label--m"
           },
-          attributes: { multiple: '' },
+          attributes: { multiple: "" },
           errorMessage: errorMessage
         }) }}
 
         {{ govukButton({
-          text: 'Upload file',
-          classes: 'govuk-button--secondary moj-multi-file-upload__button'
+          text: "Upload file",
+          classes: "govuk-button--secondary moj-multi-file-upload__button"
         }) }}
       {% endset %}
 
       {{ mojMultiFileUpload({
         uploadedFiles: {
-          heading: { text: 'Files added' },
+          heading: { text: "Files added" },
           items: uploadedFiles
         },
         uploadHtml: uploadHtml
       }) }}
 
       {{ govukButton({
-        text: 'Continue'
+        text: "Continue"
       }) }}
     </form>
   </div>

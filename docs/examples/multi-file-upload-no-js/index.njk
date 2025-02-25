@@ -18,30 +18,30 @@ title: Multi file upload without JavaScript (example)
         {{ govukFileUpload({
           id: "documents",
           name: "documents",
-          classes: 'moj-multi-file-upload__input',
+          classes: "moj-multi-file-upload__input",
           label: {
             text: "Upload a file",
-            classes: 'govuk-label--m'
+            classes: "govuk-label--m"
           },
-          attributes: { multiple: '' }
+          attributes: { multiple: "" }
         }) }}
 
         {{ govukButton({
-          text: 'Upload file',
-          classes: 'govuk-button--secondary moj-multi-file-upload__button'
+          text: "Upload file",
+          classes: "govuk-button--secondary moj-multi-file-upload__button"
         }) }}
       {% endset %}
 
       {{ mojMultiFileUpload({
         uploadedFiles: {
-          heading: { text: 'Files added' },
+          heading: { text: "Files added" },
           items: []
         },
         uploadHtml: uploadHtml
       }) }}
 
       {{ govukButton({
-        text: 'Continue'
+        text: "Continue"
       }) }}
     </form>
   </div>

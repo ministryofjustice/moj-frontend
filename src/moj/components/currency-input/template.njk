@@ -15,8 +15,8 @@
     for: params.id
   }) | indent(2) | trim }}
 {% if params.hint %}
-  {% set hintId = params.id + '-hint' %}
-  {% set describedBy = describedBy + ' ' + hintId if describedBy else hintId %}
+  {% set hintId = params.id + "-hint" %}
+  {% set describedBy = describedBy + " " + hintId if describedBy else hintId %}
   {{ govukHint({
     id: hintId,
     classes: params.hint.classes,
@@ -26,8 +26,8 @@
   }) | indent(2) | trim }}
 {% endif %}
 {% if params.errorMessage %}
-  {% set errorId = params.id + '-error' %}
-  {% set describedBy = describedBy + ' ' + errorId if describedBy else errorId %}
+  {% set errorId = params.id + "-error" %}
+  {% set describedBy = describedBy + " " + errorId if describedBy else errorId %}
   {{ govukErrorMessage({
     id: errorId,
     classes: params.errorMessage.classes,
@@ -37,13 +37,13 @@
     visuallyHiddenText: params.errorMessage.visuallyHiddenText
   }) | indent(2) | trim }}
 {% endif %}
-  <span class="moj-label__currency {%- if params.errorMessage %} moj-label__currency--error{% endif %} {{- ' ' + params.currencyLabel.classes if params.currencyLabel.classes}}">
-    {{- params.currencyLabel.html if params.currencyLabel.html else params.currencyLabel.text | default('&pound;') | safe -}}
+  <span class="moj-label__currency {%- if params.errorMessage %} moj-label__currency--error{% endif %} {{- " " + params.currencyLabel.classes if params.currencyLabel.classes}}">
+    {{- params.currencyLabel.html if params.currencyLabel.html else params.currencyLabel.text | default("&pound;") | safe -}}
   </span>
-  <input class="govuk-input moj-input__currency {{- ' ' + params.classes if params.classes}} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default('text') }}"
+  <input class="govuk-input moj-input__currency {{- " " + params.classes if params.classes}} {%- if params.errorMessage %} govuk-input--error{% endif %}" id="{{ params.id }}" name="{{ params.name }}" type="{{ params.type | default("text") }}"
   {%- if params.value %} value="{{ params.value }}"{% endif %}
   {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
-  autocomplete="{{ params.autocomplete | default('off') }}"
-  pattern="{{ params.pattern | default('[0-9]*') }}"
+  autocomplete="{{ params.autocomplete | default("off") }}"
+  pattern="{{ params.pattern | default("[0-9]*") }}"
   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor -%}>
 </div>

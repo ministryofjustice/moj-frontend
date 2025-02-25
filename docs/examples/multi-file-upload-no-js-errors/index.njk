@@ -42,33 +42,33 @@ title: Multi file upload without JavaScript with errors (example)
         {{ govukFileUpload({
           id: "documents",
           name: "documents",
-          classes: 'moj-multi-file-upload__input',
+          classes: "moj-multi-file-upload__input",
           label: {
             text: "Upload a file",
-            classes: 'govuk-label--m'
+            classes: "govuk-label--m"
           },
-          attributes: { multiple: '' },
+          attributes: { multiple: "" },
           errorMessage: {
-            html: 'name-of-file-1.pdf must be a png or gif<br>name-of-file-2.pdf must be a png or gif'
+            html: "name-of-file-1.pdf must be a png or gif<br>name-of-file-2.pdf must be a png or gif"
           }
         }) }}
 
         {{ govukButton({
-          text: 'Upload file',
-          classes: 'govuk-button--secondary moj-multi-file-upload__button'
+          text: "Upload file",
+          classes: "govuk-button--secondary moj-multi-file-upload__button"
         }) }}
       {% endset %}
 
       {{ mojMultiFileUpload({
         uploadedFiles: {
-          heading: { text: 'Files added' },
+          heading: { text: "Files added" },
           items: []
         },
         uploadHtml: uploadHtml
       }) }}
 
       {{ govukButton({
-        text: 'Continue'
+        text: "Continue"
       }) }}
     </form>
   </div>
