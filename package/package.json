@@ -42,13 +42,5 @@
     "govuk-frontend": "5.x",
     "jquery": "3.x",
     "moment": "2.x"
-  },
-  "peerDependenciesMeta": {
-    "jquery": {
-      "optional": true
-    },
-    "moment": {
-      "optional": true
-    }
   }
 }
