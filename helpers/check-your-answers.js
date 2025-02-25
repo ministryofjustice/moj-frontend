@@ -4,9 +4,9 @@ const hrefRoot = '/get-involved/add-new-component'
 const maxWords = 10
 
 const shareYourDetails = {
-  addNameAndEmailToComponentPage:
+  addNameToComponentPage:
     'Add name and email address to component page',
-  onlyShareNameAndEmailWhenRequested:
+  addTeamNameWhenRequested:
     'Only share name and email when requested',
   doNotSharePersonalDetails: 'Do not share personal details'
 }

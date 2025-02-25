@@ -58,8 +58,8 @@ module.exports = {
     "fullName": "test",
     "emailAddress": "test@test.com",
     "shareYourDetails": [
-      "addNameAndEmailToComponentPage",
-      "onlyShareNameAndEmailWhenRequested",
+      "addNameToComponentPage",
+      "addTeamNameWhenRequested",
       "doNotSharePersonalDetails"
     ]
   },

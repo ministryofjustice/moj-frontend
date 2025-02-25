@@ -1,21 +1,29 @@
 const Joi = require('joi')
 
 const schema = Joi.object({
-  fullName: Joi.string().label('Full Name'),
-  emailAddress: Joi.string().label('Email Address'),
-  shareYourDetails: Joi.alternatives()
-    .try(Joi.string(), Joi.array().items(Joi.string()))
+  fullName: Joi.string()
     .required()
-    .label('Share your details')
-  // addNameAndEmailToComponentPage: Joi.string().label(
-  //   'Add my name and email address to the component page'
-  // ),
-  // onlyShareNameAndEmailWhenRequested: Joi.string().label(
-  //   'Only share my name and email address when requested by the other users'
-  // ),
-  // doNotSharePersonalDetails: Joi.string().label(
-  //   'Do not share my personal details with anyone'
-  // )
+    .messages({
+      'string.empty': 'Enter your full name',
+      'any.required': 'Enter your full name'
+    })
+    .label('Full Name'),
+  emailAddress: Joi.string()
+    .email({ tlds: { allow: false } })
+    .required()
+    .messages({
+      'string.email': 'Enter an email address in the correct format, like name@example.com',
+      'string.empty': 'Enter your email address',
+      'any.required': 'Enter your email address'
+    })
+    .label('Email Address'),
+  teamName: Joi.string()
+    .required()
+    .messages({
+      'string.empty': 'Enter the team name you worked for when creating the component',
+      'any.required': 'Enter the team name you worked for when creating the component'
+    })
+    .label('What team did you work in when creating the component?'),
 })
 
 module.exports = schema

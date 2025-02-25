@@ -15,8 +15,8 @@
   {% endif %}
 {% endif %}
 
-{% set addNameAndEmailToComponentPageChecked = "addNameAndEmailToComponentPage" in shareYourDetails %}
-{% set onlyShareNameAndEmailWhenRequestedChecked = "onlyShareNameAndEmailWhenRequested" in shareYourDetails %}
+{% set addNameToComponentPage = "addNameToComponentPage" in shareYourDetails %}
+{% set addTeamNameToComponentPage = "addTeamNameWhenRequested" in shareYourDetails %}
 {% set doNotSharePersonalDetailsChecked = "doNotSharePersonalDetails" in shareYourDetails %}
 
 {% block content %}
@@ -42,69 +42,70 @@
       <p>Providing your personal information means the team can contact you to discuss the component further, if required. The team will also let you when the component goes live in the design system.</p>
       <p>With your permission, your name and email address will be added to the component page to show you added it to the design system.</p>
       {{ govukInput({
-            label: {
-                text: "Full name",
-                classes: "govuk-label--m",
-                isPageHeading: true
-            },
-            id: "full-name",
-            name: "fullName",
-        errorMessage: formErrors.fullName,
-        value: formData.fullName
-        }) }}
+          label: {
+              text: "Full name",
+              classes: "govuk-label--m",
+              isPageHeading: true
+          },
+          id: "full-name",
+          name: "fullName",
+      errorMessage: formErrors.fullName,
+      value: formData.fullName
+      }) }}
 
-        {{ govukInput({
-            label: {
-                text: "Email address",
-                classes: "govuk-label--m",
-                isPageHeading: true
-            },
-            id: "email-address",
-            name: "emailAddress",
-          errorMessage: formErrors.emailAddress,
-          value: formData.emailAddress
-        }) }}
+      {{ govukInput({
+          label: {
+              text: "Email address",
+              classes: "govuk-label--m",
+              isPageHeading: true
+          },
+          id: "email-address",
+          name: "emailAddress",
+        errorMessage: formErrors.emailAddress,
+        value: formData.emailAddress
+      }) }}
+
+    {{ govukInput({
+      label: {
+        text: "What team did you work in when creating the component?",
+        classes: "govuk-label--m",
+        isPageHeading: true
+      },
+      id: "team-name",
+      name: "teamName",
+      errorMessage: formErrors.teamName,
+      value: formData.teamName
+    }) }}
 
       {{ govukCheckboxes({
         name: "shareYourDetails",
         id: 'share-your-details',
         fieldset: {
           legend: {
-            text: "Select how you allow us to share your personal details",
+            text: "Sharing your contact details on the component page",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "Select all that apply"
+          text: "The team asks for your details so other users can contact you or your team to continue collaborating on the component. By opting out of sharing these details, other community users will not be able to chat or work with you about the component. Select all that apply
+"
         },
         items: [
           {
-            value: "addNameAndEmailToComponentPage",
-            text: "Add my name and email address to the component page",
-            checked: addNameAndEmailToComponentPageChecked
+            value: "addNameToComponentPage",
+            text: "Add my name to the component page",
+            checked: addNameToComponentPage
           },
           {
-            value: "onlyShareNameAndEmailWhenRequested",
-            text: "Only share my name and email address when requested by other users",
-            checked: onlyShareNameAndEmailWhenRequestedChecked
-          },
-          {
-            divider: "or"
-          },
-          {
-            value: "doNotSharePersonalDetails",
-            text: "Do not share my personal details with anyone",
-            checked: doNotSharePersonalDetailsChecked
+            value: "addTeamNameWhenRequested",
+            text: "Add my team name to the component page",
+            checked: addTeamNameToComponentPage
           }
         ],
         errorMessage: formErrors.shareYourDetails,
         value: formData.shareYourDetails
       }) }}
-
-      <div class="govuk-inset-text">
-        If you do not allow us to share your personal information, this may not represent a 'community component'. This prevents us, and others, getting in touch with you. Meaning it may stop the continuing collaboration of the component.
-      </div>
 
         <div class="moj-button-action">
             {{ govukButton({
