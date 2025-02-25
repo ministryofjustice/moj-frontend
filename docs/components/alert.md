@@ -48,7 +48,7 @@ The information alert can be combined with other alert variants. For linear serv
 
 #### When not to use
 
-Do not want use this component for a serious issue or to prevent something going wrong. Use the warning alert for this.
+Do not use this component for a serious issue or to prevent something going wrong. Use the warning alert for this.
 
 ### Warning alert
 
