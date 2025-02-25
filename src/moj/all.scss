@@ -1,6 +1,6 @@
 $govuk-suppressed-warnings: ("govuk-typography-scale-14");
 
-@import "govuk-frontend/dist/govuk/base";
+@import "node_modules/govuk-frontend/dist/govuk/base";
 
 @import "settings/all";
 @import "helpers/all";
