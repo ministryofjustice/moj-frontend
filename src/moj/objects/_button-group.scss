@@ -4,28 +4,4 @@
   $button-shadow-size: $govuk-border-width-form-element;
 
   @extend .govuk-button-group;
-
-  &--inline {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: $horizontal-gap;
-    margin-right: 0;
-
-    .moj-button-menu {
-      margin-bottom: $vertical-gap + $button-shadow-size;
-    }
-
-    .moj-button-menu .moj-button-menu__toggle-button {
-      vertical-align: baseline;
-    }
-
-    > .moj-button-menu,
-    > .govuk-button,
-    > .govuk-link {
-      width: auto;
-      margin-right: 0;
-      margin-bottom: 0;
-    }
-  }
 }
