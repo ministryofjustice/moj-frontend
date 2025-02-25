@@ -1,7 +1,7 @@
 .app-card {
   margin-bottom: 0;
   @include govuk-media-query($until: desktop) {
-    margin-bottom:  govuk-spacing(7);
+    margin-bottom: govuk-spacing(7);
   }
   &__image {
     width: 100%;
