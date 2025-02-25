@@ -1,13 +1,6 @@
 name: Publish package
 
 on:
-  pull_request:
-
-  push:
-    branches:
-      - 'main'
-      - '*.*.x'
-
   workflow_dispatch:
 
 jobs:
