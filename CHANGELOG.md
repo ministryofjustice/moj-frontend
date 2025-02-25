@@ -1,3 +1,10 @@
+## [3.6.2](https://github.com/ministryofjustice/moj-frontend/compare/v3.6.1...v3.6.2) (2025-02-25)
+
+
+### Bug Fixes
+
+* revert to `$` for jQuery external global ([c722f15](https://github.com/ministryofjustice/moj-frontend/commit/c722f15f8129b00dcaab6c97deb518c404f81e0f))
+
 ## [3.6.1](https://github.com/ministryofjustice/moj-frontend/compare/v3.6.0...v3.6.1) (2025-02-25)
 
 
