@@ -11,7 +11,7 @@ eleventyNavigation:
   excerpt: "The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu."
 ---
 
-<span class="govuk-caption-xl">The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu.</span>
+<span class="govuk-caption-xl govuk-!-margin-bottom-9">The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu.</span>
 
 {% example "/examples/button-menu", 250 %}
 

@@ -11,7 +11,7 @@ eleventyNavigation:
   excerpt: "The interruption card component stops users in a flow with important information."
 ---
 
-<span class="govuk-caption-xl">The interruption card component pauses a user’s journey with important information.</span>
+<span class="govuk-caption-xl govuk-!-margin-bottom-9">The interruption card component pauses a user’s journey with important information.</span>
 
 {% example "/examples/interruption-card", 590 %}
 

@@ -11,7 +11,7 @@ eleventyNavigation:
   excerpt: "The date picker component enables users to select a date from a calendar."
 ---
 
-<span class="govuk-caption-xl">The date picker component enables users to select a date from a calendar. </span>
+<span class="govuk-caption-xl govuk-!-margin-bottom-9">The date picker component enables users to select a date from a calendar. </span>
 
 {% example "/examples/date-picker", 590 %}
 

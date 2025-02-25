@@ -11,7 +11,7 @@ eleventyNavigation:
   excerpt: "Use the alert component to display a prominent message and related actions to take."
 ---
 
-<span class="govuk-caption-xl">The alert component uses visual design to display a notification to users. It has a range of use cases.</span>
+<span class="govuk-caption-xl govuk-!-margin-bottom-9">The alert component uses visual design to display a notification to users. It has a range of use cases.</span>
 
 {% example "/examples/alert" %}
 
