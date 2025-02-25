@@ -4,7 +4,7 @@ const { getByDisplayValue, getByText } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
 const { configureAxe } = require('jest-axe')
 
-require('./password-reveal.js')
+const { PasswordReveal } = require('./password-reveal.js')
 
 const user = userEvent.setup()
 const axe = configureAxe({
@@ -22,7 +22,7 @@ describe('Password reveal', () => {
     input.type = 'password'
     input.value = 'password'
 
-    new MOJFrontend.PasswordReveal(input)
+    new PasswordReveal(input)
 
     container = input.parentNode
   })

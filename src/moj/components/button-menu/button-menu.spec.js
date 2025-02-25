@@ -2,7 +2,7 @@ const { queryByRole, screen } = require('@testing-library/dom')
 const { userEvent } = require('@testing-library/user-event')
 const { configureAxe } = require('jest-axe')
 
-require('./button-menu.js')
+const { ButtonMenu } = require('./button-menu.js')
 
 const user = userEvent.setup()
 const axe = configureAxe({
@@ -50,7 +50,7 @@ describe('Button menu with defaults', () => {
 
   beforeEach(() => {
     component = createComponent()
-    new MOJFrontend.ButtonMenu(component).init()
+    new ButtonMenu(component).init()
 
     toggleButton = queryByRole(component, 'button', { hidden: false })
     menu = screen.queryByRole('list', { hidden: true })
@@ -244,14 +244,14 @@ describe('Button menu javascript API', () => {
 
   test('setting toggle button text', () => {
     const label = 'click me'
-    new MOJFrontend.ButtonMenu(component, { buttonText: label }).init()
+    new ButtonMenu(component, { buttonText: label }).init()
     const toggleButton = queryByRole(component, 'button', { name: label })
 
     expect(toggleButton).toBeInTheDocument()
   })
 
   test('setting menu alignment', () => {
-    new MOJFrontend.ButtonMenu(component, { alignMenu: 'right' }).init()
+    new ButtonMenu(component, { alignMenu: 'right' }).init()
     const menu = screen.queryByRole('list', { hidden: true })
 
     expect(menu).toHaveClass('moj-button-menu__wrapper--right')
@@ -261,7 +261,7 @@ describe('Button menu javascript API', () => {
     const defaultClassNames = 'govuk-button moj-button-menu__toggle-button'
     const classNames = 'classOne classTwo'
 
-    new MOJFrontend.ButtonMenu(component, { buttonClasses: classNames }).init()
+    new ButtonMenu(component, { buttonClasses: classNames }).init()
     const toggleButton = queryByRole(component, 'button', { hidden: false })
 
     expect(toggleButton).toHaveClass(defaultClassNames)
@@ -282,7 +282,7 @@ describe('Button menu data-attributes API', () => {
     const label = 'click me'
 
     component = createComponent({ buttonText: label })
-    new MOJFrontend.ButtonMenu(component).init()
+    new ButtonMenu(component).init()
     const toggleButton = queryByRole(component, 'button', { name: label })
 
     expect(toggleButton).toBeInTheDocument()
@@ -290,7 +290,7 @@ describe('Button menu data-attributes API', () => {
 
   test('setting menu alignment', () => {
     component = createComponent({ alignMenu: 'right' })
-    new MOJFrontend.ButtonMenu(component).init()
+    new ButtonMenu(component).init()
     const menu = screen.queryByRole('list', { hidden: true })
 
     expect(menu).toHaveClass('moj-button-menu__wrapper--right')
@@ -301,7 +301,7 @@ describe('Button menu data-attributes API', () => {
     const classNames = 'classOne classTwo'
 
     component = createComponent({ buttonClasses: classNames })
-    new MOJFrontend.ButtonMenu(component).init()
+    new ButtonMenu(component).init()
     const toggleButton = queryByRole(component, 'button', { hidden: false })
 
     expect(toggleButton).toHaveClass(defaultClassNames)
@@ -322,7 +322,7 @@ describe('menu button with a single item', () => {
       </div>`
 
     component = createComponent({}, html)
-    new MOJFrontend.ButtonMenu(component).init()
+    new ButtonMenu(component).init()
 
     toggleButton = queryByRole(component, 'button', { name: 'Actions' })
     menu = screen.queryByRole('list', { hidden: true })

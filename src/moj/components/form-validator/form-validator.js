@@ -1,4 +1,8 @@
-MOJFrontend.FormValidator = function (form, options) {
+const $ = require('jquery')
+
+const { addAttributeValue, removeAttributeValue } = require('../../helpers.js')
+
+function FormValidator(form, options) {
   this.form = form
   this.errors = []
   this.validators = []
@@ -8,7 +12,7 @@ MOJFrontend.FormValidator = function (form, options) {
   this.originalTitle = document.title
 }
 
-MOJFrontend.FormValidator.entityMap = {
+FormValidator.entityMap = {
   '&': '&amp;',
   '<': '&lt;',
   '>': '&gt;',
@@ -19,28 +23,28 @@ MOJFrontend.FormValidator.entityMap = {
   '=': '&#x3D;'
 }
 
-MOJFrontend.FormValidator.prototype.escapeHtml = function (string) {
+FormValidator.prototype.escapeHtml = function (string) {
   return String(string).replace(/[&<>"'`=/]/g, function fromEntityMap(s) {
-    return MOJFrontend.FormValidator.entityMap[s]
+    return FormValidator.entityMap[s]
   })
 }
 
-MOJFrontend.FormValidator.prototype.resetTitle = function () {
+FormValidator.prototype.resetTitle = function () {
   document.title = this.originalTitle
 }
 
-MOJFrontend.FormValidator.prototype.updateTitle = function () {
+FormValidator.prototype.updateTitle = function () {
   document.title = `${this.errors.length} errors - ${document.title}`
 }
 
-MOJFrontend.FormValidator.prototype.showSummary = function () {
+FormValidator.prototype.showSummary = function () {
   this.summary.html(this.getSummaryHtml())
   this.summary.removeClass('moj-hidden')
   this.summary.attr('aria-labelledby', 'errorSummary-heading')
   this.summary.focus()
 }
 
-MOJFrontend.FormValidator.prototype.getSummaryHtml = function () {
+FormValidator.prototype.getSummaryHtml = function () {
   let html =
     '<h2 id="error-summary-title" class="govuk-error-summary__title">There is a problem</h2>'
   html += '<div class="govuk-error-summary__body">'
@@ -58,12 +62,12 @@ MOJFrontend.FormValidator.prototype.getSummaryHtml = function () {
   return html
 }
 
-MOJFrontend.FormValidator.prototype.hideSummary = function () {
+FormValidator.prototype.hideSummary = function () {
   this.summary.addClass('moj-hidden')
   this.summary.removeAttr('aria-labelledby')
 }
 
-MOJFrontend.FormValidator.prototype.onSubmit = function (e) {
+FormValidator.prototype.onSubmit = function (e) {
   this.removeInlineErrors()
   this.hideSummary()
   this.resetTitle()
@@ -75,13 +79,13 @@ MOJFrontend.FormValidator.prototype.onSubmit = function (e) {
   }
 }
 
-MOJFrontend.FormValidator.prototype.showInlineErrors = function () {
+FormValidator.prototype.showInlineErrors = function () {
   for (let i = 0, j = this.errors.length; i < j; i++) {
     this.showInlineError(this.errors[i])
   }
 }
 
-MOJFrontend.FormValidator.prototype.showInlineError = function (error) {
+FormValidator.prototype.showInlineError = function (error) {
   const errorSpanId = `${error.fieldName}-error`
   const errorSpan = `<span class="govuk-error-message" id="${
     errorSpanId
@@ -95,35 +99,35 @@ MOJFrontend.FormValidator.prototype.showInlineError = function (error) {
   if (legend.length) {
     legend.after(errorSpan)
     fieldContainer.attr('aria-invalid', 'true')
-    MOJFrontend.addAttributeValue(fieldset[0], 'aria-describedby', errorSpanId)
+    addAttributeValue(fieldset[0], 'aria-describedby', errorSpanId)
   } else {
     label.after(errorSpan)
     control.attr('aria-invalid', 'true')
-    MOJFrontend.addAttributeValue(control[0], 'aria-describedby', errorSpanId)
+    addAttributeValue(control[0], 'aria-describedby', errorSpanId)
   }
 }
 
-MOJFrontend.FormValidator.prototype.removeInlineErrors = function () {
+FormValidator.prototype.removeInlineErrors = function () {
   for (let i = 0; i < this.errors.length; i++) {
     this.removeInlineError(this.errors[i])
   }
 }
 
-MOJFrontend.FormValidator.prototype.removeInlineError = function (error) {
+FormValidator.prototype.removeInlineError = function (error) {
   const control = $(`#${error.fieldName}`)
   const fieldContainer = control.parents('.govuk-form-group')
   fieldContainer.find('.govuk-error-message').remove()
   fieldContainer.removeClass('govuk-form-group--error')
   fieldContainer.find('[aria-invalid]').attr('aria-invalid', 'false')
   const errorSpanId = `${error.fieldName}-error`
-  MOJFrontend.removeAttributeValue(
+  removeAttributeValue(
     fieldContainer.find('[aria-describedby]')[0],
     'aria-describedby',
     errorSpanId
   )
 }
 
-MOJFrontend.FormValidator.prototype.addValidator = function (fieldName, rules) {
+FormValidator.prototype.addValidator = function (fieldName, rules) {
   this.validators.push({
     fieldName,
     rules,
@@ -131,7 +135,7 @@ MOJFrontend.FormValidator.prototype.addValidator = function (fieldName, rules) {
   })
 }
 
-MOJFrontend.FormValidator.prototype.validate = function () {
+FormValidator.prototype.validate = function () {
   this.errors = []
   let validator = null
   let validatorReturnValue = true
@@ -162,3 +166,5 @@ MOJFrontend.FormValidator.prototype.validate = function () {
   }
   return this.errors.length === 0
 }
+
+module.exports = { FormValidator }

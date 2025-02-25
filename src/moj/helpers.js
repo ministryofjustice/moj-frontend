@@ -1,4 +1,4 @@
-MOJFrontend.removeAttributeValue = function (el, attr, value) {
+function removeAttributeValue(el, attr, value) {
   let re, m
   if (el.getAttribute(attr)) {
     if (el.getAttribute(attr) === value) {
@@ -16,7 +16,7 @@ MOJFrontend.removeAttributeValue = function (el, attr, value) {
   }
 }
 
-MOJFrontend.addAttributeValue = function (el, attr, value) {
+function addAttributeValue(el, attr, value) {
   let re
   if (!el.getAttribute(attr)) {
     el.setAttribute(attr, value)
@@ -28,22 +28,22 @@ MOJFrontend.addAttributeValue = function (el, attr, value) {
   }
 }
 
-MOJFrontend.dragAndDropSupported = function () {
+function dragAndDropSupported() {
   const div = document.createElement('div')
   return typeof div.ondrop !== 'undefined'
 }
 
-MOJFrontend.formDataSupported = function () {
+function formDataSupported() {
   return typeof FormData === 'function'
 }
 
-MOJFrontend.fileApiSupported = function () {
+function fileApiSupported() {
   const input = document.createElement('input')
   input.type = 'file'
   return typeof input.files !== 'undefined'
 }
 
-MOJFrontend.nodeListForEach = function (nodes, callback) {
+function nodeListForEach(nodes, callback) {
   if (window.NodeList.prototype.forEach) {
     return nodes.forEach(callback)
   }
@@ -61,7 +61,7 @@ MOJFrontend.nodeListForEach = function (nodes, callback) {
  * @param {HTMLElement} $element - Element to find siblings for
  * @param {string} selector - selector for required sibling
  */
-MOJFrontend.getNextSibling = function ($element, selector) {
+function getNextSibling($element, selector) {
   if (!$element) return
   // Get the next sibling element
   let $sibling = $element.nextElementSibling
@@ -86,7 +86,7 @@ MOJFrontend.getNextSibling = function ($element, selector) {
  * @param {HTMLElement} $element - Element to find siblings for
  * @param {string} selector - selector for required sibling
  */
-MOJFrontend.getPreviousSibling = function ($element, selector) {
+function getPreviousSibling($element, selector) {
   if (!$element) return
   // Get the previous sibling element
   let $sibling = $element.previousElementSibling
@@ -102,7 +102,7 @@ MOJFrontend.getPreviousSibling = function ($element, selector) {
   }
 }
 
-MOJFrontend.findNearestMatchingElement = function ($element, selector) {
+function findNearestMatchingElement($element, selector) {
   // If no element or selector is provided, return null
   if (!$element) return
   if (!selector) return
@@ -142,7 +142,7 @@ MOJFrontend.findNearestMatchingElement = function ($element, selector) {
  * @param {function(this: HTMLElement): void} [options.onBeforeFocus] - Callback before focus
  * @param {function(this: HTMLElement): void} [options.onBlur] - Callback on blur
  */
-MOJFrontend.setFocus = function ($element, options = {}) {
+function setFocus($element, options = {}) {
   const isFocusable = $element.getAttribute('tabindex')
 
   if (!isFocusable) {
@@ -177,4 +177,17 @@ MOJFrontend.setFocus = function ($element, options = {}) {
     options.onBeforeFocus.call($element)
   }
   $element.focus()
+}
+
+module.exports = {
+  removeAttributeValue,
+  addAttributeValue,
+  dragAndDropSupported,
+  formDataSupported,
+  fileApiSupported,
+  nodeListForEach,
+  getNextSibling,
+  getPreviousSibling,
+  findNearestMatchingElement,
+  setFocus
 }

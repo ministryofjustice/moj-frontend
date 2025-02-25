@@ -1,3 +1,9 @@
+const {
+  findNearestMatchingElement,
+  getPreviousSibling,
+  setFocus
+} = require('../../helpers.js')
+
 /**
  * @typedef {object} AlertConfig
  * @property {boolean} [dismissible=false] - Can the alert be dismissed by the user
@@ -11,7 +17,7 @@
  * @param {AlertConfig} config - configuration options
  * @class
  */
-MOJFrontend.Alert = function ($module, config = {}) {
+function Alert($module, config = {}) {
   if (!$module) {
     return this
   }
@@ -41,7 +47,7 @@ MOJFrontend.Alert = function ($module, config = {}) {
   this.$module = $module
 }
 
-MOJFrontend.Alert.prototype.init = function () {
+Alert.prototype.init = function () {
   /**
    * Focus the alert
    *
@@ -57,7 +63,7 @@ MOJFrontend.Alert.prototype.init = function () {
     this.$module.getAttribute('role') === 'alert' &&
     !this.config.disableAutoFocus
   ) {
-    MOJFrontend.setFocus(this.$module)
+    setFocus(this.$module)
   }
 
   this.$dismissButton = this.$module.querySelector('.moj-alert__dismiss')
@@ -77,7 +83,7 @@ MOJFrontend.Alert.prototype.init = function () {
 /**
  * Handle dismissing the alert
  */
-MOJFrontend.Alert.prototype.dimiss = function () {
+Alert.prototype.dimiss = function () {
   let $elementToRecieveFocus
 
   // If a selector has been provided, attempt to find that element
@@ -97,7 +103,7 @@ MOJFrontend.Alert.prototype.dimiss = function () {
 
   // Else try to find any preceding sibling alert or heading
   if (!$elementToRecieveFocus) {
-    $elementToRecieveFocus = MOJFrontend.getPreviousSibling(
+    $elementToRecieveFocus = getPreviousSibling(
       this.$module,
       '.moj-alert, h1, h2, h3, h4, h5, h6'
     )
@@ -106,7 +112,7 @@ MOJFrontend.Alert.prototype.dimiss = function () {
   // Else find the closest ancestor heading, or fallback to main, or last resort
   // use the body element
   if (!$elementToRecieveFocus) {
-    $elementToRecieveFocus = MOJFrontend.findNearestMatchingElement(
+    $elementToRecieveFocus = findNearestMatchingElement(
       this.$module,
       'h1, h2, h3, h4, h5, h6, main, body'
     )
@@ -114,7 +120,7 @@ MOJFrontend.Alert.prototype.dimiss = function () {
 
   // If we have an element, place focus on it
   if ($elementToRecieveFocus) {
-    MOJFrontend.setFocus($elementToRecieveFocus)
+    setFocus($elementToRecieveFocus)
   }
 
   // Remove the alert
@@ -137,7 +143,7 @@ MOJFrontend.Alert.prototype.dimiss = function () {
  * @param {SchemaProperty} [property] - Component schema property
  * @returns {string | boolean | number | undefined} Normalised data
  */
-MOJFrontend.Alert.prototype.normaliseString = function (value, property) {
+Alert.prototype.normaliseString = function (value, property) {
   const trimmedValue = value ? value.trim() : ''
 
   let output
@@ -185,7 +191,7 @@ MOJFrontend.Alert.prototype.normaliseString = function (value, property) {
  * @param {DOMStringMap} dataset - HTML element dataset
  * @returns {object} Normalised dataset
  */
-MOJFrontend.Alert.prototype.parseDataset = function (schema, dataset) {
+Alert.prototype.parseDataset = function (schema, dataset) {
   const parsed = {}
 
   for (const [field, property] of Object.entries(schema.properties)) {
@@ -208,7 +214,7 @@ MOJFrontend.Alert.prototype.parseDataset = function (schema, dataset) {
  * @param {...{ [key: string]: unknown }} configObjects - Config objects to merge
  * @returns {{ [key: string]: unknown }} A merged config object
  */
-MOJFrontend.Alert.prototype.mergeConfigs = function (...configObjects) {
+Alert.prototype.mergeConfigs = function (...configObjects) {
   const formattedConfigObject = {}
 
   // Loop through each of the passed objects
@@ -231,6 +237,8 @@ MOJFrontend.Alert.prototype.mergeConfigs = function (...configObjects) {
 
   return formattedConfigObject
 }
+
+module.exports = { Alert }
 
 /**
  * Schema for component config

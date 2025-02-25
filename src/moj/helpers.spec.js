@@ -1,4 +1,8 @@
-require('./helpers.js')
+const {
+  findNearestMatchingElement,
+  getPreviousSibling,
+  getNextSibling
+} = require('./helpers.js')
 
 describe('helpers', () => {
   describe('getNextSibling', () => {
@@ -23,14 +27,14 @@ describe('helpers', () => {
     })
 
     test('returns undefined with no element', () => {
-      const result = MOJFrontend.getNextSibling()
+      const result = getNextSibling()
 
       expect(result).toBeUndefined()
     })
 
     test('returns null with no selector if no sibling', () => {
       const element = document.querySelector('#item-4')
-      const result = MOJFrontend.getNextSibling(element)
+      const result = getNextSibling(element)
 
       expect(result).toBeNull()
     })
@@ -38,14 +42,14 @@ describe('helpers', () => {
     test('returns first sibling with no selector', () => {
       const element = document.querySelector('#item-2')
       const expected = document.querySelector('#item-3')
-      const result = MOJFrontend.getNextSibling(element)
+      const result = getNextSibling(element)
 
       expect(result).toBe(expected)
     })
 
     test('returns undefined if no sibling matches selector', () => {
       const element = document.querySelector('#item-1')
-      const result = MOJFrontend.getNextSibling(element, '#not-present')
+      const result = getNextSibling(element, '#not-present')
 
       expect(result).toBeUndefined()
     })
@@ -53,7 +57,7 @@ describe('helpers', () => {
     test('returns matching sibling', () => {
       const element = document.querySelector('#item-1')
       const expected = document.querySelector('#item-3')
-      const result = MOJFrontend.getNextSibling(element, '.selected')
+      const result = getNextSibling(element, '.selected')
 
       expect(result).toBe(expected)
     })
@@ -61,7 +65,7 @@ describe('helpers', () => {
     test('returns first matching sibling', () => {
       const element = document.querySelector('#item-1')
       const expected = document.querySelector('#item-2')
-      const result = MOJFrontend.getNextSibling(element, '.item')
+      const result = getNextSibling(element, '.item')
 
       expect(result).toBe(expected)
     })
@@ -89,14 +93,14 @@ describe('helpers', () => {
     })
 
     test('returns undefined with no element', () => {
-      const result = MOJFrontend.getPreviousSibling()
+      const result = getPreviousSibling()
 
       expect(result).toBeUndefined()
     })
 
     test('returns undefined with no selector if no sibling', () => {
       const element = document.querySelector('#item-1')
-      const result = MOJFrontend.getPreviousSibling(element)
+      const result = getPreviousSibling(element)
 
       expect(result).toBeNull()
     })
@@ -104,14 +108,14 @@ describe('helpers', () => {
     test('returns first sibling with no selector', () => {
       const element = document.querySelector('#item-3')
       const expected = document.querySelector('#item-2')
-      const result = MOJFrontend.getPreviousSibling(element)
+      const result = getPreviousSibling(element)
 
       expect(result).toBe(expected)
     })
 
     test('returns undefined if no sibling matches selector', () => {
       const element = document.querySelector('#item-4')
-      const result = MOJFrontend.getPreviousSibling(element, '#not-present')
+      const result = getPreviousSibling(element, '#not-present')
 
       expect(result).toBeUndefined()
     })
@@ -119,7 +123,7 @@ describe('helpers', () => {
     test('returns matching sibling', () => {
       const element = document.querySelector('#item-4')
       const expected = document.querySelector('#item-3')
-      const result = MOJFrontend.getPreviousSibling(element, '.selected')
+      const result = getPreviousSibling(element, '.selected')
 
       expect(result).toBe(expected)
     })
@@ -127,7 +131,7 @@ describe('helpers', () => {
     test('returns first matching sibling', () => {
       const element = document.querySelector('#item-4')
       const expected = document.querySelector('#item-2')
-      const result = MOJFrontend.getPreviousSibling(element, '.item')
+      const result = getPreviousSibling(element, '.item')
 
       expect(result).toBe(expected)
     })
@@ -155,31 +159,28 @@ describe('helpers', () => {
     })
 
     test('returns undefined with no element', () => {
-      const result = MOJFrontend.findNearestMatchingElement()
+      const result = findNearestMatchingElement()
 
       expect(result).toBeUndefined()
     })
 
     test('returns undefined with no selector', () => {
       const element = document.querySelector('#item-1')
-      const result = MOJFrontend.findNearestMatchingElement(element)
+      const result = findNearestMatchingElement(element)
 
       expect(result).toBeUndefined()
     })
 
     test('returns undefined if element not found', () => {
       const element = document.querySelector('#item-1')
-      const result = MOJFrontend.findNearestMatchingElement(
-        element,
-        '#not-present'
-      )
+      const result = findNearestMatchingElement(element, '#not-present')
 
       expect(result).toBeUndefined()
     })
 
     test("doesn't find next siblings", () => {
       const element = document.querySelector('#item-2')
-      const result = MOJFrontend.findNearestMatchingElement(element, '#item-3')
+      const result = findNearestMatchingElement(element, '#item-3')
 
       expect(result).toBeUndefined()
     })
@@ -187,7 +188,7 @@ describe('helpers', () => {
     test('finds previous sibling', () => {
       const element = document.querySelector('#item-2')
       const expected = document.querySelector('#item-1')
-      const result = MOJFrontend.findNearestMatchingElement(element, '#item-1')
+      const result = findNearestMatchingElement(element, '#item-1')
 
       expect(result).toBe(expected)
     })
@@ -195,7 +196,7 @@ describe('helpers', () => {
     test('finds first matching sibling', () => {
       const element = document.querySelector('#item-3')
       const expected = document.querySelector('#item-2')
-      const result = MOJFrontend.findNearestMatchingElement(element, '.item')
+      const result = findNearestMatchingElement(element, '.item')
 
       expect(result).toBe(expected)
     })
@@ -203,7 +204,7 @@ describe('helpers', () => {
     test('returns element if matching', () => {
       const element = document.querySelector('#item-3')
       const expected = document.querySelector('#item-3')
-      const result = MOJFrontend.findNearestMatchingElement(element, 'li')
+      const result = findNearestMatchingElement(element, 'li')
 
       expect(result).toBe(expected)
     })
@@ -211,7 +212,7 @@ describe('helpers', () => {
     test('if no sibling, finds matching ancestor', () => {
       const element = document.querySelector('#item-3')
       const expected = document.querySelector('#list')
-      const result = MOJFrontend.findNearestMatchingElement(element, 'ul')
+      const result = findNearestMatchingElement(element, 'ul')
 
       expect(result).toBe(expected)
     })
@@ -219,7 +220,7 @@ describe('helpers', () => {
     test('return an ancestor sibling if matched', () => {
       const element = document.querySelector('#item-3')
       const expected = document.querySelector('#title')
-      const result = MOJFrontend.findNearestMatchingElement(element, 'h1')
+      const result = findNearestMatchingElement(element, 'h1')
 
       expect(result).toBe(expected)
     })
@@ -227,7 +228,7 @@ describe('helpers', () => {
     test('continues traversing until match is found', () => {
       const element = document.querySelector('#item-3')
       const expected = document.querySelector('#container')
-      const result = MOJFrontend.findNearestMatchingElement(element, 'div')
+      const result = findNearestMatchingElement(element, 'div')
 
       expect(result).toBe(expected)
     })

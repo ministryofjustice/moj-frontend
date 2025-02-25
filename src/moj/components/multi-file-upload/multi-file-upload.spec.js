@@ -9,8 +9,7 @@ const { userEvent } = require('@testing-library/user-event')
 const { configureAxe } = require('jest-axe')
 const sinon = require('sinon')
 
-require('../../helpers.js')
-require('./multi-file-upload.js')
+const { MultiFileUpload } = require('./multi-file-upload.js')
 
 const user = userEvent.setup()
 const axe = configureAxe({
@@ -77,7 +76,7 @@ describe('Multi-file upload', () => {
       deleteUrl: '/delete'
     }))
 
-    new MOJFrontend.MultiFileUpload(options)
+    new MultiFileUpload(options)
   })
 
   afterEach(() => {

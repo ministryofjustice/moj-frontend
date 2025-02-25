@@ -57,7 +57,7 @@ gulp.task('watch:package-js', () => {
 // Watch the docs js files and the bundled package js and rebuild
 gulp.task('watch:docs-js', () => {
   gulp.watch(
-    ['docs/assets/**/*.js', 'package/moj/all.js'],
+    ['docs/assets/**/*.mjs', 'package/moj/all.js'],
     gulp.series(['docs:scripts'])
   )
 })
