@@ -11,7 +11,7 @@
           statusTag: { text: status }
         }) }}
 
-       {{ statusLabel(type, status, statusInfo, creatorName, creatorTeam, statusDate) }}
+       {{ statusLabel(type, status, statusInfo[status], statusDate, creatorName, creatorTeam) }}
        {{ content | safe }}
 
       {% if isIndex or isArchive %}
