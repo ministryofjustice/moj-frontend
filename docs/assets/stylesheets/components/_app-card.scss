@@ -1,7 +1,7 @@
 .app-card {
   margin-bottom: 0;
   @include govuk-media-query($until: desktop) {
-    margin-bottom: 40px;
+    margin-bottom:  govuk-spacing(7);
   }
   &__image {
     width: 100%;
@@ -18,9 +18,9 @@
     }
   }
   &__full {
-    margin-bottom: 60px;
+    margin-bottom: govuk-spacing(9);
     @include govuk-media-query($until: desktop) {
-      margin-bottom: 40px;
+      margin-bottom: govuk-spacing(7);
     }
   }
 }
