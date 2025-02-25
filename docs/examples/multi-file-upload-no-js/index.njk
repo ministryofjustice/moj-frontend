@@ -26,10 +26,10 @@ title: Multi file upload without JavaScript (example)
           attributes: { multiple: '' }
         }) }}
 
-        {{govukButton({
+        {{ govukButton({
           text: 'Upload file',
           classes: 'govuk-button--secondary moj-multi-file-upload__button'
-        })}}
+        }) }}
       {% endset %}
 
       {{ mojMultiFileUpload({
@@ -40,9 +40,9 @@ title: Multi file upload without JavaScript (example)
         uploadHtml: uploadHtml
       }) }}
 
-      {{govukButton({
+      {{ govukButton({
         text: 'Continue'
-      })}}
+      }) }}
     </form>
   </div>
 </div>

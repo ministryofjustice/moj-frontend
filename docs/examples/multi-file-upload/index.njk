@@ -35,10 +35,10 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
           errorMessage: errorMessage
         }) }}
 
-        {{govukButton({
+        {{ govukButton({
           text: 'Upload file',
           classes: 'govuk-button--secondary moj-multi-file-upload__button'
-        })}}
+        }) }}
       {% endset %}
 
       {{ mojMultiFileUpload({
@@ -49,9 +49,9 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
         uploadHtml: uploadHtml
       }) }}
 
-      {{govukButton({
+      {{ govukButton({
         text: 'Continue'
-      })}}
+      }) }}
     </form>
   </div>
 </div>

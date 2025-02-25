@@ -4,23 +4,28 @@
 {% from "macros/heading/macro.njk" import heading %}
 
 {% block content %}
-    <div class="app-layout__content">
-        {{ heading({
-          text: title,
-          caption: "Pages" if not isIndex,
-          statusTag: { text: status }
-        }) }}
+  <div class="app-layout__content">
+    {{ heading({
+      text: title,
+      caption: "Pages" if not isIndex,
+      statusTag: { text: status }
+    }) }}
 
-        {{ statusLabel(type, status, statusInfo[status], statusDate, creatorName, creatorTeam) if statusInfo[status] }}
-        {{ content | safe }}
+    {{ statusLabel(
+      type,
+      status,
+      statusInfo[status],
+      statusDate,
+      creatorName,
+      creatorTeam
+    ) if statusInfo[status] }}
 
-      {% if isIndex or isArchive %}
-      {% else %}
-        {% include "./partials/get-help-and-contribute.njk" %}
-      {% endif %}
+    {{ content | safe }}
 
-    </div>
-
+    {% if not (isIndex or isArchive) %}
+      {% include "./partials/get-help-and-contribute.njk" %}
+    {% endif %}
+  </div>
 {% endblock %}
 
 {% block pageScripts %}

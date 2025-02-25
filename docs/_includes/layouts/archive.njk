@@ -4,15 +4,22 @@
 {% from "macros/heading/macro.njk" import heading %}
 
 {% block content %}
-    <div class="app-layout__content">
-        {{ heading({
-          text: title,
-          caption: "Archive" if not isIndex,
-          statusTag: { text: status }
-        }) }}
+  <div class="app-layout__content">
+    {{ heading({
+      text: title,
+      caption: "Archive" if not isIndex,
+      statusTag: { text: status }
+    }) }}
 
-        {{ statusLabel(type, status, statusInfo[status], statusDate, creatorName, creatorTeam) if statusInfo[status] }}
-        {{ content | safe }}
-    </div>
+    {{ statusLabel(
+      type,
+      status,
+      statusInfo[status],
+      statusDate,
+      creatorName,
+      creatorTeam
+    ) if statusInfo[status] }}
 
+    {{ content | safe }}
+  </div>
 {% endblock %}

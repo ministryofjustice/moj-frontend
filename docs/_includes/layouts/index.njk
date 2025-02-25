@@ -6,27 +6,27 @@
 {% set items = collections.all | eleventyNavigation(eleventyNavigation.key) | sort(false, false, "key") %}
 
 {% block content %}
-    <div class="app-masthead">
-        <div class="app-layout__content">
-            {{ heading({
-              text: title
-            }) }}
+  <div class="app-masthead">
+    <div class="app-layout__content">
+      {{ heading({
+        text: title
+      }) }}
 
-            {{ content | safe }}
-        </div>
+      {{ content | safe }}
     </div>
+  </div>
 
-    <div class="app-layout__content app-cards">
+  <div class="app-layout__content app-cards">
     {% for item in items %}
-        {% call card({
-          heading: {
-            text: item.title,
-            size: "large"
-          }
-        }) %}
-            <p>{{ item.excerpt }}</p>
-            <p><a href="{{ item.url }}">View the '{{ item.title }}' guidance</a></p>
-        {% endcall %}
+      {% call card({
+        heading: {
+          text: item.title,
+          size: "large"
+        }
+      }) %}
+        <p>{{ item.excerpt }}</p>
+        <p><a href="{{ item.url }}">View the '{{ item.title }}' guidance</a></p>
+      {% endcall %}
     {% endfor %}
-    </div>
+  </div>
 {% endblock %}
