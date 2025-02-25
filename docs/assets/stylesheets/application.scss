@@ -30,6 +30,7 @@ $govuk-suppressed-warnings: ("govuk-typography-scale-14");
 @import "./components/page";
 @import "./components/menu-toggle";
 @import "./components/app-card";
+@import "./components/status";
 @import "./components/documentation_tabs";
 
 @view-transition {
