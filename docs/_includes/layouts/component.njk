@@ -11,7 +11,7 @@
           statusTag: { text: status }
         }) }}
 
-        {{ statusLabel(type, status, statusInfo[status], statusDate, creatorName, creatorTeam) }}
+        {{ statusLabel(type, status, statusInfo[status], statusDate, creatorName, creatorTeam) if statusInfo[status] }}
         {{ content | safe }}
 
         {% include "./partials/get-help-and-contribute.njk" %}
