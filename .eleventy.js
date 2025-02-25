@@ -6,6 +6,7 @@ const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
 const matter = require('gray-matter')
 const hljs = require('highlight.js')
 const beautifyHTML = require('js-beautify').html
+const upperFirst = require('lodash/upperFirst')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const nunjucks = require('nunjucks')
@@ -288,6 +289,10 @@ module.exports = function (eleventyConfig) {
     return `${inputPath.split('/').slice(1, -1).join('/')}/style.css`
   })
 
+  eleventyConfig.addFilter('renderString', function (viewString, context) {
+    return nunjucksEnv.renderString(viewString, context)
+  })
+
   eleventyConfig.addFilter('rev', (filepath) => {
     if (process.env.ENV === 'production' || process.env.ENV === 'staging') {
       const manifest = JSON.parse(
@@ -298,6 +303,8 @@ module.exports = function (eleventyConfig) {
     }
     return `/${filepath}`
   })
+
+  eleventyConfig.addFilter('upperFirst', upperFirst)
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')

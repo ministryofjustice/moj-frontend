@@ -1,13 +1,17 @@
 {% extends "./base.njk" %}
 
-{% from "./macros/status.njk" import statusLabel %}
-{% from "./macros/heading.njk" import heading %}
+{% from "macros/status-label/macro.njk" import statusLabel %}
+{% from "macros/heading/macro.njk" import heading %}
 
 {% block content %}
     <div class="app-layout__content">
-        {% if not isIndex %}<span class="govuk-caption-xl">Archive</span>{% endif %}
-        {{ heading(1, title, status) }}
-        {{ statusLabel(type, status, statusInfo, creatorName, creatorTeam, statusDate) }}
+        {{ heading({
+          text: title,
+          caption: "Archive" if not isIndex,
+          statusTag: { text: status }
+        }) }}
+
+        {{ statusLabel(type, status, statusInfo[status], statusDate, creatorName, creatorTeam) if statusInfo[status] }}
         {{ content | safe }}
     </div>
 

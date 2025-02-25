@@ -1,13 +1,7 @@
-const commonjs = require('@rollup/plugin-commonjs')
-const nodeResolve = require('@rollup/plugin-node-resolve')
-const terser = require('@rollup/plugin-terser')
 const gulp = require('gulp')
-const gulpSass = require('gulp-sass')
-const { rollup } = require('rollup')
-const externalGlobals = require('rollup-plugin-external-globals')
-const dartSass = require('sass-embedded')
 
-const sass = gulpSass(dartSass)
+const { compileScripts } = require('./tasks/scripts')
+const { compileStyles } = require('./tasks/styles')
 
 gulp.task('docs:clean', async (done) => {
   const { deleteSync } = await import('del')
@@ -48,54 +42,33 @@ gulp.task(
 )
 
 // Compile the docs site stylesheet
-gulp.task('docs:styles', (done) => {
-  return gulp
-    .src('docs/assets/stylesheets/*.scss')
-    .pipe(
-      sass({
-        loadPaths: ['./'],
-        quietDeps: true,
-        silenceDeprecations: ['import'],
-        style: process.env.ENV === 'dev' ? 'expanded' : 'compressed'
-      }).on('error', done)
-    )
-    .pipe(gulp.dest('public/assets/stylesheets/'))
-})
+gulp.task(
+  'docs:styles',
+  gulp.parallel(
+    compileStyles('application.scss', {
+      srcPath: 'docs/assets/stylesheets',
+      destPath: 'public/assets/stylesheets'
+    }),
+    compileStyles('govuk-frontend.scss', {
+      srcPath: 'docs/assets/stylesheets',
+      destPath: 'public/assets/stylesheets'
+    }),
+    compileStyles('moj-frontend.scss', {
+      srcPath: 'docs/assets/stylesheets',
+      destPath: 'public/assets/stylesheets'
+    })
+  )
+)
 
 // Bundle the docs site javascript
-gulp.task('docs:scripts', async () => {
-  const options = /** @satisfies {RollupOptions} */ ({
-    input: 'docs/assets/javascript/application.mjs',
-    output: {
-      file: 'public/assets/javascript/application.js',
-      format: 'esm'
-    },
-    external: ['jquery'],
-    plugins: [
-      externalGlobals({
-        jquery: 'window.jQuery'
-      }),
-      nodeResolve(),
-      commonjs()
-    ]
+gulp.task(
+  'docs:scripts',
+  compileScripts('application.mjs', {
+    srcPath: 'docs/assets/javascript',
+    destPath: 'public/assets/javascript',
+    output: { compact: true }
   })
-
-  // Create bundle
-  const bundle = await rollup(options)
-
-  // Add minifier plugin (optional)
-  if (process.env.ENV !== 'dev') {
-    options.output.plugins = [
-      terser({
-        format: { comments: false },
-        safari10: true
-      })
-    ]
-  }
-
-  // Write to output format
-  await bundle.write(options.output)
-})
+)
 
 gulp.task('docs:revision', async () => {
   const { default: rev } = await import('gulp-rev')
@@ -117,7 +90,3 @@ gulp.task('docs:revision', async () => {
     .pipe(rev.manifest())
     .pipe(gulp.dest('public/assets/'))
 })
-
-/**
- * @import { RollupOptions } from 'rollup'
- */
