@@ -1,4 +1,5 @@
-{% from "macros/heading/macro.njk" import heading %}
+{% from "govuk/macros/attributes.njk" import govukAttributes -%}
+{% from "macros/heading/macro.njk" import heading -%}
 
 <!--
 Arguments to be passed:
@@ -10,58 +11,57 @@ Arguments to be passed:
 - imageLinkLarge: {string} Absolute path for larger image location for x2 display (e.g., assets/images/...).
 -->
 
+{%- macro _cardImage(params) %}
+  {% set classNames = "app-card__image govuk-!-margin-bottom-4" -%}
+
+  {% if params.imageClass %}
+    {% set classNames = classNames + " " + params.imageClass %}
+  {% endif -%}
+
+  <img {{- govukAttributes({
+    loading: "lazy",
+    class: classNames,
+    alt: params.imageAlt,
+    src: params.imageLink,
+    srcset: params.imageLinkLarge + " 2x",
+    "aria-hidden": {
+      value: not params.imageAlt,
+      optional: true
+    }
+  }) -}}>
+{% endmacro %}
+
 {% if params.layout == "side-by-side" or params.layout == "full" %}
-    <article 
-        class="app-card {{ 'govuk-grid-column-full app-card__full' if params.layout == 'full' else 'govuk-grid-column-one-half-from-desktop' }}">
-        
-        {% if params.imageLink %}
-            <img 
-                loading="lazy" 
-                class="app-card__image govuk-!-margin-bottom-4{% if params.imageClass %} {{ params.imageClass }}{% endif %}" 
-                alt="{{ params.imageAlt | default('') }}" 
-                src="{{ params.imageLink }}"
-                srcset="{{ params.imageLinkLarge }} 2x"
-                {% if not params.imageAlt %}aria-hidden="true"{% endif %}
-            />
-        {% endif %}
-        
-        {{ heading({
-            text: params.title,
-            level: "3",
-            classes: "govuk-heading-m"
-        }) }}
-        
-        <div class="govuk-body govuk-!-margin-bottom-0">
-            {{ caller() }}
-        </div>
-    </article>
+  <article class="app-card {{ "govuk-grid-column-full app-card__full" if params.layout == "full" else "govuk-grid-column-one-half-from-desktop" }}">
+    {{ _cardImage(params) if params.imageLink }}
+
+    {{ heading({
+      text: params.title,
+      size: "medium"
+    }) }}
+
+    <div class="govuk-body govuk-!-margin-bottom-0">
+      {{ caller() }}
+    </div>
+  </article>
 
 {% elif params.layout == "image-content" %}
-    <article class="app-card{% if params.reverse %} app-card--reverse{% endif %}">
-        
-        {% if params.imageLink %}
-            <div class="govuk-grid-column-one-half-from-desktop">
-                <img 
-                    loading="lazy" 
-                    class="app-card__image govuk-!-margin-bottom-4{% if params.imageClass %} {{ params.imageClass }}{% endif %}" 
-                    alt="{{ params.imageAlt | default('') }}" 
-                    src="{{ params.imageLink }}" 
-                    srcset="{{ params.imageLinkLarge }} 2x"
-                    {% if not params.imageAlt %}aria-hidden="true"{% endif %}
-                />
-            </div>
-        {% endif %}
-        
-        <div class="govuk-grid-column-one-half-from-desktop">
-            {{ heading({
-                text: params.title,
-                level: "3",
-                classes: "govuk-heading-m"
-            }) }}
-            
-            <div class="govuk-body govuk-!-margin-bottom-0">
-                {{ caller() }}
-            </div>
-        </div>
-    </article>
+  <article class="app-card{% if params.reverse %} app-card--reverse{% endif %}">
+    {% if params.imageLink %}
+      <div class="govuk-grid-column-one-half-from-desktop">
+        {{ _cardImage(params) }}
+      </div>
+    {% endif %}
+
+    <div class="govuk-grid-column-one-half-from-desktop">
+      {{ heading({
+        text: params.title,
+        size: "medium"
+      }) }}
+
+      <div class="govuk-body govuk-!-margin-bottom-0">
+        {{ caller() }}
+      </div>
+    </div>
+  </article>
 {% endif %}
