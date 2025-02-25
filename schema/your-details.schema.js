@@ -24,6 +24,8 @@ const schema = Joi.object({
       'any.required': 'Enter the team name you worked for when creating the component'
     })
     .label('What team did you work in when creating the component?'),
+  shareYourDetails: Joi.array()
+    .allow(null, '')
 })
 
 module.exports = schema

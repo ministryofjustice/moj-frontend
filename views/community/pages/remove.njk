@@ -1,0 +1,37 @@
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% extends "base.njk" %}
+{% block content %}
+  {% if backLink %}
+    <div class="app-layout__backlink">
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    </div>
+  {% endif %}
+  <div class="app-layout__content">
+    <form method="POST" action="{{ submitUrl }}">
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1>Are you sure you want to remove {{ type }}?</h1>
+
+      {{ govukSummaryList({
+        rows: summary
+      }) }}
+
+      <div class="govuk-button-group moj-button-action">
+        {{ govukButton({
+          text: deleteText,
+          preventDoubleClick: true,
+          classes: "govuk-button--warning"
+        }) }}
+
+        {{ govukButton({
+          text: "Cancel",
+          classes: "govuk-button--secondary",
+          href: backLink
+        }) }}
+    </form>
+  </div>
+{% endblock %}

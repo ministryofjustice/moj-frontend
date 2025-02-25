@@ -9,7 +9,9 @@ const {
   canSkipQuestion,
   canAddAnother,
   getBackLink,
-  hiddenFields
+  hiddenFields,
+  getFormSummaryListForRemove,
+  removeFromSession
 } = require('../middleware/component-session')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
 const {
@@ -17,12 +19,13 @@ const {
   sendPrEmail
 } = require('../middleware/notify-email')
 const { generateMarkdown } = require('../middleware/generate-documentation')
-const { COMPONENT_FORM_PAGES } = require('../config')
+const { COMPONENT_FORM_PAGES, ADD_NEW_COMPONENT_ROUTE } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const upload = multer({ storage: multer.memoryStorage() })
 const router = express.Router()
 const checkYourAnswers = require('../helpers/check-your-answers')
 const sessionData = require('../helpers/mockSessionData/sessionData.js')
+const { toTitleCase } = require('../helpers/text-helper')
 
 const isValidComponentFormPage = (req, res, next) => {
   if (!Object.keys(COMPONENT_FORM_PAGES).includes(req.params.page)) {
@@ -97,6 +100,37 @@ router.get('/confirmation', (req, res) => {
   res.render('confirmation')
 })
 
+// Remove form page
+router.get(
+  ['/remove/:page', '/remove/:page/:subpage'],
+  isValidComponentFormPage,
+  getFormSummaryListForRemove,
+  (req, res) => {
+    const summary = req?.removeSummaryRows
+    const type = toTitleCase(req?.params?.page || '')
+
+    if(!req?.params?.page || !summary) {
+      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`)
+    } else {
+      res.render('remove', {
+        submitUrl: req.originalUrl,
+        formData: req?.formData,
+        backLink: `${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`,
+        type,
+        summary,
+        deleteText: `Delete ${type}`
+      })
+    }
+  }
+)
+
+router.post(
+  ['/remove/:page', '/remove/:page/:subpage'],
+  removeFromSession,
+  (req, res ) => {
+    res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`)
+  })
+
 // Component form page
 router.get(
   ['/:page', '/:page/:subpage'],
@@ -133,7 +167,7 @@ router.post('/check-your-answers', getRawSessionText, async (req, res) => {
     if (err) {
       console.error('Error regenerating session:', err)
     }
-    res.redirect('/get-involved/add-new-component/confirmation')
+    res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/confirmation`)
   })
   const branchName = await pushToGitHub(session)
   const title = 'test title'
@@ -153,7 +187,7 @@ router.post(
   getBackLink,
   (req, res, next) => {
     if (req.nextPage) {
-      res.redirect(`/get-involved/add-new-component/${req.nextPage}`)
+      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.nextPage}`)
     } else {
       const error = new ApplicationError('Unknown page', 404)
       console.log(error.toErrorObject())
@@ -179,7 +213,7 @@ router.post(
   saveSession,
   (req, res, next) => {
     if (req.nextPage) {
-      res.redirect(`/get-involved/add-new-component/${req.nextPage}`)
+      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.nextPage}`)
     } else {
       const error = new ApplicationError('Unknown page', 404)
       console.log(error.toErrorObject())

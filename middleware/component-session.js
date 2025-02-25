@@ -2,6 +2,7 @@ const nextPage = require('../helpers/next-page')
 const getHiddenFields = require('../helpers/hidden-fields')
 const extractBody = require('../helpers/extract-body')
 const previousPage = require('../helpers/previous-page')
+const { formatLabel } = require('../helpers/text-helper')
 
 const maxAddAnother = 10
 
@@ -107,6 +108,19 @@ const getFormDataFromSession = (req, res, next) => {
   next()
 }
 
+const getFormSummaryListForRemove = ( req, res, next ) => {
+  const url = req.url.replace('/remove','')
+  const formData = req.session[url]
+  delete req.removeSummaryRows
+  if(formData) {
+    req.removeSummaryRows = Object.entries(formData).map(([key, value]) => ({
+      key: { text: formatLabel(key) },
+      value: { text: value }
+    }));
+  }
+  next()
+}
+
 // Get the raw session text without images
 const getRawSessionText = (req, res, next) => {
   const deepCloneAndRemoveBuffer = (obj) => {
@@ -165,6 +179,12 @@ const hiddenFields = (req, res, next) => {
   next()
 }
 
+const removeFromSession = (req, res, next) => {
+  const url = req.url.replace('/remove','')
+  delete req.session[url]
+  next()
+}
+
 module.exports = {
   setNextPage,
   validateFormData,
@@ -174,5 +194,7 @@ module.exports = {
   canSkipQuestion,
   canAddAnother,
   getBackLink,
-  hiddenFields
+  hiddenFields,
+  getFormSummaryListForRemove,
+  removeFromSession
 }

@@ -1,5 +1,4 @@
-const { COMPONENT_FORM_PAGES } = require("../config");
-const urlRoot = '/get-involved/add-new-component'
+const { COMPONENT_FORM_PAGES, ADD_NEW_COMPONENT_ROUTE: urlRoot } = require("../config");
 
 const checkConditions = (conditions, session) => {
   return Object.entries(conditions).every(([key, value]) => {

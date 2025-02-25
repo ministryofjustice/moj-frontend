@@ -99,7 +99,8 @@ const config = {
         no: 'your-details'
       }
     }
-  }
+  },
+  ADD_NEW_COMPONENT_ROUTE: '/get-involved/add-new-component'
 }
 
 module.exports = config

@@ -1,3 +1,4 @@
+const { toCamelCaseWithRows, formatLabel } = require('./text-helper')
 const sanitizeHtml = require('sanitize-html')
 
 const hrefRoot = '/get-involved/add-new-component'
@@ -13,14 +14,6 @@ const shareYourDetails = {
 
 const shareYourDetailsKeys = Object.keys(shareYourDetails)
 
-const toCamelCaseWithRows = (str) => {
-  return (
-    str
-      .replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
-      .replace(/^\w/, (c) => c.toLowerCase()) + 'Rows'
-  )
-}
-
 const truncateText = (text, maxWords) => {
   try {
     const words = String(text).split(' ')
@@ -29,7 +22,7 @@ const truncateText = (text, maxWords) => {
     }
     return text
   } catch (e) {
-    console.error('oh no', e)
+    console.error('oh no', e) // todo better error needed!
   }
 }
 
@@ -40,16 +33,18 @@ const sanitizeText = (text) => {
   })
 }
 
-const answersFromSession = (forms, session) => {
+const answersFromSession = (forms, canRemove, session) => {
   return forms.reduce((acc, form) => {
     if (Array.isArray(form)) {
       const topLevelKey = toCamelCaseWithRows(form[0])
+      const canRemoveTopLevel = canRemove.includes(form[0])
       acc[topLevelKey] = form.flatMap((field) =>
-        extractFieldData(field, session)
+        extractFieldData(field, session, canRemoveTopLevel)
       )
     } else {
       const key = toCamelCaseWithRows(form)
-      acc[key] = extractFieldData(form, session)
+      const canRemoveKey = canRemove.includes(form)
+      acc[key] = extractFieldData(form, session, canRemoveKey)
     }
     return acc
   }, {})
@@ -75,11 +70,9 @@ const shareYourDetailsValueReplacement = (value) => {
   )
 }
 
-const extractFieldData = (field, session) => {
+const extractFieldData = (field, session, canRemove = false) => {
   const fieldName = field
   const fieldPath = `/${field}`
-  const changeHref = `${fieldPath}`
-  const fieldData = session[fieldPath]
 
   // Collect all entries that match the field pattern (e.g., /foo, /foo/1, /foo/2)
   const fieldPattern = new RegExp(`^${fieldPath}(?:/\\d+)?$`)
@@ -93,6 +86,7 @@ const extractFieldData = (field, session) => {
     if (typeof value === 'object' && !Array.isArray(value)) {
       // multiple entries
       return Object.entries(value).map(([subKey, subValue]) => {
+        const actionItems = []
         const isShareYourDetails = subKey === 'shareYourDetails'
         const displayValue = {
           value: {}
@@ -105,49 +99,60 @@ const extractFieldData = (field, session) => {
           )
         }
 
+        actionItems.push({
+          href: `${hrefRoot}${key}`,
+          text: 'Change',
+          visuallyHiddenText:
+              formatLabel(fieldName) + ' - ' + formatLabel(subKey)
+        })
+
+        if(canRemove) {
+          actionItems.push({
+            href: `${hrefRoot}/remove${key}`,
+            text: 'Remove',
+            visuallyHiddenText:
+                formatLabel(fieldName) + ' - ' + formatLabel(subKey)
+          })
+        }
+
         return {
           key: { text: formatLabel(subKey) },
           ...displayValue,
           actions: {
-            items: [
-              {
-                href: `${hrefRoot}${key}`,
-                text: 'Change',
-                visuallyHiddenText:
-                  formatLabel(fieldName) + ' - ' + formatLabel(subKey)
-              }
-            ]
+            items: actionItems
           }
         }
       })
-    }
+    } else {
 
-    // single entry
-    return [
-      {
-        key: { text: formatLabel(fieldName) },
-        value: { text: sanitizeText(truncateText(value, maxWords)) },
-        actions: {
-          items: [
-            {
-              href: `${hrefRoot}${key}`,
-              text: 'Change',
-              visuallyHiddenText: formatLabel(fieldName)
-            }
-          ]
-        }
+      const actionItems = []
+
+      actionItems.push({
+        href: `${hrefRoot}${key}`,
+        text: 'Change',
+        visuallyHiddenText: formatLabel(fieldName)
+      })
+
+      if(canRemove) {
+        actionItems.push({
+          href: `${hrefRoot}/remove${key}`,
+          text: 'Remove',
+          visuallyHiddenText: formatLabel(fieldName)
+        })
       }
-    ]
-  })
-}
 
-// Format field names into readable labels
-const formatLabel = (field) => {
-  return field
-    .replace(/([a-z])([A-Z])/g, '$1 $2')
-    .replace(/-/g, ' ')
-    .replace(/\b\w/g, (char) => char.toUpperCase())
-    .trim()
+      // single entry
+      return [
+        {
+          key: { text: formatLabel(fieldName) },
+          value: { text: sanitizeText(truncateText(value, maxWords)) },
+          actions: {
+            items: actionItems
+          }
+        }
+      ]
+    }
+  })
 }
 
 const checkYourAnswers = (session) => {
@@ -159,6 +164,12 @@ const checkYourAnswers = (session) => {
     ['component-code', 'component-code-details'],
     'your-details'
   ]
-  return answersFromSession(forms, session)
+  const canRemove = [
+    'component-image',
+    'accessibility-findings',
+    'prototype',
+    'component-code'
+  ]
+  return answersFromSession(forms, canRemove, session)
 }
 module.exports = checkYourAnswers
