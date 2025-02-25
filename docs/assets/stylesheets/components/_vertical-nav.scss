@@ -16,18 +16,18 @@
 }
 
 .app-vertical-nav__header {
-  @include govuk-font($size: 24);
   margin-bottom: govuk-spacing(2);
   padding-right: 19px;
   padding-left: 19px;
   color: $govuk-secondary-text-colour;
+  @include govuk-font($size: 24);
 }
 
 .app-vertical-nav__list {
-  @include govuk-font($size: 19);
   margin: 0;
   padding: 0;
   list-style: none;
+  @include govuk-font($size: 19);
 }
 
 .app-vertical-nav__item {
@@ -119,8 +119,8 @@
 }
 
 .app-vertical-nav__list .app-vertical-nav__list {
-  @include govuk-font($size: 16);
   padding-left: govuk-spacing(2);
+  @include govuk-font($size: 16);
 }
 
 .app-vertical-nav__item--active > .app-vertical-nav__link {

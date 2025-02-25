@@ -3,7 +3,6 @@
    ========================================================================== */
 
 .moj-badge {
-  @include govuk-font($size: 14, $weight: "bold");
   display: inline-block;
   padding: 0 govuk-spacing(1);
   border: 2px solid $govuk-brand-colour;
@@ -12,6 +11,7 @@
   color: $govuk-brand-colour;
   text-transform: uppercase;
   vertical-align: middle;
+  @include govuk-font($size: 14, $weight: "bold");
 
   &--purple {
     border-color: govuk-colour("purple");

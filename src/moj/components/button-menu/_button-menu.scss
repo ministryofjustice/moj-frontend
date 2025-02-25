@@ -58,7 +58,6 @@
 /* Menu items with JS */
 .moj-button-menu li > .moj-button-menu__item {
   $button-shadow-size: 0;
-  @include govuk-font($size: 19, $line-height: 19px);
 
   box-sizing: border-box;
   display: inline-block;
@@ -79,6 +78,7 @@
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
+  @include govuk-font($size: 19, $line-height: 19px);
 
   &:link,
   &:visited,

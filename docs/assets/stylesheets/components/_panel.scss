@@ -5,11 +5,11 @@
    ========================================================================== */
 
 .app-panel {
+  color: govuk-colour("white");
+  background-color: govuk-colour("blue");
   @include govuk-responsive-margin(6, "top");
   @include govuk-responsive-margin(6, "bottom");
   @include govuk-responsive-padding(3);
-  color: govuk-colour("white");
-  background-color: govuk-colour("blue");
 }
 
 .app-panel__heading,
@@ -22,8 +22,8 @@
 }
 
 .app-panel__body {
-  @include govuk-font(19);
   margin-bottom: 0;
+  @include govuk-font(19);
 }
 
 .app-panel__link {

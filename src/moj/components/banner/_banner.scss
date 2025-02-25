@@ -17,10 +17,10 @@
 }
 
 .moj-banner__message {
-  @include govuk-font($size: 19);
   display: block;
   overflow: hidden;
   color: govuk-colour("black");
+  @include govuk-font($size: 19);
 }
 
 .moj-banner__message h2 {

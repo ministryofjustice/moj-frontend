@@ -67,10 +67,10 @@
   }
 
   &__item {
-    @include govuk-font(19);
     display: block;
     margin-top: -1px;
     box-shadow: inset 0 -1px 0 $govuk-border-colour;
+    @include govuk-font(19);
 
     &:last-child {
       box-shadow: none;

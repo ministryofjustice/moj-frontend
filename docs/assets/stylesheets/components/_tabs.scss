@@ -34,13 +34,13 @@
 }
 
 .app-tabs__tab {
-  @include govuk-font($size: 19, $weight: bold);
   display: block;
   position: relative;
   padding: 20px;
   color: govuk-colour("blue");
   background-color: govuk-colour("white");
   text-decoration: none;
+  @include govuk-font($size: 19, $weight: bold);
 
   &:link,
   &:active,
@@ -87,12 +87,12 @@
 }
 
 .app-tabs__panel {
-  @include govuk-font($size: 16);
   position: relative;
   padding: govuk-spacing(3);
   border: 1px solid $govuk-border-colour;
   border-top: 0;
   background-color: govuk-colour("white");
+  @include govuk-font($size: 16);
 
   &--hidden {
     display: none;
