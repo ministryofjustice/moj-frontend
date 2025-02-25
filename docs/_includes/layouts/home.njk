@@ -6,14 +6,13 @@
 {% block title %}MoJ Design System{% endblock %}
 
 {% block content %}
-
   <div class="app-masthead">
     <div class="app-layout__content">
-     {{ heading({
-      text: title,
-      level: "1",
-      classes: "govuk-!-margin-bottom-4"
-    }) }}
+      {{ heading({
+        text: title,
+        level: "1",
+        classes: "govuk-!-margin-bottom-4"
+      }) }}
       <p class="govuk-body">
         Use the MoJ Design System alongside the
         <a class="govuk-link govuk-link--inverse" href="https://design-system.service.gov.uk/">
@@ -28,11 +27,11 @@
 
   <div class="app-layout__content">
     <section>
-       {{ heading({
-            text:  "About the Design System",
-            level: "2",
-            classes: "govuk-heading-l govuk-!-margin-bottom-7"
-            }) }}
+      {{ heading({
+        text: "About the Design System",
+        level: "2",
+        classes: "govuk-heading-l govuk-!-margin-bottom-7"
+      }) }}
       <div class="govuk-grid-row">
         {% call card({
           "layout": "side-by-side",
@@ -58,40 +57,41 @@
       </div>
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
     </section>
-     {% if community %}
-    <section>
-       {{ heading({
-            text:  "Get involved in helping the Design System grow",
-            level: "2",
-            classes: "govuk-heading-l govuk-!-margin-bottom-7"
-            }) }}
-      <div class="govuk-grid-row">
-        {% call card({
-          "layout": "image-content",
-          "title": "Collaborate with the community",
-          "imageLink": "assets/images/home-img/contribute.png",
-          "imageLinkLarge": "assets/images/home-img/contributex2.png",
-          "imageAlt": ""
-        }) %}
-          <p>The MoJ Design System is a collaboration between communities of users and the Design System team.</p>
-          <p>Anyone can help improve the Design System.</p>
-          <p>
-            You can get involved with community components by adding a new one,
-            or providing information and feedback about an existing one.
-          </p>
-          <a class="gov-link" href="#">Discover more about collaborating with the community</a>
-        {% endcall %}
-      </div>
-      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
-    </section>
+
+    {% if community %}
+      <section>
+        {{ heading({
+          text: "Get involved in helping the Design System grow",
+          level: "2",
+          classes: "govuk-heading-l govuk-!-margin-bottom-7"
+        }) }}
+        <div class="govuk-grid-row">
+          {% call card({
+            "layout": "image-content",
+            "title": "Collaborate with the community",
+            "imageLink": "assets/images/home-img/contribute.png",
+            "imageLinkLarge": "assets/images/home-img/contributex2.png",
+            "imageAlt": ""
+          }) %}
+            <p>The MoJ Design System is a collaboration between communities of users and the Design System team.</p>
+            <p>Anyone can help improve the Design System.</p>
+            <p>
+              You can get involved with community components by adding a new one,
+              or providing information and feedback about an existing one.
+            </p>
+            <a class="gov-link" href="#">Discover more about collaborating with the community</a>
+          {% endcall %}
+        </div>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+      </section>
     {% endif %}
 
     <section>
       {{ heading({
-            text:  "Prototyping at MoJ",
-            level: "2",
-            classes: "govuk-heading-l govuk-!-margin-bottom-7"
-            }) }}
+        text: "Prototyping at MoJ",
+        level: "2",
+        classes: "govuk-heading-l govuk-!-margin-bottom-7"
+      }) }}
       <div class="govuk-grid-row">
         {% call card({ "layout": "full", "title": "How to choose the right prototyping tool" }) %}
           <p>
@@ -120,10 +120,10 @@
 
     <section>
       {{ heading({
-            text:  "Getting set up for production",
-            level: "2",
-            classes: "govuk-heading-l govuk-!-margin-bottom-7"
-            }) }}
+        text: "Getting set up for production",
+        level: "2",
+        classes: "govuk-heading-l govuk-!-margin-bottom-7"
+      }) }}
       <div class="govuk-grid-row">
         {% call card({ "layout": "side-by-side", "title": "Install MoJ Frontend" }) %}
           <p>
