@@ -2,16 +2,11 @@
 .moj-button-menu {
   display: inline-block;
   position: relative;
-
-  > .govuk-button {
-    // required for no-js alignment within moj-button-group
-    margin-bottom: 0;
-    vertical-align: baseline;
-  }
 }
 
 .moj-button-menu__toggle-button {
-  display: inline;
+  margin-bottom: 0;
+  vertical-align: baseline;
 }
 
 .moj-button-menu__toggle-button span {
@@ -32,9 +27,8 @@
 .moj-button-menu__wrapper {
   position: absolute;
   z-index: 10;
-  top: 43px; // 38px button height, 2px shadow, 3px gap
   width: 200px;
-  margin: 0;
+  margin: 5px 0 0; // 2px shadow, 3px gap
   padding: 0;
   list-style: none;
 
@@ -49,6 +43,7 @@
   width: auto; // Override GDS’s 100% width
   margin-right: govuk-spacing(2);
   margin-bottom: govuk-spacing(2);
+  vertical-align: baseline;
 
   &:last-child {
     margin-right: 0;
@@ -57,8 +52,6 @@
 
 /* Menu items with JS */
 .moj-button-menu li > .moj-button-menu__item {
-  $button-shadow-size: 0;
-
   box-sizing: border-box;
   display: inline-block;
   position: relative;
