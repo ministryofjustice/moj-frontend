@@ -32,10 +32,10 @@
 }
 
 .moj-datepicker__dialog-title {
-  @include govuk-font(16);
   margin-top: 0;
   margin-bottom: 0;
   font-weight: bold;
+  @include govuk-font(16);
 }
 
 .moj-datepicker__dialog-navbuttons {
@@ -59,9 +59,9 @@
   }
 
   th {
-    @include govuk-font(16);
     color: $govuk-text-colour;
     font-weight: bold;
+    @include govuk-font(16);
   }
 }
 
@@ -74,7 +74,6 @@
 }
 
 .moj-datepicker__button {
-  @include govuk-font(16);
   position: relative;
   width: 44px;
   height: 40px;
@@ -85,6 +84,7 @@
   outline-offset: -2px;
   color: $govuk-text-colour;
   background-color: transparent;
+  @include govuk-font(16);
 
   @media (forced-colors: active) {
     // Don't show the bottom bar in forced-color modes as it blocks the outline

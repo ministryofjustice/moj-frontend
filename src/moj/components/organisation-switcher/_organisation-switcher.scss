@@ -3,11 +3,11 @@
    ========================================================================== */
 
 .moj-organisation-nav {
-  @include govuk-clearfix;
   margin-top: govuk-spacing(2);
   margin-bottom: govuk-spacing(3);
   padding-bottom: govuk-spacing(1);
   border-bottom: 1px solid $govuk-border-colour;
+  @include govuk-clearfix;
 }
 
 .moj-organisation-nav__title {

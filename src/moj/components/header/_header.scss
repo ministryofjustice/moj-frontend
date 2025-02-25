@@ -9,9 +9,9 @@
 }
 
 .moj-header__container {
+  position: relative;
   @include moj-width-container;
   @include govuk-clearfix;
-  position: relative;
 }
 
 .moj-header__logo {
@@ -46,22 +46,22 @@
 
 .moj-header__link,
 .moj-header__link > a {
-  @include govuk-link-common;
-  @include govuk-link-style-default;
   display: inline-block;
   margin-bottom: -1px;
   overflow: hidden; // Fixes focus gaps in background colour
   border-bottom: 1px solid transparent;
   color: govuk-colour("white");
   line-height: 25px; // Override due to alignment issue in Chrome
-  text-decoration: none;
   vertical-align: middle;
+  @include govuk-link-common;
+  @include govuk-link-style-default;
 
   &:link,
   &:visited,
   &:hover,
   &:active {
     color: govuk-colour("white");
+    text-decoration: none;
   }
 
   &:hover {
@@ -74,8 +74,8 @@
   }
 
   &--organisation-name {
-    @include govuk-font($size: 24, $weight: "bold");
     vertical-align: middle;
+    @include govuk-font($size: 24, $weight: "bold");
 
     &:hover {
       border-color: transparent;
@@ -133,9 +133,9 @@ span.moj-header__link {
 }
 
 .moj-header__navigation-item {
-  @include govuk-font(19);
   display: inline-block;
   margin-right: govuk-spacing(4);
+  @include govuk-font(19);
 
   &:last-child {
     margin-right: 0;

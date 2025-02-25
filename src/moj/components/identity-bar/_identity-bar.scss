@@ -12,9 +12,9 @@
 }
 
 .moj-identity-bar__container {
-  @include moj-width-container;
   font-size: 0; /* Hide whitespace between elements */
   text-align: justify; /* Trick to remove the need for floats */
+  @include moj-width-container;
 
   &::after {
     content: "";
@@ -24,9 +24,9 @@
 }
 
 .moj-identity-bar__title {
-  @include govuk-font(16);
   display: inline-block;
   vertical-align: top;
+  @include govuk-font(16);
 }
 
 .moj-identity-bar__details {

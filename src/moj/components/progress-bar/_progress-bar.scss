@@ -32,12 +32,12 @@
 }
 
 .moj-progress-bar__item {
-  @include govuk-font(19);
   display: inline-block;
   position: relative;
   max-width: 20%;
   text-align: center;
   vertical-align: top;
+  @include govuk-font(19);
 
   &:first-child,
   &:last-child {
@@ -91,10 +91,10 @@
 }
 
 .moj-progress-bar__label {
-  @include govuk-font(16);
   display: block;
   position: relative;
   margin-top: govuk-spacing(3);
   font-weight: inherit;
   word-wrap: break-word; // Just in case
+  @include govuk-font(16);
 }
