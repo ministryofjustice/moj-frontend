@@ -1,4 +1,4 @@
-<nav class="moj-pagination {{- ' ' + params.classes if params.classes}}" aria-label="Pagination navigation">
+<nav class="moj-pagination {{- " " + params.classes if params.classes}}" aria-label="Pagination navigation">
 
   <ul class="moj-pagination__list">
     {%- if params.previous %}
@@ -8,7 +8,7 @@
     {% endif -%}
 
     {%- for item in params.items %}
-      {%- if item.type == 'dots' %}
+      {%- if item.type == "dots" %}
         <li class="moj-pagination__item moj-pagination__item--dots">…</li>
       {% else %}
         {%- if item.selected %}

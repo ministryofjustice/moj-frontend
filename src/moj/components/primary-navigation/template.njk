@@ -1,10 +1,10 @@
-<div class="moj-primary-navigation {{- ' ' + params.containerClasses if params.containerClasses}}">
+<div class="moj-primary-navigation {{- " " + params.containerClasses if params.containerClasses}}">
 
   <div class="moj-primary-navigation__container">
 
     <div class="moj-primary-navigation__nav">
 
-      <nav class="moj-primary-navigation {{- ' ' + params.classes if params.classes}}" {%- if (params.label) %} aria-label="{{ params.label }}"{% endif %} {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+      <nav class="moj-primary-navigation {{- " " + params.classes if params.classes}}" {%- if (params.label) %} aria-label="{{ params.label }}"{% endif %} {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
 
         <ul class="moj-primary-navigation__list">
 
