@@ -1,3 +1,10 @@
+## [3.6.1](https://github.com/ministryofjustice/moj-frontend/compare/v3.6.0...v3.6.1) (2025-02-25)
+
+
+### Bug Fixes
+
+* typo in status label comment ([7078172](https://github.com/ministryofjustice/moj-frontend/commit/70781721fc2f4e96b7e43b89f4d0a8495ed1e23d))
+
 # [3.6.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.5.0...v3.6.0) (2025-02-25)
 
 
