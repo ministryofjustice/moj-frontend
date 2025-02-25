@@ -1,3 +1,13 @@
+<!--
+Arguments to be passed:
+- layout: {string} "side-by-side", "full", "image-content".
+- reverse: {boolean} Reverse the layout of image-content variant, so image shows either left or right of content.
+- imageLink: {string} absolute path of image location. For example assets/images/... 
+- imageClass: {string} additional css class to be applied if needed
+- imageAlt: {string} alt text for image, if empty the images will be treated as decorative for screen readers 
+- imageLinkLarge: {string} absolute path for larger image location for x2 display. For example assets/images/... 
+-->
+
 {% macro card(params) %}
 {% if params.layout == "side-by-side" or params.layout == "full" %}
     <article class="app-card {{ 'govuk-grid-column-full app-card__full' if params.layout == 'full' else 'govuk-grid-column-one-half-from-desktop' }}">
