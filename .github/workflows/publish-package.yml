@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
+          node-version-file: .nvmrc
       - run: npm ci
       - run: npm run build:package
       - uses: actions/upload-artifact@v4
@@ -91,7 +91,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version-file: .nvmrc
       - uses: actions/download-artifact@v4
         with:
           name: mojds-package
