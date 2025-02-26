@@ -1,3 +1,11 @@
+## [3.6.3](https://github.com/ministryofjustice/moj-frontend/compare/v3.6.2...v3.6.3) (2025-02-26)
+
+
+### Bug Fixes
+
+* ensure `node_modules` is added to Sass load paths ([4c035f1](https://github.com/ministryofjustice/moj-frontend/commit/4c035f14a991429506638db954c4e3dd2de26140))
+* ensure `peerDependencies` are installed ([69c8572](https://github.com/ministryofjustice/moj-frontend/commit/69c857272af3f4facd26d95a33dd305e86e3f7ec))
+
 ## [3.6.2](https://github.com/ministryofjustice/moj-frontend/compare/v3.6.1...v3.6.2) (2025-02-25)
 
 
