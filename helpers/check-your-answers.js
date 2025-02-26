@@ -35,16 +35,16 @@ const sanitizeText = (text) => {
   })
 }
 
-const answersFromSession = (forms, canRemove, session) => {
+const answersFromSession = (forms, canRemove, session, ignoreFields) => {
   return forms.reduce((acc, form) => {
     if (Array.isArray(form)) {
       const topLevelKey = toCamelCaseWithRows(form[0])
       acc[topLevelKey] = form.flatMap((field) =>
-        extractFieldData(field, session, canRemove)
+        extractFieldData(field, session, canRemove, ignoreFields)
       )
     } else {
       const key = toCamelCaseWithRows(form)
-      acc[key] = extractFieldData(form, session, canRemove)
+      acc[key] = extractFieldData(form, session, canRemove, ignoreFields)
     }
     return acc
   }, {})
@@ -70,13 +70,26 @@ const shareYourDetailsValueReplacement = (value) => {
   )
 }
 
-const extractFieldData = (field, session, canRemove = []) => {
+const extractFieldData = (field, session, canRemove = [], ignoreFields = []) => {
   const fieldName = field
   const fieldPath = `/${field}`
 
+  // Remove ignored fields
+  const parsedSession = Object.entries(session).reduce((acc, [key, value]) => {
+    if (typeof value === 'object' && !Array.isArray(value)) {
+      ignoreFields.forEach((ignoreField) => {
+        if (value.hasOwnProperty(ignoreField)) {
+          delete value[ignoreField]
+        }
+      })
+    }
+    acc[key] = value
+    return acc
+  }, {})
+
   // Collect all entries that match the field pattern (e.g., /foo, /foo/1, /foo/2)
   const fieldPattern = new RegExp(`^${fieldPath}(?:/\\d+)?$`)
-  const matchingEntries = Object.entries(session).filter(([key]) =>
+  const matchingEntries = Object.entries(parsedSession).filter(([key]) =>
     fieldPattern.test(key)
   )
 
@@ -187,12 +200,16 @@ const checkYourAnswers = (session) => {
       '/figma-link',
       '/component-code-details'
   ]
+  const ignoreFields = [
+      'componentPrototypeUrl',
+      'figmaUrl'
+  ]
   const canRemove = [
     ...canRemoveStatic,
     ...canRemoveMultiples.flatMap(item =>
         Array.from({ length: maxAddAnother }, (_, i) => `${item}/${i + 1}`)
     )
   ]
-  return answersFromSession(forms, canRemove, session)
+  return answersFromSession(forms, canRemove, session, ignoreFields)
 }
 module.exports = checkYourAnswers
