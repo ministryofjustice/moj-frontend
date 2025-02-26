@@ -60,10 +60,6 @@ jobs:
         run: npm install
       - name: Run JS tests
         run: npm run test:js
-      - uses: actions/download-artifact@v4
-        with:
-          name: mojds-package
-          path: package
       - name: Test that sass can be compiled
         run: npm run test:scss
 
