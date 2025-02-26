@@ -18,7 +18,7 @@
 
   &__message {
     margin: 0;
-    @include govuk-width-container;
+    @include moj-width-container;
   }
 
   &__buttons {
