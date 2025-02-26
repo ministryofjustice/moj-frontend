@@ -1,5 +1,5 @@
 $_govuk-imported-modules: ("govuk/objects/width-container") !default;
 
-@import "govuk-frontend/dist/govuk/base";
-@import "govuk-frontend/dist/govuk/objects/width-container";
-@import "@ministryofjustice/frontend/moj/all";
+@import "node_modules/govuk-frontend/dist/govuk/base";
+@import "node_modules/govuk-frontend/dist/govuk/objects/width-container";
+@import "node_modules/@ministryofjustice/frontend/moj/all";

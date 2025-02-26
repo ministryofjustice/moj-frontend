@@ -1,3 +1,23 @@
+# [3.7.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.6.3...v3.7.0) (2025-02-26)
+
+
+### Bug Fixes
+
+* ensure Dart Sass `file://` sources use relative paths ([11db6df](https://github.com/ministryofjustice/moj-frontend/commit/11db6dfe2fd145d09b798e69bb5b88909727653a))
+
+
+### Features
+
+* add source map support ([3c14da6](https://github.com/ministryofjustice/moj-frontend/commit/3c14da640de4f1e865c3d73cda8987a577631463))
+
+## [3.6.3](https://github.com/ministryofjustice/moj-frontend/compare/v3.6.2...v3.6.3) (2025-02-26)
+
+
+### Bug Fixes
+
+* ensure `node_modules` is added to Sass load paths ([4c035f1](https://github.com/ministryofjustice/moj-frontend/commit/4c035f14a991429506638db954c4e3dd2de26140))
+* ensure `peerDependencies` are installed ([69c8572](https://github.com/ministryofjustice/moj-frontend/commit/69c857272af3f4facd26d95a33dd305e86e3f7ec))
+
 ## [3.6.2](https://github.com/ministryofjustice/moj-frontend/compare/v3.6.1...v3.6.2) (2025-02-25)
 
 

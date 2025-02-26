@@ -82,11 +82,17 @@ gulp.task('docs:revision', async () => {
       ],
       {
         base: 'public',
-        encoding: false
+        encoding: false,
+        sourcemaps: true
       }
     )
     .pipe(rev())
-    .pipe(gulp.dest('public/')) // Write rev'd assets to build dir
+    .pipe(
+      // Write rev'd assets to build dir
+      gulp.dest('public/', {
+        sourcemaps: '.'
+      })
+    )
     .pipe(rev.manifest())
     .pipe(gulp.dest('public/assets/'))
 })
