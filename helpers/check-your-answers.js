@@ -1,4 +1,5 @@
 const { toCamelCaseWithRows, formatLabel, replaceAcronyms } = require('./text-helper')
+const { combineDateFields } = require('./date-fields')
 const sanitizeHtml = require('sanitize-html')
 const { MAX_ADD_ANOTHER: maxAddAnother, ACRONYMS_TO_UPPERCASE: acronyms } = require('../config')
 
@@ -84,7 +85,8 @@ const extractFieldData = (field, session, canRemove = []) => {
   return matchingEntries.flatMap(([key, value]) => {
     if (typeof value === 'object' && !Array.isArray(value)) {
       // multiple entries
-      return Object.entries(value).map(([subKey, subValue]) => {
+      const values = combineDateFields(value)
+      return Object.entries(values).map(([subKey, subValue]) => {
         const actionItems = []
         const isShareYourDetails = subKey === 'shareYourDetails'
         const displayValue = {
