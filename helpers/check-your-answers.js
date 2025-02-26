@@ -168,6 +168,7 @@ const checkYourAnswers = (session) => {
       'add-internal-audit',
       'add-assistive-tech',
       ['prototype', 'prototype-url'],
+      ['figma', 'figma-link'],
       ['component-code', 'component-code-details'],
       'your-details'
   ]
@@ -175,6 +176,7 @@ const checkYourAnswers = (session) => {
       '/component-image',
       '/accessibility-findings',
       '/prototype-url',
+      '/figma-link',
       '/component-code-details',
       '/add-external-audit',
       '/add-internal-audit',
@@ -182,6 +184,7 @@ const checkYourAnswers = (session) => {
   ]
   const canRemoveMultiples = [
       '/prototype-url',
+      '/figma-link',
       '/component-code-details'
   ]
   const canRemove = [

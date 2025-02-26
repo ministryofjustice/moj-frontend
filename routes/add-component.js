@@ -56,7 +56,8 @@ router.get(`/${checkYourAnswersPath}`, (req, res) => {
     addExternalAuditRows,
     addInternalAuditRows,
     addAssistiveTechRows,
-    yourDetailsRows
+    yourDetailsRows,
+    figmaRows,
   } = checkYourAnswers(req.session)
   res.render(checkYourAnswersPath, {
     submitUrl: req.originalUrl,
@@ -67,7 +68,8 @@ router.get(`/${checkYourAnswersPath}`, (req, res) => {
     addExternalAuditRows,
     addInternalAuditRows,
     addAssistiveTechRows,
-    yourDetailsRows
+    yourDetailsRows,
+    figmaRows
   })
 })
 
