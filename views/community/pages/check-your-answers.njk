@@ -12,9 +12,19 @@
             rows: componentDetailsRows
           }) }}
 
-          <h2 class="govuk-heading-m">Accessibility findings</h2>
+          <h2 class="govuk-heading-m">External accessibility audit</h2>
           {{ govukSummaryList({
-            rows: accessibilityRows
+            rows: addExternalAuditRows
+          }) }}
+
+          <h2 class="govuk-heading-m">Internal accessibility audit</h2>
+          {{ govukSummaryList({
+            rows: addInternalAuditRows
+          }) }}
+
+          <h2 class="govuk-heading-m">Testing with assistive technology</h2>
+          {{ govukSummaryList({
+            rows: addAssistiveTechRows
           }) }}
 
           <h2 class="govuk-heading-m">Prototype URL</h2>

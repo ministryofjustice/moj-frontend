@@ -53,7 +53,9 @@ router.get(`/${checkYourAnswersPath}`, (req, res) => {
     accessibilityRows,
     prototypeRows,
     componentCodeRows,
-    additionalInformationRows,
+    addExternalAuditRows,
+    addInternalAuditRows,
+    addAssistiveTechRows,
     yourDetailsRows
   } = checkYourAnswers(req.session)
   res.render(checkYourAnswersPath, {
@@ -62,7 +64,9 @@ router.get(`/${checkYourAnswersPath}`, (req, res) => {
     accessibilityRows,
     prototypeRows,
     componentCodeRows,
-    additionalInformationRows,
+    addExternalAuditRows,
+    addInternalAuditRows,
+    addAssistiveTechRows,
     yourDetailsRows
   })
 })

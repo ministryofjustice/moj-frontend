@@ -156,12 +156,14 @@ const extractFieldData = (field, session, canRemove = []) => {
 
 const checkYourAnswers = (session) => {
   const forms = [
-    'component-details',
-    'component-image',
-    ['accessibility-findings'],
-    ['prototype', 'prototype-url'],
-    ['component-code', 'component-code-details'],
-    'your-details'
+      'component-details',
+      'component-image',
+      'add-external-audit',
+      'add-internal-audit',
+      'add-assistive-tech',
+      ['prototype', 'prototype-url'],
+      ['component-code', 'component-code-details'],
+      'your-details'
   ]
   const canRemoveStatic = [
     '/component-image',
