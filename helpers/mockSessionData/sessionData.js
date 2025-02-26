@@ -58,7 +58,7 @@ module.exports = {
       "addTeamNameWhenRequested"
     ]
   },
-  "checkYourAnswers": true,
+  "checkYourAnswers": false,
   "/figma": {
     "figmaUrl": "yes"
   },

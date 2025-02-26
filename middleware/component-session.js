@@ -3,6 +3,7 @@ const extractBody = require('../helpers/extract-body')
 const previousPage = require('../helpers/previous-page')
 const { formatLabel } = require('../helpers/text-helper')
 const { MAX_ADD_ANOTHER: maxAddAnother } = require('../config')
+const {checkYourAnswers} = require("../helpers/mockSessionData/sessionData");
 
 const camelToKebab = (str) =>
   str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
@@ -18,7 +19,9 @@ const setNextPage = (req, res, next) => {
   const addAnother = req?.body?.addAnother
   if (req?.session?.checkYourAnswers && !addAnother) {
     req.nextPage = 'check-your-answers'
-    delete req.session.checkYourAnswers
+    if(req.method === 'POST') {
+      delete req.session.checkYourAnswers
+    }
   } else {
     let subpage = null
     if(addAnother) {
@@ -166,7 +169,11 @@ const canAddAnother = (req, res, next) => {
 
 const getBackLink = (req, res, next) => {
   const { url, session, formData } = req
-  req.backLink = previousPage(url, session, {...formData})
+  if(session?.checkYourAnswers) {
+    req.backLink = 'check-your-answers'
+  } else {
+    req.backLink = previousPage(url, session, {...formData})
+  }
   next()
 }
 

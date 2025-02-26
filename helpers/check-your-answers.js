@@ -95,6 +95,8 @@ const extractFieldData = (field, session, canRemove = []) => {
         }
         if (isShareYourDetails) {
           displayValue.value.html = shareYourDetailsValueReplacement(subValue)
+        } else if (subValue.hasOwnProperty('originalname')) {
+          displayValue.value.text = subValue.originalname
         } else {
           displayValue.value.text = sanitizeText(
             truncateText(subValue, maxWords)

@@ -25,6 +25,7 @@ const router = express.Router()
 const checkYourAnswers = require('../helpers/check-your-answers')
 const sessionData = require('../helpers/mockSessionData/sessionData.js')
 const { urlToTitleCase } = require('../helpers/text-helper')
+const {setMedia} = require("mock-match-media");
 
 const isValidComponentFormPage = (req, res, next) => {
   if (!Object.keys(COMPONENT_FORM_PAGES).includes(req.params.page)) {
@@ -183,7 +184,7 @@ router.post(
   upload.single('componentImage'),
   validateFormData,
   saveSession,
-  // setNextPage,
+  setNextPage,
   getBackLink,
   (req, res, next) => {
     if (req.nextPage) {
@@ -212,7 +213,7 @@ router.post(
   validateFormData,
   saveSession,
   (req, res, next) => {
-    if (req.nextPage) {
+    if (req?.nextPage) {
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.nextPage}`)
     } else {
       const error = new ApplicationError('Unknown page', 404)
