@@ -9,15 +9,15 @@
   ],
   "scripts": {
     "build": "concurrently npm:build:* --group --prefix none",
-    "build:docs": "gulp build:docs && eleventy --input=./docs --output=public",
-    "build:dist": "gulp build:dist",
-    "build:package": "gulp build:package",
+    "build:docs": "gulp build:docs --color && eleventy --input=./docs --output=public",
+    "build:dist": "gulp build:dist --color",
+    "build:package": "gulp build:package --color",
     "postbuild:package": "govuk-prototype-kit validate-plugin package",
     "ci:release": "CI=true semantic-release --debug",
     "ci:dryrun": "CI=true semantic-release --dry-run",
     "start": "concurrently npm:watch:* --prefix none",
     "test": "concurrently npm:test:* --group --prefix none",
-    "test:js": "jest src/",
+    "test:js": "jest --color src/",
     "test:scss": "sass --color --load-path . --quiet-deps src/moj/all.scss > /dev/null && echo \"ok\"",
     "lint": "concurrently npm:lint:* --group",
     "lint:js": "npm run lint:js:cli -- \"**/*.{cjs,js,md,mjs}\"",
@@ -27,7 +27,7 @@
     "lint:scss": "npm run lint:scss:cli -- \"**/*.{md,scss}\"",
     "lint:scss:cli": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
     "watch:11ty": "eleventy --input=./docs --output=public --serve",
-    "watch:package": "gulp watch:dev"
+    "watch:package": "gulp watch:dev --color"
   },
   "repository": {
     "type": "git",
