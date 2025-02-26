@@ -2,7 +2,7 @@ const Joi = require('joi')
 const moment = require('moment')
 
 const schema = Joi.object({
-  organisation: Joi.string()
+  externalOrganisation: Joi.string()
     .required()
     .messages({
       'any.required': 'Enter the name of the organisation who conducted the external audit',

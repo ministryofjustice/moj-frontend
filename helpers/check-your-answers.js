@@ -1,10 +1,22 @@
-const { toCamelCaseWithRows, formatLabel, replaceAcronyms } = require('./text-helper')
+const { toCamelCaseWithRows, formatLabel: formatLabelText, replaceAcronyms } = require('./text-helper')
 const { combineDateFields } = require('./date-fields')
 const sanitizeHtml = require('sanitize-html')
-const { MAX_ADD_ANOTHER: maxAddAnother, ACRONYMS_TO_UPPERCASE: acronyms } = require('../config')
+const {
+  MAX_ADD_ANOTHER: maxAddAnother,
+  ACRONYMS_TO_UPPERCASE: acronyms,
+  CHECK_YOUR_ANSWERS_LABEL_MAPPING
+} = require('../config')
 
+const mappedLabels = Object.keys(CHECK_YOUR_ANSWERS_LABEL_MAPPING)
 const hrefRoot = '/get-involved/add-new-component'
 const maxWords = 10
+
+const formatLabel = ( text ) => {
+  if(mappedLabels.includes(text)) {
+    return CHECK_YOUR_ANSWERS_LABEL_MAPPING[text]
+  }
+  return formatLabelText(text)
+}
 
 const shareYourDetails = {
   addNameToComponentPage:
@@ -202,7 +214,8 @@ const checkYourAnswers = (session) => {
   ]
   const ignoreFields = [
       'componentPrototypeUrl',
-      'figmaUrl'
+      'figmaUrl',
+      'componentCodeAvailable'
   ]
   const canRemove = [
     ...canRemoveStatic,

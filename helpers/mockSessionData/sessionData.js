@@ -11,14 +11,14 @@ module.exports = {
     "hasComponentBeenTestedUsingAssistiveTechnology": "yes"
   },
   "/add-external-audit": {
-    "organisation": "Duis",
+    "externalOrganisation": "Duis",
     "auditDate-day": "1",
     "auditDate-month": "1",
     "auditDate-year": "1999",
     "issuesDiscovered": "In lacus ipsum, molestie nec sapien vitae, tincidunt tristique nisi. Integer a lacus quis nisl mollis fringilla. Nullam blandit imperdiet mauris, ac feugiat ante. Vestibulum nec semper nulla, ut ultricies massa. Curabitur lacinia tortor augue, sed varius leo viverra non. Fusce vitae libero ac orci elementum vestibulum eu et libero. In rhoncus laoreet nisi, sit amet rutrum tellus. Ut ut dui in metus sodales molestie eu ut purus.\r\n\r\n"
   },
   "/add-internal-audit": {
-    "organisation": "Curabitur",
+    "internalOrganisation": "Curabitur",
     "auditDate-day": "1",
     "auditDate-month": "1",
     "auditDate-year": "2000",

@@ -102,7 +102,23 @@ const config = {
   },
   ADD_NEW_COMPONENT_ROUTE: '/get-involved/add-new-component',
   MAX_ADD_ANOTHER: 10,
-  ACRONYMS_TO_UPPERCASE: ['url']
+  ACRONYMS_TO_UPPERCASE: ['url'],
+  CHECK_YOUR_ANSWERS_LABEL_MAPPING: {
+    componentOverview: 'Component description',
+    howIsTheComponentUsed: 'How the component is being used in your service',
+    accessibilityReport: 'Audit report',
+    externalOrganisation: 'External accessibility audit supplier',
+    internalOrganisation: 'Internal accessibility audit supplier',
+    issuesDiscovered: 'Issues discovered during the audit',
+    prototypeUrl: 'Prototype link',
+    prototypeUrlAdditionalInformation: 'Additional information',
+    componentCode: 'Code',
+    componentCodeUsage: 'Code usage',
+    componentCodeLanguage: 'Code language',
+    figmaLink: 'Prototype link',
+    figmaLinkAdditionalInformation: 'Additional information',
+    shareYourDetails: 'Share your details on the component page'
+  }
 }
 
 module.exports = config
