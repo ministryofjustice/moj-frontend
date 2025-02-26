@@ -51,16 +51,31 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           status: pending
           context: Tests
-      - uses: actions/checkout@v4
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: npm install
         run: npm install
-      - name: Run JS tests
+
+      - name: Lint Sass
+        run: npm run lint:scss
+
+      - name: Lint JavaScript
+        run: npm run lint:js
+
+      - name: Prettier
+        run: npm run lint:prettier
+
+      - name: JavaScript unit tests
         run: npm run test:js
-      - name: Test that sass can be compiled
+
+      - name: Sass compilation
         run: npm run test:scss
 
   result:
