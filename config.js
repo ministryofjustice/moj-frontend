@@ -101,7 +101,8 @@ const config = {
     }
   },
   ADD_NEW_COMPONENT_ROUTE: '/get-involved/add-new-component',
-  MAX_ADD_ANOTHER: 10
+  MAX_ADD_ANOTHER: 10,
+  ACRONYMS_TO_UPPERCASE: ['url']
 }
 
 module.exports = config

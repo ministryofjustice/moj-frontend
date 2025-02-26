@@ -1,7 +1,6 @@
-const { toCamelCaseWithRows, formatLabel } = require('./text-helper')
+const { toCamelCaseWithRows, formatLabel, replaceAcronyms } = require('./text-helper')
 const sanitizeHtml = require('sanitize-html')
-const { MAX_ADD_ANOTHER: maxAddAnother } = require('../config')
-
+const { MAX_ADD_ANOTHER: maxAddAnother, ACRONYMS_TO_UPPERCASE: acronyms } = require('../config')
 
 const hrefRoot = '/get-involved/add-new-component'
 const maxWords = 10
@@ -116,7 +115,7 @@ const extractFieldData = (field, session, canRemove = []) => {
         }
 
         return {
-          key: { text: formatLabel(subKey) },
+          key: { text: replaceAcronyms(formatLabel(subKey), acronyms) },
           ...displayValue,
           actions: {
             items: actionItems
@@ -130,21 +129,21 @@ const extractFieldData = (field, session, canRemove = []) => {
       actionItems.push({
         href: `${hrefRoot}${key}`,
         text: 'Change',
-        visuallyHiddenText: formatLabel(fieldName)
+        visuallyHiddenText: replaceAcronyms(formatLabel(fieldName), acronyms)
       })
 
       if(canRemove.includes(key)) {
         actionItems.push({
           href: `${hrefRoot}/remove${key}`,
           text: 'Remove',
-          visuallyHiddenText: formatLabel(fieldName)
+          visuallyHiddenText: replaceAcronyms(formatLabel(fieldName), acronyms)
         })
       }
 
       // single entry
       return [
         {
-          key: { text: formatLabel(fieldName) },
+          key: { text: replaceAcronyms(formatLabel(fieldName), acronyms) },
           value: { text: sanitizeText(truncateText(value, maxWords)) },
           actions: {
             items: actionItems

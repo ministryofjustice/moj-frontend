@@ -15,6 +15,11 @@ const formatLabel = (field) => {
     .trim()
 }
 
+// Replace acronyms in a string with uppercase value
+const replaceAcronyms = (str, acronyms) => {
+  return str.replace(new RegExp(`\\b(${acronyms.join('|')})\\b`, 'gi'), (match) => match.toUpperCase());
+}
+
 const urlToTitleCase = (str) => {
   return str
     .toLowerCase()
@@ -26,5 +31,6 @@ const urlToTitleCase = (str) => {
 module.exports = {
   toCamelCaseWithRows,
   formatLabel,
-  urlToTitleCase
+  urlToTitleCase,
+  replaceAcronyms
 }
