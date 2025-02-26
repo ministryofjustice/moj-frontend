@@ -3,6 +3,7 @@ layout: layouts/example.njk
 title: Add another (example)
 figma_link: https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=7346-1848
 ---
+
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
 {%- from "govuk/components/date-input/macro.njk" import govukDateInput -%}
 {%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
@@ -16,37 +17,37 @@ figma_link: https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?no
   <form method="post">
 
     {% call govukFieldset({
-      classes: 'moj-add-another__item',
+      classes: "moj-add-another__item",
       legend: {
-        text: 'Person',
-        classes: 'moj-add-another__title govuk-fieldset__legend--m',
+        text: "Person",
+        classes: "moj-add-another__title govuk-fieldset__legend--m",
         isPageHeading: false
       }
     }) %}
 
     {{ govukInput({
-      id: 'person[0][first_name]',
-      name: 'person[0][first_name]',
+      id: "person[0][first_name]",
+      name: "person[0][first_name]",
       label: {
-        html: 'First name',
-        classes: 'govuk-!-font-weight-bold'
+        html: "First name",
+        classes: "govuk-!-font-weight-bold"
       },
       attributes: {
-        'data-name': 'person[%index%][first_name]',
-        'data-id': 'person[%index%][first_name]'
+        "data-name": "person[%index%][first_name]",
+        "data-id": "person[%index%][first_name]"
       }
     }) }}
 
     {{ govukInput({
-      id: 'person[0][last_name]',
-      name: 'person[0][last_name]',
+      id: "person[0][last_name]",
+      name: "person[0][last_name]",
       label: {
-        html: 'Last name',
-        classes: 'govuk-!-font-weight-bold'
+        html: "Last name",
+        classes: "govuk-!-font-weight-bold"
       },
       attributes: {
-        'data-name': 'person[%index%][last_name]',
-        'data-id': 'person[%index%][last_name]'
+        "data-name": "person[%index%][last_name]",
+        "data-id": "person[%index%][last_name]"
       }
     }) }}
 
@@ -68,8 +69,8 @@ figma_link: https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?no
           label: "Day",
           classes: "govuk-input--width-2",
           attributes: {
-            'data-name': 'person[%index%][dob][day]',
-            'data-id': 'person[%index%][dob][day]'
+            "data-name": "person[%index%][dob][day]",
+            "data-id": "person[%index%][dob][day]"
           }
         },
         {
@@ -78,8 +79,8 @@ figma_link: https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?no
           label: "Month",
           classes: "govuk-input--width-2",
           attributes: {
-            'data-name': 'person[%index%][dob][month]',
-            'data-id': 'person[%index%][dob][month]'
+            "data-name": "person[%index%][dob][month]",
+            "data-id": "person[%index%][dob][month]"
           }
         },
         {
@@ -88,8 +89,8 @@ figma_link: https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?no
           label: "Year",
           classes: "govuk-input--width-2",
           attributes: {
-            'data-name': 'person[%index%][dob][year]',
-            'data-id': 'person[%index%][dob][year]'
+            "data-name": "person[%index%][dob][year]",
+            "data-id": "person[%index%][dob][year]"
           }
         }
       ]
@@ -99,14 +100,14 @@ figma_link: https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?no
 
     <div class="moj-button-action">
       {{ govukButton({
-        text: 'Add another person',
-        classes: 'govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4'
+        text: "Add another person",
+        classes: "govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4"
       }) }}
     </div>
 
     <div class="moj-button-action">
       {{ govukButton({
-        text: 'Submit'
+        text: "Submit"
       }) }}
     </div>
 

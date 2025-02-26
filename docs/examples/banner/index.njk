@@ -2,6 +2,7 @@
 layout: layouts/example.njk
 title: Banner (example)
 ---
+
 {%- from "moj/components/banner/macro.njk" import mojBanner -%}
 
 {% set bannerHtml %}
@@ -9,6 +10,6 @@ title: Banner (example)
 {% endset %}
 
 {{ mojBanner({
-  type: 'information',
+  type: "information",
   html: bannerHtml
 }) }}

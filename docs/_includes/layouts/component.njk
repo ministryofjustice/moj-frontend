@@ -4,17 +4,24 @@
 {% from "macros/heading/macro.njk" import heading %}
 
 {% block content %}
-    <div class="app-layout__content">
-        {{ heading({
-          text: title,
-          caption: "Components" if not isIndex,
-          statusTag: { text: status }
-        }) }}
+  <div class="app-layout__content">
+    {{ heading({
+      text: title,
+      caption: "Components" if not isIndex,
+      statusTag: { text: status }
+    }) }}
 
-        {{ statusLabel(type, status, statusInfo[status], statusDate, creatorName, creatorTeam) if statusInfo[status] }}
-        {{ content | safe }}
+    {{ statusLabel(
+      type,
+      status,
+      statusInfo[status],
+      statusDate,
+      creatorName,
+      creatorTeam
+    ) if statusInfo[status] }}
 
-        {% include "./partials/get-help-and-contribute.njk" %}
+    {{ content | safe }}
 
-    </div>
+    {% include "./partials/get-help-and-contribute.njk" %}
+  </div>
 {% endblock %}

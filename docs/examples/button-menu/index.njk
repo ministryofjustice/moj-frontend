@@ -6,19 +6,20 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 ---
 
 {%- from "moj/components/button-menu/macro.njk" import mojButtonMenu -%}
+
 {{ mojButtonMenu({
-    "button": {
-        "text": "Menu title"
+  button: {
+    text: "Menu title"
+  },
+  items: [
+    {
+      text: "Menu item 1"
     },
-    "items": [
-        {
-            "text": "Menu item 1"
-        },
-        {
-            "text": "Menu item 2"
-        },
-        {
-            "text": "Menu item 3"
-        }
-    ]
+    {
+      text: "Menu item 2"
+    },
+    {
+      text: "Menu item 3"
+    }
+  ]
 }) }}

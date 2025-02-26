@@ -12,65 +12,65 @@ title: Filter a list pattern (example)
 {% set filterOptionsHtml %}
 
   {{ govukInput({
-    id: 'keywords',
-    name: 'keywords',
+    id: "keywords",
+    name: "keywords",
     label: {
-      text: 'Keywords',
-      classes: 'govuk-label--m'
+      text: "Keywords",
+      classes: "govuk-label--m"
     }
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: 'type',
-    name: 'type',
+    idPrefix: "type",
+    name: "type",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: 'Colour',
-        classes: 'govuk-fieldset__legend--m'
+        text: "Colour",
+        classes: "govuk-fieldset__legend--m"
       }
     },
     items: [
       {
-        value: '1',
-        text: 'Blue (18)',
+        value: "1",
+        text: "Blue (18)",
         checked: true
       },
       {
-        value: '2',
-        text: 'Yellow (5)',
+        value: "2",
+        text: "Yellow (5)",
         checked: true
       },
       {
-        value: '3',
-        text: 'Red (2)'
+        value: "3",
+        text: "Red (2)"
       }
     ]
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: 'status',
-    name: 'status',
+    idPrefix: "status",
+    name: "status",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: 'Status',
-        classes: 'govuk-fieldset__legend--m'
+        text: "Status",
+        classes: "govuk-fieldset__legend--m"
       }
     },
     items: [
       {
-        value: '1',
-        text: 'Complete (5)',
+        value: "1",
+        text: "Complete (5)",
         checked: true
       },
       {
-        value: '2',
-        text: 'Incomplete (3)'
+        value: "2",
+        text: "Incomplete (3)"
       },
       {
-        value: '3',
-        text: 'In progress (13)'
+        value: "3",
+        text: "In progress (13)"
       }
     ]
   }) }}
@@ -84,38 +84,38 @@ title: Filter a list pattern (example)
 
     {{ mojFilter({
       heading: {
-      text: 'Filter'
+      text: "Filter"
       },
       selectedFilters: {
 
       heading: {
-        text: 'Selected filters'
+        text: "Selected filters"
       },
 
       clearLink: {
-        text: 'Clear filters'
+        text: "Clear filters"
       },
 
       categories: [
         {
           heading: {
-            text: 'Colour'
+            text: "Colour"
           },
           items: [{
-            href: '#',
-            text: 'Blue'
+            href: "#",
+            text: "Blue"
           }, {
-            href: '#',
-            text: 'Yellow'
+            href: "#",
+            text: "Yellow"
           }]
         },
         {
           heading: {
-            text: 'Status'
+            text: "Status"
           },
           items: [{
-            href: '#',
-            text: 'Complete'
+            href: "#",
+            text: "Complete"
           }]
         }
       ]
@@ -133,11 +133,11 @@ title: Filter a list pattern (example)
 
     {{ mojButtonMenu({
       items: [{
-        text: 'Action 1',
-        classes: 'govuk-button--secondary'
+        text: "Action 1",
+        classes: "govuk-button--secondary"
       }, {
-        text: 'Action 2',
-        classes: 'govuk-button--secondary'
+        text: "Action 2",
+        classes: "govuk-button--secondary"
       }]
     }) }}
 
@@ -147,124 +147,124 @@ title: Filter a list pattern (example)
     {{ govukTable({
       firstCellIsHeader: true,
       head: [
-        {text: 'Reference'},
-        {text: 'Person'},
-        {text: 'Colour'},
-        {text: 'Status'},
-        {text: 'Date of last event'}
+        { text: "Reference" },
+        { text: "Person" },
+        { text: "Colour" },
+        { text: "Status" },
+        { text: "Date of last event" }
       ],
       rows: [
         [
-          {html: '<a href="#" class="govuk-link">44455453</a>'},
-          {html: 'John Smith'},
-          {text: 'Blue'},
-          {html: 'Complete'},
-          {text: '25 Jan 2018'}
+          { html: '<a href="#" class="govuk-link">44455453</a>' },
+          { html: "John Smith" },
+          { text: "Blue" },
+          { html: "Complete" },
+          { text: "25 Jan 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">12323212</a>'},
-          {html: 'Warren Sutton'},
-          {text: 'Yellow'},
-          {html: 'In progress'},
-          {text: '25 Jan 2018'}
+          { html: '<a href="#" class="govuk-link">12323212</a>' },
+          { html: "Warren Sutton" },
+          { text: "Yellow" },
+          { html: "In progress" },
+          { text: "25 Jan 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">45678765</a>'},
-          {html: 'Alan Jones'},
-          {text: 'Yellow'},
-          {html: 'In progress'},
-          {text: '9 May 2018'}
+          { html: '<a href="#" class="govuk-link">45678765</a>' },
+          { html: "Alan Jones" },
+          { text: "Yellow" },
+          { html: "In progress" },
+          { text: "9 May 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">12345678</a>'},
-          {html: 'Jennifer Langley'},
-          {text: 'Yellow'},
-          {html: 'In progress'},
-          {text: '9 May 2018'}
+          { html: '<a href="#" class="govuk-link">12345678</a>' },
+          { html: "Jennifer Langley" },
+          { text: "Yellow" },
+          { html: "In progress" },
+          { text: "9 May 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">89009800</a>'},
-          {html: 'Susan Francis'},
-          {text: 'Red'},
-          {html: 'Incomplete'},
-          {text: '9 May 2018'}
+          { html: '<a href="#" class="govuk-link">89009800</a>' },
+          { html: "Susan Francis" },
+          { text: "Red" },
+          { html: "Incomplete" },
+          { text: "9 May 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">44455453</a>'},
-          {html: 'John Smith'},
-          {text: 'Blue'},
-          {html: 'Complete'},
-          {text: '25 Jan 2018'}
+          { html: '<a href="#" class="govuk-link">44455453</a>' },
+          { html: "John Smith" },
+          { text: "Blue" },
+          { html: "Complete" },
+          { text: "25 Jan 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">12323212</a>'},
-          {html: 'Warren Sutton'},
-          {text: 'Yellow'},
-          {html: 'In progress'},
-          {text: '25 Jan 2018'}
+          { html: '<a href="#" class="govuk-link">12323212</a>' },
+          { html: "Warren Sutton" },
+          { text: "Yellow" },
+          { html: "In progress" },
+          { text: "25 Jan 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">45678765</a>'},
-          {html: 'Alan Jones'},
-          {text: 'Yellow'},
-          {html: 'In progress'},
-          {text: '9 May 2018'}
+          { html: '<a href="#" class="govuk-link">45678765</a>' },
+          { html: "Alan Jones" },
+          { text: "Yellow" },
+          { html: "In progress" },
+          { text: "9 May 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">12345678</a>'},
-          {html: 'Jennifer Langley'},
-          {text: 'Yellow'},
-          {html: 'In progress'},
-          {text: '9 May 2018'}
+          { html: '<a href="#" class="govuk-link">12345678</a>' },
+          { html: "Jennifer Langley" },
+          { text: "Yellow" },
+          { html: "In progress" },
+          { text: "9 May 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">89009800</a>'},
-          {html: 'Susan Francis'},
-          {text: 'Red'},
-          {html: 'Incomplete'},
-          {text: '9 May 2018'}
+          { html: '<a href="#" class="govuk-link">89009800</a>' },
+          { html: "Susan Francis" },
+          { text: "Red" },
+          { html: "Incomplete" },
+          { text: "9 May 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">45456765</a>'},
-          {html: 'John Smith'},
-          {text: 'Red'},
-          {html: 'Incomplete'},
-          {text: '9 May 2018'}
+          { html: '<a href="#" class="govuk-link">45456765</a>' },
+          { html: "John Smith" },
+          { text: "Red" },
+          { html: "Incomplete" },
+          { text: "9 May 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">88675411</a>'},
-          {html: 'Margaret Blake'},
-          {text: 'Red'},
-          {html: 'Incomplete'},
-          {text: '9 May 2018'}
+          { html: '<a href="#" class="govuk-link">88675411</a>' },
+          { html: "Margaret Blake" },
+          { text: "Red" },
+          { html: "Incomplete" },
+          { text: "9 May 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">44455453</a>'},
-          {html: 'John Smith'},
-          {text: 'Blue'},
-          {html: 'Complete'},
-          {text: '25 Jan 2018'}
+          { html: '<a href="#" class="govuk-link">44455453</a>' },
+          { html: "John Smith" },
+          { text: "Blue" },
+          { html: "Complete" },
+          { text: "25 Jan 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">12323212</a>'},
-          {html: 'Warren Sutton'},
-          {text: 'Yellow'},
-          {html: 'In progress'},
-          {text: '25 Jan 2018'}
+          { html: '<a href="#" class="govuk-link">12323212</a>' },
+          { html: "Warren Sutton" },
+          { text: "Yellow" },
+          { html: "In progress" },
+          { text: "25 Jan 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">45678765</a>'},
-          {html: 'Alan Jones'},
-          {text: 'Yellow'},
-          {html: 'In progress'},
-          {text: '9 May 2018'}
+          { html: '<a href="#" class="govuk-link">45678765</a>' },
+          { html: "Alan Jones" },
+          { text: "Yellow" },
+          { html: "In progress" },
+          { text: "9 May 2018" }
         ],
         [
-          {html: '<a href="#" class="govuk-link">12345678</a>'},
-          {html: 'Jennifer Langley'},
-          {text: 'Yellow'},
-          {html: 'In progress'},
-          {text: '9 May 2018'}
+          { html: '<a href="#" class="govuk-link">12345678</a>' },
+          { html: "Jennifer Langley" },
+          { text: "Yellow" },
+          { html: "In progress" },
+          { text: "9 May 2018" }
         ]
       ]
     }) }}

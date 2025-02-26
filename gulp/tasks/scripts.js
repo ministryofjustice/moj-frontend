@@ -21,7 +21,7 @@ function compileScripts(assetPath, { srcPath, destPath, output = {} }) {
       input: join(srcPath, assetPath),
       plugins: [
         externalGlobals({
-          jquery: 'window.jQuery'
+          jquery: '$'
         }),
         nodeResolve(),
         commonjs()
