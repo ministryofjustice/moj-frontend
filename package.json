@@ -19,13 +19,14 @@
     "test:docs": "npm run build:docs",
     "test:js": "jest src/",
     "test:sass": "sass --color --load-path . --quiet-deps package/moj/all.scss > /dev/null && echo \"ok\"",
-    "lint": "npm run lint:prettier && npm run lint:js && npm run lint:scss",
+    "lint": "npm run lint:prettier && npm run lint:js && npm run lint:types && npm run lint:scss",
     "lint:js": "npm run lint:js:cli -- \"**/*.{cjs,js,md,mjs}\"",
     "lint:js:cli": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
     "lint:prettier": "npm run lint:prettier:cli -- \"**/*.{cjs,js,json,md,mjs,scss,yaml,yml}\"",
     "lint:prettier:cli": "prettier --cache --cache-location .cache/prettier --cache-strategy content --check",
     "lint:scss": "npm run lint:scss:cli -- \"**/*.{md,scss}\"",
     "lint:scss:cli": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
+    "lint:types": "tsc --build tsconfig.json --incremental --pretty",
     "watch:11ty": "ENV=dev eleventy --input=./docs --output=public --serve",
     "watch:package": "ENV=dev gulp watch:dev"
   },
@@ -62,6 +63,13 @@
     "@testing-library/dom": "^8.19.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^14.5.2",
+    "@types/govuk-frontend": "^5.8.0",
+    "@types/gulp": "^4.0.17",
+    "@types/jest": "^29.5.14",
+    "@types/jquery": "^3.5.32",
+    "@types/node": "^22.12.0",
+    "@types/nunjucks": "^3.2.6",
+    "@types/testing-library__jest-dom": "^5.14.9",
     "autoprefixer": "^10.4.0",
     "babel-jest": "^29.7.0",
     "clipboard": "^2.0.8",
@@ -122,7 +130,8 @@
     "stylelint": "^16.13.2",
     "stylelint-config-gds": "^2.0.0",
     "stylelint-order": "^6.0.4",
-    "terser": "^5.38.1"
+    "terser": "^5.38.1",
+    "typescript": "^5.7.3"
   },
   "config": {
     "commitizen": {
