@@ -101,13 +101,6 @@ const extractFieldData = (field, session, canRemove = []) => {
           )
         }
 
-        actionItems.push({
-          href: `${hrefRoot}${key}`,
-          text: 'Change',
-          visuallyHiddenText:
-              formatLabel(fieldName) + ' - ' + formatLabel(subKey)
-        })
-
         if(canRemove.includes(key) && !removeAdded) {
           removeAdded = true
           actionItems.push({
@@ -117,6 +110,13 @@ const extractFieldData = (field, session, canRemove = []) => {
                 formatLabel(fieldName) + ' - ' + formatLabel(subKey)
           })
         }
+
+        actionItems.push({
+          href: `${hrefRoot}${key}`,
+          text: 'Change',
+          visuallyHiddenText:
+              formatLabel(fieldName) + ' - ' + formatLabel(subKey)
+        })
 
         return {
           key: { text: replaceAcronyms(formatLabel(subKey), acronyms) },
@@ -130,12 +130,6 @@ const extractFieldData = (field, session, canRemove = []) => {
 
       const actionItems = []
 
-      actionItems.push({
-        href: `${hrefRoot}${key}`,
-        text: 'Change',
-        visuallyHiddenText: replaceAcronyms(formatLabel(fieldName), acronyms)
-      })
-
       if(canRemove.includes(key)) {
         actionItems.push({
           href: `${hrefRoot}/remove${key}`,
@@ -143,6 +137,12 @@ const extractFieldData = (field, session, canRemove = []) => {
           visuallyHiddenText: replaceAcronyms(formatLabel(fieldName), acronyms)
         })
       }
+
+      actionItems.push({
+        href: `${hrefRoot}${key}`,
+        text: 'Change',
+        visuallyHiddenText: replaceAcronyms(formatLabel(fieldName), acronyms)
+      })
 
       // single entry
       return [
