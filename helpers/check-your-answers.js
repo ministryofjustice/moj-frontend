@@ -86,6 +86,7 @@ const extractFieldData = (field, session, canRemove = []) => {
     if (typeof value === 'object' && !Array.isArray(value)) {
       // multiple entries
       const values = combineDateFields(value)
+      let removeAdded = false
       return Object.entries(values).map(([subKey, subValue]) => {
         const actionItems = []
         const isShareYourDetails = subKey === 'shareYourDetails'
@@ -107,7 +108,8 @@ const extractFieldData = (field, session, canRemove = []) => {
               formatLabel(fieldName) + ' - ' + formatLabel(subKey)
         })
 
-        if(canRemove.includes(key)) {
+        if(canRemove.includes(key) && !removeAdded) {
+          removeAdded = true
           actionItems.push({
             href: `${hrefRoot}/remove${key}`,
             text: 'Remove',
@@ -168,14 +170,17 @@ const checkYourAnswers = (session) => {
       'your-details'
   ]
   const canRemoveStatic = [
-    '/component-image',
-    '/accessibility-findings',
-    '/prototype-url',
-    '/component-code-details'
+      '/component-image',
+      '/accessibility-findings',
+      '/prototype-url',
+      '/component-code-details',
+      '/add-external-audit',
+      '/add-internal-audit',
+      '/add-assistive-tech'
   ]
   const canRemoveMultiples = [
-    '/prototype-url',
-    '/component-code-details'
+      '/prototype-url',
+      '/component-code-details'
   ]
   const canRemove = [
     ...canRemoveStatic,
