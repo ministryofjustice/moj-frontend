@@ -34,7 +34,6 @@ gulp.task(
   gulp.series(
     'docs:clean',
     'docs:copy-files',
-    'build:package',
     gulp.parallel('docs:styles', 'docs:scripts'),
     'docs:revision'
   )
@@ -60,9 +59,9 @@ gulp.task('watch:package-js', () => {
 // Watch the docs js files and the bundled package js and rebuild
 gulp.task('watch:docs-js', () => {
   gulp.watch(
-    ['docs/assets/**/*.mjs', 'package/moj/all.js'],
-    { ignored: ['**/*.spec.*'] },
-    gulp.series(['docs:scripts'])
+    ['docs/assets/**/*.mjs', 'src/moj/**/*.mjs'],
+    { ignored: ['**/*.spec.*', '**/vendor/**'] },
+    gulp.series('docs:scripts')
   )
 })
 

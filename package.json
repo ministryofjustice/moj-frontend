@@ -25,8 +25,8 @@
     "lint:prettier:cli": "prettier --cache --cache-location .cache/prettier --cache-strategy content --check",
     "lint:scss": "npm run lint:scss:cli -- \"**/*.{md,scss}\"",
     "lint:scss:cli": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
-    "watch:11ty": "ENV=dev eleventy --input=./docs --output=public --serve",
-    "watch:package": "ENV=dev gulp watch:dev"
+    "watch:11ty": "eleventy --input=./docs --output=public --serve",
+    "watch:package": "gulp watch:dev"
   },
   "repository": {
     "type": "git",
