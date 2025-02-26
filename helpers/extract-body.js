@@ -1,22 +1,8 @@
 const { COMPONENT_FORM_HIDDEN_FIELDS } = require("../config");
 
 const extractBody = (url, body) => {
-  const path = url.split('/')[1];
-  const hiddenFields = COMPONENT_FORM_HIDDEN_FIELDS[path];
-
   const result = { ...body };
   const dateFields = {};
-
-  // Remove hidden fields
-  if (hiddenFields) {
-    Object.keys(hiddenFields).forEach((key) => {
-      hiddenFields[key].forEach((field) => {
-        if (body[field] !== undefined) {
-          delete result[field];
-        }
-      });
-    });
-  }
 
   Object.keys(body).forEach((key) => {
     const match = key.match(/(.*)-(day|month|year)$/);

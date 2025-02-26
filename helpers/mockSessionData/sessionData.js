@@ -11,8 +11,6 @@ module.exports = {
     "hasComponentBeenTestedUsingAssistiveTechnology": "yes"
   },
   "/add-external-audit": {
-    "hasComponentBeenTestedInternalAudit": "yes",
-    "hasComponentBeenTestedUsingAssistiveTechnology": "yes",
     "organisation": "Duis",
     "auditDate-day": "1",
     "auditDate-month": "1",
@@ -20,8 +18,6 @@ module.exports = {
     "issuesDiscovered": "In lacus ipsum, molestie nec sapien vitae, tincidunt tristique nisi. Integer a lacus quis nisl mollis fringilla. Nullam blandit imperdiet mauris, ac feugiat ante. Vestibulum nec semper nulla, ut ultricies massa. Curabitur lacinia tortor augue, sed varius leo viverra non. Fusce vitae libero ac orci elementum vestibulum eu et libero. In rhoncus laoreet nisi, sit amet rutrum tellus. Ut ut dui in metus sodales molestie eu ut purus.\r\n\r\n"
   },
   "/add-internal-audit": {
-    "hasComponentBeenTestedInternalAudit": "yes",
-    "hasComponentBeenTestedUsingAssistiveTechnology": "yes",
     "organisation": "Curabitur",
     "auditDate-day": "1",
     "auditDate-month": "1",
@@ -29,7 +25,6 @@ module.exports = {
     "issuesDiscovered": "In lacus ipsum, molestie nec sapien vitae, tincidunt tristique nisi. Integer a lacus quis nisl mollis fringilla. Nullam blandit imperdiet mauris, ac feugiat ante. Vestibulum nec semper nulla, ut ultricies massa. Curabitur lacinia tortor augue, sed varius leo viverra non. Fusce vitae libero ac orci elementum vestibulum eu et libero. In rhoncus laoreet nisi, sit amet rutrum tellus. Ut ut dui in metus sodales molestie eu ut purus.\r\n\r\n"
   },
   "/add-assistive-tech": {
-    "hasComponentBeenTestedUsingAssistiveTechnology": "yes",
     "testingDate-day": "1",
     "testingDate-month": "1",
     "testingDate-year": "2000",

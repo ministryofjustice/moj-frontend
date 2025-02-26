@@ -1,5 +1,4 @@
 const nextPage = require('../helpers/next-page')
-const getHiddenFields = require('../helpers/hidden-fields')
 const extractBody = require('../helpers/extract-body')
 const previousPage = require('../helpers/previous-page')
 const { formatLabel } = require('../helpers/text-helper')
@@ -71,8 +70,7 @@ const validateFormData = (req, res, next) => {
       backLink: req?.backLink || false,
       addAnother: req?.params?.subpage || 1,
       showAddAnother: !!req?.body?.addAnother,
-      skipQuestion: req?.skipQuestion || false,
-      hiddenFields: getHiddenFields(req)
+      skipQuestion: req?.skipQuestion || false
     })
   } else {
     console.log('Validation success:', value)
@@ -167,14 +165,8 @@ const canAddAnother = (req, res, next) => {
 }
 
 const getBackLink = (req, res, next) => {
-  const { url, session, formData, hiddenFields } = req
-  req.backLink = previousPage(url, session, {...formData, ...hiddenFields})
-  next()
-}
-
-const hiddenFields = (req, res, next) => {
-  delete req.hiddenFields
-  req.hiddenFields = getHiddenFields(req)
+  const { url, session, formData } = req
+  req.backLink = previousPage(url, session, {...formData})
   next()
 }
 
@@ -193,7 +185,6 @@ module.exports = {
   canSkipQuestion,
   canAddAnother,
   getBackLink,
-  hiddenFields,
   getFormSummaryListForRemove,
   removeFromSession
 }

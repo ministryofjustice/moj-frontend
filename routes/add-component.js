@@ -9,7 +9,6 @@ const {
   canSkipQuestion,
   canAddAnother,
   getBackLink,
-  hiddenFields,
   getFormSummaryListForRemove,
   removeFromSession
 } = require('../middleware/component-session')
@@ -140,7 +139,6 @@ router.get(
   ['/:page', '/:page/:subpage'],
   isValidComponentFormPage,
   getFormDataFromSession,
-  hiddenFields,
   setNextPage,
   canAddAnother,
   canSkipQuestion,
@@ -152,8 +150,7 @@ router.get(
       addAnother: req?.addAnother,
       showAddAnother: req?.showAddAnother,
       skipQuestion: req?.skipQuestion || false,
-      backLink: req?.backLink || false,
-      hiddenFields: req?.hiddenFields || false
+      backLink: req?.backLink || false
     })
   }
 )
@@ -184,7 +181,6 @@ router.post('/check-your-answers', getRawSessionText, async (req, res) => {
 router.post(
   '/component-image',
   upload.single('componentImage'),
-  hiddenFields,
   validateFormData,
   saveSession,
   // setNextPage,
