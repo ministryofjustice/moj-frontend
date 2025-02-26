@@ -18,7 +18,7 @@ gulp.task('dist:assets', () => {
 gulp.task(
   'dist:javascript',
   compileScripts('all.mjs', {
-    srcPath: 'package/moj',
+    srcPath: 'src/moj',
     destPath: 'dist',
 
     // Customise output
