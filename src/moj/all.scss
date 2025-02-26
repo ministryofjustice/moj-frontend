@@ -12,7 +12,11 @@
 
   // Measurements override
   $govuk-gutter: $moj-gutter,
-  $govuk-page-width: $moj-page-width
+  $govuk-page-width: $moj-page-width,
+
+  // Typography override
+  $govuk-font-family: $moj-font-family,
+  $govuk-include-default-font-face: $moj-include-default-font-face
 );
 
 @forward "helpers/all";
