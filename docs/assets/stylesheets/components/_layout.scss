@@ -21,9 +21,10 @@ $app-breakpoint: 800px;
 }
 
 .app-layout__content {
+  box-sizing: border-box;
   max-width: 1100px;
   @include govuk-responsive-padding(6);
-  box-sizing: border-box;
+
   @include govuk-media-query($app-breakpoint) {
     @include govuk-responsive-padding(9);
   }
