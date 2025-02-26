@@ -1,3 +1,5 @@
+@use "../govuk-frontend" as *;
+
 .app-card {
   @include govuk-responsive-padding(6, "bottom");
 }

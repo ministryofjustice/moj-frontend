@@ -1,7 +1,8 @@
-$govuk-page-width: 1220px !default;
-$govuk-assets-path: "../" !default;
-$govuk-global-styles: false;
-$govuk-suppressed-warnings: ("govuk-typography-scale-14");
-
 // GOV.UK Frontend
-@import "govuk-frontend/dist/govuk";
+@forward "node_modules/govuk-frontend/dist/govuk" with (
+  $govuk-assets-path: "../",
+  $govuk-page-width: 1220px,
+  $govuk-suppressed-warnings: (
+    "govuk-typography-scale-14"
+  )
+);

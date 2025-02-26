@@ -1,3 +1,5 @@
+@use "../objects/width-container" as *;
+
 .moj-width-container {
   @include moj-width-container;
 }

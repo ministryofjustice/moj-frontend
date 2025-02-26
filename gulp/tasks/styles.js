@@ -24,7 +24,6 @@ function compileStyles(assetPath, { srcPath, destPath, output = {} }) {
     const { css, sourceMap } = await compileAsync(from, {
       loadPaths: ['.', 'node_modules'],
       quietDeps: true,
-      silenceDeprecations: ['import'],
       sourceMap: true,
       sourceMapIncludeSources: true
     })

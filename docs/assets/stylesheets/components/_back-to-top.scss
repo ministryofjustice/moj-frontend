@@ -1,3 +1,5 @@
+@use "../govuk-frontend" as *;
+
 .app-back-to-top {
   display: none;
   @include govuk-font(16);

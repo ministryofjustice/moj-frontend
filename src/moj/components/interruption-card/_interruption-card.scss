@@ -1,3 +1,5 @@
+@use "../../vendor/govuk-frontend/base" as *;
+
 .moj-interruption-card {
   margin-bottom: govuk-spacing(3);
   border: $govuk-border-width solid transparent;

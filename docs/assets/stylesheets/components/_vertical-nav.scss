@@ -1,3 +1,5 @@
+@use "../govuk-frontend" as *;
+@use "../../../../src/moj/settings/colours" as *;
 
 .app-vertical-nav {
   position: relative;
