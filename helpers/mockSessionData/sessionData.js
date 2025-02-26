@@ -57,11 +57,23 @@ module.exports = {
   "/your-details": {
     "fullName": "test",
     "emailAddress": "test@test.com",
+    "teamName": "The A Team",
     "shareYourDetails": [
       "addNameToComponentPage",
-      "addTeamNameWhenRequested",
-      "doNotSharePersonalDetails"
+      "addTeamNameWhenRequested"
     ]
   },
-  "checkYourAnswers": false
+  "checkYourAnswers": true,
+  "/figma": {
+    "figmaUrl": "yes"
+  },
+  "/figma-link": {
+    "figmaLink": "http://link.com",
+    "figmaLinkAdditionalInformation": "Nothing"
+  },
+  "/component-code-details/1": {
+    "componentCodeLanguage": "CSS",
+    "componentCodeUsage": "Some CSS",
+    "componentCode": "style"
+  }
 }
