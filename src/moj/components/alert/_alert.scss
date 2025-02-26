@@ -1,5 +1,9 @@
+@use "../../helpers/links" as *;
+@use "../../objects/width-container" as *;
+@use "../../settings/colours" as *;
+@use "../../vendor/govuk-frontend/base" as *;
+
 .moj-alert {
-  @include govuk-font($size: false);
   display: -ms-grid;
   display: grid;
   margin-bottom: govuk-spacing(6);
@@ -8,8 +12,8 @@
   background: govuk-colour("white");
   -ms-grid-columns: min-content fit-content(960px);
   grid-template-columns: min-content fit-content(960px);
-
   gap: govuk-spacing(2);
+  @include govuk-font($size: false);
 
   &:focus {
     outline: $govuk-focus-width solid $govuk-focus-colour;
@@ -30,12 +34,12 @@
 }
 
 .moj-alert__content {
-  @include govuk-font-size($size: 19);
   display: block;
   // Padding to align text with icon
   padding-top: govuk-px-to-rem(5px);
   overflow: hidden;
   color: govuk-colour("black");
+  @include govuk-font-size($size: 19);
 
   @include govuk-media-query($from: tablet) {
     padding-top: govuk-px-to-rem(2px);

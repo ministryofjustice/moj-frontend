@@ -1,3 +1,5 @@
+@use "../govuk-frontend" as *;
+
 .app-card {
   margin-bottom: 0;
   @include govuk-media-query($until: desktop) {

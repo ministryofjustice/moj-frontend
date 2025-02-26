@@ -5,7 +5,7 @@ const { compileStyles } = require('./tasks/styles')
 gulp.task(
   'build:css',
   compileStyles('all.scss', {
-    srcPath: 'gulp/dist-scss',
+    srcPath: 'src/moj',
     destPath: 'package/moj',
 
     // Customise output

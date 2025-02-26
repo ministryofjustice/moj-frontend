@@ -12,3 +12,8 @@ $moj-secondary-link-hover-color: rgb(23, 24, 25);
 $moj-warning-colour: rgb(235, 97, 28);
 // Links need higher contrast still so a modified orange for links
 $moj-warning-link-colour: rgb(199, 82, 40);
+
+// Custom colour required for passing WCAG 2.2 AA contrast text/background and
+// background/surrounding
+$moj-button-menu-color: #949494;
+$moj-button-menu-hover-color: #767676;

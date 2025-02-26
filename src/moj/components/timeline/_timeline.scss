@@ -1,3 +1,6 @@
+@use "../../settings/assets" as *;
+@use "../../vendor/govuk-frontend/base" as *;
+
 /* ==========================================================================
    #TIMELINE
    ========================================================================== */
@@ -43,26 +46,26 @@
 }
 
 .moj-timeline__title {
-  @include govuk-font($size: 19, $weight: bold);
   display: inline;
+  @include govuk-font($size: 19, $weight: bold);
 }
 
 .moj-timeline__byline {
-  @include govuk-font($size: 19);
   display: inline;
   margin: 0;
   color: $govuk-secondary-text-colour;
+  @include govuk-font($size: 19);
 }
 
 .moj-timeline__date {
-  @include govuk-font($size: 16);
   margin-top: govuk-spacing(1);
   margin-bottom: 0;
+  @include govuk-font($size: 16);
 }
 
 .moj-timeline__description {
-  @include govuk-font($size: 19);
   margin-top: govuk-spacing(4);
+  @include govuk-font($size: 19);
 }
 
 /* ==========================================================================

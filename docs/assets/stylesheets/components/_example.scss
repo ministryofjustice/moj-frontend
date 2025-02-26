@@ -1,3 +1,5 @@
+@use "../govuk-frontend" as *;
+
 /* ==========================================================================
    #EXAMPLE
    ========================================================================== */
@@ -24,10 +26,10 @@
 }
 
 .app-example__new-window {
-  @include govuk-font($size: 16);
   padding: 8px;
   border: 1px solid $govuk-border-colour;
   background-color: govuk-colour("white");
+  @include govuk-font($size: 16);
 
   a,
   a:link,

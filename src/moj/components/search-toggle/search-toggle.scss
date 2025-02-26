@@ -1,5 +1,6 @@
+@use "../../vendor/govuk-frontend/base" as *;
+
 .moj-search-toggle__button {
-  @include govuk-font($size: 19, $weight: bold);
   display: inline-block;
   padding-top: 12px;
   padding-right: 0;
@@ -12,6 +13,7 @@
   -webkit-font-smoothing: antialiased;
   -webkit-appearance: none;
   appearance: none;
+  @include govuk-font($size: 19, $weight: bold);
 
   &__icon {
     display: inline-block;

@@ -1,17 +1,18 @@
+@use "../../vendor/govuk-frontend/base" as *;
+
 /* ==========================================================================
    #NOTIFICATION BADGE
    ========================================================================== */
 
 .moj-notification-badge {
-  @include govuk-font($size: 16, $weight: "bold");
   display: inline-block;
   min-width: 15px;
   padding: 5px 8px 2px;
   border-radius: 75px;
   color: govuk-colour("white");
   background-color: govuk-colour("red");
-  font-size: 16px;
   font-weight: 600;
   text-align: center;
   white-space: nowrap;
+  @include govuk-font($size: 16, $weight: "bold");
 }

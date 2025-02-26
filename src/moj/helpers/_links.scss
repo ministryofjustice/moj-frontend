@@ -1,4 +1,6 @@
-@import "../settings/colours";
+@use "sass:color";
+@use "../settings/colours" as *;
+@use "../vendor/govuk-frontend/base" as *;
 
 @mixin moj-link-style-warning {
   &:link,
@@ -7,7 +9,7 @@
   }
 
   &:hover {
-    color: scale-color($moj-warning-link-colour, $lightness: -30%);
+    color: color.scale($moj-warning-link-colour, $lightness: -30%);
   }
 
   &:active {

@@ -1,3 +1,5 @@
+@use "../vendor/govuk-frontend/base" as *;
+
 .moj-scrollable-pane {
   // stylelint-disable scss/dollar-variable-pattern
   $scrollableBgColor: govuk-colour("white");

@@ -1,3 +1,5 @@
+@use "../govuk-frontend" as *;
+
 .app-status-tag {
   display: inline-block;
   margin-left: govuk-spacing(2);
