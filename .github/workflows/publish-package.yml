@@ -54,7 +54,7 @@ jobs:
           name: mojds-package
           path: package
       - name: Test that sass can be compiled
-        run: npm run test:sass
+        run: npm run test:scss
 
   result:
     runs-on: ubuntu-latest
