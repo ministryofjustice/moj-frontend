@@ -1,3 +1,5 @@
+@use "../../vendor/govuk-frontend/base" as *;
+
 .moj-page-header-actions {
   display: flex;
   min-height: govuk-spacing(7); // Match button height

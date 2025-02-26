@@ -1,3 +1,5 @@
+@use "../../settings/colours" as *;
+@use "../../vendor/govuk-frontend/base" as *;
 
 .moj-datepicker {
   position: relative;

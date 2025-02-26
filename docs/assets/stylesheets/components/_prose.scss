@@ -1,3 +1,5 @@
+@use "../govuk-frontend" as *;
+
 .app-prose-scope {
   h1:not([class]) {
     @extend %govuk-heading-xl;

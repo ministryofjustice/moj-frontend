@@ -1,3 +1,5 @@
+@use "../govuk-frontend" as *;
+
 moj-menu-toggle:not(:defined) {
   display: none;
 }
