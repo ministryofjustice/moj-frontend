@@ -34,13 +34,13 @@ export function RichTextEditor(options) {
   this.container.on(
     'click',
     '.moj-rich-text-editor__toolbar-button',
-    $.proxy(this, 'onButtonClick')
+    this.onButtonClick.bind(this)
   )
   this.container
     .find('.moj-rich-text-editor__content')
-    .on('input', $.proxy(this, 'onEditorInput'))
-  this.container.find('label').on('click', $.proxy(this, 'onLabelClick'))
-  this.toolbar.on('keydown', $.proxy(this, 'onToolbarKeydown'))
+    .on('input', this.onEditorInput.bind(this))
+  this.container.find('label').on('click', this.onLabelClick.bind(this))
+  this.toolbar.on('keydown', this.onToolbarKeydown.bind(this))
 }
 
 RichTextEditor.prototype.onToolbarKeydown = function (e) {
@@ -112,7 +112,7 @@ RichTextEditor.prototype.getEnhancedHtml = function (val) {
 RichTextEditor.prototype.hideDefault = function () {
   this.textarea = this.container.find('textarea')
   this.textarea.addClass('govuk-visually-hidden')
-  this.textarea.attr('aria-hidden', true)
+  this.textarea.attr('aria-hidden', 'true')
   this.textarea.attr('tabindex', '-1')
 }
 
@@ -135,7 +135,7 @@ RichTextEditor.prototype.configureToolbar = function () {
 }
 
 RichTextEditor.prototype.onButtonClick = function (e) {
-  document.execCommand($(e.currentTarget).data('command'), false, null)
+  document.execCommand($(e.currentTarget).data('command'), false, undefined)
 }
 
 RichTextEditor.prototype.getContent = function () {
