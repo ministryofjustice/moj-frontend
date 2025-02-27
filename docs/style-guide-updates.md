@@ -56,7 +56,7 @@ permalink: content-standards/style-guide-updates/
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
-        <a href="/content-standards/style-guide#identity-numbers-%28%HMPPS-only%29%"><b>Identity numbers (HMPPS only)</b></a>
+        <a href="/content-standards/style-guide#identity-numbers-%28%HMPPS-only%29"><b>Identity numbers (HMPPS only)</b></a>
       </td>
       <td class="govuk-table__cell">
       <span class="govuk-tag govuk-tag--blue">Updated</span>
