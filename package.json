@@ -8,6 +8,7 @@
     "/package"
   ],
   "scripts": {
+    "build": "concurrently npm:build:* --group --prefix none",
     "build:docs": "gulp build:docs && eleventy --input=./docs --output=public",
     "build:dist": "gulp build:dist",
     "build:package": "gulp build:package",
@@ -18,7 +19,7 @@
     "test": "concurrently npm:test:* --group --prefix none",
     "test:js": "jest src/",
     "test:scss": "sass --color --load-path . --quiet-deps src/moj/all.scss > /dev/null && echo \"ok\"",
-    "lint": "npm run lint:prettier && npm run lint:js && npm run lint:scss",
+    "lint": "concurrently npm:lint:* --group",
     "lint:js": "npm run lint:js:cli -- \"**/*.{cjs,js,md,mjs}\"",
     "lint:js:cli": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
     "lint:prettier": "npm run lint:prettier:cli -- \"**/*.{cjs,js,json,md,mjs,scss,yaml,yml}\"",
