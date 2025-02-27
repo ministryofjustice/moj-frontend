@@ -1,5 +1,6 @@
-const previousPage = require('./previous-page');
 const { COMPONENT_FORM_PAGES } = require('../config');
+
+const previousPage = require('./previous-page');
 
 describe('previousPage function', () => {
   const session = {};

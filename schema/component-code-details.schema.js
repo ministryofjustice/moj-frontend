@@ -1,5 +1,6 @@
-const addAnotherSchema = require('./add-another.schema')
 const Joi = require('joi')
+
+const addAnotherSchema = require('./add-another.schema')
 
 const schema = addAnotherSchema.append({
   componentCodeLanguage: Joi.string()

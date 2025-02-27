@@ -1,4 +1,5 @@
 const { NotifyClient } = require('notifications-node-client')
+
 const {
   NOTIFY_TOKEN,
   NOTIFY_PR_TEMPLATE,
@@ -15,7 +16,7 @@ const sendEmail = async (
   fileBuffer = null,
   markdown = null
 ) => {
-  let personalisation = link ? { link } : {}
+  const personalisation = link ? { link } : {}
 
   if (fileBuffer) {
     personalisation.link_to_file = notifyClient.prepareUpload(fileBuffer)

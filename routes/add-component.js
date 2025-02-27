@@ -1,5 +1,11 @@
 const express = require('express')
 const multer = require('multer')
+
+const { COMPONENT_FORM_PAGES, ADD_NEW_COMPONENT_ROUTE } = require('../config')
+const ApplicationError = require('../helpers/application-error')
+const checkYourAnswers = require('../helpers/check-your-answers')
+const sessionData = require('../helpers/mockSessionData/sessionData.js')
+const { urlToTitleCase } = require('../helpers/text-helper')
 const {
   validateFormData,
   setNextPage,
@@ -12,19 +18,15 @@ const {
   getFormSummaryListForRemove,
   removeFromSession
 } = require('../middleware/component-session')
+const { generateMarkdown } = require('../middleware/generate-documentation')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
 const {
   sendSubmissionEmail,
   sendPrEmail
 } = require('../middleware/notify-email')
-const { generateMarkdown } = require('../middleware/generate-documentation')
-const { COMPONENT_FORM_PAGES, ADD_NEW_COMPONENT_ROUTE } = require('../config')
-const ApplicationError = require('../helpers/application-error')
 const upload = multer({ storage: multer.memoryStorage() })
 const router = express.Router()
-const checkYourAnswers = require('../helpers/check-your-answers')
-const sessionData = require('../helpers/mockSessionData/sessionData.js')
-const { urlToTitleCase } = require('../helpers/text-helper')
+
 const {setMedia} = require("mock-match-media");
 
 const isValidComponentFormPage = (req, res, next) => {

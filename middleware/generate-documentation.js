@@ -58,7 +58,7 @@ ${componentCodeDetails?.componentCode || ''}
     return content
   }
 
-  let content = `---
+  const content = `---
 layout: layouts/component.njk
 title: ${componentName}
 type: component

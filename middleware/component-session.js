@@ -1,9 +1,9 @@
-const nextPage = require('../helpers/next-page')
+const { MAX_ADD_ANOTHER: maxAddAnother } = require('../config')
 const extractBody = require('../helpers/extract-body')
+const {checkYourAnswers} = require("../helpers/mockSessionData/sessionData");
+const nextPage = require('../helpers/next-page')
 const previousPage = require('../helpers/previous-page')
 const { formatLabel } = require('../helpers/text-helper')
-const { MAX_ADD_ANOTHER: maxAddAnother } = require('../config')
-const {checkYourAnswers} = require("../helpers/mockSessionData/sessionData");
 
 const camelToKebab = (str) =>
   str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()

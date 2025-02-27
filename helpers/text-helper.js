@@ -1,8 +1,8 @@
 const toCamelCaseWithRows = (str) => {
   return (
-    str
+    `${str
       .replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
-      .replace(/^\w/, (c) => c.toLowerCase()) + 'Rows'
+      .replace(/^\w/, (c) => c.toLowerCase())  }Rows`
   )
 }
 

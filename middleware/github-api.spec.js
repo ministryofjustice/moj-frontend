@@ -1,11 +1,13 @@
 const fetch = require('node-fetch')
-const { pushToGitHub, createPullRequest } = require('./github-api')
+
 const {
   GITHUB_API_URL,
   GITHUB_API_TOKEN,
   GITHUB_REPO_OWNER,
   GITHUB_REPO_NAME
 } = require('../config')
+
+const { pushToGitHub, createPullRequest } = require('./github-api')
 
 jest.mock('node-fetch', () => jest.fn())
 
@@ -104,7 +106,7 @@ describe('GitHub API Module', () => {
 
       const pr = await createPullRequest(branchName, title, description)
 
-      expect(pr).toEqual('https://github.com/example/pr/1')
+      expect(pr).toBe('https://github.com/example/pr/1')
       expect(fetch).toHaveBeenCalledWith(
         `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/pulls`,
         expect.objectContaining({

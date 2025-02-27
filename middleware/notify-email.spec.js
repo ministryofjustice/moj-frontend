@@ -1,6 +1,7 @@
 const mockSendEmail = jest.fn()
-const { sendSubmissionEmail, sendPrEmail } = require('./notify-email')
 const { NotifyClient } = require('notifications-node-client')
+
+const { sendSubmissionEmail, sendPrEmail } = require('./notify-email')
 
 jest.mock('notifications-node-client', () => {
   return {

@@ -1,5 +1,6 @@
-const extractBody = require('./extract-body');
 const { COMPONENT_FORM_HIDDEN_FIELDS } = require('../config');
+
+const extractBody = require('./extract-body');
 
 jest.mock('../config', () => ({
   COMPONENT_FORM_HIDDEN_FIELDS: {
@@ -29,7 +30,7 @@ describe('extractBody', () => {
     const body = { field1: 'value1', 'date-day': '1', 'date-month': '2', 'date-year': '2023', field3: 'value3' };
     const result = extractBody(url, body);
     const bodyWithoutHidden = {...body}
-    delete bodyWithoutHidden['field1']
+    delete bodyWithoutHidden.field1
     expect(result).toEqual({...{ 'date': '2023-02-01' }, ...bodyWithoutHidden });
   });
 

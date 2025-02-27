@@ -1,11 +1,13 @@
-const { toCamelCaseWithRows, formatLabel: formatLabelText, replaceAcronyms } = require('./text-helper')
-const { combineDateFields } = require('./date-fields')
 const sanitizeHtml = require('sanitize-html')
+
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ACRONYMS_TO_UPPERCASE: acronyms,
   CHECK_YOUR_ANSWERS_LABEL_MAPPING
 } = require('../config')
+
+const { combineDateFields } = require('./date-fields')
+const { toCamelCaseWithRows, formatLabel: formatLabelText, replaceAcronyms } = require('./text-helper')
 
 const mappedLabels = Object.keys(CHECK_YOUR_ANSWERS_LABEL_MAPPING)
 const hrefRoot = '/get-involved/add-new-component'
@@ -32,7 +34,7 @@ const truncateText = (text, maxWords) => {
   try {
     const words = String(text).split(' ')
     if (words.length > maxWords) {
-      return words.slice(0, maxWords).join(' ') + '...'
+      return `${words.slice(0, maxWords).join(' ')  }...`
     }
     return text
   } catch (e) {
@@ -75,9 +77,9 @@ const shareYourDetailsValueReplacement = (value) => {
     values.map((value) => {
       if (shareYourDetailsKeys.includes(value)) {
         return shareYourDetails[value]
-      } else {
+      } 
         return value
-      }
+      
     })
   )
 }
@@ -134,7 +136,7 @@ const extractFieldData = (field, session, canRemove = [], ignoreFields = []) => 
             href: `${hrefRoot}/remove${key}`,
             text: 'Remove',
             visuallyHiddenText:
-                formatLabel(fieldName) + ' - ' + formatLabel(subKey)
+                `${formatLabel(fieldName)  } - ${  formatLabel(subKey)}`
           })
         }
 
@@ -142,7 +144,7 @@ const extractFieldData = (field, session, canRemove = [], ignoreFields = []) => 
           href: `${hrefRoot}${key}`,
           text: 'Change',
           visuallyHiddenText:
-              formatLabel(fieldName) + ' - ' + formatLabel(subKey)
+              `${formatLabel(fieldName)  } - ${  formatLabel(subKey)}`
         })
 
         return {
@@ -153,7 +155,7 @@ const extractFieldData = (field, session, canRemove = [], ignoreFields = []) => 
           }
         }
       })
-    } else {
+    } 
 
       const actionItems = []
 
@@ -181,7 +183,7 @@ const extractFieldData = (field, session, canRemove = [], ignoreFields = []) => 
           }
         }
       ]
-    }
+    
   })
 }
 

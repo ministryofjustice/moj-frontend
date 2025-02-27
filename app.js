@@ -1,17 +1,18 @@
-const express = require('express')
 const path = require('path')
+
+const express = require('express')
 const expressNunjucks = require('express-nunjucks').default
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
-const nunjucks = require('nunjucks')
 const IORedis = require('ioredis')
+const nunjucks = require('nunjucks')
+
 const {
   APP_PORT,
   REDIS_URL,
   REDIS_AUTH_TOKEN,
   SESSION_SECRET
 } = require('./config')
-
 const addComponentRoutes = require('./routes/add-component')
 
 const app = express()

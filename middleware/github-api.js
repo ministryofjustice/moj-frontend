@@ -1,4 +1,5 @@
 const fetch = require('node-fetch')
+
 const {
   GITHUB_API_URL,
   GITHUB_API_TOKEN,
@@ -13,7 +14,7 @@ const extractFilename = (key, includeDirectories = true) => {
   segments[segments.length - 1] = lastSegment.includes('.')
     ? lastSegment
     : `${lastSegment}.txt`
-  let result = includeDirectories
+  const result = includeDirectories
     ? segments.join('/')
     : segments[segments.length - 1]
   return result.startsWith('/') ? result.slice(1) : result
