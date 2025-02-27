@@ -30,6 +30,10 @@
       "macroName": "mojButtonMenu"
     },
     {
+      "importFrom": "moj/components/date-picker/macro.njk",
+      "macroName": "mojDatePicker"
+    },
+    {
       "importFrom": "moj/components/filter/macro.njk",
       "macroName": "mojFilter"
     },
