@@ -248,11 +248,11 @@ Initial caps for 'Home Office'.
 
 Use 'identity numbers' when referring to:
 
-- [CRN](#CRN%28case reference number%29%)
+- [CRN](#CRN-%28case-reference-number%29%)
 - CRO number
 - driving licence number
 - Home Office reference number
-- [PNC number](#PNC-number)
+- [PNC number](#pnc-number)
 - [prison number](#prison-number)
 
 Do not use 'identifiers' when referring to these items.
