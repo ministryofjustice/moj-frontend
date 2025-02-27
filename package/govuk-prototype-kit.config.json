@@ -50,6 +50,10 @@
       "macroName": "mojMessages"
     },
     {
+      "importFrom": "moj/components/multi-file-upload/macro.njk",
+      "macroName": "mojMultiFileUpload"
+    },
+    {
       "importFrom": "moj/components/notification-badge/macro.njk",
       "macroName": "mojNotificationBadge"
     },
