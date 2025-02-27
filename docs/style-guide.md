@@ -19,7 +19,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 25 February 2025
+Last updated: 27 February 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -244,15 +244,16 @@ Initial caps for 'Home Office'.
 {% endaccordionSection %}
 {% accordionSection "I" %}
 
-### identity numbers (DPS only)
+### identity numbers (HMPPS only)
 
 Use 'identity numbers' when referring to:
 
-- PNC number
-- Prison number
+- [CRN](#CRN%28case reference number%29%)
 - CRO number
-- Driving licence number
+- driving licence number
 - Home Office reference number
+- [PNC number](#PNC-number)
+- [prison number](#prison-number)
 
 Do not use 'identifiers' when referring to these items.
 
