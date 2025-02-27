@@ -239,15 +239,5 @@ Alert.prototype.mergeConfigs = function (...configObjects) {
 }
 
 /**
- * Schema for component config
- *
- * @typedef {object} Schema
- * @property {{ [field: string]: SchemaProperty | undefined }} properties - Schema properties
- */
-
-/**
- * Schema property for component config
- *
- * @typedef {object} SchemaProperty
- * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
+ * @import { Schema, SchemaProperty } from '../../all.mjs'
  */
