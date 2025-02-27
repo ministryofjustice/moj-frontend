@@ -1,13 +1,7 @@
-const autoprefixer = require('autoprefixer')
-const cssnano = require('cssnano')
 const gulp = require('gulp')
-const postcss = require('gulp-postcss')
-const rename = require('gulp-rename')
-const gulpSass = require('gulp-sass')
-const uglify = require('gulp-uglify')
-const dartSass = require('sass-embedded')
 
-const sass = gulpSass(dartSass)
+const { compileScripts } = require('./tasks/scripts')
+const { compileStyles } = require('./tasks/styles')
 
 gulp.task('dist:clean', async () => {
   const { deleteSync } = await import('del')
@@ -21,34 +15,32 @@ gulp.task('dist:assets', () => {
     .pipe(gulp.dest('dist/assets/'))
 })
 
-gulp.task('dist:javascript', () => {
-  return gulp
-    .src('package/moj/all.js')
-    .pipe(uglify())
-    .pipe(rename('moj-frontend.min.js'))
-    .pipe(gulp.dest('dist'))
-})
+gulp.task(
+  'dist:javascript',
+  compileScripts('all.mjs', {
+    srcPath: 'package/moj',
+    destPath: 'dist',
 
-gulp.task('dist:css', (done) => {
-  return gulp
-    .src('gulp/dist-scss/*.scss')
-    .pipe(
-      sass({
-        loadPaths: ['./'],
-        quietDeps: true,
-        silenceDeprecations: ['import']
-      }).on('error', done)
-    )
-    .pipe(postcss([autoprefixer, cssnano]))
-    .pipe(
-      rename((path) => ({
-        dirname: path.dirname,
-        basename: path.basename.replace('dist', 'moj-frontend'),
-        extname: '.min.css'
-      }))
-    )
-    .pipe(gulp.dest('dist'))
-})
+    // Customise output
+    output: {
+      compact: true,
+      file: 'moj-frontend.min.js',
+      format: 'umd',
+      name: 'MOJFrontend'
+    }
+  })
+)
+
+gulp.task(
+  'dist:css',
+  compileStyles('all.scss', {
+    srcPath: 'src/moj',
+    destPath: 'dist',
+
+    // Customise output
+    output: { file: 'moj-frontend.min.css' }
+  })
+)
 
 gulp.task('dist:zip', async () => {
   const { default: zip } = await import('gulp-zip')

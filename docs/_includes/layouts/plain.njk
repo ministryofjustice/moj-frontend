@@ -1,11 +1,13 @@
 {% extends "./base.njk" %}
 
-{% block content %}
-    <div class="app-layout__content">
-        <h1 class="govuk-heading-xl">
-            {{ title }}
-        </h1>
+{% from "macros/heading/macro.njk" import heading %}
 
-        {{ content | safe }}
-    </div>
+{% block content %}
+  <div class="app-layout__content">
+    {{ heading({
+      text: title
+    }) }}
+
+    {{ content | safe }}
+  </div>
 {% endblock %}

@@ -1,13 +1,14 @@
 {% extends "./base.njk" %}
 
-{% block content %}
-    <div class="app-layout__content">
-        <h1 class="govuk-heading-xl">
-          {% if not isIndex %}<span class="govuk-caption-xl">{{ subsection }}</span>{% endif %}
-          {{ title }}
-        </h1>
-        
-        {{ content | safe }}
+{% from "macros/heading/macro.njk" import heading %}
 
-    </div>
+{% block content %}
+  <div class="app-layout__content">
+    {{ heading({
+      text: title,
+      caption: subsection if not isIndex
+    }) }}
+
+    {{ content | safe }}
+  </div>
 {% endblock %}

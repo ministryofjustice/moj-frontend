@@ -10,65 +10,65 @@ title: Filter (example)
 {%- set filterOptionsHtml %}
 
   {{ govukInput({
-    id: 'keywords',
-    name: 'keywords',
+    id: "keywords",
+    name: "keywords",
     label: {
-      text: 'Keywords',
-      classes: 'govuk-label--m'
+      text: "Keywords",
+      classes: "govuk-label--m"
     }
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: 'type',
-    name: 'type',
+    idPrefix: "type",
+    name: "type",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: 'Type',
-        classes: 'govuk-fieldset__legend--m'
+        text: "Type",
+        classes: "govuk-fieldset__legend--m"
       }
     },
     items: [
       {
-        value: '1',
-        text: 'Blue (18)',
+        value: "1",
+        text: "Blue (18)",
         checked: true
       },
       {
-        value: '2',
-        text: 'Yellow (5)',
+        value: "2",
+        text: "Yellow (5)",
         checked: true
       },
       {
-        value: '3',
-        text: 'Red (2)'
+        value: "3",
+        text: "Red (2)"
       }
     ]
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: 'status',
-    name: 'status',
+    idPrefix: "status",
+    name: "status",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: 'Status',
-        classes: 'govuk-fieldset__legend--m'
+        text: "Status",
+        classes: "govuk-fieldset__legend--m"
       }
     },
     items: [
       {
-        value: 'complete',
-        text: 'Completed (2)',
+        value: "complete",
+        text: "Completed (2)",
         checked: true
       },
       {
-        value: 'incomplete',
-        text: 'Incomplete (5)'
+        value: "incomplete",
+        text: "Incomplete (5)"
       },
       {
-        value: 'inprogress',
-        text: 'In progress (3)',
+        value: "inprogress",
+        text: "In progress (3)",
         checked: false
       }
     ]
@@ -77,7 +77,7 @@ title: Filter (example)
 
 {{ mojFilter({
   heading: {
-    text: 'Filter'
+    text: "Filter"
   },
 
   submit: {
@@ -89,33 +89,33 @@ title: Filter (example)
   selectedFilters: {
 
     heading: {
-      text: 'Selected filters'
+      text: "Selected filters"
     },
 
     clearLink: {
-      text: 'Clear filters'
+      text: "Clear filters"
     },
 
     categories: [
       {
         heading: {
-          text: 'Type'
+          text: "Type"
         },
         items: [{
-          href: '/path/to/remove/this',
-          text: 'Blue'
+          href: "/path/to/remove/this",
+          text: "Blue"
         }, {
-          href: '/path/to/remove/this',
-          text: 'Yellow'
+          href: "/path/to/remove/this",
+          text: "Yellow"
         }]
       },
       {
         heading: {
-          text: 'Status'
+          text: "Status"
         },
         items: [{
-          href: '/path/to/remove/this',
-          text: 'Completed'
+          href: "/path/to/remove/this",
+          text: "Completed"
         }]
       }
     ]

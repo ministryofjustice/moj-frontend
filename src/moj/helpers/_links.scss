@@ -1,0 +1,22 @@
+@use "sass:color";
+@use "../settings/colours" as *;
+@use "../vendor/govuk-frontend/base" as *;
+
+@mixin moj-link-style-warning {
+  &:link,
+  &:visited {
+    color: $moj-warning-link-colour;
+  }
+
+  &:hover {
+    color: color.scale($moj-warning-link-colour, $lightness: -30%);
+  }
+
+  &:active {
+    color: $moj-warning-colour;
+  }
+
+  &:focus {
+    color: $govuk-focus-text-colour;
+  }
+}

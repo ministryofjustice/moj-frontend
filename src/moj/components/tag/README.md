@@ -1,6 +1,6 @@
-# Badge
+# Badge (Archived)
 
-- [Guidance](https://design-patterns.service.justice.gov.uk/components/tag)
+- [Guidance](https://design-patterns.service.justice.gov.uk/archive/tag)
 
 ## Classes
 

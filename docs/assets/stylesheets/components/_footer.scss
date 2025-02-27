@@ -1,3 +1,5 @@
+@use "../govuk-frontend" as *;
+
 .govuk-footer--docs {
   .govuk-width-container {
     margin-right: govuk-spacing(4);

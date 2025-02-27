@@ -19,7 +19,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 21 February 2025
+Last updated: 25 February 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -187,10 +187,13 @@ Research with prison staff has shown that empty states help reassure users that 
 
 In the DPS prisoner profile, the 'aliases' field was conditionally hidden if no aliases had been entered. Users said that they thought the page might be broken or just not showing the information from NOMIS.
 
+### establishment
+
+See [prison, establishment](#prison%2C-establishment).
+
 ### establishment roll, roll
 
-This refers to the record of prisoners' movements and locations in an establishment.
-You can use 'roll' when referring to the establishment roll. This is commonly used in prisons and is well understood.
+This refers to the record of prisoners' movements and locations in an establishment. You can use 'roll' when referring to the establishment roll. This is commonly used in prisons and is well understood.
 
 {% endaccordionSection %}
 {% accordionSection "F" %}
@@ -350,6 +353,22 @@ Always use 'preferred name', not 'working name' as it's called in NOMIS.
 ### PNC number
 
 An identity number assigned to a person in the Police National Computer (PNC). Use ‘PNC number’. This is more well known than the full version.
+
+### prison, establishment
+
+‘Prison’ and ‘establishment’ are both acceptable terms. Which one you should use depends on the context and audience.
+
+‘Prison’ refers only to adult prisons. It’s more likely to be understood by the public than ‘establishment’. Users with English as a second language may also find it easier to understand.
+
+Individual prison names can be used for clarity, for example ‘HMP Wayland’.
+
+‘Establishment’ is used to collectively describe a mixture of prisons, young offender institutions (YOIs), dual-designated prisons and YOIs, and Secure Training Centres (STCs). ‘Prison’ is inappropriate when describing settings accommodating children and young adults.
+
+‘Establishment’ is widely used in NOMIS and DPS, with no reported issues.
+
+‘Location’ may refer to places within the prison, for example, the gym.
+
+'Site' is sometimes used instead of prison or establishment, or to refer to where someone on probation is located. It might be used to describe places with several prisons or buildings.
 
 ### prison number
 

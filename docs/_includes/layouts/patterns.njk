@@ -1,20 +1,29 @@
 {% extends "./base.njk" %}
 
-{% from "./macros/status.njk" import statusLabel %}
-{% from "./macros/heading.njk" import heading %}
+{% from "macros/status-label/macro.njk" import statusLabel %}
+{% from "macros/heading/macro.njk" import heading %}
 
 {% block content %}
-    <div class="app-layout__content">
-        {% if not isIndex %}<span class="govuk-caption-xl">Patterns</span>{% endif %}
-       {{ heading(1, title, status) }}
-       {{ statusLabel(type, status, statusInfo, creatorName, creatorTeam, statusDate) }}
-       {{ content | safe }}
+  <div class="app-layout__content">
+    {{ heading({
+      text: title,
+      caption: "Patterns" if not isIndex,
+      statusTag: { text: status }
+    }) }}
 
-      {% if isIndex or isArchive %}
-      {% else %}
-        {% include "./partials/get-help-and-contribute.njk" %}
-      {% endif %}
+    {{ statusLabel(
+      type,
+      status,
+      statusInfo[status],
+      statusDate,
+      creatorName,
+      creatorTeam
+    ) if statusInfo[status] }}
 
-    </div>
+    {{ content | safe }}
 
+    {% if not (isIndex or isArchive) %}
+      {% include "./partials/get-help-and-contribute.njk" %}
+    {% endif %}
+  </div>
 {% endblock %}

@@ -1,37 +1,48 @@
 {% extends "./base.njk" %}
-{% from "./macros/card.njk" import card %}
 
-{% block title %}MoJ Design System{% endblock %}
+{% from "macros/card/macro.njk" import card %}
+{% from "macros/heading/macro.njk" import heading %}
+
+{% block title -%}
+  MoJ Design System
+{%- endblock %}
 
 {% block content %}
-
   <div class="app-masthead ">
-      <div class="app-layout__content">
-    <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
-      {{ title }}
-    </h1>
-    <p>
-      Use the MoJ Design System to learn from the work and experiences of others, contribute back into the design system to share your knowledge, and reuse as much as possible to avoid repeating what has already been done.
-    </p>
-      </div>
+    <div class="app-layout__content">
+      {{ heading({
+        text: title,
+        classes: "govuk-!-margin-bottom-4"
+      }) }}
+
+      <p>Use the MoJ Design System to learn from the work and experiences of others, contribute back into the design system to share your knowledge, and reuse as much as possible to avoid repeating what has already been done.</p>
+    </div>
   </div>
 
   <div class="app-layout__content">
-      <div class="app-cards">
-        {% call card({title: "What's new" })%}
+    <div class="app-cards">
+      {% call card({
+        heading: {
+          text: "What’s new",
+          size: "large"
+        }
+      }) %}
+        <p class="govuk-body">24 February 2025: The <a href="/components/alert/">alert component</a> is now live. It's based on the <a href="/archive/banner/">banner component</a>, which has been archived.</p>
         <p class="govuk-body">18 December 2024: The <a href="/content-standards/style-guide/">MoJ content style guide</a> is now live.</p>
-          <p class="govuk-body">10 December 2024: The <a href="/components/interruption-card/">interruption card component</a> is now live. Use it to help users understand possible errors and avoid serious mistakes.</p>
-          <p class="govuk-body">26 November 2024: We’ve archived the <a href="/archive/password-reveal/">password reveal component</a>. We recommend that teams use the <a href="https://design-system.service.gov.uk/components/password-input/">GOV.UK Design System password input</a> instead.</p>
-          <p class="govuk-body"><a href="https://docs.google.com/forms/d/1i7rinQINSjdQ6w_SChXqxQFTttPMgfcSfPamq8YRnP8/viewform">Sign up to get emails</a> about the MoJ Design System.</p>
-        {% endcall %}
+        <p class="govuk-body"><a href="https://docs.google.com/forms/d/1i7rinQINSjdQ6w_SChXqxQFTttPMgfcSfPamq8YRnP8/viewform">Sign up to get emails</a> about the MoJ Design System.</p>
+      {% endcall %}
 
-        {% call card({title: "Contribute to the MoJ Design System" })%}
-            <p>Anyone can contribute to the MoJ Design System by proposing a new style, component, or pattern.</p>
-            <p><a href="/get-involved/contribute" class="govuk-link">Propose a contribution</a> to the MoJ Design System.</p>
-        {% endcall %}
+      {% call card({
+        heading: {
+          text: "Contribute to the MoJ Design System",
+          size: "large"
+        }
+      }) %}
+        <p>Anyone can contribute to the MoJ Design System by proposing a new style, component, or pattern.</p>
+        <p><a href="/get-involved/contribute" class="govuk-link">Propose a contribution</a> to the MoJ Design System.</p>
+      {% endcall %}
     </div>
 
     {{ content | safe }}
   </div>
-
 {% endblock %}

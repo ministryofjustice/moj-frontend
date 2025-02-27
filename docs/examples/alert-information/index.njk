@@ -1,0 +1,15 @@
+---
+layout: layouts/example.njk
+title: Alert (example)
+arguments: alert
+figma_link: https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=66-5802
+---
+
+{%- from "moj/components/alert/macro.njk" import mojAlert -%}
+
+{{ mojAlert({
+  variant: "information",
+  title: "A section has moved",
+  dismissible: false,
+  html: 'The finance section has moved to the <a href="#">dashboard</a>.'
+}) }}

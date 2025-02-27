@@ -7,20 +7,20 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 {%- from "moj/components/search/macro.njk" import mojSearch -%}
 
 {{ mojSearch({
-  action: '#',
-  method: 'post',
+  action: "#",
+  method: "post",
   input: {
-    id: 'search',
-    name: 'search'
+    id: "search",
+    name: "search"
   },
   label: {
-    text: 'Find a person',
-    classes: 'govuk-!-font-weight-bold'
+    text: "Find a person",
+    classes: "govuk-!-font-weight-bold"
   },
   hint: {
-    text: 'You can search by name, date of birth or national insurance number'
+    text: "You can search by name, date of birth or national insurance number"
   },
   button: {
-    text: 'Search'
+    text: "Search"
   }
 }) }}

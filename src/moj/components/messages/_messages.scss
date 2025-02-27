@@ -1,10 +1,12 @@
+@use "../../vendor/govuk-frontend/base" as *;
+
 /* ==========================================================================
    #MESSAGES
    ========================================================================== */
 
 .moj-messages-container {
-  @include govuk-font(19);
   border: 1px solid $govuk-border-colour;
+  @include govuk-font(19);
 }
 
 .moj-message-list {
@@ -14,12 +16,12 @@
   overflow-y: scroll;
 
   &__date {
-    @include govuk-font($size: 19, $weight: "bold");
     display: inline-block;
     width: 100%;
     padding: govuk-spacing(3) 0;
     color: govuk-colour("dark-grey");
     text-align: center;
+    @include govuk-font($size: 19, $weight: "bold");
   }
 }
 

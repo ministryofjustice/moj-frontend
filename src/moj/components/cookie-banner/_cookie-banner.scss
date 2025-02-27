@@ -1,4 +1,5 @@
-@import "node_modules/govuk-frontend/dist/govuk/objects/width-container";
+@use "../../objects/width-container" as *;
+@use "../../vendor/govuk-frontend/base" as *;
 
 .moj-cookie-banner {
   box-sizing: border-box;
@@ -18,7 +19,7 @@
 
   &__message {
     margin: 0;
-    @include govuk-width-container;
+    @include moj-width-container;
   }
 
   &__buttons {

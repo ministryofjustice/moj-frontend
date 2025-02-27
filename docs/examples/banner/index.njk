@@ -1,8 +1,8 @@
 ---
 layout: layouts/example.njk
 title: Banner (example)
-figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type=design&node-id=66-5802&mode=design
 ---
+
 {%- from "moj/components/banner/macro.njk" import mojBanner -%}
 
 {% set bannerHtml %}
@@ -10,6 +10,6 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 {% endset %}
 
 {{ mojBanner({
-  type: 'information',
+  type: "information",
   html: bannerHtml
 }) }}

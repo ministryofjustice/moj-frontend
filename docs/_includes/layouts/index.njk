@@ -1,24 +1,32 @@
 {% extends "./base.njk" %}
-{% from "./macros/card.njk" import card %}
+
+{% from "macros/card/macro.njk" import card %}
+{% from "macros/heading/macro.njk" import heading %}
 
 {% set items = collections.all | eleventyNavigation(eleventyNavigation.key) | sort(false, false, "key") %}
 
 {% block content %}
-    <div class="app-masthead">
-        <div class="app-layout__content">
-            <h1 class="govuk-heading-xl">
-              {{ title }}
-            </h1>
-            {{ content | safe }}
-        </div>
-    </div>
+  <div class="app-masthead">
+    <div class="app-layout__content">
+      {{ heading({
+        text: title
+      }) }}
 
-    <div class="app-layout__content app-cards">
-    {% for item in items %}
-    {% call card({title: item.title}) %}
-            <p>{{ item.excerpt }}</p>
-            <p><a href="{{ item.url }}">View the '{{ item.title }}' guidance</a></p>
-        {% endcall %}
-    {% endfor %}
+      {{ content | safe }}
     </div>
+  </div>
+
+  <div class="app-layout__content app-cards">
+    {% for item in items %}
+      {% call card({
+        heading: {
+          text: item.title,
+          size: "large"
+        }
+      }) %}
+        <p>{{ item.excerpt }}</p>
+        <p><a href="{{ item.url }}">View the '{{ item.title }}' guidance</a></p>
+      {% endcall %}
+    {% endfor %}
+  </div>
 {% endblock %}

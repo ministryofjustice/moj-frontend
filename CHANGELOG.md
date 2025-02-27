@@ -1,3 +1,71 @@
+# [3.7.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.6.3...v3.7.0) (2025-02-26)
+
+
+### Bug Fixes
+
+* ensure Dart Sass `file://` sources use relative paths ([11db6df](https://github.com/ministryofjustice/moj-frontend/commit/11db6dfe2fd145d09b798e69bb5b88909727653a))
+
+
+### Features
+
+* add source map support ([3c14da6](https://github.com/ministryofjustice/moj-frontend/commit/3c14da640de4f1e865c3d73cda8987a577631463))
+
+## [3.6.3](https://github.com/ministryofjustice/moj-frontend/compare/v3.6.2...v3.6.3) (2025-02-26)
+
+
+### Bug Fixes
+
+* ensure `node_modules` is added to Sass load paths ([4c035f1](https://github.com/ministryofjustice/moj-frontend/commit/4c035f14a991429506638db954c4e3dd2de26140))
+* ensure `peerDependencies` are installed ([69c8572](https://github.com/ministryofjustice/moj-frontend/commit/69c857272af3f4facd26d95a33dd305e86e3f7ec))
+
+## [3.6.2](https://github.com/ministryofjustice/moj-frontend/compare/v3.6.1...v3.6.2) (2025-02-25)
+
+
+### Bug Fixes
+
+* revert to `$` for jQuery external global ([c722f15](https://github.com/ministryofjustice/moj-frontend/commit/c722f15f8129b00dcaab6c97deb518c404f81e0f))
+
+## [3.6.1](https://github.com/ministryofjustice/moj-frontend/compare/v3.6.0...v3.6.1) (2025-02-25)
+
+
+### Bug Fixes
+
+* typo in status label comment ([7078172](https://github.com/ministryofjustice/moj-frontend/commit/70781721fc2f4e96b7e43b89f4d0a8495ed1e23d))
+
+# [3.6.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.5.0...v3.6.0) (2025-02-25)
+
+
+### Bug Fixes
+
+* ignore build output from jest ([7f85d64](https://github.com/ministryofjustice/moj-frontend/commit/7f85d64154c9f174cca1ff44a9c26929a47a6181))
+* ignore test files from gulp watch ([12494a3](https://github.com/ministryofjustice/moj-frontend/commit/12494a3b9e531e9297e538712237fa2400552ffb))
+
+
+### Features
+
+* default to ES module sources ([adab275](https://github.com/ministryofjustice/moj-frontend/commit/adab27543b0afdc3ae33c25d332a139d05789c95))
+* export to ES modules ([8e8787a](https://github.com/ministryofjustice/moj-frontend/commit/8e8787a99aa6e9013a8e24de63e9df8f5cd3dbfd))
+* swap JavaScript minifier from UglifyJS to terser ([a0e165a](https://github.com/ministryofjustice/moj-frontend/commit/a0e165aa5c3e05163f30d7cbec61812c1d61566d))
+
+# [3.5.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.4.0...v3.5.0) (2025-02-25)
+
+
+### Features
+
+* migrate to bundled modules using Rollup ([#1149](https://github.com/ministryofjustice/moj-frontend/issues/1149)) ([411e8a3](https://github.com/ministryofjustice/moj-frontend/commit/411e8a3e6f3a32b8ecdb51c995ad1f3ec6b111a8))
+
+# [3.4.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.3.1...v3.4.0) (2025-02-24)
+
+
+### Bug Fixes
+
+* **sortable table:** improve sorting of strings with a number prefix ([#1108](https://github.com/ministryofjustice/moj-frontend/issues/1108)) ([b424743](https://github.com/ministryofjustice/moj-frontend/commit/b4247438a3dc6787d63e681816585c2dc16c0210))
+
+
+### Features
+
+* **alert:** Add alert component, archive banner component ([0f8c6a7](https://github.com/ministryofjustice/moj-frontend/commit/0f8c6a7a89b24288ccb1bf25f673b703b5ef2cde))
+
 ## [3.3.1](https://github.com/ministryofjustice/moj-frontend/compare/v3.3.0...v3.3.1) (2025-01-09)
 
 

@@ -1,15 +1,17 @@
+@use "../../vendor/govuk-frontend/base" as *;
+
 /* ==========================================================================
    #DENOTE
    ========================================================================== */
 
 .moj-label__currency {
-  @include govuk-font(19);
   position: absolute;
   // stylelint-disable-next-line declaration-no-important
   margin: 2px 0 0 2px !important;
   padding: 5.5px 12px;
   border-right: 2px solid govuk-colour("black");
   background-color: govuk-colour("light-grey");
+  @include govuk-font(19);
 
   &--error {
     border-right: 2px solid $govuk-error-colour;
