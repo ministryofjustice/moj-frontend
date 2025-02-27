@@ -71,7 +71,6 @@ The GOV.UK Prototype Kit (sometimes called ‘the kit’) enables you to create 
 
 - The team and stakeholders get a better sense of how a product will behave.
 - Responds to different devices and screen sizes.
-
 - Easier handover from design to development (and for working out if a design is feasible).
 
 ### Disadvantages
