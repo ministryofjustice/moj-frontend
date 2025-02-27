@@ -1,6 +1,6 @@
-# Task list
+# Task list (Archived)
 
-- [Guidance](https://design-patterns.service.justice.gov.uk/patterns/task-list)
+- [Guidance](https://design-patterns.service.justice.gov.uk/archive/task-list)
 
 ## Example
 
