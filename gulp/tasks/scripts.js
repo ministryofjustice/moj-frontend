@@ -1,5 +1,6 @@
 const { join, parse } = require('path')
 
+const { babel } = require('@rollup/plugin-babel')
 const commonjs = require('@rollup/plugin-commonjs')
 const nodeResolve = require('@rollup/plugin-node-resolve')
 const terser = require('@rollup/plugin-terser')
@@ -24,7 +25,10 @@ function compileScripts(assetPath, { srcPath, destPath, output = {} }) {
           jquery: '$'
         }),
         nodeResolve(),
-        commonjs()
+        commonjs(),
+        babel({
+          babelHelpers: 'bundled'
+        })
       ]
     })
 
