@@ -18,7 +18,7 @@ The site also hosts common standards and principles. These include the [content 
 
 There are 4 main benefits of using the MoJ Design System:
 
-## Get updates to services and prototypes
+## 1. Get updates to services and prototypes
 
 MoJ Design System building blocks are centrally managed and updated. This means that when you apply the latest version of the Design System, every instance of a building block (in Figma, a coded prototype or live service) is updated.
 
@@ -29,13 +29,13 @@ Changes to the MoJ and GOV.UK Design Systems are made to:
 
 Read more about [how Figma prototypes are updated](/prototyping/setting-up-figma-prototypes/) and about [setting up coded prototypes](/production/install-moj-frontend/).
 
-## Make services more consistent
+## 2. Make services more consistent
 
 When services are consistent it makes them easier to use. This is particularly useful for staff using multiple services each day.
 
 The components, patterns and pages in the MoJ Design System offer a consistent and tested user experience. The [content style guide](/content-standards/style-guide/) also helps with this, by ensuring that terminology is the same across different services.
 
-## Improve efficiency
+## 3. Improve efficiency
 
 Using the MoJ Design System can reduce the amount of time teams spend building services. Building blocks help with common tasks, such as:
 
@@ -53,11 +53,11 @@ This can lead to faster design ideation, prototyping, collaboration and developm
 
 This frees up teams to focus on unique and complex problems.
 
-## Get multidisciplinary input
+## 4. Get multidisciplinary input
 
-A building block with an [‘official’ status](/design-system-statuses/) has been worked on by a central, multidisciplinary team. This is a content designer, interaction designer, frontend developer, accessibility specialist, design system lead and delivery manager.
+A building block with an [‘official’ status](/design-system-statuses/) has been worked on by a central, multidisciplinary team. This is a content designer, interaction designer, frontend developer and accessibility specialist.
 
-You can expect them to be thoroughly and clearly documented, with a distinct visual style, interaction standard and code semantics.
+You can expect the building blocks to be thoroughly and clearly documented, with the consistent visual style of GOV.UK, an interaction standard and code semantics.
 
 ## How to help develop the Design System
 
