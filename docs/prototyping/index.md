@@ -3,7 +3,7 @@
   title: Prototyping
   eleventyNavigation:
     key: Prototyping
-    parent: Using the design system
+    parent: Using the Design System
     order: 10
 ---
 

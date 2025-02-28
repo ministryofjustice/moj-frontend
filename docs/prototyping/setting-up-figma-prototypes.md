@@ -5,7 +5,7 @@ title: Setting up Figma prototypes
 eleventyNavigation:
   key: Setting up Figma prototypes
   parent: Prototyping
-  order: 10
+  order: 11
   excerpt: "Setting up Figma prototypes."
 ---
 

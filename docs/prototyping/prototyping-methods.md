@@ -33,7 +33,7 @@ Sketching is typically done with a pen and paper and is sometimes called paper p
 
 ### Use cases
 
-- Testing designs early in the process.
+Sketching is used to test designs early in the process.
 
 [Read about sketching on the NN/g website](https://www.nngroup.com/articles/paper-prototyping-cutout-kit/)
 
