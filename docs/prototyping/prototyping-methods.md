@@ -15,7 +15,7 @@ Prototypes can be high or low fidelity. Sketching is an example of low-fidelity 
 
 There are advantages and disadvantages for each method. Choose one according to your needs.
 
-## Sketching (low fidelity)  
+## Sketching (low fidelity)
 
 Sketching is typically done with a pen and paper and is sometimes called paper prototyping. You can also use a collaborative tool such as Miro.
 

@@ -26,7 +26,7 @@
     border: 1px solid #b1b4b6;
   }
 
-  img.app-card__image {
+  .app-card__image {
     border: none;
   }
 
@@ -65,7 +65,7 @@
     @extend %govuk-link;
   }
 
-  a.govuk-link--inverse {
+  .govuk-link--inverse {
     @extend .govuk-link--inverse;
   }
 

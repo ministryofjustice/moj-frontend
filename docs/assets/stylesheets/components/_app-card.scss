@@ -2,25 +2,30 @@
 
 .app-card {
   margin-bottom: 0;
+
   @include govuk-media-query($until: desktop) {
     margin-bottom: govuk-spacing(7);
   }
+
   &__image {
+    display: block;
     width: 100%;
     height: auto;
-    display: block;
     object-fit: cover;
-    max-width: 100%;
   }
+
   &--reverse {
     display: flex;
     flex-direction: row-reverse;
+
     @include govuk-media-query($until: desktop) {
       flex-direction: column;
     }
   }
+
   &__full {
     margin-bottom: govuk-spacing(9);
+
     @include govuk-media-query($until: desktop) {
       margin-bottom: govuk-spacing(7);
     }
