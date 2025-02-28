@@ -2,11 +2,12 @@ const { execSync } = require('child_process')
 const fs = require('fs')
 const path = require('path')
 
-const cheerio = require('cheerio')
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
+const cheerio = require('cheerio')
 const matter = require('gray-matter')
 const hljs = require('highlight.js')
 const beautifyHTML = require('js-beautify').html
+const upperFirst = require('lodash/upperFirst')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const nunjucks = require('nunjucks')
@@ -359,6 +360,10 @@ module.exports = function (eleventyConfig) {
     return `${inputPath.split('/').slice(1, -1).join('/')}/style.css`
   })
 
+  eleventyConfig.addFilter('renderString', function (viewString, context) {
+    return nunjucksEnv.renderString(viewString, context)
+  })
+
   eleventyConfig.addFilter('rev', (filepath) => {
     if (process.env.ENV === 'production' || process.env.ENV === 'staging') {
       const manifest = JSON.parse(
@@ -372,31 +377,41 @@ module.exports = function (eleventyConfig) {
 
   const createLayoutFromHTML = (sourceFile, destinationFile) => {
     try {
-      const htmlContent = fs.readFileSync(sourceFile, 'utf8')
-
-      const $ = cheerio.load(htmlContent)
+      const htmlContent = fs.readFileSync(sourceFile, 'utf8');
+      const $ = cheerio.load(htmlContent);
+  
+      // Check if we are generating a community page layout
+      const isCommunityPage = destinationFile.includes('/views/common/');
+  
+      // If it's a community page, remove the class from <main>
+      if (isCommunityPage) {
+        $('main').removeAttr('class'); // Removes class attribute from <main>
+      }
+  
+      // Replace #main-content with Nunjucks block
       const nunjucksBlock = `
       {% block content %}
           {{ content | safe }}
       {% endblock %}
-            `.trim()
-      $('#main-content').html(nunjucksBlock)
-
+      `.trim();
+      $('#main-content').html(nunjucksBlock);
+  
+      // Beautify HTML
       const modifiedContent = beautifyHTML($.html(), {
         indent_size: 2,
         end_with_newline: true,
         max_preserve_newlines: 1,
         unformatted: ['code', 'pre', 'em', 'strong']
-      })
-
-      fs.writeFileSync(destinationFile, modifiedContent)
-      console.log(`Generated base.njk at ${destinationFile}`)
+      });
+  
+      // Write the modified content back
+      fs.writeFileSync(destinationFile, modifiedContent);
+      console.log(`Generated base.njk at ${destinationFile}`);
     } catch (error) {
-      console.error('Error during base.njk generation:', error)
+      console.error('Error during base.njk generation:', error);
     }
-  }
+  };
 
-  // Create base.njk for community form based on the add-new-component page (to use the correct navigation)
   eleventyConfig.on('afterBuild', () => {
     // Add new component layout
     const componentSourceFile = path.join(
@@ -414,6 +429,8 @@ module.exports = function (eleventyConfig) {
     const destinationFile = path.join(__dirname, 'views/common/base.njk')
     createLayoutFromHTML(sourceFile, destinationFile)
   })
+
+  eleventyConfig.addFilter('upperFirst', upperFirst)
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')
@@ -435,30 +452,4 @@ module.exports = function (eleventyConfig) {
     // Show the dev server version number on the command line
     showVersion: true
   })
-
-  const path = require("path");
-
-module.exports = function(eleventyConfig) {
-  eleventyConfig.addGlobalData("isDocsPage", (data) => {
-    if (!data.page || !data.page.inputPath) return false;
-
-    // Normalize the path to avoid OS-related issues
-    const inputPath = path.normalize(data.page.inputPath);
-    const docsPath = path.normalize("./docs/"); // Normalize base docs path
-
-    // Check if inputPath starts with the docs folder
-    return inputPath.startsWith(docsPath);
-  });
-
-  return {
-    dir: {
-      input: "src",
-      output: "dist"
-    }
-  };
-};
-
-  
-
-  
 }

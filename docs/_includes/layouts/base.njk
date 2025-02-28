@@ -63,15 +63,8 @@
             <div id="sidebar" class="app-layout__sidebar">
                 {% include "./partials/side-navigation.njk" %}
             </div>
-
-
             <div class="app-layout__page app-page">
-                <p>Input Path: {{ page.inputPath }}</p>
-              <main id="main-content"
-  {% if not isDocsPage %}
-    class="app-prose-scope"
-  {% endif %}
->
+              <main id="main-content" class="app-prose-scope" >
                     {% block content %}
                         {{ content | safe }}
                     {% endblock %}
