@@ -1,5 +1,3 @@
-const { readFileSync } = require('fs')
-
 const { glob } = require('glob')
 const gulp = require('gulp')
 
@@ -22,48 +20,101 @@ gulp.task('build:javascript', async () => {
     'moj/helpers.mjs',
     'moj/all.mjs'
   ]) {
-    await compileScripts(modulePath, {
-      srcPath: 'src',
-      destPath: 'package',
+    await Promise.all([
+      /**
+       * Rollup output for each module:
+       *
+       * - ECMAScript (ES) modules for Node.js or bundler `import`
+       *   (jQuery resolved via `node_modules`)
+       */
+      compileScripts(modulePath, {
+        srcPath: 'src',
+        destPath: 'package',
 
-      // Customise output
-      output: [
-        {
+        // Customise input
+        input: {
+          external: ['jquery', 'govuk-frontend']
+        },
+
+        // Customise output
+        output: {
           entryFileNames: '[name].mjs',
           preserveModules: true,
           preserveModulesRoot: 'src'
+        }
+      })(),
+
+      /**
+       * Rollup output for each module:
+       *
+       * - Universal Module Definition (UMD) bundle for browser <script>
+       *   (jQuery resolved via `window.$`)
+       */
+      compileScripts(modulePath, {
+        srcPath: 'src',
+        destPath: 'package',
+
+        // Customise input
+        input: {
+          external: ['jquery']
         },
-        {
+
+        // Customise output
+        output: {
           file: modulePath.replace('.mjs', '.js'),
+          globals: { jquery: '$' },
           format: 'umd',
           name: 'MOJFrontend'
         }
-      ]
-    })()
+      })()
+    ])
   }
 })
 
-gulp.task(
-  'build:javascript-minified',
-  compileScripts('all.mjs', {
-    srcPath: 'src/moj',
-    destPath: 'package/moj',
+gulp.task('build:javascript-minified', async () =>
+  Promise.all([
+    /**
+     * Rollup output (minified) without jQuery:
+     *
+     * - Universal Module Definition (UMD) bundle for browser <script>
+     *   (jQuery resolved via `window.$`)
+     */
+    compileScripts('all.mjs', {
+      srcPath: 'src/moj',
+      destPath: 'package/moj',
 
-    // Customise output
-    output: [
-      {
+      // Customise input
+      input: {
+        external: ['jquery']
+      },
+
+      // Customise output
+      output: {
         compact: true,
         file: 'moj-frontend.min.js',
+        globals: { jquery: '$' },
         format: 'umd',
         name: 'MOJFrontend'
-      },
-      {
-        banner: readFileSync('node_modules/jquery/dist/jquery.js', 'utf8'),
+      }
+    })(),
+
+    /**
+     * Rollup output (minified) with jQuery:
+     *
+     * - Universal Module Definition (UMD) bundle for browser <script>
+     *   (jQuery included in bundle)
+     */
+    compileScripts('all.mjs', {
+      srcPath: 'src/moj',
+      destPath: 'package/moj',
+
+      // Customise output
+      output: {
         compact: true,
         file: 'all.jquery.min.js',
         format: 'umd',
         name: 'MOJFrontend'
       }
-    ]
-  })
+    })()
+  ])
 )
