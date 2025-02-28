@@ -49,7 +49,6 @@ If you need to install a newer version of node, you should set the version in th
 
 - Run `nvm use`
 - Run `npm install`
-- Run `npm run build:package`
 
 You can now run `npm run start` to run a local version of the site.
 

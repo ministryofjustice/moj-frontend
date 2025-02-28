@@ -17,27 +17,13 @@ const mojFilters = require('./src/moj/filters/all')
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
-  /*
-   * If the node env is 'dev' then we include the src dir allowing components
-   * under development to be watched and loaded
-   */
-  const templatePaths =
-    process.env.ENV === 'dev'
-      ? [
-          '.',
-          'src',
-          'docs/_includes/',
-          'node_modules/govuk-frontend/dist/',
-          'node_modules/@ministryofjustice/frontend/'
-        ]
-      : [
-          '.',
-          'docs/_includes/',
-          'node_modules/govuk-frontend/dist/',
-          'node_modules/@ministryofjustice/frontend/'
-        ]
 
-  const nunjucksEnv = nunjucks.configure(templatePaths)
+  const nunjucksEnv = nunjucks.configure([
+    '.',
+    'src',
+    'docs/_includes/',
+    'node_modules/govuk-frontend/dist/'
+  ])
 
   Object.entries({
     ...eleventyConfig.nunjucksFilters,
