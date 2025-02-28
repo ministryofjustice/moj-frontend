@@ -23,7 +23,7 @@
     }
   }
 
-  &__full {
+  &--full {
     margin-bottom: govuk-spacing(9);
 
     @include govuk-media-query($until: desktop) {

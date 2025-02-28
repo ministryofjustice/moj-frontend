@@ -34,7 +34,7 @@ Arguments to be passed:
 {% endmacro %}
 
 {% if params.layout == "side-by-side" or params.layout == "full" %}
-  <article class="app-card {{ "govuk-grid-column-full app-card__full" if params.layout == "full" else "govuk-grid-column-one-half-from-desktop" }}">
+  <article class="app-card {{ "govuk-grid-column-full app-card--full" if params.layout == "full" else "govuk-grid-column-one-half-from-desktop" }}">
     {{ _cardImage(params) if params.imageLink }}
 
     {{ heading({
