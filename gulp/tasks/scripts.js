@@ -13,12 +13,21 @@ const externalGlobals = require('rollup-plugin-external-globals')
  * @param {string} assetPath
  * @param {CompileScriptsOptions} entry
  */
-function compileScripts(assetPath, { srcPath, destPath, output = {} }) {
+function compileScripts(
+  assetPath,
+  {
+    srcPath,
+    destPath,
+    input = {}, // Rollup input options
+    output = {} // Rollup output options
+  }
+) {
   const { name } = parse(assetPath)
 
   const taskFn = async () => {
     const bundle = await rollup({
       external: ['jquery'],
+      ...input,
       input: join(srcPath, assetPath),
       plugins: [
         externalGlobals({
@@ -78,9 +87,10 @@ module.exports = {
  * @typedef {object} CompileScriptsOptions
  * @property {string} srcPath - Source directory
  * @property {string} destPath - Destination directory
- * @property {OutputOptions | OutputOptions[]} [output] - Output formats
+ * @property {InputOptions} [input] - Rollup input options
+ * @property {OutputOptions | OutputOptions[]} [output] - Rollup output options
  */
 
 /**
- * @import { OutputOptions } from 'rollup'
+ * @import { InputOptions, OutputOptions } from 'rollup'
  */
