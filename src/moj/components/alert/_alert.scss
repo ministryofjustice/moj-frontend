@@ -72,9 +72,12 @@
   @include govuk-link-print-friendly;
 }
 
-.moj-alert__content h2,
-.moj-alert__content h3,
-.moj-alert__content h4 {
+.moj-alert__heading {
+  @include govuk-text-colour;
+  @include govuk-font-size($size: 24);
+  @include govuk-typography-weight-bold;
+  display: block;
+  margin-top: 0;
   margin-bottom: govuk-px-to-rem(5px);
 
   @include govuk-media-query($from: tablet) {
