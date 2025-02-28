@@ -4,6 +4,7 @@ const { babel } = require('@rollup/plugin-babel')
 const commonjs = require('@rollup/plugin-commonjs')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const terser = require('@rollup/plugin-terser')
+const PluginError = require('plugin-error')
 const { rollup } = require('rollup')
 
 /**
@@ -41,7 +42,15 @@ function compileScripts(
         babel({
           babelHelpers: 'bundled'
         })
-      ]
+      ],
+
+      // Handle warnings as errors
+      onwarn(warning) {
+        throw new PluginError('compile:javascripts', warning.message, {
+          name: warning.code ?? 'Error',
+          showProperties: false
+        })
+      }
     })
 
     // Add minifier plugin (optional)
