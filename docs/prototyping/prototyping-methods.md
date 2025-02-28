@@ -5,7 +5,7 @@ title: Choosing a prototyping method
 eleventyNavigation:
   key: Choosing a prototyping method
   parent: Prototyping
-  order: 12
+  order: 10
   excerpt: "This guide explains how to choose a prototyping tool."
 ---
 
@@ -17,11 +17,11 @@ There are advantages and disadvantages for each method. Choose one according to 
 
 ## Sketching (low fidelity)  
 
-Sketching is typically done with a pen and paper and is sometimes called paper prototyping. You can also use a simple wireframing application, or a collaborative tool such as Miro.
+Sketching is typically done with a pen and paper and is sometimes called paper prototyping. You can also use a collaborative tool such as Miro.
 
 ### Advantages
 
-- Quick and cheap.  
+- Quick and cheap.
 - Builds a design foundation.
 - Enables you to create, iterate and throw away ideas without getting invested.
 - You can focus on the flow and key concepts, not details.
@@ -61,7 +61,7 @@ Figma is a tool for creating designs, and user testing (depending on what the pr
 - Making simple, clickable prototypes to show navigation.
 - Connecting to the MoJ Design System through the Figma Kits.
 
-[How to set up Figma prototyping at MoJ](/prototyping/setting-up-figma-prototypes/)
+[Read about setting up Figma prototypes at MoJ](/prototyping/setting-up-figma-prototypes/)
 
 ## GOV.UK Prototype Kit (high fidelity)
 
@@ -84,4 +84,4 @@ The GOV.UK Prototype Kit (sometimes called ‘the kit’) enables you to create 
 - User testing with real data and interactions, plus keyboard navigation.
 - Testing with assistive technologies users.
 
-[Read more about setting up coded prototypes](/prototyping/setting-up-coded-prototypes/)
+[Read about setting up coded prototypes at MoJ](/prototyping/setting-up-coded-prototypes/)
