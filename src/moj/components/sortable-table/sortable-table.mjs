@@ -1,20 +1,23 @@
-import $ from 'jquery'
-
 export function SortableTable(params) {
-  this.table = $(params.table)
+  this.table = params.table
 
-  if (this.table.data('moj-search-toggle-initialised')) {
+  if (this.table.dataset.mojSearchToggleInitialised) {
     return
   }
 
-  this.table.data('moj-search-toggle-initialised', true)
+  this.table.dataset.mojSearchToggleInitialised = 'true'
+
+  this.head = this.table.querySelector('thead')
+  this.body = this.table.querySelector('tbody')
+  this.rows = this.body.querySelectorAll('tr')
+  this.headings = this.head.querySelectorAll('th')
 
   this.setupOptions(params)
-  this.body = this.table.find('tbody')
   this.createHeadingButtons()
   this.createStatusBox()
   this.initialiseSortedColumn()
-  this.table.on('click', 'th button', $.proxy(this, 'onSortButtonClick'))
+
+  this.head.addEventListener('click', this.onbuttonClick.bind(this))
 }
 
 SortableTable.prototype.setupOptions = function (params) {
@@ -25,71 +28,97 @@ SortableTable.prototype.setupOptions = function (params) {
 }
 
 SortableTable.prototype.createHeadingButtons = function () {
-  const headings = this.table.find('thead th')
-  let heading
-  for (let i = 0; i < headings.length; i++) {
-    heading = $(headings[i])
-    if (heading.attr('aria-sort')) {
-      this.createHeadingButton(heading, i)
+  const headings = Array.from(this.headings)
+
+  for (const heading of headings) {
+    if (heading.hasAttribute('aria-sort')) {
+      this.createHeadingButton(heading)
     }
   }
 }
 
-SortableTable.prototype.createHeadingButton = function (heading, i) {
-  const text = heading.text()
-  const button = $(`<button type="button" data-index="${i}">${text}</button>`)
-  heading.text('')
-  heading.append(button)
+SortableTable.prototype.createHeadingButton = function (heading) {
+  const headings = Array.from(this.headings)
+  const index = headings.indexOf(heading)
+
+  const button = document.createElement('button')
+
+  button.setAttribute('type', 'button')
+  button.setAttribute('data-index', index)
+  button.textContent = heading.textContent
+
+  heading.textContent = ''
+  heading.appendChild(button)
 }
 
 SortableTable.prototype.createStatusBox = function () {
-  this.status = $(
-    '<div aria-live="polite" role="status" aria-atomic="true" class="govuk-visually-hidden" />'
-  )
-  this.table.parent().append(this.status)
+  this.status = document.createElement('div')
+
+  this.status.setAttribute('aria-atomic', 'true')
+  this.status.setAttribute('aria-live', 'polite')
+  this.status.setAttribute('class', 'govuk-visually-hidden')
+  this.status.setAttribute('role', 'status')
+
+  this.table.insertAdjacentElement('afterend', this.status)
 }
 
 SortableTable.prototype.initialiseSortedColumn = function () {
-  const rows = this.getTableRowsArray()
+  for (const heading of Array.from(this.headings)) {
+    const button = heading.querySelector('button')
+    const sortDirection = heading.getAttribute('aria-sort')
 
-  this.table
-    .find('th')
-    .filter('[aria-sort="ascending"], [aria-sort="descending"]')
-    .first()
-    .each((index, el) => {
-      const sortDirection = $(el).attr('aria-sort')
-      const columnNumber = $(el).find('button').attr('data-index')
-      const sortedRows = this.sort(rows, columnNumber, sortDirection)
+    if (sortDirection === 'ascending' || sortDirection === 'descending') {
+      const columnNumber = button.getAttribute('data-index')
+      const sortedRows = this.sort(columnNumber, sortDirection)
+
       this.addRows(sortedRows)
-    })
+    }
+  }
 }
 
-SortableTable.prototype.onSortButtonClick = function (e) {
-  const columnNumber = e.currentTarget.getAttribute('data-index')
-  const sortDirection = $(e.currentTarget).parent().attr('aria-sort')
-  let newSortDirection
-  if (sortDirection === 'none' || sortDirection === 'descending') {
-    newSortDirection = 'ascending'
-  } else {
-    newSortDirection = 'descending'
+SortableTable.prototype.onbuttonClick = function (e) {
+  const button = e.target
+
+  if (
+    !button ||
+    !button.parentElement ||
+    !(button instanceof HTMLButtonElement)
+  ) {
+    return
   }
-  const rows = this.getTableRowsArray()
-  const sortedRows = this.sort(rows, columnNumber, newSortDirection)
+
+  const heading = button.parentElement
+  const columnNumber = button.getAttribute('data-index')
+  const sortDirection = heading.getAttribute('aria-sort')
+
+  const newSortDirection =
+    sortDirection === 'none' || sortDirection === 'descending'
+      ? 'ascending'
+      : 'descending'
+
+  const sortedRows = this.sort(columnNumber, newSortDirection)
+
   this.addRows(sortedRows)
   this.removeButtonStates()
-  this.updateButtonState($(e.currentTarget), newSortDirection)
+  this.updateButtonState(button, heading, newSortDirection)
 }
 
-SortableTable.prototype.updateButtonState = function (button, direction) {
-  button.parent().attr('aria-sort', direction)
+SortableTable.prototype.updateButtonState = function (
+  button,
+  heading,
+  direction
+) {
+  heading.setAttribute('aria-sort', direction)
   let message = this.statusMessage
-  message = message.replace(/%heading%/, button.text())
+  message = message.replace(/%heading%/, button.textContent)
   message = message.replace(/%direction%/, this[`${direction}Text`])
-  this.status.text(message)
+  this.status.textContent = message
 }
 
 SortableTable.prototype.removeButtonStates = function () {
-  this.table.find('thead th').attr('aria-sort', 'none')
+  for (const heading of Array.from(this.headings)) {
+    heading.setAttribute('aria-sort', 'none')
+  }
 }
 
 SortableTable.prototype.addRows = function (rows) {
@@ -98,20 +127,11 @@ SortableTable.prototype.addRows = function (rows) {
   }
 }
 
-SortableTable.prototype.getTableRowsArray = function () {
-  const rows = []
-  const trs = this.body.find('tr')
-  for (let i = 0; i < trs.length; i++) {
-    rows.push(trs[i])
-  }
-  return rows
-}
-
-SortableTable.prototype.sort = function (rows, columnNumber, sortDirection) {
-  const newRows = rows.sort(
+SortableTable.prototype.sort = function (columnNumber, sortDirection) {
+  const newRows = Array.from(this.rows).sort(
     function (rowA, rowB) {
-      const tdA = $(rowA).find('td,th').eq(columnNumber)
-      const tdB = $(rowB).find('td,th').eq(columnNumber)
+      const tdA = rowA.querySelectorAll('td,th')[columnNumber]
+      const tdB = rowB.querySelectorAll('td,th')[columnNumber]
 
       const valueA =
         sortDirection === 'ascending'
@@ -131,7 +151,7 @@ SortableTable.prototype.sort = function (rows, columnNumber, sortDirection) {
 }
 
 SortableTable.prototype.getCellValue = function (cell) {
-  const val = cell.attr('data-sort-value') || cell.html()
+  const val = cell.getAttribute('data-sort-value') || cell.innerHTML
 
   const valAsNumber = Number(val)
   return isNaN(valAsNumber) ? val : valAsNumber
