@@ -111,7 +111,6 @@
     "prettier": "^3.5.2",
     "require-dir": "^1.2.0",
     "rollup": "^4.34.8",
-    "rollup-plugin-external-globals": "^0.13.0",
     "sass-embedded": "^1.85.1",
     "semantic-release": "^24.2.3",
     "semantic-release-plugin-update-version-in-files": "^2.0.0",
