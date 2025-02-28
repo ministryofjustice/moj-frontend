@@ -75,7 +75,7 @@ const validateFormData = (req, res, next) => {
       addAnother: req?.params?.subpage || 1,
       showAddAnother: !!req?.body?.addAnother,
       skipQuestion: req?.skipQuestion || false,
-      csrfToken: res?.locals?.csrfToken
+      csrfToken: req?.session?.csrfToken
     })
   } else {
     console.debug('Validation success:', value)
@@ -189,9 +189,9 @@ const sessionStarted = ( req, res, next) => {
   if(!req?.session?.started) {
     console.error('No session available')
     return res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/start`)
-  } 
+  }
     next()
-  
+
 }
 
 module.exports = {
