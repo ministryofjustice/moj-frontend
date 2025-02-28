@@ -2,7 +2,7 @@ const { join, parse } = require('path')
 
 const { babel } = require('@rollup/plugin-babel')
 const commonjs = require('@rollup/plugin-commonjs')
-const nodeResolve = require('@rollup/plugin-node-resolve')
+const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const terser = require('@rollup/plugin-terser')
 const { rollup } = require('rollup')
 const externalGlobals = require('rollup-plugin-external-globals')
@@ -24,8 +24,18 @@ function compileScripts(assetPath, { srcPath, destPath, output = {} }) {
         externalGlobals({
           jquery: '$'
         }),
-        nodeResolve(),
-        commonjs(),
+        nodeResolve({
+          browser: true
+          // rootDir: destPath,
+          // modulePaths: [join(destPath, 'node_modules')]
+          // customResolveOptions: {
+          //   moduleDirectory: 'node_modules'
+          // }
+        }),
+        commonjs({
+          requireReturnsDefault: 'preferred',
+          defaultIsModuleExports: true
+        }),
         babel({
           babelHelpers: 'bundled'
         })
@@ -50,11 +60,38 @@ function compileScripts(assetPath, { srcPath, destPath, output = {} }) {
         )
       }
 
+      // const isModule = !options.format || ['esm', 'es'].includes(options.format)
+
+      // if (isModule) {
+      //   options.globals ??= {}
+      //   options.globals['govuk-frontend'] = 'GOVUKFrontend'
+      // }
+
       // Write to output format
       await bundle.write({
         extend: true,
         format: 'esm',
         ...options,
+
+        sanitizeFileName(name) {
+          if (name.includes('/node_modules/')) {
+            return name.split('/node_modules/')[1]
+          }
+
+          return name
+        },
+
+        // entryFileNames({ name }) {
+        //   console.log({ name })
+
+        //   if (name.includes('node_modules')) {
+        //     return `${name}.js`
+        //   }
+
+        //   return !options.format || ['esm', 'es'].includes(options.format)
+        //     ? '[name].mjs' // Default '.mjs' extension
+        //     : '[name].js' // Otherwise '.js' extension
+        // },
 
         // Output directory or file
         dir: options.preserveModules ? destPath : undefined,

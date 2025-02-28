@@ -1,35 +1,12 @@
-export class DatePicker {
+import { ConfigurableComponent } from 'govuk-frontend'
+
+export class DatePicker extends ConfigurableComponent {
   /**
    * @param {HTMLElement} $module - HTML element
    * @param {DatePickerConfig} [config] - config object
    */
   constructor($module, config = {}) {
-    if (!$module) {
-      return this
-    }
-
-    const schema = Object.freeze({
-      properties: {
-        excludedDates: { type: 'string' },
-        excludedDays: { type: 'string' },
-        leadingZeros: { type: 'string' },
-        maxDate: { type: 'string' },
-        minDate: { type: 'string' },
-        weekStartDay: { type: 'string' }
-      }
-    })
-
-    const defaults = {
-      leadingZeros: false,
-      weekStartDay: 'monday'
-    }
-
-    // data attributes override JS config, which overrides defaults
-    this.config = this.mergeConfigs(
-      defaults,
-      config,
-      this.parseDataset(schema, $module.dataset)
-    )
+    super()
 
     this.dayLabels = [
       'Monday',
@@ -823,6 +800,32 @@ export class DatePicker {
 
     return formattedConfigObject
   }
+
+  /**
+   * Button default config
+   *
+   * @type {DatePickerConfig}
+   */
+  static defaults = Object.freeze({
+    leadingZeros: false,
+    weekStartDay: 'monday'
+  })
+
+  /**
+   * Button config schema
+   *
+   * @satisfies {Schema<DatePickerConfig>}
+   */
+  static schema = Object.freeze({
+    properties: {
+      excludedDates: { type: 'string' },
+      excludedDays: { type: 'string' },
+      leadingZeros: { type: 'string' },
+      maxDate: { type: 'string' },
+      minDate: { type: 'string' },
+      weekStartDay: { type: 'string' }
+    }
+  })
 }
 
 class DSCalendarDay {
