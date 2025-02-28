@@ -1,4 +1,4 @@
-const { MAX_ADD_ANOTHER: maxAddAnother } = require('../config')
+const { MAX_ADD_ANOTHER: maxAddAnother, ADD_NEW_COMPONENT_ROUTE} = require('../config')
 const extractBody = require('../helpers/extract-body')
 const {checkYourAnswers} = require("../helpers/mockSessionData/sessionData");
 const nextPage = require('../helpers/next-page')
@@ -16,7 +16,7 @@ const transformErrorsToErrorList = (errors) => {
 }
 
 const setNextPage = (req, res, next) => {
-  const addAnother = req?.body?.addAnother
+  const addAnother = req?.body?.addAnother !== undefined
   if (req?.session?.checkYourAnswers && !addAnother) {
     req.nextPage = 'check-your-answers'
     if(req.method === 'POST') {
@@ -37,6 +37,7 @@ const validateFormData = (req, res, next) => {
   const schemaName = req.url.split('/')[1]
   const schema = require(`../schema/${schemaName}.schema`)
   const body = extractBody(req?.url,{...req.body})
+  delete body._csrf
   const { error, value } = schema.validate(body, { abortEarly: false })
   const dateFields = ['auditDate']
 
@@ -73,10 +74,11 @@ const validateFormData = (req, res, next) => {
       backLink: req?.backLink || false,
       addAnother: req?.params?.subpage || 1,
       showAddAnother: !!req?.body?.addAnother,
-      skipQuestion: req?.skipQuestion || false
+      skipQuestion: req?.skipQuestion || false,
+      csrfToken: res?.locals?.csrfToken
     })
   } else {
-    console.log('Validation success:', value)
+    console.debug('Validation success:', value)
     next()
   }
 }
@@ -86,7 +88,7 @@ const saveSession = (req, res, next) => {
     req.session = {}
   }
 
-  let body = req.body
+  let { _csrf, ...body } = req.body;
 
   if (req.file) {
     const { fieldname } = req.file
@@ -183,6 +185,15 @@ const removeFromSession = (req, res, next) => {
   next()
 }
 
+const sessionStarted = ( req, res, next) => {
+  if(!req?.session?.started) {
+    console.error('No session available')
+    return res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/start`)
+  } 
+    next()
+  
+}
+
 module.exports = {
   setNextPage,
   validateFormData,
@@ -193,5 +204,6 @@ module.exports = {
   canAddAnother,
   getBackLink,
   getFormSummaryListForRemove,
-  removeFromSession
+  removeFromSession,
+  sessionStarted
 }

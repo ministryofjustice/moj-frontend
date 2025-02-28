@@ -1,3 +1,5 @@
+const crypto = require('crypto')
+
 const express = require('express')
 const multer = require('multer')
 
@@ -16,7 +18,8 @@ const {
   canAddAnother,
   getBackLink,
   getFormSummaryListForRemove,
-  removeFromSession
+  removeFromSession,
+  sessionStarted
 } = require('../middleware/component-session')
 const { generateMarkdown } = require('../middleware/generate-documentation')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
@@ -24,10 +27,9 @@ const {
   sendSubmissionEmail,
   sendPrEmail
 } = require('../middleware/notify-email')
+const verifyCsrf = require('../middleware/verify-csrf')
 const upload = multer({ storage: multer.memoryStorage() })
 const router = express.Router()
-
-const {setMedia} = require("mock-match-media");
 
 const isValidComponentFormPage = (req, res, next) => {
   if (!Object.keys(COMPONENT_FORM_PAGES).includes(req.params.page)) {
@@ -41,15 +43,30 @@ const isValidComponentFormPage = (req, res, next) => {
 
 const checkYourAnswersPath = 'check-your-answers'
 
+const setCsrfToken = (req, res, next) => {
+  if (req?.session) {
+    if (!req?.session?.csrfToken) {
+      // Set CSRF token
+      req.session.csrfToken = crypto.randomBytes(32).toString("hex");
+    }
+  }
+  next()
+}
+
+router.all('*', setCsrfToken)
+
 router.get('*', (req, res, next) => {
-  if (req.session && req.url.endsWith(checkYourAnswersPath)) {
-    req.session.checkYourAnswers = true
+  if(req?.session) {
+    if (req?.url.endsWith(checkYourAnswersPath)) {
+      // Indicate that we've been on the check your answers page
+      req.session.checkYourAnswers = true
+    }
   }
   next()
 })
 
 // Check your answers page
-router.get(`/${checkYourAnswersPath}`, (req, res) => {
+router.get(`/${checkYourAnswersPath}`, sessionStarted, (req, res) => {
   const {
     componentDetailsRows,
     accessibilityRows,
@@ -71,7 +88,8 @@ router.get(`/${checkYourAnswersPath}`, (req, res) => {
     addInternalAuditRows,
     addAssistiveTechRows,
     yourDetailsRows,
-    figmaRows
+    figmaRows,
+    csrfToken: req?.session?.csrfToken
   })
 })
 
@@ -96,10 +114,14 @@ if (process.env.DEV_DUMMY_DATA) {
 // Start
 router.get('/start', (req, res) => {
   delete req.session.checkYourAnswers
-  res.render('start')
+  req.session.started = true
+  console.log('Start session')
+  res.render('start', {
+    csrfToken: req?.session?.csrfToken
+  })
 })
 
-router.post('/start', (req, res) => {
+router.post('/start', verifyCsrf, (req, res) => {
   res.redirect('/get-involved/add-new-component/component-details')
 })
 
@@ -107,6 +129,9 @@ router.post('/start', (req, res) => {
 router.get('/confirmation', (req, res) => {
   res.render('confirmation')
 })
+
+// Check that we have a session in progress
+router.all('*', sessionStarted )
 
 // Remove form page
 router.get(
@@ -126,7 +151,8 @@ router.get(
         backLink: `${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`,
         type,
         summary,
-        deleteText: `Delete ${type}`
+        deleteText: `Delete ${type}`,
+        csrfToken: req?.session?.csrfToken
       })
     }
   }
@@ -134,6 +160,7 @@ router.get(
 
 router.post(
   ['/remove/:page', '/remove/:page/:subpage'],
+  verifyCsrf,
   removeFromSession,
   (req, res ) => {
     res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`)
@@ -155,13 +182,14 @@ router.get(
       addAnother: req?.addAnother,
       showAddAnother: req?.showAddAnother,
       skipQuestion: req?.skipQuestion || false,
-      backLink: req?.backLink || false
+      backLink: req?.backLink || false,
+      csrfToken: req?.session?.csrfToken
     })
   }
 )
 
 // "Check Your Answers" form submission
-router.post('/check-your-answers', getRawSessionText, async (req, res) => {
+router.post(`/${checkYourAnswersPath}`, verifyCsrf, getRawSessionText, async (req, res) => {
   const { filename: markdownFilename, content: markdownContent } =
     generateMarkdown(req.session)
   const markdown = {}
@@ -186,6 +214,7 @@ router.post('/check-your-answers', getRawSessionText, async (req, res) => {
 router.post(
   '/component-image',
   upload.single('componentImage'),
+  verifyCsrf,
   validateFormData,
   saveSession,
   setNextPage,
@@ -214,6 +243,7 @@ router.post(
   setNextPage,
   canSkipQuestion,
   getBackLink,
+  verifyCsrf,
   validateFormData,
   saveSession,
   (req, res, next) => {

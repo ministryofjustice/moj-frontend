@@ -108,11 +108,7 @@ ${generatePrototypeSection(data)}
 
 ## Accessibility
 
-${accessibilityFindingsMore?.accessibilityTellUsMore || ''}
-
 ## Links
-
-<a href="${accessibilityFindingsMore?.prototypeUrl || ''}" target="_blank" rel="noopener noreferrer">Prototype example (opens in a new tab)</a>
 
 ## Thing to consider
 

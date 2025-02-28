@@ -51,6 +51,8 @@
         value: formData.prototypeUrlAdditionalInformation
       }) }}
 
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+
       <div class="govuk-button-group moj-button-action">
         {{ govukButton({
           text: 'Continue',
@@ -61,21 +63,12 @@
         {{ govukButton({
           text: "Add another link",
           classes: "govuk-button--secondary",
-          attributes: {'data-add-another': addAnother}
+          name: "addAnother"
         }) }}
         {% endif %}
       </div>
     </form>
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const containers = document.querySelectorAll('[data-add-another-container]')
-      containers.forEach(function (container) {
-        new MOJFrontend.AddAnotherForm(container)
-      })
-    })
-  </script>
 {% endblock %}
 
 
