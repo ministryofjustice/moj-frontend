@@ -10,7 +10,7 @@ $brand-colour: #220051;
   color: govuk-colour("white");
   background-color: $brand-colour;
   @include govuk-media-query($from: desktop) {
-    > div {
+    .app-layout__content {
       padding-right: 130px;
     }
   }
