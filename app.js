@@ -26,6 +26,7 @@ const {
 const addComponentRoutes = require('./routes/add-component')
 
 const app = express()
+app.set('trust proxy', true)
 const isDev = app.get('env') === 'development'
 
 app.use(helmet())
