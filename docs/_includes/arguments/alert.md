@@ -4,7 +4,7 @@
 | html                   | string  | Yes      | The HTML to use in the alert. Any string can be used. If you set `html`, `text` is not required and is ignored.                                                 |
 | title                  | string  | Yes      | A short title for each alert, used as a unique accessible label. Can be displayed as a heading in the alert using `showTitleAsHeading`.                         |
 | showTitleAsHeading     | boolean | No       | Set to true to display the `title` as a heading. The default is `false`.                                                                                        |
-| titleTag               | string  | No       | The HTML tag used for the heading if `showTitleAsHeading` is true. You can only use the values "h2", "h3", or "h4". The default is "h2".                        |
+| headingTag               | string  | No       | The HTML tag used for the heading if `showTitleAsHeading` is true. You can only use the values "h2", "h3", or "h4". The default is "h2".                        |
 | variant                | string  | No       | The alert variant being used. It's "information", "success", "warning" or "error". The default is "information".                                                |
 | role                   | string  | No       | Overrides the value of the role attribute for the alert. Defaults to "region".                                                                                  |
 | disableAutoFocus       | boolean | No       | If `role` is set to "alert", JavaScript moves the keyboard focus to the alert when the page loads. To disable this behaviour, set `disableAutoFocus` to `true`. |

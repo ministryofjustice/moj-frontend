@@ -1,3 +1,3 @@
-# Password reveal
+# Password reveal (Archived)
 
-- [Guidance](https://design-patterns.service.justice.gov.uk/components/password-reveal)
+- [Guidance](https://design-patterns.service.justice.gov.uk/archive/password-reveal)

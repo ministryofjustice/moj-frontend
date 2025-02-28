@@ -1,5 +1,3 @@
-# Form validator
+# Form validator (Archived)
 
-- [Guidance](https://design-patterns.service.justice.gov.uk/components/form-validator)
-
-## Arguments
+- [Guidance](https://design-patterns.service.justice.gov.uk/archive/form-validator)
