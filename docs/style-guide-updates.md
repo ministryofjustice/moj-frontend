@@ -64,5 +64,6 @@ permalink: content-standards/style-guide-updates/
       <td class="govuk-table__cell">A change to the identity numbers entry to include the probation term CRN.</td>
       <td class="govuk-table__cell" data-sort-value="20250228">28 February 2025</td>
     </tr>
+
   </tbody>
 </table>

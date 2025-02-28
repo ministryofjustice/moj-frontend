@@ -1,10 +1,33 @@
 @use "../govuk-frontend" as *;
 
 .app-card {
-  @include govuk-responsive-padding(6, "bottom");
-}
+  margin-bottom: 0;
 
-.app-card + .app-card {
-  border-top: 1px solid $govuk-border-colour;
-  @include govuk-responsive-padding(6, "top");
+  @include govuk-media-query($until: desktop) {
+    margin-bottom: govuk-spacing(7);
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  &--reverse {
+    display: flex;
+    flex-direction: row-reverse;
+
+    @include govuk-media-query($until: desktop) {
+      flex-direction: column;
+    }
+  }
+
+  &--full {
+    margin-bottom: govuk-spacing(9);
+
+    @include govuk-media-query($until: desktop) {
+      margin-bottom: govuk-spacing(7);
+    }
+  }
 }
