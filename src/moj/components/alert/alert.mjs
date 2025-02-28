@@ -1,45 +1,19 @@
+import { ConfigurableComponent } from 'govuk-frontend'
+
 import {
   findNearestMatchingElement,
   getPreviousSibling,
   setFocus
 } from '../../helpers.mjs'
 
-export class Alert {
+export class Alert extends ConfigurableComponent {
   /**
-   * @param {HTMLElement} $module - the Alert element
+   * @param {HTMLElement} $root - the Alert element
    * @param {AlertConfig} [config] - configuration options
    */
-  constructor($module, config = {}) {
-    if (!$module) {
-      return this
-    }
+  constructor($root, config = {}) {
+    super($root, config)
 
-    const schema = Object.freeze({
-      properties: {
-        dismissible: { type: 'boolean' },
-        dismissText: { type: 'string' },
-        disableAutoFocus: { type: 'boolean' },
-        focusOnDismissSelector: { type: 'string' }
-      }
-    })
-
-    const defaults = {
-      dismissible: false,
-      dismissText: 'Dismiss',
-      disableAutoFocus: false
-    }
-
-    // data attributes override JS config, which overrides defaults
-    this.config = this.mergeConfigs(
-      defaults,
-      config,
-      this.parseDataset(schema, $module.dataset)
-    )
-
-    this.$module = $module
-  }
-
-  init() {
     /**
      * Focus the alert
      *
@@ -52,19 +26,19 @@ export class Alert {
      * element which should be focused when the page loads.
      */
     if (
-      this.$module.getAttribute('role') === 'alert' &&
+      this.$root.getAttribute('role') === 'alert' &&
       !this.config.disableAutoFocus
     ) {
-      setFocus(this.$module)
+      setFocus(this.$root)
     }
 
-    this.$dismissButton = this.$module.querySelector('.moj-alert__dismiss')
+    this.$dismissButton = this.$root.querySelector('.moj-alert__dismiss')
 
     if (this.config.dismissible && this.$dismissButton) {
       this.$dismissButton.innerHTML = this.config.dismissText
       this.$dismissButton.removeAttribute('hidden')
 
-      this.$module.addEventListener('click', (event) => {
+      this.$root.addEventListener('click', (event) => {
         if (this.$dismissButton.contains(event.target)) {
           this.dimiss()
         }
@@ -87,7 +61,7 @@ export class Alert {
 
     // Is the next sibling another alert
     if (!$elementToRecieveFocus) {
-      const $nextSibling = this.$module.nextElementSibling
+      const $nextSibling = this.$root.nextElementSibling
       if ($nextSibling && $nextSibling.matches('.moj-alert')) {
         $elementToRecieveFocus = $nextSibling
       }
@@ -96,7 +70,7 @@ export class Alert {
     // Else try to find any preceding sibling alert or heading
     if (!$elementToRecieveFocus) {
       $elementToRecieveFocus = getPreviousSibling(
-        this.$module,
+        this.$root,
         '.moj-alert, h1, h2, h3, h4, h5, h6'
       )
     }
@@ -105,7 +79,7 @@ export class Alert {
     // use the body element
     if (!$elementToRecieveFocus) {
       $elementToRecieveFocus = findNearestMatchingElement(
-        this.$module,
+        this.$root,
         'h1, h2, h3, h4, h5, h6, main, body'
       )
     }
@@ -116,119 +90,38 @@ export class Alert {
     }
 
     // Remove the alert
-    this.$module.remove()
+    this.$root.remove()
   }
 
   /**
-   * Normalise string
-   *
-   * 'If it looks like a duck, and it quacks like a duck…' 🦆
-   *
-   * If the passed value looks like a boolean or a number, convert it to a boolean
-   * or number.
-   *
-   * Designed to be used to convert config passed via data attributes (which are
-   * always strings) into something sensible.
-   *
-   * @internal
-   * @param {DOMStringMap[string]} value - The value to normalise
-   * @param {SchemaProperty} [property] - Component schema property
-   * @returns {string | boolean | number | undefined} Normalised data
+   * Name for the component used when initialising using data-module attributes.
    */
-  normaliseString(value, property) {
-    const trimmedValue = value ? value.trim() : ''
-
-    let output
-    let outputType
-    if (property && property.type) {
-      outputType = property.type
-    }
-
-    // No schema type set? Determine automatically
-    if (!outputType) {
-      if (['true', 'false'].includes(trimmedValue)) {
-        outputType = 'boolean'
-      }
-
-      // Empty / whitespace-only strings are considered finite so we need to check
-      // the length of the trimmed string as well
-      if (trimmedValue.length > 0 && isFinite(Number(trimmedValue))) {
-        outputType = 'number'
-      }
-    }
-
-    switch (outputType) {
-      case 'boolean':
-        output = trimmedValue === 'true'
-        break
-
-      case 'number':
-        output = Number(trimmedValue)
-        break
-
-      default:
-        output = value
-    }
-
-    return output
-  }
+  static moduleName = 'moj-alert'
 
   /**
-   * Parse dataset
+   * Alert default config
    *
-   * Loop over an object and normalise each value using {@link normaliseString},
-   * optionally expanding nested `i18n.field`
-   *
-   * @param {Schema} schema - component schema
-   * @param {DOMStringMap} dataset - HTML element dataset
-   * @returns {object} Normalised dataset
+   * @type {AlertConfig}
    */
-  parseDataset(schema, dataset) {
-    const parsed = {}
-
-    for (const [field, property] of Object.entries(schema.properties)) {
-      if (field in dataset) {
-        if (dataset[field]) {
-          parsed[field] = this.normaliseString(dataset[field], property)
-        }
-      }
-    }
-
-    return parsed
-  }
+  static defaults = Object.freeze({
+    dismissible: false,
+    dismissText: 'Dismiss',
+    disableAutoFocus: false
+  })
 
   /**
-   * Config merging function
+   * Alert config schema
    *
-   * Takes any number of objects and combines them together, with
-   * greatest priority on the LAST item passed in.
-   *
-   * @param {...{ [key: string]: unknown }} configObjects - Config objects to merge
-   * @returns {{ [key: string]: unknown }} A merged config object
+   * @satisfies {Schema<AlertConfig>}
    */
-  mergeConfigs(...configObjects) {
-    const formattedConfigObject = {}
-
-    // Loop through each of the passed objects
-    for (const configObject of configObjects) {
-      for (const key of Object.keys(configObject)) {
-        const option = formattedConfigObject[key]
-        const override = configObject[key]
-
-        // Push their keys one-by-one into formattedConfigObject. Any duplicate
-        // keys with object values will be merged, otherwise the new value will
-        // override the existing value.
-        if (typeof option === 'object' && typeof override === 'object') {
-          // @ts-expect-error Index signature for type 'string' is missing
-          formattedConfigObject[key] = this.mergeConfigs(option, override)
-        } else {
-          formattedConfigObject[key] = override
-        }
-      }
+  static schema = Object.freeze({
+    properties: {
+      dismissible: { type: 'boolean' },
+      dismissText: { type: 'string' },
+      disableAutoFocus: { type: 'boolean' },
+      focusOnDismissSelector: { type: 'string' }
     }
-
-    return formattedConfigObject
-  }
+  })
 }
 
 /**
@@ -240,5 +133,5 @@ export class Alert {
  */
 
 /**
- * @import { Schema, SchemaProperty } from '../../all.mjs'
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
  */

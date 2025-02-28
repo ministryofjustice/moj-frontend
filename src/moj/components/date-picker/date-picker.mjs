@@ -1,35 +1,12 @@
-export class DatePicker {
+import { ConfigurableComponent } from 'govuk-frontend'
+
+export class DatePicker extends ConfigurableComponent {
   /**
-   * @param {HTMLElement} $module - HTML element
+   * @param {HTMLElement} $root - HTML element
    * @param {DatePickerConfig} [config] - config object
    */
-  constructor($module, config = {}) {
-    if (!$module) {
-      return this
-    }
-
-    const schema = Object.freeze({
-      properties: {
-        excludedDates: { type: 'string' },
-        excludedDays: { type: 'string' },
-        leadingZeros: { type: 'string' },
-        maxDate: { type: 'string' },
-        minDate: { type: 'string' },
-        weekStartDay: { type: 'string' }
-      }
-    })
-
-    const defaults = {
-      leadingZeros: false,
-      weekStartDay: 'monday'
-    }
-
-    // data attributes override JS config, which overrides defaults
-    this.config = this.mergeConfigs(
-      defaults,
-      config,
-      this.parseDataset(schema, $module.dataset)
-    )
+  constructor($root, config = {}) {
+    super($root, config)
 
     this.dayLabels = [
       'Monday',
@@ -67,22 +44,20 @@ export class DatePicker {
     this.currentDayButtonClass = 'moj-datepicker__button--current'
     this.todayButtonClass = 'moj-datepicker__button--today'
 
-    this.$module = $module
-    this.$input = $module.querySelector('.moj-js-datepicker-input')
-  }
+    this.$input = this.$root.querySelector('.moj-js-datepicker-input')
 
-  init() {
     // Check that required elements are present
     if (!this.$input) {
       return
     }
-    if (this.$module.dataset.initialized) {
+
+    if (this.$root.dataset.initialized) {
       return
     }
 
     this.setOptions()
     this.initControls()
-    this.$module.setAttribute('data-initialized', 'true')
+    this.$root.setAttribute('data-initialized', 'true')
   }
 
   initControls() {
@@ -103,9 +78,7 @@ export class DatePicker {
     $inputWrapper.insertAdjacentHTML('beforeend', this.toggleTemplate())
     $componentWrapper.insertAdjacentElement('beforeend', this.$dialog)
 
-    this.$calendarButton = this.$module.querySelector(
-      '.moj-js-datepicker-toggle'
-    )
+    this.$calendarButton = this.$root.querySelector('.moj-js-datepicker-toggle')
     this.$dialogTitle = this.$dialog.querySelector(
       '.moj-js-datepicker-month-year'
     )
@@ -212,7 +185,7 @@ export class DatePicker {
         $row.appendChild($cell)
 
         const calendarDay = new DSCalendarDay($dateButton, dayCount, i, j, this)
-        calendarDay.init()
+
         this.calendarDays.push(calendarDay)
         dayCount++
       }
@@ -774,56 +747,35 @@ export class DatePicker {
   }
 
   /**
-   * Parse dataset
-   *
-   * @param {Schema} schema - Component class
-   * @param {DOMStringMap} dataset - HTML element dataset
-   * @returns {object} Normalised dataset
+   * Name for the component used when initialising using data-module attributes.
    */
-  parseDataset(schema, dataset) {
-    const parsed = {}
-
-    for (const [field, ,] of Object.entries(schema.properties)) {
-      if (field in dataset) {
-        parsed[field] = dataset[field]
-      }
-    }
-
-    return parsed
-  }
+  static moduleName = 'moj-date-picker'
 
   /**
-   * Config merging function
+   * Date picker default config
    *
-   * Takes any number of objects and combines them together, with
-   * greatest priority on the LAST item passed in.
-   *
-   * @param {...{ [key: string]: unknown }} configObjects - Config objects to merge
-   * @returns {{ [key: string]: unknown }} A merged config object
+   * @type {DatePickerConfig}
    */
-  mergeConfigs(...configObjects) {
-    const formattedConfigObject = {}
+  static defaults = Object.freeze({
+    leadingZeros: false,
+    weekStartDay: 'monday'
+  })
 
-    // Loop through each of the passed objects
-    for (const configObject of configObjects) {
-      for (const key of Object.keys(configObject)) {
-        const option = formattedConfigObject[key]
-        const override = configObject[key]
-
-        // Push their keys one-by-one into formattedConfigObject. Any duplicate
-        // keys with object values will be merged, otherwise the new value will
-        // override the existing value.
-        if (typeof option === 'object' && typeof override === 'object') {
-          // @ts-expect-error Index signature for type 'string' is missing
-          formattedConfigObject[key] = this.mergeConfigs(option, override)
-        } else {
-          formattedConfigObject[key] = override
-        }
-      }
+  /**
+   * Date picker config schema
+   *
+   * @satisfies {Schema<DatePickerConfig>}
+   */
+  static schema = Object.freeze({
+    properties: {
+      excludedDates: { type: 'string' },
+      excludedDays: { type: 'string' },
+      leadingZeros: { type: 'string' },
+      maxDate: { type: 'string' },
+      minDate: { type: 'string' },
+      weekStartDay: { type: 'string' }
     }
-
-    return formattedConfigObject
-  }
+  })
 }
 
 class DSCalendarDay {
@@ -842,9 +794,7 @@ class DSCalendarDay {
     this.picker = picker
 
     this.date = new Date()
-  }
 
-  init() {
     this.button.addEventListener('keydown', this.keyPress.bind(this))
     this.button.addEventListener('click', this.click.bind(this))
   }
@@ -946,5 +896,5 @@ class DSCalendarDay {
  */
 
 /**
- * @import { Schema } from '../../all.mjs'
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
  */

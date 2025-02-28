@@ -109,18 +109,18 @@ function initAll(options) {
   const $datepickers = scope.querySelectorAll('[data-module="moj-date-picker"]')
 
   nodeListForEach($datepickers, function ($datepicker) {
-    new DatePicker($datepicker, {}).init()
+    new DatePicker($datepicker, {})
   })
 
   const $buttonMenus = scope.querySelectorAll('[data-module="moj-button-menu"]')
 
   nodeListForEach($buttonMenus, function ($buttonmenu) {
-    new ButtonMenu($buttonmenu, {}).init()
+    new ButtonMenu($buttonmenu, {})
   })
 
   const $alerts = scope.querySelectorAll('[data-module="moj-alert"]')
   nodeListForEach($alerts, function ($alert) {
-    new Alert($alert, {}).init()
+    new Alert($alert, {})
   })
 }
 
@@ -141,17 +141,3 @@ export {
   SearchToggle,
   SortableTable
 }
-
-/**
- * Schema for component config
- *
- * @typedef {object} Schema
- * @property {{ [field: string]: SchemaProperty | undefined }} properties - Schema properties
- */
-
-/**
- * Schema property for component config
- *
- * @typedef {object} SchemaProperty
- * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
- */
