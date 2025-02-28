@@ -96,7 +96,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-sinon": "^1.1.0",
     "jquery": "^3.7.1",
-    "js-beautify": "^1.15.3",
+    "js-beautify": "^1.15.4",
     "lodash": "^4.17.21",
     "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^9.2.0",
