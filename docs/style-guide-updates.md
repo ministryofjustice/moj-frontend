@@ -59,7 +59,7 @@ permalink: content-standards/style-guide-updates/
         <a href="/content-standards/style-guide#identity-numbers-%28hmpps-only%29"><b>Identity numbers (HMPPS only)</b></a>
       </td>
       <td class="govuk-table__cell">
-      <span class="govuk-tag govuk-tag--blue">Updated</span>
+        <span class="govuk-tag govuk-tag--blue">Updated</span>
       </td>
       <td class="govuk-table__cell">A change to the identity numbers entry to include the probation term CRN.</td>
       <td class="govuk-table__cell" data-sort-value="20250227 ">27 February 2025</td>
