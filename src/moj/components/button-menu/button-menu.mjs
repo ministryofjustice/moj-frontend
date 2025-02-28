@@ -1,134 +1,103 @@
-/**
- * @typedef {object} ButtonMenuConfig
- * @property {string} [buttonText=Actions] - Label for the toggle button
- * @property {"left" | "right"} [alignMenu=left] - the alignment of the menu
- * @property {string} [buttonClasses=govuk-button--secondary] - css classes applied to the toggle button
- */
+import { ConfigurableComponent } from 'govuk-frontend'
 
-/**
- * @param {HTMLElement} $module
- * @param {ButtonMenuConfig} config
- * @class
- */
-export function ButtonMenu($module, config = {}) {
-  if (!$module) {
-    return this
-  }
+export class ButtonMenu extends ConfigurableComponent {
+  /**
+   * @param {HTMLElement} $root
+   * @param {ButtonMenuConfig} [config]
+   */
+  constructor($root, config = {}) {
+    super($root, config)
 
-  const schema = Object.freeze({
-    properties: {
-      buttonText: { type: 'string' },
-      buttonClasses: { type: 'string' },
-      alignMenu: { type: 'string' }
-    }
-  })
-
-  const defaults = {
-    buttonText: 'Actions',
-    alignMenu: 'left',
-    buttonClasses: ''
-  }
-  // data attributes override JS config, which overrides defaults
-  this.config = this.mergeConfigs(
-    defaults,
-    config,
-    this.parseDataset(schema, $module.dataset)
-  )
-
-  this.$module = $module
-}
-
-ButtonMenu.prototype.init = function () {
-  // If only one button is provided, don't initiate a menu and toggle button
-  // if classes have been provided for the toggleButton, apply them to the single item
-  if (this.$module.children.length === 1) {
-    const button = this.$module.children[0]
-    button.classList.forEach((className) => {
-      if (className.startsWith('govuk-button-')) {
-        button.classList.remove(className)
+    // If only one button is provided, don't initiate a menu and toggle button
+    // if classes have been provided for the toggleButton, apply them to the single item
+    if (this.$root.children.length === 1) {
+      const button = this.$root.children[0]
+      button.classList.forEach((className) => {
+        if (className.startsWith('govuk-button-')) {
+          button.classList.remove(className)
+        }
+        button.classList.remove('moj-button-menu__item')
+      })
+      if (this.config.buttonClasses) {
+        button.classList.add(...this.config.buttonClasses.split(' '))
       }
-      button.classList.remove('moj-button-menu__item')
-    })
-    if (this.config.buttonClasses) {
-      button.classList.add(...this.config.buttonClasses.split(' '))
+    }
+    // Otherwise intialise a button menu
+    if (this.$root.children.length > 1) {
+      this.initMenu()
     }
   }
-  // Otherwise intialise a button menu
-  if (this.$module.children.length > 1) {
-    this.initMenu()
-  }
-}
 
-ButtonMenu.prototype.initMenu = function () {
-  this.$menu = this.createMenu()
-  this.$module.insertAdjacentHTML('afterbegin', this.toggleTemplate())
-  this.setupMenuItems()
+  initMenu() {
+    this.$menu = this.createMenu()
+    this.$root.insertAdjacentHTML('afterbegin', this.toggleTemplate())
+    this.setupMenuItems()
 
-  this.$menuToggle = this.$module.querySelector(':scope > button')
-  this.items = this.$menu.querySelectorAll('a, button')
+    this.$menuToggle = this.$root.querySelector(':scope > button')
+    this.items = this.$menu.querySelectorAll('a, button')
 
-  this.$menuToggle.addEventListener('click', (event) => {
-    this.toggleMenu(event)
-  })
-
-  this.$module.addEventListener('keydown', (event) => {
-    this.handleKeyDown(event)
-  })
-
-  document.addEventListener('click', (event) => {
-    if (!this.$module.contains(event.target)) {
-      this.closeMenu(false)
-    }
-  })
-}
-
-ButtonMenu.prototype.createMenu = function () {
-  const $menu = document.createElement('ul')
-  $menu.setAttribute('role', 'list')
-  $menu.hidden = true
-  $menu.classList.add('moj-button-menu__wrapper')
-  if (this.config.alignMenu === 'right') {
-    $menu.classList.add('moj-button-menu__wrapper--right')
-  }
-
-  this.$module.appendChild($menu)
-  while (this.$module.firstChild !== $menu) {
-    $menu.appendChild(this.$module.firstChild)
-  }
-
-  return $menu
-}
-
-ButtonMenu.prototype.setupMenuItems = function () {
-  Array.from(this.$menu.children).forEach((item) => {
-    // wrap item in li tag
-    const listItem = document.createElement('li')
-    this.$menu.insertBefore(listItem, item)
-    listItem.appendChild(item)
-
-    item.setAttribute('tabindex', -1)
-
-    if (item.tagName === 'BUTTON') {
-      item.setAttribute('type', 'button')
-    }
-
-    item.classList.forEach((className) => {
-      if (className.startsWith('govuk-button')) {
-        item.classList.remove(className)
-      }
+    this.$menuToggle.addEventListener('click', (event) => {
+      this.toggleMenu(event)
     })
 
-    // add a slight delay after click before closing the menu, makes it *feel* better
-    item.addEventListener('click', (event) => {
-      setTimeout(() => {
+    this.$root.addEventListener('keydown', (event) => {
+      this.handleKeyDown(event)
+    })
+
+    document.addEventListener('click', (event) => {
+      if (!this.$root.contains(event.target)) {
         this.closeMenu(false)
-      }, 50)
+      }
     })
-  })
-}
+  }
 
-ButtonMenu.prototype.toggleTemplate = function () {
-  return `
+  createMenu() {
+    const $menu = document.createElement('ul')
+    $menu.setAttribute('role', 'list')
+    $menu.hidden = true
+    $menu.classList.add('moj-button-menu__wrapper')
+    if (this.config.alignMenu === 'right') {
+      $menu.classList.add('moj-button-menu__wrapper--right')
+    }
+
+    this.$root.appendChild($menu)
+    while (this.$root.firstChild !== $menu) {
+      $menu.appendChild(this.$root.firstChild)
+    }
+
+    return $menu
+  }
+
+  setupMenuItems() {
+    Array.from(this.$menu.children).forEach((item) => {
+      // wrap item in li tag
+      const listItem = document.createElement('li')
+      this.$menu.insertBefore(listItem, item)
+      listItem.appendChild(item)
+
+      item.setAttribute('tabindex', -1)
+
+      if (item.tagName === 'BUTTON') {
+        item.setAttribute('type', 'button')
+      }
+
+      item.classList.forEach((className) => {
+        if (className.startsWith('govuk-button')) {
+          item.classList.remove(className)
+        }
+      })
+
+      // add a slight delay after click before closing the menu, makes it *feel* better
+      item.addEventListener('click', (event) => {
+        setTimeout(() => {
+          this.closeMenu(false)
+        }, 50)
+      })
+    })
+  }
+
+  toggleTemplate() {
+    return `
     <button type="button" class="govuk-button moj-button-menu__toggle-button ${this.config.buttonClasses || ''}" aria-haspopup="true" aria-expanded="false">
       <span>
        ${this.config.buttonText}
@@ -137,191 +106,161 @@ ButtonMenu.prototype.toggleTemplate = function () {
        </svg>
       </span>
     </button>`
-}
-
-/**
- * @returns {boolean}
- */
-ButtonMenu.prototype.isOpen = function () {
-  return this.$menuToggle.getAttribute('aria-expanded') === 'true'
-}
-
-ButtonMenu.prototype.toggleMenu = function (event) {
-  event.preventDefault()
-
-  // If menu is triggered with mouse don't move focus to first item
-  const keyboardEvent = event.detail === 0
-  const focusIndex = keyboardEvent ? 0 : -1
-
-  if (this.isOpen()) {
-    this.closeMenu()
-  } else {
-    this.openMenu(focusIndex)
   }
-}
 
-/**
- * Opens the menu and optionally sets the focus to the item with given index
- *
- * @param {number} focusIndex - The index of the item to focus
- */
-ButtonMenu.prototype.openMenu = function (focusIndex = 0) {
-  this.$menu.hidden = false
-  this.$menuToggle.setAttribute('aria-expanded', 'true')
-  if (focusIndex !== -1) {
-    this.focusItem(focusIndex)
+  /**
+   * @returns {boolean}
+   */
+  isOpen() {
+    return this.$menuToggle.getAttribute('aria-expanded') === 'true'
   }
-}
 
-/**
- * Closes the menu and optionally returns focus back to menuToggle
- *
- * @param {boolean} moveFocus - whether to return focus to the toggle button
- */
-ButtonMenu.prototype.closeMenu = function (moveFocus = true) {
-  this.$menu.hidden = true
-  this.$menuToggle.setAttribute('aria-expanded', 'false')
-  if (moveFocus) {
-    this.$menuToggle.focus()
-  }
-}
+  toggleMenu(event) {
+    event.preventDefault()
 
-/**
- * Focuses the menu item at the specified index
- *
- * @param {number} index - the index of the item to focus
- */
-ButtonMenu.prototype.focusItem = function (index) {
-  if (index >= this.items.length) index = 0
-  if (index < 0) index = this.items.length - 1
+    // If menu is triggered with mouse don't move focus to first item
+    const keyboardEvent = event.detail === 0
+    const focusIndex = keyboardEvent ? 0 : -1
 
-  const menuItem = this.items.item(index)
-  if (menuItem) {
-    menuItem.focus()
-  }
-}
-
-ButtonMenu.prototype.currentFocusIndex = function () {
-  const activeElement = document.activeElement
-  const menuItems = Array.from(this.items)
-
-  return menuItems.indexOf(activeElement)
-}
-
-ButtonMenu.prototype.handleKeyDown = function (event) {
-  if (event.target === this.$menuToggle) {
-    switch (event.key) {
-      case 'ArrowDown':
-        event.preventDefault()
-        this.openMenu()
-        break
-      case 'ArrowUp':
-        event.preventDefault()
-        this.openMenu(this.items.length - 1)
-        break
+    if (this.isOpen()) {
+      this.closeMenu()
+    } else {
+      this.openMenu(focusIndex)
     }
   }
 
-  if (this.$menu.contains(event.target) && this.isOpen()) {
-    switch (event.key) {
-      case 'ArrowDown':
-        event.preventDefault()
-        if (this.currentFocusIndex() !== -1) {
-          this.focusItem(this.currentFocusIndex() + 1)
-        }
-        break
-      case 'ArrowUp':
-        event.preventDefault()
-        if (this.currentFocusIndex() !== -1) {
-          this.focusItem(this.currentFocusIndex() - 1)
-        }
-        break
-      case 'Home':
-        event.preventDefault()
-        this.focusItem(0)
-        break
-      case 'End':
-        event.preventDefault()
-        this.focusItem(this.items.length - 1)
-        break
+  /**
+   * Opens the menu and optionally sets the focus to the item with given index
+   *
+   * @param {number} focusIndex - The index of the item to focus
+   */
+  openMenu(focusIndex = 0) {
+    this.$menu.hidden = false
+    this.$menuToggle.setAttribute('aria-expanded', 'true')
+    if (focusIndex !== -1) {
+      this.focusItem(focusIndex)
     }
   }
 
-  if (event.key === 'Escape' && this.isOpen()) {
-    this.closeMenu()
+  /**
+   * Closes the menu and optionally returns focus back to menuToggle
+   *
+   * @param {boolean} moveFocus - whether to return focus to the toggle button
+   */
+  closeMenu(moveFocus = true) {
+    this.$menu.hidden = true
+    this.$menuToggle.setAttribute('aria-expanded', 'false')
+    if (moveFocus) {
+      this.$menuToggle.focus()
+    }
   }
-  if (event.key === 'Tab' && this.isOpen()) {
-    this.closeMenu(false)
+
+  /**
+   * Focuses the menu item at the specified index
+   *
+   * @param {number} index - the index of the item to focus
+   */
+  focusItem(index) {
+    if (index >= this.items.length) index = 0
+    if (index < 0) index = this.items.length - 1
+
+    const menuItem = this.items.item(index)
+    if (menuItem) {
+      menuItem.focus()
+    }
   }
-}
 
-/**
- * Parse dataset
- *
- * Loop over an object and normalise each value using {@link normaliseString},
- * optionally expanding nested `i18n.field`
- *
- * @param {Schema} schema - component schema
- * @param {DOMStringMap} dataset - HTML element dataset
- * @returns {object} Normalised dataset
- */
-ButtonMenu.prototype.parseDataset = function (schema, dataset) {
-  const parsed = {}
+  currentFocusIndex() {
+    const activeElement = document.activeElement
+    const menuItems = Array.from(this.items)
 
-  for (const [field, ,] of Object.entries(schema.properties)) {
-    if (field in dataset) {
-      if (dataset[field]) {
-        parsed[field] = dataset[field]
+    return menuItems.indexOf(activeElement)
+  }
+
+  handleKeyDown(event) {
+    if (event.target === this.$menuToggle) {
+      switch (event.key) {
+        case 'ArrowDown':
+          event.preventDefault()
+          this.openMenu()
+          break
+        case 'ArrowUp':
+          event.preventDefault()
+          this.openMenu(this.items.length - 1)
+          break
       }
     }
-  }
 
-  return parsed
-}
-
-/**
- * Config merging function
- *
- * Takes any number of objects and combines them together, with
- * greatest priority on the LAST item passed in.
- *
- * @param {...{ [key: string]: unknown }} configObjects - Config objects to merge
- * @returns {{ [key: string]: unknown }} A merged config object
- */
-ButtonMenu.prototype.mergeConfigs = function (...configObjects) {
-  const formattedConfigObject = {}
-
-  // Loop through each of the passed objects
-  for (const configObject of configObjects) {
-    for (const key of Object.keys(configObject)) {
-      const option = formattedConfigObject[key]
-      const override = configObject[key]
-
-      // Push their keys one-by-one into formattedConfigObject. Any duplicate
-      // keys with object values will be merged, otherwise the new value will
-      // override the existing value.
-      if (typeof option === 'object' && typeof override === 'object') {
-        // @ts-expect-error Index signature for type 'string' is missing
-        formattedConfigObject[key] = this.mergeConfigs(option, override)
-      } else {
-        formattedConfigObject[key] = override
+    if (this.$menu.contains(event.target) && this.isOpen()) {
+      switch (event.key) {
+        case 'ArrowDown':
+          event.preventDefault()
+          if (this.currentFocusIndex() !== -1) {
+            this.focusItem(this.currentFocusIndex() + 1)
+          }
+          break
+        case 'ArrowUp':
+          event.preventDefault()
+          if (this.currentFocusIndex() !== -1) {
+            this.focusItem(this.currentFocusIndex() - 1)
+          }
+          break
+        case 'Home':
+          event.preventDefault()
+          this.focusItem(0)
+          break
+        case 'End':
+          event.preventDefault()
+          this.focusItem(this.items.length - 1)
+          break
       }
+    }
+
+    if (event.key === 'Escape' && this.isOpen()) {
+      this.closeMenu()
+    }
+    if (event.key === 'Tab' && this.isOpen()) {
+      this.closeMenu(false)
     }
   }
 
-  return formattedConfigObject
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'moj-button-menu'
+
+  /**
+   * Button menu default config
+   *
+   * @type {ButtonMenuConfig}
+   */
+  static defaults = Object.freeze({
+    buttonText: 'Actions',
+    alignMenu: 'left',
+    buttonClasses: ''
+  })
+
+  /**
+   * Button menu config schema
+   *
+   * @satisfies {Schema<ButtonMenuConfig>}
+   */
+  static schema = Object.freeze({
+    properties: {
+      buttonText: { type: 'string' },
+      buttonClasses: { type: 'string' },
+      alignMenu: { type: 'string' }
+    }
+  })
 }
 
 /**
- * Schema for component config
- *
- * @typedef {object} Schema
- * @property {{ [field: string]: SchemaProperty | undefined }} properties - Schema properties
+ * @typedef {object} ButtonMenuConfig
+ * @property {string} [buttonText='Actions'] - Label for the toggle button
+ * @property {"left" | "right"} [alignMenu='left'] - the alignment of the menu
+ * @property {string} [buttonClasses='govuk-button--secondary'] - css classes applied to the toggle button
  */
 
 /**
- * Schema property for component config
- *
- * @typedef {object} SchemaProperty
- * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
  */
