@@ -8,15 +8,15 @@ export default class MenuToggle extends HTMLElement {
 
     if (!this.$menu) {
       console.error('Menu element must exist ')
-      return
+      return this
     }
     if (!this.$button) {
       console.error('Menu toggle element must contain a button element')
-      return
+      return this
     }
     if (!this.$menu.id) {
       console.error('Menu element must have an id attribute')
-      return
+      return this
     }
 
     this.$button.setAttribute('aria-controls', this.$menu.id)
