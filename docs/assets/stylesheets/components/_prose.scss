@@ -26,6 +26,10 @@
     border: 1px solid #b1b4b6;
   }
 
+  .app-card__image {
+    border: none;
+  }
+
   code:not([class*="language-"]) {
     padding: 0 1px;
     color: #c62950;
@@ -62,6 +66,10 @@
     &.govuk-link--no-visited-state.govuk-button {
       color: govuk-colour("white");
     }
+  }
+
+  .govuk-link--inverse {
+    @include govuk-link-style-inverse;
   }
 
   hr {

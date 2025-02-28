@@ -40,7 +40,6 @@ permalink: content-standards/style-guide-updates/
       <td class="govuk-table__cell">Category can be shortened to ‘Cat‘ if space is limited, for example in alert flags on the prisoner profile.</td>
       <td class="govuk-table__cell" data-sort-value="20250221">21 February 2025</td>
     </tr>
-
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
         <a href="/content-standards/style-guide#prison%2C-establishment"><b>Prison, establishment</b></a>
@@ -55,5 +54,16 @@ permalink: content-standards/style-guide-updates/
       It also outlines which terms are more likely be understood by the public and users with English as a second language.</td>
       <td class="govuk-table__cell" data-sort-value="20250225">25 February 2025</td>
     </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/content-standards/style-guide#identity-numbers-%28hmpps-only%29"><b>Identity numbers (HMPPS only)</b></a>
+      </td>
+      <td class="govuk-table__cell">
+        <span class="govuk-tag govuk-tag--blue">Updated</span>
+      </td>
+      <td class="govuk-table__cell">A change to the identity numbers entry to include the probation term CRN.</td>
+      <td class="govuk-table__cell" data-sort-value="20250228">28 February 2025</td>
+    </tr>
+
   </tbody>
 </table>
