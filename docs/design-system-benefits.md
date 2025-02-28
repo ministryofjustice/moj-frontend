@@ -14,7 +14,7 @@ The MoJ Design System helps teams to design, build and launch digital services t
 
 The Design System is an ecosystem of components, patterns and pages. These building blocks are the reusable, repeatable parts of a service.
 
-The site also hosts common standards and principles. These include the [content style guide](/content-standards/style-guide/) and [guidance on designing ethical services](/ethics/).
+The site also hosts common standards and principles. These include the [content style guide](/content-standards/style-guide/) and [guidance on designing ethical services](/ethics/design-ethical-services/).
 
 There are 4 main benefits of using the MoJ Design System:
 
