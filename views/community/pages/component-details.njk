@@ -32,8 +32,7 @@
           {{ govukInput({
                 label: {
                     text: "What is the name of the component?",
-                    classes: "govuk-label--m",
-                    isPageHeading: true
+                    classes: "govuk-label--m"
                 },
                 id: "component-name",
                 name: "componentName",
@@ -47,8 +46,7 @@
                 maxwords: 250,
                 label: {
                     text: "Add an overview description about the component",
-                    classes: "govuk-label--m",
-                    isPageHeading: true
+                    classes: "govuk-label--m"
                 },
                 errorMessage: formErrors.componentOverview,
                 value: formData.componentOverview
@@ -60,9 +58,9 @@
                 maxwords: 250,
                 label: {
                     text: "How is the component being used in your service?",
-                    classes: "govuk-label--m",
-                    isPageHeading: true
+                    classes: "govuk-label--m"
                 },
+
                 errorMessage: formErrors.howIsTheComponentUsed,
                 value: formData.howIsTheComponentUsed
             }) }}

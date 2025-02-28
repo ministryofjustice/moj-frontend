@@ -66,7 +66,12 @@
 
 
             <div class="app-layout__page app-page">
-                <main id="main-content" class="app-prose-scope">
+                <p>Input Path: {{ page.inputPath }}</p>
+              <main id="main-content"
+  {% if not isDocsPage %}
+    class="app-prose-scope"
+  {% endif %}
+>
                     {% block content %}
                         {{ content | safe }}
                     {% endblock %}

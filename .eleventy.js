@@ -435,4 +435,30 @@ module.exports = function (eleventyConfig) {
     // Show the dev server version number on the command line
     showVersion: true
   })
+
+  const path = require("path");
+
+module.exports = function(eleventyConfig) {
+  eleventyConfig.addGlobalData("isDocsPage", (data) => {
+    if (!data.page || !data.page.inputPath) return false;
+
+    // Normalize the path to avoid OS-related issues
+    const inputPath = path.normalize(data.page.inputPath);
+    const docsPath = path.normalize("./docs/"); // Normalize base docs path
+
+    // Check if inputPath starts with the docs folder
+    return inputPath.startsWith(docsPath);
+  });
+
+  return {
+    dir: {
+      input: "src",
+      output: "dist"
+    }
+  };
+};
+
+  
+
+  
 }
