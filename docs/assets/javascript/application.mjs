@@ -20,11 +20,11 @@ $(function () {
   })
 
   $('[data-module="app-copy"]').each(function (e, el) {
-    new Copy(el).init()
+    new Copy(el)
   })
 
   $('[data-module="app-cookies"]').each(function (e, el) {
-    new Cookies(el).init()
+    new Cookies(el)
   })
 
   const iFrames = document.querySelectorAll('iframe')

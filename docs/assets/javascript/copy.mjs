@@ -2,20 +2,18 @@ import ClipboardJS from 'clipboard'
 
 class Copy {
   constructor($module) {
-    this.$module = $module
-  }
-
-  init() {
-    const $module = this.$module
     if (!$module) {
       return
     }
+
+    this.$module = $module
+
     const $button = document.createElement('button')
     $button.className = 'app-copy-button js-copy-button'
     $button.setAttribute('aria-live', 'assertive')
     $button.textContent = 'Copy code'
 
-    $module.insertBefore($button, $module.firstChild)
+    this.$module.insertBefore($button, this.$module.firstChild)
     this.copyAction()
   }
 

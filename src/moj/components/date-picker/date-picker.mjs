@@ -69,9 +69,7 @@ export class DatePicker {
 
     this.$module = $module
     this.$input = $module.querySelector('.moj-js-datepicker-input')
-  }
 
-  init() {
     // Check that required elements are present
     if (!this.$input) {
       return
@@ -212,7 +210,6 @@ export class DatePicker {
         $row.appendChild($cell)
 
         const calendarDay = new DSCalendarDay($dateButton, dayCount, i, j, this)
-        calendarDay.init()
         this.calendarDays.push(calendarDay)
         dayCount++
       }
@@ -842,9 +839,6 @@ class DSCalendarDay {
     this.picker = picker
 
     this.date = new Date()
-  }
-
-  init() {
     this.button.addEventListener('keydown', this.keyPress.bind(this))
     this.button.addEventListener('click', this.click.bind(this))
   }

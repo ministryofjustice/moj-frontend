@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 import {
   getAllByRole,
   getByText,
@@ -112,7 +114,7 @@ describe('Date picker with defaults', () => {
 
   beforeEach(() => {
     component = createComponent()
-    new DatePicker(component, {}).init()
+    new DatePicker(component, {})
 
     calendarButton = queryByText(component, 'Choose date')?.closest('button')
     dialog = queryByRole(component, 'dialog', { hidden: true })
@@ -580,7 +582,6 @@ describe('button menu JS API', () => {
   describe('config', () => {
     test('default config values', () => {
       const datePicker = new DatePicker(component, {})
-      datePicker.init()
 
       expect(datePicker.config).toStrictEqual({
         leadingZeros: false,
@@ -591,7 +592,6 @@ describe('button menu JS API', () => {
     test('leadingZeros', () => {
       const config = { leadingZeros: true }
       const datePicker = new DatePicker(component, config)
-      datePicker.init()
 
       expect(datePicker.config.leadingZeros).toBe(true)
     })
@@ -599,7 +599,6 @@ describe('button menu JS API', () => {
     test('weekStartDay can be set to sunday', () => {
       const config = { weekStartDay: 'Sunday' }
       const datePicker = new DatePicker(component, config)
-      datePicker.init()
 
       expect(datePicker.config.weekStartDay).toBe('sunday')
       expect(datePicker.dayLabels[0]).toBe('Sunday')
@@ -608,7 +607,6 @@ describe('button menu JS API', () => {
     test("weekStartDay can't be set to other days", () => {
       const config = { weekStartDay: 'friday' }
       const datePicker = new DatePicker(component, config)
-      datePicker.init()
 
       expect(datePicker.config.weekStartDay).toBe('monday')
     })
@@ -617,7 +615,6 @@ describe('button menu JS API', () => {
       const minDate = dayjs().subtract('1', 'week').startOf('day')
       const config = { minDate: minDate.format('D/M/YYYY') }
       const datePicker = new DatePicker(component, config)
-      datePicker.init()
 
       expect(datePicker.minDate).toStrictEqual(minDate.toDate())
     })
@@ -626,7 +623,6 @@ describe('button menu JS API', () => {
       const minDate = dayjs().add('1', 'week').startOf('day')
       const config = { minDate: minDate.format('D/M/YYYY') }
       const datePicker = new DatePicker(component, config)
-      datePicker.init()
 
       expect(datePicker.minDate).toStrictEqual(minDate.toDate())
       expect(datePicker.currentDate).toStrictEqual(minDate.toDate())
@@ -636,7 +632,6 @@ describe('button menu JS API', () => {
       const maxDate = dayjs().add('1', 'week').startOf('day')
       const config = { maxDate: maxDate.format('D/M/YYYY') }
       const datePicker = new DatePicker(component, config)
-      datePicker.init()
 
       expect(datePicker.maxDate).toStrictEqual(maxDate.toDate())
     })
@@ -645,7 +640,6 @@ describe('button menu JS API', () => {
       const maxDate = dayjs().subtract('1', 'week').startOf('day')
       const config = { maxDate: maxDate.format('D/M/YYYY') }
       const datePicker = new DatePicker(component, config)
-      datePicker.init()
 
       expect(datePicker.maxDate).toStrictEqual(maxDate.toDate())
       expect(datePicker.currentDate).toStrictEqual(maxDate.toDate())
@@ -654,7 +648,6 @@ describe('button menu JS API', () => {
     test('excludedDays', () => {
       const config = { excludedDays: 'sunday thursday' }
       const datePicker = new DatePicker(component, config)
-      datePicker.init()
 
       expect(datePicker.excludedDays).toEqual([0, 4])
     })
@@ -666,7 +659,6 @@ describe('button menu JS API', () => {
           .startOf('day')
         const config = { excludedDates: dateToExclude.format('D/M/YYYY') }
         const datePicker = new DatePicker(component, config)
-        datePicker.init()
 
         expect(datePicker.excludedDates).toStrictEqual([dateToExclude.toDate()])
       })
@@ -682,7 +674,6 @@ describe('button menu JS API', () => {
           excludedDates: `${firstDateToExclude.format('D/M/YYYY')} ${secondDateToExclude.format('D/M/YYYY')}`
         }
         const datePicker = new DatePicker(component, config)
-        datePicker.init()
 
         expect(datePicker.excludedDates).toHaveLength(2)
         expect(datePicker.excludedDates).toStrictEqual([
@@ -709,7 +700,6 @@ describe('button menu JS API', () => {
         }
 
         const datePicker = new DatePicker(component, config)
-        datePicker.init()
 
         // expect(datePicker.excludedDates.length).toEqual(3);
         expect(datePicker.excludedDates).toStrictEqual(
@@ -737,7 +727,6 @@ describe('button menu JS API', () => {
           excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[2].format('D/M/YYYY')} ${datesToExclude[3].format('D/M/YYYY')} ${datesToExclude[4].format('D/M/YYYY')}`
         }
         const datePicker = new DatePicker(component, config)
-        datePicker.init()
 
         expect(datePicker.excludedDates).toStrictEqual(
           datesToExclude.map((date) => date.toDate())
@@ -754,7 +743,7 @@ describe('button menu JS API', () => {
       input = screen.getByLabelText('Date')
 
       const config = { leadingZeros: false }
-      new DatePicker(component, config).init()
+      new DatePicker(component, config)
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
       const dateToSelect = dayjs().date(9)
       const dateButton = screen.getByTestId(dateToSelect.format('D/M/YYYY'))
@@ -769,7 +758,7 @@ describe('button menu JS API', () => {
       input = screen.getByLabelText('Date')
 
       const config = { leadingZeros: true }
-      new DatePicker(component, config).init()
+      new DatePicker(component, config)
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
       const dateToSelect = dayjs().date(9)
       const dateButton = screen.getByTestId(dateToSelect.format('DD/MM/YYYY'))
@@ -786,7 +775,7 @@ describe('button menu JS API', () => {
       const minDate = dayjs().date(minDay)
       const config = { minDate: minDate.format('DD/MM/YYYY') }
 
-      new DatePicker(component, config).init()
+      new DatePicker(component, config)
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
@@ -814,7 +803,7 @@ describe('button menu JS API', () => {
       const maxDate = dayjs().date(maxDay)
       const config = { maxDate: maxDate.format('DD/MM/YYYY') }
 
-      new DatePicker(component, config).init()
+      new DatePicker(component, config)
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
@@ -846,7 +835,7 @@ describe('button menu JS API', () => {
 
         const lastDayinMonth = dayjs().endOf('month').date()
 
-        new DatePicker(component, config).init()
+        new DatePicker(component, config)
         calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
         await user.click(calendarButton)
@@ -887,7 +876,7 @@ describe('button menu JS API', () => {
           excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
         }
 
-        new DatePicker(component, config).init()
+        new DatePicker(component, config)
         calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
         await user.click(calendarButton)
@@ -920,7 +909,7 @@ describe('button menu JS API', () => {
           excludedDays.push(i)
         }
       }
-      new DatePicker(component, config).init()
+      new DatePicker(component, config)
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
@@ -944,7 +933,7 @@ describe('button menu JS API', () => {
     })
 
     test('default weekStartDay', async () => {
-      new DatePicker(component, {}).init()
+      new DatePicker(component, {})
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
       await user.click(calendarButton)
       const headers = getAllByRole(component, 'columnheader')
@@ -953,7 +942,7 @@ describe('button menu JS API', () => {
     })
 
     test('weekStartDay Sunday', async () => {
-      new DatePicker(component, { weekStartDay: 'sunday' }).init()
+      new DatePicker(component, { weekStartDay: 'sunday' })
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
       await user.click(calendarButton)
       const headers = getAllByRole(component, 'columnheader')
@@ -976,7 +965,7 @@ describe('Datepicker data-attributes API', () => {
 
   test('with leadingZeros false', async () => {
     component = createComponent({ leadingZeros: 'false' })
-    new DatePicker(component).init()
+    new DatePicker(component)
 
     input = screen.getByLabelText('Date')
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
@@ -991,7 +980,7 @@ describe('Datepicker data-attributes API', () => {
 
   test('with leadingZeros true', async () => {
     const component = createComponent({ leadingZeros: 'true' })
-    new DatePicker(component).init()
+    new DatePicker(component)
 
     input = screen.getByLabelText('Date')
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
@@ -1011,7 +1000,7 @@ describe('Datepicker data-attributes API', () => {
     const component = createComponent({
       minDate: minDate.format('DD/MM/YYYY')
     })
-    new DatePicker(component).init()
+    new DatePicker(component)
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
     await user.click(calendarButton)
@@ -1040,7 +1029,7 @@ describe('Datepicker data-attributes API', () => {
     const component = createComponent({
       maxDate: maxDate.format('DD/MM/YYYY')
     })
-    new DatePicker(component).init()
+    new DatePicker(component)
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
     await user.click(calendarButton)
@@ -1070,7 +1059,7 @@ describe('Datepicker data-attributes API', () => {
       const component = createComponent({
         excludedDates: dateToExclude.format('D/M/YYYY')
       })
-      new DatePicker(component).init()
+      new DatePicker(component)
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
@@ -1110,7 +1099,7 @@ describe('Datepicker data-attributes API', () => {
       component = createComponent({
         excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
       })
-      new DatePicker(component).init()
+      new DatePicker(component)
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
@@ -1143,7 +1132,7 @@ describe('Datepicker data-attributes API', () => {
         excludedDays.push(i)
       }
     }
-    new DatePicker(component).init()
+    new DatePicker(component)
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
     await user.click(calendarButton)
@@ -1168,7 +1157,7 @@ describe('Datepicker data-attributes API', () => {
 
   test('weekStartDay', async () => {
     component = createComponent({ weekStartDay: 'sunday' })
-    new DatePicker(component).init()
+    new DatePicker(component)
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
     await user.click(calendarButton)
     const headers = getAllByRole(component, 'columnheader')
