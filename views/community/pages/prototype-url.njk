@@ -22,12 +22,11 @@
     {% endif %}
     <form method="POST" action="{{ submitUrl }}" data-add-another-container>
       <span class="govuk-caption-l">Submit new component</span>
-      <h1>Prototype designs</h1>
+      <h1 class="govuk-heading-xl">Prototype designs</h1>
       {{ govukInput({
         label: {
           text: "Add the prototype link",
-          classes: "govuk-label--m",
-          isPageHeading: true
+          classes: "govuk-label--m"
         },
         id: "prototype-url",
         name: "prototypeUrl",
@@ -44,8 +43,7 @@
         },
         label: {
           text: "Additional information about the URL (optional)",
-          classes: "govuk-label--m",
-          isPageHeading: true
+          classes: "govuk-label--m"
         },
         errorMessage: formErrors.prototypeUrlAdditionalInformation,
         value: formData.prototypeUrlAdditionalInformation

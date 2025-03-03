@@ -21,16 +21,16 @@
     {% endif %}
     <form method="post" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit new component</span>
-      <h1>Accessibility findings</h1>
-      <p>Sharing accessibility findings helps support the status and usability of the component you're submitting.</p>
-      <p>These findings can be the result of a number of sources, including:</p>
+      <h1 class="govuk-heading-xl">Accessibility findings</h1>
+      <p class="govuk-body">Sharing accessibility findings helps support the status and usability of the component you're submitting.</p>
+      <p class="govuk-body">These findings can be the result of a number of sources, including:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>external or internal accessibility audit</li>
         <li>manual or automated testing</li>
         <li>testing with assistive technologies</li>
         <li>usability testing</li>
       </ul>
-      <p>Any accessibility findings you can share will be helpful during the review process.</p>
+      <p class="govuk-body">Any accessibility findings you can share will be helpful during the review process.</p>
       {{ govukRadios({
         name: "hasComponentBeenTestedExternalAccessibility",
         hint: {
