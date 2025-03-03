@@ -118,7 +118,9 @@ const config = {
     figmaLink: 'Prototype link',
     figmaLinkAdditionalInformation: 'Additional information',
     shareYourDetails: 'Share your details on the component page'
-  }
+  },
+  NOTIFY_EMAIL_RETRY_MS: process.env.NOTIFY_EMAIL_RETRY_MS || 5000,
+  NOTIFY_EMAIL_MAX_RETRIES: process.env.NOTIFY_EMAIL_MAX_RETRIES || 5
 }
 
 module.exports = config
