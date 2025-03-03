@@ -29,9 +29,7 @@ export class ButtonMenu {
     )
 
     this.$module = $module
-  }
 
-  init() {
     // If only one button is provided, don't initiate a menu and toggle button
     // if classes have been provided for the toggleButton, apply them to the single item
     if (this.$module.children.length === 1) {

@@ -37,9 +37,7 @@ export class Alert {
     )
 
     this.$module = $module
-  }
 
-  init() {
     /**
      * Focus the alert
      *

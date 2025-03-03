@@ -1,13 +1,10 @@
 class Cookies {
   constructor($module) {
-    this.$module = $module
-  }
-
-  init() {
-    const $module = this.$module
     if (!$module) {
       return
     }
+
+    this.$module = $module
 
     const $accept = this.$module.querySelector('[name="accept"]')
     $accept.addEventListener('click', this.accept.bind(this))
