@@ -38,6 +38,7 @@ jobs:
         uses: myrotvorets/set-commit-status-action@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          sha: ${{ github.sha }}
           status: pending
           context: Tests
 
@@ -76,6 +77,7 @@ jobs:
         uses: myrotvorets/set-commit-status-action@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          sha: ${{ github.sha }}
           status: ${{ needs.test.result }}
           context: Tests
 
