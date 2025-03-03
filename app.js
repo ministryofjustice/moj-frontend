@@ -2,12 +2,12 @@ const path = require('path')
 
 const express = require('express')
 const expressNunjucks = require('express-nunjucks').default
+const rateLimit = require('express-rate-limit')
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 const helmet = require('helmet')
 const IORedis = require('ioredis')
 const nunjucks = require('nunjucks')
-const rateLimit = require('express-rate-limit')
 
 // Configure rate limiting
 const limiter = rateLimit({

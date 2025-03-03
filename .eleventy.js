@@ -146,7 +146,7 @@ module.exports = function (eleventyConfig) {
             <h2 class="gem-c-contents-list__title">Contents</h2>
             <ol class="gem-c-contents-list__list">
               ${items
-                .map((item) => item.href 
+                .map((item) => item.href
                   ? `<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
                        <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
                        <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="${item.href}">${item.text}</a>
@@ -163,10 +163,10 @@ module.exports = function (eleventyConfig) {
       `.trim();
     } catch (error) {
       console.error('Error in form shortcode:', error)
-      return `<div>Error loading list: ${list}</div>`
+      return `<div>Error loading list: ${itemsJson}</div>`
     }
   });
-  
+
 
   eleventyConfig.addShortcode(
     'dateInCurrentMonth',

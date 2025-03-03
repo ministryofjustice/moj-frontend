@@ -21,7 +21,7 @@
     "test:js": "jest --color src/",
     "test:scss": "sass --color --load-path . --quiet-deps src/moj/all.scss > /dev/null && echo \"ok\"",
     "lint": "concurrently npm:lint:* --group",
-    "lint:js": "npm run lint:js:cli -- \"**/*.{cjs,js,md,mjs}\"",
+    "lint:js": "npm run lint:js:cli -- \"**/*.{cjs,js,md,mjs}\" ",
     "lint:js:cli": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
     "lint:prettier": "npm run lint:prettier:cli -- \"**/*.{cjs,js,json,md,mjs,scss,yaml,yml}\"",
     "lint:prettier:cli": "prettier --cache --cache-location .cache/prettier --cache-strategy content --check",
