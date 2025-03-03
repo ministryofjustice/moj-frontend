@@ -1,5 +1,3 @@
-const { COMPONENT_FORM_PAGES } = require('../config')
-
 const nextPage = require('./next-page')
 
 describe('nextPage function', () => {

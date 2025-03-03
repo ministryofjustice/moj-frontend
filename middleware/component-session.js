@@ -3,7 +3,6 @@ const {
   ADD_NEW_COMPONENT_ROUTE
 } = require('../config')
 const extractBody = require('../helpers/extract-body')
-const { checkYourAnswers } = require('../helpers/mockSessionData/sessionData')
 const nextPage = require('../helpers/next-page')
 const previousPage = require('../helpers/previous-page')
 const { formatLabel } = require('../helpers/text-helper')

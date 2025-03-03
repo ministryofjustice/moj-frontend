@@ -2,15 +2,16 @@ jest.mock('../middleware/verify-csrf', () => (req, res, next) => {
   next()
 })
 
+const path = require('path')
+
+const express = require('express')
 const expressNunjucks = require('express-nunjucks').default
 const session = require('express-session')
 const nunjucks = require('nunjucks')
 const request = require('supertest')
-const express = require('express')
 
 const router = require('./add-component')
 
-const path = require('path')
 
 const currentDirectory = __dirname
 const parentDirectory = path.resolve(currentDirectory, '..')

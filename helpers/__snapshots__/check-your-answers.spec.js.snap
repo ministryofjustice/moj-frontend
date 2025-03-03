@@ -2,10 +2,13 @@
 
 exports[`checkYourAnswers function should handle empty session gracefully 1`] = `
 {
-  "accessibilityFindingsRows": [],
+  "addAssistiveTechRows": [],
+  "addExternalAuditRows": [],
+  "addInternalAuditRows": [],
   "componentCodeRows": [],
   "componentDetailsRows": [],
   "componentImageRows": [],
+  "figmaRows": [],
   "prototypeRows": [],
   "yourDetailsRows": [],
 }
@@ -13,25 +16,9 @@ exports[`checkYourAnswers function should handle empty session gracefully 1`] = 
 
 exports[`checkYourAnswers function should handle missing session fields gracefully 1`] = `
 {
-  "accessibilityFindingsRows": [
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/get-involved/add-new-component/accessibility-findings",
-            "text": "Change",
-            "visuallyHiddenText": "Accessibility Findings - Field1",
-          },
-        ],
-      },
-      "key": {
-        "text": "Field1",
-      },
-      "value": {
-        "text": "Field Value",
-      },
-    },
-  ],
+  "addAssistiveTechRows": [],
+  "addExternalAuditRows": [],
+  "addInternalAuditRows": [],
   "componentCodeRows": [
     {
       "actions": {
@@ -53,6 +40,7 @@ exports[`checkYourAnswers function should handle missing session fields graceful
   ],
   "componentDetailsRows": [],
   "componentImageRows": [],
+  "figmaRows": [],
   "prototypeRows": [
     {
       "actions": {
@@ -78,10 +66,13 @@ exports[`checkYourAnswers function should handle missing session fields graceful
 
 exports[`checkYourAnswers function should handle multiple entries for a field 1`] = `
 {
-  "accessibilityFindingsRows": [],
+  "addAssistiveTechRows": [],
+  "addExternalAuditRows": [],
+  "addInternalAuditRows": [],
   "componentCodeRows": [],
   "componentDetailsRows": [],
   "componentImageRows": [],
+  "figmaRows": [],
   "prototypeRows": [],
   "yourDetailsRows": [],
 }
@@ -89,59 +80,9 @@ exports[`checkYourAnswers function should handle multiple entries for a field 1`
 
 exports[`checkYourAnswers function should transform session data into the expected structure 1`] = `
 {
-  "accessibilityFindingsRows": [
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/get-involved/add-new-component/accessibility-findings",
-            "text": "Change",
-            "visuallyHiddenText": "Accessibility Findings - Field1",
-          },
-        ],
-      },
-      "key": {
-        "text": "Field1",
-      },
-      "value": {
-        "text": "Field Value",
-      },
-    },
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/get-involved/add-new-component/accessibility-findings",
-            "text": "Change",
-            "visuallyHiddenText": "Accessibility Findings - Field2",
-          },
-        ],
-      },
-      "key": {
-        "text": "Field2",
-      },
-      "value": {
-        "text": "Another Value",
-      },
-    },
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/get-involved/add-new-component/accessibility-findings-more",
-            "text": "Change",
-            "visuallyHiddenText": "Accessibility Findings More - Detail",
-          },
-        ],
-      },
-      "key": {
-        "text": "Detail",
-      },
-      "value": {
-        "text": "Some additional information",
-      },
-    },
-  ],
+  "addAssistiveTechRows": [],
+  "addExternalAuditRows": [],
+  "addInternalAuditRows": [],
   "componentCodeRows": [
     {
       "actions": {
@@ -181,6 +122,11 @@ exports[`checkYourAnswers function should transform session data into the expect
       "actions": {
         "items": [
           {
+            "href": "/get-involved/add-new-component/remove/component-code-details",
+            "text": "Remove",
+            "visuallyHiddenText": "Component Code Details - Detail",
+          },
+          {
             "href": "/get-involved/add-new-component/component-code-details",
             "text": "Change",
             "visuallyHiddenText": "Component Code Details - Detail",
@@ -201,6 +147,11 @@ exports[`checkYourAnswers function should transform session data into the expect
       "actions": {
         "items": [
           {
+            "href": "/get-involved/add-new-component/remove/component-image",
+            "text": "Remove",
+            "visuallyHiddenText": "Component Image - Image",
+          },
+          {
             "href": "/get-involved/add-new-component/component-image",
             "text": "Change",
             "visuallyHiddenText": "Component Image - Image",
@@ -215,6 +166,7 @@ exports[`checkYourAnswers function should transform session data into the expect
       },
     },
   ],
+  "figmaRows": [],
   "prototypeRows": [
     {
       "actions": {
@@ -237,6 +189,11 @@ exports[`checkYourAnswers function should transform session data into the expect
       "actions": {
         "items": [
           {
+            "href": "/get-involved/add-new-component/remove/prototype-url",
+            "text": "Remove",
+            "visuallyHiddenText": "Prototype Url - Url",
+          },
+          {
             "href": "/get-involved/add-new-component/prototype-url",
             "text": "Change",
             "visuallyHiddenText": "Prototype Url - Url",
@@ -244,7 +201,7 @@ exports[`checkYourAnswers function should transform session data into the expect
         ],
       },
       "key": {
-        "text": "Url",
+        "text": "URL",
       },
       "value": {
         "text": "http://example.com",

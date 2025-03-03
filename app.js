@@ -1,3 +1,6 @@
+/* eslint import/order: "off" */
+/* eslint n/no-unpublished-require: "off" */
+
 const path = require('path')
 
 const express = require('express')

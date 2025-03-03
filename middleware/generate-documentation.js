@@ -1,7 +1,6 @@
 const generateMarkdown = (data) => {
   const {
     '/component-details': details,
-    '/accessibility-findings': accessibilityFindings,
     '/your-details': yourDetails
   } = data
 
