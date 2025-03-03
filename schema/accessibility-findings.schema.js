@@ -6,7 +6,9 @@ const schema = Joi.object({
     .messages({
       'any.required': 'Select yes if you had an external audit'
     })
-    .label('Has the component been tested as part of an external accessibility audit?'),
+    .label(
+      'Has the component been tested as part of an external accessibility audit?'
+    ),
   hasComponentBeenTestedInternalAudit: Joi.valid('yes', 'no')
     .required()
     .messages({

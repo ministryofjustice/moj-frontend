@@ -13,12 +13,12 @@ const notifyClient = new NotifyClient(NOTIFY_TOKEN)
 const emailAddress = NOTIFY_EMAIL
 
 const sendEmail = async (
-    templateId,
-    link = null,
-    fileBuffer = null,
-    markdown = null,
-    retries = NOTIFY_EMAIL_MAX_RETRIES,
-    backoff = NOTIFY_EMAIL_RETRY_MS
+  templateId,
+  link = null,
+  fileBuffer = null,
+  markdown = null,
+  retries = NOTIFY_EMAIL_MAX_RETRIES,
+  backoff = NOTIFY_EMAIL_RETRY_MS
 ) => {
   const personalisation = link ? { link } : {}
 
@@ -32,7 +32,9 @@ const sendEmail = async (
 
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
-      console.log(`Sending email to ${emailAddress} using template ${templateId}, attempt ${attempt}`)
+      console.log(
+        `Sending email to ${emailAddress} using template ${templateId}, attempt ${attempt}`
+      )
       const response = await notifyClient.sendEmail(templateId, emailAddress, {
         personalisation
       })
@@ -42,7 +44,7 @@ const sendEmail = async (
       handleEmailError(error)
       if (attempt < retries) {
         console.log(`Retrying in ${backoff}ms...`)
-        await new Promise(resolve => setTimeout(resolve, backoff))
+        await new Promise((resolve) => setTimeout(resolve, backoff))
         backoff *= 2 // Exponential backoff
       } else {
         console.error('All retry attempts failed.')

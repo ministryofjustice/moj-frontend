@@ -139,19 +139,20 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addShortcode('contentsList', function (itemsJson = '') {
     try {
-      const items = JSON.parse(itemsJson);
+      const items = JSON.parse(itemsJson)
       return `
         <aside class="part-navigation-container" role="complementary">
           <nav class="govuk-!-margin-bottom-4">
             <h2 class="gem-c-contents-list__title">Contents</h2>
             <ol class="gem-c-contents-list__list">
               ${items
-                .map((item) => item.href
-                  ? `<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+                .map((item) =>
+                  item.href
+                    ? `<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
                        <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
                        <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="${item.href}">${item.text}</a>
                      </li>`
-                  : `<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
+                    : `<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
                        <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
                        ${item.text}
                      </li>`
@@ -160,13 +161,12 @@ module.exports = function (eleventyConfig) {
             </ol>
           </nav>
         </aside>
-      `.trim();
+      `.trim()
     } catch (error) {
       console.error('Error in form shortcode:', error)
       return `<div>Error loading list: ${itemsJson}</div>`
     }
-  });
-
+  })
 
   eleventyConfig.addShortcode(
     'dateInCurrentMonth',

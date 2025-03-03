@@ -4,7 +4,7 @@ const verifyCsrf = (req, res, next) => {
     console.error(errorMessage)
     return next(errorMessage)
   }
-  next();
-};
+  next()
+}
 
 module.exports = verifyCsrf

@@ -12,10 +12,16 @@ const combineDateFields = (data, format = 'D MMMM YYYY') => {
         const year = data[`${baseKey}-year`]
         if (day && month && year) {
           const dateString = `${year}-${month}-${day}`
-          result[`${baseKey}`] = combineDateFields ? moment(dateString, 'YYYY-M-D').format(format) : dateString
+          result[`${baseKey}`] = combineDateFields
+            ? moment(dateString, 'YYYY-M-D').format(format)
+            : dateString
         }
       }
-    } else if (!key.endsWith('-day') && !key.endsWith('-month') && !key.endsWith('-year')) {
+    } else if (
+      !key.endsWith('-day') &&
+      !key.endsWith('-month') &&
+      !key.endsWith('-year')
+    ) {
       result[key] = value
     }
   }

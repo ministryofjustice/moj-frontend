@@ -94,8 +94,13 @@ const pushToGitHub = async (sessionData) => {
     Object.keys(sessionData).forEach((key) => {
       if (key !== 'cookie') {
         const fileData = sessionData[key]
-        if (fileData?.componentImage?.buffer || fileData?.accessibilityReport?.buffer) {
-          const directory = fileData.componentImage ? imageDirectory : fileDirectory
+        if (
+          fileData?.componentImage?.buffer ||
+          fileData?.accessibilityReport?.buffer
+        ) {
+          const directory = fileData.componentImage
+            ? imageDirectory
+            : fileDirectory
           const file = fileData.componentImage || fileData.accessibilityReport
           const filename = file.originalname
           const fileContent = handleFile(file)

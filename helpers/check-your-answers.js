@@ -7,24 +7,26 @@ const {
 } = require('../config')
 
 const { combineDateFields } = require('./date-fields')
-const { toCamelCaseWithRows, formatLabel: formatLabelText, replaceAcronyms } = require('./text-helper')
+const {
+  toCamelCaseWithRows,
+  formatLabel: formatLabelText,
+  replaceAcronyms
+} = require('./text-helper')
 
 const mappedLabels = Object.keys(CHECK_YOUR_ANSWERS_LABEL_MAPPING)
 const hrefRoot = '/get-involved/add-new-component'
 const maxWords = 10
 
-const formatLabel = ( text ) => {
-  if(mappedLabels.includes(text)) {
+const formatLabel = (text) => {
+  if (mappedLabels.includes(text)) {
     return CHECK_YOUR_ANSWERS_LABEL_MAPPING[text]
   }
   return formatLabelText(text)
 }
 
 const shareYourDetails = {
-  addNameToComponentPage:
-    'Add name and email address to component page',
-  addTeamNameWhenRequested:
-    'Only share name and email when requested',
+  addNameToComponentPage: 'Add name and email address to component page',
+  addTeamNameWhenRequested: 'Only share name and email when requested',
   doNotSharePersonalDetails: 'Do not share personal details'
 }
 
@@ -34,7 +36,7 @@ const truncateText = (text, maxWords) => {
   try {
     const words = String(text).split(' ')
     if (words.length > maxWords) {
-      return `${words.slice(0, maxWords).join(' ')  }...`
+      return `${words.slice(0, maxWords).join(' ')}...`
     }
     return text
   } catch (e) {
@@ -77,14 +79,18 @@ const shareYourDetailsValueReplacement = (value) => {
     values.map((value) => {
       if (shareYourDetailsKeys.includes(value)) {
         return shareYourDetails[value]
-      } 
-        return value
-      
+      }
+      return value
     })
   )
 }
 
-const extractFieldData = (field, session, canRemove = [], ignoreFields = []) => {
+const extractFieldData = (
+  field,
+  session,
+  canRemove = [],
+  ignoreFields = []
+) => {
   const fieldName = field
   const fieldPath = `/${field}`
 
@@ -130,21 +136,19 @@ const extractFieldData = (field, session, canRemove = [], ignoreFields = []) => 
           )
         }
 
-        if(canRemove.includes(key) && !removeAdded) {
+        if (canRemove.includes(key) && !removeAdded) {
           removeAdded = true
           actionItems.push({
             href: `${hrefRoot}/remove${key}`,
             text: 'Remove',
-            visuallyHiddenText:
-                `${formatLabel(fieldName)  } - ${  formatLabel(subKey)}`
+            visuallyHiddenText: `${formatLabel(fieldName)} - ${formatLabel(subKey)}`
           })
         }
 
         actionItems.push({
           href: `${hrefRoot}${key}`,
           text: 'Change',
-          visuallyHiddenText:
-              `${formatLabel(fieldName)  } - ${  formatLabel(subKey)}`
+          visuallyHiddenText: `${formatLabel(fieldName)} - ${formatLabel(subKey)}`
         })
 
         return {
@@ -155,74 +159,73 @@ const extractFieldData = (field, session, canRemove = [], ignoreFields = []) => 
           }
         }
       })
-    } 
+    }
 
-      const actionItems = []
+    const actionItems = []
 
-      if(canRemove.includes(key)) {
-        actionItems.push({
-          href: `${hrefRoot}/remove${key}`,
-          text: 'Remove',
-          visuallyHiddenText: replaceAcronyms(formatLabel(fieldName), acronyms)
-        })
-      }
-
+    if (canRemove.includes(key)) {
       actionItems.push({
-        href: `${hrefRoot}${key}`,
-        text: 'Change',
+        href: `${hrefRoot}/remove${key}`,
+        text: 'Remove',
         visuallyHiddenText: replaceAcronyms(formatLabel(fieldName), acronyms)
       })
+    }
 
-      // single entry
-      return [
-        {
-          key: { text: replaceAcronyms(formatLabel(fieldName), acronyms) },
-          value: { text: sanitizeText(truncateText(value, maxWords)) },
-          actions: {
-            items: actionItems
-          }
+    actionItems.push({
+      href: `${hrefRoot}${key}`,
+      text: 'Change',
+      visuallyHiddenText: replaceAcronyms(formatLabel(fieldName), acronyms)
+    })
+
+    // single entry
+    return [
+      {
+        key: { text: replaceAcronyms(formatLabel(fieldName), acronyms) },
+        value: { text: sanitizeText(truncateText(value, maxWords)) },
+        actions: {
+          items: actionItems
         }
-      ]
-    
+      }
+    ]
   })
 }
 
 const checkYourAnswers = (session) => {
   const forms = [
-      'component-details',
-      'component-image',
-      'add-external-audit',
-      'add-internal-audit',
-      'add-assistive-tech',
-      ['prototype', 'prototype-url'],
-      ['figma', 'figma-link'],
-      ['component-code', 'component-code-details'],
-      'your-details'
+    'component-details',
+    'component-image',
+    'add-external-audit',
+    'add-internal-audit',
+    'add-assistive-tech',
+    ['prototype', 'prototype-url'],
+    ['figma', 'figma-link'],
+    ['component-code', 'component-code-details'],
+    'your-details'
   ]
   const canRemoveStatic = [
-      '/component-image',
-      '/accessibility-findings',
-      '/prototype-url',
-      '/figma-link',
-      '/component-code-details',
-      '/add-external-audit',
-      '/add-internal-audit',
-      '/add-assistive-tech'
+    '/component-image',
+    '/accessibility-findings',
+    '/prototype-url',
+    '/figma-link',
+    '/component-code-details',
+    '/add-external-audit',
+    '/add-internal-audit',
+    '/add-assistive-tech'
   ]
   const canRemoveMultiples = [
-      '/prototype-url',
-      '/figma-link',
-      '/component-code-details'
+    '/prototype-url',
+    '/figma-link',
+    '/component-code-details'
   ]
   const ignoreFields = [
-      'componentPrototypeUrl',
-      'figmaUrl',
-      'componentCodeAvailable'
+    'componentPrototypeUrl',
+    'figmaUrl',
+    'componentCodeAvailable'
   ]
   const canRemove = [
     ...canRemoveStatic,
-    ...canRemoveMultiples.flatMap(item =>
-        Array.from({ length: maxAddAnother }, (_, i) => `${item}/${i + 1}`)
+    ...canRemoveMultiples.flatMap((item) =>
+      Array.from({ length: maxAddAnother }, (_, i) => `${item}/${i + 1}`)
     )
   ]
   return answersFromSession(forms, canRemove, session, ignoreFields)

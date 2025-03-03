@@ -16,15 +16,27 @@ const config = {
     'component-details': {},
     'component-image': {},
     'accessibility-findings': {},
-    'add-external-audit': { '/accessibility-findings': {hasComponentBeenTestedExternalAccessibility: 'yes' } },
-    'add-internal-audit': { '/accessibility-findings': {hasComponentBeenTestedInternalAudit: 'yes'} },
-    'add-assistive-tech': { '/accessibility-findings': {hasComponentBeenTestedUsingAssistiveTechnology: 'yes'}},
-    'prototype': {},
-    'prototype-url': { '/prototype': {componentPrototypeUrl: 'yes'} },
-    'figma': {},
-    'figma-link': { '/figma': {figmaUrl: 'yes'} },
+    'add-external-audit': {
+      '/accessibility-findings': {
+        hasComponentBeenTestedExternalAccessibility: 'yes'
+      }
+    },
+    'add-internal-audit': {
+      '/accessibility-findings': { hasComponentBeenTestedInternalAudit: 'yes' }
+    },
+    'add-assistive-tech': {
+      '/accessibility-findings': {
+        hasComponentBeenTestedUsingAssistiveTechnology: 'yes'
+      }
+    },
+    prototype: {},
+    'prototype-url': { '/prototype': { componentPrototypeUrl: 'yes' } },
+    figma: {},
+    'figma-link': { '/figma': { figmaUrl: 'yes' } },
     'component-code': {},
-    'component-code-details': { '/component-code': {componentCodeAvailable: 'yes' } },
+    'component-code-details': {
+      '/component-code': { componentCodeAvailable: 'yes' }
+    },
     'your-details': {},
     'check-your-answers': {}
   },

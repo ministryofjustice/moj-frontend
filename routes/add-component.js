@@ -47,7 +47,7 @@ const setCsrfToken = (req, res, next) => {
   if (req?.session) {
     if (!req?.session?.csrfToken) {
       // Set CSRF token
-      req.session.csrfToken = crypto.randomBytes(32).toString("hex");
+      req.session.csrfToken = crypto.randomBytes(32).toString('hex')
     }
   }
   next()
@@ -56,7 +56,7 @@ const setCsrfToken = (req, res, next) => {
 router.all('*', setCsrfToken)
 
 router.get('*', (req, res, next) => {
-  if(req?.session) {
+  if (req?.session) {
     if (req?.url.endsWith(checkYourAnswersPath)) {
       // Indicate that we've been on the check your answers page
       req.session.checkYourAnswers = true
@@ -76,7 +76,7 @@ router.get(`/${checkYourAnswersPath}`, sessionStarted, (req, res) => {
     addInternalAuditRows,
     addAssistiveTechRows,
     yourDetailsRows,
-    figmaRows,
+    figmaRows
   } = checkYourAnswers(req.session)
   res.render(checkYourAnswersPath, {
     submitUrl: req.originalUrl,
@@ -131,7 +131,7 @@ router.get('/confirmation', (req, res) => {
 })
 
 // Check that we have a session in progress
-router.all('*', sessionStarted )
+router.all('*', sessionStarted)
 
 // Remove form page
 router.get(
@@ -142,7 +142,7 @@ router.get(
     const summary = req?.removeSummaryRows
     const type = urlToTitleCase(req?.params?.page || '')
 
-    if(!req?.params?.page || !summary) {
+    if (!req?.params?.page || !summary) {
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`)
     } else {
       res.render('remove', {
@@ -162,9 +162,10 @@ router.post(
   ['/remove/:page', '/remove/:page/:subpage'],
   verifyCsrf,
   removeFromSession,
-  (req, res ) => {
+  (req, res) => {
     res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`)
-  })
+  }
+)
 
 // Component form page
 router.get(
@@ -189,26 +190,31 @@ router.get(
 )
 
 // "Check Your Answers" form submission
-router.post(`/${checkYourAnswersPath}`, verifyCsrf, getRawSessionText, async (req, res) => {
-  const { filename: markdownFilename, content: markdownContent } =
-    generateMarkdown(req.session)
-  const markdown = {}
-  markdown[markdownFilename] = markdownContent
-  const { sessionText } = req
-  await sendSubmissionEmail(null, sessionText, markdownContent)
-  const session = { ...req.session, ...markdown }
-  req.session.regenerate((err) => {
-    if (err) {
-      console.error('Error regenerating session:', err)
-    }
-    res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/confirmation`)
-  })
-  const branchName = await pushToGitHub(session)
-  const title = 'test title'
-  const description = 'test description'
-  const pr = await createPullRequest(branchName, title, description)
-  await sendPrEmail(pr)
-})
+router.post(
+  `/${checkYourAnswersPath}`,
+  verifyCsrf,
+  getRawSessionText,
+  async (req, res) => {
+    const { filename: markdownFilename, content: markdownContent } =
+      generateMarkdown(req.session)
+    const markdown = {}
+    markdown[markdownFilename] = markdownContent
+    const { sessionText } = req
+    await sendSubmissionEmail(null, sessionText, markdownContent)
+    const session = { ...req.session, ...markdown }
+    req.session.regenerate((err) => {
+      if (err) {
+        console.error('Error regenerating session:', err)
+      }
+      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/confirmation`)
+    })
+    const branchName = await pushToGitHub(session)
+    const title = 'test title'
+    const description = 'test description'
+    const pr = await createPullRequest(branchName, title, description)
+    await sendPrEmail(pr)
+  }
+)
 
 // Component image upload
 router.post(
