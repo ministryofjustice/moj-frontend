@@ -141,7 +141,7 @@ We’d like to test positive contractions with users to find out if they’re mo
 
 The reference assigned to a person on probation in NDelius. Not NDelius number, case number or CRN number.
 
-The initialism is likely to be familiar to NDelius users without needing to be spelt out. The format is 2 characters, 4 numbers and then 2 characters for example ‘RG5108AC’.
+The initialism is likely to be familiar to NDelius users without needing to be spelt out. The format is 1 or 2 characters and then 6 numbers for example ‘RG510812’ or ‘R510812’.
 
 {% endaccordionSection %}
 {% accordionSection "D" %}
@@ -378,6 +378,8 @@ Always use ‘prison number’ when referring to the unique number given to some
 Do not use ‘prison no’, ‘prisoner number’, ‘NOMIS number’, ‘NOMS number’ or ‘offender number’.
 
 Staff in prisons may still use ‘NOMIS number’ or ‘alpha number’ when referring to someone’s prison number.
+
+The format is 1 character, 4 numbers and then 2 characters. For example ‘A1234AA’
 
 ### prisoner, person in prison
 
