@@ -25,10 +25,13 @@
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
       <span class="govuk-caption-l">Submit new component</span>
       <h1 class="govuk-heading-xl">Testing with assistive technology</h1>
+<<<<<<< Updated upstream
 
       {% for name, value in hiddenFields %}
         <input type="hidden" name="{{ name }}" value="{{ value }}">
       {% endfor %}
+=======
+>>>>>>> Stashed changes
 
       {{ govukDateInput({
         id: "testingDate",
