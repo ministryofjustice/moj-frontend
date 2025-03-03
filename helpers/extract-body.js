@@ -1,5 +1,3 @@
-const { COMPONENT_FORM_HIDDEN_FIELDS } = require("../config");
-
 const extractBody = (url, body) => {
   const result = { ...body };
   const dateFields = {};

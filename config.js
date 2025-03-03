@@ -28,25 +28,6 @@ const config = {
     'your-details': {},
     'check-your-answers': {}
   },
-  COMPONENT_FORM_HIDDEN_FIELDS: {
-    'add-external-audit': {
-      '/accessibility-findings': [
-        'hasComponentBeenTestedInternalAudit',
-        'hasComponentBeenTestedUsingAssistiveTechnology'
-      ]
-    },
-    'add-internal-audit': {
-      '/accessibility-findings': [
-        'hasComponentBeenTestedInternalAudit',
-        'hasComponentBeenTestedUsingAssistiveTechnology'
-      ]
-    },
-    'add-assistive-tech': {
-      '/accessibility-findings': [
-        'hasComponentBeenTestedUsingAssistiveTechnology'
-      ]
-    }
-  },
   COMPONENT_FORM_PAGES_OPTIONS: {
     'accessibility-findings': {
       hasComponentBeenTestedExternalAccessibility: {

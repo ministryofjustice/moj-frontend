@@ -1,5 +1,3 @@
-const { COMPONENT_FORM_PAGES } = require('../config');
-
 const previousPage = require('./previous-page');
 
 describe('previousPage function', () => {
@@ -38,7 +36,7 @@ describe('previousPage function', () => {
   it('should return the highest subpage if multiple subpages exist', () => {
     session['/prototype/1'] = {};
     session['/prototype/2'] = {};
-    const result = previousPage('/component-code', session);
+    const result = previousPage('/figma', session);
     expect(result).toBe('/get-involved/add-new-component/prototype/2');
   });
 });
