@@ -141,7 +141,7 @@ We’d like to test positive contractions with users to find out if they’re mo
 
 The reference assigned to a person on probation in NDelius. Not NDelius number, case number or CRN number.
 
-The initialism is likely to be familiar to NDelius users without needing to be spelt out. The format is 1 or 2 characters and then 6 numbers for example ‘RG510812’ or ‘R510812’.
+The initialism is likely to be familiar to NDelius users without needing to be spelt out. The format is 1 character and then 6 numbers for example ‘R510812’.
 
 {% endaccordionSection %}
 {% accordionSection "D" %}
