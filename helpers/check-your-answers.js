@@ -98,7 +98,7 @@ const extractFieldData = (
   const parsedSession = Object.entries(session).reduce((acc, [key, value]) => {
     if (typeof value === 'object' && !Array.isArray(value)) {
       ignoreFields.forEach((ignoreField) => {
-        if (ignoreField in value) {
+        if (value && typeof value === 'object' && ignoreField in value) {
           delete value[ignoreField]
         }
       })
@@ -128,7 +128,11 @@ const extractFieldData = (
         }
         if (isShareYourDetails) {
           displayValue.value.html = shareYourDetailsValueReplacement(subValue)
-        } else if ('originalname' in subValue) {
+        } else if (
+          subValue &&
+          typeof subValue === 'object' &&
+          'originalname' in subValue
+        ) {
           displayValue.value.text = subValue.originalname
         } else {
           displayValue.value.text = sanitizeText(

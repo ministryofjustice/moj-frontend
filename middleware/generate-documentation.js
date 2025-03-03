@@ -1,8 +1,5 @@
 const generateMarkdown = (data) => {
-  const {
-    '/component-details': details,
-    '/your-details': yourDetails
-  } = data
+  const { '/component-details': details, '/your-details': yourDetails } = data
 
   const documentationDirectory = 'component/documentation'
   const componentName = details?.componentName || 'unknown-component'

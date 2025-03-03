@@ -12,7 +12,6 @@ const request = require('supertest')
 
 const router = require('./add-component')
 
-
 const currentDirectory = __dirname
 const parentDirectory = path.resolve(currentDirectory, '..')
 
