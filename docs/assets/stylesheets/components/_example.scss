@@ -9,9 +9,10 @@
   border-right: 1px solid $govuk-border-colour;
   border-left: 1px solid $govuk-border-colour;
   background-color: govuk-colour("white");
+
   &.app-example-borders {
-    border-bottom: 1px solid $govuk-border-colour;
     border-top: 1px solid $govuk-border-colour;
+    border-bottom: 1px solid $govuk-border-colour;
   }
 }
 
