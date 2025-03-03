@@ -385,11 +385,7 @@ module.exports = function (eleventyConfig) {
   
       // If it's a community page, remove the class from <main>
       if (isCommunityPage) {
-<<<<<<< Updated upstream
-        $('main').removeAttr('class'); // Removes class attribute from <main>
-=======
         $('main').removeAttr('class'); 
->>>>>>> Stashed changes
       }
   
       // Replace #main-content with Nunjucks block
@@ -415,11 +411,7 @@ module.exports = function (eleventyConfig) {
       console.error('Error during base.njk generation:', error);
     }
   };
-<<<<<<< Updated upstream
-
-=======
   // Create base.njk for community form based on the add-new-component page (to use the correct navigation)
->>>>>>> Stashed changes
   eleventyConfig.on('afterBuild', () => {
     // Add new component layout
     const componentSourceFile = path.join(
