@@ -7,6 +7,7 @@ const {
   GITHUB_REPO_NAME
 } = require('../config')
 const imageDirectory = 'images'
+const fileDirectory = 'files'
 
 const extractFilename = (key, includeDirectories = true) => {
   const segments = key.split('/')
@@ -94,7 +95,7 @@ const pushToGitHub = async (sessionData) => {
       if (key !== 'cookie') {
         const fileData = sessionData[key]
         if (fileData?.componentImage?.buffer || fileData?.accessibilityReport?.buffer) {
-          const directory = imageDirectory
+          const directory = fileData.componentImage ? imageDirectory : fileDirectory
           const file = fileData.componentImage || fileData.accessibilityReport
           const filename = file.originalname
           const fileContent = handleFile(file)
