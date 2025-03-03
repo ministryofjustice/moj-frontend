@@ -16,7 +16,7 @@ MOJFrontend.initAll()
 
 $(function () {
   $('[data-module="app-tabs"]').each(function (e, el) {
-    new Tabs($(el))
+    new Tabs(el)
   })
 
   $('[data-module="app-copy"]').each(function (e, el) {

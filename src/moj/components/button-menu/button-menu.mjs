@@ -1,39 +1,17 @@
-export class ButtonMenu {
+import { ConfigurableComponent } from 'govuk-frontend'
+
+export class ButtonMenu extends ConfigurableComponent {
   /**
-   * @param {HTMLElement} $module
+   * @param {HTMLElement} $root
    * @param {ButtonMenuConfig} [config]
    */
-  constructor($module, config = {}) {
-    if (!$module) {
-      return this
-    }
-
-    const schema = Object.freeze({
-      properties: {
-        buttonText: { type: 'string' },
-        buttonClasses: { type: 'string' },
-        alignMenu: { type: 'string' }
-      }
-    })
-
-    const defaults = {
-      buttonText: 'Actions',
-      alignMenu: 'left',
-      buttonClasses: ''
-    }
-    // data attributes override JS config, which overrides defaults
-    this.config = this.mergeConfigs(
-      defaults,
-      config,
-      this.parseDataset(schema, $module.dataset)
-    )
-
-    this.$module = $module
+  constructor($root, config = {}) {
+    super($root, config)
 
     // If only one button is provided, don't initiate a menu and toggle button
     // if classes have been provided for the toggleButton, apply them to the single item
-    if (this.$module.children.length === 1) {
-      const button = this.$module.children[0]
+    if (this.$root.children.length === 1) {
+      const button = this.$root.children[0]
       button.classList.forEach((className) => {
         if (className.startsWith('govuk-button-')) {
           button.classList.remove(className)
@@ -45,29 +23,29 @@ export class ButtonMenu {
       }
     }
     // Otherwise intialise a button menu
-    if (this.$module.children.length > 1) {
+    if (this.$root.children.length > 1) {
       this.initMenu()
     }
   }
 
   initMenu() {
     this.$menu = this.createMenu()
-    this.$module.insertAdjacentHTML('afterbegin', this.toggleTemplate())
+    this.$root.insertAdjacentHTML('afterbegin', this.toggleTemplate())
     this.setupMenuItems()
 
-    this.$menuToggle = this.$module.querySelector(':scope > button')
+    this.$menuToggle = this.$root.querySelector(':scope > button')
     this.items = this.$menu.querySelectorAll('a, button')
 
     this.$menuToggle.addEventListener('click', (event) => {
       this.toggleMenu(event)
     })
 
-    this.$module.addEventListener('keydown', (event) => {
+    this.$root.addEventListener('keydown', (event) => {
       this.handleKeyDown(event)
     })
 
     document.addEventListener('click', (event) => {
-      if (!this.$module.contains(event.target)) {
+      if (!this.$root.contains(event.target)) {
         this.closeMenu(false)
       }
     })
@@ -82,9 +60,9 @@ export class ButtonMenu {
       $menu.classList.add('moj-button-menu__wrapper--right')
     }
 
-    this.$module.appendChild($menu)
-    while (this.$module.firstChild !== $menu) {
-      $menu.appendChild(this.$module.firstChild)
+    this.$root.appendChild($menu)
+    while (this.$root.firstChild !== $menu) {
+      $menu.appendChild(this.$root.firstChild)
     }
 
     return $menu
@@ -247,61 +225,33 @@ export class ButtonMenu {
   }
 
   /**
-   * Parse dataset
-   *
-   * Loop over an object and normalise each value using {@link normaliseString},
-   * optionally expanding nested `i18n.field`
-   *
-   * @param {Schema} schema - component schema
-   * @param {DOMStringMap} dataset - HTML element dataset
-   * @returns {object} Normalised dataset
+   * Name for the component used when initialising using data-module attributes.
    */
-  parseDataset(schema, dataset) {
-    const parsed = {}
-
-    for (const [field, ,] of Object.entries(schema.properties)) {
-      if (field in dataset) {
-        if (dataset[field]) {
-          parsed[field] = dataset[field]
-        }
-      }
-    }
-
-    return parsed
-  }
+  static moduleName = 'moj-button-menu'
 
   /**
-   * Config merging function
+   * Button menu default config
    *
-   * Takes any number of objects and combines them together, with
-   * greatest priority on the LAST item passed in.
-   *
-   * @param {...{ [key: string]: unknown }} configObjects - Config objects to merge
-   * @returns {{ [key: string]: unknown }} A merged config object
+   * @type {ButtonMenuConfig}
    */
-  mergeConfigs(...configObjects) {
-    const formattedConfigObject = {}
+  static defaults = Object.freeze({
+    buttonText: 'Actions',
+    alignMenu: 'left',
+    buttonClasses: ''
+  })
 
-    // Loop through each of the passed objects
-    for (const configObject of configObjects) {
-      for (const key of Object.keys(configObject)) {
-        const option = formattedConfigObject[key]
-        const override = configObject[key]
-
-        // Push their keys one-by-one into formattedConfigObject. Any duplicate
-        // keys with object values will be merged, otherwise the new value will
-        // override the existing value.
-        if (typeof option === 'object' && typeof override === 'object') {
-          // @ts-expect-error Index signature for type 'string' is missing
-          formattedConfigObject[key] = this.mergeConfigs(option, override)
-        } else {
-          formattedConfigObject[key] = override
-        }
-      }
+  /**
+   * Button menu config schema
+   *
+   * @satisfies {Schema<ButtonMenuConfig>}
+   */
+  static schema = Object.freeze({
+    properties: {
+      buttonText: { type: 'string' },
+      buttonClasses: { type: 'string' },
+      alignMenu: { type: 'string' }
     }
-
-    return formattedConfigObject
-  }
+  })
 }
 
 /**
@@ -312,5 +262,5 @@ export class ButtonMenu {
  */
 
 /**
- * @import { Schema } from '../../all.mjs'
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
  */
