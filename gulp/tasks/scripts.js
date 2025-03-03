@@ -1,10 +1,11 @@
 const { join, parse } = require('path')
 
+const { babel } = require('@rollup/plugin-babel')
 const commonjs = require('@rollup/plugin-commonjs')
-const nodeResolve = require('@rollup/plugin-node-resolve')
+const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const terser = require('@rollup/plugin-terser')
+const PluginError = require('plugin-error')
 const { rollup } = require('rollup')
-const externalGlobals = require('rollup-plugin-external-globals')
 
 /**
  * Compile Sass to CSS task
@@ -12,52 +13,77 @@ const externalGlobals = require('rollup-plugin-external-globals')
  * @param {string} assetPath
  * @param {CompileScriptsOptions} entry
  */
-function compileScripts(assetPath, { srcPath, destPath, output = {} }) {
+function compileScripts(
+  assetPath,
+  {
+    srcPath,
+    destPath,
+    input = {}, // Rollup input options
+    output = {} // Rollup output options
+  }
+) {
   const { name } = parse(assetPath)
 
   const taskFn = async () => {
     const bundle = await rollup({
-      external: ['jquery'],
+      ...input,
       input: join(srcPath, assetPath),
       plugins: [
-        externalGlobals({
-          jquery: '$'
+        nodeResolve({
+          browser: true,
+          jail: output.preserveModules
+            ? srcPath // Prevent `node_modules` bundling
+            : undefined // Allow `node_modules` bundling
         }),
-        nodeResolve(),
-        commonjs()
-      ]
+        commonjs({
+          requireReturnsDefault: 'preferred',
+          defaultIsModuleExports: true
+        }),
+        babel({
+          babelHelpers: 'bundled'
+        })
+      ],
+
+      // Handle warnings as errors
+      onwarn(warning) {
+        throw new PluginError('compile:scripts', warning.message, {
+          name: warning.code ?? 'Error',
+          showProperties: false
+        })
+      }
     })
 
-    // Write to output formats
-    for (const options of [output].flat()) {
-      const file = join(destPath, options.file ?? `${name}.js`)
+    // Add minifier plugin (optional)
+    if (output.compact) {
+      output.plugins ??= []
+      output.plugins.push(
+        terser({
+          format: { comments: false },
+          sourceMap: { includeSources: true },
 
-      // Add minifier plugin (optional)
-      if (options.compact) {
-        options.plugins ??= []
-        options.plugins.push(
-          terser({
-            format: { comments: false },
-            sourceMap: { includeSources: true },
-
-            // Compatibility workarounds
-            safari10: true
-          })
-        )
-      }
-
-      // Write to output format
-      await bundle.write({
-        extend: true,
-        format: 'esm',
-        ...options,
-
-        // Output directory or file
-        dir: options.preserveModules ? destPath : undefined,
-        file: !options.preserveModules ? file : undefined,
-        sourcemap: true
-      })
+          // Compatibility workarounds
+          safari10: true
+        })
+      )
     }
+
+    // Write to output format
+    await bundle.write({
+      extend: true,
+      format: 'esm',
+      ...output,
+
+      // Write to directory for modules
+      dir: output.preserveModules ? destPath : undefined,
+
+      // Write to file when bundling
+      file: !output.preserveModules
+        ? join(destPath, output.file ?? `${name}.js`)
+        : undefined,
+
+      // Enable source maps
+      sourcemap: true
+    })
   }
 
   taskFn.displayName = 'compile:scripts'
@@ -74,9 +100,10 @@ module.exports = {
  * @typedef {object} CompileScriptsOptions
  * @property {string} srcPath - Source directory
  * @property {string} destPath - Destination directory
- * @property {OutputOptions | OutputOptions[]} [output] - Output formats
+ * @property {InputOptions} [input] - Rollup input options
+ * @property {OutputOptions} [output] - Rollup output options
  */
 
 /**
- * @import { OutputOptions } from 'rollup'
+ * @import { InputOptions, OutputOptions } from 'rollup'
  */

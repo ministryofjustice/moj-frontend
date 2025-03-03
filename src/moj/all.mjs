@@ -109,18 +109,18 @@ function initAll(options) {
   const $datepickers = scope.querySelectorAll('[data-module="moj-date-picker"]')
 
   nodeListForEach($datepickers, function ($datepicker) {
-    new DatePicker($datepicker, {}).init()
+    new DatePicker($datepicker, {})
   })
 
   const $buttonMenus = scope.querySelectorAll('[data-module="moj-button-menu"]')
 
   nodeListForEach($buttonMenus, function ($buttonmenu) {
-    new ButtonMenu($buttonmenu, {}).init()
+    new ButtonMenu($buttonmenu, {})
   })
 
   const $alerts = scope.querySelectorAll('[data-module="moj-alert"]')
   nodeListForEach($alerts, function ($alert) {
-    new Alert($alert, {}).init()
+    new Alert($alert, {})
   })
 }
 
