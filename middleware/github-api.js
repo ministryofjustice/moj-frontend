@@ -93,10 +93,11 @@ const pushToGitHub = async (sessionData) => {
     Object.keys(sessionData).forEach((key) => {
       if (key !== 'cookie') {
         const fileData = sessionData[key]
-        if (fileData?.componentImage?.buffer) {
+        if (fileData?.componentImage?.buffer || fileData?.accessibilityReport?.buffer) {
           const directory = imageDirectory
-          const filename = fileData.componentImage.originalname
-          const fileContent = handleFile(fileData.componentImage)
+          const file = fileData.componentImage || fileData.accessibilityReport
+          const filename = file.originalname
+          const fileContent = handleFile(file)
           const filePath = `submission/${directory}/${filename}`
           submissionData[filePath] = { buffer: fileContent }
         } else {
