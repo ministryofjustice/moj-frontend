@@ -76,13 +76,7 @@ export class DatePicker {
     this.selectedDayButtonClass = 'moj-datepicker__button--selected'
     this.currentDayButtonClass = 'moj-datepicker__button--current'
     this.todayButtonClass = 'moj-datepicker__button--today'
-  }
 
-  init() {
-    // Check that required elements are present
-    if (!this.$input) {
-      return this
-    }
     if (this.$module.dataset.initialized) {
       return this
     }
@@ -219,7 +213,6 @@ export class DatePicker {
         $row.appendChild($cell)
 
         const calendarDay = new DSCalendarDay($dateButton, dayCount, i, j, this)
-        calendarDay.init()
         this.calendarDays.push(calendarDay)
         dayCount++
       }
@@ -853,9 +846,6 @@ class DSCalendarDay {
     this.picker = picker
 
     this.date = new Date()
-  }
-
-  init() {
     this.button.addEventListener('keydown', this.keyPress.bind(this))
     this.button.addEventListener('click', this.click.bind(this))
   }

@@ -5,20 +5,18 @@ class Copy {
    * @param {Element | null} $module - HTML element to use for cookies
    */
   constructor($module) {
-    this.$module = $module
-  }
-
-  init() {
-    const $module = this.$module
     if (!$module || !($module instanceof HTMLElement)) {
       return this
     }
+
+    this.$module = $module
+
     const $button = document.createElement('button')
     $button.className = 'app-copy-button js-copy-button'
     $button.setAttribute('aria-live', 'assertive')
     $button.textContent = 'Copy code'
 
-    $module.insertBefore($button, $module.firstChild)
+    this.$module.insertBefore($button, this.$module.firstChild)
     this.copyAction()
   }
 

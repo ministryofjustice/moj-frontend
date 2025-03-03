@@ -3,14 +3,11 @@ class Cookies {
    * @param {Element | null} $module - HTML element to use for cookies
    */
   constructor($module) {
-    this.$module = $module
-  }
-
-  init() {
-    const $module = this.$module
     if (!$module || !($module instanceof HTMLElement)) {
       return this
     }
+
+    this.$module = $module
 
     const $accept = this.$module.querySelector('[name="accept"]')
     $accept.addEventListener('click', this.accept.bind(this))

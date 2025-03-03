@@ -5,7 +5,6 @@ export default class IFrameResizer {
     this.contentWindow = null
 
     // Bind methods
-    this.init = this.init.bind(this)
     this.cleanup = this.cleanup.bind(this)
     this.onLoad = this.onLoad.bind(this)
     this.onResize = this.onResize.bind(this)
@@ -15,7 +14,7 @@ export default class IFrameResizer {
     this.iframe.addEventListener('load', this.onLoad)
   }
 
-  init() {
+  onLoad() {
     try {
       this.contentWindow = this.iframe.contentWindow
 
@@ -51,10 +50,6 @@ export default class IFrameResizer {
     } catch (error) {
       console.error('Failed to initialize IframeResizer:', error)
     }
-  }
-
-  onLoad() {
-    this.init()
   }
 
   onMutation() {

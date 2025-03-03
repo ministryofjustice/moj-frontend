@@ -22,13 +22,13 @@ $tabs.forEach(($tabs) => {
 const $codeBlocks = document.querySelectorAll('[data-module="app-copy"]')
 
 $codeBlocks.forEach(($codeBlock) => {
-  new Copy($codeBlock).init()
+  new Copy($codeBlock)
 })
 
 const $cookieBanners = document.querySelectorAll('[data-module="app-cookies"]')
 
 $cookieBanners.forEach(($cookieBanner) => {
-  new Cookies($cookieBanner).init()
+  new Cookies($cookieBanner)
 })
 
 const $iframes = document.querySelectorAll('iframe')
