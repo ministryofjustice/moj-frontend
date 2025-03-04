@@ -84,7 +84,6 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     needs: [result]
-    if: github.event_name == 'push'
 
     steps:
       - uses: actions/checkout@v4
