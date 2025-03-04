@@ -365,15 +365,7 @@ module.exports = function (eleventyConfig) {
     try {
       const htmlContent = fs.readFileSync(sourceFile, 'utf8');
       const $ = cheerio.load(htmlContent);
-  
-      // Check if we are generating a community page layout
-      const isCommunityPage = destinationFile.includes('/views/common/');
-  
-      // If it's a community page, remove the class from <main>
-      if (isCommunityPage) {
-        $('main').removeAttr('class'); 
-      }
-  
+      
       // Replace #main-content with Nunjucks block
       const nunjucksBlock = `
       {% block content %}

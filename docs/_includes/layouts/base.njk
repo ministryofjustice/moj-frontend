@@ -64,7 +64,7 @@
                 {% include "./partials/side-navigation.njk" %}
             </div>
             <div class="app-layout__page app-page">
-              <main id="main-content" class="app-prose-scope" >
+               <main id="main-content" {%- if mainClasses %} class="{{ mainClasses }}"{% endif %}>
                     {% block content %}
                         {{ content | safe }}
                     {% endblock %}
