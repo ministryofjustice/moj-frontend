@@ -1,13 +1,6 @@
 name: Publish package
 
 on:
-  pull_request:
-
-  push:
-    branches:
-      - 'main'
-      - '*.*.x'
-
   workflow_dispatch:
 
 jobs:
@@ -62,7 +55,7 @@ jobs:
           name: mojds-package
           path: package
       - name: Test that sass can be compiled
-        run: npm run test:sass
+        run: npm run test:scss
 
   result:
     runs-on: ubuntu-latest
@@ -100,7 +93,7 @@ jobs:
           path: dist
       - run: npm ci
       - name: Publish to NPM
-        run: npm run ci:release
+        run: npm run ci:dryrun
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ADMIN_TOKEN }}
