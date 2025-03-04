@@ -32,12 +32,16 @@ const schema = Joi.object({
   testingDate: Joi.string()
     .custom((value, helpers) => {
       if (!moment(value, 'YYYY-MM-DD', true).isValid()) {
-        return helpers.error('any.invalid', { message: 'The date of the testing must be a real date' });
+        return helpers.error('any.invalid', {
+          message: 'The date of the testing must be a real date'
+        })
       }
       if (moment(value).isAfter(moment())) {
-        return helpers.error('any.invalid', { message: 'The date of the testing must be today or in the past' });
+        return helpers.error('any.invalid', {
+          message: 'The date of the testing must be today or in the past'
+        })
       }
-      return value;
+      return value
     })
     .messages({
       'any.invalid': '{{#message}}'

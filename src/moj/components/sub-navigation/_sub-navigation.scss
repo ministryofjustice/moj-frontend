@@ -1,3 +1,5 @@
+@use "../../vendor/govuk-frontend/base" as *;
+
 /* ==========================================================================
    #SECONDARY NAV
    ========================================================================== */
@@ -19,10 +21,10 @@
 }
 
 .moj-sub-navigation__item {
-  @include govuk-font(19);
   display: block;
   margin-top: -1px;
   box-shadow: inset 0 -1px 0 $govuk-border-colour;
+  @include govuk-font(19);
 
   &:last-child {
     box-shadow: none;
@@ -37,17 +39,23 @@
 }
 
 .moj-sub-navigation__link {
-  @include govuk-link-common;
-  @include govuk-link-style-default;
   display: block;
   position: relative;
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: govuk-spacing(3);
-  text-decoration: none;
+  @include govuk-link-common;
+  @include govuk-link-style-default;
 
   @include govuk-media-query($from: tablet) {
     padding-left: 0;
+  }
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
   }
 
   &:link,

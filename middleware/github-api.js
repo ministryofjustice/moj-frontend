@@ -1,4 +1,5 @@
 const fetch = require('node-fetch')
+
 const {
   GITHUB_API_URL,
   GITHUB_API_TOKEN,
@@ -6,6 +7,7 @@ const {
   GITHUB_REPO_NAME
 } = require('../config')
 const imageDirectory = 'images'
+const fileDirectory = 'files'
 
 const extractFilename = (key, includeDirectories = true) => {
   const segments = key.split('/')
@@ -13,7 +15,7 @@ const extractFilename = (key, includeDirectories = true) => {
   segments[segments.length - 1] = lastSegment.includes('.')
     ? lastSegment
     : `${lastSegment}.txt`
-  let result = includeDirectories
+  const result = includeDirectories
     ? segments.join('/')
     : segments[segments.length - 1]
   return result.startsWith('/') ? result.slice(1) : result
@@ -92,10 +94,16 @@ const pushToGitHub = async (sessionData) => {
     Object.keys(sessionData).forEach((key) => {
       if (key !== 'cookie') {
         const fileData = sessionData[key]
-        if (fileData?.componentImage?.buffer) {
-          const directory = imageDirectory
-          const filename = fileData.componentImage.originalname
-          const fileContent = handleFile(fileData.componentImage)
+        if (
+          fileData?.componentImage?.buffer ||
+          fileData?.accessibilityReport?.buffer
+        ) {
+          const directory = fileData.componentImage
+            ? imageDirectory
+            : fileDirectory
+          const file = fileData.componentImage || fileData.accessibilityReport
+          const filename = file.originalname
+          const fileContent = handleFile(file)
           const filePath = `submission/${directory}/${filename}`
           submissionData[filePath] = { buffer: fileContent }
         } else {

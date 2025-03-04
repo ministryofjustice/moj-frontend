@@ -1,7 +1,8 @@
+@use "../govuk-frontend" as *;
+
 .app-copy-button {
   $copy-button-colour: #00823b;
 
-  @include govuk-font(16);
   position: absolute;
   z-index: 1;
   top: govuk-spacing(3);
@@ -15,6 +16,7 @@
   text-align: center;
   text-decoration: none;
   cursor: pointer;
+  @include govuk-font(16);
 
   &:active {
     margin-top: 2px;

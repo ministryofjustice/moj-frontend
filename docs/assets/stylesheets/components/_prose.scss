@@ -1,3 +1,5 @@
+@use "../govuk-frontend" as *;
+
 .app-prose-scope {
   h1:not([class]) {
     @extend %govuk-heading-xl;
@@ -22,6 +24,10 @@
   img {
     max-width: 100%;
     border: 1px solid #b1b4b6;
+  }
+
+  .app-card__image {
+    border: none;
   }
 
   code:not([class*="language-"]) {
@@ -57,9 +63,15 @@
 
   a {
     @extend %govuk-link;
+
+    /* stylelint-disable selector-no-qualifying-type */
     &.govuk-link--no-visited-state.govuk-button {
       color: govuk-colour("white");
     }
+  }
+
+  .govuk-link--inverse {
+    @include govuk-link-style-inverse;
   }
 
   hr {
@@ -69,19 +81,19 @@
   }
 
   table {
-    @include govuk-font($size: 19);
-    @include govuk-text-colour;
-    @include govuk-responsive-margin(6, "bottom");
     width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
+    @include govuk-font($size: 19);
+    @include govuk-text-colour;
+    @include govuk-responsive-margin(6, "bottom");
   }
 
   th {
-    @include govuk-typography-weight-bold;
     padding: govuk-em(govuk-spacing(2), 19px) govuk-em(govuk-spacing(4), 19px) govuk-em(govuk-spacing(2), 19px) 0;
     border-bottom: 1px solid $govuk-border-colour;
     text-align: left;
+    @include govuk-typography-weight-bold;
   }
 
   td {
@@ -96,18 +108,18 @@
   }
 
   caption {
-    @include govuk-typography-weight-bold;
     display: table-caption;
     text-align: left;
+    @include govuk-typography-weight-bold;
   }
 }
 
 pre {
-  @include govuk-responsive-margin(6, "bottom");
   position: relative;
   margin: govuk-spacing(6);
   padding: govuk-spacing(3);
   overflow: auto;
   background: #f7f7f7;
   font-size: 16px;
+  @include govuk-responsive-margin(6, "bottom");
 }

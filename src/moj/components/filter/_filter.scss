@@ -1,3 +1,6 @@
+@use "../../settings/assets" as *;
+@use "../../vendor/govuk-frontend/base" as *;
+
 /* ==========================================================================
    #FILTER
    ========================================================================== */
@@ -36,7 +39,6 @@
   overflow: visible; // Override govuk to allow for focus style to be seen
 
   button {
-    @include govuk-font($size: 24, $weight: bold);
     appearance: none;
     box-sizing: border-box;
     display: block;
@@ -50,6 +52,7 @@
     text-align: left;
     cursor: pointer; // Adam would not approve
     -webkit-appearance: none;
+    @include govuk-font($size: 24, $weight: bold);
 
     // Fix unwanted button padding in Firefox
     &::-moz-focus-inner {
@@ -84,7 +87,6 @@
 }
 
 .moj-filter__close {
-  @include govuk-font(19);
   margin: 0;
   padding: 0;
   border: none;
@@ -95,6 +97,7 @@
   cursor: pointer; // I know Adam won’t like this
   -webkit-appearance: none;
   appearance: none;
+  @include govuk-font(19);
 
   &:focus {
     outline: none;
@@ -147,10 +150,10 @@
 
 .moj-filter__heading-title,
 .moj-filter__heading-action {
-  @include govuk-font(16);
   display: inline-block;
   text-align: left;
   vertical-align: middle;
+  @include govuk-font(16);
 }
 
 .moj-filter-tags {
@@ -165,7 +168,6 @@
 }
 
 .moj-filter__tag {
-  @include govuk-font(16);
   display: inline-block;
   margin-top: govuk-spacing(1);
   padding: govuk-spacing(1);
@@ -173,6 +175,7 @@
   color: govuk-colour("black");
   background-color: govuk-colour("white");
   text-decoration: none;
+  @include govuk-font(16);
 
   &:link,
   &:visited {

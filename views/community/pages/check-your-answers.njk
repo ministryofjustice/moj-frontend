@@ -12,9 +12,19 @@
             rows: componentDetailsRows
           }) }}
 
-          <h2 class="govuk-heading-m">Accessibility findings</h2>
+          <h2 class="govuk-heading-m">External accessibility audit</h2>
           {{ govukSummaryList({
-            rows: accessibilityRows
+            rows: addExternalAuditRows
+          }) }}
+
+          <h2 class="govuk-heading-m">Internal accessibility audit</h2>
+          {{ govukSummaryList({
+            rows: addInternalAuditRows
+          }) }}
+
+          <h2 class="govuk-heading-m">Testing with assistive technology</h2>
+          {{ govukSummaryList({
+            rows: addAssistiveTechRows
           }) }}
 
           <h2 class="govuk-heading-m">Prototype URL</h2>
@@ -27,10 +37,17 @@
             rows: componentCodeRows
           }) }}
 
+          <h2 class="govuk-heading-m">Figma designs</h2>
+          {{ govukSummaryList({
+            rows: figmaRows
+          }) }}
+
           <h2 class="govuk-heading-m">Your details</h2>
           {{ govukSummaryList({
             rows: yourDetailsRows
           }) }}
+
+          <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
 
           <div class="moj-button-action">
                 {{ govukButton({

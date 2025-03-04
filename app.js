@@ -1,28 +1,46 @@
-const express = require('express')
+/* eslint import/order: "off" */
+/* eslint n/no-unpublished-require: "off" */
+
 const path = require('path')
+
+const express = require('express')
 const expressNunjucks = require('express-nunjucks').default
+const rateLimit = require('express-rate-limit')
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
-const nunjucks = require('nunjucks')
+const helmet = require('helmet')
 const IORedis = require('ioredis')
+const nunjucks = require('nunjucks')
+
+// Configure rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 200, // Limit each IP to 200 requests per windowMs
+  standardHeaders: true,
+  legacyHeaders: false
+})
+
 const {
   APP_PORT,
   REDIS_URL,
   REDIS_AUTH_TOKEN,
   SESSION_SECRET
 } = require('./config')
-
 const addComponentRoutes = require('./routes/add-component')
 
 const app = express()
+app.set('trust proxy', true)
 const isDev = app.get('env') === 'development'
+
+app.use(helmet())
+app.use(limiter)
 
 // Session management
 const sessionOptions = {
   secret: SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 }
+  cookie: { secure: !isDev, maxAge: 24 * 60 * 60 * 1000 }
 }
 
 if (REDIS_URL) {

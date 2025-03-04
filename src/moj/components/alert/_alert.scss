@@ -1,0 +1,146 @@
+@use "../../helpers/links" as *;
+@use "../../objects/width-container" as *;
+@use "../../settings/colours" as *;
+@use "../../vendor/govuk-frontend/base" as *;
+
+.moj-alert {
+  display: -ms-grid;
+  display: grid;
+  margin-bottom: govuk-spacing(6);
+  padding: govuk-spacing(2);
+  border: 5px solid transparent;
+  background: govuk-colour("white");
+  -ms-grid-columns: min-content fit-content(960px);
+  grid-template-columns: min-content fit-content(960px);
+  gap: govuk-spacing(2);
+  @include govuk-font($size: false);
+
+  &:focus {
+    outline: $govuk-focus-width solid $govuk-focus-colour;
+  }
+}
+
+.moj-alert[data-dismissible] {
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: min-content fit-content(920px) auto;
+  }
+}
+
+.moj-alert__icon {
+  display: block;
+  width: govuk-px-to-rem(30px);
+  height: govuk-px-to-rem(30px);
+  fill: currentcolor;
+}
+
+.moj-alert__content {
+  display: block;
+  // Padding to align text with icon
+  padding-top: govuk-px-to-rem(5px);
+  overflow: hidden;
+  color: govuk-colour("black");
+  @include govuk-font-size($size: 19);
+
+  @include govuk-media-query($from: tablet) {
+    padding-top: govuk-px-to-rem(2px);
+  }
+}
+
+.moj-alert__action {
+  grid-column-start: 2;
+  grid-column-end: -1;
+
+  @include govuk-media-query($from: tablet) {
+    grid-column-start: 3;
+    justify-self: right;
+  }
+}
+
+.moj-alert__dismiss {
+  // Give the button link styling
+  margin-bottom: 0;
+  padding: 0;
+  border: none;
+  color: unset;
+  background-color: transparent;
+  -webkit-appearance: none;
+  cursor: pointer;
+  appearance: none;
+  @include govuk-font-size($size: 19);
+  @include govuk-link-common;
+  @include govuk-link-style-default;
+  @include govuk-link-print-friendly;
+}
+
+.moj-alert__content h2,
+.moj-alert__content h3,
+.moj-alert__content h4 {
+  margin-bottom: 2px;
+  line-height: 30px;
+}
+
+.moj-alert--with-heading .moj-alert__content {
+  // No padding needed when there is a heading
+  padding-top: 0;
+
+  @include govuk-media-query($from: tablet) {
+    padding-top: 0;
+  }
+}
+
+.moj-alert__content *:last-child {
+  margin-bottom: 0;
+}
+
+/* Style variants
+   ========================================================================== */
+.moj-alert--information {
+  border-color: $govuk-brand-colour;
+  color: $govuk-brand-colour;
+
+  .moj-alert__dismiss,
+  .moj-alert__content a {
+    @include govuk-link-common;
+    @include govuk-link-style-default;
+  }
+}
+
+.moj-alert--success {
+  border-color: govuk-colour("green");
+  color: govuk-colour("green");
+
+  .moj-alert__dismiss,
+  .moj-alert__content a,
+  .moj-alert__content .govuk-link {
+    @include govuk-link-common;
+    @include govuk-link-style-success;
+  }
+}
+
+.moj-alert--warning {
+  border-color: $moj-warning-colour;
+  color: $moj-warning-colour;
+
+  .moj-alert__dismiss {
+    color: $moj-warning-link-colour;
+  }
+
+  .moj-alert__dismiss,
+  .moj-alert__content a,
+  .moj-alert__content .govuk-link {
+    @include govuk-link-common;
+    @include moj-link-style-warning;
+  }
+}
+
+.moj-alert--error {
+  border-color: govuk-colour("red");
+  color: govuk-colour("red");
+
+  .moj-alert__dismiss,
+  .moj-alert__content a,
+  .moj-alert__content .govuk-link {
+    @include govuk-link-common;
+    @include govuk-link-style-error;
+  }
+}

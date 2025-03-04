@@ -65,6 +65,8 @@
                 value: formData.howIsTheComponentUsed
             }) }}
 
+          <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+
           <div class="govuk-button-group moj-button-action">
             {{ govukButton({
               text: 'Continue',

@@ -31,10 +31,10 @@
           text: "What team conducted the internal accessibility audit?",
           classes: "govuk-label--m"
         },
-        id: "organisation",
-        name: "organisation",
-        errorMessage: formErrors.organisation,
-        value: formData.organisation
+        id: "internalOrganisation",
+        name: "internalOrganisation",
+        errorMessage: formErrors.internalOrganisation,
+        value: formData.internalOrganisation
       }) }}
 
       {{ govukDateInput({
@@ -102,6 +102,8 @@
         errorMessage: formErrors.issuesDiscovered,
         value: formData.issuesDiscovered
       }) }}
+
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
 
       <div class="govuk-button-group moj-button-action">
         {{ govukButton({

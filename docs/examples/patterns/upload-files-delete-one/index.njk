@@ -8,9 +8,9 @@ title: Upload files - delete one (example)
 {% from "moj/components/banner/macro.njk" import mojBanner %}
 
 {{ mojBanner({
-  type: 'success',
-  text: 'File named abc.jpg has been deleted',
-  iconFallbackText: 'Success'
+  type: "success",
+  text: "File named abc.jpg has been deleted",
+  iconFallbackText: "Success"
 }) }}
 
 {{ govukFileUpload({
@@ -19,11 +19,11 @@ title: Upload files - delete one (example)
   isPageHeading: true,
   label: {
     text: "Upload receipts",
-    classes: 'govuk-label--xl'
+    classes: "govuk-label--xl"
   },
   hint: {
-    text: 'You can upload your receipt as a scanned copy or photo of the original'
+    text: "You can upload your receipt as a scanned copy or photo of the original"
   }
 }) }}
 
-{{ govukButton({ text: 'Continue' }) }}
+{{ govukButton({ text: "Continue" }) }}

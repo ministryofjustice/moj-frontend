@@ -1,3 +1,5 @@
+@use "../../vendor/govuk-frontend/base" as *;
+
 .moj-pagination {
   // text-align: center;
 
@@ -33,9 +35,9 @@
 }
 
 .moj-pagination__results {
-  @include govuk-font(19);
   margin-top: 0;
   padding: govuk-spacing(1);
+  @include govuk-font(19);
   @include govuk-media-query($from: desktop) {
     display: inline-block;
     margin-bottom: 0;
@@ -44,8 +46,8 @@
 }
 
 .moj-pagination__item {
-  @include govuk-font(19);
   display: inline-block;
+  @include govuk-font(19);
 }
 
 .moj-pagination__item--active,
@@ -86,13 +88,19 @@
 }
 
 .moj-pagination__link {
-  @include govuk-link-common;
-  @include govuk-link-style-default;
   display: block;
   min-width: 25px;
   padding: govuk-spacing(1);
   text-align: center;
-  text-decoration: none;
+  @include govuk-link-common;
+  @include govuk-link-style-default;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
 
   &:link,
   &:visited {

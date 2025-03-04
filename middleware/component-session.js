@@ -1,9 +1,11 @@
-const nextPage = require('../helpers/next-page')
-const getHiddenFields = require('../helpers/hidden-fields')
+const {
+  MAX_ADD_ANOTHER: maxAddAnother,
+  ADD_NEW_COMPONENT_ROUTE
+} = require('../config')
 const extractBody = require('../helpers/extract-body')
+const nextPage = require('../helpers/next-page')
 const previousPage = require('../helpers/previous-page')
 const { formatLabel } = require('../helpers/text-helper')
-const { MAX_ADD_ANOTHER: maxAddAnother } = require('../config')
 
 const camelToKebab = (str) =>
   str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
@@ -16,13 +18,15 @@ const transformErrorsToErrorList = (errors) => {
 }
 
 const setNextPage = (req, res, next) => {
-  const addAnother = req?.body?.addAnother
+  const addAnother = req?.body?.addAnother !== undefined
   if (req?.session?.checkYourAnswers && !addAnother) {
     req.nextPage = 'check-your-answers'
-    delete req.session.checkYourAnswers
+    if (req.method === 'POST') {
+      delete req.session.checkYourAnswers
+    }
   } else {
     let subpage = null
-    if(addAnother) {
+    if (addAnother) {
       subpage = req?.params?.subpage ? parseInt(req?.params?.subpage) + 1 : 1
     }
     const { url, session, body } = req
@@ -34,7 +38,8 @@ const setNextPage = (req, res, next) => {
 const validateFormData = (req, res, next) => {
   const schemaName = req.url.split('/')[1]
   const schema = require(`../schema/${schemaName}.schema`)
-  const body = extractBody(req?.url,{...req.body})
+  const body = extractBody(req?.url, { ...req.body })
+  delete body._csrf
   const { error, value } = schema.validate(body, { abortEarly: false })
   const dateFields = ['auditDate']
 
@@ -50,11 +55,11 @@ const validateFormData = (req, res, next) => {
 
     error.details.forEach((error) => {
       let field = error.path[0]
-      if(dateFields.includes(field.split('-')[0])) {
+      if (dateFields.includes(field.split('-')[0])) {
         formErrorStyles[field] = 'govuk-input--error'
         field = field.split('-')[0]
       }
-      if(!formErrors[field]) {
+      if (!formErrors[field]) {
         // Just add the first error for a field
         formErrors[field] = { text: error.message }
       }
@@ -72,10 +77,10 @@ const validateFormData = (req, res, next) => {
       addAnother: req?.params?.subpage || 1,
       showAddAnother: !!req?.body?.addAnother,
       skipQuestion: req?.skipQuestion || false,
-      hiddenFields: getHiddenFields(req)
+      csrfToken: req?.session?.csrfToken
     })
   } else {
-    console.log('Validation success:', value)
+    console.debug('Validation success:', value)
     next()
   }
 }
@@ -85,7 +90,7 @@ const saveSession = (req, res, next) => {
     req.session = {}
   }
 
-  let body = req.body
+  let { _csrf, ...body } = req.body
 
   if (req.file) {
     const { fieldname } = req.file
@@ -94,7 +99,7 @@ const saveSession = (req, res, next) => {
     body = { ...body, ...file }
   }
 
-  req.session[req.url] = {...body}
+  req.session[req.url] = { ...body }
   delete req.session[req.url].addAnother
 
   console.log('saved session', req.url)
@@ -107,15 +112,15 @@ const getFormDataFromSession = (req, res, next) => {
   next()
 }
 
-const getFormSummaryListForRemove = ( req, res, next ) => {
-  const url = req.url.replace('/remove','')
+const getFormSummaryListForRemove = (req, res, next) => {
+  const url = req.url.replace('/remove', '')
   const formData = req.session[url]
   delete req.removeSummaryRows
-  if(formData) {
+  if (formData) {
     req.removeSummaryRows = Object.entries(formData).map(([key, value]) => ({
       key: { text: formatLabel(key) },
       value: { text: value }
-    }));
+    }))
   }
   next()
 }
@@ -167,20 +172,26 @@ const canAddAnother = (req, res, next) => {
 }
 
 const getBackLink = (req, res, next) => {
-  const { url, session, formData, hiddenFields } = req
-  req.backLink = previousPage(url, session, {...formData, ...hiddenFields})
-  next()
-}
-
-const hiddenFields = (req, res, next) => {
-  delete req.hiddenFields
-  req.hiddenFields = getHiddenFields(req)
+  const { url, session, formData } = req
+  if (session?.checkYourAnswers) {
+    req.backLink = 'check-your-answers'
+  } else {
+    req.backLink = previousPage(url, session, { ...formData })
+  }
   next()
 }
 
 const removeFromSession = (req, res, next) => {
-  const url = req.url.replace('/remove','')
+  const url = req.url.replace('/remove', '')
   delete req.session[url]
+  next()
+}
+
+const sessionStarted = (req, res, next) => {
+  if (!req?.session?.started) {
+    console.error('No session available')
+    return res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/start`)
+  }
   next()
 }
 
@@ -193,7 +204,7 @@ module.exports = {
   canSkipQuestion,
   canAddAnother,
   getBackLink,
-  hiddenFields,
   getFormSummaryListForRemove,
-  removeFromSession
+  removeFromSession,
+  sessionStarted
 }

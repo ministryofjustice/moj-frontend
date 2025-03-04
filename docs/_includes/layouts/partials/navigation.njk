@@ -1,36 +1,36 @@
-{%- from "node_modules/@ministryofjustice/frontend/moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation %}
+{%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation %}
 
 {{ mojPrimaryNavigation({
   items: [
     {
-      text: 'Get started',
-      href: ('/get-started' | url),
-      active: page.filePathStem.indexOf('/get-started') === 0
+      text: "Get started",
+      href: ("/get-started" | url),
+      active: page.filePathStem.indexOf("/get-started") === 0
     },
     {
-      text: 'Components',
-      href: ('/components' | url),
-      active: page.filePathStem.indexOf('/components') === 0
+      text: "Components",
+      href: ("/components" | url),
+      active: page.filePathStem.indexOf("/components") === 0
     },
     {
-      text: 'Pages',
-      href: ('/pages' | url),
-      active: page.filePathStem.indexOf('/pages') === 0
+      text: "Pages",
+      href: ("/pages" | url),
+      active: page.filePathStem.indexOf("/pages") === 0
     },
     {
-      text: 'Patterns',
-      href: ('/patterns' | url),
-      active: page.filePathStem.indexOf('/patterns') === 0
+      text: "Patterns",
+      href: ("/patterns" | url),
+      active: page.filePathStem.indexOf("/patterns") === 0
     },
     {
-      text: 'Ethics',
-      href: ('/ethics' | url),
-      active: page.filePathStem.indexOf('/ethics') === 0
+      text: "Ethics",
+      href: ("/ethics" | url),
+      active: page.filePathStem.indexOf("/ethics") === 0
     },
     {
-      text: 'Community',
-      href: ('/community' | url),
-      active: page.filePathStem.indexOf('/community') === 0
+      text: "Community",
+      href: ("/community" | url),
+      active: page.filePathStem.indexOf("/community") === 0
     }
   ]
 }) }}

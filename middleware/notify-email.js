@@ -1,9 +1,12 @@
 const { NotifyClient } = require('notifications-node-client')
+
 const {
   NOTIFY_TOKEN,
   NOTIFY_PR_TEMPLATE,
   NOTIFY_SUBMISSION_TEMPLATE,
-  NOTIFY_EMAIL
+  NOTIFY_EMAIL,
+  NOTIFY_EMAIL_RETRY_MS,
+  NOTIFY_EMAIL_MAX_RETRIES
 } = require('../config')
 const notifyClient = new NotifyClient(NOTIFY_TOKEN)
 
@@ -13,9 +16,11 @@ const sendEmail = async (
   templateId,
   link = null,
   fileBuffer = null,
-  markdown = null
+  markdown = null,
+  retries = NOTIFY_EMAIL_MAX_RETRIES,
+  backoff = NOTIFY_EMAIL_RETRY_MS
 ) => {
-  let personalisation = link ? { link } : {}
+  const personalisation = link ? { link } : {}
 
   if (fileBuffer) {
     personalisation.link_to_file = notifyClient.prepareUpload(fileBuffer)
@@ -25,15 +30,27 @@ const sendEmail = async (
     personalisation.markdown = markdown
   }
 
-  try {
-    console.log(`Sending email to ${emailAddress} using template ${templateId}`)
-    const response = await notifyClient.sendEmail(templateId, emailAddress, {
-      personalisation
-    })
-    console.log('Email sent successfully.')
-  } catch (error) {
-    handleEmailError(error)
-    throw error
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      console.log(
+        `Sending email to ${emailAddress} using template ${templateId}, attempt ${attempt}`
+      )
+      const response = await notifyClient.sendEmail(templateId, emailAddress, {
+        personalisation
+      })
+      console.log('Email sent successfully.')
+      return response
+    } catch (error) {
+      handleEmailError(error)
+      if (attempt < retries) {
+        console.log(`Retrying in ${backoff}ms...`)
+        await new Promise((resolve) => setTimeout(resolve, backoff))
+        backoff *= 2 // Exponential backoff
+      } else {
+        console.error('All retry attempts failed.')
+        throw error
+      }
+    }
   }
 }
 

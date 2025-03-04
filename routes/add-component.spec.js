@@ -1,12 +1,16 @@
-global.setImmediate = (callback) => setTimeout(callback, 0)
+jest.mock('../middleware/verify-csrf', () => (req, res, next) => {
+  next()
+})
 
+const path = require('path')
+
+const express = require('express')
 const expressNunjucks = require('express-nunjucks').default
+const session = require('express-session')
 const nunjucks = require('nunjucks')
 const request = require('supertest')
-const express = require('express')
+
 const router = require('./add-component')
-const path = require('path')
-const session = require('express-session')
 
 const currentDirectory = __dirname
 const parentDirectory = path.resolve(currentDirectory, '..')
@@ -21,6 +25,13 @@ app.use(
     cookie: { secure: false, maxAge: 60000 }
   })
 )
+
+app.use((req, res, next) => {
+  if (req.session) {
+    req.session.started = true
+  }
+  next()
+})
 
 app.set('views', [
   path.join(parentDirectory, 'views/common'),
@@ -81,10 +92,20 @@ describe('Component Details Form Tests', () => {
   })
 
   describe('POST /get-involved/add-new-component/component-details', () => {
+    let csrfToken
+
+    beforeEach(async () => {
+      const response = await request(app).get(
+        '/get-involved/add-new-component/component-details'
+      )
+      const matches = response.text.match(/name="_csrf" value="([^"]+)"/)
+      csrfToken = matches ? matches[1] : null
+    })
+
     it('should return errors if required fields are missing', async () => {
       const response = await request(app)
         .post('/get-involved/add-new-component/component-details')
-        .send({})
+        .send({ _csrf: csrfToken })
 
       expect(response.status).toBe(400)
       expect(response.text).toContain('govuk-error-summary')
@@ -104,15 +125,15 @@ describe('Component Details Form Tests', () => {
       const response = await request(app)
         .post('/get-involved/add-new-component/component-details')
         .send({
+          _csrf: csrfToken,
           componentName: 'Test Component',
           componentOverview: 'A brief description',
-          howIsTheComponentUsed: 'It is needed for testing',
-          componentProblemSolved: 'This is how it is solved'
+          howIsTheComponentUsed: 'It is needed for testing'
         })
 
       expect(response.status).toBe(302)
       expect(response.header.location).toBe(
-        '/get-involved/add-new-component/accessibility-findings'
+        '/get-involved/add-new-component/component-image'
       )
     })
   })

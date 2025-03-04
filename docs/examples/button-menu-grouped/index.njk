@@ -7,26 +7,30 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 
 {%- from "govuk/components/button/macro.njk" import govukButton %}
 {%- from "moj/components/button-menu/macro.njk" import mojButtonMenu -%}
-<div class="moj-button-group moj-button-group--inline">
-    {{ govukButton({"text": "Accept booking"}) }}
-    {{ mojButtonMenu({
-        "button": {
-            "text": "Review booking",
-            "classes": "govuk-button--secondary"
-        },
-        "items": [
-            {
-                "text": "Cancel",
-                "href": "#"
-            },
-            {
-                "text": "Put on hold",
-                "href": "#"
-            },
-            {
-                "text": "Request more information",
-                "href": "#"
-            }
-        ]
-    }) }}
+
+<div class="moj-button-group">
+  {{ govukButton({
+    text: "Accept booking"
+  }) }}
+
+  {{ mojButtonMenu({
+    button: {
+      text: "Review booking",
+      classes: "govuk-button--secondary"
+    },
+    items: [
+      {
+        text: "Cancel",
+        href: "#"
+      },
+      {
+        text: "Put on hold",
+        href: "#"
+      },
+      {
+        text: "Request more information",
+        href: "#"
+      }
+    ]
+  }) }}
 </div>

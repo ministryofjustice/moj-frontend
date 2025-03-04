@@ -1,9 +1,5 @@
 const generateMarkdown = (data) => {
-  const {
-    '/component-details': details,
-    '/accessibility-findings': accessibilityFindings,
-    '/your-details': yourDetails
-  } = data
+  const { '/component-details': details, '/your-details': yourDetails } = data
 
   const documentationDirectory = 'component/documentation'
   const componentName = details?.componentName || 'unknown-component'
@@ -58,7 +54,7 @@ ${componentCodeDetails?.componentCode || ''}
     return content
   }
 
-  let content = `---
+  const content = `---
 layout: layouts/component.njk
 title: ${componentName}
 type: component
@@ -108,11 +104,7 @@ ${generatePrototypeSection(data)}
 
 ## Accessibility
 
-${accessibilityFindingsMore?.accessibilityTellUsMore || ''}
-
 ## Links
-
-<a href="${accessibilityFindingsMore?.prototypeUrl || ''}" target="_blank" rel="noopener noreferrer">Prototype example (opens in a new tab)</a>
 
 ## Thing to consider
 

@@ -17,27 +17,13 @@ const mojFilters = require('./src/moj/filters/all')
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
-  /*
-   * If the node env is 'dev' then we include the src dir allowing components
-   * under development to be watched and loaded
-   */
-  const templatePaths =
-    process.env.ENV === 'dev'
-      ? [
-          '.',
-          'src',
-          'docs/_includes/',
-          'node_modules/govuk-frontend/dist/',
-          'node_modules/@ministryofjustice/frontend/'
-        ]
-      : [
-          '.',
-          'docs/_includes/',
-          'node_modules/govuk-frontend/dist/',
-          'node_modules/@ministryofjustice/frontend/'
-        ]
 
-  const nunjucksEnv = nunjucks.configure(templatePaths)
+  const nunjucksEnv = nunjucks.configure([
+    '.',
+    'src',
+    'docs/_includes/',
+    'node_modules/govuk-frontend/dist/'
+  ])
 
   Object.entries({
     ...eleventyConfig.nunjucksFilters,
@@ -153,19 +139,20 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addShortcode('contentsList', function (itemsJson = '') {
     try {
-      const items = JSON.parse(itemsJson);
+      const items = JSON.parse(itemsJson)
       return `
         <aside class="part-navigation-container" role="complementary">
           <nav class="govuk-!-margin-bottom-4">
             <h2 class="gem-c-contents-list__title">Contents</h2>
             <ol class="gem-c-contents-list__list">
               ${items
-                .map((item) => item.href 
-                  ? `<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+                .map((item) =>
+                  item.href
+                    ? `<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
                        <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
                        <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="${item.href}">${item.text}</a>
                      </li>`
-                  : `<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
+                    : `<li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
                        <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
                        ${item.text}
                      </li>`
@@ -174,13 +161,12 @@ module.exports = function (eleventyConfig) {
             </ol>
           </nav>
         </aside>
-      `.trim();
+      `.trim()
     } catch (error) {
       console.error('Error in form shortcode:', error)
-      return `<div>Error loading list: ${list}</div>`
+      return `<div>Error loading list: ${itemsJson}</div>`
     }
-  });
-  
+  })
 
   eleventyConfig.addShortcode(
     'dateInCurrentMonth',

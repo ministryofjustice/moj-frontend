@@ -5,13 +5,14 @@ export default class CollapsibleNav extends HTMLElement {
       this.id = `nav-${Date.now()}`
     }
 
-    this.collapsibleItems = this.querySelectorAll('li:has(ul)')
-
     this.collapsibleItems.forEach(($item, index) => {
       const $link = $item.querySelector('a')
       const $list = $item.querySelector('ul')
-      const $button = document.createElement('button')
 
+      if (!$list) return
+      if (!$link) return
+
+      const $button = document.createElement('button')
       if (!$list.id) {
         $list.id = `${this.id}-collapsible-nav-${index}`
       }
@@ -83,6 +84,14 @@ export default class CollapsibleNav extends HTMLElement {
   }
 
   get openItems() {
-    return this.querySelectorAll(`li:has(ul).${this.openClass}`)
+    return this.collapsibleItems.filter((el) => {
+      return el.classList.contains(this.openClass)
+    })
+  }
+
+  get collapsibleItems() {
+    return Array.from(this.querySelectorAll('li')).filter((el) => {
+      return el.querySelector('ul')
+    })
   }
 }

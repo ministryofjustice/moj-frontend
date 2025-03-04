@@ -5,7 +5,6 @@ title: Community collaboration
 redirect_from: /community/add-new-component
 eleventyNavigation:
   key: Add a new component
-  parent: Get involved
   order: 40
   excerpt: "All new components submitted..."
 ---

@@ -1,9 +1,25 @@
-$govuk-suppressed-warnings: ("govuk-typography-scale-14");
+// Declare all settings
+@forward "settings/all";
 
-@import "node_modules/govuk-frontend/dist/govuk/base";
+// Use settings for overrides
+@use "settings/all" as *;
 
-@import "settings/all";
-@import "helpers/all";
-@import "objects/all";
-@import "components/all";
-@import "utilities/all";
+// GOV.UK Frontend with settings
+@forward "vendor/govuk-frontend/base" with (
+  // Assets override
+  $govuk-assets-path: $moj-assets-path,
+  $govuk-images-path: $moj-images-path,
+
+  // Measurements override
+  $govuk-gutter: $moj-gutter,
+  $govuk-page-width: $moj-page-width,
+
+  // Typography override
+  $govuk-font-family: $moj-font-family,
+  $govuk-include-default-font-face: $moj-include-default-font-face
+);
+
+@forward "helpers/all";
+@forward "objects/all";
+@forward "components/all";
+@forward "utilities/all";

@@ -16,36 +16,29 @@ const config = {
     'component-details': {},
     'component-image': {},
     'accessibility-findings': {},
-    'add-external-audit': { '/accessibility-findings': {hasComponentBeenTestedExternalAccessibility: 'yes' } },
-    'add-internal-audit': { '/accessibility-findings': {hasComponentBeenTestedInternalAudit: 'yes'} },
-    'add-assistive-tech': { '/accessibility-findings': {hasComponentBeenTestedUsingAssistiveTechnology: 'yes'}},
-    'prototype': {},
-    'prototype-url': { '/prototype': {componentPrototypeUrl: 'yes'} },
-    'figma': {},
-    'figma-link': { '/figma': {figmaUrl: 'yes'} },
-    'component-code': {},
-    'component-code-details': { '/component-code': {componentCodeAvailable: 'yes' } },
-    'your-details': {},
-    'check-your-answers': {}
-  },
-  COMPONENT_FORM_HIDDEN_FIELDS: {
     'add-external-audit': {
-      '/accessibility-findings': [
-        'hasComponentBeenTestedInternalAudit',
-        'hasComponentBeenTestedUsingAssistiveTechnology'
-      ]
+      '/accessibility-findings': {
+        hasComponentBeenTestedExternalAccessibility: 'yes'
+      }
     },
     'add-internal-audit': {
-      '/accessibility-findings': [
-        'hasComponentBeenTestedInternalAudit',
-        'hasComponentBeenTestedUsingAssistiveTechnology'
-      ]
+      '/accessibility-findings': { hasComponentBeenTestedInternalAudit: 'yes' }
     },
     'add-assistive-tech': {
-      '/accessibility-findings': [
-        'hasComponentBeenTestedUsingAssistiveTechnology'
-      ]
-    }
+      '/accessibility-findings': {
+        hasComponentBeenTestedUsingAssistiveTechnology: 'yes'
+      }
+    },
+    prototype: {},
+    'prototype-url': { '/prototype': { componentPrototypeUrl: 'yes' } },
+    figma: {},
+    'figma-link': { '/figma': { figmaUrl: 'yes' } },
+    'component-code': {},
+    'component-code-details': {
+      '/component-code': { componentCodeAvailable: 'yes' }
+    },
+    'your-details': {},
+    'check-your-answers': {}
   },
   COMPONENT_FORM_PAGES_OPTIONS: {
     'accessibility-findings': {
@@ -101,7 +94,26 @@ const config = {
     }
   },
   ADD_NEW_COMPONENT_ROUTE: '/get-involved/add-new-component',
-  MAX_ADD_ANOTHER: 10
+  MAX_ADD_ANOTHER: 10,
+  ACRONYMS_TO_UPPERCASE: ['url'],
+  CHECK_YOUR_ANSWERS_LABEL_MAPPING: {
+    componentOverview: 'Component description',
+    howIsTheComponentUsed: 'How the component is being used in your service',
+    accessibilityReport: 'Audit report',
+    externalOrganisation: 'External accessibility audit supplier',
+    internalOrganisation: 'Internal accessibility audit supplier',
+    issuesDiscovered: 'Issues discovered during the audit',
+    prototypeUrl: 'Prototype link',
+    prototypeUrlAdditionalInformation: 'Additional information',
+    componentCode: 'Code',
+    componentCodeUsage: 'Code usage',
+    componentCodeLanguage: 'Code language',
+    figmaLink: 'Prototype link',
+    figmaLinkAdditionalInformation: 'Additional information',
+    shareYourDetails: 'Share your details on the component page'
+  },
+  NOTIFY_EMAIL_RETRY_MS: process.env.NOTIFY_EMAIL_RETRY_MS || 5000,
+  NOTIFY_EMAIL_MAX_RETRIES: process.env.NOTIFY_EMAIL_MAX_RETRIES || 5
 }
 
 module.exports = config

@@ -36,6 +36,8 @@
         value: formData.accessibilityTellUsMore
       }) }}
 
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+
       <div class="moj-button-action">
         {{ govukButton({
           text: 'Continue'

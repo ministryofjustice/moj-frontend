@@ -1,48 +1,69 @@
+const { readFileSync } = require('fs')
+
+const { glob } = require('glob')
 const gulp = require('gulp')
-const concat = require('gulp-concat')
-const rename = require('gulp-rename')
-const uglify = require('gulp-uglify')
-const umd = require('gulp-umd')
 
-gulp.task('build:javascript', () => {
-  return gulp
-    .src([
-      'src/moj/namespace.js',
-      'src/moj/helpers.js',
-      'src/moj/all.js',
-      'src/moj/version.js',
-      'src/moj/components/**/!(*.spec).js'
-    ])
-    .pipe(concat('all.js'))
-    .pipe(
-      umd({
-        exports: function () {
-          return 'MOJFrontend'
+const { compileScripts } = require('./tasks/scripts')
+
+gulp.task('build:javascript', async () => {
+  const modulePaths = await glob('moj/components/**/*.{cjs,js,mjs}', {
+    cwd: 'src',
+    ignore: ['**/*.spec.{cjs,js,mjs}'],
+    nodir: true
+  })
+
+  // Create Rollup bundle(s)
+  for (const modulePath of [
+    ...modulePaths,
+
+    // Build entry scripts last to restore modules
+    // removed from components due to tree-shaking
+    'moj/version.mjs',
+    'moj/helpers.mjs',
+    'moj/all.mjs'
+  ]) {
+    await compileScripts(modulePath, {
+      srcPath: 'src',
+      destPath: 'package',
+
+      // Customise output
+      output: [
+        {
+          entryFileNames: '[name].mjs',
+          preserveModules: true,
+          preserveModulesRoot: 'src'
         },
-        namespace: function () {
-          return 'MOJFrontend'
+        {
+          file: modulePath.replace('.mjs', '.js'),
+          format: 'umd',
+          name: 'MOJFrontend'
         }
-      })
-    )
-    .pipe(gulp.dest('package/moj/'))
+      ]
+    })()
+  }
 })
 
-gulp.task('build:javascript-minified', () => {
-  return gulp
-    .src('package/moj/all.js')
-    .pipe(uglify())
-    .pipe(rename('moj-frontend.min.js'))
-    .pipe(gulp.dest('package/moj'))
-})
+gulp.task(
+  'build:javascript-minified',
+  compileScripts('all.mjs', {
+    srcPath: 'src/moj',
+    destPath: 'package/moj',
 
-gulp.task('build:javascript-minified-with-jquery', () => {
-  return gulp
-    .src([
-      'node_modules/jquery/dist/jquery.js',
-      'gulp/jquery/scope.js',
-      'package/moj/all.js'
-    ])
-    .pipe(concat('all.jquery.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('package/moj/'))
-})
+    // Customise output
+    output: [
+      {
+        compact: true,
+        file: 'moj-frontend.min.js',
+        format: 'umd',
+        name: 'MOJFrontend'
+      },
+      {
+        banner: readFileSync('node_modules/jquery/dist/jquery.js', 'utf8'),
+        compact: true,
+        file: 'all.jquery.min.js',
+        format: 'umd',
+        name: 'MOJFrontend'
+      }
+    ]
+  })
+)

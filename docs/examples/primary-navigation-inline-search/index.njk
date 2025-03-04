@@ -8,33 +8,33 @@ title: Primary navigation with inline search (example)
 
 {%- set inlineSearchHtml %}
   {{ mojSearch({
-    classes: 'moj-search--ondark moj-search--inline',
+    classes: "moj-search--ondark moj-search--inline",
     input: {
-      id: 'search-1',
-      name: 'search-1'
+      id: "search-1",
+      name: "search-1"
     },
     label: {
-      text: 'Search',
-      classes: 'govuk-visually-hidden'
+      text: "Search",
+      classes: "govuk-visually-hidden"
     },
     button: {
-      text: 'Search'
+      text: "Search"
     }
   }) }}
 {% endset -%}
 
 {{ mojPrimaryNavigation({
-  label: 'Primary navigation',
+  label: "Primary navigation",
   items: [{
-    text: 'Nav item 1',
-    href: '#1',
+    text: "Nav item 1",
+    href: "#1",
     active: true
   }, {
-    text: 'Nav item 2',
-    href: '#2'
+    text: "Nav item 2",
+    href: "#2"
   }, {
-    text: 'Nav item 3',
-    href: '#3'
+    text: "Nav item 3",
+    href: "#3"
   }],
   searchHtml: inlineSearchHtml
 }) }}

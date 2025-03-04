@@ -1,6 +1,6 @@
 {%- from "moj/components/button-menu/macro.njk" import mojButtonMenu %}
 {% from "govuk/macros/attributes.njk" import govukAttributes %}
-<div class="moj-identity-bar {{- ' ' + params.classes if params.classes}}" {{- govukAttributes(params.attributes) -}}>
+<div class="moj-identity-bar {{- " " + params.classes if params.classes}}" {{- govukAttributes(params.attributes) -}}>
     <div class="moj-identity-bar__container">
         <div class="moj-identity-bar__details">
             {% if params.title %}

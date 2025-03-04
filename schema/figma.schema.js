@@ -5,7 +5,8 @@ const schema = Joi.object({
     .required()
     .label('Do you have a Figma design file for the component?')
     .messages({
-      'any.required': 'Select yes if you have a Figma design file for the component'
+      'any.required':
+        'Select yes if you have a Figma design file for the component'
     })
 })
 

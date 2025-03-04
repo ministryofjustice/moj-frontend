@@ -1,3 +1,5 @@
+@use "../govuk-frontend" as *;
+
 /* ==========================================================================
    #MASTHEAD
    ========================================================================== */
@@ -7,6 +9,11 @@ $brand-colour: #220051;
 .app-masthead {
   color: govuk-colour("white");
   background-color: $brand-colour;
+  @include govuk-media-query($from: desktop) {
+    .app-layout__content {
+      padding-right: 130px;
+    }
+  }
 }
 
 .app-masthead p,

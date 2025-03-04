@@ -107,7 +107,9 @@
         value: formData.shareYourDetails
       }) }}
 
-        <div class="moj-button-action">
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+
+      <div class="moj-button-action">
             {{ govukButton({
                 text: 'Continue'
             }) }}

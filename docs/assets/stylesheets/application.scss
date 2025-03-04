@@ -1,38 +1,34 @@
-$moj-page-width: 1220px !default;
-$govuk-page-width: 1220px !default;
-$moj-assets-path: "../" !default;
-$govuk-assets-path: "../" !default;
-$govuk-suppressed-warnings: ("govuk-typography-scale-14");
-
 // GOV.UK Frontend
-@import "node_modules/govuk-frontend/dist/govuk";
+@use "govuk-frontend" as *;
 
 // MOJ Frontend
-@import "src/moj/all";
+@forward "moj-frontend" with (
+  $moj-assets-path: $govuk-assets-path,
+  $moj-page-width: $govuk-page-width
+);
 
 // highlight.js
-@import "node_modules/highlight.js/scss/github";
+@forward "highlight.js/scss/github";
 
 // Custom documentation components
-@import "./components/accordions";
-@import "./components/back-to-top";
-@import "./components/cookie-banner";
-@import "./components/copy-button";
-@import "./components/example";
-@import "./components/layout";
-@import "./components/prose";
-@import "./components/masthead";
-@import "./components/panel";
-@import "./components/tabs";
-@import "./components/header";
-@import "./components/footer";
-@import "./components/vertical-nav";
-@import "./components/page";
-@import "./components/menu-toggle";
-@import "./components/app-card";
-@import "./components/status";
-@import "./components/documentation_tabs";
-@import "./components/contents_list";
+@forward "components/accordions";
+@forward "components/back-to-top";
+@forward "components/cookie-banner";
+@forward "components/copy-button";
+@forward "components/example";
+@forward "components/layout";
+@forward "components/prose";
+@forward "components/masthead";
+@forward "components/tabs";
+@forward "components/header";
+@forward "components/footer";
+@forward "components/vertical-nav";
+@forward "components/page";
+@forward "components/menu-toggle";
+@forward "components/app-card";
+@forward "components/status";
+@forward "components/documentation_tabs";
+@forward "components/contents_list";
 
 @view-transition {
   navigation: auto;

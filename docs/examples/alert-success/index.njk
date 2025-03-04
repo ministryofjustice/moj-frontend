@@ -1,0 +1,15 @@
+---
+layout: layouts/example.njk
+title: Alert (example)
+arguments: alert
+figma_link: https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=66-5802
+---
+
+{%- from "moj/components/alert/macro.njk" import mojAlert -%}
+
+{{ mojAlert({
+  variant: "success",
+  title: "Upload successful",
+  dismissible: false,
+  html: '<a href="#">Scan1.jpg</a> uploaded successfully.'
+}) }}

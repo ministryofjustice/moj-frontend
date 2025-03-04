@@ -1,6 +1,6 @@
-# Currency input
+# Currency input (Archived)
 
-- [Guidance](https://design-patterns.service.justice.gov.uk/components/currency-input)
+- [Guidance](https://design-patterns.service.justice.gov.uk/archive/currency-input)
 
 ## Dependencies
 

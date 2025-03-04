@@ -1,5 +1,5 @@
 const validateSession = (req, res, next) => {
-  //todo validate structure of session
+  // todo validate structure of session
   next()
 }
 

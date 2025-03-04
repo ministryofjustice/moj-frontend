@@ -7,7 +7,7 @@ const schema = Joi.object({
     .messages({
       'any.required': 'Select yes if you have code for the component',
       'string.empty': 'Select yes if you have code for the component'
-    }),
+    })
 })
 
 module.exports = schema

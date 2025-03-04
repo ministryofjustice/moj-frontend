@@ -1,0 +1,40 @@
+{% from "govuk/macros/attributes.njk" import govukAttributes -%}
+{% from "macros/status-tag/macro.njk" import statusTag -%}
+
+{% set classes = params.classes if params.classes else "" -%}
+
+{% switch params.size -%}
+  {% case "small" %}
+    {% set captionClass = "govuk-caption-s" %}
+    {% set headingClass = "govuk-heading-s" %}
+    {% set headingLevel = params.level if params.level else 4 %}
+  {% case "medium" %}
+    {% set captionClass = "govuk-caption-m" %}
+    {% set headingClass = "govuk-heading-m" %}
+    {% set headingLevel = params.level if params.level else 3 %}
+  {% case "large" %}
+    {% set captionClass = "govuk-caption-l" %}
+    {% set headingClass = "govuk-heading-l" %}
+    {% set headingLevel = params.level if params.level else 2 %}
+  {% default %}
+    {% set captionClass = "govuk-caption-xl" %}
+    {% set headingClass = "govuk-heading-xl" %}
+    {% set headingLevel = params.level if params.level else 1 %}
+{%- endswitch -%}
+
+{%- if params.statusTag -%}
+  {% set classes = classes ~ " govuk-!-display-inline-block govuk-!-margin-bottom-2" %}
+{%- endif -%}
+
+{% if params.caption -%}
+  <span class="{{ captionClass }}">{{ params.caption }}</span>
+{% endif -%}
+
+<h{{ headingLevel }} class="{{ headingClass }} {%- if classes %} {{ classes }}{% endif %}"
+  {{- govukAttributes(params.attributes) }}>
+  {{ caller() if caller else (params.html | safe | trim | indent(2) if params.html else params.text) }}
+</h{{ headingLevel }}>
+
+{% if params.statusTag -%}
+  {{ statusTag(params.statusTag) }}
+{% endif -%}
