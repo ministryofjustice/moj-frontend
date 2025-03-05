@@ -75,7 +75,7 @@ const validateFormData = (req, res, next) => {
       errorList,
       backLink: req?.backLink || false,
       addAnother: req?.params?.subpage || 1,
-      showAddAnother: !!req?.body?.addAnother,
+      showAddAnother: 'addAnother' in (req.body || {}),
       skipQuestion: req?.skipQuestion || false,
       csrfToken: req?.session?.csrfToken
     })
