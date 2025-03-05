@@ -40,11 +40,11 @@ module.exports = {
   '/prototype-url': {
     prototypeUrl: 'https://www.lipsum.com/feed/html',
     prototypeUrlAdditionalInformation:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porttitor, turpis eu congue semper, felis purus blandit purus, eu finibus dui orci et augue. Vestibulum nec dignissim ante. Sed vehicula sagittis nunc, sed iaculis lorem. Quisque quis lorem non lorem ornare venenatis. Morbi luctus, enim et tincidunt pellentesque, ante justo venenatis nisl, rhoncus lobortis quam nunc in lectus. Nam consectetur sapien sem, quis laoreet mi dapibus sit amet. Nullam consectetur erat ut diam luctus posuere. Duis vulputate turpis vitae magna commodo pharetra. Sed varius pulvinar sapien, nec tempus ante pulvinar sit amet. Sed mauris tortor, dictum tristique aliquam vestibulum, porta et justo.\r\n\r\n'
+      'First link'
   },
   '/prototype-url/1': {
     prototypeUrl: 'https://www.lipsum.com/feed/html',
-    prototypeUrlAdditionalInformation: ''
+    prototypeUrlAdditionalInformation: 'Prototype link 1'
   },
   '/component-code': {
     componentCodeAvailable: 'yes'
@@ -67,7 +67,7 @@ module.exports = {
   },
   '/figma-link': {
     figmaLink: 'http://link.com',
-    figmaLinkAdditionalInformation: 'Nothing'
+    figmaLinkAdditionalInformation: 'only link'
   },
   '/component-code-details/1': {
     componentCodeLanguage: 'CSS',

@@ -41,7 +41,7 @@ const validateFormData = (req, res, next) => {
   const body = extractBody(req?.url, { ...req.body })
   delete body._csrf
   const { error, value } = schema.validate(body, { abortEarly: false })
-  const dateFields = ['auditDate']
+  const dateFields = ['auditDate', 'testingDate']
 
   if (error) {
     console.error('Validation error:', error.details)

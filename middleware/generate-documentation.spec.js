@@ -32,6 +32,29 @@ describe('generateMarkdown', () => {
       '/your-details': {
         fullName: 'Test User',
         emailAddress: 'test@test.com'
+      },
+      '/add-external-audit': {
+        externalOrganisation: 'External Org',
+        'auditDate-day': '1',
+        'auditDate-month': '1',
+        'auditDate-year': '2022',
+        issuesDiscovered: 'Some issues discovered.',
+        accessibilityReport: 'external-report.pdf'
+      },
+      '/add-internal-audit': {
+        internalOrganisation: 'Internal Org',
+        'auditDate-day': '2',
+        'auditDate-month': '2',
+        'auditDate-year': '2022',
+        issuesDiscovered: 'Some internal issues discovered.',
+        accessibilityReport: 'internal-report.pdf'
+      },
+      '/add-assistive-tech': {
+        'testingDate-day': '3',
+        'testingDate-month': '3',
+        'testingDate-year': '2022',
+        issuesDiscovered: 'Assistive tech issues discovered.',
+        accessibilityReport: 'assistive-tech-report.pdf'
       }
     }
 
@@ -44,7 +67,10 @@ describe('generateMarkdown', () => {
       '/component-details': {},
       '/component-code-details': {},
       '/additional-information': {},
-      '/your-details': {}
+      '/your-details': {},
+      '/add-external-audit': {},
+      '/add-internal-audit': {},
+      '/add-assistive-tech': {}
     }
 
     const result = generateMarkdown(mockData)
@@ -70,6 +96,29 @@ describe('generateMarkdown', () => {
       '/your-details': {
         fullName: 'Another User',
         emailAddress: 'another@test.com'
+      },
+      '/add-external-audit': {
+        externalOrganisation: 'External Org',
+        'auditDate-day': '1',
+        'auditDate-month': '1',
+        'auditDate-year': '2022',
+        issuesDiscovered: 'Some issues discovered.',
+        accessibilityReport: 'external-report.pdf'
+      },
+      '/add-internal-audit': {
+        internalOrganisation: 'Internal Org',
+        'auditDate-day': '2',
+        'auditDate-month': '2',
+        'auditDate-year': '2022',
+        issuesDiscovered: 'Some internal issues discovered.',
+        accessibilityReport: 'internal-report.pdf'
+      },
+      '/add-assistive-tech': {
+        'testingDate-day': '3',
+        'testingDate-month': '3',
+        'testingDate-year': '2022',
+        issuesDiscovered: 'Assistive tech issues discovered.',
+        accessibilityReport: 'assistive-tech-report.pdf'
       }
     }
 
@@ -96,6 +145,29 @@ describe('generateMarkdown', () => {
       '/your-details': {
         fullName: 'Special User',
         emailAddress: 'special@test.com'
+      },
+      '/add-external-audit': {
+        externalOrganisation: 'External Org',
+        'auditDate-day': '1',
+        'auditDate-month': '1',
+        'auditDate-year': '2022',
+        issuesDiscovered: 'Some issues discovered.',
+        accessibilityReport: 'external-report.pdf'
+      },
+      '/add-internal-audit': {
+        internalOrganisation: 'Internal Org',
+        'auditDate-day': '2',
+        'auditDate-month': '2',
+        'auditDate-year': '2022',
+        issuesDiscovered: 'Some internal issues discovered.',
+        accessibilityReport: 'internal-report.pdf'
+      },
+      '/add-assistive-tech': {
+        'testingDate-day': '3',
+        'testingDate-month': '3',
+        'testingDate-year': '2022',
+        issuesDiscovered: 'Assistive tech issues discovered.',
+        accessibilityReport: 'assistive-tech-report.pdf'
       }
     }
 
@@ -108,7 +180,10 @@ describe('generateMarkdown', () => {
       '/component-details': {},
       '/component-code-details': {},
       '/additional-information': {},
-      '/your-details': {}
+      '/your-details': {},
+      '/add-external-audit': {},
+      '/add-internal-audit': {},
+      '/add-assistive-tech': {}
     }
 
     const result = generateMarkdown(mockData)
