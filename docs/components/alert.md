@@ -50,7 +50,7 @@ If you want to add your message to the body copy or do not want a coloured borde
 
 #### When not to use
 
-Do not want use this component for a serious issue or to prevent something going wrong. Use the warning alert for this.
+Do not use this component for a serious issue or to prevent something going wrong. Use the warning alert for this.
 
 ### Warning alert
 
