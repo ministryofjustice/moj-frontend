@@ -11,7 +11,8 @@ const generateMarkdown = (data) => {
     .replace(/[^a-z0-9-]/g, '-')
   const filename = `${documentationDirectory}/${sanitizedComponentName}.md`
   const generateLinksSection = (data) => {
-    const noLinks = 'No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.\n'
+    const noLinks =
+      'No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.\n'
 
     let content = ''
     let prototypeContent = ''
@@ -52,8 +53,10 @@ ${figma?.figmaLinkAdditionalInformation || ''}
   }
 
   const generateAccessibilityReportSection = (data) => {
-    const contentHeading = 'If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.\n'
-    const noContent = 'No accessibility findings have been contributed for this component.\n'
+    const contentHeading =
+      'If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.\n'
+    const noContent =
+      'No accessibility findings have been contributed for this component.\n'
     let content = ''
     const externalAudit = data['/add-external-audit']
     const internalAudit = data['/add-internal-audit']
@@ -67,7 +70,11 @@ ${figma?.figmaLinkAdditionalInformation || ''}
     }
 
     if (externalAudit && externalAudit.externalOrganisation) {
-      const auditDate = formatDate(externalAudit['auditDate-day'], externalAudit['auditDate-month'], externalAudit['auditDate-year'])
+      const auditDate = formatDate(
+        externalAudit['auditDate-day'],
+        externalAudit['auditDate-month'],
+        externalAudit['auditDate-year']
+      )
       if (auditDate) {
         content += `### External audit (${externalAudit.externalOrganisation}) - ${auditDate}\n`
         if (externalAudit.issuesDiscovered) {
@@ -80,7 +87,11 @@ ${figma?.figmaLinkAdditionalInformation || ''}
     }
 
     if (internalAudit && internalAudit.internalOrganisation) {
-      const auditDate = formatDate(internalAudit['auditDate-day'], internalAudit['auditDate-month'], internalAudit['auditDate-year'])
+      const auditDate = formatDate(
+        internalAudit['auditDate-day'],
+        internalAudit['auditDate-month'],
+        internalAudit['auditDate-year']
+      )
       if (auditDate) {
         content += `### Internal audit (${internalAudit.internalOrganisation}) - ${auditDate}\n`
         if (internalAudit.issuesDiscovered) {
@@ -93,7 +104,11 @@ ${figma?.figmaLinkAdditionalInformation || ''}
     }
 
     if (assistiveTech) {
-      const testingDate = formatDate(assistiveTech['testingDate-day'], assistiveTech['testingDate-month'], assistiveTech['testingDate-year'])
+      const testingDate = formatDate(
+        assistiveTech['testingDate-day'],
+        assistiveTech['testingDate-month'],
+        assistiveTech['testingDate-year']
+      )
       if (testingDate) {
         content += `### Assistive Technology audit - ${testingDate}\n`
         if (assistiveTech.issuesDiscovered) {
@@ -105,11 +120,12 @@ ${figma?.figmaLinkAdditionalInformation || ''}
       }
     }
 
-    return content ? (contentHeading + content) : noContent
+    return content ? contentHeading + content : noContent
   }
 
   const generateComponentCodeSection = (data) => {
-    const noCode = 'No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.\n'
+    const noCode =
+      'No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.\n'
 
     let content = ''
     let n = 1

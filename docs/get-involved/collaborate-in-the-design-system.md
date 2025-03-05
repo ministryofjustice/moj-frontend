@@ -93,6 +93,3 @@ You should:
 The more developed a building block is, the better the chance other users will consider using it in their own service if it can help them solve a problem. However, until they receive an "Official" status, they're only to be used in alpha and beta project phases.
 
 [Go to the Ministry of Justice GitHub page]()
-
-
-

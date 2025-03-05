@@ -39,8 +39,7 @@ module.exports = {
   },
   '/prototype-url': {
     prototypeUrl: 'https://www.lipsum.com/feed/html',
-    prototypeUrlAdditionalInformation:
-      'First link'
+    prototypeUrlAdditionalInformation: 'First link'
   },
   '/prototype-url/1': {
     prototypeUrl: 'https://www.lipsum.com/feed/html',
