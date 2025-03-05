@@ -1,7 +1,8 @@
+/* eslint-disable prefer-template */
 const moment = require('moment')
 
 const generateMarkdown = (data) => {
-  const { '/component-details': details, '/your-details': yourDetails } = data
+  const { '/component-details': details } = data
 
   const documentationDirectory = 'component/documentation'
   const componentName = details?.componentName || 'unknown-component'
@@ -9,13 +10,6 @@ const generateMarkdown = (data) => {
     .toLowerCase()
     .replace(/[^a-z0-9-]/g, '-')
   const filename = `${documentationDirectory}/${sanitizedComponentName}.md`
-  const today = new Date()
-  const formattedDate = today.toLocaleDateString('en-GB', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric'
-  })
-
   const generateLinksSection = (data) => {
     const noLinks = 'No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.\n'
 
