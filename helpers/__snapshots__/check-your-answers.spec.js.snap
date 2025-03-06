@@ -24,7 +24,7 @@ exports[`checkYourAnswers function should handle missing session fields graceful
       "actions": {
         "items": [
           {
-            "href": "/get-involved/add-new-component/component-code",
+            "href": "/contribution/add-new-component/component-code",
             "text": "Change",
             "visuallyHiddenText": "Component Code - Code",
           },
@@ -46,7 +46,7 @@ exports[`checkYourAnswers function should handle missing session fields graceful
       "actions": {
         "items": [
           {
-            "href": "/get-involved/add-new-component/prototype",
+            "href": "/contribution/add-new-component/prototype",
             "text": "Change",
             "visuallyHiddenText": "Prototype - Data",
           },
@@ -88,7 +88,7 @@ exports[`checkYourAnswers function should transform session data into the expect
       "actions": {
         "items": [
           {
-            "href": "/get-involved/add-new-component/component-code",
+            "href": "/contribution/add-new-component/component-code",
             "text": "Change",
             "visuallyHiddenText": "Component Code - Code",
           },
@@ -105,7 +105,7 @@ exports[`checkYourAnswers function should transform session data into the expect
       "actions": {
         "items": [
           {
-            "href": "/get-involved/add-new-component/component-code",
+            "href": "/contribution/add-new-component/component-code",
             "text": "Change",
             "visuallyHiddenText": "Component Code - Language",
           },
@@ -122,12 +122,12 @@ exports[`checkYourAnswers function should transform session data into the expect
       "actions": {
         "items": [
           {
-            "href": "/get-involved/add-new-component/remove/component-code-details",
+            "href": "/contribution/add-new-component/remove/component-code-details",
             "text": "Remove",
             "visuallyHiddenText": "Component Code Details - Detail",
           },
           {
-            "href": "/get-involved/add-new-component/component-code-details",
+            "href": "/contribution/add-new-component/component-code-details",
             "text": "Change",
             "visuallyHiddenText": "Component Code Details - Detail",
           },
@@ -147,12 +147,12 @@ exports[`checkYourAnswers function should transform session data into the expect
       "actions": {
         "items": [
           {
-            "href": "/get-involved/add-new-component/remove/component-image",
+            "href": "/contribution/add-new-component/remove/component-image",
             "text": "Remove",
             "visuallyHiddenText": "Component Image - Image",
           },
           {
-            "href": "/get-involved/add-new-component/component-image",
+            "href": "/contribution/add-new-component/component-image",
             "text": "Change",
             "visuallyHiddenText": "Component Image - Image",
           },
@@ -172,7 +172,7 @@ exports[`checkYourAnswers function should transform session data into the expect
       "actions": {
         "items": [
           {
-            "href": "/get-involved/add-new-component/prototype",
+            "href": "/contribution/add-new-component/prototype",
             "text": "Change",
             "visuallyHiddenText": "Prototype - Data",
           },
@@ -189,12 +189,12 @@ exports[`checkYourAnswers function should transform session data into the expect
       "actions": {
         "items": [
           {
-            "href": "/get-involved/add-new-component/remove/prototype-url",
+            "href": "/contribution/add-new-component/remove/prototype-url",
             "text": "Remove",
             "visuallyHiddenText": "Prototype Url - Url",
           },
           {
-            "href": "/get-involved/add-new-component/prototype-url",
+            "href": "/contribution/add-new-component/prototype-url",
             "text": "Change",
             "visuallyHiddenText": "Prototype Url - Url",
           },
@@ -213,7 +213,7 @@ exports[`checkYourAnswers function should transform session data into the expect
       "actions": {
         "items": [
           {
-            "href": "/get-involved/add-new-component/your-details",
+            "href": "/contribution/add-new-component/your-details",
             "text": "Change",
             "visuallyHiddenText": "Your Details - Name",
           },
@@ -230,7 +230,7 @@ exports[`checkYourAnswers function should transform session data into the expect
       "actions": {
         "items": [
           {
-            "href": "/get-involved/add-new-component/your-details",
+            "href": "/contribution/add-new-component/your-details",
             "text": "Change",
             "visuallyHiddenText": "Your Details - Email",
           },
