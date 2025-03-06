@@ -15,7 +15,7 @@ const nunjucks = require('nunjucks')
 // Configure rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 200, // Limit each IP to 200 requests per windowMs
+  max: 600, // Limit each IP to 200 requests per windowMs
   standardHeaders: true,
   legacyHeaders: false
 })
