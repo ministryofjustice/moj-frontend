@@ -44,11 +44,13 @@ The information alert can tell a user about:
 - a major change to a service, until it becomes familiar
 - service downtime
 
-The information alert can be combined with other alert variants. For linear services, or to display the 'Important' heading, use the <a href="https://design-system.service.gov.uk/components/notification-banner">GOV.UK notification banner component</a>.
+The information alert can be combined with other alert variants. For linear services, or to display the 'Important' heading, use the [GOV.UK notification banner component](https://design-system.service.gov.uk/components/notification-banner/).
+
+If you want to add your message to the body copy or do not want a coloured border and icon, use the [GOV.UK inset text component](https://design-system.service.gov.uk/components/inset-text/).
 
 #### When not to use
 
-Do not want use this component for a serious issue or to prevent something going wrong. Use the warning alert for this.
+Do not use this component for a serious issue or to prevent something going wrong. Use the warning alert for this.
 
 ### Warning alert
 
