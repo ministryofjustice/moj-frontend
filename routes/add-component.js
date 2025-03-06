@@ -6,6 +6,7 @@ const multer = require('multer')
 const { COMPONENT_FORM_PAGES, ADD_NEW_COMPONENT_ROUTE } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const checkYourAnswers = require('../helpers/check-your-answers')
+const getPrTitleAndDescription = require('../helpers/get-pr-title-and-description')
 const sessionData = require('../helpers/mockSessionData/sessionData.js')
 const { urlToTitleCase } = require('../helpers/text-helper')
 const {
@@ -209,8 +210,7 @@ router.post(
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/confirmation`)
     })
     const branchName = await pushToGitHub(session)
-    const title = 'test title'
-    const description = 'test description'
+    const { title, description } = getPrTitleAndDescription(session)
     const pr = await createPullRequest(branchName, title, description)
     await sendPrEmail(pr)
   }
