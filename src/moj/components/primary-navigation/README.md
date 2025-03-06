@@ -4,7 +4,7 @@
 
 ## Example
 
-```
+```njk
 {{ mojPrimaryNavigation({
   label: 'Primary navigation',
   items: [{

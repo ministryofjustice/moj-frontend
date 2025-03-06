@@ -4,7 +4,7 @@
 
 ## Example
 
-```
+```njk
 {{ mojSideNavigation({
   label: 'Side navigation',
   items: [{

@@ -4,7 +4,7 @@
 
 ## Example
 
-```
+```njk
 {{ mojBadge({
   text: "Status text",
   classes: "moj-badge--blue"

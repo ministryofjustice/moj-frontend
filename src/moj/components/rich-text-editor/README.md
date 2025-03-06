@@ -4,12 +4,12 @@
 
 ## Example
 
-```
+```html
 <script>
   new MOJFrontend.RichTextEditor({
     textarea: $('.js-editor'),
     toolbar: { 'bold': true, 'italic': true, 'underline': true, 'bullets': true, 'numbers': true }
-  });
+  })
 </script>
 ```
 
