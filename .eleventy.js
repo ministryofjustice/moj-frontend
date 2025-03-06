@@ -48,7 +48,7 @@ module.exports = function (eleventyConfig) {
       typographer: true,
       quotes: '“”‘’',
       highlight: (str, language) =>
-        language ? hljs.highlight(str, { language }).value : str
+        hljs.highlight(str, { language: language || 'plaintext' }).value
     })
       .disable('code')
       .use(markdownItAnchor, {
