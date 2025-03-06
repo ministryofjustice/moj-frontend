@@ -48,8 +48,8 @@ When a file has been uploaded it will show as:
 
 The multi file upload component uses JavaScript. To run it you must include the following script in your page:
 
-```
-if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
+```js
+if (typeof MOJFrontend.MultiFileUpload !== 'undefined') {
   new MOJFrontend.MultiFileUpload({
     container: document.querySelector('.moj-multi-file-upload'),
     uploadUrl: '/ajax-upload-url',

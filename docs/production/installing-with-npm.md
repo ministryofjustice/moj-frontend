@@ -22,13 +22,13 @@ To use MoJ Frontend with npm you must:
 
 3. Install [jQuery](https://jquery.com/), which is required by the MoJ Frontend JavaScript
 
-```
+```shell
 npm install jquery --save
 ```
 
 1. If you want to use the MoJ Frontend Nunjucks macros, install Nunjucks - the minimum version required is 3.0.0.
 
-```
+```shell
 npm install nunjucks --save
 ```
 
@@ -36,7 +36,7 @@ npm install nunjucks --save
 
 To install, run:
 
-```
+```shell
 npm install --save @ministryofjustice/frontend
 ```
 

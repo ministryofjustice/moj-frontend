@@ -4,7 +4,7 @@
 
 ## Example
 
-```
+```njk
 {{ mojDatePicker({
   id: "appointment-date",
   name: "appointment-date"

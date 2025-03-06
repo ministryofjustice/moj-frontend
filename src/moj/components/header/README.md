@@ -4,7 +4,7 @@
 
 ## Examples
 
-```
+```njk
 {{ mojHeader({
   organisationLabel: {
     text: 'Organisation name',

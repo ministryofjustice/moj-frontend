@@ -8,7 +8,7 @@
 
 The macro
 
-```
+```njk
 {{ mojButtonGroup({
   items: [{
     text: 'Archive',
@@ -28,7 +28,7 @@ The macro
 
 The JavaScript
 
-```
+```js
 new MOJFrontend.ButtonGroup({
   container: $('.moj-button-group'),
   mq: '(min-width: 45em)',

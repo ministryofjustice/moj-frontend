@@ -4,7 +4,7 @@
 
 ## Example
 
-```
+```njk
 {{ mojSubNavigation({
   label: 'Sub navigation',
   items: [{

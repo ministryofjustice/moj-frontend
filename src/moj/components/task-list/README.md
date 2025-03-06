@@ -4,7 +4,7 @@
 
 ## Example
 
-```
+```njk
 {{ mojTaskList({
   sections: [
     {
