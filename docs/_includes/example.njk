@@ -62,11 +62,16 @@
   </div>
 
 {% if jsCode %}
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default-{{ id }}" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default-{{ id }}">
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default-{{ id }}" role="tabpanel" aria-labelledby="tab_js-default-{{ id }}">
+
+  <div data-module="app-copy" style="position:relative;">
 
 ```js
 {{ jsCode | safe }}
 ```
+
+  </div>
+
   </div>
 {% endif %}
 
