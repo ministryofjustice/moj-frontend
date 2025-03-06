@@ -59,17 +59,20 @@ EXPOSE 3000
 COPY docker/htpasswd /etc/nginx/.htpasswd
 COPY docker/nginx-staging.conf /etc/nginx/conf.d/default.conf
 COPY --from=staging-build /app/public /usr/share/nginx/html
+COPY robots.txt /usr/share/nginx/html
 
 FROM nginxinc/nginx-unprivileged:alpine AS preview
 EXPOSE 3000
 COPY docker/htpasswd-preview /etc/nginx/.htpasswd
 COPY docker/nginx-preview.conf /etc/nginx/conf.d/default.conf
 COPY --from=preview-build /app/public /usr/share/nginx/html
+COPY robots.txt /usr/share/nginx/html
 
 FROM nginxinc/nginx-unprivileged:alpine AS production
 EXPOSE 3000
 COPY docker/nginx-production.conf /etc/nginx/conf.d/default.conf
 COPY --from=production-build /app/public /usr/share/nginx/html
+COPY robots.txt /usr/share/nginx/html
 
 FROM base AS staging-express-app
 COPY package.json package-lock.json ./
