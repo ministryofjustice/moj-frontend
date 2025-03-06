@@ -1,0 +1,61 @@
+name: Sass
+
+on:
+  pull_request:
+
+jobs:
+  sass:
+    name: Dart Sass ${{ matrix.package-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        package-version:
+          # Release without major deprecations
+          - 1.77.6
+
+          # Release with `mixed-decls` deprecated
+          - 1.77.7
+
+          # Release with `import` deprecated
+          - 1.80.0
+
+          # Dart Sass latest major version
+          - latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install packages
+        run: |
+          npm install --global sass@${{ matrix.package-version }}
+          npm install --omit=dev
+          sass --version
+
+      - name: Check compilation
+        run: |
+          mkdir -p .tmp
+          time sass src/moj/all.scss --load-path . > .tmp/check.css
+
+      - name: Check load paths
+        run: |
+          mkdir -p .tmp
+          time sh -c 'echo "@import "\""moj/all"\"";" | sass --stdin --load-path . --load-path src > .tmp/check1.css'
+          time sh -c 'echo "@forward "\""moj/all"\"";" | sass --stdin --load-path . --load-path src > .tmp/check2.css'
+          time sh -c 'echo "@use "\""moj/all"\"" as *;" | sass --stdin --load-path . --load-path src > .tmp/check3.css'
+
+      # Check output for uncompiled Sass
+      - name: Check output
+        run: |
+          ! grep "\$moj-" .tmp/check.css
+          ! grep "\$moj-" .tmp/check1.css
+          ! grep "\$moj-" .tmp/check2.css
+          ! grep "\$moj-" .tmp/check3.css
