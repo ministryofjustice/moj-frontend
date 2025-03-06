@@ -21,8 +21,7 @@
     {% endif %}
     <form method="POST" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit new component</span>
-      <h1>Figma design</h1>
-
+      <h1 class="govuk-heading-xl">Figma design</h1>
       {{ govukRadios({
         name: "figmaUrl",
         hint: {
@@ -34,7 +33,6 @@
           },
           legend: {
             text: "Do you have a Figma design file for the component?",
-            isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
         },

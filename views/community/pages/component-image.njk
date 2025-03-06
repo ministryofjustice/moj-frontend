@@ -14,15 +14,14 @@
 <div class="app-layout__content">
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
       <span class="govuk-caption-l">Submit new component</span>
-      <h1>Upload an image of the component</h1>
-      <p>You also need to upload an image showing what the component looks like. It should not contain any personal or sensitive information.</p>
-      <p>You'll also have an opportunity to add more images of this after submitting the component.</p>
+      <h1 class="govuk-heading-xl">Upload an image of the component</h1>
+      <p class="govuk-body">You also need to upload an image showing what the component looks like. It should not contain any personal or sensitive information.</p>
+      <p class="govuk-body">You'll also have an opportunity to add more images of this after submitting the component.</p>
         {{ govukFileUpload({
             id: "component-image",
             name: "componentImage",
             label: {
               text: "Upload a file",
-              isPageHeading: true,
               classes: "govuk-label--m"
             },
           hint: {

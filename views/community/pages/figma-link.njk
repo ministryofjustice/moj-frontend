@@ -22,15 +22,14 @@
     {% endif %}
     <form method="POST" action="{{ submitUrl }}" data-add-another-container>
       <span class="govuk-caption-l">Submit new component</span>
-      <h1>Figma design</h1>
+      <h1 class="govuk-heading-xl">Figma design</h1>
       {{ govukInput({
         hint: {
           text: "Review the sharing permissions for the Figma design file before sending it. Ensure the 'Who has access' and 'What they can do' fields are set so the team can view the file."
         },
         label: {
           text: "Add the link to where the Figma design file is saved",
-          classes: "govuk-label--m",
-          isPageHeading: true
+          classes: "govuk-label--m"
         },
         id: "figma-link",
         name: "figmaLink",
@@ -47,8 +46,7 @@
         },
         label: {
           text: "Additional information about the Figma design file (optional)",
-          classes: "govuk-label--m",
-          isPageHeading: true
+          classes: "govuk-label--m"
         },
         errorMessage: formErrors.figmaLinkAdditionalInformation,
         value: formData.figmaLinkAdditionalInformation

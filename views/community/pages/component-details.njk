@@ -24,16 +24,15 @@
         {% endif %}
         <form method="post" action="{{ submitUrl }}">
           <span class="govuk-caption-l">Submit new component</span>
-          <h1>Component details</h1>
-          <p>Specific information is required when submitting a component to the design system. This gives users a basic understanding of the component and how to use it.</p>
-          <p>You'll also have an opportunity to add more information after submitting the component.</p>
-          <p>There is a word limit for certain answers. This ensures information is understandable for all users. The following information is required.</p>
+          <h1 class="govuk-heading-xl">Component details</h1>
+          <p class="govuk-body">Specific information is required when submitting a component to the design system. This gives users a basic understanding of the component and how to use it.</p>
+          <p class="govuk-body">You'll also have an opportunity to add more information after submitting the component.</p>
+          <p class="govuk-body">There is a word limit for certain answers. This ensures information is understandable for all users. The following information is required.</p>
 
           {{ govukInput({
                 label: {
                     text: "What is the name of the component?",
-                    classes: "govuk-label--m",
-                    isPageHeading: true
+                    classes: "govuk-label--m"
                 },
                 id: "component-name",
                 name: "componentName",
@@ -47,8 +46,7 @@
                 maxwords: 250,
                 label: {
                     text: "Add an overview description about the component",
-                    classes: "govuk-label--m",
-                    isPageHeading: true
+                    classes: "govuk-label--m"
                 },
                 errorMessage: formErrors.componentOverview,
                 value: formData.componentOverview
@@ -60,9 +58,9 @@
                 maxwords: 250,
                 label: {
                     text: "How is the component being used in your service?",
-                    classes: "govuk-label--m",
-                    isPageHeading: true
+                    classes: "govuk-label--m"
                 },
+
                 errorMessage: formErrors.howIsTheComponentUsed,
                 value: formData.howIsTheComponentUsed
             }) }}

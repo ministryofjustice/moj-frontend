@@ -1,11 +1,11 @@
 {% extends "base.njk" %}
 {% block content %}
     <div class="app-layout__content">
-        <h1>Oops! Something went wrong.</h1>
-        <p>{{ message }}</p>
+        <h1 class="govuk-heading-l">Oops! Something went wrong.</h1>
+        <p class="govuk-body">{{ message }}</p>
         {% if errorDetails %}
             <pre>Error Details: {{ errorDetails }}</pre>
         {% endif %}
-        <a href="/">Go back to the home page</a>
+        <a class="govuk-link" href="/">Go back to the home page</a>
     </div>
 {% endblock %}

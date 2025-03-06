@@ -333,15 +333,25 @@ module.exports = function (eleventyConfig) {
   const createLayoutFromHTML = (sourceFile, destinationFile) => {
     try {
       const htmlContent = fs.readFileSync(sourceFile, 'utf8')
-
       const $ = cheerio.load(htmlContent)
+
+      // Replace #main-content with Nunjucks block
       const nunjucksBlock = `
       {% block content %}
           {{ content | safe }}
       {% endblock %}
-            `.trim()
+      `.trim()
       $('#main-content').html(nunjucksBlock)
 
+      // Check if we are generating a community page layout
+      const isCommunityPage = destinationFile.includes('/views/common/')
+
+      // If it's a community page, remove the class from <main>
+      if (isCommunityPage) {
+        $('main').removeAttr('class')
+      }
+
+      // Beautify HTML
       const modifiedContent = beautifyHTML($.html(), {
         indent_size: 2,
         end_with_newline: true,
@@ -349,13 +359,13 @@ module.exports = function (eleventyConfig) {
         unformatted: ['code', 'pre', 'em', 'strong']
       })
 
+      // Write the modified content back
       fs.writeFileSync(destinationFile, modifiedContent)
       console.log(`Generated base.njk at ${destinationFile}`)
     } catch (error) {
       console.error('Error during base.njk generation:', error)
     }
   }
-
   // Create base.njk for community form based on the add-new-component page (to use the correct navigation)
   eleventyConfig.on('afterBuild', () => {
     // Add new component layout

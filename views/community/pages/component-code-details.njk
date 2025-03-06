@@ -22,14 +22,13 @@
     {% endif %}
     <form method="post" action="{{ submitUrl }}" data-add-another-container>
       <span class="govuk-caption-l">Submit new component</span>
-      <h1>Component code</h1>
-      <p>We recommend sending HTML, CSS, SASS, Javascript or Nunjucks.</p>
-      <p>You should only send the component code. It should not contain any personally identifiable or sensitive information. You can add more than one code example.</p>
+      <h1 class="govuk-heading-xl">Component code</h1>
+      <p class="govuk-body">We recommend sending HTML, CSS, SASS, Javascript or Nunjucks.</p>
+      <p class="govuk-body">You should only send the component code. It should not contain any personally identifiable or sensitive information. You can add more than one code example.</p>
       {{ govukInput({
         label: {
           text: "What language is the code written in?",
-          classes: "govuk-label--m",
-          isPageHeading: true
+          classes: "govuk-label--m"
         },
         id: "component-code-language",
         name: "componentCodeLanguage",
@@ -46,8 +45,7 @@
         maxwords: 250,
         label: {
           text: "How do you use the code? (optional)",
-          classes: "govuk-label--m",
-          isPageHeading: true
+          classes: "govuk-label--m"
         },
         hint: {
           text: "Include any information that helps users add the code to their service."
@@ -63,8 +61,7 @@
         rows: 30,
         label: {
           text: "Add the code",
-          classes: "govuk-label--m",
-          isPageHeading: true
+          classes: "govuk-label--m"
         },
         errorMessage: formErrors.componentCode,
         value: formData.componentCode

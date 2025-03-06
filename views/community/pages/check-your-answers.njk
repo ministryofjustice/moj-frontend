@@ -5,7 +5,7 @@
   <div class="app-layout__content">
     <form method="post" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit new component</span>
-      <h1>Check your answers before submitting the component</h1>
+      <h1 class="govuk-heading-xl">Check your answers before submitting the component</h1>
 
       <h2 class="govuk-heading-m">Component details</h2>
       {{ govukSummaryList({
@@ -59,7 +59,7 @@
         rows: yourDetailsRows
       }) }}
 
-      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>
 
       <div class="moj-button-action">
         {{ govukButton({
