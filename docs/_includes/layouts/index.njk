@@ -3,8 +3,6 @@
 {% from "macros/card/macro.njk" import card %}
 {% from "macros/heading/macro.njk" import heading %}
 
-{% set mainClasses = "app-prose-scope" %}
-
 {% set items = collections.all | eleventyNavigation(eleventyNavigation.key) | sort(false, false, "key") %}
 
 {% block content %}
