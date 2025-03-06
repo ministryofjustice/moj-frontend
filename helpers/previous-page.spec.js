@@ -9,7 +9,7 @@ describe('previousPage function', () => {
     }
     const result = previousPage('/add-external-audit', session)
     expect(result).toBe(
-      '/contribution/add-new-component/accessibility-findings'
+      '/contribute/add-new-component/accessibility-findings'
     )
   })
 
@@ -25,7 +25,7 @@ describe('previousPage function', () => {
     }
     const result = previousPage('/add-assistive-tech', session)
     expect(result).toBe(
-      '/contribution/add-new-component/accessibility-findings'
+      '/contribute/add-new-component/accessibility-findings'
     )
   })
 
@@ -42,13 +42,13 @@ describe('previousPage function', () => {
   it('should return the previous subpage if it exists', () => {
     session['/component-details/2'] = {}
     const result = previousPage('/component-details/3', session)
-    expect(result).toBe('/contribution/add-new-component/component-details/2')
+    expect(result).toBe('/contribute/add-new-component/component-details/2')
   })
 
   it('should return the highest subpage if multiple subpages exist', () => {
     session['/prototype/1'] = {}
     session['/prototype/2'] = {}
     const result = previousPage('/figma', session)
-    expect(result).toBe('/contribution/add-new-component/prototype/2')
+    expect(result).toBe('/contribute/add-new-component/prototype/2')
   })
 })

@@ -83,7 +83,7 @@ app.use(express.json())
 app.use('/assets', express.static(path.join(__dirname, 'public')))
 
 // Routes
-app.use('/contribution/add-new-component', addComponentRoutes)
+app.use('/contribute/add-new-component', addComponentRoutes)
 
 // Fallback route to homepage
 app.get('*', (req, res) => {

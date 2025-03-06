@@ -121,7 +121,7 @@ router.get('/start', (req, res) => {
 })
 
 router.post('/start', verifyCsrf, (req, res) => {
-  res.redirect('/contribution/add-new-component/component-details')
+  res.redirect('/contribute/add-new-component/component-details')
 })
 
 // Confirmation page
