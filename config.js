@@ -7,6 +7,8 @@ const config = {
   NOTIFY_SUBMISSION_TEMPLATE: process.env.NOTIFY_SUBMISSION_TEMPLATE || '',
   NOTIFY_EMAIL: process.env.NOTIFY_EMAIL || 'your-email',
   NOTIFY_TOKEN: process.env.NOTIFY_TOKEN || 'your-default-repo-token',
+  NOTIFY_EMAIL_RETRY_MS: process.env.NOTIFY_EMAIL_RETRY_MS || 5000,
+  NOTIFY_EMAIL_MAX_RETRIES: process.env.NOTIFY_EMAIL_MAX_RETRIES || 5,
   APP_PORT: process.env.APP_PORT || 3001,
   REDIS_URL: process.env.REDIS_URL,
   REDIS_AUTH_TOKEN: process.env.REDIS_AUTH_TOKEN || 'your-redis-token',
@@ -111,9 +113,7 @@ const config = {
     figmaLink: 'Prototype link',
     figmaLinkAdditionalInformation: 'Additional information',
     shareYourDetails: 'Share your details on the component page'
-  },
-  NOTIFY_EMAIL_RETRY_MS: process.env.NOTIFY_EMAIL_RETRY_MS || 5000,
-  NOTIFY_EMAIL_MAX_RETRIES: process.env.NOTIFY_EMAIL_MAX_RETRIES || 5
+  }
 }
 
 module.exports = config
