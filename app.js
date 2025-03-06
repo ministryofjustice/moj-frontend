@@ -29,7 +29,8 @@ const {
 const addComponentRoutes = require('./routes/add-component')
 
 const app = express()
-app.set('trust proxy', true)
+// Only trust single proxy (Nginx)
+app.set('trust proxy', 1)
 const isDev = app.get('env') === 'development'
 
 app.use(helmet())
