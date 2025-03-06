@@ -14,6 +14,9 @@ const nunjucks = require('nunjucks')
 const releasePackage = require('./package/package.json')
 const mojFilters = require('./src/moj/filters/all')
 
+// Configure highlight.js
+hljs.registerAliases(['mjs', 'njk'], { languageName: 'javascript' })
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
 
