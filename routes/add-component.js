@@ -70,7 +70,6 @@ router.get('*', (req, res, next) => {
 router.get(`/${checkYourAnswersPath}`, sessionStarted, (req, res) => {
   const {
     componentDetailsRows,
-    accessibilityRows,
     prototypeRows,
     componentCodeRows,
     addExternalAuditRows,
@@ -82,7 +81,6 @@ router.get(`/${checkYourAnswersPath}`, sessionStarted, (req, res) => {
   res.render(checkYourAnswersPath, {
     submitUrl: req.originalUrl,
     componentDetailsRows,
-    accessibilityRows,
     prototypeRows,
     componentCodeRows,
     addExternalAuditRows,
