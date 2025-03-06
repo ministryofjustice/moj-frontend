@@ -14,6 +14,10 @@
     border-top: 1px solid $govuk-border-colour;
     border-bottom: 1px solid $govuk-border-colour;
   }
+
+  pre {
+    background-color: govuk-colour("white");
+  }
 }
 
 .app-example__frame {

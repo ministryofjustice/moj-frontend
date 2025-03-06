@@ -3,7 +3,7 @@
 exports[`generateMarkdown should generate markdown with all fields populated 1`] = `
 {
   "content": "---
-layout: layouts/component.njk
+layout: layouts/tabbed-component.njk
 title: Test Component
 type: component
 eleventyNavigation:
@@ -20,33 +20,27 @@ eleventyNavigation:
 
 This is an overview.
 
-## Why is the component needed?
-
-This is the problem solved.
-
-## Current uses for the component
+## How the component is currently used
 
 This is how it is used.
 
 {% endtab %}
 
-{% tab "Code Stuff" %}
+{% tab "Code" %}
 
-## Code Stuff
+## Help develop existing building blocks in GitHub
 
-### Component Code
+After a new building block is published in the design system, you, and other users, have the chance to continue enhancing it. This is done with users adding more information and resources to the component via GitHub.
 
+To do this you should:
 
-{% endtab %}
+- go to the GitHub conversation
+- add your comments, information and resources about the building block
 
-{% tab "Additional Info" %}
+## Code
 
-## Links
+No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
 
-### Prototype
-
-
-## Thing to consider
 
 {% endtab %}
 
@@ -54,25 +48,30 @@ This is how it is used.
 
 ## Accessibility
 
-## Links
+If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.
+### External audit (External Org) - January 2022
+Some issues discovered.
+[Download the accessibility report](/uploads/external-report.pdf)
+### Internal audit (Internal Org) - February 2022
+Some internal issues discovered.
+[Download the accessibility report](/uploads/internal-report.pdf)
+### Assistive Technology audit - March 2022
+Assistive tech issues discovered.
+[Download the accessibility report](/uploads/assistive-tech-report.pdf)
 
-## Thing to consider
 
 {% endtab %}
 
-{% tab "Contribution" %}
+{% tab "Links" %}
 
-## Contribution
+## Links
 
-Test User
+### Prototype
 
-test@test.com
 
-## History
 
-**Test User** 01 January 2023
+<a href="www.test.com" target="_blank" rel="noopener noreferrer">Prototype link (opens in a new tab)</a>
 
-Component added
 
 {% endtab %}
 
@@ -85,7 +84,7 @@ Component added
 exports[`generateMarkdown should handle missing details gracefully 1`] = `
 {
   "content": "---
-layout: layouts/component.njk
+layout: layouts/tabbed-component.njk
 title: unknown-component
 type: component
 eleventyNavigation:
@@ -102,33 +101,27 @@ eleventyNavigation:
 
 
 
-## Why is the component needed?
-
-
-
-## Current uses for the component
+## How the component is currently used
 
 
 
 {% endtab %}
 
-{% tab "Code Stuff" %}
+{% tab "Code" %}
 
-## Code Stuff
+## Help develop existing building blocks in GitHub
 
-### Component Code
+After a new building block is published in the design system, you, and other users, have the chance to continue enhancing it. This is done with users adding more information and resources to the component via GitHub.
 
+To do this you should:
 
-{% endtab %}
+- go to the GitHub conversation
+- add your comments, information and resources about the building block
 
-{% tab "Additional Info" %}
+## Code
 
-## Links
+No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
 
-### Prototype
-
-
-## Thing to consider
 
 {% endtab %}
 
@@ -136,25 +129,17 @@ eleventyNavigation:
 
 ## Accessibility
 
-## Links
+No accessibility findings have been contributed for this component.
 
-## Thing to consider
 
 {% endtab %}
 
-{% tab "Contribution" %}
+{% tab "Links" %}
 
-## Contribution
+## Links
 
+No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.
 
-
-
-
-## History
-
-**** 01 January 2023
-
-Component added
 
 {% endtab %}
 
@@ -167,7 +152,7 @@ Component added
 exports[`generateMarkdown should handle missing image data gracefully 1`] = `
 {
   "content": "---
-layout: layouts/component.njk
+layout: layouts/tabbed-component.njk
 title: Another Component
 type: component
 eleventyNavigation:
@@ -184,33 +169,27 @@ eleventyNavigation:
 
 Another overview.
 
-## Why is the component needed?
-
-Another problem solved.
-
-## Current uses for the component
+## How the component is currently used
 
 Another usage.
 
 {% endtab %}
 
-{% tab "Code Stuff" %}
+{% tab "Code" %}
 
-## Code Stuff
+## Help develop existing building blocks in GitHub
 
-### Component Code
+After a new building block is published in the design system, you, and other users, have the chance to continue enhancing it. This is done with users adding more information and resources to the component via GitHub.
 
+To do this you should:
 
-{% endtab %}
+- go to the GitHub conversation
+- add your comments, information and resources about the building block
 
-{% tab "Additional Info" %}
+## Code
 
-## Links
+No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
 
-### Prototype
-
-
-## Thing to consider
 
 {% endtab %}
 
@@ -218,25 +197,26 @@ Another usage.
 
 ## Accessibility
 
-## Links
+If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.
+### External audit (External Org) - January 2022
+Some issues discovered.
+[Download the accessibility report](/uploads/external-report.pdf)
+### Internal audit (Internal Org) - February 2022
+Some internal issues discovered.
+[Download the accessibility report](/uploads/internal-report.pdf)
+### Assistive Technology audit - March 2022
+Assistive tech issues discovered.
+[Download the accessibility report](/uploads/assistive-tech-report.pdf)
 
-## Thing to consider
 
 {% endtab %}
 
-{% tab "Contribution" %}
+{% tab "Links" %}
 
-## Contribution
+## Links
 
-Another User
+No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.
 
-another@test.com
-
-## History
-
-**Another User** 01 January 2023
-
-Component added
 
 {% endtab %}
 
@@ -249,7 +229,7 @@ Component added
 exports[`generateMarkdown should return minimal markdown if no valid data is provided 1`] = `
 {
   "content": "---
-layout: layouts/component.njk
+layout: layouts/tabbed-component.njk
 title: unknown-component
 type: component
 eleventyNavigation:
@@ -266,33 +246,27 @@ eleventyNavigation:
 
 
 
-## Why is the component needed?
-
-
-
-## Current uses for the component
+## How the component is currently used
 
 
 
 {% endtab %}
 
-{% tab "Code Stuff" %}
+{% tab "Code" %}
 
-## Code Stuff
+## Help develop existing building blocks in GitHub
 
-### Component Code
+After a new building block is published in the design system, you, and other users, have the chance to continue enhancing it. This is done with users adding more information and resources to the component via GitHub.
 
+To do this you should:
 
-{% endtab %}
+- go to the GitHub conversation
+- add your comments, information and resources about the building block
 
-{% tab "Additional Info" %}
+## Code
 
-## Links
+No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
 
-### Prototype
-
-
-## Thing to consider
 
 {% endtab %}
 
@@ -300,25 +274,17 @@ eleventyNavigation:
 
 ## Accessibility
 
-## Links
+No accessibility findings have been contributed for this component.
 
-## Thing to consider
 
 {% endtab %}
 
-{% tab "Contribution" %}
+{% tab "Links" %}
 
-## Contribution
+## Links
 
+No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.
 
-
-
-
-## History
-
-**** 01 January 2023
-
-Component added
 
 {% endtab %}
 
@@ -331,7 +297,7 @@ Component added
 exports[`generateMarkdown should sanitize the filename correctly 1`] = `
 {
   "content": "---
-layout: layouts/component.njk
+layout: layouts/tabbed-component.njk
 title: Component! With@ Special#Chars
 type: component
 eleventyNavigation:
@@ -348,33 +314,27 @@ eleventyNavigation:
 
 Overview here.
 
-## Why is the component needed?
-
-Problem solved here.
-
-## Current uses for the component
+## How the component is currently used
 
 Usage here.
 
 {% endtab %}
 
-{% tab "Code Stuff" %}
+{% tab "Code" %}
 
-## Code Stuff
+## Help develop existing building blocks in GitHub
 
-### Component Code
+After a new building block is published in the design system, you, and other users, have the chance to continue enhancing it. This is done with users adding more information and resources to the component via GitHub.
 
+To do this you should:
 
-{% endtab %}
+- go to the GitHub conversation
+- add your comments, information and resources about the building block
 
-{% tab "Additional Info" %}
+## Code
 
-## Links
+No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
 
-### Prototype
-
-
-## Thing to consider
 
 {% endtab %}
 
@@ -382,25 +342,26 @@ Usage here.
 
 ## Accessibility
 
-## Links
+If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.
+### External audit (External Org) - January 2022
+Some issues discovered.
+[Download the accessibility report](/uploads/external-report.pdf)
+### Internal audit (Internal Org) - February 2022
+Some internal issues discovered.
+[Download the accessibility report](/uploads/internal-report.pdf)
+### Assistive Technology audit - March 2022
+Assistive tech issues discovered.
+[Download the accessibility report](/uploads/assistive-tech-report.pdf)
 
-## Thing to consider
 
 {% endtab %}
 
-{% tab "Contribution" %}
+{% tab "Links" %}
 
-## Contribution
+## Links
 
-Special User
+No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.
 
-special@test.com
-
-## History
-
-**Special User** 01 January 2023
-
-Component added
 
 {% endtab %}
 
