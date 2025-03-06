@@ -373,6 +373,14 @@ module.exports = function (eleventyConfig) {
       {% endblock %}
       `.trim();
       $('#main-content').html(nunjucksBlock);
+
+      // Check if we are generating a community page layout
+      const isCommunityPage = destinationFile.includes('/views/common/');
+  
+      // If it's a community page, remove the class from <main>
+      if (isCommunityPage) {
+        $('main').removeAttr('class'); 
+      }
   
       // Beautify HTML
       const modifiedContent = beautifyHTML($.html(), {
