@@ -60,6 +60,16 @@ spec:
               secretKeyRef:
                 name: notify-token
                 key: notify-token
+          - name: NOTIFY_EMAIL_RETRY_MS
+            valueFrom:
+              secretKeyRef:
+                name: notify-email-retry-ms
+                key: notify-email-retry-ms
+          - name: NOTIFY_EMAIL_MAX_RETRIES
+            valueFrom:
+              secretKeyRef:
+                name: notify-email-max-retries
+                key: notify-email-max-retries
           - name: BRANCH
             value: ${BRANCH}
           - name: REDIS_URL
