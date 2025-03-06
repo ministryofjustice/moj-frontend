@@ -65,17 +65,17 @@
         value: formData.emailAddress
       }) }}
 
-    {{ govukInput({
-      label: {
-        text: "What team did you work in when creating the component?",
-        classes: "govuk-label--m",
-        isPageHeading: true
-      },
-      id: "team-name",
-      name: "teamName",
-      errorMessage: formErrors.teamName,
-      value: formData.teamName
-    }) }}
+      {{ govukInput({
+        label: {
+          text: "What team did you work in when creating the component?",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        id: "team-name",
+        name: "teamName",
+        errorMessage: formErrors.teamName,
+        value: formData.teamName
+      }) }}
 
       {{ govukCheckboxes({
         name: "shareYourDetails",
