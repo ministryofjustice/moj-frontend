@@ -73,12 +73,12 @@
 }
 
 .moj-alert__heading {
-  @include govuk-text-colour;
-  @include govuk-font-size($size: 24);
-  @include govuk-typography-weight-bold;
   display: block;
   margin-top: 0;
   margin-bottom: govuk-px-to-rem(5px);
+  @include govuk-text-colour;
+  @include govuk-font-size($size: 24);
+  @include govuk-typography-weight-bold;
 
   @include govuk-media-query($from: tablet) {
     margin-bottom: govuk-px-to-rem(3px);
