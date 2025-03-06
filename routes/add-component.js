@@ -201,7 +201,6 @@ router.post(
     const markdown = {}
     markdown[markdownFilename] = markdownContent
     const { sessionText } = req
-    await sendSubmissionEmail(null, sessionText, markdownContent)
     const session = { ...req.session, ...markdown }
     req.session.regenerate((err) => {
       if (err) {
@@ -209,10 +208,15 @@ router.post(
       }
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/confirmation`)
     })
-    const branchName = await pushToGitHub(session)
-    const { title, description } = getPrTitleAndDescription(session)
-    const pr = await createPullRequest(branchName, title, description)
-    await sendPrEmail(pr)
+    try {
+      const branchName = await pushToGitHub(session)
+      const { title, description } = getPrTitleAndDescription(session)
+      const pr = await createPullRequest(branchName, title, description)
+      await sendPrEmail(pr)
+    } catch (e) {
+      console.error('[FORM SUBMISSION] Error sending submission:', e)
+      await sendSubmissionEmail(null, sessionText, markdownContent)
+    }
   }
 )
 
