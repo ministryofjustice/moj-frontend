@@ -14,7 +14,7 @@ const {
 } = require('./text-helper')
 
 const mappedLabels = Object.keys(CHECK_YOUR_ANSWERS_LABEL_MAPPING)
-const hrefRoot = '/get-involved/add-new-component'
+const hrefRoot = '/contribution/add-new-component'
 const maxWords = 10
 
 const formatLabel = (text) => {

@@ -49,7 +49,7 @@ app.use(express.static(path.join(parentDirectory, 'public')))
 app.use(express.json())
 app.use('/assets', express.static(path.join(parentDirectory, 'public')))
 
-app.use('/get-involved/add-new-component', router)
+app.use('/contribution/add-new-component', router)
 
 beforeAll(() => {
   global.console.log = jest.fn()
@@ -62,15 +62,15 @@ afterAll(() => {
 })
 
 describe('Component Details Form Tests', () => {
-  describe('GET /get-involved/add-new-component/component-details', () => {
+  describe('GET /contribution/add-new-component/component-details', () => {
     it('should render the form page successfully', async () => {
       const response = await request(app).get(
-        '/get-involved/add-new-component/component-details'
+        '/contribution/add-new-component/component-details'
       )
 
       expect(response.status).toBe(200)
       expect(response.text).toContain(
-        '<form method="post" action="/get-involved/add-new-component/component-details">'
+        '<form method="post" action="/contribution/add-new-component/component-details">'
       )
       expect(response.text).toContain('What is the name of the component?')
       expect(response.text).toContain(
@@ -83,7 +83,7 @@ describe('Component Details Form Tests', () => {
 
     it('should include add another button in the response', async () => {
       const response = await request(app).get(
-        '/get-involved/add-new-component/component-code-details'
+        '/contribution/add-new-component/component-code-details'
       )
 
       expect(response.status).toBe(200)
@@ -91,12 +91,12 @@ describe('Component Details Form Tests', () => {
     })
   })
 
-  describe('POST /get-involved/add-new-component/component-details', () => {
+  describe('POST /contribution/add-new-component/component-details', () => {
     let csrfToken
 
     beforeEach(async () => {
       const response = await request(app).get(
-        '/get-involved/add-new-component/component-details'
+        '/contribution/add-new-component/component-details'
       )
       const matches = response.text.match(/name="_csrf" value="([^"]+)"/)
       csrfToken = matches ? matches[1] : null
@@ -104,7 +104,7 @@ describe('Component Details Form Tests', () => {
 
     it('should return errors if required fields are missing', async () => {
       const response = await request(app)
-        .post('/get-involved/add-new-component/component-details')
+        .post('/contribution/add-new-component/component-details')
         .send({ _csrf: csrfToken })
 
       expect(response.status).toBe(400)
@@ -123,7 +123,7 @@ describe('Component Details Form Tests', () => {
 
     it('should redirect to the next page if all fields are valid', async () => {
       const response = await request(app)
-        .post('/get-involved/add-new-component/component-details')
+        .post('/contribution/add-new-component/component-details')
         .send({
           _csrf: csrfToken,
           componentName: 'Test Component',
@@ -133,7 +133,7 @@ describe('Component Details Form Tests', () => {
 
       expect(response.status).toBe(302)
       expect(response.header.location).toBe(
-        '/get-involved/add-new-component/component-image'
+        '/contribution/add-new-component/component-image'
       )
     })
   })

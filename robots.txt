@@ -1,2 +1,2 @@
 User-agent: *
-Disallow: /get-involved/add-new-component/
+Disallow: /contribution/add-new-component/

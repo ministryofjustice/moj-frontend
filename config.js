@@ -95,7 +95,7 @@ const config = {
       }
     }
   },
-  ADD_NEW_COMPONENT_ROUTE: '/get-involved/add-new-component',
+  ADD_NEW_COMPONENT_ROUTE: '/contribution/add-new-component',
   MAX_ADD_ANOTHER: 10,
   ACRONYMS_TO_UPPERCASE: ['url'],
   CHECK_YOUR_ANSWERS_LABEL_MAPPING: {
