@@ -4,7 +4,6 @@
 const path = require('path')
 
 const express = require('express')
-const expressNunjucks = require('express-nunjucks').default
 const rateLimit = require('express-rate-limit')
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
@@ -63,18 +62,20 @@ if (REDIS_URL) {
 app.use(session(sessionOptions))
 
 // Nunjucks config
-app.set('views', [
-  path.join(__dirname, 'views/common'),
+nunjucks.configure([
+  path.join(__dirname, 'docs/_includes/layouts'),
   path.join(__dirname, 'views/community/pages'),
+  path.join(__dirname, 'docs/_includes/templates'),
   path.join(__dirname, 'node_modules/govuk-frontend/dist'),
   path.join(__dirname, 'node_modules/@ministryofjustice/frontend')
-])
-app.set('view engine', 'njk')
-expressNunjucks(app, {
+], {
+  autoescape: true,
+  express: app,
   watch: isDev,
-  noCache: isDev,
-  loader: nunjucks.FileSystemLoader
-})
+  noCache: isDev
+});
+
+app.set('view engine', 'njk');
 
 // Static files and body parsing
 app.use(express.urlencoded({ extended: true }))
