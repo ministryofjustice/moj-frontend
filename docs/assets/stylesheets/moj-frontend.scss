@@ -1,4 +1,2 @@
 // MOJ Frontend
-@forward "../../../src/moj/all" with (
-  $moj-include-default-font-face: false
-);
+@forward "../../../src/moj/all";
