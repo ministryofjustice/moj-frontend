@@ -2,8 +2,11 @@
    #ASSETS
    ========================================================================== */
 
-// Assets folder
+// Path to the assets directory, with trailing slash.
 $moj-assets-path: "/assets/" !default;
 
-// Path the images folder
+// Path to the images folder, with trailing slash.
 $moj-images-path: "#{$moj-assets-path}images/" !default;
+
+// Path to the fonts folder, with trailing slash.
+$moj-fonts-path: "#{$moj-assets-path}fonts/" !default;
