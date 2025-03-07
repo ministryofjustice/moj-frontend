@@ -1,10 +1,10 @@
 ---
 layout: layouts/get-started.njk
 subsection: Setup for production
-title: Install MoJ Frontend with compiled files
+title: Try MoJ Frontend using precompiled files
 redirect_from: /get-started/installing-compiled
 eleventyNavigation:
-  key: Install with compiled files
+  key: Try MoJ Frontend using precompiled files
   parent: Setup for production
   order: 30
   excerpt: "If your project does not use npm (or you want to try out MoJ Frontend without installing it through npm) download and include compiled stylesheets."
@@ -17,72 +17,60 @@ You can install MoJ Frontend using the compiled files released with each version
 - customise the build, for example, overriding colours or enabling global styles
 - use the component Nunjucks templates
 
-In a live application, we recommend that you [install with npm](/production/installing-with-npm/) instead. This will allow you to better integrate the library and more easily upgrade.
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-visually-hidden">Warning</span>
+    In your live application, you should <a href="/production/installing-with-npm/">install with Node.js package manager (npm)</a> instead.
+  </strong>
+</div>
 
-## Copy the files
-
-1. Download the `release-<VERSION-NUMBER>.zip` file at the bottom of the [latest MoJ Frontend release note](https://github.com/ministryofjustice/moj-frontend/releases/latest).
-2. Unzip the zip file.
-3. Copy the `assets` folder to the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/assets/images/moj-logotype-crest.png` shows the `images/moj-logotype-crown.png` image in your users’ browsers.
-4. Copy the 2 `.css` files to a stylesheets folder in the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/stylesheets/moj-frontend.min.css` shows the CSS file in your users’ browsers.
-5. Copy the `.js` file to a JavaScript folder in the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/javascript/moj-frontend.min.js` shows the JavaScript file in your users’ browsers.
-
-## Check an example page
-
-### With the GOV.UK Design System
+## Copy and install the precompiled files
 
 1. Follow [the instructions for installing the GOV.UK Design System](https://frontend.design-system.service.gov.uk/install-using-precompiled-files/)
-2. Add `link` tags for the MoJ Frontend CSS, alongside the GOV.UK ones in the `head`:
-   ```html
-   <link rel="stylesheet" href="/stylesheets/moj-frontend.min.css" />
-   ```
-3. Add `script` tags for the MoJ Frontend JavaScript, alongside the GOV.UK at the bottom of the `body`. This includes jQuery, which is a dependency of MoJ Frontend.
-   ```html
-   <script
-     src="https://code.jquery.com/jquery-3.6.0.min.js"
-     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-     crossorigin="anonymous"
-   ></script>
-   <script src="/javascript/moj-frontend.min.js"></script>
-   <script>
-     window.MOJFrontend.initAll()
-   </script>
-   ```
+2. Download the `release-<VERSION-NUMBER>.zip` file at the bottom of the [latest MoJ Frontend release note](https://github.com/ministryofjustice/moj-frontend/releases/latest).
+3. Unzip the zip file.
+4. Copy the `assets` folder to the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/assets/images/moj-logotype-crest.png` shows the `images/moj-logotype-crown.png` image in your users’ browsers.
+5. Copy the `.css` file to a stylesheets folder in the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/stylesheets/moj-frontend.min.css` shows the CSS file in your users’ browsers.
+6. Copy the `.js` file to a JavaScript folder in the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/javascripts/moj-frontend.min.js` shows the JavaScript file in your users’ browsers.
 
-### Without the GOV.UK Design System
+## Update your example page to check for errors
 
-It is unlikely that you would ever want to install the MoJ Design System alone, but if so you can follow the guide below to check that it is working.
-
-1. Create a page in your project using the following HTML (in your live application, you should use the [Design System page template](https://design-system.service.gov.uk/styles/page-template/) instead):
+1. Update the example page in your project to match the following HTML (in your live application, you should use the [GOV.UK Design System page template](https://design-system.service.gov.uk/styles/page-template/) instead):
 
    ```html
    <!DOCTYPE html>
-   <html lang="en" class="govuk-template ">
+   <html lang="en" class="govuk-template">
      <head>
        <title>Example - MoJ Frontend</title>
-       <meta
-         name="viewport"
-         content="width=device-width, initial-scale=1, viewport-fit=cover"
-       />
-       <link rel="stylesheet" href="/stylesheets/moj-frontend.min.css" />
+       <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+       <link rel="stylesheet" href="/stylesheets/govuk-frontend-<VERSION-NUMBER>.min.css" />
+       <link rel="stylesheet" href="/stylesheets/moj-frontend-<VERSION-NUMBER>.min.css">
      </head>
-     <body>
+     <body class="govuk-template__body">
+       <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
        <!-- component HTML -->
-       <script
-         src="https://code.jquery.com/jquery-3.6.0.min.js"
-         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-         crossorigin="anonymous"
-       ></script>
-       <script src="/javascript/moj-frontend.min.js"></script>
-       <script>
+
+       <script type="module" src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+       <script type="module" src="/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js"></script>
+       <script type="module" src="/javascripts/moj-frontend-<VERSION-NUMBER>.min.js"></script>
+
+       <script type="module">
+         import * as GOVUKFrontend from '/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js'
+
+         window.GOVUKFrontend = GOVUKFrontend
+         window.GOVUKFrontend.initAll()
          window.MOJFrontend.initAll()
        </script>
      </body>
    </html>
    ```
 
-2. Go to the [Add another component](/components/add-another/) on the Design System website and copy the HTML from the first example.
+2. Replace `<VERSION-NUMBER>` so the 5 filenames match the files you [copied from MoJ Frontend and GOV.UK Frontend's GitHub repos](#copy-and-install-the-precompiled-files).
 
-3. Replace `<!-- component HTML -->` with the accordion HTML you copied.
+3. Go to the [add another component](/components/add-another/) on the Design System website and copy the HTML from the first example.
 
-4. Run your application - you can check it works the same way as the [Add another component example](/examples/add-another/) by clicking the "Add another person" button.
+4. Replace `<!-- component HTML -->` with the add another HTML you copied.
+
+5. Run your application - you can check it works the same way as the [add another component example](/examples/add-another/) by clicking the "Add another person" button.

@@ -10,36 +10,16 @@ eleventyNavigation:
   excerpt: "To start using MoJ styles, components and patterns contained here, you’ll need to include MoJ Frontend in your project."
 ---
 
-This guide explains how to set up your project so you can start using the styles and coded examples in the MoJ Design System in production.
+MoJ Frontend provides the elements developers need to create consistent, easy to use, fast and secure government services.
 
-## Before you start
+Use this technical documentation to find out how to:
 
-First you must have followed the [GOV.UK Design System production setup guide](https://design-system.service.gov.uk/get-started/production/).
+- [Install with Node.js package manager (npm)](/production/installing-with-npm/)
+- [Use Nunjucks](/production/use-nunjucks/)
+- [Import CSS](/production/import-css/)
+- [Import font and image assets](/production/import-font-and-image-assets/)
+- [Import JavaScript](/production/setting-up-javascript/)
 
-## Include the MoJ Frontend in your project
+You can also use the option to [try using precompiled files](/production/installing-compiled/) to test how MoJ Frontend works in your application.
 
-To start using MoJ styles, components and patterns contained here, you’ll need to include MoJ Frontend in your project.
-
-### Option 1: install using npm
-
-We recommend [installing MoJ Frontend using npm](/production/installing-with-npm/). Using this option, you will be able to:
-
-- selectively include the CSS or JavaScript for individual components
-- build your own styles or components based on the palette or typography and spacing mixins
-- customise the build (for example, overriding colours or enabling global styles)
-- use the component Nunjucks templates
-
-You will also need to [set up JavaScript](/production/setting-up-javascript/) if you want to use any interactive components.
-
-### Option 2: include compiled files
-
-If your project does not use npm, or if you want to try out MoJ Frontend in your project without installing it through npm, you can [download and include compiled stylesheets, JavaScript and the asset files](/production/installing-compiled/).
-
-Using this option, you will be able to include all the CSS and JavaScript of GOV.UK Frontend in your project.
-
-You will not be able to:
-
-- selectively include the CSS or JavaScript for individual components
-- build your own styles or components based on the palette or typography and spacing mixins
-- customise the build, for example, overriding colours or enabling global styles
-- use the component Nunjucks templates
+There are live examples of MoJ Frontend components, and guidance on using them in your service, in the [MoJ Design System](/).
