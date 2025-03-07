@@ -1,0 +1,78 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% extends "base.njk" %}
+
+{% block content %}
+  {% if backLink %}
+    <div class="app-layout__backlink">
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    </div>
+  {% endif %}
+
+    <div class="app-layout__content">
+        {% if errorList %}
+        {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: errorList
+        }) }}
+        {% endif %}
+        <form method="post" action="{{ submitUrl }}">
+          <span class="govuk-caption-l">Submit new component</span>
+          <h1 class="govuk-heading-xl">Component details</h1>
+          <p class="govuk-body">Specific information is required when submitting a component to the design system. This gives users a basic understanding of the component and how to use it.</p>
+          <p class="govuk-body">You'll also have an opportunity to add more information after submitting the component.</p>
+          <p class="govuk-body">There is a word limit for certain answers. This ensures information is understandable for all users. The following information is required.</p>
+
+          {{ govukInput({
+                label: {
+                    text: "What is the name of the component?",
+                    classes: "govuk-label--m"
+                },
+                id: "component-name",
+                name: "componentName",
+                errorMessage: formErrors.componentName,
+                value: formData.componentName
+            }) }}
+
+            {{ govukCharacterCount({
+                name: "componentOverview",
+                id: "component-overview",
+                maxwords: 250,
+                label: {
+                    text: "Add an overview description about the component",
+                    classes: "govuk-label--m"
+                },
+                errorMessage: formErrors.componentOverview,
+                value: formData.componentOverview
+            }) }}
+
+            {{ govukCharacterCount({
+                name: "howIsTheComponentUsed",
+                id: "how-is-the-component-used",
+                maxwords: 250,
+                label: {
+                    text: "How is the component being used in your service?",
+                    classes: "govuk-label--m"
+                },
+
+                errorMessage: formErrors.howIsTheComponentUsed,
+                value: formData.howIsTheComponentUsed
+            }) }}
+
+          <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+
+          <div class="govuk-button-group moj-button-action">
+            {{ govukButton({
+              text: 'Continue',
+              preventDoubleClick: true
+            }) }}
+        </form>
+    </div>
+
+{% endblock %}

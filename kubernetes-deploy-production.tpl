@@ -17,6 +17,89 @@ spec:
         image: ${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}
         ports:
         - containerPort: 3000
+      - name: express-app
+        image: ${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}
+        env:
+          - name: GITHUB_API_URL
+            valueFrom:
+              secretKeyRef:
+                name: github-api-url
+                key: github-api-url
+          - name: GITHUB_API_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: github-api-token
+                key: github-api-token
+          - name: GITHUB_REPO_OWNER
+            valueFrom:
+              secretKeyRef:
+                name: github-repo-owner
+                key: github-repo-owner
+          - name: GITHUB_REPO_NAME
+            valueFrom:
+              secretKeyRef:
+                name: github-repo-name
+                key: github-repo-name
+          - name: NOTIFY_PR_TEMPLATE
+            valueFrom:
+              secretKeyRef:
+                name: notify-pr-template
+                key: notify-pr-template
+          - name: NOTIFY_SUBMISSION_TEMPLATE
+            valueFrom:
+              secretKeyRef:
+                name: notify-submission-template
+                key: notify-submission-template
+          - name: NOTIFY_EMAIL
+            valueFrom:
+              secretKeyRef:
+                name: notify-email
+                key: notify-email
+          - name: NOTIFY_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: notify-token
+                key: notify-token
+          - name: NOTIFY_EMAIL_RETRY_MS
+            valueFrom:
+              secretKeyRef:
+                name: notify-email-retry-ms
+                key: notify-email-retry-ms
+          - name: NOTIFY_EMAIL_MAX_RETRIES
+            valueFrom:
+              secretKeyRef:
+                name: notify-email-max-retries
+                key: notify-email-max-retries
+          - name: BRANCH
+            value: ${BRANCH}
+          - name: REDIS_URL
+            valueFrom:
+              secretKeyRef:
+                name: moj-frontend-ec-cluster-output
+                key: primary_endpoint_address
+          - name: REDIS_AUTH_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: moj-frontend-ec-cluster-output
+                key: auth_token
+          - name: REDIS_TLS_ENABLED
+            value: "true"
+        ports:
+        - containerPort: 3001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: express-app-${BRANCH}
+  labels:
+    app: express-app-${BRANCH}
+spec:
+  ports:
+  - port: 3001
+    name: express
+    targetPort: 3001
+  selector:
+    app: moj-frontend-${BRANCH}
 ---
 apiVersion: v1
 kind: Service

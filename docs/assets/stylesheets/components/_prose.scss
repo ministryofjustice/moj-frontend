@@ -55,6 +55,11 @@
 
   a {
     @extend %govuk-link;
+
+    /* stylelint-disable selector-no-qualifying-type */
+    &.govuk-link--no-visited-state.govuk-button {
+      color: govuk-colour("white");
+    }
   }
 
   .govuk-link--inverse {

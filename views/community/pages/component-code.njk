@@ -1,0 +1,71 @@
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% extends "base.njk" %}
+{% block content %}
+  {% if backLink %}
+    <div class="app-layout__backlink">
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    </div>
+  {% endif %}
+  <div class="app-layout__content">
+    {% if errorList %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form method="post" action="{{ submitUrl }}">
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1 class="govuk-heading-xl">Component code</h1>
+      <p class="govuk-body">If sending code, we recommend sending HTML, CSS, SASS, Javascript or Nunjucks as these are common in government.</p>
+      <p class="govuk-body">You should only send the component code and not the full page of code. This ensures it's easy for others to understand and use. The code should not contain any personally identifiable or sensitive information.</p>
+      {{ govukRadios({
+        name: "componentCodeAvailable",
+        fieldset: {
+          attributes: {
+            id: "component-code-available"
+          },
+          legend: {
+            text: "Do you have code for the component available?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ],
+        errorMessage: formErrors.componentCodeAvailable,
+        value: formData.componentCodeAvailable
+      }) }}
+
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+
+      <div class="govuk-button-group moj-button-action">
+        {{ govukButton({
+          text: 'Continue',
+          preventDoubleClick: true
+        }) }}
+        {% if skipQuestion %}
+
+          {{ govukButton({
+            text: "Skip question",
+            classes: "govuk-button--secondary",
+            attributes: {'data-skip-question': skipQuestion},
+            href: skipQuestion
+          }) }}
+        {% endif %}
+    </form>
+  </div>
+
+{% endblock %}

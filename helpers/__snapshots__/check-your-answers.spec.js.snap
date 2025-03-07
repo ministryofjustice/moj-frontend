@@ -1,0 +1,248 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checkYourAnswers function should handle empty session gracefully 1`] = `
+{
+  "addAssistiveTechRows": [],
+  "addExternalAuditRows": [],
+  "addInternalAuditRows": [],
+  "componentCodeRows": [],
+  "componentDetailsRows": [],
+  "componentImageRows": [],
+  "figmaRows": [],
+  "prototypeRows": [],
+  "yourDetailsRows": [],
+}
+`;
+
+exports[`checkYourAnswers function should handle missing session fields gracefully 1`] = `
+{
+  "addAssistiveTechRows": [],
+  "addExternalAuditRows": [],
+  "addInternalAuditRows": [],
+  "componentCodeRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/contribute/add-new-component/component-code",
+            "text": "Change",
+            "visuallyHiddenText": "Component Code - Code",
+          },
+        ],
+      },
+      "key": {
+        "text": "Code",
+      },
+      "value": {
+        "text": "1234",
+      },
+    },
+  ],
+  "componentDetailsRows": [],
+  "componentImageRows": [],
+  "figmaRows": [],
+  "prototypeRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/contribute/add-new-component/prototype",
+            "text": "Change",
+            "visuallyHiddenText": "Prototype - Data",
+          },
+        ],
+      },
+      "key": {
+        "text": "Data",
+      },
+      "value": {
+        "text": "Prototype data",
+      },
+    },
+  ],
+  "yourDetailsRows": [],
+}
+`;
+
+exports[`checkYourAnswers function should handle multiple entries for a field 1`] = `
+{
+  "addAssistiveTechRows": [],
+  "addExternalAuditRows": [],
+  "addInternalAuditRows": [],
+  "componentCodeRows": [],
+  "componentDetailsRows": [],
+  "componentImageRows": [],
+  "figmaRows": [],
+  "prototypeRows": [],
+  "yourDetailsRows": [],
+}
+`;
+
+exports[`checkYourAnswers function should transform session data into the expected structure 1`] = `
+{
+  "addAssistiveTechRows": [],
+  "addExternalAuditRows": [],
+  "addInternalAuditRows": [],
+  "componentCodeRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/contribute/add-new-component/component-code",
+            "text": "Change",
+            "visuallyHiddenText": "Component Code - Code",
+          },
+        ],
+      },
+      "key": {
+        "text": "Code",
+      },
+      "value": {
+        "text": "1234",
+      },
+    },
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/contribute/add-new-component/component-code",
+            "text": "Change",
+            "visuallyHiddenText": "Component Code - Language",
+          },
+        ],
+      },
+      "key": {
+        "text": "Language",
+      },
+      "value": {
+        "text": "JavaScript",
+      },
+    },
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/contribute/add-new-component/remove/component-code-details",
+            "text": "Remove",
+            "visuallyHiddenText": "Component Code Details - Detail",
+          },
+          {
+            "href": "/contribute/add-new-component/component-code-details",
+            "text": "Change",
+            "visuallyHiddenText": "Component Code Details - Detail",
+          },
+        ],
+      },
+      "key": {
+        "text": "Detail",
+      },
+      "value": {
+        "text": "Extra details",
+      },
+    },
+  ],
+  "componentDetailsRows": [],
+  "componentImageRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/contribute/add-new-component/remove/component-image",
+            "text": "Remove",
+            "visuallyHiddenText": "Component Image - Image",
+          },
+          {
+            "href": "/contribute/add-new-component/component-image",
+            "text": "Change",
+            "visuallyHiddenText": "Component Image - Image",
+          },
+        ],
+      },
+      "key": {
+        "text": "Image",
+      },
+      "value": {
+        "text": "image.png",
+      },
+    },
+  ],
+  "figmaRows": [],
+  "prototypeRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/contribute/add-new-component/prototype",
+            "text": "Change",
+            "visuallyHiddenText": "Prototype - Data",
+          },
+        ],
+      },
+      "key": {
+        "text": "Data",
+      },
+      "value": {
+        "text": "Prototype data",
+      },
+    },
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/contribute/add-new-component/remove/prototype-url",
+            "text": "Remove",
+            "visuallyHiddenText": "Prototype Url - Url",
+          },
+          {
+            "href": "/contribute/add-new-component/prototype-url",
+            "text": "Change",
+            "visuallyHiddenText": "Prototype Url - Url",
+          },
+        ],
+      },
+      "key": {
+        "text": "URL",
+      },
+      "value": {
+        "text": "http://example.com",
+      },
+    },
+  ],
+  "yourDetailsRows": [
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/contribute/add-new-component/your-details",
+            "text": "Change",
+            "visuallyHiddenText": "Your Details - Name",
+          },
+        ],
+      },
+      "key": {
+        "text": "Name",
+      },
+      "value": {
+        "text": "Sarah Philips",
+      },
+    },
+    {
+      "actions": {
+        "items": [
+          {
+            "href": "/contribute/add-new-component/your-details",
+            "text": "Change",
+            "visuallyHiddenText": "Your Details - Email",
+          },
+        ],
+      },
+      "key": {
+        "text": "Email",
+      },
+      "value": {
+        "text": "sarah@example.com",
+      },
+    },
+  ],
+}
+`;

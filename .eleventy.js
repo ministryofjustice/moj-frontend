@@ -3,6 +3,7 @@ const fs = require('fs')
 const path = require('path')
 
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
+const cheerio = require('cheerio')
 const matter = require('gray-matter')
 const hljs = require('highlight.js')
 const beautifyHTML = require('js-beautify').html
@@ -103,6 +104,45 @@ module.exports = function (eleventyConfig) {
       htmlCode,
       jsCode
     })
+  })
+
+  eleventyConfig.addShortcode('form', function (file, variables = '') {
+    try {
+      // Read the file directly
+      const filePath = path.join(__dirname, 'docs', file)
+      const fileContent = fs.readFileSync(filePath, 'utf8').trim()
+
+      // Parse front matter and extract Nunjucks code
+      const { data, content: nunjucksCode } = matter(fileContent)
+
+      let parsedVariables = {}
+
+      if (variables !== '') {
+        // Turn variables into an object
+        const fixedVariables = variables
+          .replace(/'/g, '"')
+          .replace(/(\w+):/g, '"$1":')
+
+        parsedVariables = JSON.parse(fixedVariables)
+      }
+
+      const context = { ...data, ...parsedVariables }
+
+      // Render the Nunjucks code as HTML (renderString directly processes content)
+      const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode.trim(), context)
+
+      const htmlCode = beautifyHTML(rawHtmlCode.trim(), {
+        indent_size: 2,
+        end_with_newline: true,
+        max_preserve_newlines: 1,
+        unformatted: ['code', 'pre', 'em', 'strong']
+      })
+
+      return htmlCode
+    } catch (error) {
+      console.error('Error in form shortcode:', error)
+      return `<div>Error loading file: ${file}</div>`
+    }
   })
 
   eleventyConfig.addShortcode(
@@ -296,6 +336,61 @@ module.exports = function (eleventyConfig) {
       return `/${revision || filepath}`
     }
     return `/${filepath}`
+  })
+
+  const createLayoutFromHTML = (sourceFile, destinationFile) => {
+    try {
+      const htmlContent = fs.readFileSync(sourceFile, 'utf8')
+      const $ = cheerio.load(htmlContent)
+
+      // Replace #main-content with Nunjucks block
+      const nunjucksBlock = `
+      {% block content %}
+          {{ content | safe }}
+      {% endblock %}
+      `.trim()
+      $('#main-content').html(nunjucksBlock)
+
+      // Check if we are generating a community page layout
+      const isCommunityPage = destinationFile.includes('/views/common/')
+
+      // If it's a community page, remove the class from <main>
+      if (isCommunityPage) {
+        $('main').removeAttr('class')
+      }
+
+      // Beautify HTML
+      const modifiedContent = beautifyHTML($.html(), {
+        indent_size: 2,
+        end_with_newline: true,
+        max_preserve_newlines: 1,
+        unformatted: ['code', 'pre', 'em', 'strong']
+      })
+
+      // Write the modified content back
+      fs.writeFileSync(destinationFile, modifiedContent)
+      console.log(`Generated base.njk at ${destinationFile}`)
+    } catch (error) {
+      console.error('Error during base.njk generation:', error)
+    }
+  }
+  // Create base.njk for community form based on the contribute page (to use the correct navigation)
+  eleventyConfig.on('afterBuild', () => {
+    // Add new component layout
+    const componentSourceFile = path.join(
+      __dirname,
+      'public/get-involved/contribute/index.html'
+    )
+    const componentDestinationFile = path.join(
+      __dirname,
+      'views/community/pages/base.njk'
+    )
+    createLayoutFromHTML(componentSourceFile, componentDestinationFile)
+
+    // Common layout
+    const sourceFile = path.join(__dirname, 'public/index.html')
+    const destinationFile = path.join(__dirname, 'views/common/base.njk')
+    createLayoutFromHTML(sourceFile, destinationFile)
   })
 
   eleventyConfig.addFilter('upperFirst', upperFirst)
