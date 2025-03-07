@@ -9,6 +9,7 @@
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["minor", "patch"],
       "prCreation": "immediate",
+      "rangeStrategy": "bump",
       "stabilityDays": 7
     }
   ]
