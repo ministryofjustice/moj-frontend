@@ -25,13 +25,12 @@
   </ul>
 
   <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default-{{ id }}" role="tabpanel" aria-labelledby="tab_html-default-{{ id }}">
-
-  <div data-module="app-copy" style="position:relative;">
+    <div class="app-example__code" data-module="app-copy">
 
 ```html
 {{ htmlCode | safe }}
 ```
-  </div>
+    </div>
   </div>
 
   <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default-{{ id }}" role="tabpanel" aria-labelledby="tab_nunjucks-default-{{ id }}">
@@ -51,22 +50,24 @@
   </details>
 {% endif %}
 
-  <div data-module="app-copy" style="position:relative;">
+    <div class="app-example__code" data-module="app-copy">
 
-```jinja
+```njk
 {{ nunjucksCode | safe }}
 ```
 
-  </div>
-
+    </div>
   </div>
 
 {% if jsCode %}
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default-{{ id }}" data-module="app-copy" role="tabpanel" aria-labelledby="tab_js-default-{{ id }}">
+  <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default-{{ id }}" role="tabpanel" aria-labelledby="tab_js-default-{{ id }}">
+    <div class="app-example__code" data-module="app-copy">
 
 ```js
 {{ jsCode | safe }}
 ```
+
+    </div>
   </div>
 {% endif %}
 

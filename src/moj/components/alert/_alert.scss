@@ -1,7 +1,7 @@
 @use "../../helpers/links" as *;
 @use "../../objects/width-container" as *;
 @use "../../settings/colours" as *;
-@use "../../vendor/govuk-frontend/base" as *;
+@use "../../vendor/govuk-frontend" as *;
 
 .moj-alert {
   display: -ms-grid;

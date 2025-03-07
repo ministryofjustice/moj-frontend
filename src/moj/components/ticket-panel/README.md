@@ -6,7 +6,7 @@
 
 Below is a typical example of the timeline component in use.
 
-```
+```njk
 {{ mojTicketPanel({
   attributes: {
     'aria-label': 'Sub navigation 1'

@@ -19,11 +19,13 @@ Copy.prototype.init = function () {
 }
 
 Copy.prototype.copyAction = function () {
+  const $pre = this.$module.querySelector('pre')
+
   // Copy to clipboard
   try {
     new ClipboardJS('.js-copy-button', {
-      target: function (trigger) {
-        return trigger.nextElementSibling
+      target: function () {
+        return $pre
       }
     }).on('success', function (e) {
       e.trigger.textContent = 'Code copied'

@@ -12,7 +12,7 @@ The currency input component is dependent on the following components from the [
 
 ## Examples
 
-```
+```njk
 {{ mojCurrencyInput({
   id: "amount",
   classes: "govuk-input--width-10",
@@ -29,7 +29,7 @@ The currency input component is dependent on the following components from the [
 
 ### With currency specified
 
-```
+```njk
 {{ mojCurrencyInput({
   id: "amount",
   classes: "govuk-input--width-10",

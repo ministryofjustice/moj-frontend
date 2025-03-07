@@ -15,6 +15,9 @@ const nunjucks = require('nunjucks')
 const releasePackage = require('./package/package.json')
 const mojFilters = require('./src/moj/filters/all')
 
+// Configure highlight.js
+hljs.registerAliases(['mjs', 'njk'], { languageName: 'javascript' })
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
 
@@ -45,8 +48,13 @@ module.exports = function (eleventyConfig) {
       html: true,
       typographer: true,
       quotes: '“”‘’',
-      highlight: (str, language) =>
-        language ? hljs.highlight(str, { language }).value : str
+      highlight(code, language) {
+        const { value } = hljs.highlight(code.trim(), {
+          language: language || 'plaintext'
+        })
+
+        return value
+      }
     })
       .disable('code')
       .use(markdownItAnchor, {

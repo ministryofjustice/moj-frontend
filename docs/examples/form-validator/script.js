@@ -1,4 +1,5 @@
 const validator = new MOJFrontend.FormValidator(document.forms[0])
+
 validator.addValidator('email', [
   {
     method: function (field) {
@@ -13,6 +14,7 @@ validator.addValidator('email', [
     message: 'You need to enter the ‘at’ symbol in your email address'
   }
 ])
+
 validator.addValidator('password', [
   {
     method: function (field) {
@@ -33,6 +35,7 @@ validator.addValidator('password', [
     message: 'Your password must contain at least one number'
   }
 ])
+
 validator.addValidator('location', [
   {
     method: function (field) {
@@ -41,6 +44,7 @@ validator.addValidator('location', [
     message: 'Select your location'
   }
 ])
+
 validator.addValidator('dob-day', [
   {
     method: function (field, params) {

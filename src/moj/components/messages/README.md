@@ -19,7 +19,7 @@ Object.keys(mojFilters).forEach(function (filterName) {
 
 Below is a typical example of the timeline component in use.
 
-```
+```njk
 {{ mojMessages({
   items: [
     {

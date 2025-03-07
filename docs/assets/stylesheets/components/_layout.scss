@@ -1,12 +1,21 @@
+@use "sass:math";
 @use "../govuk-frontend" as *;
 
 $app-breakpoint: 800px;
+$app-sidebar-width: 300px;
 
 .app-layout {
+  $grid-sidebar-width: 25%;
+  $grid-content-width: 75%;
+
   @include govuk-media-query($app-breakpoint) {
     display: grid;
     width: 100%;
-    grid-template-columns: min(25%, 300px) auto;
+    grid-template-columns: $grid-sidebar-width $grid-content-width;
+  }
+
+  @include govuk-media-query($govuk-page-width) {
+    grid-template-columns: $app-sidebar-width calc(100% - $app-sidebar-width);
   }
 }
 
