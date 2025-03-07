@@ -1,13 +1,21 @@
-class Tabs {
-  constructor(container) {
-    this.container = container
+import { Component } from 'govuk-frontend'
+
+class Tabs extends Component {
+  /** @type {JQuery<HTMLElement>} */
+  $module
+
+  constructor($root) {
+    super($root)
+
+    this.$module = $(this.$root)
     this.keys = { left: 37, right: 39, up: 38, down: 40 }
     this.cssHide = 'app-tabs__panel--hidden'
-    this.tabs = container.find('.app-tabs__tab')
-    this.panels = container.find('.app-tabs__panel')
-    this.container.on('click', '[role=tab]', $.proxy(this, 'onTabClick'))
-    this.container.on('keydown', '[role=tab]', $.proxy(this, 'onTabKeydown'))
-    this.container.on(
+    this.tabs = this.$module.find('.app-tabs__tab')
+    this.panels = this.$module.find('.app-tabs__panel')
+
+    this.$module.on('click', '[role=tab]', $.proxy(this, 'onTabClick'))
+    this.$module.on('keydown', '[role=tab]', $.proxy(this, 'onTabKeydown'))
+    this.$module.on(
       'click',
       '.app-tabs__close',
       $.proxy(this, 'onCloseButtonClick')
@@ -16,7 +24,7 @@ class Tabs {
   }
 
   hasTab(hash) {
-    return this.container.find(hash).length
+    return this.$module.find(hash).length
   }
 
   hideTab(tab) {
@@ -34,8 +42,8 @@ class Tabs {
   }
 
   setupHtml() {
-    this.container.find('.app-tabs__list').attr('role', 'tablist')
-    this.container.find('.app-tabs__list-item').attr('role', 'presentation')
+    this.$module.find('.app-tabs__list').attr('role', 'tablist')
+    this.$module.find('.app-tabs__list-item').attr('role', 'presentation')
     this.tabs.attr('role', 'tab')
     this.panels.attr('role', 'tabpanel')
     this.tabs.each(
@@ -128,7 +136,7 @@ class Tabs {
   }
 
   getCurrentTab() {
-    return this.container.find('[role=tab][aria-selected=true]')
+    return this.$module.find('[role=tab][aria-selected=true]')
   }
 
   // this is because IE doesn't always return the actual value but a relative full path
@@ -144,6 +152,11 @@ class Tabs {
     this.hideTab(currentTab)
     this.tabs.first().focus()
   }
+
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'app-tabs'
 }
 
 export default Tabs
