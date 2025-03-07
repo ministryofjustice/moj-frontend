@@ -8,9 +8,7 @@ describe('previousPage function', () => {
       hasComponentBeenTestedExternalAccessibility: 'yes'
     }
     const result = previousPage('/add-external-audit', session)
-    expect(result).toBe(
-      '/contribute/add-new-component/accessibility-findings'
-    )
+    expect(result).toBe('/contribute/add-new-component/accessibility-findings')
   })
 
   it('should skip pages if conditions are not met', () => {
@@ -24,9 +22,7 @@ describe('previousPage function', () => {
       hasComponentBeenTestedUsingAssistiveTechnology: 'yes'
     }
     const result = previousPage('/add-assistive-tech', session)
-    expect(result).toBe(
-      '/contribute/add-new-component/accessibility-findings'
-    )
+    expect(result).toBe('/contribute/add-new-component/accessibility-findings')
   })
 
   it('should return null if there are no previous pages', () => {
