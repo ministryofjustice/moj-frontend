@@ -86,6 +86,21 @@ module.exports = {
           }
         ],
 
+        // Ignore `@ministryofjustice/frontend` exports as ESLint can run
+        // before output from `npm run build:package` is available
+        'import/no-unresolved': [
+          'error',
+          { ignore: ['@ministryofjustice/frontend'] }
+        ],
+        'n/no-missing-import': [
+          'error',
+          { allowModules: ['@ministryofjustice/frontend'] }
+        ],
+        'n/no-missing-require': [
+          'error',
+          { allowModules: ['@ministryofjustice/frontend'] }
+        ],
+
         // Automatically use template strings
         'no-useless-concat': 'error',
         'prefer-template': 'error',
