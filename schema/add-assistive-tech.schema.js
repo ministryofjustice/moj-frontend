@@ -1,6 +1,8 @@
 const Joi = require('joi')
 const moment = require('moment')
 
+const maxWords = require('../helpers/max-words')
+
 const schema = Joi.object({
   'testingDate-day': Joi.string()
     .pattern(/^\d{1,2}$/)
@@ -47,7 +49,13 @@ const schema = Joi.object({
       'any.invalid': '{{#message}}'
     }),
 
-  issuesDiscovered: Joi.string().optional().allow(null, ''),
+  issuesDiscovered: Joi.string()
+    .optional()
+    .allow(null, '')
+    .custom((value, helpers) => maxWords(value, helpers, 250))
+    .messages({
+      'custom.max.words': 'There must be 250 words or less'
+    }),
 
   accessibilityReport: Joi.string()
     .allow('')

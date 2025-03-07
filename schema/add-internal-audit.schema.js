@@ -1,6 +1,8 @@
 const Joi = require('joi')
 const moment = require('moment')
 
+const maxWords = require('../helpers/max-words')
+
 const schema = Joi.object({
   internalOrganisation: Joi.string().required().messages({
     'any.required':
@@ -65,7 +67,13 @@ const schema = Joi.object({
     })
     .optional(),
 
-  issuesDiscovered: Joi.string().optional().allow(null, '')
+  issuesDiscovered: Joi.string()
+    .optional()
+    .allow(null, '')
+    .custom((value, helpers) => maxWords(value, helpers, 250))
+    .messages({
+      'custom.max.words': 'There must be 250 words or less'
+    })
 })
 
 module.exports = schema

@@ -40,7 +40,7 @@ const validateFormData = (req, res, next) => {
   const schema = require(`../schema/${schemaName}.schema`)
   const body = extractBody(req?.url, { ...req.body })
   delete body._csrf
-  const { error, value } = schema.validate(body, { abortEarly: false })
+  const { error } = schema.validate(body, { abortEarly: false })
   const dateFields = ['auditDate', 'testingDate']
 
   if (error) {
@@ -80,7 +80,6 @@ const validateFormData = (req, res, next) => {
       csrfToken: req?.session?.csrfToken
     })
   } else {
-    console.debug('Validation success:', value)
     next()
   }
 }
