@@ -374,12 +374,12 @@ module.exports = function (eleventyConfig) {
       console.error('Error during base.njk generation:', error)
     }
   }
-  // Create base.njk for community form based on the add-new-component page (to use the correct navigation)
+  // Create base.njk for community form based on the contribute page (to use the correct navigation)
   eleventyConfig.on('afterBuild', () => {
     // Add new component layout
     const componentSourceFile = path.join(
       __dirname,
-      'public/get-involved/add-new-component/index.html'
+      'public/get-involved/contribute/index.html'
     )
     const componentDestinationFile = path.join(
       __dirname,
