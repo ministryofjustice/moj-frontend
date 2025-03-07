@@ -1,0 +1,8 @@
+// Declare all settings
+@forward "settings/all";
+
+// Configure GOV.UK Frontend
+@forward "vendor/govuk-frontend";
+
+// Partials that depend on GOV.UK Frontend
+@forward "helpers/all";

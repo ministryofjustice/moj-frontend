@@ -1,5 +1,5 @@
 @use "../settings/measurements" as *;
-@use "../vendor/govuk-frontend/base" as *;
+@use "../vendor/govuk-frontend" as *;
 
 @mixin moj-width-container($width: $moj-page-width) {
   // Limit the width of the container to the page width

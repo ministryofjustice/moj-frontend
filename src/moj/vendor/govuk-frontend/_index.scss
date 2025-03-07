@@ -1,0 +1,21 @@
+// Declare all settings
+@forward "../../settings/all";
+
+// Use settings for overrides
+@use "../../settings/all" as *;
+
+// GOV.UK Frontend with settings
+@forward "base" with (
+  // Assets override
+  $govuk-assets-path: $moj-assets-path,
+  $govuk-images-path: $moj-images-path,
+  $govuk-fonts-path: $moj-fonts-path,
+
+  // Measurements override
+  $govuk-gutter: $moj-gutter,
+  $govuk-page-width: $moj-page-width,
+
+  // Typography override
+  $govuk-font-family: $moj-font-family,
+  $govuk-include-default-font-face: $moj-include-default-font-face
+);
