@@ -4,16 +4,21 @@
 
 ### Installation
 
-You will need to install the following code at the bottom of `server.js`, just above `module.exports = app`
+You will need to install the MoJ Frontend Nunjucks filters to use the `mojTimeline()` Nunjucks macro:
 
-```js
-const mojFilters = require('@ministryofjustice/frontend/moj/filters/all')
+1. Import the filters
 
-// Add filters from MoJ Frontend
-for (const [name, filter] of Object.entries(mojFilters())) {
-  nunjucksAppEnv.addFilter(name, filter)
-}
-```
+   ```mjs
+   import mojFilters from '@ministryofjustice/frontend/moj/filters/all.js'
+   ```
+
+2. Add the filters to your Nunjucks environment
+
+   ```mjs
+   for (const [name, filter] of Object.entries(mojFilters())) {
+     nunjucksAppEnv.addFilter(name, filter)
+   }
+   ```
 
 ## Example
 
