@@ -4,15 +4,15 @@
 
 ### Installation
 
-You will need to install the following code at the bottom of `server.js`, just above `module.exports = app;`
+You will need to install the following code at the bottom of `server.js`, just above `module.exports = app`
 
-```
-// Add filters from MOJ Frontend
-let mojFilters = require('./node_modules/@ministryofjustice/frontend/filters/all')();
-mojFilters = Object.assign(mojFilters);
-Object.keys(mojFilters).forEach(function (filterName) {
-  nunjucksAppEnv.addFilter(filterName, mojFilters[filterName])
-});
+```js
+const mojFilters = require('@ministryofjustice/frontend/moj/filters/all')
+
+// Add filters from MoJ Frontend
+for (const [name, filter] of Object.entries(mojFilters())) {
+  nunjucksAppEnv.addFilter(name, filter)
+}
 ```
 
 ## Example
