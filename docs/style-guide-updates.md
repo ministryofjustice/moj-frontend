@@ -37,7 +37,7 @@ permalink: content-standards/style-guide-updates/
       <td class="govuk-table__cell">
         <span class="govuk-tag govuk-tag--blue">Updated</span>
       </td>
-      <td class="govuk-table__cell">Category can be shortened to ‘Cat‘ if space is limited, for example in alert flags on the prisoner profile.</td>
+      <td class="govuk-table__cell">Category can be shortened to ‘Cat’ if space is limited, for example in alert flags on the prisoner profile.</td>
       <td class="govuk-table__cell" data-sort-value="20250221">21 February 2025</td>
     </tr>
     <tr class="govuk-table__row">
@@ -47,7 +47,7 @@ permalink: content-standards/style-guide-updates/
       <td class="govuk-table__cell">
         <span class="govuk-tag govuk-tag--green">New</span>
       </td>
-      <td class="govuk-table__cell">A new entry on how to use the terms ‘prison‘ and ‘establishment‘.
+      <td class="govuk-table__cell">A new entry on how to use the terms ‘prison’ and ‘establishment’.
 
       It includes guidance on how to refer to adult prisons, young offender institutions (YOIs) and other establishments.
 
