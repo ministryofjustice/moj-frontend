@@ -13,6 +13,8 @@
       "default": "./moj/all.js"
     },
     "./*": "./*",
+    "./moj/filters/*": "./moj/filters/*.js",
+    "./moj/filters/*.js": "./moj/filters/*.js",
     "./package.json": "./package.json"
   },
   "sideEffects": false,
