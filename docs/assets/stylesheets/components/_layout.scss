@@ -2,11 +2,11 @@
 @use "../govuk-frontend" as *;
 
 $app-breakpoint: 800px;
-$govuk-page-width: 1220px;
+$app-sidebar-width: 300px;
 
 .app-layout {
-  $grid-sidebar-width: math.percentage(math.div(300px, $govuk-page-width));
-  $grid-content-width: 100% - $grid-sidebar-width;
+  $grid-sidebar-width: 25%;
+  $grid-content-width: 75%;
 
   @include govuk-media-query($app-breakpoint) {
     display: grid;
@@ -15,7 +15,7 @@ $govuk-page-width: 1220px;
   }
 
   @include govuk-media-query($govuk-page-width) {
-    grid-template-columns: 300px calc(100% - 300px);
+    grid-template-columns: $app-sidebar-width calc(100% - $app-sidebar-width);
   }
 }
 
