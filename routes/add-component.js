@@ -20,7 +20,8 @@ const {
   getBackLink,
   getFormSummaryListForRemove,
   removeFromSession,
-  sessionStarted
+  sessionStarted,
+  validateFormDataFileUpload
 } = require('../middleware/component-session')
 const { generateMarkdown } = require('../middleware/generate-documentation')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
@@ -29,7 +30,10 @@ const {
   sendPrEmail
 } = require('../middleware/notify-email')
 const verifyCsrf = require('../middleware/verify-csrf')
-const upload = multer({ storage: multer.memoryStorage() })
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 10 * 1024 * 1024 } // 10MB
+})
 const router = express.Router()
 
 const isValidComponentFormPage = (req, res, next) => {
@@ -222,6 +226,7 @@ router.post(
 router.post(
   '/component-image',
   upload.single('componentImage'),
+  validateFormDataFileUpload,
   verifyCsrf,
   validateFormData,
   saveSession,
@@ -241,7 +246,8 @@ router.post(
 // Accessibility file upload
 router.post(
   ['/add-internal-audit', '/add-external-audit', '/add-assistive-tech'],
-  upload.single('accessibilityReport')
+  upload.single('accessibilityReport'),
+  validateFormDataFileUpload
 )
 
 // Form submissions for pages

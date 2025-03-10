@@ -35,6 +35,44 @@ const setNextPage = (req, res, next) => {
   next()
 }
 
+const errorTemplateVariables = (
+  req,
+  formErrors,
+  errorList,
+  formErrorStyles = null
+) => {
+  return {
+    submitUrl: req.originalUrl,
+    formData: req.body,
+    formErrorStyles,
+    formErrors,
+    errorList,
+    backLink: req?.backLink || false,
+    addAnother: req?.params?.subpage || 1,
+    showAddAnother: 'addAnother' in (req.body || {}),
+    skipQuestion: req?.skipQuestion || false,
+    csrfToken: req?.session?.csrfToken
+  }
+}
+
+const validateFormDataFileUpload = (err, req, res, next) => {
+  if (err.code === 'LIMIT_FILE_SIZE') {
+    const errorMessage = 'The selected file must be smaller than 10MB'
+    const formErrors = {}
+    formErrors[err.field] = { text: errorMessage }
+    const errors = [{ message: errorMessage, path: [err.field] }]
+    const errorList = transformErrorsToErrorList(errors)
+    res
+      .status(400)
+      .render(
+        `${req.params.page || req.url.replace('/', '')}`,
+        errorTemplateVariables(req, formErrors, errorList)
+      )
+  } else {
+    next()
+  }
+}
+
 const validateFormData = (req, res, next) => {
   const schemaName = req.url.split('/')[1]
   const schema = require(`../schema/${schemaName}.schema`)
@@ -66,19 +104,12 @@ const validateFormData = (req, res, next) => {
     })
 
     const errorList = transformErrorsToErrorList(error.details)
-
-    res.status(400).render(`${req.params.page}`, {
-      submitUrl: req.originalUrl,
-      formData: req.body,
-      formErrorStyles,
-      formErrors,
-      errorList,
-      backLink: req?.backLink || false,
-      addAnother: req?.params?.subpage || 1,
-      showAddAnother: 'addAnother' in (req.body || {}),
-      skipQuestion: req?.skipQuestion || false,
-      csrfToken: req?.session?.csrfToken
-    })
+    res
+      .status(400)
+      .render(
+        `${req.params.page}`,
+        errorTemplateVariables(req, formErrors, errorList, formErrorStyles)
+      )
   } else {
     next()
   }
@@ -205,5 +236,6 @@ module.exports = {
   getBackLink,
   getFormSummaryListForRemove,
   removeFromSession,
-  sessionStarted
+  sessionStarted,
+  validateFormDataFileUpload
 }
