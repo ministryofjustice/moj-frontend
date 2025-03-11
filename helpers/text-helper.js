@@ -1,3 +1,4 @@
+const sanitizeHtml = require("sanitize-html");
 const toCamelCaseWithRows = (str) => {
   return `${str
     .replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
@@ -29,9 +30,30 @@ const urlToTitleCase = (str) => {
     .join(' ')
 }
 
+const truncateText = (text, maxWords) => {
+  try {
+    const words = String(text).split(' ')
+    if (words.length > maxWords) {
+      return `${words.slice(0, maxWords).join(' ')}...`
+    }
+    return text
+  } catch (e) {
+    console.error('Truncate text: ', e)
+  }
+}
+
+const sanitizeText = (text) => {
+  return sanitizeHtml(String(text), {
+    allowedTags: [],
+    allowedAttributes: {}
+  })
+}
+
 module.exports = {
   toCamelCaseWithRows,
   humanReadableLabel,
   urlToTitleCase,
-  replaceAcronyms
+  replaceAcronyms,
+  truncateText,
+  sanitizeText
 }

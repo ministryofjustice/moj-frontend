@@ -4,14 +4,17 @@ const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ACRONYMS_TO_UPPERCASE: acronyms,
   CHECK_YOUR_ANSWERS_LABEL_MAPPING,
-  SHARE_YOUR_DETAILS: shareYourDetails
+  SHARE_YOUR_DETAILS: shareYourDetails,
+  CHECK_YOUR_ANSWERS: checkYourAnswersConfig
 } = require('../config')
 
 const { combineDateFields } = require('./date-fields')
 const {
   toCamelCaseWithRows,
   humanReadableLabel: humanReadableLabelText,
-  replaceAcronyms
+  replaceAcronyms,
+  truncateText,
+  sanitizeText
 } = require('./text-helper')
 
 const mappedLabels = Object.keys(CHECK_YOUR_ANSWERS_LABEL_MAPPING)
@@ -24,25 +27,6 @@ const humanReadableLabel = (text) => {
     return CHECK_YOUR_ANSWERS_LABEL_MAPPING[text]
   }
   return humanReadableLabelText(text)
-}
-
-const truncateText = (text, maxWords) => {
-  try {
-    const words = String(text).split(' ')
-    if (words.length > maxWords) {
-      return `${words.slice(0, maxWords).join(' ')}...`
-    }
-    return text
-  } catch (e) {
-    console.error('oh no', e) // todo better error needed!
-  }
-}
-
-const sanitizeText = (text) => {
-  return sanitizeHtml(String(text), {
-    allowedTags: [],
-    allowedAttributes: {}
-  })
 }
 
 const answersFromSession = (forms, canRemove, session, ignoreFields) => {
@@ -195,37 +179,13 @@ const extractFieldData = (
 }
 
 const checkYourAnswers = (session) => {
-  const forms = [
-    'component-details',
-    'component-image',
-    'add-external-audit',
-    'add-internal-audit',
-    'add-assistive-tech',
-    ['prototype', 'prototype-url'],
-    ['figma', 'figma-link'],
-    ['component-code', 'component-code-details'],
-    'your-details'
-  ]
-  const canRemoveStatic = [
-    '/component-image',
-    '/accessibility-findings',
-    '/prototype-url',
-    '/figma-link',
-    '/component-code-details',
-    '/add-external-audit',
-    '/add-internal-audit',
-    '/add-assistive-tech'
-  ]
-  const canRemoveMultiples = [
-    '/prototype-url',
-    '/figma-link',
-    '/component-code-details'
-  ]
-  const ignoreFields = [
-    'componentPrototypeUrl',
-    'figmaUrl',
-    'componentCodeAvailable'
-  ]
+  const {
+    forms,
+    canRemoveStatic,
+    canRemoveMultiples,
+    ignoreFields
+  } = checkYourAnswersConfig
+
   const canRemove = [
     ...canRemoveStatic,
     ...canRemoveMultiples.flatMap((item) =>

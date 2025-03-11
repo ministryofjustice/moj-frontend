@@ -114,6 +114,39 @@ const config = {
     figmaLinkAdditionalInformation: 'Additional information',
     shareYourDetails: 'Share your details on the component page'
   },
+  CHECK_YOUR_ANSWERS: {
+    forms: [
+      'component-details',
+      'component-image',
+      'add-external-audit',
+      'add-internal-audit',
+      'add-assistive-tech',
+      ['prototype', 'prototype-url'],
+      ['figma', 'figma-link'],
+      ['component-code', 'component-code-details'],
+      'your-details'
+    ],
+    canRemoveStatic: [
+      '/component-image',
+      '/accessibility-findings',
+      '/prototype-url',
+      '/figma-link',
+      '/component-code-details',
+      '/add-external-audit',
+      '/add-internal-audit',
+      '/add-assistive-tech'
+    ],
+    canRemoveMultiples: [
+      '/prototype-url',
+      '/figma-link',
+      '/component-code-details'
+    ],
+    ignoreFields: [
+      'componentPrototypeUrl',
+      'figmaUrl',
+      'componentCodeAvailable'
+    ]
+  },
   SHARE_YOUR_DETAILS: {
     addNameToComponentPage: 'Add name and email address to component page',
     addTeamNameWhenRequested: 'Only share name and email when requested',
