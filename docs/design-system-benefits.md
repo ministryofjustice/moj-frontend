@@ -27,7 +27,7 @@ Changes to the MoJ and GOV.UK Design Systems are made to:
 - 3 Figma Kits, which then update the attached components in Figma prototypes
 - MoJ Frontend, which then update coded prototypes and live services
 
-Read more about [how Figma prototypes are updated](/prototyping/setting-up-figma-prototypes/) and about [setting up coded prototypes](/production/install-moj-frontend/).
+Read more about [how Figma prototypes are updated](/prototyping/setting-up-figma-prototypes/) and about [setting up coded prototypes](/prototyping/setting-up-coded-prototypes/).
 
 ## 2. Make services more consistent
 

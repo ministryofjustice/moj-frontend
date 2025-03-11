@@ -29,7 +29,7 @@ Raising an issue ensures they are openly discussed and before spending any time 
 
 ## Contributing code
 
-### Node Versions
+### Node.js versions
 
 We recommend using [Node Version Manager](https://github.com/nvm-sh/nvm#installing-and-updating) while working on this project.
 

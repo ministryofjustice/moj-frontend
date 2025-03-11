@@ -98,7 +98,10 @@
       }) }}
 
       <div class="govuk-grid-row">
-        {% call card({ "layout": "full", "title": "How to choose the right prototyping tool" }) %}
+        {% call card({
+          layout: "full",
+          title: "How to choose the right prototyping tool"
+        }) %}
           <p>
             You can prototype using paper, Figma or a coded prototype. Understand which method you need for your task.
           </p>
@@ -106,14 +109,20 @@
         {% endcall %}
       </div>
       <div class="govuk-grid-row">
-        {% call card({ "layout": "side-by-side", "title": "How to set up Figma prototypes" }) %}
+        {% call card({
+          layout: "side-by-side",
+          title: "How to set up Figma prototypes"
+        }) %}
           <p>
             Figma Kits help people to create consistent designs. Learn how to use them in your design files.
           </p>
           <a class="gov-link" href="/prototyping/setting-up-figma-prototypes/">How to set up Figma prototypes</a>
         {% endcall %}
 
-        {% call card({ "layout": "side-by-side", "title": "How to set up coded prototypes" }) %}
+        {% call card({
+          layout: "side-by-side",
+          title: "How to set up coded prototypes"
+        }) %}
           <p>
             Learn how to create coded prototypes using the MoJ Design System and GOV.UK Prototype Kit.
           </p>
@@ -131,19 +140,29 @@
         size: "large"
       }) }}
 
-      <div class="govuk-grid-row">
-        {% call card({ "layout": "side-by-side", "title": "Install MoJ Frontend" }) %}
+      <div class="govuk-grid-row govuk-!-margin-bottom-8">
+        {% call card({
+          layout: "side-by-side",
+          title: "Install MoJ Frontend"
+        }) %}
           <p>
-            Learn how to set up your project so you can start using MoJ styles and coded examples in production.
+            MoJ Frontend provides the elements developers need to create consistent, easy to use, fast and secure government services.
           </p>
-          <a class="gov-link" href="/production/install-moj-frontend/">How to install MoJ Frontend</a>
+          <p class="govuk-!-margin-bottom-0">
+            <a href="/production/moj-frontend">Read our technical documentation</a> or <a href="/production/installing-with-npm/">install with Node.js package manager (npm)</a>.
+          </p>
         {% endcall %}
 
-        {% call card({ "layout": "side-by-side", "title": "Set up JavaScript" }) %}
-          <p>
-            Adding code to your service will set up JavaScript and enable full use of all MoJ components.
-          </p>
-          <a class="gov-link" href="/production/setting-up-javascript/">How to set up JavaScript</a>
+        {% call card({
+          layout: "side-by-side",
+          title: "Find out more"
+        }) %}
+          <ul class="govuk-list">
+            <li><a class="gov-link" href="/production/use-nunjucks/">Use Nunjucks</a></li>
+            <li><a class="gov-link" href="/production/import-css/">Import CSS</a></li>
+            <li><a class="gov-link" href="/production/import-font-and-image-assets/">Import font and image assets</a></li>
+            <li><a class="gov-link" href="/production/import-javascript/">Import JavaScript</a></li>
+          </ul>
         {% endcall %}
       </div>
     </section>
