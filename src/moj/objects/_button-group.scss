@@ -59,6 +59,7 @@
     margin-bottom: 0;
   }
 
+  // Set button menu to full width on mobile to match GOV.UK Frontend
   @include govuk-media-query($until: tablet) {
     .moj-button-menu,
     .moj-button-menu__wrapper,
@@ -73,7 +74,7 @@
 
   // On tablet and above, we also introduce a 'column gap' between the
   // buttons and links in each row and left align links
-  @include govuk-media-query($from: tablet) {
+  @mixin moj-button-group-inline() {
     // Cancel out the column gap for the last item in each row
     margin-right: ($horizontal-gap * -1);
 
@@ -84,6 +85,7 @@
     .govuk-button,
     .govuk-link,
     .moj-button-menu {
+      width: auto;
       margin-right: $horizontal-gap;
     }
 
@@ -94,5 +96,17 @@
     .govuk-link {
       text-align: left;
     }
+  }
+
+  // Inline buttons on mobile (optional)
+  &--inline {
+    @include govuk-media-query($until: tablet) {
+      @include moj-button-group-inline;
+    }
+  }
+
+  // Inline buttons on tablet and desktop
+  @include govuk-media-query($from: tablet) {
+    @include moj-button-group-inline;
   }
 }

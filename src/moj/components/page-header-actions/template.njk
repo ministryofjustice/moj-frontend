@@ -10,7 +10,7 @@
     </div>
     {% if params.items %}
         <div class="moj-page-header-actions__actions">
-            <div class="moj-button-group">
+            <div class="moj-button-group moj-button-group--inline">
                 {% for button in params.items %}
                     {{ govukButton(button) }}
                 {% endfor %}
