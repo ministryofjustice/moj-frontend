@@ -1,5 +1,3 @@
-const sanitizeHtml = require('sanitize-html')
-
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ACRONYMS_TO_UPPERCASE: acronyms,
@@ -22,6 +20,11 @@ const hrefRoot = '/contribute/add-new-component'
 const maxWords = 10
 const shareYourDetailsKeys = Object.keys(shareYourDetails)
 
+/**
+ * Converts a text label to a human-readable format using a predefined mapping.
+ * @param {string} text - The text label to convert.
+ * @returns {string} - The human-readable label.
+ */
 const humanReadableLabel = (text) => {
   if (mappedLabels.includes(text)) {
     return CHECK_YOUR_ANSWERS_LABEL_MAPPING[text]
@@ -29,6 +32,14 @@ const humanReadableLabel = (text) => {
   return humanReadableLabelText(text)
 }
 
+/**
+ * Extracts and formats answers from session data based on provided forms.
+ * @param {Array} forms - The forms to extract answers from.
+ * @param {Array} canRemove - The fields that can be removed via a UI action.
+ * @param {Object} session - The session data.
+ * @param {Array} ignoreFields - The fields to ignore.
+ * @returns {Object} - The formatted answers for govukSummaryList.
+ */
 const answersFromSession = (forms, canRemove, session, ignoreFields) => {
   return forms.reduce((acc, form) => {
     if (Array.isArray(form)) {
@@ -44,6 +55,11 @@ const answersFromSession = (forms, canRemove, session, ignoreFields) => {
   }, {})
 }
 
+/**
+ * Converts an array of values into an HTML list.
+ * @param {Array} values - The values to convert.
+ * @returns {string} - The HTML list.
+ */
 const listHTML = (values) => {
   if (!Array.isArray(values)) return ''
 
@@ -51,6 +67,11 @@ const listHTML = (values) => {
   return `<ul>${listItems}</ul>`
 }
 
+/**
+ * Replaces specific values in the session data with predefined values.
+ * @param {string|Array} value - The value(s) to replace.
+ * @returns {string} - The replaced value(s) as an HTML list.
+ */
 const shareYourDetailsValueReplacement = (value) => {
   const values = Array.isArray(value) ? value : [value]
   return listHTML(
@@ -63,6 +84,14 @@ const shareYourDetailsValueReplacement = (value) => {
   )
 }
 
+/**
+ * Extracts and formats data for a specific field from the session.
+ * @param {string} field - The field to extract data for.
+ * @param {Object} session - The session data.
+ * @param {Array} [canRemove=[]] - The fields that can be removed.
+ * @param {Array} [ignoreFields=[]] - The fields to ignore.
+ * @returns {Array} - The extracted and formatted field data.
+ */
 const extractFieldData = (
   field,
   session,
@@ -72,7 +101,7 @@ const extractFieldData = (
   const fieldName = field
   const fieldPath = `/${field}`
 
-  // Remove ignored fields
+  // Remove ignored fields from session data
   const parsedSession = Object.entries(session).reduce((acc, [key, value]) => {
     if (typeof value === 'object' && !Array.isArray(value)) {
       ignoreFields.forEach((ignoreField) => {
@@ -95,7 +124,7 @@ const extractFieldData = (
 
   return matchingEntries.flatMap(([key, value]) => {
     if (typeof value === 'object' && !Array.isArray(value)) {
-      // multiple entries
+      // Handle multiple entries
       const values = combineDateFields(value)
       let removeAdded = false
       return Object.entries(values).map(([subKey, subValue]) => {
@@ -165,7 +194,7 @@ const extractFieldData = (
       )
     })
 
-    // single entry
+    // Handle single entry
     return [
       {
         key: { text: replaceAcronyms(humanReadableLabel(fieldName), acronyms) },
@@ -178,14 +207,20 @@ const extractFieldData = (
   })
 }
 
+/**
+ * Main function that processes the session data and returns formatted answers for govukSummaryList.
+ * @param {Object} session - The session data.
+ * @returns {Object} - The formatted answers.
+ */
 const checkYourAnswers = (session) => {
   const {
-    forms,
-    canRemoveStatic,
-    canRemoveMultiples,
-    ignoreFields
+    forms, // The forms to extract answers from
+    canRemoveStatic, // The fields that can be removed via a UI action
+    canRemoveMultiples, // The fields that can be removed via a UI action (where we have dyamically multiple versions)
+    ignoreFields// The fields to ignore i.e. not to display in the check your answers
   } = checkYourAnswersConfig
 
+  // Generate a list of fields that can be removed
   const canRemove = [
     ...canRemoveStatic,
     ...canRemoveMultiples.flatMap((item) =>
@@ -194,4 +229,5 @@ const checkYourAnswers = (session) => {
   ]
   return answersFromSession(forms, canRemove, session, ignoreFields)
 }
+
 module.exports = checkYourAnswers
