@@ -1,3 +1,42 @@
+# [4.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.7.0...v4.0.0) (2025-03-11)
+
+
+### Bug Fixes
+
+* 1238 missing articles on index pages ([#1239](https://github.com/ministryofjustice/moj-frontend/issues/1239)) ([e582f75](https://github.com/ministryofjustice/moj-frontend/commit/e582f750bd6c388c17d6c1d5c186f076904e1e45))
+* add ‘Alert’ to GOV.UK Prototype Kit ([75e324d](https://github.com/ministryofjustice/moj-frontend/commit/75e324d0aeaf0376ccd14434102916c062caa3ec))
+* add ‘Date picker’ to GOV.UK Prototype Kit ([cb4d306](https://github.com/ministryofjustice/moj-frontend/commit/cb4d306207d66d84f315fcbf8e53beb32c767c4b))
+* add ‘Multi file upload’ to GOV.UK Prototype Kit ([6f1cc71](https://github.com/ministryofjustice/moj-frontend/commit/6f1cc7196770326ddc2b37de2183411e07dc3a81))
+* **alert:** avoid Sass deprecated `mixed-decls` ([d9db60d](https://github.com/ministryofjustice/moj-frontend/commit/d9db60da7aa54361085ad2b6e0b474773b6613db))
+* **alert:** fix line-height on smaller screens ([#1202](https://github.com/ministryofjustice/moj-frontend/issues/1202)) ([a13fac4](https://github.com/ministryofjustice/moj-frontend/commit/a13fac4dad77979c923f0315808124c07159452d))
+* avoid Sass deprecated `color-functions` and `global-builtin` ([cc1cc95](https://github.com/ministryofjustice/moj-frontend/commit/cc1cc95da7e28a3ac15f1291e84fc6566e444fb0))
+* avoid Sass deprecated `mixed-decls` ([3b9d489](https://github.com/ministryofjustice/moj-frontend/commit/3b9d4890d93d61d1613021cae630b5586b248faf))
+* avoid Sass deprecated `slash-div` ([72c187e](https://github.com/ministryofjustice/moj-frontend/commit/72c187e23b3ce6a4c8e979a49d1534600ceb22ec))
+* **button menu:** item classes now only applied to the correct item ([#1265](https://github.com/ministryofjustice/moj-frontend/issues/1265)) ([423c61c](https://github.com/ministryofjustice/moj-frontend/commit/423c61c92d2d9f4a8033bce7e73fe80bbf195add)), closes [#969](https://github.com/ministryofjustice/moj-frontend/issues/969)
+* ensure default `[@font-face](https://github.com/font-face)` can be excluded ([afe5f72](https://github.com/ministryofjustice/moj-frontend/commit/afe5f72eb4795d6d4ffa77f890c2bed6d250ef4e))
+* maintain `require()` compatibility for filters ([b25ec12](https://github.com/ministryofjustice/moj-frontend/commit/b25ec1257f8e10ebbeb204955a7315224e9a43fb))
+* **multi file upload:** Remove spurious ; characters from html ([#1200](https://github.com/ministryofjustice/moj-frontend/issues/1200)) ([e5a1968](https://github.com/ministryofjustice/moj-frontend/commit/e5a196860cb38eb847e0aca5b9b6a26fad93c5a1))
+* remove button group `[@extend](https://github.com/extend)` to avoid duplicate styles ([403d3d0](https://github.com/ministryofjustice/moj-frontend/commit/403d3d065b1fc49d201c447c06ddd6397d95e8ef))
+* render button menu without`--inline` modifier ([fd8802f](https://github.com/ministryofjustice/moj-frontend/commit/fd8802fd69702fe58fd2156b119465391f12d31b))
+* support `assetPath` for header PNG fallbacks ([686a878](https://github.com/ministryofjustice/moj-frontend/commit/686a878fe90902f314edfe9f9d7bf62aeaaf7c7b))
+
+
+### Documentation
+
+* review and update production guidance ([#1252](https://github.com/ministryofjustice/moj-frontend/issues/1252)) ([13f8002](https://github.com/ministryofjustice/moj-frontend/commit/13f8002df691b37e42df37c00ab9e62c00c95f6e))
+
+
+### Features
+
+* exclude `[@font-face](https://github.com/font-face)` by default ([73bb09d](https://github.com/ministryofjustice/moj-frontend/commit/73bb09d92cbe7021cc4484757282e715d4a98030))
+* migrate to Sass modules ([53b6b68](https://github.com/ministryofjustice/moj-frontend/commit/53b6b687beb1df8246d04f9f393f43671b2067e5))
+* split out “base” Sass partial to align with GOV.UK Frontend ([f1ee95a](https://github.com/ministryofjustice/moj-frontend/commit/f1ee95afc830a1ed779e342863803a98e0423167))
+
+
+### BREAKING CHANGES
+
+* Ruby Sass, LibSass and Node Sass are no longer supported
+
 # [3.7.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.6.3...v3.7.0) (2025-02-26)
 
 
