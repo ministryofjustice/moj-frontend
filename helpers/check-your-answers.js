@@ -3,34 +3,28 @@ const sanitizeHtml = require('sanitize-html')
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ACRONYMS_TO_UPPERCASE: acronyms,
-  CHECK_YOUR_ANSWERS_LABEL_MAPPING
+  CHECK_YOUR_ANSWERS_LABEL_MAPPING,
+  SHARE_YOUR_DETAILS: shareYourDetails
 } = require('../config')
 
 const { combineDateFields } = require('./date-fields')
 const {
   toCamelCaseWithRows,
-  formatLabel: formatLabelText,
+  humanReadableLabel: humanReadableLabelText,
   replaceAcronyms
 } = require('./text-helper')
 
 const mappedLabels = Object.keys(CHECK_YOUR_ANSWERS_LABEL_MAPPING)
 const hrefRoot = '/contribute/add-new-component'
 const maxWords = 10
+const shareYourDetailsKeys = Object.keys(shareYourDetails)
 
-const formatLabel = (text) => {
+const humanReadableLabel = (text) => {
   if (mappedLabels.includes(text)) {
     return CHECK_YOUR_ANSWERS_LABEL_MAPPING[text]
   }
-  return formatLabelText(text)
+  return humanReadableLabelText(text)
 }
-
-const shareYourDetails = {
-  addNameToComponentPage: 'Add name and email address to component page',
-  addTeamNameWhenRequested: 'Only share name and email when requested',
-  doNotSharePersonalDetails: 'Do not share personal details'
-}
-
-const shareYourDetailsKeys = Object.keys(shareYourDetails)
 
 const truncateText = (text, maxWords) => {
   try {
@@ -145,18 +139,18 @@ const extractFieldData = (
           actionItems.push({
             href: `${hrefRoot}/remove${key}`,
             text: 'Remove',
-            visuallyHiddenText: `${formatLabel(fieldName)} - ${formatLabel(subKey)}`
+            visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey)}`
           })
         }
 
         actionItems.push({
           href: `${hrefRoot}${key}`,
           text: 'Change',
-          visuallyHiddenText: `${formatLabel(fieldName)} - ${formatLabel(subKey)}`
+          visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey)}`
         })
 
         return {
-          key: { text: replaceAcronyms(formatLabel(subKey), acronyms) },
+          key: { text: replaceAcronyms(humanReadableLabel(subKey), acronyms) },
           ...displayValue,
           actions: {
             items: actionItems
@@ -171,20 +165,26 @@ const extractFieldData = (
       actionItems.push({
         href: `${hrefRoot}/remove${key}`,
         text: 'Remove',
-        visuallyHiddenText: replaceAcronyms(formatLabel(fieldName), acronyms)
+        visuallyHiddenText: replaceAcronyms(
+          humanReadableLabel(fieldName),
+          acronyms
+        )
       })
     }
 
     actionItems.push({
       href: `${hrefRoot}${key}`,
       text: 'Change',
-      visuallyHiddenText: replaceAcronyms(formatLabel(fieldName), acronyms)
+      visuallyHiddenText: replaceAcronyms(
+        humanReadableLabel(fieldName),
+        acronyms
+      )
     })
 
     // single entry
     return [
       {
-        key: { text: replaceAcronyms(formatLabel(fieldName), acronyms) },
+        key: { text: replaceAcronyms(humanReadableLabel(fieldName), acronyms) },
         value: { text: sanitizeText(truncateText(value, maxWords)) },
         actions: {
           items: actionItems

@@ -5,7 +5,7 @@ const toCamelCaseWithRows = (str) => {
 }
 
 // Format field names into readable labels
-const formatLabel = (field) => {
+const humanReadableLabel = (field) => {
   return field
     .replace(/([a-z])([A-Z])/g, '$1 $2')
     .replace(/-/g, ' ')
@@ -31,7 +31,7 @@ const urlToTitleCase = (str) => {
 
 module.exports = {
   toCamelCaseWithRows,
-  formatLabel,
+  humanReadableLabel,
   urlToTitleCase,
   replaceAcronyms
 }

@@ -113,6 +113,11 @@ const config = {
     figmaLink: 'Prototype link',
     figmaLinkAdditionalInformation: 'Additional information',
     shareYourDetails: 'Share your details on the component page'
+  },
+  SHARE_YOUR_DETAILS: {
+    addNameToComponentPage: 'Add name and email address to component page',
+    addTeamNameWhenRequested: 'Only share name and email when requested',
+    doNotSharePersonalDetails: 'Do not share personal details'
   }
 }
 
