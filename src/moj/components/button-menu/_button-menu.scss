@@ -27,12 +27,16 @@
 }
 
 .moj-button-menu__wrapper {
-  position: absolute;
   z-index: 10;
-  width: 200px;
   margin: 5px 0 0; // 2px shadow, 3px gap
   padding: 0;
   list-style: none;
+
+  &,
+  .moj-button-group--inline {
+    position: absolute;
+    width: 200px;
+  }
 
   &--right {
     right: 0;
