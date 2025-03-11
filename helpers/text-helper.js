@@ -1,4 +1,4 @@
-const sanitizeHtml = require("sanitize-html");
+const sanitizeHtml = require('sanitize-html')
 const toCamelCaseWithRows = (str) => {
   return `${str
     .replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())

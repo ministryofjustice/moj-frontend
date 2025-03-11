@@ -223,7 +223,7 @@ const checkYourAnswers = (session) => {
     forms, // The forms to extract answers from
     canRemoveStatic, // The fields that can be removed via a UI action
     canRemoveMultiples, // The fields that can be removed via a UI action (where we have dyamically multiple versions)
-    ignoreFields// The fields to ignore i.e. not to display in the check your answers
+    ignoreFields // The fields to ignore i.e. not to display in the check your answers
   } = checkYourAnswersConfig
 
   // Generate a list of fields that can be removed
