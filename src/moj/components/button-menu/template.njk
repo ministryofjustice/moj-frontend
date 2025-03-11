@@ -3,7 +3,7 @@
 
 {#- Set classes for this component #}
 {%- set classNames = "moj-button-menu" -%}
-{%- set itemClassNames = "moj-button-menu__item govuk-button--secondary" %}
+{%- set defaultItemClassNames = "moj-button-menu__item govuk-button--secondary" %}
 
 {%- if params.classes %}
   {% set classNames = classNames + " " + params.classes %}
@@ -11,12 +11,12 @@
 
 {%- set buttonAttributes = {
   "data-button-text": {
-    value: params.button.text, 
+    value: params.button.text,
     optional: true
     },
   "data-button-classes": {
     value: params.button.classes,
-    optional: true 
+    optional: true
   },
   "data-align-menu": {
     value: params.alignMenu,
@@ -27,12 +27,10 @@
 
 <div class="{{- classNames -}}" data-module="moj-button-menu" {{- govukAttributes(params.attributes) -}}  {{- govukAttributes(buttonAttributes) -}}>
     {%- for item in params.items %}
-      {%- if item.classes %}
-      {% set itemClassNames = itemClassNames + " " + item.classes %}
-  {% endif %}
-  {{ govukButton({
+      {% set currentItemClassNames = " " + item.classes if item.classes else "" %}
+      {{ govukButton({
           element: item.element,
-          classes: itemClassNames,
+          classes: defaultItemClassNames + currentItemClassNames,
           text: item.text,
           html: item.html,
           name: item.name,
@@ -42,7 +40,7 @@
           disabled: item.disabled,
           attributes: item.attributes,
           preventDoubleClick: items.preventDoubleClick
-          }) }}
+      }) }}
     {% endfor -%}
 </div>
 
