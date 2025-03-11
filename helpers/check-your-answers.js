@@ -22,6 +22,7 @@ const shareYourDetailsKeys = Object.keys(shareYourDetails)
 
 /**
  * Converts a text label to a human-readable format using a predefined mapping.
+ *
  * @param {string} text - The text label to convert.
  * @returns {string} - The human-readable label.
  */
@@ -34,11 +35,12 @@ const humanReadableLabel = (text) => {
 
 /**
  * Extracts and formats answers from session data based on provided forms.
+ *
  * @param {Array} forms - The forms to extract answers from.
  * @param {Array} canRemove - The fields that can be removed via a UI action.
- * @param {Object} session - The session data.
+ * @param {object} session - The session data.
  * @param {Array} ignoreFields - The fields to ignore.
- * @returns {Object} - The formatted answers for govukSummaryList.
+ * @returns {object} - The formatted answers for govukSummaryList.
  */
 const answersFromSession = (forms, canRemove, session, ignoreFields) => {
   return forms.reduce((acc, form) => {
@@ -57,6 +59,7 @@ const answersFromSession = (forms, canRemove, session, ignoreFields) => {
 
 /**
  * Converts an array of values into an HTML list.
+ *
  * @param {Array} values - The values to convert.
  * @returns {string} - The HTML list.
  */
@@ -69,6 +72,7 @@ const listHTML = (values) => {
 
 /**
  * Replaces specific values in the session data with predefined values.
+ *
  * @param {string|Array} value - The value(s) to replace.
  * @returns {string} - The replaced value(s) as an HTML list.
  */
@@ -86,10 +90,11 @@ const shareYourDetailsValueReplacement = (value) => {
 
 /**
  * Extracts and formats data for a specific field from the session.
+ *
  * @param {string} field - The field to extract data for.
- * @param {Object} session - The session data.
- * @param {Array} [canRemove=[]] - The fields that can be removed.
- * @param {Array} [ignoreFields=[]] - The fields to ignore.
+ * @param {object} session - The session data.
+ * @param {Array} [canRemove] - The fields that can be removed.
+ * @param {Array} [ignoreFields] - The fields to ignore.
  * @returns {Array} - The extracted and formatted field data.
  */
 const extractFieldData = (
@@ -209,8 +214,9 @@ const extractFieldData = (
 
 /**
  * Main function that processes the session data and returns formatted answers for govukSummaryList.
- * @param {Object} session - The session data.
- * @returns {Object} - The formatted answers.
+ *
+ * @param {object} session - The session data.
+ * @returns {object} - The formatted answers.
  */
 const checkYourAnswers = (session) => {
   const {
