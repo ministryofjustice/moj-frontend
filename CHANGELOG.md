@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v4.0.0...v4.0.1) (2025-03-11)
+
+
+### Bug Fixes
+
+* **button menu:** bring back optional `--inline` modifier ([45a10fd](https://github.com/ministryofjustice/moj-frontend/commit/45a10fdc1b7b9008e16cc9a08103a0b74084019e))
+
 # [4.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.7.0...v4.0.0) (2025-03-11)
 
 
