@@ -1,0 +1,75 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% extends "base.njk" %}
+{% block content %}
+  {% if backLink %}
+  <div class="app-layout__backlink">
+    {{ govukBackLink({
+      text: "Back",
+      href: backLink
+    }) }}
+  </div>
+  {% endif %}
+  <div class="app-layout__content">
+    {% if errorList %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form method="POST" action="{{ submitUrl }}" data-add-another-container>
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1 class="govuk-heading-xl">Figma design</h1>
+      {{ govukInput({
+        hint: {
+          text: "Review the sharing permissions for the Figma design file before sending it. Ensure the 'Who has access' and 'What they can do' fields are set so the team can view the file."
+        },
+        label: {
+          text: "Add the link to where the Figma design file is saved",
+          classes: "govuk-label--m"
+        },
+        id: "figma-link",
+        name: "figmaLink",
+        errorMessage: formErrors.figmaLink,
+        value: formData.figmaLink
+      }) }}
+
+      {{ govukCharacterCount({
+        name: "figmaLinkAdditionalInformation",
+        id: "figmaLink-additional-information",
+        maxwords: 250,
+        hint: {
+          text: "This may be the password for the file if it's protected or the link expiration date if you set one."
+        },
+        label: {
+          text: "Additional information about the Figma design file (optional)",
+          classes: "govuk-label--m"
+        },
+        errorMessage: formErrors.figmaLinkAdditionalInformation,
+        value: formData.figmaLinkAdditionalInformation
+      }) }}
+
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+
+      <div class="govuk-button-group moj-button-action">
+        {{ govukButton({
+          text: 'Continue',
+          preventDoubleClick: true
+        }) }}
+        {% if showAddAnother %}
+
+        {{ govukButton({
+          text: "Add another link",
+          classes: "govuk-button--secondary",
+          name: "addAnother"
+        }) }}
+        {% endif %}
+      </div>
+    </form>
+  </div>
+{% endblock %}
+
+

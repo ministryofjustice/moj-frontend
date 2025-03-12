@@ -1,0 +1,64 @@
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% extends "base.njk" %}
+{% block content %}
+  {% if backLink %}
+    <div class="app-layout__backlink">
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    </div>
+  {% endif %}
+  <div class="app-layout__content">
+    {% if errorList %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1 class="govuk-heading-xl">Upload an image of the component</h1>
+      <p class="govuk-body">You also need to upload an image showing what the component looks like. It should not
+        contain any personal or sensitive information.</p>
+      <p class="govuk-body">You'll also have an opportunity to add more images of this after submitting the
+        component.</p>
+      {{ govukFileUpload({
+        id: "component-image",
+        name: "componentImage",
+        label: {
+          text: "Upload a file",
+          classes: "govuk-label--m"
+        },
+        hint: {
+          text: "The selected file must be a JPG, BMP, PNG, TIF or PDF and smaller than 10MB."
+        },
+        attributes: {
+          accept: ".jpg, .jpeg, .bmp, .png, .tif, .tiff, .pdf"
+        },
+        errorMessage: formErrors.componentImage
+      }) }}
+
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>
+
+      <div class="govuk-button-group moj-button-action">
+        {{ govukButton({
+          text: 'Continue',
+          preventDoubleClick: true
+        }) }}
+        {% if skipQuestion %}
+
+          {{ govukButton({
+            text: "Skip question",
+            classes: "govuk-button--secondary",
+            attributes: {'data-skip-question': skipQuestion},
+            href: skipQuestion
+          }) }}
+        {% endif %}
+      </div>
+    </form>
+  </div>
+{% endblock %}

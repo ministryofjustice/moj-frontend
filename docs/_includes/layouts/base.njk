@@ -1,64 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-T44399BJ');</script>
-    <!-- End Google Tag Manager -->
+    <head>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-T44399BJ');</script>
+        <!-- End Google Tag Manager -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#0b0c0c">
+        <link rel="shortcut icon"
+              href="{{ 'assets/images/favicon.ico' | rev | url }}"
+              type="image/x-icon">
+        <link rel="apple-touch-icon"
+              href="{{ 'assets/images/moj-apple-touch-icon-180x180-2024.png' | rev | url }}"
+              sizes="180x180">
+        <link rel="apple-touch-icon"
+              href="{{ 'assets/images/moj-apple-touch-icon-167x167-2024.png' | rev | url }}"
+              sizes="167x167">
+        <link rel="apple-touch-icon"
+              href="{{ 'assets/images/moj-apple-touch-icon-152x152-2024.png' | rev | url }}"
+              sizes="152x152">
+        <link rel="apple-touch-icon"
+              href="{{ 'assets/images/moj-apple-touch-icon-2024.png' | rev | url }}">
+        <meta name="description"
+              content="Design your service using MoJ styles, components and patterns">
+        <meta property="og:image"
+              content="{{ 'assets/images/moj-opengraph-image-2024.png' | rev | url }}">
+        {% if layout == "layouts/example.njk" %}
+            <link href="{{ 'assets/stylesheets/govuk-frontend.css' | rev | url }}"
+                  rel="stylesheet">
+            <link href="{{ 'assets/stylesheets/moj-frontend.css' | rev | url }}"
+              rel="stylesheet">
+        {% else %}
+            <link href="{{ 'assets/stylesheets/application.css' | rev | url }}"
+              rel="stylesheet">
+        {% endif %}
+        {% block pageStyles %}{% endblock %}
+        <title>
+            {% block title %}{{ title }} - MoJ Design System{% endblock %}
+        </title>
+        <script type="module"
+        src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL"
+        async></script>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0b0c0c">
-    <link rel="shortcut icon" href="{{ "assets/images/favicon.ico" | rev | url }}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="{{ "assets/images/moj-apple-touch-icon-180x180-2024.png" | rev | url }}" sizes="180x180">
-    <link rel="apple-touch-icon" href="{{ "assets/images/moj-apple-touch-icon-167x167-2024.png" | rev | url }}" sizes="167x167">
-    <link rel="apple-touch-icon" href="{{ "assets/images/moj-apple-touch-icon-152x152-2024.png" | rev | url }}" sizes="152x152">
-    <link rel="apple-touch-icon" href="{{ "assets/images/moj-apple-touch-icon-2024.png" | rev | url }}">
-    <meta name="description" content="Design your service using MoJ styles, components and patterns">
-    <meta property="og:image" content="{{ "assets/images/moj-opengraph-image-2024.png" | rev | url }}">
-    {% if layout == "layouts/example.njk" %}
-      <link href="{{ "assets/stylesheets/govuk-frontend.css" | rev | url }}" rel="stylesheet">
-      <link href="{{ "assets/stylesheets/moj-frontend.css" | rev | url }}" rel="stylesheet">
-    {% else %}
-      <link href="{{ "assets/stylesheets/application.css" | rev | url }}" rel="stylesheet">
-    {% endif %}
-    {% block pageStyles %}{% endblock %}
-    <title>{% block title %}{{ title }} - MoJ Design System{% endblock %}</title>
-    <script type="module" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL" async></script>
-    <script type="module" src="{{ "assets/javascript/jquery.js" | rev | url }}"></script>
-    <script type="module" src="{{ "assets/javascript/application.js" | rev | url }}"></script>
-  </head>
-  <body class="govuk-template__body">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T44399BJ"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
-    {% block body %}
-      <div>
+        <script type="module" src="{{ 'assets/javascript/jquery.js' | rev | url }}"></script>
+        <script type="module" src="{{ 'assets/javascript/application.js' | rev | url }}"></script>
+    </head>
+    <body class="govuk-template__body">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T44399BJ"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+        {% block body %}
+           <div>
         {% include "./partials/header.njk" %}
 
         <div class="app-layout">
-          <div id="sidebar" class="app-layout__sidebar">
-            {% include "./partials/side-navigation.njk" %}
-          </div>
-
-          <div class="app-layout__page app-page">
-            <main id="main-content" class="app-prose-scope">
-              {% block content %}
-                {{ content | safe }}
-              {% endblock %}
-            </main>
-          </div>
+            <div id="sidebar" class="app-layout__sidebar">
+                {% include "./partials/side-navigation.njk" %}
+            </div>
+            <div class="app-layout__page app-page">
+               <main id="main-content" class="app-prose-scope">
+                    {% block content %}
+                        {{ content | safe }}
+                    {% endblock %}
+                </main>
+            </div>
         </div>
 
         {% include "./partials/footer.njk" %}
       </div>
-    {% endblock %}
-
-    {% block pageScripts %}{% endblock %}
-  </body>
+        {% endblock %}
+        {% block pageScripts %}{% endblock %}
+    </body>
 </html>

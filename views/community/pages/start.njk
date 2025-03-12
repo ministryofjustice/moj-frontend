@@ -1,0 +1,60 @@
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% extends "base.njk" %}
+{% block content %}
+  <div class="app-layout__content">
+    <span class="govuk-caption-l">Submit new component</span>
+    <h1 class="govuk-heading-xl">Before you start</h1>
+
+    <p class="govuk-body">All new components submitted to the design system must include the following details:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Component name</li>
+      <li>Overview description of the component</li>
+      <li>How the component is being used in your service</li>
+      <li>What problem the component solved</li>
+      <li>An image file to show what the component looks like</li>
+    </ul>
+
+    <p class="govuk-body">This information is required to provide users with a basic understanding of the component and how to use it.</p>
+
+    <h3 class="govuk-heading-m">Adding further information about the component</h3>
+    <p class="govuk-body">You can also add more information about the component if you have it available.</p>
+    <p class="govuk-body">To do so, you can select what information you have available when adding the component.</p>
+    <p class="govuk-body">Further information you can provide about the component includes:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>accessibility findings</li>
+      <li>research findings</li>
+      <li>code for the component such as HTML, Javascript, CSS, SASS and Nunjucks</li>
+      <li>links to Figma files</li>
+      <li>additional image or supporting files</li>
+      <li>any additional information not listed</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">Providing your personal information</h3>
+
+    <p class="govuk-body">Your personal information is also required. This includes your:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>name</li>
+      <li>email address</li>
+    </ul>
+
+    <p class="govuk-body">The team will use this information for only 2 reasons:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>To contact you about the component if required for any reason.</li>
+      <li>To include on the component page, <em>with your permission</em>, when publishing the new component live.</li>
+    </ul>
+
+    <form method="POST" action="">
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+
+      <div class="moj-button-action">
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      </div>
+    </form>
+  </div>
+{% endblock %}

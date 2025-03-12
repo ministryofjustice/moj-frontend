@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 export function removeAttributeValue(el, attr, value) {
   let re, m
   if (el.getAttribute(attr)) {
@@ -177,4 +179,44 @@ export function setFocus($element, options = {}) {
     options.onBeforeFocus.call($element)
   }
   $element.focus()
+}
+
+export function AddAnotherForm(container) {
+  this.container = $(container)
+
+  if (this.container.data('moj-add-another-initialised')) {
+    console.log('AddAnotherForm already initialised for this container.')
+    return
+  }
+
+  console.log('Initialising AddAnotherForm for container:', container)
+  this.container.data('moj-add-another-initialised', true)
+
+  this.container.on('click', '.moj-add-another__remove-button', (e) =>
+    this.onRemoveButtonClick(e)
+  )
+  this.container.on('click', '.moj-add-another__add-button', (e) =>
+    this.onAddButtonClick(e)
+  )
+  this.container
+    .find('.moj-add-another__add-button, .moj-add-another__remove-button')
+    .prop('type', 'button')
+
+  this.container.on('click', '[data-add-another]', (e) =>
+    this.onAddAnotherButtonClick(e)
+  )
+}
+
+AddAnotherForm.prototype.onAddAnotherButtonClick = function (e) {
+  const button = $(e.currentTarget)
+  console.log('AddAnother button clicked:', button)
+  const form = button.closest('form')
+
+  // Add hidden input to indicate we want another page
+  if (form.find('input[name="addAnother"]').length === 0) {
+    form.append('<input type="hidden" name="addAnother" value="true">')
+    console.log('Hidden input added to form.')
+  } else {
+    console.log('Hidden input already exists in form.')
+  }
 }

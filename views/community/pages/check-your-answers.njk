@@ -1,0 +1,71 @@
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% extends "base.njk" %}
+{% block content %}
+  <div class="app-layout__content">
+    <form method="post" action="{{ submitUrl }}">
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1 class="govuk-heading-xl">Check your answers before submitting the component</h1>
+
+      <h2 class="govuk-heading-m">Component details</h2>
+      {{ govukSummaryList({
+        rows: componentDetailsRows
+      }) }}
+
+      {% if addExternalAuditRows.length > 0 %}
+        <h2 class="govuk-heading-m">External accessibility audit</h2>
+        {{ govukSummaryList({
+          rows: addExternalAuditRows
+        }) }}
+      {% endif %}
+
+      {% if addInternalAuditRows.length > 0 %}
+        <h2 class="govuk-heading-m">Internal accessibility audit</h2>
+        {{ govukSummaryList({
+          rows: addInternalAuditRows
+        }) }}
+      {% endif %}
+
+      {% if addAssistiveTechRows.length > 0 %}
+        <h2 class="govuk-heading-m">Testing with assistive technology</h2>
+        {{ govukSummaryList({
+          rows: addAssistiveTechRows
+        }) }}
+      {% endif %}
+
+      {% if prototypeRows.length > 0 %}
+        <h2 class="govuk-heading-m">Prototype URL</h2>
+        {{ govukSummaryList({
+          rows: prototypeRows
+        }) }}
+      {% endif %}
+
+      {% if componentCodeRows.length > 0 %}
+        <h2 class="govuk-heading-m">Component code</h2>
+        {{ govukSummaryList({
+          rows: componentCodeRows
+        }) }}
+      {% endif %}
+
+      {% if figmaRows.length > 0 %}
+        <h2 class="govuk-heading-m">Figma designs</h2>
+        {{ govukSummaryList({
+          rows: figmaRows
+        }) }}
+      {% endif %}
+
+      <h2 class="govuk-heading-m">Your details</h2>
+      {{ govukSummaryList({
+        rows: yourDetailsRows
+      }) }}
+
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>
+
+      <div class="moj-button-action">
+        {{ govukButton({
+          text: 'Accept and send'
+        }) }}
+      </div>
+    </form>
+  </div>
+{% endblock %}

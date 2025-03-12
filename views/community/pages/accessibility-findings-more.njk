@@ -1,0 +1,49 @@
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% extends "base.njk" %}
+{% block content %}
+  {% if backLink %}
+    <div class="app-layout__backlink">
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    </div>
+  {% endif %}
+
+  <div class="app-layout__content">
+    {% if errorList %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form method="post" action="{{ submitUrl }}">
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1 class="govuk-heading-xl">Accessibility findings</h1>
+      {{ govukCharacterCount({
+        name: "accessibilityTellUsMore",
+        id: "accessibility-tell-us-more",
+        maxwords: 500,
+        label: {
+          text: "Tell us more about how it has been accessibility tested and the findings",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        errorMessage: formErrors.accessibilityTellUsMore,
+        value: formData.accessibilityTellUsMore
+      }) }}
+
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+
+      <div class="moj-button-action">
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+      </div>
+    </form>
+  </div>
+
+{% endblock %}

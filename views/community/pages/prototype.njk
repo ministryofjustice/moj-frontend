@@ -1,0 +1,72 @@
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% extends "base.njk" %}
+{% block content %}
+  {% if backLink %}
+    <div class="app-layout__backlink">
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    </div>
+  {% endif %}
+  <div class="app-layout__content">
+    {% if errorList %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form method="POST" action="{{ submitUrl }}">
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1 class="govuk-heading-xl">Prototype designs</h1>
+      <p class="govuk-body">Most teams have a prototype of the product or service they're currently working on. A prototype showing the component is helpful when reviewing new submissions to the design system.</p>
+      <p class="govuk-body">Any prototype you share should not contain any personally Identifiable or sensitive information. You should only shared it if you can guarantee it will always be live and available to other users.</p>
+      <p class="govuk-body">The prototype link can be from the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro.</p>
+
+      {{ govukRadios({
+        name: "componentPrototypeUrl",
+        fieldset: {
+          attributes: {
+            id: "component-prototype-url"
+          },
+          legend: {
+            text: "Do you have a prototype URL for the component?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ],
+        errorMessage: formErrors.componentPrototypeUrl,
+        value: formData.componentPrototypeUrl
+      }) }}
+
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+
+      <div class="govuk-button-group moj-button-action">
+        {{ govukButton({
+          text: 'Continue',
+          preventDoubleClick: true
+        }) }}
+        {% if skipQuestion %}
+          {{ govukButton({
+            text: "Skip question",
+            classes: "govuk-button--secondary",
+            attributes: {'data-skip-question': skipQuestion},
+            href: skipQuestion
+          }) }}
+        {% endif %}
+    </form>
+  </div>
+{% endblock %}
