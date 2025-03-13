@@ -54,7 +54,7 @@ app.use(
           "'self'",
           'http://localhost:3001',
           'https://design-patterns.service.justice.gov.uk/',
-          'https://*cloud-platform.service.justice.gov.uk'
+          'https://*.cloud-platform.service.justice.gov.uk'
         ] // Allow embedding
       }
     }
