@@ -29,8 +29,7 @@
       {{ govukInput({
         label: {
           text: "What organisation conducted the external accessibility audit?",
-          classes: "govuk-label--m",
-          isPageHeading: true
+          classes: "govuk-label--m"
         },
         id: "external-organisation",
         name: "externalOrganisation",
@@ -64,7 +63,6 @@
         fieldset: {
           legend: {
             text: "When did the audit take place?",
-            isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
         },
@@ -78,7 +76,6 @@
         name: "accessibilityReport",
         label: {
           text: "Upload the accessibility report (optional)",
-          isPageHeading: true,
           classes: "govuk-label--m"
         },
         hint: {
@@ -97,8 +94,7 @@
         maxwords: 250,
         label: {
           text: "Were any issues discovered with the component during the audit? (Optional)",
-          classes: "govuk-label--m",
-          isPageHeading: true
+          classes: "govuk-label--m"
         },
         errorMessage: formErrors.issuesDiscovered,
         value: formData.issuesDiscovered
