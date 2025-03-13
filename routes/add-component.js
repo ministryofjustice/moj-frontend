@@ -21,7 +21,8 @@ const {
   getFormSummaryListForRemove,
   removeFromSession,
   sessionStarted,
-  validateFormDataFileUpload
+  validateFormDataFileUpload,
+  validateComponentImagePage
 } = require('../middleware/component-session')
 const { generateMarkdown } = require('../middleware/generate-documentation')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
@@ -82,6 +83,7 @@ router.get(`/${checkYourAnswersPath}`, sessionStarted, (req, res) => {
     yourDetailsRows,
     figmaRows
   } = checkYourAnswers(req.session)
+
   res.render(checkYourAnswersPath, {
     submitUrl: req.originalUrl,
     componentDetailsRows,
@@ -161,6 +163,22 @@ router.get(
   }
 )
 
+router.get(
+  ['/change/:page', '/change/:page/:subpage'],
+  validateComponentImagePage,
+  removeFromSession,
+  (req, res) => {
+    let redirectUrl = `${ADD_NEW_COMPONENT_ROUTE}/${req.params.page}`
+    if (req.params.subpage) {
+      const subpage = parseInt(req.params.subpage)
+      if (subpage > 1) {
+        redirectUrl += `/${subpage - 1}`
+      }
+    }
+    res.redirect(redirectUrl)
+  }
+)
+
 router.post(
   ['/remove/:page', '/remove/:page/:subpage'],
   verifyCsrf,
@@ -187,7 +205,8 @@ router.get(
       showAddAnother: req?.showAddAnother,
       skipQuestion: req?.skipQuestion || false,
       backLink: req?.backLink || false,
-      csrfToken: req?.session?.csrfToken
+      csrfToken: req?.session?.csrfToken,
+      changeUrl: `${ADD_NEW_COMPONENT_ROUTE}/change/${req.params.page}${req.params.subpage ? `/${req.params.subpage}` : ''}`
     })
   }
 )
@@ -224,14 +243,21 @@ router.post(
 
 // Component image upload
 router.post(
-  '/component-image',
+  ['/component-image', '/component-image/:subpage'],
   upload.single('componentImage'),
   validateFormDataFileUpload,
-  verifyCsrf,
-  validateFormData,
-  saveSession,
   setNextPage,
   getBackLink,
+  verifyCsrf,
+  validateFormData,
+  (req, res, next) => {
+    if (req.file) {
+      saveSession(req, res, next)
+    } else {
+      // Skipping saving as no new file uploaded
+      next()
+    }
+  },
   (req, res, next) => {
     if (req.nextPage) {
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.nextPage}`)
