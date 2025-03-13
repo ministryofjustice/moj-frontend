@@ -46,7 +46,7 @@ app.use(
         'script-src': [
           "'self'",
           'https://www.googletagmanager.com', // Allow GTM
-          "'unsafe-inline'" // Allows inline scripts
+          "'sha256-GUQ5ad8JK5KmEWmROf3LZd9ge94daqNvd8xy9YS1iDw='" // Use hash instead of unsafe-inline
         ],
         'frame-src': [
           "'self'",
