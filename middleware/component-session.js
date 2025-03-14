@@ -94,6 +94,8 @@ const validateFormData = (req, res, next) => {
       return acc
     }, {})
 
+    const errorListDetails = []
+
     error.details.forEach((error) => {
       let field = error.path[0]
       if (dateFields.includes(field.split('-')[0])) {
@@ -103,10 +105,11 @@ const validateFormData = (req, res, next) => {
       if (!formErrors[field]) {
         // Just add the first error for a field
         formErrors[field] = { text: error.message }
+        errorListDetails.push(error)
       }
     })
 
-    const errorList = transformErrorsToErrorList(error.details)
+    const errorList = transformErrorsToErrorList(errorListDetails)
     res
       .status(400)
       .render(
