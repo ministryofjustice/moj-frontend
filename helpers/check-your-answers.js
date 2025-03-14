@@ -233,10 +233,13 @@ const checkYourAnswers = (session) => {
       Array.from({ length: maxAddAnother }, (_, i) => `${item}/${i + 1}`)
     )
   ]
-  const answers =  answersFromSession(forms, canRemove, session, ignoreFields)
+  const answers = answersFromSession(forms, canRemove, session, ignoreFields)
   if (answers.componentImageRows) {
     answers.componentDetailsRows = answers.componentDetailsRows || []
-    answers.componentDetailsRows = [...answers.componentDetailsRows, ...answers.componentImageRows]
+    answers.componentDetailsRows = [
+      ...answers.componentDetailsRows,
+      ...answers.componentImageRows
+    ]
   }
   return answers
 }

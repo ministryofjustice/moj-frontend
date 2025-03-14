@@ -2,11 +2,11 @@ const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ADD_NEW_COMPONENT_ROUTE
 } = require('../config')
+const ApplicationError = require('../helpers/application-error')
 const extractBody = require('../helpers/extract-body')
 const nextPage = require('../helpers/next-page')
 const previousPage = require('../helpers/previous-page')
 const { humanReadableLabel } = require('../helpers/text-helper')
-
 const camelToKebab = (str) =>
   str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
 
@@ -78,7 +78,7 @@ const validateFormData = (req, res, next) => {
   const schema = require(`../schema/${schemaName}.schema`)
   const body = extractBody(req?.url, { ...req.body })
   delete body._csrf
-  if(req?.file?.fieldname && req?.file?.originalname) {
+  if (req?.file?.fieldname && req?.file?.originalname) {
     body[req.file.fieldname] = req.file.originalname
   }
   const { error } = schema.validate(body, { abortEarly: false })
