@@ -3,7 +3,6 @@ const fs = require('fs')
 const path = require('path')
 
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
-const cheerio = require('cheerio')
 const matter = require('gray-matter')
 const hljs = require('highlight.js')
 const beautifyHTML = require('js-beautify').html
