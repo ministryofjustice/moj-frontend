@@ -12,7 +12,7 @@ eleventyNavigation:
   excerpt: "To start using MoJ styles, components and patterns contained here, you’ll need to include MoJ Frontend in your project."
 ---
 
-MoJ Frontend provides the elements developers need to create consistent, easy to use, fast and secure government services.
+MoJ Frontend provides the elements that developers need to create consistent, easy to use, fast and secure government services.
 
 Use this technical documentation to find out how to:
 
