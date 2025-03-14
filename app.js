@@ -46,9 +46,9 @@ app.use(
         'script-src': [
           "'self'",
           'https://www.googletagmanager.com', // Allow GTM
-          "'unsafe-inline'" // Allows inline scripts
-          // TODO - Remove unsafe-inline and create hashes for inline scripts
-          // "'sha256-GUQ5ad8JK5KmEWmROf3LZd9ge94daqNvd8xy9YS1iDw='" // Use hash instead of unsafe-inline
+          "'sha256-KB7HGsF8PIa84S3v4OuSmcyYuq3rN8243mLIvoITNKM='",
+          "'sha256-uVthPuZ6UO/uA1h2kqPXZBOz/EIuOAXjIKCuDDsXIaA='",
+          "'sha256-GUQ5ad8JK5KmEWmROf3LZd9ge94daqNvd8xy9YS1iDw='"
         ],
         'frame-src': [
           "'self'",
