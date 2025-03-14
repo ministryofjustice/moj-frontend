@@ -33,7 +33,33 @@ const app = express()
 app.set('trust proxy', 1)
 const isDev = app.get('env') === 'development'
 
-app.use(helmet())
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        'default-src': ["'self'"],
+        'connect-src': [
+          "'self'",
+          'https://www.googletagmanager.com', // Allow GTM
+          'https://region1.google-analytics.com' // Allow Google Analytics
+        ],
+        'script-src': [
+          "'self'",
+          'https://www.googletagmanager.com', // Allow GTM
+          "'sha256-KB7HGsF8PIa84S3v4OuSmcyYuq3rN8243mLIvoITNKM='",
+          "'sha256-uVthPuZ6UO/uA1h2kqPXZBOz/EIuOAXjIKCuDDsXIaA='",
+          "'sha256-GUQ5ad8JK5KmEWmROf3LZd9ge94daqNvd8xy9YS1iDw='"
+        ],
+        'frame-src': [
+          "'self'",
+          'http://localhost:3001',
+          'https://design-patterns.service.justice.gov.uk/',
+          'https://*.cloud-platform.service.justice.gov.uk'
+        ] // Allow embedding
+      }
+    }
+  })
+)
 app.use(limiter)
 
 // Session management

@@ -2,11 +2,11 @@ const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ADD_NEW_COMPONENT_ROUTE
 } = require('../config')
+const ApplicationError = require('../helpers/application-error')
 const extractBody = require('../helpers/extract-body')
 const nextPage = require('../helpers/next-page')
 const previousPage = require('../helpers/previous-page')
-const { formatLabel } = require('../helpers/text-helper')
-
+const { humanReadableLabel } = require('../helpers/text-helper')
 const camelToKebab = (str) =>
   str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
 
@@ -78,6 +78,9 @@ const validateFormData = (req, res, next) => {
   const schema = require(`../schema/${schemaName}.schema`)
   const body = extractBody(req?.url, { ...req.body })
   delete body._csrf
+  if (req?.file?.fieldname && req?.file?.originalname) {
+    body[req.file.fieldname] = req.file.originalname
+  }
   const { error } = schema.validate(body, { abortEarly: false })
   const dateFields = ['auditDate', 'testingDate']
 
@@ -91,6 +94,8 @@ const validateFormData = (req, res, next) => {
       return acc
     }, {})
 
+    const errorListDetails = []
+
     error.details.forEach((error) => {
       let field = error.path[0]
       if (dateFields.includes(field.split('-')[0])) {
@@ -100,14 +105,15 @@ const validateFormData = (req, res, next) => {
       if (!formErrors[field]) {
         // Just add the first error for a field
         formErrors[field] = { text: error.message }
+        errorListDetails.push(error)
       }
     })
 
-    const errorList = transformErrorsToErrorList(error.details)
+    const errorList = transformErrorsToErrorList(errorListDetails)
     res
       .status(400)
       .render(
-        `${req.params.page}`,
+        `${req.params.page || req.url.replace('/', '')}`,
         errorTemplateVariables(req, formErrors, errorList, formErrorStyles)
       )
   } else {
@@ -129,7 +135,7 @@ const saveSession = (req, res, next) => {
     body = { ...body, ...file }
   }
 
-  req.session[req.url] = { ...body }
+  req.session[req.url] = { ...req.session[req.url], ...body }
   delete req.session[req.url].addAnother
 
   console.log('saved session', req.url)
@@ -148,8 +154,8 @@ const getFormSummaryListForRemove = (req, res, next) => {
   delete req.removeSummaryRows
   if (formData) {
     req.removeSummaryRows = Object.entries(formData).map(([key, value]) => ({
-      key: { text: formatLabel(key) },
-      value: { text: value }
+      key: { text: humanReadableLabel(key) },
+      value: { text: value?.originalname || value }
     }))
   }
   next()
@@ -212,7 +218,7 @@ const getBackLink = (req, res, next) => {
 }
 
 const removeFromSession = (req, res, next) => {
-  const url = req.url.replace('/remove', '')
+  const url = req.url.replace(/\/(remove|change)/, '')
   delete req.session[url]
   next()
 }
@@ -221,6 +227,15 @@ const sessionStarted = (req, res, next) => {
   if (!req?.session?.started) {
     console.error('No session available')
     return res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/start`)
+  }
+  next()
+}
+
+const validateComponentImagePage = (req, res, next) => {
+  if (req.params.page !== 'component-image') {
+    const error = new ApplicationError('Invalid page', 400)
+    console.log(error.toErrorObject())
+    return next(error)
   }
   next()
 }
@@ -237,5 +252,6 @@ module.exports = {
   getFormSummaryListForRemove,
   removeFromSession,
   sessionStarted,
-  validateFormDataFileUpload
+  validateFormDataFileUpload,
+  validateComponentImagePage
 }

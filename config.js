@@ -33,12 +33,12 @@ const config = {
     },
     prototype: {},
     'prototype-url': { '/prototype': { componentPrototypeUrl: 'yes' } },
-    figma: {},
-    'figma-link': { '/figma': { figmaUrl: 'yes' } },
     'component-code': {},
     'component-code-details': {
       '/component-code': { componentCodeAvailable: 'yes' }
     },
+    figma: {},
+    'figma-link': { '/figma': { figmaUrl: 'yes' } },
     'your-details': {},
     'check-your-answers': {}
   },
@@ -112,7 +112,8 @@ const config = {
     componentCodeLanguage: 'Code language',
     figmaLink: 'Prototype link',
     figmaLinkAdditionalInformation: 'Additional information',
-    shareYourDetails: 'Share your details on the component page'
+    shareYourDetails: 'Share your details on the component page',
+    componentImage: 'Supporting file'
   },
   CHECK_YOUR_ANSWERS: {
     forms: [
@@ -137,6 +138,7 @@ const config = {
       '/add-assistive-tech'
     ],
     canRemoveMultiples: [
+      '/component-image',
       '/prototype-url',
       '/figma-link',
       '/component-code-details'

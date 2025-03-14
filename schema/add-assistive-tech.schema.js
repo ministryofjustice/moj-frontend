@@ -33,6 +33,19 @@ const schema = Joi.object({
 
   testingDate: Joi.string()
     .custom((value, helpers) => {
+      const day = helpers.state.ancestors[0]['testingDate-day']
+      const month = helpers.state.ancestors[0]['testingDate-month']
+      const year = helpers.state.ancestors[0]['testingDate-year']
+
+      if (
+        !/^\d{1,2}$/.test(day) ||
+        !/^\d{1,2}$/.test(month) ||
+        !/^\d{4}$/.test(year)
+      ) {
+        // Skip custom testingDate validation if parts are invalid
+        return value
+      }
+
       if (!moment(value, 'YYYY-MM-DD', true).isValid()) {
         return helpers.error('any.invalid', {
           message: 'The date of the testing must be a real date'
