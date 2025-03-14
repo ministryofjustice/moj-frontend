@@ -33,12 +33,12 @@ const config = {
     },
     prototype: {},
     'prototype-url': { '/prototype': { componentPrototypeUrl: 'yes' } },
-    figma: {},
-    'figma-link': { '/figma': { figmaUrl: 'yes' } },
     'component-code': {},
     'component-code-details': {
       '/component-code': { componentCodeAvailable: 'yes' }
     },
+    figma: {},
+    'figma-link': { '/figma': { figmaUrl: 'yes' } },
     'your-details': {},
     'check-your-answers': {}
   },
