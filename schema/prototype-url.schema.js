@@ -18,7 +18,7 @@ const schema = addAnotherSchema.append({
     .optional()
     .allow(null, '')
     .custom((value, helpers) => maxWords(value, helpers, 250))
-    .label('Additional information about the URL (optional)')
+    .label('Additional information about the prototype (optional)')
     .messages({
       'custom.max.words': 'There must be 250 words or less'
     })
