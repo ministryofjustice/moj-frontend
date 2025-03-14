@@ -12,14 +12,30 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-      - run: npm ci
-      - run: npm run build:package
+      - name: npm install
+        run: npm ci
+
+      - name: Get next release version number
+        id: tag_version
+        run: |
+          export NEXT_TAG_VERSION=$(npx semantic-release --dry-run | grep 'The next release version is' | sed -E 's/.* ([[:digit:].]+)$/\1/')
+          echo "new_tag_version=${NEXT_TAG_VERSION}"
+          echo "new_tag_version=${NEXT_TAG_VERSION}" >> $GITHUB_OUTPUT
+
+      - name: Build pacakge
+        run: npm run build:package
+
       - uses: actions/upload-artifact@v4
         with:
           name: mojds-package
           path: package
-      - run: npm run build:dist
-      - run: ENV="production" npm run build:docs
+
+      - name: Build dist
+        run: npm run build:dist
+
+      - name: Build docs
+        run: ENV="production" npm run build:docs
+
       - uses: actions/upload-artifact@v4
         with:
           name: mojds-dist
@@ -103,7 +119,7 @@ jobs:
           path: dist
       - run: npm ci
       - name: Publish to NPM
-        run: npm run ci:release
+        run: npm run ci:dryrun
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.ADMIN_TOKEN }}
