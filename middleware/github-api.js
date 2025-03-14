@@ -89,6 +89,25 @@ const addFileToBranch = async (filePath, fileContent, branchName) => {
 
 const pushToGitHub = async (sessionData) => {
   console.log('[GITHUB] Start pushing to Github')
+
+  const existingFilenames = new Set() // To store unique filenames across files
+
+  const getUniqueFilename = (originalName) => {
+    let counter = 0
+    let uniqueName = originalName
+
+    // Check and resolve conflicts
+    while (existingFilenames.has(uniqueName)) {
+      counter += 1
+      const nameWithoutExtension = originalName.replace(/(\.[\w\d]+)$/, '') // Remove extension
+      const extension = originalName.match(/(\.[\w\d]+)$/)?.[0] || '' // Extract the extension
+      uniqueName = `${nameWithoutExtension}-${counter}${extension}`
+    }
+
+    existingFilenames.add(uniqueName) // Track used filename
+    return uniqueName
+  }
+
   try {
     const submissionData = {}
     Object.keys(sessionData).forEach((key) => {
@@ -102,7 +121,7 @@ const pushToGitHub = async (sessionData) => {
             ? imageDirectory
             : fileDirectory
           const file = fileData.componentImage || fileData.accessibilityReport
-          const filename = file.originalname
+          const filename = getUniqueFilename(file.originalname)
           const fileContent = handleFile(file)
           const filePath = `submission/${directory}/${filename}`
           submissionData[filePath] = { buffer: fileContent }
