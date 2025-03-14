@@ -135,7 +135,7 @@ const saveSession = (req, res, next) => {
     body = { ...body, ...file }
   }
 
-  req.session[req.url] = { ...body }
+  req.session[req.url] = { ...req.session[req.url], ...body }
   delete req.session[req.url].addAnother
 
   console.log('saved session', req.url)
