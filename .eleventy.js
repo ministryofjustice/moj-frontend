@@ -309,7 +309,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setServerOptions({
     liveReload: true,
     domDiff: false,
-    port: 8080,
     // Reload once assets have been rebuilt by gulp
     watch: [
       'public/assets/stylesheets/application.css',
