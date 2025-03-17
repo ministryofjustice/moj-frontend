@@ -1,37 +1,45 @@
-import $ from 'jquery'
-
 export function PasswordReveal(element) {
-  const $el = $(element)
-
   this.el = element
-  this.container = $el.parent()
+  this.container = element.parentElement
 
-  if (this.container.get(0).hasAttribute('data-moj-password-reveal-init')) {
+  if (this.container.hasAttribute('data-moj-password-reveal-init')) {
     return
   }
 
-  this.container.get(0).setAttribute('data-moj-password-reveal-init', '')
+  this.container.setAttribute('data-moj-password-reveal-init', '')
 
-  $el.attr('spellcheck', 'false')
-  $el.wrap('<div class="moj-password-reveal"></div>')
-
+  this.el.setAttribute('spellcheck', 'false')
   this.createButton()
 }
 
 PasswordReveal.prototype.createButton = function () {
-  this.button = $(
-    '<button type="button" class="govuk-button govuk-button--secondary moj-password-reveal__button">Show <span class="govuk-visually-hidden">password</span></button>'
-  )
-  this.container.append(this.button)
-  this.button.on('click', this.onButtonClick.bind(this))
+  this.group = document.createElement('div')
+  this.button = document.createElement('button')
+
+  this.button.setAttribute('type', 'button')
+
+  this.group.className = 'moj-password-reveal'
+
+  this.button.className =
+    'govuk-button govuk-button--secondary moj-password-reveal__button'
+
+  this.button.innerHTML =
+    'Show <span class="govuk-visually-hidden">password</span>'
+
+  this.button.addEventListener('click', this.onButtonClick.bind(this))
+
+  this.group.append(this.el, this.button)
+  this.container.append(this.group)
 }
 
 PasswordReveal.prototype.onButtonClick = function () {
   if (this.el.type === 'password') {
     this.el.type = 'text'
-    this.button.html('Hide <span class="govuk-visually-hidden">password</span>')
+    this.button.innerHTML =
+      'Hide <span class="govuk-visually-hidden">password</span>'
   } else {
     this.el.type = 'password'
-    this.button.html('Show <span class="govuk-visually-hidden">password</span>')
+    this.button.innerHTML =
+      'Show <span class="govuk-visually-hidden">password</span>'
   }
 }
