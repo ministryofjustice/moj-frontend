@@ -6,11 +6,6 @@ const Tabs = function (container) {
   this.panels = container.find('.app-tabs__panel')
   this.container.on('click', '[role=tab]', $.proxy(this, 'onTabClick'))
   this.container.on('keydown', '[role=tab]', $.proxy(this, 'onTabKeydown'))
-  this.container.on(
-    'click',
-    '.app-tabs__close',
-    $.proxy(this, 'onCloseButtonClick')
-  )
   this.setupHtml()
 }
 
@@ -136,12 +131,6 @@ Tabs.prototype.getCurrentTab = function () {
 Tabs.prototype.getHref = function (tab) {
   const href = tab.attr('href')
   return href.slice(href.indexOf('#'), href.length)
-}
-
-Tabs.prototype.onCloseButtonClick = function () {
-  const currentTab = this.getCurrentTab()
-  this.hideTab(currentTab)
-  this.tabs.first().focus()
 }
 
 export default Tabs
