@@ -17,6 +17,43 @@ module.exports.runTest = async (page) => {
     return;
   }
 
+  // Click "Continue" button before selecting radio buttons to trigger validation errors
+  console.log("Clicking 'Continue' without selecting radio buttons to trigger validation errors...");
+
+  const buttonHandle = await page.evaluateHandle(() => {
+    return [...document.querySelectorAll("button")].find(btn => btn.innerText.trim() === "Continue");
+  });
+
+  if (!buttonHandle) {
+    console.error("Continue button not found!");
+    return;
+  }
+
+  await Promise.all([
+    page.waitForSelector(".govuk-error-summary__list", { visible: true, timeout: 5000 }),
+    page.evaluate(el => el.click(), buttonHandle)
+  ]);
+
+  console.log("Validation errors displayed.");
+
+  // Verify error messages
+  const errors = await page.$$eval(".govuk-error-summary__list li", elements => elements.map(el => el.textContent.trim()));
+  
+  const expectedErrors = [
+    "Select yes if you had an external audit",
+    "Select yes if you had an internal audit",
+    "Select yes if you had tested using assistive technology"
+  ];
+
+  const allErrorsPresent = expectedErrors.every(error => errors.includes(error));
+
+  if (allErrorsPresent) {
+    console.log("Passed: All expected errors are displayed");
+  } else {
+    console.error("Failed: Some expected errors are missing", errors);
+    return;
+  }
+
   // Select "No" for all radio button groups
   console.log("Selecting 'No' for all radio button groups...");
 
@@ -36,34 +73,33 @@ module.exports.runTest = async (page) => {
     console.log(`Selected 'no' for: ${name}`);
   }
 
-  // Ensure the screenshots folder exists
-  const screenshotsDir = "tests/e2e/screenshots";
-  if (!fs.existsSync(screenshotsDir)) {
-    fs.mkdirSync(screenshotsDir, { recursive: true });
-  }
+    // Ensure the screenshots folder exists
+    const screenshotsDir = "tests/e2e/screenshots";
+    if (!fs.existsSync(screenshotsDir)) {
+      fs.mkdirSync(screenshotsDir, { recursive: true });
+    }  
 
-  // Save screenshot before clicking Continue
-  const screenshotPath = `${screenshotsDir}/4_accessibility-findings.png`;
-  await page.screenshot({ path: screenshotPath, fullPage: true });
+  // Save screenshot after selecting radio buttons
+  const filledScreenshotPath = `${screenshotsDir}/4_accessibility-findings.png`;
+  await page.screenshot({ path: filledScreenshotPath, fullPage: true });
 
-  console.log(`Screenshot saved: ${screenshotPath}`);
+  console.log(`Screenshot saved: ${filledScreenshotPath}`);
 
-  // Click "Continue" button to move forward
-  console.log("Clicking 'Continue'...");
+  // Click "Continue" button again to move forward
+  console.log("Clicking 'Continue' after selecting radio buttons...");
 
-  const button = await page.evaluateHandle(() => {
+  const buttonHandleAfterSelection = await page.evaluateHandle(() => {
     return [...document.querySelectorAll("button")].find(btn => btn.innerText.trim() === "Continue");
   });
 
-  if (!button) {
-    console.error("Continue button not found!");
+  if (!buttonHandleAfterSelection) {
+    console.error("Continue button not found after selecting radio buttons!");
     return;
   }
 
-  // Click the button and wait for navigation
   await Promise.all([
-    page.waitForNavigation({ waitUntil: "domcontentloaded", timeout: 10000 }), 
-    button.click()
+    page.waitForNavigation({ waitUntil: "domcontentloaded", timeout: 10000 }),
+    page.evaluate(el => el.click(), buttonHandleAfterSelection)
   ]);
 
   console.log("Successfully moved to the next step!");
