@@ -3,11 +3,11 @@ import $ from 'jquery'
 export function SortableTable(params) {
   this.table = $(params.table)
 
-  if (this.table.data('moj-search-toggle-initialised')) {
+  if (this.table.get(0).hasAttribute('data-moj-sortable-table-init')) {
     return
   }
 
-  this.table.data('moj-search-toggle-initialised', true)
+  this.table.get(0).setAttribute('data-moj-sortable-table-init', '')
 
   this.setupOptions(params)
   this.body = this.table.find('tbody')
