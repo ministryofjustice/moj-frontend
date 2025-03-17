@@ -6,8 +6,8 @@ const Tabs = function (container) {
   this.cssHide = 'app-tabs__panel--hidden'
   this.tabs = container.find('.app-tabs__tab')
   this.panels = container.find('.app-tabs__panel')
-  this.container.on('click', '[role=tab]', $.proxy(this, 'onTabClick'))
-  this.container.on('keydown', '[role=tab]', $.proxy(this, 'onTabKeydown'))
+  this.container.on('click', '[role=tab]', this.onTabClick.bind(this))
+  this.container.on('keydown', '[role=tab]', this.onTabKeydown.bind(this))
   this.setupHtml()
 }
 
@@ -34,18 +34,14 @@ Tabs.prototype.setupHtml = function () {
   this.container.find('.app-tabs__list-item').attr('role', 'presentation')
   this.tabs.attr('role', 'tab')
   this.panels.attr('role', 'tabpanel')
-  this.tabs.each(
-    $.proxy(function (i, tab) {
-      const panelId = this.getHref($(tab)).slice(1)
-      tab.id = `tab_${panelId}`
-      $(tab).attr('aria-controls', panelId)
-    }, this)
-  )
-  this.panels.each(
-    $.proxy(function (i, panel) {
-      $(panel).attr('aria-labelledby', this.tabs[i].id)
-    }, this)
-  )
+  this.tabs.each((i, tab) => {
+    const panelId = this.getHref($(tab)).slice(1)
+    tab.id = `tab_${panelId}`
+    $(tab).attr('aria-controls', panelId)
+  })
+  this.panels.each((i, panel) => {
+    $(panel).attr('aria-labelledby', this.tabs[i].id)
+  })
 
   // setup state
   // this.tabs.attr('tabindex', '-1');

@@ -17,10 +17,10 @@ export function MultiSelect(options) {
 
   this.toggle = $(this.getToggleHtml(allId))
   this.toggleButton = this.toggle.find('input')
-  this.toggleButton.on('click', $.proxy(this, 'onButtonClick'))
+  this.toggleButton.on('click', this.onButtonClick.bind(this))
   this.container.append(this.toggle)
   this.checkboxes = $(options.checkboxes)
-  this.checkboxes.on('click', $.proxy(this, 'onCheckboxClick'))
+  this.checkboxes.on('click', this.onCheckboxClick.bind(this))
   this.checked = options.checked || false
 }
 
@@ -47,20 +47,16 @@ MultiSelect.prototype.onButtonClick = function () {
 }
 
 MultiSelect.prototype.checkAll = function () {
-  this.checkboxes.each(
-    $.proxy(function (index, el) {
-      el.checked = true
-    }, this)
-  )
+  this.checkboxes.each((index, el) => {
+    el.checked = true
+  })
   this.checked = true
 }
 
 MultiSelect.prototype.uncheckAll = function () {
-  this.checkboxes.each(
-    $.proxy(function (index, el) {
-      el.checked = false
-    }, this)
-  )
+  this.checkboxes.each((index, el) => {
+    el.checked = false
+  })
   this.checked = false
 }
 

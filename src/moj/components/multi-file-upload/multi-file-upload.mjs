@@ -36,16 +36,16 @@ export function MultiFileUpload(params) {
   this.container.on(
     'click',
     '.moj-multi-file-upload__delete',
-    $.proxy(this, 'onFileDeleteClick')
+    this.onFileDeleteClick.bind(this)
   )
 }
 
 MultiFileUpload.prototype.setupDropzone = function () {
   this.fileInput.wrap('<div class="moj-multi-file-upload__dropzone" />')
   this.dropzone = this.container.find('.moj-multi-file-upload__dropzone')
-  this.dropzone.on('dragover', $.proxy(this, 'onDragOver'))
-  this.dropzone.on('dragleave', $.proxy(this, 'onDragLeave'))
-  this.dropzone.on('drop', $.proxy(this, 'onDrop'))
+  this.dropzone.on('dragover', this.onDragOver.bind(this))
+  this.dropzone.on('dragleave', this.onDragLeave.bind(this))
+  this.dropzone.on('drop', this.onDrop.bind(this))
 }
 
 MultiFileUpload.prototype.setupLabel = function () {
@@ -60,9 +60,9 @@ MultiFileUpload.prototype.setupLabel = function () {
 
 MultiFileUpload.prototype.setupFileInput = function () {
   this.fileInput = this.container.find('.moj-multi-file-upload__input')
-  this.fileInput.on('change', $.proxy(this, 'onFileChange'))
-  this.fileInput.on('focus', $.proxy(this, 'onFileFocus'))
-  this.fileInput.on('blur', $.proxy(this, 'onFileBlur'))
+  this.fileInput.on('change', this.onFileChange.bind(this))
+  this.fileInput.on('focus', this.onFileFocus.bind(this))
+  this.fileInput.on('blur', this.onFileBlur.bind(this))
 }
 
 MultiFileUpload.prototype.setupStatusBox = function () {
@@ -151,7 +151,7 @@ MultiFileUpload.prototype.uploadFile = function (file) {
     data: formData,
     processData: false,
     contentType: false,
-    success: $.proxy(function (response) {
+    success: (response) => {
       if (response.error) {
         item
           .find('.moj-multi-file-upload__message')
@@ -167,8 +167,8 @@ MultiFileUpload.prototype.uploadFile = function (file) {
         .find('.moj-multi-file-upload__actions')
         .append(this.getDeleteButtonHtml(response.file))
       this.params.uploadFileExitHook(this, file, response)
-    }, this),
-    error: $.proxy(function (jqXHR, textStatus, errorThrown) {
+    },
+    error: (jqXHR, textStatus, errorThrown) => {
       this.params.uploadFileErrorHook(
         this,
         file,
@@ -176,7 +176,7 @@ MultiFileUpload.prototype.uploadFile = function (file) {
         textStatus,
         errorThrown
       )
-    }, this),
+    },
     xhr: function () {
       const xhr = new XMLHttpRequest()
       xhr.upload.addEventListener(
@@ -207,7 +207,7 @@ MultiFileUpload.prototype.onFileDeleteClick = function (event) {
     type: 'post',
     dataType: 'json',
     data,
-    success: $.proxy(function (response) {
+    success: (response) => {
       if (response.error) {
         // handle error
       } else {
@@ -220,6 +220,6 @@ MultiFileUpload.prototype.onFileDeleteClick = function (event) {
         }
       }
       this.params.fileDeleteHook(this, response)
-    }, this)
+    }
   })
 }

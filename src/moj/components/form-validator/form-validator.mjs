@@ -6,7 +6,7 @@ export function FormValidator(form, options) {
   this.form = form
   this.errors = []
   this.validators = []
-  $(this.form).on('submit', $.proxy(this, 'onSubmit'))
+  $(this.form).on('submit', this.onSubmit.bind(this))
   this.summary =
     options && options.summary ? $(options.summary) : $('.govuk-error-summary')
   this.originalTitle = document.title
