@@ -3,11 +3,11 @@ import $ from 'jquery'
 export function AddAnother(container) {
   this.container = $(container)
 
-  if (this.container.data('moj-add-another-initialised')) {
+  if (this.container.get(0).hasAttribute('data-moj-add-another-init')) {
     return
   }
 
-  this.container.data('moj-add-another-initialised', true)
+  this.container.get(0).setAttribute('data-moj-add-another-init', '')
 
   this.container.on(
     'click',

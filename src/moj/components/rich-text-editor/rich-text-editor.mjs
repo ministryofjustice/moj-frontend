@@ -16,11 +16,11 @@ export function RichTextEditor(options) {
   this.textarea = this.options.textarea
   this.container = $(this.textarea).parent()
 
-  if (this.container.data('moj-rich-text-editor-initialised')) {
+  if (this.container.get(0).hasAttribute('data-rich-text-editor-init')) {
     return
   }
 
-  this.container.data('moj-rich-text-editor-initialised', true)
+  this.container.get(0).setAttribute('data-rich-text-editor-init', '')
 
   this.createToolbar()
   this.hideDefault()
