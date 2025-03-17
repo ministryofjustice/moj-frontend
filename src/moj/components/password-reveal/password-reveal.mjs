@@ -1,18 +1,20 @@
 import $ from 'jquery'
 
 export function PasswordReveal(element) {
-  this.el = element
-  const $el = $(this.el)
+  const $el = $(element)
 
-  if ($el.data('moj-password-reveal-initialised')) {
+  this.el = element
+  this.container = $el.parent()
+
+  if (this.container.get(0).hasAttribute('data-moj-password-reveal-init')) {
     return
   }
 
-  $el.data('moj-password-reveal-initialised', true)
-  $el.attr('spellcheck', 'false')
+  this.container.get(0).setAttribute('data-moj-password-reveal-init', '')
 
+  $el.attr('spellcheck', 'false')
   $el.wrap('<div class="moj-password-reveal"></div>')
-  this.container = $(this.el).parent()
+
   this.createButton()
 }
 
