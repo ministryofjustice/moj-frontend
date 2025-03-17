@@ -3,11 +3,11 @@ import $ from 'jquery'
 export function MultiSelect(options) {
   this.container = $(options.container)
 
-  if (this.container.data('moj-multi-select-initialised')) {
+  if (this.container.get(0).hasAttribute('data-moj-multi-select-init')) {
     return
   }
 
-  this.container.data('moj-multi-select-initialised', true)
+  this.container.get(0).setAttribute('data-moj-multi-select-init', '')
 
   const idPrefix = options.id_prefix
   let allId = 'checkboxes-all'
