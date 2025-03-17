@@ -34,13 +34,13 @@ export function RichTextEditor(options) {
   this.container.on(
     'click',
     '.moj-rich-text-editor__toolbar-button',
-    $.proxy(this, 'onButtonClick')
+    this.onButtonClick.bind(this)
   )
   this.container
     .find('.moj-rich-text-editor__content')
-    .on('input', $.proxy(this, 'onEditorInput'))
-  this.container.find('label').on('click', $.proxy(this, 'onLabelClick'))
-  this.toolbar.on('keydown', $.proxy(this, 'onToolbarKeydown'))
+    .on('input', this.onEditorInput.bind(this))
+  this.container.find('label').on('click', this.onLabelClick.bind(this))
+  this.toolbar.on('keydown', this.onToolbarKeydown.bind(this))
 }
 
 RichTextEditor.prototype.onToolbarKeydown = function (event) {
