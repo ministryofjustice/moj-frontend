@@ -247,6 +247,7 @@ router.post(
   ['/component-image', '/component-image/:subpage'],
   upload.single('componentImage'),
   saveFileToRedis,
+  canAddAnother,
   validateFormDataFileUpload,
   setNextPage,
   getBackLink,

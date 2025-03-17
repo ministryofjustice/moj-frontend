@@ -58,7 +58,7 @@ const errorTemplateVariables = (
     errorList,
     backLink: req?.backLink || false,
     addAnother: req?.params?.subpage || 1,
-    showAddAnother: 'addAnother' in (req.body || {}),
+    showAddAnother: req?.showAddAnother || 'addAnother' in (req.body || {}),
     skipQuestion: req?.skipQuestion || false,
     csrfToken: req?.session?.csrfToken
   }
