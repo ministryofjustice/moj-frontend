@@ -14,7 +14,8 @@ const schema = addAnotherSchema.append({
         'Enter the website link for where the Figma design file is saved',
       'string.empty':
         'Enter the website link for where the Figma design file is saved',
-      'string.pattern.base': 'The Figma design file link must be a real website URL'
+      'string.pattern.base':
+        'The Figma design file link must be a real website URL'
     }),
   figmaLinkAdditionalInformation: Joi.string()
     .optional()

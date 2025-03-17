@@ -22,7 +22,8 @@ const {
   removeFromSession,
   sessionStarted,
   validateFormDataFileUpload,
-  validateComponentImagePage
+  validateComponentImagePage,
+  saveFileToRedis
 } = require('../middleware/component-session')
 const { generateMarkdown } = require('../middleware/generate-documentation')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
@@ -245,6 +246,7 @@ router.post(
 router.post(
   ['/component-image', '/component-image/:subpage'],
   upload.single('componentImage'),
+  saveFileToRedis,
   validateFormDataFileUpload,
   setNextPage,
   getBackLink,
@@ -273,6 +275,7 @@ router.post(
 router.post(
   ['/add-internal-audit', '/add-external-audit', '/add-assistive-tech'],
   upload.single('accessibilityReport'),
+  saveFileToRedis,
   validateFormDataFileUpload
 )
 

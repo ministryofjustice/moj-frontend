@@ -2,6 +2,7 @@
 /* eslint n/no-unpublished-require: "off" */
 
 const path = require('path')
+const redisClient = require('./helpers/redis-client')
 
 const express = require('express')
 const expressNunjucks = require('express-nunjucks').default
@@ -9,7 +10,6 @@ const rateLimit = require('express-rate-limit')
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 const helmet = require('helmet')
-const IORedis = require('ioredis')
 const nunjucks = require('nunjucks')
 
 // Configure rate limiting
@@ -20,12 +20,7 @@ const limiter = rateLimit({
   legacyHeaders: false
 })
 
-const {
-  APP_PORT,
-  REDIS_URL,
-  REDIS_AUTH_TOKEN,
-  SESSION_SECRET
-} = require('./config')
+const { APP_PORT, REDIS_URL, SESSION_SECRET } = require('./config')
 const addComponentRoutes = require('./routes/add-component')
 
 const app = express()
@@ -72,17 +67,7 @@ const sessionOptions = {
 
 if (REDIS_URL) {
   console.log('Connecting to Redis: ', REDIS_URL)
-
   // Set up Redis (for sessions)
-  const redisClient = new IORedis({
-    host: process.env.REDIS_URL || 'redis',
-    // Settings for AWS Elasticache.
-    ...(REDIS_AUTH_TOKEN && {
-      password: REDIS_AUTH_TOKEN,
-      tls: {}
-    })
-  })
-
   sessionOptions.store = new RedisStore({ client: redisClient })
 }
 

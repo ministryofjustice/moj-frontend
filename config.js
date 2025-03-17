@@ -11,7 +11,7 @@ const config = {
   NOTIFY_EMAIL_MAX_RETRIES: process.env.NOTIFY_EMAIL_MAX_RETRIES || 5,
   APP_PORT: process.env.APP_PORT || 3001,
   REDIS_URL: process.env.REDIS_URL,
-  REDIS_AUTH_TOKEN: process.env.REDIS_AUTH_TOKEN || 'your-redis-token',
+  REDIS_AUTH_TOKEN: process.env.REDIS_AUTH_TOKEN,
   SESSION_SECRET: process.env.session_secret || 'your-secret-key',
   ENV: process.env.ENV || 'development',
   COMPONENT_FORM_PAGES: {

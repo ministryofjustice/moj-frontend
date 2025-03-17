@@ -1,3 +1,5 @@
+const crypto = require('crypto')
+
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ADD_NEW_COMPONENT_ROUTE
@@ -6,9 +8,16 @@ const ApplicationError = require('../helpers/application-error')
 const extractBody = require('../helpers/extract-body')
 const nextPage = require('../helpers/next-page')
 const previousPage = require('../helpers/previous-page')
+const redis = require('../helpers/redis-client')
 const { humanReadableLabel } = require('../helpers/text-helper')
+
 const camelToKebab = (str) =>
   str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+
+// Function to hash req.url
+const getHashedUrl = (url) => {
+  return crypto.createHash('sha256').update(url).digest('hex')
+}
 
 const transformErrorsToErrorList = (errors) => {
   return errors.map((error) => ({
@@ -122,23 +131,26 @@ const validateFormData = (req, res, next) => {
 }
 
 const saveSession = (req, res, next) => {
-  if (!req.session) {
-    req.session = {}
-  }
+  if (!req.session) req.session = {}
 
-  let { _csrf, ...body } = req.body
+  const { _csrf, ...body } = req.body
 
   if (req.file) {
-    const { fieldname } = req.file
-    const file = {}
-    file[fieldname] = req.file
-    body = { ...body, ...file }
+    // Generate a hash of the req.url
+    const urlHash = getHashedUrl(req.url)
+    const redisKey = `file:${urlHash}:${req.sessionID}:${req.file.fieldname}`
+
+    if (redisKey) {
+      body[req.file.fieldname] = {
+        originalname: req.file.originalname,
+        redisKey
+      } // Use the Redis key reference
+    }
   }
 
   req.session[req.url] = { ...req.session[req.url], ...body }
   delete req.session[req.url].addAnother
 
-  console.log('saved session', req.url)
   next()
 }
 
@@ -240,6 +252,38 @@ const validateComponentImagePage = (req, res, next) => {
   next()
 }
 
+const saveFileToRedis = async (req, res, next) => {
+  if (req.file) {
+    const { buffer, originalname, mimetype } = req.file
+
+    const urlHash = getHashedUrl(req.url)
+    const redisKey = `file:${urlHash}:${req.sessionID}:${req.file.fieldname}` // Generate Redis key
+
+    try {
+      // Save file in Redis with a 24-hour expiry
+      await redis.set(
+        redisKey,
+        JSON.stringify({
+          buffer: buffer.toString('base64'),
+          originalname,
+          mimetype
+        }),
+        'EX',
+        24 * 60 * 60
+      )
+
+      // Save Redis key in session
+      req.session[req.file.fieldname] = redisKey
+
+      console.log(`[Redis] File saved with key: ${redisKey}`)
+    } catch (err) {
+      console.error(`[Redis] Error saving file: ${err.message}`)
+      return res.status(500).send('Failed to process file.')
+    }
+  }
+  next()
+}
+
 module.exports = {
   setNextPage,
   validateFormData,
@@ -253,5 +297,6 @@ module.exports = {
   removeFromSession,
   sessionStarted,
   validateFormDataFileUpload,
-  validateComponentImagePage
+  validateComponentImagePage,
+  saveFileToRedis
 }
