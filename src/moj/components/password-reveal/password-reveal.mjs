@@ -21,7 +21,7 @@ PasswordReveal.prototype.createButton = function () {
     '<button type="button" class="govuk-button govuk-button--secondary moj-password-reveal__button">Show <span class="govuk-visually-hidden">password</span></button>'
   )
   this.container.append(this.button)
-  this.button.on('click', $.proxy(this, 'onButtonClick'))
+  this.button.on('click', this.onButtonClick.bind(this))
 }
 
 PasswordReveal.prototype.onButtonClick = function () {

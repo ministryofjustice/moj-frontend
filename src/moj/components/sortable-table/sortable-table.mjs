@@ -14,7 +14,7 @@ export function SortableTable(params) {
   this.createHeadingButtons()
   this.createStatusBox()
   this.initialiseSortedColumn()
-  this.table.on('click', 'th button', $.proxy(this, 'onSortButtonClick'))
+  this.table.on('click', 'th button', this.onSortButtonClick.bind(this))
 }
 
 SortableTable.prototype.setupOptions = function (params) {

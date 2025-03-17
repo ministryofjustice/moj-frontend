@@ -12,12 +12,12 @@ export function AddAnother(container) {
   this.container.on(
     'click',
     '.moj-add-another__remove-button',
-    $.proxy(this, 'onRemoveButtonClick')
+    this.onRemoveButtonClick.bind(this)
   )
   this.container.on(
     'click',
     '.moj-add-another__add-button',
-    $.proxy(this, 'onAddButtonClick')
+    this.onAddButtonClick.bind(this)
   )
   this.container
     .find('.moj-add-another__add-button, moj-add-another__remove-button')
@@ -93,11 +93,9 @@ AddAnother.prototype.onRemoveButtonClick = function (event) {
   if (items.length === 1) {
     items.find('.moj-add-another__remove-button').remove()
   }
-  items.each(
-    $.proxy(function (index, el) {
-      this.updateAttributes(index, $(el))
-    }, this)
-  )
+  items.each((index, el) => {
+    this.updateAttributes(index, $(el))
+  })
   this.focusHeading()
 }
 
