@@ -1,84 +1,98 @@
-import $ from 'jquery'
-
 export function AddAnother(container) {
-  this.container = $(container)
+  this.container = container
 
-  if (this.container.get(0).hasAttribute('data-moj-add-another-init')) {
+  if (this.container.hasAttribute('data-moj-add-another-init')) {
     return
   }
 
-  this.container.get(0).setAttribute('data-moj-add-another-init', '')
+  this.container.setAttribute('data-moj-add-another-init', '')
 
-  this.container.on(
-    'click',
-    '.moj-add-another__remove-button',
-    this.onRemoveButtonClick.bind(this)
+  this.container.addEventListener('click', this.onRemoveButtonClick.bind(this))
+  this.container.addEventListener('click', this.onAddButtonClick.bind(this))
+
+  const buttons = this.container.querySelectorAll(
+    '.moj-add-another__add-button, moj-add-another__remove-button'
   )
-  this.container.on(
-    'click',
-    '.moj-add-another__add-button',
-    this.onAddButtonClick.bind(this)
-  )
-  this.container
-    .find('.moj-add-another__add-button, moj-add-another__remove-button')
-    .prop('type', 'button')
+
+  buttons.forEach((button) => {
+    button.type = 'button'
+  })
 }
 
-AddAnother.prototype.onAddButtonClick = function () {
+AddAnother.prototype.onAddButtonClick = function (event) {
+  const button = event.target
+
+  if (!button || !button.classList.contains('moj-add-another__add-button')) {
+    return
+  }
+
+  const items = this.getItems()
   const item = this.getNewItem()
-  this.updateAttributes(this.getItems().length, item)
+
+  this.updateAttributes(item, items.length)
   this.resetItem(item)
-  const firstItem = this.getItems().first()
+
+  const firstItem = items[0]
   if (!this.hasRemoveButton(firstItem)) {
     this.createRemoveButton(firstItem)
   }
-  this.getItems().last().after(item)
-  item.find('input, textarea, select').first().focus()
+
+  items[items.length - 1].after(item)
+  item.querySelectorAll('input, textarea, select')[0].focus()
 }
 
 AddAnother.prototype.hasRemoveButton = function (item) {
-  return item.find('.moj-add-another__remove-button').length
+  return item.querySelectorAll('.moj-add-another__remove-button').length
 }
 
 AddAnother.prototype.getItems = function () {
-  return this.container.find('.moj-add-another__item')
+  return this.container.querySelectorAll('.moj-add-another__item')
 }
 
 AddAnother.prototype.getNewItem = function () {
-  const item = this.getItems().first().clone()
+  const items = this.getItems()
+  const item = items[0].cloneNode(true)
+
   if (!this.hasRemoveButton(item)) {
     this.createRemoveButton(item)
   }
+
   return item
 }
 
-AddAnother.prototype.updateAttributes = function (index, item) {
-  item.find('[data-name]').each(function (i, el) {
+AddAnother.prototype.updateAttributes = function (item, index) {
+  item.querySelectorAll('[data-name]').forEach(function (el) {
     const originalId = el.id
 
-    el.name = $(el)
-      .attr('data-name')
-      .replace(/%index%/, index)
-    el.id = $(el)
-      .attr('data-id')
-      .replace(/%index%/, index)
+    el.name = el.getAttribute('data-name').replace(/%index%/, index)
+    el.id = el.getAttribute('data-id').replace(/%index%/, index)
 
     const label =
-      $(el).siblings('label')[0] ||
-      $(el).parents('label')[0] ||
-      item.find(`[for="${originalId}"]`)[0]
+      el.parentNode.querySelector('label') ||
+      el.closest('label') ||
+      item.querySelector(`[for="${originalId}"]`)
+
     label.htmlFor = el.id
   })
 }
 
 AddAnother.prototype.createRemoveButton = function (item) {
-  item.append(
-    '<button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>'
+  const button = document.createElement('button')
+  button.type = 'button'
+
+  button.classList.add(
+    'govuk-button',
+    'govuk-button--secondary',
+    'moj-add-another__remove-button'
   )
+
+  button.textContent = 'Remove'
+
+  item.append(button)
 }
 
 AddAnother.prototype.resetItem = function (item) {
-  item.find('[data-name], [data-id]').each(function (index, el) {
+  item.querySelectorAll('[data-name], [data-id]').forEach(function (el) {
     if (el.type === 'checkbox' || el.type === 'radio') {
       el.checked = false
     } else {
@@ -88,17 +102,27 @@ AddAnother.prototype.resetItem = function (item) {
 }
 
 AddAnother.prototype.onRemoveButtonClick = function (event) {
-  $(event.currentTarget).parents('.moj-add-another__item').remove()
-  const items = this.getItems()
-  if (items.length === 1) {
-    items.find('.moj-add-another__remove-button').remove()
+  const button = event.target
+
+  if (!button || !button.classList.contains('moj-add-another__remove-button')) {
+    return
   }
-  items.each((index, el) => {
-    this.updateAttributes(index, $(el))
+
+  button.closest('.moj-add-another__item').remove()
+
+  const items = this.getItems()
+
+  if (items.length === 1) {
+    items[0].querySelector('.moj-add-another__remove-button').remove()
+  }
+
+  items.forEach((el, index) => {
+    this.updateAttributes(el, index)
   })
+
   this.focusHeading()
 }
 
 AddAnother.prototype.focusHeading = function () {
-  this.container.find('.moj-add-another__heading').get(0).focus()
+  this.container.querySelector('.moj-add-another__heading').focus()
 }
