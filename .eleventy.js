@@ -91,7 +91,7 @@ module.exports = function (eleventyConfig) {
           'utf8'
         )
         .trim()
-    } catch (e) {}
+    } catch {}
 
     return nunjucksEnv.render('example.njk', {
       href: exampleHref,
