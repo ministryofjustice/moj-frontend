@@ -12,6 +12,7 @@ const config = {
   APP_PORT: process.env.APP_PORT || 3001,
   REDIS_URL: process.env.REDIS_URL,
   REDIS_AUTH_TOKEN: process.env.REDIS_AUTH_TOKEN,
+  REDIS_PORT: process.env.REDIS_PORT || 6379,
   SESSION_SECRET: process.env.session_secret || 'your-secret-key',
   ENV: process.env.ENV || 'development',
   COMPONENT_FORM_PAGES: {
