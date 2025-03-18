@@ -17,7 +17,7 @@ const {
 } = require('./text-helper')
 
 const mappedLabels = Object.keys(CHECK_YOUR_ANSWERS_LABEL_MAPPING)
-const maxWords = 10
+const maxWords = 10000
 const shareYourDetailsKeys = Object.keys(shareYourDetails)
 
 /**
