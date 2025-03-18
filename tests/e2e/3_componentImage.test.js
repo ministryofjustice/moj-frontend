@@ -13,9 +13,27 @@ module.exports.runTest = async (page) => {
   if (heading === "Upload an image of the component") {
     console.log("Passed: Correct Page Loaded");
   } else {
-    console.error(`Failed: Expected "Component Image" but got "${heading}"`);
+    console.error(`Failed: Expected "Upload an image of the component" but got "${heading}"`);
     return;
   }
+
+  // Locate the file input field
+  const fileInputSelector = 'input[type="file"]';
+  await page.waitForSelector(fileInputSelector);
+
+  // Define the test image path
+  const imagePath = path.resolve(__dirname, "test-files/test-image.png");
+
+  if (!fs.existsSync(imagePath)) {
+    console.error("Test image not found at path:", imagePath);
+    return;
+  }
+
+  // Upload the file
+  const inputElement = await page.$(fileInputSelector);
+  await inputElement.uploadFile(imagePath);
+
+  console.log("File uploaded successfully!");
 
   // Ensure the screenshots folder exists
   const screenshotsDir = "tests/e2e/screenshots";
@@ -23,13 +41,13 @@ module.exports.runTest = async (page) => {
     fs.mkdirSync(screenshotsDir, { recursive: true });
   }
 
-  // Save screenshot before clicking Continue
+  // Save screenshot after upload
   const screenshotPath = `${screenshotsDir}/3_component-image.png`;
   await page.screenshot({ path: screenshotPath, fullPage: true });
 
   console.log(`Screenshot saved: ${screenshotPath}`);
 
-  // Click "Continue" button to move forward
+  // Click "Continue" button
   console.log("Clicking 'Continue'...");
 
   const button = await page.evaluateHandle(() => {
@@ -43,11 +61,9 @@ module.exports.runTest = async (page) => {
 
   await button.click(); // Click the button
 
-  // Click the button and wait for navigation
   await Promise.all([
     page.waitForNavigation({ waitUntil: "domcontentloaded", timeout: 10000 }),
     button.click()
   ]);
-
   console.log("Successfully moved to the next step!");
 };

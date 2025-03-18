@@ -18,7 +18,7 @@
     "ci:dryrun": "CI=true semantic-release --debug --dry-run",
     "start": "concurrently npm:watch:* --prefix none",
     "test": "concurrently npm:test:* --group --prefix none",
-    "test:e2e": "node tests/e2e/testRunner.js", 
+    "test:e2e": "node tests/e2e/testRunner.js",
     "test:js": "jest --color src/",
     "test:scss": "sass --color --load-path . --quiet-deps src/moj/all.scss > /dev/null && echo \"ok\"",
     "lint": "concurrently npm:lint:* --group",
@@ -74,9 +74,9 @@
     "node-fetch": "2.7.0",
     "notifications-node-client": "^8.2.1",
     "nunjucks": "^3.2.4",
-    "sanitize-html": "^2.14.0",
     "puppeteer": "^24.4.0",
-    "puppeteer-core": "^24.4.0"
+    "puppeteer-core": "^24.4.0",
+    "sanitize-html": "^2.14.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
