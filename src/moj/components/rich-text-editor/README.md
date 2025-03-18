@@ -7,7 +7,7 @@
 ```html
 <script type="module">
   new MOJFrontend.RichTextEditor({
-    textarea: $('.js-editor'),
+    textarea: document.querySelector('.js-editor'),
     toolbar: { 'bold': true, 'italic': true, 'underline': true, 'bullets': true, 'numbers': true }
   })
 </script>

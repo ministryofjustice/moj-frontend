@@ -27,7 +27,7 @@ You can also install [Nunjucks v3.0.0 or later](https://www.npmjs.com/package/nu
 To install, run:
 
 ```shell
-npm install @ministryofjustice/frontend govuk-frontend jquery moment --save
+npm install @ministryofjustice/frontend govuk-frontend moment --save
 ```
 
 When the installation finishes, the `@ministryofjustice/frontend` package and other dependencies will be in your `node_modules` folder.
@@ -90,22 +90,18 @@ In your live application, we recommend [serving the font and image assets direct
 
 2. Copy both `/node_modules/@ministryofjustice/frontend/moj/moj-frontend.min.js` and `/node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js` files into your application.
 
-   You will also need to install and serve [jQuery](https://jquery.com/).
-
 3. Import the files before the closing `</body>` tag of your page template, then run the `initAll` functions to initialise all the components. For example:
 
    ```html
    <body class="govuk-template__body">
      <!-- // ... -->
 
-     <script type="module" src="/javascripts/jquery.min.js"></script>
      <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
      <script type="module" src="/javascripts/moj-frontend.min.js"></script>
 
      <script type="module">
        import * as GOVUKFrontend from '/javascripts/govuk-frontend.min.js'
 
-       window.$ = $
        window.GOVUKFrontend = GOVUKFrontend
        window.GOVUKFrontend.initAll()
        window.MOJFrontend.initAll()
