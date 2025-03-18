@@ -38,6 +38,20 @@ This component has been tested in prototypes of several citizen and internal pro
 
 ## Accessibility issues
 
-Some people who use assistive technology will find it hard to identify form items that are added. This is because the form labels this component creates are given the same ID when added to the page. [A fix for this has been proposed on GitHub.](https://github.com/ministryofjustice/moj-frontend/issues/160) This has been raised in an external audit under Web Content Accessibility Guidelines (WCAG) 2.4.6 Headings and Labels (Level AA). If you use this component without addressing this issue, you must list it in the accessibility statement.
+### Identifying form items
 
-People with low vision have also reported difficulty interacting with the remove button. This is because by default it is aligned to the right of the page away from their main focus.
+Some people who use assistive technology will find it hard to identify new form items (for example ‘first name’) that are created when they use the ‘add another’ button. This is because the form labels all have the same ID.
+
+If you’re using this component in your service you need to add these issue details to your accessibility statement:
+
+#### Assistive technology users will find it difficult to identify form items
+
+When navigating this service with assistive technology, users will find it hard to identify new form items that are created when they use the ‘add another’ button. This fails WCAG success criteria 2.4.6 Headings and Labels (Level AA) and 3.3.2 Labels & Instructions (Level A). We're aware of this issue and plan to review the component, and implement a fix by November 2025.
+
+### Adding another before resolving errors
+
+When a user selects ‘add another’ before resolving a validation error, the error will also be shown in the new field set. If you’re using this component in your service you need to add these issue details to your accessibility statement:
+
+#### Form submission errors are duplicated when a new field set is created using the ‘add another’ button
+
+If someone uses the ‘add another’ button whilst there are unaddressed errors in an existing field set these errors will be duplicated into the new field set. This fails WCAG success criteria 3.3.1 Error identification (Level A), 3.3.3 Error Suggestion (Level AA). We're aware of this issue and plan to review the component, and implement a fix by November 2025.
