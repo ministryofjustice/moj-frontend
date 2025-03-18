@@ -75,7 +75,7 @@ const schema = Joi.object({
           message: 'The date must be after 01/04/2011'
         });
       }
-      
+
       return value
     })
     .messages({
