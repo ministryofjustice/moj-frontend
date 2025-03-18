@@ -54,8 +54,8 @@ module.exports.runTest = async (page) => {
     return;
   }
 
-  // Select "No" for all radio button groups
-  console.log("Selecting 'No' for all radio button groups...");
+  // Select "Yes" for all radio button groups
+  console.log("Selecting 'Yes' for all radio button groups...");
 
   const radioNames = [
     "hasComponentBeenTestedExternalAccessibility",
@@ -65,12 +65,12 @@ module.exports.runTest = async (page) => {
 
   for (const name of radioNames) {
     await page.evaluate((name) => {
-      const noRadio = document.querySelector(`input[name="${name}"][value="no"]`);
+      const noRadio = document.querySelector(`input[name="${name}"][value="yes"]`);
       if (noRadio) {
         noRadio.click();
       }
     }, name);
-    console.log(`Selected 'no' for: ${name}`);
+    console.log(`Selected 'yes' for: ${name}`);
   }
 
     // Ensure the screenshots folder exists
@@ -80,7 +80,7 @@ module.exports.runTest = async (page) => {
     }  
 
   // Save screenshot after selecting radio buttons
-  const filledScreenshotPath = `${screenshotsDir}/4_accessibility-findings.png`;
+  const filledScreenshotPath = `${screenshotsDir}/4a_accessibility-findings.png`;
   await page.screenshot({ path: filledScreenshotPath, fullPage: true });
 
   console.log(`Screenshot saved: ${filledScreenshotPath}`);
