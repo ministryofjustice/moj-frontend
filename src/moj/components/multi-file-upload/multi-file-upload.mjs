@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+
 import {
   dragAndDropSupported,
   fileApiSupported,
@@ -101,7 +103,7 @@ MultiFileUpload.prototype.uploadFiles = function (files) {
   }
 }
 
-MultiFileUpload.prototype.onFileChange = function (event) {
+MultiFileUpload.prototype.onFileChange = function () {
   this.feedbackContainer.classList.remove('moj-hidden')
   this.status.textContent = this.params.uploadStatusText
   this.uploadFiles(this.fileInput.files)
@@ -184,7 +186,7 @@ MultiFileUpload.prototype.uploadFile = function (file) {
   const xhr = new XMLHttpRequest()
 
   const onLoad = () => {
-    if (xhr.status < 200 || xhr.status >= 300) {
+    if (xhr.status < 200 || xhr.status >= 300 || !('success' in xhr.response)) {
       return onError()
     }
 
@@ -196,7 +198,11 @@ MultiFileUpload.prototype.uploadFile = function (file) {
   }
 
   const onError = () => {
-    const error = new Error(xhr.statusText)
+    const error = new Error(
+      xhr.response && 'error' in xhr.response
+        ? xhr.response.error.message
+        : xhr.statusText || 'Upload failed'
+    )
 
     message.innerHTML = this.getErrorHtml(error)
     this.status.textContent = error.message
