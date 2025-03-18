@@ -50,14 +50,12 @@ Then import the JavaScript files before the closing `</body>` tag of your HTML p
 
   <!-- // ... -->
 
-  <script type="module" src="/javascripts/jquery.min.js"></script>
   <script type="module" src="/javascripts/govuk-frontend.min.js"></script>
   <script type="module" src="/javascripts/moj-frontend.min.js"></script>
 
   <script type="module">
     import * as GOVUKFrontend from '/javascripts/govuk-frontend.min.js'
 
-    window.$ = $
     window.GOVUKFrontend = GOVUKFrontend
     window.GOVUKFrontend.initAll()
     window.MOJFrontend.initAll()
@@ -71,21 +69,18 @@ Then import the JavaScript files before the closing `</body>` tag of your HTML p
 
 Set up your routing so requests for the JavaScript files in `<YOUR-SITE-URL>/javascripts` are served from both `/node_modules/govuk-frontend/dist/govuk` and `/node_modules/@ministryofjustice/frontend/moj`.
 
-You will also need to install and serve [jQuery](https://jquery.com/).
-
 If you’re using [express.js](https://expressjs.com/), request routing could be set up as follows:
 
 ```js
 router.use('/javascripts', [
   express.static('node_modules/@ministryofjustice/frontend/moj'),
   express.static('node_modules/govuk-frontend/dist/govuk'),
-  express.static('node_modules/jquery/dist'),
 ])
 ```
 
 ### Copy the JavaScript files into your application
 
-If you decide to copy the JavaScript files instead, copy `/node_modules/@ministryofjustice/frontend/moj/moj-frontend.min.js`, `/node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js` and `/node_modules/jquery/dist/jquery.min.js` files into your application.
+If you decide to copy the JavaScript files instead, copy `/node_modules/@ministryofjustice/frontend/moj/moj-frontend.min.js` and `/node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js` files into your application.
 
 You should use an automated task or your build pipeline to copy the files, so your project folder stays up to date when updates to MoJ Frontend and GOV.UK Frontend are released.
 
@@ -104,9 +99,7 @@ If you decide to import using a bundler, use `import` to import jQuery and all o
 ```mjs
 import * as MOJFrontend from '@ministryofjustice/frontend'
 import * as GOVUKFrontend from 'govuk-frontend'
-import $ from 'jquery'
 
-window.$ = $
 GOVUKFrontend.initAll()
 MOJFrontend.initAll()
 ```
