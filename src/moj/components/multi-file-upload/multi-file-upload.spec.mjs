@@ -206,8 +206,7 @@ describe('Multi-file upload', () => {
       expect(deleteButton).toHaveValue('test')
     })
 
-    // eslint-disable-next-line jest/no-disabled-tests -- this fails as the component still attempts to access response.file (line 149)
-    test.skip('handles 200 status with error in response json', async () => {
+    test('handles 200 status with error in response json', async () => {
       server.respondWith('POST', '/upload', [
         200,
         { 'Content-Type': 'application/json' },
