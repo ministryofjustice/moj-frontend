@@ -1,60 +1,80 @@
-import $ from 'jquery'
-
 export function MultiSelect(options) {
-  this.container = $(options.container)
+  this.container = options.container
 
-  if (this.container.get(0).hasAttribute('data-moj-multi-select-init')) {
+  if (this.container.hasAttribute('data-moj-multi-select-init')) {
     return
   }
 
-  this.container.get(0).setAttribute('data-moj-multi-select-init', '')
+  this.container.setAttribute('data-moj-multi-select-init', '')
 
   const idPrefix = options.id_prefix
-  let allId = 'checkboxes-all'
-  if (typeof idPrefix !== 'undefined') {
-    allId = `${idPrefix}checkboxes-all`
-  }
+  this.setupToggle(idPrefix)
 
-  this.toggle = $(this.getToggleHtml(allId))
-  this.toggleButton = this.toggle.find('input')
-  this.toggleButton.on('click', this.onButtonClick.bind(this))
+  this.toggleButton = this.toggle.querySelector('input')
+  this.toggleButton.addEventListener('click', this.onButtonClick.bind(this))
   this.container.append(this.toggle)
-  this.checkboxes = $(options.checkboxes)
-  this.checkboxes.on('click', this.onCheckboxClick.bind(this))
+
+  this.checkboxes = Array.from(options.checkboxes)
+  this.checkboxes.forEach((el) =>
+    el.addEventListener('click', this.onCheckboxClick.bind(this))
+  )
+
   this.checked = options.checked || false
 }
 
-MultiSelect.prototype.getToggleHtml = function (allId) {
-  let html = ''
-  html +=
-    '<div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">'
-  html += `  <input type="checkbox" class="govuk-checkboxes__input" id="${allId}">`
-  html += `  <label class="govuk-label govuk-checkboxes__label moj-multi-select__toggle-label" for="${allId}">`
-  html += '    <span class="govuk-visually-hidden">Select all</span>'
-  html += '  </label>'
-  html += '</div>'
-  return html
+MultiSelect.prototype.setupToggle = function (idPrefix = '') {
+  const id = `${idPrefix}checkboxes-all`
+
+  const toggle = document.createElement('div')
+  const label = document.createElement('label')
+  const input = document.createElement('input')
+  const span = document.createElement('span')
+
+  toggle.classList.add(
+    'govuk-checkboxes__item',
+    'govuk-checkboxes--small',
+    'moj-multi-select__checkbox'
+  )
+
+  input.id = id
+  input.type = 'checkbox'
+  input.classList.add('govuk-checkboxes__input')
+
+  label.setAttribute('for', id)
+  label.classList.add(
+    'govuk-label',
+    'govuk-checkboxes__label',
+    'moj-multi-select__toggle-label'
+  )
+
+  span.classList.add('govuk-visually-hidden')
+  span.textContent = 'Select all'
+
+  label.append(span)
+  toggle.append(input, label)
+
+  this.toggle = toggle
 }
 
 MultiSelect.prototype.onButtonClick = function () {
   if (this.checked) {
     this.uncheckAll()
-    this.toggleButton[0].checked = false
+    this.toggleButton.checked = false
   } else {
     this.checkAll()
-    this.toggleButton[0].checked = true
+    this.toggleButton.checked = true
   }
 }
 
 MultiSelect.prototype.checkAll = function () {
-  this.checkboxes.each((index, el) => {
+  this.checkboxes.forEach((el) => {
     el.checked = true
   })
   this.checked = true
 }
 
 MultiSelect.prototype.uncheckAll = function () {
-  this.checkboxes.each((index, el) => {
+  this.checkboxes.forEach((el) => {
     el.checked = false
   })
   this.checked = false
@@ -62,11 +82,14 @@ MultiSelect.prototype.uncheckAll = function () {
 
 MultiSelect.prototype.onCheckboxClick = function (event) {
   if (!event.target.checked) {
-    this.toggleButton[0].checked = false
+    this.toggleButton.checked = false
     this.checked = false
   } else {
-    if (this.checkboxes.filter(':checked').length === this.checkboxes.length) {
-      this.toggleButton[0].checked = true
+    if (
+      this.checkboxes.filter((el) => el.checked).length ===
+      this.checkboxes.length
+    ) {
+      this.toggleButton.checked = true
       this.checked = true
     }
   }
