@@ -61,11 +61,21 @@ const schema = Joi.object({
           message: 'The date of the internal audit must be a real date'
         })
       }
+
       if (moment(value).isAfter(moment())) {
         return helpers.error('any.invalid', {
           message: 'The date of the internal audit must be today or in the past'
         })
       }
+
+      // Check if the date is after 01/04/2011
+      const minDate = moment('2011-04-01', 'YYYY-MM-DD');
+      if (moment(value).isBefore(minDate)) {
+        return helpers.error('any.invalid', {
+          message: 'The date must be after 01/04/2011'
+        });
+      }
+
       return value
     })
     .messages({
