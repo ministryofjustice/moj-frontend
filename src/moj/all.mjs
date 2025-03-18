@@ -5,6 +5,7 @@ import { Alert } from './components/alert/alert.mjs'
 import { ButtonMenu } from './components/button-menu/button-menu.mjs'
 import { DatePicker } from './components/date-picker/date-picker.mjs'
 import { FilterToggleButton } from './components/filter-toggle-button/filter-toggle-button.mjs'
+import { FormValidator } from './components/form-validator/form-validator.mjs'
 import { MultiFileUpload } from './components/multi-file-upload/multi-file-upload.mjs'
 import { MultiSelect } from './components/multi-select/multi-select.mjs'
 import { PasswordReveal } from './components/password-reveal/password-reveal.mjs'
@@ -131,6 +132,7 @@ export {
   ButtonMenu,
   DatePicker,
   FilterToggleButton,
+  FormValidator,
   MultiFileUpload,
   MultiSelect,
   PasswordReveal,
