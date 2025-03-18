@@ -1,5 +1,6 @@
 /* eslint-disable no-new */
 
+import { createAll } from 'govuk-frontend'
 import * as GOVUKFrontend from 'govuk-frontend'
 
 import * as MOJFrontend from '../../../src/moj/all.mjs'
@@ -14,22 +15,14 @@ import Tabs from './tabs.mjs'
 GOVUKFrontend.initAll()
 MOJFrontend.initAll()
 
-$(function () {
-  $('[data-module="app-tabs"]').each(function (e, el) {
-    new Tabs($(el))
-  })
+createAll(Tabs)
+createAll(Copy)
+createAll(Cookies)
 
-  $('[data-module="app-copy"]').each(function (e, el) {
-    new Copy(el).init()
-  })
-
-  $('[data-module="app-cookies"]').each(function (e, el) {
-    new Cookies(el).init()
-  })
-
-  const iFrames = document.querySelectorAll('iframe')
-  iFrames.forEach((frame) => new IFrameResizer(frame))
-})
+const $iframes = document.querySelectorAll('iframe')
+for (const $iframe of Array.from($iframes)) {
+  new IFrameResizer($iframe)
+}
 
 window.MOJFrontend = MOJFrontend
 window.customElements.define('moj-menu-toggle', MenuToggle)
