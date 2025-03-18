@@ -30,7 +30,7 @@ The JavaScript
 
 ```js
 new MOJFrontend.ButtonGroup({
-  container: $('.moj-button-group'),
+  container: document.querySelector('.moj-button-group'),
   mq: '(min-width: 45em)',
   buttonText: 'Actions'
 });

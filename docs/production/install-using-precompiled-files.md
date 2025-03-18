@@ -52,14 +52,12 @@ Next, follow [the instructions for installing GOV.UK Frontend](https://frontend.
 2. Add `script` tags for MoJ Frontend JavaScript alongside GOV.UK Frontend scripts at the bottom of the `body`. This includes jQuery, which is a dependency of MoJ Frontend.
 
    ```html
-   <script type="module" src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
    <script type="module" src="/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js"></script>
    <script type="module" src="/javascripts/moj-frontend-<VERSION-NUMBER>.min.js"></script>
 
    <script type="module">
      import * as GOVUKFrontend from '/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js'
 
-     window.$ = $
      window.GOVUKFrontend = GOVUKFrontend
      window.GOVUKFrontend.initAll()
      window.MOJFrontend.initAll()
@@ -84,14 +82,12 @@ Next, follow [the instructions for installing GOV.UK Frontend](https://frontend.
 
        <!-- component HTML -->
 
-       <script type="module" src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
        <script type="module" src="/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js"></script>
        <script type="module" src="/javascripts/moj-frontend-<VERSION-NUMBER>.min.js"></script>
 
        <script type="module">
          import * as GOVUKFrontend from '/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js'
 
-         window.$ = $
          window.GOVUKFrontend = GOVUKFrontend
          window.GOVUKFrontend.initAll()
          window.MOJFrontend.initAll()
