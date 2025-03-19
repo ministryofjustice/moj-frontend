@@ -91,8 +91,6 @@ module.exports.runTest = async (page) => {
     return;
   }
 
-  await button.click(); // Click the button
-
   // Click the button and wait for navigation
   await Promise.all([
     page.waitForNavigation({ waitUntil: "domcontentloaded", timeout: 10000 }), 

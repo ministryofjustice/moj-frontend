@@ -3,6 +3,7 @@ const path = require('path');
 
 module.exports.runTest = async (page) => {
   console.log("Navigating to Start Page...");
+  await page.setViewport({ width: 1920, height: 1080 }); // Full HD
   await page.goto("http://localhost:3001/contribute/add-new-component/start", {
     waitUntil: "networkidle0",
   });
