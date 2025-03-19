@@ -1,4 +1,12 @@
+/**
+ * @class
+ * @param {Element | null} container - HTML element container
+ */
 export function AddAnother(container) {
+  if (!container || !(container instanceof HTMLElement)) {
+    return
+  }
+
   this.container = container
 
   if (this.container.hasAttribute('data-moj-add-another-init')) {
@@ -15,19 +23,34 @@ export function AddAnother(container) {
   )
 
   buttons.forEach((button) => {
+    if (!(button instanceof HTMLButtonElement)) {
+      return
+    }
+
     button.type = 'button'
   })
 }
 
+/**
+ * @param {MouseEvent} event - Click event
+ */
 AddAnother.prototype.onAddButtonClick = function (event) {
   const button = event.target
 
-  if (!button || !button.classList.contains('moj-add-another__add-button')) {
+  if (
+    !button ||
+    !(button instanceof HTMLButtonElement) ||
+    !button.classList.contains('moj-add-another__add-button')
+  ) {
     return
   }
 
   const items = this.getItems()
   const item = this.getNewItem()
+
+  if (!item) {
+    return
+  }
 
   this.updateAttributes(item, items.length)
   this.resetItem(item)
@@ -38,20 +61,36 @@ AddAnother.prototype.onAddButtonClick = function (event) {
   }
 
   items[items.length - 1].after(item)
-  item.querySelectorAll('input, textarea, select')[0].focus()
+
+  const input = item.querySelector('input, textarea, select')
+  if (input && input instanceof HTMLInputElement) {
+    input.focus()
+  }
 }
 
+/**
+ * @param {HTMLElement} item - Add another item
+ */
 AddAnother.prototype.hasRemoveButton = function (item) {
   return item.querySelectorAll('.moj-add-another__remove-button').length
 }
 
 AddAnother.prototype.getItems = function () {
-  return this.container.querySelectorAll('.moj-add-another__item')
+  if (!this.container) {
+    return []
+  }
+
+  return Array.from(
+    this.container.querySelectorAll('.moj-add-another__item')
+  ).filter((item) => item instanceof HTMLElement)
 }
 
 AddAnother.prototype.getNewItem = function () {
-  const items = this.getItems()
-  const item = items[0].cloneNode(true)
+  const item = this.getItems()[0]?.cloneNode(true)
+
+  if (!item || !(item instanceof HTMLElement)) {
+    return
+  }
 
   if (!this.hasRemoveButton(item)) {
     this.createRemoveButton(item)
@@ -60,22 +99,37 @@ AddAnother.prototype.getNewItem = function () {
   return item
 }
 
+/**
+ * @param {HTMLElement} item - Add another item
+ * @param {number} index - Add another item index
+ */
 AddAnother.prototype.updateAttributes = function (item, index) {
   item.querySelectorAll('[data-name]').forEach(function (el) {
+    if (!(el instanceof HTMLInputElement)) {
+      return
+    }
+
+    const name = el.getAttribute('data-name') || ''
+    const id = el.getAttribute('data-id') || ''
     const originalId = el.id
 
-    el.name = el.getAttribute('data-name').replace(/%index%/, index)
-    el.id = el.getAttribute('data-id').replace(/%index%/, index)
+    el.name = name.replace(/%index%/, `${index}`)
+    el.id = id.replace(/%index%/, `${index}`)
 
     const label =
-      el.parentNode.querySelector('label') ||
+      el.parentNode?.querySelector('label') ||
       el.closest('label') ||
       item.querySelector(`[for="${originalId}"]`)
 
-    label.htmlFor = el.id
+    if (label) {
+      label.htmlFor = el.id
+    }
   })
 }
 
+/**
+ * @param {HTMLElement} item - Add another item
+ */
 AddAnother.prototype.createRemoveButton = function (item) {
   const button = document.createElement('button')
   button.type = 'button'
@@ -91,8 +145,15 @@ AddAnother.prototype.createRemoveButton = function (item) {
   item.append(button)
 }
 
+/**
+ * @param {HTMLElement} item - Add another item
+ */
 AddAnother.prototype.resetItem = function (item) {
   item.querySelectorAll('[data-name], [data-id]').forEach(function (el) {
+    if (!(el instanceof HTMLInputElement)) {
+      return
+    }
+
     if (el.type === 'checkbox' || el.type === 'radio') {
       el.checked = false
     } else {
@@ -101,19 +162,26 @@ AddAnother.prototype.resetItem = function (item) {
   })
 }
 
+/**
+ * @param {MouseEvent} event - Click event
+ */
 AddAnother.prototype.onRemoveButtonClick = function (event) {
   const button = event.target
 
-  if (!button || !button.classList.contains('moj-add-another__remove-button')) {
+  if (
+    !button ||
+    !(button instanceof HTMLButtonElement) ||
+    !button.classList.contains('moj-add-another__remove-button')
+  ) {
     return
   }
 
-  button.closest('.moj-add-another__item').remove()
+  button.closest('.moj-add-another__item')?.remove()
 
   const items = this.getItems()
 
   if (items.length === 1) {
-    items[0].querySelector('.moj-add-another__remove-button').remove()
+    items[0].querySelector('.moj-add-another__remove-button')?.remove()
   }
 
   items.forEach((el, index) => {
@@ -124,5 +192,9 @@ AddAnother.prototype.onRemoveButtonClick = function (event) {
 }
 
 AddAnother.prototype.focusHeading = function () {
-  this.container.querySelector('.moj-add-another__heading').focus()
+  const heading = this.container?.querySelector('.moj-add-another__heading')
+
+  if (heading && heading instanceof HTMLElement) {
+    heading.focus()
+  }
 }

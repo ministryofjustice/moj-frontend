@@ -6,8 +6,15 @@ import {
   formDataSupported
 } from '../../helpers.mjs'
 
+/**
+ * @class
+ * @param {MultiFileUploadConfig} params
+ */
 export function MultiFileUpload(params) {
-  if (!(dragAndDropSupported() && formDataSupported() && fileApiSupported())) {
+  if (
+    !params.container ||
+    !(dragAndDropSupported() && formDataSupported() && fileApiSupported())
+  ) {
     return
   }
 
@@ -21,6 +28,9 @@ export function MultiFileUpload(params) {
     dropzoneButtonText: 'Choose files'
   }
 
+  /**
+   * @type {Required<MultiFileUploadConfig>}
+   */
   this.params = Object.assign({}, this.defaultParams, params)
 
   this.container = this.params.container
@@ -125,14 +135,23 @@ MultiFileUpload.prototype.onFileBlur = function () {
   this.label.classList.remove('moj-multi-file-upload--focused')
 }
 
+/**
+ * @param {UploadResponseSuccess['success']} success
+ */
 MultiFileUpload.prototype.getSuccessHtml = function (success) {
   return `<span class="moj-multi-file-upload__success"> <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path d="M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z"/></svg>${success.messageHtml}</span>`
 }
 
+/**
+ * @param {UploadResponseError['error']} error
+ */
 MultiFileUpload.prototype.getErrorHtml = function (error) {
   return `<span class="moj-multi-file-upload__error"> <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path d="M13.6,15.4h-2.3v-4.5h2.3V15.4z M13.6,19.8h-2.3v-2.2h2.3V19.8z M0,23.2h25L12.5,2L0,23.2z"/></svg>${error.message}</span>`
 }
 
+/**
+ * @param {File} file
+ */
 MultiFileUpload.prototype.getFileRow = function (file) {
   const row = document.createElement('div')
 
@@ -149,6 +168,9 @@ MultiFileUpload.prototype.getFileRow = function (file) {
   return row
 }
 
+/**
+ * @param {UploadResponseFile} file
+ */
 MultiFileUpload.prototype.getDeleteButton = function (file) {
   const button = document.createElement('button')
 
@@ -168,6 +190,9 @@ MultiFileUpload.prototype.getDeleteButton = function (file) {
   return button
 }
 
+/**
+ * @param {File} file
+ */
 MultiFileUpload.prototype.uploadFile = function (file) {
   this.params.uploadFileEntryHook(this, file)
 
@@ -228,10 +253,17 @@ MultiFileUpload.prototype.uploadFile = function (file) {
   xhr.send(formData)
 }
 
+/**
+ * @param {MouseEvent} event - Click event
+ */
 MultiFileUpload.prototype.onFileDeleteClick = function (event) {
   const button = event.target
 
-  if (!button || !button.classList.contains('moj-multi-file-upload__delete')) {
+  if (
+    !button ||
+    !(button instanceof HTMLButtonElement) ||
+    !button.classList.contains('moj-multi-file-upload__delete')
+  ) {
     return
   }
 
@@ -268,3 +300,73 @@ MultiFileUpload.prototype.onFileDeleteClick = function (event) {
     })
   )
 }
+
+/**
+ * Multi file upload config
+ *
+ * @typedef {object} MultiFileUploadConfig
+ * @property {Element | null} container - HTML element container
+ * @property {string} uploadUrl - File upload URL
+ * @property {string} deleteUrl - File delete URL
+ * @property {OnUploadFileEntryHook} [uploadFileEntryHook] - File upload entry hook
+ * @property {OnUploadFileExitHook} [uploadFileExitHook] - File upload exit hook
+ * @property {OnUploadFileErrorHook} [uploadFileErrorHook] - File upload error hook
+ * @property {OnUploadFileDeleteHook} [fileDeleteHook] - File delete hook
+ * @property {string} [uploadStatusText] - Upload status text
+ * @property {string} [dropzoneHintText] - Dropzone hint text
+ * @property {string} [dropzoneButtonText] - Dropzone button text
+ */
+
+/**
+ * Upload hook: File entry
+ *
+ * @callback OnUploadFileEntryHook
+ * @param {InstanceType<typeof MultiFileUpload>} upload - Multi file upload
+ * @param {File} file - File upload
+ */
+
+/**
+ * Upload hook: File exit
+ *
+ * @callback OnUploadFileExitHook
+ * @param {InstanceType<typeof MultiFileUpload>} upload - Multi file upload
+ * @param {File} file - File upload
+ * @param {UploadResponseSuccess | UploadResponseError} response - Upload response
+ */
+
+/**
+ * Upload hook: File exit
+ *
+ * @callback OnUploadFileErrorHook
+ * @param {InstanceType<typeof MultiFileUpload>} upload - Multi file upload
+ * @param {File} file - File upload
+ * @param {JQuery.jqXHR} jqXHR - jQuery XHR
+ * @param {JQuery.Ajax.ErrorTextStatus} textStatus - Text status
+ * @param {string} errorThrown - Error thrown
+ */
+
+/**
+ * Upload hook: File delete
+ *
+ * @callback OnUploadFileDeleteHook
+ * @param {InstanceType<typeof MultiFileUpload>} upload - Multi file upload
+ * @param {UploadResponseSuccess | UploadResponseError} response - Upload response
+ */
+
+/**
+ * @typedef {object} UploadResponseSuccess
+ * @property {{ messageText: string, messageHtml: string }} success - Response success
+ * @property {UploadResponseFile} file - Response file
+ */
+
+/**
+ * @typedef {object} UploadResponseError
+ * @property {{ message: string }} error - Response error
+ * @property {UploadResponseFile} file - Response file
+ */
+
+/**
+ * @typedef {object} UploadResponseFile
+ * @property {string} filename - File name
+ * @property {string} originalname - Original file name
+ */

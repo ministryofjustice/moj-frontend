@@ -1,3 +1,6 @@
+/**
+ * @class
+ */
 export function MultiSelect(options) {
   this.container = options.container
 

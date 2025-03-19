@@ -237,3 +237,7 @@ Alert.prototype.mergeConfigs = function (...configObjects) {
  * @property {boolean} [disableAutoFocus=false] - whether the alert will be autofocused
  * @property {string} [focusOnDismissSelector] - CSS Selector for element to be focused on dismiss
  */
+
+/**
+ * @import { Schema, SchemaProperty } from '../../all.mjs'
+ */
