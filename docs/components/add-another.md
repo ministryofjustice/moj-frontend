@@ -40,7 +40,7 @@ This component has been tested in prototypes of several citizen and internal pro
 
 ### Identifying form items
 
-Some people who use assistive technology will find it hard to identify new form items (for example ‘first name’) that are created when they use the ‘add another’ button. This is because the form labels all have the same ID.
+Some people who use assistive technology will find it hard to identify new form items (for example ‘first name’) that are created when they use the ‘add another’ button. This is because the form labels all have the same label text.
 
 If you’re using this component in your service you need to add these issue details to your accessibility statement:
 
