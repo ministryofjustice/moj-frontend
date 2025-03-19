@@ -55,9 +55,9 @@ Tabs.prototype.setupHtml = function () {
   this.panels.addClass(this.cssHide)
 }
 
-Tabs.prototype.onTabClick = function (e) {
-  e.preventDefault()
-  const newTab = $(e.target)
+Tabs.prototype.onTabClick = function (event) {
+  event.preventDefault()
+  const newTab = $(event.target)
   const currentTab = this.getCurrentTab()
   if (currentTab[0]) {
     this.hideTab(currentTab)
@@ -67,17 +67,17 @@ Tabs.prototype.onTabClick = function (e) {
   }
 }
 
-Tabs.prototype.onTabKeydown = function (e) {
-  switch (e.keyCode) {
+Tabs.prototype.onTabKeydown = function (event) {
+  switch (event.keyCode) {
     case this.keys.left:
     case this.keys.up:
       this.activatePreviousTab()
-      e.preventDefault()
+      event.preventDefault()
       break
     case this.keys.right:
     case this.keys.down:
       this.activateNextTab()
-      e.preventDefault()
+      event.preventDefault()
       break
   }
 }
@@ -138,7 +138,7 @@ Tabs.prototype.getHref = function (tab) {
   return href.slice(href.indexOf('#'), href.length)
 }
 
-Tabs.prototype.onCloseButtonClick = function (e) {
+Tabs.prototype.onCloseButtonClick = function () {
   const currentTab = this.getCurrentTab()
   this.hideTab(currentTab)
   this.tabs.first().focus()

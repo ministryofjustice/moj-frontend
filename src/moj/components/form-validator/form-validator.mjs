@@ -67,12 +67,12 @@ FormValidator.prototype.hideSummary = function () {
   this.summary.removeAttr('aria-labelledby')
 }
 
-FormValidator.prototype.onSubmit = function (e) {
+FormValidator.prototype.onSubmit = function (event) {
   this.removeInlineErrors()
   this.hideSummary()
   this.resetTitle()
   if (!this.validate()) {
-    e.preventDefault()
+    event.preventDefault()
     this.updateTitle()
     this.showSummary()
     this.showInlineErrors()

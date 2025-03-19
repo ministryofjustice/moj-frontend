@@ -36,7 +36,7 @@ MultiSelect.prototype.getToggleHtml = function (allId) {
   return html
 }
 
-MultiSelect.prototype.onButtonClick = function (e) {
+MultiSelect.prototype.onButtonClick = function () {
   if (this.checked) {
     this.uncheckAll()
     this.toggleButton[0].checked = false
@@ -64,8 +64,8 @@ MultiSelect.prototype.uncheckAll = function () {
   this.checked = false
 }
 
-MultiSelect.prototype.onCheckboxClick = function (e) {
-  if (!e.target.checked) {
+MultiSelect.prototype.onCheckboxClick = function (event) {
+  if (!event.target.checked) {
     this.toggleButton[0].checked = false
     this.checked = false
   } else {

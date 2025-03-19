@@ -64,9 +64,9 @@ SortableTable.prototype.initialiseSortedColumn = function () {
     })
 }
 
-SortableTable.prototype.onSortButtonClick = function (e) {
-  const columnNumber = e.currentTarget.getAttribute('data-index')
-  const sortDirection = $(e.currentTarget).parent().attr('aria-sort')
+SortableTable.prototype.onSortButtonClick = function (event) {
+  const columnNumber = event.currentTarget.getAttribute('data-index')
+  const sortDirection = $(event.currentTarget).parent().attr('aria-sort')
   let newSortDirection
   if (sortDirection === 'none' || sortDirection === 'descending') {
     newSortDirection = 'ascending'
@@ -77,7 +77,7 @@ SortableTable.prototype.onSortButtonClick = function (e) {
   const sortedRows = this.sort(rows, columnNumber, newSortDirection)
   this.addRows(sortedRows)
   this.removeButtonStates()
-  this.updateButtonState($(e.currentTarget), newSortDirection)
+  this.updateButtonState($(event.currentTarget), newSortDirection)
 }
 
 SortableTable.prototype.updateButtonState = function (button, direction) {

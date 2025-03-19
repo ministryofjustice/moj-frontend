@@ -44,10 +44,10 @@ SearchToggle.prototype.onToggleButtonClick = function () {
   }
 }
 
-SearchToggle.prototype.onDocumentClick = function (e) {
+SearchToggle.prototype.onDocumentClick = function (event) {
   if (
-    !$.contains(this.toggleButtonContainer[0], e.target) &&
-    !$.contains(this.container[0], e.target)
+    !$.contains(this.toggleButtonContainer[0], event.target) &&
+    !$.contains(this.container[0], event.target)
   ) {
     this.hideMenu()
   }
