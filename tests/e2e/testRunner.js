@@ -10,9 +10,12 @@ const testFiles = [
   "4b_accessibility-external-audit.test.js",
   "4c_accessibility-internal-audit.test",
   "4d_accessibility-assistive-tech.test",
-  "5_prototypeDesigns.test.js",
-  "6_figmaDesigns.test.js",
-  "7_componentCode.test.js",
+  "5a_prototypeDesigns.test.js",
+  "5b_prototypeDesigns-link.test.js",
+  "6a_figmaDesigns.test.js",
+  "6b_figmaDesigns-link.test.js",
+  "7a_componentCode.test.js",
+  "7b_componentCode-link.test.js",
   "8_yourDetails.test.js",
   "9_checkAnswers.test.js"
 ];

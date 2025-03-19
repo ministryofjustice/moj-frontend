@@ -2,18 +2,18 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports.runTest = async (page) => {
-  console.log("Verifying Prototype Designs Page...");
+  console.log("Verifying Component Code Page...");
 
-  // Ensure we're on the Prototype Designs page
+  // Ensure we're on the Accessibility Findings page
   await page.waitForSelector("h1", { visible: true });
 
   // Verify heading
   const heading = await page.$eval("h1", (el) => el.textContent.trim());
 
-  if (heading === "Prototype designs") {
+  if (heading === "Component code") {
     console.log("Passed: Correct Page Loaded");
   } else {
-    console.error(`Failed: Expected "Prototype designs" but got "${heading}"`);
+    console.error(`Failed: Expected "Component code" but got "${heading}"`);
     return;
   }
 
@@ -37,7 +37,7 @@ module.exports.runTest = async (page) => {
   const errors = await page.$$eval(".govuk-error-summary__list li", elements => elements.map(el => el.textContent.trim()));
   
   const expectedErrors = [
-    "Select yes if you have a prototype link for the component"
+    "Select yes if you have code for the component"
   ];
 
   const allErrorsPresent = expectedErrors.every(error => errors.includes(error));
@@ -49,22 +49,21 @@ module.exports.runTest = async (page) => {
     return;
   }
 
-
-  // Select "No" for all radio button groups
-  console.log("Selecting 'No' for all radio button groups...");
+  // Select "Yes" for all radio button groups
+  console.log("Selecting 'Yes' for all radio button groups...");
 
   const radioNames = [
-    "componentPrototypeUrl"
+    "componentCodeAvailable"
   ];
 
   for (const name of radioNames) {
     await page.evaluate((name) => {
-      const noRadio = document.querySelector(`input[name="${name}"][value="no"]`);
+      const noRadio = document.querySelector(`input[name="${name}"][value="yes"]`);
       if (noRadio) {
         noRadio.click();
       }
     }, name);
-    console.log(`Selected 'no' for: ${name}`);
+    console.log(`Selected 'yes' for: ${name}`);
   }
 
 
@@ -75,7 +74,7 @@ module.exports.runTest = async (page) => {
   }
 
   // Save screenshot before clicking Continue
-  const screenshotPath = `${screenshotsDir}/5-prototype-designs.png`;
+  const screenshotPath = `${screenshotsDir}/7a-component-code.png`;
   await page.screenshot({ path: screenshotPath, fullPage: true });
 
   console.log(`Screenshot saved: ${screenshotPath}`);
@@ -92,10 +91,9 @@ module.exports.runTest = async (page) => {
     return;
   }
 
- 
   // Click the button and wait for navigation
   await Promise.all([
-    page.waitForNavigation({ waitUntil: "domcontentloaded", timeout: 10000 }),
+    page.waitForNavigation({ waitUntil: "domcontentloaded", timeout: 10000 }), 
     button.click()
   ]);
 

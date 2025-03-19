@@ -2,18 +2,18 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports.runTest = async (page) => {
-  console.log("Verifying Figma Designs Page...");
+  console.log("Verifying Prototype Designs Link Page...");
 
-  // Ensure we're on the Accessibility Findings page
+  // Ensure we're on the Prototype Designs page
   await page.waitForSelector("h1", { visible: true });
 
   // Verify heading
   const heading = await page.$eval("h1", (el) => el.textContent.trim());
 
-  if (heading === "Figma design") {
+  if (heading === "Prototype designs") {
     console.log("Passed: Correct Page Loaded");
   } else {
-    console.error(`Failed: Expected "Figma design" but got "${heading}"`);
+    console.error(`Failed: Expected "Prototype designs" but got "${heading}"`);
     return;
   }
 
@@ -37,7 +37,7 @@ module.exports.runTest = async (page) => {
   const errors = await page.$$eval(".govuk-error-summary__list li", elements => elements.map(el => el.textContent.trim()));
   
   const expectedErrors = [
-    "Select yes if you have a Figma design file for the component"
+    "Enter the prototype link"
   ];
 
   const allErrorsPresent = expectedErrors.every(error => errors.includes(error));
@@ -49,23 +49,11 @@ module.exports.runTest = async (page) => {
     return;
   }
 
+   // Fill out the input fields
+   
+  console.log("Entering prototype link into input field");
 
-  // Select "No" for all radio button groups
-  console.log("Selecting 'No' for all radio button groups...");
-
-  const radioNames = [
-    "figmaUrl"
-  ];
-
-  for (const name of radioNames) {
-    await page.evaluate((name) => {
-      const noRadio = document.querySelector(`input[name="${name}"][value="no"]`);
-      if (noRadio) {
-        noRadio.click();
-      }
-    }, name);
-    console.log(`Selected 'no' for: ${name}`);
-  }
+  await page.type('#prototype-url', 'https://www.test-moj.com')
 
 
   // Ensure the screenshots folder exists
@@ -75,7 +63,7 @@ module.exports.runTest = async (page) => {
   }
 
   // Save screenshot before clicking Continue
-  const screenshotPath = `${screenshotsDir}/6-figma-designs.png`;
+  const screenshotPath = `${screenshotsDir}/5b-prototype-designs-link.png`;
   await page.screenshot({ path: screenshotPath, fullPage: true });
 
   console.log(`Screenshot saved: ${screenshotPath}`);
@@ -92,6 +80,7 @@ module.exports.runTest = async (page) => {
     return;
   }
 
+ 
   // Click the button and wait for navigation
   await Promise.all([
     page.waitForNavigation({ waitUntil: "domcontentloaded", timeout: 10000 }),
