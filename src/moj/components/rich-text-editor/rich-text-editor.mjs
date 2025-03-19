@@ -105,7 +105,7 @@ RichTextEditor.prototype.getToolbarHtml = function () {
   return html
 }
 
-RichTextEditor.prototype.getEnhancedHtml = function (val) {
+RichTextEditor.prototype.getEnhancedHtml = function () {
   return `${this.getToolbarHtml()}<div class="govuk-textarea moj-rich-text-editor__content" contenteditable="true" spellcheck="false"></div>`
 }
 

@@ -161,7 +161,7 @@ DatePicker.prototype.initControls = function () {
   const dialogButtons = this.$dialog.querySelectorAll(
     'button:not([disabled="true"])'
   )
-  // eslint-disable-next-line prefer-destructuring
+
   this.$firstButtonInDialog = dialogButtons[0]
   this.$lastButtonInDialog = dialogButtons[dialogButtons.length - 1]
   this.$firstButtonInDialog.addEventListener('keydown', (event) =>
@@ -561,11 +561,11 @@ DatePicker.prototype.updateCalendar = function () {
   const thisDay = new Date(firstOfMonth)
 
   // loop through our days
-  for (let i = 0; i < this.calendarDays.length; i++) {
+  for (const calendarDay of this.calendarDays) {
     const hidden = thisDay.getMonth() !== day.getMonth()
     const disabled = this.isExcludedDate(thisDay)
 
-    this.calendarDays[i].update(thisDay, hidden, disabled)
+    calendarDay.update(thisDay, hidden, disabled)
 
     thisDay.setDate(thisDay.getDate() + 1)
   }
@@ -921,18 +921,22 @@ DSCalendarDay.prototype.keyPress = function (event) {
     case 'End':
       this.picker.focusLastDayOfWeek()
       break
-    case 'PageUp':
-      // eslint-disable-next-line no-unused-expressions
-      event.shiftKey
-        ? this.picker.focusPreviousYear(event)
-        : this.picker.focusPreviousMonth(event)
+    case 'PageUp': {
+      if (event.shiftKey) {
+        this.picker.focusPreviousYear(event)
+      } else {
+        this.picker.focusPreviousMonth(event)
+      }
       break
-    case 'PageDown':
-      // eslint-disable-next-line no-unused-expressions
-      event.shiftKey
-        ? this.picker.focusNextYear(event)
-        : this.picker.focusNextMonth(event)
+    }
+    case 'PageDown': {
+      if (event.shiftKey) {
+        this.picker.focusNextYear(event)
+      } else {
+        this.picker.focusNextMonth(event)
+      }
       break
+    }
     default:
       calendarNavKey = false
       break

@@ -1,6 +1,6 @@
 const gulp = require('gulp')
 
-gulp.task('build:clean', async (done) => {
+gulp.task('build:clean', async () => {
   const { deleteSync } = await import('del')
 
   return deleteSync([

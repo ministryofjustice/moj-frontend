@@ -49,8 +49,7 @@ FormValidator.prototype.getSummaryHtml = function () {
     '<h2 id="error-summary-title" class="govuk-error-summary__title">There is a problem</h2>'
   html += '<div class="govuk-error-summary__body">'
   html += '<ul class="govuk-list govuk-error-summary__list">'
-  for (let i = 0, j = this.errors.length; i < j; i++) {
-    const error = this.errors[i]
+  for (const error of this.errors) {
     html += '<li>'
     html += `<a href="#${this.escapeHtml(error.fieldName)}">`
     html += this.escapeHtml(error.message)
@@ -80,8 +79,8 @@ FormValidator.prototype.onSubmit = function (event) {
 }
 
 FormValidator.prototype.showInlineErrors = function () {
-  for (let i = 0, j = this.errors.length; i < j; i++) {
-    this.showInlineError(this.errors[i])
+  for (const error of this.errors) {
+    this.showInlineError(error)
   }
 }
 
@@ -108,8 +107,8 @@ FormValidator.prototype.showInlineError = function (error) {
 }
 
 FormValidator.prototype.removeInlineErrors = function () {
-  for (let i = 0; i < this.errors.length; i++) {
-    this.removeInlineError(this.errors[i])
+  for (const error of this.errors) {
+    this.removeInlineError(error)
   }
 }
 
