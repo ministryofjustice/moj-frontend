@@ -93,18 +93,13 @@ SortableTable.prototype.removeButtonStates = function () {
 }
 
 SortableTable.prototype.addRows = function (rows) {
-  for (let i = 0; i < rows.length; i++) {
-    this.body.append(rows[i])
+  for (const row of rows) {
+    this.body.append(row)
   }
 }
 
 SortableTable.prototype.getTableRowsArray = function () {
-  const rows = []
-  const trs = this.body.find('tr')
-  for (let i = 0; i < trs.length; i++) {
-    rows.push(trs[i])
-  }
-  return rows
+  return Array.from(this.body.find('tr'))
 }
 
 SortableTable.prototype.sort = function (rows, columnNumber, sortDirection) {

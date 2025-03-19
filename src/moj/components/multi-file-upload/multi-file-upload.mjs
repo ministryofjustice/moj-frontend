@@ -90,8 +90,8 @@ MultiFileUpload.prototype.onDrop = function (event) {
 }
 
 MultiFileUpload.prototype.uploadFiles = function (files) {
-  for (let i = 0; i < files.length; i++) {
-    this.uploadFile(files[i])
+  for (const file of Array.from(files)) {
+    this.uploadFile(file)
   }
 }
 
