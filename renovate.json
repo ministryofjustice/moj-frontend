@@ -1,11 +1,82 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":semanticCommitTypeAll(build)"],
+  "extends": ["config:recommended", ":semanticCommitTypeAll(build)"],
+  "ignoreDeps": ["eslint", "eslint-plugin-promise", "eslint-plugin-n"],
+  "labels": ["dependencies"],
+  "minimumReleaseAge": "7",
   "packageRules": [
     {
-      "labels": ["dependencies"],
-      "minimumReleaseAge": 7,
-      "rangeStrategy": "bump"
+      "groupName": "Build",
+      "matchPackageNames": [
+        "@babel/*",
+        "@rollup/*",
+        "autoprefixer",
+        "babel-*",
+        "cssnano",
+        "cssnano-*",
+        "postcss",
+        "postcss-*",
+        "rollup",
+        "rollup-*",
+        "sass-embedded",
+        "terser"
+      ]
+    },
+    {
+      "addLabels": ["preview:request"],
+      "groupName": "Documentation",
+      "matchPackageNames": [
+        "@11ty/eleventy",
+        "@11ty/eleventy-*",
+        "highlight.js",
+        "markdown-it",
+        "markdown-it-*"
+      ]
+    },
+    {
+      "groupName": "Lint",
+      "matchPackageNames": [
+        "@typescript-eslint/*",
+        "eslint-*",
+        "prettier",
+        "stylelint",
+        "stylelint-*"
+      ]
+    },
+    {
+      "addLabels": ["preview:request"],
+      "groupName": "Release",
+      "matchPackageNames": [
+        "@commitlint/*",
+        "@semantic-release/*",
+        "commitizen",
+        "cz-*",
+        "semantic-release",
+        "semantic-release-*"
+      ]
+    },
+    {
+      "addLabels": ["preview:request"],
+      "groupName": "Production",
+      "matchDepTypes": ["dependencies"]
+    },
+    {
+      "groupName": "Test",
+      "matchPackageNames": [
+        "@testing-library/*",
+        "concurrently",
+        "del",
+        "glob",
+        "jest",
+        "jest-*",
+        "mock-*",
+        "sinon"
+      ]
+    },
+    {
+      "groupName": "Tools",
+      "matchPackageNames": ["concurrently", "gulp", "gulp-*", "nodemon"]
     }
-  ]
+  ],
+  "rangeStrategy": "bump"
 }
