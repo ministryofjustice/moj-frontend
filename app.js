@@ -25,27 +25,7 @@ if (!isDev) {
   // Add security headers
   app.use(
     helmet({
-      contentSecurityPolicy: {
-        directives: {
-          'default-src': ["'self'"],
-          'connect-src': [
-            "'self'",
-            'https://www.googletagmanager.com', // Allow GTM
-            'https://region1.google-analytics.com' // Allow Google Analytics
-          ],
-          'script-src': [
-            "'self'",
-            'https://www.googletagmanager.com', // Allow GTM
-            "'sha256-GUQ5ad8JK5KmEWmROf3LZd9ge94daqNvd8xy9YS1iDw='", // Script modifying document.body.className
-            "'sha256-skTG6tpg3ly5Qkn5WY5737dUMy44jsVx49TxDFudrWg='" // Google tag manager
-          ],
-          'frame-src': [
-            "'self'",
-            'https://design-patterns.service.justice.gov.uk/',
-            'https://*.cloud-platform.service.justice.gov.uk'
-          ] // Allow embedding
-        }
-      }
+      contentSecurityPolicy: false // Disable CSP
     })
   )
 
@@ -65,7 +45,7 @@ const sessionOptions = {
   secret: SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: !isDev, maxAge: 24 * 60 * 60 * 1000 }
+  cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 }
 }
 
 if (REDIS_URL) {
@@ -94,7 +74,6 @@ expressNunjucks(app, {
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
-app.use('/assets', express.static(path.join(__dirname, 'public/assets')))
 
 // Routes
 app.use('/contribute/add-new-component', addComponentRoutes)
