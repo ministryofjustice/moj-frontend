@@ -3,12 +3,11 @@ module.exports = {
     {
       files: ['moj/**/*.{cjs,js,mjs}'],
       excludedFiles: ['**/*.spec.{cjs,js,mjs}'],
-      parser: '@typescript-eslint/parser',
       parserOptions: {
         // Note: Allow ES2015 for import/export syntax
         ecmaVersion: '2015'
       },
-      plugins: ['es-x'],
+      plugins: ['@typescript-eslint', 'es-x'],
       extends: ['plugin:es-x/restrict-to-es2015', 'prettier'],
       env: {
         browser: true
