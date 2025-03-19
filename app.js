@@ -41,9 +41,8 @@ app.use(
         'script-src': [
           "'self'",
           'https://www.googletagmanager.com', // Allow GTM
-          "'sha256-KB7HGsF8PIa84S3v4OuSmcyYuq3rN8243mLIvoITNKM='",
-          "'sha256-uVthPuZ6UO/uA1h2kqPXZBOz/EIuOAXjIKCuDDsXIaA='",
-          "'sha256-GUQ5ad8JK5KmEWmROf3LZd9ge94daqNvd8xy9YS1iDw='"
+          "'sha256-GUQ5ad8JK5KmEWmROf3LZd9ge94daqNvd8xy9YS1iDw='", // Script modifying document.body.className
+          "'sha256-skTG6tpg3ly5Qkn5WY5737dUMy44jsVx49TxDFudrWg='" // Google tag manager
         ],
         'frame-src': [
           "'self'",
