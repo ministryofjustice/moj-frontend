@@ -27,11 +27,11 @@ Copy.prototype.copyAction = function () {
       target: function () {
         return $pre
       }
-    }).on('success', function (e) {
-      e.trigger.textContent = 'Code copied'
-      e.clearSelection()
+    }).on('success', function (event) {
+      event.trigger.textContent = 'Code copied'
+      event.clearSelection()
       setTimeout(function () {
-        e.trigger.textContent = 'Copy code'
+        event.trigger.textContent = 'Copy code'
       }, 5000)
     })
   } catch (err) {

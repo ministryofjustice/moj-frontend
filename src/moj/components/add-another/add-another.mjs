@@ -24,7 +24,7 @@ export function AddAnother(container) {
     .prop('type', 'button')
 }
 
-AddAnother.prototype.onAddButtonClick = function (e) {
+AddAnother.prototype.onAddButtonClick = function () {
   const item = this.getNewItem()
   this.updateAttributes(this.getItems().length, item)
   this.resetItem(item)
@@ -87,8 +87,8 @@ AddAnother.prototype.resetItem = function (item) {
   })
 }
 
-AddAnother.prototype.onRemoveButtonClick = function (e) {
-  $(e.currentTarget).parents('.moj-add-another__item').remove()
+AddAnother.prototype.onRemoveButtonClick = function (event) {
+  $(event.currentTarget).parents('.moj-add-another__item').remove()
   const items = this.getItems()
   if (items.length === 1) {
     items.find('.moj-add-another__remove-button').remove()
