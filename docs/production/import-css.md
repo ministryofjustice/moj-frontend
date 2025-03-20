@@ -55,7 +55,7 @@ You must add the root of your application to Sass load paths, by either:
 - calling the Sass compiler from the command line with the `--load-path .` flag
 - using the JavaScript API with `loadPaths: ['.']` in the `options` object
 
-For more details, see how to [simplify Sass load paths](#simplify-sass-load-paths) or [silence deprecation warnings from dependencies](#silence-deprecation-warnings-from-dependencies-in-dart-sass) below.
+For more details, view guidance on [simplifying Sass load paths](#simplify-sass-load-paths) and [silencing deprecation warnings from dependencies](#silence-deprecation-warnings-from-dependencies-in-dart-sass).
 
 ### Load an individual component’s CSS using a single Sass forward
 
