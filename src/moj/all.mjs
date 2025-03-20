@@ -36,10 +36,16 @@ function initAll(config) {
   )
 
   $multiSelects.forEach(($multiSelect) => {
+    const containerSelector = $multiSelect.getAttribute(
+      'data-multi-select-checkbox'
+    )
+
+    if (!($multiSelect instanceof HTMLElement) || !containerSelector) {
+      return
+    }
+
     new MultiSelect({
-      container: $multiSelect.querySelector(
-        $multiSelect.getAttribute('data-multi-select-checkbox')
-      ),
+      container: $multiSelect.querySelector(containerSelector),
       checkboxes: $multiSelect.querySelectorAll(
         'tbody .govuk-checkboxes__input'
       ),
@@ -60,6 +66,7 @@ function initAll(config) {
   )
 
   $richTextEditors.forEach(($richTextEditor) => {
+    /** @type {RichTextEditorConfig} */
     const options = {
       textarea: $richTextEditor
     }
@@ -118,17 +125,29 @@ function initAll(config) {
   const $datePickers = scope.querySelectorAll('[data-module="moj-date-picker"]')
 
   $datePickers.forEach(($datePicker) => {
+    if (!($datePicker instanceof HTMLElement)) {
+      return
+    }
+
     new DatePicker($datePicker).init()
   })
 
   const $buttonMenus = scope.querySelectorAll('[data-module="moj-button-menu"]')
 
   $buttonMenus.forEach(($buttonmenu) => {
+    if (!($buttonmenu instanceof HTMLElement)) {
+      return
+    }
+
     new ButtonMenu($buttonmenu).init()
   })
 
   const $alerts = scope.querySelectorAll('[data-module="moj-alert"]')
   $alerts.forEach(($alert) => {
+    if (!($alert instanceof HTMLElement)) {
+      return
+    }
+
     new Alert($alert).init()
   })
 }
@@ -171,3 +190,6 @@ export {
  * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
  */
 
+/**
+ * @import { RichTextEditorConfig } from './components/rich-text-editor/rich-text-editor.mjs'
+ */

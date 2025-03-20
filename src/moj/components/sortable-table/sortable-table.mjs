@@ -1,4 +1,12 @@
+/**
+ * @class
+ * @param {SortableTableConfig} params
+ */
 export function SortableTable(params) {
+  if (!params.table || !(params.table instanceof HTMLElement)) {
+    return
+  }
+
   this.table = params.table
 
   if (this.table.hasAttribute('data-moj-sortable-table-init')) {
@@ -19,6 +27,9 @@ export function SortableTable(params) {
   this.head.addEventListener('click', this.onSortButtonClick.bind(this))
 }
 
+/**
+ * @param {SortableTableConfig} params
+ */
 SortableTable.prototype.setupOptions = function (params) {
   params = params || {}
   this.statusMessage = params.statusMessage || 'Sort by %heading% (%direction%)'
@@ -34,6 +45,9 @@ SortableTable.prototype.createHeadingButtons = function () {
   }
 }
 
+/**
+ * @param {HTMLElement} heading
+ */
 SortableTable.prototype.createHeadingButton = function (heading) {
   const index = this.headings.indexOf(heading)
   const button = document.createElement('button')
@@ -77,13 +91,16 @@ SortableTable.prototype.initialiseSortedColumn = function () {
   this.addRows(sortedRows)
 }
 
+/**
+ * @param {MouseEvent} event - Click event
+ */
 SortableTable.prototype.onSortButtonClick = function (event) {
   const button = event.target
 
   if (
     !button ||
-    !button.parentElement ||
-    !(button instanceof HTMLButtonElement)
+    !(button instanceof HTMLButtonElement) ||
+    !button.parentElement
   ) {
     return
   }
@@ -105,7 +122,15 @@ SortableTable.prototype.onSortButtonClick = function (event) {
   this.updateButtonState(button, newSortDirection)
 }
 
+/**
+ * @param {HTMLButtonElement} button
+ * @param {string} direction
+ */
 SortableTable.prototype.updateButtonState = function (button, direction) {
+  if (!(direction === 'ascending' || direction === 'descending')) {
+    return
+  }
+
   button.parentElement.setAttribute('aria-sort', direction)
   let message = this.statusMessage
   message = message.replace(/%heading%/, button.textContent)
@@ -119,6 +144,9 @@ SortableTable.prototype.removeButtonStates = function () {
   }
 }
 
+/**
+ * @param {HTMLTableRowElement[]} rows
+ */
 SortableTable.prototype.addRows = function (rows) {
   for (const row of rows) {
     this.body.append(row)
@@ -129,33 +157,57 @@ SortableTable.prototype.getTableRowsArray = function () {
   return Array.from(this.body.querySelectorAll('tr'))
 }
 
+/**
+ * @param {HTMLTableRowElement[]} rows
+ * @param {number} columnNumber
+ * @param {string} sortDirection
+ */
 SortableTable.prototype.sort = function (rows, columnNumber, sortDirection) {
-  const newRows = rows.sort(
-    function (rowA, rowB) {
-      const tdA = rowA.querySelectorAll('td, th')[columnNumber]
-      const tdB = rowB.querySelectorAll('td, th')[columnNumber]
+  return rows.sort((rowA, rowB) => {
+    const tdA = rowA.querySelectorAll('td, th')[columnNumber]
+    const tdB = rowB.querySelectorAll('td, th')[columnNumber]
 
-      const valueA =
-        sortDirection === 'ascending'
-          ? this.getCellValue(tdA)
-          : this.getCellValue(tdB)
+    if (
+      !tdA ||
+      !tdA ||
+      !(tdA instanceof HTMLElement) ||
+      !(tdB instanceof HTMLElement)
+    ) {
+      return 0
+    }
 
-      const valueB =
-        sortDirection === 'ascending'
-          ? this.getCellValue(tdB)
-          : this.getCellValue(tdA)
+    const valueA =
+      sortDirection === 'ascending'
+        ? this.getCellValue(tdA)
+        : this.getCellValue(tdB)
 
-      if (typeof valueA === 'string' || typeof valueB === 'string')
-        return valueA.toString().localeCompare(valueB.toString())
-      return valueA - valueB
-    }.bind(this)
-  )
-  return newRows
+    const valueB =
+      sortDirection === 'ascending'
+        ? this.getCellValue(tdB)
+        : this.getCellValue(tdA)
+
+    return !(typeof valueA === 'number' && typeof valueB === 'number')
+      ? valueA.toString().localeCompare(valueB.toString())
+      : valueA - valueB
+  })
 }
 
+/**
+ * @param {HTMLElement} cell
+ */
 SortableTable.prototype.getCellValue = function (cell) {
   const val = cell.getAttribute('data-sort-value') || cell.innerHTML
 
   const valAsNumber = Number(val)
   return isNaN(valAsNumber) ? val : valAsNumber
 }
+
+/**
+ * Sortable table config
+ *
+ * @typedef {object} SortableTableConfig
+ * @property {Element | null} [table] - Table selector
+ * @property {string} [statusMessage] - Status message
+ * @property {string} [ascendingText] - Ascending text
+ * @property {string} [descendingText] - Descending text
+ */

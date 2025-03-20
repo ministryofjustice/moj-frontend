@@ -1,10 +1,17 @@
+/**
+ * @class
+ * @param {RichTextEditorConfig} options
+ */
 export function RichTextEditor(options) {
-  if (!('contentEditable' in document.documentElement)) {
+  if (
+    !options.textarea ||
+    !(options.textarea instanceof HTMLTextAreaElement) ||
+    !('contentEditable' in document.documentElement)
+  ) {
     return
   }
 
-  this.options = options
-  this.options.toolbar = this.options.toolbar || {
+  options.toolbar = options.toolbar || {
     bold: false,
     italic: false,
     underline: false,
@@ -12,6 +19,7 @@ export function RichTextEditor(options) {
     numbers: true
   }
 
+  this.options = options
   this.textarea = this.options.textarea
   this.container = this.textarea.parentElement
 
@@ -43,6 +51,9 @@ export function RichTextEditor(options) {
   this.toolbar.addEventListener('keydown', this.onToolbarKeydown.bind(this))
 }
 
+/**
+ * @param {KeyboardEvent} event - Click event
+ */
 RichTextEditor.prototype.onToolbarKeydown = function (event) {
   let focusableButton
   switch (event.keyCode) {
@@ -140,6 +151,9 @@ RichTextEditor.prototype.configureToolbar = function () {
   })
 }
 
+/**
+ * @param {MouseEvent} event - Click event
+ */
 RichTextEditor.prototype.onButtonClick = function (event) {
   document.execCommand(
     event.currentTarget.getAttribute('data-command'),
@@ -162,7 +176,29 @@ RichTextEditor.prototype.updateTextarea = function () {
   this.textarea.value = this.getContent()
 }
 
+/**
+ * @param {MouseEvent} event - Click event
+ */
 RichTextEditor.prototype.onLabelClick = function (event) {
   event.preventDefault()
   this.container.querySelector('.moj-rich-text-editor__content').focus()
 }
+
+/**
+ * Rich text editor config
+ *
+ * @typedef {object} RichTextEditorConfig
+ * @property {Element | null} textarea - Textarea selector
+ * @property {RichTextEditorToolbar} [toolbar] - Toolbar options
+ */
+
+/**
+ * Rich text editor toolbar options
+ *
+ * @typedef {object} RichTextEditorToolbar
+ * @property {boolean} [bold] - Show the bold button
+ * @property {boolean} [italic] - Show the italic button
+ * @property {boolean} [underline] - Show the underline button
+ * @property {boolean} [bullets] - Show the bullets button
+ * @property {boolean} [numbers] - Show the numbers button
+ */

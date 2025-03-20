@@ -1,4 +1,12 @@
+/**
+ * @class
+ * @param {Element | null} element - HTML element
+ */
 export function PasswordReveal(element) {
+  if (!element || !(element instanceof HTMLElement)) {
+    return
+  }
+
   this.el = element
   this.container = element.parentElement
 
