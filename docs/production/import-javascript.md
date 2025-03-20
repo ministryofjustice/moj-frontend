@@ -65,7 +65,7 @@ Then import the JavaScript files before the closing `</body>` tag of your HTML p
 </body>
 ```
 
-**Some components cannot be initialised by this method** and this is noted on their individual documentation pages. For more details, see how to [initialise individual components](#initialise-individual-components) below.
+**Some components cannot be initialised by this method** and this is noted on their individual documentation pages. For more details, view guidance on [initialising individual components](#initialise-individual-components).
 
 ### Serve the JavaScript files from the combined javascripts folders – recommended
 
