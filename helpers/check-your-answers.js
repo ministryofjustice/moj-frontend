@@ -111,6 +111,7 @@ const extractFieldData = (
     if (typeof value === 'object' && !Array.isArray(value)) {
       ignoreFields.forEach((ignoreField) => {
         if (value && typeof value === 'object' && ignoreField in value) {
+          // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
           delete value[ignoreField]
         }
       })

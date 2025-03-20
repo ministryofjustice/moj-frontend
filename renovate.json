@@ -3,14 +3,9 @@
   "extends": ["config:base", ":semanticCommitTypeAll(build)"],
   "packageRules": [
     {
-      "groupName": "Patch & Minor Updates",
-      "groupSlug": "all-minor-patch-updates",
       "labels": ["dependencies"],
-      "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "prCreation": "immediate",
-      "rangeStrategy": "bump",
-      "stabilityDays": 7
+      "minimumReleaseAge": 7,
+      "rangeStrategy": "bump"
     }
   ]
 }

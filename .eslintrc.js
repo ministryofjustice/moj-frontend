@@ -19,6 +19,8 @@ module.exports = {
         'plugin:jsdoc/recommended-typescript-flavor',
         'plugin:n/recommended',
         'plugin:promise/recommended',
+        'plugin:@typescript-eslint/strict',
+        'plugin:@typescript-eslint/stylistic',
         'prettier'
       ],
       files: [
@@ -28,10 +30,19 @@ module.exports = {
         // https://www.npmjs.com/package/eslint-plugin-markdown#user-content-advanced-configuration
         '**/*.md/*.{cjs,js,mjs}'
       ],
+      parser: '@typescript-eslint/parser',
       parserOptions: {
         ecmaVersion: 'latest'
       },
-      plugins: ['import', 'jsdoc', 'n', 'promise', 'jest', 'jest-dom'],
+      plugins: [
+        '@typescript-eslint',
+        'import',
+        'jsdoc',
+        'n',
+        'promise',
+        'jest',
+        'jest-dom'
+      ],
       rules: {
         // Check import or require statements are A-Z ordered
         'import/order': [
@@ -111,7 +122,17 @@ module.exports = {
         'no-else-return': 'error',
 
         // Avoid hard to read multi assign statements
-        'no-multi-assign': 'error'
+        'no-multi-assign': 'error',
+
+        // Prefer rules that are type aware
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': [
+          'error',
+          {
+            argsIgnorePattern: '^_',
+            varsIgnorePattern: '^_'
+          }
+        ]
       },
       settings: {
         jsdoc: {
@@ -121,7 +142,15 @@ module.exports = {
       }
     },
     {
-      // Extensions required for ESM import
+      // CommonJS modules allow require statements
+      files: ['**/*.{cjs,js}'],
+      rules: {
+        '@typescript-eslint/no-require-imports': 'off',
+        '@typescript-eslint/no-var-requires': 'off'
+      }
+    },
+    {
+      // ES modules mandatory file extensions
       files: ['**/*.mjs'],
       rules: {
         'import/extensions': [
@@ -144,7 +173,10 @@ module.exports = {
       env: {
         'jest/globals': true
       },
-      plugins: ['jest']
+      plugins: ['jest'],
+      rules: {
+        '@typescript-eslint/no-empty-function': 'off'
+      }
     },
     {
       // Add plugin for markdown `*.md` code blocks. Its config is in the new
@@ -165,10 +197,10 @@ module.exports = {
       },
       rules: {
         // Ignore unused example code
+        '@typescript-eslint/no-unused-vars': 'off',
         'no-new': 'off',
         'no-undef': 'off',
         'no-unused-expressions': 'off',
-        'no-unused-vars': 'off',
         'no-useless-constructor': 'off',
 
         // Ignore paths to example modules

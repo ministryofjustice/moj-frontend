@@ -72,8 +72,8 @@ MultiFileUpload.prototype.setupStatusBox = function () {
   this.dropzone.append(this.status)
 }
 
-MultiFileUpload.prototype.onDragOver = function (e) {
-  e.preventDefault()
+MultiFileUpload.prototype.onDragOver = function (event) {
+  event.preventDefault()
   this.dropzone.addClass('moj-multi-file-upload--dragover')
 }
 
@@ -81,34 +81,34 @@ MultiFileUpload.prototype.onDragLeave = function () {
   this.dropzone.removeClass('moj-multi-file-upload--dragover')
 }
 
-MultiFileUpload.prototype.onDrop = function (e) {
-  e.preventDefault()
+MultiFileUpload.prototype.onDrop = function (event) {
+  event.preventDefault()
   this.dropzone.removeClass('moj-multi-file-upload--dragover')
   this.feedbackContainer.removeClass('moj-hidden')
   this.status.html(this.params.uploadStatusText)
-  this.uploadFiles(e.originalEvent.dataTransfer.files)
+  this.uploadFiles(event.originalEvent.dataTransfer.files)
 }
 
 MultiFileUpload.prototype.uploadFiles = function (files) {
-  for (let i = 0; i < files.length; i++) {
-    this.uploadFile(files[i])
+  for (const file of Array.from(files)) {
+    this.uploadFile(file)
   }
 }
 
-MultiFileUpload.prototype.onFileChange = function (e) {
+MultiFileUpload.prototype.onFileChange = function (event) {
   this.feedbackContainer.removeClass('moj-hidden')
   this.status.html(this.params.uploadStatusText)
-  this.uploadFiles(e.currentTarget.files)
-  this.fileInput.replaceWith($(e.currentTarget).val('').clone(true))
+  this.uploadFiles(event.currentTarget.files)
+  this.fileInput.replaceWith($(event.currentTarget).val('').clone(true))
   this.setupFileInput()
   this.fileInput.get(0).focus()
 }
 
-MultiFileUpload.prototype.onFileFocus = function (e) {
+MultiFileUpload.prototype.onFileFocus = function () {
   this.label.addClass('moj-multi-file-upload--focused')
 }
 
-MultiFileUpload.prototype.onFileBlur = function (e) {
+MultiFileUpload.prototype.onFileBlur = function () {
   this.label.removeClass('moj-multi-file-upload--focused')
 }
 
@@ -181,9 +181,9 @@ MultiFileUpload.prototype.uploadFile = function (file) {
       const xhr = new XMLHttpRequest()
       xhr.upload.addEventListener(
         'progress',
-        function (e) {
-          if (e.lengthComputable) {
-            let percentComplete = e.loaded / e.total
+        function (event) {
+          if (event.lengthComputable) {
+            let percentComplete = event.loaded / event.total
             percentComplete = parseInt(percentComplete * 100, 10)
             item
               .find('.moj-multi-file-upload__progress')
@@ -197,9 +197,9 @@ MultiFileUpload.prototype.uploadFile = function (file) {
   })
 }
 
-MultiFileUpload.prototype.onFileDeleteClick = function (e) {
-  e.preventDefault() // if user refreshes page and then deletes
-  const button = $(e.currentTarget)
+MultiFileUpload.prototype.onFileDeleteClick = function (event) {
+  event.preventDefault() // if user refreshes page and then deletes
+  const button = $(event.currentTarget)
   const data = {}
   data[button[0].name] = button[0].value
   $.ajax({

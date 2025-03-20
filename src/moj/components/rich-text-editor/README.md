@@ -5,7 +5,7 @@
 ## Example
 
 ```html
-<script>
+<script type="module">
   new MOJFrontend.RichTextEditor({
     textarea: $('.js-editor'),
     toolbar: { 'bold': true, 'italic': true, 'underline': true, 'bullets': true, 'numbers': true }

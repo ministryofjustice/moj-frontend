@@ -6,11 +6,6 @@ const Tabs = function (container) {
   this.panels = container.find('.app-tabs__panel')
   this.container.on('click', '[role=tab]', $.proxy(this, 'onTabClick'))
   this.container.on('keydown', '[role=tab]', $.proxy(this, 'onTabKeydown'))
-  this.container.on(
-    'click',
-    '.app-tabs__close',
-    $.proxy(this, 'onCloseButtonClick')
-  )
   this.setupHtml()
 }
 
@@ -55,9 +50,9 @@ Tabs.prototype.setupHtml = function () {
   this.panels.addClass(this.cssHide)
 }
 
-Tabs.prototype.onTabClick = function (e) {
-  e.preventDefault()
-  const newTab = $(e.target)
+Tabs.prototype.onTabClick = function (event) {
+  event.preventDefault()
+  const newTab = $(event.target)
   const currentTab = this.getCurrentTab()
   if (currentTab[0]) {
     this.hideTab(currentTab)
@@ -67,17 +62,17 @@ Tabs.prototype.onTabClick = function (e) {
   }
 }
 
-Tabs.prototype.onTabKeydown = function (e) {
-  switch (e.keyCode) {
+Tabs.prototype.onTabKeydown = function (event) {
+  switch (event.keyCode) {
     case this.keys.left:
     case this.keys.up:
       this.activatePreviousTab()
-      e.preventDefault()
+      event.preventDefault()
       break
     case this.keys.right:
     case this.keys.down:
       this.activateNextTab()
-      e.preventDefault()
+      event.preventDefault()
       break
   }
 }
@@ -136,12 +131,6 @@ Tabs.prototype.getCurrentTab = function () {
 Tabs.prototype.getHref = function (tab) {
   const href = tab.attr('href')
   return href.slice(href.indexOf('#'), href.length)
-}
-
-Tabs.prototype.onCloseButtonClick = function (e) {
-  const currentTab = this.getCurrentTab()
-  this.hideTab(currentTab)
-  this.tabs.first().focus()
 }
 
 export default Tabs

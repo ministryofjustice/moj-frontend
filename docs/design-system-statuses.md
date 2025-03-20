@@ -49,4 +49,6 @@ This review includes an organisation-wide discovery and multi-disciplinary team 
 
 ## ‘Archived’ status <span class="govuk-tag govuk-tag--grey"  style="vertical-align:middle;" aria-hidden="true">Archived</span>
 
-Sometimes a building block is no longer needed. This is usually because the need has been met by the [GOV.UK Design System](https://design-system.service.gov.uk/) (which we do not want to duplicate).
+Building blocks with an 'archived' status are no longer being supported and should not be used.
+
+They have been archived because they're no longer needed. This is usually because the need has been met by the [GOV.UK Design System](https://design-system.service.gov.uk/) (which we do not want to duplicate).

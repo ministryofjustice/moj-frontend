@@ -36,7 +36,11 @@ function compileStyles(assetPath, { srcPath, destPath, output = {} }) {
     }
 
     // Apply PostCSS transforms (e.g. vendor prefixes)
-    const processor = postcss([autoprefixer(), cssnano()])
+    const processor = postcss([
+      autoprefixer({ env: 'stylesheets' }),
+      cssnano({ env: 'stylesheets' })
+    ])
+
     const result = await processor.process(css, {
       from,
       to,

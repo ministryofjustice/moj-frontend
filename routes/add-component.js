@@ -215,8 +215,8 @@ router.post(
       const { title, description } = getPrTitleAndDescription(session)
       const pr = await createPullRequest(branchName, title, description)
       await sendPrEmail(pr)
-    } catch (e) {
-      console.error('[FORM SUBMISSION] Error sending submission:', e)
+    } catch (error) {
+      console.error('[FORM SUBMISSION] Error sending submission:', error)
       await sendSubmissionEmail(null, sessionText, markdownContent)
     }
   }

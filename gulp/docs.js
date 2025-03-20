@@ -3,7 +3,7 @@ const gulp = require('gulp')
 const { compileScripts } = require('./tasks/scripts')
 const { compileStyles } = require('./tasks/styles')
 
-gulp.task('docs:clean', async (done) => {
+gulp.task('docs:clean', async () => {
   const { deleteSync } = await import('del')
 
   return deleteSync(['public/**/*'])
