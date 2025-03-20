@@ -50,7 +50,7 @@ To load all the Sass rules from both MoJ Frontend and GOV.UK Frontend, add the f
 @forward "node_modules/@ministryofjustice/frontend/moj/all";
 ```
 
-Sass load paths must be configured by either:
+You must add the root of your application to Sass load paths, by either:
 
 - calling the Sass compiler from the command line with the `--load-path .` flag
 - using the JavaScript API with `loadPaths: ['.']` in the `options` object
