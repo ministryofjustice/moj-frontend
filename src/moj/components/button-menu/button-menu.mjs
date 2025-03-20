@@ -48,6 +48,7 @@ ButtonMenu.prototype.init = function () {
         button.classList.remove(className)
       }
       button.classList.remove('moj-button-menu__item')
+      button.classList.add('moj-button-menu__single-button')
     })
     if (this.config.buttonClasses) {
       button.classList.add(...this.config.buttonClasses.split(' '))
