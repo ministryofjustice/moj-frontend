@@ -2,7 +2,7 @@ const { join, parse } = require('path')
 
 const { babel } = require('@rollup/plugin-babel')
 const commonjs = require('@rollup/plugin-commonjs')
-const nodeResolve = require('@rollup/plugin-node-resolve')
+const { nodeResolve } = require('@rollup/plugin-node-resolve')
 const terser = require('@rollup/plugin-terser')
 const { rollup } = require('rollup')
 
@@ -28,44 +28,53 @@ function compileScripts(
       ...input,
       input: join(srcPath, assetPath),
       plugins: [
-        nodeResolve(),
-        commonjs(),
+        nodeResolve({
+          browser: true,
+          jail: output.preserveModules
+            ? srcPath // Prevent `node_modules` bundling
+            : undefined // Allow `node_modules` bundling
+        }),
+        commonjs({
+          requireReturnsDefault: 'preferred',
+          defaultIsModuleExports: true
+        }),
         babel({
           babelHelpers: 'bundled'
         })
       ]
     })
 
-    // Write to output formats
-    for (const options of [output].flat()) {
-      const file = join(destPath, options.file ?? `${name}.js`)
+    // Add minifier plugin (optional)
+    if (output.compact) {
+      output.plugins ??= []
+      output.plugins.push(
+        terser({
+          format: { comments: false },
+          sourceMap: { includeSources: true },
 
-      // Add minifier plugin (optional)
-      if (options.compact) {
-        options.plugins ??= []
-        options.plugins.push(
-          terser({
-            format: { comments: false },
-            sourceMap: { includeSources: true },
-
-            // Compatibility workarounds
-            safari10: true
-          })
-        )
-      }
-
-      // Write to output format
-      await bundle.write({
-        extend: true,
-        format: 'esm',
-        ...options,
-
-        // Output directory or file
-        dir: options.preserveModules ? destPath : undefined,
-        file: !options.preserveModules ? file : undefined,
-        sourcemap: true
-      })
+          // Compatibility workarounds
+          safari10: true
+        })
+      )
     }
+
+    // Write to output format
+    await bundle.write({
+      extend: true,
+      format: 'esm',
+      ...output,
+
+      // Write to directory for modules
+      dir: output.preserveModules ? destPath : undefined,
+
+      // Write to file when bundling
+      file: !output.preserveModules
+        ? join(destPath, output.file ?? `${name}.js`)
+        : undefined,
+
+      // Enable source maps
+      sourcemap: true
+    })
   }
 
   taskFn.displayName = 'compile:javascripts'
@@ -83,7 +92,7 @@ module.exports = {
  * @property {string} srcPath - Source directory
  * @property {string} destPath - Destination directory
  * @property {InputOptions} [input] - Rollup input options
- * @property {OutputOptions | OutputOptions[]} [output] - Rollup output options
+ * @property {OutputOptions} [output] - Rollup output options
  */
 
 /**
