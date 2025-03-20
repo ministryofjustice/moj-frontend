@@ -1,0 +1,56 @@
+name: Puppeteer E2E Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Install Puppeteer Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libnss3 \
+            libatk-bridge2.0-0 \
+            libxcomposite1 \
+            libgbm-dev \
+            libasound2 \
+            libxrandr2 \
+            libgtk-3-0 \
+            libpangocairo-1.0-0 \
+            libpangoft2-1.0-0 \
+            libcups2 \
+            libxdamage1 \
+            libxfixes3 \
+            libxcb1
+
+      - name: Run Puppeteer Tests
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "true" 
+          CI: "true"
+        run: |
+          npx puppeteer browsers install chrome
+          npm run test:e2e
+
+      - name: Upload Screenshots on Failure
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: e2e-screenshots
+          path: tests/e2e/screenshots
