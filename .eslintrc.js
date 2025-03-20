@@ -20,7 +20,7 @@ module.exports = {
         'plugin:n/recommended',
         'plugin:promise/recommended',
         'plugin:@typescript-eslint/strict',
-        'plugin:@typescript-eslint/stylistic',
+        'plugin:@typescript-eslint/stylistic-type-checked',
         'prettier'
       ],
       files: [
@@ -32,7 +32,9 @@ module.exports = {
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        ecmaVersion: 'latest'
+        ecmaVersion: 'latest',
+        projectService: true,
+        tsconfigRootDir: __dirname
       },
       plugins: [
         '@typescript-eslint',
@@ -187,10 +189,11 @@ module.exports = {
       processor: 'markdown/markdown'
     },
     {
+      extends: ['plugin:@typescript-eslint/disable-type-checked'],
       files: [
-        '**/assets/javascript/**/*.{cjs,js,mjs}',
         '**/docs/examples/**/*.{cjs,js,mjs}',
-        '**/*.md/*.{cjs,js,mjs}'
+        '**/*.md/*.{cjs,js,mjs}',
+        'init.js'
       ],
       env: {
         browser: true
