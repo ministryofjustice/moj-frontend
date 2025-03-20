@@ -1,0 +1,30 @@
+{
+  "extends": "./tsconfig.base.json",
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.dev.json"
+    },
+    {
+      "path": "./docs/tsconfig.json"
+    },
+    {
+      "path": "./gulp/tsconfig.json"
+    },
+    {
+      "path": "./helpers/tsconfig.json"
+    },
+    {
+      "path": "./middleware/tsconfig.json"
+    },
+    {
+      "path": "./routes/tsconfig.json"
+    },
+    {
+      "path": "./schema/tsconfig.json"
+    },
+    {
+      "path": "./src/tsconfig.json"
+    }
+  ]
+}

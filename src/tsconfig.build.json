@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.base.json",
+  "include": ["**/*.js", "**/*.mjs"],
+  "exclude": ["**/*.spec.*", "**/node_modules", "moj/vendor"],
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "target": "ES2015"
+  }
+}
