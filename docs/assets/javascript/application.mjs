@@ -14,21 +14,28 @@ import Tabs from './tabs.mjs'
 GOVUKFrontend.initAll()
 MOJFrontend.initAll()
 
-$(function () {
-  $('[data-module="app-tabs"]').each(function (e, el) {
-    new Tabs($(el))
-  })
+const $tabs = document.querySelectorAll('[data-module="app-tabs"]')
 
-  $('[data-module="app-copy"]').each(function (e, el) {
-    new Copy(el).init()
-  })
+$tabs.forEach(($tabs) => {
+  new Tabs($($tabs))
+})
 
-  $('[data-module="app-cookies"]').each(function (e, el) {
-    new Cookies(el).init()
-  })
+const $codeBlocks = document.querySelectorAll('[data-module="app-copy"]')
 
-  const iFrames = document.querySelectorAll('iframe')
-  iFrames.forEach((frame) => new IFrameResizer(frame))
+$codeBlocks.forEach(($codeBlock) => {
+  new Copy($codeBlock).init()
+})
+
+const $cookieBanners = document.querySelectorAll('[data-module="app-cookies"]')
+
+$cookieBanners.forEach(($cookieBanner) => {
+  new Cookies($cookieBanner).init()
+})
+
+const $iframes = document.querySelectorAll('iframe')
+
+$iframes.forEach(($iframe) => {
+  new IFrameResizer($iframe)
 })
 
 window.MOJFrontend = MOJFrontend

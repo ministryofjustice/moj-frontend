@@ -13,7 +13,6 @@ import { PasswordReveal } from './components/password-reveal/password-reveal.mjs
 import { RichTextEditor } from './components/rich-text-editor/rich-text-editor.mjs'
 import { SearchToggle } from './components/search-toggle/search-toggle.mjs'
 import { SortableTable } from './components/sortable-table/sortable-table.mjs'
-import { nodeListForEach } from './helpers.mjs'
 import { version } from './version.mjs'
 
 function initAll(options) {
@@ -26,7 +25,7 @@ function initAll(options) {
 
   const $addAnothers = scope.querySelectorAll('[data-module="moj-add-another"]')
 
-  nodeListForEach($addAnothers, function ($addAnother) {
+  $addAnothers.forEach(($addAnother) => {
     new AddAnother($addAnother)
   })
 
@@ -34,7 +33,7 @@ function initAll(options) {
     '[data-module="moj-multi-select"]'
   )
 
-  nodeListForEach($multiSelects, function ($multiSelect) {
+  $multiSelects.forEach(($multiSelect) => {
     new MultiSelect({
       container: $multiSelect.querySelector(
         $multiSelect.getAttribute('data-multi-select-checkbox')
@@ -50,7 +49,7 @@ function initAll(options) {
     '[data-module="moj-password-reveal"]'
   )
 
-  nodeListForEach($passwordReveals, function ($passwordReveal) {
+  $passwordReveals.forEach(($passwordReveal) => {
     new PasswordReveal($passwordReveal)
   })
 
@@ -58,7 +57,7 @@ function initAll(options) {
     '[data-module="moj-rich-text-editor"]'
   )
 
-  nodeListForEach($richTextEditors, function ($richTextEditor) {
+  $richTextEditors.forEach(($richTextEditor) => {
     const options = {
       textarea: $($richTextEditor)
     }
@@ -84,7 +83,7 @@ function initAll(options) {
     '[data-module="moj-search-toggle"]'
   )
 
-  nodeListForEach($searchToggles, function ($searchToggle) {
+  $searchToggles.forEach(($searchToggle) => {
     new SearchToggle({
       toggleButton: {
         container: $($searchToggle.querySelector('.moj-search-toggle__toggle')),
@@ -100,26 +99,26 @@ function initAll(options) {
     '[data-module="moj-sortable-table"]'
   )
 
-  nodeListForEach($sortableTables, function ($table) {
+  $sortableTables.forEach(($table) => {
     new SortableTable({
       table: $table
     })
   })
 
-  const $datepickers = scope.querySelectorAll('[data-module="moj-date-picker"]')
+  const $datePickers = scope.querySelectorAll('[data-module="moj-date-picker"]')
 
-  nodeListForEach($datepickers, function ($datepicker) {
-    new DatePicker($datepicker, {}).init()
+  $datePickers.forEach(($datePicker) => {
+    new DatePicker($datePicker, {}).init()
   })
 
   const $buttonMenus = scope.querySelectorAll('[data-module="moj-button-menu"]')
 
-  nodeListForEach($buttonMenus, function ($buttonmenu) {
+  $buttonMenus.forEach(($buttonmenu) => {
     new ButtonMenu($buttonmenu, {}).init()
   })
 
   const $alerts = scope.querySelectorAll('[data-module="moj-alert"]')
-  nodeListForEach($alerts, function ($alert) {
+  $alerts.forEach(($alert) => {
     new Alert($alert, {}).init()
   })
 }

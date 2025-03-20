@@ -27,8 +27,8 @@
   <meta charset="utf-8" />
   <title>Redirecting&hellip;</title>
   <link rel="canonical" href="{{ redirect.to | url }}" />
-  <script>
-    location = '{{ redirect.to | url }}';
+  <script type="module">
+    window.location = '{{ redirect.to | url }}';
   </script>
   <meta http-equiv="refresh" content="0; url={{ redirect.to | url }}" />
   <meta name="robots" content="noindex" />

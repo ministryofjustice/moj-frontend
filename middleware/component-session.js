@@ -231,6 +231,7 @@ const getBackLink = (req, res, next) => {
 
 const removeFromSession = (req, res, next) => {
   const url = req.url.replace(/\/(remove|change)/, '')
+  // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
   delete req.session[url]
   next()
 }

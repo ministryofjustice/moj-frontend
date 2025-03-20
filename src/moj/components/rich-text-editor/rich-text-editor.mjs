@@ -43,9 +43,9 @@ export function RichTextEditor(options) {
   this.toolbar.on('keydown', $.proxy(this, 'onToolbarKeydown'))
 }
 
-RichTextEditor.prototype.onToolbarKeydown = function (e) {
+RichTextEditor.prototype.onToolbarKeydown = function (event) {
   let focusableButton
-  switch (e.keyCode) {
+  switch (event.keyCode) {
     case this.keys.right:
     case this.keys.down: {
       focusableButton = this.toolbar.find('button[tabindex=0]')
@@ -105,7 +105,7 @@ RichTextEditor.prototype.getToolbarHtml = function () {
   return html
 }
 
-RichTextEditor.prototype.getEnhancedHtml = function (val) {
+RichTextEditor.prototype.getEnhancedHtml = function () {
   return `${this.getToolbarHtml()}<div class="govuk-textarea moj-rich-text-editor__content" contenteditable="true" spellcheck="false"></div>`
 }
 
@@ -134,15 +134,15 @@ RichTextEditor.prototype.configureToolbar = function () {
   firstTab.prop('tabindex', '0')
 }
 
-RichTextEditor.prototype.onButtonClick = function (e) {
-  document.execCommand($(e.currentTarget).data('command'), false, null)
+RichTextEditor.prototype.onButtonClick = function (event) {
+  document.execCommand($(event.currentTarget).data('command'), false, null)
 }
 
 RichTextEditor.prototype.getContent = function () {
   return this.container.find('.moj-rich-text-editor__content').html()
 }
 
-RichTextEditor.prototype.onEditorInput = function (e) {
+RichTextEditor.prototype.onEditorInput = function () {
   this.updateTextarea()
 }
 
@@ -151,7 +151,7 @@ RichTextEditor.prototype.updateTextarea = function () {
   this.textarea.val(this.getContent())
 }
 
-RichTextEditor.prototype.onLabelClick = function (e) {
-  e.preventDefault()
+RichTextEditor.prototype.onLabelClick = function (event) {
+  event.preventDefault()
   this.container.find('.moj-rich-text-editor__content').focus()
 }

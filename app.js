@@ -84,6 +84,9 @@ app.get('*', (req, res) => {
 })
 
 // Error handling
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars --
+ * Express must count 4 params to be error middleware
+ **/
 app.use((err, req, res, next) => {
   console.error(`Error: ${err.message}`) // Log the error to the console
   res.status(500).render('error', {

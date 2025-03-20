@@ -119,7 +119,7 @@ ButtonMenu.prototype.setupMenuItems = function () {
     })
 
     // add a slight delay after click before closing the menu, makes it *feel* better
-    item.addEventListener('click', (event) => {
+    item.addEventListener('click', () => {
       setTimeout(() => {
         this.closeMenu(false)
       }, 50)

@@ -37,8 +37,8 @@ const truncateText = (text, maxWords) => {
       return `${words.slice(0, maxWords).join(' ')}...`
     }
     return text
-  } catch (e) {
-    console.error('Truncate text: ', e)
+  } catch (error) {
+    console.error('Truncate text: ', error)
   }
 }
 
