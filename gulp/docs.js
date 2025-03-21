@@ -56,10 +56,16 @@ gulp.task(
 // Compile the docs site stylesheet
 gulp.task(
   'docs:stylesheets',
-  compileStyles('application.scss', {
-    srcPath: 'docs/stylesheets',
-    destPath: 'public/stylesheets'
-  })
+  gulp.parallel(
+    compileStyles('application.scss', {
+      srcPath: 'docs/stylesheets',
+      destPath: 'public/stylesheets'
+    }),
+    compileStyles('example.scss', {
+      srcPath: 'docs/stylesheets',
+      destPath: 'public/stylesheets'
+    })
+  )
 )
 
 // Bundle the docs site javascript
