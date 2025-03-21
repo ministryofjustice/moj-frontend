@@ -23,6 +23,6 @@ npm-debug.log
 sass-cache
 settings.json
 tmp-uploads
-tests/screenshots/*
+tests/e2e/screenshots/*
 
 
