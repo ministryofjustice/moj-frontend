@@ -57,7 +57,7 @@ Cookies.prototype.reject = function () {
 }
 
 function gtag() {
-  dataLayer.push(arguments)
+  window.dataLayer.push(arguments)
 }
 
 export default Cookies

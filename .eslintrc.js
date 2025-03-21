@@ -194,7 +194,10 @@ module.exports = {
       ],
       env: {
         browser: true
-      },
+      }
+    },
+    {
+      files: ['**/docs/examples/**/*.{cjs,js,mjs}', '**/*.md/*.{cjs,js,mjs}'],
       rules: {
         // Ignore unused example code
         '@typescript-eslint/no-unused-vars': 'off',

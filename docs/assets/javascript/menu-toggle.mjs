@@ -38,11 +38,11 @@ export default class MenuToggle extends HTMLElement {
     this[`on${event.type}`](event)
   }
 
-  onclick(event) {
+  onclick() {
     this.toggleMenu()
   }
 
-  onresize(event) {
+  onresize() {
     // Check if the window width has changed - prevents resize events triggered
     // by scrolling on mobile browsers
     if (window.innerWidth !== this.windowWidth) {
