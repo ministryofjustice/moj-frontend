@@ -1,0 +1,78 @@
+services:
+  preview:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: preview
+    platform: linux/amd64
+    image: preview-environment
+    container_name: preview-container
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./docker/nginx-local.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./docker/htpasswd-preview:/etc/nginx/.htpasswd:ro
+      - ./public:/usr/share/nginx/html:ro
+    environment:
+      - ENV=staging
+    networks:
+      - app-network
+    depends_on:
+      - preview-express-app
+      - redis
+    restart: unless-stopped
+
+  preview-express-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: preview-express-app
+    environment:
+      - ENV=staging
+      - BRANCH=preview
+      - REDIS_PORT=6380
+      - REDIS_URL=host.docker.internal
+    platform: linux/amd64
+    image: preview-express-app-environment
+    container_name: preview-express-app-container
+    ports:
+      - '3001:3001'
+    networks:
+      - app-network
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  redis:
+    image: redis:latest
+    container_name: redis-container
+    ports:
+      - '6380:6379'
+    environment:
+      - REDIS_PORT=6380
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  test-runner:
+    image: ghcr.io/puppeteer/puppeteer:latest
+    container_name: test-runner-container
+    working_dir: /app
+    init: true
+    command: sh -c "apt-get update && apt-get install -y xvfb && npx puppeteer browsers install chrome && xvfb-run --auto-servernum --server-args='-screen 0 1920x1080x24' npm run test:e2e"
+    volumes:
+      - .:/app
+    environment:
+      - ENV=staging
+      - DISPLAY=:99
+      - PUPPETEER_NO_SANDBOX=true
+      - HOST_URL=http://host.docker.internal:3001
+    networks:
+      - app-network
+    depends_on:
+      - preview-express-app
+    user: root
+    restart: on-failure
+
+networks:
+  app-network:

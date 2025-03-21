@@ -24,9 +24,9 @@ As a leaner component, it’s ideal for internal services and complex user inter
 There are 4 variants of the alert:
 
 1. [Information alert](#information-alert)
-2. [Warning alert](#warning-alert)
-3. [Error alert](#error-alert)
-4. [Success alert](#success-alert)
+2. [Success alert](#success-alert)
+3. [Warning alert](#warning-alert)
+4. [Error alert](#error-alert)
 
 ### Information alert
 
@@ -51,6 +51,31 @@ If you want to add your message to the body copy or do not want a coloured borde
 #### When not to use
 
 Do not use this component for a serious issue or to prevent something going wrong. Use the warning alert for this.
+
+### Success alert
+
+{% example "/examples/alert-success" %}
+
+The success alert displays a single message after a user has completed a task. It has a green border, and a success icon made up of a green tick.
+
+This alert can be displayed at the top of the page or on the next page (if their task moves them through the service). Adding the alert to existing pages shortens the user journey. This is useful in non-linear services and services where users complete repetitive tasks.
+
+#### When to use
+
+The success banner can be used to show that something has:
+
+- been uploaded or added, such as a file or record
+- changed status, for example allocated to someone or moved to another stage in an application process
+- been cancelled, deleted or another type of destructive (negative) action
+- been changed or deleted from a table using the [multi select component](/components/multi-select/)
+
+If you need to display more information or want a more prominent component, consider the [success variation of the GOV.UK notification banner](https://design-system.service.gov.uk/components/notification-banner/#reacting-to-something-the-user-has-done).
+
+#### When not to use
+
+Do not show the success alert to a user who has completed something more significant (such as a whole application) or reached the end of a service. Select the [GOV.UK confirmation page](https://design-system.service.gov.uk/patterns/confirmation-pages/) instead.
+
+You may not need to display the alert if something else confirms success, for example the [GOV.UK task list component](https://design-system.service.gov.uk/components/task-list/) or the user progressing to another page.
 
 ### Warning alert
 
@@ -99,31 +124,6 @@ If the user needs to resolve the error, the alert should help them understand ho
 #### When not to use
 
 This alert draws a user’s attention to a message, without preventing them from doing other tasks on the page. Use the [interruption card component](/components/interruption-card/) if the user needs to acknowledge something before they continue on their journey.
-
-### Success alert
-
-{% example "/examples/alert-success" %}
-
-The success alert displays a single message after a user has completed a task. It has a green border, and a success icon made up of a green tick.
-
-This alert can be displayed at the top of the page or on the next page (if their task moves them through the service). Adding the alert to existing pages shortens the user journey. This is useful in non-linear services and services where users complete repetitive tasks.
-
-#### When to use
-
-The success banner can be used to show that something has:
-
-- been uploaded or added, such as a file or record
-- changed status, for example allocated to someone or moved to another stage in an application process
-- been cancelled, deleted or another type of destructive (negative) action
-- been changed or deleted from a table using the [multi select component](/components/multi-select/)
-
-If you need to display more information or want a more prominent component, consider the [success variation of the GOV.UK notification banner](https://design-system.service.gov.uk/components/notification-banner/#reacting-to-something-the-user-has-done).
-
-#### When not to use
-
-Do not show the success alert to a user who has completed something more significant (such as a whole application) or reached the end of a service. Select the [GOV.UK confirmation page](https://design-system.service.gov.uk/patterns/confirmation-pages/) instead.
-
-You may not need to display the alert if something else confirms success, for example the [GOV.UK task list component](https://design-system.service.gov.uk/components/task-list/) or the user progressing to another page.
 
 ### Things to consider
 
