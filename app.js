@@ -2,6 +2,7 @@
 /* eslint n/no-unpublished-require: "off" */
 
 const path = require('path')
+const redisClient = require('./helpers/redis-client')
 
 const express = require('express')
 const expressNunjucks = require('express-nunjucks').default
@@ -9,54 +10,47 @@ const rateLimit = require('express-rate-limit')
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 const helmet = require('helmet')
-const IORedis = require('ioredis')
 const nunjucks = require('nunjucks')
 
-// Configure rate limiting
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 600, // Limit each IP to 200 requests per windowMs
-  standardHeaders: true,
-  legacyHeaders: false
-})
-
-const {
-  APP_PORT,
-  REDIS_URL,
-  REDIS_AUTH_TOKEN,
-  SESSION_SECRET
-} = require('./config')
+const { APP_PORT, ENV, REDIS_URL, SESSION_SECRET } = require('./config')
 const addComponentRoutes = require('./routes/add-component')
 
 const app = express()
-// Only trust single proxy (Nginx)
-app.set('trust proxy', 1)
-const isDev = app.get('env') === 'development'
+const isDev = ENV === 'development'
 
-app.use(helmet())
-app.use(limiter)
+if (!isDev) {
+  // Only trust single proxy (Nginx)
+  app.set('trust proxy', 1)
+
+  // Add security headers
+  app.use(
+    helmet({
+      contentSecurityPolicy: false // Disable CSP
+    })
+  )
+
+  // Add rate limiting
+  app.use(
+    rateLimit({
+      windowMs: 15 * 60 * 1000, // 15 minutes
+      max: 600, // Limit each IP to 200 requests per windowMs
+      standardHeaders: true,
+      legacyHeaders: false
+    })
+  )
+}
 
 // Session management
 const sessionOptions = {
   secret: SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: !isDev, maxAge: 24 * 60 * 60 * 1000 }
+  cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 }
 }
 
 if (REDIS_URL) {
   console.log('Connecting to Redis: ', REDIS_URL)
-
   // Set up Redis (for sessions)
-  const redisClient = new IORedis({
-    host: process.env.REDIS_URL || 'redis',
-    // Settings for AWS Elasticache.
-    ...(REDIS_AUTH_TOKEN && {
-      password: REDIS_AUTH_TOKEN,
-      tls: {}
-    })
-  })
-
   sessionOptions.store = new RedisStore({ client: redisClient })
 }
 
@@ -80,7 +74,6 @@ expressNunjucks(app, {
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
-app.use('/assets', express.static(path.join(__dirname, 'public')))
 
 // Routes
 app.use('/contribute/add-new-component', addComponentRoutes)

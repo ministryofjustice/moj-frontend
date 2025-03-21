@@ -7,56 +7,64 @@
       <span class="govuk-caption-l">Submit new component</span>
       <h1 class="govuk-heading-xl">Check your answers before submitting the component</h1>
 
-      <h2 class="govuk-heading-m">Component details</h2>
+      <h2 class="govuk-heading-l">Component details</h2>
       {{ govukSummaryList({
-        rows: componentDetailsRows
+        rows: componentDetailsRows,
+        classes: "govuk-!-margin-bottom-9"
       }) }}
 
       {% if addExternalAuditRows.length > 0 %}
-        <h2 class="govuk-heading-m">External accessibility audit</h2>
+        <h2 class="govuk-heading-l">External accessibility audit</h2>
         {{ govukSummaryList({
-          rows: addExternalAuditRows
+          rows: addExternalAuditRows,
+          classes: "govuk-!-margin-bottom-9"
         }) }}
       {% endif %}
 
       {% if addInternalAuditRows.length > 0 %}
-        <h2 class="govuk-heading-m">Internal accessibility audit</h2>
+        <h2 class="govuk-heading-l">Internal accessibility audit</h2>
         {{ govukSummaryList({
-          rows: addInternalAuditRows
+          rows: addInternalAuditRows,
+          classes: "govuk-!-margin-bottom-9"
         }) }}
       {% endif %}
 
       {% if addAssistiveTechRows.length > 0 %}
-        <h2 class="govuk-heading-m">Testing with assistive technology</h2>
+        <h2 class="govuk-heading-l">Testing with assistive technology</h2>
         {{ govukSummaryList({
-          rows: addAssistiveTechRows
+          rows: addAssistiveTechRows,
+          classes: "govuk-!-margin-bottom-9"
         }) }}
       {% endif %}
 
       {% if prototypeRows.length > 0 %}
-        <h2 class="govuk-heading-m">Prototype URL</h2>
+        <h2 class="govuk-heading-l">Prototype URL</h2>
         {{ govukSummaryList({
-          rows: prototypeRows
+          rows: prototypeRows,
+          classes: "govuk-!-margin-bottom-9"
         }) }}
       {% endif %}
 
       {% if componentCodeRows.length > 0 %}
-        <h2 class="govuk-heading-m">Component code</h2>
+        <h2 class="govuk-heading-l">Component code</h2>
         {{ govukSummaryList({
-          rows: componentCodeRows
+          rows: componentCodeRows,
+          classes: "govuk-!-margin-bottom-9"
         }) }}
       {% endif %}
 
       {% if figmaRows.length > 0 %}
-        <h2 class="govuk-heading-m">Figma designs</h2>
+        <h2 class="govuk-heading-l">Figma designs</h2>
         {{ govukSummaryList({
-          rows: figmaRows
+          rows: figmaRows,
+          classes: "govuk-!-margin-bottom-9"
         }) }}
       {% endif %}
 
-      <h2 class="govuk-heading-m">Your details</h2>
+      <h2 class="govuk-heading-l">Your details</h2>
       {{ govukSummaryList({
-        rows: yourDetailsRows
+        rows: yourDetailsRows,
+        classes: "govuk-!-margin-bottom-9"
       }) }}
 
       <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>

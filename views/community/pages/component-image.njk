@@ -2,6 +2,8 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/tag/macro.njk" import govukTag %}
 {% extends "base.njk" %}
 {% block content %}
   {% if backLink %}
@@ -26,21 +28,50 @@
         contain any personal or sensitive information.</p>
       <p class="govuk-body">You'll also have an opportunity to add more images of this after submitting the
         component.</p>
-      {{ govukFileUpload({
-        id: "component-image",
-        name: "componentImage",
-        label: {
-          text: "Upload a file",
-          classes: "govuk-label--m"
-        },
-        hint: {
-          text: "The selected file must be a JPG, BMP, PNG, TIF or PDF and smaller than 10MB."
-        },
-        attributes: {
-          accept: ".jpg, .jpeg, .bmp, .png, .tif, .tiff, .pdf"
-        },
-        errorMessage: formErrors.componentImage
-      }) }}
+
+
+      {%if formData.componentImage.originalname %}
+        <input type="hidden" name="componentImage" value="{{formData.componentImage.originalname}}">
+        {{ govukSummaryList({
+              classes: 'govuk-summary-list--long-key',
+              rows: [
+                {
+                  key: {
+                    text: formData.componentImage.originalname
+                  },
+                  value: {
+                    text: govukTag({ text: "Uploaded", classes: "govuk-tag--green" })
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: changeUrl,
+                        text: "Remove",
+                        visuallyHiddenText: formData.componentImage.originalname
+                      }
+                    ]
+                  }
+                }
+              ]
+            }) }}
+        {% else %}
+        {{ govukFileUpload({
+          id: "component-image",
+          name: "componentImage",
+          label: {
+            text: "Upload a file",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "The selected file must be a JPG, BMP, PNG, TIF or PDF and smaller than 10MB."
+          },
+          attributes: {
+            accept: ".jpg, .jpeg, .bmp, .png, .tif, .tiff, .pdf"
+          },
+          errorMessage: formErrors.componentImage
+        }) }}
+      {%endif%}
+
 
       <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>
 
@@ -49,13 +80,11 @@
           text: 'Continue',
           preventDoubleClick: true
         }) }}
-        {% if skipQuestion %}
-
+        {% if showAddAnother %}
           {{ govukButton({
-            text: "Skip question",
+            text: "Add another file",
             classes: "govuk-button--secondary",
-            attributes: {'data-skip-question': skipQuestion},
-            href: skipQuestion
+            name: "addAnother"
           }) }}
         {% endif %}
       </div>

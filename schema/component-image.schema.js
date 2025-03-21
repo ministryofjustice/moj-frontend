@@ -1,7 +1,11 @@
 const Joi = require('joi')
 
-const schema = Joi.object({
-  componentImage: Joi.string().label('Upload a file')
+const addAnotherSchema = require('./add-another.schema')
+
+const schema = addAnotherSchema.append({
+  componentImage: Joi.string().required().label('Upload a file').messages({
+    'any.required': 'Select an image to upload'
+  })
 })
 
 module.exports = schema

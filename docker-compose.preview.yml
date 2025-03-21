@@ -19,6 +19,7 @@ services:
       - app-network
     depends_on:
       - preview-express-app
+      - redis
     restart: unless-stopped
 
   preview-express-app:
@@ -29,11 +30,26 @@ services:
     environment:
       - ENV=staging
       - BRANCH=preview
+      - REDIS_PORT=6380
+      - REDIS_URL=host.docker.internal
     platform: linux/amd64
     image: preview-express-app-environment
     container_name: preview-express-app-container
     ports:
       - '3001:3001'
+    networks:
+      - app-network
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  redis:
+    image: redis:latest
+    container_name: redis-container
+    ports:
+      - '6380:6379'
+    environment:
+      - REDIS_PORT=6380
     networks:
       - app-network
     restart: unless-stopped

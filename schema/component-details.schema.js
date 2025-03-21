@@ -4,7 +4,7 @@ const maxWords = require('../helpers/max-words')
 
 const schema = Joi.object({
   componentName: Joi.string()
-    .pattern(/^[A-Za-z\s]+$/, 'letters')
+    .pattern(/^[A-Za-z\s\-']+$/, 'letters')
     .max(26)
     .required()
     .messages({

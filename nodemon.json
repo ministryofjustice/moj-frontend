@@ -1,0 +1,5 @@
+{
+  "watch": ["app.js", "config.js", "routes/*.js"],
+  "ignore": ["**/*.spec.*"],
+  "signal": "SIGINT"
+}
