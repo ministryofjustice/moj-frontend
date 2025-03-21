@@ -9,6 +9,11 @@ on:
 jobs:
   e2e-tests:
     runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis:latest
+        ports:
+          - 6379:6379
 
     steps:
       - name: Checkout Repository
@@ -22,21 +27,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Install Docker Compose
-        run: |
-          sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-          sudo chmod +x /usr/local/bin/docker-compose
-          docker-compose --version
-
-      - name: Get Host IP Address
-        id: host-ip
-        run: echo "::set-output name=ip::$(hostname -I | awk '{print $1}')"
-
-      - name: Build Preview Environment
+      - name: Start Application with Environment Variables
         env:
-          REDIS_URL: ${{ steps.host-ip.outputs.ip }}
-        run: |
-          docker-compose -f docker-compose.test.yml up --build
+          ENV: testing
+        run: npm start &
 
       - name: Run Puppeteer Tests
         run: |
@@ -64,7 +58,3 @@ jobs:
         with:
           name: e2e-screenshots
           path: tests/e2e/screenshots
-
-      - name: Tear Down Preview Environment
-        if: always()
-        run: docker-compose -f docker-compose.preview.yml down
