@@ -22,7 +22,6 @@ gulp.task('build:copy-others', () => {
   return gulp
     .src(
       [
-        'src/moj/**/*.scss',
         'src/moj/filters/**',
         'src/moj/vendor/**',
         'src/moj/init.js',

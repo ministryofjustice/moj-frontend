@@ -12,6 +12,7 @@ gulp.task(
     'build:javascript',
     'build:javascript-minified',
     'build:css',
+    'build:css-minified',
     'build:compress-images'
   )
 )
