@@ -1,6 +1,7 @@
 /* eslint-disable no-new */
 
 import * as GOVUKFrontend from 'govuk-frontend'
+import $ from 'jquery'
 
 import * as MOJFrontend from '../../../src/moj/all.mjs'
 
