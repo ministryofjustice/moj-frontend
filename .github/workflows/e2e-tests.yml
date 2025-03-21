@@ -61,4 +61,4 @@ jobs:
 
       - name: Tear Down Preview Environment
         if: always()
-        run: docker stop preview-app && docker rm preview-app
+        run: docker-compose -f docker-compose.preview.yml down
