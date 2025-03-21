@@ -32,6 +32,9 @@ jobs:
           ENV: testing
         run: npm start &
 
+      - name: Install xvfb
+        run: sudo apt-get install -y xvfb
+
       - name: Run Puppeteer Tests
         env:
           PUPPETEER_NO_SANDBOX: true
@@ -52,7 +55,7 @@ jobs:
             libxfixes3 \
             libxcb1
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true CI=true npx puppeteer browsers install chrome
-          npm run test:e2e
+          xvfb-run --auto-servernum --server-args="-screen 0 1024x768x24" npm run test:e2e
 
       - name: Upload Screenshots on Failure
         if: failure()
