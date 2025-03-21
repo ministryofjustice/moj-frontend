@@ -10,12 +10,29 @@
 {% block footer %}{% endblock %}
 
 {% block head %}
-  <link href="{{ 'assets/stylesheets/govuk-frontend.css' | rev | url }}" rel="stylesheet">
-  <link href="{{ 'assets/stylesheets/moj-frontend.css' | rev | url }}" rel="stylesheet">
+  <link href="{{ 'assets/stylesheets/govuk-frontend.min.css' | rev | url }}" rel="stylesheet">
+  <link href="{{ 'assets/stylesheets/moj-frontend.min.css' | rev | url }}" rel="stylesheet">
 
   <style>{% include stylesPath ignore missing %}</style>
 {% endblock %}
 
 {% block main %}
   <div class="app-example__wrapper govuk-!-margin-6">{{ content | safe }}</div>
+{% endblock %}
+
+{% block bodyEnd %}
+  <script type="module" src="{{ 'assets/javascript/jquery.min.js' | rev | url }}"></script>
+  <script type="module" src="{{ 'assets/javascript/govuk-frontend.min.js' | rev | url }}"></script>
+  <script type="module" src="{{ 'assets/javascript/moj-frontend.min.js' | rev | url }}"></script>
+
+  <script type="module">
+    import * as GOVUKFrontend from '{{ 'assets/javascript/govuk-frontend.min.js' | rev | url }}'
+
+    window.$ = $
+    window.GOVUKFrontend = GOVUKFrontend
+    window.GOVUKFrontend.initAll()
+    window.MOJFrontend.initAll()
+  </script>
+
+  <script type="module">{% include scriptPath ignore missing %}</script>
 {% endblock %}

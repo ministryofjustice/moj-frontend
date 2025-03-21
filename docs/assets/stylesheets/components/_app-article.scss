@@ -1,4 +1,4 @@
-@use "../govuk-frontend" as *;
+@use "../moj-frontend" as *;
 
 .app-article {
   @include govuk-responsive-padding(6, "bottom");

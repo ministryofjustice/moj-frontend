@@ -1,9 +1,8 @@
 /* eslint-disable no-new */
 
+import * as MOJFrontend from '@ministryofjustice/frontend'
 import * as GOVUKFrontend from 'govuk-frontend'
 import $ from 'jquery'
-
-import * as MOJFrontend from '../../../src/moj/all.mjs'
 
 import CollapsibleNav from './collapsible-nav.mjs'
 import Cookies from './cookies.mjs'

@@ -9,7 +9,8 @@
     "/package"
   ],
   "scripts": {
-    "build": "concurrently npm:build:* --group --prefix none",
+    "prebuild": "npm run build:package",
+    "build": "concurrently npm:build:dist npm:build:docs --group --prefix none",
     "build:docs": "gulp build:docs --color && eleventy --input=./docs --output=public",
     "build:dist": "gulp build:dist --color",
     "build:package": "gulp build:package --color",
@@ -29,7 +30,7 @@
     "lint:scss": "npm run lint:scss:cli -- \"**/*.{md,scss}\"",
     "lint:scss:cli": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
     "watch:11ty": "eleventy --input=./docs --output=public --serve",
-    "watch:package": "gulp watch:dev --color",
+    "watch:package": "gulp watch --color",
     "watch:app": "nodemon app.js",
     "start:eleventy": "ENV=dev eleventy --input=./docs --output=public --watch",
     "start:server": "nodemon app.js",
