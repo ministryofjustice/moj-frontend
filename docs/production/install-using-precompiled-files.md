@@ -68,7 +68,7 @@ Next, follow [the instructions for installing GOV.UK Frontend](https://frontend.
 
 ## Update your example page to check for errors
 
-1. Update the example page in your project to match the following HTML (in your live application, you should use the [GOV.UK Design System page template](https://design-system.service.gov.uk/styles/page-template/) instead):
+1. Update the example page in your project to match the following HTML (in your live application, you should use the [MoJ Frontend page template](/use-nunjucks/#set-up-nunjucks-and-use-the-page-template) instead):
 
    ```html
    <!DOCTYPE html>
