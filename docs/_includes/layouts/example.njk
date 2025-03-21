@@ -1,13 +1,21 @@
 {% extends "./base.njk" %}
 
-{% block pageStyles %}
-  <style>{% include (page.inputPath | getStylesPath) ignore missing %}</style>
+{% set stylesPath = page.inputPath | getStylesPath %}
+{% set scriptPath = page.inputPath | getScriptPath %}
+
+{# Remove standard template blocks for examples #}
+{% block skipLink %}{% endblock %}
+{% block bodyStart %} {% endblock %}
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block head %}
+  <link href="{{ 'assets/stylesheets/govuk-frontend.css' | rev | url }}" rel="stylesheet">
+  <link href="{{ 'assets/stylesheets/moj-frontend.css' | rev | url }}" rel="stylesheet">
+
+  <style>{% include stylesPath ignore missing %}</style>
 {% endblock %}
 
-{% block body %}
+{% block main %}
   <div class="app-example__wrapper govuk-!-margin-6">{{ content | safe }}</div>
-{% endblock %}
-
-{% block pageScripts %}
-  <script type="module">{% include (page.inputPath | getScriptPath) ignore missing %}</script>
 {% endblock %}
