@@ -31,6 +31,7 @@ services:
       - ENV=staging
       - BRANCH=preview
       - REDIS_PORT=6380
+      - REDIS_URL=host.docker.internal
     platform: linux/amd64
     image: preview-express-app-environment
     container_name: preview-express-app-container
