@@ -1,0 +1,16 @@
+name: Renovate
+
+on:
+  pull_request:
+
+jobs:
+  renovate:
+    name: Validate config
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run config validator
+        run: npx --yes --package renovate -- renovate-config-validator renovate.json --strict
