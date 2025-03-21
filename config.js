@@ -11,7 +11,8 @@ const config = {
   NOTIFY_EMAIL_MAX_RETRIES: process.env.NOTIFY_EMAIL_MAX_RETRIES || 5,
   APP_PORT: process.env.APP_PORT || 3001,
   REDIS_URL: process.env.REDIS_URL,
-  REDIS_AUTH_TOKEN: process.env.REDIS_AUTH_TOKEN || 'your-redis-token',
+  REDIS_AUTH_TOKEN: process.env.REDIS_AUTH_TOKEN,
+  REDIS_PORT: process.env.REDIS_PORT || 6379,
   SESSION_SECRET: process.env.session_secret || 'your-secret-key',
   ENV: process.env.ENV || 'development',
   COMPONENT_FORM_PAGES: {
@@ -33,12 +34,12 @@ const config = {
     },
     prototype: {},
     'prototype-url': { '/prototype': { componentPrototypeUrl: 'yes' } },
-    figma: {},
-    'figma-link': { '/figma': { figmaUrl: 'yes' } },
     'component-code': {},
     'component-code-details': {
       '/component-code': { componentCodeAvailable: 'yes' }
     },
+    figma: {},
+    'figma-link': { '/figma': { figmaUrl: 'yes' } },
     'your-details': {},
     'check-your-answers': {}
   },
@@ -112,7 +113,8 @@ const config = {
     componentCodeLanguage: 'Code language',
     figmaLink: 'Prototype link',
     figmaLinkAdditionalInformation: 'Additional information',
-    shareYourDetails: 'Share your details on the component page'
+    shareYourDetails: 'Share your details on the component page',
+    componentImage: 'Supporting file'
   },
   CHECK_YOUR_ANSWERS: {
     forms: [
@@ -137,6 +139,7 @@ const config = {
       '/add-assistive-tech'
     ],
     canRemoveMultiples: [
+      '/component-image',
       '/prototype-url',
       '/figma-link',
       '/component-code-details'

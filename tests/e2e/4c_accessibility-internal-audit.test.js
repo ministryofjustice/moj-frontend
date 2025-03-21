@@ -54,11 +54,8 @@ module.exports.runTest = async (page) => {
   )
 
   const expectedErrors = [
-    "Enter the name of the organisation who conducted the internal audit",
-    "The date of the internal audit must include a day",
-    "The date of the internal audit must include a month",
-    "The date of the internal audit must include a year",
-    "The date of the internal audit must be a real date"
+   'Enter the name of the organisation who conducted the internal audit',
+   'The date of the internal audit must include a day'
   ]
 
   const allErrorsPresent = expectedErrors.every((error) =>

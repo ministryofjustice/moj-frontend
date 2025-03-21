@@ -86,6 +86,7 @@ COPY middleware middleware
 COPY routes routes
 COPY views views
 COPY --from=staging-build /app/public public
+ENV ENV=staging
 # run express app as a non root user
 RUN useradd -u 1001 -m nonrootuser
 USER 1001
@@ -104,6 +105,7 @@ COPY middleware middleware
 COPY routes routes
 COPY views views
 COPY --from=preview-build /app/public public
+ENV ENV=staging
 # run express app as a non root user
 RUN useradd -u 1001 -m nonrootuser
 USER 1001
@@ -122,6 +124,7 @@ COPY middleware middleware
 COPY routes routes
 COPY views views
 COPY --from=production-build /app/public public
+ENV ENV=production
 # run express app as a non root user
 RUN useradd -u 1001 -m nonrootuser
 USER 1001

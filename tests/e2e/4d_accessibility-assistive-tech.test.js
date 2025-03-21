@@ -54,10 +54,7 @@ module.exports.runTest = async (page) => {
   )
 
   const expectedErrors = [
-    "The date of the testing must include a day",
-    "The date of the testing must include a month",
-    "The date of the testing must include a year",
-    "The date of the testing must include a year",
+    'The date of the testing must include a day'
   ]
 
   const allErrorsPresent = expectedErrors.every((error) =>

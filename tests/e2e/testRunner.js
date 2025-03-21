@@ -12,10 +12,10 @@ const testFiles = [
   "4d_accessibility-assistive-tech.test",
   "5a_prototypeDesigns.test.js",
   "5b_prototypeDesigns-link.test.js",
-  "6a_figmaDesigns.test.js",
-  "6b_figmaDesigns-link.test.js",
-  "7a_componentCode.test.js",
-  "7b_componentCode-link.test.js",
+  "6a_componentCode.test.js",
+  "6b_componentCode-link.test.js",
+  "7a_figmaDesigns.test.js",
+  "7b_figmaDesigns-link.test.js",
   "8_yourDetails.test.js",
   "9_checkAnswers.test.js"
 ];

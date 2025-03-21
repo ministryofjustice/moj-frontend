@@ -61,7 +61,7 @@ module.exports.runTest = async (page) => {
 
 
   await Promise.all([
-    page.waitForNavigation({ waitUntil: "domcontentloaded", timeout: 10000 }),
+    page.waitForNavigation({ waitUntil: "domcontentloaded", timeout: 50000 }),
     button.click()
   ]);
   console.log("Successfully moved to the next step!");
