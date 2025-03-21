@@ -17,6 +17,7 @@ COPY .eleventy.js .eleventy.js
 COPY .eleventyignore .eleventyignore
 COPY gulp gulp
 COPY gulpfile.js gulpfile.js
+COPY postcss.config.mjs postcss.config.mjs
 COPY README.md README.md
 
 RUN ENV="staging" npm run build:package
@@ -35,6 +36,7 @@ COPY .eleventy.js .eleventy.js
 COPY .eleventyignore .eleventyignore
 COPY gulp gulp
 COPY gulpfile.js gulpfile.js
+COPY postcss.config.mjs postcss.config.mjs
 COPY README.md README.md
 
 RUN ENV="staging" npm run build:package
