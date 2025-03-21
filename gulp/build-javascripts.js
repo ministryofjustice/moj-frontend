@@ -1,5 +1,3 @@
-const { readFileSync } = require('fs')
-
 const { glob } = require('glob')
 const gulp = require('gulp')
 
@@ -54,13 +52,6 @@ gulp.task(
       {
         compact: true,
         file: 'moj-frontend.min.js',
-        format: 'umd',
-        name: 'MOJFrontend'
-      },
-      {
-        banner: readFileSync('node_modules/jquery/dist/jquery.js', 'utf8'),
-        compact: true,
-        file: 'all.jquery.min.js',
         format: 'umd',
         name: 'MOJFrontend'
       }

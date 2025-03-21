@@ -2,7 +2,6 @@
 
 import * as MOJFrontend from '@ministryofjustice/frontend'
 import * as GOVUKFrontend from 'govuk-frontend'
-import $ from 'jquery'
 
 import CollapsibleNav from './collapsible-nav.mjs'
 import Cookies from './cookies.mjs'
@@ -17,7 +16,7 @@ MOJFrontend.initAll()
 const $tabs = document.querySelectorAll('[data-module="app-tabs"]')
 
 $tabs.forEach(($tabs) => {
-  new Tabs($($tabs))
+  new Tabs($tabs)
 })
 
 const $codeBlocks = document.querySelectorAll('[data-module="app-copy"]')

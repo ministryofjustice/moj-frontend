@@ -40,8 +40,7 @@ gulp.task('docs:copy-javascripts', () => {
   return gulp
     .src([
       'node_modules/@ministryofjustice/frontend/moj/moj-frontend.min.js?(.map)',
-      'node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js?(.map)',
-      'node_modules/jquery/dist/jquery.min.js'
+      'node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js?(.map)'
     ])
     .pipe(gulp.dest('public/javascripts'))
 })
