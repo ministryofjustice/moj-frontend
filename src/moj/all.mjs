@@ -1,12 +1,11 @@
 /* eslint-disable no-new */
 
-import $ from 'jquery'
-
 import { AddAnother } from './components/add-another/add-another.mjs'
 import { Alert } from './components/alert/alert.mjs'
 import { ButtonMenu } from './components/button-menu/button-menu.mjs'
 import { DatePicker } from './components/date-picker/date-picker.mjs'
 import { FilterToggleButton } from './components/filter-toggle-button/filter-toggle-button.mjs'
+import { FormValidator } from './components/form-validator/form-validator.mjs'
 import { MultiFileUpload } from './components/multi-file-upload/multi-file-upload.mjs'
 import { MultiSelect } from './components/multi-select/multi-select.mjs'
 import { PasswordReveal } from './components/password-reveal/password-reveal.mjs'
@@ -59,7 +58,7 @@ function initAll(options) {
 
   $richTextEditors.forEach(($richTextEditor) => {
     const options = {
-      textarea: $($richTextEditor)
+      textarea: $richTextEditor
     }
 
     const toolbarAttr = $richTextEditor.getAttribute(
@@ -86,11 +85,11 @@ function initAll(options) {
   $searchToggles.forEach(($searchToggle) => {
     new SearchToggle({
       toggleButton: {
-        container: $($searchToggle.querySelector('.moj-search-toggle__toggle')),
+        container: $searchToggle.querySelector('.moj-search-toggle__toggle'),
         text: $searchToggle.getAttribute('data-moj-search-toggle-text')
       },
       search: {
-        container: $($searchToggle.querySelector('.moj-search'))
+        container: $searchToggle.querySelector('.moj-search')
       }
     })
   })
@@ -108,18 +107,18 @@ function initAll(options) {
   const $datePickers = scope.querySelectorAll('[data-module="moj-date-picker"]')
 
   $datePickers.forEach(($datePicker) => {
-    new DatePicker($datePicker, {}).init()
+    new DatePicker($datePicker).init()
   })
 
   const $buttonMenus = scope.querySelectorAll('[data-module="moj-button-menu"]')
 
   $buttonMenus.forEach(($buttonmenu) => {
-    new ButtonMenu($buttonmenu, {}).init()
+    new ButtonMenu($buttonmenu).init()
   })
 
   const $alerts = scope.querySelectorAll('[data-module="moj-alert"]')
   $alerts.forEach(($alert) => {
-    new Alert($alert, {}).init()
+    new Alert($alert).init()
   })
 }
 
@@ -133,6 +132,7 @@ export {
   ButtonMenu,
   DatePicker,
   FilterToggleButton,
+  FormValidator,
   MultiFileUpload,
   MultiSelect,
   PasswordReveal,

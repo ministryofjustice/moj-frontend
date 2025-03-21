@@ -1,35 +1,45 @@
-import $ from 'jquery'
-
 export function PasswordReveal(element) {
   this.el = element
-  const $el = $(this.el)
+  this.container = element.parentElement
 
-  if ($el.data('moj-password-reveal-initialised')) {
+  if (this.container.hasAttribute('data-moj-password-reveal-init')) {
     return
   }
 
-  $el.data('moj-password-reveal-initialised', true)
-  $el.attr('spellcheck', 'false')
+  this.container.setAttribute('data-moj-password-reveal-init', '')
 
-  $el.wrap('<div class="moj-password-reveal"></div>')
-  this.container = $(this.el).parent()
+  this.el.setAttribute('spellcheck', 'false')
   this.createButton()
 }
 
 PasswordReveal.prototype.createButton = function () {
-  this.button = $(
-    '<button type="button" class="govuk-button govuk-button--secondary moj-password-reveal__button">Show <span class="govuk-visually-hidden">password</span></button>'
-  )
-  this.container.append(this.button)
-  this.button.on('click', $.proxy(this, 'onButtonClick'))
+  this.group = document.createElement('div')
+  this.button = document.createElement('button')
+
+  this.button.setAttribute('type', 'button')
+
+  this.group.className = 'moj-password-reveal'
+
+  this.button.className =
+    'govuk-button govuk-button--secondary moj-password-reveal__button'
+
+  this.button.innerHTML =
+    'Show <span class="govuk-visually-hidden">password</span>'
+
+  this.button.addEventListener('click', this.onButtonClick.bind(this))
+
+  this.group.append(this.el, this.button)
+  this.container.append(this.group)
 }
 
 PasswordReveal.prototype.onButtonClick = function () {
   if (this.el.type === 'password') {
     this.el.type = 'text'
-    this.button.html('Hide <span class="govuk-visually-hidden">password</span>')
+    this.button.innerHTML =
+      'Hide <span class="govuk-visually-hidden">password</span>'
   } else {
     this.el.type = 'password'
-    this.button.html('Show <span class="govuk-visually-hidden">password</span>')
+    this.button.innerHTML =
+      'Show <span class="govuk-visually-hidden">password</span>'
   }
 }

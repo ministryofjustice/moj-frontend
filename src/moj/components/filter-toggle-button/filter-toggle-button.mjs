@@ -1,13 +1,11 @@
-import $ from 'jquery'
-
 export function FilterToggleButton(options) {
   this.options = options
-  this.container = $(this.options.toggleButton.container)
-  this.filterContainer = $(this.options.filter.container)
+  this.container = this.options.toggleButton.container
+  this.filterContainer = this.options.filter.container
 
   this.createToggleButton()
   this.setupResponsiveChecks()
-  this.filterContainer.attr('tabindex', '-1')
+  this.filterContainer.setAttribute('tabindex', '-1')
   if (this.options.startHidden) {
     this.hideMenu()
   }
@@ -15,15 +13,20 @@ export function FilterToggleButton(options) {
 
 FilterToggleButton.prototype.setupResponsiveChecks = function () {
   this.mq = window.matchMedia(this.options.bigModeMediaQuery)
-  this.mq.addListener($.proxy(this, 'checkMode'))
+  this.mq.addListener(this.checkMode.bind(this))
   this.checkMode(this.mq)
 }
 
 FilterToggleButton.prototype.createToggleButton = function () {
-  this.menuButton = $(
-    `<button class="govuk-button ${this.options.toggleButton.classes}" type="button" aria-haspopup="true" aria-expanded="false">${this.options.toggleButton.showText}</button>`
-  )
-  this.menuButton.on('click', $.proxy(this, 'onMenuButtonClick'))
+  this.menuButton = document.createElement('button')
+  this.menuButton.setAttribute('type', 'button')
+  this.menuButton.setAttribute('aria-haspopup', 'true')
+  this.menuButton.setAttribute('aria-expanded', 'false')
+
+  this.menuButton.className = `govuk-button ${this.options.toggleButton.classes}`
+  this.menuButton.textContent = this.options.toggleButton.showText
+
+  this.menuButton.addEventListener('click', this.onMenuButtonClick.bind(this))
   this.container.append(this.menuButton)
 }
 
@@ -46,13 +49,18 @@ FilterToggleButton.prototype.enableSmallMode = function () {
 }
 
 FilterToggleButton.prototype.addCloseButton = function () {
-  if (this.options.closeButton) {
-    this.closeButton = $(
-      `<button class="moj-filter__close" type="button">${this.options.closeButton.text}</button>`
-    )
-    this.closeButton.on('click', $.proxy(this, 'onCloseClick'))
-    $(this.options.closeButton.container).append(this.closeButton)
+  if (!this.options.closeButton) {
+    return
   }
+
+  this.closeButton = document.createElement('button')
+  this.closeButton.setAttribute('type', 'button')
+
+  this.closeButton.className = 'moj-filter__close'
+  this.closeButton.textContent = this.options.closeButton.text
+
+  this.closeButton.addEventListener('click', this.onCloseClick.bind(this))
+  this.options.closeButton.container.append(this.closeButton)
 }
 
 FilterToggleButton.prototype.onCloseClick = function () {
@@ -68,15 +76,15 @@ FilterToggleButton.prototype.removeCloseButton = function () {
 }
 
 FilterToggleButton.prototype.hideMenu = function () {
-  this.menuButton.attr('aria-expanded', 'false')
-  this.filterContainer.addClass('moj-js-hidden')
-  this.menuButton.text(this.options.toggleButton.showText)
+  this.menuButton.setAttribute('aria-expanded', 'false')
+  this.filterContainer.classList.add('moj-js-hidden')
+  this.menuButton.textContent = this.options.toggleButton.showText
 }
 
 FilterToggleButton.prototype.showMenu = function () {
-  this.menuButton.attr('aria-expanded', 'true')
-  this.filterContainer.removeClass('moj-js-hidden')
-  this.menuButton.text(this.options.toggleButton.hideText)
+  this.menuButton.setAttribute('aria-expanded', 'true')
+  this.filterContainer.classList.remove('moj-js-hidden')
+  this.menuButton.textContent = this.options.toggleButton.hideText
 }
 
 FilterToggleButton.prototype.onMenuButtonClick = function () {
@@ -84,9 +92,9 @@ FilterToggleButton.prototype.onMenuButtonClick = function () {
 }
 
 FilterToggleButton.prototype.toggle = function () {
-  if (this.menuButton.attr('aria-expanded') === 'false') {
+  if (this.menuButton.getAttribute('aria-expanded') === 'false') {
     this.showMenu()
-    this.filterContainer.get(0).focus()
+    this.filterContainer.focus()
   } else {
     this.hideMenu()
   }
