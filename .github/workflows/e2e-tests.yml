@@ -33,6 +33,8 @@ jobs:
         run: npm start &
 
       - name: Run Puppeteer Tests
+        env:
+          PUPPETEER_NO_SANDBOX: true
         run: |
           sudo apt-get update
           sudo apt-get install -y \
