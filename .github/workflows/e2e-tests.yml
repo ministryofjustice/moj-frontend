@@ -40,7 +40,7 @@ jobs:
             libatk-bridge2.0-0 \
             libxcomposite1 \
             libgbm-dev \
-            libasound2 \
+            libasound2-data \
             libxrandr2 \
             libgtk-3-0 \
             libpangocairo-1.0-0 \
