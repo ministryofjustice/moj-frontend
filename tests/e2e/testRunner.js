@@ -1,6 +1,8 @@
 const puppeteer = require('puppeteer');
 const path = require('path');
 
+const hostUrl = process.env.HOST_URL || 'http://localhost:3001';
+
 // ✅ List test files in execution order
 const testFiles = [
   "1_start.test.js",
@@ -22,7 +24,11 @@ const testFiles = [
 
 (async () => {
   console.log("Launching Community e2e Testing via Puppeteer...");
-  const browser = await puppeteer.launch({ headless: false, slowMo: 100 });
+  const browser = await puppeteer.launch({
+    headless: false,
+    slowMo: 100,
+    args: process.env.PUPPETEER_NO_SANDBOX ? ['--no-sandbox'] : []
+  });
   const page = await browser.newPage();
 
   for (const testFile of testFiles) {
@@ -30,7 +36,7 @@ const testFiles = [
     const testPath = path.join(__dirname, testFile);
     const testModule = require(testPath);
 
-    await testModule.runTest(page); 
+    await testModule.runTest(page, hostUrl);
   }
 
   console.log("🟢 Closing Puppeteer... testing complete");

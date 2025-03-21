@@ -36,7 +36,8 @@
     "test:routes": "jest routes/",
     "dev:docker:preview:build": "docker-compose -f docker-compose.preview.yml build --no-cache",
     "dev:docker:preview:up": "docker-compose -f docker-compose.preview.yml up --build",
-    "dev:docker:preview:down": "docker-compose -f docker-compose.preview.yml down"
+    "dev:docker:preview:down": "docker-compose -f docker-compose.preview.yml down",
+    "test:docker:preview:e2e": "docker-compose -f docker-compose.e2e-tests.yml up --abort-on-container-exit --exit-code-from test-runner"
   },
   "repository": {
     "type": "git",
