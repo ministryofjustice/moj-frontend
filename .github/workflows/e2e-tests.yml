@@ -34,9 +34,9 @@ jobs:
 
       - name: Build Preview Environment
         env:
-          REDIS_HOST: ${{ steps.host-ip.outputs.ip }}
+          REDIS_URL: ${{ steps.host-ip.outputs.ip }}
         run: |
-          docker-compose -f docker-compose.preview.yml up --build
+          docker-compose -f docker-compose.test.yml up --build
 
       - name: Run Puppeteer Tests
         run: |
