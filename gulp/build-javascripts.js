@@ -20,41 +20,82 @@ gulp.task('build:javascripts', async () => {
     'moj/helpers.mjs',
     'moj/all.mjs'
   ]) {
-    await compileScripts(modulePath, {
-      srcPath: 'src',
-      destPath: 'package',
+    await Promise.all([
+      /**
+       * Rollup output for each module:
+       *
+       * - ECMAScript (ES) modules for Node.js or bundler `import`
+       *   (GOV.UK Frontend resolved via `node_modules/govuk-frontend`)
+       */
+      compileScripts(modulePath, {
+        srcPath: 'src',
+        destPath: 'package',
 
-      // Customise output
-      output: [
-        {
+        // Customise input
+        input: {
+          external: ['govuk-frontend']
+        },
+
+        // Customise output
+        output: {
           entryFileNames: '[name].mjs',
           preserveModules: true,
           preserveModulesRoot: 'src'
+        }
+      })(),
+
+      /**
+       * Rollup output for each module:
+       *
+       * - Universal Module Definition (UMD) bundle for browser <script>
+       *   (GOV.UK Frontend resolved via `window.GOVUKFrontend`)
+       */
+      compileScripts(modulePath, {
+        srcPath: 'src',
+        destPath: 'package',
+
+        // Customise input
+        input: {
+          external: ['govuk-frontend']
         },
-        {
+
+        // Customise output
+        output: {
           file: modulePath.replace('.mjs', '.js'),
+          globals: { 'govuk-frontend': 'GOVUKFrontend' },
           format: 'umd',
           name: 'MOJFrontend'
         }
-      ]
-    })()
+      })()
+    ])
   }
 })
 
-gulp.task(
-  'build:javascripts-minified',
-  compileScripts('all.mjs', {
-    srcPath: 'src/moj',
-    destPath: 'package/moj',
+gulp.task('build:javascripts-minified', async () =>
+  Promise.all([
+    /**
+     * Rollup output (minified):
+     *
+     * - Universal Module Definition (UMD) bundle for browser <script>
+     *   (GOV.UK Frontend resolved via `window.GOVUKFrontend`)
+     */
+    compileScripts('all.mjs', {
+      srcPath: 'src/moj',
+      destPath: 'package/moj',
 
-    // Customise output
-    output: [
-      {
+      // Customise input
+      input: {
+        external: ['govuk-frontend']
+      },
+
+      // Customise output
+      output: {
         compact: true,
         file: 'moj-frontend.min.js',
+        globals: { 'govuk-frontend': 'GOVUKFrontend' },
         format: 'umd',
         name: 'MOJFrontend'
       }
-    ]
-  })
+    })()
+  ])
 )
