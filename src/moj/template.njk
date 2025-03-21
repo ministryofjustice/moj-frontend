@@ -1,0 +1,13 @@
+{% extends "govuk/template.njk" -%}
+
+{% if opengraphImageUrl or assetUrl -%}
+  {% set opengraphImageUrl = opengraphImageUrl if opengraphImageUrl else assetUrl + "/images/moj-opengraph-image-2024.png" %}
+{% endif -%}
+
+{% block headIcons %}
+  <link rel="shortcut icon" href="{{ assetPath | default("/assets", true) }}/images/favicon.ico">
+  <link rel="apple-touch-icon" href="{{ assetPath | default("/assets", true) }}/images/moj-apple-touch-icon-180x180-2024.png" sizes="180x180">
+  <link rel="apple-touch-icon" href="{{ assetPath | default("/assets", true) }}/images/moj-apple-touch-icon-167x167-2024.png" sizes="167x167">
+  <link rel="apple-touch-icon" href="{{ assetPath | default("/assets", true) }}/images/moj-apple-touch-icon-152x152-2024.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="{{ assetPath | default("/assets", true) }}/images/moj-apple-touch-icon-2024.png">
+{% endblock %}
