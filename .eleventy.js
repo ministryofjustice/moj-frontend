@@ -366,10 +366,13 @@ module.exports = function (eleventyConfig) {
     liveReload: true,
     domDiff: false,
     port: 8080,
-    // Reload once assets have been rebuilt by gulp
     watch: [
+      'public/assets/javascript/application.js',
+      'public/assets/javascript/govuk-frontend.min.js',
+      'public/assets/javascript/moj-frontend.min.js',
       'public/assets/stylesheets/application.css',
-      'public/assets/javascript/application.js'
+      'public/assets/stylesheets/govuk-frontend.min.css',
+      'public/assets/stylesheets/moj-frontend.min.css'
     ],
     // Show local network IP addresses for device testing
     showAllHosts: true,

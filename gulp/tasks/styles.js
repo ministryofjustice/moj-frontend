@@ -91,7 +91,7 @@ function compileStyles(assetPath, { srcPath, destPath, output = {} }) {
     }
   }
 
-  taskFn.displayName = 'compile:styles'
+  taskFn.displayName = 'compile:stylesheets'
   return taskFn
 }
 

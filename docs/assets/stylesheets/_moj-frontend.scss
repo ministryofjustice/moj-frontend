@@ -1,0 +1,13 @@
+@use "node_modules/govuk-frontend/dist/govuk" as * with (
+  $govuk-assets-path: "../",
+  $govuk-page-width: 1200px,
+  $govuk-suppressed-warnings: (
+    "govuk-typography-scale-14"
+  )
+);
+
+// Share config with MOJ Frontend
+@forward "node_modules/@ministryofjustice/frontend/moj/all" with (
+  $moj-assets-path: $govuk-assets-path,
+  $moj-page-width: $govuk-page-width
+);
