@@ -30,7 +30,7 @@ jobs:
 
       - name: Build Preview Environment
         run: |
-          docker build -f docker/Dockerfile -t preview-app .
+          docker build -f Dockerfile -t preview-app .
           docker run -d --name preview-app -p 3000:3000 preview-app
 
       - name: Run Puppeteer Tests
