@@ -16,7 +16,7 @@ gulp.task('dist:assets', () => {
 })
 
 gulp.task(
-  'dist:javascript',
+  'dist:javascripts',
   compileScripts('all.mjs', {
     srcPath: 'src/moj',
     destPath: 'dist',
@@ -32,7 +32,7 @@ gulp.task(
 )
 
 gulp.task(
-  'dist:css',
+  'dist:stylesheets',
   compileStyles('all.scss', {
     srcPath: 'src/moj',
     destPath: 'dist',

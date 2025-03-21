@@ -3,7 +3,7 @@ const gulp = require('gulp')
 
 const { compileStyles } = require('./tasks/styles')
 
-gulp.task('build:css', async () => {
+gulp.task('build:stylesheets', async () => {
   const modulePaths = await glob('moj/**/*.scss', {
     cwd: 'src',
     nodir: true
@@ -22,7 +22,7 @@ gulp.task('build:css', async () => {
 })
 
 gulp.task(
-  'build:css-minified',
+  'build:stylesheets-minified',
   compileStyles('all.scss', {
     srcPath: 'src/moj',
     destPath: 'package/moj',

@@ -30,7 +30,7 @@ gulp.task('docs:copy-stylesheets', () => {
       'node_modules/@ministryofjustice/frontend/moj/moj-frontend.min.css?(.map)',
       'node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.css?(.map)'
     ])
-    .pipe(gulp.dest('public/assets/stylesheets'))
+    .pipe(gulp.dest('public/stylesheets'))
 })
 
 // Copy javascripts across
@@ -41,11 +41,11 @@ gulp.task('docs:copy-javascripts', () => {
       'node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js?(.map)',
       'node_modules/jquery/dist/jquery.min.js'
     ])
-    .pipe(gulp.dest('public/assets/javascript'))
+    .pipe(gulp.dest('public/javascripts'))
 })
 
 gulp.task(
-  'docs:copy-files',
+  'docs:copy',
   gulp.parallel(
     'docs:copy-assets',
     'docs:copy-stylesheets',
@@ -57,17 +57,17 @@ gulp.task(
 gulp.task(
   'docs:stylesheets',
   compileStyles('application.scss', {
-    srcPath: 'docs/assets/stylesheets',
-    destPath: 'public/assets/stylesheets'
+    srcPath: 'docs/stylesheets',
+    destPath: 'public/stylesheets'
   })
 )
 
 // Bundle the docs site javascript
 gulp.task(
-  'docs:scripts',
+  'docs:javascripts',
   compileScripts('application.mjs', {
-    srcPath: 'docs/assets/javascript',
-    destPath: 'public/assets/javascript',
+    srcPath: 'docs/javascripts',
+    destPath: 'public/javascripts',
     output: { compact: true }
   })
 )
@@ -78,9 +78,9 @@ gulp.task('docs:revision', async () => {
   return gulp
     .src(
       [
-        'public/assets/**/*.css',
-        'public/assets/**/*.js',
-        'public/assets/**/*.+(png|jpg|jpeg)'
+        'public/assets/**/*.+(png|jpg|jpeg)',
+        'public/javascripts/**/*.js',
+        'public/stylesheets/**/*.css'
       ],
       {
         base: 'public',
@@ -96,5 +96,5 @@ gulp.task('docs:revision', async () => {
       })
     )
     .pipe(rev.manifest())
-    .pipe(gulp.dest('public/assets/'))
+    .pipe(gulp.dest('public'))
 })

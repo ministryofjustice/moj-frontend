@@ -1,5 +1,4 @@
 @use "node_modules/govuk-frontend/dist/govuk" as * with (
-  $govuk-assets-path: "../",
   $govuk-page-width: 1200px,
   $govuk-suppressed-warnings: (
     "govuk-typography-scale-14"
