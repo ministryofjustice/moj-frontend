@@ -1,5 +1,8 @@
 {% extends "./base.njk" %}
 
+{% set htmlClasses = "app-example-page" %}
+{% set bodyClasses = "app-example-page__wrapper" %}
+
 {% set stylesPath = page.inputPath | getStylesPath %}
 {% set scriptPath = page.inputPath | getScriptPath %}
 
@@ -12,12 +15,13 @@
 {% block head %}
   <link href="{{ 'stylesheets/govuk-frontend.min.css' | rev | url }}" rel="stylesheet">
   <link href="{{ 'stylesheets/moj-frontend.min.css' | rev | url }}" rel="stylesheet">
+  <link href="{{ 'stylesheets/example.css' | rev | url }}" rel="stylesheet">
 
   <style>{% include stylesPath ignore missing %}</style>
 {% endblock %}
 
 {% block main %}
-  <div class="app-example__wrapper govuk-!-margin-6">{{ content | safe }}</div>
+  {{ content | safe }}
 {% endblock %}
 
 {% block bodyEnd %}
