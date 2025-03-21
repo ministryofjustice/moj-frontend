@@ -4,9 +4,11 @@ const { compileScripts } = require('./tasks/scripts')
 const { compileStyles } = require('./tasks/styles')
 
 gulp.task('docs:clean', async () => {
-  const { deleteSync } = await import('del')
+  const { deleteAsync } = await import('del')
 
-  return deleteSync(['public/**/*'])
+  return deleteAsync(['public/**'], {
+    dot: true
+  })
 })
 
 // Copy assets across
