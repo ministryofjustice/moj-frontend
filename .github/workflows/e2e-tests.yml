@@ -28,7 +28,13 @@ jobs:
           sudo chmod +x /usr/local/bin/docker-compose
           docker-compose --version
 
+      - name: Get Host IP Address
+        id: host-ip
+        run: echo "::set-output name=ip::$(hostname -I | awk '{print $1}')"
+
       - name: Build Preview Environment
+        env:
+          REDIS_HOST: ${{ steps.host-ip.outputs.ip }}
         run: |
           docker-compose -f docker-compose.preview.yml up --build
 
