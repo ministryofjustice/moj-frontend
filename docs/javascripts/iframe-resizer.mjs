@@ -57,7 +57,7 @@ export default class IFrameResizer {
     this.init()
   }
 
-  onMutation(mutation) {
+  onMutation() {
     // Ideally we might want to restrict this slightly to check if we
     // need to adjust size, but this is tricky. Most of our components are
     // relatively static, so if something changes its likely to be
@@ -65,7 +65,7 @@ export default class IFrameResizer {
     this.adjustSize()
   }
 
-  onResize(entry) {
+  onResize() {
     this.adjustSize()
   }
 

@@ -1,0 +1,10 @@
+@use "node_modules/@ministryofjustice/frontend/moj/base" as *;
+
+.app-example-page {
+  overflow: auto;
+  background-color: govuk-colour("white");
+}
+
+.app-example-page__wrapper {
+  padding: govuk-spacing(6);
+}

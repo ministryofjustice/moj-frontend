@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 const Tabs = function (container) {
   this.container = container
   this.keys = { left: 37, right: 39, up: 38, down: 40 }

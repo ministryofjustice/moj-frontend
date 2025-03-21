@@ -1,13 +1,4 @@
-// GOV.UK Frontend
-@use "govuk-frontend" as *;
-
-// MOJ Frontend
-@forward "moj-frontend" with (
-  $moj-assets-path: $govuk-assets-path,
-  $moj-page-width: $govuk-page-width
-);
-
-// highlight.js
+@forward "moj-frontend";
 @forward "highlight.js/scss/github";
 
 // Custom documentation components
@@ -28,7 +19,7 @@
 @forward "components/app-card";
 @forward "components/app-article";
 @forward "components/status";
-@forward "components/documentation_tabs";
+@forward "components/documentation-tabs";
 
 @view-transition {
   navigation: auto;

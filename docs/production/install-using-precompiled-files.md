@@ -36,7 +36,7 @@ Open the [latest MoJ Frontend release notes](https://github.com/ministryofjustic
 1. Download and unzip the link `release-<VERSION-NUMBER>.zip` file.
 2. Copy the `assets` folder to the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/assets/images/moj-logotype-crest.png` shows the `images/moj-logotype-crown.png` image in your users’ browsers.
 3. Copy the `.css` file to a stylesheets folder in the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/stylesheets/moj-frontend-<VERSION-NUMBER>.min.css` shows the CSS file in your users’ browsers.
-4. Copy the `.js` file to a JavaScript folder in the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/javascripts/moj-frontend-<VERSION-NUMBER>.min.js` shows the JavaScript file in your users’ browsers.
+4. Copy the `.js` file to a JavaScripts folder in the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/javascripts/moj-frontend-<VERSION-NUMBER>.min.js` shows the JavaScript file in your users’ browsers.
 
 ## Set up and extend GOV.UK Frontend
 

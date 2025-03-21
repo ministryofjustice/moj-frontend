@@ -188,13 +188,16 @@ module.exports = {
     },
     {
       files: [
-        '**/assets/javascript/**/*.{cjs,js,mjs}',
+        '**/javascripts/**/*.{cjs,js,mjs}',
         '**/docs/examples/**/*.{cjs,js,mjs}',
         '**/*.md/*.{cjs,js,mjs}'
       ],
       env: {
         browser: true
-      },
+      }
+    },
+    {
+      files: ['**/docs/examples/**/*.{cjs,js,mjs}', '**/*.md/*.{cjs,js,mjs}'],
       rules: {
         // Ignore unused example code
         '@typescript-eslint/no-unused-vars': 'off',

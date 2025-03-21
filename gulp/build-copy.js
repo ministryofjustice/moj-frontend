@@ -36,7 +36,7 @@ gulp.task('build:copy-others', () => {
 })
 
 gulp.task(
-  'build:copy-files',
+  'build:copy',
   gulp.parallel(
     'build:copy-assets',
     'build:copy-templates',

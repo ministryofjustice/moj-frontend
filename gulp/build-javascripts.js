@@ -5,7 +5,7 @@ const gulp = require('gulp')
 
 const { compileScripts } = require('./tasks/scripts')
 
-gulp.task('build:javascript', async () => {
+gulp.task('build:javascripts', async () => {
   const modulePaths = await glob('moj/components/**/*.{cjs,js,mjs}', {
     cwd: 'src',
     ignore: ['**/*.spec.{cjs,js,mjs}'],
@@ -44,7 +44,7 @@ gulp.task('build:javascript', async () => {
 })
 
 gulp.task(
-  'build:javascript-minified',
+  'build:javascripts-minified',
   compileScripts('all.mjs', {
     srcPath: 'src/moj',
     destPath: 'package/moj',
