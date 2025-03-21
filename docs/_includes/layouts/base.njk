@@ -9,7 +9,7 @@
 {% block head %}
   <meta name="description" content="Design your service using MoJ styles, components and patterns">
 
-  <link href="{{ 'assets/stylesheets/application.css' | rev | url }}" rel="stylesheet">
+  <link href="{{ 'stylesheets/application.css' | rev | url }}" rel="stylesheet">
 
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -54,7 +54,7 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  <script type="module" src="{{ 'assets/javascript/jquery.min.js' | rev | url }}"></script>
-  <script type="module" src="{{ 'assets/javascript/application.js' | rev | url }}"></script>
+  <script type="module" src="{{ 'javascripts/jquery.min.js' | rev | url }}"></script>
+  <script type="module" src="{{ 'javascripts/application.js' | rev | url }}"></script>
   <script type="module" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL"></script>
 {% endblock %}

@@ -10,8 +10,8 @@
 {% block footer %}{% endblock %}
 
 {% block head %}
-  <link href="{{ 'assets/stylesheets/govuk-frontend.min.css' | rev | url }}" rel="stylesheet">
-  <link href="{{ 'assets/stylesheets/moj-frontend.min.css' | rev | url }}" rel="stylesheet">
+  <link href="{{ 'stylesheets/govuk-frontend.min.css' | rev | url }}" rel="stylesheet">
+  <link href="{{ 'stylesheets/moj-frontend.min.css' | rev | url }}" rel="stylesheet">
 
   <style>{% include stylesPath ignore missing %}</style>
 {% endblock %}
@@ -21,12 +21,12 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  <script type="module" src="{{ 'assets/javascript/jquery.min.js' | rev | url }}"></script>
-  <script type="module" src="{{ 'assets/javascript/govuk-frontend.min.js' | rev | url }}"></script>
-  <script type="module" src="{{ 'assets/javascript/moj-frontend.min.js' | rev | url }}"></script>
+  <script type="module" src="{{ 'javascripts/jquery.min.js' | rev | url }}"></script>
+  <script type="module" src="{{ 'javascripts/govuk-frontend.min.js' | rev | url }}"></script>
+  <script type="module" src="{{ 'javascripts/moj-frontend.min.js' | rev | url }}"></script>
 
   <script type="module">
-    import * as GOVUKFrontend from '{{ 'assets/javascript/govuk-frontend.min.js' | rev | url }}'
+    import * as GOVUKFrontend from '{{ 'javascripts/govuk-frontend.min.js' | rev | url }}'
 
     window.$ = $
     window.GOVUKFrontend = GOVUKFrontend

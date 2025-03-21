@@ -64,7 +64,7 @@ function compileScripts(assetPath, { srcPath, destPath, output = {} }) {
     }
   }
 
-  taskFn.displayName = 'compile:scripts'
+  taskFn.displayName = 'compile:javascripts'
   return taskFn
 }
 
