@@ -10,6 +10,12 @@ jobs:
   e2e-tests:
     runs-on: ubuntu-latest
 
+    services:
+      redis:
+        image: redis:latest
+        ports:
+          - 6380:6379
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -22,7 +28,12 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Install Puppeteer Dependencies
+      - name: Build Preview Environment
+        run: |
+          docker build -f docker/Dockerfile.preview -t preview-app .
+          docker run -d --name preview-app -p 3000:3000 preview-app
+
+      - name: Run Puppeteer Tests
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -39,13 +50,7 @@ jobs:
             libxdamage1 \
             libxfixes3 \
             libxcb1
-
-      - name: Run Puppeteer Tests
-        env:
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "true" 
-          CI: "true"
-        run: |
-          npx puppeteer browsers install chrome
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true CI=true npx puppeteer browsers install chrome
           npm run test:e2e
 
       - name: Upload Screenshots on Failure
@@ -54,3 +59,7 @@ jobs:
         with:
           name: e2e-screenshots
           path: tests/e2e/screenshots
+
+      - name: Tear Down Preview Environment
+        if: always()
+        run: docker stop preview-app && docker rm preview-app
