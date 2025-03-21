@@ -144,7 +144,7 @@ RichTextEditor.prototype.onButtonClick = function (event) {
   document.execCommand(
     event.currentTarget.getAttribute('data-command'),
     false,
-    null
+    undefined
   )
 }
 
