@@ -15,7 +15,14 @@
     "strict": false,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
-    "types": []
+    "types": [
+      "@testing-library/jest-dom",
+      "jest",
+      "jest-axe",
+      "jest-sinon",
+      "node",
+      "typed-query-selector"
+    ]
   },
   "exclude": ["**/node_modules", "**/package"],
   "typeAcquisition": {
