@@ -475,7 +475,7 @@ DatePicker.prototype.formattedDateFromString = function (
 
   if (!dateFormatPattern.test(dateString)) return fallback
 
-  const match = dateString.match(dateFormatPattern)
+  const match = dateFormatPattern.exec(dateString)
   const day = match[1]
   const month = match[3]
   const year = match[4]
