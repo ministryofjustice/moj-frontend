@@ -102,9 +102,9 @@ describe('Button menu with defaults', () => {
 
     expect(menu).toBeVisible()
     await user.click(items[0])
-    expect(global.window.location.hash).toContain('#one')
+    expect(window.location.hash).toContain('#one')
     await user.click(items[2])
-    expect(global.window.location.hash).toContain('#three')
+    expect(window.location.hash).toContain('#three')
   })
 
   test('clicking outside closes menu', async () => {
