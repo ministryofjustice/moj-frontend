@@ -19,7 +19,6 @@ module.exports.runTest = async (page) => {
     return
   }
 
-
   console.log(
     "Clicking 'Continue' without inputs entered to trigger validation errors..."
   )
@@ -35,7 +34,7 @@ module.exports.runTest = async (page) => {
     return
   }
 
-   // Clicking 'Continue' without inputs entered to trigger validation errors...
+  // Clicking 'Continue' without inputs entered to trigger validation errors...
 
   await Promise.all([
     page.waitForSelector('.govuk-error-summary__list', {
@@ -54,8 +53,8 @@ module.exports.runTest = async (page) => {
   )
 
   const expectedErrors = [
-   'Enter the name of the organisation who conducted the internal audit',
-   'The date of the internal audit must include a day'
+    'Enter the name of the organisation who conducted the internal audit',
+    'The date of the internal audit must include a day'
   ]
 
   const allErrorsPresent = expectedErrors.every((error) =>
@@ -72,7 +71,10 @@ module.exports.runTest = async (page) => {
   console.log('Entering mandatory input fields.')
 
   // Enter mandatory inputs
-  await page.type('#internal-organisation', 'organisation who conducted internal audit.')
+  await page.type(
+    '#internal-organisation',
+    'organisation who conducted internal audit.'
+  )
   await page.type('#audit-date-day', '01')
   await page.type('#audit-date-month', '01')
   await page.type('#audit-date-year', '2025')

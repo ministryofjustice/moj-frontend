@@ -29,6 +29,6 @@ module.exports.runTest = async (page) => {
 
   console.log(`Screenshot saved: ${screenshotPath}`)
 
-  console.log("Final test complete. Closing Puppeteer...");
-  await page.browser().close(); 
+  console.log('Final test complete. Closing Puppeteer...')
+  await page.browser().close()
 }

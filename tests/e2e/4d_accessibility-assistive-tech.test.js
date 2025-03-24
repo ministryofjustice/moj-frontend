@@ -19,7 +19,6 @@ module.exports.runTest = async (page) => {
     return
   }
 
-
   console.log(
     "Clicking 'Continue' without inputs entered to trigger validation errors..."
   )
@@ -35,7 +34,7 @@ module.exports.runTest = async (page) => {
     return
   }
 
-   // Clicking 'Continue' without inputs entered to trigger validation errors...
+  // Clicking 'Continue' without inputs entered to trigger validation errors...
 
   await Promise.all([
     page.waitForSelector('.govuk-error-summary__list', {
@@ -53,9 +52,7 @@ module.exports.runTest = async (page) => {
     (elements) => elements.map((el) => el.textContent.trim())
   )
 
-  const expectedErrors = [
-    'The date of the testing must include a day'
-  ]
+  const expectedErrors = ['The date of the testing must include a day']
 
   const allErrorsPresent = expectedErrors.every((error) =>
     errors.includes(error)
