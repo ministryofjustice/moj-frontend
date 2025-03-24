@@ -140,7 +140,7 @@ DatePicker.prototype.initControls = function () {
   )
   this.$cancelButton.addEventListener('click', (event) => {
     event.preventDefault()
-    this.closeDialog(event)
+    this.closeDialog()
   })
   this.$okButton.addEventListener('click', () => {
     this.selectDate(this.currentDate)
