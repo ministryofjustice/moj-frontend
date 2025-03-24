@@ -50,6 +50,13 @@ To load all the Sass rules from both MoJ Frontend and GOV.UK Frontend, add the f
 @forward "node_modules/@ministryofjustice/frontend/moj/all";
 ```
 
+You must add the root of your application to Sass load paths, by either:
+
+- calling the Sass compiler from the command line with the `--load-path .` flag
+- using the JavaScript API with `loadPaths: ['.']` in the `options` object
+
+For more details, view guidance on [simplifying Sass load paths](#simplify-sass-load-paths) and [silencing deprecation warnings from dependencies](#silence-deprecation-warnings-from-dependencies-in-dart-sass).
+
 ### Load an individual component’s CSS using a single Sass forward
 
 You can also import a component and all its dependencies without loading `node_modules/@ministryofjustice/frontend/moj/all` first.
@@ -79,6 +86,7 @@ For example, using the Sass compiler:
 ```js
 compile('src/stylesheets/application.scss', {
   loadPaths: [
+    '.',
     'node_modules/@ministryofjustice/frontend',
     'node_modules/govuk-frontend/dist',
   ],

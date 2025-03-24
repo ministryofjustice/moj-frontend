@@ -5,7 +5,6 @@ const commonjs = require('@rollup/plugin-commonjs')
 const nodeResolve = require('@rollup/plugin-node-resolve')
 const terser = require('@rollup/plugin-terser')
 const { rollup } = require('rollup')
-const externalGlobals = require('rollup-plugin-external-globals')
 
 /**
  * Compile Sass to CSS task
@@ -18,12 +17,8 @@ function compileScripts(assetPath, { srcPath, destPath, output = {} }) {
 
   const taskFn = async () => {
     const bundle = await rollup({
-      external: ['jquery'],
       input: join(srcPath, assetPath),
       plugins: [
-        externalGlobals({
-          jquery: '$'
-        }),
         nodeResolve(),
         commonjs(),
         babel({
@@ -64,7 +59,7 @@ function compileScripts(assetPath, { srcPath, destPath, output = {} }) {
     }
   }
 
-  taskFn.displayName = 'compile:scripts'
+  taskFn.displayName = 'compile:javascripts'
   return taskFn
 }
 

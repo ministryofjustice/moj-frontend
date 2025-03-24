@@ -2,34 +2,41 @@ const moment = require('moment')
 
 module.exports = function () {
   /**
-   * Instantiate object used to store the methods registered as a
-   * 'filter' (of the same name) within nunjucks. You can override
-   * gov.uk core filters by creating filter methods of the same name.
+   * Date filter for use in Nunjucks
+   * Outputs: 01/01/1970
    *
-   * @type {object}
+   * @example
+   * ```njk
+   * {{ params.date | date("DD/MM/YYYY") }}
+   * ```
+   * @param {MomentInput} timestamp
+   * @param {string} format
    */
-  const filters = {}
-
-  /* ------------------------------------------------------------------
-    date filter for use in Nunjucks
-    example: {{ params.date | date("DD/MM/YYYY") }}
-    outputs: 01/01/1970
-  ------------------------------------------------------------------ */
-  filters.date = function (timestamp, format) {
+  function date(timestamp, format) {
     return moment(timestamp).format(format)
   }
 
   /* ------------------------------------------------------------------
     utility functions for use in mojDate function/filter
   ------------------------------------------------------------------ */
+
+  /**
+   * @param {MomentInput} timestamp
+   */
   function govDate(timestamp) {
     return moment(timestamp).format('D MMMM YYYY')
   }
 
+  /**
+   * @param {MomentInput} timestamp
+   */
   function govShortDate(timestamp) {
     return moment(timestamp).format('D MMM YYYY')
   }
 
+  /**
+   * @param {MomentInput} timestamp
+   */
   function govTime(timestamp) {
     const t = moment(timestamp)
     if (t.minutes() > 0) {
@@ -38,12 +45,18 @@ module.exports = function () {
     return t.format('ha')
   }
 
-  /* ------------------------------------------------------------------
-    standard dates for use in Nunjucks,
-    example: {{ params.date | mojDate("datetime") }}
-    outputs: 1 Jan 1970 at 1:32pm
-  ------------------------------------------------------------------ */
-  filters.mojDate = function (timestamp, type) {
+  /**
+   * Standard dates for use in Nunjucks
+   * Outputs: 1 Jan 1970 at 1:32pm
+   *
+   * @example
+   * ```njk
+   * {{ params.date | mojDate("datetime") }}
+   * ```
+   * @param {MomentInput} timestamp
+   * @param {'datetime' | 'shortdatetime' | 'date' | 'shortdate' | 'time'} [type]
+   */
+  function mojDate(timestamp, type) {
     switch (type) {
       case 'datetime':
         return `${govDate(timestamp)} at ${govTime(timestamp)}`
@@ -60,8 +73,17 @@ module.exports = function () {
     }
   }
 
-  /* ------------------------------------------------------------------
-    keep the following line to return your filters to the app
-  ------------------------------------------------------------------ */
-  return filters
+  /**
+   * Returns an object used to store the methods registered as a
+   * 'filter' (of the same name) within nunjucks. You can override
+   * gov.uk core filters by creating filter methods of the same name.
+   */
+  return {
+    date,
+    mojDate
+  }
 }
+
+/**
+ * @import { MomentInput } from 'moment'
+ */

@@ -36,7 +36,7 @@ Open the [latest MoJ Frontend release notes](https://github.com/ministryofjustic
 1. Download and unzip the link `release-<VERSION-NUMBER>.zip` file.
 2. Copy the `assets` folder to the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/assets/images/moj-logotype-crest.png` shows the `images/moj-logotype-crown.png` image in your users’ browsers.
 3. Copy the `.css` file to a stylesheets folder in the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/stylesheets/moj-frontend-<VERSION-NUMBER>.min.css` shows the CSS file in your users’ browsers.
-4. Copy the `.js` file to a JavaScript folder in the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/javascripts/moj-frontend-<VERSION-NUMBER>.min.js` shows the JavaScript file in your users’ browsers.
+4. Copy the `.js` file to a JavaScripts folder in the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/javascripts/moj-frontend-<VERSION-NUMBER>.min.js` shows the JavaScript file in your users’ browsers.
 
 ## Set up and extend GOV.UK Frontend
 
@@ -52,14 +52,12 @@ Next, follow [the instructions for installing GOV.UK Frontend](https://frontend.
 2. Add `script` tags for MoJ Frontend JavaScript alongside GOV.UK Frontend scripts at the bottom of the `body`. This includes jQuery, which is a dependency of MoJ Frontend.
 
    ```html
-   <script type="module" src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
    <script type="module" src="/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js"></script>
    <script type="module" src="/javascripts/moj-frontend-<VERSION-NUMBER>.min.js"></script>
 
    <script type="module">
      import * as GOVUKFrontend from '/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js'
 
-     window.$ = $
      window.GOVUKFrontend = GOVUKFrontend
      window.GOVUKFrontend.initAll()
      window.MOJFrontend.initAll()
@@ -68,7 +66,7 @@ Next, follow [the instructions for installing GOV.UK Frontend](https://frontend.
 
 ## Update your example page to check for errors
 
-1. Update the example page in your project to match the following HTML (in your live application, you should use the [GOV.UK Design System page template](https://design-system.service.gov.uk/styles/page-template/) instead):
+1. Update the example page in your project to match the following HTML (in your live application, you should use the [MoJ Frontend page template](/use-nunjucks/#set-up-nunjucks-and-use-the-page-template) instead):
 
    ```html
    <!DOCTYPE html>
@@ -84,14 +82,12 @@ Next, follow [the instructions for installing GOV.UK Frontend](https://frontend.
 
        <!-- component HTML -->
 
-       <script type="module" src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
        <script type="module" src="/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js"></script>
        <script type="module" src="/javascripts/moj-frontend-<VERSION-NUMBER>.min.js"></script>
 
        <script type="module">
          import * as GOVUKFrontend from '/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js'
 
-         window.$ = $
          window.GOVUKFrontend = GOVUKFrontend
          window.GOVUKFrontend.initAll()
          window.MOJFrontend.initAll()

@@ -45,6 +45,17 @@ const createComponent = (options = {}) => {
   }
 }
 
+const successResponse = {
+  success: {
+    messageHtml: 'File uploaded successfully',
+    messageText: 'File uploaded successfully'
+  },
+  file: {
+    filename: 'test',
+    originalname: 'test.txt'
+  }
+}
+
 describe('Multi-file upload', () => {
   let component
   let options
@@ -145,20 +156,24 @@ describe('Multi-file upload', () => {
     })
 
     test('displays upload progress', async () => {
+      /** @type {SinonFakeXMLHttpRequest | undefined} */
+      let request
+
       // Create a spy on XMLHttpRequest to simulate upload progress
       const xhr = useFakeXMLHttpRequest()
-      let request
       xhr.onCreate = (req) => {
         request = req
       }
 
       await user.upload(input, file)
 
-      request.uploadProgress({
-        lengthComputable: true,
-        loaded: 50,
-        total: 100
-      })
+      request?.upload.dispatchEvent(
+        new window.ProgressEvent('progress', {
+          lengthComputable: true,
+          loaded: 50,
+          total: 100
+        })
+      )
 
       const fileRows = component.querySelectorAll('.moj-multi-file-upload__row')
       const progressElement = component.querySelector(
@@ -195,8 +210,7 @@ describe('Multi-file upload', () => {
       expect(deleteButton).toHaveValue('test')
     })
 
-    // eslint-disable-next-line jest/no-disabled-tests -- this fails as the component still attempts to access response.file (line 149)
-    test.skip('handles 200 status with error in response json', async () => {
+    test('handles 200 status with error in response json', async () => {
       server.respondWith('POST', '/upload', [
         200,
         { 'Content-Type': 'application/json' },
@@ -377,16 +391,6 @@ describe('Multi-file upload', () => {
   describe('Uploading multiple files', () => {
     let files
     let input
-    const successResponse = {
-      success: {
-        messageHtml: 'File uploaded successfully',
-        messageText: 'File uploaded successfully'
-      },
-      file: {
-        filename: 'test',
-        originalname: 'test.txt'
-      }
-    }
 
     beforeEach(() => {
       files = [
@@ -487,13 +491,20 @@ describe('Multi-file upload', () => {
         type: 'text/plain'
       })
       input = component.querySelector('.moj-multi-file-upload__input')
+
+      // Configure server response for file upload
+      server.respondWith('POST', '/upload', [
+        200,
+        { 'Content-Type': 'application/json' },
+        JSON.stringify(successResponse)
+      ])
     })
 
     test('status messages are announced to screen readers', async () => {
       await user.upload(input, file)
 
       const statusBox = queryByRole(component, 'status')
-      expect(statusBox).toHaveTextContent('Uploading files, please wait')
+      expect(statusBox).toHaveTextContent('File uploaded successfully')
     })
 
     test('component has no wcag violations', async () => {
@@ -503,3 +514,7 @@ describe('Multi-file upload', () => {
     })
   })
 })
+
+/**
+ * @import { SinonFakeXMLHttpRequest } from 'sinon'
+ */

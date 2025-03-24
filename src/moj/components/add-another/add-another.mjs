@@ -1,84 +1,138 @@
-import $ from 'jquery'
-
 export function AddAnother(container) {
-  this.container = $(container)
+  this.container = container
 
-  if (this.container.data('moj-add-another-initialised')) {
+  if (this.container.hasAttribute('data-moj-add-another-init')) {
     return
   }
 
-  this.container.data('moj-add-another-initialised', true)
+  this.container.setAttribute('data-moj-add-another-init', '')
 
-  this.container.on(
-    'click',
-    '.moj-add-another__remove-button',
-    $.proxy(this, 'onRemoveButtonClick')
+  this.container.addEventListener('click', this.onRemoveButtonClick.bind(this))
+  this.container.addEventListener('click', this.onAddButtonClick.bind(this))
+
+  const buttons = this.container.querySelectorAll(
+    '.moj-add-another__add-button, moj-add-another__remove-button'
   )
-  this.container.on(
-    'click',
-    '.moj-add-another__add-button',
-    $.proxy(this, 'onAddButtonClick')
-  )
-  this.container
-    .find('.moj-add-another__add-button, moj-add-another__remove-button')
-    .prop('type', 'button')
+
+  buttons.forEach((button) => {
+    if (!(button instanceof HTMLButtonElement)) {
+      return
+    }
+
+    button.type = 'button'
+  })
 }
 
-AddAnother.prototype.onAddButtonClick = function () {
+AddAnother.prototype.onAddButtonClick = function (event) {
+  const button = event.target
+
+  if (
+    !button ||
+    !(button instanceof HTMLButtonElement) ||
+    !button.classList.contains('moj-add-another__add-button')
+  ) {
+    return
+  }
+
+  const items = this.getItems()
   const item = this.getNewItem()
-  this.updateAttributes(this.getItems().length, item)
+
+  if (!item || !(item instanceof HTMLElement)) {
+    return
+  }
+
+  this.updateAttributes(item, items.length)
   this.resetItem(item)
-  const firstItem = this.getItems().first()
+
+  const firstItem = items[0]
   if (!this.hasRemoveButton(firstItem)) {
     this.createRemoveButton(firstItem)
   }
-  this.getItems().last().after(item)
-  item.find('input, textarea, select').first().focus()
+
+  items[items.length - 1].after(item)
+
+  const input = item.querySelector('input, textarea, select')
+  if (input && input instanceof HTMLInputElement) {
+    input.focus()
+  }
 }
 
 AddAnother.prototype.hasRemoveButton = function (item) {
-  return item.find('.moj-add-another__remove-button').length
+  return item.querySelectorAll('.moj-add-another__remove-button').length
 }
 
 AddAnother.prototype.getItems = function () {
-  return this.container.find('.moj-add-another__item')
+  if (!this.container) {
+    return []
+  }
+
+  const items = Array.from(
+    this.container.querySelectorAll('.moj-add-another__item')
+  )
+
+  return items.filter((item) => item instanceof HTMLElement)
 }
 
 AddAnother.prototype.getNewItem = function () {
-  const item = this.getItems().first().clone()
+  const items = this.getItems()
+  const item = items[0].cloneNode(true)
+
+  if (!item || !(item instanceof HTMLElement)) {
+    return
+  }
+
   if (!this.hasRemoveButton(item)) {
     this.createRemoveButton(item)
   }
+
   return item
 }
 
-AddAnother.prototype.updateAttributes = function (index, item) {
-  item.find('[data-name]').each(function (i, el) {
+AddAnother.prototype.updateAttributes = function (item, index) {
+  item.querySelectorAll('[data-name]').forEach((el) => {
+    if (!(el instanceof HTMLInputElement)) {
+      return
+    }
+
+    const name = el.getAttribute('data-name') || ''
+    const id = el.getAttribute('data-id') || ''
     const originalId = el.id
 
-    el.name = $(el)
-      .attr('data-name')
-      .replace(/%index%/, index)
-    el.id = $(el)
-      .attr('data-id')
-      .replace(/%index%/, index)
+    el.name = name.replace(/%index%/, `${index}`)
+    el.id = id.replace(/%index%/, `${index}`)
 
     const label =
-      $(el).siblings('label')[0] ||
-      $(el).parents('label')[0] ||
-      item.find(`[for="${originalId}"]`)[0]
-    label.htmlFor = el.id
+      el.parentElement.querySelector('label') ||
+      el.closest('label') ||
+      item.querySelector(`[for="${originalId}"]`)
+
+    if (label && label instanceof HTMLLabelElement) {
+      label.htmlFor = el.id
+    }
   })
 }
 
 AddAnother.prototype.createRemoveButton = function (item) {
-  item.append(
-    '<button type="button" class="govuk-button govuk-button--secondary moj-add-another__remove-button">Remove</button>'
+  const button = document.createElement('button')
+  button.type = 'button'
+
+  button.classList.add(
+    'govuk-button',
+    'govuk-button--secondary',
+    'moj-add-another__remove-button'
   )
+
+  button.textContent = 'Remove'
+
+  item.append(button)
 }
 
 AddAnother.prototype.resetItem = function (item) {
-  item.find('[data-name], [data-id]').each(function (index, el) {
+  item.querySelectorAll('[data-name], [data-id]').forEach((el) => {
+    if (!(el instanceof HTMLInputElement)) {
+      return
+    }
+
     if (el.type === 'checkbox' || el.type === 'radio') {
       el.checked = false
     } else {
@@ -88,19 +142,35 @@ AddAnother.prototype.resetItem = function (item) {
 }
 
 AddAnother.prototype.onRemoveButtonClick = function (event) {
-  $(event.currentTarget).parents('.moj-add-another__item').remove()
-  const items = this.getItems()
-  if (items.length === 1) {
-    items.find('.moj-add-another__remove-button').remove()
+  const button = event.target
+
+  if (
+    !button ||
+    !(button instanceof HTMLButtonElement) ||
+    !button.classList.contains('moj-add-another__remove-button')
+  ) {
+    return
   }
-  items.each(
-    $.proxy(function (index, el) {
-      this.updateAttributes(index, $(el))
-    }, this)
-  )
+
+  button.closest('.moj-add-another__item').remove()
+
+  const items = this.getItems()
+
+  if (items.length === 1) {
+    items[0].querySelector('.moj-add-another__remove-button').remove()
+  }
+
+  items.forEach((el, index) => {
+    this.updateAttributes(el, index)
+  })
+
   this.focusHeading()
 }
 
 AddAnother.prototype.focusHeading = function () {
-  this.container.find('.moj-add-another__heading').get(0).focus()
+  const heading = this.container.querySelector('.moj-add-another__heading')
+
+  if (heading && heading instanceof HTMLElement) {
+    heading.focus()
+  }
 }

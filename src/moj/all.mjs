@@ -1,12 +1,11 @@
 /* eslint-disable no-new */
 
-import $ from 'jquery'
-
 import { AddAnother } from './components/add-another/add-another.mjs'
 import { Alert } from './components/alert/alert.mjs'
 import { ButtonMenu } from './components/button-menu/button-menu.mjs'
 import { DatePicker } from './components/date-picker/date-picker.mjs'
 import { FilterToggleButton } from './components/filter-toggle-button/filter-toggle-button.mjs'
+import { FormValidator } from './components/form-validator/form-validator.mjs'
 import { MultiFileUpload } from './components/multi-file-upload/multi-file-upload.mjs'
 import { MultiSelect } from './components/multi-select/multi-select.mjs'
 import { PasswordReveal } from './components/password-reveal/password-reveal.mjs'
@@ -15,13 +14,16 @@ import { SearchToggle } from './components/search-toggle/search-toggle.mjs'
 import { SortableTable } from './components/sortable-table/sortable-table.mjs'
 import { version } from './version.mjs'
 
-function initAll(options) {
-  // Set the options to an empty object by default if no options are passed.
-  options = typeof options !== 'undefined' ? options : {}
+/**
+ * @param {Config} [config]
+ */
+function initAll(config) {
+  // Set the config to an empty object by default if no config is passed.
+  config = typeof config !== 'undefined' ? config : {}
 
   // Allow the user to initialise MOJ Frontend in only certain sections of the page
   // Defaults to the entire document if nothing is set.
-  const scope = typeof options.scope !== 'undefined' ? options.scope : document
+  const scope = typeof config.scope !== 'undefined' ? config.scope : document
 
   const $addAnothers = scope.querySelectorAll('[data-module="moj-add-another"]')
 
@@ -34,10 +36,16 @@ function initAll(options) {
   )
 
   $multiSelects.forEach(($multiSelect) => {
+    const containerSelector = $multiSelect.getAttribute(
+      'data-multi-select-checkbox'
+    )
+
+    if (!($multiSelect instanceof HTMLElement) || !containerSelector) {
+      return
+    }
+
     new MultiSelect({
-      container: $multiSelect.querySelector(
-        $multiSelect.getAttribute('data-multi-select-checkbox')
-      ),
+      container: $multiSelect.querySelector(containerSelector),
       checkboxes: $multiSelect.querySelectorAll(
         'tbody .govuk-checkboxes__input'
       ),
@@ -59,7 +67,7 @@ function initAll(options) {
 
   $richTextEditors.forEach(($richTextEditor) => {
     const options = {
-      textarea: $($richTextEditor)
+      textarea: $richTextEditor
     }
 
     const toolbarAttr = $richTextEditor.getAttribute(
@@ -71,8 +79,16 @@ function initAll(options) {
 
       options.toolbar = {}
 
-      for (const item in toolbar) {
-        options.toolbar[toolbar[item]] = true
+      for (const option of toolbar) {
+        if (
+          option === 'bold' ||
+          option === 'italic' ||
+          option === 'underline' ||
+          option === 'bullets' ||
+          option === 'numbers'
+        ) {
+          options.toolbar[option] = true
+        }
       }
     }
 
@@ -86,11 +102,11 @@ function initAll(options) {
   $searchToggles.forEach(($searchToggle) => {
     new SearchToggle({
       toggleButton: {
-        container: $($searchToggle.querySelector('.moj-search-toggle__toggle')),
+        container: $searchToggle.querySelector('.moj-search-toggle__toggle'),
         text: $searchToggle.getAttribute('data-moj-search-toggle-text')
       },
       search: {
-        container: $($searchToggle.querySelector('.moj-search'))
+        container: $searchToggle.querySelector('.moj-search')
       }
     })
   })
@@ -108,18 +124,18 @@ function initAll(options) {
   const $datePickers = scope.querySelectorAll('[data-module="moj-date-picker"]')
 
   $datePickers.forEach(($datePicker) => {
-    new DatePicker($datePicker, {}).init()
+    new DatePicker($datePicker).init()
   })
 
   const $buttonMenus = scope.querySelectorAll('[data-module="moj-button-menu"]')
 
   $buttonMenus.forEach(($buttonmenu) => {
-    new ButtonMenu($buttonmenu, {}).init()
+    new ButtonMenu($buttonmenu).init()
   })
 
   const $alerts = scope.querySelectorAll('[data-module="moj-alert"]')
   $alerts.forEach(($alert) => {
-    new Alert($alert, {}).init()
+    new Alert($alert).init()
   })
 }
 
@@ -133,6 +149,7 @@ export {
   ButtonMenu,
   DatePicker,
   FilterToggleButton,
+  FormValidator,
   MultiFileUpload,
   MultiSelect,
   PasswordReveal,
@@ -140,3 +157,22 @@ export {
   SearchToggle,
   SortableTable
 }
+
+/**
+ * @typedef {object} Config
+ * @property {Element} [scope=document] - Scope to query for components
+ */
+
+/**
+ * Schema for component config
+ *
+ * @typedef {object} Schema
+ * @property {{ [field: string]: SchemaProperty | undefined }} properties - Schema properties
+ */
+
+/**
+ * Schema property for component config
+ *
+ * @typedef {object} SchemaProperty
+ * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
+ */

@@ -290,7 +290,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('rev', (filepath) => {
     if (process.env.ENV === 'production' || process.env.ENV === 'staging') {
       const manifest = JSON.parse(
-        fs.readFileSync('public/assets/rev-manifest.json', 'utf8')
+        fs.readFileSync('public/rev-manifest.json', 'utf8')
       )
       const revision = manifest[filepath]
       return `/${revision || filepath}`
@@ -311,8 +311,12 @@ module.exports = function (eleventyConfig) {
     domDiff: false,
     // Reload once assets have been rebuilt by gulp
     watch: [
-      'public/assets/stylesheets/application.css',
-      'public/assets/javascript/application.js'
+      'public/javascripts/application.js',
+      'public/javascripts/govuk-frontend.min.js',
+      'public/javascripts/moj-frontend.min.js',
+      'public/stylesheets/application.css',
+      'public/stylesheets/govuk-frontend.min.css',
+      'public/stylesheets/moj-frontend.min.css'
     ],
     // Show local network IP addresses for device testing
     showAllHosts: true,

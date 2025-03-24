@@ -8,10 +8,11 @@ gulp.task(
   'build:package',
   gulp.series(
     'build:clean',
-    'build:copy-files',
-    'build:javascript',
-    'build:javascript-minified',
-    'build:css',
+    'build:copy',
+    'build:javascripts',
+    'build:javascripts-minified',
+    'build:stylesheets',
+    'build:stylesheets-minified',
     'build:compress-images'
   )
 )
@@ -21,8 +22,8 @@ gulp.task(
   'build:dist',
   gulp.series(
     'dist:clean',
-    'dist:javascript',
-    'dist:css',
+    'dist:javascripts',
+    'dist:stylesheets',
     'dist:assets',
     'dist:zip'
   )
@@ -33,40 +34,55 @@ gulp.task(
   'build:docs',
   gulp.series(
     'docs:clean',
-    'docs:copy-files',
-    gulp.parallel('docs:styles', 'docs:scripts'),
+    'docs:copy',
+    gulp.parallel('docs:stylesheets', 'docs:javascripts'),
     'docs:revision'
   )
 )
 
-// Watch the docs site sass and all component sass files and recompile
-gulp.task('watch:styles', () => {
+// Watch all the component sass files and build the package
+gulp.task('watch:stylesheets', () => {
   gulp.watch(
-    ['docs/assets/**/*.scss', 'src/moj/**/*.scss'],
-    gulp.series('docs:styles')
+    ['src/moj/**/*.scss'],
+    { ignored: ['**/vendor/**'] },
+    gulp.series('build:stylesheets', 'build:stylesheets-minified')
   )
 })
 
 // Watch all the component js files and build the package
-gulp.task('watch:package-js', () => {
+gulp.task('watch:javascripts', () => {
   gulp.watch(
     ['src/moj/**/*.mjs'],
     { ignored: ['**/*.spec.*', '**/vendor/**'] },
-    gulp.series('build:javascript')
+    gulp.series('build:javascripts', 'build:javascripts-minified')
+  )
+})
+
+// Watch the docs sass files and the bundled package sass and rebuild
+gulp.task('watch:docs-stylesheets', () => {
+  gulp.watch(
+    ['docs/stylesheets/**/*.scss', 'package/moj/all.scss(.map)?'],
+    { ignored: ['**/vendor/**'] },
+    gulp.series('docs:stylesheets')
   )
 })
 
 // Watch the docs js files and the bundled package js and rebuild
-gulp.task('watch:docs-js', () => {
+gulp.task('watch:docs-javascript', () => {
   gulp.watch(
-    ['docs/assets/**/*.mjs', 'src/moj/**/*.mjs'],
+    ['docs/javascripts/**/*.mjs', 'package/moj/all.mjs(.map)?'],
     { ignored: ['**/*.spec.*', '**/vendor/**'] },
-    gulp.series('docs:scripts')
+    gulp.series('docs:javascripts')
   )
 })
 
 // Watch all the files in dev
 gulp.task(
-  'watch:dev',
-  gulp.parallel('watch:styles', 'watch:package-js', 'watch:docs-js')
+  'watch',
+  gulp.parallel(
+    'watch:stylesheets',
+    'watch:javascripts',
+    'watch:docs-stylesheets',
+    'watch:docs-javascript'
+  )
 )

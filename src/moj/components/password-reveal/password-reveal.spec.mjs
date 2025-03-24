@@ -15,26 +15,30 @@ const axe = configureAxe({
 })
 
 describe('Password reveal', () => {
-  let container
+  let group
 
   beforeEach(() => {
     const input = document.createElement('input')
     input.type = 'password'
     input.value = 'password'
 
+    const container = document.createElement('div')
+    container.className = 'govuk-form-group'
+    container.append(input)
+
     new PasswordReveal(input)
 
-    container = input.parentNode
+    group = input.parentElement
   })
 
   test('initialises container', () => {
-    expect(container).toHaveClass('moj-password-reveal')
-    expect(container).toContainElement(getByText(container, 'Show'))
+    expect(group).toHaveClass('moj-password-reveal')
+    expect(group).toContainElement(getByText(group, 'Show'))
   })
 
   test('toggle reveal', async () => {
-    const input = getByDisplayValue(container, 'password')
-    const button = getByText(container, 'Show')
+    const input = getByDisplayValue(group, 'password')
+    const button = getByText(group, 'Show')
 
     await user.click(button)
 
@@ -48,7 +52,7 @@ describe('Password reveal', () => {
   })
 
   test('accessibility', async () => {
-    const button = getByText(container, 'Show')
+    const button = getByText(group, 'Show')
 
     expect(await axe(document.body)).toHaveNoViolations()
     await user.click(button)

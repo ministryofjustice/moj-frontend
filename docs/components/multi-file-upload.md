@@ -46,16 +46,18 @@ When a file has been uploaded it will show as:
 
 ### Initialising the JavaScript
 
-The multi file upload component uses JavaScript. To run it you must include the following script in your page:
+The multi file upload component uses JavaScript. To run it you must include the following:
 
-```js
-if (typeof MOJFrontend.MultiFileUpload !== 'undefined') {
-  new MOJFrontend.MultiFileUpload({
-    container: document.querySelector('.moj-multi-file-upload'),
-    uploadUrl: '/ajax-upload-url',
-    deleteUrl: '/ajax-delete-url'
-  });
-}
+```mjs
+import { MultiFileUpload } from '@ministryofjustice/frontend'
+
+const $multiFileUpload = document.querySelector('.app-multi-file-upload')
+
+new MultiFileUpload({
+  container: $multiFileUpload,
+  uploadUrl: '/ajax-upload-url',
+  deleteUrl: '/ajax-delete-url'
+})
 ```
 
 ### When JavaScript is not available

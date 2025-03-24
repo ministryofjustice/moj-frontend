@@ -40,19 +40,17 @@ You must first:
    ]);
    ```
 
-2. Use the GOV.UK Frontend template by adding the following at the top of your view file:
+2. Use the MoJ Frontend template by adding the following at the top of your view file:
 
    ```njk
    {% raw %}
-   {% extends "govuk/template.njk" %}
+   {% extends "moj/template.njk" %}
    {% endraw %}
    ```
 
-3. Go to the [default page template example](https://design-system.service.gov.uk/styles/page-template/#default) on the GOV.UK Design System website, then copy the Nunjucks code into your view file.
-
 You may need to change the paths in the Nunjucks code to get the CSS, assets and JavaScript working.
 
-Find out how to [change how the page template works](https://design-system.service.gov.uk/styles/page-template/#changing-template-content).
+Find out how to [change template content](https://design-system.service.gov.uk/styles/page-template/#changing-template-content).
 
 ## Adding Nunjucks filters
 

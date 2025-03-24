@@ -12,7 +12,8 @@ const schema = addAnotherSchema.append({
     .messages({
       'any.required': 'Enter the prototype link',
       'string.empty': 'Enter the prototype link',
-      'string.pattern.base': 'The prototype link must be a real website URL'
+      'string.pattern.base':
+        'The prototype link must be a real website URL that begins with https:// or www.'
     }),
   prototypeUrlAdditionalInformation: Joi.string()
     .optional()

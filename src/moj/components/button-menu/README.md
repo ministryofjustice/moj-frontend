@@ -28,12 +28,16 @@ The macro
 
 The JavaScript
 
-```js
-new MOJFrontend.ButtonGroup({
-  container: $('.moj-button-group'),
-  mq: '(min-width: 45em)',
-  buttonText: 'Actions'
-});
+```mjs
+import { ButtonMenu } from '@ministryofjustice/frontend'
+
+const $buttonMenu = document.querySelector('.app-button-menu')
+
+new ButtonMenu($buttonMenu, {
+  alignMenu: 'right',
+  buttonText: 'Menu title',
+  buttonClasses: 'govuk-button--secondary'
+})
 ```
 
 ## Arguments
