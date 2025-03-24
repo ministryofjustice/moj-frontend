@@ -38,7 +38,7 @@ export default class CollapsibleNav extends HTMLElement {
   onclick(event) {
     const $button = event.target.closest('button')
     if (!$button) return
-    const $item = $button.parentNode
+    const $item = $button.parentElement
     if (!$item) return
 
     if (this.isOpen($item)) {

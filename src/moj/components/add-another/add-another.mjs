@@ -102,7 +102,7 @@ AddAnother.prototype.updateAttributes = function (item, index) {
     el.id = id.replace(/%index%/, `${index}`)
 
     const label =
-      el.parentNode.querySelector('label') ||
+      el.parentElement.querySelector('label') ||
       el.closest('label') ||
       item.querySelector(`[for="${originalId}"]`)
 

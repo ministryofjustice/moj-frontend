@@ -103,7 +103,7 @@ DatePicker.prototype.initControls = function () {
   $componentWrapper.classList.add('moj-datepicker__wrapper')
   $inputWrapper.classList.add('govuk-input__wrapper')
 
-  this.$input.parentNode.insertBefore($componentWrapper, this.$input)
+  this.$input.parentElement.insertBefore($componentWrapper, this.$input)
   $componentWrapper.appendChild($inputWrapper)
   $inputWrapper.appendChild(this.$input)
 
