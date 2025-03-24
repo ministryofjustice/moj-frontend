@@ -93,8 +93,8 @@ SortableTable.prototype.onSortButtonClick = function (event) {
 
   if (
     !button ||
-    !button.parentElement ||
-    !(button instanceof HTMLButtonElement)
+    !(button instanceof HTMLButtonElement) ||
+    !button.parentElement
   ) {
     return
   }
