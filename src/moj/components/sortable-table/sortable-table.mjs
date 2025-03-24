@@ -63,7 +63,10 @@ SortableTable.prototype.initialiseSortedColumn = function () {
   const heading = this.table.querySelector('th[aria-sort]')
   const sortButton = heading?.querySelector('button')
   const sortDirection = heading?.getAttribute('aria-sort')
-  const columnNumber = sortButton?.getAttribute('data-index')
+  const columnNumber = Number.parseInt(
+    sortButton?.getAttribute('data-index') ?? '0',
+    10
+  )
 
   if (
     !heading ||
@@ -89,8 +92,11 @@ SortableTable.prototype.onSortButtonClick = function (event) {
   }
 
   const heading = button.parentElement
-  const columnNumber = button.getAttribute('data-index')
   const sortDirection = heading.getAttribute('aria-sort')
+  const columnNumber = Number.parseInt(
+    button?.getAttribute('data-index') ?? '0',
+    10
+  )
 
   const newSortDirection =
     sortDirection === 'none' || sortDirection === 'descending'
