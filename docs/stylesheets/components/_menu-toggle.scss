@@ -1,0 +1,35 @@
+@use "../moj-frontend" as *;
+
+moj-menu-toggle:not(:defined) {
+  display: none;
+}
+
+moj-menu-toggle > button {
+  @extend .govuk-button;
+
+  display: flex;
+  margin-bottom: 0;
+  border: none;
+  color: govuk-colour("white");
+
+  background: none;
+  box-shadow: none;
+  font-weight: bold;
+  align-items: center;
+  gap: 6px;
+
+  &:hover,
+  &:active {
+    border-color: transparent;
+    background-color: transparent;
+  }
+
+  &:focus {
+    border-color: transparent;
+    box-shadow: none;
+  }
+}
+
+moj-menu-toggle > button[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}

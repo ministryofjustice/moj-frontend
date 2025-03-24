@@ -1,0 +1,26 @@
+@forward "moj-frontend";
+@forward "highlight.js/scss/github";
+
+// Custom documentation components
+@forward "components/accordions";
+@forward "components/back-to-top";
+@forward "components/cookie-banner";
+@forward "components/copy-button";
+@forward "components/example";
+@forward "components/layout";
+@forward "components/prose";
+@forward "components/masthead";
+@forward "components/tabs";
+@forward "components/header";
+@forward "components/footer";
+@forward "components/vertical-nav";
+@forward "components/page";
+@forward "components/menu-toggle";
+@forward "components/app-card";
+@forward "components/app-article";
+@forward "components/status";
+@forward "components/documentation-tabs";
+
+@view-transition {
+  navigation: auto;
+}

@@ -1,0 +1,156 @@
+@use "../moj-frontend" as *;
+
+.app-vertical-nav {
+  position: relative;
+  @include govuk-responsive-padding(6, "bottom");
+  @include govuk-responsive-margin(6, "bottom");
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: govuk-spacing(4);
+    bottom: 0;
+    left: govuk-spacing(4);
+    height: 1px;
+    background-color: $govuk-border-colour;
+  }
+}
+
+.app-vertical-nav__header {
+  margin-bottom: govuk-spacing(2);
+  padding-right: 19px;
+  padding-left: 19px;
+  color: $govuk-secondary-text-colour;
+  @include govuk-font($size: 24);
+}
+
+.app-vertical-nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  @include govuk-font($size: 19);
+}
+
+.app-vertical-nav__item {
+  position: relative;
+}
+
+.app-vertical-nav__indicator {
+  display: flex;
+  position: absolute;
+  top: 7px;
+  right: 15px;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+
+  @include govuk-media-query($from: tablet) {
+    top: 10px;
+  }
+}
+
+.app-vertical-nav__link {
+  display: block;
+  padding: 10px 38px 8px govuk-spacing(4);
+  border-left: 4px solid transparent;
+  color: $govuk-link-colour;
+  text-decoration: none;
+
+  &:visited {
+    color: $govuk-link-colour;
+  }
+
+  &:hover {
+    color: govuk-colour("white");
+    background-color: $moj-button-menu-hover-color;
+  }
+
+  &:focus,
+  &:focus-visible {
+    border-color: $govuk-text-colour;
+    outline: none;
+    color: $govuk-text-colour;
+    background-color: $govuk-focus-colour;
+  }
+
+  &:focus:hover,
+  &:focus-visible:hover {
+    color: govuk-colour("white");
+    background-color: $moj-button-menu-hover-color;
+  }
+}
+
+.app-vertical-nav__toggle {
+  display: block;
+  width: 100%;
+  padding: 10px 38px 8px govuk-spacing(4);
+  border: none;
+  border-left: 4px solid transparent;
+  color: $govuk-link-colour;
+  background-color: transparent;
+  text-align: left;
+  text-decoration: none;
+  @include govuk-font($size: 19);
+
+  &:visited {
+    color: $govuk-link-colour;
+  }
+
+  &:hover {
+    color: govuk-colour("white");
+    background-color: $moj-button-menu-hover-color;
+  }
+
+  &:active {
+    color: govuk-colour("white");
+  }
+
+  &:focus-visible {
+    border-color: $govuk-text-colour;
+    outline: none;
+    color: $govuk-text-colour;
+    background-color: $govuk-focus-colour;
+  }
+
+  &:focus-visible:hover {
+    color: govuk-colour("white");
+    background-color: $moj-button-menu-hover-color;
+  }
+}
+
+.app-vertical-nav__list .app-vertical-nav__list {
+  padding-left: govuk-spacing(2);
+  @include govuk-font($size: 16);
+}
+
+.app-vertical-nav__item--active > .app-vertical-nav__link {
+  color: govuk-colour("white");
+  background-color: $govuk-link-colour;
+
+  &:hover {
+    color: govuk-colour("white");
+    background-color: $moj-button-menu-color;
+  }
+
+  &:focus,
+  &:focus-visible {
+    border-color: $govuk-text-colour;
+    outline: none;
+    color: $govuk-text-colour;
+    background-color: $govuk-focus-colour;
+  }
+
+  &:focus:hover,
+  &:focus-visible:hover {
+    background-color: $moj-button-menu-color;
+  }
+}
+
+.app-vertical-nav__item .app-vertical-nav__indicator {
+  transform: rotate(180deg);
+}
+
+.app-vertical-nav__item--open .app-vertical-nav__indicator {
+  transform: rotate(0deg);
+}

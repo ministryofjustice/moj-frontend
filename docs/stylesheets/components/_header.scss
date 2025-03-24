@@ -1,0 +1,53 @@
+@use "../moj-frontend" as *;
+
+.moj-header--docs {
+  padding-top: govuk-spacing(3);
+  border-bottom: 10px solid govuk-colour("pink");
+  background-color: #220051;
+}
+
+.moj-header--docs .moj-header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 govuk-spacing(4);
+  padding-bottom: 12px;
+}
+
+.moj-header--docs .moj-header__logo {
+  display: flex;
+  margin-right: auto;
+  align-items: center;
+}
+
+.moj-header--docs .moj-header__link {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+
+  &--organisation-name {
+    display: none;
+    @include govuk-media-query($from: tablet) {
+      display: initial;
+    }
+  }
+
+  &--organisation-initials {
+    font-weight: bold;
+    @include govuk-media-query($from: tablet) {
+      display: none;
+    }
+  }
+}
+
+.moj-header--docs .moj-header__logotype-crest {
+  top: -3px;
+  flex-shrink: 0;
+}
+
+.moj-header moj-toggle {
+  @include govuk-media-query(920px) {
+    display: none;
+  }
+}
