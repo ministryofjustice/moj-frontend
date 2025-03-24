@@ -1,0 +1,5 @@
+{
+  "componentCodeLanguage": "HTML",
+  "componentCodeUsage": "",
+  "componentCode": "<span id=\"notifications\" class=\"moj-notification-badge\">10</span>"
+}
