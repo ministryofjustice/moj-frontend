@@ -6,7 +6,7 @@ const { compileStyles } = require('./tasks/styles')
 gulp.task('dist:clean', async () => {
   const { deleteAsync } = await import('del')
 
-  return deleteAsync(['dist/**'], {
+  return deleteAsync(['dist/**', '!dist'], {
     dot: true
   })
 })
