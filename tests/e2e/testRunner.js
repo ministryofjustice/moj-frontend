@@ -1,5 +1,6 @@
-const puppeteer = require('puppeteer')
 const path = require('path')
+
+const puppeteer = require('puppeteer')
 
 const hostUrl = process.env.HOST_URL || 'http://localhost:3001'
 
