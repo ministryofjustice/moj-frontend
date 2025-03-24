@@ -179,7 +179,9 @@ SortableTable.prototype.sort = function (rows, columnNumber, sortDirection) {
 
 SortableTable.prototype.getCellValue = function (cell) {
   const val = cell.getAttribute('data-sort-value') || cell.innerHTML
-
   const valAsNumber = Number(val)
-  return isNaN(valAsNumber) ? val : valAsNumber
+
+  return Number.isFinite(valAsNumber)
+    ? valAsNumber // Exclude invalid numbers, infinity etc
+    : val
 }
