@@ -156,20 +156,24 @@ describe('Multi-file upload', () => {
     })
 
     test('displays upload progress', async () => {
+      /** @type {SinonFakeXMLHttpRequest | undefined} */
+      let request
+
       // Create a spy on XMLHttpRequest to simulate upload progress
       const xhr = useFakeXMLHttpRequest()
-      let request
       xhr.onCreate = (req) => {
         request = req
       }
 
       await user.upload(input, file)
 
-      request.uploadProgress({
-        lengthComputable: true,
-        loaded: 50,
-        total: 100
-      })
+      request?.upload.dispatchEvent(
+        new window.ProgressEvent('progress', {
+          lengthComputable: true,
+          loaded: 50,
+          total: 100
+        })
+      )
 
       const fileRows = component.querySelectorAll('.moj-multi-file-upload__row')
       const progressElement = component.querySelector(
@@ -510,3 +514,7 @@ describe('Multi-file upload', () => {
     })
   })
 })
+
+/**
+ * @import { SinonFakeXMLHttpRequest } from 'sinon'
+ */
