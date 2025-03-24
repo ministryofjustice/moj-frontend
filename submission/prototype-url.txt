@@ -1,0 +1,4 @@
+{
+  "prototypeUrl": "https://design-patterns.service.justice.gov.uk/components/notification-badge/",
+  "prototypeUrlAdditionalInformation": "The username is shakespeare and the password is awesome."
+}
