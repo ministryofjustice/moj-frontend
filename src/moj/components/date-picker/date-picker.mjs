@@ -356,10 +356,10 @@ DatePicker.prototype.setExcludedDates = function () {
       .map((item) => {
         return item.includes('-')
           ? this.parseDateRangeString(item)
-          : this.formattedDateFromString(item)
+          : [this.formattedDateFromString(item)]
       })
-      .flat()
-      .filter((item) => item)
+      .reduce((dates, items) => dates.concat(items))
+      .filter((date) => date)
   }
 }
 
