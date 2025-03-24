@@ -27,7 +27,9 @@ const setNextPage = (req, res, next) => {
   } else {
     let subpage = null
     if (addAnother) {
-      subpage = req?.params?.subpage ? parseInt(req?.params?.subpage) + 1 : 1
+      subpage = req?.params?.subpage
+        ? Number.parseInt(req?.params?.subpage) + 1
+        : 1
     }
     const { url, session, body } = req
     req.nextPage = nextPage(url, session, body, subpage)
@@ -191,7 +193,7 @@ const canSkipQuestion = (req, res, next) => {
 // Determine if can add another copy of the form
 const canAddAnother = (req, res, next) => {
   const addAnotherCount = req?.params?.subpage
-    ? 1 + parseInt(req.params.subpage)
+    ? 1 + Number.parseInt(req.params.subpage)
     : 1
   const addAnother =
     addAnotherCount > maxAddAnother ? maxAddAnother : addAnotherCount

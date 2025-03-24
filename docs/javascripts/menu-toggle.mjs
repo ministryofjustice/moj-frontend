@@ -88,6 +88,6 @@ export default class MenuToggle extends HTMLElement {
   }
 
   get breakpoint() {
-    return parseInt(this.getAttribute('breakpoint'))
+    return Number.parseInt(this.getAttribute('breakpoint'))
   }
 }
