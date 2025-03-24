@@ -61,7 +61,7 @@ gulp.task('watch:javascripts', () => {
 // Watch the docs sass files and the bundled package sass and rebuild
 gulp.task('watch:docs-stylesheets', () => {
   gulp.watch(
-    ['docs/stylesheets/**/*.scss', 'package/moj/all.scss(.map)?'],
+    ['docs/stylesheets/**/*.scss', 'package/moj/all.scss?(.map)'],
     { ignored: ['**/vendor/**'] },
     gulp.series('docs:stylesheets')
   )
@@ -70,9 +70,25 @@ gulp.task('watch:docs-stylesheets', () => {
 // Watch the docs js files and the bundled package js and rebuild
 gulp.task('watch:docs-javascript', () => {
   gulp.watch(
-    ['docs/javascripts/**/*.mjs', 'package/moj/all.mjs(.map)?'],
+    ['docs/javascripts/**/*.mjs', 'package/moj/all.mjs?(.map)'],
     { ignored: ['**/*.spec.*', '**/vendor/**'] },
     gulp.series('docs:javascripts')
+  )
+})
+
+// Watch and copy the docs minified CSS
+gulp.task('watch:docs-copy-stylesheets', () => {
+  gulp.watch(
+    ['package/moj/*.min.css?(.map)'],
+    gulp.series('docs:copy-stylesheets')
+  )
+})
+
+// Watch and copy the docs minified JS
+gulp.task('watch:docs-copy-javascripts', () => {
+  gulp.watch(
+    ['package/moj/*.min.js?(.map)'],
+    gulp.series('docs:copy-javascripts')
   )
 })
 
@@ -83,6 +99,8 @@ gulp.task(
     'watch:stylesheets',
     'watch:javascripts',
     'watch:docs-stylesheets',
-    'watch:docs-javascript'
+    'watch:docs-javascript',
+    'watch:docs-copy-stylesheets',
+    'watch:docs-copy-javascripts'
   )
 )
