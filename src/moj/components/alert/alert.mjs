@@ -155,7 +155,7 @@ Alert.prototype.normaliseString = function (value, property) {
 
     // Empty / whitespace-only strings are considered finite so we need to check
     // the length of the trimmed string as well
-    if (trimmedValue.length > 0 && isFinite(Number(trimmedValue))) {
+    if (trimmedValue.length > 0 && Number.isFinite(Number(trimmedValue))) {
       outputType = 'number'
     }
   }

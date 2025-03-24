@@ -68,7 +68,7 @@ validator.addValidator('dob-day', [
         parseInt(params.month.value, 10) - 1,
         parseInt(params.day.value, 10) - 1
       )
-      return d instanceof Date && !isNaN(d)
+      return d instanceof Date && Number.isFinite(d.getTime())
     },
     message: 'Enter a valid date of birth',
     params: {

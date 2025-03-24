@@ -481,7 +481,10 @@ DatePicker.prototype.formattedDateFromString = function (
   const year = match[4]
 
   formattedDate = new Date(`${year}-${month}-${day}`)
-  if (formattedDate instanceof Date && !isNaN(formattedDate)) {
+  if (
+    formattedDate instanceof Date &&
+    Number.isFinite(formattedDate.getTime())
+  ) {
     return formattedDate
   }
   return fallback
