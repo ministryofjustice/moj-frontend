@@ -4,7 +4,7 @@ function Cookies($module) {
 
 Cookies.prototype.init = function () {
   const $module = this.$module
-  if (!$module) {
+  if (!$module || !($module instanceof HTMLElement)) {
     return
   }
 
@@ -14,7 +14,7 @@ Cookies.prototype.init = function () {
   const $reject = this.$module.querySelector('[name="reject"]')
   $reject.addEventListener('click', this.reject.bind(this))
 
-  const configEncoded = localStorage.getItem('mojpl-cookies')
+  const configEncoded = window.localStorage.getItem('mojpl-cookies')
   if (configEncoded) {
     const config = JSON.parse(configEncoded)
     this.load(config)
@@ -44,14 +44,14 @@ Cookies.prototype.hideMessage = function () {
 
 Cookies.prototype.accept = function () {
   const config = { analytics: true }
-  localStorage.setItem('mojpl-cookies', JSON.stringify(config))
+  window.localStorage.setItem('mojpl-cookies', JSON.stringify(config))
 
   this.load(config)
 }
 
 Cookies.prototype.reject = function () {
   const config = { analytics: false }
-  localStorage.setItem('mojpl-cookies', JSON.stringify(config))
+  window.localStorage.setItem('mojpl-cookies', JSON.stringify(config))
 
   window.location.reload()
 }

@@ -4,13 +4,19 @@
 
 ## Example
 
-```html
-<script type="module">
-  new MOJFrontend.RichTextEditor({
-    textarea: $('.js-editor'),
-    toolbar: { 'bold': true, 'italic': true, 'underline': true, 'bullets': true, 'numbers': true }
-  })
-</script>
-```
+```mjs
+import { RichTextEditor } from '@ministryofjustice/frontend'
 
-## Options
+const $richTextEditor = document.querySelector('.app-rich-text-editor')
+
+new RichTextEditor({
+  textarea: $richTextEditor,
+  toolbar: {
+    bold: true,
+    italic: true,
+    underline: true,
+    bullets: true,
+    numbers: true
+  }
+})
+```

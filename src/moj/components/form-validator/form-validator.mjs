@@ -1,14 +1,20 @@
-import $ from 'jquery'
-
 import { addAttributeValue, removeAttributeValue } from '../../helpers.mjs'
 
-export function FormValidator(form, options) {
+/**
+ * @param {Element | null} form - HTML element to use for form validator
+ * @param {FormValidatorConfig} [config] - Button menu config
+ */
+export function FormValidator(form, config = {}) {
+  if (!form || !(form instanceof HTMLFormElement)) {
+    return
+  }
+
   this.form = form
   this.errors = []
   this.validators = []
-  $(this.form).on('submit', $.proxy(this, 'onSubmit'))
+  this.form.addEventListener('submit', this.onSubmit.bind(this))
   this.summary =
-    options && options.summary ? $(options.summary) : $('.govuk-error-summary')
+    config.summary || document.querySelector('.govuk-error-summary')
   this.originalTitle = document.title
 }
 
@@ -38,9 +44,9 @@ FormValidator.prototype.updateTitle = function () {
 }
 
 FormValidator.prototype.showSummary = function () {
-  this.summary.html(this.getSummaryHtml())
-  this.summary.removeClass('moj-hidden')
-  this.summary.attr('aria-labelledby', 'errorSummary-heading')
+  this.summary.innerHTML = this.getSummaryHtml()
+  this.summary.classList.remove('moj-hidden')
+  this.summary.setAttribute('aria-labelledby', 'errorSummary-heading')
   this.summary.focus()
 }
 
@@ -62,8 +68,8 @@ FormValidator.prototype.getSummaryHtml = function () {
 }
 
 FormValidator.prototype.hideSummary = function () {
-  this.summary.addClass('moj-hidden')
-  this.summary.removeAttr('aria-labelledby')
+  this.summary.classList.add('moj-hidden')
+  this.summary.removeAttribute('aria-labelledby')
 }
 
 FormValidator.prototype.onSubmit = function (event) {
@@ -85,24 +91,28 @@ FormValidator.prototype.showInlineErrors = function () {
 }
 
 FormValidator.prototype.showInlineError = function (error) {
-  const errorSpanId = `${error.fieldName}-error`
-  const errorSpan = `<span class="govuk-error-message" id="${
-    errorSpanId
-  }">${this.escapeHtml(error.message)}</span>`
-  const control = $(`#${error.fieldName}`)
-  const fieldContainer = control.parents('.govuk-form-group')
-  const label = fieldContainer.find('label')
-  const legend = fieldContainer.find('legend')
-  const fieldset = fieldContainer.find('fieldset')
-  fieldContainer.addClass('govuk-form-group--error')
-  if (legend.length) {
+  const errorSpan = document.createElement('span')
+  errorSpan.id = `${error.fieldName}-error`
+  errorSpan.classList.add('govuk-error-message')
+  errorSpan.innerHTML = this.escapeHtml(error.message)
+
+  const control = document.querySelector(`#${error.fieldName}`)
+  const fieldset = control.closest('.govuk-fieldset')
+  const fieldContainer = (fieldset || control).closest('.govuk-form-group')
+
+  const label = fieldContainer.querySelector('label')
+  const legend = fieldContainer.querySelector('legend')
+
+  fieldContainer.classList.add('govuk-form-group--error')
+
+  if (fieldset && legend) {
     legend.after(errorSpan)
-    fieldContainer.attr('aria-invalid', 'true')
-    addAttributeValue(fieldset[0], 'aria-describedby', errorSpanId)
-  } else {
+    fieldContainer.setAttribute('aria-invalid', 'true')
+    addAttributeValue(fieldset, 'aria-describedby', errorSpan.id)
+  } else if (label && control) {
     label.after(errorSpan)
-    control.attr('aria-invalid', 'true')
-    addAttributeValue(control[0], 'aria-describedby', errorSpanId)
+    control.setAttribute('aria-invalid', 'true')
+    addAttributeValue(control, 'aria-describedby', errorSpan.id)
   }
 }
 
@@ -113,17 +123,25 @@ FormValidator.prototype.removeInlineErrors = function () {
 }
 
 FormValidator.prototype.removeInlineError = function (error) {
-  const control = $(`#${error.fieldName}`)
-  const fieldContainer = control.parents('.govuk-form-group')
-  fieldContainer.find('.govuk-error-message').remove()
-  fieldContainer.removeClass('govuk-form-group--error')
-  fieldContainer.find('[aria-invalid]').attr('aria-invalid', 'false')
-  const errorSpanId = `${error.fieldName}-error`
-  removeAttributeValue(
-    fieldContainer.find('[aria-describedby]')[0],
-    'aria-describedby',
-    errorSpanId
-  )
+  const errorSpan = document.querySelector(`#${error.fieldName}-error`)
+
+  const control = document.querySelector(`#${error.fieldName}`)
+  const fieldset = control.closest('.govuk-fieldset')
+  const fieldContainer = (fieldset || control).closest('.govuk-form-group')
+
+  const label = fieldContainer.querySelector('label')
+  const legend = fieldContainer.querySelector('legend')
+
+  errorSpan.remove()
+  fieldContainer.classList.remove('govuk-form-group--error')
+
+  if (fieldset && legend) {
+    fieldContainer.removeAttribute('aria-invalid')
+    removeAttributeValue(fieldset, 'aria-describedby', errorSpan.id)
+  } else if (label && control) {
+    control.removeAttribute('aria-invalid')
+    removeAttributeValue(control, 'aria-describedby', errorSpan.id)
+  }
 }
 
 FormValidator.prototype.addValidator = function (fieldName, rules) {
@@ -165,3 +183,8 @@ FormValidator.prototype.validate = function () {
   }
   return this.errors.length === 0
 }
+
+/**
+ * @typedef {object} FormValidatorConfig
+ * @property {HTMLElement} [summary] - HTML element to use for error summary
+ */

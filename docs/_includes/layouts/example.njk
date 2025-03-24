@@ -25,14 +25,12 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  <script type="module" src="{{ 'javascripts/jquery.min.js' | rev | url }}"></script>
   <script type="module" src="{{ 'javascripts/govuk-frontend.min.js' | rev | url }}"></script>
   <script type="module" src="{{ 'javascripts/moj-frontend.min.js' | rev | url }}"></script>
 
   <script type="module">
     import * as GOVUKFrontend from '{{ 'javascripts/govuk-frontend.min.js' | rev | url }}'
 
-    window.$ = $
     window.GOVUKFrontend = GOVUKFrontend
     window.GOVUKFrontend.initAll()
     window.MOJFrontend.initAll()

@@ -5,20 +5,12 @@ import {
 } from '../../helpers.mjs'
 
 /**
- * @typedef {object} AlertConfig
- * @property {boolean} [dismissible=false] - Can the alert be dismissed by the user
- * @property {string} [dismissText=Dismiss] - the label text for the dismiss button
- * @property {boolean} [disableAutoFocus=false] - whether the alert will be autofocused
- * @property {string} [focusOnDismissSelector] - CSS Selector for element to be focused on dismiss
- */
-
-/**
- * @param {HTMLElement} $module - the Alert element
- * @param {AlertConfig} config - configuration options
+ * @param {Element | null} $module - HTML element to use for alert
+ * @param {AlertConfig} [config] - Alert config
  * @class
  */
 export function Alert($module, config = {}) {
-  if (!$module) {
+  if (!$module || !($module instanceof HTMLElement)) {
     return this
   }
 
@@ -73,7 +65,10 @@ Alert.prototype.init = function () {
     this.$dismissButton.removeAttribute('hidden')
 
     this.$module.addEventListener('click', (event) => {
-      if (this.$dismissButton.contains(event.target)) {
+      if (
+        event.target instanceof Node &&
+        this.$dismissButton.contains(event.target)
+      ) {
         this.dimiss()
       }
     })
@@ -119,7 +114,7 @@ Alert.prototype.dimiss = function () {
   }
 
   // If we have an element, place focus on it
-  if ($elementToRecieveFocus) {
+  if ($elementToRecieveFocus instanceof HTMLElement) {
     setFocus($elementToRecieveFocus)
   }
 
@@ -160,7 +155,7 @@ Alert.prototype.normaliseString = function (value, property) {
 
     // Empty / whitespace-only strings are considered finite so we need to check
     // the length of the trimmed string as well
-    if (trimmedValue.length > 0 && isFinite(Number(trimmedValue))) {
+    if (trimmedValue.length > 0 && Number.isFinite(Number(trimmedValue))) {
       outputType = 'number'
     }
   }
@@ -239,15 +234,9 @@ Alert.prototype.mergeConfigs = function (...configObjects) {
 }
 
 /**
- * Schema for component config
- *
- * @typedef {object} Schema
- * @property {{ [field: string]: SchemaProperty | undefined }} properties - Schema properties
- */
-
-/**
- * Schema property for component config
- *
- * @typedef {object} SchemaProperty
- * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
+ * @typedef {object} AlertConfig
+ * @property {boolean} [dismissible=false] - Can the alert be dismissed by the user
+ * @property {string} [dismissText=Dismiss] - the label text for the dismiss button
+ * @property {boolean} [disableAutoFocus=false] - whether the alert will be autofocused
+ * @property {string} [focusOnDismissSelector] - CSS Selector for element to be focused on dismiss
  */

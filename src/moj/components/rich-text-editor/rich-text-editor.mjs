@@ -1,46 +1,54 @@
-import $ from 'jquery'
+/**
+ * @param {RichTextEditorConfig} [options]
+ */
+export function RichTextEditor(options = {}) {
+  const { textarea } = options
 
-export function RichTextEditor(options) {
-  if (!('contentEditable' in document.documentElement)) {
+  if (
+    !textarea ||
+    !textarea.parentElement ||
+    !(textarea instanceof HTMLTextAreaElement) ||
+    !('contentEditable' in document.documentElement)
+  ) {
     return
   }
 
-  this.options = options
-  this.options.toolbar = this.options.toolbar || {
+  options.toolbar = options.toolbar || {
     bold: false,
     italic: false,
     underline: false,
     bullets: true,
     numbers: true
   }
-  this.textarea = this.options.textarea
-  this.container = $(this.textarea).parent()
 
-  if (this.container.data('moj-rich-text-editor-initialised')) {
+  this.textarea = textarea
+  this.container = textarea.parentElement
+  this.options = options
+
+  if (this.container.hasAttribute('data-rich-text-editor-init')) {
     return
   }
 
-  this.container.data('moj-rich-text-editor-initialised', true)
+  this.container.setAttribute('data-rich-text-editor-init', '')
 
   this.createToolbar()
   this.hideDefault()
   this.configureToolbar()
+
   this.keys = {
     left: 37,
     right: 39,
     up: 38,
     down: 40
   }
-  this.container.on(
-    'click',
-    '.moj-rich-text-editor__toolbar-button',
-    $.proxy(this, 'onButtonClick')
-  )
+
+  this.content.addEventListener('input', this.onEditorInput.bind(this))
+
   this.container
-    .find('.moj-rich-text-editor__content')
-    .on('input', $.proxy(this, 'onEditorInput'))
-  this.container.find('label').on('click', $.proxy(this, 'onLabelClick'))
-  this.toolbar.on('keydown', $.proxy(this, 'onToolbarKeydown'))
+    .querySelector('label')
+    .addEventListener('click', this.onLabelClick.bind(this))
+
+  this.toolbar.addEventListener('keydown', this.onToolbarKeydown.bind(this))
 }
 
 RichTextEditor.prototype.onToolbarKeydown = function (event) {
@@ -48,23 +56,27 @@ RichTextEditor.prototype.onToolbarKeydown = function (event) {
   switch (event.keyCode) {
     case this.keys.right:
     case this.keys.down: {
-      focusableButton = this.toolbar.find('button[tabindex=0]')
-      const nextButton = focusableButton.next('button')
-      if (nextButton[0]) {
+      focusableButton = this.buttons.find(
+        (button) => button.getAttribute('tabindex') === '0'
+      )
+      const nextButton = focusableButton.nextElementSibling
+      if (nextButton instanceof HTMLButtonElement) {
         nextButton.focus()
-        focusableButton.attr('tabindex', '-1')
-        nextButton.attr('tabindex', '0')
+        focusableButton.setAttribute('tabindex', '-1')
+        nextButton.setAttribute('tabindex', '0')
       }
       break
     }
     case this.keys.left:
     case this.keys.up: {
-      focusableButton = this.toolbar.find('button[tabindex=0]')
-      const previousButton = focusableButton.prev('button')
-      if (previousButton[0]) {
+      focusableButton = this.buttons.find(
+        (button) => button.getAttribute('tabindex') === '0'
+      )
+      const previousButton = focusableButton.previousElementSibling
+      if (previousButton instanceof HTMLButtonElement) {
         previousButton.focus()
-        focusableButton.attr('tabindex', '-1')
-        previousButton.attr('tabindex', '0')
+        focusableButton.setAttribute('tabindex', '-1')
+        previousButton.setAttribute('tabindex', '0')
       }
       break
     }
@@ -110,10 +122,9 @@ RichTextEditor.prototype.getEnhancedHtml = function () {
 }
 
 RichTextEditor.prototype.hideDefault = function () {
-  this.textarea = this.container.find('textarea')
-  this.textarea.addClass('govuk-visually-hidden')
-  this.textarea.attr('aria-hidden', true)
-  this.textarea.attr('tabindex', '-1')
+  this.textarea.classList.add('govuk-visually-hidden')
+  this.textarea.setAttribute('aria-hidden', 'true')
+  this.textarea.setAttribute('tabindex', '-1')
 }
 
 RichTextEditor.prototype.createToolbar = function () {
@@ -121,25 +132,40 @@ RichTextEditor.prototype.createToolbar = function () {
   this.toolbar.className = 'moj-rich-text-editor'
   this.toolbar.innerHTML = this.getEnhancedHtml()
   this.container.append(this.toolbar)
-  this.toolbar = this.container.find('.moj-rich-text-editor__toolbar')
-  this.container
-    .find('.moj-rich-text-editor__content')
-    .html(this.textarea.val())
+
+  this.content = /** @type {HTMLDivElement} */ (
+    this.container.querySelector('.moj-rich-text-editor__content')
+  )
+
+  this.content.innerHTML = this.$textarea.value
 }
 
 RichTextEditor.prototype.configureToolbar = function () {
-  this.buttons = this.container.find('.moj-rich-text-editor__toolbar-button')
-  this.buttons.prop('tabindex', '-1')
-  const firstTab = this.buttons.first()
-  firstTab.prop('tabindex', '0')
+  this.buttons = Array.from(
+    /** @type {NodeListOf<HTMLButtonElement>} */
+    (this.container.querySelectorAll('.moj-rich-text-editor__toolbar-button'))
+  )
+
+  this.buttons.forEach((button, index) => {
+    button.setAttribute('tabindex', !index ? '0' : '-1')
+    button.addEventListener('click', this.onButtonClick.bind(this))
+  })
 }
 
 RichTextEditor.prototype.onButtonClick = function (event) {
-  document.execCommand($(event.currentTarget).data('command'), false, null)
+  if (!(event.currentTarget instanceof HTMLElement)) {
+    return
+  }
+
+  document.execCommand(
+    event.currentTarget.getAttribute('data-command'),
+    false,
+    undefined
+  )
 }
 
 RichTextEditor.prototype.getContent = function () {
-  return this.container.find('.moj-rich-text-editor__content').html()
+  return this.content.innerHTML
 }
 
 RichTextEditor.prototype.onEditorInput = function () {
@@ -148,10 +174,10 @@ RichTextEditor.prototype.onEditorInput = function () {
 
 RichTextEditor.prototype.updateTextarea = function () {
   document.execCommand('defaultParagraphSeparator', false, 'p')
-  this.textarea.val(this.getContent())
+  this.textarea.value = this.getContent()
 }
 
 RichTextEditor.prototype.onLabelClick = function (event) {
   event.preventDefault()
-  this.container.find('.moj-rich-text-editor__content').focus()
+  this.content.focus()
 }

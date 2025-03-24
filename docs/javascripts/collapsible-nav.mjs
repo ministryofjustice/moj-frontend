@@ -18,7 +18,7 @@ export default class CollapsibleNav extends HTMLElement {
       }
 
       $button.setAttribute('aria-controls', $list.id)
-      $button.setAttribute('aria-expanded', true)
+      $button.setAttribute('aria-expanded', 'true')
       $button.classList.add('app-vertical-nav__toggle')
 
       $button.insertAdjacentHTML('afterbegin', $link.innerHTML)
@@ -38,7 +38,7 @@ export default class CollapsibleNav extends HTMLElement {
   onclick(event) {
     const $button = event.target.closest('button')
     if (!$button) return
-    const $item = $button.parentNode
+    const $item = $button.parentElement
     if (!$item) return
 
     if (this.isOpen($item)) {
@@ -61,7 +61,7 @@ export default class CollapsibleNav extends HTMLElement {
 
     $list.hidden = false
     $item.classList.add(this.openClass)
-    $button.setAttribute('aria-expanded', true)
+    $button.setAttribute('aria-expanded', 'true')
   }
 
   close($item) {
@@ -72,7 +72,7 @@ export default class CollapsibleNav extends HTMLElement {
 
     $list.hidden = true
     $item.classList.remove(this.openClass)
-    $button.setAttribute('aria-expanded', false)
+    $button.setAttribute('aria-expanded', 'false')
   }
 
   closeOpenItems() {

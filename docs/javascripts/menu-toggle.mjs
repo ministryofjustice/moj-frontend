@@ -79,15 +79,15 @@ export default class MenuToggle extends HTMLElement {
 
   hideMenu() {
     this.$menu.hidden = true
-    this.$button.setAttribute('aria-expanded', false)
+    this.$button.setAttribute('aria-expanded', 'false')
   }
 
   showMenu() {
     this.$menu.hidden = false
-    this.$button.setAttribute('aria-expanded', true)
+    this.$button.setAttribute('aria-expanded', 'true')
   }
 
   get breakpoint() {
-    return parseInt(this.getAttribute('breakpoint'))
+    return Number.parseInt(this.getAttribute('breakpoint'))
   }
 }

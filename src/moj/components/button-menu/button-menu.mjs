@@ -1,17 +1,10 @@
 /**
- * @typedef {object} ButtonMenuConfig
- * @property {string} [buttonText=Actions] - Label for the toggle button
- * @property {"left" | "right"} [alignMenu=left] - the alignment of the menu
- * @property {string} [buttonClasses=govuk-button--secondary] - css classes applied to the toggle button
- */
-
-/**
- * @param {HTMLElement} $module
- * @param {ButtonMenuConfig} config
+ * @param {Element | null} $module - HTML element to use for button menu
+ * @param {ButtonMenuConfig} [config] - Button menu config
  * @class
  */
 export function ButtonMenu($module, config = {}) {
-  if (!$module) {
+  if (!$module || !($module instanceof HTMLElement)) {
     return this
   }
 
@@ -107,7 +100,7 @@ ButtonMenu.prototype.setupMenuItems = function () {
     this.$menu.insertBefore(listItem, item)
     listItem.appendChild(item)
 
-    item.setAttribute('tabindex', -1)
+    item.setAttribute('tabindex', '-1')
 
     if (item.tagName === 'BUTTON') {
       item.setAttribute('type', 'button')
@@ -314,15 +307,8 @@ ButtonMenu.prototype.mergeConfigs = function (...configObjects) {
 }
 
 /**
- * Schema for component config
- *
- * @typedef {object} Schema
- * @property {{ [field: string]: SchemaProperty | undefined }} properties - Schema properties
- */
-
-/**
- * Schema property for component config
- *
- * @typedef {object} SchemaProperty
- * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
+ * @typedef {object} ButtonMenuConfig
+ * @property {string} [buttonText='Actions'] - Label for the toggle button
+ * @property {"left" | "right"} [alignMenu='left'] - the alignment of the menu
+ * @property {string} [buttonClasses='govuk-button--secondary'] - css classes applied to the toggle button
  */

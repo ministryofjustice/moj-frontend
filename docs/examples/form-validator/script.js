@@ -64,11 +64,11 @@ validator.addValidator('dob-day', [
   {
     method: function (field, params) {
       const d = new Date(
-        parseInt(params.year.value, 10),
-        parseInt(params.month.value, 10) - 1,
-        parseInt(params.day.value, 10) - 1
+        Number.parseInt(params.year.value, 10),
+        Number.parseInt(params.month.value, 10) - 1,
+        Number.parseInt(params.day.value, 10) - 1
       )
-      return d instanceof Date && !isNaN(d)
+      return d instanceof Date && Number.isFinite(d.getTime())
     },
     message: 'Enter a valid date of birth',
     params: {

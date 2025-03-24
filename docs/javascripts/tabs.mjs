@@ -1,18 +1,21 @@
-import $ from 'jquery'
-
 const Tabs = function (container) {
   this.container = container
   this.keys = { left: 37, right: 39, up: 38, down: 40 }
   this.cssHide = 'app-tabs__panel--hidden'
-  this.tabs = container.find('.app-tabs__tab')
-  this.panels = container.find('.app-tabs__panel')
-  this.container.on('click', '[role=tab]', $.proxy(this, 'onTabClick'))
-  this.container.on('keydown', '[role=tab]', $.proxy(this, 'onTabKeydown'))
+
+  this.tabs = Array.from(this.container.querySelectorAll('.app-tabs__tab'))
+  this.panels = Array.from(this.container.querySelectorAll('.app-tabs__panel'))
+
+  this.tabs.forEach(($tab) => {
+    $tab.addEventListener('click', (event) => this.onTabClick(event))
+    $tab.addEventListener('keydown', (event) => this.onTabKeydown(event))
+  })
+
   this.setupHtml()
 }
 
 Tabs.prototype.hasTab = function (hash) {
-  return this.container.find(hash).length
+  return !!this.container.querySelector(hash)
 }
 
 Tabs.prototype.hideTab = function (tab) {
@@ -26,40 +29,44 @@ Tabs.prototype.showTab = function (tab) {
 }
 
 Tabs.prototype.getTab = function (hash) {
-  return this.tabs.filter(`a[href="${hash}"]`)
+  return this.tabs.find((tab) => tab.hash === hash)
 }
 
 Tabs.prototype.setupHtml = function () {
-  this.container.find('.app-tabs__list').attr('role', 'tablist')
-  this.container.find('.app-tabs__list-item').attr('role', 'presentation')
-  this.tabs.attr('role', 'tab')
-  this.panels.attr('role', 'tabpanel')
-  this.tabs.each(
-    $.proxy(function (i, tab) {
-      const panelId = this.getHref($(tab)).slice(1)
-      tab.id = `tab_${panelId}`
-      $(tab).attr('aria-controls', panelId)
-    }, this)
-  )
-  this.panels.each(
-    $.proxy(function (i, panel) {
-      $(panel).attr('aria-labelledby', this.tabs[i].id)
-    }, this)
-  )
+  const tabLists = this.container.querySelectorAll('.app-tabs__list')
+  const tabListItems = this.container.querySelectorAll('.app-tabs__list-item')
 
-  // setup state
-  // this.tabs.attr('tabindex', '-1');
-  this.panels.addClass(this.cssHide)
+  tabLists.forEach((tabList) => {
+    tabList.setAttribute('role', 'tablist')
+  })
+
+  tabListItems.forEach((tabListItem) => {
+    tabListItem.setAttribute('role', 'presentation')
+  })
+
+  this.tabs.forEach((tab) => {
+    const panel = this.getPanel(tab)
+
+    tab.setAttribute('id', `tab_${panel.id}`)
+    tab.setAttribute('role', 'tab')
+    tab.setAttribute('aria-controls', panel.id)
+    tab.setAttribute('aria-selected', 'false')
+    // $tab.setAttribute('tabindex', '-1')
+
+    panel.setAttribute('role', 'tabpanel')
+    panel.setAttribute('aria-labelledby', tab.id)
+    panel.classList.add(this.cssHide)
+  })
 }
 
 Tabs.prototype.onTabClick = function (event) {
   event.preventDefault()
-  const newTab = $(event.target)
+  const newTab = event.target
   const currentTab = this.getCurrentTab()
-  if (currentTab[0]) {
+  if (currentTab) {
     this.hideTab(currentTab)
   }
-  if (newTab[0] !== currentTab[0]) {
+  if (newTab !== currentTab) {
     this.showTab(newTab)
   }
 }
@@ -81,57 +88,67 @@ Tabs.prototype.onTabKeydown = function (event) {
 
 Tabs.prototype.activateNextTab = function () {
   const currentTab = this.getCurrentTab()
-  const nextTab = currentTab.parent().next().find('[role=tab]')
-  if (nextTab[0]) {
+
+  const nextTabListItem = currentTab.parentElement.nextElementSibling
+  const nextTab = this.tabs.find((tab) => tab.parentElement === nextTabListItem)
+
+  if (nextTab) {
     this.hideTab(currentTab)
     this.showTab(nextTab)
     nextTab.focus()
-    this.createHistoryEntry(nextTab)
   }
 }
 
 Tabs.prototype.activatePreviousTab = function () {
   const currentTab = this.getCurrentTab()
-  const previousTab = currentTab.parent().prev().find('[role=tab]')
-  if (previousTab[0]) {
+
+  const previousTabListItem = currentTab.parentElement.previousElementSibling
+  const previousTab = this.tabs.find(
+    (tab) => tab.parentElement === previousTabListItem
+  )
+
+  if (previousTab) {
     this.hideTab(currentTab)
     this.showTab(previousTab)
     previousTab.focus()
-    this.createHistoryEntry(previousTab)
   }
 }
 
-Tabs.prototype.getPanel = function (tab) {
-  return $(this.getHref(tab))
+Tabs.prototype.getPanel = function ($tab) {
+  const panelId = $tab.hash.slice(1)
+  return this.panels.find((panel) => panel.id === panelId)
 }
 
 Tabs.prototype.showPanel = function (tab) {
-  $(this.getHref(tab)).removeClass(this.cssHide)
+  this.getPanel(tab).classList.remove(this.cssHide)
 }
 
 Tabs.prototype.hidePanel = function (tab) {
-  $(this.getHref(tab)).addClass(this.cssHide)
+  this.getPanel(tab).classList.add(this.cssHide)
 }
 
 Tabs.prototype.unhighlightTab = function (tab) {
-  tab.attr('aria-selected', 'false')
-  // tab.attr('tabindex', '-1');
+  tab.setAttribute('aria-selected', 'false')
+  // tab.setAttribute('tabindex', '-1');
 }
 
 Tabs.prototype.highlightTab = function (tab) {
-  tab.attr('aria-selected', 'true')
-  // tab.attr('tabindex', '0');
+  tab.setAttribute('aria-selected', 'true')
+  // tab.setAttribute('tabindex', '0');
 }
 
 Tabs.prototype.getCurrentTab = function () {
-  return this.container.find('[role=tab][aria-selected=true]')
+  return (
+    this.tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') ??
+    this.tabs[0]
+  )
 }
 
 // this is because IE doesn't always return the actual value but a relative full path
 // should be a utility function most prob
 // http://labs.thesedays.com/blog/2010/01/08/getting-the-href-value-with-jquery-in-ie/
 Tabs.prototype.getHref = function (tab) {
-  const href = tab.attr('href')
+  const href = tab.getAttribute('href')
   return href.slice(href.indexOf('#'), href.length)
 }
 
