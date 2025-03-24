@@ -326,7 +326,7 @@ describe('menu button with a single item', () => {
 
     toggleButton = queryByRole(component, 'button', { name: 'Actions' })
     menu = screen.queryByRole('list', { hidden: true })
-    items = menu?.queryByRole('button', { hidden: true })
+    items = menu?.querySelectorAll('a, button')
   })
 
   afterEach(() => {
