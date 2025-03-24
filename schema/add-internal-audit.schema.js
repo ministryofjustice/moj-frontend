@@ -6,9 +6,9 @@ const maxWords = require('../helpers/max-words')
 const schema = Joi.object({
   internalOrganisation: Joi.string().required().messages({
     'any.required':
-      'Enter the name of the organisation who conducted the internal audit',
+      'Enter the name of the team who conducted the internal audit',
     'string.empty':
-      'Enter the name of the organisation who conducted the internal audit'
+      'Enter the name of the team who conducted the internal audit'
   }),
 
   'auditDate-day': Joi.string()
