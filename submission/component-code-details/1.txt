@@ -1,0 +1,5 @@
+{
+  "componentCodeLanguage": "Nunjunks",
+  "componentCodeUsage": "",
+  "componentCode": "{%- from \"moj/components/notification-badge/macro.njk\" import mojNotificationBadge -%}\r\n\r\n{{ mojNotificationBadge({\r\n  text: \"10\"\r\n}) }}"
+}
