@@ -1,10 +1,19 @@
-export function RichTextEditor(options) {
-  if (!('contentEditable' in document.documentElement)) {
+/**
+ * @param {RichTextEditorConfig} [options]
+ */
+export function RichTextEditor(options = {}) {
+  const { textarea } = options
+
+  if (
+    !textarea ||
+    !textarea.parentElement ||
+    !(textarea instanceof HTMLTextAreaElement) ||
+    !('contentEditable' in document.documentElement)
+  ) {
     return
   }
 
-  this.options = options
-  this.options.toolbar = this.options.toolbar || {
+  options.toolbar = options.toolbar || {
     bold: false,
     italic: false,
     underline: false,
@@ -12,8 +21,9 @@ export function RichTextEditor(options) {
     numbers: true
   }
 
-  this.textarea = this.options.textarea
-  this.container = this.textarea.parentElement
+  this.textarea = textarea
+  this.container = textarea.parentElement
+  this.options = options
 
   if (this.container.hasAttribute('data-rich-text-editor-init')) {
     return
@@ -32,9 +42,7 @@ export function RichTextEditor(options) {
     down: 40
   }
 
-  this.container
-    .querySelector('.moj-rich-text-editor__content')
-    .addEventListener('input', this.onEditorInput.bind(this))
+  this.content.addEventListener('input', this.onEditorInput.bind(this))
 
   this.container
     .querySelector('label')
@@ -125,13 +133,17 @@ RichTextEditor.prototype.createToolbar = function () {
   this.toolbar.innerHTML = this.getEnhancedHtml()
   this.container.append(this.toolbar)
 
-  this.container.querySelector('.moj-rich-text-editor__content').innerHTML =
-    this.textarea.value
+  this.content = /** @type {HTMLDivElement} */ (
+    this.container.querySelector('.moj-rich-text-editor__content')
+  )
+
+  this.content.innerHTML = this.$textarea.value
 }
 
 RichTextEditor.prototype.configureToolbar = function () {
   this.buttons = Array.from(
-    this.container.querySelectorAll('.moj-rich-text-editor__toolbar-button')
+    /** @type {NodeListOf<HTMLButtonElement>} */
+    (this.container.querySelectorAll('.moj-rich-text-editor__toolbar-button'))
   )
 
   this.buttons.forEach((button, index) => {
@@ -141,6 +153,10 @@ RichTextEditor.prototype.configureToolbar = function () {
 }
 
 RichTextEditor.prototype.onButtonClick = function (event) {
+  if (!(event.currentTarget instanceof HTMLElement)) {
+    return
+  }
+
   document.execCommand(
     event.currentTarget.getAttribute('data-command'),
     false,
@@ -149,8 +165,7 @@ RichTextEditor.prototype.onButtonClick = function (event) {
 }
 
 RichTextEditor.prototype.getContent = function () {
-  return this.container.querySelector('.moj-rich-text-editor__content')
-    .innerHTML
+  return this.content.innerHTML
 }
 
 RichTextEditor.prototype.onEditorInput = function () {
@@ -164,5 +179,5 @@ RichTextEditor.prototype.updateTextarea = function () {
 
 RichTextEditor.prototype.onLabelClick = function (event) {
   event.preventDefault()
-  this.container.querySelector('.moj-rich-text-editor__content').focus()
+  this.content.focus()
 }

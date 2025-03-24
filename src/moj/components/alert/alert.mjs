@@ -5,12 +5,12 @@ import {
 } from '../../helpers.mjs'
 
 /**
- * @param {HTMLElement} $module - the Alert element
- * @param {AlertConfig} config - configuration options
+ * @param {Element | null} $module - HTML element to use for alert
+ * @param {AlertConfig} [config] - Alert config
  * @class
  */
 export function Alert($module, config = {}) {
-  if (!$module) {
+  if (!$module || !($module instanceof HTMLElement)) {
     return this
   }
 
@@ -65,7 +65,10 @@ Alert.prototype.init = function () {
     this.$dismissButton.removeAttribute('hidden')
 
     this.$module.addEventListener('click', (event) => {
-      if (this.$dismissButton.contains(event.target)) {
+      if (
+        event.target instanceof Node &&
+        this.$dismissButton.contains(event.target)
+      ) {
         this.dimiss()
       }
     })
@@ -111,7 +114,7 @@ Alert.prototype.dimiss = function () {
   }
 
   // If we have an element, place focus on it
-  if ($elementToRecieveFocus) {
+  if ($elementToRecieveFocus instanceof HTMLElement) {
     setFocus($elementToRecieveFocus)
   }
 

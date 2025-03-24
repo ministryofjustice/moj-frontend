@@ -15,6 +15,10 @@ export function AddAnother(container) {
   )
 
   buttons.forEach((button) => {
+    if (!(button instanceof HTMLButtonElement)) {
+      return
+    }
+
     button.type = 'button'
   })
 }
@@ -22,12 +26,20 @@ export function AddAnother(container) {
 AddAnother.prototype.onAddButtonClick = function (event) {
   const button = event.target
 
-  if (!button || !button.classList.contains('moj-add-another__add-button')) {
+  if (
+    !button ||
+    !(button instanceof HTMLButtonElement) ||
+    !button.classList.contains('moj-add-another__add-button')
+  ) {
     return
   }
 
   const items = this.getItems()
   const item = this.getNewItem()
+
+  if (!item || !(item instanceof HTMLElement)) {
+    return
+  }
 
   this.updateAttributes(item, items.length)
   this.resetItem(item)
@@ -38,7 +50,11 @@ AddAnother.prototype.onAddButtonClick = function (event) {
   }
 
   items[items.length - 1].after(item)
-  item.querySelectorAll('input, textarea, select')[0].focus()
+
+  const input = item.querySelector('input, textarea, select')
+  if (input && input instanceof HTMLInputElement) {
+    input.focus()
+  }
 }
 
 AddAnother.prototype.hasRemoveButton = function (item) {
@@ -46,12 +62,24 @@ AddAnother.prototype.hasRemoveButton = function (item) {
 }
 
 AddAnother.prototype.getItems = function () {
-  return this.container.querySelectorAll('.moj-add-another__item')
+  if (!this.container) {
+    return []
+  }
+
+  const items = Array.from(
+    this.container.querySelectorAll('.moj-add-another__item')
+  )
+
+  return items.filter((item) => item instanceof HTMLElement)
 }
 
 AddAnother.prototype.getNewItem = function () {
   const items = this.getItems()
   const item = items[0].cloneNode(true)
+
+  if (!item || !(item instanceof HTMLElement)) {
+    return
+  }
 
   if (!this.hasRemoveButton(item)) {
     this.createRemoveButton(item)
@@ -61,18 +89,26 @@ AddAnother.prototype.getNewItem = function () {
 }
 
 AddAnother.prototype.updateAttributes = function (item, index) {
-  item.querySelectorAll('[data-name]').forEach(function (el) {
+  item.querySelectorAll('[data-name]').forEach((el) => {
+    if (!(el instanceof HTMLInputElement)) {
+      return
+    }
+
+    const name = el.getAttribute('data-name') || ''
+    const id = el.getAttribute('data-id') || ''
     const originalId = el.id
 
-    el.name = el.getAttribute('data-name').replace(/%index%/, index)
-    el.id = el.getAttribute('data-id').replace(/%index%/, index)
+    el.name = name.replace(/%index%/, `${index}`)
+    el.id = id.replace(/%index%/, `${index}`)
 
     const label =
       el.parentNode.querySelector('label') ||
       el.closest('label') ||
       item.querySelector(`[for="${originalId}"]`)
 
-    label.htmlFor = el.id
+    if (label && label instanceof HTMLLabelElement) {
+      label.htmlFor = el.id
+    }
   })
 }
 
@@ -92,7 +128,11 @@ AddAnother.prototype.createRemoveButton = function (item) {
 }
 
 AddAnother.prototype.resetItem = function (item) {
-  item.querySelectorAll('[data-name], [data-id]').forEach(function (el) {
+  item.querySelectorAll('[data-name], [data-id]').forEach((el) => {
+    if (!(el instanceof HTMLInputElement)) {
+      return
+    }
+
     if (el.type === 'checkbox' || el.type === 'radio') {
       el.checked = false
     } else {
@@ -104,7 +144,11 @@ AddAnother.prototype.resetItem = function (item) {
 AddAnother.prototype.onRemoveButtonClick = function (event) {
   const button = event.target
 
-  if (!button || !button.classList.contains('moj-add-another__remove-button')) {
+  if (
+    !button ||
+    !(button instanceof HTMLButtonElement) ||
+    !button.classList.contains('moj-add-another__remove-button')
+  ) {
     return
   }
 
@@ -124,5 +168,9 @@ AddAnother.prototype.onRemoveButtonClick = function (event) {
 }
 
 AddAnother.prototype.focusHeading = function () {
-  this.container.querySelector('.moj-add-another__heading').focus()
+  const heading = this.container.querySelector('.moj-add-another__heading')
+
+  if (heading && heading instanceof HTMLElement) {
+    heading.focus()
+  }
 }

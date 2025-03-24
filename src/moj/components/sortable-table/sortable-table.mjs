@@ -1,5 +1,15 @@
 export function SortableTable(params) {
-  this.table = params.table
+  const table = params.table
+  const head = table?.querySelector('thead')
+  const body = table?.querySelector('tbody')
+
+  if (!table || !(table instanceof HTMLElement) || !head || !body) {
+    return
+  }
+
+  this.table = table
+  this.head = head
+  this.body = body
 
   if (this.table.hasAttribute('data-moj-sortable-table-init')) {
     return
@@ -7,9 +17,7 @@ export function SortableTable(params) {
 
   this.table.setAttribute('data-moj-sortable-table-init', '')
 
-  this.head = this.table.querySelector('thead')
-  this.body = this.table.querySelector('tbody')
-  this.headings = Array.from(this.head.querySelectorAll('th'))
+  this.headings = this.head ? Array.from(this.head.querySelectorAll('th')) : []
 
   this.setupOptions(params)
   this.createHeadingButtons()
@@ -112,6 +120,10 @@ SortableTable.prototype.onSortButtonClick = function (event) {
 }
 
 SortableTable.prototype.updateButtonState = function (button, direction) {
+  if (!(direction === 'ascending' || direction === 'descending')) {
+    return
+  }
+
   button.parentElement.setAttribute('aria-sort', direction)
   let message = this.statusMessage
   message = message.replace(/%heading%/, button.textContent)
@@ -136,27 +148,33 @@ SortableTable.prototype.getTableRowsArray = function () {
 }
 
 SortableTable.prototype.sort = function (rows, columnNumber, sortDirection) {
-  const newRows = rows.sort(
-    function (rowA, rowB) {
-      const tdA = rowA.querySelectorAll('td, th')[columnNumber]
-      const tdB = rowB.querySelectorAll('td, th')[columnNumber]
+  return rows.sort((rowA, rowB) => {
+    const tdA = rowA.querySelectorAll('td, th')[columnNumber]
+    const tdB = rowB.querySelectorAll('td, th')[columnNumber]
 
-      const valueA =
-        sortDirection === 'ascending'
-          ? this.getCellValue(tdA)
-          : this.getCellValue(tdB)
+    if (
+      !tdA ||
+      !tdB ||
+      !(tdA instanceof HTMLElement) ||
+      !(tdB instanceof HTMLElement)
+    ) {
+      return 0
+    }
 
-      const valueB =
-        sortDirection === 'ascending'
-          ? this.getCellValue(tdB)
-          : this.getCellValue(tdA)
+    const valueA =
+      sortDirection === 'ascending'
+        ? this.getCellValue(tdA)
+        : this.getCellValue(tdB)
 
-      if (typeof valueA === 'string' || typeof valueB === 'string')
-        return valueA.toString().localeCompare(valueB.toString())
-      return valueA - valueB
-    }.bind(this)
-  )
-  return newRows
+    const valueB =
+      sortDirection === 'ascending'
+        ? this.getCellValue(tdB)
+        : this.getCellValue(tdA)
+
+    return !(typeof valueA === 'number' && typeof valueB === 'number')
+      ? valueA.toString().localeCompare(valueB.toString())
+      : valueA - valueB
+  })
 }
 
 SortableTable.prototype.getCellValue = function (cell) {

@@ -1,12 +1,20 @@
 import { addAttributeValue, removeAttributeValue } from '../../helpers.mjs'
 
-export function FormValidator(form, options = {}) {
+/**
+ * @param {Element | null} form - HTML element to use for form validator
+ * @param {FormValidatorConfig} [config] - Button menu config
+ */
+export function FormValidator(form, config = {}) {
+  if (!form || !(form instanceof HTMLFormElement)) {
+    return
+  }
+
   this.form = form
   this.errors = []
   this.validators = []
   this.form.addEventListener('submit', this.onSubmit.bind(this))
   this.summary =
-    options.summary || document.querySelector('.govuk-error-summary')
+    config.summary || document.querySelector('.govuk-error-summary')
   this.originalTitle = document.title
 }
 
@@ -175,3 +183,8 @@ FormValidator.prototype.validate = function () {
   }
   return this.errors.length === 0
 }
+
+/**
+ * @typedef {object} FormValidatorConfig
+ * @property {HTMLElement} [summary] - HTML element to use for error summary
+ */

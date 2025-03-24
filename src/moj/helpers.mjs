@@ -49,11 +49,14 @@ export function fileApiSupported() {
  * Utility function to find an elements next sibling matching the provided
  * selector.
  *
- * @param {HTMLElement} $element - Element to find siblings for
- * @param {string} selector - selector for required sibling
+ * @param {Element | null} $element - Element to find siblings for
+ * @param {string} [selector] - selector for required sibling
  */
 export function getNextSibling($element, selector) {
-  if (!$element) return
+  if (!$element || !($element instanceof HTMLElement)) {
+    return
+  }
+
   // Get the next sibling element
   let $sibling = $element.nextElementSibling
 
@@ -74,11 +77,14 @@ export function getNextSibling($element, selector) {
  * Utility function to find an elements previous sibling matching the provided
  * selector.
  *
- * @param {HTMLElement} $element - Element to find siblings for
- * @param {string} selector - selector for required sibling
+ * @param {Element | null} $element - Element to find siblings for
+ * @param {string} [selector] - selector for required sibling
  */
 export function getPreviousSibling($element, selector) {
-  if (!$element) return
+  if (!$element || !($element instanceof HTMLElement)) {
+    return
+  }
+
   // Get the previous sibling element
   let $sibling = $element.previousElementSibling
 
@@ -93,10 +99,15 @@ export function getPreviousSibling($element, selector) {
   }
 }
 
+/**
+ * @param {Element | null} $element
+ * @param {string} [selector]
+ */
 export function findNearestMatchingElement($element, selector) {
-  // If no element or selector is provided, return null
-  if (!$element) return
-  if (!selector) return
+  // If no element or selector is provided, return
+  if (!$element || !($element instanceof HTMLElement) || !selector) {
+    return
+  }
 
   // Start with the current element
   let $currentElement = $element

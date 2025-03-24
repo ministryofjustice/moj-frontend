@@ -1,10 +1,10 @@
 /**
- * @param {HTMLElement} $module
- * @param {ButtonMenuConfig} config
+ * @param {Element | null} $module - HTML element to use for button menu
+ * @param {ButtonMenuConfig} [config] - Button menu config
  * @class
  */
 export function ButtonMenu($module, config = {}) {
-  if (!$module) {
+  if (!$module || !($module instanceof HTMLElement)) {
     return this
   }
 
