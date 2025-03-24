@@ -144,7 +144,7 @@ describe('sortable table', () => {
 
     const ascCells = tbody.querySelectorAll('tr td:nth-child(2)')
     const ascValues = Array.from(ascCells).map((cell) =>
-      parseInt(cell.getAttribute('data-sort-value'))
+      Number.parseInt(cell.getAttribute('data-sort-value'))
     )
 
     expect(ascValues).toEqual([5895, 6961, 8611, 8850])
@@ -157,7 +157,7 @@ describe('sortable table', () => {
 
     const descCells = tbody.querySelectorAll('tr td:nth-child(2)')
     const descValues = Array.from(descCells).map((cell) =>
-      parseInt(cell.getAttribute('data-sort-value'))
+      Number.parseInt(cell.getAttribute('data-sort-value'))
     )
 
     expect(descValues).toEqual([8850, 8611, 6961, 5895])
@@ -350,7 +350,7 @@ describe('sortable table options', () => {
 
     const cells = component.querySelectorAll('tbody tr td:nth-child(2)')
     const values = Array.from(cells).map((cell) =>
-      parseInt(cell.getAttribute('data-sort-value'))
+      Number.parseInt(cell.getAttribute('data-sort-value'))
     )
 
     expect(values).toEqual([5895, 6961, 8611, 8850])
