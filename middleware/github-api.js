@@ -143,7 +143,12 @@ const pushToGitHub = async (sessionData) => {
           }
         } else {
           const filename = extractFilename(key)
-          submissionData[`${branchName}/${filename}`] = sessionData[key]
+          if(filename.endsWith('.md')) {
+            // Documentation should be outside of the submission folder
+            submissionData[filename] = sessionData[key]
+          } else {
+            submissionData[`${branchName}/${filename}`] = sessionData[key]
+          }
         }
       }
     }

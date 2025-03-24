@@ -4,7 +4,7 @@ const moment = require('moment')
 const generateMarkdown = (data) => {
   const { '/component-details': details } = data
 
-  const documentationDirectory = 'component/documentation'
+  const documentationDirectory = 'docs/components/documentation'
   const componentName = details?.componentName || 'unknown-component'
   const sanitizedComponentName = componentName
     .toLowerCase()
