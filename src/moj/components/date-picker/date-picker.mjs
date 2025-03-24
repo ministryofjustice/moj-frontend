@@ -1,12 +1,22 @@
 /**
- * @param {HTMLElement} $module - HTML element
- * @param {DatePickerConfig} config - config object
+ * @param {Element | null} $module - HTML element to use for date picker
+ * @param {DatePickerConfig} [config] - Date picker config
  * @class
  */
 export function DatePicker($module, config = {}) {
-  if (!$module) {
+  if (!$module || !($module instanceof HTMLElement)) {
     return this
   }
+
+  const $input = $module.querySelector('.moj-js-datepicker-input')
+
+  // Check that required elements are present
+  if (!$input || !($input instanceof HTMLInputElement)) {
+    return this
+  }
+
+  this.$module = $module
+  this.$input = $input
 
   const schema = Object.freeze({
     properties: {
@@ -66,9 +76,6 @@ export function DatePicker($module, config = {}) {
   this.selectedDayButtonClass = 'moj-datepicker__button--selected'
   this.currentDayButtonClass = 'moj-datepicker__button--current'
   this.todayButtonClass = 'moj-datepicker__button--today'
-
-  this.$module = $module
-  this.$input = $module.querySelector('.moj-js-datepicker-input')
 }
 
 DatePicker.prototype.init = function () {
@@ -507,6 +514,7 @@ DatePicker.prototype.formattedDateHuman = function (date) {
 DatePicker.prototype.backgroundClick = function (event) {
   if (
     this.isOpen() &&
+    event.target instanceof Node &&
     !this.$dialog.contains(event.target) &&
     !this.$input.contains(event.target) &&
     !this.$calendarButton.contains(event.target)

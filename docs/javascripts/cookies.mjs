@@ -4,7 +4,7 @@ function Cookies($module) {
 
 Cookies.prototype.init = function () {
   const $module = this.$module
-  if (!$module) {
+  if (!$module || !($module instanceof HTMLElement)) {
     return
   }
 

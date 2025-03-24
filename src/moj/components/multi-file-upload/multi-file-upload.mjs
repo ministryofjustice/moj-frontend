@@ -6,10 +6,22 @@ import {
   formDataSupported
 } from '../../helpers.mjs'
 
+/**
+ * @param {MultiFileUploadConfig} [params] - Multi file upload config
+ */
 export function MultiFileUpload(params) {
-  if (!(dragAndDropSupported() && formDataSupported() && fileApiSupported())) {
+  const { container } = params
+
+  if (
+    !container ||
+    !(container instanceof HTMLElement) ||
+    !(dragAndDropSupported() && formDataSupported() && fileApiSupported())
+  ) {
     return
   }
+
+  this.container = container
+  this.container.classList.add('moj-multi-file-upload--enhanced')
 
   this.defaultParams = {
     uploadFileEntryHook: () => {},
@@ -23,11 +35,8 @@ export function MultiFileUpload(params) {
 
   this.params = Object.assign({}, this.defaultParams, params)
 
-  this.container = this.params.container
-  this.container.classList.add('moj-multi-file-upload--enhanced')
-
-  this.feedbackContainer = this.container.querySelector(
-    '.moj-multi-file__uploaded-files'
+  this.feedbackContainer = /** @type {HTMLDivElement} */ (
+    this.container.querySelector('.moj-multi-file__uploaded-files')
   )
 
   this.setupFileInput()
@@ -66,7 +75,9 @@ MultiFileUpload.prototype.setupLabel = function () {
 }
 
 MultiFileUpload.prototype.setupFileInput = function () {
-  this.fileInput = this.container.querySelector('.moj-multi-file-upload__input')
+  this.fileInput = /** @type {HTMLInputElement} */ (
+    this.container.querySelector('.moj-multi-file-upload__input')
+  )
   this.fileInput.addEventListener('change', this.onFileChange.bind(this))
   this.fileInput.addEventListener('focus', this.onFileFocus.bind(this))
   this.fileInput.addEventListener('blur', this.onFileBlur.bind(this))
@@ -109,8 +120,11 @@ MultiFileUpload.prototype.onFileChange = function () {
   this.uploadFiles(this.fileInput.files)
 
   const fileInput = this.fileInput.cloneNode(true)
-  fileInput.value = ''
+  if (!fileInput || !(fileInput instanceof HTMLInputElement)) {
+    return
+  }
 
+  fileInput.value = ''
   this.fileInput.replaceWith(fileInput)
 
   this.setupFileInput()
@@ -231,7 +245,11 @@ MultiFileUpload.prototype.uploadFile = function (file) {
 MultiFileUpload.prototype.onFileDeleteClick = function (event) {
   const button = event.target
 
-  if (!button || !button.classList.contains('moj-multi-file-upload__delete')) {
+  if (
+    !button ||
+    !(button instanceof HTMLButtonElement) ||
+    !button.classList.contains('moj-multi-file-upload__delete')
+  ) {
     return
   }
 

@@ -36,10 +36,16 @@ function initAll(config) {
   )
 
   $multiSelects.forEach(($multiSelect) => {
+    const containerSelector = $multiSelect.getAttribute(
+      'data-multi-select-checkbox'
+    )
+
+    if (!($multiSelect instanceof HTMLElement) || !containerSelector) {
+      return
+    }
+
     new MultiSelect({
-      container: $multiSelect.querySelector(
-        $multiSelect.getAttribute('data-multi-select-checkbox')
-      ),
+      container: $multiSelect.querySelector(containerSelector),
       checkboxes: $multiSelect.querySelectorAll(
         'tbody .govuk-checkboxes__input'
       ),
