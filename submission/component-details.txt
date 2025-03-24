@@ -1,0 +1,5 @@
+{
+  "componentName": "Notification",
+  "componentOverview": "The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are.",
+  "howIsTheComponentUsed": "Do not use the notification badge when:\r\n\r\n-the number of things is 0\r\n-there is no action\r\n-Unless there is a strong user need, only use it as a part of the navigation.\r\n\r\n"
+}
