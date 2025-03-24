@@ -143,7 +143,7 @@ const pushToGitHub = async (sessionData) => {
           }
         } else {
           const filename = extractFilename(key)
-          if(filename.endsWith('.md')) {
+          if (filename.endsWith('.md')) {
             // Documentation should be outside of the submission folder
             submissionData[filename] = sessionData[key]
           } else {
