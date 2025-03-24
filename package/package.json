@@ -42,7 +42,7 @@
   },
   "peerDependencies": {
     "govuk-frontend": "5.x",
-    "jquery": "3.x",
+    "jquery": "3.7.1",
     "moment": "2.x"
   }
 }
