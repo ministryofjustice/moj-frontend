@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.base.json",
   "include": ["**/*.js", "**/*.mjs"],
-  "exclude": ["**/*.spec.*", "**/node_modules", "moj/vendor"],
+  "exclude": ["**/*.spec.*", "**/node_modules", "moj/vendor", "moj/init.js"],
   "compilerOptions": {
     "checkJs": true,
     "lib": ["ESNext", "DOM"],
