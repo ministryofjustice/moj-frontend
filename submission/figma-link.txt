@@ -1,0 +1,4 @@
+{
+  "figmaLink": "https://design-patterns.service.justice.gov.uk/components/notification-badge/",
+  "figmaLinkAdditionalInformation": "https://www.dummytextgenerator.com/#jump:~:text=Nibh%20curabitur.%20Egestas,cubilia%20curabitur%20cum."
+}
