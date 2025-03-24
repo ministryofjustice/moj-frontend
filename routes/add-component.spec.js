@@ -52,13 +52,8 @@ app.use('/assets', express.static(path.join(parentDirectory, 'public')))
 app.use('/contribute/add-new-component', router)
 
 beforeAll(() => {
-  global.console.log = jest.fn()
-  global.console.error = jest.fn()
-})
-
-afterAll(() => {
-  global.console.log.mockRestore()
-  global.console.error.mockRestore()
+  jest.spyOn(console, 'log').mockImplementation(() => {})
+  jest.spyOn(console, 'error').mockImplementation(() => {})
 })
 
 describe('Component Details Form Tests', () => {
