@@ -232,7 +232,7 @@ MultiFileUpload.prototype.uploadFile = function (file) {
       return
     }
 
-    const percentComplete = parseInt((event.loaded / event.total) * 100, 10)
+    const percentComplete = Math.round((event.loaded / event.total) * 100)
     progress.textContent = ` ${percentComplete}%`
   })
 
