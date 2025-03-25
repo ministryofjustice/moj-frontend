@@ -45,7 +45,7 @@ const sessionOptions = {
   secret: SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 }
+  cookie: { secure: !isDev, maxAge: 24 * 60 * 60 * 1000 }
 }
 
 if (REDIS_URL) {
