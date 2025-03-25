@@ -1,0 +1,9 @@
+{
+  "fullName": "test john",
+  "emailAddress": "test@test.com",
+  "teamName": "test",
+  "shareYourDetails": [
+    "addNameToComponentPage",
+    "addTeamNameWhenRequested"
+  ]
+}
