@@ -28,14 +28,10 @@ export class CollapsibleNav extends HTMLElement {
       }
     })
 
-    this.addEventListener('click', this)
+    this.addEventListener('click', (event) => this.handleClick(event))
   }
 
-  handleEvent(event) {
-    this[`on${event.type}`](event)
-  }
-
-  onclick(event) {
+  handleClick(event) {
     const $button = event.target.closest('button')
     if (!$button) return
     const $item = $button.parentElement
