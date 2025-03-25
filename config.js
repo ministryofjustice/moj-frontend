@@ -7,8 +7,10 @@ const config = {
   NOTIFY_SUBMISSION_TEMPLATE: process.env.NOTIFY_SUBMISSION_TEMPLATE || '',
   NOTIFY_EMAIL: process.env.NOTIFY_EMAIL || 'your-email',
   NOTIFY_TOKEN: process.env.NOTIFY_TOKEN || 'your-default-repo-token',
-  NOTIFY_EMAIL_RETRY_MS: parseInt(process.env.NOTIFY_EMAIL_RETRY_MS, 10) || 5000,
-  NOTIFY_EMAIL_MAX_RETRIES: parseInt(process.env.NOTIFY_EMAIL_MAX_RETRIES, 10) || 5,
+  NOTIFY_EMAIL_RETRY_MS:
+    parseInt(process.env.NOTIFY_EMAIL_RETRY_MS, 10) || 5000,
+  NOTIFY_EMAIL_MAX_RETRIES:
+    parseInt(process.env.NOTIFY_EMAIL_MAX_RETRIES, 10) || 5,
   APP_PORT: parseInt(process.env.APP_PORT, 10) || 3001,
   REDIS_URL: process.env.REDIS_URL,
   REDIS_AUTH_TOKEN: process.env.REDIS_AUTH_TOKEN,
