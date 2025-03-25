@@ -79,5 +79,6 @@
       "matchPackageNames": ["concurrently", "gulp", "gulp-*", "nodemon"]
     }
   ],
-  "rangeStrategy": "bump"
+  "rangeStrategy": "bump",
+  "updateInternalDeps": true
 }
