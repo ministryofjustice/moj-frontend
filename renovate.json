@@ -70,7 +70,8 @@
         "jest",
         "jest-*",
         "mock-*",
-        "sinon"
+        "sinon",
+        "supertest"
       ]
     },
     {
