@@ -118,6 +118,8 @@ const pushToGitHub = async (sessionData) => {
     return uniqueName
   }
 
+  const branchName = `submission-${Date.now()}`
+
   try {
     const submissionData = {}
     for (const key in sessionData) {
@@ -136,18 +138,22 @@ const pushToGitHub = async (sessionData) => {
             const { buffer, originalname } = await getFileFromRedis(redisKey) // Retrieve file from Redis
             const filename = getUniqueFilename(originalname)
             const fileContent = Buffer.from(buffer).toString('base64')
-            const filePath = `submission/${directory}/${filename}`
+            const filePath = `${branchName}/${directory}/${filename}`
             submissionData[filePath] = { buffer: fileContent }
           }
         } else {
           const filename = extractFilename(key)
-          submissionData[`submission/${filename}`] = sessionData[key]
+          if (filename.endsWith('.md')) {
+            // Documentation should be outside of the submission folder
+            submissionData[filename] = sessionData[key]
+          } else {
+            submissionData[`${branchName}/${filename}`] = sessionData[key]
+          }
         }
       }
     }
 
     const baseSha = await getMainBranchSha()
-    const branchName = `submission-${Date.now()}`
     await createBranch(baseSha, branchName)
 
     for (const [filePath, content] of Object.entries(submissionData)) {
