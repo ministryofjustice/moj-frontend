@@ -121,6 +121,7 @@
     "gray-matter": "^4.0.3",
     "gulp": "^5.0.0",
     "gulp-cache": "^1.1.3",
+    "gulp-filter": "^9.0.1",
     "gulp-imagemin": "^9.1.0",
     "gulp-rev": "^11.0.0",
     "gulp-zip": "^6.1.0",
