@@ -7,11 +7,14 @@
       "versionHistory": "https://github.com/ministryofjustice/moj-frontend/releases"
     }
   },
-  "nunjucksFilters": ["/moj/filters/prototype-kit-13-filters.js"],
-  "scripts": ["/moj/moj-frontend.min.js", "/moj/init.js"],
+  "pluginDependencies": [
+    {
+      "packageName": "govuk-frontend",
+      "minVersion": "5.8.0"
+    }
+  ],
   "assets": ["/moj/assets", "/moj/moj-frontend.min.js.map"],
-  "sass": ["/moj/all.scss"],
-  "nunjucksPaths": ["/"],
+  "nunjucksFilters": ["/moj/filters/prototype-kit-13-filters.js"],
   "nunjucksMacros": [
     {
       "importFrom": "moj/components/alert/macro.njk",
@@ -92,6 +95,18 @@
     {
       "importFrom": "moj/components/timeline/macro.njk",
       "macroName": "mojTimeline"
+    }
+  ],
+  "nunjucksPaths": ["/"],
+  "sass": ["/moj/all.scss"],
+  "scripts": [
+    {
+      "path": "/moj/moj-frontend.min.js",
+      "type": "module"
+    },
+    {
+      "path": "/moj/init.js",
+      "type": "module"
     }
   ]
 }
