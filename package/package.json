@@ -42,6 +42,6 @@
   },
   "peerDependencies": {
     "govuk-frontend": "5.x",
-    "moment": "2.x"
+    "moment": "2.30.1"
   }
 }
