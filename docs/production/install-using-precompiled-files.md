@@ -57,10 +57,13 @@ Next, follow [the instructions for installing GOV.UK Frontend](https://frontend.
 
    <script type="module">
      import * as GOVUKFrontend from '/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js'
+     import * as GOVUKFrontend from '/javascripts/moj-frontend-<VERSION-NUMBER>.min.js'
 
      window.GOVUKFrontend = GOVUKFrontend
-     window.GOVUKFrontend.initAll()
-     window.MOJFrontend.initAll()
+     window.MOJFrontend = MOJFrontend
+
+     GOVUKFrontend.initAll()
+     MOJFrontend.initAll()
    </script>
    ```
 
@@ -87,16 +90,19 @@ Next, follow [the instructions for installing GOV.UK Frontend](https://frontend.
 
        <script type="module">
          import * as GOVUKFrontend from '/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js'
+         import * as MOJFrontend from '/javascripts/moj-frontend-<VERSION-NUMBER>.min.js'
 
          window.GOVUKFrontend = GOVUKFrontend
-         window.GOVUKFrontend.initAll()
-         window.MOJFrontend.initAll()
+         window.MOJFrontend = MOJFrontend
+
+         GOVUKFrontend.initAll()
+         MOJFrontend.initAll()
        </script>
      </body>
    </html>
    ```
 
-2. Replace `<VERSION-NUMBER>` so the 5 filenames match the files you [copied from MoJ Frontend and GOV.UK Frontend’s GitHub repos](#copy-and-install-the-precompiled-files).
+2. Replace `<VERSION-NUMBER>` so the 6 filenames match the files you [copied from MoJ Frontend and GOV.UK Frontend’s GitHub repos](#copy-and-install-the-precompiled-files).
 
 3. Go to the [add another component](/components/add-another/) on the Design System website and copy the HTML from the first example.
 

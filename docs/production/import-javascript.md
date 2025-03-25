@@ -55,10 +55,13 @@ Then import the JavaScript files before the closing `</body>` tag of your HTML p
 
   <script type="module">
     import * as GOVUKFrontend from '/javascripts/govuk-frontend.min.js'
+    import * as MOJFrontend from '/javascripts/moj-frontend.min.js'
 
     window.GOVUKFrontend = GOVUKFrontend
-    window.GOVUKFrontend.initAll()
-    window.MOJFrontend.initAll()
+    window.MOJFrontend = MOJFrontend
+
+    GOVUKFrontend.initAll()
+    MOJFrontend.initAll()
   </script>
 </body>
 ```
