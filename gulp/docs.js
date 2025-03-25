@@ -75,7 +75,10 @@ gulp.task(
   compileScripts('application.mjs', {
     srcPath: 'docs/javascripts',
     destPath: 'public/javascripts',
-    output: { compact: true }
+    output: {
+      compact: true,
+      format: 'esm'
+    }
   })
 )
 

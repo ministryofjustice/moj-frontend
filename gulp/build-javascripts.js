@@ -39,6 +39,7 @@ gulp.task('build:javascripts', async () => {
         // Customise output
         output: {
           entryFileNames: '[name].mjs',
+          format: 'esm',
           preserveModules: true,
           preserveModulesRoot: 'src'
         }
@@ -62,8 +63,8 @@ gulp.task('build:javascripts', async () => {
         // Customise output
         output: {
           file: modulePath.replace('.mjs', '.js'),
-          globals: { 'govuk-frontend': 'GOVUKFrontend' },
           format: 'umd',
+          globals: { 'govuk-frontend': 'GOVUKFrontend' },
           name: 'MOJFrontend'
         }
       })()
@@ -92,9 +93,8 @@ gulp.task('build:javascripts-minified', async () =>
       output: {
         compact: true,
         file: 'moj-frontend.min.js',
-        globals: { 'govuk-frontend': 'GOVUKFrontend' },
-        format: 'umd',
-        name: 'MOJFrontend'
+        format: 'esm',
+        globals: { 'govuk-frontend': 'GOVUKFrontend' }
       }
     })()
   ])

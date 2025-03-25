@@ -7,6 +7,8 @@ const terser = require('@rollup/plugin-terser')
 const PluginError = require('plugin-error')
 const { rollup } = require('rollup')
 
+const MOJFrontend = require('../../src/moj/all.mjs')
+
 /**
  * Compile Sass to CSS task
  *
@@ -59,7 +61,20 @@ function compileScripts(
       output.plugins.push(
         terser({
           format: { comments: false },
-          sourceMap: { includeSources: true },
+
+          mangle: {
+            keep_classnames: true,
+            keep_fnames: true,
+            // Ensure all top-level exports skip mangling, for example
+            // non-function string constants like `export { initAll }`
+            reserved: Object.keys(MOJFrontend)
+          },
+
+          // Include sources content from source maps to inspect
+          // MoJ Frontend and other dependencies' source code
+          sourceMap: {
+            includeSources: true
+          },
 
           // Compatibility workarounds
           safari10: true
