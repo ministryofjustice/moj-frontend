@@ -79,6 +79,11 @@
       "matchPackageNames": ["concurrently", "gulp", "gulp-*", "nodemon"]
     }
   ],
+  "postUpgradeTasks": {
+    "commands": ["npm install --ignore-scripts"],
+    "fileFilters": ["package-lock.json", "**/*.package.json"],
+    "executionMode": "branch"
+  },
   "rangeStrategy": "bump",
   "updateInternalDeps": true
 }
