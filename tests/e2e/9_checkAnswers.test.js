@@ -1,5 +1,4 @@
 const fs = require('fs')
-const path = require('path')
 
 module.exports.runTest = async (page) => {
   console.log('Verifying Check your answers before submitting Page...')
