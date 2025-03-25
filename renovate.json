@@ -1,6 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended", ":semanticCommitTypeAll(build)"],
+  "allowedCommands": ["^npm install( --ignore-scripts)?$"],
   "ignoreDeps": ["eslint", "eslint-plugin-promise", "eslint-plugin-n"],
   "labels": ["dependencies"],
   "minimumReleaseAge": "7",
