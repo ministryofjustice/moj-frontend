@@ -19,7 +19,7 @@
   },
   "sideEffects": false,
   "engines": {
-    "node": ">= 4.2.0"
+    "node": ">= 22.14.0"
   },
   "author": "MOJ Digital & Technology",
   "repository": {
