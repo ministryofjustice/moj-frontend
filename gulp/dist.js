@@ -27,8 +27,7 @@ gulp.task(
     output: {
       compact: true,
       file: 'moj-frontend.min.js',
-      format: 'umd',
-      name: 'MOJFrontend'
+      format: 'esm'
     }
   })
 )
