@@ -9,12 +9,11 @@ module.exports.runTest = async (page) => {
   // Verify heading
   const heading = await page.$eval('h1', (el) => el.textContent.trim())
 
-  if (heading === 'Check your answers before submitting the component') {
-    console.log('Passed: Correct Page Loaded')
-  } else {
-    console.error(`Failed: Expected "Your details" but got "${heading}"`)
-    return
+  if (heading !== 'Check your answers before submitting the component') {
+    throw new Error(`Failed: Expected "Your details" but got "${heading}"`)
   }
+
+  console.log('Passed: Correct Page Loaded')
 
   // Ensure the screenshots folder exists
   const screenshotsDir = 'tests/e2e/screenshots'

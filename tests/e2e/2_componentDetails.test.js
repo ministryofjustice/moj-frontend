@@ -9,12 +9,11 @@ module.exports.runTest = async (page) => {
   // Verify heading
   const heading = await page.$eval('h1', (el) => el.textContent.trim())
 
-  if (heading === 'Component details') {
-    console.log('Passed: Correct Page Loaded')
-  } else {
-    console.error(`Failed: Expected "Component Details" but got "${heading}"`)
-    return
+  if (heading !== 'Component details') {
+    throw new Error(`Failed: Expected "Component Details" but got "${heading}"`)
   }
+
+  console.log('Passed: Correct Page Loaded')
 
   // Click "Continue" button before filling out inputs
   console.log(
@@ -28,8 +27,7 @@ module.exports.runTest = async (page) => {
   })
 
   if (!buttonHandle) {
-    console.error('Continue button not found!')
-    return
+    throw new Error('Continue button not found!')
   }
 
   await Promise.all([
@@ -58,12 +56,11 @@ module.exports.runTest = async (page) => {
     errors.includes(error)
   )
 
-  if (allErrorsPresent) {
-    console.log('Passed: All expected errors are displayed')
-  } else {
-    console.error('Failed: Some expected errors are missing', errors)
-    return
+  if (!allErrorsPresent) {
+    throw new Error('Failed: Some expected errors are missing', errors)
   }
+
+  console.log('Passed: All expected errors are displayed')
 
   // Fill out the input fields
   console.log('Filling out input fields...')
@@ -101,8 +98,7 @@ module.exports.runTest = async (page) => {
   })
 
   if (!buttonHandleAfterInput) {
-    console.error('Continue button not found after filling inputs!')
-    return
+    throw new Error('Continue button not found after filling inputs!')
   }
 
   await Promise.all([

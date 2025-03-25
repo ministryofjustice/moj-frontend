@@ -10,14 +10,13 @@ module.exports.runTest = async (page) => {
   // Verify heading
   const heading = await page.$eval('h1', (el) => el.textContent.trim())
 
-  if (heading === 'Upload an image of the component') {
-    console.log('Passed: Correct Page Loaded')
-  } else {
-    console.error(
+  if (heading !== 'Upload an image of the component') {
+    throw new Error(
       `Failed: Expected "Upload an image of the component" but got "${heading}"`
     )
-    return
   }
+
+  console.log('Passed: Correct Page Loaded')
 
   // Locate the file input field
   const fileInputSelector = 'input[type="file"]'
@@ -59,8 +58,7 @@ module.exports.runTest = async (page) => {
   })
 
   if (!button) {
-    console.error('Continue button not found!')
-    return
+    throw new Error('Continue button not found!')
   }
 
   await Promise.all([

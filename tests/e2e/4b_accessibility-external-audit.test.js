@@ -9,14 +9,13 @@ module.exports.runTest = async (page) => {
   // Verify heading
   const heading = await page.$eval('h1', (el) => el.textContent.trim())
 
-  if (heading === 'Accessibility findings') {
-    console.log('Passed: Correct Page Loaded')
-  } else {
-    console.error(
+  if (heading !== 'Accessibility findings') {
+    throw new Error(
       `Failed: Expected "Accessibility Findings" but got "${heading}"`
     )
-    return
   }
+
+  console.log('Passed: Correct Page Loaded')
 
   console.log(
     "Clicking 'Continue' without inputs entered to trigger validation errors..."
@@ -29,8 +28,7 @@ module.exports.runTest = async (page) => {
   })
 
   if (!buttonHandle) {
-    console.error('Continue button not found!')
-    return
+    throw new Error('Continue button not found!')
   }
 
   // Clicking 'Continue' without inputs entered to trigger validation errors...
@@ -60,12 +58,11 @@ module.exports.runTest = async (page) => {
     errors.includes(error)
   )
 
-  if (allErrorsPresent) {
-    console.log('Passed: All expected errors are displayed')
-  } else {
-    console.error('Failed: Some expected errors are missing', errors)
-    return
+  if (!allErrorsPresent) {
+    throw new Error('Failed: Some expected errors are missing', errors)
   }
+
+  console.log('Passed: All expected errors are displayed')
 
   console.log('Entering mandatory input fields.')
 

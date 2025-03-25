@@ -11,12 +11,12 @@ module.exports.runTest = async (page, hostUrl) => {
 
   // Verify "Before you start" heading
   const heading = await page.$eval('h1', (el) => el.textContent.trim())
-  if (heading === 'Before you start') {
-    console.log('Passed: Correct Page Loaded')
-  } else {
-    console.error(`Failed: Expected "Before you start" but got "${heading}"`)
-    return
+  if (heading !== 'Before you start') {
+    throw new Error(`Failed: Expected "Before you start" but got "${heading}"`)
   }
+
+  console.log('Passed: Correct Page Loaded')
+
   // Ensure the screenshots folder exists
   const screenshotsDir = 'tests/e2e/screenshots'
   if (!fs.existsSync(screenshotsDir)) {
@@ -40,8 +40,7 @@ module.exports.runTest = async (page, hostUrl) => {
   })
 
   if (!button) {
-    console.error('Continue button not found!')
-    return
+    throw new Error('Continue button not found!')
   }
 
   // Click the button and wait for navigation

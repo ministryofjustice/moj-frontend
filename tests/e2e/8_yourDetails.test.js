@@ -9,12 +9,11 @@ module.exports.runTest = async (page) => {
   // Verify heading
   const heading = await page.$eval('h1', (el) => el.textContent.trim())
 
-  if (heading === 'Your details') {
-    console.log('Passed: Correct Page Loaded')
-  } else {
-    console.error(`Failed: Expected "Your details" but got "${heading}"`)
-    return
+  if (heading !== 'Your details') {
+    throw new Error(`Failed: Expected "Your details" but got "${heading}"`)
   }
+
+  console.log('Passed: Correct Page Loaded')
 
   const buttonHandle = await page.evaluateHandle(() => {
     return [...document.querySelectorAll('button')].find(
@@ -23,8 +22,7 @@ module.exports.runTest = async (page) => {
   })
 
   if (!buttonHandle) {
-    console.error('Continue button not found!')
-    return
+    throw new Error('Continue button not found!')
   }
 
   await Promise.all([
@@ -53,12 +51,12 @@ module.exports.runTest = async (page) => {
     errors.includes(error)
   )
 
-  if (allErrorsPresent) {
-    console.log('Passed: All expected errors are displayed')
-  } else {
-    console.error('Failed: Some expected errors are missing', errors)
-    return
+  if (!allErrorsPresent) {
+    throw new Error(
+      `Some expected errors are missing.\nReceived: ${JSON.stringify(errors, null, 2)}`
+    )
   }
+  console.log('Passed: All expected errors are displayed')
 
   // Fill out the input fields
   console.log('Filling out input fields...')
@@ -88,8 +86,7 @@ module.exports.runTest = async (page) => {
   })
 
   if (!button) {
-    console.error('Continue button not found!')
-    return
+    throw new Error('Continue button not found!')
   }
 
   // Click the button and wait for navigation
