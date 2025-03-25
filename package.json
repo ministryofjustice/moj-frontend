@@ -30,6 +30,7 @@
     "lint:prettier:cli": "prettier --cache --cache-location .cache/prettier --cache-strategy content --check",
     "lint:scss": "npm run lint:scss:cli -- \"**/*.{md,scss}\"",
     "lint:scss:cli": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
+    "lint:types": "tsc --build tsconfig.json --incremental --pretty",
     "watch:11ty": "eleventy --input=./docs --output=public --watch",
     "watch:package": "gulp watch --color",
     "watch:app": "nodemon app.js",
@@ -154,7 +155,8 @@
     "stylelint-config-gds": "^2.0.0",
     "stylelint-order": "^6.0.4",
     "supertest": "^7.1.0",
-    "terser": "^5.39.0"
+    "terser": "^5.39.0",
+    "typescript": "^5.8.2"
   },
   "config": {
     "commitizen": {
