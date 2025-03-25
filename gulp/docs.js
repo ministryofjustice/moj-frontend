@@ -80,28 +80,51 @@ gulp.task(
 )
 
 gulp.task('docs:revision', async () => {
+  const { default: filter } = await import('gulp-filter')
   const { default: rev } = await import('gulp-rev')
 
-  return gulp
-    .src(
-      [
-        'public/assets/**/*.+(png|jpg|jpeg)',
-        'public/javascripts/**/*.js',
-        'public/stylesheets/**/*.css'
-      ],
-      {
-        base: 'public',
-        encoding: false,
-        sourcemaps: true
-      }
-    )
-    .pipe(rev())
-    .pipe(
-      // Write rev'd assets to build dir
-      gulp.dest('public/', {
-        sourcemaps: '.'
-      })
-    )
-    .pipe(rev.manifest())
-    .pipe(gulp.dest('public'))
+  return (
+    gulp
+      .src(
+        [
+          'public/assets/**',
+          'public/javascripts/**/*.js',
+          'public/stylesheets/**/*.css'
+        ],
+        {
+          base: 'public',
+          encoding: false,
+          sourcemaps: true,
+          debug: true
+        }
+      )
+
+      // Filter assets for cache busting
+      .pipe(
+        filter([
+          '**',
+          '!**/fonts/**',
+          '!**/images/{govuk,moj,icon}-*',
+          '!**/images/favicon.*',
+          '!**/*.json'
+        ])
+      )
+
+      // Generate file hashes
+      .pipe(rev())
+
+      // Write to files with hashes
+      .pipe(
+        gulp.dest('public', {
+          sourcemaps: (file) =>
+            !['.css', '.js'].includes(file.extname)
+              ? undefined // Skip source maps
+              : '.'
+        })
+      )
+
+      // Write to manifest
+      .pipe(rev.manifest())
+      .pipe(gulp.dest('public'))
+  )
 })
