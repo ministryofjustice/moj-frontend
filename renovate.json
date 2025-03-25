@@ -58,7 +58,7 @@
     {
       "addLabels": ["preview:request"],
       "groupName": "Production",
-      "matchDepTypes": ["dependencies"]
+      "matchDepTypes": ["dependencies", "peerDependencies"]
     },
     {
       "groupName": "Test",
