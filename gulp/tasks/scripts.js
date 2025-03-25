@@ -93,7 +93,7 @@ function compileScripts(
 
       // Write to file when bundling
       file: !output.preserveModules
-        ? join(destPath, output.file ?? `${name}.js`)
+        ? join(destPath, output.file ?? `${name}.bundle.js`)
         : undefined,
 
       // Enable source maps

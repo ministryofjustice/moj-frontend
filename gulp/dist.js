@@ -1,3 +1,4 @@
+const { version } = require('@ministryofjustice/frontend/package.json')
 const gulp = require('gulp')
 
 const { compileScripts } = require('./tasks/scripts')
@@ -26,7 +27,7 @@ gulp.task(
     // Customise output
     output: {
       compact: true,
-      file: 'moj-frontend.min.js',
+      file: `moj-frontend-${version}.min.js`,
       format: 'esm'
     }
   })
@@ -39,7 +40,7 @@ gulp.task(
     destPath: 'dist',
 
     // Customise output
-    output: { file: 'moj-frontend.min.css' }
+    output: { file: `moj-frontend-${version}.min.css` }
   })
 )
 

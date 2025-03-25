@@ -9,8 +9,8 @@
     ".": {
       "sass": "./moj/all.scss",
       "import": "./moj/all.mjs",
-      "require": "./moj/all.js",
-      "default": "./moj/all.js"
+      "require": "./moj/all.bundle.js",
+      "default": "./moj/all.bundle.js"
     },
     "./*": "./*",
     "./moj/filters/*": "./moj/filters/*.js",
