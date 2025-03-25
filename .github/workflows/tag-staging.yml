@@ -56,8 +56,6 @@ jobs:
       - name: Update PR with success
         run: |
           echo -e "🚀 Deploying to [staging environment](https://moj-frontend-staging.apps.live.cloud-platform.service.justice.gov.uk/)\n\n**Username:** \`staging\`, **Password:** \`moj\`" > comment.txt
-          gh pr comment $PRNUM --body-file comment.txt
-          gh pr edit $PRNUM --remove-label "staging:request"
-          gh pr edit $PRNUM --add-label "staging:active"
-        env:
-          PRNUM: ${{ github.event.number }}
+          gh pr comment ${{ github.event.pull_request.number }} --body-file comment.txt
+          gh pr edit ${{ github.event.pull_request.number }} --remove-label "staging:request"
+          gh pr edit ${{ github.event.pull_request.number }} --add-label "staging:active"

@@ -25,16 +25,13 @@ jobs:
           kubectl config set-credentials deploy-user --token=${KUBE_TOKEN}
           kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${KUBE_NAMESPACE}
           kubectl config use-context ${KUBE_CLUSTER}
-          kubectl delete deployment moj-frontend-${{ github.head_ref }} -n ${KUBE_NAMESPACE}
-          kubectl delete service moj-frontend-service-${{ github.head_ref }} -n ${KUBE_NAMESPACE}
-          kubectl delete ingress moj-frontend-ingress-${{ github.head_ref }} -n ${KUBE_NAMESPACE}
+          kubectl delete deployment moj-frontend-pr-${{ github.event.pull_request.number }} -n ${KUBE_NAMESPACE}
+          kubectl delete service moj-frontend-service-pr-${{ github.event.pull_request.number }} -n ${KUBE_NAMESPACE}
+          kubectl delete ingress moj-frontend-ingress-pr-${{ github.event.pull_request.number }} -n ${KUBE_NAMESPACE}
         env:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
           KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
       - uses: actions/checkout@v4
       - name: Remove preview:active label
-        run: |
-          gh pr edit $PRNUM --remove-label "preview:active"
-        env:
-          PRNUM: ${{ github.event.number }}
+        run: gh pr edit ${{ github.event.pull_request.number }} --remove-label "preview:active"
