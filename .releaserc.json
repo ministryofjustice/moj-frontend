@@ -30,7 +30,7 @@
     [
       "@semantic-release/exec",
       {
-        "verifyReleaseCmd": "echo export const version = \"${nextRelease.version}\" > src/moj/version.mjs"
+        "verifyReleaseCmd": "echo export const version = '${nextRelease.version}' > ./src/moj/version.mjs"
       }
     ],
     "@semantic-release/release-notes-generator",

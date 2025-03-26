@@ -13,7 +13,11 @@ jobs:
         with:
           node-version-file: .nvmrc
       - run: npm ci
-      - run: npm run ci:dryrun
+      - name: Get next version
+        run: npm run ci:dryrun
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ADMIN_TOKEN }}
       - run: npm run build:package
       - uses: actions/upload-artifact@v4
         with:
