@@ -2,6 +2,12 @@
   "branches": ["+([0-9])?(.{+([0-9]),x}).x", "main"],
   "plugins": [
     "@semantic-release/commit-analyzer",
+    [
+      "@semantic-release/exec",
+      {
+        "verifyReleaseCmd": "npm version --no-git-tag-version --allow-same-version --workspace package ${nextRelease.version}"
+      }
+    ],
     "@semantic-release/release-notes-generator",
     [
       "@semantic-release/changelog",
@@ -31,13 +37,6 @@
             "name": "release-${nextRelease.gitTag}.zip"
           }
         ]
-      }
-    ],
-    [
-      "semantic-release-plugin-update-version-in-files",
-      {
-        "files": ["package/moj/all.js"],
-        "placeholder": "0.0.0-development"
       }
     ]
   ]
