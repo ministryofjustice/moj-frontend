@@ -1,7 +1,7 @@
+import { setFocus } from '../../common/index.mjs'
 import {
   findNearestMatchingElement,
-  getPreviousSibling,
-  setFocus
+  getPreviousSibling
 } from '../../helpers.mjs'
 
 export class Alert {
