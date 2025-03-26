@@ -19,7 +19,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 28 February 2025
+Last updated: 26 March 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -397,7 +397,7 @@ Use upper case and the initialism on first mention. Research is needed to establ
 
 <h3 class="govuk-heading-m" id="probation-practitioner">probation practitioner</h3>
 
-This is better than 'community offender manager (COM)' and 'prison offender manager (POM)', although someone may have this job title. Refers to a probation officer, probation support officer or senior probation officer.
+This is better than 'community offender manager (COM)' and 'prison offender manager (POM)', although someone may have this job title. Refers to a probation officer, probation services officer or senior probation officer.
 
 {% endaccordionSection %}
 {% accordionSection "R" %}
