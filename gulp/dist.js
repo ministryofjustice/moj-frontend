@@ -1,5 +1,6 @@
-const { version } = require('@ministryofjustice/frontend/package.json')
 const gulp = require('gulp')
+
+const { version } = require('../src/moj/version.mjs')
 
 const { compileScripts } = require('./tasks/scripts')
 const { compileStyles } = require('./tasks/styles')

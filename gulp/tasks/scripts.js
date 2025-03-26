@@ -66,7 +66,7 @@ function compileScripts(
             keep_classnames: true,
             keep_fnames: true,
             // Ensure all top-level exports skip mangling, for example
-            // non-function string constants like `export { initAll }`
+            // non-function string constants like `export { version }`
             reserved: Object.keys(MOJFrontend)
           },
 
