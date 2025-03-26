@@ -187,17 +187,17 @@ module.exports = {
       processor: 'markdown/markdown'
     },
     {
-      files: [
-        '**/javascripts/**/*.{cjs,js,mjs}',
-        '**/docs/examples/**/*.{cjs,js,mjs}',
-        '**/*.md/*.{cjs,js,mjs}'
-      ],
+      files: ['**/docs/**/*.{cjs,js,mjs}', '**/*.md/*.{cjs,js,mjs}', 'init.js'],
       env: {
         browser: true
       }
     },
     {
-      files: ['**/docs/examples/**/*.{cjs,js,mjs}', '**/*.md/*.{cjs,js,mjs}'],
+      files: [
+        '**/examples/**/*.{cjs,js,mjs}',
+        '**/*.md/*.{cjs,js,mjs}',
+        'init.js'
+      ],
       rules: {
         // Ignore unused example code
         '@typescript-eslint/no-unused-vars': 'off',
@@ -207,6 +207,7 @@ module.exports = {
         'no-useless-constructor': 'off',
 
         // Ignore paths to example modules
+        'import/no-absolute-path': 'off',
         'import/no-unresolved': 'off',
         'n/no-missing-import': 'off'
       }

@@ -56,7 +56,7 @@ describe('alert', () => {
 
   test('non-dismissible', () => {
     component = createComponent()
-    new Alert(component).init()
+    new Alert(component)
     dismissButton = queryByRole(component, 'button', { hidden: true })
 
     expect(dismissButton).toHaveAttribute('hidden')
@@ -64,7 +64,7 @@ describe('alert', () => {
 
   test('dismissible', () => {
     component = createComponent({ dismissible: 'true' })
-    new Alert(component).init()
+    new Alert(component)
     dismissButton = queryByRole(component, 'button', { hidden: true })
 
     expect(dismissButton).not.toHaveAttribute('hidden')
@@ -72,7 +72,7 @@ describe('alert', () => {
 
   test('non-dismissible "false" string', () => {
     component = createComponent({ dismissible: 'false' })
-    new Alert(component).init()
+    new Alert(component)
     dismissButton = queryByRole(component, 'button', { hidden: true })
 
     expect(dismissButton).toHaveAttribute('hidden')
@@ -83,7 +83,7 @@ describe('alert', () => {
       dismissible: true,
       dismissText: 'Close'
     })
-    new Alert(component).init()
+    new Alert(component)
     dismissButton = queryByRole(component, 'button', { name: 'Close' })
 
     expect(dismissButton).toBeInTheDocument()
@@ -91,14 +91,14 @@ describe('alert', () => {
 
   test('region role does not receive focus', () => {
     component = createComponent({}, 'region')
-    new Alert(component).init()
+    new Alert(component)
 
     expect(component).not.toHaveFocus()
   })
 
   test('alert role autofocuses', () => {
     component = createComponent({}, 'alert')
-    new Alert(component).init()
+    new Alert(component)
 
     expect(component).toHaveFocus()
   })
@@ -110,7 +110,7 @@ describe('alert', () => {
       },
       'alert'
     )
-    new Alert(component).init()
+    new Alert(component)
 
     expect(component).not.toHaveFocus()
   })
@@ -119,7 +119,7 @@ describe('alert', () => {
     component = createComponent({
       dismissible: true
     })
-    new Alert(component).init()
+    new Alert(component)
     dismissButton = queryByRole(component, 'button')
 
     await user.click(dismissButton)
@@ -140,7 +140,7 @@ describe('alert', () => {
       document.body.insertAdjacentHTML('afterbegin', pageTemplate)
       const alerts = document.querySelectorAll('[data-module="moj-alert"]')
       alerts.forEach((alert) => {
-        new Alert(alert).init()
+        new Alert(alert)
       })
 
       firstAlert = document.querySelector('#alert-1')

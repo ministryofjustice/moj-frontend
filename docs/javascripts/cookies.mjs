@@ -1,59 +1,61 @@
-function Cookies($module) {
-  this.$module = $module
-}
+class Cookies {
+  /**
+   * @param {Element | null} $module - HTML element to use for cookies
+   */
+  constructor($module) {
+    if (!$module || !($module instanceof HTMLElement)) {
+      return this
+    }
 
-Cookies.prototype.init = function () {
-  const $module = this.$module
-  if (!$module || !($module instanceof HTMLElement)) {
-    return
+    this.$module = $module
+
+    const $accept = this.$module.querySelector('[name="accept"]')
+    $accept.addEventListener('click', this.accept.bind(this))
+
+    const $reject = this.$module.querySelector('[name="reject"]')
+    $reject.addEventListener('click', this.reject.bind(this))
+
+    const configEncoded = window.localStorage.getItem('mojpl-cookies')
+    if (configEncoded) {
+      const config = JSON.parse(configEncoded)
+      this.load(config)
+    } else {
+      // If there is no config, show the cookie banner
+      this.$module.hidden = false
+    }
   }
 
-  const $accept = this.$module.querySelector('[name="accept"]')
-  $accept.addEventListener('click', this.accept.bind(this))
+  load(config) {
+    if (config.analytics) {
+      window.dataLayer = window.dataLayer || []
+      gtag('js', new Date())
+      gtag('config', 'G-VTGX4YLSVL')
+    } else {
+      window['ga-disable-G-VTGX4YLSVL'] = true
+    }
 
-  const $reject = this.$module.querySelector('[name="reject"]')
-  $reject.addEventListener('click', this.reject.bind(this))
+    this.hideMessage()
+  }
 
-  const configEncoded = window.localStorage.getItem('mojpl-cookies')
-  if (configEncoded) {
-    const config = JSON.parse(configEncoded)
+  hideMessage() {
+    if (!this.$module.hasAttribute('data-persistent')) {
+      this.$module.hidden = true
+    }
+  }
+
+  accept() {
+    const config = { analytics: true }
+    window.localStorage.setItem('mojpl-cookies', JSON.stringify(config))
+
     this.load(config)
-  } else {
-    // If there is no config, show the cookie banner
-    this.$module.hidden = false
-  }
-}
-
-Cookies.prototype.load = function (config) {
-  if (config.analytics) {
-    window.dataLayer = window.dataLayer || []
-    gtag('js', new Date())
-    gtag('config', 'G-VTGX4YLSVL')
-  } else {
-    window['ga-disable-G-VTGX4YLSVL'] = true
   }
 
-  this.hideMessage()
-}
+  reject() {
+    const config = { analytics: false }
+    window.localStorage.setItem('mojpl-cookies', JSON.stringify(config))
 
-Cookies.prototype.hideMessage = function () {
-  if (!this.$module.hasAttribute('data-persistent')) {
-    this.$module.hidden = true
+    window.location.reload()
   }
-}
-
-Cookies.prototype.accept = function () {
-  const config = { analytics: true }
-  window.localStorage.setItem('mojpl-cookies', JSON.stringify(config))
-
-  this.load(config)
-}
-
-Cookies.prototype.reject = function () {
-  const config = { analytics: false }
-  window.localStorage.setItem('mojpl-cookies', JSON.stringify(config))
-
-  window.location.reload()
 }
 
 function gtag() {

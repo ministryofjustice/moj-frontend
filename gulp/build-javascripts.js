@@ -39,8 +39,32 @@ gulp.task('build:javascripts', async () => {
         // Customise output
         output: {
           entryFileNames: '[name].mjs',
+          format: 'esm',
           preserveModules: true,
           preserveModulesRoot: 'src'
+        }
+      })(),
+
+      /**
+       * Rollup output for each module:
+       *
+       * - ECMAScript (ES) bundles for browser <script type="module">
+       *   (GOV.UK Frontend resolved via `node_modules/govuk-frontend`)
+       */
+      compileScripts(modulePath, {
+        srcPath: 'src',
+        destPath: 'package',
+
+        // Customise input
+        input: {
+          external: ['govuk-frontend']
+        },
+
+        // Customise output
+        output: {
+          file: modulePath.replace('.mjs', '.bundle.mjs'),
+          format: 'esm',
+          globals: { 'govuk-frontend': 'GOVUKFrontend' }
         }
       })(),
 
@@ -61,9 +85,9 @@ gulp.task('build:javascripts', async () => {
 
         // Customise output
         output: {
-          file: modulePath.replace('.mjs', '.js'),
-          globals: { 'govuk-frontend': 'GOVUKFrontend' },
+          file: modulePath.replace('.mjs', '.bundle.js'),
           format: 'umd',
+          globals: { 'govuk-frontend': 'GOVUKFrontend' },
           name: 'MOJFrontend'
         }
       })()
@@ -92,9 +116,8 @@ gulp.task('build:javascripts-minified', async () =>
       output: {
         compact: true,
         file: 'moj-frontend.min.js',
-        globals: { 'govuk-frontend': 'GOVUKFrontend' },
-        format: 'umd',
-        name: 'MOJFrontend'
+        format: 'esm',
+        globals: { 'govuk-frontend': 'GOVUKFrontend' }
       }
     })()
   ])

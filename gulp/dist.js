@@ -1,5 +1,7 @@
 const gulp = require('gulp')
 
+const { version } = require('../src/moj/version.mjs')
+
 const { compileScripts } = require('./tasks/scripts')
 const { compileStyles } = require('./tasks/styles')
 
@@ -26,9 +28,8 @@ gulp.task(
     // Customise output
     output: {
       compact: true,
-      file: 'moj-frontend.min.js',
-      format: 'umd',
-      name: 'MOJFrontend'
+      file: `moj-frontend-${version}.min.js`,
+      format: 'esm'
     }
   })
 )
@@ -40,7 +41,7 @@ gulp.task(
     destPath: 'dist',
 
     // Customise output
-    output: { file: 'moj-frontend.min.css' }
+    output: { file: `moj-frontend-${version}.min.css` }
   })
 )
 

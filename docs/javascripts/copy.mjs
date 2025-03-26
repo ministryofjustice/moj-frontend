@@ -1,42 +1,45 @@
 import ClipboardJS from 'clipboard'
 
-function Copy($module) {
-  this.$module = $module
-}
+class Copy {
+  /**
+   * @param {Element | null} $module - HTML element to use for cookies
+   */
+  constructor($module) {
+    if (!$module || !($module instanceof HTMLElement)) {
+      return this
+    }
 
-Copy.prototype.init = function () {
-  const $module = this.$module
-  if (!$module || !($module instanceof HTMLElement)) {
-    return
+    this.$module = $module
+
+    const $button = document.createElement('button')
+    $button.className = 'app-copy-button js-copy-button'
+    $button.setAttribute('aria-live', 'assertive')
+    $button.textContent = 'Copy code'
+
+    this.$module.insertBefore($button, this.$module.firstChild)
+    this.copyAction()
   }
-  const $button = document.createElement('button')
-  $button.className = 'app-copy-button js-copy-button'
-  $button.setAttribute('aria-live', 'assertive')
-  $button.textContent = 'Copy code'
 
-  $module.insertBefore($button, $module.firstChild)
-  this.copyAction()
-}
+  copyAction() {
+    const $pre = this.$module.querySelector('pre')
 
-Copy.prototype.copyAction = function () {
-  const $pre = this.$module.querySelector('pre')
-
-  // Copy to clipboard
-  try {
-    new ClipboardJS('.js-copy-button', {
-      target: function () {
-        return $pre
+    // Copy to clipboard
+    try {
+      new ClipboardJS('.js-copy-button', {
+        target: function () {
+          return $pre
+        }
+      }).on('success', function (event) {
+        event.trigger.textContent = 'Code copied'
+        event.clearSelection()
+        setTimeout(function () {
+          event.trigger.textContent = 'Copy code'
+        }, 5000)
+      })
+    } catch (err) {
+      if (err) {
+        console.log(err.message)
       }
-    }).on('success', function (event) {
-      event.trigger.textContent = 'Code copied'
-      event.clearSelection()
-      setTimeout(function () {
-        event.trigger.textContent = 'Copy code'
-      }, 5000)
-    })
-  } catch (err) {
-    if (err) {
-      console.log(err.message)
     }
   }
 }

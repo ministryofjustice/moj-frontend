@@ -30,10 +30,13 @@
 
   <script type="module">
     import * as GOVUKFrontend from '{{ 'javascripts/govuk-frontend.min.js' | rev | url }}'
+    import * as MOJFrontend from '{{ 'javascripts/moj-frontend.min.js' | rev | url }}'
 
     window.GOVUKFrontend = GOVUKFrontend
-    window.GOVUKFrontend.initAll()
-    window.MOJFrontend.initAll()
+    window.MOJFrontend = MOJFrontend
+
+    GOVUKFrontend.initAll()
+    MOJFrontend.initAll()
   </script>
 
   <script type="module">{% include scriptPath ignore missing %}</script>
