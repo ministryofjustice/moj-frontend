@@ -13,17 +13,18 @@ jobs:
         with:
           node-version-file: .nvmrc
       - run: npm ci
+      - run: npm run ci:dryrun
       - run: npm run build:package
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: mojds-package
-      #     path: package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mojds-package
+          path: package
       - run: npm run build:dist
       - run: ENV="production" npm run build:docs
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: mojds-dist
-      #     path: dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mojds-dist
+          path: dist
 
   test:
     runs-on: ubuntu-latest
@@ -93,14 +94,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-      # - uses: actions/download-artifact@v4
-      #   with:
-      #     name: mojds-package
-      #     path: package
-      # - uses: actions/download-artifact@v4
-      #   with:
-      #     name: mojds-dist
-      #     path: dist
+      - uses: actions/download-artifact@v4
+        with:
+          name: mojds-package
+          path: package
+      - uses: actions/download-artifact@v4
+        with:
+          name: mojds-dist
+          path: dist
       - run: npm ci
       - name: Publish to NPM
         run: npm run ci:dryrun

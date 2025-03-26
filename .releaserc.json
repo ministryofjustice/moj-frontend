@@ -30,7 +30,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "npm run build:dist && npm run build:package"
+        "verifyReleaseCmd": "echo export const version = \"${nextRelease.version}\" > src/moj/version.mjs"
       }
     ],
     "@semantic-release/release-notes-generator",
