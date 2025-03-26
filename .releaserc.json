@@ -30,7 +30,7 @@
     [
       "@semantic-release/exec",
       {
-        "verifyReleaseCmd": "echo export const version = '${nextRelease.version}' > ./src/moj/version.mjs"
+        "verifyReleaseCmd": "npm version --no-git-tag-version --allow-same-version --workspace package ${nextRelease.version}"
       }
     ],
     "@semantic-release/release-notes-generator",
