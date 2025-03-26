@@ -10,7 +10,7 @@ const { rollup } = require('rollup')
 const MOJFrontend = require('../../src/moj/all.mjs')
 
 /**
- * Compile Sass to CSS task
+ * Compile JavaScript task
  *
  * @param {string} assetPath
  * @param {CompileScriptsOptions} entry
