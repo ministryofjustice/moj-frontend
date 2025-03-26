@@ -42,7 +42,7 @@ permalink: content-standards/style-guide-updates/
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
-        <a href="/content-standards/style-guide#id="probation-practitioner><b>probation practitioner</b></a>
+        <a href="/content-standards/style-guide#probation-practitioner"><b>probation practitioner</b></a>
       </td>
       <td class="govuk-table__cell">
         <span class="govuk-tag govuk-tag--blue">Updated</span>
