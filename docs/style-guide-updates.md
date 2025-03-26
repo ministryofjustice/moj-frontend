@@ -42,6 +42,16 @@ permalink: content-standards/style-guide-updates/
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
+        <a href="/content-standards/style-guide#id="probation-practitioner><b>probation practitioner</b></a>
+      </td>
+      <td class="govuk-table__cell">
+        <span class="govuk-tag govuk-tag--blue">Updated</span>
+      </td>
+      <td class="govuk-table__cell">Corrected ‘probation support officer’ to ‘probation services officer’.</td>
+      <td class="govuk-table__cell" data-sort-value="20250326">26 March 2025</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
         <a href="/content-standards/style-guide#prison%2C-establishment"><b>Prison, establishment</b></a>
       </td>
       <td class="govuk-table__cell">
