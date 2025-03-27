@@ -26,12 +26,10 @@ export class MenuToggle extends HTMLElement {
 
     this.$button.setAttribute('aria-controls', this.$menu.id)
 
-    this.addEventListener('click', this)
+    this.addEventListener('click', () => this.handleClick())
 
     if (this.breakpoint && Number.isInteger(this.breakpoint)) {
-      window.addEventListener('resize', (event) => {
-        this.onresize(event)
-      })
+      window.addEventListener('resize', () => this.handleResize())
     }
 
     this.windowWidth = window.innerWidth
@@ -39,15 +37,11 @@ export class MenuToggle extends HTMLElement {
     this.setState()
   }
 
-  handleEvent(event) {
-    this[`on${event.type}`](event)
-  }
-
-  onclick() {
+  handleClick() {
     this.toggleMenu()
   }
 
-  onresize() {
+  handleResize() {
     // Check if the window width has changed - prevents resize events triggered
     // by scrolling on mobile browsers
     if (window.innerWidth !== this.windowWidth) {

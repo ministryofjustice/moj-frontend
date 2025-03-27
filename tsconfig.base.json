@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "esModuleInterop": true,
+    "module": "NodeNext",
+    "noEmit": true,
+    "paths": {
+      "@ministryofjustice/frontend": ["./src/moj/all.mjs"],
+      "/javascripts/moj-frontend.min.js": ["./src/moj/all.mjs"],
+      "/javascripts/govuk-frontend.min.js": [
+        "./node_modules/@types/govuk-frontend/index.d.mts"
+      ]
+    },
+    "skipLibCheck": true,
+    "strict": false,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "types": [
+      "@testing-library/jest-dom",
+      "jest",
+      "jest-axe",
+      "jest-sinon",
+      "node",
+      "typed-query-selector"
+    ]
+  },
+  "exclude": ["**/node_modules", "**/package"],
+  "typeAcquisition": {
+    "enable": false
+  }
+}

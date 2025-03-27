@@ -172,7 +172,7 @@ describe('Multi-file upload', () => {
       await user.upload(input, file)
 
       request?.upload.dispatchEvent(
-        new window.ProgressEvent('progress', {
+        new ProgressEvent('progress', {
           lengthComputable: true,
           loaded: 50,
           total: 100

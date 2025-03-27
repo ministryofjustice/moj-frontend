@@ -68,6 +68,9 @@ jobs:
       - name: Prettier
         run: npm run lint:prettier
 
+      - name: TypeScript compiler
+        run: npm run lint:types
+
       - name: JavaScript unit tests
         run: npm run test:js
 
