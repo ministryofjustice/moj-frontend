@@ -1,5 +1,6 @@
 /* eslint-disable no-new */
 
+import { version } from './common/moj-frontend-version.mjs'
 import { AddAnother } from './components/add-another/add-another.mjs'
 import { Alert } from './components/alert/alert.mjs'
 import { ButtonMenu } from './components/button-menu/button-menu.mjs'
@@ -12,7 +13,6 @@ import { PasswordReveal } from './components/password-reveal/password-reveal.mjs
 import { RichTextEditor } from './components/rich-text-editor/rich-text-editor.mjs'
 import { SearchToggle } from './components/search-toggle/search-toggle.mjs'
 import { SortableTable } from './components/sortable-table/sortable-table.mjs'
-import { version } from './version.mjs'
 
 /**
  * @param {Config} [config]

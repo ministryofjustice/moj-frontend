@@ -16,7 +16,6 @@ gulp.task('build:javascripts', async () => {
 
     // Build entry scripts last to restore modules
     // removed from components due to tree-shaking
-    'moj/version.mjs',
     'moj/helpers.mjs',
     'moj/all.mjs'
   ]) {
