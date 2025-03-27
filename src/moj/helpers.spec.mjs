@@ -30,6 +30,7 @@ describe('helpers', () => {
     })
 
     test('returns undefined with no element', () => {
+      // @ts-expect-error - Allow invalid param for test
       const result = getNextSibling()
 
       expect(result).toBeUndefined()
@@ -97,6 +98,7 @@ describe('helpers', () => {
     })
 
     test('returns undefined with no element', () => {
+      // @ts-expect-error - Allow invalid param for test
       const result = getPreviousSibling()
 
       expect(result).toBeUndefined()
@@ -164,6 +166,7 @@ describe('helpers', () => {
     })
 
     test('returns undefined with no element', () => {
+      // @ts-expect-error - Allow invalid param for test
       const result = findNearestMatchingElement()
 
       expect(result).toBeUndefined()
