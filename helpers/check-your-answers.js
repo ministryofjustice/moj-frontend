@@ -3,7 +3,8 @@ const {
   ACRONYMS_TO_UPPERCASE: acronyms,
   CHECK_YOUR_ANSWERS_LABEL_MAPPING,
   SHARE_YOUR_DETAILS: shareYourDetails,
-  CHECK_YOUR_ANSWERS: checkYourAnswersConfig
+  CHECK_YOUR_ANSWERS: checkYourAnswersConfig,
+  ADD_NEW_COMPONENT_ROUTE: hrefRoot
 } = require('../config')
 
 const { combineDateFields } = require('./date-fields')
@@ -16,8 +17,7 @@ const {
 } = require('./text-helper')
 
 const mappedLabels = Object.keys(CHECK_YOUR_ANSWERS_LABEL_MAPPING)
-const hrefRoot = '/contribute/add-new-component'
-const maxWords = 10
+const maxWords = 10000
 const shareYourDetailsKeys = Object.keys(shareYourDetails)
 
 /**
@@ -234,7 +234,15 @@ const checkYourAnswers = (session) => {
       Array.from({ length: maxAddAnother }, (_, i) => `${item}/${i + 1}`)
     )
   ]
-  return answersFromSession(forms, canRemove, session, ignoreFields)
+  const answers = answersFromSession(forms, canRemove, session, ignoreFields)
+  if (answers.componentImageRows) {
+    answers.componentDetailsRows = answers.componentDetailsRows || []
+    answers.componentDetailsRows = [
+      ...answers.componentDetailsRows,
+      ...answers.componentImageRows
+    ]
+  }
+  return answers
 }
 
 module.exports = checkYourAnswers

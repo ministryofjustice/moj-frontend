@@ -5,6 +5,8 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/tag/macro.njk" import govukTag %}
 {% extends "base.njk" %}
 {% block content %}
   {% if backLink %}
@@ -29,8 +31,7 @@
       {{ govukInput({
         label: {
           text: "What organisation conducted the external accessibility audit?",
-          classes: "govuk-label--m",
-          isPageHeading: true
+          classes: "govuk-label--m"
         },
         id: "external-organisation",
         name: "externalOrganisation",
@@ -64,12 +65,11 @@
         fieldset: {
           legend: {
             text: "When did the audit take place?",
-            isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "For example, 27 3 2007"
+          text: "For example, 27 4 2015"
         }
       }) }}
 
@@ -78,7 +78,6 @@
         name: "accessibilityReport",
         label: {
           text: "Upload the accessibility report (optional)",
-          isPageHeading: true,
           classes: "govuk-label--m"
         },
         hint: {
@@ -91,14 +90,29 @@
         }
       }) }}
 
+      {%if formData.accessibilityReport.originalname %}
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--long-key',
+          rows: [
+            {
+              key: {
+              text: formData.accessibilityReport.originalname
+            },
+              value: {
+              text: govukTag({ text: "Uploaded", classes: "govuk-tag--green" })
+            }
+            }
+          ]
+        }) }}
+      {% endif %}
+
       {{ govukCharacterCount({
         id: "issues-discovered",
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
           text: "Were any issues discovered with the component during the audit? (Optional)",
-          classes: "govuk-label--m",
-          isPageHeading: true
+          classes: "govuk-label--m"
         },
         errorMessage: formErrors.issuesDiscovered,
         value: formData.issuesDiscovered

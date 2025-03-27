@@ -20,6 +20,7 @@
     "prestart": "ENV=dev npm run build:package && gulp build:docs",
     "start": "concurrently npm:watch:* --prefix none",
     "test": "concurrently npm:test:* --group --prefix none",
+    "test:e2e": "node tests/e2e/testRunner.js",
     "test:js": "jest --color src/",
     "test:scss": "sass --color --load-path . --quiet-deps src/moj/all.scss > /dev/null && echo \"ok\"",
     "lint": "npm run lint:js && npm run lint:scss && npm run lint:prettier",
@@ -29,18 +30,16 @@
     "lint:prettier:cli": "prettier --cache --cache-location .cache/prettier --cache-strategy content --check",
     "lint:scss": "npm run lint:scss:cli -- \"**/*.{md,scss}\"",
     "lint:scss:cli": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
-    "watch:11ty": "eleventy --input=./docs --output=public --serve",
+    "watch:11ty": "eleventy --input=./docs --output=public --watch",
     "watch:package": "gulp watch --color",
     "watch:app": "nodemon app.js",
-    "start:eleventy": "ENV=dev eleventy --input=./docs --output=public --watch",
-    "start:server": "nodemon app.js",
-    "dev": "concurrently \"npm run start:eleventy\" \"npm run start:server\"",
     "test:helpers": "jest helpers/",
     "test:middleware": "jest middleware/",
     "test:routes": "jest routes/",
     "dev:docker:preview:build": "docker-compose -f docker-compose.preview.yml build --no-cache",
     "dev:docker:preview:up": "docker-compose -f docker-compose.preview.yml up --build",
-    "dev:docker:preview:down": "docker-compose -f docker-compose.preview.yml down"
+    "dev:docker:preview:down": "docker-compose -f docker-compose.preview.yml down",
+    "test:docker:preview:e2e": "docker-compose -f docker-compose.e2e-tests.yml up --abort-on-container-exit --exit-code-from test-runner"
   },
   "repository": {
     "type": "git",
@@ -74,6 +73,8 @@
     "node-fetch": "2.7.0",
     "notifications-node-client": "^8.2.1",
     "nunjucks": "^3.2.4",
+    "puppeteer": "^24.4.0",
+    "puppeteer-core": "^24.4.0",
     "sanitize-html": "^2.15.0"
   },
   "devDependencies": {
@@ -99,7 +100,6 @@
     "@typescript-eslint/parser": "^8.28.0",
     "autoprefixer": "^10.4.21",
     "babel-jest": "^29.7.0",
-    "cheerio": "^1.0.0",
     "clipboard": "^2.0.11",
     "commitizen": "^4.3.1",
     "concurrently": "^9.1.2",

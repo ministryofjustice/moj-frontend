@@ -5,6 +5,8 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/tag/macro.njk" import govukTag %}
 {% extends "base.njk" %}
 {% block content %}
   {% if backLink %}
@@ -68,7 +70,7 @@
           }
         },
         hint: {
-          text: "For example, 27 3 2007"
+          text: "For example, 27 4 2015"
         }
       }) }}
 
@@ -89,6 +91,22 @@
           accept: ".pdf"
         }
       }) }}
+
+      {%if formData.accessibilityReport.originalname %}
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list--long-key',
+          rows: [
+            {
+              key: {
+              text: formData.accessibilityReport.originalname
+            },
+              value: {
+              text: govukTag({ text: "Uploaded", classes: "govuk-tag--green" })
+            }
+            }
+          ]
+        }) }}
+      {% endif %}
 
       {{ govukCharacterCount({
         id: "issues-discovered",

@@ -6,8 +6,24 @@ const {
   GITHUB_REPO_OWNER,
   GITHUB_REPO_NAME
 } = require('../config')
+const redis = require('../helpers/redis-client')
+
 const imageDirectory = 'images'
 const fileDirectory = 'files'
+
+// Retrieve File from Redis
+const getFileFromRedis = async (redisKey) => {
+  try {
+    const fileData = await redis.get(redisKey)
+    if (!fileData) throw new Error(`File not found for Redis key: ${redisKey}`)
+
+    const { buffer, originalname, mimetype } = JSON.parse(fileData)
+    return { buffer: Buffer.from(buffer, 'base64'), originalname, mimetype }
+  } catch (err) {
+    console.error(`[Redis] Error retrieving file: ${err}`)
+    throw err
+  }
+}
 
 const extractFilename = (key, includeDirectories = true) => {
   const segments = key.split('/')
@@ -19,12 +35,6 @@ const extractFilename = (key, includeDirectories = true) => {
     ? segments.join('/')
     : segments[segments.length - 1]
   return result.startsWith('/') ? result.slice(1) : result
-}
-
-const handleFile = (fileData) => {
-  return fileData && fileData.buffer
-    ? Buffer.from(fileData.buffer).toString('base64')
-    : null
 }
 
 const getMainBranchSha = async () => {
@@ -89,32 +99,61 @@ const addFileToBranch = async (filePath, fileContent, branchName) => {
 
 const pushToGitHub = async (sessionData) => {
   console.log('[GITHUB] Start pushing to Github')
+
+  const existingFilenames = new Set() // To store unique filenames across files
+
+  const getUniqueFilename = (originalName) => {
+    let counter = 0
+    let uniqueName = originalName
+
+    // Check and resolve conflicts
+    while (existingFilenames.has(uniqueName)) {
+      counter += 1
+      const nameWithoutExtension = originalName.replace(/(\.[\w\d]+)$/, '') // Remove extension
+      const extension = originalName.match(/(\.[\w\d]+)$/)?.[0] || '' // Extract the extension
+      uniqueName = `${nameWithoutExtension}-${counter}${extension}`
+    }
+
+    existingFilenames.add(uniqueName) // Track used filename
+    return uniqueName
+  }
+
+  const branchName = `submission-${Date.now()}`
+
   try {
     const submissionData = {}
-    Object.keys(sessionData).forEach((key) => {
-      if (key !== 'cookie') {
+    for (const key in sessionData) {
+      if (!['cookie', 'csrfToken'].includes(key)) {
         const fileData = sessionData[key]
         if (
-          fileData?.componentImage?.buffer ||
-          fileData?.accessibilityReport?.buffer
+          fileData?.componentImage?.redisKey ||
+          fileData?.accessibilityReport?.redisKey
         ) {
           const directory = fileData.componentImage
             ? imageDirectory
             : fileDirectory
           const file = fileData.componentImage || fileData.accessibilityReport
-          const filename = file.originalname
-          const fileContent = handleFile(file)
-          const filePath = `submission/${directory}/${filename}`
-          submissionData[filePath] = { buffer: fileContent }
+          const { redisKey } = file // Redis key stored in session
+          if (redisKey?.startsWith('file:')) {
+            const { buffer, originalname } = await getFileFromRedis(redisKey) // Retrieve file from Redis
+            const filename = getUniqueFilename(originalname)
+            const fileContent = Buffer.from(buffer).toString('base64')
+            const filePath = `${branchName}/${directory}/${filename}`
+            submissionData[filePath] = { buffer: fileContent }
+          }
         } else {
           const filename = extractFilename(key)
-          submissionData[`submission/${filename}`] = sessionData[key]
+          if (filename.endsWith('.md')) {
+            // Documentation should be outside of the submission folder
+            submissionData[filename] = sessionData[key]
+          } else {
+            submissionData[`${branchName}/${filename}`] = sessionData[key]
+          }
         }
       }
-    })
+    }
 
     const baseSha = await getMainBranchSha()
-    const branchName = `submission-${Date.now()}`
     await createBranch(baseSha, branchName)
 
     for (const [filePath, content] of Object.entries(submissionData)) {
@@ -165,6 +204,28 @@ const createPullRequest = async (branchName, title, description = '') => {
 
     const pr = await response.json()
     console.log(`[GITHUB] Pull request created: ${pr.html_url}`)
+
+    // Add label to the pull request
+    const labelEndpoint = `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/issues/${pr.number}/labels`
+    const labelResponse = await fetch(labelEndpoint, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${GITHUB_API_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ labels: ['contribution'] })
+    })
+
+    if (!labelResponse.ok) {
+      const errorText = await labelResponse.text()
+      console.error(
+        `[GITHUB] Failed to add label: ${labelResponse.status} - ${labelResponse.statusText}`
+      )
+      console.error(`[GITHUB] Error details: ${errorText}`)
+      throw new Error('Failed to add label.')
+    }
+
+    console.log(`[GITHUB] Label added to pull request: ${pr.html_url}`)
     return pr.html_url
   } catch (error) {
     console.error('[GITHUB] Error creating pull request:', error.message)

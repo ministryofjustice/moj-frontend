@@ -6,19 +6,20 @@ const addAnotherSchema = require('./add-another.schema')
 
 const schema = addAnotherSchema.append({
   prototypeUrl: Joi.string()
-    .uri()
+    .pattern(/^(https?:\/\/)?([\w-]+(\.[\w-]+)+)(:[0-9]{1,5})?(\/.*)?$/)
     .required()
     .label('Add the URL to where the prototype is saved')
     .messages({
       'any.required': 'Enter the prototype link',
       'string.empty': 'Enter the prototype link',
-      'string.uri': 'The prototype link must be a real website URL'
+      'string.pattern.base':
+        'The prototype link must be a real website URL that begins with https:// or www.'
     }),
   prototypeUrlAdditionalInformation: Joi.string()
     .optional()
     .allow(null, '')
     .custom((value, helpers) => maxWords(value, helpers, 250))
-    .label('Additional information about the URL (optional)')
+    .label('Additional information about the prototype (optional)')
     .messages({
       'custom.max.words': 'There must be 250 words or less'
     })
