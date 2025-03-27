@@ -369,10 +369,10 @@ module.exports = function (eleventyConfig) {
     domDiff: false,
     port: 8080,
     watch: [
-      'public/javascripts/application.bundle.js',
+      'public/javascripts/application.min.js',
       'public/javascripts/govuk-frontend.min.js',
       'public/javascripts/moj-frontend.min.js',
-      'public/stylesheets/application.css',
+      'public/stylesheets/application.min.css',
       'public/stylesheets/govuk-frontend.min.css',
       'public/stylesheets/moj-frontend.min.css'
     ],
