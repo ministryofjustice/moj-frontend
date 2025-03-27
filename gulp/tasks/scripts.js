@@ -1,13 +1,15 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+
 const { join, parse } = require('path')
 
+const pkg = require('@ministryofjustice/frontend/package.json')
 const { babel } = require('@rollup/plugin-babel')
 const commonjs = require('@rollup/plugin-commonjs')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
+const replace = require('@rollup/plugin-replace')
 const terser = require('@rollup/plugin-terser')
 const PluginError = require('plugin-error')
 const { rollup } = require('rollup')
-
-const MOJFrontend = require('../../src/moj/all.mjs')
 
 /**
  * Compile JavaScript task
@@ -29,7 +31,15 @@ function compileScripts(
   const taskFn = async () => {
     const bundle = await rollup({
       ...input,
+
+      /**
+       * Input path
+       */
       input: join(srcPath, assetPath),
+
+      /**
+       * Input plugins
+       */
       plugins: [
         nodeResolve({
           browser: true,
@@ -40,6 +50,13 @@ function compileScripts(
         commonjs({
           requireReturnsDefault: 'preferred',
           defaultIsModuleExports: true
+        }),
+        replace({
+          include: '**/common/moj-frontend-version.mjs',
+          preventAssignment: true,
+
+          // Add MoJ Frontend release version
+          development: pkg.version
         }),
         babel({
           babelHelpers: 'bundled'
@@ -67,7 +84,7 @@ function compileScripts(
             keep_fnames: true,
             // Ensure all top-level exports skip mangling, for example
             // non-function string constants like `export { version }`
-            reserved: Object.keys(MOJFrontend)
+            reserved: await getMOJFrontendExportsNames()
           },
 
           // Include sources content from source maps to inspect
@@ -103,6 +120,22 @@ function compileScripts(
 
   taskFn.displayName = 'compile:javascripts'
   return taskFn
+}
+
+// GOV.UK Frontend uses browser APIs at `import` time
+// because of static properties. These APIs are not available
+// in Node.js.
+// We mock them the time of the `import` so we can read
+// the name of GOV.UK Frontend's exports without errors
+async function getMOJFrontendExportsNames() {
+  try {
+    global.HTMLElement = function () {}
+    global.HTMLAnchorElement = function () {}
+    return Object.keys(await import('../../src/moj/all.mjs'))
+  } finally {
+    delete global.HTMLElement
+    delete global.HTMLAnchorElement
+  }
 }
 
 module.exports = {

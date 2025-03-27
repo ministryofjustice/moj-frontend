@@ -39,6 +39,6 @@ You can also add bold, underline and italic buttons but these styles should be u
 - underlined text can be confused with links
 - bold and italic should be used sparingly
 
-You can customise the formatting options shown in the toolbar with the `data-moj-rich-text-editor-toolbar` attribute.
+You can customise the formatting options shown in the toolbar with the `data-toolbar` attribute.
 
 {% example "/examples/rich-text-editor-formatting", 300 %}

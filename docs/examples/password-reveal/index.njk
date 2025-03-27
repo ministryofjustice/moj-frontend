@@ -7,12 +7,14 @@ title: Password reveal (example)
 
 {{ govukInput({
   id: "password",
-  attributes: {
-    "data-module": "moj-password-reveal"
-  },
   classes: "govuk-input--width-20",
   name: "password",
   type: "password",
+  formGroup: {
+    attributes: {
+      "data-module": "moj-password-reveal"
+    }
+  },
   label: {
     text: "Password",
     classes: "govuk-label--m"

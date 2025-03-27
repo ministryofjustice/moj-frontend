@@ -7,10 +7,11 @@
 ```mjs
 import { RichTextEditor } from '@ministryofjustice/frontend'
 
-const $richTextEditor = document.querySelector('.app-rich-text-editor')
+const $richTextEditor = document.querySelector(
+  '[data-module="moj-rich-text-editor"]'
+)
 
-new RichTextEditor({
-  textarea: $richTextEditor,
+new RichTextEditor($richTextEditor, {
   toolbar: {
     bold: true,
     italic: true,

@@ -1,13 +1,20 @@
-class Tabs {
-  constructor(container) {
-    this.container = container
+import { Component } from 'govuk-frontend'
+
+export class Tabs extends Component {
+  /**
+   * @param {Element | null} $root - HTML element to use for tabs
+   */
+  constructor($root) {
+    super($root)
+
     this.keys = { left: 37, right: 39, up: 38, down: 40 }
     this.cssHide = 'app-tabs__panel--hidden'
 
-    this.tabs = Array.from(this.container.querySelectorAll('.app-tabs__tab'))
-    this.panels = Array.from(
-      this.container.querySelectorAll('.app-tabs__panel')
-    )
+    const $tabs = Array.from(this.$root.querySelectorAll('.app-tabs__tab'))
+    const $panels = Array.from(this.$root.querySelectorAll('.app-tabs__panel'))
+
+    this.tabs = $tabs.filter(($tab) => $tab instanceof HTMLAnchorElement)
+    this.panels = $panels.filter(($panel) => $panel instanceof HTMLElement)
 
     this.tabs.forEach(($tab) => {
       $tab.addEventListener('click', (event) => this.onTabClick(event))
@@ -18,7 +25,7 @@ class Tabs {
   }
 
   hasTab(hash) {
-    return !!this.container.querySelector(hash)
+    return !!this.$root.querySelector(hash)
   }
 
   hideTab(tab) {
@@ -36,8 +43,8 @@ class Tabs {
   }
 
   setupHtml() {
-    const tabLists = this.container.querySelectorAll('.app-tabs__list')
-    const tabListItems = this.container.querySelectorAll('.app-tabs__list-item')
+    const tabLists = this.$root.querySelectorAll('.app-tabs__list')
+    const tabListItems = this.$root.querySelectorAll('.app-tabs__list-item')
 
     tabLists.forEach((tabList) => {
       tabList.setAttribute('role', 'tablist')
@@ -156,6 +163,9 @@ class Tabs {
     const href = tab.getAttribute('href')
     return href.slice(href.indexOf('#'), href.length)
   }
-}
 
-export default Tabs
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'app-tabs'
+}
