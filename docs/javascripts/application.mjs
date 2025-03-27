@@ -61,6 +61,5 @@ $iframes.forEach(($iframe) => {
   new IFrameResizer($iframe)
 })
 
-window.MOJFrontend = MOJFrontend
 window.customElements.define('moj-menu-toggle', MenuToggle)
 window.customElements.define('moj-collapsible-nav', CollapsibleNav)
