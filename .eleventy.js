@@ -313,10 +313,10 @@ module.exports = function (eleventyConfig) {
     domDiff: false,
     // Reload once assets have been rebuilt by gulp
     watch: [
-      'public/javascripts/application.bundle.js',
+      'public/javascripts/application.min.js',
       'public/javascripts/govuk-frontend.min.js',
       'public/javascripts/moj-frontend.min.js',
-      'public/stylesheets/application.css',
+      'public/stylesheets/application.min.css',
       'public/stylesheets/govuk-frontend.min.css',
       'public/stylesheets/moj-frontend.min.css'
     ],
