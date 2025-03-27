@@ -18,6 +18,12 @@ export class MultiFileUpload {
 
     this.$root = $root
 
+    if (this.$root.hasAttribute('data-moj-file-upload-init')) {
+      return this
+    }
+
+    this.$root.setAttribute('data-moj-file-upload-init', '')
+
     /**
      * Merge configs
      *
