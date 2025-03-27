@@ -1,8 +1,10 @@
 const { join, parse } = require('path')
 
+const pkg = require('@ministryofjustice/frontend/package.json')
 const { babel } = require('@rollup/plugin-babel')
 const commonjs = require('@rollup/plugin-commonjs')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
+const replace = require('@rollup/plugin-replace')
 const terser = require('@rollup/plugin-terser')
 const PluginError = require('plugin-error')
 const { rollup } = require('rollup')
@@ -29,7 +31,15 @@ function compileScripts(
   const taskFn = async () => {
     const bundle = await rollup({
       ...input,
+
+      /**
+       * Input path
+       */
       input: join(srcPath, assetPath),
+
+      /**
+       * Input plugins
+       */
       plugins: [
         nodeResolve({
           browser: true,
@@ -40,6 +50,13 @@ function compileScripts(
         commonjs({
           requireReturnsDefault: 'preferred',
           defaultIsModuleExports: true
+        }),
+        replace({
+          include: '**/common/moj-frontend-version.mjs',
+          preventAssignment: true,
+
+          // Add MoJ Frontend release version
+          development: pkg.version
         }),
         babel({
           babelHelpers: 'bundled'
