@@ -17,12 +17,12 @@ const axe = configureAxe({
 
 function createComponent() {
   const html = outdent`
-    <div class="govuk-form-group">
+    <div class="govuk-form-group" data-module="moj-password-reveal">
       <label class="govuk-label govuk-label--m" for="password">
         Password
       </label>
 
-      <input class="govuk-input govuk-input--width-20" id="password" name="password" type="password" value="1234ABC!" data-module="moj-password-reveal">
+      <input class="govuk-input govuk-input--width-20" id="password" name="password" type="password" value="1234ABC!">
     </div>
   `
 
@@ -35,14 +35,14 @@ function createComponent() {
 
 describe('Password reveal', () => {
   let component
-  let group
+  let wrapper
 
   beforeEach(() => {
     component = createComponent()
 
     new PasswordReveal(component)
 
-    group = component.parentElement
+    wrapper = component.querySelector('input').parentElement
   })
 
   afterEach(() => {
@@ -50,13 +50,14 @@ describe('Password reveal', () => {
   })
 
   test('initialises container', () => {
-    expect(group).toHaveClass('moj-password-reveal')
-    expect(group).toContainElement(getByText(group, 'Show'))
+    expect(component).toHaveClass('moj-password-reveal')
+    expect(wrapper).toHaveClass('moj-password-reveal__wrapper')
+    expect(wrapper).toContainElement(getByText(wrapper, 'Show'))
   })
 
   test('toggle reveal', async () => {
-    const input = getByDisplayValue(group, '1234ABC!')
-    const button = getByText(group, 'Show')
+    const input = getByDisplayValue(component, '1234ABC!')
+    const button = getByText(component, 'Show')
 
     await user.click(button)
 
@@ -70,7 +71,7 @@ describe('Password reveal', () => {
   })
 
   test('accessibility', async () => {
-    const button = getByText(group, 'Show')
+    const button = getByText(component, 'Show')
 
     expect(await axe(document.body)).toHaveNoViolations()
     await user.click(button)

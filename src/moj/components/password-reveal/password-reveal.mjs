@@ -1,14 +1,13 @@
 export class PasswordReveal {
   /**
-   * @param {Element | null} $input - HTML element to use for password reveal
+   * @param {Element | null} $root - HTML element to use for password reveal
    */
-  constructor($input) {
-    if (!$input || !($input instanceof HTMLInputElement)) {
+  constructor($root) {
+    if (!$root || !($root instanceof HTMLElement)) {
       return this
     }
 
-    this.$input = $input
-    this.$root = $input.parentElement
+    this.$root = $root
 
     if (this.$root.hasAttribute('data-moj-password-reveal-init')) {
       return this
@@ -16,7 +15,14 @@ export class PasswordReveal {
 
     this.$root.setAttribute('data-moj-password-reveal-init', '')
 
+    const $input = this.$root.querySelector('.govuk-input')
+    if (!$input || !($input instanceof HTMLInputElement)) {
+      return this
+    }
+
+    this.$input = $input
     this.$input.setAttribute('spellcheck', 'false')
+
     this.createButton()
   }
 
@@ -26,7 +32,8 @@ export class PasswordReveal {
 
     this.$button.setAttribute('type', 'button')
 
-    this.$group.classList.add('moj-password-reveal')
+    this.$root.classList.add('moj-password-reveal')
+    this.$group.classList.add('moj-password-reveal__wrapper')
     this.$button.classList.add(
       'govuk-button',
       'govuk-button--secondary',
