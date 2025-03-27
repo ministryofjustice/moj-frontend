@@ -1,38 +1,21 @@
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from 'govuk-frontend'
+
 import { setFocus } from '../../common/index.mjs'
 import {
   findNearestMatchingElement,
   getPreviousSibling
 } from '../../helpers.mjs'
 
-export class Alert {
+/**
+ * @augments {ConfigurableComponent<AlertConfig>}
+ */
+export class Alert extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for alert
    * @param {AlertConfig} [config] - Alert config
    */
   constructor($root, config = {}) {
-    if (!$root || !($root instanceof HTMLElement)) {
-      return this
-    }
-
-    this.$root = $root
-
-    if (this.$root.hasAttribute('data-moj-alert-init')) {
-      return this
-    }
-
-    this.$root.setAttribute('data-moj-alert-init', '')
-
-    /**
-     * Merge configs
-     *
-     * @type {AlertConfig}
-     */
-    this.config = mergeConfigs(
-      Alert.defaults,
-      config,
-      normaliseDataset(Alert, this.$root.dataset)
-    )
+    super($root, config)
 
     /**
      * Focus the alert
@@ -117,6 +100,11 @@ export class Alert {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'moj-alert'
+
+  /**
    * Alert default config
    *
    * @type {AlertConfig}
@@ -132,14 +120,16 @@ export class Alert {
    *
    * @satisfies {Schema<AlertConfig>}
    */
-  static schema = Object.freeze({
-    properties: {
-      dismissible: { type: 'boolean' },
-      dismissText: { type: 'string' },
-      disableAutoFocus: { type: 'boolean' },
-      focusOnDismissSelector: { type: 'string' }
-    }
-  })
+  static schema = Object.freeze(
+    /** @type {const} */ ({
+      properties: {
+        dismissible: { type: 'boolean' },
+        dismissText: { type: 'string' },
+        disableAutoFocus: { type: 'boolean' },
+        focusOnDismissSelector: { type: 'string' }
+      }
+    })
+  )
 }
 
 /**
@@ -151,5 +141,5 @@ export class Alert {
  */
 
 /**
- * @import { Schema } from '../../common/configuration.mjs'
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
  */

@@ -1,39 +1,21 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from 'govuk-frontend'
 
-export class MultiFileUpload {
+/**
+ * @augments {ConfigurableComponent<MultiFileUploadConfig>}
+ */
+export class MultiFileUpload extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for multi file upload
    * @param {MultiFileUploadConfig} [config] - Multi file upload config
    */
   constructor($root, config = {}) {
-    if (
-      !$root ||
-      !($root instanceof HTMLElement) ||
-      !MultiFileUpload.isSupported()
-    ) {
+    super($root, config)
+
+    if (!MultiFileUpload.isSupported()) {
       return this
     }
-
-    this.$root = $root
-
-    if (this.$root.hasAttribute('data-moj-file-upload-init')) {
-      return this
-    }
-
-    this.$root.setAttribute('data-moj-file-upload-init', '')
-
-    /**
-     * Merge configs
-     *
-     * @type {MultiFileUploadConfig}
-     */
-    this.config = mergeConfigs(
-      MultiFileUpload.defaults,
-      config,
-      normaliseDataset(MultiFileUpload, this.$root.dataset)
-    )
 
     const $feedbackContainer =
       this.config.feedbackContainer.element ??
@@ -349,6 +331,11 @@ export class MultiFileUpload {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'moj-multi-file-upload'
+
+  /**
    * Multi file upload default config
    *
    * @type {MultiFileUploadConfig}
@@ -373,17 +360,19 @@ export class MultiFileUpload {
    *
    * @satisfies {Schema<MultiFileUploadConfig>}
    */
-  static schema = Object.freeze({
-    properties: {
-      uploadUrl: { type: 'string' },
-      deleteUrl: { type: 'string' },
-      uploadStatusText: { type: 'string' },
-      dropzoneHintText: { type: 'string' },
-      dropzoneButtonText: { type: 'string' },
-      feedbackContainer: { type: 'object' },
-      hooks: { type: 'object' }
-    }
-  })
+  static schema = Object.freeze(
+    /** @type {const} */ ({
+      properties: {
+        uploadUrl: { type: 'string' },
+        deleteUrl: { type: 'string' },
+        uploadStatusText: { type: 'string' },
+        dropzoneHintText: { type: 'string' },
+        dropzoneButtonText: { type: 'string' },
+        feedbackContainer: { type: 'object' },
+        hooks: { type: 'object' }
+      }
+    })
+  )
 }
 
 /**
@@ -469,5 +458,5 @@ export class MultiFileUpload {
  */
 
 /**
- * @import { Schema } from '../../common/configuration.mjs'
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
  */
