@@ -8,8 +8,10 @@ title: Rich text editor (example)
 {{ govukTextarea({
   id: "body",
   name: "body",
-  attributes: {
-    "data-module": "moj-rich-text-editor"
+  formGroup: {
+    attributes: {
+      "data-module": "moj-rich-text-editor"
+    }
   },
   label: {
     text: "Message",
