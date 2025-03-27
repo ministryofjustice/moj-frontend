@@ -1,13 +1,12 @@
-export class Tabs {
+import { Component } from 'govuk-frontend'
+
+export class Tabs extends Component {
   /**
    * @param {Element | null} $root - HTML element to use for tabs
    */
   constructor($root) {
-    if (!$root || !($root instanceof HTMLElement)) {
-      return this
-    }
+    super($root)
 
-    this.$root = $root
     this.keys = { left: 37, right: 39, up: 38, down: 40 }
     this.cssHide = 'app-tabs__panel--hidden'
 
@@ -164,4 +163,9 @@ export class Tabs {
     const href = tab.getAttribute('href')
     return href.slice(href.indexOf('#'), href.length)
   }
+
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'app-tabs'
 }
