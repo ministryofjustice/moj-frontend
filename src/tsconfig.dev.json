@@ -4,6 +4,8 @@
     "**/*.spec.js",
     "**/*.spec.mjs",
     "**/*.spec.helper.mjs",
+    "**/*.test.mjs",
+    "**/*.test.js",
     ".eslintrc.js"
   ],
   "compilerOptions": {

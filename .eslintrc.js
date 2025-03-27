@@ -169,7 +169,12 @@ module.exports = {
       }
     },
     {
-      files: ['**/*.spec.{cjs,js,mjs}', 'jest.config.*', 'jest.setup.*'],
+      files: [
+        '**/*.spec.{cjs,js,mjs}',
+        '**/*.test.{cjs,js,mjs}',
+        'jest.config.*',
+        'jest.setup.*'
+      ],
       extends: ['plugin:jest/recommended', 'plugin:jest/style'],
       env: {
         'jest/globals': true
