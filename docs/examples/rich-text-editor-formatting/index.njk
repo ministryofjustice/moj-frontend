@@ -8,11 +8,9 @@ title: Rich text editor with custom formatting options (example)
 {{ govukTextarea({
   id: "body",
   name: "body",
-  attributes: {
-    "data-module": "moj-rich-text-editor"
-  },
   formGroup: {
     attributes: {
+      "data-module": "moj-rich-text-editor",
       "data-toolbar.bold": "true",
       "data-toolbar.italic": "true",
       "data-toolbar.underline": "true",

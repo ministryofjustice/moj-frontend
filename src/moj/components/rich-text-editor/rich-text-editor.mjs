@@ -2,27 +2,32 @@ import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
 
 export class RichTextEditor {
   /**
-   * @param {Element | null} $textarea - HTML element to use for rich text editor
+   * @param {Element | null} $root - HTML element to use for rich text editor
    * @param {RichTextEditorConfig} config
    */
-  constructor($textarea, config = {}) {
+  constructor($root, config = {}) {
     if (
-      !$textarea ||
-      !$textarea.parentElement ||
-      !($textarea instanceof HTMLTextAreaElement) ||
+      !$root ||
+      !($root instanceof HTMLElement) ||
       !RichTextEditor.isSupported()
     ) {
       return this
     }
 
-    this.$textarea = $textarea
-    this.$root = this.$textarea.parentElement
+    this.$root = $root
 
     if (this.$root.hasAttribute('data-rich-text-editor-init')) {
       return this
     }
 
     this.$root.setAttribute('data-rich-text-editor-init', '')
+
+    const $textarea = this.$root.querySelector('.govuk-textarea')
+    if (!$textarea || !($textarea instanceof HTMLTextAreaElement)) {
+      return this
+    }
+
+    this.$textarea = $textarea
 
     /**
      * Merge configs
