@@ -60,11 +60,17 @@ gulp.task(
   gulp.parallel(
     compileStyles('application.scss', {
       srcPath: 'docs/stylesheets',
-      destPath: 'public/stylesheets'
+      destPath: 'public/stylesheets',
+
+      // Customise output
+      output: { file: 'application.min.css' }
     }),
     compileStyles('example.scss', {
       srcPath: 'docs/stylesheets',
-      destPath: 'public/stylesheets'
+      destPath: 'public/stylesheets',
+
+      // Customise output
+      output: { file: 'example.min.css' }
     })
   )
 )
@@ -75,8 +81,11 @@ gulp.task(
   compileScripts('application.mjs', {
     srcPath: 'docs/javascripts',
     destPath: 'public/javascripts',
+
+    // Customise output
     output: {
       compact: true,
+      file: 'application.min.js',
       format: 'esm'
     }
   })
