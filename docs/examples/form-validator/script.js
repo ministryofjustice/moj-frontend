@@ -1,4 +1,8 @@
-const validator = new MOJFrontend.FormValidator(document.forms[0])
+import { FormValidator } from '/javascripts/moj-frontend.min.js'
+
+const validator = new FormValidator(
+  document.querySelector('[data-module="moj-form-validator"]')
+)
 
 validator.addValidator('email', [
   {

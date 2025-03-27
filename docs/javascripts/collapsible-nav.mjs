@@ -1,11 +1,11 @@
-export default class CollapsibleNav extends HTMLElement {
+export class CollapsibleNav extends HTMLElement {
   constructor() {
     super()
     if (!this.id) {
       this.id = `nav-${Date.now()}`
     }
 
-    this.collapsibleItems.forEach(($item, index) => {
+    this.$collapsibleItems.forEach(($item, index) => {
       const $link = $item.querySelector('a')
       const $list = $item.querySelector('ul')
 
@@ -76,22 +76,22 @@ export default class CollapsibleNav extends HTMLElement {
   }
 
   closeOpenItems() {
-    this.openItems.forEach((item) => this.close(item))
+    this.$openItems.forEach(($listItem) => this.close($listItem))
   }
 
   get openClass() {
     return this.getAttribute('open-class') || 'is-open'
   }
 
-  get openItems() {
-    return this.collapsibleItems.filter((el) => {
-      return el.classList.contains(this.openClass)
+  get $openItems() {
+    return this.$collapsibleItems.filter(($listItem) => {
+      return $listItem.classList.contains(this.openClass)
     })
   }
 
-  get collapsibleItems() {
-    return Array.from(this.querySelectorAll('li')).filter((el) => {
-      return el.querySelector('ul')
+  get $collapsibleItems() {
+    return Array.from(this.querySelectorAll('li')).filter(($listItem) => {
+      return $listItem.querySelector('ul')
     })
   }
 }

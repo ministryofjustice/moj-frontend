@@ -31,7 +31,9 @@ The JavaScript
 ```mjs
 import { ButtonMenu } from '@ministryofjustice/frontend'
 
-const $buttonMenu = document.querySelector('.app-button-menu')
+const $buttonMenu = document.querySelector(
+  '[data-module="moj-button-menu"]'
+)
 
 new ButtonMenu($buttonMenu, {
   alignMenu: 'right',

@@ -1,28 +1,51 @@
+import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
 import { addAttributeValue, removeAttributeValue } from '../../helpers.mjs'
 
 export class FormValidator {
   /**
-   * @param {Element | null} form - HTML element to use for form validator
-   * @param {FormValidatorConfig} [config] - Button menu config
+   * @param {Element | null} $root - HTML element to use for form validator
+   * @param {FormValidatorConfig} [config] - Form validator config
    */
-  constructor(form, config = {}) {
-    if (!form || !(form instanceof HTMLFormElement)) {
+  constructor($root, config = {}) {
+    if (!$root || !($root instanceof HTMLFormElement)) {
       return this
     }
 
-    this.form = form
-    this.errors = []
-    this.validators = []
-    this.form.addEventListener('submit', this.onSubmit.bind(this))
-    this.summary =
-      config.summary || document.querySelector('.govuk-error-summary')
+    this.$root = $root
+
+    /**
+     * Merge configs
+     *
+     * @type {FormValidatorConfig}
+     */
+    this.config = mergeConfigs(
+      FormValidator.defaults,
+      config,
+      normaliseDataset(FormValidator, this.$root.dataset)
+    )
+
+    const $summary =
+      this.config.summary.element ||
+      document.querySelector(this.config.summary.selector)
+
+    if (!$summary || !($summary instanceof HTMLElement)) {
+      return this
+    }
+
+    this.$summary = $summary
+
+    this.errors = /** @type {ValidationError[]} */ ([])
+    this.validators = /** @type {Validator[]} */ ([])
     this.originalTitle = document.title
+
+    this.$root.addEventListener('submit', this.onSubmit.bind(this))
   }
 
-  escapeHtml(string) {
-    return String(string).replace(/[&<>"'`=/]/g, function fromEntityMap(s) {
-      return FormValidator.entityMap[s]
-    })
+  escapeHtml(string = '') {
+    return String(string).replace(
+      /[&<>"'`=/]/g,
+      (name) => FormValidator.entityMap[name]
+    )
   }
 
   resetTitle() {
@@ -34,10 +57,10 @@ export class FormValidator {
   }
 
   showSummary() {
-    this.summary.innerHTML = this.getSummaryHtml()
-    this.summary.classList.remove('moj-hidden')
-    this.summary.setAttribute('aria-labelledby', 'errorSummary-heading')
-    this.summary.focus()
+    this.$summary.innerHTML = this.getSummaryHtml()
+    this.$summary.classList.remove('moj-hidden')
+    this.$summary.setAttribute('aria-labelledby', 'errorSummary-heading')
+    this.$summary.focus()
   }
 
   getSummaryHtml() {
@@ -58,10 +81,13 @@ export class FormValidator {
   }
 
   hideSummary() {
-    this.summary.classList.add('moj-hidden')
-    this.summary.removeAttribute('aria-labelledby')
+    this.$summary.classList.add('moj-hidden')
+    this.$summary.removeAttribute('aria-labelledby')
   }
 
+  /**
+   * @param {SubmitEvent} event - Form submit event
+   */
   onSubmit(event) {
     this.removeInlineErrors()
     this.hideSummary()
@@ -80,29 +106,32 @@ export class FormValidator {
     }
   }
 
+  /**
+   * @param {ValidationError} error
+   */
   showInlineError(error) {
-    const errorSpan = document.createElement('span')
-    errorSpan.id = `${error.fieldName}-error`
-    errorSpan.classList.add('govuk-error-message')
-    errorSpan.innerHTML = this.escapeHtml(error.message)
+    const $errorSpan = document.createElement('span')
+    $errorSpan.id = `${error.fieldName}-error`
+    $errorSpan.classList.add('govuk-error-message')
+    $errorSpan.innerHTML = this.escapeHtml(error.message)
 
-    const control = document.querySelector(`#${error.fieldName}`)
-    const fieldset = control.closest('.govuk-fieldset')
-    const fieldContainer = (fieldset || control).closest('.govuk-form-group')
+    const $control = document.querySelector(`#${error.fieldName}`)
+    const $fieldset = $control.closest('.govuk-fieldset')
+    const $fieldContainer = ($fieldset || $control).closest('.govuk-form-group')
 
-    const label = fieldContainer.querySelector('label')
-    const legend = fieldContainer.querySelector('legend')
+    const $label = $fieldContainer.querySelector('label')
+    const $legend = $fieldContainer.querySelector('legend')
 
-    fieldContainer.classList.add('govuk-form-group--error')
+    $fieldContainer.classList.add('govuk-form-group--error')
 
-    if (fieldset && legend) {
-      legend.after(errorSpan)
-      fieldContainer.setAttribute('aria-invalid', 'true')
-      addAttributeValue(fieldset, 'aria-describedby', errorSpan.id)
-    } else if (label && control) {
-      label.after(errorSpan)
-      control.setAttribute('aria-invalid', 'true')
-      addAttributeValue(control, 'aria-describedby', errorSpan.id)
+    if ($fieldset && $legend) {
+      $legend.after($errorSpan)
+      $fieldContainer.setAttribute('aria-invalid', 'true')
+      addAttributeValue($fieldset, 'aria-describedby', $errorSpan.id)
+    } else if ($label && $control) {
+      $label.after($errorSpan)
+      $control.setAttribute('aria-invalid', 'true')
+      addAttributeValue($control, 'aria-describedby', $errorSpan.id)
     }
   }
 
@@ -112,42 +141,55 @@ export class FormValidator {
     }
   }
 
+  /**
+   * @param {ValidationError} error
+   */
   removeInlineError(error) {
-    const errorSpan = document.querySelector(`#${error.fieldName}-error`)
+    const $errorSpan = document.querySelector(`#${error.fieldName}-error`)
 
-    const control = document.querySelector(`#${error.fieldName}`)
-    const fieldset = control.closest('.govuk-fieldset')
-    const fieldContainer = (fieldset || control).closest('.govuk-form-group')
+    const $control = document.querySelector(`#${error.fieldName}`)
+    const $fieldset = $control.closest('.govuk-fieldset')
+    const $fieldContainer = ($fieldset || $control).closest('.govuk-form-group')
 
-    const label = fieldContainer.querySelector('label')
-    const legend = fieldContainer.querySelector('legend')
+    const $label = $fieldContainer.querySelector('label')
+    const $legend = $fieldContainer.querySelector('legend')
 
-    errorSpan.remove()
-    fieldContainer.classList.remove('govuk-form-group--error')
+    $errorSpan.remove()
+    $fieldContainer.classList.remove('govuk-form-group--error')
 
-    if (fieldset && legend) {
-      fieldContainer.removeAttribute('aria-invalid')
-      removeAttributeValue(fieldset, 'aria-describedby', errorSpan.id)
-    } else if (label && control) {
-      control.removeAttribute('aria-invalid')
-      removeAttributeValue(control, 'aria-describedby', errorSpan.id)
+    if ($fieldset && $legend) {
+      $fieldContainer.removeAttribute('aria-invalid')
+      removeAttributeValue($fieldset, 'aria-describedby', $errorSpan.id)
+    } else if ($label && $control) {
+      $control.removeAttribute('aria-invalid')
+      removeAttributeValue($control, 'aria-describedby', $errorSpan.id)
     }
   }
 
+  /**
+   * @param {string} fieldName - Field name
+   * @param {ValidationRule[]} rules - Validation rules
+   */
   addValidator(fieldName, rules) {
     this.validators.push({
       fieldName,
       rules,
-      field: this.form.elements[fieldName]
+      field: this.$root.elements.namedItem(fieldName)
     })
   }
 
   validate() {
     this.errors = []
+
+    /** @type {Validator | null} */
     let validator = null
+
+    /** @type {boolean | string} */
     let validatorReturnValue = true
+
     let i
     let j
+
     for (i = 0; i < this.validators.length; i++) {
       validator = this.validators[i]
       for (j = 0; j < validator.rules.length; j++) {
@@ -177,6 +219,9 @@ export class FormValidator {
     return this.errors.length === 0
   }
 
+  /**
+   * @type {Record<string, string>}
+   */
   static entityMap = {
     '&': '&amp;',
     '<': '&lt;',
@@ -187,9 +232,57 @@ export class FormValidator {
     '`': '&#x60;',
     '=': '&#x3D;'
   }
+
+  /**
+   * Multi file upload default config
+   *
+   * @type {FormValidatorConfig}
+   */
+  static defaults = Object.freeze({
+    summary: {
+      selector: '.govuk-error-summary'
+    }
+  })
+
+  /**
+   * Multi file upload config schema
+   *
+   * @satisfies {Schema<FormValidatorConfig>}
+   */
+  static schema = Object.freeze({
+    properties: {
+      summary: { type: 'object' }
+    }
+  })
 }
 
 /**
  * @typedef {object} FormValidatorConfig
- * @property {HTMLElement} [summary] - HTML element to use for error summary
+ * @property {object} [summary] - Error summary config
+ * @property {string} [summary.selector] - Selector for error summary
+ * @property {Element | null} [summary.element] - HTML element for error summary
+ */
+
+/**
+ * @typedef {object} ValidationRule
+ * @property {(field: Validator['field'], params: Record<string, Validator['field']>) => boolean | string} method - Validation method
+ * @property {string} message - Error message
+ * @property {Record<string, Validator['field']>} [params] - Parameters for validation
+ */
+
+/**
+ * @typedef {object} ValidationError
+ * @property {string} fieldName - Name of the field
+ * @property {string} message - Validation error message
+ */
+
+/**
+ * @typedef {object} Validator
+ * @property {string} fieldName - Name of the field
+ * @property {ValidationRule[]} rules - Validation rules
+ * @property {Element | RadioNodeList} field - Form field
+ */
+
+/**
+ * @import { Schema } from '../../common/configuration.mjs'
  */
