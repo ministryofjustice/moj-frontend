@@ -3,6 +3,7 @@
 import { queryByRole, screen } from '@testing-library/dom'
 import { userEvent } from '@testing-library/user-event'
 import { configureAxe } from 'jest-axe'
+import { outdent } from 'outdent'
 
 import { ButtonMenu } from './button-menu.mjs'
 
@@ -14,34 +15,31 @@ const axe = configureAxe({
   }
 })
 
-const kebabize = (str) => {
-  return str.replace(
-    /[A-Z]+(?![a-z])|[A-Z]/g,
-    ($, ofset) => (ofset ? '-' : '') + $.toLowerCase()
+/**
+ * @param {object} params
+ * @param {string} [params.html]
+ * @param {Record<string, string>} [params.attributes]
+ */
+function createComponent(params = {}) {
+  const attributes = Object.entries(params.attributes ?? {}).map(
+    ([key, value]) => ` ${key}="${value}"`
   )
-}
 
-const configToDataAttributes = (config) => {
-  let attributes = ''
-  for (const [key, value] of Object.entries(config)) {
-    attributes += `data-${kebabize(key)}="${value}" `
-  }
-  return attributes
-}
+  const html =
+    params.html ??
+    outdent`
+      <div class="moj-button-menu" data-module="moj-button-menu"${attributes}>
+        <a href="#one" role="button">First action</a>
+        <a href="#two" role="button" class="govuk-button--warning">Second action</a>
+        <a href="#three" role="button" class="custom-class">Third action</a>
+      </div>
+    `
 
-const createComponent = (config = {}, html) => {
-  const dataAttributes = configToDataAttributes(config)
-  if (typeof html === 'undefined') {
-    html = `
-      <div class="moj-button-menu" data-module="moj-button-menu" ${dataAttributes}>
-          <a href="#one" role="button">First action</a>
-          <a href="#two" role="button" class="govuk-button--warning">Second action</a>
-          <a href="#three" role="button" class="custom-class">Third action</a>
-      </div>`
-  }
   document.body.insertAdjacentHTML('afterbegin', html)
-  const component = document.querySelector('[data-module="moj-button-menu"]')
-  return component
+
+  return /** @type {HTMLElement} */ (
+    document.querySelector('[data-module="moj-button-menu"]')
+  )
 }
 
 describe('Button menu with defaults', () => {
@@ -52,6 +50,7 @@ describe('Button menu with defaults', () => {
 
   beforeEach(() => {
     component = createComponent()
+
     new ButtonMenu(component)
 
     toggleButton = queryByRole(component, 'button', { hidden: false })
@@ -283,18 +282,28 @@ describe('Button menu data-attributes API', () => {
   test('setting toggle button text', () => {
     const label = 'click me'
 
-    component = createComponent({ buttonText: label })
-    new ButtonMenu(component)
-    const toggleButton = queryByRole(component, 'button', { name: label })
+    component = createComponent({
+      attributes: {
+        'data-button-text': label
+      }
+    })
 
+    new ButtonMenu(component)
+
+    const toggleButton = queryByRole(component, 'button', { name: label })
     expect(toggleButton).toBeInTheDocument()
   })
 
   test('setting menu alignment', () => {
-    component = createComponent({ alignMenu: 'right' })
-    new ButtonMenu(component)
-    const menu = screen.queryByRole('list', { hidden: true })
+    component = createComponent({
+      attributes: {
+        'data-align-menu': 'right'
+      }
+    })
 
+    new ButtonMenu(component)
+
+    const menu = screen.queryByRole('list', { hidden: true })
     expect(menu).toHaveClass('moj-button-menu__wrapper--right')
   })
 
@@ -302,8 +311,14 @@ describe('Button menu data-attributes API', () => {
     const defaultClassNames = 'govuk-button moj-button-menu__toggle-button'
     const classNames = 'classOne classTwo'
 
-    component = createComponent({ buttonClasses: classNames })
+    component = createComponent({
+      attributes: {
+        'data-button-classes': classNames
+      }
+    })
+
     new ButtonMenu(component)
+
     const toggleButton = queryByRole(component, 'button', { hidden: false })
 
     expect(toggleButton).toHaveClass(defaultClassNames)
@@ -318,12 +333,14 @@ describe('menu button with a single item', () => {
   let items
 
   beforeEach(() => {
-    const html = `
-      <div class="moj-button-menu" data-module="moj-button-menu" data-button-classes="govuk-button--warning custom-class">
+    component = createComponent({
+      html: outdent`
+        <div class="moj-button-menu" data-module="moj-button-menu" data-button-classes="govuk-button--warning custom-class">
           <a href="#one" role="button" class="govuk-button--inverse">First action</a>
-      </div>`
+        </div>
+      `
+    })
 
-    component = createComponent({}, html)
     new ButtonMenu(component)
 
     toggleButton = queryByRole(component, 'button', { name: 'Actions' })

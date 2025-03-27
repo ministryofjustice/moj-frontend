@@ -5,6 +5,7 @@ import { userEvent } from '@testing-library/user-event'
 import { configureAxe } from 'jest-axe'
 import merge from 'lodash/merge.js'
 import { setMedia } from 'mock-match-media'
+import { outdent } from 'outdent'
 
 import { FilterToggleButton } from './filter-toggle-button.mjs'
 
@@ -16,74 +17,58 @@ const axe = configureAxe({
   }
 })
 
-const createTemplate = () => {
-  const html = `
-      <div class="moj-filter">
-        <div class="moj-filter__header">
-          <div class="moj-filter__header-title">
-            <h2 class="govuk-heading-m">Filter</h2>
-          </div>
-          <div class="moj-filter__header-action"></div>
+function createComponent() {
+  const html = outdent`
+    <div class="moj-filter" data-module="moj-filter">
+      <div class="moj-filter__header">
+        <div class="moj-filter__header-title">
+          <h2 class="govuk-heading-m">Filter</h2>
         </div>
+        <div class="moj-filter__header-action"></div>
       </div>
-      <div class="moj-action-bar">
-        <div class="moj-action-bar__filter"></div>
-      </div>`
+    </div>
+    <div class="moj-action-bar">
+      <div class="moj-action-bar__filter"></div>
+    </div>
+  `
+
   document.body.insertAdjacentHTML('afterbegin', html)
 
-  const buttonContainer = document.querySelector('.moj-action-bar__filter')
-  const closeButtonContainer = document.querySelector(
-    '.moj-filter__header-action'
+  return /** @type {HTMLElement} */ (
+    document.querySelector('[data-module="moj-filter"]')
   )
-  const filterContainer = document.querySelector('.moj-filter')
-
-  return {
-    buttonContainer,
-    closeButtonContainer,
-    filterContainer
-  }
 }
 
-let baseConfig
-
-beforeEach(() => {
-  baseConfig = {
-    bigModeMediaQuery: '(min-width: 600px)',
-    startHidden: true,
-    toggleButton: {
-      container: document.querySelector('.moj-action-bar__filter'),
-      showText: 'Show filter',
-      hideText: 'Hide filter',
-      classes: 'govuk-button--secondary'
-    },
-    closeButton: {
-      container: document.querySelector('.moj-filter__header-action'),
-      text: 'Close'
-    },
-    filter: {
-      container: document.querySelector('.moj-filter')
-    }
-  }
-})
-
 describe('Filter toggle in big mode', () => {
-  let defaultConfig, buttonContainer, filterContainer
+  let component
+  let config
 
   beforeEach(() => {
     setMedia({
       width: '800px'
     })
-    ;({ buttonContainer, filterContainer } = createTemplate())
 
-    defaultConfig = merge(baseConfig, {
+    component = createComponent()
+
+    config = {
+      bigModeMediaQuery: '(min-width: 600px)',
+      startHidden: true,
       toggleButton: {
-        container: document.querySelector('.moj-action-bar__filter')
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary'
+      },
+      toggleButtonContainer: {
+        element: document.querySelector('.moj-action-bar__filter')
       },
       closeButton: {
-        container: document.querySelector('.moj-filter__header-action')
+        text: 'Close',
+        classes: 'moj-filter__close'
       },
-      filter: { container: document.querySelector('.moj-filter') }
-    })
+      closeButtonContainer: {
+        element: document.querySelector('.moj-filter__header-action')
+      }
+    }
   })
 
   afterEach(() => {
@@ -91,7 +76,10 @@ describe('Filter toggle in big mode', () => {
   })
 
   test('creates toggle button', () => {
-    new FilterToggleButton(defaultConfig)
+    const { element: buttonContainer } = config.toggleButtonContainer
+
+    new FilterToggleButton(component, config)
+
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(toggleButton).toBeInTheDocument()
@@ -99,69 +87,95 @@ describe('Filter toggle in big mode', () => {
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
     expect(toggleButton).toHaveClass('govuk-button--secondary')
 
-    expect(filterContainer).toHaveAttribute('tabindex', '-1')
-    expect(filterContainer).toHaveClass('moj-js-hidden')
+    expect(component).toHaveAttribute('tabindex', '-1')
+    expect(component).toHaveClass('moj-js-hidden')
   })
 
   test('toggle button reveals filters', async () => {
-    new FilterToggleButton(defaultConfig)
+    const { element: buttonContainer } = config.toggleButtonContainer
+
+    new FilterToggleButton(component, config)
+
     const toggleButton = queryByRole(buttonContainer, 'button')
 
-    expect(filterContainer).toHaveAttribute('tabindex', '-1')
-    expect(filterContainer).toHaveClass('moj-js-hidden')
+    expect(component).toHaveAttribute('tabindex', '-1')
+    expect(component).toHaveClass('moj-js-hidden')
 
     await user.click(toggleButton)
 
     expect(toggleButton).toHaveAttribute('aria-expanded', 'true')
     expect(toggleButton.innerHTML).toBe('Hide filter')
-    expect(filterContainer).not.toHaveClass('moj-js-hidden')
-    expect(filterContainer).toHaveFocus()
+    expect(component).not.toHaveClass('moj-js-hidden')
+    expect(component).toHaveFocus()
 
     await user.click(toggleButton)
 
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
     expect(toggleButton.innerHTML).toBe('Show filter')
-    expect(filterContainer).toHaveClass('moj-js-hidden')
+    expect(component).toHaveClass('moj-js-hidden')
 
     expect(toggleButton).toHaveFocus()
   })
 
   test('start visible', () => {
-    const config = merge(defaultConfig, { startHidden: false })
-    new FilterToggleButton(config)
+    const { element: buttonContainer } = config.toggleButtonContainer
+
+    new FilterToggleButton(
+      component,
+      merge(config, {
+        startHidden: false
+      })
+    )
+
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(toggleButton.innerHTML).toBe('Hide filter')
-    expect(filterContainer).not.toHaveClass('moj-js-hidden')
+    expect(component).not.toHaveClass('moj-js-hidden')
   })
 
   test('custom button text', async () => {
-    const config = merge(defaultConfig, {
-      toggleButton: { showText: 'Custom label', hideText: 'Hide me' }
-    })
-    new FilterToggleButton(config)
-    const toggleButton = queryByRole(buttonContainer, 'button')
+    const { element: buttonContainer } = config.toggleButtonContainer
 
+    new FilterToggleButton(
+      component,
+      merge(config, {
+        toggleButton: {
+          showText: 'Custom label',
+          hideText: 'Hide me'
+        }
+      })
+    )
+
+    const toggleButton = queryByRole(buttonContainer, 'button')
     expect(toggleButton.innerHTML).toBe('Custom label')
+
     await user.click(toggleButton)
     expect(toggleButton.innerHTML).toBe('Hide me')
   })
 
   test('custom toggle button classes', () => {
-    const config = merge(defaultConfig, {
-      toggleButton: { classes: 'classname-1 classname-2' }
-    })
-    new FilterToggleButton(config)
-    const toggleButton = queryByRole(buttonContainer, 'button')
+    const { element: buttonContainer } = config.toggleButtonContainer
 
+    new FilterToggleButton(
+      component,
+      merge(config, {
+        toggleButton: { classes: 'classname-1 classname-2' }
+      })
+    )
+
+    const toggleButton = queryByRole(buttonContainer, 'button')
     expect(toggleButton).toHaveClass('classname-1 classname-2')
   })
 
   describe('accessibility', () => {
     test('component has no wcag violations', async () => {
-      new FilterToggleButton(defaultConfig)
+      const { element: buttonContainer } = config.toggleButtonContainer
+
+      new FilterToggleButton(component, config)
+
       const toggleButton = queryByRole(buttonContainer, 'button')
       expect(await axe(document.body)).toHaveNoViolations()
+
       await user.click(toggleButton)
       expect(await axe(document.body)).toHaveNoViolations()
     })
@@ -169,23 +183,35 @@ describe('Filter toggle in big mode', () => {
 })
 
 describe('Filter toggle in small mode', () => {
-  let defaultConfig, buttonContainer, closeButtonContainer, filterContainer
+  let component
+  let config
 
   beforeEach(() => {
     setMedia({
       width: '500px'
     })
-    ;({ buttonContainer, closeButtonContainer, filterContainer } =
-      createTemplate())
-    defaultConfig = merge(baseConfig, {
+
+    component = createComponent()
+
+    config = {
+      bigModeMediaQuery: '(min-width: 600px)',
+      startHidden: true,
       toggleButton: {
-        container: document.querySelector('.moj-action-bar__filter')
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary'
+      },
+      toggleButtonContainer: {
+        element: document.querySelector('.moj-action-bar__filter')
       },
       closeButton: {
-        container: document.querySelector('.moj-filter__header-action')
+        text: 'Close',
+        classes: 'moj-filter__close'
       },
-      filter: { container: document.querySelector('.moj-filter') }
-    })
+      closeButtonContainer: {
+        element: document.querySelector('.moj-filter__header-action')
+      }
+    }
   })
 
   afterEach(() => {
@@ -193,7 +219,10 @@ describe('Filter toggle in small mode', () => {
   })
 
   test('creates toggle button', () => {
-    new FilterToggleButton(defaultConfig)
+    const { element: buttonContainer } = config.toggleButtonContainer
+
+    new FilterToggleButton(component, config)
+
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(toggleButton).toBeInTheDocument()
@@ -201,45 +230,63 @@ describe('Filter toggle in small mode', () => {
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
     expect(toggleButton).toHaveClass('govuk-button--secondary')
 
-    expect(filterContainer).toHaveAttribute('tabindex', '-1')
-    expect(filterContainer).toHaveClass('moj-js-hidden')
+    expect(component).toHaveAttribute('tabindex', '-1')
+    expect(component).toHaveClass('moj-js-hidden')
   })
 
   test('toggle button reveals filters', async () => {
-    new FilterToggleButton(defaultConfig)
+    const { element: buttonContainer } = config.toggleButtonContainer
+
+    new FilterToggleButton(component, config)
+
     const toggleButton = queryByRole(buttonContainer, 'button')
 
-    expect(filterContainer).toHaveAttribute('tabindex', '-1')
-    expect(filterContainer).toHaveClass('moj-js-hidden')
+    expect(component).toHaveAttribute('tabindex', '-1')
+    expect(component).toHaveClass('moj-js-hidden')
 
     await user.click(toggleButton)
 
     expect(toggleButton).toHaveAttribute('aria-expanded', 'true')
     expect(toggleButton.innerHTML).toBe('Hide filter')
-    expect(filterContainer).not.toHaveClass('moj-js-hidden')
-    expect(filterContainer).toHaveFocus()
+    expect(component).not.toHaveClass('moj-js-hidden')
+    expect(component).toHaveFocus()
 
     await user.click(toggleButton)
 
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false')
     expect(toggleButton.innerHTML).toBe('Show filter')
-    expect(filterContainer).toHaveClass('moj-js-hidden')
+    expect(component).toHaveClass('moj-js-hidden')
 
     expect(toggleButton).toHaveFocus()
   })
 
   test('start visible is ignored', () => {
-    const config = merge(defaultConfig, { startHidden: false })
-    new FilterToggleButton(config)
+    const { element: buttonContainer } = config.toggleButtonContainer
+
+    new FilterToggleButton(
+      component,
+      merge(config, {
+        startHidden: false
+      })
+    )
+
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(toggleButton.innerHTML).toBe('Show filter')
-    expect(filterContainer).toHaveClass('moj-js-hidden')
+    expect(component).toHaveClass('moj-js-hidden')
   })
 
   test('adds a close button', async () => {
-    const config = merge(defaultConfig, { startHidden: false })
-    new FilterToggleButton(config)
+    const { element: buttonContainer } = config.toggleButtonContainer
+    const { element: closeButtonContainer } = config.closeButtonContainer
+
+    new FilterToggleButton(
+      component,
+      merge(config, {
+        startHidden: false
+      })
+    )
+
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     await user.click(toggleButton)
@@ -251,50 +298,62 @@ describe('Filter toggle in small mode', () => {
   })
 
   test('hides on resize from big to small', async () => {
+    const { element: buttonContainer } = config.toggleButtonContainer
+
     setMedia({
       width: '800px'
     })
 
-    const config = merge(defaultConfig, { startHidden: false })
-    new FilterToggleButton(config)
+    new FilterToggleButton(
+      component,
+      merge(config, {
+        startHidden: false
+      })
+    )
+
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(toggleButton.innerHTML).toBe('Hide filter')
-    expect(filterContainer).not.toHaveClass('moj-js-hidden')
+    expect(component).not.toHaveClass('moj-js-hidden')
 
     setMedia({
       width: '500px'
     })
 
     expect(toggleButton.innerHTML).toBe('Show filter')
-    expect(filterContainer).toHaveClass('moj-js-hidden')
+    expect(component).toHaveClass('moj-js-hidden')
   })
 
   test('shows on resize from small to big', async () => {
+    const { element: buttonContainer } = config.toggleButtonContainer
+
     setMedia({
       width: '500px'
     })
 
-    const config = merge(defaultConfig)
-    new FilterToggleButton(config)
+    new FilterToggleButton(component, config)
     const toggleButton = queryByRole(buttonContainer, 'button')
 
     expect(toggleButton.innerHTML).toBe('Show filter')
-    expect(filterContainer).toHaveClass('moj-js-hidden')
+    expect(component).toHaveClass('moj-js-hidden')
 
     setMedia({
       width: '800px'
     })
 
     expect(toggleButton.innerHTML).toBe('Hide filter')
-    expect(filterContainer).not.toHaveClass('moj-js-hidden')
+    expect(component).not.toHaveClass('moj-js-hidden')
   })
 
   describe('accessibility', () => {
     test('component has no wcag violations', async () => {
-      new FilterToggleButton(defaultConfig)
+      const { element: buttonContainer } = config.toggleButtonContainer
+
+      new FilterToggleButton(component, config)
+
       const toggleButton = queryByRole(buttonContainer, 'button')
       expect(await axe(document.body)).toHaveNoViolations()
+
       await user.click(toggleButton)
       expect(await axe(document.body)).toHaveNoViolations()
     })

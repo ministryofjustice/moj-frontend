@@ -2,13 +2,14 @@
 
 import { getByLabelText, getByRole, queryByRole } from '@testing-library/dom'
 import { userEvent } from '@testing-library/user-event'
+import { outdent } from 'outdent'
 
 import { AddAnother } from './add-another.mjs'
 
 const user = userEvent.setup()
 
-const createComponent = () => {
-  const html = `
+function createComponent() {
+  const html = outdent`
     <div data-module="moj-add-another">
       <h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Add a person</h2>
       <form>
@@ -25,10 +26,14 @@ const createComponent = () => {
         </fieldset>
         <button type="button" class="govuk-button moj-add-another__add-button">Add another person</button>
       </form>
-    </div>`
-  document.body.innerHTML = html
-  const component = document.querySelector('[data-module="moj-add-another"]')
-  return component
+    </div>
+  `
+
+  document.body.insertAdjacentHTML('afterbegin', html)
+
+  return /** @type {HTMLElement} */ (
+    document.querySelector('[data-module="moj-add-another"]')
+  )
 }
 
 describe('Add Another component', () => {
@@ -100,8 +105,8 @@ describe('Add Another component', () => {
     const firstNameInput = getByLabelText(secondItem, 'First name')
     const lastNameInput = getByLabelText(secondItem, 'Last name')
 
-    expect(firstNameInput.value).toBe('')
-    expect(lastNameInput.value).toBe('')
+    expect(firstNameInput).toHaveValue('')
+    expect(lastNameInput).toHaveValue('')
   })
 
   test('resets form values in a new item', async () => {
@@ -114,15 +119,15 @@ describe('Add Another component', () => {
     await user.type(firstItemFirstNameInput, 'Steve')
     await user.type(firstItemLastNameInput, 'Jobs')
 
-    expect(firstItemFirstNameInput.value).toBe('Steve')
-    expect(firstItemLastNameInput.value).toBe('Jobs')
+    expect(firstItemFirstNameInput).toHaveValue('Steve')
+    expect(firstItemLastNameInput).toHaveValue('Jobs')
 
     const secondItem = component.querySelectorAll('.moj-add-another__item')[1]
     const secondItemFirstNameInput = getByLabelText(secondItem, 'First name')
     const secondItemLastNameInput = getByLabelText(secondItem, 'Last name')
 
-    expect(secondItemFirstNameInput.value).toBe('')
-    expect(secondItemLastNameInput.value).toBe('')
+    expect(secondItemFirstNameInput).toHaveValue('')
+    expect(secondItemLastNameInput).toHaveValue('')
   })
 
   test('focuses the heading after removing an item', async () => {
