@@ -204,6 +204,28 @@ const createPullRequest = async (branchName, title, description = '') => {
 
     const pr = await response.json()
     console.log(`[GITHUB] Pull request created: ${pr.html_url}`)
+
+    // Add label to the pull request
+    const labelEndpoint = `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/issues/${pr.number}/labels`
+    const labelResponse = await fetch(labelEndpoint, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${GITHUB_API_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ labels: ['contribution'] })
+    })
+
+    if (!labelResponse.ok) {
+      const errorText = await labelResponse.text()
+      console.error(
+        `[GITHUB] Failed to add label: ${labelResponse.status} - ${labelResponse.statusText}`
+      )
+      console.error(`[GITHUB] Error details: ${errorText}`)
+      throw new Error('Failed to add label.')
+    }
+
+    console.log(`[GITHUB] Label added to pull request: ${pr.html_url}`)
     return pr.html_url
   } catch (error) {
     console.error('[GITHUB] Error creating pull request:', error.message)
