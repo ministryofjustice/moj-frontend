@@ -59,9 +59,6 @@ Next, follow [the instructions for installing GOV.UK Frontend](https://frontend.
      import * as GOVUKFrontend from '/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js'
      import * as GOVUKFrontend from '/javascripts/moj-frontend-<VERSION-NUMBER>.min.js'
 
-     window.GOVUKFrontend = GOVUKFrontend
-     window.MOJFrontend = MOJFrontend
-
      GOVUKFrontend.initAll()
      MOJFrontend.initAll()
    </script>
@@ -91,9 +88,6 @@ Next, follow [the instructions for installing GOV.UK Frontend](https://frontend.
        <script type="module">
          import * as GOVUKFrontend from '/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js'
          import * as MOJFrontend from '/javascripts/moj-frontend-<VERSION-NUMBER>.min.js'
-
-         window.GOVUKFrontend = GOVUKFrontend
-         window.MOJFrontend = MOJFrontend
 
          GOVUKFrontend.initAll()
          MOJFrontend.initAll()

@@ -1,23 +1,28 @@
-export default class MenuToggle extends HTMLElement {
+export class MenuToggle extends HTMLElement {
   constructor() {
     super()
 
-    this.menuSelector = this.getAttribute('menu')
-    this.$menu = document.querySelector(this.menuSelector)
-    this.$button = this.querySelector('button')
+    const menuSelector = this.getAttribute('menu')
+    const $menu = document.querySelector(menuSelector)
+    const $button = this.querySelector('button')
 
-    if (!this.$menu) {
+    if (!$menu || !($menu instanceof HTMLElement)) {
       console.error('Menu element must exist ')
       return this
     }
-    if (!this.$button) {
+
+    if (!$button || !($button instanceof HTMLElement)) {
       console.error('Menu toggle element must contain a button element')
       return this
     }
-    if (!this.$menu.id) {
+
+    if (!$menu.id) {
       console.error('Menu element must have an id attribute')
       return this
     }
+
+    this.$menu = $menu
+    this.$button = $button
 
     this.$button.setAttribute('aria-controls', this.$menu.id)
 

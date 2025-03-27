@@ -1,46 +1,41 @@
-export function removeAttributeValue(el, attr, value) {
+/**
+ * @param {Element} $element - Element to remove attribute value from
+ * @param {string} attr - Attribute name
+ * @param {string} value - Attribute value
+ */
+export function removeAttributeValue($element, attr, value) {
   let re, m
-  if (el.getAttribute(attr)) {
-    if (el.getAttribute(attr) === value) {
-      el.removeAttribute(attr)
+  if ($element.getAttribute(attr)) {
+    if ($element.getAttribute(attr) === value) {
+      $element.removeAttribute(attr)
     } else {
       re = new RegExp(`(^|\\s)${value}(\\s|$)`)
-      m = el.getAttribute(attr).match(re)
+      m = $element.getAttribute(attr).match(re)
       if (m && m.length === 3) {
-        el.setAttribute(
+        $element.setAttribute(
           attr,
-          el.getAttribute(attr).replace(re, m[1] && m[2] ? ' ' : '')
+          $element.getAttribute(attr).replace(re, m[1] && m[2] ? ' ' : '')
         )
       }
     }
   }
 }
 
-export function addAttributeValue(el, attr, value) {
+/**
+ * @param {Element} $element - Element to add attribute value to
+ * @param {string} attr - Attribute name
+ * @param {string} value - Attribute value
+ */
+export function addAttributeValue($element, attr, value) {
   let re
-  if (!el.getAttribute(attr)) {
-    el.setAttribute(attr, value)
+  if (!$element.getAttribute(attr)) {
+    $element.setAttribute(attr, value)
   } else {
     re = new RegExp(`(^|\\s)${value}(\\s|$)`)
-    if (!re.test(el.getAttribute(attr))) {
-      el.setAttribute(attr, `${el.getAttribute(attr)} ${value}`)
+    if (!re.test($element.getAttribute(attr))) {
+      $element.setAttribute(attr, `${$element.getAttribute(attr)} ${value}`)
     }
   }
-}
-
-export function dragAndDropSupported() {
-  const div = document.createElement('div')
-  return typeof div.ondrop !== 'undefined'
-}
-
-export function formDataSupported() {
-  return typeof FormData === 'function'
-}
-
-export function fileApiSupported() {
-  const input = document.createElement('input')
-  input.type = 'file'
-  return typeof input.files !== 'undefined'
 }
 
 /**
@@ -131,52 +126,4 @@ export function findNearestMatchingElement($element, selector) {
     // If no match found in siblings, move up to parent
     $currentElement = $currentElement.parentElement
   }
-}
-
-/**
- * Move focus to element
- *
- * Sets tabindex to -1 to make the element programmatically focusable,
- * but removes it on blur as the element doesn't need to be focused again.
- *
- * @param {HTMLElement} $element - HTML element
- * @param {object} [options] - Handler options
- * @param {function(this: HTMLElement): void} [options.onBeforeFocus] - Callback before focus
- * @param {function(this: HTMLElement): void} [options.onBlur] - Callback on blur
- */
-export function setFocus($element, options = {}) {
-  const isFocusable = $element.getAttribute('tabindex')
-
-  if (!isFocusable) {
-    $element.setAttribute('tabindex', '-1')
-  }
-
-  /**
-   * Handle element focus
-   */
-  function onFocus() {
-    $element.addEventListener('blur', onBlur, { once: true })
-  }
-
-  /**
-   * Handle element blur
-   */
-  function onBlur() {
-    if (options.onBlur) {
-      options.onBlur.call($element)
-    }
-
-    if (!isFocusable) {
-      $element.removeAttribute('tabindex')
-    }
-  }
-
-  // Add listener to reset element on blur, after focus
-  $element.addEventListener('focus', onFocus, { once: true })
-
-  // Focus element
-  if (options.onBeforeFocus) {
-    options.onBeforeFocus.call($element)
-  }
-  $element.focus()
 }

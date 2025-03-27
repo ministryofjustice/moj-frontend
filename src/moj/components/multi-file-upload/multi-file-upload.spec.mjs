@@ -3,6 +3,7 @@
 import { queryByRole, getByLabelText, fireEvent } from '@testing-library/dom'
 import { userEvent } from '@testing-library/user-event'
 import { configureAxe } from 'jest-axe'
+import { outdent } from 'outdent'
 import { fakeServerWithClock, spy, restore, useFakeXMLHttpRequest } from 'sinon'
 
 import { MultiFileUpload } from './multi-file-upload.mjs'
@@ -15,11 +16,11 @@ const axe = configureAxe({
   }
 })
 
-const createComponent = (options = {}) => {
-  const html = `
+function createComponent() {
+  const html = outdent`
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <div class="moj-multi-file-upload">
+        <div class="moj-multi-file-upload" data-module="moj-multi-file-upload">
           <div class="moj-multi-file__uploaded-files moj-hidden">
             <h2 class="govuk-heading-m">Files added</h2>
             <div class="govuk-summary-list moj-multi-file-upload__list">
@@ -35,14 +36,14 @@ const createComponent = (options = {}) => {
           </div>
         </div>
       </div>
-    </div>`
+    </div>
+  `
 
   document.body.insertAdjacentHTML('afterbegin', html)
-  const component = document.querySelector('.moj-multi-file-upload')
-  return {
-    component,
-    options: { container: component, ...options }
-  }
+
+  return /** @type {HTMLElement} */ (
+    document.querySelector('[data-module="moj-multi-file-upload"]')
+  )
 }
 
 const successResponse = {
@@ -57,33 +58,36 @@ const successResponse = {
 }
 
 describe('Multi-file upload', () => {
-  let component
-  let options
   let server
-  let uploadFileEntryHook
-  let uploadFileExitHook
-  let uploadFileErrorHook
-  let fileDeleteHook
+  let component
+
+  let entryHook
+  let exitHook
+  let errorHook
+  let deleteHook
 
   beforeEach(() => {
     server = fakeServerWithClock.create({
       respondImmediately: true
     })
 
-    uploadFileEntryHook = spy()
-    uploadFileExitHook = spy()
-    uploadFileErrorHook = spy()
-    fileDeleteHook = spy()
-    ;({ component, options } = createComponent({
-      uploadFileEntryHook,
-      uploadFileExitHook,
-      uploadFileErrorHook,
-      fileDeleteHook,
-      uploadUrl: '/upload',
-      deleteUrl: '/delete'
-    }))
+    component = createComponent()
 
-    new MultiFileUpload(options)
+    entryHook = spy()
+    exitHook = spy()
+    errorHook = spy()
+    deleteHook = spy()
+
+    new MultiFileUpload(component, {
+      uploadUrl: '/upload',
+      deleteUrl: '/delete',
+      hooks: {
+        entryHook,
+        exitHook,
+        errorHook,
+        deleteHook
+      }
+    })
   })
 
   afterEach(() => {
@@ -193,9 +197,9 @@ describe('Multi-file upload', () => {
     test('handles successful upload', async () => {
       await user.upload(input, file)
 
-      expect(uploadFileEntryHook).toHaveBeenCalledOnce()
-      expect(uploadFileExitHook).toHaveBeenCalledOnce()
-      expect(uploadFileExitHook).toHaveBeenCalledAfter(uploadFileEntryHook)
+      expect(entryHook).toHaveBeenCalledOnce()
+      expect(exitHook).toHaveBeenCalledOnce()
+      expect(exitHook).toHaveBeenCalledAfter(entryHook)
 
       const successMessage = component.querySelector(
         '.moj-multi-file-upload__success'
@@ -238,7 +242,7 @@ describe('Multi-file upload', () => {
 
       await user.upload(input, file)
 
-      expect(uploadFileErrorHook).toHaveBeenCalledOnce()
+      expect(errorHook).toHaveBeenCalledOnce()
     })
   })
 
@@ -278,7 +282,7 @@ describe('Multi-file upload', () => {
       )
       await user.click(deleteButton)
 
-      expect(fileDeleteHook).toHaveBeenCalledOnce()
+      expect(deleteHook).toHaveBeenCalledOnce()
       expect(server.requests[server.requests.length - 1].url).toBe('/delete')
       expect(server.requests[server.requests.length - 1].method).toBe('POST')
 
@@ -375,9 +379,9 @@ describe('Multi-file upload', () => {
       )
 
       // test callbacks
-      expect(uploadFileEntryHook).toHaveBeenCalledOnce()
-      expect(uploadFileExitHook).toHaveBeenCalledOnce()
-      expect(uploadFileExitHook).toHaveBeenCalledAfter(uploadFileEntryHook)
+      expect(entryHook).toHaveBeenCalledOnce()
+      expect(exitHook).toHaveBeenCalledOnce()
+      expect(exitHook).toHaveBeenCalledAfter(entryHook)
 
       // test file present in UI
       expect(feedbackContainer).not.toHaveClass('moj-hidden')
@@ -422,8 +426,8 @@ describe('Multi-file upload', () => {
         '.moj-multi-file-upload__delete'
       )
 
-      expect(uploadFileEntryHook).toHaveBeenCalledTwice()
-      expect(uploadFileExitHook).toHaveBeenCalledTwice()
+      expect(entryHook).toHaveBeenCalledTwice()
+      expect(exitHook).toHaveBeenCalledTwice()
 
       expect(feedbackContainer).not.toHaveClass('moj-hidden')
       expect(fileRows).toHaveLength(2)
@@ -467,8 +471,8 @@ describe('Multi-file upload', () => {
         '.moj-multi-file-upload__delete'
       )
 
-      expect(uploadFileEntryHook).toHaveBeenCalledTwice()
-      expect(uploadFileExitHook).toHaveBeenCalledTwice()
+      expect(entryHook).toHaveBeenCalledTwice()
+      expect(exitHook).toHaveBeenCalledTwice()
 
       expect(feedbackContainer).not.toHaveClass('moj-hidden')
       expect(fileRows).toHaveLength(2)

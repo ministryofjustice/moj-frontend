@@ -48,22 +48,16 @@ gulp.task('build:javascripts', async () => {
        * Rollup output for each module:
        *
        * - ECMAScript (ES) bundles for browser <script type="module">
-       *   (GOV.UK Frontend resolved via `node_modules/govuk-frontend`)
+       *   (GOV.UK Frontend used exports included in bundle)
        */
       compileScripts(modulePath, {
         srcPath: 'src',
         destPath: 'package',
 
-        // Customise input
-        input: {
-          external: ['govuk-frontend']
-        },
-
         // Customise output
         output: {
           file: modulePath.replace('.mjs', '.bundle.mjs'),
-          format: 'esm',
-          globals: { 'govuk-frontend': 'GOVUKFrontend' }
+          format: 'esm'
         }
       })(),
 
@@ -99,24 +93,18 @@ gulp.task('build:javascripts-minified', async () =>
     /**
      * Rollup output (minified):
      *
-     * - Universal Module Definition (UMD) bundle for browser <script>
-     *   (GOV.UK Frontend resolved via `window.GOVUKFrontend`)
+     * - ECMAScript (ES) module bundle for browser <script type="module">
+     *   (GOV.UK Frontend used exports included in bundle)
      */
     compileScripts('all.mjs', {
       srcPath: 'src/moj',
       destPath: 'package/moj',
 
-      // Customise input
-      input: {
-        external: ['govuk-frontend']
-      },
-
       // Customise output
       output: {
         compact: true,
         file: 'moj-frontend.min.js',
-        format: 'esm',
-        globals: { 'govuk-frontend': 'GOVUKFrontend' }
+        format: 'esm'
       }
     })()
   ])
