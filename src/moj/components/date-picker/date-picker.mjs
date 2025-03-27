@@ -1,45 +1,37 @@
+import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+
 export class DatePicker {
   /**
-   * @param {Element | null} $module - HTML element to use for date picker
+   * @param {Element | null} $root - HTML element to use for date picker
    * @param {DatePickerConfig} [config] - Date picker config
    */
-  constructor($module, config = {}) {
-    if (!$module || !($module instanceof HTMLElement)) {
+  constructor($root, config = {}) {
+    if (!$root || !($root instanceof HTMLElement)) {
       return this
     }
 
-    const $input = $module.querySelector('.moj-js-datepicker-input')
+    this.$root = $root
 
-    // Check that required elements are present
+    /**
+     * Merge configs
+     *
+     * @type {DatePickerConfig}
+     */
+    this.config = mergeConfigs(
+      DatePicker.defaults,
+      config,
+      normaliseDataset(DatePicker, this.$root.dataset)
+    )
+
+    const $input =
+      this.config.input.element ??
+      this.$root.querySelector(this.config.input.selector)
+
     if (!$input || !($input instanceof HTMLInputElement)) {
       return this
     }
 
-    this.$module = $module
     this.$input = $input
-
-    const schema = Object.freeze({
-      properties: {
-        excludedDates: { type: 'string' },
-        excludedDays: { type: 'string' },
-        leadingZeros: { type: 'string' },
-        maxDate: { type: 'string' },
-        minDate: { type: 'string' },
-        weekStartDay: { type: 'string' }
-      }
-    })
-
-    const defaults = {
-      leadingZeros: false,
-      weekStartDay: 'monday'
-    }
-
-    // data attributes override JS config, which overrides defaults
-    this.config = this.mergeConfigs(
-      defaults,
-      config,
-      this.parseDataset(schema, $module.dataset)
-    )
 
     this.dayLabels = [
       'Monday',
@@ -68,22 +60,22 @@ export class DatePicker {
 
     this.currentDate = new Date()
     this.currentDate.setHours(0, 0, 0, 0)
-    this.calendarDays = []
-    this.excludedDates = []
-    this.excludedDays = []
+    this.calendarDays = /** @type {DSCalendarDay[]} */ ([])
+    this.excludedDates = /** @type {Date[]} */ ([])
+    this.excludedDays = /** @type {number[]} */ ([])
 
     this.buttonClass = 'moj-datepicker__button'
     this.selectedDayButtonClass = 'moj-datepicker__button--selected'
     this.currentDayButtonClass = 'moj-datepicker__button--current'
     this.todayButtonClass = 'moj-datepicker__button--today'
 
-    if (this.$module.dataset.initialized) {
+    if (this.$root.dataset.initialized) {
       return this
     }
 
     this.setOptions()
     this.initControls()
-    this.$module.setAttribute('data-initialized', 'true')
+    this.$root.setAttribute('data-initialized', 'true')
   }
 
   initControls() {
@@ -104,29 +96,39 @@ export class DatePicker {
     $inputWrapper.insertAdjacentHTML('beforeend', this.toggleTemplate())
     $componentWrapper.insertAdjacentElement('beforeend', this.$dialog)
 
-    this.$calendarButton = this.$module.querySelector(
-      '.moj-js-datepicker-toggle'
+    this.$calendarButton = /** @type {HTMLButtonElement} */ (
+      this.$root.querySelector('.moj-js-datepicker-toggle')
     )
-    this.$dialogTitle = this.$dialog.querySelector(
-      '.moj-js-datepicker-month-year'
+
+    this.$dialogTitle = /** @type {HTMLHeadingElement} */ (
+      this.$dialog.querySelector('.moj-js-datepicker-month-year')
     )
 
     this.createCalendar()
 
-    this.$prevMonthButton = this.$dialog.querySelector(
-      '.moj-js-datepicker-prev-month'
+    this.$prevMonthButton = /** @type {HTMLButtonElement} */ (
+      this.$dialog.querySelector('.moj-js-datepicker-prev-month')
     )
-    this.$prevYearButton = this.$dialog.querySelector(
-      '.moj-js-datepicker-prev-year'
+
+    this.$prevYearButton = /** @type {HTMLButtonElement} */ (
+      this.$dialog.querySelector('.moj-js-datepicker-prev-year')
     )
-    this.$nextMonthButton = this.$dialog.querySelector(
-      '.moj-js-datepicker-next-month'
+
+    this.$nextMonthButton = /** @type {HTMLButtonElement} */ (
+      this.$dialog.querySelector('.moj-js-datepicker-next-month')
     )
-    this.$nextYearButton = this.$dialog.querySelector(
-      '.moj-js-datepicker-next-year'
+
+    this.$nextYearButton = /** @type {HTMLButtonElement} */ (
+      this.$dialog.querySelector('.moj-js-datepicker-next-year')
     )
-    this.$cancelButton = this.$dialog.querySelector('.moj-js-datepicker-cancel')
-    this.$okButton = this.$dialog.querySelector('.moj-js-datepicker-ok')
+
+    this.$cancelButton = /** @type {HTMLButtonElement} */ (
+      this.$dialog.querySelector('.moj-js-datepicker-cancel')
+    )
+
+    this.$okButton = /** @type {HTMLButtonElement} */ (
+      this.$dialog.querySelector('.moj-js-datepicker-ok')
+    )
 
     // add event listeners
     this.$prevMonthButton.addEventListener('click', (event) =>
@@ -149,12 +151,12 @@ export class DatePicker {
       this.selectDate(this.currentDate)
     })
 
-    const dialogButtons = this.$dialog.querySelectorAll(
+    const $dialogButtons = this.$dialog.querySelectorAll(
       'button:not([disabled="true"])'
     )
 
-    this.$firstButtonInDialog = dialogButtons[0]
-    this.$lastButtonInDialog = dialogButtons[dialogButtons.length - 1]
+    this.$firstButtonInDialog = $dialogButtons[0]
+    this.$lastButtonInDialog = $dialogButtons[$dialogButtons.length - 1]
     this.$firstButtonInDialog.addEventListener('keydown', (event) =>
       this.firstButtonKeydown(event)
     )
@@ -323,7 +325,6 @@ export class DatePicker {
     this.setMinAndMaxDatesOnCalendar()
     this.setExcludedDates()
     this.setExcludedDays()
-    this.setLeadingZeros()
     this.setWeekStartDay()
   }
 
@@ -358,10 +359,10 @@ export class DatePicker {
     }
   }
 
-  /*
+  /**
    * Parses a daterange string into an array of dates
-   * @param {String} datestring - A daterange string in the format "dd/mm/yyyy-dd/mm/yyyy"
-   * @returns {Date[]}
+   *
+   * @param {string} datestring - A daterange string in the format "dd/mm/yyyy-dd/mm/yyyy"
    */
   parseDateRangeString(datestring) {
     const dates = []
@@ -399,18 +400,6 @@ export class DatePicker {
     }
   }
 
-  setLeadingZeros() {
-    if (typeof this.config.leadingZeros !== 'boolean') {
-      if (this.config.leadingZeros.toLowerCase() === 'true') {
-        this.config.leadingZeros = true
-        return
-      }
-      if (this.config.leadingZeros.toLowerCase() === 'false') {
-        this.config.leadingZeros = false
-      }
-    }
-  }
-
   setWeekStartDay() {
     const weekStartDayParam = this.config.weekStartDay
     if (weekStartDayParam && weekStartDayParam.toLowerCase() === 'sunday') {
@@ -423,7 +412,7 @@ export class DatePicker {
   }
 
   /**
-   * Determine if a date is selecteable
+   * Determine if a date is selectable
    *
    * @param {Date} date - the date to check
    * @returns {boolean}
@@ -499,13 +488,16 @@ export class DatePicker {
   /**
    * Get a human readable date in the format Monday 2 March 2024
    *
-   * @param {Date} date - date to format
+   * @param {Date} date - Date to format
    * @returns {string}
    */
   formattedDateHuman(date) {
     return `${this.dayLabels[(date.getDay() + 6) % 7]} ${date.getDate()} ${this.monthLabels[date.getMonth()]} ${date.getFullYear()}`
   }
 
+  /**
+   * @param {MouseEvent} event - Click event
+   */
   backgroundClick(event) {
     if (
       this.isOpen() &&
@@ -519,6 +511,9 @@ export class DatePicker {
     }
   }
 
+  /**
+   * @param {KeyboardEvent} event - Keydown event
+   */
   firstButtonKeydown(event) {
     if (event.key === 'Tab' && event.shiftKey) {
       this.$lastButtonInDialog.focus()
@@ -526,6 +521,9 @@ export class DatePicker {
     }
   }
 
+  /**
+   * @param {KeyboardEvent} event - Keydown event
+   */
   lastButtonKeydown(event) {
     if (event.key === 'Tab' && !event.shiftKey) {
       this.$firstButtonInDialog.focus()
@@ -562,13 +560,16 @@ export class DatePicker {
     }
   }
 
+  /**
+   * @param {boolean} [focus] - Focus the day button
+   */
   setCurrentDate(focus = true) {
     const { currentDate } = this
     this.calendarDays.forEach((calendarDay) => {
-      calendarDay.button.classList.add('moj-datepicker__button')
-      calendarDay.button.classList.add('moj-datepicker__calendar-day')
-      calendarDay.button.setAttribute('tabindex', '-1')
-      calendarDay.button.classList.remove(this.selectedDayButtonClass)
+      calendarDay.$button.classList.add('moj-datepicker__button')
+      calendarDay.$button.classList.add('moj-datepicker__calendar-day')
+      calendarDay.$button.setAttribute('tabindex', '-1')
+      calendarDay.$button.classList.remove(this.selectedDayButtonClass)
       const calendarDayDate = calendarDay.date
       calendarDayDate.setHours(0, 0, 0, 0)
 
@@ -580,9 +581,9 @@ export class DatePicker {
         currentDate.getTime() /* && !calendarDay.button.disabled */
       ) {
         if (focus) {
-          calendarDay.button.setAttribute('tabindex', '0')
-          calendarDay.button.focus()
-          calendarDay.button.classList.add(this.selectedDayButtonClass)
+          calendarDay.$button.setAttribute('tabindex', '0')
+          calendarDay.$button.focus()
+          calendarDay.$button.classList.add(this.selectedDayButtonClass)
         }
       }
 
@@ -590,17 +591,17 @@ export class DatePicker {
         this.inputDate &&
         calendarDayDate.getTime() === this.inputDate.getTime()
       ) {
-        calendarDay.button.classList.add(this.currentDayButtonClass)
-        calendarDay.button.setAttribute('aria-current', 'date')
+        calendarDay.$button.classList.add(this.currentDayButtonClass)
+        calendarDay.$button.setAttribute('aria-current', 'date')
       } else {
-        calendarDay.button.classList.remove(this.currentDayButtonClass)
-        calendarDay.button.removeAttribute('aria-current')
+        calendarDay.$button.classList.remove(this.currentDayButtonClass)
+        calendarDay.$button.removeAttribute('aria-current')
       }
 
       if (calendarDayDate.getTime() === today.getTime()) {
-        calendarDay.button.classList.add(this.todayButtonClass)
+        calendarDay.$button.classList.add(this.todayButtonClass)
       } else {
-        calendarDay.button.classList.remove(this.todayButtonClass)
+        calendarDay.$button.classList.remove(this.todayButtonClass)
       }
     })
 
@@ -608,17 +609,20 @@ export class DatePicker {
     if (!focus) {
       const enabledDays = this.calendarDays.filter((calendarDay) => {
         return (
-          window.getComputedStyle(calendarDay.button).display === 'block' &&
-          !calendarDay.button.disabled
+          window.getComputedStyle(calendarDay.$button).display === 'block' &&
+          !calendarDay.$button.disabled
         )
       })
 
-      enabledDays[0].button.setAttribute('tabindex', '0')
+      enabledDays[0].$button.setAttribute('tabindex', '0')
 
       this.currentDate = enabledDays[0].date
     }
   }
 
+  /**
+   * @param {Date} date - Date to select
+   */
   selectDate(date) {
     if (this.isExcludedDate(date)) {
       return
@@ -638,6 +642,9 @@ export class DatePicker {
     return this.$dialog.classList.contains('moj-datepicker__dialog--open')
   }
 
+  /**
+   * @param {MouseEvent} event - Click event
+   */
   toggleDialog(event) {
     event.preventDefault()
     if (this.isOpen()) {
@@ -676,6 +683,10 @@ export class DatePicker {
     this.$calendarButton.focus()
   }
 
+  /**
+   * @param {Date} date - Date to go to
+   * @param {boolean} [focus] - Focus the day button
+   */
   goToDate(date, focus) {
     const current = this.currentDate
     this.currentDate = date
@@ -746,7 +757,12 @@ export class DatePicker {
     this.goToDate(date)
   }
 
-  // month navigation
+  /**
+   * Month navigation
+   *
+   * @param {KeyboardEvent | MouseEvent} event - Key press or click event
+   * @param {boolean} [focus] - Focus the day button
+   */
   focusNextMonth(event, focus = true) {
     event.preventDefault()
     const date = new Date(this.currentDate)
@@ -754,6 +770,10 @@ export class DatePicker {
     this.goToDate(date, focus)
   }
 
+  /**
+   * @param {KeyboardEvent | MouseEvent} event - Key press or click event
+   * @param {boolean} [focus] - Focus the day button
+   */
   focusPreviousMonth(event, focus = true) {
     event.preventDefault()
     const date = new Date(this.currentDate)
@@ -761,7 +781,12 @@ export class DatePicker {
     this.goToDate(date, focus)
   }
 
-  // year navigation
+  /**
+   * Year navigation
+   *
+   * @param {KeyboardEvent | MouseEvent} event - Key press or click event
+   * @param {boolean} [focus] - Focus the day button
+   */
   focusNextYear(event, focus = true) {
     event.preventDefault()
     const date = new Date(this.currentDate)
@@ -769,6 +794,10 @@ export class DatePicker {
     this.goToDate(date, focus)
   }
 
+  /**
+   * @param {KeyboardEvent | MouseEvent} event - Key press or click event
+   * @param {boolean} [focus] - Focus the day button
+   */
   focusPreviousYear(event, focus = true) {
     event.preventDefault()
     const date = new Date(this.currentDate)
@@ -777,77 +806,55 @@ export class DatePicker {
   }
 
   /**
-   * Parse dataset
+   * Date picker default config
    *
-   * @param {Schema} schema - Component class
-   * @param {DOMStringMap} dataset - HTML element dataset
-   * @returns {object} Normalised dataset
+   * @type {DatePickerConfig}
    */
-  parseDataset(schema, dataset) {
-    const parsed = {}
-
-    for (const [field, ,] of Object.entries(schema.properties)) {
-      if (field in dataset) {
-        parsed[field] = dataset[field]
-      }
+  static defaults = Object.freeze({
+    leadingZeros: false,
+    weekStartDay: 'monday',
+    input: {
+      selector: '.moj-js-datepicker-input'
     }
-
-    return parsed
-  }
+  })
 
   /**
-   * Config merging function
+   * Date picker config schema
    *
-   * Takes any number of objects and combines them together, with
-   * greatest priority on the LAST item passed in.
-   *
-   * @param {...{ [key: string]: unknown }} configObjects - Config objects to merge
-   * @returns {{ [key: string]: unknown }} A merged config object
+   * @satisfies {Schema<DatePickerConfig>}
    */
-  mergeConfigs(...configObjects) {
-    const formattedConfigObject = {}
-
-    // Loop through each of the passed objects
-    for (const configObject of configObjects) {
-      for (const key of Object.keys(configObject)) {
-        const option = formattedConfigObject[key]
-        const override = configObject[key]
-
-        // Push their keys one-by-one into formattedConfigObject. Any duplicate
-        // keys with object values will be merged, otherwise the new value will
-        // override the existing value.
-        if (typeof option === 'object' && typeof override === 'object') {
-          // @ts-expect-error Index signature for type 'string' is missing
-          formattedConfigObject[key] = this.mergeConfigs(option, override)
-        } else {
-          formattedConfigObject[key] = override
-        }
-      }
+  static schema = Object.freeze({
+    properties: {
+      excludedDates: { type: 'string' },
+      excludedDays: { type: 'string' },
+      leadingZeros: { type: 'boolean' },
+      maxDate: { type: 'string' },
+      minDate: { type: 'string' },
+      weekStartDay: { type: 'string' },
+      input: { type: 'object' }
     }
-
-    return formattedConfigObject
-  }
+  })
 }
 
 class DSCalendarDay {
   /**
    *
-   * @param {HTMLElement} button
+   * @param {HTMLButtonElement} $button
    * @param {number} index
    * @param {number} row
    * @param {number} column
    * @param {DatePicker} picker
    */
-  constructor(button, index, row, column, picker) {
+  constructor($button, index, row, column, picker) {
     this.index = index
     this.row = row
     this.column = column
-    this.button = button
+    this.$button = $button
     this.picker = picker
 
     this.date = new Date()
-    this.button.addEventListener('keydown', this.keyPress.bind(this))
-    this.button.addEventListener('click', this.click.bind(this))
+    this.$button.addEventListener('keydown', this.keyPress.bind(this))
+    this.$button.addEventListener('click', this.click.bind(this))
   }
 
   /**
@@ -860,26 +867,29 @@ class DSCalendarDay {
     let accessibleLabel = this.picker.formattedDateHuman(day)
 
     if (disabled) {
-      this.button.setAttribute('aria-disabled', 'true')
+      this.$button.setAttribute('aria-disabled', 'true')
       accessibleLabel = `Excluded date, ${accessibleLabel}`
     } else {
-      this.button.removeAttribute('aria-disabled')
+      this.$button.removeAttribute('aria-disabled')
     }
 
     if (hidden) {
-      this.button.style.display = 'none'
+      this.$button.style.display = 'none'
     } else {
-      this.button.style.display = 'block'
+      this.$button.style.display = 'block'
     }
-    this.button.setAttribute(
+    this.$button.setAttribute(
       'data-testid',
       this.picker.formattedDateFromDate(day)
     )
 
-    this.button.innerHTML = `<span class="govuk-visually-hidden">${accessibleLabel}</span><span aria-hidden="true">${label}</span>`
+    this.$button.innerHTML = `<span class="govuk-visually-hidden">${accessibleLabel}</span><span aria-hidden="true">${label}</span>`
     this.date = new Date(day)
   }
 
+  /**
+   * @param {MouseEvent} event - Click event
+   */
   click(event) {
     this.picker.goToDate(this.date)
     this.picker.selectDate(this.date)
@@ -888,6 +898,9 @@ class DSCalendarDay {
     event.preventDefault()
   }
 
+  /**
+   * @param {KeyboardEvent} event - Keydown event
+   */
   keyPress(event) {
     let calendarNavKey = true
 
@@ -944,12 +957,15 @@ class DSCalendarDay {
  * @typedef {object} DatePickerConfig
  * @property {string} [excludedDates] - Dates that cannot be selected
  * @property {string} [excludedDays] - Days that cannot be selected
- * @property {boolean} [leadingZeroes] - Whether to add leading zeroes when populating the field
+ * @property {boolean} [leadingZeros] - Whether to add leading zeroes when populating the field
  * @property {string} [minDate] - The earliest available date
  * @property {string} [maxDate] - The latest available date
  * @property {string} [weekStartDay] - First day of the week in calendar view
+ * @property {object} [input] - Input config
+ * @property {string} [input.selector] - Selector for the input element
+ * @property {Element | null} [input.element] - HTML element for the input
  */
 
 /**
- * @import { Schema } from '../../all.mjs'
+ * @import { Schema } from '../../common/configuration.mjs'
  */

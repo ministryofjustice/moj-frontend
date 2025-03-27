@@ -3,6 +3,7 @@
 import { getByDisplayValue, getByText } from '@testing-library/dom'
 import { userEvent } from '@testing-library/user-event'
 import { configureAxe } from 'jest-axe'
+import { outdent } from 'outdent'
 
 import { PasswordReveal } from './password-reveal.mjs'
 
@@ -14,21 +15,38 @@ const axe = configureAxe({
   }
 })
 
+function createComponent() {
+  const html = outdent`
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-label--m" for="password">
+        Password
+      </label>
+
+      <input class="govuk-input govuk-input--width-20" id="password" name="password" type="password" value="1234ABC!" data-module="moj-password-reveal">
+    </div>
+  `
+
+  document.body.insertAdjacentHTML('afterbegin', html)
+
+  return /** @type {HTMLElement} */ (
+    document.querySelector('[data-module="moj-password-reveal"]')
+  )
+}
+
 describe('Password reveal', () => {
+  let component
   let group
 
   beforeEach(() => {
-    const input = document.createElement('input')
-    input.type = 'password'
-    input.value = 'password'
+    component = createComponent()
 
-    const container = document.createElement('div')
-    container.className = 'govuk-form-group'
-    container.append(input)
+    new PasswordReveal(component)
 
-    new PasswordReveal(input)
+    group = component.parentElement
+  })
 
-    group = input.parentElement
+  afterEach(() => {
+    document.body.innerHTML = ''
   })
 
   test('initialises container', () => {
@@ -37,7 +55,7 @@ describe('Password reveal', () => {
   })
 
   test('toggle reveal', async () => {
-    const input = getByDisplayValue(group, 'password')
+    const input = getByDisplayValue(group, '1234ABC!')
     const button = getByText(group, 'Show')
 
     await user.click(button)

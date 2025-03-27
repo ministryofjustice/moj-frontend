@@ -1,46 +1,41 @@
-export function removeAttributeValue(el, attr, value) {
+/**
+ * @param {Element} $element - Element to remove attribute value from
+ * @param {string} attr - Attribute name
+ * @param {string} value - Attribute value
+ */
+export function removeAttributeValue($element, attr, value) {
   let re, m
-  if (el.getAttribute(attr)) {
-    if (el.getAttribute(attr) === value) {
-      el.removeAttribute(attr)
+  if ($element.getAttribute(attr)) {
+    if ($element.getAttribute(attr) === value) {
+      $element.removeAttribute(attr)
     } else {
       re = new RegExp(`(^|\\s)${value}(\\s|$)`)
-      m = el.getAttribute(attr).match(re)
+      m = $element.getAttribute(attr).match(re)
       if (m && m.length === 3) {
-        el.setAttribute(
+        $element.setAttribute(
           attr,
-          el.getAttribute(attr).replace(re, m[1] && m[2] ? ' ' : '')
+          $element.getAttribute(attr).replace(re, m[1] && m[2] ? ' ' : '')
         )
       }
     }
   }
 }
 
-export function addAttributeValue(el, attr, value) {
+/**
+ * @param {Element} $element - Element to add attribute value to
+ * @param {string} attr - Attribute name
+ * @param {string} value - Attribute value
+ */
+export function addAttributeValue($element, attr, value) {
   let re
-  if (!el.getAttribute(attr)) {
-    el.setAttribute(attr, value)
+  if (!$element.getAttribute(attr)) {
+    $element.setAttribute(attr, value)
   } else {
     re = new RegExp(`(^|\\s)${value}(\\s|$)`)
-    if (!re.test(el.getAttribute(attr))) {
-      el.setAttribute(attr, `${el.getAttribute(attr)} ${value}`)
+    if (!re.test($element.getAttribute(attr))) {
+      $element.setAttribute(attr, `${$element.getAttribute(attr)} ${value}`)
     }
   }
-}
-
-export function dragAndDropSupported() {
-  const div = document.createElement('div')
-  return typeof div.ondrop !== 'undefined'
-}
-
-export function formDataSupported() {
-  return typeof FormData === 'function'
-}
-
-export function fileApiSupported() {
-  const input = document.createElement('input')
-  input.type = 'file'
-  return typeof input.files !== 'undefined'
 }
 
 /**

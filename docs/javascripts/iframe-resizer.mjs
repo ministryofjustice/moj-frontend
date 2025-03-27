@@ -1,6 +1,13 @@
-export default class IFrameResizer {
-  constructor(iframe) {
-    this.iframe = iframe
+export class IFrameResizer {
+  /**
+   * @param {Element | null} $root - HTML element to use for iframe resizer
+   */
+  constructor($root) {
+    if (!$root || !($root instanceof HTMLIFrameElement)) {
+      return this
+    }
+
+    this.$root = $root
     this.observer = null
     this.contentWindow = null
 
@@ -11,25 +18,21 @@ export default class IFrameResizer {
     this.onMutation = this.onMutation.bind(this)
 
     // Start initialization
-    this.iframe.addEventListener('load', this.onLoad)
+    this.$root.addEventListener('load', this.onLoad)
   }
 
   onLoad() {
     try {
-      this.contentWindow = this.iframe.contentWindow
+      this.contentWindow = this.$root.contentWindow
 
       // Create ResizeObserver to watch the iframe content
-      this.resizeObserver = new ResizeObserver((entries) => {
-        for (const entry of entries) {
-          this.onResize(entry)
-        }
+      this.resizeObserver = new ResizeObserver(() => {
+        this.onResize()
       })
 
       // Create MutationObserver to watch for visibility changes
-      this.mutationObserver = new MutationObserver((mutations) => {
-        for (const mutation of mutations) {
-          this.onMutation(mutation)
-        }
+      this.mutationObserver = new MutationObserver(() => {
+        this.onMutation()
       })
 
       // Observe the body of the iframe content
@@ -70,7 +73,7 @@ export default class IFrameResizer {
     try {
       const body = this.contentWindow.document.body
       const html = this.contentWindow.document.documentElement
-      const elements = body.getElementsByTagName('*')
+      const elements = Array.from(body.getElementsByTagName('*'))
 
       let maxHeight = html.offsetHeight
       const padding = 30
@@ -85,7 +88,7 @@ export default class IFrameResizer {
       }
 
       // Update iframe height
-      this.iframe.style.height = `${maxHeight}px`
+      this.$root.style.height = `${maxHeight}px`
     } catch (error) {
       console.error('Failed to adjust iframe size:', error)
     }
@@ -98,6 +101,6 @@ export default class IFrameResizer {
     if (this.mutationObserver) {
       this.mutationObserver.disconnect()
     }
-    this.iframe.removeEventListener('load', this.onLoad)
+    this.$root.removeEventListener('load', this.onLoad)
   }
 }

@@ -1,53 +1,55 @@
 export class PasswordReveal {
   /**
-   * @param {Element | null} element - HTML element to use for password reveal
+   * @param {Element | null} $input - HTML element to use for password reveal
    */
-  constructor(element) {
-    if (!element || !(element instanceof HTMLInputElement)) {
+  constructor($input) {
+    if (!$input || !($input instanceof HTMLInputElement)) {
       return this
     }
 
-    this.el = element
-    this.container = element.parentElement
+    this.$input = $input
+    this.$root = $input.parentElement
 
-    if (this.container.hasAttribute('data-moj-password-reveal-init')) {
+    if (this.$root.hasAttribute('data-moj-password-reveal-init')) {
       return this
     }
 
-    this.container.setAttribute('data-moj-password-reveal-init', '')
+    this.$root.setAttribute('data-moj-password-reveal-init', '')
 
-    this.el.setAttribute('spellcheck', 'false')
+    this.$input.setAttribute('spellcheck', 'false')
     this.createButton()
   }
 
   createButton() {
-    this.group = document.createElement('div')
-    this.button = document.createElement('button')
+    this.$group = document.createElement('div')
+    this.$button = document.createElement('button')
 
-    this.button.setAttribute('type', 'button')
+    this.$button.setAttribute('type', 'button')
 
-    this.group.className = 'moj-password-reveal'
+    this.$group.classList.add('moj-password-reveal')
+    this.$button.classList.add(
+      'govuk-button',
+      'govuk-button--secondary',
+      'moj-password-reveal__button'
+    )
 
-    this.button.className =
-      'govuk-button govuk-button--secondary moj-password-reveal__button'
-
-    this.button.innerHTML =
+    this.$button.innerHTML =
       'Show <span class="govuk-visually-hidden">password</span>'
 
-    this.button.addEventListener('click', this.onButtonClick.bind(this))
+    this.$button.addEventListener('click', this.onButtonClick.bind(this))
 
-    this.group.append(this.el, this.button)
-    this.container.append(this.group)
+    this.$group.append(this.$input, this.$button)
+    this.$root.append(this.$group)
   }
 
   onButtonClick() {
-    if (this.el.type === 'password') {
-      this.el.type = 'text'
-      this.button.innerHTML =
+    if (this.$input.type === 'password') {
+      this.$input.type = 'text'
+      this.$button.innerHTML =
         'Hide <span class="govuk-visually-hidden">password</span>'
     } else {
-      this.el.type = 'password'
-      this.button.innerHTML =
+      this.$input.type = 'password'
+      this.$button.innerHTML =
         'Show <span class="govuk-visually-hidden">password</span>'
     }
   }

@@ -36,21 +36,7 @@ function initAll(config) {
   )
 
   $multiSelects.forEach(($multiSelect) => {
-    const containerSelector = $multiSelect.getAttribute(
-      'data-multi-select-checkbox'
-    )
-
-    if (!($multiSelect instanceof HTMLElement) || !containerSelector) {
-      return
-    }
-
-    new MultiSelect({
-      container: $multiSelect.querySelector(containerSelector),
-      checkboxes: $multiSelect.querySelectorAll(
-        'tbody .govuk-checkboxes__input'
-      ),
-      id_prefix: $multiSelect.getAttribute('data-multi-select-idprefix')
-    })
+    new MultiSelect($multiSelect)
   })
 
   const $passwordReveals = scope.querySelectorAll(
@@ -66,33 +52,7 @@ function initAll(config) {
   )
 
   $richTextEditors.forEach(($richTextEditor) => {
-    const options = {
-      textarea: $richTextEditor
-    }
-
-    const toolbarAttr = $richTextEditor.getAttribute(
-      'data-moj-rich-text-editor-toolbar'
-    )
-
-    if (toolbarAttr) {
-      const toolbar = toolbarAttr.split(',')
-
-      options.toolbar = {}
-
-      for (const option of toolbar) {
-        if (
-          option === 'bold' ||
-          option === 'italic' ||
-          option === 'underline' ||
-          option === 'bullets' ||
-          option === 'numbers'
-        ) {
-          options.toolbar[option] = true
-        }
-      }
-    }
-
-    new RichTextEditor(options)
+    new RichTextEditor($richTextEditor)
   })
 
   const $searchToggles = scope.querySelectorAll(
@@ -100,15 +60,7 @@ function initAll(config) {
   )
 
   $searchToggles.forEach(($searchToggle) => {
-    new SearchToggle({
-      toggleButton: {
-        container: $searchToggle.querySelector('.moj-search-toggle__toggle'),
-        text: $searchToggle.getAttribute('data-moj-search-toggle-text')
-      },
-      search: {
-        container: $searchToggle.querySelector('.moj-search')
-      }
-    })
+    new SearchToggle($searchToggle)
   })
 
   const $sortableTables = scope.querySelectorAll(
@@ -116,9 +68,7 @@ function initAll(config) {
   )
 
   $sortableTables.forEach(($table) => {
-    new SortableTable({
-      table: $table
-    })
+    new SortableTable($table)
   })
 
   const $datePickers = scope.querySelectorAll('[data-module="moj-date-picker"]')
@@ -161,18 +111,4 @@ export {
 /**
  * @typedef {object} Config
  * @property {Element} [scope=document] - Scope to query for components
- */
-
-/**
- * Schema for component config
- *
- * @typedef {object} Schema
- * @property {{ [field: string]: SchemaProperty | undefined }} properties - Schema properties
- */
-
-/**
- * Schema property for component config
- *
- * @typedef {object} SchemaProperty
- * @property {'string' | 'boolean' | 'number' | 'object'} type - Property type
  */
