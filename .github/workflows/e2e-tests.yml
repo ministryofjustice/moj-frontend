@@ -32,6 +32,13 @@ jobs:
           ENV: development
         run: npm start &
 
+      - name: Wait for server to be available
+        run: |
+          until curl -s http://localhost:3001 > /dev/null; do
+            echo "Waiting for server to be available..."
+            sleep 5
+          done
+
       - name: Install xvfb
         run: sudo apt-get install -y xvfb
 
