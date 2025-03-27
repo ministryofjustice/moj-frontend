@@ -1,19 +1,11 @@
-export class AddAnother {
+import { Component } from 'govuk-frontend'
+
+export class AddAnother extends Component {
   /**
    * @param {Element | null} $root - HTML element to use for add another
    */
   constructor($root) {
-    if (!$root || !($root instanceof HTMLElement)) {
-      return this
-    }
-
-    this.$root = $root
-
-    if (this.$root.hasAttribute('data-moj-add-another-init')) {
-      return this
-    }
-
-    this.$root.setAttribute('data-moj-add-another-init', '')
+    super($root)
 
     this.$root.addEventListener('click', this.onRemoveButtonClick.bind(this))
     this.$root.addEventListener('click', this.onAddButtonClick.bind(this))
@@ -201,4 +193,9 @@ export class AddAnother {
       $heading.focus()
     }
   }
+
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'moj-add-another'
 }

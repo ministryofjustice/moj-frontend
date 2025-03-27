@@ -1,33 +1,15 @@
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from 'govuk-frontend'
 
-export class DatePicker {
+/**
+ * @augments {ConfigurableComponent<DatePickerConfig>}
+ */
+export class DatePicker extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for date picker
    * @param {DatePickerConfig} [config] - Date picker config
    */
   constructor($root, config = {}) {
-    if (!$root || !($root instanceof HTMLElement)) {
-      return this
-    }
-
-    this.$root = $root
-
-    if (this.$root.hasAttribute('data-moj-date-picker-init')) {
-      return this
-    }
-
-    this.$root.setAttribute('data-moj-date-picker-init', '')
-
-    /**
-     * Merge configs
-     *
-     * @type {DatePickerConfig}
-     */
-    this.config = mergeConfigs(
-      DatePicker.defaults,
-      config,
-      normaliseDataset(DatePicker, this.$root.dataset)
-    )
+    super($root, config)
 
     const $input =
       this.config.input.element ??
@@ -807,6 +789,11 @@ export class DatePicker {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'moj-date-picker'
+
+  /**
    * Date picker default config
    *
    * @type {DatePickerConfig}
@@ -824,17 +811,19 @@ export class DatePicker {
    *
    * @satisfies {Schema<DatePickerConfig>}
    */
-  static schema = Object.freeze({
-    properties: {
-      excludedDates: { type: 'string' },
-      excludedDays: { type: 'string' },
-      leadingZeros: { type: 'boolean' },
-      maxDate: { type: 'string' },
-      minDate: { type: 'string' },
-      weekStartDay: { type: 'string' },
-      input: { type: 'object' }
-    }
-  })
+  static schema = Object.freeze(
+    /** @type {const} */ ({
+      properties: {
+        excludedDates: { type: 'string' },
+        excludedDays: { type: 'string' },
+        leadingZeros: { type: 'boolean' },
+        maxDate: { type: 'string' },
+        minDate: { type: 'string' },
+        weekStartDay: { type: 'string' },
+        input: { type: 'object' }
+      }
+    })
+  )
 }
 
 class DSCalendarDay {
@@ -968,5 +957,5 @@ class DSCalendarDay {
  */
 
 /**
- * @import { Schema } from '../../common/configuration.mjs'
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
  */

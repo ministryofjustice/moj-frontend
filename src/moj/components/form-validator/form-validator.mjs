@@ -1,34 +1,17 @@
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from 'govuk-frontend'
+
 import { addAttributeValue, removeAttributeValue } from '../../helpers.mjs'
 
-export class FormValidator {
+/**
+ * @augments {ConfigurableComponent<FormValidatorConfig, HTMLFormElement>}
+ */
+export class FormValidator extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for form validator
    * @param {FormValidatorConfig} [config] - Form validator config
    */
   constructor($root, config = {}) {
-    if (!$root || !($root instanceof HTMLFormElement)) {
-      return this
-    }
-
-    this.$root = $root
-
-    if (this.$root.hasAttribute('data-moj-form-validator-init')) {
-      return this
-    }
-
-    this.$root.setAttribute('data-moj-form-validator-init', '')
-
-    /**
-     * Merge configs
-     *
-     * @type {FormValidatorConfig}
-     */
-    this.config = mergeConfigs(
-      FormValidator.defaults,
-      config,
-      normaliseDataset(FormValidator, this.$root.dataset)
-    )
+    super($root, config)
 
     const $summary =
       this.config.summary.element ||
@@ -240,6 +223,11 @@ export class FormValidator {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'moj-form-validator'
+
+  /**
    * Multi file upload default config
    *
    * @type {FormValidatorConfig}
@@ -255,11 +243,13 @@ export class FormValidator {
    *
    * @satisfies {Schema<FormValidatorConfig>}
    */
-  static schema = Object.freeze({
-    properties: {
-      summary: { type: 'object' }
-    }
-  })
+  static schema = Object.freeze(
+    /** @type {const} */ ({
+      properties: {
+        summary: { type: 'object' }
+      }
+    })
+  )
 }
 
 /**
@@ -290,5 +280,5 @@ export class FormValidator {
  */
 
 /**
- * @import { Schema } from '../../common/configuration.mjs'
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
  */

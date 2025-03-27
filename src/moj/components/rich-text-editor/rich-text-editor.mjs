@@ -1,26 +1,19 @@
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from 'govuk-frontend'
 
-export class RichTextEditor {
+/**
+ * @augments {ConfigurableComponent<RichTextEditorConfig>}
+ */
+export class RichTextEditor extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for rich text editor
    * @param {RichTextEditorConfig} config
    */
   constructor($root, config = {}) {
-    if (
-      !$root ||
-      !($root instanceof HTMLElement) ||
-      !RichTextEditor.isSupported()
-    ) {
+    super($root, config)
+
+    if (!RichTextEditor.isSupported()) {
       return this
     }
-
-    this.$root = $root
-
-    if (this.$root.hasAttribute('data-rich-text-editor-init')) {
-      return this
-    }
-
-    this.$root.setAttribute('data-rich-text-editor-init', '')
 
     const $textarea = this.$root.querySelector('.govuk-textarea')
     if (!$textarea || !($textarea instanceof HTMLTextAreaElement)) {
@@ -28,17 +21,6 @@ export class RichTextEditor {
     }
 
     this.$textarea = $textarea
-
-    /**
-     * Merge configs
-     *
-     * @type {RichTextEditorConfig}
-     */
-    this.config = mergeConfigs(
-      RichTextEditor.defaults,
-      config,
-      normaliseDataset(RichTextEditor, this.$root.dataset)
-    )
 
     this.createToolbar()
     this.hideDefault()
@@ -216,6 +198,11 @@ export class RichTextEditor {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'moj-rich-text-editor'
+
+  /**
    * Rich text editor config
    *
    * @type {RichTextEditorConfig}
@@ -235,11 +222,13 @@ export class RichTextEditor {
    *
    * @satisfies {Schema<RichTextEditorConfig>}
    */
-  static schema = Object.freeze({
-    properties: {
-      toolbar: { type: 'object' }
-    }
-  })
+  static schema = Object.freeze(
+    /** @type {const} */ ({
+      properties: {
+        toolbar: { type: 'object' }
+      }
+    })
+  )
 }
 
 /**
@@ -261,5 +250,5 @@ export class RichTextEditor {
  */
 
 /**
- * @import { Schema } from '../../common/configuration.mjs'
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
  */

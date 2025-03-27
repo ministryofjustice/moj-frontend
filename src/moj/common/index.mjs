@@ -48,28 +48,3 @@ export function setFocus($element, options = {}) {
   options.onBeforeFocus?.call($element)
   $element.focus()
 }
-
-/**
- * Check for an array
- *
- * @param {unknown} option - Option to check
- * @returns {boolean} Whether the option is an array
- */
-function isArray(option) {
-  return Array.isArray(option)
-}
-
-/**
- * Check for an object
- *
- * @template {Partial<Record<keyof ObjectType, unknown>>} [ObjectType=ObjectNested]
- * @param {unknown | ObjectType} option - Option to check
- * @returns {option is ObjectType} Whether the option is an object
- */
-export function isObject(option) {
-  return !!option && typeof option === 'object' && !isArray(option)
-}
-
-/**
- * @import { ObjectNested } from './configuration.mjs'
- */

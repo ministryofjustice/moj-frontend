@@ -324,39 +324,4 @@ describe('sortable table options', () => {
       'component sorted by Elevation in highest to lowest order'
     )
   })
-
-  test('allows reinitialization of component without duplicating functionality', () => {
-    new SortableTable(component)
-    new SortableTable(component) // Initialize again
-
-    // Check that we don't have duplicate buttons in headers
-    const headers = component.querySelectorAll('th[aria-sort]')
-    headers.forEach((header) => {
-      const buttons = header.querySelectorAll('button')
-      expect(buttons).toHaveLength(1)
-    })
-  })
-
-  test('maintains original sort when reinitialized', async () => {
-    new SortableTable(component)
-
-    const elevationHeaderButton = queryByRole(component, 'button', {
-      name: 'Elevation'
-    })
-
-    await user.click(elevationHeaderButton)
-
-    new SortableTable(component) // Reinitialize
-
-    const cells = component.querySelectorAll('tbody tr td:nth-child(2)')
-    const values = Array.from(cells).map((cell) =>
-      Number.parseInt(cell.getAttribute('data-sort-value'))
-    )
-
-    expect(values).toEqual([5895, 6961, 8611, 8850])
-    expect(elevationHeaderButton.parentElement).toHaveAttribute(
-      'aria-sort',
-      'ascending'
-    )
-  })
 })

@@ -1,33 +1,15 @@
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from 'govuk-frontend'
 
-export class ButtonMenu {
+/**
+ * @augments {ConfigurableComponent<ButtonMenuConfig>}
+ */
+export class ButtonMenu extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for button menu
    * @param {ButtonMenuConfig} [config] - Button menu config
    */
   constructor($root, config = {}) {
-    if (!$root || !($root instanceof HTMLElement)) {
-      return this
-    }
-
-    this.$root = $root
-
-    if (this.$root.hasAttribute('data-moj-button-init')) {
-      return this
-    }
-
-    this.$root.setAttribute('data-moj-button-init', '')
-
-    /**
-     * Merge configs
-     *
-     * @type {ButtonMenuConfig}
-     */
-    this.config = mergeConfigs(
-      ButtonMenu.defaults,
-      config,
-      normaliseDataset(ButtonMenu, this.$root.dataset)
-    )
+    super($root, config)
 
     // If only one button is provided, don't initiate a menu and toggle button
     // if classes have been provided for the toggleButton, apply them to the single item
@@ -267,6 +249,11 @@ export class ButtonMenu {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'moj-button-menu'
+
+  /**
    * Button menu config
    *
    * @type {ButtonMenuConfig}
@@ -280,15 +267,17 @@ export class ButtonMenu {
   /**
    * Button menu config schema
    *
-   * @satisfies {Schema<ButtonMenuConfig>}
+   * @type {Schema<ButtonMenuConfig>}
    */
-  static schema = Object.freeze({
-    properties: {
-      buttonText: { type: 'string' },
-      buttonClasses: { type: 'string' },
-      alignMenu: { type: 'string' }
-    }
-  })
+  static schema = Object.freeze(
+    /** @type {const} */ ({
+      properties: {
+        buttonText: { type: 'string' },
+        buttonClasses: { type: 'string' },
+        alignMenu: { type: 'string' }
+      }
+    })
+  )
 }
 
 /**
@@ -299,5 +288,5 @@ export class ButtonMenu {
  */
 
 /**
- * @import { Schema } from '../../common/configuration.mjs'
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
  */

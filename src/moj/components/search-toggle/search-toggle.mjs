@@ -1,33 +1,15 @@
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from 'govuk-frontend'
 
-export class SearchToggle {
+/**
+ * @augments {ConfigurableComponent<SearchToggleConfig>}
+ */
+export class SearchToggle extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for search toggle
    * @param {SearchToggleConfig} [config] - Search toggle config
    */
   constructor($root, config = {}) {
-    if (!$root || !($root instanceof HTMLElement)) {
-      return this
-    }
-
-    this.$root = $root
-
-    if (this.$root.hasAttribute('data-moj-search-toggle-init')) {
-      return this
-    }
-
-    this.$root.setAttribute('data-moj-search-toggle-init', '')
-
-    /**
-     * Merge configs
-     *
-     * @type {SearchToggleConfig}
-     */
-    this.config = mergeConfigs(
-      SearchToggle.defaults,
-      config,
-      normaliseDataset(SearchToggle, this.$root.dataset)
-    )
+    super($root, config)
 
     const $searchContainer =
       this.config.searchContainer.element ??
@@ -103,6 +85,11 @@ export class SearchToggle {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'moj-search-toggle'
+
+  /**
    * Search toggle config
    *
    * @type {SearchToggleConfig}
@@ -124,13 +111,15 @@ export class SearchToggle {
    *
    * @satisfies {Schema<SearchToggleConfig>}
    */
-  static schema = Object.freeze({
-    properties: {
-      searchContainer: { type: 'object' },
-      toggleButton: { type: 'object' },
-      toggleButtonContainer: { type: 'object' }
-    }
-  })
+  static schema = Object.freeze(
+    /** @type {const} */ ({
+      properties: {
+        searchContainer: { type: 'object' },
+        toggleButton: { type: 'object' },
+        toggleButtonContainer: { type: 'object' }
+      }
+    })
+  )
 }
 
 /**
@@ -146,5 +135,5 @@ export class SearchToggle {
  */
 
 /**
- * @import { Schema } from '../../common/configuration.mjs'
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
  */

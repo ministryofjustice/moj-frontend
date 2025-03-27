@@ -1,13 +1,11 @@
-export class Cookies {
+import { Component } from 'govuk-frontend'
+
+export class Cookies extends Component {
   /**
    * @param {Element | null} $root - HTML element to use for cookies
    */
   constructor($root) {
-    if (!$root || !($root instanceof HTMLElement)) {
-      return this
-    }
-
-    this.$root = $root
+    super($root)
 
     const $accept = this.$root.querySelector('[name="accept"]')
     $accept.addEventListener('click', this.accept.bind(this))
@@ -56,6 +54,11 @@ export class Cookies {
 
     window.location.reload()
   }
+
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'app-cookies'
 }
 
 function gtag() {
