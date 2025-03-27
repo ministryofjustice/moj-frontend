@@ -1,0 +1,6 @@
+{
+  "fullName": "test test",
+  "emailAddress": "test@test.cin",
+  "teamName": "test",
+  "shareYourDetails": "addTeamNameWhenRequested"
+}
