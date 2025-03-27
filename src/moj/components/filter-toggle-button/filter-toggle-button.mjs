@@ -12,6 +12,12 @@ export class FilterToggleButton {
 
     this.$root = $root
 
+    if (this.$root.hasAttribute('data-moj-filter-init')) {
+      return this
+    }
+
+    this.$root.setAttribute('data-moj-filter-init', '')
+
     /**
      * Merge configs
      *

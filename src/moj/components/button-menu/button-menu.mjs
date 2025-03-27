@@ -12,6 +12,12 @@ export class ButtonMenu {
 
     this.$root = $root
 
+    if (this.$root.hasAttribute('data-moj-button-init')) {
+      return this
+    }
+
+    this.$root.setAttribute('data-moj-button-init', '')
+
     /**
      * Merge configs
      *

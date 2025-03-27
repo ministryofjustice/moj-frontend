@@ -17,6 +17,12 @@ export class Alert {
 
     this.$root = $root
 
+    if (this.$root.hasAttribute('data-moj-alert-init')) {
+      return this
+    }
+
+    this.$root.setAttribute('data-moj-alert-init', '')
+
     /**
      * Merge configs
      *

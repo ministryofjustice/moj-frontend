@@ -18,6 +18,12 @@ export class RichTextEditor {
     this.$textarea = $textarea
     this.$root = this.$textarea.parentElement
 
+    if (this.$root.hasAttribute('data-rich-text-editor-init')) {
+      return this
+    }
+
+    this.$root.setAttribute('data-rich-text-editor-init', '')
+
     /**
      * Merge configs
      *
@@ -28,12 +34,6 @@ export class RichTextEditor {
       config,
       normaliseDataset(RichTextEditor, this.$root.dataset)
     )
-
-    if (this.$root.hasAttribute('data-rich-text-editor-init')) {
-      return this
-    }
-
-    this.$root.setAttribute('data-rich-text-editor-init', '')
 
     this.createToolbar()
     this.hideDefault()

@@ -13,6 +13,12 @@ export class FormValidator {
 
     this.$root = $root
 
+    if (this.$root.hasAttribute('data-moj-form-validator-init')) {
+      return this
+    }
+
+    this.$root.setAttribute('data-moj-form-validator-init', '')
+
     /**
      * Merge configs
      *
