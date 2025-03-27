@@ -6,21 +6,21 @@ const hostUrl = process.env.HOST_URL || 'http://localhost:3001'
 
 // ✅ List test files in execution order
 const testFiles = [
-  '1_start.test.js',
-  '2_componentDetails.test.js',
-  '3_componentImage.test.js',
-  '4a_accessibilityFindings.test.js',
-  '4b_accessibility-external-audit.test.js',
+  '1_start.spec.js',
+  '2_componentDetails.spec.js',
+  '3_componentImage.spec.js',
+  '4a_accessibilityFindings.spec.js',
+  '4b_accessibility-external-audit.spec.js',
   '4c_accessibility-internal-audit.test',
   '4d_accessibility-assistive-tech.test',
-  '5a_prototypeDesigns.test.js',
-  '5b_prototypeDesigns-link.test.js',
-  '6a_componentCode.test.js',
-  '6b_componentCode-link.test.js',
-  '7a_figmaDesigns.test.js',
-  '7b_figmaDesigns-link.test.js',
-  '8_yourDetails.test.js',
-  '9_checkAnswers.test.js'
+  '5a_prototypeDesigns.spec.js',
+  '5b_prototypeDesigns-link.spec.js',
+  '6a_componentCode.spec.js',
+  '6b_componentCode-link.spec.js',
+  '7a_figmaDesigns.spec.js',
+  '7b_figmaDesigns-link.spec.js',
+  '8_yourDetails.spec.js',
+  '9_checkAnswers.spec.js'
 ]
 
 ;(async () => {
