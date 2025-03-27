@@ -12,6 +12,12 @@ export class DatePicker {
 
     this.$root = $root
 
+    if (this.$root.hasAttribute('data-moj-date-picker-init')) {
+      return this
+    }
+
+    this.$root.setAttribute('data-moj-date-picker-init', '')
+
     /**
      * Merge configs
      *
@@ -69,13 +75,8 @@ export class DatePicker {
     this.currentDayButtonClass = 'moj-datepicker__button--current'
     this.todayButtonClass = 'moj-datepicker__button--today'
 
-    if (this.$root.dataset.initialized) {
-      return this
-    }
-
     this.setOptions()
     this.initControls()
-    this.$root.setAttribute('data-initialized', 'true')
   }
 
   initControls() {
