@@ -1,4 +1,4 @@
-class Tabs {
+export class Tabs {
   constructor(container) {
     this.container = container
     this.keys = { left: 37, right: 39, up: 38, down: 40 }
@@ -157,5 +157,3 @@ class Tabs {
     return href.slice(href.indexOf('#'), href.length)
   }
 }
-
-export default Tabs
