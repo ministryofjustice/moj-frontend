@@ -21,7 +21,7 @@ Use this component for dashboard level information as a way of breaking up conte
 
 ## When not to use
 
-Don’t use this component if the information you wish to present can fit comfortably in a table or summary list component. Don’t use this component to present important information at the top of a page. Instead, consider using the banner component or the panel component.
+Don’t use this component if the information you wish to present can fit comfortably in a table or summary list component. Don’t use this component to present important information at the top of a page. Instead, consider the [alert component](/components/alert/) or the [GOV.UK panel component](https://design-system.service.gov.uk/components/panel/).
 
 ## How to use
 

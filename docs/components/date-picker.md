@@ -17,7 +17,7 @@ eleventyNavigation:
 
 ## Overview
 
-When users first open the date picker's calendar it'll show today's date. Users do not have to use this calendar view to select a date - they can also enter one directly into the text field.
+When users first open the date picker's calendar it'll show today's date. Users do not have to use this calendar view to select a date — they can also enter one directly into the text field.
 
 ### When to use
 
