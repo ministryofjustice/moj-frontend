@@ -1,7 +1,7 @@
 {
   "Official": {
     "link": "How ‘official’ {{ types }} work",
-    "linkContent": "{{ types }} with an ‘official’ status have had a full, multi-disciplinary team review.",
+    "linkContent": "{{ types }} with an ‘official’ status have had a full, multidisciplinary team review.",
     "statusMessage": "Updated"
   },
   "To be reviewed": {
