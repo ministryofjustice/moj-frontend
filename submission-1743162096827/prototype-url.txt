@@ -1,0 +1,4 @@
+{
+  "prototypeUrl": "https://www.google.com",
+  "prototypeUrlAdditionalInformation": ""
+}
