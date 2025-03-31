@@ -1,0 +1,5 @@
+{
+  "componentCodeLanguage": "Nunjuncks",
+  "componentCodeUsage": "",
+  "componentCode": "\r\n{%- from \"moj/components/progress-bar/macro.njk\" import mojProgressBar -%}\r\n\r\n{{ mojProgressBar({\r\n  attributes: {\r\n    'aria-label': 'Progress of your application'\r\n  },\r\n  items: [{\r\n    id: 'progress-item-1',\r\n    active: false,\r\n    complete: true,\r\n    label: {\r\n      html: '<p>Your Details</p>'\r\n    },\r\n    classes: ''\r\n  },\r\n  {\r\n    id: 'progress-item-2',\r\n    active: false,\r\n    complete: true,\r\n    label: {\r\n      text: 'Address'\r\n    },\r\n    classes: ''\r\n  },\r\n  {\r\n    id: 'progress-item-3',\r\n    active: true,\r\n    complete: false,\r\n    label: {\r\n      text: 'Passport details'\r\n    },\r\n    classes: ''\r\n  },\r\n  {\r\n    id: 'progress-item-4',\r\n    active: false,\r\n    complete: false,\r\n    label: {\r\n      text: 'Review'\r\n    },\r\n    classes: ''\r\n  },\r\n  {\r\n    id: 'progress-item-5',\r\n    active: false,\r\n    complete: false,\r\n    label: {\r\n      text: 'Application Complete'\r\n    },\r\n    classes: ''\r\n  }]\r\n}) }}"
+}
