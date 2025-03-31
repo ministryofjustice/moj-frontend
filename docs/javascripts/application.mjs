@@ -9,7 +9,8 @@ import {
   ErrorSummary,
   NotificationBanner,
   Radios,
-  SkipLink
+  SkipLink,
+  Tabs
 } from 'govuk-frontend'
 
 import { initAccordions } from './accordions.mjs'
@@ -18,7 +19,7 @@ import Cookies from './cookies.mjs'
 import Copy from './copy.mjs'
 import IFrameResizer from './iframe-resizer.mjs'
 import MenuToggle from './menu-toggle.mjs'
-import Tabs from './tabs.mjs'
+import { Tabs as MojTabs } from './tabs.mjs'
 
 // GOV.UK Frontend components
 createAll(Button)
@@ -28,6 +29,7 @@ createAll(ErrorSummary)
 createAll(NotificationBanner)
 createAll(Radios)
 createAll(SkipLink)
+createAll(Tabs)
 
 const $accordions = document.querySelectorAll('[data-module="govuk-accordion"]')
 initAccordions($accordions)
@@ -38,7 +40,7 @@ MOJFrontend.initAll()
 const $tabs = document.querySelectorAll('[data-module="app-tabs"]')
 
 $tabs.forEach(($tabs) => {
-  new Tabs($tabs)
+  new MojTabs($tabs)
 })
 
 const $codeBlocks = document.querySelectorAll('[data-module="app-copy"]')
