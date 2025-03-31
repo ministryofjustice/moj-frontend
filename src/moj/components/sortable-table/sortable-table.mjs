@@ -1,38 +1,25 @@
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from 'govuk-frontend'
 
-export class SortableTable {
+/**
+ * @augments {ConfigurableComponent<SortableTableConfig>}
+ */
+export class SortableTable extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for sortable table
    * @param {SortableTableConfig} [config] - Sortable table config
    */
   constructor($root, config = {}) {
+    super($root, config)
+
     const $head = $root?.querySelector('thead')
     const $body = $root?.querySelector('tbody')
 
-    if (!$root || !($root instanceof HTMLElement) || !$head || !$body) {
+    if (!$head || !$body) {
       return this
     }
 
-    this.$root = $root
     this.$head = $head
     this.$body = $body
-
-    if (this.$root.hasAttribute('data-moj-sortable-table-init')) {
-      return this
-    }
-
-    this.$root.setAttribute('data-moj-sortable-table-init', '')
-
-    /**
-     * Merge configs
-     *
-     * @type {SortableTableConfig}
-     */
-    this.config = mergeConfigs(
-      SortableTable.defaults,
-      config,
-      normaliseDataset(SortableTable, this.$root.dataset)
-    )
 
     this.$headings = this.$head
       ? Array.from(this.$head.querySelectorAll('th'))
@@ -221,6 +208,11 @@ export class SortableTable {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'moj-sortable-table'
+
+  /**
    * Sortable table config
    *
    * @type {SortableTableConfig}
@@ -236,13 +228,15 @@ export class SortableTable {
    *
    * @satisfies {Schema<SortableTableConfig>}
    */
-  static schema = Object.freeze({
-    properties: {
-      statusMessage: { type: 'string' },
-      ascendingText: { type: 'string' },
-      descendingText: { type: 'string' }
-    }
-  })
+  static schema = Object.freeze(
+    /** @type {const} */ ({
+      properties: {
+        statusMessage: { type: 'string' },
+        ascendingText: { type: 'string' },
+        descendingText: { type: 'string' }
+      }
+    })
+  )
 }
 
 /**
@@ -255,5 +249,5 @@ export class SortableTable {
  */
 
 /**
- * @import { Schema } from '../../common/configuration.mjs'
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
  */

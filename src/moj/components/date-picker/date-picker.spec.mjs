@@ -585,6 +585,7 @@ describe('button menu JS API', () => {
     test('default config values', () => {
       const datePicker = new DatePicker(component)
 
+      // @ts-expect-error Ignore protected access
       expect(datePicker.config).toStrictEqual({
         leadingZeros: false,
         weekStartDay: 'monday',
@@ -599,6 +600,7 @@ describe('button menu JS API', () => {
         leadingZeros: true
       })
 
+      // @ts-expect-error Ignore protected access
       expect(datePicker.config.leadingZeros).toBe(true)
     })
 
@@ -607,6 +609,7 @@ describe('button menu JS API', () => {
         weekStartDay: 'Sunday'
       })
 
+      // @ts-expect-error Ignore protected access
       expect(datePicker.config.weekStartDay).toBe('sunday')
       expect(datePicker.dayLabels[0]).toBe('Sunday')
     })
@@ -616,6 +619,7 @@ describe('button menu JS API', () => {
         weekStartDay: 'friday'
       })
 
+      // @ts-expect-error Ignore protected access
       expect(datePicker.config.weekStartDay).toBe('monday')
     })
 

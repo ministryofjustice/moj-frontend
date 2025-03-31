@@ -1,13 +1,15 @@
-export class IFrameResizer {
+import { Component } from 'govuk-frontend'
+
+/**
+ * @augments {Component<HTMLIFrameElement>}
+ */
+export class IFrameResizer extends Component {
   /**
    * @param {Element | null} $root - HTML element to use for iframe resizer
    */
   constructor($root) {
-    if (!$root || !($root instanceof HTMLIFrameElement)) {
-      return this
-    }
+    super($root)
 
-    this.$root = $root
     this.observer = null
     this.contentWindow = null
 
@@ -103,4 +105,9 @@ export class IFrameResizer {
     }
     this.$root.removeEventListener('load', this.onLoad)
   }
+
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'moj-iframe-resizer'
 }
