@@ -37,29 +37,11 @@ initAccordions($accordions)
 // MoJ Frontend components
 MOJFrontend.initAll()
 
-const $tabs = document.querySelectorAll('[data-module="app-tabs"]')
-
-$tabs.forEach(($tabs) => {
-  new MojTabs($tabs)
-})
-
-const $codeBlocks = document.querySelectorAll('[data-module="app-copy"]')
-
-$codeBlocks.forEach(($codeBlock) => {
-  new Copy($codeBlock)
-})
-
-const $cookieBanners = document.querySelectorAll('[data-module="app-cookies"]')
-
-$cookieBanners.forEach(($cookieBanner) => {
-  new Cookies($cookieBanner)
-})
-
-const $iframes = document.querySelectorAll('iframe')
-
-$iframes.forEach(($iframe) => {
-  new IFrameResizer($iframe)
-})
+// Website components
+createAll(MojTabs)
+createAll(Copy)
+createAll(Cookies)
+createAll(IFrameResizer)
 
 window.customElements.define('moj-menu-toggle', MenuToggle)
 window.customElements.define('moj-collapsible-nav', CollapsibleNav)

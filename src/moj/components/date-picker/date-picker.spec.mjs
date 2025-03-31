@@ -585,6 +585,7 @@ describe('button menu JS API', () => {
     test('default config values', () => {
       const datePicker = new DatePicker(component)
 
+      // @ts-expect-error Ignore protected access
       expect(datePicker.config).toStrictEqual({
         leadingZeros: false,
         weekStartDay: 'monday',
@@ -599,6 +600,7 @@ describe('button menu JS API', () => {
         leadingZeros: true
       })
 
+      // @ts-expect-error Ignore protected access
       expect(datePicker.config.leadingZeros).toBe(true)
     })
 
@@ -607,6 +609,7 @@ describe('button menu JS API', () => {
         weekStartDay: 'Sunday'
       })
 
+      // @ts-expect-error Ignore protected access
       expect(datePicker.config.weekStartDay).toBe('sunday')
       expect(datePicker.dayLabels[0]).toBe('Sunday')
     })
@@ -616,6 +619,7 @@ describe('button menu JS API', () => {
         weekStartDay: 'friday'
       })
 
+      // @ts-expect-error Ignore protected access
       expect(datePicker.config.weekStartDay).toBe('monday')
     })
 
@@ -802,13 +806,13 @@ describe('button menu JS API', () => {
 
       await user.click(calendarButton)
 
-      const dayButtonsDisabled = range(1, minDay - 1)
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+      const dayButtonsDisabled = range(1, minDay - 1).map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
 
-      const dayButtonsEnabled = range(minDay, lastDayinMonth)
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+      const dayButtonsEnabled = range(minDay, lastDayinMonth).map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
 
       for (const dayButton of dayButtonsDisabled) {
         expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -832,13 +836,13 @@ describe('button menu JS API', () => {
 
       await user.click(calendarButton)
 
-      const dayButtonsDisabled = range(maxDay + 1, lastDayinMonth)
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+      const dayButtonsDisabled = range(maxDay + 1, lastDayinMonth).map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
 
-      const dayButtonsEnabled = range(1, maxDay)
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+      const dayButtonsEnabled = range(1, maxDay).map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
 
       for (const dayButton of dayButtonsDisabled) {
         expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -866,14 +870,13 @@ describe('button menu JS API', () => {
 
         await user.click(calendarButton)
 
-        const dayButtonsDisabled = [excludedDay]
-          .map(getDateFormatted)
-          .map(screen.getByTestId)
+        const dayButtonsDisabled = [excludedDay].map((day) =>
+          screen.getByTestId(getDateFormatted(day))
+        )
 
         const dayButtonsEnabled = range(1, lastDayinMonth)
           .filter((day) => day !== excludedDay)
-          .map(getDateFormatted)
-          .map(screen.getByTestId)
+          .map((day) => screen.getByTestId(getDateFormatted(day)))
 
         for (const dayButton of dayButtonsDisabled) {
           expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -908,14 +911,13 @@ describe('button menu JS API', () => {
 
         await user.click(calendarButton)
 
-        const dayButtonsDisabled = daysToExclude
-          .map(getDateFormatted)
-          .map(screen.getByTestId)
+        const dayButtonsDisabled = daysToExclude.map((day) =>
+          screen.getByTestId(getDateFormatted(day))
+        )
 
         const dayButtonsEnabled = range(1, lastDayinMonth)
           .filter((day) => !daysToExclude.includes(day))
-          .map(getDateFormatted)
-          .map(screen.getByTestId)
+          .map((day) => screen.getByTestId(getDateFormatted(day)))
 
         for (const dayButton of dayButtonsDisabled) {
           expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -944,14 +946,13 @@ describe('button menu JS API', () => {
 
       await user.click(calendarButton)
 
-      const dayButtonsDisabled = excludedDays
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+      const dayButtonsDisabled = excludedDays.map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
 
       const dayButtonsEnabled = range(1, lastDayinMonth)
         .filter((day) => !excludedDays.includes(day))
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+        .map((day) => screen.getByTestId(getDateFormatted(day)))
 
       for (const dayButton of dayButtonsDisabled) {
         expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -1049,13 +1050,13 @@ describe('Datepicker data-attributes API', () => {
 
     await user.click(calendarButton)
 
-    const dayButtonsDisabled = range(1, minDay - 1)
-      .map(getDateFormatted)
-      .map(screen.getByTestId)
+    const dayButtonsDisabled = range(1, minDay - 1).map((day) =>
+      screen.getByTestId(getDateFormatted(day))
+    )
 
-    const dayButtonsEnabled = range(minDay, lastDayinMonth)
-      .map(getDateFormatted)
-      .map(screen.getByTestId)
+    const dayButtonsEnabled = range(minDay, lastDayinMonth).map((day) =>
+      screen.getByTestId(getDateFormatted(day))
+    )
 
     for (const dayButton of dayButtonsDisabled) {
       expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -1083,13 +1084,13 @@ describe('Datepicker data-attributes API', () => {
 
     await user.click(calendarButton)
 
-    const dayButtonsDisabled = range(maxDay + 1, lastDayinMonth)
-      .map(getDateFormatted)
-      .map(screen.getByTestId)
+    const dayButtonsDisabled = range(maxDay + 1, lastDayinMonth).map((day) =>
+      screen.getByTestId(getDateFormatted(day))
+    )
 
-    const dayButtonsEnabled = range(1, maxDay)
-      .map(getDateFormatted)
-      .map(screen.getByTestId)
+    const dayButtonsEnabled = range(1, maxDay).map((day) =>
+      screen.getByTestId(getDateFormatted(day))
+    )
 
     for (const dayButton of dayButtonsDisabled) {
       expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -1118,14 +1119,13 @@ describe('Datepicker data-attributes API', () => {
 
       await user.click(calendarButton)
 
-      const dayButtonsDisabled = [excludedDay]
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+      const dayButtonsDisabled = [excludedDay].map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
 
       const dayButtonsEnabled = range(1, lastDayinMonth)
         .filter((day) => day !== excludedDay)
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+        .map((day) => screen.getByTestId(getDateFormatted(day)))
 
       for (const dayButton of dayButtonsDisabled) {
         expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -1165,14 +1165,13 @@ describe('Datepicker data-attributes API', () => {
 
       await user.click(calendarButton)
 
-      const dayButtonsDisabled = daysToExclude
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+      const dayButtonsDisabled = daysToExclude.map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
 
       const dayButtonsEnabled = range(1, lastDayinMonth)
         .filter((day) => !daysToExclude.includes(day))
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+        .map((day) => screen.getByTestId(getDateFormatted(day)))
 
       for (const dayButton of dayButtonsDisabled) {
         expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -1206,14 +1205,13 @@ describe('Datepicker data-attributes API', () => {
 
     await user.click(calendarButton)
 
-    const dayButtonsDisabled = excludedDays
-      .map(getDateFormatted)
-      .map(screen.getByTestId)
+    const dayButtonsDisabled = excludedDays.map((day) =>
+      screen.getByTestId(getDateFormatted(day))
+    )
 
     const dayButtonsEnabled = range(1, lastDayinMonth)
       .filter((day) => !excludedDays.includes(day))
-      .map(getDateFormatted)
-      .map(screen.getByTestId)
+      .map((day) => screen.getByTestId(getDateFormatted(day)))
 
     for (const dayButton of dayButtonsDisabled) {
       expect(dayButton).toHaveAttribute('aria-disabled', 'true')

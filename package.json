@@ -30,6 +30,7 @@
     "lint:prettier:cli": "prettier --cache --cache-location .cache/prettier --cache-strategy content --check",
     "lint:scss": "npm run lint:scss:cli -- \"**/*.{md,scss}\"",
     "lint:scss:cli": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
+    "lint:types": "tsc --build tsconfig.json --incremental --pretty",
     "watch:11ty": "eleventy --input=./docs --output=public --watch",
     "watch:package": "gulp watch --color",
     "watch:app": "nodemon app.js",
@@ -96,6 +97,17 @@
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/user-event": "^14.6.1",
+    "@types/connect-redis": "^0.0.23",
+    "@types/express": "^5.0.1",
+    "@types/express-session": "^1.18.1",
+    "@types/govuk-frontend": "^5.8.0",
+    "@types/gulp": "^4.0.17",
+    "@types/jest": "^29.5.14",
+    "@types/jest-axe": "^3.5.9",
+    "@types/jest-sinon": "^1.0.5",
+    "@types/node": "^22.13.10",
+    "@types/nunjucks": "^3.2.6",
+    "@types/sinon": "^17.0.4",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
     "autoprefixer": "^10.4.21",
@@ -155,7 +167,9 @@
     "stylelint-config-gds": "^2.0.0",
     "stylelint-order": "^6.0.4",
     "supertest": "^7.1.0",
-    "terser": "^5.39.0"
+    "terser": "^5.39.0",
+    "typed-query-selector": "^2.12.0",
+    "typescript": "^5.8.2"
   },
   "config": {
     "commitizen": {

@@ -1,33 +1,15 @@
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from 'govuk-frontend'
 
-export class MultiSelect {
+/**
+ * @augments {ConfigurableComponent<MultiSelectConfig>}
+ */
+export class MultiSelect extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for multi select
    * @param {MultiSelectConfig} [config] - Multi select config
    */
   constructor($root, config = {}) {
-    if (!$root || !($root instanceof HTMLElement)) {
-      return this
-    }
-
-    this.$root = $root
-
-    if (this.$root.hasAttribute('data-moj-multi-select-init')) {
-      return this
-    }
-
-    this.$root.setAttribute('data-moj-multi-select-init', '')
-
-    /**
-     * Merge configs
-     *
-     * @type {MultiSelectConfig}
-     */
-    this.config = mergeConfigs(
-      MultiSelect.defaults,
-      config,
-      normaliseDataset(MultiSelect, this.$root.dataset)
-    )
+    super($root, config)
 
     const $container = this.$root.querySelector(
       `#${this.config.idPrefix}select-all`
@@ -145,6 +127,11 @@ export class MultiSelect {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'moj-multi-select'
+
+  /**
    * Multi select config
    *
    * @type {MultiSelectConfig}
@@ -161,13 +148,15 @@ export class MultiSelect {
    *
    * @satisfies {Schema<MultiSelectConfig>}
    */
-  static schema = Object.freeze({
-    properties: {
-      idPrefix: { type: 'string' },
-      checked: { type: 'boolean' },
-      checkboxes: { type: 'object' }
-    }
-  })
+  static schema = Object.freeze(
+    /** @type {const} */ ({
+      properties: {
+        idPrefix: { type: 'string' },
+        checked: { type: 'boolean' },
+        checkboxes: { type: 'object' }
+      }
+    })
+  )
 }
 
 /**
@@ -182,5 +171,5 @@ export class MultiSelect {
  */
 
 /**
- * @import { Schema } from '../../common/configuration.mjs'
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
  */

@@ -1,19 +1,11 @@
-export class PasswordReveal {
+import { Component } from 'govuk-frontend'
+
+export class PasswordReveal extends Component {
   /**
    * @param {Element | null} $root - HTML element to use for password reveal
    */
   constructor($root) {
-    if (!$root || !($root instanceof HTMLElement)) {
-      return this
-    }
-
-    this.$root = $root
-
-    if (this.$root.hasAttribute('data-moj-password-reveal-init')) {
-      return this
-    }
-
-    this.$root.setAttribute('data-moj-password-reveal-init', '')
+    super($root)
 
     const $input = this.$root.querySelector('.govuk-input')
     if (!$input || !($input instanceof HTMLInputElement)) {
@@ -60,4 +52,9 @@ export class PasswordReveal {
         'Show <span class="govuk-visually-hidden">password</span>'
     }
   }
+
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'moj-password-reveal'
 }

@@ -1,33 +1,15 @@
-import { mergeConfigs, normaliseDataset } from '../../common/configuration.mjs'
+import { ConfigurableComponent } from 'govuk-frontend'
 
-export class FilterToggleButton {
+/**
+ * @augments {ConfigurableComponent<FilterToggleButtonConfig>}
+ */
+export class FilterToggleButton extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for filter toggle button
    * @param {FilterToggleButtonConfig} [config] - Filter toggle button config
    */
   constructor($root, config = {}) {
-    if (!$root || !($root instanceof HTMLElement)) {
-      return this
-    }
-
-    this.$root = $root
-
-    if (this.$root.hasAttribute('data-moj-filter-init')) {
-      return this
-    }
-
-    this.$root.setAttribute('data-moj-filter-init', '')
-
-    /**
-     * Merge configs
-     *
-     * @type {FilterToggleButtonConfig}
-     */
-    this.config = mergeConfigs(
-      FilterToggleButton.defaults,
-      config,
-      normaliseDataset(FilterToggleButton, this.$root.dataset)
-    )
+    super($root, config)
 
     const $toggleButtonContainer =
       this.config.toggleButtonContainer.element ??
@@ -149,6 +131,11 @@ export class FilterToggleButton {
   }
 
   /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'moj-filter'
+
+  /**
    * Filter toggle button config
    *
    * @type {FilterToggleButtonConfig}
@@ -178,16 +165,18 @@ export class FilterToggleButton {
    *
    * @satisfies {Schema<FilterToggleButtonConfig>}
    */
-  static schema = Object.freeze({
-    properties: {
-      bigModeMediaQuery: { type: 'string' },
-      startHidden: { type: 'boolean' },
-      toggleButton: { type: 'object' },
-      toggleButtonContainer: { type: 'object' },
-      closeButton: { type: 'object' },
-      closeButtonContainer: { type: 'object' }
-    }
-  })
+  static schema = Object.freeze(
+    /** @type {const} */ ({
+      properties: {
+        bigModeMediaQuery: { type: 'string' },
+        startHidden: { type: 'boolean' },
+        toggleButton: { type: 'object' },
+        toggleButtonContainer: { type: 'object' },
+        closeButton: { type: 'object' },
+        closeButtonContainer: { type: 'object' }
+      }
+    })
+  )
 }
 
 /**
@@ -210,5 +199,5 @@ export class FilterToggleButton {
  */
 
 /**
- * @import { Schema } from '../../common/configuration.mjs'
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
  */
