@@ -19,7 +19,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 26 March 2025
+Last updated: 1 April 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -355,6 +355,12 @@ Always use 'preferred name', not 'working name' as it's called in NOMIS.
 
 An identity number assigned to a person in the Police National Computer (PNC). Use ‘PNC number’. This is more well known than the full version.
 
+### pre-sentence report (PSR)
+
+Write out pre-sentence report (PSR) on first mention and use PSR or 'the report' thereafter.
+
+PSRs are reports that a court uses to help decide on a defendant's sentence. They consider a defendant's offending behaviour, the risk they pose and to whom. A PSR will provide an independent recommendation of the sentencing options available to the court.
+
 ### prison, establishment
 
 ‘Prison’ and ‘establishment’ are both acceptable terms. Which one you should use depends on the context and audience.
@@ -440,6 +446,13 @@ Someone is on remand if they are placed in custody whilst awaiting trial. Read [
 Use upper case.
 
 Users may well understand the acronym on its own. If you have evidence of this, use the acronym first and then spell out in brackets.
+
+{% endaccordionSection %}
+{% accordionSection "S" %}
+
+### SDS40
+
+SDS40 stands for Standard determinate sentence with a 40% release date. SDS40 is a statutory instrument that changed the release points of certain sentences and offences from 50% to 40%. The term SDS40 is commonly understood in HMPPS.
 
 {% endaccordionSection %}
 {% accordionSection "T" %}

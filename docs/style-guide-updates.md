@@ -64,6 +64,7 @@ permalink: content-standards/style-guide-updates/
       It also outlines which terms are more likely be understood by the public and users with English as a second language.</td>
       <td class="govuk-table__cell" data-sort-value="20250225">25 February 2025</td>
     </tr>
+
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
         <a href="/content-standards/style-guide#identity-numbers-%28hmpps-only%29"><b>Identity numbers (HMPPS only)</b></a>
@@ -74,6 +75,28 @@ permalink: content-standards/style-guide-updates/
       <td class="govuk-table__cell">A change to the identity numbers entry to include the probation term CRN.</td>
       <td class="govuk-table__cell" data-sort-value="20250228">28 February 2025</td>
     </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/content-standards/style-guide#pre-sentence-report-%28PSR%29"><b>pre-sentence report (PSR)</b></a>
+      </td>
+      <td class="govuk-table__cell">
+      <span class="govuk-tag govuk-tag--green">New</span>
+      </td>
+      <td class="govuk-table__cell">Write out pre-sentence report (PSR) on first mention and use PSR or 'the report' thereafter.
 
+      PSRs are reports that a court uses to help decide on a defendant's sentence. They consider a defendant's offending behaviour, the risk they pose and to whom. A PSR will provide an independent recommendation of the sentencing options available to the court.</td>
+      <td class="govuk-table__cell" data-sort-value="20250401">1 April 2025</td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/content-standards/style-guide#SDS40"><b>SDS40</b></a>
+      </td>
+      <td class="govuk-table__cell">
+      <span class="govuk-tag govuk-tag--green">New</span>
+      </td>
+      <td class="govuk-table__cell">SDS40 stands for Standard determinate sentence with a 40% release date. SDS40 is a statutory instrument that changed the release points of certain sentences and offences from 50% to 40%. The term SDS40 is commonly understood in HMPPS.</td>
+      <td class="govuk-table__cell" data-sort-value="20250401">1 April 2025</td>
+    </tr>
   </tbody>
 </table>
