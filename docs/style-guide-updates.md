@@ -77,7 +77,7 @@ permalink: content-standards/style-guide-updates/
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
-        <a href="/content-standards/style-guide#pre-sentence-report-%28PSR%29"><b>pre-sentence report (PSR)</b></a>
+        <a href="/content-standards/style-guide#pre-sentence-report-%28psr%29"><b>pre-sentence report (PSR)</b></a>
       </td>
       <td class="govuk-table__cell">
       <span class="govuk-tag govuk-tag--green">New</span>
@@ -90,7 +90,7 @@ permalink: content-standards/style-guide-updates/
 
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
-        <a href="/content-standards/style-guide#SDS40"><b>SDS40</b></a>
+        <a href="/content-standards/style-guide#sds40"><b>SDS40</b></a>
       </td>
       <td class="govuk-table__cell">
       <span class="govuk-tag govuk-tag--green">New</span>
