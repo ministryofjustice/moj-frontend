@@ -13,11 +13,12 @@ export class FilterToggleButton extends ConfigurableComponent {
 
     const $toggleButtonContainer =
       this.config.toggleButtonContainer.element ??
-      this.$root.querySelector(this.config.toggleButtonContainer.selector)
+      document.querySelector(this.config.toggleButtonContainer.selector)
 
     const $closeButtonContainer =
       this.config.closeButtonContainer.element ??
       this.$root.querySelector(this.config.closeButtonContainer.selector)
+
 
     if (
       !(
