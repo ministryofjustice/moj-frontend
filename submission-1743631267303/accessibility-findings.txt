@@ -1,0 +1,5 @@
+{
+  "hasComponentBeenTestedExternalAccessibility": "yes",
+  "hasComponentBeenTestedInternalAudit": "no",
+  "hasComponentBeenTestedUsingAssistiveTechnology": "no"
+}
