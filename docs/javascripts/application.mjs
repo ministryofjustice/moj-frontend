@@ -14,11 +14,11 @@ import {
 } from 'govuk-frontend'
 
 import { initAccordions } from './accordions.mjs'
-import CollapsibleNav from './collapsible-nav.mjs'
-import Cookies from './cookies.mjs'
-import Copy from './copy.mjs'
-import IFrameResizer from './iframe-resizer.mjs'
-import MenuToggle from './menu-toggle.mjs'
+import { CollapsibleNav } from './collapsible-nav.mjs'
+import { Cookies } from './cookies.mjs'
+import { Copy } from './copy.mjs'
+import { IFrameResizer } from './iframe-resizer.mjs'
+import { MenuToggle } from './menu-toggle.mjs'
 import { Tabs as MojTabs } from './tabs.mjs'
 
 // GOV.UK Frontend components
