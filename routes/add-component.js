@@ -107,7 +107,6 @@ if (process.env.DEV_DUMMY_DATA) {
     }
 
     Object.assign(req.session, sessionData)
-
     req.session.save((err) => {
       if (err) {
         return next(err)
@@ -218,8 +217,9 @@ router.post(
   verifyCsrf,
   getRawSessionText,
   async (req, res) => {
+    const submissionRef = `submission-${Date.now()}`
     const { filename: markdownFilename, content: markdownContent } =
-      generateMarkdown(req.session)
+      generateMarkdown(req.session, submissionRef)
     const markdown = {}
     markdown[markdownFilename] = markdownContent
     const { sessionText } = req
@@ -231,7 +231,7 @@ router.post(
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/confirmation`)
     })
     try {
-      const branchName = await pushToGitHub(session)
+      const branchName = await pushToGitHub(session, submissionRef)
       const { title, description } = getPrTitleAndDescription(session)
       const pr = await createPullRequest(branchName, title, description)
       await sendPrEmail(pr)

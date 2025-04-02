@@ -1,7 +1,7 @@
 /* eslint-disable prefer-template */
 const moment = require('moment')
 
-const generateMarkdown = (data) => {
+const generateMarkdown = (data, _) => {
   const { '/component-details': details } = data
 
   const documentationDirectory = 'docs/components/documentation'
@@ -155,6 +155,8 @@ ${componentCodeDetails?.componentCode || ''}
 layout: layouts/tabbed-component.njk
 title: ${componentName}
 type: component
+status: Experimental
+statusDate: ${moment().format('MMMM YYYY')}
 eleventyNavigation:
   key: ${componentName}
   parent: Components
