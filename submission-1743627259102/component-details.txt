@@ -1,0 +1,5 @@
+{
+  "componentName": "Accordion",
+  "componentOverview": "its musical",
+  "howIsTheComponentUsed": "badly"
+}
