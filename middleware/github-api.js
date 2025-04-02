@@ -213,7 +213,7 @@ const createPullRequest = async (branchName, title, description = '') => {
         Authorization: `Bearer ${GITHUB_API_TOKEN}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ labels: ['contribution'] })
+      body: JSON.stringify({ labels: ['contribution', 'preview:request'] })
     })
 
     if (!labelResponse.ok) {
