@@ -19,7 +19,6 @@ export class FilterToggleButton extends ConfigurableComponent {
       this.config.closeButtonContainer.element ??
       this.$root.querySelector(this.config.closeButtonContainer.selector)
 
-
     if (
       !(
         $toggleButtonContainer instanceof HTMLElement &&
