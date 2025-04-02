@@ -97,7 +97,7 @@ export class Tabs {
       (tab) => tab.parentElement === nextTabListItem
     )
 
-    if (nextTab) {
+    if (currentTab && nextTab) {
       this.hideTab(currentTab)
       this.showTab(nextTab)
       nextTab.focus()
@@ -112,7 +112,7 @@ export class Tabs {
       (tab) => tab.parentElement === previousTabListItem
     )
 
-    if (previousTab) {
+    if (currentTab && previousTab) {
       this.hideTab(currentTab)
       this.showTab(previousTab)
       previousTab.focus()
@@ -143,10 +143,7 @@ export class Tabs {
   }
 
   getCurrentTab() {
-    return (
-      this.tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') ??
-      this.tabs[0]
-    )
+    return this.tabs.find((tab) => tab.getAttribute('aria-selected') === 'true')
   }
 
   // this is because IE doesn't always return the actual value but a relative full path
