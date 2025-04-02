@@ -2,64 +2,66 @@
 
 import { queryByRole } from '@testing-library/dom'
 import { userEvent } from '@testing-library/user-event'
+import { outdent } from 'outdent'
 
 import { SearchToggle } from './search-toggle.mjs'
 
 const user = userEvent.setup()
 
-const createComponent = () => {
-  const html = `
-<div class="moj-search-toggle" data-module="moj-search-toggle" data-moj-search-toggle-text="Find case">
-        <div class="moj-search-toggle__toggle"></div>
-        <div class="moj-search-toggle__search">
+function createComponent() {
+  const html = outdent`
+    <div class="moj-search-toggle" data-module="moj-search-toggle">
+      <div class="moj-search-toggle__toggle"></div>
+      <div class="moj-search-toggle__search">
 
-          <div class="moj-search moj-search--ondark moj-search--toggle moj-js-hidden">
+        <div class="moj-search moj-search--ondark moj-search--toggle moj-js-hidden">
+          <form action="" method="get">
 
-            <form action="" method="get">
+            <div class="govuk-form-group">
+              <label class="govuk-label moj-search__label govuk-visually-hidden" for="search2">
+                Search
+              </label>
 
-              <div class="govuk-form-group">
-                <label class="govuk-label moj-search__label govuk-visually-hidden" for="search2">
-                  Search
-                </label>
-
-                <div id="search2-hint" class="govuk-hint moj-search__hint ">
-                  Enter case number, for example 123456
-                </div>
-
-                <input class="govuk-input moj-search__input " id="search2" name="search2" type="search" aria-describedby="search2-hint">
-
+              <div id="search2-hint" class="govuk-hint moj-search__hint ">
+                Enter case number, for example 123456
               </div>
 
-              <button type="submit" class="govuk-button moj-search__button " data-module="govuk-button">
-                Search
-              </button>
+              <input class="govuk-input moj-search__input " id="search2" name="search2" type="search" aria-describedby="search2-hint">
+            </div>
 
-            </form>
-          </div>
+            <button type="submit" class="govuk-button moj-search__button " data-module="govuk-button">
+              Search
+            </button>
 
+          </form>
         </div>
+
       </div>
-<a href="#">link</a>`
+    </div>
+
+    <a href="#">link</a>
+  `
+
   document.body.insertAdjacentHTML('afterbegin', html)
-  const component = document.querySelector('.moj-search-toggle')
-  return component
+
+  return /** @type {HTMLElement} */ (
+    document.querySelector('[data-module="moj-search-toggle"]')
+  )
 }
 
 describe('search toggle', () => {
-  let component, buttonContainer, searchContainer
+  let component
+  let buttonContainer
+  let searchContainer
 
   beforeEach(() => {
     component = createComponent()
     searchContainer = component.querySelector('.moj-search')
     buttonContainer = component.querySelector('.moj-search-toggle__toggle')
 
-    new SearchToggle({
+    new SearchToggle(component, {
       toggleButton: {
-        container: buttonContainer,
-        text: component.getAttribute('data-moj-search-toggle-text')
-      },
-      search: {
-        container: searchContainer
+        text: 'Find case'
       }
     })
   })

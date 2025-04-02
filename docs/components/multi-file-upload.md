@@ -51,10 +51,11 @@ The multi file upload component uses JavaScript. To run it you must include the 
 ```mjs
 import { MultiFileUpload } from '@ministryofjustice/frontend'
 
-const $multiFileUpload = document.querySelector('.app-multi-file-upload')
+const $multiFileUpload = document.querySelector(
+  '[data-module="moj-multi-file-upload"]'
+)
 
-new MultiFileUpload({
-  container: $multiFileUpload,
+new MultiFileUpload($multiFileUpload, {
   uploadUrl: '/ajax-upload-url',
   deleteUrl: '/ajax-delete-url'
 })

@@ -11,6 +11,7 @@ import {
 import { userEvent } from '@testing-library/user-event'
 import dayjs from 'dayjs'
 import { configureAxe } from 'jest-axe'
+import { outdent } from 'outdent'
 
 import { DatePicker } from './date-picker.mjs'
 
@@ -22,40 +23,37 @@ const axe = configureAxe({
   }
 })
 
-const kebabize = (str) => {
-  return str.replace(
-    /[A-Z]+(?![a-z])|[A-Z]/g,
-    ($, ofset) => (ofset ? '-' : '') + $.toLowerCase()
+/**
+ * @param {object} params
+ * @param {string} [params.html]
+ * @param {Record<string, string>} [params.attributes]
+ */
+function createComponent(params = {}) {
+  const attributes = Object.entries(params.attributes ?? {}).map(
+    ([key, value]) => ` ${key}="${value}"`
   )
-}
 
-const configToDataAttributes = (config) => {
-  let attributes = ''
-  for (const [key, value] of Object.entries(config)) {
-    attributes += `data-${kebabize(key)}="${value}" `
-  }
-  return attributes
-}
-
-const createComponent = (config = {}, html) => {
-  const dataAttributes = configToDataAttributes(config)
-  if (typeof html === 'undefined') {
-    html = `
-        <div class="moj-datepicker" data-module="moj-date-picker" ${dataAttributes}>
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="date">
-              Date
-            </label>
-            <div id="date-hint" class="govuk-hint">
-              For example, 17/5/2024.
-            </div>
-            <input class="govuk-input moj-js-datepicker-input " id="date" name="date" type="text" aria-describedby="date-hint" autocomplete="off">
+  const html =
+    params.html ??
+    outdent`
+      <div class="moj-datepicker" data-module="moj-date-picker"${attributes}>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="date">
+            Date
+          </label>
+          <div id="date-hint" class="govuk-hint">
+            For example, 17/5/2024.
           </div>
-      </div>`
-  }
+          <input class="govuk-input moj-js-datepicker-input " id="date" name="date" type="text" aria-describedby="date-hint" autocomplete="off">
+        </div>
+      </div>
+    `
+
   document.body.insertAdjacentHTML('afterbegin', html)
-  const component = document.querySelector('[data-module="moj-date-picker"]')
-  return component
+
+  return /** @type {HTMLElement} */ (
+    document.querySelector('[data-module="moj-date-picker"]')
+  )
 }
 
 const randomIntBetween = (min, max) => {
@@ -103,6 +101,10 @@ const getDateInCurrentMonth = (excluding = []) => {
   return days[Math.floor(Math.random() * days.length)]
 }
 
+/**
+ * @param {number} start
+ * @param {number} end
+ */
 const range = (start, end) => {
   return [...Array(end - start + 1).keys()].map((x) => x + start)
 }
@@ -114,7 +116,7 @@ describe('Date picker with defaults', () => {
 
   beforeEach(() => {
     component = createComponent()
-    new DatePicker(component, {})
+    new DatePicker(component)
 
     calendarButton = queryByText(component, 'Choose date')?.closest('button')
     dialog = queryByRole(component, 'dialog', { hidden: true })
@@ -581,73 +583,88 @@ describe('button menu JS API', () => {
 
   describe('config', () => {
     test('default config values', () => {
-      const datePicker = new DatePicker(component, {})
+      const datePicker = new DatePicker(component)
 
+      // @ts-expect-error Ignore protected access
       expect(datePicker.config).toStrictEqual({
         leadingZeros: false,
-        weekStartDay: 'monday'
+        weekStartDay: 'monday',
+        input: {
+          selector: '.moj-js-datepicker-input'
+        }
       })
     })
 
     test('leadingZeros', () => {
-      const config = { leadingZeros: true }
-      const datePicker = new DatePicker(component, config)
+      const datePicker = new DatePicker(component, {
+        leadingZeros: true
+      })
 
+      // @ts-expect-error Ignore protected access
       expect(datePicker.config.leadingZeros).toBe(true)
     })
 
     test('weekStartDay can be set to sunday', () => {
-      const config = { weekStartDay: 'Sunday' }
-      const datePicker = new DatePicker(component, config)
+      const datePicker = new DatePicker(component, {
+        weekStartDay: 'Sunday'
+      })
 
+      // @ts-expect-error Ignore protected access
       expect(datePicker.config.weekStartDay).toBe('sunday')
       expect(datePicker.dayLabels[0]).toBe('Sunday')
     })
 
     test("weekStartDay can't be set to other days", () => {
-      const config = { weekStartDay: 'friday' }
-      const datePicker = new DatePicker(component, config)
+      const datePicker = new DatePicker(component, {
+        weekStartDay: 'friday'
+      })
 
+      // @ts-expect-error Ignore protected access
       expect(datePicker.config.weekStartDay).toBe('monday')
     })
 
     test('minDate', () => {
-      const minDate = dayjs().subtract('1', 'week').startOf('day')
-      const config = { minDate: minDate.format('D/M/YYYY') }
-      const datePicker = new DatePicker(component, config)
+      const minDate = dayjs().subtract(1, 'week').startOf('day')
+      const datePicker = new DatePicker(component, {
+        minDate: minDate.format('D/M/YYYY')
+      })
 
       expect(datePicker.minDate).toStrictEqual(minDate.toDate())
     })
 
     test('future minDate sets currentDate to minDate', () => {
-      const minDate = dayjs().add('1', 'week').startOf('day')
-      const config = { minDate: minDate.format('D/M/YYYY') }
-      const datePicker = new DatePicker(component, config)
+      const minDate = dayjs().add(1, 'week').startOf('day')
+      const datePicker = new DatePicker(component, {
+        minDate: minDate.format('D/M/YYYY')
+      })
 
       expect(datePicker.minDate).toStrictEqual(minDate.toDate())
       expect(datePicker.currentDate).toStrictEqual(minDate.toDate())
     })
 
     test('maxDate', () => {
-      const maxDate = dayjs().add('1', 'week').startOf('day')
-      const config = { maxDate: maxDate.format('D/M/YYYY') }
-      const datePicker = new DatePicker(component, config)
+      const maxDate = dayjs().add(1, 'week').startOf('day')
+      const datePicker = new DatePicker(component, {
+        maxDate: maxDate.format('D/M/YYYY')
+      })
 
       expect(datePicker.maxDate).toStrictEqual(maxDate.toDate())
     })
 
     test('past maxDate sets currentDate to maxDate', () => {
-      const maxDate = dayjs().subtract('1', 'week').startOf('day')
-      const config = { maxDate: maxDate.format('D/M/YYYY') }
-      const datePicker = new DatePicker(component, config)
+      const maxDate = dayjs().subtract(1, 'week').startOf('day')
+      const datePicker = new DatePicker(component, {
+        maxDate: maxDate.format('D/M/YYYY')
+      })
 
       expect(datePicker.maxDate).toStrictEqual(maxDate.toDate())
       expect(datePicker.currentDate).toStrictEqual(maxDate.toDate())
     })
 
     test('excludedDays', () => {
-      const config = { excludedDays: 'sunday thursday' }
-      const datePicker = new DatePicker(component, config)
+      const datePicker = new DatePicker(component, {
+        excludedDays: 'sunday thursday'
+      })
 
       expect(datePicker.excludedDays).toEqual([0, 4])
     })
@@ -657,8 +674,10 @@ describe('button menu JS API', () => {
         const dateToExclude = dayjs()
           .date(getDateInCurrentMonth())
           .startOf('day')
-        const config = { excludedDates: dateToExclude.format('D/M/YYYY') }
-        const datePicker = new DatePicker(component, config)
+
+        const datePicker = new DatePicker(component, {
+          excludedDates: dateToExclude.format('D/M/YYYY')
+        })
 
         expect(datePicker.excludedDates).toStrictEqual([dateToExclude.toDate()])
       })
@@ -667,13 +686,14 @@ describe('button menu JS API', () => {
         const firstDateToExclude = dayjs()
           .date(getDateInCurrentMonth())
           .startOf('day')
+
         const secondDateToExclude = dayjs()
           .date(getDateInCurrentMonth([firstDateToExclude.date()]))
           .startOf('day')
-        const config = {
+
+        const datePicker = new DatePicker(component, {
           excludedDates: `${firstDateToExclude.format('D/M/YYYY')} ${secondDateToExclude.format('D/M/YYYY')}`
-        }
-        const datePicker = new DatePicker(component, config)
+        })
 
         expect(datePicker.excludedDates).toHaveLength(2)
         expect(datePicker.excludedDates).toStrictEqual([
@@ -695,11 +715,9 @@ describe('button menu JS API', () => {
         }
         datesToExclude = datesToExclude.map((date) => date.startOf('day'))
 
-        const config = {
+        const datePicker = new DatePicker(component, {
           excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
-        }
-
-        const datePicker = new DatePicker(component, config)
+        })
 
         // expect(datePicker.excludedDates.length).toEqual(3);
         expect(datePicker.excludedDates).toStrictEqual(
@@ -723,10 +741,10 @@ describe('button menu JS API', () => {
           datesToExclude.push(dayjs().date(11))
         }
         datesToExclude = datesToExclude.map((date) => date.startOf('day'))
-        const config = {
+
+        const datePicker = new DatePicker(component, {
           excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[2].format('D/M/YYYY')} ${datesToExclude[3].format('D/M/YYYY')} ${datesToExclude[4].format('D/M/YYYY')}`
-        }
-        const datePicker = new DatePicker(component, config)
+        })
 
         expect(datePicker.excludedDates).toStrictEqual(
           datesToExclude.map((date) => date.toDate())
@@ -742,9 +760,12 @@ describe('button menu JS API', () => {
     test('with leadingZeros false', async () => {
       input = screen.getByLabelText('Date')
 
-      const config = { leadingZeros: false }
-      new DatePicker(component, config)
+      new DatePicker(component, {
+        leadingZeros: false
+      })
+
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
+
       const dateToSelect = dayjs().date(9)
       const dateButton = screen.getByTestId(dateToSelect.format('D/M/YYYY'))
 
@@ -757,9 +778,12 @@ describe('button menu JS API', () => {
     test('with leadingZeros true', async () => {
       input = screen.getByLabelText('Date')
 
-      const config = { leadingZeros: true }
-      new DatePicker(component, config)
+      new DatePicker(component, {
+        leadingZeros: true
+      })
+
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
+
       const dateToSelect = dayjs().date(9)
       const dateButton = screen.getByTestId(dateToSelect.format('DD/MM/YYYY'))
 
@@ -773,20 +797,22 @@ describe('button menu JS API', () => {
       const minDay = 3
       const lastDayinMonth = dayjs().endOf('month').date()
       const minDate = dayjs().date(minDay)
-      const config = { minDate: minDate.format('DD/MM/YYYY') }
 
-      new DatePicker(component, config)
+      new DatePicker(component, {
+        minDate: minDate.format('DD/MM/YYYY')
+      })
+
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
 
-      const dayButtonsDisabled = range(1, minDay - 1)
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+      const dayButtonsDisabled = range(1, minDay - 1).map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
 
-      const dayButtonsEnabled = range(minDay, lastDayinMonth)
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+      const dayButtonsEnabled = range(minDay, lastDayinMonth).map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
 
       for (const dayButton of dayButtonsDisabled) {
         expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -801,20 +827,22 @@ describe('button menu JS API', () => {
       const maxDay = 21
       const lastDayinMonth = dayjs().endOf('month').date()
       const maxDate = dayjs().date(maxDay)
-      const config = { maxDate: maxDate.format('DD/MM/YYYY') }
 
-      new DatePicker(component, config)
+      new DatePicker(component, {
+        maxDate: maxDate.format('DD/MM/YYYY')
+      })
+
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
 
-      const dayButtonsDisabled = range(maxDay + 1, lastDayinMonth)
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+      const dayButtonsDisabled = range(maxDay + 1, lastDayinMonth).map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
 
-      const dayButtonsEnabled = range(1, maxDay)
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+      const dayButtonsEnabled = range(1, maxDay).map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
 
       for (const dayButton of dayButtonsDisabled) {
         expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -830,24 +858,25 @@ describe('button menu JS API', () => {
         const dateToExclude = dayjs()
           .date(getDateInCurrentMonth())
           .startOf('day')
-        const excludedDay = dateToExclude.date()
-        const config = { excludedDates: dateToExclude.format('D/M/YYYY') }
 
+        const excludedDay = dateToExclude.date()
         const lastDayinMonth = dayjs().endOf('month').date()
 
-        new DatePicker(component, config)
+        new DatePicker(component, {
+          excludedDates: dateToExclude.format('D/M/YYYY')
+        })
+
         calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
         await user.click(calendarButton)
 
-        const dayButtonsDisabled = [excludedDay]
-          .map(getDateFormatted)
-          .map(screen.getByTestId)
+        const dayButtonsDisabled = [excludedDay].map((day) =>
+          screen.getByTestId(getDateFormatted(day))
+        )
 
         const dayButtonsEnabled = range(1, lastDayinMonth)
           .filter((day) => day !== excludedDay)
-          .map(getDateFormatted)
-          .map(screen.getByTestId)
+          .map((day) => screen.getByTestId(getDateFormatted(day)))
 
         for (const dayButton of dayButtonsDisabled) {
           expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -870,25 +899,25 @@ describe('button menu JS API', () => {
           datesToExclude.push(dayjs().date(5))
         }
         datesToExclude = datesToExclude.map((date) => date.startOf('day'))
+
         const daysToExclude = datesToExclude.map((date) => date.date())
         const lastDayinMonth = dayjs().endOf('month').date()
-        const config = {
-          excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
-        }
 
-        new DatePicker(component, config)
+        new DatePicker(component, {
+          excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
+        })
+
         calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
         await user.click(calendarButton)
 
-        const dayButtonsDisabled = daysToExclude
-          .map(getDateFormatted)
-          .map(screen.getByTestId)
+        const dayButtonsDisabled = daysToExclude.map((day) =>
+          screen.getByTestId(getDateFormatted(day))
+        )
 
         const dayButtonsEnabled = range(1, lastDayinMonth)
           .filter((day) => !daysToExclude.includes(day))
-          .map(getDateFormatted)
-          .map(screen.getByTestId)
+          .map((day) => screen.getByTestId(getDateFormatted(day)))
 
         for (const dayButton of dayButtonsDisabled) {
           expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -901,7 +930,6 @@ describe('button menu JS API', () => {
     })
 
     test('excludedDays', async () => {
-      const config = { excludedDays: 'sunday' }
       const lastDayinMonth = dayjs().endOf('month').date()
       const excludedDays = []
       for (let i = 1; i <= lastDayinMonth; i++) {
@@ -909,19 +937,22 @@ describe('button menu JS API', () => {
           excludedDays.push(i)
         }
       }
-      new DatePicker(component, config)
+
+      new DatePicker(component, {
+        excludedDays: 'sunday'
+      })
+
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
 
-      const dayButtonsDisabled = excludedDays
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+      const dayButtonsDisabled = excludedDays.map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
 
       const dayButtonsEnabled = range(1, lastDayinMonth)
         .filter((day) => !excludedDays.includes(day))
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+        .map((day) => screen.getByTestId(getDateFormatted(day)))
 
       for (const dayButton of dayButtonsDisabled) {
         expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -933,7 +964,7 @@ describe('button menu JS API', () => {
     })
 
     test('default weekStartDay', async () => {
-      new DatePicker(component, {})
+      new DatePicker(component)
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
       await user.click(calendarButton)
       const headers = getAllByRole(component, 'columnheader')
@@ -964,7 +995,12 @@ describe('Datepicker data-attributes API', () => {
   })
 
   test('with leadingZeros false', async () => {
-    component = createComponent({ leadingZeros: 'false' })
+    component = createComponent({
+      attributes: {
+        'data-leading-zeros': 'false'
+      }
+    })
+
     new DatePicker(component)
 
     input = screen.getByLabelText('Date')
@@ -979,7 +1015,12 @@ describe('Datepicker data-attributes API', () => {
   })
 
   test('with leadingZeros true', async () => {
-    const component = createComponent({ leadingZeros: 'true' })
+    const component = createComponent({
+      attributes: {
+        'data-leading-zeros': 'true'
+      }
+    })
+
     new DatePicker(component)
 
     input = screen.getByLabelText('Date')
@@ -997,21 +1038,25 @@ describe('Datepicker data-attributes API', () => {
     const minDay = 3
     const lastDayinMonth = dayjs().endOf('month').date()
     const minDate = dayjs().date(minDay)
+
     const component = createComponent({
-      minDate: minDate.format('DD/MM/YYYY')
+      attributes: {
+        'data-min-date': minDate.format('DD/MM/YYYY')
+      }
     })
+
     new DatePicker(component)
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
     await user.click(calendarButton)
 
-    const dayButtonsDisabled = range(1, minDay - 1)
-      .map(getDateFormatted)
-      .map(screen.getByTestId)
+    const dayButtonsDisabled = range(1, minDay - 1).map((day) =>
+      screen.getByTestId(getDateFormatted(day))
+    )
 
-    const dayButtonsEnabled = range(minDay, lastDayinMonth)
-      .map(getDateFormatted)
-      .map(screen.getByTestId)
+    const dayButtonsEnabled = range(minDay, lastDayinMonth).map((day) =>
+      screen.getByTestId(getDateFormatted(day))
+    )
 
     for (const dayButton of dayButtonsDisabled) {
       expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -1026,21 +1071,26 @@ describe('Datepicker data-attributes API', () => {
     const maxDay = 21
     const lastDayinMonth = dayjs().endOf('month').date()
     const maxDate = dayjs().date(maxDay)
+
     const component = createComponent({
-      maxDate: maxDate.format('DD/MM/YYYY')
+      attributes: {
+        'data-max-date': maxDate.format('DD/MM/YYYY')
+      }
     })
+
     new DatePicker(component)
+
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
     await user.click(calendarButton)
 
-    const dayButtonsDisabled = range(maxDay + 1, lastDayinMonth)
-      .map(getDateFormatted)
-      .map(screen.getByTestId)
+    const dayButtonsDisabled = range(maxDay + 1, lastDayinMonth).map((day) =>
+      screen.getByTestId(getDateFormatted(day))
+    )
 
-    const dayButtonsEnabled = range(1, maxDay)
-      .map(getDateFormatted)
-      .map(screen.getByTestId)
+    const dayButtonsEnabled = range(1, maxDay).map((day) =>
+      screen.getByTestId(getDateFormatted(day))
+    )
 
     for (const dayButton of dayButtonsDisabled) {
       expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -1056,22 +1106,26 @@ describe('Datepicker data-attributes API', () => {
       const dateToExclude = dayjs().date(getDateInCurrentMonth()).startOf('day')
       const excludedDay = dateToExclude.date()
       const lastDayinMonth = dayjs().endOf('month').date()
+
       const component = createComponent({
-        excludedDates: dateToExclude.format('D/M/YYYY')
+        attributes: {
+          'data-excluded-dates': dateToExclude.format('D/M/YYYY')
+        }
       })
+
       new DatePicker(component)
+
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
 
-      const dayButtonsDisabled = [excludedDay]
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+      const dayButtonsDisabled = [excludedDay].map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
 
       const dayButtonsEnabled = range(1, lastDayinMonth)
         .filter((day) => day !== excludedDay)
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+        .map((day) => screen.getByTestId(getDateFormatted(day)))
 
       for (const dayButton of dayButtonsDisabled) {
         expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -1093,25 +1147,31 @@ describe('Datepicker data-attributes API', () => {
         datesToExclude.push(dayjs().date(4))
         datesToExclude.push(dayjs().date(5))
       }
+
       datesToExclude = datesToExclude.map((date) => date.startOf('day'))
+
       const daysToExclude = datesToExclude.map((date) => date.date())
       const lastDayinMonth = dayjs().endOf('month').date()
+
       component = createComponent({
-        excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
+        attributes: {
+          'data-excluded-dates': `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
+        }
       })
+
       new DatePicker(component)
+
       calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
       await user.click(calendarButton)
 
-      const dayButtonsDisabled = daysToExclude
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+      const dayButtonsDisabled = daysToExclude.map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
 
       const dayButtonsEnabled = range(1, lastDayinMonth)
         .filter((day) => !daysToExclude.includes(day))
-        .map(getDateFormatted)
-        .map(screen.getByTestId)
+        .map((day) => screen.getByTestId(getDateFormatted(day)))
 
       for (const dayButton of dayButtonsDisabled) {
         expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -1124,27 +1184,34 @@ describe('Datepicker data-attributes API', () => {
   })
 
   test('excludedDays', async () => {
-    const component = createComponent({ excludedDays: 'sunday' })
+    const component = createComponent({
+      attributes: {
+        'data-excluded-days': 'sunday'
+      }
+    })
+
     const lastDayinMonth = dayjs().endOf('month').date()
     const excludedDays = []
+
     for (let i = 1; i <= lastDayinMonth; i++) {
       if (dayjs().date(i).day() === 0) {
         excludedDays.push(i)
       }
     }
+
     new DatePicker(component)
+
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
 
     await user.click(calendarButton)
 
-    const dayButtonsDisabled = excludedDays
-      .map(getDateFormatted)
-      .map(screen.getByTestId)
+    const dayButtonsDisabled = excludedDays.map((day) =>
+      screen.getByTestId(getDateFormatted(day))
+    )
 
     const dayButtonsEnabled = range(1, lastDayinMonth)
       .filter((day) => !excludedDays.includes(day))
-      .map(getDateFormatted)
-      .map(screen.getByTestId)
+      .map((day) => screen.getByTestId(getDateFormatted(day)))
 
     for (const dayButton of dayButtonsDisabled) {
       expect(dayButton).toHaveAttribute('aria-disabled', 'true')
@@ -1156,9 +1223,16 @@ describe('Datepicker data-attributes API', () => {
   })
 
   test('weekStartDay', async () => {
-    component = createComponent({ weekStartDay: 'sunday' })
+    component = createComponent({
+      attributes: {
+        'data-week-start-day': 'sunday'
+      }
+    })
+
     new DatePicker(component)
+
     calendarButton = screen.getByRole('button', { name: 'Choose date' })
+
     await user.click(calendarButton)
     const headers = getAllByRole(component, 'columnheader')
 

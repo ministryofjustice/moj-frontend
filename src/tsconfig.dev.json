@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.base.json",
+  "include": [
+    "**/*.spec.js",
+    "**/*.spec.mjs",
+    "**/*.spec.helper.mjs",
+    ".eslintrc.js"
+  ],
+  "compilerOptions": {
+    "checkJs": true
+  }
+}

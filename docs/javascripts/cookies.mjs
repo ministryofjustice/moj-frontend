@@ -1,18 +1,16 @@
-class Cookies {
+import { Component } from 'govuk-frontend'
+
+export class Cookies extends Component {
   /**
-   * @param {Element | null} $module - HTML element to use for cookies
+   * @param {Element | null} $root - HTML element to use for cookies
    */
-  constructor($module) {
-    if (!$module || !($module instanceof HTMLElement)) {
-      return this
-    }
+  constructor($root) {
+    super($root)
 
-    this.$module = $module
-
-    const $accept = this.$module.querySelector('[name="accept"]')
+    const $accept = this.$root.querySelector('[name="accept"]')
     $accept.addEventListener('click', this.accept.bind(this))
 
-    const $reject = this.$module.querySelector('[name="reject"]')
+    const $reject = this.$root.querySelector('[name="reject"]')
     $reject.addEventListener('click', this.reject.bind(this))
 
     const configEncoded = window.localStorage.getItem('mojpl-cookies')
@@ -21,7 +19,7 @@ class Cookies {
       this.load(config)
     } else {
       // If there is no config, show the cookie banner
-      this.$module.hidden = false
+      this.$root.hidden = false
     }
   }
 
@@ -38,8 +36,8 @@ class Cookies {
   }
 
   hideMessage() {
-    if (!this.$module.hasAttribute('data-persistent')) {
-      this.$module.hidden = true
+    if (!this.$root.hasAttribute('data-persistent')) {
+      this.$root.hidden = true
     }
   }
 
@@ -56,10 +54,13 @@ class Cookies {
 
     window.location.reload()
   }
+
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'app-cookies'
 }
 
 function gtag() {
   window.dataLayer.push(arguments)
 }
-
-export default Cookies

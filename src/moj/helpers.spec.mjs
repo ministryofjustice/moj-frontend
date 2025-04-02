@@ -1,3 +1,5 @@
+import { outdent } from 'outdent'
+
 import {
   findNearestMatchingElement,
   getPreviousSibling,
@@ -7,7 +9,7 @@ import {
 describe('helpers', () => {
   describe('getNextSibling', () => {
     beforeEach(() => {
-      const html = `
+      const html = outdent`
         <div id="container">
           <h1 id="title">Heading 1</h1>
           <p>this is some text</p>
@@ -17,7 +19,8 @@ describe('helpers', () => {
             <li id="item-3" class="selected">item 3</li>
             <li id="item-4" class="item">item 4</li>
           </ul>
-        </div>`
+        </div>
+      `
 
       document.body.insertAdjacentHTML('afterbegin', html)
     })
@@ -27,6 +30,7 @@ describe('helpers', () => {
     })
 
     test('returns undefined with no element', () => {
+      // @ts-expect-error - Allow invalid param for test
       const result = getNextSibling()
 
       expect(result).toBeUndefined()
@@ -73,7 +77,7 @@ describe('helpers', () => {
 
   describe('getPreviousSibling', () => {
     beforeEach(() => {
-      const html = `
+      const html = outdent`
         <div id="container">
           <h1 id="title">Heading 1</h1>
           <p>this is some text</p>
@@ -83,7 +87,8 @@ describe('helpers', () => {
             <li id="item-3" class="selected">item 3</li>
             <li id="item-4" class="item">item 4</li>
           </ul>
-        </div>`
+        </div>
+      `
 
       document.body.insertAdjacentHTML('afterbegin', html)
     })
@@ -93,6 +98,7 @@ describe('helpers', () => {
     })
 
     test('returns undefined with no element', () => {
+      // @ts-expect-error - Allow invalid param for test
       const result = getPreviousSibling()
 
       expect(result).toBeUndefined()
@@ -139,7 +145,7 @@ describe('helpers', () => {
 
   describe('findNearestMatchingElement', () => {
     beforeEach(() => {
-      const html = `
+      const html = outdent`
         <div id="container">
           <h1 id="title">Heading 1</h1>
           <p>this is some text</p>
@@ -149,7 +155,8 @@ describe('helpers', () => {
             <li id="item-3" class="selected">item 3</li>
             <li id="item-4" class="item">item 4</li>
           </ul>
-        </div>`
+        </div>
+      `
 
       document.body.insertAdjacentHTML('afterbegin', html)
     })
@@ -159,6 +166,7 @@ describe('helpers', () => {
     })
 
     test('returns undefined with no element', () => {
+      // @ts-expect-error - Allow invalid param for test
       const result = findNearestMatchingElement()
 
       expect(result).toBeUndefined()

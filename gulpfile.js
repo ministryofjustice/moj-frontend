@@ -44,7 +44,6 @@ gulp.task(
 gulp.task('watch:stylesheets', () => {
   gulp.watch(
     ['src/moj/**/*.scss'],
-    { ignored: ['**/vendor/**'] },
     gulp.series('build:stylesheets', 'build:stylesheets-minified')
   )
 })
@@ -53,7 +52,7 @@ gulp.task('watch:stylesheets', () => {
 gulp.task('watch:javascripts', () => {
   gulp.watch(
     ['src/moj/**/*.mjs'],
-    { ignored: ['**/*.spec.*', '**/vendor/**'] },
+    { ignored: ['**/*.spec.*'] },
     gulp.series('build:javascripts', 'build:javascripts-minified')
   )
 })
@@ -62,7 +61,6 @@ gulp.task('watch:javascripts', () => {
 gulp.task('watch:docs-stylesheets', () => {
   gulp.watch(
     ['docs/stylesheets/**/*.scss', 'package/moj/all.scss?(.map)'],
-    { ignored: ['**/vendor/**'] },
     gulp.series('docs:stylesheets')
   )
 })
@@ -71,7 +69,7 @@ gulp.task('watch:docs-stylesheets', () => {
 gulp.task('watch:docs-javascript', () => {
   gulp.watch(
     ['docs/javascripts/**/*.mjs', 'package/moj/all.mjs?(.map)'],
-    { ignored: ['**/*.spec.*', '**/vendor/**'] },
+    { ignored: ['**/*.spec.*'] },
     gulp.series('docs:javascripts')
   )
 })

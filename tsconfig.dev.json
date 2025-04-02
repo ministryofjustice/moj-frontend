@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "resolveJsonModule": true
+  },
+  "include": [
+    "${configDir}/*.config.*",
+    "${configDir}/*.setup.*",
+    "${configDir}/.eleventy.*",
+    "${configDir}/.eslintrc.*",
+    "${configDir}/.prettierrc.*",
+    "${configDir}/app.js",
+    "${configDir}/config.js",
+    "${configDir}/gulpfile.js"
+  ]
+}
