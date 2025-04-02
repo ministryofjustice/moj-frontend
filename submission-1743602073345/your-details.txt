@@ -1,0 +1,9 @@
+{
+  "fullName": "Chris Pymm",
+  "emailAddress": "chris.pymm@digital.justice.gov.uk",
+  "teamName": "moj forms",
+  "shareYourDetails": [
+    "addNameToComponentPage",
+    "addTeamNameWhenRequested"
+  ]
+}
