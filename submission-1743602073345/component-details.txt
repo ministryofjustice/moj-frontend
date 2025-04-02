@@ -1,0 +1,5 @@
+{
+  "componentName": "test component",
+  "componentOverview": "its a secret",
+  "howIsTheComponentUsed": "its not"
+}
