@@ -155,6 +155,8 @@ ${componentCodeDetails?.componentCode || ''}
 layout: layouts/tabbed-component.njk
 title: ${componentName}
 type: component
+status: Experimental
+statusDate: ${moment().format('MMMM YYYY')}
 eleventyNavigation:
   key: ${componentName}
   parent: Components
