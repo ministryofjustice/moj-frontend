@@ -98,5 +98,6 @@ permalink: content-standards/style-guide-updates/
       <td class="govuk-table__cell">SDS40 stands for Standard determinate sentence with a 40% release date. SDS40 is a statutory instrument that changed the release points of certain sentences and offences from 50% to 40%. The term SDS40 is commonly understood in HMPPS.</td>
       <td class="govuk-table__cell" data-sort-value="20250401">1 April 2025</td>
     </tr>
+
   </tbody>
 </table>
