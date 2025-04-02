@@ -1,0 +1,5 @@
+{
+  "componentName": "Popover",
+  "componentOverview": "it pops",
+  "howIsTheComponentUsed": "over things"
+}
