@@ -8,8 +8,8 @@ const {
 } = require('../config')
 const redis = require('../helpers/redis-client')
 
-const imageDirectory = 'images'
-const fileDirectory = 'files'
+const imageDirectory = 'docs/assets/images'
+const fileDirectory = 'docs/assets/reports'
 
 // Retrieve File from Redis
 const getFileFromRedis = async (redisKey) => {
@@ -97,7 +97,7 @@ const addFileToBranch = async (filePath, fileContent, branchName) => {
   }
 }
 
-const pushToGitHub = async (sessionData) => {
+const pushToGitHub = async (sessionData, branchName) => {
   console.log('[GITHUB] Start pushing to Github')
 
   const existingFilenames = new Set() // To store unique filenames across files
@@ -118,8 +118,6 @@ const pushToGitHub = async (sessionData) => {
     return uniqueName
   }
 
-  const branchName = `submission-${Date.now()}`
-
   try {
     const submissionData = {}
     for (const key in sessionData) {
@@ -138,7 +136,7 @@ const pushToGitHub = async (sessionData) => {
             const { buffer, originalname } = await getFileFromRedis(redisKey) // Retrieve file from Redis
             const filename = getUniqueFilename(originalname)
             const fileContent = Buffer.from(buffer).toString('base64')
-            const filePath = `${branchName}/${directory}/${filename}`
+            const filePath = `${directory}/${branchName}/${filename}`
             submissionData[filePath] = { buffer: fileContent }
           }
         } else {
