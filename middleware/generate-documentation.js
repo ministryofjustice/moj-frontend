@@ -1,7 +1,7 @@
 /* eslint-disable prefer-template */
 const moment = require('moment')
 
-const generateMarkdown = (data) => {
+const generateMarkdown = (data, _) => {
   const { '/component-details': details } = data
 
   const documentationDirectory = 'docs/components/documentation'
