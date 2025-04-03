@@ -1,11 +1,11 @@
 ---
 layout: layouts/get-started.njk
-subsection: Setup for production
+subsection: Production
 title: Install MoJ Frontend with Node.js package manager (npm)
 redirect_from: /get-started/installing-with-npm
 eleventyNavigation:
   key: Install with Node.js package manager (npm)
-  parent: Setup for production
+  parent: Production
   order: 20
   excerpt: "We recommend installing MoJ Frontend using npm."
 ---

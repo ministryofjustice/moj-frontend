@@ -2,10 +2,6 @@
 layout: layouts/content.njk
 title: Content style guide updates
 permalink: content-standards/style-guide-updates/
-# eleventyNavigation:
-# key: Content style guide
-# order: 20
-# excerpt: "Log of updates to the MoJ style guide."
 ---
 
 <p>New and updated entries in the MoJ content style guide.</p>
