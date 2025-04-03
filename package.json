@@ -73,8 +73,8 @@
     "node-fetch": "2.7.0",
     "notifications-node-client": "^8.2.1",
     "nunjucks": "^3.2.4",
-    "puppeteer": "^24.4.0",
-    "puppeteer-core": "^24.4.0",
+    "puppeteer": "^24.6.0",
+    "puppeteer-core": "^24.6.0",
     "sanitize-html": "^2.15.0"
   },
   "devDependencies": {
