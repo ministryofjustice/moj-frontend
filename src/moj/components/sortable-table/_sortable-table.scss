@@ -2,6 +2,7 @@
 
 [aria-sort] button,
 [aria-sort] button:hover {
+  display: flex;
   position: relative;
   margin: 0;
   padding: 0 10px 0 0;
@@ -17,6 +18,7 @@
   font-weight: inherit;
   text-align: inherit;
   cursor: pointer;
+  align-items: center;
 }
 
 [aria-sort] button:focus {
@@ -26,45 +28,4 @@
   box-shadow:
     0 -2px $govuk-focus-colour,
     0 4px $govuk-focus-text-colour;
-}
-
-[aria-sort]:first-child button {
-  right: auto;
-}
-
-[aria-sort] button::before {
-  content: " \25bc";
-  position: absolute;
-  top: 9px;
-  right: -1px;
-  font-size: 0.5em;
-}
-
-[aria-sort] button::after {
-  content: " \25b2";
-  position: absolute;
-  top: 1px;
-  right: -1px;
-  font-size: 0.5em;
-}
-
-[aria-sort="ascending"] button::before,
-[aria-sort="descending"] button::before {
-  content: none;
-}
-
-[aria-sort="ascending"] button::after {
-  content: " \25b2";
-  position: absolute;
-  top: 2px;
-  right: -5px;
-  font-size: 0.8em;
-}
-
-[aria-sort="descending"] button::after {
-  content: " \25bc";
-  position: absolute;
-  top: 2px;
-  right: -5px;
-  font-size: 0.8em;
 }
