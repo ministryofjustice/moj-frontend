@@ -58,12 +58,10 @@ export class SortableTable extends ConfigurableComponent {
   createHeadingButton($heading) {
     const index = this.$headings.indexOf($heading)
     const $button = document.createElement('button')
-    // const $indicator = document.createElement('span')
 
     $button.setAttribute('type', 'button')
     $button.setAttribute('data-index', `${index}`)
     $button.textContent = $heading.textContent
-    // $button.appendChild($indicator)
 
     $heading.textContent = ''
     $heading.appendChild($button)
@@ -83,7 +81,8 @@ export class SortableTable extends ConfigurableComponent {
   initialiseSortedColumn() {
     const $rows = this.getTableRowsArray()
 
-    const $heading = this.$root.querySelector('th[aria-sort]')
+    const $heading = this.$root.querySelector('th[aria-sort="ascending"], th[aria-sort="descending"]')
+console.log($heading)
     const $sortButton = $heading?.querySelector('button')
     const sortDirection = $heading?.getAttribute('aria-sort')
 

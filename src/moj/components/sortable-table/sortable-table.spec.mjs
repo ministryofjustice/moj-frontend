@@ -14,9 +14,9 @@ function createComponent() {
       <table class="govuk-table" data-module="moj-sortable-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header" aria-sort="ascending">Name</th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">Name</th>
             <th scope="col" class="govuk-table__header" aria-sort="none">Elevation</th>
-            <th scope="col" class="govuk-table__header" aria-sort="none">Continent</th>
+            <th scope="col" class="govuk-table__header" aria-sort="ascending">Continent</th>
             <th scope="col" class="govuk-table__header govuk-table__header--numeric" aria-sort="none">First summit</th>
             <th scope="col" class="govuk-table__header" aria-sort="none">Test nickname</th>
           </tr>
@@ -82,7 +82,7 @@ describe('sortable table', () => {
     for (const header of headers) {
       const button = header.querySelector('button')
       expect(button).toBeInTheDocument()
-      expect(button).toHaveTextContent(`${header.textContent}`)
+      expect(button).toHaveAccessibleName(`${header.textContent.trim()}`)
     }
   })
 
@@ -92,34 +92,17 @@ describe('sortable table', () => {
     expect(statusBox).toHaveClass('govuk-visually-hidden')
   })
 
-  test('sorts ascending by Name on initial load', () => {
+  test('sorts ascending by Continent on initial load', () => {
     const tbody = component.querySelector('tbody')
-    const cells = tbody.querySelectorAll('tr td:first-child')
+    const cells = tbody.querySelectorAll('tr td:nth-child(3)')
     const values = Array.from(cells).map((cell) => cell.textContent.trim())
 
-    expect(component.querySelector('th')).toHaveAttribute(
-      'aria-sort',
-      'ascending'
-    )
-    expect(values).toEqual(['Aconcagua', 'Everest', 'K2', 'Kilimanjaro'])
+    expect(values).toEqual(['Africa', 'Asia', 'Asia', 'South America'])
   })
 
-  test('sorts string column in descending order when clicked', async () => {
+  test('sorts string column in ascending then descending order when clicked', async () => {
     const nameHeaderButton = queryByRole(component, 'button', { name: 'Name' })
     const tbody = component.querySelector('tbody')
-
-    await user.click(nameHeaderButton)
-
-    const descCells = tbody.querySelectorAll('tr td:first-child')
-    const descValues = Array.from(descCells).map((cell) =>
-      cell.textContent.trim()
-    )
-
-    expect(descValues).toEqual(['Kilimanjaro', 'K2', 'Everest', 'Aconcagua'])
-    expect(nameHeaderButton.parentElement).toHaveAttribute(
-      'aria-sort',
-      'descending'
-    )
 
     await user.click(nameHeaderButton)
 
@@ -132,6 +115,18 @@ describe('sortable table', () => {
     expect(nameHeaderButton.parentElement).toHaveAttribute(
       'aria-sort',
       'ascending'
+    )
+
+    await user.click(nameHeaderButton)
+    const descCells = tbody.querySelectorAll('tr td:first-child')
+    const descValues = Array.from(descCells).map((cell) =>
+      cell.textContent.trim()
+    )
+
+    expect(descValues).toEqual(['Kilimanjaro', 'K2', 'Everest', 'Aconcagua'])
+    expect(nameHeaderButton.parentElement).toHaveAttribute(
+      'aria-sort',
+      'descending'
     )
   })
 
@@ -220,7 +215,7 @@ describe('sortable table', () => {
   })
 
   test('cycles through sort states: none -> ascending -> descending', async () => {
-    const headerButton = queryByRole(component, 'button', { name: 'Continent' })
+    const headerButton = queryByRole(component, 'button', { name: 'Name' })
     const header = headerButton.parentElement
 
     expect(header).toHaveAttribute('aria-sort', 'none')
@@ -284,7 +279,6 @@ describe('sortable table options', () => {
     const statusBox = queryByRole(component.parentElement, 'status')
 
     await user.click(nameHeaderButton)
-    await user.click(nameHeaderButton)
 
     expect(statusBox).toHaveTextContent('Sort by Name (A to Z)')
   })
@@ -297,6 +291,7 @@ describe('sortable table options', () => {
     const nameHeaderButton = queryByRole(component, 'button', { name: 'Name' })
     const statusBox = queryByRole(component.parentElement, 'status')
 
+    await user.click(nameHeaderButton)
     await user.click(nameHeaderButton)
 
     expect(statusBox).toHaveTextContent('Sort by Name (Z to A)')
