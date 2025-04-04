@@ -1,5 +1,5 @@
 ---
-layout: layouts/index.njk
+layout: layouts/thumbs.njk
 title: Components
 eleventyNavigation:
   key: Components

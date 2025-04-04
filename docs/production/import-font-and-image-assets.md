@@ -1,10 +1,10 @@
 ---
 layout: layouts/get-started.njk
-subsection: Setup for production
+subsection: Production
 title: Import MoJ Frontend font and image assets
 eleventyNavigation:
   key: Import font and image assets
-  parent: Setup for production
+  parent: Production
   order: 60
   excerpt: "To use the font and image assets from MoJ Frontend and GOV.UK Frontend, you can either serve the assets from the combined assets folders or copy the font and image files into your application"
 ---

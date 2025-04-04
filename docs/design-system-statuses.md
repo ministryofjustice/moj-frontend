@@ -1,10 +1,11 @@
 ---
 layout: layouts/content.njk
+subsection: About the design system
 title: Design system statuses
 eleventyNavigation:
-  key: Design system statuses
-  parent: Using the design system
-  order: 5
+  key: Building block statuses
+  parent: About the design system
+  order: 20
   excerpt: "Design system statuses."
 ---
 
