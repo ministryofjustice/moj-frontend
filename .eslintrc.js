@@ -1,7 +1,6 @@
 module.exports = {
   extends: ['standard', 'prettier'],
   ignorePatterns: [
-    '**/vendor/**',
     'package/**',
 
     // Enable dotfile linting
@@ -32,7 +31,9 @@ module.exports = {
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        ecmaVersion: 'latest'
+        ecmaVersion: 'latest',
+        projectService: true,
+        tsconfigRootDir: __dirname
       },
       plugins: [
         '@typescript-eslint',
@@ -187,6 +188,7 @@ module.exports = {
       processor: 'markdown/markdown'
     },
     {
+      extends: ['plugin:@typescript-eslint/disable-type-checked'],
       files: ['**/docs/**/*.{cjs,js,mjs}', '**/*.md/*.{cjs,js,mjs}', 'init.js'],
       env: {
         browser: true
