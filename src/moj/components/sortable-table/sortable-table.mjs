@@ -20,12 +20,26 @@ export class SortableTable extends ConfigurableComponent {
 
     this.$head = $head
     this.$body = $body
+    this.$caption = this.$root.querySelector('caption')
+
+    this.$upArrow = `<svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"/>
+</svg>`
+    this.$downArrow = `<svg width="22" height="22" focusable="false" aria-hidden="true" role="img" vviewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"/>
+</svg>`
+    this.$upDownArrow = `<svg width="22" height="22" focusable="false" aria-hidden="true" role="img" vviewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"/>
+<path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"/>
+</svg>`
 
     this.$headings = this.$head
       ? Array.from(this.$head.querySelectorAll('th'))
       : []
 
     this.createHeadingButtons()
+    this.updateCaption()
+    this.updateDirectionIndicators()
     this.createStatusBox()
     this.initialiseSortedColumn()
 
@@ -69,7 +83,9 @@ export class SortableTable extends ConfigurableComponent {
   initialiseSortedColumn() {
     const $rows = this.getTableRowsArray()
 
-    const $heading = this.$root.querySelector('th[aria-sort]')
+    const $heading = this.$root.querySelector(
+      'th[aria-sort="ascending"], th[aria-sort="descending"]'
+    )
     const $sortButton = $heading?.querySelector('button')
     const sortDirection = $heading?.getAttribute('aria-sort')
 
@@ -94,7 +110,8 @@ export class SortableTable extends ConfigurableComponent {
    * @param {MouseEvent} event - Click event
    */
   onSortButtonClick(event) {
-    const $button = event.target
+    const $target = /** @type {HTMLElement} */ (event.target)
+    const $button = $target.closest('button')
 
     if (
       !$button ||
@@ -123,6 +140,24 @@ export class SortableTable extends ConfigurableComponent {
     this.addRows($sortedRows)
     this.removeButtonStates()
     this.updateButtonState($button, newSortDirection)
+    this.updateDirectionIndicators()
+  }
+
+  updateCaption() {
+    if (!this.$caption) {
+      return
+    }
+
+    let assistiveText = this.$caption.querySelector('.govuk-visually-hidden')
+    if (assistiveText) {
+      return
+    }
+
+    assistiveText = document.createElement('span')
+    assistiveText.classList.add('govuk-visually-hidden')
+    assistiveText.textContent = ' (column headers with buttons are sortable).'
+
+    this.$caption.appendChild(assistiveText)
   }
 
   /**
@@ -139,6 +174,29 @@ export class SortableTable extends ConfigurableComponent {
     message = message.replace(/%heading%/, $button.textContent)
     message = message.replace(/%direction%/, this.config[`${direction}Text`])
     this.$status.textContent = message
+  }
+
+  updateDirectionIndicators() {
+    for (const $heading of this.$headings) {
+      const $button = /** @type {HTMLButtonElement} */ (
+        $heading.querySelector('button')
+      )
+      if ($heading.hasAttribute('aria-sort') && $button) {
+        const direction = $heading.getAttribute('aria-sort')
+        $button.querySelector('svg')?.remove()
+
+        switch (direction) {
+          case 'ascending':
+            $button.insertAdjacentHTML('beforeend', this.$upArrow)
+            break
+          case 'descending':
+            $button.insertAdjacentHTML('beforeend', this.$downArrow)
+            break
+          default:
+            $button.insertAdjacentHTML('beforeend', this.$upDownArrow)
+        }
+      }
+    }
   }
 
   removeButtonStates() {
