@@ -8,10 +8,24 @@ export function SortableTable(params) {
   }
 
   this.table.data('moj-search-toggle-initialised', true)
+  this.caption = this.table.find('caption')
+
+  this.upArrow = `<svg width="22" height="22" focusable="false" aria-hidden="true" role="img" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.5625 15.5L11 6.63125L15.4375 15.5H6.5625Z" fill="currentColor"/>
+</svg>`
+  this.downArrow = `<svg width="22" height="22" focusable="false" aria-hidden="true" role="img" vviewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.4375 7L11 15.8687L6.5625 7L15.4375 7Z" fill="currentColor"/>
+</svg>`
+  this.upDownArrow = `<svg width="22" height="22" focusable="false" aria-hidden="true" role="img" vviewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.1875 9.5L10.9609 3.95703L13.7344 9.5H8.1875Z" fill="currentColor"/>
+<path d="M13.7344 12.0781L10.9609 17.6211L8.1875 12.0781H13.7344Z" fill="currentColor"/>
+</svg>`
 
   this.setupOptions(params)
   this.body = this.table.find('tbody')
   this.createHeadingButtons()
+  this.updateCaption()
+  this.updateDirectionIndicators()
   this.createStatusBox()
   this.initialiseSortedColumn()
   this.table.on('click', 'th button', $.proxy(this, 'onSortButtonClick'))
@@ -65,8 +79,9 @@ SortableTable.prototype.initialiseSortedColumn = function () {
 }
 
 SortableTable.prototype.onSortButtonClick = function (e) {
-  const columnNumber = e.currentTarget.getAttribute('data-index')
-  const sortDirection = $(e.currentTarget).parent().attr('aria-sort')
+  const button = e.target.closest('button')
+  const columnNumber = button.getAttribute('data-index')
+  const sortDirection = $(button).parent().attr('aria-sort')
   let newSortDirection
   if (sortDirection === 'none' || sortDirection === 'descending') {
     newSortDirection = 'ascending'
@@ -78,6 +93,26 @@ SortableTable.prototype.onSortButtonClick = function (e) {
   this.addRows(sortedRows)
   this.removeButtonStates()
   this.updateButtonState($(e.currentTarget), newSortDirection)
+  this.updateDirectionIndicators()
+}
+
+SortableTable.prototype.updateCaption = function () {
+  const captionElement = this.caption.get(0)
+
+  if (!captionElement) {
+    return
+  }
+
+  let assistiveText = captionElement.querySelector('.govuk-visually-hidden')
+  if (assistiveText) {
+    return
+  }
+
+  assistiveText = document.createElement('span')
+  assistiveText.classList.add('govuk-visually-hidden')
+  assistiveText.textContent = ' (column headers with buttons are sortable).'
+
+  captionElement.appendChild(assistiveText)
 }
 
 SortableTable.prototype.updateButtonState = function (button, direction) {
@@ -86,6 +121,26 @@ SortableTable.prototype.updateButtonState = function (button, direction) {
   message = message.replace(/%heading%/, button.text())
   message = message.replace(/%direction%/, this[`${direction}Text`])
   this.status.text(message)
+}
+
+SortableTable.prototype.updateDirectionIndicators = function () {
+  const component = this
+  this.table.find('th').each(function () {
+    const heading = $(this)
+    const button = heading.find('button')
+    const direction = heading.attr('aria-sort')
+    button.find('svg').remove()
+    switch (direction) {
+      case 'ascending':
+        button.append(component.upArrow)
+        break
+      case 'descending':
+        button.append(component.downArrow)
+        break
+      case 'none':
+        button.append(component.upDownArrow)
+    }
+  })
 }
 
 SortableTable.prototype.removeButtonStates = function () {
