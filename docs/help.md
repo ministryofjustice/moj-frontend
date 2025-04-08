@@ -1,5 +1,6 @@
 ---
-layout: layouts/plain.njk
+layout: layouts/content.njk
+subsection: About the design system
 title: Get help with the MoJ Design System
 redirect_from: /community/help-and-feedback
 eleventyNavigation:
