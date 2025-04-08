@@ -13,7 +13,7 @@ backLink: /content-standards/style-guide/
       <th scope="col" class="govuk-table__header" aria-sort="none">Entry</th>
       <th scope="col" class="govuk-table__header" aria-sort="none">Type</th>
       <th scope="col" class="govuk-table__header" aria-sort="none">Description</th>
-      <th scope="col" class="govuk-table__header" aria-sort="ascending">Date</th>
+      <th scope="col" class="govuk-table__header" aria-sort="descending">Date</th>
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
