@@ -1,3 +1,10 @@
+## [5.1.1](https://github.com/ministryofjustice/moj-frontend/compare/v5.1.0...v5.1.1) (2025-04-08)
+
+
+### Bug Fixes
+
+* **sortable table:** use svg arrows instead of pseudo elements ([#1363](https://github.com/ministryofjustice/moj-frontend/issues/1363)) ([ffe7a2d](https://github.com/ministryofjustice/moj-frontend/commit/ffe7a2d82cd41db8f9d9c8feab37f4ba72712415))
+
 # [5.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v5.0.0...v5.1.0) (2025-04-07)
 
 
