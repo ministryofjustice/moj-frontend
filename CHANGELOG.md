@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/ministryofjustice/moj-frontend/compare/v4.0.1...v4.0.2) (2025-04-08)
+
+
+### Bug Fixes
+
+* **sortable table:** replace pseudo element arrows with svgs ([d9d246e](https://github.com/ministryofjustice/moj-frontend/commit/d9d246eb55e8949fe0c4ca54a3799c7e222b917c))
+
 ## [4.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v4.0.0...v4.0.1) (2025-03-11)
 
 
