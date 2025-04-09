@@ -149,18 +149,20 @@ export class AddAnother extends Component {
         return
       }
 
-      switch ($input.type) {
-        case 'checkbox':
-        case 'radio':
-          $input.checked = false
-          break
-        case 'select-one':
-        case 'select-multiple':
-          $input.selectedIndex = -1
-          $input.value = ''
-          break
-        default:
-          $input.value = ''
+      if ($input instanceof HTMLSelectElement) {
+        $input.selectedIndex = -1
+        $input.value = ''
+      } else if ($input instanceof HTMLTextAreaElement) {
+        $input.value = ''
+      } else {
+        switch ($input.type) {
+          case 'checkbox':
+          case 'radio':
+            $input.checked = false
+            break
+          default:
+            $input.value = ''
+        }
       }
     })
   }
@@ -202,6 +204,9 @@ export class AddAnother extends Component {
     }
   }
 
+  /**
+   * @param {Element} $input - the input to validate
+   */
   isValidInputElement($input) {
     return (
       $input instanceof HTMLInputElement ||
