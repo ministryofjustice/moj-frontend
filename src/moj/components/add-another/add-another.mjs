@@ -100,7 +100,7 @@ export class AddAnother extends Component {
    */
   updateAttributes($item, index) {
     $item.querySelectorAll('[data-name]').forEach(($input) => {
-      if (!($input instanceof HTMLInputElement)) {
+      if (!this.isValidInputElement($input)) {
         return
       }
 
@@ -145,14 +145,22 @@ export class AddAnother extends Component {
    */
   resetItem($item) {
     $item.querySelectorAll('[data-name], [data-id]').forEach(($input) => {
-      if (!($input instanceof HTMLInputElement)) {
+      if (!this.isValidInputElement($input)) {
         return
       }
 
-      if ($input.type === 'checkbox' || $input.type === 'radio') {
-        $input.checked = false
-      } else {
-        $input.value = ''
+      switch ($input.type) {
+        case 'checkbox':
+        case 'radio':
+          $input.checked = false
+          break
+        case 'select-one':
+        case 'select-multiple':
+          $input.selectedIndex = -1
+          $input.value = ''
+          break
+        default:
+          $input.value = ''
       }
     })
   }
@@ -192,6 +200,14 @@ export class AddAnother extends Component {
     if ($heading && $heading instanceof HTMLElement) {
       $heading.focus()
     }
+  }
+
+  isValidInputElement($input) {
+    return (
+      $input instanceof HTMLInputElement ||
+      $input instanceof HTMLSelectElement ||
+      $input instanceof HTMLTextAreaElement
+    )
   }
 
   /**
