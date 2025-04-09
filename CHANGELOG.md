@@ -1,3 +1,10 @@
+## [5.1.2](https://github.com/ministryofjustice/moj-frontend/compare/v5.1.1...v5.1.2) (2025-04-09)
+
+
+### Bug Fixes
+
+* **add another:** increment indexes for select and textarea elements  ([#1367](https://github.com/ministryofjustice/moj-frontend/issues/1367)) ([756c030](https://github.com/ministryofjustice/moj-frontend/commit/756c030ecd410b84f95baad1cdafec94d3e01108))
+
 ## [5.1.1](https://github.com/ministryofjustice/moj-frontend/compare/v5.1.0...v5.1.1) (2025-04-08)
 
 
