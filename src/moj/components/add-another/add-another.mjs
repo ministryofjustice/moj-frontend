@@ -100,7 +100,7 @@ export class AddAnother extends Component {
    */
   updateAttributes($item, index) {
     $item.querySelectorAll('[data-name]').forEach(($input) => {
-      if (!($input instanceof HTMLInputElement)) {
+      if (!this.isValidInputElement($input)) {
         return
       }
 
@@ -145,14 +145,24 @@ export class AddAnother extends Component {
    */
   resetItem($item) {
     $item.querySelectorAll('[data-name], [data-id]').forEach(($input) => {
-      if (!($input instanceof HTMLInputElement)) {
+      if (!this.isValidInputElement($input)) {
         return
       }
 
-      if ($input.type === 'checkbox' || $input.type === 'radio') {
-        $input.checked = false
-      } else {
+      if ($input instanceof HTMLSelectElement) {
+        $input.selectedIndex = -1
         $input.value = ''
+      } else if ($input instanceof HTMLTextAreaElement) {
+        $input.value = ''
+      } else {
+        switch ($input.type) {
+          case 'checkbox':
+          case 'radio':
+            $input.checked = false
+            break
+          default:
+            $input.value = ''
+        }
       }
     })
   }
@@ -192,6 +202,17 @@ export class AddAnother extends Component {
     if ($heading && $heading instanceof HTMLElement) {
       $heading.focus()
     }
+  }
+
+  /**
+   * @param {Element} $input - the input to validate
+   */
+  isValidInputElement($input) {
+    return (
+      $input instanceof HTMLInputElement ||
+      $input instanceof HTMLSelectElement ||
+      $input instanceof HTMLTextAreaElement
+    )
   }
 
   /**
