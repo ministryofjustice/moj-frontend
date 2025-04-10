@@ -51,7 +51,7 @@ There’s an accessibility issue with the date picker component. If you’re usi
 
 ### No focus indicator shown when navigating between dates (NVDA only)
 
-When people use the screen reader software NVDA, no focus indicator is displayed when they navigate between dates. This only happens with NVDA software. This fails [WCAG 2.2 success criterion 2.4.7 (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible). We’re aware of this issue and plan to implement a fix by April 2025.
+When people use the screen reader software NVDA, no focus indicator is displayed when they navigate between dates. This only happens with NVDA software. This fails [WCAG 2.2 success criterion 2.4.7 (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible). We’re aware of this issue and plan to implement a fix by June 2025.
 
 ## How to use
 
