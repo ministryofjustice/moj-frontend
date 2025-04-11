@@ -28,13 +28,13 @@ We know some parts of this website are not fully accessible:
 
 If you need information on this website in a different format:
 
-- [design-system@digital.justice.gov.uk](mailto:design-system@digital.justice.gov.uk)
+- [design-system@justice.gov.uk](mailto:design-system@justice.gov.uk)
 
 We’ll consider your request and get back to you in 5 working days.
 
 ## Reporting accessibility problems with this website
 
-We’re always looking to improve the accessibility of this website. If you find any problems not listed on this page or think we’re not meeting accessibility requirements, contact: [design-system@digital.justice.gov.uk](mailto:design-system@digital.justice.gov.uk)
+We’re always looking to improve the accessibility of this website. If you find any problems not listed on this page or think we’re not meeting accessibility requirements, contact: [design-system@justice.gov.uk](mailto:design-system@justice.gov.uk)
 
 ## Enforcement procedure
 
