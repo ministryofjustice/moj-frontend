@@ -20,4 +20,4 @@ The team monitors the following channels and provides support. If you have any q
 
 ### Contact us by email
 
-Send a message to [design-system@digital.justice.gov.uk](mailto:design-system@digital.justice.gov.uk).
+Send a message to [design-system@justice.gov.uk](mailto:design-system@justice.gov.uk).

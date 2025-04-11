@@ -1,3 +1,28 @@
+## [5.1.2](https://github.com/ministryofjustice/moj-frontend/compare/v5.1.1...v5.1.2) (2025-04-09)
+
+
+### Bug Fixes
+
+* **add another:** increment indexes for select and textarea elements  ([#1367](https://github.com/ministryofjustice/moj-frontend/issues/1367)) ([756c030](https://github.com/ministryofjustice/moj-frontend/commit/756c030ecd410b84f95baad1cdafec94d3e01108))
+
+## [5.1.1](https://github.com/ministryofjustice/moj-frontend/compare/v5.1.0...v5.1.1) (2025-04-08)
+
+
+### Bug Fixes
+
+* **sortable table:** use svg arrows instead of pseudo elements ([#1363](https://github.com/ministryofjustice/moj-frontend/issues/1363)) ([ffe7a2d](https://github.com/ministryofjustice/moj-frontend/commit/ffe7a2d82cd41db8f9d9c8feab37f4ba72712415))
+
+# [5.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v5.0.0...v5.1.0) (2025-04-07)
+
+
+### Features
+
+* align with GOV.UK Frontend conventions ([#1304](https://github.com/ministryofjustice/moj-frontend/issues/1304)) ([d9d0a6f](https://github.com/ministryofjustice/moj-frontend/commit/d9d0a6f968035e9e7de9cbb8a0ba99e041b98852)), closes [#1128](https://github.com/ministryofjustice/moj-frontend/issues/1128) [#1259](https://github.com/ministryofjustice/moj-frontend/issues/1259)
+* configure GOV.UK Prototype Kit for ES modules ([e6af988](https://github.com/ministryofjustice/moj-frontend/commit/e6af9888ba6314e244b3ce9549281f0d91c429a1))
+* export MoJ Frontend version CSS custom property ([a03e3d1](https://github.com/ministryofjustice/moj-frontend/commit/a03e3d104d8ca32ee782aa547d4d2e645a49c9d3))
+* match GOV.UK Frontend file naming conventions ([dbb30d5](https://github.com/ministryofjustice/moj-frontend/commit/dbb30d5901699652e6d51d41a496807f4387dc7a))
+* update MoJ Frontend version using Rollup ([90ac49e](https://github.com/ministryofjustice/moj-frontend/commit/90ac49ebcb95272706ade31618674c4c22904172))
+
 ## [4.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v4.0.0...v4.0.1) (2025-03-11)
 
 

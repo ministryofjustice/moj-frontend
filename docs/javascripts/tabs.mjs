@@ -1,13 +1,20 @@
-export class Tabs {
-  constructor(container) {
-    this.container = container
+import { Component } from 'govuk-frontend'
+
+export class Tabs extends Component {
+  /**
+   * @param {Element | null} $root - HTML element to use for tabs
+   */
+  constructor($root) {
+    super($root)
+
     this.keys = { left: 37, right: 39, up: 38, down: 40 }
     this.cssHide = 'app-tabs__panel--hidden'
 
-    this.tabs = Array.from(this.container.querySelectorAll('.app-tabs__tab'))
-    this.panels = Array.from(
-      this.container.querySelectorAll('.app-tabs__panel')
-    )
+    const $tabs = Array.from(this.$root.querySelectorAll('.app-tabs__tab'))
+    const $panels = Array.from(this.$root.querySelectorAll('.app-tabs__panel'))
+
+    this.tabs = $tabs.filter(($tab) => $tab instanceof HTMLAnchorElement)
+    this.panels = $panels.filter(($panel) => $panel instanceof HTMLElement)
 
     this.tabs.forEach(($tab) => {
       $tab.addEventListener('click', (event) => this.onTabClick(event))
@@ -18,7 +25,7 @@ export class Tabs {
   }
 
   hasTab(hash) {
-    return !!this.container.querySelector(hash)
+    return !!this.$root.querySelector(hash)
   }
 
   hideTab(tab) {
@@ -36,8 +43,8 @@ export class Tabs {
   }
 
   setupHtml() {
-    const tabLists = this.container.querySelectorAll('.app-tabs__list')
-    const tabListItems = this.container.querySelectorAll('.app-tabs__list-item')
+    const tabLists = this.$root.querySelectorAll('.app-tabs__list')
+    const tabListItems = this.$root.querySelectorAll('.app-tabs__list-item')
 
     tabLists.forEach((tabList) => {
       tabList.setAttribute('role', 'tablist')
@@ -97,7 +104,7 @@ export class Tabs {
       (tab) => tab.parentElement === nextTabListItem
     )
 
-    if (nextTab) {
+    if (currentTab && nextTab) {
       this.hideTab(currentTab)
       this.showTab(nextTab)
       nextTab.focus()
@@ -112,7 +119,7 @@ export class Tabs {
       (tab) => tab.parentElement === previousTabListItem
     )
 
-    if (previousTab) {
+    if (currentTab && previousTab) {
       this.hideTab(currentTab)
       this.showTab(previousTab)
       previousTab.focus()
@@ -143,10 +150,7 @@ export class Tabs {
   }
 
   getCurrentTab() {
-    return (
-      this.tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') ??
-      this.tabs[0]
-    )
+    return this.tabs.find((tab) => tab.getAttribute('aria-selected') === 'true')
   }
 
   // this is because IE doesn't always return the actual value but a relative full path
@@ -156,4 +160,9 @@ export class Tabs {
     const href = tab.getAttribute('href')
     return href.slice(href.indexOf('#'), href.length)
   }
+
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'app-tabs'
 }

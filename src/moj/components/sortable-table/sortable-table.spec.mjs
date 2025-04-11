@@ -2,20 +2,21 @@
 
 import { queryByRole } from '@testing-library/dom'
 import { userEvent } from '@testing-library/user-event'
+import { outdent } from 'outdent'
 
 import { SortableTable } from './sortable-table.mjs'
 
 const user = userEvent.setup()
 
-const createComponent = (options = {}) => {
-  const html = `
+function createComponent() {
+  const html = outdent`
     <div>
       <table class="govuk-table" data-module="moj-sortable-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header" aria-sort="ascending">Name</th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">Name</th>
             <th scope="col" class="govuk-table__header" aria-sort="none">Elevation</th>
-            <th scope="col" class="govuk-table__header" aria-sort="none">Continent</th>
+            <th scope="col" class="govuk-table__header" aria-sort="ascending">Continent</th>
             <th scope="col" class="govuk-table__header govuk-table__header--numeric" aria-sort="none">First summit</th>
             <th scope="col" class="govuk-table__header" aria-sort="none">Test nickname</th>
           </tr>
@@ -51,22 +52,22 @@ const createComponent = (options = {}) => {
           </tr>
         </tbody>
       </table>
-    </div>`
+    </div>
+  `
 
   document.body.insertAdjacentHTML('afterbegin', html)
-  const component = document.querySelector('[data-module="moj-sortable-table"]')
-  options.table = component
-  return { component, options }
+
+  return /** @type {HTMLElement} */ (
+    document.querySelector('[data-module="moj-sortable-table"]')
+  )
 }
 
 describe('sortable table', () => {
   let component
 
   beforeEach(() => {
-    ;({ component } = createComponent())
-    new SortableTable({
-      table: component
-    })
+    component = createComponent()
+    new SortableTable(component)
   })
 
   afterEach(() => {
@@ -81,7 +82,7 @@ describe('sortable table', () => {
     for (const header of headers) {
       const button = header.querySelector('button')
       expect(button).toBeInTheDocument()
-      expect(button).toHaveTextContent(`${header.textContent}`)
+      expect(button).toHaveAccessibleName(`${header.textContent.trim()}`)
     }
   })
 
@@ -91,34 +92,17 @@ describe('sortable table', () => {
     expect(statusBox).toHaveClass('govuk-visually-hidden')
   })
 
-  test('sorts ascending by Name on initial load', () => {
+  test('sorts ascending by Continent on initial load', () => {
     const tbody = component.querySelector('tbody')
-    const cells = tbody.querySelectorAll('tr td:first-child')
+    const cells = tbody.querySelectorAll('tr td:nth-child(3)')
     const values = Array.from(cells).map((cell) => cell.textContent.trim())
 
-    expect(component.querySelector('th')).toHaveAttribute(
-      'aria-sort',
-      'ascending'
-    )
-    expect(values).toEqual(['Aconcagua', 'Everest', 'K2', 'Kilimanjaro'])
+    expect(values).toEqual(['Africa', 'Asia', 'Asia', 'South America'])
   })
 
-  test('sorts string column in descending order when clicked', async () => {
+  test('sorts string column in ascending then descending order when clicked', async () => {
     const nameHeaderButton = queryByRole(component, 'button', { name: 'Name' })
     const tbody = component.querySelector('tbody')
-
-    await user.click(nameHeaderButton)
-
-    const descCells = tbody.querySelectorAll('tr td:first-child')
-    const descValues = Array.from(descCells).map((cell) =>
-      cell.textContent.trim()
-    )
-
-    expect(descValues).toEqual(['Kilimanjaro', 'K2', 'Everest', 'Aconcagua'])
-    expect(nameHeaderButton.parentElement).toHaveAttribute(
-      'aria-sort',
-      'descending'
-    )
 
     await user.click(nameHeaderButton)
 
@@ -131,6 +115,18 @@ describe('sortable table', () => {
     expect(nameHeaderButton.parentElement).toHaveAttribute(
       'aria-sort',
       'ascending'
+    )
+
+    await user.click(nameHeaderButton)
+    const descCells = tbody.querySelectorAll('tr td:first-child')
+    const descValues = Array.from(descCells).map((cell) =>
+      cell.textContent.trim()
+    )
+
+    expect(descValues).toEqual(['Kilimanjaro', 'K2', 'Everest', 'Aconcagua'])
+    expect(nameHeaderButton.parentElement).toHaveAttribute(
+      'aria-sort',
+      'descending'
     )
   })
 
@@ -219,7 +215,7 @@ describe('sortable table', () => {
   })
 
   test('cycles through sort states: none -> ascending -> descending', async () => {
-    const headerButton = queryByRole(component, 'button', { name: 'Continent' })
+    const headerButton = queryByRole(component, 'button', { name: 'Name' })
     const header = headerButton.parentElement
 
     expect(header).toHaveAttribute('aria-sort', 'none')
@@ -237,10 +233,9 @@ describe('sortable table', () => {
 
 describe('sortable table options', () => {
   let component
-  let options
 
   beforeEach(() => {
-    ;({ component, options } = createComponent())
+    component = createComponent()
   })
 
   afterEach(() => {
@@ -248,7 +243,7 @@ describe('sortable table options', () => {
   })
 
   test('uses default status message when no options provided', async () => {
-    new SortableTable(options)
+    new SortableTable(component)
 
     const elevationHeaderButton = queryByRole(component, 'button', {
       name: 'Elevation'
@@ -260,8 +255,9 @@ describe('sortable table options', () => {
   })
 
   test('uses custom status message when provided', async () => {
-    options.statusMessage = 'Sorted column: %heading% (order: %direction%)'
-    new SortableTable(options)
+    new SortableTable(component, {
+      statusMessage: 'Sorted column: %heading% (order: %direction%)'
+    })
 
     const elevationHeaderButton = queryByRole(component, 'button', {
       name: 'Elevation'
@@ -275,38 +271,38 @@ describe('sortable table options', () => {
   })
 
   test('uses custom ascending text when provided', async () => {
-    options.ascendingText = 'A to Z'
-    new SortableTable(options)
+    new SortableTable(component, {
+      ascendingText: 'A to Z'
+    })
 
     const nameHeaderButton = queryByRole(component, 'button', { name: 'Name' })
     const statusBox = queryByRole(component.parentElement, 'status')
 
-    await user.click(nameHeaderButton)
     await user.click(nameHeaderButton)
 
     expect(statusBox).toHaveTextContent('Sort by Name (A to Z)')
   })
 
   test('uses custom descending text when provided', async () => {
-    options.descendingText = 'Z to A'
-    new SortableTable(options)
+    new SortableTable(component, {
+      descendingText: 'Z to A'
+    })
 
     const nameHeaderButton = queryByRole(component, 'button', { name: 'Name' })
     const statusBox = queryByRole(component.parentElement, 'status')
 
+    await user.click(nameHeaderButton)
     await user.click(nameHeaderButton)
 
     expect(statusBox).toHaveTextContent('Sort by Name (Z to A)')
   })
 
   test('uses all custom options together', async () => {
-    options = {
-      table: component,
+    new SortableTable(component, {
       statusMessage: 'component sorted by %heading% in %direction% order',
       ascendingText: 'lowest to highest',
       descendingText: 'highest to lowest'
-    }
-    new SortableTable(options)
+    })
 
     const elevationHeaderButton = queryByRole(component, 'button', {
       name: 'Elevation'
@@ -321,42 +317,6 @@ describe('sortable table options', () => {
     await user.click(elevationHeaderButton)
     expect(statusBox).toHaveTextContent(
       'component sorted by Elevation in highest to lowest order'
-    )
-  })
-
-  test('allows reinitialization of component without duplicating functionality', () => {
-    const { component, options } = createComponent()
-    new SortableTable(options)
-    new SortableTable(options) // Initialize again
-
-    // Check that we don't have duplicate buttons in headers
-    const headers = component.querySelectorAll('th[aria-sort]')
-    headers.forEach((header) => {
-      const buttons = header.querySelectorAll('button')
-      expect(buttons).toHaveLength(1)
-    })
-  })
-
-  test('maintains original sort when reinitialized', async () => {
-    const { component, options } = createComponent()
-    new SortableTable(options)
-
-    const elevationHeaderButton = queryByRole(component, 'button', {
-      name: 'Elevation'
-    })
-    await user.click(elevationHeaderButton)
-
-    new SortableTable(options) // Reinitialize
-
-    const cells = component.querySelectorAll('tbody tr td:nth-child(2)')
-    const values = Array.from(cells).map((cell) =>
-      Number.parseInt(cell.getAttribute('data-sort-value'))
-    )
-
-    expect(values).toEqual([5895, 6961, 8611, 8850])
-    expect(elevationHeaderButton.parentElement).toHaveAttribute(
-      'aria-sort',
-      'ascending'
     )
   })
 })

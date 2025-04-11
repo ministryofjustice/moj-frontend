@@ -1,17 +1,16 @@
-new MOJFrontend.FilterToggleButton({
-  bigModeMediaQuery: '(min-width: 48.063em)',
+import { FilterToggleButton } from '/javascripts/moj-frontend.min.js'
+
+const $filter = document.querySelector('[data-module="moj-filter"]')
+
+new FilterToggleButton($filter, {
+  bigModeMediaQuery: '(min-width: 48.0625em)',
   startHidden: true,
   toggleButton: {
-    container: document.querySelector('.moj-action-bar__filter'),
     showText: 'Show filter',
     hideText: 'Hide filter',
     classes: 'govuk-button--secondary'
   },
   closeButton: {
-    container: document.querySelector('.moj-filter__header-action'),
     text: 'Close'
-  },
-  filter: {
-    container: document.querySelector('.moj-filter')
   }
 })

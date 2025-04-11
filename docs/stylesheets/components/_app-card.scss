@@ -3,31 +3,21 @@
 .app-card {
   margin-bottom: 0;
 
-  @include govuk-media-query($until: desktop) {
-    margin-bottom: govuk-spacing(7);
-  }
-
   &__image {
     display: block;
     width: 100%;
     height: auto;
     object-fit: cover;
+    margin-bottom: govuk-spacing(4);
   }
 
-  &--reverse {
-    display: flex;
-    flex-direction: row-reverse;
-
-    @include govuk-media-query($until: desktop) {
-      flex-direction: column;
-    }
+  &__content {
+    margin-bottom: 0;
   }
+}
 
-  &--full {
-    margin-bottom: govuk-spacing(9);
-
-    @include govuk-media-query($until: desktop) {
-      margin-bottom: govuk-spacing(7);
-    }
+.app-card--reverse {
+  > *:last-child {
+    order: -1;
   }
 }

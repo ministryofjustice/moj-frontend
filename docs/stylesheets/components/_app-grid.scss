@@ -1,0 +1,19 @@
+@use "../moj-frontend" as *;
+
+.app-grid {
+  column-gap: var(--column-gap, var(--gap, govuk-spacing(6)));
+  row-gap: var(--row-gap, var(--gap, govuk-spacing(6)));
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--min-column-width, 225px), 100%), 1fr));
+
+  @include govuk-media-query($until: tablet) {
+    column-gap: var(--column-gap-small, var(--gap-small, var(--gap, govuk-spacing(6))));
+    row-gap: var(--row-gap-small, var(--gap-small, var(--gap, govuk-spacing(6))));
+  }
+}
+
+.app-grid__item {
+  &--full {
+    grid-column: 1 / -1;
+  }
+}

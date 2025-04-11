@@ -33,9 +33,8 @@
         size: "large"
       }) }}
 
-      <div class="govuk-grid-row">
+      <div class="app-grid">
         {% call card({
-          layout: "side-by-side",
           title: "Benefits of using the MoJ Design System",
           imageLink: "assets/images/home-img/benefits-of-using-moj-design-system.png",
           imageLinkLarge: "assets/images/home-img/benefits-of-using-moj-design-systemx2.png",
@@ -44,9 +43,7 @@
           <p>Learn about how reusing building blocks helps product teams as well as users.</p>
           <a class="gov-link" href="/design-system-benefits">Read about the benefits of the MoJ Design System</a>
         {% endcall %}
-
         {% call card({
-          layout: "side-by-side",
           title: "Building block statuses",
           imageLink: "assets/images/home-img/how-to-use-building-blocks.png",
           imageLinkLarge: "assets/images/home-img/how-to-use-building-blocksx2.png",
@@ -68,9 +65,9 @@
           size: "large"
         }) }}
 
-        <div class="govuk-grid-row">
+
           {% call card({
-            layout: "image-content",
+            layout: "horizontal",
             title: "Collaborate with the community",
             imageLink: "assets/images/home-img/contribute.png",
             imageLinkLarge: "assets/images/home-img/contributex2.png",
@@ -84,7 +81,7 @@
             </p>
             <a class="gov-link" href="#">Discover more about collaborating with the community</a>
           {% endcall %}
-        </div>
+
 
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
       </section>
@@ -97,20 +94,18 @@
         size: "large"
       }) }}
 
-      <div class="govuk-grid-row">
+      <div class="app-grid" style="--min-column-width: 310px;">
         {% call card({
-          layout: "full",
-          title: "How to choose the right prototyping tool"
+          title: "How to choose the right prototyping tool",
+          classes: "app-grid__item--full"
         }) %}
           <p>
             You can prototype using paper, Figma or a coded prototype. Understand which method you need for your task.
           </p>
           <a class="gov-link" href="/prototyping/prototyping-methods/">How to choose a prototyping tool</a>
         {% endcall %}
-      </div>
-      <div class="govuk-grid-row">
+
         {% call card({
-          layout: "side-by-side",
           title: "How to set up Figma prototypes"
         }) %}
           <p>
@@ -120,14 +115,13 @@
         {% endcall %}
 
         {% call card({
-          layout: "side-by-side",
           title: "How to set up coded prototypes"
         }) %}
           <p>
             Learn how to create coded prototypes using the MoJ Design System and GOV.UK Prototype Kit.
           </p>
           <a class="gov-link" href="/prototyping/setting-up-coded-prototypes/">How to set up coded prototypes</a>
-        {% endcall %}
+          {% endcall %}
       </div>
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
@@ -140,9 +134,8 @@
         size: "large"
       }) }}
 
-      <div class="govuk-grid-row govuk-!-margin-bottom-8">
+      <div class="app-grid govuk-!-margin-bottom-8">
         {% call card({
-          layout: "side-by-side",
           title: "Installing MoJ Frontend"
         }) %}
           <p>
@@ -152,9 +145,7 @@
             <a href="/production/moj-frontend">Read technical documentation</a> or <a href="/production/installing-with-npm/">install with Node.js package manager (npm)</a>.
           </p>
         {% endcall %}
-
         {% call card({
-          layout: "side-by-side",
           title: "Find out more"
         }) %}
           <ul class="govuk-list">
