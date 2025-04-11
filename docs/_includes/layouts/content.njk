@@ -1,9 +1,18 @@
 {% extends "./base.njk" %}
 
 {% from "macros/heading/macro.njk" import heading %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
 {% block content %}
   <div class="app-layout__content">
+
+  {% if backLink %}
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+  {% endif %}
+
     {{ heading({
       text: title,
       caption: subsection

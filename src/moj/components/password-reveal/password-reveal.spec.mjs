@@ -3,6 +3,7 @@
 import { getByDisplayValue, getByText } from '@testing-library/dom'
 import { userEvent } from '@testing-library/user-event'
 import { configureAxe } from 'jest-axe'
+import { outdent } from 'outdent'
 
 import { PasswordReveal } from './password-reveal.mjs'
 
@@ -14,31 +15,49 @@ const axe = configureAxe({
   }
 })
 
+function createComponent() {
+  const html = outdent`
+    <div class="govuk-form-group" data-module="moj-password-reveal">
+      <label class="govuk-label govuk-label--m" for="password">
+        Password
+      </label>
+
+      <input class="govuk-input govuk-input--width-20" id="password" name="password" type="password" value="1234ABC!">
+    </div>
+  `
+
+  document.body.insertAdjacentHTML('afterbegin', html)
+
+  return /** @type {HTMLElement} */ (
+    document.querySelector('[data-module="moj-password-reveal"]')
+  )
+}
+
 describe('Password reveal', () => {
-  let group
+  let component
+  let wrapper
 
   beforeEach(() => {
-    const input = document.createElement('input')
-    input.type = 'password'
-    input.value = 'password'
+    component = createComponent()
 
-    const container = document.createElement('div')
-    container.className = 'govuk-form-group'
-    container.append(input)
+    new PasswordReveal(component)
 
-    new PasswordReveal(input)
+    wrapper = component.querySelector('input').parentElement
+  })
 
-    group = input.parentElement
+  afterEach(() => {
+    document.body.innerHTML = ''
   })
 
   test('initialises container', () => {
-    expect(group).toHaveClass('moj-password-reveal')
-    expect(group).toContainElement(getByText(group, 'Show'))
+    expect(component).toHaveClass('moj-password-reveal')
+    expect(wrapper).toHaveClass('moj-password-reveal__wrapper')
+    expect(wrapper).toContainElement(getByText(wrapper, 'Show'))
   })
 
   test('toggle reveal', async () => {
-    const input = getByDisplayValue(group, 'password')
-    const button = getByText(group, 'Show')
+    const input = getByDisplayValue(component, '1234ABC!')
+    const button = getByText(component, 'Show')
 
     await user.click(button)
 
@@ -52,7 +71,7 @@ describe('Password reveal', () => {
   })
 
   test('accessibility', async () => {
-    const button = getByText(group, 'Show')
+    const button = getByText(component, 'Show')
 
     expect(await axe(document.body)).toHaveNoViolations()
     await user.click(button)

@@ -1,27 +1,24 @@
 import ClipboardJS from 'clipboard'
+import { Component } from 'govuk-frontend'
 
-class Copy {
+export class Copy extends Component {
   /**
-   * @param {Element | null} $module - HTML element to use for cookies
+   * @param {Element | null} $root - HTML element to use for cookies
    */
-  constructor($module) {
-    if (!$module || !($module instanceof HTMLElement)) {
-      return this
-    }
-
-    this.$module = $module
+  constructor($root) {
+    super($root)
 
     const $button = document.createElement('button')
     $button.className = 'app-copy-button js-copy-button'
     $button.setAttribute('aria-live', 'assertive')
     $button.textContent = 'Copy code'
 
-    this.$module.insertBefore($button, this.$module.firstChild)
+    this.$root.insertBefore($button, this.$root.firstChild)
     this.copyAction()
   }
 
   copyAction() {
-    const $pre = this.$module.querySelector('pre')
+    const $pre = this.$root.querySelector('pre')
 
     // Copy to clipboard
     try {
@@ -42,6 +39,9 @@ class Copy {
       }
     }
   }
-}
 
-export default Copy
+  /**
+   * Name for the component used when initialising using data-module attributes.
+   */
+  static moduleName = 'app-copy'
+}

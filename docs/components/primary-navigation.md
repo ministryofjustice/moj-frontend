@@ -37,6 +37,6 @@ If your service can search anything, use an inline search form.
 
 If your service can only search for certain things, use a toggle search form.
 
-You must tell users what they are searching for in the form hint text, and how they can search using the `data-moj-search-toggle-text` attribute.
+You must tell users what they are searching for in the form hint text, and how they can search using the `data-toggle-button.text` attribute.
 
 {% example "/examples/primary-navigation-toggle-search", 250 %}

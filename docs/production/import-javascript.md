@@ -57,9 +57,6 @@ Then import the JavaScript files before the closing `</body>` tag of your HTML p
     import * as GOVUKFrontend from '/javascripts/govuk-frontend.min.js'
     import * as MOJFrontend from '/javascripts/moj-frontend.min.js'
 
-    window.GOVUKFrontend = GOVUKFrontend
-    window.MOJFrontend = MOJFrontend
-
     GOVUKFrontend.initAll()
     MOJFrontend.initAll()
   </script>
