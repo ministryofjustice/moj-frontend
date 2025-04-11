@@ -1,0 +1,5 @@
+{
+  "componentName": "Progress Bar",
+  "componentOverview": "The Progress Bar component shows users their place within a multi-step process by highlighting completed, current, and upcoming steps. It's useful for guiding users through tasks",
+  "howIsTheComponentUsed": "This component can be used by passing an array of items to render progress on a multistep form.\r\n\r\nUsing the arguments table below as a reference you can set the completed, active and current step of the user through their journey."
+}

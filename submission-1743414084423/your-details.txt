@@ -1,0 +1,9 @@
+{
+  "fullName": "Warsome Hersi",
+  "emailAddress": "warsome.hersi@justice.gov.uk",
+  "teamName": "MoJ Design System Team",
+  "shareYourDetails": [
+    "addNameToComponentPage",
+    "addTeamNameWhenRequested"
+  ]
+}
