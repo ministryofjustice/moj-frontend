@@ -1,11 +1,12 @@
 ---
 layout: layouts/community.njk
-subsection: Get involved
+subsection: About the design system
 title: Collaborating in the design system
 redirect_from: /community/collaborate-in-the-design-system
 eleventyNavigation:
-  key: Add a new component
-  order: 40
+  key: Contributing
+  order: 30
+  # parent: About the design system
   excerpt: "Collaborating in the design system"
 ---
 

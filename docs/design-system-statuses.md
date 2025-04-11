@@ -1,11 +1,12 @@
 ---
 layout: layouts/content.njk
-title: Design system statuses
+subsection: About the design system
+title: Building block statuses
 eleventyNavigation:
-  key: Design system statuses
-  parent: Using the design system
-  order: 5
-  excerpt: "Design system statuses."
+  key: Building block statuses
+  parent: About the design system
+  order: 20
+  excerpt: "Building block statuses."
 ---
 
 Every building block on the MoJ Design System has 1 of 4 statuses. This is to help you know how to use them. The statuses are:

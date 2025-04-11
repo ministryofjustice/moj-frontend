@@ -3,8 +3,8 @@
   title: Prototyping
   eleventyNavigation:
     key: Prototyping
-    parent: Using the design system
-    order: 20
+    parent: Guidance
+    order: 30
 ---
 
 Build and deploy prototypes for testing and review.
