@@ -6,7 +6,7 @@ redirect_from: /community/collaborate-in-the-design-system
 eleventyNavigation:
   key: Contributing
   order: 30
-  parent: About the design system
+  # parent: About the design system
   excerpt: "Collaborating in the design system"
 ---
 
