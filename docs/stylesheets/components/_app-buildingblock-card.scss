@@ -1,0 +1,19 @@
+@use "../moj-frontend" as *;
+
+.buildingblock-card {
+  margin-bottom: govuk-spacing(9);
+}
+
+.buildingblock-card .buildingblock-card__image {
+  border: 1px solid $govuk-border-colour;
+  @include govuk-responsive-margin(3, "bottom");
+}
+
+.buildingblock-card p {
+  color:  $govuk-secondary-text-colour;
+
+  &:last-child {
+  margin-bottom: 0;
+  }
+}
+

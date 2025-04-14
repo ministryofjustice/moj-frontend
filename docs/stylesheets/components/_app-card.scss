@@ -7,11 +7,13 @@
     margin-bottom: govuk-spacing(7);
   }
 
-  &__image {
+  // Repeated scope to increase specificity to override app-prose scope
+  & .app-card__image {
     display: block;
     width: 100%;
     height: auto;
     object-fit: cover;
+    border: none;
   }
 
   &--reverse {
