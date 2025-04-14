@@ -88,7 +88,7 @@ You have the right to request:
 
 Send your request to the MoJ data protection officer:
 
- $A
+$A
 Data protection officer
 Ministry of Justice
 10th Floor, Post Point 10.31
