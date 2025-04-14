@@ -25,7 +25,7 @@ This will be anonymised before it’s shared with anyone. None of the informatio
 
 ### Cookies and site usage data
 
-When you give your consent, we use Google Analytics cookies to collect information about how you use <a href="https://design-patterns.service.justice.gov.uk/">design-patterns.service.justice.gov.uk</a>.
+When you give your consent, we use Google Analytics cookies to collect information about how you use [design-patterns.service.justice.gov.uk](/).
 
 This data is anonymised before being analysed.
 
