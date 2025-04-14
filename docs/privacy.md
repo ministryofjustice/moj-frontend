@@ -25,7 +25,7 @@ This will be anonymised before it’s shared with anyone. None of the informatio
 
 ### Cookies and site usage data
 
-When you give your consent, we use Google Analytics cookies to collect information about how you use <a href="design-patterns.service.justice.gov.uk">design-patterns.service.justice.gov.uk</a>.
+When you give your consent, we use Google Analytics cookies to collect information about how you use <a href="https://design-patterns.service.justice.gov.uk/">design-patterns.service.justice.gov.uk</a>.
 
 This data is anonymised before being analysed.
 
@@ -121,7 +121,7 @@ SK9 5AF
 Telephone: 0303 123 1113  
 Monday to Friday, 9am to 5pm  
 
-ICO website: <a href="www.ico.org.uk/make-a-complaint">www.ico.org.uk/make-a-complaint</a>.    
+ICO website: <a href="https://ico.org.uk/make-a-complaint/">www.ico.org.uk/make-a-complaint</a>.    
 
 ## Changes to this policy
 
