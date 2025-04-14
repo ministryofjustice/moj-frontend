@@ -33,8 +33,7 @@
         size: "large"
       }) }}
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-half-from-desktop">
+      <div class="app-grid">
         {% call card({
           title: "Benefits of using the MoJ Design System",
           imageLink: "assets/images/home-img/benefits-of-using-moj-design-system.png",
@@ -44,8 +43,6 @@
           <p>Learn about how reusing building blocks helps product teams as well as users.</p>
           <a class="gov-link" href="/design-system-benefits">Read about the benefits of the MoJ Design System</a>
         {% endcall %}
-        </div>
-        <div class="govuk-grid-column-one-half-from-desktop">
         {% call card({
           title: "Building block statuses",
           imageLink: "assets/images/home-img/how-to-use-building-blocks.png",
@@ -55,7 +52,6 @@
           <p>Every component, page and pattern has a status. This helps you know how to use them.</p>
           <a class="gov-link" href="/design-system-statuses/">Read about the 4 Design System statuses</a>
         {% endcall %}
-        </div>
       </div>
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
@@ -69,9 +65,10 @@
           size: "large"
         }) }}
 
-        <div class="govuk-grid-row">
+
           {% call card({
             layout: "horizontal",
+            reverse: true,
             title: "Collaborate with the community",
             imageLink: "assets/images/home-img/contribute.png",
             imageLinkLarge: "assets/images/home-img/contributex2.png",
@@ -85,7 +82,7 @@
             </p>
             <a class="gov-link" href="#">Discover more about collaborating with the community</a>
           {% endcall %}
-        </div>
+
 
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
       </section>
@@ -98,20 +95,17 @@
         size: "large"
       }) }}
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full govuk-!-margin-bottom-9">
+      <div class="app-grid" style="--min-column-width: 290px;">
         {% call card({
-          title: "How to choose the right prototyping tool"
+          title: "How to choose the right prototyping tool",
+          classes: "app-grid__item--full"
         }) %}
           <p>
             You can prototype using paper, Figma or a coded prototype. Understand which method you need for your task.
           </p>
           <a class="gov-link" href="/prototyping/prototyping-methods/">How to choose a prototyping tool</a>
         {% endcall %}
-        </div>
-      </div>
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-half-from-desktop">
+
         {% call card({
           title: "How to set up Figma prototypes"
         }) %}
@@ -120,8 +114,7 @@
           </p>
           <a class="gov-link" href="/prototyping/setting-up-figma-prototypes/">How to set up Figma prototypes</a>
         {% endcall %}
-        </div>
-        <div class="govuk-grid-column-one-half-from-desktop">
+
         {% call card({
           title: "How to set up coded prototypes"
         }) %}
@@ -130,7 +123,6 @@
           </p>
           <a class="gov-link" href="/prototyping/setting-up-coded-prototypes/">How to set up coded prototypes</a>
           {% endcall %}
-        </div>
       </div>
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
@@ -143,8 +135,7 @@
         size: "large"
       }) }}
 
-      <div class="govuk-grid-row govuk-!-margin-bottom-8">
-        <div class="govuk-grid-column-one-half-from-desktop">
+      <div class="app-grid govuk-!-margin-bottom-8">
         {% call card({
           title: "Installing MoJ Frontend"
         }) %}
@@ -155,8 +146,6 @@
             <a href="/production/moj-frontend">Read technical documentation</a> or <a href="/production/installing-with-npm/">install with Node.js package manager (npm)</a>.
           </p>
         {% endcall %}
-        </div>
-        <div class="govuk-grid-column-one-half-from-desktop">
         {% call card({
           title: "Find out more"
         }) %}
@@ -166,8 +155,7 @@
             <li><a class="gov-link" href="/production/import-font-and-image-assets/">Importing font and image assets</a></li>
             <li><a class="gov-link" href="/production/import-javascript/">Importing JavaScript</a></li>
           </ul>
-          {% endcall %}
-        </div>
+        {% endcall %}
       </div>
     </section>
 

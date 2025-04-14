@@ -15,7 +15,7 @@ Arguments to be passed:
   {% set classNames = "app-card__image" -%}
 
   {% if params.imageClass %}
-    {% set classNames = classNames + " " + params.imageClass %}
+    {% set classNames = classNames + " " + params.imageClasses %}
   {% endif -%}
 
   <img {{- govukAttributes({
@@ -34,14 +34,12 @@ Arguments to be passed:
 {% endmacro %}
 
 {% if params.layout == "horizontal" %}
-  <article class="app-card app-card--horizontal {% if params.reverse %} app-card--reverse{% endif %}">
-    <div class="govuk-grid-column-one-half-from-desktop">
+<article class="app-card app-card--horizontal app-grid {% if params.reverse %} app-card--reverse{% endif %} {{ params.classes }}" style="--gap: 30px; --gap-small: 20px;">
       {% if params.imageLink %}
         {{ _cardImage(params) }}
       {% endif %}
-    </div>
 
-    <div class="govuk-grid-column-one-half-from-desktop">
+    <div>
       {{ heading({
         text: params.title,
         size: "medium"
@@ -53,7 +51,7 @@ Arguments to be passed:
     </div>
   </article>
 {% else %}
-  <article class="app-card">
+  <article class="app-card {{ params.classes }}">
     {{ _cardImage(params) if params.imageLink }}
 
     {{ heading({

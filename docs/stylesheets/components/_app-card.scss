@@ -3,10 +3,6 @@
 .app-card {
   margin-bottom: 0;
 
-  @include govuk-media-query($until: desktop) {
-    margin-bottom: govuk-spacing(7);
-  }
-
   &__image {
     display: block;
     width: 100%;
@@ -18,13 +14,10 @@
   &__content {
     margin-bottom: 0;
   }
+}
 
-  &--reverse {
-    display: flex;
-    flex-direction: row-reverse;
-
-    @include govuk-media-query($until: desktop) {
-      flex-direction: column;
-    }
+.app-card--reverse {
+  > *:last-child {
+    order: -1;
   }
 }
