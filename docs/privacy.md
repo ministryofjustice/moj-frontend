@@ -90,37 +90,37 @@ You have the right to request:
 
 Send your request to the MoJ data protection officer:
 
-Data protection officer
-Ministry of Justice
-10th Floor, Post Point 10.31
-102 Petty France
-London
-SW1H 9AJ
-dpo@justice.gov.uk
+Data protection officer  
+Ministry of Justice  
+10th Floor, Post Point 10.31  
+102 Petty France  
+London  
+SW1H 9AJ  
+dpo@justice.gov.uk  
 
 ## How to complain
 
 If you have any concerns about our use of your personal data, you can contact the MoJ data protection officer:
 
-Data protection officer
-Ministry of Justice
-10th Floor, Post Point 10.31
-102 Petty France
-London
-SW1H 9AJ
-dpo@justice.gov.uk
+Data protection officer  
+Ministry of Justice  
+10th Floor, Post Point 10.31  
+102 Petty France  
+London  
+SW1H 9AJ  
+dpo@justice.gov.uk  
 
 You can also complain to the ICO if you’re unhappy with how we’ve used your data:
 
-Information Commissioner’s Office (ICO)
-Wycliffe House
-Water Lane
-Wilmslow
-Cheshire
-SK9 5AF
-Telephone: 0303 123 1113
-Monday to Friday, 9am to 5pm
-ICO website: www.ico.org.uk/make-a-complaint
+Information Commissioner’s Office (ICO)  
+Wycliffe House  
+Water Lane  
+Wilmslow  
+Cheshire  
+SK9 5AF  
+Telephone: 0303 123 1113  
+Monday to Friday, 9am to 5pm  
+ICO website: www.ico.org.uk/make-a-complaint  
 
 ## Changes to this policy
 
