@@ -2,6 +2,7 @@
 layout: layouts/plain.njk
 title: Privacy notice
 ---
+
 The MoJ Design System is provided by the Ministry of Justice.
 
 The Ministry of Justice is the data controller. A data controller determines how and why personal data is processed.
@@ -119,9 +120,9 @@ Wilmslow
 Cheshire  
 SK9 5AF  
 Telephone: 0303 123 1113  
-Monday to Friday, 9am to 5pm  
+Monday to Friday, 9am to 5pm
 
-ICO website: <a href="https://ico.org.uk/make-a-complaint/">www.ico.org.uk/make-a-complaint</a>.    
+ICO website: <a href="https://ico.org.uk/make-a-complaint/">www.ico.org.uk/make-a-complaint</a>.
 
 ## Changes to this policy
 
