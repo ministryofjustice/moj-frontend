@@ -25,7 +25,7 @@ This will be anonymised before it’s shared with anyone. None of the informatio
 
 ### Cookies and site usage data
 
-When you give your consent, we use Google Analytics cookies to collect information about how you use [design-patterns.service.justice.gov.uk](design-patterns.service.justice.gov.uk)  
+When you give your consent, we use Google Analytics cookies to collect information about how you use <a href="design-patterns.service.justice.gov.uk">design-patterns.service.justice.gov.uk</a>.
 
 This data is anonymised before being analysed.
 
@@ -96,7 +96,7 @@ Ministry of Justice
 102 Petty France  
 London  
 SW1H 9AJ  
-[dpo@justice.gov.uk](mailto:dpo@justice.gov.uk)
+<a href="mailto:dpo@justice.gov.uk">dpo@justice.gov.uk</a>
 
 ## How to complain
 
@@ -108,7 +108,7 @@ Ministry of Justice
 102 Petty France  
 London  
 SW1H 9AJ  
-[dpo@justice.gov.uk](mailto:dpo@justice.gov.uk)
+<a href="mailto:dpo@justice.gov.uk">dpo@justice.gov.uk</a>
 
 You can also complain to the ICO if you’re unhappy with how we’ve used your data:
 
@@ -120,7 +120,8 @@ Cheshire
 SK9 5AF  
 Telephone: 0303 123 1113  
 Monday to Friday, 9am to 5pm  
-ICO website: [www.ico.org.uk/make-a-complaint](www.ico.org.uk/make-a-complaint)    
+
+ICO website: <a href="www.ico.org.uk/make-a-complaint">www.ico.org.uk/make-a-complaint</a>.    
 
 ## Changes to this policy
 
