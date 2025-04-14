@@ -25,7 +25,9 @@ This will be anonymised before it’s shared with anyone. None of the informatio
 
 ### Cookies and site usage data
 
-When you give your consent, we use Google Analytics cookies to collect information about how you use design-patterns.service.justice.gov.uk. This data is anonymised before being analysed.
+When you give your consent, we use Google Analytics cookies to collect information about how you use design-patterns.service.justice.gov.uk  
+
+This data is anonymised before being analysed.
 
 Google Analytics processes anonymised information about:
 
@@ -88,43 +90,37 @@ You have the right to request:
 
 Send your request to the MoJ data protection officer:
 
-$A
 Data protection officer
 Ministry of Justice
 10th Floor, Post Point 10.31
 102 Petty France
 London
 SW1H 9AJ
-<dpo@justice.gov.uk>
-$A
+dpo@justice.gov.uk
 
 ## How to complain
 
 If you have any concerns about our use of your personal data, you can contact the MoJ data protection officer:
 
- $A
 Data protection officer
 Ministry of Justice
 10th Floor, Post Point 10.31
 102 Petty France
 London
 SW1H 9AJ
-<dpo@justice.gov.uk>
-$A
+dpo@justice.gov.uk
 
 You can also complain to the ICO if you’re unhappy with how we’ve used your data:
 
- $A
 Information Commissioner’s Office (ICO)
 Wycliffe House
 Water Lane
 Wilmslow
 Cheshire
 SK9 5AF
-Helpline telephone number: 0303 123 1113
+Telephone: 0303 123 1113
 Monday to Friday, 9am to 5pm
 ICO website: www.ico.org.uk/make-a-complaint
- $A
 
 ## Changes to this policy
 
