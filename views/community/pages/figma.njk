@@ -24,15 +24,12 @@
       <h1 class="govuk-heading-xl">Figma design</h1>
       {{ govukRadios({
         name: "figmaUrl",
-        hint: {
-          text: "This should be the link to the Figma design file where the component can be viewed."
-        },
         fieldset: {
           attributes: {
             id: "figma-url"
           },
           legend: {
-            text: "Do you have a Figma design file for the component?",
+            text: "Do you have a Figma link for the component?",
             classes: "govuk-fieldset__legend--m"
           }
         },
@@ -57,14 +54,7 @@
           text: 'Continue',
           preventDoubleClick: true
         }) }}
-        {% if skipQuestion %}
-          {{ govukButton({
-            text: "Skip question",
-            classes: "govuk-button--secondary",
-            attributes: {'data-skip-question': skipQuestion},
-            href: skipQuestion
-          }) }}
-        {% endif %}
+
     </form>
   </div>
 {% endblock %}

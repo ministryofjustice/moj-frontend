@@ -53,13 +53,13 @@
         ],
         fieldset: {
           legend: {
-            text: "When did the testing with assistive technology take place?",
+            text: "When was the assistive technology testing?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "For example, 27 4 2015"
+          text: "For example, 13 8 2024"
         }
       }) }}
 
@@ -68,7 +68,7 @@
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
-          text: "Were any issues discovered with the component during testing? (Optional)",
+          text: "Did the testing identify any issues with the component? (optional)?",
           classes: "govuk-label--m",
           isPageHeading: true
         },
@@ -85,7 +85,7 @@
           classes: "govuk-label--m"
         },
         hint: {
-          text: "The selected file must be PDF and smaller than 10MB."
+          text: "The file needs to be a PDF and smaller than 10MB."
         },
         errorMessage: formErrors.accessibilityReport,
         value: formData.accessibilityReport,

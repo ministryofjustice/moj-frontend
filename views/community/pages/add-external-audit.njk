@@ -26,7 +26,7 @@
     {% endif %}
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
       <span class="govuk-caption-l">Submit new component</span>
-      <h1 class="govuk-heading-xl">Accessibility findings</h1>
+      <h1 class="govuk-heading-xl">External accessibility audit details</h1>
 
       {{ govukInput({
         label: {
@@ -69,7 +69,7 @@
           }
         },
         hint: {
-          text: "For example, 27 4 2015"
+          text: "For example, 13 8 2024"
         }
       }) }}
 
@@ -81,7 +81,7 @@
           classes: "govuk-label--m"
         },
         hint: {
-          text: "The selected file must be PDF and smaller than 10MB."
+          text: "The file needs to be a PDF and smaller than 10MB."
         },
         errorMessage: formErrors.accessibilityReport,
         value: formData.accessibilityReport,
@@ -111,7 +111,7 @@
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
-          text: "Were any issues discovered with the component during the audit? (Optional)",
+          text: "Did the audit identify any issues with the component? (optional)?",
           classes: "govuk-label--m"
         },
         errorMessage: formErrors.issuesDiscovered,

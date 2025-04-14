@@ -22,15 +22,14 @@
     <form method="post" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit new component</span>
       <h1 class="govuk-heading-xl">Accessibility findings</h1>
-      <p class="govuk-body">Sharing accessibility findings helps support the status and usability of the component you're submitting.</p>
-      <p class="govuk-body">These findings can be the result of a number of sources, including:</p>
+      <p class="govuk-body">Sharing accessibility findings helps support the status and usability of the component, as wells as helping the Design System team to review it.</p>
+      <p class="govuk-body">These findings could come from:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>external or internal accessibility audit</li>
+        <li>an external or internal accessibility audits</li>
         <li>manual or automated testing</li>
         <li>testing with assistive technologies</li>
         <li>usability testing</li>
       </ul>
-      <p class="govuk-body">Any accessibility findings you can share will be helpful during the review process.</p>
       {{ govukRadios({
         name: "hasComponentBeenTestedExternalAccessibility",
         hint: {
@@ -41,7 +40,7 @@
             id: "has-component-been-tested-external-accessibility"
           },
           legend: {
-            text: "Has the component been tested as part of an external accessibility audit?",
+            text: "Has the component been tested in an external accessibility audit?",
             classes: "govuk-fieldset__legend--m"
           }
         },
@@ -69,7 +68,7 @@
             id: "has-component-been-tested-internal-audit"
           },
           legend: {
-            text: "Has the component been tested as part of an internal audit?",
+            text: "Has the component been tested in an internal audit?",
             classes: "govuk-fieldset__legend--m"
           }
         },
@@ -90,7 +89,7 @@
       {{ govukRadios({
         name: "hasComponentBeenTestedUsingAssistiveTechnology",
         hint: {
-          text: "This can be, but not limited to, assistive technology such as JAWS, TalkBack or Dragon."
+          text: "This could include assistive technology such as JAWS, TalkBack or Dragon."
         },
         fieldset: {
           attributes: {

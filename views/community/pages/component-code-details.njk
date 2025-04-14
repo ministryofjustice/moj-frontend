@@ -24,10 +24,11 @@
       <span class="govuk-caption-l">Submit new component</span>
       <h1 class="govuk-heading-xl">Component code</h1>
       <p class="govuk-body">We recommend sending HTML, CSS, SASS, Javascript or Nunjucks.</p>
-      <p class="govuk-body">You should only send the component code. It should not contain any personally identifiable or sensitive information. You can add more than one code example.</p>
+      <p class="govuk-body">Send the code for the component and not the full page. This makes it easier for other people to understand and use. Remove any personally identifiable or sensitive information from the code.</p>
+      <p class="govuk-body">You can add more than one code example.</p>
       {{ govukInput({
         label: {
-          text: "What language is the code written in?",
+          text: "What language is the code?",
           classes: "govuk-label--m"
         },
         id: "component-code-language",
@@ -35,7 +36,7 @@
         errorMessage: formErrors.componentCodeLanguage,
         value: formData.componentCodeLanguage,
         hint: {
-          text: "HTML, CSS, SASS, Javascript etc. If possible, the code should be in one language to make it easier for others to reuse."
+          text: "Enter a language such as HTML, CSS, SASS or Javascript. It's easier if the code is in one language."
         }
       }) }}
 
@@ -48,7 +49,7 @@
           classes: "govuk-label--m"
         },
         hint: {
-          text: "Include any information that helps users add the code to their service."
+          text: "Include anything that helps users add the code to their service."
         },
         errorMessage: formErrors.componentCodeUsage,
         value: formData.componentCodeUsage
