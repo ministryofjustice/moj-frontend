@@ -34,8 +34,8 @@
       }) }}
 
       <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half-from-desktop">
         {% call card({
-          layout: "side-by-side",
           title: "Benefits of using the MoJ Design System",
           imageLink: "assets/images/home-img/benefits-of-using-moj-design-system.png",
           imageLinkLarge: "assets/images/home-img/benefits-of-using-moj-design-systemx2.png",
@@ -44,9 +44,9 @@
           <p>Learn about how reusing building blocks helps product teams as well as users.</p>
           <a class="gov-link" href="/design-system-benefits">Read about the benefits of the MoJ Design System</a>
         {% endcall %}
-
+        </div>
+        <div class="govuk-grid-column-one-half-from-desktop">
         {% call card({
-          layout: "side-by-side",
           title: "Building block statuses",
           imageLink: "assets/images/home-img/how-to-use-building-blocks.png",
           imageLinkLarge: "assets/images/home-img/how-to-use-building-blocksx2.png",
@@ -55,6 +55,7 @@
           <p>Every component, page and pattern has a status. This helps you know how to use them.</p>
           <a class="gov-link" href="/design-system-statuses/">Read about the 4 Design System statuses</a>
         {% endcall %}
+        </div>
       </div>
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
@@ -70,7 +71,7 @@
 
         <div class="govuk-grid-row">
           {% call card({
-            layout: "image-content",
+            layout: "horizontal",
             title: "Collaborate with the community",
             imageLink: "assets/images/home-img/contribute.png",
             imageLinkLarge: "assets/images/home-img/contributex2.png",
@@ -98,8 +99,8 @@
       }) }}
 
       <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full govuk-!-margin-bottom-9">
         {% call card({
-          layout: "full",
           title: "How to choose the right prototyping tool"
         }) %}
           <p>
@@ -107,10 +108,11 @@
           </p>
           <a class="gov-link" href="/prototyping/prototyping-methods/">How to choose a prototyping tool</a>
         {% endcall %}
+        </div>
       </div>
       <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half-from-desktop">
         {% call card({
-          layout: "side-by-side",
           title: "How to set up Figma prototypes"
         }) %}
           <p>
@@ -118,16 +120,17 @@
           </p>
           <a class="gov-link" href="/prototyping/setting-up-figma-prototypes/">How to set up Figma prototypes</a>
         {% endcall %}
-
+        </div>
+        <div class="govuk-grid-column-one-half-from-desktop">
         {% call card({
-          layout: "side-by-side",
           title: "How to set up coded prototypes"
         }) %}
           <p>
             Learn how to create coded prototypes using the MoJ Design System and GOV.UK Prototype Kit.
           </p>
           <a class="gov-link" href="/prototyping/setting-up-coded-prototypes/">How to set up coded prototypes</a>
-        {% endcall %}
+          {% endcall %}
+        </div>
       </div>
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
@@ -141,8 +144,8 @@
       }) }}
 
       <div class="govuk-grid-row govuk-!-margin-bottom-8">
+        <div class="govuk-grid-column-one-half-from-desktop">
         {% call card({
-          layout: "side-by-side",
           title: "Installing MoJ Frontend"
         }) %}
           <p>
@@ -152,9 +155,9 @@
             <a href="/production/moj-frontend">Read technical documentation</a> or <a href="/production/installing-with-npm/">install with Node.js package manager (npm)</a>.
           </p>
         {% endcall %}
-
+        </div>
+        <div class="govuk-grid-column-one-half-from-desktop">
         {% call card({
-          layout: "side-by-side",
           title: "Find out more"
         }) %}
           <ul class="govuk-list">
@@ -163,7 +166,8 @@
             <li><a class="gov-link" href="/production/import-font-and-image-assets/">Importing font and image assets</a></li>
             <li><a class="gov-link" href="/production/import-javascript/">Importing JavaScript</a></li>
           </ul>
-        {% endcall %}
+          {% endcall %}
+        </div>
       </div>
     </section>
 
