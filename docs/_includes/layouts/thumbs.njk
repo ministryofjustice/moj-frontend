@@ -1,10 +1,11 @@
 {% extends "./base.njk" %}
 
+{% from "macros/card/macro.njk" import card %}
 {% from "macros/heading/macro.njk" import heading %}
 
-{% set items = collections.all 
-  | eleventyNavigation(eleventyNavigation.key) 
-  | sort(false, false, "key") 
+{% set items = collections.all
+  | eleventyNavigation(eleventyNavigation.key)
+  | sort(false, false, "key")
 %}
 
 {% block content %}
@@ -16,21 +17,28 @@
     </div>
   </div>
   <div class="app-layout__content">
-    <div class="thumb-container">
+    <div class="app-grid thumb-container">
       {% for item in items %}
-      {% set imgname = item.title|lower|replace(" ", "-") %}
-        <article class="buildingblock-thumb">
-          <h2 class="govuk-heading-m">{{ item.title }}</h2>
-          <img src="{{ "/assets/images/thumbs/thumb-" + imgname + ".png" }}">
-          <p>{{ item.excerpt }}</p>
-          <p>
-            <a href="{{ item.url }}">View the &lsquo;{{ item.title }}&rsquo; documentation</a>
-          </p>
-        </article>
+        {# don't include 'view all components' entry #}
+        {% if item.url !== '/components' %}
+          {% set imgName = item.title|lower|replace(" ", "-") %}
+          {% call card({
+            title: item.title,
+            headingFirst: true,
+            imageSrc: "/assets/images/thumbs/thumb-" + imgName + ".png",
+            imageSrc2x: "/assets/images/thumbs/thumb-" + imgName + ".png",
+            imageClasses: 'app-card__image--with-border'
+          }) %}
+            <p>{{ item.excerpt }}</p>
+            <p>
+              <a href="{{ item.url }}">View the &lsquo;{{ item.title }}&rsquo; documentation</a>
+            </p>
+          {% endcall %}
+        {% endif %}
       {% endfor %}
     </div>
 
-<!--
+{#
 
 Commenting out below paragraph until roadmap and contribution journey are added.
 
@@ -39,7 +47,7 @@ Commenting out below paragraph until roadmap and contribution journey are added.
     <p>We're improving and expanding our building blocks. Check our <a href="/updates/roadmap">roadmap</a> to see what's coming next.</p>
     <p>You can also <a href="/contribute">contribute a component to the Design System</a>. This can help other teams working on similar problems.</p>
 
--->
+#}
 
   </div>
 

@@ -5,16 +5,18 @@
 Arguments to be passed:
 - layout: {string} "vertical" (default), "horizontal"
 - reverse: {boolean} Reverse the layout of horizontal variant, so image shows either left or right of content.
-- imageLink: {string} Absolute path of image location (e.g., assets/images/...)
-- imageClass: {string} Additional CSS class to be applied if needed.
+- headingFirst: {boolean} In vertical mode place the heading before the image
+- classes: {string} Additional css classes to apply to the card
+- imageSrc: {string} Absolute path of image location (e.g., assets/images/...)
+- imageClasses: {string} Additional CSS class to be applied to the image.
 - imageAlt: {string} Alt text for image. If empty, the image will be treated as decorative for screen readers.
-- imageLinkLarge: {string} Absolute path for larger image location for x2 display (e.g., assets/images/...).
+- imageSrc2x: {string} Absolute path for larger image location for x2 display (e.g., assets/images/...).
 #}
 
 {%- macro _cardImage(params) %}
   {% set classNames = "app-card__image" -%}
 
-  {% if params.imageClass %}
+  {% if params.imageClasses %}
     {% set classNames = classNames + " " + params.imageClasses %}
   {% endif -%}
 
@@ -22,10 +24,10 @@ Arguments to be passed:
     loading: "lazy",
     class: classNames,
     alt: params.imageAlt,
-    src: params.imageLink,
+    src: params.imageSrc,
     width: params.width | default("528"),
     height: params.height | default("311"),
-    srcset: params.imageLinkLarge + " 2x",
+    srcset: params.imageSrc2x + " 2x",
     "aria-hidden": {
       value: not params.imageAlt,
       optional: true
@@ -35,7 +37,7 @@ Arguments to be passed:
 
 {% if params.layout == "horizontal" %}
 <article class="app-card app-card--horizontal app-grid {% if params.reverse %} app-card--reverse{% endif %} {{ params.classes }}" style="--gap: 30px; --gap-small: 20px;">
-      {% if params.imageLink %}
+      {% if params.imageSrc %}
         {{ _cardImage(params) }}
       {% endif %}
 
@@ -52,12 +54,19 @@ Arguments to be passed:
   </article>
 {% else %}
   <article class="app-card {{ params.classes }}">
-    {{ _cardImage(params) if params.imageLink }}
-
-    {{ heading({
-      text: params.title,
-      size: "medium"
-    }) }}
+    {% if params.headingFirst %}
+      {{ heading({
+        text: params.title,
+        size: "medium"
+      }) }}
+      {{ _cardImage(params) if params.imageSrc }}
+    {% else %}
+      {{ _cardImage(params) if params.imageSrc }}
+      {{ heading({
+        text: params.title,
+        size: "medium"
+      }) }}
+    {% endif %}
 
     <div class="govuk-body app-card__content">
       {{ caller() }}
