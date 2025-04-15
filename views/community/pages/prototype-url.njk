@@ -21,7 +21,7 @@
       }) }}
     {% endif %}
     <form method="POST" action="{{ submitUrl }}" data-add-another-container>
-      <span class="govuk-caption-l">Submit new component</span>
+      <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Prototype designs</h1>
       {{ govukInput({
         label: {
@@ -40,7 +40,7 @@
         id: "prototypeUrl-additional-information",
         maxwords: 250,
         hint: {
-          text: "You can add contextual information. If the file is protected, add the username and password."
+          text: "Enter any relevant information. If the file is protected, add the username and password."
         },
         label: {
           text: "More information about the prototype (optional)",

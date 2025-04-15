@@ -25,7 +25,7 @@
       }) }}
     {% endif %}
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
-      <span class="govuk-caption-l">Submit new component</span>
+      <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">External accessibility audit details</h1>
 
       {{ govukInput({
@@ -64,7 +64,7 @@
         ],
         fieldset: {
           legend: {
-            text: "When did the audit take place?",
+            text: "When was the audit?",
             classes: "govuk-fieldset__legend--m"
           }
         },
@@ -111,7 +111,7 @@
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
-          text: "Did the audit identify any issues with the component? (optional)?",
+          text: "Did the audit identify any issues with the component (optional)?",
           classes: "govuk-label--m"
         },
         errorMessage: formErrors.issuesDiscovered,

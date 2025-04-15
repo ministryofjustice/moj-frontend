@@ -25,15 +25,15 @@
       <p class="govuk-body">Sharing accessibility findings helps support the status and usability of the component, as wells as helping the Design System team to review it.</p>
       <p class="govuk-body">These findings could come from:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>an external or internal accessibility audits</li>
+        <li>an external accessibility audit or internal review</li>
         <li>manual or automated testing</li>
-        <li>testing with assistive technologies</li>
+        <li>assistive technology (AT) testing</li>
         <li>usability testing</li>
       </ul>
       {{ govukRadios({
         name: "hasComponentBeenTestedExternalAccessibility",
         hint: {
-          text: "This can be an external audit by the Digital Accessibility Centre (DAC) or other organisation."
+          text: "This would be from a third party organisation, for example the Digital Accessibility Centre (DAC)."
         },
         fieldset: {
           attributes: {
@@ -61,14 +61,14 @@
       {{ govukRadios({
         name: "hasComponentBeenTestedInternalAudit",
         hint: {
-          text: "This can be an audit by an internal UK Government team."
+          text: "This would be from a team in UK Government."
         },
         fieldset: {
           attributes: {
             id: "has-component-been-tested-internal-audit"
           },
           legend: {
-            text: "Has the component been tested in an internal audit?",
+            text: "Has the component been reviewed internally?",
             classes: "govuk-fieldset__legend--m"
           }
         },
@@ -89,7 +89,7 @@
       {{ govukRadios({
         name: "hasComponentBeenTestedUsingAssistiveTechnology",
         hint: {
-          text: "This could include assistive technology such as JAWS, TalkBack or Dragon."
+          text: "This could be software such as JAWS, TalkBack or Dragon."
         },
         fieldset: {
           attributes: {

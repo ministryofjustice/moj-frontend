@@ -25,7 +25,7 @@
       }) }}
     {% endif %}
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
-      <span class="govuk-caption-l">Submit new component</span>
+      <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Testing with assistive technology</h1>
 
       {{ govukDateInput({
@@ -53,7 +53,7 @@
         ],
         fieldset: {
           legend: {
-            text: "When was the assistive technology testing?",
+            text: "When was the testing with assistive technology?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
@@ -68,7 +68,7 @@
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
-          text: "Did the testing identify any issues with the component? (optional)?",
+          text: "Did the testing identify any issues with the component (optional)?",
           classes: "govuk-label--m",
           isPageHeading: true
         },

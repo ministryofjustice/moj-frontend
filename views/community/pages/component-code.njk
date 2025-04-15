@@ -20,9 +20,9 @@
       }) }}
     {% endif %}
     <form method="post" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit new component</span>
+      <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Component code</h1>
-      <p class="govuk-body">If sending code, we recommend sending HTML, CSS, SASS, Javascript or Nunjucks as these are common in government.</p>
+      <p class="govuk-body">If sending code, we recommend HTML, CSS, SASS, Javascript or Nunjucks as these are common in government.</p>
       {{ govukRadios({
         name: "componentCodeAvailable",
         fieldset: {
@@ -30,7 +30,7 @@
             id: "component-code-available"
           },
           legend: {
-            text: "Do you have code for the component available?",
+            text: "Do you have code for the component?",
             classes: "govuk-fieldset__legend--m"
           }
         },
