@@ -1,13 +1,13 @@
 ---
 layout: layouts/get-started.njk
-subsection: Setup for production
+subsection: Production
 title: MoJ Frontend
 redirect_from:
   - /get-started/production
   - /production/install-moj-frontend
 eleventyNavigation:
   key: MoJ Frontend
-  parent: Setup for production
+  parent: Production
   order: 10
   excerpt: "To start using MoJ styles, components and patterns contained here, you’ll need to include MoJ Frontend in your project."
 ---

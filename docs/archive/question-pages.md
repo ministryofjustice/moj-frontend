@@ -5,10 +5,7 @@ status: Archived
 type: page
 statusDate: December 2023
 redirect_from: [docs/patterns/question-pages.md, /pages/question-pages]
-eleventyNavigation:
-  key: Question page
-  parent: Archive
-  excerpt: "Question pages grouped related questions into the same page."
+excerpt: "Question pages grouped related questions into the same page."
 ---
 
 {% banner "This page is archived" %}

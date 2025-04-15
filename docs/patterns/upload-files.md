@@ -1,14 +1,9 @@
 ---
-layout: layouts/patterns.njk
 title: Upload files
 status: To be reviewed
 statusDate: June 2021
-type: pattern
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/719
-eleventyNavigation:
-  key: Upload files
-  parent: Patterns
-  excerpt: "Use this pattern whenever you need users to upload one or more files."
+excerpt: "Use this pattern whenever you need users to upload one or more files."
 ---
 
 ![A three step process: Ask the user to upload a file, use the native file browser, and then show them the upload and ask them to confirm it]({{ 'assets/images/upload-file-single.png' | rev | url }})

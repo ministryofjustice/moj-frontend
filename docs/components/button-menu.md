@@ -1,14 +1,9 @@
 ---
-layout: layouts/component.njk
 title: Button menu
 status: Official
 statusDate: October 2024
-type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/685
-eleventyNavigation:
-  key: Button menu
-  parent: Components
-  excerpt: "The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu."
+excerpt: "The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu."
 ---
 
 <span class="govuk-caption-xl govuk-!-margin-bottom-9">The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu.</span>

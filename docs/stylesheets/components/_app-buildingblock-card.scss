@@ -1,0 +1,5 @@
+@use "../moj-frontend" as *;
+
+.buildingblock-card p {
+  color: $govuk-secondary-text-colour;
+}

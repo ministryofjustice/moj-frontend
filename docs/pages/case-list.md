@@ -1,15 +1,10 @@
 ---
-layout: layouts/pages.njk
 title: Case list pages
 status: To be reviewed
 statusDate: September 2021
-type: page
 redirect_from: docs/patterns/case-list.md
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/242
-eleventyNavigation:
-  key: Case list page
-  parent: Pages
-  excerpt: "Use the case list page to make pieces of information about a case easier to scan, prioritise and action for users."
+excerpt: "Use the case list page to make pieces of information about a case easier to scan, prioritise and action for users."
 ---
 
 <div class="govuk-form-group">

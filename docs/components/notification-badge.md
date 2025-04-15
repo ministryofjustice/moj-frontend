@@ -1,14 +1,9 @@
 ---
-layout: layouts/component.njk
 title: Notification badge
 status: To be reviewed
 statusDate: June 2021
-type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/706
-eleventyNavigation:
-  key: Notification badge
-  parent: Components
-  excerpt: "The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are."
+excerpt: "The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are."
 ---
 
 {% banner "HMRC Design Patterns has a similar component" %}
