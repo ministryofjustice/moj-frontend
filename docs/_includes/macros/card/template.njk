@@ -27,7 +27,10 @@ Arguments to be passed:
     src: params.imageSrc,
     width: params.width | default("528"),
     height: params.height | default("311"),
-    srcset: params.imageSrc2x + " 2x",
+    srcset: {
+      value: params.imageSrc2x + " 2x" if imageSrc2x else undefined,
+      optional: true
+    },
     "aria-hidden": {
       value: not params.imageAlt,
       optional: true

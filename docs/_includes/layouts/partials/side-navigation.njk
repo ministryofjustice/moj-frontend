@@ -12,7 +12,6 @@
       {%- for entry in buildingPages %}
         {{ navListItem({
           item: entry,
-          sortChildrenBy: "key",
           page: page,
           parent: eleventyNavigation.parent
         }) }}

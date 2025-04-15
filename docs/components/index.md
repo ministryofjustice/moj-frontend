@@ -1,10 +1,8 @@
 ---
-layout: layouts/thumbs.njk
+layout: layouts/thumbnail-grid.njk
 title: Components
-eleventyNavigation:
-  key: Components
-  parent: Building blocks
-  order: 10
+index: true
+order: 10
 ---
 
 Components are reusable parts of a user interface that have been made to support a variety of applications. Individual components can be used in multiple different pages, patterns and context.

@@ -5,7 +5,7 @@
 
 {% set items = collections.all
   | eleventyNavigation(eleventyNavigation.key)
-  | sort(false, false, "key")
+  | sort(false, false, "order")
 %}
 
 {% block content %}
@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="app-layout__content">
-    <div class="app-grid thumb-container">
+    <div class="app-grid" style="--gap: 60px; --gap-small: 40px; --min-column-width: 290px;">
       {% for item in items %}
         {# don't include 'view all components' entry #}
         {% if item.url !== '/components' %}
@@ -25,8 +25,8 @@
           {% call card({
             title: item.title,
             headingFirst: true,
+            classes: "buildingblock-card",
             imageSrc: "/assets/images/thumbs/thumb-" + imgName + ".png",
-            imageSrc2x: "/assets/images/thumbs/thumb-" + imgName + ".png",
             imageClasses: 'app-card__image--with-border'
           }) %}
             <p>{{ item.excerpt }}</p>
@@ -39,17 +39,13 @@
     </div>
 
 {#
-
 Commenting out below paragraph until roadmap and contribution journey are added.
-
     <hr/>
     <h2 class="govuk-heading-m">If you can't find what you need</h2>
     <p>We're improving and expanding our building blocks. Check our <a href="/updates/roadmap">roadmap</a> to see what's coming next.</p>
     <p>You can also <a href="/contribute">contribute a component to the Design System</a>. This can help other teams working on similar problems.</p>
-
 #}
 
   </div>
-
 {% endblock %}
 

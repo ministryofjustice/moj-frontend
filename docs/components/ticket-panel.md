@@ -1,14 +1,9 @@
 ---
-layout: layouts/component.njk
 title: Ticket Panel
 status: To be reviewed
 statusDate: July 2022
-type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/715
-eleventyNavigation:
-  key: Ticket panel
-  parent: Components
-  excerpt: "Break up content or actions into visually distinct groups of information."
+excerpt: "Break up content or actions into visually distinct groups of information."
 ---
 
 {% example "/examples/ticket-panel", 300 %}

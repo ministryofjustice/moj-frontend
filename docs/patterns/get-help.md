@@ -1,14 +1,9 @@
 ---
-layout: layouts/patterns.njk
 title: Get help
 status: To be reviewed
 statusDate: June 2021
-type: pattern
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/718
-eleventyNavigation:
-  key: Get help
-  parent: Patterns
-  excerpt: "Help users get help from within the digital service."
+excerpt: "Help users get help from within the digital service."
 ---
 
 {% example "/examples/patterns/get-help", 250 %}

@@ -15,20 +15,22 @@ Some things on the roadmap might change – the purpose is to tell you what’s 
 <hr>
 
 ## What's new
+
 This work has recently been released. [Sign up to get emails](https://docs.google.com/forms/d/1i7rinQINSjdQ6w_SChXqxQFTttPMgfcSfPamq8YRnP8/viewform) about future releases from the MoJ Design System.
 
 - **18 December 2024**  
-The [MoJ content style guide](/content-standards/style-guide/) is now live.
+  The [MoJ content style guide](/content-standards/style-guide/) is now live.
 
 - **10 December 2024**  
-The [interruption card component](/components/interruption-card/) is now live. Use it to help users understand possible errors and avoid serious mistakes.
+  The [interruption card component](/components/interruption-card/) is now live. Use it to help users understand possible errors and avoid serious mistakes.
 
 - **26 November 2024**  
-We’ve archived the [password reveal component](/archive/password-reveal/). We recommend that teams use the [GOV.UK Design System password input](https://design-system.service.gov.uk/components/password-input/) instead.
+  We’ve archived the [password reveal component](/archive/password-reveal/). We recommend that teams use the [GOV.UK Design System password input](https://design-system.service.gov.uk/components/password-input/) instead.
 
 <hr>
 
 ## What's coming next
+
 This work is planned in the team's [current](https://github.com/orgs/ministryofjustice/projects/92) and [future cycles](https://github.com/orgs/ministryofjustice/projects/92/views/1) and is unlikely to change.
 
 - Review and improve the [Banner component](/components/banner/)
@@ -41,6 +43,7 @@ This work is planned in the team's [current](https://github.com/orgs/ministryofj
 <hr>
 
 ## What's coming later
+
 This work is being considered. The team is gaining confidence in this work but there's a chance that it could change.
 
 - Remove dependency on jQuery across the design system

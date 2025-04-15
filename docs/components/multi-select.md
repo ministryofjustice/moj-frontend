@@ -1,14 +1,9 @@
 ---
-layout: layouts/component.njk
 title: Multi select
 status: To be reviewed
 statusDate: June 2021
-type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/206
-eleventyNavigation:
-  key: Multi select
-  parent: Components
-  excerpt: "Use the multi select component to let users select multiple items in a list."
+excerpt: "Use the multi select component to let users select multiple items in a list."
 ---
 
 {% example "/examples/multi-select", 650 %}
