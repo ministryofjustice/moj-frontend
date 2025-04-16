@@ -1,3 +1,10 @@
+## [3.7.1](https://github.com/ministryofjustice/moj-frontend/compare/v3.7.0...v3.7.1) (2025-04-16)
+
+
+### Bug Fixes
+
+* **multifile upload:** remove extraneous characters from html markup ([6662290](https://github.com/ministryofjustice/moj-frontend/commit/66622904cf14cd139b2d5cb88f50d140251792ad))
+
 # [3.7.0](https://github.com/ministryofjustice/moj-frontend/compare/v3.6.3...v3.7.0) (2025-02-26)
 
 
