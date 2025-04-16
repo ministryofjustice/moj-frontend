@@ -122,12 +122,12 @@ MultiFileUpload.prototype.getErrorHtml = function (error) {
 
 MultiFileUpload.prototype.getFileRowHtml = function (file) {
   const html = `
-    <div class="govuk-summary-list__row moj-multi-file-upload__row">;
-      <div class="govuk-summary-list__value moj-multi-file-upload__message">;
-    <span class="moj-multi-file-upload__filename">${file.name}</span>;
-    <span class="moj-multi-file-upload__progress">0%</span>;
-      </div>';
-      <div class="govuk-summary-list__actions moj-multi-file-upload__actions"></div>;
+    <div class="govuk-summary-list__row moj-multi-file-upload__row">
+      <div class="govuk-summary-list__value moj-multi-file-upload__message">
+    <span class="moj-multi-file-upload__filename">${file.name}</span>
+    <span class="moj-multi-file-upload__progress">0%</span>
+      </div>'
+      <div class="govuk-summary-list__actions moj-multi-file-upload__actions"></div>
     </div>`
   return html
 }
