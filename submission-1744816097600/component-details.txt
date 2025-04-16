@@ -1,0 +1,5 @@
+{
+  "componentName": "x",
+  "componentOverview": "fd",
+  "howIsTheComponentUsed": "x"
+}
