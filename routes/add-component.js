@@ -31,6 +31,10 @@ const {
   sendSubmissionEmail,
   sendPrEmail
 } = require('../middleware/notify-email')
+const {
+  processSubmissionData,
+  processSubmissionFiles
+} = require('../middleware/process-subission-data')
 const verifyCsrf = require('../middleware/verify-csrf')
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -218,8 +222,9 @@ router.post(
   getRawSessionText,
   async (req, res) => {
     const submissionRef = `submission-${Date.now()}`
+    const submissionFiles = processSubmissionFiles(req.session, submissionRef)
     const { filename: markdownFilename, content: markdownContent } =
-      generateMarkdown(req.session, submissionRef)
+      generateMarkdown(req.session, submissionFiles)
     const markdown = {}
     markdown[markdownFilename] = markdownContent
     const { sessionText } = req
@@ -230,8 +235,13 @@ router.post(
       }
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/confirmation`)
     })
+    const sessionData = processSubmissionData(
+      session,
+      submissionFiles,
+      processSubmissionData
+    )
     try {
-      const branchName = await pushToGitHub(session, submissionRef)
+      const branchName = await pushToGitHub(sessionData, submissionRef)
       const { title, description } = getPrTitleAndDescription(session)
       const pr = await createPullRequest(branchName, title, description)
       await sendPrEmail(pr)
