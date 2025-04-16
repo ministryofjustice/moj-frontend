@@ -22,14 +22,8 @@
     <form method="post" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit new component</span>
       <h1 class="govuk-heading-xl">Accessibility findings</h1>
-      <p class="govuk-body">Sharing accessibility findings helps support the status and usability of the component, as wells as helping the Design System team to review it.</p>
-      <p class="govuk-body">These findings could come from:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>an external accessibility audit or internal review</li>
-        <li>manual or automated testing</li>
-        <li>assistive technology (AT) testing</li>
-        <li>usability testing</li>
-      </ul>
+      <p class="govuk-body">By sharing accessibility findings you can help people understand how to use the component. It also helps the Design System team to review it.</p>
+
       {{ govukRadios({
         name: "hasComponentBeenTestedExternalAccessibility",
         hint: {
@@ -61,7 +55,7 @@
       {{ govukRadios({
         name: "hasComponentBeenTestedInternalAudit",
         hint: {
-          text: "This would be from a team in UK Government."
+          text: "This would be within UK Government."
         },
         fieldset: {
           attributes: {
