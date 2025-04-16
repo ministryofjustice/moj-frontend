@@ -23,6 +23,13 @@
     <form method="POST" action="{{ submitUrl }}" data-add-another-container>
       <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Prototype designs</h1>
+      <p class="govuk-body"> Before sharing a prototype you need to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+      <li>make the link shareable</li>
+        <li>remove any personally identifiable or sensitive information</li>
+        <li>check that they will always be live and available to other users</li>
+      </ul>
+
       {{ govukInput({
         label: {
           text: "Add the prototype link",
@@ -33,6 +40,9 @@
         errorMessage: formErrors.prototypeUrl,
         value: formData.prototypeUrl,
         autocapitalize: false
+        hint: {
+          text: "For example, to the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro. "
+        },
       }) }}
 
       {{ govukCharacterCount({
@@ -40,7 +50,7 @@
         id: "prototypeUrl-additional-information",
         maxwords: 250,
         hint: {
-          text: "Enter any relevant information. If the file is protected, add the username and password."
+          text: "Enter any relevant information, for example a username, password or link expiry date."
         },
         label: {
           text: "More information about the prototype (optional)",
