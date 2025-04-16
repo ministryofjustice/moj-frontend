@@ -23,8 +23,7 @@
     <form method="post" action="{{ submitUrl }}" data-add-another-container>
       <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Component code</h1>
-      <p class="govuk-body">We recommend sending HTML, CSS, SASS, Javascript or Nunjucks.</p>
-      <p class="govuk-body">Send the code for the component and not the full page. This makes it easier for other people to understand and use. Remove any personally identifiable or sensitive information from the code.</p>
+      <p class="govuk-body">Send the code for the component and not the full page. This makes it easier for other people to understand and use.</p>
       <p class="govuk-body">You can add more than one code example.</p>
       {{ govukInput({
         label: {
@@ -63,6 +62,9 @@
         label: {
           text: "Add the code",
           classes: "govuk-label--m"
+        },
+        hint: {
+          text: "Add the code for the component only (not the full page) without any personally identifiable or sensitive information."
         },
         errorMessage: formErrors.componentCode,
         value: formData.componentCode
