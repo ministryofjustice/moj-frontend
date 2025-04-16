@@ -1,0 +1,6 @@
+{
+  "componentImage": {
+    "originalname": "Screenshot 2025-04-02 at 14.53.39.png",
+    "redisKey": "file:55c8191a83002ebe24351fe41968264fb84336a6ea6e91a04c63b3fe282755b0:4tqA1ibswEeL0MuYIED9Gb72e7IxiTBj:componentImage"
+  }
+}
