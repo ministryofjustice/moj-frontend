@@ -11,11 +11,11 @@ const schema = addAnotherSchema.append({
     .label('Add the link to where the Figma design file is saved')
     .messages({
       'any.required':
-        'Enter the website link for where the Figma design file is saved',
+        'Enter the Figma link',
       'string.empty':
-        'Enter the website link for where the Figma design file is saved',
+        'Enter the Figma link',
       'string.pattern.base':
-        'The Figma design file link must be a real website URL'
+        'The Figma link must be a real URL'
     }),
   figmaLinkAdditionalInformation: Joi.string()
     .optional()
@@ -23,7 +23,7 @@ const schema = addAnotherSchema.append({
     .custom((value, helpers) => maxWords(value, helpers, 250))
     .label('Additional information about the Figma design file (optional)')
     .messages({
-      'custom.max.words': 'There must be 250 words or less'
+      'custom.max.words': 'Enter 250 words or less'
     })
 })
 
