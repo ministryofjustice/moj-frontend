@@ -14,13 +14,21 @@ const emailAddress = NOTIFY_EMAIL
 
 const sendEmail = async (
   templateId,
-  link = null,
+  prLink = null,
+  previewLink = null,
   fileBuffer = null,
   markdown = null,
   retries = NOTIFY_EMAIL_MAX_RETRIES,
   backoff = NOTIFY_EMAIL_RETRY_MS
 ) => {
-  const personalisation = link ? { link } : {}
+  const personalisation = {}
+
+  if (prLink) {
+    personalisation['pr_link'] = previewLink
+  }
+  if (previewLink) {
+    personalisation['preview_link'] = previewLink
+  }
 
   if (fileBuffer) {
     personalisation.link_to_file = notifyClient.prepareUpload(fileBuffer)
@@ -54,16 +62,13 @@ const sendEmail = async (
   }
 }
 
-const sendSubmissionEmail = async (
-  link = null,
-  fileBuffer = null,
-  markdown = null
-) => {
-  return sendEmail(NOTIFY_SUBMISSION_TEMPLATE, link, fileBuffer, markdown)
+const sendSubmissionEmail = async (fileBuffer = null, markdown = null) => {
+  return sendEmail(NOTIFY_SUBMISSION_TEMPLATE, null, null, fileBuffer, markdown)
 }
 
-const sendPrEmail = async (link = null) => {
-  return sendEmail(NOTIFY_PR_TEMPLATE, link)
+const sendPrEmail = async ({ url, number }) => {
+  const previewUrl = `https://moj-frontend-pr-${number}.apps.live.cloud-platform.service.justice.gov.uk`
+  return sendEmail(NOTIFY_PR_TEMPLATE, url, previewUrl)
 }
 
 const handleEmailError = (error) => {
