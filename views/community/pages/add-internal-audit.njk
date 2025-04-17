@@ -25,12 +25,12 @@
       }) }}
     {% endif %}
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
-      <span class="govuk-caption-l">Submit new component</span>
-      <h1 class="govuk-heading-xl">Internal accessibility audit</h1>
+      <span class="govuk-caption-l">Submit a new component</span>
+      <h1 class="govuk-heading-xl">Internal accessibility audit details</h1>
 
       {{ govukInput({
         label: {
-          text: "What team conducted the internal accessibility audit?",
+          text: "What team did the internal accessibility audit?",
           classes: "govuk-label--m"
         },
         id: "internal-organisation",
@@ -64,13 +64,13 @@
         ],
         fieldset: {
           legend: {
-            text: "When did the audit take place?",
+            text: "When was the review?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "For example, 27 4 2015"
+          text: "For example, 13 8 2024"
         }
       }) }}
 
@@ -83,7 +83,7 @@
           classes: "govuk-label--m"
         },
         hint: {
-          text: "The selected file must be PDF and smaller than 10MB."
+          text: "The file needs to be a PDF and smaller than 10MB."
         },
         errorMessage: formErrors.accessibilityReport,
         value: formData.accessibilityReport,
@@ -113,7 +113,7 @@
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
-          text: "Were any issues discovered with the component during the audit? (Optional)",
+          text: "Did the audit identify any issues with the component? (optional)",
           classes: "govuk-label--m",
           isPageHeading: true
         },

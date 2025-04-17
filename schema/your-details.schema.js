@@ -24,11 +24,11 @@ const schema = Joi.object({
     .required()
     .messages({
       'string.empty':
-        'Enter the team name you worked for when creating the component',
+        'Enter the team name you worked in when this component was created',
       'any.required':
-        'Enter the team name you worked for when creating the component'
+        'Enter the team name you worked in when this component was created'
     })
-    .label('What team did you work in when creating the component?'),
+    .label('What team did you work in when this component was created?'),
   shareYourDetails: Joi.alternatives()
     .try(Joi.array(), Joi.string())
     .allow(null, '')

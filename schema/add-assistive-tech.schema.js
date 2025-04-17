@@ -84,7 +84,7 @@ const schema = Joi.object({
     .allow('')
     .pattern(/\.pdf$/i)
     .messages({
-      'string.pattern.base': 'The selected file must be a PDF'
+      'string.pattern.base': 'The file must be a PDF'
     })
     .optional()
 })

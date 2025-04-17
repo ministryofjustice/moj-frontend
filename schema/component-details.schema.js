@@ -11,7 +11,7 @@ const schema = Joi.object({
       'string.pattern.name':
         'The component name must only include letters a to z, and special characters such as hyphens, spaces and apostrophes',
       'string.empty': 'Enter the name of the component',
-      'string.max': 'The component name must be 26 characters or less'
+      'string.max': 'Enter 26 characters or less for the component name'
     })
     .label('What is the name of the component?'),
   componentOverview: Joi.string()
@@ -19,14 +19,14 @@ const schema = Joi.object({
     .custom((value, helpers) => maxWords(value, helpers, 250))
     .messages({
       'string.empty': 'Enter an overview description of the component',
-      'custom.max.words': 'The overview description must be 250 words or less'
+      'custom.max.words': 'Enter 250 words or less for the description'
     })
     .label('Add an overview description about the component'),
   howIsTheComponentUsed: Joi.string()
     .required()
     .custom((value, helpers) => maxWords(value, helpers, 250))
     .messages({
-      'string.empty': 'Enter an answer for how the component is used currently',
+      'string.empty': 'Enter an answer for how the component is being used',
       'custom.max.words':
         'The how the component is used currently must be 250 words or less'
     })

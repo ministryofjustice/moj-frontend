@@ -22,12 +22,10 @@
       }) }}
     {% endif %}
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
-      <span class="govuk-caption-l">Submit new component</span>
+      <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Upload an image of the component</h1>
-      <p class="govuk-body">You also need to upload an image showing what the component looks like. It should not
-        contain any personal or sensitive information.</p>
-      <p class="govuk-body">You'll also have an opportunity to add more images of this after submitting the
-        component.</p>
+      <p class="govuk-body">Make sure your remove any personal or sensitive information from the image.</p>
+
 
 
       {%if formData.componentImage.originalname %}
@@ -63,7 +61,7 @@
             classes: "govuk-label--m"
           },
           hint: {
-            text: "The selected file must be a JPG, BMP, PNG, TIF or PDF and smaller than 10MB."
+            text: "The file must be a JPG, BMP, PNG, TIF or PDF, and smaller than 10MB."
           },
           attributes: {
             accept: ".jpg, .jpeg, .bmp, .png, .tif, .tiff, .pdf"
