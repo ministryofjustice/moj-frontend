@@ -1,7 +1,8 @@
 const redis = require('../helpers/redis-client')
 
-const imageDirectory = 'docs/assets/images'
-const fileDirectory = 'docs/assets/files'
+const imageDirectory = 'assets/images'
+const fileDirectory = 'assets/files'
+
 // Retrieve File from Redis
 const getFileFromRedis = async (redisKey) => {
   try {
@@ -30,7 +31,7 @@ const extractFilename = (key, includeDirectories = true) => {
 
 const getUniqueFilename = (originalName, existingFilenames) => {
   let counter = 0
-  let uniqueName = originalName
+  let uniqueName = originalName.replace(/\s+/g, '-')
 
   // Check and resolve conflicts
   while (existingFilenames.has(uniqueName)) {
@@ -48,7 +49,7 @@ const processSubmissionFiles = async (sessionData, submissionRef) => {
   const submissionFiles = {}
   const existingFilenames = new Set()
 
-  for (const key in sessionData) {
+  for (const key of Object.keys(sessionData)) {
     if (!['cookie', 'csrfToken'].includes(key)) {
       const fileData = sessionData[key]
       if (
@@ -74,6 +75,7 @@ const processSubmissionFiles = async (sessionData, submissionRef) => {
       }
     }
   }
+
   return submissionFiles
 }
 
@@ -83,7 +85,7 @@ const processSubmissionData = (sessionData, submissionFiles, submissionRef) => {
   for (const key in sessionData) {
     if (!['cookie', 'csrfToken'].includes(key)) {
       if (submissionFiles[key]) {
-        const filePath = submissionFiles[key].path
+        const filePath = `docs/${submissionFiles[key].path}`
         submissionData[filePath] = { buffer: submissionFiles[key].buffer }
       } else {
         const filename = extractFilename(key)
