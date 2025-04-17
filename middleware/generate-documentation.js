@@ -1,7 +1,7 @@
 /* eslint-disable prefer-template */
 const moment = require('moment')
 
-const generateMarkdown = (data, _) => {
+const generateMarkdown = (data, files) => {
   const { '/component-details': details } = data
 
   const documentationDirectory = 'docs/components/documentation'
@@ -52,15 +52,18 @@ ${figma?.figmaLinkAdditionalInformation || ''}
     return content.length ? content : noLinks
   }
 
-  const generateAccessibilityReportSection = (data) => {
+  const generateAccessibilityReportSection = (data, files) => {
     const contentHeading =
       'If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.\n'
     const noContent =
       'No accessibility findings have been contributed for this component.\n'
     let content = ''
     const externalAudit = data['/add-external-audit']
+    const externalAuditFile = files['/add-external-audit']
     const internalAudit = data['/add-internal-audit']
+    const internalAuditFile = files['/add-internal-audit']
     const assistiveTech = data['/add-assistive-tech']
+    const assistiveTechReport = files['/add-assistive-tech']
 
     const formatDate = (day, month, year) => {
       if (day && month && year) {
@@ -80,8 +83,8 @@ ${figma?.figmaLinkAdditionalInformation || ''}
         if (externalAudit.issuesDiscovered) {
           content += externalAudit.issuesDiscovered + '\n'
         }
-        if (externalAudit.accessibilityReport) {
-          content += `[Download the accessibility report](/uploads/${externalAudit.accessibilityReport})\n`
+        if (externalAudit.accessibilityReport && externalAuditFile) {
+          content += `[Download the accessibility report](/${externalAuditFile.path})\n`
         }
       }
     }
@@ -97,8 +100,8 @@ ${figma?.figmaLinkAdditionalInformation || ''}
         if (internalAudit.issuesDiscovered) {
           content += internalAudit.issuesDiscovered + '\n'
         }
-        if (internalAudit.accessibilityReport) {
-          content += `[Download the accessibility report](/uploads/${internalAudit.accessibilityReport})\n`
+        if (internalAudit.accessibilityReport && internalAuditFile) {
+          content += `[Download the accessibility report](/${internalAuditFile.path})\n`
         }
       }
     }
@@ -114,8 +117,8 @@ ${figma?.figmaLinkAdditionalInformation || ''}
         if (assistiveTech.issuesDiscovered) {
           content += assistiveTech.issuesDiscovered + '\n'
         }
-        if (assistiveTech.accessibilityReport) {
-          content += `[Download the accessibility report](/uploads/${assistiveTech.accessibilityReport})\n`
+        if (assistiveTech.accessibilityReport && assistiveTechReport) {
+          content += `[Download the accessibility report](/${assistiveTechReport.path})\n`
         }
       }
     }
@@ -169,6 +172,8 @@ eleventyNavigation:
 
 ## Overview
 
+${ files['/component-image'] ? "!["+componentName+"](/"+files['/component-image'].path+")" : "" }
+
 ${details?.componentOverview || ''}
 
 ## How the component is currently used
@@ -198,7 +203,7 @@ ${generateComponentCodeSection(data)}
 
 ## Accessibility
 
-${generateAccessibilityReportSection(data)}
+${generateAccessibilityReportSection(data, files)}
 
 {% endtab %}
 
