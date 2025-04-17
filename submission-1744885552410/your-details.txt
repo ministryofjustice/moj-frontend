@@ -1,0 +1,9 @@
+{
+  "fullName": "dfsdf kjfg",
+  "emailAddress": "dfsglkjgdflk@l.com",
+  "teamName": "fdggdffg",
+  "shareYourDetails": [
+    "addNameToComponentPage",
+    "addTeamNameWhenRequested"
+  ]
+}
