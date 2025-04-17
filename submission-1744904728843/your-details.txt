@@ -1,0 +1,9 @@
+{
+  "fullName": "sjhl sdlfkjsdlkf",
+  "emailAddress": "chris.pymm@digital.justice.gov.uk",
+  "teamName": "sdfsdgsf",
+  "shareYourDetails": [
+    "addNameToComponentPage",
+    "addTeamNameWhenRequested"
+  ]
+}
