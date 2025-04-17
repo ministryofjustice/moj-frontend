@@ -1,0 +1,5 @@
+{
+  "componentName": "comp",
+  "componentOverview": "xsdfgdfsg",
+  "howIsTheComponentUsed": "dfsgdfsgdf"
+}
