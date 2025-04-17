@@ -222,24 +222,27 @@ router.post(
   getRawSessionText,
   async (req, res) => {
     const submissionRef = `submission-${Date.now()}`
-    const submissionFiles = processSubmissionFiles(req.session, submissionRef)
+    const submissionFiles = await processSubmissionFiles(req.session, submissionRef)
+console.log(submissionFiles)
     const { filename: markdownFilename, content: markdownContent } =
       generateMarkdown(req.session, submissionFiles)
     const markdown = {}
     markdown[markdownFilename] = markdownContent
     const { sessionText } = req
     const session = { ...req.session, ...markdown }
+    const sessionData = processSubmissionData(
+      session,
+      submissionFiles,
+      submissionRef
+    )
+
     req.session.regenerate((err) => {
       if (err) {
         console.error('Error regenerating session:', err)
       }
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/confirmation`)
     })
-    const sessionData = processSubmissionData(
-      session,
-      submissionFiles,
-      processSubmissionData
-    )
+
     try {
       const branchName = await pushToGitHub(sessionData, submissionRef)
       const { title, description } = getPrTitleAndDescription(session)
@@ -247,7 +250,7 @@ router.post(
       await sendPrEmail(pr)
     } catch (error) {
       console.error('[FORM SUBMISSION] Error sending submission:', error)
-      await sendSubmissionEmail(null, sessionText, markdownContent)
+      await sendSubmissionEmail(sessionText, markdownContent)
     }
   }
 )
