@@ -1,0 +1,5 @@
+{
+  "componentName": "files again",
+  "componentOverview": "sdfgggsdf",
+  "howIsTheComponentUsed": "dfgsdfgssdfg"
+}
