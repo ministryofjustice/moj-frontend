@@ -8,6 +8,7 @@ const {
 } = require('../config')
 
 const getMainBranchSha = async () => {
+console.log(GITHUB_API_TOKEN)
   const response = await fetch(
     `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/git/ref/heads/main`,
     {
@@ -44,6 +45,8 @@ const createBranch = async (baseSha, branchName) => {
 }
 
 const addFileToBranch = async (filePath, fileContent, branchName) => {
+console.log(filePath)
+console.log(fileContent)
   const response = await fetch(
     `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/contents/${filePath}`,
     {
@@ -69,7 +72,7 @@ const addFileToBranch = async (filePath, fileContent, branchName) => {
 
 const pushToGitHub = async (submissionData, branchName) => {
   console.log('[GITHUB] Start pushing to Github')
-
+  console.log(submissionData)
   try {
     const baseSha = await getMainBranchSha()
     await createBranch(baseSha, branchName)
@@ -144,7 +147,10 @@ const createPullRequest = async (branchName, title, description = '') => {
     }
 
     console.log(`[GITHUB] Label added to pull request: ${pr.html_url}`)
-    return pr.html_url
+return {
+url: pr.html_url,
+number: pr.number
+}
   } catch (error) {
     console.error('[GITHUB] Error creating pull request:', error.message)
     throw error
