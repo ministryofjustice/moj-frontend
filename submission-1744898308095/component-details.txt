@@ -1,0 +1,5 @@
+{
+  "componentName": "sdlklk",
+  "componentOverview": "sdafasdasdf",
+  "howIsTheComponentUsed": "asdffasdsdfa"
+}
