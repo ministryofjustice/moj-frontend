@@ -1,0 +1,5 @@
+{
+  "componentName": "async",
+  "componentOverview": "sdflkg",
+  "howIsTheComponentUsed": "sdglgkhjj"
+}
