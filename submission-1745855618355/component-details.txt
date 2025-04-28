@@ -1,0 +1,5 @@
+{
+  "componentName": "component made by chris",
+  "componentOverview": "sdflkjlk ksdjf'ksdjf'kjsdf'kjfds",
+  "howIsTheComponentUsed": "sdlkfmsdlksdlksdjlksdjlk"
+}
