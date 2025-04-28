@@ -20,7 +20,6 @@ In HMPPS digital services, you should only use the badge to show risk informatio
 
 There's also the ['Tag' component in the GOV.UK Design System](https://design-system.service.gov.uk/components/tag/).
 
-
 ## How to use
 
 The default, neutral badge is blue. Alternative styles are also available, for example, green and red.
