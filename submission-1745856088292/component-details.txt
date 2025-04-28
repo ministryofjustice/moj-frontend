@@ -1,0 +1,5 @@
+{
+  "componentName": "super component",
+  "componentOverview": "ßjslkfsdfksglkjhsh sljgh shdfglslkjsf",
+  "howIsTheComponentUsed": "sljsdhflshg sd lkjhsdlfh hlgflkjhlk"
+}
