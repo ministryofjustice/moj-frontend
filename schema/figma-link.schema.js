@@ -10,12 +10,9 @@ const schema = addAnotherSchema.append({
     .required()
     .label('Add the link to where the Figma design file is saved')
     .messages({
-      'any.required':
-        'Enter the Figma link',
-      'string.empty':
-        'Enter the Figma link',
-      'string.pattern.base':
-        'The Figma link must be a real URL'
+      'any.required': 'Enter the Figma link',
+      'string.empty': 'Enter the Figma link',
+      'string.pattern.base': 'The Figma link must be a real URL'
     }),
   figmaLinkAdditionalInformation: Joi.string()
     .optional()
