@@ -26,11 +26,11 @@
     {% endif %}
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
       <span class="govuk-caption-l">Submit a new component</span>
-      <h1 class="govuk-heading-xl">Internal accessibility audit details</h1>
+      <h1 class="govuk-heading-xl">Internal accessibility review</h1>
 
       {{ govukInput({
         label: {
-          text: "What team did the internal accessibility audit?",
+          text: "What team did the internal accessibility review?",
           classes: "govuk-label--m"
         },
         id: "internal-organisation",
@@ -78,7 +78,7 @@
         id: "accessibility-report",
         name: "accessibilityReport",
         label: {
-          text: "Upload the accessibility report (optional)",
+          text: "Upload the accessibility review (optional)",
           isPageHeading: true,
           classes: "govuk-label--m"
         },
@@ -113,7 +113,7 @@
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
-          text: "Did the audit identify any issues with the component? (optional)",
+          text: "Did the review identify any issues with the component? (optional)",
           classes: "govuk-label--m",
           isPageHeading: true
         },
