@@ -9,8 +9,8 @@ const schema = addAnotherSchema.append({
     .required()
     .label('What language is the code written in?')
     .messages({
-      'any.required': 'Enter the name of the language the code',
-      'string.empty': 'Enter the name of the language the code'
+      'any.required': 'Enter the name of the code language',
+      'string.empty': 'Enter the name of the code language'
     }),
   componentCodeUsage: Joi.string()
     .optional()
@@ -26,7 +26,7 @@ const schema = addAnotherSchema.append({
     .custom((value, helpers) => maxWords(value, helpers, 1000))
     .label('Add the code')
     .messages({
-      'custom.max.words': 'Enter 1000 words or less'
+      'custom.max.words': 'Enter 10,000 characers or less'
     })
 })
 

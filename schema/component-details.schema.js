@@ -18,7 +18,7 @@ const schema = Joi.object({
     .required()
     .custom((value, helpers) => maxWords(value, helpers, 250))
     .messages({
-      'string.empty': 'Enter an overview description of the component',
+      'string.empty': 'Enter a description of the component',
       'custom.max.words': 'Enter 250 words or less for the description'
     })
     .label('Add an overview description about the component'),
@@ -28,9 +28,9 @@ const schema = Joi.object({
     .messages({
       'string.empty': 'Enter an answer for how the component is being used',
       'custom.max.words':
-        'The how the component is used currently must be 250 words or less'
+        'Enter 250 words or less for how the component is being used'
     })
-    .label('How is the component used in your service?')
+    .label('How is the component being used?')
 })
 
 module.exports = schema
