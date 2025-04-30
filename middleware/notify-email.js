@@ -24,7 +24,7 @@ const sendEmail = async (
   const personalisation = {}
 
   if (prLink) {
-    personalisation['pr_link'] = previewLink
+    personalisation['pr_link'] = prLink
   }
   if (previewLink) {
     personalisation['preview_link'] = previewLink
