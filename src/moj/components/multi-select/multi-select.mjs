@@ -61,6 +61,7 @@ export class MultiSelect extends ConfigurableComponent {
     $input.id = id
     $input.type = 'checkbox'
     $input.classList.add('govuk-checkboxes__input')
+    $input.autocomplete = 'off'
 
     $label.setAttribute('for', id)
     $label.classList.add(
