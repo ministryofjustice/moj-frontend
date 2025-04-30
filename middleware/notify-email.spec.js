@@ -35,13 +35,16 @@ describe('sendSubmissionEmail', () => {
   it('should send a submission email successfully', async () => {
     mockSendEmail.mockResolvedValue({ status: 'success' })
 
-    await sendSubmissionEmail('http://example.com')
+    await sendSubmissionEmail('session text', 'markdown')
 
     expect(mockSendEmail).toHaveBeenCalledWith(
       expect.any(String),
       expect.any(String),
       {
-        personalisation: { link: 'http://example.com' }
+        personalisation: {
+          link_to_file: 'mockFileUrl',
+          markdown: 'markdown'
+        }
       }
     )
     expect(mockSendEmail).toHaveBeenCalledTimes(1)
@@ -51,7 +54,7 @@ describe('sendSubmissionEmail', () => {
     const error = new Error('Failed to send email')
     mockSendEmail.mockRejectedValue(error)
 
-    await expect(sendSubmissionEmail('http://example.com')).rejects.toThrow(
+    await expect(sendSubmissionEmail('filebuffer', 'markdown')).rejects.toThrow(
       'Failed to send email'
     )
 
@@ -59,7 +62,10 @@ describe('sendSubmissionEmail', () => {
       expect.any(String),
       expect.any(String),
       {
-        personalisation: { link: 'http://example.com' }
+        personalisation: {
+          link_to_file: 'mockFileUrl',
+          markdown: 'markdown'
+        }
       }
     )
     expect(mockSendEmail).toHaveBeenCalledTimes(3)
@@ -90,7 +96,7 @@ describe('sendEmail with backoff logic', () => {
       .mockResolvedValue({ status: 'success' })
 
     const start = Date.now()
-    await sendSubmissionEmail('http://example.com')
+    await sendSubmissionEmail('filebuffer', 'markdown')
     const end = Date.now()
 
     expect(mockSendEmail).toHaveBeenCalledTimes(3)
@@ -98,7 +104,10 @@ describe('sendEmail with backoff logic', () => {
       expect.any(String),
       expect.any(String),
       {
-        personalisation: { link: 'http://example.com' }
+        personalisation: {
+          link_to_file: 'mockFileUrl',
+          markdown: 'markdown'
+        }
       }
     )
 
@@ -122,13 +131,19 @@ describe('sendPrEmail', () => {
   it('should send a PR email successfully', async () => {
     mockSendEmail.mockResolvedValue({ status: 'success' })
 
-    await sendPrEmail('http://example.com')
+    await sendPrEmail({
+      url:'http://example.com',
+      number: 1234
+    })
 
     expect(mockSendEmail).toHaveBeenCalledWith(
       expect.any(String),
       expect.any(String),
       {
-        personalisation: { link: 'http://example.com' }
+        personalisation: {
+          pr_link: 'http://example.com',
+          preview_link: 'https://moj-frontend-pr-1234.apps.live.cloud-platform.service.justice.gov.uk',
+        }
       }
     )
     expect(mockSendEmail).toHaveBeenCalledTimes(1)
@@ -138,7 +153,10 @@ describe('sendPrEmail', () => {
     const error = new Error('Failed to send email')
     mockSendEmail.mockRejectedValue(error)
 
-    await expect(sendPrEmail('http://example.com')).rejects.toThrow(
+    await expect(sendPrEmail({
+      url:'http://example.com',
+      number: 1234
+    })).rejects.toThrow(
       'Failed to send email'
     )
 
@@ -146,7 +164,10 @@ describe('sendPrEmail', () => {
       expect.any(String),
       expect.any(String),
       {
-        personalisation: { link: 'http://example.com' }
+          personalisation: {
+            pr_link: 'http://example.com',
+            preview_link: 'https://moj-frontend-pr-1234.apps.live.cloud-platform.service.justice.gov.uk',
+          }
       }
     )
     expect(mockSendEmail).toHaveBeenCalledTimes(3)
