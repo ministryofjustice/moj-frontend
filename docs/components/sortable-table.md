@@ -1,14 +1,9 @@
 ---
-layout: layouts/component.njk
 title: Sortable table
 status: To be reviewed
 statusDate: June 2021
-type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/269
-eleventyNavigation:
-  key: Sortable table
-  parent: Components
-  excerpt: "Use the sortable table component to let users sort columns in ascending or descending order."
+excerpt: "Use the sortable table component to let users sort columns in ascending or descending order."
 ---
 
 {% example "/examples/sortable-table", 450 %}

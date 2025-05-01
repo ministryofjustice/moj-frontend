@@ -1,6 +1,6 @@
 ---
 eleventyNavigation:
-  key: Standards and principles
+  key: Guidance
   url: "#"
   permalink: false
 ---

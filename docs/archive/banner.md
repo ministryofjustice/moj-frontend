@@ -6,10 +6,7 @@ statusDate: February 2025
 type: component
 redirect_from: components/banner
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/835
-eleventyNavigation:
-  key: Banner
-  parent: Archive
-  excerpt: "Use the banner component to display a prominent message and related actions to take."
+excerpt: "Use the banner component to display a prominent message and related actions to take."
 ---
 
 {% banner "This component is archived" %}

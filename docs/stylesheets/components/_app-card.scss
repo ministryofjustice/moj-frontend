@@ -3,31 +3,30 @@
 .app-card {
   margin-bottom: 0;
 
-  @include govuk-media-query($until: desktop) {
-    margin-bottom: govuk-spacing(7);
-  }
-
-  &__image {
+  & .app-card__image {
     display: block;
     width: 100%;
     height: auto;
     object-fit: cover;
+    margin-bottom: govuk-spacing(4);
+    border: none;
   }
 
-  &--reverse {
-    display: flex;
-    flex-direction: row-reverse;
-
-    @include govuk-media-query($until: desktop) {
-      flex-direction: column;
-    }
+  & .app-card__image--with-border {
+    border: 1px solid $govuk-border-colour;
   }
 
-  &--full {
-    margin-bottom: govuk-spacing(9);
+  &__content {
+    margin-bottom: 0;
 
-    @include govuk-media-query($until: desktop) {
-      margin-bottom: govuk-spacing(7);
+    p:last-child {
+      margin-bottom: 0;
     }
+  }
+}
+
+.app-card--reverse {
+  > *:last-child {
+    order: -1;
   }
 }

@@ -1,14 +1,9 @@
 ---
-layout: layouts/component.njk
 title: Alert
 status: Official
 statusDate: February 2025
-type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1163
-eleventyNavigation:
-  key: Alert
-  parent: Components
-  excerpt: "Use the alert component to display a prominent message and related actions to take."
+excerpt: "Use the alert component to display a prominent message and related actions to take."
 ---
 
 <span class="govuk-caption-xl govuk-!-margin-bottom-9">The alert component uses visual design to display a notification to users. It has a range of use cases.</span>

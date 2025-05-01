@@ -26,10 +26,6 @@
     border: 1px solid #b1b4b6;
   }
 
-  .app-card__image {
-    border: none;
-  }
-
   strong,
   b {
     @include govuk-typography-weight-bold;

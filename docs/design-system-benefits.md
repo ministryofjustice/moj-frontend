@@ -1,10 +1,11 @@
 ---
 layout: layouts/content.njk
-title: Benefits of using the Design System
+subsection: About the design system
+title: Benefits of using the design system
 eleventyNavigation:
-  key: Benefits of using the Design System
-  parent: Using the design system
-  order: 5
+  key: Benefits
+  parent: About the design system
+  order: 10
   excerpt: "Benefits of using the Design System."
 ---
 

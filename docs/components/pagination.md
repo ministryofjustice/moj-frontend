@@ -1,14 +1,9 @@
 ---
-layout: layouts/component.njk
 title: Pagination
 status: To be reviewed
 statusDate: June 2021
-type: component
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/708
-eleventyNavigation:
-  key: Pagination
-  parent: Components
-  excerpt: "Use the pagination component to let users browse through a long list."
+excerpt: "Use the pagination component to let users browse through a long list."
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}
