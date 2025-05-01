@@ -37,7 +37,7 @@
     "lint:types": "tsc --build tsconfig.json --incremental --pretty",
     "watch:11ty": "eleventy --input=./docs --output=public --watch",
     "watch:package": "gulp watch --color",
-    "watch:app": "nodemon app.js",
+    "watch:app": "nodemon --env-file-if-exists=.env app.js",
     "test:helpers": "jest helpers/",
     "test:middleware": "jest middleware/",
     "test:routes": "jest routes/",
