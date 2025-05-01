@@ -131,7 +131,6 @@ const config = {
       'your-details'
     ],
     canRemoveStatic: [
-      '/component-image',
       '/accessibility-findings',
       '/prototype-url',
       '/figma-link',
