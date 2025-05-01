@@ -15,6 +15,7 @@ package/*
 !package/README.md
 
 # Other
+*.tsbuildinfo
 .DS_Store
 .env
 .port.tmp
