@@ -4,11 +4,12 @@ const moment = require('moment')
 const generateMarkdown = (data, files) => {
   const { '/component-details': details } = data
 
-  const documentationDirectory = 'docs/components/documentation'
+  const documentationDirectory = 'docs/components'
   const componentName = details?.componentName || 'unknown-component'
   const sanitizedComponentName = componentName
     .toLowerCase()
     .replace(/[^a-z0-9-]/g, '-')
+    .replace(/-+/g,'-')
   const filename = `${documentationDirectory}/${sanitizedComponentName}.md`
   const generateLinksSection = (data) => {
     const noLinks =
@@ -59,11 +60,11 @@ ${figma?.figmaLinkAdditionalInformation || ''}
       'No accessibility findings have been contributed for this component.\n'
     let content = ''
     const externalAudit = data['/add-external-audit']
-    const externalAuditFile = files['/add-external-audit']
+    const externalAuditFile = files?.['/add-external-audit']
     const internalAudit = data['/add-internal-audit']
-    const internalAuditFile = files['/add-internal-audit']
+    const internalAuditFile = files?.['/add-internal-audit']
     const assistiveTech = data['/add-assistive-tech']
-    const assistiveTechReport = files['/add-assistive-tech']
+    const assistiveTechReport = files?.['/add-assistive-tech']
 
     const formatDate = (day, month, year) => {
       if (day && month && year) {
@@ -172,7 +173,7 @@ eleventyNavigation:
 
 ## Overview
 
-${ files['/component-image'] ? "!["+componentName+"](/"+files['/component-image'].path+")" : "" }
+${ files?.['/component-image'] ? "!["+componentName+"](/"+files['/component-image'].path+")" : "" }
 
 ${details?.componentOverview || ''}
 
