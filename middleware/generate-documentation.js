@@ -9,7 +9,7 @@ const generateMarkdown = (data, files) => {
   const sanitizedComponentName = componentName
     .toLowerCase()
     .replace(/[^a-z0-9-]/g, '-')
-    .replace(/-+/g,'-')
+    .replace(/-+/g, '-')
   const filename = `${documentationDirectory}/${sanitizedComponentName}.md`
   const generateLinksSection = (data) => {
     const noLinks =
@@ -173,7 +173,7 @@ eleventyNavigation:
 
 ## Overview
 
-${ files?.['/component-image'] ? "!["+componentName+"](/"+files['/component-image'].path+")" : "" }
+${files?.['/component-image'] ? '![' + componentName + '](/' + files['/component-image'].path + ')' : ''}
 
 ${details?.componentOverview || ''}
 
