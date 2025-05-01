@@ -132,7 +132,7 @@ describe('sendPrEmail', () => {
     mockSendEmail.mockResolvedValue({ status: 'success' })
 
     await sendPrEmail({
-      url:'http://example.com',
+      url: 'http://example.com',
       number: 1234
     })
 
@@ -142,7 +142,8 @@ describe('sendPrEmail', () => {
       {
         personalisation: {
           pr_link: 'http://example.com',
-          preview_link: 'https://moj-frontend-pr-1234.apps.live.cloud-platform.service.justice.gov.uk',
+          preview_link:
+            'https://moj-frontend-pr-1234.apps.live.cloud-platform.service.justice.gov.uk'
         }
       }
     )
@@ -153,21 +154,22 @@ describe('sendPrEmail', () => {
     const error = new Error('Failed to send email')
     mockSendEmail.mockRejectedValue(error)
 
-    await expect(sendPrEmail({
-      url:'http://example.com',
-      number: 1234
-    })).rejects.toThrow(
-      'Failed to send email'
-    )
+    await expect(
+      sendPrEmail({
+        url: 'http://example.com',
+        number: 1234
+      })
+    ).rejects.toThrow('Failed to send email')
 
     expect(mockSendEmail).toHaveBeenCalledWith(
       expect.any(String),
       expect.any(String),
       {
-          personalisation: {
-            pr_link: 'http://example.com',
-            preview_link: 'https://moj-frontend-pr-1234.apps.live.cloud-platform.service.justice.gov.uk',
-          }
+        personalisation: {
+          pr_link: 'http://example.com',
+          preview_link:
+            'https://moj-frontend-pr-1234.apps.live.cloud-platform.service.justice.gov.uk'
+        }
       }
     )
     expect(mockSendEmail).toHaveBeenCalledTimes(3)
