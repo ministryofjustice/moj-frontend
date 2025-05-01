@@ -24,10 +24,10 @@ const sendEmail = async (
   const personalisation = {}
 
   if (prLink) {
-    personalisation['pr_link'] = prLink
+    personalisation.pr_link = prLink
   }
   if (previewLink) {
-    personalisation['preview_link'] = previewLink
+    personalisation.preview_link = previewLink
   }
 
   if (fileBuffer) {
