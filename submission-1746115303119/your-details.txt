@@ -1,0 +1,9 @@
+{
+  "fullName": "jfgjg kuhjh",
+  "emailAddress": "chris@chrispymm.co.uk",
+  "teamName": "lijli",
+  "shareYourDetails": [
+    "addNameToComponentPage",
+    "addTeamNameWhenRequested"
+  ]
+}
