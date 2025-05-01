@@ -82,7 +82,7 @@ ${figma?.figmaLinkAdditionalInformation || ''}
       if (auditDate) {
         content += `### External audit (${externalAudit.externalOrganisation}) - ${auditDate}\n`
         if (externalAudit.issuesDiscovered) {
-          content += externalAudit.issuesDiscovered + '\n'
+          content += externalAudit.issuesDiscovered + '\n\n'
         }
         if (externalAudit.accessibilityReport && externalAuditFile) {
           content += `[Download the accessibility report](/${externalAuditFile.path})\n`
@@ -99,7 +99,7 @@ ${figma?.figmaLinkAdditionalInformation || ''}
       if (auditDate) {
         content += `### Internal audit (${internalAudit.internalOrganisation}) - ${auditDate}\n`
         if (internalAudit.issuesDiscovered) {
-          content += internalAudit.issuesDiscovered + '\n'
+          content += internalAudit.issuesDiscovered + '\n\n'
         }
         if (internalAudit.accessibilityReport && internalAuditFile) {
           content += `[Download the accessibility report](/${internalAuditFile.path})\n`
@@ -116,7 +116,7 @@ ${figma?.figmaLinkAdditionalInformation || ''}
       if (testingDate) {
         content += `### Assistive Technology audit - ${testingDate}\n`
         if (assistiveTech.issuesDiscovered) {
-          content += assistiveTech.issuesDiscovered + '\n'
+          content += assistiveTech.issuesDiscovered + '\n\n'
         }
         if (assistiveTech.accessibilityReport && assistiveTechReport) {
           content += `[Download the accessibility report](/${assistiveTechReport.path})\n`
