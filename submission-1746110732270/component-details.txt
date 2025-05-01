@@ -1,0 +1,5 @@
+{
+  "componentName": "A lovely component",
+  "componentOverview": "it is beautiful!",
+  "howIsTheComponentUsed": "It is being used a lot\r\n "
+}
