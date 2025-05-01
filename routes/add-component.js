@@ -222,8 +222,11 @@ router.post(
   getRawSessionText,
   async (req, res) => {
     const submissionRef = `submission-${Date.now()}`
-    const submissionFiles = await processSubmissionFiles(req.session, submissionRef)
-console.log(submissionFiles)
+    const submissionFiles = await processSubmissionFiles(
+      req.session,
+      submissionRef
+    )
+    console.log(submissionFiles)
     const { filename: markdownFilename, content: markdownContent } =
       generateMarkdown(req.session, submissionFiles)
     const markdown = {}
