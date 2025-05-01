@@ -1,0 +1,4 @@
+{
+  "prototypeUrl": "http://google.com",
+  "prototypeUrlAdditionalInformation": "\r\n"
+}
