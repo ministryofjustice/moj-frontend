@@ -1,0 +1,9 @@
+{
+  "fullName": "Chris Pymm",
+  "emailAddress": "chris@chrispymm.co.uk",
+  "teamName": "MOJ Forms",
+  "shareYourDetails": [
+    "addNameToComponentPage",
+    "addTeamNameWhenRequested"
+  ]
+}
