@@ -1,5 +1,11 @@
 /* eslint import/order: "off" */
 /* eslint n/no-unpublished-require: "off" */
+const Sentry = require('@sentry/node')
+
+Sentry.init({
+  dsn: 'https://304866cea16570b04e2090537ae9ac77@o345774.ingest.us.sentry.io/4509252675371008',
+  sendDefaultPii: true
+})
 
 const path = require('path')
 const redisClient = require('./helpers/redis-client')
@@ -83,16 +89,24 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
+app.get("/debug-sentry", function mainHandler(req, res) {
+  throw new Error("My first Sentry error!");
+});
+// The error handler must be registered before any other error middleware and after all controllers
+Sentry.setupExpressErrorHandler(app)
+
 // Error handling
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars --
  * Express must count 4 params to be error middleware
  **/
 app.use((err, req, res, next) => {
   console.error(`Error: ${err.message}`) // Log the error to the console
-  res.status(500).render('error', {
-    message: 'Something went wrong. Please try again later.',
-    errorDetails: isDev ? err.message : undefined // Only show detailed error messages in dev mode
-  })
+  // res.status(500).render('error', {
+  //   message: 'Something went wrong. Please try again later.',
+  //   errorDetails: isDev ? err.message : undefined // Only show detailed error messages in dev mode
+  // })
+  res.statusCode = 500
+  res.end(`${res.sentry}\n`)
 })
 
 app.listen(APP_PORT, () => {
