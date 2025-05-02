@@ -84,10 +84,6 @@ app.use(express.json())
 // Routes
 app.use('/contribute/add-new-component', addComponentRoutes)
 
-app.get("/contribute/debug-sentry", function mainHandler(req, res) {
-  throw new Error("My first Sentry error!");
-});
-
 // Fallback route to homepage
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'))
