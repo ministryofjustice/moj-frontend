@@ -89,7 +89,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-app.get("/debug-sentry", function mainHandler(req, res) {
+app.get("contribite/debug-sentry", function mainHandler(req, res) {
   throw new Error("My first Sentry error!");
 });
 // The error handler must be registered before any other error middleware and after all controllers
