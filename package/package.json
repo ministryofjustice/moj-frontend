@@ -41,7 +41,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "govuk-frontend": "5.9.0",
+    "govuk-frontend": "^5.8.0",
     "moment": "2.30.1"
   }
 }
