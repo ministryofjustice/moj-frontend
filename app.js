@@ -101,10 +101,6 @@ Sentry.setupExpressErrorHandler(app)
  **/
 app.use((err, req, res, next) => {
   console.error(`Error: ${err.message}`) // Log the error to the console
-  // res.status(500).render('error', {
-  //   message: 'Something went wrong. Please try again later.',
-  //   errorDetails: isDev ? err.message : undefined // Only show detailed error messages in dev mode
-  // })
   res.statusCode = 500
   res.end(`${res.sentry}\n`)
 })
