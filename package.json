@@ -182,6 +182,7 @@
     }
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.40.1"
+    "@rollup/rollup-linux-x64-gnu": "^4.40.1",
+    "sass-embedded-linux-x64": "^1.87.0"
   }
 }
