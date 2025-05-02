@@ -26,3 +26,6 @@ sass-cache
 settings.json
 tmp-uploads
 tests/e2e/screenshots/*
+
+# Sentry Config File
+.env.sentry-build-plugin
