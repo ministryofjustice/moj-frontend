@@ -271,6 +271,7 @@ router.post(
   validateFormData,
   (req, res, next) => {
     if (req.file) {
+      req.fileUploaded = true
       saveSession(req, res, next)
     } else {
       // Skipping saving as no new file uploaded
@@ -278,6 +279,10 @@ router.post(
     }
   },
   (req, res, next) => {
+    if(req.fileUploaded) {
+      // return to same page after upload
+      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.url}`)
+    }
     if (req.nextPage) {
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.nextPage}`)
     } else {
