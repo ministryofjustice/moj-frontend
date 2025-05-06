@@ -1,0 +1,4 @@
+{
+  "prototypeUrl": "http://google.com",
+  "prototypeUrlAdditionalInformation": "sflkjsdlk lkjsdhfljsdhf"
+}
