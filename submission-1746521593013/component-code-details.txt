@@ -1,0 +1,5 @@
+{
+  "componentCodeLanguage": "html",
+  "componentCodeUsage": "its easy\r\n",
+  "componentCode": "<details class=\"govuk-details\">\r\n  <summary class=\"govuk-details__summary\">\r\n    <span class=\"govuk-details__summary-text\">\r\n      Help with nationality\r\n    </span>\r\n  </summary>\r\n  <div class=\"govuk-details__text\">\r\n    We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.\r\n  </div>\r\n</details>"
+}
