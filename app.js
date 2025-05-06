@@ -89,7 +89,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-
 // The error handler must be registered before any other error middleware and after all controllers
 Sentry.setupExpressErrorHandler(app)
 
