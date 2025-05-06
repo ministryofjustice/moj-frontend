@@ -72,6 +72,7 @@ const sendPrEmail = async ({ url, number }) => {
 }
 
 const handleEmailError = (error) => {
+      console.error(error)
   if (error.response) {
     console.error('Error status:', error.response.status)
     console.error('Error data:', error.response.data)
