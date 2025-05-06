@@ -169,7 +169,7 @@
     "sinon": "^19.0.5",
     "stylelint": "^16.16.0",
     "stylelint-config-gds": "^2.0.0",
-    "stylelint-order": "^6.0.4",
+    "stylelint-order": "^7.0.0",
     "supertest": "^7.1.0",
     "terser": "^5.39.0",
     "typed-query-selector": "^2.12.0",
