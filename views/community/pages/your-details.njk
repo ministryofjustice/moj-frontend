@@ -21,15 +21,13 @@
 
 {% block content %}
 
-  {% if backLink %}
-    <div class="app-layout__backlink">
+  <div class="app-layout__content">
+    {% if backLink %}
       {{ govukBackLink({
         text: "Back",
         href: backLink
       }) }}
-    </div>
-  {% endif %}
-  <div class="app-layout__content">
+    {% endif %}
   {% if errorList %}
     {{ govukErrorSummary({
       titleText: "There is a problem",

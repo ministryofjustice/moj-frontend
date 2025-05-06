@@ -6,15 +6,13 @@
 {% from "govuk/components/tag/macro.njk" import govukTag %}
 {% extends "base.njk" %}
 {% block content %}
-  {% if backLink %}
-    <div class="app-layout__backlink">
-      {{ govukBackLink({
-        text: "Back",
-        href: backLink
-      }) }}
-    </div>
-  {% endif %}
   <div class="app-layout__content">
+    {% if backLink %}
+        {{ govukBackLink({
+          text: "Back",
+          href: backLink
+        }) }}
+    {% endif %}
     {% if errorList %}
       {{ govukErrorSummary({
         titleText: "There is a problem",

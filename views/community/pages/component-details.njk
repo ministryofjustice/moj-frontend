@@ -4,18 +4,14 @@
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% extends "base.njk" %}
-
 {% block content %}
-  {% if backLink %}
-    <div class="app-layout__backlink">
+  <div class="app-layout__content">
+    {% if backLink %}
       {{ govukBackLink({
         text: "Back",
         href: backLink
       }) }}
-    </div>
-  {% endif %}
-
-    <div class="app-layout__content">
+    {% endif %}
         {% if errorList %}
         {{ govukErrorSummary({
             titleText: "There is a problem",
