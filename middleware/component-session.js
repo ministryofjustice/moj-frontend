@@ -159,6 +159,28 @@ const saveSession = (req, res, next) => {
 const getFormDataFromSession = (req, res, next) => {
   req.formData = null
   req.formData = req.session[req.url] || {}
+
+  if(req.url.split('/')[1] === 'component-image') {
+    console.log('component image page')
+    req.formData.componentImages = []
+    for (const [key, value] of Object.entries(req.session)) {
+      console.log(key)
+      if(key.includes('component-image')) {
+        const isSubpage = key.split('/').length > 2
+        console.log(isSubpage)
+        const subpage = isSubpage ? key.split('/')[2] : false
+        console.log(subpage)
+        console.log(value)
+        req.formData.componentImages.push({
+          changeUrl: `${ADD_NEW_COMPONENT_ROUTE}/change/component-image${(subpage ? `/${subpage}` : '')}`,
+          originalname: value.componentImage.originalname
+        })
+      }
+    }
+  }
+
+  console.log(req.formData.componentImages)
+
   next()
 }
 

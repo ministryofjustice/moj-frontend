@@ -32,15 +32,12 @@
       <p class="govuk-body">You'll also have an opportunity to add more images of this after submitting the
         component.</p>
 
-
-      {% if imageUploaded %}
-        <input type="hidden" name="componentImage" value="{{formData.componentImage.originalname}}">
-        {{ govukSummaryList({
-              classes: 'govuk-summary-list--long-key',
-              rows: [
+      {% set uploadedImages = [] %}
+        {% for image in formData.componentImages %}
+          {% set uploadedImages = (uploadedImages.push(
                 {
                   key: {
-                    text: formData.componentImage.originalname
+                    text: image.originalname
                   },
                   value: {
                     text: govukTag({ text: "Uploaded", classes: "govuk-tag--green" })
@@ -48,21 +45,32 @@
                   actions: {
                     items: [
                       {
-                        href: changeUrl,
+                        href: image.changeUrl,
                         text: "Remove",
-                        visuallyHiddenText: formData.componentImage.originalname
+                        visuallyHiddenText: image.originalname
                       }
                     ]
                   }
                 }
-              ]
-            }) }}
+            ), uploadedImages) %}
+        {% endfor %}
+
+        {% if uploadedImages | length %}
+        <h3 class="govuk-heading-m">Uploaded Images</h3>
+        {{ govukSummaryList({
+              classes: 'govuk-summary-list--long-key',
+              rows: uploadedImages
+              }) }}
+        {% endif %}
+
+      {% if imageUploaded %}
+        <input type="hidden" name="componentImage" value="{{formData.componentImage.originalname}}">
       {% else %}
         {{ govukFileUpload({
           id: "component-image",
           name: "componentImage",
           label: {
-            text: "Upload a file",
+            text: "Upload another file" if uploadedImages | length else "Upload a file",
             classes: "govuk-label--m"
           },
           hint: {
@@ -74,6 +82,9 @@
           errorMessage: formErrors.componentImage
         }) }}
       {% endif %}
+
+
+
 
 
       <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>
