@@ -74,14 +74,15 @@ app.use(function(req, res, next){
 app.set('views', [
   path.join(__dirname, 'views/common'),
   path.join(__dirname, 'views/community/pages'),
-  path.join(__dirname, 'node_modules/govuk-frontend/dist'),
-  path.join(__dirname, 'node_modules/@ministryofjustice/frontend')
+  // path.join(__dirname, 'node_modules/@ministryofjustice/frontend'),
+  path.join(__dirname, 'src'),
+  path.join(__dirname, 'node_modules/govuk-frontend/dist')
 ])
 
 app.set('view engine', 'njk')
 expressNunjucks(app, {
   watch: isDev,
-  noCache: isDev,
+  noCache: false,
   loader: nunjucks.FileSystemLoader
 })
 
