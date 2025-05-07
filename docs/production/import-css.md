@@ -55,6 +55,33 @@ You must add the root of your application to Sass load paths, by either:
 - calling the Sass compiler from the command line with the `--load-path .` flag
 - using the JavaScript API with `loadPaths: ['.']` in the `options` object
 
+If you have lots of amendments to the built-in components split across several files, you may wish to adopt the following pattern:
+
+- Add the above SCSS code (and any optional configuration) into an `_imports.scss` file to end up with something similar to the below:
+
+```scss
+@use "node_modules/govuk-frontend/dist/govuk" as * with (
+    $govuk-supressed-warnings: (
+        "some-warning"
+    )
+)
+@forward "node_modules/@ministryofjustice/frontend/moj/all";
+```
+
+- Include this file in any SCSS file that depends on built-in mixins or variables, for example:
+
+```scss
+@use "../_imports.scss" as *;
+
+.history-input {
+  background: govuk-colour("light-grey");
+  padding: 30px 30px 0 30px;
+  margin-bottom: 30px;
+}
+```
+
+This ensures that all the files that need the mixins or variables have them available. It's not necessary to include in _every_ file, just any that depend on govuk mixins or variables.
+
 For more details, view guidance on [simplifying Sass load paths](#simplify-sass-load-paths) and [silencing deprecation warnings from dependencies](#silence-deprecation-warnings-from-dependencies-in-dart-sass).
 
 ### Load an individual component’s CSS using a single Sass forward
