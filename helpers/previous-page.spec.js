@@ -42,9 +42,9 @@ describe('previousPage function', () => {
   })
 
   it('should return the highest subpage if multiple subpages exist', () => {
-    session['/prototype/1'] = {}
-    session['/prototype/2'] = {}
+    session['/component-code/1'] = {}
+    session['/component-code/2'] = {}
     const result = previousPage('/figma', session)
-    expect(result).toBe('/contribute/add-new-component/prototype/2')
+    expect(result).toBe('/contribute/add-new-component/component-code/2')
   })
 })
