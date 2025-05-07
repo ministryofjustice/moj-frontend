@@ -1,0 +1,9 @@
+{
+  "fullName": "warsome hersi",
+  "emailAddress": "warsome.hersi@gmail.com",
+  "teamName": "DS Team",
+  "shareYourDetails": [
+    "addNameToComponentPage",
+    "addTeamNameWhenRequested"
+  ]
+}
