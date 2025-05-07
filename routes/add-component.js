@@ -204,6 +204,7 @@ router.get(
   (req, res) => {
     res.render(`${req.params.page}`, {
       submitUrl: req.originalUrl,
+      sessionFlash: res.locals.sessionFlash,
       formData: req?.formData,
       addAnother: req?.addAnother,
       showAddAnother: req?.showAddAnother,
@@ -271,7 +272,10 @@ router.post(
   validateFormData,
   (req, res, next) => {
     if (req.file) {
-      req.fileUploaded = true
+      req.session.sessionFlash = {
+        type: 'success',
+        message: `File ‘${req.file.originalname}’ successfully uploaded.`
+    }
       saveSession(req, res, next)
     } else {
       // Skipping saving as no new file uploaded
@@ -279,7 +283,8 @@ router.post(
     }
   },
   (req, res, next) => {
-    if(req.fileUploaded) {
+    if(req.file) {
+      console.log(req.file)
       // return to same page after upload
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.url}`)
     }

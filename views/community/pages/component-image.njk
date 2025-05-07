@@ -4,6 +4,8 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/tag/macro.njk" import govukTag %}
+{% from "moj/components/alert/macro.njk" import mojAlert %}
+
 {% extends "base.njk" %}
 
 {% set imageUploaded = formData.componentImage.originalname %}
@@ -23,6 +25,13 @@
         titleText: "There is a problem",
         errorList: errorList
       }) }}
+    {% endif %}
+    {% if sessionFlash.message%}
+      {{ mojAlert({
+          variant: sessionFlash.type,
+          title: sessionFlash.message,
+          role: "alert"
+      })}}
     {% endif %}
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
       <span class="govuk-caption-l">Submit new component</span>
