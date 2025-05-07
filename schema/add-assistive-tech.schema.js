@@ -77,7 +77,7 @@ const schema = Joi.object({
     .allow(null, '')
     .custom((value, helpers) => maxWords(value, helpers, 250))
     .messages({
-      'custom.max.words': 'There must be 250 words or less'
+      'custom.max.words': 'Enter 250 words or less'
     }),
 
   accessibilityReport: Joi.string()

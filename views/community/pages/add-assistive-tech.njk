@@ -61,18 +61,6 @@
         }
       }) }}
 
-      {{ govukCharacterCount({
-        id: "issues-discovered",
-        name: "issuesDiscovered",
-        maxwords: 250,
-        label: {
-          text: "Did the testing identify any issues with the component (optional)?",
-          classes: "govuk-label--m",
-          isPageHeading: true
-        },
-        errorMessage: formErrors.issuesDiscovered,
-        value: formData.issuesDiscovered
-      }) }}
 
       {{ govukFileUpload({
         id: "accessibility-report",
@@ -90,6 +78,19 @@
         attributes: {
           accept: ".pdf"
         }
+      }) }}
+
+      {{ govukCharacterCount({
+        id: "issues-discovered",
+        name: "issuesDiscovered",
+        maxwords: 250,
+        label: {
+          text: "Did the testing identify any issues with the component (optional)?",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        errorMessage: formErrors.issuesDiscovered,
+        value: formData.issuesDiscovered
       }) }}
 
       {%if formData.accessibilityReport.originalname %}

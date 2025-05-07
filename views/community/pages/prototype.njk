@@ -19,12 +19,14 @@
     {% endif %}
     <form method="POST" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit a new component</span>
-      <h1 class="govuk-heading-xl">Add a prototype or design file</h1>
-      <p class="govuk-body">Most teams have a prototype of the product or service they’re working on. A prototype showing the component helps the Design System team to review the component.</p>
-      <p class="govuk-body">It can be from the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro.</p>
+      <h1 class="govuk-heading-xl">Add a prototype</h1>
+      <p class="govuk-body">A prototype showing the component helps the Design System team to review the component.</p>
 
       {{ govukRadios({
         name: "componentPrototypeUrl",
+        hint: {
+          text: "For example to the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro."
+        },
         fieldset: {
           attributes: {
             id: "component-prototype-url"

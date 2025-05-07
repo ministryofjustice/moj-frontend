@@ -26,7 +26,7 @@ const schema = addAnotherSchema.append({
     .custom((value, helpers) => maxWords(value, helpers, 1000))
     .label('Add the code')
     .messages({
-      'custom.max.words': 'Enter 10,000 characers or less'
+      'custom.max.words': 'Enter 10,000 characters or less'
     })
 })
 

@@ -23,7 +23,7 @@
       <h1 class="govuk-heading-xl">Figma design</h1>
       {{ govukInput({
         hint: {
-          text: "Review the sharing permissions for the Figma design file before sending it. Ensure the ’Who has access’ and ’What they can do’ fields are set so the team can view the file."
+          text: "Set the sharing permissions for the Figma design file so that it can be viewed."
         },
         label: {
           text: "Add a link to the Figma file",
@@ -41,10 +41,10 @@
         id: "figmaLink-additional-information",
         maxwords: 250,
         hint: {
-          text: "This might include the password for a protected file, or a link expiration date."
+          text: "This might include the password for a protected file, or a link expiry date."
         },
         label: {
-          text: "Additional information about the Figma design file (optional)",
+          text: "Add information about the Figma design file (optional)",
           classes: "govuk-label--m"
         },
         errorMessage: formErrors.figmaLinkAdditionalInformation,
