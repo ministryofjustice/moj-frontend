@@ -53,7 +53,8 @@
     @extend %govuk-link;
 
     /* stylelint-disable selector-no-qualifying-type */
-    &.govuk-link--no-visited-state.govuk-button {
+    &.govuk-link--no-visited-state,
+    &.govuk-button {
       color: govuk-colour("white");
     }
   }
