@@ -72,7 +72,7 @@ const schema = Joi.object({
       const minDate = moment('2011-04-01', 'YYYY-MM-DD')
       if (moment(value).isBefore(minDate)) {
         return helpers.error('any.invalid', {
-          message: 'The date must be after 01/04/2011'
+          message: 'The date must be on or after 1/4/2011'
         })
       }
 
@@ -82,19 +82,14 @@ const schema = Joi.object({
       'any.invalid': '{{#message}}'
     }),
 
-  accessibilityReport: Joi.string()
-    .allow('')
-    .pattern(/\.pdf$/i)
-    .messages({
-      'string.pattern.base': 'The file must be a PDF'
-    })
-    .optional(),
-
   issuesDiscovered: Joi.string()
-    .optional()
-    .allow(null, '')
+    .required()
     .custom((value, helpers) => maxWords(value, helpers, 250))
     .messages({
+      'any.required':
+        'Enter details about issues',
+      'string.empty':
+        'Enter details about issues',
       'custom.max.words': 'Enter 250 words or less'
     })
 })

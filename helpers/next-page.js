@@ -28,7 +28,7 @@ const nextPage = (url, session, body, subpage) => {
 
   for (let i = currentPageIndex + 1; i < pages.length; i++) {
     const page = pages[i]
-    const conditions = COMPONENT_FORM_PAGES[page]
+    const conditions = COMPONENT_FORM_PAGES[page].conditions || {}
     const shouldShowPage = checkConditions(conditions, data)
     if (shouldShowPage) {
       return page
