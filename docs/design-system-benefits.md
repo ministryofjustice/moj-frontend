@@ -1,7 +1,8 @@
 ---
 layout: layouts/content.njk
 subsection: About the Design System
-title: Benefits of using the design system
+title: Benefits of using the Design System
+lede: The MoJ Design System helps teams to design, build and launch digital services that are accessible, consistent and user-led.
 eleventyNavigation:
   key: Benefits
   parent: About the Design System
@@ -9,7 +10,6 @@ eleventyNavigation:
   excerpt: "Benefits of using the Design System."
 ---
 
-The MoJ Design System helps teams to design, build and launch digital services that are accessible, consistent and user-led.
 
 ## Overview
 

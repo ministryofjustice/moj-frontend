@@ -12,6 +12,7 @@ const markdownItAnchor = require('markdown-it-anchor')
 const nunjucks = require('nunjucks')
 
 const releasePackage = require('./package/package.json')
+const tabs = require('./shortcodes/tabs')
 const mojFilters = require('./src/moj/filters/all')
 
 // Configure highlight.js
@@ -127,59 +128,10 @@ module.exports = function (eleventyConfig) {
     return releasePackage.version
   })
 
-  // Temp storage for tabs
-  let tabsStorage = []
-
   // Generate govuk tabs
-  eleventyConfig.addPairedShortcode(
-    'tabs',
-    function (content, label = 'Contents') {
-      const tabId = (tab) => {
-        return `${tab.label.toLowerCase().replace(/ /g, '-')}-tab`
-      }
-      const tabsList = tabsStorage
-        .map((tab, index) => {
-          const isSelected = index === 0 ? '--selected' : ''
-          return `
-      <li class="govuk-tabs__list-item${isSelected} app-navigation__item" role="presentation">
-        <a class="govuk-tabs__tab app-navigation__link app-navigation__link" href="#${tabId(tab)}" role="tab" >
-          ${tab.label}
-        </a>
-      </li>
-    `.trim()
-        })
-        .join('\n')
-        .trim()
-
-      const tabPanels = tabsStorage
-        .map((tab, index) => {
-          const isHidden = index === 0 ? '' : ' govuk-tabs__panel--hidden'
-          return `
-      <div class="govuk-tabs__panel${isHidden}" id="${tabId(tab)}" role="tabpanel">${tab.content}</div>
-    `.trim()
-        })
-        .join('')
-        .trim()
-
-      tabsStorage = []
-
-      return `
-    <div class="govuk-tabs app-navigation no-govuk-tabs-styles" data-module="govuk-tabs">
-      <h2 class="govuk-tabs__title">${label}</h2>
-      <ul class="govuk-tabs__list app-navigation__list" role="tabpanel">
-        ${tabsList}
-      </ul>
-      ${tabPanels}
-    </div>
-  `.trim()
-    }
-  )
-
+  eleventyConfig.addPairedNunjucksShortcode('tabs', tabs.createTabs)
   // Find and store govuk tab for above tabs
-  eleventyConfig.addPairedShortcode('tab', function (content, label) {
-    tabsStorage.push({ label, content })
-    return ''
-  })
+  eleventyConfig.addPairedShortcode('tab', tabs.createTab)
 
   eleventyConfig.addPairedShortcode('banner', function (content, title) {
     return `
@@ -325,4 +277,8 @@ module.exports = function (eleventyConfig) {
     // Show the dev server version number on the command line
     showVersion: true
   })
+}
+
+module.exports.config = {
+  markdownTemplateEngine: 'njk'
 }

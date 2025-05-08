@@ -31,16 +31,16 @@
     @include govuk-typography-weight-bold;
   }
 
-  ul,
-  ol {
+  ul:not([class]),
+  ol:not([class]) {
     @extend %govuk-list;
   }
 
-  ol {
+  ol:not([class]) {
     @extend %govuk-list--number;
   }
 
-  ul {
+  ul:not([class]) {
     @extend %govuk-list--bullet;
   }
 
@@ -139,7 +139,7 @@ pre {
 // Add styling for inline code
 code {
   padding: 1px 3px;
-  color: #c62950;
+  border: 1px solid govuk-tint($govuk-border-colour, 50);
   background-color: govuk-colour("white");
   @include govuk-font-size($size: 16);
   @include govuk-media-query($from: tablet) {
@@ -152,8 +152,9 @@ pre code {
   display: block;
   overflow-x: auto;
   border: $govuk-focus-width solid transparent;
-  outline: 1px solid $govuk-border-colour;
+  outline: 1px solid govuk-tint($govuk-border-colour, 50);
   color: $govuk-text-colour;
+  background-color: govuk-colour("white");
   @include govuk-responsive-padding(3);
   @include govuk-responsive-margin(5, "top");
   @include govuk-responsive-margin(6, "bottom");
