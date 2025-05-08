@@ -1,5 +1,11 @@
 /* eslint import/order: "off" */
 /* eslint n/no-unpublished-require: "off" */
+const Sentry = require('@sentry/node')
+
+Sentry.init({
+  dsn: 'https://304866cea16570b04e2090537ae9ac77@o345774.ingest.us.sentry.io/4509252675371008',
+  sendDefaultPii: true
+})
 
 const path = require('path')
 const redisClient = require('./helpers/redis-client')
@@ -11,6 +17,9 @@ const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 const helmet = require('helmet')
 const nunjucks = require('nunjucks')
+const { xss } = require('express-xss-sanitizer')
+
+const rev = require('./filters/rev')
 
 const { APP_PORT, ENV, REDIS_URL, SESSION_SECRET } = require('./config')
 const addComponentRoutes = require('./routes/add-component')
@@ -56,32 +65,56 @@ if (REDIS_URL) {
 
 app.use(session(sessionOptions))
 
+// Custom flash middleware -- from Ethan Brown's book, 'Web Development with Node & Express'
+app.use(function (req, res, next) {
+  // if there's a flash message in the session request, make it available in the response, then delete it
+  res.locals.sessionFlash = req.session.sessionFlash
+  delete req.session.sessionFlash
+  next()
+})
+
 // Nunjucks config
 app.set('views', [
   path.join(__dirname, 'views/common'),
   path.join(__dirname, 'views/community/pages'),
-  path.join(__dirname, 'node_modules/govuk-frontend/dist'),
-  path.join(__dirname, 'node_modules/@ministryofjustice/frontend')
+  // path.join(__dirname, 'node_modules/@ministryofjustice/frontend'),
+  path.join(__dirname, 'src'),
+  path.join(__dirname, 'node_modules/govuk-frontend/dist')
 ])
+
 app.set('view engine', 'njk')
-expressNunjucks(app, {
+const njk = expressNunjucks(app, {
   watch: isDev,
-  noCache: isDev,
+  noCache: false,
   loader: nunjucks.FileSystemLoader
 })
+
+njk.env.addFilter('rev', rev)
+
+app.locals.env = {
+  isDev: ENV === 'development',
+  isStaging: ENV === 'staging'
+}
 
 // Static files and body parsing
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
+app.use(xss())
 
 // Routes
 app.use('/contribute/add-new-component', addComponentRoutes)
 
-// Fallback route to homepage
+// Fallback route to 404
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+  // res.sendFile(path.join(__dirname, 'public', 'index.html'))
+  res.status(404).render('error', {
+    message: 'Page not found.'
+  })
 })
+
+// The error handler must be registered before any other error middleware and after all controllers
+Sentry.setupExpressErrorHandler(app)
 
 // Error handling
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars --
@@ -89,10 +122,12 @@ app.get('*', (req, res) => {
  **/
 app.use((err, req, res, next) => {
   console.error(`Error: ${err.message}`) // Log the error to the console
-  res.status(500).render('error', {
-    message: 'Something went wrong. Please try again later.',
-    errorDetails: isDev ? err.message : undefined // Only show detailed error messages in dev mode
-  })
+  // res.status(500).render('error', {
+  //   message: 'Something went wrong. Please try again later.',
+  //   errorDetails: isDev ? err.message : undefined // Only show detailed error messages in dev mode
+  // })
+  res.statusCode = 500
+  res.end(`${res.sentry}\n`)
 })
 
 app.listen(APP_PORT, () => {

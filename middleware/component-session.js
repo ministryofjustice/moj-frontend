@@ -1,15 +1,18 @@
 const crypto = require('crypto')
 
+const sanitize = require('sanitize-filename')
+
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
-  ADD_NEW_COMPONENT_ROUTE
+  ADD_NEW_COMPONENT_ROUTE,
+  COMPONENT_FORM_PAGES: formPages
 } = require('../config')
+const { getAnswersForSection } = require('../helpers/check-your-answers')
 const ApplicationError = require('../helpers/application-error')
 const extractBody = require('../helpers/extract-body')
-const nextPage = require('../helpers/next-page')
-const previousPage = require('../helpers/previous-page')
+const getCurrentFormPages = require('../helpers/form-pages')
+const { getNextPage, getPreviousPage } = require('../helpers/page-navigation')
 const redis = require('../helpers/redis-client')
-const { humanReadableLabel } = require('../helpers/text-helper')
 
 const camelToKebab = (str) =>
   str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
@@ -17,6 +20,22 @@ const camelToKebab = (str) =>
 // Function to hash req.url
 const getHashedUrl = (url) => {
   return crypto.createHash('sha256').update(url).digest('hex')
+}
+
+const getTemplate = (req) => {
+  let template = sanitize(`${req.params.page || req.url.replace('/', '')}`)
+  if (!Object.keys(formPages).includes(template)) {
+    template = 'error'
+  }
+  return template
+}
+
+const getPageData = (req) => {
+  let pageData = sanitize(`${req.params.page || req.url.replace('/', '')}`)
+  if (!Object.keys(formPages).includes(pageData)) {
+    pageData = {}
+  }
+  return formPages[pageData]
 }
 
 const transformErrorsToErrorList = (errors) => {
@@ -27,22 +46,55 @@ const transformErrorsToErrorList = (errors) => {
 }
 
 const setNextPage = (req, res, next) => {
-  const addAnother = req?.body?.addAnother !== undefined
-  if (req?.session?.checkYourAnswers && !addAnother) {
+  console.log('setting nextPage')
+  const amendingAnswers = req?.session?.checkYourAnswers
+  const addingAnother = req?.body?.addAnother !== undefined
+
+  const { url, session } = req
+  const nextPage = getNextPage(url, session, addingAnother, amendingAnswers)
+
+  console.log(nextPage)
+
+  if (amendingAnswers && !nextPage && !addingAnother) {
     req.nextPage = 'check-your-answers'
     if (req.method === 'POST') {
       delete req.session.checkYourAnswers
     }
   } else {
-    let subpage = null
-    if (addAnother) {
-      subpage = req?.params?.subpage
-        ? Number.parseInt(req?.params?.subpage) + 1
-        : 1
-    }
-    const { url, session, body } = req
-    req.nextPage = nextPage(url, session, body, subpage)
+    req.nextPage = nextPage
   }
+  next()
+}
+
+/**
+ * @param {string[]} pages - array of pages to clear data for
+ * @param {object} session - array of pages to clear data for
+ */
+const clearSkippedPageData = (req, res, next) => {
+  console.log('clearing data for skipped pages')
+  const requiredPages = getCurrentFormPages(req.session).map((page) => {
+    return page.startsWith('/') ? page : `/${page}`
+  })
+
+  console.log(requiredPages)
+  // Delete page and subpage data
+  for (const sessionPage of Object.keys(req.session)) {
+    if (
+      !['started', 'cookie', 'csrfToken', 'checkYourAnswers'].includes(
+        sessionPage
+      )
+    ) {
+      console.log(sessionPage)
+      const parentPage = `/${sessionPage.split('/')[1]}`
+      console.log(`checking${parentPage}`)
+      if (!requiredPages.includes(parentPage)) {
+        console.log(`clearing data for ${sessionPage}`)
+        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+        delete req.session[sessionPage]
+      }
+    }
+  }
+
   next()
 }
 
@@ -53,43 +105,47 @@ const errorTemplateVariables = (
   formErrorStyles = null
 ) => {
   return {
+    page: getPageData(req),
     submitUrl: req.originalUrl,
     formData: req.body,
+    file: req?.file,
     formErrorStyles,
     formErrors,
     errorList,
     backLink: req?.backLink || false,
     addAnother: req?.params?.subpage || 1,
     showAddAnother: req?.showAddAnother || 'addAnother' in (req.body || {}),
-    skipQuestion: req?.skipQuestion || false,
     csrfToken: req?.session?.csrfToken
   }
 }
 
 const validateFormDataFileUpload = (err, req, res, next) => {
+  console.log('validate form data file uplaod')
   if (err.code === 'LIMIT_FILE_SIZE') {
     const errorMessage = 'The selected file must be smaller than 10MB'
     const formErrors = {}
     formErrors[err.field] = { text: errorMessage }
     const errors = [{ message: errorMessage, path: [err.field] }]
     const errorList = transformErrorsToErrorList(errors)
+    const template = getTemplate(req)
     res
       .status(400)
-      .render(
-        `${req.params.page || req.url.replace('/', '')}`,
-        errorTemplateVariables(req, formErrors, errorList)
-      )
+      .render(template, errorTemplateVariables(req, formErrors, errorList))
   } else {
     next()
   }
 }
 
 const validateFormData = (req, res, next) => {
+  console.log('validate form data')
   const schemaName = req.url.split('/')[1]
   const schema = require(`../schema/${schemaName}.schema`)
   const body = extractBody(req?.url, { ...req.body })
   delete body._csrf
+  console.log(req?.file?.fieldname)
+  console.log(req?.file?.originalname)
   if (req?.file?.fieldname && req?.file?.originalname) {
+    console.log('theres a file!')
     body[req.file.fieldname] = req.file.originalname
   }
   const { error } = schema.validate(body, { abortEarly: false })
@@ -121,10 +177,11 @@ const validateFormData = (req, res, next) => {
     })
 
     const errorList = transformErrorsToErrorList(errorListDetails)
+    const template = getTemplate(req)
     res
       .status(400)
       .render(
-        `${req.params.page || req.url.replace('/', '')}`,
+        template,
         errorTemplateVariables(req, formErrors, errorList, formErrorStyles)
       )
   } else {
@@ -150,6 +207,16 @@ const saveSession = (req, res, next) => {
     }
   }
 
+  // prevent prototype pollution
+  if (
+    req.url === '__proto__' ||
+    req.url === 'constructor' ||
+    req.url === 'prototype'
+  ) {
+    res.end(403)
+    return
+  }
+
   req.session[req.url] = { ...req.session[req.url], ...body }
   delete req.session[req.url].addAnother
 
@@ -165,12 +232,10 @@ const getFormDataFromSession = (req, res, next) => {
 const getFormSummaryListForRemove = (req, res, next) => {
   const url = req.url.replace('/remove', '')
   const formData = req.session[url]
+  const sectionKey = url.slice(1).split('/').at(0)
   delete req.removeSummaryRows
   if (formData) {
-    req.removeSummaryRows = Object.entries(formData).map(([key, value]) => ({
-      key: { text: humanReadableLabel(key) },
-      value: { text: value?.originalname || value }
-    }))
+    req.removeSummaryRows = getAnswersForSection(sectionKey, formData, false)
   }
   next()
 }
@@ -201,13 +266,6 @@ const getRawSessionText = (req, res, next) => {
   next()
 }
 
-// Check if can skip question and set value to page to skip to
-const canSkipQuestion = (req, res, next) => {
-  const skipPage = req?.nextPage
-  req.skipQuestion = skipPage || false
-  next()
-}
-
 // Determine if can add another copy of the form
 const canAddAnother = (req, res, next) => {
   const addAnotherCount = req?.params?.subpage
@@ -222,17 +280,48 @@ const canAddAnother = (req, res, next) => {
 }
 
 const getBackLink = (req, res, next) => {
-  const { url, session, formData } = req
+  console.log('getting back link')
+  const { url, session } = req
   if (session?.checkYourAnswers) {
+    console.log('cya is true')
     req.backLink = 'check-your-answers'
   } else {
-    req.backLink = previousPage(url, session, { ...formData })
+    req.backLink = getPreviousPage(url, session)
   }
   next()
 }
 
 const removeFromSession = (req, res, next) => {
   const url = req.url.replace(/\/(remove|change)/, '')
+
+  if (req.params.page === 'component-image') {
+    const filename = req.session[url]?.componentImage?.originalname
+    console.log(filename)
+    if (filename) {
+      req.session.sessionFlash = {
+        type: 'success',
+        message: `File ‘${filename}’ removed.`
+      }
+    }
+  }
+
+  // If there are conditions for this page we need to set the conditional
+  // question answer to 'no' to prevent the user being prompted to refill in
+  // the answers
+  const sectionKey = url.slice(1).split('/')[0]
+  const conditions = formPages[sectionKey]?.conditions
+  if (conditions) {
+    Object.entries(conditions).forEach(([key, value]) => {
+      if (typeof value === 'object') {
+        Object.entries(value).forEach(([questionKey, _]) => {
+          if (req.session[key]?.[questionKey] === 'yes') {
+            req.session[key][questionKey] = 'no'
+          }
+        })
+      }
+    })
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
   delete req.session[url]
   next()
@@ -293,7 +382,6 @@ module.exports = {
   saveSession,
   getFormDataFromSession,
   getRawSessionText,
-  canSkipQuestion,
   canAddAnother,
   getBackLink,
   getFormSummaryListForRemove,
@@ -301,5 +389,6 @@ module.exports = {
   sessionStarted,
   validateFormDataFileUpload,
   validateComponentImagePage,
-  saveFileToRedis
+  saveFileToRedis,
+  clearSkippedPageData
 }

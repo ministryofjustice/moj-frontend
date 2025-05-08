@@ -8,6 +8,7 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/tag/macro.njk" import govukTag %}
 {% extends "base.njk" %}
+
 {% block content %}
   <div class="app-layout__content">
     {% if backLink %}
@@ -22,13 +23,13 @@
         errorList: errorList
       }) }}
     {% endif %}
-    <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Internal accessibility review</h1>
 
       {{ govukInput({
         label: {
-          text: "What team did the internal accessibility review?",
+          text: page.fields.internalOrganisation.label,
           classes: "govuk-label--m"
         },
         id: "internal-organisation",
@@ -62,56 +63,22 @@
         ],
         fieldset: {
           legend: {
-            text: "When was the review?",
+            text: page.fields.auditDate.label,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "For example, 13 8 2024"
+          text: page.fields.auditDate.hint
         }
       }) }}
-
-      {{ govukFileUpload({
-        id: "accessibility-report",
-        name: "accessibilityReport",
-        label: {
-          text: "Upload the accessibility review (optional)",
-          isPageHeading: true,
-          classes: "govuk-label--m"
-        },
-        hint: {
-          text: "The file needs to be a PDF and smaller than 10MB."
-        },
-        errorMessage: formErrors.accessibilityReport,
-        value: formData.accessibilityReport,
-        attributes: {
-          accept: ".pdf"
-        }
-      }) }}
-
-      {%if formData.accessibilityReport.originalname %}
-        {{ govukSummaryList({
-          classes: 'govuk-summary-list--long-key',
-          rows: [
-            {
-              key: {
-              text: formData.accessibilityReport.originalname
-            },
-              value: {
-              text: govukTag({ text: "Uploaded", classes: "govuk-tag--green" })
-            }
-            }
-          ]
-        }) }}
-      {% endif %}
 
       {{ govukCharacterCount({
         id: "issues-discovered",
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
-          text: "Did the review identify any issues with the component? (optional)",
+          text: page.fields.issuesDiscovered.label,
           classes: "govuk-label--m",
           isPageHeading: true
         },

@@ -4,7 +4,12 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/tag/macro.njk" import govukTag %}
+{% from "moj/components/alert/macro.njk" import mojAlert %}
+
 {% extends "base.njk" %}
+
+{% set uploadedFileName = formData.componentImage.originalname %}
+
 {% block content %}
   <div class="app-layout__content">
     {% if backLink %}
@@ -19,6 +24,13 @@
         errorList: errorList
       }) }}
     {% endif %}
+    {% if sessionFlash.message%}
+      {{ mojAlert({
+          variant: sessionFlash.type,
+          title: sessionFlash.message,
+          role: "alert"
+      })}}
+    {% endif %}
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
       <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Upload an image of the component</h1>
@@ -26,61 +38,61 @@
 
 
 
-      {%if formData.componentImage.originalname %}
+      {% if uploadedFileName %}
         <input type="hidden" name="componentImage" value="{{formData.componentImage.originalname}}">
         {{ govukSummaryList({
               classes: 'govuk-summary-list--long-key',
               rows: [
                 {
                   key: {
-                    text: formData.componentImage.originalname
+                    text: "File"
                   },
                   value: {
-                    text: govukTag({ text: "Uploaded", classes: "govuk-tag--green" })
+                    text: uploadedFileName
                   },
                   actions: {
                     items: [
                       {
                         href: changeUrl,
                         text: "Remove",
-                        visuallyHiddenText: formData.componentImage.originalname
+                        visuallyHiddenText: uploadedFileName
                       }
                     ]
                   }
                 }
               ]
             }) }}
-        {% else %}
+      {% else %}
         {{ govukFileUpload({
           id: "component-image",
           name: "componentImage",
           label: {
-            text: "Upload a file",
+            text: page.fields.componentImage.label,
             classes: "govuk-label--m"
           },
           hint: {
-            text: "The file must be a JPG, BMP, PNG, TIF or PDF, and smaller than 10MB."
+            text: page.fields.componentImage.hint
           },
           attributes: {
             accept: ".jpg, .jpeg, .bmp, .png, .tif, .tiff, .pdf"
           },
           errorMessage: formErrors.componentImage
         }) }}
-      {%endif%}
+      {% endif %}
 
 
       <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>
 
       <div class="govuk-button-group moj-button-action">
-        {{ govukButton({
-          text: 'Continue',
-          preventDoubleClick: true
-        }) }}
-        {% if showAddAnother %}
+        {% if uploadedFileName %}
           {{ govukButton({
-            text: "Add another file",
-            classes: "govuk-button--secondary",
-            name: "addAnother"
+            text: 'Continue',
+            preventDoubleClick: true
+          }) }}
+        {% else %}
+          {{ govukButton({
+            text: 'Upload',
+            preventDoubleClick: true
           }) }}
         {% endif %}
       </div>

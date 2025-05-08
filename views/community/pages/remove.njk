@@ -12,17 +12,17 @@
     {% endif %}
     <form method="POST" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit a new component</span>
-      <h1 class="govuk-heading-xl">Are you sure you want to remove {{ type }}?</h1>
+      <h1 class="govuk-heading-xl">Are you sure you want to remove this information?</h1>
 
       {{ govukSummaryList({
-        rows: summary
+        rows: summaryRows
       }) }}
 
       <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
 
       <div class="govuk-button-group moj-button-action">
         {{ govukButton({
-          text: deleteText,
+          text: 'Delete answers',
           preventDoubleClick: true,
           classes: "govuk-button--warning"
         }) }}
