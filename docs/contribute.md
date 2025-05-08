@@ -32,7 +32,12 @@ All you need is a component name, description and image. If you have code and a 
 
 The component does not need to be thoroughly tested, documented or considered for wider use. For someone working on a problem from scratch, a community component can still be helpful be a starting point or idea.
 
-[Submit a component to the MoJ Design System](/contribute/add-new-component/start/)
+<a href="/contribute/add-new-component/start/" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button" color="#ffffff">
+  Start now
+  <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+  </svg>
+</a>
 
 ## Joining discussions
 
