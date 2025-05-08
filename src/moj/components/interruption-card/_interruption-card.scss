@@ -11,9 +11,21 @@
   max-width: 960px;
 }
 
-.moj-interruption-card__heading,
-.moj-interruption-card__body {
+// govuk-heading-l styles with colour set to white
+.moj-interruption-card__heading {
+  display: block;
+  margin-top: 0;
   color: govuk-colour("white");
+  @include govuk-font($size: 36, $weight: bold);
+  @include govuk-responsive-margin(6, "bottom");
+}
+
+// govuk-body-l styles with colour set to white
+.moj-interruption-card__body {
+  margin-top: 0;
+  color: govuk-colour("white");
+  @include govuk-font($size: 24);
+  @include govuk-responsive-margin(6, "bottom");
 }
 
 // If $govuk-global-styles is true, we need to override the color and size on elements

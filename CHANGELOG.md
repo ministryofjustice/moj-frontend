@@ -1,3 +1,17 @@
+## [5.1.4](https://github.com/ministryofjustice/moj-frontend/compare/v5.1.3...v5.1.4) (2025-06-23)
+
+
+### Bug Fixes
+
+* **interruption card:** fix specificity conflicts from govuk-frontend ([#1540](https://github.com/ministryofjustice/moj-frontend/issues/1540)) ([9009a0e](https://github.com/ministryofjustice/moj-frontend/commit/9009a0e65623a9236ccdeabd19ea953fa8412b3e))
+
+## [5.1.3](https://github.com/ministryofjustice/moj-frontend/compare/v5.1.2...v5.1.3) (2025-05-02)
+
+
+### Bug Fixes
+
+* **dependencies:** set govuk-frontend peer depencency version appropriately ([#1416](https://github.com/ministryofjustice/moj-frontend/issues/1416)) ([3b431a9](https://github.com/ministryofjustice/moj-frontend/commit/3b431a94542dbfdbb2fa10a7219969fa217661c4))
+
 ## [5.1.2](https://github.com/ministryofjustice/moj-frontend/compare/v5.1.1...v5.1.2) (2025-04-09)
 
 

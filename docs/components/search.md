@@ -28,4 +28,4 @@ Screen reader and keyboard users cannot access the ‘x’ button to remove text
 - [WCAG 2.2 success criterion 2.4.3 (Focus order)](https://www.w3.org/TR/WCAG22/#focus-order)
 - [WCAG 2.2 success criterion 2.4.7. (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible)
 
-We’re aware of this issue and plan to implement a fix by April 2025.
+We’re aware of this issue and plan to implement a fix by December 2025.
