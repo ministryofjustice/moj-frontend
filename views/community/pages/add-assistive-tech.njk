@@ -8,6 +8,9 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/tag/macro.njk" import govukTag %}
 {% extends "base.njk" %}
+
+{% set fileUploaded = formData.accessibilityReport.originalname if formData.accessibilityReport.originalname else file.originalname %}
+
 {% block content %}
   {% if backLink %}
     <div class="app-layout__backlink">
@@ -76,7 +79,8 @@
         value: formData.issuesDiscovered
       }) }}
 
-      {{ govukFileUpload({
+
+{{ govukFileUpload({
         id: "accessibility-report",
         name: "accessibilityReport",
         label: {
@@ -94,13 +98,14 @@
         }
       }) }}
 
-      {%if formData.accessibilityReport.originalname %}
+      {% if fileUploaded %}
+        <input type="hidden" name="accessibilityReport" value="{{fileUploaded}}">
         {{ govukSummaryList({
           classes: 'govuk-summary-list--long-key',
           rows: [
             {
               key: {
-              text: formData.accessibilityReport.originalname
+              text: fileUploaded
             },
               value: {
               text: govukTag({ text: "Uploaded", classes: "govuk-tag--green" })
