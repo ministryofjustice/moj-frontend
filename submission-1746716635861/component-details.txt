@@ -1,0 +1,5 @@
+{
+  "componentName": "Multi file upload",
+  "componentOverview": "xyz",
+  "howIsTheComponentUsed": "active"
+}
