@@ -15,6 +15,69 @@ backLink: /content-standards/style-guide/
       <th scope="col" class="govuk-table__header" aria-sort="none">Description</th>
       <th scope="col" class="govuk-table__header" aria-sort="descending">Date</th>
     </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/content-standards/style-guide#acronyms-and-initialisms"><b>acronyms and initialisms</b></a>
+      </td>
+      <td class="govuk-table__cell">
+        <span class="govuk-tag govuk-tag--blue">Updated</span>
+      </td>
+      <td class="govuk-table__cell"><p>Added new content:</p>
+      <p> There is little consensus in the department about how to style some acronyms and initialisms, especially if one letter refers to a preposition.</p>
+      <p>However, you should consider writing acronyms and initialisms entirely in upper case. For example, ROSH instead of RoSH and MOJ instead of MoJ. This is because:</p>
+      <ul>
+      <li>studies, such as in the <a href="https://link.springer.com/article/10.3758/BF03198246">Memory and Cognition journal article on reader ability</a> suggest that abbreviations written in a mix of upper and lower case are harder to read, especially for less skilled readers</li>
+      <li>it follows the convention established by the abbreviation of <a href="/content-standards/style-guide#rotl-%28release-on-temporary-licence%29">ROTL for Release on Temporary Licence</a> and so helps to improve consistency</li>
+      <li>guidance from the Guardian and GOV.UK recommends writing similar abbreviations such as MOT and FOI entirely in upper case</li>
+      </ul>
+      <p>You should use a mix of upper and lower-case letters when referring to the names of systems such OASys and NDelius.</p>      
+    </td>
+      <td class="govuk-table__cell" data-sort-value="20250624">24 June 2025</td>
+    </tr>    
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/content-standards/style-guide#rosh-%28risk-of-serious-harm%29"><b>ROSH (Risk of Serious Harm)</b></a>
+      </td>
+      <td class="govuk-table__cell">
+        <span class="govuk-tag govuk-tag--green">New</span>
+      </td>
+      <td class="govuk-table__cell"><p>One of the risk categories used in risk and need assessments in OASys.</p>
+      <p>Use upper case.</p>
+      <p>Users may well understand the acronym on its own. You could also consider using the acronym first and then spelling it out in brackets.</p></td>
+      <td class="govuk-table__cell" data-sort-value="20250624">24 June 2025</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/content-standards/style-guide#probation-delivery-unit-%28pdu%29"><b>probation delivery unit (PDU)</b></a>
+      </td>
+      <td class="govuk-table__cell">
+        <span class="govuk-tag govuk-tag--blue">Updated</span>
+      </td>
+      <td class="govuk-table__cell">Added that there are 12 PDUs and that they are geographical regions. Added that the term is generally well-understood. Sentence case should be used when writing the phrase in full.</td>
+      <td class="govuk-table__cell" data-sort-value="20250623">23 June 2025</td>
+    </tr>    
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/content-standards/style-guide#oasys"><b>OASys</b></a>
+      </td>
+      <td class="govuk-table__cell">
+        <span class="govuk-tag govuk-tag--green">New</span>
+      </td>
+      <td class="govuk-table__cell">OASys is an abbreviation of Offender Assessment System, which is used by staff across prisons and probation to complete risk and need assessments. The term is well known and widely understood in its abbreviated form. It is consistently written with the capitalisation OASys.</td>
+      <td class="govuk-table__cell" data-sort-value="20250521">21 May 2025</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/content-standards/style-guide#post-sentence-supervision-%28pss%29"><b>post-sentence supervision (PSS)</b></a>
+      </td>
+      <td class="govuk-table__cell">
+        <span class="govuk-tag govuk-tag--green">New</span>
+      </td>
+      <td class="govuk-table__cell">Post-sentence supervision is a period of supervision in the community that follows a prison sentence. The initialism is well understood and can be used without the term being spelt out in full.</td>
+      <td class="govuk-table__cell" data-sort-value="20250609">9 June 2025</td>
+    </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
         <a href="/content-standards/style-guide#pre-sentence-report-%28psr%29"><b>pre-sentence report (PSR)</b></a>
@@ -26,8 +89,6 @@ backLink: /content-standards/style-guide/
       <p>PSRs are reports that a court uses to help decide on a defendant's sentence. They consider a defendant's offending behaviour, the risk they pose and to whom. A PSR will provide an independent recommendation of the sentencing options available to the court.</p></td>
       <td class="govuk-table__cell" data-sort-value="20250401">1 April 2025</td>
     </tr>
-  </thead>
-  <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
         <a href="/content-standards/style-guide#sds40"><b>SDS40</b></a>
