@@ -8,6 +8,7 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/tag/macro.njk" import govukTag %}
 {% extends "base.njk" %}
+
 {% block content %}
   <div class="app-layout__content">
     {% if backLink %}
@@ -70,45 +71,12 @@
         }
       }) }}
 
-      {{ govukFileUpload({
-        id: "accessibility-report",
-        name: "accessibilityReport",
-        label: {
-          text: "Upload the accessibility report (optional)",
-          classes: "govuk-label--m"
-        },
-        hint: {
-          text: "The file needs to be a PDF and smaller than 10MB."
-        },
-        errorMessage: formErrors.accessibilityReport,
-        value: formData.accessibilityReport,
-        attributes: {
-          accept: ".pdf"
-        }
-      }) }}
-
-      {%if formData.accessibilityReport.originalname %}
-        {{ govukSummaryList({
-          classes: 'govuk-summary-list--long-key',
-          rows: [
-            {
-              key: {
-              text: formData.accessibilityReport.originalname
-            },
-              value: {
-              text: govukTag({ text: "Uploaded", classes: "govuk-tag--green" })
-            }
-            }
-          ]
-        }) }}
-      {% endif %}
-
       {{ govukCharacterCount({
         id: "issues-discovered",
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
-          text: "Did the audit identify any issues with the component (optional)?",
+          text: "Enter details about issues discovered by the external audit",
           classes: "govuk-label--m"
         },
         errorMessage: formErrors.issuesDiscovered,
