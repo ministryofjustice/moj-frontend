@@ -6,11 +6,6 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/197
 excerpt: "Use the filter component to help users filter a list of items, such as a list of cases or search results."
 ---
 
-{% banner "A similar component exists" %}
-
-There's a [Filter component discussion in the GOV.UK Design System backlog](https://github.com/alphagov/govuk-design-system-backlog/issues/133).
-{% endbanner %}
-
 {% example "/examples/filter", 1000 %}
 
 ## When to use
@@ -18,6 +13,10 @@ There's a [Filter component discussion in the GOV.UK Design System backlog](http
 Use the filter component to help users filter a list of items, such as a list of cases or search results.
 
 You should only provide users with filters they really need.
+
+### Similar or linked components
+
+There's also a [Filter component discussion in the GOV.UK Design System backlog](https://github.com/alphagov/govuk-design-system-backlog/issues/133).
 
 ## How to use
 

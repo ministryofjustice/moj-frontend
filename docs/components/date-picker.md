@@ -1,16 +1,20 @@
 ---
 title: Date picker
+tabs: true
 status: Official
 statusDate: July 2024
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703
 excerpt: "The date picker component enables users to select a date from a calendar."
+lede: "The date picker component enables users to select a date from a calendar."
 ---
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
 
-<span class="govuk-caption-xl govuk-!-margin-bottom-9">The date picker component enables users to select a date from a calendar. </span>
+{% tabs "paginate" %}
+{% tab "Overview" %}
 
 {% example "/examples/date-picker", 590 %}
 
-## Overview
+## Overview 
 
 When users first open the date picker's calendar it'll show today's date. Users do not have to use this calendar view to select a date — they can also enter one directly into the text field.
 
@@ -46,9 +50,15 @@ There’s an accessibility issue with the date picker component. If you’re usi
 
 ### No focus indicator shown when navigating between dates (NVDA only)
 
-When people use the screen reader software NVDA, no focus indicator is displayed when they navigate between dates. This only happens with NVDA software. This fails [WCAG 2.2 success criterion 2.4.7 (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible). We’re aware of this issue and plan to implement a fix by June 2025.
+When people use the screen reader software NVDA, no focus indicator is displayed when they navigate between dates. This only happens with NVDA software. This fails [WCAG 2.2 success criterion 2.4.7 (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible). We’re aware of this issue and plan to implement a fix by August 2025.
 
-## How to use
+{% endtab %}
+
+{% tab "How to use" %}
+
+## How to use 
+
+
 
 ### Hint text
 
@@ -111,7 +121,12 @@ Follow the [GOV.UK Design System guidance on error messages](https://design-syst
 
 If you're using more than one date picker, give each text field its own error summary and message (even if the error is the same).
 
+{% endtab %}
+
+{% tab "Examples" %}
+
 ## Examples
+
 
 ### Filtering information with a date picker
 
@@ -121,4 +136,9 @@ If you're using more than one date picker, give each text field its own error su
 
 <p><img src="{{ 'assets/images/date-picker-question-example-2024.png' | rev | url }}" alt="A screenshot with the title 'What date do you want to view appointments for?' Underneath is the title 'Date' and then a text input field with the calendar icon. Underneath that is a green 'Continue' button."></p>
 
-<hr />
+{% endtab %}
+
+{% tab "Get help and contribute" %}
+{% include "layouts/partials/get-help-and-contribute.njk" %}
+{% endtab %}
+{% endtabs %}

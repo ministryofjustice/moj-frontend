@@ -1,0 +1,34 @@
+{% from "macros/status-label/macro.njk" import statusLabel %}
+{% from "macros/heading/macro.njk" import heading %}
+{% from "macros/heading/macro.njk" import heading %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+<div class="app-page__header">
+    <div class="app-page__width-container">
+      {% if backLink %}
+          {{ govukBackLink({
+            text: "Back",
+            href: backLink
+          }) }}
+      {% endif %}
+
+      {{ heading({
+        text: title,
+        caption: subsection,
+          statusTag: { text: status } if status
+      }) }}
+
+      {{ statusLabel(
+        type,
+        status,
+        statusInfo[status],
+        statusDate,
+        creatorName,
+        creatorTeam
+      ) if statusInfo[status] }}
+
+      {% if lede %}
+        <span class="govuk-caption-xl govuk-!-margin-top-8">{{ lede | safe }}</span>
+      {% endif %}
+    </div>
+</div>

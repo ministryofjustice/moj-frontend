@@ -11,7 +11,10 @@ const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const nunjucks = require('nunjucks')
 
+const rev = require('./filters/rev')
+
 const releasePackage = require('./package/package.json')
+const tabs = require('./shortcodes/tabs')
 const mojFilters = require('./src/moj/filters/all')
 
 // Configure highlight.js
@@ -127,59 +130,10 @@ module.exports = function (eleventyConfig) {
     return releasePackage.version
   })
 
-  // Temp storage for tabs
-  let tabsStorage = []
-
   // Generate govuk tabs
-  eleventyConfig.addPairedShortcode(
-    'tabs',
-    function (content, label = 'Contents') {
-      const tabId = (tab) => {
-        return `${tab.label.toLowerCase().replace(/ /g, '-')}-tab`
-      }
-      const tabsList = tabsStorage
-        .map((tab, index) => {
-          const isSelected = index === 0 ? '--selected' : ''
-          return `
-      <li class="govuk-tabs__list-item${isSelected} app-navigation__item" role="presentation">
-        <a class="govuk-tabs__tab app-navigation__link app-navigation__link" href="#${tabId(tab)}" role="tab" >
-          ${tab.label}
-        </a>
-      </li>
-    `.trim()
-        })
-        .join('\n')
-        .trim()
-
-      const tabPanels = tabsStorage
-        .map((tab, index) => {
-          const isHidden = index === 0 ? '' : ' govuk-tabs__panel--hidden'
-          return `
-      <div class="govuk-tabs__panel${isHidden}" id="${tabId(tab)}" role="tabpanel">${tab.content}</div>
-    `.trim()
-        })
-        .join('')
-        .trim()
-
-      tabsStorage = []
-
-      return `
-    <div class="govuk-tabs app-navigation no-govuk-tabs-styles" data-module="govuk-tabs">
-      <h2 class="govuk-tabs__title">${label}</h2>
-      <ul class="govuk-tabs__list app-navigation__list" role="tabpanel">
-        ${tabsList}
-      </ul>
-      ${tabPanels}
-    </div>
-  `.trim()
-    }
-  )
-
+  eleventyConfig.addPairedNunjucksShortcode('tabs', tabs.createTabs)
   // Find and store govuk tab for above tabs
-  eleventyConfig.addPairedShortcode('tab', function (content, label) {
-    tabsStorage.push({ label, content })
-    return ''
-  })
+  eleventyConfig.addPairedShortcode('tab', tabs.createTab)
 
   eleventyConfig.addPairedShortcode('banner', function (content, title) {
     return `
@@ -287,18 +241,49 @@ module.exports = function (eleventyConfig) {
     return nunjucksEnv.renderString(viewString, context)
   })
 
-  eleventyConfig.addFilter('rev', (filepath) => {
-    if (process.env.ENV === 'production' || process.env.ENV === 'staging') {
-      const manifest = JSON.parse(
-        fs.readFileSync('public/rev-manifest.json', 'utf8')
-      )
-      const revision = manifest[filepath]
-      return `/${revision || filepath}`
-    }
-    return `/${filepath}`
-  })
+  eleventyConfig.addFilter('rev', rev)
 
   eleventyConfig.addFilter('upperFirst', upperFirst)
+
+  // Implements a url transform to enable us to show the correct page
+  // highlighted within the 11ty generated nav for the contributions app
+  // - if page has a permalink starting with views, then the url is set to the
+  // community start page
+  eleventyConfig.addUrlTransform(({ url }) => {
+    if (url.match(/^\/views/i)) {
+      return '/contribute/add-new-component/start'
+    }
+    // Returning undefined skips the url transform.
+  })
+
+  // Copies the 11ty base layout and partials to the contributions app layouts directory
+  eleventyConfig.on(
+    'eleventy.before',
+    async ({ directories, runMode, outputMode }) => {
+      const srcDir = `${directories.includes}layouts`
+      const destDir = './views/common'
+      const templates = [
+        'base.njk',
+        '404.njk',
+        '500.njk',
+        'partials/header.njk',
+        'partials/header-no-nav.njk',
+        'partials/footer.njk'
+        ]
+
+      templates.forEach((template) => {
+        fs.copyFile(
+          `${srcDir}/${template}`,
+          `${destDir}/${template}`,
+          (err) => {
+            if (err) {
+              console.log('Error Found:', err)
+            }
+          }
+        )
+      })
+    }
+  )
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')
@@ -325,4 +310,8 @@ module.exports = function (eleventyConfig) {
     // Show the dev server version number on the command line
     showVersion: true
   })
+}
+
+module.exports.config = {
+  markdownTemplateEngine: 'njk'
 }

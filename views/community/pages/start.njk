@@ -1,62 +1,61 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "macros/page-title.njk" import pageTitle %}
+{% from "macros/form.njk" import form %}
+
 {% extends "base.njk" %}
+
+{% block beforeContent %}
+  <div class="app-layout__back-link">
+    {% if backLink %}
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    {% endif %}
+  </div>
+{% endblock %}
+
 {% block content %}
   <div class="app-layout__content">
-    <span class="govuk-caption-l">Submit a new component</span>
-    <h1 class="govuk-heading-xl">Before you start</h1>
+    {{ pageTitle({
+      caption: 'Submit a new component',
+      title: 'Before you start'
+    })}}
+    <p class="govuk-body">Anyone at MoJ can now add a component to the MoJ Design System. You might want to do this to:
 
-<p class="govuk-body">You can now add a component to the MoJ Design System.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>make it easier for teams to find your work</li>
+      <li>get contributions from other people across government to help the component develop</li>
+      <li>help your team meet the <a href="https://www.gov.uk/guidance/government-design-principles">Government Design Principles</a></li>
+    </ul>
 
-<p class="govuk-body">Once a component is added to the Design System, it becomes a 'community component'. You might want to create this type of component to:
-
-<ul class="govuk-list govuk-list--bullet">
-
-<li>make it easier for teams across government to find your work</li>
-<li>get contributions from other people to help the component develop</li>
-<li>help your team meet the <a href="https://www.gov.uk/guidance/government-design-principles">Government Design Principles</a></li>
-</ul>
-</p>
-
-<div class="govuk-inset-text">
-Later in 2025 you'll also be able to add a pattern or page to the MoJ Design System.
-</div>
-
-<p class="govuk-body">You can add a component that has not been thoroughly developed or tested.</p>
+    <p class="govuk-body">You can add a component that has not been thoroughly developed or tested. If you have an image and you can briefly describe it, it’s ready to be added. </p>
 
     <h3 class="govuk-heading-m">What you'll need</h2>
 
-    <p class="govuk-body">To submit a component to the Design System you'll need:
+    <p class="govuk-body">To submit a component to the Design System you'll need:</p>
 
     <ul class="govuk-list govuk-list--bullet">
       <li>the component name</li>
       <li>a description</li>
       <li>details about how it’s being used</li>
-      <li>an image</li>
+      <li>an image of it</li>
     </ul>
 
     <p class="govuk-body">This helps people to understand what the component is and how to use it.</p>
 
-    <p class="govuk-body">You’ll be asked for your details, so that you can be contacted when the component is live (or if there are queries). Your name or team name will only be added to the documentation if you give your permission.</p>
+    <p class="govuk-body">You’ll be asked for your email address to verify that you work for MoJ. We'll also use this to contact you when the component is live, or if there queries. You can ask for your name or team name to be added to the documentation, but this is optional.</p>
 
+    <h3 class="govuk-heading-m">After you submit a component</h2>
 
-    <h3 class="govuk-heading-m">What happens after you submit a component</h2>
+    <p class="govuk-body">The MoJ Design System team will briefly check the component and then it'll be live within 10 working days. People may add comments to the component's Github discussion.</p>
 
-<p class="govuk-body">
-<ul class="govuk-list govuk-list--bullet">
-    <li>1: The MoJ Design System team will briefly check it.</li>
-    <li>2: It'll go live, with an experimental status and a Github discussion thread. You'll get an email about this — usually within 5 working days.</li>
-    <li>3: Comments or information may be added to the Github discussion. You can subscribe to notifications for these. <a href="https://github.com/ministryofjustice/moj-frontend/discussions">View all MoJ Design System Github discussions</a></li>
-</ul>
-</p>
-
-    <form method="POST" action="">
-      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
-
-      <div class="moj-button-action">
-        {{ govukButton({
-          text: 'Continue'
-        }) }}
-      </div>
-    </form>
+    {% call form({csrfToken: csrfToken}) %}
+        <div class="moj-button-action">
+          {{ govukButton({
+            text: 'Continue'
+          }) }}
+        </div>
+    {% endcall %}
   </div>
 {% endblock %}

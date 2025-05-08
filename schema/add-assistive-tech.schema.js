@@ -73,20 +73,15 @@ const schema = Joi.object({
     }),
 
   issuesDiscovered: Joi.string()
-    .optional()
-    .allow(null, '')
+    .required()
     .custom((value, helpers) => maxWords(value, helpers, 250))
     .messages({
+      'any.required':
+        'Enter details about issues discovered by the assistive technology testing',
+      'string.empty':
+        'Enter details about issues discovered by the assistive technology testing',
       'custom.max.words': 'Enter 250 words or less'
-    }),
-
-  accessibilityReport: Joi.string()
-    .allow('')
-    .pattern(/\.pdf$/i)
-    .messages({
-      'string.pattern.base': 'The file must be a PDF'
     })
-    .optional()
 })
 
 module.exports = schema

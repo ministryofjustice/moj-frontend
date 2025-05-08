@@ -57,8 +57,22 @@ describe('generateMarkdown', () => {
         accessibilityReport: 'assistive-tech-report.pdf'
       }
     }
+    const mockFiles = {
+      '/component-image': {
+        path: 'assets/images/component.jpg'
+      },
+      '/add-external-audit': {
+        path: 'external-report.pdf'
+      },
+      '/add-internal-audit': {
+        path: 'internal-report.pdf'
+      },
+      '/add-assistive-tech': {
+        path: 'assistive-tech-report.pdf'
+      }
+    }
 
-    const result = generateMarkdown(mockData)
+    const result = generateMarkdown(mockData, mockFiles)
     expect(result).toMatchSnapshot()
   })
 
@@ -72,8 +86,9 @@ describe('generateMarkdown', () => {
       '/add-internal-audit': {},
       '/add-assistive-tech': {}
     }
+    const mockFiles = {}
 
-    const result = generateMarkdown(mockData)
+    const result = generateMarkdown(mockData, mockFiles)
     expect(result).toMatchSnapshot()
   })
 
@@ -121,8 +136,18 @@ describe('generateMarkdown', () => {
         accessibilityReport: 'assistive-tech-report.pdf'
       }
     }
-
-    const result = generateMarkdown(mockData)
+    const mockFiles = {
+      '/add-external-audit': {
+        path: 'external-report.pdf'
+      },
+      '/add-internal-audit': {
+        path: 'internal-report.pdf'
+      },
+      '/add-assistive-tech': {
+        path: 'assistive-tech-report.pdf'
+      }
+    }
+    const result = generateMarkdown(mockData, mockFiles)
     expect(result).toMatchSnapshot()
   })
 
@@ -171,7 +196,7 @@ describe('generateMarkdown', () => {
       }
     }
 
-    const result = generateMarkdown(mockData)
+    const result = generateMarkdown(mockData, {})
     expect(result).toMatchSnapshot()
   })
 

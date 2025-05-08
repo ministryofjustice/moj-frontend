@@ -4,38 +4,30 @@ const {
   NOTIFY_TOKEN,
   NOTIFY_PR_TEMPLATE,
   NOTIFY_SUBMISSION_TEMPLATE,
+  NOTIFY_VERIFICATION_TEMPLATE,
   NOTIFY_EMAIL,
   NOTIFY_EMAIL_RETRY_MS,
-  NOTIFY_EMAIL_MAX_RETRIES
+  NOTIFY_EMAIL_MAX_RETRIES,
+  APP_URL
 } = require('../config')
 const notifyClient = new NotifyClient(NOTIFY_TOKEN)
 
-const emailAddress = NOTIFY_EMAIL
+const dsTeamEmail = NOTIFY_EMAIL
 
 const sendEmail = async (
   templateId,
-  link = null,
-  fileBuffer = null,
-  markdown = null,
+  email,
+  personalisation = {},
   retries = NOTIFY_EMAIL_MAX_RETRIES,
   backoff = NOTIFY_EMAIL_RETRY_MS
 ) => {
-  const personalisation = link ? { link } : {}
-
-  if (fileBuffer) {
-    personalisation.link_to_file = notifyClient.prepareUpload(fileBuffer)
-  }
-
-  if (markdown) {
-    personalisation.markdown = markdown
-  }
 
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       console.log(
-        `Sending email to ${emailAddress} using template ${templateId}, attempt ${attempt}`
+        `Sending email to ${email} using template ${templateId}, attempt ${attempt}`
       )
-      const response = await notifyClient.sendEmail(templateId, emailAddress, {
+      const response = await notifyClient.sendEmail(templateId, email, {
         personalisation
       })
       console.log('Email sent successfully.')
@@ -54,19 +46,41 @@ const sendEmail = async (
   }
 }
 
-const sendSubmissionEmail = async (
-  link = null,
-  fileBuffer = null,
-  markdown = null
-) => {
-  return sendEmail(NOTIFY_SUBMISSION_TEMPLATE, link, fileBuffer, markdown)
+const sendSubmissionEmail = async (fileBuffer = null, markdown = null) => {
+  const personalisation = {}
+
+  if (fileBuffer) {
+    personalisation.link_to_file = notifyClient.prepareUpload(fileBuffer)
+  }
+
+  if (markdown) {
+    personalisation.markdown = markdown
+  }
+
+  return sendEmail(NOTIFY_SUBMISSION_TEMPLATE, dsTeamEmail, personalisation)
 }
 
-const sendPrEmail = async (link = null) => {
-  return sendEmail(NOTIFY_PR_TEMPLATE, link)
+const sendPrEmail = async ({ url, number }) => {
+  const personalisation = {}
+
+  if (url) {
+    personalisation.pr_link = url
+  }
+  if (number) {
+    personalisation.preview_link = `https://moj-frontend-pr-${number}.apps.live.cloud-platform.service.justice.gov.uk`
+  }
+
+  return sendEmail(NOTIFY_PR_TEMPLATE, dsTeamEmail, personalisation)
+}
+
+const sendVerificationEmail = async (email, token) => {
+  const personalisation = {}
+  personalisation.token_link = `${APP_URL}/contribute/add-new-component/email/verify/${token}`
+  return sendEmail(NOTIFY_VERIFICATION_TEMPLATE, email, personalisation)
 }
 
 const handleEmailError = (error) => {
+  console.error(error)
   if (error.response) {
     console.error('Error status:', error.response.status)
     console.error('Error data:', error.response.data)
@@ -81,5 +95,6 @@ const handleEmailError = (error) => {
 
 module.exports = {
   sendSubmissionEmail,
-  sendPrEmail
+  sendPrEmail,
+  sendVerificationEmail
 }

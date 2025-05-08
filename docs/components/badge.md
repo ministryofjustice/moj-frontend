@@ -6,12 +6,6 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/687
 excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
-{% banner "The GOV.UK Design System has a similar component" %}
-The [Tag component](https://design-system.service.gov.uk/components/tag/) in the GOV.UK Design System has a similar function and visual design to this component.
-
-You should consider using the GOV.UK version if it fits your needs.
-{% endbanner %}
-
 {% example "/examples/badge", 125 %}
 
 ## When to use
@@ -21,6 +15,10 @@ Use the badge component to highlight small details like an urgent case.
 The badge is useful for drawing users attention to particular information. It should be used sparingly because when used a lot it loses its value.
 
 In HMPPS digital services, you should only use the badge to show risk information.
+
+### Similar or linked components
+
+There's also the ['Tag' component in the GOV.UK Design System](https://design-system.service.gov.uk/components/tag/).
 
 ## How to use
 
