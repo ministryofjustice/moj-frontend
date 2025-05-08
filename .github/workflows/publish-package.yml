@@ -16,8 +16,8 @@ jobs:
       - name: Get next version
         run: npm run ci:dryrun
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.ADMIN_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
       - run: npm run build:package
       - uses: actions/upload-artifact@v4
         with:
@@ -113,5 +113,5 @@ jobs:
       - name: Publish to NPM
         run: npm run ci:release
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.ADMIN_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}

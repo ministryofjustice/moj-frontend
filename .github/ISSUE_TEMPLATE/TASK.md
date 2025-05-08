@@ -17,10 +17,10 @@ Add info about why this is a task to do.
 - Content Designer
 - Developer
 - User Researcher
-- Performance Analyst
 - Accessibility Specialist
 - Delivery Manager
 - Design System Lead
+- Product Manager
 
 ## Done
 

@@ -1,0 +1,48 @@
+{% from "govuk/macros/attributes.njk" import govukAttributes %}
+
+{%- macro _actionLink(action, cardTitle) %}
+  <a class="govuk-link {%- if action.classes %} {{ action.classes }}{% endif %}" href="{{ action.href }}"
+    {{- govukAttributes(action.attributes) }}>
+    {{- action.html | safe | indent(4) if action.html else action.text -}}
+    {%- if action.visuallyHiddenText or cardTitle -%}
+    <span class="govuk-visually-hidden">
+      {%- if action.visuallyHiddenText %} {{ action.visuallyHiddenText }}{% endif -%}
+      {%- if cardTitle %} ({{ cardTitle.html | indent(6) | safe if cardTitle.html else cardTitle.text }}){% endif -%}
+    </span>
+    {%- endif -%}
+  </a>
+{% endmacro -%}
+
+{%- macro summaryCard(params) %}
+{%- set headingLevel = params.title.headingLevel if params.title.headingLevel else 2 -%}
+
+<div class="govuk-summary-card {%- if params.classes %} {{ params.classes }}{% endif %}"
+  {{- govukAttributes(params.attributes) }}>
+  <div class="govuk-summary-card__title-wrapper">
+  {% if params.title %}
+    <h{{ headingLevel }} class="govuk-summary-card__title {%- if params.title.classes %} {{ params.title.classes }}{% endif %}">
+      {{ params.title.html | safe | trim | indent(6) if params.title.html else params.title.text }}
+    </h{{ headingLevel }}>
+  {% endif %}
+  {% if params.actions.items.length %}
+    {% if params.actions.items.length == 1 %}
+    <div class="govuk-summary-card__actions {%- if params.actions.classes %} {{ params.actions.classes }}{% endif %}">
+      {{ _actionLink(params.actions.items[0], params.title) | trim | indent(4) }}
+    </div>
+    {% else %}
+    <ul class="govuk-summary-card__actions {%- if params.actions.classes %} {{ params.actions.classes }}{% endif %}">
+      {% for action in params.actions.items %}
+      <li class="govuk-summary-card__action">
+        {{ _actionLink(action, params.title) | trim | indent(8) }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  {% endif %}
+  </div>
+
+  <div class="govuk-summary-card__content">
+    {{ caller() | trim }}
+  </div>
+</div>
+{% endmacro -%}

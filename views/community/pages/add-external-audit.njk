@@ -8,6 +8,7 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/tag/macro.njk" import govukTag %}
 {% extends "base.njk" %}
+
 {% block content %}
   <div class="app-layout__content">
     {% if backLink %}
@@ -22,13 +23,13 @@
         errorList: errorList
       }) }}
     {% endif %}
-    <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">External accessibility audit</h1>
 
       {{ govukInput({
         label: {
-          text: "Which organisation did the external accessibility audit?",
+          text: page.fields.externalOrganisation.label,
           classes: "govuk-label--m"
         },
         id: "external-organisation",
@@ -41,6 +42,7 @@
         id: "audit-date",
         namePrefix: "auditDate",
         name: "audit-date",
+        errorMessage: formErrors.auditDate,
         value: formData.auditDate,
         items: [
           {
@@ -61,54 +63,21 @@
         ],
         fieldset: {
           legend: {
-            text: "When was the audit?",
+          text: page.fields.auditDate.label,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "For example, 13 8 2024"
+          text: page.fields.auditDate.hint
         }
       }) }}
-
-      {{ govukFileUpload({
-        id: "accessibility-report",
-        name: "accessibilityReport",
-        label: {
-          text: "Upload the accessibility report (optional)",
-          classes: "govuk-label--m"
-        },
-        hint: {
-          text: "The file needs to be a PDF and smaller than 10MB."
-        },
-        errorMessage: formErrors.accessibilityReport,
-        value: formData.accessibilityReport,
-        attributes: {
-          accept: ".pdf"
-        }
-      }) }}
-
-      {%if formData.accessibilityReport.originalname %}
-        {{ govukSummaryList({
-          classes: 'govuk-summary-list--long-key',
-          rows: [
-            {
-              key: {
-              text: formData.accessibilityReport.originalname
-            },
-              value: {
-              text: govukTag({ text: "Uploaded", classes: "govuk-tag--green" })
-            }
-            }
-          ]
-        }) }}
-      {% endif %}
 
       {{ govukCharacterCount({
         id: "issues-discovered",
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
-          text: "Did the audit identify any issues with the component (optional)?",
+          text: page.fields.issuesDiscovered.label,
           classes: "govuk-label--m"
         },
         errorMessage: formErrors.issuesDiscovered,

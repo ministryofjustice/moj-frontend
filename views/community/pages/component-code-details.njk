@@ -1,4 +1,5 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
@@ -21,20 +22,74 @@
     <form method="post" action="{{ submitUrl }}" data-add-another-container>
       <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Component code</h1>
-      <p class="govuk-body">Send the code for the component and not the full page. This makes it easier for other people to understand and use.</p>
-      <p class="govuk-body">You can add more than one code example.</p>
+      <p class="govuk-body">You should only send the component code. It should not contain any personally identifiable or sensitive information. You can add more than one code example.</p>
+      {% set otherHtml %}
       {{ govukInput({
+        id: "component-code-language-other",
+        name: "componentCodeLanguageOther",
+        errorMessage: formErrors.componentCodeLanguageOther,
+        value: formData.componentCodeLanguageOther,
+        type: "text",
+        classes: "govuk-!-width-one-third",
         label: {
-          text: "What language is the code?",
-          classes: "govuk-label--m"
-        },
+          text: page.fields.componentCodeLanguageOther.label
+        }
+      }) }}
+      {% endset -%}
+      {{ govukRadios({
         id: "component-code-language",
         name: "componentCodeLanguage",
         errorMessage: formErrors.componentCodeLanguage,
         value: formData.componentCodeLanguage,
         hint: {
-          text: "Enter a language such as HTML, CSS, SASS or Javascript. It's easier if the code is in one language."
-        }
+          text: page.fields.componentCodeLanguage.hint
+        },
+        fieldset: {
+          legend: {
+            text: page.fields.componentCodeLanguage.label,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "html",
+            text: "HTML"
+          },
+          {
+            value: "nunjucks",
+            text: "Nunjucks"
+          },
+          {
+            value: "css",
+            text: "CSS"
+          },
+          {
+            value: "javascript",
+            text: "JavaScript"
+          },
+          {
+            value: "other",
+            text: "Other",
+            conditional: {
+              html: otherHtml
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukCharacterCount({
+        name: "componentCode",
+        id: "component-code",
+        maxlength: 10000,
+        classes: 'font-monospace',
+        rows: 30,
+        label: {
+          text: "Add the code",
+          classes: "govuk-label--m"
+        },
+        errorMessage: formErrors.componentCode,
+        value: formData.componentCode
       }) }}
 
       {{ govukCharacterCount({
@@ -42,30 +97,14 @@
         id: "component-code-usage",
         maxwords: 250,
         label: {
-          text: "How do you use the code? (optional)",
+          text: page.fields.componentCodeUsage.label,
           classes: "govuk-label--m"
         },
         hint: {
-          text: "Include anything that helps users add the code to their service."
+          text: page.fields.componentCodeUsage.hint
         },
-        errorMessage: formErrors.componentCodeUsage,
+        errorMessage: formErcomponentCodeLanguages.componentCodeUsage,
         value: formData.componentCodeUsage
-      }) }}
-
-      {{ govukCharacterCount({
-        name: "componentCode",
-        id: "component-code",
-        maxlength: 10000,
-        rows: 30,
-        label: {
-          text: "Add the code",
-          classes: "govuk-label--m"
-        },
-        hint: {
-          text: "Add the code for the component only (not the full page) without any personally identifiable or sensitive information."
-        },
-        errorMessage: formErrors.componentCode,
-        value: formData.componentCode
       }) }}
 
       <input type="hidden" name="_csrf" value="{{ csrfToken }}" />

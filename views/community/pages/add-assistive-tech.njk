@@ -8,6 +8,7 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/tag/macro.njk" import govukTag %}
 {% extends "base.njk" %}
+
 {% block content %}
   <div class="app-layout__content">
     {% if backLink %}
@@ -22,7 +23,7 @@
         errorList: errorList
       }) }}
     {% endif %}
-    <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Testing with assistive technology</h1>
 
@@ -51,32 +52,13 @@
         ],
         fieldset: {
           legend: {
-            text: "When was the component tested with assistive technology?",
+            text: page.fields.testingDate.label,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "For example, 13 8 2024"
-        }
-      }) }}
-
-
-      {{ govukFileUpload({
-        id: "accessibility-report",
-        name: "accessibilityReport",
-        label: {
-          text: "Upload the report (optional)",
-          isPageHeading: true,
-          classes: "govuk-label--m"
-        },
-        hint: {
-          text: "The file needs to be a PDF and smaller than 10MB."
-        },
-        errorMessage: formErrors.accessibilityReport,
-        value: formData.accessibilityReport,
-        attributes: {
-          accept: ".pdf"
+          text: page.fields.testingDate.hint
         }
       }) }}
 
@@ -85,29 +67,13 @@
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
-          text: "Did the testing identify any issues with the component (optional)?",
+          text: page.fields.issuesDiscovered.label,
           classes: "govuk-label--m",
           isPageHeading: true
         },
         errorMessage: formErrors.issuesDiscovered,
         value: formData.issuesDiscovered
       }) }}
-
-      {%if formData.accessibilityReport.originalname %}
-        {{ govukSummaryList({
-          classes: 'govuk-summary-list--long-key',
-          rows: [
-            {
-              key: {
-              text: formData.accessibilityReport.originalname
-            },
-              value: {
-              text: govukTag({ text: "Uploaded", classes: "govuk-tag--green" })
-            }
-            }
-          ]
-        }) }}
-      {% endif %}
 
       <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
 

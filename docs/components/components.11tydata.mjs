@@ -1,6 +1,7 @@
 export default {
-  layout: 'layouts/component.njk',
+  layout: 'layouts/content.njk',
   type: 'component',
+  subsection: 'Components',
   eleventyComputed: {
     eleventyNavigation: {
       key: (data) => data.title,

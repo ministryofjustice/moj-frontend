@@ -1,8 +1,8 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 <div class="moj-interruption-card">
     <div class="moj-interruption-card__content">
-        <h1 class="govuk-heading-l moj-interruption-card__heading">{{- params.heading -}}</h1>
-        <div class="govuk-body-l moj-interruption-card__body">{{ caller() }}</div>
+        <h1 class="moj-interruption-card__heading">{{- params.heading -}}</h1>
+        <div class="moj-interruption-card__body">{{ caller() }}</div>
         <div class="govuk-button-group moj-interruption-card__actions">
             {% if params.primaryAction.style == "link" %}
                 <a class="govuk-link govuk-link--inverse"

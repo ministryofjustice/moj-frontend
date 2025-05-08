@@ -1,4 +1,5 @@
 @use "../moj-frontend" as *;
+@use "../settings/app";
 
 /* ==========================================================================
    #MASTHEAD
@@ -9,8 +10,15 @@ $brand-colour: #220051;
 .app-masthead {
   color: govuk-colour("white");
   background-color: $brand-colour;
+  @include govuk-responsive-padding(6, "top");
+  @include govuk-responsive-padding(6, "bottom");
+
+  @include govuk-media-query(app.$breakpoint) {
+    @include govuk-responsive-padding(9, "top");
+    @include govuk-responsive-padding(9, "bottom");
+  }
   @include govuk-media-query($from: desktop) {
-    .app-layout__content {
+    .app-page__width-container {
       padding-right: 130px;
     }
   }

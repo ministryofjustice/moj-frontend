@@ -25,14 +25,14 @@
       {{ govukRadios({
         name: "hasComponentBeenTestedExternalAccessibility",
         hint: {
-          text: "This would be from a third party organisation."
+        text: page.fields.hasComponentBeenTestedExternalAccessibility.hint
         },
         fieldset: {
           attributes: {
             id: "has-component-been-tested-external-accessibility"
           },
           legend: {
-            text: "Has the component been tested in an external accessibility audit?",
+            text: page.fields.hasComponentBeenTestedExternalAccessibility.label,
             classes: "govuk-fieldset__legend--m"
           }
         },
@@ -53,14 +53,14 @@
       {{ govukRadios({
         name: "hasComponentBeenTestedInternalAudit",
         hint: {
-          text: "This would be within UK Government."
+          text: page.fields.hasComponentBeenTestedInternalAudit.hint
         },
         fieldset: {
           attributes: {
             id: "has-component-been-tested-internal-audit"
           },
           legend: {
-            text: "Has the component been reviewed internally?",
+            text: page.fields.hasComponentBeenTestedInternalAudit.label,
             classes: "govuk-fieldset__legend--m"
           }
         },
@@ -81,14 +81,14 @@
       {{ govukRadios({
         name: "hasComponentBeenTestedUsingAssistiveTechnology",
         hint: {
-          text: "This could be with screen reader software or an adaptive keyboard."
+          text: page.fields.hasComponentBeenTestedUsingAssistiveTechnology.hint
         },
         fieldset: {
           attributes: {
             id: "has-component-been-tested-using-assistive-technology"
           },
           legend: {
-            text: "Has the component been tested with assistive technology?",
+            text: page.fields.hasComponentBeenTestedUsingAssistiveTechnology.label,
             classes: "govuk-fieldset__legend--m"
           }
         },
