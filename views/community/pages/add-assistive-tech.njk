@@ -9,15 +9,13 @@
 {% from "govuk/components/tag/macro.njk" import govukTag %}
 {% extends "base.njk" %}
 {% block content %}
-  {% if backLink %}
-    <div class="app-layout__backlink">
+  <div class="app-layout__content">
+    {% if backLink %}
       {{ govukBackLink({
         text: "Back",
         href: backLink
       }) }}
-    </div>
-  {% endif %}
-  <div class="app-layout__content">
+    {% endif %}
     {% if errorList %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
@@ -25,7 +23,7 @@
       }) }}
     {% endif %}
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
-      <span class="govuk-caption-l">Submit new component</span>
+      <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Testing with assistive technology</h1>
 
       {{ govukDateInput({
@@ -53,28 +51,16 @@
         ],
         fieldset: {
           legend: {
-            text: "When did the testing with assistive technology take place?",
+            text: "When was the component tested with assistive technology?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "For example, 27 4 2015"
+          text: "For example, 13 8 2024"
         }
       }) }}
 
-      {{ govukCharacterCount({
-        id: "issues-discovered",
-        name: "issuesDiscovered",
-        maxwords: 250,
-        label: {
-          text: "Were any issues discovered with the component during testing? (Optional)",
-          classes: "govuk-label--m",
-          isPageHeading: true
-        },
-        errorMessage: formErrors.issuesDiscovered,
-        value: formData.issuesDiscovered
-      }) }}
 
       {{ govukFileUpload({
         id: "accessibility-report",
@@ -85,13 +71,26 @@
           classes: "govuk-label--m"
         },
         hint: {
-          text: "The selected file must be PDF and smaller than 10MB."
+          text: "The file needs to be a PDF and smaller than 10MB."
         },
         errorMessage: formErrors.accessibilityReport,
         value: formData.accessibilityReport,
         attributes: {
           accept: ".pdf"
         }
+      }) }}
+
+      {{ govukCharacterCount({
+        id: "issues-discovered",
+        name: "issuesDiscovered",
+        maxwords: 250,
+        label: {
+          text: "Did the testing identify any issues with the component (optional)?",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        errorMessage: formErrors.issuesDiscovered,
+        value: formData.issuesDiscovered
       }) }}
 
       {%if formData.accessibilityReport.originalname %}

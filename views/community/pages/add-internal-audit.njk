@@ -9,15 +9,13 @@
 {% from "govuk/components/tag/macro.njk" import govukTag %}
 {% extends "base.njk" %}
 {% block content %}
-  {% if backLink %}
-    <div class="app-layout__backlink">
+  <div class="app-layout__content">
+    {% if backLink %}
       {{ govukBackLink({
         text: "Back",
         href: backLink
       }) }}
-    </div>
-  {% endif %}
-  <div class="app-layout__content">
+    {% endif %}
     {% if errorList %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
@@ -25,12 +23,12 @@
       }) }}
     {% endif %}
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
-      <span class="govuk-caption-l">Submit new component</span>
-      <h1 class="govuk-heading-xl">Internal accessibility audit</h1>
+      <span class="govuk-caption-l">Submit a new component</span>
+      <h1 class="govuk-heading-xl">Internal accessibility review</h1>
 
       {{ govukInput({
         label: {
-          text: "What team conducted the internal accessibility audit?",
+          text: "What team did the internal accessibility review?",
           classes: "govuk-label--m"
         },
         id: "internal-organisation",
@@ -64,13 +62,13 @@
         ],
         fieldset: {
           legend: {
-            text: "When did the audit take place?",
+            text: "When was the review?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "For example, 27 4 2015"
+          text: "For example, 13 8 2024"
         }
       }) }}
 
@@ -78,12 +76,12 @@
         id: "accessibility-report",
         name: "accessibilityReport",
         label: {
-          text: "Upload the accessibility report (optional)",
+          text: "Upload the accessibility review (optional)",
           isPageHeading: true,
           classes: "govuk-label--m"
         },
         hint: {
-          text: "The selected file must be PDF and smaller than 10MB."
+          text: "The file needs to be a PDF and smaller than 10MB."
         },
         errorMessage: formErrors.accessibilityReport,
         value: formData.accessibilityReport,
@@ -113,7 +111,7 @@
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
-          text: "Were any issues discovered with the component during the audit? (Optional)",
+          text: "Did the review identify any issues with the component? (optional)",
           classes: "govuk-label--m",
           isPageHeading: true
         },

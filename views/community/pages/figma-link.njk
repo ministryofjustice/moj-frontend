@@ -5,15 +5,13 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% extends "base.njk" %}
 {% block content %}
-  {% if backLink %}
-  <div class="app-layout__backlink">
-    {{ govukBackLink({
-      text: "Back",
-      href: backLink
-    }) }}
-  </div>
-  {% endif %}
   <div class="app-layout__content">
+    {% if backLink %}
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    {% endif %}
     {% if errorList %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
@@ -21,14 +19,14 @@
       }) }}
     {% endif %}
     <form method="POST" action="{{ submitUrl }}" data-add-another-container>
-      <span class="govuk-caption-l">Submit new component</span>
+      <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Figma design</h1>
       {{ govukInput({
         hint: {
-          text: "Review the sharing permissions for the Figma design file before sending it. Ensure the 'Who has access' and 'What they can do' fields are set so the team can view the file."
+          text: "Set the sharing permissions for the Figma design file so that it can be viewed."
         },
         label: {
-          text: "Add the link to where the Figma design file is saved",
+          text: "Add a link to the Figma file",
           classes: "govuk-label--m"
         },
         id: "figma-link",
@@ -43,10 +41,10 @@
         id: "figmaLink-additional-information",
         maxwords: 250,
         hint: {
-          text: "This may be the password for the file if it's protected or the link expiration date if you set one."
+          text: "This might include the password for a protected file, or a link expiry date."
         },
         label: {
-          text: "Additional information about the Figma design file (optional)",
+          text: "Add information about the Figma design file (optional)",
           classes: "govuk-label--m"
         },
         errorMessage: formErrors.figmaLinkAdditionalInformation,
@@ -72,5 +70,3 @@
     </form>
   </div>
 {% endblock %}
-
-
