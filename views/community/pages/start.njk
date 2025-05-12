@@ -2,38 +2,44 @@
 {% extends "base.njk" %}
 {% block content %}
   <div class="app-layout__content">
-    <span class="govuk-caption-l">Submit new component</span>
+    <span class="govuk-caption-l">Submit a new component</span>
     <h1 class="govuk-heading-xl">Before you start</h1>
 
-    <p class="govuk-body">All new components submitted to the design system must include the following details:</p>
+<p class="govuk-body">You can now add a component to the MoJ Design System. You might want to do this to:
+
+<ul class="govuk-list govuk-list--bullet">
+
+<li>make it easier for teams across government to find your work</li>
+<li>get contributions from other people to help the component develop</li>
+<li>help your team meet the <a href="https://www.gov.uk/guidance/government-design-principles">Government Design Principles</a></li>
+</ul>
+</p>
+
+<div class="govuk-inset-text">
+Later in 2025 you'll also be able to add a pattern or page to the MoJ Design System.
+</div>
+
+<p class="govuk-body">You can add a component that has not been thoroughly developed or tested.</p>
+
+    <h3 class="govuk-heading-m">What you'll need</h2>
+
+    <p class="govuk-body">To submit a component to the Design System you'll need:
 
     <ul class="govuk-list govuk-list--bullet">
-      <li>Component name</li>
-      <li>Overview description of the component</li>
-      <li>How the component is being used currently.</li>
-      <li>An image file to show what the component looks like.</li>
+      <li>the component name</li>
+      <li>a description</li>
+      <li>details about how it’s being used</li>
+      <li>an image of it</li>
     </ul>
 
-    <p class="govuk-body">This information is required to provide users with a basic understanding of the component and how to use it.</p>
+    <p class="govuk-body">This helps people to understand what the component is and how to use it.</p>
 
-    <h3 class="govuk-heading-m">Providing your personal information</h3>
+    <p class="govuk-body">You’ll be asked for your details, so that you can be contacted when the component is live (or if there are queries). Your name or team name will only be added to the documentation if you give your permission.</p>
 
-    <p class="govuk-body">Your personal information is also required. This includes your:</p>
+    <h3 class="govuk-heading-m">After you submit a component</h2>
 
-    <ul class="govuk-list govuk-list--bullet">
-      <li>name</li>
-      <li>email address</li>
-      <li>team name</li>
-    </ul>
-
-    <p class="govuk-body">You can choose if you're happy for us to share this information on the component page</p>
-
-    <p class="govuk-body">The team will use this information for only 2 reasons:</p>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li>To contact you about the component if required for any reason.</li>
-      <li>To include on the page, <em>with your permission</em>, when publishing the new component in the design system.</li>
-    </ul>
+<p class="govuk-body">The MoJ Design System team will briefly check the component, and then it'll be live within 5 working days. Information may be added to the Github discussion.
+</p>
 
     <form method="POST" action="">
       <input type="hidden" name="_csrf" value="{{ csrfToken }}" />

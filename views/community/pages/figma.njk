@@ -4,15 +4,13 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% extends "base.njk" %}
 {% block content %}
-  {% if backLink %}
-    <div class="app-layout__backlink">
+  <div class="app-layout__content">
+    {% if backLink %}
       {{ govukBackLink({
         text: "Back",
         href: backLink
       }) }}
-    </div>
-  {% endif %}
-  <div class="app-layout__content">
+    {% endif %}
     {% if errorList %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
@@ -20,19 +18,17 @@
       }) }}
     {% endif %}
     <form method="POST" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit new component</span>
+      <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Figma design</h1>
+      <p class="govuk-body">This is to show the layout of the component in a Figma design file, rather than how it works in a prototype.</p>
       {{ govukRadios({
         name: "figmaUrl",
-        hint: {
-          text: "This should be the link to the Figma design file where the component can be viewed."
-        },
         fieldset: {
           attributes: {
             id: "figma-url"
           },
           legend: {
-            text: "Do you have a Figma design file for the component?",
+            text: "Do you have a Figma link for the component?",
             classes: "govuk-fieldset__legend--m"
           }
         },
@@ -57,14 +53,7 @@
           text: 'Continue',
           preventDoubleClick: true
         }) }}
-        {% if skipQuestion %}
-          {{ govukButton({
-            text: "Skip question",
-            classes: "govuk-button--secondary",
-            attributes: {'data-skip-question': skipQuestion},
-            href: skipQuestion
-          }) }}
-        {% endif %}
+
     </form>
   </div>
 {% endblock %}
