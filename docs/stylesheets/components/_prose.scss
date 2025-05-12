@@ -33,14 +33,13 @@
     margin-bottom: govuk-spacing(9);
     border: 1px solid #b1b4b6;
     background-color: govuk-colour(white);
-  
+
     & img {
       height: 100%;
       max-height: 600px;
       object-fit: scale-down;
-      border: none;  
+      border: none;
     }
-  
   }
 
   strong,
