@@ -19,3 +19,10 @@
     color: $govuk-secondary-text-colour;
   }
 }
+
+// Red tag for experimental components
+.govuk-tag--experimental {
+  @extend .govuk-tag;
+  color: govuk-colour("white");
+  background: govuk-colour("red");
+}

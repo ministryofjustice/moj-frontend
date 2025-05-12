@@ -1,5 +1,5 @@
 @forward "moj-frontend";
-@forward "highlight.js/scss/github";
+@forward "highlight.js/styles/a11y-light.css";
 
 // Custom documentation components
 @forward "components/accordions";
@@ -23,6 +23,7 @@
 @forward "components/app-buildingblock-card";
 @forward "components/status";
 @forward "components/documentation-tabs";
+@forward "components/summary-card";
 
 @view-transition {
   navigation: auto;
