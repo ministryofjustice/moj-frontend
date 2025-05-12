@@ -14,7 +14,7 @@ You can use the MoJ Design System to share your work with others. This is throug
 
 ## Adding a component
 
-You can now add a component to the MoJ Design System. You might want to do this to:  
+You can now add a component to the MoJ Design System. You might want to do this to:
 
 - make it easier for teams across government to find your work
 - get contributions from other people to help the component develop
@@ -28,7 +28,7 @@ If a component has a name and image, and you can briefly describe it, it's ready
 
 The component does not need to be thoroughly tested, documented or considered for wider use. For someone working on a problem from scratch, a community component can still be a helpful starting point or idea.
 
-The component will get an 'experimental' status. This is to reflect that it's early in development and only to be used in alpha and beta phases. You can [read about the MoJ Design System statuses](/design-system-statuses/).   
+The component will get an 'experimental' status. This is to reflect that it's early in development and only to be used in alpha and beta phases. You can [read about the MoJ Design System statuses](/design-system-statuses/).
 
 <a href="/contribute/add-new-component/start/" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button" color="#ffffff">
   Start now
