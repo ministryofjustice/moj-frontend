@@ -10,7 +10,7 @@ describe('getPrTitleAndDescription', () => {
     }
     const result = getPrTitleAndDescription(session)
     expect(result).toEqual({
-      title: 'Test Component',
+      title: 'docs(contribution): Test Component',
       description: 'This is a test component.'
     })
   })
@@ -19,7 +19,7 @@ describe('getPrTitleAndDescription', () => {
     const session = {}
     const result = getPrTitleAndDescription(session)
     expect(result).toEqual({
-      title: '',
+      title: 'docs(contribution): Unnamed component',
       description: ''
     })
   })
@@ -30,7 +30,7 @@ describe('getPrTitleAndDescription', () => {
     }
     const result = getPrTitleAndDescription(session)
     expect(result).toEqual({
-      title: '',
+      title: 'docs(contribution): Unnamed component',
       description: ''
     })
   })
@@ -43,7 +43,7 @@ describe('getPrTitleAndDescription', () => {
     }
     const result = getPrTitleAndDescription(session)
     expect(result).toEqual({
-      title: 'Test Component',
+      title: 'docs(contribution): Test Component',
       description: ''
     })
   })
@@ -56,7 +56,7 @@ describe('getPrTitleAndDescription', () => {
     }
     const result = getPrTitleAndDescription(session)
     expect(result).toEqual({
-      title: '',
+      title: 'docs(contribution): Unnamed component',
       description: 'This is a test component.'
     })
   })

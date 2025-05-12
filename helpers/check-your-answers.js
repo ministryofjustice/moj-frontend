@@ -235,6 +235,7 @@ const checkYourAnswers = (session) => {
     )
   ]
   const answers = answersFromSession(forms, canRemove, session, ignoreFields)
+  console.log(answers)
   if (answers.componentImageRows) {
     answers.componentDetailsRows = answers.componentDetailsRows || []
     answers.componentDetailsRows = [

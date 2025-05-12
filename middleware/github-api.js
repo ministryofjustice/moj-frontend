@@ -6,38 +6,9 @@ const {
   GITHUB_REPO_OWNER,
   GITHUB_REPO_NAME
 } = require('../config')
-const redis = require('../helpers/redis-client')
-
-const imageDirectory = 'images'
-const fileDirectory = 'files'
-
-// Retrieve File from Redis
-const getFileFromRedis = async (redisKey) => {
-  try {
-    const fileData = await redis.get(redisKey)
-    if (!fileData) throw new Error(`File not found for Redis key: ${redisKey}`)
-
-    const { buffer, originalname, mimetype } = JSON.parse(fileData)
-    return { buffer: Buffer.from(buffer, 'base64'), originalname, mimetype }
-  } catch (err) {
-    console.error(`[Redis] Error retrieving file: ${err}`)
-    throw err
-  }
-}
-
-const extractFilename = (key, includeDirectories = true) => {
-  const segments = key.split('/')
-  const lastSegment = segments[segments.length - 1]
-  segments[segments.length - 1] = lastSegment.includes('.')
-    ? lastSegment
-    : `${lastSegment}.txt`
-  const result = includeDirectories
-    ? segments.join('/')
-    : segments[segments.length - 1]
-  return result.startsWith('/') ? result.slice(1) : result
-}
 
 const getMainBranchSha = async () => {
+  console.log(GITHUB_API_TOKEN)
   const response = await fetch(
     `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/git/ref/heads/main`,
     {
@@ -74,6 +45,8 @@ const createBranch = async (baseSha, branchName) => {
 }
 
 const addFileToBranch = async (filePath, fileContent, branchName) => {
+  console.log(filePath)
+  console.log(fileContent)
   const response = await fetch(
     `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/contents/${filePath}`,
     {
@@ -97,62 +70,10 @@ const addFileToBranch = async (filePath, fileContent, branchName) => {
   }
 }
 
-const pushToGitHub = async (sessionData) => {
+const pushToGitHub = async (submissionData, branchName) => {
   console.log('[GITHUB] Start pushing to Github')
-
-  const existingFilenames = new Set() // To store unique filenames across files
-
-  const getUniqueFilename = (originalName) => {
-    let counter = 0
-    let uniqueName = originalName
-
-    // Check and resolve conflicts
-    while (existingFilenames.has(uniqueName)) {
-      counter += 1
-      const nameWithoutExtension = originalName.replace(/(\.[\w\d]+)$/, '') // Remove extension
-      const extension = originalName.match(/(\.[\w\d]+)$/)?.[0] || '' // Extract the extension
-      uniqueName = `${nameWithoutExtension}-${counter}${extension}`
-    }
-
-    existingFilenames.add(uniqueName) // Track used filename
-    return uniqueName
-  }
-
-  const branchName = `submission-${Date.now()}`
-
+  console.log(submissionData)
   try {
-    const submissionData = {}
-    for (const key in sessionData) {
-      if (!['cookie', 'csrfToken'].includes(key)) {
-        const fileData = sessionData[key]
-        if (
-          fileData?.componentImage?.redisKey ||
-          fileData?.accessibilityReport?.redisKey
-        ) {
-          const directory = fileData.componentImage
-            ? imageDirectory
-            : fileDirectory
-          const file = fileData.componentImage || fileData.accessibilityReport
-          const { redisKey } = file // Redis key stored in session
-          if (redisKey?.startsWith('file:')) {
-            const { buffer, originalname } = await getFileFromRedis(redisKey) // Retrieve file from Redis
-            const filename = getUniqueFilename(originalname)
-            const fileContent = Buffer.from(buffer).toString('base64')
-            const filePath = `${branchName}/${directory}/${filename}`
-            submissionData[filePath] = { buffer: fileContent }
-          }
-        } else {
-          const filename = extractFilename(key)
-          if (filename.endsWith('.md')) {
-            // Documentation should be outside of the submission folder
-            submissionData[filename] = sessionData[key]
-          } else {
-            submissionData[`${branchName}/${filename}`] = sessionData[key]
-          }
-        }
-      }
-    }
-
     const baseSha = await getMainBranchSha()
     await createBranch(baseSha, branchName)
 
@@ -213,7 +134,7 @@ const createPullRequest = async (branchName, title, description = '') => {
         Authorization: `Bearer ${GITHUB_API_TOKEN}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ labels: ['contribution'] })
+      body: JSON.stringify({ labels: ['contribution', 'preview:request'] })
     })
 
     if (!labelResponse.ok) {
@@ -226,7 +147,10 @@ const createPullRequest = async (branchName, title, description = '') => {
     }
 
     console.log(`[GITHUB] Label added to pull request: ${pr.html_url}`)
-    return pr.html_url
+    return {
+      url: pr.html_url,
+      number: pr.number
+    }
   } catch (error) {
     console.error('[GITHUB] Error creating pull request:', error.message)
     throw error
