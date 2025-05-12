@@ -1,10 +1,10 @@
 ---
 layout: layouts/content.njk
-subsection: About the design system
+subsection: About the Design System
 title: Building block statuses
 eleventyNavigation:
   key: Building block statuses
-  parent: About the design system
+  parent: About the Design System
   order: 20
   excerpt: "Building block statuses."
 ---

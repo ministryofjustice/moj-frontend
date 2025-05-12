@@ -29,16 +29,6 @@ $app-sidebar-width: 300px;
   }
 }
 
-.app-layout__backlink {
-  max-width: 840px;
-  @include govuk-responsive-padding(6, "right");
-  @include govuk-responsive-padding(6, "left");
-  @include govuk-media-query($app-breakpoint) {
-    @include govuk-responsive-padding(9, "right");
-    @include govuk-responsive-padding(9, "left");
-  }
-}
-
 .app-layout__content {
   box-sizing: border-box;
   max-width: 1100px;
