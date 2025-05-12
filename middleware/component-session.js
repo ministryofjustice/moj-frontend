@@ -243,13 +243,12 @@ const removeFromSession = (req, res, next) => {
   if (req.params.page === 'component-image') {
     const filename = req.session[url]?.componentImage?.originalname
     console.log(filename)
-    if(filename) {
+    if (filename) {
       req.session.sessionFlash = {
         type: 'success',
         message: `File ‘${filename}’ removed.`
+      }
     }
-  }
-
   }
   // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
   delete req.session[url]
