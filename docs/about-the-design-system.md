@@ -1,6 +1,6 @@
 ---
 eleventyNavigation:
-  key: About the design system
+  key: About the Design System
   url: "#"
   permalink: false
 ---

@@ -4,7 +4,7 @@ const schema = Joi.object({
   hasComponentBeenTestedExternalAccessibility: Joi.valid('yes', 'no')
     .required()
     .messages({
-      'any.required': 'Select yes if you had an external audit'
+      'any.required': 'Select yes if there was an external audit'
     })
     .label(
       'Has the component been tested as part of an external accessibility audit?'
@@ -12,13 +12,13 @@ const schema = Joi.object({
   hasComponentBeenTestedInternalAudit: Joi.valid('yes', 'no')
     .required()
     .messages({
-      'any.required': 'Select yes if you had an internal audit'
+      'any.required': 'Select yes if it was internally reviewed'
     })
     .label('Has the component been tested as part of an internal audit?'),
   hasComponentBeenTestedUsingAssistiveTechnology: Joi.valid('yes', 'no')
     .required()
     .messages({
-      'any.required': 'Select yes if you had tested using assistive technology'
+      'any.required': 'Select yes if it was tested with assistive technology'
     })
     .label('Has the component been tested using assistive technology?')
 })
