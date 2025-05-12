@@ -31,6 +31,10 @@ const {
   sendSubmissionEmail,
   sendPrEmail
 } = require('../middleware/notify-email')
+const {
+  processSubmissionData,
+  processSubmissionFiles
+} = require('../middleware/process-subission-data')
 const verifyCsrf = require('../middleware/verify-csrf')
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -107,7 +111,6 @@ if (process.env.DEV_DUMMY_DATA) {
     }
 
     Object.assign(req.session, sessionData)
-
     req.session.save((err) => {
       if (err) {
         return next(err)
@@ -200,7 +203,9 @@ router.get(
   getBackLink,
   (req, res) => {
     res.render(`${req.params.page}`, {
+      page: COMPONENT_FORM_PAGES[req.params.page],
       submitUrl: req.originalUrl,
+      sessionFlash: res.locals.sessionFlash,
       formData: req?.formData,
       addAnother: req?.addAnother,
       showAddAnother: req?.showAddAnother,
@@ -218,26 +223,39 @@ router.post(
   verifyCsrf,
   getRawSessionText,
   async (req, res) => {
+    const submissionRef = `submission-${Date.now()}`
+    const submissionFiles = await processSubmissionFiles(
+      req.session,
+      submissionRef
+    )
+    console.log(submissionFiles)
     const { filename: markdownFilename, content: markdownContent } =
-      generateMarkdown(req.session)
+      generateMarkdown(req.session, submissionFiles)
     const markdown = {}
     markdown[markdownFilename] = markdownContent
     const { sessionText } = req
     const session = { ...req.session, ...markdown }
+    const sessionData = processSubmissionData(
+      session,
+      submissionFiles,
+      submissionRef
+    )
+
     req.session.regenerate((err) => {
       if (err) {
         console.error('Error regenerating session:', err)
       }
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/confirmation`)
     })
+
     try {
-      const branchName = await pushToGitHub(session)
+      const branchName = await pushToGitHub(sessionData, submissionRef)
       const { title, description } = getPrTitleAndDescription(session)
       const pr = await createPullRequest(branchName, title, description)
       await sendPrEmail(pr)
     } catch (error) {
       console.error('[FORM SUBMISSION] Error sending submission:', error)
-      await sendSubmissionEmail(null, sessionText, markdownContent)
+      await sendSubmissionEmail(sessionText, markdownContent)
     }
   }
 )
@@ -255,6 +273,10 @@ router.post(
   validateFormData,
   (req, res, next) => {
     if (req.file) {
+      req.session.sessionFlash = {
+        type: 'success',
+        message: `File ‘${req.file.originalname}’ successfully uploaded.`
+      }
       saveSession(req, res, next)
     } else {
       // Skipping saving as no new file uploaded
@@ -262,6 +284,11 @@ router.post(
     }
   },
   (req, res, next) => {
+    if (req.file) {
+      console.log(req.file)
+      // return to same page after upload
+      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.url}`)
+    }
     if (req.nextPage) {
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.nextPage}`)
     } else {

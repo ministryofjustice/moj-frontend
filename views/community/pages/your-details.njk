@@ -41,9 +41,8 @@
       <p class="govuk-body">If you give your permission, your name will be added to the component page. This is to show that you added it to the Design System.</p>
       {{ govukInput({
           label: {
-              text: "Full name",
-              classes: "govuk-label--m",
-              isPageHeading: true
+              text: page.fields.fullName.label,
+              classes: "govuk-label--m"
           },
           id: "full-name",
           name: "fullName",
@@ -53,9 +52,8 @@
 
       {{ govukInput({
           label: {
-              text: "Email address",
-              classes: "govuk-label--m",
-              isPageHeading: true
+              text: page.fields.emailAddress.label,
+              classes: "govuk-label--m"
           },
           id: "email-address",
           name: "emailAddress",
@@ -65,9 +63,8 @@
 
       {{ govukInput({
         label: {
-          text: "What team were you in when this component was created?",
-          classes: "govuk-label--m",
-          isPageHeading: true
+          text: page.fields.teamName.label,
+          classes: "govuk-label--m"
         },
         id: "team-name",
 
@@ -81,15 +78,12 @@
         id: 'share-your-details',
         fieldset: {
           legend: {
-            text: "Sharing your contact details on the component page",
-            isPageHeading: true,
+            text: page.fields.shareYourDetails.label,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "Adding your details to the component enables other users to contact you (or your team) to collaborate on the component.
-
-          Select all that apply"
+          text: page.fields.shareYourDetails.hint
         },
         items: [
           {

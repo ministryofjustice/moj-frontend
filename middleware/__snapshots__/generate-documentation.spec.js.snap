@@ -6,6 +6,8 @@ exports[`generateMarkdown should generate markdown with all fields populated 1`]
 layout: layouts/tabbed-component.njk
 title: Test Component
 type: component
+status: Experimental
+statusDate: January 2023
 eleventyNavigation:
   key: Test Component
   parent: Components
@@ -17,6 +19,10 @@ eleventyNavigation:
 {% tab "Overview" %}
 
 ## Overview
+
+<div class="img-container">
+  ![Test Component](/assets/images/component.jpg)
+</div>
 
 This is an overview.
 
@@ -51,13 +57,16 @@ No code has been contributed for this component. If you have examples of how you
 If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.
 ### External audit (External Org) - January 2022
 Some issues discovered.
-[Download the accessibility report](/uploads/external-report.pdf)
+
+[Download the accessibility report](/external-report.pdf)
 ### Internal audit (Internal Org) - February 2022
 Some internal issues discovered.
-[Download the accessibility report](/uploads/internal-report.pdf)
+
+[Download the accessibility report](/internal-report.pdf)
 ### Assistive Technology audit - March 2022
 Assistive tech issues discovered.
-[Download the accessibility report](/uploads/assistive-tech-report.pdf)
+
+[Download the accessibility report](/assistive-tech-report.pdf)
 
 
 {% endtab %}
@@ -77,7 +86,7 @@ Assistive tech issues discovered.
 
 {% endtabs %}
 ",
-  "filename": "component/documentation/test-component.md",
+  "filename": "docs/components/test-component.md",
 }
 `;
 
@@ -87,6 +96,8 @@ exports[`generateMarkdown should handle missing details gracefully 1`] = `
 layout: layouts/tabbed-component.njk
 title: unknown-component
 type: component
+status: Experimental
+statusDate: January 2023
 eleventyNavigation:
   key: unknown-component
   parent: Components
@@ -98,6 +109,10 @@ eleventyNavigation:
 {% tab "Overview" %}
 
 ## Overview
+
+<div class="img-container">
+  
+</div>
 
 
 
@@ -145,7 +160,7 @@ No links have been provided for this component. If you have used this component 
 
 {% endtabs %}
 ",
-  "filename": "component/documentation/unknown-component.md",
+  "filename": "docs/components/unknown-component.md",
 }
 `;
 
@@ -155,6 +170,8 @@ exports[`generateMarkdown should handle missing image data gracefully 1`] = `
 layout: layouts/tabbed-component.njk
 title: Another Component
 type: component
+status: Experimental
+statusDate: January 2023
 eleventyNavigation:
   key: Another Component
   parent: Components
@@ -166,6 +183,10 @@ eleventyNavigation:
 {% tab "Overview" %}
 
 ## Overview
+
+<div class="img-container">
+  
+</div>
 
 Another overview.
 
@@ -200,13 +221,16 @@ No code has been contributed for this component. If you have examples of how you
 If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.
 ### External audit (External Org) - January 2022
 Some issues discovered.
-[Download the accessibility report](/uploads/external-report.pdf)
+
+[Download the accessibility report](/external-report.pdf)
 ### Internal audit (Internal Org) - February 2022
 Some internal issues discovered.
-[Download the accessibility report](/uploads/internal-report.pdf)
+
+[Download the accessibility report](/internal-report.pdf)
 ### Assistive Technology audit - March 2022
 Assistive tech issues discovered.
-[Download the accessibility report](/uploads/assistive-tech-report.pdf)
+
+[Download the accessibility report](/assistive-tech-report.pdf)
 
 
 {% endtab %}
@@ -222,7 +246,7 @@ No links have been provided for this component. If you have used this component 
 
 {% endtabs %}
 ",
-  "filename": "component/documentation/another-component.md",
+  "filename": "docs/components/another-component.md",
 }
 `;
 
@@ -232,6 +256,8 @@ exports[`generateMarkdown should return minimal markdown if no valid data is pro
 layout: layouts/tabbed-component.njk
 title: unknown-component
 type: component
+status: Experimental
+statusDate: January 2023
 eleventyNavigation:
   key: unknown-component
   parent: Components
@@ -243,6 +269,10 @@ eleventyNavigation:
 {% tab "Overview" %}
 
 ## Overview
+
+<div class="img-container">
+  
+</div>
 
 
 
@@ -290,7 +320,7 @@ No links have been provided for this component. If you have used this component 
 
 {% endtabs %}
 ",
-  "filename": "component/documentation/unknown-component.md",
+  "filename": "docs/components/unknown-component.md",
 }
 `;
 
@@ -300,6 +330,8 @@ exports[`generateMarkdown should sanitize the filename correctly 1`] = `
 layout: layouts/tabbed-component.njk
 title: Component! With@ Special#Chars
 type: component
+status: Experimental
+statusDate: January 2023
 eleventyNavigation:
   key: Component! With@ Special#Chars
   parent: Components
@@ -311,6 +343,10 @@ eleventyNavigation:
 {% tab "Overview" %}
 
 ## Overview
+
+<div class="img-container">
+  
+</div>
 
 Overview here.
 
@@ -345,13 +381,13 @@ No code has been contributed for this component. If you have examples of how you
 If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.
 ### External audit (External Org) - January 2022
 Some issues discovered.
-[Download the accessibility report](/uploads/external-report.pdf)
+
 ### Internal audit (Internal Org) - February 2022
 Some internal issues discovered.
-[Download the accessibility report](/uploads/internal-report.pdf)
+
 ### Assistive Technology audit - March 2022
 Assistive tech issues discovered.
-[Download the accessibility report](/uploads/assistive-tech-report.pdf)
+
 
 
 {% endtab %}
@@ -367,6 +403,6 @@ No links have been provided for this component. If you have used this component 
 
 {% endtabs %}
 ",
-  "filename": "component/documentation/component--with--special-chars.md",
+  "filename": "docs/components/component-with-special-chars.md",
 }
 `;
