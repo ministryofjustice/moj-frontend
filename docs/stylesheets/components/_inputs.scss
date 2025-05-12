@@ -1,0 +1,6 @@
+@use "../moj-frontend" as *;
+
+// Override to add spacing to first form element in submit journey
+form > .govuk-form-group:first-of-type {
+  margin-top: govuk-spacing(8);
+}

@@ -4,18 +4,14 @@
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% extends "base.njk" %}
-
 {% block content %}
-  {% if backLink %}
-    <div class="app-layout__backlink">
+  <div class="app-layout__content">
+    {% if backLink %}
       {{ govukBackLink({
         text: "Back",
         href: backLink
       }) }}
-    </div>
-  {% endif %}
-
-    <div class="app-layout__content">
+    {% endif %}
         {% if errorList %}
         {{ govukErrorSummary({
             titleText: "There is a problem",
@@ -23,15 +19,12 @@
         }) }}
         {% endif %}
         <form method="post" action="{{ submitUrl }}">
-          <span class="govuk-caption-l">Submit new component</span>
-          <h1 class="govuk-heading-xl">Component details</h1>
-          <p class="govuk-body">Specific information is required when submitting a component to the design system. This gives users a basic understanding of the component and how to use it.</p>
-          <p class="govuk-body">You'll also have an opportunity to add more information after submitting the component.</p>
-          <p class="govuk-body">There is a word limit for certain answers. This ensures information is understandable for all users. The following information is required.</p>
+          <span class="govuk-caption-l">Submit a new component</span>
+          <h1 class="govuk-heading-xl">Add details about the component</h1>
 
           {{ govukInput({
                 label: {
-                    text: "What is the name of the component?",
+                    text: "What’s the name of the component?",
                     classes: "govuk-label--m"
                 },
                 id: "component-name",
@@ -45,7 +38,7 @@
                 id: "component-overview",
                 maxwords: 250,
                 label: {
-                    text: "Add an overview description about the component",
+                    text: "Describe the component",
                     classes: "govuk-label--m"
                 },
                 errorMessage: formErrors.componentOverview,
@@ -57,7 +50,7 @@
                 id: "how-is-the-component-used",
                 maxwords: 250,
                 label: {
-                    text: "How is the component being used in your service?",
+                    text: "How is the component being used?",
                     classes: "govuk-label--m"
                 },
 
