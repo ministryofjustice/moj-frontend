@@ -33,13 +33,14 @@
     background-color: white;
     border: 1px solid #b1b4b6;
     margin-bottom: govuk-spacing(9);
-  }
-
-  img.submission {
-    height: 100%;
-    max-height: 600px;
-    object-fit: scale-down;
-    border: none;
+  
+    & img {
+      height: 100%;
+      max-height: 600px;
+      object-fit: scale-down;
+      border: none;  
+    }
+  
   }
 
   strong,
