@@ -5,8 +5,10 @@ const maxWords = require('../helpers/max-words')
 
 const schema = Joi.object({
   internalOrganisation: Joi.string().required().messages({
-    'any.required': 'Enter the name of the team who did the internal accessibility review',
-    'string.empty': 'Enter the name of the team who did the internal accessibility review'
+    'any.required':
+      'Enter the name of the team who did the internal accessibility review',
+    'string.empty':
+      'Enter the name of the team who did the internal accessibility review'
   }),
 
   'auditDate-day': Joi.string()
@@ -15,8 +17,7 @@ const schema = Joi.object({
     .messages({
       'any.required': 'The date of the review must include a day',
       'string.empty': 'The date of the review must include a day',
-      'string.pattern.base':
-        'The date of the review must be a real date'
+      'string.pattern.base': 'The date of the review must be a real date'
     }),
 
   'auditDate-month': Joi.string()
@@ -35,8 +36,7 @@ const schema = Joi.object({
     .messages({
       'any.required': 'The date of the review must include a year',
       'string.empty': 'The date of the review must include a year',
-      'string.pattern.base':
-        'The date of the review must be a real date'
+      'string.pattern.base': 'The date of the review must be a real date'
     }),
 
   auditDate: Joi.string()
@@ -80,19 +80,14 @@ const schema = Joi.object({
       'any.invalid': '{{#message}}'
     }),
 
-  accessibilityReport: Joi.string()
-    .allow('')
-    .pattern(/\.pdf$/i)
-    .messages({
-      'string.pattern.base': 'The file must be a PDF'
-    })
-    .optional(),
-
   issuesDiscovered: Joi.string()
-    .optional()
-    .allow(null, '')
+    .required()
     .custom((value, helpers) => maxWords(value, helpers, 250))
     .messages({
+      'any.required':
+        'Enter details about issues discovered by the internal review',
+      'string.empty':
+        'Enter details about issues discovered by the internal review',
       'custom.max.words': 'Enter 250 words or less'
     })
 })

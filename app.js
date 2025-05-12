@@ -62,17 +62,27 @@ if (REDIS_URL) {
 
 app.use(session(sessionOptions))
 
+// Custom flash middleware -- from Ethan Brown's book, 'Web Development with Node & Express'
+app.use(function (req, res, next) {
+  // if there's a flash message in the session request, make it available in the response, then delete it
+  res.locals.sessionFlash = req.session.sessionFlash
+  delete req.session.sessionFlash
+  next()
+})
+
 // Nunjucks config
 app.set('views', [
   path.join(__dirname, 'views/common'),
   path.join(__dirname, 'views/community/pages'),
-  path.join(__dirname, 'node_modules/govuk-frontend/dist'),
-  path.join(__dirname, 'node_modules/@ministryofjustice/frontend')
+  // path.join(__dirname, 'node_modules/@ministryofjustice/frontend'),
+  path.join(__dirname, 'src'),
+  path.join(__dirname, 'node_modules/govuk-frontend/dist')
 ])
+
 app.set('view engine', 'njk')
 expressNunjucks(app, {
   watch: isDev,
-  noCache: isDev,
+  noCache: false,
   loader: nunjucks.FileSystemLoader
 })
 
