@@ -4,10 +4,10 @@
 {% block content %}
   <div class="app-layout__content">
     <form method="post" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit new component</span>
-      <h1 class="govuk-heading-xl">Check your answers before submitting the component</h1>
+      <span class="govuk-caption-l">Submit a new component</span>
+      <h1 class="govuk-heading-xl">Check your answers</h1>
 
-      <h2 class="govuk-heading-l">Component details</h2>
+      <h2 class="govuk-heading-l">Add details about the component</h2>
       {{ govukSummaryList({
         rows: componentDetailsRows,
         classes: "govuk-!-margin-bottom-9"
@@ -22,7 +22,7 @@
       {% endif %}
 
       {% if addInternalAuditRows.length > 0 %}
-        <h2 class="govuk-heading-l">Internal accessibility audit</h2>
+        <h2 class="govuk-heading-l">Internal accessibility review</h2>
         {{ govukSummaryList({
           rows: addInternalAuditRows,
           classes: "govuk-!-margin-bottom-9"
@@ -46,7 +46,7 @@
       {% endif %}
 
       {% if componentCodeRows.length > 0 %}
-        <h2 class="govuk-heading-l">Component code</h2>
+        <h2 class="govuk-heading-l">Code</h2>
         {{ govukSummaryList({
           rows: componentCodeRows,
           classes: "govuk-!-margin-bottom-9"
