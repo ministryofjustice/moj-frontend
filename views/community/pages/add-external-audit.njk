@@ -8,6 +8,9 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/tag/macro.njk" import govukTag %}
 {% extends "base.njk" %}
+
+{% set uploadedFileName = formData.accessibilityReport.originalname if formData.accessibilityReport.originalname else file.originalname %}
+
 {% block content %}
   <div class="app-layout__content">
     {% if backLink %}
@@ -70,7 +73,8 @@
         }
       }) }}
 
-      {{ govukFileUpload({
+
+{{ govukFileUpload({
         id: "accessibility-report",
         name: "accessibilityReport",
         label: {
@@ -85,23 +89,24 @@
         attributes: {
           accept: ".pdf"
         }
-      }) }}
+        }) }}
 
-      {%if formData.accessibilityReport.originalname %}
+      {% if uploadedFileName %}
+        <input type="hidden" name="accessibilityReport" value="{{uploadedFileName}}">
         {{ govukSummaryList({
           classes: 'govuk-summary-list--long-key',
           rows: [
             {
               key: {
-              text: formData.accessibilityReport.originalname
+              text: "File"
             },
               value: {
-              text: govukTag({ text: "Uploaded", classes: "govuk-tag--green" })
+              text: uploadedFileName
             }
             }
           ]
         }) }}
-      {% endif %}
+        {% endif %}
 
       {{ govukCharacterCount({
         id: "issues-discovered",
