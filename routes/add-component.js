@@ -275,7 +275,7 @@ router.post(
       req.session.sessionFlash = {
         type: 'success',
         message: `File ‘${req.file.originalname}’ successfully uploaded.`
-    }
+      }
       saveSession(req, res, next)
     } else {
       // Skipping saving as no new file uploaded
@@ -283,7 +283,7 @@ router.post(
     }
   },
   (req, res, next) => {
-    if(req.file) {
+    if (req.file) {
       console.log(req.file)
       // return to same page after upload
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.url}`)
