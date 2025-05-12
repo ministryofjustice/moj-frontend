@@ -13,7 +13,7 @@ const schema = addAnotherSchema.append({
       'any.required': 'Enter the prototype link',
       'string.empty': 'Enter the prototype link',
       'string.pattern.base':
-        'The prototype link must be a real website URL that begins with https:// or www.'
+        'The prototype link must be a real URL that begins with ’https://’ or ’www’.'
     }),
   prototypeUrlAdditionalInformation: Joi.string()
     .optional()
@@ -21,7 +21,7 @@ const schema = addAnotherSchema.append({
     .custom((value, helpers) => maxWords(value, helpers, 250))
     .label('Additional information about the prototype (optional)')
     .messages({
-      'custom.max.words': 'There must be 250 words or less'
+      'custom.max.words': 'Enter 250 words or less'
     })
 })
 

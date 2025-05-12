@@ -21,15 +21,13 @@
 
 {% block content %}
 
-  {% if backLink %}
-    <div class="app-layout__backlink">
+  <div class="app-layout__content">
+    {% if backLink %}
       {{ govukBackLink({
         text: "Back",
         href: backLink
       }) }}
-    </div>
-  {% endif %}
-  <div class="app-layout__content">
+    {% endif %}
   {% if errorList %}
     {{ govukErrorSummary({
       titleText: "There is a problem",
@@ -37,10 +35,10 @@
     }) }}
   {% endif %}
   <form method="post" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit new component</span>
+      <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Your details</h1>
-      <p class="govuk-body">Providing your personal information means the team can contact you to discuss the component further, if required. The team will also let you when the component goes live in the design system.</p>
-      <p class="govuk-body">With your permission, your name and email address will be added to the component page to show you added it to the design system.</p>
+      <p class="govuk-body">Adding your details enables the MoJ Design System team to let you know when the component is live. They might also need to contact you with questions about the component.</p>
+      <p class="govuk-body">If you give your permission, your name will be added to the component page. This is to show that you added it to the Design System.</p>
       {{ govukInput({
           label: {
               text: "Full name",
@@ -67,11 +65,12 @@
 
       {{ govukInput({
         label: {
-          text: "What team did you work in when creating the component?",
+          text: "What team were you in when this component was created?",
           classes: "govuk-label--m",
           isPageHeading: true
         },
         id: "team-name",
+
         name: "teamName",
         errorMessage: formErrors.teamName,
         value: formData.teamName
@@ -88,7 +87,9 @@
           }
         },
         hint: {
-          text: "Your details are needed so other users can contact you or your team to continue collaborating on the component. By opting out of sharing these details, other community users will not be able to chat or work with you about the component. Select all that apply"
+          text: "Adding your details to the component enables other users to contact you (or your team) to collaborate on the component.
+
+          Select all that apply"
         },
         items: [
           {
