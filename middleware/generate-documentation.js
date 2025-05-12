@@ -173,7 +173,9 @@ eleventyNavigation:
 
 ## Overview
 
-${files?.['/component-image'] ? '![' + componentName + '](/' + files['/component-image'].path + ')' : ''}
+<div class="img-container">
+  ${files?.['/component-image'] ? '![' + componentName + '](/' + files['/component-image'].path + ')' : ''}
+</div>
 
 ${details?.componentOverview || ''}
 
