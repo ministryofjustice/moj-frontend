@@ -244,7 +244,7 @@ const removeFromSession = (req, res, next) => {
     const filename = req.session[url]?.componentImage?.originalname
     console.log(filename)
     if(filename) {
-      req.session.sessionFlash ={
+      req.session.sessionFlash = {
         type: 'success',
         message: `File ‘${filename}’ removed.`
     }
