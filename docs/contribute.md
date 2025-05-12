@@ -34,6 +34,14 @@ The component will be given an 'experimental' status. This is to show that it's 
 
 [Add a component to the MoJ Design System](/contribute/add-new-component/start)
 
+## Adding a pattern or page
+
+<div class="govuk-inset-text">
+Later in 2025 you'll also be able to add a pattern or page.
+</div>
+
+These building blocks will also have an experimental status.
+
 ## Joining discussions
 
 After an experimental building block is live, contributions can be added to a Github discussion thread. These might include feedback, images, user research findings or accessibility insights.
