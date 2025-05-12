@@ -80,19 +80,12 @@ const schema = Joi.object({
       'any.invalid': '{{#message}}'
     }),
 
-  accessibilityReport: Joi.string()
-    .allow('')
-    .pattern(/\.pdf$/i)
-    .messages({
-      'string.pattern.base': 'The file must be a PDF'
-    })
-    .optional(),
-
   issuesDiscovered: Joi.string()
-    .optional()
-    .allow(null, '')
+    .required()
     .custom((value, helpers) => maxWords(value, helpers, 250))
     .messages({
+      'any.required': 'Enter any issues discovered',
+      'string.empty': 'Enter any issues discovered',
       'custom.max.words': 'Enter 250 words or less'
     })
 })
