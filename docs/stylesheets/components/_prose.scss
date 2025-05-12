@@ -30,9 +30,9 @@
     width: fill;
     height: fit-content;
     padding: govuk-spacing(6);
-    background-color: white;
-    border: 1px solid #b1b4b6;
     margin-bottom: govuk-spacing(9);
+    border: 1px solid #b1b4b6;
+    background-color: govuk-colour(white);
   
     & img {
       height: 100%;
