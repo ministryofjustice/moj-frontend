@@ -84,8 +84,10 @@ const schema = Joi.object({
     .required()
     .custom((value, helpers) => maxWords(value, helpers, 250))
     .messages({
-      'any.required': 'Enter details about issues discovered by the internal review',
-      'string.empty': 'Enter details about issues discovered by the internal review',
+      'any.required':
+        'Enter details about issues discovered by the internal review',
+      'string.empty':
+        'Enter details about issues discovered by the internal review',
       'custom.max.words': 'Enter 250 words or less'
     })
 })
