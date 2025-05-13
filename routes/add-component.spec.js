@@ -67,13 +67,9 @@ describe('Component Details Form Tests', () => {
       expect(response.text).toContain(
         '<form method="post" action="/contribute/add-new-component/component-details">'
       )
-      expect(response.text).toContain('What is the name of the component?')
-      expect(response.text).toContain(
-        'Add an overview description about the component'
-      )
-      expect(response.text).toContain(
-        'How is the component being used in your service?'
-      )
+      expect(response.text).toContain('What’s the name of the component?')
+      expect(response.text).toContain('Describe the component')
+      expect(response.text).toContain('How is the component being used?')
     })
 
     it('should include add another button in the response', async () => {
@@ -105,14 +101,10 @@ describe('Component Details Form Tests', () => {
       expect(response.status).toBe(400)
       expect(response.text).toContain('govuk-error-summary')
       expect(response.text).toContain('There is a problem')
+      expect(response.text).toContain('Enter the name of the component')
+      expect(response.text).toContain('Enter a description of the component')
       expect(response.text).toContain(
-        '&quot;What is the name of the component?&quot; is required'
-      )
-      expect(response.text).toContain(
-        '&quot;Add an overview description about the component&quot; is required'
-      )
-      expect(response.text).toContain(
-        '&quot;How is the component used in your service?&quot; is required'
+        'Enter an answer for how the component is being used'
       )
     })
 
