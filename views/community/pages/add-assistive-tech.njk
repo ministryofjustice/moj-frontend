@@ -9,8 +9,6 @@
 {% from "govuk/components/tag/macro.njk" import govukTag %}
 {% extends "base.njk" %}
 
-{% set uploadedFileName = formData.accessibilityReport.originalname if formData.accessibilityReport.originalname else file.originalname %}
-
 {% block content %}
   <div class="app-layout__content">
     {% if backLink %}
@@ -64,26 +62,6 @@
         }
       }) }}
 
-
-
-{{ govukFileUpload({
-        id: "accessibility-report",
-        name: "accessibilityReport",
-        label: {
-          text: "Upload the report (optional)",
-          isPageHeading: true,
-          classes: "govuk-label--m"
-        },
-        hint: {
-          text: "The file needs to be a PDF and smaller than 10MB."
-        },
-        errorMessage: formErrors.accessibilityReport,
-        value: formData.accessibilityReport,
-        attributes: {
-          accept: ".pdf"
-        }
-      }) }}
-
       {{ govukCharacterCount({
         id: "issues-discovered",
         name: "issuesDiscovered",
@@ -97,21 +75,6 @@
         value: formData.issuesDiscovered
       }) }}
 
-      {%if formData.accessibilityReport.originalname %}
-        {{ govukSummaryList({
-          classes: 'govuk-summary-list--long-key',
-          rows: [
-            {
-              key: {
-              text: "File"
-            },
-              value: {
-              text: uploadedFileName
-            }
-            }
-          ]
-        }) }}
-      {% endif %}
       <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
 
       <div class="govuk-button-group moj-button-action">
