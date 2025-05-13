@@ -14,12 +14,7 @@ You can use the MoJ Design System to share your work with others. This is throug
 
 ## Adding a building block
 
-You can now add a component to the MoJ Design System. <div class="govuk-inset-text">
-Later in 2025 you'll also be able to add a pattern or page.
-
-</div>
-
-You might want to do this to:
+You can now add a builsing block to the MoJ Design System. You might want to do this to:
 
 - make it easier for teams across government to find your work
 - get contributions from other people to help the building block develop
@@ -29,18 +24,15 @@ Anyone at MoJ or in UK government can add a building block. You do not have to b
 
 ### Which building blocks can be added
 
-If a a building block has a name and image, and you can briefly describe it, it's ready to be added. If you have code and a Figma file that's great too, although you do not need it.
+Components can be added to the MoJ Design System. Later in 2025, you'll also be able to add a pattern or page.
+
+If the component has a name and image, and you can briefly describe it, it's ready to be added. If you have code and a Figma file that's great too, although you do not need it.
 
 It does not need to be thoroughly tested, documented or considered for wider use. For someone working on a problem from scratch, it can be a helpful starting point or idea.
 
-The building block will be given an 'experimental' status. This is to reflect that it's early in development and only to be used in alpha and beta phases. You can [read about the MoJ Design System statuses](/design-system-statuses/).
+The component will be given an 'experimental' status. This is to reflect that it's early in development and only to be used in alpha and beta phases. You can [read about the MoJ Design System statuses](/design-system-statuses/).
 
-<a href="/contribute/add-new-component/start/" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button" color="#ffffff">
-  Start now
-  <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
-    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
-  </svg>
-</a>
+[Add a component to the MoJ Design System](/contribute/add-new-component/start)
 
 ## Joining discussions
 
