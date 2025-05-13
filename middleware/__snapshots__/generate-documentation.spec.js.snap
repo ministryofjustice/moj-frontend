@@ -20,7 +20,9 @@ eleventyNavigation:
 
 ## Overview
 
-![Test Component](/assets/images/component.jpg)
+<div class="img-container">
+  ![Test Component](/assets/images/component.jpg)
+</div>
 
 This is an overview.
 
@@ -55,12 +57,15 @@ No code has been contributed for this component. If you have examples of how you
 If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.
 ### External audit (External Org) - January 2022
 Some issues discovered.
+
 [Download the accessibility report](/external-report.pdf)
 ### Internal audit (Internal Org) - February 2022
 Some internal issues discovered.
+
 [Download the accessibility report](/internal-report.pdf)
 ### Assistive Technology audit - March 2022
 Assistive tech issues discovered.
+
 [Download the accessibility report](/assistive-tech-report.pdf)
 
 
@@ -105,7 +110,9 @@ eleventyNavigation:
 
 ## Overview
 
-
+<div class="img-container">
+  
+</div>
 
 
 
@@ -177,7 +184,9 @@ eleventyNavigation:
 
 ## Overview
 
-
+<div class="img-container">
+  
+</div>
 
 Another overview.
 
@@ -212,12 +221,15 @@ No code has been contributed for this component. If you have examples of how you
 If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.
 ### External audit (External Org) - January 2022
 Some issues discovered.
+
 [Download the accessibility report](/external-report.pdf)
 ### Internal audit (Internal Org) - February 2022
 Some internal issues discovered.
+
 [Download the accessibility report](/internal-report.pdf)
 ### Assistive Technology audit - March 2022
 Assistive tech issues discovered.
+
 [Download the accessibility report](/assistive-tech-report.pdf)
 
 
@@ -258,7 +270,9 @@ eleventyNavigation:
 
 ## Overview
 
-
+<div class="img-container">
+  
+</div>
 
 
 
@@ -330,7 +344,9 @@ eleventyNavigation:
 
 ## Overview
 
-
+<div class="img-container">
+  
+</div>
 
 Overview here.
 
@@ -365,10 +381,13 @@ No code has been contributed for this component. If you have examples of how you
 If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.
 ### External audit (External Org) - January 2022
 Some issues discovered.
+
 ### Internal audit (Internal Org) - February 2022
 Some internal issues discovered.
+
 ### Assistive Technology audit - March 2022
 Assistive tech issues discovered.
+
 
 
 {% endtab %}
