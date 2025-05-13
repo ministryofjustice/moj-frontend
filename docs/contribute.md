@@ -16,6 +16,7 @@ You can use the MoJ Design System to share your work with others. This is throug
 
 You can now add a component to the MoJ Design System. <div class="govuk-inset-text">
 Later in 2025 you'll also be able to add a pattern or page.
+
 </div>
 
 You might want to do this to:
