@@ -22,81 +22,46 @@ const config = {
     'component-image': {},
     'accessibility-findings': {},
     'add-external-audit': {
-      '/accessibility-findings': {
-        hasComponentBeenTestedExternalAccessibility: 'yes'
+      conditions: {
+        '/accessibility-findings': {
+          hasComponentBeenTestedExternalAccessibility: 'yes'
+        }
       }
     },
     'add-internal-audit': {
-      '/accessibility-findings': { hasComponentBeenTestedInternalAudit: 'yes' }
+      conditions: {
+        '/accessibility-findings': {
+          hasComponentBeenTestedInternalAudit: 'yes'
+        }
+      }
     },
     'add-assistive-tech': {
-      '/accessibility-findings': {
-        hasComponentBeenTestedUsingAssistiveTechnology: 'yes'
+      conditions: {
+        '/accessibility-findings': {
+          hasComponentBeenTestedUsingAssistiveTechnology: 'yes'
+        }
       }
     },
     prototype: {},
-    'prototype-url': { '/prototype': { componentPrototypeUrl: 'yes' } },
+    'prototype-url': {
+      conditions: {
+        '/prototype': { componentPrototypeUrl: 'yes' }
+      }
+    },
     'component-code': {},
     'component-code-details': {
-      '/component-code': { componentCodeAvailable: 'yes' }
+      conditions: {
+        '/component-code': { componentCodeAvailable: 'yes' }
+      }
     },
     figma: {},
-    'figma-link': { '/figma': { figmaUrl: 'yes' } },
+    'figma-link': {
+      conditions: {
+        '/figma': { figmaUrl: 'yes' }
+      }
+    },
     'your-details': {},
     'check-your-answers': {}
-  },
-  COMPONENT_FORM_PAGES_OPTIONS: {
-    'accessibility-findings': {
-      hasComponentBeenTestedExternalAccessibility: {
-        yes: 'add-external-audit',
-        no: {
-          hasComponentBeenTestedInternalAudit: {
-            yes: 'add-internal-audit',
-            no: {
-              hasComponentBeenTestedUsingAssistiveTechnology: {
-                yes: 'add-assistive-tech',
-                no: 'prototype'
-              }
-            }
-          }
-        }
-      }
-    },
-    'add-external-audit': {
-      hasComponentBeenTestedInternalAudit: {
-        yes: 'add-internal-audit',
-        no: {
-          hasComponentBeenTestedUsingAssistiveTechnology: {
-            yes: 'add-assistive-tech',
-            no: 'prototype'
-          }
-        }
-      }
-    },
-    'add-internal-audit': {
-      hasComponentBeenTestedUsingAssistiveTechnology: {
-        yes: 'add-assistive-tech',
-        no: 'prototype'
-      }
-    },
-    prototype: {
-      componentPrototypeUrl: {
-        yes: 'prototype-url',
-        no: 'component-code'
-      }
-    },
-    'component-code': {
-      componentCodeAvailable: {
-        yes: 'component-code-details',
-        no: 'component-image'
-      }
-    },
-    figma: {
-      figmaUrl: {
-        yes: 'figma-link',
-        no: 'your-details'
-      }
-    }
   },
   ADD_NEW_COMPONENT_ROUTE: '/contribute/add-new-component',
   MAX_ADD_ANOTHER: 10,
@@ -146,9 +111,9 @@ const config = {
       '/component-code-details'
     ],
     ignoreFields: [
-      'componentPrototypeUrl',
-      'figmaUrl',
-      'componentCodeAvailable'
+      // 'componentPrototypeUrl',
+      // 'figmaUrl',
+      // 'componentCodeAvailable'
     ]
   },
   SHARE_YOUR_DETAILS: {
