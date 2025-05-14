@@ -25,14 +25,14 @@
       {{ govukRadios({
         name: "componentPrototypeUrl",
         hint: {
-          text: "For example to the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro."
+          text: page.fields.componentPrototypeUrl.hint
         },
         fieldset: {
           attributes: {
             id: "component-prototype-url"
           },
           legend: {
-            text: "Do you have a prototype link?",
+            text: page.fields.componentPrototypeUrl.label,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }

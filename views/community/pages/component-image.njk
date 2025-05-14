@@ -34,7 +34,7 @@
     <form method="POST" action="{{ submitUrl }}" enctype="multipart/form-data">
       <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Upload an image of the component</h1>
-      <p class="govuk-body">Ensure that the component is clear from the image. For example, remove other parts of the page and ensure it's on a white background.</p>
+      <p class="govuk-body">Ensure that the component is clear from the image. For example, remove other parts of the page.fields.and ensure it's on a white background.</p>
 
 
 
@@ -67,11 +67,11 @@
           id: "component-image",
           name: "componentImage",
           label: {
-            text: "Upload a file",
+            text: page.fields.componentImage.label,
             classes: "govuk-label--m"
           },
           hint: {
-            text: "The file must be a JPG, BMP, PNG, TIF or PDF, and smaller than 10MB."
+            text: page.fields.componentImage.hint
           },
           attributes: {
             accept: ".jpg, .jpeg, .bmp, .png, .tif, .tiff, .pdf"

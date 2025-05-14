@@ -203,6 +203,7 @@ router.get(
   getBackLink,
   (req, res) => {
     res.render(`${req.params.page}`, {
+      page: COMPONENT_FORM_PAGES[req.params.page],
       submitUrl: req.originalUrl,
       sessionFlash: res.locals.sessionFlash,
       formData: req?.formData,

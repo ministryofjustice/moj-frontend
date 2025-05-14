@@ -29,7 +29,7 @@
 
       {{ govukInput({
         label: {
-          text: "Which organisation did the external accessibility audit?",
+          text: page.fields.externalOrganisation.label,
           classes: "govuk-label--m"
         },
         id: "external-organisation",
@@ -62,12 +62,12 @@
         ],
         fieldset: {
           legend: {
-            text: "When was the audit?",
+          text: page.fields.auditDate.label,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "For example, 13 8 2024"
+          text: page.fields.auditDate.hint
         }
       }) }}
 
@@ -76,7 +76,7 @@
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
-          text: "Enter details about issues discovered by the external audit",
+          text: page.fields.issuesDiscovered.label,
           classes: "govuk-label--m"
         },
         errorMessage: formErrors.issuesDiscovered,
