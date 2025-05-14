@@ -2,7 +2,8 @@ const crypto = require('crypto')
 
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
-  ADD_NEW_COMPONENT_ROUTE
+  ADD_NEW_COMPONENT_ROUTE,
+  COMPONENT_FORM_PAGES
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const extractBody = require('../helpers/extract-body')
@@ -52,7 +53,9 @@ const errorTemplateVariables = (
   errorList,
   formErrorStyles = null
 ) => {
+  const page = req.params.page || req.url.replace('/', '')
   return {
+    page: COMPONENT_FORM_PAGES[page],
     submitUrl: req.originalUrl,
     formData: req.body,
     file: req?.file,

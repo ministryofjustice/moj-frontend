@@ -29,7 +29,7 @@
 
       {{ govukInput({
         label: {
-          text: "What team did the internal accessibility review?",
+          text: page.fields.internalOrganisation.label,
           classes: "govuk-label--m"
         },
         id: "internal-organisation",
@@ -63,13 +63,13 @@
         ],
         fieldset: {
           legend: {
-            text: "When was the review?",
+            text: page.fields.auditDate.label,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "For example, 13 8 2024"
+          text: page.fields.auditDate.hint
         }
       }) }}
 
@@ -78,7 +78,7 @@
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
-          text: "Enter details about issues discovered by the internal review",
+          text: page.fields.issuesDiscovered.label,
           classes: "govuk-label--m",
           isPageHeading: true
         },

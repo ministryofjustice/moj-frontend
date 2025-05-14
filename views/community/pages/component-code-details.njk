@@ -25,7 +25,7 @@
       <p class="govuk-body">You can add more than one code example.</p>
       {{ govukInput({
         label: {
-          text: "What language is the code?",
+          text: page.fields.componentCodeLanguage.label,
           classes: "govuk-label--m"
         },
         id: "component-code-language",
@@ -33,7 +33,7 @@
         errorMessage: formErrors.componentCodeLanguage,
         value: formData.componentCodeLanguage,
         hint: {
-          text: "Enter a language such as HTML, CSS, SASS or Javascript. It's easier if the code is in one language."
+          text: page.fields.componentCodeLanguage.hint
         }
       }) }}
 
@@ -42,13 +42,13 @@
         id: "component-code-usage",
         maxwords: 250,
         label: {
-          text: "How do you use the code? (optional)",
+          text: page.fields.componentCodeUsage.label,
           classes: "govuk-label--m"
         },
         hint: {
-          text: "Include anything that helps users add the code to their service."
+          text: page.fields.componentCodeUsage.hint
         },
-        errorMessage: formErrors.componentCodeUsage,
+        errorMessage: formErcomponentCodeLanguages.componentCodeUsage,
         value: formData.componentCodeUsage
       }) }}
 
@@ -58,11 +58,11 @@
         maxlength: 10000,
         rows: 30,
         label: {
-          text: "Add the code",
+          text: page.fields.componentCode.label,
           classes: "govuk-label--m"
         },
         hint: {
-          text: "Add the code for the component only (not the full page) without any personally identifiable or sensitive information."
+          text: page.fields.componentCode.hint
         },
         errorMessage: formErrors.componentCode,
         value: formData.componentCode
