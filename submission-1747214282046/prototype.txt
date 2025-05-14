@@ -1,0 +1,3 @@
+{
+  "componentPrototypeUrl": "no"
+}
