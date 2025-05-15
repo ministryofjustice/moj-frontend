@@ -222,16 +222,18 @@ const config = {
     // componentImage: 'Supporting file'
   },
   CHECK_YOUR_ANSWERS: {
-    forms: [
-      'component-details',
-      'component-image',
-      'add-external-audit',
-      'add-internal-audit',
-      'add-assistive-tech',
-      ['prototype', 'prototype-url'],
-      ['figma', 'figma-link'],
-      ['component-code', 'component-code-details'],
-      'your-details'
+    sections: [
+      {
+        title: 'Component details',
+        data: ['component-details', 'component-image']
+      },
+      { title: 'External accessibility audit', data: ['add-external-audit'] },
+      { title: 'Internal accessibility review', data: ['add-internal-audit'] },
+      { title: 'Assistive technology testing', data: ['add-assistive-tech'] },
+      { title: 'Prototype', data: ['prototype', 'prototype-url'] },
+      { title: 'Figma', data: ['figma', 'figma-link'] },
+      { title: 'Code', data: ['component-code', 'component-code-details'] },
+      { title: 'Your details', data: ['your-details'] }
     ],
     canRemoveStatic: [
       '/accessibility-findings',
@@ -248,11 +250,7 @@ const config = {
       '/figma-link',
       '/component-code-details'
     ],
-    ignoreFields: [
-      // 'componentPrototypeUrl',
-      // 'figmaUrl',
-      // 'componentCodeAvailable'
-    ]
+    ignoreFields: []
   },
   SHARE_YOUR_DETAILS: {
     addNameToComponentPage: 'Add name and email address to component page',

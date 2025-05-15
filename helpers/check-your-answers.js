@@ -48,18 +48,20 @@ const humanReadableLabel = (field, form='') => {
  * @returns {object} - The formatted answers for govukSummaryList.
  */
 const answersFromSession = (forms, canRemove, session, ignoreFields) => {
-  return forms.reduce((acc, form) => {
-    if (Array.isArray(form)) {
-      const topLevelKey = toCamelCaseWithRows(form[0])
-      acc[topLevelKey] = form.flatMap((field) =>
+  // const answers = {}
+  // const key = toCamelCaseWithRows(forms[0])
+  // return forms.forEach((form) => {
+    // if (Array.isArray(forms)) {
+      // const topLevelKey = toCamelCaseWithRows(form[0])
+      return forms.flatMap((field) =>
         extractFieldData(field, session, canRemove, ignoreFields)
       )
-    } else {
-      const key = toCamelCaseWithRows(form)
-      acc[key] = extractFieldData(form, session, canRemove, ignoreFields)
-    }
-    return acc
-  }, {})
+    // } else {
+    //   const key = toCamelCaseWithRows(form)
+    //   acc[key] = extractFieldData(form, session, canRemove, ignoreFields)
+    // }
+  // })
+  // return answers
 }
 
 /**
@@ -231,7 +233,7 @@ const extractFieldData = (
  */
 const checkYourAnswers = (session) => {
   const {
-    forms, // The forms to extract answers from
+    sections, // The sections for the CYA page
     canRemoveStatic, // The fields that can be removed via a UI action
     canRemoveMultiples, // The fields that can be removed via a UI action (where we have dyamically multiple versions)
     ignoreFields // The fields to ignore i.e. not to display in the check your answers
@@ -244,15 +246,14 @@ const checkYourAnswers = (session) => {
       Array.from({ length: maxAddAnother }, (_, i) => `${item}/${i + 1}`)
     )
   ]
-  const answers = answersFromSession(forms, canRemove, session, ignoreFields)
-  console.log(answers)
-  if (answers.componentImageRows) {
-    answers.componentDetailsRows = answers.componentDetailsRows || []
-    answers.componentDetailsRows = [
-      ...answers.componentDetailsRows,
-      ...answers.componentImageRows
-    ]
-  }
+
+  const answers = []
+  sections.forEach((section) => {
+    answers.push({
+      title: section.title,
+      answers: answersFromSession(section.data, canRemove, session, ignoreFields)
+    })
+  })
   return answers
 }
 
