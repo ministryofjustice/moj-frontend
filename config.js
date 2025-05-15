@@ -204,7 +204,7 @@ const config = {
   ADD_NEW_COMPONENT_ROUTE: '/contribute/add-new-component',
   MAX_ADD_ANOTHER: 10,
   ACRONYMS_TO_UPPERCASE: ['url'],
-  CHECK_YOUR_ANSWERS_LABEL_MAPPING: {
+  CHECK_YOUR_ANSWERS_LABEL_OVERRIDES: {
     componentOverview: 'Component description',
     howIsTheComponentUsed: 'How the component is being used in your service',
     accessibilityReport: 'Audit report',
