@@ -1,0 +1,5 @@
+{
+  "componentCodeLanguage": "jaffa cakes",
+  "componentCodeUsage": "",
+  "componentCode": "e qoiy r"
+}
