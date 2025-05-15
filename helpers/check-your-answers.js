@@ -1,9 +1,10 @@
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ACRONYMS_TO_UPPERCASE: acronyms,
-  CHECK_YOUR_ANSWERS_LABEL_MAPPING,
+  CHECK_YOUR_ANSWERS_LABEL_OVERRIDES: labelOverrides,
   SHARE_YOUR_DETAILS: shareYourDetails,
   CHECK_YOUR_ANSWERS: checkYourAnswersConfig,
+  COMPONENT_FORM_PAGES: formPages,
   ADD_NEW_COMPONENT_ROUTE: hrefRoot
 } = require('../config')
 
@@ -16,7 +17,6 @@ const {
   sanitizeText
 } = require('./text-helper')
 
-const mappedLabels = Object.keys(CHECK_YOUR_ANSWERS_LABEL_MAPPING)
 const maxWords = 10000
 const shareYourDetailsKeys = Object.keys(shareYourDetails)
 
@@ -26,11 +26,16 @@ const shareYourDetailsKeys = Object.keys(shareYourDetails)
  * @param {string} text - The text label to convert.
  * @returns {string} - The human-readable label.
  */
-const humanReadableLabel = (text) => {
-  if (mappedLabels.includes(text)) {
-    return CHECK_YOUR_ANSWERS_LABEL_MAPPING[text]
+const humanReadableLabel = (field, form='') => {
+  if (Object.keys(labelOverrides).includes(field)) {
+    return labelOverrides[field]
   }
-  return humanReadableLabelText(text)
+  if(form) {
+    if (formPages[form]?.fields[field]?.label) {
+      return formPages[form]?.fields[field]?.label
+    }
+  }
+  return humanReadableLabelText(field)
 }
 
 /**
@@ -105,6 +110,7 @@ const extractFieldData = (
 ) => {
   const fieldName = field
   const fieldPath = `/${field}`
+  console.log(`extracting field data for: ${fieldName}`)
 
   // Remove ignored fields from session data
   const parsedSession = Object.entries(session).reduce((acc, [key, value]) => {
@@ -153,23 +159,27 @@ const extractFieldData = (
           )
         }
 
+        console.log(`display value: ${displayValue.value.text}`)
+
         if (canRemove.includes(key) && !removeAdded) {
           removeAdded = true
           actionItems.push({
             href: `${hrefRoot}/remove${key}`,
             text: 'Remove',
-            visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey)}`
+            visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey, fieldName)}`
           })
         }
 
         actionItems.push({
           href: `${hrefRoot}${key}`,
           text: 'Change',
-          visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey)}`
+          visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey, fieldName)}`
         })
 
+        console.log(`display key: ${formPages[fieldName]?.fields[subKey]?.label}`)
+
         return {
-          key: { text: replaceAcronyms(humanReadableLabel(subKey), acronyms) },
+          key: { text: humanReadableLabel(subKey, fieldName) },
           ...displayValue,
           actions: {
             items: actionItems
