@@ -1,0 +1,6 @@
+{
+  "fullName": "jjjj. eee-ehvu &&",
+  "emailAddress": "hnickols@yahoo.co.uk",
+  "teamName": "efiy o",
+  "shareYourDetails": "addNameToComponentPage"
+}
