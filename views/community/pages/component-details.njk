@@ -24,7 +24,7 @@
 
           {{ govukInput({
                 label: {
-                    text: "What’s the name of the component?",
+                    text: page.fields.componentName.label,
                     classes: "govuk-label--m"
                 },
                 id: "component-name",
@@ -38,7 +38,7 @@
                 id: "component-overview",
                 maxwords: 250,
                 label: {
-                    text: "Describe the component",
+                    text: page.fields.componentOverview.label,
                     classes: "govuk-label--m"
                 },
                 errorMessage: formErrors.componentOverview,
@@ -50,7 +50,7 @@
                 id: "how-is-the-component-used",
                 maxwords: 250,
                 label: {
-                    text: "How is the component being used?",
+                    text: page.fields.howIsTheComponentUsed.label,
                     classes: "govuk-label--m"
                 },
 
