@@ -78,27 +78,10 @@ router.get('*', (req, res, next) => {
 
 // Check your answers page
 router.get(`/${checkYourAnswersPath}`, sessionStarted, (req, res) => {
-  const {
-    componentDetailsRows,
-    prototypeRows,
-    componentCodeRows,
-    addExternalAuditRows,
-    addInternalAuditRows,
-    addAssistiveTechRows,
-    yourDetailsRows,
-    figmaRows
-  } = checkYourAnswers(req.session)
-
+  const sections = checkYourAnswers(req.session)
   res.render(checkYourAnswersPath, {
     submitUrl: req.originalUrl,
-    componentDetailsRows,
-    prototypeRows,
-    componentCodeRows,
-    addExternalAuditRows,
-    addInternalAuditRows,
-    addAssistiveTechRows,
-    yourDetailsRows,
-    figmaRows,
+    sections,
     csrfToken: req?.session?.csrfToken
   })
 })
