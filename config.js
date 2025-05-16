@@ -227,9 +227,39 @@ const config = {
         title: 'Component details',
         data: ['component-details', 'component-image']
       },
-      { title: 'External accessibility audit', data: ['add-external-audit'] },
-      { title: 'Internal accessibility review', data: ['add-internal-audit'] },
-      { title: 'Assistive technology testing', data: ['add-assistive-tech'] },
+      {
+        title: 'External accessibility audit',
+        data: [
+          {
+            'accessibility-findings': {
+              includeFields: ['hasComponentBeenTestedExternalAccessibility']
+            }
+          },
+          'add-external-audit'
+        ]
+      },
+      {
+        title: 'Internal accessibility review',
+        data: [
+          {
+            'accessibility-findings': {
+              includeFields: ['hasComponentBeenTestedInternalAudit']
+            }
+          },
+          'add-internal-audit'
+        ]
+      },
+      {
+        title: 'Assistive technology testing',
+        data: [
+          {
+            'accessibility-findings': {
+              includeFields: ['hasComponentBeenTestedUsingAssistiveTechnology']
+            }
+          },
+          'add-assistive-tech'
+        ]
+      },
       { title: 'Prototype', data: ['prototype', 'prototype-url'] },
       { title: 'Figma', data: ['figma', 'figma-link'] },
       { title: 'Code', data: ['component-code', 'component-code-details'] },

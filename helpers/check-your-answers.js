@@ -26,11 +26,11 @@ const shareYourDetailsKeys = Object.keys(shareYourDetails)
  * @param {string} text - The text label to convert.
  * @returns {string} - The human-readable label.
  */
-const humanReadableLabel = (field, form='') => {
+const humanReadableLabel = (field, form = '') => {
   if (Object.keys(labelOverrides).includes(field)) {
     return labelOverrides[field]
   }
-  if(form) {
+  if (form) {
     if (formPages[form]?.fields[field]?.label) {
       return formPages[form]?.fields[field]?.label
     }
@@ -41,27 +41,30 @@ const humanReadableLabel = (field, form='') => {
 /**
  * Extracts and formats answers from session data based on provided forms.
  *
- * @param {Array} forms - The forms to extract answers from.
- * @param {Array} canRemove - The fields that can be removed via a UI action.
+ * @param {Array} data - The forms and config to extract answers from.
  * @param {object} session - The session data.
- * @param {Array} ignoreFields - The fields to ignore.
+ * @param {Array} canRemove - The fields that can be removed via a UI action.
  * @returns {object} - The formatted answers for govukSummaryList.
  */
-const answersFromSession = (forms, canRemove, session, ignoreFields) => {
-  // const answers = {}
-  // const key = toCamelCaseWithRows(forms[0])
-  // return forms.forEach((form) => {
-    // if (Array.isArray(forms)) {
-      // const topLevelKey = toCamelCaseWithRows(form[0])
-      return forms.flatMap((field) =>
-        extractFieldData(field, session, canRemove, ignoreFields)
-      )
-    // } else {
-    //   const key = toCamelCaseWithRows(form)
-    //   acc[key] = extractFieldData(form, session, canRemove, ignoreFields)
-    // }
-  // })
-  // return answers
+const answersFromSession = (data, session, canRemove) => {
+  const answers = []
+  const defaultConfig = { removableFields: canRemove }
+  data.forEach((form) => {
+    console.log(form)
+    if (typeof form === 'object') {
+      console.log('form is an object')
+      for (const [formName, formConfig] of Object.entries(form)) {
+        console.log(formConfig)
+        const config = Object.assign({}, defaultConfig, formConfig)
+        console.log(config)
+        answers.push(...extractFieldData(formName, session, config))
+      }
+    } else {
+        answers.push(...extractFieldData(form, session, defaultConfig))
+    }
+  })
+  console.log(answers)
+  return answers
 }
 
 /**
@@ -104,29 +107,64 @@ const shareYourDetailsValueReplacement = (value) => {
  * @param {Array} [ignoreFields] - The fields to ignore.
  * @returns {Array} - The extracted and formatted field data.
  */
-const extractFieldData = (
-  field,
-  session,
-  canRemove = [],
-  ignoreFields = []
-) => {
+// TODO: We don't need the whole session here! only the form we;re extracting
+// for.
+// TODO: Rename this function - extracFieldDataFromForm(form, session, options)
+const extractFieldData = (field, session, options = {}) => {
+  const defaults = {
+    removableFields: [],
+    excludeFields: [],
+    includeFields: []
+  }
+  const opts = Object.assign({}, defaults, options)
+console.log(opts)
   const fieldName = field
   const fieldPath = `/${field}`
   console.log(`extracting field data for: ${fieldName}`)
 
-  // Remove ignored fields from session data
-  const parsedSession = Object.entries(session).reduce((acc, [key, value]) => {
-    if (typeof value === 'object' && !Array.isArray(value)) {
-      ignoreFields.forEach((ignoreField) => {
-        if (value && typeof value === 'object' && ignoreField in value) {
-          // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-          delete value[ignoreField]
-        }
-      })
+  let parsedSession = {}
+
+  if(opts.includeFields.length > 0) {
+    console.log('only including specified fields')
+    for(const [key, value] of Object.entries(session)) {
+      if (typeof value === 'object' && !Array.isArray(value)) {
+
+            Object.keys(value).forEach(function(field){
+              console.log(field)
+              console.log(opts.includeFields)
+              if(opts.includeFields.includes(field) ) {
+                console.log('field should be included')
+                parsedSession[key] = {}
+                parsedSession[key][field] = value[field]
+              }
+            });
+
+      }
     }
-    acc[key] = value
-    return acc
-  }, {})
+  } else {
+    console.log('using whole session')
+    parsedSession = Object.assign({}, session)
+  }
+
+
+  // Remove excluded fields from session data
+  if(opts.excludeFields.length > 0) {
+    console.log('excluding fields')
+    parsedSession = Object.entries(parsedSession).reduce((acc, [key, value]) => {
+      if (typeof value === 'object' && !Array.isArray(value)) {
+        opts.excludeFields.forEach((excludeField) => {
+          if (value && typeof value === 'object' && excludeField in value) {
+            // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+            delete value[excludeField]
+          }
+        })
+      }
+      acc[key] = value
+      return acc
+    }, {})
+  }
+
+  console.log(parsedSession)
 
   // Collect all entries that match the field pattern (e.g., /foo, /foo/1, /foo/2)
   const fieldPattern = new RegExp(`^${fieldPath}(?:/\\d+)?$`)
@@ -163,7 +201,7 @@ const extractFieldData = (
 
         console.log(`display value: ${displayValue.value.text}`)
 
-        if (canRemove.includes(key) && !removeAdded) {
+        if (opts.removableFields.includes(key) && !removeAdded) {
           removeAdded = true
           actionItems.push({
             href: `${hrefRoot}/remove${key}`,
@@ -178,7 +216,9 @@ const extractFieldData = (
           visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey, fieldName)}`
         })
 
-        console.log(`display key: ${formPages[fieldName]?.fields[subKey]?.label}`)
+        console.log(
+          `display key: ${formPages[fieldName]?.fields[subKey]?.label}`
+        )
 
         return {
           key: { text: humanReadableLabel(subKey, fieldName) },
@@ -192,7 +232,7 @@ const extractFieldData = (
 
     const actionItems = []
 
-    if (canRemove.includes(key)) {
+    if (opts.removableFields.includes(key)) {
       actionItems.push({
         href: `${hrefRoot}/remove${key}`,
         text: 'Remove',
@@ -235,8 +275,7 @@ const checkYourAnswers = (session) => {
   const {
     sections, // The sections for the CYA page
     canRemoveStatic, // The fields that can be removed via a UI action
-    canRemoveMultiples, // The fields that can be removed via a UI action (where we have dyamically multiple versions)
-    ignoreFields // The fields to ignore i.e. not to display in the check your answers
+    canRemoveMultiples // The fields that can be removed via a UI action (where we have dyamically multiple versions)
   } = checkYourAnswersConfig
 
   // Generate a list of fields that can be removed
@@ -251,9 +290,10 @@ const checkYourAnswers = (session) => {
   sections.forEach((section) => {
     answers.push({
       title: section.title,
-      answers: answersFromSession(section.data, canRemove, session, ignoreFields)
+      answers: answersFromSession(section.data, session, canRemove)
     })
   })
+  console.log(answers)
   return answers
 }
 
