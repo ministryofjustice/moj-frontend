@@ -22,7 +22,6 @@
     <form method="post" action="{{ submitUrl }}" data-add-another-container>
       <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Component code</h1>
-      <p class="govuk-body">We recommend sending HTML, CSS, SASS, Javascript or Nunjucks.</p>
       <p class="govuk-body">You should only send the component code. It should not contain any personally identifiable or sensitive information. You can add more than one code example.</p>
       {% set otherHtml %}
       {{ govukInput({
@@ -33,7 +32,7 @@
         type: "text",
         classes: "govuk-!-width-one-third",
         label: {
-          text: "Other code language"
+          text: "Enter the code language"
         }
       }) }}
       {% endset -%}
@@ -43,11 +42,11 @@
         errorMessage: formErrors.componentCodeLanguage,
         value: formData.componentCodeLanguage,
         hint: {
-          text: "If possible, the code should be in one language to make it easier for others to reuse."
+          text: "If you have code in 2 or more languages you can add another code example."
         },
         fieldset: {
           legend: {
-            text: "What language is the code written in?",
+            text: "Select the code language",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
@@ -70,9 +69,6 @@
             text: "JavaScript"
           },
           {
-            divider: "or"
-          },
-          {
             value: "other",
             text: "Other",
             conditional: {
@@ -80,6 +76,19 @@
             }
           }
         ]
+      }) }}
+
+      {{ govukCharacterCount({
+        name: "componentCode",
+        id: "component-code",
+        maxlength: 10000,
+        rows: 30,
+        label: {
+          text: "Add the code",
+          classes: "govuk-label--m"
+        },
+        errorMessage: formErrors.componentCode,
+        value: formData.componentCode
       }) }}
 
       {{ govukCharacterCount({
@@ -95,22 +104,6 @@
         },
         errorMessage: formErcomponentCodeLanguages.componentCodeUsage,
         value: formData.componentCodeUsage
-      }) }}
-
-      {{ govukCharacterCount({
-        name: "componentCode",
-        id: "component-code",
-        maxlength: 10000,
-        rows: 30,
-        label: {
-          text: page.fields.componentCode.label,
-          classes: "govuk-label--m"
-        },
-        hint: {
-          text: page.fields.componentCode.hint
-        },
-        errorMessage: formErrors.componentCode,
-        value: formData.componentCode
       }) }}
 
       <input type="hidden" name="_csrf" value="{{ csrfToken }}" />

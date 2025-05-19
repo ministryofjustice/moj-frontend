@@ -9,8 +9,8 @@ const schema = addAnotherSchema.append({
     .required()
     .label('What language is the code written in?')
     .messages({
-      'any.required': 'Select the language the code is written in',
-      'string.empty': 'Select the language the code is written in'
+      'any.required': 'Select a code language from the list',
+      'string.empty': 'Select a code language from the list'
     }),
     componentCodeLanguageOther: Joi.string()
     .label('Other code language')
