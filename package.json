@@ -132,7 +132,7 @@
     "eslint-plugin-markdown": "^5.1.0",
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.6.0",
-    "glob": "^11.0.1",
+    "glob": "^11.0.2",
     "govuk-prototype-kit": "^13.16.2",
     "gray-matter": "^4.0.3",
     "gulp": "^5.0.0",
@@ -170,7 +170,7 @@
     "stylelint": "^16.19.1",
     "stylelint-config-gds": "^2.0.0",
     "stylelint-order": "^6.0.4",
-    "supertest": "^7.1.0",
+    "supertest": "^7.1.1",
     "terser": "^5.39.2",
     "typed-query-selector": "^2.12.0",
     "typescript": "^5.8.3"
