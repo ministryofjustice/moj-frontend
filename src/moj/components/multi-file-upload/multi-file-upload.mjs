@@ -126,7 +126,7 @@ MultiFileUpload.prototype.getFileRowHtml = function (file) {
       <div class="govuk-summary-list__value moj-multi-file-upload__message">
     <span class="moj-multi-file-upload__filename">${file.name}</span>
     <span class="moj-multi-file-upload__progress">0%</span>
-      </div>'
+      </div>
       <div class="govuk-summary-list__actions moj-multi-file-upload__actions"></div>
     </div>`
   return html
