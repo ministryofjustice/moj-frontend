@@ -13,7 +13,7 @@ const generateMarkdown = (data, files) => {
   const filename = `${documentationDirectory}/${sanitizedComponentName}.md`
   const generateLinksSection = (data) => {
     const noLinks =
-      'No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.\n'
+      'No prototypes or design files have been added for this component. If you have used this component in your service and you have a prototype you can share it here.\n'
 
     let content = ''
     let prototypeContent = ''
@@ -57,7 +57,7 @@ ${figma?.figmaLinkAdditionalInformation || ''}
     const contentHeading =
       'If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.\n'
     const noContent =
-      'No accessibility findings have been contributed for this component.\n'
+      'No accessibility findings have been added for this component.\n'
     let content = ''
     const externalAudit = data['/add-external-audit']
     const externalAuditFile = files?.['/add-external-audit']
@@ -129,7 +129,7 @@ ${figma?.figmaLinkAdditionalInformation || ''}
 
   const generateComponentCodeSection = (data) => {
     const noCode =
-      'No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.\n'
+      'No code has been added for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.\n'
 
     let content = ''
     let n = 1
