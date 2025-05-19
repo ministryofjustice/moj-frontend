@@ -14,7 +14,7 @@ You can use the MoJ Design System to share your work with others. This is throug
 
 ## Adding a building block
 
-You can now add a builsing block to the MoJ Design System. You might want to do this to:
+You can now add a building block to the MoJ Design System. You might want to do this to:
 
 - make it easier for teams across government to find your work
 - get contributions from other people to help the building block develop

@@ -285,7 +285,7 @@ router.post(
     if (req.file) {
       req.session.sessionFlash = {
         type: 'success',
-        message: `File ‘${req.file.originalname}’ successfully uploaded.`
+        message: `File ‘${req.file.originalname}’ has been uploaded.`
       }
       saveSession(req, res, next)
     } else {
