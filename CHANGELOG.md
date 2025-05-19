@@ -1,3 +1,10 @@
+## [3.7.2](https://github.com/ministryofjustice/moj-frontend/compare/v3.7.1...v3.7.2) (2025-05-19)
+
+
+### Bug Fixes
+
+* **multifile upload:** remove extraneous single quote ([5894dbd](https://github.com/ministryofjustice/moj-frontend/commit/5894dbd6fe6fca6ed1901f395332fe68f99af9a7))
+
 ## [3.7.1](https://github.com/ministryofjustice/moj-frontend/compare/v3.7.0...v3.7.1) (2025-04-16)
 
 
