@@ -2,7 +2,8 @@ const crypto = require('crypto')
 
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
-  ADD_NEW_COMPONENT_ROUTE
+  ADD_NEW_COMPONENT_ROUTE,
+  COMPONENT_FORM_PAGES
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const extractBody = require('../helpers/extract-body')
@@ -52,9 +53,12 @@ const errorTemplateVariables = (
   errorList,
   formErrorStyles = null
 ) => {
+  const page = req.params.page || req.url.replace('/', '')
   return {
+    page: COMPONENT_FORM_PAGES[page],
     submitUrl: req.originalUrl,
     formData: req.body,
+    file: req?.file,
     formErrorStyles,
     formErrors,
     errorList,
@@ -67,6 +71,7 @@ const errorTemplateVariables = (
 }
 
 const validateFormDataFileUpload = (err, req, res, next) => {
+  console.log('validate form data file uplaod')
   if (err.code === 'LIMIT_FILE_SIZE') {
     const errorMessage = 'The selected file must be smaller than 10MB'
     const formErrors = {}
@@ -85,11 +90,15 @@ const validateFormDataFileUpload = (err, req, res, next) => {
 }
 
 const validateFormData = (req, res, next) => {
+  console.log('validate form data')
   const schemaName = req.url.split('/')[1]
   const schema = require(`../schema/${schemaName}.schema`)
   const body = extractBody(req?.url, { ...req.body })
   delete body._csrf
+  console.log(req?.file?.fieldname)
+  console.log(req?.file?.originalname)
   if (req?.file?.fieldname && req?.file?.originalname) {
+    console.log('theres a file!')
     body[req.file.fieldname] = req.file.originalname
   }
   const { error } = schema.validate(body, { abortEarly: false })
@@ -233,6 +242,17 @@ const getBackLink = (req, res, next) => {
 
 const removeFromSession = (req, res, next) => {
   const url = req.url.replace(/\/(remove|change)/, '')
+
+  if (req.params.page === 'component-image') {
+    const filename = req.session[url]?.componentImage?.originalname
+    console.log(filename)
+    if (filename) {
+      req.session.sessionFlash = {
+        type: 'success',
+        message: `File ‘${filename}’ removed.`
+      }
+    }
+  }
   // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
   delete req.session[url]
   next()

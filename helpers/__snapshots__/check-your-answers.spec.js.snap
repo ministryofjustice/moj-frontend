@@ -146,11 +146,6 @@ exports[`checkYourAnswers function should transform session data into the expect
       "actions": {
         "items": [
           {
-            "href": "/contribute/add-new-component/remove/component-image",
-            "text": "Remove",
-            "visuallyHiddenText": "Component Image - Image",
-          },
-          {
             "href": "/contribute/add-new-component/component-image",
             "text": "Change",
             "visuallyHiddenText": "Component Image - Image",
@@ -169,11 +164,6 @@ exports[`checkYourAnswers function should transform session data into the expect
     {
       "actions": {
         "items": [
-          {
-            "href": "/contribute/add-new-component/remove/component-image",
-            "text": "Remove",
-            "visuallyHiddenText": "Component Image - Image",
-          },
           {
             "href": "/contribute/add-new-component/component-image",
             "text": "Change",

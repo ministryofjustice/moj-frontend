@@ -1,9 +1,10 @@
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ACRONYMS_TO_UPPERCASE: acronyms,
-  CHECK_YOUR_ANSWERS_LABEL_MAPPING,
+  CHECK_YOUR_ANSWERS_LABEL_OVERRIDES: labelOverrides,
   SHARE_YOUR_DETAILS: shareYourDetails,
   CHECK_YOUR_ANSWERS: checkYourAnswersConfig,
+  COMPONENT_FORM_PAGES: formPages,
   ADD_NEW_COMPONENT_ROUTE: hrefRoot
 } = require('../config')
 
@@ -16,7 +17,6 @@ const {
   sanitizeText
 } = require('./text-helper')
 
-const mappedLabels = Object.keys(CHECK_YOUR_ANSWERS_LABEL_MAPPING)
 const maxWords = 10000
 const shareYourDetailsKeys = Object.keys(shareYourDetails)
 
@@ -26,35 +26,45 @@ const shareYourDetailsKeys = Object.keys(shareYourDetails)
  * @param {string} text - The text label to convert.
  * @returns {string} - The human-readable label.
  */
-const humanReadableLabel = (text) => {
-  if (mappedLabels.includes(text)) {
-    return CHECK_YOUR_ANSWERS_LABEL_MAPPING[text]
+const humanReadableLabel = (field, form = '') => {
+  if (Object.keys(labelOverrides).includes(field)) {
+    return labelOverrides[field]
   }
-  return humanReadableLabelText(text)
+  if (form) {
+    if (formPages[form]?.fields[field]?.label) {
+      return formPages[form]?.fields[field]?.label
+    }
+  }
+  return humanReadableLabelText(field)
 }
 
 /**
  * Extracts and formats answers from session data based on provided forms.
  *
- * @param {Array} forms - The forms to extract answers from.
- * @param {Array} canRemove - The fields that can be removed via a UI action.
+ * @param {Array} data - The forms and config to extract answers from.
  * @param {object} session - The session data.
- * @param {Array} ignoreFields - The fields to ignore.
+ * @param {Array} canRemove - The fields that can be removed via a UI action.
  * @returns {object} - The formatted answers for govukSummaryList.
  */
-const answersFromSession = (forms, canRemove, session, ignoreFields) => {
-  return forms.reduce((acc, form) => {
-    if (Array.isArray(form)) {
-      const topLevelKey = toCamelCaseWithRows(form[0])
-      acc[topLevelKey] = form.flatMap((field) =>
-        extractFieldData(field, session, canRemove, ignoreFields)
-      )
+const answersFromSession = (data, session, canRemove) => {
+  const answers = []
+  const defaultConfig = { removableFields: canRemove }
+  data.forEach((form) => {
+    console.log(form)
+    if (typeof form === 'object') {
+      console.log('form is an object')
+      for (const [formName, formConfig] of Object.entries(form)) {
+        console.log(formConfig)
+        const config = Object.assign({}, defaultConfig, formConfig)
+        console.log(config)
+        answers.push(...extractFieldData(formName, session, config))
+      }
     } else {
-      const key = toCamelCaseWithRows(form)
-      acc[key] = extractFieldData(form, session, canRemove, ignoreFields)
+        answers.push(...extractFieldData(form, session, defaultConfig))
     }
-    return acc
-  }, {})
+  })
+  console.log(answers)
+  return answers
 }
 
 /**
@@ -97,28 +107,64 @@ const shareYourDetailsValueReplacement = (value) => {
  * @param {Array} [ignoreFields] - The fields to ignore.
  * @returns {Array} - The extracted and formatted field data.
  */
-const extractFieldData = (
-  field,
-  session,
-  canRemove = [],
-  ignoreFields = []
-) => {
+// TODO: We don't need the whole session here! only the form we;re extracting
+// for.
+// TODO: Rename this function - extracFieldDataFromForm(form, session, options)
+const extractFieldData = (field, session, options = {}) => {
+  const defaults = {
+    removableFields: [],
+    excludeFields: [],
+    includeFields: []
+  }
+  const opts = Object.assign({}, defaults, options)
+console.log(opts)
   const fieldName = field
   const fieldPath = `/${field}`
+  console.log(`extracting field data for: ${fieldName}`)
 
-  // Remove ignored fields from session data
-  const parsedSession = Object.entries(session).reduce((acc, [key, value]) => {
-    if (typeof value === 'object' && !Array.isArray(value)) {
-      ignoreFields.forEach((ignoreField) => {
-        if (value && typeof value === 'object' && ignoreField in value) {
-          // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-          delete value[ignoreField]
-        }
-      })
+  let parsedSession = {}
+
+  if(opts.includeFields.length > 0) {
+    console.log('only including specified fields')
+    for(const [key, value] of Object.entries(session)) {
+      if (typeof value === 'object' && !Array.isArray(value)) {
+
+            Object.keys(value).forEach(function(field){
+              console.log(field)
+              console.log(opts.includeFields)
+              if(opts.includeFields.includes(field) ) {
+                console.log('field should be included')
+                parsedSession[key] = {}
+                parsedSession[key][field] = value[field]
+              }
+            });
+
+      }
     }
-    acc[key] = value
-    return acc
-  }, {})
+  } else {
+    console.log('using whole session')
+    parsedSession = Object.assign({}, session)
+  }
+
+
+  // Remove excluded fields from session data
+  if(opts.excludeFields.length > 0) {
+    console.log('excluding fields')
+    parsedSession = Object.entries(parsedSession).reduce((acc, [key, value]) => {
+      if (typeof value === 'object' && !Array.isArray(value)) {
+        opts.excludeFields.forEach((excludeField) => {
+          if (value && typeof value === 'object' && excludeField in value) {
+            // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+            delete value[excludeField]
+          }
+        })
+      }
+      acc[key] = value
+      return acc
+    }, {})
+  }
+
+  console.log(parsedSession)
 
   // Collect all entries that match the field pattern (e.g., /foo, /foo/1, /foo/2)
   const fieldPattern = new RegExp(`^${fieldPath}(?:/\\d+)?$`)
@@ -153,23 +199,29 @@ const extractFieldData = (
           )
         }
 
-        if (canRemove.includes(key) && !removeAdded) {
+        console.log(`display value: ${displayValue.value.text}`)
+
+        if (opts.removableFields.includes(key) && !removeAdded) {
           removeAdded = true
           actionItems.push({
             href: `${hrefRoot}/remove${key}`,
             text: 'Remove',
-            visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey)}`
+            visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey, fieldName)}`
           })
         }
 
         actionItems.push({
           href: `${hrefRoot}${key}`,
           text: 'Change',
-          visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey)}`
+          visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey, fieldName)}`
         })
 
+        console.log(
+          `display key: ${formPages[fieldName]?.fields[subKey]?.label}`
+        )
+
         return {
-          key: { text: replaceAcronyms(humanReadableLabel(subKey), acronyms) },
+          key: { text: humanReadableLabel(subKey, fieldName) },
           ...displayValue,
           actions: {
             items: actionItems
@@ -180,7 +232,7 @@ const extractFieldData = (
 
     const actionItems = []
 
-    if (canRemove.includes(key)) {
+    if (opts.removableFields.includes(key)) {
       actionItems.push({
         href: `${hrefRoot}/remove${key}`,
         text: 'Remove',
@@ -221,10 +273,9 @@ const extractFieldData = (
  */
 const checkYourAnswers = (session) => {
   const {
-    forms, // The forms to extract answers from
+    sections, // The sections for the CYA page
     canRemoveStatic, // The fields that can be removed via a UI action
-    canRemoveMultiples, // The fields that can be removed via a UI action (where we have dyamically multiple versions)
-    ignoreFields // The fields to ignore i.e. not to display in the check your answers
+    canRemoveMultiples // The fields that can be removed via a UI action (where we have dyamically multiple versions)
   } = checkYourAnswersConfig
 
   // Generate a list of fields that can be removed
@@ -234,15 +285,15 @@ const checkYourAnswers = (session) => {
       Array.from({ length: maxAddAnother }, (_, i) => `${item}/${i + 1}`)
     )
   ]
-  const answers = answersFromSession(forms, canRemove, session, ignoreFields)
+
+  const answers = []
+  sections.forEach((section) => {
+    answers.push({
+      title: section.title,
+      answers: answersFromSession(section.data, session, canRemove)
+    })
+  })
   console.log(answers)
-  if (answers.componentImageRows) {
-    answers.componentDetailsRows = answers.componentDetailsRows || []
-    answers.componentDetailsRows = [
-      ...answers.componentDetailsRows,
-      ...answers.componentImageRows
-    ]
-  }
   return answers
 }
 

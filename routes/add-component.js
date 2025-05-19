@@ -78,27 +78,10 @@ router.get('*', (req, res, next) => {
 
 // Check your answers page
 router.get(`/${checkYourAnswersPath}`, sessionStarted, (req, res) => {
-  const {
-    componentDetailsRows,
-    prototypeRows,
-    componentCodeRows,
-    addExternalAuditRows,
-    addInternalAuditRows,
-    addAssistiveTechRows,
-    yourDetailsRows,
-    figmaRows
-  } = checkYourAnswers(req.session)
-
+  const sections = checkYourAnswers(req.session)
   res.render(checkYourAnswersPath, {
     submitUrl: req.originalUrl,
-    componentDetailsRows,
-    prototypeRows,
-    componentCodeRows,
-    addExternalAuditRows,
-    addInternalAuditRows,
-    addAssistiveTechRows,
-    yourDetailsRows,
-    figmaRows,
+    sections,
     csrfToken: req?.session?.csrfToken
   })
 })
@@ -203,7 +186,9 @@ router.get(
   getBackLink,
   (req, res) => {
     res.render(`${req.params.page}`, {
+      page: COMPONENT_FORM_PAGES[req.params.page],
       submitUrl: req.originalUrl,
+      sessionFlash: res.locals.sessionFlash,
       formData: req?.formData,
       addAnother: req?.addAnother,
       showAddAnother: req?.showAddAnother,
@@ -271,6 +256,10 @@ router.post(
   validateFormData,
   (req, res, next) => {
     if (req.file) {
+      req.session.sessionFlash = {
+        type: 'success',
+        message: `File ‘${req.file.originalname}’ successfully uploaded.`
+      }
       saveSession(req, res, next)
     } else {
       // Skipping saving as no new file uploaded
@@ -278,6 +267,11 @@ router.post(
     }
   },
   (req, res, next) => {
+    if (req.file) {
+      console.log(req.file)
+      // return to same page after upload
+      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.url}`)
+    }
     if (req.nextPage) {
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.nextPage}`)
     } else {
