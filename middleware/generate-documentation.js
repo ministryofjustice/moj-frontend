@@ -140,6 +140,8 @@ ${figma?.figmaLinkAdditionalInformation || ''}
 
 ### ${componentCodeDetails?.componentCodeLanguage || ''}
 
+### ${componentCodeDetails?.componentCodeLanguageOther || ''}
+
 ${componentCodeDetails?.componentCodeUsage || ''}
 
 <div class="app-example app-example-borders">

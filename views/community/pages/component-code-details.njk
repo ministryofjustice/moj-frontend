@@ -1,4 +1,5 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
@@ -21,20 +22,61 @@
     <form method="post" action="{{ submitUrl }}" data-add-another-container>
       <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Component code</h1>
-      <p class="govuk-body">Send the code for the component and not the full page. This makes it easier for other people to understand and use.</p>
-      <p class="govuk-body">You can add more than one code example.</p>
+      <p class="govuk-body">We recommend sending HTML, CSS, SASS, Javascript or Nunjucks.</p>
+      <p class="govuk-body">You should only send the component code. It should not contain any personally identifiable or sensitive information. You can add more than one code example.</p>
+      {% set otherHtml %}
       {{ govukInput({
+        id: "component-code-language-other",
+        name: "componentCodeLanguageOther",
+        errorMessage: formErrors.componentCodeLanguageOther,
+        value: formData.componentCodeLanguageOther,
+        type: "text",
+        classes: "govuk-!-width-one-third",
         label: {
-          text: page.fields.componentCodeLanguage.label,
-          classes: "govuk-label--m"
-        },
+          text: "Other code language"
+        }
+      }) }}
+      {% endset -%}
+      {{ govukRadios({
         id: "component-code-language",
         name: "componentCodeLanguage",
         errorMessage: formErrors.componentCodeLanguage,
         value: formData.componentCodeLanguage,
         hint: {
-          text: page.fields.componentCodeLanguage.hint
-        }
+          text: "If possible, the code should be in one language to make it easier for others to reuse."
+        },
+        fieldset: {
+          legend: {
+            text: "What language is the code written in?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "html",
+            text: "HTML"
+          },
+          {
+            value: "css",
+            text: "CSS"
+          },
+          {
+            value: "sass",
+            text: "SASS"
+          },
+          {
+            value: "javascript",
+            text: "JavaScript"
+          },
+          {
+            value: "other",
+            text: "Other",
+            conditional: {
+              html: otherHtml
+            }
+          }
+        ]
       }) }}
 
       {{ govukCharacterCount({
