@@ -19,7 +19,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 1 April 2025
+Last updated: 20 May 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -301,6 +301,10 @@ Staff in some prisons may also refer to non-associations as:
 
 {% endaccordionSection %}
 {% accordionSection "O" %}
+
+### OASys
+
+OASys is an abbreviation of Offender Assessment System, which is used by staff across prisons and probation to complete risk and need assessments. The term is well known and widely understood in its abbreviated form. It is consistently written with the capitalisation OASys.
 
 ### offender or ex-offender
 
