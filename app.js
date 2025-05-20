@@ -98,9 +98,12 @@ app.get("/contribute/debug-sentry", function mainHandler(req, res) {
   throw new Error("My first Sentry error!");
 });
 
-// Fallback route to homepage
+// Fallback route to 404
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+  // res.sendFile(path.join(__dirname, 'public', 'index.html'))
+   res.status(404).render('error', {
+    message: 'Page not found.',
+  })
 })
 
 // The error handler must be registered before any other error middleware and after all controllers
