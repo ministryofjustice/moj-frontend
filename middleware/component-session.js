@@ -159,6 +159,12 @@ const saveSession = (req, res, next) => {
     }
   }
 
+  // prevent prototype pollution
+  if (req.url === '__proto__' || req.url === 'constructor' || req.url === 'prototype') {
+    res.end(403);
+    return;
+  }
+
   req.session[req.url] = { ...req.session[req.url], ...body }
   delete req.session[req.url].addAnother
 
