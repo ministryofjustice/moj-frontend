@@ -17,7 +17,7 @@ backLink: /content-standards/style-guide/
     </tr>
     <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="/content-standards/style-guide#OASys"><b>OASys</b></a>
+            <a href="/content-standards/style-guide#oasys"><b>OASys</b></a>
           </td>
           <td class="govuk-table__cell">
             <span class="govuk-tag govuk-tag--green">New</span>
