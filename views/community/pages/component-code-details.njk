@@ -32,7 +32,7 @@
         type: "text",
         classes: "govuk-!-width-one-third",
         label: {
-          text: "Enter the code language"
+          text: page.fields.componentCodeLanguageOther.label
         }
       }) }}
       {% endset -%}
@@ -42,11 +42,11 @@
         errorMessage: formErrors.componentCodeLanguage,
         value: formData.componentCodeLanguage,
         hint: {
-          text: "If you have code in 2 or more languages you can add another code example."
+          text: page.fields.componentCodeLanguage.hint
         },
         fieldset: {
           legend: {
-            text: "Select the code language",
+            text: page.fields.componentCodeLanguage.label,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
