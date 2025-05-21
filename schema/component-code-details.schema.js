@@ -12,7 +12,7 @@ const schema = addAnotherSchema.append({
       'any.required': 'Select a code language from the list',
       'string.empty': 'Select a code language from the list'
     }),
-    componentCodeLanguageOther: Joi.string()
+  componentCodeLanguageOther: Joi.string()
     .label('Other code language')
     .when('componentCodeLanguage', {
       is: 'other',

@@ -145,10 +145,10 @@ const config = {
       fields: {
         componentCodeLanguage: {
           label: 'Select the code language',
-          hint: "If you have code in 2 or more languages you can add another code example."
+          hint: 'If you have code in 2 or more languages you can add another code example.'
         },
         componentCodeLanguageOther: {
-          label:  "Enter the code language"
+          label: 'Enter the code language'
         },
         componentCodeUsage: {
           label: 'How do you use the code? (optional)',
