@@ -52,13 +52,13 @@
         ],
         fieldset: {
           legend: {
-            text: "When was the component tested with assistive technology?",
+            text: page.fields.testingDate.label,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "For example, 13 8 2024"
+          text: page.fields.testingDate.hint
         }
       }) }}
 
@@ -67,7 +67,7 @@
         name: "issuesDiscovered",
         maxwords: 250,
         label: {
-          text: "Enter details about issues discovered by the assistive technology testing",
+          text: page.fields.issuesDiscovered.label,
           classes: "govuk-label--m",
           isPageHeading: true
         },

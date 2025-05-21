@@ -140,7 +140,7 @@ ${figma?.figmaLinkAdditionalInformation || ''}
 
 ### ${componentCodeDetails?.componentCodeLanguage || ''}
 
-${componentCodeDetails?.componentCodeUsage || ''}
+### ${componentCodeDetails?.componentCodeLanguageOther || ''}
 
 <div class="app-example app-example-borders">
 
@@ -149,7 +149,9 @@ ${componentCodeDetails?.componentCode || ''}
 \`\`\`
 
 </div>
+${componentCodeDetails?.componentCodeUsage || ''}
 `
+
       n++
     }
     return content.length ? content : noCode

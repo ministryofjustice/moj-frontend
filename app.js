@@ -94,9 +94,12 @@ app.use(express.json())
 // Routes
 app.use('/contribute/add-new-component', addComponentRoutes)
 
-// Fallback route to homepage
+// Fallback route to 404
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+  // res.sendFile(path.join(__dirname, 'public', 'index.html'))
+  res.status(404).render('error', {
+    message: 'Page not found.'
+  })
 })
 
 // The error handler must be registered before any other error middleware and after all controllers
@@ -108,6 +111,10 @@ Sentry.setupExpressErrorHandler(app)
  **/
 app.use((err, req, res, next) => {
   console.error(`Error: ${err.message}`) // Log the error to the console
+  // res.status(500).render('error', {
+  //   message: 'Something went wrong. Please try again later.',
+  //   errorDetails: isDev ? err.message : undefined // Only show detailed error messages in dev mode
+  // })
   res.statusCode = 500
   res.end(`${res.sentry}\n`)
 })
