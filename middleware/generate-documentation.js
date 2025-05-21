@@ -149,10 +149,8 @@ ${componentCodeDetails?.componentCode || ''}
 \`\`\`
 
 </div>
-`
-
 ${componentCodeDetails?.componentCodeUsage || ''}
-
+`
 
       n++
     }

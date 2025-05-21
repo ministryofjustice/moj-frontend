@@ -63,7 +63,7 @@ const config = {
         },
         auditDate: {
           label: 'When was the audit?',
-          hint: 'For example, 13 82024'
+          hint: 'For example, 13 8 2024'
         },
         issuesDiscovered: {
           label: 'Enter details about issues discovered by the external audit'
