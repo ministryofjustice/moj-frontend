@@ -22,18 +22,18 @@ const getHashedUrl = (url) => {
 
 const getTemplate = (req) => {
   let template = `${req.params.page || req.url.replace('/', '')}`
-  if(!Object.keys(COMPONENT_FORM_PAGES).includes(template)) {
+  if (!Object.keys(COMPONENT_FORM_PAGES).includes(template)) {
     template = 'error'
   }
- return template
+  return template
 }
 
 const getPageData = (req) => {
-let pageData =  `${req.params.page || req.url.replace('/', '')}`
-   if(!Object.keys(COMPONENT_FORM_PAGES).includes(pageData)) {
+  let pageData = `${req.params.page || req.url.replace('/', '')}`
+  if (!Object.keys(COMPONENT_FORM_PAGES).includes(pageData)) {
     pageData = {}
   }
- return pageData
+  return pageData
 }
 
 const transformErrorsToErrorList = (errors) => {
@@ -70,7 +70,7 @@ const errorTemplateVariables = (
   formErrorStyles = null
 ) => {
   return {
-  page: getPageData(req),
+    page: getPageData(req),
     submitUrl: req.originalUrl,
     formData: req.body,
     file: req?.file,
@@ -96,10 +96,7 @@ const validateFormDataFileUpload = (err, req, res, next) => {
     const template = getTemplate(req)
     res
       .status(400)
-      .render(
-        template,
-        errorTemplateVariables(req, formErrors, errorList)
-        )
+      .render(template, errorTemplateVariables(req, formErrors, errorList))
   } else {
     next()
   }
@@ -177,9 +174,13 @@ const saveSession = (req, res, next) => {
   }
 
   // prevent prototype pollution
-  if (req.url === '__proto__' || req.url === 'constructor' || req.url === 'prototype') {
-    res.end(403);
-    return;
+  if (
+    req.url === '__proto__' ||
+    req.url === 'constructor' ||
+    req.url === 'prototype'
+  ) {
+    res.end(403)
+    return
   }
 
   req.session[req.url] = { ...req.session[req.url], ...body }

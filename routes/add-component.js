@@ -22,7 +22,6 @@ const {
   removeFromSession,
   sessionStarted,
   validateFormDataFileUpload,
-  validateComponentImagePage,
   saveFileToRedis
 } = require('../middleware/component-session')
 const { generateMarkdown } = require('../middleware/generate-documentation')
@@ -46,21 +45,21 @@ const validatePageParams = (req, res, next) => {
   const validPages = Object.keys(COMPONENT_FORM_PAGES)
   let valid = true
 
-  if(req.params.page) {
+  if (req.params.page) {
     // if page is present it must be in allowlist of configured pages
     valid = validPages.includes(req.params.page)
   }
 
-  if(req.params.subpage) {
+  if (req.params.subpage) {
     // if subpage is present it must always be a number
     valid = /^\d+$/.test(req.params.subpage)
   }
 
-  if(valid) {
+  if (valid) {
     next()
   } else {
     res.status(404).render('error', {
-      message: 'Page not found.',
+      message: 'Page not found.'
     })
   }
 }
@@ -139,8 +138,6 @@ router.post('/start', verifyCsrf, (req, res) => {
 router.get('/confirmation', (req, res) => {
   res.render('confirmation')
 })
-
-
 
 // Remove form page
 router.get(
