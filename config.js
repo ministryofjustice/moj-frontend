@@ -144,8 +144,11 @@ const config = {
     'component-code-details': {
       fields: {
         componentCodeLanguage: {
-          label: 'What language is the code?',
-          hint: "Enter a language such as HTML, CSS, SASS or Javascript. It's easier if the code is in one language."
+          label: 'Select the code language',
+          hint: "If you have code in 2 or more languages you can add another code example."
+        },
+        componentCodeLanguageOther: {
+          label:  "Enter the code language"
         },
         componentCodeUsage: {
           label: 'How do you use the code? (optional)',
@@ -204,34 +207,67 @@ const config = {
   ADD_NEW_COMPONENT_ROUTE: '/contribute/add-new-component',
   MAX_ADD_ANOTHER: 10,
   ACRONYMS_TO_UPPERCASE: ['url'],
-  CHECK_YOUR_ANSWERS_LABEL_MAPPING: {
-    componentOverview: 'Component description',
-    howIsTheComponentUsed: 'How the component is being used in your service',
-    accessibilityReport: 'Audit report',
-    externalOrganisation: 'External accessibility audit supplier',
-    internalOrganisation: 'Internal accessibility audit supplier',
-    issuesDiscovered: 'Issues discovered during the audit',
-    prototypeUrl: 'Prototype link',
-    prototypeUrlAdditionalInformation: 'Additional information',
-    componentCode: 'Code',
-    componentCodeUsage: 'Code usage',
-    componentCodeLanguage: 'Code language',
-    figmaLink: 'Prototype link',
-    figmaLinkAdditionalInformation: 'Additional information',
-    shareYourDetails: 'Share your details on the component page',
-    componentImage: 'Supporting file'
+  CHECK_YOUR_ANSWERS_LABEL_OVERRIDES: {
+    // componentOverview: 'Component description',
+    // howIsTheComponentUsed: 'How the component is being used in your service',
+    // accessibilityReport: 'Audit report',
+    // externalOrganisation: 'External accessibility audit supplier',
+    // internalOrganisation: 'Internal accessibility audit supplier',
+    // issuesDiscovered: 'Issues discovered during the audit',
+    // prototypeUrl: 'Prototype link',
+    // prototypeUrlAdditionalInformation: 'Additional information',
+    // componentCode: 'Code',
+    // componentCodeUsage: 'Code usage',
+    // componentCodeLanguage: 'Code language',
+    // componentCodeLanguageOther: 'Other code language',
+    // figmaLink: 'Prototype link',
+    // figmaLinkAdditionalInformation: 'Additional information',
+    // shareYourDetails: 'Share your details on the component page',
+    // componentImage: 'Supporting file'
   },
   CHECK_YOUR_ANSWERS: {
-    forms: [
-      'component-details',
-      'component-image',
-      'add-external-audit',
-      'add-internal-audit',
-      'add-assistive-tech',
-      ['prototype', 'prototype-url'],
-      ['figma', 'figma-link'],
-      ['component-code', 'component-code-details'],
-      'your-details'
+    sections: [
+      {
+        title: 'Component details',
+        data: ['component-details', 'component-image']
+      },
+      {
+        title: 'External accessibility audit',
+        data: [
+          {
+            'accessibility-findings': {
+              includeFields: ['hasComponentBeenTestedExternalAccessibility']
+            }
+          },
+          'add-external-audit'
+        ]
+      },
+      {
+        title: 'Internal accessibility review',
+        data: [
+          {
+            'accessibility-findings': {
+              includeFields: ['hasComponentBeenTestedInternalAudit']
+            }
+          },
+          'add-internal-audit'
+        ]
+      },
+      {
+        title: 'Assistive technology testing',
+        data: [
+          {
+            'accessibility-findings': {
+              includeFields: ['hasComponentBeenTestedUsingAssistiveTechnology']
+            }
+          },
+          'add-assistive-tech'
+        ]
+      },
+      { title: 'Prototype', data: ['prototype', 'prototype-url'] },
+      { title: 'Figma', data: ['figma', 'figma-link'] },
+      { title: 'Code', data: ['component-code', 'component-code-details'] },
+      { title: 'Your details', data: ['your-details'] }
     ],
     canRemoveStatic: [
       '/accessibility-findings',
@@ -248,11 +284,7 @@ const config = {
       '/figma-link',
       '/component-code-details'
     ],
-    ignoreFields: [
-      // 'componentPrototypeUrl',
-      // 'figmaUrl',
-      // 'componentCodeAvailable'
-    ]
+    ignoreFields: []
   },
   SHARE_YOUR_DETAILS: {
     addNameToComponentPage: 'Add name and email address to component page',
