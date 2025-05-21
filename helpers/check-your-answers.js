@@ -10,7 +10,6 @@ const {
 
 const { combineDateFields } = require('./date-fields')
 const {
-  toCamelCaseWithRows,
   humanReadableLabel: humanReadableLabelText,
   replaceAcronyms,
   truncateText,
@@ -23,18 +22,22 @@ const shareYourDetailsKeys = Object.keys(shareYourDetails)
 /**
  * Converts a text label to a human-readable format using a predefined mapping.
  *
- * @param {string} text - The text label to convert.
+ * @param {string} field - The camelCase field to get a label for.
+ * @param {string} form - The form/page that contains the field
  * @returns {string} - The human-readable label.
  */
 const humanReadableLabel = (field, form = '') => {
+  // If there's an override, use that
   if (Object.keys(labelOverrides).includes(field)) {
     return labelOverrides[field]
   }
+  // Otherwise use the label from the form pages config
   if (form) {
     if (formPages[form]?.fields[field]?.label) {
       return formPages[form]?.fields[field]?.label
     }
   }
+  // Else just convert the camelCase to human
   return humanReadableLabelText(field)
 }
 
@@ -60,7 +63,7 @@ const answersFromSession = (data, session, canRemove) => {
         answers.push(...extractFieldData(formName, session, config))
       }
     } else {
-        answers.push(...extractFieldData(form, session, defaultConfig))
+      answers.push(...extractFieldData(form, session, defaultConfig))
     }
   })
   console.log(answers)
@@ -103,8 +106,7 @@ const shareYourDetailsValueReplacement = (value) => {
  *
  * @param {string} field - The field to extract data for.
  * @param {object} session - The session data.
- * @param {Array} [canRemove] - The fields that can be removed.
- * @param {Array} [ignoreFields] - The fields to ignore.
+ * @param {object} options - The options for extraction
  * @returns {Array} - The extracted and formatted field data.
  */
 // TODO: We don't need the whole session here! only the form we;re extracting
@@ -117,28 +119,26 @@ const extractFieldData = (field, session, options = {}) => {
     includeFields: []
   }
   const opts = Object.assign({}, defaults, options)
-console.log(opts)
+  console.log(opts)
   const fieldName = field
   const fieldPath = `/${field}`
   console.log(`extracting field data for: ${fieldName}`)
 
   let parsedSession = {}
 
-  if(opts.includeFields.length > 0) {
+  if (opts.includeFields.length > 0) {
     console.log('only including specified fields')
-    for(const [key, value] of Object.entries(session)) {
+    for (const [key, value] of Object.entries(session)) {
       if (typeof value === 'object' && !Array.isArray(value)) {
-
-            Object.keys(value).forEach(function(field){
-              console.log(field)
-              console.log(opts.includeFields)
-              if(opts.includeFields.includes(field) ) {
-                console.log('field should be included')
-                parsedSession[key] = {}
-                parsedSession[key][field] = value[field]
-              }
-            });
-
+        Object.keys(value).forEach(function (field) {
+          console.log(field)
+          console.log(opts.includeFields)
+          if (opts.includeFields.includes(field)) {
+            console.log('field should be included')
+            parsedSession[key] = {}
+            parsedSession[key][field] = value[field]
+          }
+        })
       }
     }
   } else {
@@ -146,22 +146,24 @@ console.log(opts)
     parsedSession = Object.assign({}, session)
   }
 
-
   // Remove excluded fields from session data
-  if(opts.excludeFields.length > 0) {
+  if (opts.excludeFields.length > 0) {
     console.log('excluding fields')
-    parsedSession = Object.entries(parsedSession).reduce((acc, [key, value]) => {
-      if (typeof value === 'object' && !Array.isArray(value)) {
-        opts.excludeFields.forEach((excludeField) => {
-          if (value && typeof value === 'object' && excludeField in value) {
-            // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-            delete value[excludeField]
-          }
-        })
-      }
-      acc[key] = value
-      return acc
-    }, {})
+    parsedSession = Object.entries(parsedSession).reduce(
+      (acc, [key, value]) => {
+        if (typeof value === 'object' && !Array.isArray(value)) {
+          opts.excludeFields.forEach((excludeField) => {
+            if (value && typeof value === 'object' && excludeField in value) {
+              // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+              delete value[excludeField]
+            }
+          })
+        }
+        acc[key] = value
+        return acc
+      },
+      {}
+    )
   }
 
   console.log(parsedSession)

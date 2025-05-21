@@ -22,7 +22,6 @@ const {
   removeFromSession,
   sessionStarted,
   validateFormDataFileUpload,
-  validateComponentImagePage,
   saveFileToRedis
 } = require('../middleware/component-session')
 const { generateMarkdown } = require('../middleware/generate-documentation')
@@ -42,13 +41,26 @@ const upload = multer({
 })
 const router = express.Router()
 
-const isValidComponentFormPage = (req, res, next) => {
-  if (!Object.keys(COMPONENT_FORM_PAGES).includes(req.params.page)) {
-    const error = new ApplicationError('Unknown page', 404)
-    console.log(error.toErrorObject())
-    next(error)
-  } else {
+const validatePageParams = (req, res, next) => {
+  const validPages = Object.keys(COMPONENT_FORM_PAGES)
+  let valid = true
+
+  if (req.params.page) {
+    // if page is present it must be in allowlist of configured pages
+    valid = validPages.includes(req.params.page)
+  }
+
+  if (req.params.subpage) {
+    // if subpage is present it must always be a number
+    valid = /^\d+$/.test(req.params.subpage)
+  }
+
+  if (valid) {
     next()
+  } else {
+    res.status(404).render('error', {
+      message: 'Page not found.'
+    })
   }
 }
 
@@ -57,7 +69,6 @@ const checkYourAnswersPath = 'check-your-answers'
 const setCsrfToken = (req, res, next) => {
   if (req?.session) {
     if (!req?.session?.csrfToken) {
-      // Set CSRF token
       req.session.csrfToken = crypto.randomBytes(32).toString('hex')
     }
   }
@@ -66,6 +77,10 @@ const setCsrfToken = (req, res, next) => {
 
 router.all('*', setCsrfToken)
 
+// TODO: Should we not have a post * route that verfies the CSRF for *all* posts
+// rather than relying on the chack being added to every post route declared?
+
+// TODO:  Why is this a get * ? Can it not just be set in the get /checkYourAnswersPath route below?
 router.get('*', (req, res, next) => {
   if (req?.session) {
     if (req?.url.endsWith(checkYourAnswersPath)) {
@@ -113,6 +128,8 @@ router.get('/start', (req, res) => {
   })
 })
 
+router.all('*', sessionStarted) // Check that we have a session in progress
+
 router.post('/start', verifyCsrf, (req, res) => {
   res.redirect('/contribute/add-new-component/component-details')
 })
@@ -122,13 +139,10 @@ router.get('/confirmation', (req, res) => {
   res.render('confirmation')
 })
 
-// Check that we have a session in progress
-router.all('*', sessionStarted)
-
 // Remove form page
 router.get(
   ['/remove/:page', '/remove/:page/:subpage'],
-  isValidComponentFormPage,
+  validatePageParams,
   getFormSummaryListForRemove,
   (req, res) => {
     const summary = req?.removeSummaryRows
@@ -152,7 +166,7 @@ router.get(
 
 router.get(
   ['/change/:page', '/change/:page/:subpage'],
-  validateComponentImagePage,
+  validatePageParams,
   removeFromSession,
   (req, res) => {
     let redirectUrl = `${ADD_NEW_COMPONENT_ROUTE}/${req.params.page}`
@@ -169,6 +183,7 @@ router.get(
 router.post(
   ['/remove/:page', '/remove/:page/:subpage'],
   verifyCsrf,
+  validatePageParams,
   removeFromSession,
   (req, res) => {
     res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`)
@@ -178,7 +193,7 @@ router.post(
 // Component form page
 router.get(
   ['/:page', '/:page/:subpage'],
-  isValidComponentFormPage,
+  validatePageParams,
   getFormDataFromSession,
   setNextPage,
   canAddAnother,
@@ -246,6 +261,7 @@ router.post(
 // Component image upload
 router.post(
   ['/component-image', '/component-image/:subpage'],
+  validatePageParams,
   upload.single('componentImage'),
   saveFileToRedis,
   canAddAnother,
@@ -293,7 +309,7 @@ router.post(
 // Form submissions for pages
 router.post(
   ['/:page', '/:page/:subpage'],
-  isValidComponentFormPage,
+  validatePageParams,
   setNextPage,
   canSkipQuestion,
   getBackLink,
