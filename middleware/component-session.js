@@ -20,6 +20,22 @@ const getHashedUrl = (url) => {
   return crypto.createHash('sha256').update(url).digest('hex')
 }
 
+const getTemplate = (req) => {
+  let template = `${req.params.page || req.url.replace('/', '')}`
+  if(!Object.keys(COMPONENT_FORM_PAGES).includes(template)) {
+    template = 'error'
+  }
+ return template
+}
+
+const getPageData = (req) => {
+let pageData =  `${req.params.page || req.url.replace('/', '')}`
+   if(!Object.keys(COMPONENT_FORM_PAGES).includes(pageData)) {
+    pageData = {}
+  }
+ return pageData
+}
+
 const transformErrorsToErrorList = (errors) => {
   return errors.map((error) => ({
     text: error.message,
@@ -53,9 +69,8 @@ const errorTemplateVariables = (
   errorList,
   formErrorStyles = null
 ) => {
-  const page = req.params.page || req.url.replace('/', '')
   return {
-    page: COMPONENT_FORM_PAGES[page],
+  page: getPageData(req),
     submitUrl: req.originalUrl,
     formData: req.body,
     file: req?.file,
@@ -78,12 +93,13 @@ const validateFormDataFileUpload = (err, req, res, next) => {
     formErrors[err.field] = { text: errorMessage }
     const errors = [{ message: errorMessage, path: [err.field] }]
     const errorList = transformErrorsToErrorList(errors)
+    const template = getTemplate(req)
     res
       .status(400)
       .render(
-        `${req.params.page || req.url.replace('/', '')}`,
+        template,
         errorTemplateVariables(req, formErrors, errorList)
-      )
+        )
   } else {
     next()
   }
@@ -130,10 +146,11 @@ const validateFormData = (req, res, next) => {
     })
 
     const errorList = transformErrorsToErrorList(errorListDetails)
+    const template = getTemplate(req)
     res
       .status(400)
       .render(
-        `${req.params.page || req.url.replace('/', '')}`,
+        template,
         errorTemplateVariables(req, formErrors, errorList, formErrorStyles)
       )
   } else {
