@@ -2,7 +2,8 @@ const crypto = require('crypto')
 
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
-  ADD_NEW_COMPONENT_ROUTE
+  ADD_NEW_COMPONENT_ROUTE,
+  COMPONENT_FORM_PAGES
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const extractBody = require('../helpers/extract-body')
@@ -17,6 +18,22 @@ const camelToKebab = (str) =>
 // Function to hash req.url
 const getHashedUrl = (url) => {
   return crypto.createHash('sha256').update(url).digest('hex')
+}
+
+const getTemplate = (req) => {
+  let template = `${req.params.page || req.url.replace('/', '')}`
+  if (!Object.keys(COMPONENT_FORM_PAGES).includes(template)) {
+    template = 'error'
+  }
+  return template
+}
+
+const getPageData = (req) => {
+  let pageData = `${req.params.page || req.url.replace('/', '')}`
+  if (!Object.keys(COMPONENT_FORM_PAGES).includes(pageData)) {
+    pageData = {}
+  }
+  return pageData
 }
 
 const transformErrorsToErrorList = (errors) => {
@@ -53,6 +70,7 @@ const errorTemplateVariables = (
   formErrorStyles = null
 ) => {
   return {
+    page: getPageData(req),
     submitUrl: req.originalUrl,
     formData: req.body,
     file: req?.file,
@@ -75,12 +93,10 @@ const validateFormDataFileUpload = (err, req, res, next) => {
     formErrors[err.field] = { text: errorMessage }
     const errors = [{ message: errorMessage, path: [err.field] }]
     const errorList = transformErrorsToErrorList(errors)
+    const template = getTemplate(req)
     res
       .status(400)
-      .render(
-        `${req.params.page || req.url.replace('/', '')}`,
-        errorTemplateVariables(req, formErrors, errorList)
-      )
+      .render(template, errorTemplateVariables(req, formErrors, errorList))
   } else {
     next()
   }
@@ -127,10 +143,11 @@ const validateFormData = (req, res, next) => {
     })
 
     const errorList = transformErrorsToErrorList(errorListDetails)
+    const template = getTemplate(req)
     res
       .status(400)
       .render(
-        `${req.params.page || req.url.replace('/', '')}`,
+        template,
         errorTemplateVariables(req, formErrors, errorList, formErrorStyles)
       )
   } else {
@@ -154,6 +171,16 @@ const saveSession = (req, res, next) => {
         redisKey
       } // Use the Redis key reference
     }
+  }
+
+  // prevent prototype pollution
+  if (
+    req.url === '__proto__' ||
+    req.url === 'constructor' ||
+    req.url === 'prototype'
+  ) {
+    res.end(403)
+    return
   }
 
   req.session[req.url] = { ...req.session[req.url], ...body }
