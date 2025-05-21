@@ -491,8 +491,9 @@
     </div>
     <div class="app-layout__page app-page">
 
-      <main id="main-content" class="">{% block content %}
-        {{ content | safe }}
+      <main id="main-content" class="">
+        {% block content %}
+          {{ content | safe }}
         {% endblock %}
       </main>
     </div>

@@ -13,18 +13,24 @@ const checkConditions = (conditions, session) => {
 }
 
 const previousPage = (url, session) => {
+  console.log('finding porevious page')
   const pages = Object.keys(COMPONENT_FORM_PAGES)
   const [currentPage, subpage] = url.split('/').slice(1) // split the url to get the page and subpage
   const currentPageIndex = pages.findIndex((page) => currentPage.endsWith(page))
+  console.log(`current page index: ${currentPageIndex}`)
 
   // Check if there are subpages in the session for the current page
-  if (subpage && Number.isInteger(Number(subpage)) && subpage > 1) {
-    return `${urlRoot}/${currentPage}/${subpage - 1}`
+  if (subpage && Number.isInteger(Number(subpage))) {
+    if(subpage > 1) {
+      return `${urlRoot}/${currentPage}/${subpage - 1}`
+    }
+
+    return `${urlRoot}/${currentPage}`
   }
 
   for (let i = currentPageIndex - 1; i >= 0; i--) {
     const page = pages[i]
-    const conditions = COMPONENT_FORM_PAGES[page]
+    const conditions = COMPONENT_FORM_PAGES[page]?.conditions || {}
     const shouldShowPage = checkConditions(conditions, session)
 
     if (shouldShowPage) {
