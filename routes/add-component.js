@@ -286,7 +286,7 @@ router.post(
     if (req.file) {
       console.log(req.file)
       // return to same page after upload
-      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.url}`)
+      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}${req.url}`)
     }
     if (req.nextPage) {
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.nextPage}`)
