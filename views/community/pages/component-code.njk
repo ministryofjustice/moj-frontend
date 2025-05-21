@@ -20,7 +20,7 @@
     <form method="post" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Component code</h1>
-      <p class="govuk-body">We recommend sharing HTML, CSS, SASS, Javascript or Nunjucks as these are common in government.</p>
+      <p class="govuk-body">You should only send the component code and not the full page of code. This ensures it's easy for others to understand and use. The code should not contain any personally identifiable or sensitive information.</p>
       {{ govukRadios({
         name: "componentCodeAvailable",
         fieldset: {

@@ -144,8 +144,11 @@ const config = {
     'component-code-details': {
       fields: {
         componentCodeLanguage: {
-          label: 'What language is the code?',
-          hint: "Enter a language such as HTML, CSS, SASS or Javascript. It's easier if the code is in one language."
+          label: 'Select the code language',
+          hint: "If you have code in 2 or more languages you can add another code example."
+        },
+        componentCodeLanguageOther: {
+          label:  "Enter the code language"
         },
         componentCodeUsage: {
           label: 'How do you use the code? (optional)',
@@ -215,7 +218,8 @@ const config = {
     // prototypeUrlAdditionalInformation: 'Additional information',
     // componentCode: 'Code',
     // componentCodeUsage: 'Code usage',
-    // componentCodeLanguage: 'Code language ssdllklkj:w',
+    // componentCodeLanguage: 'Code language',
+    // componentCodeLanguageOther: 'Other code language',
     // figmaLink: 'Prototype link',
     // figmaLinkAdditionalInformation: 'Additional information',
     // shareYourDetails: 'Share your details on the component page',
