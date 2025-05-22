@@ -279,7 +279,7 @@ const config = {
       '/add-assistive-tech'
     ],
     canRemoveMultiples: [
-      '/component-image',
+      // '/component-image',
       '/prototype-url',
       '/figma-link',
       '/component-code-details'
