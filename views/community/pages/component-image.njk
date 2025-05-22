@@ -89,13 +89,6 @@
             text: 'Continue',
             preventDoubleClick: true
           }) }}
-          {% if showAddAnother %}
-            {{ govukButton({
-              text: "Add another file",
-              classes: "govuk-button--secondary",
-              name: "addAnother"
-            }) }}
-          {% endif %}
         {% else %}
           {{ govukButton({
             text: 'Upload',
