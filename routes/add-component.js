@@ -90,9 +90,7 @@ router.get('*', (req, res, next) => {
 })
 
 // Check your answers page
-router.get(`/${checkYourAnswersPath}`,
-  sessionStarted,
-  (req, res) => {
+router.get(`/${checkYourAnswersPath}`, sessionStarted, (req, res) => {
   const sections = checkYourAnswers(req.session)
   res.render(checkYourAnswersPath, {
     submitUrl: req.originalUrl,
@@ -130,9 +128,7 @@ router.get('/start', (req, res) => {
 
 router.all('*', sessionStarted) // Check that we have a session in progress
 
-router.post('/start',
-  verifyCsrf,
-  (req, res) => {
+router.post('/start', verifyCsrf, (req, res) => {
   res.redirect('/contribute/add-new-component/component-details')
 })
 
