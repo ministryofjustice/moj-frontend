@@ -7,13 +7,12 @@
 
 
       <div class="app-layout__content">
-        <span class="govuk-caption-l">Submit new component</span>
+        <span class="govuk-caption-l">Submit a new component</span>
 
         {% set html %}
           <h1 class="govuk-notification-banner__heading">
-            You've submitted a component to the design system
+            You've submitted a component
           </h1>
-          <p class="govuk-body">This will be reviewed by the MoJ Design System team.</p>
         {% endset %}
 
         {{ govukNotificationBanner({
@@ -25,19 +24,17 @@
 
         <h2 class="govuk-heading-l">What happens next</h2>
 
-        <h3 class="govuk-heading-m">Design team review the component</h3>
-        <p class="govuk-body">The team will review the component. This can take up to 5 working days.</p>
-        <p class="govuk-body">If there are no issues and the team does not need to contact you, the component will be added to the design system. It will include a "<strong>community</strong>" tag. This means it is still in the development phase.</p>
-        <p class="govuk-body">You will receive an email notification when the component is live in the MoJ Design System.</p>
+        <h3 class="govuk-heading-m">The Design System team reviews the component</h3>
+        <p class="govuk-body">The team will give the component a sense check.</p>
+        <p class="govuk-body">If there are no queries, it'll be added to the Design System within 5 working days. It will have an experimental status, which means that it's early in development. You can read more about the <a href="/design-system-statuses/">MoJ Design System statuses</a>.</p>
+        <p class="govuk-body">You'll get an email when the component is live.</p>
 
-        <h3 class="govuk-heading-m">Collaborating with other users on the component</h3>
-        <p class="govuk-body">Other users have the opportunity to add information about the component once it is live in the design system. If you've given permission, your details will be on the component page. This gives users the opportunity to start a conversation aimed at continuing development of the component.</p>
-        <p class="govuk-body">This is part of the community approach the design system team is encouraging throughout the MoJ and wider government communities.</p>
+        <h3 class="govuk-heading-m">Collaborating on the component</h3>
+        <p class="govuk-body">Each community component will have a Github discussion. This enables it to continue to develop through discussions and contributions. Later in 2025, people in MoJ and UK government will be able to use the documentation site to add to the component.</p>
 
-        {{ govukButton({
-          text: "Back to design system homepage",
-          href: "/"
-        }) }}
+        <p class="govuk-body">
+                  <a href="/" class="govuk-link">Back to the Design System homepage</a>
+                </p>
       </div>
 
     </main>

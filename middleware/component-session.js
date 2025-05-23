@@ -1,8 +1,11 @@
 const crypto = require('crypto')
 
+const sanitize = require('sanitize-filename')
+
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
-  ADD_NEW_COMPONENT_ROUTE
+  ADD_NEW_COMPONENT_ROUTE,
+  COMPONENT_FORM_PAGES
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const extractBody = require('../helpers/extract-body')
@@ -17,6 +20,22 @@ const camelToKebab = (str) =>
 // Function to hash req.url
 const getHashedUrl = (url) => {
   return crypto.createHash('sha256').update(url).digest('hex')
+}
+
+const getTemplate = (req) => {
+  let template = sanitize(`${req.params.page || req.url.replace('/', '')}`)
+  if (!Object.keys(COMPONENT_FORM_PAGES).includes(template)) {
+    template = 'error'
+  }
+  return template
+}
+
+const getPageData = (req) => {
+  let pageData = sanitize(`${req.params.page || req.url.replace('/', '')}`)
+  if (!Object.keys(COMPONENT_FORM_PAGES).includes(pageData)) {
+    pageData = {}
+  }
+  return pageData
 }
 
 const transformErrorsToErrorList = (errors) => {
@@ -53,8 +72,10 @@ const errorTemplateVariables = (
   formErrorStyles = null
 ) => {
   return {
+    page: getPageData(req),
     submitUrl: req.originalUrl,
     formData: req.body,
+    file: req?.file,
     formErrorStyles,
     formErrors,
     errorList,
@@ -67,29 +88,32 @@ const errorTemplateVariables = (
 }
 
 const validateFormDataFileUpload = (err, req, res, next) => {
+  console.log('validate form data file uplaod')
   if (err.code === 'LIMIT_FILE_SIZE') {
     const errorMessage = 'The selected file must be smaller than 10MB'
     const formErrors = {}
     formErrors[err.field] = { text: errorMessage }
     const errors = [{ message: errorMessage, path: [err.field] }]
     const errorList = transformErrorsToErrorList(errors)
+    const template = getTemplate(req)
     res
       .status(400)
-      .render(
-        `${req.params.page || req.url.replace('/', '')}`,
-        errorTemplateVariables(req, formErrors, errorList)
-      )
+      .render(template, errorTemplateVariables(req, formErrors, errorList))
   } else {
     next()
   }
 }
 
 const validateFormData = (req, res, next) => {
+  console.log('validate form data')
   const schemaName = req.url.split('/')[1]
   const schema = require(`../schema/${schemaName}.schema`)
   const body = extractBody(req?.url, { ...req.body })
   delete body._csrf
+  console.log(req?.file?.fieldname)
+  console.log(req?.file?.originalname)
   if (req?.file?.fieldname && req?.file?.originalname) {
+    console.log('theres a file!')
     body[req.file.fieldname] = req.file.originalname
   }
   const { error } = schema.validate(body, { abortEarly: false })
@@ -121,10 +145,11 @@ const validateFormData = (req, res, next) => {
     })
 
     const errorList = transformErrorsToErrorList(errorListDetails)
+    const template = getTemplate(req)
     res
       .status(400)
       .render(
-        `${req.params.page || req.url.replace('/', '')}`,
+        template,
         errorTemplateVariables(req, formErrors, errorList, formErrorStyles)
       )
   } else {
@@ -148,6 +173,16 @@ const saveSession = (req, res, next) => {
         redisKey
       } // Use the Redis key reference
     }
+  }
+
+  // prevent prototype pollution
+  if (
+    req.url === '__proto__' ||
+    req.url === 'constructor' ||
+    req.url === 'prototype'
+  ) {
+    res.end(403)
+    return
   }
 
   req.session[req.url] = { ...req.session[req.url], ...body }
@@ -233,6 +268,17 @@ const getBackLink = (req, res, next) => {
 
 const removeFromSession = (req, res, next) => {
   const url = req.url.replace(/\/(remove|change)/, '')
+
+  if (req.params.page === 'component-image') {
+    const filename = req.session[url]?.componentImage?.originalname
+    console.log(filename)
+    if (filename) {
+      req.session.sessionFlash = {
+        type: 'success',
+        message: `File ‘${filename}’ removed.`
+      }
+    }
+  }
   // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
   delete req.session[url]
   next()

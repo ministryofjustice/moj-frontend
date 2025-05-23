@@ -4,68 +4,18 @@
 {% block content %}
   <div class="app-layout__content">
     <form method="post" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit new component</span>
-      <h1 class="govuk-heading-xl">Check your answers before submitting the component</h1>
+      <span class="govuk-caption-l">Submit a new component</span>
+      <h1 class="govuk-heading-xl">Check your answers</h1>
 
-      <h2 class="govuk-heading-l">Component details</h2>
-      {{ govukSummaryList({
-        rows: componentDetailsRows,
-        classes: "govuk-!-margin-bottom-9"
-      }) }}
-
-      {% if addExternalAuditRows.length > 0 %}
-        <h2 class="govuk-heading-l">External accessibility audit</h2>
-        {{ govukSummaryList({
-          rows: addExternalAuditRows,
-          classes: "govuk-!-margin-bottom-9"
-        }) }}
-      {% endif %}
-
-      {% if addInternalAuditRows.length > 0 %}
-        <h2 class="govuk-heading-l">Internal accessibility audit</h2>
-        {{ govukSummaryList({
-          rows: addInternalAuditRows,
-          classes: "govuk-!-margin-bottom-9"
-        }) }}
-      {% endif %}
-
-      {% if addAssistiveTechRows.length > 0 %}
-        <h2 class="govuk-heading-l">Testing with assistive technology</h2>
-        {{ govukSummaryList({
-          rows: addAssistiveTechRows,
-          classes: "govuk-!-margin-bottom-9"
-        }) }}
-      {% endif %}
-
-      {% if prototypeRows.length > 0 %}
-        <h2 class="govuk-heading-l">Prototype URL</h2>
-        {{ govukSummaryList({
-          rows: prototypeRows,
-          classes: "govuk-!-margin-bottom-9"
-        }) }}
-      {% endif %}
-
-      {% if componentCodeRows.length > 0 %}
-        <h2 class="govuk-heading-l">Component code</h2>
-        {{ govukSummaryList({
-          rows: componentCodeRows,
-          classes: "govuk-!-margin-bottom-9"
-        }) }}
-      {% endif %}
-
-      {% if figmaRows.length > 0 %}
-        <h2 class="govuk-heading-l">Figma designs</h2>
-        {{ govukSummaryList({
-          rows: figmaRows,
-          classes: "govuk-!-margin-bottom-9"
-        }) }}
-      {% endif %}
-
-      <h2 class="govuk-heading-l">Your details</h2>
-      {{ govukSummaryList({
-        rows: yourDetailsRows,
-        classes: "govuk-!-margin-bottom-9"
-      }) }}
+      {% for section in sections %}
+        {% if section.answers.length > 0 %}
+          <h2 class="govuk-heading-l">{{ section.title }}</h2>
+          {{ govukSummaryList({
+            rows: section.answers,
+            classes: "govuk-!-margin-bottom-9"
+          }) }}
+        {% endif %}
+      {% endfor %}
 
       <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>
 

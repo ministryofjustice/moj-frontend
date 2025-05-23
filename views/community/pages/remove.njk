@@ -3,17 +3,15 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% extends "base.njk" %}
 {% block content %}
-  {% if backLink %}
-    <div class="app-layout__backlink">
+  <div class="app-layout__content">
+    {% if backLink %}
       {{ govukBackLink({
         text: "Back",
         href: backLink
       }) }}
-    </div>
-  {% endif %}
-  <div class="app-layout__content">
+    {% endif %}
     <form method="POST" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit new component</span>
+      <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Are you sure you want to remove {{ type }}?</h1>
 
       {{ govukSummaryList({
