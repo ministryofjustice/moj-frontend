@@ -21,7 +21,7 @@ const previousPage = (url, session) => {
 
   // Check if there are subpages in the session for the current page
   if (subpage && Number.isInteger(Number(subpage))) {
-    if(subpage > 1) {
+    if (subpage > 1) {
       return `${urlRoot}/${currentPage}/${subpage - 1}`
     }
 
