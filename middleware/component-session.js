@@ -1,5 +1,7 @@
 const crypto = require('crypto')
 
+const sanitize = require('sanitize-filename')
+
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ADD_NEW_COMPONENT_ROUTE,
@@ -21,7 +23,7 @@ const getHashedUrl = (url) => {
 }
 
 const getTemplate = (req) => {
-  let template = `${req.params.page || req.url.replace('/', '')}`
+  let template = sanitize(`${req.params.page || req.url.replace('/', '')}`)
   if (!Object.keys(COMPONENT_FORM_PAGES).includes(template)) {
     template = 'error'
   }
@@ -29,7 +31,7 @@ const getTemplate = (req) => {
 }
 
 const getPageData = (req) => {
-  let pageData = `${req.params.page || req.url.replace('/', '')}`
+  let pageData = sanitize(`${req.params.page || req.url.replace('/', '')}`)
   if (!Object.keys(COMPONENT_FORM_PAGES).includes(pageData)) {
     pageData = {}
   }
