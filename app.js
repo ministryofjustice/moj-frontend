@@ -17,6 +17,7 @@ const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 const helmet = require('helmet')
 const nunjucks = require('nunjucks')
+const { xss } = require('express-xss-sanitizer')
 
 const { APP_PORT, ENV, REDIS_URL, SESSION_SECRET } = require('./config')
 const addComponentRoutes = require('./routes/add-component')
@@ -90,6 +91,7 @@ expressNunjucks(app, {
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
+app.use(xss())
 
 // Routes
 app.use('/contribute/add-new-component', addComponentRoutes)
