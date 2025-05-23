@@ -81,6 +81,7 @@
     "node-fetch": "2.7.0",
     "notifications-node-client": "^8.2.1",
     "nunjucks": "^3.2.4",
+    "sanitize-filename": "^1.6.3",
     "sanitize-html": "^2.15.0"
   },
   "devDependencies": {
