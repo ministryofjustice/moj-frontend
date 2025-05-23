@@ -1,6 +1,7 @@
 const crypto = require('crypto')
 
 const express = require('express')
+const { xss } = require('express-xss-sanitizer')
 const multer = require('multer')
 
 const { COMPONENT_FORM_PAGES, ADD_NEW_COMPONENT_ROUTE } = require('../config')
@@ -77,9 +78,6 @@ const setCsrfToken = (req, res, next) => {
 
 router.all('*', setCsrfToken)
 
-// TODO: Should we not have a post * route that verfies the CSRF for *all* posts
-// rather than relying on the chack being added to every post route declared?
-
 // TODO:  Why is this a get * ? Can it not just be set in the get /checkYourAnswersPath route below?
 router.get('*', (req, res, next) => {
   if (req?.session) {
@@ -92,7 +90,9 @@ router.get('*', (req, res, next) => {
 })
 
 // Check your answers page
-router.get(`/${checkYourAnswersPath}`, sessionStarted, (req, res) => {
+router.get(`/${checkYourAnswersPath}`,
+  sessionStarted,
+  (req, res) => {
   const sections = checkYourAnswers(req.session)
   res.render(checkYourAnswersPath, {
     submitUrl: req.originalUrl,
@@ -130,7 +130,9 @@ router.get('/start', (req, res) => {
 
 router.all('*', sessionStarted) // Check that we have a session in progress
 
-router.post('/start', verifyCsrf, (req, res) => {
+router.post('/start',
+  verifyCsrf,
+  (req, res) => {
   res.redirect('/contribute/add-new-component/component-details')
 })
 
@@ -182,6 +184,7 @@ router.get(
 
 router.post(
   ['/remove/:page', '/remove/:page/:subpage'],
+  xss(),
   verifyCsrf,
   validatePageParams,
   removeFromSession,
@@ -263,12 +266,13 @@ router.post(
   ['/component-image', '/component-image/:subpage'],
   validatePageParams,
   upload.single('componentImage'),
+  xss(),
+  verifyCsrf,
   saveFileToRedis,
   canAddAnother,
   validateFormDataFileUpload,
   setNextPage,
   getBackLink,
-  verifyCsrf,
   validateFormData,
   (req, res, next) => {
     if (req.file) {
@@ -298,22 +302,15 @@ router.post(
   }
 )
 
-// Accessibility file upload
-router.post(
-  ['/add-internal-audit', '/add-external-audit', '/add-assistive-tech'],
-  upload.single('accessibilityReport'),
-  saveFileToRedis,
-  validateFormDataFileUpload
-)
-
 // Form submissions for pages
 router.post(
   ['/:page', '/:page/:subpage'],
+  xss(),
+  verifyCsrf,
   validatePageParams,
   setNextPage,
   canSkipQuestion,
   getBackLink,
-  verifyCsrf,
   validateFormData,
   saveSession,
   (req, res, next) => {
