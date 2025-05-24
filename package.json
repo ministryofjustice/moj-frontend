@@ -163,7 +163,7 @@
     "puppeteer": "^24.8.2",
     "puppeteer-core": "^24.8.2",
     "require-dir": "^1.2.0",
-    "rollup": "^4.41.0",
+    "rollup": "^4.41.1",
     "sass-embedded": "^1.89.0",
     "semantic-release": "^24.2.4",
     "sinon": "^19.0.5",
