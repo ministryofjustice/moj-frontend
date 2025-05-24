@@ -165,7 +165,7 @@
     "require-dir": "^1.2.0",
     "rollup": "^4.41.0",
     "sass-embedded": "^1.89.0",
-    "semantic-release": "^24.2.4",
+    "semantic-release": "^24.2.5",
     "sinon": "^19.0.5",
     "stylelint": "^16.19.1",
     "stylelint-config-gds": "^2.0.0",
