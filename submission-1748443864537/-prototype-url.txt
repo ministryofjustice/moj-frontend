@@ -1,0 +1,4 @@
+{
+  "prototypeUrl": "https://www.lipsum.com/feed/html",
+  "prototypeUrlAdditionalInformation": "First link"
+}
