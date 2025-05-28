@@ -287,9 +287,8 @@ const config = {
     ignoreFields: []
   },
   SHARE_YOUR_DETAILS: {
-    addNameToComponentPage: 'Add name and email address to component page',
-    addTeamNameWhenRequested: 'Only share name and email when requested',
-    doNotSharePersonalDetails: 'Do not share personal details'
+    addNameToComponentPage: 'add my name to the component page',
+    addTeamNameToComponentPage: 'add my team name to the component page',
   }
 }
 

@@ -16,8 +16,7 @@
 {% endif %}
 
 {% set addNameToComponentPage = "addNameToComponentPage" in shareYourDetails %}
-{% set addTeamNameToComponentPage = "addTeamNameWhenRequested" in shareYourDetails %}
-{% set doNotSharePersonalDetailsChecked = "doNotSharePersonalDetails" in shareYourDetails %}
+{% set addTeamNameToComponentPage = "addTeamNameToComponentPage" in shareYourDetails %}
 
 {% block content %}
 
@@ -73,6 +72,8 @@
         value: formData.teamName
       }) }}
 
+      <input type="hidden" name="shareYourDetails" />
+
       {{ govukCheckboxes({
         name: "shareYourDetails",
         id: 'share-your-details',
@@ -92,7 +93,7 @@
             checked: addNameToComponentPage
           },
           {
-            value: "addTeamNameWhenRequested",
+            value: "addTeamNameToComponentPage",
             text: "Add my team name to the component page",
             checked: addTeamNameToComponentPage
           }
