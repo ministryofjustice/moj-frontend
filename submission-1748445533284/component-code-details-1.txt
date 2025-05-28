@@ -1,0 +1,5 @@
+{
+  "componentCodeLanguage": "css",
+  "componentCodeUsage": "Some CSS",
+  "componentCode": "style"
+}
