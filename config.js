@@ -205,8 +205,8 @@ const config = {
           label: 'What team were you in when this component was created?'
         },
         shareYourDetails: {
-          label: 'Sharing your contact details on the component page',
-          hint: 'Adding your details to the component enables other users to contact you (or your team) to collaborate on the component.\r\nSelect all that apply'
+          label: 'Displaying your details on the component page',
+          hint: 'Adding your details to the component enables other users to contact you (or your team) to collaborate on the component. This is optional.\r\nSelect all that apply'
         }
       },
       showOnCya: true,
