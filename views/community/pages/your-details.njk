@@ -36,8 +36,8 @@
   <form method="post" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Your details</h1>
-      <p class="govuk-body">Adding your details enables the MoJ Design System team to let you know when the component is live. They might also need to contact you with questions about the component.</p>
-      <p class="govuk-body">If you give your permission, your name will be added to the component page. This is to show that you added it to the Design System.</p>
+      <p class="govuk-body">Add your details to enable the MoJ Design System team to let you know when the component is live. They might also need to contact you with questions about the component.</p>
+      <p class="govuk-body">You can request for your details to be added to the component page. This is to show that you added it to the Design System.</p>
       {{ govukInput({
           label: {
               text: page.fields.fullName.label,
@@ -47,17 +47,6 @@
           name: "fullName",
           errorMessage: formErrors.fullName,
           value: formData.fullName
-      }) }}
-
-      {{ govukInput({
-          label: {
-              text: page.fields.emailAddress.label,
-              classes: "govuk-label--m"
-          },
-          id: "email-address",
-          name: "emailAddress",
-          errorMessage: formErrors.emailAddress,
-          value: formData.emailAddress
       }) }}
 
       {{ govukInput({
