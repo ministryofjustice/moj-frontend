@@ -13,11 +13,12 @@ const {
   humanReadableLabel: humanReadableLabelText,
   replaceAcronyms,
   truncateText,
-  sanitizeText
+  sanitizeText,
+  ucFirst
 } = require('./text-helper')
 
 const maxWords = 10000
-const shareYourDetailsKeys = Object.keys(shareYourDetails)
+// const shareYourDetailsKeys = Object.keys(shareYourDetails)
 
 /**
  * Converts a text label to a human-readable format using a predefined mapping.
@@ -66,7 +67,7 @@ const answersFromSession = (data, session, canRemove) => {
       answers.push(...extractFieldData(form, session, defaultConfig))
     }
   })
-  console.log(answers)
+  // console.log(answers)
   return answers
 }
 
@@ -90,13 +91,16 @@ const listHTML = (values) => {
  * @returns {string} - The replaced value(s) as an HTML list.
  */
 const shareYourDetailsValueReplacement = (value) => {
-  const values = Array.isArray(value) ? value : [value]
+  let values = Array.isArray(value) ? value : [value]
+  values = values.filter((v) => v) // Remove empty values
+
+  if(values.length === 0) {
+    return "Do not share my details"
+  }
+
   return listHTML(
-    values.map((value) => {
-      if (shareYourDetailsKeys.includes(value)) {
-        return shareYourDetails[value]
-      }
-      return value
+    Object.entries(shareYourDetails).map(([key, value]) => {
+      return ucFirst(`${(!values.includes(key) ? 'do not ' : '')}${value}`)
     })
   )
 }
@@ -166,7 +170,7 @@ const extractFieldData = (field, session, options = {}) => {
     )
   }
 
-  console.log(parsedSession)
+  // console.log(parsedSession)
 
   // Collect all entries that match the field pattern (e.g., /foo, /foo/1, /foo/2)
   const fieldPattern = new RegExp(`^${fieldPath}(?:/\\d+)?$`)
@@ -311,7 +315,7 @@ const checkYourAnswers = (session) => {
       answers: answersFromSession(section.data, session, canRemove)
     })
   })
-  console.log(answers)
+  // console.log(answers)
   return answers
 }
 

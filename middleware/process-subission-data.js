@@ -17,16 +17,19 @@ const getFileFromRedis = async (redisKey) => {
   }
 }
 
-const extractFilename = (key, includeDirectories = true) => {
+// given keys of '/your-details' or '/component-code/1'
+// returns filenames of your-details.txt or component-code-1.txt
+const extractFilename = (key) => {
+  key = key.startsWith('/') ? key.slice(1) : key
+
   const segments = key.split('/')
-  const lastSegment = segments[segments.length - 1]
+  const lastSegment = segments.at(-1)
+
   segments[segments.length - 1] = lastSegment.includes('.')
     ? lastSegment
     : `${lastSegment}.txt`
-  const result = includeDirectories
-    ? segments.join('/')
-    : segments[segments.length - 1]
-  return result.startsWith('/') ? result.slice(1) : result
+
+  return segments.join('-')
 }
 
 const getUniqueFilename = (originalName, existingFilenames) => {
@@ -93,7 +96,21 @@ const processSubmissionData = (sessionData, submissionFiles, submissionRef) => {
           // Documentation should be outside of the submission folder
           submissionData[filename] = sessionData[key]
         } else {
-          submissionData[`${submissionRef}/${filename}`] = sessionData[key]
+          const data = Object.assign({}, sessionData[key])
+          if(key === '/your-details') {
+            // Remove personal data
+            data.fullName = 'Not shared'
+            data.teamName = 'Not shared'
+
+            // Add back in personal details if permission is given
+            if(sessionData[key]?.shareYourDetails?.includes('addNameToComponentPage')) {
+              data.fullName = sessionData[key].fullName
+            }
+            if(sessionData[key]?.shareYourDetails?.includes('addTeamNameToComponentPage')) {
+              data.teamName = sessionData[key].teamName
+            }
+          }
+          submissionData[`submissions/${submissionRef}/${filename}`] = data
         }
       }
     }

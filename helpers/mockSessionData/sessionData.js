@@ -59,7 +59,7 @@ module.exports = {
     fullName: 'test test',
     emailAddress: 'test@test.com',
     teamName: 'The A Team',
-    shareYourDetails: ['addNameToComponentPage', 'addTeamNameWhenRequested']
+    shareYourDetails: ['addNameToComponentPage', 'addTeamNameToComponentPage']
   },
   checkYourAnswers: false,
   '/figma': {
