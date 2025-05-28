@@ -49,7 +49,7 @@ module.exports = {
     componentCodeAvailable: 'yes'
   },
   '/component-code-details': {
-    componentCodeLanguage: 'Other',
+    componentCodeLanguage: 'other',
     componentCodeLanguageOther: 'Nunjucks',
     componentCodeUsage:
       'In lacus ipsum, molestie nec sapien vitae, tincidunt tristique nisi. Integer a lacus quis nisl mollis fringilla. Nullam blandit imperdiet mauris, ac feugiat ante. Vestibulum nec semper nulla, ut ultricies massa. Curabitur lacinia tortor augue, sed varius leo viverra non. Fusce vitae libero ac orci elementum vestibulum eu et libero. In rhoncus laoreet nisi, sit amet rutrum tellus. Ut ut dui in metus sodales molestie eu ut purus.\r\n\r\n',
@@ -70,7 +70,7 @@ module.exports = {
     figmaLinkAdditionalInformation: 'only link'
   },
   '/component-code-details/1': {
-    componentCodeLanguage: 'CSS',
+    componentCodeLanguage: 'css',
     componentCodeUsage: 'Some CSS',
     componentCode: 'style'
   }
