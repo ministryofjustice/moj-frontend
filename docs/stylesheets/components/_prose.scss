@@ -142,7 +142,8 @@
 /// * Consolas - Font for older Windows versions
 /// * Liberation Mono - Font for Linux used by GitHub
 pre,
-code {
+code,
+.font-monospace {
   // font family in a separate variable to avoid syntax errors when passing
   // to the common typography mixin
   $app-code-font: ui-monospace, menlo, "Cascadia Mono", "Segoe UI Mono", consolas, "Liberation Mono", monospace;
