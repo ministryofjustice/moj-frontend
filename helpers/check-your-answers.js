@@ -174,6 +174,8 @@ const extractFieldData = (field, session, options = {}) => {
     fieldPattern.test(key)
   )
 
+  let codeLanguageIsOther = false;
+
   if (matchingEntries.length === 0) return []
 
   return matchingEntries.flatMap(([key, value]) => {
@@ -183,12 +185,26 @@ const extractFieldData = (field, session, options = {}) => {
       let removeAdded = false
       return Object.entries(values).map(([subKey, subValue]) => {
         const actionItems = []
-        const isShareYourDetails = subKey === 'shareYourDetails'
         const displayValue = {
           value: {}
         }
-        if (isShareYourDetails) {
+
+        // Don't include code language if language is other
+        if( subKey === 'componentCodeLanguage' && subValue === 'other') {
+          codeLanguageIsOther = true
+          return null
+        }
+
+        // Only include other language value if `componentCodeLanguage` is
+        // set to 'other'
+        if(subKey === 'componentCodeLanguageOther' && !codeLanguageIsOther) {
+          return null
+        }
+
+        if (subKey === 'shareYourDetails') {
           displayValue.value.html = shareYourDetailsValueReplacement(subValue)
+        } else if(subKey === 'componentCodeLanguage' || subKey === 'componentCodeLanguageOther') {
+          displayValue.value.text = 'Code provided'
         } else if (
           subValue &&
           typeof subValue === 'object' &&
@@ -214,7 +230,7 @@ const extractFieldData = (field, session, options = {}) => {
 
         actionItems.push({
           href: `${hrefRoot}${key}`,
-          text: 'Change',
+          text: ((subKey === 'componentCode') ? 'Review & Change' : 'Change'),
           visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey, fieldName)}`
         })
 
@@ -264,7 +280,7 @@ const extractFieldData = (field, session, options = {}) => {
         }
       }
     ]
-  })
+  }).filter((entry) => entry)
 }
 
 /**
