@@ -26,7 +26,7 @@ Anyone at MoJ or in UK government can add a building block. You do not have to b
 
 Components can be added to the MoJ Design System. Later in 2025, you'll also be able to add a pattern or page.
 
-If the component has a name and image, and you can briefly describe it, it's ready to be added. If you have code and a Figma file that's great too, although you do not need it.
+If the component has a name, image, and you can briefly describe it, it's ready to be added. If you have code and a Figma file that's great too, although you do not need it.
 
 It does not need to be thoroughly tested, documented or considered for wider use. For someone working on a problem from scratch, it can be a helpful starting point or idea.
 
@@ -36,9 +36,11 @@ The component will be given an 'experimental' status. This is to reflect that it
 
 ## Joining discussions
 
-After an experimental building block is live, it can continue to develop through discussions and contributions. This is through a Github discussion thread, which is in the documentation for every experimental building block.
+After an experimental building block is live, contributions can be added to a Github discussion thread. These might include feedback, images, user research findings or accessibility insights.
 
-The comments might include feedback, images, user research findings and accessibility insights.
+If you've used an experimental building block in your service, please add any findings to the thread. This helps it develop.  
+
+You can find the Github discussion thread link in every experimental building block.
 
 <div class="govuk-inset-text">
 Later in 2025 you'll be able to add to a building block in the documentation itself.
