@@ -67,7 +67,7 @@ const answersFromSession = (data, session, canRemove) => {
       answers.push(...extractFieldData(form, session, defaultConfig))
     }
   })
-  console.log(answers)
+  // console.log(answers)
   return answers
 }
 
