@@ -1,6 +1,7 @@
 const crypto = require('crypto')
 
 const express = require('express')
+const { xss } = require('express-xss-sanitizer')
 const multer = require('multer')
 
 const { COMPONENT_FORM_PAGES, ADD_NEW_COMPONENT_ROUTE } = require('../config')
@@ -22,7 +23,6 @@ const {
   removeFromSession,
   sessionStarted,
   validateFormDataFileUpload,
-  validateComponentImagePage,
   saveFileToRedis
 } = require('../middleware/component-session')
 const { generateMarkdown } = require('../middleware/generate-documentation')
@@ -31,6 +31,10 @@ const {
   sendSubmissionEmail,
   sendPrEmail
 } = require('../middleware/notify-email')
+const {
+  processSubmissionData,
+  processSubmissionFiles
+} = require('../middleware/process-subission-data')
 const verifyCsrf = require('../middleware/verify-csrf')
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -38,13 +42,26 @@ const upload = multer({
 })
 const router = express.Router()
 
-const isValidComponentFormPage = (req, res, next) => {
-  if (!Object.keys(COMPONENT_FORM_PAGES).includes(req.params.page)) {
-    const error = new ApplicationError('Unknown page', 404)
-    console.log(error.toErrorObject())
-    next(error)
-  } else {
+const validatePageParams = (req, res, next) => {
+  const validPages = Object.keys(COMPONENT_FORM_PAGES)
+  let valid = true
+
+  if (req.params.page) {
+    // if page is present it must be in allowlist of configured pages
+    valid = validPages.includes(req.params.page)
+  }
+
+  if (req.params.subpage) {
+    // if subpage is present it must always be a number
+    valid = /^\d+$/.test(req.params.subpage)
+  }
+
+  if (valid) {
     next()
+  } else {
+    res.status(404).render('error', {
+      message: 'Page not found.'
+    })
   }
 }
 
@@ -53,7 +70,6 @@ const checkYourAnswersPath = 'check-your-answers'
 const setCsrfToken = (req, res, next) => {
   if (req?.session) {
     if (!req?.session?.csrfToken) {
-      // Set CSRF token
       req.session.csrfToken = crypto.randomBytes(32).toString('hex')
     }
   }
@@ -62,6 +78,7 @@ const setCsrfToken = (req, res, next) => {
 
 router.all('*', setCsrfToken)
 
+// TODO:  Why is this a get * ? Can it not just be set in the get /checkYourAnswersPath route below?
 router.get('*', (req, res, next) => {
   if (req?.session) {
     if (req?.url.endsWith(checkYourAnswersPath)) {
@@ -73,28 +90,13 @@ router.get('*', (req, res, next) => {
 })
 
 // Check your answers page
-router.get(`/${checkYourAnswersPath}`, sessionStarted, (req, res) => {
-  const {
-    componentDetailsRows,
-    prototypeRows,
-    componentCodeRows,
-    addExternalAuditRows,
-    addInternalAuditRows,
-    addAssistiveTechRows,
-    yourDetailsRows,
-    figmaRows
-  } = checkYourAnswers(req.session)
-
+router.get(`/${checkYourAnswersPath}`,
+  sessionStarted,
+  (req, res) => {
+  const sections = checkYourAnswers(req.session)
   res.render(checkYourAnswersPath, {
     submitUrl: req.originalUrl,
-    componentDetailsRows,
-    prototypeRows,
-    componentCodeRows,
-    addExternalAuditRows,
-    addInternalAuditRows,
-    addAssistiveTechRows,
-    yourDetailsRows,
-    figmaRows,
+    sections,
     csrfToken: req?.session?.csrfToken
   })
 })
@@ -107,7 +109,6 @@ if (process.env.DEV_DUMMY_DATA) {
     }
 
     Object.assign(req.session, sessionData)
-
     req.session.save((err) => {
       if (err) {
         return next(err)
@@ -127,22 +128,23 @@ router.get('/start', (req, res) => {
   })
 })
 
-router.post('/start', verifyCsrf, (req, res) => {
-  res.redirect('/contribute/add-new-component/component-details')
-})
-
 // Confirmation page
 router.get('/confirmation', (req, res) => {
   res.render('confirmation')
 })
 
-// Check that we have a session in progress
-router.all('*', sessionStarted)
+router.all('*', sessionStarted) // Check that we have a session in progress
+
+router.post('/start',
+  verifyCsrf,
+  (req, res) => {
+  res.redirect('/contribute/add-new-component/component-details')
+})
 
 // Remove form page
 router.get(
   ['/remove/:page', '/remove/:page/:subpage'],
-  isValidComponentFormPage,
+  validatePageParams,
   getFormSummaryListForRemove,
   (req, res) => {
     const summary = req?.removeSummaryRows
@@ -166,7 +168,7 @@ router.get(
 
 router.get(
   ['/change/:page', '/change/:page/:subpage'],
-  validateComponentImagePage,
+  validatePageParams,
   removeFromSession,
   (req, res) => {
     let redirectUrl = `${ADD_NEW_COMPONENT_ROUTE}/${req.params.page}`
@@ -182,7 +184,9 @@ router.get(
 
 router.post(
   ['/remove/:page', '/remove/:page/:subpage'],
+  xss(),
   verifyCsrf,
+  validatePageParams,
   removeFromSession,
   (req, res) => {
     res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`)
@@ -192,7 +196,7 @@ router.post(
 // Component form page
 router.get(
   ['/:page', '/:page/:subpage'],
-  isValidComponentFormPage,
+  validatePageParams,
   getFormDataFromSession,
   setNextPage,
   canAddAnother,
@@ -200,7 +204,9 @@ router.get(
   getBackLink,
   (req, res) => {
     res.render(`${req.params.page}`, {
+      page: COMPONENT_FORM_PAGES[req.params.page],
       submitUrl: req.originalUrl,
+      sessionFlash: res.locals.sessionFlash,
       formData: req?.formData,
       addAnother: req?.addAnother,
       showAddAnother: req?.showAddAnother,
@@ -218,26 +224,39 @@ router.post(
   verifyCsrf,
   getRawSessionText,
   async (req, res) => {
+    const submissionRef = `submission-${Date.now()}`
+    const submissionFiles = await processSubmissionFiles(
+      req.session,
+      submissionRef
+    )
+    console.log(submissionFiles)
     const { filename: markdownFilename, content: markdownContent } =
-      generateMarkdown(req.session)
+      generateMarkdown(req.session, submissionFiles)
     const markdown = {}
     markdown[markdownFilename] = markdownContent
     const { sessionText } = req
     const session = { ...req.session, ...markdown }
+    const sessionData = processSubmissionData(
+      session,
+      submissionFiles,
+      submissionRef
+    )
+
     req.session.regenerate((err) => {
       if (err) {
         console.error('Error regenerating session:', err)
       }
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/confirmation`)
     })
+
     try {
-      const branchName = await pushToGitHub(session)
+      const branchName = await pushToGitHub(sessionData, submissionRef)
       const { title, description } = getPrTitleAndDescription(session)
       const pr = await createPullRequest(branchName, title, description)
       await sendPrEmail(pr)
     } catch (error) {
       console.error('[FORM SUBMISSION] Error sending submission:', error)
-      await sendSubmissionEmail(null, sessionText, markdownContent)
+      await sendSubmissionEmail(sessionText, markdownContent)
     }
   }
 )
@@ -245,16 +264,22 @@ router.post(
 // Component image upload
 router.post(
   ['/component-image', '/component-image/:subpage'],
+  validatePageParams,
   upload.single('componentImage'),
+  xss(),
+  verifyCsrf,
   saveFileToRedis,
   canAddAnother,
   validateFormDataFileUpload,
   setNextPage,
   getBackLink,
-  verifyCsrf,
   validateFormData,
   (req, res, next) => {
     if (req.file) {
+      req.session.sessionFlash = {
+        type: 'success',
+        message: `File ‘${req.file.originalname}’ successfully uploaded.`
+      }
       saveSession(req, res, next)
     } else {
       // Skipping saving as no new file uploaded
@@ -262,6 +287,11 @@ router.post(
     }
   },
   (req, res, next) => {
+    if (req.file) {
+      console.log(req.file)
+      // return to same page after upload
+      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}${req.url}`)
+    }
     if (req.nextPage) {
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.nextPage}`)
     } else {
@@ -272,22 +302,15 @@ router.post(
   }
 )
 
-// Accessibility file upload
-router.post(
-  ['/add-internal-audit', '/add-external-audit', '/add-assistive-tech'],
-  upload.single('accessibilityReport'),
-  saveFileToRedis,
-  validateFormDataFileUpload
-)
-
 // Form submissions for pages
 router.post(
   ['/:page', '/:page/:subpage'],
-  isValidComponentFormPage,
+  xss(),
+  verifyCsrf,
+  validatePageParams,
   setNextPage,
   canSkipQuestion,
   getBackLink,
-  verifyCsrf,
   validateFormData,
   saveSession,
   (req, res, next) => {

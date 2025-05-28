@@ -30,6 +30,12 @@ const urlToTitleCase = (str) => {
     .join(' ')
 }
 
+const ucFirst = (str) => {
+  if (!str) return str;
+
+  return str[0].toUpperCase() + str.slice(1);
+}
+
 const truncateText = (text, maxWords) => {
   try {
     const words = String(text).split(' ')
@@ -55,5 +61,6 @@ module.exports = {
   urlToTitleCase,
   replaceAcronyms,
   truncateText,
-  sanitizeText
+  sanitizeText,
+  ucFirst
 }

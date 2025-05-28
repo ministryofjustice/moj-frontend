@@ -4,15 +4,13 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% extends "base.njk" %}
 {% block content %}
-  {% if backLink %}
-  <div class="app-layout__backlink">
-    {{ govukBackLink({
-      text: "Back",
-      href: backLink
-    }) }}
-  </div>
-  {% endif %}
   <div class="app-layout__content">
+    {% if backLink %}
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    {% endif %}
     {% if errorList %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
@@ -22,26 +20,19 @@
     <form method="post" action="{{ submitUrl }}">
       <span class="govuk-caption-l">Submit new component</span>
       <h1 class="govuk-heading-xl">Accessibility findings</h1>
-      <p class="govuk-body">Sharing accessibility findings helps support the status and usability of the component you're submitting.</p>
-      <p class="govuk-body">These findings can be the result of a number of sources, including:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>external or internal accessibility audit</li>
-        <li>manual or automated testing</li>
-        <li>testing with assistive technologies</li>
-        <li>usability testing</li>
-      </ul>
-      <p class="govuk-body">Any accessibility findings you can share will be helpful during the review process.</p>
+      <p class="govuk-body">Sharing accessibility findings helps people understand how to use the component. It also helps the Design System team to review it.</p>
+
       {{ govukRadios({
         name: "hasComponentBeenTestedExternalAccessibility",
         hint: {
-          text: "This can be an external audit by the Digital Accessibility Centre (DAC) or other organisation."
+        text: page.fields.hasComponentBeenTestedExternalAccessibility.hint
         },
         fieldset: {
           attributes: {
             id: "has-component-been-tested-external-accessibility"
           },
           legend: {
-            text: "Has the component been tested as part of an external accessibility audit?",
+            text: page.fields.hasComponentBeenTestedExternalAccessibility.label,
             classes: "govuk-fieldset__legend--m"
           }
         },
@@ -62,14 +53,14 @@
       {{ govukRadios({
         name: "hasComponentBeenTestedInternalAudit",
         hint: {
-          text: "This can be an audit by an internal UK Government team."
+          text: page.fields.hasComponentBeenTestedInternalAudit.hint
         },
         fieldset: {
           attributes: {
             id: "has-component-been-tested-internal-audit"
           },
           legend: {
-            text: "Has the component been tested as part of an internal audit?",
+            text: page.fields.hasComponentBeenTestedInternalAudit.label,
             classes: "govuk-fieldset__legend--m"
           }
         },
@@ -90,14 +81,14 @@
       {{ govukRadios({
         name: "hasComponentBeenTestedUsingAssistiveTechnology",
         hint: {
-          text: "This can be, but not limited to, assistive technology such as JAWS, TalkBack or Dragon."
+          text: page.fields.hasComponentBeenTestedUsingAssistiveTechnology.hint
         },
         fieldset: {
           attributes: {
             id: "has-component-been-tested-using-assistive-technology"
           },
           legend: {
-            text: "Has the component been tested using assistive technology?",
+            text: page.fields.hasComponentBeenTestedUsingAssistiveTechnology.label,
             classes: "govuk-fieldset__legend--m"
           }
         },
@@ -122,14 +113,6 @@
           text: 'Continue',
           preventDoubleClick: true
         }) }}
-        {% if skipQuestion %}
-          {{ govukButton({
-            text: "Skip question",
-            classes: "govuk-button--secondary",
-            attributes: {'data-skip-question': skipQuestion},
-            href: skipQuestion
-          }) }}
-        {% endif %}
       </div>
     </form>
   </div>
