@@ -128,17 +128,17 @@ router.get('/start', (req, res) => {
   })
 })
 
+// Confirmation page
+router.get('/confirmation', (req, res) => {
+  res.render('confirmation')
+})
+
 router.all('*', sessionStarted) // Check that we have a session in progress
 
 router.post('/start',
   verifyCsrf,
   (req, res) => {
   res.redirect('/contribute/add-new-component/component-details')
-})
-
-// Confirmation page
-router.get('/confirmation', (req, res) => {
-  res.render('confirmation')
 })
 
 // Remove form page
