@@ -1,15 +1,15 @@
 {% extends "moj/template.njk" %}
 
-{% set assetUrl = "/assets" | url %}
+{% set assetUrl = "/assets" %}
 
 {% block pageTitle -%}
-  {% block title %}{{ title }} - MoJ Design System{% endblock %}
+{% block title %}{{ title }}{{page.title}} - MoJ Design System{% endblock %}
 {%- endblock %}
 
 {% block head %}
   <meta name="description" content="Design your service using MoJ styles, components and patterns">
 
-  <link href="{{ 'stylesheets/application.min.css' | rev | url }}" rel="stylesheet">
+  <link href="{{ 'stylesheets/application.min.css' | rev }}" rel="stylesheet">
 
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -36,7 +36,7 @@
 {% block main %}
   <div class="app-layout">
     <div id="sidebar" class="app-layout__sidebar">
-      {% include "./partials/side-navigation.njk" %}
+      {% include "./partials/side-navigation.njk" ignore missing %}
     </div>
     <div class="app-layout__page app-page">
       {% block beforeContent %}{% endblock %}
@@ -54,6 +54,6 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  <script type="module" src="{{ 'javascripts/application.min.js' | rev | url }}"></script>
+  <script type="module" src="{{ 'javascripts/application.min.js' | rev }}"></script>
   <script type="module" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL"></script>
 {% endblock %}

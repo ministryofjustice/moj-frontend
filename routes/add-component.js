@@ -124,13 +124,16 @@ router.get('/start', (req, res) => {
   req.session.started = true
   console.log('Start session')
   res.render('start', {
+    title: 'Submit a component',
     csrfToken: req?.session?.csrfToken
   })
 })
 
 // Confirmation page
 router.get('/confirmation', (req, res) => {
-  res.render('confirmation')
+  res.render('confirmation', {
+    title: "Component submitted"
+  })
 })
 
 router.all('*', sessionStarted) // Check that we have a session in progress
