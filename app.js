@@ -91,6 +91,11 @@ const njk = expressNunjucks(app, {
 
 njk.env.addFilter('rev', rev)
 
+app.locals.env = {
+  isDev: ENV === 'development',
+  isStaging: ENV === 'staging'
+}
+
 // Static files and body parsing
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
