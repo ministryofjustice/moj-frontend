@@ -35,7 +35,7 @@ const getPageData = (req) => {
   if (!Object.keys(COMPONENT_FORM_PAGES).includes(pageData)) {
     pageData = {}
   }
-  return pageData
+  return COMPONENT_FORM_PAGES[pageData]
 }
 
 const transformErrorsToErrorList = (errors) => {
