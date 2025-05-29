@@ -4,15 +4,13 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% extends "base.njk" %}
 {% block content %}
-  {% if backLink %}
-    <div class="app-layout__backlink">
+  <div class="app-layout__content">
+    {% if backLink %}
       {{ govukBackLink({
         text: "Back",
         href: backLink
       }) }}
-    </div>
-  {% endif %}
-  <div class="app-layout__content">
+    {% endif %}
     {% if errorList %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
@@ -20,20 +18,21 @@
       }) }}
     {% endif %}
     <form method="POST" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit new component</span>
-      <h1 class="govuk-heading-xl">Prototype designs</h1>
-      <p class="govuk-body">Most teams have a prototype of the product or service they're currently working on. A prototype showing the component is helpful when reviewing new submissions to the design system.</p>
-      <p class="govuk-body">Any prototype you share should not contain any personally Identifiable or sensitive information. You should only shared it if you can guarantee it will always be live and available to other users.</p>
-      <p class="govuk-body">The prototype link can be from the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro.</p>
+      <span class="govuk-caption-l">Submit a new component</span>
+      <h1 class="govuk-heading-xl">Add a prototype</h1>
+      <p class="govuk-body">A prototype showing the component helps the Design System team to review the component.</p>
 
       {{ govukRadios({
         name: "componentPrototypeUrl",
+        hint: {
+          text: "For example to the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro."
+        },
         fieldset: {
           attributes: {
             id: "component-prototype-url"
           },
           legend: {
-            text: "Do you have a prototype link for the component?",
+            text: "Do you have a prototype link?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
@@ -59,14 +58,7 @@
           text: 'Continue',
           preventDoubleClick: true
         }) }}
-        {% if skipQuestion %}
-          {{ govukButton({
-            text: "Skip question",
-            classes: "govuk-button--secondary",
-            attributes: {'data-skip-question': skipQuestion},
-            href: skipQuestion
-          }) }}
-        {% endif %}
+
     </form>
   </div>
 {% endblock %}
