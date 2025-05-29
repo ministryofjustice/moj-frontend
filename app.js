@@ -19,6 +19,8 @@ const helmet = require('helmet')
 const nunjucks = require('nunjucks')
 const { xss } = require('express-xss-sanitizer')
 
+const rev = require('./filters/rev')
+
 const { APP_PORT, ENV, REDIS_URL, SESSION_SECRET } = require('./config')
 const addComponentRoutes = require('./routes/add-component')
 
@@ -81,11 +83,18 @@ app.set('views', [
 ])
 
 app.set('view engine', 'njk')
-expressNunjucks(app, {
+const njk = expressNunjucks(app, {
   watch: isDev,
   noCache: false,
-  loader: nunjucks.FileSystemLoader
+  loader: nunjucks.FileSystemLoader,
 })
+
+njk.env.addFilter('rev', rev)
+
+app.locals.env = {
+  isDev: ENV === 'development',
+  isStaging: ENV === 'staging'
+}
 
 // Static files and body parsing
 app.use(express.urlencoded({ extended: true }))

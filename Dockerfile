@@ -11,6 +11,7 @@ COPY package.json package.json
 RUN npm ci
 
 COPY docs docs
+COPY filters filters
 COPY src src
 COPY package package
 COPY .eleventy.js .eleventy.js
@@ -30,6 +31,7 @@ COPY package.json package.json
 RUN npm ci
 
 COPY docs docs
+COPY filters filters
 COPY src src
 COPY package package
 COPY .eleventy.js .eleventy.js
@@ -85,6 +87,7 @@ RUN npm ci --omit=dev
 COPY src src
 COPY app.js app.js
 COPY config.js config.js
+COPY filters filters
 COPY helpers helpers
 COPY schema schema
 COPY middleware middleware
@@ -104,6 +107,7 @@ RUN npm ci --omit=dev
 COPY src src
 COPY app.js app.js
 COPY config.js config.js
+COPY filters filters
 COPY helpers helpers
 COPY schema schema
 COPY middleware middleware
@@ -123,6 +127,7 @@ RUN npm ci --omit=dev
 COPY src src
 COPY app.js app.js
 COPY config.js config.js
+COPY filters filters
 COPY helpers helpers
 COPY schema schema
 COPY middleware middleware
