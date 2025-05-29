@@ -19,6 +19,7 @@ const config = {
   ENV: process.env.ENV || 'development',
   COMPONENT_FORM_PAGES: {
     'component-details': {
+      title: 'Component details',
       fields: {
         componentName: {
           label: 'What’s the name of the component?'
@@ -32,6 +33,7 @@ const config = {
       }
     },
     'component-image': {
+      title: 'Component image',
       fields: {
         componentImage: {
           label: 'Upload a file',
@@ -40,6 +42,7 @@ const config = {
       }
     },
     'accessibility-findings': {
+      title: 'Accessibility findings',
       fields: {
         hasComponentBeenTestedExternalAccessibility: {
           label:
@@ -57,6 +60,7 @@ const config = {
       }
     },
     'add-external-audit': {
+      title: 'External accessibility audit',
       fields: {
         externalOrganisation: {
           label: 'Which organisation did the external accessibility audit?'
@@ -76,6 +80,7 @@ const config = {
       }
     },
     'add-internal-audit': {
+      title: 'Internal accessibility review',
       fields: {
         internalOrganisation: {
           label: 'What team did the internal accessibility review?'
@@ -95,6 +100,7 @@ const config = {
       }
     },
     'add-assistive-tech': {
+      title: 'Testing with assistive technology',
       fields: {
         testingDate: {
           label: 'When was the component tested with assistive technology?',
@@ -112,6 +118,7 @@ const config = {
       }
     },
     prototype: {
+      title: 'Prototype',
       fields: {
         componentPrototypeUrl: {
           label: 'Do you have a prototype link?',
@@ -120,6 +127,7 @@ const config = {
       }
     },
     'prototype-url': {
+      title: 'Prototype details',
       fields: {
         prototypeUrl: {
           label: 'Add the prototype link',
@@ -135,6 +143,7 @@ const config = {
       }
     },
     'component-code': {
+      title: 'Component code',
       fields: {
         componentCodeAvailable: {
           label: 'Do you have code for the component?'
@@ -142,6 +151,7 @@ const config = {
       }
     },
     'component-code-details': {
+      title: 'Component code details',
       fields: {
         componentCodeLanguage: {
           label: 'Select the code language',
@@ -164,6 +174,7 @@ const config = {
       }
     },
     figma: {
+      title: 'Figma design',
       fields: {
         figmaUrl: {
           label: 'Do you have a Figma link for the component?'
@@ -171,6 +182,7 @@ const config = {
       }
     },
     'figma-link': {
+      title: 'Figma design details',
       fields: {
         figmaLink: {
           label: 'Add a link to the Figma design file',
@@ -186,6 +198,7 @@ const config = {
       }
     },
     'your-details': {
+      title: 'Your details',
       fields: {
         fullName: {
           label: 'Full name'
@@ -288,7 +301,7 @@ const config = {
   },
   SHARE_YOUR_DETAILS: {
     addNameToComponentPage: 'add my name to the component page',
-    addTeamNameToComponentPage: 'add my team name to the component page',
+    addTeamNameToComponentPage: 'add my team name to the component page'
   }
 }
 
