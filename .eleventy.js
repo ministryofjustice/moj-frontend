@@ -300,6 +300,17 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter('upperFirst', upperFirst)
 
+  // Implements a url transform to enable us to show the correct page
+  // highlighted within the 11ty generated nav for the contributions app
+  // - if page has a permalink starting with views, then the url is set to the
+  // community start page
+  eleventyConfig.addUrlTransform(({ url }) => {
+    if (url.match(/^\/views/i)) {
+      return '/contribute/add-new-component/start'
+    }
+    // Returning undefined skips the url transform.
+  })
+
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')
   eleventyConfig.addWatchTarget('docs/examples/**/script.js')
