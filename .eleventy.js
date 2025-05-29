@@ -11,6 +11,8 @@ const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const nunjucks = require('nunjucks')
 
+const rev = require('./filters/rev')
+
 const releasePackage = require('./package/package.json')
 const mojFilters = require('./src/moj/filters/all')
 
@@ -287,16 +289,7 @@ module.exports = function (eleventyConfig) {
     return nunjucksEnv.renderString(viewString, context)
   })
 
-  eleventyConfig.addFilter('rev', (filepath) => {
-    if (process.env.ENV === 'production' || process.env.ENV === 'staging') {
-      const manifest = JSON.parse(
-        fs.readFileSync('public/rev-manifest.json', 'utf8')
-      )
-      const revision = manifest[filepath]
-      return `/${revision || filepath}`
-    }
-    return `/${filepath}`
-  })
+  eleventyConfig.addFilter('rev', rev)
 
   eleventyConfig.addFilter('upperFirst', upperFirst)
 
@@ -310,6 +303,26 @@ module.exports = function (eleventyConfig) {
     }
     // Returning undefined skips the url transform.
   })
+
+  // Copies the 11ty base layout and partials to the contributions app layouts directory
+  eleventyConfig.on("eleventy.before", async ({ directories, runMode, outputMode }) => {
+    fs.copyFile(`${directories.includes}layouts/base.njk`, './views/common/base.njk', (err) => {
+      if (err) {
+          console.log("Error Found:", err);
+      }
+    })
+
+    fs.copyFile(`${directories.includes}layouts/partials/header.njk`, './views/common/partials/header.njk', (err) => {
+      if (err) {
+          console.log("Error Found:", err);
+      }
+    })
+    fs.copyFile(`${directories.includes}layouts/partials/footer.njk`, './views/common/partials/footer.njk', (err) => {
+      if (err) {
+          console.log("Error Found:", err);
+      }
+    })
+	});
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')
