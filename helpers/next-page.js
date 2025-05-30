@@ -1,5 +1,10 @@
 const { COMPONENT_FORM_PAGES } = require('../config')
 
+/**
+ * @param {object} conditions - the conditions for the page being checked
+ * @param {object} session - the current session data
+ * @returns {boolean}
+ */
 const checkConditions = (conditions, session) => {
   return Object.entries(conditions).every(([key, value]) => {
     if (typeof value === 'object') {
@@ -9,14 +14,34 @@ const checkConditions = (conditions, session) => {
   })
 }
 
-const nextPage = (url, session, body, subpage) => {
+const getCurrentPageUrl = (url) => {
+  return url.split('/')[1] // ensure we get the page not the forward slash or any subpage detail
+}
+
+const getCurrentPageIndex = (pageUrl) => {
   const pages = Object.keys(COMPONENT_FORM_PAGES)
-  const currentPage = url.split('/')[1] // ensure we get the page not the forward slash or any subpage detail
-  const currentPageIndex = pages.findIndex((page) => currentPage.endsWith(page))
+  return pages.findIndex((page) => pageUrl.endsWith(page))
+}
+/**
+ * @param {string} url - the full url of the page
+ * @param {object} session - the current session
+ * @param {string} body - the submitted data
+ * @param {int} subpage
+ * @returns {({nextPage: string, skippedPages: string[]}|null)}
+ */
+const getNextPage = (url, session, body, subpage) => {
+  const pages = Object.keys(COMPONENT_FORM_PAGES)
+  console.log(pages)
+  const currentPageUrl = getCurrentPageUrl(url)
+  console.log(currentPageUrl)
+  const currentPageIndex = getCurrentPageIndex(currentPageUrl)
+  console.log(currentPageIndex)
+  const skippedPages = []
 
   if (subpage) {
+    console.log('there is a subpage')
     // Return same page but with the next subpage
-    return `${currentPage}/${subpage}`
+    return { nextPage: `${currentPageUrl}/${subpage}`, skippedPages }
   }
 
   // Combine session and posted data
@@ -27,15 +52,23 @@ const nextPage = (url, session, body, subpage) => {
   const data = { ...session, ...pageData }
 
   for (let i = currentPageIndex + 1; i < pages.length; i++) {
-    const page = pages[i]
-    const conditions = COMPONENT_FORM_PAGES[page].conditions || {}
+    const nextPage = pages[i]
+    console.log(`potential next page ${nextPage}`)
+    const conditions = COMPONENT_FORM_PAGES[nextPage].conditions || {}
+    console.log(conditions)
     const shouldShowPage = checkConditions(conditions, data)
+    console.log(shouldShowPage)
     if (shouldShowPage) {
-      return page
+      return { nextPage, skippedPages }
     }
+    skippedPages.push(nextPage)
   }
 
   return null
 }
 
-module.exports = nextPage
+module.exports = {
+  getCurrentPageIndex,
+  getCurrentPageUrl,
+  getNextPage
+}

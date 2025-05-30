@@ -16,7 +16,6 @@ const {
   saveSession,
   getFormDataFromSession,
   getRawSessionText,
-  canSkipQuestion,
   canAddAnother,
   getBackLink,
   getFormSummaryListForRemove,
@@ -201,9 +200,7 @@ router.get(
   ['/:page', '/:page/:subpage'],
   validatePageParams,
   getFormDataFromSession,
-  setNextPage,
   canAddAnother,
-  canSkipQuestion,
   getBackLink,
   (req, res) => {
     res.render(`${req.params.page}`, {
@@ -213,7 +210,6 @@ router.get(
       formData: req?.formData,
       addAnother: req?.addAnother,
       showAddAnother: req?.showAddAnother,
-      skipQuestion: req?.skipQuestion || false,
       backLink: req?.backLink || false,
       csrfToken: req?.session?.csrfToken,
       changeUrl: `${ADD_NEW_COMPONENT_ROUTE}/change/${req.params.page}${req.params.subpage ? `/${req.params.subpage}` : ''}`
@@ -232,7 +228,7 @@ router.post(
       req.session,
       submissionRef
     )
-    console.log(submissionFiles)
+    // console.log(submissionFiles)
     const { filename: markdownFilename, content: markdownContent } =
       generateMarkdown(req.session, submissionFiles)
     const markdown = {}
@@ -274,7 +270,6 @@ router.post(
   saveFileToRedis,
   canAddAnother,
   validateFormDataFileUpload,
-  setNextPage,
   getBackLink,
   validateFormData,
   (req, res, next) => {
@@ -289,9 +284,10 @@ router.post(
       next()
     }
   },
+  setNextPage,
   (req, res, next) => {
     if (req.file) {
-      console.log(req.file)
+      // console.log(req.file)
       // return to same page after upload
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}${req.url}`)
     }
@@ -311,11 +307,10 @@ router.post(
   xss(),
   verifyCsrf,
   validatePageParams,
-  setNextPage,
-  canSkipQuestion,
   getBackLink,
   validateFormData,
   saveSession,
+  setNextPage,
   (req, res, next) => {
     if (req?.nextPage) {
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.nextPage}`)

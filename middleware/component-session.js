@@ -9,7 +9,7 @@ const {
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const extractBody = require('../helpers/extract-body')
-const nextPage = require('../helpers/next-page')
+const { getNextPage } = require('../helpers/next-page')
 const previousPage = require('../helpers/previous-page')
 const redis = require('../helpers/redis-client')
 const { humanReadableLabel } = require('../helpers/text-helper')
@@ -46,23 +46,54 @@ const transformErrorsToErrorList = (errors) => {
 }
 
 const setNextPage = (req, res, next) => {
+  console.log('setting nextPage')
   const addAnother = req?.body?.addAnother !== undefined
+  let subpage = null
+
+  if (addAnother) {
+    subpage = req?.params?.subpage
+      ? Number.parseInt(req?.params?.subpage) + 1
+      : 1
+  }
+
+  const { url, session, body } = req
+  const { nextPage, skippedPages } = getNextPage(url, session, body, subpage)
+
+  console.log(nextPage)
+  console.log(skippedPages)
+
+  if (skippedPages.length) {
+    clearSkippedPageData(skippedPages, session)
+  }
+
   if (req?.session?.checkYourAnswers && !addAnother) {
     req.nextPage = 'check-your-answers'
     if (req.method === 'POST') {
       delete req.session.checkYourAnswers
     }
   } else {
-    let subpage = null
-    if (addAnother) {
-      subpage = req?.params?.subpage
-        ? Number.parseInt(req?.params?.subpage) + 1
-        : 1
-    }
-    const { url, session, body } = req
-    req.nextPage = nextPage(url, session, body, subpage)
+    req.nextPage = nextPage
   }
   next()
+}
+
+/**
+ * @param {string[]} pages - array of pages to clear data for
+ * @param {object} session - array of pages to clear data for
+ */
+const clearSkippedPageData = (pages, session) => {
+  console.log('clearing data for skipped pages')
+  pages.forEach((page) => {
+    page = page.startsWith('/') ? page : `/${page}`
+    // Delete page and subpage data
+    Object.keys(session).forEach((sessionPage) => {
+      if (sessionPage.startsWith(page)) {
+        console.log(`clearing data for ${page}`)
+        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+        delete session[sessionPage]
+      }
+    })
+  })
 }
 
 const errorTemplateVariables = (
@@ -82,7 +113,6 @@ const errorTemplateVariables = (
     backLink: req?.backLink || false,
     addAnother: req?.params?.subpage || 1,
     showAddAnother: req?.showAddAnother || 'addAnother' in (req.body || {}),
-    skipQuestion: req?.skipQuestion || false,
     csrfToken: req?.session?.csrfToken
   }
 }
@@ -236,13 +266,6 @@ const getRawSessionText = (req, res, next) => {
   next()
 }
 
-// Check if can skip question and set value to page to skip to
-const canSkipQuestion = (req, res, next) => {
-  const skipPage = req?.nextPage
-  req.skipQuestion = skipPage || false
-  next()
-}
-
 // Determine if can add another copy of the form
 const canAddAnother = (req, res, next) => {
   const addAnotherCount = req?.params?.subpage
@@ -339,7 +362,6 @@ module.exports = {
   saveSession,
   getFormDataFromSession,
   getRawSessionText,
-  canSkipQuestion,
   canAddAnother,
   getBackLink,
   getFormSummaryListForRemove,
