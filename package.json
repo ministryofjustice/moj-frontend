@@ -135,7 +135,7 @@
     "glob": "^11.0.2",
     "govuk-prototype-kit": "^13.16.2",
     "gray-matter": "^4.0.3",
-    "gulp": "^5.0.0",
+    "gulp": "^5.0.1",
     "gulp-cache": "^1.1.3",
     "gulp-filter": "^9.0.1",
     "gulp-imagemin": "^9.1.0",
