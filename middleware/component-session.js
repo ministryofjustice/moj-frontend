@@ -47,6 +47,7 @@ const transformErrorsToErrorList = (errors) => {
 
 const setNextPage = (req, res, next) => {
   console.log('setting nextPage')
+  const amendingAnswers = req?.session?.checkYourAnswers
   const addAnother = req?.body?.addAnother !== undefined
   let subpage = null
 
@@ -66,7 +67,12 @@ const setNextPage = (req, res, next) => {
     clearSkippedPageData(skippedPages, session)
   }
 
-  if (req?.session?.checkYourAnswers && !addAnother) {
+  const dependentAnswersRequired = !req?.session[`/${nextPage}`]
+  if (dependentAnswersRequired) {
+    console.log('you need to answer some more quesions')
+  }
+
+  if (amendingAnswers && !addAnother && !dependentAnswersRequired) {
     req.nextPage = 'check-your-answers'
     if (req.method === 'POST') {
       delete req.session.checkYourAnswers
