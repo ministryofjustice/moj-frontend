@@ -52,11 +52,11 @@
     @extend %govuk-list;
   }
 
-  ol {
+  ol:not([class]) {
     @extend %govuk-list--number;
   }
 
-  ul {
+  ul:not([class]) {
     @extend %govuk-list--bullet;
   }
 
