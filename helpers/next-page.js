@@ -1,5 +1,10 @@
 const { COMPONENT_FORM_PAGES } = require('../config')
 
+/**
+ * @param {object} conditions - the conditions for the page being checked
+ * @param {object} session - the current session data
+ * @returns {boolean}
+ */
 const checkConditions = (conditions, session) => {
   return Object.entries(conditions).every(([key, value]) => {
     if (typeof value === 'object') {
@@ -9,33 +14,65 @@ const checkConditions = (conditions, session) => {
   })
 }
 
-const nextPage = (url, session, body, subpage) => {
+const getCurrentPageUrl = (url) => {
+  return url.split('/')[1] // ensure we get the page not the forward slash or any subpage detail
+}
+
+const getCurrentPageIndex = (pageUrl) => {
   const pages = Object.keys(COMPONENT_FORM_PAGES)
-  const currentPage = url.split('/')[1] // ensure we get the page not the forward slash or any subpage detail
-  const currentPageIndex = pages.findIndex((page) => currentPage.endsWith(page))
+  return pages.findIndex((page) => pageUrl.endsWith(page))
+}
+/**
+ * @param {string} url - the full url of the page
+ * @param {object} session - the current session
+ * @param {string} body - the submitted data
+ * @param {int} subpage
+ * @returns {(string|null)}
+ */
+const getNextPage = (url, session, pages, subpage, amending) => {
+  console.log(pages)
+  const currentPageUrl = url.split('/')[1] // ensure we get the page not the forward slash or any subpage detail
+  const currentPageIndex = pages.findIndex((page) => currentPageUrl.endsWith(page))
 
   if (subpage) {
+    console.log('there is a subpage')
     // Return same page but with the next subpage
-    return `${currentPage}/${subpage}`
+    return `${currentPageUrl}/${subpage}`
   }
 
-  // Combine session and posted data
-  const pageData = {}
-  if (body) {
-    pageData[url] = body
+  if(!amending && !(currentPageIndex+1 > pages.length)){
+    console.log('not making amendments')
+    return pages[currentPageIndex + 1]
   }
-  const data = { ...session, ...pageData }
 
+  // check all pages in getCurrentFormPages have answers
   for (let i = currentPageIndex + 1; i < pages.length; i++) {
-    const page = pages[i]
-    const conditions = COMPONENT_FORM_PAGES[page].conditions || {}
-    const shouldShowPage = checkConditions(conditions, data)
-    if (shouldShowPage) {
-      return page
+    const nextPage = pages[i]
+    if(!session[`/${nextPage}`]) {
+      return nextPage
     }
   }
 
   return null
 }
 
-module.exports = nextPage
+const getCurrentFormPages = (url,session) => {
+  const pages = []
+  for(const [page, config] of Object.entries(COMPONENT_FORM_PAGES)) {
+    if(config?.conditions){
+      if(checkConditions(config.conditions, session)) {
+        pages.push(page)
+      }
+    } else {
+      pages.push(page)
+    }
+  }
+  return pages
+}
+
+module.exports = {
+  getCurrentPageIndex,
+  getCurrentPageUrl,
+  getCurrentFormPages,
+  getNextPage
+}

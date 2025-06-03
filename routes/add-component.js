@@ -16,14 +16,15 @@ const {
   saveSession,
   getFormDataFromSession,
   getRawSessionText,
-  canSkipQuestion,
   canAddAnother,
   getBackLink,
   getFormSummaryListForRemove,
   removeFromSession,
   sessionStarted,
   validateFormDataFileUpload,
-  saveFileToRedis
+  saveFileToRedis,
+  setCurrentFormPages,
+  clearSkippedPageData
 } = require('../middleware/component-session')
 const { generateMarkdown } = require('../middleware/generate-documentation')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
@@ -82,6 +83,7 @@ router.all('*', setCsrfToken)
 router.get('*', (req, res, next) => {
   if (req?.session) {
     if (req?.url.endsWith(checkYourAnswersPath)) {
+      console.log('visited checkYourAnswersPath')
       // Indicate that we've been on the check your answers page
       req.session.checkYourAnswers = true
     }
@@ -201,11 +203,10 @@ router.get(
   ['/:page', '/:page/:subpage'],
   validatePageParams,
   getFormDataFromSession,
-  setNextPage,
   canAddAnother,
-  canSkipQuestion,
   getBackLink,
   (req, res) => {
+    console.log(`CYA: ${req?.session?.checkYourAnswers}`)
     res.render(`${req.params.page}`, {
       page: COMPONENT_FORM_PAGES[req.params.page],
       submitUrl: req.originalUrl,
@@ -213,7 +214,6 @@ router.get(
       formData: req?.formData,
       addAnother: req?.addAnother,
       showAddAnother: req?.showAddAnother,
-      skipQuestion: req?.skipQuestion || false,
       backLink: req?.backLink || false,
       csrfToken: req?.session?.csrfToken,
       changeUrl: `${ADD_NEW_COMPONENT_ROUTE}/change/${req.params.page}${req.params.subpage ? `/${req.params.subpage}` : ''}`
@@ -232,7 +232,7 @@ router.post(
       req.session,
       submissionRef
     )
-    console.log(submissionFiles)
+    // console.log(submissionFiles)
     const { filename: markdownFilename, content: markdownContent } =
       generateMarkdown(req.session, submissionFiles)
     const markdown = {}
@@ -274,7 +274,6 @@ router.post(
   saveFileToRedis,
   canAddAnother,
   validateFormDataFileUpload,
-  setNextPage,
   getBackLink,
   validateFormData,
   (req, res, next) => {
@@ -289,9 +288,11 @@ router.post(
       next()
     }
   },
+  setCurrentFormPages,
+  setNextPage,
   (req, res, next) => {
     if (req.file) {
-      console.log(req.file)
+      // console.log(req.file)
       // return to same page after upload
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}${req.url}`)
     }
@@ -311,11 +312,12 @@ router.post(
   xss(),
   verifyCsrf,
   validatePageParams,
-  setNextPage,
-  canSkipQuestion,
   getBackLink,
   validateFormData,
   saveSession,
+  setCurrentFormPages,
+  setNextPage,
+  clearSkippedPageData,
   (req, res, next) => {
     if (req?.nextPage) {
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.nextPage}`)
