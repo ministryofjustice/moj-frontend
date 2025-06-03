@@ -9,7 +9,7 @@ const {
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const extractBody = require('../helpers/extract-body')
-const { getNextPage } = require('../helpers/next-page')
+const { getNextPage, getCurrentFormPages } = require('../helpers/next-page')
 const previousPage = require('../helpers/previous-page')
 const redis = require('../helpers/redis-client')
 const { humanReadableLabel } = require('../helpers/text-helper')
@@ -45,8 +45,15 @@ const transformErrorsToErrorList = (errors) => {
   }))
 }
 
+const setCurrentFormPages = (req, res, next) => {
+  const { url, session } = req
+  req.formPages = getCurrentFormPages(url, session)
+  next()
+}
+
 const setNextPage = (req, res, next) => {
   console.log('setting nextPage')
+  const amendingAnswers = req?.session?.checkYourAnswers
   const addAnother = req?.body?.addAnother !== undefined
   let subpage = null
 
@@ -56,17 +63,27 @@ const setNextPage = (req, res, next) => {
       : 1
   }
 
-  const { url, session, body } = req
-  const { nextPage, skippedPages } = getNextPage(url, session, body, subpage)
+  const { url, session, formPages } = req
+  const nextPage = getNextPage(
+    url,
+    session,
+    formPages,
+    subpage,
+    amendingAnswers
+  )
 
   console.log(nextPage)
-  console.log(skippedPages)
 
-  if (skippedPages.length) {
-    clearSkippedPageData(skippedPages, session)
-  }
+  // if (skippedPages.length) {
+  //   clearSkippedPageData(skippedPages, session)
+  // }
 
-  if (req?.session?.checkYourAnswers && !addAnother) {
+  // const dependentAnswersRequired = !req?.session[`/${nextPage}`]
+  // if (dependentAnswersRequired) {
+  //   console.log('you need to answer some more quesions')
+  // }
+
+  if (!nextPage && amendingAnswers && !addAnother) {
     req.nextPage = 'check-your-answers'
     if (req.method === 'POST') {
       delete req.session.checkYourAnswers
@@ -81,19 +98,30 @@ const setNextPage = (req, res, next) => {
  * @param {string[]} pages - array of pages to clear data for
  * @param {object} session - array of pages to clear data for
  */
-const clearSkippedPageData = (pages, session) => {
+const clearSkippedPageData = (req, res, next) => {
   console.log('clearing data for skipped pages')
-  pages.forEach((page) => {
-    page = page.startsWith('/') ? page : `/${page}`
-    // Delete page and subpage data
-    Object.keys(session).forEach((sessionPage) => {
-      if (sessionPage.startsWith(page)) {
-        console.log(`clearing data for ${page}`)
-        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-        delete session[sessionPage]
-      }
-    })
+  const requiredPages = req.formPages.map((page) => {
+    return page.startsWith('/') ? page : `/${page}`
   })
+
+  console.log(requiredPages)
+  // Delete page and subpage data
+  for (const sessionPage of Object.keys(req.session)) {
+    if (
+      !['started', 'cookie', 'csrfToken', 'checkYourAnswers'].includes(sessionPage)
+    ) {
+      console.log(sessionPage)
+      const parentPage = `/${sessionPage.split('/')[1]}`
+      console.log(`checking${parentPage}`)
+      if (!requiredPages.includes(parentPage)) {
+        console.log(`clearing data for ${sessionPage}`)
+        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+        delete req.session[sessionPage]
+      }
+    }
+  }
+
+  next()
 }
 
 const errorTemplateVariables = (
@@ -358,6 +386,7 @@ const saveFileToRedis = async (req, res, next) => {
 
 module.exports = {
   setNextPage,
+  setCurrentFormPages,
   validateFormData,
   saveSession,
   getFormDataFromSession,
@@ -369,5 +398,6 @@ module.exports = {
   sessionStarted,
   validateFormDataFileUpload,
   validateComponentImagePage,
-  saveFileToRedis
+  saveFileToRedis,
+  clearSkippedPageData
 }

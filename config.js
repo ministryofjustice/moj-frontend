@@ -283,16 +283,9 @@ const config = {
       { title: 'Your details', data: ['your-details'] }
     ],
     canRemoveStatic: [
-      '/accessibility-findings',
-      '/prototype-url',
-      '/figma-link',
-      '/component-code-details',
-      '/add-external-audit',
-      '/add-internal-audit',
-      '/add-assistive-tech'
+
     ],
     canRemoveMultiples: [
-      // '/component-image',
       '/prototype-url',
       '/figma-link',
       '/component-code-details'
