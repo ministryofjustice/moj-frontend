@@ -54,13 +54,13 @@ const answersFromSession = (data, session, canRemove) => {
   const answers = []
   const defaultConfig = { removableFields: canRemove }
   data.forEach((form) => {
-    console.log(form)
+    // console.log(form)
     if (typeof form === 'object') {
       console.log('form is an object')
       for (const [formName, formConfig] of Object.entries(form)) {
-        console.log(formConfig)
+        // console.log(formConfig)
         const config = Object.assign({}, defaultConfig, formConfig)
-        console.log(config)
+        // console.log(config)
         answers.push(...extractFieldData(formName, session, config))
       }
     } else {
@@ -123,7 +123,7 @@ const extractFieldData = (field, session, options = {}) => {
     includeFields: []
   }
   const opts = Object.assign({}, defaults, options)
-  console.log(opts)
+  // console.log(opts)
   const fieldName = field
   const fieldPath = `/${field}`
   console.log(`extracting field data for: ${fieldName}`)
@@ -135,8 +135,8 @@ const extractFieldData = (field, session, options = {}) => {
     for (const [key, value] of Object.entries(session)) {
       if (typeof value === 'object' && !Array.isArray(value)) {
         Object.keys(value).forEach(function (field) {
-          console.log(field)
-          console.log(opts.includeFields)
+          // console.log(field)
+          // console.log(opts.includeFields)
           if (opts.includeFields.includes(field)) {
             console.log('field should be included')
             parsedSession[key] = {}
@@ -207,7 +207,7 @@ const extractFieldData = (field, session, options = {}) => {
 
         if (subKey === 'shareYourDetails') {
           displayValue.value.html = shareYourDetailsValueReplacement(subValue)
-        } else if(subKey === 'componentCodeLanguage' || subKey === 'componentCodeLanguageOther') {
+        } else if(subKey === 'componentCode') {
           displayValue.value.text = 'Code provided'
         } else if (
           subValue &&
@@ -221,7 +221,7 @@ const extractFieldData = (field, session, options = {}) => {
           )
         }
 
-        console.log(`display value: ${displayValue.value.text}`)
+        // console.log(`display value: ${displayValue.value.text}`)
 
         if (opts.removableFields.includes(key) && !removeAdded) {
           removeAdded = true
@@ -238,9 +238,9 @@ const extractFieldData = (field, session, options = {}) => {
           visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey, fieldName)}`
         })
 
-        console.log(
-          `display key: ${formPages[fieldName]?.fields[subKey]?.label}`
-        )
+        // console.log(
+          // `display key: ${formPages[fieldName]?.fields[subKey]?.label}`
+        // )
 
         return {
           key: { text: humanReadableLabel(subKey, fieldName) },
