@@ -45,6 +45,12 @@ const transformErrorsToErrorList = (errors) => {
   }))
 }
 
+const setCurrentFormPages = (req, res, next) => {
+  const { url, session } = req
+  req.formPages = getCurrentFormPages(url, session)
+  next()
+}
+
 const setNextPage = (req, res, next) => {
   console.log('setting nextPage')
   const amendingAnswers = req?.session?.checkYourAnswers
@@ -378,6 +384,7 @@ const saveFileToRedis = async (req, res, next) => {
 
 module.exports = {
   setNextPage,
+  setCurrentFormPages,
   validateFormData,
   saveSession,
   getFormDataFromSession,
