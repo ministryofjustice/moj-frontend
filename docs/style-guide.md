@@ -277,7 +277,7 @@ This is 2 separate words. Not keyworker.
 
 ### naming
 
-If you're naming a service in DPS, you should follow the [DPS naming guidelines (MoJ staff only)](https://docs.google.com/document/d/1Va7AIp6cmlyNgs_x42A4KHw3wo5NFQebYO6EhO3lJxg/edit?usp=sharing).
+If you're naming a service in DPS, you should follow the [DPS naming guidelines (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FDigital%20Prison%20Services%20naming%20guidelines%2Edocx%3Fd%3Dw1fc548d20ecc47b08f79f84de70c36d5%26csf%3D1%26web%3D1%26e%3DreEk9z&correlation=dcc4a4a1%2D106c%2Dc000%2Dcd83%2Dd5878e1bef23&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=105&listItemUniqueId=1fc548d2%2D0ecc%2D47b0%2D8f79%2Df84de70c36d5).
 
 ### NDelius
 
@@ -308,7 +308,7 @@ OASys is an abbreviation of Offender Assessment System, which is used by staff a
 
 ### offender or ex-offender
 
-Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md).
+Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FHow%20we%20talk%20about%20people%20in%20the%20justice%20system%20%2Edocx%3Fd%3Dw3d0b8958eb4d4183a284d507a4ae29e5%26csf%3D1%26web%3D1%26e%3DmbNvoe&correlation=b5c4a4a1%2D401a%2Dc000%2Dcd83%2Ddda5619d5da4&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=89&listItemUniqueId=3d0b8958%2Deb4d%2D4183%2Da284%2Dd507a4ae29e5).
 
 ### open prison, open conditions
 
@@ -329,7 +329,7 @@ PERs are a document which must be completed for all people in custody prior to a
 
 ### person on probation, people on probation
 
-Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md).
+Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FHow%20we%20talk%20about%20people%20in%20the%20justice%20system%20%2Edocx%3Fd%3Dw3d0b8958eb4d4183a284d507a4ae29e5%26csf%3D1%26web%3D1%26e%3DmbNvoe&correlation=b5c4a4a1%2D401a%2Dc000%2Dcd83%2Ddda5619d5da4&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=89&listItemUniqueId=3d0b8958%2Deb4d%2D4183%2Da284%2Dd507a4ae29e5).
 
 ### personal data in title tags
 
@@ -391,7 +391,7 @@ Staff in prisons may still use ‘NOMIS number’ or ‘alpha number’ when ref
 
 ### prisoner, person in prison
 
-Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md).
+Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FHow%20we%20talk%20about%20people%20in%20the%20justice%20system%20%2Edocx%3Fd%3Dw3d0b8958eb4d4183a284d507a4ae29e5%26csf%3D1%26web%3D1%26e%3DmbNvoe&correlation=b5c4a4a1%2D401a%2Dc000%2Dcd83%2Ddda5619d5da4&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=89&listItemUniqueId=3d0b8958%2Deb4d%2D4183%2Da284%2Dd507a4ae29e5).
 
 ### prisoner record
 
@@ -443,7 +443,7 @@ Read the [full list of release dates (MoJ staff only)](https://justiceuk.sharepo
 
 ### remand prisoner, on remand, remanded in custody
 
-Someone is on remand if they are placed in custody whilst awaiting trial. Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md).
+Someone is on remand if they are placed in custody whilst awaiting trial. Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FHow%20we%20talk%20about%20people%20in%20the%20justice%20system%20%2Edocx%3Fd%3Dw3d0b8958eb4d4183a284d507a4ae29e5%26csf%3D1%26web%3D1%26e%3DmbNvoe&correlation=19c5a4a1%2D4084%2Dc000%2Dcd83%2Ddf6a4273b326&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=89&listItemUniqueId=3d0b8958%2Deb4d%2D4183%2Da284%2Dd507a4ae29e5).
 
 ### ROTL (Release on Temporary Licence)
 
@@ -486,7 +486,7 @@ Use the 12-hour clock for services in the probation space. For example, 11am.
 
 ### Violent and Sex Offender Register (ViSOR)
 
-Use ViSOR. This is more well known than the full version. Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md).
+Use ViSOR. This is more well known than the full version. Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FHow%20we%20talk%20about%20people%20in%20the%20justice%20system%20%2Edocx%3Fd%3Dw3d0b8958eb4d4183a284d507a4ae29e5%26csf%3D1%26web%3D1%26e%3DmbNvoe&correlation=b5c4a4a1%2D401a%2Dc000%2Dcd83%2Ddda5619d5da4&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=89&listItemUniqueId=3d0b8958%2Deb4d%2D4183%2Da284%2Dd507a4ae29e5).
 
 {% endaccordionSection %}
 {% accordionSection "W" %}
@@ -509,7 +509,7 @@ Capital 'X' and lower case 'r'. Do not shorten to 'body scan' as this may be con
 
 This describes a prisoner aged between 15 and 21.
 
-Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://docs.google.com/document/d/1Vh_ReT14BKQ8ATEZcSIyDvvPERW0NJA7Grhk1trKAq8/edit?tab=t.0#heading=h.zcolbmcvf6md).
+Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FHow%20we%20talk%20about%20people%20in%20the%20justice%20system%20%2Edocx%3Fd%3Dw3d0b8958eb4d4183a284d507a4ae29e5%26csf%3D1%26web%3D1%26e%3DmbNvoe&correlation=b5c4a4a1%2D401a%2Dc000%2Dcd83%2Ddda5619d5da4&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=89&listItemUniqueId=3d0b8958%2Deb4d%2D4183%2Da284%2Dd507a4ae29e5).
 
 {% endaccordionSection %}
 {% endaccordion %}
