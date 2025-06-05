@@ -183,7 +183,7 @@ You do not need to use all of the sub-patterns and steps. Consider which are app
 - Record attendance (lower confidence)
 - Defer appointment (lower confidence)
 
-4. After appointment
+4. After the appointment
 
 - Write up outcome (lower confidence)
 - Send outcome and any next steps (lower confidence)
