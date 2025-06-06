@@ -23,7 +23,6 @@ const {
   sessionStarted,
   validateFormDataFileUpload,
   saveFileToRedis,
-  setCurrentFormPages,
   clearSkippedPageData
 } = require('../middleware/component-session')
 const { generateMarkdown } = require('../middleware/generate-documentation')
@@ -94,6 +93,7 @@ router.get('*', (req, res, next) => {
 // Check your answers page
 router.get(`/${checkYourAnswersPath}`,
   sessionStarted,
+  getBackLink,
   (req, res) => {
   const sections = checkYourAnswers(req.session)
   res.render(checkYourAnswersPath, {
@@ -288,7 +288,6 @@ router.post(
       next()
     }
   },
-  setCurrentFormPages,
   setNextPage,
   (req, res, next) => {
     if (req.file) {
@@ -297,7 +296,7 @@ router.post(
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}${req.url}`)
     }
     if (req.nextPage) {
-      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.nextPage}`)
+      res.redirect(`${req.nextPage}`)
     } else {
       const error = new ApplicationError('Unknown page', 404)
       console.log(error.toErrorObject())
@@ -315,12 +314,11 @@ router.post(
   getBackLink,
   validateFormData,
   saveSession,
-  setCurrentFormPages,
   setNextPage,
   clearSkippedPageData,
   (req, res, next) => {
     if (req?.nextPage) {
-      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${req.nextPage}`)
+      res.redirect(`${req.nextPage}`)
     } else {
       const error = new ApplicationError('Unknown page', 404)
       console.log(error.toErrorObject())
