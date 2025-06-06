@@ -1,6 +1,6 @@
 ---
 layout: layouts/service-patterns.njk
-title: ‘Appointments’ service patterns: proof of concept
+title: "‘Appointments’ service patterns: proof of concept"
 ---
 
 {% tabs "Contents" %}
