@@ -9,8 +9,8 @@ const {
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const extractBody = require('../helpers/extract-body')
-const { getNextPage, getCurrentFormPages } = require('../helpers/next-page')
-const previousPage = require('../helpers/previous-page')
+const getCurrentFormPages = require('../helpers/form-pages')
+const { getNextPage, getPreviousPage } = require('../helpers/page-navigation')
 const redis = require('../helpers/redis-client')
 const { humanReadableLabel } = require('../helpers/text-helper')
 
@@ -45,45 +45,17 @@ const transformErrorsToErrorList = (errors) => {
   }))
 }
 
-const setCurrentFormPages = (req, res, next) => {
-  const { url, session } = req
-  req.formPages = getCurrentFormPages(url, session)
-  next()
-}
-
 const setNextPage = (req, res, next) => {
   console.log('setting nextPage')
   const amendingAnswers = req?.session?.checkYourAnswers
-  const addAnother = req?.body?.addAnother !== undefined
-  let subpage = null
+  const addingAnother = req?.body?.addAnother !== undefined
 
-  if (addAnother) {
-    subpage = req?.params?.subpage
-      ? Number.parseInt(req?.params?.subpage) + 1
-      : 1
-  }
-
-  const { url, session, formPages } = req
-  const nextPage = getNextPage(
-    url,
-    session,
-    formPages,
-    subpage,
-    amendingAnswers
-  )
+  const { url, session } = req
+  const nextPage = getNextPage(url, session, addingAnother, amendingAnswers)
 
   console.log(nextPage)
 
-  // if (skippedPages.length) {
-  //   clearSkippedPageData(skippedPages, session)
-  // }
-
-  // const dependentAnswersRequired = !req?.session[`/${nextPage}`]
-  // if (dependentAnswersRequired) {
-  //   console.log('you need to answer some more quesions')
-  // }
-
-  if (!nextPage && amendingAnswers && !addAnother) {
+  if (amendingAnswers && !nextPage && !addingAnother) {
     req.nextPage = 'check-your-answers'
     if (req.method === 'POST') {
       delete req.session.checkYourAnswers
@@ -100,7 +72,7 @@ const setNextPage = (req, res, next) => {
  */
 const clearSkippedPageData = (req, res, next) => {
   console.log('clearing data for skipped pages')
-  const requiredPages = req.formPages.map((page) => {
+  const requiredPages = getCurrentFormPages(req.session).map((page) => {
     return page.startsWith('/') ? page : `/${page}`
   })
 
@@ -108,7 +80,9 @@ const clearSkippedPageData = (req, res, next) => {
   // Delete page and subpage data
   for (const sessionPage of Object.keys(req.session)) {
     if (
-      !['started', 'cookie', 'csrfToken', 'checkYourAnswers'].includes(sessionPage)
+      !['started', 'cookie', 'csrfToken', 'checkYourAnswers'].includes(
+        sessionPage
+      )
     ) {
       console.log(sessionPage)
       const parentPage = `/${sessionPage.split('/')[1]}`
@@ -308,11 +282,13 @@ const canAddAnother = (req, res, next) => {
 }
 
 const getBackLink = (req, res, next) => {
-  const { url, session, formData } = req
+  console.log('getting back link')
+  const { url, session } = req
   if (session?.checkYourAnswers) {
+    console.log('cya is true')
     req.backLink = 'check-your-answers'
   } else {
-    req.backLink = previousPage(url, session, { ...formData })
+    req.backLink = getPreviousPage(url, session)
   }
   next()
 }
@@ -386,7 +362,6 @@ const saveFileToRedis = async (req, res, next) => {
 
 module.exports = {
   setNextPage,
-  setCurrentFormPages,
   validateFormData,
   saveSession,
   getFormDataFromSession,
