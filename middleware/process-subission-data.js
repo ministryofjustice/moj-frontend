@@ -97,17 +97,48 @@ const processSubmissionData = (sessionData, submissionFiles, submissionRef) => {
           submissionData[filename] = sessionData[key]
         } else {
           const data = Object.assign({}, sessionData[key])
-          if(key === '/your-details') {
+          if (key === '/your-details') {
             // Remove personal data
             data.fullName = 'Not shared'
             data.teamName = 'Not shared'
 
             // Add back in personal details if permission is given
-            if(sessionData[key]?.shareYourDetails?.includes('addNameToComponentPage')) {
+            if (
+              sessionData[key]?.shareYourDetails?.includes(
+                'addNameToComponentPage'
+              )
+            ) {
               data.fullName = sessionData[key].fullName
             }
-            if(sessionData[key]?.shareYourDetails?.includes('addTeamNameToComponentPage')) {
+            if (
+              sessionData[key]?.shareYourDetails?.includes(
+                'addTeamNameToComponentPage'
+              )
+            ) {
               data.teamName = sessionData[key].teamName
+            }
+          }
+          if (key.startsWith('/component-code-details')) {
+            const exampleNum = key.split('/').at(2)
+              ? `-${key.split('/').at(2)}`
+              : ''
+            const language = data.componentCodeLanguage
+            let extension = `.${language}`
+            switch (language) {
+              case 'nunjucks':
+                extension = '.njk'
+                break
+              case 'javascript': {
+                extension = '.js'
+                break
+              }
+            }
+            const code = data.componentCode
+            if (language.toLowerCase() !== 'other') {
+              const filePath = `submissions/${submissionRef}/code/example${exampleNum}${extension}`
+              submissionData[filePath] = {
+                buffer: Buffer.from(code).toString('base64')
+              }
             }
           }
           submissionData[`submissions/${submissionRef}/${filename}`] = data
