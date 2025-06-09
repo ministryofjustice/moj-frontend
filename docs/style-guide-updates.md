@@ -15,6 +15,8 @@ backLink: /content-standards/style-guide/
       <th scope="col" class="govuk-table__header" aria-sort="none">Description</th>
       <th scope="col" class="govuk-table__header" aria-sort="descending">Date</th>
     </tr>
+    </thead>
+    <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
           <td class="govuk-table__cell">
             <a href="/content-standards/style-guide#oasys"><b>OASys</b></a>
@@ -27,7 +29,7 @@ backLink: /content-standards/style-guide/
         </tr>
         <tr class="govuk-table__row">
               <td class="govuk-table__cell">
-                <a href="/content-standards/style-guide#Post-sentence supervision-%28PSS%29"><b>Post-sentence supervision(PSS)</b></a>
+                <a href="/content-standards/style-guide#post-sentence supervision-%28PSS%29"><b>post-sentence supervision(PSS)</b></a>
               </td>
               <td class="govuk-table__cell">
                 <span class="govuk-tag govuk-tag--green">New</span>
@@ -46,8 +48,7 @@ backLink: /content-standards/style-guide/
       <p>PSRs are reports that a court uses to help decide on a defendant's sentence. They consider a defendant's offending behaviour, the risk they pose and to whom. A PSR will provide an independent recommendation of the sentencing options available to the court.</p></td>
       <td class="govuk-table__cell" data-sort-value="20250401">1 April 2025</td>
     </tr>
-  </thead>
-  <tbody class="govuk-table__body">
+
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
         <a href="/content-standards/style-guide#sds40"><b>SDS40</b></a>
