@@ -21,7 +21,8 @@
 }
 
 // Red tag for experimental components
-.moj-experimental {
+.govuk-tag--experimental {
+  @extend .govuk-tag;
   color: govuk-colour("white");
   background: govuk-colour("red");
 }
