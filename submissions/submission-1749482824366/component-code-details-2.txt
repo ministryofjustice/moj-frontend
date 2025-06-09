@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "javascript",
+  "componentCodeLanguageOther": "",
+  "componentCode": "alert('hi')",
+  "componentCodeUsage": ""
+}
