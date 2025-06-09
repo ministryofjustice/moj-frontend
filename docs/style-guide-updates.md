@@ -25,6 +25,16 @@ backLink: /content-standards/style-guide/
           <td class="govuk-table__cell">OASys is an abbreviation of Offender Assessment System, which is used by staff across prisons and probation to complete risk and need assessments. The term is well known and widely understood in its abbreviated form. It is consistently written with the capitalisation OASys.</td>
           <td class="govuk-table__cell" data-sort-value="20250521">21 May 2025</td>
         </tr>
+        <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <a href="/content-standards/style-guide#Post-sentence supervision-%28PSS%29"><b>Post-sentence supervision(PSS)</b></a>
+              </td>
+              <td class="govuk-table__cell">
+                <span class="govuk-tag govuk-tag--green">New</span>
+              </td>
+              <td class="govuk-table__cell">Post-sentence supervision is a period of supervision in the community that follows a prison sentence. The initialism is well understood and can be used without the term being spelt out in full.</td>
+              <td class="govuk-table__cell" data-sort-value="20250609">9 June 2025</td>
+            </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
         <a href="/content-standards/style-guide#pre-sentence-report-%28psr%29"><b>pre-sentence report (PSR)</b></a>
