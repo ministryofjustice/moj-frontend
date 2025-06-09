@@ -114,7 +114,7 @@ You do not need to use all of the sub-patterns and steps. Consider which are app
 
 #### 2. Book appointment
 
-- Get notification to make appointment  
+- Get notification to make appointment
 - Confirm appointment
 - Get information about what to expect at appointment (lower confidence)
 - Get appointment notifications
@@ -138,7 +138,7 @@ You do not need to use all of the sub-patterns and steps. Consider which are app
 4. Attend appointment
 
 - Confirm identity at appointment (lower confidence)
-- People attending the appointment meet one another  
+- People attending the appointment meet one another
 - Submit evidence
 - Get help (lower confidence)
 
@@ -199,9 +199,9 @@ These are some scenarios you may have to design for your service.
 ### Happy paths:
 
 - Person books the appointment themselves
-- Someone else books it for them, for example a service provider  
+- Someone else books it for them, for example a service provider
 - The person is invited to book it by a service provider
-- People get appointment reminders  
+- People get appointment reminders
 - User requests and receives assistance or adjustments to book or attend an appointment
 
 The appointment happens at the right place, on time and runs to time
