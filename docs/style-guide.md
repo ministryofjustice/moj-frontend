@@ -359,9 +359,11 @@ Always use 'preferred name', not 'working name' as it's called in NOMIS.
 
 An identity number assigned to a person in the Police National Computer (PNC). Use ‘PNC number’. This is more well known than the full version.
 
-### Post-sentence supervision (PSS)
+### post-sentence supervision (PSS)
 
-Post-sentence supervision is a period of supervision in the community that follows a prison sentence. The initialism is well understood and can be used without the term being spelt out in full.
+Post-sentence supervision is a period of supervision in the community that follows a prison sentence.
+
+The initialism is well understood and can be used without the term being spelt out in full.
 
 ### pre-sentence report (PSR)
 
