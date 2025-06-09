@@ -29,7 +29,7 @@ backLink: /content-standards/style-guide/
         </tr>
         <tr class="govuk-table__row">
               <td class="govuk-table__cell">
-                <a href="/content-standards/style-guide#post-sentence supervision-%28PSS%29"><b>post-sentence supervision(PSS)</b></a>
+                <a href="/content-standards/style-guide#post-sentence-supervision-%28PSS%29"><b>post-sentence supervision (PSS)</b></a>
               </td>
               <td class="govuk-table__cell">
                 <span class="govuk-tag govuk-tag--green">New</span>
