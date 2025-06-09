@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "other",
+  "componentCodeLanguageOther": "react",
+  "componentCode": "sdkjhbdafkjdfh kajhkabw kdhas bdbmn ajhd h wjhk dwajhdbawjhb\r\nalfkhbaejkhbfaejhkbf",
+  "componentCodeUsage": ""
+}
