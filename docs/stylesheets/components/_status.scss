@@ -19,3 +19,9 @@
     color: $govuk-secondary-text-colour;
   }
 }
+
+// Red tag for experimental components
+.moj-experimental {
+  background: govuk-colour("red");
+  color: govuk-colour("white");
+}
