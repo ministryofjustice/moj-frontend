@@ -4,7 +4,8 @@
 {% from "macros/heading/macro.njk" import heading %}
 
 {% block content %}
-  <div class="app-layout__content">
+    <div class="app-page__header">
+        <div class="app-page__width-container">
     {{ heading({
       text: title,
       caption: "Components" if not isIndex,
@@ -19,9 +20,14 @@
       creatorName,
       creatorTeam
     ) if statusInfo[status] }}
-
+        </div>
+    </div>
+    <div class="app-page__body">
+        <div class="app-page__width-container">
     {{ content | safe }}
 
     {% include "./partials/get-help-and-contribute.njk" %}
+        </div>
+    </div>
   </div>
 {% endblock %}

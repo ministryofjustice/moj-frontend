@@ -1,50 +1,48 @@
 @use "sass:math";
 @use "../moj-frontend" as *;
-
-$app-breakpoint: 800px;
-$app-sidebar-width: 300px;
+@use "../settings/app";
 
 .app-layout {
   $grid-sidebar-width: 25%;
   $grid-content-width: 75%;
 
-  @include govuk-media-query($app-breakpoint) {
+  position: relative;
+
+  @include govuk-media-query(app.$breakpoint) {
     display: grid;
     width: 100%;
     grid-template-columns: $grid-sidebar-width $grid-content-width;
   }
 
   @include govuk-media-query($govuk-page-width) {
-    grid-template-columns: $app-sidebar-width calc(100% - $app-sidebar-width);
+    grid-template-columns: app.$sidebar-width calc(100% - app.$sidebar-width);
   }
 }
 
 .app-layout__sidebar {
   @include govuk-responsive-padding(6, "bottom");
+  z-index: 1;
+  background-color: govuk-colour("white");
+
+  @include govuk-media-query(app.$breakpoint) {
+    border-right: 1px solid $govuk-border-colour;
+  }
 }
 
 .app-layout__page {
-  @include govuk-media-query($app-breakpoint) {
-    border-left: 1px solid $govuk-border-colour;
-  }
+  z-index: 0;
+  overflow-x: hidden;
 }
 
 .app-layout__backlink {
   max-width: 840px;
   @include govuk-responsive-padding(6, "right");
   @include govuk-responsive-padding(6, "left");
-  @include govuk-media-query($app-breakpoint) {
+
+  @include govuk-media-query(app.$breakpoint) {
     @include govuk-responsive-padding(9, "right");
     @include govuk-responsive-padding(9, "left");
   }
 }
 
-.app-layout__content {
-  box-sizing: border-box;
-  max-width: 1100px;
-  @include govuk-responsive-padding(6);
 
-  @include govuk-media-query($app-breakpoint) {
-    @include govuk-responsive-padding(9);
-  }
-}

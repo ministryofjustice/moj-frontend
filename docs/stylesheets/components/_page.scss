@@ -1,3 +1,45 @@
+@use "../moj-frontend" as *;
+@use "../settings/app";
+
 .app-page {
   background-color: #f7f7f7;
+}
+
+.app-page__width-container {
+  box-sizing: border-box;
+  max-width: app.$content-width;
+
+  @include govuk-responsive-padding(6, "right");
+  @include govuk-responsive-padding(6, "left");
+
+  @include govuk-media-query(app.$breakpoint) {
+    @include govuk-responsive-padding(9, "right");
+    @include govuk-responsive-padding(9, "left");
+  }
+}
+
+.app-page__header {
+  @include govuk-responsive-padding(6, "top");
+  @include govuk-responsive-padding(6, "bottom");
+
+  @include govuk-media-query(app.$breakpoint) {
+    @include govuk-responsive-padding(9, "top");
+    @include govuk-responsive-padding(9, "bottom");
+  }
+}
+
+.app-page__body {
+  /* border-top: 1px solid $govuk-border-colour; */
+  @include govuk-responsive-padding(6, "bottom");
+
+  @include govuk-media-query(app.$breakpoint) {
+    @include govuk-responsive-padding(9, "bottom");
+  }
+}
+
+.app-page--tabbed-component {
+  .app-page__header {
+
+  background: govuk-colour("white");
+  }
 }

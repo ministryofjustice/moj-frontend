@@ -141,8 +141,8 @@ module.exports = function (eleventyConfig) {
         .map((tab, index) => {
           const isSelected = index === 0 ? '--selected' : ''
           return `
-      <li class="govuk-tabs__list-item${isSelected} app-navigation__item" role="presentation">
-        <a class="govuk-tabs__tab app-navigation__link app-navigation__link" href="#${tabId(tab)}" role="tab" >
+      <li class="govuk-tabs__list-item govuk-tabs__list-item${isSelected} app-layout-tabs__list-item app-layout-tabs__list-item${isSelected}" role="presentation">
+        <a class="govuk-tabs__tab app-layout-tabs__tab" href="#${tabId(tab)}" role="tab" >
           ${tab.label}
         </a>
       </li>
@@ -155,7 +155,7 @@ module.exports = function (eleventyConfig) {
         .map((tab, index) => {
           const isHidden = index === 0 ? '' : ' govuk-tabs__panel--hidden'
           return `
-      <div class="govuk-tabs__panel${isHidden}" id="${tabId(tab)}" role="tabpanel">${tab.content}</div>
+      <div class="govuk-tabs__panel${isHidden} app-layout-tabs__panel" id="${tabId(tab)}" role="tabpanel">${tab.content}</div>
     `.trim()
         })
         .join('')
@@ -164,9 +164,9 @@ module.exports = function (eleventyConfig) {
       tabsStorage = []
 
       return `
-    <div class="govuk-tabs app-navigation no-govuk-tabs-styles" data-module="govuk-tabs">
+    <div class="govuk-tabs app-layout-tabs no-govuk-tabs-styles" data-module="govuk-tabs">
       <h2 class="govuk-tabs__title">${label}</h2>
-      <ul class="govuk-tabs__list app-navigation__list" role="tabpanel">
+      <ul class="govuk-tabs__list app-layout-tabs__list" role="tabpanel">
         ${tabsList}
       </ul>
       ${tabPanels}
@@ -325,4 +325,8 @@ module.exports = function (eleventyConfig) {
     // Show the dev server version number on the command line
     showVersion: true
   })
+}
+
+module.exports.config = {
+  markdownTemplateEngine: "njk"
 }
