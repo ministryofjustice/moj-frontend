@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "nunjucks",
+  "componentCodeLanguageOther": "",
+  "componentCode": "hi from {{ nunjucks }}",
+  "componentCodeUsage": ""
+}
