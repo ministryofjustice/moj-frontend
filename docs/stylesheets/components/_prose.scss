@@ -139,7 +139,6 @@ pre {
 // Add styling for inline code
 code {
   padding: 1px 3px;
-  // color:  #C62950;
   background-color: govuk-colour("white");
   border: 1px solid govuk-tint($govuk-border-colour, 50);
   @include govuk-font-size($size: 16);
