@@ -16,7 +16,7 @@ To use MoJ Frontend with npm you must:
 
 1. Install the long-term support (LTS) version of [Node.js](https://nodejs.org/en/), which includes npm. The minimum version of Node.js required is 12.17.0 to support ECMAScript (ES) modules.
 
-   (We recommend using [`nvm`](https://github.com/creationix/nvm) for managing versions of Node.)
+   (We recommend using [nvm](https://github.com/creationix/nvm) for managing versions of Node.)
 
 2. Create a [package.json file](https://docs.npmjs.com/files/package.json) if you don’t already have one. You can create a default `package.json` file by running `npm init` from the root of your application.
 
