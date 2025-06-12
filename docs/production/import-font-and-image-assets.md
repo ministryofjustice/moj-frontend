@@ -1,6 +1,7 @@
 ---
-layout: layouts/get-started.njk
+layout: layouts/content.njk
 subsection: Production
+showHelp: true
 title: Import MoJ Frontend font and image assets
 eleventyNavigation:
   key: Import font and image assets

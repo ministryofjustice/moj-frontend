@@ -34,12 +34,13 @@
 
     .app-layout-tabs__list-item {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       background-color: govuk-colour("white");
     }
 
     .govuk-tabs__list-item--selected {
       background-color: #f7f7f7;
+      border-top: 4px solid govuk-colour('blue')
     }
 
     .app-layout-tabs__tab {
@@ -47,11 +48,7 @@
     }
 
     .govuk-tabs__list-item--selected .app-layout-tabs__tab:not(:focus) {
-      /* text-decoration: underline; */
-      /* text-decoration-color: govuk-colour("blue"); */
-      /* text-underline-offset: 17px; */
-      /* text-decoration-thickness: 4px; */
-      box-shadow: 0px 4px govuk-colour("blue");
+      /* box-shadow: 0px 4px govuk-colour("blue"); */
     }
 
     .app-layout-tabs__panel {

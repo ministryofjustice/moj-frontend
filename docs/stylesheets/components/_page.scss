@@ -19,6 +19,16 @@
 }
 
 .app-page__header {
+  background: govuk-colour("white");
+
+  > * > *:last-child {
+    margin-bottom: 0;
+  }
+
+  p {
+      padding-right: 130px;
+  }
+
   @include govuk-responsive-padding(6, "top");
   @include govuk-responsive-padding(6, "bottom");
 
@@ -29,17 +39,19 @@
 }
 
 .app-page__body {
-  /* border-top: 1px solid $govuk-border-colour; */
+  border-top: 1px solid $govuk-border-colour;
+  @include govuk-responsive-padding(6, "top");
   @include govuk-responsive-padding(6, "bottom");
 
   @include govuk-media-query(app.$breakpoint) {
+    @include govuk-responsive-padding(9, "top");
     @include govuk-responsive-padding(9, "bottom");
   }
 }
 
-.app-page--tabbed-component {
-  .app-page__header {
-
-  background: govuk-colour("white");
+.app-page--tabbed {
+  .app-page__body {
+    padding-top: 0;
+    border-top: none;
   }
 }

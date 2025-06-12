@@ -38,7 +38,7 @@
     <div id="sidebar" class="app-layout__sidebar">
       {% include "./partials/side-navigation.njk" %}
     </div>
-    <div class="app-layout__page app-page app-page--{{layout.slice(8,-4)}}">
+    <div class="app-layout__page app-page {{ 'app-page--tabbed' if tabs }}">
       {% block beforeContent %}{% endblock %}
       <main id="main-content" class="app-prose-scope">
         {% block content %}

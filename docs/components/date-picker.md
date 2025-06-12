@@ -1,6 +1,6 @@
 ---
-layout: "layouts/tabbed-component.njk"
 title: Date picker
+tabs: true
 status: Official
 statusDate: July 2024
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703

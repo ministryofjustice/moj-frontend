@@ -1,8 +1,9 @@
 ---
-layout: layouts/community.njk
+layout: layouts/content.njk
 subsection: Get involved
 title: Propose a new component or pattern
 redirect_from: /community/contribute
+showHelp: true
 eleventyNavigation:
   key: Propose a new component or pattern
   parent: Get involved
