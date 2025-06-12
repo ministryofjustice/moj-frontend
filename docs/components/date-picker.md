@@ -6,6 +6,8 @@ statusDate: July 2024
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703
 excerpt: "The date picker component enables users to select a date from a calendar."
 ---
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
 {% tabs %}
 {% tab "Overview" %}
 <span class="govuk-caption-xl govuk-!-margin-bottom-9">The date picker component enables users to select a date from a calendar. </span>
@@ -118,6 +120,7 @@ Follow the [GOV.UK Design System guidance on error messages](https://design-syst
 ### Using multiple date pickers
 
 If you're using more than one date picker, give each text field its own error summary and message (even if the error is the same).
+
 {% endtab %}
 
 {% tab "Examples" %}
