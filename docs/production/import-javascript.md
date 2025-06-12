@@ -1,6 +1,7 @@
 ---
-layout: layouts/get-started.njk
+layout: layouts/content.njk
 subsection: Production
+showHelp: true
 title: Import MoJ Frontend JavaScript
 redirect_from:
   - /get-started/setting-up-javascript

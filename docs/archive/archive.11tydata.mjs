@@ -1,4 +1,7 @@
 export default {
+  layout: "layouts/content.njk",
+  status: "Archived",
+  subsection: 'Archive',
   eleventyComputed: {
     eleventyNavigation: {
       key: (data) => data.title,

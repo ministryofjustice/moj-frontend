@@ -1,6 +1,7 @@
 ---
-layout: layouts/get-started.njk
+layout: layouts/content.njk
 subsection: Production
+showHelp: true
 title: Use MoJ Frontend Nunjucks
 eleventyNavigation:
   key: Use Nunjucks

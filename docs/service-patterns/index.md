@@ -1,5 +1,5 @@
 ---
-layout: layouts/service-patterns.njk
+layout: layouts/content.njk
 title: Adding service patterns to the MoJ design system
 ---
 

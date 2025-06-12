@@ -1,6 +1,7 @@
----
-layout: layouts/get-started.njk
+-
+layout: layouts/content.njk
 subsection: Prototyping
+showHelp: true
 title: Setting up coded prototypes
 redirect_from: /get-started/prototyping
 eleventyNavigation:

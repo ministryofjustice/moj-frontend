@@ -1,5 +1,5 @@
 ---
-layout: layouts/community.njk
+layout: layouts/content.njk
 subsection: About the design system
 title: Collaborating in the design system
 redirect_from: /community/collaborate-in-the-design-system

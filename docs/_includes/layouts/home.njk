@@ -9,7 +9,7 @@
 
 {% block content %}
   <div class="app-masthead">
-    <div class="app-layout__content">
+    <div class="app-page__width-container">
       {{ heading({
         text: title,
         classes: "govuk-!-margin-bottom-4"
@@ -25,7 +25,8 @@
     </div>
   </div>
 
-  <div class="app-layout__content">
+  <div class="app-page__body">
+    <div class="app-page__width-container">
     <section>
       {{ heading({
         text: "About the Design System",
@@ -159,5 +160,6 @@
     </section>
 
     {{ content | safe }}
+    </div>
   </div>
 {% endblock %}

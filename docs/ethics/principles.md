@@ -1,7 +1,8 @@
 ---
-layout: layouts/ethics.njk
+layout: layouts/content.njk
 subsection: Ethics
 title: Ethical principles
+showHelp: true
 eleventyNavigation:
   key: Ethical principles
   parent: Ethics

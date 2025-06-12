@@ -1,7 +1,8 @@
 ---
-layout: layouts/ethics.njk
+layout: layouts/content.njk
 subsection: Ethics
 title: Designing ethical services
+showHelp: true
 eleventyNavigation:
   key: Designing ethical services
   parent: Ethics
