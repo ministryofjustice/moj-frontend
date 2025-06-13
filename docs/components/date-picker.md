@@ -136,8 +136,6 @@ If you're using more than one date picker, give each text field its own error su
 
 <p><img src="{{ 'assets/images/date-picker-question-example-2024.png' | rev | url }}" alt="A screenshot with the title 'What date do you want to view appointments for?' Underneath is the title 'Date' and then a text input field with the calendar icon. Underneath that is a green 'Continue' button."></p>
 
-<hr />
-
 {% endtab %}
 
 {% tab "Get help and contribute" %}
