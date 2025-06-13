@@ -8,7 +8,7 @@ excerpt: "The date picker component enables users to select a date from a calend
 ---
 {% from "govuk/components/pagination/macro.njk" import govukPagination %}
 
-{% tabs %}
+{% tabs "paginate" %}
 {% tab "Overview" %}
 <span class="govuk-caption-xl govuk-!-margin-bottom-9">The date picker component enables users to select a date from a calendar. </span>
 

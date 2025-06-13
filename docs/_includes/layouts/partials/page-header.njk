@@ -28,7 +28,7 @@
       ) if statusInfo[status] }}
 
       {% if lede %}
-       <p>{{ lede }}</p>
+       <p>{{ lede | safe }}</p>
       {% endif %}
     </div>
 </div>
