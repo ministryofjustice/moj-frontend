@@ -185,7 +185,7 @@ const config = {
       title: 'Figma design details',
       fields: {
         figmaLink: {
-          label: 'Add a link to the Figma design file',
+          label: 'Add a link to a Figma design file showing the component',
           hint: 'Set the sharing permissions so that it can be viewed.'
         },
         figmaLinkAdditionalInformation: {
@@ -211,7 +211,7 @@ const config = {
         },
         shareYourDetails: {
           label: 'Displaying your details on the component page',
-          hint: 'Adding your details to the component enables other users to contact you (or your team) to collaborate on the component. This is optional.\r\nSelect all that apply'
+          hint: 'Select all that apply'
         }
       }
     },
