@@ -131,10 +131,11 @@ module.exports = function (eleventyConfig) {
   let tabsStorage = []
 
   // Generate govuk tabs
-  eleventyConfig.addPairedShortcode(
+  eleventyConfig.addPairedNunjucksShortcode(
     'tabs',
-    function (content, label = 'Contents') {
-      const tabId = (tab) => {
+    function (content, style, title="Contents") {
+      const paginate = style === "paginate"
+        const tabId = (tab) => {
         return `${tab.label.toLowerCase().replace(/ /g, '-')}-tab`
       }
       const tabsList = tabsStorage
@@ -156,7 +157,7 @@ module.exports = function (eleventyConfig) {
           const isHidden = index === 0 ? '' : ' govuk-tabs__panel--hidden'
           const nextTab = tabsStorage.at(index+1)
           let nextTabLink
-          if(nextTab){
+          if(paginate && nextTab){
           nextTabLink = `<nav class="govuk-pagination govuk-pagination--block" aria-label="Pagination">
   <div class="govuk-pagination__next">
     <a class="govuk-link govuk-pagination__link" href="#${tabId(nextTab)}" rel="next">
@@ -167,7 +168,7 @@ module.exports = function (eleventyConfig) {
         Next<span class="govuk-visually-hidden"> tab</span>
       </span>
       <span class="govuk-visually-hidden">:</span>
-      <span class="govuk-pagination__link-label">${nextTab}</span>
+      <span class="govuk-pagination__link-label">${nextTab.label}</span>
     </a>
   </div>
 </nav>`
@@ -186,7 +187,7 @@ module.exports = function (eleventyConfig) {
 
       return `
     <div class="govuk-tabs app-layout-tabs no-govuk-tabs-styles" data-module="govuk-tabs">
-      <h2 class="govuk-tabs__title">${label}</h2>
+      <h2 class="govuk-tabs__title">${title}</h2>
       <ul class="govuk-tabs__list app-layout-tabs__list" role="tabpanel">
         ${tabsList}
       </ul>
