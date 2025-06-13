@@ -14,13 +14,13 @@ You can use the MoJ Design System to share your work with others. This is throug
 
 ## Adding a building block
 
-You can now add a building block to the MoJ Design System. You might want to do this to:
+If you work at MoJ, you can now add a building block to the MoJ Design System. You might want to do this to:
 
 - make it easier for teams across government to find your work
-- get contributions from other people to help the building block develop
+- get contributions from other people (including outside MoJ) to help the building block develop
 - help your team meet the [Government Design Principles](https://www.gov.uk/guidance/government-design-principles)
 
-Anyone at MoJ or in UK government can add a building block. You do not have to be a designer or developer.
+Anyone at MoJ can add a building block - you do not have to be a designer or developer.
 
 ### Which building blocks can be added
 
@@ -30,7 +30,7 @@ If the component has a name, image, and you can briefly describe it, it's ready 
 
 It does not need to be thoroughly tested, documented or considered for wider use. For someone working on a problem from scratch, it can be a helpful starting point or idea.
 
-The component will be given an 'experimental' status. This is to reflect that it's early in development and only to be used in alpha and beta phases. You can [read about the MoJ Design System statuses](/design-system-statuses/).
+The component will be given an 'experimental' status. This is to show that it's early in development and only to be used in alpha and beta phases. You can [read about the MoJ Design System statuses](/design-system-statuses/).
 
 [Add a component to the MoJ Design System](/contribute/add-new-component/start)
 
