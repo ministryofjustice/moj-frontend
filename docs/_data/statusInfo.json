@@ -1,21 +1,21 @@
 {
   "Official": {
-    "link": "How ‘official’ {{ types }} work",
+    "link": "How to use ‘official’ {{ types }}",
     "linkContent": "{{ types }} with an ‘official’ status have had a full, multidisciplinary team review.",
     "statusMessage": "Updated"
   },
   "To be reviewed": {
-    "link": "How ‘to be reviewed’ {{ types }} work",
+    "link": "How to use ‘to be reviewed’ {{ types }}",
     "linkContent": "{{ types }} with a ‘to be reviewed’ status have been added for use by everyone, but have not been checked or improved recently.",
     "statusMessage": "Created"
   },
   "Experimental": {
-    "link": "How ‘experimental’ {{ types }} work",
+    "link": "How to use ‘experimental’ {{ types }}",
     "linkContent": "Anyone can add an ‘experimental’ status {{ type }} to the MoJ Design System. They’re early in development and can be used as a starting point.",
     "statusMessage": "Created"
   },
   "Archived": {
-    "link": "How ‘archived’ {{ types }} work",
+    "link": "About ‘archived’ {{ types }}",
     "linkContent": "This {{ type }} is no longer being supported and should not be used.",
     "statusMessage": "Archived"
   }
