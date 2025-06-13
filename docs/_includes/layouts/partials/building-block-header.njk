@@ -1,0 +1,18 @@
+<div class="app-page__header">
+    <div class="app-page__width-container">
+    {{ heading({
+      text: title,
+      caption: caption if not isIndex,
+      statusTag: { text: status }
+    }) }}
+
+    {{ statusLabel(
+      type,
+      status,
+      statusInfo[status],
+      statusDate,
+      creatorName,
+      creatorTeam
+    ) if statusInfo[status] }}
+    </div>
+</div>

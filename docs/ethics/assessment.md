@@ -1,7 +1,8 @@
 ---
-layout: layouts/ethics.njk
+layout: layouts/content.njk
 subsection: Ethics
 title: Preparing for a service assessment
+showHelp: true
 eleventyNavigation:
   key: Preparing for a service assessment
   parent: Ethics

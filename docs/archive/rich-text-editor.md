@@ -1,7 +1,5 @@
 ---
-layout: layouts/archive.njk
 title: Rich text editor
-status: Archived
 type: component
 statusDate: April 2022
 redirect_from: /components/rich-text-editor

@@ -1,5 +1,5 @@
 ---
-layout: layouts/plain.njk
+layout: layouts/content.njk
 title: Accessibility statement for Ministry of Justice Design System
 ---
 

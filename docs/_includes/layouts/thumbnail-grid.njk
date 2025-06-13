@@ -10,32 +10,34 @@
 
 {% block content %}
   <div class="app-masthead">
-    <div class="app-layout__content">
+    <div class="app-page__width-container">
       {{ heading({ text: title }) }}
 
       {{ content | safe }}
     </div>
   </div>
-  <div class="app-layout__content">
-    <div class="app-grid" style="--gap: 60px; --gap-small: 40px; --min-column-width: 290px;">
-      {% for item in items %}
-        {# don't include 'view all components' entry #}
-        {% if item.url !== '/components' %}
-          {% set imgName = item.title|lower|replace(" ", "-") %}
-          {% call card({
-            title: item.title,
-            headingFirst: true,
-            classes: "buildingblock-card",
-            imageSrc: "/assets/images/thumbs/thumb-" + imgName + ".png",
-            imageClasses: 'app-card__image--with-border'
-          }) %}
-            <p>{{ item.excerpt }}</p>
-            <p>
-              <a href="{{ item.url }}">View the &lsquo;{{ item.title }}&rsquo; documentation</a>
-            </p>
-          {% endcall %}
-        {% endif %}
-      {% endfor %}
+  <div class="app-page__body">
+    <div class="app-page__width-container">
+      <div class="app-grid" style="--gap: 60px; --gap-small: 40px; --min-column-width: 290px;">
+        {% for item in items %}
+          {# don't include 'view all components' entry #}
+          {% if item.url !== '/components' %}
+            {% set imgName = item.title|lower|replace(" ", "-") %}
+            {% call card({
+              title: item.title,
+              headingFirst: true,
+              classes: "buildingblock-card",
+              imageSrc: "/assets/images/thumbs/thumb-" + imgName + ".png",
+              imageClasses: 'app-card__image--with-border'
+            }) %}
+              <p>{{ item.excerpt }}</p>
+              <p>
+                <a href="{{ item.url }}">View the &lsquo;{{ item.title }}&rsquo; documentation</a>
+              </p>
+            {% endcall %}
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
 
 {#
