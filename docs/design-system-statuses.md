@@ -20,7 +20,7 @@ The Design System team is working to bring everything to the ‘official’ stat
 
 Learn how you can [help develop design system building blocks](/get-involved/suggest-a-change/).
 
-## ‘Experimental’ status <span class="govuk-tag govuk-tag--blue" style="vertical-align:middle;" aria-hidden="true">Experimental</span>
+## ‘Experimental’ status (for all community components) <span class="govuk-tag--experimental" style="vertical-align:middle;" aria-hidden="true">Experimental</span>
 
 <div class="govuk-inset-text">
   The experimental status will be launched later in 2025.
@@ -34,7 +34,7 @@ They’ll be early in development and may not have been accessibility tested or 
 
 Experimentation, testing and adding findings to the Github discussion for each experimental building block will help people understand how to use it. This user-led process helps people to share their designs, collaborate and work in the open.
 
-## ‘To be reviewed’ status <span class="govuk-tag govuk-tag--red"  style="vertical-align:middle;" aria-hidden="true">To be reviewed</span>
+## ‘To be reviewed’ status <span class="govuk-tag govuk-tag--orange"  style="vertical-align:middle;" aria-hidden="true">To be reviewed</span>
 
 Building blocks with a ‘to be reviewed’ status were added for use by everyone at MoJ, possibly a long time ago.
 
