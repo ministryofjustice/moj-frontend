@@ -20,11 +20,11 @@ The MoJ Design System Group review contributions against a [contribution criteri
 
 ### Step 2: Check for similar contributions
 
-Check if someone has already suggested your idea, or something similar, by viewing a list of contributions under review in the [contribution backlog](https://docs.google.com/spreadsheets/d/1TlF5XxAoE_SPB9JBg1IktY0W30d4kMElwSLGclzL0wQ/edit?usp=sharing).
+Check if someone has already suggested your idea, or something similar, by viewing a list of contributions under review in the [contribution backlog (MoJ staff only)](https://justiceuk.sharepoint.com/:x:/s/MoJDesignSystem227/EUzbt1A914RDoWkL8Ru4FOsBLc1mmhZ-eO_aTnJ9iPVl2w?e=KmyJsx).
 
 ### Step 3: Propose your contribution
 
-Propose a contribution using the [contribution form](https://forms.gle/Hp56F9mYxz8Mh4BZ8). When submitted, your contribution can be viewed on the [contribution backlog](https://docs.google.com/spreadsheets/d/1TlF5XxAoE_SPB9JBg1IktY0W30d4kMElwSLGclzL0wQ/edit?usp=sharing).
+Propose a contribution using the [contribution form (MoJ staff only)](https://forms.office.com/e/dqMMEAHmdb). When submitted, your contribution can be viewed on the [contribution backlog (MoJ staff only)](https://justiceuk.sharepoint.com/:x:/s/MoJDesignSystem227/EUzbt1A914RDoWkL8Ru4FOsBLc1mmhZ-eO_aTnJ9iPVl2w?e=KmyJsx).
 
 <div class="govuk-inset-text">
   If you're unsure about making a contribution, we would encourage you to do so. The MoJ Design System Group will review all contributions and reach out to you to discuss your contribution even if it's not accepted into the design system.
