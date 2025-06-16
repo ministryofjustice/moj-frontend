@@ -9,30 +9,30 @@ eleventyNavigation:
   excerpt: "Building block statuses."
 ---
 
-Every building block on the MoJ Design System has 1 of 4 statuses. This is to help you know how to use them. The statuses are:
+Every building block on the MoJ Design System has a status. This is to help you know how to use them. The statuses are:
 
 - Experimental
 - To be reviewed
 - Official
 - Archived
 
-The Design System team is working to bring everything to the ‘official’ status. Building blocks will move between other statuses when the team develops them. They can also be archived.
+The Design System team is working to bring everything to the ‘official’ status. They may also be archived.
 
 Learn how you can [help develop design system building blocks](/get-involved/suggest-a-change/).
 
-## ‘Experimental’ status (for all community components) <span class="govuk-tag--experimental" style="vertical-align:middle;" aria-hidden="true">Experimental</span>
+## ‘Experimental’ status <span class="govuk-tag govuk-tag--experimental" style="vertical-align:middle;" aria-hidden="true">Experimental</span>
 
 <div class="govuk-inset-text">
   The experimental status will be launched later in 2025.
 </div>
 
-When the experimental status launches, anyone will be able to add a building block to the Design System. All of these community components will start as ‘experimental’. They’ll have had a brief sense check from the MoJ Design System team, and then no more involvement.
+When the experimental status launches, anyone in the MoJ will be able to add a building block to the Design System. 'Experimental' building blocks will be given a brief sense check by the MoJ Design System team. They will next be changed when they're developed to 'official' status. 
 
 An experimental building block can be anything from a screenshot with very brief documentation, to something more developed (with code and a Figma design). They can be used as a starting point, concept or idea.
 
-They’ll be early in development and may not have been considered (or accessibility tested) for use beyond a particular service. They’re only to be used in alpha and beta phases.
+They’ll be early in development and may not have been accessibility tested or considered for use beyond a particular service. They’re only to be used in alpha and beta phases.
 
-This user-led involvement in developing building blocks enables people to share their designs, collaborate and work in the open.
+Experimentation, testing and adding findings to the Github discussion for each experimental building block will help people understand how to use it. This user-led process helps people to share their designs, collaborate and work in the open.
 
 ## ‘To be reviewed’ status <span class="govuk-tag govuk-tag--orange"  style="vertical-align:middle;" aria-hidden="true">To be reviewed</span>
 
