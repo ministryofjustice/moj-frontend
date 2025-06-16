@@ -139,6 +139,6 @@ If you're using more than one date picker, give each text field its own error su
 {% endtab %}
 
 {% tab "Get help and contribute" %}
-    {% include "layouts/partials/get-help-and-contribute.njk" %}
+{% include "layouts/partials/get-help-and-contribute.njk" %}
 {% endtab %}
 {% endtabs %}

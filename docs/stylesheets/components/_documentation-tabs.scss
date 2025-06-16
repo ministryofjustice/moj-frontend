@@ -12,8 +12,8 @@
     }
 
     .app-layout-tabs__list {
-      position: relative;
       display: flex;
+      position: relative;
       background: govuk-colour("white");
 
       &::before,
@@ -23,9 +23,9 @@
         top: 0;
         bottom: 0;
         width: 100vw;
-        background: white;
-        border-bottom: 1px solid $govuk-border-colour;
         height: 100%;
+        border-bottom: 1px solid $govuk-border-colour;
+        background: govuk-colour('white');
       }
 
       &::before {
@@ -44,21 +44,17 @@
     }
 
     .govuk-tabs__list-item--selected {
-      background-color: #f7f7f7;
       border-top: 4px solid govuk-colour("blue");
+      background-color: #f7f7f7;
     }
 
     .app-layout-tabs__tab {
       text-decoration: none;
     }
 
-    .govuk-tabs__list-item--selected .app-layout-tabs__tab:not(:focus) {
-      /* box-shadow: 0px 4px govuk-colour("blue"); */
-    }
-
     .app-layout-tabs__panel {
-      border: none;
       padding: govuk-spacing(9) 0;
+      border: none;
     }
 
     .app-layout-tabs__panel .govuk-pagination--block {
