@@ -1,6 +1,6 @@
 ---
 layout: layouts/service-patterns.njk
-title: "‘Appointments’ service patterns: proof of concept"
+title: "‘Appointments’ service pattern proof of concept"
 ---
 
 {% tabs "Contents" %}
@@ -10,7 +10,7 @@ title: "‘Appointments’ service patterns: proof of concept"
 
 A cross-government team has developed 2 service patterns to help teams design ‘apply’ and ‘appointments’ journeys. These are proofs of concept that have been built to test their usefulness.
 
-They contain some reusable parts that can be used to build services. This is the service pattern for ‘appointments’. You can also [view the service pattern for ‘apply’](/service-patterns/apply).
+They contain some reusable parts that can be used to build services. This is the service pattern for ‘appointments’. There's also the [service pattern for ‘apply’](/service-patterns/apply).
 
 These service patterns are based on examples from across government. Those services were designed for different users and contexts, but the proof of concept shows some of the common and reusable parts.
 
@@ -20,31 +20,39 @@ The proof of concept has 3 parts:
 - sub-patterns (for the 2 sets of users)
 - user scenarios
 
-Parts of the service pattern are described as ‘higher confidence’ and ‘lower confidence’. Higher confidence means at least half of the contributors agreed it was relevant to services they provided. ‘Lower confidence’ means less than half of contributors agreed it was relevant to their services. This is a guide. All parts of the pattern were relevant to 2 or more contributors.
+Service pattern parts are described as either:
+
+- ‘higher confidence’ if at least half of the contributors agreed it was relevant
+- ‘lower confidence’ if less than half of contributors agreed it was relevant
+
+This is a guide. All parts of the pattern were relevant to 2 or more contributors.
 
 ### How to use service patterns
 
-Service patterns are starting points. They give you some user needs for your team to explore and validate. You still need to do research and design - service patterns do not replace any of these activities.
+Service patterns are starting points. They provide some user needs for your team to explore and validate. You still need to do research and design -- service patterns do not replace any of these activities.
 
 We’ll share case studies and examples of this service pattern in use.
 
 ### How to give feedback
 
-We’d like some feedback on the usefulness of the prototype.
+We’d like some feedback on the usefulness of the proof of concept.
 
-Please complete the [appointment pattern survey](https://forms.office.com/Pages/ResponsePage.aspx?id=KEeHxuZx_kGp4S6MNndq2ML_UAYVtf1Jv53R4CVxx1hURFpPVDhUQVJVNkQxMzQyODRON0kzVVpKUi4u) by the end of September 2025.
+Please complete the [appointments pattern survey](https://forms.office.com/Pages/ResponsePage.aspx?id=KEeHxuZx_kGp4S6MNndq2ML_UAYVtf1Jv53R4CVxx1hURFpPVDhUQVJVNkQxMzQyODRON0kzVVpKUi4u).
 
-Or you can email your responses to the 3 questions:
+You can also email your responses to the 3 questions:
 
 1. Would you find this concept useful for designing services?
-2. Would this prototype help you design appointments journeys in your current role?
+2. Would this proof of concept help you design appointments journeys in your current role?
 3. What else would you value in a service pattern like this?
 
 Send your answers to [servicepatterns@justice.gov.uk](mailto:servicepatterns@justice.gov.uk)
 
+{% tabs "Contents" %}
+{% tab "User needs" %}
+
 ## User needs
 
-The cross-government work to identify an 'appointments' service pattern followed a user needs approach. Some of the user needs are low confidence. We’re looking for feedback to validate whether these should be accepted.
+The cross-government work to identify an 'appointments' service pattern followed a user needs approach.  
 
 ### User needs for public-facing services
 
@@ -58,20 +66,20 @@ For people having appointments:
 - I need enough information to make me feel more at ease and help me prepare for my appointment.
 - I need to know what evidence or information I'll need to provide.
 - In the appointment, I need to be able to refer to information I've provided.
-- I need to not have to repeat my story across multiple appointments.
+- I need to not have to repeat my story in different appointments.
 - I need to feel heard and understood throughout my appointment.
 
 For people managing appointments:
 
-- I need to get information or reminders about the appointment.
-- I need to be able to book or reschedule an appointment on behalf of the person applying.
+- I need to information or reminders about the appointment.
+- I need to be able to book or reschedule an appointment on behalf of someone else.
 
 #### Lower confidence:
 
 For people having appointments:
 
 - I need reassurance that the appointment will run on time.
-- I need to know I can bring another person to the appointment who can speak on my behalf if needed.
+- I need to know that I can bring another person to the appointment who can speak on my behalf.
 
 For people managing appointments:
 
@@ -82,7 +90,7 @@ For people managing appointments:
 #### Higher confidence:
 
 - I need fast, integrated and easy-to-use systems so that I can do my job efficiently.
-- I need to be able to easily book, reschedule, send appointment reminders and cancel appointments.
+- I need to be able to book, reschedule, send appointment reminders and cancel appointments.
 - I need to have access to the person's information and history.
 - I need to be able to change the time and location of the appointment to help the person.
 - I need to accommodate reasonable adjustments or special needs (and know about these before the appointment).
@@ -91,10 +99,10 @@ For people managing appointments:
 
 #### Lower confidence:
 
-- I need to understand about any deadline to complete tasks
+- I need to understand about any deadlines to complete tasks
 - I need to know about any concerns about the person so that I can keep myself and other staff safe.
-- I need the right training so that I can feel confident in doing my job.
-- I need to identify safeguarding issues so that I can take protect the public.
+- I need the right training so that I can feel confident about doing my job.
+- I need to identify safeguarding issues so that I can protect the public.
 - I need to communicate with empathy during the appointment, so that people feel listened to.
 - I need to know why people have not attended so that l can reschedule appropriately.
 - I need to communicate with people in the right channel, format and language.
@@ -102,7 +110,7 @@ For people managing appointments:
 {% endtab %}
 {% tab "Sub-patterns" %}
 
-Service patterns can be broken down into service sub-patterns, for example prepare to apply. Each sub-pattern has steps, for example check eligibility.
+Service patterns can be broken down into service sub-patterns, for example prepare to book an appointment. Each sub-pattern has steps, for example check eligibility.
 You do not need to use all of the sub-patterns and steps. Consider which are appropriate for your service.
 
 ### People arranging, managing and attending appointments: sub-patterns and steps
@@ -133,7 +141,7 @@ You do not need to use all of the sub-patterns and steps. Consider which are app
 - Refer to published information
 - Request financial support or expenses (lower confidence)
 - Pay for appointment (lower confidence)
-- Fulfil pre-appointment requirements (lower confidence)
+- Do pre-appointment tasks (lower confidence)
 
 #### 4. Attend appointment
 
@@ -148,12 +156,12 @@ You do not need to use all of the sub-patterns and steps. Consider which are app
 - Know how to complain or challenge the outcome (lower confidence)
 - Get support after the appointment (lower confidence)
 
-### Organisations managing applications: sub-patterns and steps
+### Organisations managing appointments: sub-patterns and steps
 
 #### 1. Book appointment
 
 - Understand the person's details
-- Understand details of a claim or application (lower confidence)
+- Understand the appointment details (lower confidence)
 - Contact the person
 - Arrange the appointment
 - Allocate appointment to an owner (lower confidence)
@@ -183,7 +191,7 @@ You do not need to use all of the sub-patterns and steps. Consider which are app
 - Record attendance (lower confidence)
 - Defer appointment (lower confidence)
 
-4. After the appointment
+#### 4. After the appointment
 
 - Write up outcome (lower confidence)
 - Send outcome and any next steps (lower confidence)
@@ -201,53 +209,43 @@ These are some scenarios you may have to design for your service.
 - Person books the appointment themselves
 - Someone else books it for them, for example a service provider
 - The person is invited to book it by a service provider
-- # People get appointment reminders
+- People get appointment reminders
 - Someone else books it for them, for example a service provider
 - The person is invited to book it by a service provider
-- People get appointment reminders
 - User requests and receives assistance or adjustments to book or attend an appointment
+- The appointment happens at the right place, on time and runs to time
+- User or service provider can view information about the outcome of the appointment
 
-The appointment happens at the right place, on time and runs to time
+### Alternatives:
 
-User or service provider can view information about the outcome of the appointment
 
-#### Alternatives:
+### Unhappy paths:
 
-- Additional application information is needed before it can be processed
-- Evidence in support of application needs to be resent because it's deemed unsuitable
-- User decides they want to withdraw their application
-- User information changes between starting application and completion
-- Eligibility to apply changes while applying
-- User pauses application and returns to it
-- User switches channel during application
-- On checking their answers, user changes something which significantly affects subsequent answers
-- User requires point of contact for support
+●	There are no suitable appointments  
+●	The user cannot book the appointment themselves
 
-### Unhappy Paths:
+The appointment cannot go ahead (or be completed) because:
 
-- User does not understand what they need to complete application
-- User does not meet the eligibility threshold or criteria
-- User cannot find the application form
-- Application is missing information or contains the wrong information
-- User did not receive receipt notification
-- Third party does not complete their part of the application
-- Time limit elapse (for example, SLA for response)
-- Application window closes
-- User is logged out of the service part way through their application due to time out
+●	The user is late, does not attend or cancels at short notice
+●	The provider is late, does not attend or cancels at short notice
+●	There are technical issues or another problem during the appointment
+●	There are scheduling issues with multiple attendees  
+●	The user does not meet essential requirements, for example bringing evidence
+●	The appointment is not paid for
 
 {% endtab %}
 {% tab "Contribute" %}
 
-### How to give feedback on the apply prototype
+### How to give feedback on the appointments proof of concept
 
-We’d like some feedback on the usefulness of the prototype.
+We’d like some feedback on the usefulness of the proof of concept.
 
-Please complete the [apply pattern prototype survey](https://forms.office.com/Pages/ResponsePage.aspx?id=KEeHxuZx_kGp4S6MNndq2ML_UAYVtf1Jv53R4CVxx1hURFpPVDhUQVJVNkQxMzQyODRON0kzVVpKUi4u) by the end of April 2025.
+Please complete the [appointment pattern survey](https://forms.office.com/Pages/ResponsePage.aspx?id=KEeHxuZx_kGp4S6MNndq2ML_UAYVtf1Jv53R4CVxx1hURFpPVDhUQVJVNkQxMzQyODRON0kzVVpKUi4u).
 
 Or you can email your responses to the 3 questions:
 
 1. Would you find this concept useful for designing services?
-2. Would this prototype help you design an apply journey in your current role?
+2. Would this proof of concept help you design an appointment journey in your current role?
 3. What else would you value in a service pattern like this?
 
 Send your answers to [servicepatterns@justice.gov.uk](mailto:servicepatterns@justice.gov.uk).

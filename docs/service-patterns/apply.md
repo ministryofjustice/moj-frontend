@@ -1,6 +1,6 @@
 ---
 layout: layouts/service-patterns.njk
-title: ‘Apply’ service pattern prototype
+title: ‘Apply’ service pattern proof of concept
 ---
 
 {% tabs "Contents" %}
@@ -8,11 +8,11 @@ title: ‘Apply’ service pattern prototype
 
 ## Overview
 
-A cross-government team has developed a prototype to help teams design an ‘apply’ journey in a service. It contains some common parts of this service pattern, which could be developed into a reusable pattern for government.
+A cross-government team has developed a proof of concept to help teams design an ‘apply’ journey in a service. It contains some common parts of this service pattern, which could be developed into a reusable pattern for government.
 
-This prototype was created from multiple ‘apply’ journey examples in DWP, MoJ, DfE, Defra and HMRC. These services were designed for different users and contexts, but the prototype shows the common and reusable parts of them.
+This proof of concept was created from multiple ‘apply’ journey examples in DWP, MoJ, DfE, Defra and HMRC. These services were designed for different users and contexts, but the proof of concept shows the common and reusable parts of them.
 
-The prototype has 3 parts:
+The proof of concept has 3 parts:
 
 - user needs for people applying and for teams managing applications (to be validated)
 - sub-patterns (for the 2 sets of users)
@@ -28,14 +28,14 @@ We’ll share case studies and examples of this service pattern in use.
 
 ### How to give feedback
 
-We’d like some feedback on the usefulness of the prototype.
+We’d like some feedback on the usefulness of the proof of concept.
 
-Please complete the [apply pattern prototype survey](https://forms.office.com/Pages/ResponsePage.aspx?id=KEeHxuZx_kGp4S6MNndq2ML_UAYVtf1Jv53R4CVxx1hURFpPVDhUQVJVNkQxMzQyODRON0kzVVpKUi4u) by the end of April 2025.
+Please complete the [apply pattern survey](https://forms.office.com/Pages/ResponsePage.aspx?id=KEeHxuZx_kGp4S6MNndq2ML_UAYVtf1Jv53R4CVxx1hURFpPVDhUQVJVNkQxMzQyODRON0kzVVpKUi4u) by the end of April 2025.
 
 Or you can email your responses to the 3 questions:
 
 1. Would you find this concept useful for designing services?
-2. Would this prototype help you design an apply journey in your current role?
+2. Would this help you design an apply journey in your current role?
 3. What else would you value in a service pattern like this?
 
 Send your answers to [servicepatterns@justice.gov.uk](mailto:servicepatterns@justice.gov.uk).
@@ -76,7 +76,7 @@ The cross-government work to identify an ‘apply’ service pattern followed a 
 - As a third party, I need to be able to upload and receive correspondence for the claimant.
 - As a third party, I need to easily be able to review information to help the claimant.
 - I need to know a third party will be able to act on my behalf if needed.
-- I need to be kept safe throughout the ‘apply’ process (for example, if I'm a victim of domestic violence).
+- I need to be kept safe throughout the ‘apply’ process (for example, if I'm a victim of domestic abuse).
 
 ### User needs for managing applications
 
@@ -225,16 +225,16 @@ These are some scenarios you may have to design for your service.
 {% endtab %}
 {% tab "Contribute" %}
 
-### How to give feedback on the apply prototype
+### How to give feedback on the apply proof of concept
 
-We’d like some feedback on the usefulness of the prototype.
+We’d like some feedback on the usefulness of the proof of concept.
 
-Please complete the [apply pattern prototype survey](https://forms.office.com/Pages/ResponsePage.aspx?id=KEeHxuZx_kGp4S6MNndq2ML_UAYVtf1Jv53R4CVxx1hURFpPVDhUQVJVNkQxMzQyODRON0kzVVpKUi4u) by the end of April 2025.
+Please complete the [apply pattern survey](https://forms.office.com/Pages/ResponsePage.aspx?id=KEeHxuZx_kGp4S6MNndq2ML_UAYVtf1Jv53R4CVxx1hURFpPVDhUQVJVNkQxMzQyODRON0kzVVpKUi4u) by the end of April 2025.
 
 Or you can email your responses to the 3 questions:
 
 1. Would you find this concept useful for designing services?
-2. Would this prototype help you design an apply journey in your current role?
+2. Would this help you design an apply journey in your current role?
 3. What else would you value in a service pattern like this?
 
 Send your answers to [servicepatterns@justice.gov.uk](mailto:servicepatterns@justice.gov.uk).
