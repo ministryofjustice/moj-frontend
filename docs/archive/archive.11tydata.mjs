@@ -1,6 +1,6 @@
 export default {
-  layout: "layouts/content.njk",
-  status: "Archived",
+  layout: 'layouts/content.njk',
+  status: 'Archived',
   subsection: 'Archive',
   eleventyComputed: {
     eleventyNavigation: {

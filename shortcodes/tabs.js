@@ -1,19 +1,24 @@
 module.exports = (function () {
-  let title = 'Contents'
-  let paginate = false
+  const config = {
+    title: 'Contents',
+    paginate: false,
+    hiddenClassModifier: '--hidden',
+    selectedClassModifier: '--selected'
+  }
   let tabs = []
   let tabListItems = []
   let tabPanels = []
-  const hiddenClassModifier = '--hidden'
-  const selectedClassModifier = '--selected'
 
   function tabId(tab) {
     return `${tab.label.toLowerCase().replace(/ /g, '-')}-tab`
   }
 
   function tabItemHTML(id, label, isSelected) {
+    const selectedClass = isSelected
+      ? `govuk-tabs__list-item${config.selectedClassModifier}`
+      : ''
     return `
-      <li class="govuk-tabs__list-item ${isSelected ? 'govuk-tabs__list-item' + selectedClassModifier : ''} app-layout-tabs__list-item ${isSelected ? 'app-layout-tabs__list-item' + selectedClassModifier : ''} " role="presentation">
+      <li class="govuk-tabs__list-item ${selectedClass} app-layout-tabs__list-item" role="presentation">
         <a class="govuk-tabs__tab app-layout-tabs__tab" href="#${id}" role="tab" >
           ${label}
         </a>
@@ -22,8 +27,11 @@ module.exports = (function () {
   }
 
   function tabPanelHTML(id, content, isHidden, nextTabLink) {
+    const hiddedClass = isHidden
+      ? `govuk-tabs__panel${config.hiddenClassModifier}`
+      : ''
     return `
-      <div class="govuk-tabs__panel ${isHidden ? 'govuk-tabs__panel' + hiddenClassModifier : ''} app-layout-tabs__panel" id="${id}" role="tabpanel">
+      <div class="govuk-tabs__panel ${hiddedClass} app-layout-tabs__panel" id="${id}" role="tabpanel">
         ${content}
         ${nextTabLink ?? ''}
       </div>
@@ -53,7 +61,7 @@ module.exports = (function () {
       const nextTab = tabs.at(index + 1)
       let nextTabLink
 
-      if (paginate && nextTab) {
+      if (config.paginate && nextTab) {
         nextTabLink = paginationHTML(nextTab)
       }
 
@@ -65,7 +73,7 @@ module.exports = (function () {
   function render() {
     const html = `
     <div class="govuk-tabs app-layout-tabs no-govuk-tabs-styles" data-module="govuk-tabs">
-      <h2 class="govuk-tabs__title">${title}</h2>
+      <h2 class="govuk-tabs__title">${config.title}</h2>
       <ul class="govuk-tabs__list app-layout-tabs__list" role="tabpanel">
         ${tabListItems.join('\n').trim()}
       </ul>
@@ -84,9 +92,9 @@ module.exports = (function () {
   }
 
   return {
-    createTabs: function (content, style, title = 'Contents') {
-      title = title
-      paginate = style === 'paginate'
+    createTabs: function (content, style, label) {
+      config.title = label ?? 'Contents'
+      config.paginate = style === 'paginate'
 
       build()
       return render()

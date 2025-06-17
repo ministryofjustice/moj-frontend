@@ -10,12 +10,10 @@ const upperFirst = require('lodash/upperFirst')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const nunjucks = require('nunjucks')
-const tabs = require('./shortcodes/tabs')
-
 
 const releasePackage = require('./package/package.json')
+const tabs = require('./shortcodes/tabs')
 const mojFilters = require('./src/moj/filters/all')
-
 
 // Configure highlight.js
 hljs.registerAliases(['mjs', 'njk'], { languageName: 'javascript' })
@@ -133,7 +131,7 @@ module.exports = function (eleventyConfig) {
   // Generate govuk tabs
   eleventyConfig.addPairedNunjucksShortcode('tabs', tabs.createTabs)
   // Find and store govuk tab for above tabs
-  eleventyConfig.addPairedShortcode('tab', tabs.createTab  )
+  eleventyConfig.addPairedShortcode('tab', tabs.createTab)
 
   eleventyConfig.addPairedShortcode('banner', function (content, title) {
     return `
@@ -282,5 +280,5 @@ module.exports = function (eleventyConfig) {
 }
 
 module.exports.config = {
-  markdownTemplateEngine: "njk"
+  markdownTemplateEngine: 'njk'
 }
