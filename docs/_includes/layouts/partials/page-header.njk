@@ -28,7 +28,7 @@
       ) if statusInfo[status] }}
 
       {% if lede or excerpt %}
-        <span class="govuk-caption-xl govuk-!-margin-top-8">{{ (lede if lede else excerpt) | safe }}</span>
+        <span class="govuk-caption-xl govuk-!-margin-top-8">{{ lede | safe }}</span>
       {% endif %}
     </div>
 </div>

@@ -5,6 +5,7 @@ status: Official
 statusDate: July 2024
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703
 excerpt: "The date picker component enables users to select a date from a calendar."
+lede: "The date picker component enables users to select a date from a calendar."
 ---
 {% from "govuk/components/pagination/macro.njk" import govukPagination %}
 
