@@ -3,7 +3,6 @@ layout: layouts/service-patterns.njk
 title: "‘Appointments’ service pattern proof of concept"
 ---
 
-{% tabs "Contents" %}
 {% tab "Overview" %}
 
 ## Overview
@@ -47,7 +46,6 @@ You can also email your responses to the 3 questions:
 
 Send your answers to [servicepatterns@justice.gov.uk](mailto:servicepatterns@justice.gov.uk)
 
-{% tabs "Contents" %}
 {% tab "User needs" %}
 
 ## User needs
