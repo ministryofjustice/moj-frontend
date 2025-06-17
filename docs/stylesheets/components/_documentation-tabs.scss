@@ -54,7 +54,7 @@
       text-decoration: none;
     }
 
-    .app-layout-tabs__list-item:not(.app-layout-tabs__list-item--selected) {
+    .app-layout-tabs__list-item:not(.govuk-tabs__list-item--selected) {
       &:hover {
         background-color: #f7f7f7;
         box-shadow: inset 0 0 0 4px govuk-colour("white");
