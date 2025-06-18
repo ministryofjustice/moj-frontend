@@ -45,7 +45,7 @@ You can also email your responses to the 3 questions:
 3. What else would you value in a service pattern like this?
 
 Send your answers to [servicepatterns@justice.gov.uk](mailto:servicepatterns@justice.gov.uk)
-
+{% endtab %}
 {% tab "User needs" %}
 
 ## User needs
