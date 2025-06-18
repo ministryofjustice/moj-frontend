@@ -219,17 +219,17 @@ These are some scenarios you may have to design for your service.
 
 ### Unhappy paths:
 
-●	There are no suitable appointments  
-●	The user cannot book the appointment themselves
+ - There are no suitable appointments  
+ - The user cannot book the appointment themselves
 
 The appointment cannot go ahead (or be completed) because:
 
-●	The user is late, does not attend or cancels at short notice
-●	The provider is late, does not attend or cancels at short notice
-●	There are technical issues or another problem during the appointment
-●	There are scheduling issues with multiple attendees  
-●	The user does not meet essential requirements, for example bringing evidence
-●	The appointment is not paid for
+ - The user is late, does not attend or cancels at short notice
+ - The provider is late, does not attend or cancels at short notice
+ - There are technical issues or another problem during the appointment
+ - There are scheduling issues with multiple attendees  
+ - The user does not meet essential requirements, for example bringing evidence
+ - The appointment is not paid for
 
 {% endtab %}
 {% tab "Contribute" %}
