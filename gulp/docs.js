@@ -29,6 +29,7 @@ gulp.task('docs:copy-assets', () => {
 gulp.task('docs:copy-stylesheets', () => {
   return gulp
     .src([
+      'node_modules/@ministryofjustice/frontend/moj/moj-frontend.min.css?(.map)'
       // 'node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.css?(.map)'
     ])
     .pipe(gulp.dest('public/stylesheets'))
