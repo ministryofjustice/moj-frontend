@@ -9,8 +9,15 @@
 
       {% for section in sections %}
         {% if section.answers.length > 0 %}
-          <h2 class="govuk-heading-l">{{ section.title }}</h2>
           {{ govukSummaryList({
+            card: {
+              title: {
+                text: section.title
+              },
+              actions: {
+                items: []
+              }
+            },
             rows: section.answers,
             classes: "govuk-!-margin-bottom-9"
           }) }}

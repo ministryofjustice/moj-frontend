@@ -245,9 +245,9 @@ const extractFieldData = (field, session, options = {}) => {
         return {
           key: { text: humanReadableLabel(subKey, fieldName) },
           ...displayValue,
-          actions: {
-            items: actionItems
-          }
+          // actions: {
+          //   items: actionItems
+          // }
         }
       })
     }
