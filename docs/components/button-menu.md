@@ -1,11 +1,15 @@
 ---
 title: Button menu
+tabs: true
 status: Official
 statusDate: October 2024
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/685
 excerpt: "The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu."
 lede: "The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu."
 ---
+
+{% tabs "paginate" %}
+{% tab "Overview" %}
 
 {% example "/examples/button-menu", 250 %}
 
@@ -49,6 +53,10 @@ There’s also the:
 - [page header actions component](/components/page-header-actions/)
 - [summary list component on the GOV.UK Design System](https://design-system.service.gov.uk/components/summary-list/)
 - [identity bar component](/components/identity-bar/)
+
+{% endtab %}
+
+{% tab "How to use" %}
 
 ## How to use
 
@@ -114,6 +122,10 @@ Users may believe that menu buttons with the same title (particularly generic ti
 
 Content can run into a second line.
 
+{% endtab %}
+
+{% tab "Examples" %}
+
 ## Examples
 
 ### Within a case management system
@@ -128,4 +140,9 @@ Adding a button menu to the multi select component helps users complete common t
 
 <p><img src="{{ 'assets/images/button-menu-multi-select-example-2024.png' | rev | url }}" alt="An example of a button menu and GOV.UK default button on a Ministry of Justice webpage. The grey button menu is to the right of the green button. This is next to the H2 title 'Case management'. Both are below the H1 title 'Case management'. The title of the green button is 'Record review' and the button menu is 'Print options', which contains: Print case, Print review, Print investigation and Print referral."></p>
 
-<hr />
+{% endtab %}
+
+{% tab "Get help and contribute" %}
+{% include "layouts/partials/get-help-and-contribute.njk" %}
+{% endtab %}
+{% endtabs %}

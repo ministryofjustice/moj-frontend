@@ -1,11 +1,15 @@
 ---
 title: Alert
+tabs: true
 status: Official
 statusDate: February 2025
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1163
 excerpt: "Use the alert component to display a prominent message and related actions to take."
 lede: "The alert component uses visual design to display a notification to users. It has a range of use cases."
 ---
+
+{% tabs "paginate" %}
+{% tab "Overview" %}
 
 {% example "/examples/alert" %}
 
@@ -125,6 +129,10 @@ This alert pauses the user with a prominent message. This prioritisation should 
 
 An alert needs a title, which does not need to be displayed as a heading. The title gives each alert a unique label and helps screenreaders to identify the alert. It does not have to be read out.
 
+{% endtab %}
+
+{% tab "How to use" %}
+
 ## How to use
 
 The alert works best when it contains a single, succinct message.
@@ -206,6 +214,10 @@ An alert should not be placed on a coloured background because:
 - the colour contrast between the border and page may not be accessible
 - the background may distract from the border colour and change the emphasis of the message
 
+{% endtab %}
+
+{% tab "Examples" %}
+
 ## Examples
 
 ### Alerts in a case management system
@@ -220,4 +232,9 @@ Alerts positioned inline with other content help people to understand what the m
 
 <p><img src="{{ 'assets/images/alert-example-contextual.png' | rev | url }}" alt="A warning alert with heading level 3 is shown beneath a heading level 2 on an MoJ webpage to highlight the importance of maintaining heading structure.'"></p>
 
-<hr />
+{% endtab %}
+
+{% tab "Get help and contribute" %}
+{% include "layouts/partials/get-help-and-contribute.njk" %}
+{% endtab %}
+{% endtabs %}

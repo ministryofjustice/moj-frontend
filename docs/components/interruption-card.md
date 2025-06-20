@@ -1,11 +1,15 @@
 ---
 title: Interruption card
+tabs: true
 status: Official
 statusDate: December 2024
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/421
 excerpt: "The interruption card component stops users in a flow with important information."
 lede: "The interruption card component pauses a user’s journey with important information."
 ---
+
+{% tabs "paginate" %}
+{% tab "Overview" %}
 
 {% example "/examples/interruption-card", 590 %}
 
@@ -109,6 +113,10 @@ There’s also the:
 - [GOV.UK Design System panel](https://design-system.service.gov.uk/components/panel/)
 - [GOV.UK Design System notification banner](https://design-system.service.gov.uk/components/notification-banner/)
 
+{% endtab %}
+
+{% tab "How to use" %}
+
 ## How to use
 
 ### What to add to it
@@ -167,4 +175,9 @@ Users completing the same journey multiple times in a service will become overex
 
 Consider limiting the amount of times a particular interruption card is shown to users at the same stage of the journey.
 
-<hr />
+{% endtab %}
+
+{% tab "Get help and contribute" %}
+{% include "layouts/partials/get-help-and-contribute.njk" %}
+{% endtab %}
+{% endtabs %}
