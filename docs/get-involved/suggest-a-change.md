@@ -9,9 +9,8 @@ eleventyNavigation:
   parent: Get involved
   order: 30
   excerpt: "Help improve the MoJ Design System by suggesting changes to building blocks."
+lede: "Help improve the MoJ Design System by suggesting a change to a building block."
 ---
-
-Help improve the MoJ Design System by suggesting a change to a building block.
 
 The Design System is looking to learn about:
 

@@ -9,9 +9,8 @@ eleventyNavigation:
   parent: Get involved
   order: 10
   excerpt: "Follow these 3 steps to propose a new building block. Anyone can do this."
+lede: "Our contribution process supports teams to add components and patterns based on their users needs and service requirements, whilst guaranteeing the quality and usefulness of the MoJ Design System."
 ---
-
-Our contribution process supports teams to add components and patterns based on their users needs and service requirements, whilst guaranteeing the quality and usefulness of the MoJ Design System.
 
 Anyone can propose a new component or pattern.
 

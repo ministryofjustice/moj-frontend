@@ -8,11 +8,8 @@ eleventyNavigation:
   parent: Guidance
   order: 10
   excerpt: "The MoJ A to Z content style guide covering style, spelling and grammar conventions."
+lede: "This content style guide applies to services and guidance at MoJ. It should be used alongside the <a href='https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style'>style guide on GOV.UK</a>."
 ---
-
-<p class="govuk-!-margin-bottom-6">
-    This content style guide applies to services and guidance at MoJ. It should be used alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">style guide on GOV.UK</a>.
-</p>
 
 <p class="govuk-!-margin-bottom-0">
 First published: 18 December 2024

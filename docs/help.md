@@ -7,9 +7,8 @@ eleventyNavigation:
   key: Get help
   parent: About the design system
   order: 50
+lede: "The MoJ Design System team supports users of the MoJ Design System. Contact us to ask for help."
 ---
-
-<span class="govuk-caption-xl">The MoJ Design System team supports users of the MoJ Design System. Contact us to ask for help.</span>
 
 ### Contact us on Slack
 
