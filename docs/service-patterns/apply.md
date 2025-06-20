@@ -8,37 +8,31 @@ title: ‘Apply’ service pattern proof of concept
 
 ## Overview
 
-A cross-government team has developed a proof of concept to help teams design an ‘apply’ journey in a service. It contains some common parts of this service pattern, which could be developed into a reusable pattern for government.
+A cross-government team has developed 2 service patterns to help teams design ‘apply’ and ‘appointments’ journeys. These are proofs of concept that have been built to test their usefulness.
 
-This proof of concept was created from multiple ‘apply’ journey examples in DWP, MoJ, DfE, Defra and HMRC. These services were designed for different users and contexts, but the proof of concept shows the common and reusable parts of them.
+They contain some reusable parts that can be used to build services. This is the service pattern for ‘apply’. There's also the [service pattern for ‘appointments’](/service-patterns/appointment).
 
-The proof of concept has 3 parts:
+These service patterns are based on examples from across government. Those services were designed for different users and contexts, but the proof of concept shows some of the common and reusable parts.
 
-- user needs for people applying and for teams managing applications (to be validated)
+The proof of concept covers:
+
+- user needs for applying, and for teams managing applications
 - sub-patterns (for the 2 sets of users)
 - user scenarios
 
-This is part of [work to develop service patterns across government](/service-patterns/).
+Service pattern parts are described as either:
+
+- ‘more common’ if at least half of the contributors agreed it was relevant
+- ‘less common’ if fewer than half of contributors agreed it was relevant
+
+This is a guide. All parts of the pattern were relevant to 2 or more contributors.
+
 
 ### How to use service patterns
 
 Service patterns are starting points. They give you some user needs for your team to explore and validate. You still need to do research and design - service patterns do not replace any of these activities.
 
 We’ll share case studies and examples of this service pattern in use.
-
-### How to give feedback
-
-We’d like some feedback on the usefulness of the proof of concept.
-
-Please complete the [apply pattern survey](https://forms.office.com/Pages/ResponsePage.aspx?id=KEeHxuZx_kGp4S6MNndq2ML_UAYVtf1Jv53R4CVxx1hURFpPVDhUQVJVNkQxMzQyODRON0kzVVpKUi4u) by the end of April 2025.
-
-Or you can email your responses to the 3 questions:
-
-1. Would you find this concept useful for designing services?
-2. Would this help you design an apply journey in your current role?
-3. What else would you value in a service pattern like this?
-
-Send your answers to [servicepatterns@justice.gov.uk](mailto:servicepatterns@justice.gov.uk).
 
 ### Other resources for the ‘apply’ pattern
 
@@ -49,11 +43,11 @@ You can also find [apply patterns in the GOV.UK Design System](https://design-sy
 
 ## User needs
 
-The cross-government work to identify an ‘apply’ service pattern followed a user needs approach. Some of the user needs are low confidence. We’re looking for feedback to validate whether these should be accepted.
+The cross-government work to identify an ‘apply’ service pattern followed a user needs approach.
 
 ### User needs for applying
 
-#### Higher confidence:
+#### More common:
 
 - I need to be treated with respect, feel understood and not judged throughout the process.
 - I need the process to be suitable for my language and/or communication needs.
@@ -69,7 +63,7 @@ The cross-government work to identify an ‘apply’ service pattern followed a 
 - I need to trust that the right decision will be made based on my individual circumstances and the information I've provided.
 - I need to get reassurance of progress.
 
-#### Lower confidence:
+#### Less common:
 
 - I need to apply with a channel and format that suits me and my circumstances.
 - I need the service to look and feel official.
@@ -80,14 +74,14 @@ The cross-government work to identify an ‘apply’ service pattern followed a 
 
 ### User needs for managing applications
 
-#### Higher confidence:
+#### More common:
 
 - I need to easily view relevant information about the applicant so that I can understand the full picture.
 - I need to be able to access other systems that might be helpful so that I can determine eligibility for the application.
 - I need information to be in as few places as possible so that I do not have to move between systems.
 - I need to feel confident in the systems that I'm using and the questions that I'm asking so that I can advise my claimants accurately.
 
-#### Lower confidence:
+#### Less common:
 
 - I need a clear and consistent process to follow so that I can ensure all applicants have the same experience and I can ask for help when needed.
 - I need to feel valued and supported so that I can perform at my best and give applicants a quality experience.
@@ -107,14 +101,10 @@ The cross-government work to identify an ‘apply’ service pattern followed a 
 {% endtab %}
 {% tab "Sub-patterns" %}
 
-## The parts of a service pattern
+## Sub-patterns
 
 Service patterns can be broken down into service sub-patterns, for example prepare to apply. Each sub-pattern has steps, for example check eligibility.
 You do not need to use all of the sub-patterns and steps. Consider which are appropriate for your service.
-
-These have been identified for people applying and for the organisations managing these applications. Some of these are marked as low confidence.
-
-We're particularly interested in feedback on the structure and the naming of the layers beneath service patterns.
 
 ### People applying: sub-patterns and steps
 
@@ -122,7 +112,7 @@ We're particularly interested in feedback on the structure and the naming of the
 
 - Find the right application form
 - Get reassurance about application process
-- Check eligibility (lower confidence)
+- Check eligibility (less common)
 
 #### 2. Submit application
 
@@ -132,10 +122,10 @@ We're particularly interested in feedback on the structure and the naming of the
 - Pause application
 - Return to application
 - Finish and submit application
-- Accept declaration and privacy policy (lower confidence)
-- Check existing information (lower confidence)
-- Get application fee request (lower confidence)
-- Pay fee (lower confidence)
+- Accept declaration and privacy policy (less common)
+- Check existing information (less common)
+- Get application fee request (less common)
+- Pay fee (less common)
 
 #### 3. Give supporting evidence
 
@@ -223,13 +213,13 @@ These are some scenarios you may have to design for your service.
 - User is logged out of the service part way through their application due to time out
 
 {% endtab %}
-{% tab "Contribute" %}
+{% tab "Give feedback" %}
 
-### How to give feedback on the apply proof of concept
+### Give feedback  
 
 We’d like some feedback on the usefulness of the proof of concept.
 
-Please complete the [apply pattern survey](https://forms.office.com/Pages/ResponsePage.aspx?id=KEeHxuZx_kGp4S6MNndq2ML_UAYVtf1Jv53R4CVxx1hURFpPVDhUQVJVNkQxMzQyODRON0kzVVpKUi4u) by the end of April 2025.
+Please complete the [apply pattern survey](https://forms.office.com/Pages/ResponsePage.aspx?id=KEeHxuZx_kGp4S6MNndq2ML_UAYVtf1Jv53R4CVxx1hURFpPVDhUQVJVNkQxMzQyODRON0kzVVpKUi4u).
 
 Or you can email your responses to the 3 questions:
 
@@ -237,7 +227,7 @@ Or you can email your responses to the 3 questions:
 2. Would this help you design an apply journey in your current role?
 3. What else would you value in a service pattern like this?
 
-Send your answers to [servicepatterns@justice.gov.uk](mailto:servicepatterns@justice.gov.uk).
+Send your answers to [servicepatterns@justice.gov.uk](mailto:servicepatterns@justice.gov.uk)
 
 ### Contributing to other MoJ service patterns
 

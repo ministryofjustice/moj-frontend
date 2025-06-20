@@ -13,7 +13,7 @@ They contain some reusable parts that can be used to build services. This is the
 
 These service patterns are based on examples from across government. Those services were designed for different users and contexts, but the proof of concept shows some of the common and reusable parts.
 
-The proof of concept has 3 parts:
+The proof of concept covers:
 
 - user needs for people attending appointments, and for teams managing appointments
 - sub-patterns (for the 2 sets of users)
@@ -21,8 +21,8 @@ The proof of concept has 3 parts:
 
 Service pattern parts are described as either:
 
-- ‘higher confidence’ if at least half of the contributors agreed it was relevant
-- ‘lower confidence’ if less than half of contributors agreed it was relevant
+- ‘more common’ if at least half of the contributors agreed it was relevant
+- ‘less common’ if fewer than half of contributors agreed it was relevant
 
 This is a guide. All parts of the pattern were relevant to 2 or more contributors.
 
@@ -32,19 +32,6 @@ Service patterns are starting points. They provide some user needs for your team
 
 We’ll share case studies and examples of this service pattern in use.
 
-### How to give feedback
-
-We’d like some feedback on the usefulness of the proof of concept.
-
-Please complete the [appointments pattern survey](https://forms.office.com/Pages/ResponsePage.aspx?id=KEeHxuZx_kGp4S6MNndq2ML_UAYVtf1Jv53R4CVxx1hURFpPVDhUQVJVNkQxMzQyODRON0kzVVpKUi4u).
-
-You can also email your responses to the 3 questions:
-
-1. Would you find this concept useful for designing services?
-2. Would this proof of concept help you design appointments journeys in your current role?
-3. What else would you value in a service pattern like this?
-
-Send your answers to [servicepatterns@justice.gov.uk](mailto:servicepatterns@justice.gov.uk)
 {% endtab %}
 {% tab "User needs" %}
 
@@ -54,7 +41,7 @@ The cross-government work to identify an 'appointments' service pattern followed
 
 ### User needs for public-facing services
 
-#### Higher confidence
+#### More common
 
 For people having appointments:
 
@@ -67,12 +54,12 @@ For people having appointments:
 - I need to not have to repeat my story in different appointments.
 - I need to feel heard and understood throughout my appointment.
 
-For people managing appointments:
+For people acting on behalf of users:
 
 - I need to information or reminders about the appointment.
 - I need to be able to book or reschedule an appointment on behalf of someone else.
 
-#### Lower confidence:
+#### Less common
 
 For people having appointments:
 
@@ -85,7 +72,7 @@ For people managing appointments:
 
 ### User needs for internal services
 
-#### Higher confidence:
+#### More common
 
 - I need fast, integrated and easy-to-use systems so that I can do my job efficiently.
 - I need to be able to book, reschedule, send appointment reminders and cancel appointments.
@@ -95,7 +82,7 @@ For people managing appointments:
 - I need things to be resourced correctly, so that I have enough time to do my job and the person feels they have the experience they deserve.
 - I need to know about third parties or supporters that are attending so that they can be briefed accordingly.
 
-#### Lower confidence:
+#### Less common
 
 - I need to understand about any deadlines to complete tasks
 - I need to know about any concerns about the person so that I can keep myself and other staff safe.
@@ -108,6 +95,8 @@ For people managing appointments:
 {% endtab %}
 {% tab "Sub-patterns" %}
 
+## Sub-patterns
+
 Service patterns can be broken down into service sub-patterns, for example prepare to book an appointment. Each sub-pattern has steps, for example check eligibility.
 You do not need to use all of the sub-patterns and steps. Consider which are appropriate for your service.
 
@@ -115,56 +104,56 @@ You do not need to use all of the sub-patterns and steps. Consider which are app
 
 #### 1. Prepare to book appointment
 
-- Work out eligibility for appointment (lower confidence)
-- View guidance (lower confidence)
+- Work out eligibility for appointment (less common)
+- View guidance (less common)
 
 #### 2. Book appointment
 
 - Get notification to make appointment
+- View available appointments (less common)
+- Select appointment (less common)
 - Confirm appointment
-- Get information about what to expect at appointment (lower confidence)
+- Get information about what to expect at appointment (less common)
 - Get appointment notifications
 - Specify reasonable adjustments
 - Request third party help
 - Change or cancel appointment
-- Get notifications about appointment changes (lower confidence)
-- View available appointments (lower confidence)
-- Book appointment (lower confidence)
+- Get notifications about appointment changes (less common)
 
 #### 3. Prepare for appointment
 
 - Understand appointment process
-- Gather evidence (lower confidence)
-- Prepare with third party (lower confidence)
+- Gather evidence (less common)
+- Prepare with third party (less common)
 - Refer to published information
-- Request financial support or expenses (lower confidence)
-- Pay for appointment (lower confidence)
-- Do pre-appointment tasks (lower confidence)
+- Request financial support or expenses (less common)
+- Pay for appointment (less common)
+- Do pre-appointment tasks (less common)
 
 #### 4. Attend appointment
 
-- Confirm identity at appointment (lower confidence)
+- Confirm identity at appointment (less common)
 - People attending the appointment meet one another
 - Submit evidence
-- Get help (lower confidence)
+- Get help (less common)
 
 #### 5. After appointment
 
-- Get appointment outcome (lower confidence)
-- Know how to complain or challenge the outcome (lower confidence)
-- Get support after the appointment (lower confidence)
+- Get appointment outcome (less common)
+- Know how to complain or challenge the outcome (less common)
+- Get support after the appointment (less common)
 
 ### Organisations managing appointments: sub-patterns and steps
 
 #### 1. Book appointment
 
 - Understand the person's details
-- Understand the appointment details (lower confidence)
+- Understand the appointment details (less common)
 - Contact the person
 - Arrange the appointment
-- Allocate appointment to an owner (lower confidence)
-- Arrange reasonable adjustments (lower confidence)
-- Arrange translator or chaperone (lower confidence)
+- Allocate appointment to an owner (less common)
+- Arrange reasonable adjustments (less common)
+- Arrange translator or chaperone (less common)
 - Notify the person of appointment details and how to prepare
 - Change or cancel appointment
 
@@ -173,27 +162,27 @@ You do not need to use all of the sub-patterns and steps. Consider which are app
 - Communicate availability for appointments
 - View upcoming appointments
 - Understand the person's details
-- Understand details of a claim or application (lower confidence)
-- Arrange safeguarding (lower confidence)
-- Check the person has confirmed the appointment (lower confidence)
-- Review technical requirements of appointment (lower confidence)
-- View their information and history (lower confidence)
-- Send reminders (lower confidence)
+- Understand details of a claim or application (less common)
+- Arrange safeguarding (less common)
+- Check the person has confirmed the appointment (less common)
+- Review technical requirements of appointment (less common)
+- View their information and history (less common)
+- Send reminders (less common)
 
 #### 3. Attend appointment
 
-- Verify person's identity (lower confidence)
-- Register them for appointment (lower confidence)
-- Brief the third party (lower confidence)
+- Verify person's identity (less common)
+- Register them for appointment (less common)
+- Brief the third party (less common)
 - Carry out appointment
-- Record attendance (lower confidence)
-- Defer appointment (lower confidence)
+- Record attendance (less common)
+- Defer appointment (less common)
 
 #### 4. After the appointment
 
-- Write up outcome (lower confidence)
-- Send outcome and any next steps (lower confidence)
-- Give support (lower confidence)
+- Write up outcome (less common)
+- Send outcome and any next steps (less common)
+- Give support (less common)
 
 {% endtab %}
 {% tab "User scenarios" %}
@@ -205,7 +194,7 @@ These are some scenarios you may have to design for your service.
 ### Happy paths:
 
 - Person books the appointment themselves
-- Someone else books it for them, for example a service provider
+- Someone else books it for them
 - The person is invited to book it by a service provider
 - People get appointment reminders
 - Someone else books it for them, for example a service provider
@@ -224,6 +213,7 @@ These are some scenarios you may have to design for your service.
 
 The appointment cannot go ahead (or be completed) because:
 
+ - The user does not get the right information about their appointment
  - The user is late, does not attend or cancels at short notice
  - The provider is late, does not attend or cancels at short notice
  - There are technical issues or another problem during the appointment
@@ -232,9 +222,9 @@ The appointment cannot go ahead (or be completed) because:
  - The appointment is not paid for
 
 {% endtab %}
-{% tab "Contribute" %}
+{% tab "Give feedback" %}
 
-### How to give feedback on the appointments proof of concept
+### Give feedback
 
 We’d like some feedback on the usefulness of the proof of concept.
 
