@@ -1,5 +1,6 @@
 ---
-layout: layouts/service-patterns.njk
+layout: layouts/content.njk
+tabs: true
 title: ‘Apply’ service pattern prototype
 ---
 

@@ -1,6 +1,7 @@
 ---
-layout: layouts/get-started.njk
+layout: layouts/content.njk
 subsection: Prototyping
+showHelp: true
 title: Deploying coded prototypes
 redirect_from: /get-started/deploying-your-prototype
 eleventyNavigation:

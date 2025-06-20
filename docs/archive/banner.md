@@ -1,7 +1,5 @@
 ---
-layout: layouts/archive.njk
 title: Banner
-status: Archived
 statusDate: February 2025
 type: component
 redirect_from: components/banner

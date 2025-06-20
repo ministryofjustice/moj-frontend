@@ -24,6 +24,9 @@
       "path": "./schema/tsconfig.json"
     },
     {
+      "path": "./shortcodes/tsconfig.json"
+    },
+    {
       "path": "./src/tsconfig.json"
     },
     {

@@ -1,7 +1,8 @@
 ---
-layout: layouts/ethics.njk
+layout: layouts/content.njk
 subsection: Ethics
 title: Doing an ethics review
+showHelp: true
 eleventyNavigation:
   key: Doing an ethics review
   parent: Ethics

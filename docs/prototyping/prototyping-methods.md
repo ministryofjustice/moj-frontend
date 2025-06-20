@@ -1,6 +1,7 @@
 ---
-layout: layouts/get-started.njk
+layout: layouts/content.njk
 subsection: Prototyping
+showHelp: true
 title: Choosing a prototyping method
 eleventyNavigation:
   key: Choosing a prototyping method

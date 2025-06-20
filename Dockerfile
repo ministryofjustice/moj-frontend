@@ -13,6 +13,7 @@ RUN npm ci
 COPY docs docs
 COPY src src
 COPY package package
+COPY shortcodes shortcodes
 COPY .eleventy.js .eleventy.js
 COPY .eleventyignore .eleventyignore
 COPY gulp gulp
@@ -32,6 +33,7 @@ RUN npm ci
 COPY docs docs
 COPY src src
 COPY package package
+COPY shortcodes shortcodes
 COPY .eleventy.js .eleventy.js
 COPY .eleventyignore .eleventyignore
 COPY gulp gulp
