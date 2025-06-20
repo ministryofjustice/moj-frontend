@@ -4,9 +4,8 @@ status: Official
 statusDate: October 2024
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/685
 excerpt: "The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu."
+lede: "The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu."
 ---
-
-<span class="govuk-caption-xl govuk-!-margin-bottom-9">The button menu is a versatile component that allows users to view tasks as buttons in a collapsible menu.</span>
 
 {% example "/examples/button-menu", 250 %}
 

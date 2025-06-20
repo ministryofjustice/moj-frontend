@@ -4,9 +4,8 @@ status: Official
 statusDate: December 2024
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/421
 excerpt: "The interruption card component stops users in a flow with important information."
+lede: "The interruption card component pauses a user’s journey with important information."
 ---
-
-<span class="govuk-caption-xl govuk-!-margin-bottom-9">The interruption card component pauses a user’s journey with important information.</span>
 
 {% example "/examples/interruption-card", 590 %}
 

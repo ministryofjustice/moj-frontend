@@ -4,9 +4,8 @@ status: Official
 statusDate: February 2025
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1163
 excerpt: "Use the alert component to display a prominent message and related actions to take."
+lede: "The alert component uses visual design to display a notification to users. It has a range of use cases."
 ---
-
-<span class="govuk-caption-xl govuk-!-margin-bottom-9">The alert component uses visual design to display a notification to users. It has a range of use cases.</span>
 
 {% example "/examples/alert" %}
 
