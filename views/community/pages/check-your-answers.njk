@@ -8,20 +8,18 @@
       <h1 class="govuk-heading-xl">Check your answers</h1>
 
       {% for section in sections %}
-        {% if section.answers.length > 0 %}
           {{ govukSummaryList({
             card: {
               title: {
                 text: section.title
               },
               actions: {
-                items: []
+                items: section.actions
               }
             },
-            rows: section.answers,
+            rows: section.answerRows,
             classes: "govuk-!-margin-bottom-9"
           }) }}
-        {% endif %}
       {% endfor %}
 
       <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>

@@ -30,7 +30,10 @@ const config = {
         howIsTheComponentUsed: {
           label: 'How is the component being used?'
         }
-      }
+      },
+      showOnCya: true,
+      removable: false,
+      multiple: false
     },
     'component-image': {
       title: 'Component image',
@@ -39,7 +42,10 @@ const config = {
           label: 'Upload a file',
           hint: 'The file must be a JPG, BMP, PNG, TIF or PDF, and smaller than 10MB.'
         }
-      }
+      },
+      showOnCya: true,
+      removable: false,
+      multiple: false
     },
     'accessibility-findings': {
       title: 'Accessibility findings',
@@ -57,7 +63,10 @@ const config = {
           label: 'Has the component been tested with assistive technology?',
           hint: 'This could be with screen reader software or an adaptive keyboard.'
         }
-      }
+      },
+      showOnCya: false,
+      removable: false,
+      multiple: false
     },
     'add-external-audit': {
       title: 'External accessibility audit',
@@ -77,7 +86,10 @@ const config = {
         '/accessibility-findings': {
           hasComponentBeenTestedExternalAccessibility: 'yes'
         }
-      }
+      },
+      showOnCya: true,
+      removable: true,
+      multiple: false
     },
     'add-internal-audit': {
       title: 'Internal accessibility review',
@@ -97,7 +109,10 @@ const config = {
         '/accessibility-findings': {
           hasComponentBeenTestedInternalAudit: 'yes'
         }
-      }
+      },
+      showOnCya: true,
+      removable: true,
+      multiple: false
     },
     'add-assistive-tech': {
       title: 'Testing with assistive technology',
@@ -115,7 +130,10 @@ const config = {
         '/accessibility-findings': {
           hasComponentBeenTestedUsingAssistiveTechnology: 'yes'
         }
-      }
+      },
+      showOnCya: true,
+      removable: true,
+      multiple: false
     },
     prototype: {
       title: 'Prototype',
@@ -124,7 +142,10 @@ const config = {
           label: 'Do you have a prototype link?',
           hint: 'For example to the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro.'
         }
-      }
+      },
+      showOnCya: false,
+      removable: false,
+      multiple: false
     },
     'prototype-url': {
       title: 'Prototype details',
@@ -140,7 +161,10 @@ const config = {
       },
       conditions: {
         '/prototype': { componentPrototypeUrl: 'yes' }
-      }
+      },
+      showOnCya: true,
+      removable: true,
+      multiple: false
     },
     'component-code': {
       title: 'Component code',
@@ -148,7 +172,10 @@ const config = {
         componentCodeAvailable: {
           label: 'Do you have code for the component?'
         }
-      }
+      },
+      showOnCya: false,
+      removable: false,
+      multiple: false
     },
     'component-code-details': {
       title: 'Component code details',
@@ -171,7 +198,10 @@ const config = {
       },
       conditions: {
         '/component-code': { componentCodeAvailable: 'yes' }
-      }
+      },
+      showOnCya: true,
+      removable: true,
+      multiple: true
     },
     figma: {
       title: 'Figma design',
@@ -179,7 +209,10 @@ const config = {
         figmaUrl: {
           label: 'Do you have a Figma link for the component?'
         }
-      }
+      },
+      showOnCya: false,
+      removable: false,
+      multiple: false
     },
     'figma-link': {
       title: 'Figma design details',
@@ -195,7 +228,10 @@ const config = {
       },
       conditions: {
         '/figma': { figmaUrl: 'yes' }
-      }
+      },
+      showOnCya: true,
+      removable: true,
+      multiple: false
     },
     'your-details': {
       title: 'Your details',
@@ -213,7 +249,10 @@ const config = {
           label: 'Sharing your contact details on the component page',
           hint: 'Adding your details to the component enables other users to contact you (or your team) to collaborate on the component.\r\nSelect all that apply'
         }
-      }
+      },
+      showOnCya: true,
+      removable: false,
+      multiple: false
     },
     'check-your-answers': {}
   },
@@ -242,52 +281,58 @@ const config = {
     sections: [
       {
         title: 'Component details',
-        data: ['component-details', 'component-image']
+        data: ['component-details'],
+        removable: false
+      },
+      {
+        title: 'Component image',
+        data: ['component-image'],
+        removable: false
       },
       {
         title: 'External accessibility audit',
-        data: [
-          {
-            'accessibility-findings': {
-              includeFields: ['hasComponentBeenTestedExternalAccessibility']
-            }
-          },
-          'add-external-audit'
-        ]
+        data: ['add-external-audit'],
+        conditions: {
+          '/accessibility-findings': {
+            hasComponentBeenTestedExternalAccessibility: 'yes'
+          }
+        },
+        removable: true
       },
       {
         title: 'Internal accessibility review',
-        data: [
-          {
-            'accessibility-findings': {
-              includeFields: ['hasComponentBeenTestedInternalAudit']
-            }
-          },
-          'add-internal-audit'
-        ]
+        data: ['add-internal-audit'],
+        conditions: {
+          '/accessibility-findings': {
+            hasComponentBeenTestedInternalAudit: 'yes'
+          }
+        },
+        removable: true
       },
       {
         title: 'Assistive technology testing',
-        data: [
-          {
-            'accessibility-findings': {
-              includeFields: ['hasComponentBeenTestedUsingAssistiveTechnology']
-            }
-          },
-          'add-assistive-tech'
-        ]
+        data: ['add-assistive-tech'],
+        conditions: {
+          '/accessibility-findings': {
+            hasComponentBeenTestedUsingAssistiveTechnology: 'yes'
+          }
+        },
+        removable: true
       },
-      { title: 'Prototype', data: ['prototype', 'prototype-url'] },
-      { title: 'Figma', data: ['figma', 'figma-link'] },
-      { title: 'Code', data: ['component-code', 'component-code-details'] },
-      { title: 'Your details', data: ['your-details'] }
+      { title: 'Prototype', data: ['prototype-url'], removable: true },
+      { title: 'Figma', data: ['figma-link'], removable: true },
+      {
+        title: 'Code',
+        data: ['component-code-details'],
+        multiple: true,
+        removable: true
+      },
+      { title: 'Your details', data: ['your-details'], removable: false }
     ],
-    canRemoveStatic: [
-
-    ],
+    canRemoveStatic: [],
     canRemoveMultiples: [
-      '/prototype-url',
-      '/figma-link',
+      // '/prototype-url',
+      // '/figma-link',
       '/component-code-details'
     ],
     ignoreFields: []
@@ -297,6 +342,5 @@ const config = {
     addTeamNameToComponentPage: 'add my team name to the component page'
   }
 }
-
 
 module.exports = config
