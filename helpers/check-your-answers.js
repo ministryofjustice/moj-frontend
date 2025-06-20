@@ -119,7 +119,7 @@ const buildSection = (sectionKey, sectionConfig, sectionNumber) => {
 
   section.actions.push({
     href: `${hrefRoot}/${sectionKey}`,
-    text: 'Change',
+    text: sectionKey.startsWith('component-code') ? 'Review & Change' : 'Change',
     visuallyHiddenText: section.title
   })
 

@@ -47,8 +47,8 @@
     @include govuk-typography-weight-bold;
   }
 
-  ul,
-  ol {
+  ul:not([class]),
+  ol:not([class]) {
     @extend %govuk-list;
   }
 

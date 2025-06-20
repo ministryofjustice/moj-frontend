@@ -17,9 +17,8 @@
                 items: section.actions
               }
             },
-            rows: section.answerRows,
-            classes: "govuk-!-margin-bottom-9"
-          }) }}
+            rows: section.answerRows
+            }) }}
       {% endfor %}
 
       <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>

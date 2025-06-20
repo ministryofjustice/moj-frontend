@@ -7,11 +7,10 @@ const toCamelCaseWithRows = (str) => {
 
 // Format field names into readable labels
 const humanReadableLabel = (field) => {
-  return field
+  return ucFirst(field)
     .replace(/([a-z])([A-Z])/g, '$1 $2')
     .replace(/-/g, ' ')
     .trim()
-    .ucFirst()
 }
 
 const urlToTitleCase = (str) => {
