@@ -7,7 +7,7 @@
         <div class="app-page__width-container">
           {{ content | safe }}
 
-          {% if ["component", "page", "pattern"].includes(type) and not tabs %}
+          {% if (["component", "page", "pattern"].includes(type)) and (not tabs) and (["To be reviewed", "Experimental", "Official"].includes(status)) %}
             {% include "./partials/get-help-and-contribute.njk" %}
           {% elif showHelp %}
             {% include "./partials/get-help.njk" %}
