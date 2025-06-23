@@ -103,10 +103,9 @@ The cross-government work to identify an ‘apply’ service pattern followed a 
 
 ## Sub-patterns
 
-Service patterns can be broken down into service sub-patterns, for example prepare to apply. Each sub-pattern has steps, for example check eligibility.
-You do not need to use all of the sub-patterns and steps. Consider which are appropriate for your service.
+Service patterns can be broken down into sub-patterns, for example prepare to book an appointment. Each sub-pattern contains tasks, for example check eligibility. You do not need to use all of these. Consider which are appropriate for your service.
 
-### People applying: sub-patterns and steps
+### People applying: sub-patterns and tasks
 
 #### 1. Prepare to apply
 
@@ -139,7 +138,7 @@ You do not need to use all of the sub-patterns and steps. Consider which are app
 - View application
 - Get progress updates
 
-### Organisations managing applications: sub-patterns and steps
+### Organisations managing applications: sub-patterns and tasks
 
 #### 1. Prepare for application
 

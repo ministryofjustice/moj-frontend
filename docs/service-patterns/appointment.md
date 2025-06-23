@@ -39,11 +39,9 @@ We’ll share case studies and examples of this service pattern in use.
 
 The cross-government work to identify an 'appointments' service pattern followed a user needs approach.  
 
-### User needs for public-facing services
+### User needs for people attending appointments
 
 #### More common
-
-For people having appointments:
 
 - I need information about the appointment in the right channel, format and language.
 - I need to be able to select an appointment time and location that fits my situation.
@@ -54,19 +52,21 @@ For people having appointments:
 - I need to not have to repeat my story in different appointments.
 - I need to feel heard and understood throughout my appointment.
 
+#### Less common
+
+- I need reassurance that the appointment will run on time.
+- I need to know that I can bring another person to the appointment who can speak on my behalf.
+
+### User needs for managing appointments
+
+#### More common
+
 For people acting on behalf of users:
 
 - I need to information or reminders about the appointment.
 - I need to be able to book or reschedule an appointment on behalf of someone else.
 
 #### Less common
-
-For people having appointments:
-
-- I need reassurance that the appointment will run on time.
-- I need to know that I can bring another person to the appointment who can speak on my behalf.
-
-For people managing appointments:
 
 - I need to know the rules for helping the person during the appointment.
 
@@ -97,10 +97,9 @@ For people managing appointments:
 
 ## Sub-patterns
 
-Service patterns can be broken down into service sub-patterns, for example prepare to book an appointment. Each sub-pattern has steps, for example check eligibility.
-You do not need to use all of the sub-patterns and steps. Consider which are appropriate for your service.
+Service patterns can be broken down into sub-patterns, for example prepare to book an appointment. Each sub-pattern contains tasks, for example check eligibility. You do not need to use all of these. Consider which are appropriate for your service.
 
-### People arranging, managing and attending appointments: sub-patterns and steps
+### People arranging, managing and attending appointments: sub-patterns and tasks
 
 #### 1. Prepare to book appointment
 
@@ -143,7 +142,7 @@ You do not need to use all of the sub-patterns and steps. Consider which are app
 - Know how to complain or challenge the outcome (less common)
 - Get support after the appointment (less common)
 
-### Organisations managing appointments: sub-patterns and steps
+### Organisations managing appointments: sub-patterns and tasks
 
 #### 1. Book appointment
 
@@ -205,6 +204,23 @@ These are some scenarios you may have to design for your service.
 
 ### Alternatives:
 
+- The user and service provider need to agree a mutually suitable appointment
+- The user needs to change the appointment, with enough notice (such as time and location)
+- The provider needs to change the appointment, with enough notice (such as time and location)
+- The appointment was rearranged due to conflict between multiple attendees, with enough notice
+- The user cancels the appointment
+- Additional information is provided before the appointment
+- Additional information can be viewed before the appointment
+- The user can be communicated with before or after the appointment
+- The appointment needs to be recorded
+- A tentative or pending appointment is confirmed
+- The user or provider needs to save progress part way through booking an appointment
+- The appointment is booked via a third party
+- An emergency or short notice appointment is needed
+- The user or provider needs an assisted digital appointment path
+- An appointment is requested via a referral
+- A follow-up appointment is needed
+- A payment is needed to book an appointment
 
 ### Unhappy paths:
 
