@@ -22,20 +22,26 @@ const maxWords = 10000
  * @param {string} section - The form/section that contains the field
  * @returns {string} - The human-readable label.
  */
-const labelForField = (field, section = '') => {
+const labelForField = (field, section) => {
   // If there's an override, use that
-  if (Object.keys(labelOverrides).includes(field)) {
-    return labelOverrides[field]
+  const override = labelOverrides[section]?.fields[field]
+  if (override) {
+    return override
   }
   // Otherwise use the label from the form pages config
-  if (section) {
-    const label = formPages[section]?.fields[field]?.label
-    if (label) {
-      return label
-    }
+  const label = formPages[section]?.fields[field]?.label
+  if (label) {
+    return label
   }
   // Else just convert the camelCase to human
   return humanReadableLabel(field)
+}
+
+const labelForSection = (section, number) => {
+  console.log(section)
+  let label = labelOverrides[section]?.title ?? formPages[section]?.title
+  label = `${label}${number ? ` ${number}` : ''}`
+  return label
 }
 
 /**
@@ -73,9 +79,9 @@ const shareYourDetailsValueReplacement = (value) => {
 }
 
 /**
- * Gets all sections that should be included in the cya page
+ * gets all sections that should be included in the cya page
  *
- * @param {Array} sessionPages - keys for the pages present in the session
+ * @param {array} sessionpages - keys for the pages present in the session
  * @returns {object}
  */
 const getSections = (sessionPages) => {
@@ -102,11 +108,20 @@ const getSections = (sessionPages) => {
   return sections
 }
 
-const buildSection = (sectionKey, sectionConfig, sectionNumber) => {
+/**
+ * builds an object for a summary card section in the cya page
+ *
+ * @param {string} sectionPath - string key of the section, includes subpage
+ *                               number e.g. component-code-details/1
+ * @param {object} sectionConfig - config object for the section
+ * @param {number} sectionNumber - subpage number for the section
+ * @returns {object}
+ */
+const buildSection = (sectionPath, sectionConfig, sectionNumber) => {
+  const sectionKey = sectionPath.split('/').at(0)
   const section = {
-    title: `${sectionConfig.title}${sectionNumber ? ` ${sectionNumber}` : ''}`,
-    actions: [],
-    section: []
+    title: labelForSection(sectionKey, sectionNumber),
+    actions: []
   }
 
   if (sectionConfig.removable) {
@@ -119,13 +134,22 @@ const buildSection = (sectionKey, sectionConfig, sectionNumber) => {
 
   section.actions.push({
     href: `${hrefRoot}/${sectionKey}`,
-    text: sectionKey.startsWith('component-code') ? 'Review & Change' : 'Change',
+    text: sectionKey.startsWith('component-code')
+      ? 'Review & Change'
+      : 'Change',
     visuallyHiddenText: section.title
   })
 
   return section
 }
 
+/**
+ * Gets all the answers from the session for a section
+ *
+ * @param {string} sectionKey - string key of the root section (no subpage)
+ * @param {object} sessionData - user response data from the session
+ * @returns {Array}
+ */
 const getAnswersForSection = (sectionKey, sessionData = {}) => {
   let codeLanguageIsOther = false
   const data = combineDateFields(sessionData)
@@ -170,17 +194,18 @@ const getAnswersForSection = (sectionKey, sessionData = {}) => {
 }
 
 /**
- * Main function that processes the session data and returns formatted answers for govukSummaryList.
+ * Main function that processes the session data and returns formatted answers for govukSummaryCards.
  *
  * @param {object} session - The session data.
- * @returns {object} - The formatted answers.
+ * @returns {Array} - Array of objects to build summary cards.
  */
 const checkYourAnswers = (session) => {
   const sessionPages = Object.keys(session)
   const sections = getSections(sessionPages)
 
   Object.entries(sections).forEach(([key, section]) => {
-    section.answerRows = getAnswersForSection(key, session[`/${key}`])
+    const sectionKey = key.split('/').at(0)
+    section.answerRows = getAnswersForSection(sectionKey, session[`/${key}`])
   })
 
   return Object.values(sections)

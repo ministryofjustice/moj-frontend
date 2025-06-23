@@ -260,82 +260,15 @@ const config = {
   MAX_ADD_ANOTHER: 10,
   ACRONYMS_TO_UPPERCASE: ['url'],
   CHECK_YOUR_ANSWERS_LABEL_OVERRIDES: {
-    // componentOverview: 'Component description',
-    // howIsTheComponentUsed: 'How the component is being used in your service',
-    // accessibilityReport: 'Audit report',
-    // externalOrganisation: 'External accessibility audit supplier',
-    // internalOrganisation: 'Internal accessibility audit supplier',
-    // issuesDiscovered: 'Issues discovered during the audit',
-    // prototypeUrl: 'Prototype link',
-    // prototypeUrlAdditionalInformation: 'Additional information',
-    // componentCode: 'Code',
-    // componentCodeUsage: 'Code usage',
-    // componentCodeLanguage: 'Code language',
-    // componentCodeLanguageOther: 'Other code language',
-    // figmaLink: 'Prototype link',
-    // figmaLinkAdditionalInformation: 'Additional information',
-    // shareYourDetails: 'Share your details on the component page',
-    // componentImage: 'Supporting file'
-  },
-  CHECK_YOUR_ANSWERS: {
-    sections: [
-      {
-        title: 'Component details',
-        data: ['component-details'],
-        removable: false
-      },
-      {
-        title: 'Component image',
-        data: ['component-image'],
-        removable: false
-      },
-      {
-        title: 'External accessibility audit',
-        data: ['add-external-audit'],
-        conditions: {
-          '/accessibility-findings': {
-            hasComponentBeenTestedExternalAccessibility: 'yes'
-          }
-        },
-        removable: true
-      },
-      {
-        title: 'Internal accessibility review',
-        data: ['add-internal-audit'],
-        conditions: {
-          '/accessibility-findings': {
-            hasComponentBeenTestedInternalAudit: 'yes'
-          }
-        },
-        removable: true
-      },
-      {
-        title: 'Assistive technology testing',
-        data: ['add-assistive-tech'],
-        conditions: {
-          '/accessibility-findings': {
-            hasComponentBeenTestedUsingAssistiveTechnology: 'yes'
-          }
-        },
-        removable: true
-      },
-      { title: 'Prototype', data: ['prototype-url'], removable: true },
-      { title: 'Figma', data: ['figma-link'], removable: true },
-      {
-        title: 'Code',
-        data: ['component-code-details'],
-        multiple: true,
-        removable: true
-      },
-      { title: 'Your details', data: ['your-details'], removable: false }
-    ],
-    canRemoveStatic: [],
-    canRemoveMultiples: [
-      // '/prototype-url',
-      // '/figma-link',
-      '/component-code-details'
-    ],
-    ignoreFields: []
+    'component-code-details': {
+      title: 'Code sample',
+      fields: {
+        componentCodeUsage: 'Usage',
+        componentCodeLanguage: 'Language',
+        componentCodeLanguageOther: 'Language',
+        componentCode: 'Code'
+      }
+    }
   },
   SHARE_YOUR_DETAILS: {
     addNameToComponentPage: 'add my name to the component page',
