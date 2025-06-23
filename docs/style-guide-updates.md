@@ -19,6 +19,16 @@ backLink: /content-standards/style-guide/
     <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
+        <a href="/content-standards/style-guide#probation-delivery-unit-%28pdu%29"><b>probation delivery unit (PDU)</b></a>
+      </td>
+      <td class="govuk-table__cell">
+        <span class="govuk-tag govuk-tag--blue">Updated</span>
+      </td>
+      <td class="govuk-table__cell">Added that there are 12 PDUs and that they are geographical regions. Added that the term is generally well-understood. Sentence case should be used when writing the phrase in full.</td>
+      <td class="govuk-table__cell" data-sort-value="20250623">23 June 2025</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
         <a href="/content-standards/style-guide#oasys"><b>OASys</b></a>
       </td>
       <td class="govuk-table__cell">

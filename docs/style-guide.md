@@ -19,7 +19,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 9 June 2025
+Last updated: 23 June 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -407,9 +407,13 @@ Do not use ‘prison record’, ‘NOMIS record’, ‘NOMS record’ or ‘offe
 
 More research is needed to ensure that this is the best way to describe information the organisation has about someone in prison.
 
-### Probation Delivery Unit (PDU)
+### probation delivery unit (PDU)
 
-Use upper case and the initialism on first mention. Research is needed to establish if users will understand PDU without it being spelt out.
+In probation settings, the 12 geographical regions are divided into probation delivery units (PDUs).
+
+The initialism PDU is generally well-understood and used on its own in existing systems like NDelius. To help users, you may want to write the phrase in full the first time or include the full term in brackets after PDU.
+
+When writing the phrase in full, use sentence case: probation delivery unit.
 
 <h3 class="govuk-heading-m" id="probation-practitioner">probation practitioner</h3>
 
