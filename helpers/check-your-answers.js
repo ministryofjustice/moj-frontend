@@ -14,6 +14,7 @@ const {
 } = require('./text-helper')
 
 const maxWords = 10000
+let currentSession
 
 /**
  * Converts a text label to a human-readable format using a predefined mapping.
@@ -84,20 +85,23 @@ const shareYourDetailsValueReplacement = (value) => {
  * @param {array} sessionpages - keys for the pages present in the session
  * @returns {object}
  */
-const getSections = (sessionPages) => {
+const getSections = () => {
   const sections = {}
   Object.entries(formPages).forEach(([section, config]) => {
     if (config.showOnCya) {
-      if (config.multiple) {
-        // gather all subpages
-        sessionPages
-          .filter((key) => key.startsWith(`/${section}`))
+      // gather all pages
+      const pages = Object.keys(currentSession).filter((key) =>
+        key.startsWith(`/${section}`)
+      )
+
+      if (pages.length > 0) {
+        pages
           .map((entry) => entry.slice(1)) // remove leading '/'
           .forEach((repeatSection, index) => {
             sections[repeatSection] = buildSection(
               repeatSection,
               config,
-              index + 1
+              pages.length > 1 ? index + 1 : null
             )
           })
       } else {
@@ -121,26 +125,38 @@ const buildSection = (sectionPath, sectionConfig, sectionNumber) => {
   const sectionKey = sectionPath.split('/').at(0)
   const section = {
     title: labelForSection(sectionKey, sectionNumber),
-    actions: []
+    actions: [],
+    answerRows: getAnswersForSection(
+      sectionKey,
+      currentSession[`/${sectionPath}`]
+    )
   }
 
-  if (sectionConfig.removable) {
-    section.actions.push({
-      href: `${hrefRoot}/remove/${sectionKey}`,
-      text: 'Remove',
-      visuallyHiddenText: section.title
-    })
+  if (sectionConfig.removable && section.answerRows.length > 0) {
+    section.actions.push(link(`remove/${sectionKey}`, 'Remove', section.title))
   }
 
-  section.actions.push({
-    href: `${hrefRoot}/${sectionKey}`,
-    text: sectionKey.startsWith('component-code')
-      ? 'Review & Change'
-      : 'Change',
-    visuallyHiddenText: section.title
-  })
+  if (section.answerRows.length === 0 && sectionConfig.conditions) {
+    const href = Object.keys(sectionConfig.conditions).at(0)
+
+    section.actions.push(link(href, 'Change', section.title))
+  } else {
+    const linkText = sectionKey.startsWith('component-code')
+        ? 'Review & Change'
+        : 'Change'
+
+    section.actions.push(link(sectionKey, linkText, section.title))
+  }
 
   return section
+}
+
+const link = (href, text, visuallyHiddenText) => {
+  return {
+    href: `${hrefRoot}${(href.startsWith('/') ? href : `/${href}`)}`,
+    text,
+    visuallyHiddenText
+  }
 }
 
 /**
@@ -200,13 +216,8 @@ const getAnswersForSection = (sectionKey, sessionData = {}) => {
  * @returns {Array} - Array of objects to build summary cards.
  */
 const checkYourAnswers = (session) => {
-  const sessionPages = Object.keys(session)
-  const sections = getSections(sessionPages)
-
-  Object.entries(sections).forEach(([key, section]) => {
-    const sectionKey = key.split('/').at(0)
-    section.answerRows = getAnswersForSection(sectionKey, session[`/${key}`])
-  })
+  currentSession = session
+  const sections = getSections()
 
   return Object.values(sections)
 }

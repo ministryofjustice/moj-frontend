@@ -1,4 +1,5 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "macros/summary-card.njk" import summaryCard %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% extends "base.njk" %}
 {% block content %}
@@ -8,17 +9,25 @@
       <h1 class="govuk-heading-xl">Check your answers</h1>
 
       {% for section in sections %}
-          {{ govukSummaryList({
-            card: {
-              title: {
-                text: section.title
-              },
-              actions: {
-                items: section.actions
-              }
+        {% set cardParams = {
+            title: {
+              text: section.title
             },
-            rows: section.answerRows
-            }) }}
+            actions: {
+              items: section.actions
+            }
+          }
+        %}
+        {% if section.answerRows.length > 0 %}
+          {{ govukSummaryList({
+              card:cardParams,
+              rows: section.answerRows
+          }) }}
+        {% else %}
+          {% call summaryCard(cardParams) -%}
+            <p class="govuk-!-margin-bottom-0">None</p>
+          {%- endcall %}
+        {% endif %}
       {% endfor %}
 
       <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>

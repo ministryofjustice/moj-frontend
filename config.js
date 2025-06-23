@@ -135,37 +135,37 @@ const config = {
       removable: true,
       multiple: false
     },
-    prototype: {
-      title: 'Prototype',
-      fields: {
-        componentPrototypeUrl: {
-          label: 'Do you have a prototype link?',
-          hint: 'For example to the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro.'
-        }
-      },
-      showOnCya: false,
-      removable: false,
-      multiple: false
-    },
-    'prototype-url': {
-      title: 'Prototype details',
-      fields: {
-        prototypeUrl: {
-          label: 'Add the prototype link',
-          hint: 'For example, to the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro. '
-        },
-        prototypeUrlAdditionalInformation: {
-          label: 'Add more information about the prototype (optional)',
-          hint: 'Enter any relevant information, for example a username, password or link expiry date.'
-        }
-      },
-      conditions: {
-        '/prototype': { componentPrototypeUrl: 'yes' }
-      },
-      showOnCya: true,
-      removable: true,
-      multiple: false
-    },
+    // prototype: {
+    //   title: 'Prototype',
+    //   fields: {
+    //     componentPrototypeUrl: {
+    //       label: 'Do you have a prototype link?',
+    //       hint: 'For example to the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro.'
+    //     }
+    //   },
+    //   showOnCya: false,
+    //   removable: false,
+    //   multiple: false
+    // },
+    // 'prototype-url': {
+    //   title: 'Prototype details',
+    //   fields: {
+    //     prototypeUrl: {
+    //       label: 'Add the prototype link',
+    //       hint: 'For example, to the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro. '
+    //     },
+    //     prototypeUrlAdditionalInformation: {
+    //       label: 'Add more information about the prototype (optional)',
+    //       hint: 'Enter any relevant information, for example a username, password or link expiry date.'
+    //     }
+    //   },
+    //   conditions: {
+    //     '/prototype': { componentPrototypeUrl: 'yes' }
+    //   },
+    //   showOnCya: true,
+    //   removable: true,
+    //   multiple: false
+    // },
     'component-code': {
       title: 'Component code',
       fields: {
