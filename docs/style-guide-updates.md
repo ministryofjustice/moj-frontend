@@ -29,7 +29,7 @@ backLink: /content-standards/style-guide/
       <p>However, you should consider writing acronyms and initialisms entirely in upper case. For example, ROSH instead of RoSH and MOJ instead of MoJ. This is because:</p>
       <ul>
       <li>studies, such as in the <a href="https://link.springer.com/article/10.3758/BF03198246">Memory and Cognition journal article on reader ability</a> suggest that abbreviations written in a mix of upper and lower case are harder to read, especially for less skilled readers</li>
-      <li>it follows the convention established by the abbreviation of [ROTL for Release on Temporary Licence](#rotl-%28release-on-temporary-licence%29) and so helps to improve consistency</li>
+      <li>it follows the convention established by the abbreviation of <a href="/content-standards/style-guide#rotl-%28release-on-temporary-licence%29">ROTL for Release on Temporary Licence</a> and so helps to improve consistency</li>
       <li>guidance from the Guardian and GOV.UK recommends writing similar abbreviations such as MOT and FOI entirely in upper case</li>
       </ul>
       <p>You should use a mix of upper and lower-case letters when referring to the names of systems such OASys and NDelius.</p>      
