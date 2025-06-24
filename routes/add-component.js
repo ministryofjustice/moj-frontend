@@ -59,9 +59,8 @@ const validatePageParams = (req, res, next) => {
   if (valid) {
     next()
   } else {
-    res.status(404).render('error', {
-      message: 'Page not found.'
-    })
+      const error = new ApplicationError('Page not found', 404)
+      next(error)
   }
 }
 
@@ -319,8 +318,7 @@ router.post(
     if (req?.nextPage) {
       res.redirect(`${req.nextPage}`)
     } else {
-      const error = new ApplicationError('Unknown page', 404)
-      console.log(error.toErrorObject())
+      const error = new ApplicationError('Page not found', 404)
       next(error)
     }
   }
