@@ -15,8 +15,8 @@ describe('getPreviousPage function', () => {
   it('should skip pages if conditions are not met', () => {
     session['/accessibility-findings'] = {
       hasComponentBeenTestedExternalAccessibility: 'no',
-    hasComponentBeenTestedInternalAudit: 'no',
-    hasComponentBeenTestedUsingAssistiveTechnology: 'yes'
+      hasComponentBeenTestedInternalAudit: 'no',
+      hasComponentBeenTestedUsingAssistiveTechnology: 'yes'
     }
     const result = getPreviousPage('/add-assistive-tech', session)
     expect(result).toBe(`${urlBase}/accessibility-findings`)

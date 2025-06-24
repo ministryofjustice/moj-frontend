@@ -7,19 +7,10 @@ const toCamelCaseWithRows = (str) => {
 
 // Format field names into readable labels
 const humanReadableLabel = (field) => {
-  return field
+  return ucFirst(field)
     .replace(/([a-z])([A-Z])/g, '$1 $2')
     .replace(/-/g, ' ')
-    .replace(/\b\w/g, (char) => char.toUpperCase())
     .trim()
-}
-
-// Replace acronyms in a string with uppercase value
-const replaceAcronyms = (str, acronyms) => {
-  return str.replace(
-    new RegExp(`\\b(${acronyms.join('|')})\\b`, 'gi'),
-    (match) => match.toUpperCase()
-  )
 }
 
 const urlToTitleCase = (str) => {
@@ -31,9 +22,9 @@ const urlToTitleCase = (str) => {
 }
 
 const ucFirst = (str) => {
-  if (!str) return str;
+  if (!str) return str
 
-  return str[0].toUpperCase() + str.slice(1);
+  return str[0].toUpperCase() + str.slice(1)
 }
 
 const truncateText = (text, maxWords) => {
@@ -59,7 +50,6 @@ module.exports = {
   toCamelCaseWithRows,
   humanReadableLabel,
   urlToTitleCase,
-  replaceAcronyms,
   truncateText,
   sanitizeText,
   ucFirst

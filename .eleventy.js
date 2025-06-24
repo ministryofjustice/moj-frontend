@@ -257,24 +257,39 @@ module.exports = function (eleventyConfig) {
   })
 
   // Copies the 11ty base layout and partials to the contributions app layouts directory
-  eleventyConfig.on("eleventy.before", async ({ directories, runMode, outputMode }) => {
-    fs.copyFile(`${directories.includes}layouts/base.njk`, './views/common/base.njk', (err) => {
-      if (err) {
-          console.log("Error Found:", err);
-      }
-    })
+  eleventyConfig.on(
+    'eleventy.before',
+    async ({ directories, runMode, outputMode }) => {
+      fs.copyFile(
+        `${directories.includes}layouts/base.njk`,
+        './views/common/base.njk',
+        (err) => {
+          if (err) {
+            console.log('Error Found:', err)
+          }
+        }
+      )
 
-    fs.copyFile(`${directories.includes}layouts/partials/header.njk`, './views/common/partials/header.njk', (err) => {
-      if (err) {
-          console.log("Error Found:", err);
-      }
-    })
-    fs.copyFile(`${directories.includes}layouts/partials/footer.njk`, './views/common/partials/footer.njk', (err) => {
-      if (err) {
-          console.log("Error Found:", err);
-      }
-    })
-	});
+      fs.copyFile(
+        `${directories.includes}layouts/partials/header.njk`,
+        './views/common/partials/header.njk',
+        (err) => {
+          if (err) {
+            console.log('Error Found:', err)
+          }
+        }
+      )
+      fs.copyFile(
+        `${directories.includes}layouts/partials/footer.njk`,
+        './views/common/partials/footer.njk',
+        (err) => {
+          if (err) {
+            console.log('Error Found:', err)
+          }
+        }
+      )
+    }
+  )
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')

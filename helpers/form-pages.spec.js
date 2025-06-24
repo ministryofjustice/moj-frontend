@@ -1,6 +1,5 @@
 const getCurrentFormPages = require('./form-pages')
 
-
 describe('getCurrentFormPages', () => {
   const session = {}
 
@@ -43,4 +42,3 @@ describe('getCurrentFormPages', () => {
     ])
   })
 })
-

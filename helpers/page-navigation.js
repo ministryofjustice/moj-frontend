@@ -1,6 +1,4 @@
-const {
-  ADD_NEW_COMPONENT_ROUTE: urlRoot
-} = require('../config')
+const { ADD_NEW_COMPONENT_ROUTE: urlRoot } = require('../config')
 
 const getCurrentFormPages = require('./form-pages.js')
 
