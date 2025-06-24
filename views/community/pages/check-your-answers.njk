@@ -1,4 +1,5 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "macros/summary-card.njk" import summaryCard %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% extends "base.njk" %}
 {% block content %}
@@ -8,12 +9,24 @@
       <h1 class="govuk-heading-xl">Check your answers</h1>
 
       {% for section in sections %}
-        {% if section.answers.length > 0 %}
-          <h2 class="govuk-heading-l">{{ section.title }}</h2>
+        {% set cardParams = {
+            title: {
+              text: section.title
+            },
+            actions: {
+              items: section.actions
+            }
+          }
+        %}
+        {% if section.answerRows.length > 0 %}
           {{ govukSummaryList({
-            rows: section.answers,
-            classes: "govuk-!-margin-bottom-9"
+              card:cardParams,
+              rows: section.answerRows
           }) }}
+        {% else %}
+          {% call summaryCard(cardParams) -%}
+            <p class="govuk-!-margin-bottom-0">None</p>
+          {%- endcall %}
         {% endif %}
       {% endfor %}
 

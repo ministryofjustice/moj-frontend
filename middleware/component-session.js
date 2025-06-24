@@ -7,12 +7,12 @@ const {
   ADD_NEW_COMPONENT_ROUTE,
   COMPONENT_FORM_PAGES
 } = require('../config')
+const { getAnswersForSection } = require('../helpers/check-your-answers')
 const ApplicationError = require('../helpers/application-error')
 const extractBody = require('../helpers/extract-body')
 const getCurrentFormPages = require('../helpers/form-pages')
 const { getNextPage, getPreviousPage } = require('../helpers/page-navigation')
 const redis = require('../helpers/redis-client')
-const { humanReadableLabel } = require('../helpers/text-helper')
 
 const camelToKebab = (str) =>
   str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
@@ -232,12 +232,10 @@ const getFormDataFromSession = (req, res, next) => {
 const getFormSummaryListForRemove = (req, res, next) => {
   const url = req.url.replace('/remove', '')
   const formData = req.session[url]
+  const sectionKey = url.split('/').at(0)
   delete req.removeSummaryRows
   if (formData) {
-    req.removeSummaryRows = Object.entries(formData).map(([key, value]) => ({
-      key: { text: humanReadableLabel(key) },
-      value: { text: value?.originalname || value }
-    }))
+    req.removeSummaryRows = getAnswersForSection(sectionKey, formData)
   }
   next()
 }

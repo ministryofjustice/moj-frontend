@@ -86,7 +86,7 @@ app.set('view engine', 'njk')
 const njk = expressNunjucks(app, {
   watch: isDev,
   noCache: false,
-  loader: nunjucks.FileSystemLoader,
+  loader: nunjucks.FileSystemLoader
 })
 
 njk.env.addFilter('rev', rev)

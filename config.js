@@ -30,7 +30,9 @@ const config = {
         howIsTheComponentUsed: {
           label: 'How is the component being used?'
         }
-      }
+      },
+      showOnCya: true,
+      removable: false
     },
     'component-image': {
       title: 'Component image',
@@ -39,7 +41,9 @@ const config = {
           label: 'Upload a file',
           hint: 'The file must be a JPG, BMP, PNG, TIF or PDF, and smaller than 10MB.'
         }
-      }
+      },
+      showOnCya: true,
+      removable: false
     },
     'accessibility-findings': {
       title: 'Accessibility findings',
@@ -57,7 +61,9 @@ const config = {
           label: 'Has the component been tested with assistive technology?',
           hint: 'This could be with screen reader software or an adaptive keyboard.'
         }
-      }
+      },
+      showOnCya: false,
+      removable: false
     },
     'add-external-audit': {
       title: 'External accessibility audit',
@@ -77,7 +83,9 @@ const config = {
         '/accessibility-findings': {
           hasComponentBeenTestedExternalAccessibility: 'yes'
         }
-      }
+      },
+      showOnCya: true,
+      removable: true
     },
     'add-internal-audit': {
       title: 'Internal accessibility review',
@@ -97,7 +105,9 @@ const config = {
         '/accessibility-findings': {
           hasComponentBeenTestedInternalAudit: 'yes'
         }
-      }
+      },
+      showOnCya: true,
+      removable: true
     },
     'add-assistive-tech': {
       title: 'Testing with assistive technology',
@@ -115,32 +125,9 @@ const config = {
         '/accessibility-findings': {
           hasComponentBeenTestedUsingAssistiveTechnology: 'yes'
         }
-      }
-    },
-    prototype: {
-      title: 'Prototype',
-      fields: {
-        componentPrototypeUrl: {
-          label: 'Do you have a prototype link?',
-          hint: 'For example to the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro.'
-        }
-      }
-    },
-    'prototype-url': {
-      title: 'Prototype details',
-      fields: {
-        prototypeUrl: {
-          label: 'Add the prototype link',
-          hint: 'For example, to the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro. '
-        },
-        prototypeUrlAdditionalInformation: {
-          label: 'Add more information about the prototype (optional)',
-          hint: 'Enter any relevant information, for example a username, password or link expiry date.'
-        }
       },
-      conditions: {
-        '/prototype': { componentPrototypeUrl: 'yes' }
-      }
+      showOnCya: true,
+      removable: true
     },
     'component-code': {
       title: 'Component code',
@@ -148,7 +135,9 @@ const config = {
         componentCodeAvailable: {
           label: 'Do you have code for the component?'
         }
-      }
+      },
+      showOnCya: false,
+      removable: false
     },
     'component-code-details': {
       title: 'Component code details',
@@ -171,7 +160,9 @@ const config = {
       },
       conditions: {
         '/component-code': { componentCodeAvailable: 'yes' }
-      }
+      },
+      showOnCya: true,
+      removable: true
     },
     figma: {
       title: 'Figma design',
@@ -179,7 +170,9 @@ const config = {
         figmaUrl: {
           label: 'Do you have a Figma link for the component?'
         }
-      }
+      },
+      showOnCya: false,
+      removable: false
     },
     'figma-link': {
       title: 'Figma design details',
@@ -195,7 +188,9 @@ const config = {
       },
       conditions: {
         '/figma': { figmaUrl: 'yes' }
-      }
+      },
+      showOnCya: true,
+      removable: true
     },
     'your-details': {
       title: 'Your details',
@@ -213,7 +208,9 @@ const config = {
           label: 'Sharing your contact details on the component page',
           hint: 'Adding your details to the component enables other users to contact you (or your team) to collaborate on the component.\r\nSelect all that apply'
         }
-      }
+      },
+      showOnCya: true,
+      removable: false
     },
     'check-your-answers': {}
   },
@@ -221,82 +218,20 @@ const config = {
   MAX_ADD_ANOTHER: 10,
   ACRONYMS_TO_UPPERCASE: ['url'],
   CHECK_YOUR_ANSWERS_LABEL_OVERRIDES: {
-    // componentOverview: 'Component description',
-    // howIsTheComponentUsed: 'How the component is being used in your service',
-    // accessibilityReport: 'Audit report',
-    // externalOrganisation: 'External accessibility audit supplier',
-    // internalOrganisation: 'Internal accessibility audit supplier',
-    // issuesDiscovered: 'Issues discovered during the audit',
-    // prototypeUrl: 'Prototype link',
-    // prototypeUrlAdditionalInformation: 'Additional information',
-    // componentCode: 'Code',
-    // componentCodeUsage: 'Code usage',
-    // componentCodeLanguage: 'Code language',
-    // componentCodeLanguageOther: 'Other code language',
-    // figmaLink: 'Prototype link',
-    // figmaLinkAdditionalInformation: 'Additional information',
-    // shareYourDetails: 'Share your details on the component page',
-    // componentImage: 'Supporting file'
-  },
-  CHECK_YOUR_ANSWERS: {
-    sections: [
-      {
-        title: 'Component details',
-        data: ['component-details', 'component-image']
-      },
-      {
-        title: 'External accessibility audit',
-        data: [
-          {
-            'accessibility-findings': {
-              includeFields: ['hasComponentBeenTestedExternalAccessibility']
-            }
-          },
-          'add-external-audit'
-        ]
-      },
-      {
-        title: 'Internal accessibility review',
-        data: [
-          {
-            'accessibility-findings': {
-              includeFields: ['hasComponentBeenTestedInternalAudit']
-            }
-          },
-          'add-internal-audit'
-        ]
-      },
-      {
-        title: 'Assistive technology testing',
-        data: [
-          {
-            'accessibility-findings': {
-              includeFields: ['hasComponentBeenTestedUsingAssistiveTechnology']
-            }
-          },
-          'add-assistive-tech'
-        ]
-      },
-      { title: 'Prototype', data: ['prototype', 'prototype-url'] },
-      { title: 'Figma', data: ['figma', 'figma-link'] },
-      { title: 'Code', data: ['component-code', 'component-code-details'] },
-      { title: 'Your details', data: ['your-details'] }
-    ],
-    canRemoveStatic: [
-
-    ],
-    canRemoveMultiples: [
-      '/prototype-url',
-      '/figma-link',
-      '/component-code-details'
-    ],
-    ignoreFields: []
+    'component-code-details': {
+      title: 'Code sample',
+      fields: {
+        componentCodeUsage: 'Usage',
+        componentCodeLanguage: 'Language',
+        componentCodeLanguageOther: 'Language',
+        componentCode: 'Code'
+      }
+    }
   },
   SHARE_YOUR_DETAILS: {
     addNameToComponentPage: 'add my name to the component page',
     addTeamNameToComponentPage: 'add my team name to the component page'
   }
 }
-
 
 module.exports = config
