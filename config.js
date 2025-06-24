@@ -32,8 +32,7 @@ const config = {
         }
       },
       showOnCya: true,
-      removable: false,
-      multiple: false
+      removable: false
     },
     'component-image': {
       title: 'Component image',
@@ -44,8 +43,7 @@ const config = {
         }
       },
       showOnCya: true,
-      removable: false,
-      multiple: false
+      removable: false
     },
     'accessibility-findings': {
       title: 'Accessibility findings',
@@ -65,8 +63,7 @@ const config = {
         }
       },
       showOnCya: false,
-      removable: false,
-      multiple: false
+      removable: false
     },
     'add-external-audit': {
       title: 'External accessibility audit',
@@ -88,8 +85,7 @@ const config = {
         }
       },
       showOnCya: true,
-      removable: true,
-      multiple: false
+      removable: true
     },
     'add-internal-audit': {
       title: 'Internal accessibility review',
@@ -111,8 +107,7 @@ const config = {
         }
       },
       showOnCya: true,
-      removable: true,
-      multiple: false
+      removable: true
     },
     'add-assistive-tech': {
       title: 'Testing with assistive technology',
@@ -132,40 +127,8 @@ const config = {
         }
       },
       showOnCya: true,
-      removable: true,
-      multiple: false
+      removable: true
     },
-    // prototype: {
-    //   title: 'Prototype',
-    //   fields: {
-    //     componentPrototypeUrl: {
-    //       label: 'Do you have a prototype link?',
-    //       hint: 'For example to the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro.'
-    //     }
-    //   },
-    //   showOnCya: false,
-    //   removable: false,
-    //   multiple: false
-    // },
-    // 'prototype-url': {
-    //   title: 'Prototype details',
-    //   fields: {
-    //     prototypeUrl: {
-    //       label: 'Add the prototype link',
-    //       hint: 'For example, to the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro. '
-    //     },
-    //     prototypeUrlAdditionalInformation: {
-    //       label: 'Add more information about the prototype (optional)',
-    //       hint: 'Enter any relevant information, for example a username, password or link expiry date.'
-    //     }
-    //   },
-    //   conditions: {
-    //     '/prototype': { componentPrototypeUrl: 'yes' }
-    //   },
-    //   showOnCya: true,
-    //   removable: true,
-    //   multiple: false
-    // },
     'component-code': {
       title: 'Component code',
       fields: {
@@ -174,8 +137,7 @@ const config = {
         }
       },
       showOnCya: false,
-      removable: false,
-      multiple: false
+      removable: false
     },
     'component-code-details': {
       title: 'Component code details',
@@ -200,8 +162,7 @@ const config = {
         '/component-code': { componentCodeAvailable: 'yes' }
       },
       showOnCya: true,
-      removable: true,
-      multiple: true
+      removable: true
     },
     figma: {
       title: 'Figma design',
@@ -211,8 +172,7 @@ const config = {
         }
       },
       showOnCya: false,
-      removable: false,
-      multiple: false
+      removable: false
     },
     'figma-link': {
       title: 'Figma design details',
@@ -230,8 +190,7 @@ const config = {
         '/figma': { figmaUrl: 'yes' }
       },
       showOnCya: true,
-      removable: true,
-      multiple: false
+      removable: true
     },
     'your-details': {
       title: 'Your details',
@@ -251,8 +210,7 @@ const config = {
         }
       },
       showOnCya: true,
-      removable: false,
-      multiple: false
+      removable: false
     },
     'check-your-answers': {}
   },

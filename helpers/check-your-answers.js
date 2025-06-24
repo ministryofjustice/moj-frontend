@@ -222,4 +222,7 @@ const checkYourAnswers = (session) => {
   return Object.values(sections)
 }
 
-module.exports = checkYourAnswers
+module.exports = {
+ checkYourAnswers,
+ getAnswersForSection
+}

@@ -6,7 +6,7 @@ const multer = require('multer')
 
 const { COMPONENT_FORM_PAGES, ADD_NEW_COMPONENT_ROUTE } = require('../config')
 const ApplicationError = require('../helpers/application-error')
-const checkYourAnswers = require('../helpers/check-your-answers')
+const {checkYourAnswers} = require('../helpers/check-your-answers')
 const getPrTitleAndDescription = require('../helpers/get-pr-title-and-description')
 const sessionData = require('../helpers/mockSessionData/sessionData.js')
 const { urlToTitleCase } = require('../helpers/text-helper')
@@ -152,10 +152,10 @@ router.get(
   validatePageParams,
   getFormSummaryListForRemove,
   (req, res) => {
-    const summary = req?.removeSummaryRows
+    const summaryRows = req?.removeSummaryRows
     const type = urlToTitleCase(req?.params?.page || '')
 
-    if (!req?.params?.page || !summary) {
+    if (!req?.params?.page || !summaryRows) {
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`)
     } else {
       res.render('remove', {
@@ -163,8 +163,7 @@ router.get(
         formData: req?.formData,
         backLink: `${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`,
         type,
-        summary,
-        deleteText: `Delete ${type}`,
+        summaryRows,
         csrfToken: req?.session?.csrfToken
       })
     }
