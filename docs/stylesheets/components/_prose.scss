@@ -47,8 +47,8 @@
     @include govuk-typography-weight-bold;
   }
 
-  ul,
-  ol {
+  ul:not([class]),
+  ol:not([class]) {
     @extend %govuk-list;
   }
 
@@ -65,14 +65,8 @@
     @extend %govuk-link;
   }
 
-  a {
+  a:not(.govuk-button) {
     @extend %govuk-link;
-
-    /* stylelint-disable selector-no-qualifying-type */
-    &.govuk-link--no-visited-state,
-    &.govuk-button {
-      color: govuk-colour("white");
-    }
   }
 
   .govuk-link--inverse {

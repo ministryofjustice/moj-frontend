@@ -6,7 +6,7 @@ const multer = require('multer')
 
 const { COMPONENT_FORM_PAGES, ADD_NEW_COMPONENT_ROUTE } = require('../config')
 const ApplicationError = require('../helpers/application-error')
-const checkYourAnswers = require('../helpers/check-your-answers')
+const {checkYourAnswers} = require('../helpers/check-your-answers')
 const getPrTitleAndDescription = require('../helpers/get-pr-title-and-description')
 const sessionData = require('../helpers/mockSessionData/sessionData.js')
 const { urlToTitleCase } = require('../helpers/text-helper')
@@ -91,17 +91,19 @@ router.get('*', (req, res, next) => {
 })
 
 // Check your answers page
-router.get(`/${checkYourAnswersPath}`,
+router.get(
+  `/${checkYourAnswersPath}`,
   sessionStarted,
   getBackLink,
   (req, res) => {
-  const sections = checkYourAnswers(req.session)
-  res.render(checkYourAnswersPath, {
-    submitUrl: req.originalUrl,
-    sections,
-    csrfToken: req?.session?.csrfToken
-  })
-})
+    const sections = checkYourAnswers(req.session)
+    res.render(checkYourAnswersPath, {
+      submitUrl: req.originalUrl,
+      sections,
+      csrfToken: req?.session?.csrfToken
+    })
+  }
+)
 
 if (process.env.DEV_DUMMY_DATA) {
   // Set dummy data for add component via session
@@ -134,15 +136,13 @@ router.get('/start', (req, res) => {
 // Confirmation page
 router.get('/confirmation', (req, res) => {
   res.render('confirmation', {
-    title: "Component submitted"
+    title: 'Component submitted'
   })
 })
 
 router.all('*', sessionStarted) // Check that we have a session in progress
 
-router.post('/start',
-  verifyCsrf,
-  (req, res) => {
+router.post('/start', verifyCsrf, (req, res) => {
   res.redirect('/contribute/add-new-component/component-details')
 })
 
@@ -152,10 +152,10 @@ router.get(
   validatePageParams,
   getFormSummaryListForRemove,
   (req, res) => {
-    const summary = req?.removeSummaryRows
+    const summaryRows = req?.removeSummaryRows
     const type = urlToTitleCase(req?.params?.page || '')
 
-    if (!req?.params?.page || !summary) {
+    if (!req?.params?.page || !summaryRows) {
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`)
     } else {
       res.render('remove', {
@@ -163,8 +163,7 @@ router.get(
         formData: req?.formData,
         backLink: `${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`,
         type,
-        summary,
-        deleteText: `Delete ${type}`,
+        summaryRows,
         csrfToken: req?.session?.csrfToken
       })
     }
