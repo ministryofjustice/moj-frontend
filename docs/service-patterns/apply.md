@@ -34,10 +34,6 @@ Service patterns are starting points. They give you some user needs for your tea
 
 We’ll share case studies and examples of this service pattern in use.
 
-### Other resources for the ‘apply’ pattern
-
-You can also find [apply patterns in the GOV.UK Design System](https://design-system.service.gov.uk/patterns/).
-
 {% endtab %}
 {% tab "User needs" %}
 
@@ -103,7 +99,7 @@ The cross-government work to identify an ‘apply’ service pattern followed a 
 
 ## Sub-patterns
 
-Service patterns can be broken down into sub-patterns, for example prepare to book an appointment. Each sub-pattern contains tasks, for example check eligibility. You do not need to use all of these. Consider which are appropriate for your service.
+Service patterns can be broken down into sub-patterns, for example prepare to apply. Each sub-pattern contains tasks, for example find the right application form. You do not need to use all of these. Consider which are appropriate for your service.
 
 ### People applying: sub-patterns and tasks
 
@@ -187,7 +183,7 @@ These are some scenarios you may have to design for your service.
 - Staff user applying for something on behalf of an individual, business or organisation
 - Multiple user types contributing to the same application
 
-#### Alternatives:
+### Alternatives:
 
 - Additional application information is needed before it can be processed
 - Evidence in support of application needs to be resent because it's deemed unsuitable
@@ -228,7 +224,7 @@ Or you can email your responses to the 3 questions:
 
 Send your answers to [servicepatterns@justice.gov.uk](mailto:servicepatterns@justice.gov.uk)
 
-### Contributing to other MoJ service patterns
+### Contributing to other service patterns
 
 You'll likely design multiple instances of potential service patterns when you develop new products or services.
 
