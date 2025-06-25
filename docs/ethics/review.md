@@ -8,7 +8,11 @@ eleventyNavigation:
   parent: Ethics
   order: 30
   excerpt: "How and when to do an ethics review."
+  lede: "Learn how and when to do an ethics review."
+  
 ---
+
+## Reasons to do an ethics review
 
 Doing an ethics review will help you:
 

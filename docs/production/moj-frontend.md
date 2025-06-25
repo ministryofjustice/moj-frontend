@@ -11,9 +11,10 @@ eleventyNavigation:
   parent: Production
   order: 10
   excerpt: "To start using MoJ styles, components and patterns contained here, you’ll need to include MoJ Frontend in your project."
+  lede: "MoJ Frontend provides the elements that developers need to create consistent, easy-to-use, fast and secure government services."
 ---
 
-MoJ Frontend provides the elements that developers need to create consistent, easy to use, fast and secure government services.
+## How to use MoJ Frontend
 
 Use this technical documentation to find out how to:
 
@@ -25,4 +26,4 @@ Use this technical documentation to find out how to:
 
 You can also use the option to [try using precompiled files](/production/install-using-precompiled-files/) to test how MoJ Frontend works in your application.
 
-There are live examples of MoJ Frontend components, and guidance on using them in your service, in the [MoJ Design System](/).
+MoJ Design System documentation includes live examples of MoJ Frontend components and how to use them in your service.

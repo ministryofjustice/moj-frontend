@@ -11,7 +11,10 @@ eleventyNavigation:
   parent: Production
   order: 30
   excerpt: "If your project does not use npm (or you want to try out MoJ Frontend without installing it through npm) download and include compiled stylesheets."
+  lede: "If your project does not use npm (or you want to try out MoJ Frontend without installing it through npm) download and include compiled stylesheets"
 ---
+
+## Overview
 
 You can install MoJ Frontend using the compiled files released with each version.
 

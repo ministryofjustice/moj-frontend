@@ -8,13 +8,12 @@ eleventyNavigation:
   parent: Ethics
   order: 10
   excerpt: "How and why you should consider ethics - and what delivery teams should do."
+  lede: "Learn how you can reduce, mitigate or remove harm by designing and developing responsibly."
 ---
 
-All teams designing and building MoJ digital services should be mindful of how their work may impact people and society.
-
-Use this guidance to make sure your team designs and develops responsibly. This will help reduce, mitigate or remove harm.
-
 ## How to consider ethics
+
+All teams designing and building MoJ digital services should be mindful of how their work may impact people and society.
 
 As part of your service assessment, you’ll be expected to show how you’ve considered the ethics of your service. Find out more about [preparing for an assessment](/ethics/assessment).
 

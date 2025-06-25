@@ -9,7 +9,7 @@ eleventyNavigation:
   parent: Get involved
   order: 20
   excerpt: "For a contribution to be considered for the Design System, the style, component or pattern needs to be useful and unique."
-lede: "The MoJ Design System supports the design, build, and delivery of accessible and consistent services. To guarantee the quality of the design system, all styles, components and patterns need to meet certain criteria."
+  lede: "Find out about the criteria for a building block to be added to the MoJ Design System."
 ---
 
 ## Criteria

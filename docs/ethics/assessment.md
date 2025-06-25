@@ -8,9 +8,8 @@ eleventyNavigation:
   parent: Ethics
   order: 40
   excerpt: "As part of your service assessment, you’ll be expected to show how you’ve considered ethics. Learn what to do before and during the assessment."
+  lede: "As part of your service assessment, you’ll be expected to show how you’ve considered ethics. Learn what to do before and during the assessment."
 ---
-
-As part of your service assessment, you’ll be expected to show how you’ve considered the ethics of your service.
 
 ## Before your assessment
 

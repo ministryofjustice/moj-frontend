@@ -8,11 +8,14 @@ eleventyNavigation:
   parent: Production
   order: 60
   excerpt: "To use the font and image assets from MoJ Frontend and GOV.UK Frontend, you can either serve the assets from the combined assets folders or copy the font and image files into your application"
+  lede: "Learn how to use the font and image assets from MoJ Frontend and GOV.UK Frontend."
 ---
 
-To use the font and image assets from MoJ Frontend and GOV.UK Frontend, you can either:
+## Overview
 
-- serve the assets from the combined assets folders – recommended
+You can do this you can either:
+
+- serve the assets from the combined assets folders, which is recommended
 - copy the font and image files into your application
 
 ## Serve the assets from the combined assets folders – recommended

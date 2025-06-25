@@ -9,6 +9,7 @@ eleventyNavigation:
   parent: Production
   order: 20
   excerpt: "We recommend installing MoJ Frontend using npm."
+  lede: "How to intall MoJ Frontend using npm."
 ---
 
 ## Requirements
