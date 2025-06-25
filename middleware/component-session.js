@@ -5,7 +5,7 @@ const sanitize = require('sanitize-filename')
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ADD_NEW_COMPONENT_ROUTE,
-  COMPONENT_FORM_PAGES
+  COMPONENT_FORM_PAGES: formPages
 } = require('../config')
 const { getAnswersForSection } = require('../helpers/check-your-answers')
 const ApplicationError = require('../helpers/application-error')
@@ -24,7 +24,7 @@ const getHashedUrl = (url) => {
 
 const getTemplate = (req) => {
   let template = sanitize(`${req.params.page || req.url.replace('/', '')}`)
-  if (!Object.keys(COMPONENT_FORM_PAGES).includes(template)) {
+  if (!Object.keys(formPages).includes(template)) {
     template = 'error'
   }
   return template
@@ -32,10 +32,10 @@ const getTemplate = (req) => {
 
 const getPageData = (req) => {
   let pageData = sanitize(`${req.params.page || req.url.replace('/', '')}`)
-  if (!Object.keys(COMPONENT_FORM_PAGES).includes(pageData)) {
+  if (!Object.keys(formPages).includes(pageData)) {
     pageData = {}
   }
-  return COMPONENT_FORM_PAGES[pageData]
+  return formPages[pageData]
 }
 
 const transformErrorsToErrorList = (errors) => {
@@ -232,10 +232,10 @@ const getFormDataFromSession = (req, res, next) => {
 const getFormSummaryListForRemove = (req, res, next) => {
   const url = req.url.replace('/remove', '')
   const formData = req.session[url]
-  const sectionKey = url.split('/').at(0)
+  const sectionKey = url.slice(1).split('/').at(0)
   delete req.removeSummaryRows
   if (formData) {
-    req.removeSummaryRows = getAnswersForSection(sectionKey, formData)
+    req.removeSummaryRows = getAnswersForSection(sectionKey, formData, false)
   }
   next()
 }
@@ -304,6 +304,24 @@ const removeFromSession = (req, res, next) => {
       }
     }
   }
+
+  // If there are conditions for this page we need to set the conditional
+  // question answer to 'no' to prevent the user being prompted to refill in
+  // the answers
+  const sectionKey = url.slice(1).split('/')[0]
+  const conditions = formPages[sectionKey]?.conditions
+  if (conditions) {
+    Object.entries(conditions).forEach(([key, value]) => {
+      if (typeof value === 'object') {
+        Object.entries(value).forEach(([questionKey, _]) => {
+          if (req.session[key]?.[questionKey] === 'yes') {
+            req.session[key][questionKey] = 'no'
+          }
+        })
+      }
+    })
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
   delete req.session[url]
   next()
