@@ -122,7 +122,7 @@ const getSections = () => {
  * @returns {object}
  */
 const buildSection = (sectionPath, sectionConfig, sectionNumber) => {
-  const sectionKey = sectionPath.split('/').at(0)
+  const sectionKey = sectionPath.split('/')[0]
   const section = {
     title: labelForSection(sectionKey, sectionNumber),
     actions: [],
@@ -133,7 +133,7 @@ const buildSection = (sectionPath, sectionConfig, sectionNumber) => {
   }
 
   if (sectionConfig.removable && section.answerRows.length > 0) {
-    section.actions.push(link(`remove/${sectionKey}`, 'Remove', section.title))
+    section.actions.push(link(`remove/${sectionPath}`, 'Remove', section.title))
   }
 
   if (section.answerRows.length === 0 && sectionConfig.conditions) {
@@ -145,7 +145,7 @@ const buildSection = (sectionPath, sectionConfig, sectionNumber) => {
         ? 'Review & Change'
         : 'Change'
 
-    section.actions.push(link(sectionKey, linkText, section.title))
+    section.actions.push(link(sectionPath, linkText, section.title))
   }
 
   return section
@@ -166,7 +166,7 @@ const link = (href, text, visuallyHiddenText) => {
  * @param {object} sessionData - user response data from the session
  * @returns {Array}
  */
-const getAnswersForSection = (sectionKey, sessionData = {}) => {
+const getAnswersForSection = (sectionKey, sessionData = {}, hideCode=true) => {
   let codeLanguageIsOther = false
   const data = combineDateFields(sessionData)
 
@@ -188,7 +188,7 @@ const getAnswersForSection = (sectionKey, sessionData = {}) => {
 
     if (questionKey === 'shareYourDetails') {
       displayValue.value.html = shareYourDetailsValueReplacement(answerValue)
-    } else if (questionKey === 'componentCode') {
+    } else if (questionKey === 'componentCode' && hideCode) {
       displayValue.value.text = 'Code provided'
     } else if (
       answerValue &&
