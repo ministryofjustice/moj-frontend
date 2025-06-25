@@ -130,7 +130,7 @@ app.use((err, req, res, next) => {
     })
   } else {
     res.status(500).render('500', {
-      message: 'Sorry, there is a problem with the service',
+      title: 'Sorry, there is a problem with the service',
       errorDetails: isDev ? err.message : undefined // Only show detailed error messages in dev mode
     })
   }
