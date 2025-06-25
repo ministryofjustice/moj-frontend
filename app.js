@@ -124,7 +124,7 @@ app.use((err, req, res, next) => {
     return next(err)
   }
   console.error(`Error: ${err.message}`)
-  if(err.status && err.status === 404) {
+  if (err.status && err.status === 404) {
     res.status(404).render('404', {
       title: 'Page not found'
     })
