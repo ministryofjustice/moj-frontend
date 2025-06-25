@@ -15,7 +15,7 @@
       <h1 class="govuk-heading-xl">Are you sure you want to remove this information?</h1>
 
       {{ govukSummaryList({
-        rows: summary
+        rows: summaryRows
       }) }}
 
       <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
