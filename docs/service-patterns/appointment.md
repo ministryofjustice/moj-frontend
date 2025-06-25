@@ -57,11 +57,9 @@ The cross-government work to identify an 'appointments' service pattern followed
 - I need reassurance that the appointment will run on time.
 - I need to know that I can bring another person to the appointment who can speak on my behalf.
 
-### User needs for managing appointments
+### User needs for people acting on behalf of others
 
 #### More common
-
-For people acting on behalf of users:
 
 - I need to information or reminders about the appointment.
 - I need to be able to book or reschedule an appointment on behalf of someone else.
@@ -70,7 +68,7 @@ For people acting on behalf of users:
 
 - I need to know the rules for helping the person during the appointment.
 
-### User needs for internal services
+### User needs for managing appointments
 
 #### More common
 
@@ -99,7 +97,7 @@ For people acting on behalf of users:
 
 Service patterns can be broken down into sub-patterns, for example prepare to book an appointment. Each sub-pattern contains tasks, for example check eligibility. You do not need to use all of these. Consider which are appropriate for your service.
 
-### People arranging, managing and attending appointments: sub-patterns and tasks
+### People attending appointments: sub-patterns and tasks
 
 #### 1. Prepare to book appointment
 
@@ -254,7 +252,7 @@ Or you can email your responses to the 3 questions:
 
 Send your answers to [servicepatterns@justice.gov.uk](mailto:servicepatterns@justice.gov.uk).
 
-### Contributing to other MoJ service patterns
+### Contributing to other service patterns
 
 You'll likely design multiple instances of potential service patterns when you develop new products or services.
 
