@@ -1,0 +1,17 @@
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% extends "base.njk" %}
+{% block content %}
+  <div class="app-layout__content">
+    {% if backLink %}
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    {% endif %}
+    <span class="govuk-caption-l">Submit a component</span>
+    <h1 class="govuk-heading-xl">{{ page.title }}</h1>
+    <p class="govuk-body">For security, we need to check if you have access to <strong>{{page.email}}</strong>.</p>
+    <p class="govuk-body">We’ve sent you a link that you can use to continue submitting a component. The link will open in a new browser window, so you can close this one</p>
+    <p class="govuk-body"><a href="/contribute/add-new-component/resend-email" class="govuk-link">Not received an email?</a></p>
+</div>
+{% endblock %}

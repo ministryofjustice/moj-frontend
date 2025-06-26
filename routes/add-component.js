@@ -147,7 +147,38 @@ router.get('/confirmation', (req, res) => {
 router.all('*', sessionStarted) // Check that we have a session in progress
 
 router.post('/start', verifyCsrf, (req, res) => {
-  res.redirect('/contribute/add-new-component/component-details')
+  res.redirect('/contribute/add-new-component/email')
+})
+
+router.get('/email', (req,res) => {
+  res.render('email', {
+    page: COMPONENT_FORM_PAGES.email,
+    csrfToken: req?.session?.csrfToken
+  })
+})
+
+router.post('/email',  xss(),
+  verifyCsrf,
+  validatePageParams,
+  validateFormData,
+  saveSession,
+  (req, res, next) => {
+    res.redirect('/contribute/add-new-component/check-your-email')
+  })
+
+router.get('/check-your-email', (req,res) => {
+  console.log(req.session)
+  res.render('check-your-email', {
+    page: {
+      title: 'Check your email',
+      email: req?.session?.['/email']?.emailAddress
+    },
+    csrfToken: req?.session?.csrfToken
+  })
+})
+
+router.get('/email/verify/:token', (req,res) => {
+
 })
 
 // Remove form page
