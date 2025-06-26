@@ -16,20 +16,17 @@
 {% endif %}
 
 {% set addNameToComponentPage = "addNameToComponentPage" in shareYourDetails %}
-{% set addTeamNameToComponentPage = "addTeamNameWhenRequested" in shareYourDetails %}
-{% set doNotSharePersonalDetailsChecked = "doNotSharePersonalDetails" in shareYourDetails %}
+{% set addTeamNameToComponentPage = "addTeamNameToComponentPage" in shareYourDetails %}
 
 {% block content %}
 
-  {% if backLink %}
-    <div class="app-layout__backlink">
+  <div class="app-layout__content">
+    {% if backLink %}
       {{ govukBackLink({
         text: "Back",
         href: backLink
       }) }}
-    </div>
-  {% endif %}
-  <div class="app-layout__content">
+    {% endif %}
   {% if errorList %}
     {{ govukErrorSummary({
       titleText: "There is a problem",
@@ -37,15 +34,14 @@
     }) }}
   {% endif %}
   <form method="post" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit new component</span>
+      <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Your details</h1>
-      <p class="govuk-body">Providing your personal information means the team can contact you to discuss the component further, if required. The team will also let you when the component goes live in the design system.</p>
-      <p class="govuk-body">With your permission, your name and email address will be added to the component page to show you added it to the design system.</p>
+      <p class="govuk-body">Add your details to enable the MoJ Design System team to let you know when the component is live. They might also need to contact you with questions about the component.</p>
+      <p class="govuk-body">You can request for your details to be added to the component page. This is to show that you added it to the Design System.</p>
       {{ govukInput({
           label: {
-              text: "Full name",
-              classes: "govuk-label--m",
-              isPageHeading: true
+              text: page.fields.fullName.label,
+              classes: "govuk-label--m"
           },
           id: "full-name",
           name: "fullName",
@@ -55,9 +51,8 @@
 
       {{ govukInput({
           label: {
-              text: "Email address",
-              classes: "govuk-label--m",
-              isPageHeading: true
+              text: page.fields.emailAddress.label,
+              classes: "govuk-label--m"
           },
           id: "email-address",
           name: "emailAddress",
@@ -67,9 +62,8 @@
 
       {{ govukInput({
         label: {
-          text: "What team did you work in when creating the component?",
-          classes: "govuk-label--m",
-          isPageHeading: true
+          text: page.fields.teamName.label,
+          classes: "govuk-label--m"
         },
         id: "team-name",
         name: "teamName",
@@ -77,18 +71,19 @@
         value: formData.teamName
       }) }}
 
+      <input type="hidden" name="shareYourDetails" />
+
       {{ govukCheckboxes({
         name: "shareYourDetails",
         id: 'share-your-details',
         fieldset: {
           legend: {
-            text: "Sharing your contact details on the component page",
-            isPageHeading: true,
+            text: page.fields.shareYourDetails.label,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "Your details are needed so other users can contact you or your team to continue collaborating on the component. By opting out of sharing these details, other community users will not be able to chat or work with you about the component. Select all that apply"
+          text: page.fields.shareYourDetails.hint
         },
         items: [
           {
@@ -97,7 +92,7 @@
             checked: addNameToComponentPage
           },
           {
-            value: "addTeamNameWhenRequested",
+            value: "addTeamNameToComponentPage",
             text: "Add my team name to the component page",
             checked: addTeamNameToComponentPage
           }

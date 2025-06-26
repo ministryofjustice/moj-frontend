@@ -26,21 +26,37 @@
     border: 1px solid #b1b4b6;
   }
 
+  .img-container {
+    width: fill;
+    height: fit-content;
+    margin-bottom: govuk-spacing(9);
+    padding: govuk-spacing(6);
+    border: 1px solid #b1b4b6;
+    background-color: govuk-colour("white");
+
+    & img {
+      height: 100%;
+      max-height: 600px;
+      object-fit: scale-down;
+      border: none;
+    }
+  }
+
   strong,
   b {
     @include govuk-typography-weight-bold;
   }
 
-  ul,
-  ol {
+  ul:not([class]),
+  ol:not([class]) {
     @extend %govuk-list;
   }
 
-  ol {
+  ol:not([class]) {
     @extend %govuk-list--number;
   }
 
-  ul {
+  ul:not([class]) {
     @extend %govuk-list--bullet;
   }
 
@@ -49,13 +65,8 @@
     @extend %govuk-link;
   }
 
-  a {
+  a:not(.govuk-button) {
     @extend %govuk-link;
-
-    /* stylelint-disable selector-no-qualifying-type */
-    &.govuk-link--no-visited-state.govuk-button {
-      color: govuk-colour("white");
-    }
   }
 
   .govuk-link--inverse {
@@ -125,7 +136,8 @@
 /// * Consolas - Font for older Windows versions
 /// * Liberation Mono - Font for Linux used by GitHub
 pre,
-code {
+code,
+.font-monospace {
   // font family in a separate variable to avoid syntax errors when passing
   // to the common typography mixin
   $app-code-font: ui-monospace, menlo, "Cascadia Mono", "Segoe UI Mono", consolas, "Liberation Mono", monospace;

@@ -6,9 +6,9 @@ const maxWords = require('../helpers/max-words')
 const schema = Joi.object({
   externalOrganisation: Joi.string().required().messages({
     'any.required':
-      'Enter the name of the organisation who conducted the external audit',
+      'Enter the name of the organisation that did the external audit',
     'string.empty':
-      'Enter the name of the organisation who conducted the external audit'
+      'Enter the name of the organisation that did the external audit'
   }),
 
   'auditDate-day': Joi.string()
@@ -72,7 +72,7 @@ const schema = Joi.object({
       const minDate = moment('2011-04-01', 'YYYY-MM-DD')
       if (moment(value).isBefore(minDate)) {
         return helpers.error('any.invalid', {
-          message: 'The date must be after 01/04/2011'
+          message: 'The date must be on or after 1/4/2011'
         })
       }
 
@@ -82,20 +82,15 @@ const schema = Joi.object({
       'any.invalid': '{{#message}}'
     }),
 
-  accessibilityReport: Joi.string()
-    .allow('')
-    .pattern(/\.pdf$/i)
-    .messages({
-      'string.pattern.base': 'The selected file must be a PDF'
-    })
-    .optional(),
-
   issuesDiscovered: Joi.string()
-    .optional()
-    .allow(null, '')
+    .required()
     .custom((value, helpers) => maxWords(value, helpers, 250))
     .messages({
-      'custom.max.words': 'There must be 250 words or less'
+      'any.required':
+        'Enter details about issues discovered by the external audit',
+      'string.empty':
+        'Enter details about issues discovered by the external audit',
+      'custom.max.words': 'Enter 250 words or less'
     })
 })
 
