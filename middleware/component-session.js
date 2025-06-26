@@ -300,7 +300,7 @@ const removeFromSession = (req, res, next) => {
     if (filename) {
       req.session.sessionFlash = {
         type: 'success',
-        message: `File ‘${filename}’ removed.`
+        message: `File ‘${filename}’ has been removed.`
       }
     }
   }
