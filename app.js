@@ -18,6 +18,7 @@ const RedisStore = require('connect-redis')(session)
 const helmet = require('helmet')
 const nunjucks = require('nunjucks')
 const { xss } = require('express-xss-sanitizer')
+const ApplicationError = require('./helpers/application-error')
 
 const rev = require('./filters/rev')
 
@@ -106,11 +107,9 @@ app.use(xss())
 app.use('/contribute/add-new-component', addComponentRoutes)
 
 // Fallback route to 404
-app.get('*', (req, res) => {
-  // res.sendFile(path.join(__dirname, 'public', 'index.html'))
-  res.status(404).render('error', {
-    message: 'Page not found.'
-  })
+app.get('*', (req, res, next) => {
+  const error = new ApplicationError('Page not found', 404)
+  next(error)
 })
 
 // The error handler must be registered before any other error middleware and after all controllers
@@ -121,13 +120,20 @@ Sentry.setupExpressErrorHandler(app)
  * Express must count 4 params to be error middleware
  **/
 app.use((err, req, res, next) => {
-  console.error(`Error: ${err.message}`) // Log the error to the console
-  // res.status(500).render('error', {
-  //   message: 'Something went wrong. Please try again later.',
-  //   errorDetails: isDev ? err.message : undefined // Only show detailed error messages in dev mode
-  // })
-  res.statusCode = 500
-  res.end(`${res.sentry}\n`)
+  if (res.headersSent) {
+    return next(err)
+  }
+  console.error(`Error: ${err.message}`)
+  if (err.status && err.status === 404) {
+    res.status(404).render('404', {
+      title: 'Page not found'
+    })
+  } else {
+    res.status(500).render('500', {
+      title: 'Sorry, there is a problem with the service',
+      errorDetails: isDev ? err.message : undefined // Only show detailed error messages in dev mode
+    })
+  }
 })
 
 app.listen(APP_PORT, () => {
