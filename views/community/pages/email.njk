@@ -1,0 +1,44 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% extends "base.njk" %}
+{% block content %}
+  <div class="app-layout__content">
+    {% if backLink %}
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    {% endif %}
+    {% if errorList %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <form method="POST" action="{{ submitUrl }}">
+    <span class="govuk-caption-l">Submit a component</span>
+      <h1 class="govuk-heading-xl">{{page.title}}</h1>
+    <p class="govuk-body">At the moment, contributions to the MoJ Design System are only accepted from MoJ staff.</p>
+    <p class="govuk-body">Enter your email address to receive a link to verify that you work for the MoJ before you continue.</p>
+          {{ govukInput({
+          label: {
+              text: page.fields.emailAddress.label,
+              classes: "govuk-label--m"
+          },
+          id: "email-address",
+          name: "emailAddress",
+          errorMessage: formErrors.emailAddress,
+          value: formData.emailAddress
+      }) }}
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+
+      <div class="moj-button-action">
+          {{ govukButton({
+              text: 'Continue'
+          }) }}
+      </div>
+      </form>
+</div>
+{% endblock %}

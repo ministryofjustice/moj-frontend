@@ -18,6 +18,16 @@ const config = {
   SESSION_SECRET: process.env.SESSION_SECRET || 'your-secret-key',
   ENV: process.env.ENV || 'development',
   COMPONENT_FORM_PAGES: {
+    'email': {
+      title: 'Verify your email address',
+      fields: {
+        emailAddress: {
+          label: 'Email address'
+        }
+      },
+      showOnCya: false,
+      removable: false
+    },
     'component-details': {
       title: 'Component details',
       fields: {
