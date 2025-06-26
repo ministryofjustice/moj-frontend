@@ -16,7 +16,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 9 June 2025
+Last updated: 24 June 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -33,6 +33,16 @@ Acronyms and initialisms in services do not need to be spelt out if they are wel
 If users are familiar with the acronym or initialism but you would still like to help them, you can spell it out afterwards, for example 'PDU (probation delivery unit)'.
 
 For guidance or long-form content, spell them out on first mention (following the [abbreviations and acronyms guidance on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#abbreviations-and-acronyms)).
+
+There is little consensus in the department about how to style some acronyms and initialisms, especially if one letter refers to a preposition.
+
+However, you should consider writing acronyms and initialisms entirely in upper case. For example, ROSH instead of RoSH and MOJ instead of MoJ. This is because:
+
+- studies, such as in the [Memory and Cognition journal article on reader ability](https://link.springer.com/article/10.3758/BF03198246), suggest that abbreviations written in a mix of upper and lower case are harder to read, especially for less skilled readers
+- it follows the convention established by the abbreviation of [ROTL for Release on Temporary Licence](#rotl-%28release-on-temporary-licence%29) and so helps to improve consistency
+- guidance from the Guardian and GOV.UK recommends writing similar abbreviations such as MOT and FOI entirely in upper case
+
+You should use a mix of upper and lower-case letters when referring to the names of systems such OASys and NDelius.
 
 ### alerts (DPS only)
 
@@ -305,7 +315,7 @@ OASys is an abbreviation of Offender Assessment System, which is used by staff a
 
 ### offender or ex-offender
 
-Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FHow%20we%20talk%20about%20people%20in%20the%20justice%20system%20%2Edocx%3Fd%3Dw3d0b8958eb4d4183a284d507a4ae29e5%26csf%3D1%26web%3D1%26e%3DmbNvoe&correlation=b5c4a4a1%2D401a%2Dc000%2Dcd83%2Ddda5619d5da4&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=89&listItemUniqueId=3d0b8958%2Deb4d%2D4183%2Da284%2Dd507a4ae29e5).
+Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
 
 ### open prison, open conditions
 
@@ -326,7 +336,7 @@ PERs are a document which must be completed for all people in custody prior to a
 
 ### person on probation, people on probation
 
-Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FHow%20we%20talk%20about%20people%20in%20the%20justice%20system%20%2Edocx%3Fd%3Dw3d0b8958eb4d4183a284d507a4ae29e5%26csf%3D1%26web%3D1%26e%3DmbNvoe&correlation=b5c4a4a1%2D401a%2Dc000%2Dcd83%2Ddda5619d5da4&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=89&listItemUniqueId=3d0b8958%2Deb4d%2D4183%2Da284%2Dd507a4ae29e5).
+Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
 
 ### personal data in title tags
 
@@ -394,7 +404,7 @@ Staff in prisons may still use ‘NOMIS number’ or ‘alpha number’ when ref
 
 ### prisoner, person in prison
 
-Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FHow%20we%20talk%20about%20people%20in%20the%20justice%20system%20%2Edocx%3Fd%3Dw3d0b8958eb4d4183a284d507a4ae29e5%26csf%3D1%26web%3D1%26e%3DmbNvoe&correlation=b5c4a4a1%2D401a%2Dc000%2Dcd83%2Ddda5619d5da4&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=89&listItemUniqueId=3d0b8958%2Deb4d%2D4183%2Da284%2Dd507a4ae29e5).
+Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
 
 ### prisoner record
 
@@ -404,9 +414,13 @@ Do not use ‘prison record’, ‘NOMIS record’, ‘NOMS record’ or ‘offe
 
 More research is needed to ensure that this is the best way to describe information the organisation has about someone in prison.
 
-### Probation Delivery Unit (PDU)
+### probation delivery unit (PDU)
 
-Use upper case and the initialism on first mention. Research is needed to establish if users will understand PDU without it being spelt out.
+In probation settings, the 12 geographical regions are divided into probation delivery units (PDUs).
+
+The initialism PDU is generally well-understood and used on its own in existing systems like NDelius. To help users, you may want to write the phrase in full the first time or include the full term in brackets after PDU.
+
+When writing the phrase in full, use sentence case: probation delivery unit.
 
 <h3 class="govuk-heading-m" id="probation-practitioner">probation practitioner</h3>
 
@@ -446,7 +460,15 @@ Read the [full list of release dates (MoJ staff only)](https://justiceuk.sharepo
 
 ### remand prisoner, on remand, remanded in custody
 
-Someone is on remand if they are placed in custody whilst awaiting trial. Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FHow%20we%20talk%20about%20people%20in%20the%20justice%20system%20%2Edocx%3Fd%3Dw3d0b8958eb4d4183a284d507a4ae29e5%26csf%3D1%26web%3D1%26e%3DmbNvoe&correlation=19c5a4a1%2D4084%2Dc000%2Dcd83%2Ddf6a4273b326&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=89&listItemUniqueId=3d0b8958%2Deb4d%2D4183%2Da284%2Dd507a4ae29e5).
+Someone is on remand if they are placed in custody whilst awaiting trial. Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
+
+### ROSH (Risk of Serious Harm)
+
+One of the risk categories used in risk and need assessments in OASys.
+
+Use upper case.
+
+Users may well understand the acronym on its own. You could also consider using the acronym first and then spelling it out in brackets.
 
 ### ROTL (Release on Temporary Licence)
 
@@ -489,7 +511,7 @@ Use the 12-hour clock for services in the probation space. For example, 11am.
 
 ### Violent and Sex Offender Register (ViSOR)
 
-Use ViSOR. This is more well known than the full version. Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FHow%20we%20talk%20about%20people%20in%20the%20justice%20system%20%2Edocx%3Fd%3Dw3d0b8958eb4d4183a284d507a4ae29e5%26csf%3D1%26web%3D1%26e%3DmbNvoe&correlation=b5c4a4a1%2D401a%2Dc000%2Dcd83%2Ddda5619d5da4&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=89&listItemUniqueId=3d0b8958%2Deb4d%2D4183%2Da284%2Dd507a4ae29e5).
+Use ViSOR. This is more well known than the full version. Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
 
 {% endaccordionSection %}
 {% accordionSection "W" %}
@@ -512,7 +534,7 @@ Capital 'X' and lower case 'r'. Do not shorten to 'body scan' as this may be con
 
 This describes a prisoner aged between 15 and 21.
 
-Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FHow%20we%20talk%20about%20people%20in%20the%20justice%20system%20%2Edocx%3Fd%3Dw3d0b8958eb4d4183a284d507a4ae29e5%26csf%3D1%26web%3D1%26e%3DmbNvoe&correlation=b5c4a4a1%2D401a%2Dc000%2Dcd83%2Ddda5619d5da4&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=89&listItemUniqueId=3d0b8958%2Deb4d%2D4183%2Da284%2Dd507a4ae29e5).
+Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
 
 {% endaccordionSection %}
 {% endaccordion %}

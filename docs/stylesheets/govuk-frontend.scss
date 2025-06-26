@@ -1,0 +1,7 @@
+@use "node_modules/govuk-frontend/dist/govuk" as * with (
+  $govuk-page-width: 1200px,
+  $govuk-suppressed-warnings: (
+    "govuk-typography-scale-14"
+  ),
+  $govuk-global-styles: true
+);
