@@ -206,7 +206,7 @@ const config = {
         },
         shareYourDetails: {
           label: 'Displaying your details on the component page',
-          hint: 'Select all that apply'
+          hint: 'Adding your details to the component enables other users to contact you (or your team) to collaborate on the component. This is optional.'
         }
       },
       showOnCya: true,

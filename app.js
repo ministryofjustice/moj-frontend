@@ -22,8 +22,6 @@ const ApplicationError = require('./helpers/application-error')
 
 const rev = require('./filters/rev')
 
-const rev = require('./filters/rev')
-
 const { APP_PORT, ENV, REDIS_URL, SESSION_SECRET } = require('./config')
 const addComponentRoutes = require('./routes/add-component')
 
