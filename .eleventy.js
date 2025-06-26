@@ -260,34 +260,28 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.on(
     'eleventy.before',
     async ({ directories, runMode, outputMode }) => {
-      fs.copyFile(
-        `${directories.includes}layouts/base.njk`,
-        './views/common/base.njk',
-        (err) => {
-          if (err) {
-            console.log('Error Found:', err)
-          }
-        }
-      )
+      const srcDir = `${directories.includes}layouts`
+      const destDir = './views/common'
+      const templates = [
+        'base.njk',
+        '404.njk',
+        '500.njk',
+        'partials/header.njk',
+        'partials/header-no-nav.njk',
+        'partials/footer.njk'
+        ]
 
-      fs.copyFile(
-        `${directories.includes}layouts/partials/header.njk`,
-        './views/common/partials/header.njk',
-        (err) => {
-          if (err) {
-            console.log('Error Found:', err)
+      templates.forEach((template) => {
+        fs.copyFile(
+          `${srcDir}/${template}`,
+          `${destDir}/${template}`,
+          (err) => {
+            if (err) {
+              console.log('Error Found:', err)
+            }
           }
-        }
-      )
-      fs.copyFile(
-        `${directories.includes}layouts/partials/footer.njk`,
-        './views/common/partials/footer.njk',
-        (err) => {
-          if (err) {
-            console.log('Error Found:', err)
-          }
-        }
-      )
+        )
+      })
     }
   )
 

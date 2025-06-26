@@ -6,7 +6,7 @@ const multer = require('multer')
 
 const { COMPONENT_FORM_PAGES, ADD_NEW_COMPONENT_ROUTE } = require('../config')
 const ApplicationError = require('../helpers/application-error')
-const {checkYourAnswers} = require('../helpers/check-your-answers')
+const { checkYourAnswers } = require('../helpers/check-your-answers')
 const getPrTitleAndDescription = require('../helpers/get-pr-title-and-description')
 const sessionData = require('../helpers/mockSessionData/sessionData.js')
 const { urlToTitleCase } = require('../helpers/text-helper')
@@ -59,9 +59,8 @@ const validatePageParams = (req, res, next) => {
   if (valid) {
     next()
   } else {
-    res.status(404).render('error', {
-      message: 'Page not found.'
-    })
+    const error = new ApplicationError('Page not found', 404)
+    next(error)
   }
 }
 
@@ -88,6 +87,11 @@ router.get('*', (req, res, next) => {
     }
   }
   next()
+})
+
+router.get('/error', (req, res, next) => {
+  const error = new ApplicationError('Uh oh!', 500)
+  next(error)
 })
 
 // Check your answers page
@@ -220,6 +224,8 @@ router.get(
   }
 )
 
+
+
 // "Check Your Answers" form submission
 router.post(
   `/${checkYourAnswersPath}`,
@@ -319,8 +325,7 @@ router.post(
     if (req?.nextPage) {
       res.redirect(`${req.nextPage}`)
     } else {
-      const error = new ApplicationError('Unknown page', 404)
-      console.log(error.toErrorObject())
+      const error = new ApplicationError('Page not found', 404)
       next(error)
     }
   }
