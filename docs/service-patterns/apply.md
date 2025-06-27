@@ -1,12 +1,7 @@
 ---
-<<<<<<< new-docs-tabs
 layout: layouts/content.njk
 tabs: true
 title: ‘Apply’ service pattern prototype
-=======
-layout: layouts/service-patterns.njk
-title: ‘Apply’ service pattern proof of concept
->>>>>>> main
 ---
 
 {% tabs "Contents" %}
