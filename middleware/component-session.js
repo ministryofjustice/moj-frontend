@@ -5,6 +5,7 @@ const sanitize = require('sanitize-filename')
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ADD_NEW_COMPONENT_ROUTE,
+  ALLOWED_EMAIL_DOMAINS: allowedDomains,
   COMPONENT_FORM_PAGES: formPages
 } = require('../config')
 const { getAnswersForSection } = require('../helpers/check-your-answers')
@@ -36,6 +37,19 @@ const getPageData = (req) => {
     pageData = {}
   }
   return formPages[pageData]
+}
+
+const checkEmail = (req, res, next) => {
+  let allowed = false
+  const email = req?.session?.['/email']?.emailAddress
+  if (email) {
+    const domain = email.split('@').at(-1)
+    if (allowedDomains.includes(domain)) {
+      allowed = true
+    }
+  }
+  req.emailAllowed = allowed
+  next()
 }
 
 const transformErrorsToErrorList = (errors) => {
@@ -390,5 +404,6 @@ module.exports = {
   validateFormDataFileUpload,
   validateComponentImagePage,
   saveFileToRedis,
-  clearSkippedPageData
+  clearSkippedPageData,
+  checkEmail
 }

@@ -17,6 +17,7 @@ const config = {
   REDIS_PORT: parseInt(process.env.REDIS_PORT, 10) || 6379,
   SESSION_SECRET: process.env.SESSION_SECRET || 'your-secret-key',
   ENV: process.env.ENV || 'development',
+  ALLOWED_EMAIL_DOMAINS: ['justice.gov.uk'],
   COMPONENT_FORM_PAGES: {
     'email': {
       title: 'Verify your email address',
