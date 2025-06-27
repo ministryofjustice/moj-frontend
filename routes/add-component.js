@@ -144,6 +144,15 @@ router.get('/confirmation', (req, res) => {
   })
 })
 
+router.get('/email/verify/:token',
+  // we may not have a session
+  // if no session - token expored
+  // if session check token
+  //
+  (req,res) => {
+
+})
+
 router.all('*', sessionStarted) // Check that we have a session in progress
 
 router.post('/start', verifyCsrf, (req, res) => {
@@ -159,9 +168,13 @@ router.get('/email', (req,res) => {
 
 router.post('/email',  xss(),
   verifyCsrf,
-  validatePageParams,
   validateFormData,
-  saveSession,
+  // check email domain
+  // if valid
+    saveSession,
+    //  send email
+  // else
+   //  redirect
   (req, res, next) => {
     res.redirect('/contribute/add-new-component/check-your-email')
   })
@@ -177,9 +190,7 @@ router.get('/check-your-email', (req,res) => {
   })
 })
 
-router.get('/email/verify/:token', (req,res) => {
 
-})
 
 // Remove form page
 router.get(
