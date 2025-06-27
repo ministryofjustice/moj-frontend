@@ -1,7 +1,7 @@
 ---
-layout: layouts/community.njk
-subsection: About the design system
-title: Collaborating in the design system
+layout: layouts/content.njk
+subsection: About the Design System
+title: Collaborating in the Design System
 redirect_from: /community/collaborate-in-the-design-system
 eleventyNavigation:
   key: Contributing

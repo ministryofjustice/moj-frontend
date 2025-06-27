@@ -1,7 +1,5 @@
 ---
-layout: layouts/archive.njk
 title: Currency input
-status: Archived
 statusDate: June 2021
 type: component
 redirect_from: /components/currency-input

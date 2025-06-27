@@ -1,6 +1,7 @@
 ---
-layout: layouts/get-started.njk
+layout: layouts/content.njk
 subsection: Setup for production
+showHelp: true
 title: Import MoJ Frontend CSS
 eleventyNavigation:
   key: Import CSS

@@ -1,5 +1,6 @@
 ---
-layout: layouts/tabbed-content.njk
+layout: layouts/content.njk
+tabs: true
 subsection: Prototyping
 title: Setting up Figma prototypes
 eleventyNavigation:
@@ -7,9 +8,8 @@ eleventyNavigation:
   parent: Prototyping
   order: 10
   excerpt: "Setting up Figma prototypes."
+  lede: "Figma Kits help people to create designs that are consistent with one another. They are maintained by the MoJ Design System team."
 ---
-
-Figma Kits help people to create designs that are consistent with one another. They are maintained by the MoJ Design System team.
 
 {% tabs "Contents" %}
 
