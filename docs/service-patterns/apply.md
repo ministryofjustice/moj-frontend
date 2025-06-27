@@ -1,7 +1,7 @@
 ---
 layout: layouts/content.njk
 tabs: true
-title: ‘Apply’ service pattern prototype
+title: ‘Apply’ service pattern proof of concept
 ---
 
 {% tabs "Contents" %}
