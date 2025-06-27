@@ -1,72 +1,60 @@
 const {
-  MAX_ADD_ANOTHER: maxAddAnother,
-  ACRONYMS_TO_UPPERCASE: acronyms,
-  CHECK_YOUR_ANSWERS_LABEL_MAPPING,
+  CHECK_YOUR_ANSWERS_LABEL_OVERRIDES: labelOverrides,
   SHARE_YOUR_DETAILS: shareYourDetails,
-  CHECK_YOUR_ANSWERS: checkYourAnswersConfig,
+  COMPONENT_FORM_PAGES: formPages,
   ADD_NEW_COMPONENT_ROUTE: hrefRoot
 } = require('../config')
 
 const { combineDateFields } = require('./date-fields')
 const {
-  toCamelCaseWithRows,
-  humanReadableLabel: humanReadableLabelText,
-  replaceAcronyms,
+  humanReadableLabel,
   truncateText,
-  sanitizeText
+  sanitizeText,
+  ucFirst
 } = require('./text-helper')
 
-const mappedLabels = Object.keys(CHECK_YOUR_ANSWERS_LABEL_MAPPING)
 const maxWords = 10000
-const shareYourDetailsKeys = Object.keys(shareYourDetails)
+let currentSession
 
 /**
  * Converts a text label to a human-readable format using a predefined mapping.
  *
- * @param {string} text - The text label to convert.
+ * @param {string} field - The camelCase field to get a label for.
+ * @param {string} section - The form/section that contains the field
  * @returns {string} - The human-readable label.
  */
-const humanReadableLabel = (text) => {
-  if (mappedLabels.includes(text)) {
-    return CHECK_YOUR_ANSWERS_LABEL_MAPPING[text]
+const labelForField = (field, section) => {
+  // If there's an override, use that
+  const override = labelOverrides[section]?.fields[field]
+  if (override) {
+    return override
   }
-  return humanReadableLabelText(text)
+  // Otherwise use the label from the form pages config
+  const label = formPages[section]?.fields[field]?.label
+  if (label) {
+    return label
+  }
+  // Else just convert the camelCase to human
+  return humanReadableLabel(field)
 }
 
-/**
- * Extracts and formats answers from session data based on provided forms.
- *
- * @param {Array} forms - The forms to extract answers from.
- * @param {Array} canRemove - The fields that can be removed via a UI action.
- * @param {object} session - The session data.
- * @param {Array} ignoreFields - The fields to ignore.
- * @returns {object} - The formatted answers for govukSummaryList.
- */
-const answersFromSession = (forms, canRemove, session, ignoreFields) => {
-  return forms.reduce((acc, form) => {
-    if (Array.isArray(form)) {
-      const topLevelKey = toCamelCaseWithRows(form[0])
-      acc[topLevelKey] = form.flatMap((field) =>
-        extractFieldData(field, session, canRemove, ignoreFields)
-      )
-    } else {
-      const key = toCamelCaseWithRows(form)
-      acc[key] = extractFieldData(form, session, canRemove, ignoreFields)
-    }
-    return acc
-  }, {})
+const labelForSection = (section, number) => {
+  console.log(section)
+  let label = labelOverrides[section]?.title ?? formPages[section]?.title
+  label = `${label}${number ? ` ${number}` : ''}`
+  return label
 }
 
 /**
  * Converts an array of values into an HTML list.
  *
- * @param {Array} values - The values to convert.
+ * @param {Array} arr - The values to convert.
  * @returns {string} - The HTML list.
  */
-const listHTML = (values) => {
-  if (!Array.isArray(values)) return ''
+const arrayToUnorderedList = (arr) => {
+  if (!Array.isArray(arr)) return ''
 
-  const listItems = values.map((value) => `<li>${value}</li>`).join('')
+  const listItems = arr.map((item) => `<li>${item}</li>`).join('')
   return `<ul>${listItems}</ul>`
 }
 
@@ -77,172 +65,164 @@ const listHTML = (values) => {
  * @returns {string} - The replaced value(s) as an HTML list.
  */
 const shareYourDetailsValueReplacement = (value) => {
-  const values = Array.isArray(value) ? value : [value]
-  return listHTML(
-    values.map((value) => {
-      if (shareYourDetailsKeys.includes(value)) {
-        return shareYourDetails[value]
-      }
-      return value
+  let values = Array.isArray(value) ? value : [value]
+  values = values.filter((v) => v) // Remove empty values
+
+  if (values.length === 0) {
+    return 'Do not share my details'
+  }
+
+  return arrayToUnorderedList(
+    Object.entries(shareYourDetails).map(([key, value]) => {
+      return ucFirst(`${!values.includes(key) ? 'do not ' : ''}${value}`)
     })
   )
 }
 
 /**
- * Extracts and formats data for a specific field from the session.
+ * gets all sections that should be included in the cya page
  *
- * @param {string} field - The field to extract data for.
- * @param {object} session - The session data.
- * @param {Array} [canRemove] - The fields that can be removed.
- * @param {Array} [ignoreFields] - The fields to ignore.
- * @returns {Array} - The extracted and formatted field data.
+ * @param {array} sessionpages - keys for the pages present in the session
+ * @returns {object}
  */
-const extractFieldData = (
-  field,
-  session,
-  canRemove = [],
-  ignoreFields = []
-) => {
-  const fieldName = field
-  const fieldPath = `/${field}`
-
-  // Remove ignored fields from session data
-  const parsedSession = Object.entries(session).reduce((acc, [key, value]) => {
-    if (typeof value === 'object' && !Array.isArray(value)) {
-      ignoreFields.forEach((ignoreField) => {
-        if (value && typeof value === 'object' && ignoreField in value) {
-          // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-          delete value[ignoreField]
-        }
-      })
-    }
-    acc[key] = value
-    return acc
-  }, {})
-
-  // Collect all entries that match the field pattern (e.g., /foo, /foo/1, /foo/2)
-  const fieldPattern = new RegExp(`^${fieldPath}(?:/\\d+)?$`)
-  const matchingEntries = Object.entries(parsedSession).filter(([key]) =>
-    fieldPattern.test(key)
-  )
-
-  if (matchingEntries.length === 0) return []
-
-  return matchingEntries.flatMap(([key, value]) => {
-    if (typeof value === 'object' && !Array.isArray(value)) {
-      // Handle multiple entries
-      const values = combineDateFields(value)
-      let removeAdded = false
-      return Object.entries(values).map(([subKey, subValue]) => {
-        const actionItems = []
-        const isShareYourDetails = subKey === 'shareYourDetails'
-        const displayValue = {
-          value: {}
-        }
-        if (isShareYourDetails) {
-          displayValue.value.html = shareYourDetailsValueReplacement(subValue)
-        } else if (
-          subValue &&
-          typeof subValue === 'object' &&
-          'originalname' in subValue
-        ) {
-          displayValue.value.text = subValue.originalname
-        } else {
-          displayValue.value.text = sanitizeText(
-            truncateText(subValue, maxWords)
-          )
-        }
-
-        if (canRemove.includes(key) && !removeAdded) {
-          removeAdded = true
-          actionItems.push({
-            href: `${hrefRoot}/remove${key}`,
-            text: 'Remove',
-            visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey)}`
-          })
-        }
-
-        actionItems.push({
-          href: `${hrefRoot}${key}`,
-          text: 'Change',
-          visuallyHiddenText: `${humanReadableLabel(fieldName)} - ${humanReadableLabel(subKey)}`
-        })
-
-        return {
-          key: { text: replaceAcronyms(humanReadableLabel(subKey), acronyms) },
-          ...displayValue,
-          actions: {
-            items: actionItems
-          }
-        }
-      })
-    }
-
-    const actionItems = []
-
-    if (canRemove.includes(key)) {
-      actionItems.push({
-        href: `${hrefRoot}/remove${key}`,
-        text: 'Remove',
-        visuallyHiddenText: replaceAcronyms(
-          humanReadableLabel(fieldName),
-          acronyms
-        )
-      })
-    }
-
-    actionItems.push({
-      href: `${hrefRoot}${key}`,
-      text: 'Change',
-      visuallyHiddenText: replaceAcronyms(
-        humanReadableLabel(fieldName),
-        acronyms
+const getSections = () => {
+  const sections = {}
+  Object.entries(formPages).forEach(([section, config]) => {
+    if (config.showOnCya) {
+      // gather all pages
+      const pages = Object.keys(currentSession).filter((key) =>
+        key.startsWith(`/${section}`)
       )
-    })
 
-    // Handle single entry
-    return [
-      {
-        key: { text: replaceAcronyms(humanReadableLabel(fieldName), acronyms) },
-        value: { text: sanitizeText(truncateText(value, maxWords)) },
-        actions: {
-          items: actionItems
-        }
+      if (pages.length > 0) {
+        pages
+          .map((entry) => entry.slice(1)) // remove leading '/'
+          .forEach((repeatSection, index) => {
+            sections[repeatSection] = buildSection(
+              repeatSection,
+              config,
+              pages.length > 1 ? index + 1 : null
+            )
+          })
+      } else {
+        sections[section] = buildSection(section, config)
       }
-    ]
+    }
+  })
+  return sections
+}
+
+/**
+ * builds an object for a summary card section in the cya page
+ *
+ * @param {string} sectionPath - string key of the section, includes subpage
+ *                               number e.g. component-code-details/1
+ * @param {object} sectionConfig - config object for the section
+ * @param {number} sectionNumber - subpage number for the section
+ * @returns {object}
+ */
+const buildSection = (sectionPath, sectionConfig, sectionNumber) => {
+  const sectionKey = sectionPath.split('/')[0]
+  const section = {
+    title: labelForSection(sectionKey, sectionNumber),
+    actions: [],
+    answerRows: getAnswersForSection(
+      sectionKey,
+      currentSession[`/${sectionPath}`]
+    )
+  }
+
+  if (sectionConfig.removable && section.answerRows.length > 0) {
+    section.actions.push(link(`remove/${sectionPath}`, 'Remove', section.title))
+  }
+
+  if (section.answerRows.length === 0 && sectionConfig.conditions) {
+    const href = Object.keys(sectionConfig.conditions).at(0)
+
+    section.actions.push(link(href, 'Change', section.title))
+  } else {
+    const linkText = sectionKey.startsWith('component-code')
+        ? 'Review & Change'
+        : 'Change'
+
+    section.actions.push(link(sectionPath, linkText, section.title))
+  }
+
+  return section
+}
+
+const link = (href, text, visuallyHiddenText) => {
+  return {
+    href: `${hrefRoot}${(href.startsWith('/') ? href : `/${href}`)}`,
+    text,
+    visuallyHiddenText
+  }
+}
+
+/**
+ * Gets all the answers from the session for a section
+ *
+ * @param {string} sectionKey - string key of the root section (no subpage)
+ * @param {object} sessionData - user response data from the session
+ * @returns {Array}
+ */
+const getAnswersForSection = (sectionKey, sessionData = {}, hideCode=true) => {
+  let codeLanguageIsOther = false
+  const data = combineDateFields(sessionData)
+
+  return Object.entries(data).map(([questionKey, answerValue]) => {
+    const displayValue = {
+      value: {}
+    }
+
+    // Don't include code language if language is other
+    if (questionKey === 'componentCodeLanguage' && answerValue === 'other') {
+      codeLanguageIsOther = true
+      return null
+    }
+
+    // Only include other language value if `componentCodeLanguage` is set to 'other'
+    if (questionKey === 'componentCodeLanguageOther' && !codeLanguageIsOther) {
+      return null
+    }
+
+    if (questionKey === 'shareYourDetails') {
+      displayValue.value.html = shareYourDetailsValueReplacement(answerValue)
+    } else if (questionKey === 'componentCode' && hideCode) {
+      displayValue.value.text = 'Code provided'
+    } else if (
+      answerValue &&
+      typeof answerValue === 'object' &&
+      'originalname' in answerValue
+    ) {
+      displayValue.value.text = answerValue.originalname
+    } else {
+      displayValue.value.text = sanitizeText(
+        truncateText(answerValue, maxWords)
+      )
+    }
+
+    return {
+      key: { text: labelForField(questionKey, sectionKey) },
+      ...displayValue
+    }
   })
 }
 
 /**
- * Main function that processes the session data and returns formatted answers for govukSummaryList.
+ * Main function that processes the session data and returns formatted answers for govukSummaryCards.
  *
  * @param {object} session - The session data.
- * @returns {object} - The formatted answers.
+ * @returns {Array} - Array of objects to build summary cards.
  */
 const checkYourAnswers = (session) => {
-  const {
-    forms, // The forms to extract answers from
-    canRemoveStatic, // The fields that can be removed via a UI action
-    canRemoveMultiples, // The fields that can be removed via a UI action (where we have dyamically multiple versions)
-    ignoreFields // The fields to ignore i.e. not to display in the check your answers
-  } = checkYourAnswersConfig
+  currentSession = session
+  const sections = getSections()
 
-  // Generate a list of fields that can be removed
-  const canRemove = [
-    ...canRemoveStatic,
-    ...canRemoveMultiples.flatMap((item) =>
-      Array.from({ length: maxAddAnother }, (_, i) => `${item}/${i + 1}`)
-    )
-  ]
-  const answers = answersFromSession(forms, canRemove, session, ignoreFields)
-  if (answers.componentImageRows) {
-    answers.componentDetailsRows = answers.componentDetailsRows || []
-    answers.componentDetailsRows = [
-      ...answers.componentDetailsRows,
-      ...answers.componentImageRows
-    ]
-  }
-  return answers
+  return Object.values(sections)
 }
 
-module.exports = checkYourAnswers
+module.exports = {
+ checkYourAnswers,
+ getAnswersForSection
+}

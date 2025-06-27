@@ -5,15 +5,13 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% extends "base.njk" %}
 {% block content %}
-  {% if backLink %}
-  <div class="app-layout__backlink">
-    {{ govukBackLink({
-      text: "Back",
-      href: backLink
-    }) }}
-  </div>
-  {% endif %}
   <div class="app-layout__content">
+    {% if backLink %}
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    {% endif %}
     {% if errorList %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
@@ -21,14 +19,14 @@
       }) }}
     {% endif %}
     <form method="POST" action="{{ submitUrl }}" data-add-another-container>
-      <span class="govuk-caption-l">Submit new component</span>
+      <span class="govuk-caption-l">Submit a new component</span>
       <h1 class="govuk-heading-xl">Figma design</h1>
       {{ govukInput({
         hint: {
-          text: "Review the sharing permissions for the Figma design file before sending it. Ensure the 'Who has access' and 'What they can do' fields are set so the team can view the file."
+          text: page.fields.figmaLink.hint
         },
         label: {
-          text: "Add the link to where the Figma design file is saved",
+          text: page.fields.figmaLink.label,
           classes: "govuk-label--m"
         },
         id: "figma-link",
@@ -43,10 +41,10 @@
         id: "figmaLink-additional-information",
         maxwords: 250,
         hint: {
-          text: "This may be the password for the file if it's protected or the link expiration date if you set one."
+          text: page.fields.figmaLinkAdditionalInformation.hint
         },
         label: {
-          text: "Additional information about the Figma design file (optional)",
+          text: page.fields.figmaLinkAdditionalInformation.label,
           classes: "govuk-label--m"
         },
         errorMessage: formErrors.figmaLinkAdditionalInformation,
@@ -60,17 +58,7 @@
           text: 'Continue',
           preventDoubleClick: true
         }) }}
-        {% if showAddAnother %}
-
-        {{ govukButton({
-          text: "Add another link",
-          classes: "govuk-button--secondary",
-          name: "addAnother"
-        }) }}
-        {% endif %}
       </div>
     </form>
   </div>
 {% endblock %}
-
-

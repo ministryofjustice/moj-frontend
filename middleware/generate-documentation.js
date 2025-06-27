@@ -1,18 +1,19 @@
 /* eslint-disable prefer-template */
 const moment = require('moment')
 
-const generateMarkdown = (data) => {
+const generateMarkdown = (data, files) => {
   const { '/component-details': details } = data
 
-  const documentationDirectory = 'docs/components/documentation'
+  const documentationDirectory = 'docs/components'
   const componentName = details?.componentName || 'unknown-component'
   const sanitizedComponentName = componentName
     .toLowerCase()
     .replace(/[^a-z0-9-]/g, '-')
+    .replace(/-+/g, '-')
   const filename = `${documentationDirectory}/${sanitizedComponentName}.md`
   const generateLinksSection = (data) => {
     const noLinks =
-      'No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.\n'
+      'No prototypes or design files have been added for this component. If you have used this component in your service and you have a prototype you can share it here.\n'
 
     let content = ''
     let prototypeContent = ''
@@ -52,15 +53,18 @@ ${figma?.figmaLinkAdditionalInformation || ''}
     return content.length ? content : noLinks
   }
 
-  const generateAccessibilityReportSection = (data) => {
+  const generateAccessibilityReportSection = (data, files) => {
     const contentHeading =
       'If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.\n'
     const noContent =
-      'No accessibility findings have been contributed for this component.\n'
+      'No accessibility findings have been added for this component.\n'
     let content = ''
     const externalAudit = data['/add-external-audit']
+    const externalAuditFile = files?.['/add-external-audit']
     const internalAudit = data['/add-internal-audit']
+    const internalAuditFile = files?.['/add-internal-audit']
     const assistiveTech = data['/add-assistive-tech']
+    const assistiveTechReport = files?.['/add-assistive-tech']
 
     const formatDate = (day, month, year) => {
       if (day && month && year) {
@@ -78,10 +82,10 @@ ${figma?.figmaLinkAdditionalInformation || ''}
       if (auditDate) {
         content += `### External audit (${externalAudit.externalOrganisation}) - ${auditDate}\n`
         if (externalAudit.issuesDiscovered) {
-          content += externalAudit.issuesDiscovered + '\n'
+          content += externalAudit.issuesDiscovered + '\n\n'
         }
-        if (externalAudit.accessibilityReport) {
-          content += `[Download the accessibility report](/uploads/${externalAudit.accessibilityReport})\n`
+        if (externalAudit.accessibilityReport && externalAuditFile) {
+          content += `[Download the accessibility report](/${externalAuditFile.path})\n`
         }
       }
     }
@@ -95,10 +99,10 @@ ${figma?.figmaLinkAdditionalInformation || ''}
       if (auditDate) {
         content += `### Internal audit (${internalAudit.internalOrganisation}) - ${auditDate}\n`
         if (internalAudit.issuesDiscovered) {
-          content += internalAudit.issuesDiscovered + '\n'
+          content += internalAudit.issuesDiscovered + '\n\n'
         }
-        if (internalAudit.accessibilityReport) {
-          content += `[Download the accessibility report](/uploads/${internalAudit.accessibilityReport})\n`
+        if (internalAudit.accessibilityReport && internalAuditFile) {
+          content += `[Download the accessibility report](/${internalAuditFile.path})\n`
         }
       }
     }
@@ -112,10 +116,10 @@ ${figma?.figmaLinkAdditionalInformation || ''}
       if (testingDate) {
         content += `### Assistive Technology audit - ${testingDate}\n`
         if (assistiveTech.issuesDiscovered) {
-          content += assistiveTech.issuesDiscovered + '\n'
+          content += assistiveTech.issuesDiscovered + '\n\n'
         }
-        if (assistiveTech.accessibilityReport) {
-          content += `[Download the accessibility report](/uploads/${assistiveTech.accessibilityReport})\n`
+        if (assistiveTech.accessibilityReport && assistiveTechReport) {
+          content += `[Download the accessibility report](/${assistiveTechReport.path})\n`
         }
       }
     }
@@ -125,7 +129,7 @@ ${figma?.figmaLinkAdditionalInformation || ''}
 
   const generateComponentCodeSection = (data) => {
     const noCode =
-      'No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.\n'
+      'No code has been added for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.\n'
 
     let content = ''
     let n = 1
@@ -136,7 +140,7 @@ ${figma?.figmaLinkAdditionalInformation || ''}
 
 ### ${componentCodeDetails?.componentCodeLanguage || ''}
 
-${componentCodeDetails?.componentCodeUsage || ''}
+### ${componentCodeDetails?.componentCodeLanguageOther || ''}
 
 <div class="app-example app-example-borders">
 
@@ -145,7 +149,9 @@ ${componentCodeDetails?.componentCode || ''}
 \`\`\`
 
 </div>
+${componentCodeDetails?.componentCodeUsage || ''}
 `
+
       n++
     }
     return content.length ? content : noCode
@@ -155,6 +161,8 @@ ${componentCodeDetails?.componentCode || ''}
 layout: layouts/tabbed-component.njk
 title: ${componentName}
 type: component
+status: Experimental
+statusDate: ${moment().format('MMMM YYYY')}
 eleventyNavigation:
   key: ${componentName}
   parent: Components
@@ -166,6 +174,10 @@ eleventyNavigation:
 {% tab "Overview" %}
 
 ## Overview
+
+<div class="img-container">
+  ${files?.['/component-image'] ? '![' + componentName + '](/' + files['/component-image'].path + ')' : ''}
+</div>
 
 ${details?.componentOverview || ''}
 
@@ -196,7 +208,7 @@ ${generateComponentCodeSection(data)}
 
 ## Accessibility
 
-${generateAccessibilityReportSection(data)}
+${generateAccessibilityReportSection(data, files)}
 
 {% endtab %}
 
