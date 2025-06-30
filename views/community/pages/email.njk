@@ -2,6 +2,7 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "moj/components/alert/macro.njk" import mojAlert %}
 {% extends "base.njk" %}
 {% block content %}
   <div class="app-layout__content">
@@ -17,21 +18,36 @@
         errorList: errorList
       }) }}
     {% endif %}
+    {% if sessionFlash.text %}
+      {{ mojAlert({
+          variant: sessionFlash.type,
+          title: sessionFlash.title,
+          text: sessionFlash.text,
+          showTitleAsHeading: true,
+          role: "alert"
+      })}}
+    {% endif %}
     <form method="POST" action="{{ submitUrl }}">
     <span class="govuk-caption-l">Submit a component</span>
-      <h1 class="govuk-heading-xl">{{page.title}}</h1>
-    <p class="govuk-body">At the moment, contributions to the MoJ Design System are only accepted from MoJ staff.</p>
-    <p class="govuk-body">Enter your email address to receive a link to verify that you work for the MoJ before you continue.</p>
+      <h1 class="govuk-heading-xl" id="page-title">{{page.title}}</h1>
+    <p class="govuk-body">You need to work for MoJ to submit a new component to the Design System.</p>
           {{ govukInput({
-          label: {
-              text: page.fields.emailAddress.label,
-              classes: "govuk-label--m"
-          },
+
           id: "email-address",
           name: "emailAddress",
+          hint: {
+           text: page.fields.emailAddress.hint
+          },
           errorMessage: formErrors.emailAddress,
-          value: formData.emailAddress
+          value: formData.emailAddress,
+          attributes: {
+            'aria-labelledby': 'page-title'
+            },
+            formGroup: {
+            classes: 'govuk-!-margin-top-0'
+            }
       }) }}
+      <p class="govuk-body">You’ll be sent an email with a verification link. </p>
         <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
 
       <div class="moj-button-action">

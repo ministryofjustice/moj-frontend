@@ -21,15 +21,18 @@ const {
   getFormSummaryListForRemove,
   removeFromSession,
   sessionStarted,
+  sessionVerified,
   validateFormDataFileUpload,
   saveFileToRedis,
-  clearSkippedPageData
+  clearSkippedPageData,
+  checkEmailDomain
 } = require('../middleware/component-session')
 const { generateMarkdown } = require('../middleware/generate-documentation')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
 const {
   sendSubmissionEmail,
-  sendPrEmail
+  sendPrEmail,
+  sendVerificationEmail
 } = require('../middleware/notify-email')
 const {
   processSubmissionData,
@@ -41,6 +44,7 @@ const upload = multer({
   limits: { fileSize: 10 * 1024 * 1024 } // 10MB
 })
 const router = express.Router()
+const checkYourAnswersPath = 'check-your-answers'
 
 const validatePageParams = (req, res, next) => {
   const validPages = Object.keys(COMPONENT_FORM_PAGES)
@@ -63,8 +67,6 @@ const validatePageParams = (req, res, next) => {
     next(error)
   }
 }
-
-const checkYourAnswersPath = 'check-your-answers'
 
 const setCsrfToken = (req, res, next) => {
   if (req?.session) {
@@ -144,53 +146,141 @@ router.get('/confirmation', (req, res) => {
   })
 })
 
-router.get('/email/verify/:token',
-  // we may not have a session
-  // if no session - token expored
-  // if session check token
-  //
-  (req,res) => {
-
+router.get('/email/verify/:token', (req, res) => {
+  if (!req?.session?.emailToken) {
+    // session expired
+    req.session.sessionFlash = {
+      type: 'error',
+      title: 'Email verification link expired',
+      text: `Enter your email address below to receive a new verification link.`
+    }
+    res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email`)
+  } else {
+    const tokenInSession = req.session.emailToken
+    const tokenFromParams = req.params.token
+    if (tokenFromParams === tokenInSession) {
+      // verified
+      req.session.verified = true
+      req.session.sessionFlash = {
+        type: 'success',
+        title: 'Your email address has been verified',
+        text: 'You can now submit a new component'
+      }
+      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/component-details`)
+    } else {
+      // token invalid
+      req.session.sessionFlash = {
+        type: 'error',
+        title: 'Email verification link invalid',
+        text: `Enter your email address below to receive a new verification link.`
+      }
+      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email`)
+    }
+  }
 })
 
-router.all('*', sessionStarted) // Check that we have a session in progress
+router.get('/email', (req, res) => {
+  req.session.started = true
+
+  if (req.query.reset === 'true') {
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+    delete req.session['/email']
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+    delete req.session.emailToken
+  }
+
+  res.render('email', {
+    page: COMPONENT_FORM_PAGES.email,
+    submitUrl: req.originalUrl,
+    csrfToken: req?.session?.csrfToken
+  })
+})
+
+// For all following routed we must have a session in progress
+router.all('*', sessionStarted)
 
 router.post('/start', verifyCsrf, (req, res) => {
   res.redirect('/contribute/add-new-component/email')
 })
 
-router.get('/email', (req,res) => {
-  res.render('email', {
-    page: COMPONENT_FORM_PAGES.email,
-    csrfToken: req?.session?.csrfToken
-  })
-})
-
-router.post('/email',  xss(),
+router.post(
+  '/email',
+  xss(),
   verifyCsrf,
   validateFormData,
-  // check email domain
-  // if valid
-    saveSession,
-    //  send email
-  // else
-   //  redirect
+  checkEmailDomain,
   (req, res, next) => {
-    res.redirect('/contribute/add-new-component/check-your-email')
-  })
+    if (req.emailDomainAllowed) {
+      saveSession(req, res, next)
+    } else {
+      res.redirect('/contribute/add-new-component/email/not-allowed')
+    }
+  },
+  // generate token
+  (req, res, next) => {
+    req.session.emailToken = crypto.randomBytes(32).toString('hex')
+    next()
+  },
+  // send email
+  async (req, res, next) => {
+    if (req.emailDomainAllowed) {
+      res.redirect('/contribute/add-new-component/email/check')
+      const token = req?.session?.emailToken
+      const email = req?.session?.['/email']?.emailAddress
+      if (token && email) {
+        try {
+          await sendVerificationEmail(email, token)
+        } catch (error) {
+          console.error('Error sending verification email')
+        }
+      }
+    }
+  }
+)
 
-router.get('/check-your-email', (req,res) => {
-  console.log(req.session)
-  res.render('check-your-email', {
+router.get('/email/check', (req, res) => {
+  res.render('email-check', {
     page: {
       title: 'Check your email',
       email: req?.session?.['/email']?.emailAddress
-    },
-    csrfToken: req?.session?.csrfToken
+    }
   })
 })
 
+router.get('/email/resend', (req, res) => {
+  res.render('email-resend', {
+    submitUrl: req.originalUrl,
+    csrfToken: req?.session?.csrfToken,
+    page: {
+      title: 'If you’re having problems with the email',
+      email: req?.session?.['/email']?.emailAddress
+    }
+  })
+})
 
+router.post('/email/resend', xss(), verifyCsrf, async (req, res, next) => {
+    res.redirect('/contribute/add-new-component/email/check')
+    const token = req?.session?.emailToken
+    const email = req?.session?.['/email']?.emailAddress
+    if (token && email) {
+      try {
+        await sendVerificationEmail(email, token)
+      } catch (error) {
+        console.error('Error sending verification email')
+      }
+    }
+})
+
+router.get('/email/not-allowed', (req, res) => {
+  res.render('email-not-allowed', {
+    page: {
+      title: 'You cannot submit a component'
+    }
+  })
+})
+
+// For all following routed we must have verified an email address
+router.all('*', sessionVerified)
 
 // Remove form page
 router.get(
@@ -265,8 +355,6 @@ router.get(
     })
   }
 )
-
-
 
 // "Check Your Answers" form submission
 router.post(

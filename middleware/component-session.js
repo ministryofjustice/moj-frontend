@@ -39,16 +39,19 @@ const getPageData = (req) => {
   return formPages[pageData]
 }
 
-const checkEmail = (req, res, next) => {
+const checkEmailDomain = (req, res, next) => {
   let allowed = false
-  const email = req?.session?.['/email']?.emailAddress
+  const email = req?.body?.emailAddress
+  console.log({email})
   if (email) {
     const domain = email.split('@').at(-1)
+    console.log({domain})
     if (allowedDomains.includes(domain)) {
       allowed = true
     }
   }
-  req.emailAllowed = allowed
+  console.log({allowed})
+  req.emailDomainAllowed = allowed
   next()
 }
 
@@ -94,7 +97,7 @@ const clearSkippedPageData = (req, res, next) => {
   // Delete page and subpage data
   for (const sessionPage of Object.keys(req.session)) {
     if (
-      !['started', 'cookie', 'csrfToken', 'checkYourAnswers'].includes(
+      !['started', 'cookie', 'csrfToken', 'checkYourAnswers', 'emailToken','emailDomainAllowed','verified'].includes(
         sessionPage
       )
     ) {
@@ -204,6 +207,7 @@ const validateFormData = (req, res, next) => {
 }
 
 const saveSession = (req, res, next) => {
+  console.log('saving session')
   if (!req.session) req.session = {}
 
   const { _csrf, ...body } = req.body
@@ -349,6 +353,14 @@ const sessionStarted = (req, res, next) => {
   next()
 }
 
+const sessionVerified = (req, res, next) => {
+  if (!req?.session?.verified) {
+    console.error('No verified email for session')
+    return res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/start`)
+  }
+  next()
+}
+
 const validateComponentImagePage = (req, res, next) => {
   if (req.params.page !== 'component-image') {
     const error = new ApplicationError('Invalid page', 400)
@@ -401,9 +413,10 @@ module.exports = {
   getFormSummaryListForRemove,
   removeFromSession,
   sessionStarted,
+  sessionVerified,
   validateFormDataFileUpload,
   validateComponentImagePage,
   saveFileToRedis,
   clearSkippedPageData,
-  checkEmail
+  checkEmailDomain
 }

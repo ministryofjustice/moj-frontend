@@ -5,12 +5,14 @@ const config = {
   GITHUB_REPO_NAME: process.env.GITHUB_REPO_NAME || 'your-default-repo-name',
   NOTIFY_PR_TEMPLATE: process.env.NOTIFY_PR_TEMPLATE || '',
   NOTIFY_SUBMISSION_TEMPLATE: process.env.NOTIFY_SUBMISSION_TEMPLATE || '',
+  NOTIFY_VERIFICATION_TEMPLATE: process.env.NOTIFY_VERIFICATION_TEMPLATE || '',
   NOTIFY_EMAIL: process.env.NOTIFY_EMAIL || 'your-email',
   NOTIFY_TOKEN: process.env.NOTIFY_TOKEN || 'your-default-repo-token',
   NOTIFY_EMAIL_RETRY_MS:
     parseInt(process.env.NOTIFY_EMAIL_RETRY_MS, 10) || 5000,
   NOTIFY_EMAIL_MAX_RETRIES:
     parseInt(process.env.NOTIFY_EMAIL_MAX_RETRIES, 10) || 5,
+  APP_URL: process.env.APP_URL,
   APP_PORT: parseInt(process.env.APP_PORT, 10) || 3001,
   REDIS_URL: process.env.REDIS_URL,
   REDIS_AUTH_TOKEN: process.env.REDIS_AUTH_TOKEN,
@@ -20,10 +22,11 @@ const config = {
   ALLOWED_EMAIL_DOMAINS: ['justice.gov.uk'],
   COMPONENT_FORM_PAGES: {
     'email': {
-      title: 'Verify your email address',
+      title: 'Enter your email address',
       fields: {
         emailAddress: {
-          label: 'Email address'
+          label: 'Email address',
+          hint: 'Enter an email address ending @justice.gov.uk'
         }
       },
       showOnCya: false,

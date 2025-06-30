@@ -6,7 +6,7 @@ const schema = Joi.object({
     .required()
     .messages({
       'string.email':
-        'Enter an email address in the correct format, like name@example.com',
+        'Enter an email address ending @justice.gov.uk',
       'string.empty': 'Enter your email address',
       'any.required': 'Enter your email address'
     })
