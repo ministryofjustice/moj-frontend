@@ -3,12 +3,12 @@ layout: layouts/content.njk
 subsection: Ethics
 title: Ethical principles
 showHelp: true
+lede: Ethical design principles are a set of ideals to guide how MoJ services are designed and built over time.
 eleventyNavigation:
   key: Ethical principles
   parent: Ethics
   order: 20
   excerpt: "These 7 ethical principles are a set of ideals to guide how MoJ services are designed and built over time."
-  lede: "Ethical design principles are a set of ideals to guide how MoJ services are designed and built over time."
 ---
 It may not be possible to apply all of these principles, but you can use them as inspiration to improve how you work.
 

@@ -3,12 +3,12 @@ layout: layouts/content.njk
 subsection: Prototyping
 showHelp: true
 title: Choosing a prototyping method
+lede: Learn how to choose a prototyping method based on your needs.
 eleventyNavigation:
   key: Choosing a prototyping method
   parent: Prototyping
   order: 10
   excerpt: "This guide explains how to choose a prototyping tool."
-  lede: "Learn how to choose a prototyping method based on your needs."
 ---
 
 ## Overview

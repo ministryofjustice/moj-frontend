@@ -4,12 +4,12 @@ subsection: Prototyping
 showHelp: true
 title: Setting up coded prototypes
 redirect_from: /get-started/prototyping
+lede: Learn how to create prototypes using the MoJ Design System and GOV.UK Prototype Kit.
 eleventyNavigation:
   key: Setting up coded prototypes
   parent: Prototyping
   order: 20
   excerpt: "This guide explains how to create prototypes using the MoJ Design System and GOV.UK Prototype Kit."
-  lede: "Learn how to create prototypes using the MoJ Design System and GOV.UK Prototype Kit."
 ---
 
 ## Use a template from Cloud Platform

@@ -6,12 +6,12 @@ title: Import MoJ Frontend JavaScript
 redirect_from:
   - /get-started/setting-up-javascript
   - /production/setting-up-javascript
+lede: Set up JavaScript in your service to use the interactive features of some components.
 eleventyNavigation:
   key: Import JavaScript
   parent: Production
   order: 70
   excerpt: "Several MoJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript."
-  lede: "Set up JavaScript in your service to use the interactive features of some components."
 ---
 
 Several MoJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript.

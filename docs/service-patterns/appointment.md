@@ -1,6 +1,7 @@
 ---
 layout: layouts/content.njk
 tabs: true
+lede: Get help designing 'appointments' journeys in a digital service.
 title: "‘Appointments’ service pattern proof of concept"
 ---
 {% tabs "Contents" %}

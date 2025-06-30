@@ -3,12 +3,12 @@ layout: layouts/content.njk
 subsection: Ethics
 title: Designing ethical services
 showHelp: true
+lede: "Learn how you can reduce, mitigate or remove harm by designing and developing responsibly."
 eleventyNavigation:
   key: Designing ethical services
   parent: Ethics
   order: 10
   excerpt: "How and why you should consider ethics - and what delivery teams should do."
-  lede: "Learn how you can reduce, mitigate or remove harm by designing and developing responsibly."
 ---
 
 ## How to consider ethics

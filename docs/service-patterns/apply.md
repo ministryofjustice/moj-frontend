@@ -1,6 +1,7 @@
 ---
 layout: layouts/content.njk
 tabs: true
+lede: Get help designing 'apply' journeys in a digital service.
 title: ‘Apply’ service pattern proof of concept
 ---
 

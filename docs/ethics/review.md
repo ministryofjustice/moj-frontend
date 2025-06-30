@@ -3,13 +3,12 @@ layout: layouts/content.njk
 subsection: Ethics
 title: Doing an ethics review
 showHelp: true
+lede: Learn how and when to do an ethics review.
 eleventyNavigation:
   key: Doing an ethics review
   parent: Ethics
   order: 30
-  excerpt: "How and when to do an ethics review."
-  lede: "Learn how and when to do an ethics review."
-  
+  excerpt: "How and when to do an ethics review."  
 ---
 
 ## Reasons to do an ethics review

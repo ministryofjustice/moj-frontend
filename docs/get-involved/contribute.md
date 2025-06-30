@@ -4,12 +4,12 @@ subsection: Get involved
 title: Propose a new component or pattern
 redirect_from: /community/contribute
 showHelp: true
+lede: Learn how to add a component or pattern to the MoJ Design System. This is open to everyone.
 eleventyNavigation:
   key: Propose a new component or pattern
   parent: Get involved
   order: 10
   excerpt: "Follow these 3 steps to propose a new building block. Anyone can do this."
-  lede: "Learn how to add a component or pattern to the MoJ Design System. This is open to everyone."
 ---
 
 ## Step 1: Check the contribution criteria

@@ -3,6 +3,7 @@ layout: layouts/content.njk
 subsection: Setup for production
 showHelp: true
 title: Import MoJ Frontend CSS
+lede: Learn how to use the CSS from MoJ Frontend and GOV.UK Frontend.
 eleventyNavigation:
   key: Import CSS
   parent: Setup for production

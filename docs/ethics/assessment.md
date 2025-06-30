@@ -3,12 +3,12 @@ layout: layouts/content.njk
 subsection: Ethics
 title: Preparing for a service assessment
 showHelp: true
+lede: As part of a service assessment, you’ll be expected to show how you’ve considered ethics. Learn what to do before and during the assessment.
 eleventyNavigation:
   key: Preparing for a service assessment
   parent: Ethics
   order: 40
   excerpt: "As part of your service assessment, you’ll be expected to show how you’ve considered ethics. Learn what to do before and during the assessment."
-  lede: "As part of your service assessment, you’ll be expected to show how you’ve considered ethics. Learn what to do before and during the assessment."
 ---
 
 ## Before your assessment

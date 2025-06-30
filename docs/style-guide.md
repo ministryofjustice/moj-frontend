@@ -3,12 +3,12 @@ layout: layouts/content.njk
 subsection: Guidance
 title: Content style guide
 permalink: /content-standards/style-guide/
+lede: This content style guide applies to services and guidance at MoJ. Use it alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">GOV.UK style guide</a>.
 eleventyNavigation:
   key: Content style guide
   parent: Guidance
   order: 10
   excerpt: "The MoJ A to Z content style guide covering style, spelling and grammar conventions."
-lede: "This content style guide applies to services and guidance at MoJ. Use it alongside the <a href='https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style'>GOV.UK style guide</a>."
 ---
 
 <p class="govuk-!-margin-bottom-0">

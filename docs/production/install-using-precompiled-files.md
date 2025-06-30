@@ -6,12 +6,12 @@ title: Try MoJ Frontend using precompiled files
 redirect_from:
   - /get-started/installing-compiled
   - /production/installing-compiled
+lede: If your project does not use npm (or you want to try out MoJ Frontend without installing it through npm) download and include compiled stylesheets.
 eleventyNavigation:
   key: Try MoJ Frontend using precompiled files
   parent: Production
   order: 30
   excerpt: "If your project does not use npm (or you want to try out MoJ Frontend without installing it through npm) download and include compiled stylesheets."
-  lede: "If your project does not use npm (or you want to try out MoJ Frontend without installing it through npm) download and include compiled stylesheets"
 ---
 
 ## Overview

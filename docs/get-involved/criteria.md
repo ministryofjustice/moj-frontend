@@ -4,12 +4,12 @@ subsection: Get involved
 title: Contribution criteria
 redirect_from: /community/criteria
 showHelp: true
+lede: Find out about the criteria for a building block to be added to the MoJ Design System.
 eleventyNavigation:
   key: Contribution criteria
   parent: Get involved
   order: 20
   excerpt: "For a contribution to be considered for the Design System, the style, component or pattern needs to be useful and unique."
-  lede: "Find out about the criteria for a building block to be added to the MoJ Design System."
 ---
 
 ## Criteria
