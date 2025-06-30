@@ -4,7 +4,7 @@ subsection: Get involved
 title: Contribution criteria
 redirect_from: /community/criteria
 showHelp: true
-lede: Find out about the criteria for a building block to be added to the MoJ Design System.
+lede: Find out about the criteria to add a building block to the MoJ Design System.
 eleventyNavigation:
   key: Contribution criteria
   parent: Get involved
