@@ -1,0 +1,20 @@
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+{% extends "base.njk" %}
+{% block content %}
+  <div class="app-layout__content">
+    {% if backLink %}
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    {% endif %}
+    <span class="govuk-caption-l">Submit a component</span>
+    <h1 class="govuk-heading-xl">{{ page.title }}</h1>
+    <p class="govuk-body">We've sent an email to: <strong>{{page.email}}</strong>.</p>
+    <p class="govuk-body">Select the link in the email to continue submitting a component. The link will open in a new window, so you can close this one.</p>
+    {% call govukDetails({ summaryText: "Problems with the email?" }) %}
+    We can <a href="/contribute/add-new-component/email/resend">send the email again</a> or you can <a href="/contribute/add-new-component/email?reset=true">use a different email address</a>.
+    {% endcall %}
+</div>
+{% endblock %}

@@ -3,6 +3,7 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "moj/components/alert/macro.njk" import mojAlert %}
 {% extends "base.njk" %}
 {% block content %}
   <div class="app-layout__content">
@@ -18,6 +19,15 @@
             errorList: errorList
         }) }}
         {% endif %}
+        {% if sessionFlash.text %}
+      {{ mojAlert({
+          variant: sessionFlash.type,
+          title: sessionFlash.title,
+          text: sessionFlash.text,
+          showTitleAsHeading: true,
+          role: "alert"
+      })}}
+    {% endif %}
         <form method="post" action="{{ submitUrl }}">
           <span class="govuk-caption-l">Submit a new component</span>
           <h1 class="govuk-heading-xl">Add details about the component</h1>
