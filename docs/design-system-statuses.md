@@ -2,12 +2,12 @@
 layout: layouts/content.njk
 subsection: About the Design System
 title: Building block statuses
+lede: Every building block on the MoJ Design System has a status. Learn more about what this means and how to use them.
 eleventyNavigation:
   key: Building block statuses
   parent: About the Design System
   order: 20
   excerpt: "Building block statuses."
-  lede: "Every building block on the MoJ Design System has a status. Learn more about what this means and how to use them."
 ---
 
 ## Overview
