@@ -6,7 +6,8 @@ const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ADD_NEW_COMPONENT_ROUTE,
   ALLOWED_EMAIL_DOMAINS: allowedDomains,
-  COMPONENT_FORM_PAGES: formPages
+  COMPONENT_FORM_PAGES: formPages,
+  MESSAGES
 } = require('../config')
 const { getAnswersForSection } = require('../helpers/check-your-answers')
 const ApplicationError = require('../helpers/application-error')
@@ -316,10 +317,7 @@ const removeFromSession = (req, res, next) => {
     const filename = req.session[url]?.componentImage?.originalname
     console.log(filename)
     if (filename) {
-      req.session.sessionFlash = {
-        type: 'success',
-        message: `File ‘${filename}’ has been removed.`
-      }
+      req.session.sessionFlash = MESSAGES.componentImageRemoved(filename)
     }
   }
 
@@ -402,6 +400,37 @@ const saveFileToRedis = async (req, res, next) => {
   next()
 }
 
+const validatePageParams = (req, res, next) => {
+  const validPages = Object.keys(formPages)
+  let valid = true
+
+  if (req.params.page) {
+    // if page is present it must be in allowlist of configured pages
+    valid = validPages.includes(req.params.page)
+  }
+
+  if (req.params.subpage) {
+    // if subpage is present it must always be a number
+    valid = /^\d+$/.test(req.params.subpage)
+  }
+
+  if (valid) {
+    next()
+  } else {
+    const error = new ApplicationError('Page not found', 404)
+    next(error)
+  }
+}
+
+const setCsrfToken = (req, res, next) => {
+  if (req?.session) {
+    if (!req?.session?.csrfToken) {
+      req.session.csrfToken = crypto.randomBytes(32).toString('hex')
+    }
+  }
+  next()
+}
+
 module.exports = {
   setNextPage,
   validateFormData,
@@ -418,5 +447,7 @@ module.exports = {
   validateComponentImagePage,
   saveFileToRedis,
   clearSkippedPageData,
-  checkEmailDomain
+  checkEmailDomain,
+  validatePageParams,
+  setCsrfToken
 }

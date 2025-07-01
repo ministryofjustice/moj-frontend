@@ -107,9 +107,10 @@ app.use(xss())
 app.use('/contribute/add-new-component', addComponentRoutes)
 
 // Fallback route to 404
-app.get('*', (req, res, next) => {
-  const error = new ApplicationError('Page not found', 404)
-  next(error)
+app.use((req, res) => {
+      res.status(404).render('404', {
+      title: 'Page not found'
+    })
 })
 
 // The error handler must be registered before any other error middleware and after all controllers

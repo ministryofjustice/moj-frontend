@@ -245,6 +245,35 @@ const config = {
   SHARE_YOUR_DETAILS: {
     addNameToComponentPage: 'add my name to the component page',
     addTeamNameToComponentPage: 'add my team name to the component page'
+  },
+  MESSAGES: {
+    emailVerificationExpired: {
+      type: 'error',
+      title: 'Email verification link expired',
+      text: `Enter your email address below to receive a new verification link.`
+    },
+    emailVerificationSuccess: {
+        type: 'success',
+        title: 'Your email address has been verified',
+        text: 'You can now submit a new component'
+      },
+    emailVerificationInvalidToken: {
+        type: 'error',
+        title: 'Email verification link invalid',
+        text: `Enter your email address below to receive a new verification link.`
+      },
+    componentImageUploaded: (filename) => {
+      return {
+        type: 'success',
+        message: `File ‘${filename}’ has been uploaded.`
+      }
+    },
+    componentImageRemoved: (filename) => {
+      return {
+        type: 'success',
+        message: `File ‘${filename}’ has been removed.`
+      }
+    }
   }
 }
 
