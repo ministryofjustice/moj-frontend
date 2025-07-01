@@ -13,13 +13,14 @@
     <span class="govuk-caption-l">Submit a component</span>
     <h1 class="govuk-heading-xl">{{ page.title }}</h1>
     <ol>
-      <li>Check that you entered your email address correctly and that it ends justice.gov.uk</li>
-      <li>Check your junk or spam folder</li>
+      <li>Check that you entered your email address correctly: <strong>{{page.email}}</strong></li>
+      <li>Check your junk or spam folder.</li>
+      <li>Wait 5 minutes for it arrive.</li>
     </ol>
     <p class="govuk-body">If you’ve still not received the verification email after step 2 you can either:</p>
     <ul>
       <li>resend the verification email  </li>
-      <li>enter a different email address, for example if the original ended @digital.justice.gov.uk  </li>
+      <li><a href="/contribute/add-new-component/email?reset=true">enter a different email address</a></li>
     </ul>
 
     <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
