@@ -12,7 +12,7 @@ const {
 } = require('../config')
 const notifyClient = new NotifyClient(NOTIFY_TOKEN)
 
-const emailAddress = NOTIFY_EMAIL
+const dsTeamEmail = NOTIFY_EMAIL
 
 const sendEmail = async (
   templateId,
@@ -25,9 +25,9 @@ const sendEmail = async (
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       console.log(
-        `Sending email to ${emailAddress} using template ${templateId}, attempt ${attempt}`
+        `Sending email to ${email} using template ${templateId}, attempt ${attempt}`
       )
-      const response = await notifyClient.sendEmail(templateId, emailAddress, {
+      const response = await notifyClient.sendEmail(templateId, email, {
         personalisation
       })
       console.log('Email sent successfully.')
@@ -57,7 +57,7 @@ const sendSubmissionEmail = async (fileBuffer = null, markdown = null) => {
     personalisation.markdown = markdown
   }
 
-  return sendEmail(NOTIFY_SUBMISSION_TEMPLATE, NOTIFY_EMAIL, personalisation)
+  return sendEmail(NOTIFY_SUBMISSION_TEMPLATE, dsTeamEmail, personalisation)
 }
 
 const sendPrEmail = async ({ url, number }) => {
@@ -70,7 +70,7 @@ const sendPrEmail = async ({ url, number }) => {
     personalisation.preview_link = `https://moj-frontend-pr-${number}.apps.live.cloud-platform.service.justice.gov.uk`
   }
 
-  return sendEmail(NOTIFY_PR_TEMPLATE, NOTIFY_EMAIL, personalisation)
+  return sendEmail(NOTIFY_PR_TEMPLATE, dsTeamEmail, personalisation)
 }
 
 const sendVerificationEmail = async (email, token) => {
