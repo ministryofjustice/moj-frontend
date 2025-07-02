@@ -1,5 +1,7 @@
 const getPrTitleAndDescription = (session) => {
-  const title = session?.['/component-details']?.componentName || ''
+  const componentName =
+    session?.['/component-details']?.componentName || 'Unnamed component'
+  const title = `docs(contribution): ${componentName}`
   const description = session?.['/component-details']?.componentOverview || ''
   return { title, description }
 }
