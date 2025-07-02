@@ -9,7 +9,8 @@ const {
   SENTRY_DSN
 } = require('./config')
 
-if (ENV === 'production') {
+const isDev = ENV === 'development'
+if (!isDev) {
   Sentry.init({
     dsn: SENTRY_DSN,
     sendDefaultPii: false,
@@ -35,7 +36,6 @@ const rev = require('./filters/rev')
 const addComponentRoutes = require('./routes/add-component')
 
 const app = express()
-const isDev = ENV === 'development'
 
 if (!isDev) {
   // Only trust single proxy (Nginx)
