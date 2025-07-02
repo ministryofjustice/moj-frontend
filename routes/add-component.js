@@ -52,6 +52,11 @@ const upload = multer({
 const router = express.Router()
 const checkYourAnswersPath = 'check-your-answers'
 
+router.get('/error', (req,res, next) => {
+  const error = new ApplicationError('ohno')
+  next(error)
+})
+
 router.all('*', setCsrfToken)
 
 // TODO:  Why is this a get * ? Can it not just be set in the get /checkYourAnswersPath route below?

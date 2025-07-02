@@ -1,11 +1,22 @@
 /* eslint import/order: "off" */
 /* eslint n/no-unpublished-require: "off" */
 const Sentry = require('@sentry/node')
+const {
+  APP_PORT,
+  ENV,
+  REDIS_URL,
+  SESSION_SECRET,
+  SENTRY_DSN
+} = require('./config')
 
-Sentry.init({
-  dsn: 'https://304866cea16570b04e2090537ae9ac77@o345774.ingest.us.sentry.io/4509252675371008',
-  sendDefaultPii: true
-})
+const isDev = ENV === 'development'
+if (!isDev) {
+  Sentry.init({
+    dsn: SENTRY_DSN,
+    sendDefaultPii: false,
+    environment: ENV
+  })
+}
 
 const path = require('path')
 const redisClient = require('./helpers/redis-client')
@@ -28,7 +39,6 @@ const { APP_PORT, ENV, REDIS_URL, SESSION_SECRET } = require('./config')
 const addComponentRoutes = require('./routes/add-component')
 
 const app = express()
-const isDev = ENV === 'development'
 
 if (!isDev) {
   // Only trust single proxy (Nginx)
@@ -110,9 +120,9 @@ app.use('/contribute/add-new-component', addComponentRoutes)
 
 // Fallback route to 404
 app.use((req, res) => {
-      res.status(404).render('404', {
-      title: 'Page not found'
-    })
+  res.status(404).render('404', {
+    title: 'Page not found'
+  })
 })
 
 // The error handler must be registered before any other error middleware and after all controllers
