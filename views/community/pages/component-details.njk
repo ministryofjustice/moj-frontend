@@ -1,81 +1,61 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% from "moj/components/alert/macro.njk" import mojAlert %}
-{% extends "base.njk" %}
-{% block content %}
-  <div class="app-layout__content">
-    {% if backLink %}
-      {{ govukBackLink({
-        text: "Back",
-        href: backLink
+
+{% extends "contributions.njk" %}
+
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+
+    {{ pageTitle({
+      caption: 'Submit a new component',
+      title: 'Add details about the component'
+    })}}
+
+    {{ govukInput({
+          label: {
+              text: page.fields.componentName.label,
+              classes: "govuk-label--m"
+          },
+          id: "component-name",
+          name: "componentName",
+          errorMessage: formErrors.componentName,
+          value: formData.componentName
       }) }}
-    {% endif %}
-        {% if errorList %}
-        {{ govukErrorSummary({
-            titleText: "There is a problem",
-            errorList: errorList
-        }) }}
-        {% endif %}
-        {% if sessionFlash.text %}
-      {{ mojAlert({
-          variant: sessionFlash.type,
-          title: sessionFlash.title,
-          text: sessionFlash.text,
-          showTitleAsHeading: true,
-          role: "alert"
-      })}}
-    {% endif %}
-        <form method="post" action="{{ submitUrl }}">
-          <span class="govuk-caption-l">Submit a new component</span>
-          <h1 class="govuk-heading-xl">Add details about the component</h1>
 
-          {{ govukInput({
-                label: {
-                    text: page.fields.componentName.label,
-                    classes: "govuk-label--m"
-                },
-                id: "component-name",
-                name: "componentName",
-                errorMessage: formErrors.componentName,
-                value: formData.componentName
-            }) }}
+      {{ govukCharacterCount({
+          name: "componentOverview",
+          id: "component-overview",
+          maxwords: 250,
+          label: {
+              text: page.fields.componentOverview.label,
+              classes: "govuk-label--m"
+          },
+          errorMessage: formErrors.componentOverview,
+          value: formData.componentOverview
+      }) }}
 
-            {{ govukCharacterCount({
-                name: "componentOverview",
-                id: "component-overview",
-                maxwords: 250,
-                label: {
-                    text: page.fields.componentOverview.label,
-                    classes: "govuk-label--m"
-                },
-                errorMessage: formErrors.componentOverview,
-                value: formData.componentOverview
-            }) }}
+      {{ govukCharacterCount({
+          name: "howIsTheComponentUsed",
+          id: "how-is-the-component-used",
+          maxwords: 250,
+          label: {
+              text: page.fields.howIsTheComponentUsed.label,
+              classes: "govuk-label--m"
+          },
 
-            {{ govukCharacterCount({
-                name: "howIsTheComponentUsed",
-                id: "how-is-the-component-used",
-                maxwords: 250,
-                label: {
-                    text: page.fields.howIsTheComponentUsed.label,
-                    classes: "govuk-label--m"
-                },
+          errorMessage: formErrors.howIsTheComponentUsed,
+          value: formData.howIsTheComponentUsed
+      }) }}
 
-                errorMessage: formErrors.howIsTheComponentUsed,
-                value: formData.howIsTheComponentUsed
-            }) }}
-
-          <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
-
-          <div class="govuk-button-group moj-button-action">
-            {{ govukButton({
-              text: 'Continue',
-              preventDoubleClick: true
-            }) }}
-        </form>
-    </div>
+      <div class="govuk-button-group moj-button-action">
+        {{ govukButton({
+          text: 'Continue',
+          preventDoubleClick: true
+          }) }}
+      </div>
+  {% endcall %}
 
 {% endblock %}

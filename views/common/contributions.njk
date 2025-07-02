@@ -1,0 +1,42 @@
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "moj/components/alert/macro.njk" import mojAlert %}{% extends "base.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "macros/page-title.njk" import pageTitle %}
+{% from "macros/form.njk" import form %}
+
+{% block beforeContent %}
+  <div class="app-layout__back-link">
+    {% if backLink %}
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="app-layout__content">
+    {% if errorList %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+
+    {% if sessionFlash.text %}
+      {{ mojAlert({
+          variant: sessionFlash.type,
+          title: sessionFlash.title,
+          text: sessionFlash.text,
+          showTitleAsHeading: true,
+          role: "alert"
+      })}}
+    {% endif %}
+
+  {% block form %}{% endblock %}
+
+</div>
+
+{% endblock %}

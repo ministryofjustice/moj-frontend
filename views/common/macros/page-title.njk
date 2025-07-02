@@ -1,0 +1,6 @@
+{% macro pageTitle(params)%}
+  {% if params.title %}
+    <span class="govuk-caption-l">{{ params.caption }}</span>
+  {% endif %}
+  <h1 class="govuk-heading-xl">{{ params.title }}</h1>
+{% endmacro %}

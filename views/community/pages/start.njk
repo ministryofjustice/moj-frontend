@@ -1,56 +1,47 @@
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% extends "base.njk" %}
+{% extends "contributions.njk" %}
 
+{% block form %}
+  {{ pageTitle({
+    caption: 'Submit a new component',
+    title: 'Before you start'
+  })}}
 
-{% block content %}
-  <div class="app-layout__content">
-    <span class="govuk-caption-l">Submit a new component</span>
-    <h1 class="govuk-heading-xl">Before you start</h1>
+  <p class="govuk-body">You can now add a component to the MoJ Design System. You might want to do this to:</p>
 
-<p class="govuk-body">You can now add a component to the MoJ Design System. You might want to do this to:
+  <ul class="govuk-list govuk-list--bullet">
+    <li>make it easier for teams to find your work</li>
+    <li>get contributions from other people to help the component develop</li>
+    <li>help your team meet the <a href="https://www.gov.uk/guidance/government-design-principles">Government Design Principles</a></li>
+  </ul>
 
-<ul class="govuk-list govuk-list--bullet">
+  <div class="govuk-inset-text">Later in 2025 you'll also be able to add a pattern or page to the MoJ Design System.</div>
 
-<li>make it easier for teams to find your work</li>
-<li>get contributions from other people to help the component develop</li>
-<li>help your team meet the <a href="https://www.gov.uk/guidance/government-design-principles">Government Design Principles</a></li>
-</ul>
-</p>
+  <p class="govuk-body">You can add a component that has not been thoroughly developed or tested. If you have an image and you can briefly describe it, it’s ready to be added. </p>
 
-<div class="govuk-inset-text">
-Later in 2025 you'll also be able to add a pattern or page to the MoJ Design System.
-</div>
+  <h3 class="govuk-heading-m">What you'll need</h2>
 
-<p class="govuk-body">You can add a component that has not been thoroughly developed or tested. If you have an image and you can briefly describe it, it’s ready to be added. </p>
+  <p class="govuk-body">To submit a component to the Design System you'll need:</p>
 
-    <h3 class="govuk-heading-m">What you'll need</h2>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>the component name</li>
+    <li>a description</li>
+    <li>details about how it’s being used</li>
+    <li>an image of it</li>
+  </ul>
 
-    <p class="govuk-body">To submit a component to the Design System you'll need:
+  <p class="govuk-body">This helps people to understand what the component is and how to use it.</p>
 
-    <ul class="govuk-list govuk-list--bullet">
-      <li>the component name</li>
-      <li>a description</li>
-      <li>details about how it’s being used</li>
-      <li>an image of it</li>
-    </ul>
+  <p class="govuk-body">You’ll be asked for your details. This is so that you can be contacted when the component is live or if there queries. You can ask for your name or team name to be added to the documentation, but this is optional.</p>
 
-    <p class="govuk-body">This helps people to understand what the component is and how to use it.</p>
+  <h3 class="govuk-heading-m">After you submit a component</h2>
 
-    <p class="govuk-body">You’ll be asked for your details. This is so that you can be contacted when the component is live or if there queries. You can ask for your name or team name to be added to the documentation, but this is optional.</p>
+  <p class="govuk-body">The MoJ Design System team will briefly check the component and then it'll be live within 10 working days. People may add comments to the component's Github discussion.</p>
 
-    <h3 class="govuk-heading-m">After you submit a component</h2>
-
-<p class="govuk-body">The MoJ Design System team will briefly check the component and then it'll be live within 10 working days. People may add comments to the component's Github discussion.
-</p>
-
-    <form method="POST" action="">
-      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
-
+  {% call form({csrfToken: csrfToken}) %}
       <div class="moj-button-action">
         {{ govukButton({
           text: 'Continue'
         }) }}
       </div>
-    </form>
-  </div>
+  {% endcall %}
 {% endblock %}
