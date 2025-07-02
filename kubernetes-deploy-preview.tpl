@@ -95,6 +95,8 @@ spec:
                 key: sentry-dsn
           - name: BRANCH
             value: ${BRANCH}
+          - name: APP_URL
+            value: https://moj-frontend-${BRANCH}.apps.live.cloud-platform.service.justice.gov.uk 
           - name: REDIS_URL
             valueFrom:
               secretKeyRef:
