@@ -1,11 +1,21 @@
 /* eslint import/order: "off" */
 /* eslint n/no-unpublished-require: "off" */
 const Sentry = require('@sentry/node')
+const {
+  APP_PORT,
+  ENV,
+  REDIS_URL,
+  SESSION_SECRET,
+  SENTRY_DSN
+} = require('./config')
 
-Sentry.init({
-  dsn: 'https://304866cea16570b04e2090537ae9ac77@o345774.ingest.us.sentry.io/4509252675371008',
-  sendDefaultPii: true
-})
+if (ENV === 'production') {
+  Sentry.init({
+    dsn: SENTRY_DSN,
+    sendDefaultPii: false,
+    environment: ENV
+  })
+}
 
 const path = require('path')
 const redisClient = require('./helpers/redis-client')
@@ -22,7 +32,6 @@ const ApplicationError = require('./helpers/application-error')
 
 const rev = require('./filters/rev')
 
-const { APP_PORT, ENV, REDIS_URL, SESSION_SECRET } = require('./config')
 const addComponentRoutes = require('./routes/add-component')
 
 const app = express()
@@ -87,7 +96,7 @@ app.set('view engine', 'njk')
 const njk = expressNunjucks(app, {
   watch: isDev,
   noCache: false,
-  loader: nunjucks.FileSystemLoader,
+  loader: nunjucks.FileSystemLoader
 })
 
 njk.env.addFilter('rev', rev)
@@ -108,9 +117,9 @@ app.use('/contribute/add-new-component', addComponentRoutes)
 
 // Fallback route to 404
 app.use((req, res) => {
-      res.status(404).render('404', {
-      title: 'Page not found'
-    })
+  res.status(404).render('404', {
+    title: 'Page not found'
+  })
 })
 
 // The error handler must be registered before any other error middleware and after all controllers
