@@ -50,6 +50,11 @@ spec:
               secretKeyRef:
                 name: notify-submission-template
                 key: notify-submission-template
+          - name: NOTIFY_VERIFICATION_TEMPLATE
+            valueFrom:
+              secretKeyRef:
+                name: notify-verification-template
+                key: notify-verification-template
           - name: NOTIFY_EMAIL
             valueFrom:
               secretKeyRef:
@@ -70,9 +75,15 @@ spec:
               secretKeyRef:
                 name: notify-email-max-retries
                 key: notify-email-max-retries
+          - name: SENTRY_DSN
+            valueFrom:
+              secretKeyRef:
+                name: sentry-dsn
+                key: sentry-dsn
           - name: BRANCH
             value: ${BRANCH}
-          - name: REDIS_URL
+          - name: APP_URL
+            value: https://design-patterns.service.justice.gov.uk          - name: REDIS_URL
             valueFrom:
               secretKeyRef:
                 name: moj-frontend-ec-cluster-output
