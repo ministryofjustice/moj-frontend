@@ -35,7 +35,12 @@
       })}}
     {% endif %}
 
-  {% block form %}{% endblock %}
+    {{ pageTitle({
+      caption: 'Submit a new component',
+      title: page.title
+    })}}
+
+    {% block form %}{% endblock %}
 
 </div>
 

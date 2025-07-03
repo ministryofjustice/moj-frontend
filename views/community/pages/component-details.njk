@@ -9,53 +9,47 @@
     csrfToken: csrfToken
   }) %}
 
-    {{ pageTitle({
-      caption: 'Submit a new component',
-      title: 'Add details about the component'
-    })}}
-
     {{ govukInput({
-          label: {
-              text: page.fields.componentName.label,
-              classes: "govuk-label--m"
-          },
-          id: "component-name",
-          name: "componentName",
-          errorMessage: formErrors.componentName,
-          value: formData.componentName
-      }) }}
+      label: {
+          text: page.fields.componentName.label,
+          classes: "govuk-label--m"
+      },
+      id: "component-name",
+      name: "componentName",
+      errorMessage: formErrors.componentName,
+      value: formData.componentName
+    }) }}
 
-      {{ govukCharacterCount({
-          name: "componentOverview",
-          id: "component-overview",
-          maxwords: 250,
-          label: {
-              text: page.fields.componentOverview.label,
-              classes: "govuk-label--m"
-          },
-          errorMessage: formErrors.componentOverview,
-          value: formData.componentOverview
-      }) }}
+    {{ govukCharacterCount({
+      name: "componentOverview",
+      id: "component-overview",
+      maxwords: 250,
+      label: {
+          text: page.fields.componentOverview.label,
+          classes: "govuk-label--m"
+      },
+      errorMessage: formErrors.componentOverview,
+      value: formData.componentOverview
+    }) }}
 
-      {{ govukCharacterCount({
-          name: "howIsTheComponentUsed",
-          id: "how-is-the-component-used",
-          maxwords: 250,
-          label: {
-              text: page.fields.howIsTheComponentUsed.label,
-              classes: "govuk-label--m"
-          },
+    {{ govukCharacterCount({
+      name: "howIsTheComponentUsed",
+      id: "how-is-the-component-used",
+      maxwords: 250,
+      label: {
+          text: page.fields.howIsTheComponentUsed.label,
+          classes: "govuk-label--m"
+      },
 
-          errorMessage: formErrors.howIsTheComponentUsed,
-          value: formData.howIsTheComponentUsed
-      }) }}
+      errorMessage: formErrors.howIsTheComponentUsed,
+      value: formData.howIsTheComponentUsed
+    }) }}
 
-      <div class="govuk-button-group moj-button-action">
-        {{ govukButton({
-          text: 'Continue',
-          preventDoubleClick: true
-          }) }}
-      </div>
+    <div class="govuk-button-group moj-button-action">
+      {{ govukButton({
+        text: 'Continue',
+        preventDoubleClick: true
+        }) }}
+    </div>
   {% endcall %}
-
 {% endblock %}

@@ -2,88 +2,68 @@
 {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-{% from "govuk/components/tag/macro.njk" import govukTag %}
-{% extends "base.njk" %}
 
-{% block content %}
-  <div class="app-layout__content">
-    {% if backLink %}
-      {{ govukBackLink({
-        text: "Back",
-        href: backLink
-      }) }}
-    {% endif %}
-    {% if errorList %}
-      {{ govukErrorSummary({
-        titleText: "There is a problem",
-        errorList: errorList
-      }) }}
-    {% endif %}
-    <form method="POST" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit a new component</span>
-      <h1 class="govuk-heading-xl">Testing with assistive technology</h1>
+{% extends "contributions.njk" %}
 
-      {{ govukDateInput({
-        id: "testing-date",
-        namePrefix: "testingDate",
-        name: "testing-date",
-        errorMessage: formErrors.testingDate,
-        value: formData.testingDate,
-        items: [
-          {
-            classes: (formErrorStyles['testingDate-day'] | default('')) + " govuk-input--width-2",
-            name: "day",
-            value: formData['testingDate-day']
-          },
-          {
-            classes: (formErrorStyles['testingDate-month'] | default('')) + " govuk-input--width-2",
-            name: "month",
-            value: formData['testingDate-month']
-          },
-          {
-            classes: (formErrorStyles['testingDate-year'] | default('')) + " govuk-input--width-4",
-            name: "year",
-            value: formData['testingDate-year']
-          }
-        ],
-        fieldset: {
-          legend: {
-            text: page.fields.testingDate.label,
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--m"
-          }
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+
+    {{ govukDateInput({
+      id: "testing-date",
+      namePrefix: "testingDate",
+      name: "testing-date",
+      errorMessage: formErrors.testingDate,
+      value: formData.testingDate,
+      items: [
+        {
+          classes: (formErrorStyles['testingDate-day'] | default('')) + " govuk-input--width-2",
+          name: "day",
+          value: formData['testingDate-day']
         },
-        hint: {
-          text: page.fields.testingDate.hint
+        {
+          classes: (formErrorStyles['testingDate-month'] | default('')) + " govuk-input--width-2",
+          name: "month",
+          value: formData['testingDate-month']
+        },
+        {
+          classes: (formErrorStyles['testingDate-year'] | default('')) + " govuk-input--width-4",
+          name: "year",
+          value: formData['testingDate-year']
         }
+      ],
+      fieldset: {
+        legend: {
+          text: page.fields.testingDate.label,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      hint: {
+        text: page.fields.testingDate.hint
+      }
+    }) }}
+
+    {{ govukCharacterCount({
+      id: "issues-discovered",
+      name: "issuesDiscovered",
+      maxwords: 250,
+      label: {
+        text: page.fields.issuesDiscovered.label,
+        classes: "govuk-label--m",
+        isPageHeading: true
+      },
+      errorMessage: formErrors.issuesDiscovered,
+      value: formData.issuesDiscovered
+    }) }}
+
+    <div class="govuk-button-group moj-button-action">
+      {{ govukButton({
+        text: 'Continue',
+        preventDoubleClick: true
       }) }}
-
-      {{ govukCharacterCount({
-        id: "issues-discovered",
-        name: "issuesDiscovered",
-        maxwords: 250,
-        label: {
-          text: page.fields.issuesDiscovered.label,
-          classes: "govuk-label--m",
-          isPageHeading: true
-        },
-        errorMessage: formErrors.issuesDiscovered,
-        value: formData.issuesDiscovered
-      }) }}
-
-      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
-
-      <div class="govuk-button-group moj-button-action">
-        {{ govukButton({
-          text: 'Continue',
-          preventDoubleClick: true
-        }) }}
-      </div>
-    </form>
-  </div>
-
+    </div>
+  {% endcall %}
 {% endblock %}

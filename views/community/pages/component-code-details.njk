@@ -1,29 +1,18 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% extends "base.njk" %}
-{% block content %}
-  <div class="app-layout__content">
-    {% if backLink %}
-      {{ govukBackLink({
-        text: "Back",
-        href: backLink
-      }) }}
-    {% endif %}
-    {% if errorList %}
-      {{ govukErrorSummary({
-        titleText: "There is a problem",
-        errorList: errorList
-      }) }}
-    {% endif %}
-    <form method="post" action="{{ submitUrl }}" data-add-another-container>
-      <span class="govuk-caption-l">Submit a new component</span>
-      <h1 class="govuk-heading-xl">Component code</h1>
-      <p class="govuk-body">You should only send the component code. It should not contain any personally identifiable or sensitive information. You can add more than one code example.</p>
-      {% set otherHtml %}
+
+{% extends "contributions.njk" %}
+
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+
+    <p class="govuk-body">You should only send the component code. It should not contain any personally identifiable or sensitive information. You can add more than one code example.</p>
+
+    {% set otherHtml %}
       {{ govukInput({
         id: "component-code-language-other",
         name: "componentCodeLanguageOther",
@@ -35,94 +24,91 @@
           text: page.fields.componentCodeLanguageOther.label
         }
       }) }}
-      {% endset -%}
-      {{ govukRadios({
-        id: "component-code-language",
-        name: "componentCodeLanguage",
-        errorMessage: formErrors.componentCodeLanguage,
-        value: formData.componentCodeLanguage,
-        hint: {
-          text: page.fields.componentCodeLanguage.hint
+    {% endset -%}
+
+    {{ govukRadios({
+      id: "component-code-language",
+      name: "componentCodeLanguage",
+      errorMessage: formErrors.componentCodeLanguage,
+      value: formData.componentCodeLanguage,
+      hint: {
+        text: page.fields.componentCodeLanguage.hint
+      },
+      fieldset: {
+        legend: {
+          text: page.fields.componentCodeLanguage.label,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "html",
+          text: "HTML"
         },
-        fieldset: {
-          legend: {
-            text: page.fields.componentCodeLanguage.label,
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
+        {
+          value: "nunjucks",
+          text: "Nunjucks"
+        },
+        {
+          value: "css",
+          text: "CSS"
+        },
+        {
+          value: "javascript",
+          text: "JavaScript"
+        },
+        {
+          value: "other",
+          text: "Other",
+          conditional: {
+            html: otherHtml
           }
-        },
-        items: [
-          {
-            value: "html",
-            text: "HTML"
-          },
-          {
-            value: "nunjucks",
-            text: "Nunjucks"
-          },
-          {
-            value: "css",
-            text: "CSS"
-          },
-          {
-            value: "javascript",
-            text: "JavaScript"
-          },
-          {
-            value: "other",
-            text: "Other",
-            conditional: {
-              html: otherHtml
-            }
-          }
-        ]
+        }
+      ]
+    }) }}
+
+    {{ govukCharacterCount({
+      name: "componentCode",
+      id: "component-code",
+      maxlength: 10000,
+      classes: 'font-monospace',
+      rows: 30,
+      label: {
+        text: "Add the code",
+        classes: "govuk-label--m"
+      },
+      errorMessage: formErrors.componentCode,
+      value: formData.componentCode
+    }) }}
+
+    {{ govukCharacterCount({
+      name: "componentCodeUsage",
+      id: "component-code-usage",
+      maxwords: 250,
+      label: {
+        text: page.fields.componentCodeUsage.label,
+        classes: "govuk-label--m"
+      },
+      hint: {
+        text: page.fields.componentCodeUsage.hint
+      },
+      errorMessage: formErcomponentCodeLanguages.componentCodeUsage,
+      value: formData.componentCodeUsage
+    }) }}
+
+    <div class="govuk-button-group moj-button-action">
+      {{ govukButton({
+        text: 'Continue',
+        preventDoubleClick: true
       }) }}
-
-      {{ govukCharacterCount({
-        name: "componentCode",
-        id: "component-code",
-        maxlength: 10000,
-        classes: 'font-monospace',
-        rows: 30,
-        label: {
-          text: "Add the code",
-          classes: "govuk-label--m"
-        },
-        errorMessage: formErrors.componentCode,
-        value: formData.componentCode
-      }) }}
-
-      {{ govukCharacterCount({
-        name: "componentCodeUsage",
-        id: "component-code-usage",
-        maxwords: 250,
-        label: {
-          text: page.fields.componentCodeUsage.label,
-          classes: "govuk-label--m"
-        },
-        hint: {
-          text: page.fields.componentCodeUsage.hint
-        },
-        errorMessage: formErcomponentCodeLanguages.componentCodeUsage,
-        value: formData.componentCodeUsage
-      }) }}
-
-      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
-
-      <div class="govuk-button-group moj-button-action">
-        {{ govukButton({
-          text: 'Continue',
-          preventDoubleClick: true
-        }) }}
-        {% if showAddAnother %}
-
+      {% if showAddAnother %}
         {{ govukButton({
           text: "Add another code example",
           classes: "govuk-button--secondary",
           name: "addAnother"
         }) }}
-        {% endif %}
-      </div>
-    </form>
-  </div>
+      {% endif %}
+    </div>
+  {% endcall %}
 {% endblock %}

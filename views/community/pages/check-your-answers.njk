@@ -1,42 +1,61 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-{% from "macros/summary-card.njk" import summaryCard %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "macros/summary-card.njk" import summaryCard %}
+{% from "macros/page-title.njk" import pageTitle %}
+{% from "macros/form.njk" import form %}
+
 {% extends "base.njk" %}
+
+{% block beforeContent %}
+  <div class="app-layout__back-link">
+    {% if backLink %}
+      {{ govukBackLink({
+        text: "Back",
+        href: backLink
+      }) }}
+    {% endif %}
+  </div>
+{% endblock %}
+
 {% block content %}
   <div class="app-layout__content">
-    <form method="post" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit a new component</span>
-      <h1 class="govuk-heading-xl">Check your answers</h1>
+    {{ pageTitle({
+      caption: 'Submit a new component',
+      title: 'Check your answers'
+    })}}
 
-      {% for section in sections %}
-        {% set cardParams = {
-            title: {
-              text: section.title
-            },
-            actions: {
-              items: section.actions
-            }
+    {% for section in sections %}
+      {% set cardParams = {
+          title: {
+            text: section.title
+          },
+          actions: {
+            items: section.actions
           }
-        %}
-        {% if section.answerRows.length > 0 %}
-          {{ govukSummaryList({
-              card:cardParams,
-              rows: section.answerRows
-          }) }}
-        {% else %}
-          {% call summaryCard(cardParams) -%}
-            <p class="govuk-!-margin-bottom-0">None</p>
-          {%- endcall %}
-        {% endif %}
-      {% endfor %}
+        }
+      %}
 
-      <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>
+      {% if section.answerRows.length > 0 %}
+        {{ govukSummaryList({
+            card:cardParams,
+            rows: section.answerRows
+        }) }}
+      {% else %}
+        {% call summaryCard(cardParams) -%}
+          <p class="govuk-!-margin-bottom-0">None</p>
+        {%- endcall %}
+      {% endif %}
+    {% endfor %}
 
+    {% call form({
+      csrfToken: csrfToken,
+      action: submitUrl
+    }) %}
       <div class="moj-button-action">
         {{ govukButton({
           text: 'Accept and send'
         }) }}
       </div>
-    </form>
+    {% endcall %}
   </div>
 {% endblock %}
