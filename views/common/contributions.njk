@@ -35,10 +35,12 @@
       })}}
     {% endif %}
 
-    {{ pageTitle({
-      caption: 'Submit a new component',
-      title: page.title
-    })}}
+    {% block pageTitle %}
+      {{ pageTitle({
+        caption: 'Submit a new component',
+        title: page.title
+      })}}
+    {% endblock %}
 
     {% block form %}{% endblock %}
 

@@ -1,36 +1,26 @@
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% extends "base.njk" %}
-{% block content %}
-  <div class="app-layout__content">
-    {% if backLink %}
-      {{ govukBackLink({
-        text: "Back",
-        href: backLink
-      }) }}
-    {% endif %}
-    <form method="POST" action="{{ submitUrl }}">
-    <span class="govuk-caption-l">Submit a component</span>
-    <h1 class="govuk-heading-xl">{{ page.title }}</h1>
-    <ol>
+{% extends "contributions.njk" %}
+
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+    <ol class="govuk-list govuk-list--number">
       <li>Check that you entered your email address correctly: <strong>{{page.email}}</strong></li>
       <li>Check your junk or spam folder.</li>
       <li>Wait 5 minutes for it to arrive.</li>
     </ol>
     <p class="govuk-body">If you’ve still not received the verification email after step 2 you can either:</p>
-    <ul>
+    <ul class="govuk-list govuk-list--bullet">
       <li>resend the verification email  </li>
       <li><a href="/contribute/add-new-component/email?reset=true">enter a different email address</a></li>
     </ul>
 
-    <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
-
-      <div class="moj-button-action">
-          {{ govukButton({
-              text: 'Resend verification email'
-          }) }}
-      </div>
+    <div class="moj-button-action">
+        {{ govukButton({
+            text: 'Resend verification email'
+        }) }}
+    </div>
     <p class="govuk-body">If none of this works, <a href="/help">contact us</a>
-      </form>
-</div>
+  {% endcall %}
 {% endblock %}
