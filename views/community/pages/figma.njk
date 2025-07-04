@@ -1,58 +1,43 @@
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% extends "base.njk" %}
-{% block content %}
-  <div class="app-layout__content">
-    {% if backLink %}
-      {{ govukBackLink({
-        text: "Back",
-        href: backLink
-      }) }}
-    {% endif %}
-    {% if errorList %}
-      {{ govukErrorSummary({
-        titleText: "There is a problem",
-        errorList: errorList
-      }) }}
-    {% endif %}
-    <form method="POST" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit a new component</span>
-      <h1 class="govuk-heading-xl">Figma design</h1>
-      {{ govukRadios({
-        name: "figmaUrl",
-        fieldset: {
-          attributes: {
-            id: "figma-url"
-          },
-          legend: {
-            text: page.fields.figmaUrl.label,
-            classes: "govuk-fieldset__legend--m"
-          }
+
+{% extends "contributions.njk" %}
+
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+
+    {{ govukRadios({
+      name: "figmaUrl",
+      fieldset: {
+        attributes: {
+          id: "figma-url"
         },
-        items: [
-          {
-            value: "yes",
-            text: "Yes"
-          },
-          {
-            value: "no",
-            text: "No"
-          }
-        ],
-        errorMessage: formErrors.figmaUrl,
-        value: formData.figmaUrl
+        legend: {
+          text: page.fields.figmaUrl.label,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes"
+        },
+        {
+          value: "no",
+          text: "No"
+        }
+      ],
+      errorMessage: formErrors.figmaUrl,
+      value: formData.figmaUrl
+    }) }}
+
+    <div class="govuk-button-group moj-button-action">
+      {{ govukButton({
+        text: 'Continue',
+        preventDoubleClick: true
       }) }}
-
-      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
-
-      <div class="govuk-button-group moj-button-action">
-        {{ govukButton({
-          text: 'Continue',
-          preventDoubleClick: true
-        }) }}
-
-    </form>
-  </div>
+    </div>
+  {% endcall %}
 {% endblock %}

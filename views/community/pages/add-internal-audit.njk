@@ -1,100 +1,79 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
-{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-{% from "govuk/components/tag/macro.njk" import govukTag %}
-{% extends "base.njk" %}
 
-{% block content %}
-  <div class="app-layout__content">
-    {% if backLink %}
-      {{ govukBackLink({
-        text: "Back",
-        href: backLink
-      }) }}
-    {% endif %}
-    {% if errorList %}
-      {{ govukErrorSummary({
-        titleText: "There is a problem",
-        errorList: errorList
-      }) }}
-    {% endif %}
-    <form method="POST" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit a new component</span>
-      <h1 class="govuk-heading-xl">Internal accessibility review</h1>
+{% extends "contributions.njk" %}
 
-      {{ govukInput({
-        label: {
-          text: page.fields.internalOrganisation.label,
-          classes: "govuk-label--m"
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+
+    {{ govukInput({
+      label: {
+        text: page.fields.internalOrganisation.label,
+        classes: "govuk-label--m"
+      },
+      id: "internal-organisation",
+      name: "internalOrganisation",
+      errorMessage: formErrors.internalOrganisation,
+      value: formData.internalOrganisation
+    }) }}
+
+    {{ govukDateInput({
+      id: "audit-date",
+      namePrefix: "auditDate",
+      name: "audit-date",
+      errorMessage: formErrors.auditDate,
+      value: formData.auditDate,
+      items: [
+        {
+          classes: (formErrorStyles['auditDate-day'] | default('')) + " govuk-input--width-2",
+          name: "day",
+          value: formData['auditDate-day']
         },
-        id: "internal-organisation",
-        name: "internalOrganisation",
-        errorMessage: formErrors.internalOrganisation,
-        value: formData.internalOrganisation
-      }) }}
-
-      {{ govukDateInput({
-        id: "audit-date",
-        namePrefix: "auditDate",
-        name: "audit-date",
-        errorMessage: formErrors.auditDate,
-        value: formData.auditDate,
-        items: [
-          {
-            classes: (formErrorStyles['auditDate-day'] | default('')) + " govuk-input--width-2",
-            name: "day",
-            value: formData['auditDate-day']
-          },
-          {
-            classes: (formErrorStyles['auditDate-month'] | default('')) + " govuk-input--width-2",
-            name: "month",
-            value: formData['auditDate-month']
-          },
-          {
-            classes: (formErrorStyles['auditDate-year'] | default('')) + " govuk-input--width-4",
-            name: "year",
-            value: formData['auditDate-year']
-          }
-        ],
-        fieldset: {
-          legend: {
-            text: page.fields.auditDate.label,
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--m"
-          }
+        {
+          classes: (formErrorStyles['auditDate-month'] | default('')) + " govuk-input--width-2",
+          name: "month",
+          value: formData['auditDate-month']
         },
-        hint: {
-          text: page.fields.auditDate.hint
+        {
+          classes: (formErrorStyles['auditDate-year'] | default('')) + " govuk-input--width-4",
+          name: "year",
+          value: formData['auditDate-year']
         }
+      ],
+      fieldset: {
+        legend: {
+          text: page.fields.auditDate.label,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      hint: {
+        text: page.fields.auditDate.hint
+      }
+    }) }}
+
+    {{ govukCharacterCount({
+      id: "issues-discovered",
+      name: "issuesDiscovered",
+      maxwords: 250,
+      label: {
+        text: page.fields.issuesDiscovered.label,
+        classes: "govuk-label--m",
+        isPageHeading: true
+      },
+      errorMessage: formErrors.issuesDiscovered,
+      value: formData.issuesDiscovered
+    }) }}
+
+    <div class="govuk-button-group moj-button-action">
+      {{ govukButton({
+        text: 'Continue',
+        preventDoubleClick: true
       }) }}
-
-      {{ govukCharacterCount({
-        id: "issues-discovered",
-        name: "issuesDiscovered",
-        maxwords: 250,
-        label: {
-          text: page.fields.issuesDiscovered.label,
-          classes: "govuk-label--m",
-          isPageHeading: true
-        },
-        errorMessage: formErrors.issuesDiscovered,
-        value: formData.issuesDiscovered
-      }) }}
-
-      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
-
-      <div class="govuk-button-group moj-button-action">
-        {{ govukButton({
-          text: 'Continue',
-          preventDoubleClick: true
-        }) }}
-      </div>
-    </form>
-  </div>
-
+    </div>
+  {% endcall %}
 {% endblock %}

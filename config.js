@@ -266,7 +266,7 @@ const config = {
     componentImageUploaded: (filename) => {
       return {
         type: 'success',
-        message: `File ‘${filename}’ has been uploaded.`
+        text: `File ‘${filename}’ has been uploaded.`
       }
     },
     componentImageRemoved: (filename) => {
