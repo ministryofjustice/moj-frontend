@@ -1,16 +1,5 @@
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% extends "base.njk" %}
-{% block content %}
-  <div class="app-layout__content">
-    {% if backLink %}
-      {{ govukBackLink({
-        text: "Back",
-        href: backLink
-      }) }}
-    {% endif %}
-    <span class="govuk-caption-l">Submit a component</span>
-    <h1 class="govuk-heading-xl">{{ page.title }}</h1>
-    <p class="govuk-body">You need to work at MoJ to contribute to the MoJ Design System.</p>
-    <p class="govuk-body"><a href="/" class="govuk-link">Go back to the MoJ Design System</a></p>
-</div>
+{% extends "contributions.njk" %}
+{% block form %}
+  <p class="govuk-body">You need to work at MoJ to contribute to the MoJ Design System.</p>
+  <p class="govuk-body"><a href="/" class="govuk-link">Go back to the MoJ Design System</a></p>
 {% endblock %}

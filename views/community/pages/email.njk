@@ -1,60 +1,37 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% from "moj/components/alert/macro.njk" import mojAlert %}
-{% extends "base.njk" %}
-{% block content %}
-  <div class="app-layout__content">
-    {% if backLink %}
-      {{ govukBackLink({
-        text: "Back",
-        href: backLink
-      }) }}
-    {% endif %}
-    {% if errorList %}
-      {{ govukErrorSummary({
-        titleText: "There is a problem",
-        errorList: errorList
-      }) }}
-    {% endif %}
-    {% if sessionFlash.text %}
-      {{ mojAlert({
-          variant: sessionFlash.type,
-          title: sessionFlash.title,
-          text: sessionFlash.text,
-          showTitleAsHeading: true,
-          role: "alert"
-      })}}
-    {% endif %}
-    <form method="POST" action="{{ submitUrl }}">
-    <span class="govuk-caption-l">Submit a component</span>
-      <h1 class="govuk-heading-xl" id="page-title">{{page.title}}</h1>
+
+{% extends "contributions.njk" %}
+
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+
     <p class="govuk-body">You need to work for MoJ to submit a new component to the Design System.</p>
-          {{ govukInput({
 
-          id: "email-address",
-          name: "emailAddress",
-          hint: {
-           text: page.fields.emailAddress.hint
-          },
-          errorMessage: formErrors.emailAddress,
-          value: formData.emailAddress,
-          attributes: {
-            'aria-labelledby': 'page-title'
-            },
-            formGroup: {
-            classes: 'govuk-!-margin-top-0'
-            }
+    {{ govukInput({
+      id: "email-address",
+      name: "emailAddress",
+      hint: {
+       text: page.fields.emailAddress.hint
+      },
+      errorMessage: formErrors.emailAddress,
+      value: formData.emailAddress,
+      attributes: {
+        'aria-labelledby': 'page-title'
+      },
+      formGroup: {
+        classes: 'govuk-!-margin-top-0'
+      }
+    }) }}
+
+    <p class="govuk-body">You’ll be sent an email with a verification link. </p>
+
+    <div class="moj-button-action">
+      {{ govukButton({
+          text: 'Continue'
       }) }}
-      <p class="govuk-body">You’ll be sent an email with a verification link. </p>
-        <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
-
-      <div class="moj-button-action">
-          {{ govukButton({
-              text: 'Continue'
-          }) }}
-      </div>
-      </form>
-</div>
+    </div>
+  {% endcall %}
 {% endblock %}
