@@ -53,5 +53,9 @@
   .app-page__body {
     padding-top: 0;
     border-top: none;
+
+    @include govuk-media-query($until: tablet) {
+      border-top: 1px solid $govuk-border-colour;
+    }
   }
 }
