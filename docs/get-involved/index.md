@@ -3,7 +3,7 @@ layout: layouts/index.njk
 title: Get involved
 eleventyNavigation:
   key: Get involved
-  parent: About the design system
+  parent: About the Design System
   order: 40
 ---
 

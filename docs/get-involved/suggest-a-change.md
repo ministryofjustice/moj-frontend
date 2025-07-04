@@ -1,16 +1,16 @@
 ---
+layout: layouts/content.njk
 title: Suggest a change or give feedback
 subsection: Get involved
-layout: layouts/community.njk
 redirect_from: /community/suggest-a-change
+showHelp: true
+lede: Help improve the MoJ Design System by suggesting a change to a building block.
 eleventyNavigation:
   key: Suggest a change or give feedback
   parent: Get involved
   order: 30
   excerpt: "Help improve the MoJ Design System by suggesting changes to building blocks."
 ---
-
-Help improve the MoJ Design System by suggesting a change to a building block.
 
 The Design System is looking to learn about:
 

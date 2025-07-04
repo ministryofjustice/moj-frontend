@@ -1,15 +1,14 @@
 ---
 layout: layouts/content.njk
-subsection: About the design system
+subsection: About the Design System
 title: Get help with the MoJ Design System
 redirect_from: /community/help-and-feedback
 eleventyNavigation:
   key: Get help
-  parent: About the design system
+  parent: About the Design System
   order: 50
+lede: The MoJ Design System team supports people who use the Design System. Contact us to ask for help.
 ---
-
-<span class="govuk-caption-xl">The MoJ Design System team supports users of the MoJ Design System. Contact us to ask for help.</span>
 
 ### Contact us on Slack
 

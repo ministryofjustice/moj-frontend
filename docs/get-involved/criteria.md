@@ -1,16 +1,16 @@
 ---
-layout: layouts/community.njk
+layout: layouts/content.njk
 subsection: Get involved
 title: Contribution criteria
 redirect_from: /community/criteria
+showHelp: true
+lede: Find out about the criteria to add a building block to the MoJ Design System.
 eleventyNavigation:
   key: Contribution criteria
   parent: Get involved
   order: 20
   excerpt: "For a contribution to be considered for the Design System, the style, component or pattern needs to be useful and unique."
 ---
-
-The MoJ Design System supports the design, build, and delivery of accessible and consistent services. To guarantee the quality of the design system, all styles, components and patterns need to meet certain criteria.
 
 ## Criteria
 
