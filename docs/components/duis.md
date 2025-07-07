@@ -92,7 +92,7 @@ Code has been added for this component. There may be other code examples in the 
 
 <div class="app-example app-example-borders">
 
-```Nunjucks
+```nunjucks
 {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 
 {% set html %}
