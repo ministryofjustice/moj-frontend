@@ -1,7 +1,5 @@
 ---
-layout: layouts/archive.njk
 title: Password reveal
-status: Archived
 statusDate: November 2024
 type: component
 redirect_from: /components/password-reveal

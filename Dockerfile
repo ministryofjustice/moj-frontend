@@ -14,6 +14,7 @@ COPY docs docs
 COPY filters filters
 COPY src src
 COPY package package
+COPY shortcodes shortcodes
 COPY .eleventy.js .eleventy.js
 COPY .eleventyignore .eleventyignore
 COPY gulp gulp
@@ -34,6 +35,7 @@ COPY docs docs
 COPY filters filters
 COPY src src
 COPY package package
+COPY shortcodes shortcodes
 COPY .eleventy.js .eleventy.js
 COPY .eleventyignore .eleventyignore
 COPY gulp gulp

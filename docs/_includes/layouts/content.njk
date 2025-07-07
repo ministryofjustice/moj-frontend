@@ -1,23 +1,17 @@
 {% extends "./base.njk" %}
 
-{% from "macros/heading/macro.njk" import heading %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-
 {% block content %}
-  <div class="app-layout__content">
+    {% include "./partials/page-header.njk" %}
 
-  {% if backLink %}
-      {{ govukBackLink({
-        text: "Back",
-        href: backLink
-      }) }}
-  {% endif %}
+    <div class="app-page__body">
+        <div class="app-page__width-container">
+          {{ content | safe }}
 
-    {{ heading({
-      text: title,
-      caption: subsection
-    }) }}
-
-    {{ content | safe }}
-  </div>
+          {% if (["component", "page", "pattern"].includes(type)) and (not tabs) and (["To be reviewed", "Experimental", "Official"].includes(status)) %}
+            {% include "./partials/get-help-and-contribute.njk" %}
+          {% elif showHelp %}
+            {% include "./partials/get-help.njk" %}
+          {% endif %}
+        </div>
+    </div>
 {% endblock %}

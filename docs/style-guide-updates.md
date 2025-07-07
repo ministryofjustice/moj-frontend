@@ -3,9 +3,8 @@ layout: layouts/content.njk
 title: Content style guide updates
 permalink: content-standards/style-guide-updates/
 backLink: /content-standards/style-guide/
+lede: 'New and updated entries in the <a href="/content-standards/style-guide/">MoJ content style guide</a>.'
 ---
-
-<p>New and updated entries in the <a href="/content-standards/style-guide/">MoJ content style guide</a>.</p>
 
 <table class="govuk-table" data-module="moj-sortable-table">
   <thead class="govuk-table__head">

@@ -1,13 +1,17 @@
 ---
-layout: layouts/get-started.njk
+layout: layouts/content.njk
 subsection: Prototyping
+showHelp: true
 title: Choosing a prototyping method
+lede: Learn how to choose a prototyping method based on your needs.
 eleventyNavigation:
   key: Choosing a prototyping method
   parent: Prototyping
   order: 10
   excerpt: "This guide explains how to choose a prototyping tool."
 ---
+
+## Overview
 
 Prototyping is the process of creating a model or design of something in order to test and iterate it before making a final version.
 
@@ -35,7 +39,7 @@ Sketching is typically done with a pen and paper and is sometimes called paper p
 
 Sketching is used to test designs early in the process.
 
-[Read about sketching on the NN/g website](https://www.nngroup.com/articles/paper-prototyping-cutout-kit/)
+[Read about sketching on the NN/g website](https://www.nngroup.com/articles/paper-prototyping-cutout-kit/).
 
 ## Figma (high fidelity)
 
@@ -61,7 +65,7 @@ Figma is a tool for creating designs, and user testing (depending on what the pr
 - Making simple, clickable prototypes to show navigation.
 - Connecting to the MoJ Design System through the Figma Kits.
 
-[Read about setting up Figma prototypes at MoJ](/prototyping/setting-up-figma-prototypes/)
+[Read about setting up Figma prototypes at MoJ](/prototyping/setting-up-figma-prototypes/).
 
 ## GOV.UK Prototype Kit (high fidelity)
 
@@ -84,4 +88,4 @@ The GOV.UK Prototype Kit (sometimes called ‘the kit’) enables you to create 
 - User testing with real data and interactions, plus keyboard navigation.
 - Testing with assistive technologies users.
 
-[Read about setting up coded prototypes at MoJ](/prototyping/setting-up-coded-prototypes/)
+[Read about setting up coded prototypes at MoJ](/prototyping/setting-up-coded-prototypes/).
