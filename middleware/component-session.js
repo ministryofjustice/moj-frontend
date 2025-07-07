@@ -43,15 +43,15 @@ const getPageData = (req) => {
 const checkEmailDomain = (req, res, next) => {
   let allowed = false
   const email = req?.body?.emailAddress
-  console.log({email})
+  console.log({ email })
   if (email) {
     const domain = email.split('@').at(-1)
-    console.log({domain})
+    console.log({ domain })
     if (allowedDomains.includes(domain)) {
       allowed = true
     }
   }
-  console.log({allowed})
+  console.log({ allowed })
   req.emailDomainAllowed = allowed
   next()
 }
@@ -104,9 +104,15 @@ const clearSkippedPageData = (req, res, next) => {
   // Delete page and subpage data
   for (const sessionPage of Object.keys(req.session)) {
     if (
-      !['started', 'cookie', 'csrfToken', 'checkYourAnswers', 'emailToken','emailDomainAllowed','verified'].includes(
-        sessionPage
-      )
+      ![
+        'started',
+        'cookie',
+        'csrfToken',
+        'checkYourAnswers',
+        'emailToken',
+        'emailDomainAllowed',
+        'verified'
+      ].includes(sessionPage)
     ) {
       console.log(sessionPage)
       const parentPage = `/${sessionPage.split('/')[1]}`
@@ -162,7 +168,7 @@ const validateFormDataFileUpload = (err, req, res, next) => {
 
 const validateFormData = (req, res, next) => {
   console.log('validate form data')
-  const schemaName = req.url.split('/')[1]
+  const schemaName = req.url.split('/').at(1).split('?').at(0)
   const schema = require(`../schema/${schemaName}.schema`)
   const body = extractBody(req?.url, { ...req.body })
   delete body._csrf
