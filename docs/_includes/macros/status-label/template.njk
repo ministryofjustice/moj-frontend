@@ -6,14 +6,16 @@ Arguments to be passed:
 - status: {string} Status of the item. Accepted values: "Official", "To be reviewed", "Experimental", "Archived".
 - statusData: {object} Status data object (by status) from `_data/statusInfo.json` file.
 - statusDate: {string} Date of creation (e.g., "Oct 2025").
-- creatorName: {string} Name of the creator (e.g., "John Doe").
-- creatorTeam: {string} Team responsible for the item (e.g., "MoJ").
+- contributorName: {string} Name of the creator (e.g., "John Doe").
+- contributorTeam: {string} Team responsible for the item (e.g., "MoJ").
 -->
 
 {% set statusAttribution -%}
   {%- if status == "Experimental" %}
-    by {{ creatorName | default("someone") }} in {{ creatorTeam | default("the community") }}
-  {%- endif %}
+    {%- if contributorTeam %}
+      by {{ contributorName | default("someone") }} in {{ contributorTeam }}
+    {% elif contributorName %}
+      by {{ contributorName  }}
   {%- if statusDate %}
     in {{ statusDate }}
   {%- endif %}.

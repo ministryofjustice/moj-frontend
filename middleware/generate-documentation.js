@@ -4,107 +4,90 @@ const moment = require('moment')
 const generateMarkdown = (data, files) => {
   const { '/component-details': details } = data
 
-  const documentationDirectory = 'docs/components'
   const componentName = details?.componentName || 'unknown-component'
   const sanitizedComponentName = componentName
     .toLowerCase()
     .replace(/[^a-z0-9-]/g, '-')
     .replace(/-+/g, '-')
-  const filename = `${documentationDirectory}/${sanitizedComponentName}.md`
-  const generateLinksSection = (data) => {
-    const noLinks =
-      'No prototypes or design files have been added for this component. If you have used this component in your service and you have a prototype you can share it here.\n'
 
+  const filename = `${sanitizedComponentName}.md`
+
+  const githubDiscussionLink = (componentName='') => {
+    return `[${componentName ? `${componentName} ` : ''}Github discussion]({{ githuburl }})`
+}
+
+  const generateDesignsTabContent = (data) => {
     let content = ''
-    let prototypeContent = ''
-    let figmaContent = ''
-    let n = 0
 
-    // Process prototype data
-    while (data[`/prototype-url${n > 0 ? `/${n}` : ''}`]) {
-      const prototype = data[`/prototype-url${n > 0 ? `/${n}` : ''}`]
-      prototypeContent += `
-${prototype?.prototypeUrlAdditionalInformation || ''}
+    if(data['/figma-link']) {
+      content += `A Figma link has been added for this component. There may be more links and resources in the ${githubDiscussionLink(sanitizedComponentName)}.\r\n
 
-<a href="${prototype?.prototypeUrl || ''}" target="_blank" rel="noopener noreferrer">Prototype link (opens in a new tab)</a>
-`
-      n++
+### Figma link
+
+      [View the ${sanitizedComponentName} in Figma (opens in a new tab)](${data['/figma-link']?.figmaUrl || ''})\r\n`
+
+      content += `${data['/figma-link']?.figmaLinkAdditionalInformation || ''}\r\n`
+
+      content += `### Contribute prototypes and Figma links
+
+      If you have design files that are relevant to this component you can add them to the ${githubDiscussionLink()}. This helps other people to use it in their service.`
+    } else {
+      content = `A Figma link was not included when this component was added.
+
+      There may be more information in the ${githubDiscussionLink(sanitizedComponentName)}. You can also view the component image in the overview.
+
+      ## Contribute a Figma link
+
+      If you have a Figma link for this component (or a component like it) you can add it to ${githubDiscussionLink()}. This helps other people to use it in their service.`
     }
 
-    // Process figma data
-    n = 0
-    while (data[`/figma-link${n > 0 ? `/${n}` : ''}`]) {
-      const figma = data[`/figma-link${n > 0 ? `/${n}` : ''}`]
-      figmaContent += `
-${figma?.figmaLinkAdditionalInformation || ''}
-
-<a href="${figma?.figmaUrl || ''}" target="_blank" rel="noopener noreferrer">Figma link (opens in a new tab)</a>
-`
-      n++
-    }
-
-    if (prototypeContent.length) {
-      content += '### Prototype\n' + prototypeContent
-    }
-    if (figmaContent.length) {
-      content += '\n### Figma\n' + figmaContent
-    }
-
-    return content.length ? content : noLinks
+    return content
   }
 
-  const generateAccessibilityReportSection = (data, files) => {
-    const contentHeading =
-      'If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.\n'
-    const noContent =
-      'No accessibility findings have been added for this component.\n'
-    let content = ''
-    const externalAudit = data['/add-external-audit']
-    const externalAuditFile = files?.['/add-external-audit']
-    const internalAudit = data['/add-internal-audit']
-    const internalAuditFile = files?.['/add-internal-audit']
-    const assistiveTech = data['/add-assistive-tech']
-    const assistiveTechReport = files?.['/add-assistive-tech']
-
+  const generateAccessibilityTabContent = (data) => {
     const formatDate = (day, month, year) => {
       if (day && month && year) {
-        return moment(`${year}-${month}-${day}`, 'YYYY-M-D').format('MMMM YYYY')
+        return moment(`${year}-${month}-${day}`, 'YYYY-M-D').format('D MMMM YYYY')
       }
       return null
     }
 
-    if (externalAudit && externalAudit.externalOrganisation) {
-      const auditDate = formatDate(
+    let content = ''
+    const externalAudit = data['/add-external-audit']
+    const internalAudit = data['/add-internal-audit']
+    const assistiveTech = data['/add-assistive-tech']
+
+    if (externalAudit) {
+      const externalAuditDate = formatDate(
         externalAudit['auditDate-day'],
         externalAudit['auditDate-month'],
         externalAudit['auditDate-year']
       )
-      if (auditDate) {
-        content += `### External audit (${externalAudit.externalOrganisation}) - ${auditDate}\n`
-        if (externalAudit.issuesDiscovered) {
-          content += externalAudit.issuesDiscovered + '\n\n'
-        }
-        if (externalAudit.accessibilityReport && externalAuditFile) {
-          content += `[Download the accessibility report](/${externalAuditFile.path})\n`
-        }
-      }
+
+      content += `### External audit
+
+* Conducted by: ${externalAudit.externalOrganisation}
+* Date: ${externalAuditDate}
+
+#### Audit findings
+
+${externalAudit.issuesDiscovered}`
     }
 
-    if (internalAudit && internalAudit.internalOrganisation) {
-      const auditDate = formatDate(
+    if (internalAudit ) {
+      const internalAuditDate = formatDate(
         internalAudit['auditDate-day'],
         internalAudit['auditDate-month'],
         internalAudit['auditDate-year']
       )
-      if (auditDate) {
-        content += `### Internal audit (${internalAudit.internalOrganisation}) - ${auditDate}\n`
-        if (internalAudit.issuesDiscovered) {
-          content += internalAudit.issuesDiscovered + '\n\n'
-        }
-        if (internalAudit.accessibilityReport && internalAuditFile) {
-          content += `[Download the accessibility report](/${internalAuditFile.path})\n`
-        }
-      }
+      content += `### Internal review
+
+* By: ${internalAudit.internalOrganisation}
+* Date: ${internalAuditDate}
+
+#### Review findings
+
+${internalAudit.issuesDiscovered}`
     }
 
     if (assistiveTech) {
@@ -113,94 +96,108 @@ ${figma?.figmaLinkAdditionalInformation || ''}
         assistiveTech['testingDate-month'],
         assistiveTech['testingDate-year']
       )
-      if (testingDate) {
-        content += `### Assistive Technology audit - ${testingDate}\n`
-        if (assistiveTech.issuesDiscovered) {
-          content += assistiveTech.issuesDiscovered + '\n\n'
-        }
-        if (assistiveTech.accessibilityReport && assistiveTechReport) {
-          content += `[Download the accessibility report](/${assistiveTechReport.path})\n`
-        }
-      }
+        content += `### Assistive Technology testing
+
+Date: ${testingDate}
+
+#### Testing details
+
+${assistiveTech.issuesDiscovered}`
     }
 
-    return content ? contentHeading + content : noContent
+    if(externalAudit || internalAudit || assistiveTech) {
+      content = `Accessibility findings have been added for this component. There may be more findings in the ${githubDiscussionLink(sanitizedComponentName)}).\r\n
+
+${content}\r\n`
+    } else {
+      content = `No accessibility findings were included when this component was added. There may be more information in the ${githubDiscussionLink(sanitizedComponentName)}.\r\n`
+    }
+
+    content += `## Contribute accessibility findings
+
+    If you have accessibility findings that are relevant to this component you can add them to the ${githubDiscussionLink()}. This helps other people to use it in their service.`
+
+    return content
   }
 
-  const generateComponentCodeSection = (data) => {
-    const noCode =
-      'No code has been added for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.\n'
-
+  const generateCodeTabContent = (data) => {
     let content = ''
-    let n = 1
-    while (data[`/component-code${n > 1 ? `-${n}` : ''}`]) {
-      const componentCodeDetails =
-        data[`/component-code-details${n > 1 ? `-${n}` : ''}`]
+    let n = 0
+    while (data[`/component-code-details${n > 0 ? `-${n}` : ''}`]) {
+      const code = data[`/component-code-details${n > 0 ? `-${n}` : ''}`]
+      const language = code?.componentCodeLanguage === 'other' ? code?.componentCodeLanguageOther : code?.componentCodeLanguage
+
       content += `
-
-### ${componentCodeDetails?.componentCodeLanguage || ''}
-
-### ${componentCodeDetails?.componentCodeLanguageOther || ''}
+### Example ${n+1}: ${language}
 
 <div class="app-example app-example-borders">
-
-\`\`\`html
-${componentCodeDetails?.componentCode || ''}
+{% raw %}
+\`\`\`${code?.componentCodeLanguage === 'other' ? '' : code?.componentCodeLanguage}
+${code?.componentCode || ''}
 \`\`\`
-
+{% endraw %}
 </div>
-${componentCodeDetails?.componentCodeUsage || ''}
+${code?.componentCodeUsage || ''}
 `
 
       n++
     }
-    return content.length ? content : noCode
+
+    if(data['/component-code-details']){
+      content = `Code has been added for this component. There may be other code examples in the ${githubDiscussionLink(sanitizedComponentName)}.
+
+${content}
+
+## Contribute code for this component
+
+If you have code that is relevant to this component you can add it to the ${githubDiscussionLink()}. This helps other people to use it in their service.`
+    } else {
+      content = `No code was included when this contribution was added.
+
+You can use the ${githubDiscussionLink(sanitizedComponentName)} to:
+* view other code examples
+* add relevant code`
+    }
+
+    return content
   }
 
   const content = `---
-layout: layouts/tabbed-component.njk
 title: ${componentName}
-type: component
+tabs: true
 status: Experimental
 statusDate: ${moment().format('MMMM YYYY')}
-eleventyNavigation:
-  key: ${componentName}
-  parent: Components
-  excerpt: "${details?.briefDescription || ''}"
+excerpt: "${details?.briefDescription || ''}"
+lede: "${details?.briefDescription || ''}"
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/xxx
+${ data['/your-details']?.fullName === 'Not shared' ? '' : `contributorName: ${data['/your-details']?.fullName}`}
+${ data['/your-details']?.teamName === 'Not shared' ? '' : `contributorTeam: ${data['/your-details']?.teamName}`}
 ---
 
-{% tabs "Contents" %}
-
+{% tabs "paginate" %}
 {% tab "Overview" %}
 
-## Overview
-
 <div class="img-container">
-  ${files?.['/component-image'] ? '![' + componentName + '](/' + files['/component-image'].path + ')' : ''}
+  <img src="/${files['/component-image'].path }" alt="${componentName}" />
 </div>
 
+## Overview
 ${details?.componentOverview || ''}
 
-## How the component is currently used
+### How the component is currently used
 
 ${details?.howIsTheComponentUsed || ''}
 
+### Contribute to this component
+You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
+
 {% endtab %}
 
-{% tab "Code" %}
+{% tab "Designs" %}
 
-## Help develop existing building blocks in GitHub
+## Designs
 
-After a new building block is published in the design system, you, and other users, have the chance to continue enhancing it. This is done with users adding more information and resources to the component via GitHub.
-
-To do this you should:
-
-- go to the GitHub conversation
-- add your comments, information and resources about the building block
-
-## Code
-
-${generateComponentCodeSection(data)}
+${generateDesignsTabContent(data)}
 
 {% endtab %}
 
@@ -208,15 +205,15 @@ ${generateComponentCodeSection(data)}
 
 ## Accessibility
 
-${generateAccessibilityReportSection(data, files)}
+${generateAccessibilityTabContent(data)}
 
 {% endtab %}
 
-{% tab "Links" %}
+{% tab "Code" %}
 
-## Links
+## Code
 
-${generateLinksSection(data)}
+${generateCodeTabContent(data)}
 
 {% endtab %}
 

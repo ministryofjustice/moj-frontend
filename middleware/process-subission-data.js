@@ -29,6 +29,7 @@ const extractFilename = (key) => {
     ? lastSegment
     : `${lastSegment}.txt`
 
+
   return segments.join('-')
 }
 
@@ -94,7 +95,7 @@ const processSubmissionData = (sessionData, submissionFiles, submissionRef) => {
         const filename = extractFilename(key)
         if (filename.endsWith('.md')) {
           // Documentation should be outside of the submission folder
-          submissionData[filename] = sessionData[key]
+          submissionData[`docs/components/${filename}`] = sessionData[key]
         } else {
           const data = Object.assign({}, sessionData[key])
           if (key === '/your-details') {
