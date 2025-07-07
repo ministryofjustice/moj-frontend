@@ -1,5 +1,5 @@
 ---
-layout: layouts/plain.njk
+layout: layouts/content.njk
 title: Privacy notice
 ---
 

@@ -1,6 +1,7 @@
 export default {
-  layout: 'layouts/patterns.njk',
+  layout: 'layouts/content.njk',
   type: 'pattern',
+  subsection: 'Patterns',
   eleventyComputed: {
     eleventyNavigation: {
       key: (data) => data.title,

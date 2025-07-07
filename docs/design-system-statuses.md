@@ -1,15 +1,18 @@
 ---
 layout: layouts/content.njk
-subsection: About the design system
+subsection: About the Design System
 title: Building block statuses
+lede: Every building block on the MoJ Design System has a status. Learn more about what this means and how to use them.
 eleventyNavigation:
   key: Building block statuses
-  parent: About the design system
+  parent: About the Design System
   order: 20
   excerpt: "Building block statuses."
 ---
 
-Every building block on the MoJ Design System has a status. This is to help you know how to use them. The statuses are:
+## Overview
+
+The building block statuses are:
 
 - Experimental
 - To be reviewed
@@ -18,7 +21,7 @@ Every building block on the MoJ Design System has a status. This is to help you 
 
 The Design System team is working to bring everything to the ‘official’ status. They may also be archived.
 
-Learn how you can [help develop design system building blocks](/get-involved/suggest-a-change/).
+Learn how you can [help develop Design System building blocks](/get-involved/suggest-a-change/).
 
 ## ‘Experimental’ status <span class="govuk-tag govuk-tag--experimental" style="vertical-align:middle;" aria-hidden="true">Experimental</span>
 
@@ -26,7 +29,7 @@ Learn how you can [help develop design system building blocks](/get-involved/sug
   The experimental status will be launched later in 2025.
 </div>
 
-When the experimental status launches, anyone in the MoJ will be able to add a building block to the Design System. 'Experimental' building blocks will be given a brief sense check by the MoJ Design System team. They will next be changed when they're developed to 'official' status. 
+When the experimental status launches, anyone in the MoJ will be able to add a building block to the Design System. 'Experimental' building blocks will be given a brief sense check by the MoJ Design System team. They will next be changed when they're developed to 'official' status.
 
 An experimental building block can be anything from a screenshot with very brief documentation, to something more developed (with code and a Figma design). They can be used as a starting point, concept or idea.
 

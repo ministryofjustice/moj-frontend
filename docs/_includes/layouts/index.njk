@@ -2,9 +2,9 @@
 
 {% from "macros/heading/macro.njk" import heading %}
 
-{% set items = collections.all 
-  | eleventyNavigation(eleventyNavigation.key) 
-  | sort(false, false, "key") 
+{% set items = collections.all
+  | eleventyNavigation(eleventyNavigation.key)
+  | sort(false, false, "key")
 %}
 
 {% block content %}
@@ -17,6 +17,7 @@
   </div>
 
   <div class="app-layout__content">
+    <div class="app-page__width-container">
     {% for item in items %}
       <article class="app-article">
         <h2 class="govuk-heading-l">{{ item.title }}</h2>
@@ -26,5 +27,6 @@
         </p>
       </article>
     {% endfor %}
+    </div>
   </div>
 {% endblock %}
