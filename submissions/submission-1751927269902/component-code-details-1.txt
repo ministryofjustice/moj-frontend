@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "nunjucks",
+  "componentCodeUsage": "",
+  "componentCode": "{% from \"govuk/components/notification-banner/macro.njk\" import govukNotificationBanner %}\r\n\r\n{% set html %}\r\n  <p>\r\n    You have 7 days left to send your application.\r\n    <a href=\"#\">View application</a>.\r\n  </p>\r\n{% endset %}\r\n\r\n{{ govukNotificationBanner({\r\n  html: html\r\n}) }}",
+  "componentCodeLanguageOther": ""
+}
