@@ -1,0 +1,5 @@
+{
+  "componentName": "Test component",
+  "componentOverview": "adas adsd asd",
+  "howIsTheComponentUsed": " as dasda sd as "
+}
