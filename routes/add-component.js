@@ -1,4 +1,5 @@
 const crypto = require('crypto')
+const fs = require('fs')
 
 const express = require('express')
 const { xss } = require('express-xss-sanitizer')
@@ -7,7 +8,8 @@ const multer = require('multer')
 const {
   COMPONENT_FORM_PAGES,
   ADD_NEW_COMPONENT_ROUTE,
-  MESSAGES
+  MESSAGES,
+  ENV
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const { checkYourAnswers } = require('../helpers/check-your-answers')
@@ -52,7 +54,7 @@ const upload = multer({
 const router = express.Router()
 const checkYourAnswersPath = 'check-your-answers'
 
-router.get('/error', (req,res, next) => {
+router.get('/error', (req, res, next) => {
   const error = new ApplicationError('ohno')
   next(error)
 })
@@ -82,7 +84,9 @@ router.get(
     res.render(checkYourAnswersPath, {
       submitUrl: req.originalUrl,
       sections,
-      csrfToken: req?.session?.csrfToken
+      csrfToken: req?.session?.csrfToken,
+      isDev: ENV === 'development',
+      generateLink: `${ADD_NEW_COMPONENT_ROUTE}/generate-markdown`
     })
   }
 )
@@ -103,6 +107,42 @@ if (process.env.DEV_DUMMY_DATA) {
     })
   })
 }
+
+if (ENV === 'development') {
+  router.get('/generate-markdown', async (req, res, next) => {
+    if (!req.session) {
+      return next(new Error('Session not available'))
+    }
+
+    if (!req.session.checkYourAnswers) {
+      Object.assign(req.session, sessionData)
+      req.session.save((err) => {
+        if (err) {
+          return next(err)
+        }
+      })
+    }
+console.log(req.session)
+    const submissionRef = `submission-${Date.now()}`
+    const submissionFiles = await processSubmissionFiles(
+      req.session,
+      submissionRef
+    )
+    const { filename, content } = generateMarkdown(req.session, submissionFiles)
+
+    fs.writeFile(`docs/components/${filename}`, content, (err) => {
+      if (err) {
+        console.error(err)
+      } else {
+        // file written successfully
+        setTimeout(() => {
+          res.redirect(`/components/${filename.split('.').at(0).toLowerCase()}`)
+        }, 2000)
+      }
+    })
+  })
+}
+
 
 // Start
 router.get('/start', (req, res) => {
@@ -165,8 +205,11 @@ router.get('/email', (req, res) => {
 router.all('*', sessionStarted)
 
 router.post('/start', verifyCsrf, (req, res) => {
-  if(process.env.SKIP_VERIFICATION === 'true' && process.env.DEV_VERIFIED_EMAIL) {
-    req.session['/email'] = { emailAddress: process.env.DEV_VERIFIED_EMAIL}
+  if (
+    process.env.SKIP_VERIFICATION === 'true' &&
+    process.env.DEV_VERIFIED_EMAIL
+  ) {
+    req.session['/email'] = { emailAddress: process.env.DEV_VERIFIED_EMAIL }
     req.session.emailDomainAllowed = true
     req.session.verified = true
     res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/component-details`)
@@ -231,16 +274,16 @@ router.get('/email/resend', (req, res) => {
 })
 
 router.post('/email/resend', xss(), verifyCsrf, async (req, res) => {
-    res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email/check`)
-    const token = req?.session?.emailToken
-    const email = req?.session?.['/email']?.emailAddress
-    if (token && email) {
-      try {
-        await sendVerificationEmail(email, token)
-      } catch (error) {
-          console.error(`Error sending verification email: ${error}`)
-      }
+  res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email/check`)
+  const token = req?.session?.emailToken
+  const email = req?.session?.['/email']?.emailAddress
+  if (token && email) {
+    try {
+      await sendVerificationEmail(email, token)
+    } catch (error) {
+      console.error(`Error sending verification email: ${error}`)
     }
+  }
 })
 
 router.get('/email/not-allowed', (req, res) => {
@@ -386,7 +429,9 @@ router.post(
   validateFormData,
   (req, res, next) => {
     if (req.file) {
-      req.session.sessionFlash = MESSAGES.componentImageUploaded(req.file.originalname)
+      req.session.sessionFlash = MESSAGES.componentImageUploaded(
+        req.file.originalname
+      )
       saveSession(req, res, next)
     } else {
       // Skipping saving as no new file uploaded

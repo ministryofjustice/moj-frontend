@@ -1,30 +1,35 @@
 /* eslint-disable prefer-template */
 const moment = require('moment')
+const { MAX_ADD_ANOTHER } = require('../config.js')
+const { ucFirst } = require('../helpers/text-helper.js')
 
 const generateMarkdown = (data, files) => {
+  console.log(data)
   const { '/component-details': details } = data
 
   const componentName = details?.componentName || 'unknown-component'
-  const sanitizedComponentName = componentName
-    .toLowerCase()
-    .replace(/[^a-z0-9-]/g, '-')
-    .replace(/-+/g, '-')
+  const sanitizedComponentName = ucFirst(
+    componentName
+      .toLowerCase()
+      .replace(/[^a-z0-9-]/g, '-')
+      .replace(/-+/g, '-')
+  )
 
   const filename = `${sanitizedComponentName}.md`
 
-  const githubDiscussionLink = (componentName='') => {
+  const githubDiscussionLink = (componentName = '') => {
     return `[${componentName ? `${componentName} ` : ''}Github discussion]({{ githuburl }})`
-}
+  }
 
   const generateDesignsTabContent = (data) => {
     let content = ''
 
-    if(data['/figma-link']) {
+    if (data['/figma-link']) {
       content += `A Figma link has been added for this component. There may be more links and resources in the ${githubDiscussionLink(sanitizedComponentName)}.\r\n
 
 ### Figma link
 
-      [View the ${sanitizedComponentName} in Figma (opens in a new tab)](${data['/figma-link']?.figmaUrl || ''})\r\n`
+      [View the ${sanitizedComponentName} in Figma (opens in a new tab)](${data['/figma-link']?.figmaUrl || ''})\r\n\r\n`
 
       content += `${data['/figma-link']?.figmaLinkAdditionalInformation || ''}\r\n`
 
@@ -36,7 +41,7 @@ const generateMarkdown = (data, files) => {
 
       There may be more information in the ${githubDiscussionLink(sanitizedComponentName)}. You can also view the component image in the overview.
 
-      ## Contribute a Figma link
+## Contribute a Figma link
 
       If you have a Figma link for this component (or a component like it) you can add it to ${githubDiscussionLink()}. This helps other people to use it in their service.`
     }
@@ -47,7 +52,9 @@ const generateMarkdown = (data, files) => {
   const generateAccessibilityTabContent = (data) => {
     const formatDate = (day, month, year) => {
       if (day && month && year) {
-        return moment(`${year}-${month}-${day}`, 'YYYY-M-D').format('D MMMM YYYY')
+        return moment(`${year}-${month}-${day}`, 'YYYY-M-D').format(
+          'D MMMM YYYY'
+        )
       }
       return null
     }
@@ -74,7 +81,7 @@ const generateMarkdown = (data, files) => {
 ${externalAudit.issuesDiscovered}`
     }
 
-    if (internalAudit ) {
+    if (internalAudit) {
       const internalAuditDate = formatDate(
         internalAudit['auditDate-day'],
         internalAudit['auditDate-month'],
@@ -96,7 +103,7 @@ ${internalAudit.issuesDiscovered}`
         assistiveTech['testingDate-month'],
         assistiveTech['testingDate-year']
       )
-        content += `### Assistive Technology testing
+      content += `### Assistive Technology testing
 
 Date: ${testingDate}
 
@@ -105,8 +112,8 @@ Date: ${testingDate}
 ${assistiveTech.issuesDiscovered}`
     }
 
-    if(externalAudit || internalAudit || assistiveTech) {
-      content = `Accessibility findings have been added for this component. There may be more findings in the ${githubDiscussionLink(sanitizedComponentName)}).\r\n
+    if (externalAudit || internalAudit || assistiveTech) {
+      content = `Accessibility findings have been added for this component. There may be more findings in the ${githubDiscussionLink(sanitizedComponentName)}.\r\n
 
 ${content}\r\n`
     } else {
@@ -121,29 +128,49 @@ ${content}\r\n`
   }
 
   const generateCodeTabContent = (data) => {
+    const hljsLang = (lang) => {
+      switch(lang.toLowerCase()) {
+        case 'html':
+        case 'css':
+        case 'scss':
+        case 'javascript':
+        case 'typescript':
+          return lang
+        case 'nunjucks':
+          return 'njk'
+        case 'sass':
+          return 'scss'
+        case 'react':
+          return 'javascript'
+        default:
+          return ''
+      }
+    }
     let content = ''
-    let n = 0
-    while (data[`/component-code-details${n > 0 ? `-${n}` : ''}`]) {
-      const code = data[`/component-code-details${n > 0 ? `-${n}` : ''}`]
-      const language = code?.componentCodeLanguage === 'other' ? code?.componentCodeLanguageOther : code?.componentCodeLanguage
+    for(let i=0;i<=MAX_ADD_ANOTHER;i++) {
+      const code = data[`/component-code-details${i === 0 ? '' : `/${i}`}`]
+      if(!code) {
+        break
+      }
+      const language =
+        code?.componentCodeLanguage === 'other'
+          ? code?.componentCodeLanguageOther
+          : code?.componentCodeLanguage
+
 
       content += `
-### Example ${n+1}: ${language}
+### Example ${i + 1}: ${language}
 
-<div class="app-example app-example-borders">
+\`\`\`${hljsLang(language)}
 {% raw %}
-\`\`\`${code?.componentCodeLanguage === 'other' ? '' : code?.componentCodeLanguage}
 ${code?.componentCode || ''}
-\`\`\`
 {% endraw %}
-</div>
-${code?.componentCodeUsage || ''}
-`
+\`\`\`
 
-      n++
+${code?.componentCodeUsage || ''}\r\n\r\n`
     }
 
-    if(data['/component-code-details']){
+    if (data['/component-code-details']) {
       content = `Code has been added for this component. There may be other code examples in the ${githubDiscussionLink(sanitizedComponentName)}.
 
 ${content}
@@ -155,30 +182,32 @@ If you have code that is relevant to this component you can add it to the ${gith
       content = `No code was included when this contribution was added.
 
 You can use the ${githubDiscussionLink(sanitizedComponentName)} to:
+
 * view other code examples
 * add relevant code`
     }
 
+    console.log(content)
     return content
   }
 
-  const content = `---
-title: ${componentName}
+const content = `---
+title: ${ucFirst(componentName)}
 tabs: true
 status: Experimental
 statusDate: ${moment().format('MMMM YYYY')}
 excerpt: "${details?.briefDescription || ''}"
 lede: "${details?.briefDescription || ''}"
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/xxx
-${ data['/your-details']?.fullName === 'Not shared' ? '' : `contributorName: ${data['/your-details']?.fullName}`}
-${ data['/your-details']?.teamName === 'Not shared' ? '' : `contributorTeam: ${data['/your-details']?.teamName}`}
+${data['/your-details']?.fullName === 'Not shared' ? '' : `contributorName: ${data['/your-details']?.fullName}`}
+${data['/your-details']?.teamName === 'Not shared' ? '' : `contributorTeam: ${data['/your-details']?.teamName}`}
 ---
 
 {% tabs "paginate" %}
 {% tab "Overview" %}
 
 <div class="img-container">
-  <img src="/${files['/component-image'].path }" alt="${componentName}" />
+  <img src="/${files['/component-image']?.path}" alt="${componentName}" />
 </div>
 
 ## Overview
