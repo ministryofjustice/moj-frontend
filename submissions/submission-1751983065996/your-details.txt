@@ -1,0 +1,10 @@
+{
+  "fullName": "Murray Lippiatt",
+  "emailAddress": "murray.lippiatt1@justice.gov.uk",
+  "teamName": "DS Team",
+  "shareYourDetails": [
+    "",
+    "addNameToComponentPage",
+    "addTeamNameToComponentPage"
+  ]
+}
