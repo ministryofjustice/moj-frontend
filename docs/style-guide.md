@@ -16,7 +16,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 24 June 2025
+Last updated: 8 July 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -485,6 +485,12 @@ SDS40 stands for Standard determinate sentence with a 40% release date. SDS40 is
 
 {% endaccordionSection %}
 {% accordionSection "T" %}
+
+### Taser (HMPPS only)
+
+Always capitalise, as Taser is a brand name. ‘Taser’ is more widely used across HMPPS than the generic term ‘stun gun’.
+
+Avoid using ‘Taser’ as a verb. Taser operatives ‘draw a Taser’ and follow a series of warnings before potentially ‘deploying’ the Taser.
 
 ### temporary absence
 

@@ -18,6 +18,17 @@ lede: 'New and updated entries in the <a href="/content-standards/style-guide/">
     <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
+        <a href="/content-standards/style-guide#taser-%28hmpps-only%29"><b>Taser (HMPPS only)</b></a>
+      </td>
+      <td class="govuk-table__cell">
+        <span class="govuk-tag govuk-tag--green">New</span>
+      </td>
+      <td class="govuk-table__cell"><p>Always capitalise, as Taser is a brand name. ‘Taser’ is more widely used across HMPPS than the generic term ‘stun gun’.</p>
+      <p>Avoid using ‘Taser’ as a verb. Taser operatives ‘draw a Taser’ and follow a series of warnings before potentially ‘deploying’ the Taser.</p>
+      <td class="govuk-table__cell" data-sort-value="20250708">8 July 2025</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
         <a href="/content-standards/style-guide#acronyms-and-initialisms"><b>acronyms and initialisms</b></a>
       </td>
       <td class="govuk-table__cell">
