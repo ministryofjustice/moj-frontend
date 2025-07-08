@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "nunjucks",
+  "componentCodeLanguageOther": "Nunjucks",
+  "componentCodeUsage": "In lacus ipsum, molestie nec sapien vitae, tincidunt tristique nisi. Integer a lacus quis nisl mollis fringilla. Nullam blandit imperdiet mauris, ac feugiat ante. \r\n\r\nVestibulum nec semper nulla, ut ultricies massa. Curabitur lacinia tortor augue, sed varius leo viverra non. Fusce vitae libero ac orci elementum vestibulum eu et libero. In rhoncus laoreet nisi, sit amet rutrum tellus. Ut ut dui in metus sodales molestie eu ut purus.\r\n\r\n",
+  "componentCode": "{% from \"govuk/components/notification-banner/macro.njk\" import govukNotificationBanner %}\r\n\r\n{% set html %}\r\n  <p>\r\n    You have 7 days left to send your application.\r\n    <a href=\"#\">View application</a>.\r\n  </p>\r\n{% endset %}\r\n\r\n{{ govukNotificationBanner({\r\n  html: html\r\n}) }}"
+}
