@@ -78,7 +78,7 @@ const generateMarkdown = (data, files) => {
 
 #### Audit findings
 
-${externalAudit.issuesDiscovered}`
+${externalAudit.issuesDiscovered}\r\n`
     }
 
     if (internalAudit) {
@@ -94,7 +94,7 @@ ${externalAudit.issuesDiscovered}`
 
 #### Review findings
 
-${internalAudit.issuesDiscovered}`
+${internalAudit.issuesDiscovered}\r\n`
     }
 
     if (assistiveTech) {
@@ -109,7 +109,7 @@ Date: ${testingDate}
 
 #### Testing details
 
-${assistiveTech.issuesDiscovered}`
+${assistiveTech.issuesDiscovered}\r\n`
     }
 
     if (externalAudit || internalAudit || assistiveTech) {
