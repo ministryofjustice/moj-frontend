@@ -39,7 +39,7 @@
   max-width: 1100px;
   @include govuk-responsive-padding(6);
 
-  @include govuk-media-query($app-breakpoint) {
+  @include govuk-media-query(app.$breakpoint) {
     @include govuk-responsive-padding(9);
   }
 }
