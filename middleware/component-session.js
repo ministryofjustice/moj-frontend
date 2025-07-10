@@ -9,8 +9,8 @@ const {
   COMPONENT_FORM_PAGES: formPages,
   MESSAGES
 } = require('../config')
-const { getAnswersForSection } = require('../helpers/check-your-answers')
 const ApplicationError = require('../helpers/application-error')
+const { getAnswersForSection } = require('../helpers/check-your-answers')
 const extractBody = require('../helpers/extract-body')
 const getCurrentFormPages = require('../helpers/form-pages')
 const { getNextPage, getPreviousPage } = require('../helpers/page-navigation')
@@ -90,10 +90,6 @@ const setNextPage = (req, res, next) => {
   next()
 }
 
-/**
- * @param {string[]} pages - array of pages to clear data for
- * @param {object} session - array of pages to clear data for
- */
 const clearSkippedPageData = (req, res, next) => {
   console.log('clearing data for skipped pages')
   const requiredPages = getCurrentFormPages(req.session).map((page) => {

@@ -12,7 +12,6 @@ const markdownItAnchor = require('markdown-it-anchor')
 const nunjucks = require('nunjucks')
 
 const rev = require('./filters/rev')
-
 const releasePackage = require('./package/package.json')
 const tabs = require('./shortcodes/tabs')
 const mojFilters = require('./src/moj/filters/all')
@@ -257,33 +256,26 @@ module.exports = function (eleventyConfig) {
   })
 
   // Copies the 11ty base layout and partials to the contributions app layouts directory
-  eleventyConfig.on(
-    'eleventy.before',
-    async ({ directories, runMode, outputMode }) => {
-      const srcDir = `${directories.includes}layouts`
-      const destDir = './views/common'
-      const templates = [
-        'base.njk',
-        '404.njk',
-        '500.njk',
-        'partials/header.njk',
-        'partials/header-no-nav.njk',
-        'partials/footer.njk'
-        ]
+  eleventyConfig.on('eleventy.before', async ({ directories }) => {
+    const srcDir = `${directories.includes}layouts`
+    const destDir = './views/common'
+    const templates = [
+      'base.njk',
+      '404.njk',
+      '500.njk',
+      'partials/header.njk',
+      'partials/header-no-nav.njk',
+      'partials/footer.njk'
+    ]
 
-      templates.forEach((template) => {
-        fs.copyFile(
-          `${srcDir}/${template}`,
-          `${destDir}/${template}`,
-          (err) => {
-            if (err) {
-              console.log('Error Found:', err)
-            }
-          }
-        )
+    templates.forEach((template) => {
+      fs.copyFile(`${srcDir}/${template}`, `${destDir}/${template}`, (err) => {
+        if (err) {
+          console.log('Error Found:', err)
+        }
       })
-    }
-  )
+    })
+  })
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')

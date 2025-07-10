@@ -294,5 +294,4 @@ module.exports = {
     color: #0b0c0c
 }`
   }
-
 }

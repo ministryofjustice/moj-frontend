@@ -27,6 +27,9 @@
       "path": "./shortcodes/tsconfig.json"
     },
     {
+      "path": "./filters/tsconfig.json"
+    },
+    {
       "path": "./src/tsconfig.json"
     },
     {

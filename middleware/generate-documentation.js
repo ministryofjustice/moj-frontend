@@ -1,5 +1,6 @@
 /* eslint-disable prefer-template */
 const moment = require('moment')
+
 const { MAX_ADD_ANOTHER } = require('../config.js')
 const { ucFirst } = require('../helpers/text-helper.js')
 
@@ -129,7 +130,7 @@ ${content}\r\n`
 
   const generateCodeTabContent = (data) => {
     const hljsLang = (lang) => {
-      switch(lang.toLowerCase()) {
+      switch (lang.toLowerCase()) {
         case 'html':
         case 'css':
         case 'scss':
@@ -147,16 +148,15 @@ ${content}\r\n`
       }
     }
     let content = ''
-    for(let i=0;i<=MAX_ADD_ANOTHER;i++) {
+    for (let i = 0; i <= MAX_ADD_ANOTHER; i++) {
       const code = data[`/component-code-details${i === 0 ? '' : `/${i}`}`]
-      if(!code) {
+      if (!code) {
         break
       }
       const language =
         code?.componentCodeLanguage === 'other'
           ? code?.componentCodeLanguageOther
           : code?.componentCodeLanguage
-
 
       content += `
 ### Example ${i + 1}: ${language}
@@ -191,7 +191,7 @@ You can use the ${githubDiscussionLink(sanitizedComponentName)} to:
     return content
   }
 
-const content = `---
+  const content = `---
 title: ${ucFirst(componentName)}
 tabs: true
 status: Experimental

@@ -35,7 +35,6 @@ const {
   validatePageParams,
   setCsrfToken
 } = require('../middleware/component-session')
-const { generateMarkdown } = require('../middleware/generate-documentation')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
 const {
   sendSubmissionEmail,
@@ -112,42 +111,47 @@ if (process.env.DEV_DUMMY_DATA) {
 }
 
 if (ENV === 'development') {
-  router.get('/generate-markdown', (req, res, next) => {
-    if (!req.session) {
-      return next(new Error('Session not available'))
-    }
+  router.get(
+    '/generate-markdown',
+    (req, res, next) => {
+      if (!req.session) {
+        return next(new Error('Session not available'))
+      }
 
-    if (!req.session.checkYourAnswers) {
-      Object.assign(req.session, mockSessionData)
-      req.session.save((err) => {
+      if (!req.session.checkYourAnswers) {
+        Object.assign(req.session, mockSessionData)
+        req.session.save((err) => {
+          if (err) {
+            return next(err)
+          }
+        })
+      }
+      next()
+    },
+    processPersonalData,
+    generateSubmissionRef,
+    async (req, res, next) => {
+      console.log('processing files')
+      req.submissionFiles = await processSubmissionFiles(req)
+      next()
+    },
+    buildComponentPage,
+    async (req, res) => {
+      const { markdownFilename: filename, markdownContent: content } = req
+      fs.writeFile(`docs/components/${filename}`, content, (err) => {
         if (err) {
-          return next(err)
+          console.error(err)
+        } else {
+          // file written successfully
+          setTimeout(() => {
+            res.redirect(
+              `/components/${filename.split('.').at(0).toLowerCase()}`
+            )
+          }, 2000)
         }
       })
     }
-    next()
-  },
-  processPersonalData,
-  generateSubmissionRef,
-  async (req, res, next) => {
-    console.log('processing files')
-    req.submissionFiles = await processSubmissionFiles(req)
-    next()
-  },
-  buildComponentPage,
-  async (req,res) => {
-    const { markdownFilename: filename, markdownContent: content} = req
-    fs.writeFile(`docs/components/${filename}`, content, (err) => {
-      if (err) {
-        console.error(err)
-      } else {
-        // file written successfully
-        setTimeout(() => {
-          res.redirect(`/components/${filename.split('.').at(0).toLowerCase()}`)
-        }, 2000)
-      }
-    })
-  })
+  )
 }
 
 // Start

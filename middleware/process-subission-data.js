@@ -1,6 +1,5 @@
-const { generateMarkdown } = require('../middleware/generate-documentation')
-
 const redis = require('../helpers/redis-client')
+const { generateMarkdown } = require('../middleware/generate-documentation')
 
 const imageDirectory = 'assets/images'
 const fileDirectory = 'assets/files'
@@ -169,9 +168,9 @@ const buildComponentPage = (req, res, next) => {
   next()
 }
 
-const generateSubmissionRef = (req,res,next) => {
-    req.submissionRef = `submission-${Date.now()}`
-    next()
+const generateSubmissionRef = (req, res, next) => {
+  req.submissionRef = `submission-${Date.now()}`
+  next()
 }
 
 module.exports = {

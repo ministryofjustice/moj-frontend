@@ -22,7 +22,7 @@ const config = {
   SENTRY_DSN: process.env.SENTRY_DSN,
   ALLOWED_EMAIL_DOMAINS: ['justice.gov.uk'],
   COMPONENT_FORM_PAGES: {
-    'email': {
+    email: {
       title: 'Enter your email address',
       fields: {
         emailAddress: {
@@ -254,15 +254,15 @@ const config = {
       text: `Enter your email address below to receive a new verification link.`
     },
     emailVerificationSuccess: {
-        type: 'success',
-        title: 'Your email address has been verified',
-        text: 'You can now submit a new component'
-      },
+      type: 'success',
+      title: 'Your email address has been verified',
+      text: 'You can now submit a new component'
+    },
     emailVerificationInvalidToken: {
-        type: 'error',
-        title: 'Email verification link invalid',
-        text: `Enter your email address below to receive a new verification link.`
-      },
+      type: 'error',
+      title: 'Email verification link invalid',
+      text: `Enter your email address below to receive a new verification link.`
+    },
     componentImageUploaded: (filename) => {
       return {
         type: 'success',

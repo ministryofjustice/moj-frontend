@@ -21,7 +21,6 @@ const sendEmail = async (
   retries = NOTIFY_EMAIL_MAX_RETRIES,
   backoff = NOTIFY_EMAIL_RETRY_MS
 ) => {
-
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       console.log(

@@ -81,9 +81,6 @@ const shareYourDetailsValueReplacement = (value) => {
 
 /**
  * gets all sections that should be included in the cya page
- *
- * @param {array} sessionpages - keys for the pages present in the session
- * @returns {object}
  */
 const getSections = () => {
   const sections = {}
@@ -116,7 +113,7 @@ const getSections = () => {
  * builds an object for a summary card section in the cya page
  *
  * @param {string} sectionPath - string key of the section, includes subpage
- *                               number e.g. component-code-details/1
+ *   number e.g. component-code-details/1
  * @param {object} sectionConfig - config object for the section
  * @param {number} sectionNumber - subpage number for the section
  * @returns {object}
@@ -142,8 +139,8 @@ const buildSection = (sectionPath, sectionConfig, sectionNumber) => {
     section.actions.push(link(href, 'Change', section.title))
   } else {
     const linkText = sectionKey.startsWith('component-code')
-        ? 'Review & Change'
-        : 'Change'
+      ? 'Review & Change'
+      : 'Change'
 
     section.actions.push(link(sectionPath, linkText, section.title))
   }
@@ -153,7 +150,7 @@ const buildSection = (sectionPath, sectionConfig, sectionNumber) => {
 
 const link = (href, text, visuallyHiddenText) => {
   return {
-    href: `${hrefRoot}${(href.startsWith('/') ? href : `/${href}`)}`,
+    href: `${hrefRoot}${href.startsWith('/') ? href : `/${href}`}`,
     text,
     visuallyHiddenText
   }
@@ -166,7 +163,11 @@ const link = (href, text, visuallyHiddenText) => {
  * @param {object} sessionData - user response data from the session
  * @returns {Array}
  */
-const getAnswersForSection = (sectionKey, sessionData = {}, hideCode=true) => {
+const getAnswersForSection = (
+  sectionKey,
+  sessionData = {},
+  hideCode = true
+) => {
   let codeLanguageIsOther = false
   const data = combineDateFields(sessionData)
 
@@ -223,6 +224,6 @@ const checkYourAnswers = (session) => {
 }
 
 module.exports = {
- checkYourAnswers,
- getAnswersForSection
+  checkYourAnswers,
+  getAnswersForSection
 }

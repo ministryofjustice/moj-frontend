@@ -5,8 +5,7 @@ const schema = Joi.object({
     .email({ tlds: { allow: false } })
     .required()
     .messages({
-      'string.email':
-        'Enter an email address ending @justice.gov.uk',
+      'string.email': 'Enter an email address ending @justice.gov.uk',
       'string.empty': 'Enter your email address',
       'any.required': 'Enter your email address'
     })
