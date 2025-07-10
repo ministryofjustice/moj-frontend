@@ -1,4 +1,5 @@
 const crypto = require('crypto')
+const fs = require('fs')
 
 const express = require('express')
 const { xss } = require('express-xss-sanitizer')
@@ -7,12 +8,13 @@ const multer = require('multer')
 const {
   COMPONENT_FORM_PAGES,
   ADD_NEW_COMPONENT_ROUTE,
-  MESSAGES
+  MESSAGES,
+  ENV
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const { checkYourAnswers } = require('../helpers/check-your-answers')
 const getPrTitleAndDescription = require('../helpers/get-pr-title-and-description')
-const sessionData = require('../helpers/mockSessionData/sessionData.js')
+const mockSessionData = require('../helpers/mockSessionData/sessionData.js')
 const { urlToTitleCase } = require('../helpers/text-helper')
 const {
   validateFormData,
@@ -41,8 +43,11 @@ const {
   sendVerificationEmail
 } = require('../middleware/notify-email')
 const {
+  processPersonalData,
   processSubmissionData,
-  processSubmissionFiles
+  processSubmissionFiles,
+  buildComponentPage,
+  generateSubmissionRef
 } = require('../middleware/process-subission-data')
 const verifyCsrf = require('../middleware/verify-csrf')
 const upload = multer({
@@ -52,7 +57,7 @@ const upload = multer({
 const router = express.Router()
 const checkYourAnswersPath = 'check-your-answers'
 
-router.get('/error', (req,res, next) => {
+router.get('/error', (req, res, next) => {
   const error = new ApplicationError('ohno')
   next(error)
 })
@@ -82,7 +87,9 @@ router.get(
     res.render(checkYourAnswersPath, {
       submitUrl: req.originalUrl,
       sections,
-      csrfToken: req?.session?.csrfToken
+      csrfToken: req?.session?.csrfToken,
+      isDev: ENV === 'development',
+      generateLink: `${ADD_NEW_COMPONENT_ROUTE}/generate-markdown`
     })
   }
 )
@@ -94,12 +101,51 @@ if (process.env.DEV_DUMMY_DATA) {
       return next(new Error('Session not available'))
     }
 
-    Object.assign(req.session, sessionData)
+    Object.assign(req.session, mockSessionData)
     req.session.save((err) => {
       if (err) {
         return next(err)
       }
       next()
+    })
+  })
+}
+
+if (ENV === 'development') {
+  router.get('/generate-markdown', (req, res, next) => {
+    if (!req.session) {
+      return next(new Error('Session not available'))
+    }
+
+    if (!req.session.checkYourAnswers) {
+      Object.assign(req.session, mockSessionData)
+      req.session.save((err) => {
+        if (err) {
+          return next(err)
+        }
+      })
+    }
+    next()
+  },
+  processPersonalData,
+  generateSubmissionRef,
+  async (req, res, next) => {
+    console.log('processing files')
+    req.submissionFiles = await processSubmissionFiles(req)
+    next()
+  },
+  buildComponentPage,
+  async (req,res) => {
+    const { markdownFilename: filename, markdownContent: content} = req
+    fs.writeFile(`docs/components/${filename}`, content, (err) => {
+      if (err) {
+        console.error(err)
+      } else {
+        // file written successfully
+        setTimeout(() => {
+          res.redirect(`/components/${filename.split('.').at(0).toLowerCase()}`)
+        }, 2000)
+      }
     })
   })
 }
@@ -165,8 +211,11 @@ router.get('/email', (req, res) => {
 router.all('*', sessionStarted)
 
 router.post('/start', verifyCsrf, (req, res) => {
-  if(process.env.SKIP_VERIFICATION === 'true' && process.env.DEV_VERIFIED_EMAIL) {
-    req.session['/email'] = { emailAddress: process.env.DEV_VERIFIED_EMAIL}
+  if (
+    process.env.SKIP_VERIFICATION === 'true' &&
+    process.env.DEV_VERIFIED_EMAIL
+  ) {
+    req.session['/email'] = { emailAddress: process.env.DEV_VERIFIED_EMAIL }
     req.session.emailDomainAllowed = true
     req.session.verified = true
     res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/component-details`)
@@ -231,16 +280,16 @@ router.get('/email/resend', (req, res) => {
 })
 
 router.post('/email/resend', xss(), verifyCsrf, async (req, res) => {
-    res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email/check`)
-    const token = req?.session?.emailToken
-    const email = req?.session?.['/email']?.emailAddress
-    if (token && email) {
-      try {
-        await sendVerificationEmail(email, token)
-      } catch (error) {
-          console.error(`Error sending verification email: ${error}`)
-      }
+  res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email/check`)
+  const token = req?.session?.emailToken
+  const email = req?.session?.['/email']?.emailAddress
+  if (token && email) {
+    try {
+      await sendVerificationEmail(email, token)
+    } catch (error) {
+      console.error(`Error sending verification email: ${error}`)
     }
+  }
 })
 
 router.get('/email/not-allowed', (req, res) => {
@@ -334,24 +383,23 @@ router.post(
   `/${checkYourAnswersPath}`,
   verifyCsrf,
   getRawSessionText,
+  processPersonalData,
+  generateSubmissionRef,
+  async (req, res, next) => {
+    console.log('processing files')
+    req.submissionFiles = await processSubmissionFiles(req)
+    next()
+  },
+  buildComponentPage,
+  processSubmissionData,
   async (req, res) => {
-    const submissionRef = `submission-${Date.now()}`
-    const submissionFiles = await processSubmissionFiles(
-      req.session,
-      submissionRef
-    )
-    // console.log(submissionFiles)
-    const { filename: markdownFilename, content: markdownContent } =
-      generateMarkdown(req.session, submissionFiles)
-    const markdown = {}
-    markdown[markdownFilename] = markdownContent
-    const { sessionText } = req
-    const session = { ...req.session, ...markdown }
-    const sessionData = processSubmissionData(
+    const {
       session,
-      submissionFiles,
-      submissionRef
-    )
+      sessionText,
+      submissionData,
+      submissionRef,
+      markdownContent
+    } = req
 
     req.session.regenerate((err) => {
       if (err) {
@@ -361,7 +409,7 @@ router.post(
     })
 
     try {
-      const branchName = await pushToGitHub(sessionData, submissionRef)
+      const branchName = await pushToGitHub(submissionData, submissionRef)
       const { title, description } = getPrTitleAndDescription(session)
       const pr = await createPullRequest(branchName, title, description)
       await sendPrEmail(pr)
@@ -386,7 +434,9 @@ router.post(
   validateFormData,
   (req, res, next) => {
     if (req.file) {
-      req.session.sessionFlash = MESSAGES.componentImageUploaded(req.file.originalname)
+      req.session.sessionFlash = MESSAGES.componentImageUploaded(
+        req.file.originalname
+      )
       saveSession(req, res, next)
     } else {
       // Skipping saving as no new file uploaded

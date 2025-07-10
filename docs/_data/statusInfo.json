@@ -12,7 +12,7 @@
   "Experimental": {
     "link": "How to use ‘experimental’ {{ types }}",
     "linkContent": "Anyone can add an ‘experimental’ status {{ type }} to the MoJ Design System. They’re early in development and can be used as a starting point.",
-    "statusMessage": "Created"
+    "statusMessage": "Added"
   },
   "Archived": {
     "link": "About ‘archived’ {{ types }}",
