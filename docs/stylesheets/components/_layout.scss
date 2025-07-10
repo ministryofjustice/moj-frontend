@@ -40,6 +40,19 @@
   @include govuk-responsive-padding(6);
 
   @include govuk-media-query(app.$breakpoint) {
-    @include govuk-responsive-padding(9);
+    @include govuk-responsive-padding(9, 'top');
+      @include govuk-responsive-padding(9, 'right');
+      @include govuk-responsive-padding(9, 'left');
+  }
+}
+
+.app-layout__back-link  {
+  position: absolute;
+  @include govuk-responsive-padding(6, 'right');
+  @include govuk-responsive-padding(6, 'left');
+
+  @include govuk-media-query(app.$breakpoint) {
+      @include govuk-responsive-padding(9, 'right');
+      @include govuk-responsive-padding(9, 'left');
   }
 }

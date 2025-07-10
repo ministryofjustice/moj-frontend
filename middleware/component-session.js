@@ -5,7 +5,9 @@ const sanitize = require('sanitize-filename')
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ADD_NEW_COMPONENT_ROUTE,
-  COMPONENT_FORM_PAGES: formPages
+  ALLOWED_EMAIL_DOMAINS: allowedDomains,
+  COMPONENT_FORM_PAGES: formPages,
+  MESSAGES
 } = require('../config')
 const { getAnswersForSection } = require('../helpers/check-your-answers')
 const ApplicationError = require('../helpers/application-error')
@@ -38,11 +40,33 @@ const getPageData = (req) => {
   return formPages[pageData]
 }
 
+const checkEmailDomain = (req, res, next) => {
+  let allowed = false
+  const email = req?.body?.emailAddress
+  console.log({ email })
+  if (email) {
+    const domain = email.split('@').at(-1)
+    console.log({ domain })
+    if (allowedDomains.includes(domain)) {
+      allowed = true
+    }
+  }
+  console.log({ allowed })
+  req.emailDomainAllowed = allowed
+  next()
+}
+
 const transformErrorsToErrorList = (errors) => {
   return errors.map((error) => ({
     text: error.message,
     href: `#${camelToKebab(error.path[0])}`
   }))
+}
+
+const setCurrentFormPages = (req, res, next) => {
+  const { url, session } = req
+  req.formPages = getCurrentFormPages(url, session)
+  next()
 }
 
 const setNextPage = (req, res, next) => {
@@ -80,9 +104,15 @@ const clearSkippedPageData = (req, res, next) => {
   // Delete page and subpage data
   for (const sessionPage of Object.keys(req.session)) {
     if (
-      !['started', 'cookie', 'csrfToken', 'checkYourAnswers'].includes(
-        sessionPage
-      )
+      ![
+        'started',
+        'cookie',
+        'csrfToken',
+        'checkYourAnswers',
+        'emailToken',
+        'emailDomainAllowed',
+        'verified'
+      ].includes(sessionPage)
     ) {
       console.log(sessionPage)
       const parentPage = `/${sessionPage.split('/')[1]}`
@@ -138,7 +168,7 @@ const validateFormDataFileUpload = (err, req, res, next) => {
 
 const validateFormData = (req, res, next) => {
   console.log('validate form data')
-  const schemaName = req.url.split('/')[1]
+  const schemaName = req.url.split('/').at(1).split('?').at(0)
   const schema = require(`../schema/${schemaName}.schema`)
   const body = extractBody(req?.url, { ...req.body })
   delete body._csrf
@@ -190,6 +220,7 @@ const validateFormData = (req, res, next) => {
 }
 
 const saveSession = (req, res, next) => {
+  console.log('saving session')
   if (!req.session) req.session = {}
 
   const { _csrf, ...body } = req.body
@@ -298,10 +329,7 @@ const removeFromSession = (req, res, next) => {
     const filename = req.session[url]?.componentImage?.originalname
     console.log(filename)
     if (filename) {
-      req.session.sessionFlash = {
-        type: 'success',
-        message: `File ‘${filename}’ has been removed.`
-      }
+      req.session.sessionFlash = MESSAGES.componentImageRemoved(filename)
     }
   }
 
@@ -330,6 +358,14 @@ const removeFromSession = (req, res, next) => {
 const sessionStarted = (req, res, next) => {
   if (!req?.session?.started) {
     console.error('No session available')
+    return res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/start`)
+  }
+  next()
+}
+
+const sessionVerified = (req, res, next) => {
+  if (!req?.session?.verified) {
+    console.error('No verified email for session')
     return res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/start`)
   }
   next()
@@ -376,8 +412,40 @@ const saveFileToRedis = async (req, res, next) => {
   next()
 }
 
+const validatePageParams = (req, res, next) => {
+  const validPages = Object.keys(formPages)
+  let valid = true
+
+  if (req.params.page) {
+    // if page is present it must be in allowlist of configured pages
+    valid = validPages.includes(req.params.page)
+  }
+
+  if (req.params.subpage) {
+    // if subpage is present it must always be a number
+    valid = /^\d+$/.test(req.params.subpage)
+  }
+
+  if (valid) {
+    next()
+  } else {
+    const error = new ApplicationError('Page not found', 404)
+    next(error)
+  }
+}
+
+const setCsrfToken = (req, res, next) => {
+  if (req?.session) {
+    if (!req?.session?.csrfToken) {
+      req.session.csrfToken = crypto.randomBytes(32).toString('hex')
+    }
+  }
+  next()
+}
+
 module.exports = {
   setNextPage,
+  setCurrentFormPages,
   validateFormData,
   saveSession,
   getFormDataFromSession,
@@ -387,8 +455,12 @@ module.exports = {
   getFormSummaryListForRemove,
   removeFromSession,
   sessionStarted,
+  sessionVerified,
   validateFormDataFileUpload,
   validateComponentImagePage,
   saveFileToRedis,
-  clearSkippedPageData
+  clearSkippedPageData,
+  checkEmailDomain,
+  validatePageParams,
+  setCsrfToken
 }

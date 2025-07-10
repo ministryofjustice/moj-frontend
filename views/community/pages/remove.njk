@@ -1,37 +1,36 @@
-{% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% extends "base.njk" %}
-{% block content %}
-  <div class="app-layout__content">
-    {% if backLink %}
-      {{ govukBackLink({
-        text: "Back",
+
+{% extends "contributions.njk" %}
+
+{% block pageTitle %}
+  {{ pageTitle({
+    caption: 'Submit a new component',
+    title: "Are you sure you want to remove this information?"
+  })}}
+{% endblock %}
+
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+
+    {{ govukSummaryList({
+      rows: summaryRows
+    }) }}
+
+    <div class="govuk-button-group moj-button-action">
+      {{ govukButton({
+        text: 'Delete answers',
+        preventDoubleClick: true,
+        classes: "govuk-button--warning"
+      }) }}
+
+      {{ govukButton({
+        text: "Cancel",
+        classes: "govuk-button--secondary",
         href: backLink
       }) }}
-    {% endif %}
-    <form method="POST" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit a new component</span>
-      <h1 class="govuk-heading-xl">Are you sure you want to remove this information?</h1>
-
-      {{ govukSummaryList({
-        rows: summaryRows
-      }) }}
-
-      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
-
-      <div class="govuk-button-group moj-button-action">
-        {{ govukButton({
-          text: 'Delete answers',
-          preventDoubleClick: true,
-          classes: "govuk-button--warning"
-        }) }}
-
-        {{ govukButton({
-          text: "Cancel",
-          classes: "govuk-button--secondary",
-          href: backLink
-        }) }}
-    </form>
-  </div>
+    </div>
+  {% endcall %}
 {% endblock %}

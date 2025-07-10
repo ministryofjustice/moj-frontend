@@ -1,11 +1,22 @@
 /* eslint import/order: "off" */
 /* eslint n/no-unpublished-require: "off" */
 const Sentry = require('@sentry/node')
+const {
+  APP_PORT,
+  ENV,
+  REDIS_URL,
+  SESSION_SECRET,
+  SENTRY_DSN
+} = require('./config')
 
-Sentry.init({
-  dsn: 'https://304866cea16570b04e2090537ae9ac77@o345774.ingest.us.sentry.io/4509252675371008',
-  sendDefaultPii: true
-})
+const isDev = ENV === 'development'
+if (!isDev) {
+  Sentry.init({
+    dsn: SENTRY_DSN,
+    sendDefaultPii: false,
+    environment: ENV
+  })
+}
 
 const path = require('path')
 const redisClient = require('./helpers/redis-client')
@@ -18,15 +29,12 @@ const RedisStore = require('connect-redis')(session)
 const helmet = require('helmet')
 const nunjucks = require('nunjucks')
 const { xss } = require('express-xss-sanitizer')
-const ApplicationError = require('./helpers/application-error')
 
 const rev = require('./filters/rev')
 
-const { APP_PORT, ENV, REDIS_URL, SESSION_SECRET } = require('./config')
 const addComponentRoutes = require('./routes/add-component')
 
 const app = express()
-const isDev = ENV === 'development'
 
 if (!isDev) {
   // Only trust single proxy (Nginx)
@@ -55,7 +63,7 @@ const sessionOptions = {
   secret: SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: !isDev, maxAge: 24 * 60 * 60 * 1000 }
+  cookie: { secure: !isDev, maxAge:  24 * 60 * 60 * 1000  }
 }
 
 if (REDIS_URL) {
@@ -87,7 +95,7 @@ app.set('view engine', 'njk')
 const njk = expressNunjucks(app, {
   watch: isDev,
   noCache: false,
-  loader: nunjucks.FileSystemLoader,
+  loader: nunjucks.FileSystemLoader
 })
 
 njk.env.addFilter('rev', rev)
@@ -107,9 +115,10 @@ app.use(xss())
 app.use('/contribute/add-new-component', addComponentRoutes)
 
 // Fallback route to 404
-app.get('*', (req, res, next) => {
-  const error = new ApplicationError('Page not found', 404)
-  next(error)
+app.use((req, res) => {
+  res.status(404).render('404', {
+    title: 'Page not found'
+  })
 })
 
 // The error handler must be registered before any other error middleware and after all controllers

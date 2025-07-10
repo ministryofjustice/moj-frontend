@@ -1,9 +1,7 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% extends "base.njk" %}
+
+{% extends "contributions.njk" %}
 
 {% set shareYourDetails = [] %}
 
@@ -18,96 +16,82 @@
 {% set addNameToComponentPage = "addNameToComponentPage" in shareYourDetails %}
 {% set addTeamNameToComponentPage = "addTeamNameToComponentPage" in shareYourDetails %}
 
-{% block content %}
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
 
-  <div class="app-layout__content">
-    {% if backLink %}
-      {{ govukBackLink({
-        text: "Back",
-        href: backLink
-      }) }}
-    {% endif %}
-  {% if errorList %}
-    {{ govukErrorSummary({
-      titleText: "There is a problem",
-      errorList: errorList
-    }) }}
-  {% endif %}
-  <form method="post" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit a new component</span>
-      <h1 class="govuk-heading-xl">Your details</h1>
-      <p class="govuk-body">Add your details to enable the MoJ Design System team to let you know when the component is live. They might also need to contact you with questions about the component.</p>
-      <p class="govuk-body">You can request for your details to be added to the component page. This is to show that you added it to the Design System.</p>
-      {{ govukInput({
-          label: {
-              text: page.fields.fullName.label,
-              classes: "govuk-label--m"
-          },
-          id: "full-name",
-          name: "fullName",
-          errorMessage: formErrors.fullName,
-          value: formData.fullName
-      }) }}
+    <p class="govuk-body">Add your details to enable the MoJ Design System team to let you know when the component is live. They might also need to contact you with questions about the component.</p>
+    <p class="govuk-body">You can request for your details to be added to the component page. This is to show that you added it to the Design System.</p>
 
-      {{ govukInput({
-          label: {
-              text: page.fields.emailAddress.label,
-              classes: "govuk-label--m"
-          },
-          id: "email-address",
-          name: "emailAddress",
-          errorMessage: formErrors.emailAddress,
-          value: formData.emailAddress
-      }) }}
-
-      {{ govukInput({
+    {{ govukInput({
         label: {
-          text: page.fields.teamName.label,
-          classes: "govuk-label--m"
+            text: page.fields.fullName.label,
+            classes: "govuk-label--m"
         },
-        id: "team-name",
-        name: "teamName",
-        errorMessage: formErrors.teamName,
-        value: formData.teamName
+        id: "full-name",
+        name: "fullName",
+        errorMessage: formErrors.fullName,
+        value: formData.fullName
+    }) }}
+
+    {{ govukInput({
+        label: {
+            text: page.fields.emailAddress.label,
+            classes: "govuk-label--m"
+        },
+        id: "email-address",
+        name: "emailAddress",
+        errorMessage: formErrors.emailAddress,
+        value: formData.emailAddress
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: page.fields.teamName.label,
+        classes: "govuk-label--m"
+      },
+      id: "team-name",
+      name: "teamName",
+      errorMessage: formErrors.teamName,
+      value: formData.teamName
+    }) }}
+
+    <input type="hidden" name="shareYourDetails" />
+
+    {{ govukCheckboxes({
+      name: "shareYourDetails",
+      id: 'share-your-details',
+      fieldset: {
+        legend: {
+          text: page.fields.shareYourDetails.label,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      hint: {
+        text: page.fields.shareYourDetails.hint
+      },
+      items: [
+        {
+          value: "addNameToComponentPage",
+          text: "Add my name to the component page",
+          checked: addNameToComponentPage
+        },
+        {
+          value: "addTeamNameToComponentPage",
+          text: "Add my team name to the component page",
+          checked: addTeamNameToComponentPage
+        }
+      ],
+      errorMessage: formErrors.shareYourDetails,
+      value: formData.shareYourDetails
+    }) }}
+
+    <div class="moj-button-action">
+      {{ govukButton({
+          text: 'Continue'
       }) }}
-
-      <input type="hidden" name="shareYourDetails" />
-
-      {{ govukCheckboxes({
-        name: "shareYourDetails",
-        id: 'share-your-details',
-        fieldset: {
-          legend: {
-            text: page.fields.shareYourDetails.label,
-            classes: "govuk-fieldset__legend--m"
-          }
-        },
-        hint: {
-          text: page.fields.shareYourDetails.hint
-        },
-        items: [
-          {
-            value: "addNameToComponentPage",
-            text: "Add my name to the component page",
-            checked: addNameToComponentPage
-          },
-          {
-            value: "addTeamNameToComponentPage",
-            text: "Add my team name to the component page",
-            checked: addTeamNameToComponentPage
-          }
-        ],
-        errorMessage: formErrors.shareYourDetails,
-        value: formData.shareYourDetails
-      }) }}
-
-      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
-
-      <div class="moj-button-action">
-          {{ govukButton({
-              text: 'Continue'
-          }) }}
-      </div>
-    </form>
-</div>
+    </div>
+  {% endcall %}
 {% endblock %}
