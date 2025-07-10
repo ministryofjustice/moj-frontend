@@ -1,3 +1,5 @@
+const { generateMarkdown } = require('../middleware/generate-documentation')
+
 const redis = require('../helpers/redis-client')
 
 const imageDirectory = 'assets/images'
@@ -29,7 +31,6 @@ const extractFilename = (key) => {
     ? lastSegment
     : `${lastSegment}.txt`
 
-
   return segments.join('-')
 }
 
@@ -49,13 +50,16 @@ const getUniqueFilename = (originalName, existingFilenames) => {
   return uniqueName
 }
 
-const processSubmissionFiles = async (sessionData, submissionRef) => {
+const processSubmissionFiles = async (req) => {
+  console.log('processing files')
+  console.log(req)
+  const { session, submissionRef } = req
   const submissionFiles = {}
   const existingFilenames = new Set()
 
-  for (const key of Object.keys(sessionData)) {
+  for (const key of Object.keys(session)) {
     if (!['cookie', 'csrfToken'].includes(key)) {
-      const fileData = sessionData[key]
+      const fileData = session[key]
       if (
         fileData?.componentImage?.redisKey ||
         fileData?.accessibilityReport?.redisKey
@@ -83,7 +87,11 @@ const processSubmissionFiles = async (sessionData, submissionRef) => {
   return submissionFiles
 }
 
-const processSubmissionData = (sessionData, submissionFiles, submissionRef) => {
+const processSubmissionData = (req, res, next) => {
+  console.log('processing submission data')
+  const sessionData = { ...req.session, ...req.markdown }
+  console.log(sessionData)
+  const { submissionFiles, submissionRef } = req
   const submissionData = {}
 
   for (const key in sessionData) {
@@ -98,27 +106,6 @@ const processSubmissionData = (sessionData, submissionFiles, submissionRef) => {
           submissionData[`docs/components/${filename}`] = sessionData[key]
         } else {
           const data = Object.assign({}, sessionData[key])
-          if (key === '/your-details') {
-            // Remove personal data
-            data.fullName = 'Not shared'
-            data.teamName = 'Not shared'
-
-            // Add back in personal details if permission is given
-            if (
-              sessionData[key]?.shareYourDetails?.includes(
-                'addNameToComponentPage'
-              )
-            ) {
-              data.fullName = sessionData[key].fullName
-            }
-            if (
-              sessionData[key]?.shareYourDetails?.includes(
-                'addTeamNameToComponentPage'
-              )
-            ) {
-              data.teamName = sessionData[key].teamName
-            }
-          }
           if (key.startsWith('/component-code-details')) {
             const exampleNum = key.split('/').at(2)
               ? `-${key.split('/').at(2)}`
@@ -148,7 +135,49 @@ const processSubmissionData = (sessionData, submissionFiles, submissionRef) => {
     }
   }
 
-  return submissionData
+  req.submissionData = submissionData
+  next()
 }
 
-module.exports = { processSubmissionData, processSubmissionFiles }
+const processPersonalData = (req, res, next) => {
+  console.log('excluding personal data')
+  const personalData = req.session['/your-details']
+  const data = Object.assign({}, personalData)
+  // Remove personal data
+  data.fullName = 'Not shared'
+  data.teamName = 'Not shared'
+
+  // Add back in personal details if permission is given
+  if (personalData?.shareYourDetails?.includes('addNameToComponentPage')) {
+    data.fullName = personalData.fullName
+  }
+  if (personalData?.shareYourDetails?.includes('addTeamNameToComponentPage')) {
+    data.teamName = personalData.teamName
+  }
+  req.session['/your-details'] = data
+  next()
+}
+
+const buildComponentPage = (req, res, next) => {
+  console.log('building component page')
+  const { filename: markdownFilename, content: markdownContent } =
+    generateMarkdown(req.session, req.submissionFiles)
+  req.markdown = {}
+  req.markdownFilename = markdownFilename
+  req.markdownContent = markdownContent
+  req.markdown[markdownFilename] = markdownContent
+  next()
+}
+
+const generateSubmissionRef = (req,res,next) => {
+    req.submissionRef = `submission-${Date.now()}`
+    next()
+}
+
+module.exports = {
+  processSubmissionData,
+  processSubmissionFiles,
+  processPersonalData,
+  buildComponentPage,
+  generateSubmissionRef
+}

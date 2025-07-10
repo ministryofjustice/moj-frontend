@@ -14,7 +14,7 @@ const {
 const ApplicationError = require('../helpers/application-error')
 const { checkYourAnswers } = require('../helpers/check-your-answers')
 const getPrTitleAndDescription = require('../helpers/get-pr-title-and-description')
-const sessionData = require('../helpers/mockSessionData/sessionData.js')
+const mockSessionData = require('../helpers/mockSessionData/sessionData.js')
 const { urlToTitleCase } = require('../helpers/text-helper')
 const {
   validateFormData,
@@ -43,8 +43,11 @@ const {
   sendVerificationEmail
 } = require('../middleware/notify-email')
 const {
+  processPersonalData,
   processSubmissionData,
-  processSubmissionFiles
+  processSubmissionFiles,
+  buildComponentPage,
+  generateSubmissionRef
 } = require('../middleware/process-subission-data')
 const verifyCsrf = require('../middleware/verify-csrf')
 const upload = multer({
@@ -98,7 +101,7 @@ if (process.env.DEV_DUMMY_DATA) {
       return next(new Error('Session not available'))
     }
 
-    Object.assign(req.session, sessionData)
+    Object.assign(req.session, mockSessionData)
     req.session.save((err) => {
       if (err) {
         return next(err)
@@ -109,27 +112,31 @@ if (process.env.DEV_DUMMY_DATA) {
 }
 
 if (ENV === 'development') {
-  router.get('/generate-markdown', async (req, res, next) => {
+  router.get('/generate-markdown', (req, res, next) => {
     if (!req.session) {
       return next(new Error('Session not available'))
     }
 
     if (!req.session.checkYourAnswers) {
-      Object.assign(req.session, sessionData)
+      Object.assign(req.session, mockSessionData)
       req.session.save((err) => {
         if (err) {
           return next(err)
         }
       })
     }
-console.log(req.session)
-    const submissionRef = `submission-${Date.now()}`
-    const submissionFiles = await processSubmissionFiles(
-      req.session,
-      submissionRef
-    )
-    const { filename, content } = generateMarkdown(req.session, submissionFiles)
-
+    next()
+  },
+  processPersonalData,
+  generateSubmissionRef,
+  async (req, res, next) => {
+    console.log('processing files')
+    req.submissionFiles = await processSubmissionFiles(req)
+    next()
+  },
+  buildComponentPage,
+  async (req,res) => {
+    const { markdownFilename: filename, markdownContent: content} = req
     fs.writeFile(`docs/components/${filename}`, content, (err) => {
       if (err) {
         console.error(err)
@@ -142,7 +149,6 @@ console.log(req.session)
     })
   })
 }
-
 
 // Start
 router.get('/start', (req, res) => {
@@ -377,24 +383,23 @@ router.post(
   `/${checkYourAnswersPath}`,
   verifyCsrf,
   getRawSessionText,
+  processPersonalData,
+  generateSubmissionRef,
+  async (req, res, next) => {
+    console.log('processing files')
+    req.submissionFiles = await processSubmissionFiles(req)
+    next()
+  },
+  buildComponentPage,
+  processSubmissionData,
   async (req, res) => {
-    const submissionRef = `submission-${Date.now()}`
-    const submissionFiles = await processSubmissionFiles(
-      req.session,
-      submissionRef
-    )
-    // console.log(submissionFiles)
-    const { filename: markdownFilename, content: markdownContent } =
-      generateMarkdown(req.session, submissionFiles)
-    const markdown = {}
-    markdown[markdownFilename] = markdownContent
-    const { sessionText } = req
-    const session = { ...req.session, ...markdown }
-    const sessionData = processSubmissionData(
+    const {
       session,
-      submissionFiles,
-      submissionRef
-    )
+      sessionText,
+      submissionData,
+      submissionRef,
+      markdownContent
+    } = req
 
     req.session.regenerate((err) => {
       if (err) {
@@ -404,7 +409,7 @@ router.post(
     })
 
     try {
-      const branchName = await pushToGitHub(sessionData, submissionRef)
+      const branchName = await pushToGitHub(submissionData, submissionRef)
       const { title, description } = getPrTitleAndDescription(session)
       const pr = await createPullRequest(branchName, title, description)
       await sendPrEmail(pr)
