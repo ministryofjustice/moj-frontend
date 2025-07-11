@@ -20,6 +20,7 @@ const config = {
   SESSION_SECRET: process.env.SESSION_SECRET || 'your-secret-key',
   ENV: process.env.ENV || 'development',
   SENTRY_DSN: process.env.SENTRY_DSN,
+  SENTRY_CSP_REPORT_URI: process.env.SENTRY_CSP_REPORT_URI,
   ALLOWED_EMAIL_DOMAINS: ['justice.gov.uk'],
   COMPONENT_FORM_PAGES: {
     email: {

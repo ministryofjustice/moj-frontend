@@ -6,7 +6,8 @@ const {
   ENV,
   REDIS_URL,
   SESSION_SECRET,
-  SENTRY_DSN
+  SENTRY_DSN,
+  SENTRY_CSP_REPORT_URI,
 } = require('./config')
 
 const isDev = ENV === 'development'
@@ -43,7 +44,12 @@ if (!isDev) {
   // Add security headers
   app.use(
     helmet({
-      contentSecurityPolicy: false // Disable CSP
+      contentSecurityPolicy: {
+        useDefaults: true,
+        reportOnly: true,
+        reportUri: SENTRY_CSP_REPORT_URI
+      },
+      referrerPolicy: "no-referrer-when-downgrade"
     })
   )
 
