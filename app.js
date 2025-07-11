@@ -47,9 +47,13 @@ if (!isDev) {
       contentSecurityPolicy: {
         useDefaults: true,
         reportOnly: true,
-        reportUri: SENTRY_CSP_REPORT_URI
+        directives: {
+          reportUri: SENTRY_CSP_REPORT_URI
+        }
       },
-      referrerPolicy: "no-referrer-when-downgrade"
+      referrerPolicy: {
+        policy: "no-referrer-when-downgrade"
+      }
     })
   )
 
