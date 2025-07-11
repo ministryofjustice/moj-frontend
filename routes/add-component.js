@@ -46,7 +46,8 @@ const {
   processSubmissionData,
   processSubmissionFiles,
   buildComponentPage,
-  generateSubmissionRef
+  generateSubmissionRef,
+  getDetailsForPrEmail
 } = require('../middleware/process-subission-data')
 const verifyCsrf = require('../middleware/verify-csrf')
 const upload = multer({
@@ -387,6 +388,7 @@ router.post(
   `/${checkYourAnswersPath}`,
   verifyCsrf,
   getRawSessionText,
+  getDetailsForPrEmail,
   processPersonalData,
   generateSubmissionRef,
   async (req, res, next) => {
@@ -397,12 +399,14 @@ router.post(
   buildComponentPage,
   processSubmissionData,
   async (req, res) => {
+    // Extracts details from request that we'll need after the redirect
     const {
       session,
       sessionText,
       submissionData,
       submissionRef,
-      markdownContent
+      markdownContent,
+      detailsForPrEmail
     } = req
 
     req.session.regenerate((err) => {
@@ -416,7 +420,7 @@ router.post(
       const branchName = await pushToGitHub(submissionData, submissionRef)
       const { title, description } = getPrTitleAndDescription(session)
       const pr = await createPullRequest(branchName, title, description)
-      await sendPrEmail(pr)
+      await sendPrEmail(pr, detailsForPrEmail)
     } catch (error) {
       console.error('[FORM SUBMISSION] Error sending submission:', error)
       await sendSubmissionEmail(sessionText, markdownContent)

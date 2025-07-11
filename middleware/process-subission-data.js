@@ -138,6 +138,25 @@ const processSubmissionData = (req, res, next) => {
   next()
 }
 
+const getDetailsForPrEmail = (req, res, next ) => {
+  const personalData = req.session['/your-details']
+  const componentName =
+    req.session?.['/component-details']?.componentName || 'Unnamed component'
+
+  req.detailsForPrEmail = {
+    componentName,
+    email: req.session?.['/email']?.emailAddress,
+    name: personalData.fullName,
+    team: personalData.teamName
+  }
+
+  next()
+}
+
+/**
+ * Store details for inclusion in PR email so team has access to them if user
+ * chooses not to share publicly
+ */
 const processPersonalData = (req, res, next) => {
   console.log('excluding personal data')
   const personalData = req.session['/your-details']
@@ -153,7 +172,10 @@ const processPersonalData = (req, res, next) => {
   if (personalData?.shareYourDetails?.includes('addTeamNameToComponentPage')) {
     data.teamName = personalData.teamName
   }
+
+  // Overwrite your details info for github submission and component page
   req.session['/your-details'] = data
+
   next()
 }
 
@@ -178,5 +200,6 @@ module.exports = {
   processSubmissionFiles,
   processPersonalData,
   buildComponentPage,
-  generateSubmissionRef
+  generateSubmissionRef,
+  getDetailsForPrEmail
 }

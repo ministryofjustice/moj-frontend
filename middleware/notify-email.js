@@ -59,7 +59,9 @@ const sendSubmissionEmail = async (fileBuffer = null, markdown = null) => {
   return sendEmail(NOTIFY_SUBMISSION_TEMPLATE, dsTeamEmail, personalisation)
 }
 
-const sendPrEmail = async ({ url, number }) => {
+const sendPrEmail = async (pr, contactDetails) => {
+  const {url, number} = pr
+  const {componentName, email, name, team} = contactDetails
   const personalisation = {}
 
   if (url) {
@@ -67,6 +69,18 @@ const sendPrEmail = async ({ url, number }) => {
   }
   if (number) {
     personalisation.preview_link = `https://moj-frontend-pr-${number}.apps.live.cloud-platform.service.justice.gov.uk`
+  }
+  if(componentName) {
+    personalisation.component_name = componentName
+  }
+  if(email) {
+    personalisation.email = email
+  }
+  if(name) {
+    personalisation.name = name
+  }
+  if(team) {
+    personalisation.team = team
   }
 
   return sendEmail(NOTIFY_PR_TEMPLATE, dsTeamEmail, personalisation)
