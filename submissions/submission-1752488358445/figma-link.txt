@@ -1,0 +1,4 @@
+{
+  "figmaLink": "https://figma.com",
+  "figmaLinkAdditionalInformation": "only link"
+}
