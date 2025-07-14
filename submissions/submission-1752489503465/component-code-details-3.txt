@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "javascript",
+  "componentCodeLanguageOther": "",
+  "componentCode": "    const csrf_token = document.querySelector(\"meta[name='csrf-token']\").getAttribute(\"content\");\r\n\r\n    const ajaxLoad = () =&gt; {\r\n        // process the URL hash fragment\r\n        const hashFragment = window.location.hash.slice(1);\r\n\r\n        // hash fragment should be of the format: /^(get|post);(.*)$/\r\n        // e.g., https://site.com/index/#post;/profile\r\n        if (hashFragment.length &gt; 0 &amp;&amp; hashFragment.includes(';')) {\r\n            const params = hashFragment.match(/^(get|post);(.*)$/);\r\n\r\n            if (params &amp;&amp; params.length) {\r\n                const requestMethod = params[1];\r\n                const requestEndpoint = params[3];\r\n\r\n                fetch(requestEndpoint, {\r\n                    method: requestMethod,\r\n                    headers: {\r\n                        'X-CSRF-Token': csrf_token,\r\n                    },\r\n                })\r\n                .then(response =&gt; {  })\r\n                .catch(error =&gt; console.error('Request failed:', error));\r\n            }\r\n        }\r\n    };\r\n\r\n    window.addEventListener('DOMContentLoaded', ajaxLoad);",
+  "componentCodeUsage": ""
+}
