@@ -1,0 +1,10 @@
+{
+  "fullName": "sdf sdflk",
+  "emailAddress": "chris.pymm@justice.gov.uk",
+  "teamName": "fsdsdf",
+  "shareYourDetails": [
+    "",
+    "addNameToComponentPage",
+    "addTeamNameToComponentPage"
+  ]
+}
