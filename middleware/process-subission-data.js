@@ -138,7 +138,7 @@ const processSubmissionData = (req, res, next) => {
   next()
 }
 
-const getDetailsForPrEmail = (req, res, next ) => {
+const getDetailsForPrEmail = (req, res, next) => {
   const personalData = req.session['/your-details']
   const componentName =
     req.session?.['/component-details']?.componentName || 'Unnamed component'
