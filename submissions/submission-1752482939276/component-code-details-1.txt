@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "html",
+  "componentCodeLanguageOther": "",
+  "componentCode": "\r\n\r\n",
+  "componentCodeUsage": ""
+}
