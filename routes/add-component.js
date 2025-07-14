@@ -2,7 +2,6 @@ const crypto = require('crypto')
 const fs = require('fs')
 
 const express = require('express')
-const { xss } = require('express-xss-sanitizer')
 const multer = require('multer')
 
 const {
@@ -33,7 +32,8 @@ const {
   clearSkippedPageData,
   checkEmailDomain,
   validatePageParams,
-  setCsrfToken
+  setCsrfToken,
+  xssComponentCode
 } = require('../middleware/component-session')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
 const {
@@ -231,7 +231,6 @@ router.post('/start', verifyCsrf, (req, res) => {
 
 router.post(
   '/email',
-  xss(),
   verifyCsrf,
   validateFormData,
   checkEmailDomain,
@@ -284,7 +283,7 @@ router.get('/email/resend', (req, res) => {
   })
 })
 
-router.post('/email/resend', xss(), verifyCsrf, async (req, res) => {
+router.post('/email/resend', verifyCsrf, async (req, res) => {
   res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email/check`)
   const token = req?.session?.emailToken
   const email = req?.session?.['/email']?.emailAddress
@@ -350,7 +349,6 @@ router.get(
 
 router.post(
   ['/remove/:page', '/remove/:page/:subpage'],
-  xss(),
   verifyCsrf,
   validatePageParams,
   removeFromSession,
@@ -433,7 +431,6 @@ router.post(
   ['/component-image', '/component-image/:subpage'],
   validatePageParams,
   upload.single('componentImage'),
-  xss(),
   verifyCsrf,
   saveFileToRedis,
   canAddAnother,
@@ -471,7 +468,7 @@ router.post(
 // Form submissions for pages
 router.post(
   ['/:page', '/:page/:subpage'],
-  xss(),
+  xssComponentCode,
   verifyCsrf,
   validatePageParams,
   getBackLink,
