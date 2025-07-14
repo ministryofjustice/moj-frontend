@@ -55,7 +55,13 @@ if (!isDev) {
         reportOnly: true,
         directives: {
           reportUri: SENTRY_CSP_REPORT_URI,
-          scriptSrc: ["'self'", (req, res) => `'nonce-${res.locals.cspNonce}'`]
+          scriptSrc: [
+            "'self'",
+            'https://www.googletagmanager.com',
+            (req, res) => `'nonce-${res.locals.cspNonce}'`
+          ],
+          connectSrc: ["'self'", 'www.googletagmanager.com', 'www.google.com'],
+          imgSrc: ["'self'", 'www.googletagmanager.com']
         }
       },
       referrerPolicy: {
