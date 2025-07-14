@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "javascript",
+  "componentCodeLanguageOther": "",
+  "componentCode": "function setLanguageOptions() {\r\n    var href = document.location.href,\r\n        deflt = href.substring(href.indexOf(\"default=\")+8);\r\n    document.write(\"\");\r\n    document.write(\"\");\r\n}\r\n\r\nsetLanguageOptions()",
+  "componentCodeUsage": ""
+}
