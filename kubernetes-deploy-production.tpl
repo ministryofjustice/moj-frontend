@@ -80,6 +80,11 @@ spec:
               secretKeyRef:
                 name: sentry-dsn
                 key: sentry-dsn
+          - name: SENTRY_CSP_REPORT_URI
+            valueFrom:
+              secretKeyRef:
+                name: sentry-csp-uri
+                key: sentry-csp-uri
           - name: BRANCH
             value: ${BRANCH}
           - name: APP_URL

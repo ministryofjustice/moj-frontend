@@ -60,8 +60,8 @@ const sendSubmissionEmail = async (fileBuffer = null, markdown = null) => {
 }
 
 const sendPrEmail = async (pr, contactDetails) => {
-  const {url, number} = pr
-  const {componentName, email, name, team} = contactDetails
+  const { url, number } = pr
+  const { componentName, email, name, team } = contactDetails
   const personalisation = {}
 
   if (url) {
@@ -70,16 +70,16 @@ const sendPrEmail = async (pr, contactDetails) => {
   if (number) {
     personalisation.preview_link = `https://moj-frontend-pr-${number}.apps.live.cloud-platform.service.justice.gov.uk`
   }
-  if(componentName) {
+  if (componentName) {
     personalisation.component_name = componentName
   }
-  if(email) {
+  if (email) {
     personalisation.email = email
   }
-  if(name) {
+  if (name) {
     personalisation.name = name
   }
-  if(team) {
+  if (team) {
     personalisation.team = team
   }
 

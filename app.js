@@ -6,7 +6,8 @@ const {
   ENV,
   REDIS_URL,
   SESSION_SECRET,
-  SENTRY_DSN
+  SENTRY_DSN,
+  SENTRY_CSP_REPORT_URI
 } = require('./config')
 
 const isDev = ENV === 'development'
@@ -20,6 +21,7 @@ if (!isDev) {
 
 const path = require('path')
 const redisClient = require('./helpers/redis-client')
+const crypto = require('crypto')
 
 const express = require('express')
 const expressNunjucks = require('express-nunjucks').default
@@ -40,10 +42,31 @@ if (!isDev) {
   // Only trust single proxy (Nginx)
   app.set('trust proxy', 1)
 
+  app.use((req, res, next) => {
+    res.locals.cspNonce = crypto.randomBytes(32).toString('hex')
+    next()
+  })
+
   // Add security headers
   app.use(
     helmet({
-      contentSecurityPolicy: false // Disable CSP
+      contentSecurityPolicy: {
+        useDefaults: true,
+        reportOnly: true,
+        directives: {
+          reportUri: SENTRY_CSP_REPORT_URI,
+          scriptSrc: [
+            "'self'",
+            'https://www.googletagmanager.com',
+            (req, res) => `'nonce-${res.locals.cspNonce}'`
+          ],
+          connectSrc: ["'self'", 'www.googletagmanager.com', 'www.google.com'],
+          imgSrc: ["'self'", 'www.googletagmanager.com']
+        }
+      },
+      referrerPolicy: {
+        policy: 'no-referrer-when-downgrade'
+      }
     })
   )
 
