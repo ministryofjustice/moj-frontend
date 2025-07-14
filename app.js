@@ -7,7 +7,7 @@ const {
   REDIS_URL,
   SESSION_SECRET,
   SENTRY_DSN,
-  SENTRY_CSP_REPORT_URI,
+  SENTRY_CSP_REPORT_URI
 } = require('./config')
 
 const isDev = ENV === 'development'
@@ -21,6 +21,7 @@ if (!isDev) {
 
 const path = require('path')
 const redisClient = require('./helpers/redis-client')
+const crypto = require('crypto')
 
 const express = require('express')
 const expressNunjucks = require('express-nunjucks').default
@@ -41,6 +42,11 @@ if (!isDev) {
   // Only trust single proxy (Nginx)
   app.set('trust proxy', 1)
 
+  app.use((req, res, next) => {
+    res.locals.cspNonce = crypto.randomBytes(32).toString('hex')
+    next()
+  })
+
   // Add security headers
   app.use(
     helmet({
@@ -48,11 +54,12 @@ if (!isDev) {
         useDefaults: true,
         reportOnly: true,
         directives: {
-          reportUri: SENTRY_CSP_REPORT_URI
+          reportUri: SENTRY_CSP_REPORT_URI,
+          scriptSrc: ["'self'", (req, res) => `'nonce-${res.locals.cspNonce}'`]
         }
       },
       referrerPolicy: {
-        policy: "no-referrer-when-downgrade"
+        policy: 'no-referrer-when-downgrade'
       }
     })
   )
