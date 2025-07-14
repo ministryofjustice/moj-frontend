@@ -1,6 +1,7 @@
 const crypto = require('crypto')
 
-const sanitize = require('sanitize-filename')
+const { sanitize } = require('express-xss-sanitizer')
+const sanitizeFilename = require('sanitize-filename')
 
 const {
   MAX_ADD_ANOTHER: maxAddAnother,
@@ -25,7 +26,9 @@ const getHashedUrl = (url) => {
 }
 
 const getTemplate = (req) => {
-  let template = sanitize(`${req.params.page || req.url.replace('/', '')}`)
+  let template = sanitizeFilename(
+    `${req.params.page || req.url.replace('/', '')}`
+  )
   if (!Object.keys(formPages).includes(template)) {
     template = 'error'
   }
@@ -33,7 +36,9 @@ const getTemplate = (req) => {
 }
 
 const getPageData = (req) => {
-  let pageData = sanitize(`${req.params.page || req.url.replace('/', '')}`)
+  let pageData = sanitizeFilename(
+    `${req.params.page || req.url.replace('/', '')}`
+  )
   if (!Object.keys(formPages).includes(pageData)) {
     pageData = {}
   }
@@ -160,6 +165,21 @@ const validateFormDataFileUpload = (err, req, res, next) => {
   } else {
     next()
   }
+}
+
+/**
+ * If code is JS or other, we cannot sanitize it as it will then be incorrect
+ */
+const xssComponentCode = (req, res, next) => {
+  if (req.body.componentCodeLanguage) {
+    if (
+      req.body.componentCodeLanguage !== 'javascript' &&
+      req.body.componentCodeLanguage !== 'other'
+    ) {
+      req.body.componentCode = sanitize(req.body.componentCode)
+    }
+  }
+  next()
 }
 
 const validateFormData = (req, res, next) => {
@@ -458,5 +478,6 @@ module.exports = {
   clearSkippedPageData,
   checkEmailDomain,
   validatePageParams,
-  setCsrfToken
+  setCsrfToken,
+  xssComponentCode
 }

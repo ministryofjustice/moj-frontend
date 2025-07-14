@@ -31,12 +31,11 @@ const schema = addAnotherSchema.append({
       'custom.max.words': 'Enter 250 words or less'
     }),
   componentCode: Joi.string()
-    .optional()
-    .allow(null, '')
-    .custom((value, helpers) => maxWords(value, helpers, 1000))
+    .required()
+    .max(10000)
     .label('Add the code')
     .messages({
-      'custom.max.words': 'Enter 10,000 characters or less'
+      'string.max': 'Enter 10,000 characters or less'
     })
 })
 

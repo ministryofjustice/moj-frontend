@@ -132,7 +132,12 @@ app.locals.env = {
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
-app.use(xss())
+// Component Code needs to be handled separately as it cannot sanitize js
+app.use(
+  xss({
+    allowedKeys: ['componentCode']
+  })
+)
 
 // Routes
 app.use('/contribute/add-new-component', addComponentRoutes)
