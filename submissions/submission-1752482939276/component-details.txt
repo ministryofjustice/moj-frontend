@@ -1,0 +1,5 @@
+{
+  "componentName": "Bad component",
+  "componentOverview": "Does bad things",
+  "howIsTheComponentUsed": "for evil"
+}
