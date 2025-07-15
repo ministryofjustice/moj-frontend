@@ -3,14 +3,14 @@ title: Scrollable pane
 status: To be reviewed
 statusDate: November 2022
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/711
-excerpt: "Use the scrollable pane component when you have content (typically tables) which unavoidably overflowing the page."
+excerpt: "Use the scrollable pane component when you have content (typically a table) which unavoidably overflows the page."
 ---
 
 {% example "/examples/scrollable-pane", 470 %}
 
 ## When to use
 
-Use the scrollable pane component when you have content (typically tables) which unavoidably overflowing the page. It adds scroll shadows to indicate that content overflows the page.
+Use the scrollable pane component when you have content (typically a table) which unavoidably overflows the page. It adds scroll shadows to indicate that content overflows the page.
 
 This is often used in the [filter a list](/patterns/filter-a-list/) pattern as the filter takes up additional horizontal space, causing the pane holding the table to shrink.
 
