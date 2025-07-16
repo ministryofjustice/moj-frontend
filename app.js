@@ -31,6 +31,9 @@ const RedisStore = require('connect-redis')(session)
 const helmet = require('helmet')
 const nunjucks = require('nunjucks')
 const { xss } = require('express-xss-sanitizer')
+const { ipFilterMiddleware } = require('express-ip-filter-middleware');
+const allowList = require('./middleware/ip-allowlist.js')
+
 
 const rev = require('./filters/rev')
 
@@ -79,6 +82,8 @@ if (!isDev) {
       legacyHeaders: false
     })
   )
+
+  app.use(ipFilterMiddleware({mode: 'whitelist', allow: allowList}))
 }
 
 // Session management
