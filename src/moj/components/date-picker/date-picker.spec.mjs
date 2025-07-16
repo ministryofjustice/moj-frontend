@@ -36,17 +36,19 @@ function createComponent(params = {}) {
   const html =
     params.html ??
     outdent`
-      <div class="moj-datepicker" data-module="moj-date-picker"${attributes}>
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="date">
-            Date
-          </label>
-          <div id="date-hint" class="govuk-hint">
-            For example, 17/5/2024.
+      <form aria-label="form" action="">
+        <div class="moj-datepicker" data-module="moj-date-picker"${attributes}>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="date">
+              Date
+            </label>
+            <div id="date-hint" class="govuk-hint">
+              For example, 17/5/2024.
+            </div>
+            <input class="govuk-input moj-js-datepicker-input " id="date" name="date" type="text" aria-describedby="date-hint" autocomplete="off">
           </div>
-          <input class="govuk-input moj-js-datepicker-input " id="date" name="date" type="text" aria-describedby="date-hint" autocomplete="off">
         </div>
-      </div>
+      </form>
     `
 
   document.body.insertAdjacentHTML('afterbegin', html)
@@ -558,6 +560,17 @@ describe('Date picker with defaults', () => {
       expect(dialog).not.toBeVisible()
       expect(input).toHaveValue(`19/5/2024`)
       expect(calendarButton).toHaveFocus()
+    })
+
+    test('return button submits parent form', async () => {
+      const form = screen.queryByRole('form')
+      let submitted = false
+      form.addEventListener('submit', () => {
+        submitted = true
+      })
+      await user.click(input)
+      await user.keyboard('[Enter]')
+      expect(submitted).toBe(true)
     })
   })
 
