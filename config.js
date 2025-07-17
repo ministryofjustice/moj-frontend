@@ -24,11 +24,10 @@ const config = {
   ALLOWED_EMAIL_DOMAINS: ['justice.gov.uk'],
   COMPONENT_FORM_PAGES: {
     email: {
-      title: 'Enter your email address',
+      title: 'Verify that you work for MoJ',
       fields: {
         emailAddress: {
-          label: 'Email address',
-          hint: 'Enter an email address ending @justice.gov.uk'
+          label: 'Enter your justice.gov.uk email address'
         }
       },
       showOnCya: false,
@@ -249,20 +248,10 @@ const config = {
     addTeamNameToComponentPage: 'add my team name to the component page'
   },
   MESSAGES: {
-    emailVerificationExpired: {
-      type: 'error',
-      title: 'Email verification link expired',
-      text: `Enter your email address below to receive a new verification link.`
-    },
     emailVerificationSuccess: {
       type: 'success',
       title: 'Your email address has been verified',
       text: 'You can now submit a new component'
-    },
-    emailVerificationInvalidToken: {
-      type: 'error',
-      title: 'Email verification link invalid',
-      text: `Enter your email address below to receive a new verification link.`
     },
     componentImageUploaded: (filename) => {
       return {

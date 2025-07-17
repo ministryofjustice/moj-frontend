@@ -4,8 +4,11 @@
 
 {% block form %}
   <p class="govuk-body">We've sent an email to: <strong>{{page.email}}</strong></p>
-  <p class="govuk-body">Select the link in the email to continue submitting a component. The link will open in a new window, so you can close this one.</p>
-  {% call govukDetails({ summaryText: "Problems with the email?" }) %}
-    We can <a class="govuk-link" href="/contribute/add-new-component/email/resend">send the email again</a> or you can <a class="govuk-link" href="/contribute/add-new-component/email?reset=true">use a different email address</a>.
+  <p class="govuk-body">Select the link in the verification email to continue submitting a component. The link will open in a new tab, so you can close this one.</p>
+  {% call govukDetails({
+    summaryText: "Fix problems with the email?",
+    classes: "govuk-!-width-two-thirds"
+  }) %}
+  <a class="govuk-link" href="{{resendUrl}}">Resend the verification email</a> if the address is correct. <a class="govuk-link" href="{{ resetUrl }}">Enter a different email address</a> if the address is incorrect.
   {% endcall %}
 {% endblock %}
