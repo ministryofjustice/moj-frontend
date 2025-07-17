@@ -1,0 +1,5 @@
+@use "../moj-frontend" as *;
+
+.govuk-inset-text {
+  background-color: govuk-colour("white");
+}

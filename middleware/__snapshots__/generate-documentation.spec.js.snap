@@ -6,6 +6,8 @@ exports[`generateMarkdown should generate markdown with all fields populated 1`]
 layout: layouts/tabbed-component.njk
 title: Test Component
 type: component
+status: Experimental
+statusDate: January 2023
 eleventyNavigation:
   key: Test Component
   parent: Components
@@ -18,9 +20,13 @@ eleventyNavigation:
 
 ## Overview
 
+<div class="img-container">
+  ![Test Component](/assets/images/component.jpg)
+</div>
+
 This is an overview.
 
-## How the component is currently used
+## How the component is being used
 
 This is how it is used.
 
@@ -28,19 +34,11 @@ This is how it is used.
 
 {% tab "Code" %}
 
-## Help develop existing building blocks in GitHub
-
-After a new building block is published in the design system, you, and other users, have the chance to continue enhancing it. This is done with users adding more information and resources to the component via GitHub.
-
-To do this you should:
-
-- go to the GitHub conversation
-- add your comments, information and resources about the building block
-
 ## Code
 
-No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
+No code has been added for this component.
 
+If you've used this component in your service and you have code, you can add it. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
 
 {% endtab %}
 
@@ -49,35 +47,36 @@ No code has been contributed for this component. If you have examples of how you
 ## Accessibility
 
 If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.
-### External audit (External Org) - January 2022
-Some issues discovered.
-[Download the accessibility report](/uploads/external-report.pdf)
-### Internal audit (Internal Org) - February 2022
-Some internal issues discovered.
-[Download the accessibility report](/uploads/internal-report.pdf)
-### Assistive Technology audit - March 2022
-Assistive tech issues discovered.
-[Download the accessibility report](/uploads/assistive-tech-report.pdf)
 
+### External audit
+
+Some issues discovered.
+
+[Download the accessibility report](/external-report.pdf)
+
+### Internal review
+
+Some internal issues discovered.
+
+[Download the accessibility report](/internal-report.pdf)
+
+### Assistive Technology testing
 
 {% endtab %}
 
-{% tab "Links" %}
+{% tab "Prototypes and design files" %}
 
-## Links
+## Prototypes and design files
 
-### Prototype
-
-
+### Prototypes
 
 <a href="www.test.com" target="_blank" rel="noopener noreferrer">Prototype link (opens in a new tab)</a>
-
 
 {% endtab %}
 
 {% endtabs %}
 ",
-  "filename": "component/documentation/test-component.md",
+  "filename": "docs/components/test-component.md",
 }
 `;
 
@@ -87,6 +86,8 @@ exports[`generateMarkdown should handle missing details gracefully 1`] = `
 layout: layouts/tabbed-component.njk
 title: unknown-component
 type: component
+status: Experimental
+statusDate: January 2023
 eleventyNavigation:
   key: unknown-component
   parent: Components
@@ -99,11 +100,11 @@ eleventyNavigation:
 
 ## Overview
 
+<div class="img-container">
 
+</div>
 
 ## How the component is currently used
-
-
 
 {% endtab %}
 
@@ -120,8 +121,7 @@ To do this you should:
 
 ## Code
 
-No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
-
+No code has been added for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
 
 {% endtab %}
 
@@ -129,23 +129,22 @@ No code has been contributed for this component. If you have examples of how you
 
 ## Accessibility
 
-No accessibility findings have been contributed for this component.
-
+No accessibility findings have been added for this component.
 
 {% endtab %}
 
-{% tab "Links" %}
+{% tab "Prototypes and design files" %}
 
-## Links
+## Prototypes and design files
 
-No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.
+No prototypes or design files have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.
 
 
 {% endtab %}
 
 {% endtabs %}
 ",
-  "filename": "component/documentation/unknown-component.md",
+  "filename": "docs/components/unknown-component.md",
 }
 `;
 
@@ -155,6 +154,8 @@ exports[`generateMarkdown should handle missing image data gracefully 1`] = `
 layout: layouts/tabbed-component.njk
 title: Another Component
 type: component
+status: Experimental
+statusDate: January 2023
 eleventyNavigation:
   key: Another Component
   parent: Components
@@ -167,9 +168,13 @@ eleventyNavigation:
 
 ## Overview
 
+<div class="img-container">
+
+</div>
+
 Another overview.
 
-## How the component is currently used
+## How the component is being used
 
 Another usage.
 
@@ -177,19 +182,11 @@ Another usage.
 
 {% tab "Code" %}
 
-## Help develop existing building blocks in GitHub
-
-After a new building block is published in the design system, you, and other users, have the chance to continue enhancing it. This is done with users adding more information and resources to the component via GitHub.
-
-To do this you should:
-
-- go to the GitHub conversation
-- add your comments, information and resources about the building block
+## Code
 
 ## Code
 
-No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
-
+No code has been added for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
 
 {% endtab %}
 
@@ -197,32 +194,39 @@ No code has been contributed for this component. If you have examples of how you
 
 ## Accessibility
 
-If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.
+This
+If you have accessibility findings or tested with users with access needs then you could contribute to this component.
+
 ### External audit (External Org) - January 2022
 Some issues discovered.
-[Download the accessibility report](/uploads/external-report.pdf)
-### Internal audit (Internal Org) - February 2022
-Some internal issues discovered.
-[Download the accessibility report](/uploads/internal-report.pdf)
-### Assistive Technology audit - March 2022
-Assistive tech issues discovered.
-[Download the accessibility report](/uploads/assistive-tech-report.pdf)
 
+[Download the accessibility report](/external-report.pdf)
+
+### Internal audit (Internal Org) - February 2022
+
+Some internal issues discovered.
+
+[Download the accessibility report](/internal-report.pdf)
+
+### Assistive Technology audit - March 2022
+
+Assistive tech issues discovered.
+
+[Download the accessibility report](/assistive-tech-report.pdf)
 
 {% endtab %}
 
-{% tab "Links" %}
+{% tab "Prototypes and design files" %}
 
-## Links
+## Prototypes and design files
 
-No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.
-
+No prototypes or design files have been added for this component. If you have used this component in your service and you have a prototype or design file you can share it here.
 
 {% endtab %}
 
 {% endtabs %}
 ",
-  "filename": "component/documentation/another-component.md",
+  "filename": "docs/components/another-component.md",
 }
 `;
 
@@ -232,6 +236,8 @@ exports[`generateMarkdown should return minimal markdown if no valid data is pro
 layout: layouts/tabbed-component.njk
 title: unknown-component
 type: component
+status: Experimental
+statusDate: January 2023
 eleventyNavigation:
   key: unknown-component
   parent: Components
@@ -244,29 +250,19 @@ eleventyNavigation:
 
 ## Overview
 
+<div class="img-container">
 
+</div>
 
-## How the component is currently used
-
-
+## How the component is currently being used
 
 {% endtab %}
 
 {% tab "Code" %}
 
-## Help develop existing building blocks in GitHub
-
-After a new building block is published in the design system, you, and other users, have the chance to continue enhancing it. This is done with users adding more information and resources to the component via GitHub.
-
-To do this you should:
-
-- go to the GitHub conversation
-- add your comments, information and resources about the building block
-
 ## Code
 
-No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
-
+No code has been added for this component. If you have examples of how you've used this component in your service then you could help the community by adding some. Most users are looking for HTML, Nunjucks, JavaScript, CSS or SASS.
 
 {% endtab %}
 
@@ -274,23 +270,21 @@ No code has been contributed for this component. If you have examples of how you
 
 ## Accessibility
 
-No accessibility findings have been contributed for this component.
-
+No accessibility findings have been added for this component. If you have examples of how you've used this component in your service then you could help the community by adding some. Most users are looking for HTML, Nunjucks, JavaScript, CSS or SASS.
 
 {% endtab %}
 
-{% tab "Links" %}
+{% tab "Prototype and design files" %}
 
-## Links
+## Prototypes and design files
 
-No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.
-
+No prototypes or design files have been added for this component. If you've used this component in your service and you have a prototype you can share it in the Github discussion.
 
 {% endtab %}
 
 {% endtabs %}
 ",
-  "filename": "component/documentation/unknown-component.md",
+  "filename": "docs/components/unknown-component.md",
 }
 `;
 
@@ -300,6 +294,8 @@ exports[`generateMarkdown should sanitize the filename correctly 1`] = `
 layout: layouts/tabbed-component.njk
 title: Component! With@ Special#Chars
 type: component
+status: Experimental
+statusDate: January 2023
 eleventyNavigation:
   key: Component! With@ Special#Chars
   parent: Components
@@ -312,9 +308,13 @@ eleventyNavigation:
 
 ## Overview
 
+<div class="img-container">
+
+</div>
+
 Overview here.
 
-## How the component is currently used
+## How the component is being used
 
 Usage here.
 
@@ -322,19 +322,9 @@ Usage here.
 
 {% tab "Code" %}
 
-## Help develop existing building blocks in GitHub
-
-After a new building block is published in the design system, you, and other users, have the chance to continue enhancing it. This is done with users adding more information and resources to the component via GitHub.
-
-To do this you should:
-
-- go to the GitHub conversation
-- add your comments, information and resources about the building block
-
 ## Code
 
-No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
-
+No code has been added for this component. If you have examples of how you've used this component in your service then you could help the community by adding some. Most users are looking for HTML, Nunjucks, JavaScript, CSS or SASS.
 
 {% endtab %}
 
@@ -343,30 +333,32 @@ No code has been contributed for this component. If you have examples of how you
 ## Accessibility
 
 If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.
-### External audit (External Org) - January 2022
+
+### External audit
+
 Some issues discovered.
-[Download the accessibility report](/uploads/external-report.pdf)
-### Internal audit (Internal Org) - February 2022
+
+### Internal review
+
 Some internal issues discovered.
-[Download the accessibility report](/uploads/internal-report.pdf)
-### Assistive Technology audit - March 2022
+
+### Assistive Technology testing
+
 Assistive tech issues discovered.
-[Download the accessibility report](/uploads/assistive-tech-report.pdf)
 
 
 {% endtab %}
 
-{% tab "Links" %}
+{% tab "Prototype and design files" %}
 
-## Links
+## Prototype and design files
 
-No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.
-
+No prototypes or design files have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.
 
 {% endtab %}
 
 {% endtabs %}
 ",
-  "filename": "component/documentation/component--with--special-chars.md",
+  "filename": "docs/components/component-with-special-chars.md",
 }
 `;

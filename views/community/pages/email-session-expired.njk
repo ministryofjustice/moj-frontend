@@ -1,0 +1,13 @@
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% extends "contributions.njk" %}
+
+{% block form %}
+  <p class="govuk-body">There was a browser issue with the verification link or it expired. </p>
+  {%- call govukInsetText({
+      classes: "govuk-!-width-two-thirds"
+  }) %}
+    <p class="govuk-body"><a class="govuk-link" href="{{ resetUrl }}">Enter your email address again</a> for a new verification link.</p>
+    <p class="govuk-body">Make sure that you open the link in the same browser that you are on now.</p>
+  {%- endcall %}
+{% endblock %}

@@ -1,7 +1,7 @@
 ---
 layout: layouts/nav-only.njk
 title: Submit a new component
-permalink: ./views/common/community-nav.html
+permalink: ./views/common/partials/side-navigation.njk
 permalinkBypassOutputDir: true
 eleventyNavigation:
   key: Submit a new component
