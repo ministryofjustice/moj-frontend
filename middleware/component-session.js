@@ -27,7 +27,7 @@ const getHashedUrl = (url) => {
 
 const getTemplate = (req) => {
   let template = sanitizeFilename(
-    `${req.params.page || req.url.replace('/', '')}`
+    `${req.params.page || req.path.replace('/', '')}`
   )
   if (!Object.keys(formPages).includes(template)) {
     template = 'error'
@@ -37,7 +37,7 @@ const getTemplate = (req) => {
 
 const getPageData = (req) => {
   let pageData = sanitizeFilename(
-    `${req.params.page || req.url.replace('/', '')}`
+    `${req.params.page || req.path.replace('/', '')}`
   )
   if (!Object.keys(formPages).includes(pageData)) {
     pageData = {}
@@ -184,7 +184,7 @@ const xssComponentCode = (req, res, next) => {
 
 const validateFormData = (req, res, next) => {
   console.log('validate form data')
-  const schemaName = req.url.split('/').at(1).split('?').at(0)
+  const schemaName = req.path.split('/').at(1)
   const schema = require(`../schema/${schemaName}.schema`)
   const body = extractBody(req?.url, { ...req.body })
   delete body._csrf
@@ -263,9 +263,10 @@ const saveSession = (req, res, next) => {
     res.end(403)
     return
   }
-
-  req.session[req.url] = { ...req.session[req.url], ...body }
-  delete req.session[req.url].addAnother
+  console.log(req.url)
+  console.log(req.path)
+  req.session[req.path] = { ...req.session[req.path], ...body }
+  delete req.session[req.path].addAnother
 
   next()
 }

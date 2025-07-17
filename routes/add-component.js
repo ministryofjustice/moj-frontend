@@ -178,9 +178,8 @@ router.get('/confirmation', (req, res) => {
 
 router.get('/email/verify/:token', (req, res) => {
   if (!req?.session?.emailToken) {
-    // session expired
-    req.session.sessionFlash = MESSAGES.emailVerificationExpired
-    res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email`)
+    // session expired / no session
+    res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email-session-expired`)
   } else {
     if (req.params.token === req.session.emailToken) {
       // verified
@@ -189,10 +188,27 @@ router.get('/email/verify/:token', (req, res) => {
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/component-details`)
     } else {
       // token invalid
-      req.session.sessionFlash = MESSAGES.emailVerificationInvalidToken
-      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email`)
+      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email-invalid-token`)
     }
   }
+})
+
+router.get('/email-session-expired', (req, res) => {
+  res.render('email-session-expired', {
+    page: {
+      title: 'Your verification link did not work '
+    },
+    resetUrl: `${ADD_NEW_COMPONENT_ROUTE}/email?reset=true`
+  })
+})
+
+router.get('/email-invalid-token', (req, res) => {
+  res.render('email-invalid-token', {
+    page: {
+      title: 'Your verification link was not recognised'
+    },
+    resetUrl: `${ADD_NEW_COMPONENT_ROUTE}/email?reset=true`
+  })
 })
 
 router.get('/email', (req, res) => {
@@ -238,7 +254,11 @@ router.post(
     if (req.emailDomainAllowed) {
       saveSession(req, res, next)
     } else {
-      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email/not-allowed`)
+      // Pass email in query so it isn't saved in the session
+      const emailAddress = req?.body?.emailAddress
+      res.redirect(
+        `${ADD_NEW_COMPONENT_ROUTE}/email/not-allowed?emailAddress=${encodeURIComponent(emailAddress)}`
+      )
     }
   },
   // generate token
@@ -266,9 +286,11 @@ router.post(
 router.get('/email/check', (req, res) => {
   res.render('email-check', {
     page: {
-      title: 'Check your email',
+      title: 'Check your email account',
       email: req?.session?.['/email']?.emailAddress
-    }
+    },
+    resendUrl: `${ADD_NEW_COMPONENT_ROUTE}/email/resend`,
+    resetUrl: `${ADD_NEW_COMPONENT_ROUTE}/email?reset=true`
   })
 })
 
@@ -277,9 +299,10 @@ router.get('/email/resend', (req, res) => {
     submitUrl: req.originalUrl,
     csrfToken: req?.session?.csrfToken,
     page: {
-      title: 'If you’re having problems with the email',
+      title: 'Resending a verification email',
       email: req?.session?.['/email']?.emailAddress
-    }
+    },
+    resendUrl: `${ADD_NEW_COMPONENT_ROUTE}/email/resend`
   })
 })
 
@@ -297,10 +320,13 @@ router.post('/email/resend', verifyCsrf, async (req, res) => {
 })
 
 router.get('/email/not-allowed', (req, res) => {
+  console.log(req.query)
   res.render('email-not-allowed', {
     page: {
-      title: 'You cannot submit a component'
-    }
+      title: 'You did not enter an MoJ email address',
+      email: req.query?.emailAddress
+    },
+    resetUrl: `${ADD_NEW_COMPONENT_ROUTE}/email?reset=true`
   })
 })
 

@@ -8,25 +8,27 @@
     csrfToken: csrfToken
   }) %}
 
-    <p class="govuk-body">You need to work for MoJ to submit a new component to the Design System.</p>
+    <p class="govuk-body">You need to work for MoJ to submit a component to the Design System.</p>
 
     {{ govukInput({
       id: "email-address",
       name: "emailAddress",
+      label: {
+        text: page.fields.emailAddress.label,
+        classes: "govuk-label--m"
+
+      },
       hint: {
        text: page.fields.emailAddress.hint
       },
       errorMessage: formErrors.emailAddress,
       value: formData.emailAddress,
-      attributes: {
-        'aria-labelledby': 'page-title'
-      },
       formGroup: {
         classes: 'govuk-!-margin-top-0'
       }
     }) }}
 
-    <p class="govuk-body">You’ll be sent an email with a verification link. </p>
+    <p class="govuk-body">You’ll be sent an email with a verification link.</p>
 
     <div class="moj-button-action">
       {{ govukButton({

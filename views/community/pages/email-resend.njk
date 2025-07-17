@@ -1,3 +1,4 @@
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% extends "contributions.njk" %}
 
 {% block form %}
@@ -5,22 +6,26 @@
     action: submitUrl,
     csrfToken: csrfToken
   }) %}
+  {%- if page.email %}
+  {% call govukInsetText({
+    classes: "govuk-!-width-two-thirds"
+  }) %}
+      You entered the email address: <strong>{{page.email}}</strong>
+    {%- endcall %}
+  {%- endif %}
+  <p class="govuk-body">Before you resend the email, you need to:</p>
     <ol class="govuk-list govuk-list--number">
-      <li>Check that you entered your email address correctly: <strong>{{page.email}}</strong></li>
-      <li>Check your junk or spam folder.</li>
+      <li>Check that you entered your email address correctly. If it’s incorrect, <a class="govuk-link" href="{{resetUrl}}">enter a different email address</a>. </li>
+      <li>Look in your email account’s junk or spam folder.</li>
       <li>Wait 5 minutes for it to arrive.</li>
     </ol>
-    <p class="govuk-body">If you’ve still not received the verification email after step 2 you can either:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>resend the verification email  </li>
-      <li><a class="govuk-link" href="/contribute/add-new-component/email?reset=true">enter a different email address</a></li>
-    </ul>
+    <p class="govuk-body">If you have not received the verification email after step 3, you can resend it.</p>
 
     <div class="moj-button-action">
         {{ govukButton({
             text: 'Resend verification email'
         }) }}
     </div>
-    <p class="govuk-body">If none of this works, <a class="govuk-link" href="/help">contact us</a>
+    <p class="govuk-body">If none of this works, <a class="govuk-link" href="/help">contact the MoJ Design System team for help</a>
   {% endcall %}
 {% endblock %}
