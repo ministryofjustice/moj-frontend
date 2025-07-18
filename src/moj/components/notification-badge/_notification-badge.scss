@@ -6,16 +6,16 @@
 
 .moj-notification-badge {
   @include govuk-font($size: 16, $weight: "bold");
+  border-radius: 2em;
+  outline: 0.25em solid transparent;
   background-color: govuk-colour("red");
   // outline ensures number is not obscured in Windows high contrast mode
-  outline: 0.25em solid transparent;
-  border-radius: 2em;
-  color: govuk-colour("white");
   display: inline-block;
-  text-align: center;
-  font-weight: 600;
-  min-height: 1.25em;
+  color: govuk-colour("white");
   min-width: 0.75em;
-  padding: 0.225em 0.5em 0.275em;
+  min-height: 1.25em;
+  font-weight: 600;
+  text-align: center;
   margin-left: 0.35em;
+  padding: 0.225em 0.5em 0.275em;
 }
