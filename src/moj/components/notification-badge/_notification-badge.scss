@@ -5,7 +5,7 @@
    ========================================================================== */
 
 .moj-notification-badge {
-  @include govuk-font($size: 19, $weight: "bold");
+  @include govuk-font($size: 16, $weight: "bold");
   background-color: govuk-colour("red");
   // outline ensures number is not obscured in Windows high contrast mode
   outline: .25em solid transparent;
