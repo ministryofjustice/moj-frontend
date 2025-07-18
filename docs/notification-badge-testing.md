@@ -10,7 +10,7 @@ lede: Checking how different spacing between the notification badge and other it
 <a href="#">Badge outside of link text</a> <span id="notifications" class="moj-notification-badge">10</span>
 <p>Above: Using a space for padding. The notification badge is not clickable because it is outside of the <code>a</code> tag.</p>
 
-<a href="#">Badge inside link text <span id="notifications" class="moj-notification-badge">10</span></a>
+<a href="#">Badge inside link text<span id="notifications" class="moj-notification-badge">10</span></a>
 <p>Above: The badge is clickable but the space is underlined, which looks strange.</p>
 
 <hr>
@@ -52,13 +52,13 @@ lede: Checking how different spacing between the notification badge and other it
       <nav class="moj-primary-navigation" aria-label="Primary navigation">
         <ul class="moj-primary-navigation__list">
           <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" aria-current="page" href="#1">Nav item 1 <span id="notifications" class="moj-notification-badge" style="margin-left:6px">10</span></a>
+            <a class="moj-primary-navigation__link" aria-current="page" href="#1">Nav item 1 <span id="notifications" class="moj-notification-badge">10</span></a>
           </li>
           <li class="moj-primary-navigation__item">
             <a class="moj-primary-navigation__link" href="#2">Nav item 2</a>
           </li>
           <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" href="#3">Nav item 3<span id="notifications" class="moj-notification-badge" style="margin-left:6px">10</span></a>
+            <a class="moj-primary-navigation__link" href="#3">Nav item 3<span id="notifications" class="moj-notification-badge">10</span></a>
           </li>
           <li class="moj-primary-navigation__item">
             <a class="moj-primary-navigation__link" href="#3">Nav item 4</a>
@@ -137,13 +137,13 @@ lede: Checking how different spacing between the notification badge and other it
           <a href="#2">Nav item 2</a>
         </li>
         <li class="moj-side-navigation__item">
-          <a href="#3">Different length <span id="notifications" class="moj-notification-badge" style="margin-left:6px">10</span></a>
+          <a href="#3">Different length <span id="notifications" class="moj-notification-badge">10</span></a>
         </li>
         <li class="moj-side-navigation__item">
           <a href="#3">Short one</a>
         </li>
         <li class="moj-side-navigation__item moj-side-navigation__item--active">
-          <a href="#3">Longer active nav item <span id="notifications" class="moj-notification-badge" style="margin-left:6px">10</span></a>
+          <a href="#3">Longer active nav item <span id="notifications" class="moj-notification-badge">10</span></a>
         </li>
       </ul>
     </nav>
@@ -471,12 +471,12 @@ lede: Checking how different spacing between the notification badge and other it
           <li class="govuk-service-navigation__item">
             <a class="govuk-service-navigation__link" href="#">
               Navigation item 1
-              <span id="notifications" class="moj-notification-badge" style="margin-left:6px">10</span>
+              <span id="notifications" class="moj-notification-badge">10</span>
             </a>
           </li>
           <li class="govuk-service-navigation__item govuk-service-navigation__item--active">
             <a class="govuk-service-navigation__link" href="#" aria-current="true">
-              <strong class="govuk-service-navigation__active-fallback">Navigation item 2 <span id="notifications" class="moj-notification-badge" style="margin-left:6px">10</span></strong>
+              <strong class="govuk-service-navigation__active-fallback">Navigation item 2 <span id="notifications" class="moj-notification-badge">10</span></strong>
             </a>
           </li>
           <li class="govuk-service-navigation__item">
