@@ -5,17 +5,17 @@
    ========================================================================== */
 
 .moj-notification-badge {
-  @include govuk-font($size: 16, $weight: "bold");
-  background-color: $govuk-colour("red");
+  @include govuk-font($size: 19, $weight: "bold");
+  background-color: govuk-colour("red");
   // outline ensures number is not obscured in Windows high contrast mode
-  outline: 0.25em solid transparent;
+  outline: .25em solid transparent;
   border-radius: 2em;
   color: govuk-colour("white");
   display: inline-block;
   text-align: center;
   font-weight: 600;
   min-height: 1.25em;
-  min-width: 0.75em;
-  padding: .25em 0.5em;
-  margin-left: 0.35em;
+  min-width: .75em;
+  padding: .225em .5em .275em;
+  margin-left: .35em;
 }
