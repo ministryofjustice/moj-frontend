@@ -13,7 +13,8 @@ lede: "xxx"
 
 ## Overview
 
-xxx
+<img alt="xxx." src="{{ 'assets/images/notification-inbox-example.png' | rev | url }}" width="100%">
+
 
 ### When to use
 
