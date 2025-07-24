@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "nunjucks",
+  "componentCodeLanguageOther": "",
+  "componentCode": "asdasdas das da da",
+  "componentCodeUsage": ""
+}
