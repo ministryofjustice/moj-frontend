@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "nunjucks",
+  "componentCodeLanguageOther": "",
+  "componentCode": "{%- from \"moj/components/date-picker/macro.njk\" import mojDatePicker -%}\r\n\r\n{{ mojDatePicker({\r\n  id: \"date\",\r\n  name: \"date\",\r\n  label: {\r\n    text: \"Date\"\r\n  },\r\n  hint: {\r\n    text: \"For example, 17/5/2024.\"\r\n  }\r\n}) }}",
+  "componentCodeUsage": "There are lots of nunjucks macro options"
+}
