@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "html",
+  "componentCodeLanguageOther": "",
+  "componentCode": "<div>\r\n\r\n  <div>\r\n    \r\n      Date\r\n    \r\n\r\n    <div>\r\n      For example, 17/5/2024.\r\n    </div>\r\n\r\n    \r\n\r\n  </div>\r\n\r\n</div>",
+  "componentCodeUsage": "This is what you paste into the HTML"
+}
