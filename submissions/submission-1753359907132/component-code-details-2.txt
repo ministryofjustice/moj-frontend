@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "other",
+  "componentCodeLanguageOther": "Another language",
+  "componentCode": "here is some code in a totally different language.",
+  "componentCodeUsage": ""
+}
