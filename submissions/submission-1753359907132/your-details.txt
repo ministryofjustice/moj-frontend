@@ -1,0 +1,10 @@
+{
+  "fullName": "Murray Lippiatt",
+  "emailAddress": "name@email.com",
+  "teamName": "Design System team",
+  "shareYourDetails": [
+    "",
+    "addNameToComponentPage",
+    "addTeamNameToComponentPage"
+  ]
+}
