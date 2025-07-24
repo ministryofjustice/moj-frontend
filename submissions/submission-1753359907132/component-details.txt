@@ -1,0 +1,5 @@
+{
+  "componentName": "Test component",
+  "componentOverview": "This is a test",
+  "howIsTheComponentUsed": "This is also a test"
+}
