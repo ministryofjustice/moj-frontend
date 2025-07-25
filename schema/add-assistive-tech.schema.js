@@ -58,11 +58,11 @@ const schema = Joi.object({
         })
       }
 
-      // Check if the date is after 01/04/2011
+      // Check if the date is after 1 4 2011
       const minDate = moment('2011-04-01', 'YYYY-MM-DD')
       if (moment(value).isBefore(minDate)) {
         return helpers.error('any.invalid', {
-          message: 'The date must be after 01/04/2011'
+          message: 'The date must be after 1 4 2011'
         })
       }
 
