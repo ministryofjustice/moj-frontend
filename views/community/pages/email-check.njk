@@ -6,9 +6,9 @@
   <p class="govuk-body">We've sent an email to: <strong>{{page.email}}</strong></p>
   <p class="govuk-body">Select the link in the verification email to continue submitting a component. The link will open in a new tab, so you can close this one.</p>
   {% call govukDetails({
-    summaryText: "Fix problems with the email?",
+    summaryText: "Fix problems with the email",
     classes: "govuk-!-width-two-thirds"
   }) %}
-  <a class="govuk-link" href="{{resendUrl}}">Resend the verification email</a> if the address is correct. <a class="govuk-link" href="{{ resetUrl }}">Enter a different email address</a> if the address is incorrect.
+  <a class="govuk-link" href="{{resendUrl}}">Resend the verification email</a> if the address is correct. You can also <a class="govuk-link" href="{{ resetUrl }}">enter a different email address</a> .
   {% endcall %}
 {% endblock %}
