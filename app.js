@@ -31,6 +31,9 @@ const RedisStore = require('connect-redis')(session)
 const helmet = require('helmet')
 const nunjucks = require('nunjucks')
 const { xss } = require('express-xss-sanitizer')
+const { ipFilterMiddleware, IPRelatedError } = require('express-ip-filter-middleware');
+const allowList = require('./middleware/ip-allowlist.js')
+
 
 const rev = require('./filters/rev')
 
@@ -79,6 +82,8 @@ if (!isDev) {
       legacyHeaders: false
     })
   )
+
+  app.use(ipFilterMiddleware({mode: 'whitelist', allow: allowList}))
 }
 
 // Session management
@@ -164,6 +169,11 @@ app.use((err, req, res, next) => {
   if (err.status && err.status === 404) {
     res.status(404).render('404', {
       title: 'Page not found'
+    })
+  } else if (err instanceof IPRelatedError) {
+    res.status(403).render('403', {
+      title: 'Sorry, you do not have permission to access',
+      errorDetails: isDev ? err.message : undefined // Only show detailed error messages in dev mode
     })
   } else {
     res.status(500).render('500', {

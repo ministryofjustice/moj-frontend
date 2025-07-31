@@ -22,6 +22,7 @@ const config = {
   SENTRY_DSN: process.env.SENTRY_DSN,
   SENTRY_CSP_REPORT_URI: process.env.SENTRY_CSP_REPORT_URI || '',
   ALLOWED_EMAIL_DOMAINS: ['justice.gov.uk'],
+  IP_WHITELIST: process.env.IP_WHITELIST || "",
   COMPONENT_FORM_PAGES: {
     email: {
       title: 'Verify that you work for MoJ',

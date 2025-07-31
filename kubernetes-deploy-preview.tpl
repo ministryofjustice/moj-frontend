@@ -98,6 +98,11 @@ spec:
               secretKeyRef:
                 name: sentry-csp-uri
                 key: sentry-csp-uri
+          - name: IP_WHITELIST
+            valueFrom:
+              secretKeyRef:
+                name: ip-whitelist
+                key: ip-whitelist
           - name: BRANCH
             value: ${BRANCH}
           - name: APP_URL
