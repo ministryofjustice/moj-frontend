@@ -1,5 +1,6 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}    
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
 
 {% extends "base.njk" %}
 
@@ -16,30 +17,20 @@
 
 {% block content %}
   <div class="app-layout__content">
-    <span class="govuk-caption-l">Submit a component</span>
-
-    {% set html %}
-      <h1 class="govuk-notification-banner__heading">
-        You've submitted a component
-      </h1>
-    {% endset %}
-
-    {{ govukNotificationBanner({
-      classes: "govuk-!-margin-top-5",
-      html: html,
+    {{ govukPanel({
       titleText: "Component received",
-      type: "success"
+      html: "You’ve submitted a component"
     }) }}
 
-    <h2 class="govuk-heading-l">What happens next</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">What happens next</h2>
 
-    <h3 class="govuk-heading-m">The Design System team reviews the component</h3>
+    <h3 class="govuk-heading-s">The Design System team reviews the component</h3>
     <p class="govuk-body">The team will give the component a sense check.</p>
-    <p class="govuk-body">If there are no queries, it'll be added to the Design System within 10 working days. It will have an experimental status, which means that it's early in development. You can read more about the <a href="/design-system-statuses/">MoJ Design System statuses</a>.</p>
-    <p class="govuk-body">You'll get an email when the component is live.</p>
+    <p class="govuk-body">If there are no queries, it’ll be added to the Design System within 10 working days. It will have an experimental status, which means that it’s early in development. You can read more about the <a href="/design-system-statuses/">MoJ Design System statuses</a>.</p>
+    <p class="govuk-body">You’ll get an email when the component is live.</p>
 
-    <h3 class="govuk-heading-m">Collaborating on the component</h3>
-    <p class="govuk-body">Each community component will have a Github discussion. This enables it to continue to develop through discussions and contributions. Later in 2025, people in MoJ and UK government will be able to use the documentation site to add to the component.</p>
+    <h3 class="govuk-heading-s">Collaborating on the component</h3>
+    <p class="govuk-body">Each experimental component will have a Github discussion. This enables it to develop through discussions and contributions.</p>
 
     <p class="govuk-body"><a href="/" class="govuk-link">Back to the Design System homepage</a></p>
   </div>
