@@ -17,6 +17,48 @@ lede: 'New and updated entries in the <a href="/content-standards/style-guide/">
     </thead>
     <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <a href="/content-standards/style-guide#unlock"><b>Unlock</b></a>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="govuk-tag govuk-tag--green">New</span>
+          </td>
+          <td class="govuk-table__cell"><p>The process by which people in prison are let out of their cells and off the wing.</p>
+<p>This can be for:
+<ul>
+<li>activities – like work or education</li>
+<li>appointments – like a prison visit, or to go to a doctor</li>
+</ul>
+<p>There can be up to 3 ‘unlocks’ a day – morning, afternoon and evening.</p></td>
+          <td class="govuk-table__cell" data-sort-value="20250806">6 August 2025</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+           <a href="/content-standards/style-guide#unlock-list"><b>Unlock list</b></a>
+          </td>
+          <td class="govuk-table__cell">
+           <span class="govuk-tag govuk-tag--green">New</span>
+          </td>
+          <td class="govuk-table__cell"><p>A list of people in an area of a prison who are due to go to an activity or an appointment.</p>
+          <p>It contains people’s names, prison numbers, what they are due to go to, and when they have to be there.</p>
+          <p>For each unlock, wing officers use the list to let the right people out of their cells and off the wing.</p>
+          <p>It is not used in Category D prisons.</p>
+          <p>Sometimes known as an ‘unlock roll’, ‘leaving list’, or ‘free flow list’.</p></td>
+              <td class="govuk-table__cell" data-sort-value="20250806">6 August 2025</td>
+            </tr>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+               <a href="/content-standards/style-guide#ftr48"><b>FTR48</b></a>
+              </td>
+              <td class="govuk-table__cell">
+               <span class="govuk-tag govuk-tag--green">New</span>
+              </td>
+              <td class="govuk-table__cell"><p>FTR48 is the policy that states people with sentences of up to 48 months will get a 28-day recall, provided they meet certain eligibility criteria. The sentence length can be from one sentence or consecutive sentences. The policy is an interim measure and will be replaced with new legislation in 2026.</p>
+              <p>The acronym FTR, which stands for fixed term recall, is generally well understood in HMPPS and widely used in systems like NOMIS. Use FTR48 when referring to the specific policy.</p></td>
+                  <td class="govuk-table__cell" data-sort-value="20250806">6 August 2025</td>
+                </tr>
+    <tr class="govuk-table__row">
       <td class="govuk-table__cell">
         <a href="/content-standards/style-guide#taser-%28hmpps-only%29"><b>Taser (HMPPS only)</b></a>
       </td>

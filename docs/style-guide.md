@@ -16,7 +16,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 8 July 2025
+Last updated: 5 August 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -208,6 +208,12 @@ This refers to the record of prisoners' movements and locations in an establishm
 ### forfeiture of privileges
 
 Always use ‘loss of privileges’ when referring to the outcome of an adjudication hearing.
+
+### FTR48
+
+FTR48 is the policy that states people with sentences of up to 48 months will get a 28-day recall, provided they meet certain eligibility criteria. The sentence length can be from one sentence or consecutive sentences. The policy is an interim measure and will be replaced with new legislation in 2026.
+
+The initialism FTR, which stands for fixed term recall, is generally well understood in HMPPS and widely used in systems like NOMIS. Use FTR48 when referring to the specific policy.
 
 {% endaccordionSection %}
 {% accordionSection "G" %}
@@ -511,6 +517,31 @@ If your service is on DPS but is used by both prison and probation staff, it sho
 ### times (in probation)
 
 Use the 12-hour clock for services in the probation space. For example, 11am.
+
+{% endaccordionSection %}
+{% accordionSection "U" %}
+
+### unlock
+
+The process by which people in prison are let out of their cells and off the wing.
+
+This can be for:
+- activities – like work or education
+- appointments – like a prison visit, or to go to a doctor
+
+There can be up to 3 ‘unlocks’ a day – morning, afternoon and evening.
+
+### unlock list
+
+A list of people in an area of a prison who are due to go to an activity or an appointment.
+
+It contains people’s names, prison numbers, what they are due to go to, and when they have to be there.
+
+For each unlock, wing officers use the list to let the right people out of their cells and off the wing.
+
+It is not used in Category D prisons.
+
+Sometimes known as an ‘unlock roll’, ‘leaving list’, or ‘free flow list’.
 
 {% endaccordionSection %}
 {% accordionSection "V" %}
