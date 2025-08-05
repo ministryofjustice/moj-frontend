@@ -201,7 +201,7 @@ router.get('/email/verify/:token', (req, res) => {
 router.get('/email-session-expired', (req, res) => {
   res.render('email-session-expired', {
     page: {
-      title: 'Your verification link did not work '
+      title: 'Your confirmation link did not work '
     },
     resetUrl: `${ADD_NEW_COMPONENT_ROUTE}/email?reset=true`
   })
@@ -210,7 +210,7 @@ router.get('/email-session-expired', (req, res) => {
 router.get('/email-invalid-token', (req, res) => {
   res.render('email-invalid-token', {
     page: {
-      title: 'Your verification link was not recognised'
+      title: 'Your confirmation link was not recognised'
     },
     resetUrl: `${ADD_NEW_COMPONENT_ROUTE}/email?reset=true`
   })
@@ -304,7 +304,7 @@ router.get('/email/resend', (req, res) => {
     submitUrl: req.originalUrl,
     csrfToken: req?.session?.csrfToken,
     page: {
-      title: 'Resending a verification email',
+      title: 'Resending a confirmation email',
       email: req?.session?.['/email']?.emailAddress
     },
     resendUrl: `${ADD_NEW_COMPONENT_ROUTE}/email/resend`

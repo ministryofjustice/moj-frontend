@@ -250,7 +250,7 @@ const config = {
   MESSAGES: {
     emailVerificationSuccess: {
       type: 'success',
-      title: 'Your email address has been verified',
+      title: 'Your email address has been confirmed',
       text: 'You can now submit a component'
     },
     componentImageUploaded: (filename) => {
