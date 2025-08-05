@@ -5,6 +5,10 @@
 {% from "macros/page-title.njk" import pageTitle %}
 {% from "macros/form.njk" import form %}
 
+{% block pageTitle %}
+  {{ page.title }} - MoJ Design System
+{% endblock %}
+
 {% block beforeContent %}
   <div class="app-layout__back-link">
     {% if backLink %}
@@ -35,12 +39,10 @@
       })}}
     {% endif %}
 
-    {% block pageTitle %}
-      {{ pageTitle({
-        caption: 'Submit a component',
-        title: page.title
-      })}}
-    {% endblock %}
+    {{ pageTitle({
+      caption: 'Submit a component',
+      title: page.title
+    })}}
 
     {% block form %}{% endblock %}
 
