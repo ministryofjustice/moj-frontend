@@ -498,6 +498,7 @@ router.post(
   verifyCsrf,
   validatePageParams,
   getBackLink,
+  canAddAnother,
   validateFormData,
   saveSession,
   setNextPage,
