@@ -3,11 +3,7 @@ layout: layouts/content.njk
 subsection: About the Design System
 title: Contributing to the Design System
 redirect_from: /community/collaborate-in-the-design-system
-eleventyNavigation:
-  key: Contributing
-  order: 30
-  parent: About the Design System
-  excerpt: "Contributing to the Design System"
+permalink: false
 ---
 
 You can use the MoJ Design System to share your work with others. This is through submitting building blocks that your team has built, as well as joining discussions to help other blocks develop.
