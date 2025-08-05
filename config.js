@@ -220,8 +220,8 @@ const config = {
           label: 'What team were you in when this component was created?'
         },
         shareYourDetails: {
-          label: 'Displaying your details on the component page',
-          hint: 'Adding your details to the component enables other users to contact you (or your team) to collaborate on the component. This is optional.'
+          label: 'Displaying your details on the component page (optional)',
+          hint: 'Adding your details to the component enables other users to contact you (or your team).'
         }
       },
       showOnCya: true,
@@ -251,7 +251,7 @@ const config = {
     emailVerificationSuccess: {
       type: 'success',
       title: 'Your email address has been verified',
-      text: 'You can now submit a new component'
+      text: 'You can now submit a component'
     },
     componentImageUploaded: (filename) => {
       return {

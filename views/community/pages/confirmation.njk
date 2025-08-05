@@ -1,5 +1,6 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}    
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
 
 {% extends "base.njk" %}
 
@@ -16,8 +17,6 @@
 
 {% block content %}
   <div class="app-layout__content">
-    {% from "govuk/components/panel/macro.njk" import govukPanel %}
-
     {{ govukPanel({
       titleText: "Component received",
       html: "You’ve submitted a component"
