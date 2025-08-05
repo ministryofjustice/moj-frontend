@@ -85,6 +85,9 @@ router.get(
   (req, res) => {
     const sections = checkYourAnswers(req.session)
     res.render(checkYourAnswersPath, {
+      page: {
+        title: 'Check your answers'
+      },
       submitUrl: req.originalUrl,
       sections,
       csrfToken: req?.session?.csrfToken,
@@ -163,7 +166,9 @@ router.get('/start', (req, res) => {
   req.session.started = true
   console.log('Start session')
   res.render('start', {
-    title: 'Submit a component',
+    page: {
+    title: 'Before you start',
+    },
     csrfToken: req?.session?.csrfToken
   })
   console.log('after render')
