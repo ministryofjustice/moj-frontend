@@ -262,7 +262,7 @@ const config = {
     componentImageRemoved: (filename) => {
       return {
         type: 'success',
-        message: `File ‘${filename}’ has been removed.`
+        text: `File ‘${filename}’ has been removed.`
       }
     }
   }
