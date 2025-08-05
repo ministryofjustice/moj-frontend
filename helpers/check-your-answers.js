@@ -139,7 +139,7 @@ const buildSection = (sectionPath, sectionConfig, sectionNumber) => {
     section.actions.push(link(href, 'Change', section.title))
   } else {
     const linkText = sectionKey.startsWith('component-code')
-      ? 'Review & Change'
+      ? 'View and Change'
       : 'Change'
 
     section.actions.push(link(sectionPath, linkText, section.title))
