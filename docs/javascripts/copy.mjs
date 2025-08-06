@@ -9,24 +9,26 @@ export class Copy extends Component {
     super($root)
 
     const $button = document.createElement('button')
+    const id = `copy-button-${Math.random().toString(36).substring(2, 8)}`
     $button.className = 'app-copy-button js-copy-button'
+    $button.setAttribute('id', id)
     $button.setAttribute('aria-live', 'assertive')
     $button.textContent = 'Copy code'
 
     this.$root.insertBefore($button, this.$root.firstChild)
-    this.copyAction()
+    this.copyAction(id)
   }
 
-  copyAction() {
+  copyAction(id) {
     const $pre = this.$root.querySelector('pre')
-
     // Copy to clipboard
     try {
-      new ClipboardJS('.js-copy-button', {
+      new ClipboardJS(`#${id}`, {
         target: function () {
           return $pre
         }
       }).on('success', function (event) {
+          console.log(event)
         event.trigger.textContent = 'Code copied'
         event.clearSelection()
         setTimeout(function () {

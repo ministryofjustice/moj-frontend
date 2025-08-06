@@ -161,11 +161,15 @@ ${content}\r\n`
       content += `
 ### Example ${i + 1}: ${language}
 
+<div class="app-example__code" data-module="app-copy">
+
 \`\`\`${hljsLang(language)}
 {% raw %}
 ${code?.componentCode || ''}
 {% endraw %}
 \`\`\`
+
+</div>
 `
       if (code?.componentCodeUsage) {
         content += `
