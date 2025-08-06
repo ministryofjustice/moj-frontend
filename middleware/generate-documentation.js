@@ -167,13 +167,13 @@ ${code?.componentCode || ''}
 {% endraw %}
 \`\`\`
 `
-      if(code?.componentCodeUsage) {
+      if (code?.componentCodeUsage) {
         content += `
 #### How to use the code
 
 ${code.componentCodeUsage}`
       }
-content += `\r\n\r\n`
+      content += `\r\n\r\n`
     }
 
     if (data['/component-code-details']) {

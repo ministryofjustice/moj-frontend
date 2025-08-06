@@ -101,9 +101,9 @@ const setSuccessMessage = (req, res, next) => {
   const page = req.path.split('/').at(1)
   const number = req.path.split('/').at(2) || 1
 
-  if(addingAnother && page === 'component-code-details') {
+  if (addingAnother && page === 'component-code-details') {
     console.log('adding a success message to the session flash')
-      req.session.sessionFlash = MESSAGES.componentCodeAdded(number)
+    req.session.sessionFlash = MESSAGES.componentCodeAdded(number)
   }
 
   next()
@@ -191,7 +191,10 @@ const xssComponentCode = (req, res, next) => {
       req.body.componentCodeLanguage !== 'javascript' &&
       req.body.componentCodeLanguage !== 'other'
     ) {
-      req.body.componentCode = sanitize(req.body.componentCode, HTML_SANITIZATION_OPTIONS)
+      req.body.componentCode = sanitize(
+        req.body.componentCode,
+        HTML_SANITIZATION_OPTIONS
+      )
     }
   }
   next()

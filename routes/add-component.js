@@ -168,7 +168,7 @@ router.get('/start', (req, res) => {
   console.log('Start session')
   res.render('start', {
     page: {
-    title: 'Before you start',
+      title: 'Before you start'
     },
     csrfToken: req?.session?.csrfToken
   })
