@@ -352,6 +352,9 @@ router.get(
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`)
     } else {
       res.render('remove', {
+        page: {
+          title: 'Are you sure you want to remove this information?'
+        },
         submitUrl: req.originalUrl,
         formData: req?.formData,
         backLink: `${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`,

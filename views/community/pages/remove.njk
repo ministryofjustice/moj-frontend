@@ -2,13 +2,6 @@
 
 {% extends "contributions.njk" %}
 
-{% block pageTitle %}
-  {{ pageTitle({
-    caption: 'Submit a component',
-    title: "Are you sure you want to remove this information?"
-  })}}
-{% endblock %}
-
 {% block form %}
   {% call form({
     action: submitUrl,

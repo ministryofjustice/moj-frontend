@@ -2,7 +2,7 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "moj/components/alert/macro.njk" import mojAlert %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "macros/page-title.njk" import pageTitle %}
+{% from "macros/page-heading.njk" import pageHeading %}
 {% from "macros/form.njk" import form %}
 
 {% extends "base.njk" %}
@@ -41,10 +41,12 @@
       })}}
     {% endif %}
 
-    {{ pageTitle({
-      caption: 'Submit a component',
-      title: page.title
-    })}}
+    {% block pageHeading %}
+      {{ pageHeading({
+        caption: 'Submit a component',
+        title: page.title
+      })}}
+    {% endblock %}
 
     {% block form %}{% endblock %}
 
