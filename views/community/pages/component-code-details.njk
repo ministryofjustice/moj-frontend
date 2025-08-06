@@ -10,7 +10,7 @@
     csrfToken: csrfToken
   }) %}
 
-    <p class="govuk-body">You should only send the component code. It should not contain any personally identifiable or sensitive information. You can add more than one code example.</p>
+    <p class="govuk-body">You should only include code for this component. The code block should not contain any personally identifiable or sensitive information. You can add more than one code example.</p>
 
     {% set otherHtml %}
       {{ govukInput({
@@ -104,7 +104,7 @@
       }) }}
       {% if showAddAnother %}
         {{ govukButton({
-          text: "Add another code example",
+          text: "Add another code block",
           classes: "govuk-button--secondary",
           name: "addAnother"
         }) }}

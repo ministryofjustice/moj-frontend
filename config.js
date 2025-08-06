@@ -397,7 +397,7 @@ const config = {
       fields: {
         componentCodeLanguage: {
           label: 'Select the code language',
-          hint: 'If you have code in 2 or more languages you can add another code example.'
+          hint: 'If you have code in more than one language, add another code block.'
         },
         componentCodeLanguageOther: {
           label: 'Enter the code language'
@@ -472,7 +472,7 @@ const config = {
   ACRONYMS_TO_UPPERCASE: ['url'],
   CHECK_YOUR_ANSWERS_LABEL_OVERRIDES: {
     'component-code-details': {
-      title: 'Code sample',
+      title: 'Code example',
       fields: {
         componentCodeUsage: 'Usage',
         componentCodeLanguage: 'Language',
