@@ -28,7 +28,7 @@ export class Copy extends Component {
           return $pre
         }
       }).on('success', function (event) {
-          console.log(event)
+        console.log(event)
         event.trigger.textContent = 'Code copied'
         event.clearSelection()
         setTimeout(function () {
