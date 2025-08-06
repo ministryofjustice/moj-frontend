@@ -8,7 +8,8 @@ const {
   ADD_NEW_COMPONENT_ROUTE,
   ALLOWED_EMAIL_DOMAINS: allowedDomains,
   COMPONENT_FORM_PAGES: formPages,
-  MESSAGES
+  MESSAGES,
+  HTML_SANITIZATION_OPTIONS
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const { getAnswersForSection } = require('../helpers/check-your-answers')
@@ -190,7 +191,7 @@ const xssComponentCode = (req, res, next) => {
       req.body.componentCodeLanguage !== 'javascript' &&
       req.body.componentCodeLanguage !== 'other'
     ) {
-      req.body.componentCode = sanitize(req.body.componentCode)
+      req.body.componentCode = sanitize(req.body.componentCode, HTML_SANITIZATION_OPTIONS)
     }
   }
   next()
