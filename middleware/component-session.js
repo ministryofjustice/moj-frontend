@@ -95,6 +95,19 @@ const setNextPage = (req, res, next) => {
   next()
 }
 
+const setSuccessMessage = (req, res, next) => {
+  const addingAnother = req?.body?.addAnother !== undefined
+  const page = req.path.split('/').at(1)
+  const number = req.path.split('/').at(2) || 1
+
+  if(addingAnother && page === 'component-code-details') {
+    console.log('adding a success message to the session flash')
+      req.session.sessionFlash = MESSAGES.componentCodeAdded(number)
+  }
+
+  next()
+}
+
 const clearSkippedPageData = (req, res, next) => {
   console.log('clearing data for skipped pages')
   const requiredPages = getCurrentFormPages(req.session).map((page) => {
@@ -112,7 +125,8 @@ const clearSkippedPageData = (req, res, next) => {
         'checkYourAnswers',
         'emailToken',
         'emailDomainAllowed',
-        'verified'
+        'verified',
+        'sessionFlash'
       ].includes(sessionPage)
     ) {
       console.log(sessionPage)
@@ -480,5 +494,6 @@ module.exports = {
   checkEmailDomain,
   validatePageParams,
   setCsrfToken,
-  xssComponentCode
+  xssComponentCode,
+  setSuccessMessage
 }

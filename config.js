@@ -264,6 +264,12 @@ const config = {
         type: 'success',
         text: `File ‘${filename}’ has been removed.`
       }
+    },
+    componentCodeAdded: (number) => {
+      return {
+        type: 'success',
+        text: `Code example ${number} added`
+      }
     }
   }
 }

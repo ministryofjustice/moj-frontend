@@ -33,6 +33,7 @@ const {
   checkEmailDomain,
   validatePageParams,
   setCsrfToken,
+  setSuccessMessage,
   xssComponentCode
 } = require('../middleware/component-session')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
@@ -507,6 +508,7 @@ router.post(
   validateFormData,
   saveSession,
   setNextPage,
+  setSuccessMessage,
   clearSkippedPageData,
   (req, res, next) => {
     if (req?.nextPage) {
