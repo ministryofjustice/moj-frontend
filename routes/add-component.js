@@ -33,6 +33,7 @@ const {
   checkEmailDomain,
   validatePageParams,
   setCsrfToken,
+  setSuccessMessage,
   xssComponentCode
 } = require('../middleware/component-session')
 const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
@@ -167,7 +168,7 @@ router.get('/start', (req, res) => {
   console.log('Start session')
   res.render('start', {
     page: {
-    title: 'Before you start',
+      title: 'Before you start'
     },
     csrfToken: req?.session?.csrfToken
   })
@@ -351,6 +352,9 @@ router.get(
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`)
     } else {
       res.render('remove', {
+        page: {
+          title: 'Are you sure you want to remove this information?'
+        },
         submitUrl: req.originalUrl,
         formData: req?.formData,
         backLink: `${ADD_NEW_COMPONENT_ROUTE}/${checkYourAnswersPath}`,
@@ -507,6 +511,7 @@ router.post(
   validateFormData,
   saveSession,
   setNextPage,
+  setSuccessMessage,
   clearSkippedPageData,
   (req, res, next) => {
     if (req?.nextPage) {

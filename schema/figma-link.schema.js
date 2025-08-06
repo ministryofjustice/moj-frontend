@@ -6,14 +6,14 @@ const addAnotherSchema = require('./add-another.schema')
 
 const schema = addAnotherSchema.append({
   figmaLink: Joi.string()
-    .pattern(/^(https?:\/\/)?([\w-]+\.)*figma\.com(:[0-9]{1,5})?(\/.*)?$/)
     .required()
-    .label('Add the link to where the Figma design file is saved')
+    .uri()
+    .pattern(/^(https?:\/\/)?([\w-]+\.)*figma\.com(:[0-9]{1,5})?(\/.*)?$/)
     .messages({
       'any.required': 'Enter the link to the Figma design file',
       'string.empty': 'Enter the link to the Figma design file',
-      'string.pattern.base':
-        'The link to the Figma design file must be a real URL'
+      'string.uri': 'Add a real URL',
+      'string.pattern.base': 'Add a link to a Figma design file'
     }),
   figmaLinkAdditionalInformation: Joi.string()
     .optional()

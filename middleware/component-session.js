@@ -8,7 +8,8 @@ const {
   ADD_NEW_COMPONENT_ROUTE,
   ALLOWED_EMAIL_DOMAINS: allowedDomains,
   COMPONENT_FORM_PAGES: formPages,
-  MESSAGES
+  MESSAGES,
+  HTML_SANITIZATION_OPTIONS
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const { getAnswersForSection } = require('../helpers/check-your-answers')
@@ -95,6 +96,19 @@ const setNextPage = (req, res, next) => {
   next()
 }
 
+const setSuccessMessage = (req, res, next) => {
+  const addingAnother = req?.body?.addAnother !== undefined
+  const page = req.path.split('/').at(1)
+  const number = req.path.split('/').at(2) || 1
+
+  if (addingAnother && page === 'component-code-details') {
+    console.log('adding a success message to the session flash')
+    req.session.sessionFlash = MESSAGES.componentCodeAdded(number)
+  }
+
+  next()
+}
+
 const clearSkippedPageData = (req, res, next) => {
   console.log('clearing data for skipped pages')
   const requiredPages = getCurrentFormPages(req.session).map((page) => {
@@ -112,7 +126,8 @@ const clearSkippedPageData = (req, res, next) => {
         'checkYourAnswers',
         'emailToken',
         'emailDomainAllowed',
-        'verified'
+        'verified',
+        'sessionFlash'
       ].includes(sessionPage)
     ) {
       console.log(sessionPage)
@@ -176,7 +191,10 @@ const xssComponentCode = (req, res, next) => {
       req.body.componentCodeLanguage !== 'javascript' &&
       req.body.componentCodeLanguage !== 'other'
     ) {
-      req.body.componentCode = sanitize(req.body.componentCode)
+      req.body.componentCode = sanitize(
+        req.body.componentCode,
+        HTML_SANITIZATION_OPTIONS
+      )
     }
   }
   next()
@@ -480,5 +498,6 @@ module.exports = {
   checkEmailDomain,
   validatePageParams,
   setCsrfToken,
-  xssComponentCode
+  xssComponentCode,
+  setSuccessMessage
 }
