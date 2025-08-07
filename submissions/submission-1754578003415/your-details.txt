@@ -1,0 +1,9 @@
+{
+  "fullName": "test number 6000",
+  "teamName": "dream team",
+  "shareYourDetails": [
+    "",
+    "addNameToComponentPage",
+    "addTeamNameToComponentPage"
+  ]
+}
