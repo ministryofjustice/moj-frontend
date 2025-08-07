@@ -98,7 +98,7 @@ router.get(
   }
 )
 
-if (process.env.DEV_DUMMY_DATA) {
+if (process.env.DEV_DUMMY_DATA === 'true') {
   // Set dummy data for add component via session
   router.get('/component-details', (req, res, next) => {
     if (!req.session) {
