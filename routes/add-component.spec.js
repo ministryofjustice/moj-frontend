@@ -78,7 +78,7 @@ describe('Component Details Form Tests', () => {
       )
 
       expect(response.status).toBe(200)
-      expect(response.text).toContain('Add another code example')
+      expect(response.text).toContain('Add another code block')
     })
   })
 

@@ -469,7 +469,7 @@ const config = {
   ACRONYMS_TO_UPPERCASE: ['url'],
   CHECK_YOUR_ANSWERS_LABEL_OVERRIDES: {
     'component-code-details': {
-      title: 'Code example',
+      title: 'Code block',
       fields: {
         componentCodeUsage: 'Usage',
         componentCodeLanguage: 'Language',

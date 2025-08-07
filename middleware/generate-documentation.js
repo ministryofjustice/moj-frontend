@@ -181,7 +181,7 @@ ${code.componentCodeUsage}`
     }
 
     if (data['/component-code-details']) {
-      content = `Code has been added for this component. There may be other code examples in the ${githubDiscussionLink(sanitizedComponentName)}.
+      content = `Code has been added for this component. There may be other code blocks in the ${githubDiscussionLink(sanitizedComponentName)}.
 
 ${content}
 
@@ -193,7 +193,7 @@ If you have code that is relevant to this component you can add it to the ${gith
 
 You can use the ${githubDiscussionLink(sanitizedComponentName)} to:
 
-* view other code examples
+* view other code blocks
 * add relevant code`
     }
 
