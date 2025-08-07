@@ -1,0 +1,4 @@
+{
+  "figmaLink": "https://www.figma.com/design/XjfVNGHwwGOwYGzLzAA1iZ/Progress-trackers?node-id=0-1",
+  "figmaLinkAdditionalInformation": ""
+}
