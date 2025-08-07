@@ -1,0 +1,5 @@
+{
+  "componentName": "chris component",
+  "componentOverview": "ddf",
+  "howIsTheComponentUsed": "fdf"
+}
