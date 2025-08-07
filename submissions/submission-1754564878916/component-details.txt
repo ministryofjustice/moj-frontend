@@ -1,0 +1,5 @@
+{
+  "componentName": "new component ",
+  "componentOverview": "its amazing",
+  "howIsTheComponentUsed": "everywhere"
+}

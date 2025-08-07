@@ -1,3 +1,11 @@
+## [5.1.5](https://github.com/ministryofjustice/moj-frontend/compare/v5.1.4...v5.1.5) (2025-07-16)
+
+
+### Bug Fixes
+
+* **date picker:** fix enter key not submitting containing form ([#1594](https://github.com/ministryofjustice/moj-frontend/issues/1594)) ([bf30963](https://github.com/ministryofjustice/moj-frontend/commit/bf30963bc616b0334d5c0b0fe3032ce83e3ab905)), closes [#1591](https://github.com/ministryofjustice/moj-frontend/issues/1591)
+* **sortable-table:** fix typos in viewbox attributes ([#1595](https://github.com/ministryofjustice/moj-frontend/issues/1595)) ([d086e1e](https://github.com/ministryofjustice/moj-frontend/commit/d086e1eab199413e1a033978dd99f75ef6db89e0))
+
 ## [5.1.4](https://github.com/ministryofjustice/moj-frontend/compare/v5.1.3...v5.1.4) (2025-06-23)
 
 
