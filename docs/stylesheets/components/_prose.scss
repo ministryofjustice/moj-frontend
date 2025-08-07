@@ -23,15 +23,15 @@
 
   img {
     max-width: 100%;
-    border: 1px solid #b1b4b6;
+    border: 1px solid $govuk-border-colour;
   }
 
   .img-container {
-    width: fill;
+    width: 100%;
     height: fit-content;
     margin-bottom: govuk-spacing(9);
     padding: govuk-spacing(6);
-    border: 1px solid #b1b4b6;
+    border: 1px solid $govuk-border-colour;
     background-color: govuk-colour("white");
 
     & img {

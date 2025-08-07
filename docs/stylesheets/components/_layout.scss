@@ -20,9 +20,9 @@
 }
 
 .app-layout__sidebar {
-  @include govuk-responsive-padding(6, "bottom");
   z-index: 1;
   background-color: govuk-colour("white");
+  @include govuk-responsive-padding(6, "bottom");
 
   @include govuk-media-query(app.$breakpoint) {
     border-right: 1px solid $govuk-border-colour;
