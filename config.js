@@ -451,9 +451,6 @@ const config = {
         fullName: {
           label: 'Full name'
         },
-        emailAddress: {
-          label: 'Email address'
-        },
         teamName: {
           label: 'What team were you in when this component was created?'
         },

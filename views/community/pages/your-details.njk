@@ -36,17 +36,6 @@
     }) }}
 
     {{ govukInput({
-        label: {
-            text: page.fields.emailAddress.label,
-            classes: "govuk-label--m"
-        },
-        id: "email-address",
-        name: "emailAddress",
-        errorMessage: formErrors.emailAddress,
-        value: formData.emailAddress
-    }) }}
-
-    {{ govukInput({
       label: {
         text: page.fields.teamName.label,
         classes: "govuk-label--m"

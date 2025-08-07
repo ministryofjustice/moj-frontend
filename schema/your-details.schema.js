@@ -10,16 +10,6 @@ const schema = Joi.object({
       'any.required': 'Enter your full name'
     })
     .label('Full Name'),
-  emailAddress: Joi.string()
-    .email({ tlds: { allow: false } })
-    .required()
-    .messages({
-      'string.email':
-        'Enter an email address in the correct format, like name@example.com',
-      'string.empty': 'Enter your email address',
-      'any.required': 'Enter your email address'
-    })
-    .label('Email Address'),
   teamName: Joi.string()
     .required()
     .messages({
