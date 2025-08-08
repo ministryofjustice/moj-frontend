@@ -36,7 +36,7 @@ describe('component-details schema', () => {
     const { error } = schema.validate(invalidObject)
     expect(error).toBeDefined()
     expect(error.details[0].message).toBe(
-      'The overview description must be 250 words or less'
+      'Enter 250 words or less for the description'
     )
   })
 
@@ -50,7 +50,7 @@ describe('component-details schema', () => {
     const { error } = schema.validate(invalidObject)
     expect(error).toBeDefined()
     expect(error.details[0].message).toBe(
-      'The how the component is used currently must be 250 words or less'
+      'Enter 250 words or less for how the component is being used'
     )
   })
 })
