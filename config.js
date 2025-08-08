@@ -503,7 +503,7 @@ const config = {
     componentCodeAdded: (number) => {
       return {
         type: 'success',
-        text: `Code example ${number} added`
+        text: `Code block ${number} added`
       }
     }
   }
