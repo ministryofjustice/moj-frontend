@@ -21,21 +21,17 @@ The building block statuses are:
 
 The Design System team is working to bring everything to the ‘official’ status. They may also be archived.
 
-Learn how you can [help develop Design System building blocks](/get-involved/suggest-a-change/).
-
 ## ‘Experimental’ status <span class="govuk-tag govuk-tag--experimental" style="vertical-align:middle;" aria-hidden="true">Experimental</span>
 
-<div class="govuk-inset-text">
-  The experimental status will be launched later in 2025.
-</div>
+Building blocks with an ‘experimental’ status are early in development. They may not have been accessibility tested or considered for use beyond a particular service.
 
-When the experimental status launches, anyone in the MoJ will be able to add a building block to the Design System. 'Experimental' building blocks will be given a brief sense check by the MoJ Design System team. They will next be changed when they're developed to 'official' status.
+They can be anything from a screenshot with very brief documentation, to something more developed (with code and a Figma design). They'll have had only a brief sense check after being submitted to the Design System.
 
-An experimental building block can be anything from a screenshot with very brief documentation, to something more developed (with code and a Figma design). They can be used as a starting point, concept or idea.
+‘Experimental’ status building blocks should only be used in alpha and beta phases.
 
-They’ll be early in development and may not have been accessibility tested or considered for use beyond a particular service. They’re only to be used in alpha and beta phases.
+Once they've been added to the Design System, teams can experiment with them and share findings in the [Github discussions](https://github.com/ministryofjustice/moj-frontend/discussions). These feedback will be used to make improvements to the building blocks based.  
 
-Experimentation, testing and adding findings to the Github discussion for each experimental building block will help people understand how to use it. This user-led process helps people to share their designs, collaborate and work in the open.
+The experimental status launched in August 2025, starting with components. Previously contributed components will be added to the Design System and given this status. Find out [how to submit a component](https://moj-frontend-pr-1429.apps.live.cloud-platform.service.justice.gov.uk/contribute/add-new-component/start).
 
 ## ‘To be reviewed’ status <span class="govuk-tag govuk-tag--orange"  style="vertical-align:middle;" aria-hidden="true">To be reviewed</span>
 
