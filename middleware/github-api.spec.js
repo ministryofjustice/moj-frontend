@@ -56,14 +56,14 @@ describe('GitHub API Module', () => {
           ok: true
         })
 
-        // Mock response for adding files
+        // mock response for adding files
         .mockResolvedValue({
           ok: true
         })
 
-      const branchName = await pushToGitHub(sessionData)
+      const branchName = await pushToGitHub(sessionData, 'submission')
 
-      expect(branchName).toMatch(/^submission-\d+$/)
+      expect(branchName).toBe('submission')
       expect(mockFetch).toHaveBeenCalledTimes(4)
       expect(mockFetch).toHaveBeenCalledWith(
         `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/git/ref/heads/main`,
@@ -97,16 +97,25 @@ describe('GitHub API Module', () => {
       const title = 'Test PR'
       const description = 'This is a test pull request'
 
-      fetch.mockResolvedValueOnce({
-        ok: true,
-        json: async () => ({
-          html_url: 'https://github.com/example/pr/1'
+      fetch
+        .mockResolvedValueOnce({
+          ok: true,
+          json: async () => ({
+            html_url: 'https://github.com/example/pr/1',
+            number: '1234'
+          })
         })
-      })
+        // mock response for adding label
+        .mockResolvedValue({
+          ok: true
+        })
 
       const pr = await createPullRequest(branchName, title, description)
 
-      expect(pr).toBe('https://github.com/example/pr/1')
+      expect(pr).toStrictEqual({
+        url: 'https://github.com/example/pr/1',
+        number: '1234'
+      })
       expect(fetch).toHaveBeenCalledWith(
         `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/pulls`,
         expect.objectContaining({

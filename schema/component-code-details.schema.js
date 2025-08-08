@@ -9,8 +9,18 @@ const schema = addAnotherSchema.append({
     .required()
     .label('What language is the code written in?')
     .messages({
-      'any.required': 'Enter the name of the language the code is written in',
-      'string.empty': 'Enter the name of the language the code is written in'
+      'any.required': 'Select a code language from the list',
+      'string.empty': 'Select a code language from the list'
+    }),
+  componentCodeLanguageOther: Joi.string()
+    .label('Other code language')
+    .when('componentCodeLanguage', {
+      is: 'other',
+      then: Joi.required().messages({
+        'any.required': 'Enter the language the code is written in',
+        'string.empty': 'Enter the language the code is written in'
+      }),
+      otherwise: Joi.optional().allow(null, '')
     }),
   componentCodeUsage: Joi.string()
     .optional()
@@ -18,15 +28,14 @@ const schema = addAnotherSchema.append({
     .custom((value, helpers) => maxWords(value, helpers, 250))
     .label('How do you use the code? (optional)')
     .messages({
-      'custom.max.words': 'There must be 250 words or less'
+      'custom.max.words': 'Enter 250 words or less'
     }),
   componentCode: Joi.string()
-    .optional()
-    .allow(null, '')
-    .custom((value, helpers) => maxWords(value, helpers, 1000))
+    .required()
+    .max(10000)
     .label('Add the code')
     .messages({
-      'custom.max.words': 'There must be 1000 words or less'
+      'string.max': 'Enter 10,000 characters or less'
     })
 })
 

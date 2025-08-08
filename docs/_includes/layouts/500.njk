@@ -1,0 +1,17 @@
+{% extends "./base.njk" %}
+{% block header %}
+    {% include "./partials/header-no-nav.njk" %}
+{% endblock %}
+{% block main %}
+    <div class="app-layout__content">
+        <main id="main-content" class="app-prose-scope">
+            <h1>{{ title }}</h1>
+            <p>Try again later.</p>
+            <p>
+                Email <a href="mailto:design-system@justice.gov.uk" class="govuk-link">design-system@justice.gov.uk</a> if you need help.
+            </p>
+            {% if errorDetails %}<pre>Error Details: {{ errorDetails }}</pre>{% endif %}
+        </main>
+    </div>
+</div>
+{% endblock %}

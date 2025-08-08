@@ -1,79 +1,50 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
-{% extends "base.njk" %}
-{% block content %}
-  <div class="app-layout__content">
-    <form method="post" action="{{ submitUrl }}">
-      <span class="govuk-caption-l">Submit new component</span>
-      <h1 class="govuk-heading-xl">Check your answers before submitting the component</h1>
+{% from "macros/summary-card.njk" import summaryCard %}
+{% from "macros/page-heading.njk" import pageHeading %}
+{% from "macros/form.njk" import form %}
 
-      <h2 class="govuk-heading-l">Component details</h2>
+{% extends "contributions.njk" %}
+
+{% block form %}
+  {% for section in sections %}
+    {% set cardParams = {
+        title: {
+          text: section.title
+        },
+        actions: {
+          items: section.actions
+        }
+      }
+    %}
+
+    {% if section.answerRows.length > 0 %}
       {{ govukSummaryList({
-        rows: componentDetailsRows,
-        classes: "govuk-!-margin-bottom-9"
+          card:cardParams,
+          rows: section.answerRows
       }) }}
+    {% else %}
+      {% call summaryCard(cardParams) -%}
+        <p class="govuk-body govuk-!-margin-bottom-0">None</p>
+      {%- endcall %}
+    {% endif %}
+  {% endfor %}
 
-      {% if addExternalAuditRows.length > 0 %}
-        <h2 class="govuk-heading-l">External accessibility audit</h2>
-        {{ govukSummaryList({
-          rows: addExternalAuditRows,
-          classes: "govuk-!-margin-bottom-9"
-        }) }}
-      {% endif %}
-
-      {% if addInternalAuditRows.length > 0 %}
-        <h2 class="govuk-heading-l">Internal accessibility audit</h2>
-        {{ govukSummaryList({
-          rows: addInternalAuditRows,
-          classes: "govuk-!-margin-bottom-9"
-        }) }}
-      {% endif %}
-
-      {% if addAssistiveTechRows.length > 0 %}
-        <h2 class="govuk-heading-l">Testing with assistive technology</h2>
-        {{ govukSummaryList({
-          rows: addAssistiveTechRows,
-          classes: "govuk-!-margin-bottom-9"
-        }) }}
-      {% endif %}
-
-      {% if prototypeRows.length > 0 %}
-        <h2 class="govuk-heading-l">Prototype URL</h2>
-        {{ govukSummaryList({
-          rows: prototypeRows,
-          classes: "govuk-!-margin-bottom-9"
-        }) }}
-      {% endif %}
-
-      {% if componentCodeRows.length > 0 %}
-        <h2 class="govuk-heading-l">Component code</h2>
-        {{ govukSummaryList({
-          rows: componentCodeRows,
-          classes: "govuk-!-margin-bottom-9"
-        }) }}
-      {% endif %}
-
-      {% if figmaRows.length > 0 %}
-        <h2 class="govuk-heading-l">Figma designs</h2>
-        {{ govukSummaryList({
-          rows: figmaRows,
-          classes: "govuk-!-margin-bottom-9"
-        }) }}
-      {% endif %}
-
-      <h2 class="govuk-heading-l">Your details</h2>
-      {{ govukSummaryList({
-        rows: yourDetailsRows,
-        classes: "govuk-!-margin-bottom-9"
+  {% call form({
+    csrfToken: csrfToken,
+    action: submitUrl
+  }) %}
+    <div class="govuk-button-group moj-button-action">
+      {{ govukButton({
+        text: 'Accept and send'
       }) }}
-
-      <input type="hidden" name="_csrf" value="{{ csrfToken }}"/>
-
-      <div class="moj-button-action">
+      {% if isDev %}
         {{ govukButton({
-          text: 'Accept and send'
+          text: "Generate markdown",
+          classes: "govuk-button--secondary",
+          href: generateLink
         }) }}
-      </div>
-    </form>
-  </div>
+      {% endif %}
+    </div>
+  {% endcall %}
 {% endblock %}

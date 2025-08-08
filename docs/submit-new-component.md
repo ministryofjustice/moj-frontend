@@ -1,11 +1,11 @@
 ---
 layout: layouts/nav-only.njk
 title: Submit a new component
-permalink: ./views/common/community-nav.html
+permalink: ./views/common/partials/side-navigation.njk
 permalinkBypassOutputDir: true
 eleventyNavigation:
   key: Submit a new component
-  parent: Get involved
-  order: 40
+  parent: About the Design System
+  order: 30
   url: /contribute/add-new-component/start
 ---
