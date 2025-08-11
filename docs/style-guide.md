@@ -187,7 +187,7 @@ Anyone can experience domestic abuse.
 
 The term is widely used and recognised in the UK.  
 
-If you're developing a service, it's likely that a victim-survivor of domestic abuse will use it. You need to research and understand the context of your service in order to design in a [trauma-informed](https://contentdesign.london/blog/using-trauma-informed-principles-with-content-design) way.
+If you're developing a service, its likely that a victim-survivor of domestic abuse will use it. You need to research and understand the context of your service in order to design in a [trauma-informed](https://design-patterns.service.justice.gov.uk/content-standards/style-guide-updates/) way.
 
 Domestic abuse covers a lot of things, including domestic violence. When you first use it in content, you need to explain:
 
@@ -204,11 +204,11 @@ You can read [guidance on the term victim-survivor](#victim-survivor-%28of-domes
 
 ### DPS, Digital Prison Services
 
-Not 'the Digital Prison Service'.
+Not ‘the Digital Prison Service‘.
 
-DPS may be referred to as 'New NOMIS' in prisons, but we should always use 'DPS' or 'Digital Prison Services'.
+DPS may be referred to as ‘New NOMIS‘ in prisons, but we should always use ‘DPS‘ or ‘Digital Prison Services‘.
 
-The acronym 'DPS' is well understood and can be used without the full name.
+The initialism ‘DPS‘ is well understood and can be used without the full name.
 
 {% endaccordionSection %}
 {% accordionSection "E" %}
@@ -586,7 +586,7 @@ The term victim-survivor is the most common term used in the advocacy sector to 
 
 However, if you’re developing a product or service that victim-survivors use, it may be more appropriate to reference their experience instead of using this term.
 
-For example, you could use the question ‘Have you experienced domestic abuse?’ rather than ‘Are you a victim-survivor of domestic abuse?’. See [guidance on using the term domestic abuse](#domestic-abuse).
+For example, you could use the question ‘Have you experienced domestic abuse?’ rather than ‘Are you a victim-survivor of domestic abuse?’ See [guidance on using the term domestic abuse](#domestic-abuse).
 
 ### Violent and Sex Offender Register (ViSOR)
 
