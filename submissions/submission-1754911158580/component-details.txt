@@ -1,0 +1,5 @@
+{
+  "componentName": "awesome",
+  "componentOverview": "Shakespeare",
+  "howIsTheComponentUsed": "test"
+}
