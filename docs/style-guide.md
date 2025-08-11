@@ -16,7 +16,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 5 August 2025
+Last updated:11 August 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -284,6 +284,15 @@ Staff in prisons may still use ‘IEP’ when referring to someone’s incentive
 ### key worker
 
 This is 2 separate words. Not keyworker.
+
+{% endaccordionSection %}
+{% accordionSection "L" %}
+
+### local admin unit
+
+[Probation delivery units](#probation-delivery-unit-%28pdu%29) are divided into local admin units. These used to be called local delivery units and you may hear the initialism LDU.
+
+The initialism LAU is probably not well-known enough yet to be used without explanation. Write local admin unit out in full the first time you use it. Use sentence case.
 
 {% endaccordionSection %}
 {% accordionSection "N" %}
