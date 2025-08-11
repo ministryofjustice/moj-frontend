@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "html",
+  "componentCodeLanguageOther": "",
+  "componentCode": "<span class=\"moj-badge\">Recently added</span>",
+  "componentCodeUsage": ""
+}
