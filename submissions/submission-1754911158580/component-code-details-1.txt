@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "html",
+  "componentCodeLanguageOther": "",
+  "componentCode": "<div class=\"moj-datepicker\">\r\n\r\n  <div class=\"govuk-form-group\">\r\n    <label class=\"govuk-label\" for=\"date\">\r\n      Date\r\n    </label>\r\n\r\n    <div id=\"date-hint\" class=\"govuk-hint\">\r\n      For example, 17/5/2024.\r\n    </div>\r\n\r\n    <input class=\"govuk-input moj-js-datepicker-input \" id=\"date\" name=\"date\" type=\"text\" autocomplete=\"off\" />\r\n\r\n  </div>\r\n\r\n</div>",
+  "componentCodeUsage": ""
+}
