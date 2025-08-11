@@ -17,6 +17,17 @@ lede: 'New and updated entries in the <a href="/content-standards/style-guide/">
     </thead>
     <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/content-standards/style-guide#local-admin-unit"><b>local admin unit</b></a>
+      </td>
+      <td class="govuk-table__cell">
+        <span class="govuk-tag govuk-tag--green">New</span>
+      </td>
+      <td class="govuk-table__cell"><p><a href="/content-standards/style-guide#probation-delivery-unit-%28pdu%29">Probation delivery units</a> are divided into local admin units. These used to be called local delivery units and you may hear the initialism LDU.</p>
+      <p>The initialism LAU is probably not well-known enough yet to be used without explanation. Write local admin unit out in full the first time you use it. Use sentence case.</p></td>
+      <td class="govuk-table__cell" data-sort-value="20250811">11 August 2025</td>
+    </tr>
+    <tr class="govuk-table__row">
           <td class="govuk-table__cell">
             <a href="/content-standards/style-guide#unlock"><b>Unlock</b></a>
           </td>
