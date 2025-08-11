@@ -187,7 +187,7 @@ Anyone can experience domestic abuse.
 
 The term is widely used and recognised in the UK.  
 
-If you're developing a service, its likely that a victim-survivor of domestic abuse will use it. You need to research and understand the context of your service in order to design in a [trauma-informed](https://design-patterns.service.justice.gov.uk/content-standards/style-guide-updates/) way.
+If you're developing a service, its likely that a victim-survivor of domestic abuse will use it. You need to research and understand the context of your service in order to design in a [trauma-informed](https://contentdesign.london/blog/using-trauma-informed-principles-with-content-design) way.
 
 Domestic abuse covers a lot of things, including domestic violence. When you first use it in content, you need to explain:
 
