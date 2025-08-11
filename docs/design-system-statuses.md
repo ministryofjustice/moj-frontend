@@ -29,9 +29,9 @@ They can be anything from a screenshot with very brief documentation, to somethi
 
 ‘Experimental’ status building blocks should only be used in alpha and beta phases.
 
-Once they've been added to the Design System, teams can experiment with them and share findings in the [Github discussions](https://github.com/ministryofjustice/moj-frontend/discussions). These feedback will be used to make improvements to the building blocks based.  
+Once they've been added to the Design System, teams can experiment with them and share findings in the [Github discussions](https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns). These feedback will be used to make improvements to the building blocks based.  
 
-The experimental status launched in August 2025, starting with components. Previously contributed components will be added to the Design System and given this status. Find out [how to submit a component](https://moj-frontend-pr-1429.apps.live.cloud-platform.service.justice.gov.uk/contribute/add-new-component/start).
+The experimental status launched in August 2025, starting with components. Previously contributed components will be added to the Design System and given this status. Find out [how to submit a component](/contribute/add-new-component/start).
 
 ## ‘To be reviewed’ status <span class="govuk-tag govuk-tag--orange"  style="vertical-align:middle;" aria-hidden="true">To be reviewed</span>
 
