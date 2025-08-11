@@ -18,6 +18,29 @@ lede: 'New and updated entries in the <a href="/content-standards/style-guide/">
     <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
+        <a href="/content-standards/style-guide##victim-survivor-%28of-domestic-abuse%29"><b>victim-survivor (of domestic abuse)</b></a>
+      </td>
+      <td class="govuk-table__cell">
+        <span class="govuk-tag govuk-tag--green">New</span>
+      </td>
+      <td class="govuk-table__cell"><p>The term victim-survivor is the most common term used in the advocacy sector to describe someone who has experienced domestic abuse.</p>
+      <p>However, if you’re developing a product or service that victim-survivors use, it may be more appropriate to reference their experience instead of using this term.</p>
+      <p>For example, you could use the question ‘Have you experienced domestic abuse?’ rather than ‘Are you a victim-survivor of domestic abuse?’. See <a href="/content-standards/style-guide#domestic-abuse">guidance on using the term domestic abuse</a>.
+      <td class="govuk-table__cell" data-sort-value="20250811">11 August 2025</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
+        <a href="/content-standards/style-guide#domestic-abuse"><b>domestic abuse</b></a>
+      </td>
+      <td class="govuk-table__cell">
+        <span class="govuk-tag govuk-tag--green">New</span>
+      </td>
+      <td class="govuk-table__cell"><p>A new entry for domestic abuse.</p>
+       <p>It includes a definition of the term, who can experience it, and how to design in a way that is trauma-informed.</p>
+      <td class="govuk-table__cell" data-sort-value="20250811">11 August 2025</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">
         <a href="/content-standards/style-guide#local-admin-unit"><b>local admin unit</b></a>
       </td>
       <td class="govuk-table__cell">

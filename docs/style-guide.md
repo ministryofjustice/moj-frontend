@@ -177,6 +177,31 @@ This is being used on the DPS prisoner profile alerts and case notes pages in re
 
 In an example of how to enter or select a date in the [date input component in the GOV.UK Design System](https://design-system.service.gov.uk/components/date-input/) or the [date picker](https://design-patterns.service.justice.gov.uk/components/date-picker/), follow the style in the respective guidance. For example, 14 5 2024 for date input, 14/5/2024 for a date picker. It's helpful if your example date uses the 13th day of the month or later (14/5/2024 makes it clear that 14 could not be the month).
 
+### domestic abuse
+
+Domestic abuse is emotional, physical, financial or sexual abuse where there is a personal connection. It includes controlling behaviour, threats, harassment and stalking, as well as violence.
+
+It can be by a partner, ex-partner or a family member. Someone can also experience domestic abuse if they witness it, for example a child who witnesses their parent being abused.
+
+Anyone can experience domestic abuse.  
+
+The term is widely used and recognised in the UK.  
+
+If you're developing a service, it's likely that a victim-survivor of domestic abuse will use it. You need to research and understand the context of your service in order to design in a trauma-informed way.
+
+Domestic abuse covers a lot of things, including domestic violence. When you first use it in content, you need to explain:
+
+- what domestic abuse covers – domestic abuse is still commonly understood only as violence
+-	that it can be by an ex-partner or family member – research shows that people commonly think that only abuse by a current partner counts
+
+This will help people (including practitioners) to understand it, and to work out if something that happened was domestic abuse.  
+
+It may be important to include FGM (female genital mutilation), forced marriage or so-called honour abuse to your definition of domestic abuse, depending on the context and audience.  
+
+If you want to avoid the person identifying that they are experiencing domestic abuse, you could ask: ‘Are you contacting us because of domestic abuse?’  
+
+You can read [guidance on the term victim-survivor](#victim-survivor-%28of-domestic-abuse%29).
+
 ### DPS, Digital Prison Services
 
 Not 'the Digital Prison Service'.
@@ -554,6 +579,14 @@ Sometimes known as an ‘unlock roll’, ‘leaving list’, or ‘free flow lis
 
 {% endaccordionSection %}
 {% accordionSection "V" %}
+
+### victim-survivor (of domestic abuse)
+
+The term victim-survivor is the most common term used in the advocacy sector to describe someone who has experienced domestic abuse.
+
+However, if you’re developing a product or service that victim-survivors use, it may be more appropriate to reference their experience instead of using this term.
+
+For example, you could use the question ‘Have you experienced domestic abuse?’ rather than ‘Are you a victim-survivor of domestic abuse?’. See [guidance on using the term domestic abuse](#domestic-abuse).
 
 ### Violent and Sex Offender Register (ViSOR)
 
