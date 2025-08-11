@@ -18,7 +18,7 @@ lede: 'New and updated entries in the <a href="/content-standards/style-guide/">
     <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
-        <a href="/content-standards/style-guide##victim-survivor-%28of-domestic-abuse%29"><b>victim-survivor (of domestic abuse)</b></a>
+        <a href="/content-standards/style-guide#victim-survivor-%28of-domestic-abuse%29"><b>victim-survivor (of domestic abuse)</b></a>
       </td>
       <td class="govuk-table__cell">
         <span class="govuk-tag govuk-tag--green">New</span>
