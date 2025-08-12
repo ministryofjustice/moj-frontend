@@ -91,22 +91,6 @@ lede: 'New and updated entries in the <a href="/content-standards/style-guide/">
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
-        <a href="/content-standards/style-guide#unlock-list"><b>Unlock list</b></a>
-      </td>
-      <td class="govuk-table__cell">
-        <span class="govuk-tag govuk-tag--green">New</span>
-      </td>
-      <td class="govuk-table__cell">
-        <p>A list of people in an area of a prison who are due to go to an activity or an appointment.</p>
-        <p>It contains people’s names, prison numbers, what they are due to go to, and when they have to be there.</p>
-        <p>For each unlock, wing officers use the list to let the right people out of their cells and off the wing.</p>
-        <p>It is not used in Category D prisons.</p>
-        <p>Sometimes known as an ‘unlock roll’, ‘leaving list’, or ‘free flow list’.</p>
-      </td>
-      <td class="govuk-table__cell" data-sort-value="20250806">6 August 2025</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">
         <a href="/content-standards/style-guide#ftr48"><b>FTR48</b></a>
       </td>
       <td class="govuk-table__cell">
