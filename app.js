@@ -1,5 +1,8 @@
 /* eslint import/order: "off" */
 /* eslint n/no-unpublished-require: "off" */
+
+require('dotenv').config({ path: `./.env.${process.env.ENV || 'development'}` })
+
 const Sentry = require('@sentry/node')
 const {
   APP_PORT,
@@ -10,8 +13,9 @@ const {
   SENTRY_CSP_REPORT_URI
 } = require('./config')
 
-const isDev = ENV === 'development'
-if (!isDev) {
+const isDev = (ENV === 'development')
+const isTest = (ENV === 'test')
+if (!(isDev || isTest)) {
   Sentry.init({
     dsn: SENTRY_DSN,
     sendDefaultPii: false,
@@ -86,7 +90,7 @@ const sessionOptions = {
   secret: SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: !isDev, maxAge: 24 * 60 * 60 * 1000 }
+  cookie: { secure: !(isDev || isTest), maxAge: 24 * 60 * 60 * 1000 }
 }
 
 if (REDIS_URL) {

@@ -4,7 +4,7 @@ const { REDIS_URL, REDIS_AUTH_TOKEN, REDIS_PORT, ENV } = require('../config')
 
 let redis
 
-if (ENV === 'development') {
+if (ENV === 'development' || ENV === 'test') {
   // Mock Redis client for development
   const Redis = require('ioredis-mock')
   redis = new Redis()

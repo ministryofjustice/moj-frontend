@@ -18,6 +18,7 @@ package/*
 *.tsbuildinfo
 .DS_Store
 .env
+.env.*
 .port.tmp
 .vscode/
 *.tsbuildinfo
@@ -29,3 +30,11 @@ tests/e2e/screenshots/*
 
 # Sentry Config File
 .env.sentry-build-plugin
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+playwright/.state
