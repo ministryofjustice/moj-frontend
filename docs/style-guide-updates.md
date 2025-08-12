@@ -27,7 +27,7 @@ lede: 'New and updated entries in the <a href="/content-standards/style-guide/">
         <p>The term victim-survivor is the most common term used in the advocacy sector to describe someone who has experienced domestic abuse.</p>
         <p>However, if you’re developing a product or service that victim-survivors use, it may be more appropriate to reference their experience instead of using this term.</p>
         <p>For example, you could use the question ‘Have you experienced domestic abuse?’ rather than ‘Are you a victim-survivor of domestic abuse?’. See <a href="/content-standards/style-guide#domestic-abuse">guidance on using the term domestic abuse</a>.</p>
-      <td class="govuk-table__cell" data-sort-value="20250811">11 August 2025</td>
+      <td class="govuk-table__cell" data-sort-value="20250812">12 August 2025</td>
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
@@ -40,7 +40,7 @@ lede: 'New and updated entries in the <a href="/content-standards/style-guide/">
         <p>A new entry for domestic abuse.</p>
         <p>It includes a definition of the term, who can experience it, and how to design in a way that is trauma-informed.</p>
       </td>
-      <td class="govuk-table__cell" data-sort-value="20250811">11 August 2025</td>
+      <td class="govuk-table__cell" data-sort-value="20250812">12 August 2025</td>
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
@@ -57,7 +57,7 @@ lede: 'New and updated entries in the <a href="/content-standards/style-guide/">
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
-        <a href="/content-standards/style-guide#unlock-list"><b>Unlock list</b></a>
+        <a href="/content-standards/style-guide#unlock-list"><b>unlock list</b></a>
       </td>
       <td class="govuk-table__cell">
         <span class="govuk-tag govuk-tag--green">New</span>
@@ -73,7 +73,7 @@ lede: 'New and updated entries in the <a href="/content-standards/style-guide/">
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
-        <a href="/content-standards/style-guide#unlock"><b>Unlock</b></a>
+        <a href="/content-standards/style-guide#unlock"><b>unlock</b></a>
       </td>
       <td class="govuk-table__cell">
         <span class="govuk-tag govuk-tag--green">New</span>
@@ -114,7 +114,7 @@ lede: 'New and updated entries in the <a href="/content-standards/style-guide/">
       </td>
       <td class="govuk-table__cell">
         <p>FTR48 is the policy that states people with sentences of up to 48 months will get a 28-day recall, provided they meet certain eligibility criteria. The sentence length can be from one sentence or consecutive sentences. The policy is an interim measure and will be replaced with new legislation in 2026.</p>
-        <p>The acronym FTR, which stands for fixed term recall, is generally well understood in HMPPS and widely used in systems like NOMIS. Use FTR48 when referring to the specific policy.</p>
+        <p>The initialism FTR, which stands for fixed term recall, is generally well understood in HMPPS and widely used in systems like NOMIS. Use FTR48 when referring to the specific policy.</p>
       </td>
       <td class="govuk-table__cell" data-sort-value="20250806">6 August 2025</td>
     </tr>
