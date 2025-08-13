@@ -1,0 +1,9 @@
+{
+  "fullName": "Bob H",
+  "teamName": "Make and register an LPA",
+  "shareYourDetails": [
+    "",
+    "addNameToComponentPage",
+    "addTeamNameToComponentPage"
+  ]
+}
