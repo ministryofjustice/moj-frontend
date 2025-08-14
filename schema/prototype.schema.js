@@ -5,8 +5,7 @@ const schema = Joi.object({
     .required()
     .label('Do you have a prototype link for the component?')
     .messages({
-      'any.required':
-        'Select yes if you have a prototype link for the component'
+      'any.required': 'Select yes if you have a prototype link'
     })
 })
 

@@ -22,6 +22,11 @@
 
 .app-example__code {
   position: relative;
+  margin-bottom: govuk-spacing(4);
+
+  pre code {
+    padding-top: govuk-spacing(9);
+  }
 }
 
 .app-example__frame {

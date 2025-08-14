@@ -1,0 +1,14 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% extends "contributions.njk" %}
+
+{% block form %}
+  <p class="govuk-body">We’ve sent an email to: <strong>{{page.email}}</strong></p>
+  <p class="govuk-body">Select the link in the confirmation email to submit a component. The link will open in a new tab, so you can close this one.</p>
+  {% call govukDetails({
+    summaryText: "Fix problems with the email",
+    classes: "govuk-!-width-two-thirds"
+  }) %}
+  <a class="govuk-link" href="{{resendUrl}}">Resend the confirmation email</a> if the address is correct. <a class="govuk-link" href="{{ resetUrl }}">Enter a different email address</a> if the address is incorrect.
+  {% endcall %}
+{% endblock %}
