@@ -69,7 +69,9 @@
     @extend %govuk-link;
   }
 
-  .govuk-link--inverse {
+  // the :not is requirec below to ensure the rules have enough specificity to
+  // override the rule above
+  .govuk-link--inverse:not(.govuk-button) {
     @include govuk-link-style-inverse;
   }
 

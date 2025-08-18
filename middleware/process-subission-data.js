@@ -57,7 +57,17 @@ const processSubmissionFiles = async (req) => {
   const existingFilenames = new Set()
 
   for (const key of Object.keys(session)) {
-    if (!['cookie', 'csrfToken'].includes(key)) {
+    if (
+      ![
+        'cookie',
+        'csrfToken',
+        '/email',
+        'emailDomainAllowed',
+        'emailToken',
+        'started',
+        'verified'
+      ].includes(key)
+    ) {
       const fileData = session[key]
       if (
         fileData?.componentImage?.redisKey ||
@@ -94,7 +104,18 @@ const processSubmissionData = (req, res, next) => {
   const submissionData = {}
 
   for (const key in sessionData) {
-    if (!['cookie', 'csrfToken'].includes(key)) {
+    if (
+      ![
+        '/componentImage', // no point saving this as text
+        'cookie',
+        'csrfToken',
+        '/email', // don't commit personal data
+        'emailDomainAllowed',
+        'emailToken',
+        'started',
+        'verified'
+      ].includes(key)
+    ) {
       if (submissionFiles[key]) {
         const filePath = `docs/${submissionFiles[key].path}`
         submissionData[filePath] = { buffer: submissionFiles[key].buffer }
