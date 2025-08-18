@@ -103,7 +103,7 @@ test('add multiple code examples', async () => {
 
     await testPage.addAnotherButton.click()
     await expect(testPage.page).toHaveTitle(/Component code details - MoJ Design System/)
-    await testPage.expectSuccessAlert('Code example 1 added')
+    await testPage.expectSuccessAlert('Code block 1 added')
 
   await expect(testPage.codeInput).toHaveValue('')
   await expect(testPage.usageInput).toHaveValue('')
