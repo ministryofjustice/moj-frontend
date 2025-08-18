@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "html",
+  "componentCodeUsage": "Some HTML",
+  "componentCode": "<div class=\"govuk-notification-banner\">\r\n  <div class=\"govuk-notification-banner__header\">\r\n    <h2 class=\"govuk-notification-banner__title\" id=\"govuk-notification-banner-title\">\r\n      Important\r\n    </h2>\r\n  </div>\r\n  <div class=\"govuk-notification-banner__content\">\r\n    <p class=\"govuk-notification-banner__heading\">\r\n      You have 7 days left to send your application.\r\n      <a class=\"govuk-notification-banner__link\" href=\"#\">View application</a>.\r\n    </p>\r\n  </div>\r\n</div>",
+  "componentCodeLanguageOther": ""
+}
