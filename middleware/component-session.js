@@ -64,7 +64,7 @@ const checkEmailDomain = (req, res, next) => {
 
 const transformErrorsToErrorList = (errors) => {
   return errors.map((error) => ({
-    text: error.message,
+    text: error.message.trim(),
     href: `#${camelToKebab(error.path[0])}`
   }))
 }

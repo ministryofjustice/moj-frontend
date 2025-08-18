@@ -21,7 +21,7 @@
     "start": "concurrently npm:watch:* --prefix none",
     "start:e2e": "ENV=test nodemon --delay 1000ms app.js",
     "test": "concurrently npm:test:* --group --prefix none",
-    "test:e2e": "npx playwright test --ui",
+    "test:e2e": "npx playwright test",
     "test:js": "jest --color src/",
     "test:scss": "sass --color --load-path . --quiet-deps src/moj/all.scss > /dev/null && echo \"ok\"",
     "lint": "npm run lint:types && npm run lint:js && npm run lint:scss && npm run lint:prettier",

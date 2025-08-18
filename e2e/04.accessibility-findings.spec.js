@@ -10,47 +10,47 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('validation', async () => {
-  await testPage.continueButton.click();
-  await expect(testPage.errorSummary).toBeVisible()
+  await testPage.clickContinue();
 
-  await expect(testPage.errorSummary).toBeFocused()
-  await expect(testPage.errorSummary).toContainText('Select yes if there was an external audit')
-  await expect(testPage.errorSummary).toContainText('Select yes if it was internally reviewed')
-  await expect(testPage.errorSummary).toContainText('Select yes if it was tested with assistive technology')
+  await testPage.expectErrorSummaryWithMessages([
+    'Select yes if there was an external audit',
+    'Select yes if it was internally reviewed',
+    'Select yes if it was tested with assistive technology'
+  ])
 })
 
-test('assistive technology', async () => {
+test('assistive technology', async ({ page }) => {
   await testPage.setExternalAudit('No')
   await testPage.setInternalReview('No')
   await testPage.setAssistiveTech('Yes')
 
-  await testPage.continueButton.click()
+  await testPage.clickContinue()
   await expect(page).toHaveTitle(/Testing with assistive technology - MoJ Design System/)
 
   await testPage.backLink.click()
   await expect(page).toHaveTitle(/Accessibility findings - MoJ Design System/);
 })
 
-test('internal review', async () => {
+test('internal review', async ({ page }) => {
   await testPage.setExternalAudit('No')
   await testPage.setInternalReview('Yes')
   await testPage.setAssistiveTech('No')
 
-  await testPage.continueButton.click()
+  await testPage.clickContinue()
   await expect(page).toHaveTitle(/Internal accessibility review - MoJ Design System/)
 
-  await testPage.backLink.click()
+  await testPage.clickBack()
   await expect(page).toHaveTitle(/Accessibility findings - MoJ Design System/);
 })
 
-test('external audit', async () => {
+test('external audit', async ({ page }) => {
   await testPage.setExternalAudit('Yes')
   await testPage.setInternalReview('No')
   await testPage.setAssistiveTech('No')
 
-  await testPage.continueButton.click()
+  await testPage.clickContinue()
   await expect(page).toHaveTitle(/External accessibility audit - MoJ Design System/)
 
-  await testPage.backLink.click()
+  await testPage.clickBack()
   await expect(page).toHaveTitle(/Accessibility findings - MoJ Design System/);
 })

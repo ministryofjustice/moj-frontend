@@ -15,6 +15,7 @@ const {
 
 const isDev = (ENV === 'development')
 const isTest = (ENV === 'test')
+
 if (!(isDev || isTest)) {
   Sentry.init({
     dsn: SENTRY_DSN,
@@ -42,7 +43,7 @@ const addComponentRoutes = require('./routes/add-component')
 
 const app = express()
 
-if (!isDev) {
+if (!(isDev || isTest)) {
   // Only trust single proxy (Nginx)
   app.set('trust proxy', 1)
 
