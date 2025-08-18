@@ -17,7 +17,18 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Build package
+      run: ENV=test npm run build:package
+    - name: Build docs
+      run: ENV=test npm run build:docs
     - name: Run Playwright tests
+      env:
+        ENV: test
+        APP_PORT: 3003
+        APP_URL: http://localhost:3003
+        DEV_VERIFIED_EMAIL: test.user@justice.gov.uk
+        SKIP_VERIFICATION: "true"
+        VERIFICATION_TOKEN: 12345abcde
       run: npx playwright test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
