@@ -72,7 +72,7 @@ const schema = Joi.object({
       const minDate = moment('2011-04-01', 'YYYY-MM-DD')
       if (moment(value).isBefore(minDate)) {
         return helpers.error('any.invalid', {
-          message: 'The date must be after 1 4 2011'
+          message: 'The date must be on or after 1 4 2011'
         })
       }
 
@@ -87,9 +87,9 @@ const schema = Joi.object({
     .custom((value, helpers) => maxWords(value, helpers, 250))
     .messages({
       'any.required':
-        'Enter details about issues discovered by the external audit',
+        'Enter details about issues discovered by the internal audit',
       'string.empty':
-        'Enter details about issues discovered by the external audit',
+        'Enter details about issues discovered by the internal audit',
       'custom.max.words': 'Enter 250 words or less'
     })
 })

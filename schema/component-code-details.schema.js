@@ -35,7 +35,9 @@ const schema = addAnotherSchema.append({
     .max(10000)
     .label('Add the code')
     .messages({
-      'string.max': 'Enter 10,000 characters or less'
+      'string.max': 'Enter 10,000 characters or less',
+      'any.required': 'Enter the code for the component',
+      'string.empty': 'Enter the code for the component'
     })
 })
 

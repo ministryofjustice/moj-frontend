@@ -1,5 +1,8 @@
 /* eslint import/order: "off" */
 /* eslint n/no-unpublished-require: "off" */
+
+require('dotenv').config({ path: `./.env.${process.env.ENV || 'development'}` })
+
 const Sentry = require('@sentry/node')
 const {
   APP_PORT,
@@ -11,7 +14,9 @@ const {
 } = require('./config')
 
 const isDev = ENV === 'development'
-if (!isDev) {
+const isTest = ENV === 'test'
+
+if (!(isDev || isTest)) {
   Sentry.init({
     dsn: SENTRY_DSN,
     sendDefaultPii: false,
@@ -38,7 +43,7 @@ const addComponentRoutes = require('./routes/add-component')
 
 const app = express()
 
-if (!isDev) {
+if (!(isDev || isTest)) {
   // Only trust single proxy (Nginx)
   app.set('trust proxy', 1)
 
@@ -86,7 +91,7 @@ const sessionOptions = {
   secret: SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: !isDev, maxAge: 24 * 60 * 60 * 1000 }
+  cookie: { secure: !(isDev || isTest), maxAge: 24 * 60 * 60 * 1000 }
 }
 
 if (REDIS_URL) {

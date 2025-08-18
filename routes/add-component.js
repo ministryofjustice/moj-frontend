@@ -183,6 +183,10 @@ router.get('/confirmation', (req, res) => {
 })
 
 router.get('/email/verify/:token', (req, res) => {
+  if (ENV === 'test' && process.env.VERIFICATION_TOKEN && req?.session) {
+    req.session.emailToken = process.env.VERIFICATION_TOKEN
+  }
+
   if (!req?.session?.emailToken) {
     // session expired / no session
     res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email-session-expired`)
@@ -202,7 +206,7 @@ router.get('/email/verify/:token', (req, res) => {
 router.get('/email-session-expired', (req, res) => {
   res.render('email-session-expired', {
     page: {
-      title: 'Your confirmation link did not work '
+      title: 'Your confirmation link did not work'
     },
     resetUrl: `${ADD_NEW_COMPONENT_ROUTE}/email?reset=true`
   })
@@ -238,17 +242,7 @@ router.get('/email', (req, res) => {
 router.all('*', sessionStarted)
 
 router.post('/start', verifyCsrf, (req, res) => {
-  if (
-    process.env.SKIP_VERIFICATION === 'true' &&
-    process.env.DEV_VERIFIED_EMAIL
-  ) {
-    req.session['/email'] = { emailAddress: process.env.DEV_VERIFIED_EMAIL }
-    req.session.emailDomainAllowed = true
-    req.session.verified = true
-    res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/component-details`)
-  } else {
-    res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email`)
-  }
+  res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email`)
 })
 
 router.post(
@@ -275,14 +269,28 @@ router.post(
   // send email
   async (req, res) => {
     if (req.emailDomainAllowed) {
-      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email/check`)
-      const token = req?.session?.emailToken
-      const email = req?.session?.['/email']?.emailAddress
-      if (token && email) {
-        try {
-          await sendVerificationEmail(email, token)
-        } catch (error) {
-          console.error(`Error sending verification email: ${error}`)
+      if (
+        process.env.SKIP_VERIFICATION === 'true' &&
+        process.env.DEV_VERIFIED_EMAIL
+      ) {
+        req.session['/email'] = { emailAddress: process.env.DEV_VERIFIED_EMAIL }
+        req.session.emailDomainAllowed = true
+        req.session.verified = true
+
+        console.log('session is verified via env file')
+        res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/component-details`)
+      } else {
+        console.log('session is not verified via env file')
+        res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email/check`)
+
+        const token = req?.session?.emailToken
+        const email = req?.session?.['/email']?.emailAddress
+        if (token && email) {
+          try {
+            await sendVerificationEmail(email, token)
+          } catch (error) {
+            console.error(`Error sending verification email: ${error}`)
+          }
         }
       }
     }
