@@ -1,4 +1,4 @@
-import { ContributionsPage } from "./contributions-page";
+import { ContributionsPage } from './contributions-page.js'
 
 export class FigmaPage extends ContributionsPage {
   constructor(page) {
@@ -7,5 +7,4 @@ export class FigmaPage extends ContributionsPage {
     this.url = 'figma'
     this.title = 'Figma design'
   }
-
 }

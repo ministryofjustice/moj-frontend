@@ -1,7 +1,7 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
     # branches: [ main, master ]
 jobs:
@@ -9,30 +9,30 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Build package
-      run: ENV=test npm run build:package
-    - name: Build docs
-      run: ENV=test npm run build:docs
-    - name: Run Playwright tests
-      env:
-        ENV: test
-        APP_PORT: 3003
-        APP_URL: http://localhost:3003
-        DEV_VERIFIED_EMAIL: test.user@justice.gov.uk
-        SKIP_VERIFICATION: "true"
-        VERIFICATION_TOKEN: 12345abcde
-      run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Build package
+        run: ENV=test npm run build:package
+      - name: Build docs
+        run: ENV=test npm run build:docs
+      - name: Run Playwright tests
+        env:
+          ENV: test
+          APP_PORT: 3003
+          APP_URL: http://localhost:3003
+          DEV_VERIFIED_EMAIL: test.user@justice.gov.uk
+          SKIP_VERIFICATION: 'true'
+          VERIFICATION_TOKEN: 12345abcde
+        run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

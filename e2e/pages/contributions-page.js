@@ -1,8 +1,8 @@
-import { expect } from '@playwright/test';
+import { expect } from '@playwright/test'
 
 export class ContributionsPage {
   constructor(page) {
-    this.page = page;
+    this.page = page
 
     this.continueButton = page.getByRole('button', { name: 'Continue' })
     this.errorSummary = page.locator('.govuk-error-summary')
@@ -21,17 +21,19 @@ export class ContributionsPage {
     const re = new RegExp(`${this.fullTitle}`)
 
     // Email verification steps
-    await this.page.goto('start');
-    await this.page.waitForLoadState();
-    await this.continueButton.click();
-    await this.page.waitForLoadState();
-    await this.page.getByLabel('Enter your justice.gov.uk email address').fill('test.user@justice.gov.uk')
+    await this.page.goto('start')
+    await this.page.waitForLoadState()
     await this.continueButton.click()
-    await expect(this.page).toHaveTitle(/Component details - MoJ Design System/);
+    await this.page.waitForLoadState()
+    await this.page
+      .getByLabel('Enter your justice.gov.uk email address')
+      .fill('test.user@justice.gov.uk')
+    await this.continueButton.click()
+    await expect(this.page).toHaveTitle(/Component details - MoJ Design System/)
 
     // Now we can navigate to any page in the flow
     await this.page.goto(this.url)
-    await expect(this.page).toHaveTitle(re);
+    await expect(this.page).toHaveTitle(re)
   }
 
   async clickContinue() {
@@ -44,9 +46,11 @@ export class ContributionsPage {
 
   async checkRadioWithLabel(label, fieldsetLabel) {
     if (fieldsetLabel) {
-      await this.page.getByRole('group', {name: fieldsetLabel}).getByLabel(label).check()
-    }
-    else {
+      await this.page
+        .getByRole('group', { name: fieldsetLabel })
+        .getByLabel(label)
+        .check()
+    } else {
       await this.page.getByLabel(label).check()
     }
   }
@@ -70,13 +74,12 @@ export class ContributionsPage {
   }
 
   async exepctAllLinksToHaveGovUkLinkClass() {
-    const links = await this.main.locator('a');
-    const count = await links.count();
+    const links = await this.main.locator('a')
+    const count = await links.count()
 
     // Check each link has the expected class
     for (let i = 0; i < count; i++) {
-      await expect(links.nth(i)).toHaveClass('govuk-link');
+      await expect(links.nth(i)).toHaveClass('govuk-link')
     }
   }
-
 }

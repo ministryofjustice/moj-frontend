@@ -1,5 +1,6 @@
-import { test, expect, describe } from '@playwright/test'
-import { ContributionsPage } from './pages/contributions-page'
+import { test, expect } from '@playwright/test'
+
+import { ContributionsPage } from './pages/contributions-page.js'
 
 let basePage
 let emailInput
@@ -16,8 +17,8 @@ test.beforeEach(async ({ page }) => {
   emailInput = page.getByLabel('Enter your justice.gov.uk email address')
 })
 
-describe('validation', async () => {
-  test('empty state', async ({ page }) => {
+test.describe('validation', async () => {
+  test('empty state', async () => {
     await basePage.exepctAllLinksToHaveGovUkLinkClass()
 
     await basePage.clickContinue()
@@ -29,7 +30,7 @@ describe('validation', async () => {
     ])
   })
 
-  test('invalid email', async ({ page }) => {
+  test('invalid email', async () => {
     await emailInput.fill('not an email address')
 
     await basePage.clickContinue()

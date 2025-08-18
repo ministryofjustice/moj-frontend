@@ -1,4 +1,4 @@
-import { ContributionsPage } from "./contributions-page";
+import { ContributionsPage } from './contributions-page.js'
 
 export class YourDetailsPage extends ContributionsPage {
   constructor(page) {
@@ -8,10 +8,15 @@ export class YourDetailsPage extends ContributionsPage {
     this.title = 'Your details'
 
     this.nameInput = this.page.getByLabel('Full name')
-    this.teamInput = this.page.getByLabel('What team were you in when this component was created?')
+    this.teamInput = this.page.getByLabel(
+      'What team were you in when this component was created?'
+    )
 
-    this.shareNameCheckbox = this.page.getByLabel('Add my name to the component page')
-    this.shareTeamCheckbox = this.page.getByLabel('Add my team name to the component page')
+    this.shareNameCheckbox = this.page.getByLabel(
+      'Add my name to the component page'
+    )
+    this.shareTeamCheckbox = this.page.getByLabel(
+      'Add my team name to the component page'
+    )
   }
-
 }

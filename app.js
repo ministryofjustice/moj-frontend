@@ -13,8 +13,8 @@ const {
   SENTRY_CSP_REPORT_URI
 } = require('./config')
 
-const isDev = (ENV === 'development')
-const isTest = (ENV === 'test')
+const isDev = ENV === 'development'
+const isTest = ENV === 'test'
 
 if (!(isDev || isTest)) {
   Sentry.init({

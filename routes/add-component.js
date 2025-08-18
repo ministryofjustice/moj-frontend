@@ -183,7 +183,7 @@ router.get('/confirmation', (req, res) => {
 })
 
 router.get('/email/verify/:token', (req, res) => {
-  if (ENV === 'test' && process.env.VERIFICATION_TOKEN && req?.session){
+  if (ENV === 'test' && process.env.VERIFICATION_TOKEN && req?.session) {
     req.session.emailToken = process.env.VERIFICATION_TOKEN
   }
 

@@ -1,8 +1,9 @@
-import { test, expect, describe } from '@playwright/test'
-import { AccessibilityFindingsPage } from './pages/accessibility-findings-page'
-import { AssistiveTechPage } from './pages/assistive-tech-page'
-import { CheckYourAnswersPage } from './pages/check-your-answers-page'
+import { test, expect } from '@playwright/test'
 import dayjs from 'dayjs'
+
+import { AccessibilityFindingsPage } from './pages/accessibility-findings-page.js'
+import { AssistiveTechPage } from './pages/assistive-tech-page.js'
+import { CheckYourAnswersPage } from './pages/check-your-answers-page.js'
 
 let testPage
 
@@ -27,7 +28,7 @@ test('empty validation', async () => {
   ])
 })
 
-describe('date validation', async () => {
+test.describe('date validation', async () => {
   test('empty month', async () => {
     await testPage.dayInput.fill('20')
     await testPage.clickContinue()
@@ -106,7 +107,7 @@ describe('date validation', async () => {
   })
 })
 
-describe('issues discovered validation', async () => {
+test.describe('issues discovered validation', async () => {
   test.beforeEach(async () => {
     await testPage.dayInput.fill(`${dayjs().date()}`)
     await testPage.monthInput.fill(`${dayjs().month() + 1}`)
@@ -115,7 +116,9 @@ describe('issues discovered validation', async () => {
 
   test('word count present', async () => {
     await expect(testPage.countMessage).toBeVisible()
-    await expect(testPage.countMessage).toContainText('You have 250 words remaining')
+    await expect(testPage.countMessage).toContainText(
+      'You have 250 words remaining'
+    )
   })
 
   test('word count reduces', async () => {
@@ -142,7 +145,7 @@ describe('issues discovered validation', async () => {
   })
 })
 
-describe('successful navigation', async () => {
+test.describe('successful navigation', async () => {
   let accessibilityPage
 
   test.beforeEach(async ({ page }) => {
@@ -168,7 +171,7 @@ describe('successful navigation', async () => {
     await expect(page).toHaveTitle(/Component code - MoJ Design System/)
   })
 })
-describe('check your answers', async () => {
+test.describe('check your answers', async () => {
   let accessibilityPage
   let cyaPage
 
@@ -178,7 +181,7 @@ describe('check your answers', async () => {
     await accessibilityPage.goTo()
   })
 
-  test('check your answers', async ({page}) => {
+  test('check your answers', async ({ page }) => {
     // Test no External Audit
     await accessibilityPage.setExternalAudit('No')
     await accessibilityPage.setInternalReview('No')
@@ -192,11 +195,17 @@ describe('check your answers', async () => {
 
     await expect(cyaPage.assistiveTechCard).toBeVisible()
     await expect(cyaPage.assistiveTechCard).toContainText('None')
-    await expect(cyaPage.assistiveTechCard.getByRole('link', {name: 'Change'})).toBeVisible()
-    await expect(cyaPage.assistiveTechCard.getByRole('link', {name: 'Remove'})).not.toBeVisible()
+    await expect(
+      cyaPage.assistiveTechCard.getByRole('link', { name: 'Change' })
+    ).toBeVisible()
+    await expect(
+      cyaPage.assistiveTechCard.getByRole('link', { name: 'Remove' })
+    ).not.toBeVisible()
 
     // Change and complete external audit section
-    await cyaPage.assistiveTechCard.getByRole('link', {name: 'Change'}).click()
+    await cyaPage.assistiveTechCard
+      .getByRole('link', { name: 'Change' })
+      .click()
     await expect(page).toHaveTitle(/Accessibility findings - MoJ Design System/)
 
     await accessibilityPage.setAssistiveTech('Yes')
@@ -215,15 +224,27 @@ describe('check your answers', async () => {
     await expect(page).toHaveTitle(cyaPage.fullTitle)
 
     await expect(cyaPage.assistiveTechCard).toBeVisible()
-    await expect(cyaPage.assistiveTechCard).toContainText(`${dayjs().format('D MMMM YYYY')}`)
+    await expect(cyaPage.assistiveTechCard).toContainText(
+      `${dayjs().format('D MMMM YYYY')}`
+    )
     await expect(cyaPage.assistiveTechCard).toContainText('No problems found')
-    await expect(cyaPage.assistiveTechCard.getByRole('link', {name: 'Change'})).toBeVisible()
-    await expect(cyaPage.assistiveTechCard.getByRole('link', {name: 'Remove'})).toBeVisible()
+    await expect(
+      cyaPage.assistiveTechCard.getByRole('link', { name: 'Change' })
+    ).toBeVisible()
+    await expect(
+      cyaPage.assistiveTechCard.getByRole('link', { name: 'Remove' })
+    ).toBeVisible()
 
     // Remove external audit section
-    await cyaPage.assistiveTechCard.getByRole('link', {name: 'Remove'}).click()
-    await expect(page).toHaveTitle(/Are you sure you want to remove this information?/)
-    await expect(page.getByText(`${dayjs().format('D MMMM YYYY')}`)).toBeVisible()
+    await cyaPage.assistiveTechCard
+      .getByRole('link', { name: 'Remove' })
+      .click()
+    await expect(page).toHaveTitle(
+      /Are you sure you want to remove this information?/
+    )
+    await expect(
+      page.getByText(`${dayjs().format('D MMMM YYYY')}`)
+    ).toBeVisible()
     await expect(page.getByText('No problems found')).toBeVisible()
 
     await page.getByRole('button', { name: 'Delete answers' }).click()
@@ -231,6 +252,5 @@ describe('check your answers', async () => {
     await expect(page).toHaveTitle(cyaPage.fullTitle)
     await expect(cyaPage.assistiveTechCard).toBeVisible()
     await expect(cyaPage.assistiveTechCard).toContainText('None')
+  })
 })
-})
-

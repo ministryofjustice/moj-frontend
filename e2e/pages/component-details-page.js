@@ -1,4 +1,4 @@
-import { ContributionsPage } from "./contributions-page";
+import { ContributionsPage } from './contributions-page.js'
 
 export class ComponentDetailsPage extends ContributionsPage {
   constructor(page) {
@@ -11,5 +11,4 @@ export class ComponentDetailsPage extends ContributionsPage {
     this.descriptionInput = this.page.getByLabel('Describe the component')
     this.usageInput = this.page.getByLabel('How is the component being used?')
   }
-
 }

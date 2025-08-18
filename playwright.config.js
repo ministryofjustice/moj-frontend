@@ -1,8 +1,10 @@
-import { defineConfig, devices } from '@playwright/test';
+import path from 'path'
 
-import dotenv from 'dotenv';
-import path from 'path';
-dotenv.config({ path: path.resolve(__dirname, `./.env.${process.env.ENV || 'test'}`) });
+import { defineConfig, devices } from '@playwright/test'
+import dotenv from 'dotenv'
+dotenv.config({
+  path: path.resolve(__dirname, `./.env.${process.env.ENV || 'test'}`)
+})
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -26,7 +28,7 @@ export default defineConfig({
     screenshot: 'only-on-failure',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'on-first-retry'
   },
 
   /* Configure projects for major browsers */
@@ -37,17 +39,17 @@ export default defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        storageState: './playwright/.state/session.json',
+        storageState: './playwright/.state/session.json'
       },
-      dependencies: ['setup'],
+      dependencies: ['setup']
     },
     {
       name: 'no-session',
       testMatch: /.*\.setup\.js/,
       use: {
-        ...devices['Desktop Chrome'],
-      },
-    },
+        ...devices['Desktop Chrome']
+      }
+    }
 
     // {
     //   name: 'firefox',
@@ -83,7 +85,7 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npm run start:e2e',
-    url:  `${process.env.APP_URL}/contribute/add-new-component/`,
-    reuseExistingServer: !process.env.CI,
-  },
-});
+    url: `${process.env.APP_URL}/contribute/add-new-component/`,
+    reuseExistingServer: !process.env.CI
+  }
+})

@@ -1,16 +1,17 @@
-import { test, expect } from '@playwright/test';
-import { AccessibilityFindingsPage } from './pages/accessibility-findings-page';
+import { test, expect } from '@playwright/test'
+
+import { AccessibilityFindingsPage } from './pages/accessibility-findings-page.js'
 
 let testPage
 
 test.beforeEach(async ({ page }) => {
-  console.log(`Running ${test.info().title}`);
+  console.log(`Running ${test.info().title}`)
   testPage = new AccessibilityFindingsPage(page)
   await testPage.goTo()
-});
+})
 
 test('validation', async () => {
-  await testPage.clickContinue();
+  await testPage.clickContinue()
 
   await testPage.expectErrorSummaryWithMessages([
     'Select yes if there was an external audit',
@@ -25,10 +26,12 @@ test('assistive technology', async ({ page }) => {
   await testPage.setAssistiveTech('Yes')
 
   await testPage.clickContinue()
-  await expect(page).toHaveTitle(/Testing with assistive technology - MoJ Design System/)
+  await expect(page).toHaveTitle(
+    /Testing with assistive technology - MoJ Design System/
+  )
 
   await testPage.backLink.click()
-  await expect(page).toHaveTitle(/Accessibility findings - MoJ Design System/);
+  await expect(page).toHaveTitle(/Accessibility findings - MoJ Design System/)
 })
 
 test('internal review', async ({ page }) => {
@@ -37,10 +40,12 @@ test('internal review', async ({ page }) => {
   await testPage.setAssistiveTech('No')
 
   await testPage.clickContinue()
-  await expect(page).toHaveTitle(/Internal accessibility review - MoJ Design System/)
+  await expect(page).toHaveTitle(
+    /Internal accessibility review - MoJ Design System/
+  )
 
   await testPage.clickBack()
-  await expect(page).toHaveTitle(/Accessibility findings - MoJ Design System/);
+  await expect(page).toHaveTitle(/Accessibility findings - MoJ Design System/)
 })
 
 test('external audit', async ({ page }) => {
@@ -49,8 +54,10 @@ test('external audit', async ({ page }) => {
   await testPage.setAssistiveTech('No')
 
   await testPage.clickContinue()
-  await expect(page).toHaveTitle(/External accessibility audit - MoJ Design System/)
+  await expect(page).toHaveTitle(
+    /External accessibility audit - MoJ Design System/
+  )
 
   await testPage.clickBack()
-  await expect(page).toHaveTitle(/Accessibility findings - MoJ Design System/);
+  await expect(page).toHaveTitle(/Accessibility findings - MoJ Design System/)
 })

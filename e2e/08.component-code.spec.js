@@ -1,13 +1,14 @@
-import { test, expect } from '@playwright/test';
-import { ComponentCodePage } from './pages/component-code-page';
+import { test, expect } from '@playwright/test'
+
+import { ComponentCodePage } from './pages/component-code-page.js'
 
 let testPage
 
 test.beforeEach(async ({ page }) => {
-  console.log(`Running ${test.info().title}`);
+  console.log(`Running ${test.info().title}`)
   testPage = new ComponentCodePage(page)
   await testPage.goTo()
-});
+})
 
 test('validation', async () => {
   await testPage.clickContinue()
@@ -32,7 +33,9 @@ test('code not available', async () => {
 test('code available', async () => {
   await testPage.setCodeAvailable('Yes')
   await testPage.clickContinue()
-  await expect(testPage.page).toHaveTitle(/Component code details - MoJ Design System/)
+  await expect(testPage.page).toHaveTitle(
+    /Component code details - MoJ Design System/
+  )
 
   await testPage.clickBack()
   await expect(testPage.page).toHaveTitle(/Component code - MoJ Design System/)

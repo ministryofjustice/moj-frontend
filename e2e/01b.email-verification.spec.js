@@ -1,11 +1,12 @@
-import { test, expect, describe } from '@playwright/test'
-import { ContributionsPage } from './pages/contributions-page'
+import { test, expect } from '@playwright/test'
+
+import { ContributionsPage } from './pages/contributions-page.js'
 
 let basePage
 let emailInput
 const email = 'test.user@justice.gov.uk'
 
-describe('verification process', async () => {
+test.describe('verification process', async () => {
   test.beforeEach(async ({ page }) => {
     console.log(`Running ${test.info().title}`)
     basePage = new ContributionsPage(page)
@@ -78,17 +79,21 @@ describe('verification process', async () => {
     await basePage.exepctAllLinksToHaveGovUkLinkClass()
   })
 
-  test('invalid token', async ({page}) => {
+  test('invalid token', async ({ page }) => {
     await page.goto('email/verify/my-invalid-token')
-    await expect(page).toHaveTitle(/Your confirmation link was not recognised - MoJ Design System/)
+    await expect(page).toHaveTitle(
+      /Your confirmation link was not recognised - MoJ Design System/
+    )
     await basePage.exepctAllLinksToHaveGovUkLinkClass()
-    await page.getByRole('link', { name: 'enter your email address again' }).click()
+    await page
+      .getByRole('link', { name: 'enter your email address again' })
+      .click()
     await expect(page).toHaveTitle(
       /Verify that you work for MoJ - MoJ Design System/
     )
   })
 
-  test('valid token', async ({page}) => {
+  test('valid token', async ({ page }) => {
     await page.goto(`email/verify/${process.env.VERIFICATION_TOKEN}`)
     await expect(page).toHaveTitle(/Component details - MoJ Design System/)
     await basePage.exepctAllLinksToHaveGovUkLinkClass()

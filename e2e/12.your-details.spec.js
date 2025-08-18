@@ -1,6 +1,7 @@
-import { test, expect, describe } from '@playwright/test'
-import { YourDetailsPage } from './pages/your-details-page'
-import { CheckYourAnswersPage } from './pages/check-your-answers-page'
+import { test, expect } from '@playwright/test'
+
+import { CheckYourAnswersPage } from './pages/check-your-answers-page.js'
+import { YourDetailsPage } from './pages/your-details-page.js'
 
 let testPage
 
@@ -50,7 +51,7 @@ test('all ok', async () => {
   )
 })
 
-describe('check your details', async () => {
+test.describe('check your details', async () => {
   let cyaPage
 
   test.beforeEach(async ({ page }) => {
@@ -80,7 +81,7 @@ describe('check your details', async () => {
     await expect(testPage.page).toHaveTitle(cyaPage.fullTitle)
 
     await expect(cyaPage.yourDetailsCard).toBeVisible()
-        await expect(cyaPage.yourDetailsCard).toContainText('B.A. Baracus')
+    await expect(cyaPage.yourDetailsCard).toContainText('B.A. Baracus')
     await expect(cyaPage.yourDetailsCard).toContainText('The A Team')
     await expect(cyaPage.yourDetailsCard).toContainText(
       'Add my name to the component page'

@@ -1,4 +1,4 @@
-import { ContributionsPage } from "./contributions-page";
+import { ContributionsPage } from './contributions-page.js'
 
 export class ComponentCodePage extends ContributionsPage {
   constructor(page) {
@@ -11,5 +11,4 @@ export class ComponentCodePage extends ContributionsPage {
   async setCodeAvailable(label) {
     await this.page.getByLabel(label).check()
   }
-
 }

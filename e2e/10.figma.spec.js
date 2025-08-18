@@ -1,13 +1,14 @@
-import { test, expect } from '@playwright/test';
-import { FigmaPage } from './pages/figma-page';
+import { test, expect } from '@playwright/test'
+
+import { FigmaPage } from './pages/figma-page.js'
 
 let testPage
 
 test.beforeEach(async ({ page }) => {
-  console.log(`Running ${test.info().title}`);
+  console.log(`Running ${test.info().title}`)
   testPage = new FigmaPage(page)
   await testPage.goTo()
-});
+})
 
 test('validation', async () => {
   await testPage.clickContinue()
@@ -32,9 +33,10 @@ test('figma not available', async () => {
 test('code available', async () => {
   await testPage.checkRadioWithLabel('Yes')
   await testPage.clickContinue()
-  await expect(testPage.page).toHaveTitle(/Figma design details - MoJ Design System/)
+  await expect(testPage.page).toHaveTitle(
+    /Figma design details - MoJ Design System/
+  )
 
   await testPage.clickBack()
   await expect(testPage.page).toHaveTitle(/Figma design - MoJ Design System/)
 })
-
