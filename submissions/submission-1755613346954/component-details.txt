@@ -1,0 +1,5 @@
+{
+  "componentName": "Loading spinner ",
+  "componentOverview": "Tell a user they need to wait, because something is happening.",
+  "howIsTheComponentUsed": "We needed a way to show a user that a long running task (in this case a virus scan on uploads) was in progress along with providing progress updates. The solution uses a modal to prevent the user from trying to upload further files during the upload progress and updates 'x of x files uploaded' text as the files are scanned."
+}
