@@ -49,15 +49,12 @@ const getPageData = (req) => {
 const checkEmailDomain = (req, res, next) => {
   let allowed = false
   const email = req?.body?.emailAddress
-  console.log({ email })
   if (email) {
     const domain = email.split('@').at(-1)
-    console.log({ domain })
     if (allowedDomains.includes(domain)) {
       allowed = true
     }
   }
-  console.log({ allowed })
   req.emailDomainAllowed = allowed
   next()
 }
@@ -76,14 +73,11 @@ const setCurrentFormPages = (req, res, next) => {
 }
 
 const setNextPage = (req, res, next) => {
-  console.log('setting nextPage')
   const amendingAnswers = req?.session?.checkYourAnswers
   const addingAnother = req?.body?.addAnother !== undefined
 
   const { url, session } = req
   const nextPage = getNextPage(url, session, addingAnother, amendingAnswers)
-
-  console.log(nextPage)
 
   if (amendingAnswers && !nextPage && !addingAnother) {
     req.nextPage = 'check-your-answers'
@@ -102,7 +96,6 @@ const setSuccessMessage = (req, res, next) => {
   const number = req.path.split('/').at(2) || 1
 
   if (addingAnother && page === 'component-code-details') {
-    console.log('adding a success message to the session flash')
     req.session.sessionFlash = MESSAGES.componentCodeAdded(number)
   }
 
@@ -110,12 +103,10 @@ const setSuccessMessage = (req, res, next) => {
 }
 
 const clearSkippedPageData = (req, res, next) => {
-  console.log('clearing data for skipped pages')
   const requiredPages = getCurrentFormPages(req.session).map((page) => {
     return page.startsWith('/') ? page : `/${page}`
   })
 
-  console.log(requiredPages)
   // Delete page and subpage data
   for (const sessionPage of Object.keys(req.session)) {
     if (
@@ -130,11 +121,8 @@ const clearSkippedPageData = (req, res, next) => {
         'sessionFlash'
       ].includes(sessionPage)
     ) {
-      console.log(sessionPage)
       const parentPage = `/${sessionPage.split('/')[1]}`
-      console.log(`checking${parentPage}`)
       if (!requiredPages.includes(parentPage)) {
-        console.log(`clearing data for ${sessionPage}`)
         // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
         delete req.session[sessionPage]
       }
@@ -166,7 +154,6 @@ const errorTemplateVariables = (
 }
 
 const validateFormDataFileUpload = (err, req, res, next) => {
-  console.log('validate form data file uplaod')
   if (err.code === 'LIMIT_FILE_SIZE') {
     const errorMessage = 'The selected file must be smaller than 10MB'
     const formErrors = {}
@@ -201,15 +188,11 @@ const xssComponentCode = (req, res, next) => {
 }
 
 const validateFormData = (req, res, next) => {
-  console.log('validate form data')
   const schemaName = req.path.split('/').at(1)
   const schema = require(`../schema/${schemaName}.schema`)
   const body = extractBody(req?.url, { ...req.body })
   delete body._csrf
-  console.log(req?.file?.fieldname)
-  console.log(req?.file?.originalname)
   if (req?.file?.fieldname && req?.file?.originalname) {
-    console.log('theres a file!')
     body[req.file.fieldname] = req.file.originalname
   }
   const { error } = schema.validate(body, { abortEarly: false })
@@ -254,7 +237,6 @@ const validateFormData = (req, res, next) => {
 }
 
 const saveSession = (req, res, next) => {
-  console.log('saving session')
   if (!req.session) req.session = {}
 
   const { _csrf, ...body } = req.body
@@ -325,7 +307,6 @@ const getRawSessionText = (req, res, next) => {
   const clonedSession = deepCloneAndRemoveBuffer(req.session)
   delete clonedSession.cookie
   const sessionText = JSON.stringify(clonedSession, null, 2)
-  console.log('Set raw session text')
   req.sessionText = sessionText
   next()
 }
@@ -344,10 +325,8 @@ const canAddAnother = (req, res, next) => {
 }
 
 const getBackLink = (req, res, next) => {
-  console.log('getting back link')
   const { url, session } = req
   if (session?.checkYourAnswers) {
-    console.log('cya is true')
     req.backLink = 'check-your-answers'
   } else {
     req.backLink = getPreviousPage(url, session)
@@ -369,7 +348,6 @@ const removeFromSession = (req, res, next) => {
 
   if (req.params.page === 'component-image') {
     const filename = req.session[url]?.componentImage?.originalname
-    console.log(filename)
     if (filename) {
       req.session.sessionFlash = MESSAGES.componentImageRemoved(filename)
     }
@@ -416,7 +394,6 @@ const sessionVerified = (req, res, next) => {
 const validateComponentImagePage = (req, res, next) => {
   if (req.params.page !== 'component-image') {
     const error = new ApplicationError('Invalid page', 400)
-    console.log(error.toErrorObject())
     return next(error)
   }
   next()

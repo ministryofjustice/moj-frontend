@@ -5,7 +5,6 @@ const { MAX_ADD_ANOTHER } = require('../config.js')
 const { ucFirst } = require('../helpers/text-helper.js')
 
 const generateMarkdown = (data, files) => {
-  console.log(data)
   const { '/component-details': details } = data
 
   const componentName = details?.componentName || 'unknown-component'
@@ -197,7 +196,6 @@ You can use the ${githubDiscussionLink(sanitizedComponentName)} to:
 * add relevant code`
     }
 
-    console.log(content)
     return content
   }
 

@@ -67,10 +67,8 @@ router.all('*', setCsrfToken)
 
 // TODO:  Why is this a get * ? Can it not just be set in the get /checkYourAnswersPath route below?
 router.get('*', (req, res, next) => {
-  console.log('setting cya visited')
   if (req?.session) {
     if (req?.url.endsWith(checkYourAnswersPath)) {
-      console.log('visited checkYourAnswersPath')
       // Indicate that we've been on the check your answers page
       req.session.checkYourAnswers = true
     }
@@ -136,7 +134,6 @@ if (ENV === 'development') {
     processPersonalData,
     generateSubmissionRef,
     async (req, res, next) => {
-      console.log('processing files')
       req.submissionFiles = await processSubmissionFiles(req)
       next()
     },
@@ -161,18 +158,14 @@ if (ENV === 'development') {
 
 // Start
 router.get('/start', (req, res) => {
-  console.log('get start')
-
   delete req.session.checkYourAnswers
   req.session.started = true
-  console.log('Start session')
   res.render('start', {
     page: {
       title: 'Before you start'
     },
     csrfToken: req?.session?.csrfToken
   })
-  console.log('after render')
 })
 
 // Confirmation page
@@ -277,10 +270,10 @@ router.post(
         req.session.emailDomainAllowed = true
         req.session.verified = true
 
-        console.log('session is verified via env file')
+        console.log('email automatically verified using ENV')
         res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/component-details`)
       } else {
-        console.log('session is not verified via env file')
+        console.log('email requires verification')
         res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email/check`)
 
         const token = req?.session?.emailToken
@@ -334,7 +327,6 @@ router.post('/email/resend', verifyCsrf, async (req, res) => {
 })
 
 router.get('/email/not-allowed', (req, res) => {
-  console.log(req.query)
   res.render('email-not-allowed', {
     page: {
       title: 'You did not enter an MoJ email address',
@@ -408,8 +400,6 @@ router.get(
   canAddAnother,
   getBackLink,
   (req, res) => {
-    console.log('get page/subpage')
-    console.log(`CYA: ${req?.session?.checkYourAnswers}`)
     res.render(`${req.params.page}`, {
       page: COMPONENT_FORM_PAGES[req.params.page],
       submitUrl: req.originalUrl,
@@ -433,7 +423,6 @@ router.post(
   processPersonalData,
   generateSubmissionRef,
   async (req, res, next) => {
-    console.log('processing files')
     req.submissionFiles = await processSubmissionFiles(req)
     next()
   },
@@ -494,7 +483,6 @@ router.post(
   setNextPage,
   (req, res, next) => {
     if (req.file) {
-      // console.log(req.file)
       // return to same page after upload
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}${req.url}`)
     }

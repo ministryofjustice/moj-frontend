@@ -50,8 +50,6 @@ const getUniqueFilename = (originalName, existingFilenames) => {
 }
 
 const processSubmissionFiles = async (req) => {
-  console.log('processing files')
-  console.log(req)
   const { session, submissionRef } = req
   const submissionFiles = {}
   const existingFilenames = new Set()
@@ -97,9 +95,7 @@ const processSubmissionFiles = async (req) => {
 }
 
 const processSubmissionData = (req, res, next) => {
-  console.log('processing submission data')
   const sessionData = { ...req.session, ...req.markdown }
-  console.log(sessionData)
   const { submissionFiles, submissionRef } = req
   const submissionData = {}
 
@@ -179,7 +175,6 @@ const getDetailsForPrEmail = (req, res, next) => {
  * chooses not to share publicly
  */
 const processPersonalData = (req, res, next) => {
-  console.log('excluding personal data')
   const personalData = req.session['/your-details']
   const data = Object.assign({}, personalData)
   // Remove personal data
@@ -201,7 +196,6 @@ const processPersonalData = (req, res, next) => {
 }
 
 const buildComponentPage = (req, res, next) => {
-  console.log('building component page')
   const { filename: markdownFilename, content: markdownContent } =
     generateMarkdown(req.session, req.submissionFiles)
   req.markdown = {}

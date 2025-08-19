@@ -39,7 +39,6 @@ const labelForField = (field, section) => {
 }
 
 const labelForSection = (section, number) => {
-  console.log(section)
   let label = labelOverrides[section]?.title ?? formPages[section]?.title
   label = `${label}${number ? ` ${number}` : ''}`
   return label
