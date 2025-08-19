@@ -158,7 +158,7 @@ ${content}\r\n`
           : code?.componentCodeLanguage
 
       content += `
-### Example ${i + 1}: ${language}
+### Code block ${i + 1}: ${language}
 
 <div class="app-example__code" data-module="app-copy">
 
