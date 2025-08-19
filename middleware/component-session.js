@@ -274,15 +274,13 @@ const saveSession = (req, res, next) => {
 
   // prevent prototype pollution
   if (
-    req.url === '__proto__' ||
-    req.url === 'constructor' ||
-    req.url === 'prototype'
+    req.path === '__proto__' ||
+    req.path === 'constructor' ||
+    req.path === 'prototype'
   ) {
     res.end(403)
     return
   }
-  console.log(req.url)
-  console.log(req.path)
   req.session[req.path] = { ...req.session[req.path], ...body }
   delete req.session[req.path].addAnother
 
@@ -359,6 +357,15 @@ const getBackLink = (req, res, next) => {
 
 const removeFromSession = (req, res, next) => {
   const url = req.url.replace(/\/(remove|change)/, '')
+// prevent prototype pollution
+  if (
+    url === '__proto__' ||
+    url === 'constructor' ||
+    url === 'prototype'
+  ) {
+    res.end(403)
+    return
+  }
 
   if (req.params.page === 'component-image') {
     const filename = req.session[url]?.componentImage?.originalname
