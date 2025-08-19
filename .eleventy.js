@@ -1,4 +1,4 @@
-const { execSync } = require('child_process')
+const { execFileSync } = require('child_process')
 const fs = require('fs')
 const path = require('path')
 
@@ -116,11 +116,23 @@ module.exports = function (eleventyConfig) {
     if (process.env.ENV === 'staging') return ''
 
     const dirPath = path.join(__dirname, 'src/moj/components', component)
-    const [commit, lastUpdated] = execSync(
-      `LANG=en_GB git log -n1 --pretty=format:%H,%ad --date=format:'%e %B %Y' ${dirPath}`
+
+    const lastCommit = execFileSync(
+      'git',
+      [
+        'log',
+        '-n1',
+        '--pretty=format:%H,%ad',
+        '--date=format:%e %B %Y',
+        dirPath
+      ],
+      {
+        cwd: process.cwd(), // or specify the working directory if needed
+        env: { ...process.env, LANG: 'en_GB' },
+        encoding: 'utf8'
+      }
     )
-      .toString()
-      .split(',')
+    const [commit, lastUpdated] = lastCommit.toString().split(',')
 
     return `<p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/${commit}">${lastUpdated}</a></p>`
   })
