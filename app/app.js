@@ -1,7 +1,8 @@
 /* eslint import/order: "off" */
 /* eslint n/no-unpublished-require: "off" */
-
-require('dotenv').config({ path: `./.env.${process.env.ENV || 'development'}` })
+const path = require('path')
+const envPath = path.join(__dirname, `.env.${process.env.ENV || 'development'}`)
+require('dotenv').config({ path: envPath })
 
 const Sentry = require('@sentry/node')
 const {
@@ -23,8 +24,6 @@ if (!(isDev || isTest)) {
     environment: ENV
   })
 }
-
-const path = require('path')
 const redisClient = require('./helpers/redis-client')
 const crypto = require('crypto')
 
@@ -37,7 +36,7 @@ const helmet = require('helmet')
 const nunjucks = require('nunjucks')
 const { xss } = require('express-xss-sanitizer')
 
-const rev = require('./filters/rev')
+const rev = require('../filters/rev')
 
 const addComponentRoutes = require('./routes/add-component')
 
@@ -115,8 +114,8 @@ app.set('views', [
   path.join(__dirname, 'views/common'),
   path.join(__dirname, 'views/community/pages'),
   // path.join(__dirname, 'node_modules/@ministryofjustice/frontend'),
-  path.join(__dirname, 'src'),
-  path.join(__dirname, 'node_modules/govuk-frontend/dist')
+  path.join(__dirname, '../src'),
+  path.join(__dirname, '../node_modules/govuk-frontend/dist')
 ])
 
 app.set('view engine', 'njk')
@@ -135,7 +134,7 @@ app.locals.env = {
 
 // Static files and body parsing
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, '../public')))
 app.use(express.json())
 // Component Code needs to be handled separately as it cannot sanitize js
 app.use(

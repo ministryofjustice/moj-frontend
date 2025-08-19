@@ -270,7 +270,7 @@ module.exports = function (eleventyConfig) {
   // Copies the 11ty base layout and partials to the contributions app layouts directory
   eleventyConfig.on('eleventy.before', async ({ directories }) => {
     const srcDir = `${directories.includes}layouts`
-    const destDir = './views/common'
+    const destDir = './app/views/common'
     const templates = [
       'base.njk',
       '404.njk',

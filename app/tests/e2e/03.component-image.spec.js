@@ -44,6 +44,10 @@ test('file ok', async () => {
 test('removing file', async () => {
   const filename = 'test-image.png'
 
+  await testPage.uploadFile(filename)
+  await testPage.clickUpload()
+  await testPage.expectSuccessAlert(`File ‘${filename}’ has been uploaded.`)
+
   await expect(testPage.removeLink).toBeVisible()
 
   await testPage.removeLink.click()
