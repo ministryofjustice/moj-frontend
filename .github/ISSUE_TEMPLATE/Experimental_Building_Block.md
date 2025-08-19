@@ -47,8 +47,8 @@ If YES → Proceed to the next step.
 
 - [ ] Create a GitHub Discussion thread for the component and reference it on the component page
 - [ ] Create a thumbnail for the component
-- [ ] Add Figma design (if supplied) to central ‘experimental components’ library and add the link on the component page
+- [ ] Add Figma design (if supplied) to central ‘MoJ Figma kit’ library and add the link on the component page
 - [ ] Go live with the component page and update the component view page
 - [ ] Inform the contributor and the community via email and Slack, referencing the GitHub Discussion
-- [ ] Add a tab in the analytics dashboard for the new component 
+- [ ] Add a tab in the analytics dashboard for the new building block
 
