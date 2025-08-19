@@ -172,13 +172,13 @@ test.describe('check your answers', async () => {
     await testPage.usageInput.fill('Use it')
     await testPage.clickContinue()
     await expect(page).toHaveTitle(/Figma design - MoJ Design System/)
+    // await expect(page).toHaveTitle(/Check your answers - MoJ Design System/)
 
     await page.goto(cyaPage.url)
     await expect(cyaPage.codeBlockCards).toHaveCount(1)
     await expect(cyaPage.codeBlockCards.first()).toBeVisible()
     await expect(cyaPage.codeBlockCards.first()).toContainText('Code block')
-    // TODO - lanaguge should not be output lowercase
-    // await expect(cyaPage.codeBlockCards.first()).toContainText('HTML')
+    await expect(cyaPage.codeBlockCards.first()).toContainText('HTML')
     await expect(cyaPage.codeBlockCards.first()).toContainText('Code provided')
     await expect(cyaPage.codeBlockCards.first()).toContainText('Use it')
     await expect(
@@ -205,13 +205,13 @@ test.describe('check your answers', async () => {
     await testPage.clickContinue()
 
     await expect(page).toHaveTitle(/Figma design - MoJ Design System/)
+    // await expect(page).toHaveTitle(/Check your answers - MoJ Design System/)
     await page.goto(cyaPage.url)
 
     await expect(cyaPage.codeBlockCards).toHaveCount(2)
     await expect(cyaPage.codeBlockCards.first()).toContainText('Code block 1')
     await expect(cyaPage.codeBlockCards.last()).toContainText('Code block 2')
-    // TODO - lanaguge should not be output lowercase
-    // await expect(cyaPage.codeBlockCards.first()).toContainText('CSS')
+    await expect(cyaPage.codeBlockCards.last()).toContainText('CSS')
     await expect(cyaPage.codeBlockCards.last()).toContainText('Code provided')
     await expect(cyaPage.codeBlockCards.last()).toContainText('Copy and paste')
     await expect(

@@ -176,9 +176,17 @@ const getAnswersForSection = (
     }
 
     // Don't include code language if language is other
-    if (questionKey === 'componentCodeLanguage' && answerValue === 'other') {
-      codeLanguageIsOther = true
-      return null
+    if (questionKey === 'componentCodeLanguage') {
+      if(answerValue === 'other') {
+        codeLanguageIsOther = true
+        return null
+      }
+        answerValue = {
+          'html': 'HTML',
+          'nunjucks': 'Nunjucks',
+          'css': 'CSS',
+          'javascript': 'Javascript'
+        }[answerValue] || answerValue
     }
 
     // Only include other language value if `componentCodeLanguage` is set to 'other'
