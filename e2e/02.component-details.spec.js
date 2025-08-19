@@ -7,7 +7,6 @@ let testPage
 let cyaPage
 
 test.beforeEach(async ({ page }) => {
-  console.log(`Running ${test.info().title}`)
   testPage = new ComponentDetailsPage(page)
   cyaPage = new CheckYourAnswersPage(page)
   await testPage.goTo()

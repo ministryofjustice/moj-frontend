@@ -5,7 +5,6 @@ import { ContributionsPage } from './pages/contributions-page.js'
 let testPage
 
 test.beforeEach(async ({ page }) => {
-  console.log(`Running ${test.info().title}`)
   testPage = new ContributionsPage(page)
 })
 

@@ -1,4 +1,4 @@
-const checkYourAnswers = require('./check-your-answers')
+const { checkYourAnswers } = require('./check-your-answers')
 
 // Sample session data where all values are objects
 const session = {

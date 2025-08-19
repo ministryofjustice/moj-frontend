@@ -6,7 +6,6 @@ import { YourDetailsPage } from './pages/your-details-page.js'
 let testPage
 
 test.beforeEach(async ({ page }) => {
-  console.log(`running ${test.info().title}`)
   testPage = new YourDetailsPage(page)
   await testPage.goTo()
 })

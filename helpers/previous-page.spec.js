@@ -23,7 +23,7 @@ describe('getPreviousPage function', () => {
   })
 
   it('should return start page if there are no previous pages', () => {
-    const result = getPreviousPage('/component-details', session)
+    const result = getPreviousPage('/email', session)
     expect(result).toBe(`${urlBase}/start`)
   })
 

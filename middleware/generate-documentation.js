@@ -129,7 +129,7 @@ ${content}\r\n`
 
   const generateCodeTabContent = (data) => {
     const hljsLang = (lang) => {
-      switch (lang.toLowerCase()) {
+      switch (lang?.toLowerCase()) {
         case 'html':
         case 'css':
         case 'scss':
@@ -215,7 +215,7 @@ ${data['/your-details']?.teamName === 'Not shared' ? '' : `contributorTeam: ${da
 {% tab "Overview" %}
 
 <div class="img-container">
-  <img src="/${files['/component-image']?.path}" alt="${componentName}" />
+  <img src="/${files?.['/component-image']?.path}" alt="${componentName}" />
 </div>
 
 ## Overview

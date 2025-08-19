@@ -6,7 +6,6 @@ let basePage
 let emailInput
 
 test.beforeEach(async ({ page }) => {
-  console.log(`Running ${test.info().title}`)
   basePage = new ContributionsPage(page)
   await page.goto('start')
   await basePage.clickContinue()

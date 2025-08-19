@@ -8,7 +8,6 @@ import { InternalReviewPage } from './pages/internal-review-page.js'
 let testPage
 
 test.beforeEach(async ({ page }) => {
-  console.log(`Running ${test.info().title}`)
   testPage = new InternalReviewPage(page)
   await testPage.goTo()
 })
@@ -156,7 +155,6 @@ test.describe('successful navigation', async () => {
   let accessibilityPage
 
   test.beforeEach(async ({ page }) => {
-    console.log(`Running ${test.info().title}`)
     accessibilityPage = new AccessibilityFindingsPage(page)
     testPage = new InternalReviewPage(page)
     await accessibilityPage.goTo()

@@ -199,8 +199,6 @@ const validateFormData = (req, res, next) => {
   const dateFields = ['auditDate', 'testingDate']
 
   if (error) {
-    console.error('Validation error:', error.details)
-
     const formErrorStyles = {}
 
     const formErrors = Object.keys(body).reduce((acc, key) => {

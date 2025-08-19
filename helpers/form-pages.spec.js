@@ -6,10 +6,10 @@ describe('getCurrentFormPages', () => {
   it('should return all pages without conditions', () => {
     const result = getCurrentFormPages(session)
     expect(result).toStrictEqual([
+      'email',
       'component-details',
       'component-image',
       'accessibility-findings',
-      'prototype',
       'component-code',
       'figma',
       'your-details',
@@ -28,12 +28,12 @@ describe('getCurrentFormPages', () => {
     }
     const result = getCurrentFormPages(session)
     expect(result).toStrictEqual([
+      'email',
       'component-details',
       'component-image',
       'accessibility-findings',
       'add-external-audit',
       'add-assistive-tech',
-      'prototype',
       'component-code',
       'figma',
       'figma-link',

@@ -134,7 +134,7 @@ describe('sendPrEmail', () => {
     await sendPrEmail({
       url: 'http://example.com',
       number: 1234
-    })
+    }, { componentName: 'component', email: 'name@email.com', name: 'bob', team: 'team'})
 
     expect(mockSendEmail).toHaveBeenCalledWith(
       expect.any(String),
@@ -143,7 +143,11 @@ describe('sendPrEmail', () => {
         personalisation: {
           pr_link: 'http://example.com',
           preview_link:
-            'https://moj-frontend-pr-1234.apps.live.cloud-platform.service.justice.gov.uk'
+            'https://moj-frontend-pr-1234.apps.live.cloud-platform.service.justice.gov.uk',
+          component_name: 'component',
+          name: 'bob',
+          email: 'name@email.com',
+          team: 'team'
         }
       }
     )
@@ -158,7 +162,7 @@ describe('sendPrEmail', () => {
       sendPrEmail({
         url: 'http://example.com',
         number: 1234
-      })
+      },{})
     ).rejects.toThrow('Failed to send email')
 
     expect(mockSendEmail).toHaveBeenCalledWith(

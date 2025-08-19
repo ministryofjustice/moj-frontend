@@ -1,261 +1,413 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`checkYourAnswers function should handle empty session gracefully 1`] = `
-{
-  "addAssistiveTechRows": [],
-  "addExternalAuditRows": [],
-  "addInternalAuditRows": [],
-  "componentCodeRows": [],
-  "componentDetailsRows": [],
-  "componentImageRows": [],
-  "figmaRows": [],
-  "prototypeRows": [],
-  "yourDetailsRows": [],
-}
+[
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-details",
+        "text": "Change",
+        "visuallyHiddenText": "Component details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Component details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-image",
+        "text": "Change",
+        "visuallyHiddenText": "Component image",
+      },
+    ],
+    "answerRows": [],
+    "title": "Component image",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "External accessibility audit",
+      },
+    ],
+    "answerRows": [],
+    "title": "External accessibility audit",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Internal accessibility review",
+      },
+    ],
+    "answerRows": [],
+    "title": "Internal accessibility review",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Testing with assistive technology",
+      },
+    ],
+    "answerRows": [],
+    "title": "Testing with assistive technology",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-code",
+        "text": "Change",
+        "visuallyHiddenText": "Code block",
+      },
+    ],
+    "answerRows": [],
+    "title": "Code block",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/figma",
+        "text": "Change",
+        "visuallyHiddenText": "Figma design details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Figma design details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/your-details",
+        "text": "Change",
+        "visuallyHiddenText": "Your details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Your details",
+  },
+]
 `;
 
 exports[`checkYourAnswers function should handle missing session fields gracefully 1`] = `
-{
-  "addAssistiveTechRows": [],
-  "addExternalAuditRows": [],
-  "addInternalAuditRows": [],
-  "componentCodeRows": [
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/contribute/add-new-component/component-code",
-            "text": "Change",
-            "visuallyHiddenText": "Component Code - Code",
-          },
-        ],
+[
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-details",
+        "text": "Change",
+        "visuallyHiddenText": "Component details",
       },
-      "key": {
-        "text": "Code",
+    ],
+    "answerRows": [],
+    "title": "Component details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-image",
+        "text": "Change",
+        "visuallyHiddenText": "Component image",
       },
-      "value": {
-        "text": "1234",
+    ],
+    "answerRows": [],
+    "title": "Component image",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "External accessibility audit",
       },
-    },
-  ],
-  "componentDetailsRows": [],
-  "componentImageRows": [],
-  "figmaRows": [],
-  "prototypeRows": [
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/contribute/add-new-component/prototype",
-            "text": "Change",
-            "visuallyHiddenText": "Prototype - Data",
-          },
-        ],
+    ],
+    "answerRows": [],
+    "title": "External accessibility audit",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Internal accessibility review",
       },
-      "key": {
-        "text": "Data",
+    ],
+    "answerRows": [],
+    "title": "Internal accessibility review",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Testing with assistive technology",
       },
-      "value": {
-        "text": "Prototype data",
+    ],
+    "answerRows": [],
+    "title": "Testing with assistive technology",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-code",
+        "text": "Change",
+        "visuallyHiddenText": "Code block",
       },
-    },
-  ],
-  "yourDetailsRows": [],
-}
+    ],
+    "answerRows": [],
+    "title": "Code block",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/figma",
+        "text": "Change",
+        "visuallyHiddenText": "Figma design details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Figma design details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/your-details",
+        "text": "Change",
+        "visuallyHiddenText": "Your details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Your details",
+  },
+]
 `;
 
 exports[`checkYourAnswers function should handle multiple entries for a field 1`] = `
-{
-  "addAssistiveTechRows": [],
-  "addExternalAuditRows": [],
-  "addInternalAuditRows": [],
-  "componentCodeRows": [],
-  "componentDetailsRows": [],
-  "componentImageRows": [],
-  "figmaRows": [],
-  "prototypeRows": [],
-  "yourDetailsRows": [],
-}
+[
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-details",
+        "text": "Change",
+        "visuallyHiddenText": "Component details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Component details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-image",
+        "text": "Change",
+        "visuallyHiddenText": "Component image",
+      },
+    ],
+    "answerRows": [],
+    "title": "Component image",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "External accessibility audit",
+      },
+    ],
+    "answerRows": [],
+    "title": "External accessibility audit",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Internal accessibility review",
+      },
+    ],
+    "answerRows": [],
+    "title": "Internal accessibility review",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Testing with assistive technology",
+      },
+    ],
+    "answerRows": [],
+    "title": "Testing with assistive technology",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-code",
+        "text": "Change",
+        "visuallyHiddenText": "Code block",
+      },
+    ],
+    "answerRows": [],
+    "title": "Code block",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/figma",
+        "text": "Change",
+        "visuallyHiddenText": "Figma design details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Figma design details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/your-details",
+        "text": "Change",
+        "visuallyHiddenText": "Your details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Your details",
+  },
+]
 `;
 
 exports[`checkYourAnswers function should transform session data into the expected structure 1`] = `
-{
-  "addAssistiveTechRows": [],
-  "addExternalAuditRows": [],
-  "addInternalAuditRows": [],
-  "componentCodeRows": [
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/contribute/add-new-component/component-code",
-            "text": "Change",
-            "visuallyHiddenText": "Component Code - Code",
-          },
-        ],
+[
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-details",
+        "text": "Change",
+        "visuallyHiddenText": "Component details",
       },
-      "key": {
-        "text": "Code",
+    ],
+    "answerRows": [],
+    "title": "Component details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-image",
+        "text": "Change",
+        "visuallyHiddenText": "Component image",
       },
-      "value": {
-        "text": "1234",
+    ],
+    "answerRows": [
+      {
+        "key": {
+          "text": "Image",
+        },
+        "value": {
+          "text": "image.png",
+        },
       },
-    },
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/contribute/add-new-component/component-code",
-            "text": "Change",
-            "visuallyHiddenText": "Component Code - Language",
-          },
-        ],
+    ],
+    "title": "Component image",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "External accessibility audit",
       },
-      "key": {
-        "text": "Language",
+    ],
+    "answerRows": [],
+    "title": "External accessibility audit",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Internal accessibility review",
       },
-      "value": {
-        "text": "JavaScript",
+    ],
+    "answerRows": [],
+    "title": "Internal accessibility review",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Testing with assistive technology",
       },
-    },
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/contribute/add-new-component/remove/component-code-details",
-            "text": "Remove",
-            "visuallyHiddenText": "Component Code Details - Detail",
-          },
-          {
-            "href": "/contribute/add-new-component/component-code-details",
-            "text": "Change",
-            "visuallyHiddenText": "Component Code Details - Detail",
-          },
-        ],
+    ],
+    "answerRows": [],
+    "title": "Testing with assistive technology",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/remove/component-code-details",
+        "text": "Remove",
+        "visuallyHiddenText": "Code block",
       },
-      "key": {
-        "text": "Detail",
+      {
+        "href": "/contribute/add-new-component/component-code-details",
+        "text": "View and Change",
+        "visuallyHiddenText": "Code block",
       },
-      "value": {
-        "text": "Extra details",
+    ],
+    "answerRows": [
+      {
+        "key": {
+          "text": "Detail",
+        },
+        "value": {
+          "text": "Extra details",
+        },
       },
-    },
-  ],
-  "componentDetailsRows": [
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/contribute/add-new-component/component-image",
-            "text": "Change",
-            "visuallyHiddenText": "Component Image - Image",
-          },
-        ],
+    ],
+    "title": "Code block",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/figma",
+        "text": "Change",
+        "visuallyHiddenText": "Figma design details",
       },
-      "key": {
-        "text": "Image",
+    ],
+    "answerRows": [],
+    "title": "Figma design details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/your-details",
+        "text": "Change",
+        "visuallyHiddenText": "Your details",
       },
-      "value": {
-        "text": "image.png",
+    ],
+    "answerRows": [
+      {
+        "key": {
+          "text": "Name",
+        },
+        "value": {
+          "text": "Sarah Philips",
+        },
       },
-    },
-  ],
-  "componentImageRows": [
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/contribute/add-new-component/component-image",
-            "text": "Change",
-            "visuallyHiddenText": "Component Image - Image",
-          },
-        ],
+      {
+        "key": {
+          "text": "Email",
+        },
+        "value": {
+          "text": "sarah@example.com",
+        },
       },
-      "key": {
-        "text": "Image",
-      },
-      "value": {
-        "text": "image.png",
-      },
-    },
-  ],
-  "figmaRows": [],
-  "prototypeRows": [
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/contribute/add-new-component/prototype",
-            "text": "Change",
-            "visuallyHiddenText": "Prototype - Data",
-          },
-        ],
-      },
-      "key": {
-        "text": "Data",
-      },
-      "value": {
-        "text": "Prototype data",
-      },
-    },
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/contribute/add-new-component/remove/prototype-url",
-            "text": "Remove",
-            "visuallyHiddenText": "Prototype Url - Url",
-          },
-          {
-            "href": "/contribute/add-new-component/prototype-url",
-            "text": "Change",
-            "visuallyHiddenText": "Prototype Url - Url",
-          },
-        ],
-      },
-      "key": {
-        "text": "URL",
-      },
-      "value": {
-        "text": "http://example.com",
-      },
-    },
-  ],
-  "yourDetailsRows": [
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/contribute/add-new-component/your-details",
-            "text": "Change",
-            "visuallyHiddenText": "Your Details - Name",
-          },
-        ],
-      },
-      "key": {
-        "text": "Name",
-      },
-      "value": {
-        "text": "Sarah Philips",
-      },
-    },
-    {
-      "actions": {
-        "items": [
-          {
-            "href": "/contribute/add-new-component/your-details",
-            "text": "Change",
-            "visuallyHiddenText": "Your Details - Email",
-          },
-        ],
-      },
-      "key": {
-        "text": "Email",
-      },
-      "value": {
-        "text": "sarah@example.com",
-      },
-    },
-  ],
-}
+    ],
+    "title": "Your details",
+  },
+]
 `;

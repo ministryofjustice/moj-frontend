@@ -5,7 +5,6 @@ import { FigmaPage } from './pages/figma-page.js'
 let testPage
 
 test.beforeEach(async ({ page }) => {
-  console.log(`Running ${test.info().title}`)
   testPage = new FigmaPage(page)
   await testPage.goTo()
 })

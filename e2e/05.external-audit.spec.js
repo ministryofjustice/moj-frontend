@@ -8,7 +8,6 @@ import { ExternalAuditPage } from './pages/external-audit-page.js'
 let testPage
 
 test.beforeEach(async ({ page }) => {
-  console.log(`Running ${test.info().title}`)
   testPage = new ExternalAuditPage(page)
   await testPage.goTo()
 })

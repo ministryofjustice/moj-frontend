@@ -8,7 +8,6 @@ let testPage
 
 test.describe('validations', async () => {
   test.beforeEach(async ({ page }) => {
-    console.log(`Running ${test.info().title}`)
     testPage = new ComponentCodeDetailsPage(page)
     await testPage.goTo()
   })
@@ -83,7 +82,6 @@ test.describe('navigation', async () => {
   let codePage
 
   test.beforeEach(async ({ page }) => {
-    console.log(`Running ${test.info().title}`)
     codePage = new ComponentCodePage(page)
     testPage = new ComponentCodeDetailsPage(page)
     await codePage.goTo()

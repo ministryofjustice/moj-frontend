@@ -5,7 +5,6 @@ import { AccessibilityFindingsPage } from './pages/accessibility-findings-page.j
 let testPage
 
 test.beforeEach(async ({ page }) => {
-  console.log(`Running ${test.info().title}`)
   testPage = new AccessibilityFindingsPage(page)
   await testPage.goTo()
 })

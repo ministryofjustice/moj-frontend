@@ -9,12 +9,6 @@ describe('getNextPage function', () => {
     expect(result).toBe(`${urlBase}/component-image`)
   })
 
-  it('should return the next page as prototype-url from prototype when answer was yes', () => {
-    session['/prototype'] = { componentPrototypeUrl: 'yes' }
-    const result = getNextPage('/prototype', session)
-    expect(result).toBe(`${urlBase}/prototype-url`)
-  })
-
   it('should return the next page if conditions are met', () => {
     session['/accessibility-findings'] = {
       hasComponentBeenTestedExternalAccessibility: 'yes'

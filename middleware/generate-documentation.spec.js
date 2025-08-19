@@ -24,6 +24,7 @@ describe('generateMarkdown', () => {
       },
       '/component-code-details': {
         componentCode: '<p>hello!</p>',
+        componentCodeLanguage: 'html',
         howIsTheComponentUsed: 'Somehow'
       },
       '/additional-information': {
@@ -103,6 +104,7 @@ describe('generateMarkdown', () => {
       },
       '/component-code-details': {
         componentCode: '<p>hello!</p>',
+        componentCodeLanguage: 'html',
         howIsTheComponentUsed: 'Somehow'
       },
       '/additional-information': {
@@ -162,6 +164,7 @@ describe('generateMarkdown', () => {
       },
       '/component-code-details': {
         componentCode: '<p>hello!</p>',
+        componentCodeLanguage: 'html',
         howIsTheComponentUsed: 'Somehow'
       },
       '/additional-information': {

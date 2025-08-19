@@ -3,42 +3,47 @@
 exports[`generateMarkdown should generate markdown with all fields populated 1`] = `
 {
   "content": "---
-layout: layouts/tabbed-component.njk
 title: Test Component
-type: component
+tabs: true
 status: Experimental
 statusDate: January 2023
-eleventyNavigation:
-  key: Test Component
-  parent: Components
-  excerpt: "This is a brief description."
+excerpt: "This is a brief description."
+lede: "This is a brief description."
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/xxx
+contributorName: Test User
+contributorTeam: undefined
 ---
 
-{% tabs "Contents" %}
-
+{% tabs "paginate" %}
 {% tab "Overview" %}
 
-## Overview
-
 <div class="img-container">
-  ![Test Component](/assets/images/component.jpg)
+  <img src="/assets/images/component.jpg" alt="Test Component" />
 </div>
 
+## Overview
 This is an overview.
 
-## How the component is being used
+### How the component is currently used
 
 This is how it is used.
 
+### Contribute to this component
+You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
+
 {% endtab %}
 
-{% tab "Code" %}
+{% tab "Designs" %}
 
-## Code
+## Designs
 
-No code has been added for this component.
+A Figma link was not included when this component was added.
 
-If you've used this component in your service and you have code, you can add it. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
+      There may be more information in the [Test-component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+
+## Contribute a Figma link
+
+      If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -46,82 +51,117 @@ If you've used this component in your service and you have code, you can add it.
 
 ## Accessibility
 
-If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.
+Accessibility findings have been added for this component. There may be more findings in the [Test-component Github discussion]({{ githuburl }}).
+
 
 ### External audit
 
+* Conducted by: External Org
+* Date: 1 January 2022
+
+#### Audit findings
+
 Some issues discovered.
-
-[Download the accessibility report](/external-report.pdf)
-
 ### Internal review
 
+* By: Internal Org
+* Date: 2 February 2022
+
+#### Review findings
+
 Some internal issues discovered.
-
-[Download the accessibility report](/internal-report.pdf)
-
 ### Assistive Technology testing
+
+Date: 3 March 2022
+
+#### Testing details
+
+Assistive tech issues discovered.
+
+## Contribute accessibility findings
+
+    If you have accessibility findings that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
-{% tab "Prototypes and design files" %}
+{% tab "Code" %}
 
-## Prototypes and design files
+## Code
 
-### Prototypes
+Code has been added for this component. There may be other code blocks in the [Test-component Github discussion]({{ githuburl }}).
 
-<a href="www.test.com" target="_blank" rel="noopener noreferrer">Prototype link (opens in a new tab)</a>
+
+### Code block 1: html
+
+<div class="app-example__code" data-module="app-copy">
+
+\`\`\`html
+{% raw %}
+<p>hello!</p>
+{% endraw %}
+\`\`\`
+
+</div>
+
+
+
+
+## Contribute code for this component
+
+If you have code that is relevant to this component you can add it to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
 {% endtabs %}
 ",
-  "filename": "docs/components/test-component.md",
+  "filename": "Test-component.md",
 }
 `;
 
 exports[`generateMarkdown should handle missing details gracefully 1`] = `
 {
   "content": "---
-layout: layouts/tabbed-component.njk
-title: unknown-component
-type: component
+title: Unknown-component
+tabs: true
 status: Experimental
 statusDate: January 2023
-eleventyNavigation:
-  key: unknown-component
-  parent: Components
-  excerpt: ""
+excerpt: ""
+lede: ""
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/xxx
+contributorName: undefined
+contributorTeam: undefined
 ---
 
-{% tabs "Contents" %}
-
+{% tabs "paginate" %}
 {% tab "Overview" %}
+
+<div class="img-container">
+  <img src="/undefined" alt="unknown-component" />
+</div>
 
 ## Overview
 
-<div class="img-container">
 
-</div>
+### How the component is currently used
 
-## How the component is currently used
+
+
+### Contribute to this component
+You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
 
 {% endtab %}
 
-{% tab "Code" %}
+{% tab "Designs" %}
 
-## Help develop existing building blocks in GitHub
+## Designs
 
-After a new building block is published in the design system, you, and other users, have the chance to continue enhancing it. This is done with users adding more information and resources to the component via GitHub.
+A Figma link was not included when this component was added.
 
-To do this you should:
+      There may be more information in the [Unknown-component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
-- go to the GitHub conversation
-- add your comments, information and resources about the building block
+## Contribute a Figma link
 
-## Code
-
-No code has been added for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
+      If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -129,64 +169,117 @@ No code has been added for this component. If you have examples of how you have 
 
 ## Accessibility
 
-No accessibility findings have been added for this component.
+Accessibility findings have been added for this component. There may be more findings in the [Unknown-component Github discussion]({{ githuburl }}).
+
+
+### External audit
+
+* Conducted by: undefined
+* Date: null
+
+#### Audit findings
+
+undefined
+### Internal review
+
+* By: undefined
+* Date: null
+
+#### Review findings
+
+undefined
+### Assistive Technology testing
+
+Date: null
+
+#### Testing details
+
+undefined
+
+## Contribute accessibility findings
+
+    If you have accessibility findings that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
-{% tab "Prototypes and design files" %}
+{% tab "Code" %}
 
-## Prototypes and design files
+## Code
 
-No prototypes or design files have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.
+Code has been added for this component. There may be other code blocks in the [Unknown-component Github discussion]({{ githuburl }}).
 
+
+### Code block 1: undefined
+
+<div class="app-example__code" data-module="app-copy">
+
+\`\`\`
+{% raw %}
+
+{% endraw %}
+\`\`\`
+
+</div>
+
+
+
+
+## Contribute code for this component
+
+If you have code that is relevant to this component you can add it to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
 {% endtabs %}
 ",
-  "filename": "docs/components/unknown-component.md",
+  "filename": "Unknown-component.md",
 }
 `;
 
 exports[`generateMarkdown should handle missing image data gracefully 1`] = `
 {
   "content": "---
-layout: layouts/tabbed-component.njk
 title: Another Component
-type: component
+tabs: true
 status: Experimental
 statusDate: January 2023
-eleventyNavigation:
-  key: Another Component
-  parent: Components
-  excerpt: "Another brief description."
+excerpt: "Another brief description."
+lede: "Another brief description."
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/xxx
+contributorName: Another User
+contributorTeam: undefined
 ---
 
-{% tabs "Contents" %}
-
+{% tabs "paginate" %}
 {% tab "Overview" %}
 
-## Overview
-
 <div class="img-container">
-
+  <img src="/undefined" alt="Another Component" />
 </div>
 
+## Overview
 Another overview.
 
-## How the component is being used
+### How the component is currently used
 
 Another usage.
 
+### Contribute to this component
+You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
+
 {% endtab %}
 
-{% tab "Code" %}
+{% tab "Designs" %}
 
-## Code
+## Designs
 
-## Code
+A Figma link was not included when this component was added.
 
-No code has been added for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.
+      There may be more information in the [Another-component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+
+## Contribute a Figma link
+
+      If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -194,75 +287,117 @@ No code has been added for this component. If you have examples of how you have 
 
 ## Accessibility
 
-This
-If you have accessibility findings or tested with users with access needs then you could contribute to this component.
+Accessibility findings have been added for this component. There may be more findings in the [Another-component Github discussion]({{ githuburl }}).
 
-### External audit (External Org) - January 2022
+
+### External audit
+
+* Conducted by: External Org
+* Date: 1 January 2022
+
+#### Audit findings
+
 Some issues discovered.
+### Internal review
 
-[Download the accessibility report](/external-report.pdf)
+* By: Internal Org
+* Date: 2 February 2022
 
-### Internal audit (Internal Org) - February 2022
+#### Review findings
 
 Some internal issues discovered.
+### Assistive Technology testing
 
-[Download the accessibility report](/internal-report.pdf)
+Date: 3 March 2022
 
-### Assistive Technology audit - March 2022
+#### Testing details
 
 Assistive tech issues discovered.
 
-[Download the accessibility report](/assistive-tech-report.pdf)
+## Contribute accessibility findings
+
+    If you have accessibility findings that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
-{% tab "Prototypes and design files" %}
+{% tab "Code" %}
 
-## Prototypes and design files
+## Code
 
-No prototypes or design files have been added for this component. If you have used this component in your service and you have a prototype or design file you can share it here.
+Code has been added for this component. There may be other code blocks in the [Another-component Github discussion]({{ githuburl }}).
+
+
+### Code block 1: html
+
+<div class="app-example__code" data-module="app-copy">
+
+\`\`\`html
+{% raw %}
+<p>hello!</p>
+{% endraw %}
+\`\`\`
+
+</div>
+
+
+
+
+## Contribute code for this component
+
+If you have code that is relevant to this component you can add it to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
 {% endtabs %}
 ",
-  "filename": "docs/components/another-component.md",
+  "filename": "Another-component.md",
 }
 `;
 
 exports[`generateMarkdown should return minimal markdown if no valid data is provided 1`] = `
 {
   "content": "---
-layout: layouts/tabbed-component.njk
-title: unknown-component
-type: component
+title: Unknown-component
+tabs: true
 status: Experimental
 statusDate: January 2023
-eleventyNavigation:
-  key: unknown-component
-  parent: Components
-  excerpt: ""
+excerpt: ""
+lede: ""
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/xxx
+contributorName: undefined
+contributorTeam: undefined
 ---
 
-{% tabs "Contents" %}
-
+{% tabs "paginate" %}
 {% tab "Overview" %}
+
+<div class="img-container">
+  <img src="/undefined" alt="unknown-component" />
+</div>
 
 ## Overview
 
-<div class="img-container">
 
-</div>
+### How the component is currently used
 
-## How the component is currently being used
+
+
+### Contribute to this component
+You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
 
 {% endtab %}
 
-{% tab "Code" %}
+{% tab "Designs" %}
 
-## Code
+## Designs
 
-No code has been added for this component. If you have examples of how you've used this component in your service then you could help the community by adding some. Most users are looking for HTML, Nunjucks, JavaScript, CSS or SASS.
+A Figma link was not included when this component was added.
+
+      There may be more information in the [Unknown-component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+
+## Contribute a Figma link
+
+      If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -270,61 +405,117 @@ No code has been added for this component. If you have examples of how you've us
 
 ## Accessibility
 
-No accessibility findings have been added for this component. If you have examples of how you've used this component in your service then you could help the community by adding some. Most users are looking for HTML, Nunjucks, JavaScript, CSS or SASS.
+Accessibility findings have been added for this component. There may be more findings in the [Unknown-component Github discussion]({{ githuburl }}).
+
+
+### External audit
+
+* Conducted by: undefined
+* Date: null
+
+#### Audit findings
+
+undefined
+### Internal review
+
+* By: undefined
+* Date: null
+
+#### Review findings
+
+undefined
+### Assistive Technology testing
+
+Date: null
+
+#### Testing details
+
+undefined
+
+## Contribute accessibility findings
+
+    If you have accessibility findings that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
-{% tab "Prototype and design files" %}
+{% tab "Code" %}
 
-## Prototypes and design files
+## Code
 
-No prototypes or design files have been added for this component. If you've used this component in your service and you have a prototype you can share it in the Github discussion.
+Code has been added for this component. There may be other code blocks in the [Unknown-component Github discussion]({{ githuburl }}).
+
+
+### Code block 1: undefined
+
+<div class="app-example__code" data-module="app-copy">
+
+\`\`\`
+{% raw %}
+
+{% endraw %}
+\`\`\`
+
+</div>
+
+
+
+
+## Contribute code for this component
+
+If you have code that is relevant to this component you can add it to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
 {% endtabs %}
 ",
-  "filename": "docs/components/unknown-component.md",
+  "filename": "Unknown-component.md",
 }
 `;
 
 exports[`generateMarkdown should sanitize the filename correctly 1`] = `
 {
   "content": "---
-layout: layouts/tabbed-component.njk
 title: Component! With@ Special#Chars
-type: component
+tabs: true
 status: Experimental
 statusDate: January 2023
-eleventyNavigation:
-  key: Component! With@ Special#Chars
-  parent: Components
-  excerpt: "Brief description here."
+excerpt: "Brief description here."
+lede: "Brief description here."
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/xxx
+contributorName: Special User
+contributorTeam: undefined
 ---
 
-{% tabs "Contents" %}
-
+{% tabs "paginate" %}
 {% tab "Overview" %}
 
-## Overview
-
 <div class="img-container">
-
+  <img src="/undefined" alt="Component! With@ Special#Chars" />
 </div>
 
+## Overview
 Overview here.
 
-## How the component is being used
+### How the component is currently used
 
 Usage here.
 
+### Contribute to this component
+You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
+
 {% endtab %}
 
-{% tab "Code" %}
+{% tab "Designs" %}
 
-## Code
+## Designs
 
-No code has been added for this component. If you have examples of how you've used this component in your service then you could help the community by adding some. Most users are looking for HTML, Nunjucks, JavaScript, CSS or SASS.
+A Figma link was not included when this component was added.
+
+      There may be more information in the [Component-with-special-chars Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+
+## Contribute a Figma link
+
+      If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -332,33 +523,69 @@ No code has been added for this component. If you have examples of how you've us
 
 ## Accessibility
 
-If you have had an accessibility audit or tested with users with access needs then you could contribute to this component.
+Accessibility findings have been added for this component. There may be more findings in the [Component-with-special-chars Github discussion]({{ githuburl }}).
+
 
 ### External audit
 
-Some issues discovered.
+* Conducted by: External Org
+* Date: 1 January 2022
 
+#### Audit findings
+
+Some issues discovered.
 ### Internal review
 
-Some internal issues discovered.
+* By: Internal Org
+* Date: 2 February 2022
 
+#### Review findings
+
+Some internal issues discovered.
 ### Assistive Technology testing
+
+Date: 3 March 2022
+
+#### Testing details
 
 Assistive tech issues discovered.
 
+## Contribute accessibility findings
+
+    If you have accessibility findings that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
-{% tab "Prototype and design files" %}
+{% tab "Code" %}
 
-## Prototype and design files
+## Code
 
-No prototypes or design files have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.
+Code has been added for this component. There may be other code blocks in the [Component-with-special-chars Github discussion]({{ githuburl }}).
+
+
+### Code block 1: html
+
+<div class="app-example__code" data-module="app-copy">
+
+\`\`\`html
+{% raw %}
+<p>hello!</p>
+{% endraw %}
+\`\`\`
+
+</div>
+
+
+
+
+## Contribute code for this component
+
+If you have code that is relevant to this component you can add it to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
 {% endtabs %}
 ",
-  "filename": "docs/components/component-with-special-chars.md",
+  "filename": "Component-with-special-chars.md",
 }
 `;

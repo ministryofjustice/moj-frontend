@@ -8,7 +8,6 @@ import { CheckYourAnswersPage } from './pages/check-your-answers-page.js'
 let testPage
 
 test.beforeEach(async ({ page }) => {
-  console.log(`Running ${test.info().title}`)
   testPage = new AssistiveTechPage(page)
   await testPage.goTo()
 })
@@ -149,7 +148,6 @@ test.describe('successful navigation', async () => {
   let accessibilityPage
 
   test.beforeEach(async ({ page }) => {
-    console.log(`Running ${test.info().title}`)
     accessibilityPage = new AccessibilityFindingsPage(page)
     testPage = new AssistiveTechPage(page)
     await accessibilityPage.goTo()

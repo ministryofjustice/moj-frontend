@@ -5,7 +5,6 @@ import { ComponentCodePage } from './pages/component-code-page.js'
 let testPage
 
 test.beforeEach(async ({ page }) => {
-  console.log(`Running ${test.info().title}`)
   testPage = new ComponentCodePage(page)
   await testPage.goTo()
 })

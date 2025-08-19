@@ -6,7 +6,6 @@ import { FigmaPage } from './pages/figma-page.js'
 let testPage
 
 test.beforeEach(async ({ page }) => {
-  console.log(`Running ${test.info().title}`)
   testPage = new FigmaLinkPage(page)
   await testPage.goTo()
 })
@@ -89,7 +88,6 @@ test.describe('navigation', async () => {
   let figmaPage
 
   test.beforeEach(async ({ page }) => {
-    console.log(`Running ${test.info().title}`)
     figmaPage = new FigmaPage(page)
     testPage = new FigmaLinkPage(page)
     await figmaPage.goTo()
