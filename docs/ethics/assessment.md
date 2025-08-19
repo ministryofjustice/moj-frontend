@@ -10,9 +10,9 @@ eleventyNavigation:
   excerpt: "Learn how to prepare for service assessments at different phases of delivery."
 ---
 
-Your team should consider the ethical impact of your service during each phase of its delivery - discovery, alpha, beta and live.
+Your team should consider the ethical impact of your service during each phase of its delivery -- discovery, alpha, beta and live.
 
-As part of your service assessment,  you’ll be expected to show how you’ve considered this. This guidance gives information on how to prepare for each phase.
+As part of your service assessment, you’ll be expected to show how you’ve considered this. This guidance gives information on how to prepare for each phase.
 
 If you’re not doing a service assessment, you should still consider our [ethical principles](/ethics/principles/) and explore the ethics of your service.
 
@@ -42,7 +42,7 @@ You’ll also need to use it to answer these questions to show that you’ve und
 
 During alpha, you’ll start to build prototypes to test your riskiest assumptions.
 
-Your team should consider whether anyone could be harmed (physically, mentally, or financially)  as a direct or indirect consequence of your service.
+Your team should consider whether anyone could be harmed (physically, mentally, or financially) as a direct or indirect consequence of your service.
 
 ### How to prepare for your assessment
 
