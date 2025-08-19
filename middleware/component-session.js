@@ -336,12 +336,8 @@ const getBackLink = (req, res, next) => {
 
 const removeFromSession = (req, res, next) => {
   const url = req.url.replace(/\/(remove|change)/, '')
-// prevent prototype pollution
-  if (
-    url === '__proto__' ||
-    url === 'constructor' ||
-    url === 'prototype'
-  ) {
+  // prevent prototype pollution
+  if (url === '__proto__' || url === 'constructor' || url === 'prototype') {
     res.end(403)
     return
   }
