@@ -2,7 +2,7 @@
 layout: layouts/content.njk
 subsection: Ethics
 title: Doing an ethics review
-showHelp: true
+backLink: /ethics/assessment/
 lede: Learn how to do an ethics review to prepare for your service assessment.
 ---
 

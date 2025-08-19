@@ -2,7 +2,6 @@
 layout: layouts/content.njk
 subsection: Ethics
 title: Preparing for a service assessment
-showHelp: true
 lede: Learn how to prepare for service assessments at different phases of delivery.
 eleventyNavigation:
   key: Preparing for a service assessment

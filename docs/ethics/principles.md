@@ -2,7 +2,7 @@
 layout: layouts/content.njk
 subsection: Ethics
 title: Ethical principles
-showHelp: true
+backLink: /ethics/assessment/
 lede: Learn how to use our ethical principles to prepare for your service assessment.
 ---
 Our ethical design principles are a set of ideals to guide how MoJ services are designed and built over time. 
@@ -12,6 +12,8 @@ Although it may not be possible to apply all of the principles, use them as insp
 ## How to use the principles
 
 Your team should run a collaborative session together to review and answer the following questions.
+
+## The principles
 
 ### Minimise harm
 
