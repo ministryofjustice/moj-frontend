@@ -131,10 +131,18 @@ describe('sendPrEmail', () => {
   it('should send a PR email successfully', async () => {
     mockSendEmail.mockResolvedValue({ status: 'success' })
 
-    await sendPrEmail({
-      url: 'http://example.com',
-      number: 1234
-    }, { componentName: 'component', email: 'name@email.com', name: 'bob', team: 'team'})
+    await sendPrEmail(
+      {
+        url: 'http://example.com',
+        number: 1234
+      },
+      {
+        componentName: 'component',
+        email: 'name@email.com',
+        name: 'bob',
+        team: 'team'
+      }
+    )
 
     expect(mockSendEmail).toHaveBeenCalledWith(
       expect.any(String),
@@ -159,10 +167,13 @@ describe('sendPrEmail', () => {
     mockSendEmail.mockRejectedValue(error)
 
     await expect(
-      sendPrEmail({
-        url: 'http://example.com',
-        number: 1234
-      },{})
+      sendPrEmail(
+        {
+          url: 'http://example.com',
+          number: 1234
+        },
+        {}
+      )
     ).rejects.toThrow('Failed to send email')
 
     expect(mockSendEmail).toHaveBeenCalledWith(
