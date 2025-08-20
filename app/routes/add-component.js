@@ -403,8 +403,8 @@ router.get(
   canAddAnother,
   getBackLink,
   (req, res) => {
-    res.render(`${req.params.page}`, {
-      page: COMPONENT_FORM_PAGES[req.params.page],
+    res.render(`${req.page}`, {
+      page: COMPONENT_FORM_PAGES[req.page],
       submitUrl: req.originalUrl,
       sessionFlash: res.locals.sessionFlash,
       formData: req?.formData,

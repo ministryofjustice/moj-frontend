@@ -440,6 +440,7 @@ const validatePageParams = (req, res, next) => {
   }
 
   if (valid) {
+    req.page = req.params.page
     next()
   } else {
     const error = new ApplicationError('Page not found', 404)
