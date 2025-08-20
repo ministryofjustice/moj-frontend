@@ -71,7 +71,7 @@ jobs:
         run: npm run lint:types
 
       - name: JavaScript unit tests
-        run: npm run test:js
+        run: npm run test:components
 
       - name: Sass compilation
         run: npm run test:scss
