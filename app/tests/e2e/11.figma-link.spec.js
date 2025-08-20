@@ -42,10 +42,14 @@ test.describe('validations', async () => {
     await testPage.linkInput.fill('not a url')
     await testPage.clickContinue()
 
-    await testPage.expectErrorSummaryWithMessages(['Add a real URL'])
+    await testPage.expectErrorSummaryWithMessages([
+      'Add a link to a Figma design file'
+    ])
 
     await expect(testPage.errorMessages).toHaveCount(1)
-    await expect(testPage.errorMessages).toContainText(['Add a real URL'])
+    await expect(testPage.errorMessages).toContainText([
+      'Add a link to a Figma design file'
+    ])
   })
 
   test.describe('character count', async () => {

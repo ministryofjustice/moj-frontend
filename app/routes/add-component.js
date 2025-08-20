@@ -158,6 +158,7 @@ if (ENV === 'development') {
 
 // Start
 router.get('/start', (req, res) => {
+  console.log(process.env.NOTIFY_VERIFICATION_TEMPLATE)
   delete req.session.checkYourAnswers
   req.session.started = true
   res.render('start', {
@@ -262,6 +263,8 @@ router.post(
   // send email
   async (req, res) => {
     if (req.emailDomainAllowed) {
+      console.log(process.env.SKIP_VERIFICATION)
+      console.log(process.env.DEV_VERIFIED_EMAIL)
       if (
         process.env.SKIP_VERIFICATION === 'true' &&
         process.env.DEV_VERIFIED_EMAIL

@@ -3,18 +3,21 @@ import path from 'path'
 import { defineConfig, devices } from '@playwright/test'
 import dotenv from 'dotenv'
 dotenv.config({
-  path: path.resolve(__dirname, `./.env.${process.env.ENV || 'test'}`)
+  path: path.resolve(__dirname, `app/.env.${process.env.ENV || 'test'}`),
+  debug: true
 })
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './e2e',
+  testDir: './app/tests/e2e',
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
+  /* Stop on CI after first failure */
+  /*   maxFailures: process.env.CI ? 1 : 0, */
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */

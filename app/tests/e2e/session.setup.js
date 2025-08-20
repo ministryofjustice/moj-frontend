@@ -2,7 +2,10 @@ import path from 'path'
 
 import { test as setup, expect } from '@playwright/test'
 
-const sessionFile = path.join(__dirname, '../playwright/.state/session.json')
+const sessionFile = path.join(
+  __dirname,
+  '../../../playwright/.state/session.json'
+)
 
 setup('session', async ({ page }) => {
   // Perform authentication steps. Replace these actions with your own.

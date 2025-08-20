@@ -21,6 +21,7 @@ const sendEmail = async (
   retries = NOTIFY_EMAIL_MAX_RETRIES,
   backoff = NOTIFY_EMAIL_RETRY_MS
 ) => {
+  if (process.env.ENV === 'test') return false
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       console.log(
