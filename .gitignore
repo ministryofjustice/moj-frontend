@@ -37,4 +37,5 @@ tests/e2e/screenshots/*
 /blob-report/
 /playwright/.cache/
 
-playwright/.state
+app/tests/playwright/.state/session.json
+playwright/.state/session.json

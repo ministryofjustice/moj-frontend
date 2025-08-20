@@ -12,7 +12,7 @@ const schema = addAnotherSchema.append({
     .messages({
       'any.required': 'Enter the link to the Figma design file',
       'string.empty': 'Enter the link to the Figma design file',
-      'string.uri': 'Add a real URL',
+      'string.uri': 'Add a link to a Figma design file',
       'string.pattern.base': 'Add a link to a Figma design file'
     }),
   figmaLinkAdditionalInformation: Joi.string()

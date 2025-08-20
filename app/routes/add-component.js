@@ -283,7 +283,7 @@ router.post(
         const email = req?.session?.['/email']?.emailAddress
         if (token && email) {
           try {
-            // await sendVerificationEmail(email, token)
+            await sendVerificationEmail(email, token)
           } catch (error) {
             console.error(`Error sending verification email: ${error}`)
           }

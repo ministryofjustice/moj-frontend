@@ -88,6 +88,8 @@ COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY src src
 COPY app app
+COPY filters filters
+COPY playwright playwright
 COPY --from=staging-build /app/public public
 ENV ENV=staging
 # run express app as a non root user
@@ -101,6 +103,8 @@ COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY src src
 COPY app app
+COPY filters filters
+COPY playwright playwright
 COPY --from=preview-build /app/public public
 ENV ENV=staging
 # run express app as a non root user
@@ -114,6 +118,8 @@ COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY src src
 COPY app app
+COPY filters filters
+COPY playwright playwright
 COPY --from=production-build /app/public public
 ENV ENV=production
 # run express app as a non root user
