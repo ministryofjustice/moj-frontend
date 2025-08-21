@@ -26,7 +26,7 @@ eleventyNavigation:
 This enables Figma prototypes to benefit from centrally maintained updates.
 
 <div class="govuk-inset-text">
-  Do not use the <a href="https://www.figma.com/community/file/946837271092540314">GOV.UK Design System Figma community file</a>. It's not updated or maintained by anyone.
+  Do not download and use the <a href="https://www.figma.com/community/file/946837271092540314">GOV.UK Design System Figma community file</a>. If you work for MoJ you should use the libraries that are automatically added.
 </div>
 
 ### How to check that the Figma Kits are active in your file
