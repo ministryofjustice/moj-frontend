@@ -1,0 +1,34 @@
+---
+layout: layouts/example.njk
+title: Notification badge (example)
+figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type=design&node-id=61-3019&mode=design
+---
+
+{%- from "moj/components/notification-badge/macro.njk" import mojNotificationBadge -%}
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+
+    <nav class="moj-side-navigation" aria-label="Side navigation">
+      <ul class="moj-side-navigation__list">
+        <li class="moj-side-navigation__item moj-side-navigation__item--active">
+          <a href="#1" aria-current="location">Nav item 1</a>
+        </li>
+
+        <li class="moj-side-navigation__item">
+          <a href="#2">
+            Nav item 2
+            <span id="notifications" class="moj-notification-badge">2</span>
+          </a>
+        </li>
+
+        <li class="moj-side-navigation__item">
+          <a href="#3">Nav item 3</a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+
+</div>
