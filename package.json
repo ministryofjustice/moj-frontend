@@ -40,7 +40,7 @@
     "lint:types": "tsc --build tsconfig.json --incremental --pretty",
     "watch:11ty": "eleventy --input=./docs --output=public --watch",
     "watch:package": "gulp watch --color",
-    "watch:app": "nodemon --delay 1000ms app.js",
+    "watch:app": "nodemon --delay 1000ms app/app.js",
     "dev:docker:preview:build": "docker-compose -f docker-compose.preview.yml build --no-cache",
     "dev:docker:preview:up": "docker-compose -f docker-compose.preview.yml up --build",
     "dev:docker:preview:down": "docker-compose -f docker-compose.preview.yml down"
