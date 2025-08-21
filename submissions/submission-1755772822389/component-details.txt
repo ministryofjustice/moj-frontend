@@ -1,0 +1,5 @@
+{
+  "componentName": "PDS footer",
+  "componentOverview": "The PDS footer is part of a library of components (https://dsdmoj.atlassian.net/wiki/spaces/PDS1/pages/5735448595/Components) designed to create a consistent user experience across probation services.\r\n\r\nIt’s based on the GOV.UK footer component, with changes to meet the needs of internal-facing probation services.",
+  "howIsTheComponentUsed": "This footer should be used in all internal-facing probation services accessed via the Probation Digital Services (https://dsdmoj.atlassian.net/wiki/spaces/PDS1/pages/5735481352/The+Probation+Digital+Services+PDS+platform) platform."
+}
