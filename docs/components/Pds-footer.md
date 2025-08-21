@@ -18,26 +18,29 @@ contributorTeam: MoJ Design System / Probation Connected Services
 </div>
 
 ## Overview
-Overview
-The PDS footer is part of a library of components (https://dsdmoj.atlassian.net/wiki/spaces/PDS1/pages/5735448595/Components) designed to create a consistent user experience across probation services.
+The PDS footer is part of a [library of components](https://dsdmoj.atlassian.net/wiki/spaces/PDS1/pages/5735448595/Components) designed to create a consistent user experience across probation services.
 
 It’s based on the GOV.UK footer component, with changes to meet the needs of internal-facing probation services.
 
 ### How the component is currently used
 
-When to use
+**When to use**
+
 This footer should be used in all internal-facing probation services accessed via the Probation Digital Services platform. 
 
-When not to use
-Do not use it outside of services on the Probation Digital Services (https://dsdmoj.atlassian.net/wiki/spaces/PDS1/pages/5735481352/The+Probation+Digital+Services+PDS+platform) platform. 
+**When not to use**
 
-How to use
+Do not use it outside of services on the [Probation Digital Services](https://dsdmoj.atlassian.net/wiki/spaces/PDS1/pages/5735481352/The+Probation+Digital+Services+PDS+platform) platform. 
 
-If you have an accessibility statement published
+**How to use**
+
+**If you have an accessibility statement published**
+
 Email a copy of your statement to the Connected Services team: connected-service@justice.gov.uk
 
-Add the footer component package to your project
-The Probation Digital Services GitHub (https://github.com/ministryofjustice/hmpps-probation-frontend-component-api) contains a readme file with instructions on how to implement the component.
+**Add the footer component package to your project**
+
+The Probation [Digital Services GitHub](https://github.com/ministryofjustice/hmpps-probation-frontend-component-api) contains a readme file with instructions on how to implement the component.
 
 ### Contribute to this component
 You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
@@ -265,6 +268,7 @@ $govuk-page-width: 1170px;
 ```
 
 </div>
+
 
 
 
