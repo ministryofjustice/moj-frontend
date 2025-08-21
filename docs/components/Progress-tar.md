@@ -1,5 +1,5 @@
 ---
-title: Progress tar
+title: Progress tracker
 tabs: true
 status: Experimental
 statusDate: August 2025
@@ -22,7 +22,9 @@ A visual representation of steps in a process that have and/or must be completed
 
 ### How the component is currently used
 
-When a user is subject to steps in a process outside of their responsibility or control, a progress tracker/checklist supports or replaces a task list by giving a different overview on progress and outcomes. This differs from a timeline in that it does not log events and grow. It is a pre-fixed set of finite steps. Steps may/may not be completed in any order depending on the process, but the order of the tracker stays fixed. On the Make and register LPA product we support the tracker with banners above detailing connected events and directions to dated comms from Notify.
+When a user is subject to steps in a process outside of their responsibility or control, a progress tracker supports or replaces a task list by giving a different overview on progress and outcomes. This differs from a timeline in that it does not log events and grow.
+
+It's a pre-fixed set of finite steps. Steps may/may not be completed in any order depending on the process, but the order of the tracker stays fixed. On the ‘Make and register an LPA‘ product we support the tracker with banners above detailing connected events and directions to dated comms from Notify.
 
 ### Contribute to this component
 You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
