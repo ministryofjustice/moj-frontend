@@ -1,7 +1,9 @@
 @use "../moj-frontend" as *;
+@use "../settings/app";
 
 .govuk-footer--docs {
   .govuk-width-container {
+    max-width: calc(app.$sidebar-width + app.$content-width - govuk-spacing(9));
     margin-right: govuk-spacing(4);
     margin-left: govuk-spacing(4);
   }

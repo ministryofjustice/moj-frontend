@@ -16,7 +16,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 24 June 2025
+Last updated: 12 August 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -177,13 +177,38 @@ This is being used on the DPS prisoner profile alerts and case notes pages in re
 
 In an example of how to enter or select a date in the [date input component in the GOV.UK Design System](https://design-system.service.gov.uk/components/date-input/) or the [date picker](https://design-patterns.service.justice.gov.uk/components/date-picker/), follow the style in the respective guidance. For example, 14 5 2024 for date input, 14/5/2024 for a date picker. It's helpful if your example date uses the 13th day of the month or later (14/5/2024 makes it clear that 14 could not be the month).
 
+### domestic abuse
+
+Domestic abuse is emotional, physical, financial or sexual abuse where there is a personal connection. It includes controlling behaviour, threats, harassment and stalking, as well as violence.
+
+It can be by a partner, ex-partner or a family member. Someone can also experience domestic abuse if they witness it, for example a child who witnesses their parent being abused.
+
+Anyone can experience domestic abuse.  
+
+The term is widely used and recognised in the UK.  
+
+If you're developing a service, its likely that a victim-survivor of domestic abuse will use it. You need to research and understand the context of your service in order to design in a [trauma-informed](https://contentdesign.london/blog/using-trauma-informed-principles-with-content-design) way.
+
+Domestic abuse covers a lot of things, including domestic violence. When you first use it in content, you need to explain:
+
+- what domestic abuse covers – domestic abuse is still commonly understood only as violence
+-	that it can be by an ex-partner or family member – research shows that people commonly think that only abuse by a current partner counts
+
+This will help people (including practitioners) to understand it, and to work out if something that happened was domestic abuse.  
+
+It may be important to include FGM (female genital mutilation), forced marriage or so-called honour abuse to your definition of domestic abuse, depending on the context and audience.  
+
+If you want to avoid the person identifying that they are experiencing domestic abuse, you could ask: ‘Are you contacting us because of domestic abuse?’  
+
+You can read [guidance on the term victim-survivor](#victim-survivor-%28of-domestic-abuse%29).
+
 ### DPS, Digital Prison Services
 
-Not 'the Digital Prison Service'.
+Not ‘the Digital Prison Service‘.
 
-DPS may be referred to as 'New NOMIS' in prisons, but we should always use 'DPS' or 'Digital Prison Services'.
+DPS may be referred to as ‘New NOMIS‘ in prisons, but we should always use ‘DPS‘ or ‘Digital Prison Services‘.
 
-The acronym 'DPS' is well understood and can be used without the full name.
+The initialism ‘DPS‘ is well understood and can be used without the full name.
 
 {% endaccordionSection %}
 {% accordionSection "E" %}
@@ -208,6 +233,12 @@ This refers to the record of prisoners' movements and locations in an establishm
 ### forfeiture of privileges
 
 Always use ‘loss of privileges’ when referring to the outcome of an adjudication hearing.
+
+### FTR48
+
+FTR48 is the policy that states people with sentences of up to 48 months will get a 28-day recall, provided they meet certain eligibility criteria. The sentence length can be from one sentence or consecutive sentences. The policy is an interim measure and will be replaced with new legislation in 2026.
+
+The initialism FTR, which stands for fixed term recall, is generally well understood in HMPPS and widely used in systems like NOMIS. Use FTR48 when referring to the specific policy.
 
 {% endaccordionSection %}
 {% accordionSection "G" %}
@@ -278,6 +309,15 @@ Staff in prisons may still use ‘IEP’ when referring to someone’s incentive
 ### key worker
 
 This is 2 separate words. Not keyworker.
+
+{% endaccordionSection %}
+{% accordionSection "L" %}
+
+### local admin unit
+
+[Probation delivery units](#probation-delivery-unit-%28pdu%29) are divided into local admin units. These used to be called local delivery units and you may hear the initialism LDU.
+
+The initialism LAU is probably not well-known enough yet to be used without explanation. Write local admin unit out in full the first time you use it. Use sentence case.
 
 {% endaccordionSection %}
 {% accordionSection "N" %}
@@ -486,6 +526,12 @@ SDS40 stands for Standard determinate sentence with a 40% release date. SDS40 is
 {% endaccordionSection %}
 {% accordionSection "T" %}
 
+### Taser (HMPPS only)
+
+Always capitalise, as Taser is a brand name. ‘Taser’ is more widely used across HMPPS than the generic term ‘stun gun’.
+
+Avoid using ‘Taser’ as a verb. Taser operatives ‘draw a Taser’ and follow a series of warnings before potentially ‘deploying’ the Taser.
+
 ### temporary absence
 
 A temporary absence is when a person is allowed to leave prison for a short period. This could be to help them prepare for release by attending a work placement or for an exceptional circumstance such as receiving hospital treatment.
@@ -507,7 +553,40 @@ If your service is on DPS but is used by both prison and probation staff, it sho
 Use the 12-hour clock for services in the probation space. For example, 11am.
 
 {% endaccordionSection %}
+{% accordionSection "U" %}
+
+### unlock
+
+The process by which people in prison are let out of their cells and off the wing.
+
+This can be for:
+- activities – like work or education
+- appointments – like a prison visit, or to go to a doctor
+
+There can be up to 3 ‘unlocks’ a day – morning, afternoon and evening.
+
+### unlock list
+
+A list of people in an area of a prison who are due to go to an activity or an appointment.
+
+It contains people’s names, prison numbers, what they are due to go to, and when they have to be there.
+
+For each unlock, wing officers use the list to let the right people out of their cells and off the wing.
+
+It is not used in Category D prisons.
+
+Sometimes known as an ‘unlock roll’, ‘leaving list’, or ‘free flow list’.
+
+{% endaccordionSection %}
 {% accordionSection "V" %}
+
+### victim-survivor (of domestic abuse)
+
+The term victim-survivor is the most common term used in the advocacy sector to describe someone who has experienced domestic abuse.
+
+However, if you’re developing a product or service that victim-survivors use, it may be more appropriate to reference their experience instead of using this term.
+
+For example, you could use the question ‘Have you experienced domestic abuse?’ rather than ‘Are you a victim-survivor of domestic abuse?’ See [guidance on using the term domestic abuse](#domestic-abuse).
 
 ### Violent and Sex Offender Register (ViSOR)
 
