@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "other",
+  "componentCodeLanguageOther": "SCCS",
+  "componentCode": "//adapted from https://github.com/UKHomeOffice/design-system/discussions/488\r\n\r\n.app-loading-spinner {\r\n  &__spinner{\r\n    border: 12px solid #DEE0E2;\r\n    border-radius: 50%;\r\n    border-top-color: #005EA5;\r\n    width: 80px;\r\n    height: 80px;\r\n    -webkit-animation: spin 2s linear infinite;\r\n    animation: spin 2s linear infinite;\r\n    margin-bottom: 1.5em;\r\n  }\r\n}\r\n\r\n@-webkit-keyframes spin {\r\n  0% { -webkit-transform: rotate(0deg); }\r\n  100% { -webkit-transform: rotate(360deg); }\r\n}\r\n\r\n@keyframes spin {\r\n  0% { transform: rotate(0deg); }\r\n  100% { transform: rotate(360deg); }\r\n}",
+  "componentCodeUsage": ""
+}
