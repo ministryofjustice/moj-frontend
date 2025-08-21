@@ -27,6 +27,7 @@ jobs:
           kubectl config use-context ${KUBE_CLUSTER}
           kubectl delete deployment moj-frontend-pr-${{ github.event.pull_request.number }} -n ${KUBE_NAMESPACE}
           kubectl delete service moj-frontend-service-pr-${{ github.event.pull_request.number }} -n ${KUBE_NAMESPACE}
+          kubectl delete service express-app-pr-${{ github.event.pull_request.number }} -n ${KUBE_NAMESPACE}
           kubectl delete ingress moj-frontend-ingress-pr-${{ github.event.pull_request.number }} -n ${KUBE_NAMESPACE}
         env:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
