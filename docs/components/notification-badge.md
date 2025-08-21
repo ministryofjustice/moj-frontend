@@ -1,37 +1,81 @@
 ---
 title: Notification badge
-status: To be reviewed
-statusDate: June 2021
+tabs: true
+status: Official
+statusDate: September 2025
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/706
-excerpt: "The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are."
+excerpt: "xxx."
+lede: "xxx."
 ---
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
+{% tabs "paginate" %}
+{% tab "Overview" %}
 
 {% example template="/examples/notification-badge", height=125 %}
 
-## When to use
+## Overview 
 
-The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are.
+xxx
+### When to use
 
-Only use it if the number changes when the user performs an action.
+xxx
 
-## When not to use
+### When not to use
 
-Do not use the notification badge when:
+xxx
 
-- the number of things is 0
-- there is no action
+### Things to consider
 
-Unless there is a strong user need, only use it as a part of the navigation.
+xxx
 
-## How to use
+### Similar or linked components
 
-Display the notification badge to the right-hand side of the information it refers to.
+xxx
 
-If the number is more than 99, display ‘99+’.
+## Accessibility issues
 
-## Research
+xxx
 
-Research shows that notification badges are common across online services, smartphones and apps. Usability testing showed:
+{% endtab %}
 
-- users understand what it is for
-- it does not distract users from their task
+{% tab "How to use" %}
+
+## How to use 
+
+
+
+### Hint text
+
+xxx
+
+### Excluding dates
+
+xxx
+
+### Error messages
+
+xxx
+
+
+{% endtab %}
+
+{% tab "Examples" %}
+
+## Examples
+
+
+### Example 1
+
+{% example "/examples/notification-badge-primary-nav", 590 %}
+
+### Example 2
+
+{% example "/examples/notification-badge-side-nav", 590 %}
+
+{% endtab %}
+
+{% tab "Get help and contribute" %}
+{% include "layouts/partials/get-help-and-contribute.njk" %}
+{% endtab %}
+{% endtabs %}
