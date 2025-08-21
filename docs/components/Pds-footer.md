@@ -18,13 +18,13 @@ contributorTeam: MoJ Design System / Probation Connected Services
 </div>
 
 ## Overview
-The PDS footer is part of a library of components (https://dsdmoj.atlassian.net/wiki/spaces/PDS1/pages/5735448595/Components) designed to create a consistent user experience across probation services.
+The PDS footer is part of a [library of components](https://dsdmoj.atlassian.net/wiki/spaces/PDS1/pages/5735448595/Components) designed to create a consistent user experience across probation services.
 
 It’s based on the GOV.UK footer component, with changes to meet the needs of internal-facing probation services.
 
 ### How the component is currently used
 
-This footer should be used in all internal-facing probation services accessed via the Probation Digital Services (https://dsdmoj.atlassian.net/wiki/spaces/PDS1/pages/5735481352/The+Probation+Digital+Services+PDS+platform) platform.
+This footer should be used in all internal-facing probation services accessed via the [Probation Digital Services](https://dsdmoj.atlassian.net/wiki/spaces/PDS1/pages/5735481352/The+Probation+Digital+Services+PDS+platform) platform.
 
 ### Contribute to this component
 You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
@@ -102,6 +102,7 @@ Code has been added for this component. There may be other code blocks in the [P
 ```
 
 </div>
+
 
 
 
