@@ -2,10 +2,13 @@
 name: Experimental Building Block
 about: Checklist when reviewing Experimental building blocks.
 ---
+## Submission details
+
+(copy paste the submission deatils from the email we recieve when a component has been submitted)
 
 ## Checklist
 
-### Overview page
+### Overall Experimental building block documentation
 
 - [ ] Is the content clear, concise and appropriate?
 - [ ] Are empty states present and working?
@@ -22,14 +25,14 @@ about: Checklist when reviewing Experimental building blocks.
 
 - [ ] Does the code work?
 - [ ] Does the code match the specified languages?
-- [ ] Does the imagine explain & show the building block?
+- [ ] Does the code visually match the building block image?
 - [ ] Does it have 3rd party dependencies?
 - [ ] Does it have external requests?
 
 
 ### Accessibility tab (if applicable)
 
-- [ ] Are the accessibility issues relevant to the building block submitted?
+- [ ] Are the accessibility issues relevant to the building block?
       
 ### Designs tab (if applicable)
 
