@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "nunjucks",
+  "componentCodeLanguageOther": "",
+  "componentCode": "{% block footer %}\r\n  {% if feComponents.footer %}\r\n    {{ feComponents.footer | safe }}\r\n  {% else %}\r\n    {% include \"./footer.njk\" %}\r\n  {% endif %}\r\n{% endblock %}",
+  "componentCodeUsage": ""
+}
