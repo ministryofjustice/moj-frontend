@@ -16,7 +16,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 12 August 2025
+Last updated: xx August 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -28,21 +28,21 @@ Last updated: 12 August 2025
 
 ### acronyms and initialisms
 
-Acronyms and initialisms in services do not need to be spelt out if they are well understood by your audience. This also helps if it's difficult to spell them out, such as in a table.
+Acronyms and initialisms in services do not need to be spelt out if they are well understood by your audience. This also helps if it’s difficult to spell them out, such as in a table.
 
-If users are familiar with the acronym or initialism but you would still like to help them, you can spell it out afterwards, for example 'PDU (probation delivery unit)'.
+If users are familiar with the acronym or initialism but you would still like to help them, you can spell it out afterwards, for example ’PDU (probation delivery unit)’.
 
 For guidance or long-form content, spell them out on first mention (following the [abbreviations and acronyms guidance on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#abbreviations-and-acronyms)).
 
-There is little consensus in the department about how to style some acronyms and initialisms, especially if one letter refers to a preposition.
-
-However, you should consider writing acronyms and initialisms entirely in upper case. For example, ROSH instead of RoSH and MOJ instead of MoJ. This is because:
+You should write acronyms and initialisms entirely in upper case, even if some words are prepositions like 'of'. For example, ROSH instead of RoSH and MOJ instead of MoJ. This is because:
 
 - studies, such as in the [Memory and Cognition journal article on reader ability](https://link.springer.com/article/10.3758/BF03198246), suggest that abbreviations written in a mix of upper and lower case are harder to read, especially for less skilled readers
-- it follows the convention established by the abbreviation of [ROTL for Release on Temporary Licence](#rotl-%28release-on-temporary-licence%29) and so helps to improve consistency
+- it follows the convention established by the abbreviation of [ROTL for release on temporary licence](/#rotl-%28release-on-temporary-licence%29) and so helps to improve consistency
 - guidance from the Guardian and GOV.UK recommends writing similar abbreviations such as MOT and FOI entirely in upper case
 
 You should use a mix of upper and lower-case letters when referring to the names of systems such OASys and NDelius.
+
+When spelling acronyms out in full, you should use sentence case unless there is a good reason to capitalise it. For example, ROSH (risk of serious harm). This is because it is easier to read and consistent with the [Service Manual’s guidance on writing for user interfaces](https://www.gov.uk/service-manual/design/writing-for-user-interfaces).
 
 ### alerts (DPS only)
 
@@ -502,17 +502,17 @@ Read the [full list of release dates (MoJ staff only)](https://justiceuk.sharepo
 
 Someone is on remand if they are placed in custody whilst awaiting trial. Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
 
-### ROSH (Risk of Serious Harm)
+### ROSH (risk of serious harm)
 
 One of the risk categories used in risk and need assessments in OASys.
 
-Use upper case.
+Use upper case for the acronym (ROSH, not RoSH). Use sentence case when spelling out the full meaning (risk of serious harm, not Risk of Serious Harm).
 
 Users may well understand the acronym on its own. You could also consider using the acronym first and then spelling it out in brackets.
 
-### ROTL (Release on Temporary Licence)
+### ROTL (release on temporary licence)
 
-Use upper case.
+Use upper case for the acronym (ROTL, not RoTL). Use sentence case when spelling out the full meaning (release on temporary licence, not Release on Temporary Licence).
 
 Users may well understand the acronym on its own. If you have evidence of this, use the acronym first and then spell out in brackets.
 
