@@ -96,8 +96,11 @@ router.get(
   }
 )
 
-if (process.env.DEV_DUMMY_DATA === 'true') {
-  // Set dummy data for add component via session
+/**
+ * If we are in dev and the env var is set load data into the sesion to pre-fill the form
+ * to speed up developemnt
+ */
+if (ENV === 'development' && process.env.DEV_DUMMY_DATA === 'true') {
   router.get('/component-details', (req, res, next) => {
     if (!req.session) {
       return next(new Error('Session not available'))
@@ -113,6 +116,11 @@ if (process.env.DEV_DUMMY_DATA === 'true') {
   })
 }
 
+/**
+ * This adds a route for development to process and build the generated component markdown
+ * locally and add it directly into the project for immediate preview - allowing
+ * faster review without needing to generate a PR
+ */
 if (ENV === 'development') {
   router.get(
     '/generate-markdown',
@@ -158,7 +166,6 @@ if (ENV === 'development') {
 
 // Start
 router.get('/start', (req, res) => {
-  console.log(process.env.NOTIFY_VERIFICATION_TEMPLATE)
   delete req.session.checkYourAnswers
   req.session.started = true
   res.render('start', {
@@ -176,22 +183,29 @@ router.get('/confirmation', (req, res) => {
   })
 })
 
+/**
+ * Email verifiaction
+ * Compare the token from the url to the token in session in order to verify the
+ * user has clicked the link in their email
+ */
 router.get('/email/verify/:token', (req, res) => {
+  // Allow for the e2e tests to bypass this process as the token can't be kept
+  // in session, and there is no way to click a link in the email
   if (ENV === 'test' && process.env.VERIFICATION_TOKEN && req?.session) {
     req.session.emailToken = process.env.VERIFICATION_TOKEN
   }
 
   if (!req?.session?.emailToken) {
-    // session expired / no session
+    // Session has expired or there is no session
     res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email-session-expired`)
   } else {
     if (req.params.token === req.session.emailToken) {
-      // verified
+      // Successfully verified
       req.session.verified = true
       req.session.sessionFlash = MESSAGES.emailVerificationSuccess
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/component-details`)
     } else {
-      // token invalid
+      // Token doesn't match - invalid
       res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email-invalid-token`)
     }
   }
@@ -263,9 +277,12 @@ router.post(
   // send email
   async (req, res) => {
     if (req.emailDomainAllowed) {
+      // If configured, skip the email and auto-verify
+      console.log(ENV)
       console.log(process.env.SKIP_VERIFICATION)
       console.log(process.env.DEV_VERIFIED_EMAIL)
       if (
+        (ENV === 'development' || ENV === 'test') &&
         process.env.SKIP_VERIFICATION === 'true' &&
         process.env.DEV_VERIFIED_EMAIL
       ) {
@@ -273,10 +290,8 @@ router.post(
         req.session.emailDomainAllowed = true
         req.session.verified = true
 
-        console.log('email automatically verified using ENV')
         res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/component-details`)
       } else {
-        console.log('email requires verification')
         res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email/check`)
 
         const token = req?.session?.emailToken
@@ -316,7 +331,7 @@ router.get('/email/resend', (req, res) => {
   })
 })
 
-router.post('/email/resend', verifyCsrf, async (req, res) => {
+router.post('/email/resend', verifyCsrf, async (req, res, next) => {
   res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email/check`)
   const token = req?.session?.emailToken
   const email = req?.session?.['/email']?.emailAddress
@@ -325,6 +340,7 @@ router.post('/email/resend', verifyCsrf, async (req, res) => {
       await sendVerificationEmail(email, token)
     } catch (error) {
       console.error(`Error sending verification email: ${error}`)
+      next(error)
     }
   }
 })
@@ -374,7 +390,7 @@ router.get(
   validatePageParams,
   removeFromSession,
   (req, res) => {
-    let redirectUrl = `${ADD_NEW_COMPONENT_ROUTE}/${req.params.page}`
+    let redirectUrl = `${ADD_NEW_COMPONENT_ROUTE}/${req.page}`
     if (req.params.subpage) {
       const subpage = parseInt(req.params.subpage)
       if (subpage > 1) {

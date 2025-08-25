@@ -35,7 +35,6 @@ const getNextPage = (url, session, addingAnother, amendingAnswers) => {
   const pages = getCurrentFormPages(session)
   const [currentPageUrl, currentSubpageIndex] = getUrlParts(url)
   const currentPageIndex = getCurrentPageIndex(currentPageUrl, pages)
-
   if (addingAnother) {
     return getNextSubpageUrl(currentPageUrl, session)
   }

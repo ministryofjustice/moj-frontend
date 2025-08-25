@@ -17,18 +17,19 @@ const extractBody = require('../helpers/extract-body')
 const getCurrentFormPages = require('../helpers/form-pages')
 const { getNextPage, getPreviousPage } = require('../helpers/page-navigation')
 const redis = require('../helpers/redis-client')
+const { camelToKebab } = require('../helpers/text-helper')
+const { getHashedUrl } = require('../helpers/url-helper')
+const { getSchema } = require('../schema/schemas')
 
-const camelToKebab = (str) =>
-  str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
-
-// Function to hash req.url
-const getHashedUrl = (url) => {
-  return crypto.createHash('sha256').update(url).digest('hex')
-}
-
+/**
+ * Extracts the template (view) to render from the request params
+ * If the page is present in the form pages return the 'error' template
+ *
+ * @returns {string}
+ */
 const getTemplate = (req) => {
   let template = sanitizeFilename(
-    `${req.params.page || req.path.replace('/', '')}`
+    `${req.params?.page || req.path.replace('/', '')}`
   )
   if (!Object.keys(formPages).includes(template)) {
     template = 'error'
@@ -36,14 +37,17 @@ const getTemplate = (req) => {
   return template
 }
 
+/**
+ * Retrieves the page data from the form config
+ */
 const getPageData = (req) => {
-  let pageData = sanitizeFilename(
-    `${req.params.page || req.path.replace('/', '')}`
+  const page = sanitizeFilename(
+    `${req.params?.page || req.path.replace('/', '')}`
   )
-  if (!Object.keys(formPages).includes(pageData)) {
-    pageData = {}
+  if (!Object.keys(formPages).includes(page)) {
+    return {}
   }
-  return formPages[pageData]
+  return formPages[page]
 }
 
 const checkEmailDomain = (req, res, next) => {
@@ -94,7 +98,7 @@ const setSuccessMessage = (req, res, next) => {
   const addingAnother = req?.body?.addAnother !== undefined
   const page = req.path.split('/').at(1)
   const number = req.path.split('/').at(2) || 1
-
+console.log({page})
   if (addingAnother && page === 'component-code-details') {
     req.session.sessionFlash = MESSAGES.componentCodeAdded(number)
   }
@@ -154,7 +158,7 @@ const errorTemplateVariables = (
 }
 
 const validateFormDataFileUpload = (err, req, res, next) => {
-  if (err.code === 'LIMIT_FILE_SIZE') {
+  if (err?.code === 'LIMIT_FILE_SIZE') {
     const errorMessage = 'The selected file must be smaller than 10MB'
     const formErrors = {}
     formErrors[err.field] = { text: errorMessage }
@@ -175,8 +179,8 @@ const validateFormDataFileUpload = (err, req, res, next) => {
 const xssComponentCode = (req, res, next) => {
   if (req.body.componentCodeLanguage) {
     if (
-      req.body.componentCodeLanguage !== 'javascript' &&
-      req.body.componentCodeLanguage !== 'other'
+      req.body.componentCodeLanguage === 'html' ||
+      req.body.componentCodeLanguage === 'nunjucks'
     ) {
       req.body.componentCode = sanitize(
         req.body.componentCode,
@@ -189,7 +193,13 @@ const xssComponentCode = (req, res, next) => {
 
 const validateFormData = (req, res, next) => {
   const schemaName = req.path.split('/').at(1)
-  const schema = require(`../schema/${schemaName}.schema`)
+  const schema = getSchema(schemaName)
+
+  if(!schema) {
+    const err = new ApplicationError(`Could not find schema: ${schemaName}`, 500)
+    return next(err)
+  }
+
   const body = extractBody(req?.url, { ...req.body })
   delete body._csrf
   if (req?.file?.fieldname && req?.file?.originalname) {
@@ -269,13 +279,13 @@ const saveSession = (req, res, next) => {
 
 const getFormDataFromSession = (req, res, next) => {
   req.formData = null
-  req.formData = req.session[req.url] || {}
+  req.formData = req.session?.[req.url] || {}
   next()
 }
 
 const getFormSummaryListForRemove = (req, res, next) => {
   const url = req.url.replace('/remove', '')
-  const formData = req.session[url]
+  const formData = req.session?.[url]
   const sectionKey = url.slice(1).split('/').at(0)
   delete req.removeSummaryRows
   if (formData) {
@@ -436,9 +446,9 @@ const validatePageParams = (req, res, next) => {
 
   if (req.params.subpage) {
     // if subpage is present it must always be a number
-    valid = /^\d+$/.test(req.params.subpage)
+    valid = valid && /^\d+$/.test(req.params.subpage)
   }
-
+console.log({valid})
   if (valid) {
     req.page = req.params.page
     next()
@@ -478,5 +488,7 @@ module.exports = {
   validatePageParams,
   setCsrfToken,
   xssComponentCode,
-  setSuccessMessage
+  setSuccessMessage,
+  getPageData,
+  getTemplate
 }
