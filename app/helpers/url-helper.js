@@ -12,4 +12,3 @@ const getHashedUrl = (url) => {
 module.exports = {
   getHashedUrl
 }
-

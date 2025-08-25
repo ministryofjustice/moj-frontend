@@ -1,13 +1,12 @@
-const ApplicationError = require('../helpers/application-error')
-
-// Mocked modules
 const { sanitize } = require('express-xss-sanitizer')
-const redis = require('../helpers/redis-client')
-const { getHashedUrl } = require('../helpers/url-helper')
-const { getNextPage, getPreviousPage } = require('../helpers/page-navigation')
+
+const ApplicationError = require('../helpers/application-error')
+// Mocked modules
 const { getAnswersForSection } = require('../helpers/check-your-answers')
 const getCurrentFormPages = require('../helpers/form-pages')
-const { MAX_ADD_ANOTHER: maxAddAnother } = require('../config')
+const { getNextPage, getPreviousPage } = require('../helpers/page-navigation')
+const redis = require('../helpers/redis-client')
+const { getHashedUrl } = require('../helpers/url-helper')
 const { getSchema } = require('../schema/schemas')
 
 // Functions under test
@@ -17,7 +16,6 @@ const {
   validateFormData,
   saveSession,
   getFormDataFromSession,
-  getRawSessionText,
   canAddAnother,
   getBackLink,
   getFormSummaryListForRemove,
@@ -63,7 +61,6 @@ jest.mock('../helpers/form-pages', () => jest.fn())
 jest.mock('../schema/schemas', () => ({
   getSchema: jest.fn()
 }))
-
 
 describe('setCurrentFormPages', () => {
   it('sets the formPages key on the request', () => {

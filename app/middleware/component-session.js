@@ -98,7 +98,7 @@ const setSuccessMessage = (req, res, next) => {
   const addingAnother = req?.body?.addAnother !== undefined
   const page = req.path.split('/').at(1)
   const number = req.path.split('/').at(2) || 1
-console.log({page})
+  console.log({ page })
   if (addingAnother && page === 'component-code-details') {
     req.session.sessionFlash = MESSAGES.componentCodeAdded(number)
   }
@@ -195,8 +195,11 @@ const validateFormData = (req, res, next) => {
   const schemaName = req.path.split('/').at(1)
   const schema = getSchema(schemaName)
 
-  if(!schema) {
-    const err = new ApplicationError(`Could not find schema: ${schemaName}`, 500)
+  if (!schema) {
+    const err = new ApplicationError(
+      `Could not find schema: ${schemaName}`,
+      500
+    )
     return next(err)
   }
 
@@ -448,7 +451,7 @@ const validatePageParams = (req, res, next) => {
     // if subpage is present it must always be a number
     valid = valid && /^\d+$/.test(req.params.subpage)
   }
-console.log({valid})
+  console.log({ valid })
   if (valid) {
     req.page = req.params.page
     next()
