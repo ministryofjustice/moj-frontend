@@ -1,18 +1,25 @@
 const sanitizeHtml = require('sanitize-html')
-const toCamelCaseWithRows = (str) => {
-  return `${str
-    .replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
-    .replace(/^\w/, (c) => c.toLowerCase())}Rows`
+
+/**
+ * Format field names into readable labels
+ *
+ * @param {string} str - the string to convert
+ */
+const humanReadableLabel = (str) => {
+  return ucFirst(
+    str
+      .replace(/([a-z])([A-Z])/g, '$1 $2')
+      .replace(/-/g, ' ')
+      .toLowerCase()
+      .trim()
+  )
 }
 
-// Format field names into readable labels
-const humanReadableLabel = (field) => {
-  return ucFirst(field)
-    .replace(/([a-z])([A-Z])/g, '$1 $2')
-    .replace(/-/g, ' ')
-    .trim()
-}
-
+/**
+ * Converts a hyphenated url string to title case
+ *
+ * @param {string} str - the url string to convert
+ */
 const urlToTitleCase = (str) => {
   return str
     .toLowerCase()
@@ -21,12 +28,22 @@ const urlToTitleCase = (str) => {
     .join(' ')
 }
 
+/**
+ * Uppercases the first letter of a string
+ *
+ * @param {string} str - the string to process
+ */
 const ucFirst = (str) => {
   if (!str) return str
 
   return str[0].toUpperCase() + str.slice(1)
 }
-
+/**
+ * Truncates a string to a maximum number of words
+ *
+ * @param {string} text - the text string to process
+ * @param {number} maxWords - the maximum number of words
+ */
 const truncateText = (text, maxWords) => {
   try {
     const words = String(text).split(' ')
@@ -39,6 +56,11 @@ const truncateText = (text, maxWords) => {
   }
 }
 
+/**
+ * Sanitizes and strips all html from a string
+ *
+ * @param {string} text - the text to sanitize
+ */
 const sanitizeText = (text) => {
   return sanitizeHtml(String(text), {
     allowedTags: [],
@@ -46,12 +68,16 @@ const sanitizeText = (text) => {
   })
 }
 
+/**
+ * Converts a camelCase string to kebab-case
+ *
+ * @param {string} str - the string to convert
+ */
 const camelToKebab = (str) => {
-  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+  return str?.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
 }
 
 module.exports = {
-  toCamelCaseWithRows,
   humanReadableLabel,
   urlToTitleCase,
   truncateText,
