@@ -1,0 +1,413 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checkYourAnswers function should handle empty session gracefully 1`] = `
+[
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-details",
+        "text": "Change",
+        "visuallyHiddenText": "Component details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Component details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-image",
+        "text": "Change",
+        "visuallyHiddenText": "Component image",
+      },
+    ],
+    "answerRows": [],
+    "title": "Component image",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "External accessibility audit",
+      },
+    ],
+    "answerRows": [],
+    "title": "External accessibility audit",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Internal accessibility review",
+      },
+    ],
+    "answerRows": [],
+    "title": "Internal accessibility review",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Testing with assistive technology",
+      },
+    ],
+    "answerRows": [],
+    "title": "Testing with assistive technology",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-code",
+        "text": "Change",
+        "visuallyHiddenText": "Code block",
+      },
+    ],
+    "answerRows": [],
+    "title": "Code block",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/figma",
+        "text": "Change",
+        "visuallyHiddenText": "Figma design details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Figma design details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/your-details",
+        "text": "Change",
+        "visuallyHiddenText": "Your details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Your details",
+  },
+]
+`;
+
+exports[`checkYourAnswers function should handle missing session fields gracefully 1`] = `
+[
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-details",
+        "text": "Change",
+        "visuallyHiddenText": "Component details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Component details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-image",
+        "text": "Change",
+        "visuallyHiddenText": "Component image",
+      },
+    ],
+    "answerRows": [],
+    "title": "Component image",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "External accessibility audit",
+      },
+    ],
+    "answerRows": [],
+    "title": "External accessibility audit",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Internal accessibility review",
+      },
+    ],
+    "answerRows": [],
+    "title": "Internal accessibility review",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Testing with assistive technology",
+      },
+    ],
+    "answerRows": [],
+    "title": "Testing with assistive technology",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-code",
+        "text": "Change",
+        "visuallyHiddenText": "Code block",
+      },
+    ],
+    "answerRows": [],
+    "title": "Code block",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/figma",
+        "text": "Change",
+        "visuallyHiddenText": "Figma design details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Figma design details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/your-details",
+        "text": "Change",
+        "visuallyHiddenText": "Your details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Your details",
+  },
+]
+`;
+
+exports[`checkYourAnswers function should handle multiple entries for a field 1`] = `
+[
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-details",
+        "text": "Change",
+        "visuallyHiddenText": "Component details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Component details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-image",
+        "text": "Change",
+        "visuallyHiddenText": "Component image",
+      },
+    ],
+    "answerRows": [],
+    "title": "Component image",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "External accessibility audit",
+      },
+    ],
+    "answerRows": [],
+    "title": "External accessibility audit",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Internal accessibility review",
+      },
+    ],
+    "answerRows": [],
+    "title": "Internal accessibility review",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Testing with assistive technology",
+      },
+    ],
+    "answerRows": [],
+    "title": "Testing with assistive technology",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-code",
+        "text": "Change",
+        "visuallyHiddenText": "Code block",
+      },
+    ],
+    "answerRows": [],
+    "title": "Code block",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/figma",
+        "text": "Change",
+        "visuallyHiddenText": "Figma design details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Figma design details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/your-details",
+        "text": "Change",
+        "visuallyHiddenText": "Your details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Your details",
+  },
+]
+`;
+
+exports[`checkYourAnswers function should transform session data into the expected structure 1`] = `
+[
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-details",
+        "text": "Change",
+        "visuallyHiddenText": "Component details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Component details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/component-image",
+        "text": "Change",
+        "visuallyHiddenText": "Component image",
+      },
+    ],
+    "answerRows": [
+      {
+        "key": {
+          "text": "Image",
+        },
+        "value": {
+          "text": "image.png",
+        },
+      },
+    ],
+    "title": "Component image",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "External accessibility audit",
+      },
+    ],
+    "answerRows": [],
+    "title": "External accessibility audit",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Internal accessibility review",
+      },
+    ],
+    "answerRows": [],
+    "title": "Internal accessibility review",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/accessibility-findings",
+        "text": "Change",
+        "visuallyHiddenText": "Testing with assistive technology",
+      },
+    ],
+    "answerRows": [],
+    "title": "Testing with assistive technology",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/remove/component-code-details",
+        "text": "Remove",
+        "visuallyHiddenText": "Code block",
+      },
+      {
+        "href": "/contribute/add-new-component/component-code-details",
+        "text": "View and Change",
+        "visuallyHiddenText": "Code block",
+      },
+    ],
+    "answerRows": [
+      {
+        "key": {
+          "text": "Detail",
+        },
+        "value": {
+          "text": "Extra details",
+        },
+      },
+    ],
+    "title": "Code block",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/figma",
+        "text": "Change",
+        "visuallyHiddenText": "Figma design details",
+      },
+    ],
+    "answerRows": [],
+    "title": "Figma design details",
+  },
+  {
+    "actions": [
+      {
+        "href": "/contribute/add-new-component/your-details",
+        "text": "Change",
+        "visuallyHiddenText": "Your details",
+      },
+    ],
+    "answerRows": [
+      {
+        "key": {
+          "text": "Name",
+        },
+        "value": {
+          "text": "Sarah Philips",
+        },
+      },
+      {
+        "key": {
+          "text": "Email",
+        },
+        "value": {
+          "text": "sarah@example.com",
+        },
+      },
+    ],
+    "title": "Your details",
+  },
+]
+`;

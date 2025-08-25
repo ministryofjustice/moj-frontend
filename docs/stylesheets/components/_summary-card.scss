@@ -1,0 +1,9 @@
+@use "../moj-frontend" as *;
+
+.govuk-summary-card__title-wrapper {
+  background-color: #e5e6e7;
+}
+
+.govuk-summary-card__content {
+  background-color: govuk-colour("white");
+}

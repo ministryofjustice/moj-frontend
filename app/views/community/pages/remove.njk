@@ -1,0 +1,29 @@
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{% extends "contributions.njk" %}
+
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+
+    {{ govukSummaryList({
+      rows: summaryRows
+    }) }}
+
+    <div class="govuk-button-group moj-button-action">
+      {{ govukButton({
+        text: 'Delete answers',
+        preventDoubleClick: true,
+        classes: "govuk-button--warning"
+      }) }}
+
+      {{ govukButton({
+        text: "Cancel",
+        classes: "govuk-button--secondary",
+        href: backLink
+      }) }}
+    </div>
+  {% endcall %}
+{% endblock %}

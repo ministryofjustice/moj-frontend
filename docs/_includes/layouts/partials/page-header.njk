@@ -16,16 +16,16 @@
         text: title,
         caption: subsection,
           statusTag: { text: status } if status
-      }) }}
+          }) }}
 
-      {{ statusLabel(
-        type,
-        status,
-        statusInfo[status],
-        statusDate,
-        creatorName,
-        creatorTeam
-      ) if statusInfo[status] }}
+      {{ statusLabel({
+        type: type,
+        status: status,
+        statusData: statusInfo[status],
+        statusDate: statusDate,
+        contributorName: contributorName,
+        contributorTeam: contributorTeam
+        }) if statusInfo[status] }}
 
       {% if lede %}
         <span class="govuk-caption-xl govuk-!-margin-top-8">{{ lede | safe }}</span>

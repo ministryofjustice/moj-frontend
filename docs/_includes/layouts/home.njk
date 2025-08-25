@@ -61,7 +61,7 @@
     {% if env.showCommunity %}
       <section>
         {{ heading({
-          text: "Get involved in helping the Design System grow",
+          text: "Submit a component to the Design System",
           classes: "govuk-!-margin-bottom-7",
           size: "large"
         }) }}
@@ -69,18 +69,14 @@
 
           {% call card({
             layout: "horizontal",
-            title: "Contribute to the Design System",
+            title: "Help people find your work",
             imageSrc: "assets/images/home-img/contribute.png",
             imageSrc2x: "assets/images/home-img/contributex2.png",
             imageAlt: ""
           }) %}
-            <p>The MoJ Design System is a collaboration between users and the Design System team.</p>
-            <p>Anyone can help improve the Design System.</p>
-            <p>
-              You can get involved by adding a new building block,
-              or providing information and feedback about an existing one.
-            </p>
-            <a class="gov-link" href="/contribute/add-new-component/start">Submit a new component</a>
+            <p>Anyone at MoJ can now submit a component to the Design System.</p>
+            <p>This makes it easier for people to design with consistency. You can also get feedback on your work through Github discussions.</p>
+            <a class="gov-link" href="/contribute/add-new-component/start">Submit a component</a>
           {% endcall %}
 
 
