@@ -71,9 +71,13 @@ jobs:
       - name: TypeScript compiler
         run: npm run lint:types
 
-      - name: JavaScript unit tests
+      - name: JavaScript component unit tests
         run: npm run test:components
+
+      - name: JavaScript helpers unit tests
         run: npm run test:helpers
+
+      - name: JavaScript middleware unit tests
         run: npm run test:middleware
 
       - name: Sass compilation

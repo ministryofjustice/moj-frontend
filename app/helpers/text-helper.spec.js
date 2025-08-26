@@ -4,7 +4,8 @@ const {
   ucFirst,
   truncateText,
   sanitizeText,
-  camelToKebab
+  camelToKebab,
+  titleize
 } = require('./text-helper')
 
 describe('ucFirst', () => {
@@ -27,7 +28,7 @@ describe('humanReadableLabel', () => {
 
 describe('urlToTitleCase', () => {
   it('creates a title from a url', () => {
-    expect(urlToTitleCase('component-details')).toBe('Component details')
+    expect(urlToTitleCase('component-details')).toBe('Component Details')
   })
 })
 
@@ -52,5 +53,14 @@ describe('sanitizeText', () => {
 describe('camelToKebab', () => {
   it('converts camelCase to kebab-case', () => {
     expect(camelToKebab('component-image')).toBe('component-image')
+  })
+})
+
+describe('titleize', () => {
+  it('converts a string to titleCase', () => {
+    expect(titleize('component NAme')).toBe('Component name')
+  })
+  it('returns an empty string if called with a falsy val', () => {
+    expect(titleize(undefined)).toBe('')
   })
 })

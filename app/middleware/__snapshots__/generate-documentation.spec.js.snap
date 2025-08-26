@@ -3,13 +3,13 @@
 exports[`generateMarkdown should generate markdown with all fields populated 1`] = `
 {
   "content": "---
-title: Test Component
+title: Test component
 tabs: true
 status: Experimental
 statusDate: January 2023
 excerpt: "This is a brief description."
 lede: "This is a brief description."
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/xxx
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/9999
 contributorName: Test User
 contributorTeam: undefined
 ---
@@ -18,7 +18,7 @@ contributorTeam: undefined
 {% tab "Overview" %}
 
 <div class="img-container">
-  <img src="/assets/images/component.jpg" alt="Test Component" />
+  <img src="/assets/images/component.jpg" alt="Test component" />
 </div>
 
 ## Overview
@@ -29,7 +29,7 @@ This is an overview.
 This is how it is used.
 
 ### Contribute to this component
-You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
+You can help develop this component by adding information to the [Test component Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -39,7 +39,7 @@ You can help develop this component by adding information to the Github discussi
 
 A Figma link was not included when this component was added.
 
-      There may be more information in the [Test-component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+      There may be more information in the [Test component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
 ## Contribute a Figma link
 
@@ -51,7 +51,7 @@ A Figma link was not included when this component was added.
 
 ## Accessibility
 
-Accessibility findings have been added for this component. There may be more findings in the [Test-component Github discussion]({{ githuburl }}).
+Accessibility findings have been added for this component. There may be more findings in the [Test component Github discussion]({{ githuburl }}).
 
 
 ### External audit
@@ -88,7 +88,7 @@ Assistive tech issues discovered.
 
 ## Code
 
-Code has been added for this component. There may be other code blocks in the [Test-component Github discussion]({{ githuburl }}).
+Code has been added for this component. There may be other code blocks in the [Test component Github discussion]({{ githuburl }}).
 
 
 ### Code block 1: html
@@ -127,7 +127,7 @@ status: Experimental
 statusDate: January 2023
 excerpt: ""
 lede: ""
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/xxx
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/9999
 contributorName: undefined
 contributorTeam: undefined
 ---
@@ -147,7 +147,7 @@ contributorTeam: undefined
 
 
 ### Contribute to this component
-You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
+You can help develop this component by adding information to the [unknown-component Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -157,7 +157,7 @@ You can help develop this component by adding information to the Github discussi
 
 A Figma link was not included when this component was added.
 
-      There may be more information in the [Unknown-component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+      There may be more information in the [unknown-component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
 ## Contribute a Figma link
 
@@ -169,7 +169,7 @@ A Figma link was not included when this component was added.
 
 ## Accessibility
 
-Accessibility findings have been added for this component. There may be more findings in the [Unknown-component Github discussion]({{ githuburl }}).
+Accessibility findings have been added for this component. There may be more findings in the [unknown-component Github discussion]({{ githuburl }}).
 
 
 ### External audit
@@ -206,7 +206,7 @@ undefined
 
 ## Code
 
-Code has been added for this component. There may be other code blocks in the [Unknown-component Github discussion]({{ githuburl }}).
+Code has been added for this component. There may be other code blocks in the [unknown-component Github discussion]({{ githuburl }}).
 
 
 ### Code block 1: undefined
@@ -239,13 +239,13 @@ If you have code that is relevant to this component you can add it to the [Githu
 exports[`generateMarkdown should handle missing image data gracefully 1`] = `
 {
   "content": "---
-title: Another Component
+title: Another component
 tabs: true
 status: Experimental
 statusDate: January 2023
 excerpt: "Another brief description."
 lede: "Another brief description."
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/xxx
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/9999
 contributorName: Another User
 contributorTeam: undefined
 ---
@@ -254,7 +254,7 @@ contributorTeam: undefined
 {% tab "Overview" %}
 
 <div class="img-container">
-  <img src="/undefined" alt="Another Component" />
+  <img src="/undefined" alt="Another component" />
 </div>
 
 ## Overview
@@ -265,7 +265,7 @@ Another overview.
 Another usage.
 
 ### Contribute to this component
-You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
+You can help develop this component by adding information to the [Another component Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -275,7 +275,7 @@ You can help develop this component by adding information to the Github discussi
 
 A Figma link was not included when this component was added.
 
-      There may be more information in the [Another-component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+      There may be more information in the [Another component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
 ## Contribute a Figma link
 
@@ -287,7 +287,7 @@ A Figma link was not included when this component was added.
 
 ## Accessibility
 
-Accessibility findings have been added for this component. There may be more findings in the [Another-component Github discussion]({{ githuburl }}).
+Accessibility findings have been added for this component. There may be more findings in the [Another component Github discussion]({{ githuburl }}).
 
 
 ### External audit
@@ -324,7 +324,7 @@ Assistive tech issues discovered.
 
 ## Code
 
-Code has been added for this component. There may be other code blocks in the [Another-component Github discussion]({{ githuburl }}).
+Code has been added for this component. There may be other code blocks in the [Another component Github discussion]({{ githuburl }}).
 
 
 ### Code block 1: html
@@ -363,7 +363,7 @@ status: Experimental
 statusDate: January 2023
 excerpt: ""
 lede: ""
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/xxx
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/9999
 contributorName: undefined
 contributorTeam: undefined
 ---
@@ -383,7 +383,7 @@ contributorTeam: undefined
 
 
 ### Contribute to this component
-You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
+You can help develop this component by adding information to the [unknown-component Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -393,7 +393,7 @@ You can help develop this component by adding information to the Github discussi
 
 A Figma link was not included when this component was added.
 
-      There may be more information in the [Unknown-component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+      There may be more information in the [unknown-component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
 ## Contribute a Figma link
 
@@ -405,7 +405,7 @@ A Figma link was not included when this component was added.
 
 ## Accessibility
 
-Accessibility findings have been added for this component. There may be more findings in the [Unknown-component Github discussion]({{ githuburl }}).
+Accessibility findings have been added for this component. There may be more findings in the [unknown-component Github discussion]({{ githuburl }}).
 
 
 ### External audit
@@ -442,7 +442,7 @@ undefined
 
 ## Code
 
-Code has been added for this component. There may be other code blocks in the [Unknown-component Github discussion]({{ githuburl }}).
+Code has been added for this component. There may be other code blocks in the [unknown-component Github discussion]({{ githuburl }}).
 
 
 ### Code block 1: undefined
@@ -475,13 +475,13 @@ If you have code that is relevant to this component you can add it to the [Githu
 exports[`generateMarkdown should sanitize the filename correctly 1`] = `
 {
   "content": "---
-title: Component! With@ Special#Chars
+title: Component! with@ special#chars
 tabs: true
 status: Experimental
 statusDate: January 2023
 excerpt: "Brief description here."
 lede: "Brief description here."
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/xxx
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/9999
 contributorName: Special User
 contributorTeam: undefined
 ---
@@ -490,7 +490,7 @@ contributorTeam: undefined
 {% tab "Overview" %}
 
 <div class="img-container">
-  <img src="/undefined" alt="Component! With@ Special#Chars" />
+  <img src="/undefined" alt="Component! with@ special#chars" />
 </div>
 
 ## Overview
@@ -501,7 +501,7 @@ Overview here.
 Usage here.
 
 ### Contribute to this component
-You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
+You can help develop this component by adding information to the [Component! with@ special#chars Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -511,7 +511,7 @@ You can help develop this component by adding information to the Github discussi
 
 A Figma link was not included when this component was added.
 
-      There may be more information in the [Component-with-special-chars Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+      There may be more information in the [Component! with@ special#chars Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
 ## Contribute a Figma link
 
@@ -523,7 +523,7 @@ A Figma link was not included when this component was added.
 
 ## Accessibility
 
-Accessibility findings have been added for this component. There may be more findings in the [Component-with-special-chars Github discussion]({{ githuburl }}).
+Accessibility findings have been added for this component. There may be more findings in the [Component! with@ special#chars Github discussion]({{ githuburl }}).
 
 
 ### External audit
@@ -560,7 +560,7 @@ Assistive tech issues discovered.
 
 ## Code
 
-Code has been added for this component. There may be other code blocks in the [Component-with-special-chars Github discussion]({{ githuburl }}).
+Code has been added for this component. There may be other code blocks in the [Component! with@ special#chars Github discussion]({{ githuburl }}).
 
 
 ### Code block 1: html

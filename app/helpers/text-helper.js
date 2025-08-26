@@ -77,11 +77,22 @@ const camelToKebab = (str) => {
   return str?.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
 }
 
+/**
+ * Formats a string as a title
+ *
+ * @param {string} str - the string to format
+ */
+const titleize = (str) => {
+  if (!str) return ''
+  return ucFirst(str.toLowerCase())
+}
+
 module.exports = {
   humanReadableLabel,
   urlToTitleCase,
   truncateText,
   sanitizeText,
   ucFirst,
-  camelToKebab
+  camelToKebab,
+  titleize
 }

@@ -106,13 +106,15 @@ if (ENV === 'development' && process.env.DEV_DUMMY_DATA === 'true') {
       return next(new Error('Session not available'))
     }
 
-    Object.assign(req.session, mockSessionData)
-    req.session.save((err) => {
-      if (err) {
-        return next(err)
-      }
-      next()
-    })
+    if (!req.session.checkYourAnswers) {
+      Object.assign(req.session, mockSessionData)
+      req.session.save((err) => {
+        if (err) {
+          return next(err)
+        }
+        next()
+      })
+    }
   })
 }
 

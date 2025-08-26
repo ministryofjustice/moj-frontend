@@ -2,12 +2,12 @@
 const moment = require('moment')
 
 const { MAX_ADD_ANOTHER } = require('../config.js')
-const { ucFirst } = require('../helpers/text-helper.js')
+const { ucFirst, titleize } = require('../helpers/text-helper.js')
 
 const generateMarkdown = (data, files) => {
   const { '/component-details': details } = data
 
-  const componentName = details?.componentName || 'unknown-component'
+  const componentName = titleize(details?.componentName) || 'unknown-component'
   const sanitizedComponentName = ucFirst(
     componentName
       .toLowerCase()
@@ -25,7 +25,7 @@ const generateMarkdown = (data, files) => {
     let content = ''
 
     if (data['/figma-link']) {
-      content += `A Figma link has been added for this component. There may be more links and resources in the ${githubDiscussionLink(sanitizedComponentName)}.\r\n
+      content += `A Figma link has been added for this component. There may be more links and resources in the ${githubDiscussionLink(componentName)}.\r\n
 
 ### Figma link
 
@@ -39,7 +39,7 @@ const generateMarkdown = (data, files) => {
     } else {
       content = `A Figma link was not included when this component was added.
 
-      There may be more information in the ${githubDiscussionLink(sanitizedComponentName)}. You can also view the component image in the overview.
+      There may be more information in the ${githubDiscussionLink(componentName)}. You can also view the component image in the overview.
 
 ## Contribute a Figma link
 
@@ -113,11 +113,11 @@ ${assistiveTech.issuesDiscovered}\r\n`
     }
 
     if (externalAudit || internalAudit || assistiveTech) {
-      content = `Accessibility findings have been added for this component. There may be more findings in the ${githubDiscussionLink(sanitizedComponentName)}.\r\n
+      content = `Accessibility findings have been added for this component. There may be more findings in the ${githubDiscussionLink(componentName)}.\r\n
 
 ${content}\r\n`
     } else {
-      content = `No accessibility findings were included when this component was added. There may be more information in the ${githubDiscussionLink(sanitizedComponentName)}.\r\n`
+      content = `No accessibility findings were included when this component was added. There may be more information in the ${githubDiscussionLink(componentName)}.\r\n`
     }
 
     content += `## Contribute accessibility findings
@@ -180,7 +180,7 @@ ${code.componentCodeUsage}`
     }
 
     if (data['/component-code-details']) {
-      content = `Code has been added for this component. There may be other code blocks in the ${githubDiscussionLink(sanitizedComponentName)}.
+      content = `Code has been added for this component. There may be other code blocks in the ${githubDiscussionLink(componentName)}.
 
 ${content}
 
@@ -190,7 +190,7 @@ If you have code that is relevant to this component you can add it to the ${gith
     } else {
       content = `No code was included when this contribution was added.
 
-You can use the ${githubDiscussionLink(sanitizedComponentName)} to:
+You can use the ${githubDiscussionLink(componentName)} to:
 
 * view other code blocks
 * add relevant code`
@@ -200,13 +200,13 @@ You can use the ${githubDiscussionLink(sanitizedComponentName)} to:
   }
 
   const content = `---
-title: ${ucFirst(componentName)}
+title: ${ucFirst(componentName.toLowerCase())}
 tabs: true
 status: Experimental
 statusDate: ${moment().format('MMMM YYYY')}
 excerpt: "${details?.briefDescription || ''}"
 lede: "${details?.briefDescription || ''}"
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/xxx
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/9999
 ${data['/your-details']?.fullName === 'Not shared' ? '' : `contributorName: ${data['/your-details']?.fullName}`}
 ${data['/your-details']?.teamName === 'Not shared' ? '' : `contributorTeam: ${data['/your-details']?.teamName}`}
 ---
@@ -226,7 +226,7 @@ ${details?.componentOverview || ''}
 ${details?.howIsTheComponentUsed || ''}
 
 ### Contribute to this component
-You can help develop this component by adding information to the Github discussion. This helps other people to use it in their service.
+You can help develop this component by adding information to the ${githubDiscussionLink(componentName)}. This helps other people to use it in their service.
 
 {% endtab %}
 
