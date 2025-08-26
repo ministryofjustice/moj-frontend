@@ -163,8 +163,8 @@ const getDetailsForPrEmail = (req, res, next) => {
   req.detailsForPrEmail = {
     componentName,
     email: req.session?.['/email']?.emailAddress,
-    name: personalData.fullName,
-    team: personalData.teamName
+    name: personalData?.fullName,
+    team: personalData?.teamName
   }
 
   next()
@@ -175,7 +175,7 @@ const getDetailsForPrEmail = (req, res, next) => {
  * chooses not to share publicly
  */
 const processPersonalData = (req, res, next) => {
-  const personalData = req.session['/your-details']
+  const personalData = req.session?.['/your-details'] || {}
   const data = Object.assign({}, personalData)
   // Remove personal data
   data.fullName = 'Not shared'
@@ -211,6 +211,7 @@ const generateSubmissionRef = (req, res, next) => {
 }
 
 module.exports = {
+  extractFilename,
   processSubmissionData,
   processSubmissionFiles,
   processPersonalData,
