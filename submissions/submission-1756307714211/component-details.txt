@@ -1,0 +1,5 @@
+{
+  "componentName": "final test component",
+  "componentOverview": "its nearly finished",
+  "howIsTheComponentUsed": "hopefully"
+}
