@@ -34,15 +34,11 @@ const processSubmissionFiles = async (req) => {
           const directory = IMAGE_KEYS.includes(field)
             ? IMAGE_DIRECTORY
             : DOCUMENT_DIRECTORY
-          console.log({ directory })
           const { redisKey } = file // Redis key stored in session
           if (redisKey?.startsWith('file:')) {
             console.log('processing redisKey')
             const { buffer, originalname } = await getFileFromRedis(redisKey) // Retrieve file from Redis
-            const { filename } = getUniqueFilename(
-              originalname,
-              existingFilenames
-            )
+            const filename = getUniqueFilename(originalname, existingFilenames)
             console.log({ filename })
             existingFilenames.add(filename)
             submissionFiles[key] = {

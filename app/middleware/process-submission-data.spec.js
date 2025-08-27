@@ -556,7 +556,7 @@ describe('processSubmissionFiles', () => {
         buffer: mockBuffer,
         originalname: 'test-image.png'
       })
-      getUniqueFilename.mockReturnValue({ filename: 'test-image.png' })
+      getUniqueFilename.mockReturnValue('test-image.png')
 
       req.session = {
         '/component-image': {
@@ -596,8 +596,8 @@ describe('processSubmissionFiles', () => {
         })
 
       getUniqueFilename
-        .mockReturnValueOnce({ filename: 'image1.jpg' })
-        .mockReturnValueOnce({ filename: 'image2.png' })
+        .mockReturnValueOnce('image1.jpg')
+        .mockReturnValueOnce('image2.png')
 
       req.session = {
         '/component-image-1': {
@@ -635,9 +635,7 @@ describe('processSubmissionFiles', () => {
         buffer: mockBuffer,
         originalname: 'accessibility-report.pdf'
       })
-      getUniqueFilename.mockReturnValue({
-        filename: 'accessibility-report.pdf'
-      })
+      getUniqueFilename.mockReturnValue('accessibility-report.pdf')
 
       req.session = {
         '/accessibility-report': {
@@ -676,7 +674,7 @@ describe('processSubmissionFiles', () => {
 
       getUniqueFilename
         .mockReturnValueOnce('duplicate.txt')
-        .mockReturnValueOnce('duplicate_1.txt')
+        .mockReturnValueOnce('duplicate-1.txt')
 
       req.session = {
         '/file-1': {
