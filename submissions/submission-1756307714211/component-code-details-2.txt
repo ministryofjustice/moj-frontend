@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "css",
+  "componentCodeLanguageOther": "",
+  "componentCode": "p {\r\n color: red;\r\n}",
+  "componentCodeUsage": ""
+}
