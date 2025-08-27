@@ -1,3 +1,12 @@
+/* eslint-disable  @typescript-eslint/no-unused-vars */
+const {
+  IMAGE_DIRECTORY,
+  IMAGE_KEYS,
+  DOCUMENT_DIRECTORY,
+  DOCUMENT_KEYS
+} = require('../config')
+const { extractFilename, getUniqueFilename } = require('../helpers/file-helper')
+const { getFileFromRedis } = require('../helpers/redis-helper')
 const { generateMarkdown } = require('../middleware/generate-documentation')
 
 const {
@@ -6,13 +15,29 @@ const {
   processPersonalData,
   buildComponentPage,
   generateSubmissionRef,
-  getDetailsForPrEmail,
-  extractFilename
+  getDetailsForPrEmail
 } = require('./process-subission-data')
 
 jest.mock('../middleware/generate-documentation', () => ({
   generateMarkdown: jest.fn()
 }))
+jest.mock('../helpers/file-helper', () => ({
+  extractFilename: jest.fn(),
+  getUniqueFilename: jest.fn()
+}))
+jest.mock('../helpers/redis-helper', () => ({
+  getFileFromRedis: jest.fn()
+}))
+jest.mock('../config', () => {
+  const originalConfig = jest.requireActual('../config')
+  return {
+    ...originalConfig,
+    IMAGE_DIRECTORY: 'images',
+    IMAGE_KEYS: ['testImage'],
+    DOCUMENT_DIRECTORY: 'docs',
+    DOCUMENT_KEYS: ['testReport']
+  }
+})
 
 describe('generateSubmissionRef', () => {
   let req, res, next
@@ -196,21 +221,6 @@ describe('getDetailsForPrEmail', () => {
   })
 })
 
-describe('extractFilename', () => {
-  it('handles starting slash', () => {
-    expect(extractFilename('/your-details')).toBe('your-details.txt')
-  })
-  it('handles no starting slash', () => {
-    expect(extractFilename('your-details')).toBe('your-details.txt')
-  })
-  it('handles subpages', () => {
-    expect(extractFilename('/component-code/2')).toBe('component-code-2.txt')
-  })
-  it('handles extension already present', () => {
-    expect(extractFilename('component-image.md')).toBe('component-image.md')
-  })
-})
-
 describe('processSubmissionData', () => {
   let req, res, next
   beforeEach(() => {
@@ -270,10 +280,12 @@ describe('processSubmissionData', () => {
 
     it('should include non-filtered keys from session data', () => {
       req.session = {
-        '/component-name': { title: 'Test Component' },
-        '/description': { description: 'A test component' },
+        'component-name': { title: 'Test Component' },
+        description: { description: 'A test component' },
         '/email': { emailAddress: 'test@example.com' } // This should be filtered out
       }
+
+      extractFilename.mockImplementation((key) => `${key}.txt`)
 
       processSubmissionData(req, res, next)
 
@@ -296,6 +308,8 @@ describe('processSubmissionData', () => {
     it('should merge session and markdown data', () => {
       req.session = { sessionKey: { sessionKey: 'session value' } }
       req.markdown = { markdownKey: { markdownKey: 'markdown value' } }
+
+      extractFilename.mockImplementation((key) => `${key}.txt`)
 
       processSubmissionData(req, res, next)
 
@@ -332,6 +346,8 @@ describe('processSubmissionData', () => {
       req.session = {}
       req.markdown = { 'component-name.md': 'markdown content' }
 
+      extractFilename.mockImplementation((key) => `${key}`)
+
       processSubmissionData(req, res, next)
 
       expect(req.submissionData['docs/components/component-name.md']).toBe(
@@ -349,6 +365,7 @@ describe('processSubmissionData', () => {
         }
       }
 
+      extractFilename.mockImplementation((key) => `${key.slice(1)}.txt`)
       processSubmissionData(req, res, next)
 
       const expectedCode = Buffer.from('console.log("Hello World");').toString(
@@ -369,6 +386,7 @@ describe('processSubmissionData', () => {
         }
       }
 
+      extractFilename.mockImplementation((key) => `${key.slice(1)}.txt`)
       processSubmissionData(req, res, next)
 
       const expectedCode = Buffer.from('{% extends "layout.njk" %}').toString(
@@ -389,6 +407,7 @@ describe('processSubmissionData', () => {
         }
       }
 
+      extractFilename.mockImplementation((key) => `${key.slice(1)}.txt`)
       processSubmissionData(req, res, next)
 
       const expectedCode = Buffer.from('const example2 = true;').toString(
@@ -409,6 +428,7 @@ describe('processSubmissionData', () => {
         }
       }
 
+      extractFilename.mockImplementation((key) => `${key.slice(1)}.txt`)
       processSubmissionData(req, res, next)
 
       // Should not create a code file, but should still create the data file
@@ -435,6 +455,7 @@ describe('processSubmissionData', () => {
         }
       }
 
+      extractFilename.mockImplementation((key) => `${key.slice(1)}.txt`)
       processSubmissionData(req, res, next)
 
       const codeFileExists = Object.keys(req.submissionData).some((key) =>
@@ -454,16 +475,229 @@ describe('processSubmissionData', () => {
 
   describe('data cloning', () => {
     it('should clone session data objects to avoid mutation', () => {
-      const originalData = { nested: { value: 'test' } };
-      req.session = { '/component-data': originalData };
+      const originalData = { nested: { value: 'test' } }
+      req.session = { '/component-data': originalData }
 
-      processSubmissionData(req, res, next);
+      extractFilename.mockImplementation((key) => `${key.slice(1)}.txt`)
+      processSubmissionData(req, res, next)
 
-      const submissionDataValue = req.submissionData[`submissions/${req.submissionRef}/component-data.txt`];
+      const submissionDataValue =
+        req.submissionData[
+          `submissions/${req.submissionRef}/component-data.txt`
+        ]
 
       // Should be equal but not the same reference
-      expect(submissionDataValue).toEqual(originalData);
-      expect(submissionDataValue).not.toBe(originalData);
-    });
-  });
+      expect(submissionDataValue).toEqual(originalData)
+      expect(submissionDataValue).not.toBe(originalData)
+    })
+  })
+})
+describe('processSubmissionFiles', () => {
+  let req
+
+  beforeEach(() => {
+    jest.clearAllMocks()
+
+    req = {
+      session: {},
+      submissionRef: 'test-submission-123'
+    }
+
+    // Default mocks
+    getUniqueFilename.mockImplementation((originalname, _existingFilenames) => {
+      return originalname // Simple implementation for most tests
+    })
+  })
+
+  describe('basic functionality', () => {
+    it('should return empty object when no files in session', async () => {
+      req.session = {
+        regularData: 'some value',
+        otherData: { prop: 'value' }
+      }
+
+      const result = await processSubmissionFiles(req)
+
+      expect(result).toEqual({})
+      expect(getFileFromRedis).not.toHaveBeenCalled()
+    })
+
+    it('should skip filtered session keys', async () => {
+      const filteredKeys = [
+        'cookie',
+        'csrfToken',
+        '/email',
+        'emailDomainAllowed',
+        'emailToken',
+        'started',
+        'verified'
+      ]
+
+      req.session = {}
+      filteredKeys.forEach((key) => {
+        req.session[key] = {
+          componentImage: {
+            redisKey: 'file:test-key'
+          }
+        }
+      })
+
+      const result = await processSubmissionFiles(req)
+
+      expect(result).toEqual({})
+      expect(getFileFromRedis).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('image file processing', () => {
+    it('should process image files correctly', async () => {
+      const mockBuffer = Buffer.from('image content')
+      getFileFromRedis.mockResolvedValue({
+        buffer: mockBuffer,
+        originalname: 'test-image.png'
+      })
+      getUniqueFilename.mockReturnValue({ filename: 'test-image.png' })
+
+      req.session = {
+        '/component-image': {
+          testImage: {
+            redisKey: 'file:image-123'
+          }
+        }
+      }
+
+      const result = await processSubmissionFiles(req)
+
+      expect(getFileFromRedis).toHaveBeenCalledWith('file:image-123')
+      expect(getUniqueFilename).toHaveBeenCalledWith(
+        'test-image.png',
+        expect.any(Set)
+      )
+      expect(result).toEqual({
+        '/component-image': {
+          path: 'images/test-submission-123/test-image.png',
+          buffer: mockBuffer.toString('base64')
+        }
+      })
+    })
+
+    it('should handle multiple component images', async () => {
+      const mockBuffer1 = Buffer.from('image 1')
+      const mockBuffer2 = Buffer.from('image 2')
+
+      getFileFromRedis
+        .mockResolvedValueOnce({
+          buffer: mockBuffer1,
+          originalname: 'image1.jpg'
+        })
+        .mockResolvedValueOnce({
+          buffer: mockBuffer2,
+          originalname: 'image2.png'
+        })
+
+      getUniqueFilename
+        .mockReturnValueOnce({ filename: 'image1.jpg' })
+        .mockReturnValueOnce({ filename: 'image2.png' })
+
+      req.session = {
+        '/component-image-1': {
+          testImage: {
+            redisKey: 'file:image-1'
+          }
+        },
+        '/component-image-2': {
+          testImage: {
+            redisKey: 'file:image-2'
+          }
+        }
+      }
+
+      const result = await processSubmissionFiles(req)
+
+      expect(getFileFromRedis).toHaveBeenCalledTimes(2)
+      expect(result).toEqual({
+        '/component-image-1': {
+          path: 'images/test-submission-123/image1.jpg',
+          buffer: mockBuffer1.toString('base64')
+        },
+        '/component-image-2': {
+          path: 'images/test-submission-123/image2.png',
+          buffer: mockBuffer2.toString('base64')
+        }
+      })
+    })
+  })
+
+  describe('document file processing', () => {
+    it('should process document files correctly', async () => {
+      const mockBuffer = Buffer.from('report content')
+      getFileFromRedis.mockResolvedValue({
+        buffer: mockBuffer,
+        originalname: 'accessibility-report.pdf'
+      })
+      getUniqueFilename.mockReturnValue({
+        filename: 'accessibility-report.pdf'
+      })
+
+      req.session = {
+        '/accessibility-report': {
+          testReport: {
+            redisKey: 'file:report-456'
+          }
+        }
+      }
+
+      const result = await processSubmissionFiles(req)
+
+      expect(getFileFromRedis).toHaveBeenCalledWith('file:report-456')
+      expect(result).toEqual({
+        '/accessibility-report': {
+          path: 'docs/test-submission-123/accessibility-report.pdf',
+          buffer: mockBuffer.toString('base64')
+        }
+      })
+    })
+  })
+
+  describe('unique filename handling', () => {
+    it('should track existing filenames to ensure uniqueness', async () => {
+      const mockBuffer1 = Buffer.from('content1')
+      const mockBuffer2 = Buffer.from('content2')
+
+      getFileFromRedis
+        .mockResolvedValueOnce({
+          buffer: mockBuffer1,
+          originalname: 'duplicate.txt'
+        })
+        .mockResolvedValueOnce({
+          buffer: mockBuffer2,
+          originalname: 'duplicate.txt'
+        })
+
+      getUniqueFilename
+        .mockReturnValueOnce('duplicate.txt')
+        .mockReturnValueOnce('duplicate_1.txt')
+
+      req.session = {
+        '/file-1': {
+          testImage: {
+            redisKey: 'file:test1'
+          }
+        },
+        '/file-2': {
+          testImage: {
+            redisKey: 'file:test2'
+          }
+        }
+      }
+
+      await processSubmissionFiles(req)
+
+      // Verify that getUniqueFilename was called with the same Set instance
+      const calls = getUniqueFilename.mock.calls
+      expect(calls).toHaveLength(2)
+      expect(calls[0][1]).toBe(calls[1][1]) // Same Set instance
+      expect(calls[0][1]).toBeInstanceOf(Set)
+    })
+  })
 })

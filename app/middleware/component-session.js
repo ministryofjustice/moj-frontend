@@ -16,9 +16,9 @@ const { getAnswersForSection } = require('../helpers/check-your-answers')
 const extractBody = require('../helpers/extract-body')
 const getCurrentFormPages = require('../helpers/form-pages')
 const { getNextPage, getPreviousPage } = require('../helpers/page-navigation')
-const redis = require('../helpers/redis-client')
 const { camelToKebab } = require('../helpers/text-helper')
 const { getHashedUrl } = require('../helpers/url-helper')
+const redis = require('../redis-client')
 const { getSchema } = require('../schema/schemas')
 
 /**

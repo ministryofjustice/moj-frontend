@@ -1,6 +1,6 @@
 const IORedis = require('ioredis')
 
-const { REDIS_URL, REDIS_AUTH_TOKEN, REDIS_PORT, ENV } = require('../config')
+const { REDIS_URL, REDIS_AUTH_TOKEN, REDIS_PORT, ENV } = require('./config')
 
 let redis
 

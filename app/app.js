@@ -24,7 +24,7 @@ if (!(isDev || isTest)) {
     environment: ENV
   })
 }
-const redisClient = require('./helpers/redis-client')
+const redisClient = require('./redis-client')
 const crypto = require('crypto')
 
 const express = require('express')

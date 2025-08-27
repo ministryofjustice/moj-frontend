@@ -464,9 +464,21 @@ const config = {
     },
     'check-your-answers': {}
   },
+  IMAGE_DIRECTORY: 'assets/images',
+  DOCUMENT_DIRECTORY: 'assets/files',
+  IMAGE_KEYS: ['componentImage'],
+  DOCUMENT_KEYS: [],
   ADD_NEW_COMPONENT_ROUTE: '/contribute/add-new-component',
   MAX_ADD_ANOTHER: 10,
-  ACRONYMS_TO_UPPERCASE: ['url'],
+  SESSION_KEYS_TO_IGNORE: [
+    'cookie',
+    'csrfToken',
+    '/email', // don't commit personal data
+    'emailDomainAllowed',
+    'emailToken',
+    'started',
+    'verified'
+  ],
   CHECK_YOUR_ANSWERS_LABEL_OVERRIDES: {
     'component-code-details': {
       title: 'Code block',

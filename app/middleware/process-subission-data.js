@@ -1,90 +1,54 @@
-const redis = require('../helpers/redis-client')
+const {
+  IMAGE_DIRECTORY,
+  IMAGE_KEYS,
+  DOCUMENT_DIRECTORY,
+  DOCUMENT_KEYS,
+  SESSION_KEYS_TO_IGNORE
+} = require('../config')
+const { extractFilename, getUniqueFilename } = require('../helpers/file-helper')
+const { getFileFromRedis } = require('../helpers/redis-helper')
 const { generateMarkdown } = require('../middleware/generate-documentation')
 
-const imageDirectory = 'assets/images'
-const fileDirectory = 'assets/files'
-
-// Retrieve File from Redis
-const getFileFromRedis = async (redisKey) => {
-  try {
-    const fileData = await redis.get(redisKey)
-    if (!fileData) throw new Error(`File not found for Redis key: ${redisKey}`)
-
-    const { buffer, originalname, mimetype } = JSON.parse(fileData)
-    return { buffer: Buffer.from(buffer, 'base64'), originalname, mimetype }
-  } catch (err) {
-    console.error(`[Redis] Error retrieving file: ${err}`)
-    throw err
-  }
-}
-
-// given keys of '/your-details' or '/component-code/1'
-// returns filenames of your-details.txt or component-code-1.txt
-const extractFilename = (key) => {
-  key = key.startsWith('/') ? key.slice(1) : key
-
-  const segments = key.split('/')
-  const lastSegment = segments.at(-1)
-
-  segments[segments.length - 1] = lastSegment.includes('.')
-    ? lastSegment
-    : `${lastSegment}.txt`
-
-  return segments.join('-')
-}
-
-const getUniqueFilename = (originalName, existingFilenames) => {
-  let counter = 0
-  let uniqueName = originalName.replace(/\s+/g, '-')
-
-  // Check and resolve conflicts
-  while (existingFilenames.has(uniqueName)) {
-    counter += 1
-    const nameWithoutExtension = originalName.replace(/(\.[\w\d]+)$/, '') // Remove extension
-    const extension = originalName.match(/(\.[\w\d]+)$/)?.[0] || '' // Extract the extension
-    uniqueName = `${nameWithoutExtension}-${counter}${extension}`
-  }
-
-  existingFilenames.add(uniqueName) // Track used filename
-  return uniqueName
-}
-
 const processSubmissionFiles = async (req) => {
+  const fileKeys = [...DOCUMENT_KEYS, ...IMAGE_KEYS]
   const { session, submissionRef } = req
   const submissionFiles = {}
   const existingFilenames = new Set()
 
   for (const key of Object.keys(session)) {
-    if (
-      ![
-        'cookie',
-        'csrfToken',
-        '/email',
-        'emailDomainAllowed',
-        'emailToken',
-        'started',
-        'verified'
-      ].includes(key)
-    ) {
-      const fileData = session[key]
-      if (
-        fileData?.componentImage?.redisKey ||
-        fileData?.accessibilityReport?.redisKey
-      ) {
-        const directory = fileData.componentImage
-          ? imageDirectory
-          : fileDirectory
-
-        const file = fileData.componentImage || fileData.accessibilityReport
-        const { redisKey } = file // Redis key stored in session
-        if (redisKey?.startsWith('file:')) {
-          const { buffer, originalname } = await getFileFromRedis(redisKey) // Retrieve file from Redis
-          const filename = getUniqueFilename(originalname, existingFilenames)
-          const fileContent = Buffer.from(buffer).toString('base64')
-          const filePath = `${directory}/${submissionRef}/${filename}`
-          submissionFiles[key] = {
-            path: filePath,
-            buffer: fileContent
+    if (!SESSION_KEYS_TO_IGNORE.includes(key)) {
+      const pageData = session[key]
+      // Filter the page data down to just the files
+      // ensure the session[key] data is an object first
+      const pageFiles =
+        pageData && typeof pageData === 'object' && !Array.isArray(pageData)
+          ? Object.fromEntries(
+              Object.entries(pageData).filter(([key, _]) =>
+                fileKeys.includes(key)
+              )
+            )
+          : {}
+      console.log({ pageFiles })
+      for (const [field, file] of Object.entries(pageFiles)) {
+        if (file?.redisKey) {
+          const directory = IMAGE_KEYS.includes(field)
+            ? IMAGE_DIRECTORY
+            : DOCUMENT_DIRECTORY
+          console.log({ directory })
+          const { redisKey } = file // Redis key stored in session
+          if (redisKey?.startsWith('file:')) {
+            console.log('processing redisKey')
+            const { buffer, originalname } = await getFileFromRedis(redisKey) // Retrieve file from Redis
+            const { filename } = getUniqueFilename(
+              originalname,
+              existingFilenames
+            )
+            console.log({ filename })
+            existingFilenames.add(filename)
+            submissionFiles[key] = {
+              path: `${directory}/${submissionRef}/${filename}`,
+              buffer: Buffer.from(buffer).toString('base64')
+            }
           }
         }
       }
@@ -102,14 +66,8 @@ const processSubmissionData = (req, res, next) => {
   for (const key in sessionData) {
     if (
       ![
-        '/componentImage', // no point saving this as text
-        'cookie',
-        'csrfToken',
-        '/email', // don't commit personal data
-        'emailDomainAllowed',
-        'emailToken',
-        'started',
-        'verified'
+        ...SESSION_KEYS_TO_IGNORE,
+        '/componentImage' // no point saving this as text
       ].includes(key)
     ) {
       if (submissionFiles[key]) {
@@ -211,7 +169,6 @@ const generateSubmissionRef = (req, res, next) => {
 }
 
 module.exports = {
-  extractFilename,
   processSubmissionData,
   processSubmissionFiles,
   processPersonalData,

@@ -5,8 +5,8 @@ const ApplicationError = require('../helpers/application-error')
 const { getAnswersForSection } = require('../helpers/check-your-answers')
 const getCurrentFormPages = require('../helpers/form-pages')
 const { getNextPage, getPreviousPage } = require('../helpers/page-navigation')
-const redis = require('../helpers/redis-client')
 const { getHashedUrl } = require('../helpers/url-helper')
+const redis = require('../redis-client')
 const { getSchema } = require('../schema/schemas')
 
 // Functions under test
@@ -37,7 +37,7 @@ const {
 
 // Initialize mocks
 jest.mock('express-xss-sanitizer')
-jest.mock('../helpers/redis-client', () => ({
+jest.mock('../redis-client', () => ({
   set: jest.fn()
 }))
 jest.mock('../helpers/url-helper', () => ({
