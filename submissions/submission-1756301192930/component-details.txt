@@ -1,0 +1,5 @@
+{
+  "componentName": "latest test component",
+  "componentOverview": "its a component",
+  "howIsTheComponentUsed": "it is being used"
+}
