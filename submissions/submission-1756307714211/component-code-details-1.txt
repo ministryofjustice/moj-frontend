@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "nunjucks",
+  "componentCodeLanguageOther": "",
+  "componentCode": "{% block content %}\r\ncsksdkfmsdlkmsdfljn\r\n{% endblock %}",
+  "componentCodeUsage": ""
+}
