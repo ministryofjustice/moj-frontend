@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "css",
+  "componentCodeLanguageOther": "",
+  "componentCode": ".classname {\r\n  color: red;\r\n\r\n  &--modifier {\r\n   color: blue;\r\n  }\r\n\r\n}",
+  "componentCodeUsage": ""
+}
