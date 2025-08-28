@@ -12,6 +12,7 @@ about: Checklist when reviewing Experimental building blocks.
 
 - [ ] Create a GitHub Discussion thread for the component and reference it on the component page
 - [ ] CD: Write a `lede` and add it to the PR. Check with the submitter that they are happy with the description (TBC)
+- [ ] IxD: Update the alt text for the component image on the overview tab
 - [ ] IxD: Create a thumbnail for the '[View all components](https://design-patterns.service.justice.gov.uk/components)' page
     - [ ] The format should be `png`, the size `528x311px`, on a white background with no border
     - [ ] It should be named `thumb-[component-name].png` and added to `docs/assets/images/thumbs`
