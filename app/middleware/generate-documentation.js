@@ -206,7 +206,7 @@ status: Experimental
 statusDate: ${moment().format('MMMM YYYY')}
 excerpt: "${details?.briefDescription || ''}"
 lede: "${details?.briefDescription || ''}"
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/9999
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns
 ${data['/your-details']?.fullName === 'Not shared' ? '' : `contributorName: ${data['/your-details']?.fullName}`}
 ${data['/your-details']?.teamName === 'Not shared' ? '' : `contributorTeam: ${data['/your-details']?.teamName}`}
 ---
