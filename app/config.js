@@ -21,7 +21,12 @@ const config = {
   ENV: process.env.ENV || 'development',
   SENTRY_DSN: process.env.SENTRY_DSN,
   SENTRY_CSP_REPORT_URI: process.env.SENTRY_CSP_REPORT_URI || '',
-  ALLOWED_EMAIL_DOMAINS: ['justice.gov.uk'],
+  ALLOWED_EMAIL_DOMAINS: [
+    'justice.gov.uk',
+    'cica.gov.uk',
+    'hmcts.net',
+    'publicguardian.gov.uk'
+  ],
   HTML_SANITIZATION_OPTIONS: {
     allowedTags: [
       // Document structure
