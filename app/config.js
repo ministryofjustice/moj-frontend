@@ -470,6 +470,7 @@ const config = {
   DOCUMENT_KEYS: [],
   ADD_NEW_COMPONENT_ROUTE: '/contribute/add-new-component',
   MAX_ADD_ANOTHER: 10,
+  GITHUB_ISSUE_ASSIGNEE_USERNAMES: ['chrispymm', 'helennickols', 'murrlipp'],
   SESSION_KEYS_TO_IGNORE: [
     'cookie',
     'csrfToken',

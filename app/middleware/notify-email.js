@@ -21,7 +21,8 @@ const sendEmail = async (
   retries = NOTIFY_EMAIL_MAX_RETRIES,
   backoff = NOTIFY_EMAIL_RETRY_MS
 ) => {
-  if (process.env.ENV === 'test') return false
+  // if (process.env.ENV === 'development') return Promise.resolve(true)
+  // if (process.env.ENV === 'test') return Promise.resolve(false)
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       console.log(
@@ -60,16 +61,20 @@ const sendSubmissionEmail = async (fileBuffer = null, markdown = null) => {
   return sendEmail(NOTIFY_SUBMISSION_TEMPLATE, dsTeamEmail, personalisation)
 }
 
-const sendPrEmail = async (pr, contactDetails) => {
-  const { url, number } = pr
+const sendPrEmail = async (pr, issue, contactDetails) => {
+  const { url: prUrl, number: prNumber } = pr
+  const { url: issueUrl } = issue
   const { componentName, email, name, team } = contactDetails
   const personalisation = {}
 
-  if (url) {
-    personalisation.pr_link = url
+  if (prUrl) {
+    personalisation.pr_link = prUrl
   }
-  if (number) {
-    personalisation.preview_link = `https://moj-frontend-pr-${number}.apps.live.cloud-platform.service.justice.gov.uk`
+  if (prNumber) {
+    personalisation.preview_link = `https://moj-frontend-pr-${prNumber}.apps.live.cloud-platform.service.justice.gov.uk`
+  }
+  if (issueUrl) {
+    personalisation.issue_link = issueUrl
   }
   if (componentName) {
     personalisation.component_name = componentName
