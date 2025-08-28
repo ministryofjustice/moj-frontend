@@ -25,11 +25,11 @@ const generateMarkdown = (data, files) => {
     let content = ''
 
     if (data['/figma-link']) {
-      content += `A Figma link has been added for this component. There may be more links and resources in the ${githubDiscussionLink(componentName)}.\r\n
+      content += `A Figma design has been added for this component. There may be more links and resources in the ${githubDiscussionLink(componentName)}.\r\n
 
-### Figma link
+### Figma
 
-      [View the ${sanitizedComponentName} in Figma (opens in a new tab)](${data['/figma-link']?.figmaUrl || ''})\r\n\r\n`
+      [View the ${componentName} component in the MoJ Figma Kit (opens in a new tab)](${data['/figma-link']?.figmaUrl || ''})\r\n\r\n`
 
       content += `${data['/figma-link']?.figmaLinkAdditionalInformation || ''}\r\n`
 
@@ -37,7 +37,7 @@ const generateMarkdown = (data, files) => {
 
       If you have design files that are relevant to this component you can add them to the ${githubDiscussionLink()}. This helps other people to use it in their service.`
     } else {
-      content = `A Figma link was not included when this component was added.
+      content = `A Figma design was not included when this component was added.
 
       There may be more information in the ${githubDiscussionLink(componentName)}. You can also view the component image in the overview.
 

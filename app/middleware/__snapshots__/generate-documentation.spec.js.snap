@@ -9,7 +9,7 @@ status: Experimental
 statusDate: January 2023
 excerpt: "This is a brief description."
 lede: "This is a brief description."
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/9999
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns
 contributorName: Test User
 contributorTeam: undefined
 ---
@@ -37,7 +37,7 @@ You can help develop this component by adding information to the [Test component
 
 ## Designs
 
-A Figma link was not included when this component was added.
+A Figma design was not included when this component was added.
 
       There may be more information in the [Test component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
@@ -127,7 +127,7 @@ status: Experimental
 statusDate: January 2023
 excerpt: ""
 lede: ""
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/9999
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns
 contributorName: undefined
 contributorTeam: undefined
 ---
@@ -155,7 +155,7 @@ You can help develop this component by adding information to the [unknown-compon
 
 ## Designs
 
-A Figma link was not included when this component was added.
+A Figma design was not included when this component was added.
 
       There may be more information in the [unknown-component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
@@ -245,7 +245,7 @@ status: Experimental
 statusDate: January 2023
 excerpt: "Another brief description."
 lede: "Another brief description."
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/9999
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns
 contributorName: Another User
 contributorTeam: undefined
 ---
@@ -273,7 +273,7 @@ You can help develop this component by adding information to the [Another compon
 
 ## Designs
 
-A Figma link was not included when this component was added.
+A Figma design was not included when this component was added.
 
       There may be more information in the [Another component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
@@ -363,7 +363,7 @@ status: Experimental
 statusDate: January 2023
 excerpt: ""
 lede: ""
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/9999
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns
 contributorName: undefined
 contributorTeam: undefined
 ---
@@ -391,7 +391,7 @@ You can help develop this component by adding information to the [unknown-compon
 
 ## Designs
 
-A Figma link was not included when this component was added.
+A Figma design was not included when this component was added.
 
       There may be more information in the [unknown-component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
@@ -481,7 +481,7 @@ status: Experimental
 statusDate: January 2023
 excerpt: "Brief description here."
 lede: "Brief description here."
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/9999
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns
 contributorName: Special User
 contributorTeam: undefined
 ---
@@ -509,7 +509,7 @@ You can help develop this component by adding information to the [Component! wit
 
 ## Designs
 
-A Figma link was not included when this component was added.
+A Figma design was not included when this component was added.
 
       There may be more information in the [Component! with@ special#chars Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
