@@ -1,10 +1,14 @@
+const fs = require('fs')
+const path = require('path')
+
 const fetch = require('node-fetch')
 
 const {
   GITHUB_API_URL,
   GITHUB_API_TOKEN,
   GITHUB_REPO_OWNER,
-  GITHUB_REPO_NAME
+  GITHUB_REPO_NAME,
+  GITHUB_ISSUE_ASSIGNEE_USERNAMES
 } = require('../config')
 
 const getMainBranchSha = async () => {
@@ -153,4 +157,78 @@ const createPullRequest = async (branchName, title, description = '') => {
   }
 }
 
-module.exports = { pushToGitHub, createPullRequest }
+const createReviewIssue = async (pullRequest, submissionDetails) => {
+  const { url, number } = pullRequest
+  const { componentName, _email, _name, _team } = submissionDetails
+  let template
+
+  // Load the github issue template
+  try {
+    template = fs.readFileSync(
+      path.join(
+        __dirname,
+        '../../.github/ISSUE_TEMPLATE/EXPERIMENTAL_BUILDING_BLOCK.md'
+      ),
+      { encoding: 'utf8' }
+    )
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      console.error(
+        `[GITHUB] Issue template file does not exist: ${error.message}`
+      )
+    } else {
+      console.error(`[GITHUB] Error loading issue template: ${error.message}`)
+    }
+  }
+
+  if (template) {
+    // Remove the frontmatter
+    template = template.replace(/---[\s\S]*?---/, '').trim()
+    // Replace placeholder __VAR__ with values
+    const replacements = { URL: url, NUMBER: number }
+    for (const [variable, value] in Object.entries(replacements)) {
+      template = template.replace(RegExp(`__${variable}__`, 'g'), value)
+    }
+
+    try {
+      const issueEndpoint = `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/issues`
+      const issueData = {
+        owner: `${GITHUB_REPO_OWNER}`,
+        repo: `${GITHUB_REPO_NAME}`,
+        title: `Review experimental component submission: ${componentName}`,
+        body: `${template}`,
+        assignees: GITHUB_ISSUE_ASSIGNEE_USERNAMES,
+        labels: ['EXPERIMENTAL', 'awaiting triage']
+      }
+
+      const response = await fetch(issueEndpoint, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${GITHUB_API_TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(issueData)
+      })
+
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error(
+          `[GITHUB] Failed to create issue: ${response.status} - ${response.statusText}`
+        )
+        console.error(`[GITHUB] Error details: ${errorText}`)
+        throw new Error('Failed to create issue.')
+      }
+
+      const issue = await response.json()
+      console.log(`[GITHUB] Issue created: ${issue.html_url}`)
+      return {
+        url: issue.html_url,
+        number: issue.number
+      }
+    } catch (error) {
+      console.error('[GITHUB] Error creating issue:', error.message)
+      throw error
+    }
+  }
+}
+module.exports = { pushToGitHub, createPullRequest, createReviewIssue }

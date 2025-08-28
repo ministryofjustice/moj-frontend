@@ -36,7 +36,11 @@ const {
   setSuccessMessage,
   xssComponentCode
 } = require('../middleware/component-session')
-const { pushToGitHub, createPullRequest } = require('../middleware/github-api')
+const {
+  pushToGitHub,
+  createPullRequest,
+  createReviewIssue
+} = require('../middleware/github-api')
 const {
   sendSubmissionEmail,
   sendPrEmail,
@@ -471,7 +475,8 @@ router.post(
       const branchName = await pushToGitHub(submissionData, submissionRef)
       const { title, description } = getPrTitleAndDescription(session)
       const pr = await createPullRequest(branchName, title, description)
-      await sendPrEmail(pr, detailsForPrEmail)
+      const issue = await createReviewIssue(pr, detailsForPrEmail)
+      await sendPrEmail(pr, issue, detailsForPrEmail)
     } catch (error) {
       console.error('[FORM SUBMISSION] Error sending submission:', error)
       await sendSubmissionEmail(sessionText, markdownContent)

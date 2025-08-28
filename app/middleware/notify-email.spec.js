@@ -133,8 +133,12 @@ describe('sendPrEmail', () => {
 
     await sendPrEmail(
       {
-        url: 'http://example.com',
+        url: 'http://pr.example.com',
         number: 1234
+      },
+      {
+        url: 'http://issue.example.com',
+        number: 5678
       },
       {
         componentName: 'component',
@@ -149,9 +153,10 @@ describe('sendPrEmail', () => {
       expect.any(String),
       {
         personalisation: {
-          pr_link: 'http://example.com',
+          pr_link: 'http://pr.example.com',
           preview_link:
             'https://moj-frontend-pr-1234.apps.live.cloud-platform.service.justice.gov.uk',
+          issue_link: 'http://issue.example.com',
           component_name: 'component',
           name: 'bob',
           email: 'name@email.com',
@@ -172,6 +177,7 @@ describe('sendPrEmail', () => {
           url: 'http://example.com',
           number: 1234
         },
+        {},
         {}
       )
     ).rejects.toThrow('Failed to send email')
