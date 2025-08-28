@@ -1,0 +1,8 @@
+.classname {
+  color: red;
+
+  &--modifier {
+   color: blue;
+  }
+
+}
