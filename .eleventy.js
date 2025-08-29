@@ -1,4 +1,4 @@
-const { execSync } = require('child_process')
+const { execFileSync } = require('child_process')
 const fs = require('fs')
 const path = require('path')
 
@@ -11,6 +11,7 @@ const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const nunjucks = require('nunjucks')
 
+const rev = require('./filters/rev')
 const releasePackage = require('./package/package.json')
 const tabs = require('./shortcodes/tabs')
 const mojFilters = require('./src/moj/filters/all')
@@ -115,11 +116,23 @@ module.exports = function (eleventyConfig) {
     if (process.env.ENV === 'staging') return ''
 
     const dirPath = path.join(__dirname, 'src/moj/components', component)
-    const [commit, lastUpdated] = execSync(
-      `LANG=en_GB git log -n1 --pretty=format:%H,%ad --date=format:'%e %B %Y' ${dirPath}`
+
+    const lastCommit = execFileSync(
+      'git',
+      [
+        'log',
+        '-n1',
+        '--pretty=format:%H,%ad',
+        '--date=format:%e %B %Y',
+        dirPath
+      ],
+      {
+        cwd: process.cwd(), // or specify the working directory if needed
+        env: { ...process.env, LANG: 'en_GB' },
+        encoding: 'utf8'
+      }
     )
-      .toString()
-      .split(',')
+    const [commit, lastUpdated] = lastCommit.toString().split(',')
 
     return `<p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/${commit}">${lastUpdated}</a></p>`
   })
@@ -239,18 +252,42 @@ module.exports = function (eleventyConfig) {
     return nunjucksEnv.renderString(viewString, context)
   })
 
-  eleventyConfig.addFilter('rev', (filepath) => {
-    if (process.env.ENV === 'production' || process.env.ENV === 'staging') {
-      const manifest = JSON.parse(
-        fs.readFileSync('public/rev-manifest.json', 'utf8')
-      )
-      const revision = manifest[filepath]
-      return `/${revision || filepath}`
-    }
-    return `/${filepath}`
-  })
+  eleventyConfig.addFilter('rev', rev)
 
   eleventyConfig.addFilter('upperFirst', upperFirst)
+
+  // Implements a url transform to enable us to show the correct page
+  // highlighted within the 11ty generated nav for the contributions app
+  // - if page has a permalink starting with views, then the url is set to the
+  // community start page
+  eleventyConfig.addUrlTransform(({ url }) => {
+    if (url.match(/^\/views/i)) {
+      return '/contribute/add-new-component/start'
+    }
+    // Returning undefined skips the url transform.
+  })
+
+  // Copies the 11ty base layout and partials to the contributions app layouts directory
+  eleventyConfig.on('eleventy.before', async ({ directories }) => {
+    const srcDir = `${directories.includes}layouts`
+    const destDir = './app/views/common'
+    const templates = [
+      'base.njk',
+      '404.njk',
+      '500.njk',
+      'partials/header.njk',
+      'partials/header-no-nav.njk',
+      'partials/footer.njk'
+    ]
+
+    templates.forEach((template) => {
+      fs.copyFile(`${srcDir}/${template}`, `${destDir}/${template}`, (err) => {
+        if (err) {
+          console.log('Error Found:', err)
+        }
+      })
+    })
+  })
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')

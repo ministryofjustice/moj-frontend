@@ -1,0 +1,34 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+{% extends "contributions.njk" %}
+
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+
+    {{ govukInput({
+      hint: {
+        text: page.fields.figmaLink.hint
+      },
+      label: {
+        text: page.fields.figmaLink.label,
+        classes: "govuk-label--m"
+      },
+      id: "figma-link",
+      name: "figmaLink",
+      errorMessage: formErrors.figmaLink,
+      value: formData.figmaLink,
+      autocapitalize: false
+    }) }}
+
+    <div class="govuk-button-group moj-button-action">
+      {{ govukButton({
+        text: 'Continue',
+        preventDoubleClick: true
+      }) }}
+    </div>
+  {% endcall %}
+{% endblock %}

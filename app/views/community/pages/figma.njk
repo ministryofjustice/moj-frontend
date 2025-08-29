@@ -1,0 +1,43 @@
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% extends "contributions.njk" %}
+
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+
+    {{ govukRadios({
+      name: "figmaUrl",
+      fieldset: {
+        attributes: {
+          id: "figma-url"
+        },
+        legend: {
+          text: page.fields.figmaUrl.label,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes"
+        },
+        {
+          value: "no",
+          text: "No"
+        }
+      ],
+      errorMessage: formErrors.figmaUrl,
+      value: formData.figmaUrl
+    }) }}
+
+    <div class="govuk-button-group moj-button-action">
+      {{ govukButton({
+        text: 'Continue',
+        preventDoubleClick: true
+      }) }}
+    </div>
+  {% endcall %}
+{% endblock %}

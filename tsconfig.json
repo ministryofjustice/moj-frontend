@@ -12,25 +12,16 @@
       "path": "./gulp/tsconfig.json"
     },
     {
-      "path": "./helpers/tsconfig.json"
-    },
-    {
-      "path": "./middleware/tsconfig.json"
-    },
-    {
-      "path": "./routes/tsconfig.json"
-    },
-    {
-      "path": "./schema/tsconfig.json"
-    },
-    {
       "path": "./shortcodes/tsconfig.json"
+    },
+    {
+      "path": "./filters/tsconfig.json"
     },
     {
       "path": "./src/tsconfig.json"
     },
     {
-      "path": "./tests/tsconfig.json"
+      "path": "./app/tsconfig.json"
     }
   ]
 }

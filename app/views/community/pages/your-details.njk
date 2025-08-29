@@ -1,0 +1,85 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+{% extends "contributions.njk" %}
+
+{% set shareYourDetails = [] %}
+
+{% if formData and formData.shareYourDetails %}
+  {% if formData.shareYourDetails is iterable %}
+    {% set shareYourDetails = formData.shareYourDetails %}
+  {% else %}
+    {% set shareYourDetails = [formData.shareYourDetails] %}
+  {% endif %}
+{% endif %}
+
+{% set addNameToComponentPage = "addNameToComponentPage" in shareYourDetails %}
+{% set addTeamNameToComponentPage = "addTeamNameToComponentPage" in shareYourDetails %}
+
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+
+    <p class="govuk-body">Add your details to enable the MoJ Design System team to let you know when the component is live. They might also need to contact you with questions about the component.</p>
+
+    {{ govukInput({
+        label: {
+            text: page.fields.fullName.label,
+            classes: "govuk-label--m"
+        },
+        id: "full-name",
+        name: "fullName",
+        errorMessage: formErrors.fullName,
+        value: formData.fullName
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: page.fields.teamName.label,
+        classes: "govuk-label--m"
+      },
+      id: "team-name",
+      name: "teamName",
+      errorMessage: formErrors.teamName,
+      value: formData.teamName
+    }) }}
+
+    <input type="hidden" name="shareYourDetails" />
+
+    {{ govukCheckboxes({
+      name: "shareYourDetails",
+      id: 'share-your-details',
+      fieldset: {
+        legend: {
+          text: page.fields.shareYourDetails.label,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      hint: {
+        text: page.fields.shareYourDetails.hint
+      },
+      items: [
+        {
+          value: "addNameToComponentPage",
+          text: "Add my name to the component page",
+          checked: addNameToComponentPage
+        },
+        {
+          value: "addTeamNameToComponentPage",
+          text: "Add my team name to the component page",
+          checked: addTeamNameToComponentPage
+        }
+      ],
+      errorMessage: formErrors.shareYourDetails,
+      value: formData.shareYourDetails
+    }) }}
+
+    <div class="moj-button-action">
+      {{ govukButton({
+          text: 'Continue'
+      }) }}
+    </div>
+  {% endcall %}
+{% endblock %}

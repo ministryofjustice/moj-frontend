@@ -1,0 +1,69 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+{% extends "contributions.njk" %}
+
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+
+    {{ govukDateInput({
+      id: "testing-date",
+      namePrefix: "testingDate",
+      name: "testing-date",
+      errorMessage: formErrors.testingDate,
+      value: formData.testingDate,
+      items: [
+        {
+          classes: (formErrorStyles['testingDate-day'] | default('')) + " govuk-input--width-2",
+          name: "day",
+          value: formData['testingDate-day']
+        },
+        {
+          classes: (formErrorStyles['testingDate-month'] | default('')) + " govuk-input--width-2",
+          name: "month",
+          value: formData['testingDate-month']
+        },
+        {
+          classes: (formErrorStyles['testingDate-year'] | default('')) + " govuk-input--width-4",
+          name: "year",
+          value: formData['testingDate-year']
+        }
+      ],
+      fieldset: {
+        legend: {
+          text: page.fields.testingDate.label,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      hint: {
+        text: page.fields.testingDate.hint
+      }
+    }) }}
+
+    {{ govukCharacterCount({
+      id: "issues-discovered",
+      name: "issuesDiscovered",
+      maxwords: 250,
+      label: {
+        text: page.fields.issuesDiscovered.label,
+        classes: "govuk-label--m",
+        isPageHeading: true
+      },
+      errorMessage: formErrors.issuesDiscovered,
+      value: formData.issuesDiscovered
+    }) }}
+
+    <div class="govuk-button-group moj-button-action">
+      {{ govukButton({
+        text: 'Continue',
+        preventDoubleClick: true
+      }) }}
+    </div>
+  {% endcall %}
+{% endblock %}
