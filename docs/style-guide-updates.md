@@ -16,7 +16,6 @@ lede: 'New and updated entries in the <a href="/content-standards/style-guide/">
 </tr>
   </thead>
   <tbody class="govuk-table__body">
-</tr>
    <tr class="govuk-table__row">
     <td class="govuk-table__cell">
     <a href="/content-standards/style-guide#acronyms-and-initialisms"><b>acronyms and initialisms</b></a>
