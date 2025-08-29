@@ -16,6 +16,39 @@ lede: 'New and updated entries in the <a href="/content-standards/style-guide/">
     </tr>
   </thead>
   <tbody class="govuk-table__body">
+   <tr class="govuk-table__row">
+    <td class="govuk-table__cell">
+    <a href="/content-standards/style-guide#acronyms-and-initialisms"><b>acronyms and initialisms</b></a>
+    </td>
+    <td class="govuk-table__cell">
+     <span class="govuk-tag govuk-tag--blue">Updated</span>
+    </td>
+    <td class="govuk-table__cell">
+      <p>This change involves adding guidance on using sentence case when writing acronyms out in full. Strengthened the guidance on using upper case for initialisms rather than mixing cases.</p>
+    <td class="govuk-table__cell" data-sort-value="20250829">29 August 2025</td>
+  </tr>
+   <tr class="govuk-table__row">
+    <td class="govuk-table__cell">
+    <a href="/content-standards/style-guide#rosh-%28risk-of-serious-harm%29"><b>ROSH (risk of serious harm)</b></a>
+    </td>
+    <td class="govuk-table__cell">
+     <span class="govuk-tag govuk-tag--blue">Updated</span>
+    </td>
+    <td class="govuk-table__cell">
+      <p>This change involves using sentence case when writing ROSH out in full.</p>
+   <td class="govuk-table__cell" data-sort-value="20250829">29 August 2025</td>
+  </tr>
+   <tr class="govuk-table__row">
+    <td class="govuk-table__cell">
+    <a href="/content-standards/style-guide#rotl-%28release-on-temporary-licence%29"><b>ROTL (release on temporary licence)</b></a>
+    </td>
+    <td class="govuk-table__cell">
+     <span class="govuk-tag govuk-tag--blue">Updated</span>
+    </td>
+    <td class="govuk-table__cell">
+      <p>This change involves using sentence case when writing ROTL out in full.</p>
+  <td class="govuk-table__cell" data-sort-value="20250829">29 August 2025</td>
+ </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
         <a href="/content-standards/style-guide#victim-survivor-%28of-domestic-abuse%29"><b>victim-survivor (of domestic abuse)</b></a>
