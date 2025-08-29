@@ -37,12 +37,12 @@ For guidance or long-form content, spell them out on first mention (following th
 You should write acronyms and initialisms entirely in upper case, even if some words are prepositions like 'of'. For example, ROSH instead of RoSH. This is because:
 
 - studies, such as in the [Memory and Cognition journal article on reader ability](https://link.springer.com/article/10.3758/BF03198246), suggest that abbreviations written in a mix of upper and lower case are harder to read, especially for less skilled readers
-- it follows the convention established by the abbreviation of [ROTL for release on temporary licence](/#rotl-%28release-on-temporary-licence%29) and so helps to improve consistency
+- it follows the convention established by the abbreviation of [ROTL for release on temporary licence](#rotl-%28release-on-temporary-licence%29) and so helps to improve consistency   
 - guidance from the Guardian and GOV.UK recommends writing similar abbreviations such as MOT and FOI entirely in upper case
 
 You should use a mix of upper and lower-case letters when referring to the names of systems such OASys and NDelius.
 
-When spelling acronyms out in full, you should use sentence case unless there is a good reason to capitalise it. For example, ROSH (risk of serious harm). This is because it is easier to read and consistent with the [Service Manual’s guidance on writing for user interfaces](https://www.gov.uk/service-manual/design/writing-for-user-interfaces).
+When spelling acronyms out in full, you should use sentence case unless there is a good reason to capitalise it. For example, ROSH (risk of serious harm). This is because it is easier to read and consistent with the [Service manual guidance on writing for user interfaces](https://www.gov.uk/service-manual/design/writing-for-user-interfaces).
 
 ### alerts (DPS only)
 
