@@ -51,41 +51,6 @@ test.describe('validations', async () => {
       'Add a link to a Figma design file'
     ])
   })
-
-  test.describe('character count', async () => {
-    test.beforeEach(async () => {
-      await testPage.linkInput.fill('https://figma.com/design')
-    })
-
-    test('remaining count visible', async () => {
-      await expect(testPage.countMessage).toBeVisible()
-      await expect(testPage.countMessage).toHaveText(
-        'You have 250 words remaining'
-      )
-    })
-
-    test('count reduces', async () => {
-      await testPage.infoInput.pressSequentially('word word word ')
-      await expect(testPage.countMessage).toHaveText(
-        'You have 247 words remaining'
-      )
-    })
-
-    test('content too long', async () => {
-      const words = 'word '.repeat(251)
-      await testPage.infoInput.fill(words)
-      await expect(testPage.countMessage).toHaveText('You have 1 word too many')
-
-      await testPage.clickContinue()
-
-      await testPage.expectErrorSummaryWithMessages(['Enter 250 words or less'])
-
-      await expect(testPage.errorMessages).toHaveCount(2) // Includes the countMessage as well as validation error
-      await expect(testPage.errorMessages).toContainText([
-        'Enter 250 words or less'
-      ])
-    })
-  })
 })
 
 test.describe('navigation', async () => {

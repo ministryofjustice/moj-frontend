@@ -438,10 +438,6 @@ const config = {
         figmaLink: {
           label: 'Add a link to a Figma design file showing the component',
           hint: 'Set the sharing permissions so that it can be viewed.'
-        },
-        figmaLinkAdditionalInformation: {
-          label: 'Add information about the Figma design file (optional)',
-          hint: 'This might include the password for a protected file, or a link expiry date.'
         }
       },
       conditions: {

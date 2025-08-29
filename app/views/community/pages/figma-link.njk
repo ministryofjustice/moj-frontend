@@ -24,21 +24,6 @@
       autocapitalize: false
     }) }}
 
-    {{ govukCharacterCount({
-      name: "figmaLinkAdditionalInformation",
-      id: "figmaLink-additional-information",
-      maxwords: 250,
-      hint: {
-        text: page.fields.figmaLinkAdditionalInformation.hint
-      },
-      label: {
-        text: page.fields.figmaLinkAdditionalInformation.label,
-        classes: "govuk-label--m"
-      },
-      errorMessage: formErrors.figmaLinkAdditionalInformation,
-      value: formData.figmaLinkAdditionalInformation
-    }) }}
-
     <div class="govuk-button-group moj-button-action">
       {{ govukButton({
         text: 'Continue',
