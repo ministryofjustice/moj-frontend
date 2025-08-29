@@ -17,11 +17,12 @@ eleventyNavigation:
 
 ## If you work for the Ministry of Justice
 
-3 Figma Kits are automatically added to all Figma files in the MoJ:
+4 Figma Kits are automatically added to all Figma files in the MoJ:
 
 - [GOV.UK & MoJ Styles](https://www.figma.com/design/rbzFtXbYqItzqtfE3fdCQ4/GOV-%26-MoJ-Styles?m=auto&node-id=20-17040&t=u1P8phs3qyRxZ4FQ-1)
 - [GOV.UK Figma Kit](https://www.figma.com/design/cdmqMa73kZBDEC42spSVba/GOV-Figma-Kit?m=auto&node-id=20-17040&t=ZG7js0TWe3yzv5CD-1)
 - [MoJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=20-17040)
+- [Probation Digital Services (PDS) Figma Kit](https://www.figma.com/design/AT9lj3HbJj6lYKrZLeM8CN/PDS-Figma-Kit?m=auto)
 
 This enables Figma prototypes to benefit from centrally maintained updates.
 
@@ -65,14 +66,14 @@ When the Figma Kits are updated, you’ll be notified in Figma. You can also che
 
 ### How to download and use the Figma Kits
 
-<div class="govuk-inset-text">
-  To use the MoJ Figma Kit, you will need to add all three Figma libraries to your project.
-</div>
-
 1. Select the Figma Kit you want to use from the Figma community:
    - [GOV.UK & MoJ Styles](https://www.figma.com/community/file/1543188213395170918)
    - [GOV.UK Figma Kit](https://www.figma.com/community/file/1543190867840891511)
    - [MoJ Figma Kit](https://www.figma.com/community/file/1543193133973726850)
+
+<div class="govuk-inset-text">
+  To use the MoJ Figma Kit, you will need to add all three Figma libraries to your project.
+</div>
 
 2. Select 'Open in Figma'.
 
