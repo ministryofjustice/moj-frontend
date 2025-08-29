@@ -66,13 +66,13 @@ When the Figma Kits are updated, you’ll be notified in Figma. You can also che
 
 ### How to download and use the Figma Kits
 
-1. Select the Figma Kit you want to use from the Figma community:
+1. Select the Figma Kit you want to use:
    - [GOV.UK & MoJ Styles](https://www.figma.com/community/file/1543188213395170918)
    - [GOV.UK Figma Kit](https://www.figma.com/community/file/1543190867840891511)
    - [MoJ Figma Kit](https://www.figma.com/community/file/1543193133973726850)
 
 <div class="govuk-inset-text">
-  To use the MoJ Figma Kit, you will need to add all three Figma libraries to your project.
+  To use the MoJ Figma Kit, you'll need to add all 3 Figma libraries to your project.
 </div>
 
 2. Select 'Open in Figma'.
