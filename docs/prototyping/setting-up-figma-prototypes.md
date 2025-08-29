@@ -65,18 +65,28 @@ When the Figma Kits are updated, you’ll be notified in Figma. You can also che
 
 ### How to download and use the Figma Kits
 
-1. Open the Figma Kit you want to download and use:
-   - [GOV.UK & MoJ Styles](https://www.figma.com/design/rbzFtXbYqItzqtfE3fdCQ4/GOV-%26-MoJ-Styles?m=auto&node-id=20-17040&t=u1P8phs3qyRxZ4FQ-1)
-   - [GOV.UK Figma Kit](https://www.figma.com/design/cdmqMa73kZBDEC42spSVba/GOV-Figma-Kit?m=auto&node-id=20-17040&t=ZG7js0TWe3yzv5CD-1)
-   - [MoJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=20-17040)
-2. Select the Figma logo at the top of the left-hand side navigation and go to File > Save local copy.
-<p><img src="/assets/images/figma-guidance-download-kit.png" style="border:none" alt="A cropped view of the side navigation in the Figma app. The Figma logo has been selected and a menu has opened. The 'file' submenu has been opened and 'Save local copy...' is being hovered over."></p>
+<div class="govuk-inset-text">
+  To use the MoJ Figma Kit, you will need to add all three Figma libraries to your project.
+</div>
 
-3. Add the downloaded file into your project, publish it as a library, and use it in your files.
+1. Select the Figma Kit you want to use from the Figma community:
+   - [GOV.UK & MoJ Styles](https://www.figma.com/community/file/1543188213395170918)
+   - [GOV.UK Figma Kit](https://www.figma.com/community/file/1543190867840891511)
+   - [MoJ Figma Kit](https://www.figma.com/community/file/1543193133973726850)
+
+2. Select 'Open in Figma'.
+
+3. If you have multiple Figma accounts, you'll be asked where you would like to open the file. Select the account you would like to open it with. The file will be now be saved in your drafts.
+
+4. Move the file to the project you're working on so that it can be accessed by everyone working on the project. [Read about moving files in Figma](https://help.figma.com/hc/en-us/articles/360038511573-Move-a-file).
+
+5. Publish the file as a library.  [Read about publishing a library in Figma](https://help.figma.com/hc/en-us/articles/360025508373-Publish-a-library).
+
+6. Repeat steps 1 to 5 for each Figma Kit you want to add to your project.
 
 ### Manually update the Figma Kits
 
-1. Every so often, check [GOV.UK & MoJ Styles](https://www.figma.com/design/rbzFtXbYqItzqtfE3fdCQ4/GOV-%26-MoJ-Styles?m=auto&node-id=20-17040&t=u1P8phs3qyRxZ4FQ-1), the [GOV.UK Figma Kit](https://www.figma.com/design/cdmqMa73kZBDEC42spSVba/GOV-Figma-Kit?m=auto&node-id=20-17040&t=ZG7js0TWe3yzv5CD-1) and the [MoJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=20-17040) for updates.
+1. Every so often, check [GOV.UK & MoJ Styles](https://www.figma.com/community/file/1543188213395170918), the [GOV.UK Figma Kit](https://www.figma.com/community/file/1543190867840891511) and the [MoJ Figma Kit](https://www.figma.com/community/file/1543193133973726850) for updates.
 2. Save a local copy of the latest version of the Figma Kit you want to update.
 3. Reload it into your Figma workspace as a library.
 4. Open your design files, and use the [swap libraries](https://help.figma.com/hc/en-us/articles/4404856784663-Swap-style-and-component-libraries) feature in Figma to replace all references to the outdated version of the MoJ Figma Kit. You can only use 'swap libraries' with a paid Figma licence. If you do not have one, [swap components](https://help.figma.com/hc/en-us/articles/360039150413-Swap-components-and-instances) individually instead.
