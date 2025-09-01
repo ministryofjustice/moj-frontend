@@ -437,7 +437,7 @@ const config = {
       fields: {
         figmaLink: {
           label: 'Add a link to a Figma design file showing the component',
-          hint: 'Set the sharing permissions so that it can be viewed.'
+          hint: 'Set the sharing permissions so that it can be viewed and copied.'
         }
       },
       conditions: {
