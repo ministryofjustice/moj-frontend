@@ -270,7 +270,7 @@ const config = {
       title: 'Verify that you work for MoJ',
       fields: {
         emailAddress: {
-          label: 'Enter your justice.gov.uk email address'
+          label: 'Enter your MoJ email address'
         }
       },
       showOnCya: false,

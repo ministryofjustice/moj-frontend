@@ -354,7 +354,7 @@ router.post('/email/resend', verifyCsrf, async (req, res, next) => {
 router.get('/email/not-allowed', (req, res) => {
   res.render('email-not-allowed', {
     page: {
-      title: 'You did not enter an MoJ email address',
+      title: 'You cannot submit a component with this email address',
       email: req.query?.emailAddress
     },
     resetUrl: `${ADD_NEW_COMPONENT_ROUTE}/email?reset=true`

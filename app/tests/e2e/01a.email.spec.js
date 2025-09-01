@@ -34,12 +34,12 @@ test.describe('validation', async () => {
 
     await basePage.clickContinue()
     await basePage.expectErrorSummaryWithMessages([
-      'Enter an email address in the format: name@justice.gov.uk'
+      'Enter an email address in the correct format, for example name@justice.gov.uk'
     ])
 
     await expect(basePage.errorMessages).toHaveCount(1)
     await expect(basePage.errorMessages).toContainText([
-      'Enter an email address in the format: name@justice.gov.uk'
+      'Enter an email address in the correct format, for example name@justice.gov.uk'
     ])
   })
 
