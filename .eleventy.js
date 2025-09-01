@@ -295,8 +295,8 @@ module.exports = function (eleventyConfig) {
     return date.getTime()
   })
 
-  eleventyConfig.addFilter('markdown', (content) => {
-    return md.renderInline(content)
+  eleventyConfig.addFilter('markdownify', (content) => {
+    return `${md.render(content)}`
   })
 
   // Rebuild when a change is made to a component template file
