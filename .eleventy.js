@@ -29,23 +29,7 @@ module.exports = function (eleventyConfig) {
     'node_modules/govuk-frontend/dist/'
   ])
 
-  Object.entries({
-    ...eleventyConfig.nunjucksFilters,
-    ...mojFilters()
-  }).forEach(([name, callback]) => {
-    nunjucksEnv.addFilter(name, callback)
-  })
-
-  nunjucksEnv.addFilter(
-    'eleventyNavigation',
-    eleventyNavigationPlugin.navigation.find
-  )
-
-  eleventyConfig.setLibrary('njk', nunjucksEnv)
-
-  eleventyConfig.setLibrary(
-    'md',
-    markdownIt({
+  const md =    markdownIt({
       html: true,
       typographer: true,
       quotes: '“”‘’',
@@ -61,6 +45,24 @@ module.exports = function (eleventyConfig) {
       .use(markdownItAnchor, {
         level: [1, 2, 3, 4]
       })
+
+
+  Object.entries({
+    ...eleventyConfig.nunjucksFilters,
+    ...mojFilters()
+  }).forEach(([name, callback]) => {
+    nunjucksEnv.addFilter(name, callback)
+  })
+
+  nunjucksEnv.addFilter(
+    'eleventyNavigation',
+    eleventyNavigationPlugin.navigation.find
+  )
+
+  eleventyConfig.setLibrary('njk', nunjucksEnv)
+
+  eleventyConfig.setLibrary(
+    'md', md
   )
 
   eleventyConfig.addShortcode('example', function (exampleHref, height) {
@@ -287,6 +289,14 @@ module.exports = function (eleventyConfig) {
         }
       })
     })
+  })
+
+  eleventyConfig.addFilter('timestamp', (date) => {
+    return date.getTime()
+  })
+
+  eleventyConfig.addFilter('markdown', (content) => {
+    return md.renderInline(content)
   })
 
   // Rebuild when a change is made to a component template file
