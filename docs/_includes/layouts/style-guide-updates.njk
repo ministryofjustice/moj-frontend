@@ -1,0 +1,36 @@
+{% extends "./base.njk" %}
+
+{% block content %}
+    {% include "./partials/page-header.njk" %}
+
+    <div class="app-page__body">
+        <div class="app-page__width-container">
+          {{ content | safe }}
+          <table class="govuk-table" data-module="moj-sortable-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header" aria-sort="none">Entry</th>
+                <th scope="col" class="govuk-table__header" aria-sort="none">Type</th>
+                <th scope="col" class="govuk-table__header" aria-sort="none">Description</th>
+                <th scope="col" class="govuk-table__header" aria-sort="descending">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%- for post in collections['style-guide-update'] -%}
+                  {% set tagClass='govuk-tag govuk-tag--green' if post.data.type | lower === 'new' else 'govuk-tag govuk-tag--blue' %}
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell govuk-!-font-weight-bold"><a href="/content-standards/style-guide#{{post.data.anchor }}">{{ post.data.entry }}</a></td>
+          <td class="govuk-table__cell"><span class="{{ tagClass }}">{{ post.data.type }}</span></td>
+                      <td class="govuk-table__cell">
+
+            {{ post.content }}
+
+          </td>
+          <td class="govuk-table__cell" data-sort-value="{{post.date | timestamp}}">{{ post.date | mojDate('date') }}</td>
+                  </tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+        </div>
+    </div>
+{% endblock %}
