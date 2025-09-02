@@ -1,5 +1,5 @@
 ---
-entry: PNC Number
+title: PNC Number
 anchor: pnc-number
 type: New
 date: 2025-01-09

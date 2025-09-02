@@ -1,5 +1,5 @@
 ---
-entry: victim-survivor (of domestic abuse)
+title: victim-survivor (of domestic abuse)
 anchor: victim-survivor-%28of-domestic-abuse%29
 type: New
 date: 2025-08-12

@@ -1,5 +1,5 @@
 ---
-entry: post-sentence supervision (PSS)
+title: post-sentence supervision (PSS)
 anchor: post-sentence-supervision-%28pss%29
 type: New
 date: 2025-06-09

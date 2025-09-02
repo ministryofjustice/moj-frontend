@@ -1,5 +1,5 @@
 ---
-entry: acronyms and initialisms
+title: acronyms and initialisms
 anchor: acronyms-and-initialisms
 type: Updated
 date: 2025-08-29

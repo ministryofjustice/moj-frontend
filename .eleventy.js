@@ -28,23 +28,22 @@ module.exports = function (eleventyConfig) {
     'node_modules/govuk-frontend/dist/'
   ])
 
-  const md =    markdownIt({
-      html: true,
-      typographer: true,
-      quotes: '“”‘’',
-      highlight(code, language) {
-        const { value } = hljs.highlight(code.trim(), {
-          language: language || 'plaintext'
-        })
-
-        return value
-      }
-    })
-      .disable('code')
-      .use(markdownItAnchor, {
-        level: [1, 2, 3, 4]
+  const md = markdownIt({
+    html: true,
+    typographer: true,
+    quotes: '“”‘’',
+    highlight(code, language) {
+      const { value } = hljs.highlight(code.trim(), {
+        language: language || 'plaintext'
       })
 
+      return value
+    }
+  })
+    .disable('code')
+    .use(markdownItAnchor, {
+      level: [1, 2, 3, 4]
+    })
 
   Object.entries({
     ...eleventyConfig.nunjucksFilters,
@@ -60,9 +59,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setLibrary('njk', nunjucksEnv)
 
-  eleventyConfig.setLibrary(
-    'md', md
-  )
+  eleventyConfig.setLibrary('md', md)
 
   eleventyConfig.addShortcode('example', function (exampleHref, height) {
     let { data, content: nunjucksCode } = matter(

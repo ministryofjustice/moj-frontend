@@ -26,7 +26,7 @@
     border: 1px solid #b1b4b6;
   }
 
-  strong,
+  strong:not(.govuk-tag),
   b {
     @include govuk-typography-weight-bold;
   }

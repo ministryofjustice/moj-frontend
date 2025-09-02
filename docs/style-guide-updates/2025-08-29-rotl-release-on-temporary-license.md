@@ -1,5 +1,5 @@
 ---
-entry: ROTL (release on temporary licence)
+title: ROTL (release on temporary licence)
 anchor: rotl-%28release-on-temporary-licence%29
 type: Updated
 date: 2025-08-29
