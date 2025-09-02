@@ -1,5 +1,5 @@
 ---
-entry: pre-sentence report (PSR)
+title: pre-sentence report (PSR)
 anchor: pre-sentence-report-%28psr%29
 type: New
 date: 2025-04-01

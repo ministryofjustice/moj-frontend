@@ -1,5 +1,5 @@
 ---
-entry: local admin unit
+title: local admin unit
 anchor: local-admin-unit
 type: New
 date: 2025-08-11

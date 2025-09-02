@@ -1,5 +1,5 @@
 ---
-entry: Taser (HMPPS only)
+title: Taser (HMPPS only)
 anchor: taser-%28hmpps-only%29
 type: New
 date: 2025-08-06

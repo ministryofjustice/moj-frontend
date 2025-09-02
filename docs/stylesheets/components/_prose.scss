@@ -42,7 +42,7 @@
     }
   }
 
-  strong,
+  strong:not(.govuk-tag),
   b {
     @include govuk-typography-weight-bold;
   }

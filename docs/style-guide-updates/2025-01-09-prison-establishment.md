@@ -1,5 +1,5 @@
 ---
-entry: Prison, establishment
+title: Prison, establishment
 anchor: prison%2C-establishment
 type: New
 date: 2025-02-25

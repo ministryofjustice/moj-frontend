@@ -1,5 +1,5 @@
 ---
-entry: unlock-list
+title: unlock-list
 anchor: unlock-list
 type: New
 date: 2025-08-06

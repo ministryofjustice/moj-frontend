@@ -1,5 +1,5 @@
 ---
-entry: probation delivery unit (PDU)
+title: probation delivery unit (PDU)
 anchor: probation-delivery-unit-%28pdu%29
 type: updated
 date: 2025-06-23

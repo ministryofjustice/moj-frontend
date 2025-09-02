@@ -1,5 +1,5 @@
 ---
-entry: ROSH (Risk of Serious Harm)
+title: ROSH (Risk of Serious Harm)
 anchor: rosh-(risk-of-serious-harm)
 type: Updated
 date: 2025-08-29

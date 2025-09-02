@@ -1,5 +1,5 @@
 ---
-entry: Category (such as Category A prison)
+title: Category (such as Category A prison)
 anchor: category-(such-as-category-a-prison)
 type: updated
 date: 2025-02-21

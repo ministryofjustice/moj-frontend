@@ -1,5 +1,5 @@
 ---
-entry: domestic abuse
+title: domestic abuse
 anchor: domestic-abuse
 type: New
 date: 2025-08-12
