@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "css",
+  "componentCodeLanguageOther": "",
+  "componentCode": "@include govuk-exports(\"govuk/component/inset-text\") {\r\n  .govuk-inset-text {\r\n    @include govuk-font($size: 19);\r\n    @include govuk-text-colour;\r\n    padding: govuk-spacing(3);\r\n    // Margin top intended to collapse\r\n    // This adds an additional 10px to the paragraph above\r\n    @include govuk-responsive-margin(6, \"top\");\r\n    @include govuk-responsive-margin(6, \"bottom\");\r\n\r\n    clear: both;\r\n\r\n    border-left: $govuk-border-width-wide solid $govuk-border-colour;\r\n\r\n    > :first-child {\r\n      margin-top: 0;\r\n    }\r\n\r\n    > :only-child,\r\n    > :last-child {\r\n      margin-bottom: 0;\r\n    }\r\n  }\r\n}",
+  "componentCodeUsage": ""
+}
