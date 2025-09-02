@@ -1,0 +1,76 @@
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/tag/macro.njk" import govukTag %}
+
+{% extends "contributions.njk" %}
+
+{% set uploadedFileName = formData.componentImage.originalname %}
+
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken,
+    attributes: {
+     enctype: "multipart/form-data"
+    }
+  }) %}
+
+    <p class="govuk-body">Ensure that the image shows the component clearly. For example, remove other parts of the page and ensure it's on a white background.</p>
+
+    {% if uploadedFileName %}
+      <input type="hidden" name="componentImage" value="{{formData.componentImage.originalname}}">
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--long-key',
+        rows: [
+            {
+              key: {
+                text: "File"
+              },
+              value: {
+                text: uploadedFileName
+              },
+              actions: {
+                items: [
+                  {
+                    href: changeUrl,
+                    text: "Remove",
+                    visuallyHiddenText: uploadedFileName
+                  }
+                ]
+              }
+            }
+          ]
+      }) }}
+    {% else %}
+      {{ govukFileUpload({
+        id: "component-image",
+        name: "componentImage",
+        label: {
+          text: page.fields.componentImage.label,
+          classes: "govuk-label--m"
+        },
+        hint: {
+          text: page.fields.componentImage.hint
+        },
+        attributes: {
+          accept: ".jpg, .jpeg, .bmp, .png, .tif, .tiff, .pdf"
+        },
+        errorMessage: formErrors.componentImage
+      }) }}
+    {% endif %}
+
+    <div class="govuk-button-group moj-button-action">
+      {% if uploadedFileName %}
+        {{ govukButton({
+          text: 'Continue',
+          preventDoubleClick: true
+        }) }}
+      {% else %}
+        {{ govukButton({
+          text: 'Upload',
+          preventDoubleClick: true
+        }) }}
+      {% endif %}
+    </div>
+  {% endcall %}
+{% endblock %}

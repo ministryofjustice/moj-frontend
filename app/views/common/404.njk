@@ -1,0 +1,19 @@
+{% extends "./base.njk" %}
+{% block header %}
+    {% include "./partials/header-no-nav.njk" %}
+{% endblock %}
+{% block main %}
+    <div class="app-layout__content">
+        <main id="main-content" class="app-prose-scope">
+            <h1>{{ title }}</h1>
+            <p>If you typed the web address, check it is correct.</p>
+            <p>If you pasted the web address, check you copied the entire address.</p>
+            <p>
+                <a href="/help" class="govuk-link">Contact the MoJ Design System team</a> if you need help.
+            </p>
+            {% if errorDetails %}<pre>Error Details: {{ errorDetails }}</pre>{% endif %}
+            {% if returnLink %}<a href="{{ returnLink.href }}" class="govuk-link">{{ returnLink.text }}</a>{% endif %}
+        </main>
+    </div>
+</div>
+{% endblock %}

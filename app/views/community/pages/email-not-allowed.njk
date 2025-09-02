@@ -1,0 +1,22 @@
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% extends "contributions.njk" %}
+{% block form %}
+  {%- if page.email %}
+  {% call govukInsetText({
+    classes: "govuk-!-width-two-thirds"
+  }) %}
+      You entered the email address: <strong>{{page.email}}</strong>
+    {%- endcall %}
+  {%- endif %}
+  <p class="govuk-body">Only people who work at MoJ can submit a component.<p>
+  <p class="govuk-body">If you entered an MoJ email address that was not recognised, you can <a href="/help/">contact the MoJ Design System team</a>.</p>
+  <p class="govuk-body">If you made an error and have an MoJ email address, you can enter it.</p>
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Enter a different email address",
+      href: resetUrl
+    }) }}
+    <a href="/" class="govuk-link">Go back to the MoJ Design System</a>
+  </div>
+{% endblock %}

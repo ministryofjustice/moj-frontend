@@ -1,0 +1,31 @@
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% extends "contributions.njk" %}
+
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+  {%- if page.email %}
+  {% call govukInsetText({
+    classes: "govuk-!-width-two-thirds"
+  }) %}
+      You entered the email address: <strong>{{page.email}}</strong>
+    {%- endcall %}
+  {%- endif %}
+  <p class="govuk-body">Before you resend the email, you need to:</p>
+    <ol class="govuk-list govuk-list--number">
+      <li>Check that you entered the email address correctly. If it’s incorrect, <a class="govuk-link" href="{{resetUrl}}">enter a different email address</a>. </li>
+      <li>Look in your email account’s junk or spam folder.</li>
+      <li>Wait 5 minutes for the email to arrive.</li>
+    </ol>
+    <p class="govuk-body">If you have not received a confirmation email after step 3, you can resend it.</p>
+
+    <div class="moj-button-action">
+        {{ govukButton({
+            text: 'Resend confirmation email'
+        }) }}
+    </div>
+    <p class="govuk-body">If none of this works, <a class="govuk-link" href="/help">contact the MoJ Design System team for help</a>
+  {% endcall %}
+{% endblock %}

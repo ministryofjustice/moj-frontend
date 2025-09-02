@@ -20,9 +20,9 @@
 }
 
 .app-layout__sidebar {
-  @include govuk-responsive-padding(6, "bottom");
   z-index: 1;
   background-color: govuk-colour("white");
+  @include govuk-responsive-padding(6, "bottom");
 
   @include govuk-media-query(app.$breakpoint) {
     border-right: 1px solid $govuk-border-colour;
@@ -34,8 +34,20 @@
   overflow-x: hidden;
 }
 
-.app-layout__backlink {
-  max-width: 840px;
+.app-layout__content {
+  box-sizing: border-box;
+  max-width: 1100px;
+  @include govuk-responsive-padding(6);
+
+  @include govuk-media-query(app.$breakpoint) {
+    @include govuk-responsive-padding(9, "top");
+    @include govuk-responsive-padding(9, "right");
+    @include govuk-responsive-padding(9, "left");
+  }
+}
+
+.app-layout__back-link {
+  position: absolute;
   @include govuk-responsive-padding(6, "right");
   @include govuk-responsive-padding(6, "left");
 

@@ -15,8 +15,10 @@ package/*
 !package/README.md
 
 # Other
+*.tsbuildinfo
 .DS_Store
 .env
+.env.*
 .port.tmp
 .vscode/
 *.tsbuildinfo
@@ -25,3 +27,15 @@ sass-cache
 settings.json
 tmp-uploads
 tests/e2e/screenshots/*
+
+# Sentry Config File
+.env.sentry-build-plugin
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+app/tests/playwright/.state/session.json
+playwright/.state/session.json

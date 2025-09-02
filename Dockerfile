@@ -11,6 +11,7 @@ COPY package.json package.json
 RUN npm ci
 
 COPY docs docs
+COPY filters filters
 COPY src src
 COPY package package
 COPY shortcodes shortcodes
@@ -31,6 +32,7 @@ COPY package.json package.json
 RUN npm ci
 
 COPY docs docs
+COPY filters filters
 COPY src src
 COPY package package
 COPY shortcodes shortcodes
@@ -85,55 +87,46 @@ FROM base AS staging-express-app
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY src src
-COPY app.js app.js
-COPY config.js config.js
-COPY helpers helpers
-COPY schema schema
-COPY middleware middleware
-COPY routes routes
-COPY views views
+COPY app app
+COPY filters filters
+COPY playwright playwright
+COPY .github .github
 COPY --from=staging-build /app/public public
 ENV ENV=staging
 # run express app as a non root user
 RUN useradd -u 1001 -m nonrootuser
 USER 1001
 EXPOSE 3001
-CMD ["node", "app.js"]
+CMD ["node", "app/app.js"]
 
 FROM base AS preview-express-app
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY src src
-COPY app.js app.js
-COPY config.js config.js
-COPY helpers helpers
-COPY schema schema
-COPY middleware middleware
-COPY routes routes
-COPY views views
+COPY app app
+COPY filters filters
+COPY playwright playwright
+COPY .github .github
 COPY --from=preview-build /app/public public
 ENV ENV=staging
 # run express app as a non root user
 RUN useradd -u 1001 -m nonrootuser
 USER 1001
 EXPOSE 3001
-CMD ["node", "app.js"]
+CMD ["node", "app/app.js"]
 
 FROM base AS production-express-app
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY src src
-COPY app.js app.js
-COPY config.js config.js
-COPY helpers helpers
-COPY schema schema
-COPY middleware middleware
-COPY routes routes
-COPY views views
+COPY app app
+COPY filters filters
+COPY playwright playwright
+COPY .github .github
 COPY --from=production-build /app/public public
 ENV ENV=production
 # run express app as a non root user
 RUN useradd -u 1001 -m nonrootuser
 USER 1001
 EXPOSE 3001
-CMD ["node", "app.js"]
+CMD ["node", "app/app.js"]

@@ -1,0 +1,104 @@
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% extends "contributions.njk" %}
+
+{% block form %}
+  {% call form({
+    action: submitUrl,
+    csrfToken: csrfToken
+  }) %}
+
+    <p class="govuk-body">Sharing accessibility findings helps people understand how to use the component. It also helps the Design System team to review it.</p>
+
+    {{ govukRadios({
+      name: "hasComponentBeenTestedExternalAccessibility",
+      hint: {
+      text: page.fields.hasComponentBeenTestedExternalAccessibility.hint
+      },
+      fieldset: {
+        attributes: {
+          id: "has-component-been-tested-external-accessibility"
+        },
+        legend: {
+          text: page.fields.hasComponentBeenTestedExternalAccessibility.label,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes"
+        },
+        {
+          value: "no",
+          text: "No"
+        }
+      ],
+      errorMessage: formErrors.hasComponentBeenTestedExternalAccessibility,
+      value: formData.hasComponentBeenTestedExternalAccessibility
+    }) }}
+
+    {{ govukRadios({
+      name: "hasComponentBeenTestedInternalAudit",
+      hint: {
+        text: page.fields.hasComponentBeenTestedInternalAudit.hint
+      },
+      fieldset: {
+        attributes: {
+          id: "has-component-been-tested-internal-audit"
+        },
+        legend: {
+          text: page.fields.hasComponentBeenTestedInternalAudit.label,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes"
+        },
+        {
+          value: "no",
+          text: "No"
+        }
+      ],
+      errorMessage: formErrors.hasComponentBeenTestedInternalAudit,
+      value: formData.hasComponentBeenTestedInternalAudit
+    }) }}
+
+    {{ govukRadios({
+      name: "hasComponentBeenTestedUsingAssistiveTechnology",
+      hint: {
+        text: page.fields.hasComponentBeenTestedUsingAssistiveTechnology.hint
+      },
+      fieldset: {
+        attributes: {
+          id: "has-component-been-tested-using-assistive-technology"
+        },
+        legend: {
+          text: page.fields.hasComponentBeenTestedUsingAssistiveTechnology.label,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes"
+        },
+        {
+          value: "no",
+          text: "No"
+        }
+      ],
+      errorMessage: formErrors.hasComponentBeenTestedUsingAssistiveTechnology,
+      value: formData.hasComponentBeenTestedUsingAssistiveTechnology
+    }) }}
+
+    <div class="govuk-button-group moj-button-action">
+      {{ govukButton({
+        text: 'Continue',
+        preventDoubleClick: true
+      }) }}
+    </div>
+  {% endcall %}
+{% endblock %}

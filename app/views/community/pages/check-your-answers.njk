@@ -1,0 +1,50 @@
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "macros/summary-card.njk" import summaryCard %}
+{% from "macros/page-heading.njk" import pageHeading %}
+{% from "macros/form.njk" import form %}
+
+{% extends "contributions.njk" %}
+
+{% block form %}
+  {% for section in sections %}
+    {% set cardParams = {
+        title: {
+          text: section.title
+        },
+        actions: {
+          items: section.actions
+        }
+      }
+    %}
+
+    {% if section.answerRows.length > 0 %}
+      {{ govukSummaryList({
+          card:cardParams,
+          rows: section.answerRows
+      }) }}
+    {% else %}
+      {% call summaryCard(cardParams) -%}
+        <p class="govuk-body govuk-!-margin-bottom-0">None</p>
+      {%- endcall %}
+    {% endif %}
+  {% endfor %}
+
+  {% call form({
+    csrfToken: csrfToken,
+    action: submitUrl
+  }) %}
+    <div class="govuk-button-group moj-button-action">
+      {{ govukButton({
+        text: 'Accept and send'
+      }) }}
+      {% if isDev %}
+        {{ govukButton({
+          text: "Generate markdown",
+          classes: "govuk-button--secondary",
+          href: generateLink
+        }) }}
+      {% endif %}
+    </div>
+  {% endcall %}
+{% endblock %}
