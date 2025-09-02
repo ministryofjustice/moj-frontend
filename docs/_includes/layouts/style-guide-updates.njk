@@ -14,14 +14,17 @@
 
           {%- for post in collections['style-guide-update'] -%}
             {% set link = '<a class="govuk-!-font-weight-bold" href="/content-standards/style-guide#'+post.data.anchor+'">'+post.data.entry+'</a>' %}
-            {% set postContent = post.content | markdownify  %}
+            {% set tagText = post.data.type | upperFirst %}
             {% set tagClass='govuk-tag govuk-tag--green' if post.data.type | lower === 'new' else 'govuk-tag govuk-tag--blue' %}
+            {% set postContent = post.content | markdownify  %}
+
             {% set row = [
                 { html: link },
-                { html: govukTag({ text: post.data.type, classes: tagClass})},
+                { html: govukTag({ text: tagText, classes: tagClass})},
                 { html: postContent },
                 { text: post.date | mojDate('date'), attributes: { 'data-sort-value': post.date | timestamp } }
             ] %}
+
             {% set rows = (rows.push(row), rows) %}
           {% endfor %}
 
