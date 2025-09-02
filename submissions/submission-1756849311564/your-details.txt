@@ -1,0 +1,9 @@
+{
+  "fullName": "dave smith",
+  "teamName": "the best team",
+  "shareYourDetails": [
+    "",
+    "addNameToComponentPage",
+    "addTeamNameToComponentPage"
+  ]
+}
