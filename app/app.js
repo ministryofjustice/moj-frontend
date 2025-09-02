@@ -64,8 +64,14 @@ if (!(isDev || isTest)) {
             'https://www.googletagmanager.com',
             (req, res) => `'nonce-${res.locals.cspNonce}'`
           ],
-          connectSrc: ["'self'", 'www.googletagmanager.com', 'www.google.com'],
-          imgSrc: ["'self'", 'www.googletagmanager.com']
+          connectSrc: [
+            "'self'",
+            '*.googletagmanager.com',
+            '*.google.com',
+            '*.google-analytics.com'
+          ],
+          frameSrc: ['*.googletagmanager.com'],
+          imgSrc: ["'self'", '*.googletagmanager.com']
         }
       },
       referrerPolicy: {
