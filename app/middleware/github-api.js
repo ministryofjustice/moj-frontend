@@ -187,7 +187,7 @@ const createReviewIssue = async (pullRequest, submissionDetails) => {
     // Replace placeholder __VAR__ with values
     const replacements = { URL: url, NUMBER: number }
     for (const [variable, value] in Object.entries(replacements)) {
-      template = template.replace(RegExp(`__${variable}__`, 'g'), value)
+      template = template.replaceAll(`__${variable}__`, value)
     }
 
     try {

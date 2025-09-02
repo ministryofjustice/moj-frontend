@@ -510,15 +510,16 @@ router.post(
   (req, res, next) => {
     if (req.file) {
       // return to same page after upload
-      res.redirect(`${ADD_NEW_COMPONENT_ROUTE}${req.url}`)
+      return res.redirect(`${ADD_NEW_COMPONENT_ROUTE}${req.url}`)
     }
+
     if (req.nextPage) {
-      res.redirect(`${req.nextPage}`)
-    } else {
-      const error = new ApplicationError('Unknown page', 404)
-      console.log(error.toErrorObject())
-      next(error)
+      return res.redirect(`${req.nextPage}`)
     }
+
+    const error = new ApplicationError('Unknown page', 404)
+    console.log(error.toErrorObject())
+    next(error)
   }
 )
 

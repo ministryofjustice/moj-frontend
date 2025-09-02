@@ -1,7 +1,7 @@
 ---
 layout: layouts/nav-only.njk
 title: Submit a component
-permalink: ./views/common/partials/side-navigation.njk
+permalink: ./app/views/common/partials/side-navigation.njk
 permalinkBypassOutputDir: true
 eleventyNavigation:
   order: 30
