@@ -13,7 +13,7 @@ test.beforeEach(async ({ page }) => {
     /Verify that you work for MoJ - MoJ Design System/
   )
 
-  emailInput = page.getByLabel('Enter your justice.gov.uk email address')
+  emailInput = page.getByLabel('Enter your MoJ email address')
 })
 
 test.describe('validation', async () => {
@@ -49,7 +49,7 @@ test.describe('validation', async () => {
 
     await basePage.clickContinue()
     await expect(page).toHaveTitle(
-      /You did not enter an MoJ email address - MoJ Design System/
+      /You cannot submit a component with this email address - MoJ Design System/
     )
 
     await expect(page.locator('#main-content')).toContainText(email)

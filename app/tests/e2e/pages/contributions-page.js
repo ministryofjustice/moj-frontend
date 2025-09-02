@@ -26,7 +26,7 @@ export class ContributionsPage {
     await this.continueButton.click()
     await this.page.waitForLoadState()
     await this.page
-      .getByLabel('Enter your justice.gov.uk email address')
+      .getByLabel('Enter your MoJ email address')
       .fill('test.user@justice.gov.uk')
     await this.continueButton.click()
     await expect(this.page).toHaveTitle(/Component details - MoJ Design System/)

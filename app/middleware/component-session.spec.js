@@ -81,7 +81,7 @@ describe('getPageData', () => {
       title: 'Verify that you work for MoJ',
       fields: {
         emailAddress: {
-          label: 'Enter your justice.gov.uk email address'
+          label: 'Enter your MoJ email address'
         }
       },
       showOnCya: false,
@@ -1133,7 +1133,7 @@ describe('validateFormData', () => {
       page: {
         fields: {
           emailAddress: {
-            label: 'Enter your justice.gov.uk email address'
+            label: 'Enter your MoJ email address'
           }
         },
         removable: false,
@@ -1241,7 +1241,7 @@ describe('validateFormData', () => {
       page: {
         fields: {
           emailAddress: {
-            label: 'Enter your justice.gov.uk email address'
+            label: 'Enter your MoJ email address'
           }
         },
         removable: false,

@@ -15,7 +15,7 @@ test.describe('verification process', async () => {
       /Verify that you work for MoJ - MoJ Design System/
     )
 
-    emailInput = page.getByLabel('Enter your justice.gov.uk email address')
+    emailInput = page.getByLabel('Enter your MoJ email address')
 
     await emailInput.fill(email)
     await basePage.clickContinue()
