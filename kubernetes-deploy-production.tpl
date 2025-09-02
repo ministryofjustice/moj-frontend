@@ -88,7 +88,8 @@ spec:
           - name: BRANCH
             value: ${BRANCH}
           - name: APP_URL
-            value: https://design-patterns.service.justice.gov.uk          - name: REDIS_URL
+            value: https://design-patterns.service.justice.gov.uk          
+          - name: REDIS_URL
             valueFrom:
               secretKeyRef:
                 name: moj-frontend-ec-cluster-output
