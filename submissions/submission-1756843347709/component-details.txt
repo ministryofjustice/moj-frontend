@@ -1,0 +1,5 @@
+{
+  "componentName": "test component",
+  "componentOverview": "it is a made up component to test the submission process",
+  "howIsTheComponentUsed": "it isn't being used as its only for testing"
+}
