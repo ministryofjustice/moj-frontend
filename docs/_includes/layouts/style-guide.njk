@@ -1,0 +1,43 @@
+{% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+
+{% extends "./base.njk" %}
+
+{% block content %}
+    {% include "./partials/page-header.njk" %}
+
+    <div class="app-page__body">
+        <div class="app-page__width-container">
+          {{ content | safe }}
+
+          {% set accordionItems = [] %}
+
+          {%- for letter, entries in collections['style-guide-entry'] | groupby('data.letter') -%}
+              {% set itemEntries = [] %}
+
+              {%- for entry in entries -%}
+                {% set title = '### '+entry.data.title %}
+                {% set content = [title, entry.content] | join('\r\n') | markdownify %}
+                {% set itemEntries = (itemEntries.push(content), itemEntries) %}
+              {% endfor %}
+
+              {% set item = {
+                heading: {
+                  text: letter
+                },
+                content: {
+                  html: itemEntries | join('\r\n')
+                }
+              } %}
+
+              {% set accordionItems = (accordionItems.push(item), accordionItems) %}
+
+          {% endfor %}
+
+          {{ govukAccordion({
+              id: 'style-guide-accordion',
+              items: accordionItems
+          }) }}
+
+        </div>
+    </div>
+{% endblock %}
