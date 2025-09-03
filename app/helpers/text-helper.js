@@ -87,6 +87,32 @@ const titleize = (str) => {
   return ucFirst(str.toLowerCase())
 }
 
+const stripFrontmatter = (str) => {
+  return str.replace(/---[\s\S]*?---/, '').trim()
+}
+
+/**
+ * Replaces placeholders in a template string with values
+ *
+ * @param {string} templateString - string with placeholder values
+ * @param {object} replacements - format {placeholder: replacementValue}
+ * @param {string} [openingTag] - identifier for start of replacement
+ * @param {string} [closingTag] - identifier for end of replacement
+ */
+const replaceTemplateVars = (
+  templateString,
+  replacements,
+  openingTag = '__',
+  closingTag = '__'
+) => {
+  for (const [placeholder, value] of Object.entries(replacements)) {
+    // console.log(`replacing __${placeholder}__ with ${value}`)
+    const pattern = new RegExp(`${openingTag}${placeholder}${closingTag}`, 'g')
+    templateString = templateString.replaceAll(pattern, value)
+  }
+  return templateString
+}
+
 module.exports = {
   humanReadableLabel,
   urlToTitleCase,
@@ -94,5 +120,7 @@ module.exports = {
   sanitizeText,
   ucFirst,
   camelToKebab,
-  titleize
+  titleize,
+  stripFrontmatter,
+  replaceTemplateVars
 }

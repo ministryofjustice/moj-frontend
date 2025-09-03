@@ -7,7 +7,11 @@ const {
   GITHUB_REPO_NAME
 } = require('../config')
 
-const { pushToGitHub, createPullRequest } = require('./github-api')
+const {
+  pushToGitHub,
+  createPullRequest,
+  createReviewIssue
+} = require('./github-api')
 
 jest.mock('node-fetch', () => jest.fn())
 
@@ -142,6 +146,43 @@ describe('GitHub API Module', () => {
 
       await expect(createPullRequest('test-branch', 'Test PR')).rejects.toThrow(
         'Failed to create pull request'
+      )
+    })
+  })
+
+  describe('createReviewIssue', () => {
+    it('should create an issue', async () => {
+      const pr = {
+        url: 'http://google.com',
+        number: 1234
+      }
+      const details = {
+        componentName: 'Component name'
+      }
+
+      const mockFetch = fetch
+
+      // Mock responses for fetching main branch
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({
+          html_url: 'https://web.site',
+          number: '5678'
+        })
+      })
+
+      const { url, number } = await createReviewIssue(pr, details)
+
+      expect(url).toBe('https://web.site')
+      expect(number).toBe('5678')
+      expect(mockFetch).toHaveBeenCalledTimes(1)
+      expect(mockFetch).toHaveBeenCalledWith(
+        `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/issues`,
+        expect.objectContaining({
+          headers: expect.objectContaining({
+            Authorization: `Bearer ${GITHUB_API_TOKEN}`
+          })
+        })
       )
     })
   })
