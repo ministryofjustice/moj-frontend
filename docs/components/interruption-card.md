@@ -53,9 +53,9 @@ Example of ‘Are you sure?’ content:
 
 #### 3. Non-contextual errors
 
-A non-contextual error happens when there’s a conflict between 2 or more parts of a service. The error is with the application as a whole, not a specific part. This means that a message cannot be shown next to the source of the error, such as with a [GOV.UK Design System error message](https://design-system.service.gov.uk/components/error-message/).
+A non-contextual error happens when there’s a conflict between 2 or more parts of a service. The error is with the application as a whole, not a specific part. This means that a message cannot be shown next to the source of the error, such as with a [GOV.UK error message](https://design-system.service.gov.uk/components/error-message/).
 
-Service design should prevent these errors. However, they can happen if a user edits an early part of a form (via a [GOV.UK Design System Check answers pattern page](https://design-system.service.gov.uk/patterns/check-answers/)) in a way that affects later parts. For example, if a person’s income has changed since an application was started, they might need to answer different sections.
+Service design should prevent these errors. However, they can happen if a user edits an early part of a form (via a [GOV.UK Check answers pattern page](https://design-system.service.gov.uk/patterns/check-answers/)) in a way that affects later parts. For example, if a person’s income has changed since an application was started, they might need to answer different sections.
 
 The interruption card tells users how to resolve the error, for example by answering some sections again or agreeing to delete sections. The user may also want to copy the answers they've given before they’re deleted.
 
@@ -81,7 +81,7 @@ Example of a more varied application outcome:
 
 It can be helpful to show a user important information before they start a task, particularly if the content has been missed elsewhere (for example, on a start page).
 
-To prevent the interruption card being overused, start with the [GOV.UK Design System inset text component](https://design-system.service.gov.uk/components/inset-text/) or the [GOV.UK Design System warning text component](https://design-system.service.gov.uk/components/warning-text/). If neither work (or something is very important) try the interruption card.
+To prevent the interruption card being overused, start with the [GOV.UK inset text component](https://design-system.service.gov.uk/components/inset-text/) or the [GOV.UK warning text component](https://design-system.service.gov.uk/components/warning-text/). If neither work (or something is very important) try the interruption card.
 
 The user can continue once they have acknowledged the content in the interruption card. They are not declaring anything, though. Declarations are for users to confirm that they've understood information they've been given or agree to something. This is not an interruption because it's part of the flow.
 
@@ -96,7 +96,7 @@ Do not use the interruption card for anything outside of the 5 use cases. It sho
 - emphasise large amounts of content on a page (as the impact will be lost)
 - show form elements such as radio buttons (a red error message on the blue background is not accessible)
 - make a heading more visually prominent
-- display an empty state for the user to resolve (if it's within a list) &ndash; use the [GOV.UK Design System tasklist component](https://design-system.service.gov.uk/components/task-list/) instead
+- display an empty state for the user to resolve (if it's within a list) --- use the [GOV.UK tasklist component](https://design-system.service.gov.uk/components/task-list/) instead
 
 ### Things to consider
 
@@ -106,12 +106,12 @@ The interruption card uses a non-standard colour palette for emphasis in a user 
 
 ### Similar or linked components
 
-There’s also the:
+There’s also the following components:
 
-- [GOV.UK Design System warning text component](https://design-system.service.gov.uk/components/warning-text/)
-- [GOV.UK Design System error message](https://design-system.service.gov.uk/components/error-message/)
-- [GOV.UK Design System panel](https://design-system.service.gov.uk/components/panel/)
-- [GOV.UK Design System notification banner](https://design-system.service.gov.uk/components/notification-banner/)
+- [GOV.UK warning text](https://design-system.service.gov.uk/components/warning-text/)
+- [GOV.UK error message](https://design-system.service.gov.uk/components/error-message/)
+- [GOV.UK panel](https://design-system.service.gov.uk/components/panel/)
+- [GOV.UK notification banner](https://design-system.service.gov.uk/components/notification-banner/)
 
 {% endtab %}
 
@@ -128,7 +128,7 @@ The interruption card should only contain:
 - 1 button (or link) to continue
 - 1 button (or link) to go back
 
-The only button that can be used is the [GOV.UK Design System button on a dark background](https://design-system.service.gov.uk/components/button/#buttons-on-dark-backgrounds).
+The only button that can be used is the [GOV.UK button on a dark background](https://design-system.service.gov.uk/components/button/#buttons-on-dark-backgrounds).
 
 Do not add form elements (such as radio buttons). A red error message would appear on the blue background, which is not accessible.
 
@@ -136,14 +136,14 @@ There’s not enough research on the use of images in interruption cards. The [G
 
 ### Colours
 
-The component follows the [GOV.UK Design System colour palette](https://design-system.service.gov.uk/styles/colour/):
+The component follows the [GOV.UK colour palette](https://design-system.service.gov.uk/styles/colour/):
 
 - the background is `govuk-colour("blue")`
 - the text is `govuk-colour("white")`
 - [links use the inverse modifier class](https://design-system.service.gov.uk/styles/links/#links-on-dark-backgrounds)
 - [buttons use the inverse modifier class](https://design-system.service.gov.uk/components/button/#buttons-on-dark-backgrounds)
 
-No other button colours should be used. Do not use the [GOV.UK Design System secondary or warning buttons](https://design-system.service.gov.uk/components/button/#secondary-buttons), for example.
+No other button colours should be used. Do not use the [GOV.UK secondary or warning buttons](https://design-system.service.gov.uk/components/button/#secondary-buttons), for example.
 
 ### Height and width
 
