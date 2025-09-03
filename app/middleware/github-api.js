@@ -10,6 +10,10 @@ const {
   GITHUB_REPO_NAME,
   GITHUB_ISSUE_ASSIGNEE_USERNAMES
 } = require('../config')
+const {
+  stripFrontmatter,
+  replaceTemplateVars
+} = require('../helpers/text-helper')
 
 const getMainBranchSha = async () => {
   const response = await fetch(
@@ -159,7 +163,7 @@ const createPullRequest = async (branchName, title, description = '') => {
 
 const createReviewIssue = async (pullRequest, submissionDetails) => {
   const { url, number } = pullRequest
-  const { componentName, _email, _name, _team } = submissionDetails
+  const { componentName } = submissionDetails
   let template
 
   // Load the github issue template
@@ -182,13 +186,12 @@ const createReviewIssue = async (pullRequest, submissionDetails) => {
   }
 
   if (template) {
-    // Remove the frontmatter
-    template = template.replace(/---[\s\S]*?---/, '').trim()
-    // Replace placeholder __VAR__ with values
     const replacements = { URL: url, NUMBER: number }
-    for (const [variable, value] in Object.entries(replacements)) {
-      template = template.replaceAll(`__${variable}__`, value)
-    }
+
+    // Remove the frontmatter
+    template = stripFrontmatter(template)
+    // Replace placeholder __VAR__ with values
+    template = replaceTemplateVars(template, replacements)
 
     try {
       const issueEndpoint = `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/issues`

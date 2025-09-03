@@ -5,7 +5,9 @@ const {
   truncateText,
   sanitizeText,
   camelToKebab,
-  titleize
+  titleize,
+  stripFrontmatter,
+  replaceTemplateVars
 } = require('./text-helper')
 
 describe('ucFirst', () => {
@@ -62,5 +64,52 @@ describe('titleize', () => {
   })
   it('returns an empty string if called with a falsy val', () => {
     expect(titleize(undefined)).toBe('')
+  })
+})
+
+describe('stripFrontmatter', () => {
+  it('strips frontmatter', () => {
+    const str = `---
+key: value
+---
+This is content
+`
+    expect(stripFrontmatter(str)).toBe('This is content')
+  })
+  it('strips empty frontmatter', () => {
+    const str = `---
+---
+This is content
+`
+    expect(stripFrontmatter(str)).toBe('This is content')
+  })
+})
+
+describe('replaceTemplateVars', () => {
+  it('replaces a value in a single line string', () => {
+    const str = 'My name is __NAME__'
+    const replacements = { NAME: 'Bob' }
+    expect(replaceTemplateVars(str, replacements)).toBe('My name is Bob')
+  })
+  it('replaces values in a multi line string', () => {
+    const str = 'My name is __NAME__\r\nMy age is __AGE__'
+    const replacements = { NAME: 'Bob', AGE: 25 }
+    expect(replaceTemplateVars(str, replacements)).toBe(
+      'My name is Bob\r\nMy age is 25'
+    )
+  })
+  it('allows for tag customisation', () => {
+    const str = 'My name is {{NAME}}\r\nMy age is {{AGE}}'
+    const replacements = { NAME: 'Bob', AGE: 25 }
+    expect(replaceTemplateVars(str, replacements, '{{', '}}')).toBe(
+      'My name is Bob\r\nMy age is 25'
+    )
+  })
+  it('allows doesnt replace if tags dont match', () => {
+    const str = 'My name is __NAME__\r\nMy age is __AGE__'
+    const replacements = { NAME: 'Bob', AGE: 25 }
+    expect(replaceTemplateVars(str, replacements, '{{', '}}')).toBe(
+      'My name is __NAME__\r\nMy age is __AGE__'
+    )
   })
 })
