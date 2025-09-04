@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "css",
+  "componentCodeLanguageOther": "",
+  "componentCode": ".guidance-panel {\r\n    border-left-color: govuk-colour('blue');\r\n    background-color: #eaf4f9;\r\n}",
+  "componentCodeUsage": ""
+}
