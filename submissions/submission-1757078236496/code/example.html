@@ -1,0 +1,50 @@
+ <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">Assessment tools</h3>
+    <div class="rosh-widget rosh-widget--medium">
+      <h3 class="govuk-heading-m"><strong>Medium</strong> RoSH</h3>
+      <p class="govuk-body-m">Risk of serious harm
+        <br /><span class="govuk-body-s secondary-text-col">Last updated: {{ moment().subtract(5, 'days').format("D MMMM YYYY") }}</span>
+        <br /><span class="govuk-body-s secondary-text-col">Update by: Court duty officer</span>
+      </p>
+      <table class="govuk-table govuk-table-xl">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Risk to</th>
+            <th scope="col" class="govuk-table__header">Community</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Children</td>
+            <td class="govuk-table__cell"><strong>Low</strong></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Public</td>
+            <td class="govuk-table__cell"><strong>Low</strong></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Known adult</td>
+            <td class="govuk-table__cell rosh-widget__risk--medium"><strong>Medium</strong></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Staff</td>
+            <td class="govuk-table__cell rosh-widget__risk--medium"><strong>Medium</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="rosh-widget rosh-widget--high">
+      <h3 class="govuk-heading-m"><strong>High</strong> RSR <span>6.9%</span></h3>
+      <p class="govuk-body-m">Risk of serious recidivism
+        <br /><span class="govuk-body-s secondary-text-col">Last updated: {{ moment().subtract(320, 'days').format("D MMMM YYYY") }}</span>
+        <br /><span class="govuk-body-s secondary-text-col">Update by: Probation practitioner</span>
+      </p>
+    </div>
+    <div class="rosh-widget rosh-widget--medium">
+      <h3 class="govuk-heading-m"><strong>Medium</strong> OGRS <span>64%</span></h3>
+      <p class="govuk-body-m">Offender group reconviction scale
+        <br /><span class="govuk-body-s secondary-text-col">Last updated: {{ moment().subtract(320, 'days').format("D MMMM YYYY") }}</span>
+        <br /><span class="govuk-body-s secondary-text-col">Update by: Probation practitioner</span>
+      </p>
+    </div>
+  </div>
