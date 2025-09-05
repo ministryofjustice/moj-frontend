@@ -1,0 +1,9 @@
+{
+  "fullName": "Phoebe Brocket",
+  "teamName": "Visit someone in prison",
+  "shareYourDetails": [
+    "",
+    "addNameToComponentPage",
+    "addTeamNameToComponentPage"
+  ]
+}

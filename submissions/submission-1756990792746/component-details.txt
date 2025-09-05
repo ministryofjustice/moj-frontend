@@ -1,0 +1,5 @@
+{
+  "componentName": "Calendar",
+  "componentOverview": "An accessible, scalable calendar component (whole page - not a date picker).",
+  "howIsTheComponentUsed": "Used in Visit Someone in Prison to display available times for a prison visit. Soon to be used in Manage People on Probation and another service in LAA to book appointments."
+}
