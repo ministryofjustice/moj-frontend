@@ -1,0 +1,5 @@
+{
+  "componentName": "Progress tracker",
+  "componentOverview": "A visual representation of steps in a process that have and/or must be completed to achieve an outcome.",
+  "howIsTheComponentUsed": "When a user is subject to steps in a process outside of their responsibility or control, a progress tracker supports or replaces a task list by giving a different overview on progress and outcomes. \r\n\r\nThis differs from a timeline in that it does not log events and grow. It is a pre-fixed set of finite steps. Steps may/may not be completed in any order depending on the process, but the order of the tracker stays fixed. \r\n\r\nOn the Make and register LPA product we support the tracker with banners above detailing connected events and directions to dated comms from Notify."
+}
