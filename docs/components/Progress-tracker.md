@@ -5,7 +5,7 @@ status: Experimental
 statusDate: September 2025
 excerpt: ""
 lede: ""
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1776
 contributorName: Beth Halligan
 contributorTeam: Make and register an LPA
 ---
