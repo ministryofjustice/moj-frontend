@@ -27,7 +27,7 @@
   }
 
   .img-container {
-    width: 100%;
+    max-width: 100%;
     height: fit-content;
     margin-bottom: govuk-spacing(9);
     padding: govuk-spacing(6);
@@ -36,7 +36,7 @@
 
     & img {
       height: 100%;
-      max-height: 600px;
+      max-height: 900px;
       object-fit: scale-down;
       border: none;
     }
@@ -65,13 +65,13 @@
     @extend %govuk-link;
   }
 
-  a:not(.govuk-button) {
+  a {
     @extend %govuk-link;
   }
 
   // the :not is requirec below to ensure the rules have enough specificity to
   // override the rule above
-  .govuk-link--inverse:not(.govuk-button) {
+  .govuk-link--inverse {
     @include govuk-link-style-inverse;
   }
 
