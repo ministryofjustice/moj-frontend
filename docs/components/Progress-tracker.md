@@ -7,7 +7,7 @@ excerpt: "The progress tracker shows the status of multiple steps in a process."
 lede: "The progress tracker shows the status of multiple steps in a process."
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1776
 contributorName: Beth Halligan
-contributorTeam: Make and register an LPA
+contributorTeam: ‘Make and register an LPA’
 ---
 
 {% tabs "paginate" %}
