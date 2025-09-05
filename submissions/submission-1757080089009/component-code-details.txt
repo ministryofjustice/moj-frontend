@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "html",
+  "componentCodeLanguageOther": "",
+  "componentCode": "<dl>\r\n    <dt class=\"govuk-visually-hidden\">Prisoner</dt>\r\n    <dd>\r\n      \r\n        <a href=\"https://digital-dev.prison.service.justice.gov.uk/prisoner/G6804VG\">\r\n          <strong>\r\n            Bucholtz, Darrick\r\n          </strong>\r\n        </a>\r\n      \r\n      <br />\r\n      G6804VG\r\n    </dd>\r\n  </dl>\r\n\r\n  <dl>\r\n    <dt>Location</dt>\r\n    <dd>\r\n      4-2-027\r\n    </dd>\r\n  </dl>\r\n\r\n  <dl>\r\n    <dt>CSRA</dt>\r\n    <dd>\r\n      High\r\n    </dd>\r\n  </dl>\r\n  \r\n  \r\n    ",
+  "componentCodeUsage": ""
+}
