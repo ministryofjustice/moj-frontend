@@ -14,7 +14,7 @@ contributorTeam: Make and register an LPA
 {% tab "Overview" %}
 
 <div class="img-container">
-  <img src="/assets/images/submission-1756893312117/progress-tracker.png" alt="Progress tracker" />
+  <img src="/assets/images/submission-1756893312117/progress-tracker.png" alt="A progress tracker for applying for a Lasting Power of Attorney. Three steps are completed: LPA paid for, your identity confirmed, and LPA signed by you. Four steps remain: LPA certificate provided, LPA signed by all attorneys, OPG’s 4-week waiting period begins, and LPA registered by OPG. The tracker is a vertical list with green and white icons to the left representing the status of each item." />
 </div>
 
 ## Overview
