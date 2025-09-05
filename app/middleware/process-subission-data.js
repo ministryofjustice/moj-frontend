@@ -77,7 +77,7 @@ const processSubmissionData = (req, res, next) => {
             const exampleNum = key.split('/').at(2)
               ? `-${key.split('/').at(2)}`
               : ''
-            const language = data.componentCodeLanguage
+            const language = data.componentCodeLanguage.toLowerCase()
             let extension = `.${language}`
             switch (language) {
               case 'nunjucks':
