@@ -42,7 +42,9 @@ A Figma design has been added for this component. There may be more links and re
 
 ### Figma
 
-      [View the Progress tracker component in the MoJ Figma Kit (opens in a new tab)](https://www.figma.com/design/Vr3f4x2h4zUtePeJne0eEF/experimental-progress-bar?node-id=12629-923)
+      If you work for MoJ, you can [view the Progress tracker component in the MoJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=12629-923).
+
+      If you work outside MoJ, use the [MoJ Figma Kit in the Figma Community](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).
 
 
 ### Contribute prototypes and Figma links
