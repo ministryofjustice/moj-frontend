@@ -1,0 +1,3 @@
+{
+  "figmaLink": "https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?m=auto&amp;node-id=6183-470&amp;t=eMTyRCBQobhvgkxz-1"
+}
