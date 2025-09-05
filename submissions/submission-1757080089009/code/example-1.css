@@ -1,0 +1,79 @@
+
+.dps-mini-profile-header {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    background: #f3f2f1
+}
+
+.dps-mini-profile-header .app-prisoner-photo--small {
+    margin-right: 30px
+}
+
+.dps-mini-profile-header dl {
+    margin-right: 60px
+}
+
+.dps-mini-profile-header dl:last-child {
+    margin-right: 0
+}
+
+.dps-mini-profile-header .dps-mini-profile-header--align-right {
+    align-self: center;
+    margin-left: auto
+}
+
+.dps-mini-profile-header .dps-mini-profile-header--align-right .govuk-button,.dps-mini-profile-header .dps-mini-profile-header--align-right .hmpps-action-button {
+    margin-bottom: 0
+}
+
+@media(max-width: 40.0525em) {
+    .dps-mini-profile-header {
+        display:block
+    }
+
+    .dps-mini-profile-header .app-prisoner-photo--small {
+        margin-bottom: 20px
+    }
+
+    .dps-mini-profile-header dl {
+        margin-right: 0
+    }
+
+    .dps-mini-profile-header dl:last-child {
+        margin-bottom: 0
+    }
+
+    .dps-mini-profile-header dl:last-child dd {
+        margin-bottom: 0
+    }
+}
+
+.app-prisoner-photo,.app-prisoner-photo--large,.app-prisoner-photo--small {
+    width: 90px
+}
+
+.app-prisoner-photo--small {
+    width: 80px
+}
+
+.app-prisoner-photo--large {
+    width: 120px
+}
+
+dl dt {
+    font-weight: bold
+}
+
+dl dd {
+    margin-left: 0
+}
+
+.govuk-\!-padding-3,.dps-mini-profile-header {
+    padding: 15px !important;
+}
+
+dl dd,dl,p,.govuk-body,.govuk-body-m {
+    margin-top: 0;
+    /* margin-bottom:15px; */
+}       
