@@ -226,6 +226,7 @@ $govuk-assets-path: "/static/assets/";
 
 </div>
 
+To use the SVG it will need to be saved to `static/assets/images/icon-progress-tick.svg` in your project.  If you save it somewhere different then you will need to modify the path in the css code.
 
 
 
