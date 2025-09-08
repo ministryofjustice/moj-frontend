@@ -1,5 +1,5 @@
 ---
-title: Guidance inset text
+title: Inset text (highlighted)
 tabs: true
 status: Experimental
 statusDate: September 2025
