@@ -7,7 +7,7 @@ excerpt: ""
 lede: ""
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns
 contributorName: Phoebe Brocket
-contributorTeam: Visit someone in prison
+contributorTeam: ‘Visit someone in prison’
 ---
 
 {% tabs "paginate" %}
