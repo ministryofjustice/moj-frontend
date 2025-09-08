@@ -79,7 +79,7 @@ No issues discovered
 Code has been added for this component. There may be other code blocks in the [Guidance inset text Github discussion]({{ githuburl }}).
 
 
-### Code block 1: nunjucks
+### Code block 1: Nunjucks
 
 <div class="app-example__code" data-module="app-copy">
 
@@ -113,7 +113,7 @@ Code has been added for this component. There may be other code blocks in the [G
 Add class 'guidance-panel' to the govukInsetText component.
 
 
-### Code block 2: css
+### Code block 2: CSS
 
 <div class="app-example__code" data-module="app-copy">
 
