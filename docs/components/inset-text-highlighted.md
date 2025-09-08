@@ -14,7 +14,7 @@ contributorTeam: CAS2 Short term accommodation for bail
 {% tab "Overview" %}
 
 <div class="img-container">
-  <img src="/assets/images/submission-1756982092471/guidance-inset-text.png" alt="Guidance inset text" />
+  <img src="/assets/images/submission-1756982092471/guidance-inset-text.png" alt="A block of black text with a light blue background and a thick blue left border, meant to draw attention to the content. There are two paragraphs and a GOV.UK details component about matching applicants to suitable available rooms." />
 </div>
 
 ## Overview
@@ -25,7 +25,7 @@ A blue variable version of the inset text component
 To highlight guidance to internal users as part of a service. We hypothesised that the warning component felt too urgent and the inset text could be easily missed or ignored in this context. Users are timepoor and expected to read through a fair bit of guidance. This component was being used by the DVLA to highlight content to users. This guidance inset has tested well and especially with users with access needs, they remarked that it helped them break down the content visually to process the content easier.
 
 ### Contribute to this component
-You can help develop this component by adding information to the [Guidance inset text Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+You can help develop this component by adding information to the [Inset text (highlighted) Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -35,7 +35,7 @@ You can help develop this component by adding information to the [Guidance inset
 
 A Figma design was not included when this component was added.
 
-      There may be more information in the [Guidance inset text Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+      There may be more information in the [Inset text (highlighted) Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
 ## Contribute a Figma link
 
@@ -47,7 +47,7 @@ A Figma design was not included when this component was added.
 
 ## Accessibility
 
-Accessibility findings have been added for this component. There may be more findings in the [Guidance inset text Github discussion]({{ githuburl }}).
+Accessibility findings have been added for this component. There may be more findings in the [Inset text (highlighted) Github discussion]({{ githuburl }}).
 
 
 ### External audit
