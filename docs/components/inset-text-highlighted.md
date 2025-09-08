@@ -3,8 +3,8 @@ title: Inset text (highlighted)
 tabs: true
 status: Experimental
 statusDate: September 2025
-excerpt: "The inset text (highlighted) component highlights guidance to busy internal users of a service."
-lede: "The inset text (highlighted) component highlights guidance to busy internal users of a service."
+excerpt: "The inset text (highlighted) component emphasises guidance to busy internal users of a service."
+lede: "The inset text (highlighted) component emphasises guidance to busy internal users of a service."
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1777
 contributorName: Rebecca Gorton
 contributorTeam: ‘CAS2 Short term accommodation for bail’
