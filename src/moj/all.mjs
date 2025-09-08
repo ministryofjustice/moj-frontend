@@ -5,6 +5,7 @@ import { AddAnother } from './components/add-another/add-another.mjs'
 import { Alert } from './components/alert/alert.mjs'
 import { ButtonMenu } from './components/button-menu/button-menu.mjs'
 import { DatePicker } from './components/date-picker/date-picker.mjs'
+import { PdsHeader } from './components/domain-specific/probation/header/header.mjs'
 import { FilterToggleButton } from './components/filter-toggle-button/filter-toggle-button.mjs'
 import { FormValidator } from './components/form-validator/form-validator.mjs'
 import { MultiFileUpload } from './components/multi-file-upload/multi-file-upload.mjs'
@@ -27,7 +28,8 @@ function initAll(config) {
     PasswordReveal,
     RichTextEditor,
     SearchToggle,
-    SortableTable
+    SortableTable,
+    PdsHeader
   ]) {
     createAll(Component, undefined, config)
   }
@@ -49,7 +51,8 @@ export {
   PasswordReveal,
   RichTextEditor,
   SearchToggle,
-  SortableTable
+  SortableTable,
+  PdsHeader
 }
 
 /**
