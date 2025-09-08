@@ -3,7 +3,7 @@
 {% set statusAttribution -%}
   {%- if params.status == "Experimental" %}
     {%- if params.contributorTeam %}
-      by {{ params.contributorName | default("someone") }} in {{ params.contributorTeam }}
+      by {{ params.contributorName | default("someone") }} in ‘{{ params.contributorTeam }}’
     {%- elif params.contributorName %}
       by {{ contributorName  }}
     {% endif %}

@@ -341,6 +341,76 @@ describe('processSubmissionData', () => {
     })
   })
 
+  describe('code handling', () => {
+    it('should create buffers for code with known language', () => {
+      const testCode = '<p>test</p>'
+      const expectedBuffer = Buffer.from(testCode).toString('base64')
+      req.session = {
+        '/component-code-details': {
+          componentCodeLanguage: 'HTML',
+          componentCode: testCode
+        }
+      }
+
+      extractFilename.mockImplementation((key) => `${key}.txt`)
+      processSubmissionData(req, res, next)
+
+      expect(
+        req.submissionData['submissions/test-submission-123/code/example.html']
+      ).toEqual({
+        buffer: expectedBuffer
+      })
+    })
+    it('should create multiple buffers for code with known languages', () => {
+      const testHtml = '<p>test</p>'
+      const testCss = 'p { color: red; }'
+      const expectedHtmlBuffer = Buffer.from(testHtml).toString('base64')
+      const expectedCssBuffer = Buffer.from(testCss).toString('base64')
+      req.session = {
+        '/component-code-details': {
+          componentCodeLanguage: 'HTML',
+          componentCode: testHtml
+        },
+        '/component-code-details/1': {
+          componentCodeLanguage: 'CSS',
+          componentCode: testCss
+        }
+      }
+
+      extractFilename.mockImplementation((key) => `${key}.txt`)
+      processSubmissionData(req, res, next)
+
+      expect(
+        req.submissionData['submissions/test-submission-123/code/example.html']
+      ).toEqual({
+        buffer: expectedHtmlBuffer
+      })
+      expect(
+        req.submissionData['submissions/test-submission-123/code/example-1.css']
+      ).toEqual({
+        buffer: expectedCssBuffer
+      })
+    })
+    it('should not create buffers for code with other language', () => {
+      req.session = {
+        '/component-code-details': {
+          componentCodeLanguage: 'other',
+          componentCode: 'unknown language'
+        }
+      }
+
+      extractFilename.mockImplementation((key) => `${key}.txt`)
+      processSubmissionData(req, res, next)
+
+      expect(req.submissionData).toEqual({
+        'submissions/test-submission-123//component-code-details.txt': {
+          componentCode: 'unknown language',
+          componentCodeLanguage: 'other'
+        }
+      })
+    })
+  })
+
   describe('markdown file handling', () => {
     it('should place .md files in docs/components/ directory', () => {
       req.session = {}

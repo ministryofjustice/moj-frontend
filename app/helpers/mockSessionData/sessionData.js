@@ -49,7 +49,7 @@ module.exports = {
     componentCodeAvailable: 'yes'
   },
   '/component-code-details': {
-    componentCodeLanguage: 'nunjucks',
+    componentCodeLanguage: 'Nunjucks',
     componentCodeUsage:
       'In lacus ipsum, molestie nec sapien vitae, tincidunt tristique nisi. Integer a lacus quis nisl mollis fringilla. Nullam blandit imperdiet mauris, ac feugiat ante. Vestibulum nec semper nulla, ut ultricies massa. Curabitur lacinia tortor augue, sed varius leo viverra non. Fusce vitae libero ac orci elementum vestibulum eu et libero. In rhoncus laoreet nisi, sit amet rutrum tellus. Ut ut dui in metus sodales molestie eu ut purus.\r\n\r\n',
     componentCode: `{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
@@ -80,7 +80,7 @@ module.exports = {
     figmaLinkAdditionalInformation: 'only link'
   },
   '/component-code-details/1': {
-    componentCodeLanguage: 'html',
+    componentCodeLanguage: 'HTML',
     componentCodeUsage: 'Some HTML',
     componentCode: `<div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
   <div class="govuk-notification-banner__header">
@@ -97,7 +97,7 @@ module.exports = {
 </div>`
   },
   '/component-code-details/2': {
-    componentCodeLanguage: 'css',
+    componentCodeLanguage: 'CSS',
     componentCodeUsage: 'Some CSS',
     componentCode: `.govuk-notification-banner {
     font-family: GDS Transport,arial,sans-serif;
