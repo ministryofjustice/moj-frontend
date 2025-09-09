@@ -14,7 +14,7 @@ lede: "The date picker component enables users to select a date from a calendar.
 
 {% example "/examples/date-picker", 590 %}
 
-## Overview 
+## Overview
 
 When users first open the date picker's calendar it'll show today's date. Users do not have to use this calendar view to select a date — they can also enter one directly into the text field.
 
@@ -50,13 +50,13 @@ There’s an accessibility issue with the date picker component. If you’re usi
 
 ### No focus indicator shown when navigating between dates (NVDA only)
 
-When people use the screen reader software NVDA, no focus indicator is displayed when they navigate between dates. This only happens with NVDA software. This fails [WCAG 2.2 success criterion 2.4.7 (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible). We’re aware of this issue and plan to implement a fix by August 2025.
+When people use the screen reader software NVDA, no focus indicator is displayed when they navigate between dates. This only happens with NVDA software. This fails [WCAG 2.2 success criterion 2.4.7 (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible). We’re aware of this issue and will implement a fix in 2025.
 
 {% endtab %}
 
 {% tab "How to use" %}
 
-## How to use 
+## How to use
 
 
 
