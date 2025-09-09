@@ -4,20 +4,20 @@ title: Notification badge (example)
 figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type=design&node-id=61-3019&mode=design
 ---
 
-{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{%- from "govuk/components/tabs/macro.njk" import govukTabs -%}
 {%- from "moj/components/notification-badge/macro.njk" import mojNotificationBadge -%}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-third">
-    {{ mojSideNavigation({
+    {{ govukTabs({
       items: [
-        { text: "Dashboard" },
-        { html: "Messages" + mojNotificationBadge({
-            text: "5",
+        { label: "Tab 1" },
+        { label: "Messages" + mojNotificationBadge({
+            text: "150",
             visuallyHiddenText: "unread"
           })
         },
-        { text: "Nav item 3"}
+        { label: "Tab 3"}
       ]
     })}}
   </div>

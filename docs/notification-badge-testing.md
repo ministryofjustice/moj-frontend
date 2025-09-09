@@ -25,13 +25,13 @@ lede: Checking how different spacing between the notification badge and other it
       <nav class="moj-primary-navigation" aria-label="Primary navigation">
         <ul class="moj-primary-navigation__list">
           <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" aria-current="page" href="#1">Nav item 1 <span id="notifications" class="moj-notification-badge">1</span></a>
+                        <a class="moj-primary-navigation__link" aria-current="page" href="#1" aria-describedby="messages-unread">Nav item 1<span id="notifications" class="moj-notification-badge"><span aria-hidden="true">9</span><span id="messages-unread" class="govuk-visually-hidden">9 unread</span></span></a>
           </li>
           <li class="moj-primary-navigation__item">
             <a class="moj-primary-navigation__link" href="#2">Nav item 2</a>
           </li>
           <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" href="#3">Nav item 3<span id="notifications" class="moj-notification-badge">10</span></a>
+            <a class="moj-primary-navigation__link" href="#3">Nav item 3<span id="notifications" class="moj-notification-badge">99+</span></a>
           </li>
           <li class="moj-primary-navigation__item">
             <a class="moj-primary-navigation__link" href="#3">Nav item 4</a>
@@ -52,7 +52,7 @@ lede: Checking how different spacing between the notification badge and other it
       <nav class="moj-primary-navigation" aria-label="Primary navigation">
         <ul class="moj-primary-navigation__list">
           <li class="moj-primary-navigation__item">
-            <a class="moj-primary-navigation__link" aria-current="page" href="#1">Nav item 1 <span id="notifications" class="moj-notification-badge">10</span></a>
+            <a class="moj-primary-navigation__link" aria-current="page" href="#1">Nav item 1<span id="notifications" class="moj-notification-badge">10</span></a>
           </li>
           <li class="moj-primary-navigation__item">
             <a class="moj-primary-navigation__link" href="#2">Nav item 2</a>
@@ -108,13 +108,13 @@ lede: Checking how different spacing between the notification badge and other it
           <a href="#2">Nav item 2</a>
         </li>
         <li class="moj-side-navigation__item">
-          <a href="#3">Different length <span id="notifications" class="moj-notification-badge">10</span></a>
+          <a href="#3">Different length<span id="notifications" class="moj-notification-badge">10</span></a>
         </li>
         <li class="moj-side-navigation__item">
           <a href="#3">Short one</a>
         </li>
         <li class="moj-side-navigation__item moj-side-navigation__item--active">
-          <a href="#3">Longer active nav item <span id="notifications" class="moj-notification-badge">10</span></a>
+          <a href="#3">Longer active nav item<span id="notifications" class="moj-notification-badge">10</span></a>
         </li>
       </ul>
     </nav>

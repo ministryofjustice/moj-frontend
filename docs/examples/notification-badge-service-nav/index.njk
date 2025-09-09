@@ -1,0 +1,27 @@
+---
+layout: layouts/example.njk
+title: Notification badge (example)
+figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type=design&node-id=61-3019&mode=design
+---
+
+{%- from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation -%}
+{%- from "moj/components/notification-badge/macro.njk" import mojNotificationBadge -%}
+
+{{ govukServiceNavigation({
+  navigation: [
+    { text: "Dashboard", href: "#" },
+    { html: "Messages" + mojNotificationBadge({
+        text: "123",
+        visuallyHiddenText: "unread"
+      }),
+      active: true,
+      href: "#"
+    },
+    { html: "Item 3" + mojNotificationBadge({
+        text: "0",
+        visuallyHiddenText: "unread"
+      }),
+      href: "#"
+    }
+  ]
+}) }}
