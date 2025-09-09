@@ -7,7 +7,7 @@ excerpt: ""
 lede: ""
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1778
 contributorName: Phoebe Brocket
-contributorTeam: ‘Visit someone in prison’
+contributorTeam: Visit someone in prison
 ---
 
 {% tabs "paginate" %}
