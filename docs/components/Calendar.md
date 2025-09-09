@@ -38,7 +38,7 @@ A Figma design has been added for this component. There may be more links and re
 
 ### Figma
 
-      [View the Calendar component in the MoJ Figma Kit (opens in a new tab)]()
+      [View the Calendar component in the MoJ Figma Kit (opens in a new tab)](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=12870-22)
 
 
 ### Contribute prototypes and Figma links
