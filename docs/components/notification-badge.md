@@ -5,7 +5,7 @@ status: Official
 statusDate: September 2025
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/706
 excerpt: "xxx."
-lede: "xxx."
+lede: "Use the notification badge to display a count of items that need the user’s attention."
 ---
 {% from "govuk/components/pagination/macro.njk" import govukPagination %}
 
@@ -65,14 +65,29 @@ xxx
 ## Examples
 
 
-### Example 1
+### Example 1 - MoJ primary navigation
 
 {% example "/examples/notification-badge-primary-nav", 590 %}
 
-### Example 2
+### Example 2 - MoJ side navigation
 
 {% example "/examples/notification-badge-side-nav", 590 %}
 
+### Example 3 - MoJ sub navigation
+
+{% example "/examples/notification-badge-sub-nav", 590 %}
+
+### Example 4 - GOV.UK Tabs
+
+{% example "/examples/notification-badge-tabs", 590 %}
+
+### Example 4 - GOV.UK Service Navigation
+
+{% example "/examples/notification-badge-service-nav", 590 %}
+
+### Example 5 - MoJ Header
+
+{% example "/examples/notification-badge-header", 590 %}
 {% endtab %}
 
 {% tab "Get help and contribute" %}

@@ -1,5 +1,11 @@
-{%- if params.text.length %}
-<span id="{{ params.id | default("notifications") }}" class="moj-notification-badge {{- " " + params.classes if params.classes}}" {%- if (params.label) %} aria-label="{{ params.label }}"{% endif %} {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-  {{- params.text | safe -}}
-</span>
+{% from "govuk/macros/attributes.njk" import govukAttributes %}
+
+{%- set count = params.text | int %}
+{%- if count > 0 %}
+  {%- set count = '99+' if count > 99 else count %}
+  <span class="govuk-visually-hidden">,</span>
+  <span class="moj-notification-badge {{- params.classes if params.classes}}" {{- govukAttributes(params.attributes) -}}>
+    {{- count }}
+    {%- if params.visuallyHiddenText %}<span class="govuk-visually-hidden">{{- params.visuallyHiddenText }}</span>{%- endif %}
+  </span>
 {% endif -%}
