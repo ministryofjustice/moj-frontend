@@ -14,7 +14,7 @@ contributorTeam: ‘Visit someone in prison’
 {% tab "Overview" %}
 
 <div class="img-container">
-  <img src="/assets/images/submission-1756990792746/calendar-component.png" alt="Calendar" />
+  <img src="/assets/images/submission-1756990792746/calendar-component.png" alt="A GOV.UK service page with the title 'Book a prison visit'. Two months of a calendar are shown. Some dates are selectable links, and others are plain text. Thursday 19th February 2024 is selected. Below the calendars is a radio list showing two available timeslots for the selected date, and a continue button below." />
 </div>
 
 ## Overview
