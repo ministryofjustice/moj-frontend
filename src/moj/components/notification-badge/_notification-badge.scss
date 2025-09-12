@@ -6,17 +6,17 @@
 
 .moj-notification-badge {
   @include govuk-font($size: 16, $weight: "bold");
+  display: inline-block;
+  min-width: 0.75em;
+  min-height: 1.25em;
+  margin-left: 0.35em;
+  padding: 1px 0.25em 0;
   border-radius: 10em;
   // outline ensures number is not obscured in Windows high contrast mode
   // and prevents containers resizing
   outline: 4px solid govuk-colour("red");
   outline-offset: -1px;
-  display: inline-block;
-  background-color: govuk-colour("red");
   color: govuk-colour("white");
-  min-height: 1.25em;
-  min-width: 0.75em;
-  margin-left: 0.35em;
+  background-color: govuk-colour("red");
   text-align: center;
-  padding: 1px 0.25em 0;
 }
