@@ -8,14 +8,14 @@ const generateMarkdown = (data, files) => {
   const { '/component-details': details } = data
 
   const componentName =
-    details?.componentName.toLowerCase() || 'unknown-component'
+    details?.componentName?.toLowerCase() || 'unknown-component'
   const sanitizedComponentName = componentName
     .replace(/[^a-z0-9-]/g, '-')
     .replace(/-+/g, '-')
   const filename = `${sanitizedComponentName}.md`
 
   const githubDiscussionLink = (componentName = '') => {
-    return `[${componentName ? `${componentName} ` : ''}Github discussion]({{ githuburl }})`
+    return `[${componentName ? `‘${componentName}’ ` : ''}Github discussion]({{ githuburl }})`
   }
 
   const generateDesignsTabContent = (data) => {
@@ -26,7 +26,7 @@ const generateMarkdown = (data, files) => {
 
 ### Figma
 
-If you work for MoJ, [View the ${componentName} component in the MoJ Figma Kit](${data['/figma-link']?.figmaUrl || ''}).
+If you work for MoJ, [View the ‘${componentName}’ component in the MoJ Figma Kit](${data['/figma-link']?.figmaUrl || ''}).
 
 If you work outside MoJ, go to the [MoJ Figma Kit on the Figma community platform](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).\r\n\r\n`
 
@@ -190,7 +190,9 @@ If you have code that is relevant to this component you can add it to the ${gith
 You can use the ${githubDiscussionLink(componentName)} to:
 
 * view other code blocks
-* add relevant code`
+* add relevant code
+
+<p></p>`
     }
 
     return content
