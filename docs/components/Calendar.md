@@ -3,8 +3,8 @@ title: Calendar
 tabs: true
 status: Experimental
 statusDate: September 2025
-excerpt: ""
-lede: ""
+excerpt: "The calendar component enables users to select times from a calendar, for example to book an appointment."
+lede: "The calendar component enables users to select times from a calendar, for example to book an appointment."
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1778
 contributorName: Phoebe Brocket
 contributorTeam: Visit someone in prison
