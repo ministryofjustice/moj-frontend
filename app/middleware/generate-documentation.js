@@ -2,23 +2,20 @@
 const moment = require('moment')
 
 const { MAX_ADD_ANOTHER } = require('../config.js')
-const { ucFirst, titleize } = require('../helpers/text-helper.js')
+const { titleize } = require('../helpers/text-helper.js')
 
 const generateMarkdown = (data, files) => {
   const { '/component-details': details } = data
 
-  const componentName = titleize(details?.componentName) || 'unknown-component'
-  const sanitizedComponentName = ucFirst(
-    componentName
-      .toLowerCase()
-      .replace(/[^a-z0-9-]/g, '-')
-      .replace(/-+/g, '-')
-  )
-
+  const componentName =
+    details?.componentName?.toLowerCase() || 'unknown-component'
+  const sanitizedComponentName = componentName
+    .replace(/[^a-z0-9-]/g, '-')
+    .replace(/-+/g, '-')
   const filename = `${sanitizedComponentName}.md`
 
   const githubDiscussionLink = (componentName = '') => {
-    return `[${componentName ? `${componentName} ` : ''}Github discussion]({{ githuburl }})`
+    return `[${componentName ? `‘${componentName}’ ` : ''}Github discussion]({{ githuburl }})`
   }
 
   const generateDesignsTabContent = (data) => {
@@ -29,21 +26,21 @@ const generateMarkdown = (data, files) => {
 
 ### Figma
 
-      [View the ${componentName} component in the MoJ Figma Kit (opens in a new tab)](${data['/figma-link']?.figmaUrl || ''})\r\n\r\n`
+If you work for MoJ, [View the ‘${componentName}’ component in the MoJ Figma Kit](${data['/figma-link']?.figmaUrl || ''}).
 
-      content += `${data['/figma-link']?.figmaLinkAdditionalInformation || ''}\r\n`
+If you work outside MoJ, go to the [MoJ Figma Kit on the Figma community platform](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).\r\n\r\n`
 
       content += `### Contribute prototypes and Figma links
 
-      If you have design files that are relevant to this component you can add them to the ${githubDiscussionLink()}. This helps other people to use it in their service.`
+If you have design files that are relevant to this component you can add them to the ${githubDiscussionLink()}. This helps other people to use it in their service.`
     } else {
-      content = `A Figma design was not included when this component was added.
+      content = `A Figma link was not included when this component was added.
 
-      There may be more information in the ${githubDiscussionLink(componentName)}. You can also view the component image in the overview.
+There may be more information in the ${githubDiscussionLink(componentName)}. You can also view the component image in the overview.
 
 ## Contribute a Figma link
 
-      If you have a Figma link for this component (or a component like it) you can add it to ${githubDiscussionLink()}. This helps other people to use it in their service.`
+If you have a Figma link for this component (or a component like it) you can add it to ${githubDiscussionLink()}. This helps other people to use it in their service.`
     }
 
     return content
@@ -193,14 +190,16 @@ If you have code that is relevant to this component you can add it to the ${gith
 You can use the ${githubDiscussionLink(componentName)} to:
 
 * view other code blocks
-* add relevant code`
+* add relevant code
+
+<p></p>`
     }
 
     return content
   }
 
   const content = `---
-title: ${ucFirst(componentName.toLowerCase())}
+title: ${titleize(componentName)}
 tabs: true
 status: Experimental
 statusDate: ${moment().format('MMMM YYYY')}
