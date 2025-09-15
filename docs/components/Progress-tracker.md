@@ -29,7 +29,7 @@ This differs from a timeline in that it does not log events and grow. It is a pr
 On the Make and register LPA product we support the tracker with banners above detailing connected events and directions to dated comms from Notify.
 
 ### Contribute to this component
-You can help develop this component by adding information to the [Progress tracker Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+You can help develop this component by adding information to the [progress tracker Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -37,19 +37,19 @@ You can help develop this component by adding information to the [Progress track
 
 ## Designs
 
-A Figma design has been added for this component. There may be more links and resources in the [Progress tracker Github discussion]({{ githuburl }}).
+A Figma design has been added for this component. There may be more links and resources in the [progress tracker Github discussion]({{ githuburl }}).
 
 
 ### Figma
 
-      If you work for MoJ, you can [view the Progress tracker component in the MoJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=12629-923).
+If you work for MoJ, [view the progress tracker component in the MoJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=12629-923).
 
-      If you work outside MoJ, use the [MoJ Figma Kit in the Figma Community](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).
+If you work outside MoJ, go to the [MoJ Design System’s profile on the Figma community platform](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).
 
 
 ### Contribute prototypes and Figma links
 
-      If you have design files that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+If you have design files that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -57,7 +57,7 @@ A Figma design has been added for this component. There may be more links and re
 
 ## Accessibility
 
-Accessibility findings have been added for this component. There may be more findings in the [Progress tracker Github discussion]({{ githuburl }}).
+Accessibility findings have been added for this component. There may be more findings in the [progress tracker Github discussion]({{ githuburl }}).
 
 
 ### External audit
@@ -79,7 +79,7 @@ No issues returned.
 
 ## Contribute accessibility findings
 
-    If you have accessibility findings that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+If you have accessibility findings that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -87,7 +87,7 @@ No issues returned.
 
 ## Code
 
-Code has been added for this component. There may be other code blocks in the [Progress tracker Github discussion]({{ githuburl }}).
+Code has been added for this component. There may be other code blocks in the [progress tracker Github discussion]({{ githuburl }}).
 
 
 ### Code block 1: HTML
