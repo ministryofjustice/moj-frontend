@@ -45,9 +45,7 @@ test('all ok', async () => {
   await testPage.teamInput.fill('The A Team')
   await testPage.clickContinue()
 
-  await expect(testPage.page).toHaveTitle(
-    /Check your answers - MoJ Design System/
-  )
+  await testPage.expectPageTitle('Check your answers')
 })
 
 test.describe('check your details', async () => {
@@ -77,7 +75,7 @@ test.describe('check your details', async () => {
     await testPage.shareTeamCheckbox.uncheck()
     await testPage.clickContinue()
 
-    await expect(testPage.page).toHaveTitle(cyaPage.fullTitle)
+    await testPage.expectPageTitle('Check your answers')
 
     await expect(cyaPage.yourDetailsCard).toBeVisible()
     await expect(cyaPage.yourDetailsCard).toContainText('B.A. Baracus')
@@ -95,7 +93,7 @@ test.describe('check your details', async () => {
     await testPage.shareTeamCheckbox.check()
     await testPage.clickContinue()
 
-    await expect(testPage.page).toHaveTitle(cyaPage.fullTitle)
+    await testPage.expectPageTitle('Check your answers')
 
     await expect(cyaPage.yourDetailsCard).toBeVisible()
     await expect(cyaPage.yourDetailsCard).toContainText('B.A. Baracus')
@@ -113,7 +111,7 @@ test.describe('check your details', async () => {
     await testPage.shareTeamCheckbox.check()
     await testPage.clickContinue()
 
-    await expect(testPage.page).toHaveTitle(cyaPage.fullTitle)
+    await testPage.expectPageTitle('Check your answers')
     await expect(cyaPage.yourDetailsCard).toContainText('B.A. Baracus')
     await expect(cyaPage.yourDetailsCard).toContainText('The A Team')
     await expect(cyaPage.yourDetailsCard).toContainText(

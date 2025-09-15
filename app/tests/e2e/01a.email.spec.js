@@ -9,9 +9,7 @@ test.beforeEach(async ({ page }) => {
   basePage = new ContributionsPage(page)
   await page.goto('start')
   await basePage.clickContinue()
-  await expect(page).toHaveTitle(
-    /Verify that you work for MoJ - MoJ Design System/
-  )
+  await basePage.expectPageTitle('Verify that you work for MoJ')
 
   emailInput = page.getByLabel('Enter your MoJ email address')
 })
@@ -48,29 +46,26 @@ test.describe('validation', async () => {
     await emailInput.fill(email)
 
     await basePage.clickContinue()
-    await expect(page).toHaveTitle(
-      /You cannot submit a component with this email address - MoJ Design System/
+    await basePage.expectPageTitle(
+      'You cannot submit a component with this email address'
     )
-
     await expect(page.locator('#main-content')).toContainText(email)
 
     await page
       .getByRole('button', { name: 'Enter a different email address' })
       .click()
 
-    await expect(page).toHaveTitle(
-      /Verify that you work for MoJ - MoJ Design System/
-    )
+    await basePage.expectPageTitle('Verify that you work for MoJ')
   })
 
-  test('valid email', async ({ page }) => {
+  test('valid email', async () => {
     const email = 'test.user@justice.gov.uk'
     await emailInput.fill(email)
 
     await basePage.clickContinue()
 
     if (process.env.SKIP_VERIFICATION === 'true') {
-      await expect(page).toHaveTitle(/Component details - MoJ Design System/)
+      await basePage.expectPageTitle('Component details')
     }
   })
 })

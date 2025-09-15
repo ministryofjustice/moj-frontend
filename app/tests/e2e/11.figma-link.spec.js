@@ -69,6 +69,6 @@ test.describe('navigation', async () => {
     await testPage.linkInput.fill('https://figma.com/awesome-component')
     await testPage.clickContinue()
 
-    await expect(testPage.page).toHaveTitle(/Your details - MoJ Design System/)
+    await testPage.expectPageTitle('Your details')
   })
 })

@@ -153,7 +153,7 @@ test.describe('successful navigation', async () => {
     await accessibilityPage.goTo()
   })
 
-  test('all ok', async ({ page }) => {
+  test('all ok', async () => {
     await accessibilityPage.setExternalAudit('No')
     await accessibilityPage.setInternalReview('No')
     await accessibilityPage.setAssistiveTech('Yes')
@@ -166,7 +166,7 @@ test.describe('successful navigation', async () => {
     await testPage.issuesInput.fill('No issues')
 
     await testPage.clickContinue()
-    await expect(page).toHaveTitle(/Component code - MoJ Design System/)
+    await testPage.expectPageTitle('Component code')
   })
 })
 test.describe('check your answers', async () => {
@@ -186,10 +186,10 @@ test.describe('check your answers', async () => {
     await accessibilityPage.setAssistiveTech('No')
 
     accessibilityPage.clickContinue()
-    await expect(page).toHaveTitle(/Component code - MoJ Design System/)
+    await testPage.expectPageTitle('Component code')
 
     await page.goto(cyaPage.url)
-    await expect(page).toHaveTitle(cyaPage.fullTitle)
+    await testPage.expectPageTitle('Check your answers')
 
     await expect(cyaPage.assistiveTechCard).toBeVisible()
     await expect(cyaPage.assistiveTechCard).toContainText('None')
@@ -204,22 +204,22 @@ test.describe('check your answers', async () => {
     await cyaPage.assistiveTechCard
       .getByRole('link', { name: 'Change' })
       .click()
-    await expect(page).toHaveTitle(/Accessibility findings - MoJ Design System/)
+    await testPage.expectPageTitle('Accessibility findings')
 
     await accessibilityPage.setAssistiveTech('Yes')
     accessibilityPage.clickContinue()
 
-    await expect(page).toHaveTitle(testPage.fullTitle)
+    await testPage.expectPageTitle('Testing with assistive technology')
     await testPage.dayInput.fill(`${dayjs().date()}`)
     await testPage.monthInput.fill(`${dayjs().month() + 1}`)
     await testPage.yearInput.fill(`${dayjs().year()}`)
     await testPage.issuesInput.fill('No problems found')
 
     await testPage.clickContinue()
-    await expect(page).toHaveTitle(/Component code - MoJ Design System/)
+    await testPage.expectPageTitle('Component code')
 
     await page.goto(cyaPage.url)
-    await expect(page).toHaveTitle(cyaPage.fullTitle)
+    await testPage.expectPageTitle('Check your answers')
 
     await expect(cyaPage.assistiveTechCard).toBeVisible()
     await expect(cyaPage.assistiveTechCard).toContainText(
@@ -247,7 +247,7 @@ test.describe('check your answers', async () => {
 
     await page.getByRole('button', { name: 'Delete answers' }).click()
 
-    await expect(page).toHaveTitle(cyaPage.fullTitle)
+    await testPage.expectPageTitle('Check your answers')
     await expect(cyaPage.assistiveTechCard).toBeVisible()
     await expect(cyaPage.assistiveTechCard).toContainText('None')
   })

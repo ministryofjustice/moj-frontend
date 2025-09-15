@@ -23,19 +23,16 @@ test('validation', async () => {
 test('figma not available', async () => {
   await testPage.checkRadioWithLabel('No')
   await testPage.clickContinue()
-  await expect(testPage.page).toHaveTitle(/Your details - MoJ Design System/)
-
+  await testPage.expectPageTitle('Your details')
   await testPage.clickBack()
-  await expect(testPage.page).toHaveTitle(/Figma design - MoJ Design System/)
+  await testPage.expectPageTitle('Figma design')
 })
 
 test('code available', async () => {
   await testPage.checkRadioWithLabel('Yes')
   await testPage.clickContinue()
-  await expect(testPage.page).toHaveTitle(
-    /Figma design details - MoJ Design System/
-  )
+  await testPage.expectPageTitle('Figma design details')
 
   await testPage.clickBack()
-  await expect(testPage.page).toHaveTitle(/Figma design - MoJ Design System/)
+  await testPage.expectPageTitle('Figma design')
 })
