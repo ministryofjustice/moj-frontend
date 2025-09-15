@@ -29,7 +29,7 @@ This differs from a timeline in that it does not log events and grow. It is a pr
 On the Make and register LPA product we support the tracker with banners above detailing connected events and directions to dated comms from Notify.
 
 ### Contribute to this component
-You can help develop this component by adding information to the [progress tracker Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+You can help develop this component by adding information to the [‘progress tracker’ Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -37,12 +37,12 @@ You can help develop this component by adding information to the [progress track
 
 ## Designs
 
-A Figma design has been added for this component. There may be more links and resources in the [progress tracker Github discussion]({{ githuburl }}).
+A Figma design has been added for this component. There may be more links and resources in the [‘progress tracker’ Github discussion]({{ githuburl }}).
 
 
 ### Figma
 
-If you work for MoJ, [view the progress tracker component in the MoJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=12629-923).
+If you work for MoJ, [view the ‘progress tracker’ component in the MoJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=12629-923).
 
 If you work outside MoJ, go to the [MoJ Figma Kit on the Figma community platform](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).
 
@@ -57,7 +57,7 @@ If you have design files that are relevant to this component you can add them to
 
 ## Accessibility
 
-Accessibility findings have been added for this component. There may be more findings in the [progress tracker Github discussion]({{ githuburl }}).
+Accessibility findings have been added for this component. There may be more findings in the [‘progress tracker’ Github discussion]({{ githuburl }}).
 
 
 ### External audit
@@ -87,7 +87,7 @@ If you have accessibility findings that are relevant to this component you can a
 
 ## Code
 
-Code has been added for this component. There may be other code blocks in the [progress tracker Github discussion]({{ githuburl }}).
+Code has been added for this component. There may be other code blocks in the [‘progress tracker’ Github discussion]({{ githuburl }}).
 
 
 ### Code block 1: HTML

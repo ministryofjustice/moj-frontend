@@ -113,6 +113,7 @@ There’s also the:
 - [GOV.UK Design System panel](https://design-system.service.gov.uk/components/panel/)
 - [GOV.UK Design System notification banner](https://design-system.service.gov.uk/components/notification-banner/)
 
+<p></p>
 {% endtab %}
 
 {% tab "How to use" %}
