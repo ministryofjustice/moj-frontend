@@ -96,12 +96,10 @@ test.describe('navigation', async () => {
     await testPage.usageInput.fill('test')
 
     await testPage.clickContinue()
-    await expect(testPage.page).toHaveTitle(/Figma design - MoJ Design System/)
+    await testPage.expectPageTitle('Figma design')
 
     await testPage.clickBack()
-    await expect(testPage.page).toHaveTitle(
-      /Component code details - MoJ Design System/
-    )
+    await testPage.expectPageTitle('Component code details')
   })
 
   test('add multiple code examples', async () => {
@@ -113,9 +111,7 @@ test.describe('navigation', async () => {
     await testPage.usageInput.fill('test')
 
     await testPage.addAnotherButton.click()
-    await expect(testPage.page).toHaveTitle(
-      /Component code details - MoJ Design System/
-    )
+    await testPage.expectPageTitle('Component code details')
     await testPage.expectSuccessAlert('Code block 1 added')
 
     await expect(testPage.codeInput).toHaveValue('')
@@ -139,10 +135,10 @@ test.describe('check your answers', async () => {
     await codePage.setCodeAvailable('No')
 
     await codePage.clickContinue()
-    await expect(page).toHaveTitle(/Figma design - MoJ Design System/)
+    await testPage.expectPageTitle('Figma design')
 
     await page.goto(cyaPage.url)
-    await expect(page).toHaveTitle(cyaPage.fullTitle)
+    await testPage.expectPageTitle('Check your answers')
 
     await expect(cyaPage.codeBlockCards).toHaveCount(1)
     await expect(cyaPage.codeBlockCards.first()).toBeVisible()
@@ -159,17 +155,17 @@ test.describe('check your answers', async () => {
       .first()
       .getByRole('link', { name: 'Change' })
       .click()
-    await expect(page).toHaveTitle(/Component code - MoJ Design System/)
+    await testPage.expectPageTitle('Component code')
 
     await codePage.setCodeAvailable('Yes')
     await codePage.clickContinue()
-    await expect(page).toHaveTitle(testPage.fullTitle)
+    await testPage.expectPageTitle('Component code details')
 
     await testPage.checkRadioWithLabel('HTML')
     await testPage.codeInput.fill('<p>content</p>')
     await testPage.usageInput.fill('Use it')
     await testPage.clickContinue()
-    await expect(page).toHaveTitle(/Figma design - MoJ Design System/)
+    await testPage.expectPageTitle('Figma design')
     // await expect(page).toHaveTitle(/Check your answers - MoJ Design System/)
 
     await page.goto(cyaPage.url)
@@ -193,7 +189,7 @@ test.describe('check your answers', async () => {
       .first()
       .getByRole('link', { name: 'View and Change' })
       .click()
-    await expect(page).toHaveTitle(/Component code details - MoJ Design System/)
+    await testPage.expectPageTitle('Component code details')
 
     await testPage.addAnotherButton.click()
 
@@ -202,7 +198,7 @@ test.describe('check your answers', async () => {
     await testPage.usageInput.fill('Copy and paste')
     await testPage.clickContinue()
 
-    await expect(page).toHaveTitle(/Figma design - MoJ Design System/)
+    await testPage.expectPageTitle('Figma design')
     // await expect(page).toHaveTitle(/Check your answers - MoJ Design System/)
     await page.goto(cyaPage.url)
 
@@ -234,7 +230,7 @@ test.describe('check your answers', async () => {
     await expect(page.getByText('Copy and paste')).toBeVisible()
     await page.getByRole('button', { name: 'Delete answers' }).click()
 
-    await expect(page).toHaveTitle(cyaPage.fullTitle)
+    await testPage.expectPageTitle('Check your answers')
     await expect(cyaPage.codeBlockCards).toHaveCount(1)
     await expect(cyaPage.codeBlockCards.first()).toContainText('Code block')
   })

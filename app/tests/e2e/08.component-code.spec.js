@@ -23,19 +23,17 @@ test('validation', async () => {
 test('code not available', async () => {
   await testPage.setCodeAvailable('No')
   await testPage.clickContinue()
-  await expect(testPage.page).toHaveTitle(/Figma design - MoJ Design System/)
+  await testPage.expectPageTitle('Figma design')
 
   await testPage.clickBack()
-  await expect(testPage.page).toHaveTitle(/Component code - MoJ Design System/)
+  await testPage.expectPageTitle('Component code')
 })
 
 test('code available', async () => {
   await testPage.setCodeAvailable('Yes')
   await testPage.clickContinue()
-  await expect(testPage.page).toHaveTitle(
-    /Component code details - MoJ Design System/
-  )
+  await testPage.expectPageTitle('Component code details')
 
   await testPage.clickBack()
-  await expect(testPage.page).toHaveTitle(/Component code - MoJ Design System/)
+  await testPage.expectPageTitle('Component code')
 })

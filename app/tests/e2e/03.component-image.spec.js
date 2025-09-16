@@ -32,7 +32,7 @@ test('file ok', async () => {
   await testPage.uploadFile(filename)
   await testPage.clickUpload()
 
-  await expect(testPage.page).toHaveTitle(testPage.fullTitle)
+  await testPage.expectPageTitle('Component image')
   await testPage.expectSuccessAlert(`File ‘${filename}’ has been uploaded.`)
 
   await expect(testPage.summaryList).toBeVisible()
@@ -62,7 +62,7 @@ test('check your answers', async ({ page }) => {
   await page.waitForLoadState()
 
   await page.goto(cyaPage.url)
-  await expect(page).toHaveTitle(cyaPage.fullTitle)
+  await testPage.expectPageTitle('Check your answers')
   await expect(cyaPage.componentImageCard).toBeVisible()
   await expect(cyaPage.componentImageCard).toContainText(filename)
 
@@ -74,5 +74,5 @@ test('check your answers', async ({ page }) => {
   ).not.toBeVisible()
 
   await cyaPage.componentImageCard.getByRole('link', { name: 'Change' }).click()
-  await expect(page).toHaveTitle(testPage.fullTitle)
+  await testPage.expectPageTitle('Component image')
 })
