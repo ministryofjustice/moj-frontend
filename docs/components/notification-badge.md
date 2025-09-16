@@ -45,7 +45,7 @@ Do not use it:
 
 To display a count, add the number in plain text next to the item. Putting the number in brackets may be clearer, especially if the title includes a number.
 
-<p><img src="{{ 'assets/images/xxx.png' | rev | url }}" alt="xxx"></p>
+<p><img src="{{ 'assets/images/notification-badge-example-count.png' | rev | url }}" alt="xxx"></p>
 
 ### Things to consider
 
@@ -109,7 +109,7 @@ Put the notification badge on the right of the link that the items relate to. It
 
 Label the title clearly so that the user knows what the item is. You may need to reorganise your tabs to do this.
 
-<p><img src="{{ 'assets/images/xxx.png' | rev | url }}" alt="xxx"></p>
+<p><img src="{{ 'assets/images/notification-badge-example-link-text-content.png' | rev | url }}" alt="xxx"></p>
 
 Consider the following for titles: 
 
@@ -142,15 +142,15 @@ This may confuse or frustrate users, particularly because it does not give any m
 
 #### Example: notification inbox
 
-<p><img src="{{ 'assets/images/xxx.png' | rev | url }}" alt="xxx"></p>
+<p><img src="{{ 'assets/images/notification-badge-example-inbox-1.png' | rev | url }}" alt="xxx"></p>
 
 1. The user sees they have 8 unread messages.
 
-<p><img src="{{ 'assets/images/xxx.png' | rev | url }}" alt="xxx"></p>
+<p><img src="{{ 'assets/images/notification-badge-example-inbox-2.png' | rev | url }}" alt="xxx"></p>
 
 2. The user views a list of unread messages, selects 3 and clicks 'Mark selected as read'.
 
-<p><img src="{{ 'assets/images/xxx.png' | rev | url }}" alt="xxx"></p>
+<p><img src="{{ 'assets/images/notification-badge-example-inbox-3.png' | rev | url }}" alt="xxx"></p>
 
 3. The user receives feedback that three messages have been marked as read, and the number on the notification badge changes from 8 to 5.
 
