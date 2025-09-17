@@ -162,8 +162,8 @@ Carry out research to find out if this will be useful.
 
 The notification badge will display either:
 
-- the number of tasks if there are 98 or fewer items
-- 99+ if there are 99 or more items
+- the number of tasks if there are 99 or fewer items
+- 99+ if there are 100 or more items
 
 ### When there are no items
 
