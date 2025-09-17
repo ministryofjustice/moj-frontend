@@ -2,9 +2,10 @@
 
 {%- set count = params.text | int %}
 {%- if count > 0 %}
-  {%- set count = '99+' if count > 99 else count %}
+  {%- set visuallyHiddenCount = '99 or more' if count >= 99 else count %}
+  {%- set count = '99+' if count >= 99 else count %}
   <span class="moj-notification-badge {{- params.classes if params.classes}}" {{- govukAttributes(params.attributes) -}}>
-    {{- count }}
-    {%- if params.visuallyHiddenText %}<span class="govuk-visually-hidden">{{- params.visuallyHiddenText }}</span>{%- endif %}
+    <span aria-hidden="true">{{- count }}</span>
+    <span class="govuk-visually-hidden">({{ visuallyHiddenCount }}{{ " "+params.visuallyHiddenText if params.visuallyHiddenText }})</span>
   </span>
 {% endif -%}
