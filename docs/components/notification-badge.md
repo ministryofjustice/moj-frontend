@@ -14,32 +14,28 @@ lede: "Use the notification badge to display a count of items that need the user
 
 {% example "/examples/notification-badge", 590 %}
 
-## Overview 
+## Overview
 
-The notification badge component shows users that there are items that they need to know about in a service. It displays the number of items.
+The notification badge component shows users that there are items that need their attention in a service. It displays the number of items.
 
 This component needs to be attached to a link.
 
-<div class="govuk-inset-text">
-  This is different to the <a href="https://design-patterns.service.justice.gov.uk/components/badge/">badge component</a>.
-</div>
-
 ### When to use
 
-You could use the notification badge to tell a user about a: 
+You could use the notification badge to tell a user about a:
 - new case, referral or application
 - change to an appointment or booking, for example a cancellation
 - new or unread message
 
-This component is best used in navigation links but may be OK to use in some tables and lists.
+This component is best used in navigation links but may be OK to use in some other parts of a service.
 
 ### When not to use
 
-Research will help you work out if and when the notification badge should be used.
+Research will help you work out if the notification badge should be used.
 
 Use the notification badge sparingly to reduce visual clutter, especially in complex interfaces.
 
-Do not use it:
+Do not use this component:
 - for a standard list of tasks before a linear journey, use the [GOV.UK completing multiple tasks pattern](https://design-system.service.gov.uk/patterns/complete-multiple-tasks/) for this
 - to just display a ‘count’ if there’s nothing for the user to do or know
 
@@ -53,39 +49,41 @@ Some internal users are logged in to a service for most of the day. If they work
 
 Consider also whether the component would be a good experience for people who will not usually be able to clear items, for example because they’re very busy.
 
+### Similar or linked components
+
+There’s also the:
+
+- [GOV.UK notification banner](https://design-system.service.gov.uk/components/notification-banner/)
+- [MoJ alert](https://design-patterns.service.justice.gov.uk/components/alert/)
+- [MoJ badge](https://design-patterns.service.justice.gov.uk/components/badge/)
+
 {% endtab %}
 
 {% tab "How to use" %}
 
-## How to use 
+## How to use
 
-The notification badge can be added to a navigation and some headers.
+### In navigation
 
-### Use in navigation
-
-<div class="govuk-inset-text">
-  The notification badge is best used in a navigation.
-</div>
-
-This means it:
+The notification badge is best used in a navigation. This means it:
 
 - can be reliably detected by screen reader users
 - is in the most prominent position for sighted users
 
 Using it only in the navigation makes it the most useful and accessible for everyone. This is because it’s being used consistently.
 
-The navigation components are: 
-- [GOV.UK tabs](https://design-system.service.gov.uk/components/tabs/)
+The navigation components are:
 - [GOV.UK service navigation](https://design-system.service.gov.uk/components/service-navigation/)
+- [GOV.UK tabs](https://design-system.service.gov.uk/components/tabs/)
 - [primary navigation](https://design-patterns.service.justice.gov.uk/components/primary-navigation/)
 - [side navigation](https://design-patterns.service.justice.gov.uk/components/side-navigation/)
 - [sub navigation](https://design-patterns.service.justice.gov.uk/components/sub-navigation/)
 
-### Use in headers
+### In page headers
 
 The notification badge can be placed in a header if the colour contrast is accessible. The colour contrast of the notification badge and the [MoJ header](https://design-patterns.service.justice.gov.uk/components/header/) is accessible, but not the [GOV.UK header](https://design-system.service.gov.uk/components/header/). Do not change the component or header colour to make this possible.  
 
-If your users are switching between MoJ and GOV.UK services consider whether seeing the component being used in different will be confusing. 
+If your users are switching between MoJ and GOV.UK services consider whether seeing the component being used in different will be confusing.
 
 ### Position in the link text
 
@@ -93,9 +91,28 @@ Put the notification badge on the right of the link that the items relate to. It
 
 {% example "/examples/notification-badge-primary-nav", 590 %}
 
-<!-- Suggestion below for hidden text content -->
+### Link text content
+
+Label the title clearly so that the user knows what the item is. You may need to reorganise your tabs to do this.
+
+<p><img src="{{ 'assets/images/notification-badge-example-link-text-content.png' | rev | url }}" alt="xxx"></p>
+
+Consider the following for titles:
+
+- ‘Tasks’, ‘My tasks’ or ‘To do’ for lower priority items for the user to do
+- ‘Notifications’ for a range of items
+- an envelope icon for messages
+- ‘Alerts’ to give flexibility for a range of medium to high-importance items (but not in HMPPS)
+
+<div class="govuk-inset-text">
+    <a href="content-standards/style-guide/#alerts-(dps-only)">‘Alerts’ has a specific meaning in DPS</a> and HMPPS. Do not use this term as a title to refer to other types of notifications.
+</div>
 
 ### Hidden text
+
+You need to 'pass' (add) hidden text to the code to help non-sighted users understand what the notification badge number relates to.
+
+This is an example:  
 
 ```html
 <a href="">Messages
@@ -105,36 +122,13 @@ Put the notification badge on the right of the link that the items relate to. It
 </a>
 ```
 
-### Link text content
-
-Label the title clearly so that the user knows what the item is. You may need to reorganise your tabs to do this.
-
-<p><img src="{{ 'assets/images/notification-badge-example-link-text-content.png' | rev | url }}" alt="xxx"></p>
-
-Consider the following for titles: 
-
-- ‘Alerts’ to give flexibility for a range of medium to high-importance items (but not in DPS) 
-- ‘Tasks’, ‘My tasks’ or ‘To do’ for lower priority items for the user to do 
-- ‘Notifications’ for a range of items 
-- an envelope icon for messages 
-
-<div class="govuk-inset-text">
-    In DPS, the term ‘alerts’ has a specific meaning. Do not use this term as a title unless it relates to xxx.
-</div>
-
-### Hidden text
-
-TBC.
-
-Titles and the number also need to be added to the component’s hidden text.
-
 ### After the user has selected the title link
 
 The notification badge navigates the user where the items are. The items should be easy to find once the user has selected the link.  
 
-Once you’ve used the notification badge in a nav link, do not use it again within that section.  
+Once you’ve used the notification badge in a navigation link, do not use it again within that section.  
 
-This may confuse or frustrate users, particularly because it does not give any meaningful information about what the item is. Instead, you could add: 
+This may confuse or frustrate users, particularly because it does not give any meaningful information about what the item is. Instead, you could add:
 
 - the [GOV.UK tag component](https://design-system.service.gov.uk/components/tag/)
 - the [badge component](https://design-patterns.service.justice.gov.uk/components/badge/)
@@ -154,22 +148,22 @@ This may confuse or frustrate users, particularly because it does not give any m
 
 3. The user receives feedback that three messages have been marked as read, and the number on the notification badge changes from 8 to 5.
 
-### Using notifications
+### Using other notifications
 
 The notification badge is only shown when a user is logged in and viewing the service in a browser.
 
-This means you may need to send a notification (eg an email) if either:
+This means you may need to send a notification (for example an email) if either:
 - the task is urgent or important
-- they do not log in very often
+- some users do not log in very often
 
-Carry out research to find out if an email or other type of notification will be useful. Many internal users will be managing a lot of emails and other notifications.
+Carry out research to find out if this will be useful.
 
 ### Displaying the number of items
 
 The notification badge will display either:
 
-- the number of tasks (for 98 or fewer items)
-- 99+ (for 99 or more items)
+- the number of tasks if there are 98 or fewer items
+- 99+ if there are 99 or more items
 
 ### When there are no items
 
@@ -182,11 +176,11 @@ If there are no items on the page the title links to, you may want to add an emp
 
 ### When the number changes
 
-The NB number will only update when the page loads. It’s not 'dynamic'. If you want to change this, you’ll need to consider accessibility.  
+The notification badge number will only update when the page loads. It’s not 'dynamic'. If you want to change this, you’ll need to consider accessibility.  
 
 If an item is cleared by an interaction in the service, give the user info so that they know this has happened. Do not rely on the badge changing numbers.  
 
-#### Example: 
+#### Example:
 
 A manager is triaging new cases in a service. Next to their ‘new cases’ tab is a notification badge showing the number 15. They select the tab and view a list of new cases. They select the case (can’t be within the tab) and allocate it to a colleague. They are then returned to the new cases tab where the [success alert](https://design-patterns.service.justice.gov.uk/components/alert/#success-alert) is displayed. Emphasise do not rely.
 
@@ -202,15 +196,6 @@ MAKE SURE IT’S CONSISTENT
 
 x
 
-### Similar or linked components
-
-There’s also the: 
-
-- [Moj alert](https://design-patterns.service.justice.gov.uk/components/alert/)
-- [Moj badge](https://design-patterns.service.justice.gov.uk/components/badge/)
-- [Gov notification banner](https://design-system.service.gov.uk/components/notification-banner/)
-
-These components also draw attention to something at the top of a page.  
 
 {% endtab %}
 
