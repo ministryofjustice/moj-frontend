@@ -63,7 +63,7 @@ module.exports = function (eleventyConfig) {
       })
   )
 
-  eleventyConfig.addShortcode('example', function (exampleHref, height) {
+  eleventyConfig.addShortcode('example', function (exampleHref, height=200, page=this.ctx.page) {
     let { data, content: nunjucksCode } = matter(
       fs
         .readFileSync(
@@ -97,7 +97,7 @@ module.exports = function (eleventyConfig) {
     return nunjucksEnv.render('example.njk', {
       href: exampleHref,
       id: exampleHref.replace(/\//g, '-'),
-      arguments: data.arguments,
+      arguments: page.fileSlug,
       figmaLink: data.figma_link,
       title: data.title,
       height,
