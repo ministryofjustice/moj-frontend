@@ -18,8 +18,6 @@ lede: "Use the notification badge to display a count of items that need the user
 
 The notification badge component shows users that there are items that need their attention in a service. It displays the number of items.
 
-This component needs to be attached to a link.
-
 ### When to use
 
 You could use the notification badge to tell a user about a:
@@ -70,7 +68,7 @@ The notification badge is best used in a navigation. This means it:
 - can be reliably detected by screen reader users
 - is in the most prominent position for sighted users
 
-Using it only in the navigation makes it the most useful and accessible for everyone. This is because it’s being used consistently.
+Reserving the component for the navigation (and not using it elsewhere in the user interface) is the most useful and accessible for everyone. This because it’s being used consistently.
 
 The navigation components are:
 - [GOV.UK service navigation](https://design-system.service.gov.uk/components/service-navigation/)
@@ -158,21 +156,18 @@ This means you may need to send a notification (for example an email) if either:
 
 Carry out research to find out if this will be useful.
 
-### Displaying the number of items
+### Displaying the number of items (or no items)
 
-The notification badge will display either:
+The notification badge will:
 
-- the number of tasks if there are 99 or fewer items
-- 99+ if there are 100 or more items
-
-### When there are no items
-
-The notification badge will not show when there are no items.  
+- display the number of tasks if there are 99 or fewer items
+- display 99+ if there are 100 or more items
+- not show if there are no items
 
 If there are no items on the page the title links to, you may want to add an empty state. This:
 
 - confirms that there are no items (and that the page has loaded correctly)
-- helps people understand where they can find items (which is particularly helpful for a new service, or new users)
+- helps people understand where they can find items (which is particularly helpful for a new service or for new users)
 
 ### When the number changes
 
