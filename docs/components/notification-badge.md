@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/706
 excerpt: "The notification badge lets the user know that there is new information to view, like unread messages, and how many of them there are."
 ---
 
-{% example "/examples/notification-badge", 125 %}
+{% example template="/examples/notification-badge", height=125 %}
 
 ## When to use
 

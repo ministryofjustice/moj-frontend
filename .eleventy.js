@@ -62,51 +62,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setLibrary('md', md)
 
-  eleventyConfig.addShortcode('example', function (exampleHref, height) {
-    let { data, content: nunjucksCode } = matter(
-      fs
-        .readFileSync(
-          path.join(__dirname, 'docs', exampleHref, 'index.njk'),
-          'utf8'
-        )
-        .trim()
-    )
-
-    nunjucksCode = nunjucksCode.split('<!--no include-->')[0].trim()
-
-    const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode)
-
-    const htmlCode = beautifyHTML(rawHtmlCode.trim(), {
-      indent_size: 2,
-      end_with_newline: true,
-      max_preserve_newlines: 1,
-      unformatted: ['code', 'pre', 'em', 'strong']
-    })
-
-    let jsCode = ''
-    try {
-      jsCode = fs
-        .readFileSync(
-          path.join(__dirname, 'docs', exampleHref, 'script.js'),
-          'utf8'
-        )
-        .trim()
-    } catch {}
-
-    return nunjucksEnv.render('example.njk', {
-      href: exampleHref,
-      id: exampleHref.replace(/\//g, '-'),
-      arguments: data.arguments,
-      figmaLink: data.figma_link,
-      title: data.title,
-      height,
-      nunjucksCode,
-      htmlCode,
-      jsCode
-    })
-  })
-
-  eleventyConfig.addShortcode('exampleNew', function (params) {
+  eleventyConfig.addShortcode('example', function (params) {
     let templateFile = ''
     try {
       templateFile = fs

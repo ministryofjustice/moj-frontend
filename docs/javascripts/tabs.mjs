@@ -67,8 +67,7 @@ export class Tabs extends Component {
 
       panel.setAttribute('role', 'tabpanel')
       panel.setAttribute('aria-labelledby', tab.id)
-      console.log(tab.getAttribute('aria-selected'))
-      if (tab.getAttribute('aria-selected') === "false") {
+      if (tab.getAttribute('aria-selected') === 'false') {
         panel.classList.add(this.cssHide)
       }
     })

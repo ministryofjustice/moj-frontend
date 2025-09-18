@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/718
 excerpt: "Help users get help from within the digital service."
 ---
 
-{% example "/examples/patterns/get-help", 250 %}
+{% example template="/examples/patterns/get-help", height=250 %}
 
 ## When to use
 

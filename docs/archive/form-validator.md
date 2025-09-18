@@ -14,7 +14,7 @@ You must validate forms on the server-side. If you require client-side validatio
 For more complex validation, use an accessible validation library.
 {% endbanner %}
 
-{% example "/examples/form-validator", 1000 %}
+{% example template="/examples/form-validator", height=1000 %}
 
 ## When to use
 

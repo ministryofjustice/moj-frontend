@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/713
 excerpt: "Use the side navigation component to let users navigate sub sections in a system or service."
 ---
 
-{% example "/examples/side-navigation", 250 %}
+{% example template="/examples/side-navigation", height=250 %}
 
 ## When to use
 
@@ -24,7 +24,7 @@ The component can be configured to group navigation items into sections
 
 ### Sections
 
-{% example "/examples/side-navigation-sections", 480 %}
+{% example template="/examples/side-navigation-sections", height=480 %}
 
 ## Accessibility issues
 

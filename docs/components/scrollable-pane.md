@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/711
 excerpt: "Use the scrollable pane component when you have content (typically a table) which unavoidably overflows the page."
 ---
 
-{% exampleNew  template="/examples/scrollable-pane", height=470, showTab="nunjucks" %}
+{% example template="/examples/scrollable-pane", height=470 %}
 
 ## When to use
 
