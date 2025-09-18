@@ -12,7 +12,7 @@ lede: "Use the notification badge to display a count of items that need the user
 {% tabs "paginate" %}
 {% tab "Overview" %}
 
-{% example "/examples/notification-badge", 590 %}
+{% example "/examples/notification-badge", 81 %}
 
 ## Overview
 
