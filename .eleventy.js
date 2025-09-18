@@ -101,7 +101,7 @@ module.exports = function (eleventyConfig) {
     return nunjucksEnv.render('example.njk', {
       href: params.template,
       id: params.template.replace(/\//g, '-'),
-      arguments: data.arguments,
+      arguments: this.page.fileSlug,
       figmaLink: data.figma_link,
       title: data.title,
       height: params.height,
