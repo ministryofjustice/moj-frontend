@@ -35,7 +35,11 @@
 
   <div class="app-tabs__panel" id="nunjucks-default-{{ id }}" role="tabpanel" aria-labelledby="tab_nunjucks-default-{{ id }}">
 
-{% if arguments %}
+{%- set argsContent %}
+  {% include "./arguments/" + arguments + ".md" ignore missing %}
+{%- endset %}
+
+{% if argsContent | trim %}
   <details class="govuk-details" data-module="govuk-details">
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">
@@ -44,7 +48,7 @@
     </summary>
     <div class="govuk-details__text">
 
-{% include "./arguments/" + arguments + ".md" %}
+      {{ argsContent }}
 
     </div>
   </details>
