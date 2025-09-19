@@ -27,19 +27,21 @@ You could use the notification badge to tell a user about a:
 - change to an appointment or booking, for example a cancellation
 - new or unread message
 
-This component is best used in navigation links but may be OK to use in some other parts of a service.
+This component is best used in navigation link but may be OK to use in some other parts of a service.
+
+The component showing 3 case updates in the <a href="/components/primary-navigation/primary navigation>primary navigation</a>.  
+
+<p><img src="{{ 'assets/images/notification-badge-example-count.png' | rev | url }}" alt="xxx"></p>
 
 ### When not to use
 
 Research will help you work out if the notification badge should be used.
 
 Do not use this component:
-- for a standard list of tasks before a linear journey, use the [GOV.UK completing multiple tasks pattern](https://design-system.service.gov.uk/patterns/complete-multiple-tasks/) for this
+- for a standard list of tasks before a linear journey, use the [GOV.UK completing multiple tasks pattern](https://design-system.service.gov.uk/patterns/complete-multiple-tasks/) instead
 - to just display a ‘count’ if there’s nothing for the user to do or know
 
 To display a count, add the number in plain text next to the item. Putting the number in brackets may be clearer, especially if the title includes a number.
-
-<p><img src="{{ 'assets/images/notification-badge-example-count.png' | rev | url }}" alt="xxx"></p>
 
 ### Things to consider
 
@@ -80,14 +82,16 @@ The notification badge can be placed in a header if the colour contrast is acces
 
 If your users are switching between MoJ and GOV.UK services consider whether seeing the component being used in different will be confusing.
 
-### Position in the link text
+### The title link
+
+#### Position
 
 The notification badge goes on the right of the link that the items relate to, in the same container:
 
 {% example template="/examples/notification-badge-primary-nav", height=125,
 showTab="html" %}
 
-### Link text content
+#### Content
 
 Label the title clearly so that the user knows what the item is. You may need to reorganise your tabs to do this.
 
@@ -104,7 +108,7 @@ Consider the following for titles:
     <a href="content-standards/style-guide/#alerts-(dps-only)">‘Alerts’ has a different meaning in DPS</a> and HMPPS. Do not use this term as a more general title in HMPPS.
 </div>
 
-### Hidden text
+#### Hidden text
 
 You need to 'pass' (add) hidden text to the code to help non-sighted users understand what the notification badge number relates to.
 
@@ -118,16 +122,6 @@ This is an example:
 </a>
 ```
 
-### Using other notifications
-
-The notification badge is only shown when a user is logged in and viewing the service in a browser.
-
-This means you may need to send a notification (for example an email) if either:
-- the task is urgent or important
-- some users do not log in very often
-
-Carry out research to find out if this will be useful.
-
 ### Component and background colour and shape
 
 The notification badge is red and this should not be changed. Red is commonly used to attract people’s attention. DON’T CHANGE THE SHAPE because ux.  
@@ -136,7 +130,15 @@ This component can be used on backgrounds other than white if the colour contras
 
 MAKE SURE IT’S CONSISTENT
 
-### Displaying the number of items (or no items)
+### The component number
+
+#### When the number changes
+
+The notification badge number will only update when the page loads. It’s not 'dynamic'. If you want to change this, you’ll need to consider accessibility.  
+
+If an item is cleared by an interaction in the service, give the user info so that they know this has happened. Do not rely on the badge changing numbers.
+
+#### Displaying the number of items (or no items)
 
 The notification badge will:
 
@@ -144,16 +146,22 @@ The notification badge will:
 - display 99+ if there are 99 or more items
 - not show if there are no items
 
-If there are no items, you may want to add an empty state to:
+#### Empty states when there are no items
 
-- confirm this (and reassure that the page has loaded correctly)
-- help people understand where to find items (particularly helpful for a new service or for new users)
+You may want to add an empty state to:
 
-### When the number changes
+- confirm that there are no numbers (and reassure that the page has loaded correctly)
+- help people understand where they'll usually find items (particularly helpful for a new service or for new users)
 
-The notification badge number will only update when the page loads. It’s not 'dynamic'. If you want to change this, you’ll need to consider accessibility.  
+### Using other notifications
 
-If an item is cleared by an interaction in the service, give the user info so that they know this has happened. Do not rely on the badge changing numbers.  
+The notification badge is only shown when a user is logged in and viewing the service in a browser.
+
+This means you may need to send a notification (for example an email) if either:
+- the task is urgent or important
+- some users do not log in very often
+
+Carry out research to find out if it will be helpful.
 
 {% endtab %}
 
