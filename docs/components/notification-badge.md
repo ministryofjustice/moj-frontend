@@ -70,12 +70,7 @@ The notification badge is best used in a navigation. This means it:
 
 Reserving the component for the navigation (and not using it elsewhere in the user interface) is the most useful and accessible for everyone. This because it’s being used consistently.
 
-The navigation components are:
-- [GOV.UK service navigation](https://design-system.service.gov.uk/components/service-navigation/)
-- [GOV.UK tabs](https://design-system.service.gov.uk/components/tabs/)
-- [primary navigation](https://design-patterns.service.justice.gov.uk/components/primary-navigation/)
-- [side navigation](https://design-patterns.service.justice.gov.uk/components/side-navigation/)
-- [sub navigation](https://design-patterns.service.justice.gov.uk/components/sub-navigation/)
+You can view how to [use the notification badge in navigation components](/components/notification-badge/#examples-tab).
 
 ### In page headers
 
@@ -85,7 +80,9 @@ If your users are switching between MoJ and GOV.UK services consider whether see
 
 ### Position in the link text
 
-Put the notification badge on the right of the link that the items relate to. It needs to be in the same container, so that it’s included in the accessible name.
+You can view [how to position the component in HTML](href="#html-default--examples-notification-badge-primary-nav").
+
+It goes on the right of the link that the items relate to, in the same container.
 
 {% example "/examples/notification-badge-primary-nav", 590 %}
 
@@ -120,13 +117,10 @@ This is an example:
 </a>
 ```
 
-### After the user has selected the title link
+### Example: showing tasks after the component
 
-The notification badge navigates the user where the items are. The items should be easy to find once the user has selected the link.  
+The notification badge shows a user where the items are. The items should be easy to find once the user has selected the link.  
 
-Once you’ve used the notification badge in a navigation link, do not use it again within that section.  
-
-This may confuse or frustrate users, particularly because it does not give any meaningful information about what the item is. Instead, you could add:
 
 - the [GOV.UK tag component](https://design-system.service.gov.uk/components/tag/)
 - the [badge component](https://design-patterns.service.justice.gov.uk/components/badge/)
@@ -134,17 +128,23 @@ This may confuse or frustrate users, particularly because it does not give any m
 
 #### Example: notification inbox
 
+A manager is triaging new cases in a service. Next to their ‘new cases’ tab is a notification badge showing the number 15. They select the tab and view a list of new cases. They select the case (can’t be within the tab) and allocate it to a colleague. They are then returned to the new cases tab where the [success alert](https://design-patterns.service.justice.gov.uk/components/alert/#success-alert) is displayed. Emphasise do not rely.
+
 <p><img src="{{ 'assets/images/notification-badge-example-inbox-1.png' | rev | url }}" alt="xxx"></p>
 
-1. The user sees they have 8 unread messages.
+S1. The user sees they have 8 notifications.
 
 <p><img src="{{ 'assets/images/notification-badge-example-inbox-2.png' | rev | url }}" alt="xxx"></p>
 
-2. The user views a list of unread messages, selects 3 and clicks 'Mark selected as read'.
+S2. After selecting the link, they view their notifications
+
+The status of the notification is shown in a GOV.UK badge. This shows more meaningful information about the item. Once you’ve used the notification badge in a link, do not use it again within that section.  
+
+The user selects 3 and clicks 'Mark selected as read'.
 
 <p><img src="{{ 'assets/images/notification-badge-example-inbox-3.png' | rev | url }}" alt="xxx"></p>
 
-3. The user receives feedback that three messages have been marked as read, and the number on the notification badge changes from 8 to 5.
+S3. The user receives feedback that three messages have been marked as read, and the number on the notification badge changes from 8 to 5.
 
 ### Using other notifications
 
@@ -160,24 +160,20 @@ Carry out research to find out if this will be useful.
 
 The notification badge will:
 
-- display the number of tasks if there are 99 or fewer items
-- display 99+ if there are 100 or more items
+- display the number of tasks if there are 98 or less items
+- display 99+ if there are 99 or more items
 - not show if there are no items
 
-If there are no items on the page the title links to, you may want to add an empty state. This:
+If there are no items, you may want to add an empty state to:
 
-- confirms that there are no items (and that the page has loaded correctly)
-- helps people understand where they can find items (which is particularly helpful for a new service or for new users)
+- confirm this (and reassure that the page has loaded correctly)
+- help people understand where to find items (particularly helpful for a new service or for new users)
 
 ### When the number changes
 
 The notification badge number will only update when the page loads. It’s not 'dynamic'. If you want to change this, you’ll need to consider accessibility.  
 
 If an item is cleared by an interaction in the service, give the user info so that they know this has happened. Do not rely on the badge changing numbers.  
-
-#### Example:
-
-A manager is triaging new cases in a service. Next to their ‘new cases’ tab is a notification badge showing the number 15. They select the tab and view a list of new cases. They select the case (can’t be within the tab) and allocate it to a colleague. They are then returned to the new cases tab where the [success alert](https://design-patterns.service.justice.gov.uk/components/alert/#success-alert) is displayed. Emphasise do not rely.
 
 ### Component and background colour and shape
 
