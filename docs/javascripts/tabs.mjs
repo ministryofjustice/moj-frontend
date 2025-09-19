@@ -60,12 +60,16 @@ export class Tabs extends Component {
       tab.setAttribute('id', `tab_${panel.id}`)
       tab.setAttribute('role', 'tab')
       tab.setAttribute('aria-controls', panel.id)
-      tab.setAttribute('aria-selected', 'false')
+      if (!tab.hasAttribute('aria-selected')) {
+        tab.setAttribute('aria-selected', 'false')
+      }
       // $tab.setAttribute('tabindex', '-1')
 
       panel.setAttribute('role', 'tabpanel')
       panel.setAttribute('aria-labelledby', tab.id)
-      panel.classList.add(this.cssHide)
+      if (tab.getAttribute('aria-selected') === 'false') {
+        panel.classList.add(this.cssHide)
+      }
     })
   }
 

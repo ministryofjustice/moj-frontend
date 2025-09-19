@@ -12,7 +12,7 @@ excerpt: "Use the banner component to display a prominent message and related ac
 Use the [alert](/components/alert) to display a notification to users.
 {% endbanner %}
 
-{% example "/examples/banner", 225 %}
+{% example template="/examples/banner", height=225 %}
 
 ## When to use
 
@@ -34,16 +34,16 @@ It can be configured with and without icons and in different colours for success
 
 This is the default style and should be used when the user performs an action successfully.
 
-{% example "/examples/banner-success", 175 %}
+{% example template="/examples/banner-success", height=175 %}
 
 ### Warning
 
 Use this variant when you want to warn the user that something went wrong.
 
-{% example "/examples/banner-warning", 175 %}
+{% example template="/examples/banner-warning", height=175 %}
 
 ### Information
 
 Use this variant when you want to tell users some information.
 
-{% example "/examples/banner-information", 175 %}
+{% example template="/examples/banner-information", height=175 %}

@@ -11,7 +11,7 @@ lede: "The button menu is a versatile component that allows users to view tasks 
 {% tabs "paginate" %}
 {% tab "Overview" %}
 
-{% example "/examples/button-menu", 250 %}
+{% example template="/examples/button-menu", height=250 %}
 
 ## Overview
 
@@ -81,17 +81,17 @@ Placing the menu on the right may stop it from obscuring other items on the scre
 
 ### Left-aligned menu items
 
-{% example "/examples/button-menu-left-aligned", 275 %}
+{% example template="/examples/button-menu-left-aligned", height=275 %}
 
 ### Right-aligned menu items
 
-{% example "/examples/button-menu-right-aligned", 275 %}
+{% example template="/examples/button-menu-right-aligned", height=275 %}
 
 ### Grouping buttons
 
 You can add a button menu alongside a link or GOV.UK button. This code has correct spacing and creates a better user experience for people on mobile devices.
 
-{% example "/examples/button-menu-grouped", 275 %}
+{% example template="/examples/button-menu-grouped", height=275 %}
 
 ### Button colour
 

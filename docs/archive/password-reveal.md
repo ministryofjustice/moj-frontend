@@ -12,7 +12,7 @@ excerpt: "Use the password reveal component to let users check their password sa
 This component was archived because the [GOV.UK Design System password input](https://design-system.service.gov.uk/components/password-input/) enables users to check their password safely. There’s also the [GOV.UK Design System ‘Ask users for passwords’ pattern](https://design-system.service.gov.uk/patterns/passwords/).
 {% endbanner %}
 
-{% example "/examples/password-reveal", 210 %}
+{% example template="/examples/password-reveal", height=210 %}
 
 ## When to use
 

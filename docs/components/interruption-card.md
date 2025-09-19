@@ -11,7 +11,7 @@ lede: "The interruption card component pauses a user’s journey with important 
 {% tabs "paginate" %}
 {% tab "Overview" %}
 
-{% example "/examples/interruption-card", 590 %}
+{% example template="/examples/interruption-card", height=590 %}
 
 ## Overview
 

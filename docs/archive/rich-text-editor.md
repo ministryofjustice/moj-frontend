@@ -13,7 +13,7 @@ This component is not sufficiently accessible to be used in live services.
 You should use an accessible rich text editor.
 {% endbanner %}
 
-{% example "/examples/rich-text-editor", 300 %}
+{% example template="/examples/rich-text-editor", height=300 %}
 
 ## When to use
 
@@ -36,4 +36,4 @@ You can also add bold, underline and italic buttons but these styles should be u
 
 You can customise the formatting options shown in the toolbar with the `data-toolbar` attribute.
 
-{% example "/examples/rich-text-editor-formatting", 300 %}
+{% example template="/examples/rich-text-editor-formatting", height=300 %}

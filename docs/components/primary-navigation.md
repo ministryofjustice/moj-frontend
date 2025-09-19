@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/710
 excerpt: "Use the primary navigation component to let users navigate and search your service."
 ---
 
-{% example "/examples/primary-navigation", 150 %}
+{% example template="/examples/primary-navigation", height=150 %}
 
 ## When to use
 
@@ -26,7 +26,7 @@ Do not put calls to action in the primary navigation. For example, ‘Create cas
 
 If your service can search anything, use an inline search form.
 
-{% example "/examples/primary-navigation-inline-search", 180 %}
+{% example template="/examples/primary-navigation-inline-search", height=180 %}
 
 ### Toggle search
 
@@ -34,4 +34,4 @@ If your service can only search for certain things, use a toggle search form.
 
 You must tell users what they are searching for in the form hint text, and how they can search using the `data-toggle-button.text` attribute.
 
-{% example "/examples/primary-navigation-toggle-search", 250 %}
+{% example template="/examples/primary-navigation-toggle-search", height=250 %}

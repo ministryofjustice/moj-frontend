@@ -12,7 +12,7 @@ The [Pagination component](https://design-system.service.gov.uk/components/pagin
 You should use the GOV.UK version if it fits your needs.
 {% endbanner %}
 
-{% example "/examples/pagination", 125 %}
+{% example template="/examples/pagination", height=125 %}
 
 ## When to use
 
@@ -26,4 +26,4 @@ Don't show pagination if there's only one page.
 
 ### Just previous and next buttons
 
-{% example "/examples/pagination-prev-next", 125 %}
+{% example template="/examples/pagination-prev-next", height=125 %}

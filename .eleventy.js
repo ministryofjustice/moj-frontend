@@ -62,15 +62,20 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setLibrary('md', md)
 
-  eleventyConfig.addShortcode('example', function (exampleHref, height) {
-    let { data, content: nunjucksCode } = matter(
-      fs
+  eleventyConfig.addShortcode('example', function (params) {
+    let templateFile = ''
+    try {
+      templateFile = fs
         .readFileSync(
-          path.join(__dirname, 'docs', exampleHref, 'index.njk'),
+          path.join(__dirname, 'docs', params.template, 'index.njk'),
           'utf8'
         )
         .trim()
-    )
+    } catch {
+      console.error(`Template '${params.template}' could not be found.`)
+      return ''
+    }
+    let { data, content: nunjucksCode } = matter(templateFile)
 
     nunjucksCode = nunjucksCode.split('<!--no include-->')[0].trim()
 
@@ -87,19 +92,20 @@ module.exports = function (eleventyConfig) {
     try {
       jsCode = fs
         .readFileSync(
-          path.join(__dirname, 'docs', exampleHref, 'script.js'),
+          path.join(__dirname, 'docs', params.template, 'script.js'),
           'utf8'
         )
         .trim()
     } catch {}
 
     return nunjucksEnv.render('example.njk', {
-      href: exampleHref,
-      id: exampleHref.replace(/\//g, '-'),
+      href: params.template,
+      id: params.template.replace(/\//g, '-'),
       arguments: data.arguments,
       figmaLink: data.figma_link,
       title: data.title,
-      height,
+      height: params.height,
+      showTab: params.showTab,
       nunjucksCode,
       htmlCode,
       jsCode
