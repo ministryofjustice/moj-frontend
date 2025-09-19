@@ -22,9 +22,10 @@ const config = {
   SENTRY_DSN: process.env.SENTRY_DSN,
   SENTRY_CSP_REPORT_URI: process.env.SENTRY_CSP_REPORT_URI || '',
   ALLOWED_EMAIL_DOMAINS: [
-    'justice.gov.uk',
     'cica.gov.uk',
+    'cps.gov.uk',
     'hmcts.net',
+    'justice.gov.uk',
     'publicguardian.gov.uk'
   ],
   HTML_SANITIZATION_OPTIONS: {

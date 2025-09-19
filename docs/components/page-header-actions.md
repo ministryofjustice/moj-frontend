@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/707
 excerpt: "Use the page header actions component for certain actions."
 ---
 
-{% example "/examples/page-header-actions", 150 %}
+{% example template="/examples/page-header-actions", height=150 %}
 
 ## When to use
 

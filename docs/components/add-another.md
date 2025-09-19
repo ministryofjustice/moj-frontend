@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/686
 excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
 ---
 
-{% example "/examples/add-another", 664 %}
+{% example template="/examples/add-another", height=664 %}
 
 ## When to use
 

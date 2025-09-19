@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/715
 excerpt: "Break up content or actions into visually distinct groups of information."
 ---
 
-{% example "/examples/ticket-panel", 300 %}
+{% example template="/examples/ticket-panel", height=300 %}
 
 Break up content or actions into visually distinct groups of information.
 

@@ -29,26 +29,26 @@ test('validation', async () => {
   ])
 })
 
-test('component details', async ({ page }) => {
+test('component details', async () => {
   await testPage.nameInput.fill('Accordion')
   await testPage.descriptionInput.fill('It expands and contracts')
   await testPage.usageInput.fill('To hide and show content')
 
   await testPage.clickContinue()
 
-  await expect(page).toHaveTitle(/Component image - MoJ Design System/)
+  await testPage.expectPageTitle('Component image')
 })
 
-test('check your answers', async ({ page }) => {
+test('check your answers', async () => {
   await testPage.nameInput.fill('Accordion')
   await testPage.descriptionInput.fill('It expands and contracts')
   await testPage.usageInput.fill('To hide and show content')
 
   await testPage.clickContinue()
-  await expect(page).toHaveTitle(/Component image - MoJ Design System/)
+  await testPage.expectPageTitle('Component image')
 
   await cyaPage.goTo()
-  await expect(page).toHaveTitle(cyaPage.fullTitle)
+  await testPage.expectPageTitle('Check your answers')
   await expect(cyaPage.componentDetailsCard).toBeVisible()
   await expect(cyaPage.componentDetailsCard).toContainText('Accordion')
   await expect(cyaPage.componentDetailsCard).toContainText(
@@ -68,5 +68,5 @@ test('check your answers', async ({ page }) => {
   await cyaPage.componentDetailsCard
     .getByRole('link', { name: 'Change' })
     .click()
-  await expect(page).toHaveTitle(testPage.fullTitle)
+  await testPage.expectPageTitle('Component details')
 })

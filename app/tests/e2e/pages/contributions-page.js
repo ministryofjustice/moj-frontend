@@ -13,13 +13,10 @@ export class ContributionsPage {
   }
 
   get fullTitle() {
-    return `${this.title} - MoJ Design System`
+    return `${this.title} - Submit a component - MoJ Design System`
   }
 
   async goTo() {
-    // Full title of page we want to navigate to
-    const re = new RegExp(`${this.fullTitle}`)
-
     // Email verification steps
     await this.page.goto('start')
     await this.page.waitForLoadState()
@@ -29,11 +26,11 @@ export class ContributionsPage {
       .getByLabel('Enter your MoJ email address')
       .fill('test.user@justice.gov.uk')
     await this.continueButton.click()
-    await expect(this.page).toHaveTitle(/Component details - MoJ Design System/)
+    await this.expectPageTitle('Component details')
 
     // Now we can navigate to any page in the flow
     await this.page.goto(this.url)
-    await expect(this.page).toHaveTitle(re)
+    await this.expectPageTitle(this.title)
   }
 
   async clickContinue() {
@@ -81,5 +78,11 @@ export class ContributionsPage {
     for (let i = 0; i < count; i++) {
       await expect(links.nth(i)).toHaveClass('govuk-link')
     }
+  }
+
+  async expectPageTitle(title) {
+    // Full title of page we want to navigate to
+    const re = new RegExp(`${title} - Submit a component - MoJ Design System`)
+    await expect(this.page).toHaveTitle(re)
   }
 }

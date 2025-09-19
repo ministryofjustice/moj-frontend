@@ -159,7 +159,7 @@ test.describe('successful navigation', async () => {
     await accessibilityPage.goTo()
   })
 
-  test('all ok', async ({ page }) => {
+  test('all ok', async () => {
     await accessibilityPage.setExternalAudit('Yes')
     await accessibilityPage.setInternalReview('No')
     await accessibilityPage.setAssistiveTech('No')
@@ -173,7 +173,7 @@ test.describe('successful navigation', async () => {
     await testPage.issuesInput.fill('No issues')
 
     await testPage.clickContinue()
-    await expect(page).toHaveTitle(/Component code - MoJ Design System/)
+    await testPage.expectPageTitle('Component code')
   })
 })
 
@@ -194,10 +194,10 @@ test.describe('check your answers', async () => {
     await accessibilityPage.setAssistiveTech('No')
 
     accessibilityPage.clickContinue()
-    await expect(page).toHaveTitle(/Component code - MoJ Design System/)
+    await testPage.expectPageTitle('Component code')
 
     await page.goto(cyaPage.url)
-    await expect(page).toHaveTitle(cyaPage.fullTitle)
+    await testPage.expectPageTitle('Check your answers')
 
     await expect(cyaPage.externalAuditCard).toBeVisible()
     await expect(cyaPage.externalAuditCard).toContainText('None')
@@ -212,12 +212,12 @@ test.describe('check your answers', async () => {
     await cyaPage.externalAuditCard
       .getByRole('link', { name: 'Change' })
       .click()
-    await expect(page).toHaveTitle(/Accessibility findings - MoJ Design System/)
+    await testPage.expectPageTitle('Accessibility findings')
 
     await accessibilityPage.setExternalAudit('Yes')
     accessibilityPage.clickContinue()
 
-    await expect(page).toHaveTitle(testPage.fullTitle)
+    await testPage.expectPageTitle('External accessibility audit')
     await testPage.organisationInput.fill('DAC')
     await testPage.dayInput.fill(`${dayjs().date()}`)
     await testPage.monthInput.fill(`${dayjs().month() + 1}`)
@@ -227,7 +227,7 @@ test.describe('check your answers', async () => {
     await testPage.clickContinue()
 
     await page.goto(cyaPage.url)
-    await expect(page).toHaveTitle(cyaPage.fullTitle)
+    await testPage.expectPageTitle('Check your answers')
 
     await expect(cyaPage.externalAuditCard).toBeVisible()
     await expect(cyaPage.externalAuditCard).toContainText('DAC')
@@ -257,7 +257,7 @@ test.describe('check your answers', async () => {
 
     await page.getByRole('button', { name: 'Delete answers' }).click()
 
-    await expect(page).toHaveTitle(cyaPage.fullTitle)
+    await testPage.expectPageTitle('Check your answers')
     await expect(cyaPage.externalAuditCard).toBeVisible()
     await expect(cyaPage.externalAuditCard).toContainText('None')
   })

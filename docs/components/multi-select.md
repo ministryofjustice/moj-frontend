@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/206
 excerpt: "Use the multi select component to let users select multiple items in a list."
 ---
 
-{% example "/examples/multi-select", 650 %}
+{% example template="/examples/multi-select", height=650 %}
 
 ## When to use
 

@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/717
 excerpt: "Use this pattern to help users refine a set of items either in a list or a set of search results."
 ---
 
-{% example "/examples/patterns/filter-a-list", 1050 %}
+{% example template="/examples/patterns/filter-a-list", height=1050 %}
 
 ## When to use
 

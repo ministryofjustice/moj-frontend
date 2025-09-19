@@ -56,7 +56,7 @@ if (!(isDev || isTest)) {
     helmet({
       contentSecurityPolicy: {
         useDefaults: true,
-        reportOnly: true,
+        reportOnly: false,
         directives: {
           reportUri: SENTRY_CSP_REPORT_URI,
           scriptSrc: [

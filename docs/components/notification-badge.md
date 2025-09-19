@@ -12,7 +12,7 @@ lede: "Use the notification badge to display a count of items that need the user
 {% tabs "paginate" %}
 {% tab "Overview" %}
 
-{% example "/examples/notification-badge", 81 %}
+{% example template="/examples/notification-badge", height=81 %}
 
 ## Overview
 
@@ -84,7 +84,8 @@ You can view [how to position the component in HTML](href="#html-default--exampl
 
 It goes on the right of the link that the items relate to, in the same container.
 
-{% example "/examples/notification-badge-primary-nav", 590 %}
+{% example template="/examples/notification-badge-primary-nav", height=125,
+showTab="html" %}
 
 ### Link text content
 
@@ -196,27 +197,27 @@ x
 
 ### Within MoJ primary navigation
 
-{% example "/examples/notification-badge-primary-nav", 590 %}
+{% example template="/examples/notification-badge-primary-nav", height=590 %}
 
 ### Within MoJ side navigation
 
-{% example "/examples/notification-badge-side-nav", 590 %}
+{% example template="/examples/notification-badge-side-nav", height=590 %}
 
 ### Within MoJ sub navigation
 
-{% example "/examples/notification-badge-sub-nav", 590 %}
+{% example template="/examples/notification-badge-sub-nav", height=590 %}
 
 ### Within GOV.UK Tabs
 
-{% example "/examples/notification-badge-tabs", 590 %}
+{% example template="/examples/notification-badge-tabs", height=590 %}
 
 ### Within GOV.UK Service Navigation
 
-{% example "/examples/notification-badge-service-nav", 590 %}
+{% example template="/examples/notification-badge-service-nav", height=590 %}
 
 ### Within MoJ Header
 
-{% example "/examples/notification-badge-header", 590 %}
+{% example template="/examples/notification-badge-header", height=590 %}
 {% endtab %}
 
 {% tab "Get help and contribute" %}

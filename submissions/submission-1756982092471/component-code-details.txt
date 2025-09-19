@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "nunjucks",
+  "componentCodeLanguageOther": "",
+  "componentCode": "{% call govukInsetText({ classes: \"govuk-!-margin-0 guidance-panel\" }) %}\r\n   <p>To apply for short-term accommodation (CAS2) for bail, the applicant must:</p>\r\n   <h2 class=\"govuk-heading-s govuk-!-margin-0\">Be:</h2>\r\n   <ul class=\"govuk-list govuk-list--bullet\">\r\n     <li>18 years old or older</li>\r\n     <li>able to live independently in shared accommodation\r\n     </li>\r\n   </ul>\r\n   <h2 class=\"govuk-heading-s govuk-!-margin-0\">Not:</h2>\r\n   <ul class=\"govuk-list govuk-list--bullet\">\r\n     <li>be currently charged with, or have any past convictions or cautions, or current allegations of any sexual offences in Schedule 3 of the Sexual Offences Act 2003</li>\r\n     <li>have breached immigration law (other than overstaying an approved period of leave to enter or remain in the UK)</li>\r\n     <li>have the 'no recourse to public funds' (NRPF) condition applied to their permission to enter or stay in the UK</li>\r\n     <li>be assessed as at high or very high risk of serious harm on OASys (Offender Assessment System)</li>\r\n  </ul>\r\n{% endcall %}\r\n\r\n",
+  "componentCodeUsage": "Add class 'guidance-panel' to the govukInsetText component."
+}

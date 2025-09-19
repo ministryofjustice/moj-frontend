@@ -18,7 +18,7 @@ contributorTeam: undefined
 {% tab "Overview" %}
 
 <div class="img-container">
-  <img src="/assets/images/component.jpg" alt="Test component" />
+  <img src="/assets/images/component.jpg" alt="test component" />
 </div>
 
 ## Overview
@@ -29,7 +29,7 @@ This is an overview.
 This is how it is used.
 
 ### Contribute to this component
-You can help develop this component by adding information to the [Test component Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+You can help develop this component by adding information to the [‘test component’ Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -37,13 +37,13 @@ You can help develop this component by adding information to the [Test component
 
 ## Designs
 
-A Figma design was not included when this component was added.
+A Figma link was not included when this component was added.
 
-      There may be more information in the [Test component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+There may be more information in the [‘test component’ Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
 ## Contribute a Figma link
 
-      If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -51,7 +51,7 @@ A Figma design was not included when this component was added.
 
 ## Accessibility
 
-Accessibility findings have been added for this component. There may be more findings in the [Test component Github discussion]({{ githuburl }}).
+Accessibility findings have been added for this component. There may be more findings in the [‘test component’ Github discussion]({{ githuburl }}).
 
 
 ### External audit
@@ -88,7 +88,7 @@ Assistive tech issues discovered.
 
 ## Code
 
-Code has been added for this component. There may be other code blocks in the [Test component Github discussion]({{ githuburl }}).
+Code has been added for this component. There may be other code blocks in the [‘test component’ Github discussion]({{ githuburl }}).
 
 
 ### Code block 1: html
@@ -114,7 +114,7 @@ If you have code that is relevant to this component you can add it to the [Githu
 
 {% endtabs %}
 ",
-  "filename": "Test-component.md",
+  "filename": "test-component.md",
 }
 `;
 
@@ -147,7 +147,7 @@ contributorTeam: undefined
 
 
 ### Contribute to this component
-You can help develop this component by adding information to the [unknown-component Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+You can help develop this component by adding information to the [‘unknown-component’ Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -155,13 +155,13 @@ You can help develop this component by adding information to the [unknown-compon
 
 ## Designs
 
-A Figma design was not included when this component was added.
+A Figma link was not included when this component was added.
 
-      There may be more information in the [unknown-component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+There may be more information in the [‘unknown-component’ Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
 ## Contribute a Figma link
 
-      If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -169,7 +169,7 @@ A Figma design was not included when this component was added.
 
 ## Accessibility
 
-Accessibility findings have been added for this component. There may be more findings in the [unknown-component Github discussion]({{ githuburl }}).
+Accessibility findings have been added for this component. There may be more findings in the [‘unknown-component’ Github discussion]({{ githuburl }}).
 
 
 ### External audit
@@ -206,7 +206,7 @@ undefined
 
 ## Code
 
-Code has been added for this component. There may be other code blocks in the [unknown-component Github discussion]({{ githuburl }}).
+Code has been added for this component. There may be other code blocks in the [‘unknown-component’ Github discussion]({{ githuburl }}).
 
 
 ### Code block 1: undefined
@@ -232,7 +232,7 @@ If you have code that is relevant to this component you can add it to the [Githu
 
 {% endtabs %}
 ",
-  "filename": "Unknown-component.md",
+  "filename": "unknown-component.md",
 }
 `;
 
@@ -254,7 +254,7 @@ contributorTeam: undefined
 {% tab "Overview" %}
 
 <div class="img-container">
-  <img src="/undefined" alt="Another component" />
+  <img src="/undefined" alt="another component" />
 </div>
 
 ## Overview
@@ -265,7 +265,7 @@ Another overview.
 Another usage.
 
 ### Contribute to this component
-You can help develop this component by adding information to the [Another component Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+You can help develop this component by adding information to the [‘another component’ Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -273,13 +273,13 @@ You can help develop this component by adding information to the [Another compon
 
 ## Designs
 
-A Figma design was not included when this component was added.
+A Figma link was not included when this component was added.
 
-      There may be more information in the [Another component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+There may be more information in the [‘another component’ Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
 ## Contribute a Figma link
 
-      If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -287,7 +287,7 @@ A Figma design was not included when this component was added.
 
 ## Accessibility
 
-Accessibility findings have been added for this component. There may be more findings in the [Another component Github discussion]({{ githuburl }}).
+Accessibility findings have been added for this component. There may be more findings in the [‘another component’ Github discussion]({{ githuburl }}).
 
 
 ### External audit
@@ -324,7 +324,7 @@ Assistive tech issues discovered.
 
 ## Code
 
-Code has been added for this component. There may be other code blocks in the [Another component Github discussion]({{ githuburl }}).
+Code has been added for this component. There may be other code blocks in the [‘another component’ Github discussion]({{ githuburl }}).
 
 
 ### Code block 1: html
@@ -350,7 +350,7 @@ If you have code that is relevant to this component you can add it to the [Githu
 
 {% endtabs %}
 ",
-  "filename": "Another-component.md",
+  "filename": "another-component.md",
 }
 `;
 
@@ -383,7 +383,7 @@ contributorTeam: undefined
 
 
 ### Contribute to this component
-You can help develop this component by adding information to the [unknown-component Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+You can help develop this component by adding information to the [‘unknown-component’ Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -391,13 +391,13 @@ You can help develop this component by adding information to the [unknown-compon
 
 ## Designs
 
-A Figma design was not included when this component was added.
+A Figma link was not included when this component was added.
 
-      There may be more information in the [unknown-component Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+There may be more information in the [‘unknown-component’ Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
 ## Contribute a Figma link
 
-      If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -405,7 +405,7 @@ A Figma design was not included when this component was added.
 
 ## Accessibility
 
-Accessibility findings have been added for this component. There may be more findings in the [unknown-component Github discussion]({{ githuburl }}).
+Accessibility findings have been added for this component. There may be more findings in the [‘unknown-component’ Github discussion]({{ githuburl }}).
 
 
 ### External audit
@@ -442,7 +442,7 @@ undefined
 
 ## Code
 
-Code has been added for this component. There may be other code blocks in the [unknown-component Github discussion]({{ githuburl }}).
+Code has been added for this component. There may be other code blocks in the [‘unknown-component’ Github discussion]({{ githuburl }}).
 
 
 ### Code block 1: undefined
@@ -468,7 +468,7 @@ If you have code that is relevant to this component you can add it to the [Githu
 
 {% endtabs %}
 ",
-  "filename": "Unknown-component.md",
+  "filename": "unknown-component.md",
 }
 `;
 
@@ -490,7 +490,7 @@ contributorTeam: undefined
 {% tab "Overview" %}
 
 <div class="img-container">
-  <img src="/undefined" alt="Component! with@ special#chars" />
+  <img src="/undefined" alt="component! with@ special#chars" />
 </div>
 
 ## Overview
@@ -501,7 +501,7 @@ Overview here.
 Usage here.
 
 ### Contribute to this component
-You can help develop this component by adding information to the [Component! with@ special#chars Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+You can help develop this component by adding information to the [‘component! with@ special#chars’ Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -509,13 +509,13 @@ You can help develop this component by adding information to the [Component! wit
 
 ## Designs
 
-A Figma design was not included when this component was added.
+A Figma link was not included when this component was added.
 
-      There may be more information in the [Component! with@ special#chars Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+There may be more information in the [‘component! with@ special#chars’ Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
 ## Contribute a Figma link
 
-      If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 
@@ -523,7 +523,7 @@ A Figma design was not included when this component was added.
 
 ## Accessibility
 
-Accessibility findings have been added for this component. There may be more findings in the [Component! with@ special#chars Github discussion]({{ githuburl }}).
+Accessibility findings have been added for this component. There may be more findings in the [‘component! with@ special#chars’ Github discussion]({{ githuburl }}).
 
 
 ### External audit
@@ -560,7 +560,7 @@ Assistive tech issues discovered.
 
 ## Code
 
-Code has been added for this component. There may be other code blocks in the [Component! with@ special#chars Github discussion]({{ githuburl }}).
+Code has been added for this component. There may be other code blocks in the [‘component! with@ special#chars’ Github discussion]({{ githuburl }}).
 
 
 ### Code block 1: html
@@ -586,6 +586,6 @@ If you have code that is relevant to this component you can add it to the [Githu
 
 {% endtabs %}
 ",
-  "filename": "Component-with-special-chars.md",
+  "filename": "component-with-special-chars.md",
 }
 `;

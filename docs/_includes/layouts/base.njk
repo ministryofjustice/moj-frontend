@@ -63,6 +63,6 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  <script type="module" src="{{ 'javascripts/application.min.js' | rev }}"></script>
+  <script {%- if cspNonce %} nonce="{{ cspNonce }}"{% endif %} type="module" src="{{ 'javascripts/application.min.js' | rev }}"></script>
   <script {%- if cspNonce %} nonce="{{ cspNonce }}"{% endif %} type="module" src="https://www.googletagmanager.com/gtag/js?id=G-VTGX4YLSVL"></script>
 {% endblock %}

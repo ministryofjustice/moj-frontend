@@ -11,9 +11,7 @@ test.describe('verification process', async () => {
     basePage = new ContributionsPage(page)
     await page.goto('start')
     await basePage.clickContinue()
-    await expect(page).toHaveTitle(
-      /Verify that you work for MoJ - MoJ Design System/
-    )
+    basePage.expectPageTitle('Verify that you work for MoJ')
 
     emailInput = page.getByLabel('Enter your MoJ email address')
 
@@ -23,9 +21,7 @@ test.describe('verification process', async () => {
 
   test('check', async ({ page }) => {
     await page.goto('email/check')
-    await expect(page).toHaveTitle(
-      /Check your email account - MoJ Design System/
-    )
+    basePage.expectPageTitle('Check your email account')
     await expect(page.locator('#main-content')).toContainText(email)
 
     await basePage.exepctAllLinksToHaveGovUkLinkClass()
@@ -37,16 +33,12 @@ test.describe('verification process', async () => {
     })
 
     await page.goto('email/check')
-    await expect(page).toHaveTitle(
-      /Check your email account - MoJ Design System/
-    )
+    basePage.expectPageTitle('Check your email account')
     await page.getByText('Fix problems with the email').click()
     await expect(resendLink).toBeVisible()
     await resendLink.click()
 
-    await expect(page).toHaveTitle(
-      /Resending a confirmation email - MoJ Design System/
-    )
+    basePage.expectPageTitle('Resending a confirmation email')
     await expect(page.locator('#main-content')).toContainText(email)
     await basePage.exepctAllLinksToHaveGovUkLinkClass()
 
@@ -54,9 +46,7 @@ test.describe('verification process', async () => {
       .getByRole('button', { name: 'Resend confirmation email' })
       .click()
 
-    await expect(page).toHaveTitle(
-      /Check your email account - MoJ Design System/
-    )
+    basePage.expectPageTitle('Check your email account')
   })
 
   test('change email', async ({ page }) => {
@@ -65,36 +55,30 @@ test.describe('verification process', async () => {
     })
 
     await page.goto('email/check')
-    await expect(page).toHaveTitle(
-      /Check your email account - MoJ Design System/
-    )
+
+    basePage.expectPageTitle('Check your email account')
     await page.getByText('Fix problems with the email').click()
     await expect(newEmailLink).toBeVisible()
     await newEmailLink.click()
 
-    await expect(page).toHaveTitle(
-      /Verify that you work for MoJ - MoJ Design System/
-    )
+    basePage.expectPageTitle('Verify that you work for MoJ')
     await basePage.exepctAllLinksToHaveGovUkLinkClass()
   })
 
   test('invalid token', async ({ page }) => {
     await page.goto('email/verify/my-invalid-token')
-    await expect(page).toHaveTitle(
-      /Your confirmation link was not recognised - MoJ Design System/
-    )
+    basePage.expectPageTitle('Your confirmation link was not recognised')
+
     await basePage.exepctAllLinksToHaveGovUkLinkClass()
     await page
       .getByRole('link', { name: 'enter your email address again' })
       .click()
-    await expect(page).toHaveTitle(
-      /Verify that you work for MoJ - MoJ Design System/
-    )
+    basePage.expectPageTitle('Verify that you work for MoJ')
   })
 
   test('valid token', async ({ page }) => {
     await page.goto(`email/verify/${process.env.VERIFICATION_TOKEN}`)
-    await expect(page).toHaveTitle(/Component details - MoJ Design System/)
+    basePage.expectPageTitle('Component details')
     await basePage.exepctAllLinksToHaveGovUkLinkClass()
   })
 })

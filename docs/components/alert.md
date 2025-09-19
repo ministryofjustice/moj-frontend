@@ -11,7 +11,7 @@ lede: "The alert component uses visual design to display a notification to users
 {% tabs "paginate" %}
 {% tab "Overview" %}
 
-{% example "/examples/alert" %}
+{% example template="/examples/alert", height=540 %}
 
 ## Overview
 
@@ -28,7 +28,7 @@ There are 4 variants of the alert:
 
 ### Information alert
 
-{% example "/examples/alert-information" %}
+{% example template="/examples/alert-information", height=150 %}
 
 The information alert draws a user's attention to something important about a page or service. It has a blue border, and an information icon made up of a blue circle with a white letter 'i'.
 
@@ -52,7 +52,7 @@ Do not use this component for a serious issue or to prevent something going wron
 
 ### Success alert
 
-{% example "/examples/alert-success" %}
+{% example template="/examples/alert-success", height=150 %}
 
 The success alert displays a single message after a user has completed a task. It has a green border, and a success icon made up of a green tick.
 
@@ -77,7 +77,7 @@ You may not need to display the alert if something else confirms success, for ex
 
 ### Warning alert
 
-{% example "/examples/alert-warning" %}
+{% example template="/examples/alert-warning", height=150 %}
 
 The warning alert tells users about something to prevent them from making a mistake. Use it sparingly to avoid alert fatigue. It has an orange border, and a warning icon made up of an orange triangle with a white exclamation mark.
 
@@ -97,7 +97,7 @@ Do not use this component if the information is about something other than a war
 
 ### Error alert
 
-{% example "/examples/alert-error" %}
+{% example template="/examples/alert-error", height=150 %}
 
 The error alert shows the user that something has gone wrong. It pauses the user without interrupting them. It can appear before or after a user input. It has a red border, and an error icon made up of a red octagon with a white 'X'.
 
@@ -153,7 +153,7 @@ The alert content needs to make sense on its own. This ensures that the message 
 
 ### Dismissing the alert
 
-{% example "/examples/alert-dismissible" %}
+{% example template="/examples/alert-dismissible", height=150 %}
 
 The alert can stay on the page (be persistent) or be dismissed by the user. Dismissing it helps users to manage tasks and keep their interfaces clear. It's particularly helpful for the success alert, where there's nothing more for the user to do.
 

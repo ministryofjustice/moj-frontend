@@ -7,14 +7,14 @@
 <div class="app-tabs" data-module="app-tabs">
   <ul class="app-tabs__list" role="tablist">
     <li class="app-tabs__list-item" role="presentation">
-      <a class="app-tabs__tab" href="#html-default-{{ id }}" role="tab" id="tab_html-default-{{ id }}" aria-controls="html-default-{{ id }}">HTML <span class="govuk-visually-hidden">({{ title }})</span></a>
+      <a class="app-tabs__tab" href="#html-default-{{ id }}" role="tab" id="tab_html-default-{{ id }}" aria-controls="html-default-{{ id }}" {{ 'aria-selected=true' if showTab | lower === "html" }}>HTML <span class="govuk-visually-hidden">({{ title }})</span></a>
     </li>
     <li class="app-tabs__list-item" role="presentation">
-      <a class="app-tabs__tab" href="#nunjucks-default-{{ id }}" role="tab" id="tab_nunjucks-default-{{ id }}" aria-controls="nunjucks-default-{{ id }}">Nunjucks <span class="govuk-visually-hidden">({{ title }})</span></a>
+      <a class="app-tabs__tab" href="#nunjucks-default-{{ id }}" role="tab" id="tab_nunjucks-default-{{ id }}" aria-controls="nunjucks-default-{{ id }}" {{ 'aria-selected=true' if showTab | lower === "nunjucks" }}>Nunjucks <span class="govuk-visually-hidden">({{ title }})</span></a>
     </li>
     {%- if jsCode -%}
     <li class="app-tabs__list-item" role="presentation">
-      <a class="app-tabs__tab" href="#js-default-{{ id }}" role="tab" id="tab_js-default-{{ id }}" aria-controls="js-default-{{ id }}">JavaScript <span class="govuk-visually-hidden">({{ title }})</span></a>
+      <a class="app-tabs__tab" href="#js-default-{{ id }}" role="tab" id="tab_js-default-{{ id }}" aria-controls="js-default-{{ id }}" {{ 'aria-selected=true' if showTab | lower === "javascript" }}>JavaScript <span class="govuk-visually-hidden">({{ title }})</span></a>
     </li>
     {%- endif -%}
     {%- if figmaLink -%}
@@ -24,7 +24,7 @@
     {%- endif -%}
   </ul>
 
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="html-default-{{ id }}" role="tabpanel" aria-labelledby="tab_html-default-{{ id }}">
+  <div class="app-tabs__panel" id="html-default-{{ id }}" role="tabpanel" aria-labelledby="tab_html-default-{{ id }}">
     <div class="app-example__code" data-module="app-copy">
 
 ```html
@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="nunjucks-default-{{ id }}" role="tabpanel" aria-labelledby="tab_nunjucks-default-{{ id }}">
+  <div class="app-tabs__panel" id="nunjucks-default-{{ id }}" role="tabpanel" aria-labelledby="tab_nunjucks-default-{{ id }}">
 
 {%- set argsContent %}
   {% include "./arguments/" + arguments + ".md" ignore missing %}
@@ -64,7 +64,7 @@
   </div>
 
 {% if jsCode %}
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="js-default-{{ id }}" role="tabpanel" aria-labelledby="tab_js-default-{{ id }}">
+  <div class="app-tabs__panel" id="js-default-{{ id }}" role="tabpanel" aria-labelledby="tab_js-default-{{ id }}">
     <div class="app-example__code" data-module="app-copy">
 
 ```js
@@ -76,7 +76,7 @@
 {% endif %}
 
 {% if figmaLink %}
-  <div class="app-tabs__panel app-tabs__panel--hidden" id="figma-default-{{ id }}" role="tabpanel" aria-labelledby="tab_figma-default-{{ id }}">
+  <div class="app-tabs__panel" id="figma-default-{{ id }}" role="tabpanel" aria-labelledby="tab_figma-default-{{ id }}">
 
 This component is in the ‘Assets’ tab in the MoJ Figma Kit.
 

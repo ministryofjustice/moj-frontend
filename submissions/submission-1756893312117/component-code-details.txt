@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "html",
+  "componentCodeLanguageOther": "",
+  "componentCode": "<div id=\"progress\" class=\"app-progress-bar\">\r\n  <ol class=\"app-progress-bar__list\">\r\n    <li class=\"app-progress-bar__item\">\r\n      <span class=\"app-progress-bar__icon app-progress-bar__icon--complete\"></span>\r\n      <span class=\"app-progress-bar__label\">\r\n        First step<span class=\"govuk-visually-hidden\"> completed</span>\r\n      </span>\r\n    </li>\r\n    <li class=\"app-progress-bar__item\">\r\n      <span class=\"app-progress-bar__icon app-progress-bar__icon--complete\"></span>\r\n      <span class=\"app-progress-bar__label\">\r\n        Second step<span class=\"govuk-visually-hidden\"> completed</span>\r\n      </span>\r\n    </li>\r\n    <li class=\"app-progress-bar__item\">\r\n      <span class=\"app-progress-bar__icon\"></span>\r\n      <span class=\"app-progress-bar__label\">\r\n        Third step<span class=\"govuk-visually-hidden\"> not completed</span>\r\n      </span>\r\n    </li>\r\n  </ol>\r\n</div>",
+  "componentCodeUsage": ""
+}

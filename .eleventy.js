@@ -29,6 +29,23 @@ module.exports = function (eleventyConfig) {
     'node_modules/govuk-frontend/dist/'
   ])
 
+  const md = markdownIt({
+    html: true,
+    typographer: true,
+    quotes: '“”‘’',
+    highlight(code, language) {
+      const { value } = hljs.highlight(code.trim(), {
+        language: language || 'plaintext'
+      })
+
+      return value
+    }
+  })
+    .disable('code')
+    .use(markdownItAnchor, {
+      level: [1, 2, 3, 4]
+    })
+
   Object.entries({
     ...eleventyConfig.nunjucksFilters,
     ...mojFilters()
@@ -43,35 +60,22 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setLibrary('njk', nunjucksEnv)
 
-  eleventyConfig.setLibrary(
-    'md',
-    markdownIt({
-      html: true,
-      typographer: true,
-      quotes: '“”‘’',
-      highlight(code, language) {
-        const { value } = hljs.highlight(code.trim(), {
-          language: language || 'plaintext'
-        })
+  eleventyConfig.setLibrary('md', md)
 
-        return value
-      }
-    })
-      .disable('code')
-      .use(markdownItAnchor, {
-        level: [1, 2, 3, 4]
-      })
-  )
-
-  eleventyConfig.addShortcode('example', function (exampleHref, height=200, page=this.ctx.page) {
-    let { data, content: nunjucksCode } = matter(
-      fs
+  eleventyConfig.addShortcode('example', function (params) {
+    let templateFile = ''
+    try {
+      templateFile = fs
         .readFileSync(
-          path.join(__dirname, 'docs', exampleHref, 'index.njk'),
+          path.join(__dirname, 'docs', params.template, 'index.njk'),
           'utf8'
         )
         .trim()
-    )
+    } catch {
+      console.error(`Template '${params.template}' could not be found.`)
+      return ''
+    }
+    let { data, content: nunjucksCode } = matter(templateFile)
 
     nunjucksCode = nunjucksCode.split('<!--no include-->')[0].trim()
 
@@ -80,7 +84,7 @@ module.exports = function (eleventyConfig) {
     const htmlCode = beautifyHTML(rawHtmlCode.trim(), {
       indent_size: 2,
       end_with_newline: true,
-      max_preserve_newlines: 1,
+      max_preserve_newlines: 0,
       unformatted: ['code', 'pre', 'em', 'strong']
     })
 
@@ -88,19 +92,20 @@ module.exports = function (eleventyConfig) {
     try {
       jsCode = fs
         .readFileSync(
-          path.join(__dirname, 'docs', exampleHref, 'script.js'),
+          path.join(__dirname, 'docs', params.template, 'script.js'),
           'utf8'
         )
         .trim()
     } catch {}
 
     return nunjucksEnv.render('example.njk', {
-      href: exampleHref,
-      id: exampleHref.replace(/\//g, '-'),
-      arguments: page.fileSlug,
+      href: params.template,
+      id: params.template.replace(/\//g, '-'),
+      arguments: this.page.fileSlug,
       figmaLink: data.figma_link,
       title: data.title,
-      height,
+      height: params.height,
+      showTab: params.showTab,
       nunjucksCode,
       htmlCode,
       jsCode
@@ -287,6 +292,14 @@ module.exports = function (eleventyConfig) {
         }
       })
     })
+  })
+
+  eleventyConfig.addFilter('timestamp', (date) => {
+    return date.getTime()
+  })
+
+  eleventyConfig.addFilter('markdownify', (content) => {
+    return `${md.render(content)}`
   })
 
   // Rebuild when a change is made to a component template file

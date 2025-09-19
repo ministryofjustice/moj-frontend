@@ -12,7 +12,7 @@ lede: "The date picker component enables users to select a date from a calendar.
 {% tabs "paginate" %}
 {% tab "Overview" %}
 
-{% example "/examples/date-picker", 590 %}
+{% example template="/examples/date-picker", height=590 %}
 
 ## Overview
 
@@ -72,7 +72,7 @@ You can exclude (or disable) options from the date picker, such as:
 - specific dates, such as bank holidays
 - past or future dates
 
-{% example "/examples/date-picker-excluded-dates", 590 %}
+{% example template="/examples/date-picker-excluded-dates", height=590 %}
 
 You need to add server-side validation for when users enter an unavailable date directly into the text field (rather than use the calendar). This will show them an error message.
 
@@ -84,7 +84,7 @@ If there are not many available dates, users will have to navigate a lot to find
 
 Follow the [GOV.UK Design System guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
 
-{% example "/examples/date-picker-error", 590 %}
+{% example template="/examples/date-picker-error", height=590 %}
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
