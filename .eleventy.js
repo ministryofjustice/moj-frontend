@@ -84,7 +84,7 @@ module.exports = function (eleventyConfig) {
     const htmlCode = beautifyHTML(rawHtmlCode.trim(), {
       indent_size: 2,
       end_with_newline: true,
-      max_preserve_newlines: 1,
+      max_preserve_newlines: 0,
       unformatted: ['code', 'pre', 'em', 'strong']
     })
 

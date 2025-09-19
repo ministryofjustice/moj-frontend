@@ -87,7 +87,8 @@ If your users are switching between MoJ and GOV.UK services consider whether see
 
 Put the notification badge on the right of the link that the items relate to. It needs to be in the same container, so that it’s included in the accessible name.
 
-{% example "/examples/notification-badge-primary-nav", 590 %}
+{% example template="/examples/notification-badge-primary-nav", height=125,
+showTab="html" %}
 
 ### Link text content
 
@@ -200,27 +201,27 @@ x
 
 ### Within MoJ primary navigation
 
-{% example "/examples/notification-badge-primary-nav", 590 %}
+{% example template="/examples/notification-badge-primary-nav", height=590 %}
 
 ### Within MoJ side navigation
 
-{% example "/examples/notification-badge-side-nav", 590 %}
+{% example template="/examples/notification-badge-side-nav", height=590 %}
 
 ### Within MoJ sub navigation
 
-{% example "/examples/notification-badge-sub-nav", 590 %}
+{% example template="/examples/notification-badge-sub-nav", height=590 %}
 
 ### Within GOV.UK Tabs
 
-{% example "/examples/notification-badge-tabs", 590 %}
+{% example template="/examples/notification-badge-tabs", height=590 %}
 
 ### Within GOV.UK Service Navigation
 
-{% example "/examples/notification-badge-service-nav", 590 %}
+{% example template="/examples/notification-badge-service-nav", height=590 %}
 
 ### Within MoJ Header
 
-{% example "/examples/notification-badge-header", 590 %}
+{% example template="/examples/notification-badge-header", height=590 %}
 {% endtab %}
 
 {% tab "Get help and contribute" %}
