@@ -29,7 +29,7 @@ You could use the notification badge to tell a user about a:
 
 This component is best used in navigation link but may be OK in some other parts of a service.
 
-The component showing 3 case updates in the <a href="/components/primary-navigation/primary navigation>primary navigation</a>.  
+The component showing 3 case updates in the [primary navigation](/components/primary-navigation):
 
 <p><img src="{{ 'assets/images/notification-badge-example-count.png' | rev | url }}" alt="xxx"></p>
 
@@ -67,24 +67,32 @@ Use the notification badge sparingly to reduce visual clutter, especially in com
 
 ### In navigation
 
-The notification badge is best used in a navigation. This means it:
+The notification badge is best used in a navigation. In that position it:  
 
 - can be reliably detected by screen reader users
-- is in the most prominent position for sighted users
+- is most prominent for sighted users
 
-Reserving the component for the navigation (and not using it elsewhere) is the most useful and accessible for everyone. This because it’s being used consistently.
+Reserving the component for the navigation (and not using it elsewhere) is the most useful and accessible for everyone. This is because it’s being used consistently.
 
-You can view how to [use the notification badge in navigation components](/components/notification-badge/#examples-tab).
+You can view [how to use the notification badge in navigation](/components/notification-badge/#examples-tab).
 
 ### In page headers
 
-The notification badge can be placed in a header if the colour contrast is accessible. The colour contrast of the notification badge with the [MoJ header](https://design-patterns.service.justice.gov.uk/components/header/) is accessible, but not with the [GOV.UK header](https://design-system.service.gov.uk/components/header/). Do not change the component or header colour to make this possible.  
+The notification badge can be placed in a header if the colour contrast is accessible. It's accessible when used with the [MoJ header](https://design-patterns.service.justice.gov.uk/components/header/), but not the [GOV.UK header](https://design-system.service.gov.uk/components/header/). Do not change the component or header colour to make this possible.  
 
 If your users are switching between MoJ and GOV.UK services consider whether seeing the component being used in different ways will be confusing.
 
+### Component and background colour and shape
+
+The notification badge colour and shape should not be changed.
+
+Red circles are commonly used to attract attention, and as a way of alerting or notifying a user in a service.  
+
+You can use this component on backgrounds other than white if the colour contrast is accessible.  
+
 ### The title link
 
-#### Position
+#### Position of the component
 
 The notification badge goes on the right of the link that the items relate to, in the same container:
 
@@ -105,7 +113,7 @@ Consider the following for titles:
 - ‘Alerts’ to give flexibility for a range of medium to high-importance items (but not in HMPPS)
 
 <div class="govuk-inset-text">
-    <a href="content-standards/style-guide/#alerts-(dps-only)">‘Alerts’ has a different meaning in DPS</a> and HMPPS. Do not use this term for anything apart from this meaning in HMPPS services.
+    <a href="content-standards/style-guide/#alerts-(dps-only)">‘Alerts’ has a specific meaning in DPS</a> and HMPPS. Only use this title in HMPPS if you're referring to alerts produced by NOMIS, DPS or NDelius.
 </div>
 
 #### Hidden text
@@ -121,14 +129,6 @@ This is an example:
     </span>
 </a>
 ```
-
-### Component and background colour and shape
-
-The notification badge colour and shape should not be changed.
-
-The colour red is commonly used to attract attention, and as a way of alerting or notifying a user. The circle draws the user's attention to the number.  
-
-You can use this component on backgrounds other than white if the colour contrast is accessible.  
 
 ### The component number
 
@@ -150,8 +150,8 @@ The notification badge will:
 
 You may want to add an empty state to:
 
-- confirm that there are no numbers (and reassure that the page has loaded correctly)
-- help people understand where they'll usually find items (particularly helpful for a new service or for new users)
+- confirm that there are no items (and reassure the user that the page has loaded correctly)
+- help people understand where they'll usually find items (which is helpful for a new service or for new users)
 
 ### Using other notifications
 
@@ -169,41 +169,41 @@ Carry out research to find out if it will be helpful.
 
 ## Examples
 
-### Within MoJ primary navigation
+### In MoJ primary navigation
 
 {% example template="/examples/notification-badge-primary-nav", height=590 %}
 
-### Within MoJ side navigation
+### In MoJ side navigation
 
 {% example template="/examples/notification-badge-side-nav", height=590 %}
 
-### Within MoJ sub navigation
+### In MoJ sub navigation
 
 {% example template="/examples/notification-badge-sub-nav", height=590 %}
 
-### Within GOV.UK tabs
+### In GOV.UK tabs
 
 {% example template="/examples/notification-badge-tabs", height=590 %}
 
-### Within GOV.UK service navigation
+### In GOV.UK service navigation
 
 {% example template="/examples/notification-badge-service-nav", height=590 %}
 
-### Within MoJ header
+### In MoJ header
 
 {% example template="/examples/notification-badge-header", height=590 %}
 
-### Task: showing tasks after the component
+### Pattern: showing items in  after the component
 
 The notification badge shows a user where the items are. The items should be easy to find once the user has selected the link.  
 
+#### The user sees they have 8 notifications.
+
 <p><img src="{{ 'assets/images/notification-badge-example-inbox-1.png' | rev | url }}" alt="xxx"></p>
 
-S1. The user sees they have 8 notifications.
+#### After selecting the link, they view their notifications
 
 <p><img src="{{ 'assets/images/notification-badge-example-inbox-2.png' | rev | url }}" alt="xxx"></p>
-
-S2. After selecting the link, they view their notifications
 
 The status of the notification is shown in a [GOV.UK tag component](https://design-system.service.gov.uk/components/tag/). This shows more meaningful information about the item.
 
@@ -213,9 +213,10 @@ Once you’ve used the notification badge in a link, do not use it again within 
 
 The user selects 3 and clicks 'Mark selected as read'.
 
+#### The user receives feedback that three messages have been marked as read, and the number on the notification badge changes from 8 to 5.
+
 <p><img src="{{ 'assets/images/notification-badge-example-inbox-3.png' | rev | url }}" alt="xxx"></p>
 
-S3. The user receives feedback that three messages have been marked as read, and the number on the notification badge changes from 8 to 5.
 
 
 {% endtab %}
