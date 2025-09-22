@@ -265,7 +265,7 @@ export class DatePicker extends ConfigurableComponent {
             </div>
           </div>
 
-          <table class="moj-datepicker__calendar moj-js-datepicker-grid" role="grid" aria-labelledby="${titleId}">
+          <table class="moj-datepicker__calendar moj-js-datepicker-grid" role="application" aria-labelledby="${titleId}">
             <thead>
               <tr></tr>
             </thead>
