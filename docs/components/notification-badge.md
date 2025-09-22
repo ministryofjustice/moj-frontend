@@ -98,7 +98,7 @@ The notification badge goes on the right of the link that the items relate to, i
 
 {% example template="/examples/notification-badge-link", height=81, showTab="html" %}
 
-Put the code ‘<span class="moj-notification-badge">‘ after the title link, on the same line. This will keep the spacing and link formatting correct.
+Put the code ‘span class="moj-notification-badge"‘ after the title link, on the same line. This will keep the spacing and link formatting correct.
 
 #### Content
 
@@ -115,7 +115,7 @@ Consider the following for titles:
     <a href="content-standards/style-guide/#alerts-(dps-only)">‘Alert’ has a specific meaning in DPS</a> and HMPPS. Only use this title in HMPPS if you're referring to alerts produced by NOMIS, DPS or NDelius.
 </div>
 
-In this example, the use can view notifications from the [primary navigation](/components/primary-navigation/).
+In this example, the user can view notifications from the [primary navigation](/components/primary-navigation/).
 
 <p><img src="{{ 'assets/images/notification-badge-example-link-text-content.png' | rev | url }}" alt="xxx"></p>
 
