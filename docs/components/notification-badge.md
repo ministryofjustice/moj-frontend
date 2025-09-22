@@ -98,11 +98,11 @@ The notification badge goes on the right of the link that the items relate to, i
 
 {% example template="/examples/notification-badge-link", height=81, showTab="html" %}
 
+Place the code <span class="moj-notification-badge"> after your title link, on the same line. This will keep the spacing and link format correct.
+
 #### Content
 
-Label the title clearly so that the user knows what the item is. You may need to reorganise your tabs to do this.
-
-<p><img src="{{ 'assets/images/notification-badge-example-link-text-content.png' | rev | url }}" alt="xxx"></p>
+Label the title clearly so that the user knows what the item is. You may need to reorganise your tabs to do this. For example,
 
 Consider the following for titles:
 
@@ -115,11 +115,15 @@ Consider the following for titles:
     <a href="content-standards/style-guide/#alerts-(dps-only)">‘Alerts’ has a specific meaning in DPS</a> and HMPPS. Only use this title in HMPPS if you're referring to alerts produced by NOMIS, DPS or NDelius.
 </div>
 
+In this example, all notifications are linked to from the [primary navigation](/components/primary-navigation/).
+
+<p><img src="{{ 'assets/images/notification-badge-example-link-text-content.png' | rev | url }}" alt="xxx"></p>
+
 #### Hidden text
 
-You need to 'pass' (add) visually hidden text to the code to help non-sighted users understand what the notification badge number is for.
+You need to ’pass’ (add) visually hidden text to the code to help non-sighted users understand what the notification badge number is for.
 
-This is an example:  
+The hidden text ’unread’ is an example:  
 
 ```html
 <a href="">Messages
@@ -133,24 +137,29 @@ This is an example:
 
 #### When the number changes
 
-The notification badge number will only update when the page loads. It’s not 'dynamic'. If you want to change this, you’ll need to consider accessibility.  
+The notification badge number will only update when the page loads. It’s not ’dynamic’. If you want to change this, you’ll need to consider accessibility.  
 
-If an item is cleared by an interaction in the service, give the user info so that they know this has happened. Do not rely on the badge changing numbers.
+If an item is cleared by an interaction in the service, help the user know that this has happened. Do not rely on the badge changing numbers.
 
-#### Displaying the number of items (or no items)
+You can view an example of [how to design the onward journey](/components/notification-badge/#examples-tab#pattern%3A-showing-items-in-after-the-component)
 
-The notification badge will:
+#### Displaying the number of items  
+
+The notification badge will either:
 
 - display the number of tasks if there are 98 or less items
 - display 99+ if there are 99 or more items
-- not show if there are no items
 
-#### Empty states when there are no items
+#### Displaying no items
 
-You may want to add an empty state to:
+The notification badge will not show if there are no items. You may want to add an empty state to:
 
 - confirm that there are no items (and reassure the user that the page has loaded correctly)
 - help people understand where they'll usually find items (which is helpful for a new service or for new users)
+
+Example of the notification badge when there are no items:
+
+INSERT CODED EXAMPLE
 
 ### Using other notifications
 
@@ -192,15 +201,15 @@ Carry out research to find out if it will be helpful.
 
 {% example template="/examples/notification-badge-header", height=590 %}
 
-### Pattern: showing items in  after the component
+### Showing items after the component
 
 The notification badge shows a user where the items are. The items should be easy to find once the user has selected the link.  
 
-#### The user sees they have 8 notifications.
+#### Step 1: The user sees that they have 8 notifications.
 
 <p><img src="{{ 'assets/images/notification-badge-example-inbox-1.png' | rev | url }}" alt="xxx"></p>
 
-#### After selecting the link, they view their notifications
+#### Step 2: They select the link to view their notifications
 
 <p><img src="{{ 'assets/images/notification-badge-example-inbox-2.png' | rev | url }}" alt="xxx"></p>
 
@@ -210,13 +219,13 @@ You could also use the [badge component](https://design-patterns.service.justice
 
 Once you’ve used the notification badge in a link, do not use it again within that section.  
 
-The user selects 3 and clicks 'Mark selected as read'.
+The user selects 3 and then 'Mark selected as read'.
 
-#### The user receives feedback that three messages have been marked as read, and the number on the notification badge changes from 8 to 5.
+#### Step 3: They receive feedback that 3 messages have been marked as read. The number on the notification badge changes from 8 to 5.
 
 <p><img src="{{ 'assets/images/notification-badge-example-inbox-3.png' | rev | url }}" alt="xxx"></p>
 
-
+The number has changed because the page loaded. It’s not ’dynamic’.  
 
 {% endtab %}
 
