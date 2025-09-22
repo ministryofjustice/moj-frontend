@@ -4,8 +4,8 @@ tabs: true
 status: Official
 statusDate: September 2025
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/706
-excerpt: "Use the notification badge to display a count of items that need the user’s attention."
-lede: "Use the notification badge to display a count of items that need the user’s attention."
+excerpt: "Use the notification badge to display a count of new or unread items."
+lede: "Use the notification badge to display a count of new or unread items."
 ---
 {% from "govuk/components/pagination/macro.njk" import govukPagination %}
 
@@ -16,7 +16,7 @@ lede: "Use the notification badge to display a count of items that need the user
 
 ## Overview
 
-The notification badge component shows users that there are items that need their attention in a service.
+The notification badge component shows users that there are items in a service that need their attention.
 
 It displays the number of items and needs to be attached to a link.
 
@@ -27,7 +27,7 @@ You could use the notification badge to tell a user about a:
 - change to an appointment or booking, for example a cancellation
 - new or unread message
 
-This component is best used in navigation link but may be OK to use in some other parts of a service.
+This component is best used in navigation link but may be OK in some other parts of a service.
 
 The component showing 3 case updates in the <a href="/components/primary-navigation/primary navigation>primary navigation</a>.  
 
@@ -78,9 +78,9 @@ You can view how to [use the notification badge in navigation components](/compo
 
 ### In page headers
 
-The notification badge can be placed in a header if the colour contrast is accessible. The colour contrast of the notification badge and the [MoJ header](https://design-patterns.service.justice.gov.uk/components/header/) is accessible, but not the [GOV.UK header](https://design-system.service.gov.uk/components/header/). Do not change the component or header colour to make this possible.  
+The notification badge can be placed in a header if the colour contrast is accessible. The colour contrast of the notification badge with the [MoJ header](https://design-patterns.service.justice.gov.uk/components/header/) is accessible, but not with the [GOV.UK header](https://design-system.service.gov.uk/components/header/). Do not change the component or header colour to make this possible.  
 
-If your users are switching between MoJ and GOV.UK services consider whether seeing the component being used in different will be confusing.
+If your users are switching between MoJ and GOV.UK services consider whether seeing the component being used in different ways will be confusing.
 
 ### The title link
 
@@ -99,18 +99,18 @@ Label the title clearly so that the user knows what the item is. You may need to
 
 Consider the following for titles:
 
-- ‘Tasks’, ‘My tasks’ or ‘To do’ for lower priority items for the user to do
+- ‘Tasks’, ‘My tasks’ or ‘To do’ for lower priority items
 - ‘Notifications’ for a range of items
 - an envelope icon for messages
 - ‘Alerts’ to give flexibility for a range of medium to high-importance items (but not in HMPPS)
 
 <div class="govuk-inset-text">
-    <a href="content-standards/style-guide/#alerts-(dps-only)">‘Alerts’ has a different meaning in DPS</a> and HMPPS. Do not use this term as a more general title in HMPPS.
+    <a href="content-standards/style-guide/#alerts-(dps-only)">‘Alerts’ has a different meaning in DPS</a> and HMPPS. Do not use this term for anything apart from this meaning in HMPPS services.
 </div>
 
 #### Hidden text
 
-You need to 'pass' (add) hidden text to the code to help non-sighted users understand what the notification badge number relates to.
+You need to 'pass' (add) visually hidden text to the code to help non-sighted users understand what the notification badge number is for.
 
 This is an example:  
 
@@ -124,11 +124,11 @@ This is an example:
 
 ### Component and background colour and shape
 
-The notification badge is red and this should not be changed. Red is commonly used to attract people’s attention. DON’T CHANGE THE SHAPE because ux.  
+The notification badge colour and shape should not be changed.
 
-This component can be used on backgrounds other than white if the colour contrast is accessible.  
+The colour red is commonly used to attract attention, and as a way of alerting or notifying a user. The circle draws the user's attention to the number.  
 
-MAKE SURE IT’S CONSISTENT
+You can use this component on backgrounds other than white if the colour contrast is accessible.  
 
 ### The component number
 
