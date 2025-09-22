@@ -1,0 +1,13 @@
+---
+layout: layouts/example.njk
+title: Notification badge (example)
+arguments: notification-badge
+figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type=design&node-id=61-3019&mode=design
+---
+
+{%- from "moj/components/notification-badge/macro.njk" import mojNotificationBadge -%}
+<a href="#" class="govuk-link">Messages
+{{ mojNotificationBadge({
+  text: "10"
+}) }}
+</a>
