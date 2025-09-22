@@ -96,8 +96,7 @@ You can use this component on backgrounds other than white if the colour contras
 
 The notification badge goes on the right of the link that the items relate to, in the same container:
 
-{% example template="/examples/notification-badge-primary-nav", height=125,
-showTab="html" %}
+{% example template="/examples/notification-badge-link", height=81, showTab="html" %}
 
 #### Content
 
