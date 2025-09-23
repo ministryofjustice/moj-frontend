@@ -118,7 +118,7 @@ Consider the following for titles:
 
 In this example, the user can view notifications from the [primary navigation](/components/primary-navigation/).
 
-<p><img src="{{ 'assets/images/notification-badge-example-link-text-content.png' | rev | url }}" alt="xxx"></p>
+<p><img src="{{ 'assets/images/notification-badge-example-inbox-1.png' | rev | url }}" alt="xxx"></p>
 
 #### Hidden text
 
@@ -128,8 +128,7 @@ In the example, the hidden text is 'unread':
 
 ```html
 <a href="">Messages
-    <span class="moj-notification-badge">5
-        <span class="govuk-visually-hidden">unread</span>
+    <span class="moj-notification-badge">5<span class="govuk-visually-hidden">unread</span>
     </span>
 </a>
 ```
