@@ -3,8 +3,9 @@
 import { queryByRole, getByLabelText, fireEvent } from '@testing-library/dom'
 import { userEvent } from '@testing-library/user-event'
 import { configureAxe } from 'jest-axe'
+import { fakeXhr, fakeServerWithClock } from 'nise'
 import { outdent } from 'outdent'
-import { fakeServerWithClock, spy, restore, useFakeXMLHttpRequest } from 'sinon'
+import { spy, restore } from 'sinon'
 
 import { MultiFileUpload } from './multi-file-upload.mjs'
 
@@ -160,11 +161,11 @@ describe('Multi-file upload', () => {
     })
 
     test('displays upload progress', async () => {
-      /** @type {SinonFakeXMLHttpRequest | undefined} */
+      /** @type {FakeXMLHttpRequest | undefined} */
       let request
 
       // Create a spy on XMLHttpRequest to simulate upload progress
-      const xhr = useFakeXMLHttpRequest()
+      const xhr = fakeXhr.useFakeXMLHttpRequest()
       xhr.onCreate = (req) => {
         request = req
       }
@@ -520,5 +521,5 @@ describe('Multi-file upload', () => {
 })
 
 /**
- * @import { SinonFakeXMLHttpRequest } from 'sinon'
+ * @import { FakeXMLHttpRequest } from 'nise'
  */
