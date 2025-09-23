@@ -31,7 +31,7 @@ This component is best used in navigation link but may be OK in some other parts
 
 An example of the notification badge showing 3 case updates in the [primary navigation](/components/primary-navigation):
 
-<p><img src="{{ 'assets/images/notification-badge-example-count.png' | rev | url }}" alt="xxx"></p>
+<p><img src="{{ 'assets/images/notification-badge-example-count.png' | rev | url }}" alt="A Ministry of Justice case management system showing a table containing rows of names, and associated case information. The navigation links for the page are 'Home', 'Cases', 'Search', and 'Notifications'. Next to 'Cases', there is a red, circular notification badge with the number 3 in it. The first 3 rows of the table have a status of 'To be reviewed'."></p>
 
 ### When not to use
 
@@ -118,7 +118,7 @@ Consider the following for titles:
 
 In this example, the user can view notifications from the [primary navigation](/components/primary-navigation/).
 
-<p><img src="{{ 'assets/images/notification-badge-example-inbox-1.png' | rev | url }}" alt="xxx"></p>
+<p><img src="{{ 'assets/images/notification-badge-example-inbox-1.png' | rev | url }}" alt="A Ministry of Justice service showing a page titled 'Manage people'. The navigation links for the page are 'Home', 'Cases', 'Search', and 'Notifications'. 'Home' is the active navigation item. Next to 'Notifications', there is a red, circular notification badge with the number 8 in it."></p>
 
 #### Hidden text
 
@@ -207,11 +207,11 @@ The notification badge shows a user where the items are. The items should be eas
 
 #### Step 1: The user sees that they have 8 notifications
 
-<p><img src="{{ 'assets/images/notification-badge-example-inbox-1.png' | rev | url }}" alt="xxx"></p>
+<p><img src="{{ 'assets/images/notification-badge-example-inbox-1.png' | rev | url }}" alt="A Ministry of Justice service showing a page titled 'Manage people'. The navigation links for the page are 'Home', 'Cases', 'Search', and 'Notifications'. 'Home' is the active navigation item. Next to 'Notifications', there is a red, circular notification badge with the number 8 in it."></p>
 
 #### Step 2: They select the link to view their notifications
 
-<p><img src="{{ 'assets/images/notification-badge-example-inbox-2.png' | rev | url }}" alt="xxx"></p>
+<p><img src="{{ 'assets/images/notification-badge-example-inbox-2.png' | rev | url }}" alt="A Ministry of Justice service showing a page titled 'Manage people'. The navigation links for the page are 'Home', 'Cases', 'Search', and 'Notifications'. 'Notifications' is the active navigation item, and next to it, there is a red, circular notification badge with the number 8 in it. The page contents show a table of 8 dated notifications, all of which are new. The last three rows of the table are selected and there is a 'Mark selected as read' button and a 'Clear selection' link."></p>
 
 More meaningful information is given about the item using a [GOV.UK tag](https://design-system.service.gov.uk/components/tag/).  
 
@@ -221,7 +221,7 @@ The user selects 3 and then 'Mark selected as read'.
 
 #### Step 3: They receive feedback that 3 messages have been marked as read. The number on the notification badge changes from 8 to 5.
 
-<p><img src="{{ 'assets/images/notification-badge-example-inbox-3.png' | rev | url }}" alt="xxx"></p>
+<p><img src="{{ 'assets/images/notification-badge-example-inbox-3.png' | rev | url }}" alt="A Ministry of Justice service showing a page titled 'Manage people'. The navigation links for the page are 'Home', 'Cases', 'Search', and 'Notifications'. 'Notifications' is the active navigation item, and next to it, there is a red, circular notification badge with the number 8 in it. The page contents a success alert which says '3 notifications marked as read.' There are 5 rows in the table of notifications below."></p>
 
 The number has changed because the page loaded. It’s not 'dynamic'.  
 
