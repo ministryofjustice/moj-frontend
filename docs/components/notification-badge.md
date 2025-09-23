@@ -160,7 +160,7 @@ The notification badge will not show unless there are items. You may want to add
 
 Example of the notification badge when there are no items:
 
-INSERT CODED EXAMPLE
+{% example template="/examples/notification-badge-no-items", height=81, showTab="nunjucks" %}
 
 ### Using other notifications
 
