@@ -2,10 +2,10 @@
 title: Notification badge
 tabs: true
 status: Official
-statusDate: September 2025
+statusDate: October 2025
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/706
-excerpt: "Use the notification badge to display a count of new or unread items."
-lede: "Use the notification badge to display a count of new or unread items."
+excerpt: "Use the notification badge to display an amount of new or unread items."
+lede: "Use the notification badge to display an amount of new or unread items."
 ---
 {% from "govuk/components/pagination/macro.njk" import govukPagination %}
 
@@ -18,7 +18,7 @@ lede: "Use the notification badge to display a count of new or unread items."
 
 The notification badge component shows users that there are items in a service that need their attention.
 
-It displays the number of items and needs to be attached to a link.
+It displays the number of items, and needs to be added to a link.
 
 ### When to use
 
@@ -27,9 +27,9 @@ You could use the notification badge to tell a user about a:
 - change to an appointment or booking, for example a cancellation
 - new or unread message
 
-This component is best used in navigation link but may be OK in some other parts of a service.
+This component is best used in a navigation link but may be OK in some other parts of a service.
 
-An example of the notification badge showing 3 case updates in the [primary navigation](/components/primary-navigation):
+#### An example of the notification badge showing 3 case updates in the [primary navigation](/components/primary-navigation):
 
 <p><img src="{{ 'assets/images/notification-badge-example-count.png' | rev | url }}" alt="A Ministry of Justice case management system showing a table containing rows of names, and associated case information. The navigation links for the page are 'Home', 'Cases', 'Search', and 'Notifications'. Next to 'Cases', there is a red, circular notification badge with the number 3 in it. The first 3 rows of the table have a status of 'To be reviewed'."></p>
 
@@ -54,6 +54,7 @@ Consider also whether the component would be a good experience for people who wi
 There’s also the:
 
 - [GOV.UK notification banner](https://design-system.service.gov.uk/components/notification-banner/)
+- [GOV.UK tag](https://design-system.service.gov.uk/components/tag/)
 - [MoJ alert](/components/alert/)
 - [MoJ badge](/components/badge/)
 
@@ -90,7 +91,7 @@ Red circles are commonly used to attract attention, and as a way of alerting or 
 
 You can use this component on backgrounds other than white if the colour contrast is accessible.  
 
-### The title link
+### Link text
 
 #### Position of the component
 
@@ -98,25 +99,24 @@ The notification badge goes on the right of the link that the items relate to, i
 
 {% example template="/examples/notification-badge-link", height=81, showTab="html" %}
 
-Put the code `<span class="moj-notification-badge">` after the title link, on the same line. This will keep the spacing and link formatting correct.
+Put the code `<span class="moj-notification-badge">` after the link text, on the same line. Do not add a space between them. This will keep the formatting correct.
 
 #### Content
 
-Label the title clearly so that the user knows what the item is. You may need to reorganise your tabs to do this.  
+Label the link text clearly so that the user knows what the item is. You may need to reorganise your tabs to do this.  
 
-Consider the following for titles:
+Consider the following for link text:
 
-- 
-'Tasks', 'My tasks' or 'To do' for lower priority items
+- 'Tasks', 'My tasks' or 'To do' for lower priority items
 - 'Notifications' for a range of items
 - an envelope icon for messages
 - 'Alerts' to give flexibility for a range of medium to high-importance items (but not in HMPPS)
 
 <div class="govuk-inset-text">
-    <a href="/content-standards/style-guide/#alerts-(dps-only)">'Alert' has a specific meaning in DPS</a> and HMPPS. Only use this title in HMPPS if you're referring to alerts produced by NOMIS, DPS or NDelius.
+    <a href="/content-standards/style-guide/#alerts-(dps-only)">'Alert' has a specific meaning in DPS</a> and HMPPS. Only use this link text in HMPPS if you're referring to an alert produced by NOMIS, DPS or NDelius.
 </div>
 
-In this example, the user can view notifications from the [primary navigation](/components/primary-navigation/).
+#### In this example, the user can view notifications from the [primary navigation](/components/primary-navigation/):
 
 <p><img src="{{ 'assets/images/notification-badge-example-inbox-1.png' | rev | url }}" alt="A Ministry of Justice service showing a page titled 'Manage people'. The navigation links for the page are 'Home', 'Cases', 'Search', and 'Notifications'. 'Home' is the active navigation item. Next to 'Notifications', there is a red, circular notification badge with the number 8 in it."></p>
 
@@ -201,7 +201,7 @@ Carry out research to find out if this will be helpful.
 
 {% example template="/examples/notification-badge-header", height=590 %}
 
-### Showing items after the component
+### The onward journey
 
 The notification badge shows a user where the items are. The items should be easy to find once the user has selected the link.  
 
