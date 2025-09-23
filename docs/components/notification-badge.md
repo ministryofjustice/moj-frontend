@@ -39,7 +39,7 @@ Research will help you work out when the notification badge should be used.
 
 Do not use this component:
 - for a standard list of tasks before a linear journey, use the [GOV.UK completing multiple tasks pattern](https://design-system.service.gov.uk/patterns/complete-multiple-tasks/) instead
-- to just display a ‘count’ if there’s nothing for the user to do or know
+- to just display a 'count' if there’s nothing for the user to do or know
 
 To display a count, add the number in plain text next to the item. Putting the number in brackets may be clearer, especially if the title includes a number.
 
@@ -54,8 +54,8 @@ Consider also whether the component would be a good experience for people who wi
 There’s also the:
 
 - [GOV.UK notification banner](https://design-system.service.gov.uk/components/notification-banner/)
-- [MoJ alert](https://design-patterns.service.justice.gov.uk/components/alert/)
-- [MoJ badge](https://design-patterns.service.justice.gov.uk/components/badge/)
+- [MoJ alert](/components/alert/)
+- [MoJ badge](/components/badge/)
 
 {% endtab %}
 
@@ -78,7 +78,7 @@ You can view [how to use the notification badge in navigation](/components/notif
 
 ### In page headers
 
-The notification badge can be placed in a header if the colour contrast is accessible. It's accessible when used with the [MoJ header](https://design-patterns.service.justice.gov.uk/components/header/), but not the [GOV.UK header](https://design-system.service.gov.uk/components/header/). Do not change the component or header colour to make this possible.  
+The notification badge can be placed in a header if the colour contrast is accessible. It's accessible when used with the [MoJ header](/components/header/), but not the [GOV.UK header](https://design-system.service.gov.uk/components/header/). Do not change the component or header colour to make this possible.  
 
 If your users are switching between MoJ and GOV.UK services consider whether seeing the component being used in different ways will be confusing.
 
@@ -98,7 +98,7 @@ The notification badge goes on the right of the link that the items relate to, i
 
 {% example template="/examples/notification-badge-link", height=81, showTab="html" %}
 
-Put the code ‘span class="moj-notification-badge"‘ after the title link, on the same line. This will keep the spacing and link formatting correct.
+Put the code `<span class="moj-notification-badge">` after the title link, on the same line. This will keep the spacing and link formatting correct.
 
 #### Content
 
@@ -106,13 +106,14 @@ Label the title clearly so that the user knows what the item is. You may need to
 
 Consider the following for titles:
 
-- ‘Tasks’, ‘My tasks’ or ‘To do’ for lower priority items
-- ‘Notifications’ for a range of items
+- 
+'Tasks', 'My tasks' or 'To do' for lower priority items
+- 'Notifications' for a range of items
 - an envelope icon for messages
-- ‘Alerts’ to give flexibility for a range of medium to high-importance items (but not in HMPPS)
+- 'Alerts' to give flexibility for a range of medium to high-importance items (but not in HMPPS)
 
 <div class="govuk-inset-text">
-    <a href="content-standards/style-guide/#alerts-(dps-only)">‘Alert’ has a specific meaning in DPS</a> and HMPPS. Only use this title in HMPPS if you're referring to alerts produced by NOMIS, DPS or NDelius.
+    <a href="/content-standards/style-guide/#alerts-(dps-only)">'Alert' has a specific meaning in DPS</a> and HMPPS. Only use this title in HMPPS if you're referring to alerts produced by NOMIS, DPS or NDelius.
 </div>
 
 In this example, the user can view notifications from the [primary navigation](/components/primary-navigation/).
@@ -121,9 +122,9 @@ In this example, the user can view notifications from the [primary navigation](/
 
 #### Hidden text
 
-You need to ’pass’ (add) visually hidden text to the code to help non-sighted users understand what the notification badge number is for.
+You need to 'pass' (add) visually hidden text to the code to help non-sighted users understand what the notification badge number is for.
 
-In the example, the hidden text is ’unread’:  
+In the example, the hidden text is 'unread':  
 
 ```html
 <a href="">Messages
@@ -137,11 +138,11 @@ In the example, the hidden text is ’unread’:
 
 #### When the number changes
 
-The notification badge number will only update when the page loads. It’s not ’dynamic’. If you want to change this, you’ll need to consider accessibility.  
+The notification badge number will only update when the page loads. It’s not 'dynamic' If you want to change this, you’ll need to consider accessibility.  
 
 If an item is cleared by an interaction in the service, help the user know that this has happened. Do not rely on the badge changing numbers.
 
-You can view an example of [how to design the onward journey](/components/notification-badge/#examples-tab#pattern%3A-showing-items-in-after-the-component).
+You can view an example of [how to design the onward journey](/components/notification-badge#showing-items-after-the-component).
 
 #### Displaying the number of items  
 
@@ -215,7 +216,7 @@ The notification badge shows a user where the items are. The items should be eas
 
 More meaningful information is given about the item using a [GOV.UK tag](https://design-system.service.gov.uk/components/tag/).  
 
-You could also use the [badge component](https://design-patterns.service.justice.gov.uk/components/badge/), or a section called ‘Tasks’. Do not use the notification badge again within a section.  
+You could also use the [badge component](/components/badge/), or a section called 'Tasks'. Do not use the notification badge again within a section.  
 
 The user selects 3 and then 'Mark selected as read'.
 
@@ -223,7 +224,7 @@ The user selects 3 and then 'Mark selected as read'.
 
 <p><img src="{{ 'assets/images/notification-badge-example-inbox-3.png' | rev | url }}" alt="xxx"></p>
 
-The number has changed because the page loaded. It’s not ’dynamic’.  
+The number has changed because the page loaded. It’s not 'dynamic'.  
 
 {% endtab %}
 
