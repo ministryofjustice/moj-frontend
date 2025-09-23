@@ -9,19 +9,13 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 
 {{ govukServiceNavigation({
   navigation: [
-    { text: "Dashboard", href: "#" },
+    { text: "Dashboard", active: true, href: "#" },
     { html: "Messages" + mojNotificationBadge({
         text: "123",
         visuallyHiddenText: "unread"
       }),
-      active: true,
       href: "#"
     },
-    { html: "Item 3" + mojNotificationBadge({
-        text: "0",
-        visuallyHiddenText: "unread"
-      }),
-      href: "#"
-    }
+    { text: "Cases", href: "#" }
   ]
 }) }}
