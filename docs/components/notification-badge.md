@@ -2,7 +2,7 @@
 title: Notification badge
 tabs: true
 status: Official
-statusDate: September 2025
+statusDate: October 2025
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/706
 excerpt: "Use the notification badge to display an amount of new or unread items."
 lede: "Use the notification badge to display an amount of new or unread items."
