@@ -15,7 +15,7 @@
   // outline ensures number is not obscured in Windows high contrast mode
   // and prevents containers resizing
   outline: 4px solid govuk-colour("red");
-  outline-offset: -1px;
+  outline-offset: -0.1em;
   color: govuk-colour("white");
   background-color: govuk-colour("red");
   text-align: center;
