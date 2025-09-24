@@ -6,8 +6,11 @@
 node_modules/
 
 # Build output
+app/views/common/partials/side-navigation.njk
+app/views/common/base.njk
 dist/
 public/
+
 # ignore everything in the package directory, but not govuk-prototype-kit.config.json, package.json and README.md
 package/*
 !package/govuk-prototype-kit.config.json
