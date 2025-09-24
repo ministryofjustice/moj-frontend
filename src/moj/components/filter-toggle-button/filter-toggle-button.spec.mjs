@@ -45,7 +45,7 @@ describe('Filter toggle in big mode', () => {
 
   beforeEach(() => {
     setMedia({
-      width: '800px'
+      width: 800
     })
 
     component = createComponent()
@@ -188,7 +188,7 @@ describe('Filter toggle in small mode', () => {
 
   beforeEach(() => {
     setMedia({
-      width: '500px'
+      width: 500
     })
 
     component = createComponent()
@@ -301,7 +301,7 @@ describe('Filter toggle in small mode', () => {
     const { element: buttonContainer } = config.toggleButtonContainer
 
     setMedia({
-      width: '800px'
+      width: 800
     })
 
     new FilterToggleButton(
@@ -317,7 +317,7 @@ describe('Filter toggle in small mode', () => {
     expect(component).not.toHaveClass('moj-js-hidden')
 
     setMedia({
-      width: '500px'
+      width: 500
     })
 
     expect(toggleButton.innerHTML).toBe('Show filter')
@@ -328,7 +328,7 @@ describe('Filter toggle in small mode', () => {
     const { element: buttonContainer } = config.toggleButtonContainer
 
     setMedia({
-      width: '500px'
+      width: 500
     })
 
     new FilterToggleButton(component, config)
@@ -338,7 +338,7 @@ describe('Filter toggle in small mode', () => {
     expect(component).toHaveClass('moj-js-hidden')
 
     setMedia({
-      width: '800px'
+      width: 800
     })
 
     expect(toggleButton.innerHTML).toBe('Hide filter')

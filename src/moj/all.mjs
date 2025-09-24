@@ -5,6 +5,7 @@ import { AddAnother } from './components/add-another/add-another.mjs'
 import { Alert } from './components/alert/alert.mjs'
 import { ButtonMenu } from './components/button-menu/button-menu.mjs'
 import { DatePicker } from './components/date-picker/date-picker.mjs'
+import { PdsHeader } from './components/domain-specific/probation/header/header.mjs'
 import { FilterToggleButton } from './components/filter-toggle-button/filter-toggle-button.mjs'
 import { FormValidator } from './components/form-validator/form-validator.mjs'
 import { MultiFileUpload } from './components/multi-file-upload/multi-file-upload.mjs'
@@ -15,9 +16,14 @@ import { SearchToggle } from './components/search-toggle/search-toggle.mjs'
 import { SortableTable } from './components/sortable-table/sortable-table.mjs'
 
 /**
- * @param {Config} [config]
+ * Initialise all components
+ *
+ * Use the `data-module` attributes to find, instantiate and init all of the
+ * components provided as part of MOJ Frontend.
+ *
+ * @param {Config | Element | Document | null} [scopeOrConfig]
  */
-function initAll(config) {
+function initAll(scopeOrConfig) {
   for (const Component of [
     AddAnother,
     Alert,
@@ -25,11 +31,12 @@ function initAll(config) {
     DatePicker,
     MultiSelect,
     PasswordReveal,
+    PdsHeader,
     RichTextEditor,
     SearchToggle,
     SortableTable
   ]) {
-    createAll(Component, undefined, config)
+    createAll(Component, undefined, scopeOrConfig)
   }
 }
 
@@ -47,13 +54,17 @@ export {
   MultiFileUpload,
   MultiSelect,
   PasswordReveal,
+  PdsHeader,
   RichTextEditor,
   SearchToggle,
   SortableTable
 }
 
 /**
- * @typedef {Parameters<typeof GOVUKFrontend.initAll>[0]} Config
+ * Config for all components via `initAll()`
+ *
+ * @typedef {object} Config
+ * @property {Element | Document | null } scope - the scope to search for components in
  */
 
 /**

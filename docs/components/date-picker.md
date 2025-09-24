@@ -2,7 +2,7 @@
 title: Date picker
 tabs: true
 status: Official
-statusDate: July 2024
+statusDate: September 2025
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703
 excerpt: "The date picker component enables users to select a date from a calendar."
 lede: "The date picker component enables users to select a date from a calendar."
@@ -43,14 +43,6 @@ Date pickers are fully navigable using a keyboard, but can be slow for keyboard-
 ### Similar or linked components
 
 There's also the ['Ask users for dates' pattern in the GOV.UK Design System](https://design-system.service.gov.uk/patterns/dates/).
-
-## Accessibility issues
-
-There’s an accessibility issue with the date picker component. If you’re using it in your service you need to add these issue details to your accessibility statement.
-
-### No focus indicator shown when navigating between dates (NVDA only)
-
-When people use the screen reader software NVDA, no focus indicator is displayed when they navigate between dates. This only happens with NVDA software. This fails [WCAG 2.2 success criterion 2.4.7 (Focus visible)](https://www.w3.org/TR/WCAG22/#focus-visible). We’re aware of this issue and will implement a fix in 2025.
 
 {% endtab %}
 
