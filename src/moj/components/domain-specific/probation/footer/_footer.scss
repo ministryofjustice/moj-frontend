@@ -1,0 +1,50 @@
+@use "../../../../vendor/govuk-frontend" as *;
+
+/* ==========================================================================
+   PROBATION#FOOTER
+   ========================================================================== */
+
+.probation-common-footer {
+  @include govuk-font($size: 16);
+
+  padding: 30px 0;
+  border-top: 1px solid $govuk-border-colour;
+  color: $govuk-text-colour;
+  background: $govuk-canvas-background-colour;
+
+  a {
+    text-underline-offset: 0.23em;
+  }
+
+  &__info {
+    display: flex;
+  }
+
+  h2 {
+    margin-top: 0;
+    padding-bottom: 25px;
+    border-bottom: 1px solid govuk-colour("dark-grey");
+    font-size: 24px;
+  }
+
+  &__help {
+    flex-basis: 50%;
+  }
+
+  &__inline-list {
+    margin-top: 0;
+    margin-bottom: govuk-spacing(3);
+    padding: 0;
+  }
+
+  &__inline-list-item {
+    display: inline-block;
+    margin-right: govuk-spacing(3);
+    margin-bottom: govuk-spacing(1);
+  }
+
+  &__link {
+    @include govuk-link-common;
+    @include govuk-link-style-text;
+  }
+}

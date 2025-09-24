@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/ministryofjustice/moj-frontend/compare/v5.1.5...v5.2.0) (2025-09-23)
+
+
+### Features
+
+* New component: PDS Header ([#1779](https://github.com/ministryofjustice/moj-frontend/issues/1779)) ([6a8e316](https://github.com/ministryofjustice/moj-frontend/commit/6a8e3169047d24d3205f9054ce1c6027a3ad31ab))
+
 ## [5.1.5](https://github.com/ministryofjustice/moj-frontend/compare/v5.1.4...v5.1.5) (2025-07-16)
 
 
