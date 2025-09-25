@@ -16,9 +16,14 @@ import { SearchToggle } from './components/search-toggle/search-toggle.mjs'
 import { SortableTable } from './components/sortable-table/sortable-table.mjs'
 
 /**
- * @param {Config} [config]
+ * Initialise all components
+ *
+ * Use the `data-module` attributes to find, instantiate and init all of the
+ * components provided as part of MOJ Frontend.
+ *
+ * @param {Config | Element | Document | null} [scopeOrConfig]
  */
-function initAll(config) {
+function initAll(scopeOrConfig) {
   for (const Component of [
     AddAnother,
     Alert,
@@ -26,12 +31,12 @@ function initAll(config) {
     DatePicker,
     MultiSelect,
     PasswordReveal,
+    PdsHeader,
     RichTextEditor,
     SearchToggle,
-    SortableTable,
-    PdsHeader
+    SortableTable
   ]) {
-    createAll(Component, undefined, config)
+    createAll(Component, undefined, scopeOrConfig)
   }
 }
 
@@ -49,14 +54,17 @@ export {
   MultiFileUpload,
   MultiSelect,
   PasswordReveal,
+  PdsHeader,
   RichTextEditor,
   SearchToggle,
-  SortableTable,
-  PdsHeader
+  SortableTable
 }
 
 /**
- * @typedef {Parameters<typeof GOVUKFrontend.initAll>[0]} Config
+ * Config for all components via `initAll()`
+ *
+ * @typedef {object} Config
+ * @property {Element | Document | null } scope - the scope to search for components in
  */
 
 /**
