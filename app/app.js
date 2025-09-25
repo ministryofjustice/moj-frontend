@@ -28,7 +28,6 @@ const redisClient = require('./redis-client')
 const crypto = require('crypto')
 
 const express = require('express')
-const expressNunjucks = require('express-nunjucks').default
 const rateLimit = require('express-rate-limit')
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
@@ -116,22 +115,23 @@ app.use(function (req, res, next) {
 })
 
 // Nunjucks config
-app.set('views', [
-  path.join(__dirname, 'views/common'),
-  path.join(__dirname, 'views/community/pages'),
-  // path.join(__dirname, 'node_modules/@ministryofjustice/frontend'),
-  path.join(__dirname, '../src'),
-  path.join(__dirname, '../node_modules/govuk-frontend/dist')
-])
+const templateDirs = [
+  path.join(__dirname, 'views/common/'),
+  path.join(__dirname, 'views/community/pages/'),
+  path.join(__dirname, '../src/'),
+  path.join(__dirname, '../node_modules/govuk-frontend/dist/')
+]
 
-app.set('view engine', 'njk')
-const njk = expressNunjucks(app, {
+const njk = nunjucks.configure(templateDirs, {
+  autoescape: true,
   watch: isDev,
-  noCache: false,
-  loader: nunjucks.FileSystemLoader
+  express: app
 })
 
-njk.env.addFilter('rev', rev)
+app.set('view engine', 'njk');
+app.engine('njk', nunjucks.render);
+
+njk.addFilter('rev', rev)
 
 app.locals.env = {
   isDev: ENV === 'development',
