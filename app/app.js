@@ -128,8 +128,8 @@ const njk = nunjucks.configure(templateDirs, {
   express: app
 })
 
-app.set('view engine', 'njk');
-app.engine('njk', nunjucks.render);
+app.set('view engine', 'njk')
+app.engine('njk', nunjucks.render)
 
 njk.addFilter('rev', rev)
 
