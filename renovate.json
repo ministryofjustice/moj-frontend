@@ -3,7 +3,7 @@
   "extends": ["config:recommended", ":semanticCommitTypeAll(build)"],
   "ignoreDeps": ["eslint", "eslint-plugin-promise", "eslint-plugin-n"],
   "labels": ["dependencies"],
-  "minimumReleaseAge": "7",
+  "minimumReleaseAge": "7 days",
   "packageRules": [
     {
       "groupName": "Build",
