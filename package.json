@@ -139,7 +139,7 @@
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.6.0",
     "glob": "^11.0.3",
-    "govuk-prototype-kit": "^13.16.2",
+    "govuk-prototype-kit": "^13.18.0",
     "gray-matter": "^4.0.3",
     "gulp": "^5.0.1",
     "gulp-cache": "^1.1.3",
