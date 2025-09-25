@@ -651,7 +651,9 @@ export class DatePicker extends ConfigurableComponent {
     this.$dialog.style.top = `${this.$input.offsetHeight + 3}px`
 
     // get the date from the input element
-    this.inputDate = this.formattedDateFromString(this.$input.value)
+    this.inputDate = this.formattedDateFromString(
+      this.$input.value || this.config.suggestedDate
+    )
     this.currentDate = this.inputDate
     this.currentDate.setHours(0, 0, 0, 0)
 
@@ -819,6 +821,7 @@ export class DatePicker extends ConfigurableComponent {
         leadingZeros: { type: 'boolean' },
         maxDate: { type: 'string' },
         minDate: { type: 'string' },
+        suggestedDate: { type: 'string' },
         weekStartDay: { type: 'string' },
         input: { type: 'object' }
       }
@@ -949,6 +952,7 @@ class DSCalendarDay {
  * @property {boolean} [leadingZeros] - Whether to add leading zeroes when populating the field
  * @property {string} [minDate] - The earliest available date
  * @property {string} [maxDate] - The latest available date
+ * @property {string} [suggestedDate] - Optional highlighted date when the date picker dialog is opened
  * @property {string} [weekStartDay] - First day of the week in calendar view
  * @property {object} [input] - Input config
  * @property {string} [input.selector] - Selector for the input element
