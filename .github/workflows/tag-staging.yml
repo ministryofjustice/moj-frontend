@@ -19,7 +19,7 @@ jobs:
       pull-requests: write
     if: ${{ github.event.label.name == 'staging:request' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Remove active labels from other PRs
         run: |
           for number in $(gh pr list --label "staging:active" --json number | jq -r '.[].number'); do
