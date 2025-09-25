@@ -180,7 +180,7 @@
     "supertest": "^7.1.4",
     "terser": "^5.44.0",
     "typed-query-selector": "^2.12.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "config": {
     "commitizen": {
