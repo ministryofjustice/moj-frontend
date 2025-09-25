@@ -6,7 +6,6 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type
 ---
 
 {%- from "moj/components/notification-badge/macro.njk" import mojNotificationBadge -%}
-
-{{- mojNotificationBadge({
-  text: "5"
-}) -}}
+<a href="#" class="govuk-link">Messages
+  {{- mojNotificationBadge({text: "5"}) -}}
+</a>
