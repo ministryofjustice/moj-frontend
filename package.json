@@ -106,7 +106,7 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/connect-redis": "^0.0.23",
     "@types/express": "^5.0.3",
-    "@types/express-session": "^1.18.1",
+    "@types/express-session": "^1.18.2",
     "@types/govuk-frontend": "^5.9.0",
     "@types/gulp": "^4.0.17",
     "@types/jest": "^29.5.14",
