@@ -33,6 +33,6 @@ jobs:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
           KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Remove preview:active label
         run: gh pr edit ${{ github.event.pull_request.number }} --remove-label "preview:active"
