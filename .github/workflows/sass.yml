@@ -1,5 +1,8 @@
 name: Sass
 
+permissions:
+  contents: read
+
 on:
   pull_request:
 
