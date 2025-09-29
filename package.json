@@ -125,7 +125,7 @@
     "cssnano": "^7.1.1",
     "cz-conventional-changelog": "^3.3.0",
     "dayjs": "^1.11.18",
-    "del": "^8.0.0",
+    "del": "^8.0.1",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-config-standard": "^17.1.0",
