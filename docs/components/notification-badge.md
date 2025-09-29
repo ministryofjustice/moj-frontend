@@ -143,7 +143,7 @@ The notification badge number will only update when the page loads. It’s not '
 
 If an item is cleared by an interaction in the service, help the user know that this has happened. Do not rely on the badge changing numbers.
 
-You can view an [example of how to design the onward journey](/components/notification-badge#showing-items-after-the-component).
+You can view an [example of how to design the onward journey](#examples-tab).
 
 #### Displaying the number of items  
 
