@@ -38,7 +38,8 @@ module.exports = function (eleventyConfig) {
         language: language || 'plaintext'
       })
 
-      return value
+      // return value
+      return `<pre><code data-module="app-scroll-container" tabindex="0" class="language-${language}">${value}</code></pre>`
     }
   })
     .disable('code')
