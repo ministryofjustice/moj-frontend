@@ -1,0 +1,9 @@
+{
+  "fullName": "hhh dsds",
+  "teamName": "ohohk",
+  "shareYourDetails": [
+    "",
+    "addNameToComponentPage",
+    "addTeamNameToComponentPage"
+  ]
+}
