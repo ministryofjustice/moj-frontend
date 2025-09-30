@@ -1251,4 +1251,20 @@ describe('Datepicker data-attributes API', () => {
 
     expect(headers[0]).toHaveAccessibleName('Sunday')
   })
+
+  test('suggestedDate', async () => {
+    component = createComponent({
+      attributes: {
+        'data-suggested-date': '2-2-2025'
+      }
+    })
+
+    new DatePicker(component)
+
+    calendarButton = screen.getByRole('button', { name: 'Choose date' })
+
+    await user.click(calendarButton)
+
+    expect(screen.getByText('February 2025')).toBeVisible()
+  })
 })
