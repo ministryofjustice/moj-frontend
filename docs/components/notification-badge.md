@@ -139,7 +139,7 @@ In the example, the hidden text is 'unread':
 
 #### When the number changes
 
-The notification badge number will only update when the page loads. It’s not 'dynamic' If you want to change this, you’ll need to consider accessibility.  
+The notification badge number will only update when the page loads. It’s not 'dynamic'. If you want to change this, you’ll need to consider accessibility.  
 
 If an item is cleared by an interaction in the service, help the user know that this has happened. Do not rely on the badge changing numbers.
 
