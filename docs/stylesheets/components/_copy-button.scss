@@ -18,6 +18,20 @@
   cursor: pointer;
   @include govuk-font(16);
 
+  &:focus:not(:hover) {
+    color: $govuk-focus-text-colour;
+    background-color: $govuk-focus-colour;
+    box-shadow: 0 2px 0 0 $govuk-focus-text-colour;
+  }
+
+  &:active,
+  &:focus {
+    padding: 2px 10px; // Counter increased border size
+    border: 2px solid $govuk-focus-colour;
+    outline: 2px solid transparent;
+    box-shadow: none;
+  }
+
   &:active {
     margin-top: 2px;
     box-shadow: none;

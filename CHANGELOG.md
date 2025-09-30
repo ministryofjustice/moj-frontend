@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/ministryofjustice/moj-frontend/compare/v5.2.0...v5.2.1) (2025-09-24)
+
+
+### Bug Fixes
+
+* **datepicker:** change table role to application to force nvda out of browse mode ([#1799](https://github.com/ministryofjustice/moj-frontend/issues/1799)) ([e89b5bc](https://github.com/ministryofjustice/moj-frontend/commit/e89b5bc0cc214cacf143269d331cb794742ec0b7))
+
 # [5.2.0](https://github.com/ministryofjustice/moj-frontend/compare/v5.1.5...v5.2.0) (2025-09-23)
 
 

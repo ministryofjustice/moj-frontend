@@ -67,10 +67,10 @@ router.get('/error', (req, res, next) => {
   next(error)
 })
 
-router.all('*', setCsrfToken)
+router.all('{*splat}', setCsrfToken)
 
 // TODO:  Why is this a get * ? Can it not just be set in the get /checkYourAnswersPath route below?
-router.get('*', (req, res, next) => {
+router.get('{*splat}', (req, res, next) => {
   if (req?.session) {
     if (req?.url.endsWith(checkYourAnswersPath)) {
       // Indicate that we've been on the check your answers page
@@ -253,7 +253,7 @@ router.get('/email', (req, res) => {
 })
 
 // For all following routed we must have a session in progress
-router.all('*', sessionStarted)
+router.all('{*splat}', sessionStarted)
 
 router.post('/start', verifyCsrf, (req, res) => {
   res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email`)
@@ -362,7 +362,7 @@ router.get('/email/not-allowed', (req, res) => {
 })
 
 // For all following routed we must have verified an email address
-router.all('*', sessionVerified)
+router.all('{*splat}', sessionVerified)
 
 // Remove form page
 router.get(
