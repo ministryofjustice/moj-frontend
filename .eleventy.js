@@ -18,6 +18,7 @@ const accordion = require('./shortcodes/accordion')
 const version = require('./shortcodes/version')
 const { scriptPath, stylePath } = require('./filters/paths')
 const renderNunjucks = require('./filters/render-nunjucks')
+const timestamp = require('./filters/timestamp')
 const mojFilters = require('./src/moj/filters/all')
 
 
@@ -104,9 +105,7 @@ module.exports = function (eleventyConfig) {
     })
   })
 
-  eleventyConfig.addFilter('timestamp', (date) => {
-    return date.getTime()
-  })
+  eleventyConfig.addFilter('timestamp', timestamp)
 
   eleventyConfig.addFilter('markdownify', (content) => {
     return `${markdown.render(content)}`
