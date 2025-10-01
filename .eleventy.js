@@ -6,11 +6,9 @@ const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
 const matter = require('gray-matter')
 const beautifyHTML = require('js-beautify').html
 const upperFirst = require('lodash/upperFirst')
-const markdownIt = require('markdown-it')
-const markdownItAnchor = require('markdown-it-anchor')
 const nunjucks = require('nunjucks')
 const nunjucksEnv = require('./config/nunjucks')
-const highlight = require('./config/highlight')
+const markdown = require('./config/markdown')
 const rev = require('./filters/rev')
 const releasePackage = require('./package/package.json')
 const govukNotificationBanner = require('./shortcodes/banner')
@@ -21,17 +19,6 @@ const mojFilters = require('./src/moj/filters/all')
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
-
-  const md = markdownIt({
-    html: true,
-    typographer: true,
-    quotes: '“”‘’',
-    highlight
-  })
-  .disable('code')
-  .use(markdownItAnchor, {
-    level: [1, 2, 3, 4]
-  })
 
   Object.entries({
     ...eleventyConfig.nunjucksFilters,
@@ -47,7 +34,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setLibrary('njk', nunjucksEnv)
 
-  eleventyConfig.setLibrary('md', md)
+  eleventyConfig.setLibrary('md', markdown)
 
   eleventyConfig.addShortcode('example', example)
 
@@ -223,7 +210,7 @@ module.exports = function (eleventyConfig) {
   })
 
   eleventyConfig.addFilter('markdownify', (content) => {
-    return `${md.render(content)}`
+    return `${markdown.render(content)}`
   })
 
   // Rebuild when a change is made to a component template file
