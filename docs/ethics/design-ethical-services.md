@@ -18,6 +18,8 @@ This guidance will help your team:
 
 - develop services responsibly, so you can reduce, mitigate or remove harm from users
 - [prepare for your service assessment](/ethics/assessment/)
+- reflect on the ethics of your service using our [ethics review](/ethics/review/) or [ethical principles](ethics/principles/)
+
 
 ## Why you should consider ethics
 
