@@ -41,31 +41,6 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addShortcode('dateInCurrentMonth', dateInCurrentMonth)
 
-  eleventyConfig.addShortcode('lastUpdated', function (component) {
-    if (process.env.ENV === 'staging') return ''
-
-    const dirPath = path.join(__dirname, 'src/moj/components', component)
-
-    const lastCommit = execFileSync(
-      'git',
-      [
-        'log',
-        '-n1',
-        '--pretty=format:%H,%ad',
-        '--date=format:%e %B %Y',
-        dirPath
-      ],
-      {
-        cwd: process.cwd(), // or specify the working directory if needed
-        env: { ...process.env, LANG: 'en_GB' },
-        encoding: 'utf8'
-      }
-    )
-    const [commit, lastUpdated] = lastCommit.toString().split(',')
-
-    return `<p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/${commit}">${lastUpdated}</a></p>`
-  })
-
   eleventyConfig.addShortcode('version', function () {
     return releasePackage.version
   })
