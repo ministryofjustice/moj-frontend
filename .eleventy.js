@@ -4,14 +4,13 @@ const path = require('path')
 
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
 const matter = require('gray-matter')
-const hljs = require('highlight.js')
 const beautifyHTML = require('js-beautify').html
 const upperFirst = require('lodash/upperFirst')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const nunjucks = require('nunjucks')
-
 const nunjucksEnv = require('./config/nunjucks')
+const highlight = require('./config/highlight')
 const rev = require('./filters/rev')
 const releasePackage = require('./package/package.json')
 const govukNotificationBanner = require('./shortcodes/banner')
@@ -19,8 +18,6 @@ const example = require('./shortcodes/example')
 const tabs = require('./shortcodes/tabs')
 const mojFilters = require('./src/moj/filters/all')
 
-// Configure highlight.js
-hljs.registerAliases(['mjs', 'njk'], { languageName: 'javascript' })
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
@@ -29,19 +26,12 @@ module.exports = function (eleventyConfig) {
     html: true,
     typographer: true,
     quotes: '“”‘’',
-    highlight(code, language) {
-      const { value } = hljs.highlight(code.trim(), {
-        language: language || 'plaintext'
-      })
-
-      // return value
-      return `<pre><code data-module="app-scroll-container" tabindex="0" class="language-${language}">${value}</code></pre>`
-    }
+    highlight
   })
-    .disable('code')
-    .use(markdownItAnchor, {
-      level: [1, 2, 3, 4]
-    })
+  .disable('code')
+  .use(markdownItAnchor, {
+    level: [1, 2, 3, 4]
+  })
 
   Object.entries({
     ...eleventyConfig.nunjucksFilters,
