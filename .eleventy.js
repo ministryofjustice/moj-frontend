@@ -58,31 +58,6 @@ module.exports = function (eleventyConfig) {
   // Find and store govuk tab for above tabs
   eleventyConfig.addPairedShortcode('accordionSection', accordion.addSection)
 
-  eleventyConfig.addFilter(
-    'addActiveAttribute',
-    function (config, filePathStem) {
-      if (config.items) {
-        return {
-          ...config,
-          items: config.items.map((item) => ({
-            ...item,
-            active: filePathStem.indexOf(item.href) > -1
-          }))
-        }
-      } else if (config.sections) {
-        return {
-          ...config,
-          sections: config.sections.map((section) => ({
-            ...section,
-            items: section.items.map((item) => ({
-              ...item,
-              active: filePathStem.indexOf(item.href) > -1
-            }))
-          }))
-        }
-      }
-    }
-  )
 
   eleventyConfig.addFilter('getScriptPath', function (inputPath) {
     return `${inputPath.split('/').slice(1, -1).join('/')}/script.js`
