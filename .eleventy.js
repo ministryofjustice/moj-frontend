@@ -14,6 +14,7 @@ const govukNotificationBanner = require('./shortcodes/banner')
 const dateInCurrentMonth = require('./shortcodes/date-in-current-month')
 const example = require('./shortcodes/example')
 const tabs = require('./shortcodes/tabs')
+const accordion = require('./shortcodes/accordion')
 const version = require('./shortcodes/version')
 const mojFilters = require('./src/moj/filters/all')
 
@@ -50,56 +51,12 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPairedShortcode('banner', govukNotificationBanner)
 
-  // Temp storage for tabs
-  let accordionSections = []
 
   // Generate govuk tabs
-  eleventyConfig.addPairedShortcode(
-    'accordion',
-    function (content, accordionId) {
-      const sectionId = (section) => {
-        return `${section.label.toLowerCase().replace(/ /g, '-')}-section`
-      }
-      const contentId = (section, index) => {
-        return `${accordionId}-content-${index}`
-      }
-
-      const accordionContent = accordionSections
-        .map((section, index) => {
-          return `
-        <div class="govuk-accordion__section">
-          <div class="govuk-accordion__section-header">
-            <h2 class="govuk-accordion__section-heading">
-              <span class="govuk-accordion__section-button" id="${sectionId(section)}">
-                ${section.label}
-              </span>
-            </h2>
-          </div>
-          <div id="${contentId(section, index + 1)}" class="govuk-accordion__section-content">${section.content}</div>
-      </div>
-    `.trim()
-        })
-        .join('')
-        .trim()
-
-      accordionSections = []
-
-      return `
-    <div class="govuk-accordion" data-module="govuk-accordion" id="${accordionId}">
-      ${accordionContent}
-    </div>
-  `.trim()
-    }
-  )
+  eleventyConfig.addPairedNunjucksShortcode('accordion', accordion.create)
 
   // Find and store govuk tab for above tabs
-  eleventyConfig.addPairedShortcode(
-    'accordionSection',
-    function (content, label) {
-      accordionSections.push({ label, content })
-      return ''
-    }
-  )
+  eleventyConfig.addPairedShortcode('accordionSection', accordion.addSection)
 
   eleventyConfig.addFilter(
     'addActiveAttribute',
