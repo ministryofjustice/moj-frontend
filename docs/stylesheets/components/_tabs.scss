@@ -114,4 +114,9 @@
     outline: 1px solid transparent;
     background-color: #f7f7f7;
   }
+
+  pre code:focus {
+    border: 3px solid govuk-colour("black");
+    outline: 3px solid govuk-colour("yellow");
+  }
 }

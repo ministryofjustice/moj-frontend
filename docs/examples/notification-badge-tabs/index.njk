@@ -1,0 +1,42 @@
+---
+layout: layouts/example.njk
+title: Notification badge (example)
+figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type=design&node-id=61-3019&mode=design
+---
+
+{%- from "moj/components/notification-badge/macro.njk" import mojNotificationBadge -%}
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#dashboard">
+        Dashboard
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#messages">
+      Messages{{- mojNotificationBadge({
+            text: "150",
+            visuallyHiddenText: "unread"
+      }) -}}
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#cases">
+        Cases
+      </a>
+    </li>
+  </ul>
+  <div class="govuk-tabs__panel" id="dashboard">
+    <h3>Dashboard</h3>
+  </div>
+  <div class="govuk-tabs__panel" id="messages">
+    <h3>Messages</h3>
+  </div>
+  <div class="govuk-tabs__panel" id="cases">
+    <h3>Cases</h3>
+  </div>
+</div>

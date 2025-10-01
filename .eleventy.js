@@ -38,7 +38,8 @@ module.exports = function (eleventyConfig) {
         language: language || 'plaintext'
       })
 
-      return value
+      // return value
+      return `<pre><code data-module="app-scroll-container" tabindex="0" class="language-${language}">${value}</code></pre>`
     }
   })
     .disable('code')
@@ -84,7 +85,7 @@ module.exports = function (eleventyConfig) {
     const htmlCode = beautifyHTML(rawHtmlCode.trim(), {
       indent_size: 2,
       end_with_newline: true,
-      max_preserve_newlines: 1,
+      max_preserve_newlines: 0,
       unformatted: ['code', 'pre', 'em', 'strong']
     })
 
@@ -101,7 +102,7 @@ module.exports = function (eleventyConfig) {
     return nunjucksEnv.render('example.njk', {
       href: params.template,
       id: params.template.replace(/\//g, '-'),
-      arguments: data.arguments,
+      arguments: this.page.fileSlug,
       figmaLink: data.figma_link,
       title: data.title,
       height: params.height,
