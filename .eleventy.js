@@ -16,6 +16,7 @@ const example = require('./shortcodes/example')
 const tabs = require('./shortcodes/tabs')
 const accordion = require('./shortcodes/accordion')
 const version = require('./shortcodes/version')
+const { scriptPath, stylePath } = require('./filters/paths')
 const mojFilters = require('./src/moj/filters/all')
 
 
@@ -59,13 +60,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPairedShortcode('accordionSection', accordion.addSection)
 
 
-  eleventyConfig.addFilter('getScriptPath', function (inputPath) {
-    return `${inputPath.split('/').slice(1, -1).join('/')}/script.js`
-  })
+  eleventyConfig.addFilter('getScriptPath', scriptPath)
 
-  eleventyConfig.addFilter('getStylesPath', function (inputPath) {
-    return `${inputPath.split('/').slice(1, -1).join('/')}/style.css`
-  })
+  eleventyConfig.addFilter('getStylesPath', stylePath)
 
   eleventyConfig.addFilter('renderString', function (viewString, context) {
     return nunjucksEnv.renderString(viewString, context)
