@@ -92,14 +92,14 @@ module.exports = (function () {
   }
 
   return {
-    createTabs: function (content, style, label) {
+    create: function (content, style, label) {
       config.title = label ?? 'Contents'
       config.paginate = style === 'paginate'
 
       build()
       return render()
     },
-    createTab: function (content, label) {
+    addTab: function (content, label) {
       tabs.push({ content, label })
       return ''
     }
