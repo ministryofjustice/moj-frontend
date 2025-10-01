@@ -18,6 +18,7 @@ const accordion = require('./shortcodes/accordion')
 const version = require('./shortcodes/version')
 const { scriptPath, stylePath } = require('./filters/paths')
 const renderNunjucks = require('./filters/render-nunjucks')
+const renderMarkdown = require('./filters/render-markdown')
 const timestamp = require('./filters/timestamp')
 const mojFilters = require('./src/moj/filters/all')
 
@@ -107,9 +108,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter('timestamp', timestamp)
 
-  eleventyConfig.addFilter('markdownify', (content) => {
-    return `${markdown.render(content)}`
-  })
+  eleventyConfig.addFilter('markdownify', renderMarkdown)
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')
