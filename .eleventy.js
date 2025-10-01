@@ -10,11 +10,11 @@ const nunjucks = require('nunjucks')
 const nunjucksEnv = require('./config/nunjucks')
 const markdown = require('./config/markdown')
 const rev = require('./filters/rev')
-const releasePackage = require('./package/package.json')
 const govukNotificationBanner = require('./shortcodes/banner')
 const dateInCurrentMonth = require('./shortcodes/date-in-current-month')
 const example = require('./shortcodes/example')
 const tabs = require('./shortcodes/tabs')
+const version = require('./shortcodes/version')
 const mojFilters = require('./src/moj/filters/all')
 
 
@@ -41,9 +41,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addShortcode('dateInCurrentMonth', dateInCurrentMonth)
 
-  eleventyConfig.addShortcode('version', function () {
-    return releasePackage.version
-  })
+  eleventyConfig.addShortcode('version', version)
 
   // Generate govuk tabs
   eleventyConfig.addPairedNunjucksShortcode('tabs', tabs.createTabs)
