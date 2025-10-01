@@ -13,6 +13,7 @@ const nunjucks = require('nunjucks')
 
 const rev = require('./filters/rev')
 const releasePackage = require('./package/package.json')
+const govukNotificationBanner = require('./shortcodes/banner')
 const tabs = require('./shortcodes/tabs')
 const mojFilters = require('./src/moj/filters/all')
 
@@ -152,22 +153,7 @@ module.exports = function (eleventyConfig) {
   // Find and store govuk tab for above tabs
   eleventyConfig.addPairedShortcode('tab', tabs.createTab)
 
-  eleventyConfig.addPairedShortcode('banner', function (content, title) {
-    return `
-      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Important
-          </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <h3 class="govuk-notification-banner__heading">
-            ${title}
-          </h3>
-          ${content}</div>
-      </div>
-    `
-  })
+  eleventyConfig.addPairedShortcode('banner', govukNotificationBanner)
 
   // Temp storage for tabs
   let accordionSections = []
