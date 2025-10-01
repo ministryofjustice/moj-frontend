@@ -1,5 +1,5 @@
-module.exports = function(content, title) {
-    return `
+module.exports = function (content, title) {
+  return `
       <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
         <div class="govuk-notification-banner__header">
           <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">

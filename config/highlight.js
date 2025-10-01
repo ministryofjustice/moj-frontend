@@ -2,7 +2,7 @@ const highlightJs = require('highlight.js')
 
 highlightJs.registerAliases(['mjs', 'njk'], { languageName: 'javascript' })
 
-module.exports = function(string, language) {
+module.exports = function (string, language) {
   if (language) {
     // Code language has been set, or can be determined
     let code

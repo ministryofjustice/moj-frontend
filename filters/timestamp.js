@@ -1,3 +1,3 @@
-module.exports = function(date) {
+module.exports = function (date) {
   return date.getTime()
 }
