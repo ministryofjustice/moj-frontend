@@ -11,9 +11,11 @@ const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const nunjucks = require('nunjucks')
 
+const nunjucksEnv = require('./config/nunjucks')
 const rev = require('./filters/rev')
 const releasePackage = require('./package/package.json')
 const govukNotificationBanner = require('./shortcodes/banner')
+const example = require('./shortcodes/example')
 const tabs = require('./shortcodes/tabs')
 const mojFilters = require('./src/moj/filters/all')
 
@@ -22,13 +24,6 @@ hljs.registerAliases(['mjs', 'njk'], { languageName: 'javascript' })
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
-
-  const nunjucksEnv = nunjucks.configure([
-    '.',
-    'src',
-    'docs/_includes/',
-    'node_modules/govuk-frontend/dist/'
-  ])
 
   const md = markdownIt({
     html: true,
@@ -64,55 +59,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setLibrary('md', md)
 
-  eleventyConfig.addShortcode('example', function (params) {
-    let templateFile = ''
-    try {
-      templateFile = fs
-        .readFileSync(
-          path.join(__dirname, 'docs', params.template, 'index.njk'),
-          'utf8'
-        )
-        .trim()
-    } catch {
-      console.error(`Template '${params.template}' could not be found.`)
-      return ''
-    }
-    let { data, content: nunjucksCode } = matter(templateFile)
-
-    nunjucksCode = nunjucksCode.split('<!--no include-->')[0].trim()
-
-    const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode)
-
-    const htmlCode = beautifyHTML(rawHtmlCode.trim(), {
-      indent_size: 2,
-      end_with_newline: true,
-      max_preserve_newlines: 0,
-      unformatted: ['code', 'pre', 'em', 'strong']
-    })
-
-    let jsCode = ''
-    try {
-      jsCode = fs
-        .readFileSync(
-          path.join(__dirname, 'docs', params.template, 'script.js'),
-          'utf8'
-        )
-        .trim()
-    } catch {}
-
-    return nunjucksEnv.render('example.njk', {
-      href: params.template,
-      id: params.template.replace(/\//g, '-'),
-      arguments: this.page.fileSlug,
-      figmaLink: data.figma_link,
-      title: data.title,
-      height: params.height,
-      showTab: params.showTab,
-      nunjucksCode,
-      htmlCode,
-      jsCode
-    })
-  })
+  eleventyConfig.addShortcode('example', example)
 
   eleventyConfig.addShortcode(
     'dateInCurrentMonth',
