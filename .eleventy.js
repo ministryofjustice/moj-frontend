@@ -12,6 +12,7 @@ const markdown = require('./config/markdown')
 const rev = require('./filters/rev')
 const releasePackage = require('./package/package.json')
 const govukNotificationBanner = require('./shortcodes/banner')
+const dateInCurrentMonth = require('./shortcodes/date-in-current-month')
 const example = require('./shortcodes/example')
 const tabs = require('./shortcodes/tabs')
 const mojFilters = require('./src/moj/filters/all')
@@ -38,10 +39,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addShortcode('example', example)
 
-  eleventyConfig.addShortcode(
-    'dateInCurrentMonth',
-    (day) => `${day}/${new Date().getMonth() + 1}/${new Date().getFullYear()}`
-  )
+  eleventyConfig.addShortcode('dateInCurrentMonth', dateInCurrentMonth)
 
   eleventyConfig.addShortcode('lastUpdated', function (component) {
     if (process.env.ENV === 'staging') return ''
