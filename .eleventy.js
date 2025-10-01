@@ -17,6 +17,7 @@ const tabs = require('./shortcodes/tabs')
 const accordion = require('./shortcodes/accordion')
 const version = require('./shortcodes/version')
 const { scriptPath, stylePath } = require('./filters/paths')
+const renderNunjucks = require('./filters/render-nunjucks')
 const mojFilters = require('./src/moj/filters/all')
 
 
@@ -64,9 +65,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter('getStylesPath', stylePath)
 
-  eleventyConfig.addFilter('renderString', function (viewString, context) {
-    return nunjucksEnv.renderString(viewString, context)
-  })
+  eleventyConfig.addFilter('renderString', renderNunjucks)
 
   eleventyConfig.addFilter('rev', rev)
 
