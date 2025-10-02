@@ -4,7 +4,7 @@
 // community start page
 module.exports = (config) => {
   config.addUrlTransform(({ url }) => {
-    if (url.match(/^\/views/i)) {
+    if (url.match(/^\/app\/views/i)) {
       return '/contribute/add-new-component/start'
     }
     // Returning undefined skips the url transform.
