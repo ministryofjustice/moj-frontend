@@ -1,3 +1,254 @@
+# [6.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v5.2.1...v6.0.0) (2025-10-01)
+
+
+### Bug Fixes
+
+* **types:** update initAll signature to match types expected by GOVUKFrontend.createAll() ([#1819](https://github.com/ministryofjustice/moj-frontend/issues/1819)) ([26ad7ca](https://github.com/ministryofjustice/moj-frontend/commit/26ad7ca0e09c4499db1b99a585239b33282b6570))
+
+
+### Features
+
+* Notification badge ([#1599](https://github.com/ministryofjustice/moj-frontend/issues/1599)) ([005299b](https://github.com/ministryofjustice/moj-frontend/commit/005299b8f328a22aa716340f1487f3bb7975f5a6))
+
+
+### BREAKING CHANGES
+
+* the spacing for the component has changed. This could affect the layout of UIs using the component.
+
+You need to remove any spacing you’ve added to (or around) the component. This needs to be done in Figma designs and in code. 
+
+* docs: add page to test positioning
+
+* docs: styling changes
+
+* docs: remove margin from layout tests
+
+* docs: spacing adjustment
+
+* docs: add placeholder pattern page
+
+* docs: fix font size
+
+* docs: linting
+
+* docs: linting
+
+* docs: add github discussion URL
+
+* docs: add example image
+
+* docs: updates
+
+- Remove experimental pattern
+- Add tabs
+- Add two examples
+
+* style: min-width fix
+
+* style: change border to outline
+
+* style: padding tweaks
+
+* docs: wip add notification badge examples
+
+* style: fix lint errors for notificaion badge scss
+
+* docs: update notification badge tabs example to not use macro
+
+* docs: remove visually hidden puntuation
+
+removed the hidden comma for screenreaders as I don't think it's recommended
+
+* docs: add draft content
+
+* docs: example images
+
+* docs: crit changes
+
+* feat: update notification badge template
+
+* docs: number update
+
+* docs: add nunjucks arguments to notification badge
+
+* docs: update example shortcode to automatically include arguments
+
+Previously each example njk file needed to include a refernce to the the arguments file in its
+frontmatter.  This was a bit redundant as the arguments file always has the same name as the
+component and is always in the same location.  This PR updates the shortcode to extract the
+arguments file name from the calling page, and automatically include the arguments markup if the
+file exists.
+
+* docs: content changes
+
+* docs: image updates
+
+* docs: fix height of initial example
+
+* docs: add page to test positioning
+
+* docs: styling changes
+
+* docs: remove margin from layout tests
+
+* docs: spacing adjustment
+
+* docs: add placeholder pattern page
+
+* docs: fix font size
+
+* docs: linting
+
+* docs: linting
+
+* docs: add github discussion URL
+
+* docs: add example image
+
+* docs: updates
+
+- Remove experimental pattern
+- Add tabs
+- Add two examples
+
+* style: min-width fix
+
+* style: change border to outline
+
+* style: padding tweaks
+
+* docs: wip add notification badge examples
+
+* style: fix lint errors for notificaion badge scss
+
+* docs: update notification badge tabs example to not use macro
+
+* docs: remove visually hidden puntuation
+
+removed the hidden comma for screenreaders as I don't think it's recommended
+
+* docs: add draft content
+
+* docs: example images
+
+* docs: crit changes
+
+* feat: update notification badge template
+
+* docs: number update
+
+* docs: add nunjucks arguments to notification badge
+
+* docs: update example shortcode to automatically include arguments
+
+Previously each example njk file needed to include a refernce to the the arguments file in its
+frontmatter.  This was a bit redundant as the arguments file always has the same name as the
+component and is always in the same location.  This PR updates the shortcode to extract the
+arguments file name from the calling page, and automatically include the arguments markup if the
+file exists.
+
+* docs: content changes
+
+* docs: image updates
+
+* docs: fix height of initial example
+
+* docs: show html tab for positioning example
+
+* docs: new content
+
+* docs: content changes
+
+* docs: content update
+
+* docs: guidance update
+
+* docs: examples updates
+
+* docs: add notification badge link example
+
+* docs: update docs page to use notification badge link example
+
+* docs: updates
+
+* docs: final update
+
+* docs: code tweak
+
+* docs: fix links and curly quotes
+
+* docs: coded example of 0 count
+
+* docs: update example images
+
+* docs: alt text
+
+* docs: update image
+
+* docs: update coded examples
+
+* docs: team review
+
+* docs(notification badge): control whitespace in nunjucks to prevent trailing spaces in links
+
+* docs(notification badge): correct updated date for component
+
+* style: adjust padding
+
+* docs: adjust css and more
+
+- example numbers
+- release month
+
+* docs: update examples
+
+* docs: amend examples
+
+* docs: fix list spacing
+
+* docs: move example
+
+* docs: alt text
+
+* docs: link text tweak
+
+* docs: link tweak
+
+* docs(notification badge): correct updated date for component
+
+* style: adjust padding
+
+* docs: adjust css and more
+
+- example numbers
+- release month
+
+* docs: update examples
+
+* docs: amend examples
+
+* docs: fix list spacing
+
+* docs: move example
+
+* docs: alt text
+
+* docs: link text tweak
+
+* docs: link tweak
+
+* docs: add focus state to code blocks
+
+* docs: update a11y-light code theme
+
+* docs: update alt text
+
+* docs: update coded examples
+
+* docs: typo
+
+* docs: nunjucks macro tweaks
+
 ## [5.2.1](https://github.com/ministryofjustice/moj-frontend/compare/v5.2.0...v5.2.1) (2025-09-24)
 
 
