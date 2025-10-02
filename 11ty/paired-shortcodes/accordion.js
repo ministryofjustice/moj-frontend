@@ -49,13 +49,13 @@ module.exports = (function () {
   }
 
   return {
-    create: function (content, id) {
+    accordion: function (content, id) {
       config.id = id
 
       build()
       return render()
     },
-    addSection: function (content, label) {
+    accordionSection: function (content, label) {
       sections.push({ content, label })
       return ''
     }

@@ -11,7 +11,14 @@ module.exports = function (params) {
   try {
     templateFile = fs
       .readFileSync(
-        path.join(__dirname, '../', 'docs', params.template, 'index.njk'),
+        path.join(
+          __dirname,
+          '../',
+          '../',
+          'docs',
+          params.template,
+          'index.njk'
+        ),
         'utf8'
       )
       .trim()
