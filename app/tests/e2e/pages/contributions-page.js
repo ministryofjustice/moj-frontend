@@ -31,6 +31,7 @@ export class ContributionsPage {
     // Now we can navigate to any page in the flow
     await this.page.goto(this.url)
     await this.expectPageTitle(this.title)
+    await this.expectSelectedNavItem('Submit a component')
   }
 
   async clickContinue() {
@@ -84,5 +85,12 @@ export class ContributionsPage {
     // Full title of page we want to navigate to
     const re = new RegExp(`${title} - Submit a component - MoJ Design System`)
     await expect(this.page).toHaveTitle(re)
+  }
+
+  async expectSelectedNavItem(linkText) {
+    const activeNavItem = this.page.locator('.app-vertical-nav__item--active')
+
+    await expect(activeNavItem).toBeVisible()
+    await expect(activeNavItem).toContainText(linkText)
   }
 }
