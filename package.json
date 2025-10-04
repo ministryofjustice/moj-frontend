@@ -170,8 +170,8 @@
     "puppeteer": "^24.22.0",
     "puppeteer-core": "^24.22.0",
     "require-dir": "^1.2.0",
-    "rollup": "^4.50.2",
-    "sass-embedded": "^1.92.1",
+    "rollup": "^4.52.3",
+    "sass-embedded": "^1.93.2",
     "semantic-release": "^24.2.8",
     "sinon": "^21.0.0",
     "stylelint": "^16.24.0",
@@ -188,7 +188,7 @@
     }
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.50.2",
+    "@rollup/rollup-linux-x64-gnu": "^4.52.3",
     "sass-embedded-linux-x64": "^1.92.1"
   }
 }
