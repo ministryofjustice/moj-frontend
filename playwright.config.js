@@ -37,21 +37,29 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     // Setup project
-    { name: 'setup', testMatch: /.*\.setup\.js/ },
+    { name: 'Experimental Components Setup', testMatch: /.*\.setup\.js/ },
     {
-      name: 'chromium',
+      name: 'Experimental Components',
       use: {
         ...devices['Desktop Chrome'],
         storageState: './playwright/.state/session.json'
       },
-      dependencies: ['setup']
+      dependencies: ['Experimental Components Setup']
     },
     {
-      name: 'no-session',
+      name: 'Experimental Components No Session',
       testMatch: /.*\.setup\.js/,
       use: {
         ...devices['Desktop Chrome']
       }
+    },
+    {
+      name: 'Design System Docs',
+      testDir: './tests/e2e',
+      use: {
+        baseURL: `${process.env.APP_URL}/`,
+        ...devices['Desktop Chrome']
+      },
     }
 
     // {
