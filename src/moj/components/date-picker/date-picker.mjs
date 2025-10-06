@@ -314,6 +314,7 @@ export class DatePicker extends ConfigurableComponent {
   setMinAndMaxDatesOnCalendar() {
     if (this.config.minDate) {
       this.minDate = this.formattedDateFromString(this.config.minDate, null)
+
       if (this.minDate && this.currentDate < this.minDate) {
         this.currentDate = this.minDate
       }
@@ -321,6 +322,7 @@ export class DatePicker extends ConfigurableComponent {
 
     if (this.config.maxDate) {
       this.maxDate = this.formattedDateFromString(this.config.maxDate, null)
+
       if (this.maxDate && this.currentDate > this.maxDate) {
         this.currentDate = this.maxDate
       }
@@ -444,7 +446,7 @@ export class DatePicker extends ConfigurableComponent {
     const month = match[3]
     const year = match[4]
 
-    formattedDate = new Date(`${year}-${month}-${day}`)
+    formattedDate = new Date(`${year}-${month}-${day} 00:00:00:00`)
     if (
       formattedDate instanceof Date &&
       Number.isFinite(formattedDate.getTime())
