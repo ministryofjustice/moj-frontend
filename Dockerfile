@@ -11,10 +11,9 @@ COPY package.json package.json
 RUN npm ci
 
 COPY docs docs
-COPY filters filters
+COPY 11ty 11ty
 COPY src src
 COPY package package
-COPY shortcodes shortcodes
 COPY .eleventy.js .eleventy.js
 COPY .eleventyignore .eleventyignore
 COPY gulp gulp
@@ -32,10 +31,9 @@ COPY package.json package.json
 RUN npm ci
 
 COPY docs docs
-COPY filters filters
+COPY 11ty 11ty
 COPY src src
 COPY package package
-COPY shortcodes shortcodes
 COPY .eleventy.js .eleventy.js
 COPY .eleventyignore .eleventyignore
 COPY gulp gulp
@@ -88,7 +86,7 @@ COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY src src
 COPY app app
-COPY filters filters
+COPY 11ty 11ty
 COPY playwright playwright
 COPY .github .github
 COPY --from=staging-build /app/public public
@@ -104,7 +102,7 @@ COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY src src
 COPY app app
-COPY filters filters
+COPY 11ty 11ty
 COPY playwright playwright
 COPY .github .github
 COPY --from=preview-build /app/public public
@@ -120,7 +118,7 @@ COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY src src
 COPY app app
-COPY filters filters
+COPY 11ty 11ty
 COPY playwright playwright
 COPY .github .github
 COPY --from=production-build /app/public public

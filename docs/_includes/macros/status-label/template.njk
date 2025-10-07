@@ -17,14 +17,14 @@
 {% set typePlural = params.type + "s" -%}
 
 {% set linkText -%}
-  {{ params.statusData.link | renderString({
+  {{ params.statusData.link | renderNunjucksString({
     types: typePlural,
     type: typeSingular
   }) | upperFirst }}
 {%- endset %}
 
 {% set linkHtml -%}
-  {{ params.statusData.linkContent | renderString({
+{{ params.statusData.linkContent | renderNunjucksString({
     types: typePlural,
     type: typeSingular
   }) | upperFirst }}

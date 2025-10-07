@@ -10,6 +10,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto('start')
   await basePage.clickContinue()
   await basePage.expectPageTitle('Verify that you work for MoJ')
+  await basePage.expectSelectedNavItem('Submit a component')
 
   emailInput = page.getByLabel('Enter your MoJ email address')
 })
