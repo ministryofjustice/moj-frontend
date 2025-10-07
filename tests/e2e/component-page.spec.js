@@ -1,6 +1,6 @@
-import { test, expect, describe } from '@playwright/test'
+import { test, expect } from '@playwright/test'
 
-describe('layout tabs', () => {
+test.describe('layout tabs', () => {
   test('layout tabs initialised', async ({page}) => {
     await page.goto('/')
     await page.getByRole('button', {name: 'Components'}).click()
@@ -40,7 +40,7 @@ describe('layout tabs', () => {
 })
 
 
-describe('example tabs', () => {
+test.describe('example tabs', () => {
   test('example tabs init', async ({ page }) => {
     await page.goto('/components/alert')
     const tabContainer = page.locator('[data-module="app-tabs"]').nth(1)
@@ -56,11 +56,36 @@ describe('example tabs', () => {
   test('example tabs functionality', async ({ page }) => {
     await page.goto('/components/alert')
     const tabContainer = page.locator('[data-module="app-tabs"]').nth(1)
-    const nunjucksPanel = tabContainer.getByRole('tabpanel', {name: 'Nunjucks  (Alert (example))'})
+    const nunjucksPanel = tabContainer.getByRole('tabpanel', {name: 'Nunjucks'})
 
     await tabContainer.getByRole('tab', {name: 'Nunjucks'}).click()
 
     expect(nunjucksPanel).toBeVisible()
+
+    const details = nunjucksPanel.locator('[data-module="govuk-details"]')
+    expect(details).toBeVisible()
+  })
+})
+
+test.describe('copy button', () => {
+  test('copy buttons present', async ({page}) => {
+    await page.goto('/components/button-menu')
+    const tabs = page.locator('[data-module="app-tabs"]')
+    const nunjucksPanel = tabs.getByRole('tabpanel', {name: 'Nunjucks'})
+
+    await page.getByRole('tab', { name: 'Nunjucks' }).click()
     expect(nunjucksPanel.getByRole('button', {name: 'Copy code'})).toBeVisible()
+  })
+})
+
+test.describe('scroll container', () => {
+  test('scroll container intialised', async({page}) => {
+    await page.goto('/components/interruption-card')
+    const tabContainer = page.locator('[data-module="app-tabs"]')
+    const nunjucksPanel = tabContainer.getByRole('tabpanel', {name: 'Nunjucks'})
+
+    await tabContainer.getByRole('tab', {name: 'Nunjucks'}).click()
+    const code = nunjucksPanel.locator('code[data-module="app-scroll-container"]')
+    expect(code).toHaveAttribute('data-app-scroll-container-init')
   })
 })

@@ -1,4 +1,4 @@
-import { test, expect, describe } from '@playwright/test'
+import { test, expect } from '@playwright/test'
 
 test('homepage', async ({ page }) => {
   await page.goto('/')
@@ -13,7 +13,7 @@ test('submit a component is visible', async ({ page }) => {
   await expect(main.getByRole('link', { name: 'Submit a Component' })).toBeVisible()
 })
 
-describe('navigation', () => {
+test.describe('navigation', () => {
   test('menus are collapsed', async ({page}) => {
     await page.goto('/')
     await expect(page.getByRole('link', { name: 'Date picker' })).not.toBeVisible()
