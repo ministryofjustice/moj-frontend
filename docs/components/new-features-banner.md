@@ -3,9 +3,9 @@ title: New features banner
 tabs: true
 status: Experimental
 statusDate: October 2025
-excerpt: ""
-lede: ""
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns
+excerpt: "Use the new features banner to highlight updates to a service."
+lede: "Use the new features banner to highlight updates to a service."
+githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1870
 contributorName: Leigh Christie
 
 ---
@@ -14,7 +14,7 @@ contributorName: Leigh Christie
 {% tab "Overview" %}
 
 <div class="img-container">
-  <img src="/assets/images/submission-1759330464350/New-features-banner.png" alt="new features banner" />
+  <img src="/assets/images/submission-1759330464350/New-features-banner.png" alt="Purple banner with 'New features' in white bold text, a link to 'find out more on the What's new page', and a 'Hide message' link." />
 </div>
 
 ## Overview
@@ -38,7 +38,7 @@ A Figma design has been added for this component. There may be more links and re
 
 ### Figma
 
-If you work for MoJ, [View the ‘new features banner’ component in the MoJ Figma Kit]().
+If you work for MoJ, [View the ‘new features banner’ component in the MoJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=13264-60).
 
 If you work outside MoJ, go to the [MoJ Figma Kit on the Figma community platform](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).
 
