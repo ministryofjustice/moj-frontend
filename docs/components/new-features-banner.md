@@ -3,8 +3,8 @@ title: New features banner
 tabs: true
 status: Experimental
 statusDate: October 2025
-excerpt: "Use the new features banner to highlight updates to a service."
-lede: "Use the new features banner to highlight updates to a service."
+excerpt: "Use the new features banner component to highlight updates to a service, and link to a page with more information."
+lede: "Use the new features banner component to highlight updates to a service, and link to a page with more information."
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1870
 contributorName: Leigh Christie
 
@@ -22,7 +22,7 @@ Banner that appears below the header and above any navigation that allows users 
 
 ### How the component is currently used
 
-It is currently being used in APOP and it is going to be implemented in MPOP soon too, to announce changes to our users in a consistent way.
+It is currently being used in 'Allocate a Person on Probation' (APoP) and it is going to be implemented in 'Manage a Person on Probation' (MPoP) soon too, to announce changes to our users in a consistent way.
 
 ### Contribute to this component
 You can help develop this component by adding information to the [‘new features banner’ Github discussion]({{ githuburl }}). This helps other people to use it in their service.

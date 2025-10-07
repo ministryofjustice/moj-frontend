@@ -5,7 +5,7 @@
     {%- if params.contributorTeam %}
       by {{ params.contributorName | default("someone") }} in ‘{{ params.contributorTeam }}’
     {%- elif params.contributorName %}
-      by {{ contributorName  }}
+      by {{ params.contributorName  }}
     {% endif %}
   {% endif %}
   {%- if params.statusDate %}
