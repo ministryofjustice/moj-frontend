@@ -59,7 +59,7 @@ export default defineConfig({
       use: {
         baseURL: `${process.env.APP_URL}/`,
         ...devices['Desktop Chrome']
-      },
+      }
     }
 
     // {
