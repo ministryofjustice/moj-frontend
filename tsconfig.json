@@ -18,6 +18,9 @@
       "path": "./src/tsconfig.json"
     },
     {
+      "path": "./tests/tsconfig.json"
+    },
+    {
       "path": "./app/tsconfig.json"
     }
   ]
