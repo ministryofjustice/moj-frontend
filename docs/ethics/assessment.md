@@ -6,7 +6,7 @@ lede: Learn how to prepare for service assessments at different phases of delive
 eleventyNavigation:
   key: Preparing for a service assessment
   parent: Ethics
-  order: 40
+  order: 10
   excerpt: "Learn how to prepare for service assessments at different phases of delivery."
 ---
 
