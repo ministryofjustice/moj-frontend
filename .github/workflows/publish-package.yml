@@ -107,25 +107,26 @@ jobs:
       pull-requests: write # to be able to comment on released pull requests
       id-token: write # to enable use of OIDC for npm provenance
 
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: .nvmrc
-      - uses: actions/download-artifact@v4
-        with:
-          name: mojds-package
-          path: package
-      - uses: actions/download-artifact@v4
-        with:
-          name: mojds-dist
-          path: dist
-      - run: npm ci
-      - name: Publish to NPM
-        run: npm run ci:release
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
+
+    # steps:
+    #   - uses: actions/checkout@v4
+    #     with:
+    #       fetch-depth: 0
+    #       persist-credentials: false
+    #   - uses: actions/setup-node@v4
+    #     with:
+    #       node-version-file: .nvmrc
+    #   - uses: actions/download-artifact@v4
+    #     with:
+    #       name: mojds-package
+    #       path: package
+    #   - uses: actions/download-artifact@v4
+    #     with:
+    #       name: mojds-dist
+    #       path: dist
+    #   - run: npm ci
+    #   - name: Publish to NPM
+    #     run: npm run ci:release
+    #     env:
+    #       NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+    #       GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
