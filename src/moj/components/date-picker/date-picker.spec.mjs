@@ -812,6 +812,36 @@ describe('button menu JS API', () => {
       const minDate = dayjs().date(minDay)
 
       new DatePicker(component, {
+        minDate: minDate.format('D/MM/YYYY')
+      })
+
+      calendarButton = screen.getByRole('button', { name: 'Choose date' })
+
+      await user.click(calendarButton)
+
+      const dayButtonsDisabled = range(1, minDay - 1).map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
+
+      const dayButtonsEnabled = range(minDay, lastDayinMonth).map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
+
+      for (const dayButton of dayButtonsDisabled) {
+        expect(dayButton).toHaveAttribute('aria-disabled', 'true')
+      }
+
+      for (const dayButton of dayButtonsEnabled) {
+        expect(dayButton).not.toHaveAttribute('aria-disabled')
+      }
+    })
+
+    test('minDate with leading zero', async () => {
+      const minDay = 3
+      const lastDayinMonth = dayjs().endOf('month').date()
+      const minDate = dayjs().date(minDay)
+
+      new DatePicker(component, {
         minDate: minDate.format('DD/MM/YYYY')
       })
 
