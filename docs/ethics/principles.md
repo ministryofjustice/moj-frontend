@@ -2,8 +2,11 @@
 layout: layouts/content.njk
 subsection: Ethics
 title: Ethical principles
-backLink: /ethics/assessment/
 lede: Learn how to use our ethical principles to prepare for your service assessment.
+eleventyNavigation:
+  key: Ethical principles
+  parent: Ethics
+  order: 20
 ---
 Our ethical design principles are a set of ideals to guide how MoJ services are designed and built over time. 
 
@@ -12,6 +15,12 @@ Although it may not be possible to apply all of the principles, use them as insp
 ## How to use the principles
 
 Your team should run a collaborative session together to review and answer the following questions.
+
+## When to use the principles
+
+Depending on what delivery phase your product is in, you can use the principles to [prepare for a service assessment](/ethics/assessment/).  
+ 
+If your team is not preparing for a service assessment, you can still do a review at any time to reflect on the ethics of your service. Alternatively, you could do an [ethics review](/ethics/review/) instead.
 
 ## The principles
 
