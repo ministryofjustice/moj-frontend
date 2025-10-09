@@ -2,7 +2,7 @@
 layout: layouts/content.njk
 subsection: Ethics
 title: Ethical principles
-lede: Learn how to use our ethical principles to prepare for your service assessment.
+lede: Learn how to use our ethical principles.
 eleventyNavigation:
   key: Ethical principles
   parent: Ethics
@@ -20,7 +20,7 @@ Your team should run a collaborative session together to review and answer the f
 
 Depending on what delivery phase your product is in, you can use the principles to [prepare for a service assessment](/ethics/assessment/).  
  
-If your team is not preparing for a service assessment, you can still do a review at any time to reflect on the ethics of your service. Alternatively, you could do an [ethics review](/ethics/review/) instead.
+If your team is not preparing for a service assessment, you can still use the principles at any time to reflect on the ethics of your service. Alternatively, you could do an [ethics review](/ethics/review/) instead.
 
 ## The principles
 
