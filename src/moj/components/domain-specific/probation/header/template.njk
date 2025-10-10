@@ -100,10 +100,47 @@
             </div>
             {# END USER MENU #}
 
+            {# SERVICES MENU #}
+            <div class="probation-common-header__navigation__item">
+              <button data-qa="probation-common-header__menu-toggle" class="probation-common-header__menu-toggle probation-common-header__services-menu-toggle" aria-controls="probation-common-header-services-menu" aria-expanded="false" data-text-for-show="Show services menu" data-text-for-hide="Hide services menu" type="button" hidden='hidden'>
+                  <span>
+                    <span class='govuk-!-font-size-19 govuk-!-font-weight-bold'>Menu</span>
+                  </span>
+              </button>
+
+              <div class="probation-common-header__icon-link-wrapper probation-common-header__services-menu-link">
+                <a class="probation-common-header__link" href="{{ params.servicesLink }}">
+                    <span>
+                      <span class="govuk-visually-hidden"> Services</span>
+                      <span>Menu</span>
+                    </span>
+                </a>
+              </div>
+            </div>
+            {# END SERVICES MENU #}
+
           </div>
         </div>
       </div>
       {#  END MENU #}
+      {# SERVICES MENU #}
+      <div id="probation-common-header-services-menu" class="probation-common-header__pushdown-menu probation-common-header__services-menu" hidden="hidden">
+        <div class="govuk-width-container">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+              <h3 class="govuk-heading-m">
+                Services
+              </h3>
+              <ul class='govuk-list'>
+                {% for service in params.services %}
+                  <li><a href='{{ service.href }}' class='probation-common-header__submenu-link' target="{{ service.target | default('_self') }}" {% if service.target == '_blank' %}rel="noopener noreferrer"{% endif %}>{{ service.heading }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      {#  END SERVICES MENU #}
     </nav>
   </div>
 </header>
