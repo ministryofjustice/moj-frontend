@@ -314,6 +314,7 @@ export class DatePicker extends ConfigurableComponent {
   setMinAndMaxDatesOnCalendar() {
     if (this.config.minDate) {
       this.minDate = this.formattedDateFromString(this.config.minDate, null)
+      if (this.minDate) this.minDate.setDate(this.minDate.getDate() + 1)
       if (this.minDate && this.currentDate < this.minDate) {
         this.currentDate = this.minDate
       }
@@ -444,7 +445,7 @@ export class DatePicker extends ConfigurableComponent {
     const month = match[3]
     const year = match[4]
 
-    formattedDate = new Date(`${year}-${month}-${day}`)
+    formattedDate = new Date(Number(year), Number(month) - 1, Number(day))
     if (
       formattedDate instanceof Date &&
       Number.isFinite(formattedDate.getTime())
@@ -652,6 +653,11 @@ export class DatePicker extends ConfigurableComponent {
 
     // get the date from the input element
     this.inputDate = this.formattedDateFromString(this.$input.value)
+
+    // move input date to the closest selectable date if it is out of range
+    if (this.minDate && this.minDate > this.inputDate) this.inputDate = new Date(this.minDate)
+    if (this.maxDate && this.maxDate < this.inputDate) this.inputDate = new Date(this.maxDate)
+
     this.currentDate = this.inputDate
     this.currentDate.setHours(0, 0, 0, 0)
 
