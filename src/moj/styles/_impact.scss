@@ -1,0 +1,80 @@
+// Custom styles for 'Impact of the Design System' page
+
+@use "../vendor/govuk-frontend" as *;
+
+.headline-container {
+
+  @include govuk-responsive-margin(6, "bottom");
+
+  & .lead-in {
+    @include govuk-font($size: 24, $weight: normal);
+    margin-bottom: 0;
+
+    & :last-child {
+      @include govuk-responsive-margin(6, "bottom");
+    }
+
+  }
+
+  & .big-number {
+    @include govuk-font($size: 80, $weight: bold);
+    margin-top: 0;
+  }
+  
+  & .medium-number {
+    @include govuk-font($size: 48, $weight: bold);
+    margin-top: 0;
+
+    & .out-of {
+      @include govuk-font($size: 24, $weight: bold);
+      // color: $govuk-secondary-text-colour;
+    }
+
+  }
+
+}
+
+blockquote {
+  // border-left: 4px solid $govuk-border-colour;
+  // padding-left: 20px;
+  
+  @include govuk-font($size: 24, $weight: bold);
+
+  ::before {
+    content: open-quote;
+    font-size: 4rem;
+    line-height: 0;
+    vertical-align: -1.5rem;
+    position: relative;
+    margin-left: -1.75rem;
+    // color: $govuk-border-colour;
+  }
+
+  ::after {
+    content: close-quote;
+    // color: $govuk-border-colour;
+  }
+}
+
+.comma-separated {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline;
+
+  & li {
+    display: inline;
+  }
+
+  & li::after {
+    content: ", ";
+  }
+
+  & li:last-child::after {
+    content: "";
+  }
+}
+
+.footnote {
+  @include govuk-font($size: 14, $weight: normal);
+}
