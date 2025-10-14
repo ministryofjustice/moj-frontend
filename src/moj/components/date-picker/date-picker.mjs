@@ -322,6 +322,7 @@ export class DatePicker extends ConfigurableComponent {
 
     if (this.config.maxDate) {
       this.maxDate = this.formattedDateFromString(this.config.maxDate, null)
+
       if (this.maxDate && this.currentDate > this.maxDate) {
         this.currentDate = this.maxDate
       }
