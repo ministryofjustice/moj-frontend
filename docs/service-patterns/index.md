@@ -1,6 +1,6 @@
 ---
 layout: layouts/content.njk
-title: Adding service patterns to the MoJ Design System
+title: Experimenting with service patterns
 ---
 
 Service patterns are a structured way of describing repeatable user tasks that can be combined to build or shape end-to-end services.
@@ -58,6 +58,6 @@ This list may change.
 
 ## Get involved
 
-You can [email the MOJ team](/help/) to get involved or find out more about our work.
+You can contact the MOJ team at [ServicePatterns@justice.gov.uk](mailto:ServicePatterns@justice.gov.uk) to get involved or find out more about our work.
 
 We welcome feedback from everyone, including from people outside MOJ.
