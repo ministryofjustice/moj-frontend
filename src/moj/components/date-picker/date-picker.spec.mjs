@@ -646,7 +646,7 @@ describe('button menu JS API', () => {
     })
 
     test('future minDate sets currentDate to minDate', () => {
-      const minDate = dayjs().add(1, 'week').startOf('day')
+      const minDate = dayjs().add(1, 'year').startOf('day')
       const datePicker = new DatePicker(component, {
         minDate: minDate.format('D/M/YYYY')
       })
@@ -732,7 +732,7 @@ describe('button menu JS API', () => {
           excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
         })
 
-        // expect(datePicker.excludedDates.length).toEqual(3);
+        expect(datePicker.excludedDates).toHaveLength(3)
         expect(datePicker.excludedDates).toStrictEqual(
           datesToExclude.map((date) => date.toDate())
         )

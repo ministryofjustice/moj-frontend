@@ -314,7 +314,6 @@ export class DatePicker extends ConfigurableComponent {
   setMinAndMaxDatesOnCalendar() {
     if (this.config.minDate) {
       this.minDate = this.formattedDateFromString(this.config.minDate, null)
-      if (this.minDate) this.minDate.setDate(this.minDate.getDate() + 1)
       if (this.minDate && this.currentDate < this.minDate) {
         this.currentDate = this.minDate
       }
@@ -322,7 +321,6 @@ export class DatePicker extends ConfigurableComponent {
 
     if (this.config.maxDate) {
       this.maxDate = this.formattedDateFromString(this.config.maxDate, null)
-
       if (this.maxDate && this.currentDate > this.maxDate) {
         this.currentDate = this.maxDate
       }
@@ -654,10 +652,16 @@ export class DatePicker extends ConfigurableComponent {
 
     // get the date from the input element
     this.inputDate = this.formattedDateFromString(this.$input.value)
-
-    // move input date to the closest selectable date if it is out of range
-    if (this.minDate && this.minDate > this.inputDate) this.inputDate = new Date(this.minDate)
-    if (this.maxDate && this.maxDate < this.inputDate) this.inputDate = new Date(this.maxDate)
+    // move current date to the closest selectable date if it is out of range
+    if (this.minDate && this.minDate > this.inputDate) {
+      this.inputDate = new Date(this.minDate.getTime())
+    }
+    if (this.maxDate && this.maxDate < this.inputDate) {
+      this.inputDate = new Date(this.maxDate.getTime())
+    }
+    if (this.minDate && this.maxDate && this.minDate > this.maxDate) {
+      console.error('min date is after max date. No dates will be selectable')
+    }
 
     this.currentDate = this.inputDate
     this.currentDate.setHours(0, 0, 0, 0)
