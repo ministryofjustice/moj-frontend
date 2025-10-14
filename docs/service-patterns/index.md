@@ -13,9 +13,9 @@ MOJ is collaborating with other UK government departments to explore the potenti
 
 A cross-government working group has published 2 ‘proof of concepts’ for service patterns that could work across the UK public sector. You can view them and provide feedback:
 
-[Apply service pattern](https://design-patterns.service.justice.gov.uk/service-patterns/apply/)
+[Apply service pattern](/service-patterns/apply/)
 
-[Appointments service pattern](https://design-patterns.service.justice.gov.uk/service-patterns/appointment/)
+[Appointments service pattern](/service-patterns/appointment/)
 
 ## The parts of a service pattern
 
