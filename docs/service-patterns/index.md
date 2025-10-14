@@ -56,7 +56,7 @@ We’ve identified 9 potential service patterns at MOJ:
 
 This list may change.
 
-## Get involved
+## Get involved
 
 You can [email the MOJ team](/help/) to get involved or find out more about our work.
 
