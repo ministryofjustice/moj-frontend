@@ -19,25 +19,33 @@ The building block statuses are:
 - Official
 - Archived
 
-The Design System team is working to bring everything to the ‘official’ status. They may also be archived.
-
 ## ‘Experimental’ status <span class="govuk-tag govuk-tag--experimental" style="vertical-align:middle;" aria-hidden="true">Experimental</span>
 
-Building blocks with an ‘experimental’ status are early in development. They may not have been accessibility tested or considered for use beyond a particular service.
+The ‘experimental‘ status launched in September 2025, starting with components. Components that were submitted before then will be added to the Design System and given this status.
 
-They can be anything from a screenshot with very brief documentation, to something more developed (with code and a Figma design). They'll have had only a brief sense check after being submitted to the Design System.
+Experimental building blocks:
 
-‘Experimental’ status building blocks should only be used in alpha and beta phases.
+- are early in development
+- may not have been accessibility tested or considered for use beyond a particular service
+- can be anything from a screenshot with brief documentation, to something more developed (with code and a Figma design)
 
-Once they've been added to the Design System, teams can experiment with them and share findings in the [Github discussions](https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns). These feedback will be used to make improvements to the building blocks based.  
+Anyone at MoJ can submit one. They're given a very brief sense check by the Design System team before being published.
 
-The experimental status launched in September 2025, starting with components. Previously contributed components will be added to the Design System and given this status. Find out [how to submit a component](/contribute/add-new-component/start).
+Find out [how to submit an experimental component](/contribute/add-new-component/start). View an example of an experimental building block: the [new features banner component](/components/new-features-banner).
+
+### How to use
+
+‘Experimental’ building blocks should not be used in a live service, unless they were used in the alpha or beta phase and tested well.
+
+Teams are encouraged to experiment with them and share findings in the [Github discussions](https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns). This feedback will be used to improve them.
 
 ## ‘To be reviewed’ status <span class="govuk-tag govuk-tag--orange"  style="vertical-align:middle;" aria-hidden="true">To be reviewed</span>
 
-Building blocks with a ‘to be reviewed’ status were added for use by everyone at MoJ, possibly a long time ago.
+Building blocks with a ‘to be reviewed’ status were added for use by everyone at MoJ, possibly a long time ago. They've not been reviewed recently and the work to develop them is not known.
 
-They have not been reviewed recently and the work to develop them is not known.
+### How to use
+
+‘To be reviewed’ building blocks can be used in every product phase. The Design System team is working to bring them all to the ‘official’ status.  
 
 ## ‘Official’ status <span class="govuk-tag govuk-tag--green"  style="vertical-align:middle;" aria-hidden="true">Official</span>
 
@@ -45,10 +53,14 @@ When an ‘experimental’ or ‘to be reviewed’ building block gets a full re
 
 This review includes an organisation-wide discovery and multi-disciplinary team input (including accessibility testing). Usage is thoroughly documented.
 
-‘Official’ status building blocks can be used in every product phase. They’ll be supported and maintained in the long-term.
+### How to use
+
+‘Official’ status building blocks can be used in every product phase. They’ll be supported and maintained in the long term.
 
 ## ‘Archived’ status <span class="govuk-tag govuk-tag--grey"  style="vertical-align:middle;" aria-hidden="true">Archived</span>
 
-Building blocks with an 'archived' status are no longer being supported and should not be used.
+A building block is archived when it's no longer needed. This is usually because the need has been met by the [GOV.UK Design System](https://design-system.service.gov.uk/) (which we do not want to duplicate).
 
-They have been archived because they're no longer needed. This is usually because the need has been met by the [GOV.UK Design System](https://design-system.service.gov.uk/) (which we do not want to duplicate).
+### How to use
+
+Building blocks with an 'archived' status should not be used and are no longer being supported.
