@@ -6,14 +6,10 @@
 
   @include govuk-responsive-margin(6, "bottom");
 
-  & .lead-in {
-    @include govuk-font($size: 24, $weight: normal);
+  & .lead {
+    @include govuk-font($size: 24, $weight: bold);
+    margin-top: 0;
     margin-bottom: 0;
-
-    & :last-child {
-      @include govuk-responsive-margin(6, "bottom");
-    }
-
   }
 
   & .big-number {
@@ -35,24 +31,21 @@
 }
 
 blockquote {
-  // border-left: 4px solid $govuk-border-colour;
-  // padding-left: 20px;
   
-  @include govuk-font($size: 24, $weight: bold);
+  @include govuk-font($size: 24, $weight: normal);
+  @include govuk-responsive-margin(7, "top");
+  margin-left: govuk-spacing(9);
 
-  ::before {
+  &:before {
     content: open-quote;
     font-size: 4rem;
     line-height: 0;
-    vertical-align: -1.5rem;
-    position: relative;
+    vertical-align: -1.25rem;
     margin-left: -1.75rem;
-    // color: $govuk-border-colour;
   }
 
-  ::after {
+  &:after {
     content: close-quote;
-    // color: $govuk-border-colour;
   }
 }
 
@@ -75,6 +68,18 @@ blockquote {
   }
 }
 
+.callout-card {
+  padding: govuk-spacing(5);
+  padding-left: govuk-spacing(5) + 4px;
+  background-color: govuk-colour("white");
+  border-left: 4px solid $govuk-border-colour;
+  height: 100%;
+}
+
 .footnote {
   @include govuk-font($size: 14, $weight: normal);
+}
+
+h2 {
+  @include govuk-responsive-margin(5, "bottom");
 }

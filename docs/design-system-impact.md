@@ -10,16 +10,56 @@ eleventyNavigation:
   excerpt: "xxx."
 ---
 
+<!-- Updated date -->
+  {% set lastUpdated = "XX October 2025" %}
+
+<!-- User satisfaction -->
+  {% set overallSatisfaction = 3.8 %}
+  {% set easeOfUse = 4 %}
+  {% set supportSatisfaction = 4.3 %}
+  {% set outOf = 5 %}
+
+<!-- Adoption and sentiment -->
+  {% set useFrequency = 83 %}
+  {% set improvement = 50 %}
+
+<!-- Achievements this quarter -->
+
+  {% set componentsArchived = 0 %}
+  {% set componentsImproved = 2 %}
+  {% set componentsAdded = 6 %}
+
+<!-- Total components BEFORE these changes -->
+  {% set totalComponents = 24 %} 
+
+<!-- Prefix for change in available components -->
+  {% if (componentsAdded - componentsArchived) > 0 %}
+  {% set prefix = "+" %}
+  {% else %}
+  {% set prefix = "" %}
+  {% endif %}
+
+<!-- Percentage change in available components -->
+  {% set changeAvailableComponents = (((componentsAdded - componentsArchived) / totalComponents) * 100) | round(1) %}
+  {% set changeImprovedComponents = ((componentsImproved / totalComponents) * 100) | round(1) %}
+
+
+
+
+
+<p>
+  Last updated: {{ lastUpdated }}
+</p>
+
+<hr style="border:none">
+
 ## Additional spend avoided
 
-<div class="headline-container">
-  <!-- <p class="lead-in">
-    Without the Design System, the MOJ would have spent an estimated
-  </p> -->
+<div class="headline-container callout-card">
   <span class="big-number">
     £12.4M
   </span>
-  <p class="lead-in">
+  <p class="lead">
     additional spending has been avoided to date through teams using components from the MOJ Design System.
   </p>
 </div>
@@ -39,42 +79,40 @@ eleventyNavigation:
 
 <hr style="border:none">
 
-<!-- ### How this was calculated
-
-**£5,000** is the average cost of developing a reusable component.
-
-**2,481** is the amount of times components are used in live MOJ services.
-
-Multiplied, this tells us that an additional **£12.4M** would have been spent on making components on a per-service basis, if the Design System did not exist. -->
-
 ## The impact on people
 
 ### User satisfaction
 
 <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5">
   <div class="headline-container govuk-grid-column-one-third">
-    <span class="medium-number">
-      3.8<span class="out-of">/5</span>
-    </span>
-    <p class="lead-in">
-      overall satisfaction
-    </p>
+    <div class="callout-card">
+      <span class="medium-number">
+        {{ overallSatisfaction }}<span class="out-of">/{{ outOf }}</span>
+      </span>
+      <p class="govuk-!-margin-bottom-0">
+        overall satisfaction
+      </p>
+    </div>
   </div>
   <div class="headline-container govuk-grid-column-one-third">
-    <span class="medium-number">
-      4<span class="out-of">/5</span>
-    </span>
-    <p class="lead-in">
-      ease of use
-    </p>
+    <div class="callout-card">
+      <span class="medium-number">
+        {{ easeOfUse }}<span class="out-of">/{{ outOf }}</span>
+      </span>
+      <p class="govuk-!-margin-bottom-0">
+        ease of use
+      </p>
+    </div>
   </div>
   <div class="headline-container govuk-grid-column-one-third">
-    <span class="medium-number">
-      4.3<span class="out-of">/5</span>
-    </span>
-    <p class="lead-in">
-      support satisfaction
-    </p>
+    <div class="callout-card">
+      <span class="medium-number">
+        {{ supportSatisfaction }}<span class="out-of">/{{ outOf }}</span>
+      </span>
+      <p class="govuk-!-margin-bottom-0">
+        support satisfaction
+      </p>
+    </div>
   </div>
 </div>
 
@@ -82,20 +120,24 @@ Multiplied, this tells us that an additional **£12.4M** would have been spent o
 
 <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5">
   <div class="headline-container govuk-grid-column-one-third">
-    <span class="medium-number">
-      83%
-    </span>
-    <p class="lead-in">
-      of users asked use the MOJ Design System daily, or a few times a week.
-    </p>
+    <div class="callout-card">
+      <span class="medium-number">
+        {{ useFrequency }}%
+      </span>
+      <p class="govuk-!-margin-bottom-0">
+        asked use the MOJ Design System daily, or a few times a week.
+      </p>
+    </div>
   </div>
   <div class="headline-container govuk-grid-column-two-thirds">
-    <span class="medium-number">
-      50%
-    </span>
-    <p class="lead-in">
-      of users asked strongly agreed that the MOJ Design System saves them time and improves the quality of their work, and makes services more consistent and accessible.
-    </p>
+    <div class="callout-card">
+      <span class="medium-number">
+        {{ improvement }}%
+      </span>
+      <p class="govuk-!-margin-bottom-0">
+        asked strongly agreed that the MOJ Design System saves them time and improves the quality of their work, and makes services more consistent and accessible.
+      </p>
+    </div>
   </div>
 </div>
 
@@ -103,56 +145,53 @@ Multiplied, this tells us that an additional **£12.4M** would have been spent o
 
 Users of the Design System were asked what they would like to see more of.
 
-> For departments to collaborate when there's similar component and
-share research
+<blockquote>For departments to collaborate [...] and
+share research</blockquote>
 
-> Making visible the research and data that fed into the component and
-what services are using it
+<blockquote>Making visible the research and data that fed into the component and
+what services are using it</blockquote>
 
-> More components and patterns
+<blockquote>More components and patterns</blockquote>
 
 <hr style="border:none">
 
 ## Achievements this quarter
 
-### Product
+<div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5">
+  <div class="headline-container govuk-grid-column-full">
 
-<p>Anyone at MOJ can now add an 'experimental' component to the Design System, making it
-quicker to deliver value. [Average value of an individual component]?​
+### Product improvements
+
+<div class="headline-container callout-card">
+  <p class="lead">
+    Anyone at MOJ can now <a href="/contribute/add-new-component/start">submit a component</a> and see it in the Design System within 10 days.
+  </p>
+</div>
 
 ### Components
 
 <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5">
-  <div class="headline-container govuk-grid-column-one-third">
-    <span class="medium-number">
-      6
-    </span>
-    <p class="lead-in">
-      <strong>components added</strong>
-    </p>
-    <p>a XX% increase in reusable components</p>
+  <div class="headline-container govuk-grid-column-one-half">
+    <div class="callout-card">
+      <span class="medium-number">      
+        {{ prefix }}{{ changeAvailableComponents }}%
+      </span>
+      <p>
+        <strong>change in components available</strong>
+      </p>
+      <p class="govuk-!-margin-bottom-0">({{ componentsAdded }} components added, {{ componentsArchived }} components archived)</p>
+    </div>
   </div>
-
-  <div class="headline-container govuk-grid-column-one-third">
-    <span class="medium-number">
-      2
-    </span>
-    <p class="lead-in">
-      <strong>components improved</strong>
-    </p>
-    <p>a XX% increase in high-standard reusable components</p>
-  </div>
-
-  <div class="headline-container govuk-grid-column-one-third">
-    <span class="medium-number">
-      0
-    </span>
-    <p class="lead-in">
-      <strong>components archived</strong>
-    </p>
-    <p>
-      a XX% reduction in redundant components
-    </p>
+  <div class="headline-container govuk-grid-column-one-half">
+    <div class="callout-card">
+      <span class="medium-number">
+        +{{ changeImprovedComponents }}%
+      </span>
+      <p>
+        <strong>increase in components improved</strong>
+      </p>
+      <p class="govuk-!-margin-bottom-0">({{ componentsImproved }} components improved to 'Official' status)</p>
+    </div>
   </div>
 </div>
 
@@ -164,8 +203,8 @@ The Design System is used by multiple other public sector organisations, includi
 
 <ul class="comma-separated govuk-body">
   <li><a href="https://www.gov.uk/government/organisations/department-for-energy-security-and-net-zero">DESNZ</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/central-digital-and-data-office">CDDO</a></li>  <!-- Central Digital & Data Office (merged) :contentReference[oaicite:0]{index=0} -->
-  <li><a href="https://www.gov.uk/government/organisations/civil-service-hr">Civil Service HR</a></li>  <!-- replaced by Government People Group :contentReference[oaicite:1]{index=1} -->
+  <li><a href="https://www.gov.uk/government/organisations/central-digital-and-data-office">CDDO</a></li>
+  <li><a href="https://www.gov.uk/government/organisations/civil-service-hr">Civil Service HR</a></li>
   <li><a href="https://www.gov.uk/government/organisations/companies-house">Companies House</a></li>
   <li><a href="https://www.gov.uk/government/organisations/crown-prosecution-service">Crown Prosecution Service</a></li>
   <li><a href="https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs">DEFRA</a></li>
@@ -174,16 +213,16 @@ The Design System is used by multiple other public sector organisations, includi
   <li><a href="https://www.gov.uk/government/organisations/department-for-work-pensions">DWP</a></li>
   <li><a href="https://www.gov.uk/government/organisations/hm-courts-and-tribunals-service">HMCTS</a></li>
   <li><a href="https://www.gov.uk/government/organisations/land-registry">HMLR</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/judicial-appointments-commission">Judicial Appointments Commission UK</a></li>  <!-- JAC :contentReference[oaicite:2]{index=2} -->
+  <li><a href="https://www.gov.uk/government/organisations/judicial-appointments-commission">Judicial Appointments Commission UK</a></li>
   <li><a href="https://www.gov.uk/government/organisations/ministry-of-housing-communities-and-local-government">MHCLG</a></li>
   <li><a href="https://www.gov.uk/government/organisations/nhs-business-services-authority">NHS Business Services Authority</a></li>
   <li><a href="https://digital.nhs.uk/">NHS Digital</a></li>
   <li><a href="https://www.gov.uk/government/organisations/ofqual">Ofqual</a></li>
   <li><a href="https://www.gov.uk/government/organisations/planning-inspectorate">Planning Inspectorate</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/skills-funding-agency">Skills Funding Agency</a></li>  <!-- Note: SFA replaced by ESFA, now functions merged into DfE :contentReference[oaicite:3]{index=3} -->
+  <li><a href="https://www.gov.uk/government/organisations/skills-funding-agency">Skills Funding Agency</a></li>
   <li><a href="https://www.gov.uk/government/organisations/the-pensions-regulator">The Pensions Regulator</a></li>
   <li><a href="https://www.gov.uk/government/organisations/uk-export-finance">UK Export Finance</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/office-for-equality-and-opportunity">UK Government Office for Equality and Opportunity</a></li>  <!-- formerly Equality Hub / Government Equalities Office :contentReference[oaicite:4]{index=4} -->
+  <li><a href="https://www.gov.uk/government/organisations/office-for-equality-and-opportunity">UK Government Office for Equality and Opportunity</a></li>
   <li><a href="https://www.gov.uk/government/organisations/uk-space-agency">UK Space Agency</a></li>
 </ul>
 
