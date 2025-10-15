@@ -1,0 +1,5 @@
+{
+  "componentName": "Submission banner",
+  "componentOverview": "A banner that helps users to know that something has been submitted.\r\n\r\n",
+  "howIsTheComponentUsed": "For partial referrals.\r\n\r\n"
+}
