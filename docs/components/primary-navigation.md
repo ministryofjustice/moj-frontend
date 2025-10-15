@@ -22,6 +22,10 @@ You must only include links to top level sections within your service.
 
 Do not put calls to action in the primary navigation. For example, ‘Create case’ should be an action from within the ‘cases’ section and not a link inside the primary navigation.
 
+### New or unread items
+
+You can use the [notification badge component](/components/notification-badge/) to show that there are new or unread items in the sections.
+
 ### Inline search
 
 If your service can search anything, use an inline search form.
