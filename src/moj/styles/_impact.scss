@@ -3,7 +3,6 @@
 @use "../vendor/govuk-frontend" as *;
 
 .headline-container {
-
   @include govuk-responsive-margin(6, "bottom");
 
   & .lead {
@@ -16,7 +15,7 @@
     @include govuk-font($size: 80, $weight: bold);
     margin-top: 0;
   }
-  
+
   & .medium-number {
     @include govuk-font($size: 48, $weight: bold);
     margin-top: 0;
@@ -25,35 +24,32 @@
       @include govuk-font($size: 24, $weight: bold);
       // color: $govuk-secondary-text-colour;
     }
-
   }
-
 }
 
 blockquote {
-  
   @include govuk-font($size: 24, $weight: normal);
   @include govuk-responsive-margin(7, "top");
   margin-left: govuk-spacing(9);
 
-  &:before {
+  &::before {
     content: open-quote;
+    margin-left: -1.75rem;
     font-size: 4rem;
     line-height: 0;
     vertical-align: -1.25rem;
-    margin-left: -1.75rem;
   }
 
-  &:after {
+  &::after {
     content: close-quote;
   }
 }
 
 .comma-separated {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: inline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
   & li {
     display: inline;
@@ -69,11 +65,11 @@ blockquote {
 }
 
 .callout-card {
+  height: 100%;
   padding: govuk-spacing(5);
   padding-left: govuk-spacing(5) + 4px;
-  background-color: govuk-colour("white");
   border-left: 4px solid $govuk-border-colour;
-  height: 100%;
+  background-color: govuk-colour("white");
 }
 
 .footnote {

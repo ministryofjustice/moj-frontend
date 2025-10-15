@@ -3,110 +3,110 @@
     "prod_usage": 35.80851064,
     "hours_saved": 358.0851064,
     "money_saved": 179042.5532
-},
+  },
   "badge": {
     "prod_usage": 204.9220779,
     "hours_saved": 2049.220779,
     "money_saved": 1024610.39
-},
+  },
   "button_menu": {
     "prod_usage": 109.515,
     "hours_saved": 1095.15,
     "money_saved": 547575
-},
+  },
   "date_picker": {
     "prod_usage": 65.80645161,
     "hours_saved": 658.0645161,
     "money_saved": 329032.2581
-},
+  },
   "filter": {
     "prod_usage": 113.92,
     "hours_saved": 1139.2,
     "money_saved": 569600
-},
+  },
   "header": {
     "prod_usage": 184.73,
     "hours_saved": 1847.3,
     "money_saved": 923650
-},
+  },
   "identity_bar": {
     "prod_usage": 428.5774648,
     "hours_saved": 4285.774648,
     "money_saved": 2142887.324
-},
+  },
   "interruption_card": {
     "prod_usage": 8.925619835,
     "hours_saved": 89.25619835,
     "money_saved": 44628.09917
-},
+  },
   "messages": {
     "prod_usage": 6,
     "hours_saved": 60,
     "money_saved": 30000
-},
+  },
   "multi_file_upload": {
     "prod_usage": 9,
     "hours_saved": 90,
     "money_saved": 45000
-},
+  },
   "multi_select": {
     "prod_usage": 12.69,
     "hours_saved": 126.9,
     "money_saved": 63450
-},
+  },
   "notification_badge": {
     "prod_usage": 13.72477064,
     "hours_saved": 137.2477064,
     "money_saved": 68623.85321
-},
+  },
   "oranisation_switcher": {
     "prod_usage": 4.404255319,
     "hours_saved": 44.04255319,
     "money_saved": 22021.2766
-},
+  },
   "page_header_actions": {
     "prod_usage": 95.115,
     "hours_saved": 951.15,
     "money_saved": 475575
-},
+  },
   "pagination": {
     "prod_usage": 212.995,
     "hours_saved": 2129.95,
     "money_saved": 1064975
-},
+  },
   "primary_navigation": {
     "prod_usage": 64.08,
     "hours_saved": 640.8,
     "money_saved": 320400
-},
+  },
   "scrollable_pane": {
     "prod_usage": 51.45,
     "hours_saved": 514.5,
     "money_saved": 257250
-},
+  },
   "search": {
     "prod_usage": 87.89,
     "hours_saved": 878.9,
     "money_saved": 439450
-},
+  },
   "side_navigation": {
     "prod_usage": 92.2,
     "hours_saved": 922,
     "money_saved": 461000
-},
+  },
   "sub_navigation": {
     "prod_usage": 543.6,
     "hours_saved": 5436,
     "money_saved": 2718000
-},
+  },
   "ticket_panel": {
     "prod_usage": 40.50847458,
     "hours_saved": 405.0847458,
     "money_saved": 202542.3729
-},
+  },
   "timeline": {
     "prod_usage": 94.8757764,
     "hours_saved": 948.757764,
     "money_saved": 474378.88
- }
+  }
 }
