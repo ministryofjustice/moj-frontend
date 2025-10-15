@@ -1,33 +1,32 @@
-<nav class="moj-pagination {{- " " + params.classes if params.classes}}" aria-label="Pagination navigation">
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+{% set govukItems = [] %}
 
-  <ul class="moj-pagination__list">
-    {%- if params.previous %}
-      <li class="moj-pagination__item  moj-pagination__item--prev">
-        <a class="moj-pagination__link" href="{{ params.previous.href }}">{{ params.previous.text }}<span class="govuk-visually-hidden"> page</span></a>
-      </li>
-    {% endif -%}
+{%- for item in params.items %}
+  {% if item.type === "dots" %}
+    {% set govukItem = {
+     "ellipsis": true
+    } %}
+  {% else %}
+    {% set govukItem = {
+    "number": item.text,
+    "href": item.href,
+    "current": item.selected
+    } %}
+  {% endif %}
+  {% set govukItems = govukItems.concat(govukItem) %}
+{% endfor %}
 
-    {%- for item in params.items %}
-      {%- if item.type == "dots" %}
-        <li class="moj-pagination__item moj-pagination__item--dots">…</li>
-      {% else %}
-        {%- if item.selected %}
-          <li class="moj-pagination__item moj-pagination__item--active" aria-label="Page {{ item.text }} of {{ (params.items | last).text }}" aria-current="page">{{ item.text }}</li>
-        {% else %}
-          <li class="moj-pagination__item"><a class="moj-pagination__link" href="{{ item.href }}" aria-label="Page {{ item.text }} of {{ (params.items | last).text }}">{{ item.text }}</a></li>
-        {% endif -%}
-      {% endif -%}
-    {% endfor -%}
+<div class="moj-pagination " aria-label="Pagination navigation">
 
-    {%- if params.next %}
-      <li class="moj-pagination__item  moj-pagination__item--next">
-        <a class="moj-pagination__link" href="{{ params.next.href }}">{{ params.next.text }}<span class="govuk-visually-hidden"> page</span></a>
-      </li>
-    {% endif -%}
-  </ul>
+{{ govukPagination({
+  items: govukItems,
+  previous: params.previous,
+  next: params.next,
+  classes: "moj-pagination__pagination " + (params.classes if params.classes)
+  })
+}}
 
   {%- if params.results %}
     <p class="moj-pagination__results">Showing <b>{{ params.results.from }}</b> to <b>{{ params.results.to }}</b> of <b>{{params.results.count}}</b> {{ params.results.text | default("results") }}</p>
   {% endif -%}
-
-</nav>
+</div>

@@ -9,18 +9,15 @@
     // Alignment adjustments
     margin-left: - govuk-spacing(1);
 
-    // Hide whitespace between elements
-    font-size: 0;
-
-    // Trick to remove the need for floats
-    text-align: justify;
-
-    &::after {
-      content: "";
-      display: inline-block;
-      width: 100%;
-    }
+    display: flex;
+    justify-content: space-between;
+      align-items: center;
+    margin-bottom: govuk-spacing(6);
   }
+}
+
+.moj-pagination__pagination {
+  margin-bottom: 0;
 }
 
 .moj-pagination__list {
