@@ -26,6 +26,10 @@ The component can be configured to group navigation items into sections
 
 {% example template="/examples/side-navigation-sections", height=480 %}
 
+### New or unread items
+
+You can use the [notification badge component](/components/notification-badge/) to show that there are new or unread items in the sub sections.
+
 ## Accessibility issues
 
 By default, the section headings use the H4 heading size. This can create an illogical structure if higher heading levels are missing from the page. For some assistive technology users that navigate using heading structures this may cause difficulties.
