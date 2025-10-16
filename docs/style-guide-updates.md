@@ -6,3 +6,8 @@ backLink: /content-standards/style-guide/
 lede: 'New and updated entries in the <a href="/content-standards/style-guide/">MoJ content style guide</a>.'
 ---
 
+title: probation practitioner
+anchor: probation-practitioner
+type: updated
+date: 2025-10-16
+---
