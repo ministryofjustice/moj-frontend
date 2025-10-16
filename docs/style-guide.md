@@ -16,7 +16,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 29 August 2025
+Last updated: 16 October 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -462,9 +462,11 @@ The initialism PDU is generally well-understood and used on its own in existing 
 
 When writing the phrase in full, use sentence case: probation delivery unit.
 
-<h3 class="govuk-heading-m" id="probation-practitioner">probation practitioner</h3>
+### probation practitioner
 
-This is better than 'community offender manager (COM)' and 'prison offender manager (POM)', although someone may have this job title. Refers to a probation officer, probation services officer or senior probation officer.
+This refers to a broad range of roles in the Probation Service, such as probation officers, probation services officers, senior probation officers and probation POMs.
+
+If you need to be more specific, you should consider using community probation practitioner or probation POM.
 
 {% endaccordionSection %}
 {% accordionSection "R" %}
