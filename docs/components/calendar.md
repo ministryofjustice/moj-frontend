@@ -59,24 +59,9 @@ Accessibility findings have been added for this component. There may be more fin
 ### External audit
 
 * Conducted by: User Vision
-* Date: 1 April 2011
+* Date: 8 October 2024
 
 #### Audit findings
-
-No issues discovered
-### Internal review
-
-* By: MoJ accessibility team
-* Date: 1 April 2011
-
-#### Review findings
-
-No issues discovered. This wasn't an official audit, we worked with the accessibility team and they reviewed the component and provided feedback.
-### Assistive Technology testing
-
-Date: 1 April 2011
-
-#### Testing details
 
 No issues discovered
 
