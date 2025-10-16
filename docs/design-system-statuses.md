@@ -33,7 +33,7 @@ Anyone at MoJ can submit one. They're given a very brief sense check by the Desi
 
 Find out [how to submit an experimental component](/contribute/add-new-component/start). View an example of an experimental building block: the [new features banner component](/components/new-features-banner).
 
-### How to use
+### How to use ‘experimental’ building blocks
 
 ‘Experimental’ building blocks should not be used in a live service, unless they were used in the alpha or beta phase and tested well.
 
@@ -43,7 +43,7 @@ Teams are encouraged to experiment with them and share findings in the [Github d
 
 Building blocks with a ‘to be reviewed’ status were added for use by everyone at MoJ, possibly a long time ago. They've not been reviewed recently and the work to develop them is not known.
 
-### How to use
+### How to use ‘to be reviewed’ building blocks
 
 ‘To be reviewed’ building blocks can be used in every product phase. The Design System team is working to bring them all to the ‘official’ status.  
 
@@ -53,7 +53,7 @@ When an ‘experimental’ or ‘to be reviewed’ building block gets a full re
 
 This review includes an organisation-wide discovery and multi-disciplinary team input (including accessibility testing). Usage is thoroughly documented.
 
-### How to use
+### How to use ‘official’ building blocks
 
 ‘Official’ status building blocks can be used in every product phase. They’ll be supported and maintained in the long term.
 
@@ -61,6 +61,6 @@ This review includes an organisation-wide discovery and multi-disciplinary team 
 
 A building block is archived when it's no longer needed. This is usually because the need has been met by the [GOV.UK Design System](https://design-system.service.gov.uk/) (which we do not want to duplicate).
 
-### How to use
+### How to use ‘archived’ building blocks
 
-Building blocks with an 'archived' status should not be used and are no longer being supported.
+Building blocks with an 'archived' status should not be used. They are no longer being supported.
