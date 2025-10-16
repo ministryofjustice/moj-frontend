@@ -406,6 +406,16 @@ Always use 'preferred name', not 'working name' as it's called in NOMIS.
 
 An identity number assigned to a person in the Police National Computer (PNC). Use ‘PNC number’. This is more well known than the full version.
 
+### POM
+
+This refers to prison offender managers, who work with most people in prison during their time in custody.
+
+There are 2 types:
+- probation POMs – qualified probation practitioners employed by the Probation Service
+- prison POMs – employed by HM Prison Service
+
+While the term community probation practitioner has generally replaced COM, there's no similar alternative to POM. The abbreviation POM is commonly understood in prisons and the Probation Service.
+
 ### post-sentence supervision (PSS)
 
 Post-sentence supervision is a period of supervision in the community that follows a prison sentence.
