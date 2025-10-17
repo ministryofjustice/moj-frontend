@@ -44,6 +44,7 @@ const {
 const {
   sendSubmissionEmail,
   sendPrEmail,
+  sendSuccessEmail,
   sendVerificationEmail
 } = require('../middleware/notify-email')
 const {
@@ -477,6 +478,7 @@ router.post(
       const pr = await createPullRequest(branchName, title, description)
       const issue = await createReviewIssue(pr, detailsForPrEmail)
       await sendPrEmail(pr, issue, detailsForPrEmail)
+      await sendSuccessEmail(detailsForPrEmail)
     } catch (error) {
       console.error('[FORM SUBMISSION] Error sending submission:', error)
       await sendSubmissionEmail(sessionText, markdownContent)
