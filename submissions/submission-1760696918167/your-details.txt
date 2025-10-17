@@ -1,0 +1,9 @@
+{
+  "fullName": "Stefanopolous Brierley-Smith",
+  "teamName": "The best team",
+  "shareYourDetails": [
+    "",
+    "addNameToComponentPage",
+    "addTeamNameToComponentPage"
+  ]
+}
