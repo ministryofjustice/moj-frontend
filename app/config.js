@@ -5,6 +5,7 @@ const config = {
   GITHUB_REPO_NAME: process.env.GITHUB_REPO_NAME || 'your-default-repo-name',
   NOTIFY_PR_TEMPLATE: process.env.NOTIFY_PR_TEMPLATE || '',
   NOTIFY_SUBMISSION_TEMPLATE: process.env.NOTIFY_SUBMISSION_TEMPLATE || '',
+  NOTIFY_SUCCESS_TEMPLATE: process.env.NOTIFY_SUCCESS_TEMPLATE || '',
   NOTIFY_VERIFICATION_TEMPLATE: process.env.NOTIFY_VERIFICATION_TEMPLATE || '',
   NOTIFY_EMAIL: process.env.NOTIFY_EMAIL || 'your-email',
   NOTIFY_TOKEN: process.env.NOTIFY_TOKEN || 'your-default-repo-token',

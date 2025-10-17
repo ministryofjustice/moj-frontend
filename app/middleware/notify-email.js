@@ -4,6 +4,7 @@ const {
   NOTIFY_TOKEN,
   NOTIFY_PR_TEMPLATE,
   NOTIFY_SUBMISSION_TEMPLATE,
+  NOTIFY_SUCCESS_TEMPLATE,
   NOTIFY_VERIFICATION_TEMPLATE,
   NOTIFY_EMAIL,
   NOTIFY_EMAIL_RETRY_MS,
@@ -92,6 +93,23 @@ const sendPrEmail = async (pr, issue, contactDetails) => {
   return sendEmail(NOTIFY_PR_TEMPLATE, dsTeamEmail, personalisation)
 }
 
+const sendSuccessEmail = async (contactDetails) => {
+  const { componentName, email, name } = contactDetails
+  const personalisation = {}
+
+  if (componentName) {
+    personalisation.component_name = componentName
+  }
+  if (email) {
+    personalisation.email = email
+  }
+  if (name) {
+    personalisation.name = name.split(' ').at(0) || 'contributor'
+  }
+
+  return sendEmail(NOTIFY_SUCCESS_TEMPLATE, email, personalisation)
+}
+
 const sendVerificationEmail = async (email, token) => {
   const personalisation = {}
   personalisation.token_link = `${APP_URL}/contribute/add-new-component/email/verify/${token}`
@@ -113,7 +131,8 @@ const handleEmailError = (error) => {
 }
 
 module.exports = {
-  sendSubmissionEmail,
   sendPrEmail,
+  sendSubmissionEmail,
+  sendSuccessEmail,
   sendVerificationEmail
 }
