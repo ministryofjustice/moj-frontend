@@ -1,0 +1,10 @@
+{
+  "fullName": "Steve Smith",
+  "emailAddress": "test@test.com",
+  "teamName": "The A Team",
+  "shareYourDetails": [
+    "",
+    "addNameToComponentPage",
+    "addTeamNameToComponentPage"
+  ]
+}
