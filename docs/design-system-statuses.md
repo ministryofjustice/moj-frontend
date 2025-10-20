@@ -2,7 +2,7 @@
 layout: layouts/content.njk
 subsection: About the Design System
 title: Building block statuses
-lede: Every building block on the MoJ Design System has a status. Learn more about what this means and how to use them.
+lede: Every building block on the MOJ Design System has a status. Learn more about what this means and how to use them.
 eleventyNavigation:
   key: Building block statuses
   parent: About the Design System
@@ -29,7 +29,7 @@ Experimental building blocks:
 - may not have been accessibility tested or considered for use beyond a particular service
 - can be anything from a screenshot with brief documentation, to something more developed (with code and a Figma design)
 
-Anyone at MoJ can submit one. They're given a brief sense check by the Design System team before being published.
+Anyone at MOJ can submit one. They're given a brief sense check by the Design System team before being published.
 
 Find out [how to submit an experimental building block](/contribute/add-new-component/start). View an example: the [new features banner component](/components/new-features-banner).
 
@@ -44,7 +44,7 @@ Teams are encouraged to experiment with them and share findings in the [Github d
 
 ## ‘To be reviewed’ status <span class="govuk-tag govuk-tag--orange"  style="vertical-align:middle;" aria-hidden="true">To be reviewed</span>
 
-Building blocks with a ‘to be reviewed’ status were added for use by everyone at MoJ, possibly a long time ago. They have not been reviewed recently and the work to develop them is not known.  
+Building blocks with a ‘to be reviewed’ status were added for use by everyone at MOJ, possibly a long time ago. They have not been reviewed recently and the work to develop them is not known.  
 
 The Design System team is working to bring them all to ‘official’.  
 

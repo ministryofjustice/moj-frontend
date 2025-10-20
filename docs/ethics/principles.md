@@ -8,7 +8,7 @@ eleventyNavigation:
   parent: Ethics
   order: 20
 ---
-Our ethical design principles are a set of ideals to guide how MoJ services are designed and built over time. 
+Our ethical design principles are a set of ideals to guide how MOJ services are designed and built over time. 
 
 Although it may not be possible to apply all of the principles, use them as inspiration to improve how you work.
 
