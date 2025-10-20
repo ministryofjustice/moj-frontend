@@ -16,7 +16,7 @@ about: Checklist when reviewing Experimental building blocks.
 - [ ] IxD: Create a thumbnail for the '[View all components](https://design-patterns.service.justice.gov.uk/components)' page
     - [ ] The format should be `png`, the size `528x311px`, on a white background with no border
     - [ ] It should be named `thumb-[component-name].png` and added to `docs/assets/images/thumbs`
-- [ ] IxD: Add Figma design (if supplied) to central ‘MoJ Figma kit’ library and add the link on the component page
+- [ ] IxD: Add Figma design (if supplied) to central ‘MOJ Figma kit’ library and add the link on the component page
     - [ ] Create a new page with named `EXPERIMENTAL: [Component name]`
     - [ ] Add the release date
     - [ ] Add the guidance URL
@@ -59,6 +59,6 @@ If YES → Proceed to the next step.
 ## Release
 
 - [ ] Dev: Merge the [pull request](__URL__) and check deployment
-- [ ] IxD: Publish updates to the MoJ Figma Kit
+- [ ] IxD: Publish updates to the MOJ Figma Kit
 - [ ] DM/PM: Inform the contributor and the community via email and Slack, referencing the GitHub Discussion
 - [ ] DM/PM: Add a tab in the analytics dashboard for the new building block
