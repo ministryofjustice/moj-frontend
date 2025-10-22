@@ -1,0 +1,22 @@
+---
+layout: layouts/example.njk
+title: PDS header (example)
+figma_link: https://www.figma.com/design/AT9lj3HbJj6lYKrZLeM8CN/PDS-Figma-Kit?node-id=13648-8
+---
+
+{%- from "moj/components/domain-specific/probation/header/macro.njk" import pdsHeader -%}
+
+{{ pdsHeader({
+  environmentName: 'DEV',
+  environmentNameColour: 'govuk-tag--green',
+  name: 'Account name',
+  manageDetailsLink: '#',
+  servicesLink: '#',
+  services: [
+    {
+      heading: 'Service 1',
+      href: '#',
+      target: '_blank'
+    }
+  ]
+}) }}
