@@ -1,6 +1,6 @@
 ---
 eleventyNavigation:
-  key: Building blocks
+  key: Probation building blocks
   url: "#"
   permalink: false
 ---

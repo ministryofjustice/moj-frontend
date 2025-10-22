@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test'
 test.describe('layout tabs', () => {
   test('layout tabs initialised', async ({ page }) => {
     await page.goto('/')
-    await page.getByRole('button', { name: 'Components' }).click()
+    await page.getByRole('button', { name: 'Components', exact: true }).click()
     await page.getByRole('link', { name: 'Alert' }).click()
 
     const tabs = page.locator('[data-module="govuk-tabs"]')
