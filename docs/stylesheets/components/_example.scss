@@ -29,6 +29,11 @@
   }
 }
 
+.app-example__warning {
+  margin-bottom: 15px;
+  @include govuk-font($size: 19);
+}
+
 .app-example__frame {
   display: block;
   width: 100%;

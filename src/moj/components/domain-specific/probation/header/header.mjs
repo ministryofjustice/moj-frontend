@@ -49,10 +49,12 @@ export class PdsHeader extends Component {
     ])
 
     $userToggle.addEventListener('click', (_event) => {
+      this.closeTabs([[$servicesToggle, $servicesMenu]])
       this.toggleMenu($userToggle, $userMenu)
     })
 
     $servicesToggle.addEventListener('click', (_event) => {
+      this.closeTabs([[$userToggle, $userMenu]])
       this.toggleMenu($servicesToggle, $servicesMenu)
     })
   }
