@@ -269,10 +269,10 @@ const config = {
   },
   COMPONENT_FORM_PAGES: {
     email: {
-      title: 'Verify that you work for MoJ',
+      title: 'Verify that you work for MOJ',
       fields: {
         emailAddress: {
-          label: 'Enter your MoJ email address'
+          label: 'Enter your MOJ email address'
         }
       },
       showOnCya: false,

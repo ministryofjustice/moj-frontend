@@ -4,7 +4,7 @@
  */
 
 /**
- * MoJ Frontend release version
+ * MOJ Frontend release version
  *
  * {@link https://github.com/ministryofjustice/moj-frontend/releases}
  */

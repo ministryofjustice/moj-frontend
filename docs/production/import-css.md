@@ -2,18 +2,18 @@
 layout: layouts/content.njk
 subsection: Setup for production
 showHelp: true
-title: Import MoJ Frontend CSS
-lede: Learn how to use the CSS from MoJ Frontend and GOV.UK Frontend.
+title: Import MOJ Frontend CSS
+lede: Learn how to use the CSS from MOJ Frontend and GOV.UK Frontend.
 eleventyNavigation:
   key: Import CSS
   parent: Setup for production
   order: 50
-  excerpt: "To use the CSS from MoJ Frontend and GOV.UK Frontend, you can either add MoJ Frontend and GOV.UK Frontend’s CSS files to your HTML or load the CSS files into your own Sass file."
+  excerpt: "To use the CSS from MOJ Frontend and GOV.UK Frontend, you can either add MOJ Frontend and GOV.UK Frontend’s CSS files to your HTML or load the CSS files into your own Sass file."
 ---
 
-To use the CSS from MoJ Frontend and GOV.UK Frontend, you can either:
+To use the CSS from MOJ Frontend and GOV.UK Frontend, you can either:
 
-- add MoJ Frontend and GOV.UK Frontend’s CSS files to your HTML
+- add MOJ Frontend and GOV.UK Frontend’s CSS files to your HTML
 - load the CSS files into your own Sass file
 
 ## Add the CSS files to your HTML
@@ -45,7 +45,7 @@ router.use('/stylesheets', [
 
 ## Load using your own Sass file
 
-To load all the Sass rules from both MoJ Frontend and GOV.UK Frontend, add the following to your Sass file:
+To load all the Sass rules from both MOJ Frontend and GOV.UK Frontend, add the following to your Sass file:
 
 ```scss
 @use "node_modules/govuk-frontend/dist/govuk" as *;
@@ -135,7 +135,7 @@ Set the `$govuk-images-path` and `$govuk-fonts-path` variables if your `font` an
 
 ### Override with your own CSS
 
-If you want to override MoJ Frontend’s styles with your own styles, `@forward` MoJ Frontend’s styles before your own Sass rules.
+If you want to override MOJ Frontend’s styles with your own styles, `@forward` MOJ Frontend’s styles before your own Sass rules.
 
 ### Silence deprecation warnings from dependencies in Dart Sass
 
@@ -145,4 +145,4 @@ You may see deprecation warnings when compiling your Sass. For example:
 DEPRECATION WARNING: Using / for division is deprecated and will be removed in Dart Sass 2.0.0.
 ```
 
-We’re currently unable to fix deprecation warnings from MoJ Frontend. However, you can silence the warnings by following the [Silence deprecation warnings from dependencies in Dart Sass](https://frontend.design-system.service.gov.uk/import-css/#simplify-sass-import-paths) guidance from GOV.UK Frontend.
+We’re currently unable to fix deprecation warnings from MOJ Frontend. However, you can silence the warnings by following the [Silence deprecation warnings from dependencies in Dart Sass](https://frontend.design-system.service.gov.uk/import-css/#simplify-sass-import-paths) guidance from GOV.UK Frontend.

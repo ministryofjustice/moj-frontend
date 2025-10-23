@@ -37,7 +37,7 @@ An interruption card gives the user more detailed or contextual information abou
 
 Example of a possible error:
 
-<p><img src="{{ 'assets/images/interruption-card-example-possible-error.png' | rev | url }}" alt="A screen showing an MoJ header and footer. There's a back link above the card. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The interruption card is  used to question whether the user has entered the correct salary. Under the text is a white button with blue text: 'Yes, this is correct'. To the right of it is the link text 'Go back to income details'."></p>
+<p><img src="{{ 'assets/images/interruption-card-example-possible-error.png' | rev | url }}" alt="A screen showing an MOJ header and footer. There's a back link above the card. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The interruption card is  used to question whether the user has entered the correct salary. Under the text is a white button with blue text: 'Yes, this is correct'. To the right of it is the link text 'Go back to income details'."></p>
 
 #### 2. ‘Are you sure?’ content
 
@@ -49,7 +49,7 @@ If the outcome is less serious, and the information is just 'good to know', cons
 
 Example of ‘Are you sure?’ content:
 
-<p><img src="{{ 'assets/images/interruption-card-example-are-you-sure.png' | rev | url }}" alt="A screen showing an MoJ header and footer. There's a back link above the card. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The card is used to confirm whether the user wants to cancel this referral, because it'll remove the person from a waiting list. The user can proceed via a white button with blue text or cancel via a link link, with text 'Go back to application'."></p>
+<p><img src="{{ 'assets/images/interruption-card-example-are-you-sure.png' | rev | url }}" alt="A screen showing an MOJ header and footer. There's a back link above the card. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The card is used to confirm whether the user wants to cancel this referral, because it'll remove the person from a waiting list. The user can proceed via a white button with blue text or cancel via a link link, with text 'Go back to application'."></p>
 
 #### 3. Non-contextual errors
 
@@ -61,7 +61,7 @@ The interruption card tells users how to resolve the error, for example by answe
 
 Example of a non-contextual error:
 
-<p><img src="{{ 'assets/images/interruption-card-example-non-contextual-error.png' | rev | url }}" alt="A screen showing an MoJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The card is used to explain that a new answer affects other sections of the application. Under the text is a white button with blue text: 'Continue to other sections'. To the right of it is the link text 'Go back to application'."></p>
+<p><img src="{{ 'assets/images/interruption-card-example-non-contextual-error.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The card is used to explain that a new answer affects other sections of the application. Under the text is a white button with blue text: 'Continue to other sections'. To the right of it is the link text 'Go back to application'."></p>
 
 #### 4. More varied application outcomes
 
@@ -75,7 +75,7 @@ This might be needed when the user:
 
 Example of a more varied application outcome:
 
-<p><img src="{{ 'assets/images/interruption-card-example-varied-outcome.png' | rev | url }}" alt="A screen showing an MoJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The card is used to explain that the user is eligible for a payment, can submit their application but may need to provide more information later.' The user can submit using the button and enter more information using the link."></p>
+<p><img src="{{ 'assets/images/interruption-card-example-varied-outcome.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The card is used to explain that the user is eligible for a payment, can submit their application but may need to provide more information later.' The user can submit using the button and enter more information using the link."></p>
 
 #### 5. Showing important content ahead of a task
 
@@ -87,7 +87,7 @@ The user can continue once they have acknowledged the content in the interruptio
 
 Example of showing important content ahead of a task:
 
-<p><img src="{{ 'assets/images/interruption-card-example-important-content.png' | rev | url }}" alt="A screen showing an MoJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The card is used to explain that the prison visit is closed and that there can no physical contact. The user can continue or go back."></p>
+<p><img src="{{ 'assets/images/interruption-card-example-important-content.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The rest of the page is a blue interruption card. The card contains a heading, paragraph content, a button and a link. The card is used to explain that the prison visit is closed and that there can no physical contact. The user can continue or go back."></p>
 
 ### When not to use
 

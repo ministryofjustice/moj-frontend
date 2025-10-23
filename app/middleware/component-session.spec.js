@@ -78,10 +78,10 @@ describe('setCurrentFormPages', () => {
 describe('getPageData', () => {
   it('should return the data from formConfig', () => {
     const pageData = {
-      title: 'Verify that you work for MoJ',
+      title: 'Verify that you work for MOJ',
       fields: {
         emailAddress: {
-          label: 'Enter your MoJ email address'
+          label: 'Enter your MOJ email address'
         }
       },
       showOnCya: false,
@@ -1133,12 +1133,12 @@ describe('validateFormData', () => {
       page: {
         fields: {
           emailAddress: {
-            label: 'Enter your MoJ email address'
+            label: 'Enter your MOJ email address'
           }
         },
         removable: false,
         showOnCya: false,
-        title: 'Verify that you work for MoJ'
+        title: 'Verify that you work for MOJ'
       },
       showAddAnother: false,
       submitUrl: undefined
@@ -1241,12 +1241,12 @@ describe('validateFormData', () => {
       page: {
         fields: {
           emailAddress: {
-            label: 'Enter your MoJ email address'
+            label: 'Enter your MOJ email address'
           }
         },
         removable: false,
         showOnCya: false,
-        title: 'Verify that you work for MoJ'
+        title: 'Verify that you work for MOJ'
       },
       showAddAnother: false,
       submitUrl: undefined
