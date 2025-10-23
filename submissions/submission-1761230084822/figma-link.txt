@@ -1,0 +1,3 @@
+{
+  "figmaLink": "https://www.figma.com/design/CpTvAGL8rct5ugC8KWuXLz/Playground?node-id=2148-421&amp;t=ilDKVPUvD2mursXY-0"
+}
