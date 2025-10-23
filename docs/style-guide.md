@@ -3,12 +3,12 @@ layout: layouts/content.njk
 subsection: Guidance
 title: Content style guide
 permalink: /content-standards/style-guide/
-lede: This content style guide applies to services and guidance at MoJ. Use it alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">GOV.UK style guide</a>.
+lede: This content style guide applies to services and guidance at MOJ. Use it alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">GOV.UK style guide</a>.
 eleventyNavigation:
   key: Content style guide
   parent: Guidance
   order: 10
-  excerpt: "The MoJ A to Z content style guide covering style, spelling and grammar conventions."
+  excerpt: "The MOJ A to Z content style guide covering style, spelling and grammar conventions."
 ---
 
 <p class="govuk-!-margin-bottom-0">
@@ -16,7 +16,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 16 October 2025
+Last updated: 23 October 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -34,7 +34,7 @@ If users are familiar with the acronym or initialism but you would still like to
 
 For guidance or long-form content, spell them out on first mention (following the [abbreviations and acronyms guidance on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#abbreviations-and-acronyms)).
 
-You should write acronyms and initialisms entirely in upper case, even if some words are prepositions like 'of'. For example, ROSH instead of RoSH. This is because:
+You should write acronyms and initialisms entirely in upper case, even if some words are prepositions like 'of'. For example, ROSH instead of RoSH and MOJ instead of MoJ. This is because:
 
 - studies, such as in the [Memory and Cognition journal article on reader ability](https://link.springer.com/article/10.3758/BF03198246), suggest that abbreviations written in a mix of upper and lower case are harder to read, especially for less skilled readers
 - it follows the convention established by the abbreviation of [ROTL for release on temporary licence](#rotl-%28release-on-temporary-licence%29) and so helps to improve consistency   
@@ -82,7 +82,7 @@ You may decide to capitalise abbreviations when:
 - it would help users to understand what you’re referring to
 - the full version of the abbreviation is long
 
-Please share your decisions on capitalising abbreviations in the [content community Slack channel (MoJ staff only)](https://moj.enterprise.slack.com/archives/C58FBN6V6). These entries will be added to the content style guide to ensure consistency.
+Please share your decisions on capitalising abbreviations in the [content community Slack channel (MOJ staff only)](https://moj.enterprise.slack.com/archives/C58FBN6V6). These entries will be added to the content style guide to ensure consistency.
 
 ### case list
 
@@ -269,7 +269,7 @@ This content does not provide any alternative contact methods such as email or c
 
 Always use full stops at the end of hint text, even when using examples.
 
-This decision was made based on [research from other government departments and internal discussions (MoJ staff only)](https://trello.com/c/cjE65vrR).
+This decision was made based on [research from other government departments and internal discussions (MOJ staff only)](https://trello.com/c/cjE65vrR).
 
 The content community would like to test this approach to see if it causes users to include full stops in input fields.
 
@@ -320,11 +320,18 @@ This is 2 separate words. Not keyworker.
 The initialism LAU is probably not well-known enough yet to be used without explanation. Write local admin unit out in full the first time you use it. Use sentence case.
 
 {% endaccordionSection %}
+{% accordionSection "M" %}
+
+### MOJ
+
+Use MOJ for Ministry of Justice. This follows the [GOV.UK naming convention for government departments](https://www.gov.uk/guidance/style-guide/a-to-z#:~:text=Capitals%20for%20government%20departments).
+
+{% endaccordionSection %}
 {% accordionSection "N" %}
 
 ### naming
 
-If you're naming a service in DPS, you should follow the [DPS naming guidelines (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FDigital%20Prison%20Services%20naming%20guidelines%2Edocx%3Fd%3Dw1fc548d20ecc47b08f79f84de70c36d5%26csf%3D1%26web%3D1%26e%3DreEk9z&correlation=dcc4a4a1%2D106c%2Dc000%2Dcd83%2Dd5878e1bef23&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=105&listItemUniqueId=1fc548d2%2D0ecc%2D47b0%2D8f79%2Df84de70c36d5).
+If you're naming a service in DPS, you should follow the [DPS naming guidelines (MOJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FDigital%20Prison%20Services%20naming%20guidelines%2Edocx%3Fd%3Dw1fc548d20ecc47b08f79f84de70c36d5%26csf%3D1%26web%3D1%26e%3DreEk9z&correlation=dcc4a4a1%2D106c%2Dc000%2Dcd83%2Dd5878e1bef23&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=105&listItemUniqueId=1fc548d2%2D0ecc%2D47b0%2D8f79%2Df84de70c36d5).
 
 ### NDelius
 
@@ -355,7 +362,7 @@ OASys is an abbreviation of Offender Assessment System, which is used by staff a
 
 ### offender or ex-offender
 
-Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
+Read [guidance on how to talk about people in the justice system (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
 
 ### open prison, open conditions
 
@@ -366,7 +373,7 @@ Lower case.
 
 ### page titles
 
-In DPS, you must follow the [DPS guidelines for formatting page titles (MoJ staff only)](https://docs.google.com/document/d/17mHQYHOA5S6dOWjjPvkJvXrb-6f37o8hjjWUe9gBqKo/edit?tab=t.0#heading=h.1rt3kbplnmql).
+In DPS, you must follow the [DPS guidelines for formatting page titles (MOJ staff only)](https://docs.google.com/document/d/17mHQYHOA5S6dOWjjPvkJvXrb-6f37o8hjjWUe9gBqKo/edit?tab=t.0#heading=h.1rt3kbplnmql).
 
 ### Person Escort Record (PER)
 
@@ -376,7 +383,7 @@ PERs are a document which must be completed for all people in custody prior to a
 
 ### person on probation, people on probation
 
-Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
+Read [guidance on how to talk about people in the justice system (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
 
 ### personal data in title tags
 
@@ -454,7 +461,7 @@ Staff in prisons may still use ‘NOMIS number’ or ‘alpha number’ when ref
 
 ### prisoner, person in prison
 
-Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
+Read [guidance on how to talk about people in the justice system (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
 
 ### prisoner record
 
@@ -508,11 +515,11 @@ The most common types of release date are:
 - Licence expiry date (LED)
   This is the date the licence expires where release from custody is subject to licence conditions.
 
-Read the [full list of release dates (MoJ staff only)](https://justiceuk.sharepoint.com/sites/Courtcaseandreleasedates/SitePages/Release-date-types-and-definitions.aspx).
+Read the [full list of release dates (MOJ staff only)](https://justiceuk.sharepoint.com/sites/Courtcaseandreleasedates/SitePages/Release-date-types-and-definitions.aspx).
 
 ### remand prisoner, on remand, remanded in custody
 
-Someone is on remand if they are placed in custody whilst awaiting trial. Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
+Someone is on remand if they are placed in custody whilst awaiting trial. Read [guidance on how to talk about people in the justice system (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
 
 ### ROSH (risk of serious harm)
 
@@ -556,7 +563,7 @@ Use the 24-hour clock for DPS and any service used by prison staff. For example,
 
 The 24-hour clock should also be used for time input fields.
 
-The 24-hour clock is widely used in prisons. Research has shown that [using the 12-hour clock in prison may cause confusion (MoJ staff only)](https://trello.com/c/D57IWwVT).
+The 24-hour clock is widely used in prisons. Research has shown that [using the 12-hour clock in prison may cause confusion (MOJ staff only)](https://trello.com/c/D57IWwVT).
 
 If your service is on DPS but is used by both prison and probation staff, it should still use the 24-hour clock.
 
@@ -602,7 +609,7 @@ For example, you could use the question ‘Have you experienced domestic abuse?�
 
 ### Violent and Sex Offender Register (ViSOR)
 
-Use ViSOR. This is more well known than the full version. Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
+Use ViSOR. This is more well known than the full version. Read [guidance on how to talk about people in the justice system (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
 
 {% endaccordionSection %}
 {% accordionSection "W" %}
@@ -625,7 +632,7 @@ Capital 'X' and lower case 'r'. Do not shorten to 'body scan' as this may be con
 
 This describes a prisoner aged between 15 and 21.
 
-Read [guidance on how to talk about people in the justice system (MoJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
+Read [guidance on how to talk about people in the justice system (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
 
 {% endaccordionSection %}
 {% endaccordion %}
