@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test('homepage', async ({ page }) => {
   await page.goto('/')
-  await expect(page).toHaveTitle(/MoJ Design System/)
+  await expect(page).toHaveTitle(/MOJ Design System/)
   await expect(
     page.getByRole('heading', {
       name: 'Design, build, and deliver accessible and consistent services'

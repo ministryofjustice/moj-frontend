@@ -385,6 +385,8 @@ PERs are a document which must be completed for all people in custody prior to a
 
 Read [guidance on how to talk about people in the justice system (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
 
+Do not use the acronym POP.
+
 ### personal data in title tags
 
 The page title is the text displayed in the browser tab. It is not the page heading or H1. Titles should describe the purpose and content of the page.
@@ -462,6 +464,8 @@ Staff in prisons may still use ‘NOMIS number’ or ‘alpha number’ when ref
 ### prisoner, person in prison
 
 Read [guidance on how to talk about people in the justice system (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
+
+Do not use the acronym PIP.
 
 ### prisoner record
 

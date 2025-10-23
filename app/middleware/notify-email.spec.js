@@ -3,7 +3,11 @@ process.env.NOTIFY_EMAIL_RETRY_MS = 1000
 process.env.NOTIFY_EMAIL_MAX_RETRIES = 3
 const { NotifyClient } = require('notifications-node-client')
 
-const { sendSubmissionEmail, sendPrEmail } = require('./notify-email')
+const {
+  sendSubmissionEmail,
+  sendPrEmail,
+  sendSuccessEmail
+} = require('./notify-email')
 
 jest.mock('notifications-node-client', () => {
   return {
@@ -193,6 +197,55 @@ describe('sendPrEmail', () => {
         }
       }
     )
+    expect(mockSendEmail).toHaveBeenCalledTimes(3)
+  })
+})
+
+describe('sendSuccessEmail', () => {
+  let mockSendEmail
+
+  beforeEach(() => {
+    const notifyClientInstance = new NotifyClient()
+    mockSendEmail = notifyClientInstance.sendEmail
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
+  it('should send a success email successfully', async () => {
+    mockSendEmail.mockResolvedValue({ status: 'success' })
+
+    await sendSuccessEmail({
+      componentName: 'component',
+      email: 'name@email.com',
+      name: 'bob',
+      team: 'team'
+    })
+
+    expect(mockSendEmail).toHaveBeenCalledWith(
+      expect.any(String),
+      'name@email.com',
+      {
+        personalisation: {
+          component_name: 'component',
+          name: 'bob',
+          email: 'name@email.com'
+        }
+      }
+    )
+    expect(mockSendEmail).toHaveBeenCalledTimes(1)
+  })
+
+  it('should handle errors when sending a success email', async () => {
+    const error = new Error('Failed to send email')
+    mockSendEmail.mockRejectedValue(error)
+
+    await expect(sendSuccessEmail({})).rejects.toThrow('Failed to send email')
+
+    expect(mockSendEmail).toHaveBeenCalledWith(expect.any(String), undefined, {
+      personalisation: {}
+    })
     expect(mockSendEmail).toHaveBeenCalledTimes(3)
   })
 })

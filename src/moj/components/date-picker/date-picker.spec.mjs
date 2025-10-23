@@ -646,7 +646,7 @@ describe('button menu JS API', () => {
     })
 
     test('future minDate sets currentDate to minDate', () => {
-      const minDate = dayjs().add(1, 'week').startOf('day')
+      const minDate = dayjs().add(1, 'year').startOf('day')
       const datePicker = new DatePicker(component, {
         minDate: minDate.format('D/M/YYYY')
       })
@@ -732,7 +732,7 @@ describe('button menu JS API', () => {
           excludedDates: `${datesToExclude[0].format('D/M/YYYY')}-${datesToExclude[datesToExclude.length - 1].format('D/M/YYYY')}`
         })
 
-        // expect(datePicker.excludedDates.length).toEqual(3);
+        expect(datePicker.excludedDates).toHaveLength(3)
         expect(datePicker.excludedDates).toStrictEqual(
           datesToExclude.map((date) => date.toDate())
         )
@@ -807,6 +807,36 @@ describe('button menu JS API', () => {
     })
 
     test('minDate', async () => {
+      const minDay = 3
+      const lastDayinMonth = dayjs().endOf('month').date()
+      const minDate = dayjs().date(minDay)
+
+      new DatePicker(component, {
+        minDate: minDate.format('D/MM/YYYY')
+      })
+
+      calendarButton = screen.getByRole('button', { name: 'Choose date' })
+
+      await user.click(calendarButton)
+
+      const dayButtonsDisabled = range(1, minDay - 1).map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
+
+      const dayButtonsEnabled = range(minDay, lastDayinMonth).map((day) =>
+        screen.getByTestId(getDateFormatted(day))
+      )
+
+      for (const dayButton of dayButtonsDisabled) {
+        expect(dayButton).toHaveAttribute('aria-disabled', 'true')
+      }
+
+      for (const dayButton of dayButtonsEnabled) {
+        expect(dayButton).not.toHaveAttribute('aria-disabled')
+      }
+    })
+
+    test('minDate with leading zero', async () => {
       const minDay = 3
       const lastDayinMonth = dayjs().endOf('month').date()
       const minDate = dayjs().date(minDay)

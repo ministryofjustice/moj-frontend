@@ -2,7 +2,7 @@
 layout: layouts/content.njk
 subsection: About the Design System
 title: Benefits of using the Design System
-lede: The MoJ Design System helps teams to design, build and launch digital services that are accessible, consistent and user-led.
+lede: The MOJ Design System helps teams to design, build and launch digital services that are accessible, consistent and user-led.
 eleventyNavigation:
   key: Benefits
   parent: About the Design System
@@ -17,16 +17,16 @@ The Design System is an ecosystem of components, patterns and pages. These build
 
 The site also hosts common standards and principles. These include the [content style guide](/content-standards/style-guide/) and [guidance on designing ethical services](/ethics/design-ethical-services/).
 
-There are 4 main benefits of using the MoJ Design System:
+There are 4 main benefits of using the MOJ Design System:
 
 ## 1. Get updates to services and prototypes
 
-MoJ Design System building blocks are centrally managed and updated. This means that when you apply the latest version of the Design System, every instance of a building block (in Figma, a coded prototype or live service) is updated.
+MOJ Design System building blocks are centrally managed and updated. This means that when you apply the latest version of the Design System, every instance of a building block (in Figma, a coded prototype or live service) is updated.
 
-Changes to the MoJ and GOV.UK Design Systems are made to:
+Changes to the MOJ and GOV.UK Design Systems are made to:
 
 - 3 Figma Kits, which then update the attached components in Figma prototypes
-- MoJ Frontend, which then update coded prototypes and live services
+- MOJ Frontend, which then update coded prototypes and live services
 
 Read more about [how Figma prototypes are updated](/prototyping/setting-up-figma-prototypes/) and about [setting up coded prototypes](/prototyping/setting-up-coded-prototypes/).
 
@@ -34,11 +34,11 @@ Read more about [how Figma prototypes are updated](/prototyping/setting-up-figma
 
 When services are consistent it makes them easier to use. This is particularly useful for staff using multiple services each day.
 
-The components, patterns and pages in the MoJ Design System offer a consistent and tested user experience. The [content style guide](/content-standards/style-guide/) also helps with this, by ensuring that terminology is the same across different services.
+The components, patterns and pages in the MOJ Design System offer a consistent and tested user experience. The [content style guide](/content-standards/style-guide/) also helps with this, by ensuring that terminology is the same across different services.
 
 ## 3. Improve efficiency
 
-Using the MoJ Design System can reduce the amount of time teams spend building services. Building blocks help with common tasks, such as:
+Using the MOJ Design System can reduce the amount of time teams spend building services. Building blocks help with common tasks, such as:
 
 - entering data
 - displaying notifications
@@ -62,9 +62,9 @@ You can expect the building blocks to be thoroughly and clearly documented, with
 
 ## How to help develop the Design System
 
-The MoJ Design System is built on input from the community of users in the MoJ. You can help it grow by:
+The MOJ Design System is built on input from the community of users in the MOJ. You can help it grow by:
 
-- taking part in research, announced in the [#moj-design-system-support Slack channel (MoJ staff only)](https://moj.enterprise.slack.com/archives/CH5RUSB27)
+- taking part in research, announced in the [#moj-design-system-support Slack channel (MOJ staff only)](https://moj.enterprise.slack.com/archives/CH5RUSB27)
 - [submitting a new building block](/get-involved/contribute/)
-- sharing research insights or suggesting changes in [MoJ Frontend Github discussions](https://github.com/ministryofjustice/moj-frontend/discussions) (anyone can do this – you do not need to be a developer)
-- Sharing feedback in the [#moj-design-system-support Slack channel (MoJ staff only)](https://moj.enterprise.slack.com/archives/CH5RUSB27)
+- sharing research insights or suggesting changes in [MOJ Frontend Github discussions](https://github.com/ministryofjustice/moj-frontend/discussions) (anyone can do this – you do not need to be a developer)
+- Sharing feedback in the [#moj-design-system-support Slack channel (MOJ staff only)](https://moj.enterprise.slack.com/archives/CH5RUSB27)

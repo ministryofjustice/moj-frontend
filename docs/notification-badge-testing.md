@@ -15,7 +15,7 @@ lede: Checking how different spacing between the notification badge and other it
 
 <hr>
 
-### In MoJ Primary nav
+### In MOJ Primary nav
 
 #### No margin
 
@@ -72,7 +72,7 @@ lede: Checking how different spacing between the notification badge and other it
 <br/>
 <hr/>
 
-### MoJ sub nav
+### MOJ sub nav
 
 #### 6px margin
 
@@ -93,7 +93,7 @@ lede: Checking how different spacing between the notification badge and other it
 
 <hr/>
 
-### In MoJ side navigation
+### In MOJ side navigation
 
 #### No margin, left aligned
 

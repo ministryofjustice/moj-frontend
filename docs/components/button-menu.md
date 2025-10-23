@@ -21,7 +21,7 @@ Use the button menu to display multiple actions to a user. They open it with the
 
 To show multiple tasks to users, start with the [GOV.UK Design System button group](https://design-system.service.gov.uk/components/button/#grouping-buttons). This helps users to find what they need.
 
-Consider the MoJ Design System button menu instead if the buttons:
+Consider the MOJ Design System button menu instead if the buttons:
 
 - have long titles or there’s a lack of space to display them, for example in a complex interface
 - are variations on a theme, for example ‘Print options’
