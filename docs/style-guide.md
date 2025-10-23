@@ -324,7 +324,7 @@ The initialism LAU is probably not well-known enough yet to be used without expl
 
 ### MOJ
 
-Use MOJ for Ministry of Justice. This follows the [GOV.UK naming convention for government departments](https://www.gov.uk/guidance/style-guide/a-to-z#:~:text=Capitals%20for%20government%20departments).
+Use MOJ for Ministry of Justice. This follows the [GOV.UK naming convention for government departments](https://www.gov.uk/guidance/style-guide/a-to-z#capitals-for-government-departments).
 
 {% endaccordionSection %}
 {% accordionSection "N" %}
