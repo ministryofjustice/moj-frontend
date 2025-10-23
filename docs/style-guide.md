@@ -16,7 +16,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 20 October 2025
+Last updated: 23 October 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -34,7 +34,7 @@ If users are familiar with the acronym or initialism but you would still like to
 
 For guidance or long-form content, spell them out on first mention (following the [abbreviations and acronyms guidance on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#abbreviations-and-acronyms)).
 
-You should write acronyms and initialisms entirely in upper case, even if some words are prepositions like 'of'. For example, ROSH instead of RoSH. This is because:
+You should write acronyms and initialisms entirely in upper case, even if some words are prepositions like 'of'. For example, ROSH instead of RoSH and MOJ instead of MoJ. This is because:
 
 - studies, such as in the [Memory and Cognition journal article on reader ability](https://link.springer.com/article/10.3758/BF03198246), suggest that abbreviations written in a mix of upper and lower case are harder to read, especially for less skilled readers
 - it follows the convention established by the abbreviation of [ROTL for release on temporary licence](#rotl-%28release-on-temporary-licence%29) and so helps to improve consistency   
@@ -318,6 +318,13 @@ This is 2 separate words. Not keyworker.
 [Probation delivery units](#probation-delivery-unit-%28pdu%29) are divided into local admin units. These used to be called local delivery units and you may hear the initialism LDU.
 
 The initialism LAU is probably not well-known enough yet to be used without explanation. Write local admin unit out in full the first time you use it. Use sentence case.
+
+{% endaccordionSection %}
+{% accordionSection "M" %}
+
+### MOJ
+
+Use MOJ for Ministry of Justice. This follows the [GOV.UK naming convention for government departments](https://www.gov.uk/guidance/style-guide/a-to-z#capitals-for-government-departments).
 
 {% endaccordionSection %}
 {% accordionSection "N" %}
