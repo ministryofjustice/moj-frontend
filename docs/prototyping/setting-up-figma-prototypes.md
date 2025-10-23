@@ -60,7 +60,7 @@ When the Figma Kits are updated, you’ll be notified in Figma. You can also che
 
 {% endtab %}
 
-{% tab "Non-MoJ staff" %}
+{% tab "Non-MOJ staff" %}
 
 ## If you work outside the Ministry of Justice
 

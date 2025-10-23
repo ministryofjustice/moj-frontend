@@ -62,7 +62,7 @@ You can expect the building blocks to be thoroughly and clearly documented, with
 
 ## How to help develop the Design System
 
-The MOJ Design System is built on input from the community of users in the MoJ. You can help it grow by:
+The MOJ Design System is built on input from the community of users in the MOJ. You can help it grow by:
 
 - taking part in research, announced in the [#moj-design-system-support Slack channel (MOJ staff only)](https://moj.enterprise.slack.com/archives/CH5RUSB27)
 - [submitting a new building block](/get-involved/contribute/)
