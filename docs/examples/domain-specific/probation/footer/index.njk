@@ -1,0 +1,11 @@
+---
+layout: layouts/example.njk
+title: PDS footer (example)
+figma_link: https://www.figma.com/design/AT9lj3HbJj6lYKrZLeM8CN/PDS-Figma-Kit?node-id=7346-1848
+---
+
+{%- from "moj/components/domain-specific/probation/footer/macro.njk" import pdsFooter -%}
+
+{{ pdsFooter({
+  baseUrl: '#'
+}) }}

@@ -313,7 +313,8 @@
       width: 100%;
       margin-bottom: 0;
       font-weight: bold;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+      grid-auto-flow: column;
       gap: 15px;
       justify-items: start;
     }
