@@ -92,9 +92,9 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@playwright/test": "^1.55.0",
-    "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-commonjs": "^28.0.6",
-    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-commonjs": "^28.0.8",
+    "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-replace": "^6.0.2",
     "@rollup/plugin-terser": "^0.4.4",
     "@semantic-release/changelog": "^6.0.3",
@@ -170,8 +170,8 @@
     "puppeteer": "^24.22.0",
     "puppeteer-core": "^24.22.0",
     "require-dir": "^1.2.0",
-    "rollup": "^4.50.2",
-    "sass-embedded": "^1.92.1",
+    "rollup": "^4.52.5",
+    "sass-embedded": "^1.93.2",
     "semantic-release": "^24.2.8",
     "sinon": "^21.0.0",
     "stylelint": "^16.24.0",
@@ -188,7 +188,7 @@
     }
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.50.2",
+    "@rollup/rollup-linux-x64-gnu": "^4.52.5",
     "sass-embedded-linux-x64": "^1.92.1"
   }
 }
