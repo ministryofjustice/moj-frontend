@@ -53,16 +53,35 @@ eleventyNavigation:
 
 <hr style="border:none">
 
-## Additional spend avoided
+## The impact on spending
 
-<div class="headline-container callout-card">
-  <span class="big-number">
-    £12.4M
-  </span>
-  <p class="lead">
-    additional spending has been avoided to date through teams using components from the MOJ Design System.
-  </p>
-</div>
+The average cost of developing a reusable component is £5,000.
+
+The amount of times Design System components are initially used in MOJ services is 2,481.
+
+This does not count multiple uses of the same component in a single service. For example, if a service uses the Date picker component 50 times, only 1 instance is counted.
+
+<!-- £5,000 is the average cost of developing a reusable component.
+
+2,481 is the amount of times Design System components are initially used in MOJ services. This does not count multiple uses of the same component in a single service. -->
+
+Multiplied, this tells us the impact on spending.
+
+<div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5 govuk-!-margin-top-8">
+  <div class="headline-container govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
+      <div class="callout-card">
+        <!-- <p class="lead">
+          £5,000 &times; 2,481 &equals;
+        </p> -->
+        <span class="big-number">
+          £12.4M
+        </span>
+        <p class="lead">
+          additional spend would have been necessary for services to arrive at the same point, without the MOJ Design System
+        </p>
+      </div>
+    </div>
+  </div>
 
 <details class="govuk-details">
   <summary class="govuk-details__summary">
@@ -71,9 +90,23 @@ eleventyNavigation:
     </span>
   </summary>
   <div class="govuk-details__text">
-    <p><strong>£5,000</strong> is the average cost of developing a reusable component.</p>
-    <p><strong>2,481</strong> is the amount of times components are used in live MOJ services.</p>
-    <p>Multiplied, this tells us that an additional <strong>£12.4M</strong> would have been spent on making components on a per-service basis, if the Design System did not exist.</p>
+    <p><strong>The average cost of developing a reusable component</strong></p>
+    <p>
+      £5,000 is the average cost for a team to create a component, as estimated by the <a href="https://design-system.dwp.gov.uk/">DWP Design System</a> team. This includes the necessary discovery, design, development, and QA/testing, as well as delivering the component to the required standard for use across a large organisation.
+    </p>
+    <p><strong>How many times components are used across MOJ services</strong></p>
+    <p>
+      Access to detailed data about the use of components is limited, so a sample was used to infer the likely implementation of components across all MOJ digital services.
+    </p>
+    <p>
+      From a code search, we can understand the total amount of times a component appears in code across MOJ services​, and details of a sample of results, including whether the service is live or a prototype.
+    </p>
+    <p>
+      This allows us to determine what percentage of the sample are live services​, and apply this percentage to the total amount of times a component appears in code​ to estimate of the total amount of times a component appears in a live service​.
+    </p>
+    <p>
+      If a service uses a component multiple times, only the first time is counted as this is the one that would have prevented additional spend by the team.
+    </p>
   </div>
 </details>
 
@@ -201,30 +234,9 @@ what services are using it</blockquote>
 
 The Design System is used by multiple other public sector organisations, including:
 
-<ul class="comma-separated govuk-body">
-  <li><a href="https://www.gov.uk/government/organisations/department-for-energy-security-and-net-zero">DESNZ</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/central-digital-and-data-office">CDDO</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/civil-service-hr">Civil Service HR</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/companies-house">Companies House</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/crown-prosecution-service">Crown Prosecution Service</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs">DEFRA</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/department-for-education">DFE</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/driver-and-vehicle-standards-agency">DVSA</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/department-for-work-pensions">DWP</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/hm-courts-and-tribunals-service">HMCTS</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/land-registry">HMLR</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/judicial-appointments-commission">Judicial Appointments Commission UK</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/ministry-of-housing-communities-and-local-government">MHCLG</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/nhs-business-services-authority">NHS Business Services Authority</a></li>
-  <li><a href="https://digital.nhs.uk/">NHS Digital</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/ofqual">Ofqual</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/planning-inspectorate">Planning Inspectorate</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/skills-funding-agency">Skills Funding Agency</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/the-pensions-regulator">The Pensions Regulator</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/uk-export-finance">UK Export Finance</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/office-for-equality-and-opportunity">UK Government Office for Equality and Opportunity</a></li>
-  <li><a href="https://www.gov.uk/government/organisations/uk-space-agency">UK Space Agency</a></li>
-</ul>
+<img src="/assets/images/dept-logos/logo-defra.png" alt="">
+
+
 
 ---
 
