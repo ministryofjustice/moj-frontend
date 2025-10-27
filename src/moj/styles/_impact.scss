@@ -79,3 +79,23 @@ blockquote {
 h2 {
   @include govuk-responsive-margin(5, "bottom");
 }
+
+.logo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; // left align orphans
+  gap: 2rem; // increased spacing
+
+  .logo-item {
+    flex: 1 1 calc(25% - 2rem); // 4 per row, accounting for gap
+    max-width: calc(25% - 2rem);
+
+    img {
+      border: none !important;
+      width: 100%;
+      height: auto;
+      filter: grayscale(100%);
+      // opacity: 0.8;
+    }
+  }
+}

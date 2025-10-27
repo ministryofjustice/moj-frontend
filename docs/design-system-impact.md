@@ -234,8 +234,53 @@ what services are using it</blockquote>
 
 The Design System is used by multiple other public sector organisations, including:
 
-<img src="/assets/images/dept-logos/logo-defra.png" alt="">
-
+<div class="logo-grid">
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-companies-house.svg" alt="">
+  </div>
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-cps.svg" alt="">
+  </div>
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-defra.png" alt="">
+  </div>
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-desnz.svg" alt="">
+  </div>
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-dfe.png" alt="">
+  </div>
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-dvsa.svg" alt="">
+  </div>
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-dwp.svg" alt="">
+  </div>
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-hmcts.png" alt="">
+  </div>
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-hmlr.svg" alt="">
+  </div>
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-mhclg.png" alt="">
+  </div>
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-nhs.jpg" alt="">
+  </div>
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-ofqual.png" alt="">
+  </div>
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-tpr.svg" alt="">
+  </div>
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-uk-space-agency.png" alt="">
+  </div>
+  <div class="logo-item">
+    <img src="/assets/images/dept-logos/logo-ukef.png" alt="">
+  </div>
+</div>
 
 
 ---
