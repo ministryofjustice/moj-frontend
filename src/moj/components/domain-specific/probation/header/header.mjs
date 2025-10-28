@@ -18,22 +18,42 @@ export class PdsHeader extends Component {
       '#probation-common-header-user-menu'
     )
 
+    const $servicesToggle = this.$root.querySelector(
+      '.probation-common-header__services-menu-toggle'
+    )
+
+    const $servicesMenu = this.$root.querySelector(
+      '#probation-common-header-services-menu'
+    )
+
     if (
       !$userToggle ||
       !$userMenu ||
+      !$servicesToggle ||
+      !$servicesMenu ||
       !($userToggle instanceof HTMLElement) ||
-      !($userMenu instanceof HTMLElement)
+      !($userMenu instanceof HTMLElement) ||
+      !($servicesToggle instanceof HTMLElement) ||
+      !($servicesMenu instanceof HTMLElement)
     ) {
       return 0
     }
 
     this.hideFallbackLinks()
     $userToggle.removeAttribute('hidden')
+    $servicesToggle.removeAttribute('hidden')
 
-    this.closeTabs([[$userToggle, $userMenu]])
+    this.closeTabs([
+      [$userToggle, $userMenu],
+      [$servicesToggle, $servicesMenu]
+    ])
 
     $userToggle.addEventListener('click', (_event) => {
       this.toggleMenu($userToggle, $userMenu)
+    })
+
+    $servicesToggle.addEventListener('click', (_event) => {
+      this.toggleMenu($servicesToggle, $servicesMenu)
     })
   }
 
@@ -76,7 +96,11 @@ export class PdsHeader extends Component {
     const $userLink = this.$root.querySelector(
       '.probation-common-header__user-menu-link'
     )
+    const $servicesLink = this.$root.querySelector(
+      '.probation-common-header__services-menu-link'
+    )
     if ($userLink) $userLink.setAttribute('hidden', 'hidden')
+    if ($servicesLink) $servicesLink.setAttribute('hidden', 'hidden')
   }
 
   /**
