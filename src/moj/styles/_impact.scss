@@ -83,19 +83,24 @@ h2 {
 .logo-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start; // left align orphans
-  gap: 2rem; // increased spacing
+  justify-content: flex-start;
+  gap: 2rem;
 
   .logo-item {
-    flex: 1 1 calc(25% - 2rem); // 4 per row, accounting for gap
-    max-width: calc(25% - 2rem);
+    flex: 1 1 25%;
+    max-width: 25%;
+    min-width: 160px;
+    display: flex;
+    justify-content: left;
+    align-items: left;
 
     img {
-      border: none !important;
-      width: 100%;
-      height: auto;
+      height: 60px; // consistent logo height
+      border: none;
+      width: auto;
+      display: block;
+      object-fit: contain;
       filter: grayscale(100%);
-      // opacity: 0.8;
     }
   }
 }
