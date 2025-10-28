@@ -1,3 +1,21 @@
+# [7.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v6.0.0...v7.0.0) (2025-10-28)
+
+
+* fix minDate bug ([#1884](https://github.com/ministryofjustice/moj-frontend/issues/1884)) ([#1887](https://github.com/ministryofjustice/moj-frontend/issues/1887)) ([fd6f5c0](https://github.com/ministryofjustice/moj-frontend/commit/fd6f5c04c6bd019c991135809fd37c89d62b56be)), closes [#923](https://github.com/ministryofjustice/moj-frontend/issues/923)
+
+
+### Bug Fixes
+
+* **multifileupload:** amend calls to callback functions to use statusText instead of responseText ([#1922](https://github.com/ministryofjustice/moj-frontend/issues/1922)) ([#1932](https://github.com/ministryofjustice/moj-frontend/issues/1932)) ([043dfa5](https://github.com/ministryofjustice/moj-frontend/commit/043dfa5870ed1e51ee2c1fbb67f54eb537de117a))
+* **pagination:** fix page count totals in aria labels ([#1904](https://github.com/ministryofjustice/moj-frontend/issues/1904)) ([3a3aa3e](https://github.com/ministryofjustice/moj-frontend/commit/3a3aa3e54ebd47c89a4a6a90a5ab6eca88a77074))
+* **scrollable pane:** fix affordance shadows not showing ([#1867](https://github.com/ministryofjustice/moj-frontend/issues/1867)) ([ebf12e2](https://github.com/ministryofjustice/moj-frontend/commit/ebf12e2806ac447a4a337c320f090ac7deebcd73)), closes [#1866](https://github.com/ministryofjustice/moj-frontend/issues/1866)
+
+
+### BREAKING CHANGES
+
+* `minDate` is now always inclusive. This means that the date passed for `minDate` will
+always be available for selection.  You will need to amend the dates you pass to the component if you had been relying on the `minDate` not being selectable.
+
 # [6.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v5.2.1...v6.0.0) (2025-10-01)
 
 
