@@ -1,3 +1,10 @@
+# [7.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v7.0.0...v7.1.0) (2025-10-28)
+
+
+### Features
+
+* Update pds header with global navigation ([#1885](https://github.com/ministryofjustice/moj-frontend/issues/1885)) ([15b7306](https://github.com/ministryofjustice/moj-frontend/commit/15b7306abc35bc5a7aa1ffcb0ac3bb44a093c2a1))
+
 # [7.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v6.0.0...v7.0.0) (2025-10-28)
 
 
