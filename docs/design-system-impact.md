@@ -234,69 +234,66 @@ what services are using it</blockquote>
 
 The Design System is used by multiple other public sector organisations, including:
 
-<div class="logo-grid">
+<!-- 3 line logos -->
+<div class="govuk-grid-row govuk-body govuk-!-margin-top-8 three-line">
+  <div class="govuk-grid-column-one-third">
+    <img src="/assets/images/dept-logos/logo-desnz.svg" class="logo" alt="">
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <img src="/assets/images/dept-logos/logo-dvsa.svg" class="logo" alt="">
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <img src="/assets/images/dept-logos/logo-dwp.svg" class="logo" alt="">
+  </div>
+</div>
+<div class="govuk-grid-row govuk-body govuk-!-margin-top-8 three-line">
+  <div class="govuk-grid-column-one-third">
+    <img src="/assets/images/dept-logos/logo-defra.svg" class="logo" alt="">
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <img src="/assets/images/dept-logos/logo-mhclg.svg" class="logo" alt="">
+  </div>
+</div>
 
 <!-- 2 line logos -->
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-dfe.svg" alt="">
+<div class="govuk-grid-row govuk-body govuk-!-margin-top-8 two-line">
+  <div class="govuk-grid-column-one-third">
+    <img src="/assets/images/dept-logos/logo-dfe.svg" class="logo" alt="">
   </div>
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-hmcts.svg" alt="">
+  <div class="govuk-grid-column-one-third">
+    <img src="/assets/images/dept-logos/logo-hmcts.svg" class="logo" alt="">
   </div>
-
-<!-- 3 line logos -->
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-defra.svg" alt="">
+  <div class="govuk-grid-column-one-third">
+    <img src="/assets/images/dept-logos/logo-ukef.svg" class="logo" alt="">
   </div>
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-desnz.svg" alt="">
-  </div>
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-dvsa.svg" alt="">
-  </div>
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-dwp.svg" alt="">
-  </div>
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-mhclg.svg" alt="">
-  </div>
+</div>
 
 <!-- 1 line logos -->
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-companies-house.svg" alt="">
+<div class="govuk-grid-row govuk-body govuk-!-margin-top-8 one-line">
+  <div class="govuk-grid-column-one-third">
+    <img src="/assets/images/dept-logos/logo-companies-house.svg" class="logo" alt="">
   </div>
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-ukef.svg" alt="">
-  </div>
+</div>
 
 <!-- ALBs -->
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-hmlr.svg" alt="">
+<div class="govuk-grid-row govuk-body govuk-!-margin-top-8 alb">
+  <div class="govuk-grid-column-one-third">
+    <img src="/assets/images/dept-logos/logo-hmlr.svg" class="logo" alt="">
   </div>
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-nhs.jpg" alt="">
+  <div class="govuk-grid-column-one-third">
+    <img src="/assets/images/dept-logos/logo-nhs.jpg" class="logo" alt="">
   </div>
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-ofqual.png" alt="">
+  <div class="govuk-grid-column-one-third">
+    <img src="/assets/images/dept-logos/logo-uk-space-agency.svg" class="logo" alt="">
   </div>
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-tpr.svg" alt="">
-  </div>
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-uk-space-agency.png" alt="">
-  </div>
-  <div class="logo-item">
-    <img src="/assets/images/dept-logos/logo-cps.svg" alt="">
-  </div>
-
 </div>
 
 
----
+<!-- ---
 
 1. £5,000 is the average cost for a team to create a component, as estimated by the DWP Design System team. This includes the necessary discovery, design, development, and QA/testing, as well as delivering the component to the required standard for use across a large organisation.​
 
-2. From a code search, we can understand the total amount of times a component appears in code across MOJ services​, and details of a sample of results, including whether the service is live or a prototype. With this information, we can then determine what percentage of the sample are live services​, and apply this percentage to the total amount of times a component appears in code​ to estimate of the total amount of times a component appears in a live service​
+2. From a code search, we can understand the total amount of times a component appears in code across MOJ services​, and details of a sample of results, including whether the service is live or a prototype. With this information, we can then determine what percentage of the sample are live services​, and apply this percentage to the total amount of times a component appears in code​ to estimate of the total amount of times a component appears in a live service​ -->
 
 <!-- **83%** of users asked use the MOJ Design System **daily**, or **a few times a week**
 
