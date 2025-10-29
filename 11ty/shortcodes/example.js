@@ -8,17 +8,31 @@ const nunjucksEnv = require('../config/nunjucks')
 
 module.exports = function (params) {
   let templateFile = ''
-  try {
-    templateFile = fs
-      .readFileSync(
-        path.join(
+  let templatePath
+  if(params.colocated) {
+    templatePath = path.join(
+          __dirname,
+          '../',
+          '../',
+          'docs',
+          this.page.filePathStem.replace('/index', ''),
+          params.template,
+          'index.njk'
+        )
+  } else {
+    templatePath = path.join(
           __dirname,
           '../',
           '../',
           'docs',
           params.template,
           'index.njk'
-        ),
+        )
+  }
+  try {
+    templateFile = fs
+      .readFileSync(
+        templatePath,
         'utf8'
       )
       .trim()
