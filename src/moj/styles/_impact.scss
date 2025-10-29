@@ -1,0 +1,114 @@
+// Custom styles for 'Impact of the Design System' page
+
+@use "../vendor/govuk-frontend" as *;
+
+.headline-container {
+  @include govuk-responsive-margin(6, "bottom");
+
+  & .lead {
+    @include govuk-font($size: 24, $weight: bold);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  & .big-number {
+    @include govuk-font($size: 80, $weight: bold);
+    margin-top: 0;
+  }
+
+  & .medium-number {
+    @include govuk-font($size: 48, $weight: bold);
+    margin-top: 0;
+
+    & .out-of {
+      @include govuk-font($size: 24, $weight: bold);
+      // color: $govuk-secondary-text-colour;
+    }
+  }
+}
+
+blockquote {
+  @include govuk-font($size: 24, $weight: normal);
+  @include govuk-responsive-margin(7, "top");
+  margin-left: govuk-spacing(9);
+
+  &::before {
+    content: open-quote;
+    margin-left: -1.75rem;
+    font-size: 4rem;
+    line-height: 0;
+    vertical-align: -1.25rem;
+  }
+
+  &::after {
+    content: close-quote;
+  }
+}
+
+.comma-separated {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  & li {
+    display: inline;
+  }
+
+  & li::after {
+    content: ", ";
+  }
+
+  & li:last-child::after {
+    content: "";
+  }
+}
+
+.callout-card {
+  height: 100%;
+  padding: govuk-spacing(5);
+  padding-left: govuk-spacing(5) + 4px;
+  border-left: 4px solid $govuk-border-colour;
+  background-color: govuk-colour("white");
+}
+
+.footnote {
+  @include govuk-font($size: 14, $weight: normal);
+}
+
+h2 {
+  @include govuk-responsive-margin(5, "bottom");
+}
+
+  .three-line {
+    & img {
+      height: 120px !important;
+    }
+  }
+
+  .two-line {
+    & img {
+      height: 100px !important;
+    }
+  }
+
+  .one-line {
+    & img {
+      height: 70px !important;
+    }
+  }
+
+  .alb {
+    & img {
+      height: 70px !important;
+    }
+  }
+
+.logo {
+  object-fit: contain;
+  object-position: left;
+  width: 100%;
+  border: none !important;
+  // filter: grayscale(100%);
+
+}
