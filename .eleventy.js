@@ -1,3 +1,5 @@
+const util = require('util')
+
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
 
 const experimentalComponentsTemplateCopy = require('./11ty/config/experimental-components/template-copy')
@@ -30,7 +32,12 @@ module.exports = function (eleventyConfig) {
     nunjucksEnv.addFilter(name, callback)
   })
 
-  eleventyConfig.ignores.add('**/*_arguments.md')
+  eleventyConfig.addFilter('inspect', function(value) {
+    const str = util.inspect(value);
+    return `<div style="white-space: pre-wrap;">${unescape(str)}</div>;`
+});
+
+  eleventyConfig.ignores.add("**/*_*.md");
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')

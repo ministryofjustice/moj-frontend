@@ -1,7 +1,7 @@
 @use "../moj-frontend" as *;
 @use "../settings/app";
 
-.app-layout-tabs__panel .govuk-pagination--block {
+.app-layout-tabs .govuk-tabs__panel .govuk-pagination--block {
   display: none;
 }
 
@@ -9,76 +9,76 @@
   @include govuk-media-query($from: tablet) {
     .app-layout-tabs {
       margin-top: 0;
-    }
 
-    .app-layout-tabs__list {
-      display: flex;
-      position: relative;
-      background: govuk-colour("white");
-
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100vw;
-        height: 100%;
-        border-bottom: 1px solid $govuk-border-colour;
+      .govuk-tabs__list {
+        display: flex;
+        position: relative;
         background: govuk-colour("white");
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 100vw;
+          height: 100%;
+          border-bottom: 1px solid $govuk-border-colour;
+          background: govuk-colour("white");
+        }
+
+        &::before {
+          right: 100%;
+        }
+
+        &::after {
+          left: 100%;
+        }
       }
 
-      &::before {
-        right: 100%;
+      .govuk-tabs__list-item {
+        display: flex;
+        align-items: flex-end;
+        background-color: govuk-colour("white");
       }
 
-      &::after {
-        left: 100%;
-      }
-    }
-
-    .app-layout-tabs__list-item {
-      display: flex;
-      align-items: flex-end;
-      background-color: govuk-colour("white");
-    }
-
-    .govuk-tabs__list-item--selected {
-      margin-top: 0; // removes negative top margin from govuk tabs
-      padding: 9px 19px 11px; // matches non-selected tabs to ensure text alignment
-      border-top: 4px solid govuk-colour("blue");
-      background-color: #f7f7f7;
-    }
-
-    .app-layout-tabs__tab {
-      text-decoration: none;
-    }
-
-    .app-layout-tabs__list-item:not(.govuk-tabs__list-item--selected) {
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    .app-layout-tabs__panel {
-      padding: govuk-spacing(9) 0;
-      border: none;
-    }
-
-    .app-layout-tabs__panel .govuk-pagination--block {
-      display: block;
-      @include govuk-responsive-margin(6, "top");
-
-      @include govuk-media-query(app.$breakpoint) {
-        @include govuk-responsive-margin(9, "top");
+      .govuk-tabs__list-item--selected {
+        margin-top: 0; // removes negative top margin from govuk tabs
+        padding: 9px 19px 11px; // matches non-selected tabs to ensure text alignment
+        border-top: 4px solid govuk-colour("blue");
+        background-color: #f7f7f7;
       }
 
-      border-top: 1px solid $govuk-border-colour;
-    }
+      .govuk-tabs__tab {
+        text-decoration: none;
+      }
 
-    .app-layout-tabs__panel .govuk-pagination__next {
-      &:hover {
-        background-color: #ebebeb;
+      .govuk-tabs__list-item:not(.govuk-tabs__list-item--selected) {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .govuk-tabs__panel {
+        padding: govuk-spacing(9) 0;
+        border: none;
+      }
+
+      .govuk-tabs__panel .govuk-pagination--block {
+        display: block;
+        @include govuk-responsive-margin(6, "top");
+
+        @include govuk-media-query(app.$breakpoint) {
+          @include govuk-responsive-margin(9, "top");
+        }
+
+        border-top: 1px solid $govuk-border-colour;
+      }
+
+      .govuk-tabs__panel .govuk-pagination__next {
+        &:hover {
+          background-color: #ebebeb;
+        }
       }
     }
   }
