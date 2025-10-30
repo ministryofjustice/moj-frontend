@@ -9,6 +9,8 @@ const nunjucksEnv = require('../config/nunjucks')
 module.exports = function (params) {
   let templateFile = ''
   let templatePath
+  let argumentsPath
+  let figmaLink
   if(params.colocated) {
         templatePath = path.resolve(
           this.eleventy.env.root,
@@ -16,23 +18,21 @@ module.exports = function (params) {
           params.template,
           'index.njk'
         )
+        argumentsPath = path.resolve(
+          this.eleventy.env.root,
+          path.dirname(this.page.inputPath),
+          '_arguments.md'
+        )
+        console.log(argumentsPath)
   } else {
-    // templatePath = path.join(
-    //       __dirname,
-    //       '../',
-    //       '../',
-    //       'docs',
-    //       params.template,
-    //       'index.njk'
-    //     )
-    //     'j'
         templatePath = path.join(
           this.eleventy.env.root,
           this.eleventy.directories.input,
           params.template,
           'index.njk'
         )
-    console.log(templatePath)
+    argumentsPath = `./arguments/${this.page.fileSlug}.md`
+    // console.log(templatePath)
   }
   try {
     templateFile = fs
@@ -46,6 +46,12 @@ module.exports = function (params) {
     return ''
   }
   let { data, content: nunjucksCode } = matter(templateFile)
+
+  if(params.colocated) {
+    figmaLink = this.ctx.figma_link
+  } else {
+    figmaLink = data.figma_link
+  }
 
   nunjucksCode = nunjucksCode.split('<!--no include-->')[0].trim()
 
@@ -71,8 +77,8 @@ module.exports = function (params) {
   return nunjucksEnv.render('example.njk', {
     href: params.template,
     id: params.template.replace(/\//g, '-'),
-    arguments: this.page.fileSlug,
-    figmaLink: this.ctx.figma_link,
+    arguments: argumentsPath,
+    figmaLink: figmaLink,
     title: data.title,
     height: params.height,
     showTab: params.showTab,

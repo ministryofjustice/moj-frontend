@@ -36,7 +36,7 @@
   <div class="app-tabs__panel" id="nunjucks-default-{{ id }}" role="tabpanel" aria-labelledby="tab_nunjucks-default-{{ id }}">
 
 {%- set argsContent %}
-  {% include "./arguments/" + arguments + ".md" ignore missing %}
+  {% include arguments ignore missing %}
 {%- endset %}
 
 {% if argsContent | trim %}
