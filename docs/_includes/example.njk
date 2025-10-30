@@ -43,7 +43,7 @@
   {%- endif -%}
 
 {%- set argsContent %}
-  {% include "./arguments/" + arguments + ".md" ignore missing %}
+  {% include arguments ignore missing %}
 {%- endset %}
 
 {% if argsContent | trim %}
