@@ -34,6 +34,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')
   eleventyConfig.addWatchTarget('docs/examples/**/script.js')
   eleventyConfig.addWatchTarget('docs/examples/**/style.css')
+  eleventyConfig.addWatchTarget('11ty/**/*.js')
   // Give gulp a little time..
   eleventyConfig.setWatchThrottleWaitTime(100)
 
