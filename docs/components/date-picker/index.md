@@ -6,13 +6,14 @@ statusDate: September 2025
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/703
 excerpt: "The date picker component enables users to select a date from a calendar."
 lede: "The date picker component enables users to select a date from a calendar."
+figma_link: 'https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=792-861&t=6DfPOX7RAnjrVE0j-0'
 ---
 {% from "govuk/components/pagination/macro.njk" import govukPagination %}
 
 {% tabs "paginate" %}
 {% tab "Overview" %}
 
-{% example template="/examples/date-picker", height=590 %}
+{% example template="examples/default", colocated="true", height=590 %}
 
 ## Overview
 
@@ -64,7 +65,7 @@ You can exclude (or disable) options from the date picker, such as:
 - specific dates, such as bank holidays
 - past or future dates
 
-{% example template="/examples/date-picker-excluded-dates", height=590 %}
+{% example template="examples/excluded-dates", colocated="true", height=590 %}
 
 You need to add server-side validation for when users enter an unavailable date directly into the text field (rather than use the calendar). This will show them an error message.
 
@@ -76,7 +77,7 @@ If there are not many available dates, users will have to navigate a lot to find
 
 Follow the [GOV.UK Design System guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
 
-{% example template="/examples/date-picker-error", height=590 %}
+{% example template="examples/error", colocated="true", height=590 %}
 
 <table class="govuk-table">
   <thead class="govuk-table__head">

@@ -10,24 +10,29 @@ module.exports = function (params) {
   let templateFile = ''
   let templatePath
   if(params.colocated) {
-    templatePath = path.join(
-          __dirname,
-          '../',
-          '../',
-          'docs',
-          this.page.filePathStem.replace('/index', ''),
+        templatePath = path.resolve(
+          this.eleventy.env.root,
+          path.dirname(this.page.inputPath),
           params.template,
           'index.njk'
         )
   } else {
-    templatePath = path.join(
-          __dirname,
-          '../',
-          '../',
-          'docs',
+    // templatePath = path.join(
+    //       __dirname,
+    //       '../',
+    //       '../',
+    //       'docs',
+    //       params.template,
+    //       'index.njk'
+    //     )
+    //     'j'
+        templatePath = path.join(
+          this.eleventy.env.root,
+          this.eleventy.directories.input,
           params.template,
           'index.njk'
         )
+    console.log(templatePath)
   }
   try {
     templateFile = fs
@@ -67,7 +72,7 @@ module.exports = function (params) {
     href: params.template,
     id: params.template.replace(/\//g, '-'),
     arguments: this.page.fileSlug,
-    figmaLink: data.figma_link,
+    figmaLink: this.ctx.figma_link,
     title: data.title,
     height: params.height,
     showTab: params.showTab,
