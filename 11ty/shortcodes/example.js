@@ -11,43 +11,38 @@ module.exports = function (params) {
   let templatePath
   let argumentsPath
   let figmaLink
-  if(params.colocated) {
-        templatePath = path.resolve(
-          this.eleventy.env.root,
-          path.dirname(this.page.inputPath),
-          params.template,
-          'index.njk'
-        )
-        argumentsPath = path.resolve(
-          this.eleventy.env.root,
-          path.dirname(this.page.inputPath),
-          '_arguments.md'
-        )
-        console.log(argumentsPath)
+  if (params.colocated) {
+    templatePath = path.resolve(
+      this.eleventy.env.root,
+      path.dirname(this.page.inputPath),
+      params.template,
+      'index.njk'
+    )
+    argumentsPath = path.resolve(
+      this.eleventy.env.root,
+      path.dirname(this.page.inputPath),
+      '_arguments.md'
+    )
+    console.log(argumentsPath)
   } else {
-        templatePath = path.join(
-          this.eleventy.env.root,
-          this.eleventy.directories.input,
-          params.template,
-          'index.njk'
-        )
+    templatePath = path.join(
+      this.eleventy.env.root,
+      this.eleventy.directories.input,
+      params.template,
+      'index.njk'
+    )
     argumentsPath = `./arguments/${this.page.fileSlug}.md`
     // console.log(templatePath)
   }
   try {
-    templateFile = fs
-      .readFileSync(
-        templatePath,
-        'utf8'
-      )
-      .trim()
+    templateFile = fs.readFileSync(templatePath, 'utf8').trim()
   } catch {
     console.error(`Template '${params.template}' could not be found.`)
     return ''
   }
   let { data, content: nunjucksCode } = matter(templateFile)
 
-  if(params.colocated) {
+  if (params.colocated) {
     figmaLink = this.ctx.figma_link
   } else {
     figmaLink = data.figma_link
@@ -78,7 +73,7 @@ module.exports = function (params) {
     href: params.template,
     id: params.template.replace(/\//g, '-'),
     arguments: argumentsPath,
-    figmaLink: this.ctx.figma_link,
+    figmaLink,
     figmaTabContent: params.figmaTabContent,
     title: data.title,
     height: params.height,
