@@ -40,7 +40,7 @@ test.describe('navigation', () => {
   test('menus can be opened', async ({ page }) => {
     await page.goto('/')
 
-    await page.getByRole('button', { name: 'Components' }).click()
+    await page.getByRole('button', { name: 'Components', exact: true }).click()
     await expect(page.getByRole('link', { name: 'Date picker' })).toBeVisible()
 
     await page.getByRole('button', { name: 'Patterns' }).click()
