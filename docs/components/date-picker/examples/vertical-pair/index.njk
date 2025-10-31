@@ -1,0 +1,28 @@
+---
+layout: layouts/example.njk
+title: Date Picker Vertical Pair (example)
+---
+
+{%- from "moj/components/date-picker/macro.njk" import mojDatePicker -%}
+
+{{ mojDatePicker({
+  id: "from-date",
+  name: "from-date",
+  label: {
+      text: "From"
+  },
+  hint: {
+    text: "For example, 17/5/2024."
+  }
+}) }}
+
+{{ mojDatePicker({
+  id: "to-date",
+  name: "to-date",
+  label: {
+      text: "To"
+  },
+  hint: {
+    text: "For example, 17/5/2024."
+  }
+}) }}
