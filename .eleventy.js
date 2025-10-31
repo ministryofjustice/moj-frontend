@@ -30,7 +30,7 @@ module.exports = function (eleventyConfig) {
     nunjucksEnv.addFilter(name, callback)
   })
 
-  eleventyConfig.ignores.add("**/*_arguments.md");
+  eleventyConfig.ignores.add('**/*_arguments.md')
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')
