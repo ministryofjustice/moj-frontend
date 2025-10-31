@@ -1,5 +1,6 @@
 const { upperFirst } = require('lodash')
 
+const inspect = require('./inspect')
 const paths = require('./paths')
 const renderMarkdown = require('./render-markdown')
 const renderNunjucksString = require('./render-nunjucks')
@@ -8,6 +9,7 @@ const timestamp = require('./timestamp')
 
 const filters = {
   ...paths,
+  inspect,
   renderMarkdown,
   renderNunjucksString,
   rev,
