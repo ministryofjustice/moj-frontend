@@ -7,34 +7,34 @@
 
 .govuk-frontend-supported {
   @include govuk-media-query($from: tablet) {
+    .app-layout-tabs .govuk-tabs__list {
+      display: flex;
+      position: relative;
+      background: govuk-colour("white");
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 100%;
+        border-bottom: 1px solid $govuk-border-colour;
+        background: govuk-colour("white");
+      }
+
+      &::before {
+        right: 100%;
+      }
+
+      &::after {
+        left: 100%;
+      }
+    }
+
     .app-layout-tabs {
       margin-top: 0;
-
-      .govuk-tabs__list {
-        display: flex;
-        position: relative;
-        background: govuk-colour("white");
-
-        &::before,
-        &::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          width: 100vw;
-          height: 100%;
-          border-bottom: 1px solid $govuk-border-colour;
-          background: govuk-colour("white");
-        }
-
-        &::before {
-          right: 100%;
-        }
-
-        &::after {
-          left: 100%;
-        }
-      }
 
       .govuk-tabs__list-item {
         display: flex;

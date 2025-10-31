@@ -2,7 +2,8 @@ export default {
   type: 'component',
   subsection: 'Components',
   eleventyComputed: {
-    layout: (data) => (data.tabCollection ? 'layouts/content-tabs' : 'layouts/content.njk'),
+    layout: (data) =>
+      data.tabCollection ? 'layouts/content-tabs' : 'layouts/content.njk',
     eleventyNavigation: {
       key: (data) => data.title,
       parent: (data) => (data.index ? 'Building blocks' : 'Components'),

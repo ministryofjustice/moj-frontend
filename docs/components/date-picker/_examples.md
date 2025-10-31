@@ -1,7 +1,10 @@
 ---
 title: Examples
-tags: "date-picker"
 order: 30
+tags: 'date-picker'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: {}
 ---
 ## Examples
 

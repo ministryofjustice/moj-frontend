@@ -5,7 +5,6 @@
 
 {%- set tabs = collections[tabCollection] | sort(attribute='data.order')  -%}
 {%- set items = [] -%}
-
 {%- for tab in tabs -%}
     {%- set paginationLink = "" -%}
     {%- if not loop.index.last -%}
@@ -32,7 +31,7 @@
     {% include "./partials/page-header.njk" %}
 
     <div class="app-page__body">
-        <div class="app-page__width-container">
+      <div class="app-page__width-container">
           {{- govukTabs({
             items: items,
             classes: 'app-layout-tabs no-govuk-tabs-styles'

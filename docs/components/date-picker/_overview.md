@@ -1,7 +1,10 @@
 ---
 title: Overview
-tags: "date-picker"
 order: 10
+tags: 'date-picker'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: false
 ---
 {% example template="examples/default", colocated="true", height=590 %}
 

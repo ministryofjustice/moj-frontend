@@ -1,9 +1,10 @@
 ---
 title: How to use
-tags: "date-picker"
 order: 20
+tags: 'date-picker'
+eleventyComputed:
+  override:eleventyNavigation: {}
 ---
-
 ## How to use
 
 ### Hint text
