@@ -2,6 +2,15 @@ name: Publish package
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Publish mode'
+        required: true
+        default: 'dryrun'
+        type: choice
+        options:
+          - dryrun
+          - publish
 
 jobs:
   build:
@@ -16,6 +25,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
+      # Ensure npm 11.5.1 or later is installed
+      - name: Update npm
+        run: npm install -g npm@latest
       - run: npm ci
       - name: Get next version
         run: npm run ci:dryrun
@@ -60,6 +72,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+      # Ensure npm 11.5.1 or later is installed
+      - name: Update npm
+        run: npm install -g npm@latest
 
       - name: npm install
         run: npm install
@@ -123,8 +138,18 @@ jobs:
         with:
           name: mojds-dist
           path: dist
+      # Ensure npm 11.5.1 or later is installed
+      - name: Update npm
+        run: npm install -g npm@latest
       - run: npm ci
-      - name: Publish to NPM
+      - name: If dryrun
+        if: github.event.inputs.mode == 'dryrun'
+        run: npm run ci:dryrun
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
+      - name: If publish
+        if: github.event.inputs.mode == 'publish'
         run: npm run ci:release
         env:
           NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
