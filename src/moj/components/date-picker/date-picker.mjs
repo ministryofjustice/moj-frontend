@@ -369,8 +369,8 @@ export class DatePicker extends ConfigurableComponent {
 
   setExcludedDays() {
     if (this.config.excludedDays) {
-      // lowercase and arrange dayLabels to put indexOf sunday == 0 for comparison
-      // with getDay() function
+      /* lowercase and arrange dayLabels to put indexOf sunday == 0 for comparison
+         with getDay() function */
       const weekDays = this.dayLabels.map((item) => item.toLowerCase())
       if (this.config.weekStartDay === 'monday') {
         weekDays.unshift(weekDays.pop())
