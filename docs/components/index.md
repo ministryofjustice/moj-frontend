@@ -1,6 +1,7 @@
 ---
 layout: layouts/thumbnail-grid.njk
 title: Components
+allTitle: All MOJ components
 index: true
 order: 10
 ---
