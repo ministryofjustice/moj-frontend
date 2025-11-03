@@ -61,7 +61,6 @@ module.exports = function (params) {
     nunjucksCode,
     htmlCode,
     jsCode,
-    htmlWarning: data.html_warning,
-    nunjucksWarning: data.nunjucks_warning
+    tabWarning: data.tab_warning
   })
 }
