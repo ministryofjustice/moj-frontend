@@ -54,10 +54,10 @@ You can use ‘to be reviewed’ building blocks in every product phase.
 
 ## ‘Official’ status <span class="govuk-tag govuk-tag--green"  style="vertical-align:middle;" aria-hidden="true">Official</span>
 
-Official building blocks are either:
+Official building blocks have either:
 
-- for the Probation Digital Services (PDS) platform
-- ‘experimental’ or ‘to be reviewed’ building blocks that had an organisation-wide discovery and multidisciplinary team review (including accessibility testing)  
+- started as ‘experimental’ or ‘to be reviewed’ and then had an organisation-wide discovery and multidisciplinary team review (with accessibility testing)  
+- been developed for the Probation Digital Services (PDS) platform
 
 Usage is thoroughly documented.
 
