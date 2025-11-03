@@ -403,8 +403,6 @@ export class DatePicker extends ConfigurableComponent {
    * @returns {boolean}
    */
   isExcludedDate(date) {
-    // This comparison does not work correctly - it will exclude the mindate itself
-    // see: https://github.com/ministryofjustice/moj-frontend/issues/923
     if (this.minDate && this.minDate > date) {
       return true
     }
