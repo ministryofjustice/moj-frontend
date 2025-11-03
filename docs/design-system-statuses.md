@@ -54,13 +54,18 @@ You can use ‘to be reviewed’ building blocks in every product phase.
 
 ## ‘Official’ status <span class="govuk-tag govuk-tag--green"  style="vertical-align:middle;" aria-hidden="true">Official</span>
 
-When an ‘experimental’ or ‘to be reviewed’ building block gets a full review by the Design System team it becomes ‘official’.
+Official building blocks are either:
 
-This review includes an organisation-wide discovery and multi-disciplinary team input (including accessibility testing). Usage is thoroughly documented.
+- for the Probation Digital Services (PDS) platform
+- ‘experimental’ or ‘to be reviewed’ building blocks that had an organisation-wide discovery and multidisciplinary team review (including accessibility testing)  
+
+Usage is thoroughly documented.
 
 ### How to use ‘official’ building blocks
 
-You can use ‘official’ building blocks in every product phase. They'll be supported and maintained in the long term.
+You can use ‘official’ building blocks in every product phase. PDS components are only to be used on the Probation Digital Services (PDS) platform.
+
+‘Official’ building blocks will be supported and maintained in the long term.
 
 ## ‘Archived’ status <span class="govuk-tag govuk-tag--grey"  style="vertical-align:middle;" aria-hidden="true">Archived</span>
 
