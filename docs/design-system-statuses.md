@@ -63,7 +63,7 @@ Usage is thoroughly documented.
 
 ### How to use ‘official’ building blocks
 
-You can use ‘official’ building blocks in every product phase. PDS components are only to be used on the Probation Digital Services (PDS) platform.
+You can use ‘official’ building blocks in every product phase. PDS components are only to be used for services on the Probation Digital Services (PDS) platform.
 
 ‘Official’ building blocks will be supported and maintained in the long term.
 
