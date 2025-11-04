@@ -1,0 +1,47 @@
+{% from "govuk/components/tabs/macro.njk" import govukTabs %}
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
+{% extends "./base.njk" %}
+
+{%- set tabs = collections[tabCollection] | sort(attribute='data.order')  -%}
+{%- set items = [] -%}
+{%- for tab in tabs -%}
+    {%- set paginationLink = "" -%}
+    {%- if not loop.index.last -%}
+        {%- set paginationLink = govukPagination({
+          next: {
+            labelText: tabs[loop.index].data.title,
+            href: "#"+(tabs[loop.index].data.title + '-tab') | lower | replace(' ', '-')
+          }
+        }) -%}
+    {%- endif -%}
+
+    {%- set item = {
+         label: tab.data.title,
+         id: (tab.data.title + '-tab') | lower | replace(' ', '-'),
+         panel: {
+           html: (tab.content | safe) + (paginationLink | safe)
+         }
+    } -%}
+
+    {%- set items = (items.push(item), items) -%}
+{%- endfor -%}
+
+{% block content %}
+    {% include "./partials/page-header.njk" %}
+
+    <div class="app-page__body">
+      <div class="app-page__width-container">
+          {{- govukTabs({
+            items: items,
+            classes: 'app-layout-tabs no-govuk-tabs-styles'
+          }) -}}
+
+          {% if (["component", "page", "pattern"].includes(type)) and (not tabs) and (["To be reviewed", "Experimental", "Official"].includes(status)) %}
+            {% include "./partials/get-help-and-contribute.njk" %}
+          {% elif showHelp %}
+            {% include "./partials/get-help.njk" %}
+          {% endif %}
+        </div>
+    </div>
+{% endblock %}
