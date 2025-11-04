@@ -1,3 +1,20 @@
+# [8.0.0-beta.1](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.0...v8.0.0-beta.1) (2025-11-04)
+
+
+* Datepicker min date fix ([#1881](https://github.com/ministryofjustice/moj-frontend/issues/1881)) ([64a4f15](https://github.com/ministryofjustice/moj-frontend/commit/64a4f15a0f451983ecb5aa8b9bf172d868e84d2c)), closes [#923](https://github.com/ministryofjustice/moj-frontend/issues/923)
+
+
+### Bug Fixes
+
+* another test fix ([c081c81](https://github.com/ministryofjustice/moj-frontend/commit/c081c819cc14ce6d3278178741ea9e30b010c06e))
+* **date picker:** pretend fix to test publishing ([a674bb2](https://github.com/ministryofjustice/moj-frontend/commit/a674bb298ee442487166e9a62454403364fe7a85))
+
+
+### BREAKING CHANGES
+
+* `minDate` is now always inclusive. This means that the date passed for `minDate` will
+be available for selection.
+
 # [7.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v7.0.0...v7.1.0) (2025-10-28)
 
 
