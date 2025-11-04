@@ -17,13 +17,12 @@ eleventyNavigation:
 
 ## If you work for the Ministry of Justice
 
-5 Figma Kits are automatically added to all Figma files in the MoJ:
+5 Figma Kits are automatically added to all Figma files in the MOJ:
 
-- [DPS (Prisons) Figma Kit](https://www.figma.com/design/DhGdok6Nx5UKK9dAKZq6Ay/DPS--Prison--Figma-Kit?m=auto&t=AzXDFgdkD1YLOZui-6)
-- [GOV.UK & MOJ Styles](https://www.figma.com/design/rbzFtXbYqItzqtfE3fdCQ4/GOV-%26-MoJ-Styles?m=auto&node-id=20-17040&t=u1P8phs3qyRxZ4FQ-1)
+- [GOV.UK & MOJ Styles](https://www.figma.com/design/rbzFtXbYqItzqtfE3fdCQ4/GOV-%26-MOJ-Styles?m=auto&node-id=20-17040&t=u1P8phs3qyRxZ4FQ-1)
 - [GOV.UK Figma Kit](https://www.figma.com/design/cdmqMa73kZBDEC42spSVba/GOV-Figma-Kit?m=auto&node-id=20-17040&t=ZG7js0TWe3yzv5CD-1)
-- [MOJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?node-id=20-17040)
-- [PDS (Probation) Figma Kit](https://www.figma.com/design/AT9lj3HbJj6lYKrZLeM8CN/PDS-Figma-Kit?m=auto)
+- [MOJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit?node-id=20-17040)
+- [Probation Digital Services (PDS) Figma Kit](https://www.figma.com/design/AT9lj3HbJj6lYKrZLeM8CN/PDS-Figma-Kit?m=auto)
 
 This enables Figma prototypes to benefit from centrally maintained updates.
 
