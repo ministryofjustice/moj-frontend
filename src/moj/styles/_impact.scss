@@ -3,6 +3,8 @@
 @use "../vendor/govuk-frontend" as *;
 
 .headline-container {
+  height: 100%;
+
   @include govuk-responsive-margin(6, "bottom");
 
   & .lead {
@@ -81,27 +83,19 @@ h2 {
 }
 
   .three-line {
-    & img {
-      height: 120px !important;
-    }
+    height: 120px !important;
   }
 
   .two-line {
-    & img {
-      height: 100px !important;
-    }
+    height: 100px !important;
   }
 
   .one-line {
-    & img {
-      height: 70px !important;
-    }
+    height: 70px !important;
   }
 
   .alb {
-    & img {
-      height: 70px !important;
-    }
+    height: 70px !important;
   }
 
 .logo {
@@ -110,5 +104,9 @@ h2 {
   width: 100%;
   border: none !important;
   // filter: grayscale(100%);
+}
 
+.secondary {
+  padding-bottom: govuk-spacing(2);
+  color: $govuk-secondary-text-colour !important;
 }
