@@ -27,7 +27,7 @@ The PDS footer links to an accessibility hub page, which then links out to the i
 
 Users will only see accessibility statements for services they have permission to access.
 
-<p><img src="{{ 'assets/images/accessibility-statements-page.png' | rev | url }}" alt="An MoJ webpage showing the probation accessibility statements page"></p>
+<p><img src="{{ 'assets/images/accessibility-statements-page.png' | rev | url }}" alt="An MOJ webpage showing the probation accessibility statements page"></p>
 
 #### Cookies and privacy policies 
 
@@ -35,11 +35,11 @@ All the services on the Probation Digital Services platform share the same cooki
 
 Probation Digital Services cookies policy:
 
-<p><img src="{{ 'assets/images/cookies-policy-page.png' | rev | url }}" alt="An MoJ webpage showing the probation cookies policy page"></p>
+<p><img src="{{ 'assets/images/cookies-policy-page.png' | rev | url }}" alt="An MOJ webpage showing the probation cookies policy page"></p>
 
 Probation Digital Services privacy policy:
 
-<p><img src="{{ 'assets/images/privacy-policy-page.png' | rev | url }}" alt="An MoJ webpage showing the probation privacy policy page"></p>
+<p><img src="{{ 'assets/images/privacy-policy-page.png' | rev | url }}" alt="An MOJ webpage showing the probation privacy policy page"></p>
 
 #### When to use
 
@@ -81,7 +81,7 @@ The [Probation Digital Services GitHub repository](https://github.com/ministryof
 
 The PDS footer in Manage People on Probation, showing the links to accessibility, cookies, and privacy policies.
 
-<p><img src="{{ 'assets/images/pds-footer-manage-people-on-probation.png' | rev | url }}" alt="An MoJ webpage showing the PDS footer in Manage People on Probation"></p>
+<p><img src="{{ 'assets/images/pds-footer-manage-people-on-probation.png' | rev | url }}" alt="An MOJ webpage showing the PDS footer in Manage People on Probation"></p>
 
 {% endtab %}
 
