@@ -54,18 +54,21 @@ You can use ‘to be reviewed’ building blocks in every product phase.
 
 ## ‘Official’ status <span class="govuk-tag govuk-tag--green"  style="vertical-align:middle;" aria-hidden="true">Official</span>
 
-Official building blocks have either:
+Official building blocks have had:
 
-- started as ‘experimental’ or ‘to be reviewed’ and then had an organisation-wide discovery and multidisciplinary team review (with accessibility testing)  
-- been developed for the Probation Digital Services (PDS) platform
+- a comprehensive discovery
+- multidisciplinary team input
+- accessibility testing
 
 Usage is thoroughly documented.
 
+They may have started as ‘experimental’ or ‘to be reviewed’.
+
 ### How to use ‘official’ building blocks
 
-You can use ‘official’ building blocks in every product phase. PDS components are only to be used for services on the Probation Digital Services (PDS) platform.
+You can use ‘official’ building blocks in every product phase. They’ll be supported and maintained in the long term.
 
-‘Official’ building blocks will be supported and maintained in the long term.
+Some official building blocks are only for use in particular areas, for example the Probation Digital Services (PDS) platform. This will be stated clearly on the documentation, MOJ Frontend and in Figma.
 
 ## ‘Archived’ status <span class="govuk-tag govuk-tag--grey"  style="vertical-align:middle;" aria-hidden="true">Archived</span>
 
