@@ -2,7 +2,7 @@
 title: PDS header
 tabs: true
 status: Official
-statusDate: October 2025
+statusDate: November 2025
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1948
 excerpt: "Use this header component for services on the Probation Digital Services (PDS) platforms."
 lede: "The PDS header component is at the top of every page, and tells users they're on the Probation Digital Services (PDS) platform."
@@ -13,7 +13,7 @@ lede: "The PDS header component is at the top of every page, and tells users the
 {% tabs "paginate" %}
 {% tab "Overview" %}
 
-{% example template="/examples/domain-specific/probation/header", figmaTabContent=figmaTabContent, height=540 %}
+{% example template="/examples/probation/header", figmaTabContent=figmaTabContent, height=540 %}
 
 ## Overview
 
@@ -36,7 +36,7 @@ Use this header for internal probation services on the Probation Digital Service
 
 Do not use for services not on the Probation Digital Services platform.
 
-Use the [MOJ header component](/components/header) instead.
+Use the [MOJ header component](/components/moj-header) instead.
 
 {% endtab %}
 

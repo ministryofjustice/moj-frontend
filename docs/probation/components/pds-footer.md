@@ -2,7 +2,7 @@
 title: PDS footer
 tabs: true
 status: Official
-statusDate: October 2025
+statusDate: November 2025
 githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1949
 excerpt: "Use this footer component for services on the Probation Digital Services (PDS) platforms."
 lede: "The PDS footer component is used for services on the Probation Digital Services (PDS) platform, and contains links to statements such as accessibility and cookies."
@@ -13,7 +13,7 @@ lede: "The PDS footer component is used for services on the Probation Digital Se
 {% tabs "paginate" %}
 {% tab "Overview" %}
 
-{% example template="/examples/domain-specific/probation/footer", figmaTabContent=figmaTabContent, height=540 %}
+{% example template="/examples/probation/footer", figmaTabContent=figmaTabContent, height=540 %}
 
 ## Overview
 
