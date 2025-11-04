@@ -36,7 +36,7 @@ Use this header for internal probation services on the Probation Digital Service
 
 Do not use for services not on the Probation Digital Services platform.
 
-Use the [MOJ header component](/components/header) instead.
+Use the [MOJ header component](/components/moj-header) instead.
 
 {% endtab %}
 
