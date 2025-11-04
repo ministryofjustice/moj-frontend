@@ -38,7 +38,7 @@ This enables Figma prototypes to benefit from centrally maintained updates.
 2. Select 'Assets' from the side navigation and then the book icon.
 <p><img src="/assets/images/figma-guidance-assets-menu.png" style="border:none; max-width:760px" alt="A cropped view of the side navigation in the Figma app, showing The Figma logo, the filename 'Untitled', the file location 'drafts', the 'Files' and 'Assets' tabs, an icon showing an open book, and a search bar. The 'Assets' tab is selected."></p>
 
-3. Look under the heading ‘Libraries added to this file’ If there's a list of the 5 libraries — DPS (Prisons) Figma Kit, GOV.UK & MOJ Styles, GOV.UK Figma Kit, MOJ Figma Kit and PDS (Probation) Figma Kit — the Figma Kits are active. You do not need to do anything else.
+3. Look under the heading 'Libraries added to this file'. If there’s a list of the 5 libraries, the Figma Kits are active. You do not need to do anything else.
 <p><img src="/assets/images/figma-guidance-default-libraries.png" style="border:none; max-width:760px" alt="A 'Manage libraries' window with a side navigation menu showing a 'This file' tab selected. The content in the main pane is in two sections: 'Assets created in this file' and 'Libraries added to this file'. Under 'Libraries added to this file' there are three libraries: 'GOV.UK & MOJ Styles', 'GOV.UK Figma Kit' and 'MOJ Figma Kit'. Next to each, there is a 'Remove' button."></p>
 
 4. If the 5 libraries do not appear, go to 'Browse libraries' in the side navigation. Then select 'Recommended' (it has a light bulb icon).
@@ -46,7 +46,7 @@ This enables Figma prototypes to benefit from centrally maintained updates.
 5. Focus on each library and select the 'Add to file' button.
 <p><img src="/assets/images/figma-guidance-recommended-libraries-hover.png" style="border:none; max-width:760px" alt="A 'Manage libraries' window with a side navigation menu showing a 'Recommended' tab selected. The content in the main pane shows the heading 'Recommended libraries' and the text 'Your admins suggest using these libraries'. Underneath there is another heading reading 'Recommended by Ministry of Justice', with three libraries shown below: 'GOV.UK & MOJ Styles', 'GOV.UK Figma Kit' and 'MOJ Figma Kit'. 'GOV.UK & MOJ Styles' is being hovered over and has an 'Add to file' button over it."></p>
 
-6. To check that the files have been added, select ‘This file’ in the side navigation. You should now see the 5 libraries: DPS (Prisons) Figma Kit, GOV.UK & MOJ Styles, GOV.UK Figma Kit, MOJ Figma Kit and PDS (Probation) Figma Kit. This means the Figma Kits are active. You do not need to do anything else.
+6. To check that the files have been added, select ‘This file’ in the side navigation. You should now see the 5 libraries. This means the Figma Kits are active. You do not need to do anything else.
 
 ### How to get updates from the Figma Kits
 
@@ -101,7 +101,7 @@ When the Figma Kits are updated, you’ll be notified in Figma. You can also che
 
 The MOJ Design System team would like to hear about:
 
-- GOV.UK or MOJ components missing from the Figma Kits
+- components missing from the Figma Kits
 - Figma components which do not work properly
 - mistakes in Figma components (for example, the wrong font weight or spacing)
 
