@@ -172,7 +172,7 @@
     "require-dir": "^1.2.0",
     "rollup": "^4.50.2",
     "sass-embedded": "^1.92.1",
-    "semantic-release": "^24.2.8",
+    "semantic-release": "^25.0.1",
     "sinon": "^21.0.0",
     "stylelint": "^16.24.0",
     "stylelint-config-gds": "^2.0.0",
