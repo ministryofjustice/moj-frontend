@@ -81,7 +81,7 @@ You can view [how to use the notification badge in navigation](/components/notif
 
 ### In page headers
 
-The notification badge can be placed in a header if the colour contrast is accessible. It's accessible when used with the [MOJ header](/components/header/), but not the [GOV.UK header](https://design-system.service.gov.uk/components/header/). Do not change the component or header colour to make this possible.  
+The notification badge can be placed in a header if the colour contrast is accessible. It's accessible when used with the [MOJ header](/components/moj-header/), but not the [GOV.UK header](https://design-system.service.gov.uk/components/header/). Do not change the component or header colour to make this possible.  
 
 If your users are switching between MOJ and GOV.UK services consider whether seeing the component being used in different ways will be confusing.
 

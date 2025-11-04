@@ -25,6 +25,9 @@
   </ul>
 
   <div class="app-tabs__panel" id="html-default-{{ id }}" role="tabpanel" aria-labelledby="tab_html-default-{{ id }}">
+    {%- if tabWarning -%}
+      <div class="app-example__warning">{{ tabWarning | renderMarkdown | safe }}</div>
+    {%- endif -%}
     <div class="app-example__code" data-module="app-copy">
 
 ```html
@@ -34,6 +37,10 @@
   </div>
 
   <div class="app-tabs__panel" id="nunjucks-default-{{ id }}" role="tabpanel" aria-labelledby="tab_nunjucks-default-{{ id }}">
+
+  {%- if tabWarning -%}
+      <div class="app-example__warning">{{ tabWarning | renderMarkdown | safe }}</div>
+  {%- endif -%}
 
 {%- set argsContent %}
   {% include "./arguments/" + arguments + ".md" ignore missing %}
@@ -77,14 +84,17 @@
 
 {% if figmaLink %}
   <div class="app-tabs__panel" id="figma-default-{{ id }}" role="tabpanel" aria-labelledby="tab_figma-default-{{ id }}">
+    {%- if figmaTabContent -%}
+      {{ figmaTabContent | safe }}
 
-This component is in the ‘Assets’ tab in the MOJ Figma Kit.
+      {% else %}
 
-If you work for MOJ, you can <a href="{{ figmaLink }}">view this component in the MOJ Figma Kit</a>.
+        This component is in the ‘Assets’ tab in the MOJ Figma Kit.
 
-<p class="govuk-body govuk-!-margin-0">If you work outside MOJ, read the guidance on <a href="/prototyping/setting-up-figma-prototypes/#non-moj-staff-tab">setting up Figma prototypes for non-MoJ staff</a>.</p>
+        If you work for MOJ, you can <a href="{{ figmaLink }}">view this component in the MOJ Figma Kit</a>.
 
-
+        <p class="govuk-body govuk-!-margin-0">If you work outside MOJ, read the guidance on <a href="/prototyping/setting-up-figma-prototypes/#non-moj-staff-tab">setting up Figma prototypes for non-MoJ staff</a>.</p>
+    {%- endif -%}
   </div>
 {% endif %}
 </div>

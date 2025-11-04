@@ -1,0 +1,24 @@
+---
+layout: layouts/example.njk
+title: PDS header (example)
+arguments: pds-header
+figma_link: https://www.figma.com/design/AT9lj3HbJj6lYKrZLeM8CN/PDS--Probation--Figma-Kit?m=auto&node-id=13811-30&t=3DUOBhW36cfeUWtG-1
+tab_warning: Before using this component in production, check the [readme file in the Probation Digital Services GitHub repository](https://github.com/ministryofjustice/hmpps-probation-frontend-component-api) for instructions on how to implement it.
+---
+
+{%- from "moj/components/domain-specific/probation/header/macro.njk" import pdsHeader -%}
+
+{{ pdsHeader({
+  environmentName: 'DEV',
+  environmentNameColour: 'govuk-tag--green',
+  name: 'Account name',
+  manageDetailsLink: '#',
+  servicesLink: '#',
+  services: [
+    {
+      heading: 'Service 1',
+      href: '#',
+      target: '_blank'
+    }
+  ]
+}) }}

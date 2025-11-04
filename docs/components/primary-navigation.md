@@ -14,7 +14,7 @@ Use the primary navigation component to let users navigate and search your servi
 
 ## How to use
 
-You must use this component with the [header](/components/header/) component.
+You must use this component with the [header](/components/moj-header/) component.
 
 ### Links
 
