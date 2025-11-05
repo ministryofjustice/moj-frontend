@@ -12,12 +12,11 @@
       <div class="app-page__width-container">
         {{- (tabsHtml if tabsHtml else content) | safe -}}
 
-
-          {% if (["component", "page", "pattern"].includes(type)) and (not tabs) and (["To be reviewed", "Experimental", "Official"].includes(status)) %}
-            {% include "./partials/get-help-and-contribute.njk" %}
-          {% elif showHelp %}
-            {% include "./partials/get-help.njk" %}
-          {% endif %}
-        </div>
+        {% if (["component", "page", "pattern"].includes(type)) and (not tabs) and (["To be reviewed", "Experimental", "Official"].includes(status)) %}
+          {% include "./partials/get-help-and-contribute.njk" %}
+        {% elif showHelp %}
+          {% include "./partials/get-help.njk" %}
+        {% endif %}
+      </div>
     </div>
 {% endblock %}
