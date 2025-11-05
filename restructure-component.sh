@@ -104,8 +104,16 @@ if [ -d "$DOCS_DIR/examples" ]; then
     for example_dir in "$DOCS_DIR/examples/$COMPONENT"*; do
         if [ -d "$example_dir" ]; then
             example_name=$(basename "$example_dir")
-            mv "$example_dir" "$NEW_COMPONENT_DIR/examples/"
-            echo "✓ Moved examples/$example_name to components/$COMPONENT/examples/$example_name"
+            # Remove component name prefix from the directory name
+            new_example_name="${example_name#$COMPONENT}"
+            # Remove leading dash or hyphen if present
+            new_example_name="${new_example_name#-}"
+            # If the name is empty (exact match), use "default"
+            if [ -z "$new_example_name" ]; then
+                new_example_name="default"
+            fi
+            mv "$example_dir" "$NEW_COMPONENT_DIR/examples/$new_example_name"
+            echo "✓ Moved examples/$example_name to components/$COMPONENT/examples/$new_example_name"
         fi
     done
 else
