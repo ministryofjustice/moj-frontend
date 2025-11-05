@@ -2,11 +2,10 @@
 title: Badge
 status: To be reviewed
 statusDate: June 2021
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/687
 excerpt: "Use the badge component to highlight small details like an urgent case."
 ---
 
-{% example template="/examples/badge", height=125 %}
+{% example template="examples/default", colocated="true", height=125 %}
 
 ## When to use
 
@@ -24,9 +23,9 @@ There's also the ['Tag' component in the GOV.UK Design System](https://design-sy
 
 The default, neutral badge is blue. Alternative styles are also available, for example, green and red.
 
-{% example template="/examples/badge-complete", height=125 %}
+{% example template="examples/complete", colocated="true", height=125 %}
 
-{% example template="/examples/badge-urgent", height=125 %}
+{% example template="examples/urgent", colocated="true", height=125 %}
 
 ## Additional styles
 
