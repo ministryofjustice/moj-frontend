@@ -54,13 +54,21 @@ You can use ‘to be reviewed’ building blocks in every product phase.
 
 ## ‘Official’ status <span class="govuk-tag govuk-tag--green"  style="vertical-align:middle;" aria-hidden="true">Official</span>
 
-When an ‘experimental’ or ‘to be reviewed’ building block gets a full review by the Design System team it becomes ‘official’.
+Official building blocks have had:
 
-This review includes an organisation-wide discovery and multi-disciplinary team input (including accessibility testing). Usage is thoroughly documented.
+- a comprehensive discovery
+- multidisciplinary team input
+- accessibility testing
+
+Usage is thoroughly documented.
+
+They may have started as ‘experimental’ or ‘to be reviewed’.
 
 ### How to use ‘official’ building blocks
 
-You can use ‘official’ building blocks in every product phase. They'll be supported and maintained in the long term.
+You can use ‘official’ building blocks in every product phase. They’ll be supported and maintained in the long term.
+
+Some official building blocks are only for use in particular areas, for example the Probation Digital Services (PDS) platform. This will be stated clearly on the documentation, MOJ Frontend and in Figma.
 
 ## ‘Archived’ status <span class="govuk-tag govuk-tag--grey"  style="vertical-align:middle;" aria-hidden="true">Archived</span>
 
