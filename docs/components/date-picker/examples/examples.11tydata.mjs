@@ -1,7 +1,7 @@
 export default {
+  layout: 'layouts/example.njk',
   arguments: 'date-picker',
   eleventyComputed: {
-    layout: 'layouts/example.njk',
     'override:eleventyNavigation': false
   }
 }
