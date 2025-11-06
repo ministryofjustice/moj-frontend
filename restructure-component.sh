@@ -18,131 +18,106 @@ fi
 
 echo "Restructuring component: $COMPONENT"
 
-# Create the new component directory structure
-NEW_COMPONENT_DIR="$DOCS_DIR/components/$COMPONENT"
-mkdir -p "$NEW_COMPONENT_DIR/examples"
-
-# Move the main component file
 if [ -f "$DOCS_DIR/components/$COMPONENT.md" ]; then
-    mv "$DOCS_DIR/components/$COMPONENT.md" "$NEW_COMPONENT_DIR/index.md"
-    echo "✓ Moved components/$COMPONENT.md to components/$COMPONENT/index.md"
+  # Setup variables
+  HAS_TABS=false
+  IS_EXPERIMENTAL=false
 
-    # Check if the component has tabs: true in frontmatter
-    HAS_TABS=false
+  # Create the new component directory and examples subdir
+  NEW_COMPONENT_DIR="$DOCS_DIR/components/$COMPONENT"
+  mkdir -p "$NEW_COMPONENT_DIR/examples"
+
+  # Move the main component file
+  mv "$DOCS_DIR/components/$COMPONENT.md" "$NEW_COMPONENT_DIR/index.md"
+  echo "✓ Moved components/$COMPONENT.md to components/$COMPONENT/index.md"
+
+    # Check if the component has tabs
     if grep -q "^tabs: true" "$NEW_COMPONENT_DIR/index.md"; then
         HAS_TABS=true
-        echo "✓ Detected tabs: true, creating tab files..."
-
-        # Create _overview.md
-        cat > "$NEW_COMPONENT_DIR/_overview.md" << EOF
----
-title: Overview
-order: 10
-tags: '$COMPONENT'
-permalink: false
-eleventyComputed:
-  override:eleventyNavigation: false
----
-EOF
-        echo "✓ Created _overview.md"
-
-        # Create _how-to-use.md
-        cat > "$NEW_COMPONENT_DIR/_how-to-use.md" << EOF
----
-title: How to use
-order: 20
-tags: '$COMPONENT'
-permalink: false
-eleventyComputed:
-  override:eleventyNavigation: false
----
-EOF
-        echo "✓ Created _how-to-use.md"
-
-        # Create _examples.md
-        cat > "$NEW_COMPONENT_DIR/_examples.md" << EOF
----
-title: Examples
-order: 30
-tags: '$COMPONENT'
-permalink: false
-eleventyComputed:
-  override:eleventyNavigation: false
----
-EOF
-        echo "✓ Created _examples.md"
-
-        # Create _get-help-and-contribute.md
-        cat > "$NEW_COMPONENT_DIR/_get-help-and-contribute.md" << EOF
----
-title: Get help and contribute
-order: 40
-tags: '$COMPONENT'
-permalink: false
-eleventyComputed:
-  override:eleventyNavigation: false
----
-
-{% include "layouts/partials/get-help-and-contribute.njk" %}
-EOF
-        echo "✓ Created _get-help-and-contribute.md"
+        echo "✓ Detected tabs: true"
+        TAB_FILENAMES=("_overview.md" "_how-to-use.md" "_examples.md" "_get-help-and-contribute" )
+        TAB_TITLES=("Overview" "How to use" "Examples" "Get help and contribute" )
     fi
-else
-    echo "⚠ Warning: components/$COMPONENT.md not found"
-fi
 
-# Move the arguments file
-if [ -f "$DOCS_DIR/_includes/arguments/$COMPONENT.md" ]; then
-    mv "$DOCS_DIR/_includes/arguments/$COMPONENT.md" "$NEW_COMPONENT_DIR/_arguments.md"
-    echo "✓ Moved _includes/arguments/$COMPONENT.md to components/$COMPONENT/_arguments.md"
-else
-    echo "⚠ Warning: _includes/arguments/$COMPONENT.md not found"
-fi
+    # Check if the component has experimental status
+    if grep -q "^status: Experimental" "$NEW_COMPONENT_DIR/index.md"; then
+        IS_EXPERIMENTAL=true
+        echo "✓ Detected Experimental status"
+        TAB_FILENAMES=("_overview.md" "_designs.md" "_accessibility.md" "_code.md" )
+        TAB_TITLES=("Overview" "Designs" "Accessibility" "Code" )
+    fi
 
-# Move all example directories that start with the component name
-if [ -d "$DOCS_DIR/examples" ]; then
-    for example_dir in "$DOCS_DIR/examples/$COMPONENT"*; do
-        if [ -d "$example_dir" ]; then
-            example_name=$(basename "$example_dir")
-            # Remove component name prefix from the directory name
-            new_example_name="${example_name#$COMPONENT}"
-            # Remove leading dash or hyphen if present
-            new_example_name="${new_example_name#-}"
-            # If the name is empty (exact match), use "default"
-            if [ -z "$new_example_name" ]; then
-                new_example_name="default"
-            fi
-            mv "$example_dir" "$NEW_COMPONENT_DIR/examples/$new_example_name"
-            echo "✓ Moved examples/$example_name to components/$COMPONENT/examples/$new_example_name"
-        fi
-    done
-else
-    echo "⚠ Warning: examples directory not found"
-fi
+    # Create tab markdown files
+    if [ $HAS_TABS = true ]; then
+      for i in ${!TAB_FILENAMES[@]}; do
+        cat > "$NEW_COMPONENT_DIR/${TAB_FILENAMES[$i]}" << EOF
+---
+title: ${TAB_TITLES[$i]}
+order: $(( (i + 1) * 10 ))
+tags: '$COMPONENT'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: false
+---
+EOF
+echo "✓ Created ${TAB_FILENAMES[$i]}"
 
-# Create the component data file
-COMPONENT_DATA_FILE="$NEW_COMPONENT_DIR/$COMPONENT.11tydata.js"
-if [ "$HAS_TABS" = true ]; then
-    cat > "$COMPONENT_DATA_FILE" << EOF
+      done
+    fi
+
+    if [ $IS_EXPERIMENTAL = false ]; then
+      # Move the arguments file
+      if [ -f "$DOCS_DIR/_includes/arguments/$COMPONENT.md" ]; then
+          mv "$DOCS_DIR/_includes/arguments/$COMPONENT.md" "$NEW_COMPONENT_DIR/_arguments.md"
+          echo "✓ Moved _includes/arguments/$COMPONENT.md to components/$COMPONENT/_arguments.md"
+      else
+          echo "⚠ Warning: _includes/arguments/$COMPONENT.md not found"
+      fi
+
+      # Move all example directories that start with the component name
+      if [ -d "$DOCS_DIR/examples" ]; then
+          for example_dir in "$DOCS_DIR/examples/$COMPONENT"*; do
+              if [ -d "$example_dir" ]; then
+                  example_name=$(basename "$example_dir")
+                  # Remove component name prefix from the directory name
+                  new_example_name="${example_name#$COMPONENT}"
+                  # Remove leading dash or hyphen if present
+                  new_example_name="${new_example_name#-}"
+                  # If the name is empty (exact match), use "default"
+                  if [ -z "$new_example_name" ]; then
+                      new_example_name="default"
+                  fi
+                  mv "$example_dir" "$NEW_COMPONENT_DIR/examples/$new_example_name"
+                  echo "✓ Moved examples/$example_name to components/$COMPONENT/examples/$new_example_name"
+              fi
+          done
+      else
+          echo "⚠ Warning: examples directory not found"
+      fi
+
+    # Create the component data file
+      COMPONENT_DATA_FILE="$NEW_COMPONENT_DIR/$COMPONENT.11tydata.js"
+      if [ "$HAS_TABS" = true ]; then
+          cat > "$COMPONENT_DATA_FILE" << EOF
 export default {
   figma_link: '',
   githuburl: '',
   tabCollection: '$COMPONENT'
 }
 EOF
-else
-    cat > "$COMPONENT_DATA_FILE" << EOF
+      else
+          cat > "$COMPONENT_DATA_FILE" << EOF
 export default {
   figma_link: '',
   githuburl: ''
 }
 EOF
-fi
-echo "✓ Created $COMPONENT.11tydata.js"
+      fi
+      echo "✓ Created $COMPONENT.11tydata.js"
 
-# Create the examples data file
-EXAMPLES_DATA_FILE="$NEW_COMPONENT_DIR/examples/examples.11tydata.js"
-cat > "$EXAMPLES_DATA_FILE" << EOF
+      # Create the examples data file
+      EXAMPLES_DATA_FILE="$NEW_COMPONENT_DIR/examples/examples.11tydata.js"
+      cat > "$EXAMPLES_DATA_FILE" << EOF
 export default {
   layout: 'layouts/example.njk',
   arguments: '$COMPONENT',
@@ -151,6 +126,10 @@ export default {
   }
 }
 EOF
-echo "✓ Created examples/examples.11tydata.js"
+      echo "✓ Created examples/examples.11tydata.js"
 
-echo "✓ Restructuring complete for $COMPONENT"
+      echo "✓ Restructuring complete for $COMPONENT"
+  fi
+else
+    echo "⚠ Warning: components/$COMPONENT.md not found"
+fi
