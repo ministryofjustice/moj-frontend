@@ -8,57 +8,72 @@ about: Checklist when reviewing Experimental building blocks.
 
 [View preview](https://moj-frontend-pr-__NUMBER__.apps.live.cloud-platform.service.justice.gov.uk)
 
-## Action list
+## 1. Initial review
 
-- [ ] Create a GitHub Discussion thread for the component and reference it on the component page
-- [ ] CD: Write a `lede` and add it to the PR. Check with the submitter that they are happy with the description (TBC)
-- [ ] IxD: Update the alt text for the component image on the overview tab
-- [ ] IxD: Create a thumbnail for the '[All MOJ components](https://design-patterns.service.justice.gov.uk/components)' page
-    - [ ] The format should be `png`, the size `528x311px`, on a white background with no border
-    - [ ] It should be named `thumb-[component-name].png` and added to `docs/assets/images/thumbs`
-- [ ] IxD: Add Figma design (if supplied) to central ‘MOJ Figma kit’ library and add the link on the component page
-    - [ ] Create a new page with named `EXPERIMENTAL: [Component name]`
-    - [ ] Add the release date
-    - [ ] Add the guidance URL
-    - [ ] Copy and paste the component out of the supplied Figma file, and ensure it is set up as a component.
-    - [ ] Ensure any building blocks (subcomponents of the main component) are set to not publish.
+- [ ] Add a screenshot of the [preview](https://moj-frontend-pr-__NUMBER__.apps.live.cloud-platform.service.justice.gov.uk) into a miro frame on the review board 
+    - [@helennickols](https://github.com/helennickols)
+- [ ] Async review: add comments on stickies
+    - [@helennickols](https://github.com/helennickols), [@murrlipp](https://github.com/murrlipp), [@chrispymm](https://github.com/chrispymm)
+- [ ] Weekly 30min call: review comments, define queries (if any)
+    - [@helennickols](https://github.com/helennickols), [@murrlipp](https://github.com/murrlipp), [@chrispymm](https://github.com/chrispymm), [@asma-ban](https://github.com/asma-ban)
 
-## Checklist
+## 2. Decision point
 
-### Overall Experimental building block documentation
+- [ ] The component **does not** the criteria - contact the contributor explaining the reasons for rejection 
+    - Decide in weekly call who contacts the contributor
+- [ ] The component **does** meet the criteria - go to section 3 
 
-### Overview page
-- [ ] Is the building block name accurate and unique?
-- [ ] Does the image show the building block (accurately and with nothing else)?
+## 3. Queries (if any)
 
-### Code tab (if applicable)
+- [ ] There **are** queries for the contributor - contact the contributor with queries
+    - Decide in weekly call who contacts the contributor
+- [ ] There **are no** queries for the contributor - go to section 4
 
-- [ ] Does the code work?
-- [ ] Does the code match the specified languages?
-- [ ] Does the code visually match the building block image?
-- [ ] Is it free from 3rd party dependencies?
-- [ ] Is it free from external requests?
+## 4. Tasks to be done before the release date is set
 
+[@helennickols](https://github.com/helennickols):
+- [ ] Content: Write a `lede` and `summary` and add to the [pull request](__URL__)
+- [ ] Content: Write release notes and share for feedback
+- [ ] Image: Is the image free of confidential data, e.g. prison procedures?
+- [ ] Image: Is the image free of PII?
+- [ ] Image: Does the image show the component clearly?
 
-### Accessibility tab (if applicable)
+[@chrispymm](https://github.com/chrispymm):
+- [ ] Code: Does the code look ok?
+- [ ] Code: Does it match the language(s)?
+- [ ] Code: Will the code produce something that looks like the image?
+- [ ] Code: Is it free of 3rd party dependencies?
+- [ ] Code: Is it free of external requests?
 
-- [ ] Are the accessibility issues relevant to the building block?
-      
-### Designs tab (if applicable)
+[@murrlipp](https://github.com/murrlipp):
+- [ ] A11y: Do the a11y comments relate to the component?
+- [ ] A11y: Write alt text for contributed image
+- [ ] Thumbnail: Create a thumbnail and add to [pull request](__URL__)
+- [ ] Figma: Does the Figma component look like the image?
+- [ ] Figma: Add component to MOJ Figma Kit in new branch
 
-- [ ] Do the Figma links work and go to where expected?
-- [ ] Is the link free of password protection?
+## 5. Set release date
 
-## Decision point
+- [ ] Set the release date
+    - [@helennickols](https://github.com/helennickols), [@murrlipp](https://github.com/murrlipp), [@chrispymm](https://github.com/chrispymm), [@asma-ban](https://github.com/asma-ban)
+- [ ] Add release date to the team calendar
+    - [@asma-ban](https://github.com/asma-ban)
 
-- [ ] Has the checklist been completed?
+## 6. Tasks to be done **in order** after the release date is set
 
-If NO → Stop and notify contributors of all outstanding issues. 
-If YES → Proceed to the next step. 
+[@murrlipp](https://github.com/murrlipp):
+- [ ] 1. Add release date to Figma page
+- [ ] 2. Merge Figma branch
+- [ ] 3. Add Figma link to [pull request](__URL__)
+- [ ] 4. Create Github discussion and add link to [pull request](__URL__)
+- [ ] 5. Publish Figma kit internally and externally
 
-## Release
+[@chrispymm](https://github.com/chrispymm):
+- [ ] 6. Merge the [pull request](__URL__) and check deployment
 
-- [ ] Dev: Merge the [pull request](__URL__) and check deployment
-- [ ] IxD: Publish updates to the MOJ Figma Kit
-- [ ] DM/PM: Inform the contributor and the community via email and Slack, referencing the GitHub Discussion
-- [ ] DM/PM: Add a tab in the analytics dashboard for the new building block
+[@helennickols](https://github.com/helennickols):
+- [ ] 7. Contact contributor
+- [ ] 8. Send release notes
+
+[@asma-ban](https://github.com/asma-ban) / [@robertjmccarthy](https://github.com/robertjmccarthy) / [@NatashaMcGuireMOJ](https://github.com/NatashaMcGuireMOJ):
+- [ ] 9. Add component to analytics spreadsheet
