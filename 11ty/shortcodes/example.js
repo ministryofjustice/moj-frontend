@@ -12,23 +12,22 @@ module.exports = function (params) {
   let argumentsPath
   let figmaLink
   if (params.colocated) {
-    path.resolve(
-      this.eleventy.env.root,
-      path.dirname(this.page.inputPath),
-      params.template,
-      'index.njk'
-    )
     templatePath = path.resolve(
       this.eleventy.env.root,
       path.dirname(this.page.inputPath),
       params.template,
       'index.njk'
     )
-    argumentsPath = path.resolve(
+    const includesPath = path.resolve(
+      this.eleventy.env.root,
+      'docs/_includes'
+    )
+    const argumentsAbsPath = path.resolve(
       this.eleventy.env.root,
       path.dirname(this.page.inputPath),
       '_arguments.md'
     )
+    argumentsPath = path.relative(includesPath, argumentsAbsPath)
   } else {
     templatePath = path.join(
       this.eleventy.env.root,
@@ -36,7 +35,7 @@ module.exports = function (params) {
       params.template,
       'index.njk'
     )
-    argumentsPath = `./arguments/${this.page.fileSlug}.md`
+    argumentsPath = `arguments/${this.page.fileSlug}.md`
   }
   try {
     templateFile = fs.readFileSync(templatePath, 'utf8').trim()
