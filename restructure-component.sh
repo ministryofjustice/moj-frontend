@@ -23,9 +23,8 @@ if [ -f "$DOCS_DIR/components/$COMPONENT.md" ]; then
   HAS_TABS=false
   IS_EXPERIMENTAL=false
 
-  # Create the new component directory and examples subdir
+  # Create the new component directory
   NEW_COMPONENT_DIR="$DOCS_DIR/components/$COMPONENT"
-  mkdir -p "$NEW_COMPONENT_DIR/examples"
 
   # Move the main component file
   mv "$DOCS_DIR/components/$COMPONENT.md" "$NEW_COMPONENT_DIR/index.md"
@@ -65,6 +64,26 @@ echo "✓ Created ${TAB_FILENAMES[$i]}"
       done
     fi
 
+    # Create the component data file
+    COMPONENT_DATA_FILE="$NEW_COMPONENT_DIR/$COMPONENT.11tydata.js"
+    if [ "$HAS_TABS" = true ]; then
+      cat > "$COMPONENT_DATA_FILE" << EOF
+export default {
+  figma_link: '',
+  githuburl: '',
+  tabCollection: '$COMPONENT'
+}
+EOF
+    else
+      cat > "$COMPONENT_DATA_FILE" << EOF
+export default {
+  figma_link: '',
+  githuburl: ''
+}
+EOF
+    fi
+    echo "✓ Created $COMPONENT.11tydata.js"
+
     if [ $IS_EXPERIMENTAL = false ]; then
       # Move the arguments file
       if [ -f "$DOCS_DIR/_includes/arguments/$COMPONENT.md" ]; then
@@ -73,6 +92,9 @@ echo "✓ Created ${TAB_FILENAMES[$i]}"
       else
           echo "⚠ Warning: _includes/arguments/$COMPONENT.md not found"
       fi
+
+      # Create the examples subdirectory
+      mkdir -p "$NEW_COMPONENT_DIR/examples"
 
       # Move all example directories that start with the component name
       if [ -d "$DOCS_DIR/examples" ]; then
@@ -95,25 +117,7 @@ echo "✓ Created ${TAB_FILENAMES[$i]}"
           echo "⚠ Warning: examples directory not found"
       fi
 
-    # Create the component data file
-      COMPONENT_DATA_FILE="$NEW_COMPONENT_DIR/$COMPONENT.11tydata.js"
-      if [ "$HAS_TABS" = true ]; then
-          cat > "$COMPONENT_DATA_FILE" << EOF
-export default {
-  figma_link: '',
-  githuburl: '',
-  tabCollection: '$COMPONENT'
-}
-EOF
-      else
-          cat > "$COMPONENT_DATA_FILE" << EOF
-export default {
-  figma_link: '',
-  githuburl: ''
-}
-EOF
-      fi
-      echo "✓ Created $COMPONENT.11tydata.js"
+
 
       # Create the examples data file
       EXAMPLES_DATA_FILE="$NEW_COMPONENT_DIR/examples/examples.11tydata.js"
