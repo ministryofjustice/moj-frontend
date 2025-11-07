@@ -25,6 +25,7 @@ if [ -f "$DOCS_DIR/components/$COMPONENT.md" ]; then
 
   # Create the new component directory
   NEW_COMPONENT_DIR="$DOCS_DIR/components/$COMPONENT"
+  mkdir -p "$NEW_COMPONENT_DIR"
 
   # Move the main component file
   mv "$DOCS_DIR/components/$COMPONENT.md" "$NEW_COMPONENT_DIR/index.md"
@@ -34,7 +35,7 @@ if [ -f "$DOCS_DIR/components/$COMPONENT.md" ]; then
     if grep -q "^tabs: true" "$NEW_COMPONENT_DIR/index.md"; then
         HAS_TABS=true
         echo "✓ Detected tabs: true"
-        TAB_FILENAMES=("_overview.md" "_how-to-use.md" "_examples.md" "_get-help-and-contribute" )
+        TAB_FILENAMES=("_overview.md" "_how-to-use.md" "_examples.md" "_get-help-and-contribute.md" )
         TAB_TITLES=("Overview" "How to use" "Examples" "Get help and contribute" )
     fi
 
