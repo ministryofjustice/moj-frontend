@@ -1,15 +1,12 @@
 ---
 layout: layouts/example.njk
 title: Notification badge (example)
-figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit?type=design&node-id=61-3019&mode=design
 ---
 
-{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{%- from "moj/components/sub-navigation/macro.njk" import mojSubNavigation -%}
 {%- from "moj/components/notification-badge/macro.njk" import mojNotificationBadge -%}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-third">
-    {{ mojSideNavigation({
+    {{ mojSubNavigation({
       items: [
         { text: "Dashboard", active: true },
         { html: "Messages" + mojNotificationBadge({
@@ -20,5 +17,3 @@ figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit?type
         { text: "Cases"}
       ]
     })}}
-  </div>
-</div>
