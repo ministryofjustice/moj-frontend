@@ -2,11 +2,10 @@
 title: Multi file upload
 status: To be reviewed
 statusDate: June 2021
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/264
 excerpt: "Use the multi file upload component to help users upload multiple files at the same time, on a regular basis."
 ---
 
-{% example template="/examples/multi-file-upload", height=550 %}
+{% example template="examples/default", colocated=true, height=550 %}
 
 ## When to use
 
@@ -62,14 +61,14 @@ When JavaScript is not available, users will be presented with a [file upload co
 
 When the user selects the upload button, the page will refresh with the valid files being shown in the feedback area.
 
-{% example template="/examples/multi-file-upload-no-js", height=485 %}
+{% example template="examples/no-js", colocated=true, height=485 %}
 
 When there are multiple files with errors, you must put:
 
 - separate error messages in the [error summary from the GOV.UK Design System](https://design-system.service.gov.uk/components/error-summary/) — each one must link to the multi file upload
 - all [error messages next to the field](https://design-system.service.gov.uk/components/error-message/) separated by a line break (`<br>`)
 
-{% example template="/examples/multi-file-upload-no-js-errors", height=775 %}
+{% example template="examples/no-js-errors", colocated=true, height=775 %}
 
 If the form contains other questions and the user selects the upload button:
 
