@@ -2,11 +2,10 @@
 title: Identity bar
 status: To be reviewed
 statusDate: June 2021
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/704
 excerpt: "Use the identity bar component to give users context of where they are within a service such as viewing a case."
 ---
 
-{% example template="/examples/identity-bar", height=150 %}
+{% example template="examples/default", colocated=true, height=150 %}
 
 ## Overview
 
@@ -33,16 +32,16 @@ There's also the:
 
 You can use buttons to display tasks which relate to the identity bar.
 
-{% example template="/examples/identity-bar-menu", height=150 %}
+{% example template="examples/menu", colocated=true, height=150 %}
 
 ### Displaying a menu of tasks
 
 You can use the [button menu](/components/button-menu/) to display tasks which relate to the identity bar.
 
-{% example template="/examples/identity-bar-menu-toggle", height=300 %}
+{% example template="examples/menu-toggle", colocated=true, height=300 %}
 
 ### Displaying primary and secondary tasks
 
 You can use the [button menu](/components/button-menu/) alongside a [GOV.UK button](https://design-system.service.gov.uk/components/button/) (or link) to show tasks of differing importance which relate to the identity bar. This code has correct spacing and creates a better user experience for people on mobile devices.
 
-{% example template="/examples/identity-bar-secondary-toggle", height=300 %}
+{% example template="examples/secondary-toggle", colocated=true, height=300 %}
