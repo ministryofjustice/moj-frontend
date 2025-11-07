@@ -2,11 +2,10 @@
 title: Filter
 status: To be reviewed
 statusDate: June 2021
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/197
 excerpt: "Use the filter component to help users filter a list of items, such as a list of cases or search results."
 ---
 
-{% example template="/examples/filter", height=1000 %}
+{% example template="examples/default", colocated=true, height=1000 %}
 
 ## When to use
 
