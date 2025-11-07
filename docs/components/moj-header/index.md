@@ -3,11 +3,10 @@ title: MOJ Header
 status: To be reviewed
 statusDate: June 2021
 redirect_from: components/header
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/246
 excerpt: "Use the MOJ header component for any service or system not on GOV.UK like internal staff."
 ---
 
-{% example template="/examples/moj-header", height=150 %}
+{% example template="examples/default", colocated=true, height=150 %}
 
 ## When to use
 
