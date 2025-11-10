@@ -3,7 +3,6 @@ title: Password reveal
 statusDate: November 2024
 type: component
 redirect_from: /components/password-reveal
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/709
 excerpt: "Use the password reveal component to let users check their password safely."
 ---
 
@@ -12,7 +11,7 @@ excerpt: "Use the password reveal component to let users check their password sa
 This component was archived because the [GOV.UK Design System password input](https://design-system.service.gov.uk/components/password-input/) enables users to check their password safely. There’s also the [GOV.UK Design System ‘Ask users for passwords’ pattern](https://design-system.service.gov.uk/patterns/passwords/).
 {% endbanner %}
 
-{% example template="/examples/password-reveal", height=210 %}
+{% example template="examples/default", colocated=true, height=210 %}
 
 ## When to use
 
