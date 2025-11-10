@@ -6,9 +6,10 @@ If an MOJ colleague uses the [submit a component](/contribute/add-new-component)
 - [Calendar](/components/calendar)
 - [Inset text (highlighted)](/components/inset-text-highlighted)
 - [New features banner](/components/new-features-banner)
-- [Progress tracker](/components/progress-tracker).
+- [Progress tracker](/components/progress-tracker)
 
-### 2 components improved to 'official' status
+### 3 components improved to 'official' status
 
-- [PDS header](https://dsdmoj.atlassian.net/wiki/spaces/PDS1/pages/5785649388/PDS+header)
+- [PDS (Probation Digital Services) header](/probation/components/pds-header/)
+- [PDS (Probation Digital Services) footer](/probation/components/pds-footer)
 - [Notification badge](/components/notification-badge)

@@ -2,12 +2,12 @@
 layout: layouts/content.njk
 subsection: About the Design System
 title: Impact of the Design System
-lede: Read how the MOJ Design System has impacted spend, users, and other government departments by providing reusable building blocks that solve common problems.
+lede: Read how the MOJ Design System has reduced costs and helped users in MOJ (and beyond) by providing reusable building blocks to solve common problems.
 eleventyNavigation:
   key: Impact
   parent: About the Design System
   order: 10
-  excerpt: "xxx."
+  excerpt: "Read how the MOJ Design System has reduced costs and helped users in MOJ (and beyond) by providing reusable building blocks to solve common problems."
 ---
 
 <!-- Updated date -->
@@ -31,11 +31,11 @@ eleventyNavigation:
   Last updated: {{ spendLastUpdated }}
 </p>
 
-The average cost of developing a reusable component is £5,000.
+It costs £5,000 (on average) for the Design System team to develop a reusable component. 
 
-The amount of times Design System components are initially used in MOJ services is 2,481.
+Design System components are used 2,481 times in MOJ services.
 
-This does not count multiple uses of the same component in a single service. For example, if a service uses the Date picker component 50 times, only 1 instance is counted.
+This counts the first time each component is used in a service. So if a service uses the date picker 50 times, for example, it'll be counted just once.
 
 Multiplied, this tells us the impact on spending.
 
@@ -46,7 +46,7 @@ Multiplied, this tells us the impact on spending.
           £12.4M
         </span>
         <p class="lead">
-          additional spend would have been necessary for services to arrive at the same point, without the MOJ Design System
+          extra would have been spent without the MOJ Design System
         </p>
       </div>
     </div>
@@ -61,11 +61,11 @@ Multiplied, this tells us the impact on spending.
   <div class="govuk-details__text">
     <p><strong>The average cost of developing a reusable component</strong></p>
     <p>
-      £5,000 is the average cost for a team to create a component, as estimated by the <a href="https://design-system.dwp.gov.uk/">DWP Design System</a> team. This includes the necessary discovery, design, development, and QA/testing, as well as delivering the component to the required standard for use across a large organisation.
+      £5,000 is the average cost for a team to create a component, as estimated by the <a href="https://design-system.dwp.gov.uk/">DWP Design System</a> team. This includes discovery, design, development and QA/testing. as well as delivering the component for use across a large organisation.
     </p>
     <p><strong>How many times components are used across MOJ services</strong></p>
     <p>
-      Access to detailed data about the use of components is limited, so a sample was used to infer the likely implementation of components across all MOJ digital services.
+      Access to detailed data about the use of components is limited, so we took a sample to estimate how many times they're likely to be used across all MOJ digital services.
     </p>
     <p>
       From a code search, we can understand the total amount of times a component appears in code across MOJ services​, and details of a sample of results, including whether the service is live or a prototype.
@@ -74,7 +74,7 @@ Multiplied, this tells us the impact on spending.
       This allows us to determine what percentage of the sample are live services​, and apply this percentage to the total amount of times a component appears in code​ to estimate of the total amount of times a component appears in a live service​.
     </p>
     <p>
-      If a service uses a component multiple times, only the first time is counted as this is the one that would have prevented additional spend by the team.
+      We only counted the first usage of each component in a service. This is because if a team had developed a component themselves it could be reused in the same way.
     </p>
   </div>
 </details>
@@ -102,7 +102,7 @@ Multiplied, this tells us the impact on spending.
 </div>
 
 
-### User sentiment
+### Users' views
 
 <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5">
   <div class="headline-container govuk-grid-column-one-half">
@@ -127,7 +127,7 @@ Multiplied, this tells us the impact on spending.
   </div>
 </div>
 
-### User satisfaction averages
+### User satisfaction scores (averages)
 
 <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5">
   <div class="headline-container govuk-grid-column-one-third">
@@ -156,7 +156,7 @@ Multiplied, this tells us the impact on spending.
         {{ supportSatisfaction }}<span class="out-of">/{{ outOf }}</span>
       </span>
       <p class="govuk-!-margin-bottom-0">
-        when asked how satisfied they were with support received from the MOJ Design System team.
+        when asked how satisfied they were with the support they got from the MOJ Design System team.
       </p>
     </div>
   </div>
