@@ -3,8 +3,8 @@ title: How to use
 order: 20
 tags: 'pds-footer'
 permalink: false
-eleventycomputed:
-  override:eleventynavigation: false
+eleventyComputed:
+  override:eleventyNavigation: {}
 ---
 
 ## How to use

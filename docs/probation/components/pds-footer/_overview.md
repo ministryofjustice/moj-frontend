@@ -4,7 +4,7 @@ order: 10
 tags: 'pds-footer'
 permalink: false
 eleventyComputed:
-  override:eleventyNavigation: false
+  override:eleventyNavigation: {}
 ---
 
 {% set figmaTabContent = '<p>Use this component from the ‘Assets’ tab in the PDS Figma Kit.</p><p class="govuk-!-margin-0">You can also view this component in the <a href="{{ figma_link }}" target="_blank">PDS Figma Kit (opens in a new tab).</a></p>' %}

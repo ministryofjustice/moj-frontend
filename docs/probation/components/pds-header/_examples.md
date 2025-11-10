@@ -1,10 +1,10 @@
 ---
 title: Examples
-order: 20
+order: 30
 tags: 'pds-header'
 permalink: false
 eleventyComputed:
-  override:eleventyNavigation: false
+  override:eleventyNavigation: {}
 ---
 
 ## Examples

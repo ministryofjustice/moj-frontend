@@ -4,7 +4,7 @@ order: 40
 tags: 'pds-footer'
 permalink: false
 eleventyComputed:
-  override:eleventyNavigation: false
+    override:eleventyNavigation: {}
 ---
 
 {% include "layouts/partials/get-help-and-contribute.njk" %}

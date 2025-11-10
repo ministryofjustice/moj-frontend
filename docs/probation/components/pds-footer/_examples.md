@@ -3,8 +3,8 @@ title: Examples
 order: 30
 tags: 'pds-footer'
 permalink: false
-eleventycomputed:
-  override:eleventynavigation: false
+eleventyComputed:
+  override:eleventyNavigation: {}
 ---
 
 ## Examples
