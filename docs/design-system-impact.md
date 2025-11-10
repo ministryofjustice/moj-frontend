@@ -11,9 +11,9 @@ eleventyNavigation:
 ---
 
 <!-- Updated date -->
-  {% set spendLastUpdated = "XX October 2025" %}
-  {% set peopleLastUpdated = "XX October 2025" %}
-  {% set whatsNewLastUpdated = "XX October 2025" %}
+  {% set spendLastUpdated = "11 November 2025" %}
+  {% set peopleLastUpdated = "11 November 2025" %}
+  {% set whatsNewLastUpdated = "11 November 2025" %}
 
 <!-- User satisfaction -->
   {% set overallSatisfaction = 3.7 %}
