@@ -84,6 +84,6 @@ module.exports = function (params) {
     nunjucksCode,
     htmlCode,
     jsCode,
-    tabWarning: data.tab_warning
+    tabWarning: this.ctx.tab_warning
   })
 }
