@@ -2,11 +2,10 @@
 title: Get help
 status: To be reviewed
 statusDate: June 2021
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/718
 excerpt: "Help users get help from within the digital service."
 ---
 
-{% example template="/examples/patterns/get-help", height=250 %}
+{% example template="examples/default", colocated=true, height=250 %}
 
 ## When to use
 
