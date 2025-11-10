@@ -8,6 +8,7 @@ if [ $# -eq 0 ]; then
 fi
 
 COMPONENT=$1
+TYPE_DIR=${2:-"components"}
 DOCS_DIR="docs"
 
 # Check if docs directory exists
@@ -18,18 +19,18 @@ fi
 
 echo "Restructuring component: $COMPONENT"
 
-if [ -f "$DOCS_DIR/components/$COMPONENT.md" ]; then
+if [ -f "$DOCS_DIR/$TYPE_DIR/$COMPONENT.md" ]; then
   # Setup variables
   HAS_TABS=false
   IS_EXPERIMENTAL=false
 
   # Create the new component directory
-  NEW_COMPONENT_DIR="$DOCS_DIR/components/$COMPONENT"
+  NEW_COMPONENT_DIR="$DOCS_DIR/$TYPE_DIR/$COMPONENT"
   mkdir -p "$NEW_COMPONENT_DIR"
 
   # Move the main component file
-  mv "$DOCS_DIR/components/$COMPONENT.md" "$NEW_COMPONENT_DIR/index.md"
-  echo "✓ Moved components/$COMPONENT.md to components/$COMPONENT/index.md"
+  mv "$DOCS_DIR/$TYPE_DIR/$COMPONENT.md" "$NEW_COMPONENT_DIR/index.md"
+  echo "✓ Moved $TYPE_DIR/$COMPONENT.md to $TYPE_DIR/$COMPONENT/index.md"
 
     # Check if the component has tabs
     if grep -q "^tabs: true" "$NEW_COMPONENT_DIR/index.md"; then
@@ -89,7 +90,7 @@ EOF
       # Move the arguments file
       if [ -f "$DOCS_DIR/_includes/arguments/$COMPONENT.md" ]; then
           mv "$DOCS_DIR/_includes/arguments/$COMPONENT.md" "$NEW_COMPONENT_DIR/_arguments.md"
-          echo "✓ Moved _includes/arguments/$COMPONENT.md to components/$COMPONENT/_arguments.md"
+          echo "✓ Moved _includes/arguments/$COMPONENT.md to $NEW_COMPONENT_DIR/_arguments.md"
       else
           echo "⚠ Warning: _includes/arguments/$COMPONENT.md not found"
       fi
@@ -99,7 +100,12 @@ EOF
 
       # Move all example directories that start with the component name
       if [ -d "$DOCS_DIR/examples" ]; then
-          for example_dir in "$DOCS_DIR/examples/$COMPONENT"*; do
+        if [ $TYPE_DIR = 'patterns' ]; then
+          EXAMPLES_DIR="$DOCS_DIR/examples/patterns/$COMPONENT"
+        else
+          EXAMPLES_DIR="$DOCS_DIR/examples/$COMPONENT"
+        fi
+          for example_dir in "$EXAMPLES_DIR"*; do
               if [ -d "$example_dir" ]; then
                   example_name=$(basename "$example_dir")
                   # Remove component name prefix from the directory name
@@ -111,7 +117,7 @@ EOF
                       new_example_name="default"
                   fi
                   mv "$example_dir" "$NEW_COMPONENT_DIR/examples/$new_example_name"
-                  echo "✓ Moved examples/$example_name to components/$COMPONENT/examples/$new_example_name"
+                  echo "✓ Moved $EXAMPLES_DIR/$example_name to $NEW_COMPONENT_DIR/examples/$new_example_name"
               fi
           done
       else
@@ -136,5 +142,5 @@ EOF
       echo "✓ Restructuring complete for $COMPONENT"
   fi
 else
-    echo "⚠ Warning: components/$COMPONENT.md not found"
+    echo "⚠ Warning: $TYPE_DIR/$COMPONENT.md not found"
 fi

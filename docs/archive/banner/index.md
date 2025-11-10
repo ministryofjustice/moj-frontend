@@ -3,7 +3,6 @@ title: Banner
 statusDate: February 2025
 type: component
 redirect_from: components/banner
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/835
 excerpt: "Use the banner component to display a prominent message and related actions to take."
 ---
 
@@ -12,7 +11,7 @@ excerpt: "Use the banner component to display a prominent message and related ac
 Use the [alert](/components/alert) to display a notification to users.
 {% endbanner %}
 
-{% example template="/examples/banner", height=225 %}
+{% example template="examples/default", colocated=true, height=225 %}
 
 ## When to use
 
@@ -34,16 +33,16 @@ It can be configured with and without icons and in different colours for success
 
 This is the default style and should be used when the user performs an action successfully.
 
-{% example template="/examples/banner-success", height=175 %}
+{% example template="examples/success", colocated=true, height=175 %}
 
 ### Warning
 
 Use this variant when you want to warn the user that something went wrong.
 
-{% example template="/examples/banner-warning", height=175 %}
+{% example template="examples/warning", colocated=true, height=175 %}
 
 ### Information
 
 Use this variant when you want to tell users some information.
 
-{% example template="/examples/banner-information", height=175 %}
+{% example template="examples/information", colocated=true, height=175 %}
