@@ -32,7 +32,7 @@ test.describe('layout tabs', () => {
     const tabs = page.locator('[data-module="govuk-tabs"]')
     await expect(tabs).toHaveAttribute('data-govuk-tabs-init')
 
-    await page.getByRole('link', { name: 'Next tab : How to use' }).click()
+    await page.getByRole('link', { name: /Next/ }).click()
 
     expect(page.getByRole('heading', { name: 'Overview' })).not.toBeVisible()
     expect(page.getByRole('heading', { name: 'How to use' })).toBeVisible()

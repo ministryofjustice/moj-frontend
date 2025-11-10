@@ -6,6 +6,7 @@ permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---
+## Examples
 
 ### Alerts in a case management system
 
