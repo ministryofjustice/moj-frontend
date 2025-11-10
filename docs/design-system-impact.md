@@ -189,44 +189,37 @@ what services are using it</blockquote>
 
 The Design System is used by multiple other public sector organisations, including:
 
-<!-- 3 line logos -->
 <div class="govuk-grid-row govuk-body govuk-!-margin-top-8">
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-desnz.png" class="three-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-desnz.png" class="logo" alt="Department for Energy Security and Net Zero logo">
   </div>
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-dvsa.png" class="three-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-dvsa.png" class="logo" alt="Driver and Vehicle Standards Agency logo">
   </div>
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-dwp.png" class="three-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-dwp.png" class="logo" alt="Department for Work and Pensions logo">
   </div>
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-defra.png" class="three-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-defra.png" class="logo" alt="Department for Environment Food and Rural Affairs logo">
   </div>
 </div>
 <div class="govuk-grid-row govuk-body govuk-!-margin-top-8">
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-mhclg.png" class="three-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-mhclg.png" class="logo" alt="Ministry of Housing, Communitieis and Local Government logo">
   </div>
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-dfe.png" class="two-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-dfe.png" class="logo" alt="Department for Education logo">
   </div>
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-hmcts.png" class="two-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-hmcts.png" class="logo" alt="HM Courts and Tribunals Service logo">
   </div>
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-ukef.png" class="two-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-ukef.png" class="logo" alt="UK Export Finance logo">
   </div>
 </div>
-
-<!-- 2 line logos -->
 <div class="govuk-grid-row govuk-body govuk-!-margin-top-8">
-</div>
-
-<!-- 1 line logos -->
-<div class="govuk-grid-row govuk-body govuk-!-margin-top-8">
-  <div class="govuk-grid-column-one-third">
-    <img src="/assets/images/dept-logos/logo-companies-house.png" class="one-line logo" alt="">
+  <div class="govuk-grid-column-one-quarter">
+    <img src="/assets/images/dept-logos/logo-companies-house.png" class="logo" alt="Companies House logo">
   </div>
 </div>
 
