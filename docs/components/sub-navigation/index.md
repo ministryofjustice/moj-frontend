@@ -2,11 +2,10 @@
 title: Sub navigation
 status: To be reviewed
 statusDate: June 2021
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/714
 excerpt: "Use the sub navigation component to let users navigate sub sections in a system or service."
 ---
 
-{% example template="/examples/sub-navigation", height=150 %}
+{% example template="examples/default", colocated=true, height=150 %}
 
 ## When to use
 
