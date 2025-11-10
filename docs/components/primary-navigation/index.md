@@ -2,11 +2,10 @@
 title: Primary navigation
 status: To be reviewed
 statusDate: June 2021
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/710
 excerpt: "Use the primary navigation component to let users navigate and search your service."
 ---
 
-{% example template="/examples/primary-navigation", height=150 %}
+{% example template="examples/default", colocated=true, height=150 %}
 
 ## When to use
 
@@ -30,7 +29,7 @@ You can use the [notification badge component](/components/notification-badge/) 
 
 If your service can search anything, use an inline search form.
 
-{% example template="/examples/primary-navigation-inline-search", height=180 %}
+{% example template="examples/inline-search", colocated=true, height=180 %}
 
 ### Toggle search
 
@@ -38,4 +37,4 @@ If your service can only search for certain things, use a toggle search form.
 
 You must tell users what they are searching for in the form hint text, and how they can search using the `data-toggle-button.text` attribute.
 
-{% example template="/examples/primary-navigation-toggle-search", height=250 %}
+{% example template="examples/toggle-search", colocated=true, height=250 %}
