@@ -2,7 +2,7 @@
 layout: layouts/content.njk
 subsection: About the Design System
 title: Building block statuses
-lede: Every building block on the MoJ Design System has a status. Learn more about what this means and how to use them.
+lede: Every building block on the MOJ Design System has a status. Learn more about what this means and how to use them.
 eleventyNavigation:
   key: Building block statuses
   parent: About the Design System
@@ -19,36 +19,61 @@ The building block statuses are:
 - Official
 - Archived
 
-The Design System team is working to bring everything to the ‘official’ status. They may also be archived.
-
 ## ‘Experimental’ status <span class="govuk-tag govuk-tag--experimental" style="vertical-align:middle;" aria-hidden="true">Experimental</span>
 
-Building blocks with an ‘experimental’ status are early in development. They may not have been accessibility tested or considered for use beyond a particular service.
+The ‘experimental‘ status launched in September 2025. Building blocks that were submitted before then will be added to the Design System and given this status.
 
-They can be anything from a screenshot with very brief documentation, to something more developed (with code and a Figma design). They'll have had only a brief sense check after being submitted to the Design System.
+Experimental building blocks:
 
-‘Experimental’ status building blocks should only be used in alpha and beta phases.
+- are early in development
+- may not have been accessibility tested or considered for use beyond a particular service
+- can be anything from a screenshot with brief documentation, to something more developed (with code and a Figma design)
 
-Once they've been added to the Design System, teams can experiment with them and share findings in the [Github discussions](https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns). These feedback will be used to make improvements to the building blocks based.  
+Anyone at MOJ can submit one. They're given a brief sense check by the Design System team before being published.
 
-The experimental status launched in September 2025, starting with components. Previously contributed components will be added to the Design System and given this status. Find out [how to submit a component](/contribute/add-new-component/start).
+Find out [how to submit an experimental building block](/contribute/add-new-component/start). View an example: the [new features banner component](/components/new-features-banner).
+
+### How to use ‘experimental’ building blocks
+
+Do not use ‘experimental’ building blocks in a live service. This is unless they're already part of the service from earlier testing (like an alpha or beta phase) and:
+
+- they worked well during testing
+- any accessibility issues have been fixed (or there were not any)
+
+Teams are encouraged to experiment with them and share findings in the [Github discussions](https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns).  
 
 ## ‘To be reviewed’ status <span class="govuk-tag govuk-tag--orange"  style="vertical-align:middle;" aria-hidden="true">To be reviewed</span>
 
-Building blocks with a ‘to be reviewed’ status were added for use by everyone at MoJ, possibly a long time ago.
+Building blocks with a ‘to be reviewed’ status were added for use by everyone at MOJ, possibly a long time ago. They have not been reviewed recently and the work to develop them is not known.  
 
-They have not been reviewed recently and the work to develop them is not known.
+The Design System team is working to bring them all to ‘official’.  
+
+### How to use ‘to be reviewed’ building blocks
+
+You can use ‘to be reviewed’ building blocks in every product phase.
 
 ## ‘Official’ status <span class="govuk-tag govuk-tag--green"  style="vertical-align:middle;" aria-hidden="true">Official</span>
 
-When an ‘experimental’ or ‘to be reviewed’ building block gets a full review by the Design System team it becomes ‘official’.
+Official building blocks have had:
 
-This review includes an organisation-wide discovery and multi-disciplinary team input (including accessibility testing). Usage is thoroughly documented.
+- a comprehensive discovery
+- multidisciplinary team input
+- accessibility testing
 
-‘Official’ status building blocks can be used in every product phase. They’ll be supported and maintained in the long-term.
+Usage is thoroughly documented.
+
+They may have started as ‘experimental’ or ‘to be reviewed’.
+
+### How to use ‘official’ building blocks
+
+You can use ‘official’ building blocks in every product phase. They’ll be supported and maintained in the long term.
+
+Some official building blocks are only for use in particular areas, for example the Probation Digital Services (PDS) platform. This will be stated clearly on the documentation, MOJ Frontend and in Figma.
 
 ## ‘Archived’ status <span class="govuk-tag govuk-tag--grey"  style="vertical-align:middle;" aria-hidden="true">Archived</span>
 
-Building blocks with an 'archived' status are no longer being supported and should not be used.
+A building block is archived when it’s no longer needed. This is usually because the need has been met by the [GOV.UK Design System](https://design-system.service.gov.uk/) (which we do not want to duplicate).
 
-They have been archived because they're no longer needed. This is usually because the need has been met by the [GOV.UK Design System](https://design-system.service.gov.uk/) (which we do not want to duplicate).
+### How to use ‘archived’ building blocks
+
+Do not use ‘archived’ building blocks. They're no longer being supported.

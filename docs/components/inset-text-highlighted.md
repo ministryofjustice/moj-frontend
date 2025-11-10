@@ -33,13 +33,19 @@ You can help develop this component by adding information to the [‘inset text 
 
 ## Designs
 
-A Figma design was not included when this component was added.
+A Figma design has been added for this component. There may be more links and resources in the [‘inset text (highlighted)’ Github discussion]({{ githuburl }}).
 
-There may be more information in the [‘inset text (highlighted)’ Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
-## Contribute a Figma link
+### Figma
 
-If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+If you work for MOJ, [view the ‘inset text (highlighted)’ component in the MOJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit?node-id=13494-35).
+
+If you work outside MOJ, go to the [MOJ Figma Kit on the Figma community platform](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).
+
+
+### Contribute prototypes and Figma links
+
+If you have design files that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
 {% endtab %}
 

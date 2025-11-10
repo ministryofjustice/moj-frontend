@@ -54,11 +54,13 @@ module.exports = function (params) {
     id: params.template.replace(/\//g, '-'),
     arguments: this.page.fileSlug,
     figmaLink: data.figma_link,
+    figmaTabContent: params.figmaTabContent,
     title: data.title,
     height: params.height,
     showTab: params.showTab,
     nunjucksCode,
     htmlCode,
-    jsCode
+    jsCode,
+    tabWarning: data.tab_warning
   })
 }

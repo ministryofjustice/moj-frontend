@@ -14,13 +14,17 @@ Use the primary navigation component to let users navigate and search your servi
 
 ## How to use
 
-You must use this component with the [header](/components/header/) component.
+You must use this component with the [header](/components/moj-header/) component.
 
 ### Links
 
 You must only include links to top level sections within your service.
 
 Do not put calls to action in the primary navigation. For example, ‘Create case’ should be an action from within the ‘cases’ section and not a link inside the primary navigation.
+
+### New or unread items
+
+You can use the [notification badge component](/components/notification-badge/) to show that there are new or unread items in the sections.
 
 ### Inline search
 

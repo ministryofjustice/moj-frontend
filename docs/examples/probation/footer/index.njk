@@ -1,0 +1,13 @@
+---
+layout: layouts/example.njk
+title: PDS footer (example)
+arguments: pds-footer
+figma_link: https://www.figma.com/design/AT9lj3HbJj6lYKrZLeM8CN/PDS--Probation--Figma-Kit?m=auto&node-id=7346-1848&t=196DhA9xjg7xpL9b-1
+tab_warning: Before using this component in production, check the [readme file in the Probation Digital Services GitHub repository](https://github.com/ministryofjustice/hmpps-probation-frontend-component-api) for instructions on how to implement it.
+---
+
+{%- from "moj/components/domain-specific/probation/footer/macro.njk" import pdsFooter -%}
+
+{{ pdsFooter({
+  baseUrl: '#'
+}) }}

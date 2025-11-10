@@ -55,8 +55,8 @@ There’s also the:
 
 - [GOV.UK notification banner](https://design-system.service.gov.uk/components/notification-banner/)
 - [GOV.UK tag](https://design-system.service.gov.uk/components/tag/)
-- [MoJ alert](/components/alert/)
-- [MoJ badge](/components/badge/)
+- [MOJ alert](/components/alert/)
+- [MOJ badge](/components/badge/)
 
 <p></p>
 
@@ -81,9 +81,9 @@ You can view [how to use the notification badge in navigation](/components/notif
 
 ### In page headers
 
-The notification badge can be placed in a header if the colour contrast is accessible. It's accessible when used with the [MoJ header](/components/header/), but not the [GOV.UK header](https://design-system.service.gov.uk/components/header/). Do not change the component or header colour to make this possible.  
+The notification badge can be placed in a header if the colour contrast is accessible. It's accessible when used with the [MOJ header](/components/moj-header/), but not the [GOV.UK header](https://design-system.service.gov.uk/components/header/). Do not change the component or header colour to make this possible.  
 
-If your users are switching between MoJ and GOV.UK services consider whether seeing the component being used in different ways will be confusing.
+If your users are switching between MOJ and GOV.UK services consider whether seeing the component being used in different ways will be confusing.
 
 ### Colour and shape
 
@@ -203,15 +203,15 @@ The user selects 3 and then 'Mark selected as read'.
 
 The number has changed because the page loaded. It’s not 'dynamic'.
 
-### In MoJ primary navigation
+### In MOJ primary navigation
 
 {% example template="/examples/notification-badge-primary-nav", height=590 %}
 
-### In MoJ side navigation
+### In MOJ side navigation
 
 {% example template="/examples/notification-badge-side-nav", height=590 %}
 
-### In MoJ sub navigation
+### In MOJ sub navigation
 
 {% example template="/examples/notification-badge-sub-nav", height=590 %}
 
@@ -223,7 +223,7 @@ The number has changed because the page loaded. It’s not 'dynamic'.
 
 {% example template="/examples/notification-badge-service-nav", height=590 %}
 
-### In MoJ header
+### In MOJ header
 
 {% example template="/examples/notification-badge-header", height=590 %}
 

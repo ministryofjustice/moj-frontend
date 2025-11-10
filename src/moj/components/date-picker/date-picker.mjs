@@ -444,7 +444,7 @@ export class DatePicker extends ConfigurableComponent {
     const month = match[3]
     const year = match[4]
 
-    formattedDate = new Date(`${year}-${month}-${day}`)
+    formattedDate = new Date(Number(year), Number(month) - 1, Number(day))
     if (
       formattedDate instanceof Date &&
       Number.isFinite(formattedDate.getTime())
@@ -652,6 +652,17 @@ export class DatePicker extends ConfigurableComponent {
 
     // get the date from the input element
     this.inputDate = this.formattedDateFromString(this.$input.value)
+    // move current date to the closest selectable date if it is out of range
+    if (this.minDate && this.minDate > this.inputDate) {
+      this.inputDate = new Date(this.minDate.getTime())
+    }
+    if (this.maxDate && this.maxDate < this.inputDate) {
+      this.inputDate = new Date(this.maxDate.getTime())
+    }
+    if (this.minDate && this.maxDate && this.minDate > this.maxDate) {
+      console.error('min date is after max date. No dates will be selectable')
+    }
+
     this.currentDate = this.inputDate
     this.currentDate.setHours(0, 0, 0, 0)
 

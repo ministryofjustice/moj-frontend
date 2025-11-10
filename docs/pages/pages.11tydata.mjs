@@ -5,7 +5,7 @@ export default {
   eleventyComputed: {
     eleventyNavigation: {
       key: (data) => data.title,
-      parent: (data) => (data.index ? 'Building blocks' : 'Pages'),
+      parent: (data) => (data.index ? 'MOJ building blocks' : 'Pages'),
       order: (data) => data.order ?? data.title,
       excerpt: (data) => data.excerpt,
       url: (data) => data.navUrl

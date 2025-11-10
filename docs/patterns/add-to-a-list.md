@@ -6,7 +6,7 @@ githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/203
 excerpt: "Use this pattern when users need to add similar information many times, and check and add more if needed."
 ---
 
-{% banner "Other departments have a similar patterns" %}
+{% banner "Other departments have similar patterns" %}
 [Add to a list](https://design.tax.service.gov.uk/hmrc-design-patterns/add-to-a-list/) in HMRC Design Patterns and [add multiple things](https://design.homeoffice.gov.uk/patterns/add-multiple-things) in the Home Office Design System have a similar function and visual design to this pattern.
 
 This pattern is in the GOV.UK Design System [community backlog](https://github.com/alphagov/govuk-design-system-backlog/issues/21) for review.

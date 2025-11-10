@@ -26,9 +26,9 @@ const generateMarkdown = (data, files) => {
 
 ### Figma
 
-If you work for MoJ, [View the ‘${componentName}’ component in the MoJ Figma Kit](${data['/figma-link']?.figmaUrl || ''}).
+If you work for MOJ, [View the ‘${componentName}’ component in the MOJ Figma Kit](${data['/figma-link']?.figmaUrl || ''}).
 
-If you work outside MoJ, go to the [MoJ Figma Kit on the Figma community platform](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).\r\n\r\n`
+If you work outside MOJ, go to the [MOJ Figma Kit on the Figma community platform](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).\r\n\r\n`
 
       content += `### Contribute prototypes and Figma links
 

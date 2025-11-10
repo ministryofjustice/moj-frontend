@@ -41,7 +41,7 @@ If you’re using this component in your service you need to add these issue det
 
 #### Assistive technology users will find it difficult to identify form items
 
-When navigating this service with assistive technology, users will find it hard to identify new form items that are created when they use the ‘add another’ button. This fails WCAG success criteria 2.4.6 Headings and Labels (Level AA) and 3.3.2 Labels & Instructions (Level A). We're aware of this issue and plan to review the component, and implement a fix by November 2025.
+When navigating this service with assistive technology, users will find it hard to identify new form items that are created when they use the ‘add another’ button. This fails WCAG success criteria 2.4.6 Headings and Labels (Level AA) and 3.3.2 Labels & Instructions (Level A). We're aware of this issue and plan to review the component, and implement a fix by June 2026.
 
 ### Adding another before resolving errors
 
@@ -49,4 +49,4 @@ When a user selects ‘add another’ before resolving a validation error, the e
 
 #### Form submission errors are duplicated when a new field set is created using the ‘add another’ button
 
-If someone uses the ‘add another’ button whilst there are unaddressed errors in an existing field set these errors will be duplicated into the new field set. This fails WCAG success criteria 3.3.1 Error identification (Level A), 3.3.3 Error Suggestion (Level AA). We're aware of this issue and plan to review the component, and implement a fix by November 2025.
+If someone uses the ‘add another’ button whilst there are unaddressed errors in an existing field set these errors will be duplicated into the new field set. This fails WCAG success criteria 3.3.1 Error identification (Level A), 3.3.3 Error Suggestion (Level AA). We're aware of this issue and plan to review the component, and implement a fix by June 2026.

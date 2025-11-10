@@ -11,7 +11,7 @@
   },
   "Experimental": {
     "link": "How to use ‘experimental’ {{ types }}",
-    "linkContent": "Anyone can add an ‘experimental’ status {{ type }} to the MoJ Design System. They’re early in development and can be used as a starting point.",
+    "linkContent": "Anyone can add an ‘experimental’ status {{ type }} to the MOJ Design System. They’re early in development and can be used as a starting point.",
     "statusMessage": "Added"
   },
   "Archived": {

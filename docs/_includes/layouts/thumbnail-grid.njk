@@ -11,7 +11,7 @@
 {% block content %}
   <div class="app-masthead">
     <div class="app-page__width-container">
-      {{ heading({ text: title }) }}
+      {{ heading({ text: allTitle | default(title) }) }}
 
       {{ content | safe }}
     </div>
@@ -20,8 +20,8 @@
     <div class="app-page__width-container">
       <div class="app-grid" style="--gap: 60px; --gap-small: 40px; --min-column-width: 290px;">
         {% for item in items %}
-          {# don't include 'view all components' entry #}
-          {% if item.url !== '/components' %}
+          {# don't include 'all moj components' entry #}
+          {% if item.url not in ['/components/', '/probation/components']%}
             {% set imgName = item.title|lower|replace(" ", "-") %}
             {% call card({
               title: item.title,
