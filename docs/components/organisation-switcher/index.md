@@ -2,11 +2,10 @@
 title: Organisation switcher
 status: To be reviewed
 statusDate: June 2021
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/239
 excerpt: "Use the organisation switcher component to let users navigate between different organisations or accounts, for example, switching between prisons."
 ---
 
-{% example template="/examples/organisation-switcher", height=125 %}
+{% example template="examples/default", colocated=true, height=125 %}
 
 ## When to use
 
