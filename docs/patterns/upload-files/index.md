@@ -2,7 +2,6 @@
 title: Upload files
 status: To be reviewed
 statusDate: June 2021
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/719
 excerpt: "Use this pattern whenever you need users to upload one or more files."
 ---
 
@@ -35,7 +34,7 @@ How you help users upload files depends on whether they need to upload:
 
 Use the [file upload component in the GOV.UK Design System](https://design-system.service.gov.uk/components/file-upload/) to let users upload a single file.
 
-{% example template="/examples/patterns/upload-files", height=350 %}
+{% example template="examples/default", colocated=true, height=350 %}
 
 Once users have uploaded their file, let them check it’s the right one by showing a preview.
 
@@ -43,13 +42,13 @@ For files where a preview might be difficult to check, consider how you can help
 
 For example, if the file is a spreadsheet, you could show its contents in a table.
 
-{% example template="/examples/patterns/upload-files-check", height=950 %}
+{% example template="examples/check", colocated=true, height=950 %}
 
 ### Let users upload additional files
 
 If users need the option to upload more than one file, include an additional screen asking if they want to upload another.
 
-{% example template="/examples/patterns/upload-files-another", height=600 %}
+{% example template="examples/another", colocated=true, height=600 %}
 
 ### Deleting a file
 
@@ -57,11 +56,11 @@ What happens when a user deletes a file depends on whether the list contains 1 f
 
 If there's multiple files in the list, display a success message at the top of the page.
 
-{% example template="/examples/patterns/upload-files-delete-multiple", height=690 %}
+{% example template="examples/delete-multiple", colocated=true, height=690 %}
 
 If there's 1 file in the list, take users to the upload screen with a success message at the top of the page.
 
-{% example template="/examples/patterns/upload-files-delete-one", height=420 %}
+{% example template="examples/delete-one", colocated=true, height=420 %}
 
 ### Let users upload multiple files at once
 
