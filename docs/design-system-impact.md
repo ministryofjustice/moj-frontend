@@ -192,30 +192,30 @@ The Design System is used by multiple other public sector organisations, includi
 <!-- 3 line logos -->
 <div class="govuk-grid-row govuk-body govuk-!-margin-top-8">
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-desnz.svg" class="three-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-desnz.png" class="three-line logo" alt="">
   </div>
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-dvsa.svg" class="three-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-dvsa.png" class="three-line logo" alt="">
   </div>
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-dwp.svg" class="three-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-dwp.png" class="three-line logo" alt="">
   </div>
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-defra.svg" class="three-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-defra.png" class="three-line logo" alt="">
   </div>
 </div>
 <div class="govuk-grid-row govuk-body govuk-!-margin-top-8">
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-mhclg.svg" class="three-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-mhclg.png" class="three-line logo" alt="">
   </div>
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-dfe.svg" class="two-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-dfe.png" class="two-line logo" alt="">
   </div>
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-hmcts.svg" class="two-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-hmcts.png" class="two-line logo" alt="">
   </div>
   <div class="govuk-grid-column-one-quarter">
-    <img src="/assets/images/dept-logos/logo-ukef.svg" class="two-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-ukef.png" class="two-line logo" alt="">
   </div>
 </div>
 
@@ -226,21 +226,7 @@ The Design System is used by multiple other public sector organisations, includi
 <!-- 1 line logos -->
 <div class="govuk-grid-row govuk-body govuk-!-margin-top-8">
   <div class="govuk-grid-column-one-third">
-    <img src="/assets/images/dept-logos/logo-companies-house.svg" class="one-line logo" alt="">
+    <img src="/assets/images/dept-logos/logo-companies-house.png" class="one-line logo" alt="">
   </div>
 </div>
-
-<!-- ALBs -->
-<!-- <div class="govuk-grid-row govuk-body govuk-!-margin-top-8 alb">
-  <div class="govuk-grid-column-one-third">
-    <img src="/assets/images/dept-logos/logo-hmlr.svg" class="logo" alt="">
-  </div>
-  <div class="govuk-grid-column-one-third">
-    <img src="/assets/images/dept-logos/logo-nhs.jpg" class="logo" alt="">
-  </div>
-  <div class="govuk-grid-column-one-third">
-    <img src="/assets/images/dept-logos/logo-uk-space-agency.svg" class="logo" alt="">
-  </div>
-</div> -->
-
 
