@@ -11,7 +11,7 @@ excerpt: "The currency input component helped users enter an amount of money in 
 You should use [prefixes and suffixes](https://design-system.service.gov.uk/components/text-input/#prefixes-and-suffixes) in the GOV.UK Design System to help users enter things like currencies.
 {% endbanner %}
 
-{% example template="/examples/currency-input", height=200 %}
+{% example template="examples/default", colocated=true, height=200 %}
 
 ## When to use
 
