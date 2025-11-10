@@ -2,11 +2,10 @@
 title: Page header actions
 status: To be reviewed
 statusDate: June 2021
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/707
 excerpt: "Use the page header actions component for certain actions."
 ---
 
-{% example template="/examples/page-header-actions", height=150 %}
+{% example template="examples/default", colocated=true, height=150 %}
 
 ## When to use
 
