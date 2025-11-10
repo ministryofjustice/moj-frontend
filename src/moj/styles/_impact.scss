@@ -82,22 +82,6 @@ h2 {
   @include govuk-responsive-margin(5, "bottom");
 }
 
-  .three-line {
-    height: 120px !important;
-  }
-
-  .two-line {
-    height: 100px !important;
-  }
-
-  .one-line {
-    height: 70px !important;
-  }
-
-  .alb {
-    height: 70px !important;
-  }
-
 .logo {
   object-fit: contain;
   object-position: left;
