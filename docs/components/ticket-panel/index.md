@@ -2,11 +2,10 @@
 title: Ticket Panel
 status: To be reviewed
 statusDate: July 2022
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/715
 excerpt: "Break up content or actions into visually distinct groups of information."
 ---
 
-{% example template="/examples/ticket-panel", height=300 %}
+{% example template="examples/default", colocated=true, height=300 %}
 
 Break up content or actions into visually distinct groups of information.
 

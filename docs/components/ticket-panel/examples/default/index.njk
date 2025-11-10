@@ -1,8 +1,6 @@
 ---
 layout: layouts/example.njk
 title: Ticket panel (example)
-arguments: ticket-panel
-figma_link: https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit?node-id=4745-92
 ---
 
 {%- from "moj/components/ticket-panel/macro.njk" import mojTicketPanel -%}
@@ -14,7 +12,7 @@ figma_link: https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit?no
   items: [{
     html: ' <h2 class="govuk-heading-m govuk-!-margin-bottom-2">This is a heading 2</h2>
     <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button">
+    <a class="govuk-button govuk-!-margin-bottom-1" data-module="govuk-button" href="#">
       Save and continue
     </a>',
     attributes: {
