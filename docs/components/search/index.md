@@ -2,11 +2,10 @@
 title: Search
 status: To be reviewed
 statusDate: June 2021
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/712
 excerpt: "Use the search component to let users search by word or phrase."
 ---
 
-{% example template="/examples/search", height=200 %}
+{% example template="examples/default", colocated=true, height=200 %}
 
 ## When to use
 
