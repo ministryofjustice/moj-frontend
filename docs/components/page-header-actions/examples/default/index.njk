@@ -1,0 +1,20 @@
+---
+layout: layouts/example.njk
+title: Page header actions (example)
+redirect_from: examples/page-header-actions
+---
+
+{% from "moj/components/page-header-actions/macro.njk" import mojPageHeaderActions %}
+
+{{ mojPageHeaderActions({
+  heading: {
+    text: "Documents"
+  },
+  items: [{
+    text: "Upload new",
+    classes: "govuk-button--secondary"
+  }, {
+    text: "Share collection",
+    classes: "govuk-button--secondary"
+  }]
+}) }}

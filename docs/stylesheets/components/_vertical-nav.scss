@@ -73,7 +73,8 @@
   &:focus,
   &:focus-visible {
     border-color: $govuk-text-colour;
-    outline: none;
+    outline: 2px solid transparent;
+    outline-offset: 0;
     color: $govuk-text-colour;
     background-color: $govuk-focus-colour;
   }
@@ -82,6 +83,23 @@
   &:focus-visible:hover {
     color: govuk-colour("white");
     background-color: $moj-button-menu-hover-color;
+  }
+
+  @media (forced-colors: active) {
+    padding-left: govuk-spacing(4);
+    border-left: 0;
+    color: LinkText;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus,
+    &:focus-visible {
+      /* padding-left: govuk-spacing(4) - 4px; */
+
+      /* border-left: 4px solid transparent; */
+    }
   }
 }
 
@@ -115,7 +133,7 @@
 
   &:focus-visible {
     border-color: $govuk-text-colour;
-    outline: none;
+    outline: 2px solid transparent;
     color: $govuk-text-colour;
     background-color: $govuk-focus-colour;
   }
@@ -123,6 +141,23 @@
   &:focus-visible:hover {
     color: govuk-colour("white");
     background-color: $moj-button-menu-hover-color;
+  }
+
+  @media (forced-colors: active) {
+    padding-left: govuk-spacing(4);
+    border-left: 0;
+    color: LinkText;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus,
+    &:focus-visible {
+      /* padding-left: govuk-spacing(4) - 4px; */
+
+      /* border-left: 4px solid transparent; */
+    }
   }
 }
 
@@ -143,7 +178,7 @@
   &:focus,
   &:focus-visible {
     border-color: $govuk-text-colour;
-    outline: none;
+    outline: 2px solid transparent;
     color: $govuk-text-colour;
     background-color: $govuk-focus-colour;
   }
@@ -151,6 +186,12 @@
   &:focus:hover,
   &:focus-visible:hover {
     background-color: $moj-button-menu-color;
+  }
+
+  @media (forced-colors: active) {
+    padding-left: govuk-spacing(4) - 4px;
+    border-left: 4px solid CanvasText;
+    background: none;
   }
 }
 

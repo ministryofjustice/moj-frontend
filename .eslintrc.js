@@ -2,7 +2,8 @@ module.exports = {
   extends: ['standard', 'prettier'],
   ignorePatterns: [
     'package/**',
-
+    'submissions/**',
+    '*.min.js',
     // Enable dotfile linting
     '!.*',
     'node_modules',
@@ -207,6 +208,8 @@ module.exports = {
         'no-undef': 'off',
         'no-unused-expressions': 'off',
         'no-useless-constructor': 'off',
+        '@typescript-eslint/no-extraneous-class': 'off',
+        '@typescript-eslint/no-empty-function': 'off',
 
         // Ignore paths to example modules
         'import/no-absolute-path': 'off',

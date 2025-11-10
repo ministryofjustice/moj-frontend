@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "CSS",
+  "componentCodeLanguageOther": "",
+  "componentCode": ".js-enabled .govuk-timeout-warning-fallback {\r\n  display: none;\r\n}\r\n\r\n.countdown {\r\n  white-space: nowrap;\r\n}\r\n\r\n.tabular-numbers {\r\n  @include govuk-font($size: false, $tabular: true)\r\n}",
+  "componentCodeUsage": "You will also need the modal dialog styles."
+}

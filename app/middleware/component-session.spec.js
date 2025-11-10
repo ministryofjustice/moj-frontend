@@ -22,13 +22,18 @@ const {
   removeFromSession,
   sessionStarted,
   sessionVerified,
-  validateFormDataFileUpload,
+  validateFormDataFileSignature,
+  validateFormDataFileSize,
+  validateFormDataFileType,
+  validateFormDataVirusScan,
   validateComponentImagePage,
   saveFileToRedis,
   clearSkippedPageData,
   checkEmailDomain,
   validatePageParams,
   setCsrfToken,
+  setInitialCsrfToken,
+  verifyInitialCsrfToken,
   xssComponentCode,
   setSuccessMessage,
   getPageData,
@@ -51,7 +56,8 @@ jest.mock('../config', () => {
   const original = jest.requireActual('../config')
   return {
     ...original,
-    MAX_ADD_ANOTHER: 3
+    MAX_ADD_ANOTHER: 3,
+    SESSION_SECRET: 'test-session-secret'
   }
 })
 jest.mock('../helpers/check-your-answers', () => ({
@@ -78,10 +84,10 @@ describe('setCurrentFormPages', () => {
 describe('getPageData', () => {
   it('should return the data from formConfig', () => {
     const pageData = {
-      title: 'Verify that you work for MoJ',
+      title: 'Verify that you work for MOJ',
       fields: {
         emailAddress: {
-          label: 'Enter your MoJ email address'
+          label: 'Enter your MOJ email address'
         }
       },
       showOnCya: false,
@@ -333,12 +339,26 @@ describe('validatePageParams', () => {
 })
 
 describe('setCsrfToken', () => {
-  const next = jest.fn()
-  test('it adds a token if one does not exist', () => {
+  let next
+
+  beforeEach(() => {
+    next = jest.fn()
+  })
+
+  test('it does not add a token before the journey has started', () => {
     const req = { session: {} }
     setCsrfToken(req, {}, next)
-    expect(req.session).toHaveProperty('csrfToken')
+    expect(req.session).not.toHaveProperty('csrfToken')
+    expect(next).toHaveBeenCalled()
   })
+
+  test('it adds a token if the journey has started and one does not exist', () => {
+    const req = { session: { started: true } }
+    setCsrfToken(req, {}, next)
+    expect(req.session).toHaveProperty('csrfToken')
+    expect(next).toHaveBeenCalled()
+  })
+
   test('if a token is already set it does not change', () => {
     const req = {
       session: {
@@ -348,6 +368,80 @@ describe('setCsrfToken', () => {
     setCsrfToken(req, {}, next)
     expect(req.session).toHaveProperty('csrfToken')
     expect(req.session.csrfToken).toBe('1234567890')
+  })
+})
+
+describe('initial CSRF token', () => {
+  let next, res
+  let originalConsoleError
+
+  beforeEach(() => {
+    next = jest.fn()
+    res = {
+      cookie: jest.fn(),
+      clearCookie: jest.fn()
+    }
+    originalConsoleError = console.error
+    console.error = jest.fn()
+  })
+
+  afterEach(() => {
+    console.error = originalConsoleError
+  })
+
+  test('sets a cookie-backed token without touching the session', () => {
+    const req = { session: {} }
+
+    setInitialCsrfToken(req, res, next)
+
+    expect(req.initialCsrfToken).toEqual(expect.any(String))
+    expect(req.session).toStrictEqual({})
+    expect(res.cookie).toHaveBeenCalledWith(
+      'moj-frontend-start-csrf',
+      req.initialCsrfToken,
+      expect.objectContaining({ httpOnly: true })
+    )
+    expect(next).toHaveBeenCalledWith()
+  })
+
+  test('starts the session when the initial token is valid', () => {
+    const setupReq = { session: {} }
+    setInitialCsrfToken(setupReq, res, next)
+
+    next.mockClear()
+    const req = {
+      body: { _csrf: setupReq.initialCsrfToken },
+      headers: {
+        cookie: `moj-frontend-start-csrf=${setupReq.initialCsrfToken}`
+      },
+      session: { checkYourAnswers: true }
+    }
+
+    verifyInitialCsrfToken(req, res, next)
+
+    expect(req.session.started).toBe(true)
+    expect(req.session).toHaveProperty('csrfToken')
+    expect(res.clearCookie).toHaveBeenCalledWith(
+      'moj-frontend-start-csrf',
+      expect.objectContaining({ httpOnly: true })
+    )
+    expect(next).toHaveBeenCalledWith()
+  })
+
+  test('rejects requests without a matching cookie token', () => {
+    const req = {
+      body: { _csrf: 'token' },
+      headers: {},
+      session: {}
+    }
+
+    verifyInitialCsrfToken(req, res, next)
+
+    expect(next).toHaveBeenCalledWith(expect.any(Error))
+    const [error] = next.mock.calls[0]
+    expect(error.message).toBe('Invalid CSRF token')
+    expect(error.status).toBe(403)
+    expect(req.session).toStrictEqual({})
   })
 })
 
@@ -420,6 +514,7 @@ describe('removeFromSession', () => {
       session: {}
     }
     res = {
+      status: jest.fn().mockReturnThis(),
       end: jest.fn()
     }
     next = jest.fn()
@@ -464,7 +559,8 @@ describe('removeFromSession', () => {
 
       removeFromSession(req, res, next)
 
-      expect(res.end).toHaveBeenCalledWith(403)
+      expect(res.status).toHaveBeenCalledWith(403)
+      expect(res.end).toHaveBeenCalled()
       expect(next).not.toHaveBeenCalled()
     })
 
@@ -473,7 +569,8 @@ describe('removeFromSession', () => {
 
       removeFromSession(req, res, next)
 
-      expect(res.end).toHaveBeenCalledWith(403)
+      expect(res.status).toHaveBeenCalledWith(403)
+      expect(res.end).toHaveBeenCalled()
       expect(next).not.toHaveBeenCalled()
     })
 
@@ -482,7 +579,8 @@ describe('removeFromSession', () => {
 
       removeFromSession(req, res, next)
 
-      expect(res.end).toHaveBeenCalledWith(403)
+      expect(res.status).toHaveBeenCalledWith(403)
+      expect(res.end).toHaveBeenCalled()
       expect(next).not.toHaveBeenCalled()
     })
   })
@@ -649,7 +747,7 @@ describe('saveSession', () => {
 
       saveSession(req, res, next)
 
-      expect(getHashedUrl).toHaveBeenCalledWith('/test-url')
+      expect(getHashedUrl).toHaveBeenCalledWith('/test-path')
       expect(req.session['/test-path']).toEqual({
         field1: 'value1',
         uploadedFile: {
@@ -680,6 +778,25 @@ describe('saveSession', () => {
         }
       })
       expect(req.session['/test-path']._csrf).toBeUndefined()
+      expect(next).toHaveBeenCalled()
+    })
+
+    it('should use the saved Redis key from upload middleware when present', () => {
+      req.file = {
+        fieldname: 'componentImage',
+        originalname: 'photo.jpg'
+      }
+      req.savedRedisKey = 'file:stable-key:test-session-id:componentImage'
+
+      saveSession(req, res, next)
+
+      expect(getHashedUrl).not.toHaveBeenCalled()
+      expect(req.session['/test-path']).toEqual({
+        componentImage: {
+          originalname: 'photo.jpg',
+          redisKey: 'file:stable-key:test-session-id:componentImage'
+        }
+      })
       expect(next).toHaveBeenCalled()
     })
   })
@@ -730,7 +847,7 @@ describe('getFormDataFromSession', () => {
     jest.restoreAllMocks()
   })
   test('it sets formData on request', () => {
-    req.url = '/page'
+    req.path = '/page'
     req.session = { '/page': { key: 'value' } }
     getFormDataFromSession(req, res, next)
 
@@ -739,14 +856,14 @@ describe('getFormDataFromSession', () => {
     expect(next).toHaveBeenCalled()
   })
   it('handles no session', () => {
-    req.url = '/page'
+    req.path = '/page'
     getFormDataFromSession(req, res, next)
     expect(req).toHaveProperty('formData')
     expect(req.formData).toStrictEqual({})
     expect(next).toHaveBeenCalled()
   })
   it('handles no url key on sesssion', () => {
-    req.url = '/page1'
+    req.path = '/page1'
     req.session = { '/page2': { key: 'value' } }
     getFormDataFromSession(req, res, next)
 
@@ -828,6 +945,7 @@ describe('saveFileToRedis middleware', () => {
   beforeEach(() => {
     req = {
       session: {},
+      path: '/test-path',
       url: '/test-url',
       sessionID: 'test-session-123'
     }
@@ -884,7 +1002,7 @@ describe('saveFileToRedis middleware', () => {
         mimetype: 'application/pdf'
       })
 
-      expect(getHashedUrl).toHaveBeenCalledWith('/test-url')
+      expect(getHashedUrl).toHaveBeenCalledWith('/test-path')
       expect(redis.set).toHaveBeenCalledWith(
         expectedRedisKey,
         expectedData,
@@ -892,6 +1010,7 @@ describe('saveFileToRedis middleware', () => {
         24 * 60 * 60
       )
       expect(req.session.uploadedFile).toBe(expectedRedisKey)
+      expect(req.savedRedisKey).toBe(expectedRedisKey)
       expect(console.log).toHaveBeenCalledWith(
         `[Redis] File saved with key: ${expectedRedisKey}`
       )
@@ -1133,12 +1252,12 @@ describe('validateFormData', () => {
       page: {
         fields: {
           emailAddress: {
-            label: 'Enter your MoJ email address'
+            label: 'Enter your MOJ email address'
           }
         },
         removable: false,
         showOnCya: false,
-        title: 'Verify that you work for MoJ'
+        title: 'Verify that you work for MOJ'
       },
       showAddAnother: false,
       submitUrl: undefined
@@ -1241,12 +1360,12 @@ describe('validateFormData', () => {
       page: {
         fields: {
           emailAddress: {
-            label: 'Enter your MoJ email address'
+            label: 'Enter your MOJ email address'
           }
         },
         removable: false,
         showOnCya: false,
-        title: 'Verify that you work for MoJ'
+        title: 'Verify that you work for MOJ'
       },
       showAddAnother: false,
       submitUrl: undefined
@@ -1260,7 +1379,7 @@ describe('validateFormData', () => {
   })
 })
 
-describe('validateFormDataFileUpload', () => {
+describe('validateFormDataFileSize', () => {
   let req, res, next
   beforeEach(() => {
     req = {}
@@ -1273,17 +1392,17 @@ describe('validateFormDataFileUpload', () => {
   })
   it('calls next if no error', () => {
     const err = undefined
-    validateFormDataFileUpload(err, req, res, next)
+    validateFormDataFileSize(err, req, res, next)
     expect(next).toHaveBeenCalled()
   })
-  it('calls next if error code is not LIMIT_FILE_SIZE', () => {
+  it('passes error through if error code is not LIMIT_FILE_SIZE', () => {
     const err = {
       code: 'AN_ERROR'
     }
-    validateFormDataFileUpload(err, req, res, next)
-    expect(next).toHaveBeenCalled()
+    validateFormDataFileSize(err, req, res, next)
+    expect(next).toHaveBeenCalledWith(err)
   })
-  it('renders the template with errors', () => {
+  it('renders the template with size limit errors', () => {
     const err = {
       code: 'LIMIT_FILE_SIZE',
       field: 'componentImage'
@@ -1322,10 +1441,207 @@ describe('validateFormDataFileUpload', () => {
       submitUrl: undefined
     }
 
-    validateFormDataFileUpload(err, req, res, next)
+    validateFormDataFileSize(err, req, res, next)
 
     expect(res.status).toHaveBeenCalledWith(400)
     expect(res.render).toHaveBeenCalledWith('component-image', expectedArgs)
     expect(next).not.toHaveBeenCalled()
+  })
+})
+
+describe('validateFormDataFileSignature', () => {
+  let req, res, next
+  beforeEach(() => {
+    req = {}
+    res = {}
+    next = jest.fn()
+    jest.clearAllMocks()
+  })
+
+  it('calls next when no file is present', () => {
+    validateFormDataFileSignature(req, res, next)
+    expect(next).toHaveBeenCalledWith()
+  })
+
+  it('calls next when file signature is valid', () => {
+    req.file = {
+      fieldname: 'componentImage',
+      mimetype: 'image/jpeg',
+      buffer: Buffer.from([0xff, 0xd8, 0xff, 0xdb])
+    }
+
+    validateFormDataFileSignature(req, res, next)
+
+    expect(next).toHaveBeenCalledWith()
+  })
+
+  it('passes a LIMIT_FILE_TYPE error when file signature is invalid', () => {
+    req.file = {
+      fieldname: 'componentImage',
+      mimetype: 'image/jpeg',
+      buffer: Buffer.from('# Not an image\nSome markdown text', 'utf8')
+    }
+
+    validateFormDataFileSignature(req, res, next)
+
+    const [error] = next.mock.calls[0]
+    expect(error).toBeInstanceOf(Error)
+    expect(error.code).toBe('LIMIT_FILE_TYPE')
+    expect(error.field).toBe('componentImage')
+  })
+})
+
+describe('validateFormDataFileType', () => {
+  let req, res, next
+  beforeEach(() => {
+    req = {}
+    res = {
+      render: jest.fn(),
+      status: jest.fn(() => res)
+    }
+    next = jest.fn()
+    jest.clearAllMocks()
+  })
+  it('calls next if no error', () => {
+    const err = undefined
+    validateFormDataFileType(err, req, res, next)
+    expect(next).toHaveBeenCalled()
+  })
+  it('passes error through if error code is not LIMIT_FILE_TYPE', () => {
+    const err = {
+      code: 'AN_ERROR'
+    }
+    validateFormDataFileType(err, req, res, next)
+    expect(next).toHaveBeenCalledWith(err)
+  })
+  it('renders the template with unsupported file type errors', () => {
+    const err = {
+      code: 'LIMIT_FILE_TYPE',
+      field: 'componentImage'
+    }
+    req.params = { page: 'component-image' }
+    const expectedArgs = {
+      addAnother: 1,
+      backLink: false,
+      csrfToken: undefined,
+      errorList: [
+        {
+          href: '#component-image',
+          text: 'The selected file must be a JPG, BMP, PNG, TIF or PDF'
+        }
+      ],
+      file: undefined,
+      formData: undefined,
+      formErrorStyles: null,
+      formErrors: {
+        componentImage: {
+          text: 'The selected file must be a JPG, BMP, PNG, TIF or PDF'
+        }
+      },
+      page: {
+        fields: {
+          componentImage: {
+            hint: 'The file must be a JPG, BMP, PNG, TIF or PDF, and smaller than 10MB.',
+            label: 'Upload a file'
+          }
+        },
+        removable: false,
+        showOnCya: true,
+        title: 'Component image'
+      },
+      showAddAnother: false,
+      submitUrl: undefined
+    }
+
+    validateFormDataFileType(err, req, res, next)
+
+    expect(res.status).toHaveBeenCalledWith(400)
+    expect(res.render).toHaveBeenCalledWith('component-image', expectedArgs)
+    expect(next).not.toHaveBeenCalled()
+  })
+})
+
+describe('validateFormDataVirusScan', () => {
+  let req, res, next
+  beforeEach(() => {
+    req = {
+      params: { page: 'component-image' }
+    }
+    res = {
+      render: jest.fn(),
+      status: jest.fn(() => res)
+    }
+    next = jest.fn()
+    jest.clearAllMocks()
+  })
+
+  it('calls next if no error', () => {
+    validateFormDataVirusScan(undefined, req, res, next)
+
+    expect(next).toHaveBeenCalled()
+  })
+
+  it('renders the template with virus found errors', () => {
+    const err = {
+      code: 'LIMIT_FILE_VIRUS_FOUND',
+      field: 'componentImage'
+    }
+
+    validateFormDataVirusScan(err, req, res, next)
+
+    expect(res.status).toHaveBeenCalledWith(400)
+    expect(res.render).toHaveBeenCalledWith(
+      'component-image',
+      expect.objectContaining({
+        errorList: [
+          {
+            href: '#component-image',
+            text: 'The selected file failed a virus scan'
+          }
+        ],
+        formErrors: {
+          componentImage: {
+            text: 'The selected file failed a virus scan'
+          }
+        }
+      })
+    )
+  })
+
+  it('renders the template with scanner failure errors', () => {
+    const err = {
+      code: 'LIMIT_FILE_VIRUS_SCAN_FAILED',
+      field: 'componentImage'
+    }
+
+    validateFormDataVirusScan(err, req, res, next)
+
+    expect(res.status).toHaveBeenCalledWith(400)
+    expect(res.render).toHaveBeenCalledWith(
+      'component-image',
+      expect.objectContaining({
+        errorList: [
+          {
+            href: '#component-image',
+            text: 'The selected file could not be scanned. Try again later.'
+          }
+        ],
+        formErrors: {
+          componentImage: {
+            text: 'The selected file could not be scanned. Try again later.'
+          }
+        }
+      })
+    )
+  })
+
+  it('passes error through if error code is not a virus scan error', () => {
+    const err = {
+      code: 'AN_ERROR'
+    }
+
+    validateFormDataVirusScan(err, req, res, next)
+
+    expect(next).toHaveBeenCalledWith(err)
   })
 })

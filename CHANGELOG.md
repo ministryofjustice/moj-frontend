@@ -1,3 +1,293 @@
+## [12.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v12.0.0...v12.0.1) (2026-11-17)
+
+
+### Bug Fixes
+
+* **footer template :** remove redundant 'contentinfo' role from footer. ([#2775](https://github.com/ministryofjustice/moj-frontend/issues/2775)) ([2269e02](https://github.com/ministryofjustice/moj-frontend/commit/2269e02db5cd864adc47d6ebb14dd942ff95efcc))
+
+# [12.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v11.1.0...v12.0.0) (2026-10-27)
+
+
+### Features
+
+* add nunjucks macro for scrollable pane ([#2709](https://github.com/ministryofjustice/moj-frontend/issues/2709)) ([e5e64a1](https://github.com/ministryofjustice/moj-frontend/commit/e5e64a143cc2b57ebecd67be7cc91c2f75701e1b))
+* sass updates for govuk frontend compatibility ([#2728](https://github.com/ministryofjustice/moj-frontend/issues/2728)) ([42b61c2](https://github.com/ministryofjustice/moj-frontend/commit/42b61c201d7ca89480f40e7b57cf8ecf1b7598aa))
+
+
+### BREAKING CHANGES
+
+* The sass file has moved within the package.  If you are using the styles individually you will need to update the `@import` or `@use` statement in your application stylesheet.
+
+You should switch to use the new nunjucks macro if you can.  If you are not using nunjucks in your service and using the component with html, you must ensure the component has a `role` of `region`, a `tabindex` attribute, and either an `aria-label` or `aria-labelledby` attribute.  Without these attributes the scrollable pane won’t work.  This is to ensure that the scrollable area is accessible for screenreader and keyboard users.
+
+The scrollable pane no longer forces `white-space: nowrap` on table cell content at smaller screen sizes, as this could cause issues with longer content being forced onto a single line. You are now responsible for your table layout within the scrollable container and may need to adjust your css accordingly.
+* The url for govuk-frontend within the moj-frontend src now does not
+include `node_modules`. You must add node_modules to your Sass load
+paths, by either:
+
+* calling the Sass compiler from the command line with the `--load-path
+node_modules` flag
+* using the JavaScript API with `loadPaths: ['node_modules']` in the
+options object
+
+MOJ Frontend no longer configures GOV.UK Frontend internally.
+Applications must configure GOV.UK Frontend directly **before** loading
+MOJ Frontend.
+
+MOJ Frontend will inherit `$govuk-page-width`, `$govuk-gutter`,
+`$govuk-assets-path` by default. These can all be overridden by using
+the equivalent moj-prefixed variable name.
+
+**Before**
+'moj-' prefixed variables proxied into govuk-frontend config within the
+package.
+```
+@forward "node_modules/@ministryofjustice/frontend/moj/all" with (
+  $moj-assets-path: "/assets/",
+  $moj-page-width: 1200px,
+  $moj-include-default-font-face: true
+);
+
+@forward "node_modules/govuk-frontend/dist/govuk";
+```
+
+**After**
+Configure GOV.UK Frontend first. MOJ Frontend will then use this config
+when it includes govuk-frontend in `@use` or `@forward` declarations
+
+```
+@forward "node_modules/govuk-frontend/dist/govuk" with (
+  $govuk-assets-path: "/assets/",
+  $govuk-page-width: 1200px,
+  $govuk-include-default-font-face: true,
+  $govuk-global-styles: true
+);
+
+// MOJ inherits GOV.UK page width and gutter by default
+@forward "node_modules/@ministryofjustice/frontend/moj/all";
+```
+
+To use a different MOJ container width:
+```
+@forward "node_modules/@ministryofjustice/frontend/moj/all" with (
+  $moj-page-width: 1400px
+);
+```
+
+# [12.0.0-beta.2](https://github.com/ministryofjustice/moj-frontend/compare/v12.0.0-beta.1...v12.0.0-beta.2) (2026-09-30)
+
+
+### Bug Fixes
+
+* default to moj-assets-path to govuk-assets-path unless it is set ([231f5c9](https://github.com/ministryofjustice/moj-frontend/commit/231f5c94aa3678696065d2a0d1f1796df4a40794))
+
+
+### Features
+
+* remove node_modules from govuk-frontend url within moj-frontend src ([26e80c6](https://github.com/ministryofjustice/moj-frontend/commit/26e80c64652b151d204f109efd733fc4270818f4))
+
+
+### BREAKING CHANGES
+
+* The url for govuk-frontend within the moj-frontend src now does not include `node_modules`.
+
+You must add node_modules to your Sass load paths, by either:
+
+* calling the Sass compiler from the command line with the `--load-path node_modules` flag
+* using the JavaScript API with `loadPaths: ['node_modules']` in the options object
+
+# [12.0.0-beta.1](https://github.com/ministryofjustice/moj-frontend/compare/v11.2.0-beta.1...v12.0.0-beta.1) (2026-09-29)
+
+
+### Bug Fixes
+
+* reinstate the vendor/govuk-frontend file as it is used across moj-frontend ([90e6832](https://github.com/ministryofjustice/moj-frontend/commit/90e6832c39c02415fdaa1b610ae5ed1e447ec32b))
+
+
+### Features
+
+* allow moj-frontend to inherit $govuk-page-width with an override ([47b4f80](https://github.com/ministryofjustice/moj-frontend/commit/47b4f8067db2e6a41853bc32dace75560127c5ce))
+* move govuk config outside moj-frontend ([2ea91af](https://github.com/ministryofjustice/moj-frontend/commit/2ea91af8940cae1530c747b424e6eed0d1059097))
+
+
+### BREAKING CHANGES
+
+* govuk config has been moved out of the moj-frontend
+library.  Govuk-frontend must be configured with @use/@forward
+**before** moj-frontend is included via @use/@forward.
+
+Before:
+```
+@forward "node_modules/@ministryofjustice/frontend/moj/all" with (
+  $moj-page-width: 1200px,
+  $moj-include-default-font-face: true,
+  $moj-global-styles: true
+
+)
+@forward "node_modules/govuk-frontend/dist/govuk";
+```
+After:
+```
+// configure govuk-frontend first
+@forward "node_modules/govuk-frontend/dist/govuk" with (
+  $govuk-page-width: 1200px,
+  $govuk-include-default-font-face: true,
+  $govuk-global-styles: true
+);
+
+// Configure moj-frontend (the internal use of govuk-frontend will use
+// the settings from the @forward rule above)
+@forward "node_modules/@ministryofjustice/frontend/moj/all" with (
+  $moj-page-width: 1200px
+);
+```
+
+# [11.2.0-beta.1](https://github.com/ministryofjustice/moj-frontend/compare/v11.1.0...v11.2.0-beta.1) (2026-09-24)
+
+
+### Features
+
+* update to govuk-frontend v6.2.0 ([ebefdad](https://github.com/ministryofjustice/moj-frontend/commit/ebefdadd1b23f34365e1544ee3a5e3380b215a78))
+* wip ([ec420d5](https://github.com/ministryofjustice/moj-frontend/commit/ec420d55ca8aa05b25c2095d38f87bf4a0598e54))
+
+# [11.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v11.0.1...v11.1.0) (2026-09-17)
+
+
+### Bug Fixes
+
+* **datepicker:** leadingZeros accepts boolean parameter ([#2640](https://github.com/ministryofjustice/moj-frontend/issues/2640)) ([e070b9a](https://github.com/ministryofjustice/moj-frontend/commit/e070b9a9575b779f01eaec32d4440b01daa9b916)), closes [#2639](https://github.com/ministryofjustice/moj-frontend/issues/2639)
+* **dependencies:** update moment dependency to be pinned to a major release not specific version ([#2644](https://github.com/ministryofjustice/moj-frontend/issues/2644)) ([f31fe86](https://github.com/ministryofjustice/moj-frontend/commit/f31fe86ac34869cdba9bbc528c76a709d30e4052)), closes [#2646](https://github.com/ministryofjustice/moj-frontend/issues/2646)
+* **notification badge:** add space between component class and custom classes ([#2642](https://github.com/ministryofjustice/moj-frontend/issues/2642)) ([d68a349](https://github.com/ministryofjustice/moj-frontend/commit/d68a349260b1628e2ecd82364e38784c7df7d813)), closes [#2648](https://github.com/ministryofjustice/moj-frontend/issues/2648)
+
+
+### Features
+
+* **search:** allow input.errorMessage to be passed through to the search input ([#2643](https://github.com/ministryofjustice/moj-frontend/issues/2643)) ([2725c10](https://github.com/ministryofjustice/moj-frontend/commit/2725c105a622f17e22728ea0daaec950f6572d4f)), closes [#2645](https://github.com/ministryofjustice/moj-frontend/issues/2645)
+
+## [11.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v11.0.0...v11.0.1) (2026-09-04)
+
+
+### Bug Fixes
+
+* **search:** ensure `input` options are passed through to the search input in the component ([#2598](https://github.com/ministryofjustice/moj-frontend/issues/2598)) ([5d0a1ad](https://github.com/ministryofjustice/moj-frontend/commit/5d0a1ad2e7e2c852cbb5dc41ac77655d22e190a4)), closes [#2590](https://github.com/ministryofjustice/moj-frontend/issues/2590)
+
+# [11.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v10.0.1...v11.0.0) (2026-08-25)
+
+
+* feat(search)!: update to official ([#2530](https://github.com/ministryofjustice/moj-frontend/issues/2530)) ([1d74e59](https://github.com/ministryofjustice/moj-frontend/commit/1d74e59ed101c8ad2df12e0dcc7fcdac7f19cea6)), closes [#1382](https://github.com/ministryofjustice/moj-frontend/issues/1382)
+
+
+### Bug Fixes
+
+* **docs:** correct typo in date picker readme.md ([#2532](https://github.com/ministryofjustice/moj-frontend/issues/2532)) ([680ef90](https://github.com/ministryofjustice/moj-frontend/commit/680ef90e65dc855c843733afbe9b83f1edbc82e6))
+
+
+### Features
+
+* **add another:** add id attribute for component ([#2544](https://github.com/ministryofjustice/moj-frontend/issues/2544)) ([aebd781](https://github.com/ministryofjustice/moj-frontend/commit/aebd78179b7877ee380d608f8c809e0ae2bb47c8))
+* **multi-file-upload:** add CSRF protection support for multi-file upload ([#2562](https://github.com/ministryofjustice/moj-frontend/issues/2562)) ([64014ef](https://github.com/ministryofjustice/moj-frontend/commit/64014ef701ee7ffe2c49adf33168027c7684b544)), closes [#504](https://github.com/ministryofjustice/moj-frontend/issues/504)
+
+
+### BREAKING CHANGES
+
+* Updates to the search component to bring it up to official status
+
+* uses `<search>` element
+* adds ability to add csrf token to form
+
+## [10.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v10.0.0...v10.0.1) (2026-07-20)
+
+
+### Bug Fixes
+
+* rename to params for classes properly. ([#2503](https://github.com/ministryofjustice/moj-frontend/issues/2503)) ([f573f9a](https://github.com/ministryofjustice/moj-frontend/commit/f573f9a5780f5dc171e450534de6a782a8c1bdab))
+
+# [10.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v9.0.0...v10.0.0) (2026-07-16)
+
+
+* feat(add another)!: update add another to official ([#2198](https://github.com/ministryofjustice/moj-frontend/issues/2198)) ([b206dfe](https://github.com/ministryofjustice/moj-frontend/commit/b206dfeac784103e087032a9bbe8f4634353dac1))
+
+
+### Bug Fixes
+
+* Offering to add a class name to the PDS header component ([#2354](https://github.com/ministryofjustice/moj-frontend/issues/2354)) ([8d7eb54](https://github.com/ministryofjustice/moj-frontend/commit/8d7eb54911352be3d6d6f4bcf07b774fa63c0e08))
+
+
+### BREAKING CHANGES
+
+* Update add another component to official status.
+
+Co-authored-by: Chris Pymm <chris.pymm@digital.justice.gov.uk>
+Co-authored-by: chrispymm <595564+chrispymm@users.noreply.github.com>
+Co-authored-by: Stevey <59696147+itsmestevey@users.noreply.github.com>
+Co-authored-by: Chris Pymm <chris@chrispymm.co.uk>
+Co-authored-by: Copilot Autofix powered by AI <175728472+Copilot@users.noreply.github.com>
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
+
+# [9.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v8.0.1...v9.0.0) (2026-02-25)
+
+
+* feat(v9.0.0)!: Update to support govuk-frontend v6.0.0 ([#2192](https://github.com/ministryofjustice/moj-frontend/issues/2192)) ([0728aff](https://github.com/ministryofjustice/moj-frontend/commit/0728affa1e6074cb4fbcf3a6caaf995de7e3dcae))
+
+
+### BREAKING CHANGES
+
+* Updates to MOJ Frontend to support all the changes in GOV.UK Frontend v6.0.0
+
+## [8.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v8.0.0...v8.0.1) (2026-02-18)
+
+
+### Bug Fixes
+
+* **pds header:** update hover and focus states to meet WCAG AA contrast ([41fce95](https://github.com/ministryofjustice/moj-frontend/commit/41fce9558052bcca0779bc981213508f5b5059fb))
+* **scrollable pane:** accessibility fixes ([#2109](https://github.com/ministryofjustice/moj-frontend/issues/2109)) ([205ab22](https://github.com/ministryofjustice/moj-frontend/commit/205ab225b31deb3796a703c84416198d16691744))
+
+# [8.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.1...v8.0.0) (2025-12-17)
+
+### BREAKING CHANGES
+
+* pagination component updated to use GOV.UK pagination ([#2074](https://github.com/ministryofjustice/moj-frontend/issues/2074)) ([f546536](https://github.com/ministryofjustice/moj-frontend/commit/f5465360648cc37344e1b99df1dc56f8cc0ff299))
+
+### Bug Fixes
+
+* adjust margin for organisation name in header component ([#2085](https://github.com/ministryofjustice/moj-frontend/issues/2085)) ([a10e777](https://github.com/ministryofjustice/moj-frontend/commit/a10e777aad3aa0659a544ff5b33a4b5a954b54cb))
+
+# [7.2.0 (Deprecated)](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.1...v7.2.0) (2025-12-17)
+
+This version was deprecated due to incorrect semver classification.
+
+## [7.1.1](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.0...v7.1.1) (2025-12-03)
+
+
+### Bug Fixes
+
+* Small adjustments PDS header and footer ([#2020](https://github.com/ministryofjustice/moj-frontend/issues/2020)) ([14394f9](https://github.com/ministryofjustice/moj-frontend/commit/14394f9ba989efd3f413396f3043d42726f0e96f))
+
+# [7.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v7.0.0...v7.1.0) (2025-10-28)
+
+
+### Features
+
+* Update pds header with global navigation ([#1885](https://github.com/ministryofjustice/moj-frontend/issues/1885)) ([15b7306](https://github.com/ministryofjustice/moj-frontend/commit/15b7306abc35bc5a7aa1ffcb0ac3bb44a093c2a1))
+
+# [7.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v6.0.0...v7.0.0) (2025-10-28)
+
+
+* fix minDate bug ([#1884](https://github.com/ministryofjustice/moj-frontend/issues/1884)) ([#1887](https://github.com/ministryofjustice/moj-frontend/issues/1887)) ([fd6f5c0](https://github.com/ministryofjustice/moj-frontend/commit/fd6f5c04c6bd019c991135809fd37c89d62b56be)), closes [#923](https://github.com/ministryofjustice/moj-frontend/issues/923)
+
+
+### Bug Fixes
+
+* **multifileupload:** amend calls to callback functions to use statusText instead of responseText ([#1922](https://github.com/ministryofjustice/moj-frontend/issues/1922)) ([#1932](https://github.com/ministryofjustice/moj-frontend/issues/1932)) ([043dfa5](https://github.com/ministryofjustice/moj-frontend/commit/043dfa5870ed1e51ee2c1fbb67f54eb537de117a))
+* **pagination:** fix page count totals in aria labels ([#1904](https://github.com/ministryofjustice/moj-frontend/issues/1904)) ([3a3aa3e](https://github.com/ministryofjustice/moj-frontend/commit/3a3aa3e54ebd47c89a4a6a90a5ab6eca88a77074))
+* **scrollable pane:** fix affordance shadows not showing ([#1867](https://github.com/ministryofjustice/moj-frontend/issues/1867)) ([ebf12e2](https://github.com/ministryofjustice/moj-frontend/commit/ebf12e2806ac447a4a337c320f090ac7deebcd73)), closes [#1866](https://github.com/ministryofjustice/moj-frontend/issues/1866)
+
+
+### BREAKING CHANGES
+
+* `minDate` is now always inclusive. This means that the date passed for `minDate` will
+always be available for selection.  You will need to amend the dates you pass to the component if you had been relying on the `minDate` not being selectable.
+
 # [6.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v5.2.1...v6.0.0) (2025-10-01)
 
 
@@ -306,9 +596,9 @@ file exists.
 
 * align with GOV.UK Frontend conventions ([#1304](https://github.com/ministryofjustice/moj-frontend/issues/1304)) ([d9d0a6f](https://github.com/ministryofjustice/moj-frontend/commit/d9d0a6f968035e9e7de9cbb8a0ba99e041b98852)), closes [#1128](https://github.com/ministryofjustice/moj-frontend/issues/1128) [#1259](https://github.com/ministryofjustice/moj-frontend/issues/1259)
 * configure GOV.UK Prototype Kit for ES modules ([e6af988](https://github.com/ministryofjustice/moj-frontend/commit/e6af9888ba6314e244b3ce9549281f0d91c429a1))
-* export MoJ Frontend version CSS custom property ([a03e3d1](https://github.com/ministryofjustice/moj-frontend/commit/a03e3d104d8ca32ee782aa547d4d2e645a49c9d3))
+* export MOJ Frontend version CSS custom property ([a03e3d1](https://github.com/ministryofjustice/moj-frontend/commit/a03e3d104d8ca32ee782aa547d4d2e645a49c9d3))
 * match GOV.UK Frontend file naming conventions ([dbb30d5](https://github.com/ministryofjustice/moj-frontend/commit/dbb30d5901699652e6d51d41a496807f4387dc7a))
-* update MoJ Frontend version using Rollup ([90ac49e](https://github.com/ministryofjustice/moj-frontend/commit/90ac49ebcb95272706ade31618674c4c22904172))
+* update MOJ Frontend version using Rollup ([90ac49e](https://github.com/ministryofjustice/moj-frontend/commit/90ac49ebcb95272706ade31618674c4c22904172))
 
 ## [4.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v4.0.0...v4.0.1) (2025-03-11)
 

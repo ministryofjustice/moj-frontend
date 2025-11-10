@@ -1,0 +1,105 @@
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/error-message/macro.njk" import govukErrorMessage -%}
+
+{% set describedBy = item.fieldset.describedBy if item.fieldset.describedBy else "" %}
+
+{% set itemLabel = params.itemLabel | default('Item', true) %}
+{% set defaultRemoveButtonText = "Remove %{itemLabel} %{number}" %}
+{% set removeButtonText = (params.removeButtonText or defaultRemoveButtonText) | replace('%{itemLabel}', (itemLabel | lower)) | replace('%{number}', index) %}
+
+{% set itemsCount = params.items | length %}
+{% set showRemoveButton = itemsCount > 1 %}
+{% set itemLegendTemplate = ((params.itemLegendText.one if itemsCount == 1 else params.itemLegendText.other) or '%{itemLabel} %{number}') if params.itemLegendText else '%{itemLabel} %{number}' %}
+{% set itemLegendText = itemLegendTemplate | replace('%{itemLabel}', itemLabel) | replace('%{number}', index) | replace('%{count}', itemsCount) %}
+
+{#- Setup css classes for the item and legend #}
+{% set classes = ["moj-add-another__item"] %}
+{% set legendClasses = ["moj-add-another__item-title govuk-fieldset__legend--m"] %}
+
+{%- if params.layout == 'inline' %}
+  {% set classes = classes.concat("moj-add-another__item--inline") %}
+{% endif %}
+
+{%- if item.classes %}
+  {% set classes = classes.concat(item.classes) %}
+{% endif %}
+
+{%- if item.fieldset.legend.classes %}
+  {% set legendClasses = legendClasses.concat(item.fieldset.legend.classes) %}
+{% endif %}
+
+{#- If the item has an error message, add the error id to the describedBy
+attribute and add an error class to the item #}
+{%- if item.errorMessage %}
+  {% set errorId = params.id + index +"-error" %}
+  {% set describedBy = describedBy + " " + errorId if describedBy else errorId %}
+  {% set classes = classes.concat("moj-add-another__item--error") %}
+{% endif %}
+
+{% set classes = classes | join(" ") -%}
+{% set legendClasses = legendClasses | join(" ") -%}
+
+{#- Setup the remove button html #}
+{% set removeButtonHtml %}
+  <div class="moj-add-another__remove-button-container">
+    {% if showRemoveButton %}
+      {{ govukButton({
+        text: removeButtonText,
+        classes: "govuk-button--secondary moj-add-another__remove-button",
+        name: item.removeButton.name if item.removeButton and item.removeButton.name else 'remove',
+        value: item.removeButton.value if item.removeButton and item.removeButton.value else index-1
+      }) }}
+    {% endif %}
+  </div>
+{% endset %}
+
+{#- Setup the item html, if the layout is inline then the content and remove
+button are side by side, otherwise the remove button is below the content #}
+{%- if params.layout == 'inline' %}
+  {% set fieldsetHtml %}
+    <div class="moj-add-another__item-container">
+      <div class="moj-add-another__item-row">
+        {% if item.errorMessage %}
+          {{ govukErrorMessage({
+                id: errorId,
+                classes: item.errorMessage.classes,
+                attributes: item.errorMessage.attributes,
+                html: item.errorMessage.html,
+                text: item.errorMessage.text,
+                visuallyHiddenText: item.errorMessage.visuallyHiddenText
+          }) | trim | indent(2) }}
+        {% endif %}
+        {{ item.fieldset.html | safe}}
+      </div>
+      {{ removeButtonHtml | safe }}
+    </div>
+  {% endset %}
+{% else %}
+  {% set fieldsetHtml %}
+    <div class="moj-add-another__item-container">
+      {{ (item.fieldset.html + removeButtonHtml) | safe }}
+    </div>
+  {% endset %}
+{% endif %}
+
+{#- Setup the legend for the fieldset, if one is provided #}
+{% set legendParams = {
+  text: itemLegendText,
+  html: item.fieldset.legend.html,
+  classes: legendClasses,
+  isPageHeading: false
+} %}
+
+{#- Render the item #}
+<div class="{{ classes }}" {{ govukAttributes(item.attributes) }}>
+  {{- govukFieldset({
+    attributes: item.fieldset.attributes,
+    classes: "moj-add-another__fieldset " + (item.fieldset.classes if item.fieldset.classes),
+    describedBy: describedBy,
+    html: fieldsetHtml,
+    legend: legendParams,
+    role: item.fieldset.role
+  }) -}}
+</div>
+

@@ -10,7 +10,7 @@
   margin: 2px 0 0 2px !important;
   padding: 5.5px 12px;
   border-right: 2px solid govuk-colour("black");
-  background-color: govuk-colour("light-grey");
+  background-color: govuk-colour("black", $variant: "tint-95");
   @include govuk-font(19);
 
   &--error {

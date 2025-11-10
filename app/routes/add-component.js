@@ -1,6 +1,7 @@
 const crypto = require('crypto')
 const fs = require('fs')
 
+const Sentry = require('@sentry/node')
 const express = require('express')
 const multer = require('multer')
 
@@ -8,7 +9,8 @@ const {
   COMPONENT_FORM_PAGES,
   ADD_NEW_COMPONENT_ROUTE,
   MESSAGES,
-  ENV
+  ENV,
+  ALLOWED_COMPONENT_IMAGE_MIME_TYPES
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const { checkYourAnswers } = require('../helpers/check-your-answers')
@@ -27,12 +29,17 @@ const {
   removeFromSession,
   sessionStarted,
   sessionVerified,
-  validateFormDataFileUpload,
+  validateFormDataFileSignature,
+  validateFormDataFileSize,
+  validateFormDataFileType,
+  validateFormDataVirusScan,
   saveFileToRedis,
   clearSkippedPageData,
   checkEmailDomain,
   validatePageParams,
   setCsrfToken,
+  setInitialCsrfToken,
+  verifyInitialCsrfToken,
   setSuccessMessage,
   xssComponentCode
 } = require('../middleware/component-session')
@@ -44,6 +51,7 @@ const {
 const {
   sendSubmissionEmail,
   sendPrEmail,
+  sendSuccessEmail,
   sendVerificationEmail
 } = require('../middleware/notify-email')
 const {
@@ -53,11 +61,23 @@ const {
   buildComponentPage,
   generateSubmissionRef,
   getDetailsForPrEmail
-} = require('../middleware/process-subission-data')
+} = require('../middleware/process-submission-data')
 const verifyCsrf = require('../middleware/verify-csrf')
+const { scanUploadedFileForViruses } = require('../middleware/virus-scan')
+
 const upload = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 10 * 1024 * 1024 } // 10MB
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
+  fileFilter: (req, file, cb) => {
+    if (ALLOWED_COMPONENT_IMAGE_MIME_TYPES.has(file.mimetype)) {
+      return cb(null, true)
+    }
+
+    const error = new Error('Invalid file type')
+    error.code = 'LIMIT_FILE_TYPE'
+    error.field = file.fieldname
+    cb(error)
+  }
 })
 const router = express.Router()
 const checkYourAnswersPath = 'check-your-answers'
@@ -71,7 +91,7 @@ router.all('{*splat}', setCsrfToken)
 
 // TODO:  Why is this a get * ? Can it not just be set in the get /checkYourAnswersPath route below?
 router.get('{*splat}', (req, res, next) => {
-  if (req?.session) {
+  if (req?.session?.started) {
     if (req?.url.endsWith(checkYourAnswersPath)) {
       // Indicate that we've been on the check your answers page
       req.session.checkYourAnswers = true
@@ -153,33 +173,46 @@ if (ENV === 'development') {
     },
     buildComponentPage,
     async (req, res) => {
-      const { markdownFilename: filename, markdownContent: content } = req
-      fs.writeFile(`docs/components/${filename}`, content, (err) => {
-        if (err) {
-          console.error(err)
-        } else {
-          // file written successfully
-          setTimeout(() => {
-            res.redirect(
-              `/components/${filename.split('.').at(0).toLowerCase()}`
-            )
-          }, 2000)
+      const docsDir = 'docs/components'
+      let componentDir = ''
+      for (const [filename, content] of Object.entries(req.markdown)) {
+        if (!componentDir) {
+          componentDir = filename.split('/')[0]
         }
-      })
+
+        if (!fs.existsSync(`${docsDir}/${componentDir}`)) {
+          fs.mkdirSync(`${docsDir}/${componentDir}`)
+          console.log(`Directory '${docsDir}/${componentDir}' created.`)
+        }
+
+        fs.writeFile(`${docsDir}/${filename}`, content, (err) => {
+          if (err) {
+            console.error(err)
+          } else {
+            console.log(`File '${docsDir}/${filename}' created.`)
+          }
+        })
+      }
+
+      setTimeout(() => {
+        res.redirect(`/components/${componentDir}`)
+      }, 2000)
     }
   )
 }
 
 // Start
-router.get('/start', (req, res) => {
-  delete req.session.checkYourAnswers
-  req.session.started = true
+router.get('/start', setInitialCsrfToken, (req, res) => {
   res.render('start', {
     page: {
       title: 'Before you start'
     },
-    csrfToken: req?.session?.csrfToken
+    csrfToken: req.initialCsrfToken
   })
+})
+
+router.post('/start', verifyInitialCsrfToken, (req, res) => {
+  res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email`)
 })
 
 // Confirmation page
@@ -235,9 +268,7 @@ router.get('/email-invalid-token', (req, res) => {
   })
 })
 
-router.get('/email', (req, res) => {
-  req.session.started = true
-
+router.get('/email', sessionStarted, (req, res) => {
   if (req.query.reset === 'true') {
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete req.session['/email']
@@ -254,10 +285,6 @@ router.get('/email', (req, res) => {
 
 // For all following routed we must have a session in progress
 router.all('{*splat}', sessionStarted)
-
-router.post('/start', verifyCsrf, (req, res) => {
-  res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email`)
-})
 
 router.post(
   '/email',
@@ -307,6 +334,7 @@ router.post(
             await sendVerificationEmail(email, token)
           } catch (error) {
             console.error(`Error sending verification email: ${error}`)
+            Sentry.captureException(error)
           }
         }
       }
@@ -346,6 +374,7 @@ router.post('/email/resend', verifyCsrf, async (req, res, next) => {
       await sendVerificationEmail(email, token)
     } catch (error) {
       console.error(`Error sending verification email: ${error}`)
+      Sentry.captureException(error)
       next(error)
     }
   }
@@ -477,8 +506,10 @@ router.post(
       const pr = await createPullRequest(branchName, title, description)
       const issue = await createReviewIssue(pr, detailsForPrEmail)
       await sendPrEmail(pr, issue, detailsForPrEmail)
+      await sendSuccessEmail(detailsForPrEmail)
     } catch (error) {
       console.error('[FORM SUBMISSION] Error sending submission:', error)
+      Sentry.captureException(error)
       await sendSubmissionEmail(sessionText, markdownContent)
     }
   }
@@ -488,11 +519,15 @@ router.post(
 router.post(
   ['/component-image', '/component-image/:subpage'],
   validatePageParams,
-  upload.single('componentImage'),
   verifyCsrf,
+  upload.single('componentImage'),
+  validateFormDataFileSignature,
+  scanUploadedFileForViruses,
   saveFileToRedis,
   canAddAnother,
-  validateFormDataFileUpload,
+  validateFormDataFileSize,
+  validateFormDataFileType,
+  validateFormDataVirusScan,
   getBackLink,
   validateFormData,
   (req, res, next) => {

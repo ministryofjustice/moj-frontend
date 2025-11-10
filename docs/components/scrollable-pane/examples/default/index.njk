@@ -1,0 +1,12 @@
+---
+layout: layouts/example.njk
+title: Sortable table (example)
+redirect_from: examples/scrollable-pane
+---
+
+{%- from "moj/components/scrollable-pane/macro.njk" import mojScrollablePane -%}
+{%- from "docs/components/scrollable-pane/examples/default/table.njk" import tableHTML -%}
+
+{% call mojScrollablePane({ label: "HMCTS management information" }) -%}
+  {{ tableHTML() }}
+{% endcall -%}

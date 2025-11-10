@@ -1,0 +1,11 @@
+.js-enabled .govuk-timeout-warning-fallback {
+  display: none;
+}
+
+.countdown {
+  white-space: nowrap;
+}
+
+.tabular-numbers {
+  @include govuk-font($size: false, $tabular: true)
+}

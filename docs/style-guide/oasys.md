@@ -1,0 +1,5 @@
+---
+title: OASys
+---
+
+OASys is an abbreviation of Offender Assessment System, which is used by staff across prisons and probation to complete risk and need assessments. The term is well known and widely understood in its abbreviated form. It is consistently written with the capitalisation OASys.

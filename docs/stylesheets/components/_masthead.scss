@@ -17,6 +17,7 @@ $brand-colour: #220051;
     @include govuk-responsive-padding(9, "top");
     @include govuk-responsive-padding(9, "bottom");
   }
+
   @include govuk-media-query($from: desktop) {
     .app-page__width-container {
       padding-right: 130px;
@@ -36,7 +37,7 @@ $brand-colour: #220051;
 }
 
 .app-masthead .govuk-button--start:hover {
-  background-color: govuk-colour("mid-grey");
+  background-color: govuk-colour("black", $variant: "tint-80");
 }
 
 .app-masthead .govuk-caption-xl {

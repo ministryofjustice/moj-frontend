@@ -1,0 +1,13 @@
+---
+layout: layouts/example.njk
+title: Warning banner (example)
+redirect_from: examples/banner-warning
+---
+
+{%- from "moj/components/banner/macro.njk" import mojBanner -%}
+
+{{ mojBanner({
+  type: "warning",
+  text: "Questions weren’t sent – try again.",
+  iconFallbackText: "Warning"
+}) }}

@@ -8,12 +8,10 @@ const sessionFile = path.join(
 )
 
 setup('session', async ({ page }) => {
-  // Perform authentication steps. Replace these actions with your own.
   await page.goto('start')
-
-  // Alternatively, you can wait until the page reaches a state where all cookies are set.
   await expect(page.getByRole('button', { name: 'Continue' })).toBeVisible()
+  await page.getByRole('button', { name: 'Continue' }).click()
+  await expect(page).toHaveTitle(/Verify that you work for MOJ/)
   await page.waitForLoadState('networkidle')
-  // End of authentication steps.
   await page.context().storageState({ path: sessionFile })
 })

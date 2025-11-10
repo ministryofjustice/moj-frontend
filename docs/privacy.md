@@ -3,11 +3,11 @@ layout: layouts/content.njk
 title: Privacy notice
 ---
 
-The MoJ Design System is provided by the Ministry of Justice.
+The MOJ Design System is provided by the Ministry of Justice.
 
 The Ministry of Justice is the data controller. A data controller determines how and why personal data is processed.
 
-This privacy notice explains what data the MoJ Design System processes and why we ask for this information. It also explains how we store your data, your rights and how to complain if you think we’ve done something wrong.
+This privacy notice explains what data the MOJ Design System processes and why we ask for this information. It also explains how we store your data, your rights and how to complain if you think we’ve done something wrong.
 
 ## What data we process
 
@@ -66,7 +66,7 @@ The legal basis for processing this data is it’s necessary for the performance
 
 We maintain our systems to make sure that your data is processed and stored safely.
 
-None of the information that you share with us will be shared outside the MoJ Design System.
+None of the information that you share with us will be shared outside the MOJ Design System.
 
 All data is processed in the European Economic Area (EEA).
 
@@ -89,7 +89,7 @@ You have the right to request:
 - a copy of your personal data
 - an immediate correction to any inaccurate personal information
 
-Send your request to the MoJ data protection officer:
+Send your request to the MOJ data protection officer:
 
 Data protection officer  
 Ministry of Justice  
@@ -101,7 +101,7 @@ SW1H 9AJ
 
 ## How to complain
 
-If you have any concerns about our use of your personal data, you can contact the MoJ data protection officer:
+If you have any concerns about our use of your personal data, you can contact the MOJ data protection officer:
 
 Data protection officer  
 Ministry of Justice  
@@ -128,6 +128,6 @@ ICO website: <a href="https://ico.org.uk/make-a-complaint/">www.ico.org.uk/make-
 
 We may change this privacy notice. When we do this, the ‘last updated’ date on this page will change.
 
-Any changes to this privacy notice will apply to you and your data immediately. If these changes affect how your personal data is processed, MoJ will take reasonable steps to make sure you know.
+Any changes to this privacy notice will apply to you and your data immediately. If these changes affect how your personal data is processed, MOJ will take reasonable steps to make sure you know.
 
 Last updated: 14 April 2025

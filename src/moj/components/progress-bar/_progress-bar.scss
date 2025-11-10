@@ -98,6 +98,6 @@
   position: relative;
   margin-top: govuk-spacing(3);
   font-weight: inherit;
-  word-wrap: break-word; // Just in case
+  overflow-wrap: break-word; // Just in case
   @include govuk-font(16);
 }

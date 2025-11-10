@@ -55,7 +55,7 @@ function compileScripts(
           include: '**/common/moj-frontend-version.mjs',
           preventAssignment: true,
 
-          // Add MoJ Frontend release version
+          // Add MOJ Frontend release version
           development: pkg.version
         }),
         babel({
@@ -88,7 +88,7 @@ function compileScripts(
           },
 
           // Include sources content from source maps to inspect
-          // MoJ Frontend and other dependencies' source code
+          // MOJ Frontend and other dependencies' source code
           sourceMap: {
             includeSources: true
           },

@@ -1,0 +1,9 @@
+{
+  "fullName": "Sumiti Hamilton",
+  "teamName": "LAA Apply and Review team",
+  "shareYourDetails": [
+    "",
+    "addNameToComponentPage",
+    "addTeamNameToComponentPage"
+  ]
+}

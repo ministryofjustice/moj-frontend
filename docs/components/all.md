@@ -1,6 +1,6 @@
 ---
-title: View all components
+title: All MOJ components
 permalink: false
 order: _
-navUrl: '/components'
+navUrl: '/components/'
 ---

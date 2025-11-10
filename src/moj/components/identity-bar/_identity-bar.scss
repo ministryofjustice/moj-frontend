@@ -8,15 +8,23 @@
 .moj-identity-bar {
   @include govuk-clearfix;
   padding-top: govuk-spacing(2);
-  padding-bottom: govuk-spacing(2) - 1px; /* Negative by 1px to compensate */
+  padding-bottom: govuk-spacing(2) - 1px;
+
+  /* Negative by 1px to compensate */
   color: govuk-colour("black");
   background-color: govuk-colour("white");
-  box-shadow: inset 0 -1px 0 0 govuk-colour("mid-grey"); /* Takes up no space */
+  box-shadow: inset 0 -1px 0 0 govuk-colour("black", $variant: "tint-80");
+
+  /* Takes up no space */
 }
 
 .moj-identity-bar__container {
-  font-size: 0; /* Hide whitespace between elements */
-  text-align: justify; /* Trick to remove the need for floats */
+  font-size: 0;
+
+  /* Hide whitespace between elements */
+  text-align: justify;
+
+  /* Trick to remove the need for floats */
   @include moj-width-container;
 
   &::after {
@@ -39,8 +47,12 @@
 
   @include govuk-media-query($from: tablet) {
     display: inline-block;
-    padding-top: govuk-spacing(2) + 1px; /* Alignment tweaks */
-    padding-bottom: govuk-spacing(2) - 1px; /* Alignment tweaks */
+    padding-top: govuk-spacing(2) + 1px;
+
+    /* Alignment tweaks */
+    padding-bottom: govuk-spacing(2) - 1px;
+
+    /* Alignment tweaks */
     vertical-align: top;
   }
 }

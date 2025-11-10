@@ -4,7 +4,7 @@
 
 ### Installation
 
-You will need to install the MoJ Frontend Nunjucks filters to use the `mojMessages()` Nunjucks macro:
+You will need to install the MOJ Frontend Nunjucks filters to use the `mojMessages()` Nunjucks macro:
 
 1. Import the filters
 

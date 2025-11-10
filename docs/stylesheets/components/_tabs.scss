@@ -5,9 +5,33 @@
    ========================================================================== */
 
 .app-tabs {
-  margin-bottom: govuk-spacing(9);
   border-top: 0;
   background: govuk-colour("white");
+
+  & + h2:not([class]) {
+    margin-top: govuk-spacing(8);
+  }
+
+  & + h3:not([class]) {
+    margin-top: govuk-spacing(6);
+  }
+
+  & + h4:not([class]) {
+    margin-top: govuk-spacing(4);
+  }
+
+  & + p {
+    margin-top: govuk-spacing(4);
+  }
+
+  & + ol:not([class]),
+  & + ul:not([class]) {
+    margin-top: govuk-spacing(4);
+  }
+
+  & + * {
+    margin-top: govuk-spacing(4);
+  }
 }
 
 .app-tabs__list {
@@ -58,7 +82,7 @@
 
   &:hover {
     .app-prose-scope & {
-      color: govuk-colour("light-blue");
+      color: govuk-colour("blue", $variant: "tint-25");
     }
   }
 
@@ -103,6 +127,10 @@
   p {
     // stylelint-disable-next-line declaration-no-important
     max-width: 100% !important;
+  }
+
+  table td {
+    vertical-align: top;
   }
 
   code {

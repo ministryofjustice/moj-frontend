@@ -5,7 +5,7 @@
  *
  * @param {string} key - the session key to generate a filename for
  */
-const extractFilename = (key) => {
+const extractFilename = (key, joiner = '-') => {
   key = key.startsWith('/') ? key.slice(1) : key
 
   const segments = key.split('/')
@@ -15,7 +15,7 @@ const extractFilename = (key) => {
     ? lastSegment
     : `${lastSegment}.txt`
 
-  return segments.join('-')
+  return segments.join(joiner)
 }
 
 /**

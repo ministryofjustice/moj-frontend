@@ -30,10 +30,14 @@ module.exports = function (eleventyConfig) {
     nunjucksEnv.addFilter(name, callback)
   })
 
+  eleventyConfig.ignores.add('**/*_arguments.md')
+
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')
   eleventyConfig.addWatchTarget('docs/examples/**/script.js')
   eleventyConfig.addWatchTarget('docs/examples/**/style.css')
+  eleventyConfig.addWatchTarget('docs/**/*.11tydata.js')
+  eleventyConfig.addWatchTarget('11ty/**/*.js')
   // Give gulp a little time..
   eleventyConfig.setWatchThrottleWaitTime(100)
 

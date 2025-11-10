@@ -1,13 +1,14 @@
 const config = {
   GITHUB_API_URL: process.env.GITHUB_API_URL || 'https://api.github.com',
-  GITHUB_API_TOKEN: process.env.GITHUB_API_TOKEN || 'your-default-github-token',
-  GITHUB_REPO_OWNER: process.env.GITHUB_REPO_OWNER || 'your-default-repo-owner',
-  GITHUB_REPO_NAME: process.env.GITHUB_REPO_NAME || 'your-default-repo-name',
+  GITHUB_API_TOKEN: process.env.GITHUB_API_TOKEN,
+  GITHUB_REPO_OWNER: process.env.GITHUB_REPO_OWNER,
+  GITHUB_REPO_NAME: process.env.GITHUB_REPO_NAME,
   NOTIFY_PR_TEMPLATE: process.env.NOTIFY_PR_TEMPLATE || '',
   NOTIFY_SUBMISSION_TEMPLATE: process.env.NOTIFY_SUBMISSION_TEMPLATE || '',
+  NOTIFY_SUCCESS_TEMPLATE: process.env.NOTIFY_SUCCESS_TEMPLATE || '',
   NOTIFY_VERIFICATION_TEMPLATE: process.env.NOTIFY_VERIFICATION_TEMPLATE || '',
   NOTIFY_EMAIL: process.env.NOTIFY_EMAIL || 'your-email',
-  NOTIFY_TOKEN: process.env.NOTIFY_TOKEN || 'your-default-repo-token',
+  NOTIFY_TOKEN: process.env.NOTIFY_TOKEN,
   NOTIFY_EMAIL_RETRY_MS:
     parseInt(process.env.NOTIFY_EMAIL_RETRY_MS, 10) || 5000,
   NOTIFY_EMAIL_MAX_RETRIES:
@@ -17,8 +18,19 @@ const config = {
   REDIS_URL: process.env.REDIS_URL,
   REDIS_AUTH_TOKEN: process.env.REDIS_AUTH_TOKEN,
   REDIS_PORT: parseInt(process.env.REDIS_PORT, 10) || 6379,
-  SESSION_SECRET: process.env.SESSION_SECRET || 'your-secret-key',
+  SESSION_SECRET: process.env.SESSION_SECRET,
   ENV: process.env.ENV || 'development',
+  VIRUS_SCAN_ENABLED: process.env.VIRUS_SCAN_ENABLED
+    ? process.env.VIRUS_SCAN_ENABLED !== 'false'
+    : ['staging', 'production'].includes(process.env.ENV || 'development'),
+  VIRUS_SCAN_HOST: process.env.VIRUS_SCAN_HOST,
+  VIRUS_SCAN_PORT: parseInt(process.env.VIRUS_SCAN_PORT, 10) || 3310,
+  VIRUS_SCAN_SOCKET: process.env.VIRUS_SCAN_SOCKET,
+  VIRUS_SCAN_TIMEOUT_MS:
+    parseInt(process.env.VIRUS_SCAN_TIMEOUT_MS, 10) || 15000,
+  VIRUS_SCAN_RETRIES: parseInt(process.env.VIRUS_SCAN_RETRIES, 10) || 2,
+  VIRUS_SCAN_RETRY_DELAY_MS:
+    parseInt(process.env.VIRUS_SCAN_RETRY_DELAY_MS, 10) || 1000,
   SENTRY_DSN: process.env.SENTRY_DSN,
   SENTRY_CSP_REPORT_URI: process.env.SENTRY_CSP_REPORT_URI || '',
   ALLOWED_EMAIL_DOMAINS: [
@@ -28,6 +40,13 @@ const config = {
     'justice.gov.uk',
     'publicguardian.gov.uk'
   ],
+  ALLOWED_COMPONENT_IMAGE_MIME_TYPES: new Set([
+    'image/jpeg',
+    'image/bmp',
+    'image/png',
+    'image/tiff',
+    'application/pdf'
+  ]),
   HTML_SANITIZATION_OPTIONS: {
     allowedTags: [
       // Document structure
@@ -148,13 +167,10 @@ const config = {
       // Interactive elements
       'details',
       'summary',
-      'dialog',
+      'dialog'
 
       // Scripting
-      'noscript',
-      'template',
-      'slot'
-      // script, canvas
+      // noscript, template, slot, script, canvas
     ],
     allowedAttributes: {
       '*': [
@@ -191,7 +207,6 @@ const config = {
         'fetchpriority',
         'for',
         'form',
-        'formaction',
         'formenctype',
         'formmethod',
         'formtarget',
@@ -207,7 +222,6 @@ const config = {
         'imagesrcset',
         'inputmode',
         'integrity',
-        'is',
         'itemid',
         'itemprop',
         'itemref',
@@ -228,7 +242,6 @@ const config = {
         'nonce',
         'optimum',
         'pattern',
-        'ping',
         'placeholder',
         'popover',
         'popovertarget',
@@ -244,16 +257,13 @@ const config = {
         'shape',
         'size',
         'sizes',
-        'slot',
         'span',
         'spellcheck',
         'src',
-        'srcdoc',
         'srclang',
         'srcset',
         'start',
         'step',
-        'style',
         'tabindex',
         'target',
         'title',
@@ -264,14 +274,15 @@ const config = {
         'width',
         'wrap'
       ]
-    } // allow all attributes (on every tag for simplicity) except on-* event handlers
+    } // allow all attributes (on every tag for simplicity) except on-* event
+    // handlers, formaction, style, slot, is, ping and srcdoc
   },
   COMPONENT_FORM_PAGES: {
     email: {
-      title: 'Verify that you work for MoJ',
+      title: 'Verify that you work for MOJ',
       fields: {
         emailAddress: {
-          label: 'Enter your MoJ email address'
+          label: 'Enter your MOJ email address'
         }
       },
       showOnCya: false,
@@ -472,7 +483,8 @@ const config = {
   DOCUMENT_KEYS: [],
   ADD_NEW_COMPONENT_ROUTE: '/contribute/add-new-component',
   MAX_ADD_ANOTHER: 10,
-  GITHUB_ISSUE_ASSIGNEE_USERNAMES: ['chrispymm', 'helennickols', 'murrlipp'],
+  GITHUB_ISSUE_ASSIGNEE_USERNAMES: ['chrispymm', 'helennickols'],
+  GITHUB_PR_LABELS: ['type: contribution 🎁', 'preview: request'],
   SESSION_KEYS_TO_IGNORE: [
     'cookie',
     'csrfToken',
@@ -502,6 +514,18 @@ const config = {
       type: 'success',
       title: 'Your email address has been confirmed',
       text: 'You can now submit a component'
+    },
+    uploadFileTooLarge: {
+      text: 'The selected file must be smaller than 10MB'
+    },
+    uploadFileInvalidType: {
+      text: 'The selected file must be a JPG, BMP, PNG, TIF or PDF'
+    },
+    uploadFileVirusFound: {
+      text: 'The selected file failed a virus scan'
+    },
+    uploadFileVirusScanFailed: {
+      text: 'The selected file could not be scanned. Try again later.'
     },
     componentImageUploaded: (filename) => {
       return {

@@ -1,0 +1,5 @@
+{
+  "componentName": "Numeric data",
+  "componentOverview": "Use the numeric data pattern to make pieces of information easier to scan, interpret and action where required.",
+  "howIsTheComponentUsed": "Writing content:\r\nThe number part of the component can be written as an integer, a decimal, an amount of currency or a percentage.\r\n\r\nIt should not be presented as a word or a fraction.\r\n\r\nThe label should be short and succinct. Recommend no more than 20 characters.\r\n\r\nMaking sure it’s accessible:\r\n- Recommended use is black text, on white, or gov-uk light-grey, background.\r\n- Labels and text should make sense when you read it visually or with screenreader\r\n- If using multiple instances:\r\n  - use a heading to provide context\r\n  - check for responsiveness on multiple screen sizes\r\n- If using a link, check that it makes sense to a screen reader"
+}

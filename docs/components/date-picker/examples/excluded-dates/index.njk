@@ -1,0 +1,23 @@
+---
+layout: layouts/example.njk
+title: Date picker with excluded dates (example)
+redirect_from: examples/date-picker-excluded-dates
+---
+
+{%- from "moj/components/date-picker/macro.njk" import mojDatePicker -%}
+
+{{ mojDatePicker({
+  id: "date",
+  name: "date",
+  label: {
+    text: "Date"
+  },
+  hint: {
+    text: "For example, 17/5/2024."
+  },
+  value: "10/04/2025",
+  minDate: "01/04/2025",
+  maxDate: "30/04/2025",
+  excludedDates: "02/04/2025 18/04/2025 21/04/2025",
+  excludedDays: "saturday sunday"
+}) }}

@@ -10,15 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    services:
+      clamav:
+        image: clamav/clamav:stable
+        ports:
+          - 3310:3310
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: lts/*
       - name: Install dependencies
-        run: npm ci
+        run: npm run setup
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install chromium --with-deps
       - name: Build package
         run: ENV=test npm run build:package
       - name: Build docs
@@ -32,9 +37,34 @@ jobs:
           echo "DEV_DUMMY_DATA='false'" >> app/.env.test
           echo "SKIP_VERIFICATION='true'" >> app/.env.test
           echo "VERIFICATION_TOKEN='12345abcde'" >> app/.env.test
+          echo "NOTIFY_TOKEN='12345abcde'" >> app/.env.test
+          echo "GITHUB_API_TOKEN='12345abcde'" >> app/.env.test
+          echo "GITHUB_REPO_OWNER='owner'" >> app/.env.test
+          echo "GITHUB_REPO_NAME='repo'" >> app/.env.test
+          echo "SESSION_SECRET='supersecret'" >> app/.env.test
+          echo "VIRUS_SCAN_ENABLED='true'" >> app/.env.test
+          echo "VIRUS_SCAN_HOST='127.0.0.1'" >> app/.env.test
+          echo "VIRUS_SCAN_PORT='3310'" >> app/.env.test
+      - name: Wait for ClamAV
+        run: |
+          for attempt in {1..60}; do
+            if nc -z 127.0.0.1 3310; then
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "::error::ClamAV did not start listening on port 3310"
+          exit 1
       - name: Run Playwright tests
         run: ENV=test npm run test:e2e
-      - uses: actions/upload-artifact@v4
+      - name: Summarize Playwright report
+        run: |
+          {
+            echo '# Playwright report'
+            echo
+            echo 'The Playwright report is available in the `playwright-report` workflow artifact.'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: ${{ !cancelled() }}
         with:
           name: playwright-report

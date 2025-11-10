@@ -1,0 +1,86 @@
+---
+layout: 'layouts/example.njk'
+title: Add another (example)
+redirect_from: examples/add-another
+---
+
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/input/macro.njk" import govukInput -%}
+{%- from "govuk/components/date-input/macro.njk" import govukDateInput -%}
+{%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+
+{% set itemHtml %}
+  {{ govukInput({
+    id: "participant[0][full_name]",
+    name: "participant[0][full_name]",
+    label: {
+      html: "Full name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for participant 1</span>"
+    },
+    attributes: {
+      "data-name": "participant[%index%][full_name]",
+      "data-id": "participant[%index%][full_name]",
+      "data-label": "Full name"
+    }
+  }) }}
+
+  {{ govukDateInput({
+    id: "date-of-birth",
+    fieldset: {
+      legend: {
+        html: "Date of birth <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for participant 1</span>"
+      },
+      attributes: {
+        "data-legend": "Date of birth"
+      }
+    },
+    hint: {
+      text: "For example, 31 7 1980"
+    },
+    items: [
+      {
+        id: "participant[0][dob][day]",
+        name: "participant[0][dob][day]",
+        label: "Day",
+        classes: "govuk-input--width-2",
+        attributes: {
+          "data-name": "participant[%index%][dob][day]",
+          "data-id": "participant[%index%][dob][day]"
+        }
+      },
+      {
+        id: "participant[0][dob][month]",
+        name: "participant[0][dob][month]",
+        label: "Month",
+        classes: "govuk-input--width-2",
+        attributes: {
+          "data-name": "participant[%index%][dob][month]",
+          "data-id": "participant[%index%][dob][month]"
+        }
+      },
+      {
+        id: "participant[0][dob][year]",
+        name: "participant[0][dob][year]",
+        label: "Year",
+        classes: "govuk-input--width-4",
+        attributes: {
+          "data-name": "participant[%index%][dob][year]",
+          "data-id": "participant[%index%][dob][year]"
+        }
+      }
+    ]
+  }) }}
+{% endset %}
+
+<form method="post" action="#">
+  {{ mojAddAnother({
+    itemLabel: "Participant",
+    items: [
+      {
+        fieldset: {
+          html: itemHtml
+        }
+      }
+    ]
+  }) }}
+</form>

@@ -1,0 +1,26 @@
+---
+layout: layouts/example.njk
+title: Rich text editor with custom formatting options (example)
+redirect_from: examples/rich-text-editor-formatting
+---
+
+{%- from "govuk/components/textarea/macro.njk" import govukTextarea -%}
+
+{{ govukTextarea({
+  id: "body",
+  name: "body",
+  formGroup: {
+    attributes: {
+      "data-module": "moj-rich-text-editor",
+      "data-toolbar.bold": "true",
+      "data-toolbar.italic": "true",
+      "data-toolbar.underline": "true",
+      "data-toolbar.bullets": "true",
+      "data-toolbar.numbers": "true"
+    }
+  },
+  label: {
+    text: "Message",
+    classes: "govuk-!-font-weight-bold"
+  }
+}) }}

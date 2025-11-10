@@ -1,0 +1,102 @@
+examples:
+  # 1. Default - information variant, text only
+  - name: default
+    options:
+      title: The finance section has moved
+      text: You can now find it in the new building
+
+  # 2. With HTML content
+  - name: with html
+    options:
+      title: The finance section has moved
+      html: You can now find it in the <a href="#">new building</a>
+
+  # 3. With title shown as heading
+  - name: with title as heading
+    options:
+      title: The finance section has moved
+      text: You can now find it in the new building
+      showTitleAsHeading: true
+
+  # 4. With title only, no content
+  - name: with title only
+    options:
+      title: The finance section has moved
+
+  # 5. With custom heading tag
+  - name: with custom heading tag
+    options:
+      title: The finance section has moved
+      text: You can now find it in the new building
+      showTitleAsHeading: true
+      headingTag: h3
+
+  # 6. Success variant
+  - name: success
+    options:
+      variant: success
+      title: Your application has been submitted
+
+  # 7. Warning variant
+  - name: warning
+    options:
+      variant: warning
+      title: Your session is about to expire
+
+  # 8. Error variant
+  - name: error
+    options:
+      variant: error
+      title: There is a problem with your application
+
+  # 9. Dismissible
+  - name: dismissible
+    options:
+      title: The finance section has moved
+      dismissible: true
+
+  # 10. Dismissible with "false" string - treated as non-dismissible
+  - name: dismissible false string
+    options:
+      title: The finance section has moved
+      dismissible: 'false'
+
+  # 11. With custom dismiss text
+  - name: with custom dismiss text
+    options:
+      title: The finance section has moved
+      dismissible: true
+      dismissText: Close
+
+  # 12. With alert role
+  - name: with alert role
+    options:
+      title: There is a problem with your application
+      role: alert
+
+  # 13. With disableAutoFocus
+  - name: with disable auto focus
+    options:
+      title: There is a problem with your application
+      role: alert
+      disableAutoFocus: true
+
+  # 14. With focusOnDismissSelector
+  - name: with focus on dismiss selector
+    options:
+      title: The finance section has moved
+      dismissible: true
+      focusOnDismissSelector: '#focus-target'
+
+  # 15. With custom container classes
+  - name: with classes
+    options:
+      title: The finance section has moved
+      classes: custom-alert-class
+
+  # 16. With custom container attributes
+  - name: with attributes
+    options:
+      title: The finance section has moved
+      attributes:
+        data-custom: custom-value

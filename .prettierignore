@@ -5,6 +5,9 @@
 # Node.js modules
 node_modules/
 
+# Github actions & workflows
+.github/
+
 # Build output
 dist/
 public/

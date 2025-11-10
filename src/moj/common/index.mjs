@@ -48,3 +48,60 @@ export function setFocus($element, options = {}) {
   options.onBeforeFocus?.call($element)
   $element.focus()
 }
+
+/**
+ * Returns the value of the given attribute closest to the given element (including itself)
+ *
+ * @param {Element} $element - The element to start walking the DOM tree up
+ * @param {string} attributeName - The name of the attribute
+ * @returns {string | null} Attribute value
+ */
+export function closestAttributeValue($element, attributeName) {
+  const $closestElementWithAttribute = $element.closest(`[${attributeName}]`)
+  return $closestElementWithAttribute
+    ? $closestElementWithAttribute.getAttribute(attributeName)
+    : null
+}
+
+/**
+ * Emit a custom event
+ *
+ * @template {CompatibleClass} ComponentClass
+ * @param {Element} $element - The element to dispatch the event from
+ * @param {ComponentClass} Component - class of the component to create
+ * @param {string} eventName - The name of the event to emit
+ * @param {object} detail - Any details to pass along with the event
+ * @param {boolean} cancelable - whether the event is cancelable
+ */
+export function emitEvent(
+  $element,
+  Component,
+  eventName,
+  detail = null,
+  cancelable = false
+) {
+  if (!$element) return
+
+  const event = new CustomEvent(`${Component.moduleName}:${eventName}`, {
+    bubbles: true,
+    cancelable,
+    detail
+  })
+
+  return $element.dispatchEvent(event)
+}
+
+/* eslint-disable jsdoc/valid-types --
+ * `{new(...args: any[] ): object}` is not recognised as valid
+ * https://github.com/gajus/eslint-plugin-jsdoc/issues/145#issuecomment-1308722878
+ * https://github.com/jsdoc-type-pratt-parser/jsdoc-type-pratt-parser/issues/131
+ **/
+
+/**
+ * A class that can be instantiated with any arguments and has a static
+ * `moduleName` property.
+ *
+ * @typedef {{new (...args: any[]): any, moduleName: string}} CompatibleClass
+ */
+
+/* eslint-enable jsdoc/valid-types */

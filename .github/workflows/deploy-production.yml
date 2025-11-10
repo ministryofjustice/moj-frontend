@@ -20,19 +20,19 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .nvmrc
-      - run: npm ci
+      - run: npm run setup
       - run: npm run build:package
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: mojds-package
           path: package
       - run: npm run build:dist
       - run: ENV="production" npm run build:docs
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: mojds-dist
           path: dist
@@ -45,22 +45,25 @@ jobs:
       statuses: write
     steps:
       - name: Set commit status as pending
-        uses: myrotvorets/set-commit-status-action@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: pending
-          context: Tests
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          gh api "repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA}" \
+            -f state="pending" \
+            -f context="Tests" \
+            -f description="Tests started"
 
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .nvmrc
 
       - name: npm install
-        run: npm install
+        run: npm run setup
 
       - name: Lint Sass
         run: npm run lint:scss
@@ -95,47 +98,81 @@ jobs:
     if: always()
     steps:
       - name: Set final commit status
-        uses: myrotvorets/set-commit-status-action@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: ${{ needs.test.result }}
-          context: Tests
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RESULT: ${{ needs.test.result }}
+        run: |
+          set -euo pipefail
+
+          STATE="${RESULT}"
+          case "${RESULT}" in
+            success) STATE="success" ;;
+            failure) STATE="failure" ;;
+            cancelled) STATE="error" ;;
+            *) STATE="error" ;;
+          esac
+
+          gh api "repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA}" \
+            -f state="${STATE}" \
+            -f context="Tests" \
+            -f description="Tests ${RESULT}"
 
   deploy:
     runs-on: ubuntu-latest
     needs: [result]
-    if: github.event_name == 'push'
+    env:
+      SHOULD_DEPLOY: ${{ (github.event_name == 'push') || (github.event_name == 'workflow_dispatch') }}
     permissions:
       id-token: write
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: aws-actions/configure-aws-credentials@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        if: env.SHOULD_DEPLOY == 'true'
         with:
           role-to-assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.ECR_REGION }}
-      - uses: aws-actions/amazon-ecr-login@v2
+      - uses: aws-actions/amazon-ecr-login@03f1aad4c6c7ffd436567f42f9384779290529bd # v2.1.7
         id: login-ecr
+        if: env.SHOULD_DEPLOY == 'true'
       - run: |
-          docker build --build-arg GITHUB_DEPLOY_KEY="${GITHUB_DEPLOY_KEY}" --target=production -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-          docker build --build-arg GITHUB_DEPLOY_KEY="${GITHUB_DEPLOY_KEY}" --target=production-express-app -t $REGISTRY/$REPOSITORY:express-$IMAGE_TAG .
-          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
-          docker push $REGISTRY/$REPOSITORY:express-$IMAGE_TAG
-          cat kubernetes-deploy-production.tpl | envsubst > kubernetes-deploy-production.yaml
+          if [[ "${SHOULD_DEPLOY}" == 'true' ]]; then
+            set -euo pipefail
+            docker build --build-arg GITHUB_DEPLOY_KEY="${GITHUB_DEPLOY_KEY}" --target=production -t "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}" .
+            docker build --build-arg GITHUB_DEPLOY_KEY="${GITHUB_DEPLOY_KEY}" --target=production-express-app -t "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}" .
+            docker push "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
+            docker push "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}"
+            envsubst < kubernetes-deploy-production.tpl > kubernetes-deploy-production.yaml
+          else
+            echo 'Production deployment skipped: this workflow was not triggered by main or manually.'
+          fi
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: ${{ vars.ECR_REPOSITORY }}
           IMAGE_TAG: ${{ github.sha }}
           BRANCH: 'production'
+          CLAMAV_IMAGE: clamav/clamav:stable
       - run: |
-          echo "${KUBE_CERT}" > ca.crt
-          kubectl config set-cluster ${KUBE_CLUSTER} --certificate-authority=./ca.crt --server=https://${KUBE_CLUSTER}
-          kubectl config set-credentials deploy-user --token=${KUBE_TOKEN}
-          kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${KUBE_NAMESPACE}
-          kubectl config use-context ${KUBE_CLUSTER}
-          kubectl -n ${KUBE_NAMESPACE} apply -f kubernetes-deploy-production.yaml
+          if [[ "${SHOULD_DEPLOY}" == 'true' ]]; then
+            set -euo pipefail
+            printf '%s\n' "${KUBE_CERT}" > ca.crt
+            kubectl config set-cluster "${KUBE_CLUSTER}" --certificate-authority=./ca.crt --server="https://${KUBE_CLUSTER}"
+            kubectl config set-credentials deploy-user --token="${KUBE_TOKEN}"
+            kubectl config set-context "${KUBE_CLUSTER}" --cluster="${KUBE_CLUSTER}" --user=deploy-user --namespace="${KUBE_NAMESPACE}"
+            kubectl config use-context "${KUBE_CLUSTER}"
+            kubectl -n "${KUBE_NAMESPACE}" apply -f kubernetes-deploy-production.yaml
+            {
+              echo '# Production deployment'
+              echo
+              echo 'The guidance site was deployed to production.'
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Production deployment apply skipped: deployment was not requested.'
+          fi
         env:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
-          KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
+      - name: Report skipped production deployment
+        if: env.SHOULD_DEPLOY != 'true'
+        run: echo 'Production deployment not requested; no deployment was performed.' >> "$GITHUB_STEP_SUMMARY"

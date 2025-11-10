@@ -2,7 +2,7 @@ module.exports = {
   overrides: [
     {
       files: ['moj/**/*.{cjs,js,mjs}'],
-      excludedFiles: ['**/*.spec.{cjs,js,mjs}'],
+      excludedFiles: ['**/*.spec.{cjs,js,mjs}', '**/lib/*.{cjs,js,mjs}'],
       parserOptions: {
         // Note: Allow ES2015 for import/export syntax
         ecmaVersion: '2015'
@@ -18,6 +18,9 @@ module.exports = {
 
         // Babel transpiles ES2022 class static fields
         'es-x/no-class-static-fields': 'off',
+
+        // Babel transpiles ES2022 class instance fields
+        'es-x/no-class-instance-fields': 'off',
 
         // ES modules include ES2016 '[].includes()' coverage
         // https://browsersl.ist/#q=supports+es6-module+and+not+supports+array-includes

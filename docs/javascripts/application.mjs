@@ -35,7 +35,7 @@ createAll(Tabs)
 const $accordions = document.querySelectorAll('[data-module="govuk-accordion"]')
 initAccordions($accordions)
 
-// MoJ Frontend components
+// MOJ Frontend components
 MOJFrontend.initAll()
 
 // Website components

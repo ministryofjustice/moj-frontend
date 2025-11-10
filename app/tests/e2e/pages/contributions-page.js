@@ -13,7 +13,7 @@ export class ContributionsPage {
   }
 
   get fullTitle() {
-    return `${this.title} - Submit a component - MoJ Design System`
+    return `${this.title} - Submit a component - MOJ Design System`
   }
 
   async goTo() {
@@ -23,7 +23,7 @@ export class ContributionsPage {
     await this.continueButton.click()
     await this.page.waitForLoadState()
     await this.page
-      .getByLabel('Enter your MoJ email address')
+      .getByLabel('Enter your MOJ email address')
       .fill('test.user@justice.gov.uk')
     await this.continueButton.click()
     await this.expectPageTitle('Component details')
@@ -83,7 +83,7 @@ export class ContributionsPage {
 
   async expectPageTitle(title) {
     // Full title of page we want to navigate to
-    const re = new RegExp(`${title} - Submit a component - MoJ Design System`)
+    const re = new RegExp(`${title} - Submit a component - MOJ Design System`)
     await expect(this.page).toHaveTitle(re)
   }
 

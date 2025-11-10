@@ -1,0 +1,13 @@
+@use "../moj-frontend" as *;
+
+.sitemap-section {
+  margin-bottom: govuk-spacing(8);
+}
+
+.sitemap-list__item {
+  margin-bottom: govuk-spacing(2);
+}
+
+.sitemap-list__item--with-children {
+  margin-top: govuk-spacing(6);
+}

@@ -1,0 +1,35 @@
+name: 'Lint PR title'
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - edited
+      # - synchronize (if you use required Actions)
+
+jobs:
+  main:
+    name: Validate PR title
+    runs-on: ubuntu-slim
+    permissions:
+      pull-requests: read
+    steps:
+      - name: Validate PR title (Conventional Commits)
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          set -euo pipefail
+
+          # Conventional Commits-like format:
+          # type(scope)!: subject
+          # type!: subject
+          # type: subject
+          #
+          # Allowed types align with common conventional commit types.
+          PATTERN='^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([^)]+\))?(!)?: .+'
+
+          if [[ ! "${PR_TITLE}" =~ ${PATTERN} ]]; then
+            echo "::error::PR title must match Conventional Commits (e.g. 'feat: add X' or 'fix(scope): correct Y'). Got: ${PR_TITLE}"
+            exit 1
+          fi

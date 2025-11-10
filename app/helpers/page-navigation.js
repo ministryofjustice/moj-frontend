@@ -7,7 +7,8 @@ const getCurrentFormPages = require('./form-pages.js')
  * @returns {Array<{page:string, subpage: (number|undefined)}>} - Of type [string, (number|undefined)]
  */
 const getUrlParts = (url) => {
-  let [page, subpage] = url.split('/').slice(1)
+  const pathOnly = url.split(/[?#]/)[0]
+  let [page, subpage] = pathOnly.split('/').slice(1)
   subpage = subpage ? Number.parseInt(subpage) : subpage
   return [page, subpage]
 }

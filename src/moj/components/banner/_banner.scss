@@ -7,8 +7,8 @@
 .moj-banner {
   margin-bottom: govuk-spacing(6);
   padding: govuk-spacing(2);
-  border: 5px solid $govuk-brand-colour;
-  color: $govuk-brand-colour;
+  border: 5px solid govuk-functional-colour(brand);
+  color: govuk-functional-colour(brand);
   font-size: 0; // Removes white space when using inline-block on child element.
 }
 

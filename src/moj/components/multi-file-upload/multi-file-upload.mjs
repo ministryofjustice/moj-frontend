@@ -225,7 +225,7 @@ export class MultiFileUpload extends ConfigurableComponent {
       this.$status.textContent = xhr.response.success.messageText
 
       $actions.append(this.getDeleteButton(xhr.response.file))
-      this.config.hooks.exitHook(this, file, xhr, xhr.responseText)
+      this.config.hooks.exitHook(this, file, xhr, xhr.statusText)
     }
 
     const onError = () => {
@@ -238,7 +238,7 @@ export class MultiFileUpload extends ConfigurableComponent {
       $message.innerHTML = this.getErrorHtml(error)
       this.$status.textContent = error.message
 
-      this.config.hooks.errorHook(this, file, xhr, xhr.responseText, error)
+      this.config.hooks.errorHook(this, file, xhr, xhr.statusText, error)
     }
 
     xhr.addEventListener('load', onLoad)
@@ -254,6 +254,9 @@ export class MultiFileUpload extends ConfigurableComponent {
     })
 
     xhr.open('POST', this.config.uploadUrl)
+    if (this.config.csrfToken) {
+      xhr.setRequestHeader(this.config.csrfHeaderName, this.config.csrfToken)
+    }
     xhr.responseType = 'json'
 
     xhr.send(formData)
@@ -293,11 +296,15 @@ export class MultiFileUpload extends ConfigurableComponent {
       const $rowDelete = $rows.find(($row) => $row.contains($button))
       if ($rowDelete) $rowDelete.remove()
 
-      this.config.hooks.deleteHook(this, undefined, xhr, xhr.responseText)
+      this.config.hooks.deleteHook(this, undefined, xhr, xhr.statusText)
     })
 
     xhr.open('POST', this.config.deleteUrl)
     xhr.setRequestHeader('Content-Type', 'application/json')
+    if (this.config.csrfToken) {
+      xhr.setRequestHeader(this.config.csrfHeaderName, this.config.csrfToken)
+    }
+
     xhr.responseType = 'json'
 
     xhr.send(
@@ -341,6 +348,7 @@ export class MultiFileUpload extends ConfigurableComponent {
    * @type {MultiFileUploadConfig}
    */
   static defaults = Object.freeze({
+    csrfHeaderName: 'X-CSRF-Token',
     uploadStatusText: 'Uploading files, please wait',
     dropzoneHintText: 'Drag and drop files here or',
     dropzoneButtonText: 'Choose files',
@@ -363,6 +371,8 @@ export class MultiFileUpload extends ConfigurableComponent {
   static schema = Object.freeze(
     /** @type {const} */ ({
       properties: {
+        csrfToken: { type: 'string' },
+        csrfHeaderName: { type: 'string' },
         uploadUrl: { type: 'string' },
         deleteUrl: { type: 'string' },
         uploadStatusText: { type: 'string' },
@@ -379,6 +389,8 @@ export class MultiFileUpload extends ConfigurableComponent {
  * Multi file upload config
  *
  * @typedef {object} MultiFileUploadConfig
+ * @property {string} [csrfToken] - CSRF token
+ * @property {string} [csrfHeaderName] - CSRF header name
  * @property {string} [uploadUrl] - File upload URL
  * @property {string} [deleteUrl] - File delete URL
  * @property {string} [uploadStatusText] - Upload status text

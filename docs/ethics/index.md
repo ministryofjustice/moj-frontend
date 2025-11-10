@@ -7,4 +7,4 @@ eleventyNavigation:
   order: 20
 ---
 
-Design and build ethical services for MoJ users - and learn how to show this work at a service assessment.
+Design and build ethical services for MOJ users - and learn how to show this work at a service assessment.

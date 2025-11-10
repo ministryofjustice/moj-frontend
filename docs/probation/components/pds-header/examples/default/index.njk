@@ -1,0 +1,23 @@
+---
+layout: layouts/example.njk
+title: PDS header (example)
+redirect_from: examples/probation/header
+---
+
+{%- from "moj/components/domain-specific/probation/header/macro.njk" import pdsHeader -%}
+
+{{ pdsHeader({
+  environmentName: 'DEV',
+  environmentNameColour: 'govuk-tag--green',
+  name: 'Account name',
+  manageDetailsLink: '#',
+  servicesLink: '#',
+  services: [
+    {
+      heading: 'Service 1',
+      href: '#',
+      target: '_blank'
+    }
+  ],
+  titleLink: '#'
+}) }}

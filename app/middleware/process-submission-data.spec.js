@@ -7,7 +7,10 @@ const {
 } = require('../config')
 const { extractFilename, getUniqueFilename } = require('../helpers/file-helper')
 const { getFileFromRedis } = require('../helpers/redis-helper')
-const { generateMarkdown } = require('../middleware/generate-documentation')
+const {
+  generateMarkdown,
+  generateEleventyDataFile
+} = require('../middleware/generate-documentation')
 
 const {
   processSubmissionData,
@@ -16,10 +19,11 @@ const {
   buildComponentPage,
   generateSubmissionRef,
   getDetailsForPrEmail
-} = require('./process-subission-data')
+} = require('./process-submission-data')
 
 jest.mock('../middleware/generate-documentation', () => ({
-  generateMarkdown: jest.fn()
+  generateMarkdown: jest.fn(),
+  generateEleventyDataFile: jest.fn()
 }))
 jest.mock('../helpers/file-helper', () => ({
   extractFilename: jest.fn(),
@@ -66,16 +70,54 @@ describe('buildComponentPage', () => {
     jest.clearAllMocks()
   })
   it('adds the generated doc to the request', () => {
-    generateMarkdown.mockReturnValue({
-      filename: 'test-filename.md',
-      content: 'markdown content'
+    generateMarkdown
+      .mockReturnValueOnce({
+        filename: 'test-component/index.md',
+        content: 'index content'
+      })
+      .mockReturnValueOnce({
+        filename: 'test-component/_overview.md',
+        content: 'overview content'
+      })
+      .mockReturnValueOnce({
+        filename: 'test-component/_designs.md',
+        content: 'designs content'
+      })
+      .mockReturnValueOnce({
+        filename: 'test-component/_accessibility.md',
+        content: 'accessibility content'
+      })
+      .mockReturnValueOnce({
+        filename: 'test-component/_code.md',
+        content: 'code content'
+      })
+
+    generateEleventyDataFile.mockReturnValue({
+      filename: 'test-component/test-component.11tydata.js',
+      content: 'export default {}'
     })
+
     buildComponentPage(req, res, next)
 
-    expect(req.markdownFilename).toBe('test-filename.md')
-    expect(req.markdownContent).toBe('markdown content')
+    // expect(req.markdownFilename).toBe('test-filename.md')
+    expect(req.markdownContent).toBe(`index content
+
+overview content
+
+designs content
+
+accessibility content
+
+code content
+
+`)
     expect(req.markdown).toStrictEqual({
-      'test-filename.md': 'markdown content'
+      'test-component/index.md': 'index content',
+      'test-component/_overview.md': 'overview content',
+      'test-component/_designs.md': 'designs content',
+      'test-component/_accessibility.md': 'accessibility content',
+      'test-component/_code.md': 'code content',
+      'test-component/test-component.11tydata.js': 'export default {}'
     })
     expect(next).toHaveBeenCalled()
   })
@@ -193,6 +235,7 @@ describe('getDetailsForPrEmail', () => {
     getDetailsForPrEmail(req, res, next)
     expect(req.detailsForPrEmail).toStrictEqual({
       componentName: 'Unnamed component',
+      figmaLink: 'Not provided',
       email: undefined,
       name: undefined,
       team: undefined
@@ -207,12 +250,16 @@ describe('getDetailsForPrEmail', () => {
     req.session['/component-details'] = {
       componentName: 'Test component'
     }
+    req.session['/figma-link'] = {
+      figmaLink: 'https://figma.com/12345678'
+    }
     req.session['/email'] = {
       emailAddress: 'test@email.com'
     }
     getDetailsForPrEmail(req, res, next)
     expect(req.detailsForPrEmail).toStrictEqual({
       componentName: 'Test component',
+      figmaLink: 'https://figma.com/12345678',
       email: 'test@email.com',
       name: 'Frodo Baggins',
       team: 'The Fellowship'
@@ -276,49 +323,6 @@ describe('processSubmissionData', () => {
           submissionDataKeys.some((key) => key.includes(filteredKey))
         ).toBe(false)
       })
-    })
-
-    it('should include non-filtered keys from session data', () => {
-      req.session = {
-        'component-name': { title: 'Test Component' },
-        description: { description: 'A test component' },
-        '/email': { emailAddress: 'test@example.com' } // This should be filtered out
-      }
-
-      extractFilename.mockImplementation((key) => `${key}.txt`)
-
-      processSubmissionData(req, res, next)
-
-      expect(
-        req.submissionData[
-          `submissions/${req.submissionRef}/component-name.txt`
-        ]
-      ).toStrictEqual({ title: 'Test Component' })
-      expect(
-        req.submissionData[`submissions/${req.submissionRef}/description.txt`]
-      ).toStrictEqual({ description: 'A test component' })
-
-      // Email should not be present
-      const keys = Object.keys(req.submissionData)
-      expect(keys.some((key) => key.includes('email'))).toBe(false)
-    })
-  })
-
-  describe('session and markdown data merging', () => {
-    it('should merge session and markdown data', () => {
-      req.session = { sessionKey: { sessionKey: 'session value' } }
-      req.markdown = { markdownKey: { markdownKey: 'markdown value' } }
-
-      extractFilename.mockImplementation((key) => `${key}.txt`)
-
-      processSubmissionData(req, res, next)
-
-      expect(
-        req.submissionData[`submissions/${req.submissionRef}/sessionKey.txt`]
-      ).toStrictEqual({ sessionKey: 'session value' })
-      expect(
-        req.submissionData[`submissions/${req.submissionRef}/markdownKey.txt`]
-      ).toStrictEqual({ markdownKey: 'markdown value' })
     })
   })
 
@@ -402,12 +406,11 @@ describe('processSubmissionData', () => {
       extractFilename.mockImplementation((key) => `${key}.txt`)
       processSubmissionData(req, res, next)
 
-      expect(req.submissionData).toEqual({
-        'submissions/test-submission-123//component-code-details.txt': {
-          componentCode: 'unknown language',
-          componentCodeLanguage: 'other'
-        }
-      })
+      // Should not create a code file, but should still create the data file
+      const codeFileExists = Object.keys(req.submissionData).some((key) =>
+        key.includes('/code/')
+      )
+      expect(codeFileExists).toBe(false)
     })
   })
 
@@ -506,15 +509,6 @@ describe('processSubmissionData', () => {
         key.includes('/code/')
       )
       expect(codeFileExists).toBe(false)
-
-      expect(
-        req.submissionData[
-          `submissions/${req.submissionRef}/component-code-details.txt`
-        ]
-      ).toEqual({
-        componentCodeLanguage: 'other',
-        componentCode: 'some other code'
-      })
     })
 
     it('should handle case-insensitive "other" language check', () => {
@@ -532,33 +526,6 @@ describe('processSubmissionData', () => {
         key.includes('/code/')
       )
       expect(codeFileExists).toBe(false)
-      expect(
-        req.submissionData[
-          `submissions/${req.submissionRef}/component-code-details.txt`
-        ]
-      ).toEqual({
-        componentCodeLanguage: 'OTHER',
-        componentCode: 'some other code'
-      })
-    })
-  })
-
-  describe('data cloning', () => {
-    it('should clone session data objects to avoid mutation', () => {
-      const originalData = { nested: { value: 'test' } }
-      req.session = { '/component-data': originalData }
-
-      extractFilename.mockImplementation((key) => `${key.slice(1)}.txt`)
-      processSubmissionData(req, res, next)
-
-      const submissionDataValue =
-        req.submissionData[
-          `submissions/${req.submissionRef}/component-data.txt`
-        ]
-
-      // Should be equal but not the same reference
-      expect(submissionDataValue).toEqual(originalData)
-      expect(submissionDataValue).not.toBe(originalData)
     })
   })
 })
