@@ -2,7 +2,6 @@
 title: Pagination
 status: To be reviewed
 statusDate: June 2021
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/708
 excerpt: "Use the pagination component to let users browse through a long list."
 ---
 
@@ -12,7 +11,7 @@ The [Pagination component](https://design-system.service.gov.uk/components/pagin
 You should use the GOV.UK version if it fits your needs.
 {% endbanner %}
 
-{% example template="/examples/pagination", height=125 %}
+{% example template="examples/default", colocated=true, height=125 %}
 
 ## When to use
 
@@ -26,4 +25,4 @@ Don't show pagination if there's only one page.
 
 ### Just previous and next buttons
 
-{% example template="/examples/pagination-prev-next", height=125 %}
+{% example template="examples/prev-next", colocated=true, height=125 %}
