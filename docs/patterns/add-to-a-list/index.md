@@ -2,7 +2,6 @@
 title: Add to a list
 status: To be reviewed
 statusDate: July 2021
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/203
 excerpt: "Use this pattern when users need to add similar information many times, and check and add more if needed."
 ---
 
