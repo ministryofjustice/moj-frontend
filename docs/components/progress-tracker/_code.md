@@ -1,94 +1,12 @@
 ---
-title: Progress tracker
-tabs: true
-status: Experimental
-statusDate: September 2025
-excerpt: "The progress tracker component shows the status of a multi-step process."
-lede: "The progress tracker component shows the status of a multi-step process."
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/1776
-contributorName: Beth Halligan
-contributorTeam: Make and register an LPA
+title: Code
+order: 40
+tags: 'progress-tracker'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: false
 ---
-
-{% tabs "paginate" %}
-{% tab "Overview" %}
-
-<div class="img-container">
-  <img src="/assets/images/submission-1756893312117/progress-tracker.png" alt="A progress tracker for applying for a Lasting Power of Attorney. Three steps are completed: LPA paid for, your identity confirmed, and LPA signed by you. Four steps remain: LPA certificate provided, LPA signed by all attorneys, OPG’s 4-week waiting period begins, and LPA registered by OPG. The tracker is a vertical list with green and white icons to the left representing the status of each item." />
-</div>
-
-## Overview
-A visual representation of steps in a process that have and/or must be completed to achieve an outcome.
-
-### How the component is currently used
-
-When a user is subject to steps in a process outside of their responsibility or control, a progress tracker supports or replaces a task list by giving a different overview on progress and outcomes. 
-
-This differs from a timeline in that it does not log events and grow. It is a pre-fixed set of finite steps. Steps may/may not be completed in any order depending on the process, but the order of the tracker stays fixed. 
-
-On the Make and register LPA product we support the tracker with banners above detailing connected events and directions to dated comms from Notify.
-
-### Contribute to this component
-You can help develop this component by adding information to the [‘progress tracker’ Github discussion]({{ githuburl }}). This helps other people to use it in their service.
-
-{% endtab %}
-
-{% tab "Designs" %}
-
-## Designs
-
-A Figma design has been added for this component. There may be more links and resources in the [‘progress tracker’ Github discussion]({{ githuburl }}).
-
-
-### Figma
-
-If you work for MOJ, [view the ‘progress tracker’ component in the MOJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit?node-id=12629-923).
-
-If you work outside MOJ, go to the [MOJ Figma Kit on the Figma community platform](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).
-
-
-### Contribute prototypes and Figma links
-
-If you have design files that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
-
-{% endtab %}
-
-{% tab "Accessibility" %}
-
-## Accessibility
-
-Accessibility findings have been added for this component. There may be more findings in the [‘progress tracker’ Github discussion]({{ githuburl }}).
-
-
-### External audit
-
-* Conducted by: User Vision
-* Date: 22 August 2024
-
-#### Audit findings
-
-No issues returned.
-### Internal review
-
-* By: MOJ Accessibility team
-* Date: 30 May 2024
-
-#### Review findings
-
-No issues returned.
-
-## Contribute accessibility findings
-
-If you have accessibility findings that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
-
-{% endtab %}
-
-{% tab "Code" %}
-
-## Code
-
 Code has been added for this component. There may be other code blocks in the [‘progress tracker’ Github discussion]({{ githuburl }}).
-
 
 ### Code block 1: HTML
 
@@ -233,6 +151,4 @@ Save the SVG to `static/assets/images/icon-progress-tick.svg` before using it in
 
 If you have code that is relevant to this component you can add it to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
-{% endtab %}
 
-{% endtabs %}
