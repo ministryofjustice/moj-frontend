@@ -2,11 +2,10 @@
 title: Sortable table
 status: To be reviewed
 statusDate: June 2021
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/269
 excerpt: "Use the sortable table component to let users sort columns in ascending or descending order."
 ---
 
-{% example template="/examples/sortable-table", height=450 %}
+{% example template="examples/default", colocated=true, height=450 %}
 
 ## When to use
 
