@@ -18,10 +18,7 @@ module.exports = function (params) {
       params.template,
       'index.njk'
     )
-    const includesPath = path.resolve(
-      this.eleventy.env.root,
-      'docs/_includes'
-    )
+    const includesPath = path.resolve(this.eleventy.env.root, 'docs/_includes')
     const argumentsAbsPath = path.resolve(
       this.eleventy.env.root,
       path.dirname(this.page.inputPath),
