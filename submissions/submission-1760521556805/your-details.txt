@@ -1,0 +1,9 @@
+{
+  "fullName": "Helen Nickols",
+  "teamName": "Pink banner team",
+  "shareYourDetails": [
+    "",
+    "addNameToComponentPage",
+    "addTeamNameToComponentPage"
+  ]
+}
