@@ -5,7 +5,7 @@
 {%- set items = [] -%}
 {%- for tab in tabs -%}
     {%- set paginationLink = "" -%}
-    {%- if not loop.index.last -%}
+    {%- if not loop.last -%}
       {%- set paginationLink = govukPagination({
         next: {
           labelText: tabs[loop.index].data.title,

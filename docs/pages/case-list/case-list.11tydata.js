@@ -1,4 +1,5 @@
 export default {
   figma_link: '',
-  githuburl: 'https://github.com/ministryofjustice/moj-frontend/discussions/242'
+  githuburl: 'https://github.com/ministryofjustice/moj-frontend/discussions/242',
+  blockTitle: 'Case list'
 }
