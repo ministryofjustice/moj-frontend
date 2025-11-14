@@ -1,17 +1,11 @@
 ---
-title: Address lookup
-tabs: true
-status: Experimental
-statusDate: September 2025
-excerpt: ""
-lede: ""
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns
-
-
+title: Overview
+order: 10
+tags: 'address-lookup'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: false
 ---
-
-{% tabs "paginate" %}
-{% tab "Overview" %}
 
 <div class="img-container">
   <img src="/assets/images/submission-1757076520937/Screenshot-2025-09-05-at-13.40.22.png" alt="Address lookup" />
@@ -37,44 +31,3 @@ This use demonstrates how the component can support digitisation of manual, pape
 ### Contribute to this component
 You can help develop this component by adding information to the [Address lookup Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
-{% endtab %}
-
-{% tab "Designs" %}
-
-## Designs
-
-A Figma design was not included when this component was added.
-
-      There may be more information in the [Address lookup Github discussion]({{ githuburl }}). You can also view the component image in the overview.
-
-## Contribute a Figma link
-
-      If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
-
-{% endtab %}
-
-{% tab "Accessibility" %}
-
-## Accessibility
-
-No accessibility findings were included when this component was added. There may be more information in the [Address lookup Github discussion]({{ githuburl }}).
-## Contribute accessibility findings
-
-    If you have accessibility findings that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
-
-{% endtab %}
-
-{% tab "Code" %}
-
-## Code
-
-No code was included when this contribution was added.
-
-You can use the [Address lookup Github discussion]({{ githuburl }}) to:
-
-* view other code blocks
-* add relevant code
-
-{% endtab %}
-
-{% endtabs %}
