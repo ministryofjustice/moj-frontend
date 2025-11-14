@@ -5,7 +5,7 @@ title: Accessibility statement for MOJ Design System
 
 This accessibility statement applies to the MOJ Design System documentation website.
 
-This website is run by Justice Digital, an MOJ service area. We want as many people as possible to be able to use this website. For example, that means you should be able to:
+This website is run by Justice Digital. We want as many people as possible to be able to use this website. For example, that means you should be able to:
 
 - change colours, contrast levels and fonts using browser or device settings
 - zoom in up to 400% without the text spilling off the screen
@@ -26,15 +26,12 @@ We know some parts of this website are not fully accessible:
 
 ## Feedback and contact information
 
-If you find any problems not listed on this page or think we’re not meeting accessibility requirements, contact the MOJ Design System team at:
+Contact the MOJ Design System team if you:
 
-- [design-system@justice.gov.uk](mailto:design-system@justice.gov.uk)
+- find any problems not listed on this page or think we’re not meeting accessibility requirements
+- need information on this website in a different format for example accessible PDF, large print, Easy Read, audio recording or braille
 
-If you need information on this website in a different format like accessible PDF, large print, easy read, audio recording or braille contact:
-
-- [design-system@justice.gov.uk](mailto:design-system@justice.gov.uk) 
-
-We’ll consider your request and get back to you in 5 working days.
+Email [design-system@justice.gov.uk](mailto:design-system@justice.gov.uk) and we’ll get back to you in 5 working days.
 
 ## Enforcement procedure
 
@@ -42,13 +39,13 @@ The Equality and Human Rights Commission (EHRC) is responsible for enforcing the
 
 ## Technical information about this website’s accessibility
 
-Ministry of Justice Digital and Technology is committed to making its website accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.
+Justice Digital is committed to making its website accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.
 
 ## Compliance status
 
 The website has been tested against the Web Content Accessibility Guidelines (WCAG) 2.2 AA standard.
 
-This website is partially compliant with the [Web Content Accessibility Guidelines version 2.2](https://www.w3.org/TR/WCAG22/) AA standard, due to the non-compliance listed below.
+This website is partially compliant with the [Web Content Accessibility Guidelines version 2.2](https://www.w3.org/TR/WCAG22/) AA standard, due to the non-compliances listed below.
 
 ## Non-accessible content
 
