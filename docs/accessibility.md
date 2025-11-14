@@ -32,7 +32,7 @@ If you find any problems not listed on this page or think we’re not meeting ac
 
 If you need information on this website in a different format like accessible PDF, large print, easy read, audio recording or braille contact:
 
-- [design-system@justice.gov.uk](mailto:design-system@justice.gov.uk)call [phone number]
+- [design-system@justice.gov.uk](mailto:design-system@justice.gov.uk) 
 
 We’ll consider your request and get back to you in 5 working days.
 
@@ -61,14 +61,6 @@ There's only one way for users to get to content. This fails WCAG 2.2 Multiple W
 Some iframe titles are not unique. This fails WCAG 2.2 success criterion 4.1.2 (Name, Role, Value).
 
 We plan to address these issues by January 2026.
-
-### Disproportionate burden
-
-Does not apply
-
-### Content that’s not within the scope of the accessibility regulations
-
-Does not apply
 
 ## Preparation of this accessibility statement
 
