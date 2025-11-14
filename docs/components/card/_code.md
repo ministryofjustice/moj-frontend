@@ -1,60 +1,11 @@
 ---
-title: Card
-tabs: true
-status: Experimental
-statusDate: November 2025
-excerpt: ""
-lede: ""
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns
-
-
+title: Code
+order: 40
+tags: 'card'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: false
 ---
-
-{% tabs "paginate" %}
-{% tab "Overview" %}
-
-<div class="img-container">
-  <img src="/assets/images/submission-1762947876654/127007751-efd9d308-bfa2-4c12-9bde-97b7cf025352.png" alt="card" />
-</div>
-
-## Overview
-A basic card with a link and explanatory text underneath.
-
-### How the component is currently used
-
-Use the card on a dashboard or home screen to present links and a description of the link to users.
-
-### Contribute to this component
-You can help develop this component by adding information to the [‘card’ Github discussion]({{ githuburl }}). This helps other people to use it in their service.
-
-{% endtab %}
-
-{% tab "Designs" %}
-
-## Designs
-
-A Figma link was not included when this component was added.
-
-There may be more information in the [‘card’ Github discussion]({{ githuburl }}). You can also view the component image in the overview.
-
-## Contribute a Figma link
-
-If you have a Figma link for this component (or a component like it) you can add it to [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
-
-{% endtab %}
-
-{% tab "Accessibility" %}
-
-## Accessibility
-
-No accessibility findings were included when this component was added. There may be more information in the [‘card’ Github discussion]({{ githuburl }}).
-## Contribute accessibility findings
-
-    If you have accessibility findings that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
-
-{% endtab %}
-
-{% tab "Code" %}
 
 ## Code
 
@@ -309,6 +260,3 @@ Code has been added for this component. There may be other code blocks in the [�
 
 If you have code that is relevant to this component you can add it to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
 
-{% endtab %}
-
-{% endtabs %}
