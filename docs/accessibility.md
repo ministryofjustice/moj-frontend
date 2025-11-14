@@ -1,18 +1,18 @@
 ---
 layout: layouts/content.njk
-title: Accessibility statement for Ministry of Justice Design System
+title: Accessibility statement for MOJ Design System
 ---
 
-This accessibility statement applies to the Ministry of Justice Design System documentation website.
+This accessibility statement applies to the MOJ Design System documentation website.
 
-This website is run by Justice Digital, a Ministry of Justice service area. We want as many people as possible to be able to use this website. For example, that means you should be able to:
+This website is run by Justice Digital, an MOJ service area. We want as many people as possible to be able to use this website. For example, that means you should be able to:
 
-- change colours, contrast levels and fonts
-- navigate most of the website using just a keyboard
-- navigate most of the website using speech recognition software
+- change colours, contrast levels and fonts using browser or device settings
+- zoom in up to 400% without the text spilling off the screen
+- navigate most of the website using a keyboard or speech recognition software
 - listen to most of the website using a screen reader (including the most recent versions of JAWS, NVDA and VoiceOver)
 
-We’ve also made the text as simple as possible to understand.
+We’ve also made the website text as simple as possible to understand.
 
 [AbilityNet](https://mcmw.abilitynet.org.uk/) has advice on making your device easier to use if you have a disability.
 
@@ -20,21 +20,21 @@ We’ve also made the text as simple as possible to understand.
 
 We know some parts of this website are not fully accessible:
 
-- The secondary navigation text is spilling off the screen when zooming in at 200%.
-- There are headings on the main page and footer which are marked as heading level 2, but which use visually different font sizes.
-- Some iframe headings are not marked up as headings.
+- users cannot get to content in multiple ways
+- some iframe headings are not marked up as headings
+- some link text is not descriptive  
 
 ## Feedback and contact information
 
-If you need information on this website in a different format:
+If you find any problems not listed on this page or think we’re not meeting accessibility requirements, contact the MOJ Design System team at:
 
 - [design-system@justice.gov.uk](mailto:design-system@justice.gov.uk)
 
+If you need information on this website in a different format like accessible PDF, large print, easy read, audio recording or braille contact:
+
+- [design-system@justice.gov.uk](mailto:design-system@justice.gov.uk)call [phone number]
+
 We’ll consider your request and get back to you in 5 working days.
-
-## Reporting accessibility problems with this website
-
-We’re always looking to improve the accessibility of this website. If you find any problems not listed on this page or think we’re not meeting accessibility requirements, contact: [design-system@justice.gov.uk](mailto:design-system@justice.gov.uk)
 
 ## Enforcement procedure
 
@@ -46,7 +46,9 @@ Ministry of Justice Digital and Technology is committed to making its website ac
 
 ## Compliance status
 
-This website is partially compliant with the [Web Content Accessibility Guidelines version 2.1 AA standard](https://www.w3.org/TR/WCAG21/) due to the non-compliances listed below.
+The website has been tested against the Web Content Accessibility Guidelines (WCAG) 2.2 AA standard.
+
+This website is partially compliant with the [Web Content Accessibility Guidelines version 2.2](https://www.w3.org/TR/WCAG22/) AA standard, due to the non-compliance listed below.
 
 ## Non-accessible content
 
@@ -54,11 +56,11 @@ The content listed below is non-accessible for the following reasons.
 
 ### Non-compliance with the accessibility regulations
 
-- Content is lost or obscured when setting the browser width to 1280px and increasing magnification up to 400%. To view all options of the secondary navigation, the user would be required to scroll in multiple directions. This fails WCAG 2.1 success criterion 1.4.10 (Reflow)
-- There are headings on the main page and footer which are marked as heading level 2, but which use visually different font sizes. This fails WCAG 2.1 success criterion 1.3.1 (Info and Relationships)
-- Some iframe headings are not marked up as headings. This fails WCAG 2.1 success criterion 4.1.2 (Name, Role, Value)
+There's only one way for users to get to content. This fails WCAG 2.2 Multiple Ways (Level AA).
 
-We plan to address these issues by December 2022 apart from the unmarked iframe headings issue. This issue is a necessary effect of showing example snippets within pages and so cannot be fixed.
+Some iframe titles are not unique. This fails WCAG 2.2 success criterion 4.1.2 (Name, Role, Value).
+
+We plan to address these issues by January 2026.
 
 ### Disproportionate burden
 
@@ -68,14 +70,10 @@ Does not apply
 
 Does not apply
 
-## What we’re doing to improve accessibility
-
-We are aware of some accessibility issues and are making plans to fix these issues. We will monitor the accessibility of this website on an ongoing basis and plan to fix any accessibility issues reported to us.
-
 ## Preparation of this accessibility statement
 
-This statement was prepared on 16th August 2022. It was last reviewed on 16th August 2022.
+This statement was prepared on 16 August 2022. It was last reviewed on 21 November 2025.
 
-This platform was last tested on 23rd June 2022. The test was carried out in-house by the Accessibility team.
+This website was last tested on 14 July 2025 against the WCAG 2.2 AA standard.
 
-In addition, The Digital Accessibility Centre (DAC) carried out a full WCAG 2.1 AA level audit on all featured components and patterns contained by the Design System. It included extensive testing by users with a wide range of disabilities. This audit was performed on 30th April 2021. It highlighted a number of non-compliance issues, some of which have been addressed since.
+The test was carried out by the MOJ Accessibility team. The most viewed pages were tested using automated testing tools by our website team. A further audit of the website was carried out to the WCAG 2.2 AA standard.
