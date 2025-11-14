@@ -1,0 +1,14 @@
+---
+layout: layouts/example.njk
+title: Alert (example)
+redirect_from: examples/alert-error
+---
+
+{%- from "moj/components/alert/macro.njk" import mojAlert -%}
+
+{{ mojAlert({
+  variant: "error",
+  title: "This case has been assigned to someone else",
+  dismissible: false,
+  text: "This case has been assigned to someone else, so you can no longer make changes."
+}) }}

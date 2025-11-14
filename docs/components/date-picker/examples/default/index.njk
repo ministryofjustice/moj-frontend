@@ -1,0 +1,18 @@
+---
+title: Date Picker (example)
+arguments: date-picker
+redirect_from: examples/date-picker
+---
+
+{%- from "moj/components/date-picker/macro.njk" import mojDatePicker -%}
+
+{{ mojDatePicker({
+  id: "date",
+  name: "date",
+  label: {
+    text: "Date"
+  },
+  hint: {
+    text: "For example, 17/5/2024."
+  }
+}) }}

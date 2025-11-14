@@ -1,0 +1,24 @@
+---
+layout: layouts/example.njk
+title: Notification badge (example)
+redirect_from: examples/notification-badge-side-nav
+---
+
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{%- from "moj/components/notification-badge/macro.njk" import mojNotificationBadge -%}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    {{ mojSideNavigation({
+      items: [
+        { text: "Dashboard", active: true },
+        { html: "Messages" + mojNotificationBadge({
+            text: "5",
+            visuallyHiddenText: "unread"
+          })
+        },
+        { text: "Cases"}
+      ]
+    })}}
+  </div>
+</div>

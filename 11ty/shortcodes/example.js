@@ -8,25 +8,45 @@ const nunjucksEnv = require('../config/nunjucks')
 
 module.exports = function (params) {
   let templateFile = ''
+  let templatePath
+  let argumentsPath
+  let figmaLink
+  if (params.colocated) {
+    templatePath = path.resolve(
+      this.eleventy.env.root,
+      path.dirname(this.page.inputPath),
+      params.template,
+      'index.njk'
+    )
+    const includesPath = path.resolve(this.eleventy.env.root, 'docs/_includes')
+    const argumentsAbsPath = path.resolve(
+      this.eleventy.env.root,
+      path.dirname(this.page.inputPath),
+      '_arguments.md'
+    )
+    argumentsPath = path.relative(includesPath, argumentsAbsPath)
+  } else {
+    templatePath = path.join(
+      this.eleventy.env.root,
+      this.eleventy.directories.input,
+      params.template,
+      'index.njk'
+    )
+    argumentsPath = `arguments/${this.page.fileSlug}.md`
+  }
   try {
-    templateFile = fs
-      .readFileSync(
-        path.join(
-          __dirname,
-          '../',
-          '../',
-          'docs',
-          params.template,
-          'index.njk'
-        ),
-        'utf8'
-      )
-      .trim()
+    templateFile = fs.readFileSync(templatePath, 'utf8').trim()
   } catch {
     console.error(`Template '${params.template}' could not be found.`)
     return ''
   }
   let { data, content: nunjucksCode } = matter(templateFile)
+
+  if (params.colocated) {
+    figmaLink = this.ctx.figma_link
+  } else {
+    figmaLink = data.figma_link
+  }
 
   nunjucksCode = nunjucksCode.split('<!--no include-->')[0].trim()
 
@@ -52,8 +72,8 @@ module.exports = function (params) {
   return nunjucksEnv.render('example.njk', {
     href: params.template,
     id: params.template.replace(/\//g, '-'),
-    arguments: this.page.fileSlug,
-    figmaLink: data.figma_link,
+    arguments: argumentsPath,
+    figmaLink,
     figmaTabContent: params.figmaTabContent,
     title: data.title,
     height: params.height,
@@ -61,6 +81,6 @@ module.exports = function (params) {
     nunjucksCode,
     htmlCode,
     jsCode,
-    tabWarning: data.tab_warning
+    tabWarning: this.ctx.tab_warning
   })
 }

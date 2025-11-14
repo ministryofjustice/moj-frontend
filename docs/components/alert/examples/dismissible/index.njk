@@ -1,0 +1,14 @@
+---
+layout: layouts/example.njk
+title: Alert (example)
+redirect_from: examples/alert-dismissible
+---
+
+{%- from "moj/components/alert/macro.njk" import mojAlert -%}
+
+{{ mojAlert({
+  variant: "success",
+  title: "File uploaded successfully",
+  dismissible: true,
+  html: '<a href="#">Scan1.jpg</a> has been added to this application.'
+}) }}

@@ -1,0 +1,12 @@
+---
+layout: layouts/example.njk
+title: Badge (example)
+redirect_from: examples/badge-complete
+---
+
+{%- from "moj/components/badge/macro.njk" import mojBadge -%}
+
+{{ mojBadge({
+  text: "Complete",
+  classes: "moj-badge--green"
+}) }}

@@ -1,0 +1,10 @@
+---
+layout: layouts/example.njk
+title: Notification badge (example)
+redirect_from: examples/notification-badge-link
+---
+
+{%- from "moj/components/notification-badge/macro.njk" import mojNotificationBadge -%}
+<a href="#" class="govuk-link">Messages
+  {{- mojNotificationBadge({text: "5"}) -}}
+</a>

@@ -1,0 +1,19 @@
+---
+layout: layouts/example.njk
+title: Date Picker Excluded Days (example)
+redirect_from: examples/date-picker-excluded-days
+---
+
+{%- from "moj/components/date-picker/macro.njk" import mojDatePicker -%}
+
+{{ mojDatePicker({
+  id: "date",
+  name: "date",
+  label: {
+    text: "Date"
+  },
+  hint: {
+    text: "For example, 17/5/2024."
+  },
+  disabledDays: "saturday sunday"
+}) }}

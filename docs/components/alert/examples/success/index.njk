@@ -1,0 +1,14 @@
+---
+layout: layouts/example.njk
+title: Alert (example)
+redirect_from: examples/alert-success
+---
+
+{%- from "moj/components/alert/macro.njk" import mojAlert -%}
+
+{{ mojAlert({
+  variant: "success",
+  title: "Upload successful",
+  dismissible: false,
+  html: '<a href="#">Scan1.jpg</a> uploaded successfully.'
+}) }}
