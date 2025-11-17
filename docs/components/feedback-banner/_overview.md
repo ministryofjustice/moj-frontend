@@ -8,7 +8,7 @@ eleventyComputed:
 ---
 
 <div class="img-container">
-  <img src="/assets/images/submission-1762946436168/Screenshot-2025-11-12-at-11.19.01.png" alt="feedback banner" />
+  <img src="/assets/images/submission-1762946436168/Screenshot-2025-11-12-at-11.19.01.png" alt="A white banner with grey top and bottom borders. The content inside the banner says 'This is a new page' and a link says 'give feedback to help us improve it (opens in a new tab)'" />
 </div>
 
 ## Overview
