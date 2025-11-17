@@ -8,7 +8,7 @@ eleventyComputed:
 ---
 
 <div class="img-container">
-  <img src="/assets/images/submission-1762946660930/147359799-4eebf319-25d3-45e3-b080-7ae7909055aa.png" alt="contextual date" />
+  <img src="/assets/images/submission-1762946660930/147359799-4eebf319-25d3-45e3-b080-7ae7909055aa.png" alt="A sortable multi-select table. In the 'due date' column are dates in bold, with a status such as 'overdue' written in smaller plain text underneath and a coloured bar to the left to signify the status." />
 </div>
 
 ## Overview
