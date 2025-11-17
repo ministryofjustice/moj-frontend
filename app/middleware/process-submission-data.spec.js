@@ -7,7 +7,7 @@ const {
 } = require('../config')
 const { extractFilename, getUniqueFilename } = require('../helpers/file-helper')
 const { getFileFromRedis } = require('../helpers/redis-helper')
-const { generateMarkdown } = require('../middleware/generate-documentation')
+const { generateMarkdown, generateEleventyDataFile } = require('../middleware/generate-documentation')
 
 const {
   processSubmissionData,
@@ -19,7 +19,8 @@ const {
 } = require('./process-subission-data')
 
 jest.mock('../middleware/generate-documentation', () => ({
-  generateMarkdown: jest.fn()
+  generateMarkdown: jest.fn(),
+  generateEleventyDataFile: jest.fn()
 }))
 jest.mock('../helpers/file-helper', () => ({
   extractFilename: jest.fn(),
@@ -66,16 +67,49 @@ describe('buildComponentPage', () => {
     jest.clearAllMocks()
   })
   it('adds the generated doc to the request', () => {
-    generateMarkdown.mockReturnValue({
-      filename: 'test-filename.md',
-      content: 'markdown content'
+    generateMarkdown.mockReturnValueOnce({
+      filename: 'test-component/index.md',
+      content: 'index content'
+    }).mockReturnValueOnce({
+      filename: 'test-component/_overview.md',
+      content: 'overview content'
+    }).mockReturnValueOnce({
+      filename: 'test-component/_designs.md',
+      content: 'designs content'
+    }).mockReturnValueOnce({
+      filename: 'test-component/_accessibility.md',
+      content: 'accessibility content'
+    }).mockReturnValueOnce({
+      filename: 'test-component/_code.md',
+      content: 'code content'
     })
+
+    generateEleventyDataFile.mockReturnValue({
+      filename: 'test-component/test-component.11tydata.js',
+      content: 'export default {}'
+    })
+
     buildComponentPage(req, res, next)
 
-    expect(req.markdownFilename).toBe('test-filename.md')
-    expect(req.markdownContent).toBe('markdown content')
+    // expect(req.markdownFilename).toBe('test-filename.md')
+    expect(req.markdownContent).toBe(`index content
+
+overview content
+
+designs content
+
+accessibility content
+
+code content
+
+`)
     expect(req.markdown).toStrictEqual({
-      'test-filename.md': 'markdown content'
+      'test-component/index.md': 'index content',
+      'test-component/_overview.md': 'overview content',
+      'test-component/_designs.md': 'designs content',
+      'test-component/_accessibility.md': 'accessibility content',
+      'test-component/_code.md': 'code content',
+      'test-component/test-component.11tydata.js': 'export default {}',
     })
     expect(next).toHaveBeenCalled()
   })
