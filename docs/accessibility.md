@@ -21,7 +21,7 @@ We’ve also made the website text as simple as possible to understand.
 We know some parts of this website are not fully accessible:
 
 - users cannot get to content in multiple ways
-- some iframe headings are not marked up as headings
+- some iframe titles are not marked up as titles 
 
 ## Feedback and contact information
 
