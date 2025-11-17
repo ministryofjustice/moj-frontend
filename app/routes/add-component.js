@@ -154,20 +154,33 @@ if (ENV === 'development') {
     },
     buildComponentPage,
     async (req, res) => {
-      const { markdownFilename: filename, markdownContent: content } = req
-      fs.writeFile(`docs/components/${filename}`, content, (err) => {
-        if (err) {
-          console.error(err)
-        } else {
-          // file written successfully
-          setTimeout(() => {
-            res.redirect(
-              `/components/${filename.split('.').at(0).toLowerCase()}`
-            )
-          }, 2000)
+      const docsDir = 'docs/components'
+      let componentDir = ''
+      for (const [filename, content] of Object.entries(req.markdown)) {
+        if(!componentDir) {
+            componentDir = filename.split('/')[0]
         }
-      })
-    }
+
+        if (!fs.existsSync(`${docsDir}/${componentDir}`)) {
+          fs.mkdirSync(`${docsDir}/${componentDir}`);
+          console.log(`Directory '${docsDir}/${componentDir}' created.`);
+        }
+
+        fs.writeFile(`${docsDir}/${filename}`, content, (err) => {
+          if (err) {
+            console.error(err)
+          } else {
+            console.log(`File '${docsDir}/${filename}' created.`);
+          }
+        })
+      }
+
+      setTimeout(() => {
+        res.redirect(
+              `/components/${componentDir}`
+            )
+      }, 2000)
+    },
   )
 }
 
