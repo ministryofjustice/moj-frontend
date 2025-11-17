@@ -22,7 +22,6 @@ We know some parts of this website are not fully accessible:
 
 - users cannot get to content in multiple ways
 - some iframe headings are not marked up as headings
-- some link text is not descriptive  
 
 ## Feedback and contact information
 
