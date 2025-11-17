@@ -8,7 +8,7 @@ eleventyComputed:
 ---
 
 <div class="img-container">
-  <img src="/assets/images/submission-1762947876654/127007751-efd9d308-bfa2-4c12-9bde-97b7cf025352.png" alt="card" />
+  <img src="/assets/images/submission-1762947876654/127007751-efd9d308-bfa2-4c12-9bde-97b7cf025352.png" alt="A row of three grey-bordered cards with white backgrounds. Each has a heading link and a description below in plain black body text of where the link goes." />
 </div>
 
 ## Overview
