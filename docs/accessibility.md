@@ -16,7 +16,7 @@ We’ve also made the website text as simple as possible to understand.
 
 [AbilityNet](https://mcmw.abilitynet.org.uk/) has advice on making your device easier to use if you have a disability.
 
-### How accessible this website is
+## How accessible this website is
 
 We know some parts of this website are not fully accessible:
 
@@ -24,7 +24,7 @@ We know some parts of this website are not fully accessible:
 - some iframe headings are not marked up as headings
 - some link text is not descriptive  
 
-### Feedback and contact information
+## Feedback and contact information
 
 Contact the MOJ Design System team if you:
 
@@ -59,7 +59,7 @@ Some iframe titles are not unique. This fails WCAG 2.2 success criterion 4.1.2 (
 
 We plan to address these issues by January 2026.
 
-### Preparation of this accessibility statement
+## Preparation of this accessibility statement
 
 This statement was prepared on 16 August 2022. It was last reviewed on 21 November 2025.
 
