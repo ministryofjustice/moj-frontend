@@ -18,7 +18,7 @@ const generateEleventyDataFile = (data) => {
 
   const content = `export default {
   githuburl: 'https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns',
-  tabCollection: '${componentName}',
+  tabCollection: '${sanitizedComponentName}',
   blockTitle: '${titleize(componentName)}'
 }`
 
@@ -49,8 +49,8 @@ status: Experimental
 statusDate: ${moment().format('MMMM YYYY')}
 excerpt: "${details?.briefDescription || ''}"
 lede: "${details?.briefDescription || ''}"
-${data['/your-details']?.fullName === 'Not shared' ? '' : `contributorName: ${data['/your-details']?.fullName}`}
-${data['/your-details']?.teamName === 'Not shared' ? '' : `contributorTeam: ${data['/your-details']?.teamName}`}
+${data['/your-details']?.fullName ? (data['/your-details']?.fullName === 'Not shared' ? '' : `contributorName: ${data['/your-details']?.fullName}`) : ''}
+${data['/your-details']?.teamName ? (data['/your-details']?.teamName === 'Not shared' ? '' : `contributorTeam: ${data['/your-details']?.teamName}`) : ''}
 ---`
 
     return content
@@ -61,7 +61,7 @@ ${data['/your-details']?.teamName === 'Not shared' ? '' : `contributorTeam: ${da
     content += `---
 title: Overview
 order: 10
-tags: '${componentName}'
+tags: '${sanitizedComponentName}'
 permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
@@ -88,12 +88,12 @@ You can help develop this component by adding information to the ${githubDiscuss
     content += `---
 title: Designs
 order: 20
-tags: '${componentName}'
+tags: '${sanitizedComponentName}'
 permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---\r\n`
-    if (data['/figma-link']) {
+    if (data['/figma-link']?.figmaUrl ) {
       content += `A Figma design has been added for this component. There may be more links and resources in the ${githubDiscussionLink(componentName)}.\r\n
 
 ### Figma
@@ -132,16 +132,19 @@ If you have a Figma link for this component (or a component like it) you can add
     const frontmatter = `---
 title: Accessibility
 order: 30
-tags: '${componentName}'
+tags: '${sanitizedComponentName}'
 permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---\r\n`
     const externalAudit = data['/add-external-audit']
+    const hasExternalAudit = externalAudit && typeof externalAudit === 'object' && Object.keys(externalAudit).length > 0
     const internalAudit = data['/add-internal-audit']
+    const hasInternalAudit = internalAudit && typeof internalAudit === 'object' && Object.keys(internalAudit).length > 0
     const assistiveTech = data['/add-assistive-tech']
+    const hasAssistiveTech = assistiveTech && typeof assistiveTech === 'object' && Object.keys(assistiveTech).length > 0
 
-    if (externalAudit) {
+    if (hasExternalAudit){
       const externalAuditDate = formatDate(
         externalAudit['auditDate-day'],
         externalAudit['auditDate-month'],
@@ -158,7 +161,7 @@ eleventyComputed:
 ${externalAudit.issuesDiscovered}\r\n`
     }
 
-    if (internalAudit) {
+    if (hasInternalAudit) {
       const internalAuditDate = formatDate(
         internalAudit['auditDate-day'],
         internalAudit['auditDate-month'],
@@ -174,7 +177,7 @@ ${externalAudit.issuesDiscovered}\r\n`
 ${internalAudit.issuesDiscovered}\r\n`
     }
 
-    if (assistiveTech) {
+    if (hasAssistiveTech) {
       const testingDate = formatDate(
         assistiveTech['testingDate-day'],
         assistiveTech['testingDate-month'],
@@ -189,7 +192,7 @@ Date: ${testingDate}
 ${assistiveTech.issuesDiscovered}\r\n`
     }
 
-    if (externalAudit || internalAudit || assistiveTech) {
+    if (hasExternalAudit || hasInternalAudit || hasAssistiveTech) {
       content = `Accessibility findings have been added for this component. There may be more findings in the ${githubDiscussionLink(componentName)}.\r\n
 
 ${content}\r\n`
@@ -199,7 +202,7 @@ ${content}\r\n`
 
     content += `## Contribute accessibility findings
 
-    If you have accessibility findings that are relevant to this component you can add them to the ${githubDiscussionLink()}. This helps other people to use it in their service.`
+If you have accessibility findings that are relevant to this component you can add them to the ${githubDiscussionLink()}. This helps other people to use it in their service.`
 
     return frontmatter + content
   }
@@ -227,14 +230,15 @@ ${content}\r\n`
     const frontmatter = `---
 title: Code
 order: 40
-tags: '${componentName}'
+tags: '${sanitizedComponentName}'
 permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---\r\n`
     for (let i = 0; i <= MAX_ADD_ANOTHER; i++) {
       const code = data[`/component-code-details${i === 0 ? '' : `/${i}`}`]
-      if (!code) {
+      const hasCode = code && typeof code === 'object' && Object.keys(code).length > 0
+      if (!hasCode) {
         break
       }
       const language =
@@ -264,7 +268,7 @@ ${code.componentCodeUsage}`
       content += `\r\n\r\n`
     }
 
-    if (data['/component-code-details']) {
+    if (data['/component-code-details'] && typeof data['/component-code-details']  === 'object' && Object.keys(data['/component-code-details'] ).length > 0) {
       content = `Code has been added for this component. There may be other code blocks in the ${githubDiscussionLink(componentName)}.
 
 ${content}
@@ -288,9 +292,6 @@ You can use the ${githubDiscussionLink(componentName)} to:
   let content = ''
 
   switch (tab) {
-    case '':
-      content = generateIndexContent(data)
-      break
     case 'overview':
       content = generateOverViewTabContent()
       break
@@ -304,7 +305,7 @@ You can use the ${githubDiscussionLink(componentName)} to:
       content = generateCodeTabContent(data)
       break
     default:
-      content = ''
+      content = generateIndexContent(data)
   }
 
   return { filename, content }
