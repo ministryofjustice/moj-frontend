@@ -12,7 +12,7 @@ eleventyComputed:
 </div>
 
 ## Overview
-Use the contextual date pattern to indicate important information about a date in a table to make it easier to scan, interpret and action where required.
+Use the contextual date component to indicate important information about a date in a table to make it easier to scan, interpret and action where required.
 
 ### How the component is currently used
 
