@@ -8,7 +8,7 @@ eleventyComputed:
 ---
 
 <div class="img-container">
-  <img src="/assets/images/submission-1762945944100/147359426-76571618-1099-454f-a421-50f956a8a2a9.png" alt="numeric data" />
+  <img src="/assets/images/submission-1762945944100/147359426-76571618-1099-454f-a421-50f956a8a2a9.png" alt="A row of three large numbers with a smaller item description underneath each number them. Examples: '1,062 active cases' or '32 overdue reports'." />
 </div>
 
 ## Overview
