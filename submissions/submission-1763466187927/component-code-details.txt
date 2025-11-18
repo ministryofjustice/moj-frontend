@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "HTML",
+  "componentCodeLanguageOther": "",
+  "componentCode": "<p>code</p>",
+  "componentCodeUsage": ""
+}
