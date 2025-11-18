@@ -8,6 +8,7 @@
 | manageDetailsLink  | string | Yes       | URL linking to the user account management page.   |
 | servicesLink  | string | No | URL linking to a services page when JavaScript is disabled |
 | services | list | Yes | List of services. See [services](#services) |
+| titleLink  | string | No       | The URL that clicking on the title should point to.   |
 
 ### services
 
