@@ -1,0 +1,1 @@
+"export default {\n  githuburl: 'https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns',\n  tabCollection: 'test-component',\n  blockTitle: 'Test component'\n}"
