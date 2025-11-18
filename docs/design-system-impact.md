@@ -181,7 +181,21 @@ what services are using it</blockquote>
   Last updated: {{ whatsNewLastUpdated }}
 </p>
 
-{% include "docs/whats-new.md" %}
+### Anyone at MOJ can now submit a component
+If an MOJ colleague uses the [submit a component](/contribute/add-new-component) form, their contribution will be added as an 'experimental' component and be available for reuse by others within 10 days.
+
+### 4 'experimental' components added
+
+- [Calendar](/components/calendar)
+- [Inset text (highlighted)](/components/inset-text-highlighted)
+- [New features banner](/components/new-features-banner)
+- [Progress tracker](/components/progress-tracker)
+
+### 3 components improved to 'official' status
+
+- [PDS (Probation Digital Services) header](/probation/components/pds-header/)
+- [PDS (Probation Digital Services) footer](/probation/components/pds-footer)
+- [Notification badge](/components/notification-badge)
 
 <hr style="border:none">
 
