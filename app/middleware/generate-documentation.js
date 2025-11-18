@@ -106,7 +106,7 @@ If you work outside MOJ, go to the [MOJ Figma Kit on the Figma community platfor
 
 If you have design files that are relevant to this component you can add them to the ${githubDiscussionLink()}. This helps other people to use it in their service.`
     } else {
-      content = `A Figma link was not included when this component was added.
+      content += `A Figma link was not included when this component was added.
 
 There may be more information in the ${githubDiscussionLink(componentName)}. You can also view the component image in the overview.
 

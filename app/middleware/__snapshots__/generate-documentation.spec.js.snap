@@ -41,7 +41,15 @@ You can use the [‘component! with@ special#chars’ Github discussion]({{ gith
 
 exports[`generateMarkdown component with special characters generates the _designs.md tab 1`] = `
 {
-  "content": "A Figma link was not included when this component was added.
+  "content": "---
+title: Designs
+order: 20
+tags: 'component-with-special-chars'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: false
+---
+A Figma link was not included when this component was added.
 
 There may be more information in the [‘component! with@ special#chars’ Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
@@ -147,7 +155,15 @@ You can use the [‘unknown-component’ Github discussion]({{ githuburl }}) to:
 
 exports[`generateMarkdown no data provided generates the _designs.md tab 1`] = `
 {
-  "content": "A Figma link was not included when this component was added.
+  "content": "---
+title: Designs
+order: 20
+tags: 'unknown-component'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: false
+---
+A Figma link was not included when this component was added.
 
 There may be more information in the [‘unknown-component’ Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 
@@ -271,7 +287,15 @@ You can use the [‘test component’ Github discussion]({{ githuburl }}) to:
 
 exports[`generateMarkdown partial data generates the _designs.md tab 1`] = `
 {
-  "content": "A Figma link was not included when this component was added.
+  "content": "---
+title: Designs
+order: 20
+tags: 'test-component'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: false
+---
+A Figma link was not included when this component was added.
 
 There may be more information in the [‘test component’ Github discussion]({{ githuburl }}). You can also view the component image in the overview.
 

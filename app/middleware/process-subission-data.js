@@ -154,7 +154,6 @@ const buildComponentPage = (req, res, next) => {
   const tabs = ['', 'overview', 'designs', 'accessibility', 'code']
   req.markdown = {}
   req.markdownContent = ''
-  // req.markdownFilename = markdownFilename
 
   // generate index.md and all tab markdown
   for (const tab of tabs) {
