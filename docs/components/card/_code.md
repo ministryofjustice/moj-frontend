@@ -18,136 +18,33 @@ Code has been added for this component. There may be other code blocks in the [â
 
 ```HTML
 {% raw %}
-    <div class="govuk-width-container">
-        <h1 class="govuk-heading-l govuk-!-margin-top-7">Digital Prison Services</h1>
-    </div>
-
-    <div class="homepage-search">
-        <div class="govuk-width-container">
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Search for a prisoner</h2>
-            <p class="govuk-body govuk-hint">Leave blank to view all results for selected residential location</p>
-            <form class="horizontal-form" data-test="homepage-search-form">
-                <div class="govuk-form-group">
-                    <label class="govuk-label" for="keywords">Name or prison number</label> <input class="govuk-input" data-test="homepage-search-keywords" id="keywords" name="keywords" type="text">
-                </div>
-                <div class="govuk-form-group">
-                    <label class="govuk-label" for="location">Residential location</label> <select class="govuk-select" data-test="homepage-search-location" id="location" name="location">
-                    <option value="WRI">
-                        Nottingham (HMP)
-                    </option>
-                    <option value="WRI-A">
-                        A
-                    </option>
-                    <option value="WRI-B">
-                        B
-                    </option>
-                    <option value="WRI-C">
-                        C
-                    </option>
-                    <option value="WRI-D">
-                        D
-                    </option>
-                    <option value="WRI-E">
-                        E
-                    </option>
-                    <option value="WRI-F">
-                        F
-                    </option>
-                    <option value="WRI-H">
-                        H
-                    </option>
-                    <option value="WRI-S">
-                        S
-                    </option>
-                </select>
-                </div><button class="govuk-button" data-module="govuk-button" type="submit" onclick="showAlert()">Search</button>
-            </form>
-        </div>
-    </div>
-
-<div class="homepage-content">
-    <div class="govuk-width-container">
-        <ul class="govuk-grid-row card-group">
-
-            <li class="govuk-grid-column-one-third card-group__item">
-
-                <div class="card card--clickable" data-test="global-search">
-                    <h2 class="govuk-heading-m card__heading">
-                        <a class="govuk-link card__link govuk-link--no-visited-state" href="#" onclick="showAlert()">Global search</a>
-                    </h2>
-                    <p class="govuk-body card__description">Search for someone in any establishment, or who has been released.</p>
-                </div>
-
-            </li>
-
-            <li class="govuk-grid-column-one-third card-group__item">
-
-                <div class="card card--clickable" data-test="manage-prisoner-whereabouts">
-                    <h2 class="govuk-heading-m card__heading">
-                        <a class="govuk-link card__link govuk-link--no-visited-state" href="#" onclick="showAlert()">Manage prisoner whereabouts</a>
-                    </h2>
-                    <p class="govuk-body card__description">View unlock lists and manage attendance.</p>
-                </div>
-
-            </li>
-
-            <li class="govuk-grid-column-one-third card-group__item">
-
-                <div class="card card--clickable" data-test="use-of-force">
-                    <h2 class="govuk-heading-m card__heading">
-                        <a class="govuk-link card__link govuk-link--no-visited-state" href="#" onclick="showAlert()">Use of force incidents</a>
-                    </h2>
-                    <p class="govuk-body card__description">Manage and view incident reports and statements.</p>
-                </div>
-
-            </li>
-
-            <li class="govuk-grid-column-one-third card-group__item">
-
-                <div class="card card--clickable" data-test="establishment-roll">
-                    <h2 class="govuk-heading-m card__heading">
-                        <a class="govuk-link card__link govuk-link--no-visited-state" href="#" onclick="showAlert()">Establishment roll check</a>
-                    </h2>
-                    <p class="govuk-body card__description">View the roll broken down by residential unit and see who is arriving and leaving.</p>
-                </div>
-
-            </li>
-
-            <li class="govuk-grid-column-one-third card-group__item">
-
-                <div class="card card--clickable" data-test="secure-move">
-                    <h2 class="govuk-heading-m card__heading">
-                        <a class="govuk-link card__link govuk-link--no-visited-state" href="#" onclick="showAlert()">Book a secure move</a>
-                    </h2>
-                    <p class="govuk-body card__description">Schedule secure movement for prisoners in custody, via approved transport suppliers, between locations across England and Wales.</p>
-                </div>
-
-            </li>
-
-            <!--<li class="govuk-grid-column-one-third card-group__item">-->
-
-                <!--<div class="card card&#45;&#45;clickable" data-test="reception-desk">-->
-                    <!--<h2 class="govuk-heading-m card__heading">-->
-                        <!--<a class="govuk-link card__link" href="dps-reception">Welcome people into prison</a>-->
-                    <!--</h2>-->
-                    <!--<p class="govuk-body card__description">View prisoners expected to arrive today, prepare for arrival and add to the establishment roll.</p>-->
-                <!--</div>-->
-
-            <!--</li>-->
-
-            <li class="govuk-grid-column-one-third card-group__item">
-
-                <div class="card card--clickable" data-test="receive">
-                    <h2 class="govuk-heading-m card__heading">
-                        <a class="govuk-link card__link" href="dps-reception">Welcome people into prison</a>
-                    </h2>
-                    <p class="govuk-body card__description">Add prisoners to the establishment roll when they arrive at reception.</p>
-                </div>
-
-            </li>
-
-        </ul>
-    </div>
+<div class="govuk-width-container">
+    <ul class="govuk-grid-row card-group">
+        <li class="govuk-grid-column-one-third card-group__item">
+            <div class="card card--clickable" data-test="global-search">
+                <h2 class="govuk-heading-m card__heading">
+                    <a class="govuk-link card__link govuk-link--no-visited-state" href="#" onclick="showAlert()">Global search</a>
+                </h2>
+                <p class="govuk-body card__description">Search for someone in any establishment, or who has been released.</p>
+            </div>
+        </li>
+        <li class="govuk-grid-column-one-third card-group__item">
+            <div class="card card--clickable" data-test="manage-prisoner-whereabouts">
+                <h2 class="govuk-heading-m card__heading">
+                    <a class="govuk-link card__link govuk-link--no-visited-state" href="#" onclick="showAlert()">Manage prisoner whereabouts</a>
+                </h2>
+                <p class="govuk-body card__description">View unlock lists and manage attendance.</p>
+            </div>
+        </li>
+        <li class="govuk-grid-column-one-third card-group__item">
+            <div class="card card--clickable" data-test="use-of-force">
+                <h2 class="govuk-heading-m card__heading">
+                    <a class="govuk-link card__link govuk-link--no-visited-state" href="#" onclick="showAlert()">Use of force incidents</a>
+                </h2>
+                <p class="govuk-body card__description">Manage and view incident reports and statements.</p>
+            </div>
+        </li>
+    </ul>
 </div>
 {% endraw %}
 ```
