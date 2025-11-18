@@ -67,12 +67,12 @@ const processSubmissionData = (req, res, next) => {
         const filePath = `docs/${submissionFiles[key].path}`
         submissionData[filePath] = { buffer: submissionFiles[key].buffer }
       } else {
-        const filename = extractFilename(key)
+        const filename = extractFilename(key, '/')
         if ( filename.endsWith('.md') || filename.endsWith('.11tydata.js') ) {
           // Documentation should be outside of the submission folder
           submissionData[`docs/components/${filename}`] = sessionData[key]
-        }
-        else {
+        } else {
+          const filename = extractFilename(key)
           const data = Object.assign({}, sessionData[key])
           if (key.startsWith('/component-code-details')) {
             const exampleNum = key.split('/').at(2)
