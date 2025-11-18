@@ -47,7 +47,9 @@ eleventyNavigation:
 When the Figma Kits are updated, you’ll be notified in Figma. You can also check for updates by:
 
 1. Going to any Figma design file which has at least one library activated.
+
 2. Selecting 'Assets' from the left-hand side panel and then the book icon.
+
 3. Selecting ‘Updates’ from the side navigation. This shows a change summary, the author and date, and any ‘breaking’ changes.
 <p><img src="/assets/images/figma-guidance-update.png" style="border:none; max-width:760px" alt="A 'Manage libraries' window with a side navigation menu showing a 'Updates' tab selected. The content in the main pane shows the heading 'Updates from Test library', a line of text 'Published by Murray Lippiatt 4 minutes ago', and another line of text 'Updated 'Date picker' component: added hover states to calendar numbers.' Underneath this is an image of the date picker component with 'Date picker' and a button labelled 'Update' next to it. At the bottom of the window are a toggle switch labelled 'Show updates for all pages', and a button labelled 'Update all'."></p>
 
