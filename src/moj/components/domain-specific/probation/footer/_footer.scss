@@ -1,4 +1,7 @@
 @use "../../../../vendor/govuk-frontend" as *;
+@use "govuk-frontend/dist/govuk/objects/width-container" with (
+  $govuk-page-width: 1170px
+);
 
 /* ==========================================================================
    PROBATION#FOOTER
