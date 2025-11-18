@@ -35,7 +35,7 @@ It costs £5,000 (on average) for the Design System team to develop a reusable c
 
 Design System components are used 2,481 times in MOJ services.
 
-This counts the first time each component is used in a service. So if a service uses the date picker 50 times, for example, it'll be counted just once.
+This counts the first time each component is used in a service. So if a service uses the button menu 50 times, for example, it'll be counted just once.
 
 Multiplied, this tells us the impact on spending.
 
