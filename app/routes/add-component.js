@@ -157,30 +157,28 @@ if (ENV === 'development') {
       const docsDir = 'docs/components'
       let componentDir = ''
       for (const [filename, content] of Object.entries(req.markdown)) {
-        if(!componentDir) {
-            componentDir = filename.split('/')[0]
+        if (!componentDir) {
+          componentDir = filename.split('/')[0]
         }
 
         if (!fs.existsSync(`${docsDir}/${componentDir}`)) {
-          fs.mkdirSync(`${docsDir}/${componentDir}`);
-          console.log(`Directory '${docsDir}/${componentDir}' created.`);
+          fs.mkdirSync(`${docsDir}/${componentDir}`)
+          console.log(`Directory '${docsDir}/${componentDir}' created.`)
         }
 
         fs.writeFile(`${docsDir}/${filename}`, content, (err) => {
           if (err) {
             console.error(err)
           } else {
-            console.log(`File '${docsDir}/${filename}' created.`);
+            console.log(`File '${docsDir}/${filename}' created.`)
           }
         })
       }
 
       setTimeout(() => {
-        res.redirect(
-              `/components/${componentDir}`
-            )
+        res.redirect(`/components/${componentDir}`)
       }, 2000)
-    },
+    }
   )
 }
 

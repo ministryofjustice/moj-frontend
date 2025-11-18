@@ -7,7 +7,10 @@ const {
 } = require('../config')
 const { extractFilename, getUniqueFilename } = require('../helpers/file-helper')
 const { getFileFromRedis } = require('../helpers/redis-helper')
-const { generateMarkdown, generateEleventyDataFile } = require('../middleware/generate-documentation')
+const {
+  generateMarkdown,
+  generateEleventyDataFile
+} = require('../middleware/generate-documentation')
 
 const {
   processSubmissionData,
@@ -67,22 +70,27 @@ describe('buildComponentPage', () => {
     jest.clearAllMocks()
   })
   it('adds the generated doc to the request', () => {
-    generateMarkdown.mockReturnValueOnce({
-      filename: 'test-component/index.md',
-      content: 'index content'
-    }).mockReturnValueOnce({
-      filename: 'test-component/_overview.md',
-      content: 'overview content'
-    }).mockReturnValueOnce({
-      filename: 'test-component/_designs.md',
-      content: 'designs content'
-    }).mockReturnValueOnce({
-      filename: 'test-component/_accessibility.md',
-      content: 'accessibility content'
-    }).mockReturnValueOnce({
-      filename: 'test-component/_code.md',
-      content: 'code content'
-    })
+    generateMarkdown
+      .mockReturnValueOnce({
+        filename: 'test-component/index.md',
+        content: 'index content'
+      })
+      .mockReturnValueOnce({
+        filename: 'test-component/_overview.md',
+        content: 'overview content'
+      })
+      .mockReturnValueOnce({
+        filename: 'test-component/_designs.md',
+        content: 'designs content'
+      })
+      .mockReturnValueOnce({
+        filename: 'test-component/_accessibility.md',
+        content: 'accessibility content'
+      })
+      .mockReturnValueOnce({
+        filename: 'test-component/_code.md',
+        content: 'code content'
+      })
 
     generateEleventyDataFile.mockReturnValue({
       filename: 'test-component/test-component.11tydata.js',
@@ -109,7 +117,7 @@ code content
       'test-component/_designs.md': 'designs content',
       'test-component/_accessibility.md': 'accessibility content',
       'test-component/_code.md': 'code content',
-      'test-component/test-component.11tydata.js': 'export default {}',
+      'test-component/test-component.11tydata.js': 'export default {}'
     })
     expect(next).toHaveBeenCalled()
   })

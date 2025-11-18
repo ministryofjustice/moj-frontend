@@ -7,7 +7,10 @@ const {
 } = require('../config')
 const { extractFilename, getUniqueFilename } = require('../helpers/file-helper')
 const { getFileFromRedis } = require('../helpers/redis-helper')
-const { generateMarkdown, generateEleventyDataFile } = require('../middleware/generate-documentation')
+const {
+  generateMarkdown,
+  generateEleventyDataFile
+} = require('../middleware/generate-documentation')
 
 const processSubmissionFiles = async (req) => {
   const fileKeys = [...DOCUMENT_KEYS, ...IMAGE_KEYS]
@@ -68,7 +71,7 @@ const processSubmissionData = (req, res, next) => {
         submissionData[filePath] = { buffer: submissionFiles[key].buffer }
       } else {
         const filename = extractFilename(key, '/')
-        if ( filename.endsWith('.md') || filename.endsWith('.11tydata.js') ) {
+        if (filename.endsWith('.md') || filename.endsWith('.11tydata.js')) {
           // Documentation should be outside of the submission folder
           submissionData[`docs/components/${filename}`] = sessionData[key]
         } else {
@@ -148,15 +151,18 @@ const processPersonalData = (req, res, next) => {
 }
 
 const buildComponentPage = (req, res, next) => {
-  const tabs = ['','overview','designs', 'accessibility', 'code']
+  const tabs = ['', 'overview', 'designs', 'accessibility', 'code']
   req.markdown = {}
   req.markdownContent = ''
   // req.markdownFilename = markdownFilename
 
   // generate index.md and all tab markdown
-  for(const tab of tabs) {
-    const { filename, content } =
-      generateMarkdown(req.session, req.submissionFiles, tab)
+  for (const tab of tabs) {
+    const { filename, content } = generateMarkdown(
+      req.session,
+      req.submissionFiles,
+      tab
+    )
     req.markdownContent += `${content}\n\n`
     req.markdown[filename] = content
   }

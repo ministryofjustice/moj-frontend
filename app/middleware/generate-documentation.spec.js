@@ -1,4 +1,7 @@
-const { generateMarkdown, generateEleventyDataFile } = require('./generate-documentation')
+const {
+  generateMarkdown,
+  generateEleventyDataFile
+} = require('./generate-documentation')
 
 describe('generateMarkdown', () => {
   beforeAll(() => {
@@ -55,17 +58,16 @@ describe('generateMarkdown', () => {
           accessibilityReport: 'assistive-tech-report.pdf'
         },
         '/component-code-details': {
-          'componentCode': '<p>this is code</p>',
-          'componentCodeUsage': 'use it',
-          'componentCodeLanguage': 'HTML'
+          componentCode: '<p>this is code</p>',
+          componentCodeUsage: 'use it',
+          componentCodeLanguage: 'HTML'
         },
         '/component-code-details/1': {
-          'componentCode': '.style { color: red; }',
-          'componentCodeUsage': 'copy and paste',
-          'componentCodeLanguage': 'other',
-          'componentCodeLanguageOther': 'CSS'
+          componentCode: '.style { color: red; }',
+          componentCodeUsage: 'copy and paste',
+          componentCodeLanguage: 'other',
+          componentCodeLanguageOther: 'CSS'
         }
-
       }
       mockFiles = {
         '/component-image': {
@@ -138,14 +140,14 @@ describe('generateMarkdown', () => {
           'testingDate-year': '2022',
           issuesDiscovered: 'Assistive tech issues discovered.',
           accessibilityReport: 'assistive-tech-report.pdf'
-        },
+        }
       }
       mockFiles = {
         '/component-image': {
           path: 'assets/images/component.jpg'
         }
       }
-      })
+    })
 
     it('generates the index.md frontmatter', () => {
       const result = generateMarkdown(mockData, mockFiles)
@@ -178,62 +180,64 @@ describe('generateMarkdown', () => {
     })
   })
 
-
   describe('component with special characters', () => {
-        let mockData
+    let mockData
     let mockFiles
 
-    beforeEach(() =>{
-
-    mockData = {
-      '/component-details': {
-        componentName: 'Component! With@ Special#Chars',
-        briefDescription: 'Brief description here.',
-        componentOverview: 'Overview here.',
-        componentProblemSolved: 'Problem solved here.',
-        howIsTheComponentUsed: 'Usage here.'
-      },
-      '/your-details': {
-        fullName: 'Special User',
-        emailAddress: 'special@test.com'
+    beforeEach(() => {
+      mockData = {
+        '/component-details': {
+          componentName: 'Component! With@ Special#Chars',
+          briefDescription: 'Brief description here.',
+          componentOverview: 'Overview here.',
+          componentProblemSolved: 'Problem solved here.',
+          howIsTheComponentUsed: 'Usage here.'
+        },
+        '/your-details': {
+          fullName: 'Special User',
+          emailAddress: 'special@test.com'
+        }
       }
-    }
       mockFiles = {}
     })
 
     it('generates the index.md frontmatter', () => {
       const result = generateMarkdown(mockData, mockFiles)
-      expect(result.filename).toBe("component-with-special-chars/index.md")
+      expect(result.filename).toBe('component-with-special-chars/index.md')
       expect(result).toMatchSnapshot()
     })
 
     it('generates the _overview.md tab', () => {
       const result = generateMarkdown(mockData, mockFiles, 'overview')
-      expect(result.filename).toBe("component-with-special-chars/_overview.md")
+      expect(result.filename).toBe('component-with-special-chars/_overview.md')
       expect(result).toMatchSnapshot()
     })
 
     it('generates the _designs.md tab', () => {
       const result = generateMarkdown(mockData, mockFiles, 'designs')
-      expect(result.filename).toBe("component-with-special-chars/_designs.md")
+      expect(result.filename).toBe('component-with-special-chars/_designs.md')
       expect(result).toMatchSnapshot()
     })
 
     it('generates the _accessibility.md tab', () => {
       const result = generateMarkdown(mockData, mockFiles, 'accessibility')
-      expect(result.filename).toBe("component-with-special-chars/_accessibility.md")
+      expect(result.filename).toBe(
+        'component-with-special-chars/_accessibility.md'
+      )
       expect(result).toMatchSnapshot()
     })
 
     it('generates the _code.md tab', () => {
       const result = generateMarkdown(mockData, mockFiles, 'code')
-      expect(result.filename).toBe("component-with-special-chars/_code.md")
+      expect(result.filename).toBe('component-with-special-chars/_code.md')
       expect(result).toMatchSnapshot()
     })
 
     it('generates the 11tydata.js file', () => {
       const result = generateEleventyDataFile(mockData)
-      expect(result.filename).toBe("component-with-special-chars/component-with-special-chars.11tydata.js")
+      expect(result.filename).toBe(
+        'component-with-special-chars/component-with-special-chars.11tydata.js'
+      )
       expect(result).toMatchSnapshot()
     })
   })
@@ -242,18 +246,18 @@ describe('generateMarkdown', () => {
     let mockData
     let mockFiles
 
-    beforeEach(() =>{
-     mockData = {
-      '/component-details': {},
-      '/component-code-details': {},
-      '/additional-information': {},
-      '/figma-link': {},
-      '/your-details': {},
-      '/add-external-audit': {},
-      '/add-internal-audit': {},
-      '/add-assistive-tech': {}
-    }
-      mockFiles={}
+    beforeEach(() => {
+      mockData = {
+        '/component-details': {},
+        '/component-code-details': {},
+        '/additional-information': {},
+        '/figma-link': {},
+        '/your-details': {},
+        '/add-external-audit': {},
+        '/add-internal-audit': {},
+        '/add-assistive-tech': {}
+      }
+      mockFiles = {}
     })
 
     it('generates the index.md frontmatter', () => {

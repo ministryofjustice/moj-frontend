@@ -93,7 +93,7 @@ permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---\r\n`
-    if (data['/figma-link']?.figmaUrl ) {
+    if (data['/figma-link']?.figmaUrl) {
       content += `A Figma design has been added for this component. There may be more links and resources in the ${githubDiscussionLink(componentName)}.\r\n
 
 ### Figma
@@ -138,13 +138,22 @@ eleventyComputed:
   override:eleventyNavigation: false
 ---\r\n`
     const externalAudit = data['/add-external-audit']
-    const hasExternalAudit = externalAudit && typeof externalAudit === 'object' && Object.keys(externalAudit).length > 0
+    const hasExternalAudit =
+      externalAudit &&
+      typeof externalAudit === 'object' &&
+      Object.keys(externalAudit).length > 0
     const internalAudit = data['/add-internal-audit']
-    const hasInternalAudit = internalAudit && typeof internalAudit === 'object' && Object.keys(internalAudit).length > 0
+    const hasInternalAudit =
+      internalAudit &&
+      typeof internalAudit === 'object' &&
+      Object.keys(internalAudit).length > 0
     const assistiveTech = data['/add-assistive-tech']
-    const hasAssistiveTech = assistiveTech && typeof assistiveTech === 'object' && Object.keys(assistiveTech).length > 0
+    const hasAssistiveTech =
+      assistiveTech &&
+      typeof assistiveTech === 'object' &&
+      Object.keys(assistiveTech).length > 0
 
-    if (hasExternalAudit){
+    if (hasExternalAudit) {
       const externalAuditDate = formatDate(
         externalAudit['auditDate-day'],
         externalAudit['auditDate-month'],
@@ -237,7 +246,8 @@ eleventyComputed:
 ---\r\n`
     for (let i = 0; i <= MAX_ADD_ANOTHER; i++) {
       const code = data[`/component-code-details${i === 0 ? '' : `/${i}`}`]
-      const hasCode = code && typeof code === 'object' && Object.keys(code).length > 0
+      const hasCode =
+        code && typeof code === 'object' && Object.keys(code).length > 0
       if (!hasCode) {
         break
       }
@@ -268,7 +278,11 @@ ${code.componentCodeUsage}`
       content += `\r\n\r\n`
     }
 
-    if (data['/component-code-details'] && typeof data['/component-code-details']  === 'object' && Object.keys(data['/component-code-details'] ).length > 0) {
+    if (
+      data['/component-code-details'] &&
+      typeof data['/component-code-details'] === 'object' &&
+      Object.keys(data['/component-code-details']).length > 0
+    ) {
       content = `Code has been added for this component. There may be other code blocks in the ${githubDiscussionLink(componentName)}.
 
 ${content}
