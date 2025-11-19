@@ -4,24 +4,96 @@ const moment = require('moment')
 const { MAX_ADD_ANOTHER } = require('../config.js')
 const { titleize } = require('../helpers/text-helper.js')
 
-const generateMarkdown = (data, files) => {
+const generateEleventyDataFile = (data) => {
   const { '/component-details': details } = data
 
   const componentName =
     details?.componentName?.toLowerCase() || 'unknown-component'
+
   const sanitizedComponentName = componentName
     .replace(/[^a-z0-9-]/g, '-')
     .replace(/-+/g, '-')
-  const filename = `${sanitizedComponentName}.md`
+
+  const filename = `${sanitizedComponentName}/${sanitizedComponentName}.11tydata.js`
+
+  const content = `export default {
+  githuburl: 'https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns',
+  tabCollection: '${sanitizedComponentName}',
+  blockTitle: '${titleize(componentName)}'
+}`
+
+  return { filename, content }
+}
+
+const generateMarkdown = (data, files, tab) => {
+  const { '/component-details': details } = data
+
+  const componentName =
+    details?.componentName?.toLowerCase() || 'unknown-component'
+
+  const sanitizedComponentName = componentName
+    .replace(/[^a-z0-9-]/g, '-')
+    .replace(/-+/g, '-')
+
+  const filename = `${sanitizedComponentName}/${tab ? `_${tab}` : 'index'}.md`
 
   const githubDiscussionLink = (componentName = '') => {
     return `[${componentName ? `‘${componentName}’ ` : ''}Github discussion]({{ githuburl }})`
   }
 
+  const generateIndexContent = (data) => {
+    const content = `---
+title: ${titleize(componentName)}
+tabs: true
+status: Experimental
+statusDate: ${moment().format('MMMM YYYY')}
+excerpt: "${details?.briefDescription || ''}"
+lede: "${details?.briefDescription || ''}"
+${data['/your-details']?.fullName ? (data['/your-details']?.fullName === 'Not shared' ? '' : `contributorName: ${data['/your-details']?.fullName}`) : ''}
+${data['/your-details']?.teamName ? (data['/your-details']?.teamName === 'Not shared' ? '' : `contributorTeam: ${data['/your-details']?.teamName}`) : ''}
+---`
+
+    return content
+  }
+
+  const generateOverViewTabContent = () => {
+    let content = ``
+    content += `---
+title: Overview
+order: 10
+tags: '${sanitizedComponentName}'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: false
+---\r\n`
+    content += `<div class="img-container">
+  <img src="/${files?.['/component-image']?.path}" alt="${componentName}" />
+</div>
+
+## Overview
+${details?.componentOverview || ''}
+
+### How the component is currently used
+
+${details?.howIsTheComponentUsed || ''}
+
+### Contribute to this component
+You can help develop this component by adding information to the ${githubDiscussionLink(componentName)}. This helps other people to use it in their service.`
+
+    return content
+  }
+
   const generateDesignsTabContent = (data) => {
     let content = ''
-
-    if (data['/figma-link']) {
+    content += `---
+title: Designs
+order: 20
+tags: '${sanitizedComponentName}'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: false
+---\r\n`
+    if (data['/figma-link']?.figmaUrl) {
       content += `A Figma design has been added for this component. There may be more links and resources in the ${githubDiscussionLink(componentName)}.\r\n
 
 ### Figma
@@ -34,7 +106,7 @@ If you work outside MOJ, go to the [MOJ Figma Kit on the Figma community platfor
 
 If you have design files that are relevant to this component you can add them to the ${githubDiscussionLink()}. This helps other people to use it in their service.`
     } else {
-      content = `A Figma link was not included when this component was added.
+      content += `A Figma link was not included when this component was added.
 
 There may be more information in the ${githubDiscussionLink(componentName)}. You can also view the component image in the overview.
 
@@ -57,11 +129,31 @@ If you have a Figma link for this component (or a component like it) you can add
     }
 
     let content = ''
+    const frontmatter = `---
+title: Accessibility
+order: 30
+tags: '${sanitizedComponentName}'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: false
+---\r\n`
     const externalAudit = data['/add-external-audit']
+    const hasExternalAudit =
+      externalAudit &&
+      typeof externalAudit === 'object' &&
+      Object.keys(externalAudit).length > 0
     const internalAudit = data['/add-internal-audit']
+    const hasInternalAudit =
+      internalAudit &&
+      typeof internalAudit === 'object' &&
+      Object.keys(internalAudit).length > 0
     const assistiveTech = data['/add-assistive-tech']
+    const hasAssistiveTech =
+      assistiveTech &&
+      typeof assistiveTech === 'object' &&
+      Object.keys(assistiveTech).length > 0
 
-    if (externalAudit) {
+    if (hasExternalAudit) {
       const externalAuditDate = formatDate(
         externalAudit['auditDate-day'],
         externalAudit['auditDate-month'],
@@ -78,7 +170,7 @@ If you have a Figma link for this component (or a component like it) you can add
 ${externalAudit.issuesDiscovered}\r\n`
     }
 
-    if (internalAudit) {
+    if (hasInternalAudit) {
       const internalAuditDate = formatDate(
         internalAudit['auditDate-day'],
         internalAudit['auditDate-month'],
@@ -94,7 +186,7 @@ ${externalAudit.issuesDiscovered}\r\n`
 ${internalAudit.issuesDiscovered}\r\n`
     }
 
-    if (assistiveTech) {
+    if (hasAssistiveTech) {
       const testingDate = formatDate(
         assistiveTech['testingDate-day'],
         assistiveTech['testingDate-month'],
@@ -109,7 +201,7 @@ Date: ${testingDate}
 ${assistiveTech.issuesDiscovered}\r\n`
     }
 
-    if (externalAudit || internalAudit || assistiveTech) {
+    if (hasExternalAudit || hasInternalAudit || hasAssistiveTech) {
       content = `Accessibility findings have been added for this component. There may be more findings in the ${githubDiscussionLink(componentName)}.\r\n
 
 ${content}\r\n`
@@ -119,9 +211,9 @@ ${content}\r\n`
 
     content += `## Contribute accessibility findings
 
-    If you have accessibility findings that are relevant to this component you can add them to the ${githubDiscussionLink()}. This helps other people to use it in their service.`
+If you have accessibility findings that are relevant to this component you can add them to the ${githubDiscussionLink()}. This helps other people to use it in their service.`
 
-    return content
+    return frontmatter + content
   }
 
   const generateCodeTabContent = (data) => {
@@ -144,9 +236,19 @@ ${content}\r\n`
       }
     }
     let content = ''
+    const frontmatter = `---
+title: Code
+order: 40
+tags: '${sanitizedComponentName}'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: false
+---\r\n`
     for (let i = 0; i <= MAX_ADD_ANOTHER; i++) {
       const code = data[`/component-code-details${i === 0 ? '' : `/${i}`}`]
-      if (!code) {
+      const hasCode =
+        code && typeof code === 'object' && Object.keys(code).length > 0
+      if (!hasCode) {
         break
       }
       const language =
@@ -176,7 +278,11 @@ ${code.componentCodeUsage}`
       content += `\r\n\r\n`
     }
 
-    if (data['/component-code-details']) {
+    if (
+      data['/component-code-details'] &&
+      typeof data['/component-code-details'] === 'object' &&
+      Object.keys(data['/component-code-details']).length > 0
+    ) {
       content = `Code has been added for this component. There may be other code blocks in the ${githubDiscussionLink(componentName)}.
 
 ${content}
@@ -191,72 +297,32 @@ You can use the ${githubDiscussionLink(componentName)} to:
 
 * view other code blocks
 * add relevant code
-
-<p></p>`
+`
     }
 
-    return content
+    return frontmatter + content
   }
 
-  const content = `---
-title: ${titleize(componentName)}
-tabs: true
-status: Experimental
-statusDate: ${moment().format('MMMM YYYY')}
-excerpt: "${details?.briefDescription || ''}"
-lede: "${details?.briefDescription || ''}"
-githuburl: https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns
-${data['/your-details']?.fullName === 'Not shared' ? '' : `contributorName: ${data['/your-details']?.fullName}`}
-${data['/your-details']?.teamName === 'Not shared' ? '' : `contributorTeam: ${data['/your-details']?.teamName}`}
----
+  let content = ''
 
-{% tabs "paginate" %}
-{% tab "Overview" %}
-
-<div class="img-container">
-  <img src="/${files?.['/component-image']?.path}" alt="${componentName}" />
-</div>
-
-## Overview
-${details?.componentOverview || ''}
-
-### How the component is currently used
-
-${details?.howIsTheComponentUsed || ''}
-
-### Contribute to this component
-You can help develop this component by adding information to the ${githubDiscussionLink(componentName)}. This helps other people to use it in their service.
-
-{% endtab %}
-
-{% tab "Designs" %}
-
-## Designs
-
-${generateDesignsTabContent(data)}
-
-{% endtab %}
-
-{% tab "Accessibility" %}
-
-## Accessibility
-
-${generateAccessibilityTabContent(data)}
-
-{% endtab %}
-
-{% tab "Code" %}
-
-## Code
-
-${generateCodeTabContent(data)}
-
-{% endtab %}
-
-{% endtabs %}
-`
+  switch (tab) {
+    case 'overview':
+      content = generateOverViewTabContent()
+      break
+    case 'designs':
+      content = generateDesignsTabContent(data)
+      break
+    case 'accessibility':
+      content = generateAccessibilityTabContent(data)
+      break
+    case 'code':
+      content = generateCodeTabContent(data)
+      break
+    default:
+      content = generateIndexContent(data)
+  }
 
   return { filename, content }
 }
 
-module.exports = { generateMarkdown }
+module.exports = { generateMarkdown, generateEleventyDataFile }

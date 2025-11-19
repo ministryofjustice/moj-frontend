@@ -7,7 +7,10 @@ const {
 } = require('../config')
 const { extractFilename, getUniqueFilename } = require('../helpers/file-helper')
 const { getFileFromRedis } = require('../helpers/redis-helper')
-const { generateMarkdown } = require('../middleware/generate-documentation')
+const {
+  generateMarkdown,
+  generateEleventyDataFile
+} = require('../middleware/generate-documentation')
 
 const processSubmissionFiles = async (req) => {
   const fileKeys = [...DOCUMENT_KEYS, ...IMAGE_KEYS]
@@ -67,11 +70,12 @@ const processSubmissionData = (req, res, next) => {
         const filePath = `docs/${submissionFiles[key].path}`
         submissionData[filePath] = { buffer: submissionFiles[key].buffer }
       } else {
-        const filename = extractFilename(key)
-        if (filename.endsWith('.md')) {
+        const filename = extractFilename(key, '/')
+        if (filename.endsWith('.md') || filename.endsWith('.11tydata.js')) {
           // Documentation should be outside of the submission folder
           submissionData[`docs/components/${filename}`] = sessionData[key]
         } else {
+          const filename = extractFilename(key)
           const data = Object.assign({}, sessionData[key])
           if (key.startsWith('/component-code-details')) {
             const exampleNum = key.split('/').at(2)
@@ -147,12 +151,24 @@ const processPersonalData = (req, res, next) => {
 }
 
 const buildComponentPage = (req, res, next) => {
-  const { filename: markdownFilename, content: markdownContent } =
-    generateMarkdown(req.session, req.submissionFiles)
+  const tabs = ['', 'overview', 'designs', 'accessibility', 'code']
   req.markdown = {}
-  req.markdownFilename = markdownFilename
-  req.markdownContent = markdownContent
-  req.markdown[markdownFilename] = markdownContent
+  req.markdownContent = ''
+
+  // generate index.md and all tab markdown
+  for (const tab of tabs) {
+    const { filename, content } = generateMarkdown(
+      req.session,
+      req.submissionFiles,
+      tab
+    )
+    req.markdownContent += `${content}\n\n`
+    req.markdown[filename] = content
+  }
+  // generate 11ty data file
+  const { filename, content } = generateEleventyDataFile(req.session)
+  req.markdown[filename] = content
+
   next()
 }
 

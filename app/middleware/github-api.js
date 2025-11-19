@@ -82,10 +82,11 @@ const pushToGitHub = async (submissionData, branchName) => {
     await createBranch(baseSha, branchName)
 
     for (const [filePath, content] of Object.entries(submissionData)) {
-      const fileContent = filePath.endsWith('.md')
-        ? Buffer.from(content).toString('base64')
-        : content?.buffer ||
-          Buffer.from(JSON.stringify(content, null, 2)).toString('base64')
+      const fileContent =
+        filePath.endsWith('.md') || filePath.endsWith('11tydata.js')
+          ? Buffer.from(content).toString('base64')
+          : content?.buffer ||
+            Buffer.from(JSON.stringify(content, null, 2)).toString('base64')
       await addFileToBranch(filePath, fileContent, branchName)
     }
 
