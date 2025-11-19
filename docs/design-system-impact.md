@@ -41,7 +41,7 @@ eleventyNavigation:
 
   <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5 govuk-!-margin-top-8">
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
-        <div class="callout-card" id="big-number">
+        <div class="callout-card extra">
           <span class="big-number">
             £12.4M
           </span>
