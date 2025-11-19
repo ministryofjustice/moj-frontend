@@ -11,9 +11,9 @@ eleventyNavigation:
 ---
 
 <!-- Updated date -->
-  {% set spendLastUpdated = "11 November 2025" %}
-  {% set peopleLastUpdated = "11 November 2025" %}
-  {% set whatsNewLastUpdated = "11 November 2025" %}
+  {% set spendLastUpdated = "19 November 2025" %}
+  {% set peopleLastUpdated = "19 November 2025" %}
+  {% set whatsNewLastUpdated = "19 November 2025" %}
 
 <!-- User satisfaction -->
   {% set overallSatisfaction = 3.7 %}
@@ -63,7 +63,7 @@ eleventyNavigation:
     <div class="govuk-details__text">
       <p><strong>The average cost of developing a reusable component</strong></p>
       <p>
-        £5,000 is the average cost for a team to create a component, as estimated by the <a href="https://design-system.dwp.gov.uk/">DWP Design System</a> team. This includes discovery, design, development and QA/testing. as well as delivering the component for use across a large organisation.
+        £5,000 is the average cost for a team to create a component, as estimated by the <a href="https://design-system.dwp.gov.uk/">DWP Design System</a> team. This includes discovery, design, development and QA/testing, as well as delivering the component for use across a large organisation.
       </p>
       <p><strong>How many times components are used across MOJ services</strong></p>
       <p>
