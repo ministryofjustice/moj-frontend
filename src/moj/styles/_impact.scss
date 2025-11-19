@@ -1,6 +1,7 @@
 // Custom styles for 'Impact of the Design System' page
 
 @use "../vendor/govuk-frontend" as *;
+@use "docs/stylesheets/settings/app";
 
 .headline-container {
   height: 100%;
@@ -88,6 +89,12 @@ h2 {
   width: 100%;
   border: none !important;
   // filter: grayscale(100%);
+
+  @include govuk-media-query($until: tablet) {
+    width: 50%;
+    margin-bottom: 20px;
+  }
+
 }
 
 .secondary {
