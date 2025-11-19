@@ -88,7 +88,7 @@ h2 {
       object-fit: contain;
       object-position: left;
       width: 100%;
-      border: none !important;
+      border: none;
 
       @include govuk-media-query($until: tablet) {
         width: 50%;
@@ -99,6 +99,6 @@ h2 {
 
   > .secondary {
       padding-bottom: govuk-spacing(2);
-      color: $govuk-secondary-text-colour !important;
+      color: $govuk-secondary-text-colour;
     }
 }
