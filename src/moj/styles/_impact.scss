@@ -83,20 +83,22 @@ h2 {
   @include govuk-responsive-margin(5, "bottom");
 }
 
-.logo {
-  object-fit: contain;
-  object-position: left;
-  width: 100%;
-  border: none !important;
-  // filter: grayscale(100%);
+.specify { // used to override prose-scope styles
+  > .logo {
+      object-fit: contain;
+      object-position: left;
+      width: 100%;
+      border: none !important;
 
-  @include govuk-media-query($until: tablet) {
-    width: 50%;
-    margin-bottom: 20px;
-  }
-}
+      @include govuk-media-query($until: tablet) {
+        width: 50%;
+        margin-bottom: 20px;
+      }
 
-.secondary {
-  padding-bottom: govuk-spacing(2);
-  color: $govuk-secondary-text-colour !important;
+    }
+
+  > .secondary {
+      padding-bottom: govuk-spacing(2);
+      color: $govuk-secondary-text-colour !important;
+    }
 }
