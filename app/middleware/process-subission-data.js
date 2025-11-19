@@ -118,6 +118,7 @@ const getDetailsForPrEmail = (req, res, next) => {
   req.detailsForPrEmail = {
     componentName,
     email: req.session?.['/email']?.emailAddress,
+    figmaLink: req.session?.['/figma_link']?.figmaUrl,
     name: personalData?.fullName,
     team: personalData?.teamName
   }
