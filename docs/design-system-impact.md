@@ -40,8 +40,8 @@ eleventyNavigation:
   Multiplied, this tells us the impact on spending.
 
   <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5 govuk-!-margin-top-8">
-    <div class="headline-container govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
-        <div class="callout-card">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
+        <div class="callout-card" id="big-number">
           <span class="big-number">
             £12.4M
           </span>
@@ -89,7 +89,7 @@ eleventyNavigation:
   ### Adoption
 
   <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5">
-    <div class="headline-container govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-two-thirds">
       <div class="callout-card">
         <span class="medium-number">
           {{ useFrequency }}%
@@ -105,7 +105,7 @@ eleventyNavigation:
   ### Users' views
 
   <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5">
-    <div class="headline-container govuk-grid-column-one-half">
+    <div class="govuk-grid-column-one-half">
       <div class="callout-card">
         <span class="medium-number">
           {{ improvement }}%
@@ -115,7 +115,7 @@ eleventyNavigation:
         </p>
       </div>
     </div>
-    <div class="headline-container govuk-grid-column-one-half">
+    <div class="govuk-grid-column-one-half">
       <div class="callout-card">
         <span class="medium-number">
           {{ timeSaving }}%
@@ -130,7 +130,7 @@ eleventyNavigation:
   ### User satisfaction scores (averages)
 
   <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5">
-    <div class="headline-container govuk-grid-column-one-third">
+    <div class="govuk-grid-column-one-third">
       <div class="callout-card">
         <span class="medium-number">
           {{ overallSatisfaction }}<span class="out-of">/{{ outOf }}</span>
@@ -140,7 +140,7 @@ eleventyNavigation:
         </p>
       </div>
     </div>
-    <div class="headline-container govuk-grid-column-one-third">
+    <div class="govuk-grid-column-one-third">
       <div class="callout-card">
         <span class="medium-number">
           {{ easeOfUse }}<span class="out-of">/{{ outOf }}</span>
@@ -150,7 +150,7 @@ eleventyNavigation:
         </p>
       </div>
     </div>
-    <div class="headline-container govuk-grid-column-one-third">
+    <div class="govuk-grid-column-one-third">
       <div class="callout-card">
         <span class="medium-number">
           {{ supportSatisfaction }}<span class="out-of">/{{ outOf }}</span>

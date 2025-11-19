@@ -6,8 +6,20 @@
 .design-system-impact {
   // used to override prose-scope styles
 
-  .headline-container {
+  #big-number {
+    margin-bottom: 0;
+  }
+
+  h2 {
+    @include govuk-responsive-margin(5, "bottom");
+  }
+
+  .callout-card {
     height: 100%;
+    padding: govuk-spacing(5);
+    padding-left: govuk-spacing(5) + 4px;
+    border-left: 5px solid $govuk-border-colour;
+    background-color: govuk-colour("white");
 
     @include govuk-responsive-margin(6, "bottom");
 
@@ -28,7 +40,6 @@
 
       & .out-of {
         @include govuk-font($size: 24, $weight: bold);
-        // color: $govuk-secondary-text-colour;
       }
     }
   }
@@ -49,41 +60,6 @@
     &::after {
       content: close-quote;
     }
-  }
-
-  .comma-separated {
-    display: inline;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    & li {
-      display: inline;
-    }
-
-    & li::after {
-      content: ", ";
-    }
-
-    & li:last-child::after {
-      content: "";
-    }
-  }
-
-  .callout-card {
-    height: 100%;
-    padding: govuk-spacing(5);
-    padding-left: govuk-spacing(5) + 4px;
-    border-left: 4px solid $govuk-border-colour;
-    background-color: govuk-colour("white");
-  }
-
-  .footnote {
-    @include govuk-font($size: 14, $weight: normal);
-  }
-
-  h2 {
-    @include govuk-responsive-margin(5, "bottom");
   }
 
   > .logo {
