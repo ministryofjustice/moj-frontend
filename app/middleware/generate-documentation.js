@@ -2,7 +2,7 @@
 const moment = require('moment')
 
 const { MAX_ADD_ANOTHER } = require('../config.js')
-const { titleize } = require('../helpers/text-helper.js')
+const { titleize, urlize } = require('../helpers/text-helper.js')
 
 const generateEleventyDataFile = (data) => {
   const { '/component-details': details } = data
@@ -10,9 +10,7 @@ const generateEleventyDataFile = (data) => {
   const componentName =
     details?.componentName?.toLowerCase() || 'unknown-component'
 
-  const sanitizedComponentName = componentName
-    .replace(/[^a-z0-9-]/g, '-')
-    .replace(/-+/g, '-')
+  const sanitizedComponentName = urlize(componentName)
 
   const filename = `${sanitizedComponentName}/${sanitizedComponentName}.11tydata.js`
 
@@ -31,9 +29,7 @@ const generateMarkdown = (data, files, tab) => {
   const componentName =
     details?.componentName?.toLowerCase() || 'unknown-component'
 
-  const sanitizedComponentName = componentName
-    .replace(/[^a-z0-9-]/g, '-')
-    .replace(/-+/g, '-')
+  const sanitizedComponentName = urlize(componentName)
 
   const filename = `${sanitizedComponentName}/${tab ? `_${tab}` : 'index'}.md`
 

@@ -159,7 +159,7 @@ describe('sendPrEmail', () => {
         personalisation: {
           pr_link: 'http://pr.example.com',
           preview_link:
-            'https://moj-frontend-pr-1234.apps.live.cloud-platform.service.justice.gov.uk',
+            'https://moj-frontend-pr-1234.apps.live.cloud-platform.service.justice.gov.uk/components/component',
           issue_link: 'http://issue.example.com',
           component_name: 'component',
           name: 'bob',
@@ -193,7 +193,7 @@ describe('sendPrEmail', () => {
         personalisation: {
           pr_link: 'http://example.com',
           preview_link:
-            'https://moj-frontend-pr-1234.apps.live.cloud-platform.service.justice.gov.uk'
+            'https://moj-frontend-pr-1234.apps.live.cloud-platform.service.justice.gov.uk/components/'
         }
       }
     )

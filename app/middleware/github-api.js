@@ -12,7 +12,8 @@ const {
 } = require('../config')
 const {
   stripFrontmatter,
-  replaceTemplateVars
+  replaceTemplateVars,
+  urlize
 } = require('../helpers/text-helper')
 
 const getMainBranchSha = async () => {
@@ -165,6 +166,7 @@ const createPullRequest = async (branchName, title, description = '') => {
 const createReviewIssue = async (pullRequest, submissionDetails) => {
   const { url, number } = pullRequest
   const { componentName } = submissionDetails
+  const componentSlug = `components/${urlize(componentName)}`
   let template
 
   // Load the github issue template
@@ -187,7 +189,7 @@ const createReviewIssue = async (pullRequest, submissionDetails) => {
   }
 
   if (template) {
-    const replacements = { URL: url, NUMBER: number }
+    const replacements = { URL: url, NUMBER: number, SLUG: componentSlug }
 
     // Remove the frontmatter
     template = stripFrontmatter(template)

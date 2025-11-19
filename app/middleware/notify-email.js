@@ -11,6 +11,7 @@ const {
   NOTIFY_EMAIL_MAX_RETRIES,
   APP_URL
 } = require('../config')
+const { urlize } = require('../helpers/text-helper')
 const notifyClient = new NotifyClient(NOTIFY_TOKEN)
 
 const dsTeamEmail = NOTIFY_EMAIL
@@ -67,12 +68,13 @@ const sendPrEmail = async (pr, issue, contactDetails) => {
   const { url: issueUrl } = issue
   const { componentName, email, name, team } = contactDetails
   const personalisation = {}
+  const componentSlug = `components/${urlize(componentName)}`
 
   if (prUrl) {
     personalisation.pr_link = prUrl
   }
   if (prNumber) {
-    personalisation.preview_link = `https://moj-frontend-pr-${prNumber}.apps.live.cloud-platform.service.justice.gov.uk`
+    personalisation.preview_link = `https://moj-frontend-pr-${prNumber}.apps.live.cloud-platform.service.justice.gov.uk/${componentSlug}`
   }
   if (issueUrl) {
     personalisation.issue_link = issueUrl
