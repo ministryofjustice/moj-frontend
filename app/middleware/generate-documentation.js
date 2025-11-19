@@ -31,7 +31,7 @@ const generateMarkdown = (data, files, tab) => {
 
   const sanitizedComponentName = urlize(componentName)
 
-  const filename = `${sanitizedComponentName}.md`
+  const filename = `${sanitizedComponentName}/${tab ? `_${tab}` : 'index'}.md`
 
   const githubDiscussionLink = (componentName = '') => {
     return `[${componentName ? `‘${componentName}’ ` : ''}Github discussion]({{ githuburl }})`
