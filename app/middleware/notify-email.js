@@ -11,7 +11,7 @@ const {
   NOTIFY_EMAIL_MAX_RETRIES,
   APP_URL
 } = require('../config')
-const { urlize } = require( '../helpers/text-helper')
+const { urlize } = require('../helpers/text-helper')
 const notifyClient = new NotifyClient(NOTIFY_TOKEN)
 
 const dsTeamEmail = NOTIFY_EMAIL
