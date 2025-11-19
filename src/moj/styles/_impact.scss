@@ -3,88 +3,89 @@
 @use "../vendor/govuk-frontend" as *;
 @use "docs/stylesheets/settings/app";
 
-.headline-container {
-  height: 100%;
+.design-system-impact {
+  // used to override prose-scope styles
 
-  @include govuk-responsive-margin(6, "bottom");
+  .headline-container {
+    height: 100%;
 
-  & .lead {
-    @include govuk-font($size: 24, $weight: bold);
-    margin-top: 0;
-    margin-bottom: 0;
-  }
+    @include govuk-responsive-margin(6, "bottom");
 
-  & .big-number {
-    @include govuk-font($size: 80, $weight: bold);
-    margin-top: 0;
-  }
-
-  & .medium-number {
-    @include govuk-font($size: 48, $weight: bold);
-    margin-top: 0;
-
-    & .out-of {
+    & .lead {
       @include govuk-font($size: 24, $weight: bold);
-      // color: $govuk-secondary-text-colour;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    & .big-number {
+      @include govuk-font($size: 80, $weight: bold);
+      margin-top: 0;
+    }
+
+    & .medium-number {
+      @include govuk-font($size: 48, $weight: bold);
+      margin-top: 0;
+
+      & .out-of {
+        @include govuk-font($size: 24, $weight: bold);
+        // color: $govuk-secondary-text-colour;
+      }
     }
   }
-}
 
-blockquote {
-  @include govuk-font($size: 24, $weight: normal);
-  @include govuk-responsive-margin(7, "top");
-  margin-left: govuk-spacing(9);
+  blockquote {
+    @include govuk-font($size: 24, $weight: normal);
+    @include govuk-responsive-margin(7, "top");
+    margin-left: govuk-spacing(9);
 
-  &::before {
-    content: open-quote;
-    margin-left: -1.75rem;
-    font-size: 4rem;
-    line-height: 0;
-    vertical-align: -1.25rem;
+    &::before {
+      content: open-quote;
+      margin-left: -1.75rem;
+      font-size: 4rem;
+      line-height: 0;
+      vertical-align: -1.25rem;
+    }
+
+    &::after {
+      content: close-quote;
+    }
   }
 
-  &::after {
-    content: close-quote;
-  }
-}
-
-.comma-separated {
-  display: inline;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-
-  & li {
+  .comma-separated {
     display: inline;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & li {
+      display: inline;
+    }
+
+    & li::after {
+      content: ", ";
+    }
+
+    & li:last-child::after {
+      content: "";
+    }
   }
 
-  & li::after {
-    content: ", ";
+  .callout-card {
+    height: 100%;
+    padding: govuk-spacing(5);
+    padding-left: govuk-spacing(5) + 4px;
+    border-left: 4px solid $govuk-border-colour;
+    background-color: govuk-colour("white");
   }
 
-  & li:last-child::after {
-    content: "";
+  .footnote {
+    @include govuk-font($size: 14, $weight: normal);
   }
-}
 
-.callout-card {
-  height: 100%;
-  padding: govuk-spacing(5);
-  padding-left: govuk-spacing(5) + 4px;
-  border-left: 4px solid $govuk-border-colour;
-  background-color: govuk-colour("white");
-}
+  h2 {
+    @include govuk-responsive-margin(5, "bottom");
+  }
 
-.footnote {
-  @include govuk-font($size: 14, $weight: normal);
-}
-
-h2 {
-  @include govuk-responsive-margin(5, "bottom");
-}
-
-.specify {
-  // used to override prose-scope styles
   > .logo {
     object-fit: contain;
     object-position: left;
