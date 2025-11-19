@@ -3,6 +3,20 @@ layout: layouts/content.njk
 subsection: About the Design System
 title: Impact of the Design System
 lede: Read how the MOJ Design System has reduced costs and helped users in MOJ (and beyond) by providing reusable building blocks to solve common problems.
+
+spendLastUpdated: 19 November 2025
+peopleLastUpdated: 19 November 2025
+whatsNewLastUpdated: 19 November 2025
+
+overallSatisfaction: 3.7
+easeOfUse: 3.9
+supportSatisfaction: 4.3
+outOf: 5
+
+useFrequency: 86
+improvement: 100
+timeSaving: 98.6
+
 eleventyNavigation:
   key: Impact
   parent: About the Design System
@@ -10,23 +24,7 @@ eleventyNavigation:
   excerpt: "Read how the MOJ Design System has reduced costs and helped users in MOJ (and beyond) by providing reusable building blocks to solve common problems."
 ---
 
-<!-- Updated date -->
-  {% set spendLastUpdated = "19 November 2025" %}
-  {% set peopleLastUpdated = "19 November 2025" %}
-  {% set whatsNewLastUpdated = "19 November 2025" %}
-
-<!-- User satisfaction -->
-  {% set overallSatisfaction = 3.7 %}
-  {% set easeOfUse = 3.9 %}
-  {% set supportSatisfaction = 4.3 %}
-  {% set outOf = 5 %}
-
-<!-- Adoption and sentiment -->
-  {% set useFrequency = 86 %}
-  {% set improvement = 100 %}
-  {% set timeSaving = 98.6 %}
-
-<div class="specify">
+<div class="design-system-impact">
 
   <h2 class="govuk-heading-l govuk-!-margin-bottom-2">The impact on spending</h2>
   <p class="secondary">
@@ -206,35 +204,35 @@ eleventyNavigation:
   The Design System is used by multiple other public sector organisations, including:
 
   <div class="govuk-grid-row govuk-body govuk-!-margin-top-8">
-    <div class="govuk-grid-column-one-quarter specify">
+    <div class="govuk-grid-column-one-quarter design-system-impact">
       <img src="/assets/images/dept-logos/logo-desnz.png" class="logo" alt="Department for Energy Security and Net Zero logo">
     </div>
-    <div class="govuk-grid-column-one-quarter specify">
+    <div class="govuk-grid-column-one-quarter design-system-impact">
       <img src="/assets/images/dept-logos/logo-dvsa.png" class="logo" alt="Driver and Vehicle Standards Agency logo">
     </div>
-    <div class="govuk-grid-column-one-quarter specify">
+    <div class="govuk-grid-column-one-quarter design-system-impact">
       <img src="/assets/images/dept-logos/logo-dwp.png" class="logo" alt="Department for Work and Pensions logo">
     </div>
-    <div class="govuk-grid-column-one-quarter specify">
+    <div class="govuk-grid-column-one-quarter design-system-impact">
       <img src="/assets/images/dept-logos/logo-defra.png" class="logo" alt="Department for Environment Food and Rural Affairs logo">
     </div>
   </div>
   <div class="govuk-grid-row govuk-body govuk-!-margin-top-8">
-    <div class="govuk-grid-column-one-quarter specify">
+    <div class="govuk-grid-column-one-quarter design-system-impact">
       <img src="/assets/images/dept-logos/logo-mhclg.png" class="logo" alt="Ministry of Housing, Communitieis and Local Government logo">
     </div>
-    <div class="govuk-grid-column-one-quarter specify">
+    <div class="govuk-grid-column-one-quarter design-system-impact">
       <img src="/assets/images/dept-logos/logo-dfe.png" class="logo" alt="Department for Education logo">
     </div>
-    <div class="govuk-grid-column-one-quarter specify">
+    <div class="govuk-grid-column-one-quarter design-system-impact">
       <img src="/assets/images/dept-logos/logo-hmcts.png" class="logo" alt="HM Courts and Tribunals Service logo">
     </div>
-    <div class="govuk-grid-column-one-quarter specify">
+    <div class="govuk-grid-column-one-quarter design-system-impact">
       <img src="/assets/images/dept-logos/logo-ukef.png" class="logo" alt="UK Export Finance logo">
     </div>
   </div>
   <div class="govuk-grid-row govuk-body govuk-!-margin-top-8">
-    <div class="govuk-grid-column-one-quarter specify">
+    <div class="govuk-grid-column-one-quarter design-system-impact">
       <img src="/assets/images/dept-logos/logo-companies-house.png" class="logo" alt="Companies House logo">
     </div>
   </div>
