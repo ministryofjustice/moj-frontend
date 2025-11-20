@@ -235,6 +235,7 @@ describe('getDetailsForPrEmail', () => {
     getDetailsForPrEmail(req, res, next)
     expect(req.detailsForPrEmail).toStrictEqual({
       componentName: 'Unnamed component',
+      figmaLink: 'Not provided',
       email: undefined,
       name: undefined,
       team: undefined
@@ -249,12 +250,16 @@ describe('getDetailsForPrEmail', () => {
     req.session['/component-details'] = {
       componentName: 'Test component'
     }
+    req.session['/figma-link'] = {
+      figmaLink: 'https://figma.com/12345678'
+    }
     req.session['/email'] = {
       emailAddress: 'test@email.com'
     }
     getDetailsForPrEmail(req, res, next)
     expect(req.detailsForPrEmail).toStrictEqual({
       componentName: 'Test component',
+      figmaLink: 'https://figma.com/12345678',
       email: 'test@email.com',
       name: 'Frodo Baggins',
       team: 'The Fellowship'
