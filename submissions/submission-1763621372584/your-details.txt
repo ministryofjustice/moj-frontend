@@ -1,0 +1,9 @@
+{
+  "fullName": "chris pymm",
+  "teamName": "the testing team",
+  "shareYourDetails": [
+    "",
+    "addNameToComponentPage",
+    "addTeamNameToComponentPage"
+  ]
+}
