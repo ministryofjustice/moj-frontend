@@ -22,6 +22,9 @@
     },
     {
       "path": "./app/tsconfig.json"
+    },
+    {
+      "path": "./submissions/tsconfig.json"
     }
   ]
 }
