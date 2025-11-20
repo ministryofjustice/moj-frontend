@@ -1,0 +1,5 @@
+{
+  "componentName": "test no figma",
+  "componentOverview": "test with no figma file",
+  "howIsTheComponentUsed": "without a figma file"
+}
