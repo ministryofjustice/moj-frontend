@@ -1,16 +1,16 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 
 {% set statusAttribution -%}
-  {%- if params.status == "Experimental" %}
-    {%- if params.contributorTeam %}
-      by {{ params.contributorName | default("someone") }} in ‘{{ params.contributorTeam }}’
-    {%- elif params.contributorName %}
-      by {{ params.contributorName  }}
-    {% endif %}
-  {% endif %}
   {%- if params.statusDate %}
     in {{ params.statusDate }}
   {%- endif %}.
+  {%- if params.status == "Experimental" %}
+    {%- if params.contributorTeam %}
+       Contributed by {{ params.contributorName | default("someone") }} in ‘{{ params.contributorTeam }}’.
+    {%- elif params.contributorName %}
+       Contributed by {{ params.contributorName  }}.
+    {% endif %}
+  {% endif %}
 {%- endset %}
 
 {% set typeSingular = params.type -%}

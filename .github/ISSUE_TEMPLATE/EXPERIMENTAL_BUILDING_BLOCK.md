@@ -6,11 +6,11 @@ about: Checklist when reviewing Experimental building blocks.
 
 [View the pull request](__URL__)
 
-[View preview](https://moj-frontend-pr-__NUMBER__.apps.live.cloud-platform.service.justice.gov.uk)
+[View preview](https://moj-frontend-pr-__NUMBER__.apps.live.cloud-platform.service.justice.gov.uk/__SLUG__)
 
 ## 1. Initial review
 
-- [ ] Add a screenshot of the [preview](https://moj-frontend-pr-__NUMBER__.apps.live.cloud-platform.service.justice.gov.uk) into a miro frame on the review board 
+- [ ] Add a screenshot of the [preview](https://moj-frontend-pr-__NUMBER__.apps.live.cloud-platform.service.justice.gov.uk/__SLUG__) into a miro frame on the review board 
     - [@helennickols](https://github.com/helennickols)
 - [ ] Async review: add comments on stickies
     - [@helennickols](https://github.com/helennickols), [@murrlipp](https://github.com/murrlipp), [@chrispymm](https://github.com/chrispymm)
