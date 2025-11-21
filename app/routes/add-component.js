@@ -1,6 +1,7 @@
 const crypto = require('crypto')
 const fs = require('fs')
 
+const Sentry = require('@sentry/node')
 const express = require('express')
 const multer = require('multer')
 
@@ -319,6 +320,7 @@ router.post(
             await sendVerificationEmail(email, token)
           } catch (error) {
             console.error(`Error sending verification email: ${error}`)
+            Sentry.captureException(error)
           }
         }
       }
@@ -358,6 +360,7 @@ router.post('/email/resend', verifyCsrf, async (req, res, next) => {
       await sendVerificationEmail(email, token)
     } catch (error) {
       console.error(`Error sending verification email: ${error}`)
+      Sentry.captureException(error)
       next(error)
     }
   }
@@ -492,6 +495,7 @@ router.post(
       await sendSuccessEmail(detailsForPrEmail)
     } catch (error) {
       console.error('[FORM SUBMISSION] Error sending submission:', error)
+      Sentry.captureException(error)
       await sendSubmissionEmail(sessionText, markdownContent)
     }
   }

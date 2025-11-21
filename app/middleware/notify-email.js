@@ -66,7 +66,7 @@ const sendSubmissionEmail = async (fileBuffer = null, markdown = null) => {
 const sendPrEmail = async (pr, issue, contactDetails) => {
   const { url: prUrl, number: prNumber } = pr
   const { url: issueUrl } = issue
-  const { componentName, email, name, team } = contactDetails
+  const { componentName, email, name, team, figmaLink } = contactDetails
   const personalisation = {}
   const componentSlug = `components/${urlize(componentName)}`
 
@@ -84,6 +84,9 @@ const sendPrEmail = async (pr, issue, contactDetails) => {
   }
   if (email) {
     personalisation.email = email
+  }
+  if (figmaLink) {
+    personalisation.figma_link = figmaLink
   }
   if (name) {
     personalisation.name = name
