@@ -6,6 +6,7 @@ const {
   sanitizeText,
   camelToKebab,
   titleize,
+  urlize,
   stripFrontmatter,
   replaceTemplateVars
 } = require('./text-helper')
@@ -61,6 +62,14 @@ describe('camelToKebab', () => {
 describe('titleize', () => {
   it('converts a string to titleCase', () => {
     expect(titleize('component NAme')).toBe('Component name')
+  })
+  it('returns an empty string if called with a falsy val', () => {
+    expect(titleize(undefined)).toBe('')
+  })
+})
+describe('urlize', () => {
+  it('replaces non alphanumeric characters with hyphens', () => {
+    expect(urlize('Comp%one@nt Name 2!')).toBe('comp-one-nt-name-2')
   })
   it('returns an empty string if called with a falsy val', () => {
     expect(titleize(undefined)).toBe('')
