@@ -7,10 +7,11 @@ const {
 } = require('../config')
 const { extractFilename, getUniqueFilename } = require('../helpers/file-helper')
 const { getFileFromRedis } = require('../helpers/redis-helper')
+
 const {
   generateMarkdown,
   generateEleventyDataFile
-} = require('../middleware/generate-documentation')
+} = require('./generate-documentation')
 
 const processSubmissionFiles = async (req) => {
   const fileKeys = [...DOCUMENT_KEYS, ...IMAGE_KEYS]
@@ -75,7 +76,6 @@ const processSubmissionData = (req, res, next) => {
           // Documentation should be outside of the submission folder
           submissionData[`docs/components/${filename}`] = sessionData[key]
         } else {
-          const filename = extractFilename(key)
           const data = Object.assign({}, sessionData[key])
           if (key.startsWith('/component-code-details')) {
             const exampleNum = key.split('/').at(2)
@@ -100,7 +100,6 @@ const processSubmissionData = (req, res, next) => {
               }
             }
           }
-          submissionData[`submissions/${submissionRef}/${filename}`] = data
         }
       }
     }

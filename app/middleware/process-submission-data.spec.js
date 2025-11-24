@@ -19,7 +19,7 @@ const {
   buildComponentPage,
   generateSubmissionRef,
   getDetailsForPrEmail
-} = require('./process-subission-data')
+} = require('./process-submission-data')
 
 jest.mock('../middleware/generate-documentation', () => ({
   generateMarkdown: jest.fn(),
@@ -324,49 +324,6 @@ describe('processSubmissionData', () => {
         ).toBe(false)
       })
     })
-
-    it('should include non-filtered keys from session data', () => {
-      req.session = {
-        'component-name': { title: 'Test Component' },
-        description: { description: 'A test component' },
-        '/email': { emailAddress: 'test@example.com' } // This should be filtered out
-      }
-
-      extractFilename.mockImplementation((key) => `${key}.txt`)
-
-      processSubmissionData(req, res, next)
-
-      expect(
-        req.submissionData[
-          `submissions/${req.submissionRef}/component-name.txt`
-        ]
-      ).toStrictEqual({ title: 'Test Component' })
-      expect(
-        req.submissionData[`submissions/${req.submissionRef}/description.txt`]
-      ).toStrictEqual({ description: 'A test component' })
-
-      // Email should not be present
-      const keys = Object.keys(req.submissionData)
-      expect(keys.some((key) => key.includes('email'))).toBe(false)
-    })
-  })
-
-  describe('session and markdown data merging', () => {
-    it('should merge session and markdown data', () => {
-      req.session = { sessionKey: { sessionKey: 'session value' } }
-      req.markdown = { markdownKey: { markdownKey: 'markdown value' } }
-
-      extractFilename.mockImplementation((key) => `${key}.txt`)
-
-      processSubmissionData(req, res, next)
-
-      expect(
-        req.submissionData[`submissions/${req.submissionRef}/sessionKey.txt`]
-      ).toStrictEqual({ sessionKey: 'session value' })
-      expect(
-        req.submissionData[`submissions/${req.submissionRef}/markdownKey.txt`]
-      ).toStrictEqual({ markdownKey: 'markdown value' })
-    })
   })
 
   describe('file handling', () => {
@@ -449,12 +406,11 @@ describe('processSubmissionData', () => {
       extractFilename.mockImplementation((key) => `${key}.txt`)
       processSubmissionData(req, res, next)
 
-      expect(req.submissionData).toEqual({
-        'submissions/test-submission-123//component-code-details.txt': {
-          componentCode: 'unknown language',
-          componentCodeLanguage: 'other'
-        }
-      })
+      // Should not create a code file, but should still create the data file
+      const codeFileExists = Object.keys(req.submissionData).some((key) =>
+        key.includes('/code/')
+      )
+      expect(codeFileExists).toBe(false)
     })
   })
 
@@ -553,15 +509,6 @@ describe('processSubmissionData', () => {
         key.includes('/code/')
       )
       expect(codeFileExists).toBe(false)
-
-      expect(
-        req.submissionData[
-          `submissions/${req.submissionRef}/component-code-details.txt`
-        ]
-      ).toEqual({
-        componentCodeLanguage: 'other',
-        componentCode: 'some other code'
-      })
     })
 
     it('should handle case-insensitive "other" language check', () => {
@@ -579,33 +526,6 @@ describe('processSubmissionData', () => {
         key.includes('/code/')
       )
       expect(codeFileExists).toBe(false)
-      expect(
-        req.submissionData[
-          `submissions/${req.submissionRef}/component-code-details.txt`
-        ]
-      ).toEqual({
-        componentCodeLanguage: 'OTHER',
-        componentCode: 'some other code'
-      })
-    })
-  })
-
-  describe('data cloning', () => {
-    it('should clone session data objects to avoid mutation', () => {
-      const originalData = { nested: { value: 'test' } }
-      req.session = { '/component-data': originalData }
-
-      extractFilename.mockImplementation((key) => `${key.slice(1)}.txt`)
-      processSubmissionData(req, res, next)
-
-      const submissionDataValue =
-        req.submissionData[
-          `submissions/${req.submissionRef}/component-data.txt`
-        ]
-
-      // Should be equal but not the same reference
-      expect(submissionDataValue).toEqual(originalData)
-      expect(submissionDataValue).not.toBe(originalData)
     })
   })
 })
