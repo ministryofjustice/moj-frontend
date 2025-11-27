@@ -430,7 +430,7 @@ Initialise the timeout warning as follows
 
 #### How to use the code
 
-You will also need the modal dialog styles.
+You will also need the [modal dialog](/components/modal-dialog) styles.
 
 
 
