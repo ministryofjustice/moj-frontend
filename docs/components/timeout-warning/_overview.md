@@ -11,6 +11,7 @@ eleventyComputed:
 </div>
 
 ## Overview
+
 The component uses the [modal dialog](/components/modal-dialog) to show a timeout warning to inform users when they have a limited amount of time to complete their current activity.  The modal contains a button which allows users to extend the time they have to complete the task.  This is important because whenever a process has a time restriction of less than 20 hours to complete a process users must be given a way to turn off, adjust, or extend the time limit in order to satisfy WCAG SC 2.2.1 Timing Adjustable (Level A).
 
 After a configurable amount of time without user interaction, the timeout warning modal will show. This will display a countdown of the time remaining.  The modal contains a button that when pressed will make a request to a URL which will extend the length of their session (this behaviour needs to be developed in the backend of the application).  If no action is taken before the end of the countdown, the user will be redirected to another page.  This page should explain to the user that their session has been ended to keep their data secure, and that they will need to restart the process.
