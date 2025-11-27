@@ -1,0 +1,56 @@
+name: Lint
+
+on: # yamllint disable-line rule:truthy
+  push:
+    branches-ignore:
+      - main
+
+  pull_request:
+    types: [opened, reopened, synchronize, labeled]
+
+  workflow_dispatch:
+
+jobs:
+  lint_fix:
+    name: Lint fix
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      packages: read
+      # To report GitHub Actions status checks
+      statuses: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: npm install
+        run: npm ci
+
+      - name: TypeScript compiler
+        run: npm run lint:types
+
+      - name: Lint Sass
+        run: npm run lint:scss:fix
+
+      - name: Lint JavaScript
+        run: npm run lint:js:fix
+
+      - name: Prettier
+        run: npm run lint:prettier:fix
+
+      - name: Commit and push linting fixes
+        if: >
+          github.event_name == 'pull_request' &&
+          github.ref_name != github.event.repository.default_branch
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
+          commit_message: "chore: fix linting issues"
