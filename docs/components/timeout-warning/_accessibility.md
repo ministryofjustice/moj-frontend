@@ -11,19 +11,27 @@ Accessibility findings have been added for this component. There may be more fin
 
 ### External audit
 
-* Conducted by: DAC
-* Date: 20 May 2023
+* Conducted by: User Vision
+* Date: 24 July 2023
 
 #### Audit findings
 
-No issues discovered
+An issue was discovered when adding extra content after the timer countdown. 
+Content added using the `data-timer-extra-text` attribute is hidden from screenreaders and is not announced which is a WCAG fail.  
+However if the `aria-hidden` attribute is removed from this content it will then be announced on every update of the
+timer, which would not be a good user experience.  
+
+To resolve this issue, either adjust the content of the warning modal to not require this additional content, or adapt the code to
+fix the duplicated announcement.
+
 ### Assistive Technology testing
 
 Date: 15 April 2023
 
 #### Testing details
 
-No issues discovered
+The component was tested with keyboard and screenreaders.  No issues were
+discovered.
 
 ## Contribute accessibility findings
 
