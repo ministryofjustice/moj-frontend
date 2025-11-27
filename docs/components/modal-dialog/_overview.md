@@ -7,7 +7,7 @@ eleventyComputed:
   override:eleventyNavigation: false
 ---
 <div class="img-container">
-  <img src="/assets/images/submission-1763677200863/modal-dialog.png" alt="modal dialog" />
+  <img src="/assets/images/submission-1763677200863/modal-dialog.png" alt="A window over a tinted grey background that asks the user 'Are you sure you want to delete this case?' with detail the risks in body content below. Options to continue deleting or go back are below." />
 </div>
 
 ## Overview
