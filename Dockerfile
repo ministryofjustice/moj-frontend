@@ -55,7 +55,7 @@ RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 
 RUN git clone git@github.com:ministryofjustice/moj-frontend.git .
 
-RUN npm install
+RUN npm ci 
 RUN ENV="production" npm run build:package
 RUN ENV="production" npm run build:docs
 
