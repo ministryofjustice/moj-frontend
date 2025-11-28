@@ -3,27 +3,49 @@ import ModalDialog from './modal-dialog.js'
 function TimeoutWarning($module) {
   this.$module = $module
   this.$dialog = $module.querySelector('.govuk-timeout-warning__dialog')
-  this.$fallbackElement = document.querySelector('.govuk-timeout-warning-fallback')
+  this.$fallbackElement = document.querySelector(
+    '.govuk-timeout-warning-fallback'
+  )
   this.modalDialog = new ModalDialog(this.$dialog).init({
     onClose: this.dialogClose.bind(this),
-    onDialogNotSupported: this.dialogFallback.bind(this),
+    onDialogNotSupported: this.dialogFallback.bind(this)
   })
   this.timers = []
   // UI countdown timer specific markup
   this.$countdown = $module.querySelector('.govuk-timeout-warning__timer')
-  this.$accessibleCountdown = $module.querySelector('.govuk-timeout-warning__at-timer')
+  this.$accessibleCountdown = $module.querySelector(
+    '.govuk-timeout-warning__at-timer'
+  )
   // UI countdown specific settings
-  this.idleMinutesBeforeTimeOut = $module.getAttribute('data-minutes-idle-timeout') ? $module.getAttribute('data-minutes-idle-timeout') : 25
-  this.timeOutRedirectUrl = $module.getAttribute('data-url-redirect') ? $module.getAttribute('data-url-redirect') : 'timeout'
-  this.extendSessionUrl = $module.getAttribute('data-url-extend') ? $module.getAttribute('data-url-extend') : 'extend'
-  this.minutesTimeOutModalVisible = $module.getAttribute('data-minutes-modal-visible') ? $module.getAttribute('data-minutes-modal-visible') : 5
-  this.timerText = $module.getAttribute('data-timer-text') ? $module.getAttribute('data-timer-text') : 'Your session will be reset in '
-  this.timerExtraText = $module.getAttribute('data-timer-extra-text') ? $module.getAttribute('data-timer-extra-text') : ''
-  this.timerRedirectText = $module.getAttribute('data-timer-redirect-text') ? $module.getAttribute('data-timer-redirect-text') : 'You are about to be redirected'
+  this.idleMinutesBeforeTimeOut = $module.getAttribute(
+    'data-minutes-idle-timeout'
+  )
+    ? $module.getAttribute('data-minutes-idle-timeout')
+    : 25
+  this.timeOutRedirectUrl = $module.getAttribute('data-url-redirect')
+    ? $module.getAttribute('data-url-redirect')
+    : 'timeout'
+  this.extendSessionUrl = $module.getAttribute('data-url-extend')
+    ? $module.getAttribute('data-url-extend')
+    : 'extend'
+  this.minutesTimeOutModalVisible = $module.getAttribute(
+    'data-minutes-modal-visible'
+  )
+    ? $module.getAttribute('data-minutes-modal-visible')
+    : 5
+  this.timerText = $module.getAttribute('data-timer-text')
+    ? $module.getAttribute('data-timer-text')
+    : 'Your session will be reset in '
+  this.timerExtraText = $module.getAttribute('data-timer-extra-text')
+    ? $module.getAttribute('data-timer-extra-text')
+    : ''
+  this.timerRedirectText = $module.getAttribute('data-timer-redirect-text')
+    ? $module.getAttribute('data-timer-redirect-text')
+    : 'You are about to be redirected'
 }
 
 // Initialise component
-TimeoutWarning.prototype.init = function() {
+TimeoutWarning.prototype.init = function () {
   // Check for module and dialog
   if (!this.$module || !this.modalDialog) {
     return
@@ -40,7 +62,7 @@ TimeoutWarning.prototype.init = function() {
 // Count idle time (user not interacting with page)
 // Reset idle time counter when user interacts with the page
 // If user is idle for specified time period, open timeout warning as dialog
-TimeoutWarning.prototype.countIdleTime = function() {
+TimeoutWarning.prototype.countIdleTime = function () {
   var debounce
   var idleTime
   var milliSecondsBeforeTimeOut = this.idleMinutesBeforeTimeOut * 60000
@@ -60,17 +82,20 @@ TimeoutWarning.prototype.countIdleTime = function() {
       clearTimeout(debounce)
 
       function idleTimer() {
-        this.extendTimeOnServer();
-        idleTime = setTimeout(this.openDialog.bind(this), milliSecondsBeforeTimeOut)
+        this.extendTimeOnServer()
+        idleTime = setTimeout(
+          this.openDialog.bind(this),
+          milliSecondsBeforeTimeOut
+        )
       }
 
-      debounce = setTimeout(idleTimer.bind(this), 3000);
+      debounce = setTimeout(idleTimer.bind(this), 3000)
     }
   }
 }
 
-TimeoutWarning.prototype.openDialog = function() {
-  this.modalDialog.open();
+TimeoutWarning.prototype.openDialog = function () {
+  this.modalDialog.open()
   this.startUiCountdown()
 
   if (window.history.pushState) {
@@ -78,13 +103,13 @@ TimeoutWarning.prototype.openDialog = function() {
   }
 }
 
-TimeoutWarning.prototype.dialogFallback = function() {
+TimeoutWarning.prototype.dialogFallback = function () {
   this.$fallbackElement.style.display = 'block'
 }
 
 // Starts a UI countdown timer. If timer is not cancelled before 0
 // reached + 4 seconds grace period, user is redirected.
-TimeoutWarning.prototype.startUiCountdown = function() {
+TimeoutWarning.prototype.startUiCountdown = function () {
   this.clearTimers() // Clear any other modal timers that might have been running
   var $module = this
   var $countdown = this.$countdown
@@ -94,15 +119,29 @@ TimeoutWarning.prototype.startUiCountdown = function() {
   var timers = this.timers
   var seconds = 60 * minutes
 
-  $countdown.innerText = minutes + ' minute' + (minutes > 1 ? 's' : '');
+  $countdown.innerText = minutes + ' minute' + (minutes > 1 ? 's' : '')
 
-  (function runTimer() {
+  ;(function runTimer() {
     var minutesLeft = parseInt(seconds / 60, 10)
     var secondsLeft = parseInt(seconds % 60, 10)
     var timerExpired = minutesLeft < 1 && secondsLeft < 1
 
-    var minutesText = minutesLeft > 0 ? '<span class="tabular-numbers">' + minutesLeft + '</span> minute' + (minutesLeft > 1 ? 's' : '') + '' : ' '
-    var secondsText = secondsLeft >= 1 ? ' <span class="tabular-numbers">' + secondsLeft + '</span> second' + (secondsLeft > 1 ? 's' : '') + '' : ''
+    var minutesText =
+      minutesLeft > 0
+        ? '<span class="tabular-numbers">' +
+          minutesLeft +
+          '</span> minute' +
+          (minutesLeft > 1 ? 's' : '') +
+          ''
+        : ' '
+    var secondsText =
+      secondsLeft >= 1
+        ? ' <span class="tabular-numbers">' +
+          secondsLeft +
+          '</span> second' +
+          (secondsLeft > 1 ? 's' : '') +
+          ''
+        : ''
     var atMinutesNumberAsText = ''
     var atSecondsNumberAsText = ''
 
@@ -114,19 +153,29 @@ TimeoutWarning.prototype.startUiCountdown = function() {
       atSecondsNumberAsText = secondsLeft
     }
 
-    var atMinutesText = minutesLeft > 0 ? atMinutesNumberAsText + ' minute' + (minutesLeft > 1 ? 's' : '') + '' : ''
-    var atSecondsText = secondsLeft >= 1 ? ' ' + atSecondsNumberAsText + ' second' + (secondsLeft > 1 ? 's' : '') + '' : ''
+    var atMinutesText =
+      minutesLeft > 0
+        ? atMinutesNumberAsText + ' minute' + (minutesLeft > 1 ? 's' : '') + ''
+        : ''
+    var atSecondsText =
+      secondsLeft >= 1
+        ? ' ' +
+          atSecondsNumberAsText +
+          ' second' +
+          (secondsLeft > 1 ? 's' : '') +
+          ''
+        : ''
 
     // Below string will get read out by screen readers every time the timeout refreshes (every 15 secs. See below).
     // Please add additional information in the modal body content or in below extraText which will get announced to AT the first time the time out opens
     var text = document.createElement('p')
     var timerText = document.createTextNode($module.timerText)
-    text.appendChild(timerText);
+    text.appendChild(timerText)
 
-    var countdown = document.createElement('span');
-    countdown.setAttribute('class', 'countdown');
+    var countdown = document.createElement('span')
+    countdown.setAttribute('class', 'countdown')
     countdown.innerHTML = ' ' + minutesText + secondsText + '.'
-    text.appendChild(countdown);
+    text.appendChild(countdown)
 
     var atText = $module.timerText + ' ' + atMinutesText
     if (atSecondsText) {
@@ -158,7 +207,8 @@ TimeoutWarning.prototype.startUiCountdown = function() {
       }
 
       if (!timerRunOnce) {
-        setTimeout(() => { // Ensures text is read out just after modal opens
+        setTimeout(() => {
+          // Ensures text is read out just after modal opens
           $accessibleCountdown.innerText = atText + ' ' + $module.timerExtraText
           timerRunOnce = true
         }, 1000)
@@ -173,7 +223,7 @@ TimeoutWarning.prototype.startUiCountdown = function() {
   })()
 }
 
-TimeoutWarning.prototype.saveLastFocusedEl = function() {
+TimeoutWarning.prototype.saveLastFocusedEl = function () {
   this.$lastFocusedEl = document.activeElement
   if (!this.$lastFocusedEl || this.$lastFocusedEl === document.body) {
     this.$lastFocusedEl = null
@@ -183,28 +233,27 @@ TimeoutWarning.prototype.saveLastFocusedEl = function() {
 }
 
 // Set focus back on last focused el when modal closed
-TimeoutWarning.prototype.setFocusOnLastFocusedEl = function() {
+TimeoutWarning.prototype.setFocusOnLastFocusedEl = function () {
   if (this.$lastFocusedEl) {
-    window.setTimeout(function() {
+    window.setTimeout(function () {
       this.$lastFocusedEl.focus()
     }, 0)
   }
 }
 
-
-TimeoutWarning.prototype.isDialogOpen = function() {
-  return this.modalDialog.isOpen();
+TimeoutWarning.prototype.isDialogOpen = function () {
+  return this.modalDialog.isOpen()
 }
 
-TimeoutWarning.prototype.dialogClose = function() {
+TimeoutWarning.prototype.dialogClose = function () {
   if (!this.isDialogOpen()) {
     this.clearTimers()
-    this.extendTimeOnServer();
+    this.extendTimeOnServer()
   }
 }
 
 // Clears modal timer
-TimeoutWarning.prototype.clearTimers = function() {
+TimeoutWarning.prototype.clearTimers = function () {
   for (var i = 0; i < this.timers.length; i++) {
     clearTimeout(this.timers[i])
   }
