@@ -1,0 +1,5 @@
+{
+  "componentName": "Modal dialog",
+  "componentOverview": "The component is used to present content in a modal dialog.  It is used to interrupt a user with information that must be interacted with before continuing.  When the dialog is open, the rest of the page is rendered inert and focus is trapped within the dialog.",
+  "howIsTheComponentUsed": "The component was based on prototypes within the GOV.UK Design System discussion backlogs, and was developed for and used within the MOJ Forms platform for live forms."
+}
