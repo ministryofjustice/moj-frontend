@@ -1,32 +1,48 @@
 {% from "govuk/components/pagination/macro.njk" import govukPagination %}
-{% set govukItems = [] %}
+{% set paginationItems = [] %}
 
-{%- for item in params.items %}
-  {% if item.type === "dots" %}
-    {% set govukItem = {
-     "ellipsis": true
-    } %}
-  {% else %}
-    {% set govukItem = {
-    "number": item.text,
-    "href": item.href,
-    "current": item.selected
-    } %}
-  {% endif %}
-  {% set govukItems = govukItems.concat(govukItem) %}
-{% endfor %}
+{% if params.items %}
+  {%- for item in params.items %}
+    {% if item.type === "dots" %}
+      {% set paginationItem = {
+       "ellipsis": true
+      } %}
+    {% else %}
+      {% set paginationItem = {
+      "number": item.text,
+      "href": item.href,
+      "current": item.selected
+      } %}
+    {% endif %}
+    {% set paginationItems = paginationItems.concat(paginationItem) %}
+  {% endfor %}
+{% endif %}
 
 <div class="moj-pagination " aria-label="Pagination navigation">
 
-{{ govukPagination({
-  items: govukItems,
-  previous: params.previous,
-  next: params.next,
-  classes: "moj-pagination__pagination " + (params.classes if params.classes)
-  })
-}}
+  {{ govukPagination({
+    items: paginationItems,
+    previous: params.previous,
+    next: params.next,
+    classes: "moj-pagination__pagination " + (params.classes if params.classes)
+    })
+  }}
 
   {%- if params.results %}
-    <p class="moj-pagination__results">Showing <b>{{ params.results.from }}</b> to <b>{{ params.results.to }}</b> of <b>{{params.results.count}}</b> {{ params.results.text | default("results") }}</p>
+    {% set results_string = '' %}
+    {% if paginationItems | length > 0 %}
+      {% if params.results.from and params.results.to %}
+        {% results_string = "Showing " + {{ params.results.from }} + " to " + {{ params.results.to }} %}
+      {% endif %}
+      {% if params.results.count %}
+        {% results_string = results_string + " out of " {{ params.results.count }} + " " + {{ params.results.text | default("results") }} %}
+      {% endif %}
+    {% else %}
+      {% results_string = {{ params.results.count }} + " total " + {{ params.results.text | default("results") }} %}
+    {% endif %}
+
+    {% if results_string != '' %}
+      <p class="moj-pagination__results">{{ results_string }}</p>
+    {% endif %}
   {% endif -%}
 </div>
