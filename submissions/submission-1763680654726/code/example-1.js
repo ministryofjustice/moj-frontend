@@ -120,7 +120,6 @@ TimeoutWarning.prototype.startUiCountdown = function () {
   var seconds = 60 * minutes
 
   $countdown.innerText = minutes + ' minute' + (minutes > 1 ? 's' : '')
-
   ;(function runTimer() {
     var minutesLeft = parseInt(seconds / 60, 10)
     var secondsLeft = parseInt(seconds % 60, 10)
