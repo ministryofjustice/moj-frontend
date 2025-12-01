@@ -473,8 +473,6 @@ The code uses the native `dialog` element.  If older browser support is needed a
 </div>
 
 
-
-
 ## Contribute code for this component
 
 If you have code that is relevant to this component you can add it to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
