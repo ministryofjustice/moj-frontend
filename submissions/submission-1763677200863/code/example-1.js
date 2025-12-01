@@ -20,19 +20,13 @@
 
 import { nodeListForEach } from 'govuk-frontend/govuk/common.js'
 
-function ModalDialog ($module) {
+function ModalDialog($module) {
   this.$module = $module
   this.$dialogBox = $module.querySelector('dialog')
   this.$container = document.documentElement
 
   // Allowed focussable elements
-  this.focussable = [
-    'button',
-    '[href]',
-    'input',
-    'select',
-    'textarea'
-  ]
+  this.focussable = ['button', '[href]', 'input', 'select', 'textarea']
 
   this.open = this.handleOpen.bind(this)
   this.close = this.handleClose.bind(this)
@@ -41,15 +35,22 @@ function ModalDialog ($module) {
   this.boundKeyDown = this.handleKeyDown.bind(this)
 
   // Modal elements
-  this.$closeButtons = this.$dialogBox.querySelectorAll('[data-element="govuk-modal-dialogue-close"]')
-  this.$focussable = this.$dialogBox.querySelectorAll(this.focussable.toString())
+  this.$closeButtons = this.$dialogBox.querySelectorAll(
+    '[data-element="govuk-modal-dialogue-close"]'
+  )
+  this.$focussable = this.$dialogBox.querySelectorAll(
+    this.focussable.toString()
+  )
   this.$focusableLast = this.$focussable[this.$focussable.length - 1]
-  this.$inertContainer = document.querySelector( this.$module.dataset.inertContainer || '.govuk-modal-dialogue-inert-container' )
+  this.$inertContainer = document.querySelector(
+    this.$module.dataset.inertContainer ||
+      '.govuk-modal-dialogue-inert-container'
+  )
 }
 
 // Initialize component
 ModalDialog.prototype.init = function (options) {
-// Check for module
+  // Check for module
   if (!this.$module) {
     return
   }
@@ -98,9 +99,11 @@ ModalDialog.prototype.initEvents = function (options) {
   }
 
   // Close dialogue on close button click
-  this.$closeButtons.forEach( function(element) {
-    element.addEventListener('click', this.close.bind(this));
-  }.bind(this));
+  this.$closeButtons.forEach(
+    function (element) {
+      element.addEventListener('click', this.close.bind(this))
+    }.bind(this)
+  )
 }
 
 // Open modal
@@ -174,8 +177,8 @@ ModalDialog.prototype.handleClose = function (event) {
   document.removeEventListener('keydown', this.boundKeyDown, true)
 }
 
-ModalDialog.prototype.isOpen = function() {
-  return this.$dialogBox.hasAttribute('open');
+ModalDialog.prototype.isOpen = function () {
+  return this.$dialogBox.hasAttribute('open')
 }
 
 // Lock scroll, focus modal
@@ -193,7 +196,7 @@ ModalDialog.prototype.handleFocusTrap = function (event) {
 
   // Loop inner focussable elements
   if (hasFocusEscaped) {
-    this.$focussable.forEach( function (element) {
+    this.$focussable.forEach(function (element) {
       // Actually, focus is on an inner focussable element
       if (hasFocusEscaped && document.activeElement === element) {
         hasFocusEscaped = false
@@ -201,14 +204,15 @@ ModalDialog.prototype.handleFocusTrap = function (event) {
     })
 
     // Wrap focus back to first element
-    $focusElement = hasFocusEscaped
-      ? this.$dialogBox
-      : undefined
+    $focusElement = hasFocusEscaped ? this.$dialogBox : undefined
   }
 
   // Wrap focus back to first/last element
   if (!$focusElement) {
-    if ((document.activeElement === this.$focusableLast && !event.shiftKey) || !this.$focussable.length) {
+    if (
+      (document.activeElement === this.$focusableLast && !event.shiftKey) ||
+      !this.$focussable.length
+    ) {
       $focusElement = this.$dialogBox
     } else if (document.activeElement === this.$dialogBox && event.shiftKey) {
       $focusElement = this.$focusableLast
