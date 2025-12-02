@@ -1,0 +1,61 @@
+items: &items
+  - text: 1
+    href: '#'
+    selected: false
+  - text: 2
+    href: '#'
+    selected: true
+  - text: 3
+    href: '#'
+    selected: false
+
+next: &next
+  text: next
+  href: '#'
+
+previous: &previous
+  text: previous
+  href: '#'
+
+examples:
+  - name: default
+    options:
+      items: *items
+      next: *next
+      previous: *previous
+  - name: default no items
+    options:
+      next: *next
+      previous: *previous
+  - name: with results window
+    options:
+      items: *items
+      results:
+        from: 11
+        to: 20
+  - name: with results window and count
+    options:
+      items: *items
+      results:
+        from: 11
+        to: 20
+        count: 28
+  - name: with results count only
+    options:
+      items: *items
+      results:
+        count: 28
+  - name: with no items and results count
+    options:
+      results:
+        count: 8
+  - name: with pages count
+    options:
+      items: *items
+      results:
+        pages:
+          current: 2
+          count: 3
+
+
+
