@@ -28,9 +28,9 @@ Last updated: 3 December 2025
 
 ### acronyms and initialisms
 
-Acronyms and initialisms in services do not need to be spelt out if they are well understood by your audience. This also helps if it’s difficult to spell them out, such as in a table.
+Acronyms and initialisms in services do not need to be spelt out if they are well understood by your audience. This also helps if it's difficult to spell them out, such as in a table.
 
-If users are familiar with the acronym or initialism but you would still like to help them, you can spell it out afterwards, for example ’PDU (probation delivery unit)’.
+If users are familiar with the acronym or initialism but you would still like to help them, you can spell it out afterwards, for example 'PDU (probation delivery unit)'.
 
 For guidance or long-form content, spell them out on first mention (following the [abbreviations and acronyms guidance on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#abbreviations-and-acronyms)).
 
@@ -78,8 +78,8 @@ There's not a standard approach to capitalising acronyms or initialisms when the
 
 You may decide to capitalise abbreviations when:
 
-- you’re referring to the proper name for something
-- it would help users to understand what you’re referring to
+- you're referring to the proper name for something
+- it would help users to understand what you're referring to
 - the full version of the abbreviation is long
 
 Please share your decisions on capitalising abbreviations in the [content community Slack channel (MOJ staff only)](https://moj.enterprise.slack.com/archives/C58FBN6V6). These entries will be added to the content style guide to ensure consistency.
@@ -136,19 +136,19 @@ It's better than 'community offender manager (COM)', although someone may have t
 
 ### contractions
 
-Follow the [style guide on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#contractions) and avoid using negative contractions like can’t and don’t.
+Follow the [style guide on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#contractions) and avoid using negative contractions like can't and don't.
 
-Avoid contractions with a noun and verb such as ‘the computer’s fast’. This may be misunderstood as showing possession. Use ‘the computer is fast’ instead.
+Avoid contractions with a noun and verb such as 'the computer's fast'. This may be misunderstood as showing possession. Use 'the computer is fast' instead.
 
-You can use positive contractions like we’ll and you’ll.
+You can use positive contractions like we'll and you'll.
 
-We’d like to test positive contractions with users to find out if they’re more difficult to understand.
+We'd like to test positive contractions with users to find out if they're more difficult to understand.
 
 ### CRN (case reference number)
 
 The reference assigned to a person on probation in NDelius. Not NDelius number, case number or CRN number.
 
-The initialism is likely to be familiar to NDelius users without needing to be spelt out. The format is 2 characters, 4 numbers and then 2 characters for example ‘RG5108AC’.
+The initialism is likely to be familiar to NDelius users without needing to be spelt out. The format is 2 characters, 4 numbers and then 2 characters for example 'RG5108AC'.
 
 {% endaccordionSection %}
 {% accordionSection "D" %}
@@ -198,17 +198,17 @@ This will help people (including practitioners) to understand it, and to work ou
 
 It may be important to include FGM (female genital mutilation), forced marriage or so-called honour abuse to your definition of domestic abuse, depending on the context and audience.  
 
-If you want to avoid the person identifying that they are experiencing domestic abuse, you could ask: ‘Are you contacting us because of domestic abuse?’  
+If you want to avoid the person identifying that they are experiencing domestic abuse, you could ask: 'Are you contacting us because of domestic abuse?'  
 
 You can read [guidance on the term victim-survivor](#victim-survivor-%28of-domestic-abuse%29).
 
 ### DPS, Digital Prison Services
 
-Not ‘the Digital Prison Service‘.
+Not 'the Digital Prison Service'.
 
-DPS may be referred to as ‘New NOMIS‘ in prisons, but we should always use ‘DPS‘ or ‘Digital Prison Services‘.
+DPS may be referred to as 'New NOMIS' in prisons, but we should always use 'DPS' or 'Digital Prison Services'.
 
-The initialism ‘DPS‘ is well understood and can be used without the full name.
+The initialism 'DPS' is well understood and can be used without the full name.
 
 There's a separate platform for probation services: see [PDS, Probation Digital Services](/content-standards/style-guide#pds%2C-probation-digital-services).
 
@@ -234,7 +234,7 @@ This refers to the record of prisoners' movements and locations in an establishm
 
 ### forfeiture of privileges
 
-Always use ‘loss of privileges’ when referring to the outcome of an adjudication hearing.
+Always use 'loss of privileges' when referring to the outcome of an adjudication hearing.
 
 ### FTR48
 
@@ -299,11 +299,11 @@ Do not use 'identifiers' when referring to these items.
 
 ### incentive level, IEP
 
-Always use ‘incentive level’.
+Always use 'incentive level'.
 
-References to ‘IEP’ were removed from DPS in response to the new Incentives Policy Framework. NOMIS has not been updated to reflect the policy change.
+References to 'IEP' were removed from DPS in response to the new Incentives Policy Framework. NOMIS has not been updated to reflect the policy change.
 
-Staff in prisons may still use ‘IEP’ when referring to someone’s incentive level.
+Staff in prisons may still use 'IEP' when referring to someone's incentive level.
 
 {% endaccordionSection %}
 {% accordionSection "K" %}
@@ -421,7 +421,7 @@ Always use 'preferred name', not 'working name' as it's called in NOMIS.
 
 ### PNC number
 
-An identity number assigned to a person in the Police National Computer (PNC). Use ‘PNC number’. This is more well known than the full version.
+An identity number assigned to a person in the Police National Computer (PNC). Use 'PNC number'. This is more well known than the full version.
 
 ### POM
 
@@ -447,27 +447,27 @@ PSRs are reports that a court uses to help decide on a defendant's sentence. The
 
 ### prison, establishment
 
-‘Prison’ and ‘establishment’ are both acceptable terms. Which one you should use depends on the context and audience.
+'Prison' and 'establishment' are both acceptable terms. Which one you should use depends on the context and audience.
 
-‘Prison’ refers only to adult prisons. It’s more likely to be understood by the public than ‘establishment’. Users with English as a second language may also find it easier to understand.
+'Prison' refers only to adult prisons. It's more likely to be understood by the public than 'establishment'. Users with English as a second language may also find it easier to understand.
 
-Individual prison names can be used for clarity, for example ‘HMP Wayland’.
+Individual prison names can be used for clarity, for example 'HMP Wayland'.
 
-‘Establishment’ is used to collectively describe a mixture of prisons, young offender institutions (YOIs), dual-designated prisons and YOIs, and Secure Training Centres (STCs). ‘Prison’ is inappropriate when describing settings accommodating children and young adults.
+'Establishment' is used to collectively describe a mixture of prisons, young offender institutions (YOIs), dual-designated prisons and YOIs, and Secure Training Centres (STCs). 'Prison' is inappropriate when describing settings accommodating children and young adults.
 
-‘Establishment’ is widely used in NOMIS and DPS, with no reported issues.
+'Establishment' is widely used in NOMIS and DPS, with no reported issues.
 
-‘Location’ may refer to places within the prison, for example, the gym.
+'Location' may refer to places within the prison, for example, the gym.
 
 'Site' is sometimes used instead of prison or establishment, or to refer to where someone on probation is located. It might be used to describe places with several prisons or buildings.
 
 ### prison number
 
-Always use ‘prison number’ when referring to the unique number given to someone when they arrive at prison. This term is widely used and understood by staff in prisons. It may need explaining in content or services for the public.
+Always use 'prison number' when referring to the unique number given to someone when they arrive at prison. This term is widely used and understood by staff in prisons. It may need explaining in content or services for the public.
 
-Do not use ‘prison no’, ‘prisoner number’, ‘NOMIS number’, ‘NOMS number’ or ‘offender number’.
+Do not use 'prison no', 'prisoner number', 'NOMIS number', 'NOMS number' or 'offender number'.
 
-Staff in prisons may still use ‘NOMIS number’ or ‘alpha number’ when referring to someone’s prison number.
+Staff in prisons may still use 'NOMIS number' or 'alpha number' when referring to someone's prison number.
 
 ### prisoner, person in prison
 
@@ -477,9 +477,9 @@ Do not use the acronym PIP.
 
 ### prisoner record
 
-Always use ‘prisoner record’ when referring to the data stored about a person in prison. A prisoner record is linked to a prison number and can contain information from multiple bookings.
+Always use 'prisoner record' when referring to the data stored about a person in prison. A prisoner record is linked to a prison number and can contain information from multiple bookings.
 
-Do not use ‘prison record’, ‘NOMIS record’, ‘NOMS record’ or ‘offender record’.
+Do not use 'prison record', 'NOMIS record', 'NOMS record' or 'offender record'.
 
 More research is needed to ensure that this is the best way to describe information the organisation has about someone in prison.
 
@@ -512,7 +512,7 @@ Roles are usually victim or perpetrator.
 
 ### release dates
 
-The phrase ‘release dates’ is used to describe a number of key dates in a prisoner's sentence. It includes the dates when their sentence and licence periods expire, and the estimated dates that they will be released from prison.
+The phrase 'release dates' is used to describe a number of key dates in a prisoner's sentence. It includes the dates when their sentence and licence periods expire, and the estimated dates that they will be released from prison.
 
 There are many different types of release date. For example, prisoners who are eligible for home detention curfew, will get a Home detention curfew eligibility date (HDCED). These dates can also change, depending on the circumstances and eligibility of the person in prison. You should consider whether you need to refer to a specific release date if referencing it in your service.
 
@@ -522,7 +522,7 @@ The most common types of release date are:
   This is the date a person in prison is released from custody, subject to licence conditions.
 
 - Sentence expiry date (SED)
-  This is the date a person’s prison sentence expires.
+  This is the date a person's prison sentence expires.
 
 - Licence expiry date (LED)
   This is the date the licence expires where release from custody is subject to licence conditions.
@@ -559,9 +559,9 @@ SDS40 stands for Standard determinate sentence with a 40% release date. SDS40 is
 
 ### Taser (HMPPS only)
 
-Always capitalise, as Taser is a brand name. ‘Taser’ is more widely used across HMPPS than the generic term ‘stun gun’.
+Always capitalise, as Taser is a brand name. 'Taser' is more widely used across HMPPS than the generic term 'stun gun'.
 
-Avoid using ‘Taser’ as a verb. Taser operatives ‘draw a Taser’ and follow a series of warnings before potentially ‘deploying’ the Taser.
+Avoid using 'Taser' as a verb. Taser operatives 'draw a Taser' and follow a series of warnings before potentially 'deploying' the Taser.
 
 ### temporary absence
 
@@ -594,19 +594,19 @@ This can be for:
 - activities – like work or education
 - appointments – like a prison visit, or to go to a doctor
 
-There can be up to 3 ‘unlocks’ a day – morning, afternoon and evening.
+There can be up to 3 'unlocks' a day – morning, afternoon and evening.
 
 ### unlock list
 
 A list of people in an area of a prison who are due to go to an activity or an appointment.
 
-It contains people’s names, prison numbers, what they are due to go to, and when they have to be there.
+It contains people's names, prison numbers, what they are due to go to, and when they have to be there.
 
 For each unlock, wing officers use the list to let the right people out of their cells and off the wing.
 
 It is not used in Category D prisons.
 
-Sometimes known as an ‘unlock roll’, ‘leaving list’, or ‘free flow list’.
+Sometimes known as an 'unlock roll', 'leaving list', or 'free flow list'.
 
 {% endaccordionSection %}
 {% accordionSection "V" %}
@@ -615,9 +615,9 @@ Sometimes known as an ‘unlock roll’, ‘leaving list’, or ‘free flow lis
 
 The term victim-survivor is the most common term used in the advocacy sector to describe someone who has experienced domestic abuse.
 
-However, if you’re developing a product or service that victim-survivors use, it may be more appropriate to reference their experience instead of using this term.
+However, if you're developing a product or service that victim-survivors use, it may be more appropriate to reference their experience instead of using this term.
 
-For example, you could use the question ‘Have you experienced domestic abuse?’ rather than ‘Are you a victim-survivor of domestic abuse?’ See [guidance on using the term domestic abuse](#domestic-abuse).
+For example, you could use the question 'Have you experienced domestic abuse?' rather than 'Are you a victim-survivor of domestic abuse?' See [guidance on using the term domestic abuse](#domestic-abuse).
 
 ### Violent and Sex Offender Register (ViSOR)
 
