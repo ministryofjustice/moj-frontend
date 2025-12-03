@@ -1,3 +1,10 @@
+## [7.1.1](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.0...v7.1.1) (2025-12-03)
+
+
+### Bug Fixes
+
+* Small adjustments PDS header and footer ([#2020](https://github.com/ministryofjustice/moj-frontend/issues/2020)) ([14394f9](https://github.com/ministryofjustice/moj-frontend/commit/14394f9ba989efd3f413396f3043d42726f0e96f))
+
 # [7.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v7.0.0...v7.1.0) (2025-10-28)
 
 
