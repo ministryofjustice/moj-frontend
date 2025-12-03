@@ -1,117 +1,18 @@
 @use "../../vendor/govuk-frontend" as *;
 
-.moj-pagination {
-  // text-align: center;
-
-  @include govuk-media-query($from: desktop) {
-    margin-right: - govuk-spacing(1);
-
-    // Alignment adjustments
-    margin-left: - govuk-spacing(1);
-
-    // Hide whitespace between elements
-    font-size: 0;
-
-    // Trick to remove the need for floats
-    text-align: justify;
-
-    &::after {
-      content: "";
-      display: inline-block;
-      width: 100%;
-    }
-  }
-}
-
-.moj-pagination__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  @include govuk-media-query($from: desktop) {
-    display: inline-block;
-    margin-bottom: 0;
-    vertical-align: middle;
-  }
+.moj-pagination__pagination {
+  margin-bottom: govuk-spacing(2);
 }
 
 .moj-pagination__results {
   margin-top: 0;
-  padding: govuk-spacing(1);
-  @include govuk-font(19);
-  @include govuk-media-query($from: desktop) {
-    display: inline-block;
-    margin-bottom: 0;
-    vertical-align: middle;
-  }
-}
-
-.moj-pagination__item {
-  display: inline-block;
-  @include govuk-font(19);
-}
-
-.moj-pagination__item--active,
-.moj-pagination__item--dots {
-  height: 25px;
-  padding: govuk-spacing(1) govuk-spacing(2);
-  font-weight: bold;
+  margin-bottom: govuk-spacing(6);
+  padding-right: govuk-spacing(1);
+  padding-left: govuk-spacing(1);
   text-align: center;
-}
+  @include govuk-font(19);
 
-.moj-pagination__item--dots {
-  padding-right: 0;
-  padding-left: 0;
-}
-
-.moj-pagination__item--prev .moj-pagination__link::before,
-.moj-pagination__item--next .moj-pagination__link::after {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  -webkit-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  border-style: solid;
-  color: govuk-colour("black");
-  background: transparent;
-}
-
-.moj-pagination__item--prev .moj-pagination__link::before {
-  margin-right: govuk-spacing(1);
-  border-width: 3px 0 0 3px;
-}
-
-.moj-pagination__item--next .moj-pagination__link::after {
-  margin-left: govuk-spacing(1);
-  border-width: 0 3px 3px 0;
-}
-
-.moj-pagination__link {
-  display: block;
-  min-width: 25px;
-  padding: govuk-spacing(1);
-  text-align: center;
-  @include govuk-link-common;
-  @include govuk-link-style-default;
-
-  &:link,
-  &:visited,
-  &:hover,
-  &:active {
-    text-decoration: none;
-  }
-
-  &:link,
-  &:visited {
-    color: $govuk-link-colour;
-  }
-
-  &:hover {
-    color: govuk-tint($govuk-link-colour, 25);
-  }
-
-  &:focus {
-    color: govuk-colour("black");
+  @include govuk-media-query($from: tablet) {
+    text-align: left;
   }
 }

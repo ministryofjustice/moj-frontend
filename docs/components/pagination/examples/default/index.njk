@@ -5,6 +5,8 @@ redirect_from: examples/pagination
 ---
 
 {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
 
 {{ mojPagination({
   items: [{
@@ -31,10 +33,12 @@ redirect_from: examples/pagination
   },
   previous: {
     text: "Previous",
-    href: ""
+    href: "#"
   },
   next: {
     text: "Next",
-    href: ""
+    href: "#"
   }
 }) }}
+
+
