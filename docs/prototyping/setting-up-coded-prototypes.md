@@ -21,7 +21,7 @@ If you do not already have a GOV.UK prototype, you can find out how to [create a
 ### How to install the MOJ Frontend npm package
  
 1. Open a command prompt (for example Terminal on a Mac).
-2. Navigate to your prototype folder by typing `cd` followed by the folder path. (for example `cd ~/Documents/prototypes/juggling-licence`) 
+2. Navigate to your prototype folder by typing `cd` followed by the folder path (for example `cd ~/Documents/prototypes/juggling-licence`) 
 3. Run `npm install @ministryofjustice/frontend --save`
  
 If you’re using version 13 or later of the GOV.UK Prototype Kit, you can now use MOJ Design System components in your prototype.
