@@ -381,7 +381,7 @@ In DPS, you must follow the [DPS guidelines for formatting page titles (MOJ staf
 
 Probation Digital Services (PDS) is a digital platform for services and products used by probation staff, similar to [Digital Prison Services](/content-standards/style-guide#dps%2C-digital-prison-services).
 
-Do not use the initialism ‘PDS‘ for the platform without spelling it out in full, as it's not yet recognised by users.
+Do not use the initialism 'PDS' for the platform without spelling it out in full, as it's not yet recognised by users.
 
 ### Person Escort Record (PER)
 
