@@ -16,7 +16,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 23 October 2025
+Last updated: 3 December 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -210,6 +210,8 @@ DPS may be referred to as ‘New NOMIS‘ in prisons, but we should always use �
 
 The initialism ‘DPS‘ is well understood and can be used without the full name.
 
+There's a separate platform for probation services: see [PDS, Probation Digital Services](/content-standards/style-guide#pds%2C-probation-digital-services).
+
 {% endaccordionSection %}
 {% accordionSection "E" %}
 
@@ -374,6 +376,12 @@ Lower case.
 ### page titles
 
 In DPS, you must follow the [DPS guidelines for formatting page titles (MOJ staff only)](https://docs.google.com/document/d/17mHQYHOA5S6dOWjjPvkJvXrb-6f37o8hjjWUe9gBqKo/edit?tab=t.0#heading=h.1rt3kbplnmql).
+
+### PDS, Probation Digital Services
+
+Probation Digital Services (PDS) is a digital platform for services and products used by probation staff, similar to [Digital Prison Services](/content-standards/style-guide#dps%2C-digital-prison-services).
+
+Do not use the initialism ‘PDS‘ for the platform without spelling it out in full, as it's not yet recognised by users.
 
 ### Person Escort Record (PER)
 
