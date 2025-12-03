@@ -4,12 +4,12 @@ subsection: Prototyping
 showHelp: true
 title: Setting up coded prototypes
 redirect_from: /get-started/prototyping
-lede: Learn how to create prototypes using the MOJ Design System and GOV.UK Prototype Kit.
+lede: Learn how to create prototypes using the GOV.UK Prototype Kit and the MOJ Design System.
 eleventyNavigation:
   key: Setting up coded prototypes
   parent: Prototyping
   order: 20
-  excerpt: "Learn how to create prototypes using the MOJ Design System and GOV.UK Prototype Kit."
+  excerpt: "Learn how to create prototypes using the GOV.UK Prototype Kit and the MOJ Design System."
 ---
  
 ## How to add the MOJ Design System to a prototype
@@ -20,8 +20,8 @@ If you do not already have a GOV.UK prototype, you can find out how to [create a
 
 ### How to install the MOJ Frontend npm package
  
-1. Open a command prompt (e.g. Terminal on a Mac).
-2. Navigate to your prototype folder by typing `cd` followed by the folder path. (e.g. `cd ~/Documents/prototypes/juggling-licence`) 
+1. Open a command prompt (for example Terminal on a Mac).
+2. Navigate to your prototype folder by typing `cd` followed by the folder path. (for example `cd ~/Documents/prototypes/juggling-licence`) 
 3. Run `npm install @ministryofjustice/frontend --save`
  
 If you’re using version 13 or later of the GOV.UK Prototype Kit, you can now use MOJ Design System components in your prototype.
