@@ -27,7 +27,7 @@ describe('generateMarkdown', () => {
           howIsTheComponentUsed: 'This is how it is used.'
         },
         '/figma-link': {
-          figmaUrl: 'www.figma.com'
+          figmaLink: 'www.figma.com'
         },
         '/your-details': {
           fullName: 'Test User',
