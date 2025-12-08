@@ -2,7 +2,7 @@ module.exports = {
   overrides: [
     {
       files: ['moj/**/*.{cjs,js,mjs}'],
-      excludedFiles: ['**/*.spec.{cjs,js,mjs}'],
+      excludedFiles: ['**/*.spec.{cjs,js,mjs}', '**/lib/*.{cjs,js,mjs}'],
       parserOptions: {
         // Note: Allow ES2015 for import/export syntax
         ecmaVersion: '2015'
