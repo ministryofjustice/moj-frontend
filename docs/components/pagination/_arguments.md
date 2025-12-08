@@ -17,12 +17,20 @@
 
 ### results
 
-| Name  | Type   | Required | Description                                          |
-| ----- | ------ | -------- | ---------------------------------------------------- |
-| count | number | Yes      | The total number of items.                           |
-| from  | number | Yes      | The number of the first item on the page.            |
-| to    | number | Yes      | The number of the last item on the page.             |
-| text  | string | No       | A label describing the items. Defaults to "results". |
+| Name  | Type   | Required | Description                                                             |
+| ----- | ------ | -------- | ----------------------------------------------------------------------- |
+| count | number | Yes      | The total number of items.                                              |
+| from  | number | Yes      | The number of the first item on the page.                               |
+| to    | number | Yes      | The number of the last item on the page.                                |
+| text  | string | No       | A label describing the items. Defaults to "results".                    |
+| pages | object | No       | If present, the results will show page information. See [pages](#pages).|
+
+### pages
+
+| Name    | Type   | Required | Description                                          |
+| ------- | ------ | -------- | ---------------------------------------------------- |
+| count   | number | Yes      | The total number of pages.                           |
+| current | number | Yes      | The current page number.                             |
 
 ### link
 
