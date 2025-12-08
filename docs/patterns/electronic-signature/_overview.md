@@ -23,5 +23,9 @@ The key user need for this in the case of the ‘Make and register an LPA’ ser
 
 Higher level, for any Gov service, reducing the reliance on wet signatures could contribute to the reduction of the use of paper forms which would be a big win that needs no explanation.
 
+<div class="img-container">
+  <img src="/assets/images/submission-1765201728043/electronic-signature-3.png" alt="electronic signature" />
+</div>
+
 ### Contribute to this pattern
 You can help develop this pattern by adding information to the [‘electronic signature’ Github discussion]({{ githuburl }}). This helps other people to use it in their service.
