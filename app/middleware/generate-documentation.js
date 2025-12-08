@@ -89,12 +89,12 @@ permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---\r\n`
-    if (data['/figma-link']?.figmaUrl) {
+    if (data['/figma-link']?.figmaLink) {
       content += `A Figma design has been added for this component. There may be more links and resources in the ${githubDiscussionLink(componentName)}.\r\n
 
 ### Figma
 
-If you work for MOJ, [View the ‘${componentName}’ component in the MOJ Figma Kit](${data['/figma-link']?.figmaUrl || ''}).
+If you work for MOJ, [View the ‘${componentName}’ component in the MOJ Figma Kit](https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit).
 
 If you work outside MOJ, go to the [MOJ Figma Kit on the Figma community platform](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).\r\n\r\n`
 
