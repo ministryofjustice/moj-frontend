@@ -11,45 +11,51 @@ lede: "Use the pagination component to help people view and navigate long lists 
 
 ## Overview
 
-The pagination component helps users to navigate between multiple pages. CONSIDER RENAMING. 
+The pagination component helps users to navigate between pages. It reduces the page load for long tables and lists (including search results and filtered lists). 
 
-It adds a results count to the [GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/). If you do not need a results count, you can use the GOV.UK one. 
+The component contains:
+- a results count 
+- the [GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/)
 
-YOU CAN FIND OUT HOW TO USE THE GOV PAG. 
+The results count has 4 variants. These are the:  
 
-The results count can display the:
-
-- results range on the current page, and the total results
+- results range on the current page, and total results
 - results range on the current page 
-- total number of results  
+- total results  
 - current and total page numbers
 
 You can read [guidance on choosing a results count](/components/pagination/#how-to-use-tab).
 
 ### When to use
 
-can use it for a table, doesn't need to be after a search filter. 
-
 This pagination component can help users:
 - navigate large amounts of results
 - identify how many results there are
 - know where they are in the results
 
-Use pagination rather than automatically loading more results when the user approaches the bottom of the page (infinite scroll). Broader issues - can never get to footer. This causes problems for keyboard users. 
+Use pagination instead of automatically loading more results when the user reaches the bottom of the page (infinite scroll). Infinite scroll introduces usability problems, including making it challenging for a user ro 
 
-### When to use
+### When not to use
 
-Do not use this as a way to navigate between content pages, go straight to go for that. ADD LINK. COME BACK TO THIS. 
+Do not use this component:
+- if there's only one page of results (set it to not show)
+- to help users navigate between content pages - use the [GOV.UK 'block' style of pagination](https://design-system.service.gov.uk/components/pagination/#for-navigating-between-content-pages) for that
+- just for pagination - use the [GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/) instead
 
 ### Things to consider
 
-Do not use this component as the only way for people to find things from a very long list. Try adding a search or filter. LINK OFF
+You'll probably need to combine pagination with other ways of helping users find items from long lists. Consider the:
+- [search component](/components/search/)
+- [filter component](/components/filter/)
+- [sortable table component](/components/sortable-table/)
 
-People with dyscalculia may find pagination very challenging, especially when it's used to display a large amount of results. You can help make pagination easier to understand by:
+People with dyscalculia may find pagination challenging, especially when it's used to display a large amount of results. Try:
 
-- use the elipises to shorten the pagination DISPLAY - QUERY WHETHER THIS MAKES IT EASIER TO UNDERSTAND
-- choosing a simpler results count REVISIT
-- having more results per page, to reduce the number of pages
+- having more results per page (to reduce the number of pages)
+- choosing a results count that front loads the most important number
+- giving 'results' a more meaningful name, such as cases, people or referrals (this helps create context) 
+
+Research will confirm the right approach for your service. 
 
 ### Similar or linked components
 
@@ -59,37 +65,32 @@ People with dyscalculia may find pagination very challenging, especially when it
 
 ## How to use
 
-LINK TO GOV PAG.
-### Selecting results count CONTENT
+You can read [guidance on using the GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/), which is a part of this component.
 
-SHOW IMAGE OF THE SEARCH RESULTS
+### Position on the page
 
-You need to choose a results count for the pagination component. Consider:
-- what information is already on the page, for example the number of search results in a heading
-- what users need to know, for example if results 11-20 means anything to them
+ENTER CONTENT.
 
-YOU CAN CHANGE THE WORD 'RESULTS' TO WHATEVER YOU LIKE.
+### Full pages of results - MOVE THIS, BUT WHERE?
 
-### When to show pagination
+If the results are the entire content of the page, add the amount of results to the title and h1. This improves accessibility. 
 
-Do not show pagination if there's only one page. CAN YOU SET IT SO THAT IT IS INVOKED WHEN IT GOES ABOVE CERTAIN RESULTS? IF SO, HOW?
+### Choosing a results count variant
 
-The component can be configured to hide or show the result count, previous and next buttons, ellipses or numbers.
+INSERT IMAGE OF THE SEARCH RESULTS
 
-### Setting the results per page
+When choosing a results count for the pagination component consider:
+- information that's already on the page, for example the number of results in a heading
+- what's relevant to the user and their task, for example a  results range  11-20 mean anything to them
 
-THE PAG COMPONENT DOESN'T CONTROL THE RESULTS PER PAGE. H/E THESE THINGS ARE USEFUL FROM USABILITY PT OF VIEW. CONSIDER NNN LINK OFF. 
+### Setting results per page
 
-You need to set how many results are shown per page. You may want to choose more per page if:
+ Results per page are controlled in a table or list component, rather than by pagination. When choosing the amount per page consider:
 
-- research shows that users want to browse or look at more results
-- you want to reduce the time people spend navigating between pages
-- research shows that users search on screen (ctrl F)
-
-You might want to choose fewer per page if:
-- results can be quite deep (takes up more than 1 row) as this will make the page very long
-- you want to reduce the cognitive load of a complex interface
-
+- if research shows that users want to browse or compare results(rather than look for a particular one)
+- the time users will have to spend navigating between pages
+- the depth of results (for example if they take more than 1 row)  
+- the cognitive load of the page
 
 {% example template="examples/prev-next", colocated=true, height=125 %}
 
