@@ -1,5 +1,5 @@
 ---
-layout: layouts/thumbnail-grid.njk
+layout: layouts/index.njk
 title: Probation styles
 allTitle: All probation styles
 index: true
