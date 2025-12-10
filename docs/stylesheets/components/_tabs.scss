@@ -5,9 +5,22 @@
    ========================================================================== */
 
 .app-tabs {
-  margin-bottom: govuk-spacing(9);
   border-top: 0;
   background: govuk-colour("white");
+
+  // additional spacing for H2s
+  & + h2:not([class]) {
+    margin-top: govuk-spacing(8);
+  }
+
+  & + * {
+    margin-top: govuk-spacing(4);
+  }
+
+  & + p {
+    margin-top: govuk-spacing(4);
+  }
+
 }
 
 .app-tabs__list {
