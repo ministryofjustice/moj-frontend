@@ -47,7 +47,8 @@ async function getYaml(componentName) {
  * @param {string} componentName - the name of the component to load
  */
 async function getFixtures(componentName) {
-  const json = await getYaml(componentName)
+  /** @type {FixturesConfig} */
+  const json = /** @type {FixturesConfig} */ (await getYaml(componentName))
 
   if (!json?.examples) {
     throw new Error(`${componentName} fixtures.yaml is missing "examples"`)
@@ -123,7 +124,8 @@ function renderMacro(macroName, macroPath, options) {
  */
 function renderString(string, options) {
   const nunjucksEnv = options?.env ?? env
-  return nunjucksEnv.renderString(string, options?.context ?? {})
+  const context = /** @type {object} */ (options?.context ?? {})
+  return nunjucksEnv.renderString(string, context)
 }
 
 export { render, getExamples }
@@ -136,7 +138,6 @@ export { render, getExamples }
  * @property {string} [description] - Example description
  * @property {boolean} [hidden] - Example hidden from review app
  * @property {boolean} [screenshot] - Screenshot and include in visual regression tests
- * @property {PageTemplateOptions} [pageTemplateOptions] - Page template options for render
  * @property {MacroOptions} options - Nunjucks macro options (or params)
  */
 
@@ -144,6 +145,12 @@ export { render, getExamples }
  * Nunjucks macro options
  *
  * @typedef {{ [param: string]: unknown }} MacroOptions
+ */
+
+/**
+ * Fixtures config object
+ *
+ * @typedef {{ examples: Array<{ name: string, options: MacroRenderOptions }> }} FixturesConfig
  */
 
 /**
