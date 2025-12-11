@@ -1,7 +1,7 @@
 ---
 title: Pagination
 status: Official
-statusDate: December
+statusDate: December 2025
 excerpt: "Use the pagination component to help people view and navigate long lists of items"
 lede: "Use the pagination component to help people view and navigate long lists of items"
 ---
