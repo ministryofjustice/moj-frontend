@@ -1,0 +1,112 @@
+---
+layout: layouts/example.njk
+title: Pagination (example)
+---
+
+{%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
+{% set items = [{
+    text: "1",
+    href: "#"
+  }, {
+    text: "2",
+    href: "#",
+    selected: true
+  }, {
+    text: "3",
+    href: "#"
+  }, {
+    type: "dots"
+  }, {
+    text: "5",
+    href: "#"
+  }]
+%}
+
+<h3>from, to and count</h3>
+{{ mojPagination({
+  items: items,
+  previous: {
+    text: "Previous",
+    href: "#"
+  },
+  next: {
+    text: "Next",
+    href: "#"
+  },
+  results: {
+    count: 46,
+    from: 11,
+    to: 20,
+    text: "results"
+  }
+}) }}
+
+<h3>from and to</h3>
+{{ mojPagination({
+  items: items,
+  previous: {
+    text: "Previous",
+    href: "#"
+  },
+  next: {
+    text: "Next",
+    href: "#"
+  },
+  results: {
+    from: 11,
+    to: 20,
+    text: "results"
+  }
+}) }}
+
+<h3>count only</h3>
+{{ mojPagination({
+  items: items,
+  previous: {
+    text: "Previous",
+    href: "#"
+  },
+  next: {
+    text: "Next",
+    href: "#"
+  },
+  results: {
+    count: 46,
+    text: "results"
+  }
+}) }}
+
+<h3>only one page count</h3>
+{{ mojPagination({
+  results: {
+    from: 1,
+    to: 7,
+    count: 7,
+    text: "results"
+  }
+}) }}
+
+<h3>pages</h3>
+{{ mojPagination({
+  items: items,
+  previous: {
+    text: "Previous",
+    href: "#"
+  },
+  next: {
+    text: "Next",
+    href: "#"
+  },
+  results: {
+    pages: {
+      current: 2,
+      count: 5
+    },
+    count: 46,
+    text: "results"
+  }
+}) }}
+
+

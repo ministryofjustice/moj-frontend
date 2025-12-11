@@ -1,33 +1,58 @@
-<nav class="moj-pagination {{- " " + params.classes if params.classes}}" aria-label="Pagination navigation">
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+{% set paginationItems = [] %}
 
-  <ul class="moj-pagination__list">
-    {%- if params.previous %}
-      <li class="moj-pagination__item  moj-pagination__item--prev">
-        <a class="moj-pagination__link" href="{{ params.previous.href }}">{{ params.previous.text }}<span class="govuk-visually-hidden"> page</span></a>
-      </li>
-    {% endif -%}
+{% if params.items %}
+  {%- for item in params.items %}
+    {% if item.type === "dots" %}
+      {% set paginationItem = {
+       "ellipsis": true
+      } %}
+    {% else %}
+      {% set paginationItem = {
+      "number": item.text,
+      "href": item.href,
+      "current": item.selected
+      } %}
+    {% endif %}
+    {% set paginationItems = paginationItems.concat(paginationItem) %}
+  {% endfor %}
+{% endif %}
 
-    {%- for item in params.items %}
-      {%- if item.type == "dots" %}
-        <li class="moj-pagination__item moj-pagination__item--dots">…</li>
-      {% else %}
-        {%- if item.selected %}
-          <li class="moj-pagination__item moj-pagination__item--active" aria-label="Page {{ item.text }} of {{ (params.items | last).text }}" aria-current="page">{{ item.text }}</li>
-        {% else %}
-          <li class="moj-pagination__item"><a class="moj-pagination__link" href="{{ item.href }}" aria-label="Page {{ item.text }} of {{ (params.items | last).text }}">{{ item.text }}</a></li>
-        {% endif -%}
-      {% endif -%}
-    {% endfor -%}
-
-    {%- if params.next %}
-      <li class="moj-pagination__item  moj-pagination__item--next">
-        <a class="moj-pagination__link" href="{{ params.next.href }}">{{ params.next.text }}<span class="govuk-visually-hidden"> page</span></a>
-      </li>
-    {% endif -%}
-  </ul>
+<div class="moj-pagination">
+  {% if paginationItems | length > 0 %}
+  {{ govukPagination({
+    items: paginationItems,
+    previous: params.previous,
+    next: params.next,
+    classes: "moj-pagination__pagination " + (params.classes if params.classes)
+    })
+    }}
+    {% endif %}
 
   {%- if params.results %}
-    <p class="moj-pagination__results">Showing <b>{{ params.results.from }}</b> to <b>{{ params.results.to }}</b> of <b>{{params.results.count}}</b> {{ params.results.text | default("results") }}</p>
-  {% endif -%}
+    {% set results_string = '' %}
+    {% set results_term = params.results.text | default("results") %}
 
-</nav>
+    {% if paginationItems | length > 0 %}
+      {% if params.results.pages.current and params.results.pages.count %}
+        {% set results_string = "Page " + params.results.pages.current  + " of " + params.results.pages.count %}
+      {% elif params.results.from and params.results.to  %}
+        {% if params.results.count %}
+          {% set results_string = "Showing " + params.results.from  + " to " + params.results.to + " of " + params.results.count + " " + results_term %}
+        {% else %}
+          {% set results_string = "Showing " + results_term + " " + params.results.from  + " to " + params.results.to %}
+        {% endif %}
+      {% elif params.results.count %}
+        {% set results_string = params.results.count + " total " + results_term %}
+      {% endif %}
+    {% else %}
+      {% if params.results.count %}
+        {% set results_string = params.results.count + " " + results_term %}
+      {% endif %}
+    {% endif %}
+
+    {% if results_string != '' %}
+      <p class="moj-pagination__results">{{ results_string }}</p>
+    {% endif %}
+  {% endif -%}
+</div>
