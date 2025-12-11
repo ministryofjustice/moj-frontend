@@ -30,12 +30,12 @@ test.describe('pagination', () => {
     })
   })
 
-  test.describe('default no items', () => {
+  test.describe('default no pages', () => {
     let $component
     let $pagination
 
     test.beforeEach(async ({ page }) => {
-      const html = render('pagination', examples['default no items'])
+      const html = render('pagination', examples['default no pages'])
       await page.setContent(html)
       $component = page.locator('.moj-pagination')
       $pagination = page.locator('.govuk-pagination')
@@ -47,7 +47,105 @@ test.describe('pagination', () => {
 
     test('does not display prev/next only pagination', async () => {
       await expect($component).toBeAttached()
-      await expect($pagination).not.toBeVisible()
+      await expect($pagination).not.toBeAttached()
+    })
+  })
+
+  test.describe('one page', () => {
+    let $component
+    let $pagination
+    let $results
+
+    test.beforeEach(async ({ page }) => {
+      const html = render('pagination', examples['one page'])
+      await page.setContent(html)
+      $component = page.locator('.moj-pagination')
+      $pagination = page.locator('.govuk-pagination')
+      $results = page.locator('.moj-pagination__results')
+    })
+
+    test('does not display pagination controls or results', async () => {
+      await expect($component).toBeAttached()
+      await expect($pagination).not.toBeAttached()
+      await expect($results).not.toBeAttached()
+    })
+  })
+
+  test.describe('one page with results window and count', () => {
+    let $component
+    let $pagination
+    let $results
+
+    test.beforeEach(async ({ page }) => {
+      const html = render(
+        'pagination',
+        examples['one page with results window and count']
+      )
+      await page.setContent(html)
+      $component = page.locator('.moj-pagination')
+      $pagination = page.locator('.govuk-pagination')
+      $results = page.locator('.moj-pagination__results')
+    })
+
+    test('does not display pagination controls', async () => {
+      await expect($component).toBeAttached()
+      await expect($pagination).not.toBeAttached()
+    })
+
+    test('displays results', async () => {
+      await expect($component).toBeAttached()
+      await expect($results).toBeVisible()
+      await expect($results).toContainText('Showing 1 to 7 of 7 results')
+    })
+  })
+
+  test.describe('one page with results count', () => {
+    let $component
+    let $pagination
+    let $results
+
+    test.beforeEach(async ({ page }) => {
+      const html = render('pagination', examples['one page with results count'])
+      await page.setContent(html)
+      $component = page.locator('.moj-pagination')
+      $pagination = page.locator('.govuk-pagination')
+      $results = page.locator('.moj-pagination__results')
+    })
+
+    test('does not display pagination controls', async () => {
+      await expect($component).toBeAttached()
+      await expect($pagination).not.toBeAttached()
+    })
+
+    test('displays results count', async () => {
+      await expect($component).toBeAttached()
+      await expect($results).toBeVisible()
+      await expect($results).toContainText('7 total results')
+    })
+  })
+
+  test.describe('one page with pages count', () => {
+    let $component
+    let $pagination
+    let $results
+
+    test.beforeEach(async ({ page }) => {
+      const html = render('pagination', examples['one page with pages count'])
+      await page.setContent(html)
+      $component = page.locator('.moj-pagination')
+      $pagination = page.locator('.govuk-pagination')
+      $results = page.locator('.moj-pagination__results')
+    })
+
+    test('does not display pagination controls', async () => {
+      await expect($component).toBeAttached()
+      await expect($pagination).not.toBeAttached()
+    })
+
+    test('displays results count', async () => {
+      await expect($component).toBeAttached()
+      await expect($results).toBeVisible()
+      await expect($results).toContainText('Page 1 of 1')
     })
   })
 
@@ -67,7 +165,7 @@ test.describe('pagination', () => {
     test('results should be present', async () => {
       await expect($results).toBeVisible()
       await expect($results).toContainText('Showing results 11 to 20')
-      await expect($results).not.toContainText(' out of ')
+      await expect($results).not.toContainText(' of ')
     })
   })
 
@@ -89,7 +187,7 @@ test.describe('pagination', () => {
 
     test('results should be present', async () => {
       await expect($results).toBeVisible()
-      await expect($results).toContainText('Showing 11 to 20 out of 28 results')
+      await expect($results).toContainText('Showing 11 to 20 of 28 results')
     })
   })
 
@@ -113,13 +211,13 @@ test.describe('pagination', () => {
     })
   })
 
-  test.describe('with no items and results count', () => {
+  test.describe('with no pages and results count', () => {
     let $results
 
     test.beforeEach(async ({ page }) => {
       const html = render(
         'pagination',
-        examples['with no items and results count']
+        examples['with no pages and results count']
       )
       await page.setContent(html)
       $results = page.locator('.moj-pagination__results')

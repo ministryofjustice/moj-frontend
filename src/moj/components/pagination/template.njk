@@ -19,15 +19,15 @@
 {% endif %}
 
 <div class="moj-pagination">
-  {% if paginationItems | length > 0 %}
-  {{ govukPagination({
-    items: paginationItems,
-    previous: params.previous,
-    next: params.next,
-    classes: "moj-pagination__pagination " + (params.classes if params.classes)
-    })
+  {% if paginationItems | length > 1 %}
+    {{ govukPagination({
+        items: paginationItems,
+        previous: params.previous,
+        next: params.next,
+        classes: "moj-pagination__pagination " + (params.classes if params.classes)
+      })
     }}
-    {% endif %}
+  {% endif %}
 
   {%- if params.results %}
     {% set results_string = '' %}
