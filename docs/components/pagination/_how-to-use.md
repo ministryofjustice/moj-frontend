@@ -7,7 +7,6 @@ eleventyComputed:
   override:eleventyNavigation: false
 ---
 
-
 ## How to use
 
 You can read [guidance on using the GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/), which is a part of this component.
