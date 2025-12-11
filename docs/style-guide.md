@@ -16,7 +16,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 3 December 2025
+Last updated: 11 December 2025
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -148,7 +148,7 @@ We'd like to test positive contractions with users to find out if they're more d
 
 The reference assigned to a person on probation in NDelius. Not NDelius number, case number or CRN number.
 
-The initialism is likely to be familiar to NDelius users without needing to be spelt out. The format is 2 characters, 4 numbers and then 2 characters for example 'RG5108AC'.
+The initialism is likely to be familiar to NDelius users without needing to be spelt out. The format is 1 letter and 6 numbers, for example X123456.
 
 {% endaccordionSection %}
 {% accordionSection "D" %}
