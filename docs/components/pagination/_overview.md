@@ -14,8 +14,13 @@ eleventyComputed:
 The pagination component helps users to navigate between pages. It reduces the page load for long tables and lists (including search results and filtered lists). 
 
 The component contains:
-- the [GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/), the 'pagination controls'
+- the [GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/) (the 'pagination controls')
 - a results count 
+
+If there's only one
+The pagination controls will not show if there's only one page of results. You can  set the results count to show, though. 
+
+INSERT CODED EXAMPLE. 
 
 ### The results count
 
@@ -26,7 +31,7 @@ The results count has 4 variants. These are the:
 - total results  
 - current and total pages
 
-The results count is aligned on the left under the pagination controls. This is to help magnifier users. 
+The results count is aligned to the left under the pagination controls. This is to help magnifier users. 
 
 You can read [guidance on choosing a results count](/components/pagination/#how-to-use-tab).
 
@@ -37,27 +42,27 @@ This pagination component can help users:
 - identify how many results there are
 - know where they are in the results
 
-Use pagination instead of automatically loading more results when the user reaches the bottom of the page (infinite scroll). Infinite scroll introduces usability problems, including making it challenging for a user to reach the page footer. 
+Use pagination instead of automatically loading more results when the user reaches the bottom of the page (infinite scroll). Infinite scroll introduces usability problems, including making it hard for users to reach the page footer. 
 
 ### When not to use
 
 Do not use this component:
-- to help users navigate between content pages - use the [GOV.UK 'block' style of pagination](https://design-system.service.gov.uk/components/pagination/#for-navigating-between-content-pages) for that
-- if you do not need the results count - use the [GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/) instead
+- to help users navigate between content pages &ndash; use the [GOV.UK 'block' style of pagination](https://design-system.service.gov.uk/components/pagination/#for-navigating-between-content-pages) instead
+- if the results count is not needed &ndash; just use the [GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/) on its own
 
 ### Things to consider
 
-You'll likely need to combine pagination with other ways of helping users find items from very long lists. Consider the:
+You'll probably need to combine pagination with other ways of helping users find items from very long lists. Consider the:
 - [search component](/components/search/)
 - [filter component](/components/filter/)
 - [sortable table component](/components/sortable-table/)
 
-People with dyscalculia may find pagination challenging, especially when it's used to display a large amount of results. Try:
+People with dyscalculia may find pagination difficult, especially when it's used to display a large amount of results. Try:
 
 - having more results per page (to reduce the number of pages)
 - giving 'results' a more meaningful name, such as cases, people or referrals (to create context) 
 
-IF YOU HAVE feedback on improving this for people with dyscalculia LINK TO GET HELP AND CONTRIBUTE.  
+Please contribute any feedback on improving this component for people with dyscalculia to the [pagination discussion on Github](https://github.com/ministryofjustice/moj-frontend/discussions/708).
 
 ### Similar or linked components
 

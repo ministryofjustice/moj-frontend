@@ -9,17 +9,17 @@ eleventyComputed:
 
 ## How to use
 
-You can read [guidance on using the GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/), which is a part of this component.
-
-If there's only one page of items, gov pag will not SHOW. You can still set the RESULTS count to show though. DO CODED EXAMPLES.  
-
 ### Using the pagination controls
 
-You can change the numbers that are passed in to the component. For example, for alphabetised lists you could replace the numbers with letters. CODED EXAMPLE HERE.  
+You can read [guidance on using the GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/) or 'pagination controls'. This is a part of this component.
+
+You can change the numbers that are passed in to the component. For example, for alphabetised lists you could replace the numbers with letters. 
+
+ADD CODED EXAMPLE.  
 
 ### Using the results count variant
 
-INSERT IMAGE OF THE SEARCH RESULTS
+ADD CODED EXAMPLE.  
 
 When choosing a results count for the pagination component consider:
 - information that's already on the page, for example the number of results in a heading
@@ -33,8 +33,8 @@ The results count variant is under the pagination controls. Do not move it, beca
 
 - if research shows that users want to browse or compare results (rather than look for a particular one)
 - the time users will have to spend navigating between pages
-- the row height of each result 
-- the cognitive load of the page
+- the height of each result 
+- the page's cognitive load 
 
 ### Results-only pages
 
