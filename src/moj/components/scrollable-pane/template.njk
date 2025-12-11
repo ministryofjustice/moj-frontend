@@ -1,0 +1,5 @@
+{% from "govuk/macros/attributes.njk" import govukAttributes %}
+
+<div class="moj-scrollable-pane" {% if params.label or params.labelledBy %} role="region" tabindex="0" {% endif %} {% if params.label %} aria-label="{{ params.label}}" {% elif params.labelledBy %} aria-label="{{ params.labelledBy }}" {% endif %} >
+ {{ caller() }}
+</div>
