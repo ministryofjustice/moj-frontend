@@ -16,9 +16,9 @@
   }
 
   &--bright-purple {
-    border: 2px solid govuk-colour("bright-purple");
+    border: 2px solid govuk-colour("magenta", $variant: "shade-25");
     color: govuk-colour("white");
-    background-color: govuk-colour("bright-purple");
+    background-color: govuk-colour("magenta", $variant: "shade-25");
   }
 
   &--red,
@@ -49,8 +49,8 @@
   }
 
   &--grey {
-    border: 2px solid govuk-colour("dark-grey");
+    border: 2px solid govuk-colour("black", $variant: "tint-25");
     color: govuk-colour("white");
-    background-color: govuk-colour("dark-grey");
+    background-color: govuk-colour("black", $variant: "tint-25");
   }
 }
