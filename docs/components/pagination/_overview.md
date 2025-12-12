@@ -20,8 +20,6 @@ The component contains:
 If there's only one
 The pagination controls will not show if there's only one page of results. You can  set the results count to show, though. 
 
-INSERT CODED EXAMPLE. 
-
 ### The results count
 
 The results count has 4 variants. These are the:  
