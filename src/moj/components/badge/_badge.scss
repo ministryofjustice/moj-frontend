@@ -7,13 +7,13 @@
 .moj-badge {
   display: inline-block;
   padding: 0 govuk-spacing(1);
-  border: 2px solid $govuk-brand-colour;
+  border: 2px solid govuk-functional-colour(brand);
   outline: 2px solid transparent;
   outline-offset: -2px;
-  color: $govuk-brand-colour;
+  color: govuk-functional-colour(brand);
   text-transform: uppercase;
   vertical-align: middle;
-  @include govuk-font($size: 14, $weight: "bold");
+  @include govuk-font($size: 16, $weight: "bold");
 
   &--purple {
     border-color: govuk-colour("purple");
