@@ -65,11 +65,11 @@
 
   &:link,
   &:visited {
-    color: $govuk-link-colour;
+    color: govuk-functional-colour(link);
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: govuk-functional-colour(link-hover);
   }
 
   &:focus {
@@ -92,7 +92,7 @@
 
   &[aria-current] {
     position: relative;
-    color: $govuk-link-colour;
+    color: govuk-functional-colour(link);
     font-weight: bold;
     text-decoration: none;
 
@@ -104,14 +104,14 @@
       left: 0;
       width: 100%;
       height: 5px;
-      background-color: $govuk-link-colour;
+      background-color: govuk-functional-colour(link);
     }
 
     &:hover {
-      color: $govuk-link-hover-colour;
+      color: govuk-functional-colour(link-hover);
 
       &::before {
-        background-color: $govuk-link-hover-colour;
+        background-color: govuk-functional-colour(link-hover);
       }
     }
 

@@ -40,9 +40,9 @@
 
 .moj-add-another__heading:focus {
   outline: none;
-  color: $govuk-focus-text-colour;
-  background-color: $govuk-focus-colour;
+  color: govuk-functional-colour(focus-text);
+  background-color: govuk-functional-colour(focus);
   box-shadow:
-    0 -2px $govuk-focus-colour,
-    0 4px $govuk-focus-text-colour;
+    0 -2px govuk-functional-colour(focus),
+    0 4px govuk-functional-colour(focus-text);
 }
