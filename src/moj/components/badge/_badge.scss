@@ -21,8 +21,8 @@
   }
 
   &--bright-purple {
-    border-color: govuk-colour("bright-purple");
-    color: govuk-colour("bright-purple");
+    border-color: govuk-colour("magenta", $variant: "shade-25");
+    color: govuk-colour("magenta", $variant: "shade-25");
   }
 
   &--red {
@@ -46,8 +46,8 @@
   }
 
   &--grey {
-    border-color: govuk-colour("dark-grey");
-    color: govuk-colour("dark-grey");
+    border-color: govuk-colour("black", $variant: "tint-25");
+    color: govuk-colour("black", $variant: "tint-25");
   }
 
   &--large {

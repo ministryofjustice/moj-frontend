@@ -72,7 +72,7 @@
   border-bottom: 1px solid $moj-button-menu-color;
   border-radius: 0;
   color: $govuk-text-colour;
-  background-color: govuk-colour("light-grey");
+  background-color: govuk-colour("black", $variant: "tint-95");
   text-align: left;
   vertical-align: top;
   cursor: pointer;
