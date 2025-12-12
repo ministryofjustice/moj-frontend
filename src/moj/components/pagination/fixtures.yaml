@@ -32,16 +32,16 @@ examples:
   - name: one page
     options:
       items:
-      - text: 1
-        href: '#'
-        selected: false
+        - text: 1
+          href: '#'
+          selected: false
 
   - name: one page with results window and count
     options:
       items:
-      - text: 1
-        href: '#'
-        selected: false
+        - text: 1
+          href: '#'
+          selected: false
       results:
         from: 1
         to: 7
@@ -50,20 +50,20 @@ examples:
   - name: one page with results count
     options:
       items:
-      - text: 1
-        href: '#'
-        selected: false
+        - text: 1
+          href: '#'
+          selected: false
       results:
         count: 7
 
   - name: one page with pages count
     options:
       items:
-      - text: 1
-        href: '#'
-        selected: false
+        - text: 1
+          href: '#'
+          selected: false
       results:
-       pages:
+        pages:
           current: 1
           count: 1
 
@@ -100,6 +100,3 @@ examples:
         pages:
           current: 2
           count: 3
-
-
-
