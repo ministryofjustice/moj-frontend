@@ -23,7 +23,7 @@
   h2 {
     margin-top: 0;
     padding-bottom: 25px;
-    border-bottom: 1px solid govuk-colour("dark-grey");
+    border-bottom: 1px solid govuk-colour("black", $variant: "tint-25");
     font-size: 24px;
   }
 

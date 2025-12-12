@@ -108,7 +108,7 @@
   &[aria-disabled="true"],
   &[aria-disabled="true"]:hover {
     color: $govuk-text-colour;
-    background-color: govuk-colour("light-grey");
+    background-color: govuk-colour("black", $variant: "tint-95");
     text-decoration: line-through;
     cursor: not-allowed;
   }
@@ -265,6 +265,7 @@
     }
   }
 }
+
 // stylelint-enable selector-no-qualifying-type
 
 .moj-datepicker__wrapper {

@@ -6,7 +6,7 @@
    ========================================================================== */
 
 .moj-primary-navigation {
-  background-color: govuk-colour("light-grey");
+  background-color: govuk-colour("black", $variant: "tint-95");
 }
 
 .moj-primary-navigation__container {
@@ -23,6 +23,7 @@
 
 .moj-primary-navigation__nav {
   text-align: left;
+
   @include govuk-media-query($from: desktop) {
     display: inline-block;
     vertical-align: middle;
