@@ -5,9 +5,9 @@
    ========================================================================== */
 
 .moj-tag {
-  border: 2px solid $govuk-brand-colour;
+  border: 2px solid govuk-functional-colour(brand);
   color: govuk-colour("white");
-  background-color: $govuk-brand-colour;
+  background-color: govuk-functional-colour(brand);
 
   &--purple {
     border: 2px solid govuk-colour("purple");

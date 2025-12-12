@@ -36,7 +36,7 @@
     flex-grow: 1;
 
     &--grey {
-      border-left-color: $govuk-border-colour;
+      border-left-color: govuk-functional-colour(border);
     }
 
     &--blue {
