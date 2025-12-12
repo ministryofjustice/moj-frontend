@@ -1,6 +1,7 @@
 @use "../../vendor/govuk-frontend" as *;
 
-.moj-scrollable-pane {
+.moj-scrollable-pane[role="region"][tabindex][aria-label],
+.moj-scrollable-pane[role="region"][tabindex][aria-labelledby] {
   // stylelint-disable scss/dollar-variable-pattern
   $scrollableBgColor: govuk-colour("white");
   $scrollableTransparentColor: rgba(255, 255, 255, 0);
