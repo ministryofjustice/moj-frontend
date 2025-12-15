@@ -8,7 +8,7 @@ FROM base AS staging-build
 COPY package-lock.json package-lock.json
 COPY package/package.json package/package.json
 COPY package.json package.json
-RUN npm ci
+RUN npm run setup
 
 COPY docs docs
 COPY 11ty 11ty
@@ -28,7 +28,7 @@ FROM base AS preview-build
 COPY package-lock.json package-lock.json
 COPY package/package.json package/package.json
 COPY package.json package.json
-RUN npm ci
+RUN npm run setup
 
 COPY docs docs
 COPY 11ty 11ty
@@ -55,7 +55,7 @@ RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 
 RUN git clone git@github.com:ministryofjustice/moj-frontend.git .
 
-RUN npm install
+RUN npm run setup
 RUN ENV="production" npm run build:package
 RUN ENV="production" npm run build:docs
 
@@ -83,7 +83,7 @@ COPY robots.txt /usr/share/nginx/html
 
 FROM base AS staging-express-app
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
+RUN npm run setup-omit-dev
 COPY src src
 COPY app app
 COPY 11ty 11ty
@@ -99,7 +99,7 @@ CMD ["node", "app/app.js"]
 
 FROM base AS preview-express-app
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
+RUN npm run setup-omit-dev
 COPY src src
 COPY app app
 COPY 11ty 11ty
@@ -115,7 +115,7 @@ CMD ["node", "app/app.js"]
 
 FROM base AS production-express-app
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
+RUN npm run setup-omit-dev
 COPY src src
 COPY app app
 COPY 11ty 11ty
