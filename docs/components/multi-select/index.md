@@ -2,7 +2,7 @@
 title: Multi select
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Use the multi select component to let users select multiple items in a list."
+lede: "Use the multi select component to let users select multiple items in a list."
 ---
 
 {% example template="examples/default", colocated=true, height=650 %}

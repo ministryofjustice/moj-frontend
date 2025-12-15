@@ -2,7 +2,7 @@
 title: Multi file upload
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Use the multi file upload component to help users upload multiple files at the same time, on a regular basis."
+lede: "Use the multi file upload component to help users upload multiple files at the same time, on a regular basis."
 ---
 
 {% example template="examples/default", colocated=true, height=550 %}

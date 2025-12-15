@@ -2,7 +2,7 @@
 title: Side navigation
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Use the side navigation component to let users navigate sub sections in a system or service."
+lede: "Use the side navigation component to let users navigate sub sections in a system or service."
 ---
 
 {% example template="examples/default", colocated=true, height=250 %}

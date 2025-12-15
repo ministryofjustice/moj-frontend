@@ -2,7 +2,7 @@
 title: Scrollable pane
 status: To be reviewed
 statusDate: November 2022
-excerpt: "Use the scrollable pane component when you have content (typically a table) which unavoidably overflows the page."
+lede: "Use the scrollable pane component when you have content (typically a table) which unavoidably overflows the page."
 ---
 
 {% example template="examples/default", colocated=true, height=470 %}

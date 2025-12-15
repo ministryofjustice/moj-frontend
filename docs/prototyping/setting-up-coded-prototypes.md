@@ -5,11 +5,11 @@ showHelp: true
 title: Setting up coded prototypes
 redirect_from: /get-started/prototyping
 lede: Learn how to create prototypes using the GOV.UK Prototype Kit and the MOJ Design System.
+showLede: true
 eleventyNavigation:
   key: Setting up coded prototypes
   parent: Prototyping
   order: 20
-  excerpt: "Learn how to create prototypes using the GOV.UK Prototype Kit and the MOJ Design System."
 ---
  
 ## How to add the MOJ Design System to a prototype

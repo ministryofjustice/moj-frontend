@@ -2,7 +2,7 @@
 title: Primary navigation
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Use the primary navigation component to let users navigate and search your service."
+lede: "Use the primary navigation component to let users navigate and search your service."
 ---
 
 {% example template="examples/default", colocated=true, height=150 %}
