@@ -2,7 +2,7 @@
 title: Timeline
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Use the timeline component to show a linear record of what’s happened."
+lede: "Use the timeline component to show a linear record of what’s happened."
 ---
 
 {% example template="examples/default", colocated=true, height=454 %}

@@ -3,7 +3,7 @@ title: Password reveal
 statusDate: November 2024
 type: component
 redirect_from: /components/password-reveal
-excerpt: "Use the password reveal component to let users check their password safely."
+lede: "Use the password reveal component to let users check their password safely."
 ---
 
 {% banner "This component is archived" %}

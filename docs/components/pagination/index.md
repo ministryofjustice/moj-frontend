@@ -2,7 +2,7 @@
 title: Pagination
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Use the pagination component to let users browse through a long list."
+lede: "Use the pagination component to let users browse through a long list."
 ---
 
 {% banner "The GOV.UK Design System has a similar component" %}

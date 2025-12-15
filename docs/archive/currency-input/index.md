@@ -3,7 +3,7 @@ title: Currency input
 statusDate: June 2021
 type: component
 redirect_from: /components/currency-input
-excerpt: "The currency input component helped users enter an amount of money in a specified currency."
+lede: "The currency input component helped users enter an amount of money in a specified currency."
 ---
 
 {% banner "This component is archived" %}

@@ -2,7 +2,7 @@
 title: Page header actions
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Use the page header actions component for certain actions."
+lede: "Use the page header actions component for certain actions."
 ---
 
 {% example template="examples/default", colocated=true, height=150 %}

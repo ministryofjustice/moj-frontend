@@ -2,7 +2,7 @@
 title: Ticket Panel
 status: To be reviewed
 statusDate: July 2022
-excerpt: "Break up content or actions into visually distinct groups of information."
+lede: "Break up content or actions into visually distinct groups of information."
 ---
 
 {% example template="examples/default", colocated=true, height=300 %}

@@ -1,13 +1,13 @@
 ---
 layout: layouts/content.njk
 subsection: Ethics
-title: Preparing for a service assessment
 lede: Learn how to prepare for service assessments at different phases of delivery.
+showLede: true
+title: Preparing for a service assessment
 eleventyNavigation:
   key: Preparing for a service assessment
   parent: Ethics
   order: 10
-  excerpt: "Learn how to prepare for service assessments at different phases of delivery."
 ---
 
 Your team should consider the ethical impact of your service during each phase of its delivery --- discovery, alpha, beta and live.

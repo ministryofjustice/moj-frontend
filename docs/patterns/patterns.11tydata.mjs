@@ -7,7 +7,7 @@ export default {
       key: (data) => data.title,
       parent: (data) => (data.index ? 'MOJ building blocks' : 'Patterns'),
       order: (data) => data.order ?? data.title,
-      excerpt: (data) => data.excerpt,
+      lede: (data) => data.lede,
       url: (data) => data.navUrl
     }
   }

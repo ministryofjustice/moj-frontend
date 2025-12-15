@@ -4,11 +4,11 @@ subsection: Guidance
 title: Content style guide
 permalink: /content-standards/style-guide/
 lede: This content style guide applies to services and guidance at MOJ. Use it alongside the <a href="https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style">GOV.UK style guide</a>.
+showLede: true
 eleventyNavigation:
   key: Content style guide
   parent: Guidance
   order: 10
-  excerpt: "The MOJ A to Z content style guide covering style, spelling and grammar conventions."
 ---
 
 <p class="govuk-!-margin-bottom-0">

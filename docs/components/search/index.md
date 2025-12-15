@@ -2,7 +2,7 @@
 title: Search
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Use the search component to let users search by word or phrase."
+lede: "Use the search component to let users search by word or phrase."
 ---
 
 {% example template="examples/default", colocated=true, height=200 %}

@@ -3,11 +3,11 @@ layout: layouts/content.njk
 subsection: Ethics
 title: Designing ethical services
 lede: "Learn why you should consider ethics when designing and building digital services."
+showLede: true
 eleventyNavigation:
   key: Designing ethical services
   parent: Ethics
   order: 0
-  excerpt: "Learn why you should consider ethics when designing and building digital services."
 ---
 
 ## How to consider ethics

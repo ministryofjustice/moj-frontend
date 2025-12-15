@@ -3,7 +3,7 @@ title: Task list pages
 type: page
 statusDate: December 2023
 redirect_from: [docs/patterns/task-list.md, /pages/task-list]
-excerpt: "The task list page was in use before the GOV.UK Design System developed one."
+lede: "The task list page was in use before the GOV.UK Design System developed one."
 ---
 
 {% banner "This page is archived" %}
