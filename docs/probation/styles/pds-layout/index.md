@@ -3,9 +3,11 @@ title: Layout
 status: Official
 type: style
 statusDate: December 2025
-excerpt: "The layout guidance covers the recommended page width for probation products on the Probation Digital Services (PDS) platform."
-lede: "Unified design creates a consistent user experience across probation services on the Probation Digital Services (PDS) platform."
+excerpt: "This guidance covers the recommended page width for probation products on the Probation Digital Services (PDS) platform."
+lede: "This guidance covers the recommended page width for probation products on the Probation Digital Services (PDS) platform."
 ---
+
+Unifying page widths across probation services creates a consistent experience for users.
 
 For all other layout recommendations, follow the [GOV.UK Design System layout guidance](https://design-system.service.gov.uk/styles/layout/).
 
