@@ -7,7 +7,6 @@ eleventyNavigation:
   key: Benefits
   parent: About the Design System
   order: 10
-  excerpt: "Benefits of using the Design System."
 ---
 
 

@@ -8,7 +8,7 @@ export default {
       parent: (data) =>
         data.index ? 'Probation building blocks' : 'Probation styles',
       order: (data) => data.order ?? data.title,
-      excerpt: (data) => data.excerpt,
+      lede: (data) => data.lede,
       url: (data) => data.navUrl
     }
   }

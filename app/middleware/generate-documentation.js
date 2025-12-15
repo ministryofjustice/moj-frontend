@@ -44,7 +44,6 @@ title: ${titleize(componentName)}
 tabs: true
 status: Experimental
 statusDate: ${moment().format('MMMM YYYY')}
-excerpt: "${details?.briefDescription || ''}"
 lede: "${details?.briefDescription || ''}"
 ${data['/your-details']?.fullName ? (data['/your-details']?.fullName === 'Not shared' ? '' : `contributorName: ${data['/your-details']?.fullName}`) : ''}
 ${data['/your-details']?.teamName ? (data['/your-details']?.teamName === 'Not shared' ? '' : `contributorTeam: ${data['/your-details']?.teamName}`) : ''}

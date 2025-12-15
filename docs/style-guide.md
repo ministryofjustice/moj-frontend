@@ -8,7 +8,6 @@ eleventyNavigation:
   key: Content style guide
   parent: Guidance
   order: 10
-  excerpt: "The MOJ A to Z content style guide covering style, spelling and grammar conventions."
 ---
 
 <p class="govuk-!-margin-bottom-0">

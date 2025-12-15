@@ -7,7 +7,6 @@ eleventyNavigation:
   key: Building block statuses
   parent: About the Design System
   order: 20
-  excerpt: "Building block statuses."
 ---
 
 ## Overview
