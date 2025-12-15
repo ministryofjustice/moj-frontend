@@ -3,8 +3,8 @@ title: Modal dialog
 tabs: true
 status: Experimental
 statusDate: December 2025
-excerpt: ""
 lede: ""
+showLede: true
 contributorName: Chris Pymm
 contributorTeam: MOJ Forms
 ---
