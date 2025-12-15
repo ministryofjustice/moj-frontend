@@ -2,7 +2,7 @@
 title: Filter a list
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Use this pattern to help users refine a set of items either in a list or a set of search results."
+lede: "Use this pattern to help users refine a set of items either in a list or a set of search results."
 ---
 
 {% example template="examples/default", colocated=true, height=1050 %}

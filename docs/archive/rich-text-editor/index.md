@@ -3,7 +3,7 @@ title: Rich text editor
 type: component
 statusDate: April 2022
 redirect_from: /components/rich-text-editor
-excerpt: "The rich text editor component allowed users to format their input in a text area."
+lede: "The rich text editor component allowed users to format their input in a text area."
 ---
 
 {% banner "This component is archived" %}
