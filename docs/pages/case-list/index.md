@@ -3,7 +3,7 @@ title: Case list pages
 status: To be reviewed
 statusDate: September 2021
 redirect_from: docs/patterns/case-list.md
-excerpt: "Use the case list page to make pieces of information about a case easier to scan, prioritise and action for users."
+lede: "Use the case list page to make pieces of information about a case easier to scan, prioritise and action for users."
 ---
 
 <div class="govuk-form-group">

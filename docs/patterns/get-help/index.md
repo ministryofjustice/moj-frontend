@@ -2,7 +2,7 @@
 title: Get help
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Help users get help from within the digital service."
+lede: "Help users get help from within the digital service."
 ---
 
 {% example template="examples/default", colocated=true, height=250 %}
