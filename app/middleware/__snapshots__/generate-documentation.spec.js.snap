@@ -106,7 +106,6 @@ title: Component! with@ special#chars
 tabs: true
 status: Experimental
 statusDate: January 2023
-excerpt: "Brief description here."
 lede: "Brief description here."
 contributorName: Special User
 
@@ -221,7 +220,6 @@ title: Unknown-component
 tabs: true
 status: Experimental
 statusDate: January 2023
-excerpt: ""
 lede: ""
 
 
@@ -354,7 +352,6 @@ title: Test component
 tabs: true
 status: Experimental
 statusDate: January 2023
-excerpt: "This is a brief description."
 lede: "This is a brief description."
 
 contributorTeam: Test team
@@ -534,7 +531,6 @@ title: Test component
 tabs: true
 status: Experimental
 statusDate: January 2023
-excerpt: "This is a brief description."
 lede: "This is a brief description."
 contributorName: Test User
 contributorTeam: Test team
