@@ -24,7 +24,9 @@
         items: paginationItems,
         previous: params.previous,
         next: params.next,
-        classes: "moj-pagination__pagination " + (params.classes if params.classes)
+        landmarkLabel: params.landmarkLabel,
+        classes: "moj-pagination__pagination " + (params.classes if params.classes),
+        attributes: params.attributes
       })
     }}
   {% endif %}

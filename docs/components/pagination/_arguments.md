@@ -1,10 +1,11 @@
-| Name     | Type   | Required | Description                                                                                                             |
-| -------- | ------ | -------- | ----------------------------------------------------------------------------------------------------------------------- |
-| items    | array  | Yes      | An array of pages to display. See [items](#items).                                                                      |
-| results  | object | No       | Optional object describing the total number of results and which ones are on the current page. See [results](#results). |
-| previous | object | No       | A link to the previous page. See [link](#link).                                                                         |
-| next     | object | No       | A link to the previous page. See [link](#link).                                                                         |
-| classes  | string | No       | Any additional classes that you want to add to the pagination.                                                          |
+| Name          | Type   | Required | Description                                                                                                             |
+| ------------- | ------ | -------- | ----------------------------------------------------------------------------------------------------------------------- |
+| items         | array  | Yes      | An array of pages to display. See [items](#items).                                                                      |
+| previous      | object | No       | A link to the previous page. See [link](#link).                                                                         |
+| next          | object | No       | A link to the previous page. See [link](#link).                                                                         |
+| results       | object | No       | Optional object describing the total number of results and which ones are on the current page. See [results](#results). |
+| landmarkLabel | string | No       | The label for the navigation landmark that wraps the pagination. Defaults to "Pagination".                              |
+| classes       | string | No       | Any additional classes that you want to add to the pagination.                                                          |
 
 ### items
 
