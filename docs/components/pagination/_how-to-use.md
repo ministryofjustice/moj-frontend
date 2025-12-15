@@ -9,23 +9,30 @@ eleventyComputed:
 
 ## How to use
 
+The component has 2 parts:
+- the [GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/) (the 'pagination controls')
+- a results count 
+
 ### Using the pagination controls
 
 You can read [guidance on using the GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/) or 'pagination controls'. This is a part of this component.
 
-You can change the numbers that are passed in to the component. For example, for alphabetised lists you could replace the numbers with letters. 
+You can change the way that results are displayed in the pagination controls. For example, for alphabetised lists you could replace the numbers with letters. 
 
 ADD CODED EXAMPLE.  
 
-### Using the results count variant
+### Using the results count
+
+This pagination component has 4 variants of the results count. 
 
 ADD CODED EXAMPLE.  
 
-When choosing a results count for the pagination component consider:
+When choosing your variant consider:
+
 - information that's already on the page, for example the number of results in a heading
 - what's relevant to the user, for example whether the results range means anything to them
 
-The results count variant is under the pagination controls. Do not move it, because this may cause issues for magnifier users. 
+The results count is under the pagination controls. Do not move it, because this may cause issues for magnifier users. 
 
 ### Setting results per page
 

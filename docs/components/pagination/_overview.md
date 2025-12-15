@@ -13,12 +13,11 @@ eleventyComputed:
 
 The pagination component helps users to navigate between pages. It reduces the page load for long tables and lists (including search results and filtered lists). 
 
-The component contains:
+The component has 2 parts:
 - the [GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/) (the 'pagination controls')
 - a results count 
 
-If there's only one
-The pagination controls will not show if there's only one page of results. You can  set the results count to show, though. 
+The pagination controls will not show if there's only 1 page of results, but you can still set the results count to show. 
 
 ### The results count
 
@@ -29,14 +28,17 @@ The results count has 4 variants. These are the:
 - total results  
 - current and total pages
 
+INSERT CODED EXAMPLE 
+
 The results count is aligned to the left under the pagination controls. This is to help magnifier users. 
 
 You can read [guidance on choosing a results count](/components/pagination/#how-to-use-tab).
 
 ### When to use
 
-This pagination component can help users:
-- navigate large amounts of results
+This pagination component helps users:
+
+- navigate long lists of results
 - identify how many results there are
 - know where they are in the results
 
@@ -55,12 +57,12 @@ You'll probably need to combine pagination with other ways of helping users find
 - [filter component](/components/filter/)
 - [sortable table component](/components/sortable-table/)
 
-People with dyscalculia may find pagination difficult, especially when it's used to display a large amount of results. Try:
+People with dyscalculia may find pagination difficult to use, especially when it's used to display a large amount of results. Try:
 
 - having more results per page (to reduce the number of pages)
-- giving 'results' a more meaningful name, such as cases, people or referrals (to create context) 
+- creating context by giving 'results' a more meaningful name, such as cases, people or referrals
 
-Please contribute any feedback on improving this component for people with dyscalculia to the [pagination discussion on Github](https://github.com/ministryofjustice/moj-frontend/discussions/708).
+Please add any feedback on improving this component for people with dyscalculia to the [pagination discussion on Github](https://github.com/ministryofjustice/moj-frontend/discussions/708).
 
 ### Similar or linked components
 
