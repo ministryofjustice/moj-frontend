@@ -2,7 +2,7 @@
 title: Add another
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
+lede: "Use this component when users need to add similar information a couple of times, such as several names for a single application."
 ---
 
 {% example template="examples/default", colocated=true, height=664 %}

@@ -4,11 +4,11 @@ subsection: Setup for production
 showHelp: true
 title: Import MOJ Frontend CSS
 lede: Learn how to use the CSS from MOJ Frontend and GOV.UK Frontend.
+showLede: true
 eleventyNavigation:
   key: Import CSS
   parent: Setup for production
   order: 50
-  excerpt: "To use the CSS from MOJ Frontend and GOV.UK Frontend, you can either add MOJ Frontend and GOV.UK Frontend’s CSS files to your HTML or load the CSS files into your own Sass file."
 ---
 
 To use the CSS from MOJ Frontend and GOV.UK Frontend, you can either:

@@ -7,11 +7,11 @@ redirect_from:
   - /get-started/production
   - /production/install-moj-frontend
 lede: MOJ Frontend provides the elements that developers need to create consistent, easy-to-use, fast and secure government services.
+showLede: true
 eleventyNavigation:
   key: MOJ Frontend
   parent: Production
   order: 10
-  excerpt: "To start using MOJ styles, components and patterns contained here, you’ll need to include MOJ Frontend in your project."
 ---
 
 ## How to use MOJ Frontend

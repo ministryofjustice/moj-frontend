@@ -2,7 +2,7 @@
 title: Identity bar
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Use the identity bar component to give users context of where they are within a service such as viewing a case."
+lede: "Use the identity bar component to give users context of where they are within a service such as viewing a case."
 ---
 
 {% example template="examples/default", colocated=true, height=150 %}
