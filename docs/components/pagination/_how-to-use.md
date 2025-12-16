@@ -21,18 +21,28 @@ You can read [guidance on using the GOV.UK pagination component](https://design-
 
 You can change the way that results are displayed in the pagination controls. For example, for alphabetised lists you could replace the numbers with letters. 
 
-ADD CODED EXAMPLE.  
+{% example template="examples/alphabetical", colocated=true, height=125 %}
 
 ### Using the results count
 
 You can choose how to display the results using one of the following:
 
-- results range for the current page, and total results
-- results range for the current page 
-- total results  
-- current and total pages
+#### Results range for the current page, and total results
 
-ADD CODED EXAMPLE.  
+{% example template="examples/results-range-and-total", colocated=true, height=125 %}
+
+#### Results range for the current page
+
+{% example template="examples/results-range", colocated=true, height=125 %}
+
+#### Total results
+
+{% example template="examples/results-total", colocated=true, height=125 %}
+
+#### Current and total pages
+
+{% example template="examples/results-pages", colocated=true, height=125 %}
+
 
 When choosing a variant consider:
 
