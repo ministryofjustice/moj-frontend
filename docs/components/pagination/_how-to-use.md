@@ -13,6 +13,8 @@ The component has 2 parts:
 - the [GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/) (the 'pagination controls')
 - a results count 
 
+The pagination controls will not show if there's only 1 page of results, but you can still set the results count to show. 
+
 ### Using the pagination controls
 
 You can read [guidance on using the GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/) or 'pagination controls'. This is a part of this component.
@@ -23,20 +25,25 @@ ADD CODED EXAMPLE.
 
 ### Using the results count
 
-This pagination component has 4 variants of the results count. 
+You can choose how to display the results using one of the following:
+
+- results range for the current page, and total results
+- results range for the current page 
+- total results  
+- current and total pages
 
 ADD CODED EXAMPLE.  
 
-When choosing your variant consider:
+When choosing a variant consider:
 
 - information that's already on the page, for example the number of results in a heading
 - what's relevant to the user, for example whether the results range means anything to them
 
-The results count is under the pagination controls. Do not move it, because this may cause issues for magnifier users. 
+The results count is aligned to the left under the pagination controls. Do not move it, because this may cause issues for magnifier users. 
 
-### Setting results per page
+### The number of results on each page
 
- Results per page are controlled in a table or list component, rather than by pagination. When choosing the amount per page consider:
+ The number of results on each page is controlled by a table or list component, rather than by pagination. When choosing the amount per page consider:
 
 - if research shows that users want to browse or compare results (rather than look for a particular one)
 - the time users will have to spend navigating between pages
