@@ -95,7 +95,7 @@ test.describe('pagination', () => {
     test('displays results', async () => {
       await expect($component).toBeAttached()
       await expect($results).toBeVisible()
-      await expect($results).toContainText('Showing 1 to 7 of 7 results')
+      await expect($results).toContainText('Showing 1 to 7 of 7 total results')
     })
   })
 
@@ -187,7 +187,9 @@ test.describe('pagination', () => {
 
     test('results should be present', async () => {
       await expect($results).toBeVisible()
-      await expect($results).toContainText('Showing 11 to 20 of 28 results')
+      await expect($results).toContainText(
+        'Showing 11 to 20 of 28 total results'
+      )
     })
   })
 
@@ -230,8 +232,7 @@ test.describe('pagination', () => {
     test('results should be present', async () => {
       await expect($results).toBeVisible()
       await expect($results).not.toContainText('Showing 11 to 20 ')
-      await expect($results).not.toContainText('total')
-      await expect($results).toContainText('8 results')
+      await expect($results).toContainText('8 total results')
     })
   })
 

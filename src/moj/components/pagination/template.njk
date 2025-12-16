@@ -40,7 +40,7 @@
         {% set results_string = "Page " + params.results.pages.current  + " of " + params.results.pages.count %}
       {% elif params.results.from and params.results.to  %}
         {% if params.results.count %}
-          {% set results_string = "Showing " + params.results.from  + " to " + params.results.to + " of " + params.results.count + " " + results_term %}
+          {% set results_string = "Showing " + params.results.from  + " to " + params.results.to + " of " + params.results.count + " total " + results_term %}
         {% else %}
           {% set results_string = "Showing " + results_term + " " + params.results.from  + " to " + params.results.to %}
         {% endif %}
@@ -49,7 +49,7 @@
       {% endif %}
     {% else %}
       {% if params.results.count %}
-        {% set results_string = params.results.count + " " + results_term %}
+        {% set results_string = params.results.count + " total " + results_term %}
       {% endif %}
     {% endif %}
 
