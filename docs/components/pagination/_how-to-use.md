@@ -25,7 +25,7 @@ You can change the way that results are displayed in the pagination controls. Fo
 
 ### Using the results count
 
-You can choose how to display the results using one of the following:
+You can choose how to display the results using 1 of the 4 result count variants.
 
 #### Results range for the current page, and total results
 
