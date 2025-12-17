@@ -1,12 +1,10 @@
 ---
 layout: layouts/example.njk
 title: Pagination (example)
-redirect_from: examples/pagination
 ---
 
 {%- from "moj/components/pagination/macro.njk" import mojPagination -%}
 {% from "govuk/components/pagination/macro.njk" import govukPagination %}
-
 
 {{ mojPagination({
   items: [{
@@ -25,12 +23,6 @@ redirect_from: examples/pagination
     text: "7",
     href: "#"
   }],
-  results: {
-    count: 157,
-    from: 26,
-    to: 50,
-    text: "results"
-  },
   previous: {
     text: "Previous",
     href: "#"
@@ -38,7 +30,11 @@ redirect_from: examples/pagination
   next: {
     text: "Next",
     href: "#"
+  },
+  results: {
+    count: 66,
+    from: 11,
+    to: 20,
+    text: "results"
   }
 }) }}
-
-
