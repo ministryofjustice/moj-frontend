@@ -1,3 +1,15 @@
+# [7.2.0](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.1...v7.2.0) (2025-12-17)
+
+
+### Bug Fixes
+
+* add top margin ([#2085](https://github.com/ministryofjustice/moj-frontend/issues/2085)) ([a10e777](https://github.com/ministryofjustice/moj-frontend/commit/a10e777aad3aa0659a544ff5b33a4b5a954b54cb))
+
+
+### Features
+
+* pagination component updates ([#2074](https://github.com/ministryofjustice/moj-frontend/issues/2074)) ([f546536](https://github.com/ministryofjustice/moj-frontend/commit/f5465360648cc37344e1b99df1dc56f8cc0ff299))
+
 ## [7.1.1](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.0...v7.1.1) (2025-12-03)
 
 
