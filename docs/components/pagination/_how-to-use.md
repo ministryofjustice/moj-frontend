@@ -19,10 +19,6 @@ The pagination controls will not show if there's only 1 page of results, but you
 
 You can read [guidance on using the GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/) or 'pagination controls'. This is a part of this component.
 
-You can change the way that results are displayed in the pagination controls. For example, for alphabetised lists you could replace the numbers with letters. 
-
-{% example template="examples/alphabetical", colocated=true, height=125 %}
-
 ### Using the results count
 
 You can choose how to display the results using 1 of the 4 result count variants.

@@ -11,13 +11,13 @@ eleventyComputed:
 
 ## Overview
 
-The pagination component helps users to navigate between pages. It reduces the page load for long tables and lists (including search results and filtered lists).
-
-This component helps users:
+The pagination component helps users to navigate between pages. It also enables users to: 
 
 - navigate long lists of results
 - identify how many results there are
 - know where they are in the results
+
+It can also reduce the page load for long tables and lists (including search results and filtered lists).
 
 ### The component parts
 
