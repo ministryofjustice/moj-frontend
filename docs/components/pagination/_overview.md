@@ -19,8 +19,10 @@ This component helps users:
 - identify how many results there are
 - know where they are in the results
 
+### The component parts
 
 The component has 2 parts:
+
 - the [GOV.UK pagination component](https://design-system.service.gov.uk/components/pagination/) (the 'pagination controls')
 - a results count 
 
