@@ -32,7 +32,7 @@ jobs:
           node-version-file: .nvmrc
 
       - name: npm install
-        run: npm ci
+        run: npm run setup
 
       - name: TypeScript compiler
         run: npm run lint:types

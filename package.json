@@ -43,7 +43,8 @@
     "watch:app": "nodemon --delay 1000ms app/app.js",
     "dev:docker:preview:build": "docker-compose -f docker-compose.preview.yml build --no-cache",
     "dev:docker:preview:up": "docker-compose -f docker-compose.preview.yml up --build",
-    "dev:docker:preview:down": "docker-compose -f docker-compose.preview.yml down"
+    "dev:docker:preview:down": "docker-compose -f docker-compose.preview.yml down",
+    "setup": "npm ci && hmpps-npm-script-run-allowlist"
   },
   "repository": {
     "type": "git",
@@ -91,6 +92,7 @@
     "@babel/preset-env": "^7.28.3",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
+    "@ministryofjustice/hmpps-npm-script-allowlist": "0.0.3",
     "@playwright/test": "^1.55.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.6",
