@@ -1,5 +1,5 @@
 ---
-title: Api error
+title: API error
 tabs: true
 status: Experimental
 statusDate: November 2025
