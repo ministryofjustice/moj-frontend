@@ -3,15 +3,15 @@
 
 {% if params.items %}
   {%- for item in params.items %}
-    {% if item.type === "dots" %}
+    {% if item.type === "dots" or item.ellipsis %}
       {% set paginationItem = {
        "ellipsis": true
       } %}
     {% else %}
       {% set paginationItem = {
-      "number": item.text,
+      "number": item.number if item.number else item.text,
       "href": item.href,
-      "current": item.selected
+      "current": item.current if item.current else item.selected
       } %}
     {% endif %}
     {% set paginationItems = paginationItems.concat(paginationItem) %}

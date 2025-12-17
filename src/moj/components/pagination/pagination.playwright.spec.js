@@ -281,4 +281,36 @@ test.describe('pagination', () => {
       await expect($ellipsis).toHaveCount(1)
     })
   })
+
+  test.describe('with govuk args', () => {
+    let $component
+    let $pagination
+    let $items
+    let $ellipsis
+
+    test.beforeEach(async ({ page }) => {
+      const html = render('pagination', examples['with govuk pagination args'])
+      await page.setContent(html)
+      $component = page.locator('.moj-pagination')
+      $pagination = page.locator('.govuk-pagination')
+      $items = $pagination.locator('.govuk-pagination__item')
+      $ellipsis = $pagination.locator('.govuk-pagination__item--ellipses')
+    })
+
+    test.afterEach(async ({ page }) => {
+      await page.setContent('')
+    })
+
+    test('ellipsis should be present', async () => {
+      await expect($component).toBeVisible()
+      await expect($pagination).toBeVisible()
+      await expect($items).toHaveCount(3)
+      await expect($ellipsis).toHaveCount(1)
+      await expect($items.first()).toHaveText('1')
+      await expect($items.last()).toHaveText('3')
+      await expect($items.last()).toContainClass(
+        'govuk-pagination__item--current'
+      )
+    })
+  })
 })

@@ -239,22 +239,22 @@ items: [
 }) }}
 
 <hr />
-<h3>ellipsis</h3>
+<h3>govuk args</h3>
 {{ mojPagination({
   items: [{
-    text: "1",
+    number: "1",
     href: "#"
   }, {
-    text: "2",
+    number: "2",
     href: "#",
+    current: true
+  }, {
+    number: "3",
+    href: "#"
+  }, {
     ellipsis: true
   }, {
-    text: "3",
-    href: "#"
-  }, {
-    type: "dots"
-  }, {
-    text: "5",
+    number: "5",
     href: "#"
   }],
   previous: {

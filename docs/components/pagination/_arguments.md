@@ -15,7 +15,7 @@
 | href     | string  | No       | The link URL.                                            |
 | selected | boolean | No       | Set to `true` to indicate the currently selected page.   |
 | visuallyHiddenText  | string | No | The visually hidden label for the pagination item, which will be applied to an aria-label and announced by screen readers on the pagination item link. Should include page number. Defaults to “Page 1”. |
-| type     | string  | No       | Set to `dots` to show ellipses instead of a page number. |
+| type     | string  | No       | Set to "dots" to show ellipses instead of a page number. |
 | attributes    | object  | No       | The HTML attributes (for example, data attributes) you want to add to the anchor. |
 
 ### results

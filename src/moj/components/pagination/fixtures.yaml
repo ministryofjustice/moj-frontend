@@ -111,3 +111,14 @@ examples:
         - text: 3
           href: '#'
           selected: false
+
+  - name: with govuk pagination args
+    options:
+      items:
+        - number: 1
+          href: '#'
+          current: false
+        - ellipsis: true
+        - number: 3
+          href: '#'
+          current: true
