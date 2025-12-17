@@ -44,8 +44,7 @@
     "dev:docker:preview:build": "docker-compose -f docker-compose.preview.yml build --no-cache",
     "dev:docker:preview:up": "docker-compose -f docker-compose.preview.yml up --build",
     "dev:docker:preview:down": "docker-compose -f docker-compose.preview.yml down",
-    "setup": "npm ci && hmpps-npm-script-run-allowlist",
-    "setup-omit-dev": "npm ci --omit dev && hmpps-npm-script-run-allowlist"
+    "setup": "npm ci && hmpps-npm-script-run-allowlist"
   },
   "repository": {
     "type": "git",
