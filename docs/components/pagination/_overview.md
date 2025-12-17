@@ -11,7 +11,7 @@ eleventyComputed:
 
 ## Overview
 
-The pagination component helps users to navigate between pages. It also enables users to: 
+The pagination component enables users to:
 
 - navigate long lists of results
 - identify how many results there are
