@@ -3,47 +3,18 @@
 .app-prose-scope {
   h1:not([class]) {
     @extend %govuk-heading-xl;
-
-    + h2 {
-      margin-top: govuk-spacing(0);
-    }
-  }
-
-  p + h2:not([class]),
-  ul + h2:not([class]) {
-    margin-top: govuk-spacing(6);
   }
 
   h2:not([class]) {
     @extend %govuk-heading-l;
-    margin-bottom: govuk-spacing(4);
-
-    & + h3 {
-      margin-top: govuk-spacing(0);
-    }
-  }
-
-  * + h3:not([class]) {
-    margin-top: govuk-spacing(7);
-  }
-
-  .govuk-accordion__section-content + * {
-    margin-top: govuk-spacing(7);
   }
 
   h3:not([class]) {
     @extend %govuk-heading-m;
-    margin-bottom: govuk-spacing(4);
-
-    & + h4 {
-      margin-top: govuk-spacing(0);
-    }
   }
 
   h4:not([class]) {
     @extend %govuk-heading-s;
-    margin-top: govuk-spacing(7);
-    margin-bottom: govuk-spacing(4);
   }
 
   p {
