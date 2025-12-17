@@ -254,4 +254,31 @@ test.describe('pagination', () => {
       await expect($results).toContainText('Page 2 of 3')
     })
   })
+
+  test.describe('with dots', () => {
+    let $component
+    let $pagination
+    let $items
+    let $ellipsis
+
+    test.beforeEach(async ({ page }) => {
+      const html = render('pagination', examples['with dots'])
+      await page.setContent(html)
+      $component = page.locator('.moj-pagination')
+      $pagination = page.locator('.govuk-pagination')
+      $items = $pagination.locator('.govuk-pagination__item')
+      $ellipsis = $pagination.locator('.govuk-pagination__item--ellipses')
+    })
+
+    test.afterEach(async ({ page }) => {
+      await page.setContent('')
+    })
+
+    test('ellipsis should be present', async () => {
+      await expect($component).toBeVisible()
+      await expect($pagination).toBeVisible()
+      await expect($items).toHaveCount(3)
+      await expect($ellipsis).toHaveCount(1)
+    })
+  })
 })

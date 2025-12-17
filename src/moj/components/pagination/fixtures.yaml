@@ -100,3 +100,15 @@ examples:
         pages:
           current: 2
           count: 3
+
+  - name: with dots
+    options:
+      items:
+        - text: 1
+          href: '#'
+          selected: false
+        - type: 'dots'
+        - text: 3
+          href: '#'
+          selected: false
+
