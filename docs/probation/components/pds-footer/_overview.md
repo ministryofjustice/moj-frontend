@@ -7,7 +7,12 @@ eleventyComputed:
   override:eleventyNavigation: {}
 ---
 
-{% set figmaTabContent = '<p>Use this component from the ‘Assets’ tab in the PDS Figma Kit.</p><p class="govuk-!-margin-0">You can also view this component in the <a href="{{ figma_link }}" target="_blank">PDS Figma Kit (opens in a new tab).</a></p>' %}
+{% set figmaTabContent %}
+  <p>Use this component from the ‘Assets’ tab in the PDS Figma Kit.</p>
+  <p class="govuk-!-margin-0">
+    You can also view this component in the <a href="{{ figma_link }}" target="_blank">PDS Figma Kit (opens in a new tab).</a>
+  </p>
+{% endset %}
 
 {% example template="examples/default", figmaTabContent=figmaTabContent, colocated=true, height=540 %}
 
