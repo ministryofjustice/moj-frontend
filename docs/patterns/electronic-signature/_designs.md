@@ -6,9 +6,9 @@ permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---
-A Figma link was not included when this pattern was added.
+A Figma link was not included when this pattern was added but you can [view example images](/patterns/electronic-signature/#example-tab).
 
-There may be more information in the [‘electronic signature’ Github discussion]({{ githuburl }}). You can also view the pattern images in the overview.
+There may be more information in the [‘electronic signature’ Github discussion]({{ githuburl }}). 
 
 ## Contribute a Figma link
 
