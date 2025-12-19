@@ -11,7 +11,7 @@ eleventyComputed:
 </div>
 
 ## Overview
-This component should be used prior to a planned outage of a whole platform or an individual service.
+This component should be used before the planned outage of a whole platform or an individual service.
 
 ### How the component is currently used
 
