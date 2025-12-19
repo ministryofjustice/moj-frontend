@@ -7,7 +7,7 @@ eleventyComputed:
   override:eleventyNavigation: false
 ---
 <div class="img-container">
-  <img src="/assets/images/submission-1765201728043/electronic-signature-3.png" alt="electronic signature" />
+  <img src="/assets/images/submission-1765201728043/electronic-signature-3.png" alt="Screenshot of the “Sign your LPA” page in the “Make and register a lasting power of attorney (LPA)” service. The page explains that signing the LPA is a legal step and lists statements that the user agrees to. A section titled “Your signature” shows the user's name with 2 unticked checkboxes: “I want to sign this LPA as a deed” and “I want to apply to register this LPA.” Below is text explaining that ticking the boxes acts as a legal electronic signature. At the bottom are buttons labeled “Submit my signature” and “Return to task list.”" />
 </div>
 
 ## Overview
