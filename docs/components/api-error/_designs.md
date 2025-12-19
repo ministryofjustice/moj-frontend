@@ -6,9 +6,9 @@ permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---
-A Figma link was not included when this component was added.
+You can view the component image in the [component overview](/components/add-another/#overview-tab/).
 
-There may be more information in the [‘api error’ Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+There may be more information in the [‘api error’ Github discussion]({{ githuburl }}). 
 
 ## Contribute a Figma link
 
