@@ -17,7 +17,7 @@ eleventyComputed:
 ### Step 2: Help users when they're not sure if they can sign
 
 <div class="img-container">
-  <img src="/assets/images/submission-1765201728043/electronic-signature-2.png" alt="A screenshot titled “Check that you can sign your LPA.” The page explains that you must sign your LPA before it can be registered and that this can be done online. It includes sections on how to sign your LPA online, guidance for using assistive technology, and instructions if you cannot tick the box yourself. There is an example tick box shown and a question asking, “Will you be able to sign the LPA yourself?” with Yes and No radio buttons. There's a “Continue” button./>
+  <img src="/assets/images/submission-1765201728043/electronic-signature-2.png" alt="A screenshot titled “Check that you can sign your LPA.” The page explains that you must sign your LPA before it can be registered and that this can be done online. It includes sections on how to sign your LPA online, guidance for using assistive technology, and instructions if you cannot tick the box yourself. There's an example tick box shown and a question asking, “Will you be able to sign the LPA yourself?” with Yes and No radio buttons. There's a “Continue” button." />
 </div>
 
 ### Step 3: Sign the LPA 
@@ -29,7 +29,7 @@ eleventyComputed:
 ### Step 4: An error message for when the user has not selected both options 
 
 <div class="img-container">
-  <img src="/assets/images/submission-1765201728043/electronic-signature-4.png" alt="A screenshot shows a GOV.UK error message summary for the signature section. This is on the “Sign your LPA” page. The error message is "Select both boxes to sign and apply to register your LPA." />
+  <img src="/assets/images/submission-1765201728043/electronic-signature-4.png" alt="A screenshot shows a GOV.UK error message summary for the signature section. This is on the “Sign your LPA” page. The error message "Select both boxes to sign and apply to register your LPA" shows." />
 </div>
 
 ### Step 5: Send the LPA witness a code 
@@ -41,5 +41,5 @@ eleventyComputed:
 ### Step 6: The LPA witness enters their code
 
 <div class="img-container">
-  <img src="/assets/images/submission-1765201728043/electronic-signature-6.png" alt="A screenshot titled “Confirm you witnessed the donor sign their LPA.” The page states that a code has been sent by text message to the phone number. It instructs the certificate provider to enter the 4-digit code to confirm witnessing the signing. There is an input box for the code, a green “Continue” button, and a grey “Return to task list” button. A reveal below reads “I’m having a problem with the code.”/>
+  <img src="/assets/images/submission-1765201728043/electronic-signature-6.png" alt="A screenshot titled “Confirm you witnessed the donor sign their LPA.” The page states that a code has been sent by text message to the phone number. It instructs the certificate provider to enter the 4-digit code to confirm witnessing the signing. There is an input box for the code, a green “Continue” button, and a grey “Return to task list” button. A reveal below reads “I’m having a problem with the code.”"/>
 </div>
