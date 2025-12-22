@@ -32,6 +32,10 @@
     $scrollableShadowSize 100%,
     100% 100%,
     $scrollableShadowSize 100%;
+
+  &:focus {
+    @include govuk-focused-box;
+  }
 }
 
 @include govuk-media-query($until: 1020px) {
