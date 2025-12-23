@@ -1,0 +1,116 @@
+examples:
+  - name: default
+    options:
+      text: 'You can find it in the dashboard'
+      title: 'The finance section has moved'
+
+  - name: html content
+    options:
+      text: 'You can find it in the dashboard'
+      html: 'Enter the information manually in <a href="#">case details</a>.'
+      title: 'The finance section has moved'
+
+  - name: show title as heading
+    options:
+      text: 'You can find it in the dashboard'
+      title: 'The finance section has moved'
+      showTitleAsHeading: true
+
+  - name: title no content
+    options:
+      title: 'The finance section has moved'
+      showTitleAsHeading: true
+
+  - name: set heading tag
+    options:
+      text: 'You can find it in the dashboard'
+      title: 'The finance section has moved'
+      showTitleAsHeading: true
+      headingTag: h3
+
+  - name: invalid heading tag
+    options:
+      text: 'You can find it in the dashboard'
+      title: 'The finance section has moved'
+      showTitleAsHeading: true
+      headingTag: h1
+
+  - name: success variant
+    options:
+      text: 'You can find it in the dashboard'
+      title: 'The finance section has moved'
+      showTitleAsHeading: true
+      variant: success
+
+  - name: warning variant
+    options:
+      text: 'You can find it in the dashboard'
+      title: 'The finance section has moved'
+      showTitleAsHeading: true
+      variant: warning
+
+  - name: error variant
+    options:
+      text: 'You can find it in the dashboard'
+      title: 'The finance section has moved'
+      showTitleAsHeading: true
+      variant: error
+
+  - name: invalid variant
+    options:
+      text: 'You can find it in the dashboard'
+      title: 'The finance section has moved'
+      showTitleAsHeading: true
+      variant: yellow
+
+  - name: alert role
+    options:
+      text: 'You can find it in the dashboard'
+      title: 'The finance section has moved'
+      showTitleAsHeading: true
+      variant: error
+      role: alert
+
+  - name: disable autofocus
+    options:
+      text: 'You can find it in the dashboard'
+      title: 'The finance section has moved'
+      showTitleAsHeading: true
+      variant: error
+      role: alert
+      disableAutoFocus: true
+
+  - name: dismissible
+    options:
+      text: 'You can find it in the dashboard'
+      title: 'The finance section has moved'
+      showTitleAsHeading: true
+      variant: success
+      dismissible: true
+
+  - name: dismiss text
+    options:
+      text: 'You can find it in the dashboard'
+      title: 'The finance section has moved'
+      showTitleAsHeading: true
+      variant: success
+      dismissible: true
+      dismissText: 'close'
+
+  - name: classes
+    options:
+      text: 'You can find it in the dashboard'
+      title: 'The finance section has moved'
+      showTitleAsHeading: true
+      variant: success
+      classes: 'custom-class another-class'
+
+  - name: attributes
+    options:
+      text: 'You can find it in the dashboard'
+      title: 'The finance section has moved'
+      showTitleAsHeading: true
+      variant: success
+      attributes:
+        data-test: '123456'
+        data-custom: 'abcde'
