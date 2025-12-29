@@ -6,7 +6,7 @@ permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---
-No accessibility findings were included when this component was added. There may be more information in the [‘api error’ Github discussion]({{ githuburl }}).
+No accessibility findings were included when this component was added. There may be more information in the [‘API error’ Github discussion]({{ githuburl }}).
 
 ## Contribute accessibility findings
 

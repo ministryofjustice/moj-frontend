@@ -8,7 +8,7 @@ eleventyComputed:
 ---
 You can view the component image in the [component overview](/components/add-another/#overview-tab/).
 
-There may be more information in the [‘api error’ Github discussion]({{ githuburl }}). 
+There may be more information in the [‘API error’ Github discussion]({{ githuburl }}). 
 
 ## Contribute a Figma link
 
