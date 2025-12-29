@@ -6,7 +6,7 @@ permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---
-You can view the component image in the [component overview](/components/add-another/#overview-tab/).
+You can view the component image in the [component overview](#overview-tab).
 
 There may be more information in the [‘API error’ Github discussion]({{ githuburl }}). 
 
