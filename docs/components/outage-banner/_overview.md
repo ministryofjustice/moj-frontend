@@ -7,7 +7,7 @@ eleventyComputed:
   override:eleventyNavigation: false
 ---
 <div class="img-container">
-  <img src="/assets/images/submission-1764261049640/DPS-outage-banner.png" alt="outage banner" />
+  <img src="/assets/images/submission-1764261049640/DPS-outage-banner.png" alt="A banner with a red background telling the user that the service will be unavailable at a specific date and time." />
 </div>
 
 ## Overview
