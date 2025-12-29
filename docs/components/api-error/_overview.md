@@ -7,7 +7,7 @@ eleventyComputed:
   override:eleventyNavigation: false
 ---
 <div class="img-container">
-  <img src="/assets/images/submission-1764263405136/DPS-API-error.png" alt="api error" />
+  <img src="/assets/images/submission-1764263405136/DPS-API-error.png" alt="A banner with a red left hand border telling the user that some information on the page is missing due to an API error." />
 </div>
 
 ## Overview
