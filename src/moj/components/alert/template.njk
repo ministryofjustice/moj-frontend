@@ -56,6 +56,11 @@
         value: params.focusOnDismissSelector
     }
   }) if params.focusOnDismissSelector }}
+  {{- govukAttributes({
+    "data-dismiss-text": {
+        value: params.dismissText
+    }
+  }) if params.dismissText }}
   {{- govukAttributes(params.attributes) -}}
 >
   <div>
