@@ -37,12 +37,27 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     // Setup project
-    { name: 'Experimental Components Setup', testMatch: /.*\.setup\.js/ },
+    {
+      name: 'Experimental Components Setup',
+      testMatch: /.*\.setup\.js/,
+      use: {
+        webServer: {
+          command: 'npm run start:e2e',
+          url: `${process.env.APP_URL}/contribute/add-new-component/`,
+          reuseExistingServer: !process.env.CI
+        }
+      }
+    },
     {
       name: 'Experimental Components',
       use: {
         ...devices['Desktop Chrome'],
-        storageState: './playwright/.state/session.json'
+        storageState: './playwright/.state/session.json',
+        webServer: {
+          command: 'npm run start:e2e',
+          url: `${process.env.APP_URL}/contribute/add-new-component/`,
+          reuseExistingServer: !process.env.CI
+        }
       },
       dependencies: ['Experimental Components Setup']
     },
@@ -50,7 +65,12 @@ export default defineConfig({
       name: 'Experimental Components No Session',
       testMatch: /.*\.setup\.js/,
       use: {
-        ...devices['Desktop Chrome']
+        ...devices['Desktop Chrome'],
+        webServer: {
+          command: 'npm run start:e2e',
+          url: `${process.env.APP_URL}/contribute/add-new-component/`,
+          reuseExistingServer: !process.env.CI
+        }
       }
     },
     {
@@ -99,12 +119,7 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
-  ],
+  ]
 
   /* Run your local dev server before starting the tests */
-  webServer: {
-    command: 'npm run start:e2e',
-    url: `${process.env.APP_URL}/contribute/add-new-component/`,
-    reuseExistingServer: !process.env.CI
-  }
 })

@@ -1,11 +1,21 @@
-const fs = require('fs')
 const path = require('path')
 
 const { test, expect } = require('@playwright/test')
 
+const { bundleComponent } = require('../../lib/bundle.js')
 const { render, getExamples } = require('../../lib/components.js')
 
-// test.use({ headless: false })
+let bundledComponent
+
+const initialiseAlerts = () => {
+  const $alerts = document.querySelectorAll('[data-module="moj-alert"]')
+  console.log($alerts)
+  $alerts.forEach(($alert) => {
+    /* eslint-disable no-new, no-undef */
+    // @ts-expect-error Alert is in page scope not test scope
+    new Alert($alert)
+  })
+}
 
 test.describe('alert', () => {
   let examples
@@ -15,35 +25,33 @@ test.describe('alert', () => {
 
   test.beforeAll(async () => {
     examples = await getExamples('alert')
+    bundledComponent = await bundleComponent(
+      path.join(__dirname, 'alert.mjs'),
+      'Alert'
+    )
   })
 
   test.beforeEach(async ({ page }) => {
+    // Render component and insert into page
     const html = render('alert', examples[example])
-    // page.on('console', (msg) => console.log(msg.text()))
-    // await page.addScriptTag({
-    //   path: require.resolve(path: require.resolve('govuk-frontend/dist/govuk/govuk-frontend.min.js')),
-    //   type: 'module'
-    // })
-    //
-    // // Load your local module
-    // const alertModulePath = path.join(__dirname, 'alert.mjs')
-    // const alertContent = fs.readFileSync(alertModulePath, 'utf-8')
-    //
-    // await page.addScriptTag({
-    //   content: alertContent,
-    //   type: 'module'
-    // })
-    //
     await page.setContent(html)
-    // await page.pause()
-    // await page.evaluate(() => {
-    //   const $alerts = document.querySelectorAll('[data-module="moj-alert"]')
-    //   $alerts.forEach(($alert) => {
-    //     new Alert($alert) // Might need to expose Alert globally
-    //   })
-    // })
-    $component = page.locator('.moj-alert')
-    $dismissButton = page.locator('.moj-alert__dismiss')
+
+    // Set classes for GOVUK Frontend support
+    await page.evaluate(() => {
+      document.body.className += ` js-enabled ${'noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : ''}`
+    })
+
+    // Add bundled component code
+    await page.addScriptTag({
+      content: bundledComponent,
+      type: 'module'
+    })
+
+    // Initialise component(s)
+    await page.evaluate(initialiseAlerts)
+
+    $component = page.locator('[data-module="moj-alert"]')
+    $dismissButton = $component.locator('.moj-alert__dismiss')
   })
 
   test.afterEach(async ({ page }) => {
@@ -66,6 +74,10 @@ test.describe('alert', () => {
         'information: The finance section has moved'
       )
       await expect($dismissButton).not.toBeVisible()
+    })
+
+    test('js initialises', async () => {
+      await expect($component).toHaveAttribute('data-moj-alert-init')
     })
   })
 
@@ -221,9 +233,168 @@ test.describe('alert', () => {
       example = ''
     })
 
-    test('defaults to info variant', async () => {
+    test('has the alert role and gains focus', async () => {
       await expect($component).toHaveRole('alert')
-      // await expect($component).toBeFocused()
+      await expect($component).toBeFocused()
+    })
+  })
+
+  test.describe('disable autofocus', () => {
+    test.beforeAll(async () => {
+      example = 'disable autofocus'
+    })
+    test.afterAll(async () => {
+      example = ''
+    })
+
+    test('does not gain focus', async () => {
+      await expect($component).toHaveRole('alert')
+      await expect($component).not.toBeFocused()
+    })
+  })
+
+  test.describe('dismissible', () => {
+    test.beforeAll(async () => {
+      example = 'dismissible'
+    })
+    test.afterAll(async () => {
+      example = ''
+    })
+
+    test('can be dismissed', async ({ page }) => {
+      await expect($dismissButton).toBeVisible()
+      await expect($dismissButton).toHaveText('Dismiss')
+
+      await $dismissButton.click()
+
+      await expect($component).not.toBeAttached()
+      await expect(page.locator('body')).toBeFocused()
+    })
+  })
+
+  test.describe('focus on dismiss', () => {
+    test.beforeAll(async () => {
+      example = 'focus on dismiss'
+    })
+    test.afterAll(async () => {
+      example = ''
+    })
+
+    test('focuses element if selector present', async ({ page }) => {
+      const html = `<div id="focus-me"></div>`
+      page.locator('body').evaluate((element, html) => {
+        element.insertAdjacentHTML('beforeend', html)
+      }, html)
+      const $focusReceiver = page.locator('#focus-me')
+
+      await $dismissButton.click()
+
+      await expect($component).not.toBeAttached()
+      await expect($focusReceiver).toBeFocused()
+    })
+
+    test('focuses next sibling alert', async ({ page }) => {
+      const html = `<div class="moj-alert" data-testid="focus-receiver"></div>`
+      page.locator('body').evaluate((element, html) => {
+        element.insertAdjacentHTML('beforeend', html)
+      }, html)
+      const $focusReceiver = page.getByTestId('focus-receiver')
+
+      await $dismissButton.click()
+
+      await expect($component).not.toBeAttached()
+      await expect($focusReceiver).toBeFocused()
+    })
+
+    test('focuses previous sibling alert', async ({ page }) => {
+      const html = `<div class="moj-alert" data-testid="focus-receiver"></div>`
+      page.locator('body').evaluate((element, html) => {
+        element.insertAdjacentHTML('afterbegin', html)
+      }, html)
+      const $focusReceiver = page.getByTestId('focus-receiver')
+
+      await $dismissButton.click()
+
+      await expect($component).not.toBeAttached()
+      await expect($focusReceiver).toBeFocused()
+    })
+
+    test('focuses previous sibling heading', async ({ page }) => {
+      const html = `<h2 data-testid="focus-receiver">heading</h2>`
+      page.locator('body').evaluate((element, html) => {
+        element.insertAdjacentHTML('afterbegin', html)
+      }, html)
+      const $focusReceiver = page.getByTestId('focus-receiver')
+
+      await $dismissButton.click()
+
+      await expect($component).not.toBeAttached()
+      await expect($focusReceiver).toBeFocused()
+    })
+
+    test('focuses ancestor heading', async ({ page }) => {
+      const html = `
+        <h1>page title</h1>
+        <h2 data-testid="focus-receiver">heading</h2>
+        <div data-testid="wrapper"></div>
+      `
+      page.locator('body').evaluate((element, html) => {
+        element.insertAdjacentHTML('afterbegin', html)
+        const alert = document.querySelector('.moj-alert')
+        const wrapper = document.querySelector('[data-testid="wrapper"]')
+        wrapper.replaceChildren(alert)
+      }, html)
+      const $focusReceiver = page.getByTestId('focus-receiver')
+
+      await $dismissButton.click()
+
+      await expect($component).not.toBeAttached()
+      await expect($focusReceiver).toBeFocused()
+    })
+  })
+
+  test.describe('dismiss text', async () => {
+    test.beforeAll(async () => {
+      example = 'dismiss text'
+    })
+    test.afterAll(async () => {
+      example = ''
+    })
+
+    test('can be customised', async () => {
+      await expect($dismissButton).toBeVisible()
+      await expect($dismissButton).toHaveText('close')
+
+      await $dismissButton.click()
+
+      await expect($component).not.toBeAttached()
+    })
+  })
+
+  test.describe('classes', () => {
+    test.beforeAll(async () => {
+      example = 'classes'
+    })
+    test.afterAll(async () => {
+      example = ''
+    })
+
+    test('can be customised', async () => {
+      await expect($component).toContainClass('custom-class another-class')
+    })
+  })
+
+  test.describe('attributes', () => {
+    test.beforeAll(async () => {
+      example = 'attributes'
+    })
+    test.afterAll(async () => {
+      example = ''
+    })
+
+    test('can be customised', async () => {
+      await expect($component).toHaveAttribute('data-test', '123456')
+      await expect($component).toHaveAttribute('data-custom', 'abcde')
     })
   })
 })

@@ -88,14 +88,23 @@ examples:
       variant: success
       dismissible: true
 
-  - name: dismiss text
+  - name: focus on dismiss
     options:
       text: 'You can find it in the dashboard'
       title: 'The finance section has moved'
       showTitleAsHeading: true
       variant: success
       dismissible: true
-      dismissText: 'close'
+      focusOnDismissSelector: '#focus-me'
+
+  - name: dismiss text
+    options:
+      text: 'You can find it in the dashboard sdljhdslfkj'
+      title: 'The finance section has moved sdflkjlksd'
+      showTitleAsHeading: true
+      variant: success
+      dismissText: close
+      dismissible: true
 
   - name: classes
     options:
