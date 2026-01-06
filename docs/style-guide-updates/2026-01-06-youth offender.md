@@ -1,8 +1,7 @@
 ---
 title: youth offender
-anchor: youth-offender
 type: Updated
 date: 2026-01-06
 ---
 
-Removed entry. Removed link to guidance for MOJ staff only. Avoid the terms offender or ex-offender.
+Removed entry. Removed link to guidance for MOJ staff only. Avoid the terms'offender' or 'ex-offender'.

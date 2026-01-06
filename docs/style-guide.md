@@ -387,7 +387,7 @@ PERs are a document which must be completed for all people in custody prior to a
 
 ### person on probation, people on probation
 
-Lower case. Do not use the acronym POP. Use a person's name where possible. Avoid the terms offender or ex-offender – they're not rehabilitative.
+Lower case. Do not use the acronym POP. Use a person's name where possible. Avoid the terms 'offender' or 'ex-offender' – they're not rehabilitative.
 
 ### personal data in title tags
 
@@ -469,7 +469,7 @@ Lower case. Do not use the acronym PIP.
 
 Use 'prisoner' where space is limited, for example in a table or service name.
 
-Use a person's name where possible. Avoid the term offender - it's not rehabilitative.
+Use a person's name where possible. Avoid the term 'offender' - it's not rehabilitative.
 
 ### prisoner record
 
