@@ -3,7 +3,7 @@ title: Banner
 statusDate: February 2025
 type: component
 redirect_from: components/banner
-lede: "Use the banner component to display a prominent message and related actions to take."
+lede: "The banner component displayed a prominent message and related actions to take."
 ---
 
 {% banner "This component is archived" %}
