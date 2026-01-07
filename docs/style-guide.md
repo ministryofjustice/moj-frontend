@@ -16,7 +16,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 11 December 2025
+Last updated: 7 January 2026
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -362,10 +362,6 @@ Staff in some prisons may also refer to non-associations as:
 
 OASys is an abbreviation of Offender Assessment System, which is used by staff across prisons and probation to complete risk and need assessments. The term is well known and widely understood in its abbreviated form. It is consistently written with the capitalisation OASys.
 
-### offender or ex-offender
-
-Read [guidance on how to talk about people in the justice system (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
-
 ### open prison, open conditions
 
 Lower case.
@@ -391,13 +387,11 @@ PERs are a document which must be completed for all people in custody prior to a
 
 ### person on probation, people on probation
 
-Read [guidance on how to talk about people in the justice system (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
-
-Do not use the acronym POP.
+Lower case. Do not use the acronym POP. Use a person's name where possible. Avoid the terms 'offender' or 'ex-offender' – they're not rehabilitative.
 
 ### personal data in title tags
 
-The page title is the text displayed in the browser tab. It is not the page heading or H1. Titles should describe the purpose and content of the page.
+The page title is the text displayed in the browser tab. It's not the page heading or H1. Titles should describe the purpose and content of the page.
 
 The title can be the same as the H1 unless the H1 includes personal information such as names. Do not include personal information in the title because it may be included in analytics data and cause data protection issues.
 
@@ -471,9 +465,11 @@ Staff in prisons may still use 'NOMIS number' or 'alpha number' when referring t
 
 ### prisoner, person in prison
 
-Read [guidance on how to talk about people in the justice system (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
+Lower case. Do not use the acronym PIP.
 
-Do not use the acronym PIP.
+Use 'prisoner' where space is limited, for example in a table or service name.
+
+Use a person's name where possible. Avoid the term 'offender' - it's not rehabilitative.
 
 ### prisoner record
 
@@ -531,7 +527,7 @@ Read the [full list of release dates (MOJ staff only)](https://justiceuk.sharepo
 
 ### remand prisoner, on remand, remanded in custody
 
-Someone is on remand if they are placed in custody whilst awaiting trial. Read [guidance on how to talk about people in the justice system (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
+Someone is on remand if they are placed in custody whilst awaiting trial. 
 
 ### ROSH (risk of serious harm)
 
@@ -621,7 +617,7 @@ For example, you could use the question 'Have you experienced domestic abuse?' r
 
 ### Violent and Sex Offender Register (ViSOR)
 
-Use ViSOR. This is more well known than the full version. Read [guidance on how to talk about people in the justice system (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
+Use ViSOR. This is more well known than the full version. 
 
 {% endaccordionSection %}
 {% accordionSection "W" %}
@@ -636,15 +632,6 @@ See [preferred name](#preferred-name).
 ### X-ray body scan
 
 Capital 'X' and lower case 'r'. Do not shorten to 'body scan' as this may be confused with other types of scans that take place in prisons.
-
-{% endaccordionSection %}
-{% accordionSection "Y" %}
-
-### youth offender
-
-This describes a prisoner aged between 15 and 21.
-
-Read [guidance on how to talk about people in the justice system (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/r/sites/Contentdesigncommunity/_layouts/15/Doc.aspx?sourcedoc=%7B3D0B8958-EB4D-4183-A284-D507A4AE29E5%7D&file=How%20we%20talk%20about%20people%20in%20the%20justice%20system%20.docx&action=default&mobileredirect=true).
 
 {% endaccordionSection %}
 {% endaccordion %}
