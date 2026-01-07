@@ -14,7 +14,7 @@ eleventyComputed:
 If you work for MOJ, you can view this component in the <a href="{{ figma_link }}" target="_blank">PDS Figma Kit.</a></p>
 <p></p>
 <p class="govuk-!-margin-0">
-If you work outside MOJ, read the guidance on <a href="https://design-patterns.service.justice.gov.uk/prototyping/setting-up-figma-prototypes/#non-moj-staff-tab" target="_blank">setting up Figma prototypes for non-MOJ staff.</a></p>
+If you work outside MOJ, read the guidance on <a href="https://design-patterns.service.justice.gov.uk/prototyping/setting-up-figma-prototypes/#non-moj-staff-tab" ">setting up Figma prototypes for non-MOJ staff.</a></p>
 
 {% endset %}
 
