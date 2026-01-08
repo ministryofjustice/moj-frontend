@@ -4,7 +4,6 @@ subsection: Production
 showHelp: true
 title: Use MOJ Frontend Nunjucks
 lede: Use MOJ Frontend Nunjucks code to generate the HTML for pages and components.
-showLede: true
 eleventyNavigation:
   key: Use Nunjucks
   parent: Production

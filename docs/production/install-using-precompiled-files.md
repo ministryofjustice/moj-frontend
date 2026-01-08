@@ -7,7 +7,6 @@ redirect_from:
   - /get-started/installing-compiled
   - /production/installing-compiled
 lede: If your project does not use npm (or you want to try out MOJ Frontend without installing it through npm) download and include compiled stylesheets.
-showLede: true
 eleventyNavigation:
   key: Try MOJ Frontend using precompiled files
   parent: Production

@@ -4,7 +4,6 @@ tabs: true
 subsection: Prototyping
 title: Setting up Figma prototypes
 lede: Figma Kits help people to create designs that are consistent with one another. They are maintained by the MOJ Design System team.
-showLede: true
 eleventyNavigation:
   key: Setting up Figma prototypes
   parent: Prototyping

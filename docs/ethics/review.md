@@ -3,7 +3,6 @@ layout: layouts/content.njk
 subsection: Ethics
 title: Doing an ethics review
 lede: Learn how to do an ethics review.
-showLede: true
 eleventyNavigation:
   key: Ethics review
   parent: Ethics

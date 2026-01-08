@@ -3,7 +3,6 @@ layout: layouts/content.njk
 subsection: About the Design System
 title: Benefits of using the Design System
 lede: The MOJ Design System helps teams to design, build and launch digital services that are accessible, consistent and user-led.
-showLede: true
 eleventyNavigation:
   key: Benefits
   parent: About the Design System

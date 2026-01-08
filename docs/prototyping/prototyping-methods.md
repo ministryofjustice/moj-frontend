@@ -4,7 +4,6 @@ subsection: Prototyping
 showHelp: true
 title: Choosing a prototyping method
 lede: Learn how to choose a prototyping method based on your needs.
-showLede: true
 eleventyNavigation:
   key: Choosing a prototyping method
   parent: Prototyping

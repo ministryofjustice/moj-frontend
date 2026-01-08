@@ -8,7 +8,6 @@ eleventyNavigation:
   parent: About the Design System
   order: 50
 lede: The MOJ Design System team supports people who use the Design System. Contact us to ask for help.
-showLede: true
 ---
 
 ### Contact us on Slack

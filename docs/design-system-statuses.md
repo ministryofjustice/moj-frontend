@@ -3,7 +3,6 @@ layout: layouts/content.njk
 subsection: About the Design System
 title: Building block statuses
 lede: Every building block on the MOJ Design System has a status. Learn more about what this means and how to use them.
-showLede: true
 eleventyNavigation:
   key: Building block statuses
   parent: About the Design System

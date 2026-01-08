@@ -4,7 +4,6 @@ subsection: Setup for production
 showHelp: true
 title: Import MOJ Frontend CSS
 lede: Learn how to use the CSS from MOJ Frontend and GOV.UK Frontend.
-showLede: true
 eleventyNavigation:
   key: Import CSS
   parent: Setup for production

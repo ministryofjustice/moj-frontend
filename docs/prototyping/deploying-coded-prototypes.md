@@ -5,7 +5,6 @@ showHelp: true
 title: Deploying coded prototypes
 redirect_from: /get-started/deploying-your-prototype
 lede: Learn how to set up and deploy your prototype using MOJ Cloud Platform.
-showLede: true
 eleventyNavigation:
   key: Deploying coded prototypes
   parent: Prototyping

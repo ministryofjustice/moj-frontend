@@ -3,7 +3,6 @@ title: Organisation switcher
 status: To be reviewed
 statusDate: June 2021
 lede: "Use the organisation switcher component to let users navigate between different organisations or accounts, for example, switching between prisons."
-showLede: true
 ---
 
 {% example template="examples/default", colocated=true, height=125 %}

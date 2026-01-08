@@ -3,7 +3,6 @@ layout: layouts/content.njk
 subsection: Ethics
 title: Ethical principles
 lede: Learn how to use our ethical principles.
-showLede: true
 eleventyNavigation:
   key: Ethical principles
   parent: Ethics

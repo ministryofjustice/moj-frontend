@@ -4,7 +4,6 @@ subsection: Production
 showHelp: true
 title: Install MOJ Frontend with Node.js package manager (npm)
 lede: How to install MOJ Frontend using npm.
-showLede: true
 redirect_from: /get-started/installing-with-npm
 eleventyNavigation:
   key: Install with Node.js package manager (npm)
