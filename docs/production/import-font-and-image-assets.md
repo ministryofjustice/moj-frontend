@@ -8,7 +8,6 @@ eleventyNavigation:
   key: Import font and image assets
   parent: Production
   order: 60
-  excerpt: "To use the font and image assets from MOJ Frontend and GOV.UK Frontend, you can either serve the assets from the combined assets folders or copy the font and image files into your application"
 ---
 
 ## Overview

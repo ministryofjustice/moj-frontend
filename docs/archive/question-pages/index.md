@@ -3,7 +3,7 @@ title: Question pages
 type: page
 statusDate: December 2023
 redirect_from: [docs/patterns/question-pages.md, /pages/question-pages]
-excerpt: "Question pages grouped related questions into the same page."
+lede: "Question pages grouped related questions into the same page."
 ---
 
 {% banner "This page is archived" %}

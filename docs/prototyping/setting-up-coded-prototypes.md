@@ -9,7 +9,6 @@ eleventyNavigation:
   key: Setting up coded prototypes
   parent: Prototyping
   order: 20
-  excerpt: "Learn how to create prototypes using the GOV.UK Prototype Kit and the MOJ Design System."
 ---
  
 ## How to add the MOJ Design System to a prototype

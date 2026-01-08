@@ -3,7 +3,7 @@ title: Form validator
 type: component
 statusDate: April 2022
 redirect_from: /components/form-validator
-excerpt: "The form validator component validated forms without a server-side round-trip while also conforming to established standards."
+lede: "The form validator component validated forms without a server-side round-trip while also conforming to established standards."
 ---
 
 {% banner "This component is archived" %}

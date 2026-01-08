@@ -3,7 +3,6 @@ title: Layout
 status: Official
 type: style
 statusDate: December 2025
-excerpt: "This guidance covers the recommended page width for probation products on the Probation Digital Services (PDS) platform."
 lede: "This guidance covers the recommended page width for probation products on the Probation Digital Services (PDS) platform."
 ---
 

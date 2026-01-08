@@ -11,7 +11,6 @@ eleventyNavigation:
   key: Import JavaScript
   parent: Production
   order: 70
-  excerpt: "Several MOJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript."
 ---
 
 Several MOJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript.

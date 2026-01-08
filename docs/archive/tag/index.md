@@ -3,7 +3,7 @@ title: Tag
 type: component
 statusDate: June 2021
 redirect_from: /components/tag
-excerpt: "The tag outlined some additional colours for tags. Not to be confused with the GOV.UK Design System tag."
+lede: "The tag outlined some additional colours for tags. Not to be confused with the GOV.UK Design System tag."
 ---
 
 {% banner "This component is archived" %}

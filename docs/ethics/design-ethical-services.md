@@ -7,7 +7,6 @@ eleventyNavigation:
   key: Designing ethical services
   parent: Ethics
   order: 0
-  excerpt: "Learn why you should consider ethics when designing and building digital services."
 ---
 
 ## How to consider ethics

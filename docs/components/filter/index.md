@@ -2,7 +2,7 @@
 title: Filter
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Use the filter component to help users filter a list of items, such as a list of cases or search results."
+lede: "Use the filter component to help users filter a list of items, such as a list of cases or search results."
 ---
 
 {% example template="examples/default", colocated=true, height=1000 %}

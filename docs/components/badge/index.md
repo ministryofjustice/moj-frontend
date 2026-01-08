@@ -2,7 +2,7 @@
 title: Badge
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Use the badge component to highlight small details like an urgent case."
+lede: "Use the badge component to highlight small details like an urgent case."
 ---
 
 {% example template="examples/default", colocated="true", height=125 %}

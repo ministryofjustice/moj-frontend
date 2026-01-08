@@ -8,7 +8,6 @@ eleventyNavigation:
   key: Setting up Figma prototypes
   parent: Prototyping
   order: 10
-  excerpt: "Setting up Figma prototypes."
 ---
 
 {% tabs "Contents" %}
