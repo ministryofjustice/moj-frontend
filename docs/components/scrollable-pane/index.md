@@ -1,7 +1,7 @@
 ---
 title: Scrollable pane
 status: To be reviewed
-statusDate: November 2022
+statusDate: December 2025
 statusAction: Updated
 lede: "Use the scrollable pane component when you have content (typically a table) which unavoidably overflows the page."
 ---
