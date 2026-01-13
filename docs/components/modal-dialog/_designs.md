@@ -9,7 +9,7 @@ eleventyComputed:
 
 ## Designs
 
-A Figma design has been added for this component. There may be more information in the [‘modal dialog’ Github discussion]({{ githuburl }}). You can also view the component image in the overview.
+A Figma design has been added for this component. There may be more links and resources in the [‘modal dialog’ Github discussion]({{ githuburl }}).  
 
 ### Figma
 
