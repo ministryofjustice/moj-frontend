@@ -8,16 +8,23 @@
   border-top: 0;
   background: govuk-colour("white");
 
-  // additional spacing for H2s
   & + h2:not([class]) {
     margin-top: govuk-spacing(8);
   }
 
-  & + * {
+  & + h3:not([class]) {
+    margin-top: govuk-spacing(6);
+  }
+
+  & + h4:not([class]) {
     margin-top: govuk-spacing(4);
   }
 
   & + p {
+    margin-top: govuk-spacing(4);
+  }
+
+  & + * {
     margin-top: govuk-spacing(4);
   }
 }
