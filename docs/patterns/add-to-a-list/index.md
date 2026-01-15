@@ -2,7 +2,7 @@
 title: Add to a list
 status: To be reviewed
 statusDate: July 2021
-excerpt: "Use this pattern when users need to add similar information many times, and check and add more if needed."
+lede: "Use this pattern when users need to add similar information many times, and check and add more if needed."
 ---
 
 {% banner "Other departments have similar patterns" %}

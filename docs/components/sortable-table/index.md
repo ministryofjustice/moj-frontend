@@ -2,7 +2,7 @@
 title: Sortable table
 status: To be reviewed
 statusDate: June 2021
-excerpt: "Use the sortable table component to let users sort columns in ascending or descending order."
+lede: "Use the sortable table component to let users sort columns in ascending or descending order."
 ---
 
 {% example template="examples/default", colocated=true, height=450 %}

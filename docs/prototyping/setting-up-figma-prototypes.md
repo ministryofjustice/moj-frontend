@@ -8,7 +8,6 @@ eleventyNavigation:
   key: Setting up Figma prototypes
   parent: Prototyping
   order: 10
-  excerpt: "Setting up Figma prototypes."
 ---
 
 {% tabs "Contents" %}
@@ -67,9 +66,10 @@ When the Figma Kits are updated, you’ll be notified in Figma. You can also che
    - [GOV.UK & MOJ Styles](https://www.figma.com/community/file/1543188213395170918)
    - [GOV.UK Figma Kit](https://www.figma.com/community/file/1543190867840891511)
    - [MOJ Figma Kit](https://www.figma.com/community/file/1543193133973726850)
+   - [PDS (Probation) Figma Kit](https://www.figma.com/community/file/1590396950912269551)
 
 <div class="govuk-inset-text">
-  To use the MOJ Figma Kit, you'll need to add all 3 Figma libraries to your project.
+  To use the MOJ Figma Kit, you'll need to add GOV.UK & MOJ Styles, GOV.UK Figma Kit, and MOJ Figma Kit to your project.
 </div>
 
 2. Select 'Open in Figma'.

@@ -91,12 +91,17 @@ const titleize = (str) => {
  * Formats a string safely for use in urls
  *  - replaces and non alphanumeric characters with hyphens
  *  - replaces multiple hyphens with single hyphens
+ *  - strips any trailing hyphens
  *
  * @param {string} str - the string to format
  */
 const urlize = (str) => {
   if (!str) return ''
-  return str.replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-')
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9-]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/-$/, '')
 }
 
 const stripFrontmatter = (str) => {

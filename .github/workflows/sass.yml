@@ -40,7 +40,7 @@ jobs:
       - name: Install packages
         run: |
           npm install --global sass@${{ matrix.package-version }}
-          npm install --omit=dev
+          npm run setup
           sass --version
 
       - name: Check compilation

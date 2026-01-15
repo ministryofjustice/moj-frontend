@@ -15,6 +15,7 @@ const generateEleventyDataFile = (data) => {
   const filename = `${sanitizedComponentName}/${sanitizedComponentName}.11tydata.js`
 
   const content = `export default {
+  figma_link: 'https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit?m=auto',
   githuburl: 'https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns',
   tabCollection: '${sanitizedComponentName}',
   blockTitle: '${titleize(componentName)}'
@@ -43,7 +44,6 @@ title: ${titleize(componentName)}
 tabs: true
 status: Experimental
 statusDate: ${moment().format('MMMM YYYY')}
-excerpt: "${details?.briefDescription || ''}"
 lede: "${details?.briefDescription || ''}"
 ${data['/your-details']?.fullName ? (data['/your-details']?.fullName === 'Not shared' ? '' : `contributorName: ${data['/your-details']?.fullName}`) : ''}
 ${data['/your-details']?.teamName ? (data['/your-details']?.teamName === 'Not shared' ? '' : `contributorTeam: ${data['/your-details']?.teamName}`) : ''}
@@ -89,12 +89,12 @@ permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---\r\n`
-    if (data['/figma-link']?.figmaUrl) {
+    if (data['/figma-link']?.figmaLink) {
       content += `A Figma design has been added for this component. There may be more links and resources in the ${githubDiscussionLink(componentName)}.\r\n
 
 ### Figma
 
-If you work for MOJ, [View the ‘${componentName}’ component in the MOJ Figma Kit](${data['/figma-link']?.figmaUrl || ''}).
+If you work for MOJ, [View the ‘${componentName}’ component in the MOJ Figma Kit]({{figma_link}}).
 
 If you work outside MOJ, go to the [MOJ Figma Kit on the Figma community platform](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).\r\n\r\n`
 

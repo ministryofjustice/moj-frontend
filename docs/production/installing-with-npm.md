@@ -9,7 +9,6 @@ eleventyNavigation:
   key: Install with Node.js package manager (npm)
   parent: Production
   order: 20
-  excerpt: "We recommend installing MOJ Frontend using npm."
 ---
 
 ## Requirements

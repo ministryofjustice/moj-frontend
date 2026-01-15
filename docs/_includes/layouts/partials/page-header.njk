@@ -3,6 +3,11 @@
 {% from "macros/heading/macro.njk" import heading %}
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
+{% set showLede = true %}
+{% if status and ( status == "Archived" or status == "To be reviewed") %}
+  {% set showLede = false %}
+{% endif %}
+
 <div class="app-page__header">
     <div class="app-page__width-container">
       {% if backLink %}
@@ -23,11 +28,12 @@
         status: status,
         statusData: statusInfo[status],
         statusDate: statusDate,
+        statusAction: statusAction,
         contributorName: contributorName,
         contributorTeam: contributorTeam
         }) if statusInfo[status] }}
 
-      {% if lede %}
+      {% if showLede %}
         <span class="govuk-caption-xl govuk-!-margin-top-8">{{ lede | safe }}</span>
       {% endif %}
     </div>

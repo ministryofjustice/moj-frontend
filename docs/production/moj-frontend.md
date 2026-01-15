@@ -11,7 +11,6 @@ eleventyNavigation:
   key: MOJ Frontend
   parent: Production
   order: 10
-  excerpt: "To start using MOJ styles, components and patterns contained here, you’ll need to include MOJ Frontend in your project."
 ---
 
 ## How to use MOJ Frontend

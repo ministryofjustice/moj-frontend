@@ -32,7 +32,7 @@
 {%- endset %}
 
 <p class="app-status-message govuk-!-margin-bottom-2">
-  {{ params.statusData.statusMessage }} {{ statusAttribution }}
+  {{ params.statusAction if params.statusAction else params.statusData.statusAction }} {{ statusAttribution }}
 </p>
 
 {{ govukDetails({

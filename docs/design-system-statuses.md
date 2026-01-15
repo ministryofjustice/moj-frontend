@@ -7,7 +7,6 @@ eleventyNavigation:
   key: Building block statuses
   parent: About the Design System
   order: 20
-  excerpt: "Building block statuses."
 ---
 
 ## Overview
@@ -44,7 +43,7 @@ Teams are encouraged to experiment with them and share findings in the [Github d
 
 ## ‘To be reviewed’ status <span class="govuk-tag govuk-tag--orange"  style="vertical-align:middle;" aria-hidden="true">To be reviewed</span>
 
-Building blocks with a ‘to be reviewed’ status were added for use by everyone at MOJ, possibly a long time ago. They have not been reviewed recently and the work to develop them is not known.  
+Building blocks with a ‘to be reviewed’ status were added for use by everyone at MOJ, possibly a long time ago. They have not been fully reviewed recently and the work to develop them is not known.  
 
 The Design System team is working to bring them all to ‘official’.  
 

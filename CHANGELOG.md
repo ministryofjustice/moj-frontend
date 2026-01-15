@@ -1,3 +1,24 @@
+# [8.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.1...v8.0.0) (2025-12-17)
+
+### BREAKING CHANGES
+
+* pagination component updated to use GOV.UK pagination ([#2074](https://github.com/ministryofjustice/moj-frontend/issues/2074)) ([f546536](https://github.com/ministryofjustice/moj-frontend/commit/f5465360648cc37344e1b99df1dc56f8cc0ff299))
+
+### Bug Fixes
+
+* adjust margin for organisation name in header component ([#2085](https://github.com/ministryofjustice/moj-frontend/issues/2085)) ([a10e777](https://github.com/ministryofjustice/moj-frontend/commit/a10e777aad3aa0659a544ff5b33a4b5a954b54cb))
+
+# [7.2.0 (Deprecated)](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.1...v7.2.0) (2025-12-17)
+
+This version was deprecated due to incorrect semver classification.
+
+## [7.1.1](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.0...v7.1.1) (2025-12-03)
+
+
+### Bug Fixes
+
+* Small adjustments PDS header and footer ([#2020](https://github.com/ministryofjustice/moj-frontend/issues/2020)) ([14394f9](https://github.com/ministryofjustice/moj-frontend/commit/14394f9ba989efd3f413396f3043d42726f0e96f))
+
 # [7.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v7.0.0...v7.1.0) (2025-10-28)
 
 

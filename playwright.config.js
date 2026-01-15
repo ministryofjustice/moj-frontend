@@ -60,8 +60,16 @@ export default defineConfig({
         baseURL: `${process.env.APP_URL}/`,
         ...devices['Desktop Chrome']
       }
+    },
+    {
+      name: 'Components',
+      testDir: './src/moj/components/',
+      testMatch: '**/*.playwright.spec.js',
+      use: {
+        baseURL: `${process.env.APP_URL}/`,
+        ...devices['Desktop Chrome']
+      }
     }
-
     // {
     //   name: 'firefox',
     //   use: { ...devices['Desktop Firefox'] },

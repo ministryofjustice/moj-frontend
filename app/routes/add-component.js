@@ -55,7 +55,7 @@ const {
   buildComponentPage,
   generateSubmissionRef,
   getDetailsForPrEmail
-} = require('../middleware/process-subission-data')
+} = require('../middleware/process-submission-data')
 const verifyCsrf = require('../middleware/verify-csrf')
 const upload = multer({
   storage: multer.memoryStorage(),

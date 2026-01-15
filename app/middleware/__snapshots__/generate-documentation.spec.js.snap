@@ -90,6 +90,7 @@ You can help develop this component by adding information to the [‘component! 
 exports[`generateMarkdown component with special characters generates the 11tydata.js file 1`] = `
 {
   "content": "export default {
+  figma_link: 'https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit?m=auto',
   githuburl: 'https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns',
   tabCollection: 'component-with-special-chars',
   blockTitle: 'Component! with@ special#chars'
@@ -105,7 +106,6 @@ title: Component! with@ special#chars
 tabs: true
 status: Experimental
 statusDate: January 2023
-excerpt: "Brief description here."
 lede: "Brief description here."
 contributorName: Special User
 
@@ -204,6 +204,7 @@ You can help develop this component by adding information to the [‘unknown-com
 exports[`generateMarkdown no data provided generates the 11tydata.js file 1`] = `
 {
   "content": "export default {
+  figma_link: 'https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit?m=auto',
   githuburl: 'https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns',
   tabCollection: 'unknown-component',
   blockTitle: 'Unknown-component'
@@ -219,7 +220,6 @@ title: Unknown-component
 tabs: true
 status: Experimental
 statusDate: January 2023
-excerpt: ""
 lede: ""
 
 
@@ -336,6 +336,7 @@ You can help develop this component by adding information to the [‘test compon
 exports[`generateMarkdown partial data generates the 11tydata.js file 1`] = `
 {
   "content": "export default {
+  figma_link: 'https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit?m=auto',
   githuburl: 'https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns',
   tabCollection: 'test-component',
   blockTitle: 'Test component'
@@ -351,7 +352,6 @@ title: Test component
 tabs: true
 status: Experimental
 statusDate: January 2023
-excerpt: "This is a brief description."
 lede: "This is a brief description."
 
 contributorTeam: Test team
@@ -474,7 +474,7 @@ A Figma design has been added for this component. There may be more links and re
 
 ### Figma
 
-If you work for MOJ, [View the ‘test component’ component in the MOJ Figma Kit](www.figma.com).
+If you work for MOJ, [View the ‘test component’ component in the MOJ Figma Kit]({{figma_link}}).
 
 If you work outside MOJ, go to the [MOJ Figma Kit on the Figma community platform](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).
 
@@ -515,6 +515,7 @@ You can help develop this component by adding information to the [‘test compon
 exports[`generateMarkdown with all fields populated generates the 11tydata.js file 1`] = `
 {
   "content": "export default {
+  figma_link: 'https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit?m=auto',
   githuburl: 'https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns',
   tabCollection: 'test-component',
   blockTitle: 'Test component'
@@ -530,7 +531,6 @@ title: Test component
 tabs: true
 status: Experimental
 statusDate: January 2023
-excerpt: "This is a brief description."
 lede: "This is a brief description."
 contributorName: Test User
 contributorTeam: Test team

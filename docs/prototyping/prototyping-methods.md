@@ -8,7 +8,6 @@ eleventyNavigation:
   key: Choosing a prototyping method
   parent: Prototyping
   order: 10
-  excerpt: "This guide explains how to choose a prototyping tool."
 ---
 
 ## Overview
