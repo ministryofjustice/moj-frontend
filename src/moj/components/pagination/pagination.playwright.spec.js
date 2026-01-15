@@ -267,7 +267,7 @@ test.describe('pagination', () => {
       $component = page.locator('.moj-pagination')
       $pagination = page.locator('.govuk-pagination')
       $items = $pagination.locator('.govuk-pagination__item')
-      $ellipsis = $pagination.locator('.govuk-pagination__item--ellipses')
+      $ellipsis = $pagination.locator('.govuk-pagination__item--ellipsis')
     })
 
     test.afterEach(async ({ page }) => {
@@ -294,7 +294,7 @@ test.describe('pagination', () => {
       $component = page.locator('.moj-pagination')
       $pagination = page.locator('.govuk-pagination')
       $items = $pagination.locator('.govuk-pagination__item')
-      $ellipsis = $pagination.locator('.govuk-pagination__item--ellipses')
+      $ellipsis = $pagination.locator('.govuk-pagination__item--ellipsis')
     })
 
     test.afterEach(async ({ page }) => {
