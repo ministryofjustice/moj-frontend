@@ -7,7 +7,7 @@ eleventyComputed:
   override:eleventyNavigation: false
 ---
 <div class="img-container">
-  <img src="/assets/images/submission-1763752744791/Screenshot-2025-11-21-at-17.54.04.png" alt="copy button" />
+  <img src="/assets/images/submission-1763752744791/Screenshot-2025-11-21-at-17.54.04.png" alt="Image showing the four variations of the copy button in it's four states - Default, Hover, Focus/Clicked and Focus" />
 </div>
 
 ## Overview
