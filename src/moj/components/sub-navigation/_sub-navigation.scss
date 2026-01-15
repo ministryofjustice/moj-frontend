@@ -60,11 +60,11 @@
 
   &:link,
   &:visited {
-    color: $govuk-link-colour;
+    color: govuk-functional-colour(link);
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: govuk-functional-colour(link-hover);
   }
 
   &:focus {
@@ -92,7 +92,7 @@
 
 .moj-sub-navigation__link[aria-current="page"] {
   position: relative;
-  color: $govuk-link-active-colour;
+  color: govuk-functional-colour(link-active);
   text-decoration: none;
 
   &::before {
@@ -103,7 +103,7 @@
     left: 0;
     width: 5px;
     height: 100%;
-    background-color: $govuk-link-colour;
+    background-color: govuk-functional-colour(link);
 
     @include govuk-media-query($from: tablet) {
       width: 100%;
@@ -112,7 +112,7 @@
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: govuk-functional-colour(link-hover);
   }
 
   &:focus::before {

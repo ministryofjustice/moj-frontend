@@ -7,13 +7,23 @@
 .moj-badge {
   display: inline-block;
   padding: 0 govuk-spacing(1);
-  border: 2px solid $govuk-brand-colour;
+  border: 2px solid govuk-functional-colour(brand);
   outline: 2px solid transparent;
   outline-offset: -2px;
-  color: $govuk-brand-colour;
+  color: govuk-functional-colour(brand);
+  font-size: 12px;
+  line-height: 15px;
   text-transform: uppercase;
   vertical-align: middle;
-  @include govuk-font($size: 14, $weight: "bold");
+
+  /* no size argument as we are manually using step 14 from the legacy type
+  * scale */
+  @include govuk-font($size: false, $weight: "bold");
+
+  @include govuk-media-query(tablet) {
+    font-size: 14px;
+    line-height: 20px;
+  }
 
   &--purple {
     border-color: govuk-colour("purple");
@@ -21,8 +31,8 @@
   }
 
   &--bright-purple {
-    border-color: govuk-colour("bright-purple");
-    color: govuk-colour("bright-purple");
+    border-color: govuk-colour("magenta", $variant: "shade-25");
+    color: govuk-colour("magenta", $variant: "shade-25");
   }
 
   &--red {
@@ -46,8 +56,8 @@
   }
 
   &--grey {
-    border-color: govuk-colour("dark-grey");
-    color: govuk-colour("dark-grey");
+    border-color: govuk-colour("black", $variant: "tint-25");
+    color: govuk-colour("black", $variant: "tint-25");
   }
 
   &--large {
