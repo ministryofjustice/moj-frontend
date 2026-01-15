@@ -1,3 +1,25 @@
+# [9.0.0-beta.1](https://github.com/ministryofjustice/moj-frontend/compare/v8.0.0...v9.0.0-beta.1) (2026-01-15)
+
+
+### Bug Fixes
+
+* **scrollable pane:** accessibility fixes ([#2109](https://github.com/ministryofjustice/moj-frontend/issues/2109)) ([205ab22](https://github.com/ministryofjustice/moj-frontend/commit/205ab225b31deb3796a703c84416198d16691744))
+
+
+### Features
+
+* update badge component to manually keep the sizing from step 14 of legacy type scale ([ee6f5c1](https://github.com/ministryofjustice/moj-frontend/commit/ee6f5c1ff462b2ddb95565e2a76b8287430b750f))
+* update to allow govuk-frontend-v6.0.0-beta.2 ([c5f4a29](https://github.com/ministryofjustice/moj-frontend/commit/c5f4a29b8ff7410acad91be71982d1bad506c056))
+* updates for compatibility with govuk-frontend 6.0.0-beta.1 ([2edee48](https://github.com/ministryofjustice/moj-frontend/commit/2edee48358482a9f9c018112f1df7df32fa4a093))
+* updates for govuk-frontend v6.O.O-beta.0 ([0e3ff8f](https://github.com/ministryofjustice/moj-frontend/commit/0e3ff8f3e58bc3fb9fcacfe475a81360463e05e6))
+
+
+### BREAKING CHANGES
+
+* updates to be compatible with govuk-frontend v6.0.0
+* updates to be compatible with govuk-frontend v6.0.0
+* updates to be compatible with govuk-frontend v6.0.0
+
 # [8.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.1...v8.0.0) (2025-12-17)
 
 ### BREAKING CHANGES
