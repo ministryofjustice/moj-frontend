@@ -2,7 +2,7 @@
 title: Copy button
 tabs: true
 status: Experimental
-statusDate: November 2025
+statusDate: January 2026
 excerpt: ""
 lede: ""
 contributorName: Sumiti Hamilton
