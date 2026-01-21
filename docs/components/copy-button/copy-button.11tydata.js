@@ -1,6 +1,6 @@
 export default {
   githuburl:
-    'https://github.com/ministryofjustice/moj-frontend/discussions/categories/experimental-components-pages-and-patterns',
+    'https://github.com/ministryofjustice/moj-frontend/discussions/2132',
   tabCollection: 'copy-button',
   blockTitle: 'Copy button'
 }
