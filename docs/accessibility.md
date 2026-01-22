@@ -51,7 +51,7 @@ The content listed below is non-accessible for the following reasons.
 
 ### Non-compliance with the accessibility regulations
 
-There's only one way for users to get to content. This fails WCAG 2.2 Multiple Ways (Level AA). We plan to address this issue by January 2026.
+There's only one way for users to get to content. This fails WCAG 2.2 Multiple Ways (Level AA). We plan to address this issue by March 2026.
 
 ## Preparation of this accessibility statement
 
