@@ -1,0 +1,40 @@
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+
+<div class="moj-add-another" data-module="moj-add-another" data-legend-label="Person" data-legend-format="%label% %index%">
+
+  {% set item %}
+   {% call govukFieldset({
+        classes: "moj-add-another__item",
+        legend: {
+          text: "Person",
+          classes: "moj-add-another__title govuk-fieldset__legend--m",
+          isPageHeading: false
+        }
+      }) -%}
+    {{ params.templateHtml | safe }}
+  {%- endcall -%}
+  {% endset %}
+
+  <template class="moj-add-another__item-template">
+    {{ item | safe }}
+  </template>
+
+  <template class="moj-add-another__remove-button-template">
+      {{ govukButton({
+        text: "Remove",
+        classes: "govuk-button--secondary moj-add-another__remove-button"
+      }) }}
+  </template>
+
+  <div class="moj-add-another__items">
+    {{ caller() | safe }}
+  </div>
+
+  <div class="moj-button-action">
+      {{ govukButton({
+        text: "Add another person",
+        classes: "govuk-button--secondary moj-add-another__add-button"
+      }) }}
+  </div>
+</div>
