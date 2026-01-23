@@ -90,7 +90,7 @@ redirect_from: examples/add-another
 
   {% endset %}
 
-  {% call mojAddAnother({ templateHtml: templateHtml }) %}
+  {% call mojAddAnother({ templateHtml: templateHtml, itemLabel: "Person" }) %}
   {% call govukFieldset({
         classes: "",
         legend: {

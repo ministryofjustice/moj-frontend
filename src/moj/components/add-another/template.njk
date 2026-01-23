@@ -1,7 +1,7 @@
 {%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
 
-<div class="moj-add-another" data-module="moj-add-another" data-legend-label="Person" data-legend-format="%label% %index%">
+<div class="moj-add-another" data-module="moj-add-another" data-item-label="{{ params.itemLabel  | default('Item', true) }}">
 
   {% set item %}
    {% call govukFieldset({
