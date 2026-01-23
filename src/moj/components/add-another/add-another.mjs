@@ -202,14 +202,14 @@ export class AddAnother extends ConfigurableComponent {
         $input.parentElement.querySelector('label') || $input.closest('label')
 
       if ($label && $label instanceof HTMLLabelElement) {
-        $label.innerText = `${labelText} for ${this.config.legendLabel.toLowerCase()} ${index + 1}`
+        $label.innerHTML = `${labelText}<span class="govuk-visually-hidden">for ${this.config.itemLabel.toLowerCase()} ${index + 1}</span>`
       }
     })
   }
 
   updateGroupedFieldLegends($item, index) {
     $item.querySelectorAll('[data-legend]').forEach(($fieldset) => {
-      if ((!$fieldset) instanceof HTMLFieldSetElement) {
+      if (!($fieldset instanceof HTMLFieldSetElement)) {
         return
       }
 
@@ -218,7 +218,7 @@ export class AddAnother extends ConfigurableComponent {
       const $legend = $fieldset.querySelector('legend')
 
       if ($legend && $legend instanceof HTMLLegendElement) {
-        $legend.innerText = `${labelText} for ${this.config.legendLabel.toLowerCase()} ${index + 1}`
+        $legend.innerHTML = `${labelText}<span class="govuk-visually-hidden">for ${this.config.itemLabel.toLowerCase()} ${index + 1}</span>`
       }
     })
   }
@@ -227,9 +227,9 @@ export class AddAnother extends ConfigurableComponent {
     const legend = $item.querySelector('legend')
 
     if (itemsCount === 1) {
-      legend.innerText = `${this.config.legendLabel} ${index + 1}`
+      legend.innerText = `${this.config.itemLabel} ${index + 1}`
     } else {
-      legend.innerText = `${this.config.legendLabel} ${index + 1} of ${itemsCount}`
+      legend.innerText = `${this.config.itemLabel} ${index + 1} of ${itemsCount}`
     }
   }
 
@@ -237,7 +237,7 @@ export class AddAnother extends ConfigurableComponent {
     const button = $item.querySelector('.moj-add-another__remove-button')
 
     if (button && button instanceof HTMLButtonElement) {
-      button.innerText = `Remove ${this.config.legendLabel} ${index + 1}`
+      button.innerText = `Remove ${this.config.itemLabel} ${index + 1}`
     }
   }
 
@@ -358,9 +358,7 @@ export class AddAnother extends ConfigurableComponent {
    *
    * @type {AddAnotherConfig}
    */
-  static defaults = Object.freeze({
-    legendFormat: '%label% %index% of %total%'
-  })
+  static defaults = Object.freeze({})
 
   /**
    * Date picker config schema
@@ -368,10 +366,9 @@ export class AddAnother extends ConfigurableComponent {
    * @satisfies {Schema<AddAnotherConfig>}
    */
   static schema = Object.freeze(
-    /** @type {const} */({
+    /** @type {const} */ ({
       properties: {
-        legendLabel: { type: 'string' },
-        legendFormat: { type: 'string' }
+        itemLabel: { type: 'string' }
       }
     })
   )
@@ -380,8 +377,7 @@ export class AddAnother extends ConfigurableComponent {
  * Add another config
  *
  * @typedef {object} AddAnotherConfig
- * @property {string} [legendLabel] - Label for each fieldset
- * @property {string} [legendFormat] - Format for fieldset legends
+ * @property {string} [itemLabel] - Label for each fieldset
  */
 
 /**
