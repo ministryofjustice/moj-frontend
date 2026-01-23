@@ -11,6 +11,10 @@
     margin-top: govuk-spacing(6);
     padding: 0;
 
+    &:focus {
+      //@include govuk-focused-box;
+    }
+
     &:first-of-type {
       margin-top: 0;
     }
