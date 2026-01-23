@@ -21,7 +21,6 @@ We’ve also made the website text as simple as possible to understand.
 We know some parts of this website are not fully accessible:
 
 - users cannot get to content in multiple ways
-- some iframe titles are not marked up as titles 
 
 ## Feedback and contact information
 
@@ -32,7 +31,7 @@ Contact the MOJ Design System team if you:
 
 Email [design-system@justice.gov.uk](mailto:design-system@justice.gov.uk) and we’ll get back to you in 5 working days.
 
-### Enforcement procedure
+## Enforcement procedure
 
 The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’). If you’re not happy with how we respond to your complaint, contact the [Equality Advisory and Support Service (EASS)](https://www.equalityadvisoryservice.com/).
 
@@ -52,15 +51,11 @@ The content listed below is non-accessible for the following reasons.
 
 ### Non-compliance with the accessibility regulations
 
-There's only one way for users to get to content. This fails WCAG 2.2 Multiple Ways (Level AA).
-
-Some iframe titles are not unique. This fails WCAG 2.2 success criterion 4.1.2 (Name, Role, Value).
-
-We plan to address these issues by January 2026.
+There's only one way for users to get to content. This fails WCAG 2.2 Multiple Ways (Level AA). We plan to address this issue by March 2026.
 
 ## Preparation of this accessibility statement
 
-This statement was prepared on 16 August 2022. It was last reviewed on 21 November 2025.
+This statement was prepared on 16 August 2022. It was last reviewed on 22 January 2025.
 
 This website was last tested on 14 July 2025 against the WCAG 2.2 AA standard.
 
