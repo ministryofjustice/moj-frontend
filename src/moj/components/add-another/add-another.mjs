@@ -1,4 +1,7 @@
 import { ConfigurableComponent } from 'govuk-frontend'
+
+import { setFocus } from '../../common/index.mjs'
+
 /**
  * @augments {ConfigurableComponent<AddAnotherConfig>}
  */
@@ -59,9 +62,7 @@ export class AddAnother extends ConfigurableComponent {
       return
     }
 
-    const $items = this.getItems()
     const $item = this.getNewItem()
-    console.log($items)
     console.log($item)
 
     // if (!$item || !($item instanceof HTMLElement)) {
@@ -72,18 +73,38 @@ export class AddAnother extends ConfigurableComponent {
 
     this.$itemsContainer.appendChild($item)
 
+    const $items = this.getItems()
     this.updateAllItems()
-    // const $lastItem = $items[$items.length - 1]
-    // if (!this.hasRemoveButton($lastItem)) {
-    //   this.createRemoveButton($lastItem)
+    const $lastItem = $items[$items.length - 1]
+
+    // focus first input
+    // const $input = $lastItem.querySelector('input, textarea, select')
+    // if ($input && $input instanceof HTMLInputElement) {
+    //   setTimeout(() => {
+    //     $input.focus()
+    //   }, 100)
     // }
 
-    // $items[$items.length - 1].after($item)
+    // focus legend
+    // const $legend = $lastItem.querySelector('legend')
+    // if ($legend && $legend instanceof HTMLElement) {
+    //   console.log('setting focus on legend')
+    //   setTimeout(() => {
+    //     setFocus($legend)
+    //   }, 100)
+    // }
 
-    const $input = $item.querySelector('input, textarea, select')
-    if ($input && $input instanceof HTMLInputElement) {
-      $input.focus()
+    // focus fieldset
+    if ($lastItem && $lastItem instanceof HTMLElement) {
+      console.log('setting focus on fieldset')
+      setTimeout(() => {
+        setFocus($lastItem)
+      }, 100)
     }
+
+    // Focus on new item legend
+    // const $legend = $item.querySelector('legend')
+    // setFocus($lastItem)
   }
 
   /**
@@ -133,7 +154,7 @@ export class AddAnother extends ConfigurableComponent {
     }
 
     $items.forEach(($item, index, items) => {
-      this.updateIndexes($item, $items.length)
+      this.updateIndexes($item, index)
       this.updateLegends($item, index, items.length)
       this.updateRemoveButtons($item, index)
       this.updateFieldLabels($item, index)
@@ -284,13 +305,29 @@ export class AddAnother extends ConfigurableComponent {
       return
     }
 
-    $button.closest('fieldset').remove()
+    const $itemToRemove = $button.closest('fieldset')
 
-    const $items = this.getItems()
+    if (!$itemToRemove || !($itemToRemove instanceof HTMLFieldSetElement)) {
+      return
+    }
 
+    let $itemToFocus = $itemToRemove.previousElementSibling
+
+    // Should we get the next element?
+    if (!$itemToFocus || !($itemToFocus instanceof HTMLFieldSetElement)) {
+      $itemToFocus = $itemToRemove.nextElementSibling
+    }
+    // focus on root of component?
+    // it needs an accessible name?
+    if (!$itemToFocus || !($itemToFocus instanceof HTMLFieldSetElement)) {
+      $itemToFocus = this.$root
+    }
+
+    $itemToRemove.remove()
     this.updateAllItems()
-
-    this.focusHeading()
+    if ($itemToFocus instanceof HTMLElement) {
+      setFocus($itemToFocus)
+    }
   }
 
   focusHeading() {
@@ -331,7 +368,7 @@ export class AddAnother extends ConfigurableComponent {
    * @satisfies {Schema<AddAnotherConfig>}
    */
   static schema = Object.freeze(
-    /** @type {const} */ ({
+    /** @type {const} */({
       properties: {
         legendLabel: { type: 'string' },
         legendFormat: { type: 'string' }
