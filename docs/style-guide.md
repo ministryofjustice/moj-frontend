@@ -25,7 +25,7 @@ Last updated: 15 January 2026
 {% accordion "style-guide" %}
 {% accordionSection "A" %}
 
-### ACCT (assessment, care in custody and teamwork)
+### ACCT (Assessment, Care in Custody and Teamwork)
 
 Use ACCT. This is more well known than the full version. When an ACCT is closed, it's referred to as 'ACCT post-closure' for 7 days.
 
@@ -141,11 +141,11 @@ The reference assigned to a person on probation in NDelius. Not NDelius number, 
 
 The initialism is likely to be familiar to NDelius users without needing to be spelt out. The format is 1 letter and 6 numbers, for example X123456.
 
-### CSIP (challenge, support and intervention plan)
+### CSIP (Challenge, Support and Intervention Plan)
 
 Use CSIP. This is more well known than the full version.
 
-### CSRA (cell sharing risk assessment)
+### CSRA (Cell Sharing Risk Assessment)
 
 Use CSRA. This is more well known than the full version.
 
@@ -375,7 +375,7 @@ Probation Digital Services (PDS) is a digital platform for services and products
 
 Do not use the initialism 'PDS' for the platform without spelling it out in full, as it's not yet recognised by users.
 
-### PEEP (personal emergency evacuation plan)
+### PEEP (Personal Emergency Evacuation Plan)
 
 Use PEEP. This is more well known than the full version.
 
