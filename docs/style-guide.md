@@ -25,6 +25,10 @@ Last updated: 15 January 2026
 {% accordion "style-guide" %}
 {% accordionSection "A" %}
 
+### ACCT (Assessment, Care in Custody and Teamwork)
+
+Use ACCT. This is more well known than the full version. When an ACCT is closed, it's referred to as 'ACCT post-closure' for 7 days.
+
 ### acronyms and initialisms
 
 Acronyms and initialisms in services do not need to be spelt out if they are well understood by your audience. This also helps if it's difficult to spell them out, such as in a table.
@@ -53,10 +57,6 @@ Alerts can be 'active' or 'inactive'. You may find language in DPS that refers t
 
 Always use 'aliases' when talking about other names a person has on their prison record. This term is commonly used and understood in prisons. Using a different term may confuse users.
 
-### Assessment, Care in Custody and Teamwork (ACCT)
-
-Use ACCT. This is more well known than the full version. When an ACCT is closed, it is referred to as 'ACCT post-closure' for 7 days.
-
 {% endaccordionSection %}
 {% accordionSection "B" %}
 
@@ -71,7 +71,7 @@ In DPS, the first breadcrumb should always be 'Digital Prison Services'.
 
 ### capitalisation
 
-For general terms, follow the guidance in the [style guide on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style).
+For general terms, follow the guidance in the [GOV.UK style guide](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style).
 
 There's not a standard approach to capitalising acronyms or initialisms when they are written out in full.
 
@@ -111,14 +111,6 @@ Cell or cells should be used to refer to the rooms that people in prison live in
 
 There is also research to suggest prisoners do not see 'cell' as a stigmatising term, but an accurate description of accommodation in prisons across England and Wales.
 
-### Cell Sharing Risk Assessment (CSRA)
-
-Use CSRA. This is more well known than the full version.
-
-### Challenge, Support and Intervention Plan (CSIP)
-
-Use CSIP. This is more well known than the full version.
-
 ### clock
 
 See [guidance on using the 12 or 24-hour clock](#times).
@@ -135,7 +127,7 @@ It's better than 'community offender manager (COM)', although someone may have t
 
 ### contractions
 
-Follow the [style guide on GOV.UK](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#contractions) and avoid using negative contractions like can't and don't.
+Follow the [GOV.UK style guide](https://www.gov.uk/guidance/style-guide/a-to-z-of-gov-uk-style#contractions) and avoid using negative contractions like can't and don't.
 
 Avoid contractions with a noun and verb such as 'the computer's fast'. This may be misunderstood as showing possession. Use 'the computer is fast' instead.
 
@@ -148,6 +140,14 @@ We'd like to test positive contractions with users to find out if they're more d
 The reference assigned to a person on probation in NDelius. Not NDelius number, case number or CRN number.
 
 The initialism is likely to be familiar to NDelius users without needing to be spelt out. The format is 1 letter and 6 numbers, for example X123456.
+
+### CSIP (Challenge, Support and Intervention Plan)
+
+Use CSIP. This is more well known than the full version.
+
+### CSRA (Cell Sharing Risk Assessment)
+
+Use CSRA. This is more well known than the full version.
 
 {% endaccordionSection %}
 {% accordionSection "D" %}
@@ -206,7 +206,7 @@ DPS may be referred to as 'New NOMIS' in prisons, but we should always use 'DPS'
 
 The initialism 'DPS' is well understood and can be used without the full name.
 
-There's a separate platform for probation services: see [PDS, Probation Digital Services](/content-standards/style-guide#pds%2C-probation-digital-services).
+There's a separate platform for probation services: see [PDS, Probation Digital Services](#pds%2C-probation-digital-services).
 
 {% endaccordionSection %}
 {% accordionSection "E" %}
@@ -287,7 +287,7 @@ Use 'identity numbers' when referring to:
 - [CRN](#crn-%28case-reference-number%29)
 - CRO number
 - driving licence number
-- Home Office reference number
+- [Home Office reference number](#home-office-reference-number)
 - [PNC number](#pnc-number)
 - [prison number](#prison-number)
 
@@ -337,7 +337,7 @@ Not nDelius, Ndelius or Delius. It's the case management system in probation.
 
 ### NOMIS
 
-Not Nomis or nomis. It's an initialism and stands for the National Offender Management Information System. This is a legacy digital system that's being replacing with DPS.
+Not Nomis or nomis. It's an acronym and stands for the National Offender Management Information System. This is a legacy digital system that's being replacing with DPS.
 
 ### non-associations
 
@@ -371,9 +371,13 @@ In DPS, you must follow the [DPS guidelines for formatting page titles (MOJ staf
 
 ### PDS, Probation Digital Services
 
-Probation Digital Services (PDS) is a digital platform for services and products used by probation staff, similar to [Digital Prison Services](/content-standards/style-guide#dps%2C-digital-prison-services).
+Probation Digital Services (PDS) is a digital platform for services and products used by probation staff, similar to [Digital Prison Services](#dps%2C-digital-prison-services).
 
 Do not use the initialism 'PDS' for the platform without spelling it out in full, as it's not yet recognised by users.
+
+### PEEP (Personal Emergency Evacuation Plan)
+
+Use PEEP. This is more well known than the full version.
 
 ### Person Escort Record (PER)
 
@@ -393,25 +397,17 @@ The title can be the same as the H1 unless the H1 includes personal information 
 
 You can either write the title content or work with a developer to see if it can be taken from the H1 but without any personal information.
 
-### Personal Emergency Evacuation Plan (PEEP)
-
-Use PEEP. This is more well known than the full version.
-
-### Personal Identification Number (PIN)
+### PIN (personal identification number)
 
 Use PIN. This is more well known than the full version.
 
 Prisoners use their secure PIN to call people on their approved contacts list from their in-cell PIN phones.
 
-It is often written as pin or Pin in prisons, but PIN is the correct format.
-
-<h3 class="govuk-heading-m" id="preferred-name">preferred name</h3>
-
-Always use 'preferred name', not 'working name' as it's called in NOMIS.
+It's often written as pin or Pin in prisons, but PIN is the correct format.
 
 ### PNC number
 
-An identity number assigned to a person in the Police National Computer (PNC). Use 'PNC number'. This is more well known than the full version.
+An identity number assigned to a person in the Police National Computer (PNC). This is more well known than the full version.
 
 ### POM
 
@@ -423,17 +419,15 @@ There are 2 types:
 
 While the term community probation practitioner has generally replaced COM, there's no similar alternative to POM. The abbreviation POM is commonly understood in prisons and the Probation Service.
 
-### post-sentence supervision (PSS)
-
-Post-sentence supervision is a period of supervision in the community that follows a prison sentence.
-
-The initialism is well understood and can be used without the term being spelt out in full.
-
 ### pre-sentence report (PSR)
 
 Write out pre-sentence report (PSR) on first mention and use PSR or 'the report' thereafter.
 
 PSRs are reports that a court uses to help decide on a defendant's sentence. They consider a defendant's offending behaviour, the risk they pose and to whom. A PSR will provide an independent recommendation of the sentencing options available to the court.
+
+### preferred name 
+
+Always use 'preferred name', not 'working name' as it's called in NOMIS.
 
 ### prison, establishment
 
@@ -488,6 +482,12 @@ When writing the phrase in full, use sentence case: probation delivery unit.
 This refers to a broad range of roles in the Probation Service, such as probation officers, probation services officers, senior probation officers and probation POMs.
 
 If you need to be more specific, you should consider using community probation practitioner or probation POM.
+
+### PSS (post-sentence supervision)
+
+Post-sentence supervision is a period of supervision in the community that follows a prison sentence.
+
+The initialism is well understood and can be used without the term being spelt out in full.
 
 {% endaccordionSection %}
 {% accordionSection "R" %}
@@ -561,7 +561,7 @@ A temporary absence is when a person is allowed to leave prison for a short peri
 
 Temporary absence may be referred to as TAP (temporarily absent prisoner), but we should use temporary absence.
 
-<h3 class="govuk-heading-m" id="times">times (in prison)</h3>
+### times (in prison) 
 
 Use the 24-hour clock for DPS and any service used by prison staff. For example, 14:00 not 2.00pm.
 
@@ -611,7 +611,7 @@ However, if you're developing a product or service that victim-survivors use, it
 
 For example, you could use the question 'Have you experienced domestic abuse?' rather than 'Are you a victim-survivor of domestic abuse?' See [guidance on using the term domestic abuse](#domestic-abuse).
 
-### Violent and Sex Offender Register (ViSOR)
+### ViSOR (Violent and Sex Offender Register)
 
 Use ViSOR. This is more well known than the full version. 
 
