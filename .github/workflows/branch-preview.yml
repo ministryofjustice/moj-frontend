@@ -20,7 +20,7 @@ jobs:
     if: contains(github.event.pull_request.labels.*.name, 'preview:request') || contains(github.event.pull_request.labels.*.name, 'preview:active')
     steps:
       - uses: actions/checkout@v4
-      - uses: aws-actions/configure-aws-credentials@v4
+      - uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.ECR_REGION }}
