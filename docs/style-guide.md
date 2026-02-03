@@ -25,7 +25,7 @@ Last updated: 15 January 2026
 {% accordion "style-guide" %}
 {% accordionSection "A" %}
 
-### ACCT (Assessment, Care in Custody and Teamwork)
+### ACCT (Assessment, care in custody and teamwork)
 
 Use ACCT. This is more well known than the full version. When an ACCT is closed, it's referred to as 'ACCT post-closure' for 7 days.
 
@@ -40,12 +40,12 @@ For guidance or long-form content, spell them out on first mention (following th
 You should write acronyms and initialisms entirely in upper case, even if some words are prepositions like 'of'. For example, ROSH instead of RoSH and MOJ instead of MoJ. This is because:
 
 - studies, such as in the [Memory and Cognition journal article on reader ability](https://link.springer.com/article/10.3758/BF03198246), suggest that abbreviations written in a mix of upper and lower case are harder to read, especially for less skilled readers
-- it follows the convention established by the abbreviation of [ROTL for release on temporary licence](#rotl-%28release-on-temporary-licence%29) and so helps to improve consistency   
+- it follows the convention established by the abbreviation of [ROTL for Release on temporary licence](#rotl-%28release-on-temporary-licence%29) and so helps to improve consistency   
 - guidance from the Guardian and GOV.UK recommends writing similar abbreviations such as MOT and FOI entirely in upper case
 
 You should use a mix of upper and lower-case letters when referring to the names of systems such OASys and NDelius.
 
-When spelling acronyms out in full, you should use sentence case unless there is a good reason to capitalise it. For example, ROSH (risk of serious harm). This is because it is easier to read and consistent with the [Service manual guidance on writing for user interfaces](https://www.gov.uk/service-manual/design/writing-for-user-interfaces).
+When spelling acronyms out in full, you should use sentence case unless there is a good reason to capitalise it. For example, ROSH (Risk of serious harm). This is because it is easier to read and consistent with the [Service manual guidance on writing for user interfaces](https://www.gov.uk/service-manual/design/writing-for-user-interfaces).
 
 ### alerts (DPS only)
 
@@ -141,11 +141,11 @@ The reference assigned to a person on probation in NDelius. Not NDelius number, 
 
 The initialism is likely to be familiar to NDelius users without needing to be spelt out. The format is 1 letter and 6 numbers, for example X123456.
 
-### CSIP (Challenge, Support and Intervention Plan)
+### CSIP (Challenge, support and intervention plan)
 
 Use CSIP. This is more well known than the full version.
 
-### CSRA (Cell Sharing Risk Assessment)
+### CSRA (Cell sharing risk assessment)
 
 Use CSRA. This is more well known than the full version.
 
@@ -375,7 +375,7 @@ Probation Digital Services (PDS) is a digital platform for services and products
 
 Do not use the initialism 'PDS' for the platform without spelling it out in full, as it's not yet recognised by users.
 
-### PEEP (Personal Emergency Evacuation Plan)
+### PEEP (Personal emergency evacuation plan)
 
 Use PEEP. This is more well known than the full version.
 
@@ -483,7 +483,7 @@ This refers to a broad range of roles in the Probation Service, such as probatio
 
 If you need to be more specific, you should consider using community probation practitioner or probation POM.
 
-### PSS (post-sentence supervision)
+### PSS (Post-sentence supervision)
 
 Post-sentence supervision is a period of supervision in the community that follows a prison sentence.
 
