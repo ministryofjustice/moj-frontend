@@ -1,0 +1,11 @@
+---
+layout: layouts/example.njk
+title: Default badge in blue (example)
+redirect_from: examples/badge
+---
+
+{%- from "moj/components/badge/macro.njk" import mojBadge -%}
+
+{{ mojBadge({
+  text: "Recently added"
+}) }}

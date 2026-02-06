@@ -1,6 +1,7 @@
 const crypto = require('crypto')
 const fs = require('fs')
 
+const Sentry = require('@sentry/node')
 const express = require('express')
 const multer = require('multer')
 
@@ -44,6 +45,7 @@ const {
 const {
   sendSubmissionEmail,
   sendPrEmail,
+  sendSuccessEmail,
   sendVerificationEmail
 } = require('../middleware/notify-email')
 const {
@@ -53,7 +55,7 @@ const {
   buildComponentPage,
   generateSubmissionRef,
   getDetailsForPrEmail
-} = require('../middleware/process-subission-data')
+} = require('../middleware/process-submission-data')
 const verifyCsrf = require('../middleware/verify-csrf')
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -153,19 +155,30 @@ if (ENV === 'development') {
     },
     buildComponentPage,
     async (req, res) => {
-      const { markdownFilename: filename, markdownContent: content } = req
-      fs.writeFile(`docs/components/${filename}`, content, (err) => {
-        if (err) {
-          console.error(err)
-        } else {
-          // file written successfully
-          setTimeout(() => {
-            res.redirect(
-              `/components/${filename.split('.').at(0).toLowerCase()}`
-            )
-          }, 2000)
+      const docsDir = 'docs/components'
+      let componentDir = ''
+      for (const [filename, content] of Object.entries(req.markdown)) {
+        if (!componentDir) {
+          componentDir = filename.split('/')[0]
         }
-      })
+
+        if (!fs.existsSync(`${docsDir}/${componentDir}`)) {
+          fs.mkdirSync(`${docsDir}/${componentDir}`)
+          console.log(`Directory '${docsDir}/${componentDir}' created.`)
+        }
+
+        fs.writeFile(`${docsDir}/${filename}`, content, (err) => {
+          if (err) {
+            console.error(err)
+          } else {
+            console.log(`File '${docsDir}/${filename}' created.`)
+          }
+        })
+      }
+
+      setTimeout(() => {
+        res.redirect(`/components/${componentDir}`)
+      }, 2000)
     }
   )
 }
@@ -307,6 +320,7 @@ router.post(
             await sendVerificationEmail(email, token)
           } catch (error) {
             console.error(`Error sending verification email: ${error}`)
+            Sentry.captureException(error)
           }
         }
       }
@@ -346,6 +360,7 @@ router.post('/email/resend', verifyCsrf, async (req, res, next) => {
       await sendVerificationEmail(email, token)
     } catch (error) {
       console.error(`Error sending verification email: ${error}`)
+      Sentry.captureException(error)
       next(error)
     }
   }
@@ -477,8 +492,10 @@ router.post(
       const pr = await createPullRequest(branchName, title, description)
       const issue = await createReviewIssue(pr, detailsForPrEmail)
       await sendPrEmail(pr, issue, detailsForPrEmail)
+      await sendSuccessEmail(detailsForPrEmail)
     } catch (error) {
       console.error('[FORM SUBMISSION] Error sending submission:', error)
+      Sentry.captureException(error)
       await sendSubmissionEmail(sessionText, markdownContent)
     }
   }

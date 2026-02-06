@@ -8,14 +8,13 @@ eleventyNavigation:
   key: Choosing a prototyping method
   parent: Prototyping
   order: 10
-  excerpt: "This guide explains how to choose a prototyping tool."
 ---
 
 ## Overview
 
 Prototyping is the process of creating a model or design of something in order to test and iterate it before making a final version.
 
-Prototypes can be high or low fidelity. Sketching is an example of low-fidelity prototyping. At MoJ, Figma and coded prototypes are the tools we use for high-fidelity prototyping.
+Prototypes can be high or low fidelity. Sketching is an example of low-fidelity prototyping. At MOJ, Figma and coded prototypes are the tools we use for high-fidelity prototyping.
 
 There are advantages and disadvantages for each method. Choose one according to your needs.
 
@@ -63,9 +62,9 @@ Figma is a tool for creating designs, and user testing (depending on what the pr
 
 - Building user flows.
 - Making simple, clickable prototypes to show navigation.
-- Connecting to the MoJ Design System through the Figma Kits.
+- Connecting to the MOJ Design System through the Figma Kits.
 
-[Read about setting up Figma prototypes at MoJ](/prototyping/setting-up-figma-prototypes/).
+[Read about setting up Figma prototypes at MOJ](/prototyping/setting-up-figma-prototypes/).
 
 ## GOV.UK Prototype Kit (high fidelity)
 
@@ -88,4 +87,4 @@ The GOV.UK Prototype Kit (sometimes called ‘the kit’) enables you to create 
 - User testing with real data and interactions, plus keyboard navigation.
 - Testing with assistive technologies users.
 
-[Read about setting up coded prototypes at MoJ](/prototyping/setting-up-coded-prototypes/).
+[Read about setting up coded prototypes at MOJ](/prototyping/setting-up-coded-prototypes/).

@@ -24,7 +24,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-      - run: npm ci
+      - run: npm run setup
       - run: npm run build:package
       - uses: actions/upload-artifact@v4
         with:
@@ -60,7 +60,7 @@ jobs:
           node-version-file: .nvmrc
 
       - name: npm install
-        run: npm install
+        run: npm rum setup
 
       - name: Lint Sass
         run: npm run lint:scss

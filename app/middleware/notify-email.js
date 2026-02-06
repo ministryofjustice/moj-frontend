@@ -4,12 +4,14 @@ const {
   NOTIFY_TOKEN,
   NOTIFY_PR_TEMPLATE,
   NOTIFY_SUBMISSION_TEMPLATE,
+  NOTIFY_SUCCESS_TEMPLATE,
   NOTIFY_VERIFICATION_TEMPLATE,
   NOTIFY_EMAIL,
   NOTIFY_EMAIL_RETRY_MS,
   NOTIFY_EMAIL_MAX_RETRIES,
   APP_URL
 } = require('../config')
+const { urlize } = require('../helpers/text-helper')
 const notifyClient = new NotifyClient(NOTIFY_TOKEN)
 
 const dsTeamEmail = NOTIFY_EMAIL
@@ -64,14 +66,15 @@ const sendSubmissionEmail = async (fileBuffer = null, markdown = null) => {
 const sendPrEmail = async (pr, issue, contactDetails) => {
   const { url: prUrl, number: prNumber } = pr
   const { url: issueUrl } = issue
-  const { componentName, email, name, team } = contactDetails
+  const { componentName, email, name, team, figmaLink } = contactDetails
   const personalisation = {}
+  const componentSlug = `components/${urlize(componentName)}`
 
   if (prUrl) {
     personalisation.pr_link = prUrl
   }
   if (prNumber) {
-    personalisation.preview_link = `https://moj-frontend-pr-${prNumber}.apps.live.cloud-platform.service.justice.gov.uk`
+    personalisation.preview_link = `https://moj-frontend-pr-${prNumber}.apps.live.cloud-platform.service.justice.gov.uk/${componentSlug}`
   }
   if (issueUrl) {
     personalisation.issue_link = issueUrl
@@ -82,6 +85,9 @@ const sendPrEmail = async (pr, issue, contactDetails) => {
   if (email) {
     personalisation.email = email
   }
+  if (figmaLink) {
+    personalisation.figma_link = figmaLink
+  }
   if (name) {
     personalisation.name = name
   }
@@ -90,6 +96,23 @@ const sendPrEmail = async (pr, issue, contactDetails) => {
   }
 
   return sendEmail(NOTIFY_PR_TEMPLATE, dsTeamEmail, personalisation)
+}
+
+const sendSuccessEmail = async (contactDetails) => {
+  const { componentName, email, name } = contactDetails
+  const personalisation = {}
+
+  if (componentName) {
+    personalisation.component_name = componentName
+  }
+  if (email) {
+    personalisation.email = email
+  }
+  if (name) {
+    personalisation.name = name.split(' ').at(0) || 'contributor'
+  }
+
+  return sendEmail(NOTIFY_SUCCESS_TEMPLATE, email, personalisation)
 }
 
 const sendVerificationEmail = async (email, token) => {
@@ -113,7 +136,8 @@ const handleEmailError = (error) => {
 }
 
 module.exports = {
-  sendSubmissionEmail,
   sendPrEmail,
+  sendSubmissionEmail,
+  sendSuccessEmail,
   sendVerificationEmail
 }

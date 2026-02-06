@@ -8,13 +8,13 @@ FROM base AS staging-build
 COPY package-lock.json package-lock.json
 COPY package/package.json package/package.json
 COPY package.json package.json
-RUN npm ci
+COPY .allowed-scripts.mjs .allowed-scripts.json
+RUN npm run setup
 
 COPY docs docs
-COPY filters filters
+COPY 11ty 11ty
 COPY src src
 COPY package package
-COPY shortcodes shortcodes
 COPY .eleventy.js .eleventy.js
 COPY .eleventyignore .eleventyignore
 COPY gulp gulp
@@ -29,13 +29,13 @@ FROM base AS preview-build
 COPY package-lock.json package-lock.json
 COPY package/package.json package/package.json
 COPY package.json package.json
-RUN npm ci
+COPY .allowed-scripts.mjs .allowed-scripts.json
+RUN npm run setup
 
 COPY docs docs
-COPY filters filters
+COPY 11ty 11ty
 COPY src src
 COPY package package
-COPY shortcodes shortcodes
 COPY .eleventy.js .eleventy.js
 COPY .eleventyignore .eleventyignore
 COPY gulp gulp
@@ -57,7 +57,7 @@ RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 
 RUN git clone git@github.com:ministryofjustice/moj-frontend.git .
 
-RUN npm install
+RUN npm run setup
 RUN ENV="production" npm run build:package
 RUN ENV="production" npm run build:docs
 
@@ -85,10 +85,11 @@ COPY robots.txt /usr/share/nginx/html
 
 FROM base AS staging-express-app
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
+COPY .allowed-scripts.mjs .allowed-scripts.json
+RUN npm run setup
 COPY src src
 COPY app app
-COPY filters filters
+COPY 11ty 11ty
 COPY playwright playwright
 COPY .github .github
 COPY --from=staging-build /app/public public
@@ -101,10 +102,11 @@ CMD ["node", "app/app.js"]
 
 FROM base AS preview-express-app
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
+COPY .allowed-scripts.mjs .allowed-scripts.json
+RUN npm run setup
 COPY src src
 COPY app app
-COPY filters filters
+COPY 11ty 11ty
 COPY playwright playwright
 COPY .github .github
 COPY --from=preview-build /app/public public
@@ -117,10 +119,11 @@ CMD ["node", "app/app.js"]
 
 FROM base AS production-express-app
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
+COPY .allowed-scripts.mjs .allowed-scripts.json
+RUN npm run setup
 COPY src src
 COPY app app
-COPY filters filters
+COPY 11ty 11ty
 COPY playwright playwright
 COPY .github .github
 COPY --from=production-build /app/public public

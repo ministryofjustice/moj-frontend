@@ -14,14 +14,14 @@
       to right,
       $scrollableBgColor,
       $scrollableBgColor,
-      $scrollableTransparentColor calc(var($scrollableShadowSize) * 2)
+      $scrollableTransparentColor calc($scrollableShadowSize * 2)
     ),
     radial-gradient(farthest-side at 0 50%, $scrollableShadowColor, $scrollableTransparentColor),
     linear-gradient(
       to left,
       $scrollableBgColor,
       $scrollableBgColor,
-      $scrollableTransparentColor calc(var($scrollableShadowSize) * 2)
+      $scrollableTransparentColor calc($scrollableShadowSize * 2)
     ),
     radial-gradient(farthest-side at 100% 50%, $scrollableShadowColor, $scrollableTransparentColor) 100%;
   background-color: $scrollableBgColor;
@@ -32,6 +32,10 @@
     $scrollableShadowSize 100%,
     100% 100%,
     $scrollableShadowSize 100%;
+
+  &:focus {
+    @include govuk-focused-box;
+  }
 }
 
 @include govuk-media-query($until: 1020px) {

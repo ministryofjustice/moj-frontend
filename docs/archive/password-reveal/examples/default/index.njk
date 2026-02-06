@@ -1,0 +1,24 @@
+---
+layout: layouts/example.njk
+title: Password reveal (example)
+redirect_from: examples/password-reveal
+---
+
+{%- from "govuk/components/input/macro.njk" import govukInput -%}
+
+{{ govukInput({
+  id: "password",
+  classes: "govuk-input--width-20",
+  name: "password",
+  type: "password",
+  formGroup: {
+    attributes: {
+      "data-module": "moj-password-reveal"
+    }
+  },
+  label: {
+    text: "Password",
+    classes: "govuk-label--m"
+  },
+  value: "1234ABC!"
+}) }}

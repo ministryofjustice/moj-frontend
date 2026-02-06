@@ -3,7 +3,7 @@ layout: layouts/content.njk
 title: Content style guide updates
 permalink: false
 backLink: /content-standards/style-guide/
-lede: 'New and updated entries in the <a href="/content-standards/style-guide/">MoJ content style guide</a>.'
+lede: 'New and updated entries in the <a href="/content-standards/style-guide/">MOJ content style guide</a>.'
 ---
 
 <table class="govuk-table" data-module="moj-sortable-table">

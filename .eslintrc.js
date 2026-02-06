@@ -2,7 +2,7 @@ module.exports = {
   extends: ['standard', 'prettier'],
   ignorePatterns: [
     'package/**',
-
+    'submissions/**',
     // Enable dotfile linting
     '!.*',
     'node_modules',

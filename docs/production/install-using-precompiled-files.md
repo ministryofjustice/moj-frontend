@@ -2,21 +2,20 @@
 layout: layouts/content.njk
 subsection: Production
 showHelp: true
-title: Try MoJ Frontend using precompiled files
+title: Try MOJ Frontend using precompiled files
 redirect_from:
   - /get-started/installing-compiled
   - /production/installing-compiled
-lede: If your project does not use npm (or you want to try out MoJ Frontend without installing it through npm) download and include compiled stylesheets.
+lede: If your project does not use npm (or you want to try out MOJ Frontend without installing it through npm) download and include compiled stylesheets.
 eleventyNavigation:
-  key: Try MoJ Frontend using precompiled files
+  key: Try MOJ Frontend using precompiled files
   parent: Production
   order: 30
-  excerpt: "If your project does not use npm (or you want to try out MoJ Frontend without installing it through npm) download and include compiled stylesheets."
 ---
 
 ## Overview
 
-You can install MoJ Frontend using the compiled files released with each version.
+You can install MOJ Frontend using the compiled files released with each version.
 
 However, by doing so, you will **not** be able to:
 
@@ -35,7 +34,7 @@ However, by doing so, you will **not** be able to:
 
 ## Copy and install the precompiled files
 
-Open the [latest MoJ Frontend release notes](https://github.com/ministryofjustice/moj-frontend/releases/latest) then:
+Open the [latest MOJ Frontend release notes](https://github.com/ministryofjustice/moj-frontend/releases/latest) then:
 
 1. Download and unzip the link `release-<VERSION-NUMBER>.zip` file.
 2. Copy the `assets` folder to the root of your project’s public folder, so that for example `<YOUR-SITE-URL>/assets/images/moj-logotype-crest.png` shows the `images/moj-logotype-crown.png` image in your users’ browsers.
@@ -46,14 +45,14 @@ Open the [latest MoJ Frontend release notes](https://github.com/ministryofjustic
 
 Next, follow [the instructions for installing GOV.UK Frontend](https://frontend.design-system.service.gov.uk/install-using-precompiled-files/) and continue to:
 
-1. Add another `link` tag for MoJ Frontend styles following GOV.UK Frontend styles in the `head`:
+1. Add another `link` tag for MOJ Frontend styles following GOV.UK Frontend styles in the `head`:
 
    ```html
    <link rel="stylesheet" href="/stylesheets/govuk-frontend-<VERSION-NUMBER>.min.css" />
    <link rel="stylesheet" href="/stylesheets/moj-frontend-<VERSION-NUMBER>.min.css">
    ```
 
-2. Add `script` tags for MoJ Frontend JavaScript alongside GOV.UK Frontend scripts at the bottom of the `body`. This includes jQuery, which is a dependency of MoJ Frontend.
+2. Add `script` tags for MOJ Frontend JavaScript alongside GOV.UK Frontend scripts at the bottom of the `body`. This includes jQuery, which is a dependency of MOJ Frontend.
 
    ```html
    <script type="module" src="/javascripts/govuk-frontend-<VERSION-NUMBER>.min.js"></script>
@@ -70,13 +69,13 @@ Next, follow [the instructions for installing GOV.UK Frontend](https://frontend.
 
 ## Update your example page to check for errors
 
-1. Update the example page in your project to match the following HTML (in your live application, you should use the [MoJ Frontend page template](/use-nunjucks/#set-up-nunjucks-and-use-the-page-template) instead):
+1. Update the example page in your project to match the following HTML (in your live application, you should use the [MOJ Frontend page template](/use-nunjucks/#set-up-nunjucks-and-use-the-page-template) instead):
 
    ```html
    <!DOCTYPE html>
    <html lang="en" class="govuk-template">
      <head>
-       <title>Example - MoJ Frontend</title>
+       <title>Example - MOJ Frontend</title>
        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
        <link rel="stylesheet" href="/stylesheets/govuk-frontend-<VERSION-NUMBER>.min.css" />
        <link rel="stylesheet" href="/stylesheets/moj-frontend-<VERSION-NUMBER>.min.css">
@@ -100,7 +99,7 @@ Next, follow [the instructions for installing GOV.UK Frontend](https://frontend.
    </html>
    ```
 
-2. Replace `<VERSION-NUMBER>` so the 6 filenames match the files you [copied from MoJ Frontend and GOV.UK Frontend’s GitHub repos](#copy-and-install-the-precompiled-files).
+2. Replace `<VERSION-NUMBER>` so the 6 filenames match the files you [copied from MOJ Frontend and GOV.UK Frontend’s GitHub repos](#copy-and-install-the-precompiled-files).
 
 3. Go to the [add another component](/components/add-another/) on the Design System website and copy the HTML from the first example.
 

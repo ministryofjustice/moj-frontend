@@ -1,3 +1,300 @@
+# [8.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.1...v8.0.0) (2025-12-17)
+
+### BREAKING CHANGES
+
+* pagination component updated to use GOV.UK pagination ([#2074](https://github.com/ministryofjustice/moj-frontend/issues/2074)) ([f546536](https://github.com/ministryofjustice/moj-frontend/commit/f5465360648cc37344e1b99df1dc56f8cc0ff299))
+
+### Bug Fixes
+
+* adjust margin for organisation name in header component ([#2085](https://github.com/ministryofjustice/moj-frontend/issues/2085)) ([a10e777](https://github.com/ministryofjustice/moj-frontend/commit/a10e777aad3aa0659a544ff5b33a4b5a954b54cb))
+
+# [7.2.0 (Deprecated)](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.1...v7.2.0) (2025-12-17)
+
+This version was deprecated due to incorrect semver classification.
+
+## [7.1.1](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.0...v7.1.1) (2025-12-03)
+
+
+### Bug Fixes
+
+* Small adjustments PDS header and footer ([#2020](https://github.com/ministryofjustice/moj-frontend/issues/2020)) ([14394f9](https://github.com/ministryofjustice/moj-frontend/commit/14394f9ba989efd3f413396f3043d42726f0e96f))
+
+# [7.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v7.0.0...v7.1.0) (2025-10-28)
+
+
+### Features
+
+* Update pds header with global navigation ([#1885](https://github.com/ministryofjustice/moj-frontend/issues/1885)) ([15b7306](https://github.com/ministryofjustice/moj-frontend/commit/15b7306abc35bc5a7aa1ffcb0ac3bb44a093c2a1))
+
+# [7.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v6.0.0...v7.0.0) (2025-10-28)
+
+
+* fix minDate bug ([#1884](https://github.com/ministryofjustice/moj-frontend/issues/1884)) ([#1887](https://github.com/ministryofjustice/moj-frontend/issues/1887)) ([fd6f5c0](https://github.com/ministryofjustice/moj-frontend/commit/fd6f5c04c6bd019c991135809fd37c89d62b56be)), closes [#923](https://github.com/ministryofjustice/moj-frontend/issues/923)
+
+
+### Bug Fixes
+
+* **multifileupload:** amend calls to callback functions to use statusText instead of responseText ([#1922](https://github.com/ministryofjustice/moj-frontend/issues/1922)) ([#1932](https://github.com/ministryofjustice/moj-frontend/issues/1932)) ([043dfa5](https://github.com/ministryofjustice/moj-frontend/commit/043dfa5870ed1e51ee2c1fbb67f54eb537de117a))
+* **pagination:** fix page count totals in aria labels ([#1904](https://github.com/ministryofjustice/moj-frontend/issues/1904)) ([3a3aa3e](https://github.com/ministryofjustice/moj-frontend/commit/3a3aa3e54ebd47c89a4a6a90a5ab6eca88a77074))
+* **scrollable pane:** fix affordance shadows not showing ([#1867](https://github.com/ministryofjustice/moj-frontend/issues/1867)) ([ebf12e2](https://github.com/ministryofjustice/moj-frontend/commit/ebf12e2806ac447a4a337c320f090ac7deebcd73)), closes [#1866](https://github.com/ministryofjustice/moj-frontend/issues/1866)
+
+
+### BREAKING CHANGES
+
+* `minDate` is now always inclusive. This means that the date passed for `minDate` will
+always be available for selection.  You will need to amend the dates you pass to the component if you had been relying on the `minDate` not being selectable.
+
+# [6.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v5.2.1...v6.0.0) (2025-10-01)
+
+
+### Bug Fixes
+
+* **types:** update initAll signature to match types expected by GOVUKFrontend.createAll() ([#1819](https://github.com/ministryofjustice/moj-frontend/issues/1819)) ([26ad7ca](https://github.com/ministryofjustice/moj-frontend/commit/26ad7ca0e09c4499db1b99a585239b33282b6570))
+
+
+### Features
+
+* Notification badge ([#1599](https://github.com/ministryofjustice/moj-frontend/issues/1599)) ([005299b](https://github.com/ministryofjustice/moj-frontend/commit/005299b8f328a22aa716340f1487f3bb7975f5a6))
+
+
+### BREAKING CHANGES
+
+* the spacing for the component has changed. This could affect the layout of UIs using the component.
+
+You need to remove any spacing you’ve added to (or around) the component. This needs to be done in Figma designs and in code. 
+
+* docs: add page to test positioning
+
+* docs: styling changes
+
+* docs: remove margin from layout tests
+
+* docs: spacing adjustment
+
+* docs: add placeholder pattern page
+
+* docs: fix font size
+
+* docs: linting
+
+* docs: linting
+
+* docs: add github discussion URL
+
+* docs: add example image
+
+* docs: updates
+
+- Remove experimental pattern
+- Add tabs
+- Add two examples
+
+* style: min-width fix
+
+* style: change border to outline
+
+* style: padding tweaks
+
+* docs: wip add notification badge examples
+
+* style: fix lint errors for notificaion badge scss
+
+* docs: update notification badge tabs example to not use macro
+
+* docs: remove visually hidden puntuation
+
+removed the hidden comma for screenreaders as I don't think it's recommended
+
+* docs: add draft content
+
+* docs: example images
+
+* docs: crit changes
+
+* feat: update notification badge template
+
+* docs: number update
+
+* docs: add nunjucks arguments to notification badge
+
+* docs: update example shortcode to automatically include arguments
+
+Previously each example njk file needed to include a refernce to the the arguments file in its
+frontmatter.  This was a bit redundant as the arguments file always has the same name as the
+component and is always in the same location.  This PR updates the shortcode to extract the
+arguments file name from the calling page, and automatically include the arguments markup if the
+file exists.
+
+* docs: content changes
+
+* docs: image updates
+
+* docs: fix height of initial example
+
+* docs: add page to test positioning
+
+* docs: styling changes
+
+* docs: remove margin from layout tests
+
+* docs: spacing adjustment
+
+* docs: add placeholder pattern page
+
+* docs: fix font size
+
+* docs: linting
+
+* docs: linting
+
+* docs: add github discussion URL
+
+* docs: add example image
+
+* docs: updates
+
+- Remove experimental pattern
+- Add tabs
+- Add two examples
+
+* style: min-width fix
+
+* style: change border to outline
+
+* style: padding tweaks
+
+* docs: wip add notification badge examples
+
+* style: fix lint errors for notificaion badge scss
+
+* docs: update notification badge tabs example to not use macro
+
+* docs: remove visually hidden puntuation
+
+removed the hidden comma for screenreaders as I don't think it's recommended
+
+* docs: add draft content
+
+* docs: example images
+
+* docs: crit changes
+
+* feat: update notification badge template
+
+* docs: number update
+
+* docs: add nunjucks arguments to notification badge
+
+* docs: update example shortcode to automatically include arguments
+
+Previously each example njk file needed to include a refernce to the the arguments file in its
+frontmatter.  This was a bit redundant as the arguments file always has the same name as the
+component and is always in the same location.  This PR updates the shortcode to extract the
+arguments file name from the calling page, and automatically include the arguments markup if the
+file exists.
+
+* docs: content changes
+
+* docs: image updates
+
+* docs: fix height of initial example
+
+* docs: show html tab for positioning example
+
+* docs: new content
+
+* docs: content changes
+
+* docs: content update
+
+* docs: guidance update
+
+* docs: examples updates
+
+* docs: add notification badge link example
+
+* docs: update docs page to use notification badge link example
+
+* docs: updates
+
+* docs: final update
+
+* docs: code tweak
+
+* docs: fix links and curly quotes
+
+* docs: coded example of 0 count
+
+* docs: update example images
+
+* docs: alt text
+
+* docs: update image
+
+* docs: update coded examples
+
+* docs: team review
+
+* docs(notification badge): control whitespace in nunjucks to prevent trailing spaces in links
+
+* docs(notification badge): correct updated date for component
+
+* style: adjust padding
+
+* docs: adjust css and more
+
+- example numbers
+- release month
+
+* docs: update examples
+
+* docs: amend examples
+
+* docs: fix list spacing
+
+* docs: move example
+
+* docs: alt text
+
+* docs: link text tweak
+
+* docs: link tweak
+
+* docs(notification badge): correct updated date for component
+
+* style: adjust padding
+
+* docs: adjust css and more
+
+- example numbers
+- release month
+
+* docs: update examples
+
+* docs: amend examples
+
+* docs: fix list spacing
+
+* docs: move example
+
+* docs: alt text
+
+* docs: link text tweak
+
+* docs: link tweak
+
+* docs: add focus state to code blocks
+
+* docs: update a11y-light code theme
+
+* docs: update alt text
+
+* docs: update coded examples
+
+* docs: typo
+
+* docs: nunjucks macro tweaks
+
 ## [5.2.1](https://github.com/ministryofjustice/moj-frontend/compare/v5.2.0...v5.2.1) (2025-09-24)
 
 
@@ -55,9 +352,9 @@
 
 * align with GOV.UK Frontend conventions ([#1304](https://github.com/ministryofjustice/moj-frontend/issues/1304)) ([d9d0a6f](https://github.com/ministryofjustice/moj-frontend/commit/d9d0a6f968035e9e7de9cbb8a0ba99e041b98852)), closes [#1128](https://github.com/ministryofjustice/moj-frontend/issues/1128) [#1259](https://github.com/ministryofjustice/moj-frontend/issues/1259)
 * configure GOV.UK Prototype Kit for ES modules ([e6af988](https://github.com/ministryofjustice/moj-frontend/commit/e6af9888ba6314e244b3ce9549281f0d91c429a1))
-* export MoJ Frontend version CSS custom property ([a03e3d1](https://github.com/ministryofjustice/moj-frontend/commit/a03e3d104d8ca32ee782aa547d4d2e645a49c9d3))
+* export MOJ Frontend version CSS custom property ([a03e3d1](https://github.com/ministryofjustice/moj-frontend/commit/a03e3d104d8ca32ee782aa547d4d2e645a49c9d3))
 * match GOV.UK Frontend file naming conventions ([dbb30d5](https://github.com/ministryofjustice/moj-frontend/commit/dbb30d5901699652e6d51d41a496807f4387dc7a))
-* update MoJ Frontend version using Rollup ([90ac49e](https://github.com/ministryofjustice/moj-frontend/commit/90ac49ebcb95272706ade31618674c4c22904172))
+* update MOJ Frontend version using Rollup ([90ac49e](https://github.com/ministryofjustice/moj-frontend/commit/90ac49ebcb95272706ade31618674c4c22904172))
 
 ## [4.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v4.0.0...v4.0.1) (2025-03-11)
 

@@ -1,0 +1,29 @@
+---
+title: Overview
+order: 10
+tags: 'feedback-banner'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: false
+---
+
+<div class="img-container">
+  <img src="/assets/images/submission-1762946436168/Screenshot-2025-11-12-at-11.19.01.png" alt="A white banner with grey top and bottom borders. The content inside the banner says 'This is a new page' and a link says 'give feedback to help us improve it (opens in a new tab)'" />
+</div>
+
+## Overview
+
+This has been used as a way of capturing user feedback for new non-transaction features on DPS.
+
+This mechanism could be used in the short-medium term and allow teams to learn from the release so that we can iterate specific new features/ pages during beta.
+
+### How the component is currently used
+
+The component is a part of the header.
+
+In DPS this is below the prison switcher. This is more in line with the GOV.UK phase banner.
+
+This new design worked better for a page we were building that used a side navigation. Because the feedback component sits above the page body it could accommodate split column page layouts better.
+
+### Contribute to this component
+You can help develop this component by adding information to the [‘feedback banner’ Github discussion]({{ githuburl }}). This helps other people to use it in their service.

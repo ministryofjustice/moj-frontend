@@ -2,19 +2,18 @@
 layout: layouts/content.njk
 subsection: Production
 showHelp: true
-title: Install MoJ Frontend with Node.js package manager (npm)
-lede: How to install MoJ Frontend using npm.
+title: Install MOJ Frontend with Node.js package manager (npm)
+lede: How to install MOJ Frontend using npm.
 redirect_from: /get-started/installing-with-npm
 eleventyNavigation:
   key: Install with Node.js package manager (npm)
   parent: Production
   order: 20
-  excerpt: "We recommend installing MoJ Frontend using npm."
 ---
 
 ## Requirements
 
-To use MoJ Frontend with npm you must:
+To use MOJ Frontend with npm you must:
 
 1. Install the long-term support (LTS) version of [Node.js](https://nodejs.org/en/), which includes npm. The minimum version of Node.js required is 12.17.0 to support ECMAScript (ES) modules.
 
@@ -22,7 +21,7 @@ To use MoJ Frontend with npm you must:
 
 2. Create a [package.json file](https://docs.npmjs.com/files/package.json) if you don’t already have one. You can create a default `package.json` file by running `npm init` from the root of your application.
 
-You can also install [Nunjucks v3.0.0 or later](https://www.npmjs.com/package/nunjucks) if you want to use either [GOV.UK Frontend’s Nunjucks macros](https://frontend.design-system.service.gov.uk/use-nunjucks/) or [MoJ Frontend’s Nunjucks macros](/production/use-nunjucks/).
+You can also install [Nunjucks v3.0.0 or later](https://www.npmjs.com/package/nunjucks) if you want to use either [GOV.UK Frontend’s Nunjucks macros](https://frontend.design-system.service.gov.uk/use-nunjucks/) or [MOJ Frontend’s Nunjucks macros](/production/use-nunjucks/).
 
 ## Install dependencies
 
@@ -120,4 +119,4 @@ In your live application, we recommend:
 
 Make sure you import all the components used throughout your application or some components will not work correctly for disabled users who use assistive technologies.
 
-Once your testing is complete you can use the full code for page layouts and other components from the [GOV.UK Design System](https://design-system.service.gov.uk/) and [MoJ Design System website](/).
+Once your testing is complete you can use the full code for page layouts and other components from the [GOV.UK Design System](https://design-system.service.gov.uk/) and [MOJ Design System website](/).
