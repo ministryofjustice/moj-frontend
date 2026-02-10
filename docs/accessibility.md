@@ -55,7 +55,7 @@ There's only one way for users to get to content. This fails WCAG 2.2 Multiple W
 
 ## Preparation of this accessibility statement
 
-This statement was prepared on 16 August 2022. It was last reviewed on 22 January 2025.
+This statement was prepared on 16 August 2022. It was last reviewed on 23 January 2026.
 
 This website was last tested on 14 July 2025 against the WCAG 2.2 AA standard.
 
