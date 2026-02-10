@@ -329,7 +329,7 @@ Use MOJ for Ministry of Justice. This follows the [GOV.UK naming convention for 
 
 ### naming
 
-If you're naming a service in DPS, you should follow the [DPS naming guidelines (MOJ staff only)](https://justiceuk.sharepoint.com/sites/Contentdesigncommunity/_layouts/15/AccessDenied.aspx?Source=https%3A%2F%2Fjusticeuk%2Esharepoint%2Ecom%2F%3Aw%3A%2Fr%2Fsites%2FContentdesigncommunity%2FShared%20Documents%2FContent%20design%20resources%2FGuidance%2FStyle%2FDigital%20Prison%20Services%20naming%20guidelines%2Edocx%3Fd%3Dw1fc548d20ecc47b08f79f84de70c36d5%26csf%3D1%26web%3D1%26e%3DreEk9z&correlation=dcc4a4a1%2D106c%2Dc000%2Dcd83%2Dd5878e1bef23&Type=item&name=97c9ed94%2D5d2e%2D49a6%2Db0ea%2De1b1278cc8f0&listItemId=105&listItemUniqueId=1fc548d2%2D0ecc%2D47b0%2D8f79%2Df84de70c36d5).
+If you're naming a service in DPS, you should follow the [DPS naming guidelines (MOJ staff only)](https://justiceuk.sharepoint.com/:w:/s/Contentdesigncommunity/IQDSSMUfzA6wR495-E3nDDbVARaViltUzWyMP4KepmOBmn0?e=UBUmpq).
 
 ### NDelius
 
