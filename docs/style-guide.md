@@ -267,8 +267,6 @@ This content does not provide any alternative contact methods such as email or c
 
 Always use full stops at the end of hint text, even when using examples.
 
-This decision was made based on [research from other government departments and internal discussions (MOJ staff only)](https://trello.com/c/cjE65vrR).
-
 The content community would like to test this approach to see if it causes users to include full stops in input fields.
 
 This guidance only applies to hint text styled with the class “govuk-hint”.
@@ -567,7 +565,7 @@ Use the 24-hour clock for DPS and any service used by prison staff. For example,
 
 The 24-hour clock should also be used for time input fields.
 
-The 24-hour clock is widely used in prisons. Research has shown that [using the 12-hour clock in prison may cause confusion (MOJ staff only)](https://trello.com/c/D57IWwVT).
+The 24-hour clock is widely used in prisons. Using the 12-hour clock in prison may cause confusion.
 
 If your service is on DPS but is used by both prison and probation staff, it should still use the 24-hour clock.
 
