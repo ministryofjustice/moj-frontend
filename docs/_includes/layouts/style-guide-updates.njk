@@ -15,7 +15,16 @@
           {%- for entry in collections['style-guide-update'] -%}
             {% set link = '<a class="govuk-!-font-weight-bold" href="/content-standards/style-guide#'+entry.data.anchor+'">'+entry.data.title+'</a>' %}
             {% set tagText = entry.data.type | upperFirst %}
-            {% set tagClass='govuk-tag govuk-tag--green' if entry.data.type | lower === 'new' else 'govuk-tag govuk-tag--blue' %}
+
+            {% set tagClass = '' %}
+            {% if entry.data.type | lower === 'removed' %}
+              {% set tagClass = 'govuk-tag govuk-tag--red' %}
+            {% elif entry.data.type | lower === 'new' %}
+              {% set tagClass = 'govuk-tag govuk-tag--green' %}
+            {% else %}
+              {% set tagClass = 'govuk-tag govuk-tag--blue' %}
+            {% endif %}
+
             {% set entryContent = entry.content | renderMarkdown  %}
 
             {% set row = [
