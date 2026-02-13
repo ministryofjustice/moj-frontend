@@ -5,6 +5,31 @@
    PROBATION#HEADER
    ========================================================================== */
 
+@mixin probationMenuItem($colour) {
+  outline: 3px solid transparent;
+  color: $colour;
+  box-shadow: none;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: auto;
+    right: 15px;
+    bottom: 0;
+    left: 15px;
+    height: 3px;
+    background: $colour;
+  }
+
+  > span {
+    &::before {
+      border-right: 2px solid $colour;
+      border-bottom: 2px solid $colour;
+    }
+  }
+}
+
 .probation-common-header {
   [hidden] {
     display: none;
@@ -202,34 +227,13 @@
           }
 
           &:hover {
-            color: govuk-colour("dark-grey");
+            @include probationMenuItem($govuk-link-hover-colour)
           }
         }
 
         &:focus-visible {
-          outline: 3px solid transparent;
-          color: govuk-colour("black");
           background-color: govuk-colour("yellow");
-          box-shadow: none;
-          text-decoration: none;
-
-          &::after {
-            content: "";
-            position: absolute;
-            top: auto;
-            right: 15px;
-            bottom: 0;
-            left: 15px;
-            height: 3px;
-            background: govuk-colour("black");
-          }
-
-          > span {
-            &::before {
-              border-right: 2px solid govuk-colour("black");
-              border-bottom: 2px solid govuk-colour("black");
-            }
-          }
+          @include probationMenuItem(govuk-colour("black"));
         }
       }
 
