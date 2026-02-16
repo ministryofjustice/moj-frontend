@@ -29,7 +29,7 @@
 
             {% set row = [
                 { html: link },
-                { html: govukTag({ text: tagText, classes: tagClass})},
+                { html: govukTag({ text: tagText, classes: tagClass}), attributes: { 'data-sort-value': tagText } },
                 { html: entryContent },
                 { html: entry.date | mojDate('date') | replace(' ', '&nbsp;'), attributes: { 'data-sort-value': entry.date | timestamp } }
             ] %}
