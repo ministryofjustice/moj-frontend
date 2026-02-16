@@ -227,7 +227,7 @@
           }
 
           &:hover {
-            @include probationmenuitem($govuk-link-hover-colour)
+            @include probationmenuitem($govuk-link-hover-colour);
           }
         }
 
