@@ -24,7 +24,12 @@ eleventyNavigation:
 
 <div class="design-system-impact">
 
-  <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5 govuk-!-margin-top-8">
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-2">How the MOJ Design System saves money</h2>
+  <p class="secondary">
+    Last updated: {{ spendLastUpdated }}
+  </p>
+
+<div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5 govuk-!-margin-top-8">
     <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
         <div class="callout-card extra">
           <span class="big-number">
@@ -36,11 +41,6 @@ eleventyNavigation:
         </div>
       </div>
     </div>
-
-  <h2 class="govuk-heading-l govuk-!-margin-bottom-2">How the MOJ Design System saves money</h2>
-  <p class="secondary">
-    Last updated: {{ spendLastUpdated }}
-  </p>
 
  MOJ teams have added MOJ Design System components to their services an estimated 2,481 times.  
  
@@ -75,11 +75,9 @@ eleventyNavigation:
     </div>
   </details>
 
-  <hr style="border:none">
-
   <h2 class="govuk-heading-l govuk-!-margin-bottom-2">The impact on people</h2>
   <p>
-    A survey from October 2025 asked people about how the Design System impacted them.
+    A October 2025 survey asked people how the Design System impacted them.
   </p>
 
   ### Adoption
@@ -123,7 +121,7 @@ eleventyNavigation:
     </div>
   </div>
 
-  ### User satisfaction scores (averages)
+  ### User satisfaction scores  
 
   <div class="govuk-grid-row govuk-body govuk-!-margin-bottom-5">
     <div class="govuk-grid-column-one-third">
@@ -152,7 +150,7 @@ eleventyNavigation:
           {{ supportSatisfaction }}<span class="out-of">/{{ outOf }}</span>
         </span>
         <p class="govuk-!-margin-bottom-0">
-          how satisfied people were with the support they got from the MOJ Design System team.
+          satisfaction with the support from the MOJ Design System team.
         </p>
       </div>
     </div>
