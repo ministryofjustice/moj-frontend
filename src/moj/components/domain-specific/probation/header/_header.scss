@@ -5,7 +5,7 @@
    PROBATION#HEADER
    ========================================================================== */
 
-@mixin probationMenuItem($colour) {
+@mixin probationmenuitem($colour) {
   outline: 3px solid transparent;
   color: $colour;
   box-shadow: none;
@@ -227,13 +227,13 @@
           }
 
           &:hover {
-            @include probationMenuItem($govuk-link-hover-colour)
+            @include probationmenuitem($govuk-link-hover-colour)
           }
         }
 
         &:focus-visible {
           background-color: govuk-colour("yellow");
-          @include probationMenuItem(govuk-colour("black"));
+          @include probationmenuitem(govuk-colour("black"));
         }
       }
 
