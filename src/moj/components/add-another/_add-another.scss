@@ -38,6 +38,12 @@
   }
 }
 
+.moj-add-another--inline .moj-add-another__item {
+  display: flex;
+  gap: govuk-spacing(4);
+  align-items: flex-end;
+}
+
 .moj-add-another__heading:focus {
   outline: none;
   color: govuk-functional-colour(focus-text);
