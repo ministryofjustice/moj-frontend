@@ -1,0 +1,80 @@
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+
+<h2 id="values-gifts-title">Values of gifts</h2>
+
+<div class="moj-add-another moj-add-another--inline" data-module="moj-add-another" data-item-label="Values of gifts" data-layout="inline">
+  <template class="moj-add-another__item-template">
+    <fieldset class="govuk-fieldset moj-add-another__item"
+              aria-labelledby="values-gifts-title">
+      <div class="govuk-form-group">
+       <label class="govuk-label" for="gifts[0][description]">
+         Description
+        </label>
+        <input class="govuk-input"
+               id="gifts[0][description]"
+               name="gifts[0][description]"
+               data-id="gifts[%index%][description]"
+               data-name="gifts[%index%][description]"
+               data-label="Description"
+               type="text">
+      </div>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="gifts[0][value]">
+          Value <span class="govuk-visually-hidden">in pounds</span>
+        </label>
+        <div class="govuk-input__wrapper">
+          <div class="govuk-input__prefix" aria-hidden="true">£</div>
+          <input class="govuk-input govuk-input--width-5"
+                 id="gifts[0][value]"
+                 name="gifts[0][value]"
+                 type="text"
+                 data-id="gifts[%index%][value]"
+                 data-name="gifts[%index%][value]"
+                 data-label="Value"
+                 spellcheck="false">
+        </div>
+      </div>
+    </fieldset>
+  </template>
+
+  <div class="moj-add-another__items">
+    <fieldset class="govuk-fieldset moj-add-another__item"
+              aria-labelledby="values-gifts-title">
+      <div class="govuk-form-group">
+       <label class="govuk-label" for="gifts[0][description]">
+         Description
+        </label>
+        <input class="govuk-input"
+               id="gifts[0][description]"
+               name="gifts[0][description]"
+               data-id="gifts[%index%][description]"
+               data-name="gifts[%index%][description]"
+               data-label="Description"
+               type="text">
+      </div>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="gifts[0][value]">
+          Value <span class="govuk-visually-hidden">in pounds</span>
+        </label>
+        <div class="govuk-input__wrapper">
+          <div class="govuk-input__prefix" aria-hidden="true">£</div>
+          <input class="govuk-input govuk-input--width-5"
+                 id="gifts[0][value]"
+                 name="gifts[0][value]"
+                 type="text"
+                 data-id="gifts[%index%][value]"
+                 data-name="gifts[%index%][value]"
+                 data-label="Value"
+                 spellcheck="false">
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="moj-button-action">
+      {{ govukButton({
+        text: "Add another gift",
+        classes: "govuk-button--secondary moj-add-another__add-button"
+      }) }}
+  </div>
+</div>
