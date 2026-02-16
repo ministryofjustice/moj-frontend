@@ -196,13 +196,27 @@ export class AddAnother extends ConfigurableComponent {
         return
       }
 
-      const labelText = $input.getAttribute('data-label') || ''
+      // const labelText = $input.getAttribute('data-label') || ''
 
-      const $label =
-        $input.parentElement.querySelector('label') || $input.closest('label')
-
+      const $label = $input.closest('.govuk-form-group').querySelector('label')
       if ($label && $label instanceof HTMLLabelElement) {
-        $label.innerHTML = `${labelText}<span class="govuk-visually-hidden">for ${this.config.itemLabel.toLowerCase()} ${index + 1}</span>`
+        // const $labelhiddenText = $label.querySelector(
+        //   'span.govuk-visually-hidden:not(.moj-add-another__label-suffix)'
+        // )
+        let $labelSuffix = $label.querySelector(
+          '.moj-add-another__label-suffix'
+        )
+        console.log($labelSuffix)
+        if (!$labelSuffix) {
+          console.log('no suffix adding one')
+          $labelSuffix = document.createElement('span')
+          $labelSuffix.classList.add(
+            'moj-add-another__label-suffix',
+            'govuk-visually-hidden'
+          )
+          $label.appendChild($labelSuffix)
+        }
+        $labelSuffix.innerText = ` for ${this.config.itemLabel.toLowerCase()} ${index + 1}`
       }
     })
   }
@@ -224,20 +238,52 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   updateLegends($item, index, itemsCount) {
-    const legend = $item.querySelector('legend')
+    const $legend = $item.querySelector('legend')
+    let suffix = ''
 
     if (itemsCount === 1) {
-      legend.innerText = `${this.config.itemLabel} ${index + 1}`
+      suffix = `${index + 1}`
     } else {
-      legend.innerText = `${this.config.itemLabel} ${index + 1} of ${itemsCount}`
+      suffix = `${index + 1} of ${itemsCount}`
+    }
+
+    if ($legend) {
+      $legend.innerText = `${this.config.itemLabel} ${suffix}`
+      return
+    }
+
+    const counterId = this.generateUniqueId()
+    let $counter = $item.querySelector(`.moj-add-another__item-counter`)
+
+    if ($counter) {
+      $counter.innerText = `${suffix}`
+    } else {
+      $counter = document.createElement('span')
+      $counter.classList.add(
+        'govuk-visually-hidden',
+        'moj-add-another__item-counter'
+      )
+      $counter.id = `${counterId}`
+      $counter.innerText = `${suffix}`
+      $item.prepend($counter)
+      $item.setAttribute(
+        'aria-labelledby',
+        `${$item.getAttribute('aria-labelledby')} ${counterId}`
+      )
     }
   }
 
   updateRemoveButtons($item, index) {
     const button = $item.querySelector('.moj-add-another__remove-button')
-
+    console.log(this.config.layout)
     if (button && button instanceof HTMLButtonElement) {
-      button.innerText = `Remove ${this.config.itemLabel} ${index + 1}`
+      if (this.config.layout === 'block') {
+        button.innerText = `Remove ${this.config.itemLabel} ${index + 1}`
+      }
+
+      if (this.config.layout === 'inline') {
+        button.innerHTML = `Remove <span class="govuk-visually-hidden">${this.config.itemLabel} ${index + 1}</span>`
+      }
     }
   }
 
@@ -350,6 +396,25 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   /**
+   * Creates a valid HTML id from a string
+   *
+   * @param {string} str - string to turn into an id
+   */
+  createHtmlId(str) {
+    return str
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9_-]/g, '-') // Replace invalid chars with hyphen
+      .replace(/^[0-9-]/, '_$&') // If starts with digit/hyphen, prefix with underscore
+      .replace(/-+/g, '-') // Collapse multiple hyphens
+      .replace(/^-|-$/g, '') // Remove leading/trailing hyphens
+  }
+
+  generateUniqueId(prefix = 'moj') {
+    return `${prefix}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+  }
+
+  /**
    * Name for the component used when initialising using data-module attributes.
    */
   static moduleName = 'moj-add-another'
@@ -358,7 +423,9 @@ export class AddAnother extends ConfigurableComponent {
    *
    * @type {AddAnotherConfig}
    */
-  static defaults = Object.freeze({})
+  static defaults = Object.freeze({
+    layout: 'block'
+  })
 
   /**
    * Date picker config schema
@@ -368,16 +435,23 @@ export class AddAnother extends ConfigurableComponent {
   static schema = Object.freeze(
     /** @type {const} */ ({
       properties: {
-        itemLabel: { type: 'string' }
+        itemLabel: { type: 'string' },
+        layout: { type: 'string' }
       }
     })
   )
 }
+
+/**
+ * @typedef {"block"|"inline"} AddAnotherLayout
+ */
+
 /**
  * Add another config
  *
  * @typedef {object} AddAnotherConfig
  * @property {string} [itemLabel] - Label for each fieldset
+ * @property {AddAnotherLayout} [layout] - layout style for fields
  */
 
 /**
