@@ -9,6 +9,7 @@
   [hidden] {
     display: none;
   }
+
   color: govuk-colour("white");
 
   background-color: govuk-colour("black");
@@ -123,7 +124,7 @@
         @include govuk-font(16);
 
         &:hover {
-          color: govuk-colour("mid-grey");
+          color: govuk-colour("black", $variant: "tint-80");
 
           &::after {
             content: "";
@@ -133,7 +134,7 @@
             bottom: 0;
             left: 15px;
             height: 3px;
-            background: govuk-colour("mid-grey");
+            background: govuk-colour("black", $variant: "tint-80");
           }
         }
 
@@ -169,8 +170,8 @@
           &:hover {
             > span {
               &::before {
-                border-right: 2px solid govuk-colour("mid-grey");
-                border-bottom: 2px solid govuk-colour("mid-grey");
+                border-right: 2px solid govuk-colour("black", $variant: "tint-80");
+                border-bottom: 2px solid govuk-colour("black", $variant: "tint-80");
               }
             }
           }
@@ -178,7 +179,7 @@
 
         &.probation-common-header__toggle-open {
           color: govuk-colour("blue");
-          background: govuk-colour("light-grey");
+          background: govuk-colour("black", $variant: "tint-95");
 
           > span {
             &::before {
@@ -202,7 +203,7 @@
           }
 
           &:hover {
-            color: govuk-colour("dark-grey");
+            color: govuk-colour("black", $variant: "tint-25");
           }
         }
 
@@ -250,7 +251,7 @@
     position: relative;
     z-index: 10000000;
     padding: 15px;
-    background: govuk-colour("light-grey");
+    background: govuk-colour("black", $variant: "tint-95");
 
     a {
       display: block;
@@ -261,7 +262,7 @@
 
   &__pushdown-menu {
     padding: 30px 0 60px;
-    background: govuk-colour("light-grey");
+    background: govuk-colour("black", $variant: "tint-95");
   }
 
   &__icon-link-wrapper {
@@ -290,7 +291,7 @@
       }
 
       &:hover {
-        color: govuk-colour("mid-grey");
+        color: govuk-colour("black", $variant: "tint-80");
         text-decoration: none;
 
         &::after {
@@ -301,7 +302,7 @@
           bottom: 0;
           left: 15px;
           height: 3px;
-          background: govuk-colour("mid-grey");
+          background: govuk-colour("black", $variant: "tint-80");
         }
       }
     }
