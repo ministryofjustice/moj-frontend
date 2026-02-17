@@ -94,7 +94,7 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@ministryofjustice/hmpps-npm-script-allowlist": "0.0.3",
-    "@playwright/test": "^1.55.0",
+    "@playwright/test": "^1.58.2",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
