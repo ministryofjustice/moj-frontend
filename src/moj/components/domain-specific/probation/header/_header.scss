@@ -230,7 +230,10 @@
         }
 
         &:focus-visible {
+          outline: 3px solid transparent;
           background-color: govuk-colour("yellow");
+          box-shadow: none;
+          text-decoration: none;
           @include probationmenuitem(govuk-colour("black"));
         }
       }
