@@ -1,6 +1,6 @@
 ---
 title: offender or ex-offender
-type: Updated
+type: Removed
 date: 2026-01-07
 ---
 
