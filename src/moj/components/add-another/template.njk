@@ -1,30 +1,26 @@
+{% from "govuk/macros/attributes.njk" import govukAttributes %}
 {%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
 
-<div class="moj-add-another" data-module="moj-add-another" data-item-label="{{ params.itemLabel  | default('Item', true) }}">
+{% set classNames = ["moj-add-another"] %}
+{% if params.layout == 'inline' %}
+  {% set classNames = classNames.concat("moj-add-another--inline") %}
+{% endif %}
+{%- if params.classes %}
+  {%- set classNames = classNames.concat(params.classes) %}
+{%- endif %}
+{%- set classNames = classNames | join(" ") -%}
 
-  {% set item %}
-   {% call govukFieldset({
-        classes: "moj-add-another__item",
-        legend: {
-          text: "Person",
-          classes: "moj-add-another__title govuk-fieldset__legend--m",
-          isPageHeading: false
-        }
-      }) -%}
-    {{ params.templateHtml | safe }}
-  {%- endcall -%}
-  {% endset %}
+{% set dataAttributes = {
+  'data-module': 'moj-add-another',
+  'data-item-label': params.itemLabel | default('Item', true),
+  'data-layout': params.layout if params.layout
+} %}
+
+<div class="{{ classNames }}" {{ govukAttributes(dataAttributes) }} {{govukAttributes(params.attributes) }}>
 
   <template class="moj-add-another__item-template">
-    {{ item | safe }}
-  </template>
-
-  <template class="moj-add-another__remove-button-template">
-      {{ govukButton({
-        text: "Remove",
-        classes: "govuk-button--secondary moj-add-another__remove-button"
-      }) }}
+    {{ params.templateHtml | safe }}
   </template>
 
   <div class="moj-add-another__items">
@@ -33,7 +29,7 @@
 
   <div class="moj-button-action">
       {{ govukButton({
-        text: "Add another person",
+        text: "Add another " ~ (params.itemLabel | default('Item', true) | lower),
         classes: "govuk-button--secondary moj-add-another__add-button"
       }) }}
   </div>

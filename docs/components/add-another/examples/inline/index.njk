@@ -1,0 +1,79 @@
+{%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
+{%- from "moj/components/add-another/macro.njk" import mojAddAnotherItem -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+
+<h2 class="govuk-heading-m govuk-label-wrapper" id="gifts-received-title">Gifts received</h2>
+<p class="govuk-hint" id="gifts-received-hint">Provide descriptions and value of any gifts.</p>
+
+  {% set templateHtml %}
+      {% call mojAddAnotherItem({ describedBy: 'gifts-received-hint', attributes: { 'aria-labelledby': 'gifts-received-title'} }) -%}
+        <div class="example__fields-row">
+          <div class="govuk-form-group">
+           <label class="govuk-label" for="gifts[0][description]">
+             Description
+            </label>
+            <input class="govuk-input"
+                   id="gifts[0][description]"
+                   name="gifts[0][description]"
+                   data-id="gifts[%index%][description]"
+                   data-name="gifts[%index%][description]"
+                   data-label="Description"
+                   type="text">
+          </div>
+          <div class="govuk-form-group" >
+            <label class="govuk-label" for="gifts[0][value]">
+              Value <span class="govuk-visually-hidden">in pounds</span>
+            </label>
+            <div class="govuk-input__wrapper">
+              <div class="govuk-input__prefix" aria-hidden="true">£</div>
+              <input class="govuk-input govuk-input--width-5"
+                     id="gifts[0][value]"
+                     name="gifts[0][value]"
+                     type="text"
+                     data-id="gifts[%index%][value]"
+                     data-name="gifts[%index%][value]"
+                     data-label="Value"
+                     spellcheck="false">
+            </div>
+          </div>
+          <div class="moj-add-another__remove-button-container"></div>
+        </div>
+    {% endcall %}
+  {% endset %}
+
+  {% call mojAddAnother({ templateHtml: templateHtml, itemLabel: "Gift", layout: 'inline' }) %}
+    {% call mojAddAnotherItem({ describedBy: 'gifts-received-hint', attributes: { 'aria-labelledby': 'gifts-received-title'} }) -%}
+      <div class="example__fields-row">
+        <div class="govuk-form-group" >
+         <label class="govuk-label" for="gifts[0][description]">
+           Description
+          </label>
+          <input class="govuk-input"
+                 id="gifts[0][description]"
+                 name="gifts[0][description]"
+                 data-id="gifts[%index%][description]"
+                 data-name="gifts[%index%][description]"
+                 data-label="Description"
+                 type="text">
+        </div>
+        <div class="govuk-form-group" >
+          <label class="govuk-label" for="gifts[0][value]">
+            Value <span class="govuk-visually-hidden">in pounds</span>
+          </label>
+          <div class="govuk-input__wrapper">
+            <div class="govuk-input__prefix" aria-hidden="true">£</div>
+            <input class="govuk-input govuk-input--width-5"
+                   id="gifts[0][value]"
+                   name="gifts[0][value]"
+                   type="text"
+                   data-id="gifts[%index%][value]"
+                   data-name="gifts[%index%][value]"
+                   data-label="Value"
+                   spellcheck="false">
+          </div>
+        </div>
+        <div class="moj-add-another__remove-button-container"></div>
+      </div>
+    {% endcall %}
+  {% endcall %}
+</div>
