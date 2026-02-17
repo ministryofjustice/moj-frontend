@@ -6,26 +6,23 @@
    ========================================================================== */
 
 @mixin probationmenuitem($colour) {
-  outline: 3px solid transparent;
   color: $colour;
-  box-shadow: none;
-  text-decoration: none;
-
   &::after {
     content: "";
-    position: absolute;
-    top: auto;
-    right: 15px;
-    bottom: 0;
-    left: 15px;
-    height: 3px;
     background: $colour;
   }
 
   > span {
     &::before {
-      border-right: 2px solid $colour;
-      border-bottom: 2px solid $colour;
+      border-right-color: $colour;
+      border-bottom-color: $colour;
+    }
+
+    &:hover {
+      &::before {
+        border-right-color: $colour;
+        border-bottom-color: $colour;
+      }
     }
   }
 }
@@ -194,8 +191,8 @@
           &:hover {
             > span {
               &::before {
-                border-right: 2px solid govuk-colour("mid-grey");
-                border-bottom: 2px solid govuk-colour("mid-grey");
+                border-right: 2px solid;
+                border-bottom: 2px solid;
               }
             }
           }
