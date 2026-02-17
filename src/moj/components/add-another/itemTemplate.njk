@@ -1,0 +1,22 @@
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+
+{% set html = params.html if params.html else caller() %}
+
+{% set legendParams = {
+  text: params.legend.text,
+  html: params.legend.html,
+  classes: "moj-add-another__title govuk-fieldset__legend--m " ~ (params.legend.classes if params.legend.classes),
+  isPageHeading: params.legend.isPageHeading
+} if params.legend else false %}
+
+{% set fieldsetParams = {
+  classes: "moj-add-another__item " ~ (params.classes if params.classes),
+  legend: legendParams,
+  attributes: params.attributes,
+  describedBy: params.describedBy,
+  html: html
+} %}
+
+{{- govukFieldset(fieldsetParams) -}}
+
+
