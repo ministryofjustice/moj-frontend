@@ -291,6 +291,9 @@ export class AddAnother extends ConfigurableComponent {
    * @param {HTMLElement|DocumentFragment} $item - Add another item
    */
   createRemoveButton($item) {
+    const $buttonContainer = $item.querySelector(
+      '.moj-add-another__remove-button-container'
+    )
     const $button = document.createElement('button')
     $button.type = 'button'
 
@@ -301,6 +304,10 @@ export class AddAnother extends ConfigurableComponent {
     )
 
     $button.textContent = 'Remove'
+    if ($buttonContainer && $buttonContainer instanceof HTMLElement) {
+      $buttonContainer.appendChild($button)
+      return
+    }
 
     if ($item instanceof DocumentFragment) {
       console.log($item.firstElementChild)
