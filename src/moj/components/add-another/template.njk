@@ -14,7 +14,10 @@
 {% set dataAttributes = {
   'data-module': 'moj-add-another',
   'data-item-label': params.itemLabel | default('Item', true),
-  'data-layout': params.layout if params.layout
+  'data-layout': {
+    value: params.layout,
+    optional: true
+  }
 } %}
 
 <div class="{{ classNames }}" {{ govukAttributes(dataAttributes) }} {{govukAttributes(params.attributes) }}>
