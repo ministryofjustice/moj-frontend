@@ -19,10 +19,18 @@
       border-bottom-color: $colour;
     }
 
+    &::after {
+      background-color: $colour;
+    }
+
     &:hover {
       &::before {
         border-right-color: $colour;
         border-bottom-color: $colour;
+      }
+
+      &::after {
+        background-color: $colour;
       }
     }
   }
