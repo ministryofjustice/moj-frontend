@@ -1,3 +1,11 @@
+## [8.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v8.0.0...v8.0.1) (2026-02-18)
+
+
+### Bug Fixes
+
+* **pds header:** update hover and focus states to meet WCAG AA contrast ([41fce95](https://github.com/ministryofjustice/moj-frontend/commit/41fce9558052bcca0779bc981213508f5b5059fb))
+* **scrollable pane:** accessibility fixes ([#2109](https://github.com/ministryofjustice/moj-frontend/issues/2109)) ([205ab22](https://github.com/ministryofjustice/moj-frontend/commit/205ab225b31deb3796a703c84416198d16691744))
+
 # [8.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v7.1.1...v8.0.0) (2025-12-17)
 
 ### BREAKING CHANGES
