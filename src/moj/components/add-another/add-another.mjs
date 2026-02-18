@@ -145,18 +145,10 @@ export class AddAnother extends ConfigurableComponent {
     const $items = this.getItems()
     const $firstItem = $items[0]
 
-    if ($items.length === 1) {
-      $firstItem.querySelector('.moj-add-another__remove-button')?.remove()
-    }
-
-    if ($items.length > 1 && !this.hasRemoveButton($firstItem)) {
-      this.createRemoveButton($firstItem)
-    }
-
     $items.forEach(($item, index, items) => {
-      this.updateIndexes($item, index)
+      this.updateIndexes($item, index, items.length)
       this.updateLegends($item, index, items.length)
-      this.updateRemoveButtons($item, index)
+      this.updateRemoveButtons($item, index, items.length)
       this.updateFieldLabels($item, index)
       this.updateGroupedFieldLegends($item, index)
     })
@@ -273,47 +265,63 @@ export class AddAnother extends ConfigurableComponent {
     }
   }
 
-  updateRemoveButtons($item, index) {
-    const button = $item.querySelector('.moj-add-another__remove-button')
-    console.log(this.config.layout)
-    if (button && button instanceof HTMLButtonElement) {
-      if (this.config.layout === 'block') {
-        button.innerText = `Remove ${this.config.itemLabel} ${index + 1}`
-      }
+  updateRemoveButtons($item, index, itemsCount) {
+    const $button = $item.querySelector('.moj-add-another__remove-button')
+    const label = this.removeButtonLabel(
+      `${this.config.itemLabel} ${index + 1}`
+    )
+    console.log(label)
 
-      if (this.config.layout === 'inline') {
-        button.innerHTML = `Remove <span class="govuk-visually-hidden">${this.config.itemLabel} ${index + 1}</span>`
+    if (!$button || !($button instanceof HTMLButtonElement)) {
+      console.log('no button')
+      console.log({ itemsCount, index })
+      if (itemsCount > 1 && index === 0) {
+        console.log('creating remove button for first item')
+        this.createRemoveButton($item, label)
       }
+      return
+    }
+
+    if (itemsCount === 1 && index === 0) {
+      $button.remove()
+    } else {
+      $button.innerHTML = label
     }
   }
 
   /**
    * @param {HTMLElement|DocumentFragment} $item - Add another item
    */
-  createRemoveButton($item) {
+  createRemoveButton($item, label = 'Remove') {
     const $buttonContainer = $item.querySelector(
       '.moj-add-another__remove-button-container'
     )
     const $button = document.createElement('button')
     $button.type = 'button'
-
     $button.classList.add(
       'govuk-button',
       'govuk-button--secondary',
       'moj-add-another__remove-button'
     )
+    $button.innerHTML = label
 
-    $button.textContent = 'Remove'
     if ($buttonContainer && $buttonContainer instanceof HTMLElement) {
       $buttonContainer.appendChild($button)
-      return
+    } else if ($item instanceof DocumentFragment) {
+      $item.firstElementChild.appendChild($button)
+    } else {
+      $item.appendChild($button)
+    }
+  }
+
+  removeButtonLabel(labelIndex) {
+    console.log(this.config.layout)
+    if (this.config.layout === 'block') {
+      return `Remove ${labelIndex}`
     }
 
-    if ($item instanceof DocumentFragment) {
-      console.log($item.firstElementChild)
-      $item.firstElementChild.append($button)
-    } else {
-      $item.append($button)
+    if (this.config.layout === 'inline') {
+      return `Remove <span class="govuk-visually-hidden">${labelIndex}</span>`
     }
   }
 
