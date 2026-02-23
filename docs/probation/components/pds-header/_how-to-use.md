@@ -15,7 +15,12 @@ You can add your service name as a heading, or as a caption to the existing head
 
 ### Links
 
-The MOJ crown logo and ‘Probation Digital Services’ text both link to Manage People on Probation, the Probation Digital Services homepage. 
+The MOJ crown logo and ‘Probation Digital Services’ text link to either:
+
+* Manage people on probation (MPoP), for users with access to it
+* your service's homepage, for users with no access to MPoP
+
+MPoP is the Probation Digital Services homepage.
 
 ### Using the header component in production
 
