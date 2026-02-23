@@ -9,15 +9,11 @@ eleventyNavigation:
   order: 40
 ---
 
-<b>Last updated: 24 February 2026</b>
+<b>Last updated: 25 February 2026</b>
 
-This roadmap shows what we're working on and planning to do next.
+This roadmap shows what we're working on and planning to do next. It's not fixed -- our plans might change as we learn more, respond to feedback, or adjust priorities.  
 
-It's not fixed -- our plans might change as we learn more, respond to feedback, or adjust priorities.  
-
-The roadmap is for transparency, to help informed decision making, and encourage collaboration and reuse.
-
-Understand what improvements are coming so that your team can plan its work with confidence.
+The roadmap is for transparency, to help with decision making, and encourage collaboration and reuse. Understand what improvements are coming so that your team can plan work with confidence.
 
 <hr>
 
