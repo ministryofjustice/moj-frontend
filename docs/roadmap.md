@@ -9,11 +9,15 @@ eleventyNavigation:
   order: 40
 ---
 
-Last updated: 24 February 2026
+<b>Last updated: 24 February 2026</b>
 
-Understand what improvements are coming so that your team can plan work with confidence.
+This roadmap shows what we're working on and planning to do next.
 
-Our plans may change as we learn more, respond to feedback or adjust priorities. It's not a fixed plan, but a chance to give transparency, support informed decision making, and encourage collaboration and reuse.
+It's not fixed -- our plans might change as we learn more, respond to feedback, or adjust priorities.  
+
+The roadmap is for transparency, to help informed decision making, and encourage collaboration and reuse.
+
+Understand what improvements are coming so that your team can plan its work with confidence.
 
 <hr>
 
@@ -21,7 +25,7 @@ Our plans may change as we learn more, respond to feedback or adjust priorities.
 
 ### New experimental building blocks
 
-The MOJ Design System team has recently released 10 experimental building blocks: 
+The MOJ Design System team released the following 10 experimental building blocks in the last few weeks: 
 
 - [numeric data component](/components/numeric-data/)
 - [contextual date component](/components/contextual-date/)
@@ -34,7 +38,7 @@ The MOJ Design System team has recently released 10 experimental building blocks
 - [outage banner component](/components/outage-banner/) 
 - [API error component](/components/api-error/)
 
-Find out [how to submit an experimental component](/contribute/add-new-component/start). 
+Find out more [about experimental building blocks](design-system-statuses/). 
 
 ### New official components
 
@@ -48,7 +52,7 @@ These components are new or were developed from the 'to be reviewed' status:
 
 ## What we're working on now
  
-We're developing the following building blocks to the 'official' status:
+We're developing the following building blocks to the 'official' status so that they can be used in live services:
 
 - [add another component](/components/add-another/) 
 - [search component](/components/search/) 
@@ -61,9 +65,9 @@ We're also improving navigation components and guidance.
 ## Coming up next
 
 We'll be exploring:
-- PDS breadcrumbs and back links to improve navigation clarity
-- a PDS support and escalation pattern for services
-- the PDS approach for identifying users on probation
+- PDS breadcrumbs and back links to help users navigate services more easily 
+- a more consistent way for users of PDS services to get support and escalate problems
+- how PDS identifies users on probation
 
 We'll develop the following components to the 'official' status:
 - [filter component](/components/filter/)   
@@ -75,5 +79,5 @@ We'll develop the following components to the 'official' status:
 ## The future 
 
 We plan to:
-- add 2 new teams - Prisons Digital and the Legal Aid Agency (LAA)
-- use AI to improve the Design System
+- add 2 new workstreams to the MOJ Design System team - Prisons Digital and the Legal Aid Agency (LAA)
+- use AI more to improve the Design System
