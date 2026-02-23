@@ -22,9 +22,6 @@ export class AddAnother extends ConfigurableComponent {
     )
     this.$itemsContainer = this.$root.querySelector('.moj-add-another__items')
 
-    console.log(this.$itemTemplate)
-    console.log(this.$itemsContainer)
-
     if (!(this.$itemTemplate instanceof HTMLTemplateElement)) {
       return
     }
@@ -141,16 +138,18 @@ export class AddAnother extends ConfigurableComponent {
     return $item
   }
 
-  updateAllItems() {
+  updateAllItems(action = '') {
     const $items = this.getItems()
-    const $firstItem = $items[0]
 
     $items.forEach(($item, index, items) => {
-      this.updateIndexes($item, index, items.length)
+      this.updateIndexes($item, index)
       this.updateLegends($item, index, items.length)
       this.updateRemoveButtons($item, index, items.length)
       this.updateFieldLabels($item, index)
       this.updateGroupedFieldLegends($item, index)
+      if (action === 'remove') {
+        this.updateErrorMessages($item, index)
+      }
     })
   }
 
@@ -182,19 +181,45 @@ export class AddAnother extends ConfigurableComponent {
     })
   }
 
+  updateErrorMessages($item, index) {
+    $item.querySelectorAll('[data-name]').forEach(($input) => {
+      if (!this.isValidInputElement($input)) {
+        return
+      }
+
+      const $errorMessage = $input.parentElement?.querySelector(
+        '.govuk-error-message'
+      )
+      if (!$errorMessage || !($errorMessage instanceof HTMLElement)) {
+        return
+      }
+
+      const id = $input.getAttribute('data-id') || ''
+      const originalErrorMessageId = $errorMessage.id
+
+      const newErrorMessageId = `${id.replace(/%index%/, `${index}`)}-error`
+      $errorMessage.id = newErrorMessageId
+
+      const describedBy = $input.getAttribute('aria-describedby') || ''
+      const newDescribedBy = describedBy
+        .split(' ')
+        .map((desc) =>
+          desc === originalErrorMessageId ? newErrorMessageId : desc
+        )
+        .join(' ')
+
+      $input.setAttribute('aria-describedby', newDescribedBy)
+    })
+  }
+
   updateFieldLabels($item, index) {
     $item.querySelectorAll('[data-label]').forEach(($input) => {
       if (!this.isValidInputElement($input)) {
         return
       }
 
-      // const labelText = $input.getAttribute('data-label') || ''
-
       const $label = $input.closest('.govuk-form-group').querySelector('label')
       if ($label && $label instanceof HTMLLabelElement) {
-        // const $labelhiddenText = $label.querySelector(
-        //   'span.govuk-visually-hidden:not(.moj-add-another__label-suffix)'
-        // )
         let $labelSuffix = $label.querySelector(
           '.moj-add-another__label-suffix'
         )
@@ -385,7 +410,7 @@ export class AddAnother extends ConfigurableComponent {
     }
 
     $itemToRemove.remove()
-    this.updateAllItems()
+    this.updateAllItems('remove')
     if ($itemToFocus instanceof HTMLElement) {
       setFocus($itemToFocus)
     }
