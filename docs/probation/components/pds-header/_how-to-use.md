@@ -20,6 +20,8 @@ The MOJ crown logo and ‘Probation Digital Services’ text link to either:
 * Manage people on probation (MPoP), for users with access to it
 * your service's homepage, for users with no access to MPoP
 
+MPoP is the Probation Digital Services homepage.
+
 ### Using the header component in production
 
 The [Probation Digital Services GitHub repository](https://github.com/ministryofjustice/hmpps-probation-frontend-component-api) contains a readme file with instructions on how to implement the component in your service.
