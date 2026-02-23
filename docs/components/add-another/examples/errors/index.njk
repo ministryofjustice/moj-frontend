@@ -112,6 +112,11 @@ layout: 'layouts/example.njk'
         }
       }) }}
 
+      {{ govukButton({
+        classes: "govuk-button--secondary moj-add-another__remove-button",
+        text: "Remove"
+      }) }}
+
     {% endcall %}
     {% call mojAddAnotherItem({ legend: { text: "Person 3 of 3" } }) -%}
       {{ govukInput({
@@ -146,6 +151,10 @@ layout: 'layouts/example.njk'
         }
       }) }}
 
+    {{ govukButton({
+      classes: "govuk-button--secondary moj-add-another__remove-button",
+      text: "Remove"
+    }) }}
     {% endcall %}
   {% endcall %}
 
