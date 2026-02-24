@@ -9,7 +9,7 @@ eleventyNavigation:
   order: 40
 ---
 
-<b>Last updated: 25 February 2026</b>
+<b>Last updated: 24 February 2026</b>
 
 This roadmap shows what we're working on and planning to do next. It's not fixed -- our plans might change as we learn more, respond to feedback, or adjust priorities.  
 
@@ -34,7 +34,7 @@ The MOJ Design System team released the following 10 experimental building block
 - [outage banner component](/components/outage-banner/) 
 - [API error component](/components/api-error/)
 
-Find out more [about experimental building blocks](design-system-statuses/). 
+Find out more [about experimental building blocks](/design-system-statuses/). 
 
 ### New official components
 
@@ -67,13 +67,11 @@ We'll be exploring:
 
 We'll develop the following components to the 'official' status:
 - [filter component](/components/filter/)   
-- [side navigation component](components/side-navigation/)  
+- [side navigation component](/components/side-navigation/)  
 - [ticket panel component](/components/ticket-panel/)
 
 <hr>
 
 ## The future 
 
-We plan to:
-- add 2 new workstreams to the MOJ Design System team - Prisons Digital and the Legal Aid Agency (LAA)
-- use AI more to improve the Design System
+We plan to use AI more to improve the Design System. 
