@@ -1,0 +1,48 @@
+<div id="search-field" class="govuk-form-group govuk-!-margin-top-0 govuk-!-margin-bottom-0 ">
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+    <label class="govuk-heading-m govuk-!-margin-bottom-0" for="proceeding-search-input">
+      Search for legal proceedings
+      <span class="govuk-hint govuk-!-margin-top-0 govuk-!-width-two-thirds">
+        Select one domestic abuse or Section 8 proceeding at a time. You must select at least one domestic abuse proceeding.
+        <span class="govuk-visually-hidden">Enter search term, results will automatically return</span>
+      </span>
+    </label>
+  </h2>
+
+  <div class="govuk-grid-row search-field govuk-!-margin-top-0">
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-top-0">
+      <input class="govuk-input " id="proceeding-search-input" name="proceeding-search-input" type="text" autocomplete="off">
+    </div>
+
+    <div class="govuk-grid-column-one-third govuk-!-margin-top-2 clear-search">
+      <p><a class="govuk-link govuk-!-font-size-19" id="clear-proceeding-search" aria-label="Clear search" href="#">Clear search</a></p>
+    </div>
+  </div>
+</div>
+<form action="#" method="post">
+    <div id="proceeding-list" class="govuk-grid-column-two-thirds govuk-list govuk-!-margin-bottom-0">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-visually-hidden">Id</legend><div class="govuk radios" data-module="govuk-radios">
+              <div id="PR0200" class="govuk-grid-row proceeding-item" style-"display: block;">
+                <div class="govuk-radios__item">
+                  <input id="id-a" class="govuk-radios__input" aria-describedby="id-a-hint" type="radio" value="a" name="id">
+                  <label for="id-a-field" class="govuk-label govuk-radios__label">
+                    <mark class="highlight">Child</mark> arrangements order 
+                  </label>
+                  <span class="govuk-hint govuk-radios__hint" id="id-a-hint">Family (Section 8 orders)</span>
+                </div>
+              </div>
+              <div id="PR0203" class="govuk-grid-row proceeding-item">
+                <div class="govuk-radios__item">
+                  <input id="id-b-field" class="govuk-radios__input" aria-describedby="id-b-hint" type="radio" value="b" name="id">
+                  <label for="id-b-field" class="govuk-label govuk-radios__label">Forced marriage protection order</label>
+                  <span class="govuk-hint govuk-radios__hint" id="id-b-hint">Family (Domestic Abuse)</span>
+                </div>
+            </div>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+  </form>
+<div id="screen-reader-messages" class="govuk-visually-hidden" aria-live="polite" aria-atomic="true" role="alert"></div>
