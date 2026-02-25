@@ -1,0 +1,48 @@
+{%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
+{%- from "moj/components/add-another/macro.njk" import mojAddAnotherItem -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "moj/components/date-picker/macro.njk" import mojDatePicker -%}
+
+<h1 class="govuk-heading-xl">Offence dates</h1>
+
+<h2 class="govuk-heading-m " id="offence-title">Causing death by dangerous driving</h2>
+
+  {% set templateHtml %}
+      {% call mojAddAnotherItem({ attributes: { 'aria-labelledby': 'offence-title'} }) -%}
+        <div class="example__fields-row">
+              {{ mojDatePicker({
+                  id: "death-by-dangerous-driving[0][date]",
+                  name: "death-by-dangerous-driving[0][date]",
+                  attributes: {
+                  'data-id': "death-by-dangerous-driving[%index%][date]",
+                 'data-name': "death-by-dangerous-driving[%index%][date]",
+                 'data-label': "Offence date"
+                  },
+                  label: {
+                    text: "Offence date"
+                  }
+              }) }}
+          <div class="moj-add-another__remove-button-container"></div>
+        </div>
+    {% endcall %}
+  {% endset %}
+
+  {% call mojAddAnother({ templateHtml: templateHtml, itemLabel: "Offence", layout: 'inline' }) %}
+    {% call mojAddAnotherItem({ attributes: { 'aria-labelledby': 'offence-title'} }) -%}
+        <div class="example__fields-row">
+              {{ mojDatePicker({
+                  id: "death-by-dangerous-driving[0][date]",
+                  name: "death-by-dangerous-driving[0][date]",
+                  attributes: {
+                  'data-id': "death-by-dangerous-driving[%index%][date]",
+                 'data-name':"death-by-dangerous-driving[%index%][date]",
+                 'data-label':"Offence date"
+                  },
+                  label: {
+                    text: "Offence date"
+                  }
+                }) }}
+          <div class="moj-add-another__remove-button-container"></div>
+        </div>
+    {% endcall %}  {% endcall %}
+</div>
