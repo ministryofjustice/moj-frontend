@@ -48,3 +48,22 @@ export function setFocus($element, options = {}) {
   options.onBeforeFocus?.call($element)
   $element.focus()
 }
+
+/**
+ * Emit a custom event
+ *
+ * @param {string} type - The event type
+ * @param {object} detail - Any details to pass along with the event
+ * @param {Node} $element - The element to attach the event to
+ */
+export function emitEvent(type, $element = document, detail = {}) {
+  if (!type) return
+
+  const event = new CustomEvent(type, {
+    bubbles: true,
+    cancelable: true,
+    detail
+  })
+
+  return $element.dispatchEvent(event)
+}

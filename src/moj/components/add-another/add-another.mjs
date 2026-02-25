@@ -1,6 +1,6 @@
 import { ConfigurableComponent } from 'govuk-frontend'
 
-import { setFocus } from '../../common/index.mjs'
+import { setFocus, emitEvent } from '../../common/index.mjs'
 
 /**
  * @augments {ConfigurableComponent<AddAnotherConfig>}
@@ -73,6 +73,10 @@ export class AddAnother extends ConfigurableComponent {
     const $items = this.getItems()
     this.updateAllItems()
     const $lastItem = $items[$items.length - 1]
+
+    console.log($lastItem)
+    console.log('initialising new item')
+    emitEvent('moj-add-another:add-item', $lastItem)
 
     // focus first input
     // const $input = $lastItem.querySelector('input, textarea, select')
