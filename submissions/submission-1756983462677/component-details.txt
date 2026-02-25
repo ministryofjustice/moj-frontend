@@ -1,0 +1,5 @@
+{
+  "componentName": "Mini profile",
+  "componentOverview": "The mini profile shows key information about a prisoner at the top of a question or transactional service page. This helps to:\r\n\r\n* reassure users that they’re looking at the correct record\r\n* provide relevant key information throughout a journey (such as prison number or location)\r\n\r\nThe mini profile is a variation of the design used on the DPS prisoner profile.",
+  "howIsTheComponentUsed": "https://court-cases-release-dates-design.hmpps.service.justice.gov.uk/components/mini-profile/"
+}
