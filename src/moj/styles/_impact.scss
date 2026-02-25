@@ -1,0 +1,71 @@
+// Custom styles for 'Impact of the Design System' page
+
+@use "../vendor/govuk-frontend" as *;
+@use "docs/stylesheets/settings/app";
+
+.design-system-impact blockquote {
+  @include govuk-font($size: 24, $weight: normal);
+  @include govuk-responsive-margin(7, "top");
+  margin-left: govuk-spacing(9);
+
+  &::before {
+    content: open-quote;
+    margin-left: -1.75rem;
+    font-size: 4rem;
+    line-height: 0;
+    vertical-align: -1.25rem;
+  }
+
+  &::after {
+    content: close-quote;
+  }
+}
+
+.design-system-impact h2 {
+  @include govuk-responsive-margin(5, "bottom");
+}
+
+.design-system-impact > .logo {
+  object-fit: contain;
+  object-position: left;
+  width: 100%;
+  border: none;
+
+  @include govuk-media-query($until: tablet) {
+    width: 50%;
+    margin-bottom: 20px;
+  }
+}
+
+.design-system-impact > .secondary {
+  padding-bottom: govuk-spacing(2);
+  color: $govuk-secondary-text-colour;
+}
+
+.callout-card {
+  height: 100%;
+  padding: govuk-spacing(5);
+  padding-left: govuk-spacing(5) + 4px;
+  border-left: 5px solid $govuk-border-colour;
+  background-color: govuk-colour("white");
+
+  & .lead {
+    @include govuk-font($size: 24, $weight: bold);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  & .big-number {
+    @include govuk-font($size: 80, $weight: bold);
+    margin-top: 0;
+  }
+
+  & .medium-number {
+    @include govuk-font($size: 48, $weight: bold);
+    margin-top: 0;
+
+    & .out-of {
+      @include govuk-font($size: 24, $weight: bold);
+    }
+  }
+}
