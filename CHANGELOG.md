@@ -1,3 +1,13 @@
+# [9.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v8.0.1...v9.0.0) (2026-02-25)
+
+
+* feat(v9.0.0)!: Update to support govuk-frontend v6.0.0 ([#2192](https://github.com/ministryofjustice/moj-frontend/issues/2192)) ([0728aff](https://github.com/ministryofjustice/moj-frontend/commit/0728affa1e6074cb4fbcf3a6caaf995de7e3dcae))
+
+
+### BREAKING CHANGES
+
+* Updates to MOJ Frontend to support all the changes in GOV.UK Frontend v6.0.0
+
 ## [8.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v8.0.0...v8.0.1) (2026-02-18)
 
 
