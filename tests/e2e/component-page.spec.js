@@ -11,8 +11,10 @@ test.describe('layout tabs', () => {
     await expect(tabs).toBeVisible()
     await expect(tabs).toHaveAttribute('data-govuk-tabs-init')
 
-    expect(page.getByRole('heading', { name: 'Overview' })).toBeVisible()
-    expect(page.getByRole('heading', { name: 'Examples' })).not.toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Overview' })).toBeVisible()
+    await expect(
+      page.getByRole('heading', { name: 'Examples' })
+    ).not.toBeVisible()
   })
 
   test('layout tabs function', async ({ page }) => {
@@ -23,8 +25,10 @@ test.describe('layout tabs', () => {
 
     await tabs.getByRole('tab', { name: 'Examples' }).click()
 
-    expect(page.getByRole('heading', { name: 'Overview' })).not.toBeVisible()
-    expect(page.getByRole('heading', { name: 'Examples' })).toBeVisible()
+    await expect(
+      page.getByRole('heading', { name: 'Overview' })
+    ).not.toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Examples' })).toBeVisible()
   })
 
   test('tabs pagination', async ({ page }) => {
@@ -34,8 +38,12 @@ test.describe('layout tabs', () => {
 
     await page.getByRole('link', { name: /Next/ }).click()
 
-    expect(page.getByRole('heading', { name: 'Overview' })).not.toBeVisible()
-    expect(page.getByRole('heading', { name: 'How to use' })).toBeVisible()
+    await expect(
+      page.getByRole('heading', { name: 'How to use' })
+    ).toBeVisible()
+    await expect(
+      page.getByRole('heading', { name: 'Overview' })
+    ).not.toBeVisible()
   })
 })
 
@@ -61,10 +69,10 @@ test.describe('example tabs', () => {
 
     await tabContainer.getByRole('tab', { name: 'Nunjucks' }).click()
 
-    expect(nunjucksPanel).toBeVisible()
+    await expect(nunjucksPanel).toBeVisible()
 
     const details = nunjucksPanel.locator('[data-module="govuk-details"]')
-    expect(details).toBeVisible()
+    await expect(details).toBeVisible()
   })
 })
 
@@ -75,7 +83,7 @@ test.describe('copy button', () => {
     const nunjucksPanel = tabs.getByRole('tabpanel', { name: 'Nunjucks' })
 
     await page.getByRole('tab', { name: 'Nunjucks' }).click()
-    expect(
+    await expect(
       nunjucksPanel.getByRole('button', { name: 'Copy code' })
     ).toBeVisible()
   })
@@ -93,6 +101,6 @@ test.describe('scroll container', () => {
     const code = nunjucksPanel.locator(
       'code[data-module="app-scroll-container"]'
     )
-    expect(code).toHaveAttribute('data-app-scroll-container-init')
+    await expect(code).toHaveAttribute('data-app-scroll-container-init')
   })
 })

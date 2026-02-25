@@ -7,7 +7,7 @@
   padding-bottom: 13px;
   padding-left: 0;
   border: none;
-  color: $govuk-link-colour;
+  color: govuk-functional-colour(link);
   background-color: transparent;
   cursor: pointer;
   -webkit-font-smoothing: antialiased;
@@ -32,11 +32,11 @@
     position: relative;
     z-index: 1;
     outline: none;
-    color: $govuk-focus-text-colour;
-    background-color: $govuk-focus-colour;
+    color: govuk-functional-colour(focus-text);
+    background-color: govuk-functional-colour(focus);
     box-shadow:
-      0 -2px $govuk-focus-colour,
-      0 4px $govuk-focus-text-colour;
+      0 -2px govuk-functional-colour(focus),
+      0 4px govuk-functional-colour(focus-text);
   }
 }
 
@@ -64,7 +64,7 @@
 }
 
 .js-enabled .moj-search-toggle__search {
-  background-color: govuk-colour("light-grey");
+  background-color: govuk-colour("black", $variant: "tint-95");
 
   @include govuk-media-query($from: desktop) {
     position: absolute;

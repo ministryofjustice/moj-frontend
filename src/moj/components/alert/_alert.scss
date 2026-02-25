@@ -94,8 +94,8 @@
 /* Style variants
    ========================================================================== */
 .moj-alert--information {
-  border-color: $govuk-brand-colour;
-  color: $govuk-brand-colour;
+  border-color: govuk-functional-colour(brand);
+  color: govuk-functional-colour(brand);
 
   .moj-alert__dismiss,
   .moj-alert__content a {
