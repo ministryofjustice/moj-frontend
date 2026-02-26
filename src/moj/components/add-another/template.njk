@@ -2,6 +2,8 @@
 {%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
 
+{% set itemsHtml = params.itemsHtml if params.itemsHtml else caller() %}
+
 {% set classNames = ["moj-add-another"] %}
 {% if params.layout == 'inline' %}
   {% set classNames = classNames.concat("moj-add-another--inline") %}
@@ -27,7 +29,7 @@
   </template>
 
   <div class="moj-add-another__items">
-    {{ caller() | safe }}
+    {{ itemsHtml | safe }}
   </div>
 
   <div class="moj-button-action">
