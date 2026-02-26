@@ -61,11 +61,11 @@ The form fields have hidden unique labels. This enables screenreader users to na
 
 #### Inline
 
-Coded example
+This is a lean variant with a remove button in line. It works well for fieldsets with 2 narrow fields. The heading's unique label is hidden. 
 
 ### Magnifying glass
 
-Coded example
+The magnifying glass offers a variant with a stronger visual design. It may be more appropriate in text-heavy user interfaces, 
 
 ### Things to consider
 
