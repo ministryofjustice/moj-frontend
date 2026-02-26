@@ -15,7 +15,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 15 January 2026
+Last updated: 26 February 2026
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -253,6 +253,14 @@ As users are moved away from NOMIS, references to 'global' should be able to be 
 
 {% endaccordionSection %}
 {% accordionSection "H" %}
+
+### HDC (home detention curfew)
+
+HDC (home detention curfew) allows prisoners to serve part of their sentence at home, under electronic monitoring.
+
+Use HDC. This is more well known than the full version. If you have evidence that HDC is not well understand by your audience, use home detention curfew.
+
+If you're combining HDC with other terms to make a longer initialism like HDCED, consider spelling out the additional words, for example HDC eligibility date. This makes it easier to read alongside other acronyms.
 
 ### help content (DPS only)
 
