@@ -77,6 +77,16 @@ export function emitEvent(
   return $element.dispatchEvent(event)
 }
 
+/**
+ * Generate a unique ID with an optional prefix
+ *
+ * @param {string} [prefix] - The prefix for the unique ID
+ * @returns {string} A unique ID string
+ */
+export function generateUniqueId(prefix = 'moj') {
+  return `${prefix}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+}
+
 /* eslint-disable jsdoc/valid-types --
  * `{new(...args: any[] ): object}` is not recognised as valid
  * https://github.com/gajus/eslint-plugin-jsdoc/issues/145#issuecomment-1308722878

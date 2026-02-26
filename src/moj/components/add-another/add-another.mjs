@@ -1,6 +1,6 @@
 import { ConfigurableComponent } from 'govuk-frontend'
 
-import { setFocus, emitEvent } from '../../common/index.mjs'
+import { setFocus, emitEvent, generateUniqueId } from '../../common/index.mjs'
 
 /**
  * @augments {ConfigurableComponent<AddAnotherConfig>}
@@ -335,7 +335,7 @@ export class AddAnother extends ConfigurableComponent {
       return
     }
 
-    const counterId = this.generateUniqueId()
+    const counterId = generateUniqueId()
     let $counter = $item.querySelector(`.${this.itemCounterClass}`)
 
     if ($counter && $counter instanceof HTMLElement) {
@@ -486,16 +486,6 @@ export class AddAnother extends ConfigurableComponent {
       $input instanceof HTMLSelectElement ||
       $input instanceof HTMLTextAreaElement
     )
-  }
-
-  /**
-   * Generate a unique ID with an optional prefix
-   *
-   * @param {string} [prefix] - The prefix for the unique ID
-   * @returns {string} A unique ID string
-   */
-  generateUniqueId(prefix = 'moj') {
-    return `${prefix}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
   }
 
   /**
