@@ -6,31 +6,86 @@ import { setFocus, emitEvent } from '../../common/index.mjs'
  * @augments {ConfigurableComponent<AddAnotherConfig>}
  */
 export class AddAnother extends ConfigurableComponent {
+  /** @private */
+  itemTemplateClass = 'moj-add-another__item-template'
+
+  /** @private */
+  itemsContainerClass = 'moj-add-another__items'
+
+  /** @private */
+  itemClass = 'moj-add-another__item'
+
+  /** @private */
+  removeButtonContainerClass = 'moj-add-another__remove-button-container'
+
+  /** @private */
+  removeButtonClass = 'moj-add-another__remove-button'
+
+  /** @private */
+  addButtonClass = 'moj-add-another__add-button'
+
+  /** @private */
+  labelSuffixClass = 'moj-add-another__label-suffix'
+
+  /** @private */
+  itemCounterClass = 'moj-add-another__item-counter'
+
+  /** @private */
+  itemAddedEvent = 'add-item'
+
+  /** @private */
+  itemRemovedEvent = 'remove-item'
+
+  /** @private */
+  $items
+
   /**
+   * Add another component
+   *
+   * Allows for a section of a form to be duplicated to allow users to add
+   * multiple entries for a set of fields. For example, adding multiple
+   * addresses.
+   *
    * @param {Element | null} $root - HTML element to use for add another
    * @param {AddAnotherConfig} [config] - Add another config
    */
   constructor($root, config = {}) {
     super($root, config)
-    console.log('add another constructor')
-    console.log(this.config)
-    this.$itemTemplate = this.$root.querySelector(
-      '.moj-add-another__item-template'
-    )
-    this.$removeButtonTemplate = this.$root.querySelector(
-      '.moj-add-another__remove-button-template'
-    )
-    this.$itemsContainer = this.$root.querySelector('.moj-add-another__items')
 
-    if (!(this.$itemTemplate instanceof HTMLTemplateElement)) {
+    const $itemTemplate = this.$root.querySelector(`.${this.itemTemplateClass}`)
+    const $itemsContainer = this.$root.querySelector(
+      `.${this.itemsContainerClass}`
+    )
+    const $items = this.getItems()
+
+    if (
+      !($itemTemplate instanceof HTMLTemplateElement) ||
+      !($itemsContainer instanceof HTMLElement)
+    ) {
       return
     }
 
-    this.$root.addEventListener('click', this.onRemoveButtonClick.bind(this))
-    this.$root.addEventListener('click', this.onAddButtonClick.bind(this))
+    this.$itemTemplate = $itemTemplate
+    this.$itemsContainer = $itemsContainer
+    this.$items = $items
 
+    this.initButtons()
+    this.updateAllItems()
+
+    this.$root.addEventListener('click', (event) =>
+      this.onRemoveButtonClick(event)
+    )
+    this.$root.addEventListener('click', (event) =>
+      this.onAddButtonClick(event)
+    )
+  }
+
+  /**
+   * Ensure buttons have type="button" to prevent form submission when clicked
+   */
+  initButtons() {
     const $buttons = this.$root.querySelectorAll(
-      '.moj-add-another__add-button, moj-add-another__remove-button'
+      `.${this.addButtonClass}, .${this.removeButtonClass}`
     )
 
     $buttons.forEach(($button) => {
@@ -40,8 +95,6 @@ export class AddAnother extends ConfigurableComponent {
 
       $button.type = 'button'
     })
-
-    this.updateAllItems()
   }
 
   /**
@@ -49,87 +102,60 @@ export class AddAnother extends ConfigurableComponent {
    */
   onAddButtonClick(event) {
     event.preventDefault()
+
     const $button = event.target
 
     if (
       !$button ||
       !($button instanceof HTMLButtonElement) ||
-      !$button.classList.contains('moj-add-another__add-button')
+      !$button.classList.contains(`${this.addButtonClass}`)
     ) {
       return
     }
 
     const $item = this.getNewItem()
-    console.log($item)
-
-    // if (!$item || !($item instanceof HTMLElement)) {
-    //   return
-    // }
-
-    // this.resetItem($item)
+    if (!$item || !($item instanceof DocumentFragment)) {
+      return
+    }
 
     this.$itemsContainer.appendChild($item)
-
-    const $items = this.getItems()
     this.updateAllItems()
-    const $lastItem = $items[$items.length - 1]
+    const $lastItem = this.$items[this.$items.length - 1]
 
-    console.log($lastItem)
-    console.log('initialising new item')
-    emitEvent('moj-add-another:add-item', $lastItem)
-
-    // focus first input
-    // const $input = $lastItem.querySelector('input, textarea, select')
-    // if ($input && $input instanceof HTMLInputElement) {
-    //   setTimeout(() => {
-    //     $input.focus()
-    //   }, 100)
-    // }
-
-    // focus legend
-    // const $legend = $lastItem.querySelector('legend')
-    // if ($legend && $legend instanceof HTMLElement) {
-    //   console.log('setting focus on legend')
-    //   setTimeout(() => {
-    //     setFocus($legend)
-    //   }, 100)
-    // }
-
-    // focus fieldset
-    if ($lastItem && $lastItem instanceof HTMLElement) {
+    // Place focus on the added item
+    if ($lastItem && $lastItem instanceof HTMLFieldSetElement) {
+      emitEvent($lastItem, AddAnother, this.itemAddedEvent)
       console.log('setting focus on fieldset')
       setTimeout(() => {
         setFocus($lastItem)
       }, 100)
     }
-
-    // Focus on new item legend
-    // const $legend = $item.querySelector('legend')
-    // setFocus($lastItem)
   }
 
   /**
-   * @param {HTMLElement} $item - Add another item
+   * @param {Element | DocumentFragment} $item - Add another item
    */
   hasRemoveButton($item) {
     return $item.querySelectorAll('.moj-add-another__remove-button').length
   }
 
+  /**
+   * Get all add another items
+   *
+   * @returns {Element[]} Array of add another items
+   */
   getItems() {
     if (!this.$root) {
       return []
     }
 
-    const $items = Array.from(
-      this.$root.querySelectorAll('.moj-add-another__items > fieldset')
-    )
+    const $items = Array.from(this.$root.querySelectorAll(`.${this.itemClass}`))
 
     return $items.filter((item) => item instanceof HTMLElement)
   }
 
   getNewItem() {
     const $item = document.importNode(this.$itemTemplate.content, true)
-    console.log($item)
 
     if (!$item) {
       return
@@ -143,9 +169,9 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   updateAllItems(action = '') {
-    const $items = this.getItems()
+    this.$items = this.getItems()
 
-    $items.forEach(($item, index, items) => {
+    this.$items.forEach(($item, index, items) => {
       this.updateIndexes($item, index)
       this.updateLegends($item, index, items.length)
       this.updateRemoveButtons($item, index, items.length)
@@ -158,7 +184,10 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   /**
-   * @param {HTMLElement} $item - Add another item
+   * Updates the name and id attributes of inputs within an item, as well as
+   * their associated labels, to reflect the current index of the item.
+   *
+   * @param {Element} $item - Add another item
    * @param {number} index - Add another item index
    */
   updateIndexes($item, index) {
@@ -185,6 +214,14 @@ export class AddAnother extends ConfigurableComponent {
     })
   }
 
+  /**
+   * Updates the id attributes of error messages associated with inputs within
+   * an item, as well as the aria-describedby attributes of the inputs, to
+   * reflect the current index of the item.
+   *
+   * @param {Element} $item - Add another item
+   * @param {number} index - Add another item index
+   */
   updateErrorMessages($item, index) {
     $item.querySelectorAll('[data-name]').forEach(($input) => {
       if (!this.isValidInputElement($input)) {
@@ -216,6 +253,13 @@ export class AddAnother extends ConfigurableComponent {
     })
   }
 
+  /**
+   * Updates the text of labels associated with inputs within an item to have
+   * visually hidden text appended that reflects the current index of the item.
+   *
+   * @param {Element} $item - Add another item
+   * @param {number} index - Add another item index
+   */
   updateFieldLabels($item, index) {
     $item.querySelectorAll('[data-label]').forEach(($input) => {
       if (!this.isValidInputElement($input)) {
@@ -224,24 +268,30 @@ export class AddAnother extends ConfigurableComponent {
 
       const $label = $input.closest('.govuk-form-group').querySelector('label')
       if ($label && $label instanceof HTMLLabelElement) {
-        let $labelSuffix = $label.querySelector(
-          '.moj-add-another__label-suffix'
-        )
-        console.log($labelSuffix)
+        let $labelSuffix = $label.querySelector(`.${this.labelSuffixClass}`)
+
         if (!$labelSuffix) {
-          console.log('no suffix adding one')
           $labelSuffix = document.createElement('span')
           $labelSuffix.classList.add(
-            'moj-add-another__label-suffix',
+            `${this.labelSuffixClass}`,
             'govuk-visually-hidden'
           )
           $label.appendChild($labelSuffix)
         }
-        $labelSuffix.innerText = ` for ${this.config.itemLabel.toLowerCase()} ${index + 1}`
+
+        $labelSuffix.innerHTML = ` for ${this.config.itemLabel.toLowerCase()} ${index + 1}`
       }
     })
   }
 
+  /**
+   * Updates the text of legends within an item to have visually hidden text
+   * appended that reflects the current index of the item, for grouped fields
+   * that contain multiple inputs (e.g. date inputs, radio button and checkbox groups).
+   *
+   * @param {Element} $item - Add another item
+   * @param {number} index - Add another item index
+   */
   updateGroupedFieldLegends($item, index) {
     $item.querySelectorAll('[data-legend]').forEach(($fieldset) => {
       if (!($fieldset instanceof HTMLFieldSetElement)) {
@@ -258,6 +308,18 @@ export class AddAnother extends ConfigurableComponent {
     })
   }
 
+  /**
+   * Updates the text of legends within an item to reflect the current index of
+   * the item and the total number of items to ensue unique accessible names.
+   *
+   * If there is no legend, a visually hidden span is added to the start of the
+   * item and the aria-labelledby attribute of the item is updated to reference
+   * it.
+   *
+   * @param {Element} $item - Add another item
+   * @param {number} index - Add another item index
+   * @param {number} itemsCount - Total number of items
+   */
   updateLegends($item, index, itemsCount) {
     const $legend = $item.querySelector('legend')
     let suffix = ''
@@ -274,18 +336,18 @@ export class AddAnother extends ConfigurableComponent {
     }
 
     const counterId = this.generateUniqueId()
-    let $counter = $item.querySelector(`.moj-add-another__item-counter`)
+    let $counter = $item.querySelector(`.${this.itemCounterClass}`)
 
-    if ($counter) {
-      $counter.innerText = `${suffix}`
+    if ($counter && $counter instanceof HTMLElement) {
+      $counter.innerHTML = `${suffix}`
     } else {
       $counter = document.createElement('span')
       $counter.classList.add(
         'govuk-visually-hidden',
-        'moj-add-another__item-counter'
+        `${this.itemCounterClass}`
       )
       $counter.id = `${counterId}`
-      $counter.innerText = `${suffix}`
+      $counter.innerHTML = `${suffix}`
       $item.prepend($counter)
       $item.setAttribute(
         'aria-labelledby',
@@ -294,9 +356,18 @@ export class AddAnother extends ConfigurableComponent {
     }
   }
 
+  /**
+   * Updates the text of remove buttons within an item to reflect the current
+   * index of the item to ensure unique accessible names.
+   * If there is only one item remaining, the remove button is removed.
+   *
+   * @param {Element} $item - Add another item
+   * @param {number} index - Add another item index
+   * @param {number} itemsCount - Total number of items
+   */
   updateRemoveButtons($item, index, itemsCount) {
-    const $button = $item.querySelector('.moj-add-another__remove-button')
-    const label = this.removeButtonLabel(
+    const $button = $item.querySelector(`.${this.removeButtonClass}`)
+    const label = this.removeButtonLabelText(
       `${this.config.itemLabel} ${index + 1}`
     )
     console.log(label)
@@ -319,18 +390,21 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   /**
-   * @param {HTMLElement|DocumentFragment} $item - Add another item
+   * Creates a remove button for an item if it doesn't already exist, and
+   * adds it to the item.
+   *
+   * @param {Element|DocumentFragment} $item - Add another item
    */
   createRemoveButton($item, label = 'Remove') {
     const $buttonContainer = $item.querySelector(
-      '.moj-add-another__remove-button-container'
+      `.${this.removeButtonContainerClass}`
     )
     const $button = document.createElement('button')
     $button.type = 'button'
     $button.classList.add(
       'govuk-button',
       'govuk-button--secondary',
-      'moj-add-another__remove-button'
+      `${this.removeButtonClass}`
     )
     $button.innerHTML = label
 
@@ -343,45 +417,25 @@ export class AddAnother extends ConfigurableComponent {
     }
   }
 
-  removeButtonLabel(labelIndex) {
+  /**
+   * Generates the label text for the remove button based on the layout
+   * configuration.
+   *
+   * @param {string} labelIndex - the index to include in the remove button label
+   * @returns {string} the label for the remove button based on the layout configuration
+   */
+  removeButtonLabelText(labelIndex) {
     console.log(this.config.layout)
-    if (this.config.layout === 'block') {
-      return `Remove ${labelIndex}`
-    }
-
     if (this.config.layout === 'inline') {
       return `Remove <span class="govuk-visually-hidden">${labelIndex}</span>`
     }
+
+    return `Remove ${labelIndex}`
   }
 
   /**
-   * @param {HTMLElement} $item - Add another item
-   */
-  resetItem($item) {
-    $item.querySelectorAll('[data-name], [data-id]').forEach(($input) => {
-      if (!this.isValidInputElement($input)) {
-        return
-      }
-
-      if ($input instanceof HTMLSelectElement) {
-        $input.selectedIndex = -1
-        $input.value = ''
-      } else if ($input instanceof HTMLTextAreaElement) {
-        $input.value = ''
-      } else {
-        switch ($input.type) {
-          case 'checkbox':
-          case 'radio':
-            $input.checked = false
-            break
-          default:
-            $input.value = ''
-        }
-      }
-    })
-  }
-
-  /**
+   * Handles click events on remove buttons within items.
+   *
    * @param {MouseEvent} event - Click event
    */
   onRemoveButtonClick(event) {
@@ -390,12 +444,12 @@ export class AddAnother extends ConfigurableComponent {
     if (
       !$button ||
       !($button instanceof HTMLButtonElement) ||
-      !$button.classList.contains('moj-add-another__remove-button')
+      !$button.classList.contains(`${this.removeButtonClass}`)
     ) {
       return
     }
 
-    const $itemToRemove = $button.closest('fieldset')
+    const $itemToRemove = $button.closest(`.${this.itemClass}`)
 
     if (!$itemToRemove || !($itemToRemove instanceof HTMLFieldSetElement)) {
       return
@@ -415,20 +469,15 @@ export class AddAnother extends ConfigurableComponent {
 
     $itemToRemove.remove()
     this.updateAllItems('remove')
+    emitEvent(this.$root, AddAnother, this.itemRemovedEvent)
     if ($itemToFocus instanceof HTMLElement) {
       setFocus($itemToFocus)
     }
   }
 
-  focusHeading() {
-    const $heading = this.$root.querySelector('.moj-add-another__heading')
-
-    if ($heading && $heading instanceof HTMLElement) {
-      $heading.focus()
-    }
-  }
-
   /**
+   * Checks if an element is a valid input element (input, select, or textarea).
+   *
    * @param {Element} $input - the input to validate
    */
   isValidInputElement($input) {
@@ -440,20 +489,11 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   /**
-   * Creates a valid HTML id from a string
+   * Generate a unique ID with an optional prefix
    *
-   * @param {string} str - string to turn into an id
+   * @param {string} [prefix] - The prefix for the unique ID
+   * @returns {string} A unique ID string
    */
-  createHtmlId(str) {
-    return str
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9_-]/g, '-') // Replace invalid chars with hyphen
-      .replace(/^[0-9-]/, '_$&') // If starts with digit/hyphen, prefix with underscore
-      .replace(/-+/g, '-') // Collapse multiple hyphens
-      .replace(/^-|-$/g, '') // Remove leading/trailing hyphens
-  }
-
   generateUniqueId(prefix = 'moj') {
     return `${prefix}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
   }
