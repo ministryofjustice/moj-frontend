@@ -13,7 +13,7 @@
     margin-top: govuk-spacing(6);
     margin-bottom: govuk-spacing(4);
     padding: 0;
-    border-bottom: 2px solid $govuk-border-colour;
+    border-bottom: 2px solid govuk-colour("black", $variant: "tint-25");
 
     &:focus {
       //@include govuk-focused-box;
