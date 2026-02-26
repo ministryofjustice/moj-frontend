@@ -1,7 +1,7 @@
 ---
 title: Get help and contribute
 order: 40
-tags: 'alert'
+tags: 'add-another'
 permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
