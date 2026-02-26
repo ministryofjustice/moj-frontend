@@ -1,0 +1,168 @@
+---
+layout: 'layouts/example.njk'
+---
+
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/input/macro.njk" import govukInput -%}
+{%- from "govuk/components/date-input/macro.njk" import govukDateInput -%}
+{%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
+{%- from "moj/components/add-another/macro.njk" import mojAddAnotherItem -%}
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+
+
+<form method="post">
+  <h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Add people</h2>
+
+  {% set templateHtml %}
+    {% call mojAddAnotherItem({ legend: { text: "Person" } }) -%}
+      {{ govukInput({
+        id: "person[0][first_name]",
+        name: "person[0][first_name]",
+        label: {
+          text: "First name"
+        },
+        attributes: {
+          "data-name": "person[%index%][first_name]",
+          "data-id": "person[%index%][first_name]",
+          "data-label": "First name"
+        }
+      }) }}
+
+      {{ govukInput({
+        id: "person[0][last_name]",
+        name: "person[0][last_name]",
+        label: {
+          text: "Last name"
+        },
+        attributes: {
+          "data-name": "person[%index%][last_name]",
+          "data-id": "person[%index%][last_name]",
+          "data-label": "Last name"
+        }
+      }) }}
+
+    {% endcall %}
+  {% endset %}
+
+  {% call mojAddAnother({ templateHtml: templateHtml, itemLabel: "Person" }) %}
+    {% call mojAddAnotherItem({ legend: { text: "Person 1 of 3" } }) -%}
+      {{ govukInput({
+        id: "person[0][first_name]",
+        name: "person[0][first_name]",
+        label: {
+          text: "First name"
+        },
+        errorMessage: {
+          text: "Enter your first name"
+        },
+        attributes: {
+          "data-name": "person[%index%][first_name]",
+          "data-id": "person[%index%][first_name]",
+          "data-label": "First name"
+        }
+      }) }}
+
+      {{ govukInput({
+        id: "person[0][last_name]",
+        name: "person[0][last_name]",
+        label: {
+          text: "Last name"
+        },
+        errorMessage: {
+          text: "Enter your last name"
+        },
+        attributes: {
+          "data-name": "person[%index%][last_name]",
+          "data-id": "person[%index%][last_name]",
+          "data-label": "Last name"
+        }
+      }) }}
+
+    {% endcall %}
+    {% call mojAddAnotherItem({ legend: { text: "Person 2 of 3" } }) -%}
+      {{ govukInput({
+        id: "person[1][first_name]",
+        name: "person[1][first_name]",
+        label: {
+          text: "First name"
+        },
+        errorMessage: {
+          text: "Enter your first name"
+        },
+        attributes: {
+          "data-name": "person[%index%][first_name]",
+          "data-id": "person[%index%][first_name]",
+          "data-label": "First name"
+        }
+      }) }}
+
+      {{ govukInput({
+        id: "person[1][last_name]",
+        name: "person[1][last_name]",
+        label: {
+          text: "Last name"
+        },
+        errorMessage: {
+          text: "Enter your last name"
+        },
+        attributes: {
+          "data-name": "person[%index%][last_name]",
+          "data-id": "person[%index%][last_name]",
+          "data-label": "Last name"
+        }
+      }) }}
+
+      {{ govukButton({
+        classes: "govuk-button--secondary moj-add-another__remove-button",
+        text: "Remove"
+      }) }}
+
+    {% endcall %}
+    {% call mojAddAnotherItem({ legend: { text: "Person 3 of 3" } }) -%}
+      {{ govukInput({
+        id: "person[2][first_name]",
+        name: "person[2][first_name]",
+        label: {
+          text: "First name"
+        },
+        errorMessage: {
+          text: "Enter your first name"
+        },
+        attributes: {
+          "data-name": "person[%index%][first_name]",
+          "data-id": "person[%index%][first_name]",
+          "data-label": "First name"
+        }
+      }) }}
+
+      {{ govukInput({
+        id: "person[2][last_name]",
+        name: "person[2][last_name]",
+        label: {
+          text: "Last name"
+        },
+        errorMessage: {
+          text: "Enter your last name"
+        },
+        attributes: {
+          "data-name": "person[%index%][last_name]",
+          "data-id": "person[%index%][last_name]",
+          "data-label": "Last name"
+        }
+      }) }}
+
+    {{ govukButton({
+      classes: "govuk-button--secondary moj-add-another__remove-button",
+      text: "Remove"
+    }) }}
+    {% endcall %}
+  {% endcall %}
+
+  <div class="moj-button-action">
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </div>
+
+</form>
+

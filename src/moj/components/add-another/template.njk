@@ -1,0 +1,39 @@
+{% from "govuk/macros/attributes.njk" import govukAttributes %}
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+
+{% set classNames = ["moj-add-another"] %}
+{% if params.layout == 'inline' %}
+  {% set classNames = classNames.concat("moj-add-another--inline") %}
+{% endif %}
+{%- if params.classes %}
+  {%- set classNames = classNames.concat(params.classes) %}
+{%- endif %}
+{%- set classNames = classNames | join(" ") -%}
+
+{% set dataAttributes = {
+  'data-module': 'moj-add-another',
+  'data-item-label': params.itemLabel | default('Item', true),
+  'data-layout': {
+    value: params.layout,
+    optional: true
+  }
+} %}
+
+<div class="{{ classNames }}" {{ govukAttributes(dataAttributes) }} {{govukAttributes(params.attributes) }}>
+
+  <template class="moj-add-another__item-template">
+    {{ params.templateHtml | safe }}
+  </template>
+
+  <div class="moj-add-another__items">
+    {{ caller() | safe }}
+  </div>
+
+  <div class="moj-button-action">
+      {{ govukButton({
+        text: "Add another " ~ (params.itemLabel | default('Item', true) | lower),
+        classes: "govuk-button--secondary moj-add-another__add-button"
+      }) }}
+  </div>
+</div>

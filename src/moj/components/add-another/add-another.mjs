@@ -1,11 +1,30 @@
-import { Component } from 'govuk-frontend'
+import { ConfigurableComponent } from 'govuk-frontend'
 
-export class AddAnother extends Component {
+import { setFocus, emitEvent } from '../../common/index.mjs'
+
+/**
+ * @augments {ConfigurableComponent<AddAnotherConfig>}
+ */
+export class AddAnother extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for add another
+   * @param {AddAnotherConfig} [config] - Add another config
    */
-  constructor($root) {
-    super($root)
+  constructor($root, config = {}) {
+    super($root, config)
+    console.log('add another constructor')
+    console.log(this.config)
+    this.$itemTemplate = this.$root.querySelector(
+      '.moj-add-another__item-template'
+    )
+    this.$removeButtonTemplate = this.$root.querySelector(
+      '.moj-add-another__remove-button-template'
+    )
+    this.$itemsContainer = this.$root.querySelector('.moj-add-another__items')
+
+    if (!(this.$itemTemplate instanceof HTMLTemplateElement)) {
+      return
+    }
 
     this.$root.addEventListener('click', this.onRemoveButtonClick.bind(this))
     this.$root.addEventListener('click', this.onAddButtonClick.bind(this))
@@ -21,12 +40,15 @@ export class AddAnother extends Component {
 
       $button.type = 'button'
     })
+
+    this.updateAllItems()
   }
 
   /**
    * @param {MouseEvent} event - Click event
    */
   onAddButtonClick(event) {
+    event.preventDefault()
     const $button = event.target
 
     if (
@@ -37,27 +59,53 @@ export class AddAnother extends Component {
       return
     }
 
-    const $items = this.getItems()
     const $item = this.getNewItem()
+    console.log($item)
 
-    if (!$item || !($item instanceof HTMLElement)) {
-      return
+    // if (!$item || !($item instanceof HTMLElement)) {
+    //   return
+    // }
+
+    // this.resetItem($item)
+
+    this.$itemsContainer.appendChild($item)
+
+    const $items = this.getItems()
+    this.updateAllItems()
+    const $lastItem = $items[$items.length - 1]
+
+    console.log($lastItem)
+    console.log('initialising new item')
+    emitEvent('moj-add-another:add-item', $lastItem)
+
+    // focus first input
+    // const $input = $lastItem.querySelector('input, textarea, select')
+    // if ($input && $input instanceof HTMLInputElement) {
+    //   setTimeout(() => {
+    //     $input.focus()
+    //   }, 100)
+    // }
+
+    // focus legend
+    // const $legend = $lastItem.querySelector('legend')
+    // if ($legend && $legend instanceof HTMLElement) {
+    //   console.log('setting focus on legend')
+    //   setTimeout(() => {
+    //     setFocus($legend)
+    //   }, 100)
+    // }
+
+    // focus fieldset
+    if ($lastItem && $lastItem instanceof HTMLElement) {
+      console.log('setting focus on fieldset')
+      setTimeout(() => {
+        setFocus($lastItem)
+      }, 100)
     }
 
-    this.updateAttributes($item, $items.length)
-    this.resetItem($item)
-
-    const $firstItem = $items[0]
-    if (!this.hasRemoveButton($firstItem)) {
-      this.createRemoveButton($firstItem)
-    }
-
-    $items[$items.length - 1].after($item)
-
-    const $input = $item.querySelector('input, textarea, select')
-    if ($input && $input instanceof HTMLInputElement) {
-      $input.focus()
-    }
+    // Focus on new item legend
+    // const $legend = $item.querySelector('legend')
+    // setFocus($lastItem)
   }
 
   /**
@@ -73,17 +121,17 @@ export class AddAnother extends Component {
     }
 
     const $items = Array.from(
-      this.$root.querySelectorAll('.moj-add-another__item')
+      this.$root.querySelectorAll('.moj-add-another__items > fieldset')
     )
 
     return $items.filter((item) => item instanceof HTMLElement)
   }
 
   getNewItem() {
-    const $items = this.getItems()
-    const $item = $items[0].cloneNode(true)
+    const $item = document.importNode(this.$itemTemplate.content, true)
+    console.log($item)
 
-    if (!$item || !($item instanceof HTMLElement)) {
+    if (!$item) {
       return
     }
 
@@ -94,11 +142,26 @@ export class AddAnother extends Component {
     return $item
   }
 
+  updateAllItems(action = '') {
+    const $items = this.getItems()
+
+    $items.forEach(($item, index, items) => {
+      this.updateIndexes($item, index)
+      this.updateLegends($item, index, items.length)
+      this.updateRemoveButtons($item, index, items.length)
+      this.updateFieldLabels($item, index)
+      this.updateGroupedFieldLegends($item, index)
+      if (action === 'remove') {
+        this.updateErrorMessages($item, index)
+      }
+    })
+  }
+
   /**
    * @param {HTMLElement} $item - Add another item
    * @param {number} index - Add another item index
    */
-  updateAttributes($item, index) {
+  updateIndexes($item, index) {
     $item.querySelectorAll('[data-name]').forEach(($input) => {
       if (!this.isValidInputElement($input)) {
         return
@@ -122,22 +185,173 @@ export class AddAnother extends Component {
     })
   }
 
+  updateErrorMessages($item, index) {
+    $item.querySelectorAll('[data-name]').forEach(($input) => {
+      if (!this.isValidInputElement($input)) {
+        return
+      }
+
+      const $errorMessage = $input.parentElement?.querySelector(
+        '.govuk-error-message'
+      )
+      if (!$errorMessage || !($errorMessage instanceof HTMLElement)) {
+        return
+      }
+
+      const id = $input.getAttribute('data-id') || ''
+      const originalErrorMessageId = $errorMessage.id
+
+      const newErrorMessageId = `${id.replace(/%index%/, `${index}`)}-error`
+      $errorMessage.id = newErrorMessageId
+
+      const describedBy = $input.getAttribute('aria-describedby') || ''
+      const newDescribedBy = describedBy
+        .split(' ')
+        .map((desc) =>
+          desc === originalErrorMessageId ? newErrorMessageId : desc
+        )
+        .join(' ')
+
+      $input.setAttribute('aria-describedby', newDescribedBy)
+    })
+  }
+
+  updateFieldLabels($item, index) {
+    $item.querySelectorAll('[data-label]').forEach(($input) => {
+      if (!this.isValidInputElement($input)) {
+        return
+      }
+
+      const $label = $input.closest('.govuk-form-group').querySelector('label')
+      if ($label && $label instanceof HTMLLabelElement) {
+        let $labelSuffix = $label.querySelector(
+          '.moj-add-another__label-suffix'
+        )
+        console.log($labelSuffix)
+        if (!$labelSuffix) {
+          console.log('no suffix adding one')
+          $labelSuffix = document.createElement('span')
+          $labelSuffix.classList.add(
+            'moj-add-another__label-suffix',
+            'govuk-visually-hidden'
+          )
+          $label.appendChild($labelSuffix)
+        }
+        $labelSuffix.innerText = ` for ${this.config.itemLabel.toLowerCase()} ${index + 1}`
+      }
+    })
+  }
+
+  updateGroupedFieldLegends($item, index) {
+    $item.querySelectorAll('[data-legend]').forEach(($fieldset) => {
+      if (!($fieldset instanceof HTMLFieldSetElement)) {
+        return
+      }
+
+      const labelText = $fieldset.getAttribute('data-legend') || ''
+
+      const $legend = $fieldset.querySelector('legend')
+
+      if ($legend && $legend instanceof HTMLLegendElement) {
+        $legend.innerHTML = `${labelText}<span class="govuk-visually-hidden">for ${this.config.itemLabel.toLowerCase()} ${index + 1}</span>`
+      }
+    })
+  }
+
+  updateLegends($item, index, itemsCount) {
+    const $legend = $item.querySelector('legend')
+    let suffix = ''
+
+    if (itemsCount === 1) {
+      suffix = `${index + 1}`
+    } else {
+      suffix = `${index + 1} of ${itemsCount}`
+    }
+
+    if ($legend) {
+      $legend.innerText = `${this.config.itemLabel} ${suffix}`
+      return
+    }
+
+    const counterId = this.generateUniqueId()
+    let $counter = $item.querySelector(`.moj-add-another__item-counter`)
+
+    if ($counter) {
+      $counter.innerText = `${suffix}`
+    } else {
+      $counter = document.createElement('span')
+      $counter.classList.add(
+        'govuk-visually-hidden',
+        'moj-add-another__item-counter'
+      )
+      $counter.id = `${counterId}`
+      $counter.innerText = `${suffix}`
+      $item.prepend($counter)
+      $item.setAttribute(
+        'aria-labelledby',
+        `${$item.getAttribute('aria-labelledby')} ${counterId}`
+      )
+    }
+  }
+
+  updateRemoveButtons($item, index, itemsCount) {
+    const $button = $item.querySelector('.moj-add-another__remove-button')
+    const label = this.removeButtonLabel(
+      `${this.config.itemLabel} ${index + 1}`
+    )
+    console.log(label)
+
+    if (!$button || !($button instanceof HTMLButtonElement)) {
+      console.log('no button')
+      console.log({ itemsCount, index })
+      if (itemsCount > 1 && index === 0) {
+        console.log('creating remove button for first item')
+        this.createRemoveButton($item, label)
+      }
+      return
+    }
+
+    if (itemsCount === 1 && index === 0) {
+      $button.remove()
+    } else {
+      $button.innerHTML = label
+    }
+  }
+
   /**
-   * @param {HTMLElement} $item - Add another item
+   * @param {HTMLElement|DocumentFragment} $item - Add another item
    */
-  createRemoveButton($item) {
+  createRemoveButton($item, label = 'Remove') {
+    const $buttonContainer = $item.querySelector(
+      '.moj-add-another__remove-button-container'
+    )
     const $button = document.createElement('button')
     $button.type = 'button'
-
     $button.classList.add(
       'govuk-button',
       'govuk-button--secondary',
       'moj-add-another__remove-button'
     )
+    $button.innerHTML = label
 
-    $button.textContent = 'Remove'
+    if ($buttonContainer && $buttonContainer instanceof HTMLElement) {
+      $buttonContainer.appendChild($button)
+    } else if ($item instanceof DocumentFragment) {
+      $item.firstElementChild.appendChild($button)
+    } else {
+      $item.appendChild($button)
+    }
+  }
 
-    $item.append($button)
+  removeButtonLabel(labelIndex) {
+    console.log(this.config.layout)
+    if (this.config.layout === 'block') {
+      return `Remove ${labelIndex}`
+    }
+
+    if (this.config.layout === 'inline') {
+      return `Remove <span class="govuk-visually-hidden">${labelIndex}</span>`
+    }
   }
 
   /**
@@ -181,19 +395,29 @@ export class AddAnother extends Component {
       return
     }
 
-    $button.closest('.moj-add-another__item').remove()
+    const $itemToRemove = $button.closest('fieldset')
 
-    const $items = this.getItems()
-
-    if ($items.length === 1) {
-      $items[0].querySelector('.moj-add-another__remove-button').remove()
+    if (!$itemToRemove || !($itemToRemove instanceof HTMLFieldSetElement)) {
+      return
     }
 
-    $items.forEach(($item, index) => {
-      this.updateAttributes($item, index)
-    })
+    let $itemToFocus = $itemToRemove.previousElementSibling
 
-    this.focusHeading()
+    // Should we get the next element?
+    if (!$itemToFocus || !($itemToFocus instanceof HTMLFieldSetElement)) {
+      $itemToFocus = $itemToRemove.nextElementSibling
+    }
+    // focus on root of component?
+    // it needs an accessible name?
+    if (!$itemToFocus || !($itemToFocus instanceof HTMLFieldSetElement)) {
+      $itemToFocus = this.$root
+    }
+
+    $itemToRemove.remove()
+    this.updateAllItems('remove')
+    if ($itemToFocus instanceof HTMLElement) {
+      setFocus($itemToFocus)
+    }
   }
 
   focusHeading() {
@@ -216,7 +440,64 @@ export class AddAnother extends Component {
   }
 
   /**
+   * Creates a valid HTML id from a string
+   *
+   * @param {string} str - string to turn into an id
+   */
+  createHtmlId(str) {
+    return str
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9_-]/g, '-') // Replace invalid chars with hyphen
+      .replace(/^[0-9-]/, '_$&') // If starts with digit/hyphen, prefix with underscore
+      .replace(/-+/g, '-') // Collapse multiple hyphens
+      .replace(/^-|-$/g, '') // Remove leading/trailing hyphens
+  }
+
+  generateUniqueId(prefix = 'moj') {
+    return `${prefix}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+  }
+
+  /**
    * Name for the component used when initialising using data-module attributes.
    */
   static moduleName = 'moj-add-another'
+  /**
+   * Add another default config
+   *
+   * @type {AddAnotherConfig}
+   */
+  static defaults = Object.freeze({
+    layout: 'block'
+  })
+
+  /**
+   * Date picker config schema
+   *
+   * @satisfies {Schema<AddAnotherConfig>}
+   */
+  static schema = Object.freeze(
+    /** @type {const} */ ({
+      properties: {
+        itemLabel: { type: 'string' },
+        layout: { type: 'string' }
+      }
+    })
+  )
 }
+
+/**
+ * @typedef {"block"|"inline"} AddAnotherLayout
+ */
+
+/**
+ * Add another config
+ *
+ * @typedef {object} AddAnotherConfig
+ * @property {string} [itemLabel] - Label for each fieldset
+ * @property {AddAnotherLayout} [layout] - layout style for fields
+ */
+
+/**
+ * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
+ */
