@@ -1,7 +1,8 @@
 {%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
 {%- from "moj/components/add-another/macro.njk" import mojAddAnotherItem -%}
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
-
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
 <h2 class="govuk-heading-m govuk-label-wrapper" id="gifts-received-title">Gifts received</h2>
 <p class="govuk-hint" id="gifts-received-hint">Provide descriptions and value of any gifts.</p>
 
@@ -76,4 +77,6 @@
       </div>
     {% endcall %}
   {% endcall %}
+</div>
+</div>
 </div>
