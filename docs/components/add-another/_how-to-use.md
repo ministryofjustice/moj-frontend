@@ -9,6 +9,8 @@ eleventyComputed:
 
 ## How to use
 
+Do not place 'add another' components inside each other (for example, asking users to add another)
+
 ### Other parts of the page
 
 The add another component can increase the length and complexity of a page, especially if it's placed on the page more than once. Therefore it’s best not to add too many other parts to the page. A leaner page will also makes it easier for users to identify and recover from errors.
