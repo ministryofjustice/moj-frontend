@@ -9,44 +9,92 @@ eleventyComputed:
 
 ## How to use
 
+### Use with JavaScript
+
+[what do teams need to do or know here?]
+
+The add another component relies on JavaScript. When JavaScript is not available, your page should reload with the additional form elements if the 'Add another' button is selected.
+
 ### Number of items
 
-[Add some content if we’re enabling teams to add a limit to the total number of items].
+[To be decided: add some content if we’re enabling teams to add a limit to the total number of items].
 
-Do not move the ‘remove’ buttons in any of the variants. This may make the component less accessible to zoom users.
+### Error messages
+
+Follow the [GOV.UK Design System guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
+
+Each text field needs its own error summary and message (even if the error is the same).
+
+{% example template="examples/error", colocated="true", height=590 %}
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Error state</th>
+      <th scope="col" class="govuk-table__header">Error message</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">No value is entered</th>
+      <td class="govuk-table__cell">Enter a name for Person 1</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">No values are entered for a fieldset</th>
+      <td class="govuk-table__cell">Enter details for Person 1</td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">No values are entered for a fieldset</th>
+      <td class="govuk-table__cell">Enter details for Person 1</td>
+    </tr>
+  </tbody>
+</table>
+
+There are also [error messages for the date picker component](/components/date-picker/#error-messages). 
+
+### Buttons
+
+Do not change the position of the ‘remove’ buttons in any of the variants. This may make the component less accessible to zoom users.
 
 ### Colours
 
-The remove button is xx red on xx background. Keep this colour to encourage consistent use of the component and to keep it accessible.
+The 'remove' button follows the [GOV.UK Design System colour palette](https://design-system.service.gov.uk/styles/colour/):
 
-Do not change the background colour? 
+- the background is `govuk-colour("red")`
+- the text is `govuk-colour("white")`
 
-### Other things on the page
+No other button colours should be used.
 
-Because this component can increase the length and complexity of a page, it’s best not to add too much extra to it. This also makes it easier for users to recover from errors.
+### Other parts of the page
+
+The add another component can increase the length and complexity of a page, especially if it's placed on the page more than once. Therefore it’s best not to add too many other parts to the page. This will also makes it easier for users to identify and recover from errors.
+
+The fieldset heading is an H2 and so you need to add an H1 for the page. 
 
 ### Writing content and hidden text
 
-You need to create unique labels for the following elements:
+You need to create unique labels for the following:
 
 •	‘remove’ buttons (visible text, this is ‘Remove person 1’ in the example)
 •	form fields (hidden text, these are ‘first name’ and ‘last name’ in the example)
 
-This tells screenreader users:
+Unique labels will tell screenreader users:
 -	which fieldset they’re removing
+- which form field they're focused on
 -	that a fieldset has been added or removed
--	about errors (read more in the error section) 
+-	about errors  
 
 Add the unique label to each fieldset. Code example:
 
-### Error messages
-
 ### Screens after the component  
-The data is submitted when the ‘continue’, ‘save and continue’ or ‘save’ button is selected.   
-The ‘add another’ component duplicates the text inputs on a page. It does not include a way to edit what they’ve entered. Users can edit what they have entered with the:
--	GOV.UK ‘check answers’ pattern
--	‘add to a list’ pattern
-You may want to confirm to users on the next screen that what they have uploaded worked. You could do this with the success alert. 
+
+The ‘add another’ component duplicates the fieldset on a page. The data is submitted when the user selects the ‘continue’, ‘save and continue’ or ‘save’ button.   
+
+The component does not offer the user a way to edit what they’ve entered. If you would like to offer users a way to review and edit what they have entered consider the:
+-	[GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/)
+-	[‘add to a list’ pattern](/patterns/add-to-a-list/)
+
+You may want to confirm to users on the next screen that what they have entered worked. You could do this with The [success alert](/components/alert/#success-alert). 
 
 
 
