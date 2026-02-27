@@ -17,24 +17,24 @@ The ‘add another’ component allows users to add similar information a few ti
 The ‘add another’ component works best as a slim component for entering brief information. This could include:
 
 -	dates
+-	text fields, for example the names of offences, programmes or people
 -	expenses and their amounts
--	text fields, for example names of offences, programmes or people
 
-The fieldsets must be related information. 
+The fieldsets must relate to one another. 
 
 ## When not to use
 
-Do not use this component to gather information that is:
+Items that are added to the add another component are only saved when the user selects a primary green button (for example ‘submit’ or ‘save and continue’). If they refresh the page all the data will be lost. 
+
+Users may also find it hard to review what they've added on long pages, especially if they're checking it against a paper form. Very long pages may also cause performance issues (plain English way of saying this!) 
+
+For these reasons, do not use this component to gather information that is:
 
 -	lengthy   
--	complex, especially using multiple components like radio buttons and checkboxes 
+-	complex, especially if you need to use multiple components like radio buttons and checkboxes to get it
 -	entered many times, for example from a spreadsheet
 - unrelated, because it’s not ‘another’ thing
 -	for categories and sub-categories (this is not accessible) 
-
-This is because	items are only saved when the user selects a primary green button (for example ‘submit’ or ‘save and continue’). If they refresh the page, all the data will be lost. 
-
-Users may also find it hard to review what they've added on long pages, especially if they're checking it against a paper form
 
 Use the [‘add to a list’ pattern](/patterns/add-to-a-list/) for these scenarios.
 
@@ -55,17 +55,24 @@ Use this variant for deeper or wider fieldsets. This will help users to:
 
 #### Screen A: The landing screen. The fieldset is numbered (‘Person 1’). A line is under the fieldset. 
 
+
 #### Screen B: When the ‘Add another’ button is selected, the fieldset titles change from 'Person 1' to 'Person 1 of 2’. A red remove button appears under each fieldset, with the same labelling as the fieldset (‘Remove person 1’). 
+
+
 
 The form fields have hidden unique labels. This enables screenreader users to navigate the component. You can read more about how to 
 
-#### Inline
+### Inline
 
 This is a lean variant with a remove button in line. It works well for fieldsets with 2 narrow fields. The heading's unique label is hidden. 
 
+You can add text fields and the date input but not checkboxes or radios. 
+
+Guidance on width?
+
 ### Magnifying glass
 
-The magnifying glass offers a variant with a stronger visual design. It may be more appropriate in text-heavy user interfaces, 
+The magnifying glass offers a variant with a stronger visual design. It may be more appropriate in text-heavy user interfaces. The magnifying glass is a 
 
 ### Things to consider
 
