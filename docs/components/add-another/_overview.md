@@ -14,28 +14,29 @@ The ‘add another’ component allows users to add similar information a few ti
 
 ## When to use
 
-The ‘add another’ component works best as a shallow component for entering brief information, ideally in no more than 3 or 4 fields. 
+The ‘add another’ component works best as a shallow component for entering brief information about items, ideally in no more than 3 or 4 fields. 
 
-This information could include:
+The items could be:
 
 -	dates
--	content such as the names of offences, programmes or people through the [GOV.UK text input component](https://design-system.service.gov.uk/components/text-input/)
--	expenses and their amounts
+-	the names of offences, programmes or people  
+-	payments and their amounts
 
 The component reproduces the field labels and so the items should relate to one another. 
 
 ## When not to use
 
+It should not be used to collect complex data, especially if it needs multiple components like radio buttons and checkboxes to get it
+
 Do not use this component to gather information that is:
 
--	lengthy   
--	complex, especially if you need to use multiple components like radio buttons and checkboxes to get it
+- lengthy 
+- complex, especially if it needs multiple components such as radios and checkboxes to get it
 -	entered many times, for example from a spreadsheet
-- unrelated, because it’s not ‘another’ thing
- 
-The component should not be used in this way because items that are added to the add another component are only saved when the user submits the page. If they refresh the page all the data will be lost. 
 
-Users may also find it hard to review what they've added on long pages, especially if they're checking it against a paper form. Very long pages may also cause performance issues (plain English way of saying this!) 
+The component should not be used in this way because information that's added to this component is only saved when the user submits the page. If they refresh the page, they will lose all their data. 
+
+Users may also find it hard to review a page if they have selected the 'add another' button many times. This is especially the case if they are checking their entries against a paper form or spreadsheet. Very long pages may also cause performance issues. 
 
 Use the [‘add to a list’ pattern](/patterns/add-to-a-list/) for these scenarios.
 
@@ -48,10 +49,12 @@ There are 2 variants of this component:
 
 ### Stacked
 
-The stacked variant has vertical fields, for deeper fieldsets. This will help users to:
+The stacked variant has vertical fields. It should be used as a defaultThis layout will help users to:
+
+- enter data into deeper items
 - scan the page more easily (especially if they have a few items on the page)
-- enter and edit content in the correct fieldset
-- remove the correct fieldset  
+- enter and edit content in the correct item
+- remove the correct item
 
 #### Screen 1: The landing screen. The item is numbered (‘Person 1’) and there's a line under it.  
 
@@ -81,7 +84,10 @@ Guidance on width?
 
 ### Things to consider
 
-When you consider whether this component is appropriate for your use case, consider where the information is coming from that people are entering. For example a paper form, notes, a spreadsheet or legacy software. This may affect how people will want to use it. 
+When you're considering this component, find out where the information is coming from that people are entering. For example a paper form, notes, a spreadsheet or legacy software. This may affect how people will want to use it. 
+
+If you add a lot of 'add another' components to a page it may become complex and you might want to switch to the [‘add to a list’ pattern](/patterns/add-to-a-list/). It is not possible to do this 
+
 
 ### Similar or linked components
 
