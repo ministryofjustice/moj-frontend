@@ -9,32 +9,30 @@ eleventyComputed:
 
 ## How to use
 
-Do not place 'add another' components inside each other (for example, asking users to add another)
-
-### Other parts of the page
-
-The add another component can increase the length and complexity of a page, especially if it's placed on the page more than once. Therefore it’s best not to add too many other parts to the page. A leaner page will also makes it easier for users to identify and recover from errors.
-
-The fieldset heading is an H2 and so you'll need an H1 for the page (we don't need to say this). 
+Do not place an 'add another' component inside another one, for example to get users to add something to a subsection of a wider category.
 
 ### Writing content and hidden text
 
-You need to create unique labels for the following elements:
+You need to create th following unique content:
 
-•	‘remove’ buttons (visible text, this is ‘Remove person 1’ in the example)
-•	form fields (hidden text, these are ‘first name’ and ‘last name’ in the example)
+- visible labels for all ‘remove’ buttons (this is ‘Remove person 1’ in the example)
+-	hidden labels for all form fields (these are ‘first name’ and ‘last name’ in the example)
 
 Unique labels will tell screenreader users:
--	which fieldset they’re removing
+-	which item they’re removing
 - which form field they're focused on
--	that a fieldset has been added or removed
+-	that a item has been added or removed
 -	about errors  
 
-Add the unique label to each fieldset. Code example:
+Add the unique label to each item. Code example:
+
+### Other parts of the page
+
+When people start to add items using this component, it will increase the length and complexity of a page. This is especially true if it's placed on the page more than once. Therefore it’s best to not add too much else to the page. A leaner page will also makes it easier for users to identify and recover from errors.
 
 ### Screens after the component  
 
-The add another component duplicates the fieldset on a page. The data is submitted when the user submits the page (through a ‘continue’, ‘save and continue’,‘save’ or 'submit' button).   
+The add another component creates another item on a page. The data is submitted when the user submits the page, for example with a 'save and continue’ button.   
 
 The component does not offer the user a way to edit what they’ve entered. If you would like to offer this consider the:
 -	[GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/)
@@ -77,23 +75,16 @@ Each text field needs its own error summary and message (even if the error is th
       <td class="govuk-table__cell">Enter a name for Person 1</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">No values are entered for a fieldset</th>
+      <th scope="row" class="govuk-table__header">No values are entered for an item</th>
       <td class="govuk-table__cell">Enter details for Person 1</td>
     </tr>
   </tbody>
 </table>
 
-There are also [error messages for the date picker component](/components/date-picker/#error-messages). 
+There are also [error messages for the date picker component](/components/date-picker/#error-messages), which can be used if . 
 
-### Buttons
+### The 'remove' button
 
-Do not change the position of the ‘remove’ buttons in any of the variants. This may make the component less accessible to zoom users.
+The 'remove' button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). Do not change the button colour.
 
-### Colours
-
-The 'remove' button follows the [GOV.UK Design System colour palette](https://design-system.service.gov.uk/styles/colour/):
-
-- the background is `govuk-colour("red")`
-- the text is `govuk-colour("white")`
-
-No other button colours should be used.
+Do not change the button position, as this may make it difficult for zoom users to use the component.
