@@ -125,10 +125,9 @@
     "autoprefixer": "^10.4.21",
     "babel-jest": "^29.7.0",
     "clipboard": "^2.0.11",
-    "commitizen": "^4.3.1",
     "concurrently": "^9.2.1",
     "cssnano": "^7.1.1",
-    "cz-conventional-changelog": "^3.3.0",
+    "cz-git": "1.12.0",
     "dayjs": "^1.11.18",
     "del": "^8.0.0",
     "eslint": "^8.57.1",
@@ -185,7 +184,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "node_modules/cz-git"
     }
   },
   "optionalDependencies": {
