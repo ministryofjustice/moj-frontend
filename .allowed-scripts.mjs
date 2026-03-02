@@ -5,7 +5,7 @@ export default configureAllowedScripts({
     'node_modules/@parcel/watcher@2.5.6': 'ALLOW',
     'node_modules/@sentry/cli@2.58.5': 'ALLOW',
     'node_modules/core-js@3.48.0': 'FORBID',
-    'node_modules/fsevents@2.3.3': 'ALLOW',
+    'node_modules/fsevents@2.3.3': 'FORBID',
     'node_modules/gifsicle@5.3.0': 'ALLOW',
     'node_modules/mozjpeg@8.0.0': 'ALLOW',
     'node_modules/optipng-bin@7.0.1': 'ALLOW',
