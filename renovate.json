@@ -63,6 +63,7 @@
     {
       "groupName": "Test",
       "matchPackageNames": [
+        "@playwright/*",
         "@testing-library/*",
         "concurrently",
         "del",
@@ -70,8 +71,7 @@
         "jest",
         "jest-*",
         "mock-*",
-        "sinon",
-        "supertest"
+        "sinon"
       ]
     },
     {
