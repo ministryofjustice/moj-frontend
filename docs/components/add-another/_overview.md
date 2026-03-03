@@ -40,27 +40,23 @@ Users may also find it hard to review a page if they have selected the 'add anot
 
 Use the [‘add to a list’ pattern](/patterns/add-to-a-list/) for these scenarios.
 
-## Choosing a variant
+## Choosing a layout
 
-There are 2 variants of this component:
+The component has 2 layouts:
 
 - [Stacked](#stacked)
-- [Inline](#inline)
+- [Inline](#horizontal)
 
 ### Stacked
 
-The stacked variant has vertical fields. It should be used as a defaultThis layout will help users to:
+The 'add another' component's default layout is 'stacked' (or vertical). The stacked layout of the  help users to:
 
 - enter data into deeper items
 - scan the page more easily (especially if they have a few items on the page)
 - enter and edit content in the correct item
 - remove the correct item
 
-#### Screen 1: The landing screen. The item is numbered (‘Person 1’) and there's a line under it.  
-
-[coded example]
-
-#### Screen 2: When the ‘Add another’ button is selected, the item title changes from 'Person 1' to 'Person 1 of 2’. A red remove button appears under each item, with the same labelling (‘Remove person 1’). 
+#### When the ‘Add another’ button is selected, the title changes from 'Room 1' to 'Room 1 of 2’. A red remove button appears under each item, with the same labelling (‘Remove room 1’). 
 
 [coded example with it open]
 
@@ -68,14 +64,13 @@ The fields have hidden unique labels. This enables screenreader users to navigat
 
 ### Inline
 
-This is a lean variant where the fields are arranged horizontally to save vertical space. It has an inline 'remove' button. 
+The inline (or horizontal) layout is a lean design to save vertical space. The inline layout:
 
-It works best with 3 or fewer fields. 
+- has an inline 'remove' button 
+- has hidden unique labels 
+- can have a maximum of 4 form fields in it
 
-The heading's unique label is hidden. 
-
-Guidance on width?
-
+If you expect users to enter more detailed information into an item, 
 #### Screen 1: The landing screen. The fieldset label is in hidden text. 
 
 #### Screen 2: When the ‘Add another’ button is selected, the fieldset label needs unique hidden text. A red remove button appears to the right of the last field. It also needs unique hidden text.
