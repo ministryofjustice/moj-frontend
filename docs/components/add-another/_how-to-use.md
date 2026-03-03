@@ -13,42 +13,43 @@ Do not place an 'add another' component inside another one, for example to get u
 
 ### Writing content and hidden text
 
-You need to create th following unique content:
-
-- visible labels for all ‘remove’ buttons (this is ‘Remove person 1’ in the example)
--	hidden labels for all form fields (these are ‘first name’ and ‘last name’ in the example)
-
 Unique labels will tell screenreader users:
+
 -	which item they’re removing
 - which form field they're focused on
--	that a item has been added or removed
+-	that an item has been added or removed
 -	about errors  
 
-Add the unique label to each item. Code example:
+#### Stacked layout
 
-### Other parts of the page
+You need to create the following unique content for the stacked layout:
 
-When people start to add items using this component, it will increase the length and complexity of a page. This is especially true if it's placed on the page more than once. Therefore it’s best to not add too much else to the page. A leaner page will also makes it easier for users to identify and recover from errors.
+- visible labels for all ‘remove’ buttons  (this is ‘Remove room 1’ in the example)
+-	visible labels for all item titles (this is ‘Room 1’ in the example)
+- hidden labels for all form fields (these are ‘first name’ and ‘last name’ in the example)
 
-### Screens after the component  
+Code example:
 
-The add another component creates another item on a page. The data is submitted when the user submits the page, for example with a 'save and continue’ button.   
+#### Inline layout
 
-The component does not offer the user a way to edit what they’ve entered. If you would like to offer this consider the:
--	[GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/)
--	[‘add to a list’ pattern](/patterns/add-to-a-list/)
+You need to create the following content for the inline layout:
 
-You may want to confirm to users on the next screen that what they've entered worked. You could do this with the [success alert](/components/alert/#success-alert). 
+- unique hidden labels for items, form fields and buttons   
+- labels that fit on one line if they're visible  
+
+Code example:
+
+### The 'remove' button
+
+The 'remove' button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). Do not change the button colour.
+
+Do not change the button position, as this may make it difficult for zoom users to use the component.
 
 ### Use with JavaScript
 
 [what do teams need to do or know here?]
 
 The add another component relies on JavaScript. When JavaScript is not available, your page should reload with the additional form elements if the 'Add another' button is selected.
-
-### Number of items
-
-[To be decided: add some content if we’re enabling teams to add a limit to the total number of items].
 
 ### Error messages
 
@@ -83,8 +84,16 @@ Each text field needs its own error summary and message (even if the error is th
 
 There are also [error messages for the date picker component](/components/date-picker/#error-messages), which can be used if . 
 
-### The 'remove' button
+### Other parts of the page
 
-The 'remove' button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). Do not change the button colour.
+When people start to add items using this component, it will increase the length and complexity of a page. This is especially true if it's placed on the page more than once. Therefore it’s best to not add too much else to the page. A leaner page will also makes it easier for users to identify and recover from errors.
 
-Do not change the button position, as this may make it difficult for zoom users to use the component.
+### Screens after the component  
+
+The add another component creates another item on a page. The data is submitted when the user submits the page, for example with a 'save and continue’ button.   
+
+The component does not offer the user a way to edit what they’ve entered. This can be done using the:
+-	[GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/)
+-	[‘add to a list’ pattern](/patterns/add-to-a-list/)
+
+You may want to confirm to users on the next screen that what they've entered worked. You could do this with the [success alert](/components/alert/#success-alert). 
