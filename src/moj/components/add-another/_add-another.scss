@@ -41,10 +41,27 @@
   }
 }
 
-.moj-add-another--inline .moj-add-another__item {
-  margin-top: 0;
-  margin-bottom: 0;
-  border-bottom: none;
+.moj-add-another__item--inline {
+  @include govuk-media-query($from: "tablet") {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+
+    .moj-add-another__item-container {
+      display: flex;
+      gap: govuk-spacing(4);
+      justify-content: space-between;
+    }
+
+    .moj-add-another__item-row {
+      flex: 1 1 auto;
+    }
+
+    .moj-add-another__remove-button-container {
+      flex: 1 0 100px;
+      align-self: flex-end;
+    }
+  }
 }
 
 .moj-add-another__title:focus {

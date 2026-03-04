@@ -2,13 +2,13 @@
 {%- from "moj/components/add-another/macro.njk" import mojAddAnotherItem -%}
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
 <h2 class="govuk-heading-m govuk-label-wrapper" id="gifts-received-title">Gifts received</h2>
 <p class="govuk-hint" id="gifts-received-hint">Provide descriptions and value of any gifts.</p>
 
   {% set templateHtml %}
-      {% call mojAddAnotherItem({ describedBy: 'gifts-received-hint', attributes: { 'aria-labelledby': 'gifts-received-title'} }) -%}
-        <div class="example__fields-row">
+      {% call mojAddAnotherItem({ describedBy: 'gifts-received-hint', layout: 'inline', attributes: { 'aria-labelledby': 'gifts-received-title'} }) -%}
+        <div class="govuk-grid-column-two-thirds">
           <div class="govuk-form-group">
            <label class="govuk-label" for="gifts[0][description]">
              Description
@@ -21,6 +21,8 @@
                    data-label="Description"
                    type="text">
           </div>
+        </div>
+        <div class="govuk-grid-column-one-third">
           <div class="govuk-form-group" >
             <label class="govuk-label" for="gifts[0][value]">
               Value <span class="govuk-visually-hidden">in pounds</span>
@@ -37,14 +39,13 @@
                      spellcheck="false">
             </div>
           </div>
-          <div class="moj-add-another__remove-button-container"></div>
         </div>
     {% endcall %}
   {% endset %}
 
   {% call mojAddAnother({ templateHtml: templateHtml, itemLabel: "Gift", layout: 'inline' }) %}
-    {% call mojAddAnotherItem({ describedBy: 'gifts-received-hint', attributes: { 'aria-labelledby': 'gifts-received-title'} }) -%}
-      <div class="example__fields-row">
+    {% call mojAddAnotherItem({ describedBy: 'gifts-received-hint', layout: 'inline', attributes: { 'aria-labelledby': 'gifts-received-title'} }) -%}
+      <div class="govuk-grid-column-two-thirds">
         <div class="govuk-form-group" >
          <label class="govuk-label" for="gifts[0][description]">
            Description
@@ -57,6 +58,8 @@
                  data-label="Description"
                  type="text">
         </div>
+      </div>
+      <div class="govuk-grid-column-one-third">
         <div class="govuk-form-group" >
           <label class="govuk-label" for="gifts[0][value]">
             Value <span class="govuk-visually-hidden">in pounds</span>
@@ -73,7 +76,6 @@
                    spellcheck="false">
           </div>
         </div>
-        <div class="moj-add-another__remove-button-container"></div>
       </div>
     {% endcall %}
   {% endcall %}
