@@ -9,9 +9,12 @@ eleventyComputed:
 
 ## How to use
 
-Do not place an 'add another' component inside another one, for example to get users to add an item to a subsection of another category.
 
-### Writing content and hidden text
+### Fields and button titles
+
+You need to give the item a name, for example person, room, date, income or session.  
+
+The item name will . It will be upper case for the item title and lower case in the button, for example Person 1 and remove person 1.
 
 Unique labels will tell screenreader users:
 
@@ -20,14 +23,10 @@ Unique labels will tell screenreader users:
 -	that an item has been added or removed
 -	about errors  
 
-### Stacked layout
-
-The stacked layout is the default layout. This means that  
-
-You need to create the following unique content for it:
+You need to create the following unique content for each layout. 
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">Content for the stacked layout</caption>
+  <caption class="govuk-table__caption govuk-table__caption--m">Stacked layout content</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Content</th>
@@ -55,13 +54,13 @@ You need to create the following unique content for it:
   </tbody>
 </table>
 
-Code example:
+The stacked layout is the default layout. This means that if you  
 
-#### The 'remove' button
+### The 'remove' button
 
-The 'remove' button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons).  
+The 'remove' button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). Do not change the button colour, as it may be confused with the 'add another' button and selected in error. 
 
-Do not change the button colour to grey, as it may be confused with the 'add another' button and selected in error. Do not change the button position, as this may make it harder for zoom users to use the component.
+Do not change the button position, as this may make it harder for zoom users to use the component.
 
 ### Inline layout
 
@@ -71,27 +70,23 @@ You need to create unique hidden labels for all items, form fields and buttons f
 
 Code example:
 
-#### The 'remove' button
-
-The 'remove' button is a [GOV.UK secondary button](https://design-system.service.gov.uk/components/button/#secondary-buttons) in this layout. Do not change the button colour.
-
-Do not change the button position, as this may make it difficult for zoom users to use the component.
-
 ### Use with JavaScript
 
-[what do teams need to do or know here?]
+The add another component relies on JavaScript.  
 
-The add another component relies on JavaScript. When JavaScript is not available, your page should reload with the additional form elements if the 'Add another' button is selected.
+You need to set up your service for when JavaScript is not available. The page reloads with the additional form elements after the 'Add another' button is selected. 
 
 ### Error messages
 
 [Coded example to show the error behaviour]
 
-The[GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/) displays errors for 1 item at a time. Once the user has resolved the first set of errors, the next set of errors will be displayed (until they're all resolved).  
-
 Follow the [GOV.UK Design System guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
 
-Each text field needs its own error summary and message (even if the error is the same). [Do we need to say this?]
+#### Showing multiple errors  
+
+Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/). Once the user has resolved all the errors in the first item, you can display the next set. This should continue until they're all resolved.  
+
+This ensures that 
 
 {% example template="examples/error", colocated="true", height=590 %}
 
@@ -104,11 +99,11 @@ Each text field needs its own error summary and message (even if the error is th
   </thead>
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">No value is entered</th>
+      <th scope="row" class="govuk-table__header">No value is entered to a field</th>
       <td class="govuk-table__cell">Enter a name for Person 1</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">No values are entered for an item</th>
+      <th scope="row" class="govuk-table__header">No values are entered to an item</th>
       <td class="govuk-table__cell">Enter details for Person 1</td>
     </tr>
   </tbody>
@@ -116,16 +111,24 @@ Each text field needs its own error summary and message (even if the error is th
 
 There are also [error messages for the date picker component](/components/date-picker/#error-messages), which can be used if . 
 
+### Placing more than 1 'add another' on a page.
+
+You can put more than one add another on a page but be aware of how this will affect the length and complexity of the page. 
+
+However do not put an 'add another' component inside another one, for example for users to add items to a subsection.
+
+This 'nested' approach is bad because xxx. 
+
 ### Other parts of the page
 
-When people start to add items using this component, it will increase the length and complexity of a page. This is especially true if the component is placed on the page more than once. Therefore it’s best to not add too much else to the page. A leaner page will also makes it easier for users to identify -- and recover from -- errors.
+When people use this component, it will make pages longer and more complex. Therefore it’s best to not add too much else to the page. A leaner page will also make it easier for users to identify -- and recover from -- errors.
 
 ### Screens after the component  
 
-The add another component creates another item on a page. The data is submitted when the user submits the page, for example with a 'save and continue’ button.   
+The add another component creates another item on a page. The data remains on the page until the user submits the page, for example with a 'save and continue’ button.   
 
-The component does not offer the user a way to edit what they’ve entered once it's been submitted. This can be done using the:
--	[GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/)
--	[‘add to a list’ pattern](/patterns/add-to-a-list/)
+The component does not offer a way for users to edit what they’ve entered after it's been submitted. This can be done:
+-	using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/)
+-	by switching to the [‘add to a list’ pattern](/patterns/add-to-a-list/)
 
-You may want to confirm to users on the next screen that what they've entered worked. You could do this with the [success alert](/components/alert/#success-alert). 
+You may want to confirm to users that their submission worked. You could do this by displaying the [success alert](/components/alert/#success-alert) on the next page. 
