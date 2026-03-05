@@ -26,9 +26,7 @@ The component reproduces the field labels and so the items need to relate to one
 
 ## When not to use
 
-Do not use the 'add another' component to collect lengthy or complex data, especially if it needs multiple components to collect it. 
-
-Lengthy or complex data entered into the 'add another' component will create a very long page. This could be a problem because:
+Do not use the 'add another' component to collect lengthy or complex data, especially if it needs multiple components to collect it. This type of data will create a very long page. This could be a problem because:
 
 - the items are only saved when the user submits the page (they'l lose it if they refresh the page or accidentally close it)
 - users may find it hard to check what they've entered against a paper form or spreadsheet 
@@ -61,11 +59,11 @@ The fields have hidden unique labels. This enables screenreader users to navigat
 
 ### Inline
 
-The inline (or horizontal) layout is a lean design to save vertical space. This layout:
+The inline (or horizontal) layout is a lean design to save vertical space. The inline layout: 
 
-- has an inline 'remove' button 
+- can be added 2 or more times to a page
+- should contain up to 3 fields
 - has hidden unique labels 
-- can contain up to 4 form fields  
 
 #### Screen 1: The landing screen. The fieldset label is in hidden text. 
 
