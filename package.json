@@ -112,7 +112,7 @@
     "@types/express-session": "^1.18.2",
     "@types/govuk-frontend": "^5.11.0",
     "@types/gulp": "^4.0.17",
-    "@types/jest": "^29.5.14",
+    "@types/jest": "^30.0.0",
     "@types/jest-axe": "^3.5.9",
     "@types/jest-sinon": "^1.0.5",
     "@types/js-yaml": "^4.0.9",
