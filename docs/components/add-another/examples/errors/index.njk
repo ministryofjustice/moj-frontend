@@ -8,7 +8,21 @@ layout: 'layouts/example.njk'
 {%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
 {%- from "moj/components/add-another/macro.njk" import mojAddAnotherItem -%}
 {%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Enter first name for person 2",
+      href: "#person[1][first_name]"
+    },
+    {
+      text: "Enter last name for person 2",
+      href: "#person[1][last_name]"
+    }
+  ]
+}) }}
 
 <form method="post">
   <h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Add people</h2>
@@ -52,9 +66,6 @@ layout: 'layouts/example.njk'
         label: {
           text: "First name"
         },
-        errorMessage: {
-          text: "Enter your first name"
-        },
         attributes: {
           "data-name": "person[%index%][first_name]",
           "data-id": "person[%index%][first_name]",
@@ -67,9 +78,6 @@ layout: 'layouts/example.njk'
         name: "person[0][last_name]",
         label: {
           text: "Last name"
-        },
-        errorMessage: {
-          text: "Enter your last name"
         },
         attributes: {
           "data-name": "person[%index%][last_name]",
@@ -112,11 +120,6 @@ layout: 'layouts/example.njk'
         }
       }) }}
 
-      {{ govukButton({
-        classes: "govuk-button--secondary moj-add-another__remove-button",
-        text: "Remove"
-      }) }}
-
     {% endcall %}
     {% call mojAddAnotherItem({ legend: { text: "Person 3 of 3" } }) -%}
       {{ govukInput({
@@ -124,9 +127,6 @@ layout: 'layouts/example.njk'
         name: "person[2][first_name]",
         label: {
           text: "First name"
-        },
-        errorMessage: {
-          text: "Enter your first name"
         },
         attributes: {
           "data-name": "person[%index%][first_name]",
@@ -141,20 +141,12 @@ layout: 'layouts/example.njk'
         label: {
           text: "Last name"
         },
-        errorMessage: {
-          text: "Enter your last name"
-        },
         attributes: {
           "data-name": "person[%index%][last_name]",
           "data-id": "person[%index%][last_name]",
           "data-label": "Last name"
         }
       }) }}
-
-    {{ govukButton({
-      classes: "govuk-button--secondary moj-add-another__remove-button",
-      text: "Remove"
-    }) }}
     {% endcall %}
   {% endcall %}
 
