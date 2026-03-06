@@ -1,6 +1,7 @@
 {%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
 
+{% set classNames = ["moj-add-another__item"] %}
 {% set itemHtml = params.html if params.html else caller() %}
 
 {% set removeButtonHtml %}
@@ -15,17 +16,29 @@
 {% endset %}
 
 {% if params.layout == 'inline' %}
+  {% set classNames = classNames.concat("moj-add-another__item-inline") %}
   {% set html %}
     <div class="moj-add-another__item-container">
     <div class="moj-add-another__item-row govuk-grid-row">
-        {{ itemHtml | safe }}
+    {{ itemHtml | safe}}
       </div>
       {{ removeButtonHtml | safe }}
     </div>
   {% endset %}
 {% else %}
-  {% set html = itemHtml | safe ~ removeButtonHtml | safe %}
+  {% set html %}
+    <div class="moj-add-another__item-container">
+      {{ (itemHtml ~ removeButtonHtml) | safe }}
+    </div>
+  {% endset %}
 {% endif %}
+
+
+{%- if params.classes %}
+  {%- set classNames = classNames.concat(params.classes) %}
+{%- endif %}
+
+{%- set classNames = classNames | join(" ") -%}
 
 {% set legendParams = {
   text: params.legend.text,
@@ -35,7 +48,7 @@
 } if params.legend else false %}
 
 {% set fieldsetParams = {
-  classes: "moj-add-another__item  moj-add-another__item--inline" ~ (params.classes if params.classes),
+  classes: classNames,
   legend: legendParams,
   attributes: params.attributes,
   describedBy: params.describedBy,
