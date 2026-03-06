@@ -24,10 +24,6 @@
 
 <div class="{{ classNames }}" {{ govukAttributes(dataAttributes) }} {{govukAttributes(params.attributes) }}>
 
-  <template class="moj-add-another__item-template">
-    {{ params.templateHtml | safe }}
-  </template>
-
   <div class="moj-add-another__items">
     {{ itemsHtml | safe }}
   </div>

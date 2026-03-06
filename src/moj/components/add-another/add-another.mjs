@@ -39,6 +39,9 @@ export class AddAnother extends ConfigurableComponent {
   /** @private */
   $items
 
+  /** @private */
+  $itemTemplate
+
   /**
    * Add another component
    *
@@ -52,24 +55,19 @@ export class AddAnother extends ConfigurableComponent {
   constructor($root, config = {}) {
     super($root, config)
 
-    const $itemTemplate = this.$root.querySelector(`.${this.itemTemplateClass}`)
     const $itemsContainer = this.$root.querySelector(
       `.${this.itemsContainerClass}`
     )
-    const $items = this.getItems()
 
-    if (
-      !($itemTemplate instanceof HTMLTemplateElement) ||
-      !($itemsContainer instanceof HTMLElement)
-    ) {
+    if (!($itemsContainer instanceof HTMLElement)) {
       return
     }
 
-    this.$itemTemplate = $itemTemplate
     this.$itemsContainer = $itemsContainer
-    this.$items = $items
+    this.$items = this.getItems()
 
     this.initButtons()
+    this.createTemplate()
     this.updateAllItems()
 
     this.$root.addEventListener('click', (event) =>
@@ -78,6 +76,26 @@ export class AddAnother extends ConfigurableComponent {
     this.$root.addEventListener('click', (event) =>
       this.onAddButtonClick(event)
     )
+  }
+
+  createTemplate() {
+    const $templateHTML = this.$items[0]?.cloneNode(true)
+
+    if (!($templateHTML instanceof HTMLElement)) {
+      return
+    }
+
+    // reset values of all fields
+    this.resetItem($templateHTML)
+
+    // remove error messages, and error classses
+    this.clearErrorMessages($templateHTML)
+
+    // create template element and append to component root
+    const $template = document.createElement('template')
+    $template.classList.add(`${this.itemTemplateClass}`)
+    $template.content.append($templateHTML)
+    this.$itemTemplate = this.$root.appendChild($template)
   }
 
   /**
@@ -155,6 +173,8 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   getNewItem() {
+    console.log(this.$itemTemplate)
+    console.log(this.$itemTemplate.content)
     const $item = document.importNode(this.$itemTemplate.content, true)
 
     if (!$item) {
@@ -264,7 +284,7 @@ export class AddAnother extends ConfigurableComponent {
     const $errorSummary = document.querySelector('.govuk-error-summary')
 
     if (!$errorSummary || !($errorSummary instanceof HTMLElement)) {
-      return null
+      return
     }
 
     const $errorLinks = $errorSummary.querySelectorAll('a')
@@ -415,7 +435,7 @@ export class AddAnother extends ConfigurableComponent {
   updateRemoveButtons($item, index, itemsCount) {
     const $button = $item.querySelector(`.${this.removeButtonClass}`)
     const label = this.removeButtonLabelText(
-      `${this.config.itemLabel} ${index + 1}`
+      `${this.config.itemLabel}.toLowerCase() ${index + 1}`
     )
     console.log(label)
 
@@ -457,11 +477,63 @@ export class AddAnother extends ConfigurableComponent {
 
     if ($buttonContainer && $buttonContainer instanceof HTMLElement) {
       $buttonContainer.appendChild($button)
-    } else if ($item instanceof DocumentFragment) {
-      $item.firstElementChild.appendChild($button)
-    } else {
-      $item.appendChild($button)
     }
+  }
+
+  /**
+   * @param {HTMLElement} $item - Add another item
+   */
+  resetItem($item) {
+    console.log($item)
+    console.log($item.querySelectorAll('[data-name], [data-id]'))
+    $item.querySelectorAll('[data-name], [data-id]').forEach(($input) => {
+      if (!this.isValidInputElement($input)) {
+        return
+      }
+      if ($input instanceof HTMLSelectElement) {
+        $input.selectedIndex = -1
+        $input.value = ''
+      } else if ($input instanceof HTMLTextAreaElement) {
+        $input.value = ''
+      } else {
+        switch ($input.type) {
+          case 'checkbox':
+          case 'radio':
+            $input.checked = false
+            break
+          default:
+            $input.value = ''
+        }
+      }
+    })
+  }
+
+  /**
+   * Removes error messages and error classes from an item.
+   *
+   * @param {Element} $item
+   */
+  clearErrorMessages($item) {
+    // remove error messages
+    $item.querySelectorAll('.govuk-error-message').forEach(($errorMessage) => {
+      if ($errorMessage instanceof HTMLElement) {
+        $errorMessage.remove()
+      }
+    })
+
+    // remove error classes from form groups
+    $item.querySelectorAll('.govuk-form-group--error').forEach(($formGroup) => {
+      if ($formGroup && $formGroup instanceof HTMLElement) {
+        $formGroup.classList.remove('govuk-form-group--error')
+      }
+    })
+
+    // remove error classes from inputs
+    $item.querySelectorAll('.govuk-input--error').forEach(($formGroup) => {
+      if ($formGroup && $formGroup instanceof HTMLElement) {
+        $formGroup.classList.remove('govuk-input--error')
+      }
+    })
   }
 
   /**
