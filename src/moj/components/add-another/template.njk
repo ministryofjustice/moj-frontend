@@ -1,26 +1,26 @@
-{% from "govuk/macros/attributes.njk" import govukAttributes %}
+{%- from "govuk/macros/attributes.njk" import govukAttributes -%}
 {%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
 
-{% set itemsHtml = params.itemsHtml if params.itemsHtml else caller() %}
+{%- set itemsHtml = params.itemsHtml if params.itemsHtml else caller() %}
 
-{% set classNames = ["moj-add-another"] %}
-{% if params.layout == 'inline' %}
+{%- set classNames = ["moj-add-another"] %}
+{%- if params.layout == 'inline' %}
   {% set classNames = classNames.concat("moj-add-another--inline") %}
-{% endif %}
+{%- endif %}
 {%- if params.classes %}
   {%- set classNames = classNames.concat(params.classes) %}
 {%- endif %}
 {%- set classNames = classNames | join(" ") -%}
 
-{% set dataAttributes = {
+{%- set dataAttributes = {
   'data-module': 'moj-add-another',
   'data-item-label': params.itemLabel | default('Item', true),
   'data-layout': {
     value: params.layout,
     optional: true
   }
-} %}
+} -%}
 
 <div class="{{ classNames }}" {{ govukAttributes(dataAttributes) }} {{govukAttributes(params.attributes) }}>
 

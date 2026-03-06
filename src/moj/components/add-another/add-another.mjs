@@ -254,6 +254,53 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   /**
+   * Removes error links from the error summary that are associated with inputs
+   * within an item, and removes the error summary if there are no remaining
+   * error links.
+   *
+   * @param {Element} $item - Add another item
+   */
+  updateErrorSummary($item) {
+    const $errorSummary = document.querySelector('.govuk-error-summary')
+
+    if (!$errorSummary || !($errorSummary instanceof HTMLElement)) {
+      return null
+    }
+
+    const $errorLinks = $errorSummary.querySelectorAll('a')
+
+    const inputIdsWithErrors = Array.from($item.querySelectorAll('[data-name]'))
+      .map(($input) => {
+        if (!this.isValidInputElement($input)) {
+          return null
+        }
+
+        const $errorMessage = $input.parentElement?.querySelector(
+          '.govuk-error-message'
+        )
+        if (!$errorMessage || !($errorMessage instanceof HTMLElement)) {
+          return null
+        }
+
+        return $input.id
+      })
+      .filter((id) => id)
+
+    $errorLinks.forEach(($link) => {
+      const href = $link.getAttribute('href') || ''
+      const errorInputId = href.replace('#', '')
+      if (inputIdsWithErrors.includes(errorInputId)) {
+        $link.remove()
+      }
+    })
+
+    const $remainingErrorLinks = $errorSummary.querySelectorAll('a')
+    if ($remainingErrorLinks.length === 0) {
+      $errorSummary.remove()
+    }
+  }
+
+  /**
    * Updates the text of labels associated with inputs within an item to have
    * visually hidden text appended that reflects the current index of the item.
    *
@@ -467,6 +514,10 @@ export class AddAnother extends ConfigurableComponent {
       $itemToFocus = this.$root
     }
 
+    if ($itemToRemove.querySelector('.govuk-error-message')) {
+      this.updateErrorSummary($itemToRemove)
+    }
+
     $itemToRemove.remove()
     this.updateAllItems('remove')
     emitEvent(this.$root, AddAnother, this.itemRemovedEvent)
@@ -498,7 +549,7 @@ export class AddAnother extends ConfigurableComponent {
    * @type {AddAnotherConfig}
    */
   static defaults = Object.freeze({
-    layout: 'block'
+    layout: 'stacked'
   })
 
   /**
@@ -517,7 +568,7 @@ export class AddAnother extends ConfigurableComponent {
 }
 
 /**
- * @typedef {"block"|"inline"} AddAnotherLayout
+ * @typedef {"stacked"|"inline"} AddAnotherLayout
  */
 
 /**
