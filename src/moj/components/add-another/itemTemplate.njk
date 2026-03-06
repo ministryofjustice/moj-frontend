@@ -1,0 +1,61 @@
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+
+{% set classNames = ["moj-add-another__item"] %}
+{% set itemHtml = params.html if params.html else caller() %}
+
+{% set removeButtonHtml %}
+  <div class="moj-add-another__remove-button-container">
+    {{ govukButton({
+      text: "Remove",
+      classes: "govuk-button--secondary moj-add-another__remove-button",
+      name: params.removeButton.name if params.removeButton.name else 'remove',
+      value: params.removeButton.value if params.removeButton.value else ''
+    }) }}
+  </div>
+{% endset %}
+
+{% if params.layout == 'inline' %}
+  {% set classNames = classNames.concat("moj-add-another__item-inline") %}
+  {% set html %}
+    <div class="moj-add-another__item-container">
+    <div class="moj-add-another__item-row govuk-grid-row">
+    {{ itemHtml | safe}}
+      </div>
+      {{ removeButtonHtml | safe }}
+    </div>
+  {% endset %}
+{% else %}
+  {% set html %}
+    <div class="moj-add-another__item-container">
+      {{ (itemHtml ~ removeButtonHtml) | safe }}
+    </div>
+  {% endset %}
+{% endif %}
+
+
+{%- if params.classes %}
+  {%- set classNames = classNames.concat(params.classes) %}
+{%- endif %}
+
+{%- set classNames = classNames | join(" ") -%}
+
+{% set legendParams = {
+  text: params.legend.text,
+  html: params.legend.html,
+  classes: "moj-add-another__title govuk-fieldset__legend--m " ~ (params.legend.classes if params.legend.classes),
+  isPageHeading: params.legend.isPageHeading
+} if params.legend else false %}
+
+{% set fieldsetParams = {
+  classes: classNames,
+  legend: legendParams,
+  attributes: params.attributes,
+  describedBy: params.describedBy,
+  html: html
+  }
+%}
+
+{{- govukFieldset(fieldsetParams) -}}
+
+
