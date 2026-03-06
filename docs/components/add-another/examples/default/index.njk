@@ -10,7 +10,8 @@ redirect_from: examples/add-another
 {%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
 {%- from "moj/components/add-another/macro.njk" import mojAddAnotherItem -%}
 {%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
-
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
 
 <form method="post">
   <h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Add people</h2>
@@ -176,4 +177,5 @@ redirect_from: examples/add-another
   </div>
 
 </form>
-
+</div>
+</div>
