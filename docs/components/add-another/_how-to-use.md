@@ -9,52 +9,75 @@ eleventyComputed:
 
 ## How to use
 
+The 'add another' component has 2 layouts -- stacked and inline. The stacked layout is the default, so you'll need to pass the inline layout if you want to use it.   
 
-### Fields and button titles
+### Writing an item name and hidden text
 
-You need to give the item a name, for example person, room, date, income or session.  
+Give the item a short, succinct name. For example person, room, date, income or session. This name will be used in the:
 
-The item name will . It will be upper case for the item title and lower case in the button, for example Person 1 and remove person 1.
+- item title (in sentence case) 
+- form field titles (in hidden text)
+- button (in lower case) 
+- error message (in lower case)
 
-Unique labels will tell screenreader users:
+The item titles are numbered 1,2,3,4 and so on. Naming the item 'Referral' will create:
+
+- 'Referral 1' for the item title 
+- 'Remove referral 1' for the remove button
+- 'Add a name for referral 1' for an error message
+
+You also need to add hidden text. This will tell screenreader users:
 
 -	which item they’re removing
 - which form field they're focused on
 -	that an item has been added or removed
 -	about errors  
 
-You need to create the following unique content for each layout. 
-
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">Stacked layout content</caption>
+  <caption class="govuk-table__caption govuk-table__caption--m">Content for the item title 'referral'</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Variant</th>
       <th scope="col" class="govuk-table__header">Content</th>
-      <th scope="col" class="govuk-table__header">Visibility of labels</th>
+      <th scope="col" class="govuk-table__header">Label visibility</th>
       <th scope="col" class="govuk-table__header">Title in example</th>
 
     </tr>
   </thead>
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">‘Remove’ buttons</th>
+       <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Stacked</th>
+      <th scope="row" class="govuk-table__header">Item title</th>
       <td class="govuk-table__cell">Visible</td>
-      <td class="govuk-table__cell">Remove room 1</td>
+      <td class="govuk-table__cell">Referral 1</td>
+    </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Inline</th>
+      <th scope="row" class="govuk-table__header">Item title</th>
+      <td class="govuk-table__cell">Hidden</td>
+      <td class="govuk-table__cell">Referral 1</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Main item title</th>
-      <td class="govuk-table__cell">Visible</td>
-      <td class="govuk-table__cell">Room 1</td>
-    </tr>
-    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Both variants</th>
       <th scope="row" class="govuk-table__header">All form fields</th>
       <td class="govuk-table__cell">Hidden</td>
-      <td class="govuk-table__cell">First name and last name</td>
+      <td class="govuk-table__cell">Step 1, date 1</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Stacked</th>
+      <th scope="row" class="govuk-table__header">'Remove' button</th>
+      <td class="govuk-table__cell">Visible</td>
+      <td class="govuk-table__cell">Remove referral 1</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Inline</th>
+      <th scope="row" class="govuk-table__header">'Remove' button</th>
+      <td class="govuk-table__cell">Hidden</td>
+      <td class="govuk-table__cell">Remove referral 1</td>
     </tr>
   </tbody>
 </table>
-
-The stacked layout is the default layout. This means that if you  
 
 ### The 'remove' button
 
@@ -68,13 +91,15 @@ You can add up to 4 items to the inline layout (not including the remove button)
 
 You need to create unique hidden labels for all items, form fields and buttons for the inline layout. Field labels need to fit on one line.   
 
+You can read [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs). 
+
 Code example:
 
 ### Use with JavaScript
 
 The add another component relies on JavaScript.  
 
-You need to set up your service for when JavaScript is not available. The page reloads with the additional form elements after the 'Add another' button is selected. 
+Set up your service that if JavaScript is not available the page will reload with the additional form elements after the 'Add another' button is selected. 
 
 ### Error messages
 
@@ -109,15 +134,13 @@ This ensures that
   </tbody>
 </table>
 
-There are also [error messages for the date picker component](/components/date-picker/#error-messages), which can be used if . 
+There are also [error messages for the date picker component](/components/date-picker/#error-messages), which can be used if that component is part of 'add another'. 
 
-### Placing more than 1 'add another' on a page.
+### Using multiple 'add another' components
 
-You can put more than one add another on a page but be aware of how this will affect the length and complexity of the page. 
+You can put more than 1 add another on a page but be aware of how this will affect the length and complexity of the page. 
 
-However do not put an 'add another' component inside another one, for example for users to add items to a subsection.
-
-This 'nested' approach is bad because xxx. 
+However do not put an 'add another' component inside another one, for example for users to add items to a subsection. This 'nested' approach is bad because xxx. 
 
 ### Other parts of the page
 
@@ -125,10 +148,10 @@ When people use this component, it will make pages longer and more complex. Ther
 
 ### Screens after the component  
 
-The add another component creates another item on a page. The data remains on the page until the user submits the page, for example with a 'save and continue’ button.   
+The add another component creates another item on a page. The data remains on the page until the user submits it, for example with a 'save and continue’ button.   
 
-The component does not offer a way for users to edit what they’ve entered after it's been submitted. This can be done:
--	using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/)
--	by switching to the [‘add to a list’ pattern](/patterns/add-to-a-list/)
+The component does not allow users to edit their items after they've been submitted. This can be done using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
 
-You may want to confirm to users that their submission worked. You could do this by displaying the [success alert](/components/alert/#success-alert) on the next page. 
+To confirm to users that their items were submitted, display the [success alert](/components/alert/#success-alert) on the next page. 
+
+[screenshot example]

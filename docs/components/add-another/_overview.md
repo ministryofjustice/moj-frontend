@@ -26,10 +26,12 @@ The component reproduces the field labels and so the items need to relate to one
 
 ## When not to use
 
-Do not use the 'add another' component to collect lengthy or complex data, especially if it needs multiple components to collect it. This type of data will create a very long page. This could be a problem because:
+Do not use the 'add another' component to collect lengthy or complex data, or if the user 
 
-- the items are only saved when the user submits the page (they'l lose it if they refresh the page or accidentally close it)
-- users may find it hard to check what they've entered against a paper form or spreadsheet 
+This could be a problem because:
+
+- the items are only saved when the user submits the page (they'll lose it if they refresh the page or accidentally close it)
+- users may find it hard to check what they've entered, especially if they're referring to a paper form or spreadsheet 
 - very long pages may cause performance issues
 
 Use the [‘add to a list’ pattern](/patterns/add-to-a-list/) for these scenarios.
@@ -47,7 +49,7 @@ The stacked (or vertical) layout is the default for this component. It helps use
 
 This layout has visible labels to helps users:
 
-- scan the page more easily (especially if they've added a few items on the page)
+- scan the page more easily (especially if they've added a few items to the page)
 - enter and edit content in the correct item
 - remove the correct item
 
@@ -65,16 +67,17 @@ The inline (or horizontal) layout is a lean design to save vertical space. The i
 - should contain up to 3 fields
 - has hidden unique labels 
 
-#### Screen 1: The landing screen. The fieldset label is in hidden text. 
+#### Screen 1: The landing screen
 
-#### Screen 2: When the ‘Add another’ button is selected, the fieldset label needs unique hidden text. A red remove button appears to the right of the last field. It also needs unique hidden text.
-
+#### Screen 2: When the ‘Add another’ button is selected a red 'remove' button appears to the right of the last field.  
 
 ### Things to consider
 
-When you're considering the 'add another' component, find out where the information is coming from that people are entering. For example a paper form, notes, a spreadsheet or legacy software. This may affect how people will need to use it. 
+When you're exploring the 'add another' component, find out where the item information items is coming from. For example a paper form, notes, a spreadsheet or legacy software. This will affect how people use it. 
 
-Switching from this component to the [‘add to a list’ pattern](/patterns/add-to-a-list/) later on will involve redesigning the user journey. If 
+The [‘add to a list’ pattern](/patterns/add-to-a-list/) enables users to review the items that they've added. This may more appropriate for helping users to add a lot of items. 
+
+If you expect users to add more, complex items (that need reviewing) it might be better to start off using the pattern. This is because switching from the 'add another' component to the pattern later on will involve redesigning the user journey.
 
 ### Similar or linked components
 
