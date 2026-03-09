@@ -10,6 +10,100 @@ layout: 'layouts/example.njk'
 {%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
+{% set firstItemHtml -%}
+  {{ govukInput({
+    id: "person[0][first_name]",
+    name: "person[0][first_name]",
+    label: {
+      html: "First name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 1</span>"
+    },
+    value: "John",
+    attributes: {
+      "data-name": "person[%index%][first_name]",
+      "data-id": "person[%index%][first_name]",
+      "data-label": "First name"
+    }
+  }) }}
+
+  {{ govukInput({
+    id: "person[0][last_name]",
+    name: "person[0][last_name]",
+    label: {
+      html: "Last name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 1</span>"
+    },
+    value: "Smith",
+    attributes: {
+      "data-name": "person[%index%][last_name]",
+      "data-id": "person[%index%][last_name]",
+      "data-label": "Last name"
+    }
+  }) }}
+{% endset %}
+
+{% set secondItemHtml -%}
+  {{ govukInput({
+    id: "person[1][first_name]",
+    name: "person[1][first_name]",
+    label: {
+      html: "First name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 2</span>"
+    },
+    errorMessage: {
+      text: "Enter first name of person 2"
+    },
+    attributes: {
+      "data-name": "person[%index%][first_name]",
+      "data-id": "person[%index%][first_name]",
+      "data-label": "First name"
+    }
+  }) }}
+
+  {{ govukInput({
+    id: "person[1][last_name]",
+    name: "person[1][last_name]",
+    label: {
+      html: "Last name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 2</span>"
+    },
+    errorMessage: {
+      text: "Enter last name of person 2"
+    },
+    attributes: {
+      "data-name": "person[%index%][last_name]",
+      "data-id": "person[%index%][last_name]",
+      "data-label": "Last name"
+    }
+  }) }}
+{%- endset -%}
+
+{%- set thirdItemHtml -%}
+  {{ govukInput({
+    id: "person[2][first_name]",
+    name: "person[2][first_name]",
+    label: {
+      html: "First name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 3</span>"
+    },
+    attributes: {
+      "data-name": "person[%index%][first_name]",
+      "data-id": "person[%index%][first_name]",
+      "data-label": "First name"
+    }
+  }) }}
+
+  {{ govukInput({
+    id: "person[2][last_name]",
+    name: "person[2][last_name]",
+    label: {
+      html: "Last name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 3</span>"
+    },
+    attributes: {
+      "data-name": "person[%index%][last_name]",
+      "data-id": "person[%index%][last_name]",
+      "data-label": "Last name"
+    }
+  }) }}
+{%- endset -%}
+
+<h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Add people</h2>
+
 {{ govukErrorSummary({
   titleText: "There is a problem",
   errorList: [
@@ -25,129 +119,34 @@ layout: 'layouts/example.njk'
 }) }}
 
 <form method="post">
-  <h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Add people</h2>
-
-    {% set firstItemHtml -%}
-      {{ govukInput({
-        id: "person[0][first_name]",
-        name: "person[0][first_name]",
-        label: {
-        html: "First name <span class=\"govuk-visually-hidden\">for person 1</span>"
-          },
-        value: "John",
-        attributes: {
-          "data-name": "person[%index%][first_name]",
-          "data-id": "person[%index%][first_name]",
-          "data-label": "First name"
-        }
-      }) }}
-
-      {{ govukInput({
-        id: "person[0][last_name]",
-        name: "person[0][last_name]",
-        label: {
-        html: "Last name <span class=\"govuk-visually-hidden\">for person 1</span>"
-        },
-        value: "Smith",
-        attributes: {
-          "data-name": "person[%index%][last_name]",
-          "data-id": "person[%index%][last_name]",
-          "data-label": "Last name"
-        }
-      }) }}
-    {% endset %}
-
-    {% set secondItemHtml -%}
-      {{ govukInput({
-        id: "person[1][first_name]",
-        name: "person[1][first_name]",
-        label: {
-        html: "First name <span class=\"govuk-visually-hidden\">for person 2</span>"
-        },
-        errorMessage: {
-          text: "Enter first name of person 2"
-        },
-        attributes: {
-          "data-name": "person[%index%][first_name]",
-          "data-id": "person[%index%][first_name]",
-          "data-label": "First name"
-        }
-      }) }}
-
-      {{ govukInput({
-        id: "person[1][last_name]",
-        name: "person[1][last_name]",
-        label: {
-        html: "Last name <span class=\"govuk-visually-hidden\">for person 2</span>"
-        },
-        errorMessage: {
-          text: "Enter last name of person 2"
-        },
-        attributes: {
-          "data-name": "person[%index%][last_name]",
-          "data-id": "person[%index%][last_name]",
-          "data-label": "Last name"
-        }
-      }) }}
-    {%- endset -%}
-
-    {%- set thirdItemHtml -%}
-      {{ govukInput({
-        id: "person[2][first_name]",
-        name: "person[2][first_name]",
-        label: {
-        html: "First name <span class=\"govuk-visually-hidden\">for person 3</span>"
-        },
-        attributes: {
-          "data-name": "person[%index%][first_name]",
-          "data-id": "person[%index%][first_name]",
-          "data-label": "First name"
-        }
-      }) }}
-
-      {{ govukInput({
-        id: "person[2][last_name]",
-        name: "person[2][last_name]",
-        label: {
-          html: "Last name <span class=\"govuk-visually-hidden\">for person 3</span>"
-        },
-        attributes: {
-          "data-name": "person[%index%][last_name]",
-          "data-id": "person[%index%][last_name]",
-          "data-label": "Last name"
-        }
-      }) }}
-  {%- endset -%}
-
-    {{ mojAddAnother({
-      itemLabel: "Person",
-      items: [
-        {
+  {{ mojAddAnother({
+    itemLabel: "Person",
+    items: [
+      {
+        fieldset: {
           legend: {
             text: "Person 1"
           },
-          content: {
-            html: firstItemHtml
-          }
-        },
-        {
+          html: firstItemHtml
+        }
+      },
+      {
+        fieldset: {
           legend: {
             text: "Person 2"
           },
-          content: {
-            html: secondItemHtml
-          }
-        },
-        {
+          html: secondItemHtml
+        }
+      },
+      {
+        fieldset: {
           legend: {
             text: "Person 3"
           },
-          content: {
-            html: thirdItemHtml
-          }
+          html: thirdItemHtml
         }
-      ]
-    }) }}
-
+      }
+    ]
+  }) }}
 </form>
 

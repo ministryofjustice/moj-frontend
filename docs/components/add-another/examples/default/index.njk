@@ -10,94 +10,94 @@ redirect_from: examples/add-another
 {%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
 {%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
 
+{% set itemHtml %}
+  {{ govukInput({
+    id: "person[0][first_name]",
+    name: "person[0][first_name]",
+    label: {
+      html: "First name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 1</span>"
+    },
+    attributes: {
+      "data-name": "person[%index%][first_name]",
+      "data-id": "person[%index%][first_name]",
+      "data-label": "First name"
+    }
+  }) }}
+
+  {{ govukInput({
+    id: "person[0][last_name]",
+    name: "person[0][last_name]",
+    label: {
+      html: "Last name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 1</span>"
+    },
+    attributes: {
+      "data-name": "person[%index%][last_name]",
+      "data-id": "person[%index%][last_name]",
+      "data-label": "Last name"
+    }
+  }) }}
+
+  {{ govukDateInput({
+    id: "date-of-birth",
+    fieldset: {
+      legend: {
+        html: "Date of birth <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 1</span>"
+      },
+      attributes: {
+        "data-legend": "Date of birth"
+      }
+    },
+    hint: {
+      text: "For example, 31 3 1980"
+    },
+    items: [
+      {
+        id: "person[0][dob][day]",
+        name: "person[0][dob][day]",
+        label: "Day",
+        classes: "govuk-input--width-2",
+        attributes: {
+          "data-name": "person[%index%][dob][day]",
+          "data-id": "person[%index%][dob][day]"
+        }
+      },
+      {
+        id: "person[0][dob][month]",
+        name: "person[0][dob][month]",
+        label: "Month",
+        classes: "govuk-input--width-2",
+        attributes: {
+          "data-name": "person[%index%][dob][month]",
+          "data-id": "person[%index%][dob][month]"
+        }
+      },
+      {
+        id: "person[0][dob][year]",
+        name: "person[0][dob][year]",
+        label: "Year",
+        classes: "govuk-input--width-2",
+        attributes: {
+          "data-name": "person[%index%][dob][year]",
+          "data-id": "person[%index%][dob][year]"
+        }
+      }
+    ]
+  }) }}
+{% endset %}
+
+
 <form method="post" action="#">
-    {% set firstItemHtml -%}
-      {{ govukInput({
-        id: "person[0][first_name]",
-        name: "person[0][first_name]",
-        label: {
-          html: "First name <span class=\"govuk-visually-hidden\">for person 1</span>"
-        },
-        attributes: {
-          "data-name": "person[%index%][first_name]",
-          "data-id": "person[%index%][first_name]",
-          "data-label": "First name"
-        }
-      }) }}
-
-      {{ govukInput({
-        id: "person[0][last_name]",
-        name: "person[0][last_name]",
-        label: {
-          html: "Last name <span class=\"govuk-visually-hidden\">for person 1</span>"
-        },
-        attributes: {
-          "data-name": "person[%index%][last_name]",
-          "data-id": "person[%index%][last_name]",
-          "data-label": "Last name"
-        }
-      }) }}
-
-      {{ govukDateInput({
-        id: "date-of-birth",
+  {{ mojAddAnother({
+    itemLabel: "Person",
+    items: [
+      {
         fieldset: {
-          legend: {
-          html: "Date of birth <span class=\"govuk-visually-hidden\">for person 1</span>"
-          },
-          attributes: {
-            "data-legend": "Date of birth"
-          }
-        },
-        hint: {
-          text: "For example, 31 3 1980"
-        },
-        items: [
-          {
-            id: "person[0][dob][day]",
-            name: "person[0][dob][day]",
-            label: "Day",
-            classes: "govuk-input--width-2",
-            attributes: {
-              "data-name": "person[%index%][dob][day]",
-              "data-id": "person[%index%][dob][day]"
-            }
-          },
-          {
-            id: "person[0][dob][month]",
-            name: "person[0][dob][month]",
-            label: "Month",
-            classes: "govuk-input--width-2",
-            attributes: {
-              "data-name": "person[%index%][dob][month]",
-              "data-id": "person[%index%][dob][month]"
-            }
-          },
-          {
-            id: "person[0][dob][year]",
-            name: "person[0][dob][year]",
-            label: "Year",
-            classes: "govuk-input--width-2",
-            attributes: {
-              "data-name": "person[%index%][dob][year]",
-              "data-id": "person[%index%][dob][year]"
-            }
-          }
-        ]
-      }) }}
-    {% endset %}
-
-
-    {{ mojAddAnother({
-      itemLabel: "Person",
-      items: [
-        {
           legend: {
             text: "Person 1"
           },
-          content: {
-            html: firstItemHtml
-          }
+          html: itemHtml
         }
-      ]
-    }) }}
+      }
+    ]
+  }) }}
 </form>
