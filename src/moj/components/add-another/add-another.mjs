@@ -37,9 +37,11 @@ export class AddAnother extends ConfigurableComponent {
   itemRemovedEvent = 'remove-item'
 
   /** @private */
+  /** @type {HTMLElement[]} */
   $items
 
   /** @private */
+  /** @type {HTMLTemplateElement} */
   $itemTemplate
 
   /**
@@ -160,7 +162,7 @@ export class AddAnother extends ConfigurableComponent {
   /**
    * Get all add another items
    *
-   * @returns {Element[]} Array of add another items
+   * @returns {HTMLElement[]} Array of add another items
    */
   getItems() {
     if (!this.$root) {
@@ -435,7 +437,7 @@ export class AddAnother extends ConfigurableComponent {
   updateRemoveButtons($item, index, itemsCount) {
     const $button = $item.querySelector(`.${this.removeButtonClass}`)
     const label = this.removeButtonLabelText(
-      `${this.config.itemLabel}.toLowerCase() ${index + 1}`
+      `${this.config.itemLabel.toLowerCase()} ${index + 1}`
     )
     console.log(label)
 
@@ -470,7 +472,7 @@ export class AddAnother extends ConfigurableComponent {
     $button.type = 'button'
     $button.classList.add(
       'govuk-button',
-      'govuk-button--secondary',
+      'govuk-button--warning',
       `${this.removeButtonClass}`
     )
     $button.innerHTML = label

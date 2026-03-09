@@ -2,16 +2,9 @@
 {%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
 
-{%- set itemsHtml = params.itemsHtml if params.itemsHtml else caller() %}
-
-{%- set classNames = ["moj-add-another"] %}
-{%- if params.layout == 'inline' %}
-  {% set classNames = classNames.concat("moj-add-another--inline") %}
-{%- endif %}
-{%- if params.classes %}
-  {%- set classNames = classNames.concat(params.classes) %}
-{%- endif %}
-{%- set classNames = classNames | join(" ") -%}
+{% macro _mojAddAnotherItem(params, item, index) %}
+  {%- include "./_itemTemplate.njk" -%}
+{% endmacro %}
 
 {%- set dataAttributes = {
   'data-module': 'moj-add-another',
@@ -22,13 +15,15 @@
   }
 } -%}
 
-<div class="{{ classNames }}" {{ govukAttributes(dataAttributes) }} {{govukAttributes(params.attributes) }}>
-
+<div class="moj-add-another {{- params.classes if params.classes -}}" {{ govukAttributes(dataAttributes) }} {{govukAttributes(params.attributes) }}>
   <div class="moj-add-another__items">
-    {{ itemsHtml | safe }}
+    {% for item in params.items %}
+      {% if item.content.html %}
+        {{ _mojAddAnotherItem(params, item, loop.index) }}
+      {% endif %}
+    {% endfor %}
   </div>
-
-  <div class="moj-button-action">
+  <div class="moj-add-another__add-button-container">
       {{ govukButton({
         text: "Add another " ~ (params.itemLabel | default('Item', true) | lower),
         classes: "govuk-button--secondary moj-add-another__add-button"

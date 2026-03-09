@@ -27,17 +27,13 @@ layout: 'layouts/example.njk'
 <form method="post">
   <h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Add people</h2>
 
-  {% call mojAddAnother({ templateHtml: templateHtml, itemLabel: "Person" }) %}
-    {% call mojAddAnotherItem({ legend: { text: "Person 1 of 3" } }) -%}
+    {% set firstItemHtml -%}
       {{ govukInput({
         id: "person[0][first_name]",
         name: "person[0][first_name]",
         label: {
-          text: "First name"
+        html: "First name <span class=\"govuk-visually-hidden\">for person 1</span>"
           },
-        errorMessage: {
-          text: "Enter your first name"
-        },
         value: "John",
         attributes: {
           "data-name": "person[%index%][first_name]",
@@ -50,12 +46,8 @@ layout: 'layouts/example.njk'
         id: "person[0][last_name]",
         name: "person[0][last_name]",
         label: {
-          text: "Last name"
-          },
-        errorMessage: {
-          text: "Enter your last name"
+        html: "Last name <span class=\"govuk-visually-hidden\">for person 1</span>"
         },
-
         value: "Smith",
         attributes: {
           "data-name": "person[%index%][last_name]",
@@ -63,17 +55,17 @@ layout: 'layouts/example.njk'
           "data-label": "Last name"
         }
       }) }}
+    {% endset %}
 
-    {% endcall %}
-    {% call mojAddAnotherItem({ legend: { text: "Person 2 of 3" } }) -%}
+    {% set secondItemHtml -%}
       {{ govukInput({
         id: "person[1][first_name]",
         name: "person[1][first_name]",
         label: {
-          text: "First name"
+        html: "First name <span class=\"govuk-visually-hidden\">for person 2</span>"
         },
         errorMessage: {
-          text: "Enter your first name"
+          text: "Enter first name of person 2"
         },
         attributes: {
           "data-name": "person[%index%][first_name]",
@@ -86,10 +78,10 @@ layout: 'layouts/example.njk'
         id: "person[1][last_name]",
         name: "person[1][last_name]",
         label: {
-          text: "Last name"
+        html: "Last name <span class=\"govuk-visually-hidden\">for person 2</span>"
         },
         errorMessage: {
-          text: "Enter your last name"
+          text: "Enter last name of person 2"
         },
         attributes: {
           "data-name": "person[%index%][last_name]",
@@ -97,14 +89,14 @@ layout: 'layouts/example.njk'
           "data-label": "Last name"
         }
       }) }}
+    {%- endset -%}
 
-    {% endcall %}
-    {% call mojAddAnotherItem({ legend: { text: "Person 3 of 3" } }) -%}
+    {%- set thirdItemHtml -%}
       {{ govukInput({
         id: "person[2][first_name]",
         name: "person[2][first_name]",
         label: {
-          text: "First name"
+        html: "First name <span class=\"govuk-visually-hidden\">for person 3</span>"
         },
         attributes: {
           "data-name": "person[%index%][first_name]",
@@ -117,7 +109,7 @@ layout: 'layouts/example.njk'
         id: "person[2][last_name]",
         name: "person[2][last_name]",
         label: {
-          text: "Last name"
+          html: "Last name <span class=\"govuk-visually-hidden\">for person 3</span>"
         },
         attributes: {
           "data-name": "person[%index%][last_name]",
@@ -125,14 +117,37 @@ layout: 'layouts/example.njk'
           "data-label": "Last name"
         }
       }) }}
-    {% endcall %}
-  {% endcall %}
+  {%- endset -%}
 
-  <div class="moj-button-action">
-    {{ govukButton({
-      text: "Continue"
+    {{ mojAddAnother({
+      itemLabel: "Person",
+      items: [
+        {
+          legend: {
+            text: "Person 1"
+          },
+          content: {
+            html: firstItemHtml
+          }
+        },
+        {
+          legend: {
+            text: "Person 2"
+          },
+          content: {
+            html: secondItemHtml
+          }
+        },
+        {
+          legend: {
+            text: "Person 3"
+          },
+          content: {
+            html: thirdItemHtml
+          }
+        }
+      ]
     }) }}
-  </div>
 
 </form>
 

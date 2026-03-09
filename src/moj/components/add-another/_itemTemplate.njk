@@ -1,0 +1,68 @@
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+
+{#- Setup css classes for the item #}
+{% set itemClassNames = ["moj-add-another__item"] %}
+{% if params.layout == 'inline' %}
+  {% set itemClassNames = itemClassNames.concat("moj-add-another__item--inline") %}
+{% endif %}
+{%- if item.classes %}
+  {%- set itemClassNames = itemClassNames.concat(item.classes) %}
+{%- endif %}
+{%- set itemClassNames = itemClassNames | join(" ") -%}
+
+{#- Setup the remove button html #}
+{% set removeButtonHtml %}
+  <div class="moj-add-another__remove-button-container">
+    {{ govukButton({
+      text: "Remove " ~ (params.itemLabel | lower) ~ " " ~ index,
+      classes: "govuk-button--warning moj-add-another__remove-button",
+      name: item.removeButton.name if params.removeButton.name else 'remove',
+      value: item.removeButton.value if params.removeButton.value else index-1
+    }) }}
+  </div>
+{% endset %}
+
+{#- Setup the item html, if the layout is inline then the content and remove
+button are side by side, otherwise the remove button is below the content #}
+{% if params.layout == 'inline' %}
+  {% set itemClassNames = itemClassNames.concat("moj-add-another__item--inline") %}
+  {% set itemHtml %}
+    <div class="moj-add-another__item-container">
+      <div class="moj-add-another__item-row govuk-grid-row">
+        {{ item.content.html | safe}}
+      </div>
+      {{ removeButtonHtml | safe }}
+    </div>
+  {% endset %}
+{% else %}
+  {% set itemHtml %}
+    <div class="moj-add-another__item-container">
+      {{ (item.content.html ~ removeButtonHtml) | safe }}
+    </div>
+  {% endset %}
+{% endif %}
+
+{#- Setup the legend for the fieldset, if one is provided #}
+{% set legendParams = {
+  text: item.legend.text,
+  html: item.legend.html,
+  classes: "moj-add-another__title govuk-fieldset__legend--m " ~ (item.legend.classes if item.legend.classes),
+  isPageHeading: false
+} if item.legend else false %}
+
+{#- Setup the fieldset parameters, the fieldset will be used to wrap the item
+content and remove button #}
+{% set fieldsetParams = {
+  classes: itemClassNames,
+  legend: legendParams,
+  attributes: item.attributes,
+  describedBy: item.describedBy,
+  html: itemHtml
+  }
+%}
+
+{#- Render the fieldset #}
+{{- govukFieldset(fieldsetParams) -}}
+
+
