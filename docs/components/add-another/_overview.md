@@ -10,28 +10,26 @@ eleventyComputed:
 
 ## Overview
 
-The ‘add another’ component allows users to add similar information a few times whilst staying on the same page. 
+The ‘add another’ component allows users to add similar information to a page a few times. 
 
 ## When to use
 
-This component works best as a shallow layout for users to enter brief information about items, ideally only a few times. 
+This component works best in a shallow layout for users to enter brief information about items, ideally only a few times. 
 
 The items could be:
 
--	dates
 -	the names of offences, programmes or people  
--	payments and their amounts
+-	dates
+- numbers, for example payments and their amounts
 
 The component reproduces the field labels and so the items need to relate to one another. 
 
 ## When not to use
 
-Do not use the 'add another' component to collect lengthy or complex data, or if the user 
+Do not use the 'add another' component to collect lengthy or complex data. This could be a problem because:
 
-This could be a problem because:
-
-- the items are only saved when the user submits the page (they'll lose it if they refresh the page or accidentally close it)
-- users may find it hard to check what they've entered, especially if they're referring to a paper form or spreadsheet 
+- the items are only saved when the user submits the page (they'll lose them if they refresh the page or close it)
+- users may find it hard to check what they've entered, for example against a paper form or spreadsheet 
 - very long pages may cause performance issues
 
 Use the [‘add to a list’ pattern](/patterns/add-to-a-list/) for these scenarios.
@@ -57,9 +55,11 @@ This layout has visible labels to helps users:
 
 [coded example with it open]
 
-The fields have hidden unique labels. This enables screenreader users to navigate the component. Read [how to write content for the labels](/components/add-another/#how-to-use-tab). 
+The fields have hidden unique labels. This enables screenreader users to navigate the component. There's guidance on [how to write content for the labels](/components/add-another/#how-to-use-tab). 
 
 ### Inline
+
+[insert coded example - without button selected]
 
 The inline (or horizontal) layout is a lean design to save vertical space. The inline layout: 
 
@@ -67,17 +67,15 @@ The inline (or horizontal) layout is a lean design to save vertical space. The i
 - should contain up to 3 fields
 - has hidden unique labels 
 
-#### Screen 1: The landing screen
-
-#### Screen 2: When the ‘Add another’ button is selected a red 'remove' button appears to the right of the last field.  
+After the ‘Add another’ button is selected a red 'remove' button appears to the right of the last field.  
 
 ### Things to consider
 
-When you're exploring the 'add another' component, find out where the item information items is coming from. For example a paper form, notes, a spreadsheet or legacy software. This will affect how people use it. 
+When you're exploring the 'add another' component, find out where the item information is coming from. For example a paper form, notes, a spreadsheet or legacy software. This will affect how people use it. 
 
 The [‘add to a list’ pattern](/patterns/add-to-a-list/) enables users to review the items that they've added. This may more appropriate for helping users to add a lot of items. 
 
-If you expect users to add more, complex items (that need reviewing) it might be better to start off using the pattern. This is because switching from the 'add another' component to the pattern later on will involve redesigning the user journey.
+If you expect that later on users will need to add more, complex items (that need reviewing) it might be better to start off using the pattern. Switching from the 'add another' component to the pattern involves redesigning the user journey.
 
 ### Similar or linked components
 

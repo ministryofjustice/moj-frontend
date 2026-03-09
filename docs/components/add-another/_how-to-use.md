@@ -9,29 +9,28 @@ eleventyComputed:
 
 ## How to use
 
-The 'add another' component has 2 layouts -- stacked and inline. The stacked layout is the default, so you'll need to pass the inline layout if you want to use it.   
+The ['add another' component](/components/add-another/#overview-tab) has 2 layouts -- stacked and inline. The stacked layout is the default, so you'll need to pass the inline layout if you want to use it.   
 
-### Writing an item name and hidden text
+### Writing content
 
-Give the item a short, succinct name. For example person, room, date, income or session. This name will be used in the:
+You need to give each 'add another' component an H2 and item name.
+
+#### H2 heading
+
+Add an H2 above the component to give your page the correct heading structure. You can view [page layout examples with the 'add another' component](/components/add-another/#examples-tab). 
+
+#### Item names
+
+The item name should be short and succinct. For example person, room, date, income or session. 
+
+This name will be used in the:
 
 - item title (in sentence case) 
 - form field titles (in hidden text)
 - button (in lower case) 
-- error message (in lower case)
+- error messages (in lower case)
 
-The item titles are numbered 1,2,3,4 and so on. Naming the item 'Referral' will create:
-
-- 'Referral 1' for the item title 
-- 'Remove referral 1' for the remove button
-- 'Add a name for referral 1' for an error message
-
-You also need to add hidden text. This will tell screenreader users:
-
--	which item they’re removing
-- which form field they're focused on
--	that an item has been added or removed
--	about errors  
+The items are numbered 1,2,3,4 and so on.  
 
 <table class="govuk-table">
   <caption class="govuk-table__caption govuk-table__caption--m">Content for the item title 'referral'</caption>
@@ -47,51 +46,55 @@ You also need to add hidden text. This will tell screenreader users:
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
        <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Stacked</th>
       <th scope="row" class="govuk-table__header">Item title</th>
+      <td class="govuk-table__cell">Stacked</th>
       <td class="govuk-table__cell">Visible</td>
       <td class="govuk-table__cell">Referral 1</td>
     </tr>
      <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Inline</th>
       <th scope="row" class="govuk-table__header">Item title</th>
+      <td class="govuk-table__cell">Inline</th>
       <td class="govuk-table__cell">Hidden</td>
       <td class="govuk-table__cell">Referral 1</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Both variants</th>
       <th scope="row" class="govuk-table__header">All form fields</th>
+      <td class="govuk-table__cell">Both variants</th>
       <td class="govuk-table__cell">Hidden</td>
       <td class="govuk-table__cell">Step 1, date 1</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Stacked</th>
       <th scope="row" class="govuk-table__header">'Remove' button</th>
+      <td class="govuk-table__cell">Stacked</th>
       <td class="govuk-table__cell">Visible</td>
       <td class="govuk-table__cell">Remove referral 1</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Inline</th>
       <th scope="row" class="govuk-table__header">'Remove' button</th>
+      <td class="govuk-table__cell">Inline</th>
       <td class="govuk-table__cell">Hidden</td>
       <td class="govuk-table__cell">Remove referral 1</td>
     </tr>
+     <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Error message</th>
+      <td class="govuk-table__cell">Both</th>
+      <td class="govuk-table__cell">Visible</td>
+      <td class="govuk-table__cell">- 'Add a name for referral 1' (for example)</td>
+    </tr>
   </tbody>
-</table>
+</table> 
 
 ### The 'remove' button
 
-The 'remove' button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). Do not change the button colour, as it may be confused with the 'add another' button and selected in error. 
+The 'remove' button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). Do not change the button colour as users may select it in error thinking it's the 'add another' button. 
 
 Do not change the button position, as this may make it harder for zoom users to use the component.
 
 ### Inline layout
 
-You can add up to 4 items to the inline layout (not including the remove button). This is because it follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system). All the items need to fit onto 1 line. 
+You should add no more than 3 fields to the inline layout (the remove button is not included in the 3 items). This is because it follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system). 
 
-You need to create unique hidden labels for all items, form fields and buttons for the inline layout. Field labels need to fit on one line.   
-
-You can read [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs). 
+All the items and field labels need to fit on 1 line. You can read [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs). 
 
 Code example:
 
@@ -103,15 +106,15 @@ Set up your service that if JavaScript is not available the page will reload wit
 
 ### Error messages
 
-[Coded example to show the error behaviour]
-
 Follow the [GOV.UK Design System guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
 
 #### Showing multiple errors  
 
-Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/). Once the user has resolved all the errors in the first item, you can display the next set. This should continue until they're all resolved.  
+[Coded example to show the multiple error behaviour]
 
-This ensures that 
+Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/). Once the user has resolved all the errors in the first item, display the next set. This should continue until all the errors are resolved.  
+
+This set-up ensures that users can still identify their errors if an item is added or removed. 
 
 {% example template="examples/error", colocated="true", height=590 %}
 
@@ -134,8 +137,6 @@ This ensures that
   </tbody>
 </table>
 
-There are also [error messages for the date picker component](/components/date-picker/#error-messages), which can be used if that component is part of 'add another'. 
-
 ### Using multiple 'add another' components
 
 You can put more than 1 add another on a page but be aware of how this will affect the length and complexity of the page. 
@@ -151,7 +152,5 @@ When people use this component, it will make pages longer and more complex. Ther
 The add another component creates another item on a page. The data remains on the page until the user submits it, for example with a 'save and continue’ button.   
 
 The component does not allow users to edit their items after they've been submitted. This can be done using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
-
-To confirm to users that their items were submitted, display the [success alert](/components/alert/#success-alert) on the next page. 
 
 [screenshot example]
