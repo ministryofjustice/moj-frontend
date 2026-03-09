@@ -1,47 +1,67 @@
 {%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
 {%- from "moj/components/add-another/macro.njk" import mojAddAnotherItem -%}
+{%- from "govuk/components/input/macro.njk" import govukInput -%}
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
     <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 <h2 class="govuk-heading-m govuk-label-wrapper" id="gifts-received-title">Gifts received</h2>
 <p class="govuk-hint" id="gifts-received-hint">Provide descriptions and value of any gifts.</p>
 
-  {% call mojAddAnother({ templateHtml: templateHtml, itemLabel: "Gift", layout: 'inline' }) %}
-    {% call mojAddAnotherItem({ describedBy: 'gifts-received-hint', layout: 'inline', attributes: { 'aria-labelledby': 'gifts-received-title'} }) -%}
+{% set firstItemHtml -%}
       <div class="govuk-grid-column-two-thirds">
-        <div class="govuk-form-group" >
-         <label class="govuk-label" for="gifts[0][description]">
-           Description
-          </label>
-          <input class="govuk-input"
-                 id="gifts[0][description]"
-                 name="gifts[0][description]"
-                 data-id="gifts[%index%][description]"
-                 data-name="gifts[%index%][description]"
-                 data-label="Description"
-                 type="text">
-        </div>
+      {{ govukInput({
+        id: "gifts[0][description]",
+        name: "gifts[0][description]",
+        label: {
+        html: "Description <span class=\"govuk-visually-hidden\">for gift
+        1</span>"
+        },
+        attributes: {
+          "data-name": "gifts[%index%][description]",
+          "data-id": "gifts[%index%][description]",
+          "data-label": "Description"
+        }
+      }) }}
       </div>
       <div class="govuk-grid-column-one-third">
-        <div class="govuk-form-group" >
-          <label class="govuk-label" for="gifts[0][value]">
-            Value <span class="govuk-visually-hidden">in pounds</span>
-          </label>
-          <div class="govuk-input__wrapper">
-            <div class="govuk-input__prefix" aria-hidden="true">£</div>
-            <input class="govuk-input govuk-input--width-5"
-                   id="gifts[0][value]"
-                   name="gifts[0][value]"
-                   type="text"
-                   data-id="gifts[%index%][value]"
-                   data-name="gifts[%index%][value]"
-                   data-label="Value"
-                   spellcheck="false">
-          </div>
-        </div>
+      {{ govukInput({
+        id: "gifts[0][value]",
+        name: "gifts[0][value]",
+        label: {
+        html: "Value <span class=\"govuk-visually-hidden\">for gift 1</span>"
+        },
+        prefix: {
+          text: "£",
+          attributes: {
+            "aria-hidden": "true"
+          }
+        },
+        attributes: {
+          "data-name": "gifts[%index%][value]",
+          "data-id": "gifts[%index%][value]",
+          "data-label": "Value"
+        },
+        classes: "govuk-input--width-5"
+      }) }}
       </div>
-    {% endcall %}
-  {% endcall %}
+{% endset %}
+
+    {{ mojAddAnother({
+      itemLabel: "Gift",
+      layout: 'inline',
+      items: [
+      {
+        describedBy: 'gifts-received-hint',
+        attributes: {
+          'aria-labelledby': 'gifts-received-title'
+        },
+        content: {
+          html: firstItemHtml
+        }
+      }
+    ]
+    }) }}
+
 </div>
 </div>
 </div>

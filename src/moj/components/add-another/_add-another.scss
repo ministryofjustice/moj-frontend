@@ -28,17 +28,27 @@
     display: block;
   }
 
-  &__remove-button {
-    color: #ca3535; // govuk 6 primary/error red
+  /* &__remove-button { */
 
-    &:hover {
-      color: #982828; // red shade 25
-    }
+  /*   color: #ca3535; // govuk 6 primary/error red */
 
-    &:focus {
-      color: $govuk-focus-text-colour;
-    }
-  }
+  /*  */
+
+  /*   &:hover { */
+
+  /*     color: #982828; // red shade 25 */
+
+  /*   } */
+
+  /*  */
+
+  /*   &:focus { */
+
+  /*     color: $govuk-focus-text-colour; */
+
+  /*   } */
+
+  /* } */
 }
 
 .moj-add-another__item--inline {
