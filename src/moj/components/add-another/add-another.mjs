@@ -16,6 +16,9 @@ export class AddAnother extends ConfigurableComponent {
   itemClass = 'moj-add-another__item'
 
   /** @private */
+  fieldsetClass = 'moj-add-another__fieldset'
+
+  /** @private */
   removeButtonContainerClass = 'moj-add-another__remove-button-container'
 
   /** @private */
@@ -143,12 +146,15 @@ export class AddAnother extends ConfigurableComponent {
     const $lastItem = this.$items[this.$items.length - 1]
 
     // Place focus on the added item
-    if ($lastItem && $lastItem instanceof HTMLFieldSetElement) {
-      emitEvent($lastItem, AddAnother, this.itemAddedEvent)
-      console.log('setting focus on fieldset')
-      setTimeout(() => {
-        setFocus($lastItem)
-      }, 100)
+    if ($lastItem && $lastItem instanceof HTMLElement) {
+      const $fieldset = $lastItem.querySelector(`.${this.fieldsetClass}`)
+      if ($fieldset && $fieldset instanceof HTMLFieldSetElement) {
+        emitEvent($lastItem, AddAnother, this.itemAddedEvent)
+        console.log('setting focus on fieldset')
+        setTimeout(() => {
+          setFocus($lastItem)
+        }, 100)
+      }
     }
   }
 
@@ -292,21 +298,11 @@ export class AddAnother extends ConfigurableComponent {
     const $errorLinks = $errorSummary.querySelectorAll('a')
 
     const inputIdsWithErrors = Array.from($item.querySelectorAll('[data-name]'))
-      .map(($input) => {
-        if (!this.isValidInputElement($input)) {
-          return null
-        }
+      .filter(($input) => this.isValidInputElement($input))
+      .filter(($input) => $input.classList.contains('govuk-input--error'))
+      .map(($input) => $input.id)
 
-        const $errorMessage = $input.parentElement?.querySelector(
-          '.govuk-error-message'
-        )
-        if (!$errorMessage || !($errorMessage instanceof HTMLElement)) {
-          return null
-        }
-
-        return $input.id
-      })
-      .filter((id) => id)
+    console.log({ inputIdsWithErrors })
 
     $errorLinks.forEach(($link) => {
       const href = $link.getAttribute('href') || ''
@@ -390,7 +386,12 @@ export class AddAnother extends ConfigurableComponent {
    * @param {number} itemsCount - Total number of items
    */
   updateLegends($item, index, itemsCount) {
-    const $legend = $item.querySelector('legend')
+    const $fieldset = $item.querySelector(`.${this.fieldsetClass}`)
+
+    if (!$fieldset || !($fieldset instanceof HTMLFieldSetElement)) {
+      return
+    }
+    const $legend = $fieldset.querySelector('legend')
     let suffix = ''
 
     if (itemsCount === 1) {
@@ -405,7 +406,7 @@ export class AddAnother extends ConfigurableComponent {
     }
 
     const counterId = generateUniqueId()
-    let $counter = $item.querySelector(`.${this.itemCounterClass}`)
+    let $counter = $fieldset.querySelector(`.${this.itemCounterClass}`)
 
     if ($counter && $counter instanceof HTMLElement) {
       $counter.innerHTML = `${suffix}`
@@ -417,10 +418,10 @@ export class AddAnother extends ConfigurableComponent {
       )
       $counter.id = `${counterId}`
       $counter.innerHTML = `${suffix}`
-      $item.prepend($counter)
-      $item.setAttribute(
+      $fieldset.prepend($counter)
+      $fieldset.setAttribute(
         'aria-labelledby',
-        `${$item.getAttribute('aria-labelledby')} ${counterId}`
+        `${$fieldset.getAttribute('aria-labelledby')} ${counterId}`
       )
     }
   }
@@ -572,15 +573,19 @@ export class AddAnother extends ConfigurableComponent {
 
     const $itemToRemove = $button.closest(`.${this.itemClass}`)
 
-    if (!$itemToRemove || !($itemToRemove instanceof HTMLFieldSetElement)) {
+    if (!$itemToRemove || !($itemToRemove instanceof HTMLElement)) {
       return
     }
 
-    let $itemToFocus = $itemToRemove.previousElementSibling
+    let $itemToFocus = $itemToRemove.previousElementSibling?.querySelector(
+      `.${this.fieldsetClass}`
+    )
 
     // Should we get the next element?
     if (!$itemToFocus || !($itemToFocus instanceof HTMLFieldSetElement)) {
-      $itemToFocus = $itemToRemove.nextElementSibling
+      $itemToFocus = $itemToRemove.nextElementSibling?.querySelector(
+        `.${this.fieldsetClass}`
+      )
     }
     // focus on root of component?
     // it needs an accessible name?

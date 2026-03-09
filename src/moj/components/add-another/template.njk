@@ -15,10 +15,12 @@
   }
 } -%}
 
-<div class="moj-add-another {{- params.classes if params.classes -}}" {{ govukAttributes(dataAttributes) }} {{govukAttributes(params.attributes) }}>
+<div class="moj-add-another {{- params.classes if params.classes -}}"
+  {{- govukAttributes(dataAttributes) -}}
+  {{- govukAttributes(params.attributes) -}}>
   <div class="moj-add-another__items">
     {% for item in params.items %}
-      {% if item.content.html %}
+      {% if item.fieldset.html %}
         {{ _mojAddAnotherItem(params, item, loop.index) }}
       {% endif %}
     {% endfor %}
