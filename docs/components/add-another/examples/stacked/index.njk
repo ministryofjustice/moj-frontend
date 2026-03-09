@@ -1,7 +1,6 @@
 ---
 layout: 'layouts/example.njk'
 title: Add another (example)
-redirect_from: examples/add-another
 ---
 
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
@@ -10,10 +9,11 @@ redirect_from: examples/add-another
 {%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
 {%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
 
-{% set itemHtml %}
+{% set firstItemHtml %}
   {{ govukInput({
     id: "participant[0][full_name]",
     name: "participant[0][full_name]",
+    value: "Sara Williams-Jones",
     label: {
       html: "Full name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for participant 1</span>"
     },
@@ -43,6 +43,7 @@ redirect_from: examples/add-another
         id: "participant[0][dob][day]",
         name: "participant[0][dob][day]",
         label: "Day",
+        value: "21",
         classes: "govuk-input--width-2",
         attributes: {
           "data-name": "participant[%index%][dob][day]",
@@ -53,6 +54,7 @@ redirect_from: examples/add-another
         id: "participant[0][dob][month]",
         name: "participant[0][dob][month]",
         label: "Month",
+        value: "3",
         classes: "govuk-input--width-2",
         attributes: {
           "data-name": "participant[%index%][dob][month]",
@@ -62,6 +64,70 @@ redirect_from: examples/add-another
       {
         id: "participant[0][dob][year]",
         name: "participant[0][dob][year]",
+        label: "Year",
+        value: "1983",
+        classes: "govuk-input--width-4",
+        attributes: {
+          "data-name": "participant[%index%][dob][year]",
+          "data-id": "participant[%index%][dob][year]"
+        }
+      }
+    ]
+  }) }}
+{% endset %}
+
+{% set secondItemHtml %}
+  {{ govukInput({
+    id: "participant[1][full_name]",
+    name: "participant[1][full_name]",
+    label: {
+      html: "Full name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for participant 1</span>"
+    },
+    attributes: {
+      "data-name": "participant[%index%][full_name]",
+      "data-id": "participant[%index%][full_name]",
+      "data-label": "Full name"
+    }
+  }) }}
+
+
+  {{ govukDateInput({
+    id: "date-of-birth",
+    fieldset: {
+      legend: {
+        html: "Date of birth <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for participant 1</span>"
+      },
+      attributes: {
+        "data-legend": "Date of birth"
+      }
+    },
+    hint: {
+      text: "For example, 31 3 1980"
+    },
+    items: [
+      {
+        id: "participant[1][dob][day]",
+        name: "participant[1][dob][day]",
+        label: "Day",
+        classes: "govuk-input--width-2",
+        attributes: {
+          "data-name": "participant[%index%][dob][day]",
+          "data-id": "participant[%index%][dob][day]"
+        }
+      },
+      {
+        id: "participant[1][dob][month]",
+        name: "participant[1][dob][month]",
+        label: "Month",
+        classes: "govuk-input--width-2",
+        attributes: {
+          "data-name": "participant[%index%][dob][month]",
+          "data-id": "participant[%index%][dob][month]"
+        }
+      },
+      {
+        id: "participant[1][dob][year]",
+        name: "participant[1][dob][year]",
         label: "Year",
         classes: "govuk-input--width-4",
         attributes: {
@@ -73,6 +139,7 @@ redirect_from: examples/add-another
   }) }}
 {% endset %}
 
+
 <form method="post" action="#">
   {{ mojAddAnother({
     itemLabel: "Participant",
@@ -80,9 +147,17 @@ redirect_from: examples/add-another
       {
         fieldset: {
           legend: {
-            text: "Participant 1"
+            text: "Participant 1 of 2"
           },
-          html: itemHtml
+          html: firstItemHtml
+        }
+      },
+      {
+        fieldset: {
+          legend: {
+            text: "Participant 2 of 2"
+          },
+          html: secondItemHtml
         }
       }
     ]
