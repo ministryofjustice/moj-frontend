@@ -9,7 +9,7 @@ eleventyComputed:
 
 ## How to use
 
-The ['add another' component](/components/add-another/#overview-tab) has 2 layouts -- stacked and inline. The stacked layout is the default, so you'll need to pass the inline layout if you want to use it.   
+The ['add another' component](/components/add-another/#overview-tab) has 2 layouts -- stacked and inline. The stacked layout is the default, so you'll need to pass the inline layout to use it.   
 
 ### Writing content
 
@@ -33,12 +33,12 @@ This name will be used in the:
 The items are numbered 1,2,3,4 and so on.  
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">Content for the item title 'referral'</caption>
+  <caption class="govuk-table__caption govuk-table__caption--m">Content for the item name 'referral'</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Part of the component</th>
       <th scope="col" class="govuk-table__header">Variant</th>
-      <th scope="col" class="govuk-table__header">Content</th>
-      <th scope="col" class="govuk-table__header">Label visibility</th>
+      <th scope="col" class="govuk-table__header">Label type</th>
       <th scope="col" class="govuk-table__header">Title in example</th>
 
     </tr>
@@ -79,20 +79,20 @@ The items are numbered 1,2,3,4 and so on.
       <th scope="row" class="govuk-table__header">Error message</th>
       <td class="govuk-table__cell">Both</th>
       <td class="govuk-table__cell">Visible</td>
-      <td class="govuk-table__cell">- 'Add a name for referral 1' (for example)</td>
+      <td class="govuk-table__cell">'Add a name for referral 1' (for example)</td>
     </tr>
   </tbody>
 </table> 
 
 ### The 'remove' button
 
-The 'remove' button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). Do not change the button colour as users may select it in error thinking it's the 'add another' button. 
+The 'remove' button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). Do not change the button colour as users may confuse it with the 'add another' button (which it is sometimes next to). 
 
 Do not change the button position, as this may make it harder for zoom users to use the component.
 
 ### Inline layout
 
-You should add no more than 3 fields to the inline layout (the remove button is not included in the 3 items). This is because it follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system). 
+You should add no more than 3 fields to the inline layout (the remove button is not included in the 3 items). This is because the layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system). 
 
 All the items and field labels need to fit on 1 line. You can read [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs). 
 
@@ -141,7 +141,7 @@ This set-up ensures that users can still identify their errors if an item is add
 
 You can put more than 1 add another on a page but be aware of how this will affect the length and complexity of the page. 
 
-However do not put an 'add another' component inside another one, for example for users to add items to a subsection. This 'nested' approach is bad because xxx. 
+However do not put an 'add another' component inside another one, for example to enable users to add items to subsections. Screenreaders may not announce that another component has been added, and it may maker the page harder to use for everyone. 
 
 ### Other parts of the page
 
@@ -151,6 +151,6 @@ When people use this component, it will make pages longer and more complex. Ther
 
 The add another component creates another item on a page. The data remains on the page until the user submits it, for example with a 'save and continue’ button.   
 
-The component does not allow users to edit their items after they've been submitted. This can be done using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
+The component does not allow users to edit the items after submitting them. This can be done using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
 
 [screenshot example]
