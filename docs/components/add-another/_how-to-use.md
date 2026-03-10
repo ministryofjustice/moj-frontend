@@ -96,7 +96,7 @@ You should add no more than 3 fields to the inline layout (the remove button is 
 
 All the items and field labels need to fit on 1 line. You can read [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs). 
 
-Code example:
+{% example template="examples/inline-offences", colocated="true", height=540 %}
 
 ### Use with JavaScript
 
@@ -110,13 +110,11 @@ Follow the [GOV.UK Design System guidance on error messages](https://design-syst
 
 #### Showing multiple errors  
 
-[Coded example to show the multiple error behaviour]
+{% example template="examples/stacked-errors", colocated="true", height=590 %}
 
 Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/). Once the user has resolved all the errors in the first item, display the next set. This should continue until all the errors are resolved.  
 
 This set-up ensures that users can still identify their errors if an item is added or removed. 
-
-{% example template="examples/error", colocated="true", height=590 %}
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
