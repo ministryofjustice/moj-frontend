@@ -57,11 +57,11 @@ The form fields have hidden labels for screenreader users to navigate the compon
 
 #### When the ‘Add another’ button is selected, the title changes from 'Room 1' to 'Room 1 of 2’. A red remove button with the same labelling (‘Remove room 1’) appears under each item. 
 
-[coded example with it open]
+{% example template="examples/stacked", colocated="true", height=540 %}
 
 ### Inline
 
-[insert coded example - without button selected]
+{% example template="examples/inline-accounts", colocated="true", height=540 %}
 
 The inline (or horizontal) layout is a lean design to save vertical space. This layout: 
 
