@@ -55,7 +55,7 @@ This layout has visible labels to helps users:
 
 The form fields have hidden labels for screenreader users to navigate the component. 
 
-#### When the ‘Add another’ button is selected, the title changes from 'Room 1' to 'Room 1 of 2’. A red remove button with the same labelling (‘Remove room 1’) appears under each item. 
+#### When the ‘Add another’ button is selected, the title changes from 'Participant 1' to 'Participant 1 of 2’. A red remove button with the same labelling (‘Remove Participant 1’) appears under the item. 
 
 {% example template="examples/stacked", colocated="true", height=540 %}
 
