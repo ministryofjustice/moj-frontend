@@ -152,7 +152,7 @@ export class AddAnother extends ConfigurableComponent {
         emitEvent($lastItem, AddAnother, this.itemAddedEvent)
         console.log('setting focus on fieldset')
         setTimeout(() => {
-          setFocus($lastItem)
+          setFocus($fieldset)
         }, 100)
       }
     }
