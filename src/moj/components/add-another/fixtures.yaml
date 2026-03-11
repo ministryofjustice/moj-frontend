@@ -1,0 +1,24 @@
+items: &items
+  - fieldset:
+      legend:
+        text: 'Person'
+      html: |
+        <div class="govuk-form-group">
+          <label  class="govuk-label"
+                  for="person[0][name]">Name</label>
+          <input  class="govuk-input"
+                  id="person[0][name]"
+                  name="person[0][name]"
+                  type="text"
+                  data-name="person[%index%][name]"
+                  data-id="person-%index%-name"
+                  data-label="Name"
+                  >
+        </div>
+
+examples:
+  - name: default
+    options:
+      id: 'default-add-another'
+      itemLabel: 'Person'
+      items: *items
