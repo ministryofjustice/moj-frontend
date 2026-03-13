@@ -40,7 +40,9 @@
 | html                   | string  | Yes      | HTML to use or render within the fieldset element.|
 | classes                | string  | No       | Classes to add to the fieldset container. |
 | role                   | string  | No       | Optional ARIA role attribute. |
-| attributes             | string  | No       | <p>HTML attributes (for example data attributes) to add to the fieldset container.</p><p>For the ‘inline’ layout, the attributes must contain an `aria-labelledby` attribute with an element ID.</p> |
+| attributes             | string  | No       | HTML attributes (for example data attributes) to add to the fieldset container.  
+
+For the ‘inline’ layout, the attributes must contain an `aria-labelledby` attribute with an element ID. |
 
 ### legend
 | Name                   | Type    | Required | Description
