@@ -33,7 +33,7 @@ This name will be used in the:
 The items are numbered 1,2,3,4 and so on.  
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">Content for the item name 'referral'</caption>
+  <caption class="govuk-table__caption govuk-table__caption--m">Content for the item name ‘referral’</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Part of the component</th>
@@ -64,13 +64,13 @@ The items are numbered 1,2,3,4 and so on.
       <td class="govuk-table__cell">Step 1, date 1</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">'Remove' button</th>
+      <th scope="row" class="govuk-table__header">Remove button</th>
       <td class="govuk-table__cell">Stacked</th>
       <td class="govuk-table__cell">Visible</td>
       <td class="govuk-table__cell">Remove referral 1</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">'Remove' button</th>
+      <th scope="row" class="govuk-table__header">Remove button</th>
       <td class="govuk-table__cell">Inline</th>
       <td class="govuk-table__cell">Hidden</td>
       <td class="govuk-table__cell">Remove referral 1</td>
@@ -79,14 +79,14 @@ The items are numbered 1,2,3,4 and so on.
       <th scope="row" class="govuk-table__header">Error message</th>
       <td class="govuk-table__cell">Both</th>
       <td class="govuk-table__cell">Visible</td>
-      <td class="govuk-table__cell">'Add a name for referral 1' (for example)</td>
+      <td class="govuk-table__cell">‘Add a name for referral 1’ (for example)</td>
     </tr>
   </tbody>
 </table> 
 
-### The 'remove' button
+### The ‘remove’ button
 
-The 'remove' button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). Do not change the button colour as users may confuse it with the 'add another' button (which it is sometimes next to). 
+The remove button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). Do not change the button colour as users may confuse it with the ‘add another' button (which it is sometimes next to). 
 
 Do not change the button position, as this may make it harder for zoom users to use the component.
 
@@ -102,7 +102,7 @@ All the items and field labels need to fit on 1 line. You can read [GOV.UK guida
 
 The add another component relies on JavaScript.  
 
-Set up your service that if JavaScript is not available the page will reload with the additional form elements after the 'Add another' button is selected. 
+Set up your service that if JavaScript is not available the page will reload with the additional form elements after the ‘add another’ button is selected. 
 
 ### Error messages
 
@@ -135,7 +135,7 @@ This set-up ensures that users can still identify their errors if an item is add
   </tbody>
 </table>
 
-### Using multiple 'add another' components
+### Using multiple ‘add another‘ components
 
 You can put more than 1 add another on a page but be aware of how this will affect the length and complexity of the page. 
 
@@ -147,7 +147,7 @@ When people use this component, it will make pages longer and more complex. Ther
 
 ### Screens after the component  
 
-The add another component creates another item on a page. The data remains on the page until the user submits it, for example with a 'save and continue’ button.   
+The add another component creates another item on a page. The data remains on the page until the user submits it, for example with a ‘save and continue’ button.   
 
 The component does not allow users to edit the items after submitting them. This can be done using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
 
