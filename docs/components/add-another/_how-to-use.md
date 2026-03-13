@@ -13,7 +13,7 @@ The ['add another' component](/components/add-another/#overview-tab) has 2 layou
 
 ### Writing content
 
-You need to give each 'add another' component a heading and item name.
+You need to give each 'add another' component a heading and item label.
 
 #### H2 heading
 
@@ -93,6 +93,11 @@ Do not change the button position, as this may make it harder for zoom users to 
 ### Inline layout
 
 You should add no more than 3 fields to the inline layout (the remove button is not included in the 3 items). This is because the layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system). 
+
+You can only add the following components to the inline layout:
+
+the [GOV.UK text input](https://design-system.service.gov.uk/components/text-input/)
+the [GOV.UK select component](https://design-system.service.gov.uk/components/select/) 
 
 All the items and field labels need to fit on 1 line. You can read [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs). 
 
