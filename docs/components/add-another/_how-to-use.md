@@ -13,7 +13,7 @@ The ['add another' component](/components/add-another/#overview-tab) has 2 layou
 
 ### Writing content
 
-You need to give each 'add another' component an H2 and item name.
+You need to give each 'add another' component a heading and item name.
 
 #### H2 heading
 

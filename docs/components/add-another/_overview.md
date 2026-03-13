@@ -38,14 +38,14 @@ Use the [‘add to a list’ pattern](/patterns/add-to-a-list/) for these scenar
 
 The 'add another' component has 2 layouts:
 
-- [Stacked](#stacked)
-- [Inline](#inline)
+- [stacked](#stacked)
+- [inline](#inline)
 
 There's guidance on [how to write content for the variants](/components/add-another/#how-to-use-tab). 
 
 ### Stacked
 
-The stacked (or vertical) layout is the default for this component. It's for users to enter information into deeper items. 
+The stacked (or vertical) layout is the default for this component. It's for when users need to enter more information, for example into 4 or more fields.
 
 This layout has visible labels to helps users:
 
@@ -53,7 +53,7 @@ This layout has visible labels to helps users:
 - enter and edit content in the correct item
 - remove the correct item
 
-The form fields have hidden labels for screenreader users to navigate the component. 
+Hidden text in the labels helps screenreader users to navigate the component. 
 
 #### When the ‘Add another’ button is selected, the title changes from 'Participant 1' to ‘Participant 1 of 2’. A red remove button with the same labelling (‘Remove Participant 1’) appears under the item. 
 
@@ -61,15 +61,17 @@ The form fields have hidden labels for screenreader users to navigate the compon
 
 ### Inline
 
-{% example template="examples/inline-accounts", colocated="true", height=540 %}
+The inline (or horizontal) layout is a lean design for up to 3 fields. You might want to use when:
 
-The inline (or horizontal) layout is a lean design to save vertical space. This layout: 
+- you need to save vertical space in the page design
+- users need to add a lot of items
+- the component needs to be placed in 2 or more areas of the page 
 
-- has hidden labels 
-- can be added 2 or more times to a page
-- should contain no more than 3 fields
+The input labels are visible, and the item number is in hidden text.   
 
 After the ‘Add another’ button is selected, a red 'remove' button appears to the right of the last field.  
+
+{% example template="examples/inline-accounts", colocated="true", height=540 %}
 
 ### Things to consider
 
