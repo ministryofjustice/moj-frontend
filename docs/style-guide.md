@@ -15,7 +15,7 @@ First published: 18 December 2024
 </p>
 
 <p class="govuk-!-margin-bottom-0">
-Last updated: 12 March 2026
+Last updated: 23 March 2026
 </p>
 
 <p class="govuk-!-margin-bottom-6">
@@ -24,10 +24,6 @@ Last updated: 12 March 2026
 
 {% accordion "style-guide" %}
 {% accordionSection "A" %}
-
-### ACCT (Assessment, care in custody and teamwork)
-
-Use ACCT. This is more well known than the full version. When an ACCT is closed, it's referred to as 'ACCT post-closure' for 7 days.
 
 ### acronyms and initialisms
 
