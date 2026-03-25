@@ -511,6 +511,10 @@ export class AddAnother extends ConfigurableComponent {
 
     if ($buttonContainer && $buttonContainer instanceof HTMLElement) {
       $buttonContainer.appendChild($button)
+    } else {
+      if (!(this.config.layout === 'inline')) {
+        $item.appendChild($button)
+      }
     }
   }
 
