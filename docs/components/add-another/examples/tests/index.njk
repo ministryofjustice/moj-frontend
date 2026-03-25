@@ -1,0 +1,42 @@
+---
+layout: 'layouts/example.njk'
+title: Add another (example)
+---
+
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/input/macro.njk" import govukInput -%}
+{%- from "govuk/components/date-input/macro.njk" import govukDateInput -%}
+{%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+
+{% set itemHtml %}
+        <div class="govuk-form-group">
+          <label  class="govuk-label"
+                  for="person[0][name]">Name</label>
+          <input  class="govuk-input"
+                  id="person[0][name]"
+                  name="person[0][name]"
+                  type="text"
+                  data-name="person[%index%][name]"
+                  data-id="person-%index%-name"
+                  data-label="Name"
+                  >
+
+        </div>
+{% endset %}
+
+<form method="post" action="#">
+  {{ mojAddAnother({
+    itemLabel: "Participant",
+    items: [
+      {
+        fieldset: {
+          legend: {
+            text: "Participant 1"
+          },
+          html: itemHtml
+        }
+      }
+    ]
+  }) }}
+</form>
