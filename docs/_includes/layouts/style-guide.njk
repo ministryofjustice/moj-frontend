@@ -16,7 +16,7 @@
 
               {%- for entry in entries -%}
                 {% set title = '### '+entry.data.title %}
-                {% set content = [title, entry.content] | join('\r\n') | markdownify %}
+                {% set content = [title, entry.content] | join('\r\n') | renderMarkdown %}
                 {% set itemEntries = (itemEntries.push(content), itemEntries) %}
               {% endfor %}
 
