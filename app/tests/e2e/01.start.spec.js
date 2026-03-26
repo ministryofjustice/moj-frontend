@@ -17,5 +17,6 @@ test('start page', async ({ page }) => {
 
   await testPage.clickContinue()
 
-  await testPage.expectPageTitle('Verify that you work for MoJ')
+  await testPage.expectPageTitle('Verify that you work for MOJ')
+  await testPage.expectSelectedNavItem('Submit a component')
 })

@@ -1,0 +1,23 @@
+---
+layout: layouts/example.njk
+title: Upload files (example)
+redirect_from: examples/patterns/upload-files
+---
+
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukFileUpload({
+  id: "file-upload-1",
+  name: "file-upload-1",
+  isPageHeading: true,
+  label: {
+    text: "Upload receipt",
+    classes: "govuk-label--xl"
+  },
+  hint: {
+    text: "You can upload your receipt as a scanned copy or photo of the original"
+  }
+}) }}
+
+{{ govukButton({ text: "Continue" }) }}

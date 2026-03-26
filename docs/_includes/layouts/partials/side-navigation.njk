@@ -1,15 +1,31 @@
 {% from "macros/nav-list-item/macro.njk" import navListItem -%}
 
-{% set buildingPages = collections.all | eleventyNavigation("Building blocks") %}
+{% set buildingPages = collections.all | eleventyNavigation("MOJ building blocks") %}
+{% set probationPages = collections.all | eleventyNavigation("Probation building blocks") %}
 {% set guidancePages = collections.all | eleventyNavigation("Guidance") %}
 {% set communityPages = collections.all | eleventyNavigation("Community") %}
 {% set aboutPages = collections.all | eleventyNavigation("About the Design System") %}
 
 <moj-collapsible-nav open-class="app-vertical-nav__item--open" id="building-nav">
   <nav class="app-vertical-nav" aria-labelledby="building-nav-title">
-    <h2 class="app-vertical-nav__header" id="building-nav-title">Building blocks</h2>
+    <h2 class="app-vertical-nav__header" id="building-nav-title">MOJ building blocks</h2>
     <ul class="app-vertical-nav__list">
       {%- for entry in buildingPages %}
+        {{ navListItem({
+          item: entry,
+          page: page,
+          parent: eleventyNavigation.parent
+        }) }}
+      {%- endfor -%}
+    </ul>
+  </nav>
+</moj-collapsible-nav>
+
+<moj-collapsible-nav open-class="app-vertical-nav__item--open" id="building-nav">
+  <nav class="app-vertical-nav" aria-labelledby="building-nav-title">
+    <h2 class="app-vertical-nav__header" id="building-nav-title">Probation building blocks</h2>
+    <ul class="app-vertical-nav__list">
+      {%- for entry in probationPages %}
         {{ navListItem({
           item: entry,
           page: page,

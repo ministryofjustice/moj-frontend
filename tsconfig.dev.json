@@ -11,6 +11,7 @@
     "${configDir}/.prettierrc.*",
     "${configDir}/app.js",
     "${configDir}/config.js",
-    "${configDir}/gulpfile.js"
+    "${configDir}/gulpfile.js",
+    "${configDir}/.allowed-scripts.mjs"
   ]
 }

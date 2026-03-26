@@ -35,7 +35,7 @@ const helmet = require('helmet')
 const nunjucks = require('nunjucks')
 const { xss } = require('express-xss-sanitizer')
 
-const rev = require('../filters/rev')
+const rev = require('../11ty/filters/rev')
 
 const addComponentRoutes = require('./routes/add-component')
 

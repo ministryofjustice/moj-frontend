@@ -7,7 +7,7 @@
 {% set sortOrder = params.sortChildrenBy if params.sortChildrenBy else "order" %}
 
 <li class="app-vertical-nav__item {{ "app-vertical-nav__item--active" if active }} {{ "app-vertical-nav__item--open" if open }}">
-  <a class="app-vertical-nav__link" href="{{ params.item.url }}">{{ params.item.title }}
+  <a class="app-vertical-nav__link" href="{{ params.item.url }}"{{ " aria-current=\"page\"" | safe if active}}>{{ params.item.title }}
     {%- if params.item.children.length -%}
       <div class="app-vertical-nav__indicator">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

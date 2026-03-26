@@ -87,6 +87,23 @@ const titleize = (str) => {
   return ucFirst(str.toLowerCase())
 }
 
+/**
+ * Formats a string safely for use in urls
+ *  - replaces and non alphanumeric characters with hyphens
+ *  - replaces multiple hyphens with single hyphens
+ *  - strips any trailing hyphens
+ *
+ * @param {string} str - the string to format
+ */
+const urlize = (str) => {
+  if (!str) return ''
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9-]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/-$/, '')
+}
+
 const stripFrontmatter = (str) => {
   return str.replace(/---[\s\S]*?---/, '').trim()
 }
@@ -121,6 +138,7 @@ module.exports = {
   ucFirst,
   camelToKebab,
   titleize,
+  urlize,
   stripFrontmatter,
   replaceTemplateVars
 }

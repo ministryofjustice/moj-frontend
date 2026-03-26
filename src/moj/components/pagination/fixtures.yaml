@@ -1,0 +1,124 @@
+items: &items
+  - text: 1
+    href: '#'
+    selected: false
+  - text: 2
+    href: '#'
+    selected: true
+  - text: 3
+    href: '#'
+    selected: false
+
+next: &next
+  text: next
+  href: '#'
+
+previous: &previous
+  text: previous
+  href: '#'
+
+examples:
+  - name: default
+    options:
+      items: *items
+      next: *next
+      previous: *previous
+
+  - name: default no pages
+    options:
+      next: *next
+      previous: *previous
+
+  - name: one page
+    options:
+      items:
+        - text: 1
+          href: '#'
+          selected: false
+
+  - name: one page with results window and count
+    options:
+      items:
+        - text: 1
+          href: '#'
+          selected: false
+      results:
+        from: 1
+        to: 7
+        count: 7
+
+  - name: one page with results count
+    options:
+      items:
+        - text: 1
+          href: '#'
+          selected: false
+      results:
+        count: 7
+
+  - name: one page with pages count
+    options:
+      items:
+        - text: 1
+          href: '#'
+          selected: false
+      results:
+        pages:
+          current: 1
+          count: 1
+
+  - name: with results window
+    options:
+      items: *items
+      results:
+        from: 11
+        to: 20
+
+  - name: with results window and count
+    options:
+      items: *items
+      results:
+        from: 11
+        to: 20
+        count: 28
+
+  - name: with results count only
+    options:
+      items: *items
+      results:
+        count: 28
+
+  - name: with no pages and results count
+    options:
+      results:
+        count: 8
+
+  - name: with pages count
+    options:
+      items: *items
+      results:
+        pages:
+          current: 2
+          count: 3
+
+  - name: with dots
+    options:
+      items:
+        - text: 1
+          href: '#'
+          selected: false
+        - type: 'dots'
+        - text: 3
+          href: '#'
+          selected: false
+
+  - name: with govuk pagination args
+    options:
+      items:
+        - number: 1
+          href: '#'
+          current: false
+        - ellipsis: true
+        - number: 3
+          href: '#'
+          current: true

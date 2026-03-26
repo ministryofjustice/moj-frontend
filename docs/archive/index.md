@@ -11,4 +11,4 @@ index: true
 order: 40
 ---
 
-MoJ building blocks are archived when they’ve been replaced by something in the GOV.UK Design System, or when it’s no longer practical to support them.
+MOJ building blocks are archived when they’ve been replaced by something in the GOV.UK Design System, or when it’s no longer practical to support them.

@@ -1,0 +1,51 @@
+---
+layout: layouts/example.njk
+title: Pagination (example)
+---
+
+{%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
+
+{{ mojPagination({
+  items: [{
+    text: "A",
+    href: "#",
+    selected: true
+  }, {
+    text: "B",
+    href: "#"
+  }, {
+    text: "C",
+    href: "#"
+  }, {
+    text: "D",
+    href: "#"
+  }, {
+    text: "E",
+    href: "#"
+  }, {
+    text: "F",
+    href: "#"
+  }, {
+    text: "G",
+    href: "#"
+  }, {
+    type: "dots"
+  }, {
+    text: "Z",
+    href: "#"
+  }],
+  results: {
+    count: 564,
+    from: 1,
+    to: 34,
+    text: "people"
+  },
+  next: {
+    text: "Next",
+    href: "#"
+  }
+}) }}
+
+

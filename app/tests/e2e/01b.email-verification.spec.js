@@ -11,9 +11,9 @@ test.describe('verification process', async () => {
     basePage = new ContributionsPage(page)
     await page.goto('start')
     await basePage.clickContinue()
-    basePage.expectPageTitle('Verify that you work for MoJ')
+    basePage.expectPageTitle('Verify that you work for MOJ')
 
-    emailInput = page.getByLabel('Enter your MoJ email address')
+    emailInput = page.getByLabel('Enter your MOJ email address')
 
     await emailInput.fill(email)
     await basePage.clickContinue()
@@ -61,7 +61,7 @@ test.describe('verification process', async () => {
     await expect(newEmailLink).toBeVisible()
     await newEmailLink.click()
 
-    basePage.expectPageTitle('Verify that you work for MoJ')
+    basePage.expectPageTitle('Verify that you work for MOJ')
     await basePage.exepctAllLinksToHaveGovUkLinkClass()
   })
 
@@ -73,7 +73,7 @@ test.describe('verification process', async () => {
     await page
       .getByRole('link', { name: 'enter your email address again' })
       .click()
-    basePage.expectPageTitle('Verify that you work for MoJ')
+    basePage.expectPageTitle('Verify that you work for MOJ')
   })
 
   test('valid token', async ({ page }) => {

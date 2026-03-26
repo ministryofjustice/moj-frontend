@@ -225,7 +225,7 @@ export class MultiFileUpload extends ConfigurableComponent {
       this.$status.textContent = xhr.response.success.messageText
 
       $actions.append(this.getDeleteButton(xhr.response.file))
-      this.config.hooks.exitHook(this, file, xhr, xhr.responseText)
+      this.config.hooks.exitHook(this, file, xhr, xhr.statusText)
     }
 
     const onError = () => {
@@ -238,7 +238,7 @@ export class MultiFileUpload extends ConfigurableComponent {
       $message.innerHTML = this.getErrorHtml(error)
       this.$status.textContent = error.message
 
-      this.config.hooks.errorHook(this, file, xhr, xhr.responseText, error)
+      this.config.hooks.errorHook(this, file, xhr, xhr.statusText, error)
     }
 
     xhr.addEventListener('load', onLoad)
@@ -293,7 +293,7 @@ export class MultiFileUpload extends ConfigurableComponent {
       const $rowDelete = $rows.find(($row) => $row.contains($button))
       if ($rowDelete) $rowDelete.remove()
 
-      this.config.hooks.deleteHook(this, undefined, xhr, xhr.responseText)
+      this.config.hooks.deleteHook(this, undefined, xhr, xhr.statusText)
     })
 
     xhr.open('POST', this.config.deleteUrl)

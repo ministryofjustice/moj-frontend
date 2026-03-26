@@ -1,312 +1,43 @@
-const { execFileSync } = require('child_process')
-const fs = require('fs')
-const path = require('path')
-
 const eleventyNavigationPlugin = require('@11ty/eleventy-navigation')
-const matter = require('gray-matter')
-const hljs = require('highlight.js')
-const beautifyHTML = require('js-beautify').html
-const upperFirst = require('lodash/upperFirst')
-const markdownIt = require('markdown-it')
-const markdownItAnchor = require('markdown-it-anchor')
-const nunjucks = require('nunjucks')
 
-const rev = require('./filters/rev')
-const releasePackage = require('./package/package.json')
-const tabs = require('./shortcodes/tabs')
+const experimentalComponentsTemplateCopy = require('./11ty/config/experimental-components/template-copy')
+const experimentalComponentsUrlTransform = require('./11ty/config/experimental-components/url-transform')
+const markdown = require('./11ty/config/markdown')
+const nunjucksEnv = require('./11ty/config/nunjucks')
+const filters = require('./11ty/filters')
+const pairedShortcodes = require('./11ty/paired-shortcodes')
+const shortcodes = require('./11ty/shortcodes')
 const mojFilters = require('./src/moj/filters/all')
 
-// Configure highlight.js
-hljs.registerAliases(['mjs', 'njk'], { languageName: 'javascript' })
-
 module.exports = function (eleventyConfig) {
+  eleventyConfig.setLibrary('njk', nunjucksEnv)
+  eleventyConfig.setLibrary('md', markdown)
+
   eleventyConfig.addPlugin(eleventyNavigationPlugin)
+  eleventyConfig.addPlugin(filters)
+  eleventyConfig.addPlugin(shortcodes)
+  eleventyConfig.addPlugin(pairedShortcodes)
 
-  const nunjucksEnv = nunjucks.configure([
-    '.',
-    'src',
-    'docs/_includes/',
-    'node_modules/govuk-frontend/dist/'
-  ])
-
-  const md = markdownIt({
-    html: true,
-    typographer: true,
-    quotes: '“”‘’',
-    highlight(code, language) {
-      const { value } = hljs.highlight(code.trim(), {
-        language: language || 'plaintext'
-      })
-
-      return value
-    }
-  })
-    .disable('code')
-    .use(markdownItAnchor, {
-      level: [1, 2, 3, 4]
-    })
-
-  Object.entries({
-    ...eleventyConfig.nunjucksFilters,
-    ...mojFilters()
-  }).forEach(([name, callback]) => {
-    nunjucksEnv.addFilter(name, callback)
-  })
+  eleventyConfig.addPlugin(experimentalComponentsUrlTransform)
+  eleventyConfig.addPlugin(experimentalComponentsTemplateCopy)
 
   nunjucksEnv.addFilter(
     'eleventyNavigation',
     eleventyNavigationPlugin.navigation.find
   )
 
-  eleventyConfig.setLibrary('njk', nunjucksEnv)
-
-  eleventyConfig.setLibrary('md', md)
-
-  eleventyConfig.addShortcode('example', function (params) {
-    let templateFile = ''
-    try {
-      templateFile = fs
-        .readFileSync(
-          path.join(__dirname, 'docs', params.template, 'index.njk'),
-          'utf8'
-        )
-        .trim()
-    } catch {
-      console.error(`Template '${params.template}' could not be found.`)
-      return ''
-    }
-    let { data, content: nunjucksCode } = matter(templateFile)
-
-    nunjucksCode = nunjucksCode.split('<!--no include-->')[0].trim()
-
-    const rawHtmlCode = nunjucksEnv.renderString(nunjucksCode)
-
-    const htmlCode = beautifyHTML(rawHtmlCode.trim(), {
-      indent_size: 2,
-      end_with_newline: true,
-      max_preserve_newlines: 1,
-      unformatted: ['code', 'pre', 'em', 'strong']
-    })
-
-    let jsCode = ''
-    try {
-      jsCode = fs
-        .readFileSync(
-          path.join(__dirname, 'docs', params.template, 'script.js'),
-          'utf8'
-        )
-        .trim()
-    } catch {}
-
-    return nunjucksEnv.render('example.njk', {
-      href: params.template,
-      id: params.template.replace(/\//g, '-'),
-      arguments: data.arguments,
-      figmaLink: data.figma_link,
-      title: data.title,
-      height: params.height,
-      showTab: params.showTab,
-      nunjucksCode,
-      htmlCode,
-      jsCode
-    })
+  Object.entries(mojFilters()).forEach(([name, callback]) => {
+    nunjucksEnv.addFilter(name, callback)
   })
 
-  eleventyConfig.addShortcode(
-    'dateInCurrentMonth',
-    (day) => `${day}/${new Date().getMonth() + 1}/${new Date().getFullYear()}`
-  )
-
-  eleventyConfig.addShortcode('lastUpdated', function (component) {
-    if (process.env.ENV === 'staging') return ''
-
-    const dirPath = path.join(__dirname, 'src/moj/components', component)
-
-    const lastCommit = execFileSync(
-      'git',
-      [
-        'log',
-        '-n1',
-        '--pretty=format:%H,%ad',
-        '--date=format:%e %B %Y',
-        dirPath
-      ],
-      {
-        cwd: process.cwd(), // or specify the working directory if needed
-        env: { ...process.env, LANG: 'en_GB' },
-        encoding: 'utf8'
-      }
-    )
-    const [commit, lastUpdated] = lastCommit.toString().split(',')
-
-    return `<p>Last updated: <a href="https://github.com/ministryofjustice/moj-frontend/commit/${commit}">${lastUpdated}</a></p>`
-  })
-
-  eleventyConfig.addShortcode('version', function () {
-    return releasePackage.version
-  })
-
-  // Generate govuk tabs
-  eleventyConfig.addPairedNunjucksShortcode('tabs', tabs.createTabs)
-  // Find and store govuk tab for above tabs
-  eleventyConfig.addPairedShortcode('tab', tabs.createTab)
-
-  eleventyConfig.addPairedShortcode('banner', function (content, title) {
-    return `
-      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Important
-          </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <h3 class="govuk-notification-banner__heading">
-            ${title}
-          </h3>
-          ${content}</div>
-      </div>
-    `
-  })
-
-  // Temp storage for tabs
-  let accordionSections = []
-
-  // Generate govuk tabs
-  eleventyConfig.addPairedShortcode(
-    'accordion',
-    function (content, accordionId) {
-      const sectionId = (section) => {
-        return `${section.label.toLowerCase().replace(/ /g, '-')}-section`
-      }
-      const contentId = (section, index) => {
-        return `${accordionId}-content-${index}`
-      }
-
-      const accordionContent = accordionSections
-        .map((section, index) => {
-          return `
-        <div class="govuk-accordion__section">
-          <div class="govuk-accordion__section-header">
-            <h2 class="govuk-accordion__section-heading">
-              <span class="govuk-accordion__section-button" id="${sectionId(section)}">
-                ${section.label}
-              </span>
-            </h2>
-          </div>
-          <div id="${contentId(section, index + 1)}" class="govuk-accordion__section-content">${section.content}</div>
-      </div>
-    `.trim()
-        })
-        .join('')
-        .trim()
-
-      accordionSections = []
-
-      return `
-    <div class="govuk-accordion" data-module="govuk-accordion" id="${accordionId}">
-      ${accordionContent}
-    </div>
-  `.trim()
-    }
-  )
-
-  // Find and store govuk tab for above tabs
-  eleventyConfig.addPairedShortcode(
-    'accordionSection',
-    function (content, label) {
-      accordionSections.push({ label, content })
-      return ''
-    }
-  )
-
-  eleventyConfig.addFilter(
-    'addActiveAttribute',
-    function (config, filePathStem) {
-      if (config.items) {
-        return {
-          ...config,
-          items: config.items.map((item) => ({
-            ...item,
-            active: filePathStem.indexOf(item.href) > -1
-          }))
-        }
-      } else if (config.sections) {
-        return {
-          ...config,
-          sections: config.sections.map((section) => ({
-            ...section,
-            items: section.items.map((item) => ({
-              ...item,
-              active: filePathStem.indexOf(item.href) > -1
-            }))
-          }))
-        }
-      }
-    }
-  )
-
-  eleventyConfig.addFilter('getScriptPath', function (inputPath) {
-    return `${inputPath.split('/').slice(1, -1).join('/')}/script.js`
-  })
-
-  eleventyConfig.addFilter('getStylesPath', function (inputPath) {
-    return `${inputPath.split('/').slice(1, -1).join('/')}/style.css`
-  })
-
-  eleventyConfig.addFilter('renderString', function (viewString, context) {
-    return nunjucksEnv.renderString(viewString, context)
-  })
-
-  eleventyConfig.addFilter('rev', rev)
-
-  eleventyConfig.addFilter('upperFirst', upperFirst)
-
-  // Implements a url transform to enable us to show the correct page
-  // highlighted within the 11ty generated nav for the contributions app
-  // - if page has a permalink starting with views, then the url is set to the
-  // community start page
-  eleventyConfig.addUrlTransform(({ url }) => {
-    if (url.match(/^\/views/i)) {
-      return '/contribute/add-new-component/start'
-    }
-    // Returning undefined skips the url transform.
-  })
-
-  // Copies the 11ty base layout and partials to the contributions app layouts directory
-  eleventyConfig.on('eleventy.before', async ({ directories }) => {
-    const srcDir = `${directories.includes}layouts`
-    const destDir = './app/views/common'
-    const templates = [
-      'base.njk',
-      '404.njk',
-      '500.njk',
-      'partials/header.njk',
-      'partials/header-no-nav.njk',
-      'partials/footer.njk'
-    ]
-
-    templates.forEach((template) => {
-      fs.copyFile(`${srcDir}/${template}`, `${destDir}/${template}`, (err) => {
-        if (err) {
-          console.log('Error Found:', err)
-        }
-      })
-    })
-  })
-
-  eleventyConfig.addFilter('timestamp', (date) => {
-    return date.getTime()
-  })
-
-  eleventyConfig.addFilter('markdownify', (content) => {
-    return `${md.render(content)}`
-  })
+  eleventyConfig.ignores.add('**/*_arguments.md')
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')
   eleventyConfig.addWatchTarget('docs/examples/**/script.js')
   eleventyConfig.addWatchTarget('docs/examples/**/style.css')
-
+  eleventyConfig.addWatchTarget('docs/**/*.11tydata.js')
+  eleventyConfig.addWatchTarget('11ty/**/*.js')
   // Give gulp a little time..
   eleventyConfig.setWatchThrottleWaitTime(100)
 
@@ -322,13 +53,11 @@ module.exports = function (eleventyConfig) {
       'public/stylesheets/govuk-frontend.min.css',
       'public/stylesheets/moj-frontend.min.css'
     ],
-    // Show local network IP addresses for device testing
     showAllHosts: true,
-    // Show the dev server version number on the command line
     showVersion: true
   })
-}
 
-module.exports.config = {
-  markdownTemplateEngine: 'njk'
+  return {
+    markdownTemplateEngine: 'njk'
+  }
 }

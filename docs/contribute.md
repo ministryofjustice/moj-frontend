@@ -6,29 +6,29 @@ redirect_from: /community/collaborate-in-the-design-system
 permalink: false
 ---
 
-You can use the MoJ Design System to share your work with others. This is through submitting building blocks that your team has built, as well as joining discussions to help other blocks develop.
+You can use the MOJ Design System to share your work with others. This is through submitting building blocks that your team has built, as well as joining discussions to help other blocks develop.
 
 ## Adding a building block
 
-If you work at MoJ, you can now add a building block to the MoJ Design System. You might want to do this to:
+If you work at MOJ, you can now add a building block to the MOJ Design System. You might want to do this to:
 
 - make it easier for teams across government to find your work
-- get contributions from other people (including outside MoJ) to help the building block develop
+- get contributions from other people (including outside MOJ) to help the building block develop
 - help your team meet the [Government Design Principles](https://www.gov.uk/guidance/government-design-principles)
 
-Anyone at MoJ can add a building block - you do not have to be a designer or developer.
+Anyone at MOJ can add a building block - you do not have to be a designer or developer.
 
 ### Which building blocks can be added
 
-Components can be added to the MoJ Design System. Later in 2025, you'll also be able to add a pattern or page.
+Components can be added to the MOJ Design System. Later in 2025, you'll also be able to add a pattern or page.
 
 If the component has a name, image, and you can briefly describe it, it's ready to be added. If you have code and a Figma file that's great too, although you do not need it.
 
 It does not need to be thoroughly tested, documented or considered for wider use. For someone working on a problem from scratch, it can be a helpful starting point or idea.
 
-The component will be given an 'experimental' status. This is to show that it's early in development and only to be used in alpha and beta phases. You can [read about the MoJ Design System statuses](/design-system-statuses/).
+The component will be given an 'experimental' status. This is to show that it's early in development and only to be used in alpha and beta phases. You can [read about the MOJ Design System statuses](/design-system-statuses/).
 
-[Add a component to the MoJ Design System](/contribute/add-new-component/start)
+[Add a component to the MOJ Design System](/contribute/add-new-component/start)
 
 ## Joining discussions
 

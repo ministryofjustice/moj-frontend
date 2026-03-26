@@ -8,7 +8,7 @@ eleventyNavigation:
   order: 20
 ---
 
-This roadmap shows what the MoJ Design System team have recently done, is working on, and is planning to do.
+This roadmap shows what the MOJ Design System team have recently done, is working on, and is planning to do.
 
 Some things on the roadmap might change – the purpose is to tell you what’s been done and what's coming up.
 
@@ -16,10 +16,10 @@ Some things on the roadmap might change – the purpose is to tell you what’s 
 
 ## What's new
 
-This work has recently been released. [Sign up to get emails](https://docs.google.com/forms/d/1i7rinQINSjdQ6w_SChXqxQFTttPMgfcSfPamq8YRnP8/viewform) about future releases from the MoJ Design System.
+This work has recently been released. [Sign up to get emails](https://docs.google.com/forms/d/1i7rinQINSjdQ6w_SChXqxQFTttPMgfcSfPamq8YRnP8/viewform) about future releases from the MOJ Design System.
 
 - **18 December 2024**  
-  The [MoJ content style guide](/content-standards/style-guide/) is now live.
+  The [MOJ content style guide](/content-standards/style-guide/) is now live.
 
 - **10 December 2024**  
   The [interruption card component](/components/interruption-card/) is now live. Use it to help users understand possible errors and avoid serious mistakes.
@@ -35,8 +35,8 @@ This work is planned in the team's [current](https://github.com/orgs/ministryofj
 
 - Review and improve the [Banner component](/components/banner/)
 - Add JavaScript linting to follow [GDS standards](https://gds-way.digital.cabinet-office.gov.uk/manuals/programming-languages/js.html#linting)
-- Redesign the [home page](/) of the MoJ Design System documentation website
-- Improve the user experience of Figma libraries within MoJ
+- Redesign the [home page](/) of the MOJ Design System documentation website
+- Improve the user experience of Figma libraries within MOJ
 - Prototype and test a community space and contribution form
 - Define a release strategy
 

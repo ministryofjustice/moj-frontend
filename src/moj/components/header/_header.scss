@@ -83,6 +83,10 @@
     &:hover {
       border-color: transparent;
     }
+
+    @include govuk-media-query($until: tablet) {
+      margin-top: govuk-spacing(1);
+    }
   }
 
   &--service-name {

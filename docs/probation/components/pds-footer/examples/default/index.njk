@@ -1,0 +1,11 @@
+---
+layout: layouts/example.njk
+title: PDS footer (example)
+redirect_from: examples/probation/footer
+---
+
+{%- from "moj/components/domain-specific/probation/footer/macro.njk" import pdsFooter -%}
+
+{{ pdsFooter({
+  baseUrl: '#'
+}) }}

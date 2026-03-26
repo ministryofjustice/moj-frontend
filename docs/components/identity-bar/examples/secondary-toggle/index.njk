@@ -1,0 +1,30 @@
+---
+layout: layouts/example.njk
+title: Identity bar with default GOV.UK button and button menu (example)
+redirect_from: examples/identity-bar-secondary-toggle
+---
+
+{%- from "moj/components/identity-bar/macro.njk" import mojIdentityBar -%}
+
+{{ mojIdentityBar({
+  title: {
+    html: "<b>Jane Wolenksy</b> and <b>Simon Wolensky</b>"
+  },
+  menus: [{
+    items: [{
+      text: "Primary action"
+    }]
+  }, {
+   button: {
+    classes: "govuk-button--secondary"
+   },
+    alignMenu: "right",
+    items: [{
+      text: "Secondary action",
+      href: "#"
+    }, {
+      text: "Tertiary action",
+      href: "#"
+    }]
+  }]
+}) }}

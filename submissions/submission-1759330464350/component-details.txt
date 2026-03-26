@@ -1,0 +1,5 @@
+{
+  "componentName": "New features banner",
+  "componentOverview": "Banner that appears below the header and above any navigation that allows users to click into a subsequent page that informs them of changes, fixes and updates to the product they're using.",
+  "howIsTheComponentUsed": "It is currently being used in APOP and it is going to be implemented in MPOP soon too, to announce changes to our users in a consistent way."
+}

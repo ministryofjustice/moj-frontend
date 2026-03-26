@@ -8,6 +8,11 @@ module.exports = {
   setupFilesAfterEnv: ['./jest.setup.js', 'jest-sinon'],
   testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/**/*.spec.{js,mjs}'],
+  // Ignore component tests that require playwright runner
+  testPathIgnorePatterns: [
+    '<rootDir>/node_modules',
+    '.*\\.playwright\\.spec\\.(js|mjs)$'
+  ],
 
   // Enable Babel transforms until Jest supports ESM and `import()`
   // See: https://jestjs.io/docs/ecmascript-modules

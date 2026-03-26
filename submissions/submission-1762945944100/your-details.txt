@@ -1,0 +1,9 @@
+{
+  "fullName": "Jon Thomson",
+  "teamName": "Sirius (OPG)",
+  "shareYourDetails": [
+    "",
+    "addNameToComponentPage",
+    "addTeamNameToComponentPage"
+  ]
+}

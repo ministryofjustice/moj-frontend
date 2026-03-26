@@ -2,7 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended", ":semanticCommitTypeAll(build)"],
   "ignoreDeps": ["eslint", "eslint-plugin-promise", "eslint-plugin-n"],
-  "labels": ["dependencies"],
+  "labels": ["renovate: dependencies 🗃️"],
   "minimumReleaseAge": "7 days",
   "packageRules": [
     {
@@ -63,6 +63,7 @@
     {
       "groupName": "Test",
       "matchPackageNames": [
+        "@playwright/*",
         "@testing-library/*",
         "concurrently",
         "del",
@@ -70,8 +71,7 @@
         "jest",
         "jest-*",
         "mock-*",
-        "sinon",
-        "supertest"
+        "sinon"
       ]
     },
     {
@@ -80,5 +80,6 @@
     }
   ],
   "rangeStrategy": "bump",
+  "stopUpdatingLabel": "renovate: stop-updating 🚫",
   "updateInternalDeps": true
 }
