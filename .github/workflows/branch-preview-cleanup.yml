@@ -17,7 +17,7 @@ jobs:
       id-token: write
       contents: read
       pull-requests: write
-    if: contains(github.event.pull_request.labels.*.name, 'preview: active 👀')
+    if: "contains(github.event.pull_request.labels.*.name, 'preview: active 👀')"
     steps:
       - run: |
           echo "${KUBE_CERT}" > ca.crt
@@ -34,5 +34,5 @@ jobs:
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
           KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
       - uses: actions/checkout@v4
-      - name: Remove preview:active label
-        run: gh pr edit ${{ github.event.pull_request.number }} --remove-label "preview: active 👀"
+      - name: "Remove preview: active label"
+        run: "gh pr edit ${{ github.event.pull_request.number }} --remove-label 'preview: active 👀'"
