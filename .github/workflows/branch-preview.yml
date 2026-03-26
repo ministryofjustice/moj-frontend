@@ -17,7 +17,7 @@ jobs:
       id-token: write
       contents: read
       pull-requests: write
-    if: contains(github.event.pull_request.labels.*.name, 'preview:request') || contains(github.event.pull_request.labels.*.name, 'preview:active')
+    if: contains(github.event.pull_request.labels.*.name, 'preview: request') || contains(github.event.pull_request.labels.*.name, 'preview: active 👀')
     steps:
       - uses: actions/checkout@v4
       - uses: aws-actions/configure-aws-credentials@v4
@@ -53,5 +53,5 @@ jobs:
         run: |
           echo -e "🚀 Deployed to preview environment! If this is the first deploy, you may have to wait a few minutes for your preview site to be ready on the following URL:\n\n https://moj-frontend-pr-${{ github.event.pull_request.number }}.apps.live.cloud-platform.service.justice.gov.uk\n\n**Username:** \`preview\`, **Password:** \`moj\`" > comment.txt
           gh pr comment ${{ github.event.pull_request.number }} --body-file comment.txt
-          gh pr edit ${{ github.event.pull_request.number }} --remove-label "preview:request"
-          gh pr edit ${{ github.event.pull_request.number }} --add-label "preview:active"
+          gh pr edit ${{ github.event.pull_request.number }} --remove-label "preview: request"
+          gh pr edit ${{ github.event.pull_request.number }} --add-label "preview: active 👀"
