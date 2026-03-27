@@ -161,7 +161,7 @@
     "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^9.2.0",
     "mock-match-media": "^1.0.2",
-    "nise": "^6.1.1",
+    "nise": "^6.1.4",
     "nodemon": "^3.1.10",
     "outdent": "^0.8.0",
     "plugin-error": "^2.0.1",
