@@ -1,0 +1,200 @@
+---
+layout: 'layouts/example.njk'
+title: Add another (example)
+redirect_from: examples/add-another/radios
+---
+
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/input/macro.njk" import govukInput -%}
+{%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+  <form method="post">
+  <h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Add benefit details</h2>
+
+  {% set templateHtml %}
+{{ govukInput({
+      id: "benefit[0][name]",
+      name: "benefit[0][name]",
+      label: {
+        text: "Name"
+      },
+      attributes: {
+        "data-name": "benefit[%index%][first_name]",
+        "data-id": "benefit[%index%][first_name]",
+        "data-label": "Name"
+      }
+    }) }}
+
+    {{ govukInput({
+      id: "benefit[0][last_name]",
+      name: "benefit[0][last_name]",
+      label: {
+        text: "Amount"
+      },
+      attributes: {
+        "data-name": "benefit[%index%][last_name]",
+        "data-id": "benefit[%index%][last_name]",
+        "data-label": "Amount"
+      }
+    }) }}
+
+    {{ govukRadios({
+      id: "date-of-birth",
+      fieldset: {
+        legend: {
+          text: "Frequency"
+        },
+        attributes: {
+          "data-legend": "Frequency"
+        }
+      },
+      items: [
+        {
+          id: "benefit[0][frequency]-weekly",
+          name: "benefit[0][frequency]",
+          value: "weekly",
+          text: "Every week",
+          attributes: {
+            "data-name": "benefit[%index%][frequency]",
+            "data-id": "benefit[%index%][frequency]-weekly"
+          }
+        },
+        {
+          id: "benefit[0][frequency]-fortnightly",
+          name: "benefit[0][frequency]",
+          value: "fortnightly",
+          text: "Every 2 weeks",
+          attributes: {
+            "data-name": "benefit[%index%][frequency]",
+            "data-id": "benefit[%index%][frequency]-fortnightly"
+          }
+        },
+        {
+          id: "benefit[0][frequency]-four-weeks",
+          name: "benefit[0][frequency]",
+          value: "every-four-weeks",
+          text: "Every 4 weeks",
+          attributes: {
+            "data-name": "benefit[%index%][frequency]",
+            "data-id": "benefit[%index%][frequency]-four-weeks"
+          }
+        },
+        {
+          id: "benefit[0][frequency]-monthly",
+          name: "benefit[0][frequency]",
+          value: "monthly",
+          text: "Monthly",
+          attributes: {
+            "data-name": "benefit[%index%][frequency]",
+            "data-id": "benefit[%index%][frequency]-monthly"
+          }
+        }
+      ]
+    }) }}
+
+
+  {% endset %}
+
+  {% call mojAddAnother({ templateHtml: templateHtml, itemLabel: "Benefit" }) %}
+  {% call govukFieldset({
+        classes: "",
+        legend: {
+          text: "Benefit",
+          classes: "moj-add-another__title govuk-fieldset__legend--m",
+          isPageHeading: false
+        }
+      }) -%}
+    {{ govukInput({
+      id: "benefit[0][name]",
+      name: "benefit[0][name]",
+      label: {
+        text: "Name"
+      },
+      attributes: {
+        "data-name": "benefit[%index%][first_name]",
+        "data-id": "benefit[%index%][first_name]",
+        "data-label": "Name"
+      }
+    }) }}
+
+    {{ govukInput({
+      id: "benefit[0][last_name]",
+      name: "benefit[0][last_name]",
+      label: {
+        text: "Amount"
+      },
+      attributes: {
+        "data-name": "benefit[%index%][last_name]",
+        "data-id": "benefit[%index%][last_name]",
+        "data-label": "Amount"
+      }
+    }) }}
+
+    {{ govukRadios({
+      id: "frequency",
+      fieldset: {
+        legend: {
+          text: "Frequency"
+        },
+        attributes: {
+          "data-legend": "Frequency"
+        }
+      },
+      items: [
+        {
+          id: "benefit[0][frequency]-weekly",
+          name: "benefit[0][frequency]",
+          value: "weekly",
+          text: "Every week",
+          attributes: {
+            "data-name": "benefit[%index%][frequency]",
+            "data-id": "benefit[%index%][frequency]-weekly"
+          }
+        },
+        {
+          id: "benefit[0][frequency]-fortnightly",
+          name: "benefit[0][frequency]",
+          value: "fortnightly",
+          text: "Every 2 weeks",
+          attributes: {
+            "data-name": "benefit[%index%][frequency]",
+            "data-id": "benefit[%index%][frequency]-fortnightly"
+          }
+        },
+        {
+          id: "benefit[0][frequency]-four-weeks",
+          name: "benefit[0][frequency]",
+          value: "every-four-weeks",
+          text: "Every 4 weeks",
+          attributes: {
+            "data-name": "benefit[%index%][frequency]",
+            "data-id": "benefit[%index%][frequency]-four-weeks"
+          }
+        },
+        {
+          id: "benefit[0][frequency]-monthly",
+          name: "benefit[0][frequency]",
+          value: "monthly",
+          text: "Monthly",
+          attributes: {
+            "data-name": "benefit[%index%][frequency]",
+            "data-id": "benefit[%index%][frequency]-monthly"
+          }
+        }
+      ]
+    }) }}
+
+    {% endcall %}
+    {% endcall %}
+
+    <div class="moj-button-action">
+      {{ govukButton({
+        text: "Submit"
+      }) }}
+    </div>
+
+  </form>
+

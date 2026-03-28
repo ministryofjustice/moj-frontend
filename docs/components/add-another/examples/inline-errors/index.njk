@@ -1,0 +1,167 @@
+---
+layout: 'layouts/example.njk'
+---
+
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/input/macro.njk" import govukInput -%}
+{%- from "govuk/components/date-input/macro.njk" import govukDateInput -%}
+{%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
+{%- from "moj/components/add-another/macro.njk" import mojAddAnotherItem -%}
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Enter last name for person 2",
+      href: "#person[1][last_name]"
+    }
+  ]
+}) }}
+
+<h2 class="govuk-heading-m govuk-label-wrapper"
+id="attendees-title">Attendees</h2>
+<p class="govuk-hint" id="attendees-hint">Provide the names of all
+attendees</p>
+
+<form method="post">
+    {% set firstItemHtml -%}
+    <div class="govuk-grid-column-one-half">
+      {{ govukInput({
+        id: "person[0][first_name]",
+        name: "person[0][first_name]",
+        label: {
+          html: "First name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 1</span>"
+        },
+        value: "John",
+        attributes: {
+          "data-name": "person[%index%][first_name]",
+          "data-id": "person[%index%][first_name]",
+          "data-label": "First name"
+        }
+      }) }}
+      </div>
+
+    <div class="govuk-grid-column-one-half">
+      {{ govukInput({
+        id: "person[0][last_name]",
+        name: "person[0][last_name]",
+        label: {
+          html: "Last name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 1</span>"
+        },
+        value: "Smith",
+        attributes: {
+          "data-name": "person[%index%][last_name]",
+          "data-id": "person[%index%][last_name]",
+          "data-label": "Last name"
+        }
+      }) }}
+      </div>
+    {% endset %}
+
+    {% set secondItemHtml -%}
+    <div class="govuk-grid-column-one-half">
+      {{ govukInput({
+        id: "person[1][first_name]",
+        name: "person[1][first_name]",
+        label: {
+          html: "First name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 2</span>"
+        },
+        attributes: {
+          "data-name": "person[%index%][first_name]",
+          "data-id": "person[%index%][first_name]",
+          "data-label": "First name"
+        }
+      }) }}
+      </div>
+
+    <div class="govuk-grid-column-one-half">
+      {{ govukInput({
+        id: "person[1][last_name]",
+        name: "person[1][last_name]",
+        classes: "govuk-input--error",
+        label: {
+          html: "Last name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 2</span>"
+        },
+        attributes: {
+          "data-name": "person[%index%][last_name]",
+          "data-id": "person[%index%][last_name]",
+          "data-label": "Last name"
+        }
+      }) }}
+      </div>
+    {%- endset -%}
+
+    {%- set thirdItemHtml -%}
+    <div class="govuk-grid-column-one-half">
+      {{ govukInput({
+        id: "person[2][first_name]",
+        name: "person[2][first_name]",
+        label: {
+          html: "First name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 3</span>"
+        },
+        attributes: {
+          "data-name": "person[%index%][first_name]",
+          "data-id": "person[%index%][first_name]",
+          "data-label": "First name"
+        }
+      }) }}
+      </div>
+
+    <div class="govuk-grid-column-one-half">
+      {{ govukInput({
+        id: "person[2][last_name]",
+        name: "person[2][last_name]",
+        label: {
+          html: "Last name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 3</span>"
+        },
+        attributes: {
+          "data-name": "person[%index%][last_name]",
+          "data-id": "person[%index%][last_name]",
+          "data-label": "Last name"
+        }
+      }) }}
+      </div>
+  {%- endset -%}
+
+  {{ mojAddAnother({
+      id: "add-attendees",
+      itemLabel: "Person",
+      layout: 'inline',
+      items: [
+        {
+          fieldset: {
+            describedBy: 'attendees-hint',
+            attributes: {
+              'aria-labelledby': 'attendees-title'
+            },
+            html: firstItemHtml
+          }
+        },
+        {
+          fieldset: {
+            describedBy: 'attendees-hint',
+            attributes: {
+              'aria-labelledby': 'attendees-title'
+            },
+            html: secondItemHtml
+          },
+          errorMessage: {
+            text: "Enter last name for person 2"
+          }
+        },
+        {
+          fieldset: {
+            describedBy: 'attendees-hint',
+            attributes: {
+              'aria-labelledby': 'attendees-title'
+            },
+            html: thirdItemHtml
+          }
+        }
+      ]
+    }) }}
+
+</form>
+

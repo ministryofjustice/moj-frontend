@@ -1,0 +1,152 @@
+---
+layout: 'layouts/example.njk'
+---
+
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/input/macro.njk" import govukInput -%}
+{%- from "govuk/components/date-input/macro.njk" import govukDateInput -%}
+{%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
+{%- from "moj/components/add-another/macro.njk" import mojAddAnotherItem -%}
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{% set firstItemHtml -%}
+  {{ govukInput({
+    id: "person[0][first_name]",
+    name: "person[0][first_name]",
+    label: {
+      html: "First name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 1</span>"
+    },
+    value: "John",
+    attributes: {
+      "data-name": "person[%index%][first_name]",
+      "data-id": "person[%index%][first_name]",
+      "data-label": "First name"
+    }
+  }) }}
+
+  {{ govukInput({
+    id: "person[0][last_name]",
+    name: "person[0][last_name]",
+    label: {
+      html: "Last name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 1</span>"
+    },
+    value: "Smith",
+    attributes: {
+      "data-name": "person[%index%][last_name]",
+      "data-id": "person[%index%][last_name]",
+      "data-label": "Last name"
+    }
+  }) }}
+{% endset %}
+
+{% set secondItemHtml -%}
+  {{ govukInput({
+    id: "person[1][first_name]",
+    name: "person[1][first_name]",
+    label: {
+      html: "First name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 2</span>"
+    },
+    errorMessage: {
+      text: "Enter first name of person 2"
+    },
+    attributes: {
+      "data-name": "person[%index%][first_name]",
+      "data-id": "person[%index%][first_name]",
+      "data-label": "First name"
+    }
+  }) }}
+
+  {{ govukInput({
+    id: "person[1][last_name]",
+    name: "person[1][last_name]",
+    label: {
+      html: "Last name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 2</span>"
+    },
+    errorMessage: {
+      text: "Enter last name of person 2"
+    },
+    attributes: {
+      "data-name": "person[%index%][last_name]",
+      "data-id": "person[%index%][last_name]",
+      "data-label": "Last name"
+    }
+  }) }}
+{%- endset -%}
+
+{%- set thirdItemHtml -%}
+  {{ govukInput({
+    id: "person[2][first_name]",
+    name: "person[2][first_name]",
+    label: {
+      html: "First name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 3</span>"
+    },
+    attributes: {
+      "data-name": "person[%index%][first_name]",
+      "data-id": "person[%index%][first_name]",
+      "data-label": "First name"
+    }
+  }) }}
+
+  {{ govukInput({
+    id: "person[2][last_name]",
+    name: "person[2][last_name]",
+    label: {
+      html: "Last name <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for person 3</span>"
+    },
+    attributes: {
+      "data-name": "person[%index%][last_name]",
+      "data-id": "person[%index%][last_name]",
+      "data-label": "Last name"
+    }
+  }) }}
+{%- endset -%}
+
+<h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Add people</h2>
+
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Enter first name for person 2",
+      href: "#person[1][first_name]"
+    },
+    {
+      text: "Enter last name for person 2",
+      href: "#person[1][last_name]"
+    }
+  ]
+}) }}
+
+<form method="post">
+  {{ mojAddAnother({
+    itemLabel: "Person",
+    items: [
+      {
+        fieldset: {
+          legend: {
+            text: "Person 1"
+          },
+          html: firstItemHtml
+        }
+      },
+      {
+        fieldset: {
+          legend: {
+            text: "Person 2"
+          },
+          html: secondItemHtml
+        }
+      },
+      {
+        fieldset: {
+          legend: {
+            text: "Person 3"
+          },
+          html: thirdItemHtml
+        }
+      }
+    ]
+  }) }}
+</form>
+
