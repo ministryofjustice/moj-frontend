@@ -1,0 +1,16 @@
+.example__fields-row {
+  display: flex;
+  gap: 20px;
+
+  & > :first-child {
+    flex: 1 1 100%;
+  }
+
+  & > :nth-child(2) {
+    flex: 1 0 auto;
+  }
+
+  & > :last-child {
+    align-self: flex-end;
+  }
+}
