@@ -1,0 +1,5 @@
+{
+  "componentName": "Do and don't list",
+  "componentOverview": "Do and don't list are a set of panels that list out 'do' and 'do not' criteria using check marks and crosses as icons instead of bullet points. This component is derived from the NHS equivalent https://service-manual.nhs.uk/design-system/components/do-and-dont-lists",
+  "howIsTheComponentUsed": "We used this component in our service to support users with more visual guidance to help them check if a conviction should be added to the service"
+}
