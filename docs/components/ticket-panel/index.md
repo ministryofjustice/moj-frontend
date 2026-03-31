@@ -21,9 +21,9 @@ Don’t use this component if the information you wish to present can fit comfor
 
 This component is essentially a container that can hold html, in most cases, a title and some paragraph text. It is intended to be flexible, so can contain columns, buttons, links, and a status badge if required.
 
-The border on the left can be used to reinforce the status when used with a [status tag](https://design-system.service.gov.uk/components/tag/) or [badge](/components/badge/). For example, if the ticket panel contains a red status badge with the text ‘cancelled’, the left border can be made red to draw attention to this information.
+The border on the left can be used to reinforce the status when used with a [GOV.UK tag component](https://design-system.service.gov.uk/components/tag/) or [badge component](/components/badge/). For example, if the ticket panel contains a red status badge with the text ‘cancelled’, the left border can be made red to draw attention to this information.
 
-It can be used to display information in full width panels or columns of upto four panels per row.
+It can be used to display information in full width panels or columns of up to 4 panels per row.
 
 ## Arguments
 
