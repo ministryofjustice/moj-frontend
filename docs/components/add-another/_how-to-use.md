@@ -9,9 +9,9 @@ eleventyComputed:
 
 ## How to use
 
-The ['add another' component](/components/add-another/#overview-tab) has 2 layouts -- stacked and inline. The stacked layout is the default, so you'll need to pass the inline layout to use it.   
+The 'add another' component has 2 layouts -- stacked and inline. The stacked layout is the default, so you'll need to pass the inline layout to use it.   
 
-### Writing content
+### Content for the component
 
 You need to give each 'add another' component a heading and item label.
 
@@ -19,11 +19,11 @@ You need to give each 'add another' component a heading and item label.
 
 Add an H2 above the component to give your page the correct heading structure. You can view [page layout examples with the 'add another' component](/components/add-another/#examples-tab). 
 
-#### Item names
+#### Item labels
 
-The item name should be short and succinct. For example person, room, date, income or session. 
+Give the item a short and succinct name. For example person, room, date, income or session. 
 
-This name will be used in the:
+The name will be used in the:
 
 - item title (in sentence case) 
 - form field titles (in hidden text)
@@ -31,6 +31,9 @@ This name will be used in the:
 - error messages (in lower case)
 
 The items are numbered 1,2,3,4 and so on.  
+
+
+INSERT ANNOTATED DIAGRAM
 
 <table class="govuk-table">
   <caption class="govuk-table__caption govuk-table__caption--m">Content for the item name ‘referral’</caption>
@@ -59,18 +62,24 @@ The items are numbered 1,2,3,4 and so on.
     </tr>
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__header">All form fields</th>
-      <td class="govuk-table__cell">Both variants</th>
+      <td class="govuk-table__cell">Both</th>
       <td class="govuk-table__cell">Hidden</td>
       <td class="govuk-table__cell">Step 1, date 1</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Remove button</th>
+      <th scope="row" class="govuk-table__header">'Add another' button</th>
+      <td class="govuk-table__cell">Both</th>
+      <td class="govuk-table__cell">Visible</td>
+      <td class="govuk-table__cell">'Add another' referral</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">'Remove' button</th>
       <td class="govuk-table__cell">Stacked</th>
       <td class="govuk-table__cell">Visible</td>
       <td class="govuk-table__cell">Remove referral 1</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Remove button</th>
+      <th scope="row" class="govuk-table__header">'Remove' button</th>
       <td class="govuk-table__cell">Inline</th>
       <td class="govuk-table__cell">Hidden</td>
       <td class="govuk-table__cell">Remove referral 1</td>
@@ -84,20 +93,22 @@ The items are numbered 1,2,3,4 and so on.
   </tbody>
 </table> 
 
-### The ‘remove’ button
+### The ‘Remove’ button
 
-The remove button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). Do not change the button colour as users may confuse it with the ‘add another' button (which it is sometimes next to). 
+The remove button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). Do not change the button colour as users may confuse it with the ‘Add another' button (which it is sometimes next to). 
 
 Do not change the button position, as this may make it harder for zoom users to use the component.
 
 ### Inline layout
 
-You should add no more than 3 fields to the inline layout (the remove button is not included in the 3 items). This is because the layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system). 
+You should add no more than 3 fields to the inline layout (not including the 'remove' button). This ensures that the component is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which cannot contain more than 4 fields.
 
 You can only add the following components to the inline layout:
 
-the [GOV.UK text input](https://design-system.service.gov.uk/components/text-input/)
-the [GOV.UK select component](https://design-system.service.gov.uk/components/select/) 
+- the [GOV.UK text input](https://design-system.service.gov.uk/components/text-input/)
+- the [GOV.UK select component](https://design-system.service.gov.uk/components/select/) 
+
+Do not add radio buttons to it.
 
 All the items and field labels need to fit on 1 line. You can read [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs). 
 
@@ -105,9 +116,9 @@ All the items and field labels need to fit on 1 line. You can read [GOV.UK guida
 
 ### Use with JavaScript
 
-The add another component relies on JavaScript.  
+The 'add another' component relies on JavaScript.  
 
-Set up your service that if JavaScript is not available the page will reload with the additional form elements after the ‘add another’ button is selected. 
+Set up your service so that when JavaScript is not available, the page will reload with the additional form elements after the ‘add another’ button is selected. 
 
 ### Error messages
 
@@ -119,7 +130,7 @@ Follow the [GOV.UK Design System guidance on error messages](https://design-syst
 
 Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/). Once the user has resolved all the errors in the first item, display the next set. This should continue until all the errors are resolved.  
 
-This set-up ensures that users can still identify their errors if an item is added or removed. 
+This ensures that users can still identify their errors if an item is added or removed. 
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
@@ -130,11 +141,11 @@ This set-up ensures that users can still identify their errors if an item is add
   </thead>
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">No value is entered to a field</th>
+      <th scope="row" class="govuk-table__header">No value is added to a field</th>
       <td class="govuk-table__cell">Enter a name for Person 1</td>
     </tr>
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">No values are entered to an item</th>
+      <th scope="row" class="govuk-table__header">No values are added to an item</th>
       <td class="govuk-table__cell">Enter details for Person 1</td>
     </tr>
   </tbody>
@@ -142,13 +153,13 @@ This set-up ensures that users can still identify their errors if an item is add
 
 ### Using multiple ‘add another‘ components
 
-You can put more than 1 add another on a page but be aware of how this will affect the length and complexity of the page. 
+You can put more than 1 'add another' component on a page but be aware of how this will affect the length and complexity of the page. 
 
-However do not put an 'add another' component inside another one, for example to enable users to add items to subsections. Screenreaders may not announce that another component has been added, and it may maker the page harder to use for everyone. 
+However do not put an 'add another' component inside another one, for example to enable users to add items to subsections. Screenreaders may not announce that another component has been added, and it may make the page harder to use for everyone. 
 
 ### Other parts of the page
 
-When people use this component, it will make pages longer and more complex. Therefore it’s best to not add too much else to the page. A leaner page will also make it easier for users to identify -- and recover from -- errors.
+When users interact with this component, pages will get longer and more complex. Therefore it’s best to not add too much else to the page. A leaner page will also make it easier for users to identify -- and recover from -- errors.
 
 ### Screens after the component  
 
