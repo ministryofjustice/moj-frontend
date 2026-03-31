@@ -10,19 +10,17 @@ eleventyComputed:
 
 ## Overview
 
-The ‘add another’ component allows users to add similar information to a page a few times. 
+The ‘add another’ component allows users to add more than 1 instance of related information to a page. It does this by reproducing the field labels.
 
 ## When to use
 
-This component works best in a shallow layout for users to enter brief information about items, ideally only a few times. 
+This component works best in a shallow layout for users to enter brief information, ideally only a few times. 
 
-The items could be:
+The things that people add ('items') could be:
 
--	the names of people, programmes, events or offences
 -	dates
+-	the names of people, programmes, events or offences
 - numbers, for example payments and their amounts
-
-The component reproduces the field labels -- so the items need to relate to one another. 
 
 ## When not to use
 
@@ -55,31 +53,30 @@ This layout has visible labels to helps users:
 
 Hidden text in the labels helps screenreader users to navigate the component. 
 
-#### When the ‘Add another’ button is selected, the title changes from 'Participant 1' to ‘Participant 1 of 2’. A red remove button with the same labelling (‘Remove Participant 1’) appears under the item. 
+#### When the ‘Add another’ button is selected, the title changes from 'Participant 1' to ‘Participant 1 of 2’. A red 'Remove' button with the same labelling (‘Remove Participant 1’) appears under the item. 
 
 {% example template="examples/stacked", colocated="true", height=540 %}
 
 ### Inline
 
-The inline (or horizontal) layout is a lean design for up to 3 fields. You might want to use when:
+The inline (or horizontal) layout is a lean design for up to 3 fields. You might want to use this layout:
 
-- you need to save vertical space in the page design
-- users need to add a lot of items
-- the component needs to be placed in 2 or more areas of the page 
+- to save vertical space in the page design
+- for users need to add a lot of items
+- if the component needs to be placed in multiple areas of the page 
+- if it makes sense for users to view their items in a rows and columns
 
-The input labels are visible, and the item number is in hidden text.   
+The input labels are visible, and the item number (for example 'Bank name 1') is in hidden text.   
 
-After the ‘Add another’ button is selected, a red 'remove' button appears to the right of the last field.  
+After the ‘Add another’ button is selected, a red 'Remove' button appears to the right of the last field.  
 
 {% example template="examples/inline-accounts", colocated="true", height=540 %}
 
 ### Things to consider
 
-When you're exploring the 'add another' component, find out where the information is coming from that people need to enter. For example a paper form, notes, a spreadsheet or legacy software. This will affect how people need to use it. 
+Find out where the information is coming from that people need to enter in the component. For example a paper form, notes, a spreadsheet or legacy software. This will affect how people need to use it. 
 
-The [‘add to a list’ pattern](/patterns/add-to-a-list/) is similar to the 'add another' component. It may be more appropriate for helping users to add a lot of items. 
-
-If you expect that users will need to add more, complex items later on it might be better to start with the ‘add to a list’ pattern. Switching from the 'add another' component to the pattern involves redesigning the user journey.
+The [‘add to a list’ pattern](/patterns/add-to-a-list/) is similar to the 'add another' component. The pattern may be more appropriate for helping users to add a lot of items. If you expect that users will need to add more items later on it might be better to start with the ‘add to a list’ pattern. Switching from the 'add another' component to the pattern involves redesigning the user journey.
 
 ### Similar or linked components
 
