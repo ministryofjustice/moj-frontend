@@ -11,7 +11,7 @@ lede: "Use the sortable table component to let users sort columns in ascending o
 
 Use the sortable table component to let users sort columns in ascending or descending order.
 
-Use this component when sorting is needed to help find data within a large table of data. This might be useful in combination with the [filter](/patterns/filter-a-list/) pattern.
+Use this component when sorting is needed to help find data within a large table of data. This might be useful to combine with the [filter pattern](/patterns/filter-a-list/).
 
 ## How to use
 

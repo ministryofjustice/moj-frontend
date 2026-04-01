@@ -12,7 +12,7 @@ lede: "Use the scrollable pane component when you have content (typically a tabl
 
 Use the scrollable pane component when you have content (typically a table) which unavoidably overflows the page. It adds scroll shadows to indicate that content overflows the page.
 
-This is often used in the [filter a list](/patterns/filter-a-list/) pattern as the filter takes up additional horizontal space, causing the pane holding the table to shrink.
+This is often used in the [filter a list pattern](/patterns/filter-a-list/) as the filter takes up additional horizontal space, causing the pane holding the table to shrink.
 
 ## When not to use
 

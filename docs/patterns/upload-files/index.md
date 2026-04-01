@@ -32,7 +32,7 @@ How you help users upload files depends on whether they need to upload:
 
 ### Help users upload a single file
 
-Use the [file upload component in the GOV.UK Design System](https://design-system.service.gov.uk/components/file-upload/) to let users upload a single file.
+Use the [GOV.UK file upload component](https://design-system.service.gov.uk/components/file-upload/) to let users upload a single file.
 
 {% example template="examples/default", colocated=true, height=350 %}
 
