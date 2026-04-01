@@ -55,9 +55,6 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Ensure we are on the PR branch (actions/checkout sets it up already, but this is defensive)
-          git checkout "${BRANCH}"
-
           if [[ -z "$(git status --porcelain)" ]]; then
             echo "No lint fixes to commit."
             exit 0
