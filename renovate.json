@@ -23,7 +23,7 @@
       ]
     },
     {
-      "addLabels": ["preview:request"],
+      "addLabels": ["preview: request"],
       "groupName": "Documentation",
       "matchPackageNames": [
         "@11ty/eleventy",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "addLabels": ["preview:request"],
+      "addLabels": ["preview: request"],
       "groupName": "Release",
       "matchPackageNames": [
         "@commitlint/*",
@@ -56,7 +56,7 @@
       ]
     },
     {
-      "addLabels": ["preview:request"],
+      "addLabels": ["preview: request"],
       "groupName": "Production",
       "matchDepTypes": ["dependencies", "peerDependencies"]
     },
