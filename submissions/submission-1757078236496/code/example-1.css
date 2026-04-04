@@ -1,0 +1,361 @@
+//
+// For guidance on how to add CSS and SCSS see:
+// https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
+// 
+
+// Add extra styles here
+
+
+@import "hmpps/global"; // styles that affect all screens - mainly screen width
+@import "hmpps/index"; // Prototpye index page styles
+@import "hmpps/capacity"; // components used to display capacity info
+@import "hmpps/case"; // case-specific styles
+@import "hmpps/team-view"; // rules for the team overview screens
+@import "hmpps/filter"; // bespoke ules for the team filter
+@import "components/summary-card";
+@import "components/option-select";
+@import "components/cards";
+@import "components/filter-cases";
+
+// Risk scores styling from ARN
+@import "risk/predictor-scores";
+@import "risk/widgets";
+@import "risk/timeline";
+
+.gem-c-feedback {
+    background: #fff;
+    margin-top: 30px
+}
+
+@media (min-width: 48.0625em) {
+    .gem-c-feedback {
+        margin-top:60px
+    }
+}
+
+@media (max-width: 40.0525em) {
+    .gem-c-feedback {
+        margin-right:-15px;
+        margin-left: -15px
+    }
+}
+
+@media (min-width: 40.0625em) and (max-width: 48.0525em) {
+    .gem-c-feedback {
+        margin-right:-30px;
+        margin-left: -30px
+    }
+}
+
+.gem-c-feedback [hidden] {
+    display: none !important
+}
+
+.gem-c-feedback__prompt {
+    background-color: #f3f2f1;
+    color: #0b0c0c;
+    border-top: 1px solid #b1b4b6;
+    outline: 0
+}
+
+.gem-c-feedback__prompt-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px
+}
+
+@media (min-width: 40.0625em) {
+    .gem-c-feedback__prompt-content {
+        flex-direction:row;
+        align-items: center;
+        justify-content: space-between
+    }
+}
+
+.gem-c-feedback__prompt-questions {
+    text-align: left;
+    padding: 20px 0
+}
+
+@media (min-width: 40.0625em) {
+    .gem-c-feedback__prompt-questions {
+        margin:0 15px
+    }
+}
+
+.gem-c-feedback__prompt-questions--something-is-wrong {
+    border-top: 1px solid #b1b4b6
+}
+
+@media (min-width: 40.0625em) {
+    .gem-c-feedback__prompt-questions--something-is-wrong {
+        border:0
+    }
+}
+
+.gem-c-feedback__prompt-question-answer {
+    display: flex;
+    align-items: center
+}
+
+@media (max-width: 19.99em) {
+    .gem-c-feedback__prompt-question-answer {
+        justify-content:center;
+        flex-wrap: wrap
+    }
+}
+
+.gem-c-feedback__prompt-question,.gem-c-feedback__prompt-success {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25
+}
+
+@media print {
+    .gem-c-feedback__prompt-question,.gem-c-feedback__prompt-success {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .gem-c-feedback__prompt-question,.gem-c-feedback__prompt-success {
+        font-size:19px;
+        font-size: 1.1875rem;
+        line-height: 1.3157894737
+    }
+}
+
+@media print {
+    .gem-c-feedback__prompt-question,.gem-c-feedback__prompt-success {
+        font-size: 14pt;
+        line-height: 1.15
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .gem-c-feedback__prompt-question,.gem-c-feedback__prompt-success {
+        font-family:"GDS Transport", arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-weight: 700;
+        font-size: 14px;
+        font-size: .875rem;
+        line-height: 1.1428571429
+    }
+}
+
+@media print and (min-width: 40.0625em) {
+    .gem-c-feedback__prompt-question,.gem-c-feedback__prompt-success {
+        font-family:sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) and (min-width: 40.0625em) {
+    .gem-c-feedback__prompt-question,.gem-c-feedback__prompt-success {
+        font-size:16px;
+        font-size: 1rem;
+        line-height: 1.25
+    }
+}
+
+@media print and (min-width: 40.0625em) {
+    .gem-c-feedback__prompt-question,.gem-c-feedback__prompt-success {
+        font-size:14pt;
+        line-height: 1.2
+    }
+}
+
+.gem-c-feedback__prompt-question {
+    margin: 0;
+    padding-bottom: 10px
+}
+
+.gem-c-feedback__prompt-question:focus {
+    outline: 0
+}
+
+@media (min-width: 20em) {
+    .gem-c-feedback__prompt-question {
+        padding-bottom:0;
+        margin-right: 10px
+    }
+}
+
+@media (min-width: 48.0625em) {
+    .gem-c-feedback__prompt-question {
+        margin-right:20px
+    }
+}
+
+.gem-c-feedback__prompt-link {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    background: transparent;
+    color: #0b0c0c;
+    box-shadow: 0 3px 0 #0b0c0c;
+    border: 1px #0b0c0c solid;
+    margin-bottom: 0;
+    width: 100%
+}
+
+@media print {
+    .gem-c-feedback__prompt-link {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .gem-c-feedback__prompt-link {
+        font-size:19px;
+        font-size: 1.1875rem;
+        line-height: 1.3157894737
+    }
+}
+
+@media print {
+    .gem-c-feedback__prompt-link {
+        font-size: 14pt;
+        line-height: 1.15
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .gem-c-feedback__prompt-link {
+        font-family:"GDS Transport", arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-weight: 400;
+        font-size: 14px;
+        font-size: .875rem;
+        line-height: 1.1428571429
+    }
+}
+
+@media print and (min-width: 40.0625em) {
+    .gem-c-feedback__prompt-link {
+        font-family:sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) and (min-width: 40.0625em) {
+    .gem-c-feedback__prompt-link {
+        font-size:16px;
+        font-size: 1rem;
+        line-height: 1.25
+    }
+}
+
+@media print and (min-width: 40.0625em) {
+    .gem-c-feedback__prompt-link {
+        font-size:14pt;
+        line-height: 1.2
+    }
+}
+
+.gem-c-feedback__prompt-link:focus,.gem-c-feedback__prompt-link:focus:not(:active):not(:hover) {
+    background: #fd0;
+    border-color: #0b0c0c;
+    box-shadow: 0 5px 0 #0b0c0c
+}
+
+.gem-c-feedback__prompt-link:active {
+    color: #0b0c0c
+}
+
+.gem-c-feedback__prompt-link:hover {
+    background: #b1b4b6;
+    color: #0b0c0c
+}
+
+.gem-c-feedback__prompt-link:link,.gem-c-feedback__prompt-link:visited {
+    color: #0b0c0c
+}
+
+.gem-c-feedback__prompt-link:link:focus,.gem-c-feedback__prompt-link:link:active,.gem-c-feedback__prompt-link:visited:focus,.gem-c-feedback__prompt-link:visited:active {
+    color: #0b0c0c
+}
+
+.gem-c-feedback__option-list {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+
+.gem-c-feedback__option-list-item:last-child {
+    margin-left: 10px
+}
+
+@media (min-width: 48.0625em) {
+    .gem-c-feedback__option-list-item:last-child {
+        margin-left:20px
+    }
+}
+
+.gem-c-feedback__option-list-item .gem-c-feedback__prompt-link {
+    min-width: 100px
+}
+
+@media (max-width: 48.0525em) {
+    .gem-c-feedback__option-list-item .gem-c-feedback__prompt-link {
+        min-width:80px
+    }
+}
+
+.gem-c-feedback__error-summary {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: solid 4px #d4351c;
+    clear: both
+}
+
+.gem-c-feedback__error-summary:focus {
+    outline: solid 3px #fd0
+}
+
+@media (min-width: 48.0625em) {
+    .gem-c-feedback__error-summary {
+        border-width:5px
+    }
+}
+
+.gem-c-feedback__error-summary h2 {
+    color: #0b0c0c;
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 1.1111111111;
+    margin: 0 0 15px 0
+}
+
+@media print {
+    .gem-c-feedback__error-summary h2 {
+        color: #000
+    }
+}
+
+@media print {
+    .gem-c-feedback__error-summary h2 {
+        font-family: sans-serif
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .gem-c-feedback__error-summary h2 {
+        font-size:24px;
+        font-size: 1.5rem;
+        line-height: 1.25
+    }
+}
