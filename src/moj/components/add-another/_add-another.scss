@@ -5,40 +5,93 @@
    ========================================================================== */
 
 .moj-add-another {
+  margin-bottom: govuk-spacing(8);
+
   &__item {
     position: relative;
     margin: 0;
     margin-top: govuk-spacing(6);
+    margin-bottom: govuk-spacing(4);
     padding: 0;
+
+    &:focus {
+      // @include govuk-focused-box;
+    }
 
     &:first-of-type {
       margin-top: 0;
     }
   }
 
-  &__title {
-    width: 100%;
-    padding: 4px 100px 4px 0;
-    float: left;
-
-    & + .govuk-form-group {
-      clear: left;
-    }
-  }
-
-  &__remove-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: auto;
+  &__item-container {
+    border-bottom: 2px solid govuk-colour("black", $variant: "tint-25");
   }
 
   &__add-button {
     display: block;
   }
+
+  /* &__remove-button { */
+
+  /*   color: #ca3535; // govuk 6 primary/error red */
+
+  /*  */
+
+  /*   &:hover { */
+
+  /*     color: #982828; // red shade 25 */
+
+  /*   } */
+
+  /*  */
+
+  /*   &:focus { */
+
+  /*     color: $govuk-focus-text-colour; */
+
+  /*   } */
+
+  /* } */
 }
 
-.moj-add-another__heading:focus {
+.moj-add-another__item--inline {
+  @include govuk-media-query($from: "tablet") {
+    margin-top: 0;
+    margin-bottom: govuk-spacing(6);
+    border-bottom: none;
+
+    .moj-add-another__item-container {
+      display: flex;
+      gap: govuk-spacing(6);
+      justify-content: space-between;
+      border-bottom: none;
+    }
+
+    .moj-add-another__item-row {
+      flex: 1 1 auto;
+    }
+
+    .govuk-form-group {
+      margin-bottom: 0;
+    }
+
+    .moj-add-another__remove-button-container {
+      flex: 1 0 100px;
+      align-self: flex-end;
+    }
+
+    .moj-add-another__remove-button {
+      margin-bottom: 2px;
+    }
+  }
+}
+
+.moj-add-another__item--inline.moj-add-another__item--error {
+  padding-left: govuk-spacing(4);
+  border-left: 5px solid govuk-functional-colour("error");
+}
+
+.moj-add-another__title:focus {
   outline: none;
   color: govuk-functional-colour(focus-text);
   background-color: govuk-functional-colour(focus);
