@@ -5,7 +5,7 @@ module.exports = {
     '<rootDir>/public/'
   ],
 
-  setupFilesAfterEnv: ['./jest.setup.js', 'jest-sinon'],
+  setupFilesAfterEnv: ['./jest.setup.js'],
   testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/**/*.spec.{js,mjs}'],
   // Ignore component tests that require playwright runner

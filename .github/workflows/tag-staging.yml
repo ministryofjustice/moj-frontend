@@ -19,17 +19,17 @@ jobs:
       pull-requests: write
     if: ${{ github.event.label.name == 'staging:request' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - name: Remove active labels from other PRs
         run: |
           for number in $(gh pr list --label "staging:active" --json number | jq -r '.[].number'); do
           gh pr edit ${number} --remove-label "staging:active"
           done
-      - uses: aws-actions/configure-aws-credentials@v4
+      - uses: aws-actions/configure-aws-credentials@e7f100cf4c008499ea8adda475de1042d6975c7b # v6.2.0
         with:
           role-to-assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.ECR_REGION }}
-      - uses: aws-actions/amazon-ecr-login@v2
+      - uses: aws-actions/amazon-ecr-login@d539f0932e70871a027e9d5a9d8fc38589180a64 # v2.1.6
         id: login-ecr
       - run: |
           docker build --target=staging -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .

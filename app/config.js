@@ -1,14 +1,14 @@
 const config = {
   GITHUB_API_URL: process.env.GITHUB_API_URL || 'https://api.github.com',
-  GITHUB_API_TOKEN: process.env.GITHUB_API_TOKEN || 'your-default-github-token',
-  GITHUB_REPO_OWNER: process.env.GITHUB_REPO_OWNER || 'your-default-repo-owner',
-  GITHUB_REPO_NAME: process.env.GITHUB_REPO_NAME || 'your-default-repo-name',
+  GITHUB_API_TOKEN: process.env.GITHUB_API_TOKEN,
+  GITHUB_REPO_OWNER: process.env.GITHUB_REPO_OWNER,
+  GITHUB_REPO_NAME: process.env.GITHUB_REPO_NAME,
   NOTIFY_PR_TEMPLATE: process.env.NOTIFY_PR_TEMPLATE || '',
   NOTIFY_SUBMISSION_TEMPLATE: process.env.NOTIFY_SUBMISSION_TEMPLATE || '',
   NOTIFY_SUCCESS_TEMPLATE: process.env.NOTIFY_SUCCESS_TEMPLATE || '',
   NOTIFY_VERIFICATION_TEMPLATE: process.env.NOTIFY_VERIFICATION_TEMPLATE || '',
   NOTIFY_EMAIL: process.env.NOTIFY_EMAIL || 'your-email',
-  NOTIFY_TOKEN: process.env.NOTIFY_TOKEN || 'your-default-repo-token',
+  NOTIFY_TOKEN: process.env.NOTIFY_TOKEN,
   NOTIFY_EMAIL_RETRY_MS:
     parseInt(process.env.NOTIFY_EMAIL_RETRY_MS, 10) || 5000,
   NOTIFY_EMAIL_MAX_RETRIES:
@@ -18,7 +18,7 @@ const config = {
   REDIS_URL: process.env.REDIS_URL,
   REDIS_AUTH_TOKEN: process.env.REDIS_AUTH_TOKEN,
   REDIS_PORT: parseInt(process.env.REDIS_PORT, 10) || 6379,
-  SESSION_SECRET: process.env.SESSION_SECRET || 'your-secret-key',
+  SESSION_SECRET: process.env.SESSION_SECRET,
   ENV: process.env.ENV || 'development',
   SENTRY_DSN: process.env.SENTRY_DSN,
   SENTRY_CSP_REPORT_URI: process.env.SENTRY_CSP_REPORT_URI || '',
@@ -29,6 +29,13 @@ const config = {
     'justice.gov.uk',
     'publicguardian.gov.uk'
   ],
+  ALLOWED_COMPONENT_IMAGE_MIME_TYPES: new Set([
+    'image/jpeg',
+    'image/bmp',
+    'image/png',
+    'image/tiff',
+    'application/pdf'
+  ]),
   HTML_SANITIZATION_OPTIONS: {
     allowedTags: [
       // Document structure
@@ -473,7 +480,8 @@ const config = {
   DOCUMENT_KEYS: [],
   ADD_NEW_COMPONENT_ROUTE: '/contribute/add-new-component',
   MAX_ADD_ANOTHER: 10,
-  GITHUB_ISSUE_ASSIGNEE_USERNAMES: ['chrispymm', 'helennickols', 'murrlipp'],
+  GITHUB_ISSUE_ASSIGNEE_USERNAMES: ['chrispymm', 'helennickols'],
+  GITHUB_PR_LABELS: ['type: contribution 🎁', 'preview: request'],
   SESSION_KEYS_TO_IGNORE: [
     'cookie',
     'csrfToken',
@@ -503,6 +511,12 @@ const config = {
       type: 'success',
       title: 'Your email address has been confirmed',
       text: 'You can now submit a component'
+    },
+    uploadFileTooLarge: {
+      text: 'The selected file must be smaller than 10MB'
+    },
+    uploadFileInvalidType: {
+      text: 'The selected file must be a JPG, BMP, PNG, TIF or PDF'
     },
     componentImageUploaded: (filename) => {
       return {

@@ -22,7 +22,9 @@ const {
   removeFromSession,
   sessionStarted,
   sessionVerified,
-  validateFormDataFileUpload,
+  validateFormDataFileSignature,
+  validateFormDataFileSize,
+  validateFormDataFileType,
   validateComponentImagePage,
   saveFileToRedis,
   clearSkippedPageData,
@@ -420,6 +422,7 @@ describe('removeFromSession', () => {
       session: {}
     }
     res = {
+      status: jest.fn().mockReturnThis(),
       end: jest.fn()
     }
     next = jest.fn()
@@ -464,7 +467,8 @@ describe('removeFromSession', () => {
 
       removeFromSession(req, res, next)
 
-      expect(res.end).toHaveBeenCalledWith(403)
+      expect(res.status).toHaveBeenCalledWith(403)
+      expect(res.end).toHaveBeenCalled()
       expect(next).not.toHaveBeenCalled()
     })
 
@@ -473,7 +477,8 @@ describe('removeFromSession', () => {
 
       removeFromSession(req, res, next)
 
-      expect(res.end).toHaveBeenCalledWith(403)
+      expect(res.status).toHaveBeenCalledWith(403)
+      expect(res.end).toHaveBeenCalled()
       expect(next).not.toHaveBeenCalled()
     })
 
@@ -482,7 +487,8 @@ describe('removeFromSession', () => {
 
       removeFromSession(req, res, next)
 
-      expect(res.end).toHaveBeenCalledWith(403)
+      expect(res.status).toHaveBeenCalledWith(403)
+      expect(res.end).toHaveBeenCalled()
       expect(next).not.toHaveBeenCalled()
     })
   })
@@ -649,7 +655,7 @@ describe('saveSession', () => {
 
       saveSession(req, res, next)
 
-      expect(getHashedUrl).toHaveBeenCalledWith('/test-url')
+      expect(getHashedUrl).toHaveBeenCalledWith('/test-path')
       expect(req.session['/test-path']).toEqual({
         field1: 'value1',
         uploadedFile: {
@@ -680,6 +686,25 @@ describe('saveSession', () => {
         }
       })
       expect(req.session['/test-path']._csrf).toBeUndefined()
+      expect(next).toHaveBeenCalled()
+    })
+
+    it('should use the saved Redis key from upload middleware when present', () => {
+      req.file = {
+        fieldname: 'componentImage',
+        originalname: 'photo.jpg'
+      }
+      req.savedRedisKey = 'file:stable-key:test-session-id:componentImage'
+
+      saveSession(req, res, next)
+
+      expect(getHashedUrl).not.toHaveBeenCalled()
+      expect(req.session['/test-path']).toEqual({
+        componentImage: {
+          originalname: 'photo.jpg',
+          redisKey: 'file:stable-key:test-session-id:componentImage'
+        }
+      })
       expect(next).toHaveBeenCalled()
     })
   })
@@ -730,7 +755,7 @@ describe('getFormDataFromSession', () => {
     jest.restoreAllMocks()
   })
   test('it sets formData on request', () => {
-    req.url = '/page'
+    req.path = '/page'
     req.session = { '/page': { key: 'value' } }
     getFormDataFromSession(req, res, next)
 
@@ -739,14 +764,14 @@ describe('getFormDataFromSession', () => {
     expect(next).toHaveBeenCalled()
   })
   it('handles no session', () => {
-    req.url = '/page'
+    req.path = '/page'
     getFormDataFromSession(req, res, next)
     expect(req).toHaveProperty('formData')
     expect(req.formData).toStrictEqual({})
     expect(next).toHaveBeenCalled()
   })
   it('handles no url key on sesssion', () => {
-    req.url = '/page1'
+    req.path = '/page1'
     req.session = { '/page2': { key: 'value' } }
     getFormDataFromSession(req, res, next)
 
@@ -828,6 +853,7 @@ describe('saveFileToRedis middleware', () => {
   beforeEach(() => {
     req = {
       session: {},
+      path: '/test-path',
       url: '/test-url',
       sessionID: 'test-session-123'
     }
@@ -884,7 +910,7 @@ describe('saveFileToRedis middleware', () => {
         mimetype: 'application/pdf'
       })
 
-      expect(getHashedUrl).toHaveBeenCalledWith('/test-url')
+      expect(getHashedUrl).toHaveBeenCalledWith('/test-path')
       expect(redis.set).toHaveBeenCalledWith(
         expectedRedisKey,
         expectedData,
@@ -892,6 +918,7 @@ describe('saveFileToRedis middleware', () => {
         24 * 60 * 60
       )
       expect(req.session.uploadedFile).toBe(expectedRedisKey)
+      expect(req.savedRedisKey).toBe(expectedRedisKey)
       expect(console.log).toHaveBeenCalledWith(
         `[Redis] File saved with key: ${expectedRedisKey}`
       )
@@ -1260,7 +1287,7 @@ describe('validateFormData', () => {
   })
 })
 
-describe('validateFormDataFileUpload', () => {
+describe('validateFormDataFileSize', () => {
   let req, res, next
   beforeEach(() => {
     req = {}
@@ -1273,17 +1300,17 @@ describe('validateFormDataFileUpload', () => {
   })
   it('calls next if no error', () => {
     const err = undefined
-    validateFormDataFileUpload(err, req, res, next)
+    validateFormDataFileSize(err, req, res, next)
     expect(next).toHaveBeenCalled()
   })
-  it('calls next if error code is not LIMIT_FILE_SIZE', () => {
+  it('passes error through if error code is not LIMIT_FILE_SIZE', () => {
     const err = {
       code: 'AN_ERROR'
     }
-    validateFormDataFileUpload(err, req, res, next)
-    expect(next).toHaveBeenCalled()
+    validateFormDataFileSize(err, req, res, next)
+    expect(next).toHaveBeenCalledWith(err)
   })
-  it('renders the template with errors', () => {
+  it('renders the template with size limit errors', () => {
     const err = {
       code: 'LIMIT_FILE_SIZE',
       field: 'componentImage'
@@ -1322,7 +1349,119 @@ describe('validateFormDataFileUpload', () => {
       submitUrl: undefined
     }
 
-    validateFormDataFileUpload(err, req, res, next)
+    validateFormDataFileSize(err, req, res, next)
+
+    expect(res.status).toHaveBeenCalledWith(400)
+    expect(res.render).toHaveBeenCalledWith('component-image', expectedArgs)
+    expect(next).not.toHaveBeenCalled()
+  })
+})
+
+describe('validateFormDataFileSignature', () => {
+  let req, res, next
+  beforeEach(() => {
+    req = {}
+    res = {}
+    next = jest.fn()
+    jest.clearAllMocks()
+  })
+
+  it('calls next when no file is present', () => {
+    validateFormDataFileSignature(req, res, next)
+    expect(next).toHaveBeenCalledWith()
+  })
+
+  it('calls next when file signature is valid', () => {
+    req.file = {
+      fieldname: 'componentImage',
+      mimetype: 'image/jpeg',
+      buffer: Buffer.from([0xff, 0xd8, 0xff, 0xdb])
+    }
+
+    validateFormDataFileSignature(req, res, next)
+
+    expect(next).toHaveBeenCalledWith()
+  })
+
+  it('passes a LIMIT_FILE_TYPE error when file signature is invalid', () => {
+    req.file = {
+      fieldname: 'componentImage',
+      mimetype: 'image/jpeg',
+      buffer: Buffer.from('# Not an image\nSome markdown text', 'utf8')
+    }
+
+    validateFormDataFileSignature(req, res, next)
+
+    const [error] = next.mock.calls[0]
+    expect(error).toBeInstanceOf(Error)
+    expect(error.code).toBe('LIMIT_FILE_TYPE')
+    expect(error.field).toBe('componentImage')
+  })
+})
+
+describe('validateFormDataFileType', () => {
+  let req, res, next
+  beforeEach(() => {
+    req = {}
+    res = {
+      render: jest.fn(),
+      status: jest.fn(() => res)
+    }
+    next = jest.fn()
+    jest.clearAllMocks()
+  })
+  it('calls next if no error', () => {
+    const err = undefined
+    validateFormDataFileType(err, req, res, next)
+    expect(next).toHaveBeenCalled()
+  })
+  it('passes error through if error code is not LIMIT_FILE_TYPE', () => {
+    const err = {
+      code: 'AN_ERROR'
+    }
+    validateFormDataFileType(err, req, res, next)
+    expect(next).toHaveBeenCalledWith(err)
+  })
+  it('renders the template with unsupported file type errors', () => {
+    const err = {
+      code: 'LIMIT_FILE_TYPE',
+      field: 'componentImage'
+    }
+    req.params = { page: 'component-image' }
+    const expectedArgs = {
+      addAnother: 1,
+      backLink: false,
+      csrfToken: undefined,
+      errorList: [
+        {
+          href: '#component-image',
+          text: 'The selected file must be a JPG, BMP, PNG, TIF or PDF'
+        }
+      ],
+      file: undefined,
+      formData: undefined,
+      formErrorStyles: null,
+      formErrors: {
+        componentImage: {
+          text: 'The selected file must be a JPG, BMP, PNG, TIF or PDF'
+        }
+      },
+      page: {
+        fields: {
+          componentImage: {
+            hint: 'The file must be a JPG, BMP, PNG, TIF or PDF, and smaller than 10MB.',
+            label: 'Upload a file'
+          }
+        },
+        removable: false,
+        showOnCya: true,
+        title: 'Component image'
+      },
+      showAddAnother: false,
+      submitUrl: undefined
+    }
+
+    validateFormDataFileType(err, req, res, next)
 
     expect(res.status).toHaveBeenCalledWith(400)
     expect(res.render).toHaveBeenCalledWith('component-image', expectedArgs)

@@ -4,7 +4,8 @@ const {
   GITHUB_API_URL,
   GITHUB_API_TOKEN,
   GITHUB_REPO_OWNER,
-  GITHUB_REPO_NAME
+  GITHUB_REPO_NAME,
+  GITHUB_PR_LABELS
 } = require('../config')
 
 const {
@@ -120,7 +121,9 @@ describe('GitHub API Module', () => {
         url: 'https://github.com/example/pr/1',
         number: '1234'
       })
-      expect(fetch).toHaveBeenCalledWith(
+      expect(fetch).toHaveBeenCalledTimes(2)
+      expect(fetch).toHaveBeenNthCalledWith(
+        1,
         `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/pulls`,
         expect.objectContaining({
           method: 'POST',
@@ -135,6 +138,17 @@ describe('GitHub API Module', () => {
           })
         })
       )
+      expect(fetch).toHaveBeenNthCalledWith(
+        2,
+        `${GITHUB_API_URL}/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/issues/1234/labels`,
+        expect.objectContaining({
+          method: 'POST',
+          headers: expect.objectContaining({
+            Authorization: `Bearer ${GITHUB_API_TOKEN}`
+          }),
+          body: JSON.stringify({ labels: GITHUB_PR_LABELS })
+        })
+      )
     })
 
     it('should throw an error if creating a pull request fails', async () => {
@@ -146,6 +160,26 @@ describe('GitHub API Module', () => {
 
       await expect(createPullRequest('test-branch', 'Test PR')).rejects.toThrow(
         'Failed to create pull request'
+      )
+    })
+
+    it('should throw an error if adding the label fails', async () => {
+      fetch
+        .mockResolvedValueOnce({
+          ok: true,
+          json: async () => ({
+            html_url: 'https://github.com/example/pr/1',
+            number: '1234'
+          })
+        })
+        .mockResolvedValueOnce({
+          ok: false,
+          statusText: 'Unprocessable Entity',
+          text: async () => 'Label not found'
+        })
+
+      await expect(createPullRequest('test-branch', 'Test PR')).rejects.toThrow(
+        'Failed to add label.'
       )
     })
   })

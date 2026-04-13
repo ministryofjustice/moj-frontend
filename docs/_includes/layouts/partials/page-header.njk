@@ -4,7 +4,8 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
 {% set showLede = true %}
-{% if status and ( status == "Archived" or status == "To be reviewed") %}
+{% if status and ( status == "Archived"  or (status == "To be reviewed" and
+"2021" in statusDate ))  %}
   {% set showLede = false %}
 {% endif %}
 

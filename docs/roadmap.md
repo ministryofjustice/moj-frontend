@@ -9,9 +9,9 @@ eleventyNavigation:
   order: 40
 ---
 
-<b>Last updated: 24 February 2026</b>
+<b>Last updated: 22 April 2026</b>
 
-This roadmap shows what we're working on and planning to do next. It's not fixed -- our plans might change as we learn more, respond to feedback, or adjust priorities.  
+This roadmap shows what we're working on and planning to do next. It's not fixed -- our plans might change as we learn more, respond to feedback, or adjust priorities. 
 
 The roadmap is for transparency, to help with decision making, and encourage collaboration and reuse. Understand what improvements are coming so that your team can plan work with confidence.
 
@@ -52,16 +52,14 @@ We're developing the following building blocks to the 'official' status so that 
 
 - [add another component](/components/add-another/) 
 - [search component](/components/search/) 
-- [electronic signature pattern](/patterns/electronic-signature/)
 
-We're also improving navigation components and guidance. 
+We're also running a discovery into PDS breadcrumbs and back links, to help users navigate services more easily. 
 
 <hr>
 
 ## Coming up next
 
 We'll be exploring:
-- PDS breadcrumbs and back links to help users navigate services more easily 
 - a more consistent way for users of PDS services to get support and escalate problems
 - how PDS identifies users on probation
 

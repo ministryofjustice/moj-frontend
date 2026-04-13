@@ -90,6 +90,11 @@ spec:
               secretKeyRef:
                 name: sentry-csp-uri
                 key: sentry-csp-uri
+          - name: SESSION_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: session-secret
+                key: session-secret
           - name: BRANCH
             value: ${BRANCH}
           - name: APP_URL
