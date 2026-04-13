@@ -17,7 +17,7 @@ In HMPPS digital services, you should only use the badge to show risk informatio
 
 ### Similar or linked components
 
-There's also the ['Tag' component in the GOV.UK Design System](https://design-system.service.gov.uk/components/tag/).
+There's also the [GOV.UK tag component](https://design-system.service.gov.uk/components/tag/).
 
 ## How to use
 

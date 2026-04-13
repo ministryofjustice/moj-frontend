@@ -9,11 +9,11 @@ lede: "Use the search component to let users search by word or phrase."
 
 ## When to use
 
-Use the search component to let users search by word or phrase. This can be used within the [Primary Navigation](/components/primary-navigation/) component.
+Use the search component to let users search by word or phrase. This can be used within the [primary navigation component](/components/primary-navigation/).
 
 ## How to use
 
-You can configure the search form to be inversed on black and to hide and show labels and hints depending on your use case. You'll see examples of this on the [Primary Navigation](/components/primary-navigation) component page.
+You can configure the search form to be inversed on black and to hide and show labels and hints depending on your use case. You can view examples of this in the [primary navigation component documentation](/components/primary-navigation/).
 
 ## Accessibility issues
 
