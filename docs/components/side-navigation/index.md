@@ -11,7 +11,7 @@ lede: "Use the side navigation component to let users navigate sub sections in a
 
 Use the side navigation component to let users navigate sub sections in a system or service.
 
-Use this component when you have a second level of navigation. See also the [sub navigation](/components/sub-navigation/) component
+Use this component when you have a second level of navigation. There's also the [sub navigation component](/components/sub-navigation/).
 
 ## When not to use
 

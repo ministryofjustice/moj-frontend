@@ -33,36 +33,6 @@ User research will tell you the best order of filters.
 
 ### Navigating filters
 
-#### Show and hide individual filters
-
-If you're providing multiple ways of filtering, you may want to let users show and hide filters as needed.
-
-<div class="govuk-form-group">
-<table>
-    <tr>
-        <td>
-            <img src="{{ 'assets/images/filters-01.png' | rev | url }}" alt="" width="100%">
-        </td>
-        <td>
-            <img src="{{ 'assets/images/filters-02.png' | rev | url }}" alt="" width="100%">
-        </td>
-        <td>
-            <img src="{{ 'assets/images/filters-03.png' | rev | url }}" alt="" width="100%">
-        </td>
-    </tr>
-</table>
-</div>
-
-User research will tell you if users need filters they have opened to stay open when they return to the page.
-
-If you're letting users show and hide individual filters you must:
-
-- use clear labels to help users understand what options are in the filter
-- allow the user to navigate with a keyboard
-- inform the user where they are and when content changes
-
-If you struggle to come up with clear labels, it might be because the way you’ve separated the content is not clear.
-
 #### Reducing the list of filter options
 
 If a filter has a long list of options, use an [accessible autocomplete](https://github.com/alphagov/accessible-autocomplete) (type ahead) to let users narrow down the options before making a selection.
