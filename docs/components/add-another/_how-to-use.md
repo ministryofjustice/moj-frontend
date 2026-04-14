@@ -11,90 +11,75 @@ eleventyComputed:
 
 The 'add another' component has 2 layouts -- stacked and inline. 
 
-### How to install the 
-
-If you're a developer installing the l;ay, the default layout is stacked -- you do not need to do anything. To get the inline layout, set the Nunjucks `layout` option to `inline`.   
-
 ### Content for the component
 
-You need to give each 'add another' component a heading and item label.
+You need to create a heading and item name for each 'add another' component.
 
-#### Adding a heading
+#### Heading
 
-Add one heading above (and outside) the component. This will label each item accessibly using `aria-labelledby`. 
+Create a heading that describes what the user is doing, for example 'Add a participant'. Add it above the component (it's not a part of the component). This will label each item accessibly using `aria-labelledby`. 
 
 You can view [page layout examples of the 'add another' component](/components/add-another/#examples-tab). 
 
-#### Item labels
+#### Item name
 
-Give the item a short and succinct name. For example person, room, date, income or session. 
-
-The name will be used in the:
+Give the item a short and succinct name. For example person, room, date, income or session. The item name will be used in the:
 
 - item label (in sentence case) 
 - form field labels (in hidden text)
 - button text (in lower case) 
 - error messages (in lower case)
 
-The items are numbered 1,2,3 and so on.  
+The item names are numbered 1,2,3 and so on.  
 
+#### Stacked variant hidden text  
 
 INSERT ANNOTATED DIAGRAM
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">Content for the item name ‘referral’</caption>
+  <caption class="govuk-table__caption govuk-table__caption--m">Hidden content for the stacked variant</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Part of the component</th>
-      <th scope="col" class="govuk-table__header">Variant</th>
-      <th scope="col" class="govuk-table__header">Label type</th>
-      <th scope="col" class="govuk-table__header">Title in example</th>
-
+      <th scope="col" class="govuk-table__header">Title in example (hidden text is in brackets)</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
        <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Item title</th>
-      <td class="govuk-table__cell">Stacked</th>
-      <td class="govuk-table__cell">Visible</td>
-      <td class="govuk-table__cell">Referral 1</td>
+      <th scope="row" class="govuk-table__header">Form field: full name</th>
+      <td class="govuk-table__cell">Full name (for participant 1)</th>
     </tr>
      <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Item title</th>
-      <td class="govuk-table__cell">Inline</th>
-      <td class="govuk-table__cell">Hidden</td>
-      <td class="govuk-table__cell">Referral 1</td>
+      <th scope="row" class="govuk-table__header">Form field: date of birth</th>
+      <td class="govuk-table__cell">Date of birth (for participant 1)</th>
     </tr>
+  </tbody>
+</table> 
+
+#### Inline variant hidden text  
+
+<table class="govuk-table">
+  <caption class="govuk-table__caption govuk-table__caption--m">Hidden content for the inline variant</caption>
+  <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">All form fields</th>
-      <td class="govuk-table__cell">Both</th>
-      <td class="govuk-table__cell">Hidden</td>
-      <td class="govuk-table__cell">Step 1, date 1</td>
+      <th scope="col" class="govuk-table__header">Item label</th>
+      <th scope="col" class="govuk-table__header">Account 1</th>
     </tr>
+  </thead>
+  <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">'Add another' button</th>
-      <td class="govuk-table__cell">Both</th>
-      <td class="govuk-table__cell">Visible</td>
-      <td class="govuk-table__cell">'Add another' referral</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">'Remove' button</th>
-      <td class="govuk-table__cell">Stacked</th>
-      <td class="govuk-table__cell">Visible</td>
-      <td class="govuk-table__cell">Remove referral 1</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">'Remove' button</th>
-      <td class="govuk-table__cell">Inline</th>
-      <td class="govuk-table__cell">Hidden</td>
-      <td class="govuk-table__cell">Remove referral 1</td>
+       <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Form field: bank name</th>
+      <td class="govuk-table__cell">Bank name (for account 1)</th>
     </tr>
      <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Error message</th>
-      <td class="govuk-table__cell">Both</th>
-      <td class="govuk-table__cell">Visible</td>
-      <td class="govuk-table__cell">‘Add a name for referral 1’ (for example)</td>
+      <th scope="row" class="govuk-table__header">Form field: funds in account</th>
+      <td class="govuk-table__cell">Funds in account (for account 1)</th>
+    </tr>
+      <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">Remove button</th>
+      <td class="govuk-table__cell">Remove (account 1)</th>
     </tr>
   </tbody>
 </table> 
