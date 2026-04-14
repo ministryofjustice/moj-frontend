@@ -11,24 +11,17 @@ eleventyComputed:
 
 The 'add another' component has 2 layouts -- stacked and inline. 
 
-For developers: How to get the layouts. The default layout is stacked. To get the inline layout, set the Nunjucks `layout` option to `inline`.   
+### How to install the 
 
-### Placing multiple ‘add another‘ components on a page
-
-The only time you can place more than one 'add another' on a page is with the inline variant. You still need to be aware of how this will affect the length and complexity of the page. 
-
-Do not:
-- place the 'stacked' layout on the page more than once (it makes the page too complex -- use multiple pages instead)
-- put an 'add another' component inside another one, for example to create subsections (screenreaders may not announce ir, and it may make the page harder to use for everyone)
-- place both the 'stacked' and 'inline' layout on the same page
+If you're a developer installing the l;ay, the default layout is stacked -- you do not need to do anything. To get the inline layout, set the Nunjucks `layout` option to `inline`.   
 
 ### Content for the component
 
 You need to give each 'add another' component a heading and item label.
 
-#### Adding a eading
+#### Adding a heading
 
-Add one heading above (and outside) the component. This will label each item accessibly using aria-labelledby. 
+Add one heading above (and outside) the component. This will label each item accessibly using `aria-labelledby`. 
 
 You can view [page layout examples of the 'add another' component](/components/add-another/#examples-tab). 
 
@@ -112,9 +105,9 @@ The remove button is a [GOV.UK warning button](https://design-system.service.gov
 
 Do not change the button position, as this may make it harder for zoom users to use the component.
 
-### Inline layout
+### Designing with the inline layout
 
-You should add no more than 3 fields to the inline layout (not including the 'remove' button). This ensures that the component is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which cannot contain more than 4 fields.
+You should add no more than 3 fields to the inline layout (the 'remove' button is extra). This ensures that the component is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which cannot contain more than 4 fields.
 
 You can only add the following components to the inline layout:
 
@@ -172,9 +165,21 @@ This ensures that users can still identify errors when an item is added or remov
   </tbody>
 </table>
 
+### Placing multiple ‘add another‘ components on a page
+
+The only time you can place more than 1 'add another' on a page is with the inline variant. You still need to be aware of how this will affect the length and complexity of the page. 
+
+Placing multiple components on the page will increase page complexity and make it harder for users to complete the forms successfully. User may lose their position on the page, enter data in the wrong place or delete the wrong item.  
+
+Do not place:
+
+- the 'stacked' layout on the page more than once  
+- an 'add another' component inside another one, for example to create subsections (screenreaders may not announce it, and it may make the page harder to use for everyone)
+- the 'stacked' and 'inline' layout on the same page
+
 ### Other parts of the page
 
-When users interact with this component, pages will get longer and more complex. Therefore it’s best to not add too much else to the page. A leaner page will also make it easier for users to identify -- and recover from -- errors.
+When users interact with this component, pages will get longer and more complex. Therefore it’s best to keep the rest of the page fairly simple. A leaner page will also make it easier for users to identify -- and recover from -- errors.
 
 ### Screens after the component  
 
