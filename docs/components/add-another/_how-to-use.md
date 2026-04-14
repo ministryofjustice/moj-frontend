@@ -9,15 +9,28 @@ eleventyComputed:
 
 ## How to use
 
-The 'add another' component has 2 layouts -- stacked and inline. The stacked layout is the default, so you'll need to pass the inline layout to use it.   
+The 'add another' component has 2 layouts -- stacked and inline. 
+
+For developers: How to get the layouts. The default layout is stacked. To get the inline layout, set the Nunjucks `layout` option to `inline`.   
+
+### Placing multiple ‘add another‘ components on a page
+
+The only time you can place more than one 'add another' on a page is with the inline variant. You still need to be aware of how this will affect the length and complexity of the page. 
+
+Do not:
+- place the 'stacked' layout on the page more than once (it makes the page too complex -- use multiple pages instead)
+- put an 'add another' component inside another one, for example to create subsections (screenreaders may not announce ir, and it may make the page harder to use for everyone)
+- place both the 'stacked' and 'inline' layout on the same page
 
 ### Content for the component
 
 You need to give each 'add another' component a heading and item label.
 
-#### H2 heading
+#### Adding a eading
 
-Add an H2 above the component to give your page the correct heading structure. You can view [page layout examples with the 'add another' component](/components/add-another/#examples-tab). 
+Add one heading above (and outside) the component. This will label each item accessibly using aria-labelledby. 
+
+You can view [page layout examples of the 'add another' component](/components/add-another/#examples-tab). 
 
 #### Item labels
 
@@ -25,12 +38,12 @@ Give the item a short and succinct name. For example person, room, date, income 
 
 The name will be used in the:
 
-- item title (in sentence case) 
-- form field titles (in hidden text)
-- button (in lower case) 
+- item label (in sentence case) 
+- form field labels (in hidden text)
+- button text (in lower case) 
 - error messages (in lower case)
 
-The items are numbered 1,2,3,4 and so on.  
+The items are numbered 1,2,3 and so on.  
 
 
 INSERT ANNOTATED DIAGRAM
@@ -95,7 +108,7 @@ INSERT ANNOTATED DIAGRAM
 
 ### The ‘Remove’ button
 
-The remove button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). Do not change the button colour as users may confuse it with the ‘Add another' button (which it is sometimes next to). 
+The remove button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). This is to ensure that users do not Do not change the button colour as users may confuse it with the ‘Add another' button (which it's sometimes next to). 
 
 Do not change the button position, as this may make it harder for zoom users to use the component.
 
@@ -114,7 +127,7 @@ All the items and field labels need to fit on 1 line. You can read [GOV.UK guida
 
 {% example template="examples/inline-offences", colocated="true", height=540 %}
 
-### Use with JavaScript
+### Using with JavaScript
 
 The 'add another' component relies on JavaScript.  
 
@@ -124,13 +137,21 @@ Set up your service so that when JavaScript is not available, the page will relo
 
 Follow the [GOV.UK Design System guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
 
+#### Inline variant error messages
+
+In the inline variant, the red error border is attached to the whole item rather than a specific label. This is to help users find the error. 
+
+INSERT EXAMPLE SCREENSHOT 
+
 #### Showing multiple errors  
 
 {% example template="examples/stacked-errors", colocated="true", height=590 %}
 
+Multiple errors work in the same way for both variants. 
+
 Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/). Once the user has resolved all the errors in the first item, display the next set. This should continue until all the errors are resolved.  
 
-This ensures that users can still identify their errors if an item is added or removed. 
+This ensures that users can still identify errors when an item is added or removed. 
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
@@ -150,12 +171,6 @@ This ensures that users can still identify their errors if an item is added or r
     </tr>
   </tbody>
 </table>
-
-### Using multiple ‘add another‘ components
-
-You can put more than 1 'add another' component on a page but be aware of how this will affect the length and complexity of the page. 
-
-However do not put an 'add another' component inside another one, for example to enable users to add items to subsections. Screenreaders may not announce that another component has been added, and it may make the page harder to use for everyone. 
 
 ### Other parts of the page
 
