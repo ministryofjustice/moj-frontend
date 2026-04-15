@@ -14,13 +14,17 @@
     margin-bottom: govuk-spacing(4);
     padding: 0;
 
-    &:focus {
-      // @include govuk-focused-box;
-    }
-
     &:first-of-type {
       margin-top: 0;
     }
+  }
+
+  &__item-title > h2,
+  &__item-title > h3,
+  &__item-title > h4 {
+    @include govuk-font-size($size: 24);
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   &__item-container {
@@ -30,28 +34,6 @@
   &__add-button {
     display: block;
   }
-
-  /* &__remove-button { */
-
-  /*   color: #ca3535; // govuk 6 primary/error red */
-
-  /*  */
-
-  /*   &:hover { */
-
-  /*     color: #982828; // red shade 25 */
-
-  /*   } */
-
-  /*  */
-
-  /*   &:focus { */
-
-  /*     color: $govuk-focus-text-colour; */
-
-  /*   } */
-
-  /* } */
 }
 
 .moj-add-another__item--inline {
@@ -89,13 +71,4 @@
 .moj-add-another__item--inline.moj-add-another__item--error {
   padding-left: govuk-spacing(4);
   border-left: 5px solid govuk-functional-colour("error");
-}
-
-.moj-add-another__title:focus {
-  outline: none;
-  color: govuk-functional-colour(focus-text);
-  background-color: govuk-functional-colour(focus);
-  box-shadow:
-    0 -2px govuk-functional-colour(focus),
-    0 4px govuk-functional-colour(focus-text);
 }
