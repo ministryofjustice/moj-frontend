@@ -22,7 +22,7 @@ The things that people add ('items') could be:
 -	the names of people, programmes, events or offences
 - numbers, for example payments and their amounts
 
-There's guidance on [how to write content for the component](/components/add-another/#how-to-use-tab). 
+There's guidance on [how to write content for the component](/components/add-another/#write-content-tab). 
 
 ## When not to use
 
