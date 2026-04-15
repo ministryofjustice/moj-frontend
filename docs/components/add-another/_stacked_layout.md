@@ -9,8 +9,10 @@ eleventyComputed:
 
 ## Using the stacked layout
 
+{% example template="examples/default", colocated="true", height=540 %}
+
 <div class="govuk-inset-text">
-  The 'add another' component has 2 layouts -- stacked and inline. You can view [guidance on the inline layout](components/add-another/#inline-layout-tab). 
+  The 'add another' component has 2 layouts - stacked and inline. You can view <a href="components/add-another/#inline-layout-tab">guidance on the inline layout</a>.
 </div>
 
 ### Creating content 
@@ -26,35 +28,20 @@ Add a heading that describes the task, for example 'Add a participant'. This is 
 
 #### Item name
 
-Give the item a short and succinct name. For example person, room, date, income or session. The item name will be used in the following parts:
+Give the item a short and succinct name. For example person, room, date, income or session. The item name will be used in the following visible parts of the component:
 
 - item label (in sentence case) 
-- form field labels (in hidden text)
 - button text (in lower case) 
 - error messages (in lower case)
 
 The item names are numbered 1,2,3 and so on.  
 
-<table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--s">Hidden text</caption>
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Form field</th>
-      <th scope="col" class="govuk-table__header">Title in example (hidden text is in brackets)</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-       <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Full name</th>
-      <td class="govuk-table__cell">Full name (for participant 1)</th>
-    </tr>
-     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Date of birth</th>
-      <td class="govuk-table__cell">Date of birth (for participant 1)</th>
-    </tr>
-  </tbody>
-</table> 
+#### Hidden text 
+
+Hidden text is added to the end of the form field labels. In the example, they will be:
+
+- full name for participant 1
+- date of birth for participant 1
 
 ### The ‘Remove’ button
 
@@ -113,7 +100,7 @@ This component creates another item on a page. The data remains on the page unti
 
 Users can edit their items after submitting them using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
 
-#### Using with JavaScript
+### Using with JavaScript
 
 The 'add another' component relies on JavaScript.  
 

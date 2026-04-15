@@ -10,7 +10,8 @@ eleventyComputed:
 ## Using the inline layout
 
 <div class="govuk-inset-text">
-  The 'add another' component has 2 layouts -- stacked and inline. You can view [guidance on the stacked layout](components/add-another/#stacked-layout-tab). 
+  The 'add another' component has 2 layouts -- stacked and inline. You can view 
+  <a href="components/add-another/#stacked-layout-tab">guidance on the stacked layout</a>. 
 </div>
 
 ### Creating content 
@@ -26,41 +27,24 @@ Add a heading that describes the task, for example 'Add a participant'. This is 
 
 #### Item name
 
-Give the item a short and succinct name. For example person, room, date, income or session. The item name will be used in the following visble parts of the component:
+Give the item a short and succinct name. For example person, room, date, income or session. The item name will be used in the following visible parts of the component:
 
 - button text (in lower case) 
 - error messages (in lower case)
 
 The item names are numbered 1,2,3 and so on.  
 
-<table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--s">Hidden content for the inline variant</caption>
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Item label</th>
-      <th scope="col" class="govuk-table__header">Account 1</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-       <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Form field: bank name</th>
-      <td class="govuk-table__cell">Bank name (for account 1)</th>
-    </tr>
-     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Form field: funds in account</th>
-      <td class="govuk-table__cell">Funds in account (for account 1)</th>
-    </tr>
-      <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Remove button</th>
-      <td class="govuk-table__cell">Remove (account 1)</th>
-    </tr>
-  </tbody>
-</table> 
+#### Hidden text 
+
+Hidden text is added to the end of the component labels. In the example, they will be:
+
+- bank name for account 1
+- funds in account for account 1
+- remove account 1 (for the remove button)
 
 ### Designing the inline layout
 
-You should add no more than 3 fields to the inline layout (the 'remove' button is extra). This keeps it is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which cannot contain more than 4 fields.
+Add no more than 3 fields to the inline layout (the 'remove' button is extra). This keeps it is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which cannot contain more than 4 fields.
 
 You can add only 2 different types of components to it. These are the:
 
@@ -78,8 +62,6 @@ All the items and field labels need to fit on 1 line. You can view [GOV.UK guida
 The remove button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). This distinguishes it from the ‘Add another' button, which it's sometimes next to. Do not change the button colour. 
 
 Do not change the button position, as this may make it harder for zoom users to use the component.
-
-INSERT ANNOTATED DIAGRAM
 
 ### Error messages
 
