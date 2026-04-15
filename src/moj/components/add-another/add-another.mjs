@@ -31,6 +31,9 @@ export class AddAnother extends ConfigurableComponent {
   labelSuffixClass = 'moj-add-another__label-suffix'
 
   /** @private */
+  newItemSuffixClass = 'moj-add-another__new-item-suffix'
+
+  /** @private */
   itemCounterClass = 'moj-add-another__item-counter'
 
   /** @private */
@@ -148,9 +151,16 @@ export class AddAnother extends ConfigurableComponent {
     // Place focus on the added item
     if ($lastItem && $lastItem instanceof HTMLElement) {
       const $fieldset = $lastItem.querySelector(`.${this.fieldsetClass}`)
+
       if ($fieldset && $fieldset instanceof HTMLFieldSetElement) {
+        this.addNewItemSuffix($fieldset)
+
+        $fieldset.addEventListener('blur', () => {
+          this.removeNewItemSuffix($fieldset)
+        })
+
         emitEvent($lastItem, AddAnother, this.itemAddedEvent)
-        console.log('setting focus on fieldset')
+
         setTimeout(() => {
           setFocus($fieldset)
         }, 100)
@@ -401,7 +411,14 @@ export class AddAnother extends ConfigurableComponent {
     }
 
     if ($legend) {
-      $legend.innerText = `${this.config.itemLabel} ${suffix}`
+      if (
+        $legend.firstElementChild &&
+        $legend.firstElementChild instanceof HTMLElement
+      ) {
+        $legend.firstElementChild.innerText = `${this.config.itemLabel} ${suffix}`
+      } else {
+        $legend.innerText = `${this.config.itemLabel} ${suffix}`
+      }
       return
     }
 
@@ -456,6 +473,56 @@ export class AddAnother extends ConfigurableComponent {
       $button.remove()
     } else {
       $button.innerHTML = label
+    }
+  }
+
+  /**
+   * Adds visually hidden text to the legend of an item to indicate it has been
+   * added, to provide additional context for screen reader users.
+   *
+   * @param {Element} $item - Add another item
+   */
+  addNewItemSuffix($item) {
+    const $newItemSuffix = document.createElement('span')
+    $newItemSuffix.classList.add(
+      'govuk-visually-hidden',
+      `${this.newItemSuffixClass}`
+    )
+    $newItemSuffix.innerText = `(added)`
+
+    if (this.config.layout === 'inline') {
+      $newItemSuffix.id = generateUniqueId()
+      $item.insertAdjacentElement('afterbegin', $newItemSuffix)
+      $item.setAttribute(
+        'aria-labelledby',
+        `${$item.getAttribute('aria-labelledby')} ${$newItemSuffix.id}`
+      )
+    } else {
+      const $legend = $item.querySelector('legend')
+      if ($legend && $legend instanceof HTMLLegendElement) {
+        $legend.appendChild($newItemSuffix)
+      }
+    }
+  }
+
+  /**
+   * Removes the visually hidden text added by addNewItemSuffix to indicate an item has been added.
+   *
+   * @param {Element} $item - Add another item
+   */
+  removeNewItemSuffix($item) {
+    const $newItemSuffix = $item.querySelector(`.${this.newItemSuffixClass}`)
+    const id = $newItemSuffix?.id || ''
+
+    if (id) {
+      $item.setAttribute(
+        'aria-labelledby',
+        ($item.getAttribute('aria-labelledby') || '').replace(id, '').trim()
+      )
+    }
+
+    if ($newItemSuffix && $newItemSuffix instanceof HTMLElement) {
+      $newItemSuffix.remove()
     }
   }
 
