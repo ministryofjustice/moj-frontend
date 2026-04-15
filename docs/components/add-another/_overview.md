@@ -50,8 +50,7 @@ The stacked layout has visible labels and hidden text.
 Visible labels help users:
 
 - scan the page more easily (especially if they've added a few items to the page)
-- enter and edit content in the correct item
-- remove the correct item
+- to make sure they're in the correct item when they add or remove content
 
 Hidden text in the labels helps screenreader users to navigate the component. 
 
@@ -63,14 +62,14 @@ When the ‘Add another’ button is selected, the title changes from 'Participa
 
 ### Inline
 
-The inline (or horizontal) layout is a lean design for up to 3 fields. You might want to use this layout if:
+The inline (or horizontal) layout is a lean design for up to 3 fields. You could use this layout:
 
-- you need to save vertical space on the page 
-- users need to add a lot of items
-- the component needs to be placed in multiple areas of the page 
-- it'd help users to view their items in a rows and columns
+- to save vertical space on the page 
+- if users need to add a lot of items
+- if the component needs to be placed on a page multiple times 
+- if users to view their items in rows and columns
 
-The input labels are visible, and the item number (for example 'Account 1') is in hidden text.   
+The input labels are visible, and the item (for example 'Account 1') is in hidden text.   
 
 After the ‘Add another’ button is selected, a red 'Remove' button appears to the right of the last field.  
 
