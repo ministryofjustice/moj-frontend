@@ -11,12 +11,6 @@ eleventyComputed:
 
 The 'add another' component has 2 layouts -- stacked and inline. 
 
-### The ‘Remove’ button
-
-The remove button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). This is to ensure that users do not Do not change the button colour as users may confuse it with the ‘Add another' button (which it's sometimes next to). 
-
-Do not change the button position, as this may make it harder for zoom users to use the component.
-
 ### Designing with the inline layout
 
 You should add no more than 3 fields to the inline layout (the 'remove' button is extra). This ensures that the component is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which cannot contain more than 4 fields.
@@ -32,11 +26,33 @@ All the items and field labels need to fit on 1 line. You can read [GOV.UK guida
 
 {% example template="examples/inline-offences", colocated="true", height=540 %}
 
+#### Other parts of the page
+
+When users interact with this component, pages will get longer and more complex. Therefore it’s best to keep the rest of the page fairly simple. A leaner page will also make it easier for users to identify -- and recover from -- errors.
+
+### Placing multiple ‘add another‘ components on a page
+
+The only time you can place more than 1 'add another' on a page is with the inline variant. You still need to be aware of how this will affect the length and complexity of the page. 
+
+Placing multiple components on the page will increase page complexity and make it harder for users to complete the forms successfully. User may lose their position on the page, enter data in the wrong place or delete the wrong item.  
+
+Do not place:
+
+- the 'stacked' layout on the page more than once  
+- an 'add another' component inside another one, for example to create subsections (screenreaders may not announce it, and it may make the page harder to use for everyone)
+- the 'stacked' and 'inline' layout on the same page
+
 ### Using with JavaScript
 
 The 'add another' component relies on JavaScript.  
 
 Set up your service so that when JavaScript is not available, the page will reload with the additional form elements after the ‘add another’ button is selected. 
+
+### The ‘Remove’ button
+
+The remove button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). This is to ensure that users do not Do not change the button colour as users may confuse it with the ‘Add another' button (which it's sometimes next to). 
+
+Do not change the button position, as this may make it harder for zoom users to use the component.
 
 ### Error messages
 
@@ -77,26 +93,8 @@ This ensures that users can still identify errors when an item is added or remov
   </tbody>
 </table>
 
-### Placing multiple ‘add another‘ components on a page
-
-The only time you can place more than 1 'add another' on a page is with the inline variant. You still need to be aware of how this will affect the length and complexity of the page. 
-
-Placing multiple components on the page will increase page complexity and make it harder for users to complete the forms successfully. User may lose their position on the page, enter data in the wrong place or delete the wrong item.  
-
-Do not place:
-
-- the 'stacked' layout on the page more than once  
-- an 'add another' component inside another one, for example to create subsections (screenreaders may not announce it, and it may make the page harder to use for everyone)
-- the 'stacked' and 'inline' layout on the same page
-
-### Other parts of the page
-
-When users interact with this component, pages will get longer and more complex. Therefore it’s best to keep the rest of the page fairly simple. A leaner page will also make it easier for users to identify -- and recover from -- errors.
-
 ### Screens after the component  
 
 The add another component creates another item on a page. The data remains on the page until the user submits it, for example with a ‘save and continue’ button.   
 
 The component does not allow users to edit the items after submitting them. This can be done using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
-
-[screenshot example]
