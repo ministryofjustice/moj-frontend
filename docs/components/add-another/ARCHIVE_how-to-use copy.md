@@ -1,13 +1,8 @@
 ---
-title: How to use
-order: 20
-tags: 'add-another'
-permalink: false
-eleventyComputed:
-  override:eleventyNavigation: false
+
 ---
 
-## How to use
+## Using the stacked layout
 
 The 'add another' component has 2 layouts -- stacked and inline. 
 
