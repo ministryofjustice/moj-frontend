@@ -9,22 +9,9 @@ eleventyComputed:
 
 ## Using the inline layout
 
-^ The 'add another' component has 2 layouts -- stacked and inline. You can view guidance on the stacked layout. 
-
-### Designing the inline layout
-
-You should add no more than 3 fields to the inline layout (the 'remove' button is extra). This keeps it is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which cannot contain more than 4 fields.
-
-You can add only 2 different types of components to it. These are the:
-
-- [GOV.UK text input](https://design-system.service.gov.uk/components/text-input/)
-- [GOV.UK select component](https://design-system.service.gov.uk/components/select/) 
-
-Do not add radio buttons to it.
-
-All the items and field labels need to fit on 1 line. You can view [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs). 
-
-{% example template="examples/inline-offences", colocated="true", height=540 %}
+<div class="govuk-inset-text">
+  The 'add another' component has 2 layouts -- stacked and inline. You can view [guidance on the stacked layout](components/add-another/#stacked-layout-tab). 
+</div>
 
 ### Creating content 
 
@@ -47,7 +34,7 @@ Give the item a short and succinct name. For example person, room, date, income 
 The item names are numbered 1,2,3 and so on.  
 
 <table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m">Hidden content for the inline variant</caption>
+  <caption class="govuk-table__caption govuk-table__caption--s">Hidden content for the inline variant</caption>
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header">Item label</th>
@@ -70,6 +57,21 @@ The item names are numbered 1,2,3 and so on.
     </tr>
   </tbody>
 </table> 
+
+### Designing the inline layout
+
+You should add no more than 3 fields to the inline layout (the 'remove' button is extra). This keeps it is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which cannot contain more than 4 fields.
+
+You can add only 2 different types of components to it. These are the:
+
+- [GOV.UK text input](https://design-system.service.gov.uk/components/text-input/)
+- [GOV.UK select component](https://design-system.service.gov.uk/components/select/) 
+
+Do not add radio buttons to it.
+
+All the items and field labels need to fit on 1 line. You can view [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs). 
+
+{% example template="examples/inline-offences", colocated="true", height=540 %}
 
 ### The ‘Remove’ button
 
