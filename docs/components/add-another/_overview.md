@@ -22,8 +22,6 @@ The things that people add ('items') could be:
 -	the names of people, programmes, events or offences
 - numbers, for example payments and their amounts
 
-There's guidance on [how to write content for the component](/components/add-another/#write-content-tab). 
-
 ## When not to use
 
 Do not use the 'add another' component to collect lengthy or complex data. This is because:
@@ -41,48 +39,4 @@ The 'add another' component has 2 layouts:
 - [stacked](#stacked)
 - [inline](#inline)
 
-### Stacked
-
-The stacked (or vertical) layout is the default for this component. It helps users to enter more information, for example into 4 or more fields.
-
-The stacked layout has visible labels and hidden text.
-
-Visible labels help users:
-
-- scan the page more easily (especially if they've added a few items to the page)
-- to make sure they're in the correct item when they add or remove content
-
-Hidden text in the labels helps screenreader users to navigate the component. 
-
-#### How labels change after the 'Add another' button is selected
-
-When the ‘Add another’ button is selected, the title changes from 'Participant 1' to ‘Participant 1 of 2’. A red 'Remove' button with the same labelling (‘Remove Participant 1’) appears under the item. 
-
-{% example template="examples/stacked", colocated="true", height=540 %}
-
-### Inline
-
-The inline (or horizontal) layout is a lean design for up to 3 fields. You could use this layout:
-
-- to save vertical space on the page 
-- if users need to add a lot of items
-- if the component needs to be placed on a page multiple times 
-- if users to view their items in rows and columns
-
-The input labels are visible, and the item (for example 'Account 1') is in hidden text.   
-
-After the ‘Add another’ button is selected, a red 'Remove' button appears to the right of the last field.  
-
-The fields will stack vertically on smaller screens. 
-
-{% example template="examples/inline-accounts", colocated="true", height=540 %}
-
-### Things to consider
-
-Find out where the information is coming from that people will enter into the component. For example a paper form, notes, a spreadsheet or legacy software. This will affect how people need to use it. 
-
-The [‘add to a list’ pattern](/patterns/add-to-a-list/) is similar to the 'add another' component. The pattern is more appropriate for users who need to add a lot of items. If you expect that users will need to add more items later on it might be better to start with the ‘add to a list’ pattern. Switching from the 'add another' component to the pattern involves redesigning the user journey.
-
-### Similar or linked components
-
-The ‘add another’ component is similar to the [‘add to a list’ pattern](/patterns/add-to-a-list/). 
+View [guidance on choosing a layout](/components/add-another/#choosing-layout-tab).
