@@ -67,23 +67,12 @@ button are side by side, otherwise the remove button is below the content #}
 {% endif %}
 
 {#- Setup the legend for the fieldset, if one is provided #}
-{% set legendParams = false %}
-{% if item.fieldset.legend %}
-  {% set legendHTML %}
-    {% if item.fieldset.legend.html %}
-      {{ item.fieldset.legend.html | safe }}
-    {% else %}
-      {% set headingLevel = item.fieldset.legend.headingLevel if item.fieldset.legend.headingLevel else "2" %}
-      <h{{headingLevel}}>{{ item.fieldset.legend.text }}</h{{headingLevel}}>
-    {% endif %}
-  {% endset %}
-
-  {% set legendParams = {
-    html: legendHTML,
-    classes: "moj-add-another__item-title govuk-fieldset__legend--m " ~ (item.fieldset.legend.classes if item.fieldset.legend.classes),
-    isPageHeading: false
-  } %}
-{% endif %}
+{% set legendParams = {
+  text: item.fieldset.legend.text,
+  html: item.fieldset.legend.text,
+  classes: "moj-add-another__item-title govuk-fieldset__legend--m " ~ (item.fieldset.legend.classes if item.fieldset.legend.classes),
+  isPageHeading: false
+} if item.fieldset.legend else false %}
 
 
 
