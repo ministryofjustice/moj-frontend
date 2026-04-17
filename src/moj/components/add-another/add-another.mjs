@@ -411,7 +411,16 @@ export class AddAnother extends ConfigurableComponent {
     }
 
     if ($legend && $legend instanceof HTMLElement) {
-      $legend.innerText = `${this.config.itemLabel} ${suffix}`
+      // If a user has used the `html` key for the legend and wrapped the
+      // content (e.g.) with a heading, then this will handle that
+      if (
+        $legend.firstElementChild &&
+        $legend.firstElementChild instanceof HTMLElement
+      ) {
+        $legend.firstElementChild.innerText = `${this.config.itemLabel} ${suffix}`
+      } else {
+        $legend.innerText = `${this.config.itemLabel} ${suffix}`
+      }
     }
   }
 

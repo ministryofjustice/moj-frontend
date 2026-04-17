@@ -22,9 +22,12 @@
   &__item-title > h2,
   &__item-title > h3,
   &__item-title > h4 {
-    @include govuk-font-size($size: 24);
     margin-top: 0;
     margin-bottom: 0;
+  }
+
+  &__item-title > h2 {
+    @include govuk-font-size($size: 24);
   }
 
   &__item-container {
