@@ -410,15 +410,8 @@ export class AddAnother extends ConfigurableComponent {
       suffix = `${index + 1} of ${itemsCount}`
     }
 
-    if ($legend) {
-      if (
-        $legend.firstElementChild &&
-        $legend.firstElementChild instanceof HTMLElement
-      ) {
-        $legend.firstElementChild.innerText = `${this.config.itemLabel} ${suffix}`
-      } else {
-        $legend.innerText = `${this.config.itemLabel} ${suffix}`
-      }
+    if ($legend && $legend instanceof HTMLElement) {
+      $legend.innerText = `${this.config.itemLabel} ${suffix}`
       return
     }
 
