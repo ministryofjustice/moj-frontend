@@ -51,14 +51,13 @@
 <form method="post">
   {{ mojAddAnother({
     id: "add-offences",
-    itemLabel: "offence",
+    itemLabel: "Offence",
     layout: 'inline',
     items: [
       {
         fieldset: {
-          describedBy: 'offences-hint',
-          attributes: {
-            'aria-labelledby': 'offences-title'
+          legend: {
+            text: "Offence 1"
           },
           html: itemHtml
         }

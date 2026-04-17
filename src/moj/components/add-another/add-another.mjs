@@ -412,27 +412,6 @@ export class AddAnother extends ConfigurableComponent {
 
     if ($legend && $legend instanceof HTMLElement) {
       $legend.innerText = `${this.config.itemLabel} ${suffix}`
-      return
-    }
-
-    const counterId = generateUniqueId()
-    let $counter = $fieldset.querySelector(`.${this.itemCounterClass}`)
-
-    if ($counter && $counter instanceof HTMLElement) {
-      $counter.innerHTML = `${suffix}`
-    } else {
-      $counter = document.createElement('span')
-      $counter.classList.add(
-        'govuk-visually-hidden',
-        `${this.itemCounterClass}`
-      )
-      $counter.id = `${counterId}`
-      $counter.innerHTML = `${suffix}`
-      $fieldset.prepend($counter)
-      $fieldset.setAttribute(
-        'aria-labelledby',
-        `${$fieldset.getAttribute('aria-labelledby')} ${counterId}`
-      )
     }
   }
 
@@ -483,18 +462,9 @@ export class AddAnother extends ConfigurableComponent {
     )
     $newItemSuffix.innerText = `(added)`
 
-    if (this.config.layout === 'inline') {
-      $newItemSuffix.id = generateUniqueId()
-      $item.insertAdjacentElement('afterbegin', $newItemSuffix)
-      $item.setAttribute(
-        'aria-labelledby',
-        `${$item.getAttribute('aria-labelledby')} ${$newItemSuffix.id}`
-      )
-    } else {
-      const $legend = $item.querySelector('legend')
-      if ($legend && $legend instanceof HTMLLegendElement) {
-        $legend.appendChild($newItemSuffix)
-      }
+    const $legend = $item.querySelector('legend')
+    if ($legend && $legend instanceof HTMLLegendElement) {
+      $legend.appendChild($newItemSuffix)
     }
   }
 
@@ -505,14 +475,6 @@ export class AddAnother extends ConfigurableComponent {
    */
   removeNewItemSuffix($item) {
     const $newItemSuffix = $item.querySelector(`.${this.newItemSuffixClass}`)
-    const id = $newItemSuffix?.id || ''
-
-    if (id) {
-      $item.setAttribute(
-        'aria-labelledby',
-        ($item.getAttribute('aria-labelledby') || '').replace(id, '').trim()
-      )
-    }
 
     if ($newItemSuffix && $newItemSuffix instanceof HTMLElement) {
       $newItemSuffix.remove()
