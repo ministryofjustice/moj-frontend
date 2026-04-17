@@ -8,16 +8,11 @@ eleventyComputed:
 ---
 ## Using the inline layout
 
-The inline (or horizontal) layout is a lean design for up to 3 fields. Use this layout:
+{% example template="examples/inline-accounts", colocated="true", height=540 %}
 
-- to save vertical space on the page
-- if users need to add a lot of items
-- if the component needs to be placed on a page multiple times
-- if users to view their items in rows and columns
+The inline (or horizontal) layout is a lean design for up to 3 fields. 
 
-After the ‘Add another’ button is selected, a red ‘Remove’ button appears to the right of the last field.
-
-The fields will stack vertically on smaller screens.
+It's 1 of 2 layouts for the 'add another' component. You can view [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
 
 ### Creating content
 
@@ -28,11 +23,13 @@ You need to create the following content for each stacked layout:
 
 #### Heading
 
-Add a heading that describes the task, for example ‘Add a participant’. This is not a part of the component. It labels each item accessibly using `aria-labelledby`.
+Add a heading that describes the task, for example 'Add a participant'. This will label each item accessibly using `aria-labelledby`. 
+
+The heading is not part of the component.
 
 #### Item name
 
-Give the item a short and succinct name. For example person, room, date, income or session. The item name will be used in the following visible parts of the component:
+Give the item a short and succinct name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name will be used in the following visible parts of the component:
 
 - button text (in lower case)
 - error messages (in lower case)
@@ -41,54 +38,65 @@ The item names are numbered 1,2,3 and so on.
 
 #### Hidden text
 
-Hidden text is added to the end of the component labels. In the example, they will be:
+Hidden text is added to the end of the component labels. In the example, this is:
 
 - bank name for account 1
-- funds in account for account 1
+- funds for account 1
 - remove account 1 (for the remove button)
 
-### Designing the inline layout
+### What to add to it
 
-Add no more than 3 fields to the inline layout (the ‘remove’ button is extra). This keeps it is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which cannot contain more than 4 fields.
+Add no more than 3 fields to the inline layout (this does not include the ‘remove’ button). This keeps it is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which cannot contain more than 4 fields.
 
-You can add only 2 different types of components to it. These are the:
+You can add only 2 types of components to it. These are the:
 
 - [GOV.UK text input](https://design-system.service.gov.uk/components/text-input/)
 - [GOV.UK select component](https://design-system.service.gov.uk/components/select/)
 
-Do not add radio buttons to it.
+Do not add [GOV.UK radios](https://design-system.service.gov.uk/components/radios/) to it.
 
-All the items and field labels need to fit on 1 line. You can view [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
+All the items and field labels need to fit on 1 line. You can view [GOV.UK Design System guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
 
 ### The ‘Remove’ button
 
-The remove button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). This distinguishes it from the ‘Add another’ button, which it’s sometimes next to. Do not change the button colour.
+The remove button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). This distinguishes it from the ‘Add another’ button, which it is sometimes next to. Do not change the button colour.
 
 Do not change the button position, as this may make it harder for zoom users to use the component.
 
 ### Error messages
 
+INSERT CODED EXAMPLE
+
 The red error border is attached to the whole item rather than the location of the error. This is to help users find the error.
+
+Hidden text is added to the item name to help users know where the error is.
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Error state</th>
+      <th scope="col" class="govuk-table__header">Error message</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">No value is added to a field</th>
+      <td class="govuk-table__cell">Enter a sentence type for offence 1</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">No values are added to an item</th>
+      <td class="govuk-table__cell">Enter details for offence 1</td>
+    </tr>
+  </tbody>
+</table>
 
 Follow the [GOV.UK Design System guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
 
-INSERT CODED EXAMPLE
-
 #### Showing multiple errors
 
-Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/). Once the user has resolved all the errors in the first item, display the next set. This should continue until all the errors are resolved and should ensure that users can still find errors after an item is added or removed.
+Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/). 
 
-Error state
-
-Error message
-
-No value is added to a field
-
-Enter a xx for xx 1
-
-No values are added to an item
-
-Enter details for xx 1
+Once the user has resolved errors in the first item, display the errors for the next item until they're all resolved. This ensures that users can identify errors when an item is added or removed. 
 
 ### Designing the page and onward journey
 
@@ -110,3 +118,7 @@ When users interact with this component, pages will get longer and more complex.
 The add another component creates another item on a page. The data remains on the page until the user submits it, for example with a ‘save and continue’ button.
 
 Users can edit their items after submitting them using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
+
+### Example of using the inline variant on a page more than once
+
+<p><img src="{{ 'assets/images/add-another-example-inline.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The page contains a heading, 2 questions with radio buttons. Underneath the 2 questions are 2 add another components in the inline layout. The first component has the heading 'Add gifts information' with the field labels 'Gift description' and 'value'. There is a red 'remove button' to the right. The second component has the heading 'Add loans information' with the field labels 'Loan description' and 'value'. There is a red 'remove button' to the right". A green submit button is at the bottom of the screen.></p>

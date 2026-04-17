@@ -10,7 +10,9 @@ eleventyComputed:
 
 {% example template="examples/default", colocated="true", height=540 %}
 
-The stacked (or vertical) layout is the default for this component. It helps users to enter more information than the inline layout, for example into up to 3 fields.
+The stacked (or vertical) layout is the default for this component. It helps users to enter more information than the other layout ('inline'), for example in up to 3 fields. 
+
+It's 1 of 2 layouts for the 'add another' component. You can view [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
 
 ### Creating content 
 
@@ -21,11 +23,13 @@ Create the following content for each component:
 
 #### Heading
 
-Add a heading that describes the task, for example 'Add a participant'. This is not a part of the component. It labels each item accessibly using `aria-labelledby`. 
+Add a heading that describes the task, for example 'Add a participant'. This will label each item accessibly using `aria-labelledby`. 
+
+The heading is not part of the component.
 
 #### Item name
 
-Give the item a short and succinct name. For example person, room, date, income or session. The item name will be used in the following visible parts of the component:
+Give the item a short and succinct name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name will be used in the following visible parts of the component:
 
 - item label (in sentence case) 
 - button text (in lower case) 
@@ -35,7 +39,7 @@ The item names are numbered 1,2,3 and so on.
 
 #### Hidden text 
 
-Hidden text is added to the end of the form field labels. In the example, they will be:
+Hidden text is added to the end of the form field labels. In the example, this is:
 
 - full name for participant 1
 - date of birth for participant 1
@@ -48,15 +52,7 @@ Do not change the button position, as this may make it harder for zoom users to 
 
 ### Error messages
 
-Follow the [GOV.UK Design System guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
-
-#### Showing multiple errors  
-
-{% example template="examples/stacked-errors", colocated="true", height=590 %}
-
-Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/). Once the user has resolved the errors in the first item, display the next set until all the errors are resolved.  
-
-This ensures that users can still identify errors when an item is added or removed. 
+Hidden text is added to the item name to help users find the error.
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
@@ -77,6 +73,16 @@ This ensures that users can still identify errors when an item is added or remov
   </tbody>
 </table>
 
+Follow the [GOV.UK Design System guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
+
+#### Showing multiple errors  
+
+{% example template="examples/stacked-errors", colocated="true", height=590 %}
+
+Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/).
+
+Once the user has resolved errors in the first item, display the errors for the next item until they're all resolved. This ensures that users can identify errors when an item is added or removed. 
+
 ### Designing the page and onward journey
 
 #### Using multiple components on a page
@@ -85,7 +91,7 @@ Do not add the stacked layout:
 
 - to a page more than once
 - to a page with the inline layout already on it 
-- inside an 'add another' component to create a subsection (screenreaders may not announce it, and it may make the page harder to use for everyone)
+- inside another 'add another' component to create a subsection (screenreaders may not announce it, and it may make the page harder to use for everyone)
 
 #### Other parts of the page
 
@@ -97,4 +103,6 @@ This component creates another item on a page. The data remains on the page unti
 
 Users can edit their items after submitting them using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
 
+### Stacked variant example with radio buttons
 
+<p><img src="{{ 'assets/images/add-another-stacked.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The page contains a caption with some personal identifiers, including date of birth. The H1 is 'Tom Walker' and the H2 is 'Add a course'. Then there's the heading 'Course 1' and 2 field labels. They are 'Enter the course name' and 'Enter the course provider'. Underneath the fields is a question 'How long does the course last?' with 4 radio options. There's a horizontal line and then a grey button with the content 'Add another course'.></p>

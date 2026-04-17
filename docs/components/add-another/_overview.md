@@ -14,9 +14,9 @@ The ‘add another’ component allows users to add more than 1 instance of rela
 
 ## When to use
 
-This component works best in a shallow layout for users to enter brief information, ideally only a few times. 
+This component works best in a shallow layout for users to enter a small amount of information, ideally only a few times. 
 
-The things that people add ('items') could be:
+The information that people add ('items') could be:
 
 -	dates
 -	the names of people, programmes, events or offences
@@ -26,11 +26,11 @@ The things that people add ('items') could be:
 
 Do not use the 'add another' component to collect lengthy or complex data. This is because:
 
-- the items are only saved when the user submits the page (they'll lose them if they refresh the page or close it)
+- the items are only saved when the user submits the page (so they'll lose the data if they refresh or close the page)
 - users may find it hard to check what they've entered, for example against a paper form or spreadsheet 
 - very long pages can cause performance issues
 
-Use the [‘add to a list’ pattern](/patterns/add-to-a-list/) for these scenarios.
+Use the [‘add to a list’ pattern](/patterns/add-to-a-list/) to help users add similar information many times.
 
 ## Choosing a layout
 
@@ -39,4 +39,4 @@ The 'add another' component has 2 layouts:
 - [stacked](#stacked)
 - [inline](#inline)
 
-View [guidance on choosing a layout](/components/add-another/#choosing-layout-tab).
+View [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
