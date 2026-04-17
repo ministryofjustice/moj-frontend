@@ -69,7 +69,7 @@ button are side by side, otherwise the remove button is below the content #}
 {#- Setup the legend for the fieldset, if one is provided #}
 {% set legendParams = {
   text: item.fieldset.legend.text,
-  html: item.fieldset.legend.text,
+  html: item.fieldset.legend.html,
   classes: "moj-add-another__item-title " ~ ( "govuk-fieldset__legend--s govuk-visually-hidden " if params.layout == "inline" else "govuk-fieldset__legend--m") ~ (item.fieldset.legend.classes if item.fieldset.legend.classes),
   isPageHeading: false
 } if item.fieldset.legend else false %}
