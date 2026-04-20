@@ -8,18 +8,14 @@ FROM base AS staging-build
 COPY package-lock.json package-lock.json
 COPY package/package.json package/package.json
 COPY package.json package.json
-COPY .allowed-scripts.mjs .allowed-scripts.json
-RUN npm run setup
+RUN npm ci
 
 COPY docs docs
-COPY 11ty 11ty
 COPY src src
 COPY package package
 COPY .eleventy.js .eleventy.js
-COPY .eleventyignore .eleventyignore
 COPY gulp gulp
 COPY gulpfile.js gulpfile.js
-COPY postcss.config.mjs postcss.config.mjs
 COPY README.md README.md
 
 RUN ENV="staging" npm run build:package
@@ -29,18 +25,14 @@ FROM base AS preview-build
 COPY package-lock.json package-lock.json
 COPY package/package.json package/package.json
 COPY package.json package.json
-COPY .allowed-scripts.mjs .allowed-scripts.json
-RUN npm run setup
+RUN npm ci 
 
 COPY docs docs
-COPY 11ty 11ty
 COPY src src
 COPY package package
 COPY .eleventy.js .eleventy.js
-COPY .eleventyignore .eleventyignore
 COPY gulp gulp
 COPY gulpfile.js gulpfile.js
-COPY postcss.config.mjs postcss.config.mjs
 COPY README.md README.md
 
 RUN ENV="staging" npm run build:package
@@ -76,12 +68,12 @@ COPY docker/htpasswd-preview /etc/nginx/.htpasswd
 COPY docker/nginx-preview.conf /etc/nginx/conf.d/default.conf
 COPY --from=preview-build /app/public /usr/share/nginx/html
 COPY robots.txt /usr/share/nginx/html
-
-FROM nginxinc/nginx-unprivileged:alpine AS production
-EXPOSE 3000
-COPY docker/nginx-production.conf /etc/nginx/conf.d/default.conf
-COPY --from=production-build /app/public /usr/share/nginx/html
-COPY robots.txt /usr/share/nginx/html
+#
+# FROM nginxinc/nginx-unprivileged:alpine AS production
+# EXPOSE 3000
+# COPY docker/nginx-production.conf /etc/nginx/conf.d/default.conf
+# COPY --from=production-build /app/public /usr/share/nginx/html
+# COPY robots.txt /usr/share/nginx/html
 
 
 
