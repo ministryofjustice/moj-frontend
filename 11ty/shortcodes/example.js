@@ -61,12 +61,13 @@ module.exports = function (params) {
 
   let jsCode = ''
   try {
-    jsCode = fs
-      .readFileSync(
-        path.join(__dirname, 'docs', params.template, 'script.js'),
-        'utf8'
-      )
-      .trim()
+    const jsPath = path.resolve(
+      this.eleventy.env.root,
+      path.dirname(this.page.inputPath),
+      params.template,
+      'script.js'
+    )
+    jsCode = fs.readFileSync(jsPath, 'utf8').trim()
   } catch {}
 
   return nunjucksEnv.render('example.njk', {
