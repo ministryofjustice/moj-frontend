@@ -10,7 +10,7 @@ eleventyComputed:
 
 ## Overview
 
-The ‘add another’ component allows users to add more than 1 instance of related information to a page. It does this by reproducing the field labels.
+The ‘Add another’ component allows users to add more than 1 instance of related information to a page. It does this by reproducing the field labels.
 
 ## When to use
 
@@ -19,12 +19,12 @@ This component works best in a shallow layout for users to enter a small amount 
 The information that people add ('items') could be:
 
 -	dates
--	the names of people, programmes, events or offences
+-	the names of people, programmes, events, or offences
 - numbers, for example payments and their amounts
 
 ## When not to use
 
-Do not use the 'add another' component to collect lengthy or complex data. This is because:
+Do not use the 'Add another' component to collect lengthy or complex data. This is because:
 
 - the items are only saved when the user submits the page (so they'll lose the data if they refresh or close the page)
 - users may find it hard to check what they've entered, for example against a paper form or spreadsheet 
@@ -34,7 +34,7 @@ Use the [‘add to a list’ pattern](/patterns/add-to-a-list/) to help users ad
 
 ## Choosing a layout
 
-The 'add another' component has 2 layouts:
+The 'Add another' component has 2 layouts:
 
 - [stacked](#stacked)
 - [inline](#inline)
