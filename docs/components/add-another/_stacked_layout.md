@@ -6,36 +6,27 @@ permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---
-## Using the stacked layout
+## Stacked layout
+
+The stacked (or vertical) layout is the default for this component. It helps users to enter more information than the other layout (inline), for example in up to 4 fields. 
+
+The 'Add another' component has 2 layouts -- view [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
 
 {% example template="examples/default", colocated="true", height=540 %}
 
-The stacked (or vertical) layout is the default for this component. It helps users to enter more information than the other layout ('inline'), for example in up to 3 fields. 
-
-It's 1 of 2 layouts for the 'add another' component. You can view [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
-
 ### Creating content 
 
-Create the following content for each component:
-
-- a heading
-- an item name
-
-#### Heading
-
-Add a heading that describes the task, for example 'Add a participant'. This will label each item accessibly using `aria-labelledby`. 
-
-The heading is not part of the component.
+Create an item name for each component.
 
 #### Item name
 
 Give the item a short and succinct name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name will be used in the following visible parts of the component:
 
 - item label (in sentence case) 
-- button text (in lower case) 
+- button label (in lower case) 
 - error messages (in lower case)
 
-The item names are numbered 1,2,3 and so on.  
+The item names are numbered 1, 2, 3 and so on.  
 
 #### Hidden text 
 
@@ -44,9 +35,15 @@ Hidden text is added to the end of the form field labels. In the example, this i
 - full name for participant 1
 - date of birth for participant 1
 
+### What to add to it
+
+Add no more than 4 fields to the stacked layout (this does not include the ‘remove’ button). This keeps it is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which cannot contain more than 4 fields.
+
+You can view [GOV.UK Design System guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
+
 ### The ‘Remove’ button
 
-The remove button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). This distinguishes it from the ‘Add another' button, which it is sometimes next to. Do not change the button colour. 
+The 'Remove' button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). This distinguishes it from the ‘Add another' button, which it is sometimes next to. Do not change the button colour. 
 
 Do not change the button position, as this may make it harder for zoom users to use the component.
 
@@ -85,13 +82,17 @@ Once the user has resolved errors in the first item, display the errors for the 
 
 ### Designing the page and onward journey
 
+#### Heading
+
+Add a heading that describes the task, for example 'Add a participant'. This is not part of the component.
+
 #### Using multiple components on a page
 
 Do not add the stacked layout:
 
 - to a page more than once
 - to a page with the inline layout already on it 
-- inside another 'add another' component to create a subsection (screenreaders may not announce it, and it may make the page harder to use for everyone)
+- inside another 'Add another' component to create a subsection (screenreaders may not announce it, and it may make the page harder to use for everyone)
 
 #### Other parts of the page
 
@@ -99,7 +100,7 @@ When users interact with this component, pages will get longer and more complex.
 
 #### Screens after the component  
 
-This component creates another item on a page. The data remains on the page until the user submits it, for example with a ‘save and continue’ button.   
+This component creates another item on the page. The data remains on the page until the user submits it, for example with a ‘Save and continue’ button.   
 
 Users can edit their items after submitting them using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
 
