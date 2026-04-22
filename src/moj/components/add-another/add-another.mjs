@@ -415,7 +415,7 @@ export class AddAnother extends ConfigurableComponent {
       // content (e.g.) with a heading, then this will handle that
       if (
         $legend.firstElementChild &&
-        $legend.firstElementChild instanceof HTMLElement
+        $legend.firstElementChild instanceof HTMLHeadingElement
       ) {
         $legend.firstElementChild.innerText = `${this.config.itemLabel} ${suffix}`
       } else {
@@ -596,7 +596,8 @@ export class AddAnother extends ConfigurableComponent {
    * @param {MouseEvent} event - Click event
    */
   onRemoveButtonClick(event) {
-    const $button = event.target
+    const $target = /** @type {Element} */ (event.target)
+    const $button = $target.closest('button')
 
     if (
       !$button ||
