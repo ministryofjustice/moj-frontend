@@ -20,14 +20,9 @@ layout: 'layouts/example.njk'
   ]
 }) }}
 
-<h2 class="govuk-heading-m govuk-label-wrapper"
-id="attendees-title">Attendees</h2>
-<p class="govuk-hint" id="attendees-hint">Provide the names of all
-attendees</p>
 
-<form method="post">
-    {% set firstItemHtml -%}
-    <div class="govuk-grid-column-one-half">
+{% set firstItemHtml -%}
+  <div class="govuk-grid-column-one-half">
       {{ govukInput({
         id: "person[0][first_name]",
         name: "person[0][first_name]",
@@ -41,9 +36,9 @@ attendees</p>
           "data-label": "First name"
         }
       }) }}
-      </div>
+  </div>
 
-    <div class="govuk-grid-column-one-half">
+  <div class="govuk-grid-column-one-half">
       {{ govukInput({
         id: "person[0][last_name]",
         name: "person[0][last_name]",
@@ -57,10 +52,10 @@ attendees</p>
           "data-label": "Last name"
         }
       }) }}
-      </div>
-    {% endset %}
+    </div>
+{% endset %}
 
-    {% set secondItemHtml -%}
+{% set secondItemHtml -%}
     <div class="govuk-grid-column-one-half">
       {{ govukInput({
         id: "person[1][first_name]",
@@ -91,7 +86,7 @@ attendees</p>
         }
       }) }}
       </div>
-    {%- endset -%}
+{%- endset -%}
 
     {%- set thirdItemHtml -%}
     <div class="govuk-grid-column-one-half">
@@ -125,6 +120,9 @@ attendees</p>
       </div>
   {%- endset -%}
 
+<h2 class="govuk-heading-m govuk-label-wrapper">Attendees</h2>
+<p class="govuk-hint">Provide the names of all attendees</p>
+<form method="post">
   {{ mojAddAnother({
       id: "add-attendees",
       itemLabel: "Person",
@@ -132,18 +130,16 @@ attendees</p>
       items: [
         {
           fieldset: {
-            describedBy: 'attendees-hint',
-            attributes: {
-              'aria-labelledby': 'attendees-title'
+            legend: {
+              text: "person 1"
             },
             html: firstItemHtml
           }
         },
         {
           fieldset: {
-            describedBy: 'attendees-hint',
-            attributes: {
-              'aria-labelledby': 'attendees-title'
+            legend: {
+              text: "person 1"
             },
             html: secondItemHtml
           },
@@ -153,15 +149,13 @@ attendees</p>
         },
         {
           fieldset: {
-            describedBy: 'attendees-hint',
-            attributes: {
-              'aria-labelledby': 'attendees-title'
+            legend: {
+              text: "person 1"
             },
             html: thirdItemHtml
           }
         }
       ]
     }) }}
-
 </form>
 
