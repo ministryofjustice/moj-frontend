@@ -1,24 +1,530 @@
-items: &items
-  - fieldset:
-      legend:
-        text: 'Person'
-      html: |
-        <div class="govuk-form-group">
-          <label  class="govuk-label"
-                  for="person[0][name]">Name</label>
-          <input  class="govuk-input"
-                  id="person[0][name]"
-                  name="person[0][name]"
-                  type="text"
-                  data-name="person[%index%][name]"
-                  data-id="person-%index%-name"
-                  data-label="Name"
-                  >
-        </div>
+# ---------------------------------------------------------------------------
+# Shared anchors
+# ---------------------------------------------------------------------------
+
+# A single-field person item (stacked, index 0)
+singlePersonItem: &singlePersonItem
+  fieldset:
+    legend:
+      text: 'Person 1'
+    html: |
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="person[0][name]">
+          Name
+          <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 1</span>
+        </label>
+        <input class="govuk-input"
+               id="person[0][name]"
+               name="person[0][name]"
+               type="text"
+               data-name="person[%index%][name]"
+               data-id="person[%index%][name]"
+               data-label="Name">
+      </div>
+
+# A two-field person item HTML block (first name + last name)
+twoFieldPersonItemHtml: &twoFieldPersonItemHtml |
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="person[0][first_name]">
+      First name
+      <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 1</span>
+    </label>
+    <input class="govuk-input"
+           id="person[0][first_name]"
+           name="person[0][first_name]"
+           type="text"
+           data-name="person[%index%][first_name]"
+           data-id="person[%index%][first_name]"
+           data-label="First name">
+  </div>
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="person[0][last_name]">
+      Last name
+      <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 1</span>
+    </label>
+    <input class="govuk-input"
+           id="person[0][last_name]"
+           name="person[0][last_name]"
+           type="text"
+           data-name="person[%index%][last_name]"
+           data-id="person[%index%][last_name]"
+           data-label="Last name">
+  </div>
+
+# Inline two-field person item HTML (columns side by side)
+inlinePersonItemHtml: &inlinePersonItemHtml |
+  <div class="govuk-grid-column-one-half">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="person[0][first_name]">
+        First name
+        <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 1</span>
+      </label>
+      <input class="govuk-input"
+             id="person[0][first_name]"
+             name="person[0][first_name]"
+             type="text"
+             data-name="person[%index%][first_name]"
+             data-id="person[%index%][first_name]"
+             data-label="First name">
+    </div>
+  </div>
+  <div class="govuk-grid-column-one-half">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="person[0][last_name]">
+        Last name
+        <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 1</span>
+      </label>
+      <input class="govuk-input"
+             id="person[0][last_name]"
+             name="person[0][last_name]"
+             type="text"
+             data-name="person[%index%][last_name]"
+             data-id="person[%index%][last_name]"
+             data-label="Last name">
+    </div>
+  </div>
+
+# ---------------------------------------------------------------------------
+# Examples
+# ---------------------------------------------------------------------------
 
 examples:
+  # 1. Default — single item, stacked layout
   - name: default
     options:
       id: 'default-add-another'
       itemLabel: 'Person'
-      items: *items
+      items:
+        - *singlePersonItem
+
+  # 2. Multiple items — three pre-populated items, stacked layout
+  - name: multiple items
+    options:
+      id: 'multiple-items-add-another'
+      itemLabel: 'Person'
+      items:
+        - fieldset:
+            legend:
+              text: 'Person 1'
+            html: |
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="person[0][name]">
+                  Name
+                  <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 1</span>
+                </label>
+                <input class="govuk-input"
+                       id="person[0][name]"
+                       name="person[0][name]"
+                       type="text"
+                       value="Jane Smith"
+                       data-name="person[%index%][name]"
+                       data-id="person[%index%][name]"
+                       data-label="Name">
+              </div>
+        - fieldset:
+            legend:
+              text: 'Person 2'
+            html: |
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="person[1][name]">
+                  Name
+                  <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 2</span>
+                </label>
+                <input class="govuk-input"
+                       id="person[1][name]"
+                       name="person[1][name]"
+                       type="text"
+                       value="John Baines"
+                       data-name="person[%index%][name]"
+                       data-id="person[%index%][name]"
+                       data-label="Name">
+              </div>
+        - fieldset:
+            legend:
+              text: 'Person 3'
+            html: |
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="person[2][name]">
+                  Name
+                  <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 3</span>
+                </label>
+                <input class="govuk-input"
+                       id="person[2][name]"
+                       name="person[2][name]"
+                       type="text"
+                       value="Janet Morris"
+                       data-name="person[%index%][name]"
+                       data-id="person[%index%][name]"
+                       data-label="Name">
+              </div>
+
+  # 3. Stacked with errors — two items, second has field-level error messages
+  - name: stacked with errors
+    options:
+      id: 'stacked-errors-add-another'
+      itemLabel: 'Person'
+      items:
+        - fieldset:
+            legend:
+              text: 'Person 1'
+            html: *twoFieldPersonItemHtml
+        - fieldset:
+            legend:
+              text: 'Person 2'
+            html: |
+              <div class="govuk-form-group govuk-form-group--error">
+                <label class="govuk-label" for="person[1][first_name]">
+                  First name
+                  <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 2</span>
+                </label>
+                <p id="person-1-first-name-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span>
+                  Enter first name for person 2
+                </p>
+                <input class="govuk-input govuk-input--error"
+                       id="person[1][first_name]"
+                       name="person[1][first_name]"
+                       type="text"
+                       aria-describedby="person-1-first-name-error"
+                       data-name="person[%index%][first_name]"
+                       data-id="person[%index%][first_name]"
+                       data-label="First name">
+              </div>
+              <div class="govuk-form-group govuk-form-group--error">
+                <label class="govuk-label" for="person[1][last_name]">
+                  Last name
+                  <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 2</span>
+                </label>
+                <p id="person-1-last-name-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span>
+                  Enter last name for person 2
+                </p>
+                <input class="govuk-input govuk-input--error"
+                       id="person[1][last_name]"
+                       name="person[1][last_name]"
+                       type="text"
+                       aria-describedby="person-1-last-name-error"
+                       data-name="person[%index%][last_name]"
+                       data-id="person[%index%][last_name]"
+                       data-label="Last name">
+              </div>
+
+  # 4. Inline — single item, inline layout
+  - name: inline
+    options:
+      id: 'inline-add-another'
+      itemLabel: 'Person'
+      layout: 'inline'
+      items:
+        - fieldset:
+            legend:
+              text: 'Person 1'
+            html: *inlinePersonItemHtml
+
+  # 5. Inline with multiple items — three items, inline layout
+  - name: inline with multiple items
+    options:
+      id: 'inline-multiple-items-add-another'
+      itemLabel: 'Person'
+      layout: 'inline'
+      items:
+        - fieldset:
+            legend:
+              text: 'Person 1'
+            html: |
+              <div class="govuk-grid-column-one-half">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="person[0][first_name]">
+                    First name
+                    <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 1</span>
+                  </label>
+                  <input class="govuk-input"
+                         id="person[0][first_name]"
+                         name="person[0][first_name]"
+                         type="text"
+                         value="John"
+                         data-name="person[%index%][first_name]"
+                         data-id="person[%index%][first_name]"
+                         data-label="First name">
+                </div>
+              </div>
+              <div class="govuk-grid-column-one-half">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="person[0][last_name]">
+                    Last name
+                    <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 1</span>
+                  </label>
+                  <input class="govuk-input"
+                         id="person[0][last_name]"
+                         name="person[0][last_name]"
+                         type="text"
+                         value="Smith"
+                         data-name="person[%index%][last_name]"
+                         data-id="person[%index%][last_name]"
+                         data-label="Last name">
+                </div>
+              </div>
+        - fieldset:
+            legend:
+              text: 'Person 2'
+            html: |
+              <div class="govuk-grid-column-one-half">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="person[1][first_name]">
+                    First name
+                    <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 2</span>
+                  </label>
+                  <input class="govuk-input"
+                         id="person[1][first_name]"
+                         name="person[1][first_name]"
+                         type="text"
+                         data-name="person[%index%][first_name]"
+                         data-id="person[%index%][first_name]"
+                         data-label="First name">
+                </div>
+              </div>
+              <div class="govuk-grid-column-one-half">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="person[1][last_name]">
+                    Last name
+                    <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 2</span>
+                  </label>
+                  <input class="govuk-input"
+                         id="person[1][last_name]"
+                         name="person[1][last_name]"
+                         type="text"
+                         data-name="person[%index%][last_name]"
+                         data-id="person[%index%][last_name]"
+                         data-label="Last name">
+                </div>
+              </div>
+        - fieldset:
+            legend:
+              text: 'Person 3'
+            html: |
+              <div class="govuk-grid-column-one-half">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="person[2][first_name]">
+                    First name
+                    <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 3</span>
+                  </label>
+                  <input class="govuk-input"
+                         id="person[2][first_name]"
+                         name="person[2][first_name]"
+                         type="text"
+                         data-name="person[%index%][first_name]"
+                         data-id="person[%index%][first_name]"
+                         data-label="First name">
+                </div>
+              </div>
+              <div class="govuk-grid-column-one-half">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="person[2][last_name]">
+                    Last name
+                    <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 3</span>
+                  </label>
+                  <input class="govuk-input"
+                         id="person[2][last_name]"
+                         name="person[2][last_name]"
+                         type="text"
+                         data-name="person[%index%][last_name]"
+                         data-id="person[%index%][last_name]"
+                         data-label="Last name">
+                </div>
+              </div>
+
+  # 6. Inline with errors — item-level errorMessage on the second item
+  - name: inline with errors
+    options:
+      id: 'inline-errors-add-another'
+      itemLabel: 'Person'
+      layout: 'inline'
+      items:
+        - fieldset:
+            legend:
+              text: 'Person 1'
+            html: |
+              <div class="govuk-grid-column-one-half">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="person[0][first_name]">
+                    First name
+                    <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 1</span>
+                  </label>
+                  <input class="govuk-input"
+                         id="person[0][first_name]"
+                         name="person[0][first_name]"
+                         type="text"
+                         value="John"
+                         data-name="person[%index%][first_name]"
+                         data-id="person[%index%][first_name]"
+                         data-label="First name">
+                </div>
+              </div>
+              <div class="govuk-grid-column-one-half">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="person[0][last_name]">
+                    Last name
+                    <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 1</span>
+                  </label>
+                  <input class="govuk-input"
+                         id="person[0][last_name]"
+                         name="person[0][last_name]"
+                         type="text"
+                         value="Smith"
+                         data-name="person[%index%][last_name]"
+                         data-id="person[%index%][last_name]"
+                         data-label="Last name">
+                </div>
+              </div>
+        - fieldset:
+            legend:
+              text: 'Person 2'
+            html: |
+              <div class="govuk-grid-column-one-half">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="person[1][first_name]">
+                    First name
+                    <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 2</span>
+                  </label>
+                  <input class="govuk-input"
+                         id="person[1][first_name]"
+                         name="person[1][first_name]"
+                         type="text"
+                         data-name="person[%index%][first_name]"
+                         data-id="person[%index%][first_name]"
+                         data-label="First name">
+                </div>
+              </div>
+              <div class="govuk-grid-column-one-half">
+                <div class="govuk-form-group govuk-form-group--error">
+                  <label class="govuk-label" for="person[1][last_name]">
+                    Last name
+                    <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 2</span>
+                  </label>
+                  <input class="govuk-input govuk-input--error"
+                         id="person[1][last_name]"
+                         name="person[1][last_name]"
+                         type="text"
+                         data-name="person[%index%][last_name]"
+                         data-id="person[%index%][last_name]"
+                         data-label="Last name">
+                </div>
+              </div>
+          errorMessage:
+            text: 'Enter last name for person 2'
+
+  # 7. With classes — custom class on the container
+  - name: with classes
+    options:
+      id: 'classes-add-another'
+      itemLabel: 'Person'
+      classes: 'custom-add-another-class'
+      items:
+        - *singlePersonItem
+
+  # 8. With attributes — custom data attribute on the container
+  - name: with attributes
+    options:
+      id: 'attributes-add-another'
+      itemLabel: 'Person'
+      attributes:
+        data-custom: 'custom-value'
+        data-test: 'test-value'
+      items:
+        - *singlePersonItem
+
+  # 9. With item classes — custom class on an individual item
+  - name: with item classes
+    options:
+      id: 'item-classes-add-another'
+      itemLabel: 'Person'
+      items:
+        - fieldset:
+            legend:
+              text: 'Person 1'
+            html: *twoFieldPersonItemHtml
+          classes: 'custom-item-class'
+
+  # 10. With remove button — explicit removeButton name/value on an item
+  - name: with remove button
+    options:
+      id: 'remove-button-add-another'
+      itemLabel: 'Person'
+      items:
+        - fieldset:
+            legend:
+              text: 'Person 1'
+            html: *twoFieldPersonItemHtml
+          removeButton:
+            name: 'remove'
+            value: '0'
+        - fieldset:
+            legend:
+              text: 'Person 2'
+            html: |
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="person[1][first_name]">
+                  First name
+                  <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 2</span>
+                </label>
+                <input class="govuk-input"
+                       id="person[1][first_name]"
+                       name="person[1][first_name]"
+                       type="text"
+                       data-name="person[%index%][first_name]"
+                       data-id="person[%index%][first_name]"
+                       data-label="First name">
+              </div>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="person[1][last_name]">
+                  Last name
+                  <span class="govuk-visually-hidden moj-add-another__label-suffix">for person 2</span>
+                </label>
+                <input class="govuk-input"
+                       id="person[1][last_name]"
+                       name="person[1][last_name]"
+                       type="text"
+                       data-name="person[%index%][last_name]"
+                       data-id="person[%index%][last_name]"
+                       data-label="Last name">
+              </div>
+          removeButton:
+            name: 'remove'
+            value: '1'
+
+  # 11. Custom item label — itemLabel set to 'Address' instead of 'Person'
+  - name: custom item label
+    options:
+      id: 'custom-label-add-another'
+      itemLabel: 'Address'
+      items:
+        - fieldset:
+            legend:
+              text: 'Address 1'
+            html: |
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="address[0][line1]">
+                  Address line 1
+                  <span class="govuk-visually-hidden moj-add-another__label-suffix">for address 1</span>
+                </label>
+                <input class="govuk-input"
+                       id="address[0][line1]"
+                       name="address[0][line1]"
+                       type="text"
+                       data-name="address[%index%][line1]"
+                       data-id="address[%index%][line1]"
+                       data-label="Address line 1">
+              </div>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="address[0][postcode]">
+                  Postcode
+                  <span class="govuk-visually-hidden moj-add-another__label-suffix">for address 1</span>
+                </label>
+                <input class="govuk-input govuk-input--width-10"
+                       id="address[0][postcode]"
+                       name="address[0][postcode]"
+                       type="text"
+                       data-name="address[%index%][postcode]"
+                       data-id="address[%index%][postcode]"
+                       data-label="Postcode">
+              </div>
