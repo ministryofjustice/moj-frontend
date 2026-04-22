@@ -15,7 +15,7 @@
   }
 } -%}
 
-<div class="moj-add-another {{- params.classes if params.classes -}}"
+<div class="moj-add-another{{- ' ' + params.classes if params.classes }}"
   {{- govukAttributes(dataAttributes) -}}
   {{- govukAttributes(params.attributes) -}}>
   <div class="moj-add-another__items">
