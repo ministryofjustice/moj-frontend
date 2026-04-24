@@ -1,6 +1,6 @@
 import { ConfigurableComponent } from 'govuk-frontend'
 
-import { setFocus, emitEvent, generateUniqueId } from '../../common/index.mjs'
+import { setFocus, emitEvent } from '../../common/index.mjs'
 
 /**
  * @augments {ConfigurableComponent<AddAnotherConfig>}
