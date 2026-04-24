@@ -1,6 +1,6 @@
 /* eslint-disable no-new */
 
-import { getByRole, queryByRole, getAllByRole } from '@testing-library/dom'
+import { getByRole, queryByRole } from '@testing-library/dom'
 
 import { render, getExamples } from '../../lib/components.js'
 
@@ -16,9 +16,11 @@ import { AddAnother } from './add-another.mjs'
 function renderExample(example) {
   document.body.insertAdjacentHTML('afterbegin', render('add-another', example))
 
-  document.querySelectorAll('[data-module="moj-add-another"]').forEach(($el) => {
-    new AddAnother($el)
-  })
+  document
+    .querySelectorAll('[data-module="moj-add-another"]')
+    .forEach(($el) => {
+      new AddAnother($el)
+    })
 
   return /** @type {HTMLElement} */ (
     document.querySelector('[data-module="moj-add-another"]')
