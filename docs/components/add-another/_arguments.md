@@ -35,14 +35,12 @@
 ### fieldset
 | Name                   | Type    | Required | Description                                                                                                                                                     |
 | ---------------------- | ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| describedBy            | string  | No       | One or more element IDs to add to the `aria-describedby` attribute, used to provide additional descriptive information for screen reader users. |
-| legend                 | object  | No       | Required for ‘stacked’ layout. [See macro options for legend](#legend). |
+| legend                 | object  | Yes      | The title for the item. [See macro options for legend](#legend). |
 | html                   | string  | Yes      | HTML to use or render within the fieldset element.|
 | classes                | string  | No       | Classes to add to the fieldset container. |
-| role                   | string  | No       | Optional ARIA role attribute. |
 | attributes             | string  | No       | HTML attributes (for example data attributes) to add to the fieldset container.  
-
-For the ‘inline’ layout, the attributes must contain an `aria-labelledby` attribute with an element ID. |
+| role                   | string  | No       | Optional ARIA role attribute. |
+| describedBy            | string  | No       | One or more element IDs to add to the `aria-describedby` attribute, used to provide additional descriptive information for screen reader users. |
 
 ### legend
 | Name                   | Type    | Required | Description
