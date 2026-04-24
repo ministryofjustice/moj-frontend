@@ -118,7 +118,7 @@ test.describe('add another', () => {
       }
     })
 
-    test('removing items', async ({ page }) => {
+    test('removing items', async () => {
       const names = ['Jane Smith', 'John Baines', 'Janet Morris']
 
       // add two items so there are three in total
