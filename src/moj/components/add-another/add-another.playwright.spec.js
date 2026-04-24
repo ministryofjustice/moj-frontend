@@ -13,7 +13,7 @@ const initialiseAddAnothers = () => {
   )
   $addAnothers.forEach(($addAnother) => {
     /* eslint-disable no-new, no-undef */
-    // @ts-expect-error Alert is in page scope not test scope
+    // @ts-expect-error addAnother is in page scope not test scope
     new AddAnother($addAnother)
   })
 }
