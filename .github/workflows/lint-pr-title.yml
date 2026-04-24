@@ -27,7 +27,7 @@ jobs:
           # type: subject
           #
           # Allowed types align with common conventional commit types.
-          PATTERN='^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\\([^)]+\\))?(!)?: .+'
+          PATTERN='^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([^)]+\))?(!)?: .+'
 
           if [[ ! "${PR_TITLE}" =~ ${PATTERN} ]]; then
             echo "::error::PR title must match Conventional Commits (e.g. 'feat: add X' or 'fix(scope): correct Y'). Got: ${PR_TITLE}"
