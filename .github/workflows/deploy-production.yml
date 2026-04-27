@@ -63,7 +63,7 @@ jobs:
           node-version-file: .nvmrc
 
       - name: npm install
-        run: npm rum setup
+        run: npm run setup
 
       - name: Lint Sass
         run: npm run lint:scss
