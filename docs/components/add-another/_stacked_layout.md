@@ -14,7 +14,7 @@ The 'Add another' component has 2 layouts -- view [guidance on choosing a layout
 
 {% example template="examples/default", colocated="true", height=540 %}
 
-### Creating content 
+### Content 
 
 Create an item name for each component.
 
@@ -28,12 +28,14 @@ Give the item a short and succinct name. For example 'person', 'offence', 'incom
 
 The item names are numbered 1, 2, 3 and so on.  
 
-#### Hidden text 
+#### Form field labels
 
-Hidden text is added to the end of the form field labels. In the example, this is:
+Hidden text is added to the end of the component labels. This is to help screen reader users know which item they are editing or removing. In the example, it adds the content in brackets to these field labels:
 
-- full name for participant 1
-- date of birth for participant 1
+- full name (for participant 1)
+- date of birth (for participant 1)
+
+This hidden text is automatically added by JavaScript. However, if you add it to the HTML template the component will still be accessible without JavaScript (progressive enhancement). 
 
 ### What to add to it
 
@@ -80,6 +82,10 @@ Show errors for 1 item at a time using the [GOV.UK error summary](https://design
 
 Once the user has resolved errors in the first item, display the errors for the next item until they're all resolved. This ensures that users can identify errors when an item is added or removed. 
 
+### JavaScript
+
+This component relies on JavaScript. To make it work without JS, you need to make sure that when the 'Add another' and 'remove' buttons are selected, the form submits and the page reloads with the changes.  
+
 ### Designing the page and onward journey
 
 #### Heading
@@ -93,6 +99,10 @@ Do not add the stacked layout:
 - to a page more than once
 - to a page with the inline layout already on it 
 - inside another 'Add another' component to create a subsection (screenreaders may not announce it, and it may make the page harder to use for everyone)
+
+### JavaScript
+
+This component relies on JavaScript. To make it work without JavaScript, you need to make sure that when the 'Add another' and 'Remove' buttons are selected, the form submits and the page reloads with the changes.  
 
 #### Other parts of the page
 

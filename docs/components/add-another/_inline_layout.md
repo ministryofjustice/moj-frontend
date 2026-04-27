@@ -14,7 +14,7 @@ The inline (or horizontal) layout is a lean design for up to 3 fields.
 
 The 'Add another' component has 2 layouts -- view [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
 
-### Creating content
+### Content
 
 Create an item name for each component.
 
@@ -28,13 +28,15 @@ Give the item a short and succinct name. For example 'person', 'offence', 'incom
 
 The item names are numbered 1, 2, 3 and so on.
 
-#### Hidden text
+#### Form field labels
 
 Hidden text is added to the end of the component labels. This is to help screen reader users know which item they are editing or removing. In the example, it adds the content in brackets to these field labels:
 
 - bank name (for account 1)
 - funds (for account 1)
 - remove (account 1), for the remove button
+
+This hidden text is automatically added by JavaScript. However, if you add it to the HTML template the component will still be accessible without JavaScript (progressive enhancement). 
 
 ### What to add to it
 
@@ -57,7 +59,7 @@ Do not change the button position, as this may make it harder for zoom users to 
 
 ### Error messages
 
-INSERT CODED EXAMPLE
+{% example template="examples/inline-errors", colocated="true", height=540 %}
 
 The red error border is attached to the whole item rather than the location of the error. This is to help users find the error.
 
@@ -89,6 +91,10 @@ Follow the [GOV.UK Design System guidance on error messages](https://design-syst
 Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/). 
 
 Once the user has resolved errors in the first item, display the errors for the next item until they're all resolved. This ensures that users can identify errors when an item is added or removed. 
+
+### JavaScript
+
+This component relies on JavaScript. To make it work without JavaScript, you need to make sure that when the 'Add another' and 'Remove' buttons are selected, the form submits and the page reloads with the changes.  
 
 ### Designing the page and onward journey
 
