@@ -8,23 +8,23 @@ eleventyComputed:
 ---
 ## Inline layout
 
-{% example template="examples/inline-accounts", colocated="true", height=540 %}
-
 The inline (or horizontal) layout is a lean design for up to 3 fields. 
 
-The 'Add another' component has 2 layouts -- view [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
+^ The 'Add another' component has 2 layouts -- view [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
+
+{% example template="examples/inline-accounts", colocated="true", height=540 %}
 
 ### Content
 
-Create an item name for each component.
-
 #### Item name
 
-Give the item a short and succinct name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name will be used in the following visible parts of the component:
+Give each component a short and succinct item name. For example 'person', 'offence', 'income', 'application' or 'session'. 
 
-- 'Add another' button text (in lower case)
-- 'Remove' button text (in lower case)
-- error messages (in lower case)
+The item name will be used in lower case in the following visible parts of the component:
+
+- 'Add another' button text  
+- 'Remove' button text  
+- error messages  
 
 The item names are numbered 1, 2, 3 and so on.
 
@@ -34,13 +34,13 @@ Hidden text is added to the end of the component labels. This is to help screen 
 
 - bank name (for account 1)
 - funds (for account 1)
-- remove (account 1), for the remove button
+- remove (account 1), for the 'Remove' button
 
-This hidden text is automatically added by JavaScript. However, if you add it to the HTML template the component will still be accessible without JavaScript (progressive enhancement). 
+This hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement). 
 
 ### What to add to it
 
-Add no more than 3 fields to the inline layout (this does not include the ‘remove’ button). This keeps it is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which cannot contain more than 4 fields.
+Add no more than 3 fields to the inline layout (this does not include the ‘remove’ button). This keeps it is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which limits the component to 4 fields.
 
 You can add only 2 types of components to it. These are the:
 
@@ -53,7 +53,7 @@ All the items and field labels need to fit on 1 line. You can view [GOV.UK Desig
 
 ### The ‘Remove’ button
 
-The remove button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). This distinguishes it from the ‘Add another’ button, which it is sometimes next to. Do not change the button colour.
+The 'Remove' button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). This distinguishes it from the ‘Add another' button, which it is sometimes next to. Do not change the button colour. 
 
 Do not change the button position, as this may make it harder for zoom users to use the component.
 
@@ -61,9 +61,10 @@ Do not change the button position, as this may make it harder for zoom users to 
 
 {% example template="examples/inline-errors", colocated="true", height=540 %}
 
-The red error border is attached to the whole item rather than the location of the error. This is to help users find the error.
+Errors can find their errors with:
 
-Hidden text is added to the item name to help users know where the error is.
+- a red error border on the whole item  
+- hidden text that's added to the item name  
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
@@ -104,12 +105,12 @@ Add a heading that describes the task, for example 'Add a participant'. This is 
 
 #### Placing multiple ‘add another‘ components on a page
 
-You can place the inline layout on a page more than once, but be aware of how this will affect the page length and complexity. Users may lose their position on the page, enter data in the wrong place or delete the wrong item.
+You can place the inline layout on a page more than once, but be aware of how this will affect the page length and complexity. Users may lose their position on the page, enter data in the wrong place, or delete the wrong item.
 
-Do not put it:
+Do not put the inline layout:
 
 - on the same page as the stacked layout
-- inside another ‘add another’ component, for example to create subsections (screen readers may not announce it, and it may make the page harder to use for everyone)
+- inside another ‘Add another’ component to create a subsection -- screen readers may not announce this, and it may make the page harder to use for everyone
 
 #### Other parts of the page
 
@@ -117,9 +118,9 @@ When users interact with this component, pages will get longer and more complex.
 
 #### Screens after the component
 
-The add another component creates another item on the page. The data remains on the page until the user submits it, for example with a ‘Save and continue’ button.
+The 'Add another' component creates another item on the page. The data remains on the page until the user submits it, for example with a ‘Save and continue’ button.
 
-Users can edit their items after submitting them using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
+Users can edit their items after submitting them, using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
 
 ### Example of using the inline variant more than once on a page
 
