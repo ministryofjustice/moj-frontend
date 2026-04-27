@@ -10,17 +10,15 @@ eleventyComputed:
 
 The stacked (or vertical) layout is the default for this component. It helps users to enter more information than the other layout (inline), for example in up to 4 fields. 
 
-The 'Add another' component has 2 layouts -- view [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
+^ The 'Add another' component has 2 layouts -- view [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
 
 {% example template="examples/default", colocated="true", height=540 %}
 
 ### Content 
 
-Create an item name for each component.
-
 #### Item name
 
-Give the item a short and succinct name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name will be used in the following visible parts of the component:
+Give each component a short and succinct item name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name will be used in the following visible parts of the component:
 
 - item label (in sentence case) 
 - button label (in lower case) 
@@ -35,11 +33,11 @@ Hidden text is added to the end of the component labels. This is to help screen 
 - full name (for participant 1)
 - date of birth (for participant 1)
 
-This hidden text is automatically added by JavaScript. However, if you add it to the HTML template the component will still be accessible without JavaScript (progressive enhancement). 
+This hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement). 
 
 ### What to add to it
 
-Add no more than 4 fields to the stacked layout (this does not include the ‘remove’ button). This keeps it is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which cannot contain more than 4 fields.
+Add no more than 4 fields to the stacked layout (this does not include the ‘remove’ button). This keeps it is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which limits the component to 4 fields.
 
 You can view [GOV.UK Design System guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
 
@@ -84,7 +82,7 @@ Once the user has resolved errors in the first item, display the errors for the 
 
 ### JavaScript
 
-This component relies on JavaScript. To make it work without JS, you need to make sure that when the 'Add another' and 'remove' buttons are selected, the form submits and the page reloads with the changes.  
+This component relies on JavaScript. To make it work without JavaScript, you need to make sure that when the 'Add another' and 'Remove' buttons are selected, the form submits and the page reloads with the changes.  
 
 ### Designing the page and onward journey
 
@@ -98,11 +96,7 @@ Do not add the stacked layout:
 
 - to a page more than once
 - to a page with the inline layout already on it 
-- inside another 'Add another' component to create a subsection (screenreaders may not announce it, and it may make the page harder to use for everyone)
-
-### JavaScript
-
-This component relies on JavaScript. To make it work without JavaScript, you need to make sure that when the 'Add another' and 'Remove' buttons are selected, the form submits and the page reloads with the changes.  
+- inside another 'Add another' component to create a subsection -- screenreaders may not announce it, and it may make the page harder to use for everyone
 
 #### Other parts of the page
 
@@ -110,10 +104,10 @@ When users interact with this component, pages will get longer and more complex.
 
 #### Screens after the component  
 
-This component creates another item on the page. The data remains on the page until the user submits it, for example with a ‘Save and continue’ button.   
+This component creates another item on the page. All the data remains on the page until the user submits it, for example with a ‘Save and continue’ button.   
 
 Users can edit their items after submitting them using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
 
-### Stacked variant example with radio buttons
+### Example of the stacked layout with radio buttons
 
 <p><img src="{{ 'assets/images/add-another-stacked.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The page contains a caption with some personal identifiers, including date of birth. The H1 is 'Tom Walker' and the H2 is 'Add a course'. Then there's the heading 'Course 1' and 2 field labels. They are 'Enter the course name' and 'Enter the course provider'. Underneath the fields is a question 'How long does the course last?' with 4 radio options. There's a horizontal line and then a grey button with the content 'Add another course'.></p>
