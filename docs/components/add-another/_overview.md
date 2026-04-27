@@ -16,7 +16,7 @@ The ‘Add another’ component allows users to add more than 1 instance of rela
 
 This component works best in a shallow layout for users to enter a small amount of information, ideally only a few times. 
 
-The information that people add ('items') could be:
+The information (or 'items') that people add could be:
 
 -	dates
 -	the names of people, programmes, events, or offences
