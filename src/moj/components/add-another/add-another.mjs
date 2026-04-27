@@ -191,8 +191,6 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   getNewItem() {
-    console.log(this.$itemTemplate)
-    console.log(this.$itemTemplate.content)
     const $item = document.importNode(this.$itemTemplate.content, true)
 
     if (!$item) {
@@ -311,8 +309,6 @@ export class AddAnother extends ConfigurableComponent {
       .filter(($input) => this.isValidInputElement($input))
       .filter(($input) => $input.classList.contains('govuk-input--error'))
       .map(($input) => $input.id)
-
-    console.log({ inputIdsWithErrors })
 
     $errorLinks.forEach(($link) => {
       const href = $link.getAttribute('href') || ''
@@ -446,10 +442,7 @@ export class AddAnother extends ConfigurableComponent {
     )
 
     if (!$button || !($button instanceof HTMLButtonElement)) {
-      console.log('no button')
-      console.log({ itemsCount, index })
       if (itemsCount > 1 && index === 0) {
-        console.log('creating remove button for first item')
         this.createRemoveButton($item, label)
       }
       return
@@ -527,8 +520,6 @@ export class AddAnother extends ConfigurableComponent {
    * @param {HTMLElement} $item - Add another item
    */
   resetItem($item) {
-    console.log($item)
-    console.log($item.querySelectorAll('[data-name], [data-id]'))
     $item.querySelectorAll('[data-name], [data-id]').forEach(($input) => {
       if (!this.isValidInputElement($input)) {
         return
@@ -587,7 +578,6 @@ export class AddAnother extends ConfigurableComponent {
    * @returns {string} the label for the remove button based on the layout configuration
    */
   removeButtonLabelText(labelIndex) {
-    console.log(this.config.layout)
     if (this.config.layout === 'inline') {
       return `Remove <span class="govuk-visually-hidden">${labelIndex}</span>`
     }
