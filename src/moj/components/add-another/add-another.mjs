@@ -351,10 +351,12 @@ export class AddAnother extends ConfigurableComponent {
             `${this.labelSuffixClass}`,
             'govuk-visually-hidden'
           )
-          $label.appendChild($labelSuffix)
+          $labelSuffix = $label.appendChild($labelSuffix)
         }
 
-        $labelSuffix.innerHTML = ` for ${this.config.itemLabel.toLowerCase()} ${index + 1}`
+        if ($labelSuffix && $labelSuffix instanceof HTMLElement) {
+          $labelSuffix.textContent = ` for ${this.config.itemLabel.toLowerCase()} ${index + 1}`
+        }
       }
     })
   }
@@ -378,7 +380,11 @@ export class AddAnother extends ConfigurableComponent {
       const $legend = $fieldset.querySelector('legend')
 
       if ($legend && $legend instanceof HTMLLegendElement) {
-        $legend.innerHTML = `${labelText}<span class="govuk-visually-hidden">for ${this.config.itemLabel.toLowerCase()} ${index + 1}</span>`
+        const hiddenText = document.createElement('span')
+        hiddenText.classList.add('govuk-visually-hidden')
+        hiddenText.textContent = `for ${this.config.itemLabel.toLowerCase()} ${index + 1}`
+        $legend.textContent = `${labelText}`
+        $legend.appendChild(hiddenText)
       }
     })
   }
@@ -438,7 +444,6 @@ export class AddAnother extends ConfigurableComponent {
     const label = this.removeButtonLabelText(
       `${this.config.itemLabel.toLowerCase()} ${index + 1}`
     )
-    console.log(label)
 
     if (!$button || !($button instanceof HTMLButtonElement)) {
       console.log('no button')

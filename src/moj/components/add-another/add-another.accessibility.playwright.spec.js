@@ -43,10 +43,6 @@ async function setupPage(page, examples, exampleName) {
   await page.evaluate(initialiseAddAnothers)
 }
 
-test.use({
-  headless: false
-})
-
 test.describe('add another accessibility', () => {
   let examples
 

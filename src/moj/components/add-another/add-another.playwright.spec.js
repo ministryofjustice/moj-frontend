@@ -18,10 +18,6 @@ const initialiseAddAnothers = () => {
   })
 }
 
-test.use({
-  headless: true
-})
-
 test.describe('add another', () => {
   let examples
   let example = ''
