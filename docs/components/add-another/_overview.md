@@ -36,7 +36,11 @@ Use the [‘add to a list’ pattern](/patterns/add-to-a-list/) to help users ad
 
 The 'Add another' component has 2 layouts:
 
-- [stacked](#stacked)
-- [inline](#inline)
+- [stacked](#stacked-layout-tab)
+- [inline](##inline-layout-tab)
 
 View [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
+
+## Similar or linked components
+
+There's also the [‘add to a list’ pattern](/patterns/add-to-a-list/).
