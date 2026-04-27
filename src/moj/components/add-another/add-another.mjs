@@ -345,15 +345,17 @@ export class AddAnother extends ConfigurableComponent {
       if ($label && $label instanceof HTMLLabelElement) {
         let $labelSuffix = $label.querySelector(`.${this.labelSuffixClass}`)
 
-        if ($labelSuffix && $labelSuffix instanceof HTMLElement) {
-          $labelSuffix.innerText = ` for ${this.config.itemLabel.toLowerCase()} ${index + 1}`
-        } else {
+        if (!$labelSuffix) {
           $labelSuffix = document.createElement('span')
           $labelSuffix.classList.add(
             `${this.labelSuffixClass}`,
             'govuk-visually-hidden'
           )
-          $label.appendChild($labelSuffix)
+          $labelSuffix = $label.appendChild($labelSuffix)
+        }
+
+        if ($labelSuffix && $labelSuffix instanceof HTMLElement) {
+          $labelSuffix.textContent = ` for ${this.config.itemLabel.toLowerCase()} ${index + 1}`
         }
       }
     })
@@ -380,8 +382,8 @@ export class AddAnother extends ConfigurableComponent {
       if ($legend && $legend instanceof HTMLLegendElement) {
         const hiddenText = document.createElement('span')
         hiddenText.classList.add('govuk-visually-hidden')
-        hiddenText.innerText = `for ${this.config.itemLabel.toLowerCase()} ${index + 1}`
-        $legend.innerText = `${labelText}`
+        hiddenText.textContent = `for ${this.config.itemLabel.toLowerCase()} ${index + 1}`
+        $legend.textContent = `${labelText}`
         $legend.appendChild(hiddenText)
       }
     })
