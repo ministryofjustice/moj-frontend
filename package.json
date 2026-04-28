@@ -64,6 +64,7 @@
   "homepage": "https://github.com/ministryofjustice/moj-frontend#readme",
   "dependencies": {
     "@ministryofjustice/frontend": "*",
+    "@opentelemetry/instrumentation": "0.215.0",
     "@sentry/node": "^10.49.0",
     "@sentry/rollup-plugin": "^5.2.0",
     "a11y-syntax-highlighting": "^1.1.0",
