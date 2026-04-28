@@ -87,8 +87,8 @@
     "sanitize-html": "^2.17.0"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.2",
-    "@11ty/eleventy-navigation": "^1.0.4",
+    "@11ty/eleventy": "^3.1.5",
+    "@11ty/eleventy-navigation": "^1.0.5",
     "@babel/core": "^7.29.0",
     "@babel/preset-env": "^7.29.2",
     "@commitlint/cli": "^19.8.1",
@@ -158,7 +158,7 @@
     "jest-sinon": "^1.1.0",
     "js-beautify": "^1.15.4",
     "lodash": "^4.18.1",
-    "markdown-it": "^14.1.0",
+    "markdown-it": "^14.1.1",
     "markdown-it-anchor": "^9.2.0",
     "mock-match-media": "^1.0.3",
     "nise": "^6.1.5",
