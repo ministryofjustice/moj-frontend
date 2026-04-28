@@ -1,0 +1,5 @@
+.moj-add-another .govuk-select {
+  @media (min-width: 40.0625em) {
+    min-width: 100%;
+  }
+}

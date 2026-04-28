@@ -1,0 +1,69 @@
+{%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
+{%- from "moj/components/add-another/macro.njk" import mojAddAnotherItem -%}
+{%- from "govuk/components/input/macro.njk" import govukInput -%}
+{%- from "govuk/components/select/macro.njk" import govukSelect -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+
+{% set itemHtml -%}
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukInput({
+      id: "offences[0][name]",
+      name: "offences[0][name]",
+      label: {
+        html: "Name of offence <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for offence
+      1</span>"
+      },
+      attributes: {
+        "data-name": "offences[%index%][name]",
+        "data-id": "offences[%index%][name]",
+        "data-label": "Name of offence"
+      }
+    }) }}
+  </div>
+  <div class="govuk-grid-column-one-third">
+    {{ govukSelect({
+      id: "offences[0][type]",
+      name: "offences[0][type]",
+      label: {
+        html: "Sentence type <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for offence 1</span>"
+      },
+      items: [
+        {
+          value: "custody",
+          text: "Custody"
+        },
+        {
+          value: "probation",
+          text: "Probation"
+        }
+      ],
+      attributes: {
+        "data-name": "offences[%index%][value]",
+        "data-id": "offences[%index%][value]",
+        "data-label": "Funds in offence"
+      }
+    }) }}
+  </div>
+{% endset %}
+
+<h2 class="govuk-heading-m govuk-label-wrapper" id="offences-title">Add offences</h2>
+<p class="govuk-hint" id="offences-hint">Add details of all offences.</p>
+<form method="post">
+  {{ mojAddAnother({
+    id: "add-offences",
+    itemLabel: "offence",
+    layout: 'inline',
+    items: [
+      {
+        fieldset: {
+          describedBy: 'offences-hint',
+          attributes: {
+            'aria-labelledby': 'offences-title'
+          },
+          html: itemHtml
+        }
+      }
+    ]
+  }) }}
+</form>
+
