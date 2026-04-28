@@ -11,11 +11,12 @@ if (ENV === 'development' || ENV === 'test') {
 } else {
   // Create Redis client
   redis = createClient({
-    host: REDIS_URL || '127.0.0.1',
-    port: REDIS_PORT || 6379,
-    ...(REDIS_AUTH_TOKEN
-      ? { password: REDIS_AUTH_TOKEN, tls: {} }
-      : { tls: false })
+    socket: {
+      host: REDIS_URL || '127.0.0.1',
+      port: REDIS_PORT || 6379,
+      ...(REDIS_AUTH_TOKEN ? { tls: true } : {})
+    },
+    ...(REDIS_AUTH_TOKEN ? { password: REDIS_AUTH_TOKEN } : {})
   })
 
   redis.connect()
