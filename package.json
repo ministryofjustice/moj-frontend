@@ -89,6 +89,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-navigation": "^1.0.4",
+    "@axe-core/playwright": "4.11.2",
     "@babel/core": "^7.29.0",
     "@babel/preset-env": "^7.29.2",
     "@commitlint/cli": "^19.8.1",
@@ -104,8 +105,8 @@
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^13.1.1",
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/jest-dom": "6.9.1",
     "@testing-library/user-event": "^14.6.1",
     "@types/connect-redis": "^0.0.23",
     "@types/express": "^5.0.6",
