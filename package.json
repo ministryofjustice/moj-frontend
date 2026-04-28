@@ -180,7 +180,7 @@
     "stylelint-order": "^6.0.4",
     "terser": "^5.46.1",
     "typed-query-selector": "^2.12.1",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "config": {
     "commitizen": {
