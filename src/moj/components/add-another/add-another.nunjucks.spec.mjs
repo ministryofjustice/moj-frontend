@@ -400,5 +400,58 @@ describe('add another', () => {
 
       expect(eventTarget).toBe($component)
     })
+
+    test('dispatches moj-add-another:create-template when the template is created', () => {
+      // This event fires during construction, so the listener must be attached
+      // before initialisation. Inject a fresh uninitialised element alongside
+      // the one already set up by beforeEach, then select it by the absence
+      // of the data-moj-add-another-init attribute.
+      document.body.insertAdjacentHTML(
+        'beforeend',
+        render('add-another', examples.default)
+      )
+
+      const $uninitialised = /** @type {HTMLElement} */ (
+        document.querySelector(
+          '[data-module="moj-add-another"]:not([data-moj-add-another-init])'
+        )
+      )
+
+      const listener = jest.fn()
+      $uninitialised.addEventListener(
+        'moj-add-another:create-template',
+        listener
+      )
+
+      new AddAnother($uninitialised)
+
+      expect(listener).toHaveBeenCalledTimes(1)
+      expect(listener.mock.calls[0][0]).toBeInstanceOf(CustomEvent)
+    })
+
+    test('create-template event is dispatched on the template element', () => {
+      document.body.insertAdjacentHTML(
+        'beforeend',
+        render('add-another', examples.default)
+      )
+
+      const $uninitialised = /** @type {HTMLElement} */ (
+        document.querySelector(
+          '[data-module="moj-add-another"]:not([data-moj-add-another-init])'
+        )
+      )
+
+      let eventTarget = null
+      $uninitialised.addEventListener(
+        'moj-add-another:create-template',
+        (event) => {
+          eventTarget = event.target
+        }
+      )
+
+      new AddAnother($uninitialised)
+
+      expect(eventTarget).toBeInstanceOf(HTMLTemplateElement)
+    })
   })
 })
