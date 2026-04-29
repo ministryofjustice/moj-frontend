@@ -6,6 +6,11 @@
   "minimumReleaseAge": "7 days",
   "packageRules": [
     {
+      "matchFileNames": ["package/package.json"],
+      "matchPackageNames": ["govuk-frontend"],
+      "enabled": false
+    },
+    {
       "groupName": "Build",
       "matchPackageNames": [
         "@babel/*",
