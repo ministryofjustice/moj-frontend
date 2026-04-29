@@ -2,20 +2,14 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended", ":semanticCommitTypeAll(build)"],
   "ignoreDeps": ["eslint", "eslint-plugin-promise", "eslint-plugin-n"],
-  "ignorePaths": [
-    "**/node_modules/**",
-    "**/bower_components/**",
-    "**/vendor/**",
-    "**/examples/**",
-    "**/__tests__/**",
-    "**/test/**",
-    "**/tests/**",
-    "**/__fixtures__/**",
-    "package/**"
-  ],
   "labels": ["renovate: dependencies 🗃️"],
   "minimumReleaseAge": "7 days",
   "packageRules": [
+    {
+      "matchFileNames": ["package/package.json"],
+      "matchPackageNames": ["govuk-frontend"],
+      "enabled": false
+    },
     {
       "groupName": "Build",
       "matchPackageNames": [
