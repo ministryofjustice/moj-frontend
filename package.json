@@ -160,7 +160,7 @@
     "markdown-it-anchor": "^9.2.0",
     "mock-match-media": "^1.0.3",
     "nise": "^6.1.5",
-    "nodemon": "^3.1.10",
+    "nodemon": "^3.1.14",
     "outdent": "^0.8.0",
     "plugin-error": "^2.0.1",
     "postcss": "^8.5.10",
