@@ -12,13 +12,13 @@ function compressImages() {
 
       const ext = file.extname.toLowerCase()
 
-      if (ext === '.svg') {
-        const result = optimize(file.contents.toString(), { multipass: true })
-        file.contents = Buffer.from(result.data)
-        return callback(null, file)
-      }
-
       try {
+        if (ext === '.svg') {
+          const result = optimize(file.contents.toString(), { multipass: true })
+          file.contents = Buffer.from(result.data)
+          return callback(null, file)
+        }
+
         let pipeline = sharp(file.contents)
 
         if (ext === '.png') {
@@ -30,6 +30,7 @@ function compressImages() {
         file.contents = await pipeline.toBuffer()
         return callback(null, file)
       } catch (err) {
+        console.error(err)
         return callback(err)
       }
     }
