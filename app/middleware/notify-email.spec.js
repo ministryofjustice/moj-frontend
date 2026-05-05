@@ -1,24 +1,55 @@
 const mockSendEmail = jest.fn()
-process.env.NOTIFY_EMAIL_RETRY_MS = 1000
-process.env.NOTIFY_EMAIL_MAX_RETRIES = 3
-const { NotifyClient } = require('notifications-node-client')
+const mockPrepareUpload = jest.fn().mockReturnValue('mockFileUrl')
 
-const {
-  sendSubmissionEmail,
-  sendPrEmail,
-  sendSuccessEmail
-} = require('./notify-email')
+const mockConfigDefaults = {
+  NOTIFY_SUBMISSION_TEMPLATE: 'mock-submission-template',
+  NOTIFY_PR_TEMPLATE: 'mock-pr-template',
+  NOTIFY_SUCCESS_TEMPLATE: 'mock-success-template',
+  NOTIFY_VERIFICATION_TEMPLATE: 'mock-verification-template',
+  NOTIFY_EMAIL: 'mock@email.com',
+  NOTIFY_TOKEN: 'mock-token',
+  NOTIFY_EMAIL_RETRY_MS: 1000,
+  NOTIFY_EMAIL_MAX_RETRIES: 3,
+  APP_URL: 'http://localhost:3000'
+}
+
+jest.mock('../config', () => ({ ...mockConfigDefaults }))
 
 jest.mock('notifications-node-client', () => {
   return {
     NotifyClient: jest.fn().mockImplementation(() => {
       return {
         sendEmail: mockSendEmail,
-        prepareUpload: jest.fn().mockReturnValue('mockFileUrl')
+        prepareUpload: mockPrepareUpload
       }
     })
   }
 })
+
+const { NotifyClient } = require('notifications-node-client')
+
+const {
+  sendSubmissionEmail,
+  sendPrEmail,
+  sendSuccessEmail,
+  sendVerificationEmail
+} = require('./notify-email')
+
+// Helper to re-require notify-email with a patched config
+const requireWithConfig = (configOverrides) => {
+  jest.resetModules()
+  jest.doMock('../config', () => ({
+    ...mockConfigDefaults,
+    ...configOverrides
+  }))
+  jest.doMock('notifications-node-client', () => ({
+    NotifyClient: jest.fn().mockImplementation(() => ({
+      sendEmail: mockSendEmail,
+      prepareUpload: mockPrepareUpload
+    }))
+  }))
+  return require('./notify-email')
+}
 
 describe('sendSubmissionEmail', () => {
   let originalLog, originalError
@@ -54,7 +85,7 @@ describe('sendSubmissionEmail', () => {
     expect(mockSendEmail).toHaveBeenCalledTimes(1)
   })
 
-  it('should handle errors when sending a submission email', async () => {
+  it('should retry and throw an error after all retries are exhausted', async () => {
     const error = new Error('Failed to send email')
     mockSendEmail.mockRejectedValue(error)
 
@@ -73,6 +104,15 @@ describe('sendSubmissionEmail', () => {
       }
     )
     expect(mockSendEmail).toHaveBeenCalledTimes(3)
+  })
+
+  it('should throw if NOTIFY_SUBMISSION_TEMPLATE is not set', async () => {
+    const { sendSubmissionEmail: fn } = requireWithConfig({
+      NOTIFY_SUBMISSION_TEMPLATE: ''
+    })
+    await expect(fn('filebuffer', 'markdown')).rejects.toThrow(
+      'NOTIFY_SUBMISSION_TEMPLATE env var is not set'
+    )
   })
 })
 
@@ -171,7 +211,7 @@ describe('sendPrEmail', () => {
     expect(mockSendEmail).toHaveBeenCalledTimes(1)
   })
 
-  it('should handle errors when sending a PR email', async () => {
+  it('should retry and throw an error after all retries are exhausted', async () => {
     const error = new Error('Failed to send email')
     mockSendEmail.mockRejectedValue(error)
 
@@ -198,6 +238,13 @@ describe('sendPrEmail', () => {
       }
     )
     expect(mockSendEmail).toHaveBeenCalledTimes(3)
+  })
+
+  it('should throw if NOTIFY_PR_TEMPLATE is not set', async () => {
+    const { sendPrEmail: fn } = requireWithConfig({ NOTIFY_PR_TEMPLATE: '' })
+    await expect(
+      fn({ url: 'http://example.com', number: 1 }, {}, {})
+    ).rejects.toThrow('NOTIFY_PR_TEMPLATE env var is not set')
   })
 })
 
@@ -237,7 +284,7 @@ describe('sendSuccessEmail', () => {
     expect(mockSendEmail).toHaveBeenCalledTimes(1)
   })
 
-  it('should handle errors when sending a success email', async () => {
+  it('should retry and throw an error after all retries are exhausted', async () => {
     const error = new Error('Failed to send email')
     mockSendEmail.mockRejectedValue(error)
 
@@ -247,5 +294,64 @@ describe('sendSuccessEmail', () => {
       personalisation: {}
     })
     expect(mockSendEmail).toHaveBeenCalledTimes(3)
+  })
+
+  it('should throw if NOTIFY_SUCCESS_TEMPLATE is not set', async () => {
+    const { sendSuccessEmail: fn } = requireWithConfig({
+      NOTIFY_SUCCESS_TEMPLATE: ''
+    })
+    await expect(
+      fn({ componentName: 'component', email: 'a@b.com', name: 'bob' })
+    ).rejects.toThrow('NOTIFY_SUCCESS_TEMPLATE env var is not set')
+  })
+})
+
+describe('sendVerificationEmail', () => {
+  let mockSendEmail
+
+  beforeEach(() => {
+    const notifyClientInstance = new NotifyClient()
+    mockSendEmail = notifyClientInstance.sendEmail
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
+  it('should send a verification email successfully', async () => {
+    mockSendEmail.mockResolvedValue({ status: 'success' })
+
+    await sendVerificationEmail('user@example.com', 'abc123')
+
+    expect(mockSendEmail).toHaveBeenCalledWith(
+      expect.any(String),
+      'user@example.com',
+      {
+        personalisation: {
+          token_link:
+            'http://localhost:3000/contribute/add-new-component/email/verify/abc123'
+        }
+      }
+    )
+    expect(mockSendEmail).toHaveBeenCalledTimes(1)
+  })
+
+  it('should retry and throw an error after all retries are exhausted', async () => {
+    const error = new Error('Failed to send email')
+    mockSendEmail.mockRejectedValue(error)
+
+    await expect(
+      sendVerificationEmail('user@example.com', 'abc123')
+    ).rejects.toThrow('Failed to send email')
+    expect(mockSendEmail).toHaveBeenCalledTimes(3)
+  })
+
+  it('should throw if NOTIFY_VERIFICATION_TEMPLATE is not set', async () => {
+    const { sendVerificationEmail: fn } = requireWithConfig({
+      NOTIFY_VERIFICATION_TEMPLATE: ''
+    })
+    await expect(fn('user@example.com', 'abc123')).rejects.toThrow(
+      'NOTIFY_VERIFICATION_TEMPLATE env var is not set'
+    )
   })
 })
