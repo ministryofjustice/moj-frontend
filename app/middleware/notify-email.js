@@ -45,6 +45,7 @@ const sendEmail = async (
       } else {
         console.error('All retry attempts failed.')
         Sentry.captureException(error)
+        throw error
       }
     }
   }
