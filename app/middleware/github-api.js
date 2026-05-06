@@ -8,7 +8,8 @@ const {
   GITHUB_API_TOKEN,
   GITHUB_REPO_OWNER,
   GITHUB_REPO_NAME,
-  GITHUB_ISSUE_ASSIGNEE_USERNAMES
+  GITHUB_ISSUE_ASSIGNEE_USERNAMES,
+  GITHUB_PR_LABELS
 } = require('../config')
 const {
   stripFrontmatter,
@@ -140,7 +141,7 @@ const createPullRequest = async (branchName, title, description = '') => {
         Authorization: `Bearer ${GITHUB_API_TOKEN}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ labels: ['contribution', 'preview:request'] })
+      body: JSON.stringify({ labels: GITHUB_PR_LABELS })
     })
 
     if (!labelResponse.ok) {
