@@ -1,0 +1,26 @@
+---
+layout: layouts/example.njk
+title: Search (example)
+redirect_from: examples/search
+---
+
+{%- from "moj/components/search/macro.njk" import mojSearch -%}
+
+{{ mojSearch({
+  action: "#",
+  method: "post",
+  input: {
+    id: "search",
+    name: "search"
+  },
+  label: {
+    text: "Find a person",
+    classes: "govuk-!-font-weight-bold"
+  },
+  hint: {
+    text: "You can search by name, date of birth or National Insurance number"
+  },
+  button: {
+    text: "Search"
+  }
+}) }}

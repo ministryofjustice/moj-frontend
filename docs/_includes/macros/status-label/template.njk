@@ -1,30 +1,30 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 
 {% set statusAttribution -%}
-  {%- if params.status == "Experimental" %}
-    {%- if params.contributorTeam %}
-      by {{ params.contributorName | default("someone") }} in ‘{{ params.contributorTeam }}’
-    {%- elif params.contributorName %}
-      by {{ contributorName  }}
-    {% endif %}
-  {% endif %}
   {%- if params.statusDate %}
     in {{ params.statusDate }}
   {%- endif %}.
+  {%- if params.status == "Experimental" %}
+    {%- if params.contributorTeam %}
+       Contributed by {{ params.contributorName | default("someone") }} in ‘{{ params.contributorTeam }}’.
+    {%- elif params.contributorName %}
+       Contributed by {{ params.contributorName  }}.
+    {% endif %}
+  {% endif %}
 {%- endset %}
 
 {% set typeSingular = params.type -%}
 {% set typePlural = params.type + "s" -%}
 
 {% set linkText -%}
-  {{ params.statusData.link | renderString({
+  {{ params.statusData.link | renderNunjucksString({
     types: typePlural,
     type: typeSingular
   }) | upperFirst }}
 {%- endset %}
 
 {% set linkHtml -%}
-  {{ params.statusData.linkContent | renderString({
+{{ params.statusData.linkContent | renderNunjucksString({
     types: typePlural,
     type: typeSingular
   }) | upperFirst }}
@@ -32,7 +32,7 @@
 {%- endset %}
 
 <p class="app-status-message govuk-!-margin-bottom-2">
-  {{ params.statusData.statusMessage }} {{ statusAttribution }}
+  {{ params.statusAction if params.statusAction else params.statusData.statusAction }} {{ statusAttribution }}
 </p>
 
 {{ govukDetails({

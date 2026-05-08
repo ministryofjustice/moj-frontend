@@ -32,11 +32,11 @@
     margin-bottom: govuk-spacing(3);
     padding: govuk-spacing(4);
     border-left: 4px solid transparent;
-    background-color: govuk-colour("light-grey");
+    background-color: govuk-colour("black", $variant: "tint-95");
     flex-grow: 1;
 
     &--grey {
-      border-left-color: $govuk-border-colour;
+      border-left-color: govuk-functional-colour(border);
     }
 
     &--blue {

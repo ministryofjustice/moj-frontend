@@ -1,0 +1,8 @@
+---
+- date: 11/2022
+  details: Added to the design system
+  commit: 88a03c5
+
+- date: 12/2025
+  details: Updates to improve accessibility
+  commit: 205ab22

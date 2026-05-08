@@ -1,0 +1,21 @@
+---
+layout: layouts/example.njk
+title: Notification badge (example)
+redirect_from: examples/notification-badge-service-nav
+---
+
+{%- from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation -%}
+{%- from "moj/components/notification-badge/macro.njk" import mojNotificationBadge -%}
+
+{{ govukServiceNavigation({
+  navigation: [
+    { text: "Dashboard", active: true, href: "#" },
+    { html: "Messages" + mojNotificationBadge({
+        text: "123",
+        visuallyHiddenText: "unread"
+      }),
+      href: "#"
+    },
+    { text: "Cases", href: "#" }
+  ]
+}) }}

@@ -63,6 +63,11 @@ spec:
               secretKeyRef:
                 name: notify-submission-template
                 key: notify-submission-template
+          - name: NOTIFY_SUCCESS_TEMPLATE
+            valueFrom:
+              secretKeyRef:
+                name: notify-success-template
+                key: notify-success-template
           - name: NOTIFY_VERIFICATION_TEMPLATE
             valueFrom:
               secretKeyRef:

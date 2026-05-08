@@ -1,0 +1,276 @@
+---
+layout: layouts/example.njk
+title: Pagination (example)
+---
+
+{%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
+{% set items = [{
+    text: "1",
+    href: "#"
+  }, {
+    text: "2",
+    href: "#",
+    selected: true
+  }, {
+    text: "3",
+    href: "#"
+  }, {
+    type: "dots"
+  }, {
+    text: "5",
+    href: "#"
+  }]
+%}
+
+<h3>from, to and count</h3>
+{{ mojPagination({
+  items: items,
+  previous: {
+    text: "Previous",
+    href: "#"
+  },
+  next: {
+    text: "Next",
+    href: "#"
+  },
+  results: {
+    count: 46,
+    from: 11,
+    to: 20,
+    text: "results"
+  }
+}) }}
+
+<hr />
+<h3>from and to</h3>
+{{ mojPagination({
+  items: items,
+  previous: {
+    text: "Previous",
+    href: "#"
+  },
+  next: {
+    text: "Next",
+    href: "#"
+  },
+  results: {
+    from: 11,
+    to: 20,
+    text: "results"
+  }
+}) }}
+
+<hr />
+<h3>count only</h3>
+{{ mojPagination({
+  items: items,
+  previous: {
+    text: "Previous",
+    href: "#"
+  },
+  next: {
+    text: "Next",
+    href: "#"
+  },
+  results: {
+    count: 46,
+    text: "results"
+  }
+}) }}
+
+
+<hr />
+<h3>only one page in items</h3>
+{{ mojPagination({
+items: [
+  {
+    text: "1",
+    href: "#"
+  }
+  ]
+  }) }}
+
+<hr />
+<h3>only one page in items, from to and count</h3>
+{{ mojPagination({
+items: [
+  {
+    text: "1",
+    href: "#"
+  }
+  ],
+  results: {
+    from: 1,
+    to: 7,
+    count: 7,
+    text: "results"
+  }
+}) }}
+
+<hr />
+<h3>only one page in items, count</h3>
+{{ mojPagination({
+items: [
+  {
+    text: "1",
+    href: "#"
+  }
+  ],
+  results: {
+    count: 7,
+    text: "results"
+  }
+}) }}
+
+<hr />
+<h3>only one page in items, pages count</h3>
+{{ mojPagination({
+items: [
+  {
+    text: "1",
+    href: "#"
+  }
+  ],
+  results: {
+  pages: {
+    current: 1,
+    count: 1
+    }
+  }
+}) }}
+
+<hr />
+<h3>no items</h3>
+{{ mojPagination({}) }}
+
+<hr />
+<h3>no items, from to and count</h3>
+{{ mojPagination({
+  items: [],
+  results: {
+    from: 1,
+    to: 7,
+    count: 7,
+    text: "results"
+  }
+}) }}
+
+<hr />
+<h3>no items, count</h3>
+{{ mojPagination({
+  items: [],
+  results: {
+    count: 7,
+    text: "results"
+  }
+  }) }}
+
+<hr />
+<h3>no items, pages count</h3>
+{{ mojPagination({
+  results: {
+  pages: {
+    current: 1,
+    count: 1
+    }
+  }
+}) }}
+
+
+<hr />
+<h3>pages</h3>
+{{ mojPagination({
+  items: items,
+  previous: {
+    text: "Previous",
+    href: "#"
+  },
+  next: {
+    text: "Next",
+    href: "#"
+  },
+  results: {
+    pages: {
+      current: 2,
+      count: 5
+    },
+    count: 46,
+    text: "results"
+  }
+}) }}
+
+<hr />
+<h3>dots</h3>
+{{ mojPagination({
+  items: [{
+    text: "1",
+    href: "#"
+  }, {
+    text: "2",
+    href: "#",
+    type: 'dots'
+  }, {
+    text: "3",
+    href: "#"
+  }, {
+    type: "dots"
+  }, {
+    text: "5",
+    href: "#"
+  }],
+  previous: {
+    text: "Previous",
+    href: "#"
+  },
+  next: {
+    text: "Next",
+    href: "#"
+  },
+  results: {
+    pages: {
+      current: 2,
+      count: 5
+    },
+    count: 46,
+    text: "results"
+  }
+}) }}
+
+<hr />
+<h3>govuk args</h3>
+{{ mojPagination({
+  items: [{
+    number: "1",
+    href: "#"
+  }, {
+    number: "2",
+    href: "#",
+    current: true
+  }, {
+    number: "3",
+    href: "#"
+  }, {
+    ellipsis: true
+  }, {
+    number: "5",
+    href: "#"
+  }],
+  previous: {
+    text: "Previous",
+    href: "#"
+  },
+  next: {
+    text: "Next",
+    href: "#"
+  },
+  results: {
+    pages: {
+      current: 2,
+      count: 5
+    },
+    count: 46,
+    text: "results"
+  }
+}) }}

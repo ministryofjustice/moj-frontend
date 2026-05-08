@@ -12,8 +12,9 @@
 }
 
 .app-status-message {
-  &,
+  text-wrap: pretty;
 
+  &,
   // A specific selector to override .app-prose-scope
   .app-prose-scope & {
     color: $govuk-secondary-text-colour;

@@ -2,7 +2,7 @@
 layout: layouts/content.njk
 subsection: Production
 showHelp: true
-title: Import MoJ Frontend JavaScript
+title: Import MOJ Frontend JavaScript
 redirect_from:
   - /get-started/setting-up-javascript
   - /production/setting-up-javascript
@@ -11,18 +11,17 @@ eleventyNavigation:
   key: Import JavaScript
   parent: Production
   order: 70
-  excerpt: "Several MoJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript."
 ---
 
-Several MoJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript.
+Several MOJ Design System components use JavaScript to provide interactive features. In order to fully use these components you will need to add some code to your service to set up the JavaScript.
 
-Both MoJ Frontend JavaScript and GOV.UK Frontend JavaScript must be run with `<script type="module">`.
+Both MOJ Frontend JavaScript and GOV.UK Frontend JavaScript must be run with `<script type="module">`.
 
 This protects older browsers, including all versions of Internet Explorer, from running modern JavaScript that it does not support. Read about [GOV.UK Frontend browser support](https://frontend.design-system.service.gov.uk/browser-support/) for more information.
 
 ## Before you start
 
-You’ll need to add the following to the top of the `<body class="govuk-template__body">` section of your page template if you’re not using [GOV.UK Frontend’s Nunjucks macros](https://frontend.design-system.service.gov.uk/use-nunjucks/) or [MoJ Frontend’s Nunjucks macros](/production/use-nunjucks/).
+You’ll need to add the following to the top of the `<body class="govuk-template__body">` section of your page template if you’re not using [GOV.UK Frontend’s Nunjucks macros](https://frontend.design-system.service.gov.uk/use-nunjucks/) or [MOJ Frontend’s Nunjucks macros](/production/use-nunjucks/).
 
 This snippet adds the `.govuk-frontend-supported` class in supported browsers:
 
@@ -32,7 +31,7 @@ This snippet adds the `.govuk-frontend-supported` class in supported browsers:
 
 You should check the GOV.UK Frontend guidance [if the snippet is blocked by a Content Security Policy](#if-our-inline-javascript-snippet-is-blocked-by-a-content-security-policy).
 
-Next, to import the JavaScript from MoJ Frontend and GOV.UK Frontend, you can either:
+Next, to import the JavaScript from MOJ Frontend and GOV.UK Frontend, you can either:
 
 - add the JavaScript files to your HTML
 - Import JavaScript using a bundler
@@ -84,7 +83,7 @@ router.use('/javascripts', [
 
 If you decide to copy the JavaScript files instead, copy `/node_modules/@ministryofjustice/frontend/moj/moj-frontend.min.js` and `/node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.js` files into your application.
 
-You should use an automated task or your build pipeline to copy the files, so your project folder stays up to date when updates to MoJ Frontend and GOV.UK Frontend are released.
+You should use an automated task or your build pipeline to copy the files, so your project folder stays up to date when updates to MOJ Frontend and GOV.UK Frontend are released.
 
 ## Import JavaScript using a bundler
 

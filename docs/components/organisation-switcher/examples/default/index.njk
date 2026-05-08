@@ -1,0 +1,15 @@
+---
+layout: layouts/example.njk
+title: Organisation switcher (example)
+redirect_from: examples/organisation-switcher
+---
+
+{%- from "moj/components/organisation-switcher/macro.njk" import mojOrganisationSwitcher -%}
+
+{{ mojOrganisationSwitcher({
+  text: "HMP Sheppey Cluster (Swaleside)",
+  link: {
+    text: "Change prison",
+    href: "#"
+  }
+}) }}

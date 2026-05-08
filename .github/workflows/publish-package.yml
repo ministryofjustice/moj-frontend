@@ -2,31 +2,45 @@ name: Publish package
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Publish mode'
+        required: true
+        default: 'dryrun'
+        type: choice
+        options:
+          - dryrun
+          - publish
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version-file: .nvmrc
-      - run: npm ci
+      # Ensure npm 11.5.1 or later is installed
+      - name: Update npm
+        run: npm install -g npm@latest
+      - run: npm run setup
       - name: Get next version
         run: npm run ci:dryrun
         env:
-          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
       - run: npm run build:package
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: mojds-package
           path: package
       - run: npm run build:dist
       - run: ENV="production" npm run build:docs
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: mojds-dist
           path: dist
@@ -39,27 +53,32 @@ jobs:
       statuses: write
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [ 22.x, 24.x]
 
     steps:
       - name: Set commit status as pending
-        uses: myrotvorets/set-commit-status-action@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          sha: ${{ github.sha }}
-          status: pending
-          context: Tests
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          gh api "repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA}" \
+            -f state="pending" \
+            -f context="Tests" \
+            -f description="Tests started"
 
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version: ${{ matrix.node-version }}
+      # Ensure npm 11.5.1 or later is installed
+      - name: Update npm
+        run: npm install -g npm@latest
 
       - name: npm install
-        run: npm install
+        run: npm run setup
 
       - name: Lint Sass
         run: npm run lint:scss
@@ -88,12 +107,24 @@ jobs:
       statuses: write
     steps:
       - name: Set final commit status
-        uses: myrotvorets/set-commit-status-action@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          sha: ${{ github.sha }}
-          status: ${{ needs.test.result }}
-          context: Tests
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RESULT: ${{ needs.test.result }}
+        run: |
+          set -euo pipefail
+
+          STATE="${RESULT}"
+          case "${RESULT}" in
+            success) STATE="success" ;;
+            failure) STATE="failure" ;;
+            cancelled) STATE="error" ;;
+            *) STATE="error" ;;
+          esac
+
+          gh api "repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA}" \
+            -f state="${STATE}" \
+            -f context="Tests" \
+            -f description="Tests ${RESULT}"
 
   publish:
     runs-on: ubuntu-latest
@@ -105,24 +136,32 @@ jobs:
       id-token: write # to enable use of OIDC for npm provenance
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version-file: .nvmrc
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
           name: mojds-package
           path: package
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
           name: mojds-dist
           path: dist
-      - run: npm ci
-      - name: Publish to NPM
+      # Ensure npm 11.5.1 or later is installed
+      - name: Update npm
+        run: npm install -g npm@latest
+      - run: npm run setup
+      - name: If dryrun
+        if: github.event.inputs.mode == 'dryrun'
+        run: npm run ci:dryrun
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
+      - name: If publish
+        if: github.event.inputs.mode == 'publish'
         run: npm run ci:release
         env:
-          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}

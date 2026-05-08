@@ -8,11 +8,13 @@ const {
   GITHUB_API_TOKEN,
   GITHUB_REPO_OWNER,
   GITHUB_REPO_NAME,
-  GITHUB_ISSUE_ASSIGNEE_USERNAMES
+  GITHUB_ISSUE_ASSIGNEE_USERNAMES,
+  GITHUB_PR_LABELS
 } = require('../config')
 const {
   stripFrontmatter,
-  replaceTemplateVars
+  replaceTemplateVars,
+  urlize
 } = require('../helpers/text-helper')
 
 const getMainBranchSha = async () => {
@@ -82,10 +84,11 @@ const pushToGitHub = async (submissionData, branchName) => {
     await createBranch(baseSha, branchName)
 
     for (const [filePath, content] of Object.entries(submissionData)) {
-      const fileContent = filePath.endsWith('.md')
-        ? Buffer.from(content).toString('base64')
-        : content?.buffer ||
-          Buffer.from(JSON.stringify(content, null, 2)).toString('base64')
+      const fileContent =
+        filePath.endsWith('.md') || filePath.endsWith('11tydata.js')
+          ? Buffer.from(content).toString('base64')
+          : content?.buffer ||
+            Buffer.from(JSON.stringify(content, null, 2)).toString('base64')
       await addFileToBranch(filePath, fileContent, branchName)
     }
 
@@ -138,7 +141,7 @@ const createPullRequest = async (branchName, title, description = '') => {
         Authorization: `Bearer ${GITHUB_API_TOKEN}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ labels: ['contribution', 'preview:request'] })
+      body: JSON.stringify({ labels: GITHUB_PR_LABELS })
     })
 
     if (!labelResponse.ok) {
@@ -164,6 +167,7 @@ const createPullRequest = async (branchName, title, description = '') => {
 const createReviewIssue = async (pullRequest, submissionDetails) => {
   const { url, number } = pullRequest
   const { componentName } = submissionDetails
+  const componentSlug = `components/${urlize(componentName)}`
   let template
 
   // Load the github issue template
@@ -186,7 +190,7 @@ const createReviewIssue = async (pullRequest, submissionDetails) => {
   }
 
   if (template) {
-    const replacements = { URL: url, NUMBER: number }
+    const replacements = { URL: url, NUMBER: number, SLUG: componentSlug }
 
     // Remove the frontmatter
     template = stripFrontmatter(template)

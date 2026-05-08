@@ -1,5 +1,5 @@
 {
-  "internalOrganisation": "MoJ accessibility team",
+  "internalOrganisation": "MOJ accessibility team",
   "auditDate-day": "1",
   "auditDate-month": "4",
   "auditDate-year": "2011",

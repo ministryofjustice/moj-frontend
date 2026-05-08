@@ -17,14 +17,14 @@ jobs:
       id-token: write
       contents: read
       pull-requests: write
-    if: contains(github.event.pull_request.labels.*.name, 'preview:request') || contains(github.event.pull_request.labels.*.name, 'preview:active')
+    if: "${{ contains(github.event.pull_request.labels.*.name, 'preview: request') || contains(github.event.pull_request.labels.*.name, 'preview: active 👀') }}"
     steps:
-      - uses: actions/checkout@v4
-      - uses: aws-actions/configure-aws-credentials@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: aws-actions/configure-aws-credentials@ec61189d14ec14c8efccab744f656cffd0e33f37 # v6.1.0
         with:
           role-to-assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.ECR_REGION }}
-      - uses: aws-actions/amazon-ecr-login@v2
+      - uses: aws-actions/amazon-ecr-login@376925c9d111252e87ae59691e5a442dd100ef6a # v2.1.3
         id: login-ecr
       - run: |
           envsubst '${BRANCH}' < docker/nginx-preview.conf > docker/nginx-preview.conf.tmp && mv docker/nginx-preview.conf.tmp docker/nginx-preview.conf
@@ -53,5 +53,5 @@ jobs:
         run: |
           echo -e "🚀 Deployed to preview environment! If this is the first deploy, you may have to wait a few minutes for your preview site to be ready on the following URL:\n\n https://moj-frontend-pr-${{ github.event.pull_request.number }}.apps.live.cloud-platform.service.justice.gov.uk\n\n**Username:** \`preview\`, **Password:** \`moj\`" > comment.txt
           gh pr comment ${{ github.event.pull_request.number }} --body-file comment.txt
-          gh pr edit ${{ github.event.pull_request.number }} --remove-label "preview:request"
-          gh pr edit ${{ github.event.pull_request.number }} --add-label "preview:active"
+          gh pr edit ${{ github.event.pull_request.number }} --remove-label "preview: request"
+          gh pr edit ${{ github.event.pull_request.number }} --add-label "preview: active 👀"

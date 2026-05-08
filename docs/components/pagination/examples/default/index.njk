@@ -1,0 +1,44 @@
+---
+layout: layouts/example.njk
+title: Pagination controls and results count (example)
+redirect_from: examples/pagination
+---
+
+{%- from "moj/components/pagination/macro.njk" import mojPagination -%}
+{% from "govuk/components/pagination/macro.njk" import govukPagination %}
+
+
+{{ mojPagination({
+  items: [{
+    text: "1",
+    href: "#"
+  }, {
+    text: "2",
+    href: "#",
+    selected: true
+  }, {
+    text: "3",
+    href: "#"
+  }, {
+    type: "dots"
+  }, {
+    text: "7",
+    href: "#"
+  }],
+  results: {
+    count: 157,
+    from: 26,
+    to: 50,
+    text: "results"
+  },
+  previous: {
+    text: "Previous",
+    href: "#"
+  },
+  next: {
+    text: "Next",
+    href: "#"
+  }
+}) }}
+
+

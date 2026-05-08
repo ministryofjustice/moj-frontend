@@ -7,7 +7,7 @@
 
 .moj-filter {
   background-color: govuk-colour("white");
-  box-shadow: inset 0 0 0 1px govuk-colour("mid-grey");
+  box-shadow: inset 0 0 0 1px govuk-colour("black", $variant: "tint-80");
 
   &:focus {
     box-shadow:
@@ -18,7 +18,7 @@
 
 .moj-filter__header {
   padding: govuk-spacing(2) govuk-spacing(4);
-  background-color: govuk-colour("mid-grey");
+  background-color: govuk-colour("black", $variant: "tint-80");
   font-size: 0; // Hide whitespace between elements
   text-align: justify; // Trick to remove the need for floats
 
@@ -101,11 +101,11 @@
 
   &:focus {
     outline: none;
-    color: $govuk-focus-text-colour;
-    background-color: $govuk-focus-colour;
+    color: govuk-functional-colour(focus-text);
+    background-color: govuk-functional-colour(focus);
     box-shadow:
-      0 -2px $govuk-focus-colour,
-      0 4px $govuk-focus-text-colour;
+      0 -2px govuk-functional-colour(focus),
+      0 4px govuk-functional-colour(focus-text);
   }
 
   // Fix unwanted button padding in Firefox
@@ -129,8 +129,8 @@
 
 .moj-filter__selected {
   padding: govuk-spacing(4);
-  background-color: govuk-colour("light-grey");
-  box-shadow: inset 0 0 0 1px govuk-colour("mid-grey");
+  background-color: govuk-colour("black", $variant: "tint-95");
+  box-shadow: inset 0 0 0 1px govuk-colour("black", $variant: "tint-80");
 
   ul:last-of-type {
     margin-bottom: 0; // IE9 +
@@ -183,8 +183,8 @@
   }
 
   &:focus {
-    color: $govuk-focus-text-colour;
-    background-color: $govuk-focus-colour;
+    color: govuk-functional-colour(focus-text);
+    background-color: govuk-functional-colour(focus);
   }
 
   &:hover {
@@ -211,7 +211,7 @@
 .moj-filter__options {
   margin-top: -1px;
   padding: govuk-spacing(4);
-  box-shadow: inset 0 0 0 1px govuk-colour("mid-grey");
+  box-shadow: inset 0 0 0 1px govuk-colour("black", $variant: "tint-80");
 
   div:last-of-type {
     margin-bottom: 0; // IE9 +

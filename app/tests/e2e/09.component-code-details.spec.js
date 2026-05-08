@@ -166,7 +166,7 @@ test.describe('check your answers', async () => {
     await testPage.usageInput.fill('Use it')
     await testPage.clickContinue()
     await testPage.expectPageTitle('Figma design')
-    // await expect(page).toHaveTitle(/Check your answers - MoJ Design System/)
+    // await expect(page).toHaveTitle(/Check your answers - MOJ Design System/)
 
     await page.goto(cyaPage.url)
     await expect(cyaPage.codeBlockCards).toHaveCount(1)
@@ -199,7 +199,7 @@ test.describe('check your answers', async () => {
     await testPage.clickContinue()
 
     await testPage.expectPageTitle('Figma design')
-    // await expect(page).toHaveTitle(/Check your answers - MoJ Design System/)
+    // await expect(page).toHaveTitle(/Check your answers - MOJ Design System/)
     await page.goto(cyaPage.url)
 
     await expect(cyaPage.codeBlockCards).toHaveCount(2)

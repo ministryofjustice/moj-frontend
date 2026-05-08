@@ -1,0 +1,3 @@
+{
+  "figmaLink": "https://www.figma.com/design/uDAtZ6RWPhLaW6RFUSGzPo/MPoP-Design-Components-Library?node-id=276-8903&amp;t=SDYmB2Hq0bTmPwUp-4"
+}

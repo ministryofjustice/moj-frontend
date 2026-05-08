@@ -1,0 +1,5 @@
+{
+  "componentName": "Contextual date",
+  "componentOverview": "Use the contextual date pattern to indicate important information about a date in a table to make it easier to scan, interpret and action where required.",
+  "howIsTheComponentUsed": "Writing content:\r\nThe date can be written as DD/MM/YY or DD Month YYYY, depending on the use case of the system\r\n\r\nThe label should be short and succinct. Recommend no more than 20 characters.\r\n\r\nNever use this component without a label - the label provides the context to the visual highlight for accessibility.\r\n\r\nMaking sure it’s accessible:\r\n- Recommended typography is standard black text\r\n  - Bold 19px for the date\r\n  - Regular 16px for the context\r\n- The highlight line should have appropriate colour contrast\r\n- When using for to communicate more than one context the highlight line should use colours that are not too close to each other for most differentiation\r\n- Never use this component without a label - the label provides the context to the visual highlight for accessibility."
+}

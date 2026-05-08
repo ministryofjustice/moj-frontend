@@ -6,22 +6,25 @@
       "path": "./tsconfig.dev.json"
     },
     {
+      "path": "./11ty/tsconfig.json"
+    },
+    {
       "path": "./docs/tsconfig.json"
     },
     {
       "path": "./gulp/tsconfig.json"
     },
     {
-      "path": "./shortcodes/tsconfig.json"
-    },
-    {
-      "path": "./filters/tsconfig.json"
-    },
-    {
       "path": "./src/tsconfig.json"
     },
     {
+      "path": "./tests/tsconfig.json"
+    },
+    {
       "path": "./app/tsconfig.json"
+    },
+    {
+      "path": "./submissions/tsconfig.json"
     }
   ]
 }

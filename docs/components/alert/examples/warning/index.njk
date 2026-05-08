@@ -1,0 +1,14 @@
+---
+layout: layouts/example.njk
+title: Warning alert (example)
+redirect_from: examples/alert-warning
+---
+
+{%- from "moj/components/alert/macro.njk" import mojAlert -%}
+
+{{ mojAlert({
+  variant: "warning",
+  title: "Some information could not be imported",
+  dismissible: false,
+  html: 'Some information could not be imported. Enter <a href="#">client details</a> manually instead.'
+}) }}

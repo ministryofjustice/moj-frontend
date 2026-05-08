@@ -1,0 +1,5 @@
+{
+  "componentName": "Card",
+  "componentOverview": "A basic card with a link and explanatory text underneath.",
+  "howIsTheComponentUsed": "Use the card on a dashboard or home screen to present links and a description of the link to users."
+}

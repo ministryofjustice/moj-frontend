@@ -9,9 +9,10 @@ test.beforeEach(async ({ page }) => {
   basePage = new ContributionsPage(page)
   await page.goto('start')
   await basePage.clickContinue()
-  await basePage.expectPageTitle('Verify that you work for MoJ')
+  await basePage.expectPageTitle('Verify that you work for MOJ')
+  await basePage.expectSelectedNavItem('Submit a component')
 
-  emailInput = page.getByLabel('Enter your MoJ email address')
+  emailInput = page.getByLabel('Enter your MOJ email address')
 })
 
 test.describe('validation', async () => {
@@ -55,7 +56,7 @@ test.describe('validation', async () => {
       .getByRole('button', { name: 'Enter a different email address' })
       .click()
 
-    await basePage.expectPageTitle('Verify that you work for MoJ')
+    await basePage.expectPageTitle('Verify that you work for MOJ')
   })
 
   test('valid email', async () => {

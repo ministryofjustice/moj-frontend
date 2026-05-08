@@ -1,0 +1,28 @@
+---
+layout: layouts/example.njk
+title: Left-aligned button menu (example)
+redirect_from: examples/button-menu-left-aligned
+---
+
+{%- from "moj/components/button-menu/macro.njk" import mojButtonMenu -%}
+
+{{ mojButtonMenu({
+  button: {
+    text: "Review",
+    classes: "govuk-button--secondary"
+  },
+  items: [
+    {
+      text: "Approve",
+      href: "#"
+    },
+    {
+      text: "Request more information",
+      href: "#"
+    },
+    {
+      text: "Reject with reason",
+      href: "#"
+    }
+  ]
+}) }}
