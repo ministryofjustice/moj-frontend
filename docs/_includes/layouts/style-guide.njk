@@ -11,7 +11,7 @@
 
           {% set accordionItems = [] %}
 
-          {%- for letter, entries in collections['style-guide-entry'] | groupby('data.letter') -%}
+          {%- for letter, entries in collections['style-guide-entry'] | sort(false, false, "data.title" ) | groupby('data.letter') -%}
               {% set itemEntries = [] %}
 
               {%- for entry in entries -%}

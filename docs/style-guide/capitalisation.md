@@ -1,5 +1,5 @@
 ---
-title: aliases
+title: capitalisation
 ---
 
 For general terms, follow the guidance in the [style guide on

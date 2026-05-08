@@ -8,4 +8,4 @@ DPS may be referred to as 'New NOMIS' in prisons, but we should always use 'DPS'
 
 The initialism 'DPS' is well understood and can be used without the full name.
 
-There's a separate platform for probation services: see [PDS, Probation Digital Services](#pds%2C-probation-digital-services).
+There's a separate platform for probation services: see [PDS, Probation Digital Services](#pds-probation-digital-services).

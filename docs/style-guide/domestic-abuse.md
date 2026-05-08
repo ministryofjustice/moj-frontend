@@ -23,4 +23,4 @@ It may be important to include FGM (female genital mutilation), forced marriage 
 
 If you want to avoid the person identifying that they are experiencing domestic abuse, you could ask: 'Are you contacting us because of domestic abuse?'  
 
-You can read [guidance on the term victim-survivor](#victim-survivor-%28of-domestic-abuse%29).
+You can read [guidance on the term victim-survivor](#victim-survivor-of-domestic-abuse).
