@@ -1,5 +1,5 @@
 ---
-title: breadrumbs
+title: breadcrumbs
 ---
 
 Do not show the current page in the list of breadcrumbs.
