@@ -1,22 +1,22 @@
 {
   "Official": {
     "link": "How to use ‘official’ {{ types }}",
-    "linkContent": "You can use an ‘official’ {{ types }} in every product phase. It's fully accessible, and will be supported and maintained in the long term.",
+    "linkContent": "You can use ‘official’ {{ types }} in every product phase. They're fully accessible, and will be supported and maintained in the long term.",
     "statusAction": "Updated"
   },
   "To be reviewed": {
     "link": "How to use ‘to be reviewed’ {{ types }}",
-    "linkContent": "You can use a ‘to be reviewed’ {{ types }} in every product phase. However, there may be issues with it as it has not been reviewed or developed recently.",
+    "linkContent": "You can use ‘to be reviewed’ {{ types }} in every product phase. However, there may be issues with them, as they have not been reviewed or developed recently.",
     "statusAction": "Created"
   },
   "Experimental": {
     "link": "How to use ‘experimental’ {{ types }}",
-    "linkContent": "You can use an ‘experimental’ {{ type }} in alpha and beta phases, as an idea, or starting point.",
+    "linkContent": "You can use ‘experimental’ {{ type }} in alpha and beta phases. They can also be used an idea or starting point for a design.",
     "statusAction": "Added"
   },
   "Archived": {
     "link": "About ‘archived’ {{ types }}",
-    "linkContent": "Do not use an ‘archived’ {{ type }}. It's no longer being supported.",
+    "linkContent": "Do not use ‘archived’ {{ type }}. They're no longer being supported.",
     "statusAction": "Archived"
   }
 }
