@@ -20,11 +20,42 @@ There are 4 building blocks statuses. These are to help you understand how to us
 
 ## How to use building blocks based on their status <span class="govuk-tag govuk-tag--green"  style="vertical-align:middle;" aria-hidden="true">Official</span>
 
-| Status | Use in live services | Accessibility | Figma design and code | Status they could move to
-| -------- | ------- | ------- | ------- | ------- | ------- |
-| Official | Yes | High | Yes | Archived
-| To be reviewed | Yes | Variable | Yes | Official, Archived
-| Experimental  | In [some cases](/design-system-statuses/#how-to-use-experimental-building-blocks) | Variable | Sometimes | Official
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Status</th>
+      <th scope="col" class="govuk-table__header">Use in live services</th>
+      <th scope="col" class="govuk-table__header">Accessibility</th>
+      <th scope="col" class="govuk-table__header">Figma design and code</th>
+      <th scope="col" class="govuk-table__header">Status they could move to</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">Official</td>
+      <td class="govuk-table__cell">Yes</td>
+      <td class="govuk-table__cell">High</td>
+      <td class="govuk-table__cell">Yes</td>
+      <td class="govuk-table__cell">Archived</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">To be reviewed</td>
+      <td class="govuk-table__cell">Yes</td>
+      <td class="govuk-table__cell">Variable</td>
+      <td class="govuk-table__cell">Yes</td>
+      <td class="govuk-table__cell">Official, Archived</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">Experimental</td>
+      <td class="govuk-table__cell">
+        In <a class="govuk-link" href="/design-system-statuses/#how-to-use-experimental-building-blocks">some cases</a>
+      </td>
+      <td class="govuk-table__cell">Variable</td>
+      <td class="govuk-table__cell">Sometimes</td>
+      <td class="govuk-table__cell">Official</td>
+    </tr>
+  </tbody>
+</table>
 
 Do not use building blocks with an ‘archived’ status. They're not being supported by the Design System team.
 
