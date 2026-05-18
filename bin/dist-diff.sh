@@ -21,6 +21,7 @@ mkdir -p .cache/diff/dist
 # Switch to base branch and build dist
 git checkout "$base"
 npm ci --ignore-scripts
+npm run build:package #needed to create the /package/moj/assets dir
 npm run build:dist
 
 # Normalise versioned filenames (e.g. moj-frontend-1.0.0.min.js -> moj-frontend.min.js)
@@ -42,6 +43,7 @@ git commit --allow-empty -m "Build dist output for '$base'" --no-verify
 
 # Build dist for original HEAD
 npm ci --ignore-scripts
+npm run build:package #needed to create the /package/moj/assets/ dir
 npm run build:dist
 
 # Normalise versioned filenames
