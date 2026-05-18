@@ -11,7 +11,8 @@ set -ex
 # Default the base branch to main to allow running locally quickly
 base="${1:-main}"
 # Default the head to the current branch or commit SHA when detached
-head=$(git branch --show-current 2>/dev/null || git rev-parse HEAD)
+head=$(git branch --show-current 2>/dev/null)
+head=${head:-$(git rev-parse HEAD)}
 # And the output folder to the current working directory
 output_folder="${2:-$(pwd)}"
 
