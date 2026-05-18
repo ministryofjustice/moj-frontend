@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "nunjucks",
+  "componentCodeLanguageOther": "",
+  "componentCode": "<footer class=\"probation-common-footer govuk-!-display-none-print\">\r\n  <div class=\"govuk-width-container\">\r\n    <div class=\"govuk-grid-row\">\r\n      <div class=\"govuk-grid-column-full\">\r\n        <div class=\"probation-common-footer__support-links\">\r\n          <h2 class=\"govuk-visually-hidden\">Support links</h2>\r\n          <ul class=\"probation-common-footer__inline-list\">\r\n            <li class=\"probation-common-footer__inline-list-item\">\r\n              <a class=\"probation-common-footer__link\" href=\"#\">Accessibility</a>\r\n            </li>\r\n            <li class=\"probation-common-footer__inline-list-item\">\r\n              <a class=\"probation-common-footer__link\" href=\"#\">Cookies policy</a>\r\n            </li>\r\n            <li class=\"probation-common-footer__inline-list-item\">\r\n              <a class=\"probation-common-footer__link\" href=\"#\">Privacy policy</a>\r\n            </li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</footer>",
+  "componentCodeUsage": ""
+}
