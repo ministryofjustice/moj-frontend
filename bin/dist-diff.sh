@@ -11,7 +11,8 @@ set -ex
 # Default the base branch to main to allow running locally quickly
 base="${1:-main}"
 # Default the head to the current branch or commit SHA when detached
-head=$(git branch --show-current 2>/dev/null || git rev-parse HEAD)
+head=$(git branch --show-current 2>/dev/null)
+head=${head:-$(git rev-parse HEAD)}
 # And the output folder to the current working directory
 output_folder="${2:-$(pwd)}"
 
@@ -21,6 +22,7 @@ mkdir -p .cache/diff/dist
 # Switch to base branch and build dist
 git checkout "$base"
 npm ci --ignore-scripts
+npm run build:package #needed to create the /package/moj/assets dir
 npm run build:dist
 
 # Normalise versioned filenames (e.g. moj-frontend-1.0.0.min.js -> moj-frontend.min.js)
@@ -42,6 +44,7 @@ git commit --allow-empty -m "Build dist output for '$base'" --no-verify
 
 # Build dist for original HEAD
 npm ci --ignore-scripts
+npm run build:package #needed to create the /package/moj/assets/ dir
 npm run build:dist
 
 # Normalise versioned filenames
