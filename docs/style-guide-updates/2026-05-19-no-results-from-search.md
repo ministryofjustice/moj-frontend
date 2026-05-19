@@ -1,6 +1,6 @@
 ---
 title: No results (from search)
-anchor: no-results-%28from-search%29
+anchor: no-results-from-search
 type: New
 date: 2026-05-19
 ---

@@ -4,7 +4,7 @@ title: No results (from search)
 
 Show the following heading after a user has conducted a search (with their search term in single quote marks):  
 
-### 0 results for ‘Tomm Wilson’ in open cases.
+#### 0 results for ‘Tomm Wilson’ in open cases.
 
 Help the user to refine their search. Depending on your product and the search, this could include guidance on:  
 
