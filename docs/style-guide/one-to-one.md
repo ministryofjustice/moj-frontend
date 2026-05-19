@@ -1,5 +1,5 @@
 ---
-title: One-to-one
+title: one-to-one
 ---
 
 Often used as a noun in the context of meetings: a one-to-one. Write one-to-one out in full. Do not use digits with colons or hyphens. This is less clear and screen readers do not read it as intended. For example, 1:1 or 1-1 could be read as 'one one'.
