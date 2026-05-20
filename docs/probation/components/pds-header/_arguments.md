@@ -4,6 +4,7 @@
 | ----------------- | ------ | -------- | --------------------------------------------------------------------------------------------- |
 | environmentName | string | No      | Tag label showing the current environment. Hidden if value is `PRODUCTION`. |
 | environmentNameColour      | string | No      | Custom colour for the environment tag, overriding the default.                |
+| classname | string | No | Optional class name to apply to the main header element.                |
 | name        | string  | Yes       | The display name of the user.                           |
 | manageDetailsLink  | string | Yes       | URL linking to the user account management page.   |
 | servicesLink  | string | No | URL linking to a services page when JavaScript is disabled |
