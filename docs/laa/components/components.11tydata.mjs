@@ -6,7 +6,7 @@ export default {
     eleventyNavigation: {
       key: (data) => data.title,
       parent: (data) =>
-        data.index ? 'Legal Aid Agency building blocks' : 'LAA components',
+        data.index ? 'LAA building blocks' : 'LAA components',
       order: (data) => data.order ?? data.title,
       lede: (data) => data.lede,
       url: (data) => data.navUrl
