@@ -7,20 +7,20 @@ eleventyComputed:
 ---
 ## How to use
 
-### Switching between LAA services
+Do not add your service name to the header. The header should only contain the following information, to create a consistent experience for users: 
 
-{% example template="examples/excluded-dates", colocated="true", height=590 %}
+- the MOJ crown logo
+- 'Legal Aid Agency' text
+- the user's email address 
+- a link to sign out
+
+### Switching between LAA services
 
 Insert example
 
 The service navigation includes a link for users to change service. 
 
-### Next steps from the organisation name
+### Links
 
-There's no agreement on where the user should go after selected the 'Legal Aid Agency' link text in the header. 
+There's no agreement on the destination for the 'Legal Aid Agency' link text in the header. You can [contribute to discussions on link text destinations](/components/laa-header-nav/#get-help-and-contribute-tab).  
 
-You can [contribute to this discussion](/components/laa-header-nav/#get-help-and-contribute-tab).  
-
-### Using multiple date pickers
-
-If you're using more than one date picker, give each text field its own error summary and message (even if the error is the same).

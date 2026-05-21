@@ -9,8 +9,8 @@ eleventyComputed:
 ## Examples
 
 
-### Filtering information with a date picker
+### Example showing a switch between LAA services
 
 
-### Asking a question with a date picker
+### Example showing the header without the phase banner or language switcher
 
