@@ -1,6 +1,6 @@
 export default {
   layout: 'layouts/example.njk',
-  arguments: 'date-picker',
+  arguments: 'laa-header-nav',
   eleventyComputed: {
     'override:eleventyNavigation': false
   }
