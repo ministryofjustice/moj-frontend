@@ -1,0 +1,39 @@
+{% from "moj/components/domain-specific/laa/language-toggle/macro.njk" import laaLanguageToggle %}
+{% from "moj/components/header/macro.njk" import mojHeader %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+
+{{ mojHeader({
+  organisationLabel: {
+    text: "Legal Aid Agency",
+    href: "/"
+  },
+  navigation: {
+    label: "Account navigation",
+    items: [
+      {
+        text: params.header.accountLink.text,
+        href: params.header.accountLink.href
+      },
+      {
+        text: params.header.signOutLink.text,
+        href: params.header.signOutLink.href
+      }
+    ]
+  }
+  }) }}
+{% if(params.serviceNavigation) %}
+  {{ govukServiceNavigation(params.serviceNavigation) }}
+{% endif %}
+<div class="govuk-width-container">
+  {% if(params.phaseBanner) %}
+    {{ govukPhaseBanner(params.phaseBanner) }}
+  {% endif %}
+  {% if(params.backLink) %}
+    {{ govukBackLink(params.backLink) }}
+  {% endif %}
+  {% if(params.languageToggle) %}
+    {{ laaLanguageToggle(params.languageToggle) }}
+  {% endif %}
+</div>

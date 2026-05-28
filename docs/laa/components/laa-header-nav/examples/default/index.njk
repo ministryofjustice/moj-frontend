@@ -3,4 +3,55 @@ title: LAA header and navigation (example)
 arguments: laa-header-nav
 redirect_from: examples/laa-header-nav
 ---
+{% from "moj/components/domain-specific/laa/header-navigation/macro.njk" import laaHeaderNavigation %}
 
+{{ laaHeaderNavigation({
+  header: {
+    accountLink: {
+      text: "joe.bloggs@law.com",
+      href: "/account"
+    },
+    signOutLink: {
+      text: "Sign out",
+      href: "/sign-out"
+    }
+  },
+  serviceNavigation: {
+    serviceName: "Service name",
+    navigation: [{
+      text: "Item 1",
+      href: "#"
+    },
+    {
+      text: "Item 2",
+      href: "#"
+    },
+    {
+      text: "Item 3",
+      href: "#"
+    }]
+  },
+  phaseBanner: {
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Your <a class="govuk-link" href="#">feedback</a> will help us improve it.'
+  },
+  backLink: {
+    href: "#",
+    text: "Back"
+  },
+  languageToggle: {
+    currentLanguage: "en",
+    href: [
+      {
+        text: "English",
+        value: "en"
+      },
+      {
+        text: "Cymraeg",
+        value: "cy"
+      }
+    ]
+  }
+}) }}
