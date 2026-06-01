@@ -70,6 +70,17 @@ module.exports = function (params) {
     jsCode = fs.readFileSync(jsPath, 'utf8').trim()
   } catch {}
 
+  let sassCode = ''
+  try {
+    const sassPath = path.resolve(
+      this.eleventy.env.root,
+      path.dirname(this.page.inputPath),
+      params.template,
+      'style.scss'
+    )
+    sassCode = fs.readFileSync(sassPath, 'utf8').trim()
+  } catch {}
+
   return nunjucksEnv.render('example.njk', {
     href: params.template,
     id: params.template.replace(/\//g, '-'),
@@ -82,6 +93,7 @@ module.exports = function (params) {
     nunjucksCode,
     htmlCode,
     jsCode,
+    sassCode,
     tabWarning: this.ctx.tab_warning
   })
 }

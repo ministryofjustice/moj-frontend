@@ -17,6 +17,11 @@
       <a class="app-tabs__tab" href="#js-default-{{ id }}" role="tab" id="tab_js-default-{{ id }}" aria-controls="js-default-{{ id }}" {{ 'aria-selected=true' if showTab | lower === "javascript" }}>JavaScript <span class="govuk-visually-hidden">({{ title }})</span></a>
     </li>
     {%- endif -%}
+    {%- if sassCode -%}
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#sass-default-{{ id }}" role="tab" id="tab_sass-default-{{ id }}" aria-controls="sass-default-{{ id }}" {{ 'aria-selected=true' if showTab | lower === "sass" }}>Sass <span class="govuk-visually-hidden">({{ title }})</span></a>
+    </li>
+    {%- endif -%}
     {%- if figmaLink -%}
     <li class="app-tabs__list-item" role="presentation">
       <a class="app-tabs__tab" href="#figma-default-{{ id }}" role="tab" id="tab_figma-default-{{ id }}" aria-controls="figma-default-{{ id }}">Figma</a>
@@ -80,6 +85,16 @@
 
     </div>
   </div>
+{% endif %}
+
+{% if sassCode %}
+  <div class="app-tabs__panel" id="sass-default-{{ id }}" role="tabpanel" aria-labelledby="tab_sass-default-{{ id }}">
+  <div class="app-example__code" data-module="app-copy">
+
+```scss
+  {{ sassCode | safe }}
+```
+</div></div>
 {% endif %}
 
 {% if figmaLink %}
