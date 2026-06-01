@@ -29,5 +29,11 @@
   {{- govukTabs({
     items: items,
     classes: 'app-layout-tabs no-govuk-tabs-styles'
-  }) | dedent(2, false) | safe -}}
+  }) | dedent(2, false) | dedentGovUkTabPanel | safe -}}
+  {# We need to undo the indentation that the govukTabs macro adds so our code
+  blocks are indented correctly:
+  - dedent(2, false) removes 2 spaces from the entire output except the first
+  line
+  - dedentGovUkTabPanel removes 2 spaces from lines within the govuk-tabs__panel
+  divs #}
 {% endif %}

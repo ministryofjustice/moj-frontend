@@ -30,16 +30,17 @@
 <div class="app-example__code" data-module="app-copy">
 
 ```html
-
 {{ htmlCode | safe  }}
 ```
 
-</div></div>
+</div>
+</div>
 <div class="app-tabs__panel" id="nunjucks-default-{{ id }}" role="tabpanel" aria-labelledby="tab_nunjucks-default-{{ id }}">
 {%- if tabWarning -%}
   <div class="app-example__warning">{{ tabWarning | renderMarkdown | safe }}</div>
 {%- endif -%}
 {%- set argsContent %}
+
   {% include arguments ignore missing %}
 {%- endset %}
 {% if argsContent | trim %}
@@ -55,21 +56,21 @@
 <div class="app-example__code" data-module="app-copy">
 
 ```njk
-
 {{ nunjucksCode | safe }}
 ```
 
-</div></div>
+</div>
+</div>
 {% if jsCode %}
   <div class="app-tabs__panel" id="js-default-{{ id }}" role="tabpanel" aria-labelledby="tab_js-default-{{ id }}">
     <div class="app-example__code" data-module="app-copy">
 
 ```js
-
 {{ jsCode | safe }}
 ```
 
-</div></div>
+</div>
+</div>
 {% endif %}
 {% if figmaLink %}
   <div class="app-tabs__panel" id="figma-default-{{ id }}" role="tabpanel" aria-labelledby="tab_figma-default-{{ id }}">
