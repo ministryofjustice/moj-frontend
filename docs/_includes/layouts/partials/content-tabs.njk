@@ -29,5 +29,5 @@
   {{- govukTabs({
     items: items,
     classes: 'app-layout-tabs no-govuk-tabs-styles'
-  }) -}}
+  }) | dedent(2, false) | safe -}}
 {% endif %}
