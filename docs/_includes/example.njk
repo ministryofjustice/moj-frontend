@@ -5,52 +5,48 @@
   <iframe class="app-example__frame" scrolling="auto" frameborder="0" height="{{ height }}" src="{{ href | url }}" title="{{ title }}" data-module="moj-iframe-resizer"></iframe>
 </div>
 <div class="app-tabs" data-module="app-tabs">
-  <ul class="app-tabs__list" role="tablist">
-    <li class="app-tabs__list-item" role="presentation">
-      <a class="app-tabs__tab" href="#html-default-{{ id }}" role="tab" id="tab_html-default-{{ id }}" aria-controls="html-default-{{ id }}" {{ 'aria-selected=true' if showTab | lower === "html" }}>HTML <span class="govuk-visually-hidden">({{ title }})</span></a>
-    </li>
-    <li class="app-tabs__list-item" role="presentation">
-      <a class="app-tabs__tab" href="#nunjucks-default-{{ id }}" role="tab" id="tab_nunjucks-default-{{ id }}" aria-controls="nunjucks-default-{{ id }}" {{ 'aria-selected=true' if showTab | lower === "nunjucks" }}>Nunjucks <span class="govuk-visually-hidden">({{ title }})</span></a>
-    </li>
-    {%- if jsCode -%}
-    <li class="app-tabs__list-item" role="presentation">
-      <a class="app-tabs__tab" href="#js-default-{{ id }}" role="tab" id="tab_js-default-{{ id }}" aria-controls="js-default-{{ id }}" {{ 'aria-selected=true' if showTab | lower === "javascript" }}>JavaScript <span class="govuk-visually-hidden">({{ title }})</span></a>
-    </li>
-    {%- endif -%}
-    {%- if sassCode -%}
-    <li class="app-tabs__list-item" role="presentation">
-      <a class="app-tabs__tab" href="#sass-default-{{ id }}" role="tab" id="tab_sass-default-{{ id }}" aria-controls="sass-default-{{ id }}" {{ 'aria-selected=true' if showTab | lower === "sass" }}>Sass <span class="govuk-visually-hidden">({{ title }})</span></a>
-    </li>
-    {%- endif -%}
-    {%- if figmaLink -%}
-    <li class="app-tabs__list-item" role="presentation">
-      <a class="app-tabs__tab" href="#figma-default-{{ id }}" role="tab" id="tab_figma-default-{{ id }}" aria-controls="figma-default-{{ id }}">Figma</a>
-    </li>
-    {%- endif -%}
-  </ul>
-
-  <div class="app-tabs__panel" id="html-default-{{ id }}" role="tabpanel" aria-labelledby="tab_html-default-{{ id }}">
-    {%- if tabWarning -%}
-      <div class="app-example__warning">{{ tabWarning | renderMarkdown | safe }}</div>
-    {%- endif -%}
-
-    <div class="app-example__code" data-module="app-copy">
+<ul class="app-tabs__list" role="tablist">
+  <li class="app-tabs__list-item" role="presentation">
+    <a class="app-tabs__tab" href="#html-default-{{ id }}" role="tab" id="tab_html-default-{{ id }}" aria-controls="html-default-{{ id }}" {{ 'aria-selected=true' if showTab | lower === "html" }}>HTML <span class="govuk-visually-hidden">({{ title }})</span></a>
+  </li>
+  <li class="app-tabs__list-item" role="presentation">
+    <a class="app-tabs__tab" href="#nunjucks-default-{{ id }}" role="tab" id="tab_nunjucks-default-{{ id }}" aria-controls="nunjucks-default-{{ id }}" {{ 'aria-selected=true' if showTab | lower === "nunjucks" }}>Nunjucks <span class="govuk-visually-hidden">({{ title }})</span></a>
+  </li>
+  {%- if jsCode -%}
+  <li class="app-tabs__list-item" role="presentation">
+    <a class="app-tabs__tab" href="#js-default-{{ id }}" role="tab" id="tab_js-default-{{ id }}" aria-controls="js-default-{{ id }}" {{ 'aria-selected=true' if showTab | lower === "javascript" }}>JavaScript <span class="govuk-visually-hidden">({{ title }})</span></a>
+  </li>
+  {%- endif -%}
+  {%- if sassCode -%}
+  <li class="app-tabs__list-item" role="presentation">
+    <a class="app-tabs__tab" href="#sass-default-{{ id }}" role="tab" id="tab_sass-default-{{ id }}" aria-controls="sass-default-{{ id }}" {{ 'aria-selected=true' if showTab | lower === "sass" }}>Sass <span class="govuk-visually-hidden">({{ title }})</span></a>
+  </li>
+  {%- endif -%}
+  {%- if figmaLink -%}
+  <li class="app-tabs__list-item" role="presentation">
+    <a class="app-tabs__tab" href="#figma-default-{{ id }}" role="tab" id="tab_figma-default-{{ id }}" aria-controls="figma-default-{{ id }}">Figma</a>
+  </li>
+  {%- endif -%}
+</ul>
+<div class="app-tabs__panel" id="html-default-{{ id }}" role="tabpanel" aria-labelledby="tab_html-default-{{ id }}">
+{%- if tabWarning -%}
+  <div class="app-example__warning">{{ tabWarning | renderMarkdown | safe }}</div>
+{%- endif -%}
+<div class="app-example__code" data-module="app-copy">
 
 ```html
-{{ htmlCode | safe }}
+
+{{ htmlCode | safe  }}
 ```
-    </div>
-  </div>
 
-  <div class="app-tabs__panel" id="nunjucks-default-{{ id }}" role="tabpanel" aria-labelledby="tab_nunjucks-default-{{ id }}">
-    {%- if tabWarning -%}
-      <div class="app-example__warning">{{ tabWarning | renderMarkdown | safe }}</div>
-    {%- endif -%}
-
+</div></div>
+<div class="app-tabs__panel" id="nunjucks-default-{{ id }}" role="tabpanel" aria-labelledby="tab_nunjucks-default-{{ id }}">
+{%- if tabWarning -%}
+  <div class="app-example__warning">{{ tabWarning | renderMarkdown | safe }}</div>
+{%- endif -%}
 {%- set argsContent %}
   {% include arguments ignore missing %}
 {%- endset %}
-
 {% if argsContent | trim %}
   <details class="govuk-details" data-module="govuk-details">
     <summary class="govuk-details__summary">
@@ -58,41 +54,35 @@
         Nunjucks macro options
       </span>
     </summary>
-    <div class="govuk-details__text">
-
-      {{ argsContent }}
-
-    </div>
+    <div class="govuk-details__text">{{ argsContent }}</div>
   </details>
-{% endif %}
-
-    <div class="app-example__code" data-module="app-copy">
+{% endif -%}
+<div class="app-example__code" data-module="app-copy">
 
 ```njk
+
 {{ nunjucksCode | safe }}
 ```
 
-    </div>
-  </div>
-
+</div></div>
 {% if jsCode %}
   <div class="app-tabs__panel" id="js-default-{{ id }}" role="tabpanel" aria-labelledby="tab_js-default-{{ id }}">
     <div class="app-example__code" data-module="app-copy">
 
 ```js
+
 {{ jsCode | safe }}
 ```
 
-    </div>
-  </div>
+</div></div>
 {% endif %}
-
 {% if sassCode %}
   <div class="app-tabs__panel" id="sass-default-{{ id }}" role="tabpanel" aria-labelledby="tab_sass-default-{{ id }}">
   <div class="app-example__code" data-module="app-copy">
 
 ```scss
-  {{ sassCode | safe }}
+
+{{ sassCode | safe }}
 ```
 </div></div>
 {% endif %}
@@ -109,7 +99,6 @@ If you work for MOJ, you can <a href="{{ figmaLink }}">view this component in th
 
 <p class="govuk-body govuk-!-margin-0">If you work outside MOJ, read the guidance on <a href="/prototyping/setting-up-figma-prototypes/#non-moj-staff-tab">setting up Figma prototypes for non-MOJ staff</a>.</p>
 {% endif %}
-
-  </div>
+</div>
 {% endif %}
 </div>

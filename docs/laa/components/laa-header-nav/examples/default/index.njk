@@ -45,42 +45,42 @@ redirect_from: examples/laa-header-nav
     }]
 }) }}
 <div class="govuk-width-container">
-    {{ govukPhaseBanner({
-      tag: {
-        text: "Beta"
-      },
-      html: 'This is a new service. Your <a class="govuk-link" href="#">feedback</a> will help us improve it.'
-    }) }}
-    {{ govukBackLink({
-      href: "#",
-      text: "Back"
-    }) }}
-    <nav class="dwp-language-toggle" aria-label="{{ "Language toggle" if lang === "en" else "Togl iaith" }}">
-      <ul class="dwp-language-toggle__list">
-          <li class="dwp-language-toggle__list-item" {%- if lang === "en"%} aria-current="true"{% endif %}>
-              {% if lang === "en"%}
-                  English
-              {% else  %}
-              <a href="{{ params.href.en }}"
-                  hreflang="en"
-                  lang="en"
-                  rel="alternate"
-                  class="govuk-link"
-                  aria-label="Change the language to English">English</a>
-              {% endif %}
-          </li>
-          <li class="dwp-language-toggle__list-item" {%- if lang === "cy"%} aria-current="true"{% endif %}>
-              {% if lang === "cy"%}
-                  Cymraeg
-              {% else  %}
-              <a href="{{ params.href.cy }}"
-                  hreflang="cy"
-                  lang="cy"
-                  rel="alternate"
-                  class="govuk-link"
-                  aria-label="Newid yr iaith ir Gymraeg">Cymraeg</a>
-              {% endif %}
-          </li>
-      </ul>
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Beta"
+    },
+    html: 'This is a new service. Your <a class="govuk-link" href="#">feedback</a> will help us improve it.'
+  }) }}
+  {{ govukBackLink({
+    href: "#",
+    text: "Back"
+  }) }}
+  <nav class="dwp-language-toggle" aria-label="{{ "Language toggle" if lang === "en" else "Togl iaith" }}">
+    <ul class="dwp-language-toggle__list">
+        <li class="dwp-language-toggle__list-item" {%- if lang === "en"%} aria-current="true"{% endif %}>
+            {% if lang === "en"%}
+                English
+            {% else  %}
+            <a href="{{ params.href.en }}"
+                hreflang="en"
+                lang="en"
+                rel="alternate"
+                class="govuk-link"
+                aria-label="Change the language to English">English</a>
+            {% endif %}
+        </li>
+        <li class="dwp-language-toggle__list-item" {%- if lang === "cy"%} aria-current="true"{% endif %}>
+            {% if lang === "cy"%}
+                Cymraeg
+            {% else  %}
+            <a href="{{ params.href.cy }}"
+                hreflang="cy"
+                lang="cy"
+                rel="alternate"
+                class="govuk-link"
+                aria-label="Newid yr iaith ir Gymraeg">Cymraeg</a>
+            {% endif %}
+        </li>
+    </ul>
   </nav>
 </div>
