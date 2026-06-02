@@ -13,7 +13,7 @@ Show the most recent events first, unless user research suggests a different ord
 
 ### What to include
 
-Each entry should include:
+Each item should include:
 - a short title
 - the date (or date and time)
 - who or what made the update
@@ -26,7 +26,7 @@ Research will tell you what information is helpful for your users. You can also 
 
 #### Item titles
 
-Titles should be concise and descriptive, for example 'Risk assessment completed', 'Evidence sent', 'Address updated'.
+Titles should be concise and descriptive, for example 'Risk assessment completed', 'Evidence sent', 'Address needed'.
 
 #### Item author
 
@@ -38,8 +38,8 @@ The author (called 'byline' in the code) shows who or what made the update, for 
 
 #### Date and time
 
-To display the time use:
-- [GOV.UK guidance on dates](https://www.gov.uk/guidance/style-guide/a-to-z#dates) [](https://www.gov.uk/guidance/style-guide/a-to-z#dates) 
+To display the date and time use:
+- [GOV.UK guidance on dates](https://www.gov.uk/guidance/style-guide/a-to-z#dates) 
 - [GOV.UK guidance on times](https://www.gov.uk/guidance/style-guide/a-to-z#times), for example '4 June 2026 at 9:32am'
 - [guidance on showing time in prison services](/content-standards/style-guide/#times-in-prison), if your service is used by prison staff 
 
