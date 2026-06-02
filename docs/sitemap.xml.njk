@@ -1,0 +1,18 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- set excludeUrls = ["/404/", "/500/", "/redirects/"] -%}
+{%- for item in collections.all -%}
+  {%- if item.url
+    and item.data.title
+    and not (item.url in excludeUrls) -%}
+  <url>
+    <loc>{{ env.siteUrl }}{{ item.url }}</loc>
+    <lastmod>{{ item.date.toISOString() }}</lastmod>
+  </url>
+  {%- endif -%}
+{%- endfor %}
+</urlset>

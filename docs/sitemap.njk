@@ -1,0 +1,70 @@
+---
+layout: layouts/content.njk
+title: Sitemap
+permalink: /sitemap/
+eleventyExcludeFromCollections: true
+---
+
+{# URLs to exclude from all sections and the "Other pages" fallback #}
+{% set excludeUrls = ["/404/", "/500/", "/redirects/"] %}
+
+{# Top-level navigation section keys, in display order #}
+{% set sectionKeys = [
+  "MOJ building blocks",
+  "Probation building blocks",
+  "Guidance",
+  "Community",
+  "About the Design System"
+] %}
+
+{#
+  Build up a list of URLs that have been rendered inside a named nav section.
+  Array.push() mutates the JS array in place and returns the new length (truthy),
+  so the {% if ... %}{% endif %} idiom is used to call it without outputting anything.
+#}
+{% set coveredUrls = [] %}
+
+{% for sectionKey in sectionKeys %}
+  {% set navItems = collections.all | eleventyNavigation(sectionKey) %}
+  {% if navItems.length %}
+    <h2 class="govuk-heading-m">{{ sectionKey }}</h2>
+    <ul class="govuk-list">
+      {% for item in navItems %}
+        {% if item.url and not (item.url in excludeUrls) %}
+          {% if coveredUrls.push(item.url) %}{% endif %}
+          <li>
+            {% if item.children.length %}
+              <h3 class="govuk-heading-s"><a href="{{ item.url }}" class="govuk-link">{{ item.title }}</a></h3>
+              <ul class="govuk-list govuk-list--spaced govuk-!-margin-top-2 govuk-!-padding-left-2">
+                {% for child in item.children %}
+                  {% if child.url %}
+                    {% if coveredUrls.push(child.url) %}{% endif %}
+                    <li>
+                    <a href="{{ child.url }}" class="govuk-link">{{ child.title }}</a>
+                    <!-- <br />{{ child.data.lede }} -->
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% else %}
+              <a href="{{ item.url }}" class="govuk-link">{{ item.title }}</a>
+            {% endif %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endfor %}
+
+{# Collect pages not covered by any nav section above #}
+{% set otherPages = [] %}
+{% for item in collections.all %}
+  {% if item.url
+    and item.data.title
+    and not (item.url in excludeUrls)
+    and not (item.url in coveredUrls) %}
+    {% if otherPages.push(item) %}{% endif %}
+  {% endif %}
+{% endfor %}
+
+
