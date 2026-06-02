@@ -7,8 +7,12 @@ redirect_from: examples/timeline
 {%- from "moj/components/timeline/macro.njk" import mojTimeline -%}
 
 {%- set confirmationHtml %}
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non felis risus. Curabitur nec ante vitae felis ullamcorper tincidunt.</p>
-  <a class="govuk-button govuk-!-margin-bottom-0" href="#">Continue</a>
+  <p>The probation practitioner's application for life skills training needs confirming by 28 June 2026.<a class="govuk-link" href="#">
+  View application
+  <span class="govuk-visually-hidden">
+    for life skills training submitted on 28 May 2026
+  </span>
+</a></p>
 {% endset -%}
 
 {%- set detailsHtml %}
@@ -16,51 +20,32 @@ redirect_from: examples/timeline
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
       Application details
+      <span class="govuk-visually-hidden">
+    for application MOJ-1234-5678
+  </span>
     </span>
   </summary>
   <div class="govuk-details__text">
-    Ut quam nunc, vulputate ac metus pharetra, posuere maximus velit. <a class="govuk-link" href="#">Etiam nec interdum velit.</a> Suspendisse molestie lectus in eros ornare
+    This is an application for life skills training at Queensbridge centre, Gloucester. The course lasts 12 weeks. <a class="govuk-link" href="#">
+  View application
+  <span class="govuk-visually-hidden">
+    for life skills training submitted on 28 May 2026
+  </span>
+</a>
   </div>
 </details>
 {% endset -%}
 
-{%- set listHtml %}
-  <ul class="govuk-list govuk-list--bullet">
-    <li><a class="govuk-link" href="#">Item 1</a></li>
-    <li><a class="govuk-link" href="#">Item 2</a></li>
-  </ul>
-{% endset -%}
-
-{%- set documentsHtml %}
-  <ul class="moj-timeline__documents">
-    <li class="moj-timeline__document-item">
-      <a class="govuk-link" href="#">
-        <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
-          <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z"/>
-        </svg>
-        Document 1
-      </a>
-    </li>
-    <li class="moj-timeline__document-item">
-      <a class="govuk-link" href="#">
-        <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
-          <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z"/>
-        </svg>
-        Document 2
-      </a>
-    </li>
-  </ul>
-{% endset -%}
 
 {{ mojTimeline({
   items: [
     {
       label: {
-        text: "Application requires confirmation"
+        text: "Application needs confirmation"
       },
       html: confirmationHtml,
       datetime: {
-        timestamp: "2019-06-14T14:01:00.000Z",
+        timestamp: "2026-06-14T14:01:00.000Z",
         type: "datetime"
       },
       byline: {
@@ -71,7 +56,7 @@ redirect_from: examples/timeline
       label: {
         text:  "Application review in progress"
       },
-      text: "Your application is being reviewed by one of our case workers.",
+      text: "The application is being reviewed by a case worker.",
       datetime: {
         timestamp: "2019-06-07T12:32:00.000Z",
         type: "datetime"
@@ -86,7 +71,7 @@ redirect_from: examples/timeline
       },
       text: "Your application has been received – reference MOJ-1234-5678",
       datetime: {
-        timestamp: "2019-06-06T09:12:00.000Z",
+        timestamp: "2026-06-06T09:12:00.000Z",
         type: "datetime"
       },
       byline: {
@@ -95,11 +80,11 @@ redirect_from: examples/timeline
     },
     {
       label: {
-        text:  "Application submitted"
+        text:  "Application submitted: life skills"
       },
       html: detailsHtml,
       datetime: {
-        timestamp: "2019-05-28T10:45:00.000Z",
+        timestamp: "2026-05-28T10:45:00.000Z",
         type: "datetime"
       },
       byline: {
@@ -112,7 +97,7 @@ redirect_from: examples/timeline
       },
       html: documentsHtml,
       datetime: {
-        timestamp: "2019-05-28T10:15:00.000Z",
+        timestamp: "2026-05-28T10:15:00.000Z",
         type: "datetime"
       },
       byline: {
@@ -125,7 +110,7 @@ redirect_from: examples/timeline
       },
       html: listHtml,
       datetime: {
-        timestamp: "2019-05-21T13:15:00.000Z",
+        timestamp: "2026-05-21T13:15:00.000Z",
         type: "datetime"
       },
       byline: {
