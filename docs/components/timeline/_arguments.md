@@ -10,22 +10,22 @@
 
 | Name       | Type   | Required | Description                                                                                                                      |
 | ---------- | ------ | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| label      | object | Yes      | See [item label](#itemlabel).                                                                                                    |
+| label      | object | Yes      | See [item label](#item-label).                                                                                                    |
 | text       | string | Yes      | If `html` is set, this is not required. Text to use within the item. If `html` is provided, the `text` argument will be ignored. |
 | html       | string | Yes      | If `text` is set, this is not required. HTML to use within the item. If `html` is provided, the `text` argument will be ignored. |
-| datetime   | object | No       | See [item date and time](#itemdatetime).                                                                                         |
-| byline     | object | No       | See [item byline](#itembyline).                                                                                                  |
+| datetime   | object | No       | See [item datetime](#item-datetime).                                                                                         |
+| byline     | object | No       | See [item byline](#item-byline).                                                                                                  |
 | classes    | string | No       | Classes to add to the timeline's items container.                                                                                |
 | attributes | object | No       | HTML attributes (for example data attributes) to add to the timeline's items container.                                          |
 
-#### Item label
+### Item label
 
 | Name | Type   | Required | Description                                                                                                                            |
 | ---- | ------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | text | string | Yes      | If `html` is set, this is not required. Text to use within the item label. If `html` is provided, the `text` argument will be ignored. |
 | html | string | Yes      | If `text` is set, this is not required. HTML to use within the item label. If `html` is provided, the `text` argument will be ignored. |
 
-#### Item datetime
+### Item datetime
 
 | Name      | Type   | Required | Description                                                                                                                                                                                                                             |
 | --------- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -33,7 +33,7 @@
 | type      | string | Yes      | If `format` is set, this is not required. The standard date format to use within the item. If `type` is provided, the `format` argument will be ignored. Values include: `datetime`, `shortdatetime`, `date`, `shortdate` and `time`    |
 | format    | string | Yes      | If `type` is set, this is not required. The user-defined date format to use within the item. If `type` is provided, the `format` argument will be ignored. See the [Moment.js document on display formats](https://momentjs.com/docs/). |
 
-#### Item byline
+### Item byline
 
 | Name | Type   | Required | Description                                                                                                                             |
 | ---- | ------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
