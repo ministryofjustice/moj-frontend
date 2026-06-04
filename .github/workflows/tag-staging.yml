@@ -25,7 +25,7 @@ jobs:
           for number in $(gh pr list --label "staging:active" --json number | jq -r '.[].number'); do
           gh pr edit ${number} --remove-label "staging:active"
           done
-      - uses: aws-actions/configure-aws-credentials@d979d5b3a71173a29b74b5b88418bfda9437d885 # v6.1.1
+      - uses: aws-actions/configure-aws-credentials@99214aa6889fcddfa57764031d71add364327e59 # v6.1.3
         with:
           role-to-assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.ECR_REGION }}
