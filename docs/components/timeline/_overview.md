@@ -11,7 +11,7 @@ eleventyComputed:
 
 ## Overview
 
-The timeline shows users what has happened in an service, for example in a case, claim, or application. Each timeline item shows who added the information to the service, and when. 
+The timeline shows users what has happened in a service, for example in a case, claim, or application. Each timeline item shows who added the information to the service, and when. 
 
 ### When to use
 
