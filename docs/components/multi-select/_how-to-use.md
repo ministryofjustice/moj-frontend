@@ -11,9 +11,7 @@ eleventyComputed:
 
 ### Helping users carry out the action
 
-Use other build blocks with the multi select component to enable users to apply an action to multiple items. 
-
-You can use the [button menu component](/components/button-menu/) or [GOV.UK button component](https://design-system.service.gov.uk/components/button/) for this task.
+Use other build blocks with the multi select component to enable users to apply an action to multiple items. You can use the [button menu component](/components/button-menu/) or [GOV.UK button component](https://design-system.service.gov.uk/components/button/) for the task.
 
 There's guidance on using the [GOV.UK table component](https://design-system.service.gov.uk/components/table/). 
 
