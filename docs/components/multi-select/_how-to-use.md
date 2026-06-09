@@ -9,19 +9,19 @@ eleventyComputed:
 
 ## How to use
 
+Use the multi select component with a table, for example the [GOV.UK table component](https://design-system.service.gov.uk/components/table/). 
+
 ### Helping users carry out the action
 
-Use other build blocks with the multi select component to enable users to apply an action to multiple items. You can use the [button menu component](/components/button-menu/) or [GOV.UK button component](https://design-system.service.gov.uk/components/button/) for the task.
-
-There's guidance on using the [GOV.UK table component](https://design-system.service.gov.uk/components/table/). 
+Combine this component with other building blocks to enable users to apply an action to multiple items. For example, the [GOV.UK button component](https://design-system.service.gov.uk/components/button/) or [button menu component](/components/button-menu/). 
 
 ### Destructive actions
 
-If the user is applying a destructive action to items (for example deleting, withdrawing or archiving), add an extra step in the journey for them to confirm it. This will make sure that they meant to select this option, and are fully informed. 
+If the user is applying a destructive action to items (for example deleting, withdrawing or archiving), add an extra step in the journey for them to confirm they want to do this.  
 
 ### Error messages 
 
-If the user selects a bulk acton button after no items have been selected, show an error message. 
+If the user selects a bulk action button after no items have been selected, show an error message. 
 
 <table class="govuk-table">
   <thead class="govuk-table__head">

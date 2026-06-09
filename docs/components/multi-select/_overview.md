@@ -11,17 +11,17 @@ eleventyComputed:
 
 ## Overview
 
-The multi select component helps users select (and deselect) all the items in a table. This is by using a single [GOV.UK checkbox](https://design-system.service.gov.uk/components/checkboxes/) at the top of the first column.
+The multi select component helps users select (and deselect) all the items in a table. It uses a single [GOV.UK checkbox](https://design-system.service.gov.uk/components/checkboxes/) at the top of the first column.
 
 The items could be cases, applications, referrals or accommodation. 
 
 ### When to use
 
-Use the multi select component to help users save time when they're performing an action to 2 or more items in a table, for example a case list.
+Use the multi select component to help users save time when they're applying an action to 2 or more items in a table, for example a case list.
 
 These actions could be 'assign', 'delete', 'mark as read' or 'edit'. 
 
-You can use it when the action needs to be applied to the [sortable table component](https://design-patterns.service.justice.gov.uk/components/sortable-table/). However, if the table is paginated the items will only be selected on the first page.   
+You can use this component with the [sortable table component](https://design-patterns.service.justice.gov.uk/components/sortable-table/), but if the table is paginated items will only be selected on the first page.   
 
 ### When not to use
 
