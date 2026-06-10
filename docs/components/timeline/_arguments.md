@@ -13,8 +13,8 @@
 | label      | object | Yes      | See [item label](#item-label).                                                                                                    |
 | text       | string | Yes      | If `html` is set, this is not required. Text to use within the item. If `html` is provided, the `text` argument will be ignored. |
 | html       | string | Yes      | If `text` is set, this is not required. HTML to use within the item. If `html` is provided, the `text` argument will be ignored. |
-| datetime   | object | No       | See [item datetime](#item-datetime).                                                                                         |
-| byline     | object | No       | See [item byline](#item-byline).                                                                                                  |
+| datetime   | object | Yes       | See [item date and time](#itemdatetime).                                                                                         |
+| byline     | object | No       | See [item byline](#itembyline).                                                                                                  |
 | classes    | string | No       | Classes to add to the timeline's items container.                                                                                |
 | attributes | object | No       | HTML attributes (for example data attributes) to add to the timeline's items container.                                          |
 
