@@ -13,7 +13,7 @@ Use the multi select component with a table, for example the [GOV.UK table compo
 
 ### Helping users carry out the action
 
-Combine this component with other building blocks to enable users to apply an action to multiple items. For example, the [GOV.UK button component](https://design-system.service.gov.uk/components/button/) or [button menu component](/components/button-menu/). 
+Combine the multi select component with other building blocks to enable users to apply an action to multiple items. For example, the [GOV.UK button component](https://design-system.service.gov.uk/components/button/) or [button menu component](/components/button-menu/). 
 
 ### Destructive actions
 
@@ -21,7 +21,7 @@ If the user is applying a destructive action to items (for example deleting, wit
 
 ### Error messages 
 
-If the user selects a bulk action button after no items have been selected, show an error message. 
+If the user selects a bulk action button without selecting any items, show an error message. 
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
