@@ -1,6 +1,7 @@
 ---
 title: Multi select
 tabs: true
+tabCollection: multi-select
 status: To be reviewed
 statusDate: June 2026
 statusAction: Documentation updated
