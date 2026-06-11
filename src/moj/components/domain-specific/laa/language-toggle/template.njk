@@ -1,0 +1,30 @@
+
+{% set lang = params.currentLanguage | default("en") %}
+<nav class="laa-language-toggle" aria-label="{{ "Language toggle" if lang === "en" else "Togl iaith" }}">
+    <ul class="laa-language-toggle__list">
+        <li class="laa-language-toggle__list-item" {%- if lang === "en"%} aria-current="true"{% endif %}>
+            {% if lang === "en"%}
+                English
+            {% else  %}
+            <a href="{{ params.href.en }}"
+                hreflang="en"
+                lang="en"
+                rel="alternate"
+                class="govuk-link"
+                aria-label="Change the language to English">English</a>
+            {% endif %}
+        </li>
+        <li class="laa-language-toggle__list-item" {%- if lang === "cy"%} aria-current="true"{% endif %}>
+            {% if lang === "cy"%}
+                Cymraeg
+            {% else  %}
+            <a href="{{ params.href.cy }}"
+                hreflang="cy"
+                lang="cy"
+                rel="alternate"
+                class="govuk-link"
+                aria-label="Newid yr iaith ir Gymraeg">Cymraeg</a>
+            {% endif %}
+        </li>
+    </ul>
+</nav>
