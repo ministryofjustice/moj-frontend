@@ -4,115 +4,115 @@ title: Multi select (example)
 redirect_from: examples/multi-select
 ---
 
-<table class="govuk-table" data-module="moj-multi-select" data-id-prefix="mountains-">
+<table class="govuk-table" data-module="moj-multi-select" data-id-prefix="cases-">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th class="govuk-table__header" scope="col" id="mountains-select-all"></th>
+      <th class="govuk-table__header" scope="col" id="cases-select-all"></th>
       <th class="govuk-table__header" scope="col">Name</th>
-      <th class="govuk-table__header" scope="col">Elevation</th>
-      <th class="govuk-table__header" scope="col">Continent</th>
-      <th class="govuk-table__header govuk-table__header--numeric" scope="col">First summit</th>
+      <th class="govuk-table__header" scope="col">Case ID</th>
+      <th class="govuk-table__header" scope="col">Caseworker</th>
+      <th class="govuk-table__header" scope="col">Date opened</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row govuk-table__row--selected">
       <td class="govuk-table__cell">
         <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-          <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-          <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-            <span class="govuk-visually-hidden">Select Aconcagua</span>
+          <input type="checkbox" class="govuk-checkboxes__input" id="case-sam-smith">
+          <label class="govuk-label govuk-checkboxes__label" for="case-sam-smith">
+            <span class="govuk-visually-hidden">Select Sam Smith</span>
           </label>
         </div>
       </td>
-      <td class="govuk-table__cell">Aconcagua</td>
-      <td class="govuk-table__cell">6,961 meters</td>
-      <td class="govuk-table__cell">South America</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">1897</td>
+      <td class="govuk-table__cell">Sam Smith</td>
+      <td class="govuk-table__cell">PC-8944-4900</td>
+      <td class="govuk-table__cell">Annabel Crangle</td>
+      <td class="govuk-table__cell">8 Jan 2026</td>
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
         <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-          <input type="checkbox" class="govuk-checkboxes__input" id="mountain-denali" value="denali">
-          <label class="govuk-label govuk-checkboxes__label" for="mountain-denali">
-            <span class="govuk-visually-hidden">Select Denali</span>
+          <input type="checkbox" class="govuk-checkboxes__input" id="case-sara-williams" value="sara-williams">
+          <label class="govuk-label govuk-checkboxes__label" for="sara-williams">
+            <span class="govuk-visually-hidden">Select Sara Williams</span>
           </label>
         </div>
       </td>
       </td>
-      <td class="govuk-table__cell">Denali</td>
-      <td class="govuk-table__cell">6,194 meters</td>
-      <td class="govuk-table__cell">North America</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">1913</td>
+      <td class="govuk-table__cell">Sara Williams</td>
+      <td class="govuk-table__cell">PC-2876-1190</td>
+      <td class="govuk-table__cell">Annabel Crangle</td>
+      <td class="govuk-table__cell">9 Feb 2026</td>
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
         <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-          <input type="checkbox" class="govuk-checkboxes__input" id="mountain-elbrus" value="elbrus">
-          <label class="govuk-label govuk-checkboxes__label" for="mountain-elbrus">
-            <span class="govuk-visually-hidden">Select Elbrus</span>
+          <input type="checkbox" class="govuk-checkboxes__input" id="case-alex-shepherd" value="alex-shepherd">
+          <label class="govuk-label govuk-checkboxes__label" for="alex-shepherd">
+            <span class="govuk-visually-hidden">Select Alex Shepherd</span>
           </label>
         </div>
       </td>
-      <td class="govuk-table__cell">Elbrus</td>
-      <td class="govuk-table__cell">5,642 meters</td>
-      <td class="govuk-table__cell">Europe</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">1874</td>
+      <td class="govuk-table__cell">Alex Shepherd</td>
+      <td class="govuk-table__cell">PC-2006-1783</td>
+      <td class="govuk-table__cell">Martin Williams</td>
+      <td class="govuk-table__cell">14 March 2025</td>
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
         <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-          <input type="checkbox" class="govuk-checkboxes__input" id="mountain-everest" value="everest">
-          <label class="govuk-label govuk-checkboxes__label" for="mountain-everest">
-            <span class="govuk-visually-hidden">Select Everest</span>
+          <input type="checkbox" class="govuk-checkboxes__input" id="case-manjit-singh" value="manjit-singh">
+          <label class="govuk-label govuk-checkboxes__label" for="case-manjit-singh">
+            <span class="govuk-visually-hidden">Select Manjit Singh</span>
           </label>
         </div>
       </td>
-      <td class="govuk-table__cell">Everest</td>
-      <td class="govuk-table__cell">8,850 meters</td>
-      <td class="govuk-table__cell">Asia</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">1953</td>
+      <td class="govuk-table__cell">Manjit Singh</td>
+      <td class="govuk-table__cell">PC-2006-1783</td>
+      <td class="govuk-table__cell">Annabel Crangle</td>
+      <td class="govuk-table__cell">13 Dec 2025</td>
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
         <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-          <input type="checkbox" class="govuk-checkboxes__input" id="mountain-kilimanjaro" value="kilimanjaro">
-          <label class="govuk-label govuk-checkboxes__label" for="mountain-kilimanjaro">
-            <span class="govuk-visually-hidden">Select Kilimanjaro</span>
+          <input type="checkbox" class="govuk-checkboxes__input" id="case-george-jones" value="george-jones">
+          <label class="govuk-label govuk-checkboxes__label" for="case-george-jones">
+            <span class="govuk-visually-hidden">Select George Jones</span>
           </label>
         </div>
       </td>
-      <td class="govuk-table__cell">Kilimanjaro</td>
-      <td class="govuk-table__cell">5,895 meters</td>
-      <td class="govuk-table__cell">Africa</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">1889</td>
+      <td class="govuk-table__cell">George Jones</td>
+      <td class="govuk-table__cell">PC-8009-1564</td>
+      <td class="govuk-table__cell">Martin Williams</td>
+      <td class="govuk-table__cell">4 May 2026</td>
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
         <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-          <input type="checkbox" class="govuk-checkboxes__input" id="mountain-puncak-jaya" value="puncak-jaya">
-          <label class="govuk-label govuk-checkboxes__label" for="mountain-puncak-jaya">
-            <span class="govuk-visually-hidden">Select Puncak Jaya</span>
+          <input type="checkbox" class="govuk-checkboxes__input" id="case-ali-mohammed" value="ali-mohammed">
+          <label class="govuk-label govuk-checkboxes__label" for="case-ali-mohammed">
+            <span class="govuk-visually-hidden">Select Ali Mohammed</span>
           </label>
         </div>
       </td>
-      <td class="govuk-table__cell">Puncak Jaya</td>
-      <td class="govuk-table__cell">4,884 meters</td>
-      <td class="govuk-table__cell">Australia</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">1962</td>
+      <td class="govuk-table__cell">Ali Mohammed</td>
+      <td class="govuk-table__cell">PC-8009-1500</td>
+      <td class="govuk-table__cell">Alice Watson</td>
+      <td class="govuk-table__cell">3 May 2026</td>
     </tr>
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">
         <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-          <input type="checkbox" class="govuk-checkboxes__input" id="mountain-vinson" value="vinson">
-          <label class="govuk-label govuk-checkboxes__label" for="mountain-vinson">
-            <span class="govuk-visually-hidden">Select Vinson</span>
+          <input type="checkbox" class="govuk-checkboxes__input" id="case-tom-edwards" value="tom-edwards">
+          <label class="govuk-label govuk-checkboxes__label" for="case-tom-edwards">
+            <span class="govuk-visually-hidden">Select Tom Edwards</span>
           </label>
         </div>
       </td>
-      <td class="govuk-table__cell">Vinson</td>
-      <td class="govuk-table__cell">4,897 meters</td>
-      <td class="govuk-table__cell">Antarctica</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">1966</td>
+      <td class="govuk-table__cell">Tom Edwards</td>
+      <td class="govuk-table__cell">PC-8011-1437</td>
+      <td class="govuk-table__cell">Annabel Crangle</td>
+      <td class="govuk-table__cell">1 Feb 2026</td>
     </tr>
   </tbody>
 </table>
