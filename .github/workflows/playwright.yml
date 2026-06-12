@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: npm run setup
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install chromium --with-deps
       - name: Build package
         run: ENV=test npm run build:package
       - name: Build docs
