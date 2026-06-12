@@ -19,11 +19,11 @@ The items could be cases, applications, referrals or accommodation.
 
 Use the multi select component to help users save time when they're applying an action to 2 or more items in a table, for example a case list.
 
-It does not prevent the user selecting (and deselecting) individual rows. 
-
 These actions could be 'assign', 'delete', 'mark as read' or 'edit'. 
 
-You can use this component with the [sortable table component](https://design-patterns.service.justice.gov.uk/components/sortable-table/) but if the table is paginated, items will only be selected on the first page.   
+You can use this component with the [sortable table component](https://design-patterns.service.justice.gov.uk/components/sortable-table/) but if the table is paginated, items will only be selected on the first page.
+
+This component does not prevent the user selecting (and deselecting) individual rows. 
 
 ### When not to use
 
