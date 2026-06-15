@@ -6,7 +6,7 @@
  * @param {string} str - The input string containing the HTML of the tab panel.
  * @returns {string} - The dedented string with only the content of the panel modified.
  */
-module.exports = function dedentGovUkTabPanel(str) {
+module.exports = function dedentGovUkTabPanel(str, spaces = 2) {
   const lines = str.split('\n')
   let inPanel = false
   let depth = 0
@@ -39,7 +39,7 @@ module.exports = function dedentGovUkTabPanel(str) {
       }
 
       // For lines inside the panel, remove the first 2 spaces of indentation
-      return line.slice(2)
+      return line.slice(0, spaces).trim() === '' ? line.slice(spaces) : line
     })
     .join('\n')
 }
