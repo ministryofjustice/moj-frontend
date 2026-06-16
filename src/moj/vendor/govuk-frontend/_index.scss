@@ -5,8 +5,7 @@
 @use "../../settings/all" as *;
 
 // GOV.UK Frontend with settings
-@forward "base" with (
-  // Assets override
+@use "node_modules/govuk-frontend/dist/govuk/base" with ( // Assets override
   $govuk-assets-path: $moj-assets-path,
   $govuk-images-path: $moj-images-path,
   $govuk-fonts-path: $moj-fonts-path,
@@ -17,5 +16,4 @@
 
   // Typography override
   $govuk-font-family: $moj-font-family,
-  $govuk-include-default-font-face: $moj-include-default-font-face
-);
+  $govuk-include-default-font-face: $moj-include-default-font-face);
