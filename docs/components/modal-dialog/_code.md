@@ -26,12 +26,19 @@ Code has been added for this component. There may be other code blocks in the [�
            <button type="button" class="govuk-button govuk-modal-dialogue__close" aria-label="close" data-element="govuk-modal-dialogue-close">x</button>
          </div>
          <div class="govuk-modal-dialogue__content">
-           <h2 class="govuk-modal-dialogue__heading govuk-heading-l" id="modal-title">Title</h2>
-           <div class="govuk-modal-dialogue__description govuk-body">
-              Content
-           </div>
-         </div>
-       </dialog>
+             <h2 class="govuk-modal-dialogue__heading govuk-heading-l" id="timeout-warning-modal-title">
+               Are you sure you want to delete this case?
+             </h2>
+             <div class="govuk-modal-dialogue__description govuk-body" id="timeout-warning-modal-description">
+                <p>You have selected ‘delete this case’. This cannot be undone.</p>
+                <p>You can go back to undo this, or delete a section of the case.</p>
+             </div>
+             <div class="govuk-button-group">
+                <button class="govuk-button dialog-button govuk" data-module="govuk-button" data-element="govuk-modal-dialogue-close">Yes, delete it</button>
+                <a class="govuk-link" href="#" data-element="govuk-modal-dialogue-close">Go back</a>
+             </div>
+           </div>       
+        </dialog>
      </div>
      <div class="govuk-modal-dialogue__backdrop"></div>
   </div>
