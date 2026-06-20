@@ -1,0 +1,6 @@
+{
+  "componentCodeLanguage": "css",
+  "componentCodeLanguageOther": "",
+  "componentCode": ".mini-profile {\r\n    margin: 0 0 30px 0;\r\n    position: relative;\r\n    box-sizing: border-box;\r\n    display: flex;\r\n    align-items: center\r\n}\r\n\r\n.mini-profile-inner {\r\n    background-color: #f3f2f1 !important;\r\n    width: 100%;\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    gap: 20px;\r\n    box-sizing: border-box;\r\n    padding: 20px\r\n}\r\n\r\n.mini-profile-left {\r\n    margin-right: 15px;\r\n    box-sizing: border-box\r\n}\r\n\r\n.mini-profile-person-img {\r\n    width: 100px;\r\n    height: 130px;\r\n    box-sizing: border-box\r\n}\r\n\r\n.mini-profile-right {\r\n    flex: 1\r\n}\r\n\r\n.mini-profile-info {\r\n    padding: 0 !important;\r\n    margin: 0;\r\n    list-style: none;\r\n    box-sizing: border-box;\r\n    display: flex;\r\n    flex-wrap: wrap\r\n}\r\n\r\n.mini-profile-info li {\r\n    margin-right: 25px;\r\n    color: #0b0c0c\r\n}\r\n\r\n@media(max-width: 768px) {\r\n    .mini-profile-info li {\r\n        margin-right:10px\r\n    }\r\n}",
+  "componentCodeUsage": ""
+}
