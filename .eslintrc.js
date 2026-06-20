@@ -196,6 +196,7 @@ module.exports = {
     },
     {
       files: [
+        'submissions/**/*.{cjs,js,mjs}',
         '**/examples/**/*.{cjs,js,mjs}',
         '**/*.md/*.{cjs,js,mjs}',
         'init.js'
@@ -211,7 +212,8 @@ module.exports = {
         // Ignore paths to example modules
         'import/no-absolute-path': 'off',
         'import/no-unresolved': 'off',
-        'n/no-missing-import': 'off'
+        'n/no-missing-import': 'off',
+        'n/no-extraneous-import': 'off'
       }
     }
   ],
