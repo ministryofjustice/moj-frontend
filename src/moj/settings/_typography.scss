@@ -10,4 +10,4 @@ $moj-font-family: "GDS Transport", arial, sans-serif !default;
 
 /// Exclude @font-face declarations already included in GOV.UK Frontend
 
-$moj-include-default-font-face: false;
+$moj-include-default-font-face: false !default;
