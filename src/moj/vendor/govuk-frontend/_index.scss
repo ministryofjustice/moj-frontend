@@ -5,7 +5,7 @@
 @use "../../settings/all" as *;
 
 // GOV.UK Frontend with settings
-@use "node_modules/govuk-frontend/dist/govuk/base" with ( // Assets override
+@forward "node_modules/govuk-frontend/dist/govuk/base" with ( // Assets override
   $govuk-assets-path: $moj-assets-path,
   $govuk-images-path: $moj-images-path,
   $govuk-fonts-path: $moj-fonts-path,
