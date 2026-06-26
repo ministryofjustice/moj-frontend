@@ -2,6 +2,7 @@
 title: How to use
 order: 20
 tags: 'date-picker'
+permalink: false
 eleventyComputed:
   override:eleventyNavigation: {}
 ---
