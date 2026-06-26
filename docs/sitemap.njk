@@ -32,16 +32,17 @@ eleventyExcludeFromCollections: true
     <h2 class="govuk-heading-l">{{ sectionKey }}</h2>
     <ul class="govuk-list sitemap-list ">
       {% for item in navItems %}
-        {% if item.url and not (item.url in excludeUrls) %}
+        {% if item.url and not (item.url in excludeUrls) and not
+        (item.excludeFromSitemap)  %}
           {% if coveredUrls.push(item.url) %}{% endif %}
-          <li>
+          <li class="sitemap-list__item {% if item.children.length%}sitemap-list__item--with-children{% endif %}">
             {% if item.children.length %}
               <h3 class="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-bottom-2">{{ item.title }}</h3>
               <ul class="govuk-list sitemap-list">
-                {% for child in item.children %}
-                  {% if child.url %}
+                {% for child in item.children | sort(false, false, "order") %}
+                  {% if child.url and not child.data.excludeFromSitemap %}
                     {% if coveredUrls.push(child.url) %}{% endif %}
-                    <li>
+                    <li class="sitemap-list__item">
                     <a href="{{ child.url }}" class="govuk-link">{{ child.title }}</a>
                     </li>
                   {% endif %}
