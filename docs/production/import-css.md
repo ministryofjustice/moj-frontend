@@ -6,7 +6,7 @@ title: Import MOJ Frontend CSS
 lede: Learn how to use the CSS from MOJ Frontend and GOV.UK Frontend.
 eleventyNavigation:
   key: Import CSS
-  parent: Setup for production
+  parent: Production
   order: 50
 ---
 
