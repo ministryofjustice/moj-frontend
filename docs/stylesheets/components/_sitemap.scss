@@ -1,0 +1,19 @@
+@use "../moj-frontend" as *;
+
+.sitemap {
+}
+
+.sitemap-section {
+}
+
+.sitemap-list {
+  margin-bottom: govuk-spacing(6);
+
+  /* display: grid; */
+
+  /* grid-template-columns: repeat(4, 1fr); */
+}
+
+.sitemap-list > li {
+  margin-bottom: govuk-spacing(2);
+}
