@@ -64,7 +64,7 @@
   "homepage": "https://github.com/ministryofjustice/moj-frontend#readme",
   "dependencies": {
     "@ministryofjustice/frontend": "*",
-    "@sentry/node": "^9.47.1",
+    "@sentry/node": "^10.0.0",
     "@sentry/rollup-plugin": "^3.6.1",
     "a11y-syntax-highlighting": "^1.1.0",
     "connect-redis": "^6.1.3",
