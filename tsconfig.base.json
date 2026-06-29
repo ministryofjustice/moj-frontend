@@ -19,7 +19,6 @@
       "@testing-library/jest-dom",
       "jest",
       "jest-axe",
-      "jest-sinon",
       "node",
       "typed-query-selector"
     ]

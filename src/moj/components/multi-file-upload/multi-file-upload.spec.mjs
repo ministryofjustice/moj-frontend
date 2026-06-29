@@ -5,8 +5,6 @@ import { userEvent } from '@testing-library/user-event'
 import { configureAxe } from 'jest-axe'
 import { fakeXhr, fakeServerWithClock } from 'nise'
 import { outdent } from 'outdent'
-import { spy, restore } from 'sinon'
-
 import { MultiFileUpload } from './multi-file-upload.mjs'
 
 const user = userEvent.setup()
@@ -74,10 +72,10 @@ describe('Multi-file upload', () => {
 
     component = createComponent()
 
-    entryHook = spy()
-    exitHook = spy()
-    errorHook = spy()
-    deleteHook = spy()
+    entryHook = jest.fn()
+    exitHook = jest.fn()
+    errorHook = jest.fn()
+    deleteHook = jest.fn()
 
     new MultiFileUpload(component, {
       uploadUrl: '/upload',
@@ -94,7 +92,6 @@ describe('Multi-file upload', () => {
   afterEach(() => {
     document.body.innerHTML = ''
     server.restore()
-    restore()
   })
 
   test('initialises with enhanced class', () => {
@@ -198,9 +195,11 @@ describe('Multi-file upload', () => {
     test('handles successful upload', async () => {
       await user.upload(input, file)
 
-      expect(entryHook).toHaveBeenCalledOnce()
-      expect(exitHook).toHaveBeenCalledOnce()
-      expect(exitHook).toHaveBeenCalledAfter(entryHook)
+      expect(entryHook).toHaveBeenCalledTimes(1)
+      expect(exitHook).toHaveBeenCalledTimes(1)
+      expect(entryHook.mock.invocationCallOrder[0]).toBeLessThan(
+        exitHook.mock.invocationCallOrder[0]
+      )
 
       const successMessage = component.querySelector(
         '.moj-multi-file-upload__success'
@@ -243,7 +242,7 @@ describe('Multi-file upload', () => {
 
       await user.upload(input, file)
 
-      expect(errorHook).toHaveBeenCalledOnce()
+      expect(errorHook).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -283,7 +282,7 @@ describe('Multi-file upload', () => {
       )
       await user.click(deleteButton)
 
-      expect(deleteHook).toHaveBeenCalledOnce()
+      expect(deleteHook).toHaveBeenCalledTimes(1)
       expect(server.requests[server.requests.length - 1].url).toBe('/delete')
       expect(server.requests[server.requests.length - 1].method).toBe('POST')
 
@@ -380,9 +379,11 @@ describe('Multi-file upload', () => {
       )
 
       // test callbacks
-      expect(entryHook).toHaveBeenCalledOnce()
-      expect(exitHook).toHaveBeenCalledOnce()
-      expect(exitHook).toHaveBeenCalledAfter(entryHook)
+      expect(entryHook).toHaveBeenCalledTimes(1)
+      expect(exitHook).toHaveBeenCalledTimes(1)
+      expect(entryHook.mock.invocationCallOrder[0]).toBeLessThan(
+        exitHook.mock.invocationCallOrder[0]
+      )
 
       // test file present in UI
       expect(feedbackContainer).not.toHaveClass('moj-hidden')
@@ -427,8 +428,8 @@ describe('Multi-file upload', () => {
         '.moj-multi-file-upload__delete'
       )
 
-      expect(entryHook).toHaveBeenCalledTwice()
-      expect(exitHook).toHaveBeenCalledTwice()
+      expect(entryHook).toHaveBeenCalledTimes(2)
+      expect(exitHook).toHaveBeenCalledTimes(2)
 
       expect(feedbackContainer).not.toHaveClass('moj-hidden')
       expect(fileRows).toHaveLength(2)
@@ -472,8 +473,8 @@ describe('Multi-file upload', () => {
         '.moj-multi-file-upload__delete'
       )
 
-      expect(entryHook).toHaveBeenCalledTwice()
-      expect(exitHook).toHaveBeenCalledTwice()
+      expect(entryHook).toHaveBeenCalledTimes(2)
+      expect(exitHook).toHaveBeenCalledTimes(2)
 
       expect(feedbackContainer).not.toHaveClass('moj-hidden')
       expect(fileRows).toHaveLength(2)
