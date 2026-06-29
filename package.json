@@ -180,7 +180,7 @@
     "stylelint-order": "^6.0.4",
     "svgo": "^4.0.1",
     "terser": "^5.48.0",
-    "typed-query-selector": "^2.12.1",
+    "typed-query-selector": "^2.12.2",
     "typescript": "^5.9.3"
   },
   "config": {
