@@ -59,21 +59,3 @@ eleventyExcludeFromCollections: true
   {% endif %}
 {% endfor %}
 
-{# Collect pages not covered by any nav section above #}
-{% set otherPages = [] %}
-{% for item in collections.all %}
-  {% if item.url
-    and item.data.title
-    and not (item.url in excludeUrls)
-    and not (item.url in coveredUrls) %}
-    {% if otherPages.push(item) %}{% endif %}
-  {% endif %}
-{% endfor %}
-
-<hr />
-<h3 class="govuk-heading-m">Debug: pages currently not included above  </h3>
-{% for page in otherPages %}
-  {% if 'example' not in page.data.title  %}
-    <p><a href="{{page.url}}">{{ page.data.title}}</a> {{page.url}}</p>
-  {% endif %}
-{% endfor %}
