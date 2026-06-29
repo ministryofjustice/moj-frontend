@@ -93,7 +93,7 @@
     "@babel/preset-env": "^7.29.7",
     "@commitlint/cli": "^21.0.2",
     "@commitlint/config-conventional": "^21.0.2",
-    "@ministryofjustice/hmpps-npm-script-allowlist": "0.0.4",
+    "@ministryofjustice/hmpps-npm-script-allowlist": "0.0.6",
     "@playwright/test": "^1.60.0",
     "@rollup/plugin-babel": "^6.1.0",
     "@rollup/plugin-commonjs": "^28.0.9",
