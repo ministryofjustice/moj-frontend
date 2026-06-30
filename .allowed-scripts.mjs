@@ -9,7 +9,6 @@ export default configureAllowedScripts({
     'node_modules/unrs-resolver@1.12.2': 'ALLOW',
     'node_modules/govuk-prototype-kit/node_modules/@parcel/watcher@2.5.1':
       'FORBID',
-    'node_modules/sharp@0.34.5': 'ALLOW',
     'node_modules/govuk-prototype-kit/node_modules/fsevents@2.3.2': 'FORBID'
   }
 })
