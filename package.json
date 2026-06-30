@@ -116,7 +116,7 @@
     "@types/jest-axe": "^3.5.9",
     "@types/js-yaml": "^4.0.9",
     "@types/nise": "^1.4.5",
-    "@types/node": "^22.20.0",
+    "@types/node": "^24.13.2",
     "@types/nunjucks": "^3.2.6",
     "@types/sinon": "^21.0.1",
     "@typescript-eslint/eslint-plugin": "^8.62.0",
