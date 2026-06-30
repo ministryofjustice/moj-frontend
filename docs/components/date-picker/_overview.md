@@ -4,7 +4,7 @@ order: 10
 tags: 'date-picker'
 permalink: false
 eleventyComputed:
-  override:eleventyNavigation: false
+  override:eleventyNavigation: {}
 ---
 {% example template="examples/default", colocated="true", height=590 %}
 

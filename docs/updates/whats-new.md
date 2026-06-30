@@ -2,6 +2,7 @@
 layout: layouts/content.njk
 subsection: Updates
 title: What's new
+permalink: false
 eleventyNavigation:
   key: What's new
   parent: Updates

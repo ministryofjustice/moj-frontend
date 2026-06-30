@@ -1,0 +1,61 @@
+---
+layout: layouts/sitemap.njk
+title: Sitemap
+permalink: /sitemap/
+eleventyExcludeFromCollections: true
+---
+
+
+{# URLs to exclude from all sections and the "Other pages" fallback #}
+{% set excludeUrls = ["/404.html", "/500.html", "/redirects/", "/cookies/",
+"/accessibility/", "/privacy/"] %}
+
+{# Top-level navigation section keys, in display order #}
+{% set sectionKeys = [
+  "MOJ building blocks",
+  "Probation building blocks",
+  "Guidance",
+  "Community",
+  "About the Design System"
+] %}
+
+{#
+  Build up a list of URLs that have been rendered inside a named nav section.
+  Array.push() mutates the JS array in place and returns the new length (truthy),
+  so the {% if ... %}{% endif %} idiom is used to call it without outputting anything.
+#}
+{% set coveredUrls = [] %}
+{% for sectionKey in sectionKeys %}
+  {% set navItems = collections.all | eleventyNavigation(sectionKey) %}
+  {% if navItems.length %}
+    <section class="sitemap-section">
+    <h2 class="govuk-heading-l">{{ sectionKey }}</h2>
+    <ul class="govuk-list sitemap-list ">
+      {% for item in navItems %}
+        {% if item.url and not (item.url in excludeUrls) and not
+        (item.excludeFromSitemap)  %}
+          {% if coveredUrls.push(item.url) %}{% endif %}
+          <li class="sitemap-list__item {% if item.children.length%}sitemap-list__item--with-children{% endif %}">
+            {% if item.children.length %}
+              <h3 class="govuk-heading-m govuk-!-margin-top-2 govuk-!-margin-bottom-2">{{ item.title }}</h3>
+              <ul class="govuk-list sitemap-list">
+                {% for child in item.children | sort(false, false, "order") %}
+                  {% if child.url and not child.data.excludeFromSitemap %}
+                    {% if coveredUrls.push(child.url) %}{% endif %}
+                    <li class="sitemap-list__item">
+                    <a href="{{ child.url }}" class="govuk-link">{{ child.title }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% else %}
+              <a href="{{ item.url }}" class="govuk-link">{{ item.title }}</a>
+            {% endif %}
+          </li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+      </section>
+  {% endif %}
+{% endfor %}
+
