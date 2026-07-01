@@ -171,7 +171,7 @@
     "sass-embedded": "^1.100.0",
     "semantic-release": "^25.0.5",
     "sharp": "^0.35.2",
-    "sinon": "^21.1.2",
+    "sinon": "^22.0.0",
     "string": "3.3.3",
     "stylelint": "^16.26.1",
     "stylelint-config-gds": "^2.0.0",
