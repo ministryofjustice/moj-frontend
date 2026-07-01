@@ -73,7 +73,7 @@
     "express-rate-limit": "^7.5.1",
     "express-session": "^1.19.0",
     "express-xss-sanitizer": "^2.0.2",
-    "govuk-frontend": "^6.3.0",
+    "govuk-frontend": "6.1.0",
     "helmet": "^8.2.0",
     "ioredis": "^5.11.1",
     "joi": "^17.13.4",
