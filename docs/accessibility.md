@@ -16,12 +16,6 @@ We’ve also made the website text as simple as possible to understand.
 
 [AbilityNet](https://mcmw.abilitynet.org.uk/) has advice on making your device easier to use if you have a disability.
 
-## How accessible this website is
-
-We know some parts of this website are not fully accessible:
-
-- users cannot get to content in multiple ways
-
 ## Feedback and contact information
 
 Contact the MOJ Design System team if you:
@@ -43,19 +37,11 @@ Justice Digital is committed to making its website accessible, in accordance wit
 
 The website has been tested against the Web Content Accessibility Guidelines (WCAG) 2.2 AA standard.
 
-This website is partially compliant with the [Web Content Accessibility Guidelines version 2.2](https://www.w3.org/TR/WCAG22/) AA standard, due to the non-compliances listed below.
-
-## Non-accessible content
-
-The content listed below is non-accessible for the following reasons.
-
-### Non-compliance with the accessibility regulations
-
-There's only one way for users to get to content. This fails WCAG 2.2 Multiple Ways (Level AA). We plan to address this issue by September 2026.
+This website is fully compliant with the [Web Content Accessibility Guidelines version 2.2](https://www.w3.org/TR/WCAG22/) AA standard.
 
 ## Preparation of this accessibility statement
 
-This statement was prepared on 16 August 2022. It was last reviewed on 23 January 2026.
+This statement was prepared on 16 August 2022. It was last reviewed on 2 July 2026.
 
 This website was last tested on 14 July 2025 against the WCAG 2.2 AA standard.
 
