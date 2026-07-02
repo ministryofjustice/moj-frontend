@@ -12,6 +12,7 @@
     },
     {
       "groupName": "Build",
+      "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": [
         "@babel/*",
         "@rollup/*",
@@ -28,18 +29,20 @@
       ]
     },
     {
-      "addLabels": ["preview: request"],
       "groupName": "Documentation",
+      "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": [
         "@11ty/eleventy",
         "@11ty/eleventy-*",
         "highlight.js",
         "markdown-it",
         "markdown-it-*"
-      ]
+      ],
+      "addLabels": ["preview: request"]
     },
     {
       "groupName": "Lint",
+      "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": [
         "@typescript-eslint/*",
         "eslint-*",
@@ -49,7 +52,7 @@
       ]
     },
     {
-      "addLabels": ["preview: request"],
+      "matchUpdateTypes": ["minor", "patch"],
       "groupName": "Release",
       "matchPackageNames": [
         "@commitlint/*",
@@ -58,15 +61,18 @@
         "cz-*",
         "semantic-release",
         "semantic-release-*"
-      ]
+      ],
+      "addLabels": ["preview: request"]
     },
     {
-      "addLabels": ["preview: request"],
-      "groupName": "Production",
-      "matchDepTypes": ["dependencies", "peerDependencies"]
+      "groupName": "Production!",
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchDepTypes": ["dependencies", "peerDependencies"],
+      "addLabels": ["preview: request"]
     },
     {
       "groupName": "Test",
+      "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": [
         "@playwright/*",
         "@testing-library/*",
@@ -81,7 +87,19 @@
     },
     {
       "groupName": "Tools",
+      "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": ["concurrently", "gulp", "gulp-*", "nodemon"]
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "autoApprove": true,
+      "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["preview: request"],
+      "autoApprove": false,
+      "automerge": false
     }
   ],
   "rangeStrategy": "bump",
