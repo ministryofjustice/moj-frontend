@@ -1,5 +1,5 @@
 ---
-title: How to use 
+title: Case template 
 order: 30
 tags: 'pds-page-templates'
 permalink: false
