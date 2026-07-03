@@ -9,7 +9,7 @@ eleventyComputed:
 
 ## Service template
 
-Use the service template for top-level pages. There are 6 variants of the service template:
+Use the service template for top-level pages. There are 6 variants:
 
 1. Service template (sections)
 2. Service template (no sections)
