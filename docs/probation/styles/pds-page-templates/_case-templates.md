@@ -9,7 +9,7 @@ eleventyComputed:
 
 ## Case template
 
-Use the case template for pages displaying a case or case details. There are 4 variants of the case template:
+Use the case template for pages displaying a case or case details. There are 4 variants:
 
 1. Case template (no secondary navigation)
 
