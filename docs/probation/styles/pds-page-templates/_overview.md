@@ -38,7 +38,7 @@ The templates show the page design and components needed for pages in an interna
 
 - [GOV.UK breadcrumbs](https://design-system.service.gov.uk/components/breadcrumbs/) and [GOV.UK back link](https://design-system.service.gov.uk/components/back-link/)
 
-### Accessing the page templates
+### Using the page templates
 
 The templates are held in the [PDS Figma Kit](https://www.figma.com/design/AT9lj3HbJj6lYKrZLeM8CN/PDS--Probation--Figma-Kit?node-id=20-17040&p=f&t=eUOs0YqLBeNOKDFO-0). 
 
