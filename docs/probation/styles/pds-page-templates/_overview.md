@@ -24,9 +24,9 @@ If you work outside MOJ, read the guidance on <a href="https://design-patterns.s
 
 There are 2 page templates: 
 
-1. the service template, for top-level pages 
+1. The service template, for top-level pages
 
-2. the case template, for pages displaying a case or case details
+2. The case template, for pages displaying a case or case details
 
 The templates show the page design and components needed for pages in an internal probation service. The common components are:
 
