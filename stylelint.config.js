@@ -22,6 +22,7 @@ module.exports = {
   ],
   plugins: ['stylelint-order'],
   rules: {
+    'selector-no-qualifying-type': [true, { ignore: ['attribute', 'class'] }],
     'scss/comment-no-loud': null,
     'scss/at-extend-no-missing-placeholder': null,
 
