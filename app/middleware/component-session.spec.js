@@ -1276,7 +1276,7 @@ describe('validateFormDataFileUpload', () => {
     validateFormDataFileUpload(err, req, res, next)
     expect(next).toHaveBeenCalled()
   })
-  it('calls next if error code is not LIMIT_FILE_SIZE', () => {
+  it('calls next if error code is not upload validation error', () => {
     const err = {
       code: 'AN_ERROR'
     }
@@ -1305,6 +1305,52 @@ describe('validateFormDataFileUpload', () => {
       formErrors: {
         componentImage: {
           text: 'The selected file must be smaller than 10MB'
+        }
+      },
+      page: {
+        fields: {
+          componentImage: {
+            hint: 'The file must be a JPG, BMP, PNG, TIF or PDF, and smaller than 10MB.',
+            label: 'Upload a file'
+          }
+        },
+        removable: false,
+        showOnCya: true,
+        title: 'Component image'
+      },
+      showAddAnother: false,
+      submitUrl: undefined
+    }
+
+    validateFormDataFileUpload(err, req, res, next)
+
+    expect(res.status).toHaveBeenCalledWith(400)
+    expect(res.render).toHaveBeenCalledWith('component-image', expectedArgs)
+    expect(next).not.toHaveBeenCalled()
+  })
+
+  it('renders the template with unsupported file type errors', () => {
+    const err = {
+      code: 'LIMIT_FILE_TYPE',
+      field: 'componentImage'
+    }
+    req.params = { page: 'component-image' }
+    const expectedArgs = {
+      addAnother: 1,
+      backLink: false,
+      csrfToken: undefined,
+      errorList: [
+        {
+          href: '#component-image',
+          text: 'The selected file must be a JPG, BMP, PNG, TIF or PDF'
+        }
+      ],
+      file: undefined,
+      formData: undefined,
+      formErrorStyles: null,
+      formErrors: {
+        componentImage: {
+          text: 'The selected file must be a JPG, BMP, PNG, TIF or PDF'
         }
       },
       page: {

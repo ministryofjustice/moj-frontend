@@ -57,9 +57,27 @@ const {
   getDetailsForPrEmail
 } = require('../middleware/process-submission-data')
 const verifyCsrf = require('../middleware/verify-csrf')
+const ALLOWED_COMPONENT_IMAGE_MIME_TYPES = new Set([
+  'image/jpeg',
+  'image/bmp',
+  'image/png',
+  'image/tiff',
+  'application/pdf'
+])
+
 const upload = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 10 * 1024 * 1024 } // 10MB
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
+  fileFilter: (req, file, cb) => {
+    if (ALLOWED_COMPONENT_IMAGE_MIME_TYPES.has(file.mimetype)) {
+      return cb(null, true)
+    }
+
+    const error = new Error('Invalid file type')
+    error.code = 'LIMIT_FILE_TYPE'
+    error.field = file.fieldname
+    cb(error)
+  }
 })
 const router = express.Router()
 const checkYourAnswersPath = 'check-your-answers'

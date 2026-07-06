@@ -26,6 +26,15 @@ test('file too large', async () => {
   ])
 })
 
+test('unsupported file type', async () => {
+  await testPage.uploadFile('test-image.txt')
+  await testPage.clickUpload()
+
+  await testPage.expectErrorSummaryWithMessages([
+    'The selected file must be a JPG, BMP, PNG, TIF or PDF'
+  ])
+})
+
 test('file ok', async () => {
   const filename = 'test-image.png'
 

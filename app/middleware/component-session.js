@@ -157,11 +157,16 @@ const errorTemplateVariables = (
 }
 
 const validateFormDataFileUpload = (err, req, res, next) => {
-  if (err?.code === 'LIMIT_FILE_SIZE') {
+  if (err?.code === 'LIMIT_FILE_SIZE' || err?.code === 'LIMIT_FILE_TYPE') {
+    const fieldName = err.field || 'componentImage'
     const errorMessage = 'The selected file must be smaller than 10MB'
+    const invalidTypeErrorMessage =
+      'The selected file must be a JPG, BMP, PNG, TIF or PDF'
     const formErrors = {}
-    formErrors[err.field] = { text: errorMessage }
-    const errors = [{ message: errorMessage, path: [err.field] }]
+    const message =
+      err?.code === 'LIMIT_FILE_SIZE' ? errorMessage : invalidTypeErrorMessage
+    formErrors[fieldName] = { text: message }
+    const errors = [{ message, path: [fieldName] }]
     const errorList = transformErrorsToErrorList(errors)
     const template = getTemplate(req)
     res
