@@ -35,6 +35,15 @@ test('unsupported file type', async () => {
   ])
 })
 
+test('disguised markdown file renamed to jpg', async () => {
+  await testPage.uploadFile('test-image-fake.jpg')
+  await testPage.clickUpload()
+
+  await testPage.expectErrorSummaryWithMessages([
+    'The selected file must be a JPG, BMP, PNG, TIF or PDF'
+  ])
+})
+
 test('file ok', async () => {
   const filename = 'test-image.png'
 

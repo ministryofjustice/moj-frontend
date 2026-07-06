@@ -9,7 +9,8 @@ const {
   COMPONENT_FORM_PAGES,
   ADD_NEW_COMPONENT_ROUTE,
   MESSAGES,
-  ENV
+  ENV,
+  ALLOWED_COMPONENT_IMAGE_MIME_TYPES
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const { checkYourAnswers } = require('../helpers/check-your-answers')
@@ -28,7 +29,9 @@ const {
   removeFromSession,
   sessionStarted,
   sessionVerified,
-  validateFormDataFileUpload,
+  validateFormDataFileSignature,
+  validateFormDataFileSize,
+  validateFormDataFileType,
   saveFileToRedis,
   clearSkippedPageData,
   checkEmailDomain,
@@ -57,13 +60,6 @@ const {
   getDetailsForPrEmail
 } = require('../middleware/process-submission-data')
 const verifyCsrf = require('../middleware/verify-csrf')
-const ALLOWED_COMPONENT_IMAGE_MIME_TYPES = new Set([
-  'image/jpeg',
-  'image/bmp',
-  'image/png',
-  'image/tiff',
-  'application/pdf'
-])
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -525,9 +521,11 @@ router.post(
   validatePageParams,
   upload.single('componentImage'),
   verifyCsrf,
+  validateFormDataFileSignature,
   saveFileToRedis,
   canAddAnother,
-  validateFormDataFileUpload,
+  validateFormDataFileSize,
+  validateFormDataFileType,
   getBackLink,
   validateFormData,
   (req, res, next) => {

@@ -29,6 +29,13 @@ const config = {
     'justice.gov.uk',
     'publicguardian.gov.uk'
   ],
+  ALLOWED_COMPONENT_IMAGE_MIME_TYPES: new Set([
+    'image/jpeg',
+    'image/bmp',
+    'image/png',
+    'image/tiff',
+    'application/pdf'
+  ]),
   HTML_SANITIZATION_OPTIONS: {
     allowedTags: [
       // Document structure
@@ -504,6 +511,12 @@ const config = {
       type: 'success',
       title: 'Your email address has been confirmed',
       text: 'You can now submit a component'
+    },
+    uploadFileTooLarge: {
+      text: 'The selected file must be smaller than 10MB'
+    },
+    uploadFileInvalidType: {
+      text: 'The selected file must be a JPG, BMP, PNG, TIF or PDF'
     },
     componentImageUploaded: (filename) => {
       return {
