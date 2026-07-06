@@ -11,10 +11,10 @@ eleventyComputed:
 
 Use the service template for top-level pages. There are 6 variants:
 
-1. [Service template (sections)](#service-template%28sections%29)
-2. [Service template (no sections)](#service-template%28no-sections%29)
-3. [Service template (horizontal search)](#service-template%28horizontal-search%29)
-4. [Service template (horizontal search with tabs)](#service-template%28horizontal-search-with-tabs%29)
+1. [Service template (sections)](#service-template-sections)
+2. [Service template (no sections)](#service-template-no-sections)
+3. [Service template (horizontal search)](#service-template-horizontal-search)
+4. [Service template (horizontal search with tabs)](#service-template-horizontal-search-with-tabs)
 5. [Service template (vertical filter)](#service-template%28vertical-filter%29)
 6. [Service template (vertical filter with tabs)](#service-template%28vertical-filter-with-tabs%29)
 
