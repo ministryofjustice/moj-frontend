@@ -1,8 +1,21 @@
 /* eslint import/order: "off" */
 /* eslint n/no-unpublished-require: "off" */
 const path = require('path')
+const checkEnvVars = require('./helpers/env-check')
 const envPath = path.join(__dirname, `.env.${process.env.ENV || 'development'}`)
 require('dotenv').config({ path: envPath })
+
+checkEnvVars([
+  'GITHUB_API_TOKEN',
+  'GITHUB_REPO_OWNER',
+  'GITHUB_REPO_NAME',
+  'SESSION_SECRET',
+  'NOTIFY_TOKEN',
+  'APP_URL',
+  'REDIS_URL',
+  'REDIS_AUTH_TOKEN',
+  'SENTRY_DSN'
+])
 
 const Sentry = require('@sentry/node')
 const {
