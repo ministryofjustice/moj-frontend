@@ -1,4 +1,4 @@
-const checkEnvVars = require('./env-check')
+const checkEnvVars = require('./check-env-vars')
 
 describe('checkEnvVars', () => {
   let mockLog

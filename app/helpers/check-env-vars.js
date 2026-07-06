@@ -4,7 +4,7 @@
  * @param {string[]} requiredEnvVars - Environment variables that are required
  * @param {Function=} errorLog - Function used for logging error messages
  */
-const checkEnvVars = (requiredEnvVars, errorLog = console.error) => {
+const checkRequiredEnvVars = (requiredEnvVars, errorLog = console.error) => {
   const missingEnvVars = requiredEnvVars.filter(
     (envVar) => !Object.prototype.hasOwnProperty.call(process.env, envVar)
   )
@@ -19,4 +19,4 @@ const checkEnvVars = (requiredEnvVars, errorLog = console.error) => {
   }
 }
 
-module.exports = checkEnvVars
+module.exports = checkRequiredEnvVars
