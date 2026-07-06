@@ -1,6 +1,6 @@
 ---
 title: service names
-anchor: naming
+anchor: service-names
 type: Updated
 date: 2026-07-06
 ---
