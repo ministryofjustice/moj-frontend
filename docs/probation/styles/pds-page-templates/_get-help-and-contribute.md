@@ -7,4 +7,13 @@ eleventyComputed:
     override:eleventyNavigation: {}
 ---
 
-{% include "layouts/partials/get-help-and-contribute.njk" %}
+You can [contact the MOJ Design System team for help or support using this style](/help).  
+
+## Help improve this style 
+
+The MOJ Design System team would like to hear:  
+
+- how you have used this style in your service
+- any ideas for improvement
+
+Add these comments to the page templates discussion on GitHub. 
