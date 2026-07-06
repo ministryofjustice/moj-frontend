@@ -651,7 +651,7 @@ describe('saveSession', () => {
 
       saveSession(req, res, next)
 
-      expect(getHashedUrl).toHaveBeenCalledWith('/test-url')
+      expect(getHashedUrl).toHaveBeenCalledWith('/test-path')
       expect(req.session['/test-path']).toEqual({
         field1: 'value1',
         uploadedFile: {
@@ -732,7 +732,7 @@ describe('getFormDataFromSession', () => {
     jest.restoreAllMocks()
   })
   test('it sets formData on request', () => {
-    req.url = '/page'
+    req.path = '/page'
     req.session = { '/page': { key: 'value' } }
     getFormDataFromSession(req, res, next)
 
@@ -741,14 +741,14 @@ describe('getFormDataFromSession', () => {
     expect(next).toHaveBeenCalled()
   })
   it('handles no session', () => {
-    req.url = '/page'
+    req.path = '/page'
     getFormDataFromSession(req, res, next)
     expect(req).toHaveProperty('formData')
     expect(req.formData).toStrictEqual({})
     expect(next).toHaveBeenCalled()
   })
   it('handles no url key on sesssion', () => {
-    req.url = '/page1'
+    req.path = '/page1'
     req.session = { '/page2': { key: 'value' } }
     getFormDataFromSession(req, res, next)
 

@@ -338,7 +338,7 @@ const saveSession = (req, res, next) => {
 
   if (req.file) {
     // Generate a hash of the req.url
-    const urlHash = getHashedUrl(req.url)
+    const urlHash = getHashedUrl(req.path)
     const redisKey = `file:${urlHash}:${req.sessionID}:${req.file.fieldname}`
 
     if (redisKey) {
@@ -366,7 +366,7 @@ const saveSession = (req, res, next) => {
 
 const getFormDataFromSession = (req, res, next) => {
   req.formData = null
-  req.formData = req.session?.[req.url] || {}
+  req.formData = req.session?.[req.path] || {}
   next()
 }
 

@@ -8,7 +8,7 @@
 
 {% block form %}
   {% call form({
-    action: submitUrl,
+    action: submitUrl ~ ('?' if '?' not in submitUrl else '&') ~ '_csrf=' ~ (csrfToken | urlencode),
     csrfToken: csrfToken,
     attributes: {
      enctype: "multipart/form-data"
