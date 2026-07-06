@@ -25,17 +25,13 @@ If you work outside MOJ, read the guidance on <a href="https://design-patterns.s
 There are 2 page templates: 
 
 1. The service template, for top-level pages
-
 2. The case template, for pages displaying a case or case details
 
 The templates show the page design and components needed for pages in an internal probation service. The common components are:
 
-- [PDS header](https://design-patterns.service.justice.gov.uk/probation/components/pds-header/) and [PDS footer](https://design-patterns.service.justice.gov.uk/probation/components/pds-footer/) 
-
-- [MOJ primary navigation](https://design-patterns.service.justice.gov.uk/components/primary-navigation/)
-
-- [new features banner](https://design-patterns.service.justice.gov.uk/components/new-features-banner/) (if used) and [GOV.UK phase banner](https://design-system.service.gov.uk/components/phase-banner/)
-
+- [PDS header](/probation/components/pds-header/) and [PDS footer](/probation/components/pds-footer/) 
+- [primary navigation](/components/primary-navigation/)
+- [new features banner](/components/new-features-banner/) (if used) and [GOV.UK phase banner](/components/phase-banner/)
 - [GOV.UK breadcrumbs](https://design-system.service.gov.uk/components/breadcrumbs/) and [GOV.UK back link](https://design-system.service.gov.uk/components/back-link/)
 
 ### Using the page templates
