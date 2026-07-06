@@ -12,11 +12,11 @@ eleventyComputed:
 Use the service template for top-level pages. There are 6 variants:
 
 1. [Service template (sections)](#service-template-sections)
-2. [Service template (no sections)](#service-template-no-sections)
+2. [Service template (no sections)](#service-template-without-sections)
 3. [Service template (horizontal search)](#service-template-horizontal-search)
 4. [Service template (horizontal search with tabs)](#service-template-horizontal-search-with-tabs)
-5. [Service template (vertical filter)](#service-template%28vertical-filter%29)
-6. [Service template (vertical filter with tabs)](#service-template%28vertical-filter-with-tabs%29)
+5. [Service template (vertical filter)](#service-template-vertical-filter)
+6. [Service template (vertical filter with tabs)](#service-template-vertical-filter-with-tabs)
 
 The main heading (H1) for the service template should be either: 
 

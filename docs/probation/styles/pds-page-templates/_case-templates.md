@@ -11,10 +11,10 @@ eleventyComputed:
 
 Use the case template for pages displaying a case or case details. There are 4 variants:
 
-1. [Case template (no secondary navigation)](#case-template%28no-secondary-navigation%29)
-2. [Case template (sub navigation)](#case-template%28sub-navigation%29)
-3. [Case template (side navigation)](#case-template%28side-navigation%29)
-4. [Case template (sub and side navigation)](#case-template%28sub-and-side-navigation%29)
+1. [Case template (no secondary navigation)](#case-template-no-secondary-navigation)
+2. [Case template (sub navigation)](#case-template-sub-navigation)
+3. [Case template (side navigation)](#case-template-side-navigation)
+4. [Case template (sub and side navigation)](#case-template-sub-and-side-navigation)
 
 The main heading (H1) on case pages, and any child pages, is the person’s name.
 
