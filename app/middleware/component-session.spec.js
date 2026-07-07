@@ -684,6 +684,25 @@ describe('saveSession', () => {
       expect(req.session['/test-path']._csrf).toBeUndefined()
       expect(next).toHaveBeenCalled()
     })
+
+    it('should use the saved Redis key from upload middleware when present', () => {
+      req.file = {
+        fieldname: 'componentImage',
+        originalname: 'photo.jpg'
+      }
+      req.savedRedisKey = 'file:stable-key:test-session-id:componentImage'
+
+      saveSession(req, res, next)
+
+      expect(getHashedUrl).not.toHaveBeenCalled()
+      expect(req.session['/test-path']).toEqual({
+        componentImage: {
+          originalname: 'photo.jpg',
+          redisKey: 'file:stable-key:test-session-id:componentImage'
+        }
+      })
+      expect(next).toHaveBeenCalled()
+    })
   })
 })
 
@@ -830,6 +849,7 @@ describe('saveFileToRedis middleware', () => {
   beforeEach(() => {
     req = {
       session: {},
+      path: '/test-path',
       url: '/test-url',
       sessionID: 'test-session-123'
     }
@@ -886,7 +906,7 @@ describe('saveFileToRedis middleware', () => {
         mimetype: 'application/pdf'
       })
 
-      expect(getHashedUrl).toHaveBeenCalledWith('/test-url')
+      expect(getHashedUrl).toHaveBeenCalledWith('/test-path')
       expect(redis.set).toHaveBeenCalledWith(
         expectedRedisKey,
         expectedData,
@@ -894,6 +914,7 @@ describe('saveFileToRedis middleware', () => {
         24 * 60 * 60
       )
       expect(req.session.uploadedFile).toBe(expectedRedisKey)
+      expect(req.savedRedisKey).toBe(expectedRedisKey)
       expect(console.log).toHaveBeenCalledWith(
         `[Redis] File saved with key: ${expectedRedisKey}`
       )
