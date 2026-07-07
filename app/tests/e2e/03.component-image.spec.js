@@ -17,6 +17,18 @@ test('no file', async () => {
   await testPage.expectErrorSummaryWithMessages(['Select an image to upload'])
 })
 
+test('no file submitted twice keeps a single csrf query token', async ({
+  page
+}) => {
+  await testPage.clickUpload()
+  await testPage.expectErrorSummaryWithMessages(['Select an image to upload'])
+  expect(new URL(page.url()).searchParams.getAll('_csrf')).toHaveLength(1)
+
+  await testPage.clickUpload()
+  await testPage.expectErrorSummaryWithMessages(['Select an image to upload'])
+  expect(new URL(page.url()).searchParams.getAll('_csrf')).toHaveLength(1)
+})
+
 test('file too large', async () => {
   await testPage.uploadFile('test-image-too-large.png')
   await testPage.clickUpload()

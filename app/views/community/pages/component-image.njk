@@ -5,10 +5,11 @@
 {% extends "contributions.njk" %}
 
 {% set uploadedFileName = formData.componentImage.originalname %}
+{% set formAction = submitUrl if '_csrf=' in submitUrl else submitUrl ~ ('?' if '?' not in submitUrl else '&') ~ '_csrf=' ~ (csrfToken | urlencode) %}
 
 {% block form %}
   {% call form({
-    action: submitUrl ~ ('?' if '?' not in submitUrl else '&') ~ '_csrf=' ~ (csrfToken | urlencode),
+    action: formAction,
     csrfToken: csrfToken,
     attributes: {
      enctype: "multipart/form-data"
