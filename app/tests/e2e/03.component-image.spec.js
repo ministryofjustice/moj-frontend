@@ -71,6 +71,17 @@ test('file ok', async () => {
   await expect(testPage.continueButton).toBeVisible()
 })
 
+test('continue after upload goes to next page', async () => {
+  if (await testPage.fileInput.isVisible()) {
+    await testPage.uploadFile('test-image.png')
+    await testPage.clickUpload()
+  }
+
+  await expect(testPage.continueButton).toBeVisible()
+  await testPage.clickContinue()
+  await testPage.expectPageTitle('Accessibility findings')
+})
+
 test('removing file', async () => {
   const filename = 'test-image.png'
 
