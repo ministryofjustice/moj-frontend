@@ -5,4 +5,4 @@ type: Updated
 date: 2026-07-06
 ---
 
-Add new paragraph under current paragraph: "For lists of names in case lists, use the format [last name], [first name], for example Smith, John."
+Added guidance on name format to use in case lists: [last name], [first name].
