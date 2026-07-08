@@ -41,9 +41,17 @@ Add no more than 4 fields to the stacked layout (this does not include the ‘re
 
 You can view [GOV.UK Design System guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
 
+### Designing in Figma
+
+The 'add another' commponent uses 'Figma slots'. 
+
+This allows you to customise the content in the component whilst keeping it attached to the main instance. 
+
 ### The ‘Remove’ button
 
-The 'Remove' button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). This distinguishes it from the ‘Add another' button, which it is sometimes next to. Do not change the button colour. 
+The 'Remove' button is a [GOV.UK secondary button](https://design-system.service.gov.uk/components/button/#warning-buttons), like the 'Add another' button.  
+
+The line between each item adds more visual separation between the 'Add another' and 'Remove' button. This aims to prevent users selecting the 'Remove' button in error.
 
 Do not change the button position, as this may make it harder for zoom users to use the component.
 

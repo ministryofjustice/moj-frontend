@@ -40,7 +40,7 @@ This hidden text is automatically added by JavaScript. If you add the text to th
 
 ### What to add to it
 
-Add no more than 3 fields to the inline layout (this does not include the ‘remove’ button). This keeps it is easy to use. The layout follows the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system), which limits the component to 4 fields.
+Add no more than 3 fields to the inline layout (this does not include the ‘remove’ button). This keeps it is easy to use. 
 
 You can add only 2 types of components to it. These are the:
 
@@ -53,7 +53,9 @@ All the items and field labels need to fit on 1 line. You can view [GOV.UK Desig
 
 ### The ‘Remove’ button
 
-The 'Remove' button is a [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#warning-buttons). This distinguishes it from the ‘Add another' button, which it is sometimes next to. Do not change the button colour. 
+The 'Remove' button is a [GOV.UK secondary button](https://design-system.service.gov.uk/components/button/#warning-buttons), like the 'Add another' button.  
+
+The line between each item adds more visual separation between the 'Add another' and 'Remove' button. This aims to prevent users selecting the 'Remove' button in error.
 
 Do not change the button position, as this may make it harder for zoom users to use the component.
 
@@ -124,4 +126,4 @@ Users can edit their items after submitting them, using the [GOV.UK ‘check ans
 
 ### Example of using the inline variant more than once on a page
 
-<p><img src="{{ 'assets/images/add-another-example-inline.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The page contains a heading, 2 questions with radio buttons. Underneath the 2 questions are 2 add another components in the inline layout. The first component has the heading 'Add gifts information' with the field labels 'Gift description' and 'value'. There is a red 'remove button' to the right. The second component has the heading 'Add loans information' with the field labels 'Loan description' and 'value'. There is a red 'remove button' to the right". A green submit button is at the bottom of the screen.></p>
+<p><img src="{{ 'assets/images/add-another-example-inline.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The page contains a heading, 2 questions with radio buttons. Underneath the 2 questions are 2 add another components in the inline layout. The first component has the heading 'Add gifts information' with the field labels 'Gift description' and 'value'. There is a red 'remove button' to the right. The second component has the heading 'Add loans information' with the field labels 'Loan description' and 'value'. There is a red 'remove button' to the right'. A green submit button is at the bottom of the screen."></p>
