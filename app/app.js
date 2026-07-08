@@ -93,9 +93,14 @@ if (!(isDev || isTest)) {
 // Session management
 const sessionOptions = {
   secret: SESSION_SECRET,
+  name: 'moj-frontend-session',
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: !(isDev || isTest), maxAge: 24 * 60 * 60 * 1000 }
+  cookie: {
+    secure: !(isDev || isTest),
+    maxAge: 24 * 60 * 60 * 1000,
+    sameSite: isDev || isTest ? 'lax' : 'strict'
+  }
 }
 
 if (REDIS_URL) {
