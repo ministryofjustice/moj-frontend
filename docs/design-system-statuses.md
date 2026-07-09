@@ -34,7 +34,7 @@ There are 4 building blocks statuses. These are to help you understand how to us
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">Official</td>
       <td class="govuk-table__cell">Yes</td>
-      <td class="govuk-table__cell">High</td>
+      <td class="govuk-table__cell">Meets WCAG 2.2 AA</td>
       <td class="govuk-table__cell">Yes</td>
       <td class="govuk-table__cell">Archived</td>
     </tr>
@@ -57,8 +57,6 @@ There are 4 building blocks statuses. These are to help you understand how to us
   </tbody>
 </table>
 
-Do not use building blocks with an ‘archived’ status. They're not being supported by the Design System team.
-
 ### ‘Official’ building blocks <span class="govuk-tag govuk-tag--green"  style="vertical-align:middle;" aria-hidden="true">Official</span>
 
 You can use ‘official’ building blocks in every product phase. They’re fully accessible, and will be supported and maintained in the long term.
@@ -69,7 +67,7 @@ Some official building blocks are only for use in particular areas, for example 
 
 'Official' building blocks usually start as ‘experimental’ or ‘to be reviewed’. They're then developed through:
 
-- a comprehensive discovery
+- a discovery
 - multidisciplinary team input
 - accessibility testing
 - thorough documentation
@@ -84,7 +82,7 @@ However, there may be issues with them (not all of which are known). This is bec
 
 #### How ‘to be reviewed’ building blocks have been developed
 
-‘To be reviewed’ building blocks were added for use by everyone at MOJ. They've been added to the MOJ Figma Kit and MOJ Frontend. 
+‘To be reviewed’ building blocks were developed for use by everyone at MOJ. They're in the MOJ Figma Kit and MOJ Frontend. 
 
 ### ‘Experimental’ building blocks <span class="govuk-tag govuk-tag--experimental" style="vertical-align:middle;" aria-hidden="true">Experimental</span>
 
@@ -109,7 +107,15 @@ Find out [how to submit an ‘experimental’ building block](/contribute/add-ne
 
 ### ‘Archived’ building blocks <span class="govuk-tag govuk-tag--grey"  style="vertical-align:middle;" aria-hidden="true">Archived</span>
 
-Do not use ‘archived’ building blocks. They're no longer being supported.
+
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-visually-hidden">Warning</span>
+    Do not use ‘archived’ building blocks. They're no longer being supported.
+  </strong>
+</div>
+
 
 #### How archiving works
 
