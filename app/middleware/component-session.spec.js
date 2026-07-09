@@ -420,6 +420,7 @@ describe('removeFromSession', () => {
       session: {}
     }
     res = {
+      status: jest.fn().mockReturnThis(),
       end: jest.fn()
     }
     next = jest.fn()
@@ -464,7 +465,8 @@ describe('removeFromSession', () => {
 
       removeFromSession(req, res, next)
 
-      expect(res.end).toHaveBeenCalledWith(403)
+      expect(res.status).toHaveBeenCalledWith(403)
+      expect(res.end).toHaveBeenCalled()
       expect(next).not.toHaveBeenCalled()
     })
 
@@ -473,7 +475,8 @@ describe('removeFromSession', () => {
 
       removeFromSession(req, res, next)
 
-      expect(res.end).toHaveBeenCalledWith(403)
+      expect(res.status).toHaveBeenCalledWith(403)
+      expect(res.end).toHaveBeenCalled()
       expect(next).not.toHaveBeenCalled()
     })
 
@@ -482,7 +485,8 @@ describe('removeFromSession', () => {
 
       removeFromSession(req, res, next)
 
-      expect(res.end).toHaveBeenCalledWith(403)
+      expect(res.status).toHaveBeenCalledWith(403)
+      expect(res.end).toHaveBeenCalled()
       expect(next).not.toHaveBeenCalled()
     })
   })
