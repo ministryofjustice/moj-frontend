@@ -3,7 +3,7 @@ layout: layouts/content.njk
 title: Accessibility statement for MOJ Design System
 ---
 
-This accessibility statement applies to the MOJ Design System documentation website.
+This accessibility statement applies to the MOJ Design System documentation website. It does not relate to the components and patterns from the MOJ Frontend codebase which appear in the examples throughout the Design System.
 
 This website is run by Justice Digital. We want as many people as possible to be able to use this website. For example, that means you should be able to:
 
