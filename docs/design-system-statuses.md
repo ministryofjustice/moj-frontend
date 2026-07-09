@@ -8,6 +8,7 @@ eleventyNavigation:
   parent: About the Design System
   order: 20
 ---
+{% from "govuk/components/table/macro.njk" import govukTable %}
 
 ## Overview
 
@@ -18,44 +19,80 @@ There are 4 building blocks statuses. These are to help you understand how to us
 - ‘Experimental’
 - ‘Archived’   
 
-## How to use building blocks based on their status <span class="govuk-tag govuk-tag--green"  style="vertical-align:middle;" aria-hidden="true">Official</span>
-
-<table class="govuk-table">
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Status</th>
-      <th scope="col" class="govuk-table__header">Use in live services</th>
-      <th scope="col" class="govuk-table__header">Accessibility</th>
-      <th scope="col" class="govuk-table__header">Figma design and code</th>
-      <th scope="col" class="govuk-table__header">Status they could move to</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">Official</td>
-      <td class="govuk-table__cell">Yes</td>
-      <td class="govuk-table__cell">Meets WCAG 2.2 AA</td>
-      <td class="govuk-table__cell">Yes</td>
-      <td class="govuk-table__cell">Archived</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">To be reviewed</td>
-      <td class="govuk-table__cell">Yes</td>
-      <td class="govuk-table__cell">Variable</td>
-      <td class="govuk-table__cell">Yes</td>
-      <td class="govuk-table__cell">Official, Archived</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__cell">Experimental</td>
-      <td class="govuk-table__cell">
-        In <a class="govuk-link" href="/design-system-statuses/#how-to-use-experimental-building-blocks">some cases</a>
-      </td>
-      <td class="govuk-table__cell">Variable</td>
-      <td class="govuk-table__cell">Sometimes</td>
-      <td class="govuk-table__cell">Official</td>
-    </tr>
-  </tbody>
-</table>
+## How to use building blocks based on their status
+{{ govukTable({
+  head: [
+    {
+      text: "Status"
+    },
+    {
+      text: "Use in live services"
+    },
+    {
+      text: "Accessibility"
+    },
+    {
+      text: "Figma design and code"
+    },
+    {
+      text: "Status they could move to"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "Official"
+      },
+      {
+        text: "Yes"
+      },
+      {
+        text: "Meets WCAG 2.2 AA"
+      },
+      {
+        text: "Yes"
+      },
+      {
+        text: "Archived"
+      }
+    ],
+    [
+      {
+        text: "To be reviewed"
+      },
+      {
+        text: "Yes"
+      },
+      {
+        text: "Variable"
+      },
+      {
+        text: "Yes"
+      },
+      {
+        text: "Official, Archived"
+      }
+    ],
+    [
+      {
+        text: "Experimental"
+      },
+      {
+        html: 'In <a class="govuk-link" href="/design-system-statuses/#how-to-use-experimental-building-blocks">some cases</a>'
+      },
+      {
+        text: "Variable"
+      },
+      {
+        text: "Sometimes"
+      },
+      {
+        text: "Official"
+      }
+    ]
+  ]
+  }) 
+}}
 
 ### ‘Official’ building blocks <span class="govuk-tag govuk-tag--green"  style="vertical-align:middle;" aria-hidden="true">Official</span>
 
