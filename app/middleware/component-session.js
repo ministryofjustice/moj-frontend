@@ -355,8 +355,7 @@ const saveSession = (req, res, next) => {
     req.path === 'constructor' ||
     req.path === 'prototype'
   ) {
-    res.end(403)
-    return
+    return res.status(403).end()
   }
   req.session[req.path] = { ...req.session[req.path], ...body }
   delete req.session[req.path].addAnother
@@ -433,8 +432,7 @@ const removeFromSession = (req, res, next) => {
   const url = req.url.replace(/\/(remove|change)/, '')
   // prevent prototype pollution
   if (url === '__proto__' || url === 'constructor' || url === 'prototype') {
-    res.end(403)
-    return
+    return res.status(403).end()
   }
 
   if (req.params.page === 'component-image') {
