@@ -1,8 +1,12 @@
 /* eslint import/order: "off" */
 /* eslint n/no-unpublished-require: "off" */
 const path = require('path')
+const checkRequiredEnvVars = require('./helpers/check-env-vars')
+const { getRequiredEnvVars } = require('./helpers/required-env-vars')
 const envPath = path.join(__dirname, `.env.${process.env.ENV || 'development'}`)
 require('dotenv').config({ path: envPath })
+
+checkRequiredEnvVars(getRequiredEnvVars(process.env.ENV))
 
 const Sentry = require('@sentry/node')
 const {
@@ -93,9 +97,14 @@ if (!(isDev || isTest)) {
 // Session management
 const sessionOptions = {
   secret: SESSION_SECRET,
+  name: 'moj-frontend-session',
   resave: true,
   saveUninitialized: true,
-  cookie: { secure: !(isDev || isTest), maxAge: 24 * 60 * 60 * 1000 }
+  cookie: {
+    secure: !(isDev || isTest),
+    maxAge: 24 * 60 * 60 * 1000,
+    sameSite: isDev || isTest ? 'lax' : 'strict'
+  }
 }
 
 if (REDIS_URL) {
