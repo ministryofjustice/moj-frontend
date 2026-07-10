@@ -519,8 +519,8 @@ router.post(
 router.post(
   ['/component-image', '/component-image/:subpage'],
   validatePageParams,
-  upload.single('componentImage'),
   verifyCsrf,
+  upload.single('componentImage'),
   validateFormDataFileSignature,
   saveFileToRedis,
   canAddAnother,

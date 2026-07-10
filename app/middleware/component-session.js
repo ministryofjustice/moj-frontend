@@ -337,9 +337,9 @@ const saveSession = (req, res, next) => {
   const { _csrf, ...body } = req.body
 
   if (req.file) {
-    // Generate a hash of the req.url
-    const urlHash = getHashedUrl(req.url)
-    const redisKey = `file:${urlHash}:${req.sessionID}:${req.file.fieldname}`
+    const redisKey =
+      req.savedRedisKey ||
+      `file:${getHashedUrl(req.path)}:${req.sessionID}:${req.file.fieldname}`
 
     if (redisKey) {
       body[req.file.fieldname] = {
@@ -366,7 +366,7 @@ const saveSession = (req, res, next) => {
 
 const getFormDataFromSession = (req, res, next) => {
   req.formData = null
-  req.formData = req.session?.[req.url] || {}
+  req.formData = req.session?.[req.path] || {}
   next()
 }
 
@@ -494,7 +494,7 @@ const saveFileToRedis = async (req, res, next) => {
   if (req.file) {
     const { buffer, originalname, mimetype } = req.file
 
-    const urlHash = getHashedUrl(req.url)
+    const urlHash = getHashedUrl(req.path)
     const redisKey = `file:${urlHash}:${req.sessionID}:${req.file.fieldname}` // Generate Redis key
 
     try {
@@ -510,6 +510,7 @@ const saveFileToRedis = async (req, res, next) => {
         24 * 60 * 60
       )
 
+      req.savedRedisKey = redisKey
       // Save Redis key in session
       req.session[req.file.fieldname] = redisKey
 
