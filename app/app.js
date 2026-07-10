@@ -1,8 +1,12 @@
 /* eslint import/order: "off" */
 /* eslint n/no-unpublished-require: "off" */
 const path = require('path')
+const checkRequiredEnvVars = require('./helpers/check-env-vars')
+const { getRequiredEnvVars } = require('./helpers/required-env-vars')
 const envPath = path.join(__dirname, `.env.${process.env.ENV || 'development'}`)
 require('dotenv').config({ path: envPath })
+
+checkRequiredEnvVars(getRequiredEnvVars(process.env.ENV))
 
 const Sentry = require('@sentry/node')
 const {

@@ -32,6 +32,11 @@ jobs:
           echo "DEV_DUMMY_DATA='false'" >> app/.env.test
           echo "SKIP_VERIFICATION='true'" >> app/.env.test
           echo "VERIFICATION_TOKEN='12345abcde'" >> app/.env.test
+          echo "NOTIFY_TOKEN='12345abcde'" >> app/.env.test
+          echo "GITHUB_API_TOKEN='12345abcde'" >> app/.env.test
+          echo "GITHUB_REPO_OWNER='owner'" >> app/.env.test
+          echo "GITHUB_REPO_NAME='repo'" >> app/.env.test
+          echo "SESSION_SECRET='supersecret'" >> app/.env.test
       - name: Run Playwright tests
         run: ENV=test npm run test:e2e
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
