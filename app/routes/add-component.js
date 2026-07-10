@@ -9,7 +9,8 @@ const {
   COMPONENT_FORM_PAGES,
   ADD_NEW_COMPONENT_ROUTE,
   MESSAGES,
-  ENV
+  ENV,
+  ALLOWED_COMPONENT_IMAGE_MIME_TYPES
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const { checkYourAnswers } = require('../helpers/check-your-answers')
@@ -28,7 +29,9 @@ const {
   removeFromSession,
   sessionStarted,
   sessionVerified,
-  validateFormDataFileUpload,
+  validateFormDataFileSignature,
+  validateFormDataFileSize,
+  validateFormDataFileType,
   saveFileToRedis,
   clearSkippedPageData,
   checkEmailDomain,
@@ -57,9 +60,20 @@ const {
   getDetailsForPrEmail
 } = require('../middleware/process-submission-data')
 const verifyCsrf = require('../middleware/verify-csrf')
+
 const upload = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 10 * 1024 * 1024 } // 10MB
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
+  fileFilter: (req, file, cb) => {
+    if (ALLOWED_COMPONENT_IMAGE_MIME_TYPES.has(file.mimetype)) {
+      return cb(null, true)
+    }
+
+    const error = new Error('Invalid file type')
+    error.code = 'LIMIT_FILE_TYPE'
+    error.field = file.fieldname
+    cb(error)
+  }
 })
 const router = express.Router()
 const checkYourAnswersPath = 'check-your-answers'
@@ -507,9 +521,11 @@ router.post(
   validatePageParams,
   upload.single('componentImage'),
   verifyCsrf,
+  validateFormDataFileSignature,
   saveFileToRedis,
   canAddAnother,
-  validateFormDataFileUpload,
+  validateFormDataFileSize,
+  validateFormDataFileType,
   getBackLink,
   validateFormData,
   (req, res, next) => {
