@@ -4,8 +4,7 @@
     "**/*.spec.js",
     "**/*.spec.mjs",
     "**/*.spec.helper.mjs",
-    ".eslintrc.js"
-  ],
+    ".eslintrc.js"  ],
   "compilerOptions": {
     "checkJs": true
   }

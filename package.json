@@ -63,6 +63,7 @@
   },
   "homepage": "https://github.com/ministryofjustice/moj-frontend#readme",
   "dependencies": {
+    "@axe-core/playwright": "4.12.1",
     "@ministryofjustice/frontend": "*",
     "@sentry/node": "^10.60.0",
     "@sentry/rollup-plugin": "^5.3.0",

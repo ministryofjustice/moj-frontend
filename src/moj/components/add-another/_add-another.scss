@@ -10,9 +10,10 @@
 
 .moj-add-another__item {
   position: relative;
-  margin: 0;
   margin-top: govuk-spacing(6);
+  margin-right: 0;
   margin-bottom: govuk-spacing(4);
+  margin-left: 0;
   padding: 0;
 
   &:first-of-type {
@@ -37,7 +38,7 @@
   border-bottom: 2px solid govuk-colour("black", $variant: "tint-25");
 }
 
-.moj-add-anohter__add-button {
+.moj-add-another__add-button {
   display: block;
 }
 
