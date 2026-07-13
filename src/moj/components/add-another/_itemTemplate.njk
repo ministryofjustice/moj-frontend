@@ -28,7 +28,7 @@
   <div class="moj-add-another__remove-button-container">
     {{ govukButton({
       text: "Remove " ~ (params.itemLabel | lower) ~ " " ~ index,
-      classes: "govuk-button--warning moj-add-another__remove-button",
+      classes: "govuk-button govuk-button--secondary moj-add-another__remove-button",
       name: item.removeButton.name if params.removeButton.name else 'remove',
       value: item.removeButton.value if params.removeButton.value else index-1
     }) }}
@@ -51,9 +51,7 @@ button are side by side, otherwise the remove button is below the content #}
                 visuallyHiddenText: item.errorMessage.visuallyHiddenText
           }) | trim | indent(2) }}
         {% endif %}
-        <div class="govuk-grid-row">
           {{ item.fieldset.html | safe}}
-        </div>
       </div>
       {{ removeButtonHtml | safe }}
     </div>

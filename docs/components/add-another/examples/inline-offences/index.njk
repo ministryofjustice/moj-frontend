@@ -5,6 +5,7 @@
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
 
 {% set itemHtml -%}
+<div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     {{ govukInput({
       id: "offences[0][name]",
@@ -43,6 +44,7 @@
         "data-label": "Funds in offence"
       }
     }) }}
+  </div>
   </div>
 {% endset %}
 

@@ -507,7 +507,7 @@ export class AddAnother extends ConfigurableComponent {
     $button.type = 'button'
     $button.classList.add(
       'govuk-button',
-      'govuk-button--warning',
+      'govuk-button--secondary',
       `${this.removeButtonClass}`
     )
     $button.innerHTML = label

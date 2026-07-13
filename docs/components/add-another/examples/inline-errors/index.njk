@@ -22,6 +22,7 @@ layout: 'layouts/example.njk'
 
 
 {% set firstItemHtml -%}
+<div class="govuk-grid-row">
   <div class="govuk-grid-column-one-half">
       {{ govukInput({
         id: "person[0][first_name]",
@@ -52,10 +53,12 @@ layout: 'layouts/example.njk'
           "data-label": "Last name"
         }
       }) }}
-    </div>
+      </div>
+      </div>
 {% endset %}
 
 {% set secondItemHtml -%}
+  <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
       {{ govukInput({
         id: "person[1][first_name]",
@@ -86,9 +89,11 @@ layout: 'layouts/example.njk'
         }
       }) }}
       </div>
+      </div>
 {%- endset -%}
 
     {%- set thirdItemHtml -%}
+    <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
       {{ govukInput({
         id: "person[2][first_name]",
@@ -117,6 +122,7 @@ layout: 'layouts/example.njk'
           "data-label": "Last name"
         }
       }) }}
+      </div>
       </div>
   {%- endset -%}
 
