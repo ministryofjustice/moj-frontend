@@ -1,0 +1,90 @@
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/error-message/macro.njk" import govukErrorMessage -%}
+
+{% set describedBy = item.fieldset.describedBy if item.fieldset.describedBy else "" %}
+
+{#- Setup css classes for the item #}
+{% set classes = ["moj-add-another__item"] %}
+
+{%- if params.layout == 'inline' %}
+  {% set classes = classes.concat("moj-add-another__item--inline") %}
+{% endif %}
+
+{%- if item.errorMessage %}
+  {% set errorId = params.id + index +"-error" %}
+  {% set describedBy = describedBy + " " + errorId if describedBy else errorId %}
+  {% set classes = classes.concat("moj-add-another__item--error") %}
+{% endif %}
+
+{%- if item.classes %}
+  {% set classes = classes.concat(item.classes) %}
+{% endif %}
+
+{% set classes = classes | join(" ") -%}
+
+{#- Setup the remove button html #}
+{% set removeButtonHtml %}
+  <div class="moj-add-another__remove-button-container">
+    {{ govukButton({
+      text: "Remove " ~ (params.itemLabel | lower) ~ " " ~ index,
+      classes: "govuk-button--warning moj-add-another__remove-button",
+      name: item.removeButton.name if params.removeButton.name else 'remove',
+      value: item.removeButton.value if params.removeButton.value else index-1
+    }) }}
+  </div>
+{% endset %}
+
+{#- Setup the item html, if the layout is inline then the content and remove
+button are side by side, otherwise the remove button is below the content #}
+{%- if params.layout == 'inline' %}
+  {% set innerHtml %}
+    <div class="moj-add-another__item-container">
+      <div class="moj-add-another__item-row">
+        {% if item.errorMessage %}
+          {{ govukErrorMessage({
+                id: errorId,
+                classes: item.errorMessage.classes,
+                attributes: item.errorMessage.attributes,
+                html: item.errorMessage.html,
+                text: item.errorMessage.text,
+                visuallyHiddenText: item.errorMessage.visuallyHiddenText
+          }) | trim | indent(2) }}
+        {% endif %}
+        <div class="govuk-grid-row">
+          {{ item.fieldset.html | safe}}
+        </div>
+      </div>
+      {{ removeButtonHtml | safe }}
+    </div>
+  {% endset %}
+{% else %}
+  {% set innerHtml %}
+    <div class="moj-add-another__item-container">
+      {{ (item.fieldset.html ~ removeButtonHtml) | safe }}
+    </div>
+  {% endset %}
+{% endif %}
+
+{#- Setup the legend for the fieldset, if one is provided #}
+{% set legendParams = {
+  text: item.fieldset.legend.text,
+  html: item.fieldset.legend.html,
+  classes: "moj-add-another__title govuk-fieldset__legend--m " ~ (item.fieldset.legend.classes if item.fieldset.legend.classes),
+  isPageHeading: false
+} if item.fieldset.legend else false %}
+
+
+{#- Render the item #}
+<div class="{{ classes }}" {{ govukAttributes(item.attributes) }}>
+  {{- govukFieldset({
+    attributes: item.fieldset.attributes,
+    classes: "moj-add-another__fieldset " ~ (item.fieldset.classes if item.fieldset.classes),
+    describedBy: describedBy,
+    html: innerHtml,
+    legend: legendParams,
+    role: item.fieldset.role
+  }) -}}
+</div>
+
+

@@ -1,0 +1,34 @@
+{%- from "govuk/macros/attributes.njk" import govukAttributes -%}
+{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+
+{% macro _mojAddAnotherItem(params, item, index) %}
+  {%- include "./_itemTemplate.njk" -%}
+{% endmacro %}
+
+{%- set dataAttributes = {
+  'data-module': 'moj-add-another',
+  'data-item-label': params.itemLabel | default('Item', true),
+  'data-layout': {
+    value: params.layout,
+    optional: true
+  }
+} -%}
+
+<div class="moj-add-another {{- params.classes if params.classes -}}"
+  {{- govukAttributes(dataAttributes) -}}
+  {{- govukAttributes(params.attributes) -}}>
+  <div class="moj-add-another__items">
+    {% for item in params.items %}
+      {% if item.fieldset.html %}
+        {{ _mojAddAnotherItem(params, item, loop.index) }}
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="moj-add-another__add-button-container">
+      {{ govukButton({
+        text: "Add another " ~ (params.itemLabel | default('Item', true) | lower),
+        classes: "govuk-button--secondary moj-add-another__add-button"
+      }) }}
+  </div>
+</div>
