@@ -78,7 +78,7 @@ There are 4 building blocks statuses. These are to help you understand how to us
         text: "Experimental"
       },
       {
-        html: 'In <a class="govuk-link" href="/design-system-statuses/#how-to-use-experimental-building-blocks">some cases</a>'
+        html: 'In <a class="govuk-link" href="/design-system-statuses/#experimental-building-blocks-experimental">some cases</a>'
       },
       {
         text: "Variable"
