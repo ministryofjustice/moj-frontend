@@ -1,7 +1,6 @@
 ---
-layout: layouts/content.njk
-subsection: Unpublished page
-title: Notification badge positioning
+layout: layouts/example.njk
+title: All notification badge (example)
 lede: Checking how different spacing between the notification badge and other items makes them look associated, or not.
 ---
 

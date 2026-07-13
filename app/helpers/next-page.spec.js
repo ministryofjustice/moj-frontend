@@ -32,6 +32,11 @@ describe('getNextPage function', () => {
     expect(result).toBeNull()
   })
 
+  it('should ignore query params when resolving current page', () => {
+    const result = getNextPage('/component-image?_csrf=token-123', session)
+    expect(result).toBe(`${urlBase}/accessibility-findings`)
+  })
+
   describe('adding another', () => {
     it('should return the first subpage if there are none', () => {
       const result = getNextPage('/component-code-details', session, true)

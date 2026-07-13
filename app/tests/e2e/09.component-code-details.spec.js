@@ -225,7 +225,7 @@ test.describe('check your answers', async () => {
     await expect(page).toHaveTitle(
       /Are you sure you want to remove this information?/
     )
-    await expect(page.getByText('css')).toBeVisible()
+    await expect(page.locator('main').getByText('css')).toBeVisible()
     await expect(page.getByText('p { color: red; }')).toBeVisible()
     await expect(page.getByText('Copy and paste')).toBeVisible()
     await page.getByRole('button', { name: 'Delete answers' }).click()

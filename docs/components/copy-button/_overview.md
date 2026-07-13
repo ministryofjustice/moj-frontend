@@ -11,7 +11,7 @@ eleventyComputed:
 </div>
 
 ## Overview
-This simple ‘copy button’ component allows users to quickly and accurately copy important information — for example dates of birth, reference numbers and National Insurance numbers — with a single click. A similar pattern exists in the GOV.UK Design System as a secondary CTA, but this version has been adapted to work accessibly within panels and interruption card components. This functionality is not currently available in the MoJ Design System, and there is a demonstrated user need for it. The pattern has been tested with users and received strong positive feedback.
+This simple ‘copy button’ component allows users to quickly and accurately copy important information — for example dates of birth, reference numbers and National Insurance numbers — with a single click. A similar pattern exists in the GOV.UK Design System as a secondary CTA, but this version has been adapted to work accessibly within panels and interruption card components. This functionality is not currently available in the MOJ Design System, and there is a demonstrated user need for it. The pattern has been tested with users and received strong positive feedback.
 
 ### How the component is currently used
 

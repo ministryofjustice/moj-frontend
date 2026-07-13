@@ -43,6 +43,9 @@ export class AddAnother extends ConfigurableComponent {
   itemRemovedEvent = 'remove-item'
 
   /** @private */
+  templateCreatedEvent = 'create-template'
+
+  /** @private */
   /** @type {HTMLElement[]} */
   $items
 
@@ -104,6 +107,8 @@ export class AddAnother extends ConfigurableComponent {
     $template.classList.add(`${this.itemTemplateClass}`)
     $template.content.append($templateHTML)
     this.$itemTemplate = this.$root.appendChild($template)
+
+    emitEvent(this.$itemTemplate, AddAnother, this.templateCreatedEvent)
   }
 
   /**

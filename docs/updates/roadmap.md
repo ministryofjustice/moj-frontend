@@ -2,6 +2,7 @@
 layout: layouts/content.njk
 subsection: Updates
 title: Roadmap
+permalink: false
 eleventyNavigation:
   key: Roadmap
   parent: Updates

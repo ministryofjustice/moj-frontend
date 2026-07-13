@@ -8,7 +8,8 @@ FROM base AS staging-build
 COPY package-lock.json package-lock.json
 COPY package/package.json package/package.json
 COPY package.json package.json
-COPY .allowed-scripts.mjs .allowed-scripts.json
+COPY .npmrc .npmrc
+COPY .allowed-scripts.mjs .allowed-scripts.mjs
 RUN npm run setup
 
 COPY docs docs
@@ -29,7 +30,8 @@ FROM base AS preview-build
 COPY package-lock.json package-lock.json
 COPY package/package.json package/package.json
 COPY package.json package.json
-COPY .allowed-scripts.mjs .allowed-scripts.json
+COPY .npmrc .npmrc
+COPY .allowed-scripts.mjs .allowed-scripts.mjs
 RUN npm run setup
 
 COPY docs docs
@@ -85,7 +87,8 @@ COPY robots.txt /usr/share/nginx/html
 
 FROM base AS staging-express-app
 COPY package.json package-lock.json ./
-COPY .allowed-scripts.mjs .allowed-scripts.json
+COPY .npmrc .npmrc
+COPY .allowed-scripts.mjs .allowed-scripts.mjs
 RUN npm run setup
 COPY src src
 COPY app app
@@ -102,7 +105,8 @@ CMD ["node", "app/app.js"]
 
 FROM base AS preview-express-app
 COPY package.json package-lock.json ./
-COPY .allowed-scripts.mjs .allowed-scripts.json
+COPY .npmrc .npmrc
+COPY .allowed-scripts.mjs .allowed-scripts.mjs
 RUN npm run setup
 COPY src src
 COPY app app
@@ -119,7 +123,8 @@ CMD ["node", "app/app.js"]
 
 FROM base AS production-express-app
 COPY package.json package-lock.json ./
-COPY .allowed-scripts.mjs .allowed-scripts.json
+COPY .npmrc .npmrc
+COPY .allowed-scripts.mjs .allowed-scripts.mjs
 RUN npm run setup
 COPY src src
 COPY app app

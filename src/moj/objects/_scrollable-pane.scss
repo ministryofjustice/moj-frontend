@@ -3,8 +3,8 @@
 .moj-scrollable-pane {
   // stylelint-disable scss/dollar-variable-pattern
   $scrollableBgColor: govuk-colour("white");
-  $scrollableTransparentColor: rgba(255, 255, 255, 0);
-  $scrollableShadowColor: rgba(0, 0, 0, 0.2);
+  $scrollableTransparentColor: rgb(255, 255, 255, 0);
+  $scrollableShadowColor: rgb(0, 0, 0, 0.2);
   $scrollableShadowSize: 0.75em;
   // stylelint-enable scss/dollar-variable-pattern
 
