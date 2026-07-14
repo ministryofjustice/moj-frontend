@@ -53,6 +53,10 @@
     margin-bottom: govuk-spacing(6);
     border-bottom: none;
 
+    .moj-add-another__item-title {
+      @include govuk-visually-hidden;
+    }
+
     .moj-add-another__item-container {
       display: flex;
       gap: govuk-spacing(6);

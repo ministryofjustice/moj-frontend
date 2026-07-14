@@ -1,11 +1,13 @@
 const path = require('path')
 
 const { test, expect } = require('@playwright/test')
+const { compile } = require('sass-embedded')
 
 const { bundleComponent } = require('../../lib/bundle.js')
 const { render, getExamples } = require('../../lib/components.js')
 
 let bundledComponent
+let componentStyles
 
 const initialiseAddAnothers = () => {
   const $addAnothers = document.querySelectorAll(
@@ -31,12 +33,17 @@ test.describe('add another', () => {
       path.join(__dirname, 'add-another.mjs'),
       'AddAnother'
     )
+    componentStyles = compile(path.join(__dirname, '_add-another.scss'), {
+      loadPaths: [path.join(__dirname, '../../../../')],
+      quietDeps: true
+    }).css
   })
 
   test.beforeEach(async ({ page }) => {
     // Render component and insert into page
     const html = render('add-another', examples[example])
     await page.setContent(html)
+    await page.addStyleTag({ content: componentStyles })
 
     // Set classes for GOVUK Frontend support
     await page.evaluate(() => {
@@ -48,6 +55,8 @@ test.describe('add another', () => {
       content: bundledComponent,
       type: 'module'
     })
+    // @ts-expect-error addAnother is in page scope not test scope
+    await page.waitForFunction(() => typeof AddAnother !== 'undefined')
 
     // Initialise component(s)
     await page.evaluate(initialiseAddAnothers)
@@ -226,6 +235,22 @@ test.describe('add another', () => {
     })
     test.afterAll(async () => {
       example = ''
+    })
+
+    test('legend is visible on small screens and visually hidden from tablet', async ({
+      page
+    }) => {
+      const $legend = $component.locator('.moj-add-another__item-title').first()
+
+      await page.setViewportSize({ width: 640, height: 800 })
+      await expect($legend).toBeVisible()
+      await expect($legend).toHaveCSS('position', 'static')
+
+      await page.setViewportSize({ width: 641, height: 1024 })
+      await expect($legend).toHaveCSS('position', 'absolute')
+      await expect($legend).toHaveCSS('width', '1px')
+      await expect($legend).toHaveCSS('height', '1px')
+      await expect($legend).toHaveCSS('overflow', 'hidden')
     })
 
     test('adds another item', async () => {

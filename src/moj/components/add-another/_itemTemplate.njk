@@ -6,13 +6,10 @@
 
 {#- Setup css classes for the item and legend #}
 {% set classes = ["moj-add-another__item"] %}
-{% set legendClasses = ["moj-add-another__item-title"] %}
+{% set legendClasses = ["moj-add-another__item-title govuk-fieldset__legend--m"] %}
 
 {%- if params.layout == 'inline' %}
   {% set classes = classes.concat("moj-add-another__item--inline") %}
-  {% set legendClasses = legendClasses.concat("govuk-visually-hidden") %}
-{% else %}
-  {% set legendClasses = legendClasses.concat("govuk-fieldset__legend--m") %}
 {% endif %}
 
 {%- if item.classes %}
