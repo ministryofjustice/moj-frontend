@@ -11,14 +11,14 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version: lts/*
       - name: Install dependencies
         run: npm run setup
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install chromium --with-deps
       - name: Build package
         run: ENV=test npm run build:package
       - name: Build docs
@@ -32,6 +32,11 @@ jobs:
           echo "DEV_DUMMY_DATA='false'" >> app/.env.test
           echo "SKIP_VERIFICATION='true'" >> app/.env.test
           echo "VERIFICATION_TOKEN='12345abcde'" >> app/.env.test
+          echo "NOTIFY_TOKEN='12345abcde'" >> app/.env.test
+          echo "GITHUB_API_TOKEN='12345abcde'" >> app/.env.test
+          echo "GITHUB_REPO_OWNER='owner'" >> app/.env.test
+          echo "GITHUB_REPO_NAME='repo'" >> app/.env.test
+          echo "SESSION_SECRET='supersecret'" >> app/.env.test
       - name: Run Playwright tests
         run: ENV=test npm run test:e2e
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

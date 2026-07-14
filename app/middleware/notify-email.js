@@ -1,3 +1,4 @@
+const Sentry = require('@sentry/node')
 const { NotifyClient } = require('notifications-node-client')
 
 const {
@@ -43,6 +44,7 @@ const sendEmail = async (
         backoff *= 2 // Exponential backoff
       } else {
         console.error('All retry attempts failed.')
+        Sentry.captureException(error)
         throw error
       }
     }
@@ -50,6 +52,10 @@ const sendEmail = async (
 }
 
 const sendSubmissionEmail = async (fileBuffer = null, markdown = null) => {
+  if (!NOTIFY_SUBMISSION_TEMPLATE) {
+    throw new Error('NOTIFY_SUBMISSION_TEMPLATE env var is not set')
+  }
+
   const personalisation = {}
 
   if (fileBuffer) {
@@ -64,6 +70,10 @@ const sendSubmissionEmail = async (fileBuffer = null, markdown = null) => {
 }
 
 const sendPrEmail = async (pr, issue, contactDetails) => {
+  if (!NOTIFY_PR_TEMPLATE) {
+    throw new Error('NOTIFY_PR_TEMPLATE env var is not set')
+  }
+
   const { url: prUrl, number: prNumber } = pr
   const { url: issueUrl } = issue
   const { componentName, email, name, team, figmaLink } = contactDetails
@@ -99,6 +109,9 @@ const sendPrEmail = async (pr, issue, contactDetails) => {
 }
 
 const sendSuccessEmail = async (contactDetails) => {
+  if (!NOTIFY_SUCCESS_TEMPLATE) {
+    throw new Error('NOTIFY_SUCCESS_TEMPLATE env var is not set')
+  }
   const { componentName, email, name } = contactDetails
   const personalisation = {}
 
@@ -116,6 +129,9 @@ const sendSuccessEmail = async (contactDetails) => {
 }
 
 const sendVerificationEmail = async (email, token) => {
+  if (!NOTIFY_VERIFICATION_TEMPLATE) {
+    throw new Error('NOTIFY_VERIFICATION_TEMPLATE env var is not set')
+  }
   const personalisation = {}
   personalisation.token_link = `${APP_URL}/contribute/add-new-component/email/verify/${token}`
   return sendEmail(NOTIFY_VERIFICATION_TEMPLATE, email, personalisation)

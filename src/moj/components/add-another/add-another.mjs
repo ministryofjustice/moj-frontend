@@ -34,13 +34,13 @@ export class AddAnother extends ConfigurableComponent {
   newItemSuffixClass = 'moj-add-another__new-item-suffix'
 
   /** @private */
-  itemCounterClass = 'moj-add-another__item-counter'
-
-  /** @private */
   itemAddedEvent = 'add-item'
 
   /** @private */
   itemRemovedEvent = 'remove-item'
+
+  /** @private */
+  itemResetEvent = 'reset-item'
 
   /** @private */
   templateCreatedEvent = 'create-template'
@@ -89,6 +89,12 @@ export class AddAnother extends ConfigurableComponent {
     )
   }
 
+  /**
+   * Creates a template element from the first item in the list of items and
+   * appends it to the component root.
+   *
+   * @fires AddAnother#templateCreated
+   */
   createTemplate() {
     const $templateHTML = this.$items[0]?.cloneNode(true)
 
@@ -99,7 +105,7 @@ export class AddAnother extends ConfigurableComponent {
     // reset values of all fields
     this.resetItem($templateHTML)
 
-    // remove error messages, and error classses
+    // remove error messages, and error classes
     this.clearErrorMessages($templateHTML)
 
     // create template element and append to component root
@@ -129,58 +135,6 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   /**
-   * @param {MouseEvent} event - Click event
-   */
-  onAddButtonClick(event) {
-    event.preventDefault()
-
-    const $button = event.target
-
-    if (
-      !$button ||
-      !($button instanceof HTMLButtonElement) ||
-      !$button.classList.contains(`${this.addButtonClass}`)
-    ) {
-      return
-    }
-
-    const $item = this.getNewItem()
-    if (!$item || !($item instanceof DocumentFragment)) {
-      return
-    }
-
-    this.$itemsContainer.appendChild($item)
-    this.updateAllItems()
-    const $lastItem = this.$items[this.$items.length - 1]
-
-    // Place focus on the added item
-    if ($lastItem && $lastItem instanceof HTMLElement) {
-      const $fieldset = $lastItem.querySelector(`.${this.fieldsetClass}`)
-
-      if ($fieldset && $fieldset instanceof HTMLFieldSetElement) {
-        this.addNewItemSuffix($fieldset)
-
-        $fieldset.addEventListener('blur', () => {
-          this.removeNewItemSuffix($fieldset)
-        })
-
-        emitEvent($lastItem, AddAnother, this.itemAddedEvent)
-
-        setTimeout(() => {
-          setFocus($fieldset)
-        }, 100)
-      }
-    }
-  }
-
-  /**
-   * @param {Element | DocumentFragment} $item - Add another item
-   */
-  hasRemoveButton($item) {
-    return $item.querySelectorAll('.moj-add-another__remove-button').length
-  }
-
-  /**
    * Get all add another items
    *
    * @returns {HTMLElement[]} Array of add another items
@@ -195,6 +149,11 @@ export class AddAnother extends ConfigurableComponent {
     return $items.filter((item) => item instanceof HTMLElement)
   }
 
+  /**
+   * Clones a new item from the template and returns it.
+   *
+   * @returns {DocumentFragment | undefined}
+   */
   getNewItem() {
     const $item = document.importNode(this.$itemTemplate.content, true)
 
@@ -202,6 +161,7 @@ export class AddAnother extends ConfigurableComponent {
       return
     }
 
+    // Ensure the new item has a remove button
     if (!this.hasRemoveButton($item)) {
       this.createRemoveButton($item)
     }
@@ -232,7 +192,7 @@ export class AddAnother extends ConfigurableComponent {
    * @param {number} index - Add another item index
    */
   updateIndexes($item, index) {
-    $item.querySelectorAll('[data-name]').forEach(($input) => {
+    $item.querySelectorAll('[data-name][data-id]').forEach(($input) => {
       if (!this.isValidInputElement($input)) {
         return
       }
@@ -394,10 +354,6 @@ export class AddAnother extends ConfigurableComponent {
    * Updates the text of legends within an item to reflect the current index of
    * the item and the total number of items to ensue unique accessible names.
    *
-   * If there is no legend, a visually hidden span is added to the start of the
-   * item and the aria-labelledby attribute of the item is updated to reference
-   * it.
-   *
    * @param {Element} $item - Add another item
    * @param {number} index - Add another item index
    * @param {number} itemsCount - Total number of items
@@ -419,7 +375,7 @@ export class AddAnother extends ConfigurableComponent {
 
     if ($legend && $legend instanceof HTMLElement) {
       // If a user has used the `html` key for the legend and wrapped the
-      // content (e.g.) with a heading, then this will handle that
+      // content with a heading, then this will handle that
       if (
         $legend.firstElementChild &&
         $legend.firstElementChild instanceof HTMLHeadingElement
@@ -507,7 +463,7 @@ export class AddAnother extends ConfigurableComponent {
     $button.type = 'button'
     $button.classList.add(
       'govuk-button',
-      'govuk-button--warning',
+      'govuk-button--secondary',
       `${this.removeButtonClass}`
     )
     $button.innerHTML = label
@@ -522,7 +478,11 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   /**
+   * Resets the values of all input fields within an item to their default
+   * state.
+   *
    * @param {HTMLElement} $item - Add another item
+   * @fires AddAnother#resetItem
    */
   resetItem($item) {
     $item.querySelectorAll('[data-name], [data-id]').forEach(($input) => {
@@ -534,7 +494,7 @@ export class AddAnother extends ConfigurableComponent {
         $input.value = ''
       } else if ($input instanceof HTMLTextAreaElement) {
         $input.value = ''
-      } else {
+      } else if ($input instanceof HTMLInputElement) {
         switch ($input.type) {
           case 'checkbox':
           case 'radio':
@@ -545,6 +505,8 @@ export class AddAnother extends ConfigurableComponent {
         }
       }
     })
+
+    emitEvent($item, AddAnother, this.itemResetEvent)
   }
 
   /**
@@ -591,9 +553,59 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   /**
+   * Handles click events on the add button to create a new item and append it
+   * to the list of items.
+   *
+   * @param {MouseEvent} event - Click event
+   * @fires AddAnother#itemAdded
+   */
+  onAddButtonClick(event) {
+    event.preventDefault()
+
+    const $button = event.target
+
+    if (
+      !$button ||
+      !($button instanceof HTMLButtonElement) ||
+      !$button.classList.contains(`${this.addButtonClass}`)
+    ) {
+      return
+    }
+
+    const $item = this.getNewItem()
+    if (!$item || !($item instanceof DocumentFragment)) {
+      return
+    }
+
+    this.$itemsContainer.appendChild($item)
+    this.updateAllItems()
+    const $lastItem = this.$items[this.$items.length - 1]
+
+    // Place focus on the added item
+    if ($lastItem && $lastItem instanceof HTMLElement) {
+      const $fieldset = $lastItem.querySelector(`.${this.fieldsetClass}`)
+
+      if ($fieldset && $fieldset instanceof HTMLFieldSetElement) {
+        this.addNewItemSuffix($fieldset)
+
+        $fieldset.addEventListener('blur', () => {
+          this.removeNewItemSuffix($fieldset)
+        })
+
+        emitEvent($lastItem, AddAnother, this.itemAddedEvent)
+
+        setTimeout(() => {
+          setFocus($fieldset)
+        }, 100)
+      }
+    }
+  }
+
+  /**
    * Handles click events on remove buttons within items.
    *
    * @param {MouseEvent} event - Click event
+   * @fires AddAnother#itemRemoved
    */
   onRemoveButtonClick(event) {
     const $target = /** @type {Element} */ (event.target)
@@ -642,9 +654,20 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   /**
+   * Check if an item has a remove button.
+   *
+   * @param {Element | DocumentFragment} $item - Add another item
+   * @returns {boolean}
+   */
+  hasRemoveButton($item) {
+    return !!$item.querySelectorAll('.moj-add-another__remove-button').length
+  }
+
+  /**
    * Checks if an element is a valid input element (input, select, or textarea).
    *
    * @param {Element} $input - the input to validate
+   * @returns {$input is AddAnotherInputElement}
    */
   isValidInputElement($input) {
     return (
@@ -683,6 +706,10 @@ export class AddAnother extends ConfigurableComponent {
 }
 
 /**
+ * @typedef {HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement} AddAnotherInputElement
+ */
+
+/**
  * @typedef {"stacked"|"inline"} AddAnotherLayout
  */
 
@@ -692,6 +719,50 @@ export class AddAnother extends ConfigurableComponent {
  * @typedef {object} AddAnotherConfig
  * @property {string} [itemLabel] - Label for each fieldset
  * @property {AddAnotherLayout} [layout] - layout style for fields
+ */
+
+/**
+ * Template created event
+ * Fired when a reusable item template is created.
+ *
+ * Event name: `moj-add-another:create-template`
+ * Dispatched from: the created `<template>` element. (this.$itemTemplate)
+ *
+ * @event AddAnother#templateCreated
+ * @type {CustomEvent<null>}
+ */
+
+/**
+ * Item added event
+ * Fired when a new item is added to the list of items.
+ *
+ * Event name: `moj-add-another:add-item`
+ * Dispatched from: the root element of the component. (this.$root)
+ *
+ * @event AddAnother#itemAdded
+ * @type {CustomEvent<null>}
+ */
+
+/**
+ * Item removed event
+ * Fired when an item is removed from the list of items.
+ *
+ * Event name: `moj-add-another:remove-item`
+ * Dispatched from: the root element of the component. (this.$root)
+ *
+ * @event AddAnother#itemRemoved
+ * @type {CustomEvent<null>}
+ */
+
+/**
+ * Item reset event
+ * Fired when an item is reset to its default state.
+ *
+ * Event name: `moj-add-another:reset-item`
+ * Dispatched from: the item that was reset.
+ *
+ * @event AddAnother#itemReset
+ * @type {CustomEvent<null>}
  */
 
 /**

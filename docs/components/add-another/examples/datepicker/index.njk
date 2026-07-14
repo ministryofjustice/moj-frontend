@@ -1,0 +1,70 @@
+{%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "moj/components/date-picker/macro.njk" import mojDatePicker -%}
+{%- from "govuk/components/input/macro.njk" import govukInput -%}
+
+<h1 class="govuk-heading-m">Periods of absence</h1>
+
+  {% set itemHtml %}
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third govuk-grid-column-one-half-from-desktop">
+  {{ govukInput({
+      id: "absence-reason[0]",
+          name: "absence-reason[0]",
+          attributes: {
+          'data-id': "absence-reason[%index%]",
+         'data-name': "absence-reason[%index%]",
+         'data-label': "Absence reason"
+          },
+          label: {
+            text: "Description"
+          }
+      })
+    }}
+    </div>
+    <div class="govuk-grid-column-one-third govuk-grid-column-one-quarter-from-desktop">
+      {{ mojDatePicker({
+          id: "absence-start[0][date]",
+          name: "absence-start[0][date]",
+          attributes: {
+          'data-id': "absence-start[%index%][date]",
+         'data-name': "absence-start[%index%][date]",
+         'data-label': "Start date"
+          },
+          label: {
+            text: "Start date"
+          }
+          }) }}
+          </div>
+      <div class="govuk-grid-column-one-third govuk-grid-column-one-quarter-from-desktop">
+      {{ mojDatePicker({
+          id: "absence-end[0][date]",
+          name: "absence-end[0][date]",
+          attributes: {
+          'data-id': "absence-end[%index%][date]",
+         'data-name': "absence-end[%index%][date]",
+         'data-label': "End date"
+          },
+          label: {
+            text: "End date"
+          }
+          }) }}
+          </div>
+        </div>
+
+  {% endset %}
+
+  {{ mojAddAnother({
+  layout: "inline",
+  itemLabel: "Period of absence",
+  items: [
+    {
+      fieldset: {
+        legend: {
+          text: "Period of absence 1"
+        },
+        html: itemHtml
+      }
+      }
+  ]
+  }) }}

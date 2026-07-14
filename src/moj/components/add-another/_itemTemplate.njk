@@ -4,31 +4,39 @@
 
 {% set describedBy = item.fieldset.describedBy if item.fieldset.describedBy else "" %}
 
-{#- Setup css classes for the item #}
+{#- Setup css classes for the item and legend #}
 {% set classes = ["moj-add-another__item"] %}
+{% set legendClasses = ["moj-add-another__item-title govuk-fieldset__legend--m"] %}
 
 {%- if params.layout == 'inline' %}
   {% set classes = classes.concat("moj-add-another__item--inline") %}
-{% endif %}
-
-{%- if item.errorMessage %}
-  {% set errorId = params.id + index +"-error" %}
-  {% set describedBy = describedBy + " " + errorId if describedBy else errorId %}
-  {% set classes = classes.concat("moj-add-another__item--error") %}
 {% endif %}
 
 {%- if item.classes %}
   {% set classes = classes.concat(item.classes) %}
 {% endif %}
 
+{%- if item.fieldset.legend.classes %}
+  {% set legendClasses = legendClasses.concat(item.fieldset.legend.classes) %}
+{% endif %}
+
+{#- If the item has an error message, add the error id to the describedBy
+attribute and add an error class to the item #}
+{%- if item.errorMessage %}
+  {% set errorId = params.id + index +"-error" %}
+  {% set describedBy = describedBy + " " + errorId if describedBy else errorId %}
+  {% set classes = classes.concat("moj-add-another__item--error") %}
+{% endif %}
+
 {% set classes = classes | join(" ") -%}
+{% set legendClasses = legendClasses | join(" ") -%}
 
 {#- Setup the remove button html #}
 {% set removeButtonHtml %}
   <div class="moj-add-another__remove-button-container">
     {{ govukButton({
-      text: "Remove " ~ (params.itemLabel | lower) ~ " " ~ index,
-      classes: "govuk-button--warning moj-add-another__remove-button",
+      text: "Remove " + (params.itemLabel | lower) + " " + index,
+      classes: "govuk-button--secondary moj-add-another__remove-button",
       name: item.removeButton.name if params.removeButton.name else 'remove',
       value: item.removeButton.value if params.removeButton.value else index-1
     }) }}
@@ -38,7 +46,7 @@
 {#- Setup the item html, if the layout is inline then the content and remove
 button are side by side, otherwise the remove button is below the content #}
 {%- if params.layout == 'inline' %}
-  {% set innerHtml %}
+  {% set fieldsetHtml %}
     <div class="moj-add-another__item-container">
       <div class="moj-add-another__item-row">
         {% if item.errorMessage %}
@@ -51,17 +59,15 @@ button are side by side, otherwise the remove button is below the content #}
                 visuallyHiddenText: item.errorMessage.visuallyHiddenText
           }) | trim | indent(2) }}
         {% endif %}
-        <div class="govuk-grid-row">
-          {{ item.fieldset.html | safe}}
-        </div>
+        {{ item.fieldset.html | safe}}
       </div>
       {{ removeButtonHtml | safe }}
     </div>
   {% endset %}
 {% else %}
-  {% set innerHtml %}
+  {% set fieldsetHtml %}
     <div class="moj-add-another__item-container">
-      {{ (item.fieldset.html ~ removeButtonHtml) | safe }}
+      {{ (item.fieldset.html + removeButtonHtml) | safe }}
     </div>
   {% endset %}
 {% endif %}
@@ -70,19 +76,17 @@ button are side by side, otherwise the remove button is below the content #}
 {% set legendParams = {
   text: item.fieldset.legend.text,
   html: item.fieldset.legend.html,
-  classes: "moj-add-another__item-title " ~ ( "govuk-fieldset__legend--s govuk-visually-hidden " if params.layout == "inline" else "govuk-fieldset__legend--m") ~ (item.fieldset.legend.classes if item.fieldset.legend.classes),
+  classes: legendClasses,
   isPageHeading: false
 } if item.fieldset.legend else false %}
-
-
 
 {#- Render the item #}
 <div class="{{ classes }}" {{ govukAttributes(item.attributes) }}>
   {{- govukFieldset({
     attributes: item.fieldset.attributes,
-    classes: "moj-add-another__fieldset " ~ (item.fieldset.classes if item.fieldset.classes),
+    classes: "moj-add-another__fieldset " + (item.fieldset.classes if item.fieldset.classes),
     describedBy: describedBy,
-    html: innerHtml,
+    html: fieldsetHtml,
     legend: legendParams,
     role: item.fieldset.role
   }) -}}

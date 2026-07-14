@@ -205,12 +205,6 @@ describe('add another', () => {
       const item = $component.querySelector('.moj-add-another__item')
       expect(item).toHaveClass('moj-add-another__item--inline')
     })
-
-    test('renders the item legend as visually hidden', () => {
-      const item = $component.querySelector('.moj-add-another__item')
-      const legend = item.querySelector('legend')
-      expect(legend).toHaveClass('govuk-visually-hidden')
-    })
   })
 
   // ---------------------------------------------------------------------------

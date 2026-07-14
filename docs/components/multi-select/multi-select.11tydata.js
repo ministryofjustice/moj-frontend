@@ -3,5 +3,6 @@ export default {
     'https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit?type=design&node-id=841-220&mode=design',
   githuburl:
     'https://github.com/ministryofjustice/moj-frontend/discussions/206',
+  tabCollection: 'multi-select',
   blockTitle: 'Multi select'
 }

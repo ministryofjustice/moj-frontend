@@ -2,18 +2,22 @@
 title: Search
 status: To be reviewed
 statusDate: June 2021
-lede: "Use the search component to let users search by word or phrase."
+lede: "Use the search component to let users search with a word or phrase."
 ---
 
 {% example template="examples/default", colocated=true, height=200 %}
 
 ## When to use
 
-Use the search component to let users search by word or phrase. This can be used within the [primary navigation component](/components/primary-navigation/).
+Use the search component to let users search with a word or phrase. This can be used within the [primary navigation component](/components/primary-navigation/).
 
 ## How to use
 
-You can configure the search form to be inversed on black and to hide and show labels and hints depending on your use case. You can view examples of this in the [primary navigation component documentation](/components/primary-navigation/).
+You can configure the search form to be inversed on black, and to hide and show labels and hints depending on your use case. You can view examples of this in the [primary navigation component documentation](/components/primary-navigation/).
+
+### Showing no results 
+
+Follow the [content pattern for showing no results after a search](https://design-patterns.service.justice.gov.uk/content-standards/style-guide/#no-results-from-search). 
 
 ## Accessibility issues
 

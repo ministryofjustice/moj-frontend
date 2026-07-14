@@ -7,6 +7,7 @@ const {
   MAX_ADD_ANOTHER: maxAddAnother,
   ADD_NEW_COMPONENT_ROUTE,
   ALLOWED_EMAIL_DOMAINS: allowedDomains,
+  ALLOWED_COMPONENT_IMAGE_MIME_TYPES,
   COMPONENT_FORM_PAGES: formPages,
   MESSAGES,
   HTML_SANITIZATION_OPTIONS
@@ -156,20 +157,104 @@ const errorTemplateVariables = (
   }
 }
 
-const validateFormDataFileUpload = (err, req, res, next) => {
-  if (err?.code === 'LIMIT_FILE_SIZE') {
-    const errorMessage = 'The selected file must be smaller than 10MB'
-    const formErrors = {}
-    formErrors[err.field] = { text: errorMessage }
-    const errors = [{ message: errorMessage, path: [err.field] }]
-    const errorList = transformErrorsToErrorList(errors)
-    const template = getTemplate(req)
-    res
-      .status(400)
-      .render(template, errorTemplateVariables(req, formErrors, errorList))
-  } else {
-    next()
+const renderFileUploadError = (req, res, fieldName, message) => {
+  const formErrors = {}
+  formErrors[fieldName] = { text: message }
+  const errors = [{ message, path: [fieldName] }]
+  const errorList = transformErrorsToErrorList(errors)
+  const template = getTemplate(req)
+  res
+    .status(400)
+    .render(template, errorTemplateVariables(req, formErrors, errorList))
+}
+
+const detectMimeTypeFromFileSignature = (buffer) => {
+  if (!Buffer.isBuffer(buffer)) {
+    return null
   }
+
+  const startsWithBytes = (bytes) =>
+    bytes.every((byte, index) => buffer[index] === byte)
+
+  if (startsWithBytes([0xff, 0xd8, 0xff])) {
+    return 'image/jpeg'
+  }
+
+  if (startsWithBytes([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])) {
+    return 'image/png'
+  }
+
+  if (startsWithBytes([0x42, 0x4d])) {
+    return 'image/bmp'
+  }
+
+  if (
+    startsWithBytes([0x49, 0x49, 0x2a, 0x00]) ||
+    startsWithBytes([0x4d, 0x4d, 0x00, 0x2a])
+  ) {
+    return 'image/tiff'
+  }
+
+  if (startsWithBytes([0x25, 0x50, 0x44, 0x46, 0x2d])) {
+    return 'application/pdf'
+  }
+
+  return null
+}
+
+const validateFormDataFileSignature = (req, res, next) => {
+  if (!req.file) {
+    return next()
+  }
+
+  const detectedMimeType = detectMimeTypeFromFileSignature(req.file.buffer)
+  if (
+    !detectedMimeType ||
+    !ALLOWED_COMPONENT_IMAGE_MIME_TYPES.has(detectedMimeType)
+  ) {
+    const error = new Error('Invalid file type')
+    error.code = 'LIMIT_FILE_TYPE'
+    error.field = req.file.fieldname || 'componentImage'
+    return next(error)
+  }
+
+  next()
+}
+
+const validateFormDataFileSize = (err, req, res, next) => {
+  if (!err) {
+    return next()
+  }
+
+  if (err.code === 'LIMIT_FILE_SIZE') {
+    const fieldName = err.field || 'componentImage'
+    return renderFileUploadError(
+      req,
+      res,
+      fieldName,
+      MESSAGES.uploadFileTooLarge.text
+    )
+  }
+
+  next(err)
+}
+
+const validateFormDataFileType = (err, req, res, next) => {
+  if (!err) {
+    return next()
+  }
+
+  if (err.code === 'LIMIT_FILE_TYPE') {
+    const fieldName = err.field || 'componentImage'
+    return renderFileUploadError(
+      req,
+      res,
+      fieldName,
+      MESSAGES.uploadFileInvalidType.text
+    )
+  }
+
+  next(err)
 }
 
 /**
@@ -252,9 +337,9 @@ const saveSession = (req, res, next) => {
   const { _csrf, ...body } = req.body
 
   if (req.file) {
-    // Generate a hash of the req.url
-    const urlHash = getHashedUrl(req.url)
-    const redisKey = `file:${urlHash}:${req.sessionID}:${req.file.fieldname}`
+    const redisKey =
+      req.savedRedisKey ||
+      `file:${getHashedUrl(req.path)}:${req.sessionID}:${req.file.fieldname}`
 
     if (redisKey) {
       body[req.file.fieldname] = {
@@ -270,8 +355,7 @@ const saveSession = (req, res, next) => {
     req.path === 'constructor' ||
     req.path === 'prototype'
   ) {
-    res.end(403)
-    return
+    return res.status(403).end()
   }
   req.session[req.path] = { ...req.session[req.path], ...body }
   delete req.session[req.path].addAnother
@@ -281,7 +365,7 @@ const saveSession = (req, res, next) => {
 
 const getFormDataFromSession = (req, res, next) => {
   req.formData = null
-  req.formData = req.session?.[req.url] || {}
+  req.formData = req.session?.[req.path] || {}
   next()
 }
 
@@ -348,8 +432,7 @@ const removeFromSession = (req, res, next) => {
   const url = req.url.replace(/\/(remove|change)/, '')
   // prevent prototype pollution
   if (url === '__proto__' || url === 'constructor' || url === 'prototype') {
-    res.end(403)
-    return
+    return res.status(403).end()
   }
 
   if (req.params.page === 'component-image') {
@@ -409,7 +492,7 @@ const saveFileToRedis = async (req, res, next) => {
   if (req.file) {
     const { buffer, originalname, mimetype } = req.file
 
-    const urlHash = getHashedUrl(req.url)
+    const urlHash = getHashedUrl(req.path)
     const redisKey = `file:${urlHash}:${req.sessionID}:${req.file.fieldname}` // Generate Redis key
 
     try {
@@ -425,6 +508,7 @@ const saveFileToRedis = async (req, res, next) => {
         24 * 60 * 60
       )
 
+      req.savedRedisKey = redisKey
       // Save Redis key in session
       req.session[req.file.fieldname] = redisKey
 
@@ -481,7 +565,9 @@ module.exports = {
   removeFromSession,
   sessionStarted,
   sessionVerified,
-  validateFormDataFileUpload,
+  validateFormDataFileSignature,
+  validateFormDataFileSize,
+  validateFormDataFileType,
   validateComponentImagePage,
   saveFileToRedis,
   clearSkippedPageData,

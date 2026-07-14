@@ -4,6 +4,7 @@
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
 
 {% set itemHtml -%}
+<div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     {{ govukInput({
       id: "accounts[0][bank-name]",
@@ -39,7 +40,8 @@
       },
       classes: "govuk-input--width-5"
     }) }}
-  </div>
+    </div>
+    </div>
 {% endset %}
 
 <h2 class="govuk-heading-m govuk-label-wrapper" id="accounts-title">Add account funds</h2>

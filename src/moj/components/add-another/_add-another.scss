@@ -6,44 +6,56 @@
 
 .moj-add-another {
   margin-bottom: govuk-spacing(8);
+}
 
-  &__item {
-    position: relative;
-    margin: 0;
-    margin-top: govuk-spacing(6);
-    margin-bottom: govuk-spacing(4);
-    padding: 0;
+.moj-add-another__item {
+  position: relative;
+  margin-top: govuk-spacing(6);
+  margin-right: 0;
+  margin-bottom: govuk-spacing(4);
+  margin-left: 0;
+  padding: 0;
 
-    &:first-of-type {
-      margin-top: 0;
-    }
+  &:first-of-type {
+    margin-top: 0;
   }
+}
 
-  &__item-title > h2,
-  &__item-title > h3,
-  &__item-title > h4 {
+.moj-add-another__item-title {
+  & > h2,
+  & > h3,
+  & > h4 {
     margin-top: 0;
     margin-bottom: 0;
   }
 
-  &__item-title > h2 {
+  & > h2 {
     @include govuk-font-size($size: 24);
-  }
-
-  &__item-container {
-    border-bottom: 2px solid govuk-colour("black", $variant: "tint-25");
-  }
-
-  &__add-button {
-    display: block;
   }
 }
 
+.moj-add-another__item-container {
+  border-bottom: 2px solid govuk-colour("black", $variant: "tint-25");
+}
+
+.moj-add-another__add-button {
+  display: block;
+}
+
 .moj-add-another__item--inline {
+  &.moj-add-another__item--error {
+    padding-left: govuk-spacing(4);
+    border-left: 5px solid govuk-functional-colour("error");
+  }
+
   @include govuk-media-query($from: "tablet") {
     margin-top: 0;
     margin-bottom: govuk-spacing(6);
     border-bottom: none;
+
+    .moj-add-another__item-title {
+      @include govuk-visually-hidden;
+    }
 
     .moj-add-another__item-container {
       display: flex;
@@ -69,9 +81,4 @@
       margin-bottom: 2px;
     }
   }
-}
-
-.moj-add-another__item--inline.moj-add-another__item--error {
-  padding-left: govuk-spacing(4);
-  border-left: 5px solid govuk-functional-colour("error");
 }
