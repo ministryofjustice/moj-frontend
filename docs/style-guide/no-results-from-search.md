@@ -13,3 +13,5 @@ Help the user to refine their search. Depending on your product and the search, 
 - a route to contact support, or raise a ticket
 
 Work to prevent errors, for example by considering validation carefully. View [GOV.UK guidance on helping users give the right information](https://www.gov.uk/service-manual/design/designing-good-questions#:~:text=service%20too%20complicated.-,Help%20users%20give%20you%20the%20right%20information,and%20write%20good%20error%20messages).
+
+There's also a [content pattern for showing results (from search)](/content-standards/style-guide/#results-from-search). 
