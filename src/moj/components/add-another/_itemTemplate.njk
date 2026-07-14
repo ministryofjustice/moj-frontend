@@ -3,6 +3,9 @@
 {%- from "govuk/components/error-message/macro.njk" import govukErrorMessage -%}
 
 {% set describedBy = item.fieldset.describedBy if item.fieldset.describedBy else "" %}
+{% set itemLabel = params.itemLabel | default('Item', true) %}
+{% set defaultRemoveButtonText = "Remove %{itemLabel} %{count}" %}
+{% set removeButtonText = params.removeButtonText or defaultRemoveButtonText | replace('%{itemLabel}', (itemLabel | lower)) | replace('%{count}', index) %}
 
 {#- Setup css classes for the item and legend #}
 {% set classes = ["moj-add-another__item"] %}
@@ -35,7 +38,7 @@ attribute and add an error class to the item #}
 {% set removeButtonHtml %}
   <div class="moj-add-another__remove-button-container">
     {{ govukButton({
-      text: "Remove " + (params.itemLabel | lower) + " " + index,
+      text: removeButtonText,
       classes: "govuk-button--secondary moj-add-another__remove-button",
       name: item.removeButton.name if params.removeButton.name else 'remove',
       value: item.removeButton.value if params.removeButton.value else index-1

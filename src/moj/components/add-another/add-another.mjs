@@ -412,9 +412,9 @@ export class AddAnother extends ConfigurableComponent {
    */
   updateRemoveButtons($item, index, itemsCount) {
     const $button = $item.querySelector(`.${this.removeButtonClass}`)
-    const label = this.removeButtonLabelText(
-      `${this.config.itemLabel.toLowerCase()} ${index + 1}`
-    )
+    const label = this.config.removeButtonText
+      .replace('%{itemLabel}', this.config.itemLabel.toLowerCase())
+      .replace('%{count}', index + 1)
 
     if (!$button || !($button instanceof HTMLButtonElement)) {
       if (itemsCount > 1 && index === 0) {
@@ -746,7 +746,8 @@ export class AddAnother extends ConfigurableComponent {
    * @type {AddAnotherConfig}
    */
   static defaults = Object.freeze({
-    layout: 'stacked'
+    layout: 'stacked',
+    removeButtonText: 'Remove %{itemLabel} %{count}'
   })
 
   /**
@@ -758,7 +759,8 @@ export class AddAnother extends ConfigurableComponent {
     /** @type {const} */ ({
       properties: {
         itemLabel: { type: 'string' },
-        layout: { type: 'string' }
+        layout: { type: 'string' },
+        removeButtonText: { type: 'string' }
       }
     })
   )
@@ -778,6 +780,7 @@ export class AddAnother extends ConfigurableComponent {
  * @typedef {object} AddAnotherConfig
  * @property {string} [itemLabel] - Label for each fieldset
  * @property {AddAnotherLayout} [layout] - layout style for fields
+ * @property {string} [removeButtonText] - Label for remove button
  */
 
 /**
