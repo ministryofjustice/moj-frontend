@@ -10,7 +10,9 @@ eleventyComputed:
 
 The inline (or horizontal) layout is a lean design for up to 3 fields. 
 
-^ The 'Add another' component has 2 layouts -- view [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
+<div class="govuk-inset-text">
+The 'Add another' component has 2 layouts -- view [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
+</div>
 
 {% example template="examples/inline-accounts", colocated="true", height=540 %}
 
@@ -30,6 +32,10 @@ The item names are numbered 1, 2, 3 and so on.
 
 #### Form field labels
 
+<div class="govuk-inset-text">
+You may need to change the legend sizes of some GOV.UK components that you use in this component. Change them to 'body (paragraph)' to follow [GOV.UK guidance on label and legend headings](https://design-system.service.gov.uk/get-started/labels-legends-headings/).
+</div>
+
 Hidden text is added to the end of the component labels. This is to help screen reader users know which item they are editing or removing. In the example, it adds the content in brackets to these field labels:
 
 - bank name (for account 1)
@@ -42,22 +48,21 @@ This hidden text is automatically added by JavaScript. If you add the text to th
 
 Add no more than 3 fields to the inline layout (this does not include the ‘remove’ button). This keeps it is easy to use. 
 
-You can add only 2 types of components to it. These are the:
+You can add the following 2 components to it. These are called the 'preferred instances' in Figma:
 
 - [GOV.UK text input](https://design-system.service.gov.uk/components/text-input/)
 - [GOV.UK select component](https://design-system.service.gov.uk/components/select/)
 
-Do not add [GOV.UK radios](https://design-system.service.gov.uk/components/radios/) to it.
+All the items and field labels need to fit on 1 line. You can view [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
 
-All the items and field labels need to fit on 1 line. You can view [GOV.UK Design System guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
+#### Adding components in Figma
 
-### The ‘Remove’ button
+The Add another component uses 'slots', a Figma feature introduced in Spring 2026 to make components more flexible.
 
-The 'Remove' button is a [GOV.UK secondary button](https://design-system.service.gov.uk/components/button/#warning-buttons), like the 'Add another' button.  
+A components keep its default width after you add it to a slot, rather than automatically filling the available space. This means it may be too narrow or may overflow the container. You can either:
 
-The line between each item adds more visual separation between the 'Add another' and 'Remove' button. This aims to prevent users selecting the 'Remove' button in error.
-
-Do not change the button position, as this may make it harder for zoom users to use the component.
+- set all components to 'Fill' in Figma, so that they share the available width evenly
+- manually set the width of each component, following the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system) where possible
 
 ### Error messages
 
@@ -87,7 +92,7 @@ Errors can find their errors with:
   </tbody>
 </table>
 
-Follow the [GOV.UK Design System guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
+Follow the [GOV.UK guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
 
 #### Showing multiple errors
 
@@ -114,6 +119,10 @@ Do not put the inline layout:
 - on the same page as the stacked layout
 - inside another ‘Add another’ component to create a subsection -- screen readers may not announce this, and it may make the page harder to use for everyone
 
+#### The ‘Remove’ button
+
+Do not change the button position, as this may make it harder for zoom users to use the component.
+
 #### Other parts of the page
 
 When users interact with this component, pages will get longer and more complex. Therefore it’s best to keep the rest of the page fairly simple. A leaner page will also make it easier for users to identify – and recover from – errors.
@@ -123,4 +132,8 @@ When users interact with this component, pages will get longer and more complex.
 The 'Add another' component creates another item on the page. The data remains on the page until the user submits it, for example with a ‘Save and continue’ button.
 
 Users can edit their items after submitting them, using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
+
+### Example of using the inline variant more than once on a page
+
+<p><img src="{{ 'assets/images/add-another-example-inline.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The page contains a heading, 2 questions with radio buttons. Underneath the 2 questions are 2 add another components in the inline layout. The first component has the heading 'Add gifts information' with the field labels 'Gift description' and 'value'. There is a 'remove button' to the right. The second component has the heading 'Add loans information' with the field labels 'Loan description' and 'value'. There is a red 'remove button' to the right'. A green submit button is at the bottom of the screen."></p>
 
