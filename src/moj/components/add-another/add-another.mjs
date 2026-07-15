@@ -453,12 +453,10 @@ export class AddAnother extends ConfigurableComponent {
     }
 
     if ($suffix && $suffix instanceof HTMLElement) {
-      const $replacementSuffix = $suffix.cloneNode()
-      $replacementSuffix.textContent = this.i18n.t('fieldLabelSuffixText', {
+      $suffix.textContent = this.i18n.t('fieldLabelSuffixText', {
         itemLabel: this.config.itemLabel.toLowerCase(),
         number: index
       })
-      $suffix.replaceWith($replacementSuffix)
     }
   }
 
