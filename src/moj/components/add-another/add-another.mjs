@@ -621,17 +621,6 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   /**
-   * Generates the label text for the remove button based on the layout
-   * configuration.
-   *
-   * @param {number} labelIndex - the index to include in the remove button label
-   * @returns {string} the label for the remove button based on the layout configuration
-   */
-  removeButtonLabelText(labelIndex) {
-    return `${this.removeButtonText()} ${this.removeButtonSuffixText(labelIndex)}`
-  }
-
-  /**
    * Handles click events on the add button to create a new item and append it
    * to the list of items.
    *

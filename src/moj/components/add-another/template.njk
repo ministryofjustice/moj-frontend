@@ -44,8 +44,7 @@
   {{ govukAttributes(params.attributes) }}
 {% endset %}
 
-<div class="moj-add-another{{- ' ' + params.classes if params.classes }}"
-{{- attributesHtml | safe -}}">
+<div class="moj-add-another{{- ' ' + params.classes if params.classes }}" {{- attributesHtml | safe -}}>
   <div class="moj-add-another__items">
     {% for item in params.items %}
       {% if item.fieldset.html %}
