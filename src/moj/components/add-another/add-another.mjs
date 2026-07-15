@@ -1,6 +1,11 @@
 import { ConfigurableComponent } from 'govuk-frontend'
+import { I18n } from 'govuk-frontend/dist/govuk/i18n.mjs'
 
-import { setFocus, emitEvent } from '../../common/index.mjs'
+import {
+  setFocus,
+  emitEvent,
+  closestAttributeValue
+} from '../../common/index.mjs'
 
 /**
  * @augments {ConfigurableComponent<AddAnotherConfig>}
@@ -73,6 +78,11 @@ export class AddAnother extends ConfigurableComponent {
     if (!($itemsContainer instanceof HTMLElement)) {
       return
     }
+
+    this.i18n = new I18n(this.config.i18n, {
+      // Read the fallback if necessary rather than have it set in the defaults
+      locale: closestAttributeValue(this.$root, 'lang')
+    })
 
     this.$itemsContainer = $itemsContainer
     this.$items = this.getItems()
@@ -304,20 +314,7 @@ export class AddAnother extends ConfigurableComponent {
 
       const $label = $input.closest('.govuk-form-group').querySelector('label')
       if ($label && $label instanceof HTMLLabelElement) {
-        let $labelSuffix = $label.querySelector(`.${this.labelSuffixClass}`)
-
-        if (!$labelSuffix) {
-          $labelSuffix = document.createElement('span')
-          $labelSuffix.classList.add(
-            `${this.labelSuffixClass}`,
-            'govuk-visually-hidden'
-          )
-          $labelSuffix = $label.appendChild($labelSuffix)
-        }
-
-        if ($labelSuffix && $labelSuffix instanceof HTMLElement) {
-          $labelSuffix.textContent = ` for ${this.config.itemLabel.toLowerCase()} ${index + 1}`
-        }
+        this.updateSuffixText($label, index + 1)
       }
     })
   }
@@ -336,16 +333,10 @@ export class AddAnother extends ConfigurableComponent {
         return
       }
 
-      const labelText = $fieldset.getAttribute('data-legend') || ''
-
       const $legend = $fieldset.querySelector('legend')
 
       if ($legend && $legend instanceof HTMLLegendElement) {
-        const hiddenText = document.createElement('span')
-        hiddenText.classList.add('govuk-visually-hidden')
-        hiddenText.textContent = `for ${this.config.itemLabel.toLowerCase()} ${index + 1}`
-        $legend.textContent = `${labelText}`
-        $legend.appendChild(hiddenText)
+        this.updateSuffixText($legend, index + 1)
       }
     })
   }
@@ -365,19 +356,16 @@ export class AddAnother extends ConfigurableComponent {
       return
     }
     const $legend = $fieldset.querySelector('legend')
-    let suffix = ''
 
-    if (itemsCount === 1) {
-      suffix = `${index + 1}`
-    } else {
-      suffix = `${index + 1} of ${itemsCount}`
-    }
+    const legendText = this.i18n.t('itemLegendText', {
+      itemLabel: this.config.itemLabel,
+      number: index + 1,
+      count: itemsCount
+    })
 
     if (!$legend || !($legend instanceof HTMLLegendElement)) {
       return
     }
-
-    const legendText = `${this.config.itemLabel} ${suffix}`
 
     // Replace the legend node rather than mutating text in-place so assistive
     // technologies recalculate the fieldset name after item reindex/removal.
@@ -412,13 +400,11 @@ export class AddAnother extends ConfigurableComponent {
    */
   updateRemoveButtons($item, index, itemsCount) {
     const $button = $item.querySelector(`.${this.removeButtonClass}`)
-    const label = this.removeButtonLabelText(
-      `${this.config.itemLabel.toLowerCase()} ${index + 1}`
-    )
+    const labelIndex = index + 1
 
     if (!$button || !($button instanceof HTMLButtonElement)) {
       if (itemsCount > 1 && index === 0) {
-        this.createRemoveButton($item, label)
+        this.createRemoveButton($item, labelIndex)
       }
       return
     }
@@ -426,7 +412,7 @@ export class AddAnother extends ConfigurableComponent {
     if (itemsCount === 1 && index === 0) {
       $button.remove()
     } else {
-      $button.innerHTML = label
+      this.setRemoveButtonContent($button, labelIndex)
     }
   }
 
@@ -447,6 +433,30 @@ export class AddAnother extends ConfigurableComponent {
     const $legend = $item.querySelector('legend')
     if ($legend && $legend instanceof HTMLLegendElement) {
       $legend.appendChild($newItemSuffix)
+    }
+  }
+
+  /**
+   * Updates the visually hidden text of a label to reflect the current index of
+   * the item.
+   *
+   * @param {Element} $element - Add another item
+   * @param {number} index - Add another item index
+   */
+  updateSuffixText($element, index) {
+    let $suffix = $element.querySelector(`.${this.labelSuffixClass}`)
+
+    if (!$suffix) {
+      $suffix = document.createElement('span')
+      $suffix.classList.add(`${this.labelSuffixClass}`, 'govuk-visually-hidden')
+      $suffix = $element.appendChild($suffix)
+    }
+
+    if ($suffix && $suffix instanceof HTMLElement) {
+      $suffix.textContent = this.i18n.t('fieldLabelSuffixText', {
+        itemLabel: this.config.itemLabel.toLowerCase(),
+        number: index
+      })
     }
   }
 
@@ -482,8 +492,9 @@ export class AddAnother extends ConfigurableComponent {
    * adds it to the item.
    *
    * @param {Element|DocumentFragment} $item - Add another item
+   * @param {number} [labelIndex] - label index
    */
-  createRemoveButton($item, label = 'Remove') {
+  createRemoveButton($item, labelIndex = 1) {
     const $buttonContainer = $item.querySelector(
       `.${this.removeButtonContainerClass}`
     )
@@ -494,7 +505,7 @@ export class AddAnother extends ConfigurableComponent {
       'govuk-button--secondary',
       `${this.removeButtonClass}`
     )
-    $button.innerHTML = label
+    this.setRemoveButtonContent($button, labelIndex)
 
     if ($buttonContainer && $buttonContainer instanceof HTMLElement) {
       $buttonContainer.appendChild($button)
@@ -566,18 +577,47 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   /**
-   * Generates the label text for the remove button based on the layout
-   * configuration.
+   * Generates remove button text.
    *
-   * @param {string} labelIndex - the index to include in the remove button label
-   * @returns {string} the label for the remove button based on the layout configuration
+   * @returns {string} translated remove button text
    */
-  removeButtonLabelText(labelIndex) {
+  removeButtonText() {
+    return this.i18n.t('removeButtonText')
+  }
+
+  /**
+   * Generates remove button suffix text.
+   *
+   * @param {number} labelIndex - the index to include in the remove button label
+   * @returns {string} translated remove button suffix text
+   */
+  removeButtonSuffixText(labelIndex) {
+    return this.i18n.t('removeButtonSuffixText', {
+      itemLabel: this.config.itemLabel.toLowerCase(),
+      number: labelIndex
+    })
+  }
+
+  /**
+   * Sets remove button label content safely without using innerHTML.
+   *
+   * @param {HTMLButtonElement} $button
+   * @param {number} labelIndex
+   */
+  setRemoveButtonContent($button, labelIndex) {
+    const text = this.removeButtonText()
+    const suffix = this.removeButtonSuffixText(labelIndex)
+
     if (this.config.layout === 'inline') {
-      return `Remove <span class="govuk-visually-hidden">${labelIndex}</span>`
+      $button.textContent = `${text} `
+      const $hiddenSuffix = document.createElement('span')
+      $hiddenSuffix.classList.add('govuk-visually-hidden')
+      $hiddenSuffix.textContent = suffix
+      $button.appendChild($hiddenSuffix)
+      return
     }
 
-    return `Remove ${labelIndex}`
+    $button.textContent = `${text} ${suffix}`
   }
 
   /**
@@ -746,6 +786,16 @@ export class AddAnother extends ConfigurableComponent {
    * @type {AddAnotherConfig}
    */
   static defaults = Object.freeze({
+    i18n: {
+      removeButtonText: 'Remove',
+      removeButtonSuffixText: '%{itemLabel} %{number}',
+      fieldLabelSuffixText: 'for %{itemLabel} %{number}',
+      itemLegendText: {
+        one: '%{itemLabel} %{number}',
+        other: '%{itemLabel} %{number} of %{count}'
+      }
+    },
+    itemLabel: 'Item',
     layout: 'stacked'
   })
 
@@ -757,6 +807,7 @@ export class AddAnother extends ConfigurableComponent {
   static schema = Object.freeze(
     /** @type {const} */ ({
       properties: {
+        i18n: { type: 'object' },
         itemLabel: { type: 'string' },
         layout: { type: 'string' }
       }
@@ -778,6 +829,26 @@ export class AddAnother extends ConfigurableComponent {
  * @typedef {object} AddAnotherConfig
  * @property {string} [itemLabel] - Label for each fieldset
  * @property {AddAnotherLayout} [layout] - layout style for fields
+ * @property {AddAnotherTranslations} [i18n=AddAnother.defaults.i18n] - Add another translations
+ */
+
+/**
+ * Add another translations
+ *
+ * @see {@link AddAnother.defaults.i18n}
+ * @typedef {object} AddAnotherTranslations
+ * @property {TranslationPluralForms} [itemLegendText] - Legend for the item.
+ *   %{itemLabel} placeholder will be replaced with the AddAnother.config.itemLabel.
+ *   %{number} and %{count} placeholders will be replaced with the correct numbers.
+ *   This is a GOV.UK design system [pluralised list of
+ *   messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).
+ * @property {string} [removeButtonText] - Label for the item remove buttons.
+ * @property {string} [removeButtonSuffixText] - suffix for the item remove buttons.
+ *   The `%{itemLabel}` placeholder will be replaced with the AddAnother.config.itemLabel.
+ *   The `%{number}` placeholder will be replaced with the index of the item.
+ * @property {string} [fieldLabelSuffixText] - hidden suffix for the field labels and legends.
+ *   The `%{itemLabel}` placeholder will be replaced with the AddAnother.config.itemLabel.
+ *   The `%{number}` placeholder will be replaced with the index of the item.
  */
 
 /**
@@ -826,4 +897,5 @@ export class AddAnother extends ConfigurableComponent {
 
 /**
  * @import { Schema } from 'govuk-frontend/dist/govuk/common/configuration.mjs'
+ * @import { TranslationPluralForms } from 'govuk-frontend/dist/govuk/i18n.mjs'
  */

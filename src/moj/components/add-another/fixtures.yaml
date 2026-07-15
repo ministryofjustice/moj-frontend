@@ -528,3 +528,31 @@ examples:
                        data-id="address[%index%][postcode]"
                        data-label="Postcode">
               </div>
+
+  # 12. i18n custom text replacements
+  - name: i18n custom text replacements
+    options:
+      id: 'i18n-custom-text-add-another'
+      itemLabel: 'Case'
+      addAnotherButtonText: 'Create another %{itemLabel}'
+      removeButtonText: 'Delete'
+      fieldLabelSuffixText: 'for translated %{itemLabel} %{number}'
+      itemLegendText:
+        one: 'Translated %{itemLabel} %{number}'
+        other: 'Translated %{itemLabel} %{number} of %{count}'
+      items:
+        - *singlePersonItem
+
+  # 13. i18n locale plural fallback via root lang
+  - name: i18n locale fallback
+    options:
+      id: 'i18n-locale-fallback-add-another'
+      itemLabel: 'Entry'
+      attributes:
+        lang: 'ar'
+      itemLegendText:
+        one: 'ONE %{itemLabel} %{number} of %{count}'
+        two: 'TWO %{itemLabel} %{number} of %{count}'
+        other: 'OTHER %{itemLabel} %{number} of %{count}'
+      items:
+        - *singlePersonItem

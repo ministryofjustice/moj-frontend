@@ -332,6 +332,54 @@ describe('add another', () => {
   })
 
   // ---------------------------------------------------------------------------
+  // i18n text replacement options
+  // ---------------------------------------------------------------------------
+
+  describe('i18n custom text replacements', () => {
+    beforeAll(() => {
+      example = 'i18n custom text replacements'
+    })
+    afterAll(() => {
+      example = 'default'
+    })
+
+    test('renders i18n data attributes on the root element', () => {
+      expect($component).toHaveAttribute(
+        'data-i18n.remove-button-text',
+        'Delete'
+      )
+      expect($component).toHaveAttribute(
+        'data-i18n.field-label-suffix-text',
+        'for translated %{itemLabel} %{number}'
+      )
+      expect($component).toHaveAttribute(
+        'data-i18n.item-legend-text.one',
+        'Translated %{itemLabel} %{number}'
+      )
+      expect($component).toHaveAttribute(
+        'data-i18n.item-legend-text.other',
+        'Translated %{itemLabel} %{number} of %{count}'
+      )
+    })
+
+    test('renders add button text with itemLabel replacement', () => {
+      const addButton = getByRole($component, 'button', {
+        name: 'Create another case'
+      })
+      expect(addButton).toBeInTheDocument()
+    })
+
+    test('applies translated legend and label suffix text after initialisation', () => {
+      const item = $component.querySelector('.moj-add-another__item')
+      const legend = item.querySelector('legend')
+      const suffix = $component.querySelector('.moj-add-another__label-suffix')
+
+      expect(legend).toHaveTextContent('Translated Case 1')
+      expect(suffix).toHaveTextContent('for translated case 1')
+    })
+  })
+
+  // ---------------------------------------------------------------------------
   // Events
   // ---------------------------------------------------------------------------
 

@@ -4,6 +4,14 @@
 
 {% set describedBy = item.fieldset.describedBy if item.fieldset.describedBy else "" %}
 
+{% set itemLabel = params.itemLabel | default('Item', true) %}
+{% set defaultRemoveButtonText = "Remove %{itemLabel} %{number}" %}
+{% set removeButtonText = (params.removeButtonText or defaultRemoveButtonText) | replace('%{itemLabel}', (itemLabel | lower)) | replace('%{number}', index) %}
+
+{% set itemsCount = params.items | length %}
+{% set itemLegendTemplate = ((params.itemLegendText.one if itemsCount == 1 else params.itemLegendText.other) or '%{itemLabel} %{number}') if params.itemLegendText else '%{itemLabel} %{number}' %}
+{% set itemLegendText = itemLegendTemplate | replace('%{itemLabel}', itemLabel) | replace('%{number}', index) | replace('%{count}', itemsCount) %}
+
 {#- Setup css classes for the item and legend #}
 {% set classes = ["moj-add-another__item"] %}
 {% set legendClasses = ["moj-add-another__item-title govuk-fieldset__legend--m"] %}
@@ -35,7 +43,7 @@ attribute and add an error class to the item #}
 {% set removeButtonHtml %}
   <div class="moj-add-another__remove-button-container">
     {{ govukButton({
-      text: "Remove " + (params.itemLabel | lower) + " " + index,
+      text: removeButtonText,
       classes: "govuk-button--secondary moj-add-another__remove-button",
       name: item.removeButton.name if params.removeButton.name else 'remove',
       value: item.removeButton.value if params.removeButton.value else index-1
@@ -74,11 +82,11 @@ button are side by side, otherwise the remove button is below the content #}
 
 {#- Setup the legend for the fieldset, if one is provided #}
 {% set legendParams = {
-  text: item.fieldset.legend.text,
+  text: itemLegendText,
   html: item.fieldset.legend.html,
   classes: legendClasses,
   isPageHeading: false
-} if item.fieldset.legend else false %}
+} %}
 
 {#- Render the item #}
 <div class="{{ classes }}" {{ govukAttributes(item.attributes) }}>
