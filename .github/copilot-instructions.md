@@ -21,6 +21,7 @@
 - JS lint only: `npm run lint:js`
 - SCSS lint only: `npm run lint:scss`
 - Prettier checks only: `npm run lint:prettier`
+- After code changes, run `npm run lint` and ensure it reports no errors.
 
 ## High-level architecture
 

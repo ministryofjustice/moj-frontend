@@ -9,6 +9,7 @@
 {% set removeButtonText = (params.removeButtonText or defaultRemoveButtonText) | replace('%{itemLabel}', (itemLabel | lower)) | replace('%{number}', index) %}
 
 {% set itemsCount = params.items | length %}
+{% set showRemoveButton = itemsCount > 1 %}
 {% set itemLegendTemplate = ((params.itemLegendText.one if itemsCount == 1 else params.itemLegendText.other) or '%{itemLabel} %{number}') if params.itemLegendText else '%{itemLabel} %{number}' %}
 {% set itemLegendText = itemLegendTemplate | replace('%{itemLabel}', itemLabel) | replace('%{number}', index) | replace('%{count}', itemsCount) %}
 
@@ -42,12 +43,14 @@ attribute and add an error class to the item #}
 {#- Setup the remove button html #}
 {% set removeButtonHtml %}
   <div class="moj-add-another__remove-button-container">
-    {{ govukButton({
-      text: removeButtonText,
-      classes: "govuk-button--secondary moj-add-another__remove-button",
-      name: item.removeButton.name if item.removeButton and item.removeButton.name else 'remove',
-      value: item.removeButton.value if item.removeButton and item.removeButton.value else index-1
-    }) }}
+    {% if showRemoveButton %}
+      {{ govukButton({
+        text: removeButtonText,
+        classes: "govuk-button--secondary moj-add-another__remove-button",
+        name: item.removeButton.name if item.removeButton and item.removeButton.name else 'remove',
+        value: item.removeButton.value if item.removeButton and item.removeButton.value else index-1
+      }) }}
+    {% endif %}
   </div>
 {% endset %}
 
@@ -99,5 +102,4 @@ button are side by side, otherwise the remove button is below the content #}
     role: item.fieldset.role
   }) -}}
 </div>
-
 

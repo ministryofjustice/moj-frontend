@@ -97,6 +97,15 @@ describe('add another', () => {
       expect(removeButton).not.toBeInTheDocument()
     })
 
+    test('does not render remove button markup in static HTML when there is only one item', () => {
+      const html = render('add-another', examples.default)
+      const container = document.createElement('div')
+      container.innerHTML = html
+      expect(
+        container.querySelector('.moj-add-another__remove-button')
+      ).toBeNull()
+    })
+
     test('creates a hidden template element for new items', () => {
       const template = $component.querySelector(
         'template.moj-add-another__item-template'
@@ -138,6 +147,15 @@ describe('add another', () => {
       expect(labels[0]).toMatch(/Remove person 1/)
       expect(labels[1]).toMatch(/Remove person 2/)
       expect(labels[2]).toMatch(/Remove person 3/)
+    })
+
+    test('renders remove button markup in static HTML when there are multiple items', () => {
+      const html = render('add-another', examples['multiple items'])
+      const container = document.createElement('div')
+      container.innerHTML = html
+      expect(
+        container.querySelector('.moj-add-another__remove-button')
+      ).not.toBeNull()
     })
   })
 

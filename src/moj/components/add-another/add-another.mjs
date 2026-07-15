@@ -282,7 +282,10 @@ export class AddAnother extends ConfigurableComponent {
 
     $errorLinks.forEach(($link) => {
       const href = $link.getAttribute('href') || ''
-      const targetId = href.includes('#') ? href.split('#').at(-1) : null
+      const hrefParts = href.split('#')
+      const targetId = href.includes('#')
+        ? hrefParts[hrefParts.length - 1]
+        : null
       const $target = targetId ? document.getElementById(targetId) : null
       if ($target && $item.contains($target)) {
         $link.remove()
