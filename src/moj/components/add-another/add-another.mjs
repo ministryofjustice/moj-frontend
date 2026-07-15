@@ -400,11 +400,11 @@ export class AddAnother extends ConfigurableComponent {
    */
   updateRemoveButtons($item, index, itemsCount) {
     const $button = $item.querySelector(`.${this.removeButtonClass}`)
-    const label = this.removeButtonLabelText(index + 1)
+    const labelIndex = index + 1
 
     if (!$button || !($button instanceof HTMLButtonElement)) {
       if (itemsCount > 1 && index === 0) {
-        this.createRemoveButton($item, label)
+        this.createRemoveButton($item, labelIndex)
       }
       return
     }
@@ -412,7 +412,7 @@ export class AddAnother extends ConfigurableComponent {
     if (itemsCount === 1 && index === 0) {
       $button.remove()
     } else {
-      $button.innerHTML = label
+      this.setRemoveButtonContent($button, labelIndex)
     }
   }
 
@@ -492,8 +492,9 @@ export class AddAnother extends ConfigurableComponent {
    * adds it to the item.
    *
    * @param {Element|DocumentFragment} $item - Add another item
+   * @param {number} [labelIndex] - label index
    */
-  createRemoveButton($item, label = 'Remove') {
+  createRemoveButton($item, labelIndex = 1) {
     const $buttonContainer = $item.querySelector(
       `.${this.removeButtonContainerClass}`
     )
@@ -504,7 +505,7 @@ export class AddAnother extends ConfigurableComponent {
       'govuk-button--secondary',
       `${this.removeButtonClass}`
     )
-    $button.innerHTML = label
+    this.setRemoveButtonContent($button, labelIndex)
 
     if ($buttonContainer && $buttonContainer instanceof HTMLElement) {
       $buttonContainer.appendChild($button)
@@ -576,6 +577,50 @@ export class AddAnother extends ConfigurableComponent {
   }
 
   /**
+   * Generates remove button text.
+   *
+   * @returns {string} translated remove button text
+   */
+  removeButtonText() {
+    return this.i18n.t('removeButtonText')
+  }
+
+  /**
+   * Generates remove button suffix text.
+   *
+   * @param {number} labelIndex - the index to include in the remove button label
+   * @returns {string} translated remove button suffix text
+   */
+  removeButtonSuffixText(labelIndex) {
+    return this.i18n.t('removeButtonSuffixText', {
+      itemLabel: this.config.itemLabel.toLowerCase(),
+      number: labelIndex
+    })
+  }
+
+  /**
+   * Sets remove button label content safely without using innerHTML.
+   *
+   * @param {HTMLButtonElement} $button
+   * @param {number} labelIndex
+   */
+  setRemoveButtonContent($button, labelIndex) {
+    const text = this.removeButtonText()
+    const suffix = this.removeButtonSuffixText(labelIndex)
+
+    if (this.config.layout === 'inline') {
+      $button.textContent = `${text} `
+      const $hiddenSuffix = document.createElement('span')
+      $hiddenSuffix.classList.add('govuk-visually-hidden')
+      $hiddenSuffix.textContent = suffix
+      $button.appendChild($hiddenSuffix)
+      return
+    }
+
+    $button.textContent = `${text} ${suffix}`
+  }
+
+  /**
    * Generates the label text for the remove button based on the layout
    * configuration.
    *
@@ -583,23 +628,7 @@ export class AddAnother extends ConfigurableComponent {
    * @returns {string} the label for the remove button based on the layout configuration
    */
   removeButtonLabelText(labelIndex) {
-    if (this.config.layout === 'inline') {
-      return `${this.i18n.t('removeButtonText')} <span class="govuk-visually-hidden">${this.i18n.t(
-        'removeButtonSuffixText',
-        {
-          itemLabel: this.config.itemLabel.toLowerCase(),
-          number: labelIndex
-        }
-      )}</span>`
-    }
-
-    return `${this.i18n.t('removeButtonText')} ${this.i18n.t(
-      'removeButtonSuffixText',
-      {
-        itemLabel: this.config.itemLabel.toLowerCase(),
-        number: labelIndex
-      }
-    )}`
+    return `${this.removeButtonText()} ${this.removeButtonSuffixText(labelIndex)}`
   }
 
   /**
