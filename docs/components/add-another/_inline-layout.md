@@ -6,7 +6,7 @@ permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---
-## Inline layout
+## Setting up the inline layout
 
 The inline (or horizontal) layout is a lean design for up to 3 fields. 
 
@@ -16,11 +16,18 @@ The 'Add another' component has 2 layouts - view <a href="(/components/add-anoth
 
 {% example template="examples/inline-accounts", colocated="true", height=540 %}
 
-### Writing and adding content
+1. [Create an item name](#1.-create-an-item-name)
+2. [Choose what to put in your 'add another' component](#2-choose-what-to-put-in-your-add-another-component)
+3. [Write and size the form field labels](#3-write-and-size-the-form-field-labels)
+4. [Write and implement error messages](#4-write-and-implement-error-messages)
+5. [Set up for use without JavaScript](#5-use-without-javascript)
+6. [Design the page and onward journey](#6-designing-the-page-and-onward-journey)
 
-#### Item name
+You can also view an [example of multiple inline layouts on a page](#example-of-using-the-inline-variant-more-than-once-on-a-page). 
 
-Give each component a short and succinct item name. For example 'person', 'offence', 'income', 'application' or 'session'. 
+### 1. Create an item name 
+
+Give each component a short and succinct item name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name in the example is 'participant'. 
 
 The item name will be used in lower case in the following visible parts of the component:
 
@@ -30,11 +37,35 @@ The item name will be used in lower case in the following visible parts of the c
 
 The item names are numbered 1, 2, 3 and so on.
 
-#### Form field labels
+### 2. Choose what to put in your 'add another' component
 
+You can add up to 3 fields to the inline layout, from the following 2 components. These are called the 'preferred instances' in Figma:
+
+- [GOV.UK text input](https://design-system.service.gov.uk/components/text-input/)
+- [GOV.UK select component](https://design-system.service.gov.uk/components/select/)
+
+All the items and field labels need to fit on 1 line. You can view [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
+
+#### Using Figma 'slots' to add components  
+
+Each add another component contains a 'slot' where you put the component's contents. 'Slots' are a Figma feature, introduced in Spring 2026 to make components more flexible. 
+
+When you put a component into a slot, it might be too narrow or overflow the container. This is because it keeps its default width rather than filling the space. To fix this, do one of the following:
+
+- set all components to 'Fill' in Figma, so that they share the width evenly
+- manually set the width of each component, following the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system) where possible
+
+You should be able to do these tasks without detaching the component from its instance.
+
+### 3. Write and size the form field labels
+
+Give the form field labels a clear and concise name. 
+ 
 <div class="govuk-inset-text">
-You may need to change the legend sizes of some GOV.UK components that you use in this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
+You may need to change the legend size of some GOV.UK components for this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
 </div>
+
+#### How hidden text works
 
 Hidden text is added to the end of the component labels. This is to help screen reader users know which item they are editing or removing. In the example, it adds the content in brackets to these field labels:
 
@@ -44,33 +75,13 @@ Hidden text is added to the end of the component labels. This is to help screen 
 
 This hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement). 
 
-### What to add to it
-
-You can add up to 3 fields to the inline layout, from the following 2 components to it. These are called the 'preferred instances' in Figma:
-
-- [GOV.UK text input](https://design-system.service.gov.uk/components/text-input/)
-- [GOV.UK select component](https://design-system.service.gov.uk/components/select/)
-
-All the items and field labels need to fit on 1 line. You can view [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
-
-### Using Figma slots to add components to it
-
-Each add another component contains a 'slot' where you put the component's contents. Slots are a Figma feature, introduced in Spring 2026 to make components more flexible. 
-
-A component keep its default width after you add it to a slot, rather than filling the available space. This means it might be too narrow or overflow the container. To fix this, you can either:
-
-- set all components to 'Fill' in Figma, so that they share the available width evenly
-- manually set the width of each component, following the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system) where possible
-
-You can do all of these tasks without detaching it from the instance of the component. 
-
-### Error messages
+### 4. Write and implement error messages
 
 {% example template="examples/inline-errors", colocated="true", height=540 %}
 
-Errors can find their errors with:
+Users can find their errors through:
 
-- a red error border on the whole item  
+- a red error border that's applied to the whole item  
 - hidden text that's added to the item name  
 
 <table class="govuk-table">
@@ -100,11 +111,11 @@ Show errors for 1 item at a time using the [GOV.UK error summary](https://design
 
 Once the user has resolved errors in the first item, display the errors for the next item until they're all resolved. This ensures that users can identify errors when an item is added or removed. 
 
-### JavaScript
+### 5. Set up for use without JavaScript
 
 This component relies on JavaScript. To make it work without JavaScript, you need to make sure that when the 'Add another' and 'Remove' buttons are selected, the form submits and the page reloads with the changes.  
 
-### Designing the page and onward journey
+### 6. Design the page and onward journey
 
 #### Heading
 
@@ -133,7 +144,7 @@ The 'Add another' component creates another item on the page. The data remains o
 
 Users can edit their items after submitting them, using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
 
-### Example of using the inline variant more than once on a page
+### Example of multiple inline layouts on a page
 
 <p><img src="{{ 'assets/images/add-another-example-inline.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The page contains a heading, 2 questions with radio buttons. Underneath the 2 questions are 2 add another components in the inline layout. The first component has the heading 'Add gifts information' with the field labels 'Gift description' and 'value'. There is a 'remove button' to the right. The second component has the heading 'Add loans information' with the field labels 'Loan description' and 'value'. There is a red 'remove button' to the right'. A green submit button is at the bottom of the screen."></p>
 

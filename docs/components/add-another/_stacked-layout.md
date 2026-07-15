@@ -11,7 +11,7 @@ eleventyComputed:
 The stacked (or vertical) layout is the default for this component. It helps users to enter more information than the other layout (inline), for example in up to 4 fields. 
 
 <div class="govuk-inset-text">
-The 'Add another' component has 2 layouts -- view [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
+The 'Add another' component has 2 layouts - view <a href="(/components/add-another/#choosing-a-layout-tab)">guidance on choosing a layout</a>.
 </div>
 
 {% example template="examples/default", colocated="true", height=540 %}
@@ -31,7 +31,7 @@ The item names are numbered 1, 2, 3 and so on.
 #### Form field labels
 
 <div class="govuk-inset-text">
-You may need to change the legend sizes of some GOV.UK components that you use in this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
+You may need to change the legend size of some GOV.UK components for this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
 </div>
 
 Hidden text is added to the end of the component labels. This is to help screen reader users know which item they are editing or removing. In the example, it adds the content in brackets to these field labels:
