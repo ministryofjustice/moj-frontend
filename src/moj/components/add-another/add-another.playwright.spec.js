@@ -332,6 +332,31 @@ test.describe('add another', () => {
       await expect($errorSummary).not.toBeAttached()
     })
 
+    test('removing an item removes error-summary links even without govuk-input--error class', async ({
+      page
+    }) => {
+      await page.evaluate(() => {
+        const summary = document.createElement('div')
+        summary.className = 'govuk-error-summary'
+        summary.innerHTML = `
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li><a href="#person[1][last_name]">Enter last name for person 2</a></li>
+            </ul>
+          </div>
+        `
+        document.body.prepend(summary)
+
+        const erroredInput = document.getElementById('person[1][last_name]')
+        erroredInput?.classList.remove('govuk-input--error')
+      })
+
+      const $removeButtons = $component.getByRole('button', { name: /Remove/ })
+      await $removeButtons.nth(1).click()
+
+      await expect(page.locator('.govuk-error-summary')).not.toBeAttached()
+    })
+
     test('remaining items are renumbered after removing the errored item', async () => {
       const $removeButtons = $component.getByRole('button', { name: /Remove/ })
       await $removeButtons.nth(1).click()

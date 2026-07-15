@@ -280,15 +280,11 @@ export class AddAnother extends ConfigurableComponent {
 
     const $errorLinks = $errorSummary.querySelectorAll('a')
 
-    const inputIdsWithErrors = Array.from($item.querySelectorAll('[data-name]'))
-      .filter(($input) => this.isValidInputElement($input))
-      .filter(($input) => $input.classList.contains('govuk-input--error'))
-      .map(($input) => $input.id)
-
     $errorLinks.forEach(($link) => {
       const href = $link.getAttribute('href') || ''
-      const errorInputId = href.replace('#', '')
-      if (inputIdsWithErrors.includes(errorInputId)) {
+      const targetId = href.includes('#') ? href.split('#').at(-1) : null
+      const $target = targetId ? document.getElementById(targetId) : null
+      if ($target && $item.contains($target)) {
         $link.remove()
       }
     })
