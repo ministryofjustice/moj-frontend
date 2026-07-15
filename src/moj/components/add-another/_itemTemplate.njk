@@ -3,9 +3,13 @@
 {%- from "govuk/components/error-message/macro.njk" import govukErrorMessage -%}
 
 {% set describedBy = item.fieldset.describedBy if item.fieldset.describedBy else "" %}
+
 {% set itemLabel = params.itemLabel | default('Item', true) %}
-{% set defaultRemoveButtonText = "Remove %{itemLabel} %{count}" %}
-{% set removeButtonText = params.removeButtonText or defaultRemoveButtonText | replace('%{itemLabel}', (itemLabel | lower)) | replace('%{count}', index) %}
+{% set defaultRemoveButtonText = "Remove %{itemLabel} %{number}" %}
+{% set removeButtonText = params.removeButtonText or defaultRemoveButtonText | replace('%{itemLabel}', (itemLabel | lower)) | replace('%{number}', index) %}
+
+{% set itemLegend = params.itemLegendText | default('%{itemLabel} %{number}', true) %}
+{% set itemLegendText = itemLegend | replace('%{itemLabel}', itemLabel) | replace('%{number}', index) %}
 
 {#- Setup css classes for the item and legend #}
 {% set classes = ["moj-add-another__item"] %}
@@ -77,11 +81,11 @@ button are side by side, otherwise the remove button is below the content #}
 
 {#- Setup the legend for the fieldset, if one is provided #}
 {% set legendParams = {
-  text: item.fieldset.legend.text,
+  text: itemLegendText,
   html: item.fieldset.legend.html,
   classes: legendClasses,
   isPageHeading: false
-} if item.fieldset.legend else false %}
+} %}
 
 {#- Render the item #}
 <div class="{{ classes }}" {{ govukAttributes(item.attributes) }}>

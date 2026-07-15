@@ -76,18 +76,9 @@ redirect_from: examples/add-another
 <form method="post" action="#">
   {{ mojAddAnother({
     itemLabel: "Participant",
-    addAnotherButtonText: "%{itemLabel} me up, baby!",
-    removeButtonText: "%{itemLabel} %{count} must go!",
-    itemLegendSuffixText: {
-      one: "%{count}",
-      other: "%{count} of %{total}"
-    },
     items: [
       {
         fieldset: {
-          legend: {
-            text: "Participant 1"
-          },
           html: itemHtml
         }
       }

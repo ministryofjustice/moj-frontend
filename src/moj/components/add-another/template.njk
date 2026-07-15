@@ -18,10 +18,6 @@
   'data-layout': {
     value: params.layout,
     optional: true
-  },
-  'data-remove-button-text': {
-    value: params.removeButtonText,
-    optional: true
   }
   }) }}
 
@@ -31,9 +27,11 @@
   }) }}
 
   {{ govukI18nAttributes({
-    key: 'item-legend-suffix-text',
-    messages: params.itemLegendSuffixText
+    key: 'item-legend-text',
+    messages: params.itemLegendText
   }) }}
+
+  {{ govukAttributes(params.attributes) }}
 {% endset %}
 
 <div class="moj-add-another{{- ' ' + params.classes if params.classes }}"
