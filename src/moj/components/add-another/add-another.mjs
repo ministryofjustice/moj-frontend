@@ -424,7 +424,7 @@ export class AddAnother extends ConfigurableComponent {
       'govuk-visually-hidden',
       `${this.newItemSuffixClass}`
     )
-    $newItemSuffix.innerText = `(added)`
+    $newItemSuffix.textContent = `(added)`
 
     const $legend = $item.querySelector('legend')
     if ($legend && $legend instanceof HTMLLegendElement) {
