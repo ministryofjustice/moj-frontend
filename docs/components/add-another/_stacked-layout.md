@@ -11,7 +11,7 @@ eleventyComputed:
 The stacked (or vertical) layout is the default for this component. It helps users to enter more information than the other layout (inline), for example in up to 4 fields. 
 
 <div class="govuk-inset-text">
-The 'Add another' component has 2 layouts - view <a href="(/components/add-another/#choosing-a-layout-tab)">guidance on choosing a layout</a>.
+The 'Add another' component has 2 layouts - view <a href="#choosing-a-layout-tab">guidance on choosing a layout</a>.
 </div>
 
 {% example template="examples/default", colocated="true", height=540 %}
