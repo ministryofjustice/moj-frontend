@@ -373,18 +373,32 @@ export class AddAnother extends ConfigurableComponent {
       suffix = `${index + 1} of ${itemsCount}`
     }
 
-    if ($legend && $legend instanceof HTMLElement) {
-      // If a user has used the `html` key for the legend and wrapped the
-      // content with a heading, then this will handle that
-      if (
-        $legend.firstElementChild &&
-        $legend.firstElementChild instanceof HTMLHeadingElement
-      ) {
-        $legend.firstElementChild.innerText = `${this.config.itemLabel} ${suffix}`
-      } else {
-        $legend.innerText = `${this.config.itemLabel} ${suffix}`
-      }
+    if (!$legend || !($legend instanceof HTMLLegendElement)) {
+      return
     }
+
+    const legendText = `${this.config.itemLabel} ${suffix}`
+
+    // Replace the legend node rather than mutating text in-place so assistive
+    // technologies recalculate the fieldset name after item reindex/removal.
+    const $replacementLegend = /** @type {HTMLLegendElement} */ (
+      $legend.cloneNode(false)
+    )
+
+    if (
+      $legend.firstElementChild &&
+      $legend.firstElementChild instanceof HTMLHeadingElement
+    ) {
+      const $replacementHeading = /** @type {HTMLHeadingElement} */ (
+        $legend.firstElementChild.cloneNode(false)
+      )
+      $replacementHeading.textContent = legendText
+      $replacementLegend.appendChild($replacementHeading)
+    } else {
+      $replacementLegend.textContent = legendText
+    }
+
+    $legend.replaceWith($replacementLegend)
   }
 
   /**
@@ -438,15 +452,29 @@ export class AddAnother extends ConfigurableComponent {
 
   /**
    * Removes the visually hidden text added by addNewItemSuffix to indicate an item has been added.
+   * Replaces the legend node rather than mutating text in-place so assistive
+   * technologies recalculate the fieldset name after item reindex/removal.
    *
    * @param {Element} $item - Add another item
    */
   removeNewItemSuffix($item) {
-    const $newItemSuffix = $item.querySelector(`.${this.newItemSuffixClass}`)
-
-    if ($newItemSuffix && $newItemSuffix instanceof HTMLElement) {
-      $newItemSuffix.remove()
+    const $legend = $item.querySelector('legend')
+    if (!$legend || !($legend instanceof HTMLLegendElement)) {
+      return
     }
+
+    const $replacementLegend = /** @type {HTMLLegendElement} */ (
+      $legend.cloneNode(true)
+    )
+    $replacementLegend
+      .querySelectorAll(`.${this.newItemSuffixClass}`)
+      .forEach(($suffix) => {
+        if ($suffix instanceof HTMLElement) {
+          $suffix.remove()
+        }
+      })
+
+    $legend.replaceWith($replacementLegend)
   }
 
   /**
@@ -649,7 +677,38 @@ export class AddAnother extends ConfigurableComponent {
     this.updateAllItems('remove')
     emitEvent(this.$root, AddAnother, this.itemRemovedEvent)
     if ($itemToFocus instanceof HTMLElement) {
+      this.focusItemAfterRemoval($itemToFocus)
+    }
+  }
+
+  /**
+   * Moves focus to a neutral container before moving focus to the fieldset.
+   * This helps VoiceOver refresh the fieldset accessible name after dynamic
+   * legend updates when an item is removed.
+   *
+   * @param {HTMLElement} $itemToFocus
+   */
+  focusItemAfterRemoval($itemToFocus) {
+    const $neutralTarget =
+      this.$itemsContainer instanceof HTMLElement
+        ? this.$itemsContainer
+        : this.$root
+
+    if (
+      !($neutralTarget instanceof HTMLElement) ||
+      $neutralTarget === $itemToFocus
+    ) {
       setFocus($itemToFocus)
+      return
+    }
+
+    setFocus($neutralTarget)
+
+    const focusTargetItem = () => setFocus($itemToFocus)
+    if (typeof requestAnimationFrame === 'function') {
+      requestAnimationFrame(focusTargetItem)
+    } else {
+      setTimeout(focusTargetItem, 0)
     }
   }
 
