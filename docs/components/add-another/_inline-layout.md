@@ -11,12 +11,12 @@ eleventyComputed:
 The inline (or horizontal) layout is a lean design for up to 3 fields. 
 
 <div class="govuk-inset-text">
-The 'Add another' component has 2 layouts -- view [guidance on choosing a layout](/components/add-another/#choosing-a-layout-tab).
+The 'Add another' component has 2 layouts - view <a href="(/components/add-another/#choosing-a-layout-tab)">guidance on choosing a layout</a>.
 </div>
 
 {% example template="examples/inline-accounts", colocated="true", height=540 %}
 
-### Content
+### Writing and adding content
 
 #### Item name
 
@@ -33,7 +33,7 @@ The item names are numbered 1, 2, 3 and so on.
 #### Form field labels
 
 <div class="govuk-inset-text">
-You may need to change the legend sizes of some GOV.UK components that you use in this component. Change them to 'body (paragraph)' to follow [GOV.UK guidance on label and legend headings](https://design-system.service.gov.uk/get-started/labels-legends-headings/).
+You may need to change the legend sizes of some GOV.UK components that you use in this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
 </div>
 
 Hidden text is added to the end of the component labels. This is to help screen reader users know which item they are editing or removing. In the example, it adds the content in brackets to these field labels:
@@ -46,23 +46,23 @@ This hidden text is automatically added by JavaScript. If you add the text to th
 
 ### What to add to it
 
-Add no more than 3 fields to the inline layout (this does not include the ‘remove’ button). This keeps it is easy to use. 
-
-You can add the following 2 components to it. These are called the 'preferred instances' in Figma:
+You can add up to 3 fields to the inline layout, from the following 2 components to it. These are called the 'preferred instances' in Figma:
 
 - [GOV.UK text input](https://design-system.service.gov.uk/components/text-input/)
 - [GOV.UK select component](https://design-system.service.gov.uk/components/select/)
 
 All the items and field labels need to fit on 1 line. You can view [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
 
-#### Adding components in Figma
+### Using Figma slots to add components to it
 
-The Add another component uses 'slots', a Figma feature introduced in Spring 2026 to make components more flexible.
+Each add another component contains a 'slot' where you put the component's contents. Slots are a Figma feature, introduced in Spring 2026 to make components more flexible. 
 
-A components keep its default width after you add it to a slot, rather than automatically filling the available space. This means it may be too narrow or may overflow the container. You can either:
+A component keep its default width after you add it to a slot, rather than filling the available space. This means it might be too narrow or overflow the container. To fix this, you can either:
 
 - set all components to 'Fill' in Figma, so that they share the available width evenly
 - manually set the width of each component, following the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system) where possible
+
+You can do all of these tasks without detaching it from the instance of the component. 
 
 ### Error messages
 

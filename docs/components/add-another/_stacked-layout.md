@@ -16,7 +16,7 @@ The 'Add another' component has 2 layouts -- view [guidance on choosing a layout
 
 {% example template="examples/default", colocated="true", height=540 %}
 
-### Content 
+### Writing and adding content
 
 #### Item name
 
@@ -31,7 +31,7 @@ The item names are numbered 1, 2, 3 and so on.
 #### Form field labels
 
 <div class="govuk-inset-text">
-You may need to change the legend sizes of some GOV.UK components that you use in this component. Change them to 'body (paragraph)' to follow [GOV.UK guidance on label and legend headings](https://design-system.service.gov.uk/get-started/labels-legends-headings/).
+You may need to change the legend sizes of some GOV.UK components that you use in this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
 </div>
 
 Hidden text is added to the end of the component labels. This is to help screen reader users know which item they are editing or removing. In the example, it adds the content in brackets to these field labels:
@@ -41,9 +41,9 @@ Hidden text is added to the end of the component labels. This is to help screen 
 
 This hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement). 
 
-### What to add to it
+### Components you can add to it
 
-You can add up to 4 fields to it, from the following 6 components. These are called the 'preferred instances' in Figma:
+You can add up to 4 fields to the stacked layout, from the following 6 components. These are called the 'preferred instances' in Figma:
 
 - [GOV.UK checkboxes](https://design-system.service.gov.uk/components//checkboxes)
 - [GOV.UK date input](https://design-system.service.gov.uk/components/textarea)
@@ -54,11 +54,16 @@ You can add up to 4 fields to it, from the following 6 components. These are cal
 
 You can view [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
 
-### Designing in Figma
+### Using Figma slots to add components to it
 
-The 'add another' commponent uses 'Figma slots'. 
+Each add another component contains a 'slot' where you put the component's contents. Slots are a Figma feature, introduced in Spring 2026 to make components more flexible. 
 
-This allows you to customise the content in the component whilst keeping it attached to the main instance. 
+A component keep its default width after you add it to a slot, rather than filling the available space. This means it might be too narrow or overflow the container. To fix this, you can either:
+
+- set all components to 'Fill' in Figma, so that they share the available width evenly
+- manually set the width of each component, following the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system) where possible
+
+You can do all of these tasks without detaching it from the instance of the component. 
 
 ### Error messages
 
