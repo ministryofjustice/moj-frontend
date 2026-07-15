@@ -628,8 +628,6 @@ export class AddAnother extends ConfigurableComponent {
    * @fires AddAnother#itemAdded
    */
   onAddButtonClick(event) {
-    event.preventDefault()
-
     const $button = event.target
 
     if (
@@ -639,6 +637,8 @@ export class AddAnother extends ConfigurableComponent {
     ) {
       return
     }
+
+    event.preventDefault()
 
     const $item = this.getNewItem()
     if (!$item || !($item instanceof DocumentFragment)) {
