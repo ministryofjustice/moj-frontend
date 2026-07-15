@@ -11,7 +11,7 @@ eleventyComputed:
 The 'Add another' component has 2 layouts:
 
 - [stacked](#stacked-layout-tab)
-- [inline](##inline-layout-tab)
+- [inline](#inline-layout-tab)
 
 ### Stacked layout
 

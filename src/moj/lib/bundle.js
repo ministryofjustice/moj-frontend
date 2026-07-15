@@ -18,7 +18,7 @@ const bundleComponent = async (filePath, moduleName) => {
 
   const bundledCode = `
       ${output[0].code}
-      // Make alert available on window
+      // Make component available on window
       window.${moduleName} = ${moduleName}
     `
   await bundle.close()

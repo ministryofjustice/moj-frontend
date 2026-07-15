@@ -11,7 +11,7 @@ eleventyComputed:
 The inline (or horizontal) layout is a lean design for up to 3 fields. 
 
 <div class="govuk-inset-text">
-The 'Add another' component has 2 layouts - view <a href="(/components/add-another/#choosing-a-layout-tab)">guidance on choosing a layout</a>.
+The 'Add another' component has 2 layouts - view <a href="/components/add-another/#choosing-a-layout-tab">guidance on choosing a layout</a>.
 </div>
 
 {% example template="examples/inline-accounts", colocated="true", height=540 %}

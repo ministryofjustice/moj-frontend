@@ -45,8 +45,8 @@ attribute and add an error class to the item #}
     {{ govukButton({
       text: removeButtonText,
       classes: "govuk-button--secondary moj-add-another__remove-button",
-      name: item.removeButton.name if params.removeButton.name else 'remove',
-      value: item.removeButton.value if params.removeButton.value else index-1
+      name: item.removeButton.name if item.removeButton and item.removeButton.name else 'remove',
+      value: item.removeButton.value if item.removeButton and item.removeButton.value else index-1
     }) }}
   </div>
 {% endset %}
