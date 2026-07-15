@@ -67,7 +67,7 @@ export function closestAttributeValue($element, attributeName) {
  * Emit a custom event
  *
  * @template {CompatibleClass} ComponentClass
- * @param {Element} $element - The event type
+ * @param {Element} $element - The element to dispatch the event from
  * @param {ComponentClass} Component - class of the component to create
  * @param {string} eventName - The name of the event to emit
  * @param {object} detail - Any details to pass along with the event
