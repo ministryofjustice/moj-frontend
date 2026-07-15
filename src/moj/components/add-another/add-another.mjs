@@ -867,7 +867,7 @@ export class AddAnother extends ConfigurableComponent {
  * Fired when a new item is added to the list of items.
  *
  * Event name: `moj-add-another:add-item`
- * Dispatched from: the root element of the component. (this.$root)
+ * Dispatched from: the newly added item element (bubbles to this.$root and document).
  *
  * @event AddAnother#itemAdded
  * @type {CustomEvent<null>}
