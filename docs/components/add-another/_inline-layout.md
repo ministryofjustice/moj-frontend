@@ -21,7 +21,7 @@ The 'Add another' component has 2 layouts - view <a href="#choosing-a-layout-tab
 2. [Choose what to put in your 'add another' component](#2-choose-what-to-put-in-your-add-another-component)
 3. [Write and size the form field labels](#3-write-and-size-the-form-field-labels)
 4. [Write and implement error messages](#4-write-and-implement-error-messages)
-5. [Set up for use without JavaScript](#5-use-without-javascript)
+5. [Set up for use without JavaScript](#5-set-up-for-use-without-javascript)
 6. [Design the page and onward journey](#6-design-the-page-and-onward-journey)
 
 You can also view an [example of multiple inline layouts on a page](#example-of-using-the-inline-variant-more-than-once-on-a-page). 
@@ -38,9 +38,9 @@ The item name will be used in lower case in the following visible parts of the c
 
 The item names are numbered 1, 2, 3 and so on.
 
-### 2. Choose what to put in your 'add another' component
+### 2. Choose what to put in the component
 
-You can add up to 3 fields to the inline layout, from the following 2 components. These are called the 'preferred instances' in Figma:
+You can add up to 3 fields from the following 2 components to the inline layout. These are called the 'preferred instances' in Figma:
 
 - [GOV.UK text input](https://design-system.service.gov.uk/components/text-input/)
 - [GOV.UK select component](https://design-system.service.gov.uk/components/select/)
@@ -51,24 +51,24 @@ All the items and field labels need to fit on 1 line. You can view [GOV.UK guida
 
 Each add another component contains a 'slot' where you put the component's contents. 'Slots' are a Figma feature, introduced in Spring 2026 to make components more flexible. 
 
-When you put a component into a slot, it might be too narrow or overflow the container. This is because it keeps its default width rather than filling the space. To fix this, do one of the following:
+When you put a component into the slot, it might be too narrow or overflow the container. This is because the component that you've added keeps its default width rather than filling the space. To fix this, do one of the following:
 
 - set all components to 'Fill' in Figma, so that they share the width evenly
 - manually set the width of each component, following the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system) where possible
 
-You should be able to do these tasks without detaching the component from its instance.
+You should be able to do this without detaching the component from its instance.
 
 ### 3. Write and size the form field labels
 
 Give the form field labels a clear and concise name. 
  
 <div class="govuk-inset-text">
-You may need to change the legend size of some GOV.UK components for this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
+You may need to change the legend size of some GOV.UK components after you've added them to this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
 </div>
 
 #### How hidden text works
 
-Hidden text is added to the end of the component labels. This is to help screen reader users know which item they are editing or removing. In the example, it adds the content in brackets to these field labels:
+Hidden text is added to the end of the component labels. This is to help screen reader users know which item they're editing or removing. In the example, it adds the content in brackets to these field labels:
 
 - bank name (for account 1)
 - funds (for account 1)
@@ -80,7 +80,7 @@ This hidden text is automatically added by JavaScript. If you add the text to th
 
 {% example template="examples/inline-errors", colocated="true", height=540 %}
 
-Users can find their errors through:
+Errors are shown with:
 
 - a red error border that's applied to the whole item  
 - hidden text that's added to the item name  
