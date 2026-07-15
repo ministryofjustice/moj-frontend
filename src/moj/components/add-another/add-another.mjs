@@ -288,7 +288,12 @@ export class AddAnother extends ConfigurableComponent {
         : null
       const $target = targetId ? document.getElementById(targetId) : null
       if ($target && $item.contains($target)) {
-        $link.remove()
+        const $listItem = $link.closest('li')
+        if ($listItem) {
+          $listItem.remove()
+        } else {
+          $link.remove()
+        }
       }
     })
 

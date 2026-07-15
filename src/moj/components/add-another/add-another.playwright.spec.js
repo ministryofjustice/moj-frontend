@@ -357,6 +357,34 @@ test.describe('add another', () => {
       await expect(page.locator('.govuk-error-summary')).not.toBeAttached()
     })
 
+    test('removing an item removes the matching list item and keeps remaining error links', async ({
+      page
+    }) => {
+      await page.evaluate(() => {
+        const summary = document.createElement('div')
+        summary.className = 'govuk-error-summary'
+        summary.innerHTML = `
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li><a href="#person[1][last_name]">Enter last name for person 2</a></li>
+              <li><a href="#person[0][name]">Enter name for person 1</a></li>
+            </ul>
+          </div>
+        `
+        document.body.prepend(summary)
+      })
+
+      const $removeButtons = $component.getByRole('button', { name: /Remove/ })
+      await $removeButtons.nth(1).click()
+
+      const $summaryItems = page.locator('.govuk-error-summary__list li')
+      await expect($summaryItems).toHaveCount(1)
+      await expect($summaryItems).toContainText('Enter name for person 1')
+      await expect($summaryItems).not.toContainText(
+        'Enter last name for person 2'
+      )
+    })
+
     test('remaining items are renumbered after removing the errored item', async () => {
       const $removeButtons = $component.getByRole('button', { name: /Remove/ })
       await $removeButtons.nth(1).click()
