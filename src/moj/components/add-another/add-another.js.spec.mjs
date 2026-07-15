@@ -13,9 +13,9 @@ import { AddAnother } from './add-another.mjs'
  * @param {object} [config] - Config to pass to the AddAnother constructor
  * @returns {HTMLElement} The root component element
  */
-function createComponentWithJSConfig(config = {}) {
+function createComponentWithJSConfig(config = {}, rootAttributes = '') {
   const html = outdent`
-    <div data-module="moj-add-another">
+    <div data-module="moj-add-another" ${rootAttributes}>
       <div class="moj-add-another__items">
         <div class="moj-add-another__item">
           <fieldset class="govuk-fieldset moj-add-another__fieldset">
@@ -149,6 +149,83 @@ describe('add another', () => {
       expect(
         removeButton.querySelector('.govuk-visually-hidden')
       ).not.toBeInTheDocument()
+    })
+  })
+
+  // ---------------------------------------------------------------------------
+  // JavaScript config — i18n
+  // ---------------------------------------------------------------------------
+
+  describe('JS config — i18n', () => {
+    let $component
+
+    beforeEach(() => {
+      $component = createComponentWithJSConfig({
+        itemLabel: 'Case',
+        i18n: {
+          removeButtonText: 'Delete',
+          removeButtonSuffixText: 'case %{number}',
+          fieldLabelSuffixText: 'for translated %{itemLabel} %{number}',
+          itemLegendText: {
+            one: 'Translated %{itemLabel} %{number}',
+            other: 'Translated %{itemLabel} %{number} of %{count}'
+          }
+        }
+      })
+    })
+
+    afterEach(() => {
+      document.body.innerHTML = ''
+    })
+
+    test('uses translated field label suffix text', () => {
+      const suffix = $component.querySelector('.moj-add-another__label-suffix')
+      expect(suffix).toBeInTheDocument()
+      expect(suffix).toHaveTextContent('for translated case 1')
+    })
+
+    test('uses translated remove button labels', () => {
+      getByRole($component, 'button', { name: /Add another/ }).click()
+
+      const items = $component.querySelectorAll('.moj-add-another__item')
+      const firstRemove = queryByRole(items[0], 'button', { name: /Delete/ })
+      const secondRemove = queryByRole(items[1], 'button', { name: /Delete/ })
+
+      expect(firstRemove).toHaveAccessibleName('Delete case 1')
+      expect(secondRemove).toHaveAccessibleName('Delete case 2')
+    })
+
+    test('uses translated pluralized legend text as item count changes', () => {
+      const firstLegend = $component.querySelector('legend')
+      expect(firstLegend).toHaveTextContent('Translated Case 1')
+
+      getByRole($component, 'button', { name: /Add another/ }).click()
+      const legends = $component.querySelectorAll('legend')
+
+      expect(legends[0]).toHaveTextContent('Translated Case 1 of 2')
+      expect(legends[1]).toHaveTextContent('Translated Case 2 of 2')
+    })
+
+    test('uses lang locale fallback for pluralized legend selection', () => {
+      const $arComponent = createComponentWithJSConfig(
+        {
+          itemLabel: 'Entry',
+          i18n: {
+            itemLegendText: {
+              one: 'ONE %{itemLabel} %{number} of %{count}',
+              two: 'TWO %{itemLabel} %{number} of %{count}',
+              other: 'OTHER %{itemLabel} %{number} of %{count}'
+            }
+          }
+        },
+        'lang="ar"'
+      )
+
+      getByRole($arComponent, 'button', { name: /Add another/ }).click()
+      const legends = $arComponent.querySelectorAll('legend')
+
+      expect(legends[0]).toHaveTextContent('TWO Entry 1 of 2')
+      expect(legends[1]).toHaveTextContent('TWO Entry 2 of 2')
     })
   })
 })
