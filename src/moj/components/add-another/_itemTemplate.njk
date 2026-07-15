@@ -6,10 +6,11 @@
 
 {% set itemLabel = params.itemLabel | default('Item', true) %}
 {% set defaultRemoveButtonText = "Remove %{itemLabel} %{number}" %}
-{% set removeButtonText = params.removeButtonText or defaultRemoveButtonText | replace('%{itemLabel}', (itemLabel | lower)) | replace('%{number}', index) %}
+{% set removeButtonText = (params.removeButtonText or defaultRemoveButtonText) | replace('%{itemLabel}', (itemLabel | lower)) | replace('%{number}', index) %}
 
-{% set itemLegend = params.itemLegendText | default('%{itemLabel} %{number}', true) %}
-{% set itemLegendText = itemLegend | replace('%{itemLabel}', itemLabel) | replace('%{number}', index) %}
+{% set itemsCount = params.items | length %}
+{% set itemLegendTemplate = ((params.itemLegendText.one if itemsCount == 1 else params.itemLegendText.other) or '%{itemLabel} %{number}') if params.itemLegendText else '%{itemLabel} %{number}' %}
+{% set itemLegendText = itemLegendTemplate | replace('%{itemLabel}', itemLabel) | replace('%{number}', index) | replace('%{count}', itemsCount) %}
 
 {#- Setup css classes for the item and legend #}
 {% set classes = ["moj-add-another__item"] %}

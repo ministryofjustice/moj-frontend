@@ -844,12 +844,12 @@ export class AddAnother extends ConfigurableComponent {
  */
 
 /**
- * Character count translations
+ * Add another translations
  *
  * @see {@link AddAnother.defaults.i18n}
  * @typedef {object} AddAnotherTranslations
  * @property {TranslationPluralForms} [itemLegendText] - Legend for the item.
- *   %{itemLabel} placeholder with be replaced with the AddAnother.config.itemLabel.
+ *   %{itemLabel} placeholder will be replaced with the AddAnother.config.itemLabel.
  *   %{number} and %{count} placeholders will be replaced with the correct numbers.
  *   This is a GOV.UK design system [pluralised list of
  *   messages](https://frontend.design-system.service.gov.uk/localise-govuk-frontend).

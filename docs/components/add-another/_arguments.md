@@ -9,8 +9,8 @@
 | addAnotherButtonText   | string  | No       | Text label for the add another button. The component will replace the `%{itemLabel}` placeholder with the value of the `itemLabel` parameter. |
 | itemLegendText         | object  | No       | Text label for the item legend. The component will replace the `%{itemLabel}` placeholder with the value of the `itemLabel` parameter. The `%{number}` placeholder will be replaced with the item number, and the `%{count}` placeholder will be replaced with the total number of items. [GOV.UK pluralisation rules apply to this macro option](https://frontend.design-system.service.gov.uk/localise-govuk-frontend/#understanding-pluralisation-rules). |
 | removeButtonText       | string  | No       | Text label for the remove button. Defaults to 'Remove' |
-| removeButtonSuffixText | string  | No       | Text appended to the `removeButtonText`. This is visually hidden in the inline layout. The component will replace the `%{itemLabel} placeholder with the value of the `itemLabel` parameter. The `%{number}` placeholder will be replaced with the item number. |
-| fieldLabelSuffixText   | string  | No       | Visually hidden text appended to the field labels. The component will replace the `%{itemLabel} placeholder with the value of the `itemLabel` parameter. The `%{number}` placeholder will be replaced with the item number. |
+| removeButtonSuffixText | string  | No       | Text appended to the `removeButtonText`. This is visually hidden in the inline layout. The component will replace the `%{itemLabel}` placeholder with the value of the `itemLabel` parameter. The `%{number}` placeholder will be replaced with the item number. |
+| fieldLabelSuffixText   | string  | No       | Visually hidden text appended to the field labels. The component will replace the `%{itemLabel}` placeholder with the value of the `itemLabel` parameter. The `%{number}` placeholder will be replaced with the item number. |
 
 
 ### items
