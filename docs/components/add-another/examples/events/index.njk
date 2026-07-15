@@ -54,9 +54,6 @@
     items: [
       {
         fieldset: {
-          legend: {
-            text: "Expense 1"
-          },
           html: itemHtml
         }
       }
@@ -64,20 +61,20 @@
   }) }}
 
 
-            {{govukInput({
-              id: "expenses-total",
-              name: "expenses-total",
-              classes: "govuk-input--width-10",
-              label: {
-                text: "Total expenditure"
-              },
-                    prefix: {
-        text: "£",
-        attributes: {
-          "aria-hidden": "true",
-          "readonly": "true"
-        }
+  {{ govukInput({
+    id: "expenses-total",
+    name: "expenses-total",
+    classes: "govuk-input--width-10",
+    label: {
+      text: "Total expenditure"
+    },
+    prefix: {
+      text: "£",
+      attributes: {
+        "aria-hidden": "true",
+        "readonly": "true"
       }
-            })}}
+    }
+  }) }}
 
 </form>

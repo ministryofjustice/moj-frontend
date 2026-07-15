@@ -428,6 +428,68 @@ test.describe('add another', () => {
   })
 
   // ---------------------------------------------------------------------------
+  // i18n text replacements
+  // ---------------------------------------------------------------------------
+
+  test.describe('i18n custom text replacements', () => {
+    test.beforeAll(async () => {
+      example = 'i18n custom text replacements'
+    })
+    test.afterAll(async () => {
+      example = ''
+    })
+
+    test('uses translated add button and initial label suffix text', async () => {
+      const $translatedAddButton = $component.getByRole('button', {
+        name: 'Create another case'
+      })
+      await expect($translatedAddButton).toBeVisible()
+      await expect($items.nth(0).getByLabel('Name')).toHaveAccessibleName(
+        'Name for translated case 1'
+      )
+    })
+
+    test('uses translated remove button and legend text after adding', async () => {
+      const $translatedAddButton = $component.getByRole('button', {
+        name: 'Create another case'
+      })
+      await $translatedAddButton.click()
+
+      const $removeButtons = $component.getByRole('button', { name: /Delete/ })
+      await expect($removeButtons).toHaveCount(2)
+      await expect($removeButtons.nth(0)).toHaveAccessibleName('Delete case 1')
+      await expect($removeButtons.nth(1)).toHaveAccessibleName('Delete case 2')
+
+      await expect($items.nth(0)).toHaveAccessibleName('Translated Case 1 of 2')
+      await expect($items.nth(1)).toHaveAccessibleName(
+        'Translated Case 2 of 2(added)'
+      )
+    })
+  })
+
+  // ---------------------------------------------------------------------------
+  // i18n locale fallback from root lang
+  // ---------------------------------------------------------------------------
+
+  test.describe('i18n locale fallback', () => {
+    test.beforeAll(async () => {
+      example = 'i18n locale fallback'
+    })
+    test.afterAll(async () => {
+      example = ''
+    })
+
+    test('uses lang locale plural rule for legend text selection', async () => {
+      await $addButton.click()
+
+      await expect($items.nth(0)).toHaveAccessibleName('TWO Entry 1 of 2')
+      await expect($items.nth(1)).toHaveAccessibleName(
+        'TWO Entry 2 of 2(added)'
+      )
+    })
+  })
+
+  // ---------------------------------------------------------------------------
   // Focus management
   // ---------------------------------------------------------------------------
 

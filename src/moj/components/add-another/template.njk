@@ -1,23 +1,50 @@
 {%- from "govuk/macros/attributes.njk" import govukAttributes -%}
 {%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/macros/i18n.njk" import govukI18nAttributes -%}
 
 {% macro _mojAddAnotherItem(params, item, index) %}
   {%- include "./_itemTemplate.njk" -%}
 {% endmacro %}
 
-{%- set dataAttributes = {
+{% set itemLabel = params.itemLabel | default('Item', true) %}
+{% set defaultAddAnotherButtonText = "Add another %{itemLabel}" %}
+{% set addAnotherButtonText = params.addAnotherButtonText or defaultAddAnotherButtonText %}
+
+{% set attributesHtml %}
+{{ govukAttributes({
   'data-module': 'moj-add-another',
-  'data-item-label': params.itemLabel | default('Item', true),
+  'data-item-label': itemLabel,
   'data-layout': {
     value: params.layout,
     optional: true
   }
-} -%}
+  }) }}
 
-<div class="moj-add-another{{- ' ' + params.classes if params.classes }}"
-  {{- govukAttributes(dataAttributes) -}}
-  {{- govukAttributes(params.attributes) -}}>
+  {{ govukI18nAttributes({
+    key: 'remove-button-text',
+    message: params.removeButtonText
+  }) }}
+
+  {{ govukI18nAttributes({
+    key: 'remove-button-suffix-text',
+    message: params.removeButtonSuffixText
+  }) }}
+
+  {{ govukI18nAttributes({
+    key: 'item-legend-text',
+    messages: params.itemLegendText
+  }) }}
+
+  {{ govukI18nAttributes({
+    key: 'field-label-suffix-text',
+    message: params.fieldLabelSuffixText
+  }) }}
+
+  {{ govukAttributes(params.attributes) }}
+{% endset %}
+
+<div class="moj-add-another{{- ' ' + params.classes if params.classes }}" {{- attributesHtml | safe -}}>
   <div class="moj-add-another__items">
     {% for item in params.items %}
       {% if item.fieldset.html %}
@@ -27,7 +54,7 @@
   </div>
   <div class="moj-add-another__add-button-container">
       {{ govukButton({
-        text: "Add another " ~ (params.itemLabel | default('Item', true) | lower),
+        text:  addAnotherButtonText | replace('%{itemLabel}', (itemLabel | lower)),
         classes: "govuk-button--secondary moj-add-another__add-button"
       }) }}
   </div>
