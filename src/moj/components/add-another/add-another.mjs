@@ -343,7 +343,7 @@ export class AddAnother extends ConfigurableComponent {
 
   /**
    * Updates the text of legends within an item to reflect the current index of
-   * the item and the total number of items to ensue unique accessible names.
+   * the item and the total number of items to ensure unique accessible names.
    *
    * @param {Element} $item - Add another item
    * @param {number} index - Add another item index
