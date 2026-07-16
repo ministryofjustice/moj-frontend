@@ -1,3 +1,5 @@
+const transformedNodeModules = ['sinon', 'govuk-frontend']
+
 module.exports = {
   modulePathIgnorePatterns: [
     '<rootDir>/dist/',
@@ -23,6 +25,6 @@ module.exports = {
   // Enable Babel transforms for ESM-only node_modules
   // See: https://jestjs.io/docs/ecmascript-modules
   transformIgnorePatterns: [
-    `<rootDir>/node_modules/(?!${['sinon'].join('|')}/)`
+    `<rootDir>/node_modules/(?!${transformedNodeModules.join('|')}/)`
   ]
 }

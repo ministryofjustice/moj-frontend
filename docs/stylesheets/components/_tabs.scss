@@ -24,6 +24,11 @@
     margin-top: govuk-spacing(4);
   }
 
+  & + ol:not([class]),
+  & + ul:not([class]) {
+    margin-top: govuk-spacing(4);
+  }
+
   & + * {
     margin-top: govuk-spacing(4);
   }
@@ -122,6 +127,10 @@
   p {
     // stylelint-disable-next-line declaration-no-important
     max-width: 100% !important;
+  }
+
+  table td {
+    vertical-align: top;
   }
 
   code {

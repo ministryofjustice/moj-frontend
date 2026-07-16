@@ -1,0 +1,5 @@
+@media (min-width: 48.0625em) {
+  .moj-add-another .govuk-input--width-5 {
+    max-width: initial;
+  }
+}
