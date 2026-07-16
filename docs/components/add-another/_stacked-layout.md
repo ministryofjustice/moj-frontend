@@ -16,9 +16,18 @@ The 'Add another' component has 2 layouts - view <a href="#choosing-a-layout-tab
 
 {% example template="examples/default", colocated="true", height=540 %}
 
-### Writing and adding content
+1. [Create an item name](#create-an-item-name)
+2. [Choose what to put in your 'add another' component](#choose-what-to-put-in-your-add-another-component)
+3. [Write and size the form field labels](#write-and-size-the-form-field-labels)
+4. [Write and implement error messages](#write-and-implement-error-messages)
+5. [Set up for use without JavaScript](#set-up-for-use-without-javascript)
 
-#### Item name
+You can also view:
+
+- how to [design the page and onward journey](#design-the-page-and-onward-journey)
+- an [example of the stacked layout with radio buttons](#example-of-the-stacked-layout-with-radio-buttons)
+
+### Create an item name
 
 Give each component a short and succinct item name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name will be used in the following visible parts of the component:
 
@@ -28,20 +37,7 @@ Give each component a short and succinct item name. For example 'person', 'offen
 
 The item names are numbered 1, 2, 3 and so on.  
 
-#### Form field labels
-
-<div class="govuk-inset-text">
-If you're using Figma, you may need to change the legend size of some GOV.UK components for this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
-</div>
-
-Visually hidden text is added to the end of the component labels. This is to help screen reader users know which item they are editing or removing. In the example, it adds the content in brackets to these field labels:
-
-- full name (for participant 1)
-- date of birth (for participant 1)
-
-This visually hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement). 
-
-### Components you can add to it
+### Choose what to put in your 'add another' component
 
 Add a small number of fields to the stacked layout, from the following 6 components. These are called the 'preferred instances' in Figma:
 
@@ -56,7 +52,7 @@ You can view [GOV.UK guidance on sizing text inputs](https://design-system.servi
 
 The component works best in a shallow layout, for example with the heading and 'add another' button on the same screen. This may also help users to check the data they've added to the component before submitting it. 
 
-### Using Figma slots to add components to it
+#### Using Figma slots to add components to it
 
 Each 'add another' component contains a 'slot' where you put the component's contents. Slots are a Figma feature, introduced in Spring 2026 to make components more flexible. 
 
@@ -67,7 +63,21 @@ A component keep its default width after you add it to a slot, rather than filli
 
 You can do all of these tasks without detaching it from the instance of the component. 
 
-### Error messages
+
+#### Write and size your form field labels
+
+<div class="govuk-inset-text">
+If you're using Figma, you may need to change the legend size of some GOV.UK components for this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
+</div>
+
+Visually hidden text is added to the end of the component labels. This is to help screen reader users know which item they are editing or removing. In the example, it adds the content in brackets to these field labels:
+
+- full name (for participant 1)
+- date of birth (for participant 1)
+
+This visually hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement). 
+
+### Write and implement error messages  
 
 Visually hidden text is added to the item name to help users find the error.
 
@@ -102,7 +112,7 @@ Show errors for 1 item at a time using the [GOV.UK error summary](https://design
 
 Once the user has resolved all the errors in the first item, display the errors for the next item. Do this until they're all resolved. This ensures that users can identify errors when an item is added or removed. 
 
-### JavaScript
+### Set up for use without JavaScript
 
 This component relies on JavaScript. To make it work without JavaScript, you need to make sure that when the 'Add another' and 'Remove' buttons are selected, the form submits and the page reloads with the changes.  
 

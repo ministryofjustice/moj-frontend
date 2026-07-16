@@ -17,26 +17,24 @@ The 'Add another' component has 2 layouts - view <a href="#choosing-a-layout-tab
 {% example template="examples/inline-accounts", colocated="true", height=540 %}
 
 
-1. [Create an item name](#1-create-an-item-name)
-2. [Choose what to put in your 'add another' component](#2-choose-what-to-put-in-your-add-another-component)
-3. [Write and size the form field labels](#3-write-and-size-the-form-field-labels)
-4. [Write and implement error messages](#4-write-and-implement-error-messages)
-5. [Set up for use without JavaScript](#5-set-up-for-use-without-javascript)
+1. [Create an item name](#create-an-item-name)
+2. [Choose what to put in your 'add another' component](#choose-what-to-put-in-your-add-another-component)
+3. [Write and size the form field labels](#write-and-size-the-form-field-labels)
+4. [Write and implement error messages](#write-and-implement-error-messages)
+5. [Set up for use without JavaScript](#set-up-for-use-without-javascript)
 
 You can also view:
 
 - how to [design the page and onward journey](#design-the-page-and-onward-journey)
-- an [example of multiple inline layouts on a page](#example-of-using-the-inline-variant-more-than-once-on-a-page). 
+- an [example of multiple inline layouts on a page](#example-of-using-the-inline-variant-more-than-once-on-a-page)
 
 ### Create an item name 
 
 Give each component a short and succinct item name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name in the example is 'participant'. 
 
-The item name will be used in lower case in the button labels and error messages.  
+The item names will be used in lower case in the button labels and error messages. They are numbered 1, 2, 3 and so on.
 
-The item names are numbered 1, 2, 3 and so on.
-
-### Choose what to put in the component
+### Choose what to put in your 'add another' component
 
 You can add up to 3 fields from the following 2 components to the inline layout. These are called the 'preferred instances' in Figma:
 
