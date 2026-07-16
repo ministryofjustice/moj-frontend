@@ -6,7 +6,6 @@ permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---
-{% example template="examples/default", colocated="true", height=540 %}
 
 ## Overview
 
