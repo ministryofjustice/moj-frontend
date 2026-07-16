@@ -1,0 +1,146 @@
+---
+title: Inline layout
+order: 16
+tags: 'add-another'
+permalink: false
+eleventyComputed:
+  override:eleventyNavigation: false
+---
+## Setting up the inline layout
+
+The inline (or horizontal) layout is a lean design for up to 3 fields. 
+
+<div class="govuk-inset-text">
+The 'Add another' component has 2 layouts - view <a href="#choosing-a-layout-tab">guidance on choosing a layout</a>.
+</div>
+
+{% example template="examples/inline-accounts", colocated="true", height=540 %}
+
+1. [Create an item name](#create-an-item-name-inline)
+2. [Choose what to put in your 'add another' component](#choose-what-to-put-in-your-add-another-component-inline)
+3. [Write and size the form field labels](#write-and-size-the-form-field-labels-inline)
+4. [Write and implement error messages](#write-and-implement-error-messages-inline)
+5. [Set up for use without JavaScript](#set-up-for-use-without-javascript-inline)
+
+You can also view:
+
+- [guidance on designing the page and onward journey](#designing-the-page-and-onward-journey-inline)
+- an [example of multiple inline layouts on a page](#example-of-using-the-inline-variant-more-than-once-on-a-page-inline)
+
+### Create an item name [#create-an-item-name-inline]
+
+Give each component a short and succinct item name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name in the example is 'participant'. 
+
+The item names will be used in lower case in the button labels and error messages. They are numbered 1, 2, 3 and so on.
+
+### Choose what to put in your 'add another' component [#choose-what-to-put-in-your-add-another-component-inline]
+
+You can add up to 3 fields from the following 2 components to the inline layout. These are called the 'preferred instances' in Figma:
+
+- [GOV.UK text input](https://design-system.service.gov.uk/components/text-input/)
+- [GOV.UK select component](https://design-system.service.gov.uk/components/select/)
+
+All the items and field labels need to fit on 1 line. You can view [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
+
+#### Using Figma 'slots' to add components to it 
+
+Each 'add another' component contains a 'slot' where you put the component's contents. 'Slots' are a Figma feature, introduced in Spring 2026 to make components more flexible. 
+
+When you put a component into the slot, it might be too narrow or overflow the container. This is because the component that you've added keeps its default width rather than filling the space. To fix this, do one of the following:
+
+- set all components to 'Fill' in Figma, so that they share the width evenly
+- manually set the width of each component, following the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system) where possible
+
+You should be able to do this without detaching the component from its instance.
+
+### Write and size the form field labels [#write-and-size-the-form-field-labels-inline]
+
+Give the form field labels a clear and concise name. 
+ 
+<div class="govuk-inset-text">
+If you're using Figma, you may need to change the legend size of some GOV.UK components for this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
+</div>
+
+#### How visually hidden text works
+
+Visually hidden text is added to the end of the component labels. This is to help screen reader users know which item they're editing or removing. In the example, it adds the content in brackets to these field labels:
+
+- (account 1 of 3), for account 1
+- funds (for account 1)
+- remove (account 1), for the 'Remove' button
+
+This visually hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement). 
+
+### Write and implement error messages [#write-and-implement-error-messages-inline]
+
+{% example template="examples/inline-errors", colocated="true", height=540 %}
+
+Errors are shown with:
+
+- a red error border that's applied to the whole item  
+- visually hidden text that's added to the item name  
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">Error state</th>
+      <th scope="col" class="govuk-table__header">Error message</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">No value is added to a field</th>
+      <td class="govuk-table__cell">Enter a sentence type for offence 1</td>
+    </tr>
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__header">No values are added to an item</th>
+      <td class="govuk-table__cell">Enter details for offence 1</td>
+    </tr>
+  </tbody>
+</table>
+
+Follow the [GOV.UK guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
+
+#### Handling multiple errors  
+
+Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/). 
+
+Once the user has resolved errors in the first item, display the errors for the next item until they're all resolved. This ensures that users can identify errors when an item is added or removed. 
+
+### Set up for use without JavaScript [#set-up-for-use-without-javascript-inline]
+
+This component relies on JavaScript (progressive enhancement). To make it work without JavaScript, you need to make sure that when the 'Add another' and 'Remove' buttons are selected, the form submits and the page reloads with the changes.  
+
+### Designing the page and onward journey [#designing-the-page-and-onward-journey-inline]
+
+#### Heading
+
+Add a heading that describes the task, for example 'Add a participant'. This is not part of the component.
+
+#### Placing multiple ‘add another‘ components on a page
+
+You can place the inline layout on a page more than once, but be aware of how this will affect the page length and complexity. Users may lose their position on the page, enter data in the wrong place, or delete the wrong item.
+
+Do not put the inline layout:
+
+- on the same page as the stacked layout
+- inside another ‘Add another’ component to create a subsection -- screen readers may not announce this, and it may make the page harder to use for everyone
+
+#### The ‘Remove’ button
+
+Do not change the button position, as this may make it harder for zoom users to use the component.
+
+#### Other parts of the page
+
+When users interact with this component, pages will get longer and more complex. Therefore it’s best to keep the rest of the page fairly simple. A leaner page will also make it easier for users to identify – and recover from – errors.
+
+#### Screens after the component
+
+The 'Add another' component creates another item on the page. The data remains on the page until the user submits it, for example with a ‘Save and continue’ button.
+
+Use the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/) to enable users to edit their items after submitting them.
+
+### Example of multiple inline layouts on a page [#example-of-using-the-inline-variant-more-than-once-on-a-page-inline]
+
+<p><img src="{{ 'assets/images/add-another-inline-layout-example.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The page contains a heading, 2 questions with radio buttons. Underneath the 2 questions are 2 add another components in the inline layout. The first component has the heading 'Add gifts information' with the field labels 'Gift description' and 'value'. There is a 'remove button' to the right. The second component has the heading 'Add loans information' with the field labels 'Loan description' and 'value'. There is a red 'remove button' to the right'. A green submit button is at the bottom of the screen."></p>
+

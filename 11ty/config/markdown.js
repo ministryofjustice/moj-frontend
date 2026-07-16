@@ -1,6 +1,7 @@
 const slugify = (s) => string(s).slugify().toString()
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
+const markdownItAttrs = require('markdown-it-attrs')
 const string = require('string')
 
 const highlight = require('./highlight')
@@ -12,6 +13,11 @@ const markdown = markdownIt({
   highlight
 })
   .disable('code')
+  .use(markdownItAttrs, {
+    leftDelimiter: '[',
+    rightDelimiter: ']',
+    allowedAttributes: ['id']
+  })
   .use(markdownItAnchor, {
     level: [1, 2, 3, 4],
     slugify

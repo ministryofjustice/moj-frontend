@@ -4,6 +4,8 @@ const gulp = require('gulp')
 const { compileScripts } = require('./tasks/scripts')
 
 gulp.task('build:javascripts', async () => {
+  const govukFrontendExternals = [/^govuk-frontend(?:\/.*)?$/]
+
   const modulePaths = await glob('moj/components/**/*.{cjs,js,mjs}', {
     cwd: 'src',
     ignore: ['**/*.spec.{cjs,js,mjs}'],
@@ -32,7 +34,7 @@ gulp.task('build:javascripts', async () => {
 
         // Customise input
         input: {
-          external: ['govuk-frontend']
+          external: govukFrontendExternals
         },
 
         // Customise output
@@ -73,14 +75,17 @@ gulp.task('build:javascripts', async () => {
 
         // Customise input
         input: {
-          external: ['govuk-frontend']
+          external: govukFrontendExternals
         },
 
         // Customise output
         output: {
           file: modulePath.replace('.mjs', '.bundle.js'),
           format: 'umd',
-          globals: { 'govuk-frontend': 'GOVUKFrontend' },
+          globals: {
+            'govuk-frontend': 'GOVUKFrontend',
+            'govuk-frontend/dist/govuk/i18n.mjs': 'GOVUKFrontend'
+          },
           name: 'MOJFrontend'
         }
       })()
