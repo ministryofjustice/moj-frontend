@@ -6,9 +6,9 @@ permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---
-## Stacked layout
+## Setting up the stacked layout
 
-The stacked (or vertical) layout is the default for this component. It helps users to enter more information than the other layout (inline), for example in up to 4 fields. 
+The stacked (or vertical) layout is the default for this component. It helps users to enter more information than the other layout (inline), for example from a more varied range of components.
 
 <div class="govuk-inset-text">
 The 'Add another' component has 2 layouts - view <a href="#choosing-a-layout-tab">guidance on choosing a layout</a>.
@@ -22,8 +22,8 @@ The 'Add another' component has 2 layouts - view <a href="#choosing-a-layout-tab
 
 Give each component a short and succinct item name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name will be used in the following visible parts of the component:
 
-- item label (in sentence case) 
-- button label (in lower case) 
+- item legend (in sentence case) 
+- button labels (in lower case) 
 - error messages (in lower case)
 
 The item names are numbered 1, 2, 3 and so on.  
@@ -31,19 +31,19 @@ The item names are numbered 1, 2, 3 and so on.
 #### Form field labels
 
 <div class="govuk-inset-text">
-You may need to change the legend size of some GOV.UK components for this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
+If you're using Figma, you may need to change the legend size of some GOV.UK components for this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
 </div>
 
-Hidden text is added to the end of the component labels. This is to help screen reader users know which item they are editing or removing. In the example, it adds the content in brackets to these field labels:
+Visually hidden text is added to the end of the component labels. This is to help screen reader users know which item they are editing or removing. In the example, it adds the content in brackets to these field labels:
 
 - full name (for participant 1)
 - date of birth (for participant 1)
 
-This hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement). 
+This visually hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement). 
 
 ### Components you can add to it
 
-You can add up to 4 fields to the stacked layout, from the following 6 components. These are called the 'preferred instances' in Figma:
+Add a small number of fields to the stacked layout, from the following 6 components. These are called the 'preferred instances' in Figma:
 
 - [GOV.UK checkboxes](https://design-system.service.gov.uk/components//checkboxes)
 - [GOV.UK date input](https://design-system.service.gov.uk/components/textarea)
@@ -54,9 +54,11 @@ You can add up to 4 fields to the stacked layout, from the following 6 component
 
 You can view [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
 
+The component works best in a shallow layout, for example with the heading and 'add another' button on the same screen. This may also help users to check the data they've added to the component before submitting it. 
+
 ### Using Figma slots to add components to it
 
-Each add another component contains a 'slot' where you put the component's contents. Slots are a Figma feature, introduced in Spring 2026 to make components more flexible. 
+Each 'add another' component contains a 'slot' where you put the component's contents. Slots are a Figma feature, introduced in Spring 2026 to make components more flexible. 
 
 A component keep its default width after you add it to a slot, rather than filling the available space. This means it might be too narrow or overflow the container. To fix this, you can either:
 
@@ -67,7 +69,7 @@ You can do all of these tasks without detaching it from the instance of the comp
 
 ### Error messages
 
-Hidden text is added to the item name to help users find the error.
+Visually hidden text is added to the item name to help users find the error.
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
@@ -90,13 +92,15 @@ Hidden text is added to the item name to help users find the error.
 
 Follow the [GOV.UK guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
 
-#### Showing multiple errors  
+#### Showing errors  
 
 {% example template="examples/stacked-errors", colocated="true", height=590 %}
 
-Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/).
+In the example, both items contain an error. In the first item, a year is missing from the date of birth field. In the second item, the 'full name' is missing. 
 
-Once the user has resolved errors in the first item, display the errors for the next item until they're all resolved. This ensures that users can identify errors when an item is added or removed. 
+Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/). 
+
+Once the user has resolved all the errors in the first item, display the errors for the next item. Do this until they're all resolved. This ensures that users can identify errors when an item is added or removed. 
 
 ### JavaScript
 

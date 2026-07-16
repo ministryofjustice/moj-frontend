@@ -19,7 +19,7 @@ The 'Add another' component has 2 layouts:
 
 The stacked (or vertical) layout is the default for this component. It can be used to collect information:
 
-- from up to 4 fields
+- from a small number of fields
 - using a wider range of components than the inline layout, for example with the [GOV.UK date input](https://design-system.service.gov.uk/components/date-input/) and [GOV.UK radios](https://design-system.service.gov.uk/components/radios/)
 
 View [how to use the stacked layout](/components/add-another/#stacked-layout-tab). 
@@ -30,7 +30,7 @@ View [how to use the stacked layout](/components/add-another/#stacked-layout-tab
 
 The inline (or horizontal) layout is a lean design for up to 3 fields. Use this layout:
 
-- if users need to add more items than the stacked layout allows
+- if users need to select 'add another' many times
 - to save vertical space on the page 
 - if you need to collect more than 1 set of items from a page (you're placing the component on the page more than once)
 - if it'll help users to view their items in rows and columns

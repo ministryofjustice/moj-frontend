@@ -22,23 +22,21 @@ The 'Add another' component has 2 layouts - view <a href="#choosing-a-layout-tab
 3. [Write and size the form field labels](#3-write-and-size-the-form-field-labels)
 4. [Write and implement error messages](#4-write-and-implement-error-messages)
 5. [Set up for use without JavaScript](#5-set-up-for-use-without-javascript)
-6. [Design the page and onward journey](#6-design-the-page-and-onward-journey)
 
-You can also view an [example of multiple inline layouts on a page](#example-of-using-the-inline-variant-more-than-once-on-a-page). 
+You can also view:
 
-### 1. Create an item name 
+- how to [design the page and onward journey](#design-the-page-and-onward-journey)
+- an [example of multiple inline layouts on a page](#example-of-using-the-inline-variant-more-than-once-on-a-page). 
+
+### Create an item name 
 
 Give each component a short and succinct item name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name in the example is 'participant'. 
 
-The item name will be used in lower case in the following visible parts of the component:
-
-- 'Add another' button text  
-- 'Remove' button text  
-- error messages  
+The item name will be used in lower case in the button labels and error messages.  
 
 The item names are numbered 1, 2, 3 and so on.
 
-### 2. Choose what to put in the component
+### Choose what to put in the component
 
 You can add up to 3 fields from the following 2 components to the inline layout. These are called the 'preferred instances' in Figma:
 
@@ -58,32 +56,32 @@ When you put a component into the slot, it might be too narrow or overflow the c
 
 You should be able to do this without detaching the component from its instance.
 
-### 3. Write and size the form field labels
+### Write and size the form field labels
 
 Give the form field labels a clear and concise name. 
  
 <div class="govuk-inset-text">
-You may need to change the legend size of some GOV.UK components after you've added them to this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
+If you're using Figma, you may need to change the legend size of some GOV.UK components for this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
 </div>
 
-#### How hidden text works
+#### How visually hidden text works
 
-Hidden text is added to the end of the component labels. This is to help screen reader users know which item they're editing or removing. In the example, it adds the content in brackets to these field labels:
+Visually hidden text is added to the end of the component labels. This is to help screen reader users know which item they're editing or removing. In the example, it adds the content in brackets to these field labels:
 
-- bank name (for account 1)
+- (account 1 of 3), for account 1
 - funds (for account 1)
 - remove (account 1), for the 'Remove' button
 
-This hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement). 
+This visually hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement). 
 
-### 4. Write and implement error messages
+### Write and implement error messages
 
 {% example template="examples/inline-errors", colocated="true", height=540 %}
 
 Errors are shown with:
 
 - a red error border that's applied to the whole item  
-- hidden text that's added to the item name  
+- visually hidden text that's added to the item name  
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
@@ -112,11 +110,11 @@ Show errors for 1 item at a time using the [GOV.UK error summary](https://design
 
 Once the user has resolved errors in the first item, display the errors for the next item until they're all resolved. This ensures that users can identify errors when an item is added or removed. 
 
-### 5. Set up for use without JavaScript
+### Set up for use without JavaScript
 
-This component relies on JavaScript. To make it work without JavaScript, you need to make sure that when the 'Add another' and 'Remove' buttons are selected, the form submits and the page reloads with the changes.  
+This component relies on JavaScript (progressive enhancement). To make it work without JavaScript, you need to make sure that when the 'Add another' and 'Remove' buttons are selected, the form submits and the page reloads with the changes.  
 
-### 6. Design the page and onward journey
+### Design the page and onward journey
 
 #### Heading
 

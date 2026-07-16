@@ -10,7 +10,7 @@ eleventyComputed:
 
 ## Overview
 
-The ‘Add another’ component allows users to add more than 1 instance of related information to a page. It does this by reproducing the field labels.
+The ‘Add another’ component allows users to add more than 1 instance of related information to a page. It does this by reproducing the field labels without reloading the page.
 
 ## When to use
 
