@@ -11,6 +11,7 @@
 | removeButtonText       | string  | No       | Text label for the remove button. Defaults to 'Remove' |
 | removeButtonSuffixText | string  | No       | Text appended to the `removeButtonText`. This is visually hidden in the inline layout. The component will replace the `%{itemLabel}` placeholder with the value of the `itemLabel` parameter. The `%{number}` placeholder will be replaced with the item number. |
 | fieldLabelSuffixText   | string  | No       | Visually hidden text appended to the field labels. The component will replace the `%{itemLabel}` placeholder with the value of the `itemLabel` parameter. The `%{number}` placeholder will be replaced with the item number. |
+| newItemSuffixText      | string  | No       | Visually hidden text appended to the legend of a newly added item. |
 
 
 ### items
@@ -54,4 +55,3 @@
 | text                   | string  | Yes      | If `html` is set, this is not required. Text to use within the legend. If `html` is provided, the `text` option will be ignored. |
 | html                   | string  | Yes      | If `text` is set, this is not required. HTML to use within the legend. If `html` is provided, the `text` option will be ignored. |
 | classes                | string  | No       | Classes to add to the legend. |
-

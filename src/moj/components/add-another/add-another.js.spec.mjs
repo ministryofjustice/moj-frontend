@@ -166,6 +166,7 @@ describe('add another', () => {
           removeButtonText: 'Delete',
           removeButtonSuffixText: 'case %{number}',
           fieldLabelSuffixText: 'for translated %{itemLabel} %{number}',
+          newItemSuffixText: '(newly added)',
           itemLegendText: {
             one: 'Translated %{itemLabel} %{number}',
             other: 'Translated %{itemLabel} %{number} of %{count}'
@@ -204,6 +205,18 @@ describe('add another', () => {
 
       expect(legends[0]).toHaveTextContent('Translated Case 1 of 2')
       expect(legends[1]).toHaveTextContent('Translated Case 2 of 2')
+    })
+
+    test('uses translated new item suffix text', () => {
+      getByRole($component, 'button', { name: /Add another/ }).click()
+
+      const legends = $component.querySelectorAll('legend')
+      const newItemSuffix = legends[1].querySelector(
+        '.moj-add-another__new-item-suffix'
+      )
+
+      expect(newItemSuffix).toBeInTheDocument()
+      expect(newItemSuffix).toHaveTextContent('(newly added)')
     })
 
     test('uses lang locale fallback for pluralized legend selection', () => {

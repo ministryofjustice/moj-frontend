@@ -515,7 +515,7 @@ test.describe('add another', () => {
 
       await expect($items.nth(0)).toHaveAccessibleName('Translated Case 1 of 2')
       await expect($items.nth(1)).toHaveAccessibleName(
-        'Translated Case 2 of 2(added)'
+        'Translated Case 2 of 2(newly added)'
       )
     })
   })

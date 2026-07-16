@@ -41,6 +41,11 @@
     message: params.fieldLabelSuffixText
   }) }}
 
+  {{ govukI18nAttributes({
+    key: 'new-item-suffix-text',
+    message: params.newItemSuffixText
+  }) }}
+
   {{ govukAttributes(params.attributes) }}
 {% endset %}
 

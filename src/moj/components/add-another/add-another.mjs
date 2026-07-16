@@ -432,7 +432,7 @@ export class AddAnother extends ConfigurableComponent {
       'govuk-visually-hidden',
       `${this.newItemSuffixClass}`
     )
-    $newItemSuffix.textContent = `(added)`
+    $newItemSuffix.textContent = this.i18n.t('newItemSuffixText')
 
     const $legend = $item.querySelector('legend')
     if ($legend && $legend instanceof HTMLLegendElement) {
@@ -794,6 +794,7 @@ export class AddAnother extends ConfigurableComponent {
       removeButtonText: 'Remove',
       removeButtonSuffixText: '%{itemLabel} %{number}',
       fieldLabelSuffixText: 'for %{itemLabel} %{number}',
+      newItemSuffixText: '(added)',
       itemLegendText: {
         one: '%{itemLabel} %{number}',
         other: '%{itemLabel} %{number} of %{count}'
@@ -853,6 +854,7 @@ export class AddAnother extends ConfigurableComponent {
  * @property {string} [fieldLabelSuffixText] - hidden suffix for the field labels and legends.
  *   The `%{itemLabel}` placeholder will be replaced with the AddAnother.config.itemLabel.
  *   The `%{number}` placeholder will be replaced with the index of the item.
+ * @property {string} [newItemSuffixText] - hidden suffix appended to a newly added item legend.
  */
 
 /**

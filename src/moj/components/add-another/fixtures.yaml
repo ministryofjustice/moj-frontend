@@ -537,6 +537,7 @@ examples:
       addAnotherButtonText: 'Create another %{itemLabel}'
       removeButtonText: 'Delete'
       fieldLabelSuffixText: 'for translated %{itemLabel} %{number}'
+      newItemSuffixText: '(newly added)'
       itemLegendText:
         one: 'Translated %{itemLabel} %{number}'
         other: 'Translated %{itemLabel} %{number} of %{count}'

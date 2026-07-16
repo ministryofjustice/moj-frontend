@@ -371,6 +371,10 @@ describe('add another', () => {
         'for translated %{itemLabel} %{number}'
       )
       expect($component).toHaveAttribute(
+        'data-i18n.new-item-suffix-text',
+        '(newly added)'
+      )
+      expect($component).toHaveAttribute(
         'data-i18n.item-legend-text.one',
         'Translated %{itemLabel} %{number}'
       )
