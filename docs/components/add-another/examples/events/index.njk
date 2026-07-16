@@ -1,46 +1,50 @@
+---
+layout: 'layouts/example.njk'
+title: Add another events (example)
+---
 {%- from "moj/components/add-another/macro.njk" import mojAddAnother -%}
 {%- from "govuk/components/input/macro.njk" import govukInput -%}
 {%- from "govuk/components/button/macro.njk" import govukButton -%}
 
 {% set itemHtml -%}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds govuk-grid-column-three-quarters-from-desktop">
-    {{ govukInput({
-      id: "expense[0][description]",
-      name: "expense[0][description]",
-      label: {
-        html: "Description <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for expense
-      1</span>"
-      },
-      attributes: {
-        "data-name": "expense[%index%][description]",
-        "data-id": "expense[%index%][description]",
-        "data-label": "Description"
-      }
-    }) }}
-  </div>
-  <div class="govuk-grid-column-one-third govuk-grid-column-one-quarter-from-desktop">
-    {{ govukInput({
-      id: "expense[0][amount]",
-      name: "expense[0][amount]",
-      label: {
-        html: "Amount<span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for expense 1</span><span class=\"govuk-visually-hidden\">(in pounds)</span>"
-      },
-      prefix: {
-        text: "£",
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds govuk-grid-column-three-quarters-from-desktop">
+      {{ govukInput({
+        id: "expense[0][description]",
+        name: "expense[0][description]",
+        label: {
+          html: "Description <span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for expense
+        1</span>"
+        },
         attributes: {
-          "aria-hidden": "true"
+          "data-name": "expense[%index%][description]",
+          "data-id": "expense[%index%][description]",
+          "data-label": "Description"
         }
-      },
-      attributes: {
-        "data-name": "expense[%index%][amount]",
-        "data-id": "expense[%index%][amount]",
-        "data-label": "amount"
-      },
-      classes: ""
-    }) }}
+      }) }}
     </div>
+    <div class="govuk-grid-column-one-third govuk-grid-column-one-quarter-from-desktop">
+      {{ govukInput({
+        id: "expense[0][amount]",
+        name: "expense[0][amount]",
+        label: {
+          html: "Amount<span class=\"govuk-visually-hidden moj-add-another__label-suffix\">for expense 1</span><span class=\"govuk-visually-hidden\">(in pounds)</span>"
+        },
+        prefix: {
+          text: "£",
+          attributes: {
+            "aria-hidden": "true"
+          }
+        },
+        attributes: {
+          "data-name": "expense[%index%][amount]",
+          "data-id": "expense[%index%][amount]",
+          "data-label": "amount"
+        },
+        classes: ""
+      }) }}
     </div>
+  </div>
 {% endset %}
 
 <h1 class="govuk-heading-m" id="expense-title">Add expenses</h1>
@@ -59,7 +63,6 @@
     ]
   }) }}
 
-
   {{ govukInput({
     id: "expenses-total",
     name: "expenses-total",
@@ -77,5 +80,4 @@
       }
     }
   }) }}
-
 </form>

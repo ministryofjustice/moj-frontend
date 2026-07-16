@@ -361,15 +361,15 @@ export class AddAnother extends ConfigurableComponent {
     }
     const $legend = $fieldset.querySelector('legend')
 
+    if (!$legend || !($legend instanceof HTMLLegendElement)) {
+      return
+    }
+
     const legendText = this.i18n.t('itemLegendText', {
       itemLabel: this.config.itemLabel,
       number: index + 1,
       count: itemsCount
     })
-
-    if (!$legend || !($legend instanceof HTMLLegendElement)) {
-      return
-    }
 
     // Replace the legend node rather than mutating text in-place so assistive
     // technologies recalculate the fieldset name after item reindex/removal.
