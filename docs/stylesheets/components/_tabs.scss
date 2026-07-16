@@ -24,6 +24,11 @@
     margin-top: govuk-spacing(4);
   }
 
+  & + ol:not([class]),
+  & + ul:not([class]) {
+    margin-top: govuk-spacing(4);
+  }
+
   & + * {
     margin-top: govuk-spacing(4);
   }
