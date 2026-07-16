@@ -16,18 +16,18 @@ The 'Add another' component has 2 layouts - view <a href="#choosing-a-layout-tab
 
 {% example template="examples/default", colocated="true", height=540 %}
 
-1. [Create an item name](#create-an-item-name)
-2. [Choose what to put in your 'add another' component](#choose-what-to-put-in-your-add-another-component)
-3. [Write and size the form field labels](#write-and-size-the-form-field-labels)
-4. [Write and implement error messages](#write-and-implement-error-messages)
-5. [Set up for use without JavaScript](#set-up-for-use-without-javascript)
+1. [Create an item name](#create-an-item-name-stacked)
+2. [Choose what to put in your 'add another' component](#choose-what-to-put-in-your-add-another-component-stacked)
+3. [Write and size the form field labels](#write-and-size-the-form-field-labels-stacked)
+4. [Write and implement error messages](#write-and-implement-error-messages-stacked)
+5. [Set up for use without JavaScript](#set-up-for-use-without-javascript-stacked)
 
 You can also view:
 
-- [guidance on designing the page and onward journey](#designing-the-page-and-onward-journey)
-- an [example of the stacked layout with radio buttons](#example-of-the-stacked-layout-with-radio-buttons)
+- [guidance on designing the page and onward journey](#designing-the-page-and-onward-journey-stacked)
+- an [example of the stacked layout with radio buttons](#example-of-the-stacked-layout-with-radio-buttons-stacked)
 
-### Create an item name
+### Create an item name [#create-an-item-name-stacked]
 
 Give each component a short and succinct item name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name will be used in the following visible parts of the component:
 
@@ -37,7 +37,7 @@ Give each component a short and succinct item name. For example 'person', 'offen
 
 The item names are numbered 1, 2, 3 and so on.  
 
-### Choose what to put in your 'add another' component
+### Choose what to put in your 'add another' component [#choose-what-to-put-in-your-add-another-component-stacked]
 
 Add a small number of fields to the stacked layout, from the following 6 components. These are called the 'preferred instances' in Figma:
 
@@ -63,7 +63,7 @@ When you put a component into the slot, it might be too narrow or overflow the c
 
 You should be able to do this without detaching the component from its instance.
 
-### Write and size the form field labels
+### Write and size the form field labels [#write-and-size-the-form-field-labels-stacked]
 
 <div class="govuk-inset-text">
 If you're using Figma, you may need to change the legend size of some GOV.UK components for this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
@@ -78,7 +78,7 @@ Visually hidden text is added to the end of the component labels. This is to hel
 
 This visually hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement). 
 
-### Write and implement error messages  
+### Write and implement error messages [#write-and-implement-error-messages-stacked]
 
 Visually hidden text is added to the item name to help users find the error.
 
@@ -113,11 +113,11 @@ Show errors for 1 item at a time using the [GOV.UK error summary](https://design
 
 Once the user has resolved all the errors in the first item, display the errors for the next item. Do this until they're all resolved. This ensures that users can identify errors when an item is added or removed. 
 
-### Set up for use without JavaScript
+### Set up for use without JavaScript [#set-up-for-use-without-javascript-stacked]
 
 This component relies on JavaScript. To make it work without JavaScript, you need to make sure that when the 'Add another' and 'Remove' buttons are selected, the form submits and the page reloads with the changes.  
 
-### Designing the page and onward journey
+### Designing the page and onward journey [#designing-the-page-and-onward-journey-stacked]
 
 #### Heading
 
@@ -145,6 +145,6 @@ This component creates another item on the page. All the data remains on the pag
 
 Use the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/) to enable users to edit their items after submitting them.
 
-### Example of the stacked layout with radio buttons
+### Example of the stacked layout with radio buttons [#example-of-the-stacked-layout-with-radio-buttons-stacked]
 
 <p><img src="{{ 'assets/images/add-another-stacked.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The page contains a caption with some personal identifiers, including date of birth. The H1 is 'Tom Walker' and the H2 is 'Add a course'. Then there's the heading 'Course 1' and 2 field labels. They are 'Enter the course name' and 'Enter the course provider'. Underneath the fields is a question 'How long does the course last?' with 4 radio options. There's a horizontal line and then a grey button with the content 'Add another course'."></p>

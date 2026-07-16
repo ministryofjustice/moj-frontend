@@ -16,25 +16,24 @@ The 'Add another' component has 2 layouts - view <a href="#choosing-a-layout-tab
 
 {% example template="examples/inline-accounts", colocated="true", height=540 %}
 
-
-1. [Create an item name](#create-an-item-name)
-2. [Choose what to put in your 'add another' component](#choose-what-to-put-in-your-add-another-component)
-3. [Write and size the form field labels](#write-and-size-the-form-field-labels)
-4. [Write and implement error messages](#write-and-implement-error-messages)
-5. [Set up for use without JavaScript](#set-up-for-use-without-javascript)
+1. [Create an item name](#create-an-item-name-inline)
+2. [Choose what to put in your 'add another' component](#choose-what-to-put-in-your-add-another-component-inline)
+3. [Write and size the form field labels](#write-and-size-the-form-field-labels-inline)
+4. [Write and implement error messages](#write-and-implement-error-messages-inline)
+5. [Set up for use without JavaScript](#set-up-for-use-without-javascript-inline)
 
 You can also view:
 
-- [guidance on designing the page and onward journey](#designing-the-page-and-onward-journey)
-- an [example of multiple inline layouts on a page](#example-of-using-the-inline-variant-more-than-once-on-a-page)
+- [guidance on designing the page and onward journey](#designing-the-page-and-onward-journey-inline)
+- an [example of multiple inline layouts on a page](#example-of-using-the-inline-variant-more-than-once-on-a-page-inline)
 
-### Create an item name 
+### Create an item name [#create-an-item-name-inline]
 
 Give each component a short and succinct item name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name in the example is 'participant'. 
 
 The item names will be used in lower case in the button labels and error messages. They are numbered 1, 2, 3 and so on.
 
-### Choose what to put in your 'add another' component
+### Choose what to put in your 'add another' component [#choose-what-to-put-in-your-add-another-component-inline]
 
 You can add up to 3 fields from the following 2 components to the inline layout. These are called the 'preferred instances' in Figma:
 
@@ -54,7 +53,7 @@ When you put a component into the slot, it might be too narrow or overflow the c
 
 You should be able to do this without detaching the component from its instance.
 
-### Write and size the form field labels
+### Write and size the form field labels [#write-and-size-the-form-field-labels-inline]
 
 Give the form field labels a clear and concise name. 
  
@@ -72,7 +71,7 @@ Visually hidden text is added to the end of the component labels. This is to hel
 
 This visually hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement). 
 
-### Write and implement error messages
+### Write and implement error messages [#write-and-implement-error-messages-inline]
 
 {% example template="examples/inline-errors", colocated="true", height=540 %}
 
@@ -108,11 +107,11 @@ Show errors for 1 item at a time using the [GOV.UK error summary](https://design
 
 Once the user has resolved errors in the first item, display the errors for the next item until they're all resolved. This ensures that users can identify errors when an item is added or removed. 
 
-### Set up for use without JavaScript
+### Set up for use without JavaScript [#set-up-for-use-without-javascript-inline]
 
 This component relies on JavaScript (progressive enhancement). To make it work without JavaScript, you need to make sure that when the 'Add another' and 'Remove' buttons are selected, the form submits and the page reloads with the changes.  
 
-### Designing the page and onward journey
+### Designing the page and onward journey [#designing-the-page-and-onward-journey-inline]
 
 #### Heading
 
@@ -141,7 +140,7 @@ The 'Add another' component creates another item on the page. The data remains o
 
 Use the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/) to enable users to edit their items after submitting them.
 
-### Example of multiple inline layouts on a page
+### Example of multiple inline layouts on a page [#example-of-using-the-inline-variant-more-than-once-on-a-page-inline]
 
 <p><img src="{{ 'assets/images/add-another-example-inline.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The page contains a heading, 2 questions with radio buttons. Underneath the 2 questions are 2 add another components in the inline layout. The first component has the heading 'Add gifts information' with the field labels 'Gift description' and 'value'. There is a 'remove button' to the right. The second component has the heading 'Add loans information' with the field labels 'Loan description' and 'value'. There is a red 'remove button' to the right'. A green submit button is at the bottom of the screen."></p>
 
