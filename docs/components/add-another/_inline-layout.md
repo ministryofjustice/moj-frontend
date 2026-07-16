@@ -25,7 +25,7 @@ The 'Add another' component has 2 layouts - view <a href="#choosing-a-layout-tab
 
 You can also view:
 
-- how to [design the page and onward journey](#design-the-page-and-onward-journey)
+- [guidance on designing the page and onward journey](#designing-the-page-and-onward-journey)
 - an [example of multiple inline layouts on a page](#example-of-using-the-inline-variant-more-than-once-on-a-page)
 
 ### Create an item name 
@@ -43,9 +43,9 @@ You can add up to 3 fields from the following 2 components to the inline layout.
 
 All the items and field labels need to fit on 1 line. You can view [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
 
-#### Using Figma 'slots' to add components  
+#### Using Figma 'slots' to add components to it 
 
-Each add another component contains a 'slot' where you put the component's contents. 'Slots' are a Figma feature, introduced in Spring 2026 to make components more flexible. 
+Each 'add another' component contains a 'slot' where you put the component's contents. 'Slots' are a Figma feature, introduced in Spring 2026 to make components more flexible. 
 
 When you put a component into the slot, it might be too narrow or overflow the container. This is because the component that you've added keeps its default width rather than filling the space. To fix this, do one of the following:
 
@@ -102,7 +102,7 @@ Errors are shown with:
 
 Follow the [GOV.UK guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
 
-#### Showing multiple errors
+#### Handling multiple errors  
 
 Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/). 
 
@@ -112,7 +112,7 @@ Once the user has resolved errors in the first item, display the errors for the 
 
 This component relies on JavaScript (progressive enhancement). To make it work without JavaScript, you need to make sure that when the 'Add another' and 'Remove' buttons are selected, the form submits and the page reloads with the changes.  
 
-### Design the page and onward journey
+### Designing the page and onward journey
 
 #### Heading
 
@@ -139,7 +139,7 @@ When users interact with this component, pages will get longer and more complex.
 
 The 'Add another' component creates another item on the page. The data remains on the page until the user submits it, for example with a ‘Save and continue’ button.
 
-Users can edit their items after submitting them, using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
+Use the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/) to enable users to edit their items after submitting them.
 
 ### Example of multiple inline layouts on a page
 

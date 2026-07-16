@@ -24,7 +24,7 @@ The 'Add another' component has 2 layouts - view <a href="#choosing-a-layout-tab
 
 You can also view:
 
-- how to [design the page and onward journey](#design-the-page-and-onward-journey)
+- [guidance on designing the page and onward journey](#designing-the-page-and-onward-journey)
 - an [example of the stacked layout with radio buttons](#example-of-the-stacked-layout-with-radio-buttons)
 
 ### Create an item name
@@ -54,21 +54,22 @@ The component works best in a shallow layout, for example with the heading and '
 
 #### Using Figma slots to add components to it
 
-Each 'add another' component contains a 'slot' where you put the component's contents. Slots are a Figma feature, introduced in Spring 2026 to make components more flexible. 
+Each 'add another' component contains a 'slot' where you put the component's contents. 'Slots' are a Figma feature, introduced in Spring 2026 to make components more flexible. 
 
-A component keep its default width after you add it to a slot, rather than filling the available space. This means it might be too narrow or overflow the container. To fix this, you can either:
+When you put a component into the slot, it might be too narrow or overflow the container. This is because the component that you've added keeps its default width rather than filling the space. To fix this, do one of the following:
 
-- set all components to 'Fill' in Figma, so that they share the available width evenly
+- set all components to 'Fill' in Figma, so that they share the width evenly
 - manually set the width of each component, following the [GOV.UK grid system](https://design-system.service.gov.uk/styles/layout/#using-the-grid-system) where possible
 
-You can do all of these tasks without detaching it from the instance of the component. 
+You should be able to do this without detaching the component from its instance.
 
-
-#### Write and size your form field labels
+### Write and size the form field labels
 
 <div class="govuk-inset-text">
 If you're using Figma, you may need to change the legend size of some GOV.UK components for this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
 </div>
+
+#### How visually hidden text works
 
 Visually hidden text is added to the end of the component labels. This is to help screen reader users know which item they are editing or removing. In the example, it adds the content in brackets to these field labels:
 
@@ -102,7 +103,7 @@ Visually hidden text is added to the item name to help users find the error.
 
 Follow the [GOV.UK guidance on error messages](https://design-system.service.gov.uk/components/error-message/).
 
-#### Showing errors  
+#### Handling multiple errors  
 
 {% example template="examples/stacked-errors", colocated="true", height=590 %}
 
@@ -142,7 +143,7 @@ When users interact with this component, pages will get longer and more complex.
 
 This component creates another item on the page. All the data remains on the page until the user submits it, for example with a ‘Save and continue’ button.   
 
-Users can edit their items after submitting them using the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/).
+Use the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.uk/patterns/check-answers/) to enable users to edit their items after submitting them.
 
 ### Example of the stacked layout with radio buttons
 
