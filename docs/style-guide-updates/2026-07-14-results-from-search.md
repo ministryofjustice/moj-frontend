@@ -2,7 +2,7 @@
 title: Results (from search)
 anchor: results-from-search
 type: New
-date: 2026-07-13
+date: 2026-07-16
 ---
 
 Show the following heading after a user has conducted a search (with their search term in single quote marks):  
