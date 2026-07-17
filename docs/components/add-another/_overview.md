@@ -17,8 +17,8 @@ This component works best in a shallow layout for users to enter a small amount 
 
 The information (or 'items') that people add could be:
 
--	dates
--	the names of people, programmes, events, or offences
+- dates
+- the names of people, programmes, events, or offences
 - numbers, for example payments and their amounts
 
 ## When not to use
