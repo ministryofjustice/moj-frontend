@@ -8,7 +8,7 @@ eleventyComputed:
 ---
 ## Setting up the inline layout
 
-The inline (or horizontal) layout is a lean design for up to 3 fields. 
+The inline (or horizontal) layout is a lean design for up to 3 fields.
 
 <div class="govuk-inset-text">
 The 'Add another' component has 2 layouts - view <a href="#choosing-a-layout-tab">guidance on choosing a layout</a>.
@@ -29,7 +29,7 @@ You can also view:
 
 ### Create an item name [#create-an-item-name-inline]
 
-Give each component a short and succinct item name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name in the example is 'participant'. 
+Give each component a short and succinct item name. For example 'person', 'offence', 'income', 'application' or 'session'. The item name in the example is 'participant'.
 
 The item names will be used in lower case in the button labels and error messages. They are numbered 1, 2, 3 and so on.
 
@@ -42,9 +42,9 @@ You can add up to 3 fields from the following 2 components to the inline layout.
 
 All the items and field labels need to fit on 1 line. You can view [GOV.UK guidance on sizing text inputs](https://design-system.service.gov.uk/components/text-input/#use-appropriately-sized-text-inputs).
 
-#### Using Figma 'slots' to add components to it 
+#### Using Figma 'slots' to add components to it
 
-Each 'add another' component contains a 'slot' where you put the component's contents. 'Slots' are a Figma feature, introduced in Spring 2026 to make components more flexible. 
+Each 'add another' component contains a 'slot' where you put the component's contents. 'Slots' are a Figma feature, introduced in Spring 2026 to make components more flexible.
 
 When you put a component into the slot, it might be too narrow or overflow the container. This is because the component that you've added keeps its default width rather than filling the space. To fix this, do one of the following:
 
@@ -55,8 +55,8 @@ You should be able to do this without detaching the component from its instance.
 
 ### Write and size the form field labels [#write-and-size-the-form-field-labels-inline]
 
-Give the form field labels a clear and concise name. 
- 
+Give the form field labels a clear and concise name.
+
 <div class="govuk-inset-text">
 If you're using Figma, you may need to change the legend size of some GOV.UK components for this component. Change them to 'body (paragraph)' to follow <a href="https://design-system.service.gov.uk/get-started/labels-legends-headings/">GOV.UK guidance on label and legend headings</a>.
 </div>
@@ -69,7 +69,7 @@ Visually hidden text is added to the end of the component labels. This is to hel
 - funds (for account 1)
 - remove (account 1), for the 'Remove' button
 
-This visually hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement). 
+This visually hidden text is automatically added by JavaScript. If you add the text to the HTML template, the component will be accessible without JavaScript (progressive enhancement).
 
 ### Write and implement error messages [#write-and-implement-error-messages-inline]
 
@@ -103,9 +103,9 @@ Follow the [GOV.UK guidance on error messages](https://design-system.service.gov
 
 #### Handling multiple errors  
 
-Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/). 
+Show errors for 1 item at a time using the [GOV.UK error summary](https://design-system.service.gov.uk/components/error-summary/).
 
-Once the user has resolved errors in the first item, display the errors for the next item until they're all resolved. This ensures that users can identify errors when an item is added or removed. 
+Once the user has resolved errors in the first item, display the errors for the next item until they're all resolved. This ensures that users can identify errors when an item is added or removed.
 
 ### Set up for use without JavaScript [#set-up-for-use-without-javascript-inline]
 
@@ -142,5 +142,4 @@ Use the [GOV.UK ‘check answers’ pattern](https://design-system.service.gov.u
 
 ### Example of multiple inline layouts on a page [#example-of-using-the-inline-variant-more-than-once-on-a-page-inline]
 
-<p><img src="{{ 'assets/images/add-another-inline-layout-example.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The page contains a heading, 2 questions with radio buttons. Underneath the 2 questions are 2 add another components in the inline layout. The first component has the heading 'Add gifts information' with the field labels 'Gift description' and 'value'. There is a 'remove button' to the right. The second component has the heading 'Add loans information' with the field labels 'Loan description' and 'value'. There is a red 'remove button' to the right'. A green submit button is at the bottom of the screen."></p>
-
+<p><img src="{{ 'assets/images/add-another-inline-layout-example-new.png' | rev | url }}" alt="A screen showing an MOJ header and footer. The page contains a heading, 2 questions with radio buttons. Underneath the 2 questions are 2 add another components in the inline layout. The first component has the heading 'Add gifts information' with the field labels 'Gift description' and 'value'. There is a 'remove button' to the right. The second component has the heading 'Add loans information' with the field labels 'Loan description' and 'value'. There is a red 'remove button' to the right'. A green submit button is at the bottom of the screen."></p>
