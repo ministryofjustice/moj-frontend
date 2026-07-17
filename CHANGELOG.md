@@ -1,3 +1,25 @@
+# [10.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v9.0.0...v10.0.0) (2026-07-16)
+
+
+* feat(add another)!: update add another to official ([#2198](https://github.com/ministryofjustice/moj-frontend/issues/2198)) ([b206dfe](https://github.com/ministryofjustice/moj-frontend/commit/b206dfeac784103e087032a9bbe8f4634353dac1))
+
+
+### Bug Fixes
+
+* Offering to add a class name to the PDS header component ([#2354](https://github.com/ministryofjustice/moj-frontend/issues/2354)) ([8d7eb54](https://github.com/ministryofjustice/moj-frontend/commit/8d7eb54911352be3d6d6f4bcf07b774fa63c0e08))
+
+
+### BREAKING CHANGES
+
+* Update add another component to official status.
+
+Co-authored-by: Chris Pymm <chris.pymm@digital.justice.gov.uk>
+Co-authored-by: chrispymm <595564+chrispymm@users.noreply.github.com>
+Co-authored-by: Stevey <59696147+itsmestevey@users.noreply.github.com>
+Co-authored-by: Chris Pymm <chris@chrispymm.co.uk>
+Co-authored-by: Copilot Autofix powered by AI <175728472+Copilot@users.noreply.github.com>
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
+
 # [9.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v8.0.1...v9.0.0) (2026-02-25)
 
 
