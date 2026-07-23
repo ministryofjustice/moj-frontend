@@ -28,7 +28,12 @@ You may want to use [Tabs](https://design-system.service.gov.uk/components/tabs/
 
 ### If you’re displaying names
 
-Use the format first-name, last-name unless user research tells you to use a different format. Further guidance is available on how to [ask users for names.](https://design-system.service.gov.uk/patterns/names/)
+In HMPPS, follow guidance on:
+
+- [how to display the names of people on probation](https://design-patterns.service.justice.gov.uk/content-standards/style-guide/#:~:text=person%20on%20probation%2C%20people%20on%20probation)
+- [how to display prisoners' names](https://design-patterns.service.justice.gov.uk/content-standards/style-guide/#:~:text=prisoner%2C%20person%20in%20prison)
+
+There's also the [GOV.UK 'ask users for names' pattern](https://design-system.service.gov.uk/patterns/names/).
 
 ### If you want add a link to let users view details of a case
 
