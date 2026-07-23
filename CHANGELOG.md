@@ -1,3 +1,10 @@
+## [10.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v10.0.0...v10.0.1) (2026-07-20)
+
+
+### Bug Fixes
+
+* rename to params for classes properly. ([#2503](https://github.com/ministryofjustice/moj-frontend/issues/2503)) ([f573f9a](https://github.com/ministryofjustice/moj-frontend/commit/f573f9a5780f5dc171e450534de6a782a8c1bdab))
+
 # [10.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v9.0.0...v10.0.0) (2026-07-16)
 
 
