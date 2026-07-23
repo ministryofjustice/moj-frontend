@@ -13,7 +13,7 @@ The ‘Add another’ component allows users to add more than 1 instance of rela
 
 ## When to use
 
-This component works best in a shallow layout for users to enter a small amount of information, ideally only a few times. 
+This component works best in a shallow layout for users to enter a small amount of information, ideally only a few times.
 
 The information (or 'items') that people add could be:
 
@@ -26,7 +26,7 @@ The information (or 'items') that people add could be:
 Do not use the 'Add another' component to collect lengthy or complex data. This is because:
 
 - the items are only saved when the user submits the page (so they'll lose the data if they refresh or close the page)
-- users may find it hard to check what they've entered, for example against a paper form or spreadsheet 
+- users may find it hard to check what they've entered, for example against a paper form or spreadsheet
 - very long pages can cause performance issues
 
 Use the [‘add to a list’ pattern](/patterns/add-to-a-list/) to help users add similar information many times.
