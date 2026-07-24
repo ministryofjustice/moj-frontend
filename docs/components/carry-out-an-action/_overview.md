@@ -12,22 +12,20 @@ eleventyComputed:
 
 ## Overview
 
-Use this pattern to help users carry out and confirm an action.
+Use this pattern to help users carry out and confirm an action. Not all actions need a confirmation screen.  
 
-Some actions can be carried out without the need for a confirmation screen. Other actions require a confirmation.
+A confirmation screen is needed when the:
+- action cannot be undone (or not undone easily)
+- consequences of the action need to be called out to the user 
+- user may need to provide further information about the action
 
-A confirmation screen is needed when:
-- the action cannot be undone (or not undone easily)
-- the consequences of the action need to be called out to the user 
-- the user may need to provide further information about the action
-
-The same action may need a confirmation in one service but not in another. This will depend on the user needs of the service.
+The same action may need a confirmation in one service but not in another. This depends on the user needs of the service.
 
 ### How to use 
 
-Use a static heading because dynamic headings can have an unpredictable length. 
+Use a static heading, becayse dynamic headings can have an unpredictable length. 
 
-Show the important details to the user when asking them to confirm the action. This is to reeassure them that they have the correct thing.  
+Show the important details to the user when asking them to confirm the action. This is to reassure them that they have the correct thing.  
 
 Use a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) or [GOV.UK summary card](https://design-system.service.gov.uk/components/summary-list/#:~:text=Nunjucks-,Summary%20cards,-If%20you%E2%80%99re%20showing) to display the relevant details.
 
@@ -57,7 +55,7 @@ There are the following pattern variations:
 - a confirmation screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) and [GOV.UK textarea](https://design-system.service.gov.uk/components/textarea/) for users to provide further explanation
 - a confirmation screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/), [GOV.UK radios](https://design-system.service.gov.uk/components/radios/) and a [GOV.UK textarea](https://design-system.service.gov.uk/components/textarea/) conditionally revealed for users to explain more
 
-You may need to create further variations depending on your user needs. For example, in the Non-standard crime claims (NSCC) service in LAA there is a variation of a confirmation screen with details in summary list, checkboxes for user to select multiple options, and a textarea for users to provide further explanation.
+You may need to create further variations depending on user needs. For example, in the 'Non-standard crime claims (NSCC)' service in LAA there's a variation of a confirmation screen with details in summary list, checkboxes for user to select multiple options, and a textarea for users to provide further explanation.
 
 ### Contribute to this component
 You can help develop this component by adding information to the [‘carry out an action’ Github discussion]({{ githuburl }}). This helps other people to use it in their service.
