@@ -11,58 +11,51 @@ eleventyComputed:
 </div>
 
 ## Overview
-/How it works
-Carry out an action (with optional confirmation).
 
 Use this pattern to help users carry out and confirm an action.
 
 Some actions can be carried out without the need for a confirmation screen. Other actions require a confirmation.
 
-When a confirmation screen would be required:
-- when it is an action that the user either can not undo or can not undo easily
-- when consequences of the action need to be called out to the user 
-- when the user may need to provide further information about the action
+A confirmation screen is needed when:
+- the action cannot be undone (or not undone easily)
+- the consequences of the action need to be called out to the user 
+- the user may need to provide further information about the action
 
-The same action may need a confirmation in one service but not in another, this will depend on the user needs of the service.
+The same action may need a confirmation in one service but not in another. This will depend on the user needs of the service.
 
-/Design thinking
+### How to use 
 
-//Heading
-- use static heading
-- dynamic headings make length unpredictable
+Use a static heading because dynamic headings can have an unpredictable length. 
 
-//Describe the thing
-- reassure user that they have the correct thing
-- include the details crucial to the user when confirming the action
+Show the important details to the user when asking them to confirm the action. This is to reeassure them that they have the correct thing.  
 
-Use a summary list or summary card to display the relevant details.
+Use a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) or [GOV.UK summary card](https://design-system.service.gov.uk/components/summary-list/#:~:text=Nunjucks-,Summary%20cards,-If%20you%E2%80%99re%20showing) to display the relevant details.
 
-//Calls to action
+The calls to action can be:
 - the primary action
 - a way back
-- check GOV design system button guidelines for when the button might use the red warning style
+- the [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#:~:text=buttons%20together.-,Warning%20buttons,-Warning%20buttons%20are) (if appropriate)
 
-//Notification banner
-- the notification gives the user feedback about what effect the action has had
-- if the action does not need a confirmation screen notification is shown immediately after action
+The notification gives the user feedback about what effect the action has had. If the action does not need a confirmation screen, this notification is shown immediately after the action. 
 
-/Research on this pattern
-No known issues - this pattern is currently in use in several live LAA services.
+### Research on this pattern
 
-### How the component is currently used
+There are no known issues. This pattern is in use in several live LAA services.
 
-//When to use this pattern
-Examples of possible actions:
-- assign an application / case / claim to my list 
-- remove an application / case / claim from my list
-- reassign an application / case / claim to my list
-- delete an application / case / claim
+### How the component is being used
 
-//Variations
-- No confirmation, user is presented with notification banner of the outcome of the action
-- Confirmation screen with details in summary list
-- Confirmation screen with details in summary list and textarea for users to provide further explanation
-- Confirmation screen with details in summary list, radio buttons for users to select from, and a textarea conditionally revealed for users to provide further explanation
+This pattern is being used to apply the following actions to an application, case or claim:
+- assign  
+- remove  
+- reassign  
+- delete  
+
+There are the following pattern variations: 
+
+- no confirmation 
+- a confirmation screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/)
+- a confirmation screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) and [GOV.UK textarea](https://design-system.service.gov.uk/components/textarea/) for users to provide further explanation
+- a confirmation screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/), [GOV.UK radios](https://design-system.service.gov.uk/components/radios/) and a [GOV.UK textarea](https://design-system.service.gov.uk/components/textarea/) conditionally revealed for users to explain more
 
 You may need to create further variations depending on your user needs. For example, in the Non-standard crime claims (NSCC) service in LAA there is a variation of a confirmation screen with details in summary list, checkboxes for user to select multiple options, and a textarea for users to provide further explanation.
 
