@@ -1,3 +1,11 @@
+# [10.1.0-beta.1](https://github.com/ministryofjustice/moj-frontend/compare/v10.0.1...v10.1.0-beta.1) (2026-07-27)
+
+
+### Features
+
+* update to govuk-frontend v6.2.O ([4790763](https://github.com/ministryofjustice/moj-frontend/commit/4790763d4c00e69e8a58e655aa7669eb81ec0851))
+* wip ([555f7f8](https://github.com/ministryofjustice/moj-frontend/commit/555f7f88dfb3642c3984c459b38deeb652daeffa))
+
 ## [10.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v10.0.0...v10.0.1) (2026-07-20)
 
 
