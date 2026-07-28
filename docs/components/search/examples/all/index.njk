@@ -1,0 +1,117 @@
+---
+layout: layouts/example.njk
+title: Search all (example)
+---
+
+{%- from "moj/components/search/macro.njk" import mojSearch -%}
+
+{% set label = {
+    text: "Find a person",
+    classes: "govuk-!-font-weight-bold"
+  }
+%}
+
+{% set hint = {
+    text: "You can search by name, date of birth or National Insurance number"
+  }
+%}
+
+{{ mojSearch({
+  action: "#",
+  iconButton: false,
+  input: {
+    id: "search",
+    name: "search"
+  },
+  label: label,
+  hint: hint,
+  button: {
+    text: "Search"
+  }
+}) }}
+
+<h2 class="govuk-heading-m">icon button</h3>
+
+{{ mojSearch({
+  action: "#",
+  iconButton: true,
+  input: {
+    id: "search",
+    name: "search"
+  },
+  label: label,
+  hint: hint,
+  button: {
+    text: "Search"
+  }
+}) }}
+
+<h2 class="govuk-heading-m">attached</h3>
+
+{{ mojSearch({
+  action: "#",
+  iconButton: false,
+  attachedButton: true,
+  input: {
+    id: "search",
+    name: "search"
+  },
+  label: label,
+  hint: hint,
+  button: {
+    text: "Search"
+  }
+  }) }}
+
+<h2 class="govuk-heading-m">attached with icon</h3>
+
+{{ mojSearch({
+  action: "#",
+  iconButton: true,
+  attachedButton: true,
+  input: {
+    id: "search",
+    name: "search"
+  },
+  label: label,
+  hint: hint,
+  button: {
+    text: "Search"
+  }
+  }) }}
+
+<h2 class="govuk-heading-m">stacked</h3>
+
+{{ mojSearch({
+  action: "#",
+  iconButton: true,
+  attachButton: true,
+  layout: "stacked",
+  input: {
+    id: "search",
+    name: "search"
+  },
+  label: label,
+  hint: hint,
+  button: {
+    text: "Search"
+  }
+}) }}
+
+<h2 class="govuk-heading-m">secondary button</h3>
+
+{{ mojSearch({
+  action: "#",
+  iconButton: true,
+  attachedButton: true,
+  input: {
+    id: "search",
+    name: "search"
+  },
+  label: label,
+  hint: hint,
+  button: {
+    text: "Search",
+    classes: "govuk-button--secondary"
+  }
+}) }}
