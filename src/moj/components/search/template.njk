@@ -1,5 +1,6 @@
 {%- from "govuk/components/input/macro.njk" import govukInput %}
 {%- from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/macros/attributes.njk" import govukAttributes %}
 
 {% set useStackedLayout = params.layout == "stacked" %}
 
@@ -10,7 +11,7 @@
 
 {# Button cannot be attached in stacked layout #}
 {% set inputWrapperClassNames = ["moj-search__input-wrapper"] %}
-{% set inputWrapperClassNames = inputWrapperClassNames.concat("moj-search__input-wrapper--attached") if params.attachedButton and not useStackedLayout else inputWrapperClassNames %}
+{% set inputWrapperClassNames = inputWrapperClassNames.concat("moj-search__input-wrapper--attached") if params.attachButton and not useStackedLayout else inputWrapperClassNames %}
 {% set inputWrapperClassNames = inputWrapperClassNames.join(" ") %}
 
 {# Icon button cannot be used in stacked layout #}
@@ -20,15 +21,25 @@
 {% set buttonClassNames = buttonClassNames.join(" ") %}
 
 {%- if params.label %}
-  {% set labelClasses = "moj-search__hint " + (params.label.classes if params.label.classes) %}
-  {% set labelText = params.label.text %}
-  {% set label = { classes: labelClasses, text: labelText } %}
+  {% set labelClasses = "moj-search__label " + (params.label.classes if params.label.classes) %}
+  {% set label = {
+    text: params.label.text,
+    html: params.label.html,
+    classes: labelClasses,
+    attributes: params.label.attributes
+  } %}
 {% endif -%}
 
 {%- if params.hint %}
   {% set hintClasses = "moj-search__hint " + (params.hint.classes if params.hint.classes) %}
   {% set hintText = params.hint.text %}
-  {% set hint = { classes: hintClasses, text: hintText } %}
+  {% set hint = {
+    text: params.hint.text,
+    html: params.hint.html,
+    id: params.hint.id,
+    classes: hintClasses,
+    attributes: params.hint.attributes
+  } %}
 {% endif -%}
 
 {% if params.iconButton and not useStackedLayout %}
@@ -43,9 +54,14 @@
 
 {% set buttonHtml %}
   {{ govukButton({
-    classes: buttonClassNames,
       text: params.button.text,
-      html: iconHtml if iconHtml else params.button.html
+      html: iconHtml if iconHtml else params.button.html,
+      id: params.button.id,
+      name: params.button.name,
+      value: params.button.value,
+      classes: buttonClassNames,
+      attributes: params.button.attributes,
+      preventDoubleClick: params.button.preventDoubleClick
   }) }}
 {% endset %}
 
@@ -55,7 +71,7 @@
   } %}
 {% endif %}
 
-<search class="moj-search {{ classNames }}" >
+<search class="moj-search {{ classNames }}" {{ govukAttributes(params.attributes) }}>
   <form action="{{ params.action }}" method="{{ params.method | default("get") }}">
     {% if params.csrf %}
       <input type="hidden" name="{{ params.csrf.name | default("_csrf") }}" value="{{ params.csrf.value }}">
@@ -63,6 +79,7 @@
 
     {{ govukInput({
       classes: "moj-search__input " + (params.input.classes if params.input.classes),
+      attributes: params.input.attributes,
       label: label,
       hint: hint,
       id: params.input.id,

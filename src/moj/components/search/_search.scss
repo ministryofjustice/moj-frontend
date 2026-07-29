@@ -8,6 +8,10 @@
   margin-bottom: 0;
 }
 
+.moj-search__label {
+  @include govuk-typography-weight-bold;
+}
+
 .moj-search__input:focus {
   position: relative;
   z-index: 1;
