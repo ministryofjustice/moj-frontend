@@ -1,0 +1,169 @@
+examples:
+  # 1. Default — inline layout, text button
+  - name: default
+    options:
+      action: /search
+      label:
+        text: Search
+      input:
+        id: search
+        name: search
+      button:
+        text: Search
+
+  # 2. Stacked layout — button rendered below the input
+  - name: stacked layout
+    options:
+      action: /search
+      layout: stacked
+      label:
+        text: Search
+      input:
+        id: search
+        name: search
+      button:
+        text: Search
+
+  # 3. With label
+  - name: with label
+    options:
+      action: /search
+      label:
+        text: Search the service
+      input:
+        id: search
+        name: search
+      button:
+        text: Search
+
+  # 4. With hint
+  - name: with hint
+    options:
+      action: /search
+      label:
+        text: Search
+      hint:
+        text: Enter a name, reference number or keyword
+      input:
+        id: search
+        name: search
+      button:
+        text: Search
+
+  # 5. With icon button — magnifying glass SVG icon
+  - name: with icon button
+    options:
+      action: /search
+      iconButton: true
+      label:
+        text: Search
+      input:
+        id: search
+        name: search
+      button:
+        text: Search
+
+  # 6. Icon button in stacked layout — icon and icon class should not be applied
+  - name: icon button in stacked layout
+    options:
+      action: /search
+      layout: stacked
+      iconButton: true
+      label:
+        text: Search
+      input:
+        id: search
+        name: search
+      button:
+        text: Search
+
+  # 7. Icon button with no button text — should fall back to default "search"
+  - name: icon button with default text
+    options:
+      action: /search
+      iconButton: true
+      input:
+        id: search
+        name: search
+      button: {}
+
+  # 8. With CSRF token — default field name "_csrf"
+  - name: with csrf
+    options:
+      action: /search
+      csrf:
+        value: abc123
+      input:
+        id: search
+        name: search
+      button:
+        text: Search
+
+  # 9. With CSRF token — custom field name
+  - name: with csrf custom name
+    options:
+      action: /search
+      csrf:
+        name: custom_token
+        value: token123
+      input:
+        id: search
+        name: search
+      button:
+        text: Search
+
+  # 10. With POST method
+  - name: with post method
+    options:
+      action: /search
+      method: post
+      input:
+        id: search
+        name: search
+      button:
+        text: Search
+
+  # 11. With custom container classes
+  - name: with classes
+    options:
+      action: /search
+      classes: custom-search-class
+      input:
+        id: search
+        name: search
+      button:
+        text: Search
+
+  # 12. With custom container attributes
+  - name: with attributes
+    options:
+      action: /search
+      attributes:
+        data-custom: custom-value
+      input:
+        id: search
+        name: search
+      button:
+        text: Search
+
+  # 13. With custom input classes
+  - name: with input classes
+    options:
+      action: /search
+      input:
+        id: search
+        name: search
+        classes: custom-input-class
+      button:
+        text: Search
+
+  # 14. With custom button classes
+  - name: with button classes
+    options:
+      action: /search
+      input:
+        id: search
+        name: search
+      button:
+        text: Search
+        classes: custom-button-class
