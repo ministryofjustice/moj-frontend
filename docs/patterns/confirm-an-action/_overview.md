@@ -1,18 +1,18 @@
 ---
 title: Overview
 order: 10
-tags: 'carry-out-an-action'
+tags: 'confirm-an-action'
 permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---
 <div class="img-container">
-  <img src="/assets/images/submission-1783074553746/Carry-out-an-action-(with-optional-confirmation).png" alt="carry out an action" />
+  <img src="/assets/images/submission-1783074553746/Carry-out-an-action-(with-optional-confirmation).png" alt="confirm an action" />
 </div>
 
 ## Overview
 
-Use this pattern to help users carry out and confirm an action. Not all actions need a confirmation screen.  
+Use this pattern to help users confirm and confirm an action. Not all actions need a confirmation screen.  
 
 A confirmation screen is needed when the:
 - action cannot be undone (or not undone easily)
@@ -58,4 +58,4 @@ There are the following pattern variations:
 You may need to create further variations depending on user needs. For example, in the 'Non-standard crime claims (NSCC)' service in LAA there's a variation of a confirmation screen with details in summary list, checkboxes for user to select multiple options, and a textarea for users to provide further explanation.
 
 ### Contribute to this component
-You can help develop this component by adding information to the [‘carry out an action’ Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+You can help develop this component by adding information to the [‘confirm an action’ Github discussion]({{ githuburl }}). This helps other people to use it in their service.

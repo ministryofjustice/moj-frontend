@@ -1,5 +1,5 @@
 ---
-title: Carry out an action
+title: Confirm an action
 tabs: true
 status: Experimental
 statusDate: July 2026
