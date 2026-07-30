@@ -45,46 +45,11 @@ title: Search all (example)
   }
 }) }}
 
-<h2 class="govuk-heading-m">attached</h2>
-
-{{ mojSearch({
-  action: "#",
-  iconButton: false,
-  attachButton: true,
-  input: {
-    id: "search",
-    name: "search"
-  },
-  label: label,
-  hint: hint,
-  button: {
-    text: "Search"
-  }
-  }) }}
-
-<h2 class="govuk-heading-m">attached with icon</h2>
-
-{{ mojSearch({
-  action: "#",
-  iconButton: true,
-  attachButton: true,
-  input: {
-    id: "search",
-    name: "search"
-  },
-  label: label,
-  hint: hint,
-  button: {
-    text: "Search"
-  }
-  }) }}
-
 <h2 class="govuk-heading-m">stacked</h2>
 
 {{ mojSearch({
   action: "#",
   iconButton: true,
-  attachButton: true,
   layout: "stacked",
   input: {
     id: "search",
@@ -102,7 +67,6 @@ title: Search all (example)
 {{ mojSearch({
   action: "#",
   iconButton: true,
-  attachButton: true,
   input: {
     id: "search",
     name: "search"

@@ -9,9 +9,7 @@
 {% set classNames = classNames.concat(params.classes) if params.classes else classNames %}
 {% set classNames = classNames.join(" ") %}
 
-{# Button cannot be attached in stacked layout #}
 {% set inputWrapperClassNames = ["moj-search__input-wrapper"] %}
-{% set inputWrapperClassNames = inputWrapperClassNames.concat("moj-search__input-wrapper--attached") if params.attachButton and not useStackedLayout else inputWrapperClassNames %}
 {% set inputWrapperClassNames = inputWrapperClassNames.join(" ") %}
 
 {# Icon button cannot be used in stacked layout #}

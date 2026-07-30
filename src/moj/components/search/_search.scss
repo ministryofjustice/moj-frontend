@@ -36,20 +36,6 @@
   flex-shrink: 0;
 }
 
-.moj-search__input-wrapper--attached {
-  .moj-search__input {
-    border-right-width: 0;
-  }
-
-  .moj-search__input:focus {
-    border-right-width: 2px;
-  }
-
-  .moj-search__button {
-    margin-left: 0;
-  }
-}
-
 .moj-search--stacked {
   .govuk-form-group {
     margin-bottom: govuk-spacing(3);
