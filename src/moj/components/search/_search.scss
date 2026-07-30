@@ -28,7 +28,12 @@
 
 .moj-search__button--icon {
   // ensures button is the same height as the input field
-  display: inline-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 38px;
+  flex-shrink: 0;
 }
 
 .moj-search__input-wrapper--attached {
