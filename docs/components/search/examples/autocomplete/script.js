@@ -1,4 +1,4 @@
-const people = [
+const data = [
   'Oliver Bennett',
   'Amelia Smith',
   'Harry Thompson',
@@ -15,21 +15,16 @@ if (typeof accessibleAutocomplete === 'function') {
   const searchInput = document.querySelector('#search')
 
   if (searchInput) {
-    const wrapper = document.createElement('div')
-    wrapper.className = 'search-autocomplete-wrapper'
-    searchInput.parentNode.insertBefore(wrapper, searchInput)
-    searchInput.remove()
-  }
+    // create a container div to hold the autocomplete input and use it to
+    // replace the original search input
+    const autocompleteContainer = document.createElement('div')
+    autocompleteContainer.className = 'moj-search__autocomplete-container'
+    searchInput.replaceWith(autocompleteContainer)
 
-  const autocompleteElement = document.querySelector(
-    '#search-autocomplete .search-autocomplete-wrapper'
-  )
-
-  if (autocompleteElement) {
     accessibleAutocomplete({
-      element: autocompleteElement,
+      element: autocompleteContainer,
       id: 'search', // To match it to the existing <label>.
-      source: people,
+      source: data,
       displayMenu: 'overlay'
     })
   }
