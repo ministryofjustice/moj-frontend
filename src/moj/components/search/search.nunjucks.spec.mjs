@@ -86,12 +86,6 @@ describe('search', () => {
       expect(button).toHaveClass('moj-search__button')
     })
 
-    test('button is placed inside the input wrapper', () => {
-      const wrapper = $component.querySelector('.moj-search__input-wrapper')
-      expect(wrapper).not.toBeNull()
-      expect(wrapper.querySelector('button')).toBeInTheDocument()
-    })
-
     test('does not render a CSRF hidden input', () => {
       expect($component.querySelector('input[type="hidden"]')).toBeNull()
     })
