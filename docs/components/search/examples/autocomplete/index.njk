@@ -1,0 +1,30 @@
+---
+layout: layouts/example.njk
+title: Search autocomplete (example)
+---
+
+{%- from "moj/components/search/macro.njk" import mojSearch -%}
+
+{{ mojSearch({
+  attributes: {
+    id: "search-autocomplete"
+  },
+  action: "#",
+  input: {
+    id: "search",
+    name: "search"
+  },
+  label: {
+    text: "Find a person"
+  },
+  hint: {
+    text: "Search for a person by name"
+  },
+  button: {
+    text: "Search"
+  }
+}) }}
+
+<!--no include-->
+<script type="text/javascript" src="/assets/vendor/accessible-autocomplete/accessible-autocomplete.min.js"></script>
+<link rel="stylesheet" href="/assets/vendor/accessible-autocomplete/accessible-autocomplete.min.css" />

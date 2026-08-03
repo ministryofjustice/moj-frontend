@@ -12,19 +12,21 @@
   @include govuk-typography-weight-bold;
 }
 
+// ensure the input field grows and shrinks to fill space
+// *:first-child is used to make the rule apply if an autocomplete is used to
+// replace the input field
+.moj-search__input-wrapper > *:first-child {
+  flex: 1 1 auto;
+}
+
 .moj-search__input {
-  // Search type inputs - removes the 'X' clear button from webkit browsers
+  // Search type inputs - removes the 'x' clear button from webkit browsers
   // the button is raised as a WCAG fail as it is not keyboard focusable.
   &[type="search"]::-webkit-search-decoration,
   &[type="search"]::-webkit-search-cancel-button,
   &[type="search"]::-webkit-search-results-button,
   &[type="search"]::-webkit-search-results-decoration {
     display: none;
-  }
-
-  &:focus {
-    position: relative;
-    z-index: 1;
   }
 }
 
@@ -33,17 +35,19 @@
   width: auto;
   margin-bottom: 0;
   margin-left: govuk-spacing(2);
-  // Prevent button from stretching in flex container and box shadow overflowing
+  // forces the button to align top and bottom with the input field
+  // without this the button box shadow will be out of alignment
   align-self: flex-start;
 }
 
 .moj-search__button--icon {
-  // Ensures button is the same height as the input field
+  // ensures button is the same height as the input field
   display: flex;
+  // centres the icon within the button
   align-items: center;
   justify-content: center;
   width: 40px;
-  height: 38px;
+  height: 38px; // allow 2px for the box shadow
   flex-shrink: 0;
 }
 
@@ -55,4 +59,10 @@
   .moj-search__button {
     margin-left: 0;
   }
+}
+
+// if an autocomplete is used, ensure the font is consistent with the rest of
+// the search component
+.moj-search .autocomplete__wrapper * {
+  @include govuk-typography-common;
 }
