@@ -12,9 +12,20 @@
   @include govuk-typography-weight-bold;
 }
 
-.moj-search__input:focus {
-  position: relative;
-  z-index: 1;
+.moj-search__input {
+  // Search type inputs - removes the 'X' clear button from webkit browsers
+  // the button is raised as a WCAG fail as it is not keyboard focusable.
+  &[type="search"]::-webkit-search-decoration,
+  &[type="search"]::-webkit-search-cancel-button,
+  &[type="search"]::-webkit-search-results-button,
+  &[type="search"]::-webkit-search-results-decoration {
+    display: none;
+  }
+
+  &:focus {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .moj-search__button {
@@ -22,12 +33,12 @@
   width: auto;
   margin-bottom: 0;
   margin-left: govuk-spacing(2);
-  // prevent button from stretching in flex container and box shadow overflowing
+  // Prevent button from stretching in flex container and box shadow overflowing
   align-self: flex-start;
 }
 
 .moj-search__button--icon {
-  // ensures button is the same height as the input field
+  // Ensures button is the same height as the input field
   display: flex;
   align-items: center;
   justify-content: center;

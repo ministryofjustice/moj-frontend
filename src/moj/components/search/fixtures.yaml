@@ -7,7 +7,6 @@ examples:
         text: Search
       input:
         id: search
-        name: search
       button:
         text: Search
 

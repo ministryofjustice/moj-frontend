@@ -1,0 +1,24 @@
+---
+layout: layouts/example.njk
+title: Search with icon button (example)
+---
+
+{%- from "moj/components/search/macro.njk" import mojSearch -%}
+
+{{ mojSearch({
+  action: "#",
+  iconButton: true,
+  input: {
+    id: "search",
+    name: "search"
+  },
+  label: {
+    text: "Find a person"
+  },
+  hint: {
+    text: "You can search by name, date of birth or National Insurance number"
+  },
+  button: {
+    text: "Search"
+  }
+}) }}

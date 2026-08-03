@@ -81,8 +81,8 @@
       label: label,
       hint: hint,
       id: params.input.id,
-      name: params.input.name,
-      type: "search",
+      name: params.input.name | default("search"),
+      type: params.input.type | default("search"),
       inputWrapper: {
         classes: inputWrapperClassNames
       },
