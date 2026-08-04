@@ -19,8 +19,8 @@ title: Search all (example)
   action: "#",
   iconButton: false,
   input: {
-    id: "search",
-    name: "search"
+    id: "search-default",
+    name: "search-default"
   },
   label: label,
   hint: hint,
@@ -35,8 +35,8 @@ title: Search all (example)
   action: "#",
   iconButton: true,
   input: {
-    id: "search",
-    name: "search"
+    id: "search-icon",
+    name: "search-icon"
   },
   label: label,
   hint: hint,
@@ -52,8 +52,8 @@ title: Search all (example)
   iconButton: true,
   layout: "stacked",
   input: {
-    id: "search",
-    name: "search"
+    id: "search-stacked",
+    name: "search-stacked"
   },
   label: label,
   hint: hint,
@@ -68,8 +68,8 @@ title: Search all (example)
   action: "#",
   iconButton: true,
   input: {
-    id: "search",
-    name: "search"
+    id: "search-secondary",
+    name: "search-secondary"
   },
   label: label,
   hint: hint,
@@ -89,7 +89,7 @@ title: Search all (example)
   action: "#",
   method: "post",
   input: {
-    id: "search",
+    id: "search-old-njk",
     name: "search"
   },
   label: {
@@ -110,13 +110,13 @@ title: Search all (example)
 <div class="moj-search">
   <form action="#" method="post">
     <div class="govuk-form-group">
-      <label class="govuk-label moj-search__label govuk-!-font-weight-bold" for="search">
+      <label class="govuk-label moj-search__label govuk-!-font-weight-bold" for="search-html">
         Find a person
       </label>
-      <div id="search-hint" class="govuk-hint moj-search__hint ">
+      <div id="search-hint-html" class="govuk-hint moj-search__hint ">
         You can search by name, date of birth or National Insurance number
       </div>
-      <input class="govuk-input moj-search__input " id="search" name="search" type="search" aria-describedby="search-hint">
+      <input class="govuk-input moj-search__input " id="search--html" name="search-html" type="search" aria-describedby="search-hint-html">
     </div>
     <button type="submit" class="govuk-button moj-search__button " data-module="govuk-button">
       Search
@@ -191,10 +191,10 @@ title: Search all (example)
       <div class="moj-search moj-search--ondark moj-search--inline">
         <form action="" method="get">
           <div class="govuk-form-group">
-            <label class="govuk-label moj-search__label govuk-visually-hidden" for="search-1">
+            <label class="govuk-label moj-search__label govuk-visually-hidden" for="search-2">
               Search
             </label>
-            <input class="govuk-input moj-search__input " id="search-1" name="search-1" type="search">
+            <input class="govuk-input moj-search__input " id="search-2" name="search-2" type="search">
           </div>
           <button type="submit" class="govuk-button moj-search__button " data-module="govuk-button">
             Search
