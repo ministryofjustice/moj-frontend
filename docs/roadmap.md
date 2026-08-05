@@ -19,9 +19,9 @@ The roadmap is for transparency, to help with decision making, and encourage col
 
 ## Releases since July 2026
 
-After the introduction of a [sitemap](/sitemap/) the Design System documentation site is now fully accessible. 
+Since the introduction of a [sitemap](/sitemap/), the Design System documentation site is now fully accessible. 
 
-We've made content clearer on [building block statuses](/design-system-statuses/), to help users know how they should be used.  
+We've made content clearer on [building block statuses](/design-system-statuses/). This is to help users understand how they should be used.  
 
 ### New official components
 
@@ -40,7 +40,7 @@ We're:
 
 ## Coming up next
 
-We'll be exploring:
+We'll be looking at:
 
 - a more consistent way for users of PDS services to get support and escalate problems
 - [the header component](/components/header/)   
