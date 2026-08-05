@@ -9,7 +9,7 @@ eleventyNavigation:
   order: 40
 ---
 
-<b>Last updated: 22 April 2026</b>
+<b>Last updated: 5 August 2026</b>
 
 This roadmap shows what we're working on and planning to do next. It's not fixed -- our plans might change as we learn more, respond to feedback, or adjust priorities. 
 
@@ -17,56 +17,35 @@ The roadmap is for transparency, to help with decision making, and encourage col
 
 <hr>
 
-## Releases since November 2025
+## Releases since July 2026
 
-### New experimental building blocks
+Since the introduction of a [sitemap](/sitemap/), the Design System documentation site is now fully accessible. 
 
-The MOJ Design System team released the following 10 experimental building blocks in the last few weeks: 
-
-- [numeric data component](/components/numeric-data/)
-- [contextual date component](/components/contextual-date/)
-- [feedback banner component](/components/feedback-banner/)
-- [card component](/components/card/)
-- [modal dialog component](/components/modal-dialog/)
-- [timeout warning component](/components/timeout-warning/)
-- [electronic signature pattern](/patterns/electronic-signature/)
-- [copy button component](/components/copy-button/)
-- [outage banner component](/components/outage-banner/) 
-- [API error component](/components/api-error/)
-
-Find out more [about experimental building blocks](/design-system-statuses/). 
+We've made content clearer on [building block statuses](/design-system-statuses/). This is to help users understand how they should be used.  
 
 ### New official components
 
-These components are new or were developed from the 'to be reviewed' status:
-
-- [Probation Digital Services (PDS) footer](/probation/components/pds-footer/)
-- [PDS header](/probation/components/pds-header/)
-- [pagination](/components/pagination/)
+We released the ['add another' component](/components/add-another/). 
 
 <hr>
 
 ## What we're working on now
  
-We're developing the following building blocks to the 'official' status so that they can be used in live services:
+We're:
 
-- [add another component](/components/add-another/) 
-- [search component](/components/search/) 
-
-We're also running a discovery into PDS breadcrumbs and back links, to help users navigate services more easily. 
+- developing the [search component](/components/search/) to 'official' status 
+- exploring how Probational Delivery Service (PDS) users identify people on probation
 
 <hr>
 
 ## Coming up next
 
-We'll be exploring:
-- a more consistent way for users of PDS services to get support and escalate problems
-- how PDS identifies users on probation
+We'll be looking at:
 
-We'll develop the following components to the 'official' status:
-- [filter component](/components/filter/)   
-- [side navigation component](/components/side-navigation/)  
-- [ticket panel component](/components/ticket-panel/)
+- a more consistent way for users of PDS services to get support and escalate problems
+- [the header component](/components/header/)   
+- [the side navigation component](/components/side-navigation/)  
+- [the primary navigation component](/components//primary-navigation/)
 
 <hr>
 
