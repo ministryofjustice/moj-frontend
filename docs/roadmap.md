@@ -66,7 +66,7 @@ We'll be exploring:
 We'll develop the following components to the 'official' status:
 - [filter component](/components/filter/)   
 - [side navigation component](/components/side-navigation/)  
-- [ticket panel component](/components/ticket-panel/)
+- [scrollable pane component](/components//scrollable-pane/)
 
 <hr>
 
