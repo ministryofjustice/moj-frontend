@@ -45,7 +45,7 @@ We'll be looking at:
 - a more consistent way for users of PDS services to get support and escalate problems
 - [the header component](/components/header/)   
 - [the side navigation component](/components/side-navigation/)  
-- [the primary navigation component](/components//primary-navigation/)
+- [the scrollable pane component](/components/scrollable-pane)
 
 <hr>
 
