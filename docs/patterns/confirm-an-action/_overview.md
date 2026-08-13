@@ -17,8 +17,8 @@ Use this pattern to help users confirm an action. It consists of:
 - a 'confirm action' screen
 - a 'success' screen
 
-
 Not all actions need a 'confirm an action' pattern. Use this pattern when:
+
 - the action cannot be undone (or not undone easily)
 - consequences of the action need to be called out to the user 
 - users may need to provide further information about the action
@@ -33,16 +33,18 @@ This pattern is being used for the following actions (for an application, case o
 - reassign  
 - delete  
 
-There are the following pattern variations: 
+### How to use
 
-- no confirmation 
-- a confirmation screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/)
-- a confirmation screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) and [GOV.UK textarea](https://design-system.service.gov.uk/components/textarea/) for users to provide further explanation
-- a confirmation screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/), [GOV.UK radios](https://design-system.service.gov.uk/components/radios/) and a [GOV.UK textarea](https://design-system.service.gov.uk/components/textarea/) conditionally revealed for users to explain more
+There are 4 pattern variations: 
+
+1 'Success' screen only. 
+2 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/).
+3 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) and [GOV.UK textarea](https://design-system.service.gov.uk/components/) for users to explain more.
+4 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/), [GOV.UK radios](https://design-system.service.gov.uk/components/radios/) and a [GOV.UK textarea](https://design-system.service.gov.uk/components/textarea/) conditionally revealed for users to explain more.
 
 You may need to create further variations depending on user needs. For example, in the 'Non-standard crime claims (NSCC)' service in LAA there's a variation of a confirmation screen with details in a summary list, checkboxes for the user to select multiple options, and a textarea for users to provide further explanation.
 
-### How to use 
+#### Designing the pattern
 
 Use a static heading, because dynamic headings can have an unpredictable length. 
 
@@ -53,13 +55,13 @@ Use a [GOV.UK summary list](https://design-system.service.gov.uk/components/summ
 The calls to action can be:
 - the primary action
 - a way back
-- the [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#:~:text=buttons%20together.-,Warning%20buttons,-Warning%20buttons%20are) (if appropriate)
+- the [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#:~:text=buttons%20together.-,Warning%20buttons,-Warning%20buttons%20are)  
 
 The notification banner tells the user what effect the action has had. If the action does not need a confirmation screen, this notification is shown immediately after the action. 
 
 ### Research on this pattern
 
-There are no known issues. This pattern is in use in several live LAA services.
+There are no known issues. This pattern is being used in several live LAA services.
 
 ### Contribute to this pattern
 
