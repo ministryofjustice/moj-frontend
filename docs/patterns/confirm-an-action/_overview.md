@@ -20,7 +20,7 @@ Use this pattern to help users confirm an action. It consists of:
 Not all actions need a 'confirm an action' pattern. Use this pattern when:
 
 - the action cannot be undone (or not undone easily)
-- consequences of the action need to be called out to the user 
+- the consequences of the action need to be called out to the user 
 - users may need to provide further information about the action
 
 The same action may need a confirmation in one service but not in another. This depends on the user needs of the service.
@@ -37,10 +37,10 @@ This pattern is being used for the following actions (for an application, case o
 
 There are 4 pattern variations: 
 
-1 'Success' screen only. 
-2 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/).
-3 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) and [GOV.UK textarea](https://design-system.service.gov.uk/components/) for users to explain more.
-4 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/), [GOV.UK radios](https://design-system.service.gov.uk/components/radios/) and a [GOV.UK textarea](https://design-system.service.gov.uk/components/textarea/) conditionally revealed for users to explain more.
+- 'Success' screen only.    
+- 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/)
+- 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) and [GOV.UK textarea](https://design-system.service.gov.uk/components/) for users to explain more
+- 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/), [GOV.UK radios](https://design-system.service.gov.uk/components/radios/) and a [GOV.UK textarea](https://design-system.service.gov.uk/components/textarea/) conditionally revealed for users to explain more
 
 You may need to create further variations depending on user needs. For example, in the 'Non-standard crime claims (NSCC)' service in LAA there's a variation of a confirmation screen with details in a summary list, checkboxes for the user to select multiple options, and a textarea for users to provide further explanation.
 
