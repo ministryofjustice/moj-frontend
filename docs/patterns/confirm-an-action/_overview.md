@@ -6,8 +6,9 @@ permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---
+
 <div class="img-container">
-  <img src="/assets/images/submission-1783074553746/Carry-out-an-action-(with-optional-confirmation).png" alt="confirm an action" />
+  <img src="/assets/images/submission-1783074553746/confirm-action-screen.png" alt="Screenshot of a Legal Aid Agency confirmation page asking the user to confirm an action. The page displays key application details, including assignee, client name, application type, submission date, reference number and status, before the user submits the action" />
 </div>
 
 ## Overview
@@ -16,6 +17,8 @@ Use this pattern to help users confirm an action. It consists of:
 
 - a 'confirm action' screen
 - a 'success' screen
+
+You can [view all the 'confirm an action' pattern variations](/patterns/confirm-an-action/#designs-tab).
 
 Not all actions need a 'confirm an action' pattern. Use this pattern when:
 
@@ -37,10 +40,12 @@ This pattern is being used for the following actions (for an application, case o
 
 There are 4 pattern variations: 
 
-- 'Success' screen only.    
+- 'Success' screen only   
 - 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/)
 - 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) and [GOV.UK textarea](https://design-system.service.gov.uk/components/) for users to explain more
 - 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/), [GOV.UK radios](https://design-system.service.gov.uk/components/radios/) and a [GOV.UK textarea](https://design-system.service.gov.uk/components/textarea/) conditionally revealed for users to explain more
+
+View the ['confirm an action' pattern variations](/patterns/confirm-an-action/#designs-tab).
 
 You may need to create further variations depending on user needs. For example, in the 'Non-standard crime claims (NSCC)' service in LAA there's a variation of a confirmation screen with details in a summary list, checkboxes for the user to select multiple options, and a textarea for users to provide further explanation.
 
