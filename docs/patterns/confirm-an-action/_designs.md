@@ -7,7 +7,7 @@ eleventyComputed:
   override:eleventyNavigation: false
 ---
 
-The confirm an action pattern has 4 variants. 
+The 'confirm an action' pattern has 4 variants. 
 
 ### 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/)
 
@@ -15,7 +15,7 @@ The confirm an action pattern has 4 variants.
   <img src="/assets/images/submission-1783074553746/confirm-action-screen.png" alt="Screenshot of a Legal Aid Agency confirmation page asking the user to confirm an action. The page displays key application details, including assignee, client name, application type, submission date, reference number and status, before the user submits the action" />
 </div>
 
-### - 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) and [GOV.UK textarea](https://design-system.service.gov.uk/components/) for users to explain more
+### 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) and [GOV.UK textarea](https://design-system.service.gov.uk/components/textarea) for users to explain more
 
 <div class="img-container">
   <img src="/assets/images/submission-1783074553746/confirm-action-screen-with-explanation.png" alt="Screenshot of a Legal Aid Agency confirmation page asking the user to confirm an action. Key application details are displayed, followed by a text field where the user must provide details about the action and an inset text box containing important explanatory information" />

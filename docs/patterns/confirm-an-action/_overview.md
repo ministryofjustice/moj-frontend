@@ -13,18 +13,18 @@ eleventyComputed:
 
 ## Overview
 
-Use this pattern to help users confirm an action. It consists of:
+Use this pattern to help users confirm an action. It consists of a:
 
-- a 'confirm action' screen
-- a 'success' screen
+- 'confirm action' screen
+- 'success' screen
 
-You can [view all the 'confirm an action' pattern variations](/patterns/confirm-an-action/#designs-tab).
+You can [view all the 'confirm an action' pattern variants](/patterns/confirm-an-action/#designs-tab).
 
-Not all actions need a 'confirm an action' pattern. Use this pattern when:
+Not all actions need a 'confirm an action' pattern. Use it when:
 
 - the action cannot be undone (or not undone easily)
 - the consequences of the action need to be called out to the user 
-- users may need to provide further information about the action
+- some users need to provide further information about the action
 
 The same action may need a confirmation in one service but not in another. This depends on the user needs of the service.
 
@@ -40,14 +40,18 @@ This pattern is being used for the following actions (for an application, case o
 
 There are 4 pattern variations: 
 
-- 'Success' screen only   
-- 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/)
-- 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) and [GOV.UK textarea](https://design-system.service.gov.uk/components/) for users to explain more
-- 'Confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/), [GOV.UK radios](https://design-system.service.gov.uk/components/radios/) and a [GOV.UK textarea](https://design-system.service.gov.uk/components/textarea/) conditionally revealed for users to explain more
+- 'success' screen only   
+- 'confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/)
+- 'confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) and [GOV.UK textarea](https://design-system.service.gov.uk/components/textarea) for users to explain more
+- 'confirm action' screen with details in a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/), [GOV.UK radios](https://design-system.service.gov.uk/components/radios/) and a [GOV.UK textarea](https://design-system.service.gov.uk/components/textarea/) conditionally revealed for users to explain more
 
-View the ['confirm an action' pattern variations](/patterns/confirm-an-action/#designs-tab).
+View the ['confirm an action' pattern variants](/patterns/confirm-an-action/#designs-tab).
 
-You may need to create further variations depending on user needs. For example, in the 'Non-standard crime claims (NSCC)' service in LAA there's a variation of a confirmation screen with details in a summary list, checkboxes for the user to select multiple options, and a textarea for users to provide further explanation.
+You may need to create further variations depending on user needs. For example, in the 'Non-standard crime claims (NSCC)' service in LAA there's a variation of a confirmation screen with:
+
+- details in a summary list
+- checkboxes for the user to select multiple options
+- a textarea for users to provide further explanation
 
 #### Designing the pattern
 
@@ -55,12 +59,12 @@ Use a static heading, because dynamic headings can have an unpredictable length.
 
 Show the important details to the user when asking them to confirm the action. This is to reassure them that they have the correct thing.  
 
-Use a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) or [GOV.UK summary card](https://design-system.service.gov.uk/components/summary-list/#:~:text=Nunjucks-,Summary%20cards,-If%20you%E2%80%99re%20showing) to display the relevant details.
+Use a [GOV.UK summary list](https://design-system.service.gov.uk/components/summary-list/) or [GOV.UK summary card](https://design-system.service.gov.uk/components/summary-list/#Summary%20cards) to display the relevant details.
 
 The calls to action can be:
 - the primary action
 - a way back
-- the [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#:~:text=buttons%20together.-,Warning%20buttons,-Warning%20buttons%20are)  
+- the [GOV.UK warning button](https://design-system.service.gov.uk/components/button/#Warning%20buttons)  
 
 The notification banner tells the user what effect the action has had. If the action does not need a confirmation screen, this notification is shown immediately after the action. 
 
