@@ -85,6 +85,24 @@ describe('add another', () => {
       expect(addButton).toBeInTheDocument()
     })
 
+    test('adds id to the component and derived attributes to the add button', () => {
+      expect($component).toHaveAttribute('id', 'default-add-another')
+
+      const addButton = getByRole($component, 'button', {
+        name: 'Add another person'
+      })
+
+      expect(addButton).toHaveAttribute(
+        'id',
+        'default-add-another-add-another-button'
+      )
+      expect(addButton).toHaveAttribute(
+        'name',
+        'default-add-another-add-another'
+      )
+      expect(addButton).toHaveValue('add-another-person')
+    })
+
     test('sets type="button" on the add button to prevent form submission', () => {
       const addButton = getByRole($component, 'button', {
         name: 'Add another person'
@@ -389,6 +407,7 @@ describe('add another', () => {
         name: 'Create another case'
       })
       expect(addButton).toBeInTheDocument()
+      expect(addButton).toHaveValue('create-another-case')
     })
 
     test('applies translated legend and label suffix text after initialisation', () => {
