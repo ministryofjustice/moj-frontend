@@ -11,37 +11,45 @@ eleventyComputed:
 
 Intro text. 
 
-### Designing the component  
+### Buttons and the magnifying glass icon
 
-#### Deciding between buttons and the magnifying glass icon
+The search component has 3 button types:
 
-The stacked variant can be used with either the GOV.UK primary button or the GOV.UK secondary button. There should only be 1 GOV.UK primary button on each page, so xxx. 
+- GOV.UK primary button
+- GOV.UK secondary button
+- magnifying glass icon
 
-The inline variant can only be used with the magnifying glass icon. 
+Which one you add to the component depends on your layout. Use:
 
-It's a stronger visual design to save space on text-heavy user interfaces. It's a widely used and recognised design for search. There's a [Nielsen Norman Group article on the magnififying glass icon](https://www.nngroup.com/articles/magnifying-glass-icon/ ).
+- any of the 3 button types with the inline layout 
+- the 2 GOV.UK buttons with the stacked layout (do not use the magnifying glass icon with the stacked layout)
+
+Avoid using more than 1 primary button on a page. View [GOV.UK guidance on primary and secondary buttons](https://design-system.service.gov.uk/components/button/#:~:text=the%20Nunjucks%20macro.-,Default%20buttons,-Use%20a%20default). 
+
+The magnifying glass icon is a stronger visual design to save space on text-heavy user interfaces. It's a widely used and recognised design for search. There's a [Nielsen Norman Group article on the magnififying glass icon](https://www.nngroup.com/articles/magnifying-glass-icon/ ).
 
 However, button text is clearer and more accessible, so only use the magnifying glass icon if there's no space for the button. 
 
-#### Writing content  
+### Writing content  
 
-In the legend state what the user is searching by. Expand. 
+You can add the following content to the component:
 
-Hint text guidance. Hint text could be 'For example search by name, prison number or date of birth.'
+- a label -- to state what the user is searching for, for example a person, event or course
+- hint text - to state what the user is searching by, for example name or reference number (although you do not always need to add hint text)
 
-#### Placeholder text 
+#### Avoid placeholder text 
 
-Do not add placeholder text to the component, unless it's to help people use the autocompete component. 
+Avoid adding placeholder text to the component, unless it's to help people use the autocompete component. 
 
 Placeholder text will make it harder for some people to use the component, and may not be accessible. You can read [GOV.UK guidance on avoiding placeholder text](https://design-system.service.gov.uk/components/text-input/#avoid-placeholder-text).  
 
-If users need guidance on how to perofmr their search, add this content to the hint text instead. 
+It's always preferrable to use visible label or hint text. 
 
-#### Using autocomplete
+### Using autocomplete
 
 The autocomplete component enables users to start typing and then see options.
 
-You can use the component with [search autocomplete from the GOV.UK Publishing Design Guide](https://design-guide.publishing.service.gov.uk/components/search-autocomplete/) and the [GOV.UK accessible autocomplete](https://github.com/alphagov/accessible-autocomplete).
+You can use the component with the [GOV.UK Publishing Design Guide's search autocomplete component](https://design-guide.publishing.service.gov.uk/components/search-autocomplete/) and the [GOV.UK accessible autocomplete component (on Github)](https://github.com/alphagov/accessible-autocomplete).
 
 You can view:
 - [GOV.UK accessible autocomplete guidance](https://github.com/alphagov/accessible-autocomplete#accessible-autocomplete)
@@ -68,14 +76,11 @@ Add the [MOJ filter component](https://design-patterns.service.justice.gov.uk/co
 
 #### Adding multiple search components to a page  
 
-You can add the search component to a page more than once. If you do this you'll need to:
-
-- add an accessible name (because each instance of the component creates a search landmark)
-- ensure that there's no more than 1 GOV.UK primary button
-
-Coded example
+If you can add the search component to a page more than once you'll need to add an accessible name. This is because each instance of the component creates a search landmark.
 
 You can read more about [creating accessible landmarks on the Mozilla Developer site]. 
+
+Coded example
 
 #### Showing search results
 
@@ -87,7 +92,3 @@ There’s a:
 - [content pattern for showing no results](/content-standards/style-guide/#no-results-from-search)
 
 You can view an [example of how to show search results](/components/search/#examples-tab). 
-
-### Clearing the search field
-
-anything to go here?
