@@ -45,16 +45,6 @@ Placeholder text will make it harder for some people to use the component, and m
 
 It's always preferrable to use visible label or hint text. 
 
-### Using autocomplete
-
-The autocomplete component enables users to start typing and then see options.
-
-You can use the component with the [GOV.UK Publishing Design Guide's search autocomplete component](https://design-guide.publishing.service.gov.uk/components/search-autocomplete/) and the [GOV.UK accessible autocomplete component (on Github)](https://github.com/alphagov/accessible-autocomplete).
-
-You can view:
-- [GOV.UK accessible autocomplete guidance](https://github.com/alphagov/accessible-autocomplete#accessible-autocomplete)
-- [GOV.UK accessibile autocomplete examples](https://alphagov.github.io/accessible-autocomplete/examples/)    
-
 ### Designing the page and onward journey
 
 #### Position on the page  
@@ -76,7 +66,7 @@ Add the [MOJ filter component](https://design-patterns.service.justice.gov.uk/co
 
 #### Adding multiple search components to a page  
 
-If you can add the search component to a page more than once you'll need to add an accessible name. This is because each instance of the component creates a search landmark.
+If you can add the search component to a page more than once you'll need to add a unique accessible name using either `aria-label` or `aria-label-by`. This is because each instance of the component creates a search landmark.
 
 You can read more about [creating accessible landmarks on the Mozilla Developer site]. 
 
