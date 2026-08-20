@@ -23,8 +23,8 @@ import { ScrollContainer } from './scroll-container.mjs'
 import { Tabs as MojTabs } from './tabs.mjs'
 
 // GOV.UK Frontend components
-createAll(Button)
-createAll(CharacterCount)
+createAll(Button);
+createAll(CharacterCount);
 createAll(Checkboxes)
 createAll(ErrorSummary)
 createAll(NotificationBanner)
