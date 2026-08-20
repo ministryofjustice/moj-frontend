@@ -122,11 +122,11 @@
     "@types/sinon": "^21.0.1",
     "@typescript-eslint/eslint-plugin": "^8.62.0",
     "@typescript-eslint/parser": "^8.62.0",
-    "autoprefixer": "^10.5.2",
+    "autoprefixer": "^10.5.4",
     "babel-jest": "30.4.1",
     "clipboard": "^2.0.11",
     "concurrently": "^10.0.3",
-    "cssnano": "^8.0.2",
+    "cssnano": "^8.0.5",
     "cz-git": "1.13.1",
     "dayjs": "^1.11.21",
     "del": "^8.0.1",
@@ -163,14 +163,14 @@
     "nodemon": "^3.1.14",
     "outdent": "^0.8.0",
     "plugin-error": "^2.0.1",
-    "postcss": "^8.5.16",
+    "postcss": "^8.5.26",
     "postcss-load-config": "^6.0.1",
     "postcss-markdown": "^1.3.1",
     "postcss-scss": "^4.0.9",
     "prettier": "^3.8.4",
     "require-dir": "^1.2.0",
-    "rollup": "^4.62.2",
-    "sass-embedded": "^1.100.0",
+    "rollup": "^4.62.4",
+    "sass-embedded": "^1.102.0",
     "semantic-release": "^25.0.5",
     "sharp": "^0.35.3",
     "sinon": "^22.0.0",
@@ -179,7 +179,7 @@
     "stylelint-config-gds": "^3.0.0",
     "stylelint-order": "^8.1.1",
     "svgo": "^4.0.1",
-    "terser": "^5.49.0",
+    "terser": "^5.50.0",
     "typed-query-selector": "^2.12.2",
     "typescript": "^5.9.3"
   },
@@ -189,7 +189,7 @@
     }
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.62.2",
+    "@rollup/rollup-linux-x64-gnu": "^4.62.4",
     "sass-embedded-linux-x64": "^1.101.0"
   }
 }
