@@ -66,4 +66,6 @@ jobs:
 
           git add -A
           git commit -m "chore: fix linting issues"
+          git config pull.rebase false
+          git pull origin "${BRANCH}"
           git push origin "HEAD:${BRANCH}"
