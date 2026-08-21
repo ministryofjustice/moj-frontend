@@ -22,7 +22,7 @@ There are 2 variants:
 
 Use the search component to help users search a large amount of information for something, for example a person, case, application or location. 
 
-The user needs to know what categories they’re searching in, and have at least 1 piece of identifying information.
+The user needs to know what categories they’re searching in, for example a reference number. They need to have at least 1 piece of identifying information.
 
 This component can also be used to [search a whole service in the primary navigation component](https://design-patterns.service.justice.gov.uk/components/primary-navigation/).
 
@@ -40,7 +40,7 @@ Some users may prefer to look for items in other ways, such as:
 - reading a short list
 - searching on screen, for example using Ctrl + F   
 
-Do user research if you’re not sure how to help users find what they're looking for.
+Do research with users if you’re not sure how to help them find what they're looking for.
 
 ### Similar and linked components 
 
