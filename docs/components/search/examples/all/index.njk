@@ -1,0 +1,309 @@
+---
+layout: layouts/example.njk
+title: Search all (example)
+---
+
+{%- from "moj/components/search/macro.njk" import mojSearch -%}
+
+{% set label = {
+    text: "Find a person"
+  }
+%}
+
+{% set hint = {
+    text: "You can search by name, date of birth or National Insurance number"
+  }
+%}
+
+{{ mojSearch({
+  action: "#",
+  iconButton: false,
+  input: {
+    id: "search-default",
+    name: "search-default"
+  },
+  label: label,
+  hint: hint,
+  button: {
+    text: "Search"
+  }
+}) }}
+
+<h2 class="govuk-heading-m">icon button</h2>
+
+{{ mojSearch({
+  action: "#",
+  iconButton: true,
+  input: {
+    id: "search-icon",
+    name: "search-icon"
+  },
+  label: label,
+  hint: hint,
+  button: {
+    text: "Search"
+  }
+}) }}
+
+<h2 class="govuk-heading-m">stacked</h2>
+
+{{ mojSearch({
+  action: "#",
+  iconButton: true,
+  layout: "stacked",
+  input: {
+    id: "search-stacked",
+    name: "search-stacked"
+  },
+  label: label,
+  hint: hint,
+  button: {
+    text: "Search"
+  }
+}) }}
+
+<h2 class="govuk-heading-m">secondary button</h2>
+
+{{ mojSearch({
+  action: "#",
+  iconButton: true,
+  input: {
+    id: "search-secondary",
+    name: "search-secondary"
+  },
+  label: label,
+  hint: hint,
+  button: {
+    text: "Search",
+    classes: "govuk-button--secondary"
+  }
+}) }}
+
+<br />
+<br />
+<hr />
+
+<h2 class="govuk-heading-m">old nunjucks</h2>
+
+{{ mojSearch({
+  action: "#",
+  method: "post",
+  input: {
+    id: "search-old-njk",
+    name: "search"
+  },
+  label: {
+    text: "Find a person",
+    classes: "govuk-!-font-weight-bold"
+  },
+  hint: {
+    text: "You can search by name, date of birth or National Insurance number"
+  },
+  button: {
+    text: "Search"
+  }
+}) }}
+
+<br />
+<br />
+<h2 class="govuk-heading-m">old html</h2>
+<div class="moj-search">
+  <form action="#" method="post">
+    <div class="govuk-form-group">
+      <label class="govuk-label moj-search__label govuk-!-font-weight-bold" for="search-html">
+        Find a person
+      </label>
+      <div id="search-hint-html" class="govuk-hint moj-search__hint ">
+        You can search by name, date of birth or National Insurance number
+      </div>
+      <input class="govuk-input moj-search__input " id="search--html" name="search-html" type="search" aria-describedby="search-hint-html">
+    </div>
+    <button type="submit" class="govuk-button moj-search__button " data-module="govuk-button">
+      Search
+    </button>
+  </form>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<h2 class="govuk-heading-m">old primary nav nunjucks</h2>
+{%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
+{%- from "moj/components/search/macro.njk" import mojSearch -%}
+
+{%- set inlineSearchHtml %}
+  {{ mojSearch({
+    classes: "moj-search--ondark moj-search--inline",
+    input: {
+      id: "search-1",
+      name: "search-1"
+    },
+    label: {
+      text: "Search",
+      classes: "govuk-visually-hidden"
+    },
+    button: {
+      text: "Search"
+    }
+  }) }}
+{% endset -%}
+
+{{ mojPrimaryNavigation({
+  label: "Primary navigation",
+  items: [{
+    text: "Nav item 1",
+    href: "#1",
+    active: true
+  }, {
+    text: "Nav item 2",
+    href: "#2"
+  }, {
+    text: "Nav item 3",
+    href: "#3"
+  }],
+  searchHtml: inlineSearchHtml
+}) }}
+
+<br />
+<br />
+<br />
+<br />
+<h2 class="govuk-heading-m">old primary nav html</h2>
+<div class="moj-primary-navigation">
+  <div class="moj-primary-navigation__container">
+    <div class="moj-primary-navigation__nav">
+      <nav class="moj-primary-navigation" aria-label="Primary navigation">
+        <ul class="moj-primary-navigation__list">
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" aria-current="page" href="#1">Nav item 1</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="#2">Nav item 2</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="#3">Nav item 3</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="moj-primary-navigation__search">
+      <div class="moj-search moj-search--ondark moj-search--inline">
+        <form action="" method="get">
+          <div class="govuk-form-group">
+            <label class="govuk-label moj-search__label govuk-visually-hidden" for="search-2">
+              Search
+            </label>
+            <input class="govuk-input moj-search__input " id="search-2" name="search-2" type="search">
+          </div>
+          <button type="submit" class="govuk-button moj-search__button " data-module="govuk-button">
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<br />
+<br />
+<br />
+<br />
+<h2 class="govuk-heading-m">old primary nav with toggle search nunjucks</h2>
+{%- from "moj/components/primary-navigation/macro.njk" import mojPrimaryNavigation -%}
+{%- from "moj/components/search/macro.njk" import mojSearch -%}
+
+{%- set toggleSearchHtml %}
+  <div class="moj-search-toggle" data-module="moj-search-toggle" data-toggle-button.text="Find case">
+    <div class="moj-search-toggle__toggle"></div>
+    <div class="moj-search-toggle__search">
+      {{ mojSearch({
+        classes: "moj-search--ondark moj-search--toggle moj-js-hidden",
+        input: {
+          id: "search2",
+          name: "search2"
+        },
+        label: {
+          classes: "govuk-visually-hidden",
+          text: "Search"
+        },
+        hint: {
+          text: "Enter case number, for example 123456"
+        },
+        button: {
+          text: "Search"
+        }
+      }) }}
+    </div>
+  </div>
+{% endset -%}
+
+{{ mojPrimaryNavigation({
+  label: "Primary navigation",
+  items: [
+    {
+      text: "Nav item 1",
+      href: "#1",
+      active: true
+    },
+    {
+      text: "Nav item 2",
+      href: "#2"
+    },
+    {
+      text: "Nav item 3",
+      href: "#3"
+    }
+  ],
+  searchHtml: toggleSearchHtml
+}) }}
+
+<br />
+<br />
+<br />
+<br />
+<h2 class="govuk-heading-m">old primary nav with toggle search nunjucks</h2>
+<div class="moj-primary-navigation">
+  <div class="moj-primary-navigation__container">
+    <div class="moj-primary-navigation__nav">
+      <nav class="moj-primary-navigation" aria-label="Primary navigation">
+        <ul class="moj-primary-navigation__list">
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" aria-current="page" href="#1">Nav item 1</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="#2">Nav item 2</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="#3">Nav item 3</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="moj-primary-navigation__search">
+      <div class="moj-search-toggle" data-module="moj-search-toggle" data-toggle-button.text="Find case">
+        <div class="moj-search-toggle__toggle"></div>
+        <div class="moj-search-toggle__search">
+          <div class="moj-search moj-search--ondark moj-search--toggle moj-js-hidden">
+            <form action="" method="get">
+              <div class="govuk-form-group">
+                <label class="govuk-label moj-search__label govuk-visually-hidden" for="search2">
+                  Search
+                </label>
+                <div id="search2-hint" class="govuk-hint moj-search__hint ">
+                  Enter case number, for example 123456
+                </div>
+                <input class="govuk-input moj-search__input " id="search2" name="search2" type="search" aria-describedby="search2-hint">
+              </div>
+              <button type="submit" class="govuk-button moj-search__button " data-module="govuk-button">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

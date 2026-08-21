@@ -1,13 +1,13 @@
 ---
 layout: layouts/example.njk
-title: Search (example)
-redirect_from: examples/search
+title: Search with icon button (example)
 ---
 
 {%- from "moj/components/search/macro.njk" import mojSearch -%}
 
 {{ mojSearch({
   action: "#",
+  iconButton: true,
   input: {
     id: "search",
     name: "search"
@@ -22,4 +22,3 @@ redirect_from: examples/search
     text: "Search"
   }
 }) }}
-
