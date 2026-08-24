@@ -7,8 +7,6 @@ eleventyComputed:
   override:eleventyNavigation: false
 ---
 
-{% example template="examples/default", colocated=true, height=125 %}
-
 ## Overview
 
 This component enables users to search for an item using a word or phrase. 
@@ -16,7 +14,21 @@ This component enables users to search for an item using a word or phrase.
 There are 2 variants:
 
 - inline layout  
-- stacked layout
+- stacked layout 
+
+### Inline layout with the GOV.UK search button
+
+The inline layout can be used with the GOV.UK primary or secondary search button. 
+
+{% example template="examples/default", colocated=true, height=125 %}
+
+### Inline layout with the magnifying glass icon
+
+{% example template="examples/icon-button", colocated=true, height=125 %}
+
+### Stacked layout (only to be used with a GOV.UK search button)
+
+{% example template="examples/stacked", colocated=true, height=125 %}
 
 ### When to use
 
@@ -30,7 +42,7 @@ This component can also be used to [search a whole service in the primary naviga
 
 Do not use this component:
 
-- if users will not know what search term to add
+- if users will be unsure about what search term to add
 - if content already has a clear hierarchy, for example a side navigation or table of contents
 - to replace good information architecture
 - for users to search the contents of a linear service

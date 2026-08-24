@@ -43,7 +43,7 @@
 | classes    | string | No       | Classes to add to the label tag.                                                                                                |
 | attributes | object | No       | HTML attributes (for example data attributes) to add to the label tag.                                                          |
 
-### options for the `hint` component [#{{id}}-hint]
+### Options for the `hint` component [#{{id}}-hint]
 
 | Name       | Type   | Required | Description                                                                                                                    |
 | ---------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -58,4 +58,4 @@
 | Name  | Type   | Required | Description                                                          |
 | ----- | ------ | -------- | -------------------------------------------------------------------- |
 | value | string | Yes      | The CSRF token value to include in the hidden input.                 |
-| name  | string | No       | The name attribute for the hidden CSRF input. Defaults to `'_csrf'`. |
+| name  | string | No       | The name attribute for the hidden CSRF input. Defaults to 'csrf'. |
