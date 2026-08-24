@@ -257,6 +257,34 @@ const validateFormDataFileType = (err, req, res, next) => {
   next(err)
 }
 
+const validateFormDataVirusScan = (err, req, res, next) => {
+  if (!err) {
+    return next()
+  }
+
+  const fieldName = err.field || 'componentImage'
+
+  if (err.code === 'LIMIT_FILE_VIRUS_FOUND') {
+    return renderFileUploadError(
+      req,
+      res,
+      fieldName,
+      MESSAGES.uploadFileVirusFound.text
+    )
+  }
+
+  if (err.code === 'LIMIT_FILE_VIRUS_SCAN_FAILED') {
+    return renderFileUploadError(
+      req,
+      res,
+      fieldName,
+      MESSAGES.uploadFileVirusScanFailed.text
+    )
+  }
+
+  next(err)
+}
+
 /**
  * If code is JS or other, we cannot sanitize it as it will then be incorrect
  */
@@ -568,6 +596,7 @@ module.exports = {
   validateFormDataFileSignature,
   validateFormDataFileSize,
   validateFormDataFileType,
+  validateFormDataVirusScan,
   validateComponentImagePage,
   saveFileToRedis,
   clearSkippedPageData,

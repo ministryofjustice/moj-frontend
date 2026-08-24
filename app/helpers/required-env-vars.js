@@ -12,7 +12,8 @@ const integrationRequiredEnvVars = [
 const productionOnlyRequiredEnvVars = [
   'REDIS_URL',
   'REDIS_AUTH_TOKEN',
-  'SENTRY_DSN'
+  'SENTRY_DSN',
+  'VIRUS_SCAN_HOST'
 ]
 
 const getRequiredEnvVars = (env = process.env.ENV || 'development') => {
