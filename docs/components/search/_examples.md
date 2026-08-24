@@ -11,13 +11,16 @@ eleventyComputed:
 
 ###  Stacked layout search
 
-<p><img src="{{ 'assets/images/pagination-example.png' | rev | url }}" alt=" '"></p>
+<p><img src="{{ 'assets/images/search-01.png' | rev | url }}" alt=" "></p>
 
 ###  Searching a case list in a linear service
 
 ####  1. Before the search is carried out
 
+<p><img src="{{ 'assets/images/search-02.png' | rev | url }}" alt=" "></p>
+
 ####  2. After the search 
 
+<p><img src="{{ 'assets/images/search-03.png' | rev | url }}" alt=" "></p>
 
 
