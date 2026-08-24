@@ -28,6 +28,9 @@ const config = {
   VIRUS_SCAN_SOCKET: process.env.VIRUS_SCAN_SOCKET,
   VIRUS_SCAN_TIMEOUT_MS:
     parseInt(process.env.VIRUS_SCAN_TIMEOUT_MS, 10) || 15000,
+  VIRUS_SCAN_RETRIES: parseInt(process.env.VIRUS_SCAN_RETRIES, 10) || 2,
+  VIRUS_SCAN_RETRY_DELAY_MS:
+    parseInt(process.env.VIRUS_SCAN_RETRY_DELAY_MS, 10) || 1000,
   SENTRY_DSN: process.env.SENTRY_DSN,
   SENTRY_CSP_REPORT_URI: process.env.SENTRY_CSP_REPORT_URI || '',
   ALLOWED_EMAIL_DOMAINS: [
