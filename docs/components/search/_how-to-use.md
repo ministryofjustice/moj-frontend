@@ -9,7 +9,7 @@ eleventyComputed:
 
 ## How to use
 
-The search component 
+Learn how  search component 
 
 ### Buttons and the magnifying glass icon
 
@@ -19,16 +19,18 @@ The search component has 3 button types:
 - [GOV.UK secondary button](https://design-system.service.gov.uk/components/button/#secondary-buttons)
 - magnifying glass icon
 
-Which one you add to the component depends on your layout. Use:
+Which button you add to the component depends on your layout. Use:
 
 - any of the 3 button types for the inline layout 
-- only the GOV.UK buttons for the stacked layout (and not the magnifying glass icon)
+- only the GOV.UK buttons for the stacked layout (not the magnifying glass icon)
 
 Avoid using more than 1 primary button on a page. View [GOV.UK guidance on primary and secondary buttons](https://design-system.service.gov.uk/components/button/#:~:text=the%20Nunjucks%20macro.-,Default%20buttons,-Use%20a%20default). 
 
-The magnifying glass icon is a widely used and recognised design for search. It can save space on text-heavy user interfaces. There's a [Nielsen Norman Group article on the magnififying glass icon](https://www.nngroup.com/articles/magnifying-glass-icon/ ).
+The magnifying glass icon is a widely used and recognised design for search. 
 
-However, button text is clearer and more accessible, so only use the magnifying glass icon if there's no space for the button. 
+The magnifying glass icon is for saving space on text-heavy user interfaces. Button text is clearer and more accessible, so only use the icon on the inline layout if there's not enough space for the GOV.UK button. 
+
+There's a [Nielsen Norman Group article on the magnififying glass icon](https://www.nngroup.com/articles/magnifying-glass-icon/ ). 
 
 ### Writing content  
 
@@ -66,11 +68,11 @@ The search component should only have 1 input field. If you need to help users r
 
 If you add the search component to a page more than once you'll need to add a unique accessible name using either `aria-label` or `aria-label-by`. This is because each instance of the component creates a search landmark.
 
-You can read more about [using landmarks on the DigitalA11y site](https://www.digitala11y.com/from-headers-to-footers-creating-accessible-experience-with-landmarks/). 
+You can read [guidance on using landmarks on the DigitalA11y site](https://www.digitala11y.com/from-headers-to-footers-creating-accessible-experience-with-landmarks/). 
 
 #### Showing search results
 
-You’ll need to show the user the outcome of their search. Display the results near the search button. You can use [pagination](/components/pagination) to display them. 
+You’ll need to show the user the outcome of their search. Display the results near the search button, with [pagination](/components/pagination) if appropriate. 
 
 There’s a:
 

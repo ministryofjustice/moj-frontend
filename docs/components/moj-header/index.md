@@ -22,4 +22,4 @@ The name of the organisation and service appears in the top left.
 
 You can also add global links in the top right, for example 'Sign out'.
 
-Do not add the search component to the MOJ header. There's not enough space in the header, and doing this would make the component’s use inconsistent.
+Do not add the [search component](/components/search/) to the MOJ header. There's not enough space in the header, and doing this would make the component’s use inconsistent.

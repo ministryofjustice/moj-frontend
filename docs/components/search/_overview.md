@@ -16,9 +16,9 @@ There are 2 variants:
 - inline layout  
 - stacked layout 
 
-### Inline layout with the GOV.UK search button
+### Inline layout with the GOV.UK button component
 
-The inline layout can be used with the GOV.UK primary or secondary search button. 
+The inline layout can be used with the [GOV.UK primary or secondary button component](https://design-system.service.gov.uk/components/button/). 
 
 {% example template="examples/default", colocated=true, height=125 %}
 
@@ -26,7 +26,7 @@ The inline layout can be used with the GOV.UK primary or secondary search button
 
 {% example template="examples/icon-button", colocated=true, height=125 %}
 
-### Stacked layout (only to be used with a GOV.UK search button)
+### Stacked layout (only to be used with the GOV.UK button component)
 
 {% example template="examples/stacked", colocated=true, height=125 %}
 
