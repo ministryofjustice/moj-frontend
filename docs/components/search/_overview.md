@@ -11,10 +11,10 @@ eleventyComputed:
 
 This component enables users to search for an item using a word or phrase. 
 
-There are 2 variants:
+The search component has 2 layouts:
 
-- inline layout  
-- stacked layout 
+- inline   
+- stacked 
 
 ### Inline layout with the GOV.UK text button component
 
@@ -36,7 +36,7 @@ Use the search component to help users search a large amount of information for 
 
 They need to have at least 1 piece of identifying information, for example a reference number.
 
-This component can also be used to [search a whole service in the primary navigation component](https://design-patterns.service.justice.gov.uk/components/primary-navigation/).
+This component can also be used in the [primary navigation component to search a whole service](https://design-patterns.service.justice.gov.uk/components/primary-navigation/).
 
 ### When not to use
 

@@ -18,15 +18,17 @@ You can add 1 of 2 GOV.UK button types to the search component:
 - text button component (usually with the text 'search')
 - icon button component (featuring a magnifying glass icon)
 
-^ Do not add the icon button component to the stacked layout. It can only be added to the inline layout.  
+<div class="govuk-inset-text">
+  Do not add the icon button component to the stacked layout. It can only be added to the inline layout.
+</div>
 
-You can select a [GOV.UK primary button component](https://design-system.service.gov.uk/components/button/#default-buttons) or [GOV.UK secondary button component](https://design-system.service.gov.uk/components/button/#secondary-buttons) for both types.
+You can add the [GOV.UK primary button component](https://design-system.service.gov.uk/components/button/#default-buttons) or [GOV.UK secondary button component](https://design-system.service.gov.uk/components/button/#secondary-buttons) to the button types.
 
 Which one you choose depends on the design of the rest of the page. Avoid using more than 1 primary button on a page -- view [GOV.UK guidance on primary and secondary buttons](https://design-system.service.gov.uk/components/button/#:~:text=the%20Nunjucks%20macro.-,Default%20buttons,-Use%20a%20default). 
 
 #### The magnifying glass icon
 
-The magnifying glass icon is a widely used and recognised design for search. It's used here to save space on busy user interfaces. Button text is clearer and more accessible, though, so only use the icon on the inline layout if there's not enough space for the GOV.UK text button. 
+The magnifying glass icon is a widely used and recognised design for search. It's used here to save space on busy user interfaces. Button text is clearer and more accessible, so only use the icon on the inline layout if there's not enough space for the GOV.UK text button. 
 
 There's a [Nielsen Norman Group article on the magnififying glass icon](https://www.nngroup.com/articles/magnifying-glass-icon/ ). 
 
