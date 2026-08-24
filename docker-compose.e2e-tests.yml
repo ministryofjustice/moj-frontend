@@ -51,6 +51,8 @@ services:
   clamav:
     image: clamav/clamav:stable
     container_name: clamav-container
+    entrypoint: /init-unprivileged
+    user: '100:100'
     ports:
       - '3310:3310'
     networks:
