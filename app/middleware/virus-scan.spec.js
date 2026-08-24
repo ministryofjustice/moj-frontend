@@ -22,6 +22,8 @@ const loadMiddleware = (config = {}) => {
     VIRUS_SCAN_PORT: 3310,
     VIRUS_SCAN_SOCKET: undefined,
     VIRUS_SCAN_TIMEOUT_MS: 15000,
+    VIRUS_SCAN_RETRIES: 2,
+    VIRUS_SCAN_RETRY_DELAY_MS: 1000,
     ...config
   }))
 
@@ -92,7 +94,9 @@ describe('scanUploadedFileForViruses', () => {
     expect(scanBuffer).toHaveBeenCalledWith(req.file.buffer, {
       host: 'clamav',
       port: 3310,
-      timeout: 15000
+      timeout: 15000,
+      retries: 2,
+      retryDelay: 1000
     })
     expect(next).toHaveBeenCalledWith()
   })
@@ -108,7 +112,9 @@ describe('scanUploadedFileForViruses', () => {
 
     expect(scanBuffer).toHaveBeenCalledWith(req.file.buffer, {
       socket: '/run/clamav/clamd.sock',
-      timeout: 15000
+      timeout: 15000,
+      retries: 2,
+      retryDelay: 1000
     })
     expect(next).toHaveBeenCalledWith()
   })

@@ -6,14 +6,18 @@ const {
   VIRUS_SCAN_HOST,
   VIRUS_SCAN_PORT,
   VIRUS_SCAN_SOCKET,
-  VIRUS_SCAN_TIMEOUT_MS
+  VIRUS_SCAN_TIMEOUT_MS,
+  VIRUS_SCAN_RETRIES,
+  VIRUS_SCAN_RETRY_DELAY_MS
 } = require('../config')
 
 const buildScanOptions = () => {
   if (VIRUS_SCAN_SOCKET) {
     return {
       socket: VIRUS_SCAN_SOCKET,
-      timeout: VIRUS_SCAN_TIMEOUT_MS
+      timeout: VIRUS_SCAN_TIMEOUT_MS,
+      retries: VIRUS_SCAN_RETRIES,
+      retryDelay: VIRUS_SCAN_RETRY_DELAY_MS
     }
   }
 
@@ -21,7 +25,9 @@ const buildScanOptions = () => {
     return {
       host: VIRUS_SCAN_HOST,
       port: VIRUS_SCAN_PORT,
-      timeout: VIRUS_SCAN_TIMEOUT_MS
+      timeout: VIRUS_SCAN_TIMEOUT_MS,
+      retries: VIRUS_SCAN_RETRIES,
+      retryDelay: VIRUS_SCAN_RETRY_DELAY_MS
     }
   }
 

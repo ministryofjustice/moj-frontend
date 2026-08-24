@@ -145,6 +145,28 @@ spec:
         ports:
         - containerPort: 3310
           name: clamav
+        startupProbe:
+          tcpSocket:
+            port: 3310
+          periodSeconds: 10
+          failureThreshold: 60
+        readinessProbe:
+          tcpSocket:
+            port: 3310
+          periodSeconds: 10
+          failureThreshold: 3
+        livenessProbe:
+          tcpSocket:
+            port: 3310
+          periodSeconds: 30
+          failureThreshold: 3
+        resources:
+          requests:
+            cpu: 250m
+            memory: 1Gi
+          limits:
+            cpu: 1000m
+            memory: 2Gi
 ---
 apiVersion: v1
 kind: Service
