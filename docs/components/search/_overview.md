@@ -16,17 +16,17 @@ There are 2 variants:
 - inline layout  
 - stacked layout 
 
-### Inline layout with the GOV.UK button component
+### Inline layout with the GOV.UK text button component
 
-The inline layout can be used with the [GOV.UK primary or secondary button component](https://design-system.service.gov.uk/components/button/). 
+The inline layout can be used with the [GOV.UK primary or secondary text button component](https://design-system.service.gov.uk/components/button/). 
 
 {% example template="examples/default", colocated=true, height=125 %}
 
-### Inline layout with the magnifying glass icon
+### Inline layout with the icon button
 
 {% example template="examples/icon-button", colocated=true, height=125 %}
 
-### Stacked layout (only to be used with the GOV.UK button component)
+### Stacked layout (only to be used with the GOV.UK text button component)
 
 {% example template="examples/stacked", colocated=true, height=125 %}
 
@@ -34,7 +34,7 @@ The inline layout can be used with the [GOV.UK primary or secondary button compo
 
 Use the search component to help users search a large amount of information for something, for example a person, case, application or location. 
 
-The user needs to know what categories they’re searching in, for example a reference number. They need to have at least 1 piece of identifying information.
+They need to have at least 1 piece of identifying information, for example a reference number.
 
 This component can also be used to [search a whole service in the primary navigation component](https://design-patterns.service.justice.gov.uk/components/primary-navigation/).
 
