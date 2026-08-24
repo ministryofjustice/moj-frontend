@@ -26,7 +26,8 @@ describe('getRequiredEnvVars', () => {
       'NOTIFY_TOKEN',
       'REDIS_URL',
       'REDIS_AUTH_TOKEN',
-      'SENTRY_DSN'
+      'SENTRY_DSN',
+      'VIRUS_SCAN_HOST'
     ])
   })
 
@@ -40,7 +41,8 @@ describe('getRequiredEnvVars', () => {
       'NOTIFY_TOKEN',
       'REDIS_URL',
       'REDIS_AUTH_TOKEN',
-      'SENTRY_DSN'
+      'SENTRY_DSN',
+      'VIRUS_SCAN_HOST'
     ])
   })
 

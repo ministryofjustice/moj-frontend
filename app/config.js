@@ -20,6 +20,14 @@ const config = {
   REDIS_PORT: parseInt(process.env.REDIS_PORT, 10) || 6379,
   SESSION_SECRET: process.env.SESSION_SECRET,
   ENV: process.env.ENV || 'development',
+  VIRUS_SCAN_ENABLED: process.env.VIRUS_SCAN_ENABLED
+    ? process.env.VIRUS_SCAN_ENABLED !== 'false'
+    : ['staging', 'production'].includes(process.env.ENV || 'development'),
+  VIRUS_SCAN_HOST: process.env.VIRUS_SCAN_HOST,
+  VIRUS_SCAN_PORT: parseInt(process.env.VIRUS_SCAN_PORT, 10) || 3310,
+  VIRUS_SCAN_SOCKET: process.env.VIRUS_SCAN_SOCKET,
+  VIRUS_SCAN_TIMEOUT_MS:
+    parseInt(process.env.VIRUS_SCAN_TIMEOUT_MS, 10) || 15000,
   SENTRY_DSN: process.env.SENTRY_DSN,
   SENTRY_CSP_REPORT_URI: process.env.SENTRY_CSP_REPORT_URI || '',
   ALLOWED_EMAIL_DOMAINS: [
@@ -517,6 +525,12 @@ const config = {
     },
     uploadFileInvalidType: {
       text: 'The selected file must be a JPG, BMP, PNG, TIF or PDF'
+    },
+    uploadFileVirusFound: {
+      text: 'The selected file failed a virus scan'
+    },
+    uploadFileVirusScanFailed: {
+      text: 'The selected file could not be scanned. Try again later.'
     },
     componentImageUploaded: (filename) => {
       return {
