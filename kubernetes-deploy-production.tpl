@@ -111,8 +111,49 @@ spec:
                 key: auth_token
           - name: REDIS_TLS_ENABLED
             value: "true"
+          - name: VIRUS_SCAN_ENABLED
+            value: "true"
+          - name: VIRUS_SCAN_HOST
+            value: "127.0.0.1"
+          - name: VIRUS_SCAN_PORT
+            value: "3310"
+          - name: VIRUS_SCAN_TIMEOUT_MS
+            value: "30000"
         ports:
         - containerPort: 3001
+      - name: clamav
+        image: ${CLAMAV_IMAGE}
+        command: ["/init-unprivileged"]
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 100
+          runAsGroup: 100
+          allowPrivilegeEscalation: false
+        ports:
+        - containerPort: 3310
+          name: clamav
+        startupProbe:
+          tcpSocket:
+            port: 3310
+          periodSeconds: 10
+          failureThreshold: 60
+        readinessProbe:
+          tcpSocket:
+            port: 3310
+          periodSeconds: 10
+          failureThreshold: 3
+        livenessProbe:
+          tcpSocket:
+            port: 3310
+          periodSeconds: 30
+          failureThreshold: 3
+        resources:
+          requests:
+            cpu: 250m
+            memory: 1Gi
+          limits:
+            cpu: 1000m
+            memory: 2Gi
 ---
 apiVersion: v1
 kind: Service
