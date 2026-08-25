@@ -55,6 +55,22 @@ new MultiFileUpload($multiFileUpload, {
 })
 ```
 
+### CSRF protection
+
+If your server requires a CSRF token on AJAX requests, pass it via the
+`csrfToken` config option. The token is sent as a request header on every
+upload and delete request. You can override the header name by passing a value
+to the `csrfHeaderName` config option. The default is `X-CSRF-Token`.
+
+```mjs
+new MultiFileUpload($multiFileUpload, {
+  uploadUrl: '/ajax-upload-url',
+  deleteUrl: '/ajax-delete-url',
+  csrfToken: 'your-csrf-token',
+  csrfHeaderName: 'X-XSRF-Token'
+})
+```
+
 ### When JavaScript is not available
 
 When JavaScript is not available, users will be presented with a [file upload component](https://design-system.service.gov.uk/components/file-upload/) and upload button.

@@ -49,7 +49,7 @@
   {{ govukAttributes(params.attributes) }}
 {% endset %}
 
-<div class="moj-add-another{{- ' ' + params.classes if params.classes }}" {{- attributesHtml | safe -}}>
+<div {{ ('id="' + params.id + '"') | safe if params.id }} class="moj-add-another{{- ' ' + params.classes if params.classes }}" {{- attributesHtml | safe -}}>
   <div class="moj-add-another__items">
     {% for item in params.items %}
       {% if item.fieldset.html %}
@@ -58,8 +58,11 @@
     {% endfor %}
   </div>
   <div class="moj-add-another__add-button-container">
-      {{ govukButton({
-        text:  addAnotherButtonText | replace('%{itemLabel}', (itemLabel | lower)),
+  {{ govukButton({
+        id: (params.id + "-add-another-button" ) if params.id,
+        name: (params.id + "-add-another" ) if params.id,
+        value: (addAnotherButtonText | replace('%{itemLabel}', itemLabel) | replace(" ", "-") | lower) if params.id,
+        text: addAnotherButtonText | replace('%{itemLabel}', (itemLabel | lower)),
         classes: "govuk-button--secondary moj-add-another__add-button"
       }) }}
   </div>

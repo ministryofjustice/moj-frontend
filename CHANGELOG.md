@@ -1,3 +1,27 @@
+# [11.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v10.0.1...v11.0.0) (2026-08-25)
+
+
+* feat(search)!: update to official ([#2530](https://github.com/ministryofjustice/moj-frontend/issues/2530)) ([1d74e59](https://github.com/ministryofjustice/moj-frontend/commit/1d74e59ed101c8ad2df12e0dcc7fcdac7f19cea6)), closes [#1382](https://github.com/ministryofjustice/moj-frontend/issues/1382)
+
+
+### Bug Fixes
+
+* **docs:** correct typo in date picker readme.md ([#2532](https://github.com/ministryofjustice/moj-frontend/issues/2532)) ([680ef90](https://github.com/ministryofjustice/moj-frontend/commit/680ef90e65dc855c843733afbe9b83f1edbc82e6))
+
+
+### Features
+
+* **add another:** add id attribute for component ([#2544](https://github.com/ministryofjustice/moj-frontend/issues/2544)) ([aebd781](https://github.com/ministryofjustice/moj-frontend/commit/aebd78179b7877ee380d608f8c809e0ae2bb47c8))
+* **multi-file-upload:** add CSRF protection support for multi-file upload ([#2562](https://github.com/ministryofjustice/moj-frontend/issues/2562)) ([64014ef](https://github.com/ministryofjustice/moj-frontend/commit/64014ef701ee7ffe2c49adf33168027c7684b544)), closes [#504](https://github.com/ministryofjustice/moj-frontend/issues/504)
+
+
+### BREAKING CHANGES
+
+* Updates to the search component to bring it up to official status
+
+* uses `<search>` element
+* adds ability to add csrf token to form
+
 ## [10.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v10.0.0...v10.0.1) (2026-07-20)
 
 

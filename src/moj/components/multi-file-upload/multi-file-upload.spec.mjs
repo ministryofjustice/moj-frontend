@@ -245,6 +245,24 @@ describe('Multi-file upload', () => {
 
       expect(errorHook).toHaveBeenCalledTimes(1)
     })
+
+    test('does not send CSRF header when csrfToken is not configured', async () => {
+      server.respondWith('POST', '/upload', [
+        200,
+        { 'Content-Type': 'application/json' },
+        JSON.stringify(successResponse)
+      ])
+
+      const input = getByLabelText(component, 'Upload a file')
+      await user.upload(
+        input,
+        new File(['x'], 'test.txt', { type: 'text/plain' })
+      )
+
+      expect(server.requests[0].requestHeaders).not.toHaveProperty(
+        'X-CSRF-Token'
+      )
+    })
   })
 
   describe('File deletion', () => {
@@ -307,6 +325,83 @@ describe('Multi-file upload', () => {
         '.moj-multi-file__uploaded-files'
       )
       expect(feedbackContainer).toHaveClass('moj-hidden')
+    })
+
+    test('does not send CSRF header when csrfToken is not configured', async () => {
+      server.respondWith('POST', '/delete', [
+        200,
+        { 'Content-Type': 'application/json' },
+        JSON.stringify({ success: true })
+      ])
+
+      const deleteButton = component.querySelector(
+        '.moj-multi-file-upload__delete'
+      )
+      await user.click(deleteButton)
+
+      expect(deleteHook).toHaveBeenCalledTimes(1)
+      expect(
+        server.requests[server.requests.length - 1].requestHeaders
+      ).not.toHaveProperty('X-CSRF-Token')
+    })
+  })
+
+  describe('CSRF header', () => {
+    beforeEach(() => {
+      document.body.innerHTML = ''
+      component = createComponent()
+
+      new MultiFileUpload(component, {
+        uploadUrl: '/upload',
+        deleteUrl: '/delete',
+        csrfToken: 'test-token',
+        hooks: { entryHook, exitHook, errorHook, deleteHook }
+      })
+    })
+
+    test('sends CSRF header on upload', async () => {
+      server.respondWith('POST', '/upload', [
+        200,
+        { 'Content-Type': 'application/json' },
+        JSON.stringify(successResponse)
+      ])
+
+      const input = getByLabelText(component, 'Upload a file')
+      await user.upload(
+        input,
+        new File(['x'], 'test.txt', { type: 'text/plain' })
+      )
+
+      expect(server.requests[0].requestHeaders['X-CSRF-Token']).toBe(
+        'test-token'
+      )
+    })
+
+    test('sends CSRF header on delete', async () => {
+      server.respondWith('POST', '/upload', [
+        200,
+        { 'Content-Type': 'application/json' },
+        JSON.stringify(successResponse)
+      ])
+      server.respondWith('POST', '/delete', [
+        200,
+        { 'Content-Type': 'application/json' },
+        JSON.stringify({ success: true })
+      ])
+
+      const input = getByLabelText(component, 'Upload a file')
+      await user.upload(
+        input,
+        new File(['x'], 'test.txt', { type: 'text/plain' })
+      )
+
+      const deleteButton = component.querySelector(
+        '.moj-multi-file-upload__delete'
+      )
+      await user.click(deleteButton)
+
+      const deleteRequest = server.requests[server.requests.length - 1]
+      expect(deleteRequest.requestHeaders['X-CSRF-Token']).toBe('test-token')
     })
   })
 
