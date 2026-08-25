@@ -3,6 +3,7 @@ module.exports = {
   ignorePatterns: [
     'package/**',
     'submissions/**',
+    '*.min.js',
     // Enable dotfile linting
     '!.*',
     'node_modules',

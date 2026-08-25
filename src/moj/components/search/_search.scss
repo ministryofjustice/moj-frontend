@@ -1,46 +1,68 @@
 @use "../../vendor/govuk-frontend" as *;
 
 .moj-search {
-  font-size: 0; // Fallback
-}
-
-.moj-search form {
-  align-items: flex-end;
-  display: flex;
+  @include govuk-responsive-margin(6, "bottom");
 }
 
 .moj-search .govuk-form-group {
-  display: inline-block;
-  flex: 1;
   margin-bottom: 0;
-  vertical-align: top;
 }
 
-.moj-search__label,
-.moj-search__hint {
-  text-align: left;
+.moj-search__label {
+  @include govuk-typography-weight-bold;
 }
 
-.moj-search__input:focus {
-  position: relative;
-  z-index: 1;
+// ensure the input field grows and shrinks to fill space
+// *:first-child is used to make the rule apply if an autocomplete is used to
+// replace the input field
+.moj-search__input-wrapper > *:first-child {
+  flex: 1 1 auto;
+}
+
+.moj-search__input {
+  // Search type inputs - removes the 'x' clear button from webkit browsers
+  // the button is raised as a WCAG fail as it is not keyboard focusable.
+  &[type="search"]::-webkit-search-decoration,
+  &[type="search"]::-webkit-search-cancel-button,
+  &[type="search"]::-webkit-search-results-button,
+  &[type="search"]::-webkit-search-results-decoration {
+    display: none;
+  }
 }
 
 .moj-search__button {
   display: inline-block;
-  position: relative;
-  top: -2px; // Override default gov properties due to active pixel movement
   width: auto;
   margin-bottom: 0;
   margin-left: govuk-spacing(2);
-  vertical-align: bottom;
+  // forces the button to align top and bottom with the input field
+  // without this the button box shadow will be out of alignment
+  align-self: flex-start;
 }
 
-.moj-search--inline {
-  // stylelint-disable-next-line declaration-no-important
-  padding: govuk-spacing(2) 0 !important;
-  @include govuk-media-query($from: desktop) {
-    // stylelint-disable-next-line declaration-no-important
-    padding: 0 !important;
+.moj-search__button--icon {
+  // ensures button is the same height as the input field
+  display: flex;
+  // centres the icon within the button
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 38px; // allow 2px for the box shadow
+  flex-shrink: 0;
+}
+
+.moj-search--stacked {
+  .govuk-form-group {
+    margin-bottom: govuk-spacing(3);
   }
+
+  .moj-search__button {
+    margin-left: 0;
+  }
+}
+
+// if an autocomplete is used, ensure the font is consistent with the rest of
+// the search component
+.moj-search .autocomplete__wrapper * {
+  @include govuk-typography-common;
 }

@@ -1,34 +1,98 @@
 {%- from "govuk/components/input/macro.njk" import govukInput %}
 {%- from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/macros/attributes.njk" import govukAttributes %}
 
-<div class="moj-search {{- " " + params.classes if params.classes}}">
+{% set useStackedLayout = params.layout == "stacked" %}
 
-  {%- if params.hint %}
-    {% set hintClasses = "moj-search__hint " + (params.hint.classes if params.hint.classes) %}
-    {% set hintText = params.hint.text %}
-    {% set hint = { classes: hintClasses, text: hintText } %}
-  {% endif -%}
+{% set classNames = ["moj-search"] %}
+{% set classNames = classNames.concat("moj-search--stacked") if useStackedLayout else classNames %}
+{% set classNames = classNames.concat(params.classes) if params.classes else classNames %}
+{% set classNames = classNames.join(" ") %}
 
-  {%- if params.method %}
-    {% set method = params.method %}
-  {% endif -%}
+{% set inputWrapperClassNames = ["moj-search__input-wrapper"] %}
+{% set inputWrapperClassNames = inputWrapperClassNames.join(" ") %}
 
+{# Icon button cannot be used in stacked layout #}
+{% set buttonClassNames = ["moj-search__button"] %}
+{% set buttonClassNames = buttonClassNames.concat("moj-search__button--icon") if params.iconButton and not useStackedLayout else buttonClassNames %}
+{% set buttonClassNames = buttonClassNames.concat(params.button.classes) if params.button.classes else buttonClassNames %}
+{% set buttonClassNames = buttonClassNames.join(" ") %}
+
+{%- if params.label %}
+  {% set labelClasses = "moj-search__label " + (params.label.classes if params.label.classes) %}
+  {% set label = {
+    text: params.label.text,
+    html: params.label.html,
+    classes: labelClasses,
+    attributes: params.label.attributes
+  } %}
+{% endif -%}
+
+{%- if params.hint %}
+  {% set hintClasses = "moj-search__hint " + (params.hint.classes if params.hint.classes) %}
+  {% set hintText = params.hint.text %}
+  {% set hint = {
+    text: params.hint.text,
+    html: params.hint.html,
+    id: params.hint.id,
+    classes: hintClasses,
+    attributes: params.hint.attributes
+  } %}
+{% endif -%}
+
+{% if params.iconButton and not useStackedLayout %}
+  {% set iconHtml %}
+    <svg width="20" height="20" viewBox="0 0 21 20" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8.90102 14.4683C12.385 14.4683 15.2093 11.644 15.2093 8.16005C15.2093 4.6761 12.385 1.85181 8.90102 1.85181C5.41707 1.85181 2.59277 4.6761 2.59277 8.16005C2.59277 11.644 5.41707 14.4683 8.90102 14.4683Z" stroke="currentColor" stroke-width="2.22222"/>
+      <path d="M13.2349 12.8584L19.5909 19.2144" stroke="currentColor" stroke-width="2.22222"/>
+    </svg>
+    <span class="govuk-visually-hidden">{{ params.button.text | default("search") }}</span>
+  {% endset %}
+{% endif %}
+
+{% set buttonHtml %}
+  {{ govukButton({
+      text: params.button.text,
+      html: iconHtml if iconHtml else params.button.html,
+      id: params.button.id,
+      name: params.button.name,
+      value: params.button.value,
+      classes: buttonClassNames,
+      attributes: params.button.attributes,
+      preventDoubleClick: params.button.preventDoubleClick
+  }) }}
+{% endset %}
+
+{% if not useStackedLayout %}
+  {% set afterInput = {
+    html: buttonHtml
+  } %}
+{% endif %}
+
+<search class="moj-search {{ classNames }}" {{ govukAttributes(params.attributes) }}>
   <form action="{{ params.action }}" method="{{ params.method | default("get") }}">
+    {% if params.csrf %}
+      <input type="hidden" name="{{ params.csrf.name | default("_csrf") }}" value="{{ params.csrf.value }}">
+    {% endif %}
+
     {{ govukInput({
       classes: "moj-search__input " + (params.input.classes if params.input.classes),
-      label: {
-        classes: "moj-search__label " + (params.label.classes if params.label.classes),
-        text: params.label.text
-      },
+      attributes: params.input.attributes,
+      label: label,
       hint: hint,
       id: params.input.id,
-      name: params.input.name,
-      type: "search"
+      name: params.input.name | default("search"),
+      type: params.input.type | default("search"),
+      inputWrapper: {
+        classes: inputWrapperClassNames
+      },
+      formGroup: {
+        afterInput: afterInput
+      }
     }) }}
 
-    {{ govukButton({
-      classes: "moj-search__button " + (params.button.classes if params.button.classes),
-      text: params.button.text
-    }) }}
+    {% if useStackedLayout %}
+      {{ buttonHtml | safe }}
+    {% endif %}
   </form>
-</div>
+</search>
