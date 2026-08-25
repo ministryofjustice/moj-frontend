@@ -254,6 +254,9 @@ export class MultiFileUpload extends ConfigurableComponent {
     })
 
     xhr.open('POST', this.config.uploadUrl)
+    if (this.config.csrfToken) {
+      xhr.setRequestHeader(this.config.csrfHeaderName, this.config.csrfToken)
+    }
     xhr.responseType = 'json'
 
     xhr.send(formData)
@@ -298,6 +301,10 @@ export class MultiFileUpload extends ConfigurableComponent {
 
     xhr.open('POST', this.config.deleteUrl)
     xhr.setRequestHeader('Content-Type', 'application/json')
+    if (this.config.csrfToken) {
+      xhr.setRequestHeader(this.config.csrfHeaderName, this.config.csrfToken)
+    }
+
     xhr.responseType = 'json'
 
     xhr.send(
@@ -341,6 +348,7 @@ export class MultiFileUpload extends ConfigurableComponent {
    * @type {MultiFileUploadConfig}
    */
   static defaults = Object.freeze({
+    csrfHeaderName: 'X-CSRF-Token',
     uploadStatusText: 'Uploading files, please wait',
     dropzoneHintText: 'Drag and drop files here or',
     dropzoneButtonText: 'Choose files',
@@ -363,6 +371,8 @@ export class MultiFileUpload extends ConfigurableComponent {
   static schema = Object.freeze(
     /** @type {const} */ ({
       properties: {
+        csrfToken: { type: 'string' },
+        csrfHeaderName: { type: 'string' },
         uploadUrl: { type: 'string' },
         deleteUrl: { type: 'string' },
         uploadStatusText: { type: 'string' },
@@ -379,6 +389,8 @@ export class MultiFileUpload extends ConfigurableComponent {
  * Multi file upload config
  *
  * @typedef {object} MultiFileUploadConfig
+ * @property {string} [csrfToken] - CSRF token
+ * @property {string} [csrfHeaderName] - CSRF header name
  * @property {string} [uploadUrl] - File upload URL
  * @property {string} [deleteUrl] - File delete URL
  * @property {string} [uploadStatusText] - Upload status text
