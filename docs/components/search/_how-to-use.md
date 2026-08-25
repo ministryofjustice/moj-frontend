@@ -26,13 +26,13 @@ You can add 1 of 2 GOV.UK button types to the search component:
 
 You can use the [primary button component](https://design-system.service.gov.uk/components/button/#default-buttons) or [secondary button component](https://design-system.service.gov.uk/components/button/#secondary-buttons).
 
-Which one you choose depends on the design of the rest of the page. Avoid using more than 1 primary button on a page -- view [GOV.UK guidance on primary and secondary button components](https://design-system.service.gov.uk/components/button/#:~:text=the%20Nunjucks%20macro.-,Default%20buttons,-Use%20a%20default). 
+Which one you choose depends on the design of the rest of the page. Avoid using more than 1 primary button on a page -- view [GOV.UK guidance on primary and secondary button components](https://design-system.service.gov.uk/components/button/#default-buttons). 
 
 #### The magnifying glass icon
 
 The magnifying glass icon is a widely used and recognised design for search. It's used in this component to save space on busy user interfaces. Button text is clearer and more accessible, so only use the icon in the inline layout if you're short of space. 
 
-There's a [Nielsen Norman Group article on the magnififying glass icon](https://www.nngroup.com/articles/magnifying-glass-icon/ ). 
+There's a [Nielsen Norman Group article on the magnifying glass icon](https://www.nngroup.com/articles/magnifying-glass-icon/ ). 
 
 ### Writing content  
 
@@ -58,7 +58,7 @@ Place the search component either:
 - under a clearly labelled heading (typically above a table, such as a case list)
 - at the top of the page (for site search), like in the [primary navigation component](/components/primary-navigation/) or the [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation/)
 
-Do not add the component to the [MOJ header component](/components/moj-header/). There's not enough space in the header, and doing this would make the use of both components inconsistent.
+Do not add the search component to the [MOJ header component](/components/moj-header/). There's not enough space in the header, and doing this would make the use of both components inconsistent.
 
 #### Filtering results
 
@@ -76,7 +76,7 @@ You’ll need to show the user the outcome of their search. Display the results 
 
 There’s a:
 
-- [content pattern for showing results](/content-standards/style-guide/#Results-(from-search))
+- [content pattern for showing results](/content-standards/style-guide/#results-from-search)
 - [content pattern for showing no results](/content-standards/style-guide/#no-results-from-search)
 
 You can view an [example of how to show search results](/components/search/#examples-tab). 

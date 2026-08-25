@@ -16,7 +16,7 @@ It has 2 layouts:
 - inline   
 - stacked 
 
-There are 2 button types. You can view [guidance on choosing a button](components/search/#how-to-use-tab).  
+There are 2 button types. You can view [guidance on choosing a button](#how-to-use-tab).  
 
 ### Inline layout with the text button
 
@@ -36,7 +36,7 @@ The inline layout can be used with the [GOV.UK primary or secondary button compo
 
 Use this component to help users search a large amount of information for something, for example a person, case, application or location. 
 
-They need to have at least 1 piece of identifying information, for example a reference number.
+Users need to have at least 1 piece of identifying information, for example a reference number.
 
 This component can also be used in the [primary navigation component to search a whole service](https://design-patterns.service.justice.gov.uk/components/primary-navigation/).
 
