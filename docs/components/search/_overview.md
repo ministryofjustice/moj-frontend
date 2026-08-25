@@ -9,16 +9,18 @@ eleventyComputed:
 
 ## Overview
 
-This component enables users to search for an item using a word or phrase. 
+The search component enables users to look for an item using a word or phrase. 
 
-The search component has 2 layouts:
+It has 2 layouts:
 
 - inline   
 - stacked 
 
-### Inline layout with the GOV.UK text button component
+There are 2 button types. You can view [guidance on choosing a button](components/search/#how-to-use-tab).  
 
-The inline layout can be used with the [GOV.UK primary or secondary text button component](https://design-system.service.gov.uk/components/button/). 
+### Inline layout with the text button
+
+The inline layout can be used with the [GOV.UK primary or secondary button component](https://design-system.service.gov.uk/components/button/). 
 
 {% example template="examples/default", colocated=true, height=125 %}
 
@@ -26,13 +28,13 @@ The inline layout can be used with the [GOV.UK primary or secondary text button 
 
 {% example template="examples/icon-button", colocated=true, height=125 %}
 
-### Stacked layout (only to be used with the GOV.UK text button component)
+### Stacked layout  
 
 {% example template="examples/stacked", colocated=true, height=125 %}
 
 ### When to use
 
-Use the search component to help users search a large amount of information for something, for example a person, case, application or location. 
+Use this component to help users search a large amount of information for something, for example a person, case, application or location. 
 
 They need to have at least 1 piece of identifying information, for example a reference number.
 
@@ -40,7 +42,7 @@ This component can also be used in the [primary navigation component to search a
 
 ### When not to use
 
-Do not use this component:
+Do not use the search component:
 
 - if users will be unsure about what search term to add
 - if content already has a clear hierarchy, for example a side navigation or table of contents

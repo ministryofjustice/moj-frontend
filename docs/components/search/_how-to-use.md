@@ -15,20 +15,22 @@ Learn how to design the search component to help users find an item.
 
 You can add 1 of 2 GOV.UK button types to the search component:
 
-- text button component (usually with the text 'search')
-- icon button component (featuring a magnifying glass icon)
+- text (usually with the wording 'search')
+- icon (featuring a magnifying glass icon)
 
 <div class="govuk-inset-text">
-  Do not add the icon button component to the stacked layout. It can only be added to the inline layout.
+  Do not add the icon button to the stacked layout. It can only be added to the inline layout.
 </div>
 
-You can add the [GOV.UK primary button component](https://design-system.service.gov.uk/components/button/#default-buttons) or [GOV.UK secondary button component](https://design-system.service.gov.uk/components/button/#secondary-buttons) to the button types.
+#### Primary and secondary buttons
 
-Which one you choose depends on the design of the rest of the page. Avoid using more than 1 primary button on a page -- view [GOV.UK guidance on primary and secondary buttons](https://design-system.service.gov.uk/components/button/#:~:text=the%20Nunjucks%20macro.-,Default%20buttons,-Use%20a%20default). 
+You can use the [primary button component](https://design-system.service.gov.uk/components/button/#default-buttons) or [secondary button component](https://design-system.service.gov.uk/components/button/#secondary-buttons).
+
+Which one you choose depends on the design of the rest of the page. Avoid using more than 1 primary button on a page -- view [GOV.UK guidance on primary and secondary button components](https://design-system.service.gov.uk/components/button/#:~:text=the%20Nunjucks%20macro.-,Default%20buttons,-Use%20a%20default). 
 
 #### The magnifying glass icon
 
-The magnifying glass icon is a widely used and recognised design for search. It's used here to save space on busy user interfaces. Button text is clearer and more accessible, so only use the icon on the inline layout if there's not enough space for the GOV.UK text button. 
+The magnifying glass icon is a widely used and recognised design for search. It's used in this component to save space on busy user interfaces. Button text is clearer and more accessible, so only use the icon in the inline layout if you're short of space. 
 
 There's a [Nielsen Norman Group article on the magnififying glass icon](https://www.nngroup.com/articles/magnifying-glass-icon/ ). 
 
@@ -41,9 +43,9 @@ You can add the following content to the component:
 
 #### Avoid placeholder text 
 
-Avoid adding placeholder text to the component. It makes the component harder for some people to use, and it may not be accessible. You can read [GOV.UK guidance on avoiding placeholder text](https://design-system.service.gov.uk/components/text-input/#avoid-placeholder-text).  
+Avoid adding placeholder text. It makes the component harder for some people to use, and it may not be accessible. You can read [GOV.UK guidance on avoiding placeholder text](https://design-system.service.gov.uk/components/text-input/#avoid-placeholder-text).  
 
-It's always better to use a visible label or hint text. 
+It's always better to use a visible label or hint text than placeholder text. 
 
 ### Designing the page and onward journey
 
@@ -54,9 +56,9 @@ Understand how to design your page effectively, and show users the results of th
 Place the search component either:
 
 - under a clearly labelled heading (typically above a table, such as a case list)
-- at the top of the page (for site search), like in the [primary navigation component](/components/primary-navigation/) or [GOV.UK service navigation](https://design-system.service.gov.uk/components/service-navigation/)
+- at the top of the page (for site search), like in the [primary navigation component](/components/primary-navigation/) or the [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation/)
 
-Do not add the component to the [MOJ header](/components/moj-header/). There's not enough space in the header, and doing this would make the component's use inconsistent.
+Do not add the component to the [MOJ header component](/components/moj-header/). There's not enough space in the header, and doing this would make the use of both components inconsistent.
 
 #### Filtering results
 

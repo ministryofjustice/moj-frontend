@@ -11,7 +11,7 @@ eleventyComputed:
 
 ###  Stacked layout search
 
-<p><img src="{{ 'assets/images/search-01.png' | rev | url }}" alt="An MOJ webpage with the title “Search for a course”. It shows a keyword or course title search field and a green Search button."></p>
+<p><img src="{{ 'assets/images/search-01.png' | rev | url }}" alt="An MOJ webpage with the title “Search for a course”. It shows a keyword or course title search field and a green search button."></p>
 
 ###  Searching a case list in a linear service
 
