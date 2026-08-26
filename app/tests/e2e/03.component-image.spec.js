@@ -56,6 +56,15 @@ test('disguised markdown file renamed to jpg', async () => {
   ])
 })
 
+test('malicious file', async () => {
+  await testPage.uploadEicarFile()
+  await testPage.clickUpload()
+
+  await testPage.expectErrorSummaryWithMessages([
+    'The selected file failed a virus scan'
+  ])
+})
+
 test('file ok', async () => {
   const filename = 'test-image.png'
 
