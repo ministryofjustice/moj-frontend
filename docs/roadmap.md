@@ -25,7 +25,7 @@ We've made content clearer on [building block statuses](/design-system-statuses/
 
 ### New official components
 
-We released new, improved versions of the following building blocks:
+We've released new, improved versions of the following building blocks:
 
 - ['add another' component](/components/add-another/)
 - [search component](/components/search/)
@@ -34,7 +34,10 @@ We released new, improved versions of the following building blocks:
 
 ## What we're working on now
  
-We're exploring how Probational Delivery Service (PDS) users identify people on probation. 
+The team is now:
+
+- developing Probational Delivery Service (PDS) page templates  
+- exploring how PDS users identify people on probation
 
 <hr>
 
