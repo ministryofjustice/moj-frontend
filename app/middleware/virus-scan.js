@@ -43,6 +43,7 @@ const createFileScanError = (code, message, field) => {
 
 const scanUploadedFileForViruses = async (req, res, next) => {
   if (!req.file || !VIRUS_SCAN_ENABLED) {
+    console.error('[Virus scan] Scanner is not enabled or no file uploaded')
     return next()
   }
 
@@ -64,6 +65,7 @@ const scanUploadedFileForViruses = async (req, res, next) => {
     const verdict = await scanBuffer(req.file.buffer, scanOptions)
 
     if (verdict === Verdict.Clean) {
+      console.warn('[Virus scan] File is clean')
       return next()
     }
 
