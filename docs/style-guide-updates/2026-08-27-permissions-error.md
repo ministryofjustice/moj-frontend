@@ -1,6 +1,6 @@
 ---
-title: Permissions errors (403) 
-anchor: permissions-error
+title: permissions error (403) 
+anchor: permissions-error-403
 type: New
 date: 2026-08-27
 ---

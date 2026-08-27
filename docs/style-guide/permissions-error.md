@@ -1,5 +1,5 @@
 ---
-title: Permissions error (403)
+title: permissions error (403)
 ---
 
 Show the following heading on a 403 error page, when the user does not have permission to see the page: 
