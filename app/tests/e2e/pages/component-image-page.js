@@ -27,15 +27,4 @@ export class ComponentImagePage extends ContributionsPage {
       path.join(__dirname, '../test-files/', filename)
     )
   }
-
-  async uploadEicarFile() {
-    await this.fileInput.setInputFiles({
-      name: 'eicar.com',
-      mimeType: 'application/octet-stream',
-      buffer: Buffer.from(
-        'WDVPIVAlQEFQWzRcUFpYNTQoUF4pN0NDKTd9JEVJQ0FSLVNUQU5EQVJELUFOVElWSVJVUy1URVNULUZJTEUhJEgrSCo=',
-        'base64'
-      )
-    })
-  }
 }
