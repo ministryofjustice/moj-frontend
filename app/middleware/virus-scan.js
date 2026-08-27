@@ -1,23 +1,27 @@
+const stream = require('stream')
+
 const Sentry = require('@sentry/node')
-const { scanBuffer, Verdict } = require('pompelmi')
+const NodeClam = require('clamscan')
 
 const {
   VIRUS_SCAN_ENABLED,
   VIRUS_SCAN_HOST,
   VIRUS_SCAN_PORT,
   VIRUS_SCAN_SOCKET,
-  VIRUS_SCAN_TIMEOUT_MS,
-  VIRUS_SCAN_RETRIES,
-  VIRUS_SCAN_RETRY_DELAY_MS
+  VIRUS_SCAN_TIMEOUT_MS
 } = require('../config')
 
-const buildScanOptions = () => {
+// Cache the initialized scanner instance so the underlying socket/config
+// checks (`NodeClam#init`) only run once per process, not once per request.
+let scannerPromise = null
+
+const buildClamdOptions = () => {
   if (VIRUS_SCAN_SOCKET) {
     return {
       socket: VIRUS_SCAN_SOCKET,
       timeout: VIRUS_SCAN_TIMEOUT_MS,
-      retries: VIRUS_SCAN_RETRIES,
-      retryDelay: VIRUS_SCAN_RETRY_DELAY_MS
+      localFallback: false,
+      active: true
     }
   }
 
@@ -26,12 +30,24 @@ const buildScanOptions = () => {
       host: VIRUS_SCAN_HOST,
       port: VIRUS_SCAN_PORT,
       timeout: VIRUS_SCAN_TIMEOUT_MS,
-      retries: VIRUS_SCAN_RETRIES,
-      retryDelay: VIRUS_SCAN_RETRY_DELAY_MS
+      localFallback: false,
+      active: true
     }
   }
 
   return null
+}
+
+const getScanner = (clamdscan) => {
+  if (!scannerPromise) {
+    scannerPromise = new NodeClam().init({
+      clamdscan,
+      clamscan: { active: false },
+      preference: 'clamdscan'
+    })
+  }
+
+  return scannerPromise
 }
 
 const createFileScanError = (code, message, field) => {
@@ -47,10 +63,10 @@ const scanUploadedFileForViruses = async (req, res, next) => {
     return next()
   }
 
-  const scanOptions = buildScanOptions()
+  const clamdscan = buildClamdOptions()
   const fieldName = req.file.fieldname || 'componentImage'
 
-  if (!scanOptions) {
+  if (!clamdscan) {
     const error = createFileScanError(
       'LIMIT_FILE_VIRUS_SCAN_FAILED',
       'Virus scanner is not configured',
@@ -62,33 +78,28 @@ const scanUploadedFileForViruses = async (req, res, next) => {
   }
 
   try {
-    const verdict = await scanBuffer(req.file.buffer, scanOptions)
+    const clamscan = await getScanner(clamdscan)
+    const bufferStream = stream.Readable.from(req.file.buffer)
+    const { isInfected, viruses } = await clamscan.scanStream(bufferStream)
 
-    if (verdict === Verdict.Clean) {
+    if (!isInfected) {
       console.warn('[Virus scan] File is clean')
       return next()
     }
 
-    if (verdict === Verdict.Malicious) {
-      console.warn('[Virus scan] Malicious upload blocked')
-      return next(
-        createFileScanError(
-          'LIMIT_FILE_VIRUS_FOUND',
-          'Virus scan failed',
-          fieldName
-        )
+    console.warn('[Virus scan] Malicious upload blocked', viruses)
+    return next(
+      createFileScanError(
+        'LIMIT_FILE_VIRUS_FOUND',
+        'Virus scan failed',
+        fieldName
       )
-    }
-
-    const error = createFileScanError(
-      'LIMIT_FILE_VIRUS_SCAN_FAILED',
-      'Virus scanner returned a scan error',
-      fieldName
     )
-    console.error('[Virus scan] Scanner returned ScanError')
-    Sentry.captureException(error)
-    return next(error)
   } catch (error) {
+    // Reset the cached scanner so a transient connection/init failure
+    // doesn't keep failing every subsequent upload in this process.
+    scannerPromise = null
+
     const scanError = createFileScanError(
       'LIMIT_FILE_VIRUS_SCAN_FAILED',
       'Virus scanner failed',
