@@ -11,7 +11,7 @@ A Figma design has been added for this component. There may be more links and re
 
 ### Figma
 
-If you work for MOJ, [View the ‘spinner progress indicator’ component in the MOJ Figma Kit]({{figma_link}}).
+If you work for MOJ, [view the ‘spinner progress indicator’ component in the MOJ Figma Kit]({{figma_link}}).
 
 If you work outside MOJ, go to the [MOJ Figma Kit on the Figma community platform](https://www.figma.com/community/file/1543193133973726850/moj-design-system-figma-kit).
 
