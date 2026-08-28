@@ -10,7 +10,6 @@ COPY package/package.json package/package.json
 COPY package.json package.json
 COPY .npmrc .npmrc
 COPY .allowed-scripts.mjs .allowed-scripts.mjs
-COPY patches patches
 RUN npm run setup
 
 COPY docs docs
@@ -33,7 +32,6 @@ COPY package/package.json package/package.json
 COPY package.json package.json
 COPY .npmrc .npmrc
 COPY .allowed-scripts.mjs .allowed-scripts.mjs
-COPY patches patches
 RUN npm run setup
 
 COPY docs docs
@@ -91,7 +89,6 @@ FROM base AS staging-express-app
 COPY package.json package-lock.json ./
 COPY .npmrc .npmrc
 COPY .allowed-scripts.mjs .allowed-scripts.mjs
-COPY patches patches
 RUN npm run setup
 COPY src src
 COPY app app
@@ -110,7 +107,6 @@ FROM base AS preview-express-app
 COPY package.json package-lock.json ./
 COPY .npmrc .npmrc
 COPY .allowed-scripts.mjs .allowed-scripts.mjs
-COPY patches patches
 RUN npm run setup
 COPY src src
 COPY app app
@@ -129,7 +125,6 @@ FROM base AS production-express-app
 COPY package.json package-lock.json ./
 COPY .npmrc .npmrc
 COPY .allowed-scripts.mjs .allowed-scripts.mjs
-COPY patches patches
 RUN npm run setup
 COPY src src
 COPY app app
