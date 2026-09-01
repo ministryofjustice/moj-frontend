@@ -128,7 +128,7 @@
     "concurrently": "^10.0.5",
     "cssnano": "^8.0.2",
     "cz-git": "1.13.1",
-    "dayjs": "^1.11.21",
+    "dayjs": "^1.11.23",
     "del": "^8.0.1",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
