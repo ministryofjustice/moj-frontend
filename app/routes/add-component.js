@@ -1,5 +1,6 @@
 const crypto = require('crypto')
 const fs = require('fs')
+const rateLimit = require('express-rate-limit')
 
 const Sentry = require('@sentry/node')
 const express = require('express')
@@ -217,11 +218,22 @@ router.get('/confirmation', (req, res) => {
 })
 
 /**
+ * Rate limit token verification attempts to prevent brute-forcing the
+ * emailToken via high-volume automated requests.
+ */
+const emailVerifyLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10, // Limit each IP to 10 verification attempts per windowMs
+  standardHeaders: true,
+  legacyHeaders: false
+})
+
+/**
  * Email verifiaction
  * Compare the token from the url to the token in session in order to verify the
  * user has clicked the link in their email
  */
-router.get('/email/verify/:token', (req, res) => {
+router.get('/email/verify/:token', emailVerifyLimiter, (req, res) => {
   // Allow for the e2e tests to bypass this process as the token can't be kept
   // in session, and there is no way to click a link in the email
   if (ENV === 'test' && process.env.VERIFICATION_TOKEN && req?.session) {
