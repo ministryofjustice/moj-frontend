@@ -374,6 +374,16 @@ describe('search', () => {
       const input = $component.querySelector('input[type="search"]')
       expect(input).toHaveClass('moj-search__input')
     })
+
+    test('passes input attributes through to the search input', () => {
+      const input = $component.querySelector('input[type="search"]')
+      expect(input).toBeDisabled()
+      expect(input).toHaveAttribute('spellcheck', 'false')
+      expect(input).toHaveAttribute('autocomplete', 'off')
+      expect(input).toHaveAttribute('pattern', '[A-Za-z]+')
+      expect(input).toHaveAttribute('inputmode', 'text')
+      expect(input).toHaveAttribute('aria-describedby', 'search-hint')
+    })
   })
 
   // ---------------------------------------------------------------------------
