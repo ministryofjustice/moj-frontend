@@ -25,6 +25,7 @@ const {
   validateFormDataFileSignature,
   validateFormDataFileSize,
   validateFormDataFileType,
+  validateFormDataVirusScan,
   validateComponentImagePage,
   saveFileToRedis,
   clearSkippedPageData,
@@ -1466,5 +1467,90 @@ describe('validateFormDataFileType', () => {
     expect(res.status).toHaveBeenCalledWith(400)
     expect(res.render).toHaveBeenCalledWith('component-image', expectedArgs)
     expect(next).not.toHaveBeenCalled()
+  })
+})
+
+describe('validateFormDataVirusScan', () => {
+  let req, res, next
+  beforeEach(() => {
+    req = {
+      params: { page: 'component-image' }
+    }
+    res = {
+      render: jest.fn(),
+      status: jest.fn(() => res)
+    }
+    next = jest.fn()
+    jest.clearAllMocks()
+  })
+
+  it('calls next if no error', () => {
+    validateFormDataVirusScan(undefined, req, res, next)
+
+    expect(next).toHaveBeenCalled()
+  })
+
+  it('renders the template with virus found errors', () => {
+    const err = {
+      code: 'LIMIT_FILE_VIRUS_FOUND',
+      field: 'componentImage'
+    }
+
+    validateFormDataVirusScan(err, req, res, next)
+
+    expect(res.status).toHaveBeenCalledWith(400)
+    expect(res.render).toHaveBeenCalledWith(
+      'component-image',
+      expect.objectContaining({
+        errorList: [
+          {
+            href: '#component-image',
+            text: 'The selected file failed a virus scan'
+          }
+        ],
+        formErrors: {
+          componentImage: {
+            text: 'The selected file failed a virus scan'
+          }
+        }
+      })
+    )
+  })
+
+  it('renders the template with scanner failure errors', () => {
+    const err = {
+      code: 'LIMIT_FILE_VIRUS_SCAN_FAILED',
+      field: 'componentImage'
+    }
+
+    validateFormDataVirusScan(err, req, res, next)
+
+    expect(res.status).toHaveBeenCalledWith(400)
+    expect(res.render).toHaveBeenCalledWith(
+      'component-image',
+      expect.objectContaining({
+        errorList: [
+          {
+            href: '#component-image',
+            text: 'The selected file could not be scanned. Try again later.'
+          }
+        ],
+        formErrors: {
+          componentImage: {
+            text: 'The selected file could not be scanned. Try again later.'
+          }
+        }
+      })
+    )
+  })
+
+  it('passes error through if error code is not a virus scan error', () => {
+    const err = {
+      code: 'AN_ERROR'
+    }
+
+    validateFormDataVirusScan(err, req, res, next)
+
+    expect(next).toHaveBeenCalledWith(err)
   })
 })

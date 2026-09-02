@@ -56,6 +56,20 @@ test('disguised markdown file renamed to jpg', async () => {
   ])
 })
 
+test('malicious file', async () => {
+  test.skip(
+    !process.env.CI,
+    'Requires a running ClamAV service, which is only available in CI'
+  )
+
+  await testPage.uploadFile('test-eicar.pdf')
+  await testPage.clickUpload()
+
+  await testPage.expectErrorSummaryWithMessages([
+    'The selected file failed a virus scan'
+  ])
+})
+
 test('file ok', async () => {
   const filename = 'test-image.png'
 

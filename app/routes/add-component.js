@@ -32,6 +32,7 @@ const {
   validateFormDataFileSignature,
   validateFormDataFileSize,
   validateFormDataFileType,
+  validateFormDataVirusScan,
   saveFileToRedis,
   clearSkippedPageData,
   checkEmailDomain,
@@ -60,6 +61,7 @@ const {
   getDetailsForPrEmail
 } = require('../middleware/process-submission-data')
 const verifyCsrf = require('../middleware/verify-csrf')
+const { scanUploadedFileForViruses } = require('../middleware/virus-scan')
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -522,10 +524,12 @@ router.post(
   verifyCsrf,
   upload.single('componentImage'),
   validateFormDataFileSignature,
+  scanUploadedFileForViruses,
   saveFileToRedis,
   canAddAnother,
   validateFormDataFileSize,
   validateFormDataFileType,
+  validateFormDataVirusScan,
   getBackLink,
   validateFormData,
   (req, res, next) => {
