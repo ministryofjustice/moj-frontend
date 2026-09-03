@@ -1,5 +1,5 @@
 ---
-title: times (in prison and-probation)
+title: times (in prison and probation)
 anchor: times-in-prison-and-probation
 type: New
 date: 2026-09-03
