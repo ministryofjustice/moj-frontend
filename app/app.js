@@ -98,8 +98,8 @@ if (!(isDev || isTest)) {
 const sessionOptions = {
   secret: SESSION_SECRET,
   name: 'moj-frontend-session',
-  resave: true,
-  saveUninitialized: true,
+  resave: false,
+  saveUninitialized: false,
   cookie: {
     secure: !(isDev || isTest),
     maxAge: 24 * 60 * 60 * 1000,
@@ -118,8 +118,10 @@ app.use(session(sessionOptions))
 // Custom flash middleware -- from Ethan Brown's book, 'Web Development with Node & Express'
 app.use(function (req, res, next) {
   // if there's a flash message in the session request, make it available in the response, then delete it
-  res.locals.sessionFlash = req.session.sessionFlash
-  delete req.session.sessionFlash
+  if (req.session?.sessionFlash) {
+    res.locals.sessionFlash = req.session.sessionFlash
+    delete req.session.sessionFlash
+  }
   next()
 })
 

@@ -38,6 +38,8 @@ const {
   checkEmailDomain,
   validatePageParams,
   setCsrfToken,
+  setInitialCsrfToken,
+  verifyInitialCsrfToken,
   setSuccessMessage,
   xssComponentCode
 } = require('../middleware/component-session')
@@ -89,7 +91,7 @@ router.all('{*splat}', setCsrfToken)
 
 // TODO:  Why is this a get * ? Can it not just be set in the get /checkYourAnswersPath route below?
 router.get('{*splat}', (req, res, next) => {
-  if (req?.session) {
+  if (req?.session?.started) {
     if (req?.url.endsWith(checkYourAnswersPath)) {
       // Indicate that we've been on the check your answers page
       req.session.checkYourAnswers = true
@@ -200,15 +202,17 @@ if (ENV === 'development') {
 }
 
 // Start
-router.get('/start', (req, res) => {
-  delete req.session.checkYourAnswers
-  req.session.started = true
+router.get('/start', setInitialCsrfToken, (req, res) => {
   res.render('start', {
     page: {
       title: 'Before you start'
     },
-    csrfToken: req?.session?.csrfToken
+    csrfToken: req.initialCsrfToken
   })
+})
+
+router.post('/start', verifyInitialCsrfToken, (req, res) => {
+  res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email`)
 })
 
 // Confirmation page
@@ -264,9 +268,7 @@ router.get('/email-invalid-token', (req, res) => {
   })
 })
 
-router.get('/email', (req, res) => {
-  req.session.started = true
-
+router.get('/email', sessionStarted, (req, res) => {
   if (req.query.reset === 'true') {
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete req.session['/email']
@@ -283,10 +285,6 @@ router.get('/email', (req, res) => {
 
 // For all following routed we must have a session in progress
 router.all('{*splat}', sessionStarted)
-
-router.post('/start', verifyCsrf, (req, res) => {
-  res.redirect(`${ADD_NEW_COMPONENT_ROUTE}/email`)
-})
 
 router.post(
   '/email',

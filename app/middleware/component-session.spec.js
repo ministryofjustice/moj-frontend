@@ -32,6 +32,8 @@ const {
   checkEmailDomain,
   validatePageParams,
   setCsrfToken,
+  setInitialCsrfToken,
+  verifyInitialCsrfToken,
   xssComponentCode,
   setSuccessMessage,
   getPageData,
@@ -54,7 +56,8 @@ jest.mock('../config', () => {
   const original = jest.requireActual('../config')
   return {
     ...original,
-    MAX_ADD_ANOTHER: 3
+    MAX_ADD_ANOTHER: 3,
+    SESSION_SECRET: 'test-session-secret'
   }
 })
 jest.mock('../helpers/check-your-answers', () => ({
@@ -336,12 +339,26 @@ describe('validatePageParams', () => {
 })
 
 describe('setCsrfToken', () => {
-  const next = jest.fn()
-  test('it adds a token if one does not exist', () => {
+  let next
+
+  beforeEach(() => {
+    next = jest.fn()
+  })
+
+  test('it does not add a token before the journey has started', () => {
     const req = { session: {} }
     setCsrfToken(req, {}, next)
-    expect(req.session).toHaveProperty('csrfToken')
+    expect(req.session).not.toHaveProperty('csrfToken')
+    expect(next).toHaveBeenCalled()
   })
+
+  test('it adds a token if the journey has started and one does not exist', () => {
+    const req = { session: { started: true } }
+    setCsrfToken(req, {}, next)
+    expect(req.session).toHaveProperty('csrfToken')
+    expect(next).toHaveBeenCalled()
+  })
+
   test('if a token is already set it does not change', () => {
     const req = {
       session: {
@@ -351,6 +368,80 @@ describe('setCsrfToken', () => {
     setCsrfToken(req, {}, next)
     expect(req.session).toHaveProperty('csrfToken')
     expect(req.session.csrfToken).toBe('1234567890')
+  })
+})
+
+describe('initial CSRF token', () => {
+  let next, res
+  let originalConsoleError
+
+  beforeEach(() => {
+    next = jest.fn()
+    res = {
+      cookie: jest.fn(),
+      clearCookie: jest.fn()
+    }
+    originalConsoleError = console.error
+    console.error = jest.fn()
+  })
+
+  afterEach(() => {
+    console.error = originalConsoleError
+  })
+
+  test('sets a cookie-backed token without touching the session', () => {
+    const req = { session: {} }
+
+    setInitialCsrfToken(req, res, next)
+
+    expect(req.initialCsrfToken).toEqual(expect.any(String))
+    expect(req.session).toStrictEqual({})
+    expect(res.cookie).toHaveBeenCalledWith(
+      'moj-frontend-start-csrf',
+      req.initialCsrfToken,
+      expect.objectContaining({ httpOnly: true })
+    )
+    expect(next).toHaveBeenCalledWith()
+  })
+
+  test('starts the session when the initial token is valid', () => {
+    const setupReq = { session: {} }
+    setInitialCsrfToken(setupReq, res, next)
+
+    next.mockClear()
+    const req = {
+      body: { _csrf: setupReq.initialCsrfToken },
+      headers: {
+        cookie: `moj-frontend-start-csrf=${setupReq.initialCsrfToken}`
+      },
+      session: { checkYourAnswers: true }
+    }
+
+    verifyInitialCsrfToken(req, res, next)
+
+    expect(req.session.started).toBe(true)
+    expect(req.session).toHaveProperty('csrfToken')
+    expect(res.clearCookie).toHaveBeenCalledWith(
+      'moj-frontend-start-csrf',
+      expect.objectContaining({ httpOnly: true })
+    )
+    expect(next).toHaveBeenCalledWith()
+  })
+
+  test('rejects requests without a matching cookie token', () => {
+    const req = {
+      body: { _csrf: 'token' },
+      headers: {},
+      session: {}
+    }
+
+    verifyInitialCsrfToken(req, res, next)
+
+    expect(next).toHaveBeenCalledWith(expect.any(Error))
+    const [error] = next.mock.calls[0]
+    expect(error.message).toBe('Invalid CSRF token')
+    expect(error.status).toBe(403)
+    expect(req.session).toStrictEqual({})
   })
 })
 
