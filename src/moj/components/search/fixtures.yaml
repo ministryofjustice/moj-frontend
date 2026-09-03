@@ -156,7 +156,7 @@ examples:
         disabled: true
         spellcheck: false
         autocomplete: off
-        pattern: "[A-Za-z]+"
+        pattern: '[A-Za-z]+'
         inputmode: text
         describedBy: search-hint
       button:
