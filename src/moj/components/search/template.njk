@@ -81,8 +81,15 @@
       label: label,
       hint: hint,
       id: params.input.id,
+      value: params.input.value,
       name: params.input.name | default("search"),
       type: params.input.type | default("search"),
+      disabled: params.input.disabled,
+      spellcheck: params.input.spellcheck,
+      autocomplete: params.input.autocomplete,
+      pattern: params.input.pattern,
+      inputmode: params.input.inputmode,
+      describedBy: params.input.describedBy,
       inputWrapper: {
         classes: inputWrapperClassNames
       },
