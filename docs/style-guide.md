@@ -11,7 +11,7 @@ eleventyNavigation:
 ---
 
 First published: 18 December 2024  
-Last updated: 27 August 2026  
+Last updated: 3 September 2026  
 [View all updates](/content-standards/style-guide-updates)
 <br />
 <br />
