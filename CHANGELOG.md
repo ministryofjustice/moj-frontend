@@ -1,3 +1,10 @@
+## [11.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v11.0.0...v11.0.1) (2026-09-04)
+
+
+### Bug Fixes
+
+* **search:** ensure `input` options are passed through to the search input in the component ([#2598](https://github.com/ministryofjustice/moj-frontend/issues/2598)) ([5d0a1ad](https://github.com/ministryofjustice/moj-frontend/commit/5d0a1ad2e7e2c852cbb5dc41ac77655d22e190a4)), closes [#2590](https://github.com/ministryofjustice/moj-frontend/issues/2590)
+
 # [11.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v10.0.1...v11.0.0) (2026-08-25)
 
 
