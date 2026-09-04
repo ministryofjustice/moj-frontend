@@ -14,12 +14,20 @@
 
 ### Options for the `input` component [#{{id}}-input]
 
-| Name       | Type   | Required | Description                                                                |
-| ---------- | ------ | -------- | -------------------------------------------------------------------------- |
-| id         | string | Yes      | The ID of the input.                                                       |
-| name       | string | Yes      | The name of the input, submitted with the form data.                       |
-| classes    | string | No       | Classes to add to the input element.                                       |
-| attributes | object | No       | HTML attributes (for example data attributes) to add to the input element. |
+| Name         | Type    | Required | Description                                                                                                                                                                                                                     |
+| ------------ | ------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id           | string  | Yes      | The ID of the input.                                                                                                                                                                                                            |
+| name         | string  | Yes      | The name of the input, submitted with the form data. Defaults to `search`.                                                                                                                                                                           |
+| type         | string  | No       | Type of input control to render, for example `text` or `search`. Defaults to `search`.                                                                                                                                        |
+| value        | string  | No       | Optional initial value of the input.                                                                                                                                                                                           |
+| disabled     | boolean | No       | If `true`, input will be disabled.                                                                                                                                                                                             |
+| describedBy  | string  | No       | One or more element IDs to add to the `aria-describedby` attribute, used to provide additional descriptive information for screen reader users.                                                                              |
+| autocomplete | string  | No       | Attribute to identify input purpose, for example `postal-code` or `username`. See [autofill](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill) for full list of values that can be used.     |
+| pattern      | string  | No       | Attribute to [provide a regular expression pattern](https://html.spec.whatwg.org/multipage/sec-forms.html#the-pattern-attribute), used to match allowed character combinations for the input value.                          |
+| spellcheck   | boolean | No       | Optional field to enable or disable the `spellcheck` attribute on the input.                                                                                                                                                   |
+| inputmode    | string  | No       | Optional value for [inputmode](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode). This is a performance optimisation for virtual keyboards on touch devices; it is not a substitute for `pattern`, as `inputmode` can be overridden by the user's device settings. |
+| classes      | string  | No       | Classes to add to the input element.                                                                                                                                                                                           |
+| attributes   | object  | No       | HTML attributes (for example data attributes) to add to the input element.                                                                                                                                                     |
 
 ### Options for the `button` component [#{{id}}-button]
 
