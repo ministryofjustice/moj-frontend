@@ -153,6 +153,12 @@ examples:
         id: search
         name: search
         classes: custom-input-class
+        disabled: true
+        spellcheck: false
+        autocomplete: off
+        pattern: '[A-Za-z]+'
+        inputmode: text
+        describedBy: search-hint
       button:
         text: Search
 
