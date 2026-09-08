@@ -13,23 +13,28 @@ env:
 jobs:
   cleanup-preview:
     runs-on: ubuntu-latest
+    env:
+      SHOULD_CLEANUP: ${{ contains(github.event.pull_request.labels.*.name, 'preview: active 👀') }}
     permissions:
       id-token: write
       contents: read
       pull-requests: write
-    if: "${{ contains(github.event.pull_request.labels.*.name, 'preview: active 👀') }}"
     steps:
       - run: |
-          set -euo pipefail
-          printf '%s\n' "${KUBE_CERT}" > ca.crt
-          kubectl config set-cluster "${KUBE_CLUSTER}" --certificate-authority=./ca.crt --server="https://${KUBE_CLUSTER}"
-          kubectl config set-credentials deploy-user --token="${KUBE_TOKEN}"
-          kubectl config set-context "${KUBE_CLUSTER}" --cluster="${KUBE_CLUSTER}" --user=deploy-user --namespace="${KUBE_NAMESPACE}"
-          kubectl config use-context "${KUBE_CLUSTER}"
-          kubectl delete deployment "moj-frontend-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"
-          kubectl delete service "moj-frontend-service-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"
-          kubectl delete service "express-app-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"
-          kubectl delete ingress "moj-frontend-ingress-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"
+          if [[ "${SHOULD_CLEANUP}" == 'true' ]]; then
+            set -euo pipefail
+            printf '%s\n' "${KUBE_CERT}" > ca.crt
+            kubectl config set-cluster "${KUBE_CLUSTER}" --certificate-authority=./ca.crt --server="https://${KUBE_CLUSTER}"
+            kubectl config set-credentials deploy-user --token="${KUBE_TOKEN}"
+            kubectl config set-context "${KUBE_CLUSTER}" --cluster="${KUBE_CLUSTER}" --user=deploy-user --namespace="${KUBE_NAMESPACE}"
+            kubectl config use-context "${KUBE_CLUSTER}"
+            kubectl delete deployment "moj-frontend-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"
+            kubectl delete service "moj-frontend-service-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"
+            kubectl delete service "express-app-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"
+            kubectl delete ingress "moj-frontend-ingress-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"
+          else
+            echo 'Preview cleanup skipped: the pull request has no active preview label.'
+          fi
         env:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
@@ -37,6 +42,10 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: "Remove preview: active label"
+        if: env.SHOULD_CLEANUP == 'true'
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: 'gh pr edit "${PR_NUMBER}" --remove-label "preview: active 👀"'
+      - name: Report skipped preview cleanup
+        if: env.SHOULD_CLEANUP != 'true'
+        run: echo 'Preview cleanup not required; no active preview label was found.' >> "$GITHUB_STEP_SUMMARY"

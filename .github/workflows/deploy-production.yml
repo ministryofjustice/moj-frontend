@@ -120,7 +120,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: [result]
-    if: ${{ (github.event_name == 'push') || (github.event_name == 'workflow_dispatch') }}
+    env:
+      SHOULD_DEPLOY: ${{ (github.event_name == 'push') || (github.event_name == 'workflow_dispatch') }}
     permissions:
       id-token: write
       contents: read
@@ -128,18 +129,24 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: aws-actions/configure-aws-credentials@e6de054238d6b7531b4efff3b6587d9aade6a06c # v6.2.3
+        if: env.SHOULD_DEPLOY == 'true'
         with:
           role-to-assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.ECR_REGION }}
       - uses: aws-actions/amazon-ecr-login@03f1aad4c6c7ffd436567f42f9384779290529bd # v2.1.7
         id: login-ecr
+        if: env.SHOULD_DEPLOY == 'true'
       - run: |
-          set -euo pipefail
-          docker build --build-arg GITHUB_DEPLOY_KEY="${GITHUB_DEPLOY_KEY}" --target=production -t "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}" .
-          docker build --build-arg GITHUB_DEPLOY_KEY="${GITHUB_DEPLOY_KEY}" --target=production-express-app -t "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}" .
-          docker push "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
-          docker push "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}"
-          envsubst < kubernetes-deploy-production.tpl > kubernetes-deploy-production.yaml
+          if [[ "${SHOULD_DEPLOY}" == 'true' ]]; then
+            set -euo pipefail
+            docker build --build-arg GITHUB_DEPLOY_KEY="${GITHUB_DEPLOY_KEY}" --target=production -t "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}" .
+            docker build --build-arg GITHUB_DEPLOY_KEY="${GITHUB_DEPLOY_KEY}" --target=production-express-app -t "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}" .
+            docker push "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
+            docker push "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}"
+            envsubst < kubernetes-deploy-production.tpl > kubernetes-deploy-production.yaml
+          else
+            echo 'Production deployment skipped: this workflow was not triggered by main or manually.'
+          fi
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: ${{ vars.ECR_REPOSITORY }}
@@ -147,18 +154,25 @@ jobs:
           BRANCH: 'production'
           CLAMAV_IMAGE: clamav/clamav:stable
       - run: |
-          set -euo pipefail
-          printf '%s\n' "${KUBE_CERT}" > ca.crt
-          kubectl config set-cluster "${KUBE_CLUSTER}" --certificate-authority=./ca.crt --server="https://${KUBE_CLUSTER}"
-          kubectl config set-credentials deploy-user --token="${KUBE_TOKEN}"
-          kubectl config set-context "${KUBE_CLUSTER}" --cluster="${KUBE_CLUSTER}" --user=deploy-user --namespace="${KUBE_NAMESPACE}"
-          kubectl config use-context "${KUBE_CLUSTER}"
-          kubectl -n "${KUBE_NAMESPACE}" apply -f kubernetes-deploy-production.yaml
-          {
-            echo '# Production deployment'
-            echo
-            echo 'The guidance site was deployed to production.'
-          } >> "$GITHUB_STEP_SUMMARY"
+          if [[ "${SHOULD_DEPLOY}" == 'true' ]]; then
+            set -euo pipefail
+            printf '%s\n' "${KUBE_CERT}" > ca.crt
+            kubectl config set-cluster "${KUBE_CLUSTER}" --certificate-authority=./ca.crt --server="https://${KUBE_CLUSTER}"
+            kubectl config set-credentials deploy-user --token="${KUBE_TOKEN}"
+            kubectl config set-context "${KUBE_CLUSTER}" --cluster="${KUBE_CLUSTER}" --user=deploy-user --namespace="${KUBE_NAMESPACE}"
+            kubectl config use-context "${KUBE_CLUSTER}"
+            kubectl -n "${KUBE_NAMESPACE}" apply -f kubernetes-deploy-production.yaml
+            {
+              echo '# Production deployment'
+              echo
+              echo 'The guidance site was deployed to production.'
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Production deployment apply skipped: deployment was not requested.'
+          fi
+      - name: Report skipped production deployment
+        if: env.SHOULD_DEPLOY != 'true'
+        run: echo 'Production deployment not requested; no deployment was performed.' >> "$GITHUB_STEP_SUMMARY"
         env:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}

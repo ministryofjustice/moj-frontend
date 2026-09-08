@@ -13,28 +13,35 @@ env:
 jobs:
   push-to-preview:
     runs-on: ubuntu-latest
+    env:
+      SHOULD_DEPLOY: ${{ contains(github.event.pull_request.labels.*.name, 'preview: request') || contains(github.event.pull_request.labels.*.name, 'preview: active 👀') }}
     permissions:
       id-token: write
       contents: read
       pull-requests: write
-    if: "${{ contains(github.event.pull_request.labels.*.name, 'preview: request') || contains(github.event.pull_request.labels.*.name, 'preview: active 👀') }}"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: aws-actions/configure-aws-credentials@e6de054238d6b7531b4efff3b6587d9aade6a06c # v6.2.3
+        if: env.SHOULD_DEPLOY == 'true'
         with:
           role-to-assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.ECR_REGION }}
       - uses: aws-actions/amazon-ecr-login@03f1aad4c6c7ffd436567f42f9384779290529bd # v2.1.7
         id: login-ecr
+        if: env.SHOULD_DEPLOY == 'true'
       - run: |
-          set -euo pipefail
-          envsubst '${BRANCH}' < docker/nginx-preview.conf > docker/nginx-preview.conf.tmp
-          mv docker/nginx-preview.conf.tmp docker/nginx-preview.conf
-          docker build --target=preview -t "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}" .
-          docker build --target=preview-express-app -t "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}" .
-          docker push "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
-          docker push "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}"
-          envsubst < kubernetes-deploy-preview.tpl > kubernetes-deploy-preview.yaml
+          if [[ "${SHOULD_DEPLOY}" == 'true' ]]; then
+            set -euo pipefail
+            envsubst '${BRANCH}' < docker/nginx-preview.conf > docker/nginx-preview.conf.tmp
+            mv docker/nginx-preview.conf.tmp docker/nginx-preview.conf
+            docker build --target=preview -t "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}" .
+            docker build --target=preview-express-app -t "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}" .
+            docker push "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
+            docker push "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}"
+            envsubst < kubernetes-deploy-preview.tpl > kubernetes-deploy-preview.yaml
+          else
+            echo 'Preview deployment skipped: the pull request has no active preview label.'
+          fi
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: ${{ vars.ECR_REPOSITORY }}
@@ -42,18 +49,23 @@ jobs:
           BRANCH: pr-${{ github.event.pull_request.number }}
           CLAMAV_IMAGE: clamav/clamav:stable
       - run: |
-          set -euo pipefail
-          printf '%s\n' "${KUBE_CERT}" > ca.crt
-          kubectl config set-cluster "${KUBE_CLUSTER}" --certificate-authority=./ca.crt --server="https://${KUBE_CLUSTER}"
-          kubectl config set-credentials deploy-user --token="${KUBE_TOKEN}"
-          kubectl config set-context "${KUBE_CLUSTER}" --cluster="${KUBE_CLUSTER}" --user=deploy-user --namespace="${KUBE_NAMESPACE}"
-          kubectl config use-context "${KUBE_CLUSTER}"
-          kubectl -n "${KUBE_NAMESPACE}" apply -f kubernetes-deploy-preview.yaml
+          if [[ "${SHOULD_DEPLOY}" == 'true' ]]; then
+            set -euo pipefail
+            printf '%s\n' "${KUBE_CERT}" > ca.crt
+            kubectl config set-cluster "${KUBE_CLUSTER}" --certificate-authority=./ca.crt --server="https://${KUBE_CLUSTER}"
+            kubectl config set-credentials deploy-user --token="${KUBE_TOKEN}"
+            kubectl config set-context "${KUBE_CLUSTER}" --cluster="${KUBE_CLUSTER}" --user=deploy-user --namespace="${KUBE_NAMESPACE}"
+            kubectl config use-context "${KUBE_CLUSTER}"
+            kubectl -n "${KUBE_NAMESPACE}" apply -f kubernetes-deploy-preview.yaml
+          else
+            echo 'Preview deployment cleanup skipped: deployment was not requested.'
+          fi
         env:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
           KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
       - name: Update PR with success
+        if: env.SHOULD_DEPLOY == 'true'
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
@@ -66,3 +78,6 @@ jobs:
             echo
             echo "https://moj-frontend-pr-${PR_NUMBER}.apps.live.cloud-platform.service.justice.gov.uk"
           } >> "$GITHUB_STEP_SUMMARY"
+      - name: Report skipped preview deployment
+        if: env.SHOULD_DEPLOY != 'true'
+        run: echo 'Preview deployment not requested; no deployment was performed.' >> "$GITHUB_STEP_SUMMARY"
