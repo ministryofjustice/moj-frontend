@@ -22,9 +22,11 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Remove active labels from other PRs
         run: |
-          for number in $(gh pr list --label "staging:active" --json number | jq -r '.[].number'); do
-          gh pr edit ${number} --remove-label "staging:active"
+          set -euo pipefail
+          while read -r number; do
+            gh pr edit "${number}" --remove-label "staging:active"
           done
+          < <(gh pr list --label "staging:active" --json number | jq -r '.[].number')
       - uses: aws-actions/configure-aws-credentials@e6de054238d6b7531b4efff3b6587d9aade6a06c # v6.2.3
         with:
           role-to-assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
@@ -32,23 +34,25 @@ jobs:
       - uses: aws-actions/amazon-ecr-login@03f1aad4c6c7ffd436567f42f9384779290529bd # v2.1.7
         id: login-ecr
       - run: |
-          docker build --target=staging -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-          docker build --target=staging-express-app -t $REGISTRY/$REPOSITORY:express-$IMAGE_TAG .
-          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
-          docker push $REGISTRY/$REPOSITORY:express-$IMAGE_TAG
-          cat kubernetes-deploy-staging.tpl | envsubst > kubernetes-deploy-staging.yaml
+          set -euo pipefail
+          docker build --target=staging -t "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}" .
+          docker build --target=staging-express-app -t "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}" .
+          docker push "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
+          docker push "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}"
+          envsubst < kubernetes-deploy-staging.tpl > kubernetes-deploy-staging.yaml
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: ${{ vars.ECR_REPOSITORY }}
           IMAGE_TAG: ${{ github.sha }}
           BRANCH: 'staging'
       - run: |
-          echo "${KUBE_CERT}" > ca.crt
-          kubectl config set-cluster ${KUBE_CLUSTER} --certificate-authority=./ca.crt --server=https://${KUBE_CLUSTER}
-          kubectl config set-credentials deploy-user --token=${KUBE_TOKEN}
-          kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${KUBE_NAMESPACE}
-          kubectl config use-context ${KUBE_CLUSTER}
-          kubectl -n ${KUBE_NAMESPACE} apply -f kubernetes-deploy-staging.yaml
+          set -euo pipefail
+          printf '%s\n' "${KUBE_CERT}" > ca.crt
+          kubectl config set-cluster "${KUBE_CLUSTER}" --certificate-authority=./ca.crt --server="https://${KUBE_CLUSTER}"
+          kubectl config set-credentials deploy-user --token="${KUBE_TOKEN}"
+          kubectl config set-context "${KUBE_CLUSTER}" --cluster="${KUBE_CLUSTER}" --user=deploy-user --namespace="${KUBE_NAMESPACE}"
+          kubectl config use-context "${KUBE_CLUSTER}"
+          kubectl -n "${KUBE_NAMESPACE}" apply -f kubernetes-deploy-staging.yaml
         env:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}

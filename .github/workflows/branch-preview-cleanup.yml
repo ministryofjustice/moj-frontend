@@ -20,11 +20,12 @@ jobs:
     if: "${{ contains(github.event.pull_request.labels.*.name, 'preview: active 👀') }}"
     steps:
       - run: |
-          echo "${KUBE_CERT}" > ca.crt
-          kubectl config set-cluster ${KUBE_CLUSTER} --certificate-authority=./ca.crt --server=https://${KUBE_CLUSTER}
-          kubectl config set-credentials deploy-user --token=${KUBE_TOKEN}
-          kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${KUBE_NAMESPACE}
-          kubectl config use-context ${KUBE_CLUSTER}
+          set -euo pipefail
+          printf '%s\n' "${KUBE_CERT}" > ca.crt
+          kubectl config set-cluster "${KUBE_CLUSTER}" --certificate-authority=./ca.crt --server="https://${KUBE_CLUSTER}"
+          kubectl config set-credentials deploy-user --token="${KUBE_TOKEN}"
+          kubectl config set-context "${KUBE_CLUSTER}" --cluster="${KUBE_CLUSTER}" --user=deploy-user --namespace="${KUBE_NAMESPACE}"
+          kubectl config use-context "${KUBE_CLUSTER}"
           kubectl delete deployment "moj-frontend-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"
           kubectl delete service "moj-frontend-service-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"
           kubectl delete service "express-app-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"

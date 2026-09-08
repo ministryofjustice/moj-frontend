@@ -134,11 +134,12 @@ jobs:
       - uses: aws-actions/amazon-ecr-login@03f1aad4c6c7ffd436567f42f9384779290529bd # v2.1.7
         id: login-ecr
       - run: |
-          docker build --build-arg GITHUB_DEPLOY_KEY="${GITHUB_DEPLOY_KEY}" --target=production -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-          docker build --build-arg GITHUB_DEPLOY_KEY="${GITHUB_DEPLOY_KEY}" --target=production-express-app -t $REGISTRY/$REPOSITORY:express-$IMAGE_TAG .
-          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
-          docker push $REGISTRY/$REPOSITORY:express-$IMAGE_TAG
-          cat kubernetes-deploy-production.tpl | envsubst > kubernetes-deploy-production.yaml
+          set -euo pipefail
+          docker build --build-arg GITHUB_DEPLOY_KEY="${GITHUB_DEPLOY_KEY}" --target=production -t "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}" .
+          docker build --build-arg GITHUB_DEPLOY_KEY="${GITHUB_DEPLOY_KEY}" --target=production-express-app -t "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}" .
+          docker push "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
+          docker push "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}"
+          envsubst < kubernetes-deploy-production.tpl > kubernetes-deploy-production.yaml
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: ${{ vars.ECR_REPOSITORY }}
@@ -146,12 +147,13 @@ jobs:
           BRANCH: 'production'
           CLAMAV_IMAGE: clamav/clamav:stable
       - run: |
-          echo "${KUBE_CERT}" > ca.crt
-          kubectl config set-cluster ${KUBE_CLUSTER} --certificate-authority=./ca.crt --server=https://${KUBE_CLUSTER}
-          kubectl config set-credentials deploy-user --token=${KUBE_TOKEN}
-          kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${KUBE_NAMESPACE}
-          kubectl config use-context ${KUBE_CLUSTER}
-          kubectl -n ${KUBE_NAMESPACE} apply -f kubernetes-deploy-production.yaml
+          set -euo pipefail
+          printf '%s\n' "${KUBE_CERT}" > ca.crt
+          kubectl config set-cluster "${KUBE_CLUSTER}" --certificate-authority=./ca.crt --server="https://${KUBE_CLUSTER}"
+          kubectl config set-credentials deploy-user --token="${KUBE_TOKEN}"
+          kubectl config set-context "${KUBE_CLUSTER}" --cluster="${KUBE_CLUSTER}" --user=deploy-user --namespace="${KUBE_NAMESPACE}"
+          kubectl config use-context "${KUBE_CLUSTER}"
+          kubectl -n "${KUBE_NAMESPACE}" apply -f kubernetes-deploy-production.yaml
         env:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
