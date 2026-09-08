@@ -59,88 +59,11 @@ jobs:
           if-no-files-found: ignore
 
       - name: Add comment to PR
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const fs = require('fs')
-
-            const issueNumber = ${{ github.event.pull_request.number }}
-            const commit = '${{ github.event.pull_request.head.sha }}'
-            const runUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
-
-            async function getExistingComment(marker) {
-              const comments = await github.paginate(github.rest.issues.listComments, {
-                issue_number: issueNumber,
-                owner: context.repo.owner,
-                repo: context.repo.repo
-              })
-              return comments.find(({ body }) => body?.includes(marker))
-            }
-
-            async function upsertComment(marker, title, body) {
-              const fullBody = `<!-- ${marker} -->\n## ${title}\n\n${body}\n\n---\n[Action run](${runUrl}) for ${commit}`
-              const existing = await getExistingComment(marker)
-              const params = { issue_number: issueNumber, owner: context.repo.owner, repo: context.repo.repo }
-              if (existing) {
-                await github.rest.issues.updateComment({ ...params, comment_id: existing.id, body: fullBody })
-              } else {
-                await github.rest.issues.createComment({ ...params, body: fullBody })
-              }
-            }
-
-            async function deleteComment(marker) {
-              const existing = await getExistingComment(marker)
-              if (existing) {
-                await github.rest.issues.deleteComment({
-                  issue_number: issueNumber,
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  comment_id: existing.id
-                })
-              }
-            }
-
-            async function commentDiff({ path, title, marker, skipEmpty }) {
-              let diffText = ''
-              try { diffText = fs.readFileSync(path, 'utf8') } catch {}
-
-              if (!diffText && skipEmpty) {
-                console.log(`Skipping comment for ${path} (empty diff)`)
-                await deleteComment(marker)
-                return
-              }
-
-              const body = diffText
-                ? `\`\`\`diff\n${diffText}\n\`\`\``
-                : 'No diff changes found.'
-
-              try {
-                await upsertComment(marker, title, body)
-              } catch {
-                await upsertComment(marker, title, `The diff could not be posted as a comment. You can download it from the [workflow artifacts](${runUrl}#artifacts).`)
-              }
-            }
-
-            const diffs = [
-              {
-                path: '${{ github.workspace }}/.cache/diff/dist/js.diff',
-                title: 'JavaScript changes to dist',
-                marker: 'moj-frontend/dist/js.diff'
-              },
-              {
-                path: '${{ github.workspace }}/.cache/diff/dist/css.diff',
-                title: 'Stylesheets changes to dist',
-                marker: 'moj-frontend/dist/css.diff'
-              },
-              {
-                path: '${{ github.workspace }}/.cache/diff/dist/other.diff',
-                title: 'Other changes to dist',
-                marker: 'moj-frontend/dist/other.diff',
-                skipEmpty: true
-              }
-            ]
-
-            for (const diff of diffs) {
-              await commentDiff(diff)
-            }
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_WORKSPACE: ${{ github.workspace }}
+          DIFF_TYPE: dist
+          GITHUB_SHA: ${{ github.event.pull_request.head.sha }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: node bin/comment-diff.mjs
