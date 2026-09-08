@@ -5,14 +5,38 @@
     { "name": "beta", "prerelease": true }
   ],
   "plugins": [
-    "@semantic-release/commit-analyzer",
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "angular",
+        "parserOpts": {
+          "headerPattern": "^(\\w*)(?:\\((.*)\\))?(!)?: (.*)$",
+          "headerCorrespondence": ["type", "scope", "breaking", "subject"]
+        },
+        "releaseRules": [
+          {
+            "breaking": "!",
+            "release": "major"
+          }
+        ]
+      }
+    ],
     [
       "@semantic-release/exec",
       {
         "verifyReleaseCmd": "npm version --no-git-tag-version --allow-same-version --workspace package ${nextRelease.version}"
       }
     ],
-    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "angular",
+        "parserOpts": {
+          "headerPattern": "^(\\w*)(?:\\((.*)\\))?(!)?: (.*)$",
+          "headerCorrespondence": ["type", "scope", "breaking", "subject"]
+        }
+      }
+    ],
     [
       "@semantic-release/changelog",
       {
