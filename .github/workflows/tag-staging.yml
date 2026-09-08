@@ -65,3 +65,8 @@ jobs:
           gh pr comment "${PR_NUMBER}" --body-file comment.txt
           gh pr edit "${PR_NUMBER}" --remove-label "staging:request"
           gh pr edit "${PR_NUMBER}" --add-label "staging:active"
+          {
+            echo '# Staging deployment'
+            echo
+            echo 'https://moj-frontend-staging.apps.live.cloud-platform.service.justice.gov.uk/'
+          } >> "$GITHUB_STEP_SUMMARY"

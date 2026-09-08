@@ -125,6 +125,11 @@ jobs:
             -f state="${STATE}" \
             -f context="Tests" \
             -f description="Tests ${RESULT}"
+          {
+            echo '# Package test result'
+            echo
+            echo "Tests: ${RESULT}"
+          } >> "$GITHUB_STEP_SUMMARY"
 
   publish:
     runs-on: ubuntu-latest

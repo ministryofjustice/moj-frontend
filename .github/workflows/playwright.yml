@@ -53,10 +53,17 @@ jobs:
             fi
             sleep 2
           done
-          echo "ClamAV did not start listening on port 3310" >&2
+          echo "::error::ClamAV did not start listening on port 3310"
           exit 1
       - name: Run Playwright tests
         run: ENV=test npm run test:e2e
+      - name: Summarize Playwright report
+        run: |
+          {
+            echo '# Playwright report'
+            echo
+            echo 'The Playwright report is available in the `playwright-report` workflow artifact.'
+          } >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: ${{ !cancelled() }}
         with:

@@ -58,6 +58,16 @@ jobs:
           path: .cache/diff/dist/*.diff
           if-no-files-found: ignore
 
+      - name: Summarize dist diffs
+        run: |
+          {
+            echo '# Generated dist diffs'
+            echo
+            echo '```text'
+            find .cache/diff/dist -maxdepth 1 -type f -name '*.diff' -print
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Add comment to PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

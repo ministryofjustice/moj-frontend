@@ -58,6 +58,16 @@ jobs:
           path: .cache/diff/package/*.diff
           if-no-files-found: ignore
 
+      - name: Summarize npm package diffs
+        run: |
+          {
+            echo '# Generated npm package diffs'
+            echo
+            echo '```text'
+            find .cache/diff/package -maxdepth 1 -type f -name '*.diff' -print
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Add comment to PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

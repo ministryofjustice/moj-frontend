@@ -61,3 +61,8 @@ jobs:
           gh pr comment "${PR_NUMBER}" --body-file comment.txt
           gh pr edit "${PR_NUMBER}" --remove-label "preview: request"
           gh pr edit "${PR_NUMBER}" --add-label "preview: active 👀"
+          {
+            echo '# Preview deployment'
+            echo
+            echo "https://moj-frontend-pr-${PR_NUMBER}.apps.live.cloud-platform.service.justice.gov.uk"
+          } >> "$GITHUB_STEP_SUMMARY"

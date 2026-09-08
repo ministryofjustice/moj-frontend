@@ -47,6 +47,11 @@ jobs:
           kubectl config set-context "${KUBE_CLUSTER}" --cluster="${KUBE_CLUSTER}" --user=deploy-user --namespace="${KUBE_NAMESPACE}"
           kubectl config use-context "${KUBE_CLUSTER}"
           kubectl -n "${KUBE_NAMESPACE}" apply -f kubernetes-deploy-preview.yaml
+          {
+            echo '# Preview deployment'
+            echo
+            echo "Branch preview deployed for ${BRANCH_NAME}."
+          } >> "$GITHUB_STEP_SUMMARY"
         env:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
