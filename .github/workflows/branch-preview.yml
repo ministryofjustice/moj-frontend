@@ -51,8 +51,10 @@ jobs:
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
           KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
       - name: Update PR with success
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          echo -e "🚀 Deployed to preview environment! If this is the first deploy, you may have to wait a few minutes for your preview site to be ready on the following URL:\n\n https://moj-frontend-pr-${{ github.event.pull_request.number }}.apps.live.cloud-platform.service.justice.gov.uk\n\n**Username:** \`preview\`, **Password:** \`moj\`" > comment.txt
-          gh pr comment ${{ github.event.pull_request.number }} --body-file comment.txt
-          gh pr edit ${{ github.event.pull_request.number }} --remove-label "preview: request"
-          gh pr edit ${{ github.event.pull_request.number }} --add-label "preview: active 👀"
+          echo -e "🚀 Deployed to preview environment! If this is the first deploy, you may have to wait a few minutes for your preview site to be ready on the following URL:\n\n https://moj-frontend-pr-${PR_NUMBER}.apps.live.cloud-platform.service.justice.gov.uk\n\n**Username:** \`preview\`, **Password:** \`moj\`" > comment.txt
+          gh pr comment "${PR_NUMBER}" --body-file comment.txt
+          gh pr edit "${PR_NUMBER}" --remove-label "preview: request"
+          gh pr edit "${PR_NUMBER}" --add-label "preview: active 👀"

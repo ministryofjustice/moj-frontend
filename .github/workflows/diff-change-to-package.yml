@@ -45,8 +45,11 @@ jobs:
           git config diff.mincss.textconv "js-beautify --editorconfig --type css"
 
       - name: Generate diff
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          WORKSPACE: ${{ github.workspace }}
         run: |
-          bin/package-diff.sh ${{ github.event.pull_request.base.ref }} $GITHUB_WORKSPACE
+          bin/package-diff.sh "${BASE_REF}" "${WORKSPACE}"
 
       - name: Save npm package diffs
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

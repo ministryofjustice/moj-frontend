@@ -54,8 +54,10 @@ jobs:
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
           KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
       - name: Update PR with success
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           echo -e "🚀 Deploying to [staging environment](https://moj-frontend-staging.apps.live.cloud-platform.service.justice.gov.uk/)\n\n**Username:** \`staging\`, **Password:** \`moj\`" > comment.txt
-          gh pr comment ${{ github.event.pull_request.number }} --body-file comment.txt
-          gh pr edit ${{ github.event.pull_request.number }} --remove-label "staging:request"
-          gh pr edit ${{ github.event.pull_request.number }} --add-label "staging:active"
+          gh pr comment "${PR_NUMBER}" --body-file comment.txt
+          gh pr edit "${PR_NUMBER}" --remove-label "staging:request"
+          gh pr edit "${PR_NUMBER}" --add-label "staging:active"
