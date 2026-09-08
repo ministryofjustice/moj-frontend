@@ -167,20 +167,19 @@ for (const [filename, title, marker, skipEmpty] of definition.files) {
   const diffText = await readDiff(filename)
   if (!diffText && skipEmpty) {
     await deleteComment(marker)
-    continue
-  }
-
-  const body = diffText
-    ? `\`\`\`diff\n${diffText}\n\`\`\``
-    : 'No diff changes found.'
-  try {
-    await upsertComment(marker, title, body)
-  } catch (error) {
-    console.error(`Unable to post ${filename} diff comment: ${error.message}`)
-    await upsertComment(
-      marker,
-      title,
-      `The diff could not be posted as a comment. You can download it from the [workflow artifacts](https://github.com/${owner}/${repo}/actions/runs/${GITHUB_RUN_ID}#artifacts).`
-    )
+  } else {
+    const body = diffText
+      ? `\`\`\`diff\n${diffText}\n\`\`\``
+      : 'No diff changes found.'
+    try {
+      await upsertComment(marker, title, body)
+    } catch (error) {
+      console.error(`Unable to post ${filename} diff comment: ${error.message}`)
+      await upsertComment(
+        marker,
+        title,
+        `The diff could not be posted as a comment. You can download it from the [workflow artifacts](https://github.com/${owner}/${repo}/actions/runs/${GITHUB_RUN_ID}#artifacts).`
+      )
+    }
   }
 }
