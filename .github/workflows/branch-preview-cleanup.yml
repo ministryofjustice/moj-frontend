@@ -14,7 +14,7 @@ jobs:
   cleanup-preview:
     runs-on: ubuntu-latest
     env:
-      SHOULD_CLEANUP: ${{ contains(github.event.pull_request.labels.*.name, 'preview: active 👀') }}
+      SHOULD_CLEANUP: "${{ contains(github.event.pull_request.labels.*.name, 'preview: active 👀') }}"
     permissions:
       id-token: write
       contents: read

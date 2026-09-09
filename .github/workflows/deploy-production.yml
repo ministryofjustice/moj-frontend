@@ -170,10 +170,9 @@ jobs:
           else
             echo 'Production deployment apply skipped: deployment was not requested.'
           fi
-      - name: Report skipped production deployment
-        if: env.SHOULD_DEPLOY != 'true'
-        run: echo 'Production deployment not requested; no deployment was performed.' >> "$GITHUB_STEP_SUMMARY"
         env:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
-          KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
+      - name: Report skipped production deployment
+        if: env.SHOULD_DEPLOY != 'true'
+        run: echo 'Production deployment not requested; no deployment was performed.' >> "$GITHUB_STEP_SUMMARY"
