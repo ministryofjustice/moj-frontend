@@ -26,26 +26,33 @@ jobs:
       - uses: aws-actions/amazon-ecr-login@03f1aad4c6c7ffd436567f42f9384779290529bd # v2.1.7
         id: login-ecr
       - run: |
-          envsubst '${BRANCH}' < docker/nginx-preview.conf > docker/nginx-preview.conf.tmp && mv docker/nginx-preview.conf.tmp docker/nginx-preview.conf
-          docker build --target=preview -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-          docker build --target=preview-express-app -t $REGISTRY/$REPOSITORY:express-$IMAGE_TAG .
-          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
-          docker push $REGISTRY/$REPOSITORY:express-$IMAGE_TAG
-          cat kubernetes-deploy-preview.tpl | envsubst > kubernetes-deploy-preview.yaml
+          set -euo pipefail
+          envsubst '${BRANCH}' < docker/nginx-preview.conf > docker/nginx-preview.conf.tmp
+          mv docker/nginx-preview.conf.tmp docker/nginx-preview.conf
+          docker build --target=preview -t "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}" .
+          docker build --target=preview-express-app -t "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}" .
+          docker push "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
+          docker push "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}"
+          envsubst < kubernetes-deploy-preview.tpl > kubernetes-deploy-preview.yaml
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: ${{ vars.ECR_REPOSITORY }}
           IMAGE_TAG: ${{ github.sha }}
           BRANCH: branch-${{ env.BRANCH_NAME }}
       - run: |
-          echo "${KUBE_CERT}" > ca.crt
-          kubectl config set-cluster ${KUBE_CLUSTER} --certificate-authority=./ca.crt --server=https://${KUBE_CLUSTER}
-          kubectl config set-credentials deploy-user --token=${KUBE_TOKEN}
-          kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${KUBE_NAMESPACE}
-          kubectl config use-context ${KUBE_CLUSTER}
-          kubectl -n ${KUBE_NAMESPACE} apply -f kubernetes-deploy-preview.yaml
+          set -euo pipefail
+          printf '%s\n' "${KUBE_CERT}" > ca.crt
+          kubectl config set-cluster "${KUBE_CLUSTER}" --certificate-authority=./ca.crt --server="https://${KUBE_CLUSTER}"
+          kubectl config set-credentials deploy-user --token="${KUBE_TOKEN}"
+          kubectl config set-context "${KUBE_CLUSTER}" --cluster="${KUBE_CLUSTER}" --user=deploy-user --namespace="${KUBE_NAMESPACE}"
+          kubectl config use-context "${KUBE_CLUSTER}"
+          kubectl -n "${KUBE_NAMESPACE}" apply -f kubernetes-deploy-preview.yaml
+          {
+            echo '# Preview deployment'
+            echo
+            echo "Branch preview deployed for ${BRANCH_NAME}."
+          } >> "$GITHUB_STEP_SUMMARY"
         env:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
           KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
-

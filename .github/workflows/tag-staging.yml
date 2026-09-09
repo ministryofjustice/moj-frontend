@@ -13,49 +13,78 @@ env:
 jobs:
   push-to-staging:
     runs-on: ubuntu-latest
+    env:
+      SHOULD_DEPLOY: ${{ github.event.label.name == 'staging:request' }}
     permissions:
       id-token: write
       contents: read
       pull-requests: write
-    if: ${{ github.event.label.name == 'staging:request' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Remove active labels from other PRs
         run: |
-          for number in $(gh pr list --label "staging:active" --json number | jq -r '.[].number'); do
-          gh pr edit ${number} --remove-label "staging:active"
-          done
+          if [[ "${SHOULD_DEPLOY}" == 'true' ]]; then
+            set -euo pipefail
+            while read -r number; do
+              gh pr edit "${number}" --remove-label "staging:active"
+            done < <(gh pr list --label "staging:active" --json number | jq -r '.[].number')
+          else
+            echo 'Staging label cleanup skipped: the staging request label was not added.'
+          fi
       - uses: aws-actions/configure-aws-credentials@e6de054238d6b7531b4efff3b6587d9aade6a06c # v6.2.3
+        if: env.SHOULD_DEPLOY == 'true'
         with:
           role-to-assume: ${{ secrets.ECR_ROLE_TO_ASSUME }}
           aws-region: ${{ vars.ECR_REGION }}
       - uses: aws-actions/amazon-ecr-login@03f1aad4c6c7ffd436567f42f9384779290529bd # v2.1.7
         id: login-ecr
+        if: env.SHOULD_DEPLOY == 'true'
       - run: |
-          docker build --target=staging -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-          docker build --target=staging-express-app -t $REGISTRY/$REPOSITORY:express-$IMAGE_TAG .
-          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
-          docker push $REGISTRY/$REPOSITORY:express-$IMAGE_TAG
-          cat kubernetes-deploy-staging.tpl | envsubst > kubernetes-deploy-staging.yaml
+          if [[ "${SHOULD_DEPLOY}" == 'true' ]]; then
+            set -euo pipefail
+            docker build --target=staging -t "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}" .
+            docker build --target=staging-express-app -t "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}" .
+            docker push "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
+            docker push "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}"
+            envsubst < kubernetes-deploy-staging.tpl > kubernetes-deploy-staging.yaml
+          else
+            echo 'Staging deployment skipped: the staging request label was not added.'
+          fi
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: ${{ vars.ECR_REPOSITORY }}
           IMAGE_TAG: ${{ github.sha }}
           BRANCH: 'staging'
       - run: |
-          echo "${KUBE_CERT}" > ca.crt
-          kubectl config set-cluster ${KUBE_CLUSTER} --certificate-authority=./ca.crt --server=https://${KUBE_CLUSTER}
-          kubectl config set-credentials deploy-user --token=${KUBE_TOKEN}
-          kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${KUBE_NAMESPACE}
-          kubectl config use-context ${KUBE_CLUSTER}
-          kubectl -n ${KUBE_NAMESPACE} apply -f kubernetes-deploy-staging.yaml
+          if [[ "${SHOULD_DEPLOY}" == 'true' ]]; then
+            set -euo pipefail
+            printf '%s\n' "${KUBE_CERT}" > ca.crt
+            kubectl config set-cluster "${KUBE_CLUSTER}" --certificate-authority=./ca.crt --server="https://${KUBE_CLUSTER}"
+            kubectl config set-credentials deploy-user --token="${KUBE_TOKEN}"
+            kubectl config set-context "${KUBE_CLUSTER}" --cluster="${KUBE_CLUSTER}" --user=deploy-user --namespace="${KUBE_NAMESPACE}"
+            kubectl config use-context "${KUBE_CLUSTER}"
+            kubectl -n "${KUBE_NAMESPACE}" apply -f kubernetes-deploy-staging.yaml
+          else
+            echo 'Staging deployment apply skipped: deployment was not requested.'
+          fi
         env:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
           KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
       - name: Update PR with success
+        if: env.SHOULD_DEPLOY == 'true'
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           echo -e "🚀 Deploying to [staging environment](https://moj-frontend-staging.apps.live.cloud-platform.service.justice.gov.uk/)\n\n**Username:** \`staging\`, **Password:** \`moj\`" > comment.txt
-          gh pr comment ${{ github.event.pull_request.number }} --body-file comment.txt
-          gh pr edit ${{ github.event.pull_request.number }} --remove-label "staging:request"
-          gh pr edit ${{ github.event.pull_request.number }} --add-label "staging:active"
+          gh pr comment "${PR_NUMBER}" --body-file comment.txt
+          gh pr edit "${PR_NUMBER}" --remove-label "staging:request"
+          gh pr edit "${PR_NUMBER}" --add-label "staging:active"
+          {
+            echo '# Staging deployment'
+            echo
+            echo 'https://moj-frontend-staging.apps.live.cloud-platform.service.justice.gov.uk/'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Report skipped staging deployment
+        if: env.SHOULD_DEPLOY != 'true'
+        run: echo 'Staging deployment not requested; no deployment was performed.' >> "$GITHUB_STEP_SUMMARY"

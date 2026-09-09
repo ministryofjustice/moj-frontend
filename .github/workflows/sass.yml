@@ -35,8 +35,10 @@ jobs:
           node-version-file: .nvmrc
 
       - name: Install packages
+        env:
+          SASS_PACKAGE_VERSION: ${{ matrix.package-version }}
         run: |
-          npm install --global sass@${{ matrix.package-version }}
+          npm install --global "sass@${SASS_PACKAGE_VERSION}"
           npm run setup
           sass --version
 
