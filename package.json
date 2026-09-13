@@ -157,7 +157,7 @@
     "jest-environment-jsdom": "^30.4.1",
     "js-beautify": "^1.15.4",
     "lodash": "^4.18.1",
-    "markdown-it": "^14.3.0",
+    "markdown-it": "^14.3.1",
     "markdown-it-anchor": "9.2.1",
     "markdown-it-attrs": "5.0.1",
     "mock-match-media": "^1.0.3",
