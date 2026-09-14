@@ -1,0 +1,57 @@
+examples:
+  - name: default
+    options:
+      id: appointment-date
+      name: appointment-date
+      label:
+        text: Appointment date
+      hint:
+        text: For example, 17/5/2024.
+
+  - name: with value
+    options:
+      id: appointment-date
+      name: appointment-date
+      value: 17/5/2024
+      label:
+        text: Appointment date
+
+  - name: with error
+    options:
+      id: appointment-date
+      name: appointment-date
+      label:
+        text: Appointment date
+      errorMessage:
+        text: Enter an appointment date
+
+  - name: with classes and attributes
+    options:
+      id: appointment-date
+      name: appointment-date
+      classes: custom-date-picker-input
+      attributes:
+        data-custom: custom-value
+        aria-describedby: custom-hint
+      label:
+        text: Appointment date
+
+  - name: with date constraints
+    options:
+      id: appointment-date
+      name: appointment-date
+      minDate: 01/01/2020
+      maxDate: 31/12/2030
+      excludedDates: 10/06/2026 15/06/2026
+      excludedDays: saturday sunday
+      label:
+        text: Appointment date
+
+  - name: with leading zeros and Sunday week start
+    options:
+      id: appointment-date
+      name: appointment-date
+      leadingZeros: true
+      weekStartDay: sunday
+      label:
+        text: Appointment date
