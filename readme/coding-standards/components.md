@@ -19,7 +19,7 @@ When creating your component, you should create the following files in the compo
 
 If your component uses JavaScript, you must also create the following files in the component’s folder:
 
-- `[component-name].mjs` - A JavaScript module with the implementation of any behaviour needed by the component. See the [JavaScript documentation]('./js.md#skeleton) for a skeleton and more details on that file's structure
+- `[component-name].mjs` - A JavaScript module with the implementation of any behaviour needed by the component. See the [JavaScript documentation](./js.md#skeleton) for a skeleton and more details on that file's structure
 - `[component-name].js.spec.mjs` - Unit tests to verify any component-specific lower-level logic.
 - `[component-name].playwright.spec.js` - Functional tests to verify the behaviour of the whole component in a browser.
 - `[component-name].accessibility.playwright.spec.js` - Tests to verify the basic accessibility of the component in a browser. (Manual accessibility testing is still required to ensure the component meets all accessibility standards).
