@@ -1,12 +1,15 @@
+const { readFileSync } = require('fs')
 const path = require('path')
 
 const { test, expect } = require('@playwright/test')
+const { compile } = require('sass-embedded')
 
 const { bundleComponent } = require('../../lib/bundle.js')
 const { render, getExamples } = require('../../lib/components.js')
 
 let bundledComponent
 let componentStyles
+let govukStyles
 
 const initialiseDatePickers = () => {
   document
@@ -20,12 +23,19 @@ const initialiseDatePickers = () => {
 
 async function setupPage(page, examples, exampleName) {
   await page.setContent(render('date-picker', examples[exampleName], true))
+
   await page.addStyleTag({ content: componentStyles })
+  await page.addStyleTag({ content: govukStyles })
+
   await page.addScriptTag({ content: bundledComponent, type: 'module' })
   // @ts-expect-error DatePicker is in page scope, not test scope
   await page.waitForFunction(() => typeof DatePicker !== 'undefined')
   await page.evaluate(initialiseDatePickers)
 }
+
+test.use({
+  headless: false
+})
 
 test.describe('date picker', () => {
   let examples
@@ -36,15 +46,17 @@ test.describe('date picker', () => {
       path.join(__dirname, 'date-picker.mjs'),
       'DatePicker'
     )
-    componentStyles = (
-      await require('sass-embedded').compile(
-        path.join(__dirname, '_date-picker.scss'),
-        {
-          loadPaths: [path.join(__dirname, '../../../../')],
-          quietDeps: true
-        }
-      )
-    ).css
+    componentStyles = compile(path.join(__dirname, '_date-picker.scss'), {
+      loadPaths: [path.join(__dirname, '../../../../')],
+      quietDeps: true
+    }).css
+    govukStyles = readFileSync(
+      path.join(
+        __dirname,
+        '../../../../node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.css'
+      ),
+      'utf8'
+    )
   })
 
   test.afterEach(async ({ page }) => {
@@ -53,7 +65,7 @@ test.describe('date picker', () => {
 
   test('initialises the default fixture', async ({ page }) => {
     await setupPage(page, examples, 'default')
-
+    await page.pause()
     const component = page.locator('.moj-datepicker')
     await expect(component.getByLabel('Appointment date')).toBeVisible()
     await expect(
@@ -84,7 +96,6 @@ test.describe('date picker', () => {
     const component = page.locator('.moj-datepicker')
     const input = component.getByLabel('Appointment date')
     await component.getByRole('button', { name: 'Choose date' }).click()
-    await page.pause() // Wait for the calendar to render
     await expect(component.locator('thead th').first()).toHaveAccessibleName(
       'Sunday'
     )
