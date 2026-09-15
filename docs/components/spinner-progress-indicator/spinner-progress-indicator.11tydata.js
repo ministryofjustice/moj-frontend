@@ -1,6 +1,6 @@
 export default {
   figma_link:
-    'https://www.figma.com/design/N2xqOFkyehXwcD9DxU1gEq/MOJ-Figma-Kit?m=auto',
+    'https://www.figma.com/design/ncZED5j3rPeQZMbewjfPFT/Spinner-progress-indicator?node-id=18051-119',
   githuburl:
     'https://github.com/ministryofjustice/moj-frontend/discussions/2641',
   tabCollection: 'spinner-progress-indicator',
