@@ -6,7 +6,7 @@ permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
 ---
-A Figma design has been added for this component. There may be more links and resources in the [‘spinner progress indicator’ Github discussion]({{ githuburl }}).
+A Figma design has been added for this component. There may be more links and resources in the [‘spinner progress indicator’ GitHub discussion]({{ githuburl }}).
 
 
 ### Figma
@@ -17,4 +17,4 @@ If you work outside MOJ, go to the [MOJ Figma Kit on the Figma community platfor
 
 ### Contribute prototypes and Figma links
 
-If you have design files that are relevant to this component you can add them to the [Github discussion]({{ githuburl }}). This helps other people to use it in their service.
+If you have design files that are relevant to this component you can add them to the [GitHub discussion]({{ githuburl }}). This helps other people to use it in their service.

@@ -8,7 +8,7 @@ eleventyComputed:
 ---
 No code was included when this contribution was added.
 
-You can use the [‘spinner progress indicator’ Github discussion]({{ githuburl }}) to:
+You can use the [‘spinner progress indicator’ GitHub discussion]({{ githuburl }}) to:
 
 * view other code blocks
 * add relevant code
