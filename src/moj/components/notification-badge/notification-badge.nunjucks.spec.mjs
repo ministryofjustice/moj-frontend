@@ -13,7 +13,9 @@ function renderExample(example) {
     render('notification-badge', example)
   )
 
-  return document.querySelector('span[class^=moj-notification-badge]')
+  return /** @type {HTMLElement | null} */ (
+    document.querySelector('.moj-notification-badge')
+  )
 }
 
 describe('notification badge', () => {
@@ -187,13 +189,12 @@ describe('notification badge', () => {
       example = 'default'
     })
 
-    // Note: the template has no space between "moj-notification-badge" and
-    // the custom classes, so they're concatenated into a single class name
-    // rather than added as a separate class.
-    test('concatenates custom classes onto the base class name', () => {
-      expect($component).toHaveClass(
-        'moj-notification-badgecustom-notification-badge-class'
-      )
+    test('adds custom classes to the container', () => {
+      expect($component).toHaveClass('custom-notification-badge-class')
+    })
+
+    test('retains the base moj-notification-badge class', () => {
+      expect($component).toHaveClass('moj-notification-badge')
     })
   })
 
