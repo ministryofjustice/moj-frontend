@@ -408,4 +408,41 @@ describe('search', () => {
       expect(button).toHaveClass('moj-search__button')
     })
   })
+
+  // ---------------------------------------------------------------------------
+  // With input error message
+  // ---------------------------------------------------------------------------
+
+  describe('with input error message', () => {
+    beforeAll(() => {
+      example = 'with input error message'
+    })
+    afterAll(() => {
+      example = 'default'
+    })
+
+    test('renders the error message with the correct text', () => {
+      const errorMessage = $component.querySelector('.govuk-error-message')
+      expect(errorMessage).toHaveTextContent('Enter a search term')
+    })
+
+    test('adds the govuk-form-group--error class to the form group', () => {
+      const formGroup = $component.querySelector('.govuk-form-group')
+      expect(formGroup).toHaveClass('govuk-form-group--error')
+    })
+
+    test('input references the error message via aria-describedby', () => {
+      const errorMessage = $component.querySelector('.govuk-error-message')
+      const input = $component.querySelector('input[type="search"]')
+      expect(input).toHaveAttribute(
+        'aria-describedby',
+        expect.stringContaining(errorMessage.id)
+      )
+    })
+
+    test('adds the govuk-input--error class to the input', () => {
+      const input = $component.querySelector('input[type="search"]')
+      expect(input).toHaveClass('govuk-input--error')
+    })
+  })
 })
