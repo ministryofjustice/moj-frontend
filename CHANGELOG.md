@@ -1,3 +1,17 @@
+# [11.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v11.0.1...v11.1.0) (2026-09-17)
+
+
+### Bug Fixes
+
+* **datepicker:** leadingZeros accepts boolean parameter ([#2640](https://github.com/ministryofjustice/moj-frontend/issues/2640)) ([e070b9a](https://github.com/ministryofjustice/moj-frontend/commit/e070b9a9575b779f01eaec32d4440b01daa9b916)), closes [#2639](https://github.com/ministryofjustice/moj-frontend/issues/2639)
+* **dependencies:** update moment dependency to be pinned to a major release not specific version ([#2644](https://github.com/ministryofjustice/moj-frontend/issues/2644)) ([f31fe86](https://github.com/ministryofjustice/moj-frontend/commit/f31fe86ac34869cdba9bbc528c76a709d30e4052)), closes [#2646](https://github.com/ministryofjustice/moj-frontend/issues/2646)
+* **notification badge:** add space between component class and custom classes ([#2642](https://github.com/ministryofjustice/moj-frontend/issues/2642)) ([d68a349](https://github.com/ministryofjustice/moj-frontend/commit/d68a349260b1628e2ecd82364e38784c7df7d813)), closes [#2648](https://github.com/ministryofjustice/moj-frontend/issues/2648)
+
+
+### Features
+
+* **search:** allow input.errorMessage to be passed through to the search input ([#2643](https://github.com/ministryofjustice/moj-frontend/issues/2643)) ([2725c10](https://github.com/ministryofjustice/moj-frontend/commit/2725c105a622f17e22728ea0daaec950f6572d4f)), closes [#2645](https://github.com/ministryofjustice/moj-frontend/issues/2645)
+
 ## [11.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v11.0.0...v11.0.1) (2026-09-04)
 
 
