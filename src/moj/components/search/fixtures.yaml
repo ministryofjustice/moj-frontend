@@ -172,3 +172,17 @@ examples:
       button:
         text: Search
         classes: custom-button-class
+
+  # 15. With input error message
+  - name: with input error message
+    options:
+      action: /search
+      label:
+        text: Search
+      input:
+        id: search
+        name: search
+        errorMessage:
+          text: Enter a search term
+      button:
+        text: Search
