@@ -1,0 +1,58 @@
+examples:
+  # 1. Default — renders the badge with a count
+  - name: default
+    options:
+      text: '5'
+      visuallyHiddenText: new messages
+
+  # 2. Zero — the badge renders nothing when the count is zero
+  - name: zero
+    options:
+      text: '0'
+      visuallyHiddenText: new messages
+
+  # 3. Negative number — the badge renders nothing
+  - name: negative number
+    options:
+      text: '-5'
+      visuallyHiddenText: new messages
+
+  # 4. Non-numeric text — the badge renders nothing
+  - name: non-numeric text
+    options:
+      text: not-a-number
+      visuallyHiddenText: new messages
+
+  # 5. 99 or more — the count caps at "99+" and the visually hidden text
+  #    reads "99 or more"
+  - name: 99 or more
+    options:
+      text: '150'
+      visuallyHiddenText: new messages
+
+  # 6. Exactly 99 — the boundary case for the "99+" cap
+  - name: exactly 99
+    options:
+      text: '99'
+      visuallyHiddenText: new messages
+
+  # 7. Without visuallyHiddenText — the visually hidden content only
+  #    contains the count
+  - name: without visually hidden text
+    options:
+      text: '5'
+
+  # 8. With custom classes
+  - name: with classes
+    options:
+      text: '5'
+      visuallyHiddenText: new messages
+      classes: custom-notification-badge-class
+
+  # 9. With custom attributes
+  - name: with attributes
+    options:
+      text: '5'
+      visuallyHiddenText: new messages
+      attributes:
+        data-custom: custom-value
