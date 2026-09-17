@@ -7,6 +7,9 @@
   {% set classNames = classNames + " " + params.classes %}
 {% endif %}
 
+{# For leadingZeros the value must be coerced to a string otherwise a valueless
+attribute will be output, which won't be parsed to true by the govuk js data
+attribute normalisation #}
 {% set attributes = {
   "data-module": "moj-date-picker",
   "data-min-date": {
@@ -26,7 +29,7 @@
     optional: true
   },
   "data-leading-zeros": {
-    value: params.leadingZeros,
+    value: ("" ~ params.leadingZeros) if params.leadingZeros is defined else undefined,
     optional: true
   },
   "data-week-start-day": {
