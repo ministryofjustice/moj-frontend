@@ -1,0 +1,97 @@
+examples:
+  # 1. Default — button primary action, link secondary action
+  - name: default
+    options:
+      heading: Are you sure you want to change this?
+      primaryAction:
+        text: Continue
+        href: '#'
+      secondaryAction:
+        text: Go back to application
+        href: '#'
+    callBlock: |
+      <p>You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
+
+  # 2. Primary action styled as a link
+  - name: primary action as link
+    options:
+      heading: Are you sure you want to change this?
+      primaryAction:
+        text: Continue
+        href: '#'
+        style: link
+      secondaryAction:
+        text: Go back to application
+        href: '#'
+    callBlock: |
+      <p>You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
+
+  # 3. Secondary action styled as a button
+  - name: secondary action as button
+    options:
+      heading: Are you sure you want to change this?
+      primaryAction:
+        text: Continue
+        href: '#'
+      secondaryAction:
+        text: Go back to application
+        href: '#'
+        style: button
+    callBlock: |
+      <p>You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
+
+  # 4. No secondary action
+  - name: without secondary action
+    options:
+      heading: Are you sure you want to change this?
+      primaryAction:
+        text: Continue
+        href: '#'
+    callBlock: |
+      <p>You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
+
+  # 5. With custom button attributes passed through to govukButton
+  - name: with primary action attributes
+    options:
+      heading: Are you sure you want to change this?
+      primaryAction:
+        text: Continue
+        href: '#'
+        attributes:
+          data-custom: custom-value
+      secondaryAction:
+        text: Go back to application
+        href: '#'
+    callBlock: |
+      <p>You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
+
+  # 6. With custom button attributes on secondary action button style
+  - name: with secondary action attributes
+    options:
+      heading: Are you sure you want to change this?
+      primaryAction:
+        text: Continue
+        href: '#'
+      secondaryAction:
+        text: Go back to application
+        href: '#'
+        style: button
+        attributes:
+          data-custom: custom-value
+    callBlock: |
+      <p>You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
+
+  # 7. With multiple paragraphs of body content
+  - name: with multiple paragraphs
+    options:
+      heading: Are you sure you want to change this?
+      primaryAction:
+        text: Continue
+        href: '#'
+      secondaryAction:
+        text: Go back to application
+        href: '#'
+    callBlock: |
+      <p>You've changed the person's address from Wales to England. This means that the referral needs to be cancelled.</p>
+      <p>Previous home address: 1 Willow Lane, Newchurch, Kington, HR5 3QF</p>
+      <p>New home address: 9 Elm Street, Whitney-on-Wye, Hereford, HR3 6EH</p>
