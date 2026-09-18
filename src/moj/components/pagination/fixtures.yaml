@@ -122,3 +122,20 @@ examples:
         - number: 3
           href: '#'
           current: true
+
+  - name: with classes attributes and landmark label
+    options:
+      items: *items
+      classes: custom-pagination-class
+      landmarkLabel: Search results
+      attributes:
+        data-custom: custom-value
+
+  - name: with custom results term
+    options:
+      items: *items
+      results:
+        from: 11
+        to: 20
+        count: 28
+        text: cases
