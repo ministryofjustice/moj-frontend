@@ -53,7 +53,7 @@ examples:
           name: delete
           value: delete
 
-  # 6. With submit button item (no href, no text - value used as content fallback is not rendered)
+  # 6. With submit button item (no href; verifies submit button attributes)
   - name: with submit button item
     options:
       items:
