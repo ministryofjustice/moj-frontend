@@ -1,4 +1,4 @@
-const { getRequiredEnvVars } = require('./required-env-vars')
+const { getRequiredEnvVars, getForbiddenEnvVars } = require('./required-env-vars')
 
 describe('getRequiredEnvVars', () => {
   it('returns minimum required variables for test', () => {
@@ -55,5 +55,31 @@ describe('getRequiredEnvVars', () => {
       'GITHUB_REPO_NAME',
       'NOTIFY_TOKEN'
     ])
+  })
+})
+
+describe('getForbiddenEnvVars', () => {
+  it('returns no forbidden variables for test', () => {
+    expect(getForbiddenEnvVars('test')).toStrictEqual([])
+  })
+
+  it('returns no forbidden variables for development', () => {
+    expect(getForbiddenEnvVars('development')).toStrictEqual([])
+  })
+
+  it('returns SKIP_VERIFICATION as forbidden for staging', () => {
+    expect(getForbiddenEnvVars('staging')).toStrictEqual([
+      { name: 'SKIP_VERIFICATION', forbiddenValue: 'true' }
+    ])
+  })
+
+  it('returns SKIP_VERIFICATION as forbidden for production', () => {
+    expect(getForbiddenEnvVars('production')).toStrictEqual([
+      { name: 'SKIP_VERIFICATION', forbiddenValue: 'true' }
+    ])
+  })
+
+  it('falls back to no forbidden variables for unrecognised env values', () => {
+    expect(getForbiddenEnvVars('preview')).toStrictEqual([])
   })
 })
