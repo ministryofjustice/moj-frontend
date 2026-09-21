@@ -1,4 +1,7 @@
-const checkEnvVars = require('./check-env-vars')
+const {
+  checkRequiredEnvVars: checkEnvVars,
+  checkForbiddenEnvVars
+} = require('./check-env-vars')
 
 describe('checkEnvVars', () => {
   let mockLog
@@ -87,6 +90,131 @@ describe('checkEnvVars', () => {
     expect(consoleSpy).toHaveBeenCalledWith(
       'Required environment variable missing:',
       'TEST_VAR_A'
+    )
+
+    consoleSpy.mockRestore()
+  })
+})
+
+describe('checkForbiddenEnvVars', () => {
+  let mockLog
+
+  beforeEach(() => {
+    mockLog = jest.fn()
+  })
+
+  afterEach(() => {
+    delete process.env.TEST_FORBIDDEN_A
+    delete process.env.TEST_FORBIDDEN_B
+  })
+
+  it('does not throw when no forbidden variables are set', () => {
+    expect(() =>
+      checkForbiddenEnvVars(
+        [{ name: 'TEST_FORBIDDEN_A', forbiddenValue: 'true' }],
+        mockLog
+      )
+    ).not.toThrow()
+  })
+
+  it('does not throw when a forbidden variable is set to a different value', () => {
+    process.env.TEST_FORBIDDEN_A = 'false'
+
+    expect(() =>
+      checkForbiddenEnvVars(
+        [{ name: 'TEST_FORBIDDEN_A', forbiddenValue: 'true' }],
+        mockLog
+      )
+    ).not.toThrow()
+  })
+
+  it('does not throw when the forbidden variables array is empty', () => {
+    expect(() => checkForbiddenEnvVars([], mockLog)).not.toThrow()
+  })
+
+  it('throws when a forbidden variable equals its disallowed value', () => {
+    process.env.TEST_FORBIDDEN_A = 'true'
+
+    expect(() =>
+      checkForbiddenEnvVars(
+        [{ name: 'TEST_FORBIDDEN_A', forbiddenValue: 'true' }],
+        mockLog
+      )
+    ).toThrow(
+      'Server could not be started because forbidden environment variables are set'
+    )
+  })
+
+  it('calls errorLog for a violating variable', () => {
+    process.env.TEST_FORBIDDEN_A = 'true'
+
+    try {
+      checkForbiddenEnvVars(
+        [{ name: 'TEST_FORBIDDEN_A', forbiddenValue: 'true' }],
+        mockLog
+      )
+    } catch {}
+
+    expect(mockLog).toHaveBeenCalledWith(
+      'Forbidden environment variable set:',
+      'TEST_FORBIDDEN_A',
+      "(must not be 'true')"
+    )
+  })
+
+  it('calls errorLog once per violating variable', () => {
+    process.env.TEST_FORBIDDEN_A = 'true'
+    process.env.TEST_FORBIDDEN_B = 'true'
+
+    try {
+      checkForbiddenEnvVars(
+        [
+          { name: 'TEST_FORBIDDEN_A', forbiddenValue: 'true' },
+          { name: 'TEST_FORBIDDEN_B', forbiddenValue: 'true' }
+        ],
+        mockLog
+      )
+    } catch {}
+
+    expect(mockLog).toHaveBeenCalledTimes(2)
+  })
+
+  it('only logs and throws for variables that violate, not those that do not', () => {
+    process.env.TEST_FORBIDDEN_A = 'true'
+    process.env.TEST_FORBIDDEN_B = 'false'
+
+    try {
+      checkForbiddenEnvVars(
+        [
+          { name: 'TEST_FORBIDDEN_A', forbiddenValue: 'true' },
+          { name: 'TEST_FORBIDDEN_B', forbiddenValue: 'true' }
+        ],
+        mockLog
+      )
+    } catch {}
+
+    expect(mockLog).toHaveBeenCalledTimes(1)
+    expect(mockLog).toHaveBeenCalledWith(
+      'Forbidden environment variable set:',
+      'TEST_FORBIDDEN_A',
+      "(must not be 'true')"
+    )
+  })
+
+  it('uses console.error as the default errorLog', () => {
+    const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+    process.env.TEST_FORBIDDEN_A = 'true'
+
+    try {
+      checkForbiddenEnvVars([
+        { name: 'TEST_FORBIDDEN_A', forbiddenValue: 'true' }
+      ])
+    } catch {}
+
+    expect(consoleSpy).toHaveBeenCalledWith(
+      'Forbidden environment variable set:',
+      'TEST_FORBIDDEN_A',
+      "(must not be 'true')"
     )
 
     consoleSpy.mockRestore()

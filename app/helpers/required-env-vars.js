@@ -16,6 +16,12 @@ const productionOnlyRequiredEnvVars = [
   'VIRUS_SCAN_HOST'
 ]
 
+// Environment variables that must never be set to their disallowed value in
+// staging/production, e.g. dev-only bypass flags such as SKIP_VERIFICATION.
+const productionForbiddenEnvVars = [
+  { name: 'SKIP_VERIFICATION', forbiddenValue: 'true' }
+]
+
 const getRequiredEnvVars = (env = process.env.ENV || 'development') => {
   if (env === 'test') {
     return testRequiredEnvVars
@@ -32,6 +38,15 @@ const getRequiredEnvVars = (env = process.env.ENV || 'development') => {
   return [...commonRequiredEnvVars, ...integrationRequiredEnvVars]
 }
 
+const getForbiddenEnvVars = (env = process.env.ENV || 'development') => {
+  if (env === 'staging' || env === 'production') {
+    return productionForbiddenEnvVars
+  }
+
+  return []
+}
+
 module.exports = {
-  getRequiredEnvVars
+  getRequiredEnvVars,
+  getForbiddenEnvVars
 }
