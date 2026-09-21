@@ -167,13 +167,10 @@ const config = {
       // Interactive elements
       'details',
       'summary',
-      'dialog',
+      'dialog'
 
       // Scripting
-      'noscript',
-      'template',
-      'slot'
-      // script, canvas
+      // noscript, template, slot, script, canvas
     ],
     allowedAttributes: {
       '*': [
@@ -210,7 +207,6 @@ const config = {
         'fetchpriority',
         'for',
         'form',
-        'formaction',
         'formenctype',
         'formmethod',
         'formtarget',
@@ -226,7 +222,6 @@ const config = {
         'imagesrcset',
         'inputmode',
         'integrity',
-        'is',
         'itemid',
         'itemprop',
         'itemref',
@@ -247,7 +242,6 @@ const config = {
         'nonce',
         'optimum',
         'pattern',
-        'ping',
         'placeholder',
         'popover',
         'popovertarget',
@@ -263,16 +257,13 @@ const config = {
         'shape',
         'size',
         'sizes',
-        'slot',
         'span',
         'spellcheck',
         'src',
-        'srcdoc',
         'srclang',
         'srcset',
         'start',
         'step',
-        'style',
         'tabindex',
         'target',
         'title',
@@ -283,7 +274,8 @@ const config = {
         'width',
         'wrap'
       ]
-    } // allow all attributes (on every tag for simplicity) except on-* event handlers
+    } // allow all attributes (on every tag for simplicity) except on-* event
+    // handlers, formaction, style, slot, is, ping and srcdoc
   },
   COMPONENT_FORM_PAGES: {
     email: {
