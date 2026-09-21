@@ -1,4 +1,7 @@
-const { getRequiredEnvVars, getForbiddenEnvVars } = require('./required-env-vars')
+const {
+  getRequiredEnvVars,
+  getForbiddenEnvVars
+} = require('./required-env-vars')
 
 describe('getRequiredEnvVars', () => {
   it('returns minimum required variables for test', () => {
