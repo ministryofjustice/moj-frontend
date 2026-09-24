@@ -10,7 +10,7 @@ lede: "Use this template to keep your pages consistent with other probation prod
 This template covers the components you should add to a page in an internal probation service. It includes:
 
 - [PDS header component](https://design-patterns.service.justice.gov.uk/probation/components/pds-header/)
-- [PDS footer component}(https://design-patterns.service.justice.gov.uk/probation/components/pds-footer/)
+- [PDS footer component](https://design-patterns.service.justice.gov.uk/probation/components/pds-footer/)
 - [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation/)
 - [GOV.UK phase banner component](https://design-system.service.gov.uk/components/phase-banner/)
 
