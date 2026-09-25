@@ -29,7 +29,7 @@ Use the [PDS footer component](https://design-patterns.service.justice.gov.uk/pr
 
 The [GOV.UK phase banner component](https://design-system.service.gov.uk/components/phase-banner/) sits above the footer, and can contain a feedback link if needed. 
 
-<img src="docs/assets/images/pds-page-template.png" alt="Template showing the header, navigation, phase banner, and footer components">
+<img src="/assets/images/pds-page-template.png" alt="Template showing the header, navigation, phase banner, and footer components">
 
 ## Other common components
 The template shows the components that should be used in all internal probation products.
