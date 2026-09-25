@@ -4,7 +4,7 @@ status: Official
 type: style
 statusAction: Created
 statusDate: September 2026
-lede: "Use this template to keep your pages consistent with other probation products on the Probation Digital Services platform."
+lede: "Use this template to keep your pages consistent with other probation products on the Probation Digital Services (PDS) platform."
 ---
 
 This template covers the components you should add to a page in an internal probation service. It includes:
@@ -30,12 +30,14 @@ Use the [PDS footer component](https://design-patterns.service.justice.gov.uk/pr
 The [GOV.UK phase banner component](https://design-system.service.gov.uk/components/phase-banner/) sits above the footer, and can contain a feedback link if needed. 
 
 ## Other common components
-There's also guidance about other components you can use in internal probation services.
+The template shows the components that should be used in all internal probation products.
+
+There are other components you can use in your service.
 
 ### Banners and alerts
 The [new features banner component](https://design-patterns.service.justice.gov.uk/components/new-features-banner/) sits below the service navigation.
 
-The [alert component](https://design-patterns.service.justice.gov.uk/components/alert/) sit below the breadcrumbs or back link, above the main heading (H1).
+The [alert component](https://design-patterns.service.justice.gov.uk/components/alert/) sits below the breadcrumbs or back link, above the main heading (H1).
 
 ### Breadcrumbs and back link
 When using the [GOV.UK breadcrumbs component](https://design-system.service.gov.uk/components/breadcrumbs/), the first breadcrumb should be your service name. Do not include the current page in the breadcrumb trail.
