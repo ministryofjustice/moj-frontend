@@ -86,10 +86,23 @@ async function getExamples(componentName) {
  * @param {MacroRenderOptions} [options] - Nunjucks macro render options
  * @returns {string} HTML rendered by the component
  */
-function render(componentName, options) {
+function render(componentName, options, inPage = false) {
   const macroName = componentNameToMacroName(componentName)
   const macroPath = `moj/components/${componentName}/macro.njk`
 
+  if (inPage) {
+    return `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>${componentName}</title>
+  </head>
+  <body class="govuk-template__body js-enabled govuk-frontend-supported">
+    ${renderMacro(macroName, macroPath, options)}
+  </body>
+</html>`
+  }
   return renderMacro(macroName, macroPath, options)
 }
 

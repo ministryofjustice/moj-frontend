@@ -1,12 +1,19 @@
 /* eslint import/order: "off" */
 /* eslint n/no-unpublished-require: "off" */
 const path = require('path')
-const checkRequiredEnvVars = require('./helpers/check-env-vars')
-const { getRequiredEnvVars } = require('./helpers/required-env-vars')
+const {
+  checkRequiredEnvVars,
+  checkForbiddenEnvVars
+} = require('./helpers/check-env-vars')
+const {
+  getRequiredEnvVars,
+  getForbiddenEnvVars
+} = require('./helpers/required-env-vars')
 const envPath = path.join(__dirname, `.env.${process.env.ENV || 'development'}`)
 require('dotenv').config({ path: envPath })
 
 checkRequiredEnvVars(getRequiredEnvVars(process.env.ENV))
+checkForbiddenEnvVars(getForbiddenEnvVars(process.env.ENV))
 
 const Sentry = require('@sentry/node')
 const {
@@ -98,8 +105,8 @@ if (!(isDev || isTest)) {
 const sessionOptions = {
   secret: SESSION_SECRET,
   name: 'moj-frontend-session',
-  resave: true,
-  saveUninitialized: true,
+  resave: false,
+  saveUninitialized: false,
   cookie: {
     secure: !(isDev || isTest),
     maxAge: 24 * 60 * 60 * 1000,
@@ -118,8 +125,10 @@ app.use(session(sessionOptions))
 // Custom flash middleware -- from Ethan Brown's book, 'Web Development with Node & Express'
 app.use(function (req, res, next) {
   // if there's a flash message in the session request, make it available in the response, then delete it
-  res.locals.sessionFlash = req.session.sessionFlash
-  delete req.session.sessionFlash
+  if (req.session?.sessionFlash) {
+    res.locals.sessionFlash = req.session.sessionFlash
+    delete req.session.sessionFlash
+  }
   next()
 })
 

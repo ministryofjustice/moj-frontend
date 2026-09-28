@@ -10,7 +10,9 @@ const {
   ALLOWED_COMPONENT_IMAGE_MIME_TYPES,
   COMPONENT_FORM_PAGES: formPages,
   MESSAGES,
-  HTML_SANITIZATION_OPTIONS
+  HTML_SANITIZATION_OPTIONS,
+  ENV,
+  SESSION_SECRET
 } = require('../config')
 const ApplicationError = require('../helpers/application-error')
 const { getAnswersForSection } = require('../helpers/check-your-answers')
@@ -21,6 +23,109 @@ const { camelToKebab } = require('../helpers/text-helper')
 const { getHashedUrl } = require('../helpers/url-helper')
 const redis = require('../redis-client')
 const { getSchema } = require('../schema/schemas')
+
+const initialCsrfCookieName = 'moj-frontend-start-csrf'
+const initialCsrfMaxAge = 60 * 60 * 1000
+const initialCsrfCookieOptions = {
+  httpOnly: true,
+  secure: !['development', 'test'].includes(ENV),
+  sameSite: ['development', 'test'].includes(ENV) ? 'lax' : 'strict',
+  maxAge: initialCsrfMaxAge
+}
+
+const signInitialCsrfPayload = (payload) =>
+  crypto
+    .createHmac('sha256', SESSION_SECRET)
+    .update(payload)
+    .digest('base64url')
+
+const createInitialCsrfToken = () => {
+  const nonce = crypto.randomBytes(32).toString('base64url')
+  const expiresAt = Date.now() + initialCsrfMaxAge
+  const payload = `${nonce}.${expiresAt}`
+  const signature = signInitialCsrfPayload(payload)
+
+  return `${payload}.${signature}`
+}
+
+const parseCookies = (cookieHeader = '') => {
+  return cookieHeader.split(';').reduce((cookies, cookie) => {
+    const [name, ...valueParts] = cookie.trim().split('=')
+    if (name && valueParts.length > 0) {
+      try {
+        cookies[name] = decodeURIComponent(valueParts.join('='))
+      } catch {
+        cookies[name] = ''
+      }
+    }
+    return cookies
+  }, {})
+}
+
+const timingSafeEqual = (a, b) => {
+  const aBuffer = Buffer.from(a)
+  const bBuffer = Buffer.from(b)
+
+  return (
+    aBuffer.length === bBuffer.length &&
+    crypto.timingSafeEqual(aBuffer, bBuffer)
+  )
+}
+
+const isValidInitialCsrfToken = (token) => {
+  if (typeof token !== 'string') {
+    return false
+  }
+
+  const [nonce, expiresAt, signature] = token.split('.')
+  const expiresAtTime = Number(expiresAt)
+  if (
+    !nonce ||
+    !Number.isFinite(expiresAtTime) ||
+    !signature ||
+    expiresAtTime < Date.now()
+  ) {
+    return false
+  }
+
+  const expectedSignature = signInitialCsrfPayload(`${nonce}.${expiresAt}`)
+  return timingSafeEqual(signature, expectedSignature)
+}
+
+const getInitialCsrfCookieToken = (req) => {
+  const cookies = parseCookies(req?.headers?.cookie)
+  return cookies[initialCsrfCookieName]
+}
+
+const setInitialCsrfToken = (req, res, next) => {
+  const token = createInitialCsrfToken()
+  res.cookie(initialCsrfCookieName, token, initialCsrfCookieOptions)
+  req.initialCsrfToken = token
+  next()
+}
+
+const verifyInitialCsrfToken = (req, res, next) => {
+  const submittedToken = req?.body?._csrf
+  const cookieToken = getInitialCsrfCookieToken(req)
+
+  if (
+    !submittedToken ||
+    !cookieToken ||
+    !timingSafeEqual(submittedToken, cookieToken) ||
+    !isValidInitialCsrfToken(submittedToken)
+  ) {
+    const error = new Error('Invalid CSRF token')
+    error.status = 403
+    console.error(error.message)
+    return next(error)
+  }
+
+  res.clearCookie(initialCsrfCookieName, initialCsrfCookieOptions)
+  delete req.session.checkYourAnswers
+  req.session.started = true
+  req.session.csrfToken = crypto.randomBytes(32).toString('hex')
+  next()
+}
 
 /**
  * Extracts the template (view) to render from the request params
@@ -251,6 +356,34 @@ const validateFormDataFileType = (err, req, res, next) => {
       res,
       fieldName,
       MESSAGES.uploadFileInvalidType.text
+    )
+  }
+
+  next(err)
+}
+
+const validateFormDataVirusScan = (err, req, res, next) => {
+  if (!err) {
+    return next()
+  }
+
+  const fieldName = err.field || 'componentImage'
+
+  if (err.code === 'LIMIT_FILE_VIRUS_FOUND') {
+    return renderFileUploadError(
+      req,
+      res,
+      fieldName,
+      MESSAGES.uploadFileVirusFound.text
+    )
+  }
+
+  if (err.code === 'LIMIT_FILE_VIRUS_SCAN_FAILED') {
+    return renderFileUploadError(
+      req,
+      res,
+      fieldName,
+      MESSAGES.uploadFileVirusScanFailed.text
     )
   }
 
@@ -544,7 +677,7 @@ const validatePageParams = (req, res, next) => {
 }
 
 const setCsrfToken = (req, res, next) => {
-  if (req?.session) {
+  if (req?.session?.started || req?.session?.csrfToken) {
     if (!req?.session?.csrfToken) {
       req.session.csrfToken = crypto.randomBytes(32).toString('hex')
     }
@@ -568,12 +701,15 @@ module.exports = {
   validateFormDataFileSignature,
   validateFormDataFileSize,
   validateFormDataFileType,
+  validateFormDataVirusScan,
   validateComponentImagePage,
   saveFileToRedis,
   clearSkippedPageData,
   checkEmailDomain,
   validatePageParams,
   setCsrfToken,
+  setInitialCsrfToken,
+  verifyInitialCsrfToken,
   xssComponentCode,
   setSuccessMessage,
   getPageData,

@@ -26,6 +26,7 @@ export default defineConfig({
   reporter: process.env.CI ? 'github' : [['list'], ['html', { open: 'never' }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    headless: process.env.HEADLESS !== 'false',
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: `${process.env.APP_URL}/contribute/add-new-component/`,
     screenshot: 'only-on-failure',

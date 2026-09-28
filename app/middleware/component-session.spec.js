@@ -25,12 +25,15 @@ const {
   validateFormDataFileSignature,
   validateFormDataFileSize,
   validateFormDataFileType,
+  validateFormDataVirusScan,
   validateComponentImagePage,
   saveFileToRedis,
   clearSkippedPageData,
   checkEmailDomain,
   validatePageParams,
   setCsrfToken,
+  setInitialCsrfToken,
+  verifyInitialCsrfToken,
   xssComponentCode,
   setSuccessMessage,
   getPageData,
@@ -53,7 +56,8 @@ jest.mock('../config', () => {
   const original = jest.requireActual('../config')
   return {
     ...original,
-    MAX_ADD_ANOTHER: 3
+    MAX_ADD_ANOTHER: 3,
+    SESSION_SECRET: 'test-session-secret'
   }
 })
 jest.mock('../helpers/check-your-answers', () => ({
@@ -335,12 +339,26 @@ describe('validatePageParams', () => {
 })
 
 describe('setCsrfToken', () => {
-  const next = jest.fn()
-  test('it adds a token if one does not exist', () => {
+  let next
+
+  beforeEach(() => {
+    next = jest.fn()
+  })
+
+  test('it does not add a token before the journey has started', () => {
     const req = { session: {} }
     setCsrfToken(req, {}, next)
-    expect(req.session).toHaveProperty('csrfToken')
+    expect(req.session).not.toHaveProperty('csrfToken')
+    expect(next).toHaveBeenCalled()
   })
+
+  test('it adds a token if the journey has started and one does not exist', () => {
+    const req = { session: { started: true } }
+    setCsrfToken(req, {}, next)
+    expect(req.session).toHaveProperty('csrfToken')
+    expect(next).toHaveBeenCalled()
+  })
+
   test('if a token is already set it does not change', () => {
     const req = {
       session: {
@@ -350,6 +368,80 @@ describe('setCsrfToken', () => {
     setCsrfToken(req, {}, next)
     expect(req.session).toHaveProperty('csrfToken')
     expect(req.session.csrfToken).toBe('1234567890')
+  })
+})
+
+describe('initial CSRF token', () => {
+  let next, res
+  let originalConsoleError
+
+  beforeEach(() => {
+    next = jest.fn()
+    res = {
+      cookie: jest.fn(),
+      clearCookie: jest.fn()
+    }
+    originalConsoleError = console.error
+    console.error = jest.fn()
+  })
+
+  afterEach(() => {
+    console.error = originalConsoleError
+  })
+
+  test('sets a cookie-backed token without touching the session', () => {
+    const req = { session: {} }
+
+    setInitialCsrfToken(req, res, next)
+
+    expect(req.initialCsrfToken).toEqual(expect.any(String))
+    expect(req.session).toStrictEqual({})
+    expect(res.cookie).toHaveBeenCalledWith(
+      'moj-frontend-start-csrf',
+      req.initialCsrfToken,
+      expect.objectContaining({ httpOnly: true })
+    )
+    expect(next).toHaveBeenCalledWith()
+  })
+
+  test('starts the session when the initial token is valid', () => {
+    const setupReq = { session: {} }
+    setInitialCsrfToken(setupReq, res, next)
+
+    next.mockClear()
+    const req = {
+      body: { _csrf: setupReq.initialCsrfToken },
+      headers: {
+        cookie: `moj-frontend-start-csrf=${setupReq.initialCsrfToken}`
+      },
+      session: { checkYourAnswers: true }
+    }
+
+    verifyInitialCsrfToken(req, res, next)
+
+    expect(req.session.started).toBe(true)
+    expect(req.session).toHaveProperty('csrfToken')
+    expect(res.clearCookie).toHaveBeenCalledWith(
+      'moj-frontend-start-csrf',
+      expect.objectContaining({ httpOnly: true })
+    )
+    expect(next).toHaveBeenCalledWith()
+  })
+
+  test('rejects requests without a matching cookie token', () => {
+    const req = {
+      body: { _csrf: 'token' },
+      headers: {},
+      session: {}
+    }
+
+    verifyInitialCsrfToken(req, res, next)
+
+    expect(next).toHaveBeenCalledWith(expect.any(Error))
+    const [error] = next.mock.calls[0]
+    expect(error.message).toBe('Invalid CSRF token')
+    expect(error.status).toBe(403)
+    expect(req.session).toStrictEqual({})
   })
 })
 
@@ -1466,5 +1558,90 @@ describe('validateFormDataFileType', () => {
     expect(res.status).toHaveBeenCalledWith(400)
     expect(res.render).toHaveBeenCalledWith('component-image', expectedArgs)
     expect(next).not.toHaveBeenCalled()
+  })
+})
+
+describe('validateFormDataVirusScan', () => {
+  let req, res, next
+  beforeEach(() => {
+    req = {
+      params: { page: 'component-image' }
+    }
+    res = {
+      render: jest.fn(),
+      status: jest.fn(() => res)
+    }
+    next = jest.fn()
+    jest.clearAllMocks()
+  })
+
+  it('calls next if no error', () => {
+    validateFormDataVirusScan(undefined, req, res, next)
+
+    expect(next).toHaveBeenCalled()
+  })
+
+  it('renders the template with virus found errors', () => {
+    const err = {
+      code: 'LIMIT_FILE_VIRUS_FOUND',
+      field: 'componentImage'
+    }
+
+    validateFormDataVirusScan(err, req, res, next)
+
+    expect(res.status).toHaveBeenCalledWith(400)
+    expect(res.render).toHaveBeenCalledWith(
+      'component-image',
+      expect.objectContaining({
+        errorList: [
+          {
+            href: '#component-image',
+            text: 'The selected file failed a virus scan'
+          }
+        ],
+        formErrors: {
+          componentImage: {
+            text: 'The selected file failed a virus scan'
+          }
+        }
+      })
+    )
+  })
+
+  it('renders the template with scanner failure errors', () => {
+    const err = {
+      code: 'LIMIT_FILE_VIRUS_SCAN_FAILED',
+      field: 'componentImage'
+    }
+
+    validateFormDataVirusScan(err, req, res, next)
+
+    expect(res.status).toHaveBeenCalledWith(400)
+    expect(res.render).toHaveBeenCalledWith(
+      'component-image',
+      expect.objectContaining({
+        errorList: [
+          {
+            href: '#component-image',
+            text: 'The selected file could not be scanned. Try again later.'
+          }
+        ],
+        formErrors: {
+          componentImage: {
+            text: 'The selected file could not be scanned. Try again later.'
+          }
+        }
+      })
+    )
+  })
+
+  it('passes error through if error code is not a virus scan error', () => {
+    const err = {
+      code: 'AN_ERROR'
+    }
+
+    validateFormDataVirusScan(err, req, res, next)
+
+    expect(next).toHaveBeenCalledWith(err)
   })
 })
