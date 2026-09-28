@@ -31,7 +31,7 @@ The [GOV.UK phase banner component](https://design-system.service.gov.uk/compone
 
 <p><img src="{{ 'assets/images/pds-page-template.png' | rev | url }}"  alt="Template showing the header, navigation, phase banner, and footer components." class="govuk-!-margin-top-6 govuk-!-margin-bottom-6"></p>
 
-## Other common components
+## Other components
 The template shows the components that should be used in all internal probation products.
 
 There are other components you can use in your service.
