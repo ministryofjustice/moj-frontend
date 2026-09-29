@@ -6,9 +6,11 @@
    ========================================================================== */
 
 // Width of main container
+// Default to govuk-frontend page width if not set.
 $moj-page-width: govuk.$govuk-page-width !default;
 
 // Width of gutter between grid columns
+// Default to govuk-frontend gutter width if not set.
 $moj-gutter: govuk.$govuk-gutter !default;
 
 // Width of half the gutter between grid columns

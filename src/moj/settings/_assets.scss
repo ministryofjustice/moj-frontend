@@ -1,9 +1,12 @@
+@use "node_modules/govuk-frontend/dist/govuk/base" as govuk;
+
 /* ==========================================================================
    #ASSETS
    ========================================================================== */
 
 // Path to the assets directory, with trailing slash.
-$moj-assets-path: "/assets/" !default;
+// Default to govuk-frontend assets path if not set.
+$moj-assets-path: govuk.$govuk-assets-path !default;
 
 // Path to the images folder, with trailing slash.
 $moj-images-path: "#{$moj-assets-path}images/" !default;
