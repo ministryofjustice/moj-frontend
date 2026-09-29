@@ -2,7 +2,7 @@
 @forward "settings/all";
 
 // Configure GOV.UK Frontend
-@forward "vendor/govuk-frontend";
+@forward "node_modules/govuk-frontend/dist/govuk/base";
 
 // Partials that depend on GOV.UK Frontend
 @forward "helpers/all";

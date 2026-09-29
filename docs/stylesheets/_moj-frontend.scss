@@ -1,7 +1,10 @@
-// Share config with MOJ Frontend
-@forward "node_modules/@ministryofjustice/frontend/moj/all" with (
-  $moj-page-width: 1200px,
-  $moj-include-default-font-face: true
+@forward "node_modules/govuk-frontend/dist/govuk" with (
+  $govuk-page-width: 1200px,
+  $govuk-include-default-font-face: true,
+  $govuk-global-styles: true
 );
 
-@forward "node_modules/govuk-frontend/dist/govuk";
+// Share config with MOJ Frontend
+@forward "node_modules/@ministryofjustice/frontend/moj/all" with (
+  $moj-page-width: 1200px
+);
