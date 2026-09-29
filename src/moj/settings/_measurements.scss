@@ -1,14 +1,15 @@
 @use "sass:math";
+@use "node_modules/govuk-frontend/dist/govuk/base" as govuk;
 
 /* ==========================================================================
    #MEASUREMENTS
    ========================================================================== */
 
 // Width of main container
-$moj-page-width: 960px !default;
+$moj-page-width: govuk.$govuk-page-width !default;
 
 // Width of gutter between grid columns
-$moj-gutter: 30px !default;
+$moj-gutter: govuk.$govuk-gutter !default;
 
 // Width of half the gutter between grid columns
 $moj-gutter-half: math.div($moj-gutter, 2);

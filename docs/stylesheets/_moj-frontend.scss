@@ -5,6 +5,4 @@
 );
 
 // Share config with MOJ Frontend
-@forward "node_modules/@ministryofjustice/frontend/moj/all" with (
-  $moj-page-width: 1200px
-);
+@forward "node_modules/@ministryofjustice/frontend/moj/all";
