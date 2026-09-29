@@ -1,5 +1,5 @@
 ---
-title: Manage people on probation
+title: Manage people on probation (the service)
 ---
 
 Write out in full on first use with the first word capitalised, followed by the abbreviation MPOP in brackets: Manage people on probation (MPOP).
