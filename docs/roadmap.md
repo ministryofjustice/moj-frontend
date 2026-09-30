@@ -9,7 +9,7 @@ eleventyNavigation:
   order: 40
 ---
 
-<b>Last updated: 26 August 2026</b>
+<b>Last updated: 30 September 2026</b>
 
 This roadmap shows what we're working on and planning to do next. It's not fixed -- our plans might change as we learn more, respond to feedback, or adjust priorities. 
 
@@ -23,12 +23,14 @@ Since the introduction of a [sitemap](/sitemap/), the Design System documentatio
 
 We've made content clearer on [building block statuses](/design-system-statuses/). This is to help users understand how they should be used.  
 
-### New official components
+### New official building blocks
 
 We've released new, improved versions of the following building blocks:
 
 - ['add another' component](/components/add-another/)
 - [search component](/components/search/)
+
+We've launched a new [page template style for products on the Probational Delivery Service (PDS) platform](/probation/styles/pds-page-template/).
 
 <hr>
 
@@ -36,22 +38,24 @@ We've released new, improved versions of the following building blocks:
  
 The team is now:
 
-- developing Probational Delivery Service (PDS) page templates  
-- exploring how PDS users identify people on probation
+- exploring designs to help PDS users identify people on probation in services
+- carrying out a joint discovery into the [MOJ header component](/components/moj-header/) and [primary navigation component](/components/primary-navigation/)
+- preparing for research on the [filter component](/components/filter/) -- [contact the team to get involved](/help/)
 
 <hr>
 
 ## Coming up next
 
-We'll be looking at:
+Next, the team will be:
 
-- a more consistent way for users of PDS services to get support and escalate problems
-- [the header component](/components/header/)   
-- [the side navigation component](/components/side-navigation/)  
-- [the scrollable pane component](/components/scrollable-pane)
+- looking at a more consistent way for users of PDS services to get support and escalate problems
+- releasing an improvement to the [scrollable pane component](/components/scrollable-pane)
 
 <hr>
 
 ## The future 
 
-We plan to use AI more to improve the Design System. 
+In the coming months we'll:
+
+- continue to iterate 'to be reviewed' building blocks, to bring them to 'official' status
+- work across MOJ domains to develop building blocks
