@@ -1,3 +1,25 @@
+# [12.0.0-beta.2](https://github.com/ministryofjustice/moj-frontend/compare/v12.0.0-beta.1...v12.0.0-beta.2) (2026-09-30)
+
+
+### Bug Fixes
+
+* default to moj-assets-path to govuk-assets-path unless it is set ([231f5c9](https://github.com/ministryofjustice/moj-frontend/commit/231f5c94aa3678696065d2a0d1f1796df4a40794))
+
+
+### Features
+
+* remove node_modules from govuk-frontend url within moj-frontend src ([26e80c6](https://github.com/ministryofjustice/moj-frontend/commit/26e80c64652b151d204f109efd733fc4270818f4))
+
+
+### BREAKING CHANGES
+
+* The url for govuk-frontend within the moj-frontend src now does not include `node_modules`.
+
+You must add node_modules to your Sass load paths, by either:
+
+* calling the Sass compiler from the command line with the `--load-path node_modules` flag
+* using the JavaScript API with `loadPaths: ['node_modules']` in the options object
+
 # [12.0.0-beta.1](https://github.com/ministryofjustice/moj-frontend/compare/v11.2.0-beta.1...v12.0.0-beta.1) (2026-09-29)
 
 
