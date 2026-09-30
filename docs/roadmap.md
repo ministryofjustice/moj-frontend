@@ -23,14 +23,17 @@ Since the introduction of a [sitemap](/sitemap/), the Design System documentatio
 
 We've made content clearer on [building block statuses](/design-system-statuses/). This is to help users understand how they should be used.  
 
-### New official building blocks
+### New and improved building blocks
 
-We've released new, improved versions of the following building blocks:
+We released improvements to the following components, taking them from 'to be reviewed' to 'official' status:
 
 - ['add another' component](/components/add-another/)
 - [search component](/components/search/)
 
-We've launched a new [page template style for products on the Probational Delivery Service (PDS) platform](/probation/styles/pds-page-template/).
+We've added 3 new building blocks:
+- [page template style for products on the Probational Delivery Service (PDS) platform](/probation/styles/pds-page-template/)
+- [spinner progress indicator component](/components/spinner-progress-indicator/)
+- [confirm an action pattern](/patterns/confirm-an-action/)
 
 <hr>
 
