@@ -1,0 +1,128 @@
+examples:
+  # 1. Default - multiple link-style button items
+  - name: default
+    options:
+      items:
+        - text: Archive
+          href: '#archive'
+        - text: Reassign
+          href: '#reassign'
+        - text: Delete
+          href: '#delete'
+
+  # 2. Single item - only one button, no menu
+  - name: single item
+    options:
+      items:
+        - text: Archive
+          href: '#archive'
+
+  # 3. With html item content
+  - name: with html item
+    options:
+      items:
+        - html: '<strong>Archive</strong>'
+          href: '#archive'
+        - text: Delete
+          href: '#delete'
+
+  # 4. With disabled item
+  - name: with disabled item
+    options:
+      items:
+        - text: Archive
+          href: '#archive'
+        - text: Delete
+          type: button
+          name: delete
+          value: delete
+          disabled: true
+
+  # 5. With button element items (type=button)
+  - name: with button items
+    options:
+      items:
+        - text: Archive
+          element: button
+          type: button
+          name: archive
+          value: archive
+        - text: Delete
+          element: button
+          type: button
+          name: delete
+          value: delete
+
+  # 6. With submit button item (no href; verifies submit button attributes)
+  - name: with submit button item
+    options:
+      items:
+        - text: Archive
+          type: submit
+          name: archive
+          value: archive
+        - text: Delete
+          href: '#delete'
+
+  # 7. With custom item classes
+  - name: with item classes
+    options:
+      items:
+        - text: Archive
+          href: '#archive'
+          classes: custom-item-class
+        - text: Delete
+          href: '#delete'
+
+  # 8. With custom container classes
+  - name: with classes
+    options:
+      classes: custom-button-menu-class
+      items:
+        - text: Archive
+          href: '#archive'
+        - text: Delete
+          href: '#delete'
+
+  # 9. With custom container attributes
+  - name: with attributes
+    options:
+      attributes:
+        data-custom: custom-value
+      items:
+        - text: Archive
+          href: '#archive'
+        - text: Delete
+          href: '#delete'
+
+  # 10. With custom toggle button text
+  - name: with button text
+    options:
+      button:
+        text: Menu title
+      items:
+        - text: Archive
+          href: '#archive'
+        - text: Delete
+          href: '#delete'
+
+  # 11. With custom toggle button classes
+  - name: with button classes
+    options:
+      button:
+        classes: custom-toggle-class
+      items:
+        - text: Archive
+          href: '#archive'
+        - text: Delete
+          href: '#delete'
+
+  # 12. With menu aligned right
+  - name: with align menu right
+    options:
+      alignMenu: right
+      items:
+        - text: Archive
+          href: '#archive'
+        - text: Delete
+          href: '#delete'
