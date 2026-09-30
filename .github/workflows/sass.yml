@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Setup Node.js
-        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .nvmrc
 
@@ -45,14 +45,14 @@ jobs:
       - name: Check compilation
         run: |
           mkdir -p .tmp
-          time sass src/moj/all.scss --load-path . > .tmp/check.css
+          time sass src/moj/all.scss --load-path . --load-path node_modules > .tmp/check.css
 
       - name: Check load paths
         run: |
           mkdir -p .tmp
-          time sh -c 'echo "@import "\""moj/all"\"";" | sass --stdin --load-path . --load-path src > .tmp/check1.css'
-          time sh -c 'echo "@forward "\""moj/all"\"";" | sass --stdin --load-path . --load-path src > .tmp/check2.css'
-          time sh -c 'echo "@use "\""moj/all"\"" as *;" | sass --stdin --load-path . --load-path src > .tmp/check3.css'
+          time sh -c 'echo "@import "\""moj/all"\"";" | sass --stdin --load-path . --load-path node_modules --load-path src > .tmp/check1.css'
+          time sh -c 'echo "@forward "\""moj/all"\"";" | sass --stdin --load-path . --load-path node_modules --load-path src > .tmp/check2.css'
+          time sh -c 'echo "@use "\""moj/all"\"" as *;" | sass --stdin --load-path . --load-path node_modules --load-path src > .tmp/check3.css'
 
       # Check output for uncompiled Sass
       - name: Check output
