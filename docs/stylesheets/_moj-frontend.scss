@@ -1,8 +1,8 @@
-@forward "node_modules/govuk-frontend/dist/govuk" with (
+@forward "govuk-frontend/dist/govuk" with (
   $govuk-page-width: 1200px,
   $govuk-include-default-font-face: true,
   $govuk-global-styles: true
 );
 
 // Share config with MOJ Frontend
-@forward "node_modules/@ministryofjustice/frontend/moj/all";
+@forward "@ministryofjustice/frontend/moj/all";

@@ -1,8 +1,14 @@
+import path from 'path'
+import { pathToFileURL } from 'url'
+
 import { compileString } from 'sass-embedded'
 
 function compile(source) {
   return compileString(source, {
-    loadPaths: [process.cwd()],
+    loadPaths: ['node_modules'],
+    url: pathToFileURL(
+      path.join(process.cwd(), 'tests/sass-tests/fixture.scss')
+    ),
     quietDeps: true
   }).css
 }
@@ -10,8 +16,8 @@ function compile(source) {
 describe('MOJ asset settings', () => {
   test('defaults to the GOV.UK assets path', () => {
     const css = compile(`
-      @use "src/moj/all" as moj;
-      @use "node_modules/govuk-frontend/dist/govuk/base" as govuk;
+      @use "../../src/moj/all" as moj;
+      @use "govuk-frontend/dist/govuk/base" as govuk;
 
       .result {
         --govuk-assets-path: #{govuk.$govuk-assets-path};
@@ -27,11 +33,11 @@ describe('MOJ asset settings', () => {
     'inherits GOV.UK assets configuration applied with @%s',
     (rule) => {
       const css = compile(`
-        @${rule} "node_modules/govuk-frontend/dist/govuk" with (
+        @${rule} "govuk-frontend/dist/govuk" with (
           $govuk-assets-path: "/application-assets/"
         );
 
-        @use "src/moj/all" as moj;
+        @use "../../src/moj/all" as moj;
 
         .result {
           --moj-assets-path: #{moj.$moj-assets-path};
@@ -46,11 +52,11 @@ describe('MOJ asset settings', () => {
     'allows the MOJ assets path to override the GOV.UK value with @%s',
     (rule) => {
       const css = compile(`
-      @${rule} "node_modules/govuk-frontend/dist/govuk" with (
+      @${rule} "govuk-frontend/dist/govuk" with (
         $govuk-assets-path: "/application-assets/"
       );
 
-      @use "src/moj/all" as moj with (
+      @use "../../src/moj/all" as moj with (
         $moj-assets-path: "/moj-assets/"
       );
 

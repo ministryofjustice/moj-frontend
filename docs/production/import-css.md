@@ -47,30 +47,30 @@ router.use('/stylesheets', [
 To load all the Sass rules from both MOJ Frontend and GOV.UK Frontend, add the following to your Sass file:
 
 ```scss
-@use "node_modules/govuk-frontend/dist/govuk" as *;
-@forward "node_modules/@ministryofjustice/frontend/moj/all";
+@use "govuk-frontend/dist/govuk" as *;
+@forward "@ministryofjustice/frontend/moj/all";
 ```
 
-You must add the root of your application to Sass load paths, by either:
+You must add `node_modules` to your Sass load paths, by either:
 
-- calling the Sass compiler from the command line with the `--load-path .` flag
-- using the JavaScript API with `loadPaths: ['.']` in the `options` object
+- calling the Sass compiler from the command line with the `--load-path node_modules` flag
+- using the JavaScript API with `loadPaths: ['node_modules']` in the `options` object
 
 For more details, view guidance on [simplifying Sass load paths](#simplify-sass-load-paths) and [silencing deprecation warnings from dependencies](#silence-deprecation-warnings-from-dependencies-in-dart-sass).
 
 ### Load an individual component’s CSS using a single Sass forward
 
-You can also import a component and all its dependencies without loading `node_modules/@ministryofjustice/frontend/moj/all` first.
+You can also import a component and all its dependencies without loading `@ministryofjustice/frontend/moj/all` first.
 
 To load the button menu component for example, add the following to your Sass file:
 
 ```scss
-@forward "node_modules/@ministryofjustice/frontend/moj/components/button-menu/button-menu";
+@forward "@ministryofjustice/frontend/moj/components/button-menu/button-menu";
 ```
 
 ### Simplify Sass load paths
 
-If you want to make Sass load paths shorter, add both `node_modules/@ministryofjustice/frontend` and `node_modules/govuk-frontend/dist` to either your:
+If you want to make Sass URLs shorter, add both `node_modules/@ministryofjustice/frontend` and `node_modules/govuk-frontend/dist` to either your:
 
 - [Sass load paths](https://sass-lang.com/documentation/at-rules/import#finding-the-file)
 - [assets paths](http://guides.rubyonrails.org/asset_pipeline.html#search-paths) if you use Ruby in your project

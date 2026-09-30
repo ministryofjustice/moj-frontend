@@ -49,7 +49,7 @@ function compileStyles(assetPath, { srcPath, destPath, output = {} }) {
     // Compile Sass to CSS
     if (options.to.endsWith('.css')) {
       ;({ css, sourceMap: map } = await compileAsync(options.from, {
-        loadPaths: ['.', 'node_modules'],
+        loadPaths: ['node_modules'],
         quietDeps: true,
         sourceMap: true,
         sourceMapIncludeSources: true

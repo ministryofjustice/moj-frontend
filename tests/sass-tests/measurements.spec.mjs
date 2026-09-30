@@ -1,8 +1,14 @@
+import path from 'path'
+import { pathToFileURL } from 'url'
+
 import { compileString } from 'sass-embedded'
 
 function compile(source) {
   return compileString(source, {
-    loadPaths: [process.cwd()],
+    loadPaths: ['node_modules'],
+    url: pathToFileURL(
+      path.join(process.cwd(), 'tests/sass-tests/fixture.scss')
+    ),
     quietDeps: true
   }).css
 }
@@ -10,8 +16,8 @@ function compile(source) {
 describe('MOJ measurement settings', () => {
   test('defaults to GOV.UK measurement values', () => {
     const css = compile(`
-      @use "src/moj/all" as moj;
-      @use "node_modules/govuk-frontend/dist/govuk/base" as govuk;
+      @use "../../src/moj/all" as moj;
+      @use "govuk-frontend/dist/govuk/base" as govuk;
 
       .result {
         --govuk-page-width: #{govuk.$govuk-page-width};
@@ -31,12 +37,12 @@ describe('MOJ measurement settings', () => {
     'inherits GOV.UK configuration applied with @%s',
     (rule) => {
       const css = compile(`
-        @${rule} "node_modules/govuk-frontend/dist/govuk" with (
+        @${rule} "govuk-frontend/dist/govuk" with (
           $govuk-page-width: 1100px,
           $govuk-gutter: 40px
         );
 
-        @use "src/moj/all" as moj;
+        @use "../../src/moj/all" as moj;
 
         .result {
           --moj-page-width: #{moj.$moj-page-width};
@@ -53,12 +59,12 @@ describe('MOJ measurement settings', () => {
     'allows MOJ values to override inherited GOV.UK values with @%s',
     (rule) => {
       const css = compile(`
-      @${rule} "node_modules/govuk-frontend/dist/govuk" with (
+      @${rule} "govuk-frontend/dist/govuk" with (
         $govuk-page-width: 1100px,
         $govuk-gutter: 40px
       );
 
-      @use "src/moj/all" as moj with (
+      @use "../../src/moj/all" as moj with (
         $moj-page-width: 1200px,
         $moj-gutter: 50px
       );
