@@ -1,6 +1,8 @@
 import pkg from '@ministryofjustice/frontend/package.json' with { type: 'json' }
 import autoprefixer from 'autoprefixer'
-import cssnano from 'cssnano'
+// Use CSSNano's explicit source export because ESLint's legacy resolver
+// does not support its package-root exports map.
+import cssnano from 'cssnano/src'
 import postcss from 'postcss'
 import scss from 'postcss-scss'
 

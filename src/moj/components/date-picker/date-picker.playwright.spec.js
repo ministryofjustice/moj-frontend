@@ -43,7 +43,7 @@ test.describe('date picker', () => {
       'DatePicker'
     )
     componentStyles = compile(path.join(__dirname, '_date-picker.scss'), {
-      loadPaths: [path.join(__dirname, '../../../../')],
+      loadPaths: [path.join(__dirname, '../../../../node_modules')],
       quietDeps: true
     }).css
     govukStyles = readFileSync(
