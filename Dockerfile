@@ -65,21 +65,21 @@ RUN ENV="production" npm run build:docs
 
 RUN rm /root/.ssh/id_rsa
 
-FROM nginxinc/nginx-unprivileged:alpine AS staging
+FROM docker.io/nginx/nginx-unprivileged:1.30.7-alpine@sha256:0c53a1f2890c3526bfd201440f0fd3970e5b78f80630f58284aad0d34b5ec7bd AS staging
 EXPOSE 3000
 COPY docker/htpasswd /etc/nginx/.htpasswd
 COPY docker/nginx-staging.conf /etc/nginx/conf.d/default.conf
 COPY --from=staging-build /app/public /usr/share/nginx/html
 COPY robots.txt /usr/share/nginx/html
 
-FROM nginxinc/nginx-unprivileged:alpine AS preview
+FROM docker.io/nginx/nginx-unprivileged:1.30.7-alpine@sha256:0c53a1f2890c3526bfd201440f0fd3970e5b78f80630f58284aad0d34b5ec7bd AS preview
 EXPOSE 3000
 COPY docker/htpasswd-preview /etc/nginx/.htpasswd
 COPY docker/nginx-preview.conf /etc/nginx/conf.d/default.conf
 COPY --from=preview-build /app/public /usr/share/nginx/html
 COPY robots.txt /usr/share/nginx/html
 
-FROM nginxinc/nginx-unprivileged:alpine AS production
+FROM docker.io/nginx/nginx-unprivileged:1.30.7-alpine@sha256:0c53a1f2890c3526bfd201440f0fd3970e5b78f80630f58284aad0d34b5ec7bd AS production
 EXPOSE 3000
 COPY docker/nginx-production.conf /etc/nginx/conf.d/default.conf
 COPY --from=production-build /app/public /usr/share/nginx/html
@@ -89,7 +89,7 @@ FROM base AS staging-express-app
 COPY package.json package-lock.json ./
 COPY .npmrc .npmrc
 COPY .allowed-scripts.mjs .allowed-scripts.mjs
-RUN npm run setup
+RUN npm run setup && npm prune --omit=dev
 COPY src src
 COPY app app
 COPY 11ty 11ty
@@ -107,7 +107,7 @@ FROM base AS preview-express-app
 COPY package.json package-lock.json ./
 COPY .npmrc .npmrc
 COPY .allowed-scripts.mjs .allowed-scripts.mjs
-RUN npm run setup
+RUN npm run setup && npm prune --omit=dev
 COPY src src
 COPY app app
 COPY 11ty 11ty
@@ -125,7 +125,7 @@ FROM base AS production-express-app
 COPY package.json package-lock.json ./
 COPY .npmrc .npmrc
 COPY .allowed-scripts.mjs .allowed-scripts.mjs
-RUN npm run setup
+RUN npm run setup && npm prune --omit=dev
 COPY src src
 COPY app app
 COPY 11ty 11ty

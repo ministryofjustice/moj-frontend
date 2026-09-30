@@ -1,4 +1,4 @@
-const transformedNodeModules = ['sinon', 'govuk-frontend']
+const transformedNodeModules = ['sinon', 'govuk-frontend', 'sanitize-html']
 
 module.exports = {
   modulePathIgnorePatterns: [
