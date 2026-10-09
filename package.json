@@ -40,7 +40,7 @@
     "lint:scss:fix": "npm run lint:scss:cli -- --fix \"**/*.scss\"",
     "lint:scss:cli": "stylelint --cache --cache-location .cache/stylelint --cache-strategy content --color --ignore-path .gitignore --max-warnings 0",
     "lint:types": "tsc --build tsconfig.json --incremental --pretty",
-    "watch:11ty": "eleventy --input=./docs --output=public --watch",
+    "watch:11ty": "eleventy --input=./docs --output=public --watch --quiet",
     "watch:package": "gulp watch --color",
     "watch:app": "nodemon --delay 1000ms app/app.js",
     "dev:docker:preview:build": "docker-compose -f docker-compose.preview.yml build --no-cache",
