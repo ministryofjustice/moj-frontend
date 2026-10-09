@@ -34,8 +34,9 @@ module.exports = function (eleventyConfig) {
 
   // Rebuild when a change is made to a component template file
   eleventyConfig.addWatchTarget('src/moj/components/**/*.njk')
-  eleventyConfig.addWatchTarget('docs/examples/**/script.js')
-  eleventyConfig.addWatchTarget('docs/examples/**/style.css')
+  eleventyConfig.addWatchTarget('docs/components/**/script.js')
+  eleventyConfig.addWatchTarget('docs/components/**/style.css')
+  eleventyConfig.addWatchTarget('docs/components/**/style.scss')
   eleventyConfig.addWatchTarget('docs/**/*.11tydata.js')
   eleventyConfig.addWatchTarget('11ty/**/*.js')
   // Give gulp a little time..

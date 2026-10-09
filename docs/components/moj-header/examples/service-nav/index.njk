@@ -1,0 +1,45 @@
+---
+layout: layouts/example.njk
+title: Header with GOV.UK Service Navigation (example)
+---
+
+{%- from "moj/components/header/macro.njk" import mojHeader -%}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{%- from "moj/components/search/macro.njk" import mojSearch -%}
+
+{{ mojHeader({
+  organisationLabel: {
+    text: "Ministry of Justice",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "Service name",
+    href: "#"
+  },
+  navigation: {
+    label: "Account navigation",
+    items: [{
+      text: "Account name",
+      href: "#",
+      active: true
+    }, {
+      text: "Sign out",
+      href: "#"
+    }]
+  }
+}) }}
+
+{{ govukServiceNavigation({
+  serviceName: "Service name",
+  serviceUrl: "#",
+  navigation: [{
+    text: "Home",
+    href: "#"
+  }, {
+    text: "About",
+    href: "#"
+  }, {
+    text: "Contact",
+    href: "#"
+  }]
+}) }}

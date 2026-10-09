@@ -6,65 +6,58 @@
    ========================================================================== */
 
 .moj-header {
-  padding-top: govuk-spacing(3);
-  border-bottom: 10px solid $govuk-brand-colour;
-  background-color: govuk-colour("black");
+  background-color: govuk-organisation-colour("ministry-of-justice");
 }
 
 .moj-header__container {
-  position: relative;
   @include moj-width-container;
-  @include govuk-clearfix;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 govuk-spacing(4);
 }
 
 .moj-header__logo {
-  padding-bottom: govuk-spacing(1);
-
-  @include govuk-media-query($from: desktop) {
-    float: left;
-  }
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: govuk-spacing(2);
+  margin-right: auto;
+  margin-top: govuk-spacing(3);
+  margin-bottom: govuk-spacing(3);
 }
 
-.moj-header__logotype-crown {
-  position: relative;
-  top: -4px;
-  margin-right: govuk-spacing(1);
-  vertical-align: top;
-}
-
+.moj-header__logotype-crown,
 .moj-header__logotype-crest {
-  position: relative;
-  top: -8px;
-  margin-right: govuk-spacing(1);
-  vertical-align: top;
+  flex-shrink: 0;
 }
 
 .moj-header__content {
-  padding-bottom: govuk-spacing(2);
-
-  @include govuk-media-query($from: desktop) {
-    float: right;
-  }
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0 govuk-spacing(4);
+  margin-top: govuk-spacing(3);
+  margin-bottom: govuk-spacing(3);
 }
 
 .moj-header__link,
 .moj-header__link > a {
-  display: inline-block;
-  margin-bottom: -1px;
-  overflow: hidden; // Fixes focus gaps in background colour
-  border-bottom: 1px solid transparent;
   color: govuk-colour("white");
-  line-height: 25px; // Override due to alignment issue in Chrome
-  vertical-align: middle;
+
   @include govuk-link-common;
   @include govuk-link-style-default;
 
   &:link,
-  &:visited,
+  &:visited {
+    color: govuk-colour("white");
+    text-decoration: none;
+  }
+
   &:hover,
   &:active {
     color: govuk-colour("white");
-    text-decoration: none;
+    text-decoration: underline;
   }
 
   &:hover {
@@ -72,53 +65,21 @@
   }
 
   &:focus {
-    border-color: transparent;
+    /* border-color: transparent; */
     color: govuk-colour("black");
   }
 
   &--organisation-name {
-    vertical-align: middle;
-    @include govuk-font($size: 24, $weight: "bold");
+    @include govuk-font($size: 24);
+    margin-block-start: 2px;
+    margin-inline-end: govuk-spacing(2);
 
     &:hover {
-      border-color: transparent;
-    }
-
-    @include govuk-media-query($until: tablet) {
-      margin-top: govuk-spacing(1);
-    }
-  }
-
-  &--service-name {
-    vertical-align: middle;
-    @include govuk-font($size: 24, $weight: "normal");
-
-    @include govuk-media-query($until: desktop) {
-      display: block;
-    }
-    @include govuk-media-query($from: desktop) {
-      margin-left: govuk-spacing(1);
-    }
-
-    &:hover {
-      border-color: transparent;
+      /* border-color: transparent; */
     }
   }
 }
 
-.moj-header__link a {
-  margin-bottom: 1px;
-  vertical-align: text-bottom;
-
-  &:hover {
-    border-color: govuk-colour("white");
-  }
-
-  @include govuk-media-query($until: desktop) {
-    margin-bottom: -1px;
-    vertical-align: middle;
-  }
-}
 // stylelint-disable-next-line selector-no-qualifying-type
 span.moj-header__link {
   &:hover {
@@ -128,7 +89,6 @@ span.moj-header__link {
 
 // Navigation
 .moj-header__navigation {
-  margin-top: govuk-spacing(1) - 2px;
   color: govuk-colour("white");
 }
 
@@ -137,15 +97,24 @@ span.moj-header__link {
   padding: 0;
   font-size: 0; // Removes white space when using inline-block on child element.
   list-style: none;
+  display: flex;
+  align-items: center;
 }
 
 .moj-header__navigation-item {
   display: inline-block;
-  margin-right: govuk-spacing(4);
+  padding-right: govuk-spacing(3);
+  padding-left: govuk-spacing(3);
   @include govuk-font(19);
 
+  &:first-child {
+    padding-left: 0;
+    text-align: right;
+    border-right: 1px solid govuk-colour("white");
+  }
+
   &:last-child {
-    margin-right: 0;
+    padding-right: 0;
   }
 }
 
