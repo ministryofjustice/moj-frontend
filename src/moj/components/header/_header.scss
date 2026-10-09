@@ -6,15 +6,17 @@
    ========================================================================== */
 
 .moj-header {
+  position: relative;
   background-color: govuk-organisation-colour("ministry-of-justice");
 }
 
 .moj-header__container {
   @include moj-width-container;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
   gap: 0 govuk-spacing(4);
+  min-height: 70px;
 }
 
 .moj-header__logo {
@@ -23,8 +25,8 @@
   flex-wrap: nowrap;
   gap: govuk-spacing(2);
   margin-right: auto;
-  margin-top: govuk-spacing(3);
-  margin-bottom: govuk-spacing(3);
+  /* margin-top: govuk-spacing(3); */
+  /* margin-bottom: govuk-spacing(3); */
 }
 
 .moj-header__logotype-crown,

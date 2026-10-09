@@ -78,13 +78,15 @@
         </{{serviceLabelElement}}>
       {% endif -%}
       </span>
-      <strong class="govuk-tag govuk-tag--green">
-        DEV
-      </strong>
+      {% if params.slots.afterOrganisationLabel %}
+        {{ params.slots.afterOrganisationLabel | safe }}
+      {% endif %}
     </div>
 
-    <div class="moj-header__content">
-      <nav class="moj-header__navigation {% if params.navigation.classes %} {{ params.navigation.classes }}{% endif %}" {% if (params.navigation.label) %} aria-label="{{ params.navigation.label }}" {% endif %} {{ govukAttributes(params.navigation.attributes) }}>
+
+    {% if (params.navigation) %}
+      <div class="moj-header__content">
+        <nav class="moj-header__navigation {% if params.navigation.classes %} {{ params.navigation.classes }}{% endif %}" {% if (params.navigation.label) %} aria-label="{{ params.navigation.label }}" {% endif %} {{ govukAttributes(params.navigation.attributes) }}>
           <ul class="moj-header__navigation-list">
             <li class="moj-header__navigation-item">
                 joe.smith@justice.gov.uk<br>
@@ -99,6 +101,11 @@
               </li>
           </ul>
         </nav>
+      </div>
+    {% endif %}
+        {% if params.slots.end %}
+      {{ params.slots.end | safe }}
+    {% endif %}
     </div>
-  </div>
+
 </header>
