@@ -7,5 +7,3 @@
 | html       | string          | Yes      | HTML content for the pane. If a Nunjucks call block is provided, it takes precedence over this option.                     |
 | caller     | nunjucks-block  | No       | Not strictly a parameter but Nunjucks code convention. Using a call block enables you to call a macro with all the text inside the tag. This is helpful if you want to pass a lot of content into a macro. To use it, you will need to wrap the entire panel component in a call block. |
 
-
-_Warning: If you're using Nunjucks macros in production, HTML arguments must be sanitised to protect against cross-site scripting. See the [Nunjucks documentation](https://mozilla.github.io/nunjucks/api.html#user-defined-templates-warning)._

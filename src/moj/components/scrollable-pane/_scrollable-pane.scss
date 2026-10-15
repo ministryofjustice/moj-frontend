@@ -1,47 +1,50 @@
 @use "../../vendor/govuk-frontend" as *;
 
+.moj-scrollable-pane {
+  --moj-scrollable-pane-background-colour: #{govuk-functional-colour("body-background")};
+  --moj-scrollable-pane-transparent-colour: rgb(255, 255, 255, 0);
+  --moj-scrollable-pane-shadow-colour: rgb(0, 0, 0, 0.3);
+  --moj-scrollable-pane-shadow-size: 1.25em;
+}
+
 .moj-scrollable-pane[role="region"][tabindex][aria-label],
 .moj-scrollable-pane[role="region"][tabindex][aria-labelledby] {
-  // stylelint-disable scss/dollar-variable-pattern
-  $scrollableBgColor: govuk-colour("white");
-  $scrollableTransparentColor: rgb(255, 255, 255, 0);
-  $scrollableShadowColor: rgb(0, 0, 0, 0.2);
-  $scrollableShadowSize: 0.75em;
-  // stylelint-enable scss/dollar-variable-pattern
-
   overflow-x: scroll;
+  scrollbar-gutter: stable;
   background:
     linear-gradient(
       to right,
-      $scrollableBgColor,
-      $scrollableBgColor,
-      $scrollableTransparentColor calc($scrollableShadowSize * 2)
+      var(--moj-scrollable-pane-background-colour),
+      var(--moj-scrollable-pane-background-colour),
+      var(--moj-scrollable-pane-transparent-colour) calc(var(--moj-scrollable-pane-shadow-size) * 2)
     ),
-    radial-gradient(farthest-side at 0 50%, $scrollableShadowColor, $scrollableTransparentColor),
+    radial-gradient(
+      farthest-side at 0 50%,
+      var(--moj-scrollable-pane-shadow-colour),
+      var(--moj-scrollable-pane-transparent-colour)
+    ),
     linear-gradient(
       to left,
-      $scrollableBgColor,
-      $scrollableBgColor,
-      $scrollableTransparentColor calc($scrollableShadowSize * 2)
+      var(--moj-scrollable-pane-background-colour),
+      var(--moj-scrollable-pane-background-colour),
+      var(--moj-scrollable-pane-transparent-colour) calc(var(--moj-scrollable-pane-shadow-size) * 2)
     ),
-    radial-gradient(farthest-side at 100% 50%, $scrollableShadowColor, $scrollableTransparentColor) 100%;
-  background-color: $scrollableBgColor;
+    radial-gradient(
+        farthest-side at 100% 50%,
+        var(--moj-scrollable-pane-shadow-colour),
+        var(--moj-scrollable-pane-transparent-colour)
+      )
+      100%;
+  background-color: var(--moj-scrollable-pane-background-colour);
   background-repeat: no-repeat;
   background-attachment: local, scroll, local, scroll;
   background-size:
     100% 100%,
-    $scrollableShadowSize 100%,
+    var(--moj-scrollable-pane-shadow-size) 100%,
     100% 100%,
-    $scrollableShadowSize 100%;
+    var(--moj-scrollable-pane-shadow-size) 100%;
 
   &:focus {
     @include govuk-focused-box;
-  }
-}
-
-@include govuk-media-query($until: 1020px) {
-  .moj-scrollable-pane .govuk-table__header,
-  .moj-scrollable-pane .govuk-table__cell {
-    white-space: nowrap;
   }
 }
