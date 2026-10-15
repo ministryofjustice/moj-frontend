@@ -1,4 +1,6 @@
-| Name                   | Type    | Required | Description                                                                                                                                                     |
-| ---------------------- | ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| label                  | string  | Yes      | The text used as the `aria-label` for the pane.                                     |
-| labelledBy             | string  | Yes      |  An id reference to be used in the `aria-labelledby` attribute. If you set `label`, this option is not required and is ignored.                                  |
+| Name       | Type   | Required | Description                                                                                                             |
+| ---------- | ------ | -------- | ----------------------------------------------------------------------------------------------------------------------- |
+| label      | string | Yes      | The text used as the `aria-label` for the pane.                                                                           |
+| labelledBy | string | Yes      | An id reference to be used in the `aria-labelledby` attribute. If you set `label`, this option is not required and is ignored. |
+| classes    | string | No       | Extra classes to add to the `div` container.                                                                              |
+| attributes | object | No       | HTML attributes (for example data attributes) to add to the `div` container.                                               |
