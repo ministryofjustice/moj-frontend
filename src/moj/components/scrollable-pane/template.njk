@@ -12,5 +12,5 @@
       "aria-labelledby": params.labelledBy
     }) if params.labelledBy and not params.label }}
   {{ govukAttributes(params.attributes) }}>
- {{ caller() }}
+ {{ caller() if caller else params.html | safe }}
 </div>

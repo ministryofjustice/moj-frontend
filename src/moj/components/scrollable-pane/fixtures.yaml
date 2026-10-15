@@ -1,4 +1,20 @@
 examples:
+  - name: with html
+    options:
+      label: Rainfall measurements
+      html: '<p>Rainfall measurements <strong>by station</strong>.</p>'
+
+  - name: with html and call block
+    options:
+      label: Rainfall measurements
+      html: '<p>HTML parameter content.</p>'
+    callBlock: |
+      <p>Call block content.</p>
+
+  - name: without content
+    options:
+      label: Rainfall measurements
+
   - name: default
     options:
       label: Historic rainfall in June

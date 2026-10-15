@@ -39,6 +39,53 @@ describe('scrollable pane macro', () => {
     document.body.innerHTML = ''
   })
 
+  describe('with html', () => {
+    beforeAll(() => {
+      example = 'with html'
+    })
+    afterAll(() => {
+      example = 'default'
+    })
+
+    test('renders HTML parameter markup without a call block', () => {
+      expect(component.querySelector('p')).toHaveTextContent(
+        'Rainfall measurements by station.'
+      )
+      expect(component.querySelector('strong')).toHaveTextContent('by station')
+    })
+  })
+
+  describe('with html and call block', () => {
+    beforeAll(() => {
+      example = 'with html and call block'
+    })
+    afterAll(() => {
+      example = 'default'
+    })
+
+    test('renders the call block in preference to the HTML parameter', () => {
+      expect(component.querySelector('p')).toHaveTextContent(
+        'Call block content.'
+      )
+      expect(component).not.toHaveTextContent('HTML parameter content.')
+      expect(component.querySelectorAll('p')).toHaveLength(1)
+    })
+  })
+
+  describe('without content', () => {
+    beforeAll(() => {
+      example = 'without content'
+    })
+    afterAll(() => {
+      example = 'default'
+    })
+
+    test('renders an empty pane without a call block or HTML parameter', () => {
+      expect(component.textContent.trim()).toBe('')
+      expect(component.children).toHaveLength(0)
+    })
+  })
+
   describe('by default', () => {
     test('renders a labelled, keyboard-focusable region', () => {
       expect(
