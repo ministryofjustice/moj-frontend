@@ -4,9 +4,10 @@ title: Sortable table (example)
 redirect_from: examples/scrollable-pane
 ---
 
+{%- from "moj/components/scrollable-pane/macro.njk" import mojScrollablePane -%}
 {%- from "govuk/components/table/macro.njk" import govukTable -%}
 
-<div class="moj-scrollable-pane" role="region" aria-label="Historic rainfall in June" tabindex="0">
+{% call mojScrollablePane({ label: "Historic rainfall in June" }) -%}
   {{ govukTable({
     caption: "Historic rainfall in June",
     head: [
@@ -257,4 +258,4 @@ redirect_from: examples/scrollable-pane
       ]
     ]
   }) }}
-</div>
+{% endcall -%}
