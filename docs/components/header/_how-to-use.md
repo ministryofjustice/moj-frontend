@@ -1,7 +1,7 @@
 ---
 title: How to use
 order: 20
-tags: 'notification-badge'
+tags: 'header'
 permalink: false
 eleventyComputed:
   override:eleventyNavigation: false
