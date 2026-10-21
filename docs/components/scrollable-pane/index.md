@@ -1,6 +1,7 @@
 ---
 title: Scrollable pane
 tabs: true
+tabCollection: scrollable-pane
 status: Official
 statusDate: October 2026
 statusAction: Updated
