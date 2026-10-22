@@ -17,4 +17,10 @@ Give the container an accessible name by adding a `label` or `labelledBy` attri
 
 This component works best on a white background.
 
-If you need to use the component on a different background colour, you can change the background colour by setting the `--moj-scrollable-pane-background-colour`custom property in your CSS or by using a `style` attribute on the element.
+If you need to use the component on a different background colour, you can change the component's background colour by setting the `--moj-scrollable-pane-background-colour`custom property in your CSS or by using a `style` attribute on the element.
+
+```html
+<div class="moj-scrollable-pane" style="--moj-scrollable-pane-background-colour: var(--govuk-surface-background-colour)" role="region" tabindex="0" aria-label="Establishments">
+ ...pane content
+</div>
+```
