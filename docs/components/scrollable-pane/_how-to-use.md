@@ -15,6 +15,6 @@ Give the container an accessible name by adding a `label` or `labelledBy` attri
 
 ## Changing the background colour
 
-This component works on a white background, where it works best.
+This component works best on a white background.
 
-To add it to a different coloured background change the component's background colour by setting the `--moj-scrollable-pane-background-colour` custom property in your CSS or by using a `style` attribute on the element.
+You can change the component's background colour by setting the `--moj-scrollable-pane-background-colour`custom property in your CSS or by using a `style` attribute on the element.
