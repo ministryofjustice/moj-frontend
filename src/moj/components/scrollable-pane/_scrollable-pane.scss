@@ -10,7 +10,6 @@
 .moj-scrollable-pane[role="region"][tabindex][aria-label],
 .moj-scrollable-pane[role="region"][tabindex][aria-labelledby] {
   overflow-x: scroll;
-  scrollbar-gutter: stable;
   background:
     linear-gradient(
       to right,
