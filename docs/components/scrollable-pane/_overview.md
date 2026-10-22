@@ -9,21 +9,22 @@ eleventyComputed:
 
 {% example template="examples/default", colocated=true, height=470 %}
 
+Use the scrollable pane component for content that is unavoidably overflowing on the page. 
+
+It allows users to scroll horizontally to view content that is wider than the available space. Shadows at the edges show that there's more content. 
+
 ## When to use
 
-Use the scrollable pane component when you have content (typically a table) which unavoidably overflows the page. It adds scroll shadows to indicate that content overflows the page.
+Use on tables where data is on a single line. 
 
-This is often used in the [filter a list pattern](/patterns/filter-a-list/) as the filter takes up additional horizontal space, causing the pane holding the table to shrink.
+It can be used in the: 
+- [filter a list pattern](/patterns/filter-a-list/) -- because the filter takes up additional horizontal space, causing the pane holding the table to shrink
+- [sortable table component](/components/sortable-table/)
 
 ## When not to use
 
-Before using this, try to avoid having content that overflows the page at all. Users should be able to see all of the page's content without needing to scroll, so this component should only be used when absolutely necessary.
+Only use this component if you cannot display the content to fit into the page. 
 
-Do not use this component to contain tables which have multi-line text. It will not allow the content to overflow vertically.
+This is because users should be able to see all page content without needing to scroll.
 
-## How to use
-
-In order to be accessible the scrollable pane must have a `role` of `region` and `tabindex="0"`. This
-allows it to be focused using the keyboard and scrolled using the arrow keys.
-All focusable elements need an accessible name, so you must also add an `aria-label`
-or `aria-labelledby` attribute.
+Do not use this component on tables with data on multi lines. The component will not allow the content to overflow vertically.
