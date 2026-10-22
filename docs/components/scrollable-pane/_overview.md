@@ -11,7 +11,7 @@ eleventyComputed:
 
 Use the scrollable pane component for content that is unavoidably overflowing on the page. 
 
-It allows users to scroll horizontally to view content that is wider than the visible area. Shadows at the edges show that there's more content. 
+It allows users to scroll horizontally to view content that is wider than the visible area. Shadows at the edges signal that there's more content. 
 
 ## When to use
 
