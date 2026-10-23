@@ -76,7 +76,7 @@
   display: block;
   margin-top: 0;
   margin-bottom: govuk-px-to-rem(5px);
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
   @include govuk-font-size($size: 24);
   @include govuk-typography-weight-bold;
 
