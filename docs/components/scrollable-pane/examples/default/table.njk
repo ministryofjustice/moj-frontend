@@ -1,0 +1,84 @@
+{%- from "govuk/components/table/macro.njk" import govukTable -%}
+
+{% macro tableHTML() %}
+  {{ govukTable({
+    caption: "HMCTS management information, July to October 2025",
+    head: [
+      { text: "Month" },
+      { text: "Civil claims received" },
+      { text: "Civil defences" },
+      { text: "Small claims referred to mediation" },
+      { text: "Small claims mediations" },
+      { text: "Small claims settled" },
+      { text: "Small claims settled at mediation (%)" },
+      { text: "Private family law receipts" },
+      { text: "Private family law disposals" },
+      { text: "Private family law open caseload" },
+      { text: "Public family law receipts" },
+      { text: "Public family law disposals" },
+      { text: "Public family law open caseload" }
+    ],
+    rows: [
+      [
+        { text: "July 2025" },
+        { text: "180271" },
+        { text: "26217" },
+        { text: "7683" },
+        { text: "5339" },
+        { text: "1585" },
+        { text: "29.7" },
+        { text: "5251" },
+        { text: "4382" },
+        { text: "36631" },
+        { text: "1588" },
+        { text: "1468" },
+        { text: "10021" }
+      ],
+      [
+        { text: "August 2025" },
+        { text: "145848" },
+        { text: "24945" },
+        { text: "6580" },
+        { text: "4579" },
+        { text: "1433" },
+        { text: "31.3" },
+        { text: "4612" },
+        { text: "3609" },
+        { text: "36922" },
+        { text: "1273" },
+        { text: "1186" },
+        { text: "10105" }
+      ],
+      [
+        { text: "September 2025" },
+        { text: "150357" },
+        { text: "23587" },
+        { text: "8936" },
+        { text: "5617" },
+        { text: "1691" },
+        { text: "30.1" },
+        { text: "5289" },
+        { text: "3986" },
+        { text: "37374" },
+        { text: "1286" },
+        { text: "1382" },
+        { text: "10004" }
+      ],
+      [
+        { text: "October 2025" },
+        { text: "162618" },
+        { text: "23366" },
+        { text: "10662" },
+        { text: "6201" },
+        { text: "1731" },
+        { text: "27.9" },
+        { text: "5219" },
+        { text: "4118" },
+        { text: "37770" },
+        { text: "1500" },
+        { text: "1397" },
+        { text: "10064" }
+      ]
+    ]
+  }) }}
+{% endmacro %}
