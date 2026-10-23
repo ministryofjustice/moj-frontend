@@ -1,0 +1,99 @@
+{%- from "govuk/components/table/macro.njk" import govukTable -%}
+
+{% macro tableHTML() %}
+  {{ govukTable({
+    caption: "HMCTS management information, July to October 2025",
+    head: [
+      { text: "Month" },
+      { text: "Civil Claims received" },
+      { text: "Civil Defences" },
+      { text: "Civil timeliness" },
+      { text: "Small claims referred to mediation" },
+      { text: "Small claims mediations" },
+      { text: "Small claims settled" },
+      { text: "Small claims settled at mediation (%)" },
+      { text: "Private Family Law Receipts" },
+      { text: "Private Family Law Disposals" },
+      { text: "Private Family Law Open Caseload" },
+      { text: "Private Family Law timeliness" },
+      { text: "Public Family Law Receipts" },
+      { text: "Public Family Law Disposals" },
+      { text: "Public Family Law Open Caseload" },
+      { text: "Public Family Law timeliness" }
+    ],
+    rows: [
+      [
+        { text: "July 25" },
+        { text: "180271" },
+        { text: "26217" },
+        { text: "48.6" },
+        { text: "7683" },
+        { text: "5339" },
+        { text: "1585" },
+        { text: "29.7" },
+        { text: "5251" },
+        { text: "4382" },
+        { text: "36631" },
+        { text: "36" },
+        { text: "1588" },
+        { text: "1468" },
+        { text: "10021" },
+        { text: "33.2" }
+      ],
+      [
+        { text: "August 25" },
+        { text: "145848" },
+        { text: "24945" },
+        { text: "49.8" },
+        { text: "6580" },
+        { text: "4579" },
+        { text: "1433" },
+        { text: "31.3" },
+        { text: "4612" },
+        { text: "3609" },
+        { text: "36922" },
+        { text: "34.1" },
+        { text: "1273" },
+        { text: "1186" },
+        { text: "10105" },
+        { text: "30.8" }
+      ],
+      [
+        { text: "September 25" },
+        { text: "150357" },
+        { text: "23587" },
+        { text: "50.3" },
+        { text: "8936" },
+        { text: "5617" },
+        { text: "1691" },
+        { text: "30.1" },
+        { text: "5289" },
+        { text: "3986" },
+        { text: "37374" },
+        { text: "37" },
+        { text: "1286" },
+        { text: "1382" },
+        { text: "10004" },
+        { text: "32.3" }
+      ],
+      [
+        { text: "October 25" },
+        { text: "162618" },
+        { text: "23366" },
+        { text: "47.1" },
+        { text: "10662" },
+        { text: "6201" },
+        { text: "1731" },
+        { text: "27.9" },
+        { text: "5219" },
+        { text: "4118" },
+        { text: "37770" },
+        { text: "35.7" },
+        { text: "1500" },
+        { text: "1397" },
+        { text: "10064" },
+        { text: "32.1" }
+      ]
+    ]
+  }) }}
+{% endmacro %}
