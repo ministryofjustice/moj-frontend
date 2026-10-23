@@ -60,7 +60,7 @@ After:
 );
 
 // Configure moj-frontend (the internal use of govuk-frontend will use
-the settings from the @forward rule above)
+// the settings from the @forward rule above)
 @forward "node_modules/@ministryofjustice/frontend/moj/all" with (
   $moj-page-width: 1200px
 );

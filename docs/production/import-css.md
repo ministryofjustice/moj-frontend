@@ -88,6 +88,7 @@ For example, using the Sass compiler:
 compile('src/stylesheets/application.scss', {
   loadPaths: [
     '.',
+    'node_modules',
     'node_modules/@ministryofjustice/frontend',
     'node_modules/govuk-frontend/dist',
   ],
