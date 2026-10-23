@@ -1,5 +1,6 @@
 const mockSendEmail = jest.fn()
 const mockPrepareUpload = jest.fn().mockReturnValue('mockFileUrl')
+const mockCaptureException = jest.fn()
 
 const mockConfigDefaults = {
   NOTIFY_SUBMISSION_TEMPLATE: 'mock-submission-template',
@@ -14,6 +15,10 @@ const mockConfigDefaults = {
 }
 
 jest.mock('../config', () => ({ ...mockConfigDefaults }))
+
+jest.mock('@sentry/node', () => ({
+  captureException: mockCaptureException
+}))
 
 jest.mock('notifications-node-client', () => {
   return {

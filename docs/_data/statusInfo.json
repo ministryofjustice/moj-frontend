@@ -11,7 +11,7 @@
   },
   "Experimental": {
     "link": "How to use ‘experimental’ {{ types }}",
-    "linkContent": "You can use ‘experimental’ {{ type }} in alpha and beta phases. They can also be used an idea or starting point for a design.",
+    "linkContent": "You can use ‘experimental’ {{ type }} in alpha and beta phases. They can also be used as an idea or starting point for a design.",
     "statusAction": "Added"
   },
   "Archived": {
