@@ -1,0 +1,4 @@
+.govuk-table__cell {
+  min-width: 128px;
+  white-space: nowrap;
+}
