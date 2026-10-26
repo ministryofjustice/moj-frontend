@@ -63,8 +63,8 @@ The accordion will use a generic font until you get the font and images working,
 There are also different ways you can [import CSS](/production/import-css/), including into your project's main Sass file:
 
 ```scss
-@use "node_modules/govuk-frontend/dist/govuk" as *;
-@forward "node_modules/@ministryofjustice/frontend/moj/all";
+@use "govuk-frontend/dist/govuk" as *;
+@forward "@ministryofjustice/frontend/moj/all";
 ```
 
 ### Get the font and images working

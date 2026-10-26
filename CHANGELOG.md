@@ -1,3 +1,79 @@
+# [12.0.0-beta.2](https://github.com/ministryofjustice/moj-frontend/compare/v12.0.0-beta.1...v12.0.0-beta.2) (2026-09-30)
+
+
+### Bug Fixes
+
+* default to moj-assets-path to govuk-assets-path unless it is set ([231f5c9](https://github.com/ministryofjustice/moj-frontend/commit/231f5c94aa3678696065d2a0d1f1796df4a40794))
+
+
+### Features
+
+* remove node_modules from govuk-frontend url within moj-frontend src ([26e80c6](https://github.com/ministryofjustice/moj-frontend/commit/26e80c64652b151d204f109efd733fc4270818f4))
+
+
+### BREAKING CHANGES
+
+* The url for govuk-frontend within the moj-frontend src now does not include `node_modules`.
+
+You must add node_modules to your Sass load paths, by either:
+
+* calling the Sass compiler from the command line with the `--load-path node_modules` flag
+* using the JavaScript API with `loadPaths: ['node_modules']` in the options object
+
+# [12.0.0-beta.1](https://github.com/ministryofjustice/moj-frontend/compare/v11.2.0-beta.1...v12.0.0-beta.1) (2026-09-29)
+
+
+### Bug Fixes
+
+* reinstate the vendor/govuk-frontend file as it is used across moj-frontend ([90e6832](https://github.com/ministryofjustice/moj-frontend/commit/90e6832c39c02415fdaa1b610ae5ed1e447ec32b))
+
+
+### Features
+
+* allow moj-frontend to inherit $govuk-page-width with an override ([47b4f80](https://github.com/ministryofjustice/moj-frontend/commit/47b4f8067db2e6a41853bc32dace75560127c5ce))
+* move govuk config outside moj-frontend ([2ea91af](https://github.com/ministryofjustice/moj-frontend/commit/2ea91af8940cae1530c747b424e6eed0d1059097))
+
+
+### BREAKING CHANGES
+
+* govuk config has been moved out of the moj-frontend
+library.  Govuk-frontend must be configured with @use/@forward
+**before** moj-frontend is included via @use/@forward.
+
+Before:
+```
+@forward "node_modules/@ministryofjustice/frontend/moj/all" with (
+  $moj-page-width: 1200px,
+  $moj-include-default-font-face: true,
+  $moj-global-styles: true
+
+)
+@forward "node_modules/govuk-frontend/dist/govuk";
+```
+After:
+```
+// configure govuk-frontend first
+@forward "node_modules/govuk-frontend/dist/govuk" with (
+  $govuk-page-width: 1200px,
+  $govuk-include-default-font-face: true,
+  $govuk-global-styles: true
+);
+
+// Configure moj-frontend (the internal use of govuk-frontend will use
+// the settings from the @forward rule above)
+@forward "node_modules/@ministryofjustice/frontend/moj/all" with (
+  $moj-page-width: 1200px
+);
+```
+
+# [11.2.0-beta.1](https://github.com/ministryofjustice/moj-frontend/compare/v11.1.0...v11.2.0-beta.1) (2026-09-24)
+
+
+### Features
+
+* update to govuk-frontend v6.2.0 ([ebefdad](https://github.com/ministryofjustice/moj-frontend/commit/ebefdadd1b23f34365e1544ee3a5e3380b215a78))
+* wip ([ec420d5](https://github.com/ministryofjustice/moj-frontend/commit/ec420d55ca8aa05b25c2095d38f87bf4a0598e54))
+
 # [11.1.0](https://github.com/ministryofjustice/moj-frontend/compare/v11.0.1...v11.1.0) (2026-09-17)
 
 

@@ -45,14 +45,14 @@ jobs:
       - name: Check compilation
         run: |
           mkdir -p .tmp
-          time sass src/moj/all.scss --load-path . > .tmp/check.css
+          time sass src/moj/all.scss --load-path . --load-path node_modules > .tmp/check.css
 
       - name: Check load paths
         run: |
           mkdir -p .tmp
-          time sh -c 'echo "@import "\""moj/all"\"";" | sass --stdin --load-path . --load-path src > .tmp/check1.css'
-          time sh -c 'echo "@forward "\""moj/all"\"";" | sass --stdin --load-path . --load-path src > .tmp/check2.css'
-          time sh -c 'echo "@use "\""moj/all"\"" as *;" | sass --stdin --load-path . --load-path src > .tmp/check3.css'
+          time sh -c 'echo "@import "\""moj/all"\"";" | sass --stdin --load-path . --load-path node_modules --load-path src > .tmp/check1.css'
+          time sh -c 'echo "@forward "\""moj/all"\"";" | sass --stdin --load-path . --load-path node_modules --load-path src > .tmp/check2.css'
+          time sh -c 'echo "@use "\""moj/all"\"" as *;" | sass --stdin --load-path . --load-path node_modules --load-path src > .tmp/check3.css'
 
       # Check output for uncompiled Sass
       - name: Check output
