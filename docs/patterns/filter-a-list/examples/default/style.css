@@ -1,0 +1,4 @@
+.govuk-table__cell,
+.govuk-table__header {
+  white-space: nowrap;
+}
