@@ -1,0 +1,34 @@
+@use "govuk-frontend/dist/govuk" as govuk;
+.moj-highlight {
+  display: inline;
+  padding: 0;
+  line-height: inherit;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+/*
+* AI suggestion
+*/
+.moj-highlight--ai-suggestion {
+  background: govuk.govuk-colour(
+    "blue",
+    $variant: "tint-80"
+  );
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: govuk.govuk-colour("blue");
+  text-decoration-skip-ink: auto;
+}
+/*
+* Redaction
+*/
+.moj-highlight--redaction {
+  background: govuk.govuk-colour(
+    "orange",
+    $variant: "tint-80"
+  );
+  border-top: 2px solid govuk.govuk-colour("orange");
+  border-right: 0;
+  border-bottom: 2px solid govuk.govuk-colour("orange");
+  border-left: 0;
+}
