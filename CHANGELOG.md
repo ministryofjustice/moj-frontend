@@ -1,3 +1,72 @@
+# [12.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v11.1.0...v12.0.0) (2026-10-27)
+
+
+### Features
+
+* add nunjucks macro for scrollable pane ([#2709](https://github.com/ministryofjustice/moj-frontend/issues/2709)) ([e5e64a1](https://github.com/ministryofjustice/moj-frontend/commit/e5e64a143cc2b57ebecd67be7cc91c2f75701e1b))
+* sass updates for govuk frontend compatibility ([#2728](https://github.com/ministryofjustice/moj-frontend/issues/2728)) ([42b61c2](https://github.com/ministryofjustice/moj-frontend/commit/42b61c201d7ca89480f40e7b57cf8ecf1b7598aa))
+
+
+### BREAKING CHANGES
+
+* The sass file has moved within the package.  If you are using the styles individually you will need to update the `@import` or `@use` statement in your application stylesheet.
+
+You should switch to use the new nunjucks macro if you can.  If you are not using nunjucks in your service and using the component with html, you must ensure the component has a `role` of `region`, a `tabindex` attribute, and either an `aria-label` or `aria-labelledby` attribute.  Without these attributes the scrollable pane won’t work.  This is to ensure that the scrollable area is accessible for screenreader and keyboard users.
+
+The scrollable pane no longer forces `white-space: nowrap` on table cell content at smaller screen sizes, as this could cause issues with longer content being forced onto a single line. You are now responsible for your table layout within the scrollable container and may need to adjust your css accordingly.
+* The url for govuk-frontend within the moj-frontend src now does not
+include `node_modules`. You must add node_modules to your Sass load
+paths, by either:
+
+* calling the Sass compiler from the command line with the `--load-path
+node_modules` flag
+* using the JavaScript API with `loadPaths: ['node_modules']` in the
+options object
+
+MOJ Frontend no longer configures GOV.UK Frontend internally.
+Applications must configure GOV.UK Frontend directly **before** loading
+MOJ Frontend.
+
+MOJ Frontend will inherit `$govuk-page-width`, `$govuk-gutter`,
+`$govuk-assets-path` by default. These can all be overridden by using
+the equivalent moj-prefixed variable name.
+
+**Before**
+'moj-' prefixed variables proxied into govuk-frontend config within the
+package.
+```
+@forward "node_modules/@ministryofjustice/frontend/moj/all" with (
+  $moj-assets-path: "/assets/",
+  $moj-page-width: 1200px,
+  $moj-include-default-font-face: true
+);
+
+@forward "node_modules/govuk-frontend/dist/govuk";
+```
+
+**After**
+Configure GOV.UK Frontend first. MOJ Frontend will then use this config
+when it includes govuk-frontend in `@use` or `@forward` declarations
+
+```
+@forward "node_modules/govuk-frontend/dist/govuk" with (
+  $govuk-assets-path: "/assets/",
+  $govuk-page-width: 1200px,
+  $govuk-include-default-font-face: true,
+  $govuk-global-styles: true
+);
+
+// MOJ inherits GOV.UK page width and gutter by default
+@forward "node_modules/@ministryofjustice/frontend/moj/all";
+```
+
+To use a different MOJ container width:
+```
+@forward "node_modules/@ministryofjustice/frontend/moj/all" with (
+  $moj-page-width: 1400px
+);
+```
+
 # [12.0.0-beta.2](https://github.com/ministryofjustice/moj-frontend/compare/v12.0.0-beta.1...v12.0.0-beta.2) (2026-09-30)
 
 
