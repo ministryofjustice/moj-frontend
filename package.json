@@ -177,7 +177,7 @@
     "rollup": "^4.65.0",
     "sass-embedded": "^1.106.1",
     "semantic-release": "^25.0.5",
-    "sharp": "^0.35.3",
+    "sharp": "^0.35.5",
     "sinon": "^22.1.0",
     "string": "3.3.3",
     "stylelint": "^17.16.0",
