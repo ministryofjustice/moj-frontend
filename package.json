@@ -129,7 +129,7 @@
     "autoprefixer": "^10.6.1",
     "babel-jest": "30.5.2",
     "clipboard": "^2.0.11",
-    "concurrently": "^10.0.5",
+    "concurrently": "^10.0.6",
     "cssnano": "^8.0.10",
     "cz-git": "1.13.1",
     "dayjs": "^1.11.23",
