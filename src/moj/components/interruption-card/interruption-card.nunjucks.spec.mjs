@@ -1,33 +1,6 @@
 import { getByRole, queryByRole } from '@testing-library/dom'
-import nunjucks from 'nunjucks'
 
-import { getExamples } from '../../lib/components.js'
-
-// The interruption card macro is named `interruptionCard` rather than
-// `mojInterruptionCard`, so it doesn't follow the naming convention assumed
-// by the shared `render()` helper in ../../lib/components.js. A local
-// Nunjucks environment and render helper are used here instead, mirroring
-// the behaviour of the shared helper (including `callBlock` support).
-const env = nunjucks.configure(['src', 'node_modules/govuk-frontend/dist/'], {
-  trimBlocks: true,
-  lstripBlocks: true
-})
-
-/**
- * Renders the interruption card macro with the given fixture.
- *
- * @param {object} example - Example options from getExamples()
- * @returns {string} Rendered HTML
- */
-function render(example) {
-  const paramsFormatted = JSON.stringify(example.context ?? {}, undefined, 2)
-  const macroPath = 'moj/components/interruption-card/macro.njk'
-  const callBlock = example.fixture?.callBlock ?? ''
-
-  const macroString = `{%- from "${macroPath}" import interruptionCard -%}{%- call interruptionCard(${paramsFormatted}) -%}${callBlock}{%- endcall -%}`
-
-  return env.renderString(macroString, {})
-}
+import { render, getExamples } from '../../lib/components.js'
 
 /**
  * Renders a named interruption card fixture into the document body.
@@ -36,7 +9,13 @@ function render(example) {
  * @returns {HTMLElement} The root component element
  */
 function renderExample(example) {
-  document.body.insertAdjacentHTML('afterbegin', render(example))
+  document.body.insertAdjacentHTML(
+    'afterbegin',
+    render('interruption-card', {
+      context: example.context,
+      callBlock: example.fixture?.callBlock
+    })
+  )
 
   return /** @type {HTMLElement} */ (
     document.querySelector('.moj-interruption-card')
