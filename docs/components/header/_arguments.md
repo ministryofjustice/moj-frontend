@@ -13,14 +13,14 @@
 
 | Name | Type   | Required | Description                                                                                                         |
 | ---- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------- |
-| text | string | Yes      | Header title that is placed next to the crest. Used for organisation names (e.g., CICA, HMCTS, HMPPS, LAA and OPG). |
+| text | string | Yes      | Header title that is placed next to the crest. Used for organisation names (for example CICA, HMCTS, HMPPS, LAA and OPG). |
 | href | string | Yes      | URL for the organisation name anchor.                                                                               |
 
 ### serviceLabel
 
 | Name | Type   | Required | Description                                                                                                                                            |
 | ---- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| text | string | Yes      | Header title that is placed next to the organisation name. Used for service names (e.g., Claim fees for Crown court defence; Send money to prisoners). |
+| text | string | Yes      | Header title that is placed next to the organisation name. Used for service names. |
 | href | string | Yes      | URL for the service name anchor.                                                                                                                       |
 
 ### Navigation

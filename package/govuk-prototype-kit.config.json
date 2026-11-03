@@ -42,7 +42,7 @@
     },
     {
       "importFrom": "moj/components/header/macro.njk",
-      "macroName": "mojHeader"
+      "macroName": "Header"
     },
     {
       "importFrom": "moj/components/identity-bar/macro.njk",
