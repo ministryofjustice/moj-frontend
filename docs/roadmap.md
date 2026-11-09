@@ -43,7 +43,7 @@ We've added 3 new building blocks:
 The team is now:
 
 - finishing off a joint discovery into the [MOJ header component](/components/moj-header/) and [primary navigation component](/components/primary-navigation/)
-- preparing for interviews on the [filter component](/components/filter/) -- [contact the team to get involved](/help/)
+- preparing for research interviews on the [filter component](/components/filter/) -- [contact the team to get involved](/help/)
 
 <hr>
 
