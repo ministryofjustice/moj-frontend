@@ -42,7 +42,6 @@ We've added 3 new building blocks:
  
 The team is now:
 
-- exploring designs to help PDS users identify people on probation in services
 - finishing off a joint discovery into the [MOJ header component](/components/moj-header/) and [primary navigation component](/components/primary-navigation/)
 - preparing for interviews on the [filter component](/components/filter/) -- [contact the team to get involved](/help/)
 
@@ -51,8 +50,8 @@ The team is now:
 ## Coming up next
 
 Next, the team will be:
-
-- looking at a more consistent way for users of PDS services to get support and escalate problems
+ 
+- helping users identify the correct person across probation services
 - identifying the changes needed to bring the filter component to 'official' status
 
 <hr>
