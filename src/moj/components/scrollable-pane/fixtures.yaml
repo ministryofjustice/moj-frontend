@@ -1,0 +1,76 @@
+examples:
+  - name: with html
+    options:
+      label: Rainfall measurements
+      html: '<p>Rainfall measurements <strong>by station</strong>.</p>'
+
+  - name: with html and call block
+    options:
+      label: Rainfall measurements
+      html: '<p>HTML parameter content.</p>'
+    callBlock: |
+      <p>Call block content.</p>
+
+  - name: without content
+    options:
+      label: Rainfall measurements
+
+  - name: default
+    options:
+      label: Historic rainfall in June
+    callBlock: |
+      <table>
+        <caption>Historic rainfall in June</caption>
+        <tr><th scope="col">Station</th><th scope="col">2022</th></tr>
+        <tr><th scope="row">Lerwick</th><td>13.7mm</td></tr>
+      </table>
+
+  - name: with labelled by
+    options:
+      labelledBy: pane-heading
+    callBlock: |
+      <h2 id="pane-heading">Historic rainfall in June</h2>
+      <p>Rainfall measurements by station.</p>
+
+  - name: with label and labelled by
+    options:
+      label: Rainfall measurements
+      labelledBy: pane-heading
+    callBlock: |
+      <h2 id="pane-heading">Historic rainfall in June</h2>
+
+  - name: without label
+    options: {}
+    callBlock: |
+      <p>Rainfall measurements by station.</p>
+
+  - name: with empty labels
+    options:
+      label: ''
+      labelledBy: ''
+    callBlock: |
+      <p>Rainfall measurements by station.</p>
+
+  - name: with classes
+    options:
+      label: Rainfall measurements
+      classes: custom-pane-class another-pane-class
+    callBlock: |
+      <p>Rainfall measurements by station.</p>
+
+  - name: with attributes
+    options:
+      label: Rainfall measurements
+      attributes:
+        id: rainfall-pane
+        data-custom: custom-value
+    callBlock: |
+      <p>Rainfall measurements by station.</p>
+
+  - name: with special characters
+    options:
+      label: 'Rainfall "measurements" <by station> & year'
+      attributes:
+        data-custom: 'A "quoted" value <with markup> & symbols'
+    callBlock: |
+      <p>Rainfall measurements by station.</p>

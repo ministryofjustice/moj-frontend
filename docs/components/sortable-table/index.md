@@ -16,3 +16,7 @@ Use this component when sorting is needed to help find data within a large table
 ## How to use
 
 If you are using [Nunjucks](https://mozilla.github.io/nunjucks/) or the [GOV.UK Prototype Kit](https://govuk-prototype-kit.herokuapp.com/), you can use the Nunjucks [table macro](https://design-system.service.gov.uk/components/table/).
+
+### Similar and linked components
+
+You can use the sortable table with the [scrollable pane component](/components/scrollable-pane/) if the content unavoidably overflows the page. 

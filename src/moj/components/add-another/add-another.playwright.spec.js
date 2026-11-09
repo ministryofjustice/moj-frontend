@@ -34,7 +34,7 @@ test.describe('add another', () => {
       'AddAnother'
     )
     componentStyles = compile(path.join(__dirname, '_add-another.scss'), {
-      loadPaths: [path.join(__dirname, '../../../../')],
+      loadPaths: [path.join(__dirname, '../../../../node_modules')],
       quietDeps: true
     }).css
   })

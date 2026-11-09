@@ -86,7 +86,7 @@
     border-spacing: 0;
     border-collapse: collapse;
     @include govuk-font($size: 19);
-    @include govuk-text-colour;
+    color: govuk-functional-colour(text);
     @include govuk-responsive-margin(6, "bottom");
   }
 
@@ -156,6 +156,7 @@ code {
   border: 1px solid govuk-tint($govuk-border-colour, 50);
   background-color: govuk-colour("white");
   @include govuk-font-size($size: 16);
+
   @include govuk-media-query($from: tablet) {
     padding: 2px 4px;
   }

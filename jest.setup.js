@@ -1,7 +1,12 @@
+const { TextDecoder, TextEncoder } = require('util')
+
 require('@testing-library/jest-dom')
 require('mock-match-media/jest-setup')
 
 const { toHaveNoViolations } = require('jest-axe')
+
+global.TextDecoder = TextDecoder
+global.TextEncoder = TextEncoder
 
 expect.extend(toHaveNoViolations)
 
