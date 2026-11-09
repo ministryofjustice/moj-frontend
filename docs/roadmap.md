@@ -9,7 +9,7 @@ eleventyNavigation:
   order: 40
 ---
 
-<b>Last updated: 30 September 2026</b>
+<b>Last updated: 9 November 2026</b>
 
 This roadmap shows what we're working on and planning to do next. It's not fixed -- our plans might change as we learn more, respond to feedback, or adjust priorities. 
 
@@ -27,6 +27,7 @@ We've made content clearer on [building block statuses](/design-system-statuses/
 
 We released improvements to the following components, taking them from 'to be reviewed' to 'official' status:
 
+- [scrollable pane component](/components/scrollable-pane/) 
 - ['add another' component](/components/add-another/)
 - [search component](/components/search/)
 
@@ -42,8 +43,8 @@ We've added 3 new building blocks:
 The team is now:
 
 - exploring designs to help PDS users identify people on probation in services
-- carrying out a joint discovery into the [MOJ header component](/components/moj-header/) and [primary navigation component](/components/primary-navigation/)
-- preparing for research on the [filter component](/components/filter/) -- [contact the team to get involved](/help/)
+- finishing off a joint discovery into the [MOJ header component](/components/moj-header/) and [primary navigation component](/components/primary-navigation/)
+- preparing for interviews on the [filter component](/components/filter/) -- [contact the team to get involved](/help/)
 
 <hr>
 
@@ -52,7 +53,7 @@ The team is now:
 Next, the team will be:
 
 - looking at a more consistent way for users of PDS services to get support and escalate problems
-- releasing an improvement to the [scrollable pane component](/components/scrollable-pane)
+- identifying the changes needed to bring the filter component to 'official' status
 
 <hr>
 
