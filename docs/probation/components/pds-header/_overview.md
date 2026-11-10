@@ -27,8 +27,8 @@ The header displays the:
 
 - platform name ('Probation Digital Services')
 - work location, for example 'North Wales PDU'
-- account menu (where users access their account details, and sign in or out)
-- global navigation menu (with links to probation services the user has access to)
+- account menu, where users access their account details, and sign in or out
+- global navigation menu, with links to probation services the user has access to
 
 
 ### When to use
