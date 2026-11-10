@@ -13,7 +13,7 @@ Do not add your service name to the header. It should only contain ‘Probation 
 
 Add your service name to the main navigation component. It should also be added to the breadcrumbs component, if used.
 
-See the [probation page template](https://design-patterns.service.justice.gov.uk/probation/styles/pds-page-template/) for more guidance on adding your service name to the navigation.
+See the [probation page template](https://design-patterns.service.justice.gov.uk/probation/styles/pds-page-template/) for more guidance on adding your service name to the navigation.
 
 ### Links
 
