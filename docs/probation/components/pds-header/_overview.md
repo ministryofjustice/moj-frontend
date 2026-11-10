@@ -41,4 +41,4 @@ Do not use this component in:
 - MOJ services not on the Probation Digital Services platform – use the [MOJ header component](/components/moj-header)
 - Digital Prison Services (DPS) – use the DPS header component
 
-View the DPS header component in Figma.
+View the [DPS header component](https://www.figma.com/design/DhGdok6Nx5UKK9dAKZq6Ay/DPS--Prison--Figma-Kit?node-id=3316-752&t=J7aF1RqaiaGSZtdR-1) in Figma.
