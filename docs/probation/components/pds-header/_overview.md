@@ -25,10 +25,10 @@ The PDS header  allows users to access and navigate between services on the Prob
 
 The header displays the:
 
-- platform name ('Probation Digital Services')
-- account menu (where users access their account details, and sign in or out)
-- global navigation menu (with links to probation services the user has access to)
-- work location, for example 'North Wales PDU'
+* platform name ('Probation Digital Services')
+* account menu (where users access their account details, and sign in or out)
+* global navigation menu (with links to probation services the user has access to)
+* work location, for example 'North Wales PDU'
 
 ### When to use
 
