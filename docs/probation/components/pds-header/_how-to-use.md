@@ -27,7 +27,7 @@ MPoP is the Probation Digital Services homepage.
 The 'Account' text links to the 'Your account details' page on HMPPS Auth.
 
 ### Location
-The location (for example, North Wales PDU) is fixed  and cannot be changed by the user.
+The location (for example, 'North Wales PDU') is fixed  and cannot be changed by the user.
 
 The header fetches the location data from NDelius. If the data is not found, it will display 'location unavailable'.
 
