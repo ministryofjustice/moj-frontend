@@ -146,7 +146,7 @@
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.6.0",
     "github-actionlint": "1.7.12",
-    "glob": "^13.0.6",
+    "glob": "^14.0.0",
     "govuk-prototype-kit": "14.0.2",
     "gray-matter": "^4.0.3",
     "gulp": "^5.0.1",
