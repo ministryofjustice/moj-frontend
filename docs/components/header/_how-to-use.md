@@ -9,7 +9,9 @@ eleventyComputed:
 
 ## How to use
 
-Use the header for XYZ. 
+Add the header to the top of each page in your service. 
+
+You can view [guidance on choosing a header](/components/header/#overview-tab).
 
 ### Header contents 
 
@@ -17,17 +19,20 @@ The header contains the:
 
 - MOJ crest
 - organisation name
-- service name (in some cases)
-- user's account details
+- user account details
 - sign out link
+
+You can also add your service name to it. 
 
 #### MOJ crest
 
-The header features the MOJ crest. Do not replace it. 
+The MOJ crest is xxxx. Do not remove it, or replace it with another crown or crest. 
+
+You may add a link from the crest 
 
 #### Organisation name
 
-Add the short form of the service's organisation name to the header:
+Do not remove the organisation name from the header. Add the short form of the service's organisation name to the header:
 
 - HMPPS for HM Prisons and Probation Service
 - MOJ for Ministry of Justice
@@ -37,7 +42,15 @@ Add the short form of the service's organisation name to the header:
 
 #### Service name 
 
-Add the service name to the header or [GOV.UK service navigation](https://design-system.service.gov.uk/components/service-navigation/). Where you add it depends on XYZ. 
+The service name can be added to the header or the [GOV.UK service navigation](https://design-system.service.gov.uk/components/service-navigation/). 
+
+Where you add it depends on how much space you have and XX. 
+
+Example in the header with the service nav
+
+Example in the service nav
+
+
 
 #### User's account details  
 
