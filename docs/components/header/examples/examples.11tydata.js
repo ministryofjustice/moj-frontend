@@ -1,6 +1,6 @@
 export default {
   layout: 'layouts/example.njk',
-  arguments: 'moj-header',
+  arguments: 'header',
   eleventyComputed: {
     'override:eleventyNavigation': false
   }
