@@ -10,6 +10,8 @@ This component was archived because the [GOV.UK service navigation component](ht
 
 If you're using the primary navigation component you need to switch all instances of it to the GOV.UK service navigation component. This will give you accessibility and other improvements. 
 
+{% endbanner %}
+
 {% example template="examples/default", colocated=true, height=150 %}
 
 ## When to use
