@@ -58,7 +58,7 @@ Which header you service need depends on the:
         text: "Internal"
       },
       {
-        text: "[myservice].justice.service.gov.uk"
+        text: "\[myservice\].justice.service.gov.uk"
       },
       {
         text: "Any apart from DPS, LAA and Probation Digital Services"
@@ -72,13 +72,13 @@ Which header you service need depends on the:
         text: "Internal"
       },
       {
-        text: "[myservice].justice.service.gov.uk"
+        text: "\[myservice\].justice.service.gov.uk"
       },
       {
         text: "DPS"
       },
       {
-        text: "[DPS header (in Figma)](https://www.bbc.co.uk/news)"
+        text: "\[DPS header (in Figma)\](https://www.bbc.co.uk/news)"
       },
     ],
     [
@@ -86,7 +86,7 @@ Which header you service need depends on the:
         text: "Internal"
       },
       {
-        text: "[myservice].justice.service.gov.uk"
+        text: "\[myservice\].justice.service.gov.uk"
       },
       {
         text: "Any apart from DPS and Probation Digital Services"
@@ -100,13 +100,13 @@ Which header you service need depends on the:
         text: "Internal"
       },
       {
-        text: "[myservice].justice.service.gov.uk"
+        text: "\[myservice\].justice.service.gov.uk"
       },
       {
         text: "Legal Aid Agency (LAA)"
       },
       {
-        text: "[LAA header and navigation pattern (in Figma)](https://www.bbc.co.uk/news)"
+        text: "\[LAA header and navigation pattern (in Figma)\](https://www.bbc.co.uk/news)"
       }
     ],
        [
@@ -114,13 +114,13 @@ Which header you service need depends on the:
         text: "Public"
       },
       {
-        text: "gov.uk/[myservice] or [myservice].service.gov.uk"
+        text: "gov.uk/\[myservice\] or \[myservice\].service.gov.uk"
       },
       {
         text: "Any"
       },
       {
-        text: "[GOV.UK header](https://design-system.service.gov.uk/components/header/)"
+        text: "\[GOV.UK header\](https://design-system.service.gov.uk/components/header/)"
       }
     ],
   ]
