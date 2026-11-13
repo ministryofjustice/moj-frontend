@@ -109,7 +109,7 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^13.2.0",
     "@testing-library/dom": "^10.4.2",
-    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/user-event": "^14.6.8",
     "@types/clamscan": "^2.4.1",
     "@types/connect-redis": "^0.0.23",
