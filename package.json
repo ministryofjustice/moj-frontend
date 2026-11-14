@@ -93,7 +93,7 @@
     "@11ty/eleventy": "^3.1.8",
     "@11ty/eleventy-navigation": "^1.0.5",
     "@axe-core/playwright": "4.14.0",
-    "@babel/core": "^7.29.7",
+    "@babel/core": "^7.29.13",
     "@babel/preset-env": "^7.29.7",
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-conventional": "^21.2.4",
@@ -174,8 +174,8 @@
     "postcss-scss": "^4.0.9",
     "prettier": "^3.9.10",
     "require-dir": "^1.2.0",
-    "rollup": "^4.67.5",
-    "sass-embedded": "^1.107.1",
+    "rollup": "^4.68.0",
+    "sass-embedded": "^1.108.1",
     "semantic-release": "^25.0.9",
     "sharp": "^0.35.5",
     "sinon": "^22.1.0",
@@ -194,7 +194,7 @@
     }
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.67.5",
+    "@rollup/rollup-linux-x64-gnu": "^4.68.0",
     "sass-embedded-linux-x64": "^1.107.1"
   }
 }
