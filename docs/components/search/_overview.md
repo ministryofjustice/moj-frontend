@@ -38,7 +38,7 @@ Use this component to help users search a large amount of information for someth
 
 Users need to have at least 1 piece of identifying information, for example a reference number.
 
-This component can also be used in the [primary navigation component to search a whole service](https://design-patterns.service.justice.gov.uk/components/primary-navigation/).
+This component can also be used in the [GOV.UK service navigation component to search a whole service](https://design-system.service.gov.uk/components/service-navigation/).
 
 ### When not to use
 
@@ -61,5 +61,5 @@ Do research with users if you’re not sure how to help them find what they're l
 There’s also the:
 
 - [filter component](/components/filter/)
-- [primary navigation component](/components/primary-navigation/)
+- [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation/)
 - [sortable table component](/components/sortable-table/)

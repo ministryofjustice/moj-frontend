@@ -14,6 +14,7 @@ eleventyComputed:
 ## Overview
 
 ## Option 1
+
 The header component tells users that they're using an MOJ service.
 
 ## When to use
@@ -24,9 +25,9 @@ Use the header component on some MOJ services for internal users.
 
 Do not use this component on:
 
-- public-facing services -- use the [GOV.UK header](https://design-system.service.gov.uk/components/header/)
-- internal LAA services - use the [LAA header component (opens in Figma)](https://www.bbc.co.uk/news)
-- DPS -- use the [DPS header component (opens in Figma)](https://www.bbc.co.uk/news)
+- any MOJ public-facing service -- use the [GOV.UK header](https://design-system.service.gov.uk/components/header/)
+- internal Legal Aid Agency (LAA) services -- use the [LAA header component (opens in Figma)](https://www.bbc.co.uk/news)
+- DPS (Digital Prisons Services) -- use the [DPS header component (opens in Figma)](https://www.bbc.co.uk/news)
 - services on the Probation Digital Services (PDS) platform - use the [PDS header component](/probation/components/pds-header/)
 
 ## Choosing a header to use for your service
@@ -35,8 +36,8 @@ Every MOJ service needs a header, which should be used at the top of every page.
 
 Which header your service needs depends on the:
 
-- audience –- whether it's for MOJ staff (internal) or the public
-- domain –- for example `[myservice].service.gov.uk` or `[myservice].justice.service.gov.uk`
+- audience, whether it's an internal service for MOJ staff or the public
+- domain, for example `[myservice].service.gov.uk` or `[myservice].justice.service.gov.uk`
 - organisation or platform the service is a part of, for example DPS (Digital Prisons Services)
 
 {{ govukTable({
@@ -63,10 +64,10 @@ Which header your service needs depends on the:
         text: "[myservice].justice.service.gov.uk"
       },
       {
-        text: "Any apart from DPS, LAA and Probation Digital Services"
+        text: "Any apart from DPS, Legal Aid Agency, and Probation Digital Services"
       },
       {
-        text: "MOJ header"
+        text: "Header"
       }
     ],
     [

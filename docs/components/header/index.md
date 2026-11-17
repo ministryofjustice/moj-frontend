@@ -4,5 +4,5 @@ tabs: true
 tabCollection: header
 status: Official
 statusDate: November 2026
-excerpt: "Use the header component for internal services."
+excerpt: "The header component is at the top of every page, and tells users they're using an MOJ service."
 ---
