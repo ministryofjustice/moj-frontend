@@ -1,3 +1,10 @@
+## [12.0.1](https://github.com/ministryofjustice/moj-frontend/compare/v12.0.0...v12.0.1) (2026-11-17)
+
+
+### Bug Fixes
+
+* **footer template :** remove redundant 'contentinfo' role from footer. ([#2775](https://github.com/ministryofjustice/moj-frontend/issues/2775)) ([2269e02](https://github.com/ministryofjustice/moj-frontend/commit/2269e02db5cd864adc47d6ebb14dd942ff95efcc))
+
 # [12.0.0](https://github.com/ministryofjustice/moj-frontend/compare/v11.1.0...v12.0.0) (2026-10-27)
 
 
