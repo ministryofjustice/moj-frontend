@@ -24,7 +24,7 @@
   align-items: center;
   flex-wrap: nowrap;
   gap: govuk-spacing(2);
-  margin-right: auto;
+  /* margin-right: auto; */
   /* margin-top: govuk-spacing(3); */
   /* margin-bottom: govuk-spacing(3); */
 }
@@ -32,6 +32,30 @@
 .moj-header__logotype-crown,
 .moj-header__logotype-crest {
   flex-shrink: 0;
+}
+
+.moj-header__brand {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: govuk-spacing(2);
+  margin-right: auto;
+}
+
+.moj-header:has(.moj-header__link--service-name) .moj-header__link--organisation-name {
+  font-weight: bold;
+}
+
+.moj-header__service-name {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: govuk-spacing(2);
+}
+
+.moj-header__link--organisation-name,
+.moj-header__link--service-name {
+  @include govuk-font($size: 24);
 }
 
 .moj-header__content {
@@ -74,7 +98,7 @@
   &--organisation-name {
     @include govuk-font($size: 24);
     margin-block-start: 2px;
-    margin-inline-end: govuk-spacing(2);
+    /* margin-inline-end: govuk-spacing(2); */
 
     &:hover {
       /* border-color: transparent; */
@@ -128,7 +152,7 @@ span.moj-header__link {
   &:visited,
   &:active {
     color: inherit;
-    text-decoration: none;
+    /* text-decoration: none; */
   }
 
   &:hover {
@@ -143,4 +167,75 @@ span.moj-header__link {
 
 .moj-header__navigation-link[aria-current="page"] {
   text-decoration: none;
+}
+
+.moj-header--stacked {
+  .org-service-name {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+  }
+
+  .moj-header__logo {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 15px;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .moj-header__link--organisation-name,
+  .moj-header__link > a {
+    font-weight: 900;
+    font-size: 14px;
+  }
+
+  .moj-header__link--service-name {
+    font-size: 24px;
+  }
+
+  @media (min-width: 40.0625em) {
+    .moj-header__link--organisation-name,
+    .moj-header__link > a--organisation-name {
+      font-weight: 900;
+      font-size: 14px;
+    }
+  }
+}
+
+.moj-header__account {
+  @include govuk-font($size: 19);
+  color: govuk-colour("white");
+  text-align: right;
+}
+
+.moj-header__account-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: govuk-spacing(2);
+}
+
+.moj-header__account-link {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
+
+  &:link,
+  &:visited,
+  &:active {
+    color: inherit;
+  }
+
+  &:hover {
+    // stylelint-disable-next-line declaration-no-important
+    text-decoration: underline !important;
+  }
+
+  &:focus {
+    color: govuk-colour("black");
+  }
 }

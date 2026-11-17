@@ -1,4 +1,5 @@
 {% from "govuk/macros/attributes.njk" import govukAttributes %}
+{% from "govuk/components/tag/macro.njk" import govukTag %}
 
 {% set classNames = "moj-header " %}
 {% set containerClassNames = "moj-header__container " %}
@@ -53,9 +54,9 @@
 
 <header class="moj-header {{ classNames }}" role="banner" {{ govukAttributes(params.attributes) }}>
 <div class="moj-header__container {{ containerClassNames }}">
+  <div class="moj-header__brand">
     <div class="moj-header__logo">
       {{ logoSVG | safe }}
-      <span class="org-service-name">
       {%- if (params.organisationLabel) %}
         {% set organisationLabelElement = "span" %}
         {%- if (params.organisationLabel.href) %}
@@ -66,7 +67,8 @@
           {{- params.organisationLabel.html | safe if params.organisationLabel.html else params.organisationLabel.text -}}
         </{{organisationLabelElement}}>
       {% endif -%}
-
+    </div>
+    <div class="moj-header__service-name">
       {%- if (params.serviceLabel) %}
         {% set serviceLabelElement = "span" %}
         {%- if (params.serviceLabel.href) %}
@@ -78,34 +80,63 @@
         </{{serviceLabelElement}}>
       {% endif -%}
       </span>
-      {% if params.slots.afterOrganisationLabel %}
-        {{ params.slots.afterOrganisationLabel | safe }}
+      {% if params.tag %}
+        {{ govukTag(params.tag) }}
       {% endif %}
     </div>
+  </div>
 
-
-    {% if (params.navigation) %}
+    {% if (params.account.user or params.account.signOutLink) %}
       <div class="moj-header__content">
-        <nav class="moj-header__navigation {% if params.navigation.classes %} {{ params.navigation.classes }}{% endif %}" {% if (params.navigation.label) %} aria-label="{{ params.navigation.label }}" {% endif %} {{ govukAttributes(params.navigation.attributes) }}>
-          <ul class="moj-header__navigation-list">
-            <li class="moj-header__navigation-item">
-                joe.smith@justice.gov.uk<br>
-                <a class="moj-header__navigation-link govuk-body-s" href="#">
-                  Manage your details
+        <nav class="moj-header__account {% if params.account.classes %} {{ params.account.classes }}{% endif %}" {% if (params.account.label) %} aria-label="{{ params.account.label }}" {% endif %} {{ govukAttributes(params.account.attributes) }}>
+        {{ params.account.user.text }}
+        <ul class="moj-header__account-list">
+          {% if params.account.user and params.account.manageLink.href %}
+            <li class="moj-header__account-item">
+                <a class="moj-header__account-link " href="{{ params.account.manageLink.href }}">
+                  {{- params.account.manageLink.html | safe if params.account.mangeLink.html else params.account.manageLink.text | default('Manage your details') -}}
+                  </a>
+            </li>
+          {% endif %}
+          {% if params.account.signOutLink.href %}
+              <li class="moj-header__account-item">
+                <a class="moj-header__account-link" href="{{ params.account.signOutLink.href }}">
+                  {{- params.account.signOutLink.html | safe if params.account.signOutLink.html else params.account.signOutLink.text | default('Sign out') -}}
                 </a>
               </li>
-              <li class="moj-header__navigation-item">
-                <a class="moj-header__navigation-link" href="#">
-                  Sign out
-                </a>
-              </li>
+          {% endif %}
           </ul>
         </nav>
       </div>
     {% endif %}
-        {% if params.slots.end %}
+
+    {%- if params.navigation %}
+      <div class="moj-header__content">
+        <nav class="moj-header__navigation{% if params.navigation.classes %} {{ params.navigation.classes }}{% endif %}"{% if (params.navigation.label) %} aria-label="{{ params.navigation.label }}" {% endif %} {%- for attribute, value in params.navigation.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+          <ul class="moj-header__navigation-list">
+            {%- for item in params.navigation.items %}
+            <li class="moj-header__navigation-item">
+             {% if item.href %}
+                <a class="moj-header__navigation-link" href="{{ item.href }}" {{ 'aria-current="page"' | safe if item.active }} {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+                  {{- item.html | safe if item.html else item.text -}}
+                  </a>
+              {% else %}
+                <span class="">
+                  {{- item.html | safe if item.html else item.text -}}
+                </span>
+              {% endif %}
+              </li>
+            {% endfor -%}
+          </ul>
+        </nav>
+      </div>
+    {% endif -%}
+
+
+    {% if params.slots.end %}
       {{ params.slots.end | safe }}
     {% endif %}
+
     </div>
 
 </header>

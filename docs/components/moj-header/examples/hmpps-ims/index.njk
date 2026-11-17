@@ -1,0 +1,125 @@
+---
+layout: layouts/example.njk
+title: Header (example)
+---
+
+{%- from "moj/components/header/macro.njk" import mojHeader -%}
+{%- from "moj/components/header/macro-stacked.njk" import mojHeader as mojHeaderStacked -%}
+
+{{ mojHeader({
+  organisationLabel: {
+    text: "HMPPS",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "Intelligence Management Service",
+    href: "#"
+  },
+  tag: {
+    text: "Official sensitive",
+    classes: "govuk-tag--red"
+  },
+  navigation: {
+    label: "Account navigation",
+    items: [{
+      text: "R.Bennett"
+      }, {
+      text: "Manage your details",
+      href: "#"
+      },
+    {
+      text: "Sign out",
+      href: "#"
+    }]
+  }
+}) }}
+<br/>
+<br/>
+<br/>
+{{ mojHeader({
+  organisationLabel: {
+    text: "HMPPS",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "Intelligence Management Service",
+    href: "#"
+  },
+  tag: {
+    text: "Official sensitive",
+    classes: "govuk-tag--red"
+  },
+  account: {
+    user: {
+      text: "R.Bennett"
+    },
+    manageLink: {
+      text: "Manage your details",
+      href: "#"
+    },
+    signOutLink: {
+      text: "Sign out",
+      href: "#"
+    }
+  }
+}) }}
+<br/>
+<br/>
+<br/>
+{{ mojHeaderStacked({
+  organisationLabel: {
+    text: "HMPPS",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "Intelligence Management Service",
+    href: "#"
+  },
+  tag: {
+    text: "Official sensitive",
+    classes: "govuk-tag--red"
+  },
+  navigation: {
+    label: "Account navigation",
+    items: [{
+      text: "R.Bennett"
+      }, {
+      text: "Manage your details",
+      href: "#"
+      },
+    {
+      text: "Sign out",
+      href: "#"
+    }]
+  }
+}) }}
+<br/>
+<br/>
+<br/>
+{{ mojHeaderStacked({
+  organisationLabel: {
+    text: "HMPPS",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "Intelligence Management Service",
+    href: "#"
+  },
+  tag: {
+    text: "Official sensitive",
+    classes: "govuk-tag--red"
+  },
+  account: {
+    user: {
+      text: "R.Bennett"
+    },
+    manageLink: {
+      text: "Manage your details",
+      href: "#"
+    },
+    signOutLink: {
+      text: "Sign out",
+      href: "#"
+    }
+  }
+}) }}
