@@ -1,0 +1,13 @@
+body {
+  padding: 0 !important;
+}
+
+.moj-search {
+  margin-bottom: 0;
+}
+
+.moj-header__navigation-item {
+  &:first-child {
+    border-right: none;
+  }
+}

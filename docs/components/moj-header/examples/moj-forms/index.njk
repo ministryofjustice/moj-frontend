@@ -1,0 +1,35 @@
+---
+layout: layouts/example.njk
+title: Header (example)
+---
+
+{%- from "moj/components/header/macro.njk" import mojHeader -%}
+
+{{ mojHeader({
+  organisationLabel: {
+    text: "Ministry of Justice",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "MOJ Forms",
+    href: "#"
+  },
+  navigation: {
+    label: "Forms navigation",
+    items: [{
+      text: "Your Forms",
+      href: "#",
+      active: true
+      },{
+      text: "Support",
+      href: "#"
+      },{
+      text: "Feedback",
+      href: "#"
+      },
+      {
+      text: "Sign out R.Bennett",
+      href: "#"
+    }]
+  }
+}) }}

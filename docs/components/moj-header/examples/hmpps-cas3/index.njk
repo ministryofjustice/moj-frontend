@@ -1,0 +1,95 @@
+---
+layout: layouts/example.njk
+title: Header (example)
+---
+
+{%- from "moj/components/header/macro.njk" import mojHeader -%}
+{%- from "moj/components/header/macro-stacked.njk" import mojHeader as mojHeaderStacked -%}
+{%- from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation -%}
+
+{{ mojHeader({
+  organisationLabel: {
+    text: "HMPPS",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "CAS3 - Transitional Accommodation",
+    href: "#"
+  },
+  navigation: {
+    label: "Account navigation",
+    items: [{
+      text: "R.Bennett"
+      }, {
+      text: "Manage your details",
+      href: "#"
+      },
+    {
+      text: "Sign out",
+      href: "#"
+    }]
+  }
+}) }}
+{{ govukServiceNavigation({
+  navigation: [{
+    text: "Bookings",
+    href: "#"
+  }, {
+    text: "Manage Properties",
+    href: "#"
+  }, {
+    text: "Referrals",
+    href: "#"
+  }, {
+    text: "Search bedspaces",
+    href: "#"
+  }, {
+    text: "Reports",
+    href: "#"
+  }]
+}) }}
+<br/>
+<br/>
+<br/>
+{{ mojHeader({
+  organisationLabel: {
+    text: "HMPPS",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "CAS3 - Transitional Accommodation",
+    href: "#"
+  },
+  account: {
+    user: {
+      text: "R.Bennett"
+    },
+    manageLink: {
+      text: "Manage your details",
+      href: "#"
+    },
+    signOutLink: {
+      text: "Sign out",
+      href: "#"
+    }
+  }
+}) }}
+{{ govukServiceNavigation({
+  navigation: [{
+    text: "Bookings",
+    href: "#"
+  }, {
+    text: "Manage Properties",
+    href: "#"
+  }, {
+    text: "Referrals",
+    href: "#"
+  }, {
+    text: "Search bedspaces",
+    href: "#"
+  }, {
+    text: "Reports",
+    href: "#"
+  }]
+}) }}
+

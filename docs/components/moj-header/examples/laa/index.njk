@@ -1,0 +1,22 @@
+---
+layout: layouts/example.njk
+title: Header (example)
+---
+
+{%- from "moj/components/header/macro.njk" import mojHeader -%}
+
+{{ mojHeader({
+  organisationLabel: {
+    text: "Legal Aid Agency",
+    href: "#"
+  },
+  navigation: {
+    label: "Account navigation",
+    items: [{
+      text: "MCC.UCD-manage-your-civil-cases-provider2-test@dev.justice.gov.uk"
+    }, {
+      text: "Sign out",
+      href: "#"
+    }]
+  }
+}) }}
