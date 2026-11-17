@@ -15,53 +15,53 @@ You can view [guidance on choosing a header](/components/header/#overview-tab).
 
 ### Header contents 
 
+Screenshot example 
+
 The header contains the:
 
-- MOJ crest
+- crest
 - organisation name
-- user account details
-- sign out link
+- user account area
 
-You can also add your service name to it. 
+You can also add:
 
-#### MOJ crest
+- the service name  
+- a badge (for example to show a 'DEV' environment label)
 
-The MOJ crest is xxxx. Do not remove it, or replace it with another crown or crest. 
+#### Crest
 
-You may add a link from the crest 
+The crest is the government's Coat of Arms. You can read more about when the [Coat of Arms artwork was unveiled](https://www.gov.uk/government/news/new-coat-of-arms-artwork-unveiled). 
+
+Do not remove the crest, or replace it with another crown or crest. 
+
+You can add a link from the crest, for example to the homepage of your product, but you do not need to. Your users may expect it to be a link, depending on the type of product it is. Do user research if you're not sure. 
 
 #### Organisation name
 
-Do not remove the organisation name from the header. Add the short form of the service's organisation name to the header:
+Do not remove the organisation name from the header. 
 
-- HMPPS for HM Prisons and Probation Service
-- MOJ for Ministry of Justice
-- LAA for the Legal Aid Agency
-- OPG for Office of the Public Guardian 
-- CICA for Criminal Injuries Compensation Authority
+#### User account area
+
+The user account area includes the:
+
+- username (or email address)
+- `Manage your details` link (optional, if you have a page to link to)
+- sign out link
 
 #### Service name 
 
-The service name can be added to the header or the [GOV.UK service navigation](https://design-system.service.gov.uk/components/service-navigation/). 
+The service name can be added to the header or the [GOV.UK service navigation](https://design-system.service.gov.uk/components/service-navigation/). It used to be added to the primary navigation component, which was archived in November 2026. 
 
-Where you add it depends on how much space you have and XX. 
+Where you add it depends on how much space you have in both the header and primary navigation components. 
 
-Example in the header with the service nav
+#### Example of the service name in the header component 
 
-Example in the service nav
+#### Example of the service name in the service navigation component
 
-
-
-#### User's account details  
-
-Add the username (for example initial and last name) and a sign-out link. 
-
-You can also add a link to the user's account details.
+### Using the header with the notification badge component
 
 Example screenshot
 
-### Using with the notification badge component
+### Using the header with the search component
 
-Example screenshot
-
-### What to add to it
+Do not add the search component to the [MOJ header component](https://design-patterns.service.justice.gov.uk/components/moj-header/). There’s not enough space in the header, and doing this would make the use of both components inconsistent.

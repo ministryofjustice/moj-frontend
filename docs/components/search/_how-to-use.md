@@ -56,7 +56,7 @@ Understand how to design your page effectively, and show users the results of th
 Place the search component either:
 
 - under a clearly labelled heading (typically above a table, such as a case list)
-- at the top of the page (for site search), like in the [primary navigation component](/components/primary-navigation/) or the [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation/)
+- at the top of the page (for site search), such as in the [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation/)
 
 Do not add the search component to the [MOJ header component](/components/moj-header/). There's not enough space in the header, and doing this would make the use of both components inconsistent.
 
