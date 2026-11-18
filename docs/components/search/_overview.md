@@ -38,7 +38,7 @@ Use this component to help users search a large amount of information for someth
 
 Users need to have at least 1 piece of identifying information, for example a reference number.
 
-This component can also be used in the [GOV.UK service navigation component to search a whole service](https://design-system.service.gov.uk/components/service-navigation/).
+The search component can be used in the [GOV.UK service navigation component to search a whole service](https://design-system.service.gov.uk/components/service-navigation/).
 
 ### When not to use
 
