@@ -13,38 +13,35 @@ eleventyComputed:
 
 ## Overview
 
-## Option 1
+The header component tells users that they're using an MOJ service. Add it to the top of each page in your service. 
 
-The header component tells users that they're using an MOJ service.
+## Option 1
 
 ## When to use
 
-Use the header component on some MOJ services for internal users.
+Use the header component on internal and external-facing services on the MOJ domain (`[myservice].justice.service.gov.uk`).
 
 ## When not to use
 
 Do not use this component on:
 
-- any MOJ public-facing service -- use the [GOV.UK header](https://design-system.service.gov.uk/components/header/)
-- internal Legal Aid Agency (LAA) services -- use the [LAA header component (opens in Figma)](https://www.bbc.co.uk/news)
+- public-facing services on the GOV.UK domain -- use the [GOV.UK header](https://design-system.service.gov.uk/components/header/)
 - DPS (Digital Prisons Services) -- use the [DPS header component (opens in Figma)](https://www.bbc.co.uk/news)
 - services on the Probation Digital Services (PDS) platform - use the [PDS header component](/probation/components/pds-header/)
 
+If you need help choosing a header for an MOJ service, you can [contact the MOJ Design System team](https://design-patterns.service.justice.gov.uk/help/). 
+
+## Option 2
+
 ## Choosing a header to use for your service
 
-Every MOJ service needs a header, which should be used at the top of every page.
+Which header your service needs depends on your service's:
 
-Which header your service needs depends on the:
-
-- audience, whether it's an internal service for MOJ staff or the public
 - domain, for example `[myservice].service.gov.uk` or `[myservice].justice.service.gov.uk`
-- organisation or platform the service is a part of, for example DPS (Digital Prisons Services)
+- organisation or platform, for example DPS (Digital Prisons Services)
 
 {{ govukTable({
   head: [
-    {
-      text: "Audience"
-    },
     {
       text: "Domain"
     },
@@ -58,22 +55,16 @@ Which header your service needs depends on the:
   rows: [
     [
       {
-        text: "Internal"
-      },
-      {
         text: "[myservice].justice.service.gov.uk"
       },
       {
-        text: "Any apart from DPS, Legal Aid Agency, and Probation Digital Services"
+        text: "Any apart from DPS and Probation Digital Services"
       },
       {
         text: "Header"
       }
     ],
     [
-      {
-        text: "Internal"
-      },
       {
         text: "[myservice].justice.service.gov.uk"
       },
@@ -86,9 +77,6 @@ Which header your service needs depends on the:
     ],
     [
       {
-        text: "Internal"
-      },
-      {
         text: "[myservice].justice.service.gov.uk"
       },
       {
@@ -100,10 +88,7 @@ Which header your service needs depends on the:
     ],
     [
       {
-        text: "Public"
-      },
-      {
-        text: "gov.uk/[myservice] or [myservice].service.gov.uk"
+        text: "gov.uk/[myservice], [myservice].service.gov.uk or [myblog].blog.gov.uk"
       },
       {
         text: "Any"
@@ -111,14 +96,22 @@ Which header your service needs depends on the:
       {
         html: '<a class="govuk-link" href="https://service.gov.uk">GOV.UK header</a>'
       }
-    ]
+    ],
+    [
+      {
+        text: "[myservice].justice.service.gov.uk"
+      },
+      {
+        text: "Probation Digital Services (PDS)"
+      },
+      {
+        html: '<a class="govuk-link" href="https://www.bbc.co.uk/news">PDS header</a>'
+      }
+    ],
   ]
 }) }}
 
-
-### Things to consider
-
-XYZ
+If you need help choosing a header for an MOJ service, you can [contact the MOJ Design System team](https://design-patterns.service.justice.gov.uk/help/). 
 
 ### Similar or linked components
 
@@ -126,3 +119,4 @@ There’s also the:
 
 - [GOV.UK generic header](https://design-system.service.gov.uk/components/generic-header/)
 - [GOV.UK service navigation](https://design-system.service.gov.uk/components/service-navigation/)
+- [Legal Aid Agency (LAA) header and navigation pattern (opens in Figma)](https://www.bbc.co.uk/news) for internal LAA services
