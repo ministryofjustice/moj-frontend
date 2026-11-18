@@ -17,51 +17,89 @@ You can view [guidance on choosing a header](/components/header/#overview-tab).
 
 Screenshot example 
 
-The header contains the:
+The header must contain the:
 
 - crest
-- organisation name
-- user account area
-
-You can also add:
-
-- the service name  
-- a badge (for example to show a 'DEV' environment label)
+- organisation or service name
 
 #### Crest
 
-The crest is the government's Coat of Arms. You can read more about when the [Coat of Arms artwork was unveiled](https://www.gov.uk/government/news/new-coat-of-arms-artwork-unveiled). 
+The crest is the government's Royal Coat of Arms. Do not remove the crest, or replace it with another brand logo. 
 
-Do not remove the crest, or replace it with another crown or crest. 
+You can read [branding guidance on the Royal Coat of Arms](https://www.communications.gov.uk/publication/branding/). 
 
-You can add a link from the crest, for example to the homepage of your product, but you do not need to. Your users may expect it to be a link, depending on the type of product it is. Do user research if you're not sure. 
+#### Organisation or service name
 
-#### Organisation name
+screenshot example 
 
-Do not remove the organisation name from the header. 
+There are 3 options for what the header can contain:
+
+- your organisation name
+- your service name
+- your organisation name and your service name
+
+The name (or names) go on the left hand side of the header. The name next to the crest is bolded, but not any others. 
+
+Spell your organisation name out in full, for example Legal Aid Agency or Ministry of Justice.  
+
+You may want to add a link from the organisation and service name, for example to the service homepage, but you do not need to. Users may expect these names to be a link, depending on the type of product. Do user research if you're not sure. 
+
+#### Example of the service name in the service navigation component
+
+Add screenshot example 
+
+You might want to add only your organisation name to the header if:
+
+- there's a lack of horizontal space, for example if the service name or user account details are long
+- there's enough space for your service name in the [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation/)  
+
+You might want to add only your service name if:
+
+- it's an internal service
+- the service contains the name of the organisation -- like MOJ Forms
+- you're confident that users will know that it's an MOJ service (or do not need to know)
+
+Do not add the service name to the primary navigation component. It was archived in November 2026. 
+
+#### Example of the organisation and service name in the header component 
+
+Add screenshot example 
+
+Add both the service and organisation name to the header if there's enough space. 
+
+### Other things you can add
+
+You can also add:
+
+- a user account area, for example showing a username and sign out link
+- other global links, for example to support or feedback
+- the [GOV.UK tag component](https://design-system.service.gov.uk/components/tag/), for example to show a 'DEV' environment label
 
 #### User account area
 
-The user account area includes the:
+The user account area can include a:
 
-- username (or email address)
-- `Manage your details` link (optional, if you have a page to link to)
+- username (which can be an email address)
+- `Manage your details` link (if you have a page to link to)
 - sign out link
 
-#### Service name 
+If your service displays email addresses in the header (or if you expect long user names) you may end up with a full header. You could explore:
 
-The service name can be added to the header or the [GOV.UK service navigation](https://design-system.service.gov.uk/components/service-navigation/). It used to be added to the primary navigation component, which was archived in November 2026. 
-
-Where you add it depends on how much space you have in both the header and primary navigation components. 
-
-#### Example of the service name in the header component 
-
-#### Example of the service name in the service navigation component
+- removing the email domain, for example alexander.watkins for alexander.watkins@justice.gov.uk
+- removing the username (but not if users are sharing devices, for example in a workplace)
+- setting a maximum width for the username (and cutting off usernames that are longer than that)
 
 ### Using the header with the notification badge component
 
 Example screenshot
 
-### Using the header with the search component
+### Things you cannot add
 
-Do not add the search component to the [MOJ header component](https://design-patterns.service.justice.gov.uk/components/moj-header/). There’s not enough space in the header, and doing this would make the use of both components inconsistent.
+Do not add the following to the header:
+
+- navigation links 
+- the [search component](/components/search/)
+
+Use the [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation) to let users navigate to different parts of your service, and find useful links and tools.
+
+There’s not enough space in the header to add the [search component](/components/search/), and doing this would make the use of both components inconsistent.

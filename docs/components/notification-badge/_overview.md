@@ -22,7 +22,7 @@ You could use the notification badge to tell a user about a:
 - change to an appointment or booking, for example a cancellation
 - new or unread message
 
-This component is best used in a navigation link but may be OK in some other parts of a service.
+This component is best used in a navigation link but may be OK in some other parts of a service. It can be used in the GOV.UK service navigation component. 
 
 ### When not to use
 
