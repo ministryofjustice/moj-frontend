@@ -107,7 +107,7 @@ Which header your service needs depends on your service's:
       {
         html: '<a class="govuk-link" href="https://www.bbc.co.uk/news">PDS header</a>'
       }
-    ],
+    ]
   ]
 }) }}
 
