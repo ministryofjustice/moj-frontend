@@ -22,7 +22,7 @@ You could use the notification badge to tell a user about a:
 - change to an appointment or booking, for example a cancellation
 - new or unread message
 
-This component is best used in a navigation link but may be OK in some other parts of a service. It can be used in the GOV.UK service navigation component. 
+This component is best used in a navigation link but may be OK in some other parts of a service.  
 
 ### When not to use
 
@@ -46,6 +46,6 @@ There’s also the:
 
 - [GOV.UK notification banner component](https://design-system.service.gov.uk/components/notification-banner/)
 - [GOV.UK tag component](https://design-system.service.gov.uk/components/tag/)
-- [MOJ alert component](/components/alert/)
-- [MOJ badge component](/components/badge/)
+- [alert component](/components/alert/)
+- [badge component](/components/badge/)
 
