@@ -55,7 +55,7 @@ Which header your service needs depends on your service's:
   rows: [
     [
       {
-        text: "[myservice].justice.service.gov.uk"
+        text: "\[myservice\].justice.service.gov.uk"
       },
       {
         text: "Any apart from DPS and Probation Digital Services"
@@ -66,7 +66,7 @@ Which header your service needs depends on your service's:
     ],
     [
       {
-        text: "[myservice].justice.service.gov.uk"
+        text: "\[myservice\].justice.service.gov.uk"
       },
       {
         text: "DPS"
@@ -77,7 +77,7 @@ Which header your service needs depends on your service's:
     ],
     [
       {
-        text: "[myservice].justice.service.gov.uk"
+        text: "\[myservice\].justice.service.gov.uk"
       },
       {
         text: "Legal Aid Agency (LAA)"
@@ -88,7 +88,7 @@ Which header your service needs depends on your service's:
     ],
     [
       {
-        text: "gov.uk/[myservice], [myservice].service.gov.uk or [myblog].blog.gov.uk"
+        text: "gov.uk/\[myservice\], \[myservice\].service.gov.uk or \[myblog\].blog.gov.uk"
       },
       {
         text: "Any"
@@ -99,7 +99,7 @@ Which header your service needs depends on your service's:
     ],
     [
       {
-        text: "[myservice].justice.service.gov.uk"
+        text: "\[myservice\].justice.service.gov.uk"
       },
       {
         text: "Probation Digital Services (PDS)"
