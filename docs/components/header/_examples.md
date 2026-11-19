@@ -15,7 +15,3 @@ The notification badge shows a user where the items are. The items should be eas
 ### With the service name in the header
 
 {% example template="examples/primary-nav", colocated=true, height=590 %}
-
-### With the notification banner
-
-{% example template="examples/side-nav", colocated=true, height=590 %}
