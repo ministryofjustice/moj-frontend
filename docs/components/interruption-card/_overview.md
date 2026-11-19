@@ -19,11 +19,11 @@ The interruption card helps users to understand possible errors and avoid mistak
 
 This component should be used specifically and sparingly. It has 5 use cases:
 
-1. [Possible errors](#1.-possible-errors)
-2. [‘Are you sure?’ content](#2.-%E2%80%98are-you-sure%3F%E2%80%99-content)
-3. [Non-contextual errors](#3.-non-contextual-errors)
-4. [More varied application outcomes](#4.-more-varied-application-outcomes)
-5. [Showing important content ahead of a task](#5.-showing-important-content-ahead-of-a-task)
+1. [Possible errors](#1.possible-errors)
+2. [‘Are you sure?’ content](#2.%E2%80%98are-you-sure%3F%E2%80%99-content)
+3. [Non-contextual errors](#3.non-contextual-errors)
+4. [More varied application outcomes](#4.more-varied-application-outcomes)
+5. [Showing important content ahead of a task](#5.showing-important-content-ahead-of-a-task)
 
 #### 1. Possible errors
 
