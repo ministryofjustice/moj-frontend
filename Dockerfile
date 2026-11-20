@@ -65,21 +65,24 @@ RUN ENV="production" npm run build:docs
 
 RUN rm /root/.ssh/id_rsa
 
-FROM nginxinc/nginx-unprivileged:alpine AS staging
+# Pinning to latest alpine SHA
+FROM nginxinc/nginx-unprivileged:alpine@sha256:0563c36f94a6d3ec3584161b77859f740f7e20b4853f52c796a864ce6908e8ea AS staging
 EXPOSE 3000
 COPY docker/htpasswd /etc/nginx/.htpasswd
 COPY docker/nginx-staging.conf /etc/nginx/conf.d/default.conf
 COPY --from=staging-build /app/public /usr/share/nginx/html
 COPY robots.txt /usr/share/nginx/html
 
-FROM nginxinc/nginx-unprivileged:alpine AS preview
+# Pinning to latest alpine SHA
+FROM nginxinc/nginx-unprivileged:alpine@sha256:0563c36f94a6d3ec3584161b77859f740f7e20b4853f52c796a864ce6908e8ea AS preview
 EXPOSE 3000
 COPY docker/htpasswd-preview /etc/nginx/.htpasswd
 COPY docker/nginx-preview.conf /etc/nginx/conf.d/default.conf
 COPY --from=preview-build /app/public /usr/share/nginx/html
 COPY robots.txt /usr/share/nginx/html
 
-FROM nginxinc/nginx-unprivileged:alpine AS production
+# Pinning to latest alpine SHA
+FROM nginxinc/nginx-unprivileged:alpine@sha256:0563c36f94a6d3ec3584161b77859f740f7e20b4853f52c796a864ce6908e8ea AS production
 EXPOSE 3000
 COPY docker/nginx-production.conf /etc/nginx/conf.d/default.conf
 COPY --from=production-build /app/public /usr/share/nginx/html
