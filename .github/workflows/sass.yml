@@ -57,7 +57,16 @@ jobs:
       # Check output for uncompiled Sass
       - name: Check output
         run: |
-          ! grep "\$moj-" .tmp/check.css
-          ! grep "\$moj-" .tmp/check1.css
-          ! grep "\$moj-" .tmp/check2.css
-          ! grep "\$moj-" .tmp/check3.css
+          failed=0
+
+          for file in .tmp/check.css .tmp/check{1..3}.css; do
+            if [ ! -f "$file" ]; then
+              echo "::error::Missing Sass output $file"
+              failed=1
+            elif grep -F -n "\$moj-" "$file"; then
+              echo "::error::Uncompiled Sass found in $file"
+              failed=1
+            fi
+          done
+
+          exit $failed
