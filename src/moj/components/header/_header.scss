@@ -12,99 +12,100 @@
 
 .moj-header__container {
   @include moj-width-container;
+  padding-top: govuk-spacing(3);
+  padding-bottom: govuk-spacing(3);
   display: flex;
   align-items: stretch;
   flex-wrap: wrap;
-  gap: 0 govuk-spacing(4);
-  min-height: 70px;
+  gap: govuk-spacing(4);
+  flex-direction: column;
+
+  @include govuk-media-query($from: "tablet") {
+    flex-direction: row;
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    flex-wrap: nowrap;
+  }
 }
 
-.moj-header__logo {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: govuk-spacing(2);
-  /* margin-right: auto; */
-  /* margin-top: govuk-spacing(3); */
-  /* margin-bottom: govuk-spacing(3); */
-}
-
-.moj-header__logotype-crown,
-.moj-header__logotype-crest {
-  flex-shrink: 0;
-}
-
-.moj-header__brand {
+.moj-header__identity {
+  /* container-name: moj-header-identity; */
+  /* container-type: inline-size; */
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: govuk-spacing(2);
   margin-right: auto;
-}
 
-.moj-header:has(.moj-header__link--service-name) .moj-header__link--organisation-name {
-  font-weight: bold;
-}
-
-.moj-header__service-name {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: govuk-spacing(2);
-}
-
-.moj-header__link--organisation-name,
-.moj-header__link--service-name {
-  @include govuk-font($size: 24);
+  @include govuk-media-query($from: "desktop") {
+    flex-wrap: nowrap;
+  }
 }
 
 .moj-header__content {
+  /* container-name: moj-header-content; */
+  /* container-type: inline-size; */
   display: flex;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-shrink: 1;
   gap: 0 govuk-spacing(4);
-  margin-top: govuk-spacing(3);
-  margin-bottom: govuk-spacing(3);
+  max-width: 100%;
+
+  @include govuk-media-query($from: "desktop") {
+    max-width: 50%;
+    justify-content: flex-end;
+  }
 }
 
-.moj-header__link,
-.moj-header__link > a {
+.moj-header__logo {
+  flex-shrink: 0;
+}
+
+.moj-header__logo + *:is(a, span) {
+  font-weight: bold;
+}
+
+.moj-header__organisation-name,
+.moj-header__service-name {
+  @include govuk-font($size: 24);
   color: govuk-colour("white");
 
-  @include govuk-link-common;
-  @include govuk-link-style-default;
+  &:is(a) {
+    @include govuk-link-common;
+    @include govuk-link-style-default;
 
-  &:link,
-  &:visited {
-    color: govuk-colour("white");
-    text-decoration: none;
-  }
+    &:link,
+    &:visited {
+      color: govuk-colour("white");
+      text-decoration: none;
+    }
 
-  &:hover,
-  &:active {
-    color: govuk-colour("white");
-    text-decoration: underline;
-  }
-
-  &:hover {
-    border-color: govuk-colour("white");
-  }
-
-  &:focus {
-    /* border-color: transparent; */
-    color: govuk-colour("black");
-  }
-
-  &--organisation-name {
-    @include govuk-font($size: 24);
-    margin-block-start: 2px;
-    /* margin-inline-end: govuk-spacing(2); */
+    &:hover,
+    &:active {
+      color: govuk-colour("white");
+      text-decoration: underline;
+    }
 
     &:hover {
+      border-color: govuk-colour("white");
+    }
+
+    &:focus {
       /* border-color: transparent; */
+      color: govuk-colour("black");
     }
   }
 }
+
+/* @container moj-header-identity (width > ($moj-page-width / 2)) { */
+/*   .moj-header__organisation-name, */
+/*   .moj-header__service-name { */
+/*     @include govuk-font($size: 19); */
+/*   } */
+/* } */
 
 // stylelint-disable-next-line selector-no-qualifying-type
 span.moj-header__link {
@@ -125,18 +126,21 @@ span.moj-header__link {
   list-style: none;
   display: flex;
   align-items: center;
+  gap: govuk-spacing(2);
+  flex-direction: column;
+
+  @include govuk-media-query($from: "tablet") {
+    flex-direction: row;
+    gap: govuk-spacing(3);
+  }
 }
 
 .moj-header__navigation-item {
   display: inline-block;
-  padding-right: govuk-spacing(3);
-  padding-left: govuk-spacing(3);
   @include govuk-font(19);
 
   &:first-child {
     padding-left: 0;
-    text-align: right;
-    border-right: 1px solid govuk-colour("white");
   }
 
   &:last-child {
@@ -169,46 +173,39 @@ span.moj-header__link {
   text-decoration: none;
 }
 
-.moj-header--stacked {
-  .org-service-name {
-    display: flex;
-    align-items: baseline;
-    flex-direction: column;
-  }
-
-  .moj-header__logo {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 15px;
-    margin-right: auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
-  }
-
-  .moj-header__link--organisation-name,
-  .moj-header__link > a {
-    font-weight: 900;
-    font-size: 14px;
-  }
-
-  .moj-header__link--service-name {
-    font-size: 24px;
-  }
-
-  @media (min-width: 40.0625em) {
-    .moj-header__link--organisation-name,
-    .moj-header__link > a--organisation-name {
-      font-weight: 900;
-      font-size: 14px;
-    }
-  }
-}
-
 .moj-header__account {
   @include govuk-font($size: 19);
   color: govuk-colour("white");
-  text-align: right;
+  text-align: left;
+  max-width: 100%;
+
+  @include govuk-media-query($from: "tablet") {
+    /* text-align: right; */
+  }
+}
+
+/* @container moj-header-account (width > ($moj-page-width / 2)) { */
+/*   .moj-header__account { */
+/*     text-align: right; */
+/*   } */
+/* } */
+
+.moj-header__user {
+  display: block;
+  max-width: 100%;
+  overflow: clip;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  @include govuk-media-query($from: "tablet") {
+    text-align: right;
+  }
+}
+
+.moj-header[data-wrapped] .moj-header__user {
+  @include govuk-media-query($from: "tablet") {
+    text-align: left;
+  }
 }
 
 .moj-header__account-list {
@@ -218,6 +215,10 @@ span.moj-header__link {
   display: flex;
   align-items: center;
   gap: govuk-spacing(2);
+
+  @include govuk-media-query($from: "tablet") {
+    gap: govuk-spacing(3);
+  }
 }
 
 .moj-header__account-link {

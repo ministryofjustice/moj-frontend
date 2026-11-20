@@ -16,16 +16,111 @@ redirect_from:
   serviceLabel: {
     text: "Service name",
     href: "#"
+  }
+}) }}
+
+<br/>
+<h4>With tag</h4>
+
+{{ mojHeader({
+  organisationLabel: {
+    text: "Ministry of Justice",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "Service name",
+    href: "#"
+  },
+  tag: {
+    text: "Status"
+  }
+}) }}
+
+<br/>
+<h4>With navigation</h4>
+
+{{ mojHeader({
+  organisationLabel: {
+    text: "Ministry of Justice",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "Service name",
+    href: "#"
   },
   navigation: {
-    label: "Account navigation",
+    label: "navigation",
     items: [{
-      text: "Account name",
+      text: "Custom link",
       href: "#",
       active: true
     }, {
-      text: "Sign out",
+      text: "Custom link",
+      href: "#"
+    },
+    {
+      text: "Custom link",
+      href: "#"
+    }, {
+      text: "Custom link",
       href: "#"
     }]
   }
+}) }}
+
+
+<br/>
+<h4>With account info</h4>
+
+{{ mojHeader({
+  organisationLabel: {
+    text: "Ministry of Justice",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "Service name",
+    href: "#"
+  },
+  account: {
+    label: "account navigation",
+    user: {
+      text: "A.Name"
+    },
+    manageLink: {
+      text: "Manage your details",
+      href: "#"
+    },
+    signOutLink: {
+      text: "Sign out",
+      href: "#"
+    }
+ }
+}) }}
+
+<br/>
+<h4>With account info</h4>
+
+{{ mojHeader({
+  organisationLabel: {
+    text: "Ministry of Justice",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "Service name",
+    href: "#"
+  },
+  account: {
+    label: "Account navigation",
+    user: {
+      text: "MCC.UCD-manage-your-civil-cases-provider2-test@dev.justice.gov.uk"
+    },
+    manageLink: {
+      text: "Manage your details",
+      href: "#"
+    },
+    signOutLink: {
+      text: "Sign out",
+      href: "#"
+    }
+ }
 }) }}
