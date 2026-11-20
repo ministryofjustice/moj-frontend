@@ -11,7 +11,9 @@ eleventyComputed:
 
 Do not add your service name to the header. It should only contain ‘Probation Digital Services’ to create a consistent experience for users.
 
-You can add your service name as a heading, or as a caption to the existing heading. It should also be added to the breadcrumbs component, if used.
+Add your service name to the main navigation component. It should also be added to the breadcrumbs component, if used.
+
+See the [probation page template](https://design-patterns.service.justice.gov.uk/probation/styles/pds-page-template/) for more guidance on adding your service name to the navigation.
 
 ### Links
 
@@ -23,6 +25,13 @@ The MOJ crown logo and ‘Probation Digital Services’ text link to either:
 MPoP is the Probation Digital Services homepage.
 
 The 'Account' text links to the 'Your account details' page on HMPPS Auth.
+
+### Location
+The location (for example, 'North Wales PDU') is fixed  and cannot be changed by the user.
+
+The header fetches the location data from NDelius. If the data is not found, it will display 'location unavailable'.
+
+On smaller screens, the location will stack above the account and navigation menus.
 
 ### Using the header component in production
 

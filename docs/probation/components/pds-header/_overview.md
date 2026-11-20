@@ -22,15 +22,14 @@ If you work outside MOJ, read the guidance on <a href="https://design-patterns.s
 ## Overview
 
 The PDS header  allows users to access and navigate between services on the Probation Digital Services (PDS) platform. 
-The header displays the name of the platform, and features account and global navigation menus.
 
-### Account menu
+The header displays the:
 
-The account menu allows users to view their account details, and sign in or out.
+- platform name ('Probation Digital Services')
+- work location, for example 'North Wales PDU'
+- account menu, where users access their account details, and sign in or out
+- global navigation menu, with links to probation services the user has access to
 
-### Global navigation menu
-
-The global navigation menu contains links to probation services. Users will only see links to services they have permission to access. 
 
 ### When to use
 
@@ -38,6 +37,7 @@ Use this header for internal probation services on the Probation Digital Service
 
 ### When not to use
 
-Do not use for services not on the Probation Digital Services platform.
+Do not use this component in:
 
-Use the [MOJ header component](/components/moj-header) instead.
+- MOJ services not on the Probation Digital Services platform – use the [MOJ header component](/components/moj-header) instead
+- DPS (Digital Prison Services) – use the [DPS header component (opens in Figma)](https://www.figma.com/design/DhGdok6Nx5UKK9dAKZq6Ay/DPS--Prison--Figma-Kit?node-id=3316-752&t=J7aF1RqaiaGSZtdR-1) instead
