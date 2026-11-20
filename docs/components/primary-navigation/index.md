@@ -1,9 +1,16 @@
 ---
 title: Primary navigation
-status: To be reviewed
-statusDate: June 2021
-lede: "Use the primary navigation component to let users navigate and search your service."
+status: Archived
+statusDate: November 2026
 ---
+
+{% banner "This component is archived" %}
+
+This component was archived because the [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation/) includes the service name and  helps users navigate around a service.
+
+If you're using the primary navigation component you need to switch all instances of it to the GOV.UK service navigation component. This will give you accessibility and other improvements. 
+
+{% endbanner %}
 
 {% example template="examples/default", colocated=true, height=150 %}
 

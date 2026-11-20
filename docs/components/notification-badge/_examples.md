@@ -55,4 +55,3 @@ The number has changed because the page loaded. It’s not 'dynamic'.
 ### In MOJ header
 
 {% example template="examples/header", colocated=true, height=590 %}
-
