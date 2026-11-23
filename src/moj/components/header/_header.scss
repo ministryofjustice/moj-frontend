@@ -22,8 +22,15 @@
 
   @include govuk-media-query($from: "tablet") {
     flex-direction: row;
+    justify-content: space-between;
   }
+}
 
+/* If we have an account section, we don't want the identity and content to wrap
+ * on desktop - this is to avoid the account section being pushed down to a new
+ * line when a long user name is displayed.
+ */
+.moj-header__container:has(.moj-header__account--no-wrap) {
   @include govuk-media-query($from: "desktop") {
     flex-wrap: nowrap;
   }
@@ -40,6 +47,7 @@
 
   @include govuk-media-query($from: "desktop") {
     flex-wrap: nowrap;
+    flex-shrink: 0;
   }
 }
 
@@ -49,13 +57,12 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  flex-grow: 1;
   flex-shrink: 1;
+  min-width: 0;
   gap: 0 govuk-spacing(4);
   max-width: 100%;
 
   @include govuk-media-query($from: "desktop") {
-    max-width: 50%;
     justify-content: flex-end;
   }
 }
@@ -122,21 +129,26 @@ span.moj-header__link {
 .moj-header__navigation-list {
   margin: 0;
   padding: 0;
-  font-size: 0; // Removes white space when using inline-block on child element.
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: govuk-spacing(2);
-  flex-direction: column;
 
   @include govuk-media-query($from: "tablet") {
     flex-direction: row;
     gap: govuk-spacing(3);
   }
+
+  @include govuk-media-query($from: "desktop") {
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+  }
 }
 
 .moj-header__navigation-item {
   display: inline-block;
+  text-wrap: nowrap;
   @include govuk-font(19);
 
   &:first-child {
@@ -196,16 +208,29 @@ span.moj-header__link {
   overflow: clip;
   white-space: nowrap;
   text-overflow: ellipsis;
+  text-align: left;
+}
 
-  @include govuk-media-query($from: "tablet") {
-    text-align: right;
+/*
+If JavaScript is enabled the username can be right aligned on larger screens.
+JavaScript is used to detect if the account section has wrapped onto a new line, in which case the username is left aligned.
+*/
+.js-enabled {
+  .moj-header__user {
+    @include govuk-media-query($from: "tablet") {
+      text-align: right;
+    }
+  }
+
+  .moj-header[data-wrapped] .moj-header__user {
+    @include govuk-media-query($from: "tablet") {
+      text-align: left;
+    }
   }
 }
 
-.moj-header[data-wrapped] .moj-header__user {
-  @include govuk-media-query($from: "tablet") {
-    text-align: left;
-  }
+.moj-header__account-item {
+  text-wrap: nowrap;
 }
 
 .moj-header__account-list {
@@ -218,6 +243,10 @@ span.moj-header__link {
 
   @include govuk-media-query($from: "tablet") {
     gap: govuk-spacing(3);
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    justify-content: flex-end;
   }
 }
 
