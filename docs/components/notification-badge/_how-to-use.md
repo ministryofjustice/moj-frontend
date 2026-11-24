@@ -20,6 +20,8 @@ The notification badge is best used in a navigation. In that position it:
 
 Reserving the component for the navigation (and not using it elsewhere) is the most useful and accessible for everyone. This is because it’s being used consistently.
 
+You can view how to use the notification badge in the [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation/).
+
 ### In page headers
 
 The notification badge can be placed in a header if the colour contrast is accessible. It's accessible when used with the [MOJ header component](/components/moj-header/), but not the [GOV.UK heade component](https://design-system.service.gov.uk/components/header/). Do not change the component or header colour to make this possible.  

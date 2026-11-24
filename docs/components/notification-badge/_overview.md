@@ -24,6 +24,8 @@ You could use the notification badge to tell a user about a:
 
 This component is best used in a navigation link but may be OK in some other parts of a service.  
 
+#### An example of the notification badge showing 3 case updates in the [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation/):
+
 ### When not to use
 
 Research will help you work out when the notification badge should be used.

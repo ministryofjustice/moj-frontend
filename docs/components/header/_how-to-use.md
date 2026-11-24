@@ -83,6 +83,7 @@ There’s not enough space in the header to add the [search component](/componen
 
 The user account area can include a:
 
+<<<<<<< Updated upstream
 - username (which can be an email address)
 - link to a page to manage your details 
 - sign-out link
