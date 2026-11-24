@@ -44,4 +44,5 @@ If you need help choosing a header for an MOJ service, you can [contact the MOJ 
 The header component:
 
 - is commonly used with the [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation/)
+- can be used with the [notification badge component](/components/notification-badge/)
 - can be used instead of the [GOV.UK generic header component](https://design-system.service.gov.uk/components/generic-header/) 

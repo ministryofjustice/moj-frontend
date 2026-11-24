@@ -23,10 +23,7 @@ The header component has 3 layouts. These enable you to add items to your header
 
 Screenshot example 
 
-The header must contain the:
-
-- crest
-- organisation or service name
+The header must contain the crest. You also need to add the organisation name, service name (or both). 
 
 #### Crest
 
@@ -36,15 +33,13 @@ You can read [branding guidance on the Royal Coat of Arms](https://www.communica
 
 #### Organisation or service name
 
-The header can contain 1 of the following 3 options:
-
-- your organisation name
-- your service name
-- your organisation name and your service name
+Add your organisation name, service name (or both) to the header.
 
 The name (or names) go on the left hand side of the header. The name next to the crest is bolded, but not any others. 
 
-You may want to add a link from the organisation and service name, for example to the service homepage, but you do not need to. Users may expect these names to be a link, depending on the type of product. Do user research if you're not sure. 
+By default, the service name links to the top level of your service’s domain (or `/`). Customise the link to point to wherever makes the most sense for your service.  
+
+You may want to add a link from the organisation name, but you do not need to. Users may expect this name to be a link, depending on the type of product. It's best to avoid having the service and organisation name linking to the same place, for accessibility and usability reasons. Do user research if you're not sure. 
 
 #### Example of the service name in the service navigation component
 
@@ -53,9 +48,9 @@ Add screenshot example
 Add your service name to the [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation/) unless at least one of the following apply:
 
 - there's no room
-- there's no organisation name in the header (and therefore the header area next to the crest would be blank)
+- there's no organisation name in the header (and therefore the area in the header next to the crest would be blank)
 
-Do not add the service name to the [primary navigation component](/components/primary-navigation/). It was archived in November 2026. 
+Do not use the [primary navigation component](/components/primary-navigation/). It was archived in November 2026. 
 
 #### Example of the service name in the service navigation component
 
@@ -89,16 +84,20 @@ There’s not enough space in the header to add the [search component](/componen
 The user account area can include a:
 
 - username (which can be an email address)
-- `Manage your details` link (if you have a page to link to)
+- link to a page to manage your details 
 - sign-out link
 
-If your service displays email addresses in the header (or if you expect long user names) you may end up with a crowded header. You could explore:
+If you add 3 items (including 2 links) to the user account area, it's best to stack the items. This will help with spacing. 
 
-- removing the email domain, for example alexander.watkins for alexander.watkins@justice.gov.uk
+If your service displays email addresses in the header (or if you expect long user names) you may end up with a crowded header. To fix this, you could explore:
+
+- removing the domain from the email address, for example displaying alexander.watkins3 for alexander.watkins3@justice.gov.uk
 - removing the username (but not if users are sharing devices, for example in a workplace)
 - setting a maximum width for the username (and cutting off usernames that are longer than that)
 
 ### Using the header with the notification badge component
 
 Example screenshot
+
+You can view guidance on [using the header and notification badge components together](/components/notification-badge/). 
 
