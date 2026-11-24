@@ -33,7 +33,6 @@ You can read [branding guidance on the Royal Coat of Arms](https://www.communica
 
 #### Organisation or service name
 
-<<<<<<< Updated upstream
 Add your organisation name, service name (or both) to the header.
 
 The name (or names) go on the left hand side of the header. The name next to the crest is bolded, but not any others. 
@@ -41,13 +40,6 @@ The name (or names) go on the left hand side of the header. The name next to the
 By default, the service name links to the top level of your service’s domain (or `/`). Customise the link to point to wherever makes the most sense for your service.  
 
 You may want to add a link from the organisation name, but you do not need to. Users may expect this name to be a link, depending on the type of product. It's best to avoid having the service and organisation name linking to the same place, for accessibility and usability reasons. Do user research if you're not sure. 
-=======
-You can add your organisation name, service name, or both, to the header. 
-
-The name (or names) go on the left hand side of the header. The name next to the crest is bolded, but not any others. 
-
-The homepage link points to /, which is the top level of your service’s domain. Customise the link to point to wherever makes the most sense for your service (which may be removing the link). Do user research if you're not sure. 
->>>>>>> Stashed changes
 
 #### Example of the service name in the service navigation component
 
@@ -94,25 +86,15 @@ There’s not enough space in the header to add the [search component](/componen
 
 You can make your own user account area in the header. This could include a:
 
-<<<<<<< Updated upstream
-- username (which can be an email address)
-- link to a page to manage your details 
-- sign-out link
-
-If you add 3 items (including 2 links) to the user account area, it's best to stack the items. This will help with spacing. 
-=======
 - username (which could be an email address)
 - link to a page for the user to manage their details 
 - sign-out link
 
-If you have 3 items in the user account area, you'll need to stack them. This is
+If you add 3 items (including 2 links) to the user account area, it's best to stack the items. This will help with spacing. 
 
 #### Example of a stacked user account area
 
 Screenshot example
-
-If your service displays email addresses in the header (or if you expect long user names) you may end up with a crowded header. You could explore:
->>>>>>> Stashed changes
 
 If your service displays email addresses in the header (or if you expect long user names) you may end up with a crowded header. To fix this, you could explore:
 
@@ -124,9 +106,4 @@ If your service displays email addresses in the header (or if you expect long us
 
 Example screenshot
 
-<<<<<<< Updated upstream
 You can view guidance on [using the header and notification badge components together](/components/notification-badge/). 
-
-=======
-You can view guidance on [how to use the MOJ header and notification badge components together](/components/notification-badge/). 
->>>>>>> Stashed changes
