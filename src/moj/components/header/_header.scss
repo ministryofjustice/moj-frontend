@@ -154,7 +154,7 @@
   }
 }
 
-.moj-header__link[aria-current="page"] {
+.moj-header__link[aria-current="page"]:not(:hover) {
   text-decoration: none;
 }
 
@@ -176,26 +176,28 @@
 
 /*
 If JavaScript is enabled the username can be right aligned on larger screens.
-JavaScript is used to detect if the account section has wrapped onto a new line, in which case the username is left aligned.
+JavaScript is used to detect if the account section has wrapped onto a new line
+and add the `data-wrapped` attribute. This is used to left align the username
+and navigation items.
 */
-.js-enabled {
-  .moj-header__user {
-    @include govuk-media-query($from: "tablet") {
-      text-align: right;
-    }
+.js-enabled .moj-header__user {
+  @include govuk-media-query($from: "tablet") {
+    text-align: right;
   }
+}
 
-  .moj-header[data-wrapped] .moj-header__user {
+.js-enabled .moj-header[data-wrapped] {
+  .moj-header__user {
     @include govuk-media-query($from: "tablet") {
       text-align: left;
     }
   }
 
-  .moj-header[data-wrapped] .moj-header__content {
+  .moj-header__content {
     justify-content: flex-start;
   }
 
-  .moj-header[data-wrapped] .moj-header__content .moj-header__list {
+  .moj-header__content .moj-header__list {
     justify-content: flex-start;
     margin-top: 5px;
   }
