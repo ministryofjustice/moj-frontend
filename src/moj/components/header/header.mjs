@@ -7,15 +7,17 @@ export class MOJHeader extends Component {
   constructor($root) {
     super($root)
 
-    const $identity = this.$root.querySelector('.moj-header__identity')
-    const $content = this.$root.querySelectorAll('.moj-header__content')
+    const $wrapReference = this.$root.querySelector(
+      '.js-moj-header__wrap-reference'
+    )
+    const $wrapItems = this.$root.querySelectorAll('.js-moj-header__wrap-item')
 
-    if (!$identity || !$content.length) return
+    if (!$wrapReference || !$wrapItems.length) return
 
     const updateWrappedState = () => {
-      const identityBottom = $identity.getBoundingClientRect().bottom
-      const isWrapped = Array.from($content).some(
-        ($item) => $item.getBoundingClientRect().top >= identityBottom
+      const referenceBottom = $wrapReference.getBoundingClientRect().bottom
+      const isWrapped = Array.from($wrapItems).some(
+        ($item) => $item.getBoundingClientRect().top >= referenceBottom
       )
 
       this.$root.toggleAttribute('data-wrapped', isWrapped)
@@ -23,8 +25,8 @@ export class MOJHeader extends Component {
 
     const resizeObserver = new ResizeObserver(updateWrappedState)
     resizeObserver.observe(this.$root)
-    resizeObserver.observe($identity)
-    $content.forEach(($item) => resizeObserver.observe($item))
+    resizeObserver.observe($wrapReference)
+    $wrapItems.forEach(($item) => resizeObserver.observe($item))
     updateWrappedState()
   }
 

@@ -44,7 +44,7 @@
 {% endmacro %}
 
 {% macro _account(params) %}
-  <div class="moj-header__content">
+  <div class="moj-header__content js-moj-header__wrap-item">
     <nav class="moj-header__account {% if params.classes %} {{ params.classes }}{% endif %}" {% if (params.label) %} aria-label="{{ params.label }}" {% endif %} {{ govukAttributes(params.attributes) }}>
       <span class="moj-header__user">{{ params.user.text }}</span>
       <ul class="moj-header__list moj-header__list--account">
@@ -68,7 +68,7 @@
 {% endmacro %}
 
 {% macro _navigation(params) %}
-  <div class="moj-header__content">
+  <div class="moj-header__content js-moj-header__wrap-item">
     <nav class="moj-header__navigation {% if params.classes %} {{ params.classes }}{% endif %}" {% if (params.label) %} aria-label="{{ params.label }}" {% endif %} {{ govukAttributes(params.attributes) }}>
       <ul class="moj-header__list moj-header__list--navigation">
         {%- for item in params.items %}
@@ -76,7 +76,7 @@
            {% if item.href %}
               <a class="moj-header__link" href="{{ item.href }}" {{ 'aria-current="page"' | safe if item.active }} {{ govukAttributes(item.attributes) }}>
                 {{- item.html | safe if item.html else item.text -}}
-                </a>
+              </a>
             {% else %}
               <span class="">
                 {{- item.html | safe if item.html else item.text -}}
@@ -91,7 +91,7 @@
 
 <header class="moj-header {{ classNames }}" role="banner" {{ govukAttributes(params.attributes) }} data-module="moj-header">
   <div class="moj-header__container {{ containerClassNames }}">
-    <div class="moj-header__identity">
+    <div class="moj-header__identity js-moj-header__wrap-reference">
       {{ mojLogo({ logo: params.logoType, classes: "moj-header__logo"}) }}
       {{ _organisationLabel(params.organisationLabel) if (params.organisationLabel) }}
       {{ _serviceLabel(params.serviceLabel) if (params.serviceLabel) }}
