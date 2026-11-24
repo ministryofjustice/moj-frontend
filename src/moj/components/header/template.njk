@@ -4,7 +4,7 @@
 
 {% set classNames = "moj-header " %}
 {% set containerClassNames = "moj-header__container " %}
-{% set hasAccount = (params.account.user or params.account.signOutLink) %}
+{% set hasAccount = (params.account.username or params.account.signOutLink) %}
 {% set hasNavigation = params.navigation.items | length %}
 
 {%- if params.classes %}
@@ -45,10 +45,10 @@
 
 {% macro _account(params) %}
   <div class="moj-header__content js-moj-header__wrap-item">
-    <nav class="moj-header__account {% if params.classes %} {{ params.classes }}{% endif %}" {% if (params.label) %} aria-label="{{ params.label }}" {% endif %} {{ govukAttributes(params.attributes) }}>
-      <span class="moj-header__user">{{ params.user.text }}</span>
+    <nav class="moj-header__account {% if params.classes %} {{ params.classes }}{% endif %}" {% if (params.label) %} aria-label="{{ params.label | default('Account navigation') }}" {% endif %} {{ govukAttributes(params.attributes) }}>
+      <span class="moj-header__user">{{ params.username }}</span>
       <ul class="moj-header__list moj-header__list--account">
-        {% if params.user and params.manageLink.href %}
+        {% if params.username and params.manageLink.href %}
           <li class="moj-header__list-item">
               <a class="moj-header__link " href="{{ params.manageLink.href }}">
                 {{- params.manageLink.html | safe if params.manageLink.html else params.manageLink.text | default('Manage your details') -}}
@@ -69,7 +69,7 @@
 
 {% macro _navigation(params) %}
   <div class="moj-header__content js-moj-header__wrap-item">
-    <nav class="moj-header__navigation {% if params.classes %} {{ params.classes }}{% endif %}" {% if (params.label) %} aria-label="{{ params.label }}" {% endif %} {{ govukAttributes(params.attributes) }}>
+    <nav class="moj-header__navigation {% if params.classes %} {{ params.classes }}{% endif %}" {% if (params.label) %} aria-label="{{ params.label | default('Navigation') }}" {% endif %} {{ govukAttributes(params.attributes) }}>
       <ul class="moj-header__list moj-header__list--navigation">
         {%- for item in params.items %}
           <li class="moj-header__list-item">
@@ -92,7 +92,7 @@
 <header class="moj-header {{ classNames }}" role="banner" {{ govukAttributes(params.attributes) }} data-module="moj-header">
   <div class="moj-header__container {{ containerClassNames }}">
     <div class="moj-header__identity js-moj-header__wrap-reference">
-      {{ mojLogo({ logo: params.logoType, classes: "moj-header__logo"}) }}
+      {{ mojLogo({ type: params.logoType, classes: "moj-header__logo"}) }}
       {{ _organisationLabel(params.organisationLabel) if (params.organisationLabel) }}
       {{ _serviceLabel(params.serviceLabel) if (params.serviceLabel) }}
       {% if params.tag %}
