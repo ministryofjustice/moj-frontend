@@ -74,6 +74,7 @@
 
 .moj-header__logo {
   flex-shrink: 0;
+  padding-bottom: 4px;
 }
 
 .moj-header__logo + a,
@@ -152,10 +153,6 @@
   &:focus {
     color: govuk-colour("black");
   }
-}
-
-.moj-header__link[aria-current="page"]:not(:hover) {
-  text-decoration: none;
 }
 
 .moj-header__account {
