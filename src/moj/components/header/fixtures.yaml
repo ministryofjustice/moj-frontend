@@ -1,0 +1,224 @@
+examples:
+  - name: default
+    options:
+      organisationLabel:
+        text: Ministry of Justice
+        href: /organisation
+      serviceLabel:
+        text: Service name
+        href: /service
+
+  - name: without labels
+    options: {}
+
+  - name: organisation only
+    options:
+      organisationLabel:
+        text: Ministry of Justice
+
+  - name: service only
+    options:
+      serviceLabel:
+        text: Service name
+
+  - name: labels with html
+    options:
+      organisationLabel:
+        text: Ignored organisation
+        html: <strong>Ministry of Justice</strong>
+        href: /organisation
+      serviceLabel:
+        text: Ignored service
+        html: <strong>Service name</strong>
+        href: /service
+
+  - name: unlinked labels with html
+    options:
+      organisationLabel:
+        html: <strong>Ministry of Justice</strong>
+      serviceLabel:
+        html: <strong>Service name</strong>
+
+  - name: labels with escaped text
+    options:
+      organisationLabel:
+        text: <strong>Ministry of Justice</strong>
+        href: /organisation
+      serviceLabel:
+        text: <strong>Service name</strong>
+
+  - name: crown logo
+    options:
+      logoType: crown
+
+  - name: crest logo
+    options:
+      logoType: crest
+
+  - name: with classes and attributes
+    options:
+      classes: custom-header
+      containerClasses: custom-container
+      attributes:
+        id: service-header
+        data-custom: header-value
+
+  - name: with tag
+    options:
+      tag:
+        text: Official sensitive
+        classes: govuk-tag--red
+        attributes:
+          data-custom: tag-value
+
+  - name: tag with html
+    options:
+      tag:
+        text: Ignored tag
+        html: <span>Official sensitive</span>
+
+  - name: with account
+    options:
+      account:
+        username: A.Name
+        manageLink:
+          href: /account
+        signOutLink:
+          href: /sign-out
+
+  - name: account with custom options
+    options:
+      account:
+        username: A.Name
+        label: Your account
+        classes: custom-account
+        attributes:
+          data-custom: account-value
+        manageLink:
+          text: Update your account
+          href: /account
+        signOutLink:
+          text: Log out
+          href: /sign-out
+
+  - name: account with html
+    options:
+      account:
+        username: <strong>A.Name</strong>
+        manageLink:
+          text: Ignored manage link
+          html: <strong>Update your account</strong>
+          href: /account
+        signOutLink:
+          text: Ignored sign-out link
+          html: <strong>Log out</strong>
+          href: /sign-out
+
+  - name: account with username only
+    options:
+      account:
+        username: A.Name
+
+  - name: account with sign-out only
+    options:
+      account:
+        manageLink:
+          href: /account
+        signOutLink:
+          href: /sign-out
+
+  - name: account links without href
+    options:
+      account:
+        username: A.Name
+        manageLink:
+          text: Update your account
+        signOutLink:
+          text: Log out
+
+  - name: with navigation
+    options:
+      navigation:
+        label: Service navigation
+        classes: custom-navigation
+        attributes:
+          data-custom: navigation-value
+        items:
+          - text: Cases
+            href: /cases
+            active: true
+            attributes:
+              data-custom: link-value
+          - text: Help
+            href: /help
+            active: false
+          - text: Signed in as A.Name
+
+  - name: navigation without label
+    options:
+      navigation:
+        items:
+          - text: Cases
+            href: /cases
+
+  - name: navigation with html
+    options:
+      navigation:
+        items:
+          - text: Ignored link
+            html: <strong>Cases</strong>
+            href: /cases
+          - text: Ignored item
+            html: <strong>Signed in as A.Name</strong>
+
+  - name: navigation with escaped text
+    options:
+      navigation:
+        items:
+          - text: <strong>Cases</strong>
+            href: /cases
+          - text: <strong>Signed in as A.Name</strong>
+
+  - name: empty navigation
+    options:
+      navigation:
+        items: []
+
+  - name: account before navigation
+    options:
+      account:
+        username: A.Name
+      navigation:
+        items:
+          - text: Cases
+            href: /cases
+
+  - name: navigation with incomplete account
+    options:
+      account:
+        manageLink:
+          href: /account
+      navigation:
+        items:
+          - text: Cases
+            href: /cases
+
+  - name: with end slot
+    options:
+      organisationLabel:
+        text: Ministry of Justice
+      slots:
+        end: <a class="custom-content" href="/language" lang="cy">Cymraeg</a>
+      account:
+        username: A.Name
+      navigation:
+        items:
+          - text: Cases
+            href: /cases
+
+  - name: empty end slot
+    options:
+      slots:
+        end: ''
+      account:
+        username: A.Name

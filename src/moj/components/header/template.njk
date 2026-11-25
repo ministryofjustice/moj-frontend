@@ -21,7 +21,7 @@
 
 {% macro _organisationLabel(params) %}
     {% if params.href -%}
-      <a class="moj-header__organisation-name moj-header__link" {% if params.href %} href="{{ params.href | default("/") }}" {% endif %}>
+      <a class="moj-header__organisation-name moj-header__link" {% if params.href %} href="{{ params.href | default("/", true) }}" {% endif %}>
         {{- params.html | safe if params.html else params.text -}}
       </a>
     {% else -%}
@@ -33,7 +33,7 @@
 
 {% macro _serviceLabel(params) %}
     {% if params.href -%}
-      <a class="moj-header__service-name moj-header__link" {% if params.href %} href="{{ params.href | default("/") }}" {% endif %}>
+      <a class="moj-header__service-name moj-header__link" {% if params.href %} href="{{ params.href | default("/", true) }}" {% endif %}>
         {{- params.html | safe if params.html else params.text -}}
       </a>
     {% else -%}
@@ -50,14 +50,14 @@
       <ul class="moj-header__list moj-header__list--account">
         {% if params.username and params.manageLink.href %}
           <li class="moj-header__list-item">
-              <a class="moj-header__link " href="{{ params.manageLink.href }}">
+              <a class="moj-header__link " href="{{ params.manageLink.href | default('#', true)}}">
                 {{- params.manageLink.html | safe if params.manageLink.html else params.manageLink.text | default('Manage your details') -}}
                 </a>
           </li>
         {% endif %}
         {% if params.signOutLink.href %}
             <li class="moj-header__list-item">
-              <a class="moj-header__link" href="{{ params.signOutLink.href }}">
+              <a class="moj-header__link" href="{{ params.signOutLink.href | default('#', true) }}">
                 {{- params.signOutLink.html | safe if params.signOutLink.html else params.signOutLink.text | default('Sign out') -}}
               </a>
             </li>

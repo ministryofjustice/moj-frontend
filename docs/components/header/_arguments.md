@@ -17,16 +17,16 @@
 
 | Name | Type   | Required | Description                                                                                         |
 | ---- | ------ | -------- | --------------------------------------------------------------------------------------------------- |
-| text | string | Yes      | Text for the organisation name. Ignored if `html` is provided.                          |
-| html | string | Yes      | HTML for the organisation name. If provided, `text` is ignored.                         |
+| text | string | Yes      | If `html` is set, this is not required. Text for the organisation name. If `html` is provided, the `text`option will be ignored.                          |
+| html | string | Yes      | If `text` is set, this is not required. HTML for the organisation name. If `html` is provided, the `text`option will be ignored.                         |
 | href | string | No       | URL to link the organisation name to. If omitted, the name is displayed as text.                   |
 
 ### serviceLabel
 
 | Name | Type   | Required | Description                                                                  |
 | ---- | ------ | -------- | ---------------------------------------------------------------------------- |
-| text | string | Yes      | Text for the service name. Ignored if `html` is provided.                   |
-| html | string | Yes      | HTML for the service name. If provided, `text` is ignored.                  |
+| text | string | Yes      | If `html` is set, this is not required. Text for the service name. If `html` is provided, the `text`option will be ignored.                   |
+| html | string | Yes      | If `text` is set, this is not required. HTML for the service name. If `html` is provided, the `text`option will be ignored.                  |
 | href | string | No       | URL to link the service name to. If omitted, the name is displayed as text. |
 
 ### account
@@ -45,8 +45,8 @@
 | Name | Type   | Required | Description                                                 |
 | ---- | ------ | -------- | ----------------------------------------------------------- |
 | href | string | Yes      | URL for the link. |
-| text | string | No       | Text for the link. Ignored if `html` is provided. |
-| html | string | No       | HTML for the link. If provided, `text` is ignored.          |
+| text | string | No       | If `html` is set, this is not required. Text for the link. If `html` is provided, the `text`option will be ignored. |
+| html | string | No       | If `text` is set, this is not required. HTML for the link. If `html` is provided, the `text`option will be ignored.          |
 
 ### navigation
 
@@ -62,8 +62,8 @@
 | Name       | Type    | Required | Description                                                                                                                        |
 | ---------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | href       | string  | No       | URL for the navigation link. If omitted, the item is displayed as text.                                                            |
-| text       | string  | Yes      | Text to use within the navigation item. Ignored if `html` is provided.                                               |
-| html       | string  | Yes      | HTML to use within the navigation item. If provided, `text` is ignored.                                              |
+| text       | string  | Yes      | If `html` is set, this is not required. Text to use within the navigation item. If `html` is provided, the `text`option will be ignored.                                                             |
+| html       | string  | Yes      | If `text` is set, this is not required. HTML to use within the navigation item. If `html` is provided, the `text`option will be ignored.                                              |
 | active     | boolean | No       | Whether the navigation item is the current page. If `true`, it is marked with `aria-current="page"`.                              |
 | attributes | object  | No       | HTML attributes (for example, data attributes) to add to the navigation link.                                                     |
 
