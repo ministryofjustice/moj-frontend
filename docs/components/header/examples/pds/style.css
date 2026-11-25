@@ -1,0 +1,24 @@
+body {
+  padding: 0 !important;
+}
+
+.moj-search {
+  margin-bottom: 0;
+}
+
+.probation-common-header {
+  height: 70px;
+}
+
+@media (min-width: 57.8125em) {
+  .probation-common-header__button-container {
+    top: 0px;
+  }
+}
+
+.probation-common-header__pushdown-menu {
+  position: absolute;
+  top: 70px;
+  left: 0px;
+  right: 0px;
+}
