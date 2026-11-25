@@ -1,0 +1,73 @@
+---
+layout: layouts/example.njk
+title: Header with GOV.UK Service Navigation (example)
+---
+
+{%- from "moj/components/header/macro.njk" import mojHeader -%}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{%- from "moj/components/search/macro.njk" import mojSearch -%}
+
+{% set endHtml %}
+  <div class="moj-search-toggle" data-module="moj-search-toggle" data-toggle-button.text="Find case">
+    <div class="moj-search-toggle__toggle"></div>
+    <div class="moj-search-toggle__search">
+      {{ mojSearch({
+        classes: "moj-search--ondark moj-search--toggle moj-js-hidden",
+        input: {
+          id: "search2",
+          name: "search2"
+        },
+        label: {
+          classes: "govuk-visually-hidden",
+          text: "Search"
+        },
+        hint: {
+          text: "Enter case number, for example 123456"
+        },
+        button: {
+          text: "Search"
+        }
+      }) }}
+    </div>
+  </div>
+{% endset %}
+
+{{ mojHeader({
+  organisationLabel: {
+    text: "Ministry of Justice",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "Service name",
+    href: "#"
+  },
+  navigation: {
+    label: "Account navigation",
+    items: [{
+      text: "Account name",
+      href: "#",
+      active: true
+    }, {
+      text: "Sign out",
+      href: "#"
+    }]
+  }
+}) }}
+{{ govukServiceNavigation({
+  navigation: [{
+    text: "Home",
+    href: "#"
+  }, {
+    text: "About",
+    href: "#"
+  }, {
+    text: "Contact",
+    href: "#"
+  }],
+  slots: {
+    end: {
+      html: endHtml,
+      align: 'inline'
+    }
+  }
+}) }}
