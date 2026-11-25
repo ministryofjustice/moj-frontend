@@ -18,6 +18,12 @@ Any further pushes to the PR will automatically trigger a rebuild and redeploy
 of the preview site. You can view the preview site to verify that your changes
 look and function as expected before merging the PR.
 
+PR previews are static by default. Add the `preview: contributions` label to
+include the contributions app and its virus scanner. Adding or removing this
+label updates an active preview; without it, contribution pages are unavailable.
+The `preview: request` or `preview: active 👀` label is still needed for a
+preview to be deployed.
+
 ## Deploying to production
 
 Once your changes have been reviewed and approved, and all the GitHub automated

@@ -2,7 +2,7 @@ name: Deploy a tagged PR for preview
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize, labeled]
+    types: [opened, reopened, synchronize, labeled, unlabeled]
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -12,9 +12,14 @@ env:
 
 jobs:
   push-to-preview:
+    if: "${{ github.event.action != 'unlabeled' || github.event.label.name == 'preview: contributions' }}"
+    concurrency:
+      group: preview-pr-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     env:
       SHOULD_DEPLOY: "${{ contains(github.event.pull_request.labels.*.name, 'preview: request') || contains(github.event.pull_request.labels.*.name, 'preview: active 👀') }}"
+      INCLUDE_CONTRIBUTIONS: "${{ contains(github.event.pull_request.labels.*.name, 'preview: contributions') }}"
     permissions:
       id-token: write
       contents: read
@@ -32,13 +37,23 @@ jobs:
       - run: |
           if [[ "${SHOULD_DEPLOY}" == 'true' ]]; then
             set -euo pipefail
+            if [[ "${INCLUDE_CONTRIBUTIONS}" == 'true' ]]; then
+              export IMAGE_TAG="${IMAGE_TAG}-contributions"
+              TEMPLATE=kubernetes-deploy-preview.tpl
+            else
+              export IMAGE_TAG="${IMAGE_TAG}-static"
+              TEMPLATE=kubernetes-deploy-preview-static.tpl
+              cp docker/nginx-preview-static.conf docker/nginx-preview.conf
+            fi
             envsubst '${BRANCH}' < docker/nginx-preview.conf > docker/nginx-preview.conf.tmp
             mv docker/nginx-preview.conf.tmp docker/nginx-preview.conf
             docker build --target=preview -t "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}" .
-            docker build --target=preview-express-app -t "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}" .
             docker push "${REGISTRY}/${REPOSITORY}:${IMAGE_TAG}"
-            docker push "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}"
-            envsubst < kubernetes-deploy-preview.tpl > kubernetes-deploy-preview.yaml
+            if [[ "${INCLUDE_CONTRIBUTIONS}" == 'true' ]]; then
+              docker build --target=preview-express-app -t "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}" .
+              docker push "${REGISTRY}/${REPOSITORY}:express-${IMAGE_TAG}"
+            fi
+            envsubst < "${TEMPLATE}" > kubernetes-deploy-preview.yaml
           else
             echo 'Preview deployment skipped: the pull request has no active preview label.'
           fi
@@ -57,6 +72,9 @@ jobs:
             kubectl config set-context "${KUBE_CLUSTER}" --cluster="${KUBE_CLUSTER}" --user=deploy-user --namespace="${KUBE_NAMESPACE}"
             kubectl config use-context "${KUBE_CLUSTER}"
             kubectl -n "${KUBE_NAMESPACE}" apply -f kubernetes-deploy-preview.yaml
+            if [[ "${INCLUDE_CONTRIBUTIONS}" != 'true' ]]; then
+              kubectl -n "${KUBE_NAMESPACE}" delete service "express-app-pr-${PR_NUMBER}" --ignore-not-found
+            fi
           else
             echo 'Preview deployment cleanup skipped: deployment was not requested.'
           fi
@@ -64,6 +82,7 @@ jobs:
           KUBE_CERT: ${{ secrets.KUBE_CERT }}
           KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
           KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
       - name: Update PR with success
         if: env.SHOULD_DEPLOY == 'true'
         env:
@@ -77,6 +96,8 @@ jobs:
             echo '# Preview deployment'
             echo
             echo "https://moj-frontend-pr-${PR_NUMBER}.apps.live.cloud-platform.service.justice.gov.uk"
+            echo
+            echo "Contributions app enabled: ${INCLUDE_CONTRIBUTIONS}"
           } >> "$GITHUB_STEP_SUMMARY"
       - name: Report skipped preview deployment
         if: env.SHOULD_DEPLOY != 'true'

@@ -30,7 +30,7 @@ jobs:
             kubectl config use-context "${KUBE_CLUSTER}"
             kubectl delete deployment "moj-frontend-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"
             kubectl delete service "moj-frontend-service-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"
-            kubectl delete service "express-app-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"
+            kubectl delete service "express-app-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}" --ignore-not-found
             kubectl delete ingress "moj-frontend-ingress-pr-${PR_NUMBER}" -n "${KUBE_NAMESPACE}"
           else
             echo 'Preview cleanup skipped: the pull request has no active preview label.'

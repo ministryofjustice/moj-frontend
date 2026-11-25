@@ -22,6 +22,7 @@
     "start:e2e": "ENV=test nodemon --delay 1000ms app/app.js",
     "test": "concurrently npm:test:* --group --prefix none",
     "test:e2e": "npx playwright test",
+    "test:deployment": "jest --color tests/deployment/",
     "test:components": "jest --color src/",
     "test:helpers": "jest --color helpers/",
     "test:middleware": "jest --color middleware/",
