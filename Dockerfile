@@ -89,7 +89,7 @@ FROM base AS staging-express-app
 COPY package.json package-lock.json ./
 COPY .npmrc .npmrc
 COPY .allowed-scripts.mjs .allowed-scripts.mjs
-RUN npm run setup
+RUN npm run setup && npm prune --omit=dev
 COPY src src
 COPY app app
 COPY 11ty 11ty
@@ -107,7 +107,7 @@ FROM base AS preview-express-app
 COPY package.json package-lock.json ./
 COPY .npmrc .npmrc
 COPY .allowed-scripts.mjs .allowed-scripts.mjs
-RUN npm run setup
+RUN npm run setup && npm prune --omit=dev
 COPY src src
 COPY app app
 COPY 11ty 11ty
@@ -125,7 +125,7 @@ FROM base AS production-express-app
 COPY package.json package-lock.json ./
 COPY .npmrc .npmrc
 COPY .allowed-scripts.mjs .allowed-scripts.mjs
-RUN npm run setup
+RUN npm run setup && npm prune --omit=dev
 COPY src src
 COPY app app
 COPY 11ty 11ty
