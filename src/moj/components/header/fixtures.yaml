@@ -222,3 +222,37 @@ examples:
         end: ''
       account:
         username: A.Name
+
+  - name: responsive account
+    options:
+      organisationLabel:
+        text: Ministry of Justice
+      serviceLabel:
+        text: Service name
+      account:
+        username: A.Name
+        manageLink:
+          href: /account
+        signOutLink:
+          href: /sign-out
+
+  - name: responsive navigation
+    options:
+      organisationLabel:
+        text: Ministry of Justice
+      serviceLabel:
+        text: Service name
+      navigation:
+        label: Service navigation
+        items:
+          - text: Cases
+            href: /cases
+          - text: Help
+            href: /help
+
+  - name: multiple wrap items
+    options:
+      slots:
+        end: |
+          <div class="moj-header__content js-moj-header__wrap-item custom-first">First item</div>
+          <div class="moj-header__content js-moj-header__wrap-item custom-second">Second item</div>
