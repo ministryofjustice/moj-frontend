@@ -6,170 +6,190 @@
    ========================================================================== */
 
 .moj-header {
-  padding-top: govuk-spacing(3);
-  border-bottom: 10px solid $govuk-brand-colour;
-  background-color: govuk-colour("black");
+  position: relative;
+  color: govuk-colour("white");
+  background-color: govuk-organisation-colour("ministry-of-justice");
 }
 
 .moj-header__container {
-  position: relative;
   @include moj-width-container;
-  @include govuk-clearfix;
-}
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
+  gap: govuk-spacing(3) govuk-spacing(7);
+  padding-top: govuk-spacing(3);
+  padding-bottom: govuk-spacing(3);
 
-.moj-header__logo {
-  padding-bottom: govuk-spacing(1);
-
-  @include govuk-media-query($from: desktop) {
-    float: left;
+  @include govuk-media-query($from: "tablet") {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
-.moj-header__logotype-crown {
-  position: relative;
-  top: -4px;
-  margin-right: govuk-spacing(1);
-  vertical-align: top;
-}
+.moj-header__identity {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: govuk-spacing(2);
+  margin-right: auto;
 
-.moj-header__logotype-crest {
-  position: relative;
-  top: -8px;
-  margin-right: govuk-spacing(1);
-  vertical-align: top;
+  @include govuk-media-query($from: "desktop") {
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+  }
 }
 
 .moj-header__content {
-  padding-bottom: govuk-spacing(2);
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 1;
+  align-items: center;
+  gap: 0 govuk-spacing(4);
 
-  @include govuk-media-query($from: desktop) {
-    float: right;
+  /* Allows the account section to shrink on smaller screens */
+  min-width: min(100%, 32ch);
+
+  /* Prevents the account section from overflowing the header on smaller screens
+   * with a long username/email
+   */
+  max-width: 100%;
+
+  @include govuk-media-query($from: "tablet") {
+    flex: 1 1 32ch;
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    justify-content: flex-end;
   }
 }
 
-.moj-header__link,
-.moj-header__link > a {
-  display: inline-block;
-  margin-bottom: -1px;
-  overflow: hidden; // Fixes focus gaps in background colour
-  border-bottom: 1px solid transparent;
+/* The navigation block should not shrink on larger screens, it should wrap onto
+ * a new line if it doesn't fit */
+.moj-header--with-navigation .moj-header__content {
+  @include govuk-media-query($from: "tablet") {
+    flex: 1 1 auto;
+  }
+}
+
+.moj-header__logo {
+  flex-shrink: 0;
+  padding-bottom: 4px;
+}
+
+.moj-header__organisation-name,
+.moj-header__service-name {
+  @include govuk-font($size: 24);
   color: govuk-colour("white");
-  line-height: 25px; // Override due to alignment issue in Chrome
-  vertical-align: middle;
+}
+
+.moj-header__organisation-name.moj-header__link,
+.moj-header__service-name.moj-header__link {
   @include govuk-link-common;
-  @include govuk-link-style-default;
-
-  &:link,
-  &:visited,
-  &:hover,
-  &:active {
-    color: govuk-colour("white");
-    text-decoration: none;
-  }
-
-  &:hover {
-    border-color: govuk-colour("white");
-  }
-
-  &:focus {
-    border-color: transparent;
-    color: govuk-colour("black");
-  }
-
-  &--organisation-name {
-    vertical-align: middle;
-    @include govuk-font($size: 24, $weight: "bold");
-
-    &:hover {
-      border-color: transparent;
-    }
-
-    @include govuk-media-query($until: tablet) {
-      margin-top: govuk-spacing(1);
-    }
-  }
-
-  &--service-name {
-    vertical-align: middle;
-    @include govuk-font($size: 24, $weight: "normal");
-
-    @include govuk-media-query($until: desktop) {
-      display: block;
-    }
-    @include govuk-media-query($from: desktop) {
-      margin-left: govuk-spacing(1);
-    }
-
-    &:hover {
-      border-color: transparent;
-    }
-  }
+  @include govuk-link-style-inverse;
+  @include govuk-link-style-no-underline;
+  @include govuk-font($size: 24);
 }
 
-.moj-header__link a {
-  margin-bottom: 1px;
-  vertical-align: text-bottom;
-
-  &:hover {
-    border-color: govuk-colour("white");
-  }
-
-  @include govuk-media-query($until: desktop) {
-    margin-bottom: -1px;
-    vertical-align: middle;
-  }
-}
-// stylelint-disable-next-line selector-no-qualifying-type
-span.moj-header__link {
-  &:hover {
-    border-color: transparent;
-  }
+.moj-header__logo + .moj-header__organisation-name.moj-header__link,
+.moj-header__logo + .moj-header__service-name.moj-header__link,
+.moj-header__logo + span {
+  font-weight: bold;
 }
 
-// Navigation
-.moj-header__navigation {
-  margin-top: govuk-spacing(1) - 2px;
-  color: govuk-colour("white");
-}
-
-.moj-header__navigation-list {
+.moj-header__list {
+  display: flex;
+  align-items: center;
+  gap: govuk-spacing(2);
   margin: 0;
   padding: 0;
-  font-size: 0; // Removes white space when using inline-block on child element.
   list-style: none;
+
+  @include govuk-media-query($from: "tablet") {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: govuk-spacing(3);
+    margin-top: 0;
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    justify-content: flex-end;
+  }
 }
 
-.moj-header__navigation-item {
+.moj-header__list--navigation {
+  flex-wrap: wrap;
+}
+
+.moj-header__list-item {
   display: inline-block;
-  margin-right: govuk-spacing(4);
+  text-wrap: nowrap;
   @include govuk-font(19);
-
-  &:last-child {
-    margin-right: 0;
-  }
+  padding: 2px 0;
 }
 
-.moj-header__navigation-link {
+.moj-header__link {
   @include govuk-link-common;
-  @include govuk-link-style-default;
+  @include govuk-link-style-inverse;
+  @include govuk-link-style-no-underline;
 
-  &:link,
-  &:visited,
-  &:active {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  &:hover {
-    // stylelint-disable-next-line declaration-no-important
-    text-decoration: underline !important;
-  }
-
-  &:focus {
-    color: govuk-colour("black");
+  &[aria-current="page"] {
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
-.moj-header__navigation-link[aria-current="page"] {
-  text-decoration: none;
+.moj-header__list-item:has(a[aria-current="page"]) {
+  box-shadow: 0 6px govuk-functional-colour("brand");
+}
+
+.moj-header__list-item:has(a[aria-current="page"]:hover) {
+  box-shadow: 0 6px govuk-functional-colour("inverse-text");
+}
+
+.moj-header__account {
+  @include govuk-font($size: 19);
+  max-width: 100%;
+  color: govuk-colour("white");
+  text-align: left;
+}
+
+.moj-header__user {
+  display: block;
+  max-width: 100%;
+  overflow: clip;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+/*
+If JavaScript is enabled the username can be right aligned on larger screens.
+JavaScript is used to detect if the account section has wrapped onto a new line
+and add the `data-wrapped` attribute. This is used to left align the username
+and navigation items.
+*/
+.js-enabled .moj-header__user {
+  @include govuk-media-query($from: "tablet") {
+    text-align: right;
+  }
+}
+
+.js-enabled .moj-header[data-wrapped] {
+  .moj-header__user {
+    @include govuk-media-query($from: "tablet") {
+      text-align: left;
+    }
+  }
+
+  .moj-header__content {
+    justify-content: flex-start;
+  }
+
+  .moj-header__content .moj-header__list {
+    justify-content: flex-start;
+    margin-top: 5px;
+  }
 }
