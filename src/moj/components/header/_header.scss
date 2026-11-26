@@ -123,9 +123,9 @@
 
 .moj-header__list-item {
   display: inline-block;
+  padding: 2px 0;
   text-wrap: nowrap;
   @include govuk-font(19);
-  padding: 2px 0;
 }
 
 .moj-header__link {
@@ -159,10 +159,10 @@
   display: block;
   max-width: 100%;
   overflow: clip;
+  font-weight: bold;
   text-align: left;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-weight: bold;
 }
 
 /*
