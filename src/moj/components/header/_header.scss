@@ -77,37 +77,24 @@
   padding-bottom: 4px;
 }
 
-.moj-header__logo + a,
-.moj-header__logo + span {
-  font-weight: bold;
-}
-
 .moj-header__organisation-name,
 .moj-header__service-name {
   @include govuk-font($size: 24);
   color: govuk-colour("white");
+}
 
-  &.moj-header__link {
-    &:link,
-    &:visited {
-      color: govuk-colour("white");
-      text-decoration: none;
-    }
+.moj-header__organisation-name.moj-header__link,
+.moj-header__service-name.moj-header__link {
+  @include govuk-link-common;
+  @include govuk-link-style-inverse;
+  @include govuk-link-style-no-underline;
+  @include govuk-font($size: 24);
+}
 
-    &:hover,
-    &:active {
-      text-decoration: underline;
-    }
-
-    &:focus,
-    &:active {
-      color: govuk-colour("black");
-    }
-
-    &:hover {
-      border-color: govuk-colour("white");
-    }
-  }
+.moj-header__logo + .moj-header__organisation-name.moj-header__link,
+.moj-header__logo + .moj-header__service-name.moj-header__link,
+.moj-header__logo + span {
+  font-weight: bold;
 }
 
 .moj-header__list {
@@ -138,21 +125,27 @@
   display: inline-block;
   text-wrap: nowrap;
   @include govuk-font(19);
+  padding: 2px 0;
 }
 
 .moj-header__link {
   @include govuk-link-common;
-  @include govuk-link-style-default;
+  @include govuk-link-style-inverse;
+  @include govuk-link-style-no-underline;
 
-  &:link,
-  &:visited,
-  &:active {
-    color: govuk-colour("white");
+  &[aria-current="page"] {
+    &:hover {
+      text-decoration: none;
+    }
   }
+}
 
-  &:focus {
-    color: govuk-colour("black");
-  }
+.moj-header__list-item:has(a[aria-current="page"]) {
+  box-shadow: 0 6px govuk-functional-colour("brand");
+}
+
+.moj-header__list-item:has(a[aria-current="page"]:hover) {
+  box-shadow: 0 6px govuk-functional-colour("inverse-text");
 }
 
 .moj-header__account {
@@ -169,6 +162,7 @@
   text-align: left;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 /*
