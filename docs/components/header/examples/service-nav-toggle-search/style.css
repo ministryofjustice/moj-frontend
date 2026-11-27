@@ -1,0 +1,23 @@
+body {
+  padding: 0 !important;
+}
+
+.moj-search {
+  margin-bottom: 0;
+}
+
+.js-enabled .moj-search-toggle__search {
+  background-color: #f4f8fb;
+}
+
+@media (min-width: 48.0625em) {
+  .js-enabled .moj-search-toggle__search {
+    position: absolute;
+    z-index: 10;
+    top: 54px;
+    right: -15px;
+    width: 450px;
+    border: 1px solid #8eb8dc;
+    border-top: none;
+  }
+}

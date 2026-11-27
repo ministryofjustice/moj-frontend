@@ -5,7 +5,7 @@
 ## Examples
 
 ```njk
-{{ mojHeader({
+{{ Header({
   organisationLabel: {
     text: 'Organisation name',
     href: '#'

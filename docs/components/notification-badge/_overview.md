@@ -22,11 +22,9 @@ You could use the notification badge to tell a user about a:
 - change to an appointment or booking, for example a cancellation
 - new or unread message
 
-This component is best used in a navigation link but may be OK in some other parts of a service.
+This component is best used in a navigation link but may be OK in some other parts of a service.  
 
-#### An example of the notification badge showing 3 case updates in the [primary navigation](/components/primary-navigation):
-
-<p><img src="{{ 'assets/images/notification-badge-example-count.png' | rev | url }}" alt="A red notification badge sits next to the active 'Cases' link in the primary navigation. A white number 3 sits inside the round badge. The page shows a table of cases. The first 3 rows have a status of 'To be reviewed'."></p>
+#### An example of the notification badge showing 3 case updates in the [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation/):
 
 ### When not to use
 
@@ -48,8 +46,8 @@ Consider also whether the component would be a good experience for people who wi
 
 There’s also the:
 
-- [GOV.UK notification banner](https://design-system.service.gov.uk/components/notification-banner/)
-- [GOV.UK tag](https://design-system.service.gov.uk/components/tag/)
-- [MOJ alert](/components/alert/)
-- [MOJ badge](/components/badge/)
+- [GOV.UK notification banner component](https://design-system.service.gov.uk/components/notification-banner/)
+- [GOV.UK tag component](https://design-system.service.gov.uk/components/tag/)
+- [alert component](/components/alert/)
+- [badge component](/components/badge/)
 
