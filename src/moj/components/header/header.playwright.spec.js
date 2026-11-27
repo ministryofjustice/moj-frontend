@@ -36,7 +36,7 @@ async function initialiseHeader(page) {
     const $header = document.querySelector('[data-module="moj-header"]')
     // @ts-expect-error MOJHeader is in page scope, not test scope
     new MOJHeader($header) // eslint-disable-line no-new, no-undef
-    const isWrapped = $header.hasAttribute('data-wrapped')
+    const isWrapped = $header.classList.contains('js-stacked')
 
     // Finish initial observer notifications before testing subsequent resizes.
     await new Promise((resolve) => {
@@ -71,11 +71,15 @@ test.describe('header', () => {
       expect(await initialiseHeader(page)).toBe(false)
       const $header = page.locator('.moj-header')
 
+      await expect($header).toHaveClass(/(?:^|\s)js-inline(?:\s|$)/)
+      await expect($header).not.toHaveClass(/(?:^|\s)js-stacked(?:\s|$)/)
       await expect($header).not.toHaveAttribute('data-wrapped')
       await page.setViewportSize({ width: 375, height: 900 })
-      await expect($header).toHaveAttribute('data-wrapped', '')
+      await expect($header).toHaveClass(/(?:^|\s)js-stacked(?:\s|$)/)
+      await expect($header).not.toHaveClass(/(?:^|\s)js-inline(?:\s|$)/)
       await page.setViewportSize({ width: 1440, height: 900 })
-      await expect($header).not.toHaveAttribute('data-wrapped')
+      await expect($header).toHaveClass(/(?:^|\s)js-inline(?:\s|$)/)
+      await expect($header).not.toHaveClass(/(?:^|\s)js-stacked(?:\s|$)/)
     })
   }
 
@@ -86,9 +90,8 @@ test.describe('header', () => {
     await setupPage(page, 'responsive account')
 
     expect(await initialiseHeader(page)).toBe(true)
-    await expect(page.locator('.moj-header')).toHaveAttribute(
-      'data-wrapped',
-      ''
+    await expect(page.locator('.moj-header')).toHaveClass(
+      /(?:^|\s)js-stacked(?:\s|$)/
     )
   })
 
@@ -99,15 +102,15 @@ test.describe('header', () => {
     await initialiseHeader(page)
     const $header = page.locator('.moj-header')
 
-    await expect($header).not.toHaveAttribute('data-wrapped')
+    await expect($header).toHaveClass(/(?:^|\s)js-inline(?:\s|$)/)
     await $header.evaluate(($element) => {
       $element.style.width = '550px'
     })
-    await expect($header).toHaveAttribute('data-wrapped', '')
+    await expect($header).toHaveClass(/(?:^|\s)js-stacked(?:\s|$)/)
     await $header.evaluate(($element) => {
       $element.style.removeProperty('width')
     })
-    await expect($header).not.toHaveAttribute('data-wrapped')
+    await expect($header).toHaveClass(/(?:^|\s)js-inline(?:\s|$)/)
   })
 
   test('initialises without any wrap items and leaves the wrapped state unset', async ({
@@ -120,8 +123,8 @@ test.describe('header', () => {
       'data-moj-header-init'
     )
     await page.setViewportSize({ width: 375, height: 900 })
-    await expect(page.locator('.moj-header')).not.toHaveAttribute(
-      'data-wrapped'
+    await expect(page.locator('.moj-header')).not.toHaveClass(
+      /(?:^|\s)js-(?:stacked|inline)(?:\s|$)/
     )
   })
 
@@ -140,8 +143,8 @@ test.describe('header', () => {
       'data-moj-header-init'
     )
     await page.setViewportSize({ width: 375, height: 900 })
-    await expect(page.locator('.moj-header')).not.toHaveAttribute(
-      'data-wrapped'
+    await expect(page.locator('.moj-header')).not.toHaveClass(
+      /(?:^|\s)js-(?:stacked|inline)(?:\s|$)/
     )
   })
 })

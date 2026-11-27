@@ -1,3 +1,4 @@
+@use "../../settings/measurements" as *;
 @use "../../objects/width-container" as *;
 @use "../../vendor/govuk-frontend" as *;
 
@@ -16,15 +17,19 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  align-items: stretch;
   gap: govuk-spacing(3) govuk-spacing(7);
-  padding-top: govuk-spacing(3);
-  padding-bottom: govuk-spacing(3);
 
-  @include govuk-media-query($from: "tablet") {
+  min-height: 68px;
+
+  @include govuk-media-query($from: "desktop") {
     flex-direction: row;
-    justify-content: space-between;
+    align-items: stretch;
+    gap: govuk-spacing(3) govuk-spacing(5);
   }
+}
+
+.moj-header--with-account .moj-header__container {
+  min-height: 80px;
 }
 
 .moj-header__identity {
@@ -33,42 +38,12 @@
   align-items: center;
   gap: govuk-spacing(2);
   margin-right: auto;
+  margin-top: govuk-spacing(3);
 
   @include govuk-media-query($from: "desktop") {
+    margin-top: 0;
     flex-wrap: nowrap;
     flex-shrink: 0;
-  }
-}
-
-.moj-header__content {
-  display: flex;
-  flex-wrap: wrap;
-  flex-shrink: 1;
-  align-items: center;
-  gap: 0 govuk-spacing(4);
-
-  /* Allows the account section to shrink on smaller screens */
-  min-width: min(100%, 32ch);
-
-  /* Prevents the account section from overflowing the header on smaller screens
-   * with a long username/email
-   */
-  max-width: 100%;
-
-  @include govuk-media-query($from: "tablet") {
-    flex: 1 1 32ch;
-  }
-
-  @include govuk-media-query($from: "desktop") {
-    justify-content: flex-end;
-  }
-}
-
-/* The navigation block should not shrink on larger screens, it should wrap onto
- * a new line if it doesn't fit */
-.moj-header--with-navigation .moj-header__content {
-  @include govuk-media-query($from: "tablet") {
-    flex: 1 1 auto;
   }
 }
 
@@ -98,34 +73,9 @@
 }
 
 .moj-header__list {
-  display: flex;
-  align-items: center;
-  gap: govuk-spacing(2);
   margin: 0;
   padding: 0;
   list-style: none;
-
-  @include govuk-media-query($from: "tablet") {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: govuk-spacing(3);
-    margin-top: 0;
-  }
-
-  @include govuk-media-query($from: "desktop") {
-    justify-content: flex-end;
-  }
-}
-
-.moj-header__list--navigation {
-  flex-wrap: wrap;
-}
-
-.moj-header__list-item {
-  display: inline-block;
-  padding: 2px 0;
-  text-wrap: nowrap;
-  @include govuk-font(19);
 }
 
 .moj-header__link {
@@ -140,56 +90,112 @@
   }
 }
 
-.moj-header__list-item:has(a[aria-current="page"]) {
-  box-shadow: 0 6px govuk-functional-colour("brand");
+.moj-header__navigation,
+.moj-header__account {
+  @include govuk-font(19);
+  margin-bottom: govuk-spacing(3);
 }
 
-.moj-header__list-item:has(a[aria-current="page"]:hover) {
-  box-shadow: 0 6px govuk-functional-colour("inverse-text");
+.moj-header__navigation {
+  display: flex;
+  align-items: stretch;
+
+  @include govuk-media-query($from: "tablet") {
+    margin-bottom: 0;
+  }
+}
+
+.moj-header__nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: govuk-spacing(2);
+
+  @include govuk-media-query($from: "tablet") {
+    flex-direction: row;
+  }
+}
+
+.moj-header__nav-list-item {
+  padding-left: govuk-spacing(3);
+
+  @include govuk-media-query($from: "tablet") {
+    padding-left: 0;
+    padding-bottom: govuk-spacing(3);
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.moj-header__nav-list-item a {
+  padding: govuk-spacing(2) 0;
+}
+
+.moj-header__nav-list-item--current {
+  box-shadow: 5px 0 inset govuk-colour("blue");
+
+  @include govuk-media-query($from: "tablet") {
+    box-shadow: 0px -5px inset govuk-colour("blue");
+  }
 }
 
 .moj-header__account {
-  @include govuk-font($size: 19);
+  min-width: 0;
   max-width: 100%;
-  color: govuk-colour("white");
-  text-align: left;
+  align-items: center;
+
+  @include govuk-media-query($from: "desktop") {
+    flex: 1 1 18ch;
+    max-width: min(100%, 32ch);
+    align-self: center;
+    margin-bottom: 0;
+    /* justify-self: flex-end; */
+    /* justify-content: flex-end; */
+  }
+}
+
+.moj-header__account-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: govuk-spacing(2);
+
+  @include govuk-media-query($from: "desktop") {
+    /* justify-content: flex-end; */
+    flex-wrap: nowrap;
+  }
+}
+
+.moj-header__account-list-item {
+  white-space: nowrap;
 }
 
 .moj-header__user {
   display: block;
-  max-width: 100%;
-  overflow: clip;
-  font-weight: bold;
-  text-align: left;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
+  font-weight: bold;
+  text-align: left;
 
-/*
-If JavaScript is enabled the username can be right aligned on larger screens.
-JavaScript is used to detect if the account section has wrapped onto a new line
-and add the `data-wrapped` attribute. This is used to left align the username
-and navigation items.
-*/
-.js-enabled .moj-header__user {
-  @include govuk-media-query($from: "tablet") {
-    text-align: right;
+  @include govuk-media-query($from: "desktop") {
+    /* text-align: right; */
   }
 }
 
-.js-enabled .moj-header[data-wrapped] {
-  .moj-header__user {
-    @include govuk-media-query($from: "tablet") {
-      text-align: left;
+.js-enabled .moj-header.js-stacked {
+  @include govuk-media-query($from: "desktop") {
+    /* If the header is still stacked on desktop, keep the top margin */
+    .moj-header__identity {
+      margin-top: govuk-spacing(3);
     }
-  }
 
-  .moj-header__content {
-    justify-content: flex-start;
-  }
-
-  .moj-header__content .moj-header__list {
-    justify-content: flex-start;
-    margin-top: 5px;
+    /* If the header is still stacked on desktop, keep the bottom margin */
+    .moj-header__account {
+      margin-bottom: govuk-spacing(3);
+    }
   }
 }

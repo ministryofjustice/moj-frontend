@@ -20,7 +20,8 @@ export class MOJHeader extends Component {
         ($item) => $item.getBoundingClientRect().top >= referenceBottom
       )
 
-      this.$root.toggleAttribute('data-wrapped', isWrapped)
+      this.$root.classList.toggle('js-stacked', isWrapped)
+      this.$root.classList.toggle('js-inline', !isWrapped)
     }
 
     const resizeObserver = new ResizeObserver(updateWrappedState)

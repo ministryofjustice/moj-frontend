@@ -44,19 +44,18 @@
 {% endmacro %}
 
 {% macro _account(params) %}
-  <div class="moj-header__content js-moj-header__wrap-item">
-    <nav class="moj-header__account {% if params.classes %} {{ params.classes }}{% endif %}" {% if (params.label) %} aria-label="{{ params.label | default('Account navigation') }}" {% endif %} {{ govukAttributes(params.attributes) }}>
+    <nav class="moj-header__account js-moj-header__wrap-item {% if params.classes %} {{ params.classes }}{% endif %}" {% if (params.label) %} aria-label="{{ params.label | default('Account navigation') }}" {% endif %} {{ govukAttributes(params.attributes) }}>
       <span class="moj-header__user">{{ params.username }}</span>
-      <ul class="moj-header__list moj-header__list--account">
+      <ul class="moj-header__list moj-header__account-list">
         {% if params.username and params.manageLink.href %}
-          <li class="moj-header__list-item">
+          <li class="moj-header__list-item moj-header__account-list-item">
               <a class="moj-header__link " href="{{ params.manageLink.href | default('#', true)}}">
                 {{- params.manageLink.html | safe if params.manageLink.html else params.manageLink.text | default('Manage your details') -}}
                 </a>
           </li>
         {% endif %}
         {% if params.signOutLink.href %}
-            <li class="moj-header__list-item">
+            <li class="moj-header__list-item moj-header__account-list-item">
               <a class="moj-header__link" href="{{ params.signOutLink.href | default('#', true) }}">
                 {{- params.signOutLink.html | safe if params.signOutLink.html else params.signOutLink.text | default('Sign out') -}}
               </a>
@@ -64,15 +63,13 @@
         {% endif %}
         </ul>
     </nav>
-  </div>
 {% endmacro %}
 
 {% macro _navigation(params) %}
-  <div class="moj-header__content js-moj-header__wrap-item">
-    <nav class="moj-header__navigation {% if params.classes %} {{ params.classes }}{% endif %}" {% if (params.label) %} aria-label="{{ params.label | default('Navigation') }}" {% endif %} {{ govukAttributes(params.attributes) }}>
-      <ul class="moj-header__list moj-header__list--navigation">
+    <nav class="moj-header__navigation js-moj-header__wrap-item {% if params.classes %} {{ params.classes }}{% endif %}" {% if (params.label) %} aria-label="{{ params.label | default('Navigation') }}" {% endif %} {{ govukAttributes(params.attributes) }}>
+      <ul class="moj-header__list moj-header__nav-list">
         {%- for item in params.items %}
-          <li class="moj-header__list-item">
+          <li class="moj-header__nav-list-item {{ "moj-header__nav-list-item--current" if item.active }}">
            {% if item.href %}
               <a class="moj-header__link" href="{{ item.href }}" {{ 'aria-current="page"' | safe if item.active }} {{ govukAttributes(item.attributes) }}>
                 {{- item.html | safe if item.html else item.text -}}
@@ -86,7 +83,6 @@
         {% endfor -%}
       </ul>
     </nav>
-  </div>
 {% endmacro %}
 
 <header class="moj-header {{ classNames }}" role="banner" {{ govukAttributes(params.attributes) }} data-module="moj-header">
