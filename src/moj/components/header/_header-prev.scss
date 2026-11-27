@@ -20,6 +20,7 @@
   align-items: stretch;
   gap: govuk-spacing(3) govuk-spacing(7);
   padding-top: govuk-spacing(3);
+
   /* padding-bottom: govuk-spacing(3); */
 
   @include govuk-media-query($from: "tablet") {
@@ -119,10 +120,10 @@
 }
 
 .moj-header__nav-list {
-  list-style: none;
+  display: flex;
   margin: 0;
   padding: 0;
-  display: flex;
+  list-style: none;
   flex-wrap: wrap;
   flex-direction: column;
   gap: govuk-spacing(2);
@@ -135,8 +136,8 @@
   }
 
   & > * {
-    white-space: nowrap;
     padding: 7px 0 8px;
+    white-space: nowrap;
   }
 }
 

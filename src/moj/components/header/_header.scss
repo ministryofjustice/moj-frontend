@@ -34,11 +34,11 @@
 
 .moj-header__identity {
   display: flex;
+  margin-top: govuk-spacing(3);
+  margin-right: auto;
   flex-wrap: wrap;
   align-items: center;
   gap: govuk-spacing(2);
-  margin-right: auto;
-  margin-top: govuk-spacing(3);
 
   @include govuk-media-query($from: "desktop") {
     margin-top: 0;
@@ -120,13 +120,13 @@
   padding-left: govuk-spacing(3);
 
   @include govuk-media-query($from: "tablet") {
-    padding-left: 0;
     padding-bottom: govuk-spacing(3);
+    padding-left: 0;
   }
 
   @include govuk-media-query($from: "desktop") {
-    padding-bottom: 0;
     display: flex;
+    padding-bottom: 0;
     align-items: center;
   }
 }
@@ -139,7 +139,7 @@
   box-shadow: 5px 0 inset govuk-colour("blue");
 
   @include govuk-media-query($from: "tablet") {
-    box-shadow: 0px -5px inset govuk-colour("blue");
+    box-shadow: 0 -5px inset govuk-colour("blue");
   }
 }
 
@@ -153,7 +153,9 @@
     max-width: min(100%, 32ch);
     align-self: center;
     margin-bottom: 0;
+
     /* justify-self: flex-end; */
+
     /* justify-content: flex-end; */
   }
 }
@@ -176,10 +178,10 @@
 .moj-header__user {
   display: block;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   font-weight: bold;
   text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   @include govuk-media-query($from: "desktop") {
     /* text-align: right; */
