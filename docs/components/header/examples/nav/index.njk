@@ -1,0 +1,172 @@
+---
+layout: layouts/example.njk
+title: Header (example)
+---
+
+{%- from "moj/components/header/macro.njk" import mojHeader -%}
+
+
+
+
+{{ mojHeader({
+  organisationLabel: {
+    text: "Ministry of Justice",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "Service name",
+    href: "#"
+  },
+  navigation: {
+    label: "navigation",
+    items: [{
+      text: "Custom link",
+      href: "#",
+      active: true
+    }, {
+      text: "Custom link",
+      href: "#"
+    },
+    {
+      text: "Custom link",
+      href: "#"
+    }, {
+      text: "Custom link",
+      href: "#"
+    }]
+  }
+}) }}
+<br/>
+<br/>
+{{ mojHeader({
+  organisationLabel: {
+    text: "Ministry of Justice",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "Service name",
+    href: "#"
+  },
+  navigation: {
+    label: "navigation",
+    items: [{
+      text: "Custom link",
+      href: "#",
+      active: true
+    }, {
+      text: "Custom link",
+      href: "#"
+    }]
+  }
+}) }}
+
+<br/>
+<br/>
+{{ mojHeader({
+  organisationLabel: {
+    text: "Ministry of Justice",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "Service name",
+    href: "#"
+  },
+  navigation: {
+    label: "navigation",
+    items: [{
+      text: "Custom link",
+      href: "#",
+      active: true
+    }, {
+      text: "Custom link",
+      href: "#"
+    },
+    {
+      text: "Custom link",
+      href: "#"
+    }, {
+      text: "Custom link",
+      href: "#"
+    }, {
+      text: "Custom link",
+      href: "#"
+    },
+    {
+      text: "Custom link",
+      href: "#"
+    }]
+  }
+}) }}
+
+
+<br/>
+<h4>With account info</h4>
+
+{{ mojHeader({
+  organisationLabel: {
+    text: "Ministry of Justice",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "Service name",
+    href: "#"
+  },
+  account: {
+    label: "account navigation",
+    username: "A.Name",
+    manageLink: {
+      text: "Manage your details",
+      href: "#"
+    },
+    signOutLink: {
+      text: "Sign out",
+      href: "#"
+    }
+ }
+}) }}
+<br/>
+<h4>MOJ Forms</h4>
+
+{{ mojHeader({
+  organisationLabel: {
+    text: "Ministry of Justice",
+    href: "#"
+  },
+  serviceLabel: {
+    text: "MOJ Forms",
+    href: "#"
+  },
+  navigation: {
+    label: "Forms navigation",
+    items: [{
+      text: "Your Forms",
+      href: "#",
+      active: true
+      },{
+       text: "Support",
+      href: "#"
+      },{
+      text: "Feedback",
+      href: "#"
+      }, {
+      text: "Sign out R.Bennett",
+      href: "#"
+    }]
+  }
+}) }}
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>

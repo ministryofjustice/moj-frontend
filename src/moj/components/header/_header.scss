@@ -1,3 +1,4 @@
+@use "../../settings/measurements" as *;
 @use "../../objects/width-container" as *;
 @use "../../vendor/govuk-frontend" as *;
 
@@ -6,170 +7,195 @@
    ========================================================================== */
 
 .moj-header {
-  padding-top: govuk-spacing(3);
-  border-bottom: 10px solid $govuk-brand-colour;
-  background-color: govuk-colour("black");
+  position: relative;
+  color: govuk-colour("white");
+  background-color: govuk-organisation-colour("ministry-of-justice");
 }
 
 .moj-header__container {
-  position: relative;
   @include moj-width-container;
-  @include govuk-clearfix;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: govuk-spacing(3) govuk-spacing(7);
+
+  min-height: 68px;
+
+  @include govuk-media-query($from: "desktop") {
+    flex-direction: row;
+    align-items: stretch;
+    gap: govuk-spacing(3) govuk-spacing(5);
+  }
+}
+
+.moj-header--with-account .moj-header__container {
+  min-height: 80px;
+}
+
+.moj-header__identity {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: govuk-spacing(2);
+  margin-right: auto;
+  margin-top: govuk-spacing(3);
+
+  @include govuk-media-query($from: "desktop") {
+    margin-top: 0;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+  }
 }
 
 .moj-header__logo {
-  padding-bottom: govuk-spacing(1);
-
-  @include govuk-media-query($from: desktop) {
-    float: left;
-  }
+  flex-shrink: 0;
+  padding-bottom: 4px;
 }
 
-.moj-header__logotype-crown {
-  position: relative;
-  top: -4px;
-  margin-right: govuk-spacing(1);
-  vertical-align: top;
-}
-
-.moj-header__logotype-crest {
-  position: relative;
-  top: -8px;
-  margin-right: govuk-spacing(1);
-  vertical-align: top;
-}
-
-.moj-header__content {
-  padding-bottom: govuk-spacing(2);
-
-  @include govuk-media-query($from: desktop) {
-    float: right;
-  }
-}
-
-.moj-header__link,
-.moj-header__link > a {
-  display: inline-block;
-  margin-bottom: -1px;
-  overflow: hidden; // Fixes focus gaps in background colour
-  border-bottom: 1px solid transparent;
+.moj-header__organisation-name,
+.moj-header__service-name {
+  @include govuk-font($size: 24);
   color: govuk-colour("white");
-  line-height: 25px; // Override due to alignment issue in Chrome
-  vertical-align: middle;
+}
+
+.moj-header__organisation-name.moj-header__link,
+.moj-header__service-name.moj-header__link {
   @include govuk-link-common;
-  @include govuk-link-style-default;
-
-  &:link,
-  &:visited,
-  &:hover,
-  &:active {
-    color: govuk-colour("white");
-    text-decoration: none;
-  }
-
-  &:hover {
-    border-color: govuk-colour("white");
-  }
-
-  &:focus {
-    border-color: transparent;
-    color: govuk-colour("black");
-  }
-
-  &--organisation-name {
-    vertical-align: middle;
-    @include govuk-font($size: 24, $weight: "bold");
-
-    &:hover {
-      border-color: transparent;
-    }
-
-    @include govuk-media-query($until: tablet) {
-      margin-top: govuk-spacing(1);
-    }
-  }
-
-  &--service-name {
-    vertical-align: middle;
-    @include govuk-font($size: 24, $weight: "normal");
-
-    @include govuk-media-query($until: desktop) {
-      display: block;
-    }
-    @include govuk-media-query($from: desktop) {
-      margin-left: govuk-spacing(1);
-    }
-
-    &:hover {
-      border-color: transparent;
-    }
-  }
+  @include govuk-link-style-inverse;
+  @include govuk-link-style-no-underline;
+  @include govuk-font($size: 24);
 }
 
-.moj-header__link a {
-  margin-bottom: 1px;
-  vertical-align: text-bottom;
-
-  &:hover {
-    border-color: govuk-colour("white");
-  }
-
-  @include govuk-media-query($until: desktop) {
-    margin-bottom: -1px;
-    vertical-align: middle;
-  }
-}
-// stylelint-disable-next-line selector-no-qualifying-type
-span.moj-header__link {
-  &:hover {
-    border-color: transparent;
-  }
+.moj-header__logo + .moj-header__organisation-name.moj-header__link,
+.moj-header__logo + .moj-header__service-name.moj-header__link,
+.moj-header__logo + span {
+  font-weight: bold;
 }
 
-// Navigation
-.moj-header__navigation {
-  margin-top: govuk-spacing(1) - 2px;
-  color: govuk-colour("white");
-}
-
-.moj-header__navigation-list {
+.moj-header__list {
   margin: 0;
   padding: 0;
-  font-size: 0; // Removes white space when using inline-block on child element.
   list-style: none;
 }
 
-.moj-header__navigation-item {
-  display: inline-block;
-  margin-right: govuk-spacing(4);
-  @include govuk-font(19);
-
-  &:last-child {
-    margin-right: 0;
-  }
-}
-
-.moj-header__navigation-link {
+.moj-header__link {
   @include govuk-link-common;
-  @include govuk-link-style-default;
+  @include govuk-link-style-inverse;
+  @include govuk-link-style-no-underline;
 
-  &:link,
-  &:visited,
-  &:active {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  &:hover {
-    // stylelint-disable-next-line declaration-no-important
-    text-decoration: underline !important;
-  }
-
-  &:focus {
-    color: govuk-colour("black");
+  &[aria-current="page"] {
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
-.moj-header__navigation-link[aria-current="page"] {
-  text-decoration: none;
+.moj-header__navigation,
+.moj-header__account {
+  @include govuk-font(19);
+  margin-bottom: govuk-spacing(3);
+}
+
+.moj-header__navigation {
+  display: flex;
+  align-items: stretch;
+
+  @include govuk-media-query($from: "tablet") {
+    margin-bottom: 0;
+  }
+}
+
+.moj-header__nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: govuk-spacing(2);
+
+  @include govuk-media-query($from: "tablet") {
+    flex-direction: row;
+  }
+}
+
+.moj-header__nav-list-item {
+  padding-left: govuk-spacing(3);
+
+  @include govuk-media-query($from: "tablet") {
+    padding-left: 0;
+    padding-bottom: govuk-spacing(3);
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.moj-header__nav-list-item a {
+  padding: govuk-spacing(2) 0;
+}
+
+.moj-header__nav-list-item--current {
+  box-shadow: 5px 0 inset govuk-colour("blue");
+
+  @include govuk-media-query($from: "tablet") {
+    box-shadow: 0px -5px inset govuk-colour("blue");
+  }
+}
+
+.moj-header__account {
+  min-width: 0;
+  max-width: 100%;
+  align-items: center;
+
+  @include govuk-media-query($from: "desktop") {
+    flex: 1 1 18ch;
+    max-width: min(100%, 32ch);
+    align-self: center;
+    margin-bottom: 0;
+    /* justify-self: flex-end; */
+    /* justify-content: flex-end; */
+  }
+}
+
+.moj-header__account-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: govuk-spacing(2);
+
+  @include govuk-media-query($from: "desktop") {
+    /* justify-content: flex-end; */
+    flex-wrap: nowrap;
+  }
+}
+
+.moj-header__account-list-item {
+  white-space: nowrap;
+}
+
+.moj-header__user {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+  text-align: left;
+
+  @include govuk-media-query($from: "desktop") {
+    /* text-align: right; */
+  }
+}
+
+.js-enabled .moj-header.js-stacked {
+  @include govuk-media-query($from: "desktop") {
+    /* If the header is still stacked on desktop, keep the top margin */
+    .moj-header__identity {
+      margin-top: govuk-spacing(3);
+    }
+
+    /* If the header is still stacked on desktop, keep the bottom margin */
+    .moj-header__account {
+      margin-bottom: govuk-spacing(3);
+    }
+  }
 }

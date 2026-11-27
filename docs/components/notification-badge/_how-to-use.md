@@ -20,11 +20,11 @@ The notification badge is best used in a navigation. In that position it:
 
 Reserving the component for the navigation (and not using it elsewhere) is the most useful and accessible for everyone. This is because it’s being used consistently.
 
-You can view [how to use the notification badge in navigation](/components/notification-badge/#examples-tab).
+You can view how to use the notification badge in the [GOV.UK service navigation component](https://design-system.service.gov.uk/components/service-navigation/).
 
 ### In page headers
 
-The notification badge can be placed in a header if the colour contrast is accessible. It's accessible when used with the [MOJ header](/components/moj-header/), but not the [GOV.UK header](https://design-system.service.gov.uk/components/header/). Do not change the component or header colour to make this possible.  
+The notification badge can be placed in a header if the colour contrast is accessible. It's accessible when used with the [MOJ header component](/components/moj-header/), but not the [GOV.UK heade component](https://design-system.service.gov.uk/components/header/). Do not change the component or header colour to make this possible.  
 
 If your users are switching between MOJ and GOV.UK services consider whether seeing the component being used in different ways will be confusing.
 
@@ -60,10 +60,6 @@ Consider the following for link text:
 <div class="govuk-inset-text">
     <a href="/content-standards/style-guide/#alerts-(dps-only)">'Alert' has a specific meaning in DPS</a> and HMPPS. Only use this link text in HMPPS if you're referring to an alert produced by NOMIS, DPS or NDelius.
 </div>
-
-#### In this example, the user can view notifications from the [primary navigation](/components/primary-navigation/):
-
-<p><img src="{{ 'assets/images/notification-badge-example-inbox-1.png' | rev | url }}" alt="A red notification badge sits next to the ‘Notifications’ link in the primary navigation. A white number 8 sits inside the round badge. (The ‘Home’ link is active and shows a heading with empty card components.)"></p>
 
 #### Hidden text
 
